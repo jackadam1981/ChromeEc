@@ -105,6 +105,24 @@
       "parentUuid": "fb8c227d_0dd11697",
       "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b40207_8d5555b4",
+        "filename": "zephyr/projects/nissa/nivviks_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T00:05:49Z",
+      "side": 1,
+      "message": "Regarding the JHL8040R driver, this DTS node for this device is currently put directly on the I2C bus.  However this node is processed by config_chip.h to extract only a couple properties to set the legacy CONFIG_ options.\n\nThis drive should be moved from the I2C bus, and instead should be defined like the other muxes.  The JHL8040R just requires a couple extra properties to specify the required GPIOs.",
+      "parentUuid": "a376bfc7_ffce323a",
+      "revId": "a5405fca324ed9efd3be868cb56319a1112a1fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
