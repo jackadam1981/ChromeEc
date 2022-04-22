@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0843515d_93c7711b",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-22T20:32:03Z",
+      "side": 1,
+      "message": "changed to void.",
+      "parentUuid": "c7d1f132_eb7d495a",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "49e3deae09296e91b14a9d3b5afece07ee4b84b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3a2479_31d83067",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-22T19:02:40Z",
       "side": 1,
       "message": "So this always clears the interrupts on any keypress?  Can you add more details to the comment about why this is needed.\n\nI see the previous patchset was checking `if (inst-\u003eKSI_INT \u003d\u003d 0xff)` (no keys pressed).",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 29
+      },
+      "revId": "49e3deae09296e91b14a9d3b5afece07ee4b84b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "184a507b_d7dde169",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-22T20:32:03Z",
+      "side": 1,
+      "message": "add detail comment into.\nKEYBOARD_COLUMN_ALL case is only called after EC is ready to detect key pressing.\nKSIs status may not be 0xff since glitches on KSIs or pull-up not strong enough, this can prevent one faulty interrupt.",
+      "parentUuid": "3e3a2479_31d83067",
       "range": {
         "startLine": 114,
         "startChar": 0,
