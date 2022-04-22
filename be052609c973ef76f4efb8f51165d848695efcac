@@ -34,6 +34,24 @@
       "parentUuid": "9ec00ecf_d44b3207",
       "revId": "be052609c973ef76f4efb8f51165d848695efcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b1d40a_a66f9d34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T17:27:35Z",
+      "side": 1,
+      "message": "The contents of the zephyr/boards directory is required by the Zephyr build system.\n\nhttps://docs.zephyrproject.org/latest/hardware/porting/board_porting.html#create-your-board-directory\n\nLooking at other Zephyr boards upstream, there is only limited sharing between different boards using the \"common\" directory:\n\nhttps://github.com/zephyrproject-rtos/zephyr/tree/main/boards/common\n\nSo this is probably the best approach for now.  You could investigate trying to move any shared code from boards/npcx9 and boards/npcx9m7f to a shared directory.\n\nIt probably also makes sense to rename boards/npcx9 to boards/npcx9m3f for consistency.  But this can be done as follow up effort.",
+      "parentUuid": "093db629_e244c1c1",
+      "revId": "be052609c973ef76f4efb8f51165d848695efcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
