@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42cf9fa0_9ec4c48e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-22T18:44:53Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 25,
+        "startChar": 20,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "992c43a214abe3d74d72674e144cbf489901ff10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439f3a45_3b614010",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-22T18:44:53Z",
+      "side": 1,
+      "message": "This comment seems to require some editing.",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 67
+      },
+      "revId": "992c43a214abe3d74d72674e144cbf489901ff10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
