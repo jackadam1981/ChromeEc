@@ -404,12 +404,16 @@ void rt1718s_vendor_defined_alert(int port)
 		if (rv)
 			return;
 
-		if ((int1 & RT1718S_RT_INT1_INT_RX_FRS)) {
+		if ((int1 & RT1718S_RT_INT1_INT_RX_FRS) &&
+		    frs_flag[port] & FLAG_FRS_ENABLED) {
 			/*
-			 * Only call pd_got_frs_signal when this is the first
-			 * Rx interrupt for this FRS swap. The Rx interrupt
-			 * may re-send when the sink voltage is 5V, and this
-			 * will make us re-entry the FRS states.
+			 * 1. Sometimes we get Rx signaled even if the
+			 * FRS is disabled, so filter it.
+			 * 2. Only call pd_got_frs_signal when this is the first
+			 * Rx interrupt for this FRS swap, and the FRS is
+			 * enabled.  The Rx interrupt may re-send when the
+			 * sink voltage is 5V, and this will make us re-entry
+			 * the FRS states.
 			 */
 			if (!(frs_flag[port] & FLAG_FRS_RX_SIGNALED)) {
 				atomic_or(&frs_flag[port],
@@ -421,10 +425,12 @@ void rt1718s_vendor_defined_alert(int port)
 
 		if ((int1 & RT1718S_RT_INT1_INT_VBUS_FRS_LOW)) {
 			/*
+			 * Only process if have had rx signaled.
 			 * VBUS_FRS_LOW alert could be sent multiple times,
 			 * filter it here.
 			 */
-			if (!(frs_flag[port] & FLAG_FRS_VBUS_VALID_FALL)) {
+			if ((frs_flag[port] & FLAG_FRS_RX_SIGNALED) &&
+			    !(frs_flag[port] & FLAG_FRS_VBUS_VALID_FALL)) {
 				atomic_or(&frs_flag[port],
 					  FLAG_FRS_VBUS_VALID_FALL);
 				/*
