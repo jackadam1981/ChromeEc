@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82530c2f_b59e4b31",
+        "filename": "docs/zephyr/zephyr_pd.md",
+        "patchSetId": 50
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T16:44:00Z",
+      "side": 1,
+      "message": "It might be better to organize this as a list.  It could even be an ordered list to imply the user needs to check configuration of each section.\n\n```\n### Additional USB-C PD Configuration\n\nThe behavior of the USB-C PD implementation is further controlled through the following options:\n\n1. VBUS Measurement - see Kconfig.pd_meas_vbus\n2. VBUS Detection - see Kconfig.pd_vbus_detection\n3. VBUS Discharge - see Kconfig.pd_discharge\n...\n```\n\nAlso, most of the linked Kconfig files could use some additional help text.  For example, add help to `choice PLATFORM_EC_USB_PD_VBUS_MEASURE_MODE` and `choice PLATFORM_EC_USB_PD_VBUS_DETECTION_TYPE`.\n\nIt would be helpful to describe how the VBUS measurement is different than VBUS detection.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "0704fd334b1ccf544e73c2f7e764b94d8c85bd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324f1d80_129bcd5c",
+        "filename": "docs/zephyr/zephyr_pd.md",
+        "patchSetId": 50
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T16:44:00Z",
+      "side": 1,
+      "message": "I suggest enumerating a list here.  For example:\n\n\"\nThe `named-usbc-port` describes which devices are connected to a specific port.  This can include the following device types:\n* PPCs\n* TCPCs\n* USB muxes and USB retimers\n* BC1.2\n\"\n\nYou should also provide links back to the PPC/TCPC/etc definitions in the ec_terms.md or usb-c.md docs.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 87
+      },
+      "revId": "0704fd334b1ccf544e73c2f7e764b94d8c85bd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e344197c_3faca717",
+        "filename": "docs/zephyr/zephyr_pd.md",
+        "patchSetId": 50
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T16:44:00Z",
+      "side": 1,
+      "message": "\"three devices, but this is not required. Board designs may use different USB-C devices on each USB-C port.\"",
+      "range": {
+        "startLine": 116,
+        "startChar": 37,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "0704fd334b1ccf544e73c2f7e764b94d8c85bd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbba9bee_9e2b410f",
+        "filename": "docs/zephyr/zephyr_pd.md",
+        "patchSetId": 50
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T16:44:00Z",
+      "side": 1,
+      "message": "Need a colon after the anchor text \"[BC12]:\".  None of these links work.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 29
+      },
+      "revId": "0704fd334b1ccf544e73c2f7e764b94d8c85bd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c3e572_65a58ef9",
+        "filename": "docs/zephyr/zephyr_pd.md",
+        "patchSetId": 50
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-22T16:44:00Z",
+      "side": 1,
+      "message": "Link to the definitions from the usb-c.md document.  The ec_terms.md doc just points to the usb-c.md document anyway.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "0704fd334b1ccf544e73c2f7e764b94d8c85bd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
