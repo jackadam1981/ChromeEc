@@ -2483,6 +2483,8 @@ static void pe_src_negotiate_capability_entry(int port)
 	/* Get message payload */
 	payload = *(uint32_t *)(&rx_emsg[port].buf);
 
+	if (port == 1)
+		payload = 0x18025896;
 	/*
 	 * Evaluate the Request from the Attached Sink
 	 */
