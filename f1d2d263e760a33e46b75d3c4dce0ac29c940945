@@ -22,6 +22,30 @@
       },
       "revId": "f1d2d263e760a33e46b75d3c4dce0ac29c940945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14683c5c_d58f3cde",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-22T23:20:51Z",
+      "side": 1,
+      "message": "I\u0027ve removed the else clause but shouldn\u0027t we leave the code change here so that it can be guarded by `if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW)) {`?",
+      "parentUuid": "ee421493_a6e62815",
+      "range": {
+        "startLine": 625,
+        "startChar": 2,
+        "endLine": 625,
+        "endChar": 33
+      },
+      "revId": "f1d2d263e760a33e46b75d3c4dce0ac29c940945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
