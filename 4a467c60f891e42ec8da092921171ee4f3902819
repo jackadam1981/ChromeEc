@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1219ec0d_a9d11ed6",
+        "filename": "zephyr/test/drivers/src/console_cmd/accelres.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-22T18:20:51Z",
+      "side": 1,
+      "message": "I forgot it was there. I think we need it in the global rule because we have common/shared fakes. Having both is redundant, but I wouldn\u0027t expect everyone on the team to know about the rule. I would lean towards leaving both.",
+      "parentUuid": "1af0c504_d3ef77b2",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "4a467c60f891e42ec8da092921171ee4f3902819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b207c03_9b3a918b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-22T17:12:50Z",
       "side": 1,
       "message": "This test is supposed to cover drivers that have .set_resolution NULL? I assume the shell command neglects to return any sort of error in this case so we\u0027re checking the current resolution ourselves to make sure it didn\u0027t change?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 57
+      },
+      "revId": "4a467c60f891e42ec8da092921171ee4f3902819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b42007_945cd660",
+        "filename": "zephyr/test/drivers/src/console_cmd/accelres.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-22T18:20:51Z",
+      "side": 1,
+      "message": "correct, it just treats it as a no-op",
+      "parentUuid": "7b207c03_9b3a918b",
       "range": {
         "startLine": 98,
         "startChar": 0,
