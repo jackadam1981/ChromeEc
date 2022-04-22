@@ -788,3 +788,31 @@ int dpm_get_source_current(const int port)
 	else
 		return 500;
 }
+
+int dpm_get_status_msg(uint8_t *msg, uint32_t *len)
+{
+	/* USB PD Rev 3.0: 6.5.2 Status Message */
+	*len = 6;
+
+	/* TODO(b/227236917): Fill in fields of Status message */
+
+	/* Internal Temp */
+	msg[STATUS_INTERNAL_TEMP] = 0x0;
+
+	/* Present Input */
+	msg[STATUS_PRESENT_INPUT] = 0x0;
+
+	/* Present Battery Input */
+	msg[STATUS_PRESENT_BATTERY_INPUT] = 0x0;
+
+	/* Event Flags */
+	msg[STATUS_EVENT_FLAGS] = 0x0;
+
+	/* Temperature Status */
+	msg[STATUS_TEMP_STATUS] = 0x0;
+
+	/* Power Status */
+	msg[STATUS_POWER_STATUS] = 0x0;
+
+	return EC_SUCCESS;
+}
