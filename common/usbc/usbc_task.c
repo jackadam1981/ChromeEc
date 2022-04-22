@@ -116,8 +116,18 @@ static int pd_task_timeout(int port)
 
 static bool pd_task_loop(int port)
 {
+#if 0 /*test*/
+	if (port == 1)
+		IT8XXX2_GPIO_GPDRA &= ~0x80;
+#endif /*test*/
+
 	/* wait for next event/packet or timeout expiration */
 	const uint32_t evt = task_wait_event(pd_task_timeout(port));
+
+#if 0 /*test*/
+	if (port == 1)
+		IT8XXX2_GPIO_GPDRA |= 0x80;
+#endif /*test*/
 
 	/* Manage expired PD Timers on timeouts */
 	if (evt & TASK_EVENT_TIMER)
@@ -165,6 +175,11 @@ void pd_task(void *u)
 	 */
 	if (port >= board_get_usb_pd_port_count())
 		return;
+
+#if 0 /*test*/
+	/* Set GPA7 output mode */
+	IT8XXX2_GPIO_GPCRA7 = 0x40;
+#endif
 
 #if CONFIG_USB_PD_STARTUP_DELAY_MS > 0
 	msleep(CONFIG_USB_PD_STARTUP_DELAY_MS);

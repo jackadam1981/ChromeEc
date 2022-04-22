@@ -22,7 +22,18 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 
+/* RAM code section */
+//define __pd_ram_code __attribute__((section(".__ram_code")))
+#define __pd_ram_code
+
 static int active_aux_port = -1;
+char int_list[30];
+int int_freq = 0;
+char int_flag = 0;
+char hpd_pin_lock = 1;
+#if 1 /* test */
+extern int int_ra[4];
+#endif /* test */
 
 int pd_check_vconn_swap(int port)
 {
@@ -50,8 +61,11 @@ static void reset_aux_deferred(void)
 }
 DECLARE_DEFERRED(reset_aux_deferred);
 
-void svdm_set_hpd_gpio(int port, int en)
+__pd_ram_code void svdm_set_hpd_gpio(int port, int en)
 {
+	if (hpd_pin_lock == 1)
+		return;
+
 	/*
 	 * HPD is low active, inverse the en.
 	 *
@@ -127,7 +141,7 @@ __override void svdm_dp_post_config(int port)
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 }
 
-int corsola_is_dp_muxable(int port)
+__pd_ram_code int corsola_is_dp_muxable(int port)
 {
 	int i;
 
@@ -142,7 +156,56 @@ int corsola_is_dp_muxable(int port)
 	return 1;
 }
 
-__override int svdm_dp_attention(int port, uint32_t *payload)
+ __pd_ram_code int hpd_pulse(int argc, char **argv)
+{
+	unsigned int dticks_start, dticks_end;
+	//unsigned int key = irq_lock(); /* Disable global interrupt for critical section */
+	int_flag = 1;
+
+	dticks_start = sys_clock_cycle_get_32();
+
+	/* generate IRQ_HPD pulse */
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), 1); //svdm_set_hpd_gpio(port, 0);
+
+
+	//ccprintf("data: 0x%x, ctrl: 0x%x, outtype: 0x%x\n", IT8XXX2_GPIO_GPDRJ, IT8XXX2_GPIO_GPCRJ0, IT8XXX2_GPIO_GPOTRJ);
+
+	/*
+	 * b/171172053#comment14: since the HPD_DSTREAM_DEBOUNCE_IRQ is
+	 * very short (500us), we can use udelay instead of usleep for
+	 * more stable pulse period.
+	 */
+	udelay(HPD_DSTREAM_DEBOUNCE_IRQ); //arch_busy_wait() = 480~510us
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_ap_dp_hpd_odl), 0); //svdm_set_hpd_gpio(port, 1);
+
+	dticks_end = sys_clock_cycle_get_32();
+
+	int_flag = 0;
+	dticks_start = (dticks_end - dticks_start) * 30;
+	//irq_unlock(key);
+
+	ccprintf("Time elaspe: %d us, INT[%d] = {%d, %d, %d, %d, %d, %d, %d, %d, %d, %d..}\n", dticks_start, int_freq, int_list[0], int_list[1], int_list[2], int_list[3], int_list[4], int_list[5], int_list[6], int_list[7], int_list[8], int_list[9]);
+
+	for (int i = 0; i < 30; i++) {
+		int_list[i] = 0;
+	}
+
+#if 1 /* test */
+	ccprintf("int_ra[] = {0x%x, 0x%x, 0x%x, 0x%x}\n", int_ra[0], int_ra[1], int_ra[2], int_ra[3]);
+	for (int ii = 0; ii < 4; ii++) {
+		int_ra[ii] = 0;
+	}
+#endif /* test */
+
+	int_freq = 0;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(hpd, hpd_pulse,
+			NULL,
+			"HPD pulse");
+
+__override __pd_ram_code int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
