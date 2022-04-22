@@ -51,6 +51,24 @@
       "parentUuid": "147016a2_0b2a53a5",
       "revId": "02e5f2263e4872948ca8e05ef0a01f2640170f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f35e59_7eb0161a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2022-04-22T21:23:32Z",
+      "side": 1,
+      "message": "The target branch for all Servo changes is the main branch. Only Servo_v4 (v4.0) requires a build from a special branch due to resource constraints so this should be kept reasonably up to date with the ToT main. When I\u0027m looking at the git history, this CL chain branch is very far from the ToT so the behavior when we do merge it in is likely going to be quite different than anything made off of the head commit.\n\n    3eac32bd44  2021-08-13  Jan    (HEAD) servo_v4p1: Manage USB2/USB3\n    d9eb62bdea  2021-08-13  Jan    servo_v4p1: Initial support for FAS\n    bef4b0cc28  2021-08-13  Jan    servo_v4p1: Fix routines for uservo\n    02e5f2263e  2021-08-12  Jan    pd: usb: Add usb type-c USB mux han\n    1a7e7e64cb  2021-04-22  Jan    servo_v4(p1): Implement empty usb i\n    fc81c164c4  2021-04-16  Diana  Mancomb: Enable LEDs\n    33fa1073fd  2021-04-16  Diana  LED On/Off: Add state for off with",
+      "parentUuid": "be5f170b_199325da",
+      "revId": "02e5f2263e4872948ca8e05ef0a01f2640170f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
