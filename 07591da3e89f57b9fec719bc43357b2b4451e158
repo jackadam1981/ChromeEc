@@ -16,6 +16,24 @@
       "message": "may be this is needed as its controlled by H1",
       "revId": "07591da3e89f57b9fec719bc43357b2b4451e158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e41ca1_4768440e",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-04-22T03:49:34Z",
+      "side": 0,
+      "message": "There is build error caused by config after I remove EC_BRINGUP.\n\nWhen this config is enabled, it selects PLATFORM_EC_BYPASS_CBI_EEPROM_WP_CHECK by default, then legacy EC flag CONFIG_BYPASS_CBI_EEPROM_WP_CHECK is enabled as a result, which requires either CONFIG_SYSTEM_UNLOCKED, or CONFIG_EEPROM_CBI_WP to be enabled in include/config.h.\n\nSo to keep CONFIG_PLATFORM_EC_EEPROM_CBI_WP, need to set CONFIG_SYSTEM_UNLOCKED, or CONFIG_EEPROM_CBI_WP. But CONFIG_EEPROM_CBI_WP is not available to zephyr code. And \nCONFIG_SYSTEM_UNLOCKED should not be enabled even in development phase I think. (EC_BRINGUP select CONFIG_SYSTEM_UNLOCKED, that\u0027s why the build is ok)\n\nIf need to keep this flag, the only choice is to add CONFIG_PLATFORM_EC_SYSTEM_UNLOCKED\u003dy, not sure if this could be a long term plan.",
+      "parentUuid": "31d0c41b_3215881f",
+      "revId": "07591da3e89f57b9fec719bc43357b2b4451e158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
