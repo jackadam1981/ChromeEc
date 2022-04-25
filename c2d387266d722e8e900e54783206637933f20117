@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "214f555f_06620ac2",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-25T17:09:21Z",
+      "side": 1,
+      "message": "self._configure appends to failed_projects itself.",
+      "parentUuid": "a8751c1f_e8613722",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 37
+      },
+      "revId": "c2d387266d722e8e900e54783206637933f20117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f92e819d_b46098f2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf4c797_721b356c",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-25T17:09:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f92e819d_b46098f2",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 29
+      },
+      "revId": "c2d387266d722e8e900e54783206637933f20117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89a5a4fc_cc622d4c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-21T17:16:12Z",
       "side": 1,
       "message": "how come we are outputting file paths instead of the project name?",
+      "range": {
+        "startLine": 283,
+        "startChar": 43,
+        "endLine": 283,
+        "endChar": 76
+      },
+      "revId": "c2d387266d722e8e900e54783206637933f20117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39aa311a_f1535555",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-25T17:09:21Z",
+      "side": 1,
+      "message": "What project does the merged lcov file belong to? It is the merged results of all of them.",
+      "parentUuid": "89a5a4fc_cc622d4c",
       "range": {
         "startLine": 283,
         "startChar": 43,
