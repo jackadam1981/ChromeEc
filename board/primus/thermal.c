@@ -116,7 +116,7 @@ int fan_table_to_rpm(int fan, int *temp, enum temp_sensor_id temp_sensor)
 		prev_temp[temp_sensor]) {
 		for (i = current_level; i < num_fan_levels; i++) {
 			if (temp[temp_sensor] >
-				fan_table[i].on[temp_sensor])
+				fan_table[i+1].on[temp_sensor])
 				current_level = i + 1;
 			else
 				break;
