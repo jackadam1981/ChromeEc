@@ -10648,8 +10648,23 @@ int cmd_cec(int argc, char *argv[])
 	return -1;
 }
 
+
+int cmd_primus(int argc, char *argv[])
+{
+	int mtemp;
+	int rv = read_mapped_mem16(EC_MEMMAP_FAN + 2 * 0);
+
+	printf("Fan_rpm\t%d,\t", rv);
+	mtemp = read_mapped_temperature(0);
+	printf("TSR0\t%d\n", ((mtemp + 200)-273));
+
+	return 0;
+
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{"primus", cmd_primus},
 	{"adcread", cmd_adc_read},
 	{"addentropy", cmd_add_entropy},
 	{"apreset", cmd_apreset},
