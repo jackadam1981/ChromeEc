@@ -14,9 +14,13 @@ properties:
 
    # Fuel gauge
    manuf_name:
-      default: "Getac"
+      #default: "Getac"
+      #default: "SONYCorp"
+      default: "LGC"
    device_name:
-      default: "BQ40Z50-R3"
+      #default: "BQ40Z50-R3"
+      #default: "AP16K4J"
+      default: "AC14B18J"
    ship_mode_reg_addr:
       default: 0x00
    ship_mode_reg_data:
