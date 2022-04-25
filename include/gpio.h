@@ -37,6 +37,12 @@
 #define GPIO_HIB_WAKE_LOW     BIT(20) /* Hibernate wake on low level */
 #define GPIO_HIB_WAKE_RISING  BIT(21) /* Hibernate wake on rising edge */
 #define GPIO_HIB_WAKE_FALLING BIT(22) /* Hibernate wake on falling edge */
+#define GPIO_KEEP_ACTIVE      BIT(23) /* Disable sleep when asserted.
+				       * This disables regular sleep and deep
+				       * sleep, so it should only be used for
+				       * debug signals. Don't use on signals
+				       * that are asserted in normal operation.
+				       */
 
 /* Common flag combinations */
 #define GPIO_OUT_LOW        (GPIO_OUTPUT | GPIO_LOW)
