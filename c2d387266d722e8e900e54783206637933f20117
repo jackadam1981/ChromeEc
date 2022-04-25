@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6e34f20_1c1c8d78",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-25T17:12:01Z",
+      "side": 1,
+      "message": "Can we make `failed_projects` an attribute of the `Zmake` object then to better convey this shared state?\n\nI missed it as I didn\u0027t expect the method call to modify this shared list.",
+      "parentUuid": "214f555f_06620ac2",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 37
+      },
+      "revId": "c2d387266d722e8e900e54783206637933f20117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f92e819d_b46098f2",
         "filename": "zephyr/zmake/zmake/zmake.py",
         "patchSetId": 2
