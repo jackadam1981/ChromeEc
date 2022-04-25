@@ -1,8 +1,8 @@
-# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Copyright 2021 Microchip Technology Inc. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-zephyr_library_include_directories(include)
+cros_ec_library_include_directories(include)
 
 zephyr_library_sources(clock.c)
 zephyr_library_sources(gpio.c)
