@@ -15,7 +15,9 @@ def register_intelrvp_project(
 ):
     """Register a variant of intelrvp."""
     register_func = register_binman_project
-    if chip.startswith("npcx9"):
+    if chip.startswith("mec1727"):
+        register_func = register_mchp_project
+    elif chip == "npcx9":
         register_func = register_npcx_project
 
     kconfig_files = [here / "prj.conf"]
@@ -55,6 +57,7 @@ register_intelrvp_project(
     extra_kconfig_files=[here / "adlrvp/adlrvp_npcx/prj.conf"],
 )
 
+
 register_intelrvp_project(
     project_name="mtlrvpp_npcx",
     chip="npcx9",
@@ -67,4 +70,19 @@ register_intelrvp_project(
         here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
     ],
     extra_kconfig_files=[here / "mtlrvp/mtlrvpp_npcx/prj.conf"],
+)
+
+
+register_intelrvp_project(
+    project_name="adlrvp_mchp",
+    chip="mec1727",
+    extra_dts_overlays=[
+        here / "adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
+        here / "adlrvp/adlrvp_mchp/bb_retimer.dts",
+        here / "adlrvp/adlrvp_mchp/gpio.dts",
+        here / "adlrvp/adlrvp_mchp/interrupts.dts",
+        here / "adlrvp/adlrvp_mchp/keyboard.dts",
+        here / "adlrvp/adlrvp_mchp/usbc.dts",
+    ],
+    extra_kconfig_files=[here / "adlrvp/adlrvp_mchp/prj.conf"],
 )
