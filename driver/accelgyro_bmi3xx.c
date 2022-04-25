@@ -28,10 +28,11 @@
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
 /* Sensor definition */
-STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR) void irq_set_orientation(
-						struct motion_sensor_t *s);
+STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR) \
+	void irq_set_orientation(struct motion_sensor_t *s);
 
-STATIC_IF(CONFIG_ACCEL_FIFO) volatile uint32_t last_interrupt_timestamp;
+STATIC_IF(CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE) \
+	volatile uint32_t last_interrupt_timestamp;
 
 static inline int bmi3_read_n(const struct motion_sensor_t *s, const int reg,
 			      uint8_t *data_ptr, const int len)
@@ -45,7 +46,7 @@ static inline int bmi3_write_n(const struct motion_sensor_t *s, const int reg,
 	return bmi_write_n(s->port, s->i2c_spi_addr_flags, reg, data_ptr, len);
 }
 
-#ifdef CONFIG_ACCEL_INTERRUPTS
+#ifdef CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE
 
 #ifdef CONFIG_BMI_ORIENTATION_SENSOR
 
@@ -99,8 +100,7 @@ static void irq_set_orientation(struct motion_sensor_t *s)
  */
 void bmi3xx_interrupt(enum gpio_signal signal)
 {
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
-		last_interrupt_timestamp = __hw_clock_source_read();
+	last_interrupt_timestamp = __hw_clock_source_read();
 
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCELGYRO_BMI3XX_INT_EVENT);
 }
@@ -222,7 +222,6 @@ static void bmi3_parse_fifo_data(struct motion_sensor_t *s,
 				 uint32_t last_ts)
 {
 	struct bmi_drv_data_t *data = BMI_GET_DATA(s);
-	struct ec_response_motion_sensor_data vect;
 	uint16_t reg_data;
 	intv3_t v;
 	int i;
@@ -283,13 +282,21 @@ static void bmi3_parse_fifo_data(struct motion_sensor_t *s,
 
 				rotate(v, *sens_output->rot_standard_ref, v);
 
-				vect.data[X] = v[X];
-				vect.data[Y] = v[Y];
-				vect.data[Z] = v[Z];
-				vect.flags = 0;
-				vect.sensor_num = sens_output - motion_sensors;
-				motion_sense_fifo_stage_data(&vect,
-						sens_output, 3, last_ts);
+				if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+					struct ec_response_motion_sensor_data vect;
+
+					vect.data[X] = v[X];
+					vect.data[Y] = v[Y];
+					vect.data[Z] = v[Z];
+					vect.flags = 0;
+					vect.sensor_num = sens_output -
+						motion_sensors;
+					motion_sense_fifo_stage_data(&vect,
+							sens_output, 3,
+							last_ts);
+				} else {
+					motion_sense_push_raw_xyz(sens_output);
+				}
 			}
 		}
 	}
@@ -363,7 +370,7 @@ static int irq_handler(struct motion_sensor_t *s,
 
 	return EC_SUCCESS;
 }
-#endif /* CONFIG_ACCEL_INTERRUPTS */
+#endif /* CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE */
 
 static int read_temp(const struct motion_sensor_t *s, int *temp_ptr)
 {
@@ -978,7 +985,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
 		if (rate == 0) {
 			/* FIFO stop collecting events */
-			if (IS_ENABLED(CONFIG_ACCEL_FIFO))
+			if (IS_ENABLED(CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE))
 				ret = enable_fifo(s, 0);
 
 			/*
@@ -1002,7 +1009,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	} else if (s->type == MOTIONSENSE_TYPE_GYRO) {
 		if (rate == 0) {
 			/* FIFO stop collecting events */
-			if (IS_ENABLED(CONFIG_ACCEL_FIFO))
+			if (IS_ENABLED(CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE))
 				ret = enable_fifo(s, 0);
 
 			/*
@@ -1040,7 +1047,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	 * If rate is non zero, FIFO start collecting events.
 	 * They will be discarded if AP does not want them.
 	 */
-	if (rate > 0)
+	if (IS_ENABLED(CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE) && (rate > 0))
 		ret = enable_fifo(s, 1);
 
 	mutex_unlock(s->mutex);
@@ -1216,7 +1223,7 @@ static int init(struct motion_sensor_t *s)
 		RETURN_ERROR(bmi3_write_n(s, BMI3_REG_FEATURE_ENGINE_GLOB_CTRL,
 					  reg_data, 2));
 
-		if (IS_ENABLED(CONFIG_ACCEL_INTERRUPTS))
+		if (IS_ENABLED(CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE))
 			RETURN_ERROR(config_interrupt(s));
 	}
 
@@ -1247,7 +1254,7 @@ const struct accelgyro_drv bmi3xx_drv = {
 	.get_offset = get_offset,
 	.perform_calib = perform_calib,
 	.read_temp = read_temp,
-#ifdef CONFIG_ACCEL_INTERRUPTS
+#ifdef CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE
 	.irq_handler = irq_handler,
 #endif
 #ifdef CONFIG_BODY_DETECTION
