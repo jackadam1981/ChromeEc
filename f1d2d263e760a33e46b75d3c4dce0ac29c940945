@@ -46,6 +46,30 @@
       },
       "revId": "f1d2d263e760a33e46b75d3c4dce0ac29c940945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2abdc2_0c4f8acb",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-25T17:42:23Z",
+      "side": 1,
+      "message": "The original else clause equals to:\n    } else {\n        if (isl923x_set_hw_ramp(chgnum, 0))\n            goto init_fail;\n    }\n    \nThis CL adds the call to the if clause (better to have the same error handling), i.e.\n    if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW)) {\n        if (isl923x_set_hw_ramp(chgnum, 0))\n            goto init_fail;\n        ...\n    } else {\n    \nAccording to the distributive law, the new if check can be moved out and the else clause becomes empty and can be removed:\n\n    if (isl923x_set_hw_ramp(chgnum, 0))\n        goto init_fail;\n    if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW)) {\n        ...\n    }",
+      "parentUuid": "14683c5c_d58f3cde",
+      "range": {
+        "startLine": 625,
+        "startChar": 2,
+        "endLine": 625,
+        "endChar": 33
+      },
+      "revId": "f1d2d263e760a33e46b75d3c4dce0ac29c940945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
