@@ -80,9 +80,6 @@ static int cros_system_it8xxx2_get_reset_cause(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
-	/* system reset flag */
-	uint32_t system_flags = chip_read_reset_flags();
-	int chip_reset_cause = 0;
 	uint8_t raw_reset_cause = gctrl_base->GCTRL_RSTS & IT8XXX2_GCTRL_LRS;
 	uint8_t raw_reset_cause2 = gctrl_base->GCTRL_SPCTRL4 &
 		(IT8XXX2_GCTRL_LRSIWR | IT8XXX2_GCTRL_LRSIPWRSWTR |
@@ -93,28 +90,15 @@ static int cros_system_it8xxx2_get_reset_cause(const struct device *dev)
 	gctrl_base->GCTRL_SPCTRL4 |= (IT8XXX2_GCTRL_LRSIWR |
 		IT8XXX2_GCTRL_LRSIPWRSWTR | IT8XXX2_GCTRL_LRSIPGWR);
 
-	/* Determine if watchdog reset or power on reset. */
-	if (raw_reset_cause & IT8XXX2_GCTRL_IWDTR) {
-		system_flags |= EC_RESET_FLAG_WATCHDOG;
-		chip_reset_cause = WATCHDOG_RST;
-	} else if (raw_reset_cause < 2) {
-		system_flags |= EC_RESET_FLAG_POWER_ON;
-		chip_reset_cause = POWERUP;
+	if (raw_reset_cause == 0 || raw_reset_cause == 1) {
+		/* VSTBY power-up reset or warm reset */
+		return POWERUP;
+	} else if  (raw_reset_cause2 & IT8XXX2_GCTRL_LRSIWR) {
+		return VCC1_RST_PIN;
+	} else if (raw_reset_cause & IT8XXX2_GCTRL_IWDTR) {
+		return WATCHDOG_RST;
 	}
-	/* Determine reset-pin reset. */
-	if (raw_reset_cause2 & IT8XXX2_GCTRL_LRSIWR) {
-		system_flags |= EC_RESET_FLAG_RESET_PIN;
-		chip_reset_cause = VCC1_RST_PIN;
-	}
-
-	/* watchdog module triggers these reset */
-	if (system_flags & (EC_RESET_FLAG_HARD | EC_RESET_FLAG_SOFT))
-		system_flags &= ~EC_RESET_FLAG_WATCHDOG;
-
-	/* Set the system reset flags. */
-	system_set_reset_flags(system_flags);
-
-	return chip_reset_cause;
+	return UNKNOWN_RST;
 }
 
 static int cros_system_it8xxx2_init(const struct device *dev)
