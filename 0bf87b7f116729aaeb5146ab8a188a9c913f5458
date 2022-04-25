@@ -16,6 +16,24 @@
       "message": "Could you please describe more detail of this feature in the bug? The S5 does only keep 10s and then the system will enter to the G3. Not quite sure what is the power share in S5 state feature here.",
       "revId": "0bf87b7f116729aaeb5146ab8a188a9c913f5458",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "791d5455_c98b83fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-04-25T11:51:49Z",
+      "side": 1,
+      "message": "On AC --\u003e USB PowerShare charging in S3/S4/S5/G3\nOn battery --\u003e USB PowerShare charging in S3, S4/S5/G3 is not supported.",
+      "parentUuid": "80482fa2_67c63cd0",
+      "revId": "0bf87b7f116729aaeb5146ab8a188a9c913f5458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
