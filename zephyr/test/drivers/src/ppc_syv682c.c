@@ -713,5 +713,5 @@ ZTEST(ppc_syv682c, test_syv682x_i2c_error_control_4)
 	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 }
 
-ZTEST_SUITE(ppc_syv682c, drivers_predicate_post_main, NULL, NULL,
+ZTEST_SUITE(ppc_syv682c, drivers_predicate_pre_main, NULL, NULL,
 	    syv682x_test_after, NULL);

@@ -231,6 +231,7 @@ static int syv682x_vbus_source_enable(int port, int enable)
 	return EC_SUCCESS;
 }
 
+#pragma clang optimize off
 /* Filter interrupts with rising edge trigger */
 static bool syv682x_interrupt_filter(int port, int regval, int regmask,
 				     int flagmask)
@@ -245,6 +246,7 @@ static bool syv682x_interrupt_filter(int port, int regval, int regmask,
 	}
 	return false;
 }
+#pragma clang optimize on
 
 /*
  * Two status registers can trigger the ALERT_L pin, STATUS and CONTROL_4
@@ -350,6 +352,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 	 * On first check, set the flag and set the timer. This also clears the
 	 * flag if the OC is gone.
 	 */
+#pragma clang optimize off
 	if (syv682x_interrupt_filter(port, regval, SYV682X_CONTROL_4_VCONN_OCP,
 				     SYV682X_FLAGS_VCONN_OCP)) {
 		vconn_oc_timer[port].val =
@@ -366,6 +369,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 
 		ppc_prints("VCONN OC!", port);
 	}
+#pragma clang optimize on
 
 	/*
 	 * On VBAT OVP, CC/VCONN are cut. Re-enable before sending the hard
@@ -523,6 +527,7 @@ static int syv682x_set_polarity(int port, int polarity)
 #endif
 
 #ifdef CONFIG_USBC_PPC_VCONN
+#pragma clang optimize off
 static int syv682x_set_vconn(int port, int enable)
 {
 	int regval;
@@ -549,6 +554,7 @@ static int syv682x_set_vconn(int port, int enable)
 
 	return write_reg(port, SYV682X_CONTROL_4_REG, regval);
 }
+#pragma clang optimize off
 #endif
 
 #ifdef CONFIG_CMD_PPC_DUMP
