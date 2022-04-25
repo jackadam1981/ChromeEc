@@ -68,9 +68,6 @@
  */
 #undef CONFIG_ACCEL_FORCE_MODE_MASK
 
-/* Enable accelerometer interrupts. */
-#undef CONFIG_ACCEL_INTERRUPTS
-
 /*
  * Support "spoof" mode for sensors.  This allows sensors to have their values
  * spoofed to any arbitrary value.  This is useful for testing.
@@ -6602,6 +6599,44 @@
 #if !defined(CONFIG_ACCEL_FIFO_SIZE) || !defined(CONFIG_ACCEL_FIFO_THRES)
 #error "Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES"
 #endif
+#endif /* CONFIG_ACCEL_FIFO */
+
+/*
+ * Enable sensor interrupt code when needed.
+ */
+#ifdef CONFIG_ACCELGYRO_BMI160_INT_EVENT
+#define CONFIG_ACCELGYRO_BMI160_INT_ENABLE
+#endif
+#ifdef CONFIG_ACCELGYRO_BMI260_INT_EVENT
+#define CONFIG_ACCELGYRO_BMI260_INT_ENABLE
+#endif
+#ifdef CONFIG_ACCELGYRO_BMI3XX_INT_EVENT
+#define CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE
+#endif
+#ifdef CONFIG_ACCELGYRO_ICM426XX_INT_EVENT
+#define CONFIG_ACCELGYRO_ICM426XX_INT_ENABLE
+#endif
+#ifdef CONFIG_ACCELGYRO_ICM42607_INT_EVENT
+#define CONFIG_ACCELGYRO_ICM42607_INT_ENABLE
+#endif
+#ifdef CONFIG_ACCEL_LSM6DSM_INT_EVENT
+#define CONFIG_ACCEL_LSM6DSM_INT_ENABLE
+#endif
+#ifdef CONFIG_ACCEL_LSM6DSO_INT_EVENT
+#define CONFIG_ACCEL_LSM6DSO_INT_ENABLE
+#endif
+#ifdef CONFIG_ACCEL_LIS2DS_INT_EVENT
+#define CONFIG_ACCEL_LIS2DS_INT_ENABLE
+#endif
+#ifdef CONFIG_ACCEL_LIS2DW12_INT_EVENT
+#define CONFIG_ACCEL_LIS2DW12_INT_ENABLE
+#endif
+#ifdef CONFIG_ALS_SI114X_INT_EVENT
+#define CONFIG_ALS_SI114X_INT_ENABLE
+#endif
+#ifdef CONFIG_ALS_TCS3400_INT_EVENT
+#define CONFIG_ALS_TCS3400_INT_ENABLE
+#endif
 
 #ifndef CONFIG_TEMP_CACHE_STALE_THRES
 #ifdef CONFIG_ONLINE_CALIB
@@ -6619,7 +6654,6 @@
 #endif /* CONFIG_ONLINE_CALIB */
 #endif /* !CONFIG_TEMP_CACHE_STALE_THRES */
 
-#endif /* CONFIG_ACCEL_FIFO */
 
 
 /*
