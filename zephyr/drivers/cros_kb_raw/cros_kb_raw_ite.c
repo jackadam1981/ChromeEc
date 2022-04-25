@@ -159,6 +159,11 @@ static int cros_kb_raw_ite_init(const struct device *dev)
 	/* Ensure top-level interrupt is disabled */
 	cros_kb_raw_ite_enable_interrupt(dev, 0);
 
+	/* Set KSI[7:0], KSO[15:8] and KSO[7:0] pins to KBS mode */
+	inst->KBS_KSIGCTRL = IT8XXX2_KBS_KSI_KBS;
+	inst->KBS_KSOHGCTRL = IT8XXX2_KBS_KSOH_KBS;
+	inst->KBS_KSOLGCTRL = IT8XXX2_KBS_KSOL_KBS;
+
 	/*
 	 * bit2, Setting 1 enables the internal pull-up of the KSO[15:0] pins.
 	 * To pull up KSO[17:16], set the GPCR registers of their
