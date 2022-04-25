@@ -198,8 +198,8 @@ void body_detect(void)
 	uint64_t motion_var;
 	int motion_confidence;
 
-	if (!body_detect_enable)
-		return;
+	//if (!body_detect_enable)
+	//	return;
 
 	update_motion_variance();
 	if (!history_initialized) {
