@@ -131,6 +131,30 @@
       },
       "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f63ad6_31dd5f18",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4209,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-25T21:59:24Z",
+      "side": 1,
+      "message": "I don\u0027t see the timer getting started in this case?  \n\nWe\u0027ve hit discussions with this in the past regarding how the spec doesn\u0027t include any contingencies when transmitting doesn\u0027t succeed.  The majority of the time when we see this come up is when we\u0027re a sink and the source isn\u0027t permitting us to start an AMS.  In this case, since we\u0027re not starting an AMS we should be relatively safe assuming we can transmit.  \n\nThough if we receive a message and hit a discard, that would be an interruption to a non-interruptible AMS which has its own required treatment (see Table 6-72 Response to an incoming Message (except VDM))",
+      "parentUuid": "82886938_68f77107",
+      "range": {
+        "startLine": 4209,
+        "startChar": 2,
+        "endLine": 4209,
+        "endChar": 26
+      },
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
