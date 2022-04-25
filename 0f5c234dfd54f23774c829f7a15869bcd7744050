@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "869dca99_e41ede40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-25T21:52:58Z",
+      "side": 1,
+      "message": "Would we need to run testing for this on a set of platforms including Intel and ARM representation since this is changing code common to most of our platforms? ",
+      "revId": "0f5c234dfd54f23774c829f7a15869bcd7744050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca44ae9b_e688dccc",
