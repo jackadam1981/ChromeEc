@@ -35,7 +35,7 @@ enum led_color {
 	LED_OFF = 0,
 	LED_RED,
 	LED_GREEN,
-
+	LED_ORANGE,
 	/* Number of colors, not a color itself */
 	LED_COLOR_COUNT
 };
@@ -56,6 +56,10 @@ static int set_color_power(enum led_color color, int duty)
 		break;
 	case LED_RED:
 		red = 1;
+		break;
+	case LED_ORANGE:
+		red = 1;
+		green = 1;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
@@ -186,7 +190,7 @@ void led_alert(int enable)
 {
 	if (enable) {
 		/* Overwrite the current signal */
-		config_tick(1 * SECOND, 100, LED_RED);
+		config_tick(1 * SECOND, 100, LED_RED | LED_GREEN);
 		led_tick();
 	} else {
 		/* Restore the previous signal */
