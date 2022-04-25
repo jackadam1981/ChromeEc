@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30bd5d10_958c4f91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-04-25T22:13:53Z",
+      "side": 1,
+      "message": "It would be good to get a test on an Intel platform. I don\u0027t think ARM uses eSPI.",
+      "parentUuid": "869dca99_e41ede40",
+      "revId": "0f5c234dfd54f23774c829f7a15869bcd7744050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca44ae9b_e688dccc",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1021b578_df124dd8",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-04-25T22:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca44ae9b_e688dccc",
+      "revId": "0f5c234dfd54f23774c829f7a15869bcd7744050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c2f4175_c705f90e",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-04-25T13:50:02Z",
       "side": 1,
       "message": "nit: extra indent",
+      "revId": "0f5c234dfd54f23774c829f7a15869bcd7744050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "662c009d_2d11493a",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-04-25T22:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c2f4175_c705f90e",
       "revId": "0f5c234dfd54f23774c829f7a15869bcd7744050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
