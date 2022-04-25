@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d546caa_ee9fd6aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2022-04-25T06:39:34Z",
+      "side": 1,
+      "message": "Please follow https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/led_pwm.c#294\n\nWe\u0027ve had amber as pre-defined. Thanks!",
+      "revId": "75af569bac3b284083088810450d8ff650e41548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
