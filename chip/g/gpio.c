@@ -8,6 +8,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 
 /*
@@ -35,10 +36,42 @@ static void set_one_gpio_bit(uint32_t port, uint16_t mask, int value)
 		GR_GPIO_MASKHIGHBYTE(port, mask >> 8) = value ? mask : 0;
 }
 
+static uint32_t gpio_sleepmask;
+
+static void gpio_control_sleep(enum gpio_signal signal, int enable)
+{
+#ifdef CONFIG_GPIO_DISABLE_SLEEP
+	/* There are only 32 gpios, so this shouldn't be possible. */
+	if (signal > 31)
+		return;
+
+	if (enable) {
+		gpio_sleepmask |= BIT(signal);
+		disable_sleep(SLEEP_MASK_GPIO);
+	} else if (gpio_sleepmask & BIT(signal)) {
+		gpio_sleepmask &= ~BIT(signal);
+		if (!gpio_sleepmask) {
+			enable_sleep(SLEEP_MASK_GPIO);
+			/* Give extra time for activity to finish up.
+			 * These signals are rarely asserted, so 10 seconds
+			 * won't affect normal activity.
+			 */
+			delay_sleep_by(10 * SECOND);
+		}
+	}
+#endif /* CONFIG_GPIO_DISABLE_SLEEP */
+}
+
 void gpio_set_level(enum gpio_signal signal, int value)
 {
 	const struct gpio_info *g = gpio_list + signal;
 
+	if (g->flags & GPIO_OUTPUT && g->flags & GPIO_KEEP_ACTIVE) {
+		if (g->flags & GPIO_HIGH)
+			gpio_control_sleep(signal, !value);
+		else if (g->flags & GPIO_LOW)
+			gpio_control_sleep(signal, value);
+	}
 	if (g->flags & GPIO_OPEN_DRAIN) {
 		if (value) {
 			GR_GPIO_CLRDOUTEN(g->port) = g->mask;
@@ -613,6 +646,8 @@ static int command_gpiocfg(int argc, char **argv)
 {
 	show_gpiocfg(0);
 	show_gpiocfg(1);
+
+	ccprintf("\ngpio sleepmask: %08x\n", gpio_sleepmask);
 
 	return EC_SUCCESS;
 }
