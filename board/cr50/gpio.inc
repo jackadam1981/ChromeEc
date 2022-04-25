@@ -155,7 +155,7 @@ GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW)
  * If this gpio is changed, you must update the AP_FLASH_SELECT pinmux
  * setup in board.c accordingly.
  */
-GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_OUT_LOW)
+GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_OUT_LOW | GPIO_KEEP_ACTIVE)
 
 /*
  * Pull this low to reset the AP. (We reset the EC with the RBOX.)
