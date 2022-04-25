@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00119ae6_ecd9195a",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-25T21:50:38Z",
+      "side": 1,
+      "message": "bool?",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 10
+      },
+      "revId": "b3a5a13e44ea83c0c7dd14c14be0a1185e5df4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9615ddf6_0111dff9",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-25T21:50:38Z",
+      "side": 1,
+      "message": "Is the ordering here specific?  Ex. is it important that we send that resume IRQ  above but stop just shy of trying to actually send the char?\n\nAnd I suppose why is it we\u0027re choosing to break rather than continue?",
+      "revId": "b3a5a13e44ea83c0c7dd14c14be0a1185e5df4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
