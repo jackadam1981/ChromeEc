@@ -49,6 +49,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06a2a45f_8a57eb14",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-26T20:37:51Z",
+      "side": 1,
+      "message": "How about re-enabling on physical charger disconnection?  There could be hypothetical problems with CC line stability that would charge cycle with \"disconnect\" detected periodically, but you\u0027d be covered for more common scenarios like hard reset cycling on the PD connection. \n\nThe alternative would be letting the OS clear it via host command once we\u0027ve had a sufficiently stable boot or similar. Waiting until EC reset just seems somewhat confusing for customers who plug in a bad charger once.\n\nOr I suppose you could keep a count within a certain time window.  So many options",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466225da_5bfe68c1",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-26T20:37:51Z",
+      "side": 1,
+      "message": "If the user chose to keep the system on, would this cause the wake to register in the event log as a power button press rather than AC insert?",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "308a65e9_31c40ed2",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-26T20:37:51Z",
+      "side": 1,
+      "message": "I guess as a note, this will only detect PD sources we decided to charge from.  But I think that\u0027s what you\u0027re going for on the feature.  So if someone plugs in their pixel phone, we won\u0027t show the chargesplash because we won\u0027t try to charge from it",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "255a8f87_abaedd6f",
         "filename": "common/chargesplash.c",
         "patchSetId": 4
@@ -66,6 +117,47 @@
         "endLine": 81,
         "endChar": 10
       },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fbf5486_50be1816",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-26T20:37:51Z",
+      "side": 1,
+      "message": "Are we supposed to actually fully wake on AC connection?  Or is there a PM\u0027s wake source can of worms around here somewhere?",
+      "parentUuid": "255a8f87_abaedd6f",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e315b5e_1a1f3f2e",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-26T20:37:51Z",
+      "side": 1,
+      "message": "This is probably a naive question, but is a forced shutdown more risky than a more ordered shutdown?  I\u0027m only familiar with force shutdown from extreme cases (ex. losing required power rails, extreme temperature, AP perpetually stuck in a half-suspended state...)",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +232,40 @@
       "writtenOn": "2022-04-26T20:09:25Z",
       "side": 1,
       "message": "nit: maybe also log that we started frecon here. But maybe frecon does its own logging so it might not matter.",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39edfe78_c1be2d26",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-26T20:37:51Z",
+      "side": 1,
+      "message": "So this is part ectool command and part frecon running?  Is this the long-term plan for this util file, or the short-term easy way to build and test?",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73bb7fa_9fbedeb7",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-26T20:37:51Z",
+      "side": 1,
+      "message": "nit: currently, it also manipulates the chargesplash related parameters.",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
