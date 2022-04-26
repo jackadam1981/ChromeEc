@@ -910,6 +910,9 @@ int tcpm_enqueue_message(const int port)
 		return rv;
 	}
 
+	if (pd_is_bist_test_mode_enabled(port))
+		return rv;
+
 	/* Increment atomically to ensure get_message_raw happens-before */
 	atomic_add(&q->head, 1);
 
