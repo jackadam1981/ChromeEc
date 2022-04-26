@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb94a0e7_bfdb3691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-26T04:18:06Z",
+      "side": 1,
+      "message": "Added Tim, who originally wrote this driver.",
+      "parentUuid": "4d06856f_3aa2810a",
+      "revId": "9fde9a8138584bf5ecfca9a51473dc59cee5df28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f240b318_0324911d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-26T01:09:49Z",
       "side": 1,
       "message": "So I had to dig a big to understand what this is doing. Since raw_reset_cause is a 2 bit value, essentially this is checking whether IT8XXX2_GCTRL_IWDTR is clear.\nMaybe the logic should be:\n if (raw_reset_cause \u0026 IT8XXX2_GCTRL_IWDTR) {\n     ...\n } else {\n     chip_reset_cause \u003d (raw_reset_cause2 \u0026 IT8XXX2_GCTRL_LRSIWR) ?\n            VCC1_RST_PIN : POWERUP;\n }",
+      "revId": "9fde9a8138584bf5ecfca9a51473dc59cee5df28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8940f4_9a0475be",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-26T04:18:06Z",
+      "side": 1,
+      "message": "I revisited the priority, and decided it makes more sense to prefer power on since it makes more sense to prefer the most fundamental reset if there are multiple options.\n\nI\u0027ve reordered these and added a note to this branch that refers to the description of the LRS field in the datasheet.",
+      "parentUuid": "f240b318_0324911d",
       "revId": "9fde9a8138584bf5ecfca9a51473dc59cee5df28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
