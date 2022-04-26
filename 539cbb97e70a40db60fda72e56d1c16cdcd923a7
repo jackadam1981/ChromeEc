@@ -16,6 +16,24 @@
       "message": "These checks on the driver call make sense to me, but I might consider them to be peeking too far under the hood. Are they to make sure that the host command didn\u0027t fail for some other, unrelated reason?",
       "revId": "539cbb97e70a40db60fda72e56d1c16cdcd923a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dccecf48_2272f8c5",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-26T17:47:43Z",
+      "side": 1,
+      "message": "Making sure that the host command actually enabled the calibration for the driver. Otherwise there\u0027s no way to verify the other end of the call. Alternatively, we could emulate the calibration logic (but we get into a lot of other issues here). The biggest issue with emulation is that none of the chips we currently have emulation for actually have a calibration feature so we\u0027d need to implement a new emulator from scratch which is out of scope for the current effort.",
+      "parentUuid": "1ad500b7_451628f5",
+      "revId": "539cbb97e70a40db60fda72e56d1c16cdcd923a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
