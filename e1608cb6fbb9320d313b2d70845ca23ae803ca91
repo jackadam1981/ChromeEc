@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a251bdd_5c03225d",
+        "filename": "zephyr/projects/intelrvp/include/intelrvp.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-26T16:47:38Z",
+      "side": 1,
+      "message": "remove, already available",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "e1608cb6fbb9320d313b2d70845ca23ae803ca91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a649fa4_0a16ebe7",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-26T16:47:38Z",
+      "side": 1,
+      "message": "nit: arrange alphabetically",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "e1608cb6fbb9320d313b2d70845ca23ae803ca91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f6ddd8_da39e5c8",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-26T16:47:38Z",
+      "side": 1,
+      "message": "remove, instead use pre-task init function",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 79
+      },
+      "revId": "e1608cb6fbb9320d313b2d70845ca23ae803ca91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e82ac54_72004d07",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/usbc.dts",
+        "patchSetId": 21
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-26T16:47:38Z",
+      "side": 1,
+      "message": "use tabs",
+      "revId": "e1608cb6fbb9320d313b2d70845ca23ae803ca91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44797a40_cb618715",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-26T16:47:38Z",
+      "side": 1,
+      "message": "arrange alphabetically",
+      "revId": "e1608cb6fbb9320d313b2d70845ca23ae803ca91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0147f1_1a4eaa77",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-26T16:47:38Z",
+      "side": 1,
+      "message": "arrange alphabetically",
+      "revId": "e1608cb6fbb9320d313b2d70845ca23ae803ca91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
