@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a193b4c_253dcebc",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-26T18:01:46Z",
+      "side": 1,
+      "message": "Should this be `int max_len, int *out_len` or `int max_len, int *read_len`?",
+      "revId": "b52096d96d39d270a8b59dbd562aff476d817868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
