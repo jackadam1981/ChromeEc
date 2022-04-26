@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee80789_d873d13c",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-26T16:46:53Z",
+      "side": 1,
+      "message": "perhaps this wrapper should actually go into `zmake/__main__.py` now?\n\n```\n    zmake \u003d call_with_namespace(zm.Zmake, opts)\n    try:\n        subcommand_method \u003d getattr(zmake, opts.subcommand.replace(\"-\", \"_\"))\n        result \u003d call_with_namespace(subcommand_method, opts)\n        wait_rv \u003d zmake.executor.wait()\n        return result or wait_rv\n    finally:\n        multiproc.LogWriter.wait_for_log_end()\n        if zmake.failed_projects:\n            logging.error(...)\n```\n\nthis eliminates any duplication, and all the re-indenting too",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 74
+      },
+      "revId": "8b66871777f70bf7bec7227f1851465628027d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
