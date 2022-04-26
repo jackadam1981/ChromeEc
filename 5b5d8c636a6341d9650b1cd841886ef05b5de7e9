@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b585c0f4_7a54bcc4",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-26T19:16:26Z",
+      "side": 1,
+      "message": "make buildall fails without this. disable_sleep_by isn\u0027t defined by some of the private boards. I don\u0027t think it\u0027s a big deal to keep the config option.",
+      "parentUuid": "e050694a_98568568",
+      "revId": "5b5d8c636a6341d9650b1cd841886ef05b5de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a85e61e_77928b3a",
         "filename": "chip/g/gpio.c",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-26T18:29:13Z",
       "side": 1,
       "message": "BIT(signal) is calculated multiple times, could be cached in a local variable.",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "5b5d8c636a6341d9650b1cd841886ef05b5de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6235334_5b276ef4",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-26T19:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a85e61e_77928b3a",
       "range": {
         "startLine": 49,
         "startChar": 20,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5e31a2_a2e44fa3",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-26T19:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baffe205_6bfa7d8b",
+      "revId": "5b5d8c636a6341d9650b1cd841886ef05b5de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "075355a2_8f74b565",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-04-26T18:29:13Z",
       "side": 1,
       "message": "I always thought that this bit just shows the original state of the GPIO during initialization, not the active state.\n\nNot all GPIOs in gpio.inc have either GPIO_HIGH or GPIO_LOW bit set.\n\nMaybe two new bits should be defined: SLEEP_MASK_GPIO_LOW and SLEEP_MASK_GPIO_HIGH?",
+      "range": {
+        "startLine": 70,
+        "startChar": 6,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "5b5d8c636a6341d9650b1cd841886ef05b5de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaaa67c0_29d0a4ce",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-26T19:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075355a2_8f74b565",
       "range": {
         "startLine": 70,
         "startChar": 6,

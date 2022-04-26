@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba109994_2ac76e6d",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-26T19:16:26Z",
+      "side": 1,
+      "message": "Do you think this is confusing?\n\nI feel like it\u0027s ok. The SLEEP_DIS flag should be the inverse of the OUT flag.",
+      "range": {
+        "startLine": 159,
+        "startChar": 33,
+        "endLine": 159,
+        "endChar": 67
+      },
+      "revId": "64438f2b76966a4efb47d2e4730ddebafaaa432b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
