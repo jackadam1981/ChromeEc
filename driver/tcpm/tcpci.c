@@ -1028,6 +1028,16 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 static int register_mask_reset(int port)
 {
 	int mask;
+	bool bist_mode;
+
+	/*
+	 * Some TCPCs do not properly disable interrupts during BIST test mode.
+	 * As TCPC not reset at this moment, just return 0 to reduce I2C access
+	 * time.(see b/229812911)
+	 */
+	tcpc_get_bist_test_mode(port, &bist_mode);
+	if (bist_mode)
+		return 0;
 
 	mask = 0;
 	tcpc_read16(port, TCPC_REG_ALERT_MASK, &mask);
@@ -1192,6 +1202,7 @@ void tcpci_tcpc_alert(int port)
 	int failed_attempts;
 	uint32_t pd_event = 0;
 	int retval = 0;
+	bool bist_mode;
 
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {
@@ -1226,6 +1237,16 @@ void tcpci_tcpc_alert(int port)
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		/*
+		 * Some TCPCs do not properly disable interrupts during BIST
+		 * test mode. For reducing I2C access time,
+		 * there is no need to read out BIST data, just break.
+		 * (see b/229812911).
+		 */
+		tcpc_get_bist_test_mode(port, &bist_mode);
+		if (bist_mode)
+			break;
+
 		retval = tcpm_enqueue_message(port);
 		if (retval)
 			++failed_attempts;
