@@ -18,6 +18,7 @@ struct pwrseq_context {
 	enum power_states_ndsx power_state;
 	/* Indicate should exit G3 power state or not */
 	bool want_g3_exit;
+	uint64_t reboot_ap_at_g3_delay;
 
 };
 
