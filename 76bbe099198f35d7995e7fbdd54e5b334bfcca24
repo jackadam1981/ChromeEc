@@ -148,6 +148,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda2ed2e_0e40c52a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-26T05:16:10Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "9b7e67ba_56534494",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 32
+      },
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13aed1cf_e62f1e30",
