@@ -99,6 +99,9 @@ static const char * const ctrl_msg_name[] = {
 	[PD_CTRL_FR_SWAP]		= "C-FR_SWAP",
 	[PD_CTRL_GET_PPS_STATUS]	= "C-GET_PPS_STATUS",
 	[PD_CTRL_GET_COUNTRY_CODES]	= "C-GET_COUNTRY_CODES",
+	[PD_CTRL_GET_SINK_CAP_EXT]	= "C-GET_SINK_CAP_EXT",
+	[PD_CTRL_GET_SOURCE_INFO]	= "C-GET_SOURCE_INFO",
+	[PD_CTRL_GET_REVISION]		= "C-GET_REVISION",
 };
 
 static const char * const data_msg_name[] = {
@@ -113,6 +116,10 @@ static const char * const data_msg_name[] = {
 	[PD_DATA_GET_COUNTRY_INFO]	= "D-GET_COUNTRY_CODES",
 	/* 8-14 Reserved for REV 3.0 */
 	[PD_DATA_ENTER_USB]		= "D-ENTER_USB",
+	[PD_DATA_EPR_REQUEST]		= "D-EPR_REQUEST",
+	[PD_DATA_EPR_MODE]		= "D-EPR_MODE",
+	[PD_DATA_SOURCE_INFO]		= "D-EPR_SOURCE_INFO",
+	[PD_DATA_REVISION]		= "D-REVISION",
 	[PD_DATA_VENDOR_DEF]		= "D-VDM",
 };
 
