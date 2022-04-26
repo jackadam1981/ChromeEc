@@ -159,6 +159,31 @@ void rsmrst_pass_thru_handler(void)
 	}
 }
 
+static enum ec_status
+host_command_reboot_ap_on_g3(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_reboot_ap_on_g3_v1 *cmd = args->params;
+
+	/* Store request for processing at g3 */
+	request_exit_hardoff(true);
+
+	switch (args->version) {
+	case 0:
+		break;
+	case 1:
+		/* Store user specified delay to wait in G3 state */
+		pwrseq_ctx.reboot_ap_at_g3_delay = cmd->reboot_ap_at_g3_delay;
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_REBOOT_AP_ON_G3,
+		     host_command_reboot_ap_on_g3,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
+
 /* TODO:
  * Add power down sequence
  * Add S0ix
@@ -168,7 +193,20 @@ static int common_pwr_sm_run(int state)
 	switch (state) {
 	case SYS_POWER_STATE_G3:
 		if (chipset_is_exit_hardoff()) {
+			uint64_t i;
 			request_exit_hardoff(false);
+			pwrseq_ctx.reboot_ap_at_g3_delay =
+					pwrseq_ctx.reboot_ap_at_g3_delay * MSEC;
+			/*
+			 * G3->S0 transition should happen only after the
+			 * user specified delay. Hence, wait until the
+			 * user specified delay times out.
+			 */
+			for (i = 0; i < pwrseq_ctx.reboot_ap_at_g3_delay;
+					i += 100)
+				k_msleep(100);
+			pwrseq_ctx.reboot_ap_at_g3_delay = 0;
+
 			return SYS_POWER_STATE_G3S5;
 		}
 
