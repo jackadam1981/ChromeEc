@@ -1133,6 +1133,7 @@ struct ec_response_hello {
 
 /* Get version number */
 #define EC_CMD_GET_VERSION 0x0002
+#define EC_CMD_GET_SENSOR_INFO 0x002F
 
 #if !defined(CHROMIUM_EC) && !defined(__KERNEL__)
 /*
@@ -1189,6 +1190,16 @@ struct ec_response_get_version_v1 {
 
 /* Read test */
 #define EC_CMD_READ_TEST 0x0003
+
+struct ec_response_get_sensor_info {
+	uint64_t motion_var1;
+	int motion_confidence1;
+	int upper_threshold;
+	int down_threshold;
+} __ec_align_size1;
+struct ec_params_get_sensor_info {
+	uint8_t index;
+} __ec_align_size1;
 
 /**
  * struct ec_params_read_test - Parameters for the read test command.
