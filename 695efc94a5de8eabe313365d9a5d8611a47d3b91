@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f25ab68c_34e3674d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T17:11:09Z",
+      "side": 1,
+      "message": "Do you plan to rebase this on top of your more recent Status CL?",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94bdfcd3_94cb9187",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4309,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T17:11:09Z",
+      "side": 1,
+      "message": "Keep the fields in offset order?",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7b428e_1e8a1e39",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4310,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T17:11:09Z",
+      "side": 1,
+      "message": "This is ~50 lines of code and comments, and it looks like the other Status fields are approximately this complicated. Would it make sense to have a function for each one?",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0fe69a1_e6510004",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
