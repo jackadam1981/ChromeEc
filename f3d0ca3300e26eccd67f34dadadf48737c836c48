@@ -16,6 +16,29 @@
       "message": "Won\u0027t this be always the case, since this can only get here if raw_reset_cause is either 2 or 3?\nIf so, this check is redundant, and you can just have:\n} else {\n   return WATCHDOG_RST;\n}",
       "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7896bc1a_9255a6e2",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-04-26T11:13:47Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/keyboard_scan.c#749\nIn this example, when the system reboots, the chip can get power-on and reset-pin reset causes simultaneously. If we want the condition of reset source to be successfully matched with the reset-pin cause, the VCC1_RST_PIN must be reported.\n\nBut with such a change, we can only get the power-on reset cause instead of having all the reset causes simultaneously. That\u0027s why we need to store system_flags here.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
