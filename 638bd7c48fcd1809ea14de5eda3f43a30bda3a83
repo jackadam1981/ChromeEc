@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7533d5_16757bb6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2784,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-26T00:29:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d20928c_6049fff9",
+      "range": {
+        "startLine": 2784,
+        "startChar": 0,
+        "endLine": 2784,
+        "endChar": 71
+      },
+      "revId": "638bd7c48fcd1809ea14de5eda3f43a30bda3a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eceb9cbd_119980fd",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "This doesn\u0027t work on cr50. It prints \"Dec 31 69 16:00:00 : 09 07\" forever.\n\nYou shouldn\u0027t need a cr50 dev image. You can run this on any dut from the AP `gsctool -aL`",
       "parentUuid": "eceb9cbd_119980fd",
+      "revId": "638bd7c48fcd1809ea14de5eda3f43a30bda3a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b41a9d3_cc543127",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2883,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2022-04-26T00:29:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00fdbc32_147f7844",
       "revId": "638bd7c48fcd1809ea14de5eda3f43a30bda3a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
