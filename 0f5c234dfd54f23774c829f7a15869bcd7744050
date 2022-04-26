@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f13603_e864be62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-26T20:00:27Z",
+      "side": 1,
+      "message": "Okay, we should probably increase the visibility to some of the Intel EC engineers for review/testing.  It won\u0027t affect any of the bringups going right now, since zephyr won\u0027t be calling the new API.  But it would affect anyone merge-committing from ToT to a FW branch.",
+      "parentUuid": "30bd5d10_958c4f91",
+      "revId": "0f5c234dfd54f23774c829f7a15869bcd7744050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca44ae9b_e688dccc",
