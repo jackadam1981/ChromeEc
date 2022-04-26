@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e75d37c_29bf70c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T17:44:07Z",
+      "side": 1,
+      "message": "Can we make the commit message just a bit more specific like:\n\ntest: Refactor motion_sense/accel fixtures\n\nRefactor some global static fixture definitions to be local to their respective fixture-setup functions to reduce test namespace pollution.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "efe312121ddeb8676c2a949cec7290b0b1a413c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
