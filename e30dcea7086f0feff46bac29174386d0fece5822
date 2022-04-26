@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88ecd023_012c6eff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-26T19:34:41Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "e30dcea7086f0feff46bac29174386d0fece5822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cbb1b38_79bb0ad1",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-04-26T19:29:48Z",
       "side": 1,
       "message": "nit: I think it can remain original as its written mostly by referring other files in Chromium",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 43
+      },
+      "revId": "e30dcea7086f0feff46bac29174386d0fece5822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6871582_f902db0c",
+        "filename": "zephyr/shim/chip/mchp/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-26T19:34:41Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "0cbb1b38_79bb0ad1",
       "range": {
         "startLine": 1,
         "startChar": 12,
