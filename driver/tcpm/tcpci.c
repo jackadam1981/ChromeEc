@@ -1225,6 +1225,17 @@ void tcpci_tcpc_alert(int port)
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		/*
+		 * See PD 3.0 section 6.4.3.2 BIST Test Data:
+		 * With a BIST Test Data BIST Data Object, the UUT Shall return
+		 * a GoodCRC Message and Shall enter a test mode in which it
+		 * sends no further Messages except for GoodCRC Messages in
+		 * response to received Messages.... The test Shall be ended by
+		 * sending Hard Reset Signaling to reset the UUT.
+		 */
+		if (pd_is_bist_test_mode_enabled(port))
+			break;
+
 		retval = tcpm_enqueue_message(port);
 		if (retval)
 			++failed_attempts;
