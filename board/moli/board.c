@@ -84,6 +84,8 @@ int board_set_active_charge_port(int port)
 	switch (port) {
 	case CHARGE_PORT_TYPEC0:
 	case CHARGE_PORT_TYPEC1:
+		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
+		break;
 	case CHARGE_PORT_BARRELJACK:
 		/* Make sure BJ adapter is sourcing power */
 		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL))
@@ -156,7 +158,7 @@ static void adp_connect_deferred(void)
 		return;
 	if (connected) {
 		unsigned int bj = ec_config_get_bj_power();
-
+		bj = 0;
 		pi.voltage = bj_power[bj].voltage;
 		pi.current = bj_power[bj].current;
 	}
