@@ -590,6 +590,17 @@ struct partner_active_modes {
 #define PD_PRODUCT_PID(vdo) (((vdo) >> 16) & 0xffff)
 
 /*
+ * PD Rev 3.1 Revision Message Data Object (RMDO)
+ * Only bits 16-31 have data. A uint_16t is used to hold RMDOs upper 16 bits.
+ */
+#define RMDO_GET_DATA(rmdo) (((rmdo) >> 16) & 0xffff)
+#define RMDO_MAJOR_REV(rmdo) (((rmdo) >> 12) & 0xf)
+#define RMDO_MINOR_REV(rmdo) (((rmdo) >> 8) & 0xf)
+#define RMDO_MAJOR_VER(rmdo) (((rmdo) >> 4) & 0xf)
+#define RMDO_MINOR_VER(rmdo) (((rmdo) >> 0) & 0xf)
+
+
+/*
  * Message id starts from 0 to 7. If last_msg_id is initialized to 0,
  * it will lead to repetitive message id with first received packet,
  * so initialize it with an invalid value 0xff.
@@ -1017,6 +1028,7 @@ enum pd_dpm_request {
 	DPM_REQUEST_FRS_DET_ENABLE		= BIT(21),
 	DPM_REQUEST_FRS_DET_DISABLE		= BIT(22),
 	DPM_REQUEST_DATA_RESET                  = BIT(23),
+	DPM_REQUEST_GET_REVISION                = BIT(24),
 };
 
 /**
@@ -1152,7 +1164,11 @@ enum pd_ctrl_msg_type {
 	PD_CTRL_FR_SWAP = 19,
 	PD_CTRL_GET_PPS_STATUS = 20,
 	PD_CTRL_GET_COUNTRY_CODES = 21,
-	/* 22-31 Reserved */
+	PD_CTRL_GET_SINK_CAP_EXT = 22,
+	/* Used for REV 3.1 */
+	PD_CTRL_GET_SOURCE_INFO = 23,
+	PD_CTRL_GET_REVISION = 24,
+	/* 25-31 Reserved */
 };
 
 /* Control message types which always mark the start of an AMS */
@@ -1231,8 +1247,13 @@ enum pd_data_msg_type {
 	PD_DATA_BATTERY_STATUS = 5,
 	PD_DATA_ALERT = 6,
 	PD_DATA_GET_COUNTRY_INFO = 7,
-	/* 8-14 Reserved for REV 3.0 */
 	PD_DATA_ENTER_USB = 8,
+	/* 9-14 Reserved for REV 3.0 */
+	PD_DATA_EPR_REQUEST = 9,
+	PD_DATA_EPR_MODE = 10,
+	PD_DATA_SOURCE_INFO = 11,
+	PD_DATA_REVISION = 12,
+	/* 13-14 Reserved for REV 3.1 */
 	PD_DATA_VENDOR_DEF = 15,
 };
 
