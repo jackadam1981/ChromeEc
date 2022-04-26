@@ -150,7 +150,7 @@ GPIO(EC_TX_CR50_RX,   PIN(1, 11),  GPIO_INPUT)
 GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
 
 /* Use these to take over the AP & EC flash (only when AP & EC are off!) */
-GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW)
+GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW | GPIO_KEEP_ACTIVE)
 /*
  * If this gpio is changed, you must update the AP_FLASH_SELECT pinmux
  * setup in board.c accordingly.
@@ -221,7 +221,7 @@ GPIO(I2CP_SDA,        PIN(0, 14), GPIO_INPUT)
  * to enable UART programming mode on the EC. The signal needs to fake open
  * drain so it can still be used as the cr50 rx signal when it is deasserted.
  */
-GPIO(EC_TX_CR50_RX_OUT, PIN(0, 15), GPIO_ODR_HIGH)
+GPIO(EC_TX_CR50_RX_OUT, PIN(0, 15), GPIO_ODR_HIGH | GPIO_KEEP_ACTIVE)
 
 /*
  * ENTERING_RW is not a GPIO in H1, but an input pin to RBOX module.
