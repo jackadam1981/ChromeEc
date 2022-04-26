@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8513306_8622b3b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T20:09:25Z",
+      "side": 1,
+      "message": "I\u0027d like to have language like prototype or similar here so that I immediately know from looking at this CL. The \"at least the portion..\" signifies this a bit, but I\u0027d rather the explicit language given the todos to be added.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522199c5_b86d01b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T20:09:25Z",
+      "side": 1,
+      "message": "Add:\nTEST\u003dzmake test test-drivers\nSince you did all that work adding a ztest.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "255a8f87_abaedd6f",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T20:09:25Z",
+      "side": 1,
+      "message": "Should we have a bug here?",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e8bec29_de204d31",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T20:09:25Z",
+      "side": 1,
+      "message": "Need a TODO here.",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 32
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a688213f_49bef90f",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T20:09:25Z",
+      "side": 1,
+      "message": "Should there be a TODO here or is this as it should be handled by the switch statement?",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8371518f_5e82ca57",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T20:09:25Z",
+      "side": 1,
+      "message": "nit: This seems like something we should log, in case we kill the process but it somehow gets restarted?",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38c457b_090334cf",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T20:09:25Z",
+      "side": 1,
+      "message": "nit: maybe also log that we started frecon here. But maybe frecon does its own logging so it might not matter.",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3cb799_f745cf1e",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-04-26T20:09:25Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this have the cros_todo format?\n\n/*\n * TODO(b/Ticket): Description\n */\n\nJust whatever scripts we have can find it easily.",
+      "range": {
+        "startLine": 106,
+        "startChar": 55,
+        "endLine": 106,
+        "endChar": 68
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
