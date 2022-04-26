@@ -1029,6 +1029,9 @@ static int register_mask_reset(int port)
 {
 	int mask;
 
+	if (pd_is_bist_test_mode_enabled(port))
+		return 0;
+
 	mask = 0;
 	tcpc_read16(port, TCPC_REG_ALERT_MASK, &mask);
 	if (mask == TCPC_REG_ALERT_MASK_ALL)
@@ -1200,6 +1203,9 @@ void tcpci_tcpc_alert(int port)
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		if (pd_is_bist_test_mode_enabled(port))
+			break;
+
 		retval = tcpm_enqueue_message(port);
 		if (retval)
 			++failed_attempts;
