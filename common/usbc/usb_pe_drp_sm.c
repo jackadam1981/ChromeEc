@@ -882,6 +882,22 @@ int pe_is_explicit_contract(int port)
 	return PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
 }
 
+int pe_set_bist_test_mode(int port, bool enable)
+{
+	int rv;
+
+	rv = tcpc_set_bist_test_mode(port, enable);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	if (enable)
+		PE_SET_FLAG(port, PE_FLAGS_BIST_TEST_DATA_MODE);
+	else
+		PE_CLR_FLAG(port, PE_FLAGS_BIST_TEST_DATA_MODE);
+
+	return rv;
+}
+
 void pe_message_received(int port)
 {
 	/* This should only be called from the PD task */
@@ -912,7 +928,7 @@ void pe_got_hard_reset(int port)
 	pe[port].power_role = pd_get_power_role(port);
 
 	/* Exit BIST Test mode, in case the TCPC entered it. */
-	tcpc_set_bist_test_mode(port, false);
+	pe_set_bist_test_mode(port, false);
 
 	if (pe[port].power_role == PD_ROLE_SOURCE)
 		set_state_pe(port, PE_SRC_HARD_RESET_RECEIVED);
@@ -1428,7 +1444,7 @@ static void pe_clear_port_data(int port)
 	dpm_remove_source(port);
 
 	/* Exit BIST Test mode, in case the TCPC entered it. */
-	tcpc_set_bist_test_mode(port, false);
+	pe_set_bist_test_mode(port, false);
 }
 
 int pe_set_ado(int port, uint32_t data)
@@ -5254,7 +5270,7 @@ static void pe_bist_tx_entry(int port)
 		 * response to received Messages.... The test Shall be ended by
 		 * sending Hard Reset Signaling to reset the UUT.
 		 */
-		if (tcpc_set_bist_test_mode(port, true) != EC_SUCCESS)
+		if (pe_set_bist_test_mode(port, true) != EC_SUCCESS)
 			CPRINTS("C%d: Failed to enter BIST Test Mode", port);
 	} else {
 		/* Ignore unsupported BIST messages. */
@@ -7818,6 +7834,11 @@ const char *pe_get_current_state(int port)
 		return pe_state_names[get_state_pe(port)];
 	else
 		return "";
+}
+
+bool pd_is_bist_test_mode_enabled(int port)
+{
+	return PE_CHK_FLAG(port, PE_FLAGS_BIST_TEST_DATA_MODE);
 }
 
 uint32_t pe_get_flags(int port)

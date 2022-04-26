@@ -3247,6 +3247,15 @@ enum pd_cc_states pd_get_cc_state(enum tcpc_cc_voltage_status cc1,
  */
 __override_proto uint8_t board_get_src_dts_polarity(int port);
 
+/*
+ * Return true if BIST Test Mode is enabled.
+ *
+ * This function is used for BIST test mode which indicates the TCPM
+ * shall enter a test mode in which it sends no further Messages except for
+ * GoodCRC Messages in response to received Messages.
+ */
+bool pd_is_bist_test_mode_enabled(int port);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
