@@ -123,6 +123,24 @@
       "parentUuid": "2639a9fc_300c4fe7",
       "revId": "736131cc0e1d1265c1eb1b3a26f80ec2ae139ea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74981e04_63662722",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-26T18:43:32Z",
+      "side": 1,
+      "message": "That means this patch doesn\u0027t fix the PLT in S0ix, right? I think it\u0027s ok to use RGB in S0ix and exceed the S0ix goal. I\u0027m thinking of analogy: users expects the S0 battery life to be short if the system is loaded.",
+      "parentUuid": "4909ef04_87ea2f88",
+      "revId": "736131cc0e1d1265c1eb1b3a26f80ec2ae139ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
