@@ -185,6 +185,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3299c1b_2152e19e",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-26T20:56:42Z",
+      "side": 1,
+      "message": "All commands return the current state, meaning that the \"action\" of a GET_STATE command does nothing to the current state.",
+      "parentUuid": "6e8bec29_de204d31",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 32
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a688213f_49bef90f",
@@ -198,6 +222,24 @@
       "writtenOn": "2022-04-26T20:09:25Z",
       "side": 1,
       "message": "Should there be a TODO here or is this as it should be handled by the switch statement?",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "851e3e6e_dc46b7df",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-26T20:56:42Z",
+      "side": 1,
+      "message": "Right now it\u0027s just a GET_STATE with the side effect of a console print. This may additionally do prochot assertion later on Intel/AMD.",
+      "parentUuid": "a688213f_49bef90f",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -249,6 +291,24 @@
       "writtenOn": "2022-04-26T20:37:51Z",
       "side": 1,
       "message": "So this is part ectool command and part frecon running?  Is this the long-term plan for this util file, or the short-term easy way to build and test?",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd20cb67_11bc6654",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-26T20:56:42Z",
+      "side": 1,
+      "message": "Long-term plan is to stay here. Any issues with that?",
+      "parentUuid": "39edfe78_c1be2d26",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
