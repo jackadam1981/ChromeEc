@@ -155,6 +155,40 @@
       },
       "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f1540a_feb29a9c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T16:54:49Z",
+      "side": 1,
+      "message": "These will be visible in a lot of places, so I\u0027d call them something slightly more specific, like `SDB_OFFSET_INTERNAL_TEMP`. This would also be similar to the convention used above for Battery Status and Battery Capability.\n\nBonus points for something like\n```\nstruct pd_sdb {\n  uint8_t internal_temp;\n  uint8_t present_input;\n  uint8_t present_battery_input;\n  uint8_t event_flags;\n  enum pd_sdb_temperature_status temperature_status;\n  uint8_t power_status;\n};\n```\nBut we haven\u0027t done that broadly for message contents, so I\u0027ll call it a nit.",
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb89b060_145b2637",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T16:54:49Z",
+      "side": 1,
+      "message": "Should this take a port parameter? Some of the bits in Event Flags and Power Status seem like they could be port-specific.",
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
