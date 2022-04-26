@@ -254,3 +254,19 @@ bool body_detect_get_spoof(void)
 	return spoof_enable;
 }
 #endif
+
+static enum ec_status
+host_command_get_sensor_info(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_get_sensor_info *p = args->params;
+	struct ec_response_get_sensor_info *r1 = args->response;
+
+	r1->motion_var1 = get_motion_variance();
+	r1->motion_confidence1 = calculate_motion_confidence(motion_var);
+	r1->upper_threshold = (var_threshold_scaled + confidence_delta_scaled);
+	r1->down_threshold = (var_threshold_scaled - confidence_delta_scaled);
+
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_SENSOR_INFO, host_command_get_sensor_info, EC_VER_MASK(0));

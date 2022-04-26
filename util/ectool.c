@@ -10648,8 +10648,22 @@ int cmd_cec(int argc, char *argv[])
 	return -1;
 }
 
+int cmd_crota(int argc, char *argv[])
+{
+	struct ec_params_get_sensor_info p;
+	struct ec_response_get_sensor_info r;
+	int rv;
+	p.index=0;
+	rv = ec_command(EC_CMD_GET_SENSOR_INFO, 0, &p, sizeof(p), &r, sizeof(r));
+	printf("motion_var1=%ld, motion_confidence1=%d, upper_threshold=%d, down_threshold=%d\n", r.motion_var1, r.motion_confidence1, r.upper_threshold, r.down_threshold);
+
+	return rv;
+}
+
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{"crota", cmd_crota},
 	{"adcread", cmd_adc_read},
 	{"addentropy", cmd_add_entropy},
 	{"apreset", cmd_apreset},
