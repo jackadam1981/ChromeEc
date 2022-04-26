@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c0fdc23_75cdd45e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T02:38:44Z",
+      "side": 1,
+      "message": "I wasn\u0027t worried about the DPM request. That\u0027s an atomic bit set and shouldn\u0027t need additional synchronization.\n\nBut `pe_set_ado` is plain old `int` assignment. I don\u0027t know that we can count on those being atomic, and conceivably, you could have this function called from multiple places and get some unexpected value. Even if you avoided corruption, overlapping calls would also cause a related but probably not as bad issue where the first ADO to be written is lost, and we only ever send the second. If you anticipate this function being called from multiple places for unrelated reasons, you might want to have some mechanism to make the caller wait when there is already an Alert in progress.\n\nFor now, I think this issue is mostly theoretical, and it\u0027s probably sufficient to do your mutexing inside `pe_set_ado` and make the mutex part of the port state. The current approach is also OK if you replicate it in `pd_send_alert_msg`.",
+      "parentUuid": "124139f0_d4bdff36",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50f40f3_50b967bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
@@ -313,6 +331,24 @@
       "side": 1,
       "message": "Done. The ado variable added to pd state is a uint32_t, so I am just going with sizeof(uint32_t).",
       "parentUuid": "4fe3b58c_ebbfd7a4",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e85cdb64_c84d534d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T02:38:44Z",
+      "side": 1,
+      "message": "Nit: `sizeof(pe[port].ado)` would be more obviously correct.",
+      "parentUuid": "6bd07b19_007c64d1",
       "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -16,6 +16,23 @@
       "message": "Hey Diana and Abe, thanks for taking a look at this CL. I addressed you comments about alert, but will be moving the additions for Status to another CL. So, I\u0027ve just marked those as resolved. I\u0027ll reply to them in the Status CL. Let me know if you have any questions.",
       "revId": "0b0c94e2b5b85f04f5dd450ec2ae8341115f15e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53952826_91133a8d",
+        "filename": "common/usb_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T02:38:44Z",
+      "side": 1,
+      "message": "Nit: Can you implement `pd_broadcast_alert_msg` in terms of `pd_send_alert_msg` and avoid duplicating code?",
+      "revId": "0b0c94e2b5b85f04f5dd450ec2ae8341115f15e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
