@@ -765,9 +765,9 @@ int i2c_write_offset16_block(const int port,
 	return rv;
 }
 
-int i2c_read_string(const int port,
-		    const uint16_t addr_flags,
-		    int offset, uint8_t *data, int len)
+int i2c_read_sized_block(const int port,
+			 const uint16_t addr_flags,
+			 int offset, uint8_t *data, int max_len, int *read_len)
 {
 	int i, rv;
 	uint8_t reg, block_length;
@@ -791,8 +791,8 @@ int i2c_read_string(const int port,
 		if (rv)
 			continue;
 
-		if (len && block_length > (len - 1))
-			data_length = len - 1;
+		if (max_len && block_length > max_len)
+			data_length = max_len;
 		else
 			data_length = block_length;
 
@@ -805,7 +805,6 @@ int i2c_read_string(const int port,
 
 			rv = i2c_xfer_unlocked(port, addr_flags,
 					       0, 0, data, data_length, 0);
-			data[data_length] = 0;
 			if (rv)
 				continue;
 
@@ -839,16 +838,27 @@ int i2c_read_string(const int port,
 			rv = i2c_xfer_unlocked(port, addr_flags,
 					       0, 0, data, data_length,
 					       I2C_XFER_STOP);
-			data[data_length] = 0;
 			if (rv)
 				continue;
 		}
 
 		/* execution reaches here implies rv=0, so we can exit now */
+		*read_len = data_length;
 		break;
 	}
 
 	i2c_lock(port, 0);
+	return rv;
+}
+
+int i2c_read_string(const int port,
+		    const uint16_t addr_flags,
+		    int offset, uint8_t *data, int len)
+{
+	int read_len = 0;
+	int rv = i2c_read_sized_block(port, addr_flags, offset, data, len - 1,
+				      &read_len);
+	data[read_len] = 0;
 	return rv;
 }
 
