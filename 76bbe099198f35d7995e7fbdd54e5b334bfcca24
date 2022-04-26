@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7e67ba_56534494",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-26T03:29:21Z",
+      "side": 1,
+      "message": "I would much prefer to keep these masks local to the code rather than putting them in a header - it keeps things localised.\nThe code itself seems very tied to the masks, so I am not sure how useful it is to be common.\n\nSome work still needs to be done to pick up the virtual wire signals - I\u0027m having a problem determining when the VW signals become available (seems to be tied up with some warm reboot eSPI issues).",
+      "parentUuid": "711fa0ab_5cca30e5",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 32
+      },
+      "revId": "76bbe099198f35d7995e7fbdd54e5b334bfcca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13aed1cf_e62f1e30",
