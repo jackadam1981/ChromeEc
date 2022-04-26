@@ -21,31 +21,8 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
-#if defined(CONFIG_ACCEL_INTERRUPTS) && defined(CONFIG_ACCEL_LIS2DW_AS_BASE)
-/*
- * Enable interrupts and FIFO only when the accelerometer is the main sensor.
- */
-#define LIS2DW12_ENABLE_FIFO
-#endif
-
-#if defined(CONFIG_ZEPHYR) && defined(CONFIG_ACCEL_INTERRUPTS)
-/* Get the motion sensor ID of the LIS2DW12 sensor that generates the
- * interrupt. The interrupt is converted to the event and transferred to
- * motion sense task that actually handles the interrupt.
- *
- * Here we use an alias (lis2dw12_int) to get the motion sensor ID. This alias
- * MUST be defined for this driver to work.
- * aliases {
- *   lis2dw12-int = &lid_accel;
- * };
- */
-#if DT_NODE_EXISTS(DT_ALIAS(lis2dw12_int))
-#define CONFIG_ACCEL_LIS2DW12_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(SENSOR_ID(DT_ALIAS(lis2dw12_int)))
-#endif
-#endif
-
-STATIC_IF(LIS2DW12_ENABLE_FIFO) volatile uint32_t last_interrupt_timestamp;
+STATIC_IF(CONFIG_ACCEL_LIS2DW12_INT_ENABLE)
+	volatile uint32_t last_interrupt_timestamp;
 
 /**
  * lis2dw12_enable_fifo - Enable/Disable FIFO in LIS2DW12
@@ -60,14 +37,62 @@ static __maybe_unused int lis2dw12_enable_fifo(const struct motion_sensor_t *s,
 }
 
 /**
+ * lis2dw12_config_interrupt- Configure interrupt for supported features.
+ * @s: Motion sensor pointer
+ *
+ * Must works with interface mutex locked
+ */
+static __maybe_unused int lis2dw12_config_interrupt(
+		const struct motion_sensor_t *s)
+{
+	/* Configure FIFO watermark level. */
+	RETURN_ERROR(st_write_data_with_mask(s, LIS2DW12_FIFO_CTRL_ADDR,
+				LIS2DW12_FIFO_THRESHOLD_MASK, 1));
+
+	/* Enable interrupt on FIFO watermark and route to int1. */
+	RETURN_ERROR(st_write_data_with_mask(s, LIS2DW12_INT1_FTH_ADDR,
+				LIS2DW12_INT1_FTH_MASK, LIS2DW12_EN_BIT));
+
+	if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)) {
+		/*
+		 * Configure D-TAP event detection on 3 axis.
+		 * For more details please refer to AN5038.
+		 */
+		RETURN_ERROR(st_raw_write8(s->port, s->i2c_spi_addr_flags,
+				LIS2DW12_TAP_THS_X_ADDR, 0x09));
+		RETURN_ERROR(st_raw_write8(s->port, s->i2c_spi_addr_flags,
+				LIS2DW12_TAP_THS_Y_ADDR, 0x09));
+		RETURN_ERROR(st_raw_write8(s->port, s->i2c_spi_addr_flags,
+				LIS2DW12_TAP_THS_Z_ADDR, 0xE9));
+		RETURN_ERROR(st_raw_write8(s->port, s->i2c_spi_addr_flags,
+				LIS2DW12_INT_DUR_ADDR, 0x7F));
+
+		/* Enable D-TAP event detection. */
+		RETURN_ERROR(st_write_data_with_mask(s,
+					LIS2DW12_WAKE_UP_THS_ADDR,
+					LIS2DW12_SINGLE_DOUBLE_TAP,
+					LIS2DW12_EN_BIT));
+
+		/*
+		 * Enable D-TAP detection on int_1 pad. In any case D-TAP event
+		 * can be detected only if ODR is over 200 Hz.
+		 */
+		RETURN_ERROR(st_write_data_with_mask(s, LIS2DW12_INT1_TAP_ADDR,
+				LIS2DW12_INT1_DTAP_MASK,
+				LIS2DW12_EN_BIT));
+	}
+	return EC_SUCCESS;
+}
+
+#ifdef CONFIG_ACCEL_LIS2DW12_INT_ENABLE
+/**
  * Load data from internal sensor FIFO.
  * @s: Motion sensor pointer
  */
-static __maybe_unused int lis2dw12_load_fifo(struct motion_sensor_t *s,
-					     int nsamples)
+static int lis2dw12_load_fifo(struct motion_sensor_t *s,
+			      int nsamples)
 {
 	int ret, left, length, i;
-	struct ec_response_motion_sensor_data vect;
 	uint32_t interrupt_timestamp = last_interrupt_timestamp;
 	int *axis = s->raw_xyz;
 	uint8_t fifo[FIFO_READ_LEN];
@@ -94,16 +119,21 @@ static __maybe_unused int lis2dw12_load_fifo(struct motion_sensor_t *s,
 			/* Apply precision, sensitivity and rotation vector. */
 			st_normalize(s, axis, &fifo[i]);
 
-			/* Fill vector array. */
-			vect.data[X] = axis[X];
-			vect.data[Y] = axis[Y];
-			vect.data[Z] = axis[Z];
-			vect.flags = 0;
-			vect.sensor_num = s - motion_sensors;
-			motion_sense_fifo_stage_data(&vect, s, 3,
-						     interrupt_timestamp);
+			if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+				struct ec_response_motion_sensor_data vect;
+				/* Fill vector array. */
+				vect.data[X] = axis[X];
+				vect.data[Y] = axis[Y];
+				vect.data[Z] = axis[Z];
+				vect.flags = 0;
+				vect.sensor_num = s - motion_sensors;
+				motion_sense_fifo_stage_data(&vect, s, 3,
+						interrupt_timestamp);
+			} else {
+				motion_sense_push_raw_xyz(s);
+			}
+			left -= length;
 		}
-		left -= length;
 	} while (left > 0);
 
 	return EC_SUCCESS;
@@ -112,8 +142,8 @@ static __maybe_unused int lis2dw12_load_fifo(struct motion_sensor_t *s,
 /**
  * lis2dw12_get_fifo_samples - check for stored FIFO samples.
  */
-static __maybe_unused int lis2dw12_get_fifo_samples(struct motion_sensor_t *s,
-						    int *nsamples)
+static int lis2dw12_get_fifo_samples(struct motion_sensor_t *s,
+				     int *nsamples)
 {
 	int ret, tmp;
 
@@ -128,79 +158,12 @@ static __maybe_unused int lis2dw12_get_fifo_samples(struct motion_sensor_t *s,
 }
 
 /**
- * lis2dw12_config_interrupt- Configure interrupt for supported features.
- * @s: Motion sensor pointer
- *
- * Must works with interface mutex locked
- */
-static __maybe_unused int lis2dw12_config_interrupt(
-		const struct motion_sensor_t *s)
-{
-	int ret = EC_SUCCESS;
-
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
-		/* Configure FIFO watermark level. */
-		ret = st_write_data_with_mask(s, LIS2DW12_FIFO_CTRL_ADDR,
-				LIS2DW12_FIFO_THRESHOLD_MASK, 1);
-		if (ret != EC_SUCCESS)
-			return ret;
-
-		/* Enable interrupt on FIFO watermark and route to int1. */
-		ret = st_write_data_with_mask(s, LIS2DW12_INT1_FTH_ADDR,
-				LIS2DW12_INT1_FTH_MASK, LIS2DW12_EN_BIT);
-		if (ret != EC_SUCCESS)
-			return ret;
-	}
-
-	if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)) {
-		/*
-		 * Configure D-TAP event detection on 3 axis.
-		 * For more details please refer to AN5038.
-		 */
-		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
-				LIS2DW12_TAP_THS_X_ADDR, 0x09);
-		if (ret != EC_SUCCESS)
-			return ret;
-		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
-				LIS2DW12_TAP_THS_Y_ADDR, 0x09);
-		if (ret != EC_SUCCESS)
-			return ret;
-		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
-				LIS2DW12_TAP_THS_Z_ADDR, 0xE9);
-		if (ret != EC_SUCCESS)
-			return ret;
-		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
-				LIS2DW12_INT_DUR_ADDR, 0x7F);
-		if (ret != EC_SUCCESS)
-			return ret;
-
-		/* Enable D-TAP event detection. */
-		ret = st_write_data_with_mask(s, LIS2DW12_WAKE_UP_THS_ADDR,
-				LIS2DW12_SINGLE_DOUBLE_TAP,
-				LIS2DW12_EN_BIT);
-		if (ret != EC_SUCCESS)
-			return ret;
-
-		/*
-		 * Enable D-TAP detection on int_1 pad. In any case D-TAP event
-		 * can be detected only if ODR is over 200 Hz.
-		 */
-		ret = st_write_data_with_mask(s, LIS2DW12_INT1_TAP_ADDR,
-				LIS2DW12_INT1_DTAP_MASK,
-				LIS2DW12_EN_BIT);
-	}
-	return ret;
-}
-
-#ifdef LIS2DW12_ENABLE_FIFO
-/**
  * lis2dw12_interrupt - interrupt from int pin of sensor
  * Schedule Motion Sense Task to manage Interrupts.
  */
 void lis2dw12_interrupt(enum gpio_signal signal)
 {
-	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO))
-		last_interrupt_timestamp = __hw_clock_source_read();
+	last_interrupt_timestamp = __hw_clock_source_read();
 
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_LIS2DW12_INT_EVENT);
 }
@@ -211,6 +174,9 @@ void lis2dw12_interrupt(enum gpio_signal signal)
 static int lis2dw12_irq_handler(struct motion_sensor_t *s,
 					       uint32_t *event)
 {
+	bool commit_needed = false;
+	int nsamples;
+
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 	    (!(*event & CONFIG_ACCEL_LIS2DW12_INT_EVENT))) {
 		return EC_ERROR_NOT_HANDLED;
@@ -227,22 +193,17 @@ static int lis2dw12_irq_handler(struct motion_sensor_t *s,
 					MOTIONSENSE_ACTIVITY_DOUBLE_TAP);
 	}
 
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
-		bool commit_needed = false;
-		int nsamples;
+	do {
+		RETURN_ERROR(lis2dw12_get_fifo_samples(s, &nsamples));
 
-		do {
-			RETURN_ERROR(lis2dw12_get_fifo_samples(s, &nsamples));
+		if (nsamples != 0) {
+			commit_needed = true;
+			RETURN_ERROR(lis2dw12_load_fifo(s, nsamples));
+		}
+	} while (nsamples != 0);
 
-			if (nsamples != 0) {
-				commit_needed = true;
-				RETURN_ERROR(lis2dw12_load_fifo(s, nsamples));
-			}
-		} while (nsamples != 0);
-
-		if (commit_needed)
-			motion_sense_fifo_commit_data();
-	}
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && commit_needed)
+		motion_sense_fifo_commit_data();
 
 	return EC_SUCCESS;
 }
@@ -308,7 +269,7 @@ static int set_range(struct motion_sensor_t *s, int range, int rnd)
 	 * If Range is changed all samples in FIFO must be discharged because
 	 * with a different sensitivity.
 	 */
-	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO)) {
+	if (IS_ENABLED(CONFIG_ACCEL_LIS2DW12_INT_ENABLE)) {
 		err = lis2dw12_enable_fifo(s, LIS2DW12_FIFO_BYPASS_MODE);
 		if (err != EC_SUCCESS)
 			goto unlock_rate;
@@ -322,7 +283,7 @@ static int set_range(struct motion_sensor_t *s, int range, int rnd)
 		goto unlock_rate;
 
 	/* FIFO restart collecting events in Cont. mode. */
-	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO))
+	if (IS_ENABLED(CONFIG_ACCEL_LIS2DW12_INT_ENABLE))
 		err = lis2dw12_enable_fifo(s, LIS2DW12_FIFO_CONT_MODE);
 
 unlock_rate:
@@ -362,7 +323,7 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	mutex_lock(s->mutex);
 
 	/* FIFO stop collecting events. Restart FIFO in Bypass mode. */
-	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO)) {
+	if (IS_ENABLED(CONFIG_ACCEL_LIS2DW12_INT_ENABLE)) {
 		ret = lis2dw12_enable_fifo(s, LIS2DW12_FIFO_BYPASS_MODE);
 		if (ret != EC_SUCCESS)
 			goto unlock_rate;
@@ -409,7 +370,7 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 		data->base.odr = normalized_rate;
 
 	/* FIFO restart collecting events in continuous mode. */
-	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO))
+	if (IS_ENABLED(CONFIG_ACCEL_LIS2DW12_INT_ENABLE))
 		ret = lis2dw12_enable_fifo(s, LIS2DW12_FIFO_CONT_MODE);
 
 unlock_rate:
@@ -516,7 +477,7 @@ static int init(struct motion_sensor_t *s)
 		goto err_unlock;
 
 	/* Interrupt trigger level of power-on-reset is HIGH */
-	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO)) {
+	if (IS_ENABLED(CONFIG_ACCEL_LIS2DW12_INT_ENABLE)) {
 		ret = st_write_data_with_mask(s, LIS2DW12_H_ACTIVE_ADDR,
 						LIS2DW12_H_ACTIVE_MASK,
 						LIS2DW12_EN_BIT);
@@ -537,7 +498,7 @@ static int init(struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
-	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO)) {
+	if (IS_ENABLED(CONFIG_ACCEL_LIS2DW12_INT_ENABLE)) {
 		ret = lis2dw12_config_interrupt(s);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
@@ -563,7 +524,7 @@ const struct accelgyro_drv lis2dw12_drv = {
 	.get_data_rate = st_get_data_rate,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
-#ifdef LIS2DW12_ENABLE_FIFO
+#ifdef CONFIG_ACCEL_LIS2DW12_INT_ENABLE
 	.irq_handler = lis2dw12_irq_handler,
-#endif /* CONFIG_ACCEL_INTERRUPTS && CONFIG_ACCEL_LIS2DW_AS_BASE */
+#endif /* CONFIG_ACCEL_LIS2DW12_INT_ENABLE */
 };
