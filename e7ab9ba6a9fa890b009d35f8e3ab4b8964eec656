@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84465a42_bedc4fa9",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/bb_retimer.dts",
+        "patchSetId": 18
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-26T06:04:36Z",
+      "side": 1,
+      "message": "will change file name in update...most variables need some changes to the hb base patch if they were left bb here",
+      "parentUuid": "9574bcf3_555f4ebb",
+      "revId": "e7ab9ba6a9fa890b009d35f8e3ab4b8964eec656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4565860f_60ac51ca",
         "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/bb_retimer.dts",
         "patchSetId": 18
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-21T18:21:53Z",
       "side": 1,
       "message": "Low priority: is it possible to implement it similar to zephyr/projects/intelrvp/adlrvp/ioex.dts to avoid redefining it for other EC vendors?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "e7ab9ba6a9fa890b009d35f8e3ab4b8964eec656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c98ffe7_e1b43712",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/bb_retimer.dts",
+        "patchSetId": 18
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-26T06:04:36Z",
+      "side": 1,
+      "message": "this is board specific so it shouldn\u0027t overwrite for other ECs.",
+      "parentUuid": "4565860f_60ac51ca",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c92ce00_b7766fb9",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/usbc.dts",
+        "patchSetId": 18
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-26T06:04:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d33c45_9410ca4b",
+      "revId": "e7ab9ba6a9fa890b009d35f8e3ab4b8964eec656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79b06845_ca80ed58",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-04-21T18:21:53Z",
       "side": 1,
       "message": "not needed",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "e7ab9ba6a9fa890b009d35f8e3ab4b8964eec656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dcc44d9_6e5942c4",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-04-26T06:04:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79b06845_ca80ed58",
       "range": {
         "startLine": 47,
         "startChar": 0,
