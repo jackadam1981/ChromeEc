@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f536aa3_45c236bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-26T18:05:54Z",
+      "side": 1,
+      "message": "Can verify that no ECx errors are being returned. You can test with a variation of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3578293 (i.e. keep mfgacc_support on)",
+      "revId": "9726e86a81f37fe84ed040bedb86a30b0ffa7112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
