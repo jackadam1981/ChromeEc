@@ -666,7 +666,8 @@ void ocpc_reset(struct ocpc_data *ocpc)
 	 * Initialize the VSYS target on the aux chargers to the current battery
 	 * voltage to avoid a large spike.
 	 */
-	if (ocpc->active_chg_chip > CHARGER_PRIMARY && batt.voltage > 0) {
+	if (ocpc->active_chg_chip > CHARGER_PRIMARY && batt.voltage > 0
+	    && battery_is_present() == BP_YES) {
 		CPRINTS("OCPC: C%d Init VSYS to %dmV", ocpc->active_chg_chip,
 			batt.voltage);
 		charger_set_voltage(ocpc->active_chg_chip, batt.voltage);
