@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb45531_16f18f68",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1108899
+      },
+      "writtenOn": "2022-04-26T22:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "553cd1be_f959fa61",
+      "range": {
+        "startLine": 601,
+        "startChar": 8,
+        "endLine": 601,
+        "endChar": 14
+      },
+      "revId": "e07095974b58fa16d5b116147efb5535815970ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b989c8c_9c46bb7a",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-04-26T21:11:25Z",
       "side": 1,
       "message": "nit: This should be \u0027[val]\u0027 to indicate an optional param.",
+      "range": {
+        "startLine": 628,
+        "startChar": 23,
+        "endLine": 628,
+        "endChar": 30
+      },
+      "revId": "e07095974b58fa16d5b116147efb5535815970ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9829eba0_c919b531",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1108899
+      },
+      "writtenOn": "2022-04-26T22:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b989c8c_9c46bb7a",
       "range": {
         "startLine": 628,
         "startChar": 23,
