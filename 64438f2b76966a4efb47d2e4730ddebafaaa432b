@@ -22,6 +22,30 @@
       },
       "revId": "64438f2b76966a4efb47d2e4730ddebafaaa432b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5738fdb9_8b26f5f7",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-26T21:14:47Z",
+      "side": 1,
+      "message": "I think this is OK, and am not sure if it has to be the inverse of the OUT flag,",
+      "parentUuid": "ba109994_2ac76e6d",
+      "range": {
+        "startLine": 159,
+        "startChar": 33,
+        "endLine": 159,
+        "endChar": 67
+      },
+      "revId": "64438f2b76966a4efb47d2e4730ddebafaaa432b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
