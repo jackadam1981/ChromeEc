@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e050694a_98568568",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-26T18:29:13Z",
+      "side": 1,
+      "message": "since Cr50 now is the only device built from this tree (and private-xxx boards don\u0027t care about additional GPIO flags), I think we don\u0027t need a config option for this - just make it part of the code.",
+      "revId": "5b5d8c636a6341d9650b1cd841886ef05b5de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a85e61e_77928b3a",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-26T18:29:13Z",
+      "side": 1,
+      "message": "BIT(signal) is calculated multiple times, could be cached in a local variable.",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "5b5d8c636a6341d9650b1cd841886ef05b5de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baffe205_6bfa7d8b",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-26T18:29:13Z",
+      "side": 1,
+      "message": "if your return after line 50 there is no need in \u0027else\u0027, could be\n\n```\nif (!(gpio_sleepmask \u0026 BIT(signal))\n   return;\n...\n```",
+      "revId": "5b5d8c636a6341d9650b1cd841886ef05b5de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075355a2_8f74b565",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-04-26T18:29:13Z",
+      "side": 1,
+      "message": "I always thought that this bit just shows the original state of the GPIO during initialization, not the active state.\n\nNot all GPIOs in gpio.inc have either GPIO_HIGH or GPIO_LOW bit set.\n\nMaybe two new bits should be defined: SLEEP_MASK_GPIO_LOW and SLEEP_MASK_GPIO_HIGH?",
+      "range": {
+        "startLine": 70,
+        "startChar": 6,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "5b5d8c636a6341d9650b1cd841886ef05b5de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
