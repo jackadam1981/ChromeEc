@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a5fc0e_7ba3b030",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-26T04:41:08Z",
+      "side": 1,
+      "message": "Won\u0027t this be always the case, since this can only get here if raw_reset_cause is either 2 or 3?\nIf so, this check is redundant, and you can just have:\n} else {\n   return WATCHDOG_RST;\n}",
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
