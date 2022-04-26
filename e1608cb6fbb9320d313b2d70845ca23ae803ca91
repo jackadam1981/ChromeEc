@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c4d0c5b_2a44ee5a",
+        "filename": "zephyr/projects/intelrvp/include/intelrvp.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-26T16:52:51Z",
+      "side": 1,
+      "message": "This is already defined in next line.",
+      "revId": "e1608cb6fbb9320d313b2d70845ca23ae803ca91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a649fa4_0a16ebe7",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 21
