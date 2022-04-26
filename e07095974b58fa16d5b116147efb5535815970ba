@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b146d58_544f6d54",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-26T17:17:09Z",
+      "side": 1,
+      "message": "nit: how about using strtou and change data \u0026 val to uint32_t?",
+      "range": {
+        "startLine": 601,
+        "startChar": 8,
+        "endLine": 601,
+        "endChar": 14
+      },
+      "revId": "e07095974b58fa16d5b116147efb5535815970ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
