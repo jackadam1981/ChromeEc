@@ -3,6 +3,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c3e476e_48973462",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-26T16:01:40Z",
+      "side": 1,
+      "message": "i2c_controller changes and smart battery changes should be split into two CLs. ",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d4ce52_66969754",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-26T16:01:40Z",
+      "side": 1,
+      "message": "Can we change len to max_len?",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a57138_bc22cad6",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-26T16:01:40Z",
+      "side": 1,
+      "message": "Seems like we should not allow len to be \u003c\u003d 0. This risks out bound writes. I guess the API says it will assume 255 bytes, do we actually rely on this anywhere?",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94e9ae18_2ed1780f",
         "filename": "common/i2c_controller.c",
         "patchSetId": 1
