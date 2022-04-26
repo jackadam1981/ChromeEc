@@ -32,7 +32,8 @@ STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR) void irq_set_orientation(
 				struct motion_sensor_t *s,
 				int interrupt);
 
-STATIC_IF(CONFIG_ACCEL_FIFO) volatile uint32_t last_interrupt_timestamp;
+STATIC_IF(CONFIG_ACCELGYRO_BMI160_INT_ENABLE)
+	volatile uint32_t last_interrupt_timestamp;
 
 static int wakeup_time[] = {
 	[MOTIONSENSE_TYPE_ACCEL] = 4,
@@ -106,7 +107,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 
 	if (rate == 0) {
 		/* FIFO stop collecting events */
-		if (IS_ENABLED(CONFIG_ACCEL_FIFO))
+		if (IS_ENABLED(CONFIG_ACCELGYRO_BMI160_INT_ENABLE))
 			bmi_enable_fifo(s, 0);
 
 		/* go to suspend mode */
@@ -170,7 +171,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	 * FIFO start collecting events.
 	 * They will be discarded if AP does not want them.
 	 */
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
+	if (IS_ENABLED(CONFIG_ACCELGYRO_BMI160_INT_ENABLE))
 		bmi_enable_fifo(s, 1);
 
 accel_cleanup:
@@ -437,7 +438,7 @@ config_accel_interrupt(const struct motion_sensor_t *s)
 	ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
 			 BMI160_INT_MAP_REG(1), tmp);
 
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+	if (IS_ENABLED(CONFIG_ACCELGYRO_BMI160_INT_ENABLE)) {
 		/* map fifo water mark to int 1 */
 		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
 				 BMI160_INT_FIFO_MAP,
@@ -468,7 +469,7 @@ config_accel_interrupt(const struct motion_sensor_t *s)
 	return ret;
 }
 
-#ifdef CONFIG_ACCEL_INTERRUPTS
+#ifdef CONFIG_ACCELGYRO_BMI160_INT_ENABLE
 #ifdef CONFIG_BMI_ORIENTATION_SENSOR
 static void irq_set_orientation(struct motion_sensor_t *s,
 				int interrupt)
@@ -514,8 +515,7 @@ static void irq_set_orientation(struct motion_sensor_t *s,
  */
 void bmi160_interrupt(enum gpio_signal signal)
 {
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
-		last_interrupt_timestamp = __hw_clock_source_read();
+	last_interrupt_timestamp = __hw_clock_source_read();
 
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCELGYRO_BMI160_INT_EVENT);
 }
@@ -555,8 +555,7 @@ static int irq_handler(struct motion_sensor_t *s,
 		    (interrupt & BMI160_SIGMOT_INT))
 			*event |= TASK_EVENT_MOTION_ACTIVITY_INTERRUPT(
 					MOTIONSENSE_ACTIVITY_SIG_MOTION);
-		if (IS_ENABLED(CONFIG_ACCEL_FIFO) &&
-		    (interrupt & (BMI160_FWM_INT | BMI160_FFULL_INT))) {
+		if (interrupt & (BMI160_FWM_INT | BMI160_FFULL_INT)) {
 			bmi_load_fifo(s, last_interrupt_timestamp);
 			has_read_fifo = 1;
 		}
@@ -569,7 +568,7 @@ static int irq_handler(struct motion_sensor_t *s,
 
 	return EC_SUCCESS;
 }
-#endif  /* CONFIG_ACCEL_INTERRUPTS */
+#endif  /* CONFIG_ACCELGYRO_BMI160_INT_ENABLE */
 
 static int init(struct motion_sensor_t *s)
 {
@@ -715,7 +714,7 @@ static int init(struct motion_sensor_t *s)
 	 */
 	saved_data->odr = 0;
 
-	if (IS_ENABLED(CONFIG_ACCEL_INTERRUPTS) &&
+	if (IS_ENABLED(CONFIG_ACCELGYRO_BMI160_INT_ENABLE) &&
 	    (s->type == MOTIONSENSE_TYPE_ACCEL))
 		ret = config_accel_interrupt(s);
 
@@ -735,7 +734,7 @@ const struct accelgyro_drv bmi160_drv = {
 	.get_offset = bmi_get_offset,
 	.perform_calib = perform_calib,
 	.read_temp = bmi_read_temp,
-#ifdef CONFIG_ACCEL_INTERRUPTS
+#ifdef CONFIG_ACCELGYRO_BMI160_INT_ENABLE
 	.irq_handler = irq_handler,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION
