@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24652343_75f9cf5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-04-26T23:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f536aa3_45c236bf",
+      "revId": "9726e86a81f37fe84ed040bedb86a30b0ffa7112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0c0d14e_ab280230",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-26T18:47:49Z",
       "side": 1,
       "message": "nit: if (IS_ENABLED(CONFIG_BATTERY_CUT_OFF)) { ... } is preferred.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "9726e86a81f37fe84ed040bedb86a30b0ffa7112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60976ef4_80aca26e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-04-26T23:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c0d14e_ab280230",
       "range": {
         "startLine": 104,
         "startChar": 0,
