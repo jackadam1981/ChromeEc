@@ -1225,6 +1225,12 @@ void tcpci_tcpc_alert(int port)
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		if (pd_is_bist_test_mode_enabled(port)) {
+			tcpc_write16(port, TCPC_REG_ALERT,
+				TCPC_REG_ALERT_RX_STATUS |
+				TCPC_REG_ALERT_RX_BUF_OVF);
+			break;
+		}
 		retval = tcpm_enqueue_message(port);
 		if (retval)
 			++failed_attempts;
