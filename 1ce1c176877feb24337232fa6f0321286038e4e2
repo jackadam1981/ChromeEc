@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6bc4c0_360c3a66",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-26T18:14:26Z",
+      "side": 1,
+      "message": "Could pass data_length directly here, and move block_length to just inside the PEC portion.",
+      "revId": "1ce1c176877feb24337232fa6f0321286038e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
