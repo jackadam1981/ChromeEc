@@ -115,6 +115,11 @@ static bool chipset_is_exit_hardoff(void)
 	return pwrseq_ctx.want_g3_exit;
 }
 
+void set_reboot_ap_at_g3_delay(uint64_t d_time)
+{
+	pwrseq_ctx.reboot_ap_at_g3_delay = d_time;
+}
+
 void apshutdown(void)
 {
 	if (pwr_sm_get_state() != SYS_POWER_STATE_G3) {
@@ -146,12 +151,30 @@ void rsmrst_pass_thru_handler(void)
 	}
 }
 
+/* TODO:
+ * Add power down sequence
+ * Add S0ix
+ */
 static int common_pwr_sm_run(int state)
 {
 	switch (state) {
 	case SYS_POWER_STATE_G3:
 		if (chipset_is_exit_hardoff()) {
+			uint64_t i;
 			request_exit_hardoff(false);
+			LOG_DBG("Test: Separate C File\n");
+			pwrseq_ctx.reboot_ap_at_g3_delay =
+				pwrseq_ctx.reboot_ap_at_g3_delay * MSEC;
+			/*
+			 * G3->S0 transition should happen only after the
+			 * user specified delay. Hence, wait until the
+			 * user specified delay times out.
+			 */
+			for (i = 0; i < pwrseq_ctx.reboot_ap_at_g3_delay;
+					i += 100)
+				k_msleep(100);
+			pwrseq_ctx.reboot_ap_at_g3_delay = 0;
+
 			return SYS_POWER_STATE_G3S5;
 		}
 
