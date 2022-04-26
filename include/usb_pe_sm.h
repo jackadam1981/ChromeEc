@@ -126,6 +126,14 @@ void pe_vconn_swap_complete(int port);
 int pe_is_explicit_contract(int port);
 
 /*
+ * Controls BIST test mode enablement.
+ *
+ * @param port  USB-C port number
+ * @return 0 if success, errors otherwise.
+ */
+int pe_set_bist_test_mode(int port, bool enable);
+
+/*
  * Return true if port partner is dualrole capable
  *
  * @param port  USB-C port number
