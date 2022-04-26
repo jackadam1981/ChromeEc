@@ -159,6 +159,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5590893_d5c96e12",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4209,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-26T20:33:32Z",
+      "side": 1,
+      "message": "Thanks for catching this. Looking more closely at the spec (8.3.2.10.2.1 Sink Gets Source Status and 8.3.2.10.2.2 Source Gets Sink Status), the Status sender\u0027s policy engine does not need to set a timer. I removed this condition for resetting. \n\nAlso, from Table 6-72 it looks like uninterruptible states related to setting power should hard reset and uninterruptible states which are not related to setting power should soft reset. Is that the correct reading? I updated `pe_give_status_run` to look for PE_FLAGS_PROTOCOL_ERROR and PE_FLAGS_MSG_DISCARDED. If either of those flags are set, it will soft reset because this is an uninterruptible AMS not related to setting power.",
+      "parentUuid": "28f63ad6_31dd5f18",
+      "range": {
+        "startLine": 4209,
+        "startChar": 2,
+        "endLine": 4209,
+        "endChar": 26
+      },
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79f1540a_feb29a9c",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -170,6 +194,24 @@
       "writtenOn": "2022-04-26T16:54:49Z",
       "side": 1,
       "message": "These will be visible in a lot of places, so I\u0027d call them something slightly more specific, like `SDB_OFFSET_INTERNAL_TEMP`. This would also be similar to the convention used above for Battery Status and Battery Capability.\n\nBonus points for something like\n```\nstruct pd_sdb {\n  uint8_t internal_temp;\n  uint8_t present_input;\n  uint8_t present_battery_input;\n  uint8_t event_flags;\n  enum pd_sdb_temperature_status temperature_status;\n  uint8_t power_status;\n};\n```\nBut we haven\u0027t done that broadly for message contents, so I\u0027ll call it a nit.",
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a1aa7c_24e5f29e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-26T20:33:32Z",
+      "side": 1,
+      "message": "Done. I\u0027ve updated `dpm_get_status_msg` to use a struct like this.",
+      "parentUuid": "79f1540a_feb29a9c",
       "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -187,6 +229,24 @@
       "writtenOn": "2022-04-26T16:54:49Z",
       "side": 1,
       "message": "Should this take a port parameter? Some of the bits in Event Flags and Power Status seem like they could be port-specific.",
+      "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69c5df9_e26ac47c",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-26T20:33:32Z",
+      "side": 1,
+      "message": "Yes, this will require a port. Done.",
+      "parentUuid": "bb89b060_145b2637",
       "revId": "d1768b22816e3ed760ebcc3379137814137151ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
