@@ -69,6 +69,7 @@ register_intelrvp_project(
         here / "mtlrvp/ioex.dts",
         here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
         here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
+        here / "mtlrvp/usbc.dts",
     ],
     extra_kconfig_files=[
         here / "legacy_ec_pwrseq.conf",
