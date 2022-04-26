@@ -525,9 +525,10 @@ __override bool board_is_tbt_usb4_port(int port)
 
 __override void board_pre_task_i2c_peripheral_init(void)
 {
+#if 0
 	/* Initialized IOEX-0 to access IOEX-GPIOs needed pre-task */
 	ioex_init(IOEX_C0_PCA9675);
-
+#endif
 	/* Make sure SBU are routed to CCD or AUX based on CCD status at init */
 	board_connect_c0_sbu_deferred();
 

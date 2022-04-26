@@ -88,8 +88,10 @@
 enum adlrvp_i2c_channel {
 	I2C_CHAN_FLASH,
 	I2C_CHAN_BATT_CHG,
+#if defined(HAS_TASK_PD_C0)
 	I2C_CHAN_TYPEC_0,
 	I2C_CHAN_TYPEC_1,
+#endif
 #if defined(HAS_TASK_PD_C2)
 	I2C_CHAN_TYPEC_2,
 	I2C_CHAN_TYPEC_3,

@@ -44,6 +44,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_SMB_BS_CLK,
 		.sda = GPIO_SMB_BS_DATA,
 	},
+#if defined(HAS_TASK_PD_C0)
 	[I2C_CHAN_TYPEC_0] = {
 		.name = "typec_0",
 		.port = IT83XX_I2C_CH_C,
@@ -58,6 +59,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_USBC_TCPC_I2C_CLK_P2,
 		.sda = GPIO_USBC_TCPC_I2C_DATA_P2,
 	},
+#endif
 #if defined(HAS_TASK_PD_C2)
 	[I2C_CHAN_TYPEC_2] = {
 		.name = "typec_2",
