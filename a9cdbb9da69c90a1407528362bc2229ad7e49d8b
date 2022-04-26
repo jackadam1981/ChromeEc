@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc58e33_ee305266",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-04-26T17:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c3e476e_48973462",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d4ce52_66969754",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-26T16:01:40Z",
       "side": 1,
       "message": "Can we change len to max_len?",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4e62f8_43ff8f05",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-04-26T17:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d4ce52_66969754",
       "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3146059a_125e050a",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-04-26T17:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01a57138_bc22cad6",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94e9ae18_2ed1780f",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-04-26T15:52:22Z",
       "side": 1,
       "message": "nit: looks like previous iterations set 0 at index data_length regardless of success.  So I suppose continue ensuring there\u0027s a NULL on failure",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "030d9f1b_3a0acbb8",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-04-26T17:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e9ae18_2ed1780f",
       "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ddcc7c_5be3ef40",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-04-26T17:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad8c1da5_51d127a7",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93cd371d_9a4e8e73",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-04-26T15:52:22Z",
       "side": 1,
       "message": "I suppose carry forward the comments about len since they still apply.  If you think of a better way of phrasing the len \u003d\u003d 0 default that would be appreciated as well",
+      "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49483b92_baac7267",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-04-26T17:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93cd371d_9a4e8e73",
       "revId": "a9cdbb9da69c90a1407528362bc2229ad7e49d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
