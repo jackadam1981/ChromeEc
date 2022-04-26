@@ -16,6 +16,24 @@
       "message": "Can we split this up into different tests? Seems to be testing a lot of different registers all sequentially.",
       "revId": "839950de665a106bf51a4f3437bd9a0983f8ade4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "093ad1c4_951ea1c2",
+        "filename": "zephyr/test/drivers/src/ppc_syv682c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-26T18:37:12Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9555a03f_1a02e7e1",
+      "revId": "839950de665a106bf51a4f3437bd9a0983f8ade4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
