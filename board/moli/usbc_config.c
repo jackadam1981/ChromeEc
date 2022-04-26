@@ -248,6 +248,10 @@ static void board_tcpc_init(void)
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_C1_TCPC_INT_ODL);
+
+	/* Enable BC1.2 interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
