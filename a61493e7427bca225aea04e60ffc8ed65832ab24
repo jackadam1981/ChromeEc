@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f455ca68_5cc7b118",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2626,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-27T19:27:16Z",
+      "side": 1,
+      "message": "Does this have to be done before every exit? What happens if it isn\u0027t?",
+      "range": {
+        "startLine": 2625,
+        "startChar": 3,
+        "endLine": 2626,
+        "endChar": 24
+      },
+      "revId": "a61493e7427bca225aea04e60ffc8ed65832ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
