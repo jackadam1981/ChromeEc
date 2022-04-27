@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09ca7cb5_be1c8bad",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-27T17:05:48Z",
+      "side": 1,
+      "message": "Something needs to be after the STATIC_IF()\n\nI could write\nSTATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR) void\n\tirq_set_orientation(struct motion_sensor_t *s);\n\nBut I felt \u0027\\\u0027 like in macro contexts was cleaner.",
+      "parentUuid": "48565497_0ddb5dd2",
+      "range": {
+        "startLine": 34,
+        "startChar": 46,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "e48e140b88c709b82d2bf5c5f1f970eef2f8daa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e53f1809_aae49de1",
         "filename": "driver/accelgyro_bmi3xx.c",
         "patchSetId": 1
