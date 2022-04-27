@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f60535_1a63ca90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-27T17:12:08Z",
+      "side": 1,
+      "message": "So many questions... this is a debug command. Why are we trying to add an allowlist for this? We shouldn\u0027t be using a debug command as an intended method in prodcution. Is there another way to accomplish what you\u0027re trying to do? I\u0027d even ask why this pin is connected to the EC in the first place.",
+      "revId": "d2ca48b566fe29a9222e95b6330b4c93578ff06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
