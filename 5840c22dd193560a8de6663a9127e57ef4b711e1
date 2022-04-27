@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034dd8ba_136b6bf6",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-27T07:10:12Z",
+      "side": 1,
+      "message": "You should only allow mfg functions only:\n\n case SB_OPTIONAL_MFG_FUNCTION1:\n case SB_OPTIONAL_MFG_FUNCTION2:\n case SB_OPTIONAL_MFG_FUNCTION3:\n case SB_OPTIONAL_MFG_FUNCTION4:\n case SB_OPTIONAL_MFG_FUNCTION5:",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 8
+      },
+      "revId": "5840c22dd193560a8de6663a9127e57ef4b711e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
