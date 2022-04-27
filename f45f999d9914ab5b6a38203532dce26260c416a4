@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a652170e_59ee2b01",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-27T16:34:23Z",
+      "side": 1,
+      "message": "nit: alignment",
+      "revId": "f45f999d9914ab5b6a38203532dce26260c416a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc8b7b8_26607094",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-27T16:34:23Z",
+      "side": 1,
+      "message": "nit: Please add a full function header that describes the parameters and return value. (and the above since you touched it 😊)",
+      "revId": "f45f999d9914ab5b6a38203532dce26260c416a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
