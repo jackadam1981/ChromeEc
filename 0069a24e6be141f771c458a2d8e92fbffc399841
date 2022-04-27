@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1fcad0c_6db7babf",
+        "filename": "zephyr/projects/nissa/craask_motionsense.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T08:32:35Z",
+      "side": 1,
+      "message": "I think this inverted config can be removed.",
+      "revId": "0069a24e6be141f771c458a2d8e92fbffc399841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c9c2cf_dc941b2d",
+        "filename": "zephyr/projects/nissa/craask_motionsense.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T08:32:35Z",
+      "side": 1,
+      "message": "This is only used for nivviks",
+      "revId": "0069a24e6be141f771c458a2d8e92fbffc399841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b594c2f7_67b47ad7",
+        "filename": "zephyr/projects/nissa/craask_overlay.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T08:32:35Z",
+      "side": 1,
+      "message": "Remove if no fan required for craask",
+      "revId": "0069a24e6be141f771c458a2d8e92fbffc399841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c78609b_fba2dbe8",
+        "filename": "zephyr/projects/nissa/craask_overlay.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T08:32:35Z",
+      "side": 1,
+      "message": "I think this is for the fan,so can be removed.",
+      "revId": "0069a24e6be141f771c458a2d8e92fbffc399841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e61243e_582e76c7",
+        "filename": "zephyr/projects/nissa/craask_overlay.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T08:32:35Z",
+      "side": 1,
+      "message": "Remove if no fan required.",
+      "revId": "0069a24e6be141f771c458a2d8e92fbffc399841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0727e4_936d0bd0",
+        "filename": "zephyr/projects/nissa/prj_craask.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T08:32:35Z",
+      "side": 1,
+      "message": "Only needed if a fan is present.",
+      "revId": "0069a24e6be141f771c458a2d8e92fbffc399841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
