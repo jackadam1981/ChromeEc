@@ -620,15 +620,10 @@ ZTEST(isl923x, test_init)
 	zassert_ok(isl923x_drv.get_input_current_limit(CHARGER_NUM,
 						       &input_current),
 		   NULL);
-	if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW)) {
-		zassert_equal(512, input_current,
-			      "Expected input current 512mV but got %dmV",
-			      input_current);
-	} else {
-		zassert_equal(0, input_current,
+
+	zassert_equal(0, input_current,
 			      "Expected input current 0mV but got %dmV",
 			      input_current);
-	}
 
 	/* Test failed CTRL 0 write */
 	isl923x_emul_reset_registers(isl923x_emul);
@@ -639,15 +634,10 @@ ZTEST(isl923x, test_init)
 	zassert_ok(isl923x_drv.get_input_current_limit(CHARGER_NUM,
 						       &input_current),
 		   NULL);
-	if (IS_ENABLED(CONFIG_CHARGE_RAMP_HW)) {
-		zassert_equal(512, input_current,
-			      "Expected input current 512mV but got %dmV",
-			      input_current);
-	} else {
-		zassert_equal(0, input_current,
+
+	zassert_equal(0, input_current,
 			      "Expected input current 0mV but got %dmV",
 			      input_current);
-	}
 
 	/* Test failed CTRL 3 read */
 	isl923x_emul_reset_registers(isl923x_emul);
