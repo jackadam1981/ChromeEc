@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc7ef6e9_2e6b9e5c",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-27T23:47:31Z",
+      "side": 1,
+      "message": "The things here that check reset flags are very EC-specific; could they go somewhere outside this subsystem code so they don\u0027t need to be changed again later for upstream?",
+      "range": {
+        "startLine": 434,
+        "startChar": 24,
+        "endLine": 434,
+        "endChar": 46
+      },
+      "revId": "793a3199e0402d8f956c6be1a0f95b44e2390444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
