@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f39ed5_fdb2df59",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-27T16:22:39Z",
+      "side": 1,
+      "message": "nit: fix alignment",
+      "range": {
+        "startLine": 769,
+        "startChar": 4,
+        "endLine": 771,
+        "endChar": 1
+      },
+      "revId": "3725994921b15aa92e48df769d6ae8718829f8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb121d1_00f8b8c2",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-27T16:22:39Z",
+      "side": 1,
+      "message": "nit: indentation. We use 8 space tabs by the way.",
+      "range": {
+        "startLine": 860,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 7
+      },
+      "revId": "3725994921b15aa92e48df769d6ae8718829f8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21dca45a_103b5aa8",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-27T16:22:39Z",
+      "side": 1,
+      "message": "nit: alignment",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 6
+      },
+      "revId": "3725994921b15aa92e48df769d6ae8718829f8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
