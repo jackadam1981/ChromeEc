@@ -368,6 +368,7 @@ enum tcpci_partner_handler_res tcpci_snk_emul_handle_sop_msg(
 							   0);
 			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 		case PD_CTRL_PING:
+			data->ping_received = true;
 			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 		case PD_CTRL_GOTO_MIN:
 			return tcpci_snk_emul_handle_goto_min_req(data,

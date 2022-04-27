@@ -35,6 +35,8 @@ struct tcpci_snk_emul_data {
 	bool wait_for_ps_rdy;
 	/** PS RDY was received and PD negotiation is completed */
 	bool pd_completed;
+	/** PD_CTRL_PING message received  */
+	bool ping_received;
 };
 
 /** Structure describing standalone sink device emulator */
