@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4cb502d_b23c1450",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-04-27T02:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d599d36_4d5e0199",
+      "revId": "8c5a2a3e61e4fcd16fde2c7319a41cca77073cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eaf3fdc_891bf5b5",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0387ccd_2f08dc73",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-04-27T02:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eaf3fdc_891bf5b5",
+      "revId": "8c5a2a3e61e4fcd16fde2c7319a41cca77073cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5ad44ea_0945e0c7",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-04-22T16:30:53Z",
       "side": 1,
       "message": "The phrasing may be confusing since mismatch is often used to refer to the \"capability mismatch\" bit, which means that the sink wants more power.  \n\nAdditionally, it may make sense to just evaluate whether 1.5 A or less was requested within this function, and then clear the port from sink_max_pdo_requested.  Unless you found that was inadequate to get a new source capability from the port balancing?",
+      "revId": "8c5a2a3e61e4fcd16fde2c7319a41cca77073cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fee3e60_62d0c743",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-04-27T02:29:13Z",
+      "side": 1,
+      "message": "Only clear sink_max_pdo_requested will be enough. So I removed the sink_max_pdo_requested_mismatch.",
+      "parentUuid": "e5ad44ea_0945e0c7",
       "revId": "8c5a2a3e61e4fcd16fde2c7319a41cca77073cd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
