@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d901e6c_ffe3accd",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-27T05:09:00Z",
+      "side": 1,
+      "message": "I think I might have missed something in this refactor. Should this not be `CONFIG_ACCELGYRO_BMI260_INT_ENABLE || CONFIG_ACCELGYRO_BMI160_INT_ENABLE`",
+      "range": {
+        "startLine": 383,
+        "startChar": 19,
+        "endLine": 383,
+        "endChar": 36
+      },
+      "revId": "ad824e83b963b47e13b5bf6722c1a315e8dd00c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
