@@ -33,6 +33,23 @@
       "message": "So is this file actually generated from the pinmap utility?",
       "revId": "fdf4ce70621e7670c401e37eb4964a9aa78a90c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07528f63_673ad68c",
+        "filename": "zephyr/projects/nissa/src/craask/form_factor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T01:09:37Z",
+      "side": 1,
+      "message": "This file is only necessary for Nivviks since the prototype units have 2 different mainboard orientations depending on whether they are in an acrylic chassis or not.\nThis file may not be needed for craask, unless you have the same arrangement.",
+      "revId": "fdf4ce70621e7670c401e37eb4964a9aa78a90c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
