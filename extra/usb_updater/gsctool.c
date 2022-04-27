@@ -2614,12 +2614,18 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode)
 	size_t response_size = sizeof(rma_response);
 	size_t i;
 	size_t auth_size = 0;
+	int rv;
 
 	if (!authcode) {
-		send_vendor_command(td, VENDOR_CC_RMA_CHALLENGE_RESPONSE,
+		rv = send_vendor_command(td, VENDOR_CC_RMA_CHALLENGE_RESPONSE,
 				    NULL, 0, rma_response, &response_size);
 
-		if (response_size == 1) {
+		if (rv) {
+			fprintf(stderr, "vc error %d\n", rv);
+			if (td->ep_type == usb_xfer)
+				shut_down(&td->uep);
+			exit(update_error);
+		} else if (response_size == 1) {
 			fprintf(stderr, "error %d\n", rma_response[0]);
 			if (td->ep_type == usb_xfer)
 				shut_down(&td->uep);
@@ -2655,11 +2661,16 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode)
 	auth_size = strlen(authcode);
 	response_size = sizeof(rma_response);
 
-	send_vendor_command(td, VENDOR_CC_RMA_CHALLENGE_RESPONSE,
+	rv = send_vendor_command(td, VENDOR_CC_RMA_CHALLENGE_RESPONSE,
 			    authcode, auth_size,
 			    rma_response, &response_size);
 
-	if (response_size == 1) {
+	if (rv) {
+		fprintf(stderr, "vc error %d\n", rv);
+		if (td->ep_type == usb_xfer)
+			shut_down(&td->uep);
+		exit(update_error);
+	} else if (response_size == 1) {
 		fprintf(stderr, "\nrma unlock failed, code %d ",
 			*rma_response);
 		switch (*rma_response) {
