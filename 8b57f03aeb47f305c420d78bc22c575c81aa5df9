@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa4371f0_e0ecabe5",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-27T00:30:12Z",
+      "side": 1,
+      "message": "Ok, I understand. I added mutexing to the port state and lock/unlock it using new pe_lock_ado and pe_unlock_ado functions from pe_send_alert_message.\n\nBut, you are right. There is still a possible issue where sending two alerts right next to each other could lead to the second ADO overwriting the first. Testing this on a Brya, there was about a 3 ms window between when the mutex was unlocked and the mode entry function read the PE state\u0027s ADO.\n\nI don\u0027t think it is currently reasonable to add the mutex unlock later, like when the ADO is cleared in `pe_send_alert_run`. That function is never reached for ports with nothing connected.",
+      "parentUuid": "9c0fdc23_75cdd45e",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50f40f3_50b967bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
@@ -349,6 +367,24 @@
       "side": 1,
       "message": "Nit: `sizeof(pe[port].ado)` would be more obviously correct.",
       "parentUuid": "6bd07b19_007c64d1",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31081c2_1a377209",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4326,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-27T00:30:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e85cdb64_c84d534d",
       "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
