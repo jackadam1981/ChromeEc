@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad5e6bdd_5b4c19b1",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:54:54Z",
+      "side": 1,
+      "message": "At the risk of being tedious about this, I don\u0027t love exposing the locking mechanism in the PE\u0027s API, because then it\u0027s the responsibility of the caller to use it correctly. The current code also doesn\u0027t synchronize the reads.\n\nHow about something like this?\n\n* `pe_set_ado`:\n1. Locks the mutex\n2. Checks if the ADO is currently unset\n3. If the ADO is 0, sets the ADO; if the ADO is already set, don\u0027t change it\n4. Unlock the mutex\n5. Return success if the ADO was successfully set and some failure code if it was unchanged\n\n* `pd_send_alert_msg` (and any other users of this feature) call `pe_set_ado` and check the return value. If it makes sense, I guess they should wait and retry on failure, but it would probably be fine if the caller just dropped it. The partner should do a Get_Status anyway.\n\n* `pe_send_alert_entry`\n1. Locks the mutex\n2. Reads the ADO\n3. Unlocks the mutex\n\n* `pe_send_alert_run`, after sending\n1. Locks the mutex\n2. Clears the ADO\n3. Unlocks the mutex\n\nThat should avoid any possibility of overwriting an unsent alert or sending a corrupt alert, allow the caller to handle a failure to send an alert if it wants to, and keep the synchronization mechanism entirely inside PE code.",
+      "parentUuid": "aa4371f0_e0ecabe5",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50f40f3_50b967bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
