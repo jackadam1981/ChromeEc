@@ -85,8 +85,8 @@
 #define CONFIG_HOSTCMD_AP_RESET
 
 /* ADL has new low-power features that require an extra-wide SCI pulse */
-#undef CONFIG_ESPI_DEFAULT_SCI_WIDTH_US
-#define CONFIG_ESPI_DEFAULT_SCI_WIDTH_US	150
+#undef CONFIG_ESPI_DEFAULT_VW_WIDTH_US
+#define CONFIG_ESPI_DEFAULT_VW_WIDTH_US	150
 
 /* Buttons */
 #define CONFIG_DEDICATED_RECOVERY_BUTTON
