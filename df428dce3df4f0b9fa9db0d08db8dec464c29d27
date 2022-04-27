@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd359e46_1c13de76",
+        "filename": "board/damu/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2022-04-27T02:52:00Z",
+      "side": 1,
+      "message": "We don\u0027t have to duplicate the same code for these cases.\n```\n\tcase 0x3C:\n\tcase 0x3D:\n\tcase 0x3E:\n\tcase 0x3F:\n\t\tsb_read(*batt_cmd_head, \u0026val)\n\t\t...\n```",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "df428dce3df4f0b9fa9db0d08db8dec464c29d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
