@@ -34,6 +34,7 @@
 
 /* Chipset features */
 #define CONFIG_POWER_PP5000_CONTROL
+#define CONFIG_CPU_PROCHOT_GATE_ON_C10
 
 /* LED defines */
 #define CONFIG_LED_PWM
@@ -156,7 +157,7 @@
 
 /* Disable console commands to help save space */
 #undef CONFIG_CMD_ADC
-#undef CONFIG_CMD_APTHROTTLE
+/* #undef CONFIG_CMD_APTHROTTLE */
 #undef CONFIG_CMD_BATTFAKE
 #undef CONFIG_CMD_BUTTON
 #undef CONFIG_CMD_CBI
