@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1238b7b0_2c5f6a12",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-27T20:03:19Z",
+      "side": 1,
+      "message": "Should you use an `enum ec_status` value (maybe `EC_RES_ERROR`) here?",
+      "range": {
+        "startLine": 406,
+        "startChar": 35,
+        "endLine": 406,
+        "endChar": 36
+      },
+      "revId": "9a2a76395ef96981a374b9d766ec66036c301f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8cd398c_5933e6d6",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-27T20:03:19Z",
+      "side": 1,
+      "message": "This should be EC_RES_SUCCESS.",
+      "range": {
+        "startLine": 423,
+        "startChar": 35,
+        "endLine": 423,
+        "endChar": 36
+      },
+      "revId": "9a2a76395ef96981a374b9d766ec66036c301f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47207420_9612787d",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-27T20:03:19Z",
+      "side": 1,
+      "message": "Same here - use `EC_RES_ERROR`?",
+      "range": {
+        "startLine": 424,
+        "startChar": 35,
+        "endLine": 424,
+        "endChar": 36
+      },
+      "revId": "9a2a76395ef96981a374b9d766ec66036c301f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1204c52_9ebf5f80",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-27T20:03:19Z",
+      "side": 1,
+      "message": "Set return val to `EC_RES_SUCCESS`.",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 0
+      },
+      "revId": "9a2a76395ef96981a374b9d766ec66036c301f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
