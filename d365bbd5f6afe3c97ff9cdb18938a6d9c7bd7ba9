@@ -16,6 +16,24 @@
       "message": "Is CONFIG_ACCELGYRO_ICM426XX used in burnet ever? If yes, you have to keep this configuration rather than replace it.",
       "revId": "d365bbd5f6afe3c97ff9cdb18938a6d9c7bd7ba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "535573ea_71847173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-04-27T06:52:08Z",
+      "side": 1,
+      "message": "The ICM426XX is not use for burnet ever and will be EOL (confirmed with hardware guys).",
+      "parentUuid": "3d81944a_4600b6dd",
+      "revId": "d365bbd5f6afe3c97ff9cdb18938a6d9c7bd7ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
