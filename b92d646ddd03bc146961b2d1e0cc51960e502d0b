@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfe743b_dc82ec5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "Avoiding the word \"prodotype\" here as that would make people think this is throwaway code, and it\u0027s not.\n\nBut I added a better description what\u0027s missing from the design left to go.",
+      "parentUuid": "f8513306_8622b3b5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "522199c5_b86d01b2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-26T20:09:25Z",
       "side": 1,
       "message": "Add:\nTEST\u003dzmake test test-drivers\nSince you did all that work adding a ztest.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcf2719_bd780e72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "522199c5_b86d01b2",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c372739_4733639b",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "I went for the route of the OS clearing the bit on host command after a successful boot.",
+      "parentUuid": "06a2a45f_8a57eb14",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "466225da_5bfe68c1",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f42c8a2b_05eabfc2",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "Right now we have no differentiation in the firmware event log for the two boot reasons.\n\nFor the purposes of the event log, I think the power on reason of \"AC connect\" (regardless of if the user stays booted or times out the splash), would be sufficient, in which case we just have to adjust the AP firmware to check the chargesplash state when writing this event.",
+      "parentUuid": "466225da_5bfe68c1",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "308a65e9_31c40ed2",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-04-26T20:37:51Z",
       "side": 1,
       "message": "I guess as a note, this will only detect PD sources we decided to charge from.  But I think that\u0027s what you\u0027re going for on the feature.  So if someone plugs in their pixel phone, we won\u0027t show the chargesplash because we won\u0027t try to charge from it",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a22f782_69f5e3ad",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "308a65e9_31c40ed2",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f8a490_8aa41d3b",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "Apparently there\u0027s already a host event that wakes on AC connection. I removed this TODO as it sounds like there\u0027s nothing to do \u003d)",
+      "parentUuid": "4fbf5486_50be1816",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e315b5e_1a1f3f2e",
@@ -158,6 +284,24 @@
       "writtenOn": "2022-04-26T20:37:51Z",
       "side": 1,
       "message": "This is probably a naive question, but is a forced shutdown more risky than a more ordered shutdown?  I\u0027m only familiar with force shutdown from extreme cases (ex. losing required power rails, extreme temperature, AP perpetually stuck in a half-suspended state...)",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c641665_2dc8a0d3",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "I adjusted the code to only do a forceful shutdown if we never successfully initialized the display. The display code can then handle a graceful shutdown as it likes.",
+      "parentUuid": "4e315b5e_1a1f3f2e",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -261,6 +405,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56635f3b_4670ef27",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8371518f_5e82ca57",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f38c457b_090334cf",
@@ -274,6 +436,24 @@
       "writtenOn": "2022-04-26T20:09:25Z",
       "side": 1,
       "message": "nit: maybe also log that we started frecon here. But maybe frecon does its own logging so it might not matter.",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e6460d_135821b4",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-27T16:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f38c457b_090334cf",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
