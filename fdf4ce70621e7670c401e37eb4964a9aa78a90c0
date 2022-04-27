@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13a16e7_6347c66b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T01:07:21Z",
+      "side": 1,
+      "message": "So just for my understanding, is craask the exact same EC pinout as Nivviks?\nWhat are the exact differences? If there are no differences, is it possible to use the nivviks EC image directly?",
+      "revId": "fdf4ce70621e7670c401e37eb4964a9aa78a90c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5794f0_cab3c947",
+        "filename": "zephyr/projects/nissa/craask_generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T01:07:21Z",
+      "side": 1,
+      "message": "So is this file actually generated from the pinmap utility?",
+      "revId": "fdf4ce70621e7670c401e37eb4964a9aa78a90c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
