@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a6c625_0b82336b",
+        "filename": "board/crota/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-27T20:39:46Z",
+      "side": 1,
+      "message": "Following https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2570890,\nadd\n+#define CONFIG_BODY_DETECTION_VAR_NOISE_FACTOR 150 /* % */\n+#define CONFIG_GESTURE_DETECTION\n+#define CONFIG_GESTURE_DETECTION_MASK BIT(CONFIG_BODY_DETECTION_SENSOR)",
+      "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f544d47_fdbd8b7b",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-27T20:39:46Z",
+      "side": 1,
+      "message": "body detection is enabled from the host. \nFor debugging, you can use \n`ectool motionsense list_activities/[get|set] activities`.",
+      "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0df79f2_80dfe86f",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-27T20:39:46Z",
+      "side": 1,
+      "message": "From https://www.st.com/resource/en/datasheet/lsm6dso.pdf, the rms normal mode is ODR invariant and just depend on range. The default range being +/-4g, we can return 80 (ug).",
+      "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
