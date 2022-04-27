@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea1b73e_c23aca7d",
+        "filename": "zephyr/projects/nissa/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-04-27T08:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82dc7235_3ad39d8d",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8e49e2c_93fd7d6d",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-27T05:57:18Z",
       "side": 1,
       "message": "You could move this section into the craask_overlay file, if you wished, since it is a small section.",
+      "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "000a68e7_56e2af0d",
+        "filename": "zephyr/projects/nissa/craask_keyboard.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-04-27T08:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e49e2c_93fd7d6d",
       "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c511840_c7e9a2c0",
+        "filename": "zephyr/projects/nissa/src/craask/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-04-27T08:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "208c19ce_2837aa15",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20aa1976_5c90924f",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-04-27T05:57:18Z",
       "side": 1,
       "message": "If craask does not have a fan, this file can be removed.\nIf it optionally does, it can be left to be enabled via the\nfw_config.\nAlso Nirwen -\u003e Craask",
+      "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cbdf84_50f0ff78",
+        "filename": "zephyr/projects/nissa/src/craask/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-04-27T08:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20aa1976_5c90924f",
       "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
