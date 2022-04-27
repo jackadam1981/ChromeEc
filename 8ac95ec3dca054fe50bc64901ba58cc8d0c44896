@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82dc7235_3ad39d8d",
+        "filename": "zephyr/projects/nissa/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T05:57:18Z",
+      "side": 1,
+      "message": "drop \u0027reference\u0027",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e49e2c_93fd7d6d",
+        "filename": "zephyr/projects/nissa/craask_keyboard.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T05:57:18Z",
+      "side": 1,
+      "message": "You could move this section into the craask_overlay file, if you wished, since it is a small section.",
+      "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208c19ce_2837aa15",
+        "filename": "zephyr/projects/nissa/src/craask/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T05:57:18Z",
+      "side": 1,
+      "message": "Here and elsewhere, \u0027Nivviks\u0027 -\u003e \u0027Craask\u0027",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20aa1976_5c90924f",
+        "filename": "zephyr/projects/nissa/src/craask/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T05:57:18Z",
+      "side": 1,
+      "message": "If craask does not have a fan, this file can be removed.\nIf it optionally does, it can be left to be enabled via the\nfw_config.\nAlso Nirwen -\u003e Craask",
+      "revId": "8ac95ec3dca054fe50bc64901ba58cc8d0c44896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
