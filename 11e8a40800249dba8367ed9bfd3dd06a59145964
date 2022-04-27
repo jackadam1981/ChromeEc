@@ -16,6 +16,24 @@
       "message": "Nit: I don\u0027t think you should need to specify field sizes here. `uint8_t` is already 8 bits. AFAIK, with the values that you provided, `enum pd_sdb_temperature_status` should also be 8 bits. If you wanted to make sure of that, you could do a `BUILD_ASSERT(sizeof(enum pd_sdb_temperature_status) \u003d\u003d 1))`.",
       "revId": "11e8a40800249dba8367ed9bfd3dd06a59145964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b9c90f_6852ddfe",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-27T22:26:57Z",
+      "side": 1,
+      "message": "Done. Although I had to add the packed attribute to the enum definition for it to satisfy the build assertion that the enum was only 1 byte.",
+      "parentUuid": "45e8de64_e86552f0",
+      "revId": "11e8a40800249dba8367ed9bfd3dd06a59145964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
