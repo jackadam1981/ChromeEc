@@ -1,0 +1,273 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cab07ca_8d4cff93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "First pass. Looked over the API changes. They seem good in general, but I have some questions.",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd885ee_4ce48444",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "then",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afec514c_7bb96cab",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "Maybe this will become clearer after reading the rest of the CL, but I\u0027m having a hard time parsing this or understanding why it would be set to false. Is the idea to give an extension time to do something after the message is received but before GoodCRC is sent?\n\nWould it be possible to have the common partner code call into the extensions, take the return value of that call, and then use it to decide whether to send GoodCRC itself? That seems like it would make the API between the common code and extensions smaller and more obvious than it is currently.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c3f50e0_4682f055",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "Does this int have the same convention as `tcpci_partner_log_msg.status`?",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11e9695_0eba2c9e",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "What would you think about adding the -1 value to `enum tcpci_emul_tx_status` and using that type for this variable? If that worked, it would be more self-documenting.",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a925ff_3a74dd1a",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "I think you should have a comment somewhere that describes the order in which these callbacks happen and how it relates to the common code handling for the same event. Here could be a good place, but if you know a better place, feel free to put it elsewhere.",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8241861d_a512f9c1",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "sent",
+      "range": {
+        "startLine": 214,
+        "startChar": 65,
+        "endLine": 214,
+        "endChar": 69
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee89c918_70b6b336",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "Nit: disconnected. Keep tense consistent when talking about the events that prompt these callbacks.",
+      "range": {
+        "startLine": 234,
+        "startChar": 52,
+        "endLine": 234,
+        "endChar": 65
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb462d10_ece72842",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "Nit: connected. Keep tense consistent.",
+      "range": {
+        "startLine": 245,
+        "startChar": 49,
+        "endLine": 245,
+        "endChar": 73
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78c4d34_b8dfbd67",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "This seems potentially hard to coordinate between extensions. Would it work for the common code to just call `tcpci_partner_make_connection` after calling all the extension `connect` callbacks? That might also make it so `tcpci_partner_make_connection` didn\u0027t need to be part of the public API for this module, which would be nice.",
+      "range": {
+        "startLine": 246,
+        "startChar": 20,
+        "endLine": 247,
+        "endChar": 45
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edc852f6_861ec43c",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "This seems error-prone. I think it might be easier to set this up correctly by chaining together constructor-style function calls. The common partner constructor would take an extension structure, and the DRP extension constructor would take source and sink structures as arguments and return an extension structure.",
+      "range": {
+        "startLine": 28,
+        "startChar": 44,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec7eb81_5889b343",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_faulty_snk.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "Does this extension need to be specific to a sink partner? Or could you have an extension that could be chained together with any kind of partner and be configured to generate a fault after any type of message?\n\nIf this would be a significant functional change, maybe it should wait until another CL after this refactor.",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 53
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c31a9f_34b30dbc",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_src.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-27T21:14:29Z",
+      "side": 1,
+      "message": "I\u0027m not wild about this idiom. If you only have one extension, just writing the declaration out should be simple and quick. It could probably even be a one-liner. If you have more than one extension, using this macro will be awkward at best. I think just typing out the definition would make it more obvious what\u0027s going on in the code.\n\nIf you want to make the emulator setup shorter, I\u0027d prefer a function defined to return a `struct tcpci_src_emul_data`. If I\u0027m not mistaken, that would also avoid the need to declare `tcpci_src_emul_ops` in this header file, which would be nice.",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
