@@ -356,3 +356,14 @@ void bc12_interrupt(enum gpio_signal signal)
 {
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
+
+__override int board_nx20p348x_init(int port)
+{
+	int rv;
+
+	rv = i2c_update8(ppc_chips[port].i2c_port,
+			 ppc_chips[port].i2c_addr_flags,
+			 NX20P348X_DEVICE_CONTROL_REG, NX20P348X_CTRL_LDO_SD,
+			 MASK_SET);
+	return rv;
+}
