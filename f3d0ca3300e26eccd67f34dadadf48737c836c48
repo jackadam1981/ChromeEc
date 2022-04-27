@@ -63,6 +63,30 @@
       },
       "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2879d050_dc7684af",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-04-27T08:57:06Z",
+      "side": 1,
+      "message": "We can not clearly distinguish the reset causes of reset-pin and power-on from IT81302 while reset the EC (power lost or toggle reset pin). Please see this issue:\nhttps://partnerissuetracker.corp.google.com/issues/179523020\n\nIf we want to report only the most fundamental of the reset causes, I would have the IT8XXX2_GCTRL_LRSIWR flag as the first condition to check. Because the the flag will be also set to 1 while power the EC on.\nSince reset pin is also able to clear write-protect state, we can change flash driver to check for the EC_RESET_FLAG_RESET_PIN flag instead of the EC_RESET_FLAG_POWER_ON flag:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/drivers/cros_flash/cros_flash_it8xxx2.c#147\n\nAnd one more thing we need to check it up.\nHow can we modify tc_state_init() function?\nWe no longer get the \"power-on\" reset cause.",
+      "parentUuid": "ac96f970_04a3d78a",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
