@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d2d40d_82be0c57",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-27T06:10:22Z",
+      "side": 1,
+      "message": "Convert to `RETURN_ERROR` here and below?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "b92827834437be5308a225c870d2a6f084691a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
