@@ -22,6 +22,30 @@
       },
       "revId": "793a3199e0402d8f956c6be1a0f95b44e2390444",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4370551_6ce33cdd",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-27T23:55:22Z",
+      "side": 1,
+      "message": "It likely needs a wider effort to distill out the EC specific flags.\nI\u0027ll raise a separate bug.",
+      "parentUuid": "dc7ef6e9_2e6b9e5c",
+      "range": {
+        "startLine": 434,
+        "startChar": 24,
+        "endLine": 434,
+        "endChar": 46
+      },
+      "revId": "793a3199e0402d8f956c6be1a0f95b44e2390444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
