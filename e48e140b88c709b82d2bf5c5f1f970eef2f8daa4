@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b464f44a_ee32d7a0",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-27T05:04:14Z",
+      "side": 1,
+      "message": "Is this needed? I\u0027m not familiar with `\\` outside of the macro definition.",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "e48e140b88c709b82d2bf5c5f1f970eef2f8daa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48565497_0ddb5dd2",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-27T05:04:14Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 34,
+        "startChar": 46,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "e48e140b88c709b82d2bf5c5f1f970eef2f8daa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53f1809_aae49de1",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-27T05:04:14Z",
+      "side": 1,
+      "message": "Should this be `CONFIG_ACCELGYRO_BMI3XX_INT_ENABLE`?",
+      "range": {
+        "startLine": 285,
+        "startChar": 19,
+        "endLine": 285,
+        "endChar": 36
+      },
+      "revId": "e48e140b88c709b82d2bf5c5f1f970eef2f8daa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
