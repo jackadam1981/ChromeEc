@@ -4,6 +4,7 @@
  */
 /* Dojo board configuration */
 
+#include "cbi_fw_config.h"
 #include "common.h"
 #include "console.h"
 #include "cros_board_info.h"
@@ -42,8 +43,14 @@ __override struct keyboard_scan_config keyscan_config = {
 };
 
 /* Vol-up key matrix at T13 */
-const struct vol_up_key vol_up_key_matrix = {
+const struct vol_up_key vol_up_key_matrix_T13 = {
 	.row = 3,
+	.col = 5,
+};
+
+/* Vol-up key matrix at T12 */
+const struct vol_up_key vol_up_key_matrix_T12 = {
+	.row = 1,
 	.col = 5,
 };
 
@@ -297,8 +304,18 @@ static void board_init(void)
 
 	board_update_motion_sensor_config();
 
-	/* Set vol up key to T13 */
-	set_vol_up_key(vol_up_key_matrix.row, vol_up_key_matrix.col);
+	if (board_version >= 2) {
+		if (get_cbi_fw_config_kblight() == KB_BL_PRESENT) {
+			/* Set vol up key to T13 for KB_BL and board_version >= 2 */
+			set_vol_up_key(vol_up_key_matrix_T13.row, vol_up_key_matrix_T13.col);
+		} else {
+			/* Set vol up key to T12 for non KB_BL and board_version >= 2 */
+			set_vol_up_key(vol_up_key_matrix_T12.row, vol_up_key_matrix_T12.col);
+		}
+	} else {
+	/* Set vol up key to T13 for board_version < 2 */
+	set_vol_up_key(vol_up_key_matrix_T13.row, vol_up_key_matrix_T13.col);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
