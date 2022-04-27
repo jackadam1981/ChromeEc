@@ -563,3 +563,10 @@ static void power_monitor(void)
 	}
 	hook_call_deferred(&power_monitor_data, delay);
 }
+
+__override bool board_is_gpioset_allowlist(int gpio)
+{
+	if (gpio == GPIO_EN_NFC_BUZZER)
+		return true;
+	return false;
+}
