@@ -4,6 +4,7 @@
  */
 
 #include <init.h>
+#include <system.h>
 
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
@@ -500,7 +501,8 @@ static void init_pwr_seq_state(void)
 	init_chipset_pwr_seq_state();
 	request_exit_hardoff(false);
 
-	pwr_sm_set_state(SYS_POWER_STATE_G3S5);
+	if (!(system_get_reset_flags() & EC_RESET_FLAG_AP_OFF))
+		pwr_sm_set_state(SYS_POWER_STATE_G3S5);
 }
 
 /* Initialize power sequence system state */
