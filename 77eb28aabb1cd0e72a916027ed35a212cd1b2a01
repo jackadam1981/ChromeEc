@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db60238_0e4efcbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-04-27T23:09:10Z",
+      "side": 1,
+      "message": "Consider https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3609357 and its parents that disable the FIFO when the interrupt line is not used.",
+      "revId": "77eb28aabb1cd0e72a916027ed35a212cd1b2a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
