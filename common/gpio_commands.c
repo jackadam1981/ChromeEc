@@ -277,11 +277,21 @@ static enum ec_status gpio_command_get(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GPIO_GET, gpio_command_get,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+__overridable bool board_is_gpioset_allowlist(int gpio)
+{
+	return false;
+}
+
 static enum ec_status gpio_command_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_gpio_set *p = args->params;
+	int gpio;
 
-	if (system_is_locked())
+	gpio = find_signal_by_name(p->name);
+	if (gpio == GPIO_COUNT)
+		return EC_RES_ERROR;
+
+	if (system_is_locked() && !board_is_gpioset_allowlist(gpio))
 		return EC_RES_ACCESS_DENIED;
 
 	if (set(p->name, p->val) != EC_SUCCESS)

@@ -472,4 +472,13 @@ int signal_is_gpio(int signal);
  */
 void gpio_set_wakepin(enum gpio_signal signal, uint32_t flags);
 
+/**
+ * Let the board customizes its gpioset allowlist. If the gpio pin
+ * is in the allowlist, then we can use the ectool gpioset to change
+ * its value.
+ *
+ * @param gpio	the number of the gpio pin
+ */
+__override_proto bool board_is_gpioset_allowlist(int gpio);
+
 #endif  /* __CROS_EC_GPIO_H */
