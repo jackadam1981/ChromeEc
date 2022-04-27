@@ -39,6 +39,30 @@
       },
       "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac96f970_04a3d78a",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-27T00:16:05Z",
+      "side": 1,
+      "message": "It\u0027s true that the hardware might report multiple causes, but no other driver attempts to pass all of them through so I don\u0027t think this one should either.\n\nThe software tends to assume there is only one proximate cause of a reset, so I\u0027ve made this do that and prefer to report only the most fundamental of the reset causes the hardware reports.",
+      "parentUuid": "7896bc1a_9255a6e2",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
