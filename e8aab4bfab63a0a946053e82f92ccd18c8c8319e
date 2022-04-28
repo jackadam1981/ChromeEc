@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0429f55_6484dded",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-28T06:24:43Z",
+      "side": 1,
+      "message": "This function can be dropped, and move the implementation in CL:3595414 to here.",
+      "range": {
+        "startLine": 419,
+        "startChar": 9,
+        "endLine": 419,
+        "endChar": 40
+      },
+      "revId": "e8aab4bfab63a0a946053e82f92ccd18c8c8319e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
