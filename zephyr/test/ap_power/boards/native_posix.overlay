@@ -61,7 +61,7 @@
 &espi0 {
 	espi-host@0 {
 		status = "okay";
-		compatible = "zephyr,espi-emul-espi-host";
+		compatible = "zephyr,espi-emul-host";
 		reg = <0x0>;
 	};
 };

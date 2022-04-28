@@ -50,7 +50,6 @@ target_sources(app PRIVATE
     src/console_cmd/version.c
     src/console_cmd/waitms.c
     src/cros_cbi.c
-    src/espi.c
     src/flash.c
     src/gpio.c
     src/integration/usbc/usb.c

@@ -11,8 +11,8 @@
 #include "test_state.h"
 
 #include <zephyr/drivers/adc.h>
-#include <zephyr/drivers/espi.h>
-#include <zephyr/drivers/espi_emul.h>
+#include <zephyr/drivers/espi/espi.h>
+#include <zephyr/drivers/espi/espi_emul.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
