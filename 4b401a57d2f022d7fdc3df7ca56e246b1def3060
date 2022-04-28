@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b04b4c_255d6408",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-28T19:52:20Z",
+      "side": 1,
+      "message": "Add a dependency on PLATFORM_EC_FAN\n\n```\n    depends on PLATFORM_EC_FAN\n    default 1\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "4b401a57d2f022d7fdc3df7ca56e246b1def3060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
