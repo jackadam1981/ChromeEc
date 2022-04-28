@@ -11,6 +11,7 @@ This is the entry point for the custom firmware builder workflow recipe.
 import argparse
 import multiprocessing
 import pathlib
+import shutil
 import subprocess
 import sys
 
@@ -125,7 +126,20 @@ def bundle_coverage(opts):
     build_dir = platform_ec / 'build' / 'zephyr'
     tarball_name = 'coverage.tbz2'
     tarball_path = bundle_dir / tarball_name
-    cmd = ['tar', 'cvfj', tarball_path, 'lcov.info']
+    cwd = pathlib.Path.cwd()
+    cmd = [
+        'tar', 'cvfj', tarball_path,
+        'lcov.info',
+        (build_dir / 'coverage_rpt').relative_to(cwd),
+        (build_dir / 'all_tests.info').relative_to(cwd),
+    ]
+    for project in zmake.project.find_projects(zephyr_dir).values():
+        if project.config.is_test:
+            continue
+        info_file = (platform_ec / 'build' / 'zephyr' /
+                        project.config.project_name / 'output' / 'zephyr.info')
+        if info_file.exists():
+            cmd.append(info_file.relative_to(cwd))
     subprocess.run(cmd, cwd=build_dir, check=True)
     meta = info.objects.add()
     meta.file_name = tarball_name
@@ -161,7 +175,6 @@ def bundle_firmware(opts):
         )
         # TODO(kmshelton): Populate the rest of metadata contents as it
         # gets defined in infra/proto/src/chromite/api/firmware.proto.
-
     write_metadata(opts, info)
 
 
@@ -216,7 +229,13 @@ def test(opts):
                 stdout=outfile,
                 check=True,
             )
-
+        rv = subprocess.run([
+            'genhtml', '--branch-coverage', '-q',
+            '-o', build_dir / 'coverage_rpt',
+            '-t', 'Zephyr EC CQ Coverage', '-s', build_dir / 'lcov.info'
+            ], check=True, cwd=platform_ec).returncode
+        if rv:
+            return rv
     return 0
 
 
@@ -263,7 +282,7 @@ def parse_args(args):
         required=False,
         help=(
             'Full pathname for the directory in which to bundle build '
-            'artifacts.',
+            'artifacts.'
         )
     )
 
