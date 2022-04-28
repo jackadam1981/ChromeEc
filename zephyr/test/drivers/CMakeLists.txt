@@ -30,6 +30,8 @@ target_sources(app PRIVATE
   src/console_cmd/accelres.c
   src/cros_cbi.c
   src/espi.c
+  src/espi_peripheral.c
+  src/espi_vwire.c
   src/gpio.c
   src/host_cmd/motion_sense.c
   src/integration/usbc/usb.c
