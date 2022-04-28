@@ -34,4 +34,9 @@
 
 &adc0 {
 	status = "okay";
+	pinctrl-0 = <&adc0_pi0_default    /* GPI0 */
+		     &adc1_pi1_default    /* GPI1 */
+		     &adc2_pi2_default    /* GPI2 */
+		     &adc7_pi7_default>;  /* GPI7 */
+	pinctrl-names = "default";
 };
