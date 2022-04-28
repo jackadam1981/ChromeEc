@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61f27fa_9b826829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-28T02:29:18Z",
+      "side": 1,
+      "message": "ugh, wow, ya, that\u0027s a real big diff for a 1-line change.\nno wonder - the code has changed a lot.\npd_set_vbus_discharge is in common/usb_pd_policy.c on this branch\nbut doesn\u0027t have the same bug.",
+      "revId": "6d54cdd904e53389f74f53792b23b415cf5da840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
