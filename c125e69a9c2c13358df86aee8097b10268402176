@@ -70,6 +70,30 @@
       },
       "revId": "c125e69a9c2c13358df86aee8097b10268402176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ebd96d_3909126e",
+        "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-28T18:09:26Z",
+      "side": 1,
+      "message": "Assuming you will make the change.",
+      "parentUuid": "3308f65c_f6a92638",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 27
+      },
+      "revId": "c125e69a9c2c13358df86aee8097b10268402176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
