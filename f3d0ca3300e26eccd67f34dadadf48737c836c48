@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65208fbc_1a7825a9",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-28T23:50:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35c8e026_d2a8f9da",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29a5fc0e_7ba3b030",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-26T04:41:08Z",
       "side": 1,
       "message": "Won\u0027t this be always the case, since this can only get here if raw_reset_cause is either 2 or 3?\nIf so, this check is redundant, and you can just have:\n} else {\n   return WATCHDOG_RST;\n}",
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c009026_3feac901",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-28T23:50:05Z",
+      "side": 1,
+      "message": "Noticing that IWDTR is just an alias for bit 1 of LRS, I\u0027ve reorganized to make it clearer what\u0027s going on and done this.",
+      "parentUuid": "29a5fc0e_7ba3b030",
       "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +192,30 @@
       "side": 1,
       "message": "\u003e If I\u0027m understanding correctly, that means a power-on reset sets both LRSIWR to 1 and LRS to 0 or 1 (because #WRST is pulled up to VSTBY), and #WRST will do the same?\n\u003e \nRight.\n\n\u003e In that case I think it\u0027s most conservative to treat either of those resets (since they can\u0027t be differentiated) as power-on, as I have it doing right now. We could also remove the test of LRSIWR because we know that branch will never be taken (or go the other way, and remove the support for returning POWERUP). Is that right?\nRight.",
       "parentUuid": "81f4e18f_b7398efb",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c5d2ba_f9787bb9",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-28T23:50:05Z",
+      "side": 1,
+      "message": "I\u0027ve removed support for returning RESET_PIN and added a comment describing how #WRST and power-on can\u0027t be differentiated. Since the status quo was to indicate both power-on and reset-pin, indicating only power-on won\u0027t change the behavior of the flash driver or tc_state_init.",
+      "parentUuid": "372cc398_7813d9ba",
       "range": {
         "startLine": 93,
         "startChar": 0,
