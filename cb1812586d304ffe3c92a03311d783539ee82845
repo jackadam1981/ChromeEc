@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e01281_0f87857d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:18:22Z",
+      "side": 1,
+      "message": "Do you have a sense of how widespread this type of bad product is? Is this going to cause many interop failures?",
+      "revId": "cb1812586d304ffe3c92a03311d783539ee82845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78964956_ce0351d3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:18:22Z",
+      "side": 1,
+      "message": "Should this start with \"C%d\" like most of our messages?",
+      "revId": "cb1812586d304ffe3c92a03311d783539ee82845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
