@@ -99,6 +99,8 @@ const char help_str[] =
 	"      Force the battery to stop charging or discharge\n"
 	"  chargeoverride\n"
 	"      Overrides charge port selection logic\n"
+	"  chargesplash\n"
+	"      Show and manipulate chargesplash variables\n"
 	"  chargestate\n"
 	"      Handle commands related to charge state v2 (and later)\n"
 	"  chipinfo\n"
@@ -10665,6 +10667,7 @@ const struct command commands[] = {
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargecontrol", cmd_charge_control},
 	{"chargeoverride", cmd_charge_port_override},
+	{"chargesplash", cmd_chargesplash},
 	{"chargestate", cmd_charge_state},
 	{"chipinfo", cmd_chipinfo},
 	{"cmdversions", cmd_cmdversions},
