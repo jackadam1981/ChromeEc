@@ -6,6 +6,8 @@
 #include <ap_power/ap_power_interface.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
+static enum ap_power_init_flags init_flags;
+
 bool ap_power_in_state(
 		enum ap_power_state_mask state_mask)
 {
@@ -112,4 +114,14 @@ void ap_power_exit_hardoff(void)
 
 void ap_power_init_reset_log(void)
 {
+}
+
+void ap_power_set_init_flags(enum ap_power_init_flags flags)
+{
+	init_flags = flags;
+}
+
+enum ap_power_init_flags ap_power_get_init_flags(void)
+{
+	return init_flags;
 }
