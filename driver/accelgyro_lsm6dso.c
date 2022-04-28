@@ -488,6 +488,50 @@ err_unlock:
 	return ret;
 }
 
+#ifdef CONFIG_BODY_DETECTION
+int get_rms_noise(const struct motion_sensor_t *s)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+#endif
+
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+static int manage_activity(const struct motion_sensor_t *s,
+			   enum motionsensor_activity activity,
+			   int enable,
+			   const struct ec_motion_sense_activity *param)
+{
+	int ret;
+	struct stprivate_data *data = LSM6DSO_GET_DATA(s);
+
+	switch (activity) {
+
+	default:
+		ret = EC_RES_SUCCESS;
+	}
+	if (ret == EC_RES_SUCCESS) {
+		if (enable) {
+			data->enabled_activities |= 1 << activity;
+			data->disabled_activities &= ~BIT(activity);
+		} else {
+			data->enabled_activities &= ~BIT(activity);
+			data->disabled_activities |= 1 << activity;
+		}
+	}
+	return ret;
+}
+#endif
+
+int lsm_list_activities(const struct motion_sensor_t *s,
+			uint32_t *enabled,
+			uint32_t *disabled)
+{
+	struct stprivate_data *data = LSM6DSO_GET_DATA(s);
+	*enabled = data->enabled_activities;
+	*disabled = data->disabled_activities;
+	return EC_RES_SUCCESS;
+}
+
 const struct accelgyro_drv lsm6dso_drv = {
 	.init = init,
 	.read = read,
@@ -500,4 +544,11 @@ const struct accelgyro_drv lsm6dso_drv = {
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS */
+#ifdef CONFIG_BODY_DETECTION
+	.get_rms_noise = get_rms_noise,
+#endif
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+	.list_activities = lsm_list_activities,
+	.manage_activity = manage_activity,
+#endif
 };
