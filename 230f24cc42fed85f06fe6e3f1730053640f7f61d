@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18022aa5_2de1eb1b",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-28T06:49:54Z",
+      "side": 1,
+      "message": "Rather than having more API for this that\u0027s not useful after startup, why not pass the flags into the pwrseq thread when it\u0027s created? We\u0027d save needing a larger API, and it becomes impossible to misuse the API by trying to set flags after things are initialized. It could also allow users that don\u0027t care to avoid allocating flags at all.",
+      "revId": "230f24cc42fed85f06fe6e3f1730053640f7f61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
