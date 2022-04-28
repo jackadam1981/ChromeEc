@@ -399,10 +399,10 @@ ZTEST(signals, test_espi_vw)
 	 * The signal is configured as an inverted signal,
 	 * so sending a 0 value should be received as a signal.
 	 */
-	emul_espi_host_send_vw(espi, ESPI_VWIRE_SIGNAL_SLP_S5, 0);
+	espi_emul_internal_set_vwire(espi, ESPI_VWIRE_SIGNAL_SLP_S5, 0);
 	zassert_equal(1, power_signal_get(PWR_SLP_S5),
 		"VW SLP_S5 should be 1");
-	emul_espi_host_send_vw(espi, ESPI_VWIRE_SIGNAL_SLP_S5, 1);
+	espi_emul_internal_set_vwire(espi, ESPI_VWIRE_SIGNAL_SLP_S5, 1);
 	zassert_equal(0, power_signal_get(PWR_SLP_S5),
 		"VW SLP_S5 should be 0");
 }
