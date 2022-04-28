@@ -16,6 +16,63 @@
       "message": "Hi Diana and Abe,\nthanks for looking at those two CLs to update Alert and Status messages. This one is to add support for Get_Revision and store partner revision information in the PE state. \n\nIt ties into how we will need to send Status. If you look at the start of Section 6.5 Extended Messages in the PD 3.1 spec, you\u0027ll see this...\n\n \"Additional bytes that might be added to existing\nMessages in future revision of this specification Shall be Ignored.\"\n\nBut, this is not in the USB PD 3.0 version of the spec I have. Meaning some USB PD 3.0 devices might not know they can ignore extra bytes and fail. So, I think we need to send extended messages corresponding to a partner\u0027s minor revision. Status changed from 6 bytes in USB PD 3,0 to 7 bytes in USB PD 3.1. I think the minor revision information this CL would allow us to access should be used to decide whether to send the 6 or 7 byte Status.",
       "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e2b017_ce5be803",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:42:42Z",
+      "side": 1,
+      "message": "Nit: partner\u0027s",
+      "range": {
+        "startLine": 2166,
+        "startChar": 13,
+        "endLine": 2166,
+        "endChar": 21
+      },
+      "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229fad51_abbd8487",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:42:42Z",
+      "side": 1,
+      "message": "Can this be a bit field?",
+      "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23cb2340_c191d9a5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:42:42Z",
+      "side": 1,
+      "message": "Nit: I find the \"Used for Rev 3.x\" comments from pd_ctrl_msg_type slightly easier to parse than these \"Reserved for Rev 3.x\" comments.",
+      "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
