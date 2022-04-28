@@ -11,7 +11,6 @@ This is the entry point for the custom firmware builder workflow recipe.
 import argparse
 import multiprocessing
 import pathlib
-import shutil
 import subprocess
 import sys
 
@@ -39,10 +38,9 @@ def build(opts):
         for project in zmake.project.find_projects(zephyr_dir).values():
             if project.config.is_test:
                 continue
-            build_dir = (
-                platform_ec / 'build' / 'zephyr' / project.config.project_name
-            )
-            metric = metric_list.value.add()
+            build_dir = (platform_ec / 'build' / 'zephyr' /
+                         project.config.project_name)
+            metric = metric_list.value.add()  # pylint: disable=no-member
             metric.target_name = project.config.project_name
             metric.platform_name = project.config.zephyr_board
             for (variant, _) in project.iter_builds():
@@ -119,7 +117,7 @@ def write_metadata(opts, info):
 def bundle_coverage(opts):
     """Bundles the artifacts from code coverage into its own tarball."""
     info = firmware_pb2.FirmwareArtifactInfo()
-    info.bcs_version_info.version_string = opts.bcs_version
+    info.bcs_version_info.version_string = opts.bcs_version  # pylint: disable=no-member
     bundle_dir = get_bundle_dir(opts)
     zephyr_dir = pathlib.Path(__file__).parent
     platform_ec = zephyr_dir.resolve().parent
@@ -141,11 +139,10 @@ def bundle_coverage(opts):
         if info_file.exists():
             cmd.append(info_file.relative_to(cwd))
     subprocess.run(cmd, cwd=build_dir, check=True)
-    meta = info.objects.add()
+    meta = info.objects.add()  # pylint: disable=no-member
     meta.file_name = tarball_name
     meta.lcov_info.type = (
-        firmware_pb2.FirmwareArtifactInfo.LcovTarballInfo.LcovType.LCOV
-    )
+        firmware_pb2.FirmwareArtifactInfo.LcovTarballInfo.LcovType.LCOV)
 
     write_metadata(opts, info)
 
@@ -153,26 +150,24 @@ def bundle_coverage(opts):
 def bundle_firmware(opts):
     """Bundles the artifacts from each target into its own tarball."""
     info = firmware_pb2.FirmwareArtifactInfo()
-    info.bcs_version_info.version_string = opts.bcs_version
+    info.bcs_version_info.version_string = opts.bcs_version  # pylint: disable=no-member
     bundle_dir = get_bundle_dir(opts)
     zephyr_dir = pathlib.Path(__file__).parent
     platform_ec = zephyr_dir.resolve().parent
     for project in zmake.project.find_projects(zephyr_dir).values():
         if project.config.is_test:
             continue
-        build_dir = (
-            platform_ec / 'build' / 'zephyr' / project.config.project_name
-        )
+        build_dir = (platform_ec / 'build' / 'zephyr' /
+                     project.config.project_name)
         artifacts_dir = build_dir / 'output'
         tarball_name = f'{project.config.project_name}.firmware.tbz2'
         tarball_path = bundle_dir.joinpath(tarball_name)
         cmd = ['tar', 'cvfj', tarball_path, '.']
         subprocess.run(cmd, cwd=artifacts_dir, check=True)
-        meta = info.objects.add()
+        meta = info.objects.add()  # pylint: disable=no-member
         meta.file_name = tarball_name
         meta.tarball_info.type = (
-            firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC
-        )
+            firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC)
         # TODO(kmshelton): Populate the rest of metadata contents as it
         # gets defined in infra/proto/src/chromite/api/firmware.proto.
     write_metadata(opts, info)
@@ -220,8 +215,7 @@ def test(opts):
         # Make filenames relative to platform/ec
         cmd = ['sed', '-e', 's|^SF:.*/platform/ec/|SF:|']
         with open(build_dir / 'fullpaths.info') as infile, open(
-                build_dir / 'lcov.info', 'w'
-        ) as outfile:
+                build_dir / 'lcov.info', 'w') as outfile:
             subprocess.run(
                 cmd,
                 cwd=pathlib.Path(__file__).parent,
@@ -229,13 +223,15 @@ def test(opts):
                 stdout=outfile,
                 check=True,
             )
-        rv = subprocess.run([
-            'genhtml', '--branch-coverage', '-q',
-            '-o', build_dir / 'coverage_rpt',
-            '-t', 'Zephyr EC CQ Coverage', '-s', build_dir / 'lcov.info'
-            ], check=True, cwd=platform_ec).returncode
-        if rv:
-            return rv
+        ret = subprocess.run([
+            'genhtml', '--branch-coverage', '-q', '-o',
+            build_dir / 'coverage_rpt', '-t', 'Zephyr EC CQ Coverage', '-s',
+            build_dir / 'lcov.info'
+        ],
+                             check=True,
+                             cwd=platform_ec).returncode
+        if ret:
+            return ret
     return 0
 
 
@@ -271,20 +267,15 @@ def parse_args(args):
     parser.add_argument(
         '--metadata',
         required=False,
-        help=(
-            'Full pathname for the file in which to write build artifact '
-            'metadata.'
-        ),
+        help=('Full pathname for the file in which to write build artifact '
+              'metadata.'),
     )
 
     parser.add_argument(
         '--output-dir',
         required=False,
-        help=(
-            'Full pathname for the directory in which to bundle build '
-            'artifacts.'
-        )
-    )
+        help=('Full pathname for the directory in which to bundle build '
+              'artifacts.'))
 
     parser.add_argument(
         '--code-coverage',
@@ -305,7 +296,8 @@ def parse_args(args):
     # Would make this required=True, but not available until 3.7
     sub_cmds = parser.add_subparsers()
 
-    build_cmd = sub_cmds.add_parser('build', help='Builds all firmware targets')
+    build_cmd = sub_cmds.add_parser('build',
+                                    help='Builds all firmware targets')
     build_cmd.set_defaults(func=build)
 
     build_cmd = sub_cmds.add_parser(
