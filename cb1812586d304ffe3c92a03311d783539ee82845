@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40124505_2332a614",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-28T20:53:14Z",
+      "side": 1,
+      "message": "Michal and I have run into it, both with the Apple 3-in-1 dongle which can hit this when it presents the wrong data role after hard resets.  Theoretically, I wouldn\u0027t expect many interop failures since we had this running in TCPMv1 for quite a while and wild ChromeOS devices are still majority TCPMv1.  It just got missed in TCPMv2.\n\nThe only other device I\u0027ve seen us hit this with on TCPMv1 was a Zinger EVT charger.  It sent its Source Cap as a PD 1.0 UFP",
+      "parentUuid": "e1e01281_0f87857d",
+      "revId": "cb1812586d304ffe3c92a03311d783539ee82845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78964956_ce0351d3",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-28T20:18:22Z",
       "side": 1,
       "message": "Should this start with \"C%d\" like most of our messages?",
+      "revId": "cb1812586d304ffe3c92a03311d783539ee82845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d394521f_6eb7778c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-28T20:53:14Z",
+      "side": 1,
+      "message": "Yeah, good call",
+      "parentUuid": "78964956_ce0351d3",
       "revId": "cb1812586d304ffe3c92a03311d783539ee82845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
