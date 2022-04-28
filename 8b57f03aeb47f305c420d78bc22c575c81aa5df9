@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3996f45f_09623c47",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-28T01:02:09Z",
+      "side": 1,
+      "message": "Thanks for continuing to take a look at this. I\u0027ve implemented the changes you suggested, and there are a few things to note.\n\nThis type of conditional assignment leads to a potential issue with alert broadcasting setting the ADO when nothing is connected. Because nothing is connected, the alert never gets sent and the ADO is never cleared. Then, when a device is actually connected, it can\u0027t send alerts because ADO is non-zero. To fix this I separated out clearing the ado into it\u0027s own function (`pe_clear_ado`) which is now called in `pe_clear_port_data`, `pe_src_startup_entry` and `pe_snk_startup_entry`. \n\nAnother small thing. After receiving an alert, the partner does not necessarily send Get_Status. If the alert is about the battery, they\u0027ll send Get_Battery_Status. So, for example if a non-battery alert blocks a battery alert, the partner may never request battery status. But, this should be on the alert sender to check for. Another option could be to OR bits 16-31 of the ADO if it is already set. ORing would not work for extended alert events.",
+      "parentUuid": "ad5e6bdd_5b4c19b1",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50f40f3_50b967bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
