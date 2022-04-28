@@ -16,6 +16,24 @@
       "message": "nit: probably consider specifying it\u0027s the chargesplash in the console print, lest we confuse the reader about whether we\u0027re setting up general display or an external display or department store mannequin display...",
       "revId": "a9ce8551a6b9b3e7f2a6909295b0e3248df05511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90a2ca2_c8fcf30a",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-28T22:05:12Z",
+      "side": 1,
+      "message": "It\u0027s hidden in the CPRINTS for this file:\n\n```\n#define CPRINTS(format, args...) \\\n\tcprints(CC_USBCHARGE, \"chargesplash: \" format, ##args)\n```\n\nOK?",
+      "parentUuid": "cbadd5b3_1ab4e544",
+      "revId": "a9ce8551a6b9b3e7f2a6909295b0e3248df05511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -585,6 +585,30 @@
       },
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8481777_c4952254",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-04-28T22:05:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e3cb799_f745cf1e",
+      "range": {
+        "startLine": 106,
+        "startChar": 55,
+        "endLine": 106,
+        "endChar": 68
+      },
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
