@@ -107,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cd5f390_cfc29793",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:09:18Z",
+      "side": 1,
+      "message": "What I was imagining is that the common code, upon receiving a message, would 1) do whatever default message handling it has, 2) call into each of the extensions for additional handling, 3) keep track of or react to the return values of the extensions in some way, and 4) send or not send a GoodCRC based on the return values from the extensions. That would cover the case where the extension wants to do something before sending the GoodCRC.\n\nWhat is the case you\u0027re imagining where the extension would want to do something after sending a GoodCRC?",
+      "parentUuid": "2945b590_3169c1da",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c3f50e0_4682f055",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 6
@@ -142,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e514a9f9_8ccd3e2e",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:09:18Z",
+      "side": 1,
+      "message": "Can you comment this variable to indicate how it should be interpreted?",
+      "parentUuid": "f516f6d4_947f20b3",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a11e9695_0eba2c9e",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 6
@@ -171,6 +213,24 @@
       "side": 1,
       "message": "Only concern I have is that we will add enum fields that are irrelevant for `emul_tcpci`. If this is not a problem, I am okay with that approach.",
       "parentUuid": "a11e9695_0eba2c9e",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e687f42_06d6f049",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:09:18Z",
+      "side": 1,
+      "message": "I don\u0027t have a huge problem with that, but if this enum (or values from this enum) have application beyond `emul_tcpci`, maybe the enum should be moved to a more generic location and given a more generic name. Or if this status value is its own concept, and it does make sense to combine them, maybe this status value should have its own enum that is separate from `enum tcpci_emul_tx_status`.",
+      "parentUuid": "deb2d499_a5b2b9dc",
       "revId": "d591eb1a129f5114054580677c48f7185549c832",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -344,6 +404,30 @@
       "side": 1,
       "message": "Yes, it make sense to make this extension more generic. However this CL is already big enough and I would like to change this extension in another CL.",
       "parentUuid": "8ec7eb81_5889b343",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 53
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c1bc295_45599542",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_faulty_snk.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:09:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8da8dc49_48f32a54",
       "range": {
         "startLine": 27,
         "startChar": 13,
