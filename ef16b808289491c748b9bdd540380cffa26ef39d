@@ -70,6 +70,30 @@
       },
       "revId": "ef16b808289491c748b9bdd540380cffa26ef39d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ac5048_ff649838",
+        "filename": "include/lid_switch.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-28T23:02:14Z",
+      "side": 1,
+      "message": "duplicate #defines are not errors.\nas soon as you change one of them, POOF.",
+      "parentUuid": "a11d3dab_929d97a5",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "ef16b808289491c748b9bdd540380cffa26ef39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
