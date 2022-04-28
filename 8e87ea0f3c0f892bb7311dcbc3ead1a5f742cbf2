@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2eef422_b4e3db42",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_mchp/interrupts.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-04-28T18:59:18Z",
+      "side": 1,
+      "message": "slp_s3 and slp_s4 interrupt handler might not be required, these signals uses Virtual Wire events.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "8e87ea0f3c0f892bb7311dcbc3ead1a5f742cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
