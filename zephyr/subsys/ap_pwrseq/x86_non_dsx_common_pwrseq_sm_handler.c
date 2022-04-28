@@ -427,14 +427,14 @@ static int common_pwr_sm_run(int state)
  */
 static void pwr_seq_set_initial_state(void)
 {
-	uint32_t reset_flags = system_get_reset_flags();
+	enum ap_power_init_flags flags = ap_power_get_init_flags();
 	/* Determine current state using chipset specific handler */
 	enum power_states_ndsx state = chipset_pwr_seq_get_state();
 
 	/*
-	 * Check reset flags, and ensure CPU is in correct state.
+	 * Check init flags, and ensure CPU is in correct state.
 	 */
-	if (reset_flags & EC_RESET_FLAG_AP_OFF) {
+	if (flags & AP_POWER_INIT_OFF) {
 		/*
 		 * AP is expected to be off.
 		 * If it isn't, force shutdown.
@@ -448,7 +448,7 @@ static void pwr_seq_set_initial_state(void)
 	/*
 	 * Not in warm boot, but CPU is not shutdown.
 	 */
-	if (((reset_flags & EC_RESET_FLAG_SYSJUMP) == 0) &&
+	if (((flags & AP_POWER_INIT_WARM_START) == 0) &&
 	    (state != SYS_POWER_STATE_G3)) {
 		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
 		state = SYS_POWER_STATE_G3;
