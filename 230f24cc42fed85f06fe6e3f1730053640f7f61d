@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bc9dab_d4419e72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-28T07:22:12Z",
+      "side": 1,
+      "message": "Another option is to have ap_power_get_init_flags() be an external function that needs to return the flags. This is easy enough to do.\n",
+      "revId": "230f24cc42fed85f06fe6e3f1730053640f7f61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18022aa5_2de1eb1b",
