@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e90d00bf_4978a2ea",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-28T23:09:44Z",
+      "side": 1,
+      "message": "i\u0027m skeptical about a handshake where the AP has to actively\nstop the EC from doing something catastrophic.\n\nanother case may be ship mode -\u003e OOB experience.\nunbox unit, open lid, plug in A/C to turn on device,\nunplug A/C -\u003e POOF.",
+      "parentUuid": "b0b4bdb5_6b61fb1d",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e2eb6d0_f8b4463f",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
