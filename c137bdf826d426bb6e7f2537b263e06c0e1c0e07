@@ -16,6 +16,23 @@
       "message": "What is this branch for?",
       "revId": "c137bdf826d426bb6e7f2537b263e06c0e1c0e07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c02bc59_cf50753b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-04-28T20:28:26Z",
+      "side": 1,
+      "message": "It\u0027s the prepvt cr50 branch. It\u0027s not entirely necessary to pick gsctool changes. I just do it, so we don\u0027t get merge conflicts in the future.",
+      "revId": "c137bdf826d426bb6e7f2537b263e06c0e1c0e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
