@@ -42,14 +42,20 @@
 &pwm1 {
 	status = "okay";
 	prescaler-cx = <PWM_PRESCALER_C4>;
+	pinctrl-0 = <&pwm1_pa1_default>; /* GPA1 */
+	pinctrl-names = "default";
 };
 
 &pwm2 {
 	status = "okay";
 	prescaler-cx = <PWM_PRESCALER_C4>;
+	pinctrl-0 = <&pwm2_pa2_default>; /* GPA2 */
+	pinctrl-names = "default";
 };
 
 &pwm3 {
 	status = "okay";
 	prescaler-cx = <PWM_PRESCALER_C4>;
+	pinctrl-0 = <&pwm3_pa3_default>; /* GPA3 */
+	pinctrl-names = "default";
 };
