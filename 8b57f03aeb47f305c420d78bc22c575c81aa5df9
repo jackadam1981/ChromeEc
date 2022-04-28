@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58fed995_c623b021",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-28T22:26:38Z",
+      "side": 1,
+      "message": "\u003e Do we generally expect the partner to do something to fix the alert? \n\nGenerally, no. Alerts are largely just informative, there usually won\u0027t be anything to fix. \n\n\u003e If so, we could just drop alerts that we can\u0027t send right away, and then if the underlying condition still exists after XXX ms, we could send a new alert.\n\nI don\u0027t know if this is always true. A lot of these are about status changes, not underlying conditions. For example, a source input change alert should be sent when a device\u0027s external AC power is removed. If that alert is missed, and the sender does not try to resend it, there is no condition that will inevitably lead to another alert. We\u0027ll just change to a new source input (battery). In cases like this, the alert sender should probably try to resend the alert.",
+      "parentUuid": "f6aa5062_1e74b259",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50f40f3_50b967bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
