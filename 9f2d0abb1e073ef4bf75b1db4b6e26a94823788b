@@ -117,6 +117,30 @@
       },
       "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05daf97c_9ba01505",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4729,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-28T23:04:20Z",
+      "side": 1,
+      "message": "yes.\nINIT_DISPLAY in this context sounds like a display initialization command\nwhen it\u0027s really a an acknowledgement.",
+      "parentUuid": "61682cef_de9524eb",
+      "range": {
+        "startLine": 4729,
+        "startChar": 1,
+        "endLine": 4729,
+        "endChar": 29
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
