@@ -918,6 +918,10 @@
 /* Compile input current ramping support using software control */
 #undef CONFIG_CHARGE_RAMP_SW
 
+/* Enable EC support for charging splashscreen */
+#undef CONFIG_CHARGESPLASH
+#undef CONFIG_CHARGESPLASH_BOOT_MAX_TRIES
+
 /*****************************************************************************/
 /* Charger config */
 
@@ -6638,6 +6642,13 @@
 #endif
 #endif /* CONFIG_USB_PD_DISCHARGE_GPIO */
 #endif /* CONFIG_USB_PD_DISCHARGE */
+
+/* Chargesplash defaults */
+#ifdef CONFIG_CHARGESPLASH
+#ifndef CONFIG_CHARGESPLASH_BOOT_MAX_TRIES
+#define CONFIG_CHARGESPLASH_BOOT_MAX_TRIES 5
+#endif
+#endif
 
 /* EC Codec Wake-on-Voice related definitions */
 #ifdef CONFIG_AUDIO_CODEC_WOV
