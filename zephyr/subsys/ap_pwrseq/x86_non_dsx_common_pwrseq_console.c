@@ -40,6 +40,8 @@ static int powerindebug_handler(const struct shell *shell, size_t argc,
 		power_set_debug(m);
 	}
 
+	shell_fprintf(shell, SHELL_INFO, "init flags: 0x%04x\n",
+		      ap_power_get_init_flags());
 	/* Print the mask */
 	current = power_get_signals();
 	shell_fprintf(shell, SHELL_INFO, "power in:   0x%04x\n", current);

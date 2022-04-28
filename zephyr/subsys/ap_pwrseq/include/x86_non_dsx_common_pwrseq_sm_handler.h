@@ -26,6 +26,7 @@ enum power_states_ndsx chipset_pwr_seq_get_state(void);
 void request_exit_hardoff(bool should_exit);
 enum power_states_ndsx pwr_sm_get_state(void);
 void apshutdown(void);
+enum ap_power_init_flags ap_power_get_init_flags(void);
 void ap_pwrseq_handle_chipset_reset(void);
 extern const char pwrsm_dbg[][25];
 

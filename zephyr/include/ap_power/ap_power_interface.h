@@ -167,6 +167,22 @@ enum ap_power_shutdown_reason {
 };
 
 /**
+ * @brief Initialisation flags. These may be set before starting
+ * to control the startup of the AP.
+ */
+enum ap_power_init_flags {
+	/*
+	 * Warm restart. Do not reset outputs, AP may already be
+	 * on, so sync state.
+	 */
+	AP_POWER_INIT_WARM_START = BIT(0),
+	/*
+	 * If AP is already off, do not start it.
+	 */
+	AP_POWER_INIT_OFF = BIT(1),	/* AP stays off */
+};
+
+/**
  * @brief Check if AP is in a given state.
  *
  * @param state_mask Combination of one or more AP_POWER_STATE_* flags.
@@ -215,5 +231,12 @@ void ap_power_force_shutdown(enum ap_power_shutdown_reason reason);
  * @brief Initialise the AP reset log.
  */
 void ap_power_init_reset_log(void);
+
+/**
+ * @brief Set the initialisation flags.
+ *
+ * @param flags The mask of flags to set.
+ */
+void ap_power_set_init_flags(enum ap_power_init_flags flags);
 
 #endif /* __AP_POWER_AP_POWER_INTERFACE_H__ */

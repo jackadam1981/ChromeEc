@@ -6,7 +6,7 @@
 #include <power_signals.h>
 #include <signal_gpio.h>
 #include <drivers/gpio.h>
-#include "system.h"
+#include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 #define MY_COMPAT	intel_ap_pwrseq_gpio
 
@@ -119,11 +119,12 @@ int power_signal_gpio_set(enum pwr_sig_gpio index, int value)
 void power_signal_gpio_init(void)
 {
 	/*
-	 * If there has been a sysjump, do not set the output
+	 * If doing a warm restart, do not set the output
 	 * to the deasserted state.
 	 */
-	gpio_flags_t out_flags = system_jumped_to_this_image() ?
-				 GPIO_OUTPUT : GPIO_OUTPUT_INACTIVE;
+	gpio_flags_t out_flags =
+		(ap_power_get_init_flags() & AP_POWER_INIT_WARM_START)
+		?  GPIO_OUTPUT : GPIO_OUTPUT_INACTIVE;
 
 	for (int i = 0; i < ARRAY_SIZE(gpio_config); i++) {
 		if (gpio_config[i].output) {
