@@ -189,7 +189,6 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_port = I2C_PORT_USB_MUX1,
 		.i2c_addr_flags = TUSB1064_I2C_ADDR0_FLAGS,
 		.driver = &tusb1064_usb_mux_driver,
-		.hpd_update = &tusb1044_hpd_update,
 		.next_mux = &usbc1_virtual_mux,
 	},
 };
