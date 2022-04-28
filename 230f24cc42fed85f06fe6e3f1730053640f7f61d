@@ -51,6 +51,24 @@
       "parentUuid": "18022aa5_2de1eb1b",
       "revId": "230f24cc42fed85f06fe6e3f1730053640f7f61d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba877f7f_49741571",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-28T23:18:24Z",
+      "side": 1,
+      "message": "Yes, having something explicitly initialize power sequencing rather than it happening \"by magic\" seems like a fine choice.",
+      "parentUuid": "1f177a89_f9009c1f",
+      "revId": "230f24cc42fed85f06fe6e3f1730053640f7f61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
