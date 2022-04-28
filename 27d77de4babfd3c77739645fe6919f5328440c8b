@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e228c32a_bbbca91b",
+        "filename": "zephyr/zmake/.pylintrc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-28T17:18:54Z",
+      "side": 0,
+      "message": "it depends on the module.  stdlib ones should be found.  self-modules should be found by handling yourself.\n\n3rd party packages are not discovered.  this is somewhat by design since the set of 3rd party packages is inconsistent depending on the execution environment.  there isn\u0027t a great answer for these in general.  for now, disabling the warning for each import is prob best.\n\n import yaml  # pylint: disable\u003dimport-error\n\nthis issue comes up for all pylint usage, not just cros lint.  i started a thread about it a while ago, but no one had any feedback on it.",
+      "parentUuid": "1f12271d_fe351b95",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 93
+      },
+      "revId": "27d77de4babfd3c77739645fe6919f5328440c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9133f30a_2c84322d",
         "filename": "zephyr/zmake/run_tests.sh",
         "patchSetId": 2
