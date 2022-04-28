@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90143429_2911efe1",
+        "filename": "baseboard/brask/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-28T03:21:58Z",
+      "side": 1,
+      "message": "sigh, 80+ cols.",
+      "range": {
+        "startLine": 87,
+        "startChar": 80,
+        "endLine": 87,
+        "endChar": 81
+      },
+      "revId": "b2fc424e8e6ad7f17ebea5361037170b8463b5c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10275289_50e30d30",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-04-28T03:21:58Z",
+      "side": 1,
+      "message": "not eSPI but still VW?",
+      "range": {
+        "startLine": 158,
+        "startChar": 28,
+        "endLine": 158,
+        "endChar": 31
+      },
+      "revId": "b2fc424e8e6ad7f17ebea5361037170b8463b5c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
