@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b58343c_04767b65",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-28T16:49:43Z",
+      "side": 1,
+      "message": "Please mention that only putting the period:0 to the first node is supported. Putting the period:0 to other nodes doesn\u0027t. Because the line 216 breaks the loop. Maybe add a TODO to support this use case.",
+      "range": {
+        "startLine": 195,
+        "startChar": 26,
+        "endLine": 195,
+        "endChar": 45
+      },
+      "revId": "99367dafd6866b930981e3dde32d8e4294e81e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
