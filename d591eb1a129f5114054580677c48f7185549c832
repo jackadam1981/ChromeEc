@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2974c495_36b85d1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-28T17:47:52Z",
+      "side": 1,
+      "message": "I replied to comments where I have some concerns. Suggestions in comments to which I didn\u0027t reply I am going to implement in the next version of this CL.",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bd885ee_4ce48444",
@@ -66,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2945b590_3169c1da",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-28T17:47:52Z",
+      "side": 1,
+      "message": "Main purpose of not sending GoodCRC immediately in the common code is to allow of implementation faulty extensions that in some cases skip GoodCRC.\n\nThe problem with returning if GoodCRC should be send is that, usually extension would like to take some actions before GoodCRC is sent. Replacing `tcpci_emul_partner_msg_status()` with return value will require a mechanism to postpone some extension actions to be performed after GoodCRC.",
+      "parentUuid": "afec514c_7bb96cab",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c3f50e0_4682f055",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 6
@@ -83,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f516f6d4_947f20b3",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-28T17:47:52Z",
+      "side": 1,
+      "message": "Yes, this is used to update status in the logged message (message is logged before it is handled so status is not known at this time, but cannot be logged later to keep order of received and sent messages).",
+      "parentUuid": "4c3f50e0_4682f055",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a11e9695_0eba2c9e",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 6
@@ -94,6 +153,24 @@
       "writtenOn": "2022-04-27T21:14:29Z",
       "side": 1,
       "message": "What would you think about adding the -1 value to `enum tcpci_emul_tx_status` and using that type for this variable? If that worked, it would be more self-documenting.",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb2d499_a5b2b9dc",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-28T17:47:52Z",
+      "side": 1,
+      "message": "Only concern I have is that we will add enum fields that are irrelevant for `emul_tcpci`. If this is not a problem, I am okay with that approach.",
+      "parentUuid": "a11e9695_0eba2c9e",
       "revId": "d591eb1a129f5114054580677c48f7185549c832",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -243,6 +320,30 @@
       "writtenOn": "2022-04-27T21:14:29Z",
       "side": 1,
       "message": "Does this extension need to be specific to a sink partner? Or could you have an extension that could be chained together with any kind of partner and be configured to generate a fault after any type of message?\n\nIf this would be a significant functional change, maybe it should wait until another CL after this refactor.",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 53
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da8dc49_48f32a54",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_faulty_snk.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-04-28T17:47:52Z",
+      "side": 1,
+      "message": "Yes, it make sense to make this extension more generic. However this CL is already big enough and I would like to change this extension in another CL.",
+      "parentUuid": "8ec7eb81_5889b343",
       "range": {
         "startLine": 27,
         "startChar": 13,
