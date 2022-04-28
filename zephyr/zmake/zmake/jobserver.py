@@ -39,7 +39,7 @@ class JobClient:
         """Get the environment variables necessary to share the job server."""
         return {}
 
-    def popen(self, argv, **kwargs):
+    def popen(self, *args, **kwargs):
         """Start a process using subprocess.Popen
 
         All other arguments are passed to subprocess.Popen.
@@ -51,8 +51,8 @@ class JobClient:
         kwargs["env"].update(self.env())
 
         logger = logging.getLogger(self.__class__.__name__)
-        logger.debug("Running %s", zmake.util.repr_command(argv))
-        return subprocess.Popen(argv, **kwargs)
+        logger.debug("Running %s", zmake.util.repr_command(*args))
+        return subprocess.Popen(*args, **kwargs)
 
     def run(self, *args, claim_job=True, **kwargs):
         """Run a process using subprocess.run, optionally claiming a job.

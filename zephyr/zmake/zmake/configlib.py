@@ -8,10 +8,8 @@ import zmake.output_packers
 
 
 def _register_project(**kwargs):
-    kwargs.setdefault(
-        "project_dir", here  # noqa: F821 pylint: disable=undefined-variable
-    )
-    register_project(**kwargs)  # noqa: F821 pylint: disable=undefined-variable
+    kwargs.setdefault("project_dir", here)  # noqa: F821
+    register_project(**kwargs)  # noqa: F821
 
 
 def register_host_project(**kwargs):
