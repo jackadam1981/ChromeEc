@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7966413f_cc34e758",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-28T16:51:45Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "92a7e69f5737081b0d2b2724b7e3943a1e77096e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da594d84_84cc978a",
+        "filename": "zephyr/projects/trogdor/lazor/led.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-28T16:51:45Z",
+      "side": 1,
+      "message": "Move it one line above? So the connection link (led-color, led-id) is like grouped.",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "92a7e69f5737081b0d2b2724b7e3943a1e77096e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
