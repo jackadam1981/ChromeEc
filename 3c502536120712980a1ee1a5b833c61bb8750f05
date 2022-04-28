@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b51b065_c4741945",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-28T16:21:13Z",
+      "side": 1,
+      "message": "Hi Diana and Abe,\nthanks for looking at those two CLs to update Alert and Status messages. This one is to add support for Get_Revision and store partner revision information in the PE state. \n\nIt ties into how we will need to send Status. If you look at the start of Section 6.5 Extended Messages in the PD 3.1 spec, you\u0027ll see this...\n\n \"Additional bytes that might be added to existing\nMessages in future revision of this specification Shall be Ignored.\"\n\nBut, this is not in the USB PD 3.0 version of the spec I have. Meaning some USB PD 3.0 devices might not know they can ignore extra bytes and fail. So, I think we need to send extended messages corresponding to a partner\u0027s minor revision. Status changed from 6 bytes in USB PD 3,0 to 7 bytes in USB PD 3.1. I think the minor revision information this CL would allow us to access should be used to decide whether to send the 6 or 7 byte Status.",
+      "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
