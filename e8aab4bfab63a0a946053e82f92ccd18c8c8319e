@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca28a6b1_ae27d7fe",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-28T06:25:27Z",
+      "side": 1,
+      "message": "You\u0027ll need to add this to include/config.h and also in zephyr.",
+      "range": {
+        "startLine": 413,
+        "startChar": 7,
+        "endLine": 413,
+        "endChar": 45
+      },
+      "revId": "e8aab4bfab63a0a946053e82f92ccd18c8c8319e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0429f55_6484dded",
         "filename": "common/virtual_battery.c",
         "patchSetId": 4
