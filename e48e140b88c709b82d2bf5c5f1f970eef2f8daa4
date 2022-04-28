@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e34555_9acbcff0",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-28T19:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b464f44a_ee32d7a0",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "e48e140b88c709b82d2bf5c5f1f970eef2f8daa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48565497_0ddb5dd2",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Actually removing \\ works. Updated.",
       "parentUuid": "09ca7cb5_be1c8bad",
+      "range": {
+        "startLine": 34,
+        "startChar": 46,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "e48e140b88c709b82d2bf5c5f1f970eef2f8daa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b92e30_f5227ba3",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-04-28T19:18:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e2576ea_a8103ae2",
       "range": {
         "startLine": 34,
         "startChar": 46,
