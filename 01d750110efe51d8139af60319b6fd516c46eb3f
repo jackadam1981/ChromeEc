@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcd6e28a_8f066639",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T18:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce9e4cd_033d142e",
+      "revId": "01d750110efe51d8139af60319b6fd516c46eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eedf3d9_67d85a1a",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-26T20:18:15Z",
       "side": 1,
       "message": "how about making or operation at line 17 for these?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "01d750110efe51d8139af60319b6fd516c46eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c600613_3d782014",
+        "filename": "zephyr/projects/intelrvp/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T18:40:06Z",
+      "side": 1,
+      "message": "done.\nmakes sense, thanks.",
+      "parentUuid": "2eedf3d9_67d85a1a",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bd66f4_1c120065",
+        "filename": "zephyr/projects/intelrvp/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T18:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4854c3de_800d44a7",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "01d750110efe51d8139af60319b6fd516c46eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e32a02b_60c5dea4",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-04-26T20:18:15Z",
       "side": 1,
       "message": "not needed for MEC",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "01d750110efe51d8139af60319b6fd516c46eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72432631_a0040a06",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T18:40:06Z",
+      "side": 1,
+      "message": "typec_2 and typec_3 are needed by ioex-c2 in /intelrvp/adlrvp/ioex.dts for compilation. not sure if switch can be added in ioex.dts.\nAlternatively, since the number of Type C port is calculated from usbc.dts, which is 2 for MEC. so this part of code is harmless, EC only communicates with typec_0 and typec_1.",
+      "parentUuid": "7e32a02b_60c5dea4",
       "range": {
         "startLine": 35,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1de80ee_b78c0757",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T18:40:06Z",
+      "side": 1,
+      "message": "\u0026spi0 is defined in /zephyr/boards/arm/mec1727/mec1727.dts already.\nnot needed this in dts under project.",
+      "parentUuid": "0490df0e_f418bdb0",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "01d750110efe51d8139af60319b6fd516c46eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef2a7d7_ccb5e518",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-04-26T20:18:15Z",
       "side": 1,
       "message": "not needed for MEC",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "01d750110efe51d8139af60319b6fd516c46eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca9cfed_4bf620e6",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_mchp/bb_retimer.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T18:40:06Z",
+      "side": 1,
+      "message": "done.\nremoved in patchset 3.",
+      "parentUuid": "3ef2a7d7_ccb5e518",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bf239a_c1ce5b72",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_mchp/interrupts.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T18:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaee1943_b68d1ca4",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "01d750110efe51d8139af60319b6fd516c46eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f597f739_f0ae403c",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-04-26T20:18:15Z",
       "side": 1,
       "message": "not needed for MEC",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 4
+      },
+      "revId": "01d750110efe51d8139af60319b6fd516c46eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e622211_474e1537",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_mchp/interrupts.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T18:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f597f739_f0ae403c",
       "range": {
         "startLine": 89,
         "startChar": 0,
