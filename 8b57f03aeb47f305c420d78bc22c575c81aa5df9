@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6aa5062_1e74b259",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-28T20:28:03Z",
+      "side": 1,
+      "message": "\u003e To fix this I separated out clearing the ado into it\u0027s own function ( pe_clear_ado ) which is now called in  pe_clear_port_data ,  pe_src_startup_entry  and  pe_snk_startup_entry.\n\nThanks. That\u0027s pretty much what I had in mind for handling an ADO for an unconnected port gracefully.\n\n\u003e So, for example if a non-battery alert blocks a battery alert, the partner may never request battery status. But, this should be on the alert sender to check for. Another option could be to OR bits 16-31 of the ADO if it is already set. ORing would not work for extended alert events.\n\nAFAIK, we don\u0027t expect to be sending alerts all the time and getting backed up because we couldn\u0027t get them out fast enough. So I\u0027d be inclined to just have some lightweight blocking behavior and not try to combine in-queue alerts.\n\nOne thing I\u0027m not clear on: Do we generally expect the partner to do something to fix the alert? If so, we could just drop alerts that we can\u0027t send right away, and then if the underlying condition still exists after XXX ms, we could send a new alert.",
+      "parentUuid": "3996f45f_09623c47",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50f40f3_50b967bc",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
