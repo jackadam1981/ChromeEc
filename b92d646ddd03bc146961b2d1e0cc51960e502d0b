@@ -165,6 +165,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d70b5015_86a38a12",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-28T20:43:52Z",
+      "side": 1,
+      "message": "Cool.  As long as I can look at a feedback report and tell what\u0027s going on, then I\"m happy",
+      "parentUuid": "f42c8a2b_05eabfc2",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "308a65e9_31c40ed2",
@@ -302,6 +320,24 @@
       "side": 1,
       "message": "I adjusted the code to only do a forceful shutdown if we never successfully initialized the display. The display code can then handle a graceful shutdown as it likes.",
       "parentUuid": "4e315b5e_1a1f3f2e",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a834e11c_d245c1b1",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-28T20:43:52Z",
+      "side": 1,
+      "message": "I like it, thanks 😊",
+      "parentUuid": "3c641665_2dc8a0d3",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -489,6 +525,24 @@
       "side": 1,
       "message": "Long-term plan is to stay here. Any issues with that?",
       "parentUuid": "39edfe78_c1be2d26",
+      "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60078db8_408dc1b7",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-28T20:43:52Z",
+      "side": 1,
+      "message": "I\u0027d defer to whoever is running the AP support for this one?  It seems weird to me, but I also don\u0027t write AP code 😄",
+      "parentUuid": "fd20cb67_11bc6654",
       "revId": "b92d646ddd03bc146961b2d1e0cc51960e502d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

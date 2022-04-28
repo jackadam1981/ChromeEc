@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbadd5b3_1ab4e544",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-04-28T20:43:52Z",
+      "side": 1,
+      "message": "nit: probably consider specifying it\u0027s the chargesplash in the console print, lest we confuse the reader about whether we\u0027re setting up general display or an external display or department store mannequin display...",
+      "revId": "a9ce8551a6b9b3e7f2a6909295b0e3248df05511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
