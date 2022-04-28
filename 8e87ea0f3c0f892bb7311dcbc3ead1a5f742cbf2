@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd7cd4e9_d56e9bb7",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T20:24:19Z",
+      "side": 1,
+      "message": "done in patchset 5",
+      "parentUuid": "b65af825_22012330",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "8e87ea0f3c0f892bb7311dcbc3ead1a5f742cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eaced56_91a8063b",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "753e8f2f_bf2245a8",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T20:24:19Z",
+      "side": 1,
+      "message": "done in patchset 5",
+      "parentUuid": "6eaced56_91a8063b",
+      "revId": "8e87ea0f3c0f892bb7311dcbc3ead1a5f742cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2eef422_b4e3db42",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-04-28T18:59:18Z",
       "side": 1,
       "message": "slp_s3 and slp_s4 interrupt handler might not be required, these signals uses Virtual Wire events.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "8e87ea0f3c0f892bb7311dcbc3ead1a5f742cbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee77bbbd_e1ef03ce",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_mchp/interrupts.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-04-28T20:24:19Z",
+      "side": 1,
+      "message": "done in patchset 5\nyes, both are replaced with eSPI VWs, thanks.",
+      "parentUuid": "b2eef422_b4e3db42",
       "range": {
         "startLine": 29,
         "startChar": 3,
