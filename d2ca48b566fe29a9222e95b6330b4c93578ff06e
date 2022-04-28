@@ -34,6 +34,24 @@
       "parentUuid": "a7f60535_1a63ca90",
       "revId": "d2ca48b566fe29a9222e95b6330b4c93578ff06e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07cd6182_874a4876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-04-28T17:13:14Z",
+      "side": 1,
+      "message": "Yeah, I agree that it should be on the AP. I added a comment to the bug. The deferred function would probably ok as a workaround in the interim.",
+      "parentUuid": "b85412c8_1815ab33",
+      "revId": "d2ca48b566fe29a9222e95b6330b4c93578ff06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
