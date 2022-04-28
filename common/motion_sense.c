@@ -1077,6 +1077,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	void *out_offset;
 	int16_t out_temp;
 
+	ccprints("[SC] in->cmd=%d", in->cmd);
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:
 		out->dump.module_flags =
