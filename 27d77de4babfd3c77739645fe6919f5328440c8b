@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f12271d_fe351b95",
+        "filename": "zephyr/zmake/.pylintrc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-28T15:27:26Z",
+      "side": 0,
+      "message": "Do you have a suggestion then on how to get `cros lint` to stop complaining about missing packages being imported?",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 93
+      },
+      "revId": "27d77de4babfd3c77739645fe6919f5328440c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9133f30a_2c84322d",
+        "filename": "zephyr/zmake/run_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-04-28T15:27:26Z",
+      "side": 0,
+      "message": "I\u0027m fine with this being removed and never coming back. I don\u0027t think it is really needed any more.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 69
+      },
+      "revId": "27d77de4babfd3c77739645fe6919f5328440c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
