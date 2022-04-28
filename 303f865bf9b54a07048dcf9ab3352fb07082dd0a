@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9eeb3dc_85a091b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-28T23:06:31Z",
+      "side": 1,
+      "message": "The main thing I want to verify is that the [existing fingerprint autotest tests](http://shortn/_sKcRZhn3FJ) pass, since those tests use `flash_fp_mcu`.\n\nI\u0027m ok with you submitting it without running all of those tests on the devices as long as you monitor the results to make sure we don\u0027t get failures once this lands.\n\nIn order to verify that you have the right GPIO, you can copy the lines that toggle the power GPIO into a new script and then try turning the power to the FPMCU off and then on again. After you turn the FPMCU back on, you should see a new `Reset` line in `/var/log/cros_fp.log` that includes `power-on`:\n\n```\n[Reset cause: reset-pin power-on sysjump]\n```",
+      "parentUuid": "2e0b363d_00bcd8b5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "303f865bf9b54a07048dcf9ab3352fb07082dd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01f3fd20_b3ddc84a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
