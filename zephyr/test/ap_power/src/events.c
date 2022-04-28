@@ -99,7 +99,7 @@ ZTEST(events, test_pltrst)
 	ap_power_ev_init_callback(&cb.cb, ev_handler, AP_POWER_RESET);
 	ap_power_ev_add_callback(&cb.cb);
 
-	emul_espi_host_send_vw(espi, ESPI_VWIRE_SIGNAL_PLTRST, 0);
+	espi_emul_host_set_vwire(espi, ESPI_VWIRE_SIGNAL_PLTRST, 0);
 	/*
 	 * Since the event is being sent via a deferred function,
 	 * wait for the deferral time.
