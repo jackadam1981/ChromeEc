@@ -44,6 +44,8 @@ target_sources(app PRIVATE
     src/console_cmd/waitms.c
     src/cros_cbi.c
     src/espi.c
+    src/espi_vwire.c
+    src/espi_peripheral.c
     src/flash.c
     src/gpio.c
     src/integration/usbc/usb.c
