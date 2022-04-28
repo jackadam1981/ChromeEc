@@ -5322,6 +5322,12 @@
 /* Support the Texas Instrument TUSB1064 Type-C Redriving Switch (UFP) */
 #undef CONFIG_USB_MUX_TUSB1064
 
+/*
+ * Support yjr TUSB546 USB Type-C DP ALT Mode Linear Redriver Crosspoint
+ * Switch
+ */
+#undef CONFIG_USB_MUX_TUSB546
+
 /* Support the Parade PS8822 Type-C Redriving Demux Switch */
 #undef CONFIG_USB_MUX_PS8822
 
