@@ -16,6 +16,24 @@
       "message": "Rather than having more API for this that\u0027s not useful after startup, why not pass the flags into the pwrseq thread when it\u0027s created? We\u0027d save needing a larger API, and it becomes impossible to misuse the API by trying to set flags after things are initialized. It could also allow users that don\u0027t care to avoid allocating flags at all.",
       "revId": "230f24cc42fed85f06fe6e3f1730053640f7f61d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f177a89_f9009c1f",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-04-28T07:01:10Z",
+      "side": 1,
+      "message": "I was thinking that at one stage, but it is optional whether the thread is started automatically i.e not called from somewhere external.\nSo whilst this works for the EC case, for the non-EC case there would be no way of setting any init flags. This mightn\u0027t be an issue, not sure.\nThe other thing is that the init flags should be set before pwrseq_init() is called (before the thread is started), since some of the init functions need to know about ssyjump then.\nI agree it gets messy if the flag setting gets out of order (and also agree with your point about the single-use API).\nMaybe pwrseq_init needs to be called from somewhere (maybe from ec_init.c) with the flags as an argument.\nThat makes it a little cleaner. What do you think?",
+      "parentUuid": "18022aa5_2de1eb1b",
+      "revId": "230f24cc42fed85f06fe6e3f1730053640f7f61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
