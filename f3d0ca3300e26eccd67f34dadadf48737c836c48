@@ -87,6 +87,30 @@
       },
       "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f4e18f_b7398efb",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-28T04:55:12Z",
+      "side": 1,
+      "message": "If I\u0027m understanding correctly, that means a power-on reset sets both LRSIWR to 1 and LRS to 0 or 1 (because #WRST is pulled up to VSTBY), and #WRST will do the same?\n\nIn that case I think it\u0027s most conservative to treat either of those resets (since they can\u0027t be differentiated) as power-on, as I have it doing right now. We could also remove the test of LRSIWR because we know that branch will never be taken (or go the other way, and remove the support for returning POWERUP). Is that right?",
+      "parentUuid": "2879d050_dc7684af",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
