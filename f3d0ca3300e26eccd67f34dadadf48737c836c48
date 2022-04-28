@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35c8e026_d2a8f9da",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-04-28T21:04:14Z",
+      "side": 1,
+      "message": "I suggest renaming to \"last_reset_source\" for clarity.",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "f3d0ca3300e26eccd67f34dadadf48737c836c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29a5fc0e_7ba3b030",
         "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
         "patchSetId": 4
