@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecbd0974_9a492f53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-28T21:48:07Z",
+      "side": 1,
+      "message": "Can you test on a Zork and Guybrush device to make sure it works? You can [\"lease\" a device from the lab](http://shortn/_7K47VhF7dd), so you don\u0027t have to physically have one to test it.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "303f865bf9b54a07048dcf9ab3352fb07082dd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f3fd20_b3ddc84a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-04-28T21:48:07Z",
+      "side": 1,
+      "message": "I don\u0027t know that it matters, but most commits in EC have these three items together `BRANCH` (no newlines):\n\n```\nBRANCH\u003d\nBUG\u003d\nTEST\u003d\n```",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "303f865bf9b54a07048dcf9ab3352fb07082dd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
