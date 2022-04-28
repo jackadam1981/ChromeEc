@@ -22,6 +22,30 @@
       },
       "revId": "6eb5c25034f72c1fb61eedbc73d166781bb13312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9aac8e_c9cd94b7",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-04-28T17:22:10Z",
+      "side": 0,
+      "message": "Yes this test is failing with the modifications I made.\n\nAssertion failed at CMAKE_SOURCE_DIR/src/isl923x.c:626: isl923x_test_init: (512 not equal to input_current)\nExpected input current 512mV but got 0mV\n FAIL - test_init in 0.0 seconds",
+      "parentUuid": "d8ae7feb_934e7181",
+      "range": {
+        "startLine": 623,
+        "startChar": 5,
+        "endLine": 623,
+        "endChar": 38
+      },
+      "revId": "6eb5c25034f72c1fb61eedbc73d166781bb13312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
