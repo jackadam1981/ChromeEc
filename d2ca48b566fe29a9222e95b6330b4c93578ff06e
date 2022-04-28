@@ -16,6 +16,24 @@
       "message": "So many questions... this is a debug command. Why are we trying to add an allowlist for this? We shouldn\u0027t be using a debug command as an intended method in prodcution. Is there another way to accomplish what you\u0027re trying to do? I\u0027d even ask why this pin is connected to the EC in the first place.",
       "revId": "d2ca48b566fe29a9222e95b6330b4c93578ff06e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85412c8_1815ab33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-28T03:47:12Z",
+      "side": 1,
+      "message": "The reason we connects this pin to the EC because there are some pins like NFC_CARD_DET_L, NFC_COIL_ACT_L from the NFC module and i think we can use those signals to enable the beep sound at the beginning but it looks like it can\u0027t. From the vendor feedback in b/205111874, we need to wait the usb be enumerated before we can enable the beep sound and there is no way to modify the module firmware to disable the beep sound during the power on.\n\nAnother workaround is to add a hook + defer function to enable beep sound when the AP enters to the S0. Let\u0027s submit another patch for the review.\n\nBTW, there is no project using this module, so, we can just limit the solution for the brask at this moment and i think it would be better to move this pin for the AP gpio and we need to check how to control it via AP firmware.",
+      "parentUuid": "a7f60535_1a63ca90",
+      "revId": "d2ca48b566fe29a9222e95b6330b4c93578ff06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
