@@ -9,9 +9,14 @@
 #include "ec_commands.h"
 #include "host_command.h"
 #include "test/drivers/test_state.h"
+#include "lpc.h"
 
+#include"espi.h"
+#include"zephyr_espi_shim.h"
+#include"drivers/espi_emul.h"
 
 #define PORT 0
+#define ESPI_DEVICE DEVICE_DT_GET(DT_CHOSEN(cros_ec_espi))
 
 ZTEST_USER(espi, test_host_command_get_protocol_info)
 {
