@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "688f7ac6_b920f255",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7032,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-29T17:46:03Z",
+      "side": 1,
+      "message": "Don\u0027t the non-reserved fields of the RMDO start with the high-order bytes? Wouldn\u0027t RMDO_DATA_OFFSET be 0?\n\nNit: Either way, you can still do this with a simple assignment:\n pe[port].partner_rmdo \u003d *(struct pd_rmdo) (rx_emsg[port].buf + RMDO_DATA_OFFSET);",
+      "revId": "f77fcd0c79206d781e235800c200e340d1326f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017c6913_0d99f6b5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-29T17:46:03Z",
+      "side": 1,
+      "message": "Nit: Technically, the reserved bits are part of the RMDO, and it\u0027s still 32 bits like other data objects. I don\u0027t think that practically matters here, but if storing the whole RMDO would make the code to copy it around simpler, I think it\u0027s worth the extra 2 bytes of RAM per port.",
+      "revId": "f77fcd0c79206d781e235800c200e340d1326f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
