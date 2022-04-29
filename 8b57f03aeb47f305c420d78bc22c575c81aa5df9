@@ -197,6 +197,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a207c9e4_9c275277",
+        "filename": "common/usb_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-04-29T17:33:03Z",
+      "side": 1,
+      "message": "Ack. It kind of sounds like this whole system is supposed to be best-effort. I\u0027m OK with revisiting alert resending later.",
+      "parentUuid": "58fed995_c623b021",
+      "revId": "8b57f03aeb47f305c420d78bc22c575c81aa5df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f50f40f3_50b967bc",
