@@ -485,6 +485,8 @@ From the DUT, flash the firmware you copied:
 
 ![CQ Prototype Environment]
 
+![FPMCU devboard environment v2 with satlab]
+
 ## Troubleshooting
 
 ### Dragonclaw Rev 0.2 Rework {#dragonclaw-rev-0.2-rework}
@@ -601,3 +603,5 @@ Make sure that this interface is disabled:
 <!-- https://docs.google.com/drawings/d/1w2qbb4AsSxY-KTK2vXZ6TKeWHveWvS3Dkgh61ocu0wc -->
 
 [CQ Prototype Environment]: ../images/CQ_Prototype_Environment.jpg
+
+[FPMCU devboard environment v2 with satlab]: ../images/FPMCU_devboard_environment_v2_with_Satlab.jpg
