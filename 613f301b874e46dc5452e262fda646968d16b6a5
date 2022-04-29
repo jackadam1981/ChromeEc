@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b5e844e_b8e3b7f0",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1179294
+      },
+      "writtenOn": "2022-04-29T03:37:14Z",
+      "side": 1,
+      "message": "Please make the return behind the LRSIWR flag.\nBecause we should get a reset cause of unknown when a logic error caused CPU to jump to the reset vector entry point.\n\nQuestion: will you create a follow-up CL to fix check_boot_key routine?\nWe no longer get the reset-pin reset cause.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "613f301b874e46dc5452e262fda646968d16b6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
