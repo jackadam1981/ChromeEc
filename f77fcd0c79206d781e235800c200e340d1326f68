@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e68f76_c873d287",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7032,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-29T19:20:53Z",
+      "side": 1,
+      "message": "Regarding the single assignment, the rx buffer needs to be cast as a struct pointer before dereferencing. This assignment works for me\n `pe[port].partner_rmdo \u003d *((struct rmdo *) rx_emsg[port].buf);`\n\nI think the buffer here is big-endian. As you mentioned we wanted bytes 2 and 3, but rx_emsg[port[.buf is pointing to byte 0. The data offset is used to copy bytes 2-3 instead of 0-1. Either way, I added the reserved field to the rmdo struct so now the assignment works with no offset. \n\nFWIW To test this, I\u0027m printing out the partner_rmdo fields from `pe_clear_port_data` right before clearing the parnter rmdo when a device is detached. I\u0027m using a 140W USB-C power adapter from Apple with EPR support which requires USB PD Rev 3.1. Here is what I am getting.\n\n\nEC log over Suzy Q\n\u003e [72.822087 Ramp p2 st5 3000mA 3000mA]\n\u003e [73.926394 RMDO Major Rev: 3]\n\u003e [73.926745 RMDO Minor Rev: 1]\n\u003e [73.927061 RMDO Major Ver: 1]\n\u003e [73.927379 RMDO Minor Ver: 0]\n\u003e [73.929457 C2: Unattached.SNK]",
+      "parentUuid": "688f7ac6_b920f255",
+      "revId": "f77fcd0c79206d781e235800c200e340d1326f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "017c6913_0d99f6b5",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-29T17:46:03Z",
       "side": 1,
       "message": "Nit: Technically, the reserved bits are part of the RMDO, and it\u0027s still 32 bits like other data objects. I don\u0027t think that practically matters here, but if storing the whole RMDO would make the code to copy it around simpler, I think it\u0027s worth the extra 2 bytes of RAM per port.",
+      "revId": "f77fcd0c79206d781e235800c200e340d1326f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "051d8c59_dcd7a442",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-29T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "017c6913_0d99f6b5",
       "revId": "f77fcd0c79206d781e235800c200e340d1326f68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
