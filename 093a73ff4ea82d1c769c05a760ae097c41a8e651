@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11547098_204f4117",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-29T21:37:38Z",
+      "side": 1,
+      "message": "how about changing to\nzephyr: Add ectool battery command config ?\n\nchange commit msg accordingly?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "421ce088_e8424fc1",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-29T21:37:38Z",
+      "side": 1,
+      "message": "Enable",
+      "range": {
+        "startLine": 225,
+        "startChar": 6,
+        "endLine": 225,
+        "endChar": 7
+      },
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56d9128_5c1f5e04",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-29T21:37:38Z",
+      "side": 1,
+      "message": "nit: submit in another CL",
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908356a1_4d0e26a2",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-04-29T21:37:38Z",
+      "side": 1,
+      "message": "nit: delate it in util/config_allowed.txt",
+      "range": {
+        "startLine": 235,
+        "startChar": 8,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
