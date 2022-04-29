@@ -22,6 +22,30 @@
       },
       "revId": "613f301b874e46dc5452e262fda646968d16b6a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c57891b_5b6ed2a9",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-04-29T05:49:58Z",
+      "side": 1,
+      "message": "Added UNKNOWN_RST.\n\nI don\u0027t think we need to touch `check_boot_key`, since I\u0027m not aware of any workflows that depend on special key combinations at boot without also pressing the refresh key.",
+      "parentUuid": "2b5e844e_b8e3b7f0",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "613f301b874e46dc5452e262fda646968d16b6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
