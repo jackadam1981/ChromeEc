@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d9b92e_148774f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-29T01:26:46Z",
+      "side": 1,
+      "message": "FYI, adding some issues discovered",
+      "revId": "4f6b6aa3eb5d6e29968f7248fad5f4fba6280b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3eaeaed_6d17acb5",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-29T01:26:46Z",
+      "side": 1,
+      "message": "Missing a ;",
+      "revId": "4f6b6aa3eb5d6e29968f7248fad5f4fba6280b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a928a8_e2fe9f18",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-29T01:26:46Z",
+      "side": 1,
+      "message": "The three constants defined below here do not appear to be used in the rest of the code.",
+      "range": {
+        "startLine": 266,
+        "startChar": 3,
+        "endLine": 266,
+        "endChar": 52
+      },
+      "revId": "4f6b6aa3eb5d6e29968f7248fad5f4fba6280b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97ff0937_fdf8cda3",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-29T01:26:46Z",
+      "side": 1,
+      "message": "Missing {",
+      "range": {
+        "startLine": 268,
+        "startChar": 48,
+        "endLine": 268,
+        "endChar": 49
+      },
+      "revId": "4f6b6aa3eb5d6e29968f7248fad5f4fba6280b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76a7e17_96fd06d5",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-29T01:26:46Z",
+      "side": 1,
+      "message": "Delete the \u0027s\u0027?",
+      "range": {
+        "startLine": 291,
+        "startChar": 58,
+        "endLine": 291,
+        "endChar": 59
+      },
+      "revId": "4f6b6aa3eb5d6e29968f7248fad5f4fba6280b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01f38cc_89083608",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-04-29T01:26:46Z",
+      "side": 1,
+      "message": "TCPCI_MSG_SOP_PRIME?",
+      "range": {
+        "startLine": 333,
+        "startChar": 37,
+        "endLine": 333,
+        "endChar": 54
+      },
+      "revId": "4f6b6aa3eb5d6e29968f7248fad5f4fba6280b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
