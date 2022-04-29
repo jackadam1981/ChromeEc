@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca727992_5f4413c3",
+        "filename": "board/damu/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-29T05:31:25Z",
+      "side": 1,
+      "message": "They should be in battery_smart.h",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "a453f1f889d07ef2b156c78e07b70b9126d2815d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3066c3a_ac32b905",
+        "filename": "board/damu/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-04-29T05:31:25Z",
+      "side": 1,
+      "message": "0x2f?",
+      "range": {
+        "startLine": 100,
+        "startChar": 30,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "a453f1f889d07ef2b156c78e07b70b9126d2815d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
