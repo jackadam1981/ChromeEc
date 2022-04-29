@@ -52,6 +52,24 @@
       "parentUuid": "b85412c8_1815ab33",
       "revId": "d2ca48b566fe29a9222e95b6330b4c93578ff06e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5e2b4e_82c38e83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-04-29T03:03:21Z",
+      "side": 1,
+      "message": "The deferred function isn\u0027t working as expected because i can\u0027t find a better timing to enable the NFC\u0027s beep sound. I think we can use this patch https://chromium-review.googlesource.com/c/chromiumos/overlays/board-overlays/+/3610922 which uses the ectool to modify the gpio pin level and that is for only for the brask which won\u0027t be shipped to the market.",
+      "parentUuid": "07cd6182_874a4876",
+      "revId": "d2ca48b566fe29a9222e95b6330b4c93578ff06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
