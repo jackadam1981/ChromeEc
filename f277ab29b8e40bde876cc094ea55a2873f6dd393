@@ -46,6 +46,75 @@
       },
       "revId": "f277ab29b8e40bde876cc094ea55a2873f6dd393",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68784384_ba8086fa",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-29T20:56:15Z",
+      "side": 1,
+      "message": "nit: sizeof()",
+      "range": {
+        "startLine": 423,
+        "startChar": 42,
+        "endLine": 423,
+        "endChar": 52
+      },
+      "revId": "f277ab29b8e40bde876cc094ea55a2873f6dd393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2eac334_6789a784",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-29T20:56:15Z",
+      "side": 1,
+      "message": "Why not dest (and read_len)?",
+      "range": {
+        "startLine": 423,
+        "startChar": 37,
+        "endLine": 423,
+        "endChar": 40
+      },
+      "revId": "f277ab29b8e40bde876cc094ea55a2873f6dd393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8d5807_e04133f7",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-29T20:56:15Z",
+      "side": 1,
+      "message": "Do you not need to check the length? The max string length in SBS is 32 bytes.",
+      "range": {
+        "startLine": 425,
+        "startChar": 21,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "f277ab29b8e40bde876cc094ea55a2873f6dd393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
