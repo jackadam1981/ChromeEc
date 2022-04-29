@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e2195e_f804ac80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-29T16:53:24Z",
+      "side": 1,
+      "message": "b:227512417",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "18de9637367efec253b37c4714cf48309b8a5c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c172482d_bb9c871c",
+        "filename": "board/prism/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-29T16:53:24Z",
+      "side": 1,
+      "message": "One coord is missing (for `).",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 44
+      },
+      "revId": "18de9637367efec253b37c4714cf48309b8a5c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ae21b5_2d413866",
+        "filename": "board/prism/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-29T16:53:24Z",
+      "side": 1,
+      "message": "nit: Let\u0027s put them in one line for readability:\n\n\tRGBKBD_COORD(1, 1), RGBKBD_COORD(1, 2), RGBKBD_DELM,  /* 2: !1 */\n\nOne line per key also makes it easier to locate a LED group (e.g. 107 + \u003ckey_id\u003e).",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "18de9637367efec253b37c4714cf48309b8a5c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f5dfcf_859b6dc8",
+        "filename": "board/prism/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-29T16:53:24Z",
+      "side": 1,
+      "message": "@, 2",
+      "range": {
+        "startLine": 112,
+        "startChar": 23,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "18de9637367efec253b37c4714cf48309b8a5c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d283a858_b96f2519",
+        "filename": "board/prism/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-04-29T16:53:24Z",
+      "side": 1,
+      "message": "Can you revert the change (removing spaces)? It\u0027ll avoid unnecessary merge conflicts.",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 54
+      },
+      "revId": "18de9637367efec253b37c4714cf48309b8a5c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
