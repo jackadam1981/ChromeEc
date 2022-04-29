@@ -490,15 +490,14 @@ static void dpm_send_attention_vdm(int port)
 
 void dpm_run(int port)
 {
-	if (pd_get_data_role(port) == PD_ROLE_DFP) {
-		/* Run DFP related DPM requests */
-		if (DPM_CHK_FLAG(port, DPM_FLAG_EXIT_REQUEST))
-			dpm_attempt_mode_exit(port);
-		else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE))
-			dpm_attempt_mode_entry(port);
-	} else {
-		/* Run UFP related DPM requests */
-		if (DPM_CHK_FLAG(port, DPM_FLAG_SEND_ATTENTION))
+	/* Run DFP related DPM requests */
+	if (DPM_CHK_FLAG(port, DPM_FLAG_EXIT_REQUEST)) {
+		dpm_attempt_mode_exit(port);
+	} else if (pd_get_data_role(port) == PD_ROLE_DFP &&
+			!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE)) {
+		dpm_attempt_mode_entry(port);
+	} else if (pd_get_data_role(port) == PD_ROLE_UFP &&
+			DPM_CHK_FLAG(port, DPM_FLAG_SEND_ATTENTION)) {
 			dpm_send_attention_vdm(port);
 	}
 }
