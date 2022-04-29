@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "277300b0_d07c2599",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-29T17:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43e2b017_ce5be803",
+      "range": {
+        "startLine": 2166,
+        "startChar": 13,
+        "endLine": 2166,
+        "endChar": 21
+      },
+      "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "229fad51_abbd8487",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f9eaea_f6d29127",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-29T17:23:50Z",
+      "side": 1,
+      "message": "Yes, done.",
+      "parentUuid": "229fad51_abbd8487",
+      "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23cb2340_c191d9a5",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-04-28T20:42:42Z",
       "side": 1,
       "message": "Nit: I find the \"Used for Rev 3.x\" comments from pd_ctrl_msg_type slightly easier to parse than these \"Reserved for Rev 3.x\" comments.",
+      "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e37ef9_57175f98",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-04-29T17:23:50Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "23cb2340_c191d9a5",
       "revId": "3c502536120712980a1ee1a5b833c61bb8750f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
