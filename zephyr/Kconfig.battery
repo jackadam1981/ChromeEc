@@ -221,6 +221,12 @@ endchoice
 
 if PLATFORM_EC_BATTERY_V2
 
+config PLATFORM_EC_HOSTCMD_BATTERY_V2
+	bool "host command battery"
+	help
+	  This enables host command battery v2. This version supports multiple
+	  batteries.
+
 config PLATFORM_EC_BATTERY_COUNT
 	int "Battery count"
 	default 1
