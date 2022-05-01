@@ -16,6 +16,24 @@
       "message": "This interrupt is configured in cros-ec,gpio-interrupts which AFAIK is enabled by default. Why do we need this?",
       "revId": "683eb3431bd9abbe1a629092b9feba45ced31a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555831fe_86eb5e5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-01T08:20:02Z",
+      "side": 1,
+      "message": "The interrupts are not enabled by default, they need to be explicitly enabled.",
+      "parentUuid": "5353595c_17e66a0f",
+      "revId": "683eb3431bd9abbe1a629092b9feba45ced31a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
