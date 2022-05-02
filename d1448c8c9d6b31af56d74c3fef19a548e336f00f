@@ -22,6 +22,30 @@
       },
       "revId": "d1448c8c9d6b31af56d74c3fef19a548e336f00f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad51151_10aab832",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-05-02T23:11:06Z",
+      "side": 1,
+      "message": "Thanks, sending a fix tonight",
+      "parentUuid": "2b1b258d_54d48f47",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 460,
+        "endChar": 65
+      },
+      "revId": "d1448c8c9d6b31af56d74c3fef19a548e336f00f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
