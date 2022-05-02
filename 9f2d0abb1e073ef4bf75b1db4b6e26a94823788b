@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a20b735_a4f1cdda",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-02T19:43:40Z",
+      "side": 1,
+      "message": "What would you consider the best alternative for customer plug-in then sudden unplug?  Still showing the charging UI, except it\u0027s not actually charging but just the battery level?",
+      "parentUuid": "e90d00bf_4978a2ea",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e2eb6d0_f8b4463f",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
