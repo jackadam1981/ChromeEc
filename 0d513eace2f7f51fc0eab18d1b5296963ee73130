@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d55546_4ef7256f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-02T19:37:55Z",
+      "side": 1,
+      "message": "Unrelated nit: do you ever wonder if there\u0027d be value in having GEN_NOT_SUPPORTED also take care of changing defines?",
+      "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e254337e_4b0b3e0e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 7119,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-02T19:37:55Z",
+      "side": 1,
+      "message": "Also head to error recovery on discard, I assume?",
+      "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf0f5b1_0d3e1b6f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 7160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-02T19:37:55Z",
+      "side": 1,
+      "message": "Does it matter that we consider it complete on error as well as getting Data_Reset_Complete?  Or is it nor particularly important since error recovery pretty much wipes out everything about the connection?",
+      "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
