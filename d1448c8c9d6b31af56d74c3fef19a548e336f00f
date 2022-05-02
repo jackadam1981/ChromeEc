@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b1b258d_54d48f47",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-02T22:54:37Z",
+      "side": 1,
+      "message": "This doesn\u0027t work. mock_set_offset_fake.arg1_history[0] captured a pointer to a local variable in host_cmd_motion_sense_offset() which doesn\u0027t exist any more by the time this line is hit. It only passes (sometimes) because the memory hasn\u0027t been overwritten yet at this point, but use a different compiler, or different optimization level or just get unlucky, and the test fails.\n\nI don\u0027t know if there is a way to get fff to take a deep copy of the array, or don\u0027t use fff for the set_offset function.",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 460,
+        "endChar": 65
+      },
+      "revId": "d1448c8c9d6b31af56d74c3fef19a548e336f00f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
