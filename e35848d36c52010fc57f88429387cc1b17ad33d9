@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f34c01_436fb7dc",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-02T05:30:00Z",
+      "side": 1,
+      "message": "This seems to be the default? Manually running menuconfig for both Nivviks and Nereid shows both of these are turned on.",
+      "revId": "e35848d36c52010fc57f88429387cc1b17ad33d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
