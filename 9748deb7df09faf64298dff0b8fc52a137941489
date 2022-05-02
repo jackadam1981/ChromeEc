@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "342accb6_882fe505",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-02T19:44:49Z",
+      "side": 1,
+      "message": "Who\u0027s on kernel and/or AP FW for ghost?  They may be the best reviewer for how we want a display loop to be started (via ectool, or somewhere else) ",
+      "revId": "9748deb7df09faf64298dff0b8fc52a137941489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da9959ac_5e13fedf",
