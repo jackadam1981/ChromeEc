@@ -112,6 +112,7 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_FINGERPRINT, fp_get_next_event);
 static enum ec_status fp_command_tpm_seed(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_seed *params = args->params;
+	int i;
 
 	if (params->struct_version != FP_TEMPLATE_FORMAT_VERSION) {
 		CPRINTS("Invalid seed format %d", params->struct_version);
@@ -124,6 +125,13 @@ static enum ec_status fp_command_tpm_seed(struct host_cmd_handler_args *args)
 	}
 	memcpy(tpm_seed, params->seed, sizeof(tpm_seed));
 	fp_encryption_status |= FP_ENC_STATUS_SEED_SET;
+
+	/* Print out seed */
+	CPRINTF("tpm_seed: ");
+	for (i = 0; i < ARRAY_SIZE(tpm_seed); i++) {
+		CPRINTF("%02x", tpm_seed[i]);
+	}
+	CPRINTF("\n");
 
 	return EC_RES_SUCCESS;
 }
@@ -218,6 +226,7 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_context_v1 *p = args->params;
 	uint32_t mode_output;
+	int i;
 
 	switch (p->action) {
 	case FP_CONTEXT_ASYNC:
@@ -237,6 +246,11 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 			return EC_RES_BUSY;
 
 		memcpy(user_id, p->userid, sizeof(user_id));
+		CPRINTF("user_id: ");
+		for (i = 0; i < ARRAY_SIZE(user_id); i++) {
+			CPRINTF("%08x", user_id[i]);
+		}
+		CPRINTF("\n");
 		return EC_RES_SUCCESS;
 	}
 
