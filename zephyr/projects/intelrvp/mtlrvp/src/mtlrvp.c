@@ -30,6 +30,7 @@
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "usb_tc_sm.h"
 
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
@@ -111,6 +112,13 @@ BUILD_ASSERT(ARRAY_SIZE(tcpc_aic_gpios) == CONFIG_USB_PD_PORT_MAX_COUNT);
 static void board_connect_c0_sbu_deferred(void)
 {
 	enum pd_power_role prole;
+
+	ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
+        ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 0);
+	ppc_set_sbu(0, 1);
+	tc_set_power_role(USBC_PORT_C0, PD_ROLE_SINK);
+	return;
+
 
 	if (gpio_get_level(GPIO_CCD_MODE_ODL)) {
 		CPRINTS("Default AUX line connected");

@@ -71,6 +71,8 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	int timeout_ms = 50;
 
 	CPRINTS("%s() %d", __func__, reason);
+	CPRINTS("OVERRIDE FOR POWER ON");
+	return;
 	report_ap_reset(reason);
 
 	gpio_set_level(GPIO_PCH_PWROK, 0);
