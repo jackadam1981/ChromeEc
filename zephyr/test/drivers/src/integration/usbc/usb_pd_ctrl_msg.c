@@ -7,6 +7,7 @@
 #include <ztest.h>
 
 #include "common.h"
+#include "console.h"
 #include "ec_tasks.h"
 #include "emul/emul_isl923x.h"
 #include "emul/tcpc/emul_tcpci_partner_drp.h"
@@ -14,6 +15,7 @@
 #include "test/drivers/stubs.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
+#include "test/usb_pe.h"
 #include "usb_pd.h"
 
 #define TEST_USB_PORT USBC_PORT_C0
@@ -339,4 +341,59 @@ ZTEST(usb_pd_ctrl_msg_test_sink, verify_get_sink_cap)
 
 	zassert_true(typec_status.sink_cap_count > 1, NULL);
 	zassert_equal(typec_status.sink_cap_pdos[1], TEST_ADDED_PDO, NULL);
+}
+
+/**
+ * @brief TestPurpose: Verify BIST TX MODE 2.
+ *
+ * @details
+ *  - TCPM is configured initially as Source
+ *  - Initiate BIST TX
+ *
+ * Expected Results
+ *  - BIST occurs and we transition back to READY state
+ */
+ZTEST_F(usb_pd_ctrl_msg_test_source, verify_bist_tx_mode2)
+{
+	struct usb_pd_ctrl_msg_test_fixture *fixture = &this->fixture;
+	uint32_t bdo = BDO(BDO_MODE_CARRIER2, 0);
+
+	tcpci_partner_send_data_msg(&fixture->partner_emul.common_data,
+				    PD_DATA_BIST, &bdo, 1, 0);
+
+	pd_dpm_request(0, DPM_REQUEST_BIST_TX);
+	k_sleep(K_MSEC(10));
+	zassert_equal(get_state_pe(TEST_USB_PORT), PE_BIST_TX, NULL);
+
+	k_sleep(K_SECONDS(5));
+	zassert_equal(get_state_pe(TEST_USB_PORT), PE_SNK_READY, NULL);
+}
+
+/**
+ * @brief TestPurpose: Verify BIST TX TEST DATA.
+ *
+ * @details
+ *  - TCPM is configured initially as Source
+ *  - Initiate BIST TX
+ *  - End testing via signaling a Hard Reset
+ *
+ * Expected Results
+ *  - Partner remains in BIST_TX state until hard reset is received.
+ */
+ZTEST_F(usb_pd_ctrl_msg_test_source, verify_bist_tx_test_data)
+{
+	struct usb_pd_ctrl_msg_test_fixture *fixture = &this->fixture;
+	uint32_t bdo = BDO(BDO_MODE_TEST_DATA, 0);
+
+	tcpci_partner_send_data_msg(&fixture->partner_emul.common_data,
+				    PD_DATA_BIST, &bdo, 1, 0);
+
+	pd_dpm_request(0, DPM_REQUEST_BIST_TX);
+	k_sleep(K_SECONDS(5));
+	zassert_equal(get_state_pe(TEST_USB_PORT), PE_BIST_TX, NULL);
+
+	tcpci_partner_common_send_hard_reset(
+		&fixture->partner_emul.common_data);
+	k_sleep(K_SECONDS(1));
+	zassert_equal(get_state_pe(TEST_USB_PORT), PE_SNK_READY, NULL);
 }
