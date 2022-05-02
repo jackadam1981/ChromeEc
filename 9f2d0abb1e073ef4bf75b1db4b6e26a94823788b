@@ -165,6 +165,138 @@
       },
       "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db36aa56_1bf9d421",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T18:17:34Z",
+      "side": 1,
+      "message": "Should this really be an zassertion? This looks like a better place to just die because the test writer used \"set_lid\" incorrectly. Probably replace with something like:\n\n```\n__ASSERT(lid_is_open() !\u003d open, \"Setting lid to pre-existing state\")\n```",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a274c0_ba727a3f",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T18:17:34Z",
+      "side": 1,
+      "message": "Same as __ASSERT above.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 16
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30bf2a57_db472288",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T18:17:34Z",
+      "side": 1,
+      "message": "Should be \"zassume\" because setting this gpio should be verified by a unit test elsewhere while this is an integration test we\u0027d want to skip if this fails so as to reduce assertion failure noise during log parsing.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a4fe6f_10f97226",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T18:17:34Z",
+      "side": 1,
+      "message": "zassume",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 8
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7efa974_b57e5c44",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T18:17:34Z",
+      "side": 1,
+      "message": "We should be using zassume in any before/after fixtures and keep zasserts in the actual test.\n\nHowever, we still want to test chargesplash reset command by itself, which should go into its own tiny test suite.",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d84d1e_1dab3b91",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T18:17:34Z",
+      "side": 1,
+      "message": "We have a lot more logging here versus the other tests. Was this from a previous debugging session and should maybe be removed?",
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
