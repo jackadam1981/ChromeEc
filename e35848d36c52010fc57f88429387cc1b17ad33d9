@@ -16,6 +16,24 @@
       "message": "This seems to be the default? Manually running menuconfig for both Nivviks and Nereid shows both of these are turned on.",
       "revId": "e35848d36c52010fc57f88429387cc1b17ad33d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "888158fe_bcdb52f8",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-02T05:33:24Z",
+      "side": 1,
+      "message": "Hmm you\u0027re right. I did think it odd we hadn\u0027t turned that on.\nI was comparing nissa to dedede config, and seeing what was missing.",
+      "parentUuid": "b4f34c01_436fb7dc",
+      "revId": "e35848d36c52010fc57f88429387cc1b17ad33d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
