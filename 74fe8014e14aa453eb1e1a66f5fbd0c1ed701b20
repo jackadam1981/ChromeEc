@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb81a462_a6398cac",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T23:41:47Z",
+      "side": 1,
+      "message": "If it\u0027s configured as source then should we have this in the usb_pd_ctrl_msg_test_sink suite instead?",
+      "range": {
+        "startLine": 350,
+        "startChar": 38,
+        "endLine": 350,
+        "endChar": 44
+      },
+      "revId": "74fe8014e14aa453eb1e1a66f5fbd0c1ed701b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60af37c_2c937752",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T23:41:47Z",
+      "side": 1,
+      "message": "TEST_USB_PORT",
+      "range": {
+        "startLine": 364,
+        "startChar": 15,
+        "endLine": 364,
+        "endChar": 17
+      },
+      "revId": "74fe8014e14aa453eb1e1a66f5fbd0c1ed701b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d38f8c_fb8a5adc",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T23:41:47Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 376,
+        "startChar": 38,
+        "endLine": 376,
+        "endChar": 44
+      },
+      "revId": "74fe8014e14aa453eb1e1a66f5fbd0c1ed701b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835ff476_46270484",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T23:41:47Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 391,
+        "startChar": 16,
+        "endLine": 391,
+        "endChar": 17
+      },
+      "revId": "74fe8014e14aa453eb1e1a66f5fbd0c1ed701b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
