@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc083bf_79152a5a",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-02T19:51:44Z",
+      "side": 1,
+      "message": "What if len is 0?",
+      "range": {
+        "startLine": 859,
+        "startChar": 63,
+        "endLine": 859,
+        "endChar": 70
+      },
+      "revId": "a25f0ec37532cf15d75024b547cfc16dcbd61773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3bf294d_939adca0",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-02T19:51:44Z",
+      "side": 1,
+      "message": "nit: probably mention in the CL description that this is functionally changing i2c_read_string to return just a null character string on failure.  That seems better than the current random junk string plus null terminator, but it does represent a functional change which is worth noting",
+      "revId": "a25f0ec37532cf15d75024b547cfc16dcbd61773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
