@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8716f2a9_2427e6d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T23:35:36Z",
+      "side": 1,
+      "message": "absolute nit:\nI think we\u0027re supposed to have a body in our commit messages. Though it\u0027d probably not give much extra info but could keep someone from having to actually parse the code.\n\nSomething like:\n\nVerify motion sense fifo host command flush pending and fifo lost data. Also verify invalid arguments to motion sense fifo host command fails appropriately.",
+      "revId": "4878dd1055977aa36b274d5032da2a289954efb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d87a3c1_8d52dec2",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T23:35:36Z",
+      "side": 1,
+      "message": "Is this number arbitrary?",
+      "range": {
+        "startLine": 663,
+        "startChar": 26,
+        "endLine": 663,
+        "endChar": 27
+      },
+      "revId": "4878dd1055977aa36b274d5032da2a289954efb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57a7f52_d27ade6b",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-02T23:35:36Z",
+      "side": 1,
+      "message": "I see a lot of references to motion_sensor[0], can we have this be #defined as a constant? It can be in a future CL it just would make the test a lot easier to read/review I think. Is there a reason we pick element 0 besides it\u0027s arbitrarily the first one?",
+      "range": {
+        "startLine": 663,
+        "startChar": 16,
+        "endLine": 663,
+        "endChar": 17
+      },
+      "revId": "4878dd1055977aa36b274d5032da2a289954efb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
