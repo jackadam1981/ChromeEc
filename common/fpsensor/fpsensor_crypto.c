@@ -249,6 +249,16 @@ int aes_gcm_encrypt(const uint8_t *key, int key_size,
 	return EC_SUCCESS;
 }
 
+void log_value(const char* name, const uint8_t* val, int size)
+{
+	int i;
+	CPRINTF("%s ", name);
+	for (i = 0; i < size; i++) {
+		CPRINTF("%02x", val[i]);
+	}
+	CPRINTF("\n");
+}
+
 int aes_gcm_decrypt(const uint8_t *key, int key_size, uint8_t *plaintext,
 		    const uint8_t *ciphertext, int text_size,
 		    const uint8_t *nonce, int nonce_size,
@@ -262,6 +272,12 @@ int aes_gcm_decrypt(const uint8_t *key, int key_size, uint8_t *plaintext,
 		CPRINTS("Invalid nonce size %d bytes", nonce_size);
 		return EC_ERROR_INVAL;
 	}
+
+	log_value("user_id", (const uint8_t *)user_id, sizeof(user_id));
+	log_value("tpm_seed", tpm_seed, sizeof(tpm_seed));
+	log_value("key", key, key_size);
+	log_value("nonce", nonce, nonce_size);
+	log_value("tag", tag, tag_size);
 
 	res = AES_set_encrypt_key(key, 8 * key_size, &aes_key);
 	if (res) {

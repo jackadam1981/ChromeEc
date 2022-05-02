@@ -89,7 +89,9 @@ int aes_gcm_encrypt(const uint8_t *key, int key_size,
  */
 int aes_gcm_decrypt(const uint8_t *key, int key_size, uint8_t *plaintext,
 		    const uint8_t *ciphertext, int text_size,
-		    const uint8_t *nonce, int nonce_size,
-		    const uint8_t *tag, int tag_size);
+		    const uint8_t *nonce, int nonce_size, const uint8_t *tag,
+		    int tag_size);
+
+void log_value(const char *name, const uint8_t *val, int size);
 
 #endif /* __CROS_EC_FPSENSOR_CRYPTO_H */

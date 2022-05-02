@@ -125,6 +125,9 @@ static enum ec_status fp_command_tpm_seed(struct host_cmd_handler_args *args)
 	memcpy(tpm_seed, params->seed, sizeof(tpm_seed));
 	fp_encryption_status |= FP_ENC_STATUS_SEED_SET;
 
+	/* Print out seed */
+	log_value("tpm_seed", tpm_seed, sizeof(tpm_seed));
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_SEED, fp_command_tpm_seed, EC_VER_MASK(0));
@@ -237,6 +240,7 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 			return EC_RES_BUSY;
 
 		memcpy(user_id, p->userid, sizeof(user_id));
+		log_value("user_id", (const uint8_t *)user_id, sizeof(user_id));
 		return EC_RES_SUCCESS;
 	}
 
