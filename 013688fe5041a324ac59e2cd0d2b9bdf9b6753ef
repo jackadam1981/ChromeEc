@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d17a8f_eb988763",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-03T20:53:06Z",
+      "side": 1,
+      "message": "Once https://crrev.com/c/3602225 gets merged I\u0027ll also remove a config_ztest\n\nAll tests have been run on top of Diana\u0027s DataRole mismatch check change.",
+      "revId": "013688fe5041a324ac59e2cd0d2b9bdf9b6753ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
