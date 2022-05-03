@@ -445,6 +445,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb594f4_78205336",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T18:12:46Z",
+      "side": 1,
+      "message": "Changed to zassume. Thanks for the clarification.",
+      "parentUuid": "03e46bf9_5ec342c7",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90a4fe6f_10f97226",
@@ -506,6 +530,30 @@
       "side": 1,
       "message": "After our offline chat conversation is there still confusion?",
       "parentUuid": "02115868_741d4aaf",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 8
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee0f1cd_b2920b74",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T18:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e90f4af_06e8b33b",
       "range": {
         "startLine": 169,
         "startChar": 2,
