@@ -16,6 +16,24 @@
       "message": "Please add all removed GPIOs (except C3 and C4) to the \"Unused\" section below",
       "revId": "f1ad880e1adb9ee1968e322a82279337fc29a990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59fad415_27ff3287",
+        "filename": "board/osiris/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-03T00:59:14Z",
+      "side": 0,
+      "message": "gpio60 and gpioc2 will use for usb c0 function and updated in cl 3601919",
+      "parentUuid": "2b26f1a6_a58dbdfa",
+      "revId": "f1ad880e1adb9ee1968e322a82279337fc29a990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
