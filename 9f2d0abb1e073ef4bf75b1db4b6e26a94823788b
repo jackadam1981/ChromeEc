@@ -161,6 +161,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a90bf6_a2527e61",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:36:47Z",
+      "side": 1,
+      "message": "Correction to previous comment:\n\n\"We don\u0027t ever force the AC off.\" -\u003e \"We don\u0027t ever force the chipset off.\"",
+      "parentUuid": "269550a7_7c0d44c8",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e2eb6d0_f8b4463f",
