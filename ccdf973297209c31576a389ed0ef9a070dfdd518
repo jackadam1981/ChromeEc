@@ -16,6 +16,23 @@
       "message": "Ping for code review.",
       "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897f5de4_ddf93e9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-03T18:31:49Z",
+      "side": 1,
+      "message": "Future compatibility question: we already have systems with 2 fans and I expect more 2+ fan systems in future. How will that case be supported?",
+      "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
