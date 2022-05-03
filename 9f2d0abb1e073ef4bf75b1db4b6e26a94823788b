@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "269550a7_7c0d44c8",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:31:35Z",
+      "side": 1,
+      "message": "The latest patch set is significantly different:\n\n- We don\u0027t ever force the AC off. If a charger is connected and then disconnected, we still boot to the chargesplash display and indicate that it\u0027s not charging.\n- That requires modification of how tries are counted as we don\u0027t consider it to be a \"cancel\" condition anymore. Instead, we keep a log of how many requests we made in the last 15 minutes. If it exceeds a pre-defined threshold (5 requests), then we lockout the feature until AC is stable (either connected or disconnected) for 15 minutes. A power button press also resets the lockout.",
+      "parentUuid": "0a20b735_a4f1cdda",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e2eb6d0_f8b4463f",
@@ -208,6 +232,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13f0151_ab6da6ec",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4729,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:31:35Z",
+      "side": 1,
+      "message": "New name is `EC_CHARGESPLASH_DISPLAY_READY`.",
+      "parentUuid": "05daf97c_9ba01505",
+      "range": {
+        "startLine": 4729,
+        "startChar": 1,
+        "endLine": 4729,
+        "endChar": 29
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db36aa56_1bf9d421",
@@ -231,6 +279,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "129dcecf_97d7df8b",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db36aa56_1bf9d421",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12a274c0_ba727a3f",
@@ -244,6 +316,30 @@
       "writtenOn": "2022-05-02T18:17:34Z",
       "side": 1,
       "message": "Same as __ASSERT above.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 16
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47b815dd_94e53297",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12a274c0_ba727a3f",
       "range": {
         "startLine": 147,
         "startChar": 2,
@@ -279,6 +375,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "deb7fbbf_9befd7e7",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:31:35Z",
+      "side": 1,
+      "message": "A am confused on the difference between zassume and zassert here... I see that zassert and zassume are the same thing for now, but is zassume intended to silently skip the test if the condition fails? If so, we *really* don\u0027t want that ... I don\u0027t have any trust in the other tests adequately testing these conditions.\n\nChanged to __ASSERT for now and will wait for clarification on what zassume means.",
+      "parentUuid": "30bf2a57_db472288",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90a4fe6f_10f97226",
         "filename": "zephyr/test/drivers/src/chargesplash.c",
         "patchSetId": 8
@@ -290,6 +410,30 @@
       "writtenOn": "2022-05-02T18:17:34Z",
       "side": 1,
       "message": "zassume",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 8
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02115868_741d4aaf",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:31:35Z",
+      "side": 1,
+      "message": "This is executed in the test itself, not in setup/teardown. keeping as is for the moment until I understand what the difference is between zassume and zassert.",
+      "parentUuid": "90a4fe6f_10f97226",
       "range": {
         "startLine": 169,
         "startChar": 2,
@@ -323,6 +467,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "971c7a13_50d427c3",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:31:35Z",
+      "side": 1,
+      "message": "Changed to __ASSERT.",
+      "parentUuid": "d7efa974_b57e5c44",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d84d1e_1dab3b91",
@@ -336,6 +504,24 @@
       "writtenOn": "2022-05-02T18:17:34Z",
       "side": 1,
       "message": "We have a lot more logging here versus the other tests. Was this from a previous debugging session and should maybe be removed?",
+      "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a01804_7ce920ad",
+        "filename": "zephyr/test/drivers/src/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-03T04:31:35Z",
+      "side": 1,
+      "message": "oops, yeah, removed",
+      "parentUuid": "70d84d1e_1dab3b91",
       "revId": "9f2d0abb1e073ef4bf75b1db4b6e26a94823788b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
