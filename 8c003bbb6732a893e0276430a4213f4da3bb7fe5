@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e713e878_cbac853d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-03T17:39:57Z",
+      "side": 1,
+      "message": "the TEST\u003d clause should include the actual outcome to demonstrate that the goal of the patch has been achieved.\n\nOr something like \u0027ran the following command, observed such and such\u0027",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "8c003bbb6732a893e0276430a4213f4da3bb7fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
