@@ -30,13 +30,15 @@
 #define CPUTS(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ## args)
 
-#ifdef CONFIG_KEYBOARD_DEBUG
+//#ifdef CONFIG_KEYBOARD_DEBUG
 #define CPUTS5(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTS5(format, args...) cprints(CC_KEYBOARD, format, ## args)
+/*
 #else
 #define CPUTS5(outstr)
 #define CPRINTS5(format, args...)
 #endif
+ */
 
 /*
  * This command needs malloc to work. Could we use this instead?
@@ -732,6 +734,9 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 			resend_command[i] = output[i];
 		resend_command_len = out_len;
 	}
+
+	CPRINTS5("i8042 data %02x responding", data);
+	hexdump(output, out_len);
 
 	ASSERT(out_len <= MAX_SCAN_CODE_LEN);
 	return out_len;
