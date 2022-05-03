@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7293475c_0f4e6205",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-05-03T15:13:00Z",
+      "side": 1,
+      "message": "Yup, copy/paste error. This should say sink. This is what happens when I try to get a review out right before I leave for the day 😄",
+      "parentUuid": "cb81a462_a6398cac",
+      "range": {
+        "startLine": 350,
+        "startChar": 38,
+        "endLine": 350,
+        "endChar": 44
+      },
+      "revId": "74fe8014e14aa453eb1e1a66f5fbd0c1ed701b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f60af37c_2c937752",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-02T23:41:47Z",
       "side": 1,
       "message": "TEST_USB_PORT",
+      "range": {
+        "startLine": 364,
+        "startChar": 15,
+        "endLine": 364,
+        "endChar": 17
+      },
+      "revId": "74fe8014e14aa453eb1e1a66f5fbd0c1ed701b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6edd158e_3ac441f3",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-05-03T15:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60af37c_2c937752",
       "range": {
         "startLine": 364,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a5e748_7b28fc47",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-05-03T15:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d38f8c_fb8a5adc",
+      "range": {
+        "startLine": 376,
+        "startChar": 38,
+        "endLine": 376,
+        "endChar": 44
+      },
+      "revId": "74fe8014e14aa453eb1e1a66f5fbd0c1ed701b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "835ff476_46270484",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-02T23:41:47Z",
       "side": 1,
       "message": "See above",
+      "range": {
+        "startLine": 391,
+        "startChar": 16,
+        "endLine": 391,
+        "endChar": 17
+      },
+      "revId": "74fe8014e14aa453eb1e1a66f5fbd0c1ed701b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1965744_dfe534fc",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-05-03T15:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835ff476_46270484",
       "range": {
         "startLine": 391,
         "startChar": 16,
