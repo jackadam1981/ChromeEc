@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b359e5_2bbc13e4",
+        "filename": "board/agah/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-03T18:15:55Z",
+      "side": 1,
+      "message": "I see here is the straight pass-through of this signal, however from the comment in b:226438219 (#34) the recommendation is if CCD_MODE_ODL is asserted - then GPIO_PG_PP3300_S5_EC_SEQ_OD should stay low. Is that change planned to be a separate CL?",
+      "revId": "17d1ce220aa0d2b335eeb5ffbd612c3825ee4ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
