@@ -304,8 +304,10 @@ static int rgbkbd_enable(int enable)
 	for (i = 0; i < rgbkbd_count; i++) {
 		struct rgbkbd *ctx = &rgbkbds[i];
 
-		if (ctx->state >= RGBKBD_STATE_ENABLED && enable)
+		if (ctx->state >= RGBKBD_STATE_ENABLED && enable) {
+			CPRINTS("GRID%d is already enabled.", i);
 			continue;
+		}
 
 		e = ctx->cfg->drv->enable(ctx, enable);
 		if (e) {
