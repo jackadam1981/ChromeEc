@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56105456_b753c92a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_ctrl_msg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-03T16:10:08Z",
+      "side": 1,
+      "message": "I think you meant PD_ROLE_SOURCE not false.",
+      "range": {
+        "startLine": 101,
+        "startChar": 31,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "b833e1c4ada0bbdf6390ed7eb488cee53ae85c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
