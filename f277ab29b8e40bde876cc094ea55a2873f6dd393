@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d46309d2_819d639e",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-05-03T02:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e784ca69_e070d339",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 27
+      },
+      "revId": "f277ab29b8e40bde876cc094ea55a2873f6dd393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68784384_ba8086fa",
@@ -94,6 +118,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4c34ef_ce105563",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-05-03T02:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68784384_ba8086fa",
+      "range": {
+        "startLine": 423,
+        "startChar": 42,
+        "endLine": 423,
+        "endChar": 52
+      },
+      "revId": "f277ab29b8e40bde876cc094ea55a2873f6dd393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe23cce_2595750f",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-05-03T02:58:10Z",
+      "side": 1,
+      "message": "Because the EC will reset when length equal to zero.",
+      "parentUuid": "f2eac334_6789a784",
+      "range": {
+        "startLine": 423,
+        "startChar": 37,
+        "endLine": 423,
+        "endChar": 40
+      },
+      "revId": "f277ab29b8e40bde876cc094ea55a2873f6dd393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad8d5807_e04133f7",
@@ -107,6 +179,30 @@
       "writtenOn": "2022-04-29T20:56:15Z",
       "side": 1,
       "message": "Do you not need to check the length? The max string length in SBS is 32 bytes.",
+      "range": {
+        "startLine": 425,
+        "startChar": 21,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "f277ab29b8e40bde876cc094ea55a2873f6dd393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ecda62_93bc4da4",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-05-03T02:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad8d5807_e04133f7",
       "range": {
         "startLine": 425,
         "startChar": 21,
