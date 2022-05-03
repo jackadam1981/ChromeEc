@@ -56,6 +56,30 @@
       },
       "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8536a539_3ca70183",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-03T20:41:31Z",
+      "side": 1,
+      "message": "Doc #572349 doesn\u0027t mention the \"multi-fan\" case at all",
+      "parentUuid": "f107bcb2_98df1a08",
+      "range": {
+        "startLine": 301,
+        "startChar": 3,
+        "endLine": 301,
+        "endChar": 37
+      },
+      "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
