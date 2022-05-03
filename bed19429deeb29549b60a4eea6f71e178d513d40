@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a8b895_d31575fa",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-05-03T02:58:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a548e9_0a3e0d7c",
+      "revId": "bed19429deeb29549b60a4eea6f71e178d513d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4af5b3a0_61cb330b",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-28T16:26:22Z",
       "side": 1,
       "message": "nit: we can\u0027t determine the port partner\u0027s request, it\u0027s more processing the port partner\u0027s request",
+      "revId": "bed19429deeb29549b60a4eea6f71e178d513d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0feeded_aa8013ff",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-05-03T02:58:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4af5b3a0_61cb330b",
       "revId": "bed19429deeb29549b60a4eea6f71e178d513d40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
