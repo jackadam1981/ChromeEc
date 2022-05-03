@@ -33,6 +33,29 @@
       "message": "Future compatibility question: we already have systems with 2 fans and I expect more 2+ fan systems in future. How will that case be supported?",
       "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f107bcb2_98df1a08",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-05-03T20:06:42Z",
+      "side": 1,
+      "message": "Can Active 2 Policy support more than one fan?\n\nAlso, this does not support control over the RPM, it only supports retrieving\nthe current RPM value (i.e. read-only)",
+      "range": {
+        "startLine": 301,
+        "startChar": 3,
+        "endLine": 301,
+        "endChar": 37
+      },
+      "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
