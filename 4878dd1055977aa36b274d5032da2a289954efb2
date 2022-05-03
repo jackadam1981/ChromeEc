@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4cfefe1_74e17ea3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-05-03T03:13:52Z",
+      "side": 1,
+      "message": "I\u0027m with you 99% of the time on this. Commit info should help the reader understand why you\u0027re doing this or if there were any specific design decisions why you did them and what else you might have tried. The commit message should basically try to preempt any comments or questions the reviewer might have.\n\nI would argue that if someone uses the commit message instead of parsing the code they\u0027re not doing a good job as a reviewer.",
+      "parentUuid": "8716f2a9_2427e6d1",
+      "revId": "4878dd1055977aa36b274d5032da2a289954efb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d87a3c1_8d52dec2",
@@ -54,6 +72,54 @@
       "writtenOn": "2022-05-02T23:35:36Z",
       "side": 1,
       "message": "I see a lot of references to motion_sensor[0], can we have this be #defined as a constant? It can be in a future CL it just would make the test a lot easier to read/review I think. Is there a reason we pick element 0 besides it\u0027s arbitrarily the first one?",
+      "range": {
+        "startLine": 663,
+        "startChar": 16,
+        "endLine": 663,
+        "endChar": 17
+      },
+      "revId": "4878dd1055977aa36b274d5032da2a289954efb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8051fb60_6dc478cc",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-05-03T03:13:52Z",
+      "side": 1,
+      "message": "Yup, just to make sure it\u0027s the same number we get back and that the number is reset to 0 after.",
+      "parentUuid": "7d87a3c1_8d52dec2",
+      "range": {
+        "startLine": 663,
+        "startChar": 26,
+        "endLine": 663,
+        "endChar": 27
+      },
+      "revId": "4878dd1055977aa36b274d5032da2a289954efb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92017945_09e9bc6e",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-05-03T03:13:52Z",
+      "side": 1,
+      "message": "We can sync up on define vs explicit tomorrow. I personally feel like each test should be readable alone without having to scroll around the file to find the missing pieces such as which sensor I\u0027m actually referencing.\n\nRE why 0, there are 2 reasons. The first is that I set it up in the device tree to be an accelerometer only sensor. accel/gyro chips get 2 entries in the `motion_sensors` array and are bound together making it a bit harder to reason about. For these tests specifically, any sensor would have worked.",
+      "parentUuid": "f57a7f52_d27ade6b",
       "range": {
         "startLine": 663,
         "startChar": 16,
