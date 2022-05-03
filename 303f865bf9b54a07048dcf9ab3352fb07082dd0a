@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a415a5a4_1f3948f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-05-03T22:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9eeb3dc_85a091b3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "303f865bf9b54a07048dcf9ab3352fb07082dd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01f3fd20_b3ddc84a",
@@ -85,6 +109,30 @@
       "writtenOn": "2022-04-28T21:48:07Z",
       "side": 1,
       "message": "I don\u0027t know that it matters, but most commits in EC have these three items together `BRANCH` (no newlines):\n\n```\nBRANCH\u003d\nBUG\u003d\nTEST\u003d\n```",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "303f865bf9b54a07048dcf9ab3352fb07082dd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2c1183_2437e4a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-05-03T22:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f3fd20_b3ddc84a",
       "range": {
         "startLine": 17,
         "startChar": 0,
