@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4413075_c5c49ce2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-03T18:00:32Z",
+      "side": 1,
+      "message": "That would be nice.\n\nAFAIK, the only reason we have the _NOT_SUPPORTED defines is to make the error messages more obvious. I don\u0027t think you can have a #define inside of a #define. There might be another way to do it, but I\u0027m not sure how much effort it\u0027s worth.",
+      "parentUuid": "42d55546_4ef7256f",
+      "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e254337e_4b0b3e0e",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d23691_950c1394",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 7119,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-03T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e254337e_4b0b3e0e",
+      "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcf0f5b1_0d3e1b6f",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-05-02T19:37:55Z",
       "side": 1,
       "message": "Does it matter that we consider it complete on error as well as getting Data_Reset_Complete?  Or is it nor particularly important since error recovery pretty much wipes out everything about the connection?",
+      "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c83340fe_bc9f0e86",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 7160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-03T18:00:32Z",
+      "side": 1,
+      "message": "I think it\u0027s probably not important. In that case, the main utility would probably be to avoid the DPM junking up the logs by trying to Data Reset again during the time it takes to enter error recovery. I\u0027m not sure that\u0027s even possible.\n\nDo you think I should restrict this to the success case?",
+      "parentUuid": "dcf0f5b1_0d3e1b6f",
       "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
