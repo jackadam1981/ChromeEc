@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32d2bbb7_bc262890",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-03T15:59:22Z",
+      "side": 1,
+      "message": "Oh I don\u0027t mean in the context of a reviewer. I meant for someone looking back in our history while they\u0027re looking for examples or just examining the git history in for some reason.\n\nAgain, this is a nit so no worries, but I\u0027ll leave unresolved for visibility 😋",
+      "parentUuid": "a4cfefe1_74e17ea3",
+      "revId": "4878dd1055977aa36b274d5032da2a289954efb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d87a3c1_8d52dec2",
         "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
         "patchSetId": 2
