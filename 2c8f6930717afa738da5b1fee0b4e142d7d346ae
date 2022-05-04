@@ -16,6 +16,24 @@
       "message": "I got the impression from the description of the preceding commit that the power button task requires changes as well. Was that going to be in this commit (the description here seems to suggest it would be), or in another one after this (in which case this doesn\u0027t actually use the poewr button task, it just makes the power sequencing not handle it directly).",
       "revId": "2c8f6930717afa738da5b1fee0b4e142d7d346ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "099491ca_479cadbf",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-04T05:37:19Z",
+      "side": 0,
+      "message": "This is the fix that is referred to - the wording in the previous commit\nisn\u0027t that good - I can fix that.\n\nThis fix essentially stops the power sequence code ignoring the power button logic.",
+      "parentUuid": "6ebef4dc_3aed764c",
+      "revId": "2c8f6930717afa738da5b1fee0b4e142d7d346ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
