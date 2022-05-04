@@ -138,6 +138,7 @@ size_t queue_add_unit(struct queue const *q, const void *src)
 	else
 		memcpy(q->buffer + tail * q->unit_bytes, src, q->unit_bytes);
 
+	//ASSERT(memcmp(q->buffer + tail * q->unit_bytes, src, q->unit_bytes) == 0);
 	return queue_advance_tail(q, 1);
 }
 

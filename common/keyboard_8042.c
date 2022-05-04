@@ -286,7 +286,10 @@ static void i8042_send_to_host(int len, const uint8_t *bytes,
 			data.chan = chan;
 			data.byte = bytes[i];
 			queue_add_unit(&to_host, &data);
+			//CPRINTS5("%s: queue %02x", __func__, bytes[i]);
 		}
+	} else {
+		CPRINTS5("%s: dropped %d bytes; had only %d", __func__, len, queue_space(&to_host));
 	}
 	mutex_unlock(&to_host_mutex);
 
@@ -735,9 +738,6 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 		resend_command_len = out_len;
 	}
 
-	CPRINTS5("i8042 data %02x responding", data);
-	hexdump(output, out_len);
-
 	ASSERT(out_len <= MAX_SCAN_CODE_LEN);
 	return out_len;
 }
@@ -962,6 +962,7 @@ void keyboard_protocol_task(void *u)
 						 i8042_aux_irq_enabled);
 			} else {
 				kblog_put('K', entry.byte);
+				CPRINTS5("KPT LPC put %02x", entry.byte);
 				lpc_keyboard_put_char(
 					entry.byte, i8042_keyboard_irq_enabled);
 			}

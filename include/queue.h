@@ -47,6 +47,9 @@ extern struct queue_policy const queue_policy_null;
 #define QUEUE_NULL(SIZE, TYPE) QUEUE(SIZE, TYPE, queue_policy_null)
 
 /*
+#ifndef CONFIG_ZEPHYR
+ */
+/*
  * RAM state for a queue.
  */
 struct queue_state {
@@ -95,6 +98,31 @@ struct queue {
 		.unit_bytes   = sizeof(TYPE),			\
 		.buffer       = (uint8_t *) &((TYPE[SIZE]){}),	\
 	})
+#define CREATE_QUEUE(NAME, SIZE, TYPE, POLICY) \
+	struct queue NAME = (struct queue){           \
+	};                                               \
+/*
+#else
+struct queue_state {
+	size_t head;
+	size_t tail;
+};
+
+struct queue {
+	struct queue_policy const *policy;
+	struct k_msgq lower;
+};
+
+#define QUEUE(SIZE, TYPE, POLICY)				\
+	((struct queue) {                   			\
+		.policy       = &POLICY,			\
+	});                                 \
+        do {\
+		K_MSGQ_DEFINE(lower, sizeof(TYPE), SIZE, __alignof__(TYPE)); \
+		\
+	} while (0)                                     \
+#endif
+ */
 
 /* Initialize the queue to empty state. */
 void queue_init(struct queue const *q);
