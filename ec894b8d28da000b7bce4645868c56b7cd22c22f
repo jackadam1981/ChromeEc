@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bbf727_9e14ae26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-05-04T18:26:23Z",
+      "side": 1,
+      "message": "No. This is used in all phases on whitelabel devices. I was going to include the term whitelabel in the commit message. The coil regex flagged it though. I\u0027m not sure what the coil approved term is.",
+      "parentUuid": "980c6263_d02d3f36",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "ec894b8d28da000b7bce4645868c56b7cd22c22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6f2b9b6e_40270bed",
