@@ -210,6 +210,14 @@ The generated EC binary from emerge is found at:
 (chroot) $ /build/<boardname>/firmware/ec.bin
 ```
 
+or
+
+```
+(chroot) $ /build/<boardname>/firmware/<devicename>/ec.bin
+```
+
+The `devicename` is name of device or board or variant which belong to a family of base board. `boardname` is base board name in this case. Eg : `/build/dedede/firmware/madoo/ec.bin`
+
 The ebuild file used by Chromium OS is found
 [here](https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/main/chromeos-base/chromeos-ec/chromeos-ec-9999.ebuild):
 
@@ -248,6 +256,14 @@ If you build Chrome OS with `build_packages` the firmware image will be at:
 ```bash
 (chroot) $ /build/<boardname>/firmware/ec.bin
 ```
+
+or
+
+```
+(chroot) $ /build/<boardname>/firmware/<devicename>/ec.bin
+```
+
+The `devicename` is name of device or board or variant which belong to a family of base board. `boardname` is base board name in this case. Eg : `/build/dedede/firmware/madoo/ec.bin`
 
 Specifying `--image` is optional. If you leave off the `--image` argument, the
 `flash_ec` script will first look for a locally built `ec.bin` followed by one
