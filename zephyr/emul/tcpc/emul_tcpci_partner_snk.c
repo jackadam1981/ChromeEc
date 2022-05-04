@@ -410,6 +410,9 @@ void tcpci_snk_emul_hard_reset(void *data)
 {
 	struct tcpci_snk_emul_data *snk_emul_data = data;
 
+	tcpci_partner_common_hard_reset_as_role(snk_emul_data->common_data,
+						PD_ROLE_SINK, PD_ROLE_UFP);
+
 	snk_emul_data->wait_for_ps_rdy = false;
 	snk_emul_data->pd_completed = false;
 }
