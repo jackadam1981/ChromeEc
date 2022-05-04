@@ -424,6 +424,18 @@ void tcpci_partner_common_set_ams_ctrl_msg(struct tcpci_partner_data *data,
 void tcpci_partner_common_clear_ams_ctrl_msg(struct tcpci_partner_data *data);
 
 /**
+ * @brief Called by partner emulators internally. Resets the common tcpci
+ * partner data as the provided roles.
+ *
+ * @param data          Pointer to TCPCI partner data
+ * @param power_role    USB PD power role
+ * @param data_role     USB PD data role
+ */
+void tcpci_partner_common_hard_reset_as_role(struct tcpci_partner_data *data,
+					     enum pd_power_role power_role,
+					     enum pd_data_role data_role);
+
+/**
  * @}
  */
 
