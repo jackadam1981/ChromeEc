@@ -57,6 +57,7 @@ register_corsola_project(
         here / "interrupts_kingler.dts",
         here / "cbi_eeprom.dts",
         here / "gpio_kingler.dts",
+        here / "keyboard_kingler.dts",
         here / "led_kingler.dts",
         here / "motionsense_kingler.dts",
         here / "usbc_kingler.dts",

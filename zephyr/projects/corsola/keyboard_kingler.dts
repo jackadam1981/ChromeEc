@@ -3,19 +3,6 @@
  * found in the LICENSE file.
  */
 
-/ {
-	kblight {
-		compatible = "cros-ec,kblight-pwm";
-		pwms = <&pwm3 0 PWM_KHZ(10) PWM_POLARITY_NORMAL>;
-		frequency = <10000>;
-		generic-pwm-channel = <0>;
-	};
-};
-
-&pwm3 {
-	status = "okay";
-};
-
 &cros_kb_raw {
 	status = "okay";
 	/* No KSO2 (it's inverted and implemented by GPIO) */
