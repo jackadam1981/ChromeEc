@@ -52,6 +52,24 @@
       "parentUuid": "a3fbaccd_093a746b",
       "revId": "b65308ab24bd3ef0235964221fe15263929d5bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d893182_c2d1f8c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-04T15:35:23Z",
+      "side": 1,
+      "message": "Did this make the build pass on your end?  I\u0027d assumed you\u0027d need an entry in common/mock/usb_pd_dpm_mock.c where we have one for dpm_evaluate_sink_fixed_pdo()",
+      "parentUuid": "926bb872_586be652",
+      "revId": "b65308ab24bd3ef0235964221fe15263929d5bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
