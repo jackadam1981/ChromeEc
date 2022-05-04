@@ -31,7 +31,10 @@
 
 /** Structure describing dual role device emulator data */
 struct tcpci_drp_emul_data {
-	/** Controls if device is sink or source */
+	/**
+	 * Indicates whether this device was initialized to try
+	 * sinking first. This field only changed during initialization.
+	 */
 	bool sink;
 	/** If device is during power swap and is expecting PS_RDY message */
 	bool in_pwr_swap;
