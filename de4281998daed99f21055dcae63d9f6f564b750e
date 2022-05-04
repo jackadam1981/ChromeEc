@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6643322_65cb0a55",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2022-05-04T16:46:14Z",
+      "side": 1,
+      "message": "It looks like there is a risk of integer overflow which could lead to shorter than expected wait time. I have seen this pattern of code in a couple of places in this project so maybe that is considered low risk.",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838a0b59_918aa9f1",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2022-05-04T16:46:14Z",
+      "side": 1,
+      "message": "In order to reduce the wait, I would suggest to wait before and after NPCX_HIPMIC(PMC_ACPI) \u003d NPCX_VW_SMI(0). We tested this approach successfully on Monday.\nThis is more efficient and it reduces the overall time wasted waiting as the wait time after NPCX_HIPMIC(PMC_ACPI) \u003d NPCX_VW_SMI(1); is usually absorbed by code execution time.",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae217bad_c80aa207",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2022-05-04T16:46:14Z",
+      "side": 1,
+      "message": "I would still recommend to follow the specification by ensure an at least 100 us delay between assertion and de-assertion.",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
