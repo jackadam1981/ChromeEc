@@ -80,6 +80,30 @@
       },
       "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58d21cad_05d1f588",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2022-05-04T16:13:16Z",
+      "side": 1,
+      "message": "Active 2 policy can support multiple fans. If there are more than 1 fan, there should be corresponding number of fan participants exposed along with each fan should report its fan speed under the corresponding fan participant. \nI\u0027ll check internally if this information can be added to Doc.",
+      "parentUuid": "8536a539_3ca70183",
+      "range": {
+        "startLine": 301,
+        "startChar": 3,
+        "endLine": 301,
+        "endChar": 37
+      },
+      "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
