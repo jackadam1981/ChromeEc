@@ -34,6 +34,24 @@
       "parentUuid": "6fb99b96_8d5365e0",
       "revId": "b65308ab24bd3ef0235964221fe15263929d5bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926bb872_586be652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-05-04T05:48:03Z",
+      "side": 1,
+      "message": "Change the definition in usb_pd.h.",
+      "parentUuid": "a3fbaccd_093a746b",
+      "revId": "b65308ab24bd3ef0235964221fe15263929d5bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
