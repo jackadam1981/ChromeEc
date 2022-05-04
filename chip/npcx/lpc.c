@@ -124,6 +124,16 @@ static void lpc_task_disable_irq(void)
  * length >61us.  Both are short enough and events are infrequent, so just
  * delay for 65us.
  */
+
+#if defined(CONFIG_HOST_INTERFACE_ESPI)
+static void wait_for_smi_sci(void)
+{
+	uint64_t timeout = get_time().val + CONFIG_ESPI_DEFAULT_VW_WIDTH_US;
+	while ((NPCX_VWEVSM(2) & VWEVSM_DIRTY(1)) && (get_time().val < timeout))
+		udelay(10);
+}
+#endif
+
 static void lpc_generate_smi(void)
 {
 	host_event_t smi;
@@ -145,13 +155,12 @@ static void lpc_generate_smi(void)
 	 * from SMIB/SCIB doesn't really reflect the SMI/SCI status. SMI/SCI
 	 * status should be read from bit 1/0 in eSPI VMEVSM(2) register.
 	 */
-	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SMI(1);
-	udelay(CONFIG_ESPI_DEFAULT_VW_WIDTH_US);
 	/* Generate a falling edge */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SMI(0);
-	udelay(CONFIG_ESPI_DEFAULT_VW_WIDTH_US);
+	wait_for_smi_sci();
 	/* Set signal high */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SMI(1);
+	wait_for_smi_sci();
 #else
 	/* SET SMIB bit to pull SMI_L to high.*/
 	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SMIB);
@@ -191,13 +200,12 @@ static void lpc_generate_sci(void)
 	 * from SMIB/SCIB doesn't really reflect the SMI/SCI status. SMI/SCI
 	 * status should be read from bit 1/0 in eSPI VMEVSM(2) register.
 	 */
-	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
-	udelay(CONFIG_ESPI_DEFAULT_VW_WIDTH_US);
 	/* Generate a falling edge */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(0);
-	udelay(CONFIG_ESPI_DEFAULT_VW_WIDTH_US);
+	wait_for_smi_sci();
 	/* Set signal high */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
+	wait_for_smi_sci();
 #else
 	/* Set SCIB bit to pull SCI_L to high.*/
 	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SCIB);
