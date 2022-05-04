@@ -81,8 +81,8 @@ static int check_power_rails_enabled(void)
 	int out = 1;
 
 	out &= power_signal_get(PWR_EN_PP3300_A);
-	out &= power_signal_get(PWR_EN_PP5000_A);
-	out &= power_signal_get(PWR_EC_SOC_DSW_PWROK);
+	//out &= power_signal_get(PWR_EN_PP5000_A);
+	//out &= power_signal_get(PWR_EC_SOC_DSW_PWROK);
 	return out;
 }
 
