@@ -52,6 +52,24 @@
       "parentUuid": "e99bc78f_7ebe0b43",
       "revId": "17d1ce220aa0d2b335eeb5ffbd612c3825ee4ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a1e3b0_87c8d622",
+        "filename": "board/agah/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-05-04T03:03:08Z",
+      "side": 1,
+      "message": "Hi Boris\nThe solution in #44 is for other brya variant but not agah, on other brya variant PG_PP3300_S5_OD directly from power IC to power sequence control IC. But on agah\u0027s HW design connect to EC, which will impact system power on if EC not bypass signal.",
+      "parentUuid": "1517e1a3_be9f0542",
+      "revId": "17d1ce220aa0d2b335eeb5ffbd612c3825ee4ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
