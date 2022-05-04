@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fa63b52_6729d31b",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-04T21:47:00Z",
+      "side": 1,
+      "message": "nit: the comment is for `lpc_generate_smi` function, so it should be moved down",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6643322_65cb0a55",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 2
