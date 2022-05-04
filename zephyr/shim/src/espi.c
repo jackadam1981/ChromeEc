@@ -479,9 +479,22 @@ int lpc_keyboard_has_char(void)
 	return status;
 }
 
+#define ESPI_IT8XXX2_GET_KBC_BASE \
+	((struct kbc_regs *)DT_REG_ADDR_BY_IDX(DT_NODELABEL(espi0), 5))
 void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	uint32_t kb_char = chr;
+	struct kbc_regs *const kbc_reg = ESPI_IT8XXX2_GET_KBC_BASE;
+
+	/*
+	 * bit0: Enable the interrupt to keyboard driver in the host processor
+	 *       via SERIRQ when the output buffer is full
+	 */
+	if (send_irq) {
+		kbc_reg->KBHICR |= KBC_KBHICR_OBFKIE;
+	} else {
+		kbc_reg->KBHICR &= ~(KBC_KBHICR_OBFKIE | KBC_KBHICR_OBFMIE);
+	}
 
 	espi_write_lpc_request(espi_dev, E8042_WRITE_KB_CHAR, &kb_char);
 	LOG_INF("KB put %02x", kb_char);
