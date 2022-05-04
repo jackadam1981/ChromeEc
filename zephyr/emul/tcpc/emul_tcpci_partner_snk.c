@@ -412,6 +412,8 @@ void tcpci_snk_emul_hard_reset(void *data)
 
 	snk_emul_data->wait_for_ps_rdy = false;
 	snk_emul_data->pd_completed = false;
+	snk_emul_data->common_data->data_role = PD_ROLE_UFP;
+	snk_emul_data->common_data->power_role = PD_ROLE_SINK;
 }
 
 /**
