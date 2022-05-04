@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a51f60_ef74d939",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-04T14:49:49Z",
+      "side": 1,
+      "message": "I was thinking this function may need to pass len \u003d\u003d 0 ? len : len -1, and then the read sized block would return the error later on in the CL stack?  Or this function could do its own error return on 0 later.  At any rate, I\u0027m not sure -1 would be a great idea to pass in because then I\u0027d have to remind myself what happens if you compare a negative int to a uint8_t in C...",
+      "range": {
+        "startLine": 862,
+        "startChar": 63,
+        "endLine": 862,
+        "endChar": 70
+      },
+      "revId": "4afaae6df981717471ba5373645b90777b6af983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
