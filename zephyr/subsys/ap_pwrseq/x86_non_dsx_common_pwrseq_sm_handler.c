@@ -403,32 +403,12 @@ static void pwr_seq_set_initial_state(void)
 	enum power_states_ndsx state = chipset_pwr_seq_get_state();
 
 	/*
-	 * Check reset flags, and ensure CPU is in correct state.
-	 */
-	if (reset_flags & EC_RESET_FLAG_AP_OFF) {
-		/*
-		 * AP is expected to be off.
-		 * If it isn't, force shutdown.
-		 */
-		if (state != SYS_POWER_STATE_G3) {
-			ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
-		}
-		pwr_sm_set_state(SYS_POWER_STATE_G3);
-		return;
-	}
-	/*
 	 * Not in warm boot, but CPU is not shutdown.
 	 */
 	if (((reset_flags & EC_RESET_FLAG_SYSJUMP) == 0) &&
 	    (state != SYS_POWER_STATE_G3)) {
 		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
 		state = SYS_POWER_STATE_G3;
-	}
-	/*
-	 * If CPU is off, set the state to start powering it up.
-	 */
-	if (state == SYS_POWER_STATE_G3) {
-		state = SYS_POWER_STATE_G3S5;
 	}
 	pwr_sm_set_state(state);
 }
