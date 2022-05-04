@@ -2777,12 +2777,6 @@ static void pe_src_ready_run(int port)
 		return;
 	}
 
-	if (PE_CHK_FLAG(port, PE_FLAGS_WAITING_PR_SWAP) &&
-	    pd_timer_is_expired(port, PE_TIMER_PR_SWAP_WAIT)) {
-		PE_CLR_FLAG(port, PE_FLAGS_WAITING_PR_SWAP);
-		PE_SET_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
-	}
-
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
 	    pd_timer_is_expired(port, PE_TIMER_WAIT_AND_ADD_JITTER)) {
 
@@ -2801,6 +2795,12 @@ static void pe_src_ready_run(int port)
 		 */
 		if (pe_attempt_port_discovery(port))
 			return;
+
+		if (PE_CHK_FLAG(port, PE_FLAGS_WAITING_PR_SWAP) &&
+		    pd_timer_is_expired(port, PE_TIMER_PR_SWAP_WAIT)) {
+			PE_CLR_FLAG(port, PE_FLAGS_WAITING_PR_SWAP);
+			PE_SET_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
+		}
 
 		/* No DPM requests; attempt mode entry/exit if needed */
 		dpm_run(port);
