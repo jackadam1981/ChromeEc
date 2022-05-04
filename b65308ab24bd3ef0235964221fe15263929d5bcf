@@ -16,6 +16,24 @@
       "message": "failed with:\n\n  CC      RO/common/util.o\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: build/coverage/usb_pe_drp_old_noextended/RO/common/usbc/usb_pe_drp_sm.o: in function `pe_src_negotiate_capability_entry\u0027:\n/mnt/host/source/src/platform/ec/common/usbc/usb_pe_drp_sm.c:2469: undefined reference to `dpm_evaluate_request_rdo\u0027\ncollect2: error: ld returned 1 exit status\n",
       "revId": "b65308ab24bd3ef0235964221fe15263929d5bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3fbaccd_093a746b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-05-04T05:22:02Z",
+      "side": 1,
+      "message": "Should it be defined in include/usb_pd_dpm.h?",
+      "parentUuid": "6fb99b96_8d5365e0",
+      "revId": "b65308ab24bd3ef0235964221fe15263929d5bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
