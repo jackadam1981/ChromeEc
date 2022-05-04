@@ -37,6 +37,8 @@ struct tcpci_snk_emul_data {
 	bool pd_completed;
 	/** PD_CTRL_PING message received  */
 	bool ping_received;
+	/** Pointer to common TCPCI partner data */
+	struct tcpci_partner_data *common_data;
 };
 
 /** Structure describing standalone sink device emulator */
@@ -63,8 +65,10 @@ void tcpci_snk_emul_init(struct tcpci_snk_emul *emul, enum pd_rev_type rev);
  *        created and all flags are cleared.
  *
  * @param data Pointer to USB-C sink device emulator data
+ * @param common_data Pointer to common TCPCI partner data
  */
-void tcpci_snk_emul_init_data(struct tcpci_snk_emul_data *data);
+void tcpci_snk_emul_init_data(struct tcpci_snk_emul_data *data,
+			      struct tcpci_partner_data *common_data);
 
 /**
  * @brief Connect emulated device to TCPCI
