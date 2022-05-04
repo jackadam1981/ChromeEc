@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32729424_b43ba46b",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-05-04T03:18:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "421ce088_e8424fc1",
+      "range": {
+        "startLine": 225,
+        "startChar": 6,
+        "endLine": 225,
+        "endChar": 7
+      },
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e56d9128_5c1f5e04",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-04-29T21:37:38Z",
       "side": 1,
       "message": "nit: delate it in util/config_allowed.txt",
+      "range": {
+        "startLine": 235,
+        "startChar": 8,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afe1a2c_67067a82",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-05-04T03:18:22Z",
+      "side": 1,
+      "message": "couldn\u0027t find the configuration \"CONFIG_HOSTCMD_BATTERY_V2\" in util/config_allowed.txt. did you mean config.h ?",
+      "parentUuid": "908356a1_4d0e26a2",
       "range": {
         "startLine": 235,
         "startChar": 8,
