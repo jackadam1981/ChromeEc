@@ -16,6 +16,29 @@
       "message": "Fixed building with CR50_DEV\u003d1. PTAL",
       "revId": "d218f47d6946e35bd60bd948249bc51a6e25fc8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86945a54_53a8a740",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-04T20:45:47Z",
+      "side": 1,
+      "message": "it would be cleaner to keep a single conditional compilation block, something like (neveer mind format messed up by gerrit):\n\n\n#ifndef CR50_DEV\n  {\n       struct board_id bid;\n￼\tif (read_board_id(\u0026bid) !\u003d EC_SUCCESS ||\n￼\t    !board_id_type_is_blank(\u0026bid)) {\n￼\t\t*response \u003d ARCVE_BID_PROGRAMMED;\n￼\t\treturn VENDOR_RC_NOT_ALLOWED;\n￼\t}\n}\n#endif",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 0
+      },
+      "revId": "d218f47d6946e35bd60bd948249bc51a6e25fc8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
