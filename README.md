@@ -207,7 +207,7 @@ build directory before running emerge with `make clobber`.
 The generated EC binary from emerge is found at:
 
 ```
-(chroot) $ /build/<boardname>/firmware/ec.bin
+(chroot) $ /build/<boardname>/firmware/<boardname>/ec.bin
 ```
 
 The ebuild file used by Chromium OS is found
