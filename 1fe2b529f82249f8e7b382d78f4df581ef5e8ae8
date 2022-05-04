@@ -16,6 +16,29 @@
       "message": "Any thoughts on this?",
       "revId": "1fe2b529f82249f8e7b382d78f4df581ef5e8ae8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabcccaf_05a803e2",
+        "filename": "util/bcmp.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-04T21:54:50Z",
+      "side": 1,
+      "message": "how about allowing to specify \u0027tot\u0027, \u0027prepvt\u0027, or \u0027mp\u0027 as the command line parameter indicating what we\u0027re trying to compare against.\n\nWould be easier on the user.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "1fe2b529f82249f8e7b382d78f4df581ef5e8ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
