@@ -35,6 +35,11 @@ struct tcpci_drp_emul_data {
 	bool sink;
 	/** If device is during power swap and is expecting PS_RDY message */
 	bool in_pwr_swap;
+	/**
+	 * Indicates whether this device was initialized to try
+	 * sinking first. This field only changes during initialization.
+	 */
+	bool initially_sink;
 };
 
 /** Structure describing standalone dual role device emulator */

@@ -109,7 +109,7 @@ void tcpci_drp_emul_hard_reset(void *emul)
 {
 	struct tcpci_drp_emul *drp_emul = emul;
 
-	if (drp_emul->data.sink) {
+	if (drp_emul->data.initially_sink) {
 		tcpci_snk_emul_hard_reset(&drp_emul->snk_data);
 	} else {
 		tcpci_src_emul_hard_reset(&drp_emul->src_data);
@@ -297,6 +297,7 @@ void tcpci_drp_emul_init_with_pd_role(struct tcpci_drp_emul *emul,
 	emul->ops.disconnect = tcpci_drp_emul_disconnect_op;
 
 	emul->data.sink = power_role == PD_ROLE_SINK;
+	emul->data.initially_sink = power_role == PD_ROLE_SINK;
 	emul->data.in_pwr_swap = false;
 	tcpci_src_emul_init_data(&emul->src_data, &emul->common_data);
 	tcpci_snk_emul_init_data(&emul->snk_data, &emul->common_data);

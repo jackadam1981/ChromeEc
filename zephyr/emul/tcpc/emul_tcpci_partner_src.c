@@ -181,9 +181,12 @@ void tcpci_src_emul_hard_reset(void *data)
 {
 	struct tcpci_src_emul_data *src_emul_data = data;
 
+	tcpci_partner_common_hard_reset_as_role(src_emul_data->common_data,
+						PD_ROLE_SOURCE, PD_ROLE_DFP);
+
 	/* Send capability to establish PD again */
 	tcpci_src_emul_send_capability_msg_with_timer(
-			src_emul_data, src_emul_data->common_data, 0);
+		src_emul_data, src_emul_data->common_data, 0);
 }
 
 /**
