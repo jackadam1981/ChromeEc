@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5246d3_3b1076cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-05-04T03:40:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11547098_204f4117",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "421ce088_e8424fc1",
@@ -88,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb2560f_de9e1192",
+        "filename": "zephyr/projects/nissa/prj_nivviks.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-05-04T03:40:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e56d9128_5c1f5e04",
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "908356a1_4d0e26a2",
@@ -125,6 +167,30 @@
       "side": 1,
       "message": "couldn\u0027t find the configuration \"CONFIG_HOSTCMD_BATTERY_V2\" in util/config_allowed.txt. did you mean config.h ?",
       "parentUuid": "908356a1_4d0e26a2",
+      "range": {
+        "startLine": 235,
+        "startChar": 8,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "093a73ff4ea82d1c769c05a760ae097c41a8e651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dba4d03_7a7f3467",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-05-04T03:40:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8afe1a2c_67067a82",
       "range": {
         "startLine": 235,
         "startChar": 8,
