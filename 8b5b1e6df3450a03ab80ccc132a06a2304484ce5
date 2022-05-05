@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0ce394_6b066173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-05-05T21:50:40Z",
+      "side": 1,
+      "message": "When trying CQ+1, I get:\nError:\tThe EC is in the process of migrating to Zephyr.\n\tZephyr uses Kconfig for configuration rather than ad-hoc #defines.\n\tAny new EC CONFIG options must ALSO be added to Zephyr so that new\n\tfunctionality is available in Zephyr also. The following new ad-hoc\n\tCONFIG options were detected:\n\nCONFIG_ACCELGYRO_BMI160_INT_ENABLE\nCONFIG_ACCELGYRO_ICM426XX_INT_ENABLE\n\nThis is expected since the variables are set in each driver .h. How do I prevent the compilation failure?",
+      "revId": "8b5b1e6df3450a03ab80ccc132a06a2304484ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
