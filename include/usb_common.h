@@ -243,6 +243,20 @@ int pd_broadcast_alert_msg(uint32_t ado);
 int pd_send_alert_msg(int port, uint32_t ado);
 
 /**
+ * Gets current temperature to be used in PD extended data Status messages.
+ *
+ * @return uint8_t with current temp in celsius (0 for not supported).
+ */
+uint8_t pd_get_status_internal_temp(void);
+
+/**
+ * Gets temperature status to be used in PD extended data Status messages.
+ *
+ * @return enum pd_sdb_temperature_status with current operating condition.
+ */
+enum pd_sdb_temperature_status pd_get_status_temp_status(void);
+
+/**
  * During USB retimer firmware update, process operation
  * requested by AP
  *

@@ -22,6 +22,8 @@
 #include "host_command.h"
 #include "system.h"
 #include "task.h"
+#include "temp_sensor.h"
+#include "thermal.h"
 #include "usb_api.h"
 #include "usb_common.h"
 #include "usb_mux.h"
@@ -1088,6 +1090,89 @@ int pd_send_alert_msg(int port, uint32_t ado)
 	return EC_SUCCESS;
 #else
 	return EC_ERROR_INVALID_CONFIG;
+#endif
+}
+
+uint8_t pd_get_status_internal_temp(void)
+{
+	/*
+	 * Internal Temp
+	 * Source or Sink’s internal temperature in degrees centigrade.
+	 * 0 = feature not supported
+	 * 1 = temperature is less than 2°C.
+	 * 2-255 = temperature in °C.
+	 */
+#ifdef CONFIG_TEMP_SENSOR
+	uint8_t ret;
+	int i, temp_k;
+
+	/* initialize ret to 0 in case of no valid temperature reads */
+	ret = 0;
+	for (i = 0; i < TEMP_SENSOR_COUNT; i++) {
+		if (temp_sensor_read(i, &temp_k) != EC_SUCCESS)
+			continue;
+
+		/* Check temp is in expected range (<255°C) */
+		if (K_TO_C(temp_k) > 255)
+			continue;
+		else if (K_TO_C(temp_k) < 2)
+			temp_k = C_TO_K(1);
+
+		if (((uint8_t) K_TO_C(temp_k)) > ret)
+			ret = (uint8_t) K_TO_C(temp_k);
+	}
+
+	return ret;
+#else
+	return 0;
+#endif
+}
+
+enum pd_sdb_temperature_status pd_get_status_temp_status(void)
+{
+	/*
+	 * Temperature Status
+	 * 0 Reserved and Shall be set to zero
+	 * 1…2 00 – Not Supported
+	 *     01 – Normal
+	 *     10 – Warning
+	 *     11 – Over temperature
+	 * 3…7 Reserved and Shall be set to zero
+	 */
+#ifdef CONFIG_THROTTLE_AP
+	enum pd_sdb_temperature_status ret;
+	int i, temp_k;
+
+	/* Initialize ret to 0 in case of no valid temperature reads */
+	ret = PD_SDB_TEMPERATURE_STATUS_NOT_SUPPORTED;
+	for (i = 0; i < TEMP_SENSOR_COUNT; i++) {
+		if (temp_sensor_read(i, &temp_k) != EC_SUCCESS)
+			continue;
+
+		if (temp_k >
+		    thermal_params[i].temp_host[EC_TEMP_THRESH_HALT]) {
+			/* Over temperature */
+			if (ret < PD_SDB_TEMPERATURE_STATUS_OVER_TEMPERATURE) {
+				ret =
+				    PD_SDB_TEMPERATURE_STATUS_OVER_TEMPERATURE;
+			}
+		} else if (temp_k >
+			   thermal_params[i].temp_host[EC_TEMP_THRESH_HIGH]) {
+			/* Warning */
+			if (ret < PD_SDB_TEMPERATURE_STATUS_WARNING) {
+				ret = PD_SDB_TEMPERATURE_STATUS_WARNING;
+			}
+		} else {
+			/* Normal */
+			if (ret < PD_SDB_TEMPERATURE_STATUS_NORMAL) {
+				ret = PD_SDB_TEMPERATURE_STATUS_NORMAL;
+			}
+		}
+	}
+
+	return ret;
+#else
+	return PD_SDB_TEMPERATURE_STATUS_NOT_SUPPORTED;
 #endif
 }
 

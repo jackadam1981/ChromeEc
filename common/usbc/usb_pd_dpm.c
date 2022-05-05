@@ -16,6 +16,7 @@
 #include "system.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
+#include "usb_common.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mode.h"
 #include "usb_mux.h"
@@ -794,7 +795,7 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 	/* TODO(b/227236917): Fill in fields of Status message */
 
 	/* Internal Temp */
-	sdb.internal_temp = 0x0;
+	sdb.internal_temp = pd_get_status_internal_temp();
 
 	/* Present Input */
 	sdb.present_input = 0x0;
@@ -806,7 +807,7 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 	sdb.event_flags = 0x0;
 
 	/* Temperature Status */
-	sdb.temperature_status = PD_SDB_TEMPERATURE_STATUS_NOT_SUPPORTED;
+	sdb.temperature_status = pd_get_status_temp_status();
 
 	/* Power Status */
 	sdb.power_status = 0x0;
