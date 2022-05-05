@@ -79,6 +79,7 @@
 /*
  * The Zephyr I2C shell command provides the same functionality as the Chromium
  * EC i2cscan and i2cxfer commands, so they are always disabled.
+
  */
 #undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_I2C_XFER
@@ -1735,6 +1736,11 @@ extern struct jump_data mock_jump_data;
 #undef CONFIG_USB_PD_3A_PORTS
 #ifdef CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS
 #define CONFIG_USB_PD_3A_PORTS CONFIG_PLATFORM_EC_CONFIG_USB_PD_3A_PORTS
+#endif
+
+#undef CONFIG_USB_PD_TEMP_SENSOR
+#ifdef CONFIG_PLATFORM_EC_USB_PD_TEMP_SENSOR
+#define CONFIG_USB_PD_TEMP_SENSOR CONFIG_PLATFORM_EC_USB_PD_TEMP_SENSOR
 #endif
 
 #undef CONFIG_USBC_VCONN
