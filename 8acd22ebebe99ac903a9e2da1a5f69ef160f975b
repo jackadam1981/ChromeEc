@@ -34,6 +34,24 @@
       "parentUuid": "e8c99046_f68ae9db",
       "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94ffc8f_701b88f9",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-05T21:40:45Z",
+      "side": 1,
+      "message": "Are you suggesting we just use CONTAINER_OF instead of a direct reference like this?",
+      "parentUuid": "28161010_d5fe17e1",
+      "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
