@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bae8e98_e44bb3a2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7407,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-05T19:51:59Z",
+      "side": 1,
+      "message": "I can\u0027t recall, what is the interaction with disabled and the expired check?  Just thinking in terms of timer initialization/cleanup since this function now has just a ton of timers to track",
+      "revId": "8a09e95de9760cbe67ca3653af06ae73853b1048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
