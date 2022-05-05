@@ -4,9 +4,16 @@
  */
 
 #include "common.h"
-
+#include "console.h"
+#include "fw_config.h"
+#include "hooks.h"
+#include "keyboard_8042_sharedlib.h"
 #include "keyboard_scan.h"
 #include "timer.h"
+
+
+#define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ## args)
 
 /* Keyboard scan setting */
 __override struct keyboard_scan_config keyscan_config = {
@@ -23,3 +30,18 @@ __override struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+/*
+ * TODO(b/220800586): implement multiple keyboard matrix types
+ */
+static void board_keyboard_init(void)
+{
+	enum ec_cfg_keyboard_matrix_type mt_type =
+					ec_cfg_keyboard_matrix_type();
+
+	CPRINTS("FW_CONFIG: keyboard matrix type number is %d", mt_type);
+	if (mt_type == KEYBOARD_MATRIX_CUSTOMIZED) {
+		/* TODO(b/220800586): modify scancode set for new keyboard */
+		/* TODO(b/220800586): modify actual_key_mask for new keyboard */
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_keyboard_init, HOOK_PRIO_DEFAULT);
