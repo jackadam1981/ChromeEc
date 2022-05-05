@@ -49,6 +49,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c05d46a_5b7cc595",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-05-05T02:53:08Z",
+      "side": 1,
+      "message": "e.g.",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "6a6ae72160de14ac2b91204e2d5c5421f469409e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e675ae_15282c4d",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-05-05T02:53:08Z",
+      "side": 1,
+      "message": "`respond`",
+      "range": {
+        "startLine": 67,
+        "startChar": 55,
+        "endLine": 67,
+        "endChar": 63
+      },
+      "revId": "6a6ae72160de14ac2b91204e2d5c5421f469409e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2228f2f6_ff1e6c7f",
         "filename": "chip/npcx/espi.c",
         "patchSetId": 1
