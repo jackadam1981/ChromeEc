@@ -65,6 +65,7 @@ register_intelrvp_project(
         here / "mtlrvp/mtlrvpp_npcx/interrupts.dts",
         here / "mtlrvp/ioex.dts",
         here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx_power_signals.dts",
         here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
     ],
     extra_kconfig_files=[here / "mtlrvp/mtlrvpp_npcx/prj.conf"],
