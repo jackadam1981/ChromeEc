@@ -16,6 +16,23 @@
       "message": "This is already present?",
       "revId": "b0d60dc4917dcce6599cd295a0c5dc4d0a6cd1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56cd16d2_483b84fd",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-05T23:29:19Z",
+      "side": 1,
+      "message": "Here too.",
+      "revId": "b0d60dc4917dcce6599cd295a0c5dc4d0a6cd1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
