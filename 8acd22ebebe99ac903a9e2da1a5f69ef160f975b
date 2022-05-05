@@ -16,6 +16,24 @@
       "message": "A DRP partner has a src_emul_data and a snk_emul_data, right? Will both of those structs have the same common_data?",
       "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28161010_d5fe17e1",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-05T21:31:07Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "e8c99046_f68ae9db",
+      "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
