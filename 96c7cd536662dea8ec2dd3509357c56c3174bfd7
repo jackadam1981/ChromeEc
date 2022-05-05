@@ -33,6 +33,24 @@
       "message": "nit: if there isn\u0027t a return after set_state, then we\u0027ll continue on to try sending the extended data message",
       "revId": "96c7cd536662dea8ec2dd3509357c56c3174bfd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5be8da7_afddfd23",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4238,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-05T21:25:13Z",
+      "side": 1,
+      "message": "addressing in followup CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3631298",
+      "parentUuid": "802176de_b8dc0ad2",
+      "revId": "96c7cd536662dea8ec2dd3509357c56c3174bfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
