@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f2d624_687734de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-05T21:34:57Z",
+      "side": 1,
+      "message": "Hi Diana and Abe,\ncan you take a look at this CL. It addresses a remaining comment from crrev/c/3602226 and fixes a bug I found in the landed CL to add a Status response.\n\nBasically, the check for Get_Status was right next to Get_Battery_Status in the extended message request sections of pe_src/snk_ready_run. It should have been in the control message sections, otherwise the EC just responds to Get_Status with Not_Supported, as it did before the CL. I re-validated the status response on a twinkie with this CL and it is working correctly. Let me know if you have any questions.",
+      "revId": "e68ee01d62321340da1f0d400fd3b4c665553f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4b5f95_434fa92f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2648,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-05T21:34:57Z",
+      "side": 1,
+      "message": "After testing this change interactively, I moved the Get_Status response to be next to the Get_Battery_Status response in an attempt to address CQ failures. I assumed Get_Status and Get_Battery_Status were the same type of message, which was incorrect.\n\nIn addition to addressing remaining comments in crrev/c/3602226, this cl also moves the Get_Status check back to the control messages. I re-checked this on a twinkie and it is working correctly.",
+      "range": {
+        "startLine": 2648,
+        "startChar": 0,
+        "endLine": 2648,
+        "endChar": 71
+      },
+      "revId": "e68ee01d62321340da1f0d400fd3b4c665553f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

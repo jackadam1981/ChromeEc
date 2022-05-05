@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67cfe4f_a6ca3681",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4270,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-05T21:34:57Z",
+      "side": 1,
+      "message": "Responding to comment in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3602226 \u003e \"nit: if there isn\u0027t a return after set_state, then we\u0027ll continue on to try sending the extended data message\"\n\nDone.",
+      "range": {
+        "startLine": 4270,
+        "startChar": 2,
+        "endLine": 4270,
+        "endChar": 9
+      },
+      "revId": "3225fa8ec6dc7730d607f69414a68a32a1025939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
