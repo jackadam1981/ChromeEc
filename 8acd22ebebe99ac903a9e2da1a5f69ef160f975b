@@ -70,6 +70,24 @@
       "parentUuid": "c94ffc8f_701b88f9",
       "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aec5408b_78d9b772",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-05T23:45:41Z",
+      "side": 1,
+      "message": "I think using CONTAINER_OF would be tricky here because a containing struct could be of any of these struct types:\n\nhttps://crsrc.org/o/src/platform/ec/zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h;l\u003d41?q\u003df:emul_tcpci_partner_drp.h\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h;l\u003d43\n\nhttps://crsrc.org/o/src/platform/ec/zephyr/include/emul/tcpc/emul_tcpci_partner_faulty_snk.h;l\u003d38",
+      "parentUuid": "9ef292a8_8036db8b",
+      "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

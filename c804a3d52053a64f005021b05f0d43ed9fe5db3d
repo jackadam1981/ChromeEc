@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbd311a_2fe070f1",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-05T23:45:41Z",
+      "side": 1,
+      "message": "We need to track how the emulator was initialized, this is in response to your comment on the preceding CL.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "c804a3d52053a64f005021b05f0d43ed9fe5db3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
