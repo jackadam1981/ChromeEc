@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c530c0c_5bccd962",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-05T14:30:48Z",
+      "side": 1,
+      "message": "Slowed to 250 ms. I think we can get slower too once we grab power button input device.",
+      "parentUuid": "82b4a54c_10433e59",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 11
+      },
+      "revId": "218f0bea6017e31431399276ccc9ad7e67161038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80604ce7_b7ea944d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07403950_197b0ffa",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-05T14:30:48Z",
+      "side": 1,
+      "message": "see lines 134-138 ... we check for devices that don\u0027t support the chargesplash and don\u0027t even bother starting the display loop.",
+      "parentUuid": "80604ce7_b7ea944d",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "218f0bea6017e31431399276ccc9ad7e67161038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "410ed992_62bdbe56",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-05T02:13:57Z",
       "side": 1,
       "message": "how will this be utilized by the startup scripts?",
+      "range": {
+        "startLine": 10671,
+        "startChar": 3,
+        "endLine": 10671,
+        "endChar": 15
+      },
+      "revId": "218f0bea6017e31431399276ccc9ad7e67161038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c2459d_6a9fc0e5",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10671,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-05T14:30:48Z",
+      "side": 1,
+      "message": "crrev.com/c/3574320",
+      "parentUuid": "410ed992_62bdbe56",
       "range": {
         "startLine": 10671,
         "startChar": 3,
