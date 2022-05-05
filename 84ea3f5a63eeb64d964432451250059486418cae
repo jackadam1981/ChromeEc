@@ -194,6 +194,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a322c988_d573e2d9",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-05-05T09:23:25Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\nI use the Kinox to get the EC to jump RW timing about 10 times.\nIt is nearly 267ms.\n [0.267180 UART initialized after sysjump]\n [Image: RW, kinox_v2.0.13763+1773013023 kinox_14687.0.22_05_05 2022-05-05 15:56:37 mattwang@mattwang-VirtualBox]\n\nAnd it can get the 90w barrel adapter ADC value.\n [0.982200 Power type tiny, 90W]",
+      "parentUuid": "adbf8426_7c157c7b",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89539536_7d05b2ee",
         "filename": "board/kinox/adc.c",
         "patchSetId": 9
