@@ -488,6 +488,30 @@ err_unlock:
 	return ret;
 }
 
+#ifdef CONFIG_BODY_DETECTION
+int get_rms_noise(const struct motion_sensor_t *s)
+{
+	/*
+	 * The CTRL1_XL(10h) bit[3:2] is 10,
+	 * which means full-scale selection is +/-4g.
+	 * So select 75ug as rms noise.
+	 */
+	return 75;
+}
+#endif
+
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+int lsm_list_activities(const struct motion_sensor_t *s,
+			uint32_t *enabled,
+			uint32_t *disabled)
+{
+	struct stprivate_data *data = LSM6DSO_GET_DATA(s);
+	*enabled = data->enabled_activities;
+	*disabled = data->disabled_activities;
+	return EC_RES_SUCCESS;
+}
+#endif /* CONFIG_GESTURE_HOST_DETECTION */
+
 const struct accelgyro_drv lsm6dso_drv = {
 	.init = init,
 	.read = read,
@@ -500,4 +524,10 @@ const struct accelgyro_drv lsm6dso_drv = {
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS */
+#ifdef CONFIG_BODY_DETECTION
+	.get_rms_noise = get_rms_noise,
+#endif
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+	.list_activities = lsm_list_activities,
+#endif
 };
