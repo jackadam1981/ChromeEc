@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b077852c_99b3881e",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-05T23:46:35Z",
+      "side": 1,
+      "message": "Wow. Missed that not only is it dynamically set but checked as though it is dynamically set elsewhere. Not sure why it exists vs just doing checking if we\u0027re PD_ROLE_SOURCE.\n\nEditing the followup CL in response to add an initially_sink field.",
+      "parentUuid": "d8837ee4_e36be068",
+      "range": {
+        "startLine": 34,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "d32f640ba22441ac6d95391e6b883397ff83d171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f956cb6_061bd19d",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
         "patchSetId": 2
