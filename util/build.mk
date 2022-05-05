@@ -40,6 +40,9 @@ lbplay-objs=lbplay.o $(comm-objs)
 
 util/ectool.c: $(out)/ec_version.h
 
+host-util-bin-y += chargesplash
+chargesplash-objs = chargesplash.o $(comm-objs)
+
 ec_parse_panicinfo-objs=ec_parse_panicinfo.o ec_panicinfo.o
 
 # USB type-C Vendor Information File generation
