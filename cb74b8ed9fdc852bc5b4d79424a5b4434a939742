@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ba731f6_98c67551",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-05T15:12:52Z",
+      "side": 1,
+      "message": "Thanks for working on this!  Sorry for the late review, I just found a couple of little suggestions.\n\nWill you also be updating the EC_CMD_TYPEC_STATUS command to return the new revision information to the AP? ",
+      "revId": "cb74b8ed9fdc852bc5b4d79424a5b4434a939742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f646ead_c007fa8d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 7122,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-05T15:12:52Z",
+      "side": 1,
+      "message": "nit: wouldn\u0027t it be faster to set ready state here rather than wait for the _run function?",
+      "revId": "cb74b8ed9fdc852bc5b4d79424a5b4434a939742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae6df32a_8768f6b9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 7160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-05T15:12:52Z",
+      "side": 1,
+      "message": "If we were interrupted (i.e. didn\u0027t get either the partner\u0027s revision or a Not_Supported), then we\u0027ll need to leave PE_FLAGS_MSG_RECEIVED set so READY knows there\u0027s a message to process.  Otherwise, we\u0027d drop the interrupting message",
+      "revId": "cb74b8ed9fdc852bc5b4d79424a5b4434a939742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
