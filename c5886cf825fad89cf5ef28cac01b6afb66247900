@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34eb9139_847bc448",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-05T02:24:15Z",
+      "side": 1,
+      "message": "the CHIPSET_STATE_ANY_SUSPEND is also remaining.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "c5886cf825fad89cf5ef28cac01b6afb66247900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea84bc9_d651224c",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-05T02:24:15Z",
+      "side": 1,
+      "message": "does this request make sense?\nthe AP is already running by definition.",
+      "range": {
+        "startLine": 235,
+        "startChar": 6,
+        "endLine": 235,
+        "endChar": 29
+      },
+      "revId": "c5886cf825fad89cf5ef28cac01b6afb66247900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83809705_0335ddfe",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 6168,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-05T02:24:15Z",
+      "side": 1,
+      "message": "how/where is this used?",
+      "range": {
+        "startLine": 6168,
+        "startChar": 1,
+        "endLine": 6168,
+        "endChar": 37
+      },
+      "revId": "c5886cf825fad89cf5ef28cac01b6afb66247900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
