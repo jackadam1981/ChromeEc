@@ -218,6 +218,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "def5b710_9436e91d",
+        "filename": "board/kinox/adc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-05-05T13:53:33Z",
+      "side": 1,
+      "message": "I think we need to double check this timing before the FSI. Let\u0027s keep the bug b/211806236 open and track the data before the FSI.",
+      "parentUuid": "a322c988_d573e2d9",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "84ea3f5a63eeb64d964432451250059486418cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89539536_7d05b2ee",
         "filename": "board/kinox/adc.c",
         "patchSetId": 9
