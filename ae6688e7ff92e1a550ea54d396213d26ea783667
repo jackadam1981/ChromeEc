@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "117858e8_11326b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-05T23:12:06Z",
+      "side": 1,
+      "message": "Hi Diana, can you take a look at this CL? It is to address your earlier comments in the Get_Revision/Revision update. \n\nA heads up, both this and the Status followup CL are failing try_build_boards with the below error. It\u0027s not related to the CLs and also not the first time we\u0027ve seen this. Basically, volteer is running out of space (https://b.corp.google.com/issues/218600515 and https://b.corp.google.com/issues/202460235).\n\n\n/opt/coreboot-sdk/lib/gcc/arm-eabi/11.2.0/../../../../arm-eabi/bin/ld:build/volteer/RO/ec.RO.lds:4238 cannot move location counter backwards (from 00000000100c0020 to 00000000100bffff) \n",
+      "revId": "ae6688e7ff92e1a550ea54d396213d26ea783667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceac2110_04800d10",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7124,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-05T23:12:06Z",
+      "side": 1,
+      "message": "addressing comment from https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3607054 - \"nit: wouldn\u0027t it be faster to set ready state here rather than wait for the _run function?\"\n\nDone.",
+      "range": {
+        "startLine": 7124,
+        "startChar": 2,
+        "endLine": 7124,
+        "endChar": 27
+      },
+      "revId": "ae6688e7ff92e1a550ea54d396213d26ea783667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9470a143_d179e5d1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7165,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-05T23:12:06Z",
+      "side": 1,
+      "message": "addressing comment from https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3607054 - \"If we were interrupted (i.e. didn\u0027t get either the partner\u0027s revision or a Not_Supported), then we\u0027ll need to leave PE_FLAGS_MSG_RECEIVED set so READY knows there\u0027s a message to process.  Otherwise, we\u0027d drop the interrupting message\"\n\nDone.",
+      "range": {
+        "startLine": 7165,
+        "startChar": 3,
+        "endLine": 7165,
+        "endChar": 44
+      },
+      "revId": "ae6688e7ff92e1a550ea54d396213d26ea783667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
