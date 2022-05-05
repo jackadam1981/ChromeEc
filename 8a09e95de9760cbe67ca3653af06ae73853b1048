@@ -16,6 +16,24 @@
       "message": "I can\u0027t recall, what is the interaction with disabled and the expired check?  Just thinking in terms of timer initialization/cleanup since this function now has just a ton of timers to track",
       "revId": "8a09e95de9760cbe67ca3653af06ae73853b1048",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72c50be1_00dd6dfe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7407,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-05T20:04:36Z",
+      "side": 1,
+      "message": "I think the timer module could be clearer on this, but AFAICT, enabled timers are ones where you previously set a timeout and haven\u0027t disabled them yet. Expired timers are enabled timers where the timeout has passed. Disabled timers are not expired. The expected usages is enable, then is_expired, then disable.\n\nI agree that there are too many timers to keep track of in this state. I\u0027m not sure what would be a good way to improve it without departing from the spec. I did create b:231326418 to make the TC responsible for waiting for VCONN to transition, and that would mean we wouldn\u0027t need this timer here.",
+      "parentUuid": "2bae8e98_e44bb3a2",
+      "revId": "8a09e95de9760cbe67ca3653af06ae73853b1048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
