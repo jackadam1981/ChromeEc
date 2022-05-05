@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b4a54c_10433e59",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-05T02:13:57Z",
+      "side": 1,
+      "message": "the 100 ms delay should apply in this case as well\nlest we overwhelm the EC.\n\nfrankly, even 100ms is too fast given how quickly\nthe battery state of charge moves. \non top of that, we poll the battery *much* slower than that.",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 11
+      },
+      "revId": "218f0bea6017e31431399276ccc9ad7e67161038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80604ce7_b7ea944d",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-05T02:13:57Z",
+      "side": 1,
+      "message": "we should check for \"unimplemented\" and give up.\nin that case, this should also be the 1st check\nin this loop.",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "218f0bea6017e31431399276ccc9ad7e67161038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410ed992_62bdbe56",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10671,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-05T02:13:57Z",
+      "side": 1,
+      "message": "how will this be utilized by the startup scripts?",
+      "range": {
+        "startLine": 10671,
+        "startChar": 3,
+        "endLine": 10671,
+        "endChar": 15
+      },
+      "revId": "218f0bea6017e31431399276ccc9ad7e67161038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
