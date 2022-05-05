@@ -22,6 +22,30 @@
       },
       "revId": "e93957294ba6c08fafea4096a1808e876cc51757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c405a515_023c1696",
+        "filename": "util/chargesplash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-05T16:06:29Z",
+      "side": 1,
+      "message": "\u003e Why is all of this happening in ectool? I think we should make this a stand alone command. \n\nSplit into a separate utility. See the follow-on CL for the display code separated command (crrev.com/c/3630419).\n\n\u003e Could we have upstart manage frecon?\n\nSee crrev.com/c/3574320 for how this pieces into upstart.",
+      "parentUuid": "1904992e_7b2783c5",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "e93957294ba6c08fafea4096a1808e876cc51757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
