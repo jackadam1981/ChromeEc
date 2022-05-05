@@ -130,6 +130,8 @@ size_t queue_add_unit(struct queue const *q, const void *src)
 {
 	size_t tail = q->state->tail & q->buffer_units_mask;
 
+	// This makes keyboard echo work
+	__asm__ volatile (" nop");
 	if (queue_space(q) == 0)
 		return 0;
 
