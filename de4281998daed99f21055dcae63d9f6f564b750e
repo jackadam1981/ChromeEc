@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "158d2e9b_f253a998",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-05T02:43:48Z",
+      "side": 1,
+      "message": "The hardcode assumes that the VW index 6 (for sci/smi) is always located in the offset 2 of espi_out_list. Although there is low possibility to change the organization of the espi_out_list array. It will break the fucntion if someone changes it but not notice the hardcode. Maybe we can poll the index field for each NPCX_VWEVSM register to get the offset of VM index 6. See the example [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/ec/chip/npcx/espi.c;l\u003d291). This could be done once at init.",
+      "range": {
+        "startLine": 132,
+        "startChar": 21,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "838a0b59_918aa9f1",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 2
