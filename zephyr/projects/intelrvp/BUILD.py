@@ -65,7 +65,23 @@ register_intelrvp_project(
         here / "mtlrvp/mtlrvpp_npcx/interrupts.dts",
         here / "mtlrvp/ioex.dts",
         here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx_power_signals.dts",
         here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
     ],
     extra_kconfig_files=[here / "mtlrvp/mtlrvpp_npcx/prj.conf"],
+)
+
+register_intelrvp_project(
+    project_name="mtlrvpp_npcx_shim",
+    chip="npcx9",
+    extra_dts_overlays=[
+        here / "adlrvp/adlrvp_npcx/cbi_eeprom.dts",
+        here / "mtlrvp/mtlrvpp_npcx/fan.dts",
+        here / "mtlrvp/mtlrvpp_npcx/gpio.dts",
+        here / "mtlrvp/mtlrvpp_npcx/interrupts_shim.dts",
+        here / "mtlrvp/ioex.dts",
+        here / "mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        here / "adlrvp/adlrvp_npcx/temp_sensor.dts",
+    ],
+    extra_kconfig_files=[here / "mtlrvp/mtlrvpp_npcx/prj_shim.conf"],
 )

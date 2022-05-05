@@ -19,11 +19,12 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
-#define  X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS        50
+#if X86_NON_DSX_PWRSEQ_MTL
+#define  X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS        50
 
 void board_ap_power_force_shutdown(void)
 {
-	int timeout_ms = X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS;
+	int timeout_ms = X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS;
 
 	/* Turn off PCH_RMSRST to meet tPCH12 */
 	power_signal_set(PWR_EC_PCH_RSMRST, 0);
@@ -50,3 +51,4 @@ void board_ap_power_action_g3_s5(void)
                 AP_PWRSEQ_DT_VALUE(wait_signal_timeout));
 
 }
+#endif /* X86_NON_DSX_PWRSEQ_MTL */
