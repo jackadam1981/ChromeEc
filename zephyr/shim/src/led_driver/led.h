@@ -7,10 +7,12 @@
 #define __CROS_EC_LED_H__
 
 #include <devicetree.h>
+#include <drivers/pwm.h>
 
 #define COMPAT_GPIO_LED cros_ec_gpio_led_pins
 #define COMPAT_PWM_LED  cros_ec_pwm_led_pins
 
+#define PINS_NODE(id)	DT_CAT(PIN_NODE_, id)
 #define PINS_ARRAY(id)	DT_CAT(PINS_ARRAY_, id)
 
 /*
@@ -48,11 +50,54 @@ enum led_color {
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
+/*
+ * Struct defining LED PWM pin and duty cycle to set.
+ */
+struct pwm_pin_t {
+	const struct device *pwm;
+	uint8_t channel;
+	pwm_flags_t flags;
+	uint32_t pulse_ns; /* PWM Duty cycle ns */
+};
+
+/*
+ * Pin node contains LED color and array of PWM channels
+ * to alter in order to enable the given color.
+ */
+struct led_pins_node_t {
+	/* Link between color and pins node */
+	int led_color;
+
+	/*
+	 * Link between color and pins node in case of multiple LEDs
+	 * Also required for ectool funcs support
+	 */
+	enum ec_led_id led_id;
+
+	/* Brightness Range color, only used by ectool funcs for testing */
+	enum ec_led_colors br_color;
+
+	/* Array of PWM pins to set to enable particular color */
+	struct pwm_pin_t *pwm_pins;
+
+	/* Number of pins per color */
+	uint8_t pins_count;
+};
+
 /**
- * Set LEDs to enable given color
+ * Set LED color using color enum
  *
- * @param color LED Color to enable
+ * @param color 	LED Color to enable 
+ * @param led_id	LED ID to set the color for
  */
 void led_set_color(enum led_color color, enum ec_led_id led_id);
+
+/**
+ * Set LED color using pins node
+ *
+ * @param *pins_node	Pins node to enable the color corresponding
+ * 			to the node.
+ */
+void led_set_color_with_node(struct led_pins_node_t *pins_node);
 
 #endif /* __CROS_EC_LED_H__ */
