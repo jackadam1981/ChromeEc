@@ -34,6 +34,24 @@
       "parentUuid": "ac0bf438_4ed91f50",
       "revId": "8b24555d53adb59065a8d2c1e9e9896c6365fa3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6b29fc_946d444a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-05T00:27:28Z",
+      "side": 1,
+      "message": "The KSO13 and KSO14 are used for the numpad. A keyboard without a numpad doesn\u0027t need the KSO13 and KSO14 muxed as alternative keyboard pins so these pins can be used as general GPIOs, like Herobrine does.\n\nAs this is a common npcx9 dts, I think it should keep a minimal set, i.e. removing the KSO13 and KSO14. For the projects which have numpads, they can override pinctl in their board dts files. Please add a comment to explain it.",
+      "parentUuid": "69c7d69d_9923823a",
+      "revId": "8b24555d53adb59065a8d2c1e9e9896c6365fa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
