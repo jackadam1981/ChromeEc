@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26b0e8f6_620d9e14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-05T03:02:00Z",
+      "side": 1,
+      "message": "What is the exact scenario when it might happen? I.e. why would EC enable eSPI channel `during`  an eSpi transaction...\n\nHow severe is it?",
+      "revId": "6a6ae72160de14ac2b91204e2d5c5421f469409e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56d14005_1f5fca54",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
