@@ -52,6 +52,24 @@
       "parentUuid": "28161010_d5fe17e1",
       "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef292a8_8036db8b",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-05T23:16:36Z",
+      "side": 1,
+      "message": "I was wondering whether it would be possible to get common_data using CONTAINER_OF, but I saw some other similar functions that took a common_data parameter, so I figured it wasn\u0027t possible. I find the current partner emulator API kind of confusing in general. If it\u0027s possible to use CONTAINER_OF here, then I\u0027d prefer using CONTAINER_OF to having the same pointer at multiple levels of this struct tree, which I think is the current design.\n\nWhat I was specifically thinking about here is whether a) there is only one instance of the common struct per emulated partner with multiple pointers to that common struct, and the pointer that gets used here depends on the current power role, or b) there are multiple common structs for each DRP emulator with a pointer to one in the source emulator and a pointer to another in the sink emulator, and the struct that gets updated here depends on the current power role. Of those two scenarios, I would be more comfortable with option a), but I\u0027d really prefer it if there were only one pointer to the common struct, because I\u0027m having a hard time keeping track of them.",
+      "parentUuid": "c94ffc8f_701b88f9",
+      "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
