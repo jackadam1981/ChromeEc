@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41837b0_4b74bb6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-05T15:16:07Z",
+      "side": 1,
+      "message": "Sorry for the late review on this one as well, just one little bug fix I\u0027d suggest",
+      "revId": "96c7cd536662dea8ec2dd3509357c56c3174bfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802176de_b8dc0ad2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4238,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-05T15:16:07Z",
+      "side": 1,
+      "message": "nit: if there isn\u0027t a return after set_state, then we\u0027ll continue on to try sending the extended data message",
+      "revId": "96c7cd536662dea8ec2dd3509357c56c3174bfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
