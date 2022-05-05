@@ -6864,4 +6864,9 @@
 #define CONFIG_S5_EXIT_WAIT 4
 #endif
 
+/* Index for temperature sensor used in PD messages. Defaults to 0. */
+#ifndef PD_TEMP_SENSOR
+#define PD_TEMP_SENSOR 0
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
