@@ -52,6 +52,23 @@
       "parentUuid": "69c7d69d_9923823a",
       "revId": "8b24555d53adb59065a8d2c1e9e9896c6365fa3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebe45c9_874d9cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-05T02:05:25Z",
+      "side": 1,
+      "message": "Nissa (nivviks) have both KSO_13 and KSO_14 allocated to the keyboard.\nIt might be better to move this whole stanza out of the common DTS and put it into the platform specific DTS.\nThe common DTS should be reserved for (really) common config, and overriding it should be a real exception.\nIt would seem keyboard configuration is something that is specific enough to each platform that perhaps it should exist in the platform DTS.\n",
+      "revId": "8b24555d53adb59065a8d2c1e9e9896c6365fa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
