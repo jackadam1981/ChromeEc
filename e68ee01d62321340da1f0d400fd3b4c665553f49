@@ -39,6 +39,30 @@
       },
       "revId": "e68ee01d62321340da1f0d400fd3b4c665553f49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56351209_1d8e498a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2648,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-05T21:42:46Z",
+      "side": 1,
+      "message": "Thanks!  \n\nI can\u0027t blame you for mixing up the extended and control messages.  And now we\u0027ve added extended control messages in the spec, which I\u0027m sure will just add an extra layer into the number of things which can get mixed up",
+      "parentUuid": "5a4b5f95_434fa92f",
+      "range": {
+        "startLine": 2648,
+        "startChar": 0,
+        "endLine": 2648,
+        "endChar": 71
+      },
+      "revId": "e68ee01d62321340da1f0d400fd3b4c665553f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
