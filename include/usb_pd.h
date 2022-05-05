@@ -294,6 +294,11 @@ enum pd_rx_errors {
 /* Power in mW at which we will automatically charge from a DRP partner */
 #define PD_DRP_CHARGE_POWER_MIN	27000
 
+/* Index for temperature sensor used in PD messages. Defaults to 0. */
+#ifndef PD_TEMP_SENSOR
+#define PD_TEMP_SENSOR 0
+#endif
+
 /* function table for entered mode */
 struct amode_fx {
 	int (*status)(int port, uint32_t *payload);
