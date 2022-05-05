@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ed3f47_30ba0bf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-05T14:23:26Z",
+      "side": 1,
+      "message": "That\u0027s actually already handled ... the EC wakes the AP upon AC connection even without this code. The rest of the remaining work will be userspace stuff (powerd \u0026 UI changes).",
+      "parentUuid": "34eb9139_847bc448",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "c5886cf825fad89cf5ef28cac01b6afb66247900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eea84bc9_d651224c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87700f32_d5ee9000",
+        "filename": "common/chargesplash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-05T14:23:26Z",
+      "side": 1,
+      "message": "Yes, it puts the state machine into the requested state, even if we are already booted. This is useful for testing.",
+      "parentUuid": "eea84bc9_d651224c",
+      "range": {
+        "startLine": 235,
+        "startChar": 6,
+        "endLine": 235,
+        "endChar": 29
+      },
+      "revId": "c5886cf825fad89cf5ef28cac01b6afb66247900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83809705_0335ddfe",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-05T02:24:15Z",
       "side": 1,
       "message": "how/where is this used?",
+      "range": {
+        "startLine": 6168,
+        "startChar": 1,
+        "endLine": 6168,
+        "endChar": 37
+      },
+      "revId": "c5886cf825fad89cf5ef28cac01b6afb66247900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573e1387_8f209249",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 6168,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-05T14:23:26Z",
+      "side": 1,
+      "message": "Forgot to remove it, thanks.",
+      "parentUuid": "83809705_0335ddfe",
       "range": {
         "startLine": 6168,
         "startChar": 1,
