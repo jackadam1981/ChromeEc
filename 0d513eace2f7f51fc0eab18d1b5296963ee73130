@@ -104,6 +104,24 @@
       "parentUuid": "dcf0f5b1_0d3e1b6f",
       "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f0b8e9_b63d6bdc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 7160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-05T19:44:15Z",
+      "side": 1,
+      "message": "I think it\u0027ll be alright since we\u0027re nuking the connection",
+      "parentUuid": "c83340fe_bc9f0e86",
+      "revId": "0d513eace2f7f51fc0eab18d1b5296963ee73130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
