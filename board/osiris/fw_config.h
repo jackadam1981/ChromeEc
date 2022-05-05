@@ -25,6 +25,11 @@ enum ec_cfg_keyboard_backlight_type {
 	KEYBOARD_BACKLIGHT_ENABLED = 1
 };
 
+enum ec_cfg_keyboard_matrix_type {
+	KEYBOARD_MATRIX_CROS = 0,
+	KEYBOARD_MATRIX_RGB = 1
+};
+
 union osiris_cbi_fw_config {
 	struct {
 		enum ec_cfg_usb_db_type			usb_db : 4;
@@ -32,7 +37,8 @@ union osiris_cbi_fw_config {
 		uint32_t				lte_db : 1;
 		enum ec_cfg_keyboard_backlight_type	kb_bl : 1;
 		uint32_t				audio : 3;
-		uint32_t				reserved_1 : 21;
+		enum ec_cfg_keyboard_matrix_type	kb_mt : 1;
+		uint32_t				reserved_1 : 20;
 	};
 	uint32_t raw_value;
 };
@@ -50,5 +56,12 @@ union osiris_cbi_fw_config get_fw_config(void);
  * @return the USB daughter board type.
  */
 enum ec_cfg_usb_db_type ec_cfg_usb_db_type(void);
+
+/**
+ * Get the keyboard matrix type from FW_CONFIG.
+ *
+ * @return the keyboard matrix type.
+ */
+enum ec_cfg_keyboard_matrix_type ec_cfg_keyboard_matrix_type(void);
 
 #endif /* __BOARD_OSIRIS_FW_CONFIG_H_ */
