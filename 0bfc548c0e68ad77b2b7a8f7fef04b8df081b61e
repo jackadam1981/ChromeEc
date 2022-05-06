@@ -16,6 +16,52 @@
       "message": "This is not yet deployed, correct?  Maybe wait to submit until it matches physical reality (i.e. it\u0027s deployed).",
       "revId": "0bfc548c0e68ad77b2b7a8f7fef04b8df081b61e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49aa4c6d_a92623c0",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-05-06T23:39:31Z",
+      "side": 1,
+      "message": "Satlab will replace the \"Testbed Prototype v0.2\" in this image, right? If so, can you update this image to remove \"Testbed Prototype v0.2\"?",
+      "range": {
+        "startLine": 605,
+        "startChar": 28,
+        "endLine": 605,
+        "endChar": 66
+      },
+      "revId": "0bfc548c0e68ad77b2b7a8f7fef04b8df081b61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88cbbd11_bc3a9380",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-05-06T23:39:31Z",
+      "side": 1,
+      "message": "Could you remove the extra whitespace in the image?",
+      "range": {
+        "startLine": 607,
+        "startChar": 45,
+        "endLine": 607,
+        "endChar": 98
+      },
+      "revId": "0bfc548c0e68ad77b2b7a8f7fef04b8df081b61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
