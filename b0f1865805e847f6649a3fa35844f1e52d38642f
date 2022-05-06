@@ -69,6 +69,30 @@
       },
       "revId": "b0f1865805e847f6649a3fa35844f1e52d38642f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5652f238_285a303e",
+        "filename": "test/usb_tcpmv2_td_pd_src3_e7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-06T19:17:32Z",
+      "side": 1,
+      "message": "I think PD_EXT_SOURCE_CAP is an extended message which we could send in response to the Get_Source_Cap_Extended control message. So, that struct doesn\u0027t actually have a field where assigning PD_EXT_SOURCE_CAP makes sense, which is what\u0027s leading to the error.\n\nThis part of the test is checking that the PD messages we send are expected. After adding the Get_Revision control message to the end of source and sink startup, I had to add Get_Revision to the group of possible tx messages in these tests. We are probably intending to check that the Source_Capabilities data message is sent, but checking for the Source_Capabilities_Extended type here happens to work because it is also 7.",
+      "parentUuid": "f815ea70_bef588bf",
+      "range": {
+        "startLine": 79,
+        "startChar": 24,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "revId": "b0f1865805e847f6649a3fa35844f1e52d38642f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
