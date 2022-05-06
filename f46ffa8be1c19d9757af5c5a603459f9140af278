@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50732201_aadb2767",
+        "filename": "board/dojo/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2022-05-06T01:40:16Z",
+      "side": 1,
+      "message": "Seems this part lead cut off state return BP_NO to skip `battery_wait_for_stable`.\nTomato still able to acquire info during cut off state by `battery_wait_for_stable`.\nCould you confirm with power team the difference between tomato and dojo battery ?",
+      "revId": "f46ffa8be1c19d9757af5c5a603459f9140af278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
