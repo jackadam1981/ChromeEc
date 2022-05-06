@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "746a155d_65dba8d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-06T00:22:48Z",
+      "side": 1,
+      "message": "Yes. Done.",
+      "parentUuid": "f25ab68c_34e3674d",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94bdfcd3_94cb9187",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa6493c1_c5048b01",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4309,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-06T00:22:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "94bdfcd3_94cb9187",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c7b428e_1e8a1e39",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-04-26T17:11:09Z",
       "side": 1,
       "message": "This is ~50 lines of code and comments, and it looks like the other Status fields are approximately this complicated. Would it make sense to have a function for each one?",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486fb99e_8061df97",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4310,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-06T00:22:48Z",
+      "side": 1,
+      "message": "I moved getting current temperature and temperature status to their own functions. It helps with code organization and allows us to keep the fields in order, as you mentioned in another comment. It is a little slower though. With the previous implementation we just had one loop to go through and read all the temperature sensors to get the temps and compare them to thermal thresholds. Now, we\u0027ll go though and read all the temperature sensors to get the internal temp, then read them all again and compare them to their temperature thresholds to get the temperature status.\n\nThis is all because the PD spec assumes a port has one temperature, but the Chromebooks have multiple temperature sensors, which vary from board to board. In this implementation, we return the highest temperature and the highest exceeded threshold (for example if 3 are \"normal\" but 1 is \"warn\", we return \"warn\").\n\nAnother option would be to chose one temperature sensor as a board config and consider it the only PD-relevant temperature for that board. For example, some boards have a Charger temp sensor which would make sense here.",
+      "parentUuid": "2c7b428e_1e8a1e39",
       "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ba7d56a_cf981d59",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4315,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-06T00:22:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0fe69a1_e6510004",
+      "range": {
+        "startLine": 4315,
+        "startChar": 11,
+        "endLine": 4315,
+        "endChar": 24
+      },
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d6d209e_822bc1d6",
@@ -105,6 +183,30 @@
       "writtenOn": "2022-04-22T17:15:06Z",
       "side": 1,
       "message": "Should we use an enum for this?",
+      "range": {
+        "startLine": 4328,
+        "startChar": 33,
+        "endLine": 4328,
+        "endChar": 36
+      },
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1c5f7f_4c466aff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4328,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-06T00:22:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6d209e_822bc1d6",
       "range": {
         "startLine": 4328,
         "startChar": 33,
