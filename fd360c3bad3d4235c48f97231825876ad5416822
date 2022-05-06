@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82515150_8f99597c",
+        "filename": "board/crota/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-05-06T01:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a6c625_0b82336b",
+      "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f544d47_fdbd8b7b",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09478416_7fc8d24f",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-05-06T01:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f544d47_fdbd8b7b",
+      "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0df79f2_80dfe86f",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-04-27T20:39:46Z",
       "side": 1,
       "message": "From https://www.st.com/resource/en/datasheet/lsm6dso.pdf, the rms normal mode is ODR invariant and just depend on range. The default range being +/-4g, we can return 80 (ug).",
+      "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bca8faf_71e6de87",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-05-06T01:19:12Z",
+      "side": 1,
+      "message": "In spec, is that 75ug for +/-4g?",
+      "parentUuid": "d0df79f2_80dfe86f",
       "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
