@@ -213,6 +213,11 @@ def test(opts):
         print(f"# Running {' '.join(cmd)}.")
         subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
 
+        # Verify the tests pass with ASAN also
+        cmd = ['make', 'TEST_ASAN=y', target, f'-j{opts.cpus}']
+        print(f"# Running {' '.join(cmd)}.")
+        subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True)
+
 
 def main(args):
     """Builds, bundles, or tests all of the EC targets.
