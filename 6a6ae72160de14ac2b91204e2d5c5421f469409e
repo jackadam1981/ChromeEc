@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7267c141_99727f6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-06T07:31:19Z",
+      "side": 1,
+      "message": "Hi,\nI am checking it internally.\nOnce I got the information, I will update the detail to you (probably via e-mail)",
+      "parentUuid": "26b0e8f6_620d9e14",
+      "revId": "6a6ae72160de14ac2b91204e2d5c5421f469409e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56d14005_1f5fca54",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -102,6 +120,30 @@
       "writtenOn": "2022-05-05T00:25:46Z",
       "side": 1,
       "message": "a writeup would be useful for this issue.",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "6a6ae72160de14ac2b91204e2d5c5421f469409e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f94670_2ce98830",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-06T07:31:19Z",
+      "side": 1,
+      "message": "I have create a issue b:231667217",
+      "parentUuid": "56d14005_1f5fca54",
       "range": {
         "startLine": 19,
         "startChar": 4,
@@ -135,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50a6e5d3_a4347ed1",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-06T07:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c05d46a_5b7cc595",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "6a6ae72160de14ac2b91204e2d5c5421f469409e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e675ae_15282c4d",
@@ -158,6 +224,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cca4fbb_5cf3643f",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-06T07:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e675ae_15282c4d",
+      "range": {
+        "startLine": 67,
+        "startChar": 55,
+        "endLine": 67,
+        "endChar": 63
+      },
+      "revId": "6a6ae72160de14ac2b91204e2d5c5421f469409e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2228f2f6_ff1e6c7f",
@@ -171,6 +261,30 @@
       "writtenOn": "2022-05-05T00:25:46Z",
       "side": 1,
       "message": "use IS_ENABLED?",
+      "range": {
+        "startLine": 626,
+        "startChar": 7,
+        "endLine": 626,
+        "endChar": 44
+      },
+      "revId": "6a6ae72160de14ac2b91204e2d5c5421f469409e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83637261_0ab22db3",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-06T07:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2228f2f6_ff1e6c7f",
       "range": {
         "startLine": 626,
         "startChar": 7,
