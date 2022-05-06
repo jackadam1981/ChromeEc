@@ -93,6 +93,8 @@ static atomic_t power_signals, prev_power_signals;
 
 static power_signal_mask_t debug_signals;
 
+static struct k_sem power_signal_sem;
+
 void power_set_debug(power_signal_mask_t debug)
 {
 	debug_signals = debug;
@@ -121,6 +123,14 @@ static inline void check_debug(enum power_signal signal)
 	}
 }
 
+int power_signal_wait_update(int timeout)
+{
+	if (timeout < 0) {
+		return k_sem_take(&power_signal_sem, K_FOREVER);
+	}
+	return k_sem_take(&power_signal_sem, K_MSEC(timeout));
+}
+
 power_signal_mask_t power_get_signals(void)
 {
 	power_signal_mask_t mask = 0;
@@ -137,6 +147,7 @@ void power_signal_interrupt(enum power_signal signal, int value)
 {
 	atomic_set_bit_to(&power_signals, signal, value);
 	check_debug(signal);
+	k_sem_give(&power_signal_sem);
 }
 
 int power_wait_mask_signals_timeout(power_signal_mask_t mask,
@@ -286,6 +297,8 @@ const char *power_signal_name(enum power_signal signal)
 
 void power_signal_init(void)
 {
+	k_sem_init(&power_signal_sem, 1, 2);
+
 	if (IS_ENABLED(HAS_GPIO_SIGNALS)) {
 		power_signal_gpio_init();
 	}

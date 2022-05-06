@@ -435,7 +435,6 @@ static void pwr_seq_set_initial_state(void)
 
 static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
-	int32_t t_wait_ms = 10;
 	enum power_states_ndsx curr_state, new_state;
 	power_signal_mask_t this_in_signals;
 	power_signal_mask_t last_in_signals = 0;
@@ -445,6 +444,20 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 
 	while (1) {
 		curr_state = pwr_sm_get_state();
+		/*
+		 * Stationary states like G3, S0 and S0ix will block this
+		 * thread indefinetly, other states will block for only 10
+		 * ms instead.
+		 */
+		if (curr_state == SYS_POWER_STATE_G3 ||
+		#if CONFIG_AP_PWRSEQ_S0IX
+		    curr_state == SYS_POWER_STATE_S0ix ||
+		#endif
+		    curr_state == SYS_POWER_STATE_S0) {
+			power_signal_wait_update(-1);
+		} else {
+			power_signal_wait_update(10);
+		}
 
 		/*
 		 * In order to prevent repeated console spam, only print the
@@ -480,8 +493,6 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 			pwr_sm_set_state(new_state);
 			ap_power_set_active_wake_mask();
 		}
-
-		k_msleep(t_wait_ms);
 	}
 }
 

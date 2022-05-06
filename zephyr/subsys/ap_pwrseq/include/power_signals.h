@@ -250,6 +250,8 @@ void power_set_debug(power_signal_mask_t debug);
  */
 power_signal_mask_t power_get_debug(void);
 
+
+int power_signal_wait_update(int timeout);
 /**
  * @brief Check if the desired signals match.
  *
