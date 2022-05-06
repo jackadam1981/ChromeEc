@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "416b72cb_e807ed68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-05-06T14:25:47Z",
+      "side": 1,
+      "message": "It looks like you need to update the config_allowed.txt to know CONFIG_POWER_BUTTON_INIT_TIMEOUT is handled now... otherwise looks good.",
+      "revId": "037875f9994dc0c97ac311facf5918173435c792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
