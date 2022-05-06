@@ -12,8 +12,11 @@ static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack,
 static struct k_thread pwrseq_thread_data;
 static struct pwrseq_context pwrseq_ctx;
 static bool s5_inactive_tmr_running;
+static struct k_sem pwrseq_sem;
+
+static void s5_inactive_timer_handler(struct k_timer *timer);
 /* S5 inactive timer*/
-K_TIMER_DEFINE(s5_inactive_timer, NULL, NULL);
+K_TIMER_DEFINE(s5_inactive_timer, s5_inactive_timer_handler, NULL);
 
 LOG_MODULE_REGISTER(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
@@ -96,9 +99,17 @@ void pwr_sm_set_state(enum power_states_ndsx new_state)
 	pwrseq_ctx.power_state = new_state;
 }
 
+void ap_pwrseq_wake(void)
+{
+	k_sem_give(&pwrseq_sem);
+}
+
 void request_exit_hardoff(bool should_exit)
 {
 	pwrseq_ctx.want_g3_exit = should_exit;
+	if (should_exit) {
+		ap_pwrseq_wake();
+	}
 }
 
 static bool chipset_is_exit_hardoff(void)
@@ -109,6 +120,11 @@ static bool chipset_is_exit_hardoff(void)
 void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
 {
 	board_ap_power_force_shutdown();
+}
+
+static void s5_inactive_timer_handler(struct k_timer *timer)
+{
+	ap_pwrseq_wake();
 }
 
 static void shutdown_and_notify(enum ap_power_shutdown_reason reason)
@@ -468,7 +484,6 @@ static void pwr_seq_set_initial_state(void)
 
 static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
-	int32_t t_wait_ms = 10;
 	enum power_states_ndsx curr_state, new_state;
 	power_signal_mask_t this_in_signals;
 	power_signal_mask_t last_in_signals = 0;
@@ -510,9 +525,13 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 		if (curr_state != new_state) {
 			pwr_sm_set_state(new_state);
 			ap_power_set_active_wake_mask();
+		} else {
+			/*
+			 * No state transition, we can go to sleep and wait
+			 * for any event to wake us up.
+			 */
+			k_sem_take(&pwrseq_sem, K_FOREVER);
 		}
-
-		k_msleep(t_wait_ms);
 	}
 }
 
@@ -553,6 +572,7 @@ static int pwrseq_init(const struct device *dev)
 {
 	LOG_INF("Pwrseq Init");
 
+	k_sem_init(&pwrseq_sem, 0, 1);
 	/* Initialize signal handlers */
 	power_signal_init();
 	LOG_DBG("Init pwr seq state");
