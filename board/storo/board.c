@@ -235,6 +235,10 @@ enum tusb544_conf {
 	DP_INV
 };
 
+/*
+ * NCS8510 & TUSB544 use the same EQ setting, when you need to modify the EQ
+ * settings, please make sure that both configurations are correct.
+ */
 static int board_tusb544_set(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int  rv = EC_SUCCESS;
