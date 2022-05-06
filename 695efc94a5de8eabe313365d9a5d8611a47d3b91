@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40a7c64a_a87ee5f0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4310,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-06T20:26:40Z",
+      "side": 1,
+      "message": "It\u0027s tricky to say what\u0027s right here.  \n\nReading the spec, there are sections in chapter 7 for both sources and sinks dictating that the OTP bit be set when we overheat and need to send a hard reset message.  And even though our Chromebook may be overheating to the point of throttling the CPU, that doesn\u0027t cause us to be unable to sink/source voltage.  Given the chapter 7 wording, I\u0027d think we\u0027d never report an OTP status because we don\u0027t have conditions for temperature causing us to reset a connection.  \n\nSo I\u0027d guess the charger temperature comes closest to indicating the temperature level the spec cares about?  But the difficulty in using it is that we define our temperature sensor indexes on a per-board basis, and not all boards provide intuitive sensor names (ex. some are just \"TEMP_SENSOR_1\").",
+      "parentUuid": "486fb99e_8061df97",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0fe69a1_e6510004",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
