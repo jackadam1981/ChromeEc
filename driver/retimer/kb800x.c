@@ -263,35 +263,57 @@ static int kb800x_xbar_override(const struct usb_mux *me)
  * The initialization writes for each protocol can be found in the KB8001/KB8002
  * Programming Guidelines
  */
-static const uint16_t global_init_addresses[] = {
-	0x5058, 0x5059, 0xFF63, 0xF021, 0xF022, 0xF057, 0xF058,
-	0x8194, 0xF0C9, 0xF0CA, 0xF0CB, 0xF0CC, 0xF0CD, 0xF0CE,
-	0xF0DF, 0xF0E0, 0xF0E1, 0x8198, 0x8191
+enum protocol {
+	dp_multi_function,
+	usb32,
+	dp,
+	usb4,
+	thunderbolt,
+	unknown
 };
-static const uint8_t global_init_values[] = { 0x12, 0x12, 0x3C, 0x02, 0x02,
-					      0x02, 0x02, 0x37, 0x0C, 0x0B,
-					      0x0A, 0x09, 0x08, 0x07, 0x57,
-					      0x66, 0x66, 0x33, 0x00 };
-static const uint16_t usb3_init_addresses[] = { 0xF020, 0xF056 };
-static const uint8_t usb3_init_values[] = { 0x2f, 0x2f };
-static const uint16_t dp_init_addresses[] = { 0xF2CB, 0x0011 };
-static const uint8_t dp_init_values[] = { 0x30, 0x00 };
+
+typedef struct
+{
+	uint16_t address;
+	uint8_t value;
+}address_value_t;
+
+static const address_value_t global_init[] = {
+	{0x5058, 0x12}, {0x5059, 0x12}, {0xFF63, 0x3C}, {0xF021, 0x02},
+	{0xF022, 0x02}, {0xF057, 0x02}, {0xF058, 0x02}, {0xF0C9, 0x0C},
+	{0xF0CA, 0x0B}, {0xF0CB, 0x0A}, {0xF0CC, 0x09}, {0xF0CD, 0x08},
+	{0xF0CE, 0x07}, {0xF0DF, 0x57}, {0xF0E0, 0x66}, {0xF0E1, 0x66}
+};
+static const address_value_t usb3_init[] = {
+	{0xF020, 0x2f}, {0xF056, 0x2f}, {0xF2CF, 0x03}, {0x70EF, 0x13},
+	{0x70F3, 0xAC}
+};
+static const address_value_t dp_only_init[] = {
+	{0xF02B, 0xFD}, {0xF061, 0xFD}
+};
+static const address_value_t dp_init[] = {
+	{0xF2CB, 0x30}, {0x6314, 0x01}, {0x6315, 0x28}, {0xF030, 0x05},
+	{0xF066, 0x05}, {0xFE87, 0x0F}, {0xFE88, 0x7F}, {0x6322, 0x0C}
+};
+static const address_value_t dp_multi_function_init[] = {
+	{0x402B, 0xFD}, {0x4061, 0xFD}
+};
 /*
  * The first 2 CIO writes apply an SBRX pullup to the host side (C/D)
  * This is required when the CPU doesn't apply a pullup.
  */
-static const uint16_t cio_init_addresses[] = { 0x81fd, 0x81fe, 0xF26B, 0xF26E };
-static const uint8_t cio_init_values[] = { 0x08, 0x80, 0x01, 0x19 };
+static const address_value_t cio_init[] = {
+	{0xF26B, 0x01}, {0xF26E, 0x19}, {0x8194, 0x37}, {0x8188, 0x63}
+};
 
 static int kb800x_bulk_write(const struct usb_mux *me,
-			     const uint16_t *addresses, const uint8_t *values,
-			     const uint8_t size)
+			     const address_value_t *data, const uint8_t size)
 {
 	int i;
 	int rv;
 
 	for (i = 0; i < size; ++i) {
-		rv = kb800x_write(me, addresses[i], values[i]);
+		rv = kb800x_write(me, data[i].address, data[i].value);
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
@@ -301,16 +323,40 @@ static int kb800x_bulk_write(const struct usb_mux *me,
 
 static int kb800x_global_init(const struct usb_mux *me)
 {
-	return kb800x_bulk_write(me, global_init_addresses, global_init_values,
-				 sizeof(global_init_values));
+	return kb800x_bulk_write(me, global_init,
+				 sizeof(global_init) / sizeof(global_init[0]));
+}
+
+static int kb800x_dp_multi_function_init(const struct usb_mux *me)
+{
+	int rv;
+
+	rv = kb800x_write(me, KB800X_REG_PROTOCOL, KB800X_PROTOCOL_DPMF);
+	if (rv)
+		return rv;
+
+	return kb800x_bulk_write(me, dp_multi_function_init,
+				 sizeof(dp_multi_function_init) / sizeof(dp_multi_function_init[0]));
+}
+
+static int kb800x_dp_only_init(const struct usb_mux *me)
+{
+	int rv;
+
+	rv = kb800x_write(me, KB800X_REG_PROTOCOL,
+		  KB800X_PROTOCOL_DP);
+	if (rv)
+		return rv;
+	return kb800x_bulk_write(me, dp_only_init,
+				 sizeof(dp_only_init) / sizeof(dp_only_init[0]));
 }
 
 static int kb800x_dp_init(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv;
 
-	rv = kb800x_bulk_write(me, dp_init_addresses, dp_init_values,
-			       sizeof(dp_init_values));
+	rv = kb800x_bulk_write(me, dp_init,
+			       sizeof(dp_init) / sizeof(dp_init[0]));
 	if (rv)
 		return rv;
 	return kb800x_write(
@@ -325,8 +371,8 @@ static int kb800x_usb3_init(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int rv;
 
-	rv = kb800x_bulk_write(me, usb3_init_addresses, usb3_init_values,
-			       sizeof(usb3_init_values));
+	rv = kb800x_bulk_write(me, usb3_init,
+			       sizeof(usb3_init) / sizeof(usb3_init[0]));
 	if (rv)
 		return rv;
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
@@ -347,14 +393,21 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 			pd_get_tbt_mode_vdo(me->usb_port, TCPCI_MSG_SOP_PRIME)
 	};
 
-	rv = kb800x_bulk_write(me, cio_init_addresses, cio_init_values,
-			       sizeof(cio_init_values));
+	rv = kb800x_write(me, KB800X_REG_PROTOCOL, KB800X_PROTOCOL_CIO);
 	if (rv)
 		return rv;
 
-	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
-		orientation = KB800X_ORIENTATION_CIO_LANE_SWAP |
-			      KB800X_ORIENTATION_POLARITY;
+	rv = kb800x_bulk_write(me, cio_init,
+			       sizeof(cio_init) / sizeof(cio_init[0]));
+	if (rv)
+		return rv;
+
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
+		rv = kb800x_write(me, 0x005, 0x02);
+		if (rv)
+			return rv;
+		orientation = KB800X_ORIENTATION_POLARITY;
+	}
 
 	if (!(mux_state & USB_PD_MUX_USB4_ENABLED)) {
 		/* Special configuration only for legacy mode */
@@ -374,6 +427,9 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 			}
 		} else {
 			/* Passive Cable */
+			rv = kb800x_write(me, 0x811F, 0x1D);
+			if (rv)
+				return rv;
 			orientation |= KB800X_ORIENTATION_CIO_LEGACY_PASSIVE;
 		}
 	}
@@ -388,10 +444,32 @@ static void kb800x_dp_mode_en(const struct usb_mux *me, bool enable)
 		enable);
 }
 
+static enum protocol kb800x_get_mode(mux_state_t mux_state)
+{
+	if (mux_state & USB_PD_MUX_USB4_ENABLED)
+		return usb4;
+
+	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED)
+		return thunderbolt;
+
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		if (mux_state & USB_PD_MUX_USB_ENABLED)
+			return dp_multi_function;
+		else
+			return dp;
+	}
+
+	if (mux_state & USB_PD_MUX_USB_ENABLED)
+		return usb32;
+
+	return unknown;
+}
+
 static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 			    bool *ack_required)
 {
 	int rv;
+	enum protocol p;
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -417,41 +495,44 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	if (rv)
 		return rv;
 
-	/* CIO mode (USB4/TBT) */
-	if (mux_state &
-	    (USB_PD_MUX_USB4_ENABLED | USB_PD_MUX_TBT_COMPAT_ENABLED)) {
-		CPRINTS("USB4/TBT mode");
-		rv = kb800x_cio_init(me, mux_state);
-		if (rv)
-			return rv;
-		rv = kb800x_write(me, KB800X_REG_PROTOCOL, KB800X_PROTOCOL_CIO);
-	} else {
-		/* USB3 enabled (USB3-only or DPMF) */
-		if (mux_state & USB_PD_MUX_USB_ENABLED) {
+	p = kb800x_get_mode(mux_state);
+	switch(p)
+	{
+		case dp_multi_function:
+			CPRINTS("DP Multi Function mode");
+			rv = kb800x_dp_multi_function_init(me);
+			if (rv)
+				return rv;
+		case usb32:
 			CPRINTS("USB3 mode");
 			rv = kb800x_usb3_init(me, mux_state);
 			if (rv)
 				return rv;
-			/* USB3-only is the default KB800X_REG_PROTOCOL value */
-		}
-
-		/* DP alt modes (DP-only or DPMF) */
-		if (mux_state & USB_PD_MUX_DP_ENABLED) {
-			CPRINTS("DP mode");
-			kb800x_dp_mode_en(me, true);
+			if (p == usb32)
+				break;
+		case dp:
+			if (p == dp) {
+				CPRINTS("DP mode");
+				rv = kb800x_dp_only_init(me);
+				if (rv)
+					return rv;
+			}
 			rv = kb800x_dp_init(me, mux_state);
 			if (rv)
 				return rv;
-			if (mux_state & USB_PD_MUX_USB_ENABLED)
-				rv = kb800x_write(me, KB800X_REG_PROTOCOL,
-						  KB800X_PROTOCOL_DPMF);
-			else
-				rv = kb800x_write(me, KB800X_REG_PROTOCOL,
-						  KB800X_PROTOCOL_DP);
-		}
+			kb800x_dp_mode_en(me, true);
+			break;
+		case usb4:
+		case thunderbolt:
+			CPRINTS("USB4/TBT mode");
+			rv = kb800x_cio_init(me, mux_state);
+			if (rv)
+				return rv;
+			break;
+		case unknown:
+			CPRINTS("Unknown mode");
+			break;
 	}
-	if (rv)
-		return rv;
 
 #ifdef CONFIG_KB800X_CUSTOM_XBAR
 	rv = kb800x_xbar_override(me);
