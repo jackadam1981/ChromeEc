@@ -466,10 +466,10 @@ static int init_config(const struct motion_sensor_t *s)
 	uint16_t i;
 
 	/* disable advance power save but remain fifo self wakeup*/
-	bmi_write8(s->port, s->i2c_spi_addr_flags, BMI260_PWR_CONF, 2);
+	bmi_write8(s->port, s->addr, BMI260_PWR_CONF, 2);
 	msleep(1);
 	/* prepare for config load */
-	bmi_write8(s->port, s->i2c_spi_addr_flags, BMI260_INIT_CTRL, 0);
+	bmi_write8(s->port, s->addr, BMI260_INIT_CTRL, 0);
 
 	/* load config file to INIT_DATA */
 	ret = bmi_config_load(s);
