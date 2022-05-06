@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ddb225_b6533cbe",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-06T22:06:48Z",
+      "side": 0,
+      "message": "s-\u003eonline_calib_data is an array, and so it is never NULL. However it is empty if CONFIG_ONLINE_CALIB is undefined.",
+      "range": {
+        "startLine": 204,
+        "startChar": 6,
+        "endLine": 204,
+        "endChar": 26
+      },
+      "revId": "b0f1865805e847f6649a3fa35844f1e52d38642f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

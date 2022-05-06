@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7657ae1_eebd1302",
+        "filename": "test/usb_sm_checks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-06T22:06:48Z",
+      "side": 1,
+      "message": "tch_construct_chunked_message_entry crashes with ASAN, because it assumes that tx_emsg[port].len \u003e 0, but it won\u0027t be since we don\u0027t actually have a message queued up.\n\nBut we don\u0027t need to test anything except for the cases without names, and by skipping all the named cases, we also skip tch_construct_chunked_message_entry.",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 21
+      },
+      "revId": "92868a8098b5d6bbd8675361665b8399da0cf2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
