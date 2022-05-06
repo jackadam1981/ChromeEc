@@ -289,7 +289,7 @@ static void i8042_send_to_host(int len, const uint8_t *bytes,
 	mutex_unlock(&to_host_mutex);
 
 	/* Wake up the task to move from queue to host */
-	task_wake(TASK_ID_KEYPROTO);
+	//task_wake(TASK_ID_KEYPROTO);
 }
 
 /* Change to set 1 if the I8042_XLATE flag is set. */
@@ -1267,6 +1267,34 @@ DECLARE_CONSOLE_COMMAND(8042, command_8042,
 			" kblog | kbd]",
 			"Print 8042 state in one place");
 #endif
+
+void run_queue_test(void)
+{
+	const uint8_t temp_data[2] = {0xfa, 0xee};
+	struct data_byte entry1;
+	struct data_byte entry2;
+	int c;
+	uint32_t key;
+
+	for (c = 0; c < 300; c++) {
+		key = irq_lock();
+		i8042_send_to_host(2, &temp_data[0], CHAN_KBD);
+		queue_remove_unit(&to_host, &entry1);
+		queue_remove_unit(&to_host, &entry2);
+		irq_unlock(key);
+		if (entry2.byte != 0xee) {
+			ccprintf("entry1.byte = 0x%x\n", entry1.byte);
+			ccprintf("entry2.byte = 0x%x\n", entry2.byte);
+		}
+	}
+}
+
+static int command_test_queue(int argc, char **argv)
+{
+	run_queue_test();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(tqueue, command_test_queue, "", "");
 
 
 /*****************************************************************************/

@@ -130,6 +130,10 @@ size_t queue_add_unit(struct queue const *q, const void *src)
 {
 	size_t tail = q->state->tail & q->buffer_units_mask;
 
+	// This makes keyboard echo work
+	//__asm__ volatile (" nop");
+	// This breaks it again
+	//__asm__ volatile (" nop");
 	if (queue_space(q) == 0)
 		return 0;
 
@@ -193,15 +197,27 @@ size_t queue_remove_unit(struct queue const *q, void *dest)
 {
 	size_t head = q->state->head & q->buffer_units_mask;
 
+	__asm__ volatile (" nop");
 	if (queue_count(q) == 0)
 		return 0;
 
 	if (q->unit_bytes == 1)
 		*((uint8_t *) dest) = q->buffer[head];
-	else
+	else {
+		//__asm__ volatile (" nop");
 		memcpy(dest, q->buffer + head * q->unit_bytes, q->unit_bytes);
+	}
 
 	return queue_advance_head(q, 1);
+}
+
+void __attribute__((naked, used)) queue_unused_padding(void) {
+	__asm__ volatile (" nop");
+	__asm__ volatile (" nop");
+	__asm__ volatile (" nop");
+	__asm__ volatile (" nop");
+	//__asm__ volatile (" nop");
+	//__asm__ volatile (" nop");
 }
 
 size_t queue_remove_units(struct queue const *q, void *dest, size_t count)
