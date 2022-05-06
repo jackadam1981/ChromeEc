@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b337382e_10c7bf10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-06T18:05:35Z",
+      "side": 1,
+      "message": "Please check the schematics to make sure if the platforms/projects use or don\u0027t use the KSO13 and KSO14. I picked kingler and krabby and they have KSO13/KSO14 connected.",
+      "revId": "a6ecad44b488fd56c315345b2e80f40b32f9cb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef1981f_6422ec7d",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-06T18:05:35Z",
+      "side": 1,
+      "message": "Krabby has keyboard too. Add the keyboard.dts as a platform dts instead of a project dts? Usually all projects share the same design.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "a6ecad44b488fd56c315345b2e80f40b32f9cb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
