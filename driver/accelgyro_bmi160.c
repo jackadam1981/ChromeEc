@@ -343,7 +343,6 @@ int manage_activity(const struct motion_sensor_t *s,
 	}
 	return ret;
 }
-#endif
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
 /**

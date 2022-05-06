@@ -802,7 +802,7 @@ void bmi_accel_get_offset(const struct motion_sensor_t *accel, intv3_t v)
 
 	for (i = X; i <= Z; i++) {
 		bmi_read8(accel->port, accel->addr,
-			  BMI_OFFSET_ACC70(V(s)) + i, &val);
+			  BMI_OFFSET_ACC70(V(accel)) + i, &val);
 		if (val > 0x7f)
 			val = -256 + val;
 		v[i] = round_divide(
@@ -818,10 +818,10 @@ void bmi_gyro_get_offset(const struct motion_sensor_t *gyro, intv3_t v)
 
 	/* Read the MSB first */
 	bmi_read8(gyro->port, gyro->addr,
-		  BMI_OFFSET_EN_GYR98(V(s)), &val98);
+		  BMI_OFFSET_EN_GYR98(V(gyro)), &val98);
 	for (i = X; i <= Z; i++) {
 		bmi_read8(gyro->port, gyro->addr,
-			  BMI_OFFSET_GYR70(V(s)) + i, &val);
+			  BMI_OFFSET_GYR70(V(gyro)) + i, &val);
 
 		val |= ((val98 >> (2 * i)) & 0x3) << 8;
 		if (val > 0x1ff)
@@ -847,7 +847,7 @@ void bmi_set_accel_offset(const struct motion_sensor_t *accel, intv3_t v)
 		if (val < 0)
 			val = 256 + val;
 		bmi_write8(accel->port, accel->addr,
-			   BMI_OFFSET_ACC70(V(s)) + i, val);
+			   BMI_OFFSET_ACC70(V(accel)) + i, val);
 	}
 }
 
@@ -868,7 +868,7 @@ void bmi_set_gyro_offset(const struct motion_sensor_t *gyro, intv3_t v,
 			val = 1024 + val;
 
 		bmi_write8(gyro->port, gyro->addr,
-			   BMI_OFFSET_GYR70(V(s)) + i, val & 0xFF);
+			   BMI_OFFSET_GYR70(V(gyro)) + i, val & 0xFF);
 		*val98_ptr &= ~(0x3 << (2 * i));
 		*val98_ptr |= (val >> 8) << (2 * i);
 	}
