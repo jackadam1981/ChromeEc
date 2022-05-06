@@ -104,6 +104,24 @@
       "parentUuid": "d0df79f2_80dfe86f",
       "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92059ef3_865749ca",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-05-06T05:01:01Z",
+      "side": 1,
+      "message": "I read the wrong entry. The right entry (page 10):\nRMS | Acceleration RMS noise in normal/low-power mode | FS \u003d ±4 g | 2.0 mg(RMS),\nso the function should return 2000.\n\nIf you want to be correct you can use a table indexed by the (__fls(range/2))",
+      "parentUuid": "4bca8faf_71e6de87",
+      "revId": "fd360c3bad3d4235c48f97231825876ad5416822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
