@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "001c3ab2_3ef3b04e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-05-06T12:25:59Z",
+      "side": 1,
+      "message": "Thank you Boris for pointing out\n\nEmerge seems to be referring to baseboard by \"boardname\", because when I tried running emerge command with device name as boardname, it\u0027s not able to detect the board, but with baseboard as boardname, build is getting generated successfully.\n\nOnce emerge build is successful for baseboard as boardname, the ec.bin is being generated for devices under it. \n\nWhere as \"make\" build is working at device level",
+      "parentUuid": "1eb6b167_5a48663d",
+      "range": {
+        "startLine": 210,
+        "startChar": 19,
+        "endLine": 210,
+        "endChar": 28
+      },
+      "revId": "66f939bff939e9907e74bf5a6cb5fa429b4322f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3f87e75_07818a1e",
         "filename": "README.md",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Hey picking up from our parallel conversation, this does not get build for me with build_packages either, but I think it\u0027s a different issue and we can check on that separately. I would still change this path, seeing the comment below about flash_ec I found a reference to two possible ones depending on whether the setup is board or board+baseboard: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/flash_ec;l\u003d713-717;drc\u003df2984d7046a22d3de94749d24e2ce11c3ec161ab, maybe mention both.",
       "parentUuid": "f3f87e75_07818a1e",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 45
+      },
+      "revId": "66f939bff939e9907e74bf5a6cb5fa429b4322f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3968a87_b6fbb4fd",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-05-06T12:25:59Z",
+      "side": 1,
+      "message": "Thank you Fabio for pointing out\n\nRegarding \"chroot\", I am thinking having it is helpful, because it\u0027s removing the ambiguity that we should look for build file inside chroot, but do let me know if that\u0027s not the case, I am good with removing it, if it has no significance.",
+      "parentUuid": "36619ebe_80321cb9",
       "range": {
         "startLine": 249,
         "startChar": 0,
