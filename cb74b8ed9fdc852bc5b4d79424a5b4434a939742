@@ -120,6 +120,24 @@
       "message": "Inside chroot: `make clobber ; make TEST_ASAN\u003dy run-usb_tcpmv2_compliance`\n\nGives this error\n\n```\ntest/usb_tcpmv2_compliance_common.c:388:3: error: array index 4 is past the end of the array (which contains 4 elements) [-Werror,-Warray-bounds]\n                possible[4].tx_type \u003d TCPCI_MSG_SOP;\n                ^        ~\ntest/usb_tcpmv2_compliance_common.c:369:2: note: array \u0027possible\u0027 declared here\n        struct possible_tx possible[4];\n        ^\ntest/usb_tcpmv2_compliance_common.c:389:3: error: array index 4 is past the end of the array (which contains 4 elements) [-Werror,-Warray-bounds]\n                possible[4].ctrl_msg \u003d PD_CTRL_GET_REVISION;\n                ^        ~\ntest/usb_tcpmv2_compliance_common.c:369:2: note: array \u0027possible\u0027 declared here\n        struct possible_tx possible[4];\n        ^\ntest/usb_tcpmv2_compliance_common.c:390:3: error: array index 4 is past the end of the array (which contains 4 elements) [-Werror,-Warray-bounds]\n                possible[4].data_msg \u003d 0;\n                ^        ~\ntest/usb_tcpmv2_compliance_common.c:369:2: note: array \u0027possible\u0027 declared here\n        struct possible_tx possible[4];\n        ^\ntest/usb_tcpmv2_compliance_common.c:458:3: error: array index 4 is past the end of the array (which contains 4 elements) [-Werror,-Warray-bounds]\n                possible[4].tx_type \u003d TCPCI_MSG_SOP;\n                ^        ~\ntest/usb_tcpmv2_compliance_common.c:369:2: note: array \u0027possible\u0027 declared here\n        struct possible_tx possible[4];\n        ^\ntest/usb_tcpmv2_compliance_common.c:459:3: error: array index 4 is past the end of the array (which contains 4 elements) [-Werror,-Warray-bounds]\n                possible[4].ctrl_msg \u003d PD_CTRL_GET_REVISION;\n                ^        ~\ntest/usb_tcpmv2_compliance_common.c:369:2: note: array \u0027possible\u0027 declared here\n        struct possible_tx possible[4];\n        ^\ntest/usb_tcpmv2_compliance_common.c:460:3: error: array index 4 is past the end of the array (which contains 4 elements) [-Werror,-Warray-bounds]\n                possible[4].data_msg \u003d 0;\n                ^        ~\ntest/usb_tcpmv2_compliance_common.c:369:2: note: array \u0027possible\u0027 declared here\n        struct possible_tx possible[4];\n        ^\n6 errors generated.\n\n```",
       "revId": "cb74b8ed9fdc852bc5b4d79424a5b4434a939742",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ece044_60ac7396",
+        "filename": "test/usb_tcpmv2_compliance_common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-06T18:44:10Z",
+      "side": 1,
+      "message": "Thanks for catching this, I\u0027ll submit an update to increase the possible array size to 5.",
+      "parentUuid": "4294117e_b9069a46",
+      "revId": "cb74b8ed9fdc852bc5b4d79424a5b4434a939742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
