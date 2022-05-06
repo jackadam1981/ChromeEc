@@ -16,6 +16,74 @@
       "message": "Initial version.",
       "revId": "0142ea7e0f6698432bd0702dd9a728630ee5df4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a7c901_8060ccec",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx_power_signals.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-06T00:09:03Z",
+      "side": 1,
+      "message": "split the board board specific CL",
+      "revId": "0142ea7e0f6698432bd0702dd9a728630ee5df4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664919ab_61659229",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-06T00:09:03Z",
+      "side": 1,
+      "message": "try make it platform specific function",
+      "revId": "0142ea7e0f6698432bd0702dd9a728630ee5df4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9074648f_6a84cd65",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-06T00:09:03Z",
+      "side": 1,
+      "message": "nit: many of the functions can be static",
+      "revId": "0142ea7e0f6698432bd0702dd9a728630ee5df4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20512a5b_62414fc5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-06T00:09:03Z",
+      "side": 1,
+      "message": "make a common function",
+      "revId": "0142ea7e0f6698432bd0702dd9a728630ee5df4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
