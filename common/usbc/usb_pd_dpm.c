@@ -13,6 +13,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "hooks.h"
+#include "power.h"
 #include "system.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
@@ -23,6 +24,7 @@
 #include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd_pdo.h"
+#include "usb_pe_sm.h"
 #include "usb_tbt_alt_mode.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -813,9 +815,52 @@ int dpm_get_source_current(const int port)
 		return 500;
 }
 
+
+__overridable uint8_t get_status_power_state_change(void)
+{
+#ifdef HAS_TASK_CHIPSET
+	switch (power_get_state()) {
+	case POWER_G3:
+	case POWER_S5G3:
+		return PD_SBD_POWER_STATE_G3 | PD_SBD_POWER_STATE_INDICATOR_OFF;
+	case POWER_S5:
+	case POWER_G3S5:
+	case POWER_S3S5:
+	case POWER_S4S5:
+		return PD_SBD_POWER_STATE_S5 | PD_SBD_POWER_STATE_INDICATOR_OFF;
+	case POWER_S4:
+	case POWER_S3S4:
+	case POWER_S5S4:
+		return PD_SBD_POWER_STATE_S4 | PD_SBD_POWER_STATE_INDICATOR_OFF;
+	case POWER_S3:
+	case POWER_S5S3:
+	case POWER_S0S3:
+	case POWER_S4S3:
+		return PD_SBD_POWER_STATE_S3 |
+		    PD_SBD_POWER_STATE_INDICATOR_BLINKING;
+	case POWER_S0:
+	case POWER_S3S0:
+#ifdef CONFIG_POWER_S0IX
+	case POWER_S0ixS0:
+#endif
+		return PD_SBD_POWER_STATE_S0 | PD_SBD_POWER_STATE_INDICATOR_ON;
+#ifdef CONFIG_POWER_S0IX
+	case POWER_S0ix:
+	case POWER_S0S0ix:
+		return PD_SBD_POWER_STATE_MODERN_STANDBY |
+		    PD_SBD_POWER_STATE_INDICATOR_BLINKING;
+#endif
+	default:
+		return PD_SBD_POWER_STATE_NOT_SUPPORTED;
+	}
+#endif
+	return PD_SBD_POWER_STATE_NOT_SUPPORTED;
+}
+
 int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 {
 	struct pd_sdb sdb;
+	struct rmdo partner_rmdo;
 
 	/* TODO(b/227236917): Fill in fields of Status message */
 
@@ -837,10 +882,17 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 	/* Power Status */
 	sdb.power_status = 0x0;
 
-	/* USB PD Rev 3.0: 6.5.2 Status Message */
-	*len = 6;
+	partner_rmdo = pe_get_partner_rmdo(port);
+	if (partner_rmdo.major_rev == 3 && partner_rmdo.minor_rev == 1) {
+		/* USB PD Rev 3.1: 6.5.2 Status Message */
+		sdb.power_state_change = get_status_power_state_change();
+		*len = 7;
+	} else {
+		/* USB PD Rev 3.0: 6.5.2 Status Message */
+		sdb.power_state_change = 0;
+		*len = 6;
+	}
 
 	memcpy(msg, &sdb, *len);
-
 	return EC_SUCCESS;
 }
