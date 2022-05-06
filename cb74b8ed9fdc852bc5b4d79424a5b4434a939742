@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a863d1_1cdf64d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-06T18:25:56Z",
+      "side": 1,
+      "message": "This cl causes a failure in gitlab, but not in the chroot.\n\n```\nmake CRYPTOC_DIR\u003d\"${MODULES_DIR}/cryptoc\" HOSTGCOV\u003d\u0027gcov\u0027 CROSS_COMPILE_arm\u003d/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi- run-usb_tcpmv2_compliance\n  BUILD   host-usb_tcpmv2_compliance\nmake[1]: \u0027build/host/usb_tcpmv2_compliance/usb_tcpmv2_compliance.exe\u0027 is up to date.\n  TEST    run-usb_tcpmv2_compliance\nNo flash storage found. Initializing to 0xff.\nNo RAM data found. Initializing to 0x00.\n*** stack smashing detected ***: terminated\nusb_tcpmv2_compliance terminated unexpectedly! (0.045 seconds)\n```",
+      "revId": "cb74b8ed9fdc852bc5b4d79424a5b4434a939742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f646ead_c007fa8d",
