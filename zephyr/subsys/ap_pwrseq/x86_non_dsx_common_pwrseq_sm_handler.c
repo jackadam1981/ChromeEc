@@ -78,12 +78,7 @@ static inline bool signals_valid_and_off(power_signal_mask_t signals)
 
 static int check_power_rails_enabled(void)
 {
-	int out = 1;
-
-	out &= power_signal_get(PWR_EN_PP3300_A);
-	out &= power_signal_get(PWR_EN_PP5000_A);
-	out &= power_signal_get(PWR_EC_SOC_DSW_PWROK);
-	return out;
+	return board_ap_power_check_power_rails_enabled();
 }
 
 enum power_states_ndsx pwr_sm_get_state(void)
