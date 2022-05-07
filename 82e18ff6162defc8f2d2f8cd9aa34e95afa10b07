@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ccc990_29b12e1d",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-07T02:45:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98a7970f_5d848173",
+      "range": {
+        "startLine": 126,
+        "startChar": 29,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "82e18ff6162defc8f2d2f8cd9aa34e95afa10b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27f79539_0c23bbb0",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5f3ad3_298424cb",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-07T02:45:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "27f79539_0c23bbb0",
+      "revId": "82e18ff6162defc8f2d2f8cd9aa34e95afa10b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa7f0217_0f97ae54",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-05-06T01:10:59Z",
       "side": 1,
       "message": "It seems like most states will stay where they are if no signals change, and a relatively small minority want to move to some other state on a delay. Rather than making this code poll those cases (for instance, S5 inactivity timeout), could those instead set timers that unblock this loop so all processing is event-driven?\n\nIt looks like there are only three situations where the state machine should run a turn:\n* a signal value changed: interrupt wakes this thread\n* a timer expired: can wake this thread from a timer expiration function\n* the state machine transitioned to a new state, which should run immediately\n\nThese can all be expressed with relative ease I think, and avoid ever needing to poll state from this thread.",
+      "revId": "82e18ff6162defc8f2d2f8cd9aa34e95afa10b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd16f7d_9a08c5d6",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-07T02:45:20Z",
+      "side": 1,
+      "message": "This seems like a good approach, I am evaluating some scenarios to avoid any deadlock.",
+      "parentUuid": "fa7f0217_0f97ae54",
       "revId": "82e18ff6162defc8f2d2f8cd9aa34e95afa10b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
