@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c77cf94_c17fd681",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-08T23:29:33Z",
+      "side": 1,
+      "message": "This looks like an ITE-specific define for it83xx vs it8xxx2; I think we really only want `CONFIG_RISCV`, as seen (for example) in Zephyr\u0027s `arch/syscall.h`.",
+      "range": {
+        "startLine": 353,
+        "startChar": 13,
+        "endLine": 353,
+        "endChar": 28
+      },
+      "revId": "c7607fc708fdcf04845490559817f73f47929dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
