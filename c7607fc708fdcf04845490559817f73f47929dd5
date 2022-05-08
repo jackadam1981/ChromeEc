@@ -46,6 +46,30 @@
       },
       "revId": "c7607fc708fdcf04845490559817f73f47929dd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a84103_69dc0e6a",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-08T23:57:09Z",
+      "side": 1,
+      "message": "Maybe gate the check of `CHIP_CORE_RISCV` on `!CONFIG_ZEPHYR` for clarity, then.",
+      "parentUuid": "17ab8c9d_9b14dc0e",
+      "range": {
+        "startLine": 353,
+        "startChar": 13,
+        "endLine": 353,
+        "endChar": 28
+      },
+      "revId": "c7607fc708fdcf04845490559817f73f47929dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
