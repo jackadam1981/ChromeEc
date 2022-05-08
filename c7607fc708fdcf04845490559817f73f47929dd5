@@ -22,6 +22,30 @@
       },
       "revId": "c7607fc708fdcf04845490559817f73f47929dd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ab8c9d_9b14dc0e",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-08T23:46:13Z",
+      "side": 1,
+      "message": "CONFIG_RISCV seemed a zephyr specific config, and is not used in the legacy code, which CHIP_CORE_RISCV is.\nThe idea is to disable this for both, but if you think I should just do it for Zephyr, I can remove the check for CHIP_CORE_RISCV.",
+      "parentUuid": "3c77cf94_c17fd681",
+      "range": {
+        "startLine": 353,
+        "startChar": 13,
+        "endLine": 353,
+        "endChar": 28
+      },
+      "revId": "c7607fc708fdcf04845490559817f73f47929dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
