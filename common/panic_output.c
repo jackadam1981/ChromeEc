@@ -350,6 +350,10 @@ static int command_crash(int argc, char **argv)
 
 	if (!strcasecmp(argv[1], "assert")) {
 		ASSERT(0);
+#if !IS_ENABLED(CHIP_CORE_RISCV) && !defined(CONFIG_RISCV)
+	/*
+	 * RISCV does not support a crash on /0.
+	 */
 	} else if (!strcasecmp(argv[1], "divzero")) {
 		volatile int zero = 0;
 
@@ -360,6 +364,7 @@ static int command_crash(int argc, char **argv)
 
 		cflush();
 		ccprintf("%08x", 1U / zero);
+#endif
 #ifdef CONFIG_CMD_STACKOVERFLOW
 	} else if (!strcasecmp(argv[1], "stack")) {
 		stack_overflow_recurse(1);
@@ -387,7 +392,10 @@ static int command_crash(int argc, char **argv)
 	return EC_ERROR_UNKNOWN;
 }
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
-		"[assert | divzero | udivzero"
+		"[assert"
+#if !IS_ENABLED(CHIP_CORE_RISCV) && !defined(CONFIG_RISCV)
+		 "| divzero | udivzero"
+#endif
 #ifdef CONFIG_CMD_STACKOVERFLOW
 			" | stack"
 #endif
