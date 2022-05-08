@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45539c1d_6d3bab1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-05-08T23:59:08Z",
+      "side": 1,
+      "message": "There is compiler option to enable trap division by zero.\nPlease see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2612226",
+      "revId": "c7607fc708fdcf04845490559817f73f47929dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c77cf94_c17fd681",
