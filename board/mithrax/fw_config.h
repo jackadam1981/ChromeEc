@@ -1,4 +1,4 @@
-/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -9,7 +9,7 @@
 #include <stdint.h>
 
 /****************************************************************************
- * CBI FW_CONFIG layout for felwinter board.
+ * CBI FW_CONFIG layout for mithrax board.
  *
  * Source of truth is the project/brya/felwinter/config.star configuration file.
  */
