@@ -9,6 +9,7 @@ zephyr_library_sources(gpio.c)
 zephyr_library_sources(gpio_id.c)
 zephyr_library_sources(gpio_int.c)
 zephyr_library_sources(power.c)
+zephyr_library_sources(queue.S)
 zephyr_library_sources(queue.c)
 
 add_subdirectory("cbi")

@@ -115,6 +115,12 @@ size_t queue_advance_head(struct queue const *q, size_t count)
 	return transfer;
 }
 
+/*
+void __attribute__((naked, used)) queue_unused_padding(void) {
+	__asm__ volatile (" .fill 0, 2, 0x0001");
+}
+ */
+
 size_t queue_advance_tail(struct queue const *q, size_t count)
 {
 	size_t transfer = MIN(count, queue_space(q));
@@ -126,15 +132,17 @@ size_t queue_advance_tail(struct queue const *q, size_t count)
 	return transfer;
 }
 
+/*
 size_t queue_add_unit(struct queue const *q, const void *src)
 {
 	size_t tail = q->state->tail & q->buffer_units_mask;
 
 	// This makes keyboard echo work
-	__asm__ volatile (" nop");
+	//__asm__ volatile (" nop");
 	if (queue_space(q) == 0)
 		return 0;
 
+	//__asm__ volatile (" nop");
 	if (q->unit_bytes == 1)
 		q->buffer[tail] = *((uint8_t *) src);
 	else
@@ -143,6 +151,7 @@ size_t queue_add_unit(struct queue const *q, const void *src)
 	//ASSERT(memcmp(q->buffer + tail * q->unit_bytes, src, q->unit_bytes) == 0);
 	return queue_advance_tail(q, 1);
 }
+ */
 
 size_t queue_add_units(struct queue const *q, const void *src, size_t count)
 {
