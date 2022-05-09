@@ -15,6 +15,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "util.h"
+#include "cros_board_info.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -825,6 +826,36 @@ static void anx7447_dump_registers(int port)
 }
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
 
+static int anx7447_get_chip_info(int port, int live,
+			struct ec_response_pd_chip_info_v1 *chip_info)
+{
+	int rv = tcpci_get_chip_info(port, live, chip_info);
+	static uint32_t sku_id;
+	uint32_t val;
+
+	if (cbi_get_sku_id(&val) == EC_SUCCESS)
+		sku_id = val;
+	if(sku_id > 0 && sku_id < 5){
+		int val;
+
+		if (rv)
+			return rv;
+
+		if (chip_info->fw_version_number == 0 ||
+		chip_info->fw_version_number == -1 || live) {
+		//Before reading 0x7e for ANX7447 firmware veresion, need to read 0x58 first to wake up ANX7447.
+		tcpc_read(port, ANX7447_REG_OCM_VERSION, &val);
+		rv = anx7447_reg_read(port, ANX7447_REG_OCM_VERSION, &val);
+
+		if (rv)
+			return rv;
+
+		chip_info->fw_version_number = val;
+		}
+	}
+
+	return rv;
+}
 /*
  * ANX7447 is a TCPCI compatible port controller, with some caveats.
  * It seems to require both CC lines to be set always, instead of just
@@ -857,7 +888,7 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle		= anx7447_tcpc_drp_toggle,
 #endif
-	.get_chip_info		= &tcpci_get_chip_info,
+	.get_chip_info		= &anx7447_get_chip_info,
 #ifdef CONFIG_USB_PD_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
