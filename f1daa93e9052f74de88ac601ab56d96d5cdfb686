@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e99694_a4be0628",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-09T16:58:57Z",
+      "side": 1,
+      "message": "Hi Diana and Abe, can you take a look at this CL? It updates pd_chipset_resume, pd_chipset_suspend, pd_chipset_startup and pd_chipset_shutdown to send a Power State Change alert on DFP ports. This is talked about in Section \"6.4.6.4.1 Power State Change\" of the USB PD 3.1 spec.",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
