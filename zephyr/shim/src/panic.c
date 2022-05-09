@@ -88,7 +88,6 @@ void panic_data_print(const struct panic_data *pdata)
 	PANIC_REG_LIST(PANIC_PRINT_REGS);
 }
 
-#ifndef CONFIG_LOG
 static void copy_esf_to_panic_data(const z_arch_esf_t *esf,
 				   struct panic_data *pdata)
 {
@@ -104,18 +103,23 @@ static void copy_esf_to_panic_data(const z_arch_esf_t *esf,
 
 void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 {
+#ifndef CONFIG_LOG
 	panic_printf("Fatal error: %u\n", reason);
+#endif
 
 	if (PANIC_ARCH && esf) {
 		copy_esf_to_panic_data(esf, get_panic_data_write());
+#ifndef CONFIG_LOG
 		panic_data_print(panic_get_data());
+#endif
 	}
 
+#ifndef CONFIG_LOG
 	LOG_PANIC();
 	k_fatal_halt(reason);
 	CODE_UNREACHABLE;
+#endif
 }
-#endif /* CONFIG_LOG */
 
 #ifdef CONFIG_PLATFORM_EC_SOFTWARE_PANIC
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
