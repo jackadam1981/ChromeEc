@@ -191,24 +191,23 @@ test_export_static int command_pd(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-#ifndef TEST_BUILD
+
 DECLARE_CONSOLE_COMMAND(pd, command_pd,
-	 "version"
-	 "\ndump [0|1|2|3]"
+			"version"
+			"\ndump [0|1|2|3]"
 #ifdef CONFIG_USB_PD_TRY_SRC
-	"\ntrysrc [0|1|2]"
+			"\ntrysrc [0|1|2]"
 #endif
-	"\n\t<port> state"
-	"\n\t<port> srccaps"
+			"\n\t<port> state"
+			"\n\t<port> srccaps"
 #ifdef CONFIG_CMD_PD_TIMER
-	"\n\t<port> timer"
+			"\n\t<port> timer"
 #endif /* CONFIG_CMD_PD_TIMER */
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-	"|tx|charger|dev"
-	"\n\t<port> disable|enable|soft|hard"
-	"\n\t<port> dualrole [on|off|freeze|sink|source]"
-	"\n\t<port> swap [power|data|vconn]"
+			"|tx|charger|dev"
+			"\n\t<port> disable|enable|soft|hard"
+			"\n\t<port> dualrole [on|off|freeze|sink|source]"
+			"\n\t<port> swap [power|data|vconn]"
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
-	,
-	"USB PD");
-#endif
+			,
+			"USB PD");
