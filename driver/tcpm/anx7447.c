@@ -560,7 +560,193 @@ static int anx7447_mux_get(int port, mux_state_t *mux_state)
 }
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
+<<<<<<< HEAD   (aadfd6 dood: Add CONFIG_USB_PD_RESET_MIN_BATT_SOC)
 /* ANX7447 is a TCPCI compatible port controller */
+=======
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int anx7447_tcpc_drp_toggle(int port)
+{
+	int rv, reg;
+
+	rv = tcpc_read(port, ANX7447_REG_ANALOG_CTRL_10, &reg);
+	if (rv)
+		return rv;
+	/*
+	 * When using Look4Connection command to toggle CC under normal mode
+	 * the CABLE_DET_DIG shall be clear first.
+	 */
+	if (reg & ANX7447_REG_CABLE_DET_DIG) {
+		reg &= ~ANX7447_REG_CABLE_DET_DIG;
+		rv = tcpc_write(port, ANX7447_REG_ANALOG_CTRL_10, reg);
+		if (rv)
+			return rv;
+	}
+
+	return tcpci_tcpc_drp_toggle(port);
+}
+#endif
+
+/* Override for tcpci_tcpm_set_cc */
+static int anx7447_set_cc(int port, int pull)
+{
+	int rp, reg;
+
+	rp = tcpc_read(port, ANX7447_REG_ANALOG_CTRL_10, &reg);
+	if (rp)
+		return rp;
+	/*
+	 * When setting CC status, should be confirm that the CC toggling
+	 * process is stopped, the CABLE_DET_DIG shall be set to one.
+	 */
+	if ((reg & ANX7447_REG_CABLE_DET_DIG) == 0) {
+		reg |= ANX7447_REG_CABLE_DET_DIG;
+		rp = tcpc_write(port, ANX7447_REG_ANALOG_CTRL_10, reg);
+		if (rp)
+			return rp;
+	}
+
+	rp = tcpci_get_cached_rp(port);
+
+	/* Set manual control, and set both CC lines to the same pull */
+	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			  TCPC_REG_ROLE_CTRL_SET(0, rp, pull, pull));
+}
+
+/* Override for tcpci_tcpm_set_polarity */
+static int anx7447_set_polarity(int port,
+				enum tcpc_cc_polarity polarity)
+{
+	return tcpc_update8(port,
+			    TCPC_REG_TCPC_CTRL,
+			    TCPC_REG_TCPC_CTRL_SET(1),
+			    polarity_rm_dts(polarity)
+					? MASK_SET : MASK_CLR);
+}
+
+#ifdef CONFIG_CMD_TCPC_DUMP
+static const struct tcpc_reg_dump_map anx7447_regs[] = {
+	{
+		.addr = ANX7447_REG_TCPC_SWITCH_0,
+		.name = "SWITCH_0",
+		.size = 1,
+	},
+	{
+		.addr = ANX7447_REG_TCPC_SWITCH_1,
+		.name = "SWITCH_1",
+		.size = 1,
+	},
+	{
+		.addr = ANX7447_REG_TCPC_AUX_SWITCH,
+		.name = "AUX_SWITCH",
+		.size = 1,
+	},
+	{
+		.addr = ANX7447_REG_ADC_CTRL_1,
+		.name = "ADC_CTRL_1",
+		.size = 1,
+	},
+	{
+		.addr = ANX7447_REG_ANALOG_CTRL_8,
+		.name = "ANALOG_CTRL_8",
+		.size = 1,
+	},
+	{
+		.addr = ANX7447_REG_ANALOG_CTRL_10,
+		.name = "ANALOG_CTRL_10",
+		.size = 1,
+	},
+	{
+		.addr = ANX7447_REG_TCPC_CTRL_2,
+		.name = "TCPC_CTRL_2",
+		.size = 1,
+	},
+};
+
+const struct {
+	const char *name;
+	uint8_t addr;
+} anx7447_alt_regs[] = {
+	{
+		.name = "HPD_CTRL_0",
+		.addr = ANX7447_REG_HPD_CTRL_0,
+	},
+	{
+		.name = "HPD_DEGLITCH_H",
+		.addr = ANX7447_REG_HPD_DEGLITCH_H,
+	},
+	{
+		.name = "INTP_SOURCE_0",
+		.addr = ANX7447_REG_INTP_SOURCE_0,
+	},
+	{
+		.name = "INTP_MASK_0",
+		.addr = ANX7447_REG_INTP_MASK_0,
+	},
+	{
+		.name = "INTP_CTRL_0",
+		.addr = ANX7447_REG_INTP_CTRL_0,
+	},
+	{
+		.name = "PAD_INTP_CTRL",
+		.addr = ANX7447_REG_PAD_INTP_CTRL,
+	},
+};
+
+/*
+ * Dump registers for debug command.
+ */
+static void anx7447_dump_registers(int port)
+{
+	int i, val;
+
+	tcpc_dump_std_registers(port);
+	tcpc_dump_registers(port, anx7447_regs, ARRAY_SIZE(anx7447_regs));
+	for (i = 0; i < ARRAY_SIZE(anx7447_alt_regs); i++) {
+		anx7447_reg_read(port, anx7447_alt_regs[i].addr, &val);
+		ccprintf("  %-26s(ALT/0x%02x) =   0x%02x\n",
+				anx7447_alt_regs[i].name,
+				anx7447_alt_regs[i].addr, (uint8_t)val);
+		cflush();
+	}
+}
+#endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+
+static int anx7447_get_chip_info(int port, int live,
+			struct ec_response_pd_chip_info_v1 *chip_info)
+{
+	int rv = tcpci_get_chip_info(port, live, chip_info);
+	int val;
+
+	if (rv)
+		return rv;
+
+	if (chip_info->fw_version_number == -1 || live) {
+		/*
+		 * Before reading ANX7447 SPI slave address 0x7e for
+		 * new added FW version, need to read ANX7447 I2c
+		 * slave address 0x58 first to wake up ANX7447.
+		 */
+		tcpc_read(port, ANX7447_REG_OCM_VERSION, &val);
+		rv = anx7447_reg_read(port, ANX7447_REG_OCM_VERSION, &val);
+
+		if (rv)
+			return rv;
+		if (val != 0)
+			chip_info->fw_version_number = val;
+	}
+
+	return rv;
+}
+
+/*
+ * ANX7447 is a TCPCI compatible port controller, with some caveats.
+ * It seems to require both CC lines to be set always, instead of just
+ * one at a time, according to TCPCI spec.  Thus, now that the TCPCI
+ * driver more closely follows the spec, this driver requires
+ * overrides for set_cc and set_polarity.
+ */
+>>>>>>> CHANGE (7b335c anx7447: Read ANX7447 firmware version)
 const struct tcpm_drv anx7447_tcpm_drv = {
 	.init			= &anx7447_init,
 	.release		= &anx7447_release,
@@ -583,8 +769,12 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
 #endif
+<<<<<<< HEAD   (aadfd6 dood: Add CONFIG_USB_PD_RESET_MIN_BATT_SOC)
 	.get_chip_info		= &tcpci_get_chip_info,
 #ifdef CONFIG_USBC_PPC
+=======
+	.get_chip_info		= &anx7447_get_chip_info,
+>>>>>>> CHANGE (7b335c anx7447: Read ANX7447 firmware version)
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif
