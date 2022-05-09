@@ -22,6 +22,30 @@
       },
       "revId": "c804a3d52053a64f005021b05f0d43ed9fe5db3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd56505_fc478605",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:07:48Z",
+      "side": 1,
+      "message": "Do we need a separate field, or is it sufficient to use the initial value of `sink` as the initial state and then keep track of it going forward?",
+      "parentUuid": "efbd311a_2fe070f1",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "c804a3d52053a64f005021b05f0d43ed9fe5db3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

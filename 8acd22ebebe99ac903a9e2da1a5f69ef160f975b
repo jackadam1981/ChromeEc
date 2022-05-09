@@ -88,6 +88,24 @@
       "parentUuid": "9ef292a8_8036db8b",
       "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd3b74e_9c49be14",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:07:48Z",
+      "side": 1,
+      "message": "Ack re: `CONTAINER_OF`.\n\nRe: multiple pointers to the same `common_data`, are there any situations where `common_data` will be updated more than once on the same operation, or does it always get updated exactly once?\n\nIf it\u0027s practical, I\u0027d prefer that there be a common code function to update the common data structure. Right now, half the work in this sink-specific Hard Reset handler is for the common data structure. If that change would be a larger refactor, then you can handle it in a later CL.",
+      "parentUuid": "aec5408b_78d9b772",
+      "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
