@@ -16,6 +16,57 @@
       "message": "Hi Diana and Abe, can you take a look at this CL? It updates pd_chipset_resume, pd_chipset_suspend, pd_chipset_startup and pd_chipset_shutdown to send a Power State Change alert on DFP ports. This is talked about in Section \"6.4.6.4.1 Power State Change\" of the USB PD 3.1 spec.",
       "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6161911a_f7272292",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3952,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:44:10Z",
+      "side": 1,
+      "message": "At least the way pd_send_alert_msg is written right now, you could just not check the config here. If the PE is disabled, the function would return an error code, but you\u0027re not checking the return value anyway.",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c249097c_c8f3faef",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:44:10Z",
+      "side": 1,
+      "message": "Nit: IMO, the spec is pointlessly hard to read here by nesting bit field tables, but to match up with that, can these bits be defined to something like `BIT(24) \u003c\u003c 7`?",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887b243b_cd8aa0d8",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:44:10Z",
+      "side": 1,
+      "message": "Can this be an enum?",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
