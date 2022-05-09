@@ -16,6 +16,24 @@
       "message": "It looks like this should be included to the patch: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3634168",
       "revId": "8f752da7885ac2a09a043e660c4bb84649bcf389",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a87e3f2_98a80629",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-05-09T10:04:59Z",
+      "side": 1,
+      "message": "CL:3634168 was merged, so I created a new CL.",
+      "parentUuid": "41ec427d_38b35f83",
+      "revId": "8f752da7885ac2a09a043e660c4bb84649bcf389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
