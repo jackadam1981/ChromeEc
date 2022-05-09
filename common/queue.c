@@ -195,6 +195,57 @@ static void queue_read_safe(struct queue const *q,
 
 size_t queue_remove_unit(struct queue const *q, void *dest)
 {
+	__asm__ volatile (
+		"lw	a5,0(a0)\n"
+		"addi	sp,sp,-32\n"
+		"sw	s0,24(sp)\n"
+		"sw	s1,20(sp)\n"
+		"sw	s2,16(sp)\n"
+		"sw	s3,12(sp)\n"
+		"sw	ra,28(sp)\n"
+		"lw	s1,0(a5)\n"
+		"lw	s3,12(a0)\n"
+		"mv	s0,a0\n"
+		"mv	s2,a1\n"
+		"nop\n"
+		"lw	a0,0(a0)\n"
+		"jal	ra,queue_count.isra.0\n"
+		"beqz	a0,queue_remove_unit_1\n"
+		"lw	a2,16(s0)\n"
+		"li	a4,1\n"
+		"lw	a1,20(s0)\n"
+		"and	a5,s1,s3\n"
+		"bne	a2,a4,queue_remove_unit_2\n"
+		"add	a1,a1,a5\n"
+		"lbu	a5,0(a1)\n"
+		"sb	a5,0(s2)\n"
+	"queue_remove_unit_3:\n"
+		"mv	a0,s0\n"
+		"lw	s0,24(sp)\n"
+		"lw	ra,28(sp)\n"
+		"lw	s1,20(sp)\n"
+		"lw	s2,16(sp)\n"
+		"lw	s3,12(sp)\n"
+		"li	a1,1\n"
+		"addi	sp,sp,32\n"
+		"j	queue_advance_head\n"
+	"queue_remove_unit_2:\n"
+		"mul	a5,a2,a5\n"
+		"mv	a0,s2\n"
+		"add	a1,a1,a5\n"
+		"jal	ra,memcpy\n"
+		"j	queue_remove_unit_3\n"
+	"queue_remove_unit_1:\n"
+		"lw	ra,28(sp)\n"
+		"lw	s0,24(sp)\n"
+		"lw	s1,20(sp)\n"
+		"lw	s2,16(sp)\n"
+		"lw	s3,12(sp)\n"
+		"addi	sp,sp,32\n"
+		"ret\n"
+		);
+	return 0;
+#if 0
 	size_t head = q->state->head & q->buffer_units_mask;
 
 	__asm__ volatile (" nop");
@@ -209,13 +260,14 @@ size_t queue_remove_unit(struct queue const *q, void *dest)
 	}
 
 	return queue_advance_head(q, 1);
+#endif
 }
 
 void __attribute__((naked, used)) queue_unused_padding(void) {
 	__asm__ volatile (" nop");
 	__asm__ volatile (" nop");
-	__asm__ volatile (" nop");
-	__asm__ volatile (" nop");
+	//__asm__ volatile (" nop");
+	//__asm__ volatile (" nop");
 	//__asm__ volatile (" nop");
 	//__asm__ volatile (" nop");
 }
