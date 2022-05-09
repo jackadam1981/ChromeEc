@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42611f7_e102f631",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-09T19:49:45Z",
+      "side": 1,
+      "message": "This is the real reason that https://ci.chromium.org/ui/p/chromeos/builders/postsubmit/brya-zephyr-postsubmit/3995/overview failed.\n\nSee the log and count the number of `Building brya in build/brya.` messages.",
+      "revId": "b85cfb1d6d551523b413b32315314a5f85af7df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
