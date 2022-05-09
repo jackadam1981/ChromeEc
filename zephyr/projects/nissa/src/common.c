@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include <device.h>
+#include <zephyr/device.h>
 #include <ap_power/ap_power.h>
 
 #include "battery.h"
@@ -17,7 +17,7 @@
 
 #include "nissa_common.h"
 
-#include <logging/log.h>
+#include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(nissa, CONFIG_NISSA_LOG_LEVEL);
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
