@@ -191,7 +191,14 @@ test_export_static int command_pd(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-#ifndef TEST_BUILD
+
+#ifdef TEST_BUILD
+static int test_command_pd(int argc, char **argv)
+{
+	return command_pd(argc, argv);
+}
+DECLARE_CONSOLE_COMMAND(pd, test_command_pd, "see description below", "USB PD");
+#else
 DECLARE_CONSOLE_COMMAND(pd, command_pd,
 	 "version"
 	 "\ndump [0|1|2|3]"
