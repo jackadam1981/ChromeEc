@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1518ce66_38ca7ef3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-09T06:26:28Z",
+      "side": 1,
+      "message": "Are you sure this does anything? I know `-fsanitize` is more intended as a diagnostic option, and this CL doesn\u0027t appear to have any effect on code size (which I would expect if it did something, since some uses of division would need checks added).",
+      "revId": "3c385cd3fab1811f6e7eb12c49daec8b490e0e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
