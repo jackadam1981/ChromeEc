@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b37555_6a9b8b36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T22:26:38Z",
+      "side": 1,
+      "message": "If the AP powers off in the middle of a retimer firmware update and the port subsequently resumes, is the port expected to be usable afterward?",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "ff88f10fac11c998c103de25d261393afadad265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3261cf27_994c7444",
@@ -31,6 +54,23 @@
       "writtenOn": "2022-05-09T02:54:54Z",
       "side": 1,
       "message": "Verify pass on Primus.",
+      "revId": "ff88f10fac11c998c103de25d261393afadad265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b9ffd4_0f3defe2",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T22:26:38Z",
+      "side": 1,
+      "message": "I may be missing some context on why this works the way that it does, but does this module need to maintain its own suspend/resume state, or can the suspend/resume state needed here be tracked by pd_is_port_enabled?",
       "revId": "ff88f10fac11c998c103de25d261393afadad265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
