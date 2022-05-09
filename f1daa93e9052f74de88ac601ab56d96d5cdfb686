@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31196425_97acd8e9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3974,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T22:30:01Z",
+      "side": 1,
+      "message": "The spec notes that only the DFP should send power state change, and only the UFP should send power button events.",
+      "parentUuid": "befa16b6_6f3b9016",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c249097c_c8f3faef",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
