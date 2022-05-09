@@ -16,6 +16,24 @@
       "message": "Are you sure this does anything? I know `-fsanitize` is more intended as a diagnostic option, and this CL doesn\u0027t appear to have any effect on code size (which I would expect if it did something, since some uses of division would need checks added).",
       "revId": "3c385cd3fab1811f6e7eb12c49daec8b490e0e36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3adda72_ca5423aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-09T06:30:39Z",
+      "side": 1,
+      "message": "On closer inspection I see zero checks being added and `ebreak` instructions on the zero path; interesting that it doesn\u0027t add anything to code size.",
+      "parentUuid": "1518ce66_38ca7ef3",
+      "revId": "3c385cd3fab1811f6e7eb12c49daec8b490e0e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
