@@ -46,6 +46,30 @@
       },
       "revId": "c804a3d52053a64f005021b05f0d43ed9fe5db3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cadac938_abb32105",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-09T23:05:01Z",
+      "side": 1,
+      "message": "re: Do we need a separate field, or is it sufficient to use the initial value of  sink  as the initial state and then keep track of it going forward?\n\nSo looked at things again and I think by just passing the snk and src hard reset handler directly we can both get rid of the DRP hard reset handler code as well as any initially sink tracking fields.\n\nUnless you were thinking of having some static variable somewhere, but I don\u0027t think that\u0027d work when we want to test attaching multiple DRP emulators.",
+      "parentUuid": "9fd56505_fc478605",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "c804a3d52053a64f005021b05f0d43ed9fe5db3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

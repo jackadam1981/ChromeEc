@@ -106,6 +106,24 @@
       "parentUuid": "aec5408b_78d9b772",
       "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "421552a8_3f9b1479",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-09T23:05:01Z",
+      "side": 1,
+      "message": "Re: does it always get updated exactly once?\n\nI believe only once if I understood the question correctly.\n\nI added a tiny helper for resetting the power and data roles within the common_data struct.",
+      "parentUuid": "fbd3b74e_9c49be14",
+      "revId": "8acd22ebebe99ac903a9e2da1a5f69ef160f975b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
