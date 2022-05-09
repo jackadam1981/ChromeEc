@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cd7a74_71fc0214",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:35:11Z",
+      "side": 1,
+      "message": "Nit: If you don\u0027t think you\u0027ll need this stuff outside of TCPMv2, you could just stick it in usb_pd_dpm.c. Then you wouldn\u0027t have to add it to the header file.",
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba31002_dbae17f6",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:35:11Z",
+      "side": 1,
+      "message": "I\u0027d prefer an IS_ENABLED guard clause if it will build. Actually, if TEMP_SENSOR_COUNT is defined to 0 when temp sensors are disabled, you wouldn\u0027t need to check this at all.",
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316a21d5_a89631bb",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:35:11Z",
+      "side": 1,
+      "message": "If GCC/Clang don\u0027t have a problem with this, then I guess I don\u0027t, but we don\u0027t ordinarily use non-ASCII in our source code.\n\nAlso, if the return value and the logic of the function are in terms of the enum, then you don\u0027t really need to mention the numerical values and fields here.",
+      "range": {
+        "startLine": 1136,
+        "startChar": 5,
+        "endLine": 1136,
+        "endChar": 6
+      },
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9fd067_91d0fc15",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:35:11Z",
+      "side": 1,
+      "message": "Nit: If you grab a copy of this pointer, you can make all of these two-line comparisons one-liners, and it will be a little bit easier to read.",
+      "range": {
+        "startLine": 1153,
+        "startChar": 24,
+        "endLine": 1153,
+        "endChar": 33
+      },
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb01b28_9f2c6df8",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:35:11Z",
+      "side": 1,
+      "message": "You can use `MAX` from util.h.",
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

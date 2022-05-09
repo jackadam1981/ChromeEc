@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "179ca68f_1f99f761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:35:11Z",
+      "side": 1,
+      "message": "Just a note for next time: You can work on multiple commits in the same `repo` workspace and upload them as part of the same CL chain. It makes it easier to keep them all updated with respect to each other, and it makes it easier to keep track of the overall group of CLs on Gerrit.",
+      "parentUuid": "746a155d_65dba8d6",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94bdfcd3_94cb9187",
@@ -155,6 +173,24 @@
       "side": 1,
       "message": "I see, this work on Revision/Status/Alert messages has been to enable power buttons over USB-C. Things like the temperature information is a lower priority. If there is not a clean fit here, do you think it would be better to leave it unsupported? Especially if we are running out of space on some builds.",
       "parentUuid": "40a7c64a_a87ee5f0",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e55284_d3e65eb4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4310,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-09T20:35:11Z",
+      "side": 1,
+      "message": "Re: redundant work, I\u0027m not to worried about it, but I think you could sidestep the issue by first figuring out our \"worst\" temperature in a separate function and then setting both fields on that basis. We have different thresholds for different sensors, but if, e.g. our CPU is fine at 70C, and our charger chip is dying at 50C, it\u0027s probably OK if we send back 50C in the internal temp field.\n\nI think just picking the charger temp would also be a pretty good option here. We can have multiple chargers, though, so it\u0027s not completely straightforward.\n\nRe: priority, I\u0027d say any of the designs discussed so far are close enough for now.",
+      "parentUuid": "c13c8b75_34fec91c",
       "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
