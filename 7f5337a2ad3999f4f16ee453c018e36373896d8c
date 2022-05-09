@@ -16,6 +16,24 @@
       "message": "I downloaded the patch locally and searched for `Chrome OS`. The only match I found was outside the docs folder:\n\n```\nutil/fptool.py:6:\"\"\"A tool to manage the fingerprint system on Chrome OS.\"\"\"\n```",
       "revId": "7f5337a2ad3999f4f16ee453c018e36373896d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8fd9b1d_9af91193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-05-09T19:33:55Z",
+      "side": 1,
+      "message": "I\u0027ll add that in a subsequent CL. Thanks!",
+      "parentUuid": "45bea0d4_c04d3d69",
+      "revId": "7f5337a2ad3999f4f16ee453c018e36373896d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
