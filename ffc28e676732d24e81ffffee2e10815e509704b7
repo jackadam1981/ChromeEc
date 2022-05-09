@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f393b068_7f09f9d7",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-09T23:16:37Z",
+      "side": 1,
+      "message": "Do you want to check the response.fifo_int_enable.ret here also?",
+      "range": {
+        "startLine": 751,
+        "startChar": 1,
+        "endLine": 751,
+        "endChar": 66
+      },
+      "revId": "ffc28e676732d24e81ffffee2e10815e509704b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8292ebf_b6f551f7",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-09T23:16:37Z",
+      "side": 1,
+      "message": "Likewise?",
+      "range": {
+        "startLine": 758,
+        "startChar": 1,
+        "endLine": 758,
+        "endChar": 66
+      },
+      "revId": "ffc28e676732d24e81ffffee2e10815e509704b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
