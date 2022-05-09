@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "befa16b6_6f3b9016",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3974,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-09T22:23:32Z",
+      "side": 1,
+      "message": "Any particular reason to gate on power role?",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c249097c_c8f3faef",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -65,6 +82,23 @@
       "writtenOn": "2022-05-09T20:44:10Z",
       "side": 1,
       "message": "Can this be an enum?",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b02eb8f_7b93f350",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-09T22:23:32Z",
+      "side": 1,
+      "message": "This would be bit 3 rather than enum value 3, if I read the ADO table correctly",
       "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
