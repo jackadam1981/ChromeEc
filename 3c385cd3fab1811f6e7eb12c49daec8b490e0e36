@@ -34,6 +34,24 @@
       "parentUuid": "1518ce66_38ca7ef3",
       "revId": "3c385cd3fab1811f6e7eb12c49daec8b490e0e36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e686386_9e9336b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-09T06:33:30Z",
+      "side": 1,
+      "message": "Without the trap, it returns 0xFFFFFFFF, so perhaps that\u0027s what the non-trap code does.",
+      "parentUuid": "e3adda72_ca5423aa",
+      "revId": "3c385cd3fab1811f6e7eb12c49daec8b490e0e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
