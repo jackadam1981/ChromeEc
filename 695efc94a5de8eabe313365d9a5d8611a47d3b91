@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c13c8b75_34fec91c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4310,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-09T16:47:42Z",
+      "side": 1,
+      "message": "I see, this work on Revision/Status/Alert messages has been to enable power buttons over USB-C. Things like the temperature information is a lower priority. If there is not a clean fit here, do you think it would be better to leave it unsupported? Especially if we are running out of space on some builds.",
+      "parentUuid": "40a7c64a_a87ee5f0",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0fe69a1_e6510004",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
