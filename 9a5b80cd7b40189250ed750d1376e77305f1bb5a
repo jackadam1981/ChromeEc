@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ccecb74_954d379c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-10T21:47:23Z",
+      "side": 1,
+      "message": "LGTM modulo possible redundant assignment.",
+      "revId": "9a5b80cd7b40189250ed750d1376e77305f1bb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4266a9c6_e3c55f2c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-10T21:47:23Z",
+      "side": 1,
+      "message": "Is this redundant with the common hard reset handler, which will be called in either case?",
+      "revId": "9a5b80cd7b40189250ed750d1376e77305f1bb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
