@@ -8,6 +8,7 @@
 #include <zephyr/drivers/watchdog.h>
 #include <zephyr/logging/log.h>
 #include <soc.h>
+#include <soc_dt.h>
 #include <soc/nuvoton_npcx/reg_def_cros.h>
 #include <zephyr/sys/util.h>
 
@@ -449,6 +450,29 @@ static int cros_system_npcx_get_reset_cause(const struct device *dev)
 	return data->reset;
 }
 
+/*
+ * Get the list which default functionality are not IOs from the node which
+ * compatible is 'nuvoton,npcx-pinctrl-def'.
+ */
+static const struct npcx_alt def_alts[] =
+			NPCX_DT_IO_ALT_ITEMS_LIST(nuvoton_npcx_pinctrl_def, 0);
+
+static void cros_system_npcx_configure_pinmux_to_gpio(const struct device *dev)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(def_alts); i++) {
+		const struct npcx_alt *alt = def_alts + i;
+		uint8_t alt_mask = BIT(alt->bit);
+
+		if (alt->inverted) {
+			NPCX_DEVALT(DRV_CONFIG(dev)->base_scfg, alt->group) |=  alt_mask;
+		} else {
+			NPCX_DEVALT(DRV_CONFIG(dev)->base_scfg, alt->group) &= ~alt_mask;
+		}
+	}
+}
+
 static int cros_system_npcx_init(const struct device *dev)
 {
 	struct scfg_reg *const inst_scfg = HAL_SCFG_INST(dev);
@@ -480,6 +504,14 @@ static int cros_system_npcx_init(const struct device *dev)
 		data->reset = WATCHDOG_RST;
 		/* Clear watchdog reset status initially */
 		inst_twd->T0CSR |= BIT(NPCX_T0CSR_WDRST_STS);
+	}
+
+	/*
+	 * If we have already jumped from the other images, no need to configure
+	 * pin-muxing to GPIO again
+	 */
+	if ((system_get_reset_flags() & EC_RESET_FLAG_SYSJUMP) == 0) {
+		cros_system_npcx_configure_pinmux_to_gpio(dev);
 	}
 
 	return 0;
