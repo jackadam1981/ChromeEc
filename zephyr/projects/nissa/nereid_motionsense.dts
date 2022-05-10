@@ -41,6 +41,12 @@
 				 0 0 1>;
 		};
 
+		lid_chassis_rot_ref: lid_chassis-rotation-ref {
+			mat33 = <(-1) 0 0
+				 0 1 0
+				 0 0 (-1)>;
+		};
+
 		base_rot_ref: base-rotation-ref {
 			mat33 = <1 0 0
 				 0 (-1) 0
