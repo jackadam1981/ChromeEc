@@ -60,6 +60,14 @@
 #define SB_PACK_STATUS                  0x43
 #define SB_ALT_MANUFACTURER_ACCESS      0x44
 
+/* Extension of smart battery for dynamic Battery Power participant */
+#ifdef CONFIG_BATTERY_DBPT_V2PLUS
+#define SB_MAX_PEAK_POWER		0x59
+#define SB_SUS_PEAK_POWER		0x5A
+#define SB_SYS_RESISTANCE               0x5C
+#define SB_MIN_SYS_VOLTAGE              0x5D
+#endif /* CONFIG_BATTERY_DBPT_V2PLUS */
+
 /* Battery mode */
 #define MODE_INTERNAL_CHARGE_CONTROLLER BIT(0)
 #define MODE_PRIMARY_BATTERY_SUPPORT    BIT(1)
@@ -187,5 +195,12 @@ int sb_write_block(int reg, const uint8_t *val, int len);
 
 /* Read manufactures access data from the battery */
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len);
+
+#ifdef CONFIG_BATTERY_DBPT_V2PLUS
+int battery_set_sys_resistance(int resistance);
+int battery_set_min_sys_voltage(int min_volt);
+int battery_maximum_power(void);
+int battery_sustained_power(void);
+#endif /* CONFIG_BATTERY_DBPT_V2PLUS */
 
 #endif /* __CROS_EC_BATTERY_SMART_H */
