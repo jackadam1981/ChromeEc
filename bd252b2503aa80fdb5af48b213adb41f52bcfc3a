@@ -70,6 +70,24 @@
       "parentUuid": "ac1c905f_c627c0e2",
       "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9837ec35_60354aa9",
+        "filename": "zephyr/projects/corsola/pinctrl_kingler.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-10T10:37:28Z",
+      "side": 1,
+      "message": "We provide the other option which needn\u0027t add def-io-conf-list in every board config. The idea is that I wont\u0027 set the def-io-conf-list again if it is a warm reboot. It need to be implemented under ec/zephyr.\nThe conceptual PR and CL can be found in:\n1. CL:3637499\n2. [PR:45507](https://github.com/zephyrproject-rtos/zephyr/pull/45507)\nPlease advise which do you prefer.",
+      "parentUuid": "669123dc_ec925bf9",
+      "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
