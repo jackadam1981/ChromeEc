@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9dc0c42_58998a2a",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-10T10:50:27Z",
+      "side": 1,
+      "message": "nit: redundant nested level?",
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a18295db_ff1ccae0",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-10T10:50:27Z",
+      "side": 1,
+      "message": "As I understand, tcpci_get_chip_info doesn\u0027t read fw_ver value (always assign -1) so what is the situation of we need to check 0 or -1 explicitly here?\n\nOr maybe we always need to read fw_version_number back from chip since there is no cache for this value.",
+      "range": {
+        "startLine": 860,
+        "startChar": 38,
+        "endLine": 860,
+        "endChar": 39
+      },
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27706323_701a628c",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-10T10:50:27Z",
+      "side": 1,
+      "message": "do we need to prevent it from nullptr?",
+      "range": {
+        "startLine": 860,
+        "startChar": 6,
+        "endLine": 860,
+        "endChar": 15
+      },
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dff0bd4_7d19d216",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-10T10:50:27Z",
+      "side": 1,
+      "message": "exceed 80 chars and please overall check others.",
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4a170c_c6fd3777",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-10T10:50:27Z",
+      "side": 1,
+      "message": "If reg_read is successful then why do we need to check it explicitly?",
+      "range": {
+        "startLine": 871,
+        "startChar": 7,
+        "endLine": 871,
+        "endChar": 15
+      },
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
