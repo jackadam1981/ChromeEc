@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61da5ad5_9234fb77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-10T17:47:28Z",
+      "side": 1,
+      "message": "Please replace \"Brya\" names too, if possible",
+      "revId": "217f12d21425b6be59c4721aff8961470ff2b433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5eee62b_6b38a489",
+        "filename": "board/mithrax/fw_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-10T17:47:28Z",
+      "side": 1,
+      "message": "MITHRAX",
+      "range": {
+        "startLine": 6,
+        "startChar": 15,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "217f12d21425b6be59c4721aff8961470ff2b433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
