@@ -6,11 +6,13 @@
 /* Support Power Participant in Dynamic Tuning Technology */
 
 #include "battery.h"
+#include "battery_smart.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
 #include "console.h"
 #include "dptf.h"
+#include "dtt_power_status.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "hooks.h"
@@ -31,6 +33,8 @@
 
 /* Current system power source */
 static enum system_power_source current_power_source = POWER_SOURCE_UNKNOWN;
+
+static int dbpt_initialized = false;
 
 /* calculate and return the adapter rating */
 static int get_adapter_rating(void)
@@ -175,6 +179,27 @@ DECLARE_HOOK(HOOK_USB_PD_CONNECT, update_power_source, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 #endif
 
+#ifdef CONFIG_BATTERY_DBPT_V2PLUS
+static void init_dbpt(void)
+{
+	int rv;
+	rv = battery_set_sys_resistance(batt_param.sys_resistance);
+	if (rv) {
+		dbpt_initialized = false;
+		return;
+	}
+
+	rv = battery_set_min_sys_voltage(batt_param.min_sys_volt);
+	if (rv) {
+		dbpt_initialized = false;
+		return;
+	}
+	CPRINTS("DBPT initialised!");
+	dbpt_initialized = true;
+}
+
+#endif /* CONFIG_BATTERY_DBPT_V2PLUS */
+
 static void power_status_init(void)
 {
 	uint8_t *memmap_psrc =  host_get_memmap(EC_MEMMAP_PWR_SRC);
@@ -186,6 +211,10 @@ static void power_status_init(void)
 
 	/* Update the initial information on power source */
 	update_power_source();
+#ifdef CONFIG_BATTERY_DBPT_V2PLUS
+	/* Initialize for enabling DBPT capability */
+	init_dbpt();
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, power_status_init, HOOK_PRIO_LAST);
 
