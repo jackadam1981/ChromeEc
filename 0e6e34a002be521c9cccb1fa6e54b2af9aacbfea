@@ -16,6 +16,24 @@
       "message": "SKU IDs are specific to boards, so they can\u0027t be used as a part of generic driver code.  Is the SKU ID specifically needed in order to correctly derive the firmware version, or can it be done based on the fw_version_number alone?",
       "revId": "0e6e34a002be521c9cccb1fa6e54b2af9aacbfea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac35a3f3_8495d14f",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-05-10T07:22:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96c0ccf6_d8d04afe",
+      "revId": "0e6e34a002be521c9cccb1fa6e54b2af9aacbfea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
