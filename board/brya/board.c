@@ -16,6 +16,7 @@
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dso.h"
 #include "driver/als_tcs3400.h"
+#include "dtt_power_status.h"
 #include "fw_config.h"
 #include "hooks.h"
 #include "lid_switch.h"
@@ -32,6 +33,11 @@
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
+const struct dbpt_batt_params batt_param = {
+	20, /* sys_resistance (mohm) */
+	9000, /* min_sys_voltage (mV) */
+};
 
 __override void board_cbi_init(void)
 {
