@@ -88,6 +88,24 @@
       "parentUuid": "eff5ae04_4762e5ef",
       "revId": "ea67a221c9a26a3852c0ba50bbf87fa85a779c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc6c301_91a37ee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-10T20:41:49Z",
+      "side": 1,
+      "message": "ACK. How about making native_pow.cnf \u0026 legacy_pow.conf and adding then in build.py?",
+      "parentUuid": "a27f0551_d6104d6f",
+      "revId": "ea67a221c9a26a3852c0ba50bbf87fa85a779c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
