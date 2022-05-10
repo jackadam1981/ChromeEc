@@ -21,6 +21,7 @@
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
+#include "power_status.h"
 #include "registers.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -32,6 +33,12 @@
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
+const struct dbpt_batt_params batt_param = {
+	20, /* sys_resistance (mohm) */
+	9000, /* min_sys_voltage (mV) */
+	NVDC,
+};
 
 __override void board_cbi_init(void)
 {
