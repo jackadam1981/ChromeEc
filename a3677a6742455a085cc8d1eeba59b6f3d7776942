@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f3f4c1a_89a64cf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-10T00:00:27Z",
+      "side": 1,
+      "message": "Hi Jeremy, following up on this bug (https://buganizer.corp.google.com/issues/230975527) here is a new test to exercise the added code to send USB PD alerts. It is structured similarly to the verify_ping_msg test in src/platform/ec/zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c. I\u0027ve added some more information about it to the bug. Let me know if you have any questions.\n\nThanks,\nJameson",
+      "revId": "a3677a6742455a085cc8d1eeba59b6f3d7776942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
