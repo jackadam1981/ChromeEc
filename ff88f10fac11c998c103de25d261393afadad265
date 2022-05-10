@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "18fd3932_a9051bd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-10T00:40:08Z",
+      "side": 1,
+      "message": "I updated my wording a little bit. So if AP powers off during fw update, user space won\u0027t ask retimer to resume task. Since the port is still suspended; it can\u0027t respond to any device plug in. Unless it\u0027s resumed explicitly, all its functionalities are working afterwards. I tested with TBT dock and PD charger.",
+      "parentUuid": "01b37555_6a9b8b36",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "ff88f10fac11c998c103de25d261393afadad265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3261cf27_994c7444",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -71,6 +95,24 @@
       "writtenOn": "2022-05-09T22:26:38Z",
       "side": 1,
       "message": "I may be missing some context on why this works the way that it does, but does this module need to maintain its own suspend/resume state, or can the suspend/resume state needed here be tracked by pd_is_port_enabled?",
+      "revId": "ff88f10fac11c998c103de25d261393afadad265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d2a071_5e103223",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-10T00:40:08Z",
+      "side": 1,
+      "message": "If only use pd_is_port_enabled(), here we won\u0027t know if the suspend is due to firmware update or caused by other module. I want to avoid blindly correct this without enough knowledge to know what other module is trying to do.\nIf the state maintained here is suspend but PD task is already resumed, extra calling of resume PD task won\u0027t hurt; and the state here will be set to resume to reflect real state too.",
+      "parentUuid": "f5b9ffd4_0f3defe2",
       "revId": "ff88f10fac11c998c103de25d261393afadad265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
