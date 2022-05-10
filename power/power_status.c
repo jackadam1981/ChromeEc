@@ -6,6 +6,7 @@
 /* Support Power Participant in Dynamic Tuning Technology */
 
 #include "battery.h"
+#include "battery_smart.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
@@ -14,6 +15,7 @@
 #include "ec_commands.h"
 #include "extpower.h"
 #include "hooks.h"
+#include "power_status.h"
 #include "throttle_ap.h"
 #include "timer.h"
 #include "usb_common.h"
@@ -34,6 +36,8 @@ static int prochot_action = PROCHOT_DEASSERT_OK;
 
 /* Current system power source */
 static enum system_power_source current_power_source = POWER_SOURCE_UNKNOWN;
+
+static int dbpt_initialized = false;
 
 /* calculate and return the adapter rating */
 static int get_adapter_rating(void)
@@ -191,17 +195,123 @@ DECLARE_HOOK(HOOK_USB_PD_CONNECT, update_power_source, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 #endif
 
+#ifdef CONFIG_BATTERY_DBPT_V2PLUS
+static void init_dbpt(void)
+{
+	int rv;
+	rv = battery_set_sys_resistance(batt_param.sys_resistance);
+	if (rv) {
+		dbpt_initialized = false;
+		return;
+	}
+
+	rv = battery_set_min_sys_voltage(batt_param.min_sys_volt);
+	if (rv) {
+		dbpt_initialized = false;
+		return;
+	}
+	CPRINTS("DBPT initialised!");
+	dbpt_initialized = true;
+}
+
+void update_dbpt(void)
+{
+        static int seconds_count;
+	static int count;
+
+	if (!dbpt_initialized)
+		return;
+
+	/*
+	 * Update the registers on every 10 seconds.
+	 * Also, check for any variation in maximum power and
+	 * sustained peak power values during this 10sec time frame.
+	 */
+	if(!seconds_count) {
+		uint16_t batt_max_peak_power, batt_sus_peak_power;
+		uint16_t prev_batt_max_peak_power, prev_batt_sus_peak_power;
+		uint16_t threshold_max_power_change, threshold_sus_peak_power_change;
+
+	//	CPRINTS("Update_DBPT in 10 sec");
+		batt_max_peak_power = battery_maximum_power();
+		batt_sus_peak_power = battery_sustained_power();
+
+		prev_batt_max_peak_power =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX));
+		prev_batt_sus_peak_power =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS));
+
+		if (prev_batt_max_peak_power < batt_max_peak_power) {
+			threshold_max_power_change = (batt_max_peak_power -
+							prev_batt_max_peak_power);
+		} else {
+			threshold_max_power_change = (prev_batt_max_peak_power -
+							batt_max_peak_power);
+		}
+
+		if (prev_batt_sus_peak_power < batt_sus_peak_power) {
+			threshold_sus_peak_power_change = (batt_sus_peak_power -
+							prev_batt_sus_peak_power);
+		} else {
+			threshold_sus_peak_power_change = (prev_batt_sus_peak_power -
+							batt_sus_peak_power);
+		}
+
+		*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
+                                                        batt_max_peak_power;
+		*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS)) =
+                                                        batt_sus_peak_power;
+
+		if (threshold_max_power_change >= 250 ||
+			threshold_sus_peak_power_change >= 100) {
+		CPRINTS("PTOM:BATTERY_sci event-23 on threshold above 250mv/100mv");
+		CPRINTS("PTOM- threshold_max_power_change-%d, threshold_sus_peak_power_change-%d",
+			threshold_max_power_change, threshold_sus_peak_power_change);
+		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
+		}
+
+		// For testing purpose
+		if (count<5) {
+		CPRINTS("PTOM: PMAX-%d, PBSS-%d",batt_max_peak_power, batt_sus_peak_power);
+		CPRINTS("PTOM_in memap: PMAX-%d, PBSS-%d",
+				*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)),
+				*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS)));
+		count++;
+		}
+	}
+
+        if (seconds_count < 10) {
+		seconds_count++;
+	} else {
+		/* Reset counter on every 10seconds */
+		seconds_count = 0;
+	}
+
+}
+DECLARE_HOOK(HOOK_SECOND, update_dbpt, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_BATTERY_DBPT_V2PLUS */
+
 static void power_status_init(void)
 {
 	uint8_t *memmap_psrc =  host_get_memmap(EC_MEMMAP_PWR_SRC);
 	uint16_t *memmap_artg = (uint16_t *)host_get_memmap(EC_MEMMAP_PWR_ARTG);
+	uint8_t *memmap_ctype = host_get_memmap(EC_MEMMAP_CTYPE);
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) = 0x0;
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS)) = 0x0;
 
 	/* Initial Value */
 	*memmap_psrc = 0;
 	*memmap_artg = 0;
+	*memmap_ctype = batt_param.charger_type;
+
+	CPRINTS("PTOM-CHarger Type:%d ",*memmap_ctype);
 
 	/* Update the initial information on power source */
 	update_power_source();
+#ifdef CONFIG_BATTERY_DBPT_V2PLUS
+	/* Initialize for enabling DBPT capability */
+	init_dbpt();
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, power_status_init, HOOK_PRIO_LAST);
 
