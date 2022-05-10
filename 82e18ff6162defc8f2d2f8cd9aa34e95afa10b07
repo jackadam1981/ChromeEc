@@ -116,6 +116,29 @@
       "parentUuid": "fa7f0217_0f97ae54",
       "revId": "82e18ff6162defc8f2d2f8cd9aa34e95afa10b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e892f4ca_f8bf0800",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-10T23:21:53Z",
+      "side": 1,
+      "message": "1. how about we wait for thread curr_state \u003d\u003d new_state\n2. wake up the thread on power signal interrupts\n\nwith this we can start semaphore with count 1",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 3
+      },
+      "revId": "82e18ff6162defc8f2d2f8cd9aa34e95afa10b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
