@@ -338,6 +338,7 @@ void board_overcurrent_event(int port, int is_overcurrented)
 #define THROT_TYPE_A_FRONT  BIT(0)
 #define THROT_TYPE_A_REAR   BIT(1)
 #define THROT_TYPE_C0       BIT(2)
+#define THROT_TYPE_C1       BIT(3)
 #define THROT_PROCHOT       BIT(5)
 
 /*
@@ -464,6 +465,16 @@ static void power_monitor(void)
 					gap += POWER_GAIN_TYPE_C;
 			}
 			/*
+			 * If the type-C port is sourcing power,
+			 * check whether it should be throttled.
+			 */
+			if (ppc_is_sourcing_vbus(1) && gap <= 0) {
+				new_state |= THROT_TYPE_C1;
+				headroom_5v_z1 += PWR_Z1_C_HIGH - PWR_Z1_C_LOW;
+				if (!(current_state & THROT_TYPE_C1))
+					gap += POWER_GAIN_TYPE_C;
+			}
+			/*
 			 * As a last resort, turn on PROCHOT to
 			 * throttle the CPU.
 			 */
@@ -542,6 +553,14 @@ static void power_monitor(void)
 		ppc_set_vbus_source_current_limit(0, rp);
 		tcpm_select_rp_value(0, rp);
 		pd_update_contract(0);
+	}
+	if (diff & THROT_TYPE_C1) {
+		enum tcpc_rp_value rp = (new_state & THROT_TYPE_C1)
+			? TYPEC_RP_1A5 : TYPEC_RP_3A0;
+
+		ppc_set_vbus_source_current_limit(1, rp);
+		tcpm_select_rp_value(1, rp);
+		pd_update_contract(1);
 	}
 	if (diff & THROT_TYPE_A_REAR) {
 		int typea_bc = (new_state & THROT_TYPE_A_REAR) ? 1 : 0;
