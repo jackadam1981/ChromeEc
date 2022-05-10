@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d56de2a_a4e1ef67",
+        "filename": "zephyr/projects/trogdor/lazor/pinctrl.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-10T23:11:17Z",
+      "side": 1,
+      "message": "default_gpio_pinctrl.dts is a clearer name for this file.",
+      "revId": "dfb0d5c0c424bc40efbb1e2ccbb44d13ea753313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdaa2459_1db6096a",
+        "filename": "zephyr/projects/trogdor/lazor/pinctrl.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-10T23:11:17Z",
+      "side": 1,
+      "message": "Please add a comment that this adds the \u0026alt1_no_lpc_espi setting over the NPCX7 default setting.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 22
+      },
+      "revId": "dfb0d5c0c424bc40efbb1e2ccbb44d13ea753313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
