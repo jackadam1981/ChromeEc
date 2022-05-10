@@ -22,6 +22,30 @@
       },
       "revId": "4aff0347ea7af3ffbda66d71ca66b2fd41f6a796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ff3483_7f9b052a",
+        "filename": "zephyr/subsys/ap_pwrseq/include/ap_power_override_functions.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-10T04:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d833d70f_a713eeaf",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "4aff0347ea7af3ffbda66d71ca66b2fd41f6a796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
