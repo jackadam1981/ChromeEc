@@ -18,6 +18,9 @@
 /* Add Power participant support in DTT */
 #define CONFIG_DTT_POWER_STATUS
 
+/* Add support for DBPT */
+#define CONFIG_BATTERY_DBPT_V2PLUS
+
 /* Baseboard features */
 #include "baseboard.h"
 
