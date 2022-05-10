@@ -34,6 +34,24 @@
       "parentUuid": "928f5796_4385515e",
       "revId": "e27624df6c4164fca44e1ccda431710370251a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3643074b_1f29563d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-05-10T15:37:46Z",
+      "side": 1,
+      "message": "I don\u0027t think that would help. Did you verify it? The build failed with the following output:\n\n```\nchromeos-ec-0.0.2-r8690: common/usb_common.c: In function \u0027pd_broadcast_alert_msg\u0027:\nchromeos-ec-0.0.2-r8690: common/usb_common.c:1069:2: error: \u0027for\u0027 loop initial declarations are only allowed in C99 or C11 mode\nchromeos-ec-0.0.2-r8690:   for (int i \u003d 0; i \u003c CONFIG_USB_PD_PORT_MAX_COUNT; i++) {\nchromeos-ec-0.0.2-r8690:   ^\nchromeos-ec-0.0.2-r8690: common/usb_common.c:1069:2: note: use option -std\u003dc99, -std\u003dgnu99, -std\u003dc11 or -std\u003dgnu11 to compile your code\nchromeos-ec-0.0.2-r8690: common/usb_common.c: At top level:\nchromeos-ec-0.0.2-r8690: cc1: error: unrecognized command line option \"-Wno-address-of-packed-member\" [-Werror]\nchromeos-ec-0.0.2-r8690: cc1: all warnings being treated as errors\nchromeos-ec-0.0.2-r8690: make: *** [util/build.mk:72: build/beadrix/common/usb_common.o] Error 1\nchromeos-ec-0.0.2-r8690: make: *** Waiting for unfinished jobs....\nchromeos-ec-0.0.2-r8690:  * ERROR: chromeos-base/chromeos-ec-0.0.2-r8690::chromiumos failed (compile phase):\nchromeos-ec-0.0.2-r8690:  *   emake failed\nchromeos-ec-0.0.2-r8690:  * \nchromeos-ec-0.0.2-r8690:  * Build log: /build/dedede/tmp/portage/logs/chromeos-base:chromeos-ec-0.0.2-r8690:20220509-040623.log\nchromeos-ec-0.0.2-r8690:  * Stable log symlink: /build/dedede/tmp/portage/chromeos-base/chromeos-ec-0.0.2-r8690/temp/build.log\nchromeos-ec-0.0.2-r8690:  * CWD: /build/dedede/tmp/portage/chromeos-base/chromeos-ec-0.0.2-r8690/work/chromeos-ec-0.0.2/platform/ec\nchromeos-ec-0.0.2-r8690:  * S:   /build/dedede/tmp/portage/chromeos-base/chromeos-ec-0.0.2-r8690/work/chromeos-ec-0.0.2/platform/ec\n```\n\nIt seems to be failing when building `usb_common.o`.",
+      "parentUuid": "5f6a8b29_941d96c0",
+      "revId": "e27624df6c4164fca44e1ccda431710370251a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
