@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a2551a_8dd9dba0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2022-05-10T12:52:52Z",
+      "side": 1,
+      "message": "Active 2 policy can support multiple fans. If there are more than 1 fan, there should be corresponding number of fan participants exposed along with each fan should report its fan speed under the corresponding fan participant.",
+      "parentUuid": "897f5de4_ddf93e9d",
+      "revId": "ccdf973297209c31576a389ed0ef9a070dfdd518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f107bcb2_98df1a08",
