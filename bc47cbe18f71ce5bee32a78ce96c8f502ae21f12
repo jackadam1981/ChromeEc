@@ -45,6 +45,54 @@
       },
       "revId": "bc47cbe18f71ce5bee32a78ce96c8f502ae21f12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce845932_9e410678",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-05-10T09:50:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7adaf1c1_b82f3e82",
+      "range": {
+        "startLine": 863,
+        "startChar": 21,
+        "endLine": 863,
+        "endChar": 25
+      },
+      "revId": "bc47cbe18f71ce5bee32a78ce96c8f502ae21f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc68a9f_5a09abcb",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-05-10T09:50:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b225d0_16236d46",
+      "range": {
+        "startLine": 863,
+        "startChar": 47,
+        "endLine": 863,
+        "endChar": 55
+      },
+      "revId": "bc47cbe18f71ce5bee32a78ce96c8f502ae21f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
