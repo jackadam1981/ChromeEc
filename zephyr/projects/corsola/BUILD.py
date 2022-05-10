@@ -63,3 +63,20 @@ register_corsola_project(
     ],
     extra_kconfig_files=[here / "prj_kingler.conf"],
 )
+
+register_corsola_project(
+    project_name="steelix",
+    chip="npcx9",
+    extra_dts_overlays=[
+        here / "adc_steelix.dts",
+        here / "battery_steelix.dts",
+        here / "i2c_steelix.dts",
+        here / "interrupts_steelix.dts",
+        here / "cbi_eeprom.dts",
+        here / "gpio_steelix.dts",
+        here / "led_steelix.dts",
+        here / "motionsense_steelix.dts",
+        here / "usbc_steelix.dts",
+    ],
+    extra_kconfig_files=[here / "prj_steelix.conf"],
+)
