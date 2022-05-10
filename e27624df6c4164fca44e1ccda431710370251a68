@@ -52,6 +52,24 @@
       "parentUuid": "5f6a8b29_941d96c0",
       "revId": "e27624df6c4164fca44e1ccda431710370251a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4a3712_e15e3253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-05-10T17:05:22Z",
+      "side": 1,
+      "message": "See the rule to build usb_common.c at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/build.mk;l\u003d69\n\nwhich would use the rule \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile.rules;l\u003d110\n\nso the change helps and verified locally.",
+      "parentUuid": "3643074b_1f29563d",
+      "revId": "e27624df6c4164fca44e1ccda431710370251a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
