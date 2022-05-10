@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c442e51d_356acf1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-10T05:48:06Z",
+      "side": 1,
+      "message": "So which hooks are being run from the shell with apshutdown()?\nAFAIK, there should be none, since apshutdown() calls\nap_power_force_shutdown() which calls board_ap_power_force_shutdown(), but no event hooks are being sent.\n\nHowever, I can see that apreset() calls ap_power_reset(), which definitely does call a hook.",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2180b4f9_a0157baf",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_events.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-10T05:48:06Z",
+      "side": 1,
+      "message": "maybe make this 0x%x, since this is one bit of a mask.",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa291b4_859d7f28",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-10T05:48:06Z",
+      "side": 1,
+      "message": "This may not always be the case - there is nothing stopping external functions from setting these signals, and it may be quite OK depending on the state of things.\nI don\u0027t think it is up to this function to assert just who should call it.\nThat doesn\u0027t mean it is correct for it to be called at any time, but I think this should be determined by the power sequence API contract or design.\n\nThe real issue here is the use of ap_power_force_shutdown(), which does bypass\nall the power sequence code and summarily force these signals.\nThe problem lies in that the power sequence code then has no co-ordination\nwith this action, and of course is just reacting to the collateral effect of the signals changing.\n\nI don\u0027t think the answer is to assert everything is to happen as part of the power sequence thread, but to figure out how to properly deal with this external request.\nIt may mean that ap_power_force_shutdown() as an external request needs to take a lock and then control the signals (setting a flag indicating it is a forced shutdown, so the power sequence thread can process it accordingly).\nOr it sends a request to the power sequence code to do the shutdown, though the idea of this forced shutdown is to act immediately (whatever that means).",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd852262_9e82c659",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-10T05:48:06Z",
+      "side": 1,
+      "message": "So apart from the init routine, there should be no other caller here except for the state machine handling, so I don\u0027t think there needs to be a check here.",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be59056_45ab0d2f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-10T05:48:06Z",
+      "side": 1,
+      "message": "So the power_signal_init() code should I still think run as part of the\nSYS_INIT phase rather than waiting for the thread to start.\nThis was deliberately done early.\n\nAlso, setting the initial state of the CPU was also done early so that other code (like the power button code) could check the state of the CPU before this thread started.\n\nI think it is OK to do this since these should use internal functions to set the internal state of the power sequence code, and these perhaps don\u0027t need to be checking the thread state.\n\npwr_sm_set_state should be an internal function, and shouldn\u0027t be invoked from anywhere outside the power sequence code.",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
