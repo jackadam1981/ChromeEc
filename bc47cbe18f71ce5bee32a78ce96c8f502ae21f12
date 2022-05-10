@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adaf1c1_b82f3e82",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-10T09:28:17Z",
+      "side": 1,
+      "message": "Maybe describe it as slave address of TCPC or SPI registers would be more meaningful.",
+      "range": {
+        "startLine": 863,
+        "startChar": 21,
+        "endLine": 863,
+        "endChar": 25
+      },
+      "revId": "bc47cbe18f71ce5bee32a78ce96c8f502ae21f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b225d0_16236d46",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-10T09:28:17Z",
+      "side": 1,
+      "message": "version",
+      "range": {
+        "startLine": 863,
+        "startChar": 47,
+        "endLine": 863,
+        "endChar": 55
+      },
+      "revId": "bc47cbe18f71ce5bee32a78ce96c8f502ae21f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
