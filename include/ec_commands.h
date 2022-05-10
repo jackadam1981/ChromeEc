@@ -172,8 +172,16 @@ extern "C" {
 /* Power Participant related components */
 #define EC_MEMMAP_PWR_SRC          0xa6 /* Power source (8-bit) */
 #define EC_MEMMAP_PWR_ARTG         0xa7 /* Adapter rating (mW) (16 bits) */
-
-/* Unused 0xa9 - 0xdf */
+/* Battery Participant related components */
+#define EC_MEMMAP_BATT_PMAX        0xa9 /* Maximum peak power (mW)-16 bits */
+#define EC_MEMMAP_BATT_PBSS        0xab /* Sustained peak power (mW)-16 bits */
+#define EC_MEMMAP_BATT_CMPP        0xad /* Discharge current capability 
+					   (mA)-16 bits*/
+#define EC_MEMMAP_BATT_RBHF        0xaf /* High frequency impedance
+					   (mohm)-16 bits */
+#define EC_MEMMAP_BATT_VBNL        0xb1 /* Instantaneous No load Voltage
+					   (mV)-16 bits */
+/* Unused 0xb3 - 0xdf */
 
 /*
  * ACPI is unable to access memory mapped data at or above this offset due to
