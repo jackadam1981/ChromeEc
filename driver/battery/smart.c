@@ -360,6 +360,86 @@ int battery_get_avg_current(void)
 	return (int16_t)current;
 }
 
+int battery_maximum_power(void)
+{
+	int power_mw, power_cw;
+	int val;
+
+	battery_get_mode(&val);
+        if (val & MODE_CAPACITY) {
+		sb_read(SB_MAX_PEAK_POWER, &power_cw);
+	} else {
+		sb_read(SB_MAX_PEAK_POWER, &power_mw);
+		power_cw = power_mw / 10 ;
+	}
+	return power_cw;
+}
+
+int battery_sustained_power(void)
+{
+	int sus_power_mw,sus_power_cw;
+	int val;
+
+	battery_get_mode(&val);
+	if (val & MODE_CAPACITY) {
+		sb_read(SB_SUS_PEAK_POWER, &sus_power_cw);
+	} else {
+		sb_read(SB_SUS_PEAK_POWER, &sus_power_mw);
+		sus_power_cw = sus_power_mw / 10;
+	}
+	return sus_power_cw;
+}
+
+int battery_high_frequency_impedance(void)
+{
+	int high_freq_imp_mohm;
+
+	sb_read(SB_HIGH_FREQ_IMPEDANCE, &high_freq_imp_mohm);
+	return high_freq_imp_mohm;
+}
+
+int battery_instantaneous_no_load_volt(void)
+{
+	int nl_volt_mv;
+
+	sb_read(SB_NL_VOLTAGE, &nl_volt_mv);
+	return nl_volt_mv;
+}
+
+int battery_discharge_current_capability(void)
+{
+	int discharge_current_cap_ma;
+
+	sb_read(SB_DISCHARGE_CURRENT_CAPABILITY, &discharge_current_cap_ma);
+	return discharge_current_cap_ma;
+}
+
+/*
+ * Write the total resistance value in mOhm into fuel gauge to account
+ * for the resistances due to the resistance of power/ground metal,
+ * sense resistor, FET, and other parasitic resistance on the system
+ * main board. This is initialized to a default value upon
+ * removal or insertion of a battery pack. Writes with this
+ * function will overwrite the default value. Fuel gauge needs this
+ * information to calculate the voltage at the regulator input accurately.
+ */
+int battery_set_sys_resistance(int resistance_mohm)
+{
+	return sb_write(SB_SYS_RESISTANCE, resistance_mohm);
+}
+
+/*
+ * Write the required minimum system input voltage in mV into the
+ * fuel gauge. The system regulator will still operate normally if
+ * its input voltage is at this level. This is initialized to the
+ * default value. Fuel gauge needs this information to calculate
+ * the MaxPeakPower and SusPeakPower() values.
+ */
+int battery_set_min_sys_voltage(int min_volt_mv)
+{
+	return sb_write(SB_MIN_SYS_VOLTAGE, min_volt_mv);
+}
+
 #ifdef CONFIG_CMD_PWR_AVG
 /*
  * Technically returns only the instantaneous reading, but tests showed that
