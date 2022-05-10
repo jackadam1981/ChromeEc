@@ -96,6 +96,24 @@
       "message": "I would still recommend to follow the specification by ensure an at least 100 us delay between assertion and de-assertion.",
       "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca13889f_9583a07e",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-10T22:23:40Z",
+      "side": 1,
+      "message": "The default configuration of `CONFIG_ESPI_DEFAULT_VW_WIDTH_US` is only 65 us.  Is the 100 us pulse width an eSPI requirement or specific to some Intel chipsets?",
+      "parentUuid": "ae217bad_c80aa207",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
