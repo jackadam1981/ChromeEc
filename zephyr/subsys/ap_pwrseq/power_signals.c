@@ -10,6 +10,7 @@
 
 #include <power_signals.h>
 
+#include "pwrseq_thread.h"
 #include "signal_gpio.h"
 #include "signal_vw.h"
 #include "signal_adc.h"
@@ -195,6 +196,8 @@ int power_signal_set(enum power_signal signal, int value)
 	const struct ps_config *cp;
 	int ret;
 
+	__ASSERT(is_in_pwrseq_thread(),
+		 "power signals must only be set from the power sequencing thread");
 	if (signal < 0 || signal >= POWER_SIGNAL_COUNT) {
 		return -EINVAL;
 	}

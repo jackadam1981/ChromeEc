@@ -4,9 +4,12 @@
  */
 
 #include <zephyr/kernel.h>
+#include <logging/log.h>
 
 #include <ap_power/ap_power.h>
 #include <ap_power/ap_power_events.h>
+
+LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
 static sys_slist_t callbacks;
 /*
@@ -63,6 +66,8 @@ void ap_power_ev_send_callbacks(enum ap_power_events event)
 {
 	struct ap_power_ev_data data;
 	struct ap_power_ev_callback *cb, *tmp;
+
+	LOG_DBG("sending power sequencing event %d", event);
 
 	/*
 	 * If no callbacks for this event, don't run the queue.
