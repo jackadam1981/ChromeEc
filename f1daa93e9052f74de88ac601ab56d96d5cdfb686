@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b5c9502_9592b78d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3952,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-10T21:48:34Z",
+      "side": 1,
+      "message": "I removed the config check here.\n\nDo you think I should add some check on the pd_send_alert_msg return as well? I can think of a couple options. \n\n(1) Just log a warning if it doesn\u0027t return EC_SUCCESS.\n\n(2) Add some type of queue to the PE state and write messages to it when there is an issue sending them at the time we expect. Then, have the PE check the queue for pending messages when it is back to a ready state. Something like this may also be required for sending OVP and OTP events where we are supposed to first send a hard_reset and then only send the alert after the port has finished renegotiating with it\u0027s partner.\n\nFWIW. this is the only alert I plan to add for the time being so there should not be any ADO overwriting conflicts yet.",
+      "parentUuid": "6161911a_f7272292",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "befa16b6_6f3b9016",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -105,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb0b7a4_5909a84c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-10T21:48:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c249097c_c8f3faef",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "887b243b_cd8aa0d8",
@@ -118,6 +154,24 @@
       "writtenOn": "2022-05-09T20:44:10Z",
       "side": 1,
       "message": "Can this be an enum?",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f84b1fc_a3aa7145",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-10T21:48:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "887b243b_cd8aa0d8",
       "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
