@@ -88,6 +88,24 @@
       "parentUuid": "669123dc_ec925bf9",
       "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "059bdfd9_1fa748fc",
+        "filename": "zephyr/projects/corsola/pinctrl_kingler.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-10T23:28:15Z",
+      "side": 1,
+      "message": "I think for now, defining def-io-conf-list on each board makes sense.\nAfter pinctrl driver change merges, we can revisit this.  For instance, can the NPCX_DEVALT setting get set automatically if the corresponding GPIO is configured?",
+      "parentUuid": "9837ec35_60354aa9",
+      "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
