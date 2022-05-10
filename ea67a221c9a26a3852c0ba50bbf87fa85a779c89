@@ -52,6 +52,24 @@
       "parentUuid": "512d5423_ebb30cb1",
       "revId": "ea67a221c9a26a3852c0ba50bbf87fa85a779c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff5ae04_4762e5ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-10T19:13:06Z",
+      "side": 1,
+      "message": "As RVP has short development window  when enabling new boards., plan is to keep common as much as possible to avoid manual errors.\nPls keep then in common file if need not to differentiate",
+      "parentUuid": "be7e76e3_fd703289",
+      "revId": "ea67a221c9a26a3852c0ba50bbf87fa85a779c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
