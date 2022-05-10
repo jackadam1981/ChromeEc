@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40bd66c1_21cb879a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-10T21:54:32Z",
+      "side": 1,
+      "message": "General approach LGTM.",
+      "revId": "4eb739b6e1a8585455cec9a71bee8f9ae5a5c951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87432efa_e85c5d89",
+        "filename": "zephyr/test/drivers/src/console_cmd/usb_pd_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-10T21:54:32Z",
+      "side": 1,
+      "message": "IMO, we don\u0027t care a ton which error code it returns in error cases. We don\u0027t have very well defined requirements for console commands in general. If you want to cover an error handling path, I\u0027d just do something like `zassert_not_equal(rv, EC_SUCCESS, ...)`.",
+      "revId": "4eb739b6e1a8585455cec9a71bee8f9ae5a5c951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df1573d_8f92bb02",
+        "filename": "zephyr/test/drivers/src/console_cmd/usb_pd_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-10T21:54:32Z",
+      "side": 1,
+      "message": "Maybe some brief comments to explain what the commands are supposed to do would be helpful. I\u0027m not completely familiar with the usage, and it\u0027s not obvious to me which ones should succeed and which should fail. I don\u0027t think you necessarily need to comment every command.",
+      "revId": "4eb739b6e1a8585455cec9a71bee8f9ae5a5c951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2679a581_df213563",
+        "filename": "zephyr/test/drivers/src/console_cmd/usb_pd_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-10T21:54:32Z",
+      "side": 1,
+      "message": "You can just use `zassert_ok` for success cases.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "4eb739b6e1a8585455cec9a71bee8f9ae5a5c951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
