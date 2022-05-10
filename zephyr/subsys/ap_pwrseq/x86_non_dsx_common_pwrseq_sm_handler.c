@@ -3,13 +3,15 @@
  * found in the LICENSE file.
  */
 
+#include <sys/__assert.h>
 #include <zephyr/init.h>
 
-#include <x86_non_dsx_common_pwrseq_sm_handler.h>
+#include "pwrseq_thread.h"
+#include "x86_non_dsx_common_pwrseq_sm_handler.h"
 
 static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack,
 			CONFIG_AP_PWRSEQ_STACK_SIZE);
-static struct k_thread pwrseq_thread_data;
+static k_tid_t pwrseq_thread;
 static struct pwrseq_context pwrseq_ctx;
 /* S5 inactive timer*/
 K_TIMER_DEFINE(s5_inactive_timer, NULL, NULL);
@@ -96,23 +98,35 @@ const char * const pwr_sm_get_state_name(enum power_states_ndsx state)
 	return pwrsm_dbg[state];
 }
 
-void pwr_sm_set_state(enum power_states_ndsx new_state)
+/**
+ * Set the state machine to a new state, without checking invariants.
+ *
+ * Callers should prefer to use pwr_sm_set_state unless they can verify through
+ * some other means that the invariants are upheld.
+ */
+void pwr_sm_set_state_unchecked(enum power_states_ndsx new_state)
 {
-	/* Add locking mechanism if multiple thread can update it */
 	LOG_DBG("Power state: %s --> %s",
 		pwr_sm_get_state_name(pwrseq_ctx.power_state),
 		pwr_sm_get_state_name(new_state));
 	pwrseq_ctx.power_state = new_state;
 }
 
+void pwr_sm_set_state(enum power_states_ndsx new_state)
+{
+	__ASSERT(is_in_pwrseq_thread(), "%s called from non-pwrseq thread",
+		 __func__);
+	pwr_sm_set_state_unchecked(new_state);
+}
+
 void request_exit_hardoff(bool should_exit)
 {
-	pwrseq_ctx.want_g3_exit = should_exit;
+	atomic_set(&pwrseq_ctx.want_g3_exit, should_exit);
 }
 
 static bool chipset_is_exit_hardoff(void)
 {
-	return pwrseq_ctx.want_g3_exit;
+	return atomic_get(&pwrseq_ctx.want_g3_exit);
 }
 
 static void shutdown_and_notify(enum ap_power_shutdown_reason reason)
@@ -413,27 +427,6 @@ static int common_pwr_sm_run(int state)
 	return state;
 }
 
-/*
- * Determine the current CPU state and ensure it
- * is matching what is required.
- */
-static void pwr_seq_set_initial_state(void)
-{
-	uint32_t reset_flags = system_get_reset_flags();
-	/* Determine current state using chipset specific handler */
-	enum power_states_ndsx state = chipset_pwr_seq_get_state();
-
-	/*
-	 * Not in warm boot, but CPU is not shutdown.
-	 */
-	if (((reset_flags & EC_RESET_FLAG_SYSJUMP) == 0) &&
-	    (state != SYS_POWER_STATE_G3)) {
-		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
-		state = SYS_POWER_STATE_G3;
-	}
-	pwr_sm_set_state(state);
-}
-
 static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
 	int32_t t_wait_ms = 10;
@@ -484,50 +477,61 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 	}
 }
 
-static inline void create_pwrseq_thread(void)
-{
-	k_thread_create(&pwrseq_thread_data,
-			pwrseq_thread_stack,
-			K_KERNEL_STACK_SIZEOF(pwrseq_thread_stack),
-			(k_thread_entry_t)pwrseq_loop_thread,
-			NULL, NULL, NULL,
-			CONFIG_AP_PWRSEQ_THREAD_PRIORITY, 0,
-			IS_ENABLED(CONFIG_AP_PWRSEQ_AUTOSTART) ? K_NO_WAIT
-							       : K_FOREVER);
-
-	k_thread_name_set(&pwrseq_thread_data, "pwrseq_task");
-}
-
 void ap_pwrseq_task_start(void)
 {
 	if (!IS_ENABLED(CONFIG_AP_PWRSEQ_AUTOSTART)) {
-		k_thread_start(&pwrseq_thread_data);
+		k_thread_start(pwrseq_thread);
 	}
-}
-
-static void init_pwr_seq_state(void)
-{
-	init_chipset_pwr_seq_state();
-	request_exit_hardoff(false);
-	/*
-	 * The state of the CPU needs to be determined now
-	 * so that init routines can check the state of
-	 * the CPU.
-	 */
-	pwr_seq_set_initial_state();
 }
 
 /* Initialize power sequence system state */
 static int pwrseq_init(const struct device *dev)
 {
-	LOG_INF("Pwrseq Init");
+	static struct k_thread pwrseq_thread_data;
 
-	/* Initialize signal handlers */
+	/* Initialize power signal I/Os */
 	power_signal_init();
-	LOG_DBG("Init pwr seq state");
-	init_pwr_seq_state();
-	/* Create power sequence state handler core function thread */
-	create_pwrseq_thread();
+	init_chipset_pwr_seq_state();
+
+	/*
+	 * Set state machine to match current hardware state.
+	 *
+	 * This will often be the same as the default initial state, but may
+	 * not be if the AP was running and the EC rebooted for any reason.
+	 *
+	 * This state is set here (in early initialization) so that other init
+	 * code can check the state of the AP if desired.
+	 */
+	{
+		uint32_t reset_flags = system_get_reset_flags();
+		/* Determine current state using chipset specific handler */
+		enum power_states_ndsx state = chipset_pwr_seq_get_state();
+
+		/*
+		 * If the AP appears to be running but we didn't expect to
+		 * restart, power it off.
+		 */
+		if (((reset_flags & EC_RESET_FLAG_SYSJUMP) == 0) &&
+		    (state != SYS_POWER_STATE_G3)) {
+			ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
+			state = SYS_POWER_STATE_G3;
+		}
+		/*
+		 * State is safe to set here because the thread is
+		 * not yet running.
+		 */
+		pwr_sm_set_state_unchecked(state);
+	}
+
+	/* Create power sequence state handler thread */
+	pwrseq_thread = k_thread_create(
+		&pwrseq_thread_data, pwrseq_thread_stack,
+		K_KERNEL_STACK_SIZEOF(pwrseq_thread_stack),
+		(k_thread_entry_t)pwrseq_loop_thread, NULL, NULL, NULL,
+		CONFIG_AP_PWRSEQ_THREAD_PRIORITY, 0,
+		IS_ENABLED(CONFIG_AP_PWRSEQ_AUTOSTART) ? K_NO_WAIT : K_FOREVER);
+	k_thread_name_set(&pwrseq_thread_data, "pwrseq_task");
+
 	return 0;
 }
 
@@ -536,3 +540,8 @@ static int pwrseq_init(const struct device *dev)
  * the signals depend upon, such as GPIO, ADC etc.
  */
 SYS_INIT(pwrseq_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+
+bool is_in_pwrseq_thread(void)
+{
+	return k_current_get() == pwrseq_thread;
+}
