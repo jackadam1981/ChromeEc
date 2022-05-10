@@ -552,6 +552,12 @@
  */
 #undef CONFIG_BATTERY_SMART
 
+/*
+ * For batteries which support dynamic battery power
+ * technology V2PLUS.
+ */
+#undef CONFIG_BATTERY_DBPT_V2PLUS
+
 /* Chemistry of the battery device */
 #undef CONFIG_BATTERY_DEVICE_CHEMISTRY
 
