@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc47e617_342bb4d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-10T17:54:43Z",
+      "side": 1,
+      "message": "After this all (most?) projects builds with LEGACY_INCLUDE_PATH\u003dn, the tests don\u0027t but it\u0027s because of a bunch of stuff not fixed yet in upstream for native_posix.",
+      "revId": "0dabb611b567cf0aa85b748c31cbddf08e54eae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
