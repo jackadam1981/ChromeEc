@@ -146,7 +146,24 @@ static int is31fl3733b_enable(struct rgbkbd *ctx, bool enable)
 	WRITE_BIT(u8, 4, 1);
 	WRITE_BIT(u8, 0, enable);
 
-	return is31fl3733b_write(ctx, IS31FL3733B_FUNC_CFG, u8);
+	rv = is31fl3733b_write(ctx, IS31FL3733B_FUNC_CFG, u8);
+	if (rv) {
+		return rv;
+	}
+
+	/* enable all led */
+	rv = is31fl3733b_set_page(ctx, IS31FL3733B_PAGE_CTRL);
+	if (rv) {
+		return rv;
+	}
+
+	for (i = 0; i < 24; i++) {
+		rv = is31fl3733b_write(ctx, i, 0xff);
+		if (rv)
+			CPRINTS("LED 0x%02x init fail (rv=%d)", i, rv);
+	}
+
+	return rv
 }
 
 static int is31fl3733b_set_color(struct rgbkbd *ctx, uint8_t offset,
@@ -190,7 +207,7 @@ static int is31fl3733b_set_gcc(struct rgbkbd *ctx, uint8_t level)
 
 static int is31fl3733b_init(struct rgbkbd *ctx)
 {
-	int rv;
+	int i, rv;
 
 	rv = is31fl3733b_reset(ctx);
 	msleep(3);
