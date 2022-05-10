@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26b36d75_315c6de1",
+        "filename": "zephyr/projects/corsola/pinctrl_kingler.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-05-10T01:32:58Z",
+      "side": 1,
+      "message": "IMHO, this will be hard for maintaining `def-io-conf-list` when it tights to eSPI. All the future arm boards need to define this list, and it will be error prone.\n\nCould we do this reversely that we skip GPIO initialization if eSPI is configured?",
+      "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
