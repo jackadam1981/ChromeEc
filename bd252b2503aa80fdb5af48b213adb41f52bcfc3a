@@ -34,6 +34,24 @@
       "parentUuid": "26b36d75_315c6de1",
       "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1c905f_c627c0e2",
+        "filename": "zephyr/projects/corsola/pinctrl_kingler.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-10T06:14:06Z",
+      "side": 1,
+      "message": "@Eric\n\u003e\u003eCould we do this reversely that we skip GPIO initialization if eSPI is configured?\nThis is the device tree source file. I don\u0027t see a approach to conditionally exclude the \u0026alt0_gpio_no_spip when eSPI is configured.\n@Andrew\nYes, this is also what the Zephyr community strongly suggests during the code review for the pinctrl driver refactor.\nSee also the principle in the [doc](https://docs.zephyrproject.org/latest/hardware/pinctrl/index.html) \n```\nIt is discouraged to add pin configuration defaults in pre-defined nodes. In general, pin configurations depend on the board design or on the peripheral working conditions, so the decision should be made by the board. \n```\nWe might also remove the def-io-conf-list from the SoC default and move it to the board\u0027s folder which uses eSPI interface latter like what I did in this CL.",
+      "parentUuid": "fc7537c9_1890bb5a",
+      "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
