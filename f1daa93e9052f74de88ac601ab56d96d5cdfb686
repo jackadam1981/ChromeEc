@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac15d495_afc40334",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3952,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-10T22:02:39Z",
+      "side": 1,
+      "message": "I\u0027d say just ignore a failure of `pd_send_alert_msg` for now, and if we end up needing to make it more complicated later, we can.",
+      "parentUuid": "4b5c9502_9592b78d",
+      "revId": "f1daa93e9052f74de88ac601ab56d96d5cdfb686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "befa16b6_6f3b9016",
