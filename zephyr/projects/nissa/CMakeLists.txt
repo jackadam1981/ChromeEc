@@ -26,6 +26,7 @@ if(DEFINED CONFIG_BOARD_NEREID)
 	project(nereid)
 	zephyr_library_sources(
 			"src/nereid/keyboard.c"
+			"src/nereid/sensor.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/nereid/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "src/nereid/charger.c")
