@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366fc7cb_abe7549c",
+        "filename": "zephyr/projects/nissa/nereid_generated.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-10T03:54:25Z",
+      "side": 1,
+      "message": "The `pinmap` utility that generates this file needs to be able to generate these changes, or they instead go in `nereid_overlay.dts` so they won\u0027t get clobbered if this gets regenerated.",
+      "revId": "23cbf45454f4f50fe99f4a372d24fb308163c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
