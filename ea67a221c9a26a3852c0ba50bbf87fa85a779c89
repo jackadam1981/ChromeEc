@@ -34,6 +34,24 @@
       "parentUuid": "4058d304_b62e9b6d",
       "revId": "ea67a221c9a26a3852c0ba50bbf87fa85a779c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7e76e3_fd703289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-10T19:04:41Z",
+      "side": 1,
+      "message": "No build erroe.\nMove down to board level to allow each platform to choose its own power sequencing between legacy shim or native zephyr. adl still use shim way while mtl is switching to native zephyr way. \nThis CL is to prepare mtlrvpp_npcx to switch to native zephyr way.",
+      "parentUuid": "512d5423_ebb30cb1",
+      "revId": "ea67a221c9a26a3852c0ba50bbf87fa85a779c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
