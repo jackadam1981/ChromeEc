@@ -22,6 +22,30 @@
       },
       "revId": "85dff8e0990ada736314402641d4deb58e2f7701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e255eb_55f7dbfc",
+        "filename": "zephyr/projects/corsola/i2c_krabby.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-05-10T07:50:49Z",
+      "side": 1,
+      "message": "When developing the pinctrl driver, we put the default settings in (zephyr)/dts/riscv/it8xxx2.dtsi, but the reviewer\u0027s suggestion is to declare it in each board dts to make it consistent with other pinctrl drivers.",
+      "parentUuid": "fa572c1f_e0fdbeca",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 27
+      },
+      "revId": "85dff8e0990ada736314402641d4deb58e2f7701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
