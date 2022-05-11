@@ -22,6 +22,30 @@
       },
       "revId": "e69979d4a61186c5a83e6ae751e9a2b5312d19bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee53c052_2a70e441",
+        "filename": "zephyr/subsys/ap_pwrseq/include/pwrseq_thread.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T23:49:07Z",
+      "side": 1,
+      "message": "It\u0027s not meant to be a public API, so shouldn\u0027t be in the public `ap_power` directory.",
+      "parentUuid": "88b03493_9d9d07f3",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "e69979d4a61186c5a83e6ae751e9a2b5312d19bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
