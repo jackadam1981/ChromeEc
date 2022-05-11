@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f57c9e_68b7bc62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T00:29:12Z",
+      "side": 1,
+      "message": "`apshutdown` calls `shutdown_and_notify` that emits `SHUTDOWN` and `SHUTDOWN_COMPLETE` events.",
+      "parentUuid": "c442e51d_356acf1f",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2180b4f9_a0157baf",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-10T05:48:06Z",
       "side": 1,
       "message": "maybe make this 0x%x, since this is one bit of a mask.",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6620e22_9587ea58",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_events.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T00:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2180b4f9_a0157baf",
       "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5c62ef2_a93900db",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T00:29:12Z",
+      "side": 1,
+      "message": "\u003e external request needs to take a lock and then control the signals\n\nIn that situation we\u0027d probably want to put the locking in this function so it can\u0027t be accidentally misused. That approach seems unnecessarily complex because that means a forced shutdown effectively stops the main state machine, runs its own thing and replaces the main state then restarts the main one. Seems very sketchy, especially if we can simply ask the state machine to transition (as below).\n\n\u003e Or it sends a request to the power sequence code to do the shutdown, though the idea of this forced shutdown is to act immediately (whatever that means).\n\nI was planning to try to do this to fix the actual problem, since it fits well with the idea I suggested on https://crrev.com/c/3631638 where the thread become event-driven and avoids polling (since polling appears to cause some similar problems to what this change is attempting to address). The existing G3 exit flag could be added to a bitset of events which can wake the thread that would include a shutdown request.",
+      "parentUuid": "5fa291b4_859d7f28",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd852262_9e82c659",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 1
@@ -65,6 +119,24 @@
       "writtenOn": "2022-05-10T05:48:06Z",
       "side": 1,
       "message": "So apart from the init routine, there should be no other caller here except for the state machine handling, so I don\u0027t think there needs to be a check here.",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc9ae6f_34d32caf",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T00:29:12Z",
+      "side": 1,
+      "message": "*should* be is the important part: this enforces that! It\u0027s not hard to accidentally do it wrong (example: `apshutdown` currently does it wrong), and the assertion will tell you it\u0027s wrong without any cost in release builds.",
+      "parentUuid": "dd852262_9e82c659",
       "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +154,24 @@
       "writtenOn": "2022-05-10T05:48:06Z",
       "side": 1,
       "message": "So the power_signal_init() code should I still think run as part of the\nSYS_INIT phase rather than waiting for the thread to start.\nThis was deliberately done early.\n\nAlso, setting the initial state of the CPU was also done early so that other code (like the power button code) could check the state of the CPU before this thread started.\n\nI think it is OK to do this since these should use internal functions to set the internal state of the power sequence code, and these perhaps don\u0027t need to be checking the thread state.\n\npwr_sm_set_state should be an internal function, and shouldn\u0027t be invoked from anywhere outside the power sequence code.",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb717b45_3c39322d",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T00:29:12Z",
+      "side": 1,
+      "message": "I reorganized the init code to be clearer since that wasn\u0027t very obvious to me, and added a `_unchecked` version of `pwr_sm_set_state` that can be used in situations like this where it is known to be safe.",
+      "parentUuid": "3be59056_45ab0d2f",
       "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
