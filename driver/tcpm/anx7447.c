@@ -200,7 +200,7 @@ static int anx7447_flash_is_empty(int port)
 {
 	int r;
 
-	anx7447_reg_read(port, ANX7447_REG_OCM_VERSION, &r);
+	anx7447_reg_read(port, ANX7447_REG_OCM_MAIN_VERSION, &r);
 
 	return ((r == 0) ? 1 : 0);
 }
@@ -847,15 +847,12 @@ static void anx7447_dump_registers(int port)
 }
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
 
-
 static int anx7447_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 *chip_info)
 {
-	int rv = tcpci_get_chip_info(port, live, chip_info);
-	int val;
+	int main_version = 0x0, build_version = 0x0;
 
-	if (rv)
-		return rv;
+	RETURN_ERROR(tcpci_get_chip_info(port, live, chip_info));
 
 	if (chip_info->fw_version_number == -1 || live) {
 		/*
@@ -864,15 +861,16 @@ static int anx7447_get_chip_info(int port, int live,
 		 * slave address 0x58 first to wake up ANX7447.
 		 */
 		tcpc_read(port, ANX7447_REG_OCM_VERSION, &val);
-		rv = anx7447_reg_read(port, ANX7447_REG_OCM_VERSION, &val);
 
-		if (rv)
-			return rv;
-		if (val != 0)
-			chip_info->fw_version_number = val;
+		RETURN_ERROR(anx7447_reg_read(
+			port, ANX7447_REG_OCM_MAIN_VERSION, &main_version));
+		RETURN_ERROR(anx7447_reg_read(
+			port, ANX7447_REG_OCM_BUILD_VERSION, &build_version));
 	}
 
-	return rv;
+	chip_info->fw_version_number = (main_version << 8) | build_version;
+
+	return EC_SUCCESS;
 }
 
 /*
