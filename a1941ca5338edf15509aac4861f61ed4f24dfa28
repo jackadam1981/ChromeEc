@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de8a331_bbac786d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-11T23:34:02Z",
+      "side": 1,
+      "message": "This code will not support existing boards. Maybe adding checks based on board_id can help with supporting both revisions... what do you think?",
+      "revId": "a1941ca5338edf15509aac4861f61ed4f24dfa28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
