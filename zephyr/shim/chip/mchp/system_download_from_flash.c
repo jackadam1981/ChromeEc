@@ -67,8 +67,10 @@ __start_qspi(uint32_t resetVectAddr)
 		;
 }
 
-/* PK SCM */
-uintptr_t __lfw_sram_start = 0x127800;
+#pragma GCC push_options
+#pragma GCC optimize("O0")
+
+uintptr_t __lfw_sram_start = CONFIG_CROS_EC_RAM_BASE + CONFIG_CROS_EC_RAM_SIZE;
 
 typedef void (*START_QSPI_IN_SRAM_FP)(uint32_t);
 
@@ -147,3 +149,5 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 	/* Call into SRAM routine to start QSPI */
 	__start_qspi_in_data_sram(resetVectAddr);
 }
+
+#pragma GCC pop_options
