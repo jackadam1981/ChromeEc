@@ -16,6 +16,24 @@
       "message": "retain it here, applicable to all MTL RVP SKU",
       "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115ac5ec_b639efcf",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-11T01:48:40Z",
+      "side": 0,
+      "message": "zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_METEORLAKE                                                \"${PLATFORM_EC}/power/meteorlake.c\")\nthis is used to include meteorlake.c? Zephyr ap pwrseq doesn\u0027t use meteorlake.c.",
+      "parentUuid": "9dbf85a2_909da3f3",
+      "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
