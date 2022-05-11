@@ -11,10 +11,13 @@ config PLATFORM_EC_WATCHDOG_PERIOD_MS
 	  Set the timeout of the watchdog timer. The watchdog timer reboots
 	  the system if no one reloads the watchdog timer before the timeout.
 
+# MCHP HACK. Remove !WDT_XEC until we implement similar functionality
+# in the MCHP XEC Zephyr WDT driver
+#
 config PLATFORM_EC_WATCHDOG_WARNING_LEADING_TIME_MS
 	int "Leading time of the watchdog warning timer in ms"
 	default 500
-	depends on !WDT_NPCX && !WDT_ITE_IT8XXX2 && !WDT_XEC
+	depends on !WDT_NPCX && !WDT_ITE_IT8XXX2
 	help
 	  Set the leading time of the watchdog warning timer. Chromium EC system
 	  uses an auxiliary timer to handle the system warning event. The
