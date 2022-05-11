@@ -33,14 +33,12 @@ static const struct fan_conf fan_conf_0 = {
 /*
  * TOOD(b/181271666): thermistor placement and calibration
  *
- * Prototype fan spins at about 4200 RPM at 100% PWM, this
- * is specific to board ID 2 and might also apears in later
- * boards as well.
+ * Prototype fan spins at about 5400 RPM at 100% PWM.
  */
 static const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 2200,
-	.rpm_start = 2200,
-	.rpm_max = 4200,
+	.rpm_min = 3400,
+	.rpm_start = 3400,
+	.rpm_max = 5400,
 };
 
 const struct fan_t fans[FAN_CH_COUNT] = {
