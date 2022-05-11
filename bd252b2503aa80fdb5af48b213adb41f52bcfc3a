@@ -106,6 +106,24 @@
       "parentUuid": "9837ec35_60354aa9",
       "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef84320_fc54b4b8",
+        "filename": "zephyr/projects/corsola/pinctrl_kingler.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-05-11T02:11:14Z",
+      "side": 1,
+      "message": "Please notice the mapping between pin-muxing bit in DEVALTn and GPIOs is not one-to-one only. Some of them are one-to-two or one-to-many. If we set the related DEVALT\u0027s bit based on the group and pin of GPIO, we might also change the pin-muxing direction of the other GPIO unexpectedly. It might cause more problems.",
+      "parentUuid": "059bdfd9_1fa748fc",
+      "revId": "bd252b2503aa80fdb5af48b213adb41f52bcfc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
