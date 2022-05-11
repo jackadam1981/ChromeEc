@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff958e46_e90d3a97",
+        "filename": "driver/retimer/anx7483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-11T04:01:33Z",
+      "side": 1,
+      "message": "I think this would be better expressed as a table driven config e.g\nhave a function like:\n\nstruct anx7483_reg_set {\n   uint8_t addr, data;\n};\n\nenum ec_error_list anx7483_set_registers(const struct usb_mux *me, struct anx7483_reg_set *reg, int count) {\n   for (int i \u003d 0; i \u003c count; i++, data++) {\n      RETURN_ERROR(anx7483_write(me, reg-\u003eaddr, reg-\u003edata));\n   }\n   reuturn EC_SUCCESS;\n}\n\nstruct anx7483_reg_set mux_usb_enabled[] \u003d\n{\n{ ANX7483_URX1_PORT_CFG2_REG, ANX7483_CFG2_DEF },\n...\n};\n\n...\n    if (mux_state \u003d\u003d USB_PD_MUX_USB_ENABLED) {\n        return anx7483_set_registers(me, mux_usb_enabled, ARRAYSIZE(mux_usb_enabled));\n    } else ...",
+      "revId": "c193375d8b855d586fd4ca31dfd0c8286ff0ccfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88fdbe6_9dbb6f3b",
+        "filename": "driver/retimer/anx7483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-11T04:01:33Z",
+      "side": 1,
+      "message": "I wonder if the #define naming scheme could be perhaps a little more descriptive, or perhaps described in the header file. I am not sure what CFG0, CFG1, CFG2 refers to.",
+      "revId": "c193375d8b855d586fd4ca31dfd0c8286ff0ccfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd8adea_273f0fad",
+        "filename": "driver/retimer/anx7483.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-11T04:01:33Z",
+      "side": 1,
+      "message": "So these 3 sets of enums are defined but never used?\nI think these are here for documentation, and I can see how they are used to make up some of the values.\nRather than documenting them as enums, it may be better to just have comments\nand show how they fit into the values. A bit of register ascii art maybe.\nI would prefer to have clearer comments and just have the numbers rather than enums and #define BITs etc.",
+      "revId": "c193375d8b855d586fd4ca31dfd0c8286ff0ccfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
