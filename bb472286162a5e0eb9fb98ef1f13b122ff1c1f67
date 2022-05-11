@@ -52,6 +52,24 @@
       "parentUuid": "115ac5ec_b639efcf",
       "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536d7363_766a7301",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-11T20:24:33Z",
+      "side": 0,
+      "message": "This flag is for legacy power sequencing only. If moved to mtlrvp/prj.conf, it will be applied to all MTL RVP SKU. In the case if an SKU use native zephyr AP power sequencing, this flag is enabled too. It will cause build error I think. Am I missing anything?",
+      "parentUuid": "0dbdae70_a7c4c658",
+      "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
