@@ -70,6 +70,24 @@
       "parentUuid": "0dbdae70_a7c4c658",
       "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8f9290_dd744747",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-11T20:30:32Z",
+      "side": 0,
+      "message": "this is config is just moving to another file in this CL and getting removed in CL:3630884\n\nwe can retain it here and remove in CL:3630884",
+      "parentUuid": "536d7363_766a7301",
+      "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
