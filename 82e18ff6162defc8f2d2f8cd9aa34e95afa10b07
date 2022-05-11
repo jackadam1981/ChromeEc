@@ -139,6 +139,30 @@
       },
       "revId": "82e18ff6162defc8f2d2f8cd9aa34e95afa10b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d69109d_d8f243f5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-11T01:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e892f4ca_f8bf0800",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 3
+      },
+      "revId": "82e18ff6162defc8f2d2f8cd9aa34e95afa10b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
