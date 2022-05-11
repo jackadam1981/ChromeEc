@@ -34,6 +34,24 @@
       "parentUuid": "9dbf85a2_909da3f3",
       "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbdae70_a7c4c658",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-11T15:53:13Z",
+      "side": 0,
+      "message": "Its getting added in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3633668/6/zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/prj.conf#11",
+      "parentUuid": "115ac5ec_b639efcf",
+      "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
