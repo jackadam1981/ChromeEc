@@ -46,6 +46,30 @@
       },
       "revId": "44801308b6173567d0764970b2ca8cd2013219f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05827a67_7475df21",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-11T21:40:14Z",
+      "side": 1,
+      "message": "Last week, Jack disabled some random debug messages: https://crrev.com/c/3630477.\n\nSo, if there\u0027s anything else like that, it could be a good candidate. You could disable PD logs, which would get us a fair bit of space, but it would also pretty much pre-abandon debugging a PD problem on volteer ever again.",
+      "parentUuid": "2d54c294_72d622ba",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "44801308b6173567d0764970b2ca8cd2013219f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
