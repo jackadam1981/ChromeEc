@@ -16,6 +16,23 @@
       "message": "Hi Diana and Abe, can you take a look at this CL to add the power_state_change field to Status messages?\n\nThere is an interesting dependence on minor revision in this update. This byte was added in USB PD 3.1 and in the USB PD Rev 3.1 spec at the beginning of section 6.5 it says...\n\n\"Additional bytes that might be added to existing Messages in future revision of this specification Shall be Ignored\". \n \nGoing off that, we could just send the 7-byte status all the time. But, that \"Additional bytes...\" sentence is not in USB PD Rev 3.0. So, it\u0027s possible there are USB PD Rev 3.0 devices which won\u0027t know how to handle a 7-byte status. To account for this, I updated `dpm_get_status_msg` to only send the 7th byte if the partner says it is using revision 3.1. Let me know if you have any questions.",
       "revId": "ad88a4c5741441465b37c590cca01a11e042ff35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c18c7b_384fe2f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-11T22:05:41Z",
+      "side": 1,
+      "message": "INB4 reviews have started. Can you rebase this on top of your other in-flight status CL?\n\nDo something like\n git checkout status-branch-1\n git cherry-pick status-branch-2 # This CL\n git log -n 1 # Look at Change-Id; make sure it\u0027s the same as it appears above\n # If it wasn\u0027t the same\n git commit --amend # Update the Change-Id\n repo upload . --cbr",
+      "revId": "ad88a4c5741441465b37c590cca01a11e042ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
