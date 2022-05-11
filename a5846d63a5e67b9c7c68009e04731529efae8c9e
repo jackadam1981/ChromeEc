@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7c6e3d_38ee6158",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-11T18:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3cd7a74_71fc0214",
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ba31002_dbae17f6",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b30d2dd_df78d0fd",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-11T18:17:51Z",
+      "side": 1,
+      "message": "That doesn\u0027t build. Even without checking the temp sensor count, temp_sensor_read won\u0027t be defined unless CONFIG_TEMP_SENSOR is. When I changed this to an IS_ENABLED guard, it lead to build issues with panqueque, hayato, gingerbread, marzipan, mrbland and waddledoo.",
+      "parentUuid": "8ba31002_dbae17f6",
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "316a21d5_a89631bb",
         "filename": "common/usb_common.c",
         "patchSetId": 3
@@ -48,6 +84,30 @@
       "writtenOn": "2022-05-09T20:35:11Z",
       "side": 1,
       "message": "If GCC/Clang don\u0027t have a problem with this, then I guess I don\u0027t, but we don\u0027t ordinarily use non-ASCII in our source code.\n\nAlso, if the return value and the logic of the function are in terms of the enum, then you don\u0027t really need to mention the numerical values and fields here.",
+      "range": {
+        "startLine": 1136,
+        "startChar": 5,
+        "endLine": 1136,
+        "endChar": 6
+      },
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6351da30_663b7f4d",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-11T18:17:51Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "316a21d5_a89631bb",
       "range": {
         "startLine": 1136,
         "startChar": 5,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "937d168d_1d62f198",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-11T18:17:51Z",
+      "side": 1,
+      "message": "Ack. No longer needed without iterating over temp sensors.",
+      "parentUuid": "2c9fd067_91d0fc15",
+      "range": {
+        "startLine": 1153,
+        "startChar": 24,
+        "endLine": 1153,
+        "endChar": 33
+      },
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cb01b28_9f2c6df8",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-05-09T20:35:11Z",
       "side": 1,
       "message": "You can use `MAX` from util.h.",
+      "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fded22_0deb91da",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-11T18:17:51Z",
+      "side": 1,
+      "message": "Ack. No longer needed without iterating over temp sensors.",
+      "parentUuid": "5cb01b28_9f2c6df8",
       "revId": "a5846d63a5e67b9c7c68009e04731529efae8c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

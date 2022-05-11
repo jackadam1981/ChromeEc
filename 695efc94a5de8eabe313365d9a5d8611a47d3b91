@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd1af032_f70b1b22",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4310,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-11T18:17:51Z",
+      "side": 1,
+      "message": "Sorry for the change of direction here. I have updated the CL to only consider one temp sensor. It will use the temp sensor at index PD_TEMP_SENSOR, which is 0 by default.\n\nRegarding the temperature status, it will be set to \"Not Supported\" if there is a temp sensor read issue and \"Normal\" otherwise.",
+      "parentUuid": "42f3c1e3_5a9fd62c",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0fe69a1_e6510004",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
