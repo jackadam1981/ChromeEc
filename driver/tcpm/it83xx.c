@@ -29,10 +29,14 @@
 #endif
 #endif
 
+#ifdef CONFIG_CHARGER_RUNTIME_CONFIG
+/* Avoid COFNIG conflicts when enable RAA489000 and SM5803 at the same time */
+#else
 #ifdef CONFIG_USB_PD_TCPMV2
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
 	defined(CONFIG_USB_PD_DISCHARGE_TCPC)
 #error "Unsupported config options of IT83xx PD driver"
+#endif
 #endif
 #endif
 

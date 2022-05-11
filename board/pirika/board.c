@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "cbi_ssfc.h"
 #include "cbi_fw_config.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
@@ -14,9 +15,12 @@
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/bc12/pi3usb9201.h"
+#include "driver/charger/sm5803.h"
 #include "driver/charger/isl923x.h"
 #include "driver/retimer/tusb544.h"
 #include "driver/temp_sensor/thermistor.h"
+#include "driver/tcpm/anx7447.h"
+#include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/usb_mux/it5205.h"
 #include "gpio.h"
@@ -239,7 +243,7 @@ int pd_snk_is_vbus_provided(int port)
 }
 
 /* Charger chips */
-const struct charger_config_t chg_chips[] = {
+struct charger_config_t chg_chips[] = {
 	[CHARGER_PRIMARY] = {
 		.i2c_port = I2C_PORT_USB_C0,
 		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
@@ -253,7 +257,7 @@ const struct charger_config_t chg_chips[] = {
 };
 
 /* TCPCs */
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -377,7 +381,7 @@ static int board_tusb544_set(const struct usb_mux *me,
 	return rv;
 }
 
-const struct usb_mux usbc1_retimer = {
+struct usb_mux usbc1_retimer = {
 	.usb_port = 1,
 	.i2c_port = I2C_PORT_SUB_USB_C1,
 	.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS0,
@@ -386,7 +390,7 @@ const struct usb_mux usbc1_retimer = {
 };
 
 /* USB Muxes */
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_C0,
@@ -585,6 +589,19 @@ int board_set_active_charge_port(int port)
 
 	return EC_SUCCESS;
 
+}
+
+/* Vconn control for integrated ITE TCPC */
+void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
+{
+	/* Vconn control is only for port 0 */
+	if (port)
+		return;
+
+	if (cc_pin == USBPD_CC_PIN_1)
+		gpio_set_level(GPIO_EN_USB_C0_CC1_VCONN, !!enabled);
+	else
+		gpio_set_level(GPIO_EN_USB_C0_CC2_VCONN, !!enabled);
 }
 
 __override void ocpc_get_pid_constants(int *kp, int *kp_div,
