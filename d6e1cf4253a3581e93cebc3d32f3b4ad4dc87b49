@@ -39,6 +39,24 @@
       "message": "Is there any reason for this function to exist now, since it only calls the board function?",
       "revId": "d6e1cf4253a3581e93cebc3d32f3b4ad4dc87b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e58c27_d782de85",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-11T01:39:08Z",
+      "side": 1,
+      "message": "I think we can call the board function directly. At this moment I don\u0027t see we are going to add anything else to this one.",
+      "parentUuid": "9b09e451_2e5318c9",
+      "revId": "d6e1cf4253a3581e93cebc3d32f3b4ad4dc87b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
