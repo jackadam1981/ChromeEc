@@ -5,6 +5,7 @@
 # Zephyr Kernel Configuration
 CONFIG_SOC_SERIES_RISCV32_IT8XXX2=y
 CONFIG_SOC_IT8XXX2=y
+CONFIG_RISCV_MUL_ISA=n
 
 # Platform Configuration
 CONFIG_BOARD_IT8XXX2=y
