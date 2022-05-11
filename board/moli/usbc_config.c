@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include "cbi.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
@@ -241,6 +242,9 @@ static void board_tcpc_init(void)
 		enable_ioex(IOEX_C0_NCT38XX);
 		enable_ioex(IOEX_C1_NCT38XX);
 	}
+
+	if (get_board_id() == 0)
+		ioex_set_flags(IOEX_USB_C0_FRS_EN, GPIO_INPUT);
 
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
