@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b626b6e_b2db2262",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-05-11T05:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9dc0c42_58998a2a",
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a18295db_ff1ccae0",
@@ -64,6 +82,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b127e0ea_20300cae",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-05-11T05:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27706323_701a628c",
+      "range": {
+        "startLine": 860,
+        "startChar": 6,
+        "endLine": 860,
+        "endChar": 15
+      },
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d6b67e_25215a67",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-05-11T05:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18295db_ff1ccae0",
+      "range": {
+        "startLine": 860,
+        "startChar": 38,
+        "endLine": 860,
+        "endChar": 39
+      },
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dff0bd4_7d19d216",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c1cfe0_f1ae9691",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-05-11T05:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dff0bd4_7d19d216",
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4a170c_c6fd3777",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-05-10T10:50:27Z",
       "side": 1,
       "message": "If reg_read is successful then why do we need to check it explicitly?",
+      "range": {
+        "startLine": 871,
+        "startChar": 7,
+        "endLine": 871,
+        "endChar": 15
+      },
+      "revId": "00f0bc254bf4f53f705d231b31bd8e83209edc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bbcd7d_29acfce5",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-05-11T05:41:27Z",
+      "side": 1,
+      "message": "If we don\u0027t add a judgement here, in other project which don\u0027t have PD FW will read nothing from ANX7447 slave address 0x7E and show 0x0.\nBut we expect to see the PD FW version show UNSUPPORTED when there\u0027s no PD FW in original code.\nSo check the value to judge if we have to overwrite the fw_ver value from -1.",
+      "parentUuid": "ce4a170c_c6fd3777",
       "range": {
         "startLine": 871,
         "startChar": 7,
