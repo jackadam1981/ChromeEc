@@ -560,6 +560,29 @@ static int anx7447_mux_get(int port, mux_state_t *mux_state)
 }
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
+static int anx7447_get_chip_info(int port, int live,
+				struct ec_response_pd_chip_info_v1 **chip_info)
+{
+		int rv = tcpci_get_chip_info(port, live, chip_info);
+		int val;
+
+		if (rv)
+			return rv;
+
+		if ((*chip_info)->fw_version_number == 0 ||
+			(*chip_info)->fw_version_number == -1 || live) {
+			tcpc_read(port, ANX7447_REG_OCM_VERSION, &val);
+			rv = anx7447_reg_read(port, ANX7447_REG_OCM_VERSION, &val);
+
+			if (rv)
+				return rv;
+			if (val != 0)
+				(*chip_info)->fw_version_number = val;
+		}
+
+		return rv;
+}
+
 /* ANX7447 is a TCPCI compatible port controller */
 const struct tcpm_drv anx7447_tcpm_drv = {
 	.init			= &anx7447_init,
@@ -583,7 +606,7 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
 #endif
-	.get_chip_info		= &tcpci_get_chip_info,
+	.get_chip_info		= &anx7447_get_chip_info,
 #ifdef CONFIG_USBC_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
