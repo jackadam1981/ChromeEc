@@ -16,6 +16,24 @@
       "message": "Can deleting pinmux.c get moved into a separate CL?  It seems unrelated to updating the cros-shi driver.",
       "revId": "28c0e2d4e0711b35571cca79c7b1c05fbb3edbb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d6b23d_685234bb",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-05-11T02:10:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "f3c0e257_ec82f163",
+      "revId": "28c0e2d4e0711b35571cca79c7b1c05fbb3edbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
