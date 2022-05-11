@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c95cbf_66eb4549",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T03:07:27Z",
+      "side": 1,
+      "message": "These seem unused?",
+      "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a0c977_c3b5aff9",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T03:07:27Z",
+      "side": 1,
+      "message": "Can these be inlined? This just seems harder to understand since it adds a layer of indirection.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9814f354_3af83611",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-11T03:07:27Z",
+      "side": 1,
+      "message": "This looks like a copy of the ADL-N one. Can they be shared?",
+      "revId": "bb472286162a5e0eb9fb98ef1f13b122ff1c1f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
