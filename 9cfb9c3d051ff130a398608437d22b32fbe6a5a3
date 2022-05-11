@@ -93,6 +93,30 @@
       },
       "revId": "9cfb9c3d051ff130a398608437d22b32fbe6a5a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b22845_b1272d78",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-11T16:11:11Z",
+      "side": 1,
+      "message": "AW20198 is powered by LED_VCC, which is powered by PP5000_LED, which is turned off when either PP5000_Z1 or PP3300_Z1 goes down. We probably need to check the LED works after warm reboot. R2155 is labeled DNS. So, you may get a different result on a newer board.",
+      "parentUuid": "30f542fc_354a452f",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "9cfb9c3d051ff130a398608437d22b32fbe6a5a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

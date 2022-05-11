@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f227aba2_bc05825d",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-11T16:11:11Z",
+      "side": 1,
+      "message": "nit: 0x18 (to be consistent with CPRINTS below and your CL description).",
+      "range": {
+        "startLine": 204,
+        "startChar": 17,
+        "endLine": 204,
+        "endChar": 19
+      },
+      "revId": "91371b50713464296f43217efaf023c6f1d4154d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
