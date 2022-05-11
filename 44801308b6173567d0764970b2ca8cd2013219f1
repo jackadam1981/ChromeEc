@@ -70,6 +70,30 @@
       },
       "revId": "44801308b6173567d0764970b2ca8cd2013219f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503c5e84_c4bbf929",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-11T22:51:15Z",
+      "side": 1,
+      "message": "You can save about 100 bytes by changing the PD debug level from 2 to 1:\n\n```\n#define CONFIG_USB_PD_DEBUG_LEVEL 1\n```\n\nThat retains the PD logging of state transitions, but doesn\u0027t print out the raw PD packets.  However, it hardly seems worth the effort.\n\nSetting CONFIG_USB_PD_DEBUG_LEVEL to 0, will save considerable space. We won\u0027t be completely blind for debugging PD, as the PE state transitions are still logged - but without the state names.",
+      "parentUuid": "05827a67_7475df21",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "44801308b6173567d0764970b2ca8cd2013219f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
