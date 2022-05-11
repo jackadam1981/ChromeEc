@@ -16,6 +16,23 @@
       "message": "verified on Kingler board",
       "revId": "ea321dbb70016b6629c0c90aae51fd41663da457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff8e63e3_e0976654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-05-11T11:18:55Z",
+      "side": 1,
+      "message": "We want to avoid code duplication, so can you drop the steelix files which are identical to kingler? ",
+      "revId": "ea321dbb70016b6629c0c90aae51fd41663da457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
