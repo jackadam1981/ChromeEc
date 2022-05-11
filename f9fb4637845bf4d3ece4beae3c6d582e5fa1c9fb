@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d7957af_b522402f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-11T05:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bdff28d_d1115e67",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 66
+      },
+      "revId": "f9fb4637845bf4d3ece4beae3c6d582e5fa1c9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96bf094f_330d205c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a0a652_d37f8601",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-11T05:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96bf094f_330d205c",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "f9fb4637845bf4d3ece4beae3c6d582e5fa1c9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13b83c2e_77145087",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-10T22:15:02Z",
       "side": 1,
       "message": "Prefer this didn\u0027t use a magic number.  This register isn\u0027t documented, so I don\u0027t know if this is an unlock value, or setting bits 0,2,4,6.",
+      "range": {
+        "startLine": 628,
+        "startChar": 24,
+        "endLine": 628,
+        "endChar": 28
+      },
+      "revId": "f9fb4637845bf4d3ece4beae3c6d582e5fa1c9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d30176_8aa12ede",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-11T05:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13b83c2e_77145087",
       "range": {
         "startLine": 628,
         "startChar": 24,
