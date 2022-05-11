@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b03493_9d9d07f3",
+        "filename": "zephyr/subsys/ap_pwrseq/include/pwrseq_thread.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-11T17:51:29Z",
+      "side": 1,
+      "message": "Why not declaring this in `zephyr/include/ap_power/ap_pwrseq.h` instead? `ap_pwrseq_task_start` is declared there.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "e69979d4a61186c5a83e6ae751e9a2b5312d19bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
