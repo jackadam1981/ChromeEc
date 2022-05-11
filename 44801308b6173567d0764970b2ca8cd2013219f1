@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b295778b_602fb96f",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-11T15:34:20Z",
+      "side": 1,
+      "message": "According to https://source.corp.google.com/chromeos_public/src/platform/ec/docs/reducing_ec_image_size.md;l\u003d1?q\u003dreducing%20ec%20image%20size\u0026sq\u003d(p:chromeos_internal%20OR%20p:chromeos_public)\n\nCommands enabled by CHRGEN and KEYBOARD are used by FAFT.  Volteer devices are still in the lab.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "44801308b6173567d0764970b2ca8cd2013219f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
