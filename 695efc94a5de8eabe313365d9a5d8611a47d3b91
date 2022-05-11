@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42f3c1e3_5a9fd62c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4310,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-11T05:02:15Z",
+      "side": 1,
+      "message": "I\u0027d think a simplified view of one selected temperature sensor would be fine.  The spec doesn\u0027t have any guidance on when a port can declare Not Supported in its temperature status, or otherwise I\u0027d lean towards that option.  It isn\u0027t even mentioned as a possible value in 6.5.2.1.5 Temperature Status Field. \n\nThe spec also has relatively little to say on the meaning of the temperature fields beyond the fact that over temperature should result in the OTP flag being set.  The internal temperature field just says: \"The Internal Temp field reports the instantaneous temperature of a portion of the Source or Sink.\"\n\nIf we have no intention of hard resetting a PD connection because of a high temperature on the board or changing our source caps due to temperature, then it logically follows we should only call out the presented temperature normal.",
+      "parentUuid": "e6e55284_d3e65eb4",
+      "revId": "695efc94a5de8eabe313365d9a5d8611a47d3b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0fe69a1_e6510004",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
