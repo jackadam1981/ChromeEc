@@ -33,6 +33,24 @@
       "message": "Is this redundant with the common hard reset handler, which will be called in either case?",
       "revId": "9a5b80cd7b40189250ed750d1376e77305f1bb5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7affa3b_e35b143c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-11T15:51:55Z",
+      "side": 1,
+      "message": "At present yes this could just be replaced with the hard_reset handler. However, I wanted to semantically separate initialization versus doing a hard reset in case. \n\nBut I can just add a comment indicating that we\u0027re calling the hard reset handler to set power and data roles specifically.\n\nMy concern was if we added more to the hard reset handler that wouldn\u0027t be a part of this initialization code.\n\nResolving and requesting another quick review.",
+      "parentUuid": "4266a9c6_e3c55f2c",
+      "revId": "9a5b80cd7b40189250ed750d1376e77305f1bb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
