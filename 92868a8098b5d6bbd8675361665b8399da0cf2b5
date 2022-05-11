@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4642395c_552fe23d",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-11T21:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eb03656_f523ec37",
+      "range": {
+        "startLine": 204,
+        "startChar": 6,
+        "endLine": 204,
+        "endChar": 37
+      },
+      "revId": "92868a8098b5d6bbd8675361665b8399da0cf2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa5f1e2a_a2f39434",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-11T20:55:58Z",
       "side": 1,
       "message": "Nit - should this be ASan?\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/docs/asan.md",
+      "range": {
+        "startLine": 216,
+        "startChar": 37,
+        "endLine": 216,
+        "endChar": 41
+      },
+      "revId": "92868a8098b5d6bbd8675361665b8399da0cf2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "025e5834_42f42a7d",
+        "filename": "firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-11T21:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa5f1e2a_a2f39434",
       "range": {
         "startLine": 216,
         "startChar": 37,
