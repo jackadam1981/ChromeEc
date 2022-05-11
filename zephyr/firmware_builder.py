@@ -11,6 +11,7 @@ This is the entry point for the custom firmware builder workflow recipe.
 import argparse
 import multiprocessing
 import pathlib
+import re
 import subprocess
 import sys
 import zmake.project
@@ -165,10 +166,7 @@ def bundle_firmware(opts):
 
 def test(opts):
     """Runs all of the unit tests for Zephyr firmware"""
-    # TODO(b/169178847): Add appropriate metric information
     metrics = firmware_pb2.FwTestMetricList()
-    with open(opts.metrics, 'w') as f:
-        f.write(json_format.MessageToJson(metrics))
 
     zephyr_dir = pathlib.Path(__file__).parent.resolve()
 
@@ -201,7 +199,16 @@ def test(opts):
             '-a',
             build_dir / 'all_builds.info',
         ]
-        subprocess.run(cmd, cwd=pathlib.Path(__file__).parent, check=True)
+        output = subprocess.run(
+            cmd, cwd=pathlib.Path(__file__).parent, check=True,
+            stdout=subprocess.PIPE, universal_newlines=True).stdout
+        _extract_lcov_summary('EC_ZEPHYR_MERGED', metrics, output)
+
+        output = subprocess.run(
+            ['/usr/bin/lcov', '--summary', build_dir / 'all_tests.info'],
+            cwd=pathlib.Path(__file__).parent, check=True,
+            stdout=subprocess.PIPE, universal_newlines=True).stdout
+        _extract_lcov_summary('EC_ZEPHYR_TESTS', metrics, output)
         # Make filenames relative to platform/ec
         cmd = ['sed', '-e', 's|^SF:.*/platform/ec/|SF:|']
         with open(build_dir / 'fullpaths.info') as infile, open(
@@ -215,8 +222,20 @@ def test(opts):
                 check=True,
             )
 
+    with open(opts.metrics, 'w') as f:
+        f.write(json_format.MessageToJson(metrics))
     return 0
 
+
+COVERAGE_RE = re.compile(r'lines\.*: *([0-9\.]+)% \(([0-9]+) of ([0-9]+) lines\)')
+def _extract_lcov_summary(name, metrics, output):
+    m = COVERAGE_RE.search(output)
+    if m:
+        metric = metrics.value.add()
+        metric.name = name
+        metric.coverage_percent = float(m.group(1))
+        metric.covered_lines = int(m.group(2))
+        metric.total_lines = int(m.group(3))
 
 def main(args):
     """Builds and tests all of the Zephyr targets and reports build metrics"""
@@ -260,7 +279,7 @@ def parse_args(args):
         required=False,
         help=(
             'Full pathname for the directory in which to bundle build '
-            'artifacts.',
+            'artifacts.'
         )
     )
 
