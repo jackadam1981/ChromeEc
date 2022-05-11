@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53de55b0_fb70ef75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-11T02:02:08Z",
+      "side": 1,
+      "message": "S0ix sleep event should trigger thread to run too. check ap_power_chipset_handle_host_sleep_event().",
+      "revId": "bca8de0c98d3a2a929da3ad07228a4154f25d367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a6663ac_f4689501",
