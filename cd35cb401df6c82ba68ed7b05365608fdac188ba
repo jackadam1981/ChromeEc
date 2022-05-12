@@ -33,6 +33,24 @@
       "message": "This is a build constant that will vary by board. That feels like it should be a config item. I\u0027d prefer not to have stuff like this that people need to set in board.h that they\u0027d have no way of knowing about without looking through this file.",
       "revId": "cd35cb401df6c82ba68ed7b05365608fdac188ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d68585ee_bcd2578f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-12T00:09:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26b64203_e02cb0e7",
+      "revId": "cd35cb401df6c82ba68ed7b05365608fdac188ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
