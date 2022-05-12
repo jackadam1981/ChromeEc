@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bfd6f41_3bebecff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-05-12T19:59:42Z",
+      "side": 1,
+      "message": "Trying the CQ, but I don\u0027t think this will be enough. I think you\u0027ll need to add both directions of the cq-depend. Meaning these targets need to depend on this change. Otherwise chromium:363251 will just try to merge before this one and they actually need to happen at the same time.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 63
+      },
+      "revId": "d81158d85d5b26171b05a7e9c646f0954a54c26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
