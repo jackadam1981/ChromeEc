@@ -33,6 +33,24 @@
       "message": "sorry but I have no idea why Nimrod \u0026 I where added as a reviewers on this.\nWe are not really familiar with the Google FW to the point that we can review this code change.\n",
       "revId": "6c4c46028d775c2c007ecd35cc28753c47014618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c2f4b8_b669462d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-12T16:12:29Z",
+      "side": 1,
+      "message": "So I assume Google made all the changes to the Nuvoton TCPC code then...I\u0027ll add some Google guys also",
+      "parentUuid": "b0fb4f56_58800bd3",
+      "revId": "6c4c46028d775c2c007ecd35cc28753c47014618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
