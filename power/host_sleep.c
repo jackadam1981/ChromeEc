@@ -69,6 +69,21 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 		break;
 	}
 
+	if (args->version >= 1) {
+		switch (p->stage) {
+		case HOST_SUSPEND_RESUME_STAGE_PREPARE:
+			CPRINTS("AP prepare resume");
+			break;
+
+		case HOST_SUSPEND_RESUME_STAGE_COMPLETE:
+			CPRINTS("AP complete suspend");
+			break;
+
+		default:
+			break;
+		}
+	}
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT,

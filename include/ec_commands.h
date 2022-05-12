@@ -4799,6 +4799,20 @@ enum host_sleep_event {
 	HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND = 5,
 };
 
+/*
+ * See include/linux.pm.h for details.
+ * device PM callbacks
+ * Currently just prepare (suspend) and complete (resume), so we can
+ * log in the EC when AP starts and completes suspend/resume.
+ */
+enum host_suspend_resume_stage {
+	HOST_SUSPEND_RESUME_STAGE_NONE = 0,
+	/* Prepare to suspend. */
+	HOST_SUSPEND_RESUME_STAGE_PREPARE = 1,
+	/* Completed resume. */
+	HOST_SUSPEND_RESUME_STAGE_COMPLETE = 2,
+};
+
 struct ec_params_host_sleep_event {
 	uint8_t sleep_event;
 } __ec_align1;
@@ -4816,8 +4830,8 @@ struct ec_params_host_sleep_event_v1 {
 	/* The type of sleep being entered or exited. */
 	uint8_t sleep_event;
 
-	/* Padding */
-	uint8_t reserved;
+	/* Suspend/Resume stage. */
+	uint8_t stage;
 	union {
 		/* Parameters that apply for suspend messages. */
 		struct {

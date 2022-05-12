@@ -739,7 +739,7 @@ int cmd_hostsleepstate(int argc, char *argv[])
 		p.sleep_event = HOST_SLEEP_EVENT_S0IX_SUSPEND;
 		if (max_version >= 1) {
 			p1.sleep_event = p.sleep_event;
-			p1.reserved = 0;
+			p1.stage = HOST_SUSPEND_RESUME_STAGE_NONE;
 			p1.suspend_params.sleep_timeout_ms =
 				EC_HOST_SLEEP_TIMEOUT_DEFAULT;
 
