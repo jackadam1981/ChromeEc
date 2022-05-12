@@ -264,7 +264,7 @@ static void send_mkbp_event(uint32_t event)
 
 static void tmr_cap_start(enum cap_edge edge, int timeout)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 
 	/* Select edge to trigger capture on */
 	UPDATE_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TAEDG,
@@ -300,7 +300,7 @@ static void tmr_cap_start(enum cap_edge edge, int timeout)
 
 static void tmr_cap_stop(void)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 
 	CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
 	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C1CSEL_FIELD, 0);
@@ -308,14 +308,14 @@ static void tmr_cap_stop(void)
 
 static int tmr_cap_get(void)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 
 	return (cap_charge + cap_delay - NPCX_TCRA(mdl));
 }
 
 static void tmr_oneshot_start(int timeout)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 
 	NPCX_TCNT1(mdl) = timeout;
 	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C1CSEL_FIELD, 1);
@@ -323,7 +323,7 @@ static void tmr_oneshot_start(int timeout)
 
 static void tmr2_start(int timeout)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 
 	NPCX_TCNT2(mdl) = timeout;
 	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C2CSEL_FIELD, 1);
@@ -331,7 +331,7 @@ static void tmr2_start(int timeout)
 
 static void tmr2_stop(void)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 
 	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C2CSEL_FIELD, 0);
 }
@@ -789,7 +789,7 @@ static void cec_event_tx(void)
 
 static void cec_isr(void)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 	uint8_t events;
 
 	/* Retrieve events NPCX_TECTRL_TAXND */
@@ -817,7 +817,7 @@ static void cec_isr(void)
 	/* Clear handled events */
 	SET_FIELD(NPCX_TECLR(mdl), FIELD(0, 4), events);
 }
-DECLARE_IRQ(NPCX_IRQ_MFT_1, cec_isr, 4);
+DECLARE_IRQ(NPCX_IRQ_MFT_2, cec_isr, 4);
 
 static int cec_send(const uint8_t *msg, uint8_t len)
 {
@@ -859,7 +859,7 @@ DECLARE_HOST_COMMAND(EC_CMD_CEC_WRITE_MSG, hc_cec_write, EC_VER_MASK(0));
 
 static int cec_set_enable(uint8_t enable)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 
 	if (enable != 0 && enable != 1)
 		return EC_RES_INVALID_PARAM;
@@ -873,9 +873,8 @@ static int cec_set_enable(uint8_t enable)
 		return EC_RES_SUCCESS;
 
 	if (enable) {
-		/* Configure GPIO40/TA1 as capture timer input (TA1) */
-		CLEAR_BIT(NPCX_DEVALT(0xC), NPCX_DEVALTC_TA1_SL2);
-		SET_BIT(NPCX_DEVALT(3), NPCX_DEVALT3_TA1_SL1);
+		/* Configure GPIOA7/ TB2 as capture timer input (TB2) */
+		SET_BIT(NPCX_DEVALT(0xC), NPCX_DEVALT3_TB2_SL1);
 
 		enter_state(CEC_STATE_IDLE);
 
@@ -890,7 +889,7 @@ static int cec_set_enable(uint8_t enable)
 		SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TDIEN);
 
 		/* Enable multifunction timer interrupt */
-		task_enable_irq(NPCX_IRQ_MFT_1);
+		task_enable_irq(NPCX_IRQ_MFT_2);
 
 		CPRINTF("CEC enabled\n");
 	} else {
@@ -901,11 +900,10 @@ static int cec_set_enable(uint8_t enable)
 		tmr2_stop();
 		tmr_cap_stop();
 
-		task_disable_irq(NPCX_IRQ_MFT_1);
+		task_disable_irq(NPCX_IRQ_MFT_2);
 
-		/* Configure GPIO40/TA1 back to GPIO */
-		CLEAR_BIT(NPCX_DEVALT(3), NPCX_DEVALT3_TA1_SL1);
-		SET_BIT(NPCX_DEVALT(0xC), NPCX_DEVALTC_TA1_SL2);
+		/* Configure GPIOA7/ TB2 back to GPIO */
+		CLEAR_BIT(NPCX_DEVALT(0xC), NPCX_DEVALT3_TB2_SL1);
 
 		enter_state(CEC_STATE_DISABLED);
 
@@ -993,25 +991,25 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_CEC_MESSAGE, cec_get_next_msg);
 
 static void cec_init(void)
 {
-	int mdl = NPCX_MFT_MODULE_1;
+	int mdl = NPCX_MFT_MODULE_2;
 
 	/* APB1 is the clock we base the timers on */
 	apb1_freq_div_10k = clock_get_apb1_freq()/10000;
 
 	/* Ensure Multi-Function timer is powered up. */
-	CLEAR_BIT(NPCX_PWDWN_CTL(mdl), NPCX_PWDWN_CTL1_MFT1_PD);
+	CLEAR_BIT(NPCX_PWDWN_CTL(mdl), NPCX_PWDWN_CTL1_MFT2_PD);
 
 	/* Mode 2 - Dual-input capture */
 	SET_FIELD(NPCX_TMCTRL(mdl), NPCX_TMCTRL_MDSEL_FIELD, NPCX_MFT_MDSEL_2);
 
 	/* Enable capture TCNT1 into TCRA and preset TCNT1. */
-	SET_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TAEN);
+	SET_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TBEN);
 
 	/* If RO doesn't set it, RW needs to set it explicitly. */
-	gpio_set_level(CEC_GPIO_PULL_UP, 1);
+	gpio_set_level(CEC2_GPIO_PULL_UP, 1);
 
 	/* Ensure the CEC bus is not pulled low by default on startup. */
-	gpio_set_level(CEC_GPIO_OUT, 1);
+	gpio_set_level(CEC2_GPIO_OUT, 1);
 
 	CPRINTS("CEC initialized");
 }
