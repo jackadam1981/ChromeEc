@@ -34,6 +34,24 @@
       "parentUuid": "64948472_0bf3dabb",
       "revId": "65199a1ea6be7df87b6e7891c8638a661c7eaba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118642a0_a9729bc7",
+        "filename": "zephyr/projects/intelrvp/zephyr_ap_pwrseq.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-12T06:54:20Z",
+      "side": 1,
+      "message": "So I think adding it in CL:3630884 is the best approach.",
+      "parentUuid": "2dc76c28_8f911fe6",
+      "revId": "65199a1ea6be7df87b6e7891c8638a661c7eaba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
