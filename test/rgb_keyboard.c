@@ -204,8 +204,13 @@ static int test_rgbkbd_startup(void)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (30ca86 ectool: Add USB interface)
 int cc_rgbk(int argc, char **argv);
 extern enum rgbkbd_demo demo;
+=======
+int cc_rgb(int argc, char **argv);
+extern enum ec_rgbkbd_demo demo;
+>>>>>>> CHANGE (b80f85 RGBKBD: Add demo sub-command to EC_CMD_RGBKBD)
 
 static int test_rgbkbd_console_command(void)
 {
