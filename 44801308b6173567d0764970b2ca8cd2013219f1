@@ -118,6 +118,30 @@
       },
       "revId": "44801308b6173567d0764970b2ca8cd2013219f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40406ad6_e73598e8",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-12T23:45:06Z",
+      "side": 1,
+      "message": "level\u003d1 saves 120 bytes. i\u0027ll take it.\nbmbm@ says FAFT needs state names, so this should still be OK.",
+      "parentUuid": "d8c0bf3a_214468a1",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "44801308b6173567d0764970b2ca8cd2013219f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
