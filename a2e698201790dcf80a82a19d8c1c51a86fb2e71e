@@ -39,6 +39,30 @@
       },
       "revId": "a2e698201790dcf80a82a19d8c1c51a86fb2e71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a849f021_f6229af1",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-12T17:26:32Z",
+      "side": 1,
+      "message": "Do you mind brushing up the English a little bit? (Sorry, I meant \u0027grammar\u0027.)",
+      "parentUuid": "72a483cd_4865354f",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 56
+      },
+      "revId": "a2e698201790dcf80a82a19d8c1c51a86fb2e71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
