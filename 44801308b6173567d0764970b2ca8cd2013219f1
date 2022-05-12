@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc65aabf_e01131ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-12T23:52:43Z",
+      "side": 1,
+      "message": "my original repo was in a very strange state.\n./update_chroot would fail due to missing zstd\nsupport... and somehow builds were larger.\n\ni ended up abandoning that repo since repair did not\nappear to be worth the effort.\n\nvolteer has about 312 bytes of flash space available on ToT.",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "44801308b6173567d0764970b2ca8cd2013219f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b295778b_602fb96f",
