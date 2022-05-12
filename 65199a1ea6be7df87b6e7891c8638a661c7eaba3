@@ -16,6 +16,24 @@
       "message": "So this file isn\u0027t referenced anywhere?\nMy preference would be to split this into another CL, so that this\nCL only contains the moving of the legacy config to a separate file.\nAnd this file can be added with the change to use it.",
       "revId": "65199a1ea6be7df87b6e7891c8638a661c7eaba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc76c28_8f911fe6",
+        "filename": "zephyr/projects/intelrvp/zephyr_ap_pwrseq.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-12T06:43:29Z",
+      "side": 1,
+      "message": "right, it\u0027s not referenced in this CL. So add this file in CL:3630884 or create a new CL while only includes this zephyr_ap_pwrseq.conf?",
+      "parentUuid": "64948472_0bf3dabb",
+      "revId": "65199a1ea6be7df87b6e7891c8638a661c7eaba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
