@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "333ad12e_d8b35ab9",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-12T17:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbd69022_d4092828",
+      "revId": "9da7802c7bb68356e285e839cc4fa7eb06c8ecae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbbd3dcf_29a3c1e8",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-21T18:33:28Z",
       "side": 1,
       "message": "explore these regs, \n#define CCGXXF_REG_GPIO_CONTROL(port)   ((port) + 0x80)\n#define CCGXXF_REG_GPIO_STATUS(port)    ((port) + 0x84)\n\ni think it should be 0x84 and so on",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "9da7802c7bb68356e285e839cc4fa7eb06c8ecae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "957c5cc6_6bb4f55f",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/ioex.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-12T17:01:16Z",
+      "side": 1,
+      "message": "my understanding here is it should be 0 because the driver is adding the offset itself",
+      "parentUuid": "bbbd3dcf_29a3c1e8",
       "range": {
         "startLine": 18,
         "startChar": 11,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff883651_d4cc0096",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/ioex.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-12T17:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0072dca6_f771ff9a",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "9da7802c7bb68356e285e839cc4fa7eb06c8ecae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c82cd8c2_d56e877d",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ccc4371_a9dda28b",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-12T17:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c82cd8c2_d56e877d",
+      "revId": "9da7802c7bb68356e285e839cc4fa7eb06c8ecae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d88fb457_6d183592",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-04-21T18:33:28Z",
       "side": 1,
       "message": "try remove these reference in NPCX TCPC CL",
+      "range": {
+        "startLine": 132,
+        "startChar": 13,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "9da7802c7bb68356e285e839cc4fa7eb06c8ecae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d37b8ca_83484e2a",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-12T17:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d88fb457_6d183592",
       "range": {
         "startLine": 132,
         "startChar": 13,
