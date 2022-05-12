@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652efd82_1dfd4bdd",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-12T22:42:00Z",
+      "side": 1,
+      "message": "When we\u0027re making this kind of transition, do we usually end up with two copies of the same constants? I\u0027d kind of like it if there were only one copy, but I don\u0027t want to go off the beaten path to achieve that.",
+      "revId": "e8ca96f95987a997ceb9125ce1fa1c9154868c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
