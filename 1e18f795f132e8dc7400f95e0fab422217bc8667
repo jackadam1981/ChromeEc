@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf2ddc7_fb0d65c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-12T15:33:06Z",
+      "side": 1,
+      "message": "While there were some failures in the dry-run, the zephyr builds that caused Jack to roll back this change previously passed this time.",
+      "revId": "1e18f795f132e8dc7400f95e0fab422217bc8667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
