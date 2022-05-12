@@ -568,6 +568,19 @@ void tcpc_alert(int port);
 #endif /* CONFIG_USB_PD_TCPC */
 
 /**
+ * Turn on/off the SBU FETs.
+ *
+ * @param port Type-C port number.
+ * @param enable true: enable SBU FETs, false: disable SBU FETs.
+ */
+static inline int tcpc_set_sbu(int port, bool enable)
+{
+	return IS_ENABLED(CONFIG_USB_PD_SBU) ?
+			tcpc_config[port].drv->set_sbu(port, enable) :
+			EC_SUCCESS;
+}
+
+/**
  * Gets the next waiting RX message.
  *
  * @param port Type-C port number

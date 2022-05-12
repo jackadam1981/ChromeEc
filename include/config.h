@@ -4695,6 +4695,13 @@
 /* Enable PCIE tunneling if Thunderbolt-Compatible mode is enabled*/
 #undef CONFIG_USB_PD_PCIE_TUNNELING
 
+/*
+ * Some PD chips have integrated port protection for SBU lines.
+ * If the switches to enable those SBU lines are controlled by the PD
+ * chip, enable this config.
+ */
+#undef CONFIG_USB_PD_SBU
+
 /* Enable Power Path Control from PD */
 #undef CONFIG_USB_PD_PPC
 
