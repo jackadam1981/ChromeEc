@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd3c1f9_360f6b65",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6869,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-12T22:38:16Z",
+      "side": 1,
+      "message": "This should be something like `#define CONFIG_USB_PD_TEMP_SENSOR 0`, and it should be up near the other `CONFIG_USB_PD_*` items. Note that moving it up there would mean that it\u0027s always defined before including board.h, so you wouldn\u0027t need an `#ifndef`.",
+      "revId": "a8ae8aeb96d97b00d677a0e98852c4b9c26a2930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
