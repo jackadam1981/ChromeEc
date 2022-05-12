@@ -16,6 +16,24 @@
       "message": "This code will not support existing boards. Maybe adding checks based on board_id can help with supporting both revisions... what do you think?",
       "revId": "a1941ca5338edf15509aac4861f61ed4f24dfa28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1f12aa6_c5e8fe91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528512
+      },
+      "writtenOn": "2022-05-12T03:10:49Z",
+      "side": 1,
+      "message": "+1, we need to ensure both EVT/DVT could work with the patch.",
+      "parentUuid": "8de8a331_bbac786d",
+      "revId": "a1941ca5338edf15509aac4861f61ed4f24dfa28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
