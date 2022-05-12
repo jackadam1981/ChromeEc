@@ -97,6 +97,8 @@ void ec_app_main(void)
 		start_ec_tasks();
 	}
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ)) {
-		ap_pwrseq_task_start();
+		const struct device * ap_pwrseq_dev =
+				DEVICE_DT_GET(DT_INST(0, ap_pwrseq_state));
+		ap_pwrseq_start(ap_pwrseq_dev);
 	}
 }

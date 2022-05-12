@@ -7,6 +7,7 @@
 #include <zephyr/toolchain.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/atomic.h>
+#include <ap_power/ap_pwrseq.h>
 
 #include <power_signals.h>
 
@@ -85,6 +86,9 @@ static const uint8_t polled_signals[] = {
 DT_FOREACH_STATUS_OKAY(intel_ap_pwrseq_external, PWR_SIGNAL_POLLED)
 };
 
+/* AP power sequence driver reference */
+static const struct device * ap_pwrseq_dev =
+	DEVICE_DT_GET(DT_INST(0, ap_pwrseq_state));
 /*
  * Bitmasks of power signals. A previous copy is held so that
  * logging of changes can occur if the signal is in the debug mask.
@@ -137,6 +141,7 @@ void power_signal_interrupt(enum power_signal signal, int value)
 {
 	atomic_set_bit_to(&power_signals, signal, value);
 	check_debug(signal);
+	ap_pwrseq_post_event(ap_pwrseq_dev, AP_PWRSEQ_EVENT_POWER_SIGNAL);
 }
 
 int power_wait_mask_signals_timeout(power_signal_mask_t mask,

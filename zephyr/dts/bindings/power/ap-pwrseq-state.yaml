@@ -1,0 +1,44 @@
+ # Copyright 2022 The Chromium OS Authors. All rights reserved.
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+
+description: |
+    Power sequence implemented states
+
+compatible: "ap-pwrseq-state"
+
+child-binding:
+  description: |
+    Each defined power state level implemented in project.
+  properties:
+    arch-action-enabled:
+      type: boolean
+      required: false
+      description: |
+        Architecture level power state action handlers enabled, use
+        AP_POWER_ARCH_STATE_DEFINE to define action handler function.
+    chipset-action-enabled:
+      type: boolean
+      required: false
+      description: |
+        Chipset level power state action handlers enabled, use
+        AP_POWER_CHIPSET_STATE_DEFINE to define action handler functions.
+    action-enabled:
+      type: boolean
+      required: false
+      description: |
+        Power state action handlers enabled, use AP_POWER_STATE_DEFINE to
+        define action handler functions.
+    state:
+      type: string
+      required: true
+      description: |
+        Supported power states.
+      enum:
+      - AP_POWER_STATE_G3
+      - AP_POWER_STATE_S5
+      - AP_POWER_STATE_S4
+      - AP_POWER_STATE_S3
+      - AP_POWER_STATE_S2
+      - AP_POWER_STATE_S1
+      - AP_POWER_STATE_S0
