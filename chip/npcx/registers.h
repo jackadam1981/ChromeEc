@@ -65,7 +65,7 @@
 #define DEBUG_CLK                        0
 #define DEBUG_LPC                        0
 #define DEBUG_ESPI                       0
-#define DEBUG_CEC                        0
+#define DEBUG_CEC                        1
 #define DEBUG_SIB                        0
 #define DEBUG_PS2                        0
 
@@ -101,7 +101,7 @@
 #define NPCX_GPIO_BASE_ADDR(mdl)         (0x40081000 + ((mdl) * 0x2000L))
 #define NPCX_ITIM_BASE_ADDR(mdl)         (0x400B0000 + ((mdl) * 0x2000L))
 #define NPCX_MIWU_BASE_ADDR(mdl)         (0x400BB000 + ((mdl) * 0x2000L))
-#define NPCX_MFT_BASE_ADDR(mdl)          (0x400E1000 + ((mdl) * 0x2000L))
+#define NPCX_MFT_BASE_ADDR(mdl)          (0x400E3000 + ((mdl) * 0x2000L))
 #define NPCX_PM_CH_BASE_ADDR(mdl)        (0x400C9000 + ((mdl) * 0x2000L))
 
 /*

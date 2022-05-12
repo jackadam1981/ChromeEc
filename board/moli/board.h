@@ -24,6 +24,10 @@
 #define CEC_GPIO_IN  GPIO_HDMI_CEC_IN
 #define CEC_GPIO_PULL_UP GPIO_HDMI_CEC_PULL_UP
 
+#define CEC2_GPIO_OUT GPIO_HDMI2_CEC_OUT
+#define CEC2_GPIO_IN  GPIO_HDMI2_CEC_IN
+#define CEC2_GPIO_PULL_UP GPIO_HDMI2_CEC_PULL_UP
+
 /* USB Type A Features */
 #define USB_PORT_COUNT			4
 #define CONFIG_USB_PORT_POWER_DUMB
@@ -128,10 +132,6 @@
 /* ADC */
 #define CONFIG_ADC
 
-/* Fan */
-#define CONFIG_FANS			FAN_CH_COUNT
-#define RPM_DEVIATION		1
-
 /* Include math_util for bitmask_uint64 used in pd_timers */
 #define CONFIG_MATH_UTIL
 
@@ -172,20 +172,10 @@ enum ioex_port {
 
 enum pwm_channel {
 	PWM_CH_LED_AMBER,		/* PWM0 */
-	PWM_CH_FAN,                     /* PWM5 */
 	PWM_CH_LED_BLUE,                /* PWM2 */
 	PWM_CH_COUNT
 };
 
-enum fan_channel {
-	FAN_CH_0 = 0,
-	FAN_CH_COUNT
-};
-
-enum mft_channel {
-	MFT_CH_0 = 0,
-	MFT_CH_COUNT
-};
 
 /*
  * firmware config fields

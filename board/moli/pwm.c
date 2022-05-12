@@ -16,11 +16,6 @@ const struct pwm_t pwm_channels[] = {
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
 		.freq = 2000
 	},
-	[PWM_CH_FAN] = {
-		.channel = 5,
-		.flags = PWM_CONFIG_OPEN_DRAIN | PWM_CONFIG_DSLEEP,
-		.freq = 1000
-	},
 	[PWM_CH_LED_BLUE] = {
 		.channel = 2,
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
@@ -36,8 +31,6 @@ static void board_pwm_init(void)
 	 * We need to find tune the fan speed according to the
 	 * thermal sensor value.
 	 */
-	pwm_enable(PWM_CH_FAN, 1);
-	pwm_set_duty(PWM_CH_FAN, 100);
 
 	pwm_enable(PWM_CH_LED_BLUE, 1);
 	pwm_enable(PWM_CH_LED_AMBER, 1);
