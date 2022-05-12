@@ -1,0 +1,19 @@
+ # Copyright 2022 The Chromium OS Authors. All rights reserved.
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+
+description: |
+  Complementary power sequence states
+
+compatible: "ap-pwrseq-sub-state"
+
+child-binding:
+  description: |
+    Complementary power sequence states
+  properties:
+    state:
+      type: string
+      required: true
+      description: |
+        User defined power subtstates, use AP_POWER_SUB_STATE_DEFINE, to define
+        any additional substate action handler functions.

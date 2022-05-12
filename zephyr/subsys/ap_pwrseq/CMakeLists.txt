@@ -12,6 +12,8 @@ zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ
 	signal_vw.c
 	signal_adc.c
 	)
+zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ            ap_pwrseq.c)
+zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ            ap_pwrseq_sm.c)
 zephyr_library_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ
 	x86_non_dsx_common_pwrseq_sm_handler.c)
 zephyr_library_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ

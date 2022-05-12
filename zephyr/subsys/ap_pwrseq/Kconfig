@@ -5,6 +5,8 @@
 menuconfig AP_PWRSEQ
 	bool "AP Power sequencing support"
 	select HAS_TASK_POWERBTN
+	select SMF
+	select SMF_ANCESTOR_SUPPORT
 	help
 	  Enables AP power sequencing support with
 	  embedded controller. This includes normal shutdown, critical
