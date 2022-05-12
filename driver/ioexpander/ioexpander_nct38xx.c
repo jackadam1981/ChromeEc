@@ -16,10 +16,6 @@
 #define CPRINTF(format, args...) cprintf(CC_GPIO, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
 
-#ifdef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
-#error "This driver doesn't support get_port function"
-#endif
-
 /*
  * Store the GPIO_ALERT_MASK_0/1 and chip ID registers locally. In this way,
  * we don't have to read it via I2C transaction everytime.
@@ -464,6 +460,16 @@ void nct38xx_ioex_handle_alert(int ioex)
 	}
 }
 
+#ifdef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
+static int nct38xx_ioex_get_port(int ioex, int port, int *val)
+{
+	int reg = NCT38XX_REG_GPIO_DATA_IN(port);
+
+	return i2c_read8(ioex_config[ioex].i2c_host_port,
+			ioex_config[ioex].i2c_addr_flags, reg, val);
+}
+#endif
+
 const struct ioexpander_drv nct38xx_ioexpander_drv = {
 	.init              = &nct38xx_ioex_init,
 	.get_level         = &nct38xx_ioex_get_level,
@@ -471,4 +477,7 @@ const struct ioexpander_drv nct38xx_ioexpander_drv = {
 	.get_flags_by_mask = &nct38xx_ioex_get_flags,
 	.set_flags_by_mask = &nct38xx_ioex_set_flags_by_mask,
 	.enable_interrupt  = &nct38xx_ioex_enable_interrupt,
+#ifdef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
+	.get_port          = &nct38xx_ioex_get_port,
+#endif
 };
