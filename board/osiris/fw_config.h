@@ -32,12 +32,12 @@ enum ec_cfg_keyboard_matrix_type {
 
 union osiris_cbi_fw_config {
 	struct {
+		enum ec_cfg_keyboard_backlight_type	kb_bl : 1;
+		enum ec_cfg_keyboard_matrix_type	kb_mt : 1;
 		enum ec_cfg_usb_db_type			usb_db : 4;
 		uint32_t				sd_db : 2;
 		uint32_t				lte_db : 1;
-		enum ec_cfg_keyboard_backlight_type	kb_bl : 1;
 		uint32_t				audio : 3;
-		enum ec_cfg_keyboard_matrix_type	kb_mt : 1;
 		uint32_t				reserved_1 : 20;
 	};
 	uint32_t raw_value;
