@@ -52,6 +52,24 @@
       "parentUuid": "093db629_e244c1c1",
       "revId": "be052609c973ef76f4efb8f51165d848695efcac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd5cb0c_6c1b647a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-12T08:04:58Z",
+      "side": 1,
+      "message": "Look like we can put multiples boards(npcx variants in the same folder (npcx9)).\nI update a CL to do it and there is no need to have separate folder for the different npcx9 variants.\n@Kumar:\nCould you have your change of the ADL RVP project based on the CL:3640833.",
+      "parentUuid": "09b1d40a_a66f9d34",
+      "revId": "be052609c973ef76f4efb8f51165d848695efcac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
