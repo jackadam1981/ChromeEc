@@ -16,6 +16,23 @@
       "message": "There is an issue on the MTL RVP where the tcpc_alrt line is not going high. wanted to make sure there isn\u0027t something that I am missing. Since nuvoton tcpc has a special way to initialize on zephyr",
       "revId": "6c4c46028d775c2c007ecd35cc28753c47014618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fb4f56_58800bd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2022-05-12T10:28:39Z",
+      "side": 1,
+      "message": "sorry but I have no idea why Nimrod \u0026 I where added as a reviewers on this.\nWe are not really familiar with the Google FW to the point that we can review this code change.\n",
+      "revId": "6c4c46028d775c2c007ecd35cc28753c47014618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
