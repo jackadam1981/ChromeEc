@@ -4790,13 +4790,30 @@ struct ec_response_hibernation_delay {
 /* Inform the EC when entering a sleep state */
 #define EC_CMD_HOST_SLEEP_EVENT 0x00A9
 
+/*
+ * PREPARE_SUSPEND is called when the AP starts the suspend process.
+ * LATE_SUSPEND is called when the AP reaches late in the suspend process.
+ * EARLY_RESUME is called when the AP is preparing to execute the resume
+ * process.
+ * COMPLETE_RESUME is called when the AP completes the resume process.
+ * This may be due to a successful resume operation after a suspend, or
+ * a failed suspend that was aborted.
+ */
 enum host_sleep_event {
-	HOST_SLEEP_EVENT_S3_SUSPEND   = 1,
-	HOST_SLEEP_EVENT_S3_RESUME    = 2,
+	HOST_SLEEP_EVENT_S3_SUSPEND = 1,
+	HOST_SLEEP_EVENT_S3_RESUME = 2,
 	HOST_SLEEP_EVENT_S0IX_SUSPEND = 3,
-	HOST_SLEEP_EVENT_S0IX_RESUME  = 4,
+	HOST_SLEEP_EVENT_S0IX_RESUME = 4,
 	/* S3 suspend with additional enabled wake sources */
 	HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND = 5,
+	HOST_SLEEP_EVENT_S3_PREPARE_SUSPEND = 6,
+	HOST_SLEEP_EVENT_S3_LATE_SUSPEND = 7,
+	HOST_SLEEP_EVENT_S3_EARLY_RESUME = 8,
+	HOST_SLEEP_EVENT_S3_COMPLETE_RESUME = 9,
+	HOST_SLEEP_EVENT_S0IX_PREPARE_SUSPEND = 10,
+	HOST_SLEEP_EVENT_S0IX_LATE_SUSPEND = 11,
+	HOST_SLEEP_EVENT_S0IX_EARLY_RESUME = 12,
+	HOST_SLEEP_EVENT_S0IX_COMPLETE_RESUME = 13,
 };
 
 struct ec_params_host_sleep_event {
