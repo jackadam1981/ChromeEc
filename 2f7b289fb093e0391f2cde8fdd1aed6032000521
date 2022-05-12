@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec611ec0_ef22303b",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-12T21:00:26Z",
+      "side": 1,
+      "message": "I feel some cognitive dissonance with have something done during chip shutdown having the name \"resume_*\".\n\nCan this be renamed to something else, i\u0027d go with \"restore\" but I am not sure that is much better.",
+      "range": {
+        "startLine": 252,
+        "startChar": 12,
+        "endLine": 252,
+        "endChar": 23
+      },
+      "revId": "2f7b289fb093e0391f2cde8fdd1aed6032000521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
