@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "952d4839_a522d618",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-12T04:00:22Z",
+      "side": 1,
+      "message": "I\u0027ll write up some designs and discussion on this and revisit then; https://crrev.com/c/3641088 fixes the immediate problem I was investigating but doesn\u0027t do anything about the underlying cause.",
+      "parentUuid": "bbf348e4_d86006ed",
+      "revId": "1a1f88280547edeee287f34571c42bd4f4683288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd852262_9e82c659",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
         "patchSetId": 1
