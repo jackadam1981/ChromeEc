@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee93614_afbd6ce1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-12T16:51:56Z",
+      "side": 1,
+      "message": "Commit message should have a subsystem tag, also add a shot description... not really necessary for this specific one but good habit to always do it.\n\nMore details: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages\n\nor:\nhttps://www.kernel.org/doc/html/v4.10/process/submitting-patches.html#describe-your-changes",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "633ebb5883dcafb5d914d51f3f6c13636d1edb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
