@@ -48,6 +48,17 @@
 	pinctrl-0 = <&altj_cr_sin1_sl2 &altj_cr_sout1_sl2>;
 };
 
+&pinctrl {
+	/*
+	 * TODO(b/232573074): Move pinctrl to set SHI pins to GPIO mode
+	 * upstream.
+	 */
+	 /omit-if-no-ref/ shi_gpio_gp46_47_53_55: periph-shi-gpio {
+		pinmux = <&altc_shi_sl>;
+		pinmux-gpio;
+	};
+};
+
 &cros_kb_raw {
 	status = "okay";
 	/* No KSO2 (it's inverted and implemented by GPIO) */
