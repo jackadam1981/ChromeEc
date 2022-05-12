@@ -22,6 +22,30 @@
       },
       "revId": "64c4f7dda6e061b9e38f5a550a46b550b13cc35a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9639e9_35e327bc",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-12T05:53:51Z",
+      "side": 1,
+      "message": "Good catch. Thanks.",
+      "parentUuid": "95752b61_41f8dafd",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "64c4f7dda6e061b9e38f5a550a46b550b13cc35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
