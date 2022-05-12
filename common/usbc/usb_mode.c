@@ -245,6 +245,8 @@ void enter_usb_accepted(int port, enum tcpci_msg_type type)
 		/* Connect the SBU and USB lines to the connector */
 		if (IS_ENABLED(CONFIG_USBC_PPC_SBU) && board_is_port_ppc(port))
 			ppc_set_sbu(port, 1);
+		else if (IS_ENABLED(CONFIG_USB_PD_SBU))
+			tcpc_set_sbu(port, 1);
 
 		usb4_state[port] = USB4_ACTIVE;
 
