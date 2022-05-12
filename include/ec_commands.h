@@ -4791,12 +4791,17 @@ struct ec_response_hibernation_delay {
 #define EC_CMD_HOST_SLEEP_EVENT 0x00A9
 
 enum host_sleep_event {
-	HOST_SLEEP_EVENT_S3_SUSPEND   = 1,
-	HOST_SLEEP_EVENT_S3_RESUME    = 2,
+	HOST_SLEEP_EVENT_S3_SUSPEND = 1,
+	HOST_SLEEP_EVENT_S3_RESUME = 2,
 	HOST_SLEEP_EVENT_S0IX_SUSPEND = 3,
-	HOST_SLEEP_EVENT_S0IX_RESUME  = 4,
+	HOST_SLEEP_EVENT_S0IX_RESUME = 4,
 	/* S3 suspend with additional enabled wake sources */
 	HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND = 5,
+	/* device PM callbacks: .prepare() and .complete() */
+	HOST_SLEEP_EVENT_S3_PREPARE_SUSPEND = 6,
+	HOST_SLEEP_EVENT_S3_RESUME_COMPLETE = 7,
+	HOST_SLEEP_EVENT_S0IX_PREPARE_SUSPEND = 8,
+	HOST_SLEEP_EVENT_S0IX_RESUME_COMPLETE = 9,
 };
 
 struct ec_params_host_sleep_event {

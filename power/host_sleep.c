@@ -36,6 +36,10 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 	host_sleep_state = state;
 	ctx.sleep_transitions = 0;
 	switch (state) {
+	case HOST_SLEEP_EVENT_S0IX_PREPARE_SUSPEND:
+	case HOST_SLEEP_EVENT_S3_PREPARE_SUSPEND:
+		CPRINTS("AP prepare suspend");
+		/* fallthrough */
 	case HOST_SLEEP_EVENT_S0IX_SUSPEND:
 	case HOST_SLEEP_EVENT_S3_SUSPEND:
 	case HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND:
@@ -54,6 +58,10 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 
 	power_chipset_handle_host_sleep_event(host_sleep_state, &ctx);
 	switch (state) {
+	case HOST_SLEEP_EVENT_S0IX_RESUME_COMPLETE:
+	case HOST_SLEEP_EVENT_S3_RESUME_COMPLETE:
+		CPRINTS("AP resume complete");
+		/* fallthrough */
 	case HOST_SLEEP_EVENT_S0IX_RESUME:
 	case HOST_SLEEP_EVENT_S3_RESUME:
 		if (args->version >= 1) {
