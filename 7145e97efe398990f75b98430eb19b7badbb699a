@@ -16,6 +16,24 @@
       "message": "This commit causes problems with communication with battery on lazor. Issuing the \u0027battery\u0027 command in EC console gives no valid response for anything.",
       "revId": "7145e97efe398990f75b98430eb19b7badbb699a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5a7882_1b27f40f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-05-12T02:00:58Z",
+      "side": 1,
+      "message": "Hi,\nIt seems strange that this commit causes the communication between the EC and battery to fail.\nThis CL is trying to fix the regression of this CL:3612782 in Zephyr side.\n\nIt is equivalent to revert the CL:3612782.\nCan you just  try to revert the CL:3612782 (without applying this CL) to see if the symptom occur or not?",
+      "parentUuid": "45988797_fd4fad6c",
+      "revId": "7145e97efe398990f75b98430eb19b7badbb699a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
