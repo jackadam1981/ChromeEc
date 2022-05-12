@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2579dd_5d65e026",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-12T22:33:52Z",
+      "side": 1,
+      "message": "1. If this is overridable, it\u0027s part of our API, and we should document what it\u0027s supposed to do. It should probably be declared in a header file to ensure that an override has the correct signature. And it should be named something that you would use as a global name. In this module, the public functions have `dpm_*` names, but I could also see an argument for `board_*` if it\u0027s overridable.\n\n2. Is this the appropriate interface to present to board code? Do we want them to be able to set New Power State inconsistently with the actual power state? Set reserved values and fields? Or just set the LED state based on the power state? If it\u0027s the latter case, I\u0027d rather that the board code implemented something like\n enum pd_power_indicator board_get_pd_power_indicator(enum power_state);\n\nor even\n enum pd_power_indicator board_get_pd_power_indicator(enum pd_power_state);\n \nif we only think they\u0027ll want to distinguish among the power states as encoded in the Power State Change field.\n\nIf you had that kind of interface, you could implement this feature along the lines of\n```\n__overridable board_get_pd_power_indicator(enum pd_power_state state)\n{\n  switch (state) {\n  ...\n  }\n}\n\n__NOT_overridable uint8_t get_status_power_state_change(void)\n{\n  enum pd_power_state state;\n  switch(power_get_state()) {\n     ...\n  }\n  \n  return state | board_get_pd_power_indicator(state);\n}\n```",
+      "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29104eee_aa31cbac",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-12T22:33:52Z",
+      "side": 1,
+      "message": "Should this be a greater-than-or-equal-to style check?",
+      "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3255d7b_a86b865a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-12T22:33:52Z",
+      "side": 1,
+      "message": "Can these be enums?",
+      "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
