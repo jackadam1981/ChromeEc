@@ -25,6 +25,49 @@ __overridable void power_chipset_handle_host_sleep_event(
 	/* Default weak implementation -- no action required. */
 }
 
+void log_host_sleep_event(enum host_sleep_event state)
+{
+	switch (state) {
+	case HOST_SLEEP_EVENT_S0IX_PREPARE_SUSPEND:
+	case HOST_SLEEP_EVENT_S3_PREPARE_SUSPEND:
+		CPRINTS("AP prepare suspend");
+		break;
+
+	case HOST_SLEEP_EVENT_S0IX_SUSPEND:
+	case HOST_SLEEP_EVENT_S3_SUSPEND:
+		CPRINTS("AP suspend");
+		break;
+
+	case HOST_SLEEP_EVENT_S0IX_LATE_SUSPEND:
+	case HOST_SLEEP_EVENT_S3_LATE_SUSPEND:
+		CPRINTS("AP late suspend");
+		break;
+
+	case HOST_SLEEP_EVENT_S0IX_EARLY_RESUME:
+	case HOST_SLEEP_EVENT_S3_EARLY_RESUME:
+		CPRINTS("AP early resume");
+		break;
+
+	case HOST_SLEEP_EVENT_S0IX_RESUME:
+	case HOST_SLEEP_EVENT_S3_RESUME:
+		CPRINTS("AP resume");
+		break;
+
+	case HOST_SLEEP_EVENT_S0IX_COMPLETE_RESUME:
+	case HOST_SLEEP_EVENT_S3_COMPLETE_RESUME:
+		CPRINTS("AP complete resume");
+		break;
+
+	case HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND:
+		CPRINTS("AP wakeable suspend");
+		break;
+
+	default:
+		CPRINTS("Unknown AP host sleep event: %d", state);
+		break;
+	}
+}
+
 static enum ec_status
 host_command_host_sleep_event(struct host_cmd_handler_args *args)
 {
@@ -33,9 +76,15 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 	struct host_sleep_event_context ctx;
 	enum host_sleep_event state = p->sleep_event;
 
+	log_host_sleep_event(state);
+
 	host_sleep_state = state;
 	ctx.sleep_transitions = 0;
 	switch (state) {
+	case HOST_SLEEP_EVENT_S0IX_PREPARE_SUSPEND:
+	case HOST_SLEEP_EVENT_S3_PREPARE_SUSPEND:
+	case HOST_SLEEP_EVENT_S0IX_LATE_SUSPEND:
+	case HOST_SLEEP_EVENT_S3_LATE_SUSPEND:
 	case HOST_SLEEP_EVENT_S0IX_SUSPEND:
 	case HOST_SLEEP_EVENT_S3_SUSPEND:
 	case HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND:
@@ -54,6 +103,10 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 
 	power_chipset_handle_host_sleep_event(host_sleep_state, &ctx);
 	switch (state) {
+	case HOST_SLEEP_EVENT_S0IX_EARLY_RESUME:
+	case HOST_SLEEP_EVENT_S3_EARLY_RESUME:
+	case HOST_SLEEP_EVENT_S0IX_COMPLETE_RESUME:
+	case HOST_SLEEP_EVENT_S3_COMPLETE_RESUME:
 	case HOST_SLEEP_EVENT_S0IX_RESUME:
 	case HOST_SLEEP_EVENT_S3_RESUME:
 		if (args->version >= 1) {
