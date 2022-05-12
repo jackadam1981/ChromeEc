@@ -241,7 +241,7 @@ void ap_power_chipset_handle_host_sleep_event(
 		power_signal_disable(PWR_SLP_S0);
 	}
 #endif /* CONFIG_AP_PWRSEQ_S0IX */
-	ap_pwrseq_wake();
+	ap_pwrseq_post_event(ap_pwrseq_get_instance(), AP_PWRSEQ_EVENT_HOST);
 }
 
 uint16_t host_get_sleep_timeout(void)
