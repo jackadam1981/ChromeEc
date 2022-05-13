@@ -55,14 +55,20 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+static int block_sequence;
+
 /**
  * Deferred function to handle GPIO PG_PP3300_S5_OD change
  */
 static void bypass_pp3300_s5_deferred(void)
 {
-	int pg_pp3300_s5 = gpio_get_level(GPIO_PG_PP3300_S5_OD);
+	if (block_sequence) {
+		CPRINTS("PG_PP3300_S5_OD is blocked.");
+		return;
+	}
 
-	gpio_set_level(GPIO_PG_PP3300_S5_EC_SEQ_OD, pg_pp3300_s5);
+	gpio_set_level(GPIO_PG_PP3300_S5_EC_SEQ_OD,
+		       gpio_get_level(GPIO_PG_PP3300_S5_OD));
 }
 DECLARE_DEFERRED(bypass_pp3300_s5_deferred);
 
@@ -71,3 +77,17 @@ void board_power_interrupt(enum gpio_signal signal)
 	/* Trigger deferred notification of gpio PG_PP3300_S5_OD change */
 	hook_call_deferred(&bypass_pp3300_s5_deferred_data, 0);
 }
+
+static int cc_blockseq(int argc, char *argv[])
+{
+	if (argc > 1) {
+		if (!parse_bool(argv[1], &block_sequence)) {
+			ccprintf("Invalid argument: %s\n", argv[1]);
+			return EC_ERROR_INVAL;
+		}
+	}
+
+	ccprintf("power sequence: %sblocked\n", block_sequence ? "" : "not");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bockseq, cc_blockseq, NULL, NULL);
