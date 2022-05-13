@@ -16,6 +16,23 @@
       "message": "Hi Henry\nWithout CL:3640830, build may failed due to over space.\nWe might need wait CL:3640830 to approved.",
       "revId": "e57a7a28a65d0fc9d6db613d35ad20fb16474528",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c91171_d57b7b60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-05-13T02:48:37Z",
+      "side": 1,
+      "message": "I will reorganize CL chain when CQ+2 failed.",
+      "revId": "e57a7a28a65d0fc9d6db613d35ad20fb16474528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
