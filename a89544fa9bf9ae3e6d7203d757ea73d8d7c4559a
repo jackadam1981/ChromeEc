@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa626f0_be9d19ac",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-05-13T06:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9cfe80_38f2765d",
+      "range": {
+        "startLine": 69,
+        "startChar": 10,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "a89544fa9bf9ae3e6d7203d757ea73d8d7c4559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bc9deda_ab5aa2b4",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-13T02:52:49Z",
       "side": 1,
       "message": "Just a note: we should use copy-on-write when there\u0027s any difference happens between kingler and steelix.",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "a89544fa9bf9ae3e6d7203d757ea73d8d7c4559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5690c7_47cae57a",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-05-13T06:35:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4bc9deda_ab5aa2b4",
       "range": {
         "startLine": 70,
         "startChar": 4,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc08681_65f87a08",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-05-13T06:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4869618_6cc79f73",
+      "revId": "a89544fa9bf9ae3e6d7203d757ea73d8d7c4559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eb6ece6_a420b840",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5c3c54_99beccd0",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-05-13T06:35:40Z",
+      "side": 1,
+      "message": "Done, formatter requests put this in one line \n```\n      -    extra_kconfig_files\u003d[here / \"prj_kingler.conf\",\n      -                         here / \"prj_steelix.conf\"],\n      +    extra_kconfig_files\u003d[here / \"prj_kingler.conf\", here / \"prj_steelix.conf\"],\nwould reformat /mnt/host/source/src/platform/ec/zephyr/projects/corsola/BUILD.py\n```",
+      "parentUuid": "6eb6ece6_a420b840",
+      "range": {
+        "startLine": 81,
+        "startChar": 25,
+        "endLine": 81,
+        "endChar": 50
+      },
+      "revId": "a89544fa9bf9ae3e6d7203d757ea73d8d7c4559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68654199_d57d6e0d",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-05-13T02:52:49Z",
       "side": 1,
       "message": "You can put steelix files under kingler. e.g.:\n\n\n```\n# For the same components, code isn\u0027t changed.\nsrc/kingler/usb_pd_policy.c\n# For different components:\nsrc/kingler/led_steelix.c\n```",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "a89544fa9bf9ae3e6d7203d757ea73d8d7c4559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7425de57_1bf6bec2",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-05-13T06:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68654199_d57d6e0d",
       "range": {
         "startLine": 47,
         "startChar": 0,
