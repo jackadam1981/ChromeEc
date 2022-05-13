@@ -22,6 +22,30 @@
       },
       "revId": "231666722968877078f7fdeabcf2c729d96bca0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447018e1_d800b2d6",
+        "filename": "power/meteorlake.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-13T22:36:15Z",
+      "side": 1,
+      "message": "Hi Keith,\nInitially we thought about it but wanted to replicate the same settings \nas in Silego hence kept it as GPIO.\nWhen we migrate to Native code, it will be handled in board specific code",
+      "parentUuid": "69ee4e89_5c66daff",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 40
+      },
+      "revId": "231666722968877078f7fdeabcf2c729d96bca0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
