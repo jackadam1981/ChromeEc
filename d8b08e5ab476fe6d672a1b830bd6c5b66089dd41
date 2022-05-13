@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a11359_22807fa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-13T22:14:06Z",
+      "side": 1,
+      "message": "Looks good.  I guess this is a feature of zmake that the zephyr board name doesn\u0027t have to match the directory name.  We might consider updating west to support a similar pattern.",
+      "revId": "d8b08e5ab476fe6d672a1b830bd6c5b66089dd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ee4aa6_87cb9126",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-13T22:14:06Z",
+      "side": 1,
+      "message": "It\u0027s probably better to change to `startswith(\"npcx\")`.  All NPCX based boards need to use `register_npcx_project`.",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "d8b08e5ab476fe6d672a1b830bd6c5b66089dd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849b28ff_51813f09",
+        "filename": "zephyr/projects/nissa/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-13T22:14:06Z",
+      "side": 1,
+      "message": "\"npcx\"",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "d8b08e5ab476fe6d672a1b830bd6c5b66089dd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
