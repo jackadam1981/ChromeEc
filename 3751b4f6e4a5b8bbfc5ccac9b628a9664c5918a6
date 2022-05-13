@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce47dbdb_d11dc253",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-05-13T07:25:01Z",
+      "side": 1,
+      "message": "nit: This is a style issue which may hinder the CQ merge this CL.\n\n```\n... \u003d[\n    here / \"prj_kingler.conf\",\n    here / \"prj_steelix.conf\"\n]\n```",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 78
+      },
+      "revId": "3751b4f6e4a5b8bbfc5ccac9b628a9664c5918a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
