@@ -16,6 +16,24 @@
       "message": "is it working on Brya?",
       "revId": "6e7945ed76052efbbd567422dbcd523aa3f017ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc65fa0_6b31a3d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-13T16:52:36Z",
+      "side": 1,
+      "message": "No, The behavior is same.\nI am still seeing Retimer issue on port 2 and port 0 servo4c is connected and charging is working on port 0 by connecting charger to servo4c typec port. USB and other devices are not being detected via servo4c.\n\nOn MTL, we are not facing retimer issue, should we try these changes on MTL?",
+      "parentUuid": "e61787af_81a1f109",
+      "revId": "6e7945ed76052efbbd567422dbcd523aa3f017ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
