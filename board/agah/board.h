@@ -10,6 +10,8 @@
 
 #include "compile_time_macros.h"
 
+#define CONFIG_KEYBOARD_BOOT_KEYS
+
 /* Baseboard features */
 #include "baseboard.h"
 
