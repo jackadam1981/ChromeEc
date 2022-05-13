@@ -381,14 +381,17 @@ void board_reset_pd_mcu(void)
 static void board_tcpc_init(void)
 {
 	/* Don't reset TCPCs after initial reset */
+#ifndef CONFIG_ZEPHYR
 	if (!system_jumped_late())
 		board_reset_pd_mcu();
+#endif
 
 	/*
 	 * These IO expander pins are implemented using the
 	 * C0/C2 TCPC, so they must be set up after the TCPC has
 	 * been taken out of reset.
 	 */
+#ifndef CONFIG_ZEPHYR
 	if (get_board_id() == 1) {
 		ioex_init(IOEX_ID_1_C0_NCT38XX);
 		ioex_init(IOEX_ID_1_C2_NCT38XX);
@@ -396,7 +399,7 @@ static void board_tcpc_init(void)
 		ioex_init(IOEX_C0_NCT38XX);
 		ioex_init(IOEX_C2_NCT38XX);
 	}
-
+#endif
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C2_PPC_INT_ODL);
