@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7034fb3_8df68745",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-05-13T18:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa63b52_6729d31b",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6643322_65cb0a55",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bfc9195_4cc9d9ac",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-05-13T18:24:33Z",
+      "side": 1,
+      "message": "You are correct, but it is an issue that has been \"ignored\" typically in the ChromeOS EC codebase.",
+      "parentUuid": "a6643322_65cb0a55",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "158d2e9b_f253a998",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 2
@@ -54,6 +96,30 @@
       "writtenOn": "2022-05-05T02:43:48Z",
       "side": 1,
       "message": "The hardcode assumes that the VW index 6 (for sci/smi) is always located in the offset 2 of espi_out_list. Although there is low possibility to change the organization of the espi_out_list array. It will break the fucntion if someone changes it but not notice the hardcode. Maybe we can poll the index field for each NPCX_VWEVSM register to get the offset of VM index 6. See the example [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/ec/chip/npcx/espi.c;l\u003d291). This could be done once at init.",
+      "range": {
+        "startLine": 132,
+        "startChar": 21,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c839690_aec617e5",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-05-13T18:24:33Z",
+      "side": 1,
+      "message": "Makes sense, thanks 👍",
+      "parentUuid": "158d2e9b_f253a998",
       "range": {
         "startLine": 132,
         "startChar": 21,
@@ -112,6 +178,24 @@
       "side": 1,
       "message": "The default configuration of `CONFIG_ESPI_DEFAULT_VW_WIDTH_US` is only 65 us.  Is the 100 us pulse width an eSPI requirement or specific to some Intel chipsets?",
       "parentUuid": "ae217bad_c80aa207",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac96adf_864d89de",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-05-13T18:24:33Z",
+      "side": 1,
+      "message": "It is specific to some Intel chipsets, e.g. on ADL, Intel added a note in the EDS saying that a pulse width of \u003e 100us was required for SCI#",
+      "parentUuid": "ca13889f_9583a07e",
       "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
