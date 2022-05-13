@@ -14,6 +14,7 @@
  * Early agah boards are not set up for vivaldi
  */
 #undef CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KEYBOARD_BOOT_KEYS
 
 /* Baseboard features */
 #include "baseboard.h"
