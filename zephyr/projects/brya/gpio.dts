@@ -252,7 +252,7 @@
 			enum-name = "GPIO_USB_C1_RST_ODL";
 		};
 		usb_c0_c2_tcpc_rst_odl {
-			gpios = <&gpioa 7 GPIO_ODR_LOW>;
+			gpios = <&gpioa 7 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_USB_C0_C2_TCPC_RST_ODL";
 		};
 		id_1_usb_c0_c2_tcpc_rst_odl {
@@ -279,11 +279,11 @@
 			enum-name = "IOEX_USB_C0_FRS_EN";
 		};
 		usb_c0_rt_rst_odl: usb_c0_rt_rst_odl {
-			gpios = <&ioex_port1 7 GPIO_ODR_HIGH>;
+			gpios = <&ioex_port1 7 GPIO_ODR_LOW>;
 			enum-name = "IOEX_USB_C0_RT_RST_ODL";
 		};
 		usb_c2_rt_rst_odl: usb_c2_rt_rst_odl {
-			gpios = <&ioex_port2 2 GPIO_ODR_HIGH>;
+			gpios = <&ioex_port2 2 GPIO_ODR_LOW>;
 			enum-name = "IOEX_USB_C2_RT_RST_ODL";
 		};
 		usb_c1_oc_odl {
@@ -317,7 +317,7 @@
                 i2c-port = <&tcpc0_2>;
                 i2c-addr = <0x70>;
                 drv = "nct38xx_ioexpander_drv";
-                flags = <0x01>;
+                flags = <0>;
                 #address-cells = <1>;
                 #size-cells = <0>;
                 ioex_port1: ioex-c0-port@0 {
@@ -335,7 +335,7 @@
                 i2c-port = <&tcpc0_2>;
                 i2c-addr = <0x74>;
                 drv = "nct38xx_ioexpander_drv";
-                flags = <0x01>;
+                flags = <0>;
                 #address-cells = <1>;
                 #size-cells = <0>;
                 ioex_port2: ioex-c1-port@0 {
