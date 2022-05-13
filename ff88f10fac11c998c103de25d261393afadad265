@@ -181,6 +181,24 @@
       "parentUuid": "60d2a071_5e103223",
       "revId": "ff88f10fac11c998c103de25d261393afadad265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba87025c_8349179b",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-13T20:08:13Z",
+      "side": 1,
+      "message": "Diana is out. I\u0027m tentatively OK with this.",
+      "parentUuid": "6fc80bc5_3195d71b",
+      "revId": "ff88f10fac11c998c103de25d261393afadad265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
