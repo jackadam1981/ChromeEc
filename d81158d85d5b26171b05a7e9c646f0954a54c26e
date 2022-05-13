@@ -22,6 +22,30 @@
       },
       "revId": "d81158d85d5b26171b05a7e9c646f0954a54c26e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb90562_1d3037e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-05-13T02:17:25Z",
+      "side": 1,
+      "message": "Add Cq-Depend: chromium:3631921",
+      "parentUuid": "4bfd6f41_3bebecff",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 63
+      },
+      "revId": "d81158d85d5b26171b05a7e9c646f0954a54c26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
