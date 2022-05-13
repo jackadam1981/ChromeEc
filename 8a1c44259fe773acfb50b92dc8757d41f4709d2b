@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce60eb2_c58d3306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-13T19:51:22Z",
+      "side": 1,
+      "message": "This seems reasonable, but I\u0027d like if the battery-specific parameters (if not the actual charge profile) were in a battery-specific driver.",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8c0474_26343699",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-13T19:51:22Z",
+      "side": 1,
+      "message": "This seems like it should probably go in a header file pertaining to this battery.",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab76d195_1ec650a4",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-13T19:51:22Z",
+      "side": 1,
+      "message": "Is this supposed to be more days than the previous one?",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cddfc6d9_2013d899",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-13T19:51:22Z",
+      "side": 1,
+      "message": "Can you comment this to say it returns a number of days?",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc315048_6db3fa22",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-13T19:51:22Z",
+      "side": 1,
+      "message": "Can you define named constants similar to those found in include/battery_smart.h specifying the format of this response?",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc91f99_2a27c1b7",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-13T19:51:22Z",
+      "side": 1,
+      "message": "If the run time is more than 626, it looks like the loop above will end when i \u003d\u003d 7. In that case, this dereference will be off the end of the array.",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
