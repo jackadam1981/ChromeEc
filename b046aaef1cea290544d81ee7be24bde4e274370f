@@ -45,6 +45,30 @@
       },
       "revId": "b046aaef1cea290544d81ee7be24bde4e274370f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094691a9_7129342f",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-05-13T07:15:42Z",
+      "side": 1,
+      "message": "From the schematic, GPIO_BJ_ADP_PRESENT_ODL indicate adapter power into system,\nwhich means if there\u0027s no voltage on the trace GPIO_BJ_ADP_PRESENT_ODL won\u0027t trigger.",
+      "parentUuid": "bf8d1c3f_9a2590f6",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "b046aaef1cea290544d81ee7be24bde4e274370f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
