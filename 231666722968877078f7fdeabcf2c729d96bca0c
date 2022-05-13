@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ee4e89_5c66daff",
+        "filename": "power/meteorlake.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-13T22:26:58Z",
+      "side": 1,
+      "message": "SLP_S3 can be configured as a virtual wire.  You should use `power_signal_get_level(SLP_S3_SIGNAL_L)`",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 40
+      },
+      "revId": "231666722968877078f7fdeabcf2c729d96bca0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
