@@ -22,6 +22,30 @@
       },
       "revId": "3751b4f6e4a5b8bbfc5ccac9b628a9664c5918a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5e1db0_1fb562bc",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-05-13T07:47:17Z",
+      "side": 1,
+      "message": "zmake\u0027s black formatter requests putting this in one line when repo upload",
+      "parentUuid": "ce47dbdb_d11dc253",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 78
+      },
+      "revId": "3751b4f6e4a5b8bbfc5ccac9b628a9664c5918a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
