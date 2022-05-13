@@ -11,10 +11,14 @@
 #define TCPC_CONFIG_PS8XXX(id)                                                \
 	{                                                                     \
 		.bus_type = EC_BUS_TYPE_I2C,                                  \
-		.i2c_info = {                                                 \
-			.port = I2C_PORT(DT_PHANDLE(id, port)),               \
-			.addr_flags = DT_STRING_UPPER_TOKEN(                  \
+		.i2c_info = {                      			      \
+			.port = I2C_PORT(DT_PHANDLE(id, port)),		      \
+			.addr_flags =DT_STRING_UPPER_TOKEN(                   \
 					id, i2c_addr_flags),                  \
 		},                                                            \
 		.drv = &ps8xxx_tcpm_drv,                                      \
+		.flags = TCPC_FLAGS_TCPCI_REV2_0 |			      \
+                         TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V |		      \
+                         TCPC_FLAGS_CONTROL_VCONN |                           \
+                         TCPC_FLAGS_CONTROL_FRS,                              \
 	},

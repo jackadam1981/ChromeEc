@@ -310,8 +310,45 @@
 		psl-in-pads = <&psl_in1 &psl_in2 &psl_in3>;
 		status = "okay";
 	};
-};
 
+/* IOEX_C0_NCT38XX */
+        ioex-c0 {
+                compatible = "cros,ioex-chip";
+                i2c-port = <&tcpc0_2>;
+                i2c-addr = <0x70>;
+                drv = "nct38xx_ioexpander_drv";
+                flags = <0x01>;
+                #address-cells = <1>;
+                #size-cells = <0>;
+                ioex_port1: ioex-c0-port@0 {
+                        compatible = "cros,ioex-port";
+                        reg = <0>;
+                        gpio-controller;
+                        #gpio-cells = <2>;
+                        ngpios = <8>;
+                };
+        };
+
+/* IOEX_C1_NCT38XX */
+        ioex-c1 {
+                compatible = "cros,ioex-chip";
+                i2c-port = <&tcpc0_2>;
+                i2c-addr = <0x74>;
+                drv = "nct38xx_ioexpander_drv";
+                flags = <0x01>;
+                #address-cells = <1>;
+                #size-cells = <0>;
+                ioex_port2: ioex-c1-port@0 {
+                        compatible = "cros,ioex-port";
+                        reg = <0>;
+                        gpio-controller;
+                        #gpio-cells = <2>;
+                        ngpios = <8>;
+                };
+        };
+
+};
+/*
 &i2c1_0 {
 	status = "okay";
 
@@ -360,6 +397,7 @@
 		label = "NCT3808_ALERT_1";
 	};
 };
+*/
 
 /* Power switch logic input pads */
 /* LID_OPEN_OD */
