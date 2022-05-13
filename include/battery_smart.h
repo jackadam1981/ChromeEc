@@ -157,6 +157,7 @@
 /* Manufacturer Access parameters */
 #define PARAM_SAFETY_STATUS             0x51
 #define PARAM_OPERATION_STATUS          0x54
+#define PARAM_FIRMWARE_RUNTIME          0x0062
 /* Operation status masks -- 6 byte reply */
 /* reply[3] */
 #define BATTERY_DISCHARGING_DISABLED    0x20
