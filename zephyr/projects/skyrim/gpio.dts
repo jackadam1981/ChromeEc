@@ -291,6 +291,8 @@
 
 &i2c0_0 {
 	status = "okay";
+	pinctrl-0 = <&i2c0_0_sda_scl_gpb4_b5>;
+	pinctrl-names = "default";
 
 	nct3807_C0:nct3807_C0@70 {
 		#address-cells = <1>;
@@ -330,6 +332,8 @@
 
 &i2c1_0 {
 	status = "okay";
+	pinctrl-0 = <&i2c1_0_sda_scl_gp87_90>;
+	pinctrl-names = "default";
 
 	nct3807_C1:nct3807_C1@70 {
 		#address-cells = <1>;
