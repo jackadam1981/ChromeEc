@@ -46,6 +46,30 @@
       },
       "revId": "d81158d85d5b26171b05a7e9c646f0954a54c26e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e0d21bc_a7f9b406",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-05-13T07:40:59Z",
+      "side": 1,
+      "message": "There is already Cq-Depend: chromium:3631921, Cq-Depend: chromium:3632351 can be removed.",
+      "parentUuid": "cfb90562_1d3037e4",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 63
+      },
+      "revId": "d81158d85d5b26171b05a7e9c646f0954a54c26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
