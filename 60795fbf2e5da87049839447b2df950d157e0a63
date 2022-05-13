@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97619ce_560c53dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-05-13T08:26:44Z",
+      "side": 1,
+      "message": "In the last comment, the `zmake\u0027s black formatter` gave a wrong suggestion because missing a `,` after the `prj_steelix.conf`.\n\nUsing the same formate as `extra_dts_overlays` is more reasonable and can pass the repo upload hook scripts. ",
+      "revId": "60795fbf2e5da87049839447b2df950d157e0a63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
