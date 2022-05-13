@@ -19,8 +19,10 @@
 				i2c-addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
 			};
 			tcpc {
-				compatible = "nuvoton,nct38xx";
-				gpio-dev = <&nct3808_0_P1>;
+				compatible = "nuvoton,nct38xx1";
+                                status = "okay";
+                                port = <&tcpc0_2>;
+                                i2c-addr-flags = "NCT38XX_I2C_ADDR1_1_FLAGS";
 			};
 			chg {
 				compatible = "ti,bq25710";
@@ -39,6 +41,12 @@
 				port = <&c1_bc12>;
 				i2c-addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
 			};
+			tcpc {
+				compatible = "parade,ps8xxx";
+                                status = "okay";
+                                port = <&tcpc1>;
+                                i2c-addr-flags = "PS8XXX_I2C_ADDR1_FLAGS";
+			};
 		};
 
 		port2@2 {
@@ -52,8 +60,10 @@
 				i2c-addr-flags = "PI3USB9201_I2C_ADDR_1_FLAGS";
 			};
 			tcpc {
-				compatible = "nuvoton,nct38xx";
-				gpio-dev = <&nct3808_0_P2>;
+				compatible = "nuvoton,nct38xx2";
+                                status = "okay";
+                                port = <&tcpc0_2>;
+                                i2c-addr-flags = "NCT38XX_I2C_ADDR2_1_FLAGS";
 			};
 		};
 	};
