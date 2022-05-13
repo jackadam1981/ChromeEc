@@ -1780,6 +1780,46 @@ static int command_i2cxfer(int argc, char **argv)
 		if (!rv)
 			ccprintf("Data: %ph\n", HEX_BUF(data, v));
 
+	} else if (strcasecmp(argv[1], "rb") == 0) {
+		/* 8-bit read on a 32 register device that does not
+		 * understand register offset
+		 */
+		uint8_t buff[32];
+
+		if (offset < 0 || offset >= 32)
+			return EC_ERROR_PARAM4;
+
+		rv = i2c_xfer(port, addr_flags,
+			      NULL, 0, buff, offset + 1);
+		if (!rv) {
+			v = buff[offset];
+			ccprintf("0x%04x [%d]\n", v, v);
+		}
+
+	} else if (strcasecmp(argv[1], "wb") == 0) {
+		/* 8-bit write on a 32 register device that does not
+		 * understand register offset
+		 */
+		uint8_t buff[32];
+
+		if (offset < 0 || offset >= 32)
+			return EC_ERROR_PARAM4;
+
+		if (argc < 6)
+			return EC_ERROR_PARAM5;
+
+		if (offset > 0)
+			rv = i2c_xfer(port, addr_flags,
+				      NULL, 0, buff, offset);
+		else
+			rv = EC_SUCCESS;
+
+		if (!rv) {
+			buff[offset] = v;
+			rv = i2c_xfer(port, addr_flags,
+				      buff, offset + 1, NULL, 0);
+		}
+
 	} else if (strcasecmp(argv[1], "w") == 0) {
 		/* 8-bit write */
 		if (argc < 6)
