@@ -1326,10 +1326,13 @@ int charge_manager_get_power_limit_uw(void)
 	int voltage_mv = charge_voltage;
 
 	if (current_ma == CHARGE_CURRENT_UNINITIALIZED ||
-	    voltage_mv == CHARGE_VOLTAGE_UNINITIALIZED)
+	    voltage_mv == CHARGE_VOLTAGE_UNINITIALIZED) {
+		CPRINTS(" @ @ @ charge power: 0");
 		return 0;
-	else
+	} else {
+		CPRINTS(" @ @ @ charge power: %d", current_ma * voltage_mv);
 		return current_ma * voltage_mv;
+	}
 }
 
 #if defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) && \

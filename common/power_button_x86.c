@@ -348,6 +348,7 @@ static void state_machine(uint64_t tnow)
 			if (tnow >
 				(tpb_task_start +
 				 CONFIG_POWER_BUTTON_INIT_TIMEOUT * SECOND)) {
+				CPRINTS(" @ @ @ prevent power on timeout!");
 				pwrbtn_state = PWRBTN_STATE_IDLE;
 				break;
 			}
