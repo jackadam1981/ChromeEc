@@ -107,6 +107,35 @@
 		};
 	};
 
+	power_seq {
+		compatible = "ap-pwrseq-state";
+		state_g3 {
+			state = "AP_POWER_STATE_G3";
+			arch-action-enabled;
+			chipset-action-enabled;
+			action-enabled;
+		};
+		state_s5 {
+			state = "AP_POWER_STATE_S5";
+			arch-action-enabled;
+			action-enabled;
+		};
+		state_s4 {
+			state = "AP_POWER_STATE_S4";
+			arch-action-enabled;
+		};
+		state_s3 {
+			state = "AP_POWER_STATE_S3";
+			arch-action-enabled;
+		};
+		state_s0 {
+			state = "AP_POWER_STATE_S0";
+			arch-action-enabled;
+			chipset-action-enabled;
+			action-enabled;
+		};
+	};
+
 	/*
 	 * Aliases used for sub-board GPIOs.
 	 */

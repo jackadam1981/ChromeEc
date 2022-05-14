@@ -17,11 +17,11 @@
 #include "gpio_signal.h"
 #include "gpio/gpio.h"
 
+#include <ap_power/ap_pwrseq_sm.h>
+
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
 #define  X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS	5
-
-static bool s0_stable;
 
 static void generate_ec_soc_dsw_pwrok_handler(int delay)
 {
@@ -38,11 +38,9 @@ void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS;
 
-	if (s0_stable) {
-		/* Enable these power signals in case of sudden shutdown */
-		power_signal_enable(PWR_DSW_PWROK);
-		power_signal_enable(PWR_PG_PP1P05);
-	}
+	/* Enable these power signals in case of sudden shutdown */
+	power_signal_enable(PWR_DSW_PWROK);
+	power_signal_enable(PWR_PG_PP1P05);
 
 	power_signal_set(PWR_EC_PCH_RSMRST, 0);
 	power_signal_set(PWR_EC_SOC_DSW_PWROK, 0);
@@ -75,47 +73,6 @@ void board_ap_power_force_shutdown(void)
 
 	power_signal_disable(PWR_DSW_PWROK);
 	power_signal_disable(PWR_PG_PP1P05);
-	s0_stable = false;
-}
-
-void board_ap_power_action_g3_s5(void)
-{
-	power_signal_enable(PWR_DSW_PWROK);
-	power_signal_enable(PWR_PG_PP1P05);
-
-	LOG_DBG("Turning on PWR_EN_PP5000_A and PWR_EN_PP3300_A");
-	power_signal_set(PWR_EN_PP5000_A, 1);
-	power_signal_set(PWR_EN_PP3300_A, 1);
-
-	power_wait_signals_timeout(IN_PGOOD_ALL_CORE,
-		AP_PWRSEQ_DT_VALUE(wait_signal_timeout));
-
-	generate_ec_soc_dsw_pwrok_handler(
-		AP_PWRSEQ_DT_VALUE(dsw_pwrok_delay));
-	s0_stable = false;
-}
-
-void board_ap_power_action_s3_s0(void)
-{
-	s0_stable = false;
-}
-
-void board_ap_power_action_s0_s3(void)
-{
-	power_signal_enable(PWR_DSW_PWROK);
-	power_signal_enable(PWR_PG_PP1P05);
-	s0_stable = false;
-}
-
-void board_ap_power_action_s0(void)
-{
-	if (s0_stable) {
-		return;
-	}
-	LOG_INF("Reaching S0");
-	power_signal_disable(PWR_DSW_PWROK);
-	power_signal_disable(PWR_PG_PP1P05);
-	s0_stable = true;
 }
 
 int board_ap_power_assert_pch_power_ok(void)
@@ -127,13 +84,6 @@ int board_ap_power_assert_pch_power_ok(void)
 	}
 
 	return 0;
-}
-
-bool board_ap_power_check_power_rails_enabled(void)
-{
-	return power_signal_get(PWR_EN_PP3300_A) &&
-			power_signal_get(PWR_EN_PP5000_A) &&
-			power_signal_get(PWR_EC_SOC_DSW_PWROK);
 }
 
 int board_power_signal_get(enum power_signal signal)
@@ -168,3 +118,73 @@ int board_power_signal_set(enum power_signal signal, int value)
 {
 	return -EINVAL;
 }
+
+static void board_ap_power_g3_run(void *arg)
+{
+	struct ap_pwrseq_sm_data *data = arg;
+
+	if (IS_EVENT_SET(data, AP_PWRSEQ_EVENT_POWER_BUTTON)) {
+		power_signal_enable(PWR_DSW_PWROK);
+		power_signal_enable(PWR_PG_PP1P05);
+
+		LOG_DBG("Turning on PWR_EN_PP5000_A and PWR_EN_PP3300_A");
+		power_signal_set(PWR_EN_PP5000_A, 1);
+		power_signal_set(PWR_EN_PP3300_A, 1);
+	}
+
+	if(power_wait_signals_timeout(IN_PGOOD_ALL_CORE,
+	   AP_PWRSEQ_DT_VALUE(wait_signal_timeout))){
+		power_signal_set(PWR_EN_PP5000_A, 0);
+		power_signal_set(PWR_EN_PP3300_A, 0);
+
+		power_signal_disable(PWR_DSW_PWROK);
+		power_signal_disable(PWR_PG_PP1P05);
+
+		SET_NOT_READY(data);
+
+		return;
+	}
+
+	generate_ec_soc_dsw_pwrok_handler(
+		AP_PWRSEQ_DT_VALUE(dsw_pwrok_delay));
+}
+
+AP_POWER_STATE_DEFINE(AP_POWER_STATE_G3,
+		      NULL,
+		      board_ap_power_g3_run,
+		      NULL)
+
+static void board_ap_power_s5_run(void *arg)
+{
+	struct ap_pwrseq_sm_data *data = arg;
+
+	if (power_signal_get(PWR_EN_PP3300_A) &&
+	    power_signal_get(PWR_EN_PP5000_A) &&
+	    power_signal_get(PWR_EC_SOC_DSW_PWROK)) {
+		return;
+	}
+	/* power rails are not ready */
+	SET_NOT_READY(data);
+}
+
+AP_POWER_STATE_DEFINE(AP_POWER_STATE_S5,
+		      NULL,
+		      board_ap_power_s5_run,
+		      NULL)
+
+static void board_ap_power_s0_entry(void *arg)
+{
+	power_signal_disable(PWR_DSW_PWROK);
+	power_signal_disable(PWR_PG_PP1P05);
+}
+
+static void board_ap_power_s0_exit(void *arg)
+{
+	power_signal_enable(PWR_DSW_PWROK);
+	power_signal_enable(PWR_PG_PP1P05);
+}
+
+AP_POWER_STATE_DEFINE(AP_POWER_STATE_S0,
+		      board_ap_power_s0_entry,
+		      NULL,
+		      board_ap_power_s0_exit)
