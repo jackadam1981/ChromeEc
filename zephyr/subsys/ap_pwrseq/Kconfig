@@ -11,6 +11,7 @@ source "subsys/logging/Kconfig.template.log_config"
 config X86_NON_DSX_PWRSEQ
 	bool
 	default n
+	select HAS_TASK_POWERBTN
 	help
 	  This option enables Non Deep Sleep Well power sequencing for
 	  Intel x86 chips.

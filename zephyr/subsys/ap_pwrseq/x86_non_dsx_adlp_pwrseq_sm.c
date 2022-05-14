@@ -4,6 +4,7 @@
  */
 
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
+#include <zephyr/ap_pwrseq/ap_pwrseq_sm.h>
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
@@ -36,7 +37,6 @@ static int check_pch_out_of_suspend(void)
 int all_sys_pwrgd_handler(void)
 {
 	int retry = 0;
-
 	/* TODO: Add condition for no power sequencer */
 	power_wait_signals_timeout(POWER_SIGNAL_MASK(PWR_ALL_SYS_PWRGD),
 				   AP_PWRSEQ_DT_VALUE(all_sys_pwrgd_timeout));
@@ -55,9 +55,7 @@ int all_sys_pwrgd_handler(void)
 			k_msleep(10);
 		}
 	}
-
 	/* PG_EC_ALL_SYS_PWRGD is asserted, enable VCCST_PWRGD_OD. */
-
 	if (power_signal_get(PWR_VCCST_PWRGD) == 0) {
 		k_msleep(AP_PWRSEQ_DT_VALUE(vccst_pwrgd_delay));
 		power_signal_set(PWR_VCCST_PWRGD, 1);
@@ -85,13 +83,33 @@ void generate_sys_pwrok_handler(void)
 }
 
 /* Chipset specific power state machine handler */
-
-/* TODO: Separate with and without power sequencer logic here */
-
-void s0_action_handler(void)
+static void x86_non_dsx_adlp_g3_run(void *arg)
 {
+	struct ap_pwrseq_sm_data *data = arg;
+
+	RETURN_IF_HANDLED(data);
+	/*
+	 * Now wait for SLP_SUS_L to go high based on tPCH32. If this
+	 * signal doesn't go high within 250 msec then go back to G3.
+	 */
+	if (check_pch_out_of_suspend()) {
+		ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
+	} else {
+		SET_HANDLED(data);
+	}
+}
+
+AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_G3,
+			      NULL,
+			      x86_non_dsx_adlp_g3_run,
+			      NULL)
+
+static void x86_non_dsx_adlp_s0_run(void *arg)
+{
+	struct ap_pwrseq_sm_data *data = arg;
 	int ret;
 
+	RETURN_IF_HANDLED(data);
 	/* Handle DSW_PWROK passthrough */
 	/* This is not needed for alderlake silego, guarded by CONFIG? */
 
@@ -99,6 +117,7 @@ void s0_action_handler(void)
 	ret = all_sys_pwrgd_handler();
 	if (ret) {
 		LOG_DBG("ALL_SYS_PWRGD handling failed err= %d", ret);
+		SET_HANDLED(data);
 		return;
 	}
 
@@ -109,6 +128,7 @@ void s0_action_handler(void)
 	ret = board_ap_power_assert_pch_power_ok();
 	if (ret) {
 		LOG_DBG("PCH_PWROK handling failed err=%d", ret);
+		SET_HANDLED(data);
 		return;
 	}
 
@@ -119,52 +139,12 @@ void s0_action_handler(void)
 	generate_sys_pwrok_handler();
 }
 
-void s3s0_action_handler(void)
-{
-}
-
-void s0s3_action_handler(void)
+static void x86_non_dsx_adlp_s0_exit(void *arg)
 {
 	ap_off();
 }
 
-enum power_states_ndsx g3s5_action_handler(void)
-{
-	/*
-	 * Now wait for SLP_SUS_L to go high based on tPCH32. If this
-	 * signal doesn't go high within 250 msec then go back to G3.
-	 */
-	if (check_pch_out_of_suspend()) {
-		ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
-		return SYS_POWER_STATE_G3S5;
-	}
-	return SYS_POWER_STATE_S5G3;
-}
-
-enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state)
-{
-	/* Add chipset specific state handling if any */
-	switch (curr_state) {
-	case SYS_POWER_STATE_G3S5:
-		board_ap_power_action_g3_s5();
-		curr_state = g3s5_action_handler();
-		break;
-	case SYS_POWER_STATE_S5:
-		break;
-	case SYS_POWER_STATE_S3S0:
-		board_ap_power_action_s3_s0();
-		s3s0_action_handler();
-		break;
-	case SYS_POWER_STATE_S0S3:
-		board_ap_power_action_s0_s3();
-		s0s3_action_handler();
-		break;
-	case SYS_POWER_STATE_S0:
-		board_ap_power_action_s0();
-		s0_action_handler();
-		break;
-	default:
-		break;
-	}
-	return curr_state;
-}
+AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_S0,
+			      NULL,
+			      x86_non_dsx_adlp_s0_run,
+			      x86_non_dsx_adlp_s0_exit)
