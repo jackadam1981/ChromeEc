@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d36ad49_b06482ac",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd885ee_4ce48444",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afec514c_7bb96cab",
@@ -131,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6099c78b_88293c37",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "In previous comment I made a mistake. Extensions usually would take actions after sending GoodCRC. E.g. source on getting `GET_SOURCE_CAP` message should first send GoodCRC and later send its capabilities.\n\nSending GoodCRC in common code is right think, but to emulate some faulty behavior it is required to do some actions first or don\u0027t send GoodCRC at all. As long as `send_goodcrc` in `tcpci_partner_data` is true, common code is sending GoodCRC right after receiving message. When it is set to false (e.g. by faulty snk extension) it is up to extension to make sure that GoodCRC is send at correct moment.",
+      "parentUuid": "1cd5f390_cfc29793",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c3f50e0_4682f055",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 6
@@ -178,6 +226,24 @@
       "side": 1,
       "message": "Can you comment this variable to indicate how it should be interpreted?",
       "parentUuid": "f516f6d4_947f20b3",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf0826a_91598a83",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e514a9f9_8ccd3e2e",
       "revId": "d591eb1a129f5114054580677c48f7185549c832",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -235,6 +301,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "debaf562_64fe1f4a",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "I have added extra `TCPCI_EMUL_TX_UNKNOWN` value to indicate errors that are not part of TCPC emulation (e.g. when emulator failed to acquire Zephyr lock). Some \"fails\" are expected, e.g. TCPC emulator has not set `RX_DETECT` register, then partner should receive `TCPCI_EMUL_TX_FAILED` status.",
+      "parentUuid": "9e687f42_06d6f049",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a925ff_3a74dd1a",
@@ -252,6 +336,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfabee61_582b2beb",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a925ff_3a74dd1a",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8241861d_a512f9c1",
@@ -265,6 +367,30 @@
       "writtenOn": "2022-04-27T21:14:29Z",
       "side": 1,
       "message": "sent",
+      "range": {
+        "startLine": 214,
+        "startChar": 65,
+        "endLine": 214,
+        "endChar": 69
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58105db1_4abe7f30",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8241861d_a512f9c1",
       "range": {
         "startLine": 214,
         "startChar": 65,
@@ -298,6 +424,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b89eb123_915d4aeb",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee89c918_70b6b336",
+      "range": {
+        "startLine": 234,
+        "startChar": 52,
+        "endLine": 234,
+        "endChar": 65
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb462d10_ece72842",
@@ -311,6 +461,30 @@
       "writtenOn": "2022-04-27T21:14:29Z",
       "side": 1,
       "message": "Nit: connected. Keep tense consistent.",
+      "range": {
+        "startLine": 245,
+        "startChar": 49,
+        "endLine": 245,
+        "endChar": 73
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d58aa4f_8a9fe324",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb462d10_ece72842",
       "range": {
         "startLine": 245,
         "startChar": 49,
@@ -344,6 +518,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e393e61_746b5928",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "Changed `tcpci_partner_connect_to_tcpci()` to make connection to TCPC emulator always when `connect` callback for all extension is successful.",
+      "parentUuid": "f78c4d34_b8dfbd67",
+      "range": {
+        "startLine": 246,
+        "startChar": 20,
+        "endLine": 247,
+        "endChar": 45
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edc852f6_861ec43c",
@@ -357,6 +555,30 @@
       "writtenOn": "2022-04-27T21:14:29Z",
       "side": 1,
       "message": "This seems error-prone. I think it might be easier to set this up correctly by chaining together constructor-style function calls. The common partner constructor would take an extension structure, and the DRP extension constructor would take source and sink structures as arguments and return an extension structure.",
+      "range": {
+        "startLine": 28,
+        "startChar": 44,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7c0ef6_61be993d",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "Added `struct tcpci_partner_extension *tcpci_\u003cextension\u003e_init()` function to all extensions. This combine `init` callback from `tcpci_partner_extensions_ops` (which is now removed) and an extension chain creation.",
+      "parentUuid": "edc852f6_861ec43c",
       "range": {
         "startLine": 28,
         "startChar": 44,
@@ -451,6 +673,24 @@
       "writtenOn": "2022-04-27T21:14:29Z",
       "side": 1,
       "message": "I\u0027m not wild about this idiom. If you only have one extension, just writing the declaration out should be simple and quick. It could probably even be a one-liner. If you have more than one extension, using this macro will be awkward at best. I think just typing out the definition would make it more obvious what\u0027s going on in the code.\n\nIf you want to make the emulator setup shorter, I\u0027d prefer a function defined to return a `struct tcpci_src_emul_data`. If I\u0027m not mistaken, that would also avoid the need to declare `tcpci_src_emul_ops` in this header file, which would be nice.",
+      "revId": "d591eb1a129f5114054580677c48f7185549c832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eab37ab_2b6bc0ef",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_src.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-16T16:23:39Z",
+      "side": 1,
+      "message": "These macros are removed as `tcpci_\u003cextension\u003e_init()` function seems to cover initialization good enough. Declaration of `tcpci_\u003cextension\u003e_ops` is removed as well.",
+      "parentUuid": "31c31a9f_34b30dbc",
       "revId": "d591eb1a129f5114054580677c48f7185549c832",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
