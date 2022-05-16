@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5895e870_959d2f00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-16T03:27:14Z",
+      "side": 1,
+      "message": "version",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "7b335c709bfbe9a6fbbd2c9717f52f0b77d52bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05dcf589_d230c79e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-16T03:27:14Z",
+      "side": 1,
+      "message": "If there is no any OCM FW in the chip then will anx7447_reg_read() still return successfully and what will be the val (e.g. 0)?",
+      "revId": "7b335c709bfbe9a6fbbd2c9717f52f0b77d52bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
