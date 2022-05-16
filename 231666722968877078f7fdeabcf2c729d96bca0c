@@ -94,6 +94,30 @@
       },
       "revId": "231666722968877078f7fdeabcf2c729d96bca0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38c46ea_5943d1cb",
+        "filename": "power/meteorlake.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-16T18:06:16Z",
+      "side": 1,
+      "message": "So this change requires that SLP_S3 is physical signal and cannot be setup as a virtual wire?\n\nIf that is a limitation for MTL, the comment should note that.",
+      "parentUuid": "b0e40f2f_c3fd5c27",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 40
+      },
+      "revId": "231666722968877078f7fdeabcf2c729d96bca0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
