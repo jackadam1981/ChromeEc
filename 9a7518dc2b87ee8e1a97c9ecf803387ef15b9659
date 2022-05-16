@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00fa1963_777762de",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4795,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-05-16T22:16:27Z",
+      "side": 0,
+      "message": "Do not change the existing enum values. This will cause issues between OS and EC when not running the most recent versions on both.",
+      "revId": "9a7518dc2b87ee8e1a97c9ecf803387ef15b9659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d041e02c_cd6babed",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-05-16T22:16:27Z",
+      "side": 0,
+      "message": "Why is this removed?",
+      "revId": "9a7518dc2b87ee8e1a97c9ecf803387ef15b9659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
