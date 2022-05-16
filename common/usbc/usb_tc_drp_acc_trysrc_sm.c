@@ -1237,7 +1237,6 @@ static void bc12_role_change_handler(int port, enum pd_data_role prev_data_role,
 	enum pd_data_role data_role)
 {
 	int event = 0;
-	int task_id = USB_CHG_PORT_TO_TASK_ID(port);
 	bool role_changed = (data_role != prev_data_role);
 
 	if (!IS_ENABLED(CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER))
@@ -1263,7 +1262,7 @@ static void bc12_role_change_handler(int port, enum pd_data_role prev_data_role,
 	}
 
 	if (event)
-		task_set_event(task_id, event);
+		usb_charger_task_set_event(port, event);
 }
 
 /*
