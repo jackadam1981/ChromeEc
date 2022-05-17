@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fa9a066_2b436cab",
+        "filename": "board/osiris/fw_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-05-17T15:38:16Z",
+      "side": 1,
+      "message": "What\u0027s the use of this bit? Osiris will support only one KB matrix.",
+      "revId": "20a8fe8ac52bd158e140a77144f5af80919a4aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35832317_7e406db5",
         "filename": "board/osiris/keyboard.c",
         "patchSetId": 2
