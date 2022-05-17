@@ -97,6 +97,9 @@ static void nereid_subboard_config(void)
 {
 	enum nissa_sub_board_type sb = nissa_get_sb_type();
 	static struct ap_power_ev_callback power_cb;
+	const struct gpio_dt_spec *hpd_gpio;
+	static struct gpio_callback hdmi_hpd_cb;
+	int rv, irq_key;
 
 	/*
 	 * USB-A port: current limit output is configured by default and unused
@@ -144,10 +147,7 @@ static void nereid_subboard_config(void)
 		 * non-default settings, and HPD must be forwarded to the AP
 		 * on another output pin.
 		 */
-		const struct gpio_dt_spec *hpd_gpio =
-			GPIO_DT_FROM_ALIAS(gpio_hpd_odl);
-		static struct gpio_callback hdmi_hpd_cb;
-		int rv, irq_key;
+		hpd_gpio = GPIO_DT_FROM_ALIAS(gpio_hpd_odl);
 
 		/* HDMI power enable outputs */
 		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
