@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ebaf251_b5a38209",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-17T17:40:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "67805696_abe40ec4",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "bbb706cf266b21bad2d8d4f86f49eeb97fa065fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf98b2ce_2e0993c5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-16T20:20:54Z",
       "side": 1,
       "message": "add why it is not necessary from datasheet and what happens in zephyr case",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "bbb706cf266b21bad2d8d4f86f49eeb97fa065fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefefbce_70083fc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-17T17:40:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf98b2ce_2e0993c5",
       "range": {
         "startLine": 9,
         "startChar": 0,
