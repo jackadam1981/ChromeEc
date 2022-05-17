@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a998537c_74db932f",
+        "filename": "zephyr/shim/src/led_driver/led_gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-17T18:45:12Z",
+      "side": 1,
+      "message": "Can they be constants, to save the RAM space? The same question to the below similar struct too?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 7
+      },
+      "revId": "589a075217468a2289763ffa144eb5869e48192e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
