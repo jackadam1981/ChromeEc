@@ -16,6 +16,24 @@
       "message": "No cherry-pick -- to be sync\u0027d by back merge from ToT.",
       "revId": "b2cf2df742d20c079c074abf1b7c2a8e74faf0d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a698535f_004499ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-05-17T18:30:33Z",
+      "side": 1,
+      "message": "Does this mean someone will take care merging this to fw branch in a batch?",
+      "parentUuid": "74bc318b_e974a876",
+      "revId": "b2cf2df742d20c079c074abf1b7c2a8e74faf0d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
