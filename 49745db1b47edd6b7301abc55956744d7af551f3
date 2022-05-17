@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cffbd26_283547a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-17T14:13:03Z",
+      "side": 1,
+      "message": "Is there really no bug associated with this?",
+      "revId": "49745db1b47edd6b7301abc55956744d7af551f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7277146_5fa0d6eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-17T14:13:03Z",
+      "side": 1,
+      "message": "Need a zmake testall or do a dry-run on the CQ, preferably the former.",
+      "revId": "49745db1b47edd6b7301abc55956744d7af551f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf92f4a_0f9bba86",
+        "filename": "zephyr/dts/bindings/usbc/cypress,ccgxxf.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-17T14:13:03Z",
+      "side": 1,
+      "message": "Needs license header.",
+      "revId": "49745db1b47edd6b7301abc55956744d7af551f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
