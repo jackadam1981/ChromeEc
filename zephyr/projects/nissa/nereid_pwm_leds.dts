@@ -17,15 +17,15 @@
 		compatible = "cros-ec,pwm-leds";
 
 		leds = <&pwm_led0>;
-		frequency = <324>;
+		frequency = <4800>;
 
 				/*<red green blue>*/
 		color-map-red    = <100   0    0>;
 		color-map-green  = <  0 100    0>;
 		color-map-blue   = <  0   0  100>;
-		color-map-yellow = <  0  50   50>;
+		color-map-yellow = <100 100    0>;
 		color-map-white  = <100 100  100>;
-		color-map-amber  = <100  20  100>;
+		color-map-amber  = <100  75    0>;
 
 		brightness-range = <100 100 100 0 0 0>;
 
