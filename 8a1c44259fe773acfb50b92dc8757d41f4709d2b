@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13c8ad3_af174aee",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-17T08:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40699cd7_c25b5f85",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cddfc6d9_2013d899",
@@ -194,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "674607c5_0a41a47a",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-17T08:38:21Z",
+      "side": 1,
+      "message": "Done, I used:\nrun_time \u003d *(int32_t *) (\u0026data[2]);",
+      "parentUuid": "6f608d9b_9402df53",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dc91f99_2a27c1b7",
@@ -243,6 +279,24 @@
       "side": 1,
       "message": "OK, I see now that you\u0027re not iterating through the last element, so you won\u0027t go off the end. It seems like `.run_time` in the last element doesn\u0027t really matter, because you\u0027re not checking against it. If you get to `i \u003d\u003d 6`, you\u0027ll use `.drop_volt` no matter how many days it has been. I didn\u0027t get that right away.\n\nHow about this to make the code a little more obvious?: Set the last `.run_time` to `INT_MAX` and iterate through the entire table (`i \u003c NUM_DROP_LEVELS`). It won\u0027t be possible to go off the end, because `batt_run_time` will always be `\u003c\u003d` the last `.run_time`. And, looking at the table, it will be obvious that it covers every possible value of the parameter (or at least, every value that can be stored in that function\u0027s output).",
       "parentUuid": "3a11d2db_319e3583",
+      "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2343adfa_66b6d1b5",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-17T08:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9187b39c_35fc2628",
       "revId": "8a1c44259fe773acfb50b92dc8757d41f4709d2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

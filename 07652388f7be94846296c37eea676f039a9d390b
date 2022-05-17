@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43600bcb_289c55d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-17T08:38:21Z",
+      "side": 1,
+      "message": "I added a hook to print battery run time once when ec boot,\nAnd undef RUNTIME_TEST in board.h because it print a lot of log..",
+      "parentUuid": "e6f455e4_a6109502",
+      "revId": "07652388f7be94846296c37eea676f039a9d390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89d35bcf_0d4bf326",
@@ -66,6 +84,30 @@
       "writtenOn": "2022-05-16T21:04:36Z",
       "side": 1,
       "message": "Is the runtime field supposed to be interpreted as a signed number?\n\nIf it\u0027s signed, then `run_time` should probably be `int32_t` to be more obviously immune to overflow. If it\u0027s unsigned, then `run_time` should be `uint32_t`. `battery_run_time` probably should be too.\n\nIf the field is signed, what would it mean for it to be negative?",
+      "range": {
+        "startLine": 344,
+        "startChar": 12,
+        "endLine": 344,
+        "endChar": 20
+      },
+      "revId": "07652388f7be94846296c37eea676f039a9d390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf7ef20_9f4286d7",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-17T08:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89d35bcf_0d4bf326",
       "range": {
         "startLine": 344,
         "startChar": 12,
