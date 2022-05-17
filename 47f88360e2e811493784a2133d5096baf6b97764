@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e076a4c_3be09a1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-17T00:16:35Z",
+      "side": 1,
+      "message": "Yes, crash.ECCrash now passes",
+      "parentUuid": "05cbc4c2_c9d06852",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "47f88360e2e811493784a2133d5096baf6b97764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15bc3d81_503cb1e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-16T21:25:54Z",
       "side": 1,
       "message": "Can you also mention the location where Zephyr defines the registers stored into z_arch_esf_t?  Looks to be include/zephyr/arch/riscv/exp.h",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "47f88360e2e811493784a2133d5096baf6b97764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3409d9d0_03d4be04",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-17T00:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15bc3d81_503cb1e6",
       "range": {
         "startLine": 44,
         "startChar": 0,
