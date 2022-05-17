@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8de6a99_13e37a25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-05-17T03:53:28Z",
+      "side": 1,
+      "message": "The git message can\u0027t input the diff content, I added here for the reference:\n\n\n```\nHook script \"cros lint ${PRESUBMIT_FILES}\" failed with code 1:\n  ERROR: /mnt/host/source/src/platform/ec/util/update_release_branch.py Imports are incorrectly sorted and/or formatted.\n  --- /mnt/host/source/src/platform/ec/util/update_release_branch.py:before\t2022-05-17 11:39:22.098548\n  +++ /mnt/host/source/src/platform/ec/util/update_release_branch.py:after\t2022-05-17 11:39:44.137148\n  @@ -11,12 +11,14 @@\n   boards.\n   \"\"\"\n   from __future__ import print_function\n  +\n   import argparse\n   import os\n   import re\n   import subprocess\n   import sys\n   import textwrap\n  +\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "f01e36b048ea1965f868ef663a2251a995433eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
