@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab1a4b70_140ff535",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-17T00:29:50Z",
+      "side": 1,
+      "message": "\u003e If it\u0027s the latter case, I\u0027d rather that the board code implemented something like\n\nThat\u0027s right. I talked with Uday about this and we are trying to leave open the possibility of changing how the LEDs are handled from board to board. I\u0027ve update the interface like you described.\n\n`get_status_power_state_change` is not override-able and gets the led indication from `board_get_pd_sdb_power_indicator` which can be overriden. I added `board_get_pd_sdb_power_indicator` to include/usb_pd.h which has a few other override-able board function prototypes.",
+      "parentUuid": "de2579dd_5d65e026",
+      "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29104eee_aa31cbac",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 6
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-12T22:33:52Z",
       "side": 1,
       "message": "Should this be a greater-than-or-equal-to style check?",
+      "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ae5431_2034cc24",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-17T00:29:50Z",
+      "side": 1,
+      "message": "Yes, done.",
+      "parentUuid": "29104eee_aa31cbac",
       "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-05-12T22:33:52Z",
       "side": 1,
       "message": "Can these be enums?",
+      "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e417a09_82755280",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-17T00:29:50Z",
+      "side": 1,
+      "message": "Yes, done.",
+      "parentUuid": "e3255d7b_a86b865a",
       "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
