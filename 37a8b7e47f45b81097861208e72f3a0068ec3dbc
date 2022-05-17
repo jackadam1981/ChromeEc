@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cf1e9e_dbcbd96d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-17T02:44:30Z",
+      "side": 1,
+      "message": "none",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "37a8b7e47f45b81097861208e72f3a0068ec3dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c6d6e00_c4f79482",
+        "filename": "board/crota/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-17T02:44:30Z",
+      "side": 1,
+      "message": "Can we use HOOK_CHIPSET_SHUTDOWN or HOOK_CHIPSET_SUSPEND instead? That would be a more straight-forward way of invoking the task...",
+      "revId": "37a8b7e47f45b81097861208e72f3a0068ec3dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05aa740c_36db97be",
+        "filename": "board/crota/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-17T02:44:30Z",
+      "side": 1,
+      "message": "why not TASK_ALWAYS?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "37a8b7e47f45b81097861208e72f3a0068ec3dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
