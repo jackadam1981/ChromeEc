@@ -56,6 +56,30 @@
       },
       "revId": "a6ecad44b488fd56c315345b2e80f40b32f9cb20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9373261a_74b40c99",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-05-17T20:56:02Z",
+      "side": 1,
+      "message": "I think krabby uses the it8xxx2 chip.\n\nI haven\u0027t looked at how the keyboard is managed for it8xxx2 chips.",
+      "parentUuid": "fef1981f_6422ec7d",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "a6ecad44b488fd56c315345b2e80f40b32f9cb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
