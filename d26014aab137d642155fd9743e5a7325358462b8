@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3dab980_acbbc2db",
+        "filename": "zephyr/projects/herobrine/led_pins_herobrine.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-17T18:59:37Z",
+      "side": 1,
+      "message": "I think it is a LEFT/RIGHT LED? The ectool can\u0027t differentiate them if using a single BATTERY LED, right?",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "d26014aab137d642155fd9743e5a7325358462b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb12283d_c675a103",
+        "filename": "zephyr/projects/herobrine/led_policy_herobrine.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-17T18:59:37Z",
+      "side": 1,
+      "message": "Reorder the comment to put the non-off state first, to match the below dts sequence.",
+      "range": {
+        "startLine": 41,
+        "startChar": 18,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "d26014aab137d642155fd9743e5a7325358462b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a960689_4ad32161",
+        "filename": "zephyr/projects/herobrine/led_policy_herobrine.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-17T18:59:37Z",
+      "side": 1,
+      "message": "The above comment states `white 1 sec`.",
+      "range": {
+        "startLine": 44,
+        "startChar": 17,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "d26014aab137d642155fd9743e5a7325358462b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
