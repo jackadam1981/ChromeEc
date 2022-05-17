@@ -70,6 +70,30 @@
       },
       "revId": "f01e36b048ea1965f868ef663a2251a995433eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fdbffb1_1c5851bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-05-17T06:46:55Z",
+      "side": 1,
+      "message": "I have double checked it at my end. I got the same error after repo sync and ./update_chroot.",
+      "parentUuid": "fefb386c_7f1e4222",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "f01e36b048ea1965f868ef663a2251a995433eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
