@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad27ff5c_aa71e689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-17T22:06:49Z",
+      "side": 1,
+      "message": "with a nit to your discretion",
+      "revId": "1cb3633652b6cf5d22711ee41e72b2a2e8834622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6dcb8f_a51f81c8",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-17T22:06:49Z",
+      "side": 1,
+      "message": "just a nit: would be more compact to iterate unitl size reaches zero:\n\n```\nwhile size :\n  seg_size \u003d min(MAX_BLOCK_SIZE, size)\n  LOG.log(\u0027Adding %08x:%08x\u0027 % (offset, seg_size))\n  ranges_append(seg_size, offset)\n  size -\u003d seg_size\n  offset +\u003d seg_size\n```",
+      "range": {
+        "startLine": 556,
+        "startChar": 11,
+        "endLine": 562,
+        "endChar": 41
+      },
+      "revId": "1cb3633652b6cf5d22711ee41e72b2a2e8834622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
