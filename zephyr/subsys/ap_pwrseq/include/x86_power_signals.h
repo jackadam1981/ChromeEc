@@ -13,6 +13,16 @@
 #define IN_PCH_SLP_S4  POWER_SIGNAL_MASK(PWR_SLP_S4)
 #define IN_PCH_SLP_S5  POWER_SIGNAL_MASK(PWR_SLP_S5)
 
+#if	defined(CONFIG_PLATFORM_EC_ESPI_VW_SLP_S3) || \
+	defined(CONFIG_PLATFORM_EC_ESPI_VW_SLP_S4) || \
+	defined(CONFIG_PLATFORM_EC_ESPI_VW_SLP_S5)
+/*
+ * Set if ESPI signals are required, so need to check
+ * whether ESPI is ready or not
+ */
+#define PWRSEQ_REQUIRE_ESPI
+#endif
+
 #if defined(CONFIG_AP_X86_INTEL_ADL)
 
 /* Input state flags */
@@ -49,6 +59,16 @@
 	 POWER_SIGNAL_MASK(PWR_SLP_S3) |	\
 	 POWER_SIGNAL_MASK(PWR_SLP_S4) |	\
 	 POWER_SIGNAL_MASK(PWR_SLP_S5))
+
+#if	defined(CONFIG_PLATFORM_EC_ESPI_VW_SLP_S3) || \
+	defined(CONFIG_PLATFORM_EC_ESPI_VW_SLP_S4) || \
+	defined(CONFIG_PLATFORM_EC_ESPI_VW_SLP_S5)
+/*
+ * Set if ESPI signals are required, so need to check
+ * whether ESPI is ready or not
+ */
+#define PWRSEQ_REQUIRE_ESPI
+#endif
 
 #else
 #warning("Input power signals state flags not defined");
