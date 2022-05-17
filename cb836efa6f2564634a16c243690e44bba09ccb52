@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c364879_fa66b828",
+        "filename": "common/acpi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-17T16:55:35Z",
+      "side": 0,
+      "message": "Instead of deleting it, maybe we can hide it behind \u0027#ifdef DEBUG #define DPRINTS #endif\u0027?",
+      "range": {
+        "startLine": 409,
+        "startChar": 2,
+        "endLine": 409,
+        "endChar": 9
+      },
+      "revId": "cb836efa6f2564634a16c243690e44bba09ccb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
