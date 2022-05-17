@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35832317_7e406db5",
+        "filename": "board/osiris/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-17T15:32:31Z",
+      "side": 1,
+      "message": "Since this is changing so much of scancode_set2, why don\u0027t you define a new scancode set entirely? You can cherry-pick crrev/c/3644693 and call register_scancode_set2.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "20a8fe8ac52bd158e140a77144f5af80919a4aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
