@@ -22,6 +22,29 @@
       },
       "revId": "ba2fa138fe214dec83d6aed76936c834c5d6c61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42588bf_9e6d1c37",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-05-17T07:15:04Z",
+      "side": 1,
+      "message": "CLEAR_BIT(NPCX_DEVALT(0xC), NPCX_DEVALTC_TB2_SL2);",
+      "range": {
+        "startLine": 915,
+        "startChar": 2,
+        "endLine": 916,
+        "endChar": 50
+      },
+      "revId": "ba2fa138fe214dec83d6aed76936c834c5d6c61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
