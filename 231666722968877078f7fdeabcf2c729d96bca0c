@@ -118,6 +118,30 @@
       },
       "revId": "231666722968877078f7fdeabcf2c729d96bca0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c52864_eb8bda89",
+        "filename": "power/meteorlake.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-17T00:10:27Z",
+      "side": 1,
+      "message": "Done\n\nIt\u0027s more of a Silego cannot use Virtual wire.\n\nChanged it to power_signal_get_level(SLP_S3_SIGNAL_L) as there is no difference in mimicking Silego chip..",
+      "parentUuid": "d38c46ea_5943d1cb",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 40
+      },
+      "revId": "231666722968877078f7fdeabcf2c729d96bca0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
