@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa80da44_2deb9644",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-17T17:55:58Z",
+      "side": 1,
+      "message": "As GPIO/IOEX signals and tcpc chip are initialized at bootup,\nresetting tcpc chips from EC resets all its device registers and pin\nconfiguration info is lost.\nAlso, NCT38XX has a VCC Power-up reset signal generated internally\nhence external reset is not needed upon power on.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "13deba0bcda0b295ba2f5116eb94f69b71d23d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ef7912_827b8568",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-17T17:55:58Z",
+      "side": 1,
+      "message": "can you capture why this fails in commit msg?",
+      "range": {
+        "startLine": 392,
+        "startChar": 1,
+        "endLine": 399,
+        "endChar": 0
+      },
+      "revId": "13deba0bcda0b295ba2f5116eb94f69b71d23d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
