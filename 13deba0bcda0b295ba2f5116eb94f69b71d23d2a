@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6731ddf9_8631b0ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-17T19:54:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa80da44_2deb9644",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "13deba0bcda0b295ba2f5116eb94f69b71d23d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1ef7912_827b8568",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-17T17:55:58Z",
       "side": 1,
       "message": "can you capture why this fails in commit msg?",
+      "range": {
+        "startLine": 392,
+        "startChar": 1,
+        "endLine": 399,
+        "endChar": 0
+      },
+      "revId": "13deba0bcda0b295ba2f5116eb94f69b71d23d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "226bcadc_6b93c282",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-17T19:54:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f1ef7912_827b8568",
       "range": {
         "startLine": 392,
         "startChar": 1,
