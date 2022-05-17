@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a873953_45118994",
+        "filename": "board/osiris/fw_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-05-17T15:37:27Z",
+      "side": 1,
+      "message": "Is this needed? Osiris will support only antighost based KB matrix so we don\u0027t need to differentiate between normal and antighost is my understanding.",
+      "revId": "20a8fe8ac52bd158e140a77144f5af80919a4aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35832317_7e406db5",
         "filename": "board/osiris/keyboard.c",
         "patchSetId": 2
