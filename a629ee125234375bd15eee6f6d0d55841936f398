@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8788002_428aa3c7",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2022-05-17T19:58:11Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we skip reset even for legacy EC?",
+      "revId": "a629ee125234375bd15eee6f6d0d55841936f398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
