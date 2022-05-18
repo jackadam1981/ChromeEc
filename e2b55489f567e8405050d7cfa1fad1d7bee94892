@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e058010_18c6fe1b",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81302bx_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-18T05:06:00Z",
+      "side": 1,
+      "message": "So whilst this works, I can\u0027t help thinking that this should be solved via having separate CONFIG_SOC_IT81202 and CONFIG_SOC_IT81302 config settings, and\nthen have CONFIG_SOC_IT8XXX2_GPIO_GROUP_K_L_DEFAULT_PULL_DOWN selected depending on which SOC is being used.\nIf the 2 parts are different enough so that some config items need to be used to change the behaviour, then maybe that difference should be explicit.\nThe ...IT8XXX2... setting should be used for truly common configuration.",
+      "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
