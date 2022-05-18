@@ -34,6 +34,24 @@
       "parentUuid": "bfd3c1f9_360f6b65",
       "revId": "a8ae8aeb96d97b00d677a0e98852c4b9c26a2930",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5bbc952_8fb88fb0",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6869,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-18T15:57:08Z",
+      "side": 1,
+      "message": "All the zephyr Kconfigs have to be of a form \"PLATFORM_EC_blah_blah\", so we use config_chip.h to translate those into the plain \"CONFIG_blah_blah\" our code usually expects.\n\nI\u0027m guessing the long-run desire for zephyr would be to put this in the device tree.  In which case, that like more of a TODO bug than a fixing in this CL bug.  Adding Keith for his opinion",
+      "parentUuid": "f242368b_d51a6021",
+      "revId": "a8ae8aeb96d97b00d677a0e98852c4b9c26a2930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
