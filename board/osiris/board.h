@@ -141,6 +141,9 @@
 
 #undef CONFIG_VOLUME_BUTTONS
 
+/* TODO: Just for explain log file, should remove it before merge. */
+#define TEST_SCANCODE
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"	/* needed by registers.h */
