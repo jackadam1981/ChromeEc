@@ -36,6 +36,8 @@ test_export_static enum rgbkbd_demo demo =
 test_export_static
 uint8_t rgbkbd_table[EC_RGBKBD_MAX_KEY_COUNT];
 
+static enum rgbkbd_state rgbkbd_state;
+
 static int set_color_single(struct rgb_s color, int x, int y)
 {
 	struct rgbkbd *ctx = &rgbkbds[0];
@@ -278,15 +280,11 @@ static int rgbkbd_init(void)
 {
 	int rv = EC_SUCCESS;
 	int e, i;
-	bool updated = false;
 
 	rgbkbd_init_lookup_table();
 
 	for (i = 0; i < rgbkbd_count; i++) {
 		struct rgbkbd *ctx = &rgbkbds[i];
-
-		if (ctx->state >= RGBKBD_STATE_INITIALIZED)
-			continue;
 
 		e = ctx->cfg->drv->init(ctx);
 		if (e) {
@@ -295,20 +293,18 @@ static int rgbkbd_init(void)
 			continue;
 		}
 
-		ctx->state = RGBKBD_STATE_INITIALIZED;
-		updated = true;
-
 		e = ctx->cfg->drv->set_scale(ctx, 0, 0x80, get_grid_size(ctx));
 		if (e) {
 			CPRINTS("Failed to set scale of GRID%d (%d)", i, e);
 			rv = e;
 		}
+
+		CPRINTS("Initialized GRID%d", i);
 	}
 
-	if (updated)
-		CPRINTS("Initialized (%d)", rv);
+	if (rv == EC_SUCCESS)
+		rgbkbd_state = RGBKBD_STATE_INITIALIZED;
 
-	/* Return EC_SUCCESS or the last error. */
 	return rv;
 }
 
@@ -316,13 +312,17 @@ static int rgbkbd_enable(int enable)
 {
 	int rv = EC_SUCCESS;
 	int e, i;
-	bool updated = false;
+
+	if (enable) {
+		if (rgbkbd_state == RGBKBD_STATE_ENABLED)
+			return EC_SUCCESS;
+	} else {
+		if (rgbkbd_state == RGBKBD_STATE_DISABLED)
+			return EC_SUCCESS;
+	}
 
 	for (i = 0; i < rgbkbd_count; i++) {
 		struct rgbkbd *ctx = &rgbkbds[i];
-
-		if (ctx->state >= RGBKBD_STATE_ENABLED && enable)
-			continue;
 
 		e = ctx->cfg->drv->enable(ctx, enable);
 		if (e) {
@@ -332,13 +332,13 @@ static int rgbkbd_enable(int enable)
 			continue;
 		}
 
-		ctx->state = enable ?
-				RGBKBD_STATE_ENABLED : RGBKBD_STATE_DISABLED;
-		updated = true;
+		CPRINTS("%s GRID%d", enable ? "Enabled" : "Disabled", i);
 	}
 
-	if (updated)
-		CPRINTS("%s (%d)", enable ? "Enabled" : "Disabled", rv);
+	if (rv == EC_SUCCESS) {
+		rgbkbd_state = enable ?
+				RGBKBD_STATE_ENABLED : RGBKBD_STATE_DISABLED;
+	}
 
 	/* Return EC_SUCCESS or the last error. */
 	return rv;
@@ -352,7 +352,7 @@ static int rgbkbd_kblight_set(int percent)
 
 static int rgbkbd_get_enabled(void)
 {
-	return rgbkbds[0].state >= RGBKBD_STATE_ENABLED;
+	return rgbkbd_state >= RGBKBD_STATE_ENABLED;
 }
 
 static void rgbkbd_reset(void)
@@ -360,6 +360,7 @@ static void rgbkbd_reset(void)
 	gpio_set_level(GPIO_RGBKBD_POWER, 0);
 	msleep(10);
 	gpio_set_level(GPIO_RGBKBD_POWER, 1);
+	rgbkbd_state = RGBKBD_STATE_RESET;
 }
 
 const struct kblight_drv kblight_rgbkbd = {
