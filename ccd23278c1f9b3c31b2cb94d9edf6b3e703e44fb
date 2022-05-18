@@ -22,6 +22,30 @@
       },
       "revId": "ccd23278c1f9b3c31b2cb94d9edf6b3e703e44fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deff3113_fedb1345",
+        "filename": "board/kinox/power_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-05-18T10:42:49Z",
+      "side": 1,
+      "message": "According to the Compal-Power member feedback, just need to check the type-c current less than typec_power[].current struct.",
+      "parentUuid": "cd24a7cf_3085530c",
+      "range": {
+        "startLine": 408,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 3
+      },
+      "revId": "ccd23278c1f9b3c31b2cb94d9edf6b3e703e44fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
