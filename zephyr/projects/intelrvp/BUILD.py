@@ -27,6 +27,7 @@ def register_intelrvp_project(
     if project_name.startswith("mtlrvp"):
         kconfig_files.append(here / "mtlrvp/prj.conf")
         dts_overlays.append(here / "mtlrvp/battery.dts")
+        dts_overlays.append(here / "mtlrvp/ioex.dts")
     kconfig_files.extend(extra_kconfig_files)
     dts_overlays.extend(extra_dts_overlays)
 

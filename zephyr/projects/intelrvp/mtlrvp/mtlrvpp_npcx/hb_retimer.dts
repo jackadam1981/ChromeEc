@@ -21,3 +21,23 @@
 		reset-pin = <&usb_c1_hb_retimer_rst>;
 	};
 };
+
+&i2c1_0 {
+	status = "okay";
+        clock-frequency = <I2C_BITRATE_FAST>;
+
+        usb_c2_hb_retimer: jhl8040r@58 {
+                compatible = "intel,jhl8040r";
+                reg = <0x58>;
+                label = "USB_C2_BB_RETIMER";
+                reset-pin = <&usb_c2_hb_retimer_rst>;
+        };
+
+        usb_c3_hb_retimer: jhl8040r@59 {
+                compatible = "intel,jhl8040r";
+                reg = <0x59>;
+                label = "USB_C3_BB_RETIMER";
+                reset-pin = <&usb_c3_hb_retimer_rst>;
+        };
+};
+
