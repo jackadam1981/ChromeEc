@@ -16,6 +16,24 @@
       "message": "So whilst this works, I can\u0027t help thinking that this should be solved via having separate CONFIG_SOC_IT81202 and CONFIG_SOC_IT81302 config settings, and\nthen have CONFIG_SOC_IT8XXX2_GPIO_GROUP_K_L_DEFAULT_PULL_DOWN selected depending on which SOC is being used.\nIf the 2 parts are different enough so that some config items need to be used to change the behaviour, then maybe that difference should be explicit.\nThe ...IT8XXX2... setting should be used for truly common configuration.",
       "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e56b7c1_f96e9af6",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81302bx_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-18T17:28:29Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what you\u0027re asking for.  As implemented, there are two defconfig files setup, one for the IT81202 variant and one for the IT81302 variant.\nI think we\u0027re constrained by Zephyr\u0027s build system that the defconfig filename must match the Zephyr board name (it81202bx_defconfig and it81302bx_defconfig).",
+      "parentUuid": "5e058010_18c6fe1b",
+      "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
