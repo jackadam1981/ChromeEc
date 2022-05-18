@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7edfe1a4_931c0ff5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-18T16:21:31Z",
+      "side": 1,
+      "message": "nit: add comments onto the #endif lines when you have nesting to indicate which ifdef it terminates",
+      "revId": "5290e330823c5cae0a9fd6f27b2f3e1351d8ec10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8378d35_887efe62",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-18T16:21:31Z",
+      "side": 1,
+      "message": "nit: a bit shift by 3 might help readers parse this versus the spec table",
+      "revId": "5290e330823c5cae0a9fd6f27b2f3e1351d8ec10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

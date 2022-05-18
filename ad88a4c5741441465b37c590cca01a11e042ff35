@@ -51,6 +51,24 @@
       "parentUuid": "09c18c7b_384fe2f6",
       "revId": "ad88a4c5741441465b37c590cca01a11e042ff35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d96fcf4_f06ded09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-18T16:21:31Z",
+      "side": 1,
+      "message": "Yeah, the spec makes this a tricky one to code right.  Technically, one of the late PD 3.0 ver 2.0 ECNs added this byte on, so it could be parsed on some systems which are before PD 3.1, but we have no good way of knowing.  \n\nIt seems safe to avoid sending the extra byte when we\u0027re in doubt, and we can revisit if it turns out we see interop problems with PD 3.0 docks.",
+      "parentUuid": "639a5ba1_7e280945",
+      "revId": "ad88a4c5741441465b37c590cca01a11e042ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
