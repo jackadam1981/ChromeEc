@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d853afd5_a2212bc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "add the design (md) file before this CL",
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10441b33_eec5c442",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "i don\u0027t see a need for this, we can directly include files in RVP build directory",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a14cd1de_d91eac5e",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/pwm_leds.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "other colors needed for compilation?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a82a40_94096713",
+        "filename": "zephyr/projects/intelrvp/adlrvp/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "is it needed ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66dacf15_9ee51d9a",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "try index these with two LEDs so that duplicate functions can be avoided",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f664f0_4250a91d",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "arrange them so that we can avoid declaring",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b9222e_6dacf2dc",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "bring it to line 163 to avoid calling the function when not needed",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 44
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43bdffc5_9ebdf1ad",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "\u003d",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3427010c_9db3f85b",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "try macro these",
+      "range": {
+        "startLine": 165,
+        "startChar": 44,
+        "endLine": 165,
+        "endChar": 48
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da613975_5684fc50",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T20:55:08Z",
+      "side": 1,
+      "message": "keep only one hook and call multiple function inside it.\nTry to use HOOK_SECOND so that we dont consume bandwidth here",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 63
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
