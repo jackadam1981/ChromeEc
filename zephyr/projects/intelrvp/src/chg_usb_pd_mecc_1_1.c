@@ -20,24 +20,25 @@
 
 static void baseboard_tcpc_init(void)
 {
-
-	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_late())
-		board_reset_pd_mcu();
+	/* Reset Retimer signals for port 2 and 3 */
+	board_reset_pd_mcu();
 
 	 /* Enable PPC interrupts. */
         gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_ppc));
         gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1_ppc));
 
         /* Enable TCPC interrupts. */
-        gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_c1_tcpc));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_c1_tcpc));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c2_tcpc));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c3_tcpc));
+
 
 	/* Enable CCD Mode interrupt */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_ccd_mode));
 
+
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_POST_I2C);
-
 
 void tcpc_alert_event(enum gpio_signal signal)
 {
