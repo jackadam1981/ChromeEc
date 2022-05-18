@@ -39,6 +39,30 @@
       },
       "revId": "ebb59c89eb9535ba5ec76a98e9469d16da61d729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "901a355b_8c1229ed",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-18T21:27:04Z",
+      "side": 1,
+      "message": "Looks like you already did it in osiris/keyboard.c and it looks good to me.",
+      "parentUuid": "60d0c68c_0afc844f",
+      "range": {
+        "startLine": 43,
+        "startChar": 38,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "ebb59c89eb9535ba5ec76a98e9469d16da61d729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
