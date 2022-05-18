@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e68054ce_d26cf19a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T20:55:38Z",
+      "side": 1,
+      "message": "Looks good. I think `get_status_power_state_change` should be static now.",
+      "parentUuid": "ab1a4b70_140ff535",
+      "revId": "04e41257a5f5fceec9944508b96c7d0e676e4f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29104eee_aa31cbac",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 6
