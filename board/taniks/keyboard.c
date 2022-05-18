@@ -57,6 +57,8 @@ struct rgbkbd rgbkbds[] = {
 			.i2c = I2C_PORT_KBMCU,
 			.col_len = RGB_GRID0_COL,
 			.row_len = RGB_GRID0_ROW,
+			.default_gcc = 0x80,
+			.default_scale = 0xff,
 		},
 		.buf = grid0,
 	},
