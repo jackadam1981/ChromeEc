@@ -20,6 +20,235 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb3533da_9bf5d4fb",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "\u003e \"Conver\" is a possible misspelling of \"Convert\".\n\nPlease fix.",
+      "parentUuid": "d05804f3_ccefdb42",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 10
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3762a907_3eccfdcd",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "What about just\n```\nif (ext-\u003eops-\u003ehard_reset)\n        ext-\u003eops-\u003ehard_reset(ext, data);\n```",
+      "range": {
+        "startLine": 415,
+        "startChar": 1,
+        "endLine": 418,
+        "endChar": 34
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70a8a0a_380332f2",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "This function also handles types not mentioned here. You could add them to this comment, but it would be easier to just not comment this function in so much detail. It\u0027s internal to the module, so I\u0027d be OK with that. Then we wouldn\u0027t need to update the comments when we add message types.",
+      "range": {
+        "startLine": 646,
+        "startChar": 10,
+        "endLine": 651,
+        "endChar": 52
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d927a0b7_19e1acd1",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "Same comment as above about making this loop a little more terse.",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08a343a_953f0253",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "This is no longer the name of the file. You could update, but it probably makes more sense to delete these comments. People should be able to find the declaration for a definition without much trouble, and these references can\u0027t get stale if they don\u0027t exist.",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0d85be_df439375",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "reported",
+      "range": {
+        "startLine": 990,
+        "startChar": 46,
+        "endLine": 990,
+        "endChar": 54
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d2441f_7c3d2a34",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "Does this get used?",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09552a15_b4176394",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "I might recommend `goto` error handling to make it more obvious that this cleanup happens in every case.",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eab74bd_9cbe4010",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "Would it make more sense for this check to happen before we send the message to the partner?",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dcd2885_9c3326b9",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "If there are other fixed supply PDOs, shouldn\u0027t dual role be set the same for each of them?",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddcfe20f_7613a677",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_faulty_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "Should reducing the action count and returning MSG_HANDLED just always happen at the end of this case? (And you would then make the ifs into else ifs.",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef52d68_430acd16",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "\"partner,\" but also, it would be OK if you just deleted these comments.",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "202e5498_c3a706d2",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
         "patchSetId": 7
@@ -37,6 +266,23 @@
         "endLine": 86,
         "endChar": 64
       },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "823b4dd5_76ce2058",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:49:25Z",
+      "side": 1,
+      "message": "Does this need to be part of the API? Or will only the DRP partner emulator call it?",
       "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
