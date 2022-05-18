@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d2bd55_22d5c595",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-05-18T17:53:43Z",
+      "side": 1,
+      "message": "The change is already part of latest repo.",
+      "revId": "b0d60dc4917dcce6599cd295a0c5dc4d0a6cd1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49eabed9_17012066",
@@ -18,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53620324_88af5149",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-05-18T17:53:43Z",
+      "side": 1,
+      "message": "Yes, the similar change got merged on the day this CL was pushed.\nThanks for updating on this Peter.",
+      "parentUuid": "49eabed9_17012066",
+      "revId": "b0d60dc4917dcce6599cd295a0c5dc4d0a6cd1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56cd16d2_483b84fd",
@@ -31,6 +66,24 @@
       "writtenOn": "2022-05-05T23:29:19Z",
       "side": 1,
       "message": "Here too.",
+      "revId": "b0d60dc4917dcce6599cd295a0c5dc4d0a6cd1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b905f2_0db2a400",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-05-18T17:53:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "56cd16d2_483b84fd",
       "revId": "b0d60dc4917dcce6599cd295a0c5dc4d0a6cd1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
