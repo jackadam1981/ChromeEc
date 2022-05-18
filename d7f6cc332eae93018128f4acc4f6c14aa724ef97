@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b892cb_8c6cee5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-05-18T00:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f88177a6_6ff5b1bc",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "d7f6cc332eae93018128f4acc4f6c14aa724ef97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ad0022d_936e3160",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-17T02:47:08Z",
       "side": 1,
       "message": "Please also remove from fw_config",
+      "revId": "d7f6cc332eae93018128f4acc4f6c14aa724ef97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f9a32c0_75819693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-05-18T00:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad0022d_936e3160",
       "revId": "d7f6cc332eae93018128f4acc4f6c14aa724ef97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
