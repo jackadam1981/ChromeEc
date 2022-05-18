@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01eba418_7ed75282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:06:06Z",
+      "side": 1,
+      "message": "This looks OK. Fix up the types and macro name, and it\u0027s good to go.",
+      "revId": "1f635225e95a1804444fdec736432ab0022560a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f0cd68_e84ac86a",
+        "filename": "board/chronicler/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:06:06Z",
+      "side": 1,
+      "message": "Nit: `BATTERY_RUNTIME_TEST`. Also, I guess I would prefer that it go below all the configs, around line 134.",
+      "revId": "1f635225e95a1804444fdec736432ab0022560a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
