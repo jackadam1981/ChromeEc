@@ -9,7 +9,9 @@
 #include "common.h"
 #include "console.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "driver/tcpm/ccgxxf.h"
 #include "driver/tcpm/nct38xx.h"
+#include "driver/tcpm/tcpci.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
@@ -42,7 +44,15 @@
 /* USB-C ports */
 enum usbc_port {
 	USBC_PORT_C0 = 0,
+#if defined(HAS_TASK_PD_C1)
 	USBC_PORT_C1,
+#endif
+#if defined(HAS_TASK_PD_C2)
+	USBC_PORT_C2,
+#endif
+#if defined(HAS_TASK_PD_C2)
+	USBC_PORT_C3,
+#endif
 	USBC_PORT_COUNT
 };
 BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
@@ -54,13 +64,14 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = I2C_ADDR_SN5S330_P0,
 		.drv = &sn5s330_drv,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_TYPEC_AIC_1,
 		.i2c_addr_flags = I2C_ADDR_SN5S330_P1,
 		.drv = &sn5s330_drv,
 	},
+#endif
 };
-BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /* USB-C retimer Configuration */
@@ -72,6 +83,20 @@ struct usb_mux usbc0_tcss_usb_mux = {
 #if defined(HAS_TASK_PD_C1)
 struct usb_mux usbc1_tcss_usb_mux = {
 	.usb_port = USBC_PORT_C1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+#if defined(HAS_TASK_PD_C2)
+struct usb_mux usbc2_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C2,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+#if defined(HAS_TASK_PD_C3)
+struct usb_mux usbc3_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C3,
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
@@ -97,6 +122,26 @@ struct usb_mux usb_muxes[] = {
 		.i2c_addr_flags = USBC_PORT_C1_HB_RETIMER_I2C_ADDR,
 	},
 #endif
+#if defined(HAS_TASK_PD_C2)
+	[USBC_PORT_C2] = {
+		.usb_port = USBC_PORT_C2,
+		.next_mux = &usbc2_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC_2,
+		.i2c_addr_flags = USBC_PORT_C2_HB_RETIMER_I2C_ADDR,
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[USBC_PORT_C3] = {
+		.usb_port = USBC_PORT_C3,
+		.next_mux = &usbc3_tcss_usb_mux,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_TYPEC_AIC_2,
+		.i2c_addr_flags = USBC_PORT_C3_HB_RETIMER_I2C_ADDR,
+	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
@@ -112,6 +157,18 @@ const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p0)),
 		.ppc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_ppc_alrt_p1)),
 		.ppc_intr_handler = sn5s330_interrupt,
+	},
+#endif
+#if defined(HAS_TASK_PD_C2)
+	[USBC_PORT_C2] = {
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p2)),
+		/* No PPC alert for CCGXXF */
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[USBC_PORT_C3] = {
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p3)),
+		/* No PPC alert for CCGXXF */
 	},
 #endif
 };
@@ -149,7 +206,7 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* TODO: Send VW */
 }
 
-/* Reset PD MCU */
+/* Board Reset PD MCU */
 void board_reset_pd_mcu(void)
 {
 }
@@ -316,6 +373,9 @@ static void board_int_init(void)
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_c1_tcpc));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c2_tcpc));
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c3_tcpc));
+
 
 	/* Enable CCD Mode interrupt */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_ccd_mode));
@@ -337,3 +397,21 @@ static int board_pre_task_peripheral_init(const struct device *unused)
 SYS_INIT(board_pre_task_peripheral_init, APPLICATION,
 			CONFIG_APPLICATION_INIT_PRIORITY);
 
+__override bool board_port_has_ppc(int port)
+{
+        bool ppc_port;
+
+        switch (port) {
+        case USBC_PORT_C0:
+#if defined(HAS_TASK_PD_C1)
+        case USBC_PORT_C1:
+#endif
+                ppc_port = true;
+                break;
+        default:
+                ppc_port = false;
+                break;
+        }
+
+        return ppc_port;
+}

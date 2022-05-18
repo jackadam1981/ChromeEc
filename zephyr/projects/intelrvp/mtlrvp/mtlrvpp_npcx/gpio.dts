@@ -317,6 +317,32 @@
 		usb-c0-c1-prochot-n {
 			gpios = <&ioex_c1 6 GPIO_INPUT>;
 		};
+		dg-bssb-sbu-sel {
+			gpios = <&ioex_c2_port1 4 GPIO_INPUT>;
+		};
+		usb_c2_hb_retimer_rst: usb-c2-hbr-rst {
+			gpios = <&ioex_c2_port1 1 (GPIO_ODR_LOW | \
+				GPIO_VOLTAGE_1P8)>;
+			enum-name = "IOEX_USB_C2_HBR_RST";
+		};
+		usb_c2_hb_retimer_ls_en: usb-c2-hbr-ls-en {
+			gpios = <&ioex_c2_port2 0 (GPIO_ODR_LOW | \
+				GPIO_VOLTAGE_1P8)>;
+			enum-name = "IOEX_USB_C2_HBR_LS_EN";
+		};
+		usb_c3_hb_retimer_rst: usb-c3-hbr-rst {
+			gpios = <&ioex_c2_port1 3 (GPIO_ODR_LOW | \
+				GPIO_VOLTAGE_1P8)>;
+			enum-name = "IOEX_USB_C3_HBR_RST";
+		};
+		usb_c3_hb_retimer_ls_en: usb-c3-hbr-ls-en {
+			gpios = <&ioex_c2_port3 3 (GPIO_ODR_LOW | \
+				GPIO_VOLTAGE_1P8)>;
+			enum-name = "IOEX_USB_C3_HBR_LS_EN";
+		};
+		usb-c2-c3-prochot-n {
+			gpios = <&ioex_c2_port0 0 GPIO_INPUT>;
+		};
 	};
 
 	def-lvol-io-list {
