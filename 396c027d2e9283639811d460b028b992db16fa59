@@ -16,6 +16,40 @@
       "message": "Hi Aseda/Abe, can you please share feedback?",
       "revId": "396c027d2e9283639811d460b028b992db16fa59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4e3958_91c783c4",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 15
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:12:58Z",
+      "side": 1,
+      "message": "This source file is already added on the basis of `CONFIG_PLATFORM_EC_USB_PD_TCPM_TCPCI`. Does this TCPC not have its own driver source?",
+      "revId": "396c027d2e9283639811d460b028b992db16fa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f719f3fb_68490281",
+        "filename": "zephyr/shim/include/usbc/tcpc_ccgxxf.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-18T21:12:58Z",
+      "side": 1,
+      "message": "Do these macros get invoked anywhere outside the driver? I think ordinarily, we would just define them inside the driver source and pass them to DT_FOREACH_OKAY_INST or whatever it\u0027s called from there.",
+      "revId": "396c027d2e9283639811d460b028b992db16fa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
