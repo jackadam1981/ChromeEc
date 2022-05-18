@@ -369,6 +369,8 @@ void dfp_consume_identity(int port, enum tcpci_msg_type type, int cnt,
 		return;
 	}
 
+	dpm_evaluate_request_identity(port, payload);
+
 	ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
 	disc = pd_get_am_discovery_and_notify_access(port, type);
 	identity_size = MIN(sizeof(union disc_ident_ack),
