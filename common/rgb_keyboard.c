@@ -286,18 +286,29 @@ static int rgbkbd_init(void)
 
 	for (i = 0; i < rgbkbd_count; i++) {
 		struct rgbkbd *ctx = &rgbkbds[i];
+		uint8_t scale = ctx->cfg->default_scale;
+		uint8_t gcc = ctx->cfg->default_gcc;
 
 		e = ctx->cfg->drv->init(ctx);
 		if (e) {
 			CPRINTS("Failed to init GRID%d (%d)", i, e);
+			continue;
+		}
+
+		e = ctx->cfg->drv->set_scale(ctx, 0, scale, get_grid_size(ctx));
+		if (e) {
+			CPRINTS("Failed to set scale of GRID%d to %d (%d)",
+				i, scale, rv);
 			rv = e;
 			continue;
 		}
 
-		e = ctx->cfg->drv->set_scale(ctx, 0, 0x80, get_grid_size(ctx));
+		e = ctx->cfg->drv->set_gcc(ctx, gcc);
 		if (e) {
-			CPRINTS("Failed to set scale of GRID%d (%d)", i, e);
+			CPRINTS("Failed to set GCC to %u for grid=%d (%d)",
+				gcc, i, e);
 			rv = e;
+			continue;
 		}
 
 		CPRINTS("Initialized GRID%d", i);
