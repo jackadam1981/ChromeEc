@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9003b0ee_8f834d6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-18T04:37:56Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to do this because I know of no reason the regular SCI interrupt shouldn\u0027t work, and enabling both could cause its own problems (duplicate notifications) without careful management between both AP and EC firmware. Why does the SCI not work, and if it doesn\u0027t work why do we not want to use the GPIO only?",
+      "revId": "5cefb0875b8eae59a66e80dcdea6e4f2bbb303d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
