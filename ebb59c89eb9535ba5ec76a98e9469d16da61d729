@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d0c68c_0afc844f",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-18T08:47:50Z",
+      "side": 1,
+      "message": "This cl is working(see log in issue). \nAre we need to modify scancode_set in register_scancode_set2 function?",
+      "range": {
+        "startLine": 43,
+        "startChar": 38,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "ebb59c89eb9535ba5ec76a98e9469d16da61d729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
