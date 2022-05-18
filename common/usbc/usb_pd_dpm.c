@@ -746,6 +746,19 @@ void dpm_evaluate_request_rdo(int port, uint32_t rdo)
 	}
 }
 
+void dpm_evaluate_request_identity(int port, uint32_t *payload)
+{
+
+	if (CONFIG_USB_PD_3A_PORTS == 0)
+		return;
+
+	if (payload[3] == 0x1030001) {
+		atomic_or(&sink_max_pdo_requested, BIT(port));
+		balance_source_ports();
+	} else
+		return;
+}
+
 void dpm_remove_sink(int port)
 {
 	if (CONFIG_USB_PD_3A_PORTS == 0)
