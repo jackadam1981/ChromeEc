@@ -16,6 +16,24 @@
       "message": "this needs to be updated to support all HBR configs...do we want to make this replace all references to BB for HB retimers? I was porting the MTL patch and noticed several references that will still need to be bb if this patch remains as is",
       "revId": "b2fc263a07d5a142d41ac8e6c1d790be97643661",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed85bd76_5d4742f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-18T22:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40369626_93cb5b8c",
+      "revId": "b2fc263a07d5a142d41ac8e6c1d790be97643661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2545a42_9199adb9",
+        "filename": "include/driver/retimer/bb_retimer.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-18T22:35:22Z",
+      "side": 1,
+      "message": "I don\u0027t see this being necessary as the only things changed are the IDs",
+      "parentUuid": "7f9a2b74_273ad0a3",
+      "revId": "886ace63b7908e4bd158c60b21015a494c549c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74f6a347_72f58a2e",
@@ -78,6 +96,24 @@
       "writtenOn": "2022-05-06T23:23:14Z",
       "side": 1,
       "message": "nit: extra line",
+      "revId": "886ace63b7908e4bd158c60b21015a494c549c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "098c0ca7_6a865ca7",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-18T22:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74f6a347_72f58a2e",
       "revId": "886ace63b7908e4bd158c60b21015a494c549c6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
