@@ -16,6 +16,24 @@
       "message": "Why are we commenting them instead of just deleting the lines?",
       "revId": "09846aee022b43a985b486ef65ae592ae16f62c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10abf7df_ea9ef015",
+        "filename": "board/ghost/generated-gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-18T20:40:11Z",
+      "side": 1,
+      "message": "this whole file is going to be regenerated from our GPIO spreadsheet.\nthere\u0027s a draft later in this patch series.\nthe comments are a reminder in the short term as to what signals\nare now unused.",
+      "parentUuid": "0cfe5c30_80adb550",
+      "revId": "09846aee022b43a985b486ef65ae592ae16f62c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
