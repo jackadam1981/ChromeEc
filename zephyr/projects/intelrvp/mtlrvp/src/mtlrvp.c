@@ -9,7 +9,9 @@
 #include "common.h"
 #include "console.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "driver/tcpm/ccgxxf.h"
 #include "driver/tcpm/nct38xx.h"
+#include "driver/tcpm/tcpci.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -41,7 +43,15 @@
 /* USB-C ports */
 enum usbc_port {
 	USBC_PORT_C0 = 0,
+#if defined(HAS_TASK_PD_C1)
 	USBC_PORT_C1,
+#endif
+#if defined(HAS_TASK_PD_C2)
+	USBC_PORT_C2,
+#endif
+#if defined(HAS_TASK_PD_C2)
+	USBC_PORT_C3,
+#endif
 	USBC_PORT_COUNT
 };
 BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
@@ -53,13 +63,14 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = I2C_ADDR_SN5S330_P0,
 		.drv = &sn5s330_drv,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_TYPEC_AIC_1,
 		.i2c_addr_flags = I2C_ADDR_SN5S330_P1,
 		.drv = &sn5s330_drv,
 	},
+#endif
 };
-BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /* USB-C retimer Configuration */
@@ -71,6 +82,20 @@ struct usb_mux usbc0_tcss_usb_mux = {
 #if defined(HAS_TASK_PD_C1)
 struct usb_mux usbc1_tcss_usb_mux = {
 	.usb_port = USBC_PORT_C1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+#if defined(HAS_TASK_PD_C2)
+struct usb_mux usbc2_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C2,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+#endif
+#if defined(HAS_TASK_PD_C3)
+struct usb_mux usbc3_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C3,
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
@@ -135,13 +160,13 @@ const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 #endif
 #if defined(HAS_TASK_PD_C2)
 	[USBC_PORT_C2] = {
-		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P2,
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p2)),
 		/* No PPC alert for CCGXXF */
 	},
 #endif
 #if defined(HAS_TASK_PD_C3)
 	[USBC_PORT_C3] = {
-		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P3,
+		.tcpc_alert = GPIO_SIGNAL(DT_NODELABEL(usbc_tcpc_alrt_p3)),
 		/* No PPC alert for CCGXXF */
 	},
 #endif
@@ -185,6 +210,16 @@ void board_overcurrent_event(int port, int is_overcurrented)
 /* Reset PD MCU */
 void board_reset_pd_mcu(void)
 {
+	/*Reset Retimer on ports 2 and 3 to avoid misconfiguration*/
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c2_hb_retimer_ls_en),1 );
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c2_hb_retimer_rst),1 );
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c3_hb_retimer_ls_en),1 );
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c3_hb_retimer_rst),1 );
+	msleep(20);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c2_hb_retimer_rst), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c2_hb_retimer_ls_en), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c3_hb_retimer_rst), 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c3_hb_retimer_ls_en), 0);
 }
 
 __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
@@ -340,3 +375,23 @@ __override int board_get_version(void)
 	mtlrvp_board_id = board_id | (fab_id << 8);
 	return mtlrvp_board_id;
 }
+
+__override bool board_is_port_ppc(int port)
+{
+        bool ppc_port;
+
+        switch (port) {
+        case USBC_PORT_C0:
+#if defined(HAS_TASK_PD_C1)
+        case USBC_PORT_C1:
+#endif
+                ppc_port = true;
+                break;
+        default:
+                ppc_port = false;
+                break;
+        }
+
+        return ppc_port;
+}
+
