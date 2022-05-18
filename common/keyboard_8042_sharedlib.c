@@ -8,6 +8,7 @@
 #include <stddef.h>
 
 #include "button.h"
+#include "console.h"
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
@@ -39,7 +40,7 @@ static uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
 #endif
 };
 
-void register_scancode_set2(uint16_t **scancode_set, size_t size)
+void register_scancode_set2(uint16_t *scancode_set, size_t size)
 {
 	ASSERT(size == sizeof(scancode_set2));
 	memcpy(scancode_set2, scancode_set, size);
@@ -187,3 +188,21 @@ SHAREDLIB(const struct button_8042_t buttons_8042[] = {
 	{SCANCODE_8, 1},
 });
 BUILD_ASSERT(ARRAY_SIZE(buttons_8042) == KEYBOARD_BUTTON_COUNT);
+
+#ifdef TEST_SCANCODE
+static int command_manual_scancode_probe(int argc, char **argv)
+{
+	int i, j;
+
+	cprintf(CC_KEYSCAN, "%s\n", __func__);
+
+	for (i = 0; i < KEYBOARD_COLS_MAX; i++) {
+		for (j = 0; j < KEYBOARD_ROWS; j++)
+			cprintf(CC_KEYSCAN, "0x%02x ", scancode_set2[i][j]);
+		cprintf(CC_KEYSCAN, "\n");
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sp, command_manual_scancode_probe,
+					"None", "probe scancode_set2");
+#endif
