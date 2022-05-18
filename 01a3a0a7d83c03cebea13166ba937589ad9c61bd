@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e8a589_04b40b7e",
+        "filename": "zephyr/Kconfig.usb_mux",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-18T17:14:34Z",
+      "side": 1,
+      "message": "Match the order below.",
+      "range": {
+        "startLine": 56,
+        "startChar": 59,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "01a3a0a7d83c03cebea13166ba937589ad9c61bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece68a3a_d29355b9",
+        "filename": "zephyr/Kconfig.usb_mux",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-18T17:14:34Z",
+      "side": 1,
+      "message": "Nit - alphasort the choices - TUSB546 before TUSB1044.\nIf you want TUSB1044 to be the default, you can explicitly set that in the choice prompt.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "01a3a0a7d83c03cebea13166ba937589ad9c61bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
