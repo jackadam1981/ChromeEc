@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf63152_7921ecea",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 15
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T22:22:37Z",
+      "side": 1,
+      "message": "Done\nYes, CCG6 follows standard TCPCI spec and uses tcpci.c driver",
+      "parentUuid": "2c4e3958_91c783c4",
+      "revId": "396c027d2e9283639811d460b028b992db16fa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f719f3fb_68490281",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-18T21:12:58Z",
       "side": 1,
       "message": "Do these macros get invoked anywhere outside the driver? I think ordinarily, we would just define them inside the driver source and pass them to DT_FOREACH_OKAY_INST or whatever it\u0027s called from there.",
+      "revId": "396c027d2e9283639811d460b028b992db16fa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a58a73b_e68db13a",
+        "filename": "zephyr/shim/include/usbc/tcpc_ccgxxf.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-18T22:22:37Z",
+      "side": 1,
+      "message": "in current logic zephyr/shim/src/tcpc.c is getting added in zephyr/shim/src/CMakeLists.txt hence added this to the list",
+      "parentUuid": "f719f3fb_68490281",
       "revId": "396c027d2e9283639811d460b028b992db16fa59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
