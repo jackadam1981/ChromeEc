@@ -33,6 +33,9 @@ struct rgbkbd_cfg {
 	/* Grid size */
 	const uint8_t col_len;
 	const uint8_t row_len;
+	/* Default GCC and scale values. */
+	const uint8_t default_gcc;
+	const uint8_t default_scale;
 };
 
 struct rgbkbd {
