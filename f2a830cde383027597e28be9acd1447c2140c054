@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6dea1bd_4a00b728",
+        "filename": "zephyr/projects/nissa/cbi.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-19T04:32:53Z",
+      "side": 1,
+      "message": "Though the concern I have is that this bit can\u0027t be used for anything that\u0027s common that would include nivviks, but maybe that\u0027s OK because the DTS validation will pick that up as an error (for nivviks, at least), so putting a comment in to the common file at least flags this bit as being board-specific.",
+      "parentUuid": "83cbcc77_8cc70a55",
+      "revId": "f2a830cde383027597e28be9acd1447c2140c054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "731ae300_47380401",
