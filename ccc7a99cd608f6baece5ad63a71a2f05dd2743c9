@@ -16,6 +16,24 @@
       "message": "I think these functions should be static. If they\u0027re supposed to be part of the DPM\u0027s visible API, then they should start with `dpm_`.",
       "revId": "ccc7a99cd608f6baece5ad63a71a2f05dd2743c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf32069_fb61825f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-19T00:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8950c5a4_7434758c",
+      "revId": "ccc7a99cd608f6baece5ad63a71a2f05dd2743c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
