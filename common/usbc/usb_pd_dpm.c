@@ -746,6 +746,24 @@ void dpm_evaluate_request_rdo(int port, uint32_t rdo)
 	}
 }
 
+void dpm_evaluate_request_identity(int port, uint32_t *payload)
+{
+	int vid;
+	int pid;
+
+	vid = (payload[1] & 0x0000FFFF);
+	pid = (payload[3] & 0xFFFF0000) >> 16;
+
+	if (CONFIG_USB_PD_3A_PORTS == 0)
+		return;
+
+	if (vid == USB_VID_DELL && pid == USB_PID_DELL_DA305) {
+		atomic_or(&sink_max_pdo_requested, BIT(port));
+		balance_source_ports();
+	} else
+		return;
+}
+
 void dpm_remove_sink(int port)
 {
 	if (CONFIG_USB_PD_3A_PORTS == 0)
