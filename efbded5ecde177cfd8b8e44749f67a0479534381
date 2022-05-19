@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37fd49a7_4aa5e43f",
+        "filename": "board/taniks/keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-05-19T00:08:52Z",
+      "side": 1,
+      "message": "Could you add a comment explaining what 0x80 means. Or can we use a #define DEFAULT_GCC and DEFAULT_SCALE with comments explaining what those default values mean.",
+      "revId": "efbded5ecde177cfd8b8e44749f67a0479534381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58f2a5d_acfcedbe",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-05-19T00:08:52Z",
+      "side": 1,
+      "message": "Missing rv \u003d e",
+      "revId": "efbded5ecde177cfd8b8e44749f67a0479534381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
