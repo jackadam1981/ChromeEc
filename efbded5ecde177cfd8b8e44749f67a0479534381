@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8b8f72_976cad27",
+        "filename": "board/taniks/keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-19T21:46:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37fd49a7_4aa5e43f",
+      "revId": "efbded5ecde177cfd8b8e44749f67a0479534381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b58f2a5d_acfcedbe",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-19T00:08:52Z",
       "side": 1,
       "message": "Missing rv \u003d e",
+      "revId": "efbded5ecde177cfd8b8e44749f67a0479534381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd40279_62395aba",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-19T21:46:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58f2a5d_acfcedbe",
       "revId": "efbded5ecde177cfd8b8e44749f67a0479534381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
