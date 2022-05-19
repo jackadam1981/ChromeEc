@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "83cbcc77_8cc70a55",
+        "filename": "zephyr/projects/nissa/cbi.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-19T04:19:40Z",
+      "side": 1,
+      "message": "The point of fragmenting like this is that it\u0027s not reserved for Nivviks, it just happens that Nivviks uses this bit and nobody else currently does. If another board wants to use this bit it can.",
+      "parentUuid": "84c63c7a_179eb870",
+      "revId": "f2a830cde383027597e28be9acd1447c2140c054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "731ae300_47380401",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-19T03:55:41Z",
       "side": 1,
       "message": "I was thinking that perhaps the fan config should be moved here, but I see in the platform config that it is common for all, so I guess this is fine.",
+      "revId": "f2a830cde383027597e28be9acd1447c2140c054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0755c64f_1a0b2ff4",
+        "filename": "zephyr/projects/nissa/nivviks_cbi.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-19T04:19:40Z",
+      "side": 1,
+      "message": "Yes, I figured fan presence isn\u0027t really tied to any particular board so it makes sense to make it common.",
+      "parentUuid": "731ae300_47380401",
       "revId": "f2a830cde383027597e28be9acd1447c2140c054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
