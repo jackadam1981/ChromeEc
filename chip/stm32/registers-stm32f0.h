@@ -723,7 +723,12 @@ enum dma_channel {
 #endif
 };
 
-#define STM32_DMAC_PER_CTLR 8
+#if !defined(CHIP_VARIANT_STM32F03X) && !defined(CHIP_VARIANT_STM32F05X)
+    /* Only DMA1 (with 7 channels) is present on STM32L151x */
+    #define STM32_DMAC_PER_CTLR 7
+#else /* stm32f03x and stm32f05x have only 5 channels */
+    #define STM32_DMAC_PER_CTLR 5
+#endif
 
 /* Registers for a single channel of the DMA controller */
 struct stm32_dma_chan {
