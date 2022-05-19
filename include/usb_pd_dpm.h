@@ -99,6 +99,14 @@ void dpm_add_non_pd_sink(int port);
 void dpm_evaluate_request_rdo(int port, uint32_t rdo);
 
 /*
+ * Evaluates the identity from port partner
+ *
+ * @param port		USB-C port number
+ * @param *payload		payload data
+ */
+void dpm_evaluate_request_identity(int port, uint32_t *payload);
+
+/*
  * Remove this port as a sink, and reallocate maximum current as needed.
  *
  * @param port		USB-C port number
