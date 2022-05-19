@@ -18,6 +18,14 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+/*
+ * USB ID
+ * This is allocated specifically for Ghost
+ * http://google3/hardware/standards/usb/
+ */
+#undef CONFIG_USB_PID
+#define CONFIG_USB_PID 0x505E
+
 /* Buttons are not supported */
 #undef CONFIG_VOLUME_BUTTONS
 #undef CONFIG_MKBP_INPUT_DEVICES
