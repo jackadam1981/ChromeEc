@@ -1,0 +1,5 @@
+/* steelix usb_a config */
+&usba_port_enable_list {
+	enable-pins = <&en_pp5000_usb_a0_vbus
+		       &en_pp5000_usb_a1_vbus>;
+};
