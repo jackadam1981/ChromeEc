@@ -22,6 +22,30 @@
       },
       "revId": "589a075217468a2289763ffa144eb5869e48192e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70e03a4_a8208fa6",
+        "filename": "zephyr/shim/src/led_driver/led_gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-05-19T19:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a998537c_74db932f",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 7
+      },
+      "revId": "589a075217468a2289763ffa144eb5869e48192e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
