@@ -181,6 +181,24 @@
       "message": "Aseda: Giving you a chance to weigh in here, since I prompted the addition to this file, but I\u0027m not sure after talking to you if we usually do it this way.",
       "revId": "07652388f7be94846296c37eea676f039a9d390b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01122151_5b8cc589",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-05-19T16:34:14Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a standard register for all smart batteries.",
+      "parentUuid": "3ef594d0_04baa0bf",
+      "revId": "07652388f7be94846296c37eea676f039a9d390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

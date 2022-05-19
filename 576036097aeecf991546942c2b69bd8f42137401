@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6481bf_8c323f1d",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-05-19T16:34:14Z",
+      "side": 1,
+      "message": "And I personally would have put this all in a `battery.c` file.",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 6
+      },
+      "revId": "576036097aeecf991546942c2b69bd8f42137401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd107083_82fa38e8",
+        "filename": "board/chronicler/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-05-19T16:34:14Z",
+      "side": 1,
+      "message": "And since the procedure is specific to this pack, I\u0027d explicitly check for this pack in case in the future a second source is introduced.",
+      "revId": "576036097aeecf991546942c2b69bd8f42137401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
