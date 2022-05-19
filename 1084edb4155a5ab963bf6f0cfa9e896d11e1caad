@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88443379_59ca9f7d",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-05-19T17:31:44Z",
+      "side": 1,
+      "message": "pd_power_supply_reset does exactly what this change does except fro setting setting the source voltage limit.\n\n```\nvoid pd_power_supply_reset(int port)\n{\n        /* Port 0 can never provide vbus. */\n        if (port \u003d\u003d CHG)\n                return;\n\n        /* Disable VBUS */\n        chg_power_select(CHG_POWER_OFF);\n        dut_chg_en(0);\n\n        /* DUT is lost, back to 5V limit on CHG */\n        pd_set_external_voltage_limit(CHG, PD_MIN_MV);\n}\n```\n\n\nWhat\u0027s the reason for not setting the source voltage limit?",
+      "range": {
+        "startLine": 1132,
+        "startChar": 3,
+        "endLine": 1134,
+        "endChar": 17
+      },
+      "revId": "1084edb4155a5ab963bf6f0cfa9e896d11e1caad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
