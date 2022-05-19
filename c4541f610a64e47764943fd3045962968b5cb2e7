@@ -22,6 +22,30 @@
       },
       "revId": "c4541f610a64e47764943fd3045962968b5cb2e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de1cd6d_dd9f2251",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-19T15:55:02Z",
+      "side": 1,
+      "message": "Agreed with Caveh.  I would very strongly prefer we not have to maintain an allow list of partners which don\u0027t function correctly.\n\nWhat does this dock present in its sink capabilities?  What does it send in its Request to the 1.5A PDO?  If it gives no indication anywhere in its Request or capabilities that it needs more current, we should contact the vendor and request that they fix their firmware.",
+      "parentUuid": "8152c896_ccbc0792",
+      "range": {
+        "startLine": 760,
+        "startChar": 5,
+        "endLine": 760,
+        "endChar": 53
+      },
+      "revId": "c4541f610a64e47764943fd3045962968b5cb2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
