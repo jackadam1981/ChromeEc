@@ -16,6 +16,24 @@
       "message": "I would expect that implementation to work good enough, however, I am a bit concerned by the re-use of CONFIG_ESPI_DEFAULT_VW_WIDTH_US. The variable time it can take for the EC eSPI Slave to propagate the information to the eSPI Master has nothing to do with the minimum hold time required for the SCI trigger detection.",
       "revId": "a18f9d3ae5c66890cacf8d0041b5277e01b9aa35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a9a337_c07ecad9",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-05-19T14:54:28Z",
+      "side": 1,
+      "message": "Agreed, it is sort of arbitrary... however, experimentally I believe we had seen up to ~140 us required; I would be fine adding a new constant for this timeout value.",
+      "parentUuid": "b80245fd_b9a031bd",
+      "revId": "a18f9d3ae5c66890cacf8d0041b5277e01b9aa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
