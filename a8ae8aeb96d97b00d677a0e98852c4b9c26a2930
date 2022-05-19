@@ -52,6 +52,24 @@
       "parentUuid": "f242368b_d51a6021",
       "revId": "a8ae8aeb96d97b00d677a0e98852c4b9c26a2930",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4d318f_6fcf624c",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6869,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-19T17:39:04Z",
+      "side": 1,
+      "message": "Agree with Diana, long term this parameter would get specified in the devicetree.  An application might have something like:\n```\n\u0026i2c1 {\n    charger_temp_sensor: tmp116@49 {    \n        compatible \u003d \"ti,tmp116\";\n        reg \u003d \u003c0x49\u003e;\n    };\n};\n{\n    compatible \u003d \"myboard-dpm-policy\";\n    temp-sensor \u003d \u003c\u0026charger_temp_sensor\u003e;\n    /* Other DPM policy properties */\n};\n```\n\nThe application would extract the temp sensor device handle and use this to read the board temperature when called by the TCPM.\n\nFor now, a Kconfig can be used to specify this value. I suggested adding it to Kconfig.pd.\n```\nconfig PLATFORM_EC_USB_PD_TEMP_SENSOR\n    int \"Temperature sensor used in PD messages\"\n    default 0\n    depends on PLATFORM_EC_TEMP_SENSOR\n    help\n       \u003c2-3 lines describing this option in more detail\u003e\n```",
+      "parentUuid": "e5bbc952_8fb88fb0",
+      "revId": "a8ae8aeb96d97b00d677a0e98852c4b9c26a2930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
