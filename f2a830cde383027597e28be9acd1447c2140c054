@@ -73,6 +73,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "80602092_cbb49695",
+        "filename": "zephyr/projects/nissa/cbi.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-19T04:45:50Z",
+      "side": 1,
+      "message": "Yes, attempting to cause a conflict would be a build-time error so it should be fine as-is.",
+      "parentUuid": "f6dea1bd_4a00b728",
+      "revId": "f2a830cde383027597e28be9acd1447c2140c054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "731ae300_47380401",
         "filename": "zephyr/projects/nissa/nivviks_cbi.dts",
         "patchSetId": 1
