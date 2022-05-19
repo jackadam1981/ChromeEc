@@ -70,6 +70,24 @@
       "parentUuid": "e5bbc952_8fb88fb0",
       "revId": "a8ae8aeb96d97b00d677a0e98852c4b9c26a2930",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75fd63a_6c52de72",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6869,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-19T18:41:37Z",
+      "side": 1,
+      "message": "Done. I\u0027ve added PLATFORM_EC_USB_PD_TEMP_SENSOR to Kconfig.pd and use it to define CONFIG_USB_PD_TEMP_SENSOR in config_chip.h",
+      "parentUuid": "0a4d318f_6fcf624c",
+      "revId": "a8ae8aeb96d97b00d677a0e98852c4b9c26a2930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
