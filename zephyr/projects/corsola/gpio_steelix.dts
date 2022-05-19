@@ -176,6 +176,9 @@
 			gpios = <&gpio6 0 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_EN_PP5000_USB_A0_VBUS";
 		};
+		en_pp5000_usb_a1_vbus: en_pp5000_usb_a1_vbus_x {
+			gpios = <&gpiof 5 GPIO_OUTPUT_LOW>;
+		};
 		gpio_hdmi_prsnt_odl: hdmi_prsnt_odl {
 			gpios = <&gpio3 7 GPIO_INPUT>;
 		};
