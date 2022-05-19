@@ -34,6 +34,24 @@
       "parentUuid": "5e058010_18c6fe1b",
       "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b567cf6_2c97823c",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81302bx_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-19T00:36:56Z",
+      "side": 1,
+      "message": "It seems a lot of duplication for one config item (notwithstanding using a DTS include to keep the common stuff, even though it is referenced using 2 different files).\nWould it work to keep the same board name (i.e keep using it8xxx2), and use CONFIG_SOC_IT81202 for corsola and CONFIG_SOC_IT81302 for nereid?\nThen instead of using CONFIG_SOC_IT8XXX2_GPIO_GROUP_K_L_DEFAULT_PULL_DOWN, CONFIG_SOC_IT81202 could be used to disable those pins (in Zephyr itself, not in our board files).\nTo me, the CONFIG_SOC_IT8XXX2_GPIO_GROUP_K_L_DEFAULT_PULL_DOWN should really be something set via a variant name, not a config attribute (I mean, is this ever used on a IT81302, and ever _not_ used on a IT81202?).\nGiven these groups are not brought out on pins on a IT81202, should they even be in the device tree? or is it enough just to turn them off this way?",
+      "parentUuid": "8e56b7c1_f96e9af6",
+      "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
