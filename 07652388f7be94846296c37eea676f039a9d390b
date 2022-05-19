@@ -199,6 +199,24 @@
       "parentUuid": "3ef594d0_04baa0bf",
       "revId": "07652388f7be94846296c37eea676f039a9d390b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c706a330_27c96d2b",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-19T17:17:20Z",
+      "side": 1,
+      "message": "Are any of these manufacturer parameters standard?",
+      "parentUuid": "01122151_5b8cc589",
+      "revId": "07652388f7be94846296c37eea676f039a9d390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
