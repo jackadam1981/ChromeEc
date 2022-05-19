@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50da4e1_3ed4dbc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-19T00:25:15Z",
+      "side": 1,
+      "message": "I think this is already the default configuration:\n\n```\nsrc/platform/ec $ zmake -j2 build nivviks\n...\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      248964 B       256 KB     94.97%\n            SRAM:       47184 B        64 KB     72.00%\n        IDT_LIST:          0 GB         2 KB      0.00%\nsrc/platform/ec $ grep BATTERY_V2 build/zephyr/nivviks/build-ro/zephyr/.config \nCONFIG_PLATFORM_EC_BATTERY_V2\u003dy\nCONFIG_PLATFORM_EC_HOSTCMD_BATTERY_V2\u003dy\n```",
+      "revId": "ab07fb0137f3d4f4b378193d1f5c308814bf9c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
