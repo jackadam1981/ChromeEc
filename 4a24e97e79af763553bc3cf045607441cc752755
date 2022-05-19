@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327cbd57_9da06108",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-19T22:36:43Z",
+      "side": 1,
+      "message": "A few high-level questions/comments:\n\n1. How do you expect boards with one charger per port (`CONFIG_OCPC`) to define `board_is_ppc`?",
+      "revId": "4a24e97e79af763553bc3cf045607441cc752755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a20184c8_f1fa511b",
+        "filename": "common/usb_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-19T22:36:43Z",
+      "side": 1,
+      "message": "Nit: As long as you\u0027re in here, can you change `p` to `port` to match the other functions in this file and our typical API?",
+      "revId": "4a24e97e79af763553bc3cf045607441cc752755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
