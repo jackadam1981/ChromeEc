@@ -374,6 +374,16 @@ void board_reset_pd_mcu(void)
 	/* wait for chips to come up */
 
 	msleep(50);
+
+#ifdef CONFIG_ZEPHYR
+	gpio_reset(IOEX_USB_C0_OC_ODL);
+	gpio_reset(IOEX_USB_C0_FRS_EN);
+	gpio_reset(IOEX_USB_C0_RT_RST_ODL);
+	gpio_reset(IOEX_USB_C2_RT_RST_ODL);
+	gpio_reset(IOEX_USB_C1_OC_ODL);
+	gpio_reset(IOEX_USB_C2_OC_ODL);
+	gpio_reset(IOEX_USB_C2_FRS_EN);
+#endif
 }
 
 static void board_tcpc_init(void)

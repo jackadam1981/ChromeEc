@@ -48,6 +48,15 @@ struct unused_pin_config {
  */
 int gpio_config_unused_pins(void) __attribute__((weak));
 
+/**
+ * @brief Reset all the GPIOs to default state
+ *
+ * This returns all pins from selected port to default state.
+ *
+ * @param port	Port to reset
+ */
+void gpio_reset_port(const struct device *port);
+
 #if DT_NODE_EXISTS(DT_PATH(unused_pins))
 /**
  * @brief Get a node from path '/unused-pins' which has a prop 'unused-gpios'.
