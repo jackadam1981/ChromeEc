@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd74a11_4d78a2e7",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-19T01:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7edfe1a4_931c0ff5",
+      "revId": "5290e330823c5cae0a9fd6f27b2f3e1351d8ec10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8378d35_887efe62",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-18T16:21:31Z",
       "side": 1,
       "message": "nit: a bit shift by 3 might help readers parse this versus the spec table",
+      "revId": "5290e330823c5cae0a9fd6f27b2f3e1351d8ec10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa4bb6c_322927bc",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-19T01:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8378d35_887efe62",
       "revId": "5290e330823c5cae0a9fd6f27b2f3e1351d8ec10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
