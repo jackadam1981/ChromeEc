@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46abb163_4cfe6102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-19T22:49:34Z",
+      "side": 1,
+      "message": "Hit send too early. 😄\n\n2. Right now, we have a common pattern of doing feature checks in common code and then calling into libraries based on those feature checks, and in particular, we do that with `CONFIG_USBC_PPC_*` and `ppc_*` library functions. It\u0027s a bit error prone, and it makes the business logic of the common code not flow as well. This CL adds a new check to each invocation of a PPC library function, which makes those downsides just a little bit more pronounced.\n\nWe also have a pattern, exhibited by the TCPC library (tcpm.h), of doing feature checks inside library functions, and having the common code call them unconditionally. If the feature isn\u0027t enabled, they don\u0027t do anything. This makes the common code more readable and decreases the likelihood of trying to use the feature inappropriately.\n\nWould it be practical to move the check for some PPC-related configs inside the PPC library functions to which they pertain? You could then also put the `board_is_port_ppc` checks in there, and the common code could be agnostic to the change. It might be a bit of a pain to make this change for `CONFIG_USBC_PPC`, which affects the build config, but for things like `CONFIG_USBC_PPC_VCONN`, it should be pretty straightforward.\n\nIf we go down that path, it would be nice if the config-flag-check refactor was in another CL before this one in the stack.",
+      "parentUuid": "327cbd57_9da06108",
+      "revId": "4a24e97e79af763553bc3cf045607441cc752755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a20184c8_f1fa511b",
         "filename": "common/usb_common.c",
         "patchSetId": 12
@@ -31,6 +49,23 @@
       "writtenOn": "2022-05-19T22:36:43Z",
       "side": 1,
       "message": "Nit: As long as you\u0027re in here, can you change `p` to `port` to match the other functions in this file and our typical API?",
+      "revId": "4a24e97e79af763553bc3cf045607441cc752755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63aff77_da114d7e",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-19T22:49:34Z",
+      "side": 1,
+      "message": "Nit: Something like `board_port_has_ppc` would feel a little more conventional to me, but I couldn\u0027t come up with a hard rule for naming here.",
       "revId": "4a24e97e79af763553bc3cf045607441cc752755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
