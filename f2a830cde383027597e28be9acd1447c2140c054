@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feeb46f7_47142e89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-19T03:55:41Z",
+      "side": 1,
+      "message": "Mayb",
+      "revId": "f2a830cde383027597e28be9acd1447c2140c054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c63c7a_179eb870",
+        "filename": "zephyr/projects/nissa/cbi.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-19T03:55:41Z",
+      "side": 1,
+      "message": "Add a comment here indicating that field 3:1 is reserved for nivviks.",
+      "revId": "f2a830cde383027597e28be9acd1447c2140c054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "731ae300_47380401",
+        "filename": "zephyr/projects/nissa/nivviks_cbi.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-19T03:55:41Z",
+      "side": 1,
+      "message": "I was thinking that perhaps the fan config should be moved here, but I see in the platform config that it is common for all, so I guess this is fine.",
+      "revId": "f2a830cde383027597e28be9acd1447c2140c054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
