@@ -377,6 +377,19 @@ int gpio_or_ioex_get_level(int signal, int *value);
  */
 void gpio_reset(enum gpio_signal signal);
 
+#ifdef CONFIG_ZEPHYR
+
+/**
+ * @brief Reset all the GPIOs to default state
+ *
+ * This returns all pins from selected port to default state.
+ *
+ * @param port	Port to reset
+ */
+void gpio_reset_port(const struct device *port);
+
+#endif /* CONFIG_ZEPHYR */
+
 /**
  * Enable interrupts for the signal.
  *
