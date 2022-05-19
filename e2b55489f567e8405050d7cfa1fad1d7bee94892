@@ -52,6 +52,24 @@
       "parentUuid": "8e56b7c1_f96e9af6",
       "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13631cd1_9b66ce71",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81302bx_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-05-19T08:29:13Z",
+      "side": 1,
+      "message": "We can use *_defconfig to enable corresponding configurations if we explicitly define chip variant in BUILD.py (although the configurations are mostly duplicated). We won\u0027t need to enable e.g CONFIG_SOC_IT81202BX, CONFIG_SOC_IT81302BX, or CONFIG_SOC_IT81302CX... on each project. Project just need to select the correct chip variant in the BUILD.py.\n\nThe CONFIG_SOC_IT81202 can be used to disable L and K groups.\nWe can enable it in it81202bx_defconfig once upstream change ready.",
+      "parentUuid": "8b567cf6_2c97823c",
+      "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
