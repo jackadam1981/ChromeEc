@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14cdc7d6_c8fc4a3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-05-19T14:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fee93614_afbd6ce1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "633ebb5883dcafb5d914d51f3f6c13636d1edb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "749f70ce_d28efd6e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-12T19:09:53Z",
       "side": 1,
       "message": "Did you try \"make -j buildall\"?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "633ebb5883dcafb5d914d51f3f6c13636d1edb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d1a238_a1ebad91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-05-19T14:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "749f70ce_d28efd6e",
       "range": {
         "startLine": 11,
         "startChar": 5,
