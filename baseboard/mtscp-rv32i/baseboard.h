@@ -37,6 +37,10 @@
 #define CONFIG_IPI
 #define CONFIG_RPMSG_NAME_SERVICE
 
+#if defined(CHIP_VARIANT_MT8195_CORE1)
+#define CONFIG_IPI_C2
+#endif
+
 #define SCP_IPI_INIT 0
 #define SCP_IPI_VDEC_H264 1
 #define SCP_IPI_VDEC_VP8 2

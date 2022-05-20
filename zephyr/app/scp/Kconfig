@@ -10,4 +10,6 @@ config SCP_CORE1_RAM_SIZE
 config SCP_CORE1_RAM_PADDING
 	default 0x40000
 
+config IPI_C2
+
 endif

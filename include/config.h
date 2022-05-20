@@ -2756,6 +2756,7 @@
 
 /* EC support Inter-Processor Interrupt. */
 #undef CONFIG_IPI
+#undef CONFIG_IPI_C2
 
 /*
  * IPC0/IPI shared object address. This is the starting address of the send
