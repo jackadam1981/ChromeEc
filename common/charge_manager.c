@@ -980,6 +980,13 @@ static void charge_manager_refresh(void)
 
 			if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled()) {
 				/* Fall-through. DPS control sink voltage */
+			} else if (charge_get_pps_mode(updated_new_port) ==
+				   CHARGE_PPS_MODE_HARDWARE) {
+				/*
+				 * When Hardware PPS is enabled, requests are made by
+				 * PD state machine.
+				 */
+				new_req = false;
 			} else {
 				/*
 				 * Check if we can get more power from this

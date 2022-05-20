@@ -1075,6 +1075,168 @@ static int charge_request(int voltage, int current)
 	return EC_SUCCESS;
 }
 
+#define CHARGE_PPS_REFRESH_VOLTAGE_INTERVAL ((9 * 1000) * MSEC)
+#define CHARGE_PPS_FIX_VOLTAGE_INTERVAL ((1000) * MSEC)
+
+enum charge_hw_pps_state {
+	CHARGE_HW_PPS_STATE_DISABLE,
+	CHARGE_HW_PPS_STATE_LOOPING,
+};
+
+struct charge_pps_data {
+	enum charge_pps_mode mode;
+	enum charge_pps_mode prev_mode;
+	int voltage;
+	timestamp_t ts;
+};
+
+static struct charge_pps_data pps_data[2];
+
+static bool charge_is_hw_pps_supported(int chgnum)
+{
+	const struct battery_info *batt_info = battery_get_info();
+	const uint32_t *src_caps = pd_get_src_caps(chgnum);
+	uint8_t src_cap_cnt = pd_get_src_cap_cnt(chgnum);
+
+	/* Check if AC adapter supports PPS and it is within range */
+	if (pd_find_apdo_index(src_cap_cnt, src_caps,
+			batt_info->voltage_min, 3000, NULL) < 0) {
+		return false;
+	}
+	if (pd_find_apdo_index(src_cap_cnt, src_caps,
+			batt_info->voltage_max, 3000, NULL) < 0) {
+		return false;
+	}
+
+	return true;
+}
+
+enum charge_pps_mode charge_set_pps_mode(int chgnum,
+					 const enum charge_pps_mode mode)
+{
+	struct charge_pps_data *pdata = &pps_data[chgnum];
+
+	if (mode > CHARGE_PPS_MODE_HARDWARE ||
+	   (mode == CHARGE_PPS_MODE_HARDWARE &&
+	    !charge_is_hw_pps_supported(chgnum))) {
+		return pdata->mode;
+	}
+	pdata->mode = mode;
+	return pdata->mode;
+}
+
+enum charge_pps_mode charge_get_pps_mode(int chgnum)
+{
+	struct charge_pps_data *pdata = &pps_data[chgnum];
+
+	return pdata->mode;
+}
+
+int charge_get_pps_voltage(int chgnum)
+{
+	struct charge_pps_data *pdata = &pps_data[chgnum];
+
+	return pdata->voltage;
+}
+
+static void charge_handle_soft_pps(int chgnum)
+{
+	struct charge_pps_data *pdata = &pps_data[chgnum];
+
+	if (pdata->prev_mode == pdata->mode) {
+		return;
+	}
+	pdata->voltage = curr.batt.voltage + 1000;
+	ccprintf("C%d: Activating soft PPS = %d mV\n", chgnum,
+		pdata->voltage);
+	pd_set_new_power_request(chgnum);
+
+	pdata->prev_mode = pdata->mode;
+}
+
+static void charge_handle_hard_pps(int chgnum)
+{
+	struct charge_pps_data *pdata = &pps_data[chgnum];
+	bool enabled;
+
+	if (pdata->prev_mode != CHARGE_PPS_MODE_HARDWARE) {
+		pdata->voltage = curr.batt.voltage;
+		ccprintf("C%d: Activating hard PPS = %d mV\n", chgnum,
+			pdata->voltage);
+		pdata->prev_mode = pdata->mode;
+		pd_set_new_power_request(chgnum);
+		pdata->ts.val = 0;
+		return;
+	}
+
+	if (!pdata->ts.val) {
+		charger_enable_pps(chgnum, true);
+		pdata->ts.val =
+			get_time().val + CHARGE_PPS_FIX_VOLTAGE_INTERVAL;
+		return;
+	}
+
+	charger_is_pps_enabled(chgnum, &enabled);
+	if (!enabled) {
+		pdata->voltage = pdata->voltage < curr.batt.voltage + 200 ?
+			pdata->voltage : pdata->voltage - 20;
+		ccprintf("C%d: Fixing PPS voltage = %d mV\n", chgnum,
+			pdata->voltage);
+		pdata->ts.val = 0;
+		pd_set_new_power_request(chgnum);
+		return;
+	}
+
+	if (!timestamp_expired(pdata->ts, 0)) {
+		return;
+	}
+
+	pdata->voltage = pdata->voltage >= curr.batt.voltage + 300 ?
+		pdata->voltage : pdata->voltage + 20;
+	ccprintf("C%d: Adjust PPS = %d mV : VBAT = %d mV\n", chgnum,
+		pdata->voltage, curr.batt.voltage);
+	pdata->ts.val = get_time().val + CHARGE_PPS_REFRESH_VOLTAGE_INTERVAL;
+}
+
+static void charge_handle_disable_pps(int chgnum)
+{
+	struct charge_pps_data *pdata = &pps_data[chgnum];
+
+	if (pdata->prev_mode == pdata->mode) {
+		return;
+	}
+
+	if (pdata->prev_mode == CHARGE_PPS_MODE_HARDWARE) {
+		ccprintf("C%d: Disabling PPS\n", chgnum);
+		charger_enable_pps(chgnum, false);
+	}
+	pd_set_new_power_request(chgnum);
+
+	pdata->prev_mode = pdata->mode;
+}
+
+static void charge_handle_pps(void)
+{
+	int chgnum = charge_get_active_chg_chip();
+
+	if (!is_pd_port(chgnum)) {
+		return;
+	}
+
+	switch(charge_get_pps_mode(chgnum)) {
+	case CHARGE_PPS_MODE_SOFTWARE:
+		charge_handle_soft_pps(chgnum);
+		break;
+	case CHARGE_PPS_MODE_HARDWARE:
+		charge_handle_hard_pps(chgnum);
+		break;
+	case CHARGE_PPS_MODE_DISABLE:
+		charge_handle_disable_pps(chgnum);
+		break;
+	default:
+	}
+}
+
 void chgstate_set_manual_current(int curr_ma)
 {
 	if (curr_ma < 0)
@@ -2002,7 +2164,7 @@ void charger_task(void *u)
 #else
 		charge_request(curr.requested_voltage, curr.requested_current);
 #endif
-
+		charge_handle_pps();
 		/* How long to sleep? */
 		if (problems_exist)
 			/* If there are errors, don't wait very long. */

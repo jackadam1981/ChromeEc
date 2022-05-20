@@ -249,6 +249,12 @@ static int command_charger(int argc, const char **argv)
 			return EC_ERROR_PARAM2 + idx_provided;
 		dptf_limit_ma = d;
 		return EC_SUCCESS;
+	} else if (strcasecmp(argv[1 + idx_provided], "pps") == 0) {
+		d = strtoi(argv[2 + idx_provided], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM2 + idx_provided;
+		charge_set_pps_mode(idx_provided, d);
+		return EC_SUCCESS;
 	} else if (strcasecmp(argv[1 + idx_provided], "dump") == 0) {
 		if (!IS_ENABLED(CONFIG_CMD_CHARGER_DUMP) ||
 		    !chg_chips[chgnum].drv->dump_registers) {
@@ -265,7 +271,7 @@ static int command_charger(int argc, const char **argv)
 }
 
 DECLARE_CONSOLE_COMMAND(charger, command_charger,
-			"[chgnum] [input | current | voltage | dptf] [newval]"
+			"[chgnum] [input | current | voltage | dptf | pps ] [newval]"
 #ifdef CONFIG_CMD_CHARGER_DUMP
 			"\n\t[chgnum] dump"
 #endif

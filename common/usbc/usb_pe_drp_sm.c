@@ -3447,7 +3447,7 @@ static void pe_snk_evaluate_capability_entry(int port)
 	pd_set_src_caps(port, num, pdo);
 
 	/* Evaluate the options based on supplied capabilities */
-	pd_process_source_cap(port, pe[port].src_cap_cnt, pe[port].src_caps);
+	pd_process_source_cap(port,  pe[port].src_cap_cnt, pe[port].src_caps);
 
 	/* Device Policy Response Received */
 	set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
@@ -3558,11 +3558,24 @@ static void pe_snk_select_capability_run(int port)
 				/* explicit contract is now in place */
 				pe_set_explicit_contract(port);
 
-				if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
+				if (IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
+				    /*
+			             * A Sink is not required to transition to
+				     * Sink Standby when operating within the
+				     * negotiated PPS APDO.
+				     *
+				     * See USB PD Spec Section 7.2.3.1
+				     */
+				    charge_get_pps_mode(port) !=
+				    CHARGE_PPS_MODE_HARDWARE)
 					pe_snk_apply_psnkstdby(port);
-
+					/*
+					 * TODO: Handle transition between PPS
+					 * APDO's. We are currently assuming
+					 * AC adapter does not support multiple
+					 * APDO's.
+					 */
 				set_state_pe(port, PE_SNK_TRANSITION_SINK);
-
 				return;
 			}
 			/*
@@ -3732,6 +3745,11 @@ static void pe_snk_ready_entry(int port)
 
 	/* Clear DPM Current Request */
 	pe[port].dpm_curr_request = 0;
+
+	if (charge_get_pps_mode(port) == CHARGE_PPS_MODE_HARDWARE) {
+		pd_timer_enable(port, TC_TIMER_PPS_KEEP_ALIVE,
+				PD_T_SINK_PPS_PERIODIC);
+	}
 
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait,
@@ -3926,6 +3944,11 @@ static void pe_snk_ready_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return;
+	}
+
+	if (charge_get_pps_mode(port) == CHARGE_PPS_MODE_HARDWARE &&
+	    pd_timer_is_expired(port, TC_TIMER_PPS_KEEP_ALIVE)){
+		pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 	}
 
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||

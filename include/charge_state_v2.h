@@ -217,6 +217,20 @@ struct charge_state_data *charge_get_status(void);
 
 enum ec_charge_control_mode get_chg_ctrl_mode(void);
 
+enum charge_pps_mode {
+	CHARGE_PPS_MODE_DISABLE,
+	CHARGE_PPS_MODE_SOFTWARE,
+	CHARGE_PPS_MODE_HARDWARE,
+	CHARGE_PPS_MODE_MAX,
+};
+
+enum charge_pps_mode charge_set_pps_mode(int chgnum,
+					 const enum charge_pps_mode mode);
+
+enum charge_pps_mode charge_get_pps_mode(int chgnum);
+
+int charge_get_pps_voltage(int chgnum);
+
 __test_only void reset_prev_disp_charge(void);
 
 /**
