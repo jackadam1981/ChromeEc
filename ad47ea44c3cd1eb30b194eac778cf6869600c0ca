@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "516fc1ee_f11ce12f",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T19:16:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "265b0e4d_a0f21613",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 62
+      },
+      "revId": "ad47ea44c3cd1eb30b194eac778cf6869600c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b3b74ac_2c3d5418",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c791448d_301884e1",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T19:16:49Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8b3b74ac_2c3d5418",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "ad47ea44c3cd1eb30b194eac778cf6869600c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ecf0d8_01b443a7",
@@ -84,6 +132,24 @@
       "writtenOn": "2022-05-20T16:33:41Z",
       "side": 1,
       "message": "not sure if we need this function as its PWM",
+      "revId": "ad47ea44c3cd1eb30b194eac778cf6869600c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6c01dff_c16af807",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T19:16:49Z",
+      "side": 1,
+      "message": "This is needed, common pwm code also uses similar approach to pulse led.",
+      "parentUuid": "c2ecf0d8_01b443a7",
       "revId": "ad47ea44c3cd1eb30b194eac778cf6869600c0ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -125,6 +191,30 @@
       "side": 1,
       "message": "extpower_is_present()",
       "parentUuid": "167e9a46_60fa7c33",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 37
+      },
+      "revId": "ad47ea44c3cd1eb30b194eac778cf6869600c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a772f62f_ad0a347e",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T19:16:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7f9b0a8_ae42bfa1",
       "range": {
         "startLine": 85,
         "startChar": 4,
