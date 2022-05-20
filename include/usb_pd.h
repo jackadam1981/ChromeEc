@@ -155,9 +155,17 @@ enum pd_rx_errors {
 	(RDO_OBJ_POS(n) | (flags) | RDO_FIXED_VAR_OP_CURR(op_ma) | \
 	 RDO_FIXED_VAR_MAX_CURR(max_ma))
 
+#define PRDO_VOLTAGE(mw)           ((((mw) / 20) & 0x7FF) << 9)
+#define PRDO_OP_CURRENT(mw)        ((((mw) / 50) & 0x7F) << 0)
+
 #define RDO_BATT(n, op_mw, max_mw, flags)                      \
 	(RDO_OBJ_POS(n) | (flags) | RDO_BATT_OP_POWER(op_mw) | \
 	 RDO_BATT_MAX_POWER(max_mw))
+
+#define PRDO_PPS(n, mv, op_ma, flags) \
+				(RDO_OBJ_POS(n) | (flags) | \
+				PRDO_VOLTAGE(mv) | \
+				PRDO_OP_CURRENT(op_ma))
 
 /* BDO : BIST Data Object
  * 31:28 BIST Mode
@@ -269,6 +277,7 @@ enum pd_rx_errors {
 #define PD_T_VCONN_REAPPLIED (10 * MSEC) /* between 10ms and 20ms */
 #define PD_T_VCONN_DISCHARGE (240 * MSEC) /* between 160ms and 240ms */
 #define PD_T_SINK_EPR_KEEP_ALIVE (375 * MSEC) /* between 250ms and 500ms */
+#define PD_T_SINK_PPS_PERIODIC (10000 * MSEC) /* 10s */
 
 /*
  * Non-spec timer to prevent going Unattached if Vbus drops before a partner FRS
@@ -3590,6 +3599,9 @@ int typec_update_cc(int port);
 __override_proto enum pd_sdb_power_indicator
 board_get_pd_sdb_power_indicator(enum pd_sdb_power_state power_state);
 
+void pd_enable_pps(int port, bool enable);
+
+bool pd_is_pps_enabled(int port);
 /****************************************************************************/
 
 #endif /* __CROS_EC_USB_PD_H */

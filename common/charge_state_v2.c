@@ -1075,6 +1075,371 @@ static int charge_request(int voltage, int current)
 	return EC_SUCCESS;
 }
 
+#define CHARGE_PPS_REFRESH_VOLTAGE_INTERVAL ((9 * 1000) * MSEC) /* 9 seconds */
+#define CHARGE_PPS_FIX_VOLTAGE_INTERVAL ((1000) * MSEC) /* 1 second */
+
+#define CHARGE_MAX_PPS_VOLTAGE_INCREMENT  (280) /* 280 mV*/
+#define CHARGE_PPS_VOLTAGE_INCREMENT  (20) /* 20 mV*/
+
+#define CHARGE_MIN_PPS_VOLTAGE_DECREMENT  (150) /* 150 mV*/
+#define CHARGE_PPS_VOLTAGE_DECREMENT  (20) /* 20 mV*/
+
+#define CHARGE_PPS_CHARGER_INCREMENT  (100) /* 100 mV*/
+#define CHARGE_PPS_MAX_CURRENT (2500) /* 2.5 A*/
+
+#define CHARGE_PPS_MIN_INPUT_CURRENT (100) /* 100 mA*/
+
+/* Adaptive feature structure definition. */
+struct charge_adaptive_data {
+	/* Current Adaptive mode. */
+	enum charge_adaptive_mode mode;
+	/*
+	 * Previous Adaptive mode. This gets updated by respective mode
+	 * handler.
+	 */
+	enum charge_adaptive_mode prev_mode;
+	/* Voltage to be requested by PD PE. */
+	int req_mv;
+	/* Current to be requested by PD PE. */
+	int req_ma;
+	/* Voltage to be set in charger VSYS. */
+	int chg_mv;
+	/* Current to be set in charger for charging battery. */
+	int chg_ma;
+	/* Adaptive mode time stamp for debouncing events. */
+	timestamp_t ts;
+};
+
+/* Adaptive data array, one instance per charger IC. */
+static struct charge_adaptive_data adaptive_data[CHARGER_NUM];
+
+/**
+ * Determine if Type-C AC adapter supports PPS based on source capabilities.
+ * This function is meant to be used internally.
+ *
+ * @param chgnum Charger number ID,
+ *
+ * @returns True if Type-C AC adapter supports PPS, False otherwise.
+ */
+static bool charge_ac_supports_pps(int chgnum)
+{
+	const struct battery_info *batt_info = battery_get_info();
+	const uint32_t *src_caps = pd_get_src_caps(chgnum);
+	uint8_t src_cap_cnt = pd_get_src_cap_cnt(chgnum);
+
+	if (pd_find_apdo_index(src_cap_cnt, src_caps, batt_info->voltage_max,
+	    batt_info->voltage_min, CHARGE_PPS_MAX_CURRENT, NULL) < 0) {
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Obtain current charger ID adaptive mode.
+ * This function is meant to be used internally.
+ *
+ * @param chgnum Charger number ID,
+ *
+ * @returns Current charger adaptive mode.
+ */
+static inline enum charge_adaptive_mode get_adaptive_mode(int chgnum)
+{
+	struct charge_adaptive_data *pdata = &adaptive_data[chgnum];
+
+	return pdata->mode;
+}
+
+/**
+ * Set charger ID adaptive mode.
+ * This function is meant to be used internally.
+ *
+ * @param chgnum Charger number ID.
+ * @param mode Adaptive mode to be set.
+ */
+static inline void set_adaptive_mode(int chgnum,
+				     const enum charge_adaptive_mode mode)
+{
+	struct charge_adaptive_data *pdata = &adaptive_data[chgnum];
+
+	pdata->mode = mode;
+}
+
+/**
+ * Finds voltage closest required voltage and current from source capabilities.
+ * This function is meant to be used internally.
+ *
+ * @param chgnum Charger number ID.
+ * @param mv Voltage to be found in source capabilities.
+ * @param ma Vourrent to be found in source capabilities.
+ */
+static void charge_adative_legacy_find_voltage(int chgnum, int* mv, int* ma)
+{
+	const uint32_t *src_caps = pd_get_src_caps(chgnum);
+	uint8_t src_cap_cnt = pd_get_src_cap_cnt(chgnum);
+	int i, max_mv, min_mv, max_ma, delta, min_delta;
+	bool minus, min_minus;
+
+	if (!mv || !ma) {
+		return;
+	}
+
+	min_delta = *mv;
+	for (i = 0; i < src_cap_cnt; i++) {
+		pd_extract_pdo_power(src_caps[i], &max_ma, &max_mv, &min_mv);
+		if (max_mv == *mv) {
+			return;
+		} else if (max_mv > *mv) {
+			delta = max_mv - *mv;
+			minus = false;
+		} else {
+			delta = *mv - max_mv;
+			minus = true;
+		}
+
+		if (delta < min_delta) {
+			min_delta = delta;
+			min_minus = minus;
+		}
+	}
+
+	if (min_minus) {
+		*mv -= min_delta;
+	} else {
+		*mv += min_delta;
+	}
+}
+
+/**
+ * Handles current legacy mode in adaptive feature.
+ * This function is meant to be used internally.
+ *
+ * @param chgnum Charger number ID.
+ */
+static void charge_handle_adaptive_legacy(int chgnum)
+{
+	struct charge_adaptive_data *pdata = &adaptive_data[chgnum];
+
+	if (pdata->prev_mode == pdata->mode) {
+		return;
+	}
+
+	pdata->chg_mv = curr.batt.voltage + 500;
+	charge_adative_legacy_find_voltage(chgnum, &pdata->req_mv, &pdata->req_ma);
+	pdata->req_ma = 2000;
+	pdata->chg_ma = 2000;
+	ccprintf("C%d: Activating Adaptive legacy = %d mV\n", chgnum,
+		pdata->req_ma);
+	pd_set_new_power_request(chgnum);
+
+	pdata->prev_mode = pdata->mode;
+}
+
+/**
+ * Handles current PPS mode in adaptive feature.
+ * This function is meant to be used internally.
+ *
+ * @param chgnum Charger number ID.
+ */
+static void charge_handle_adaptive_pps(int chgnum)
+{
+	struct charge_adaptive_data *pdata = &adaptive_data[chgnum];
+	int in_current;
+	bool enabled;
+
+	if (pdata->prev_mode != CHARGE_ADAPTIVE_PPS) {
+		pdata->req_mv = curr.batt.voltage;
+		pdata->chg_ma = pdata->req_ma = CHARGE_PPS_MAX_CURRENT;
+		pdata->chg_mv = pdata->req_mv + CHARGE_PPS_CHARGER_INCREMENT;
+		ccprintf("C%d: Activating Adaptive PPS = %d mV\n", chgnum,
+			pdata->req_mv);
+		pdata->prev_mode = pdata->mode;
+		pd_enable_pps(chgnum, true);
+		pdata->ts.val = 0;
+		pd_set_new_power_request(chgnum);
+		return;
+	}
+
+	if (!pdata->ts.val) {
+		charger_enable_pps(chgnum, true);
+		pdata->ts.val =
+			get_time().val + CHARGE_PPS_FIX_VOLTAGE_INTERVAL;
+		return;
+	}
+
+	charger_get_input_current(chgnum, &in_current);
+	if (in_current < CHARGE_PPS_MIN_INPUT_CURRENT) {
+		/*
+		 * Input current from AC adapter has dropped, we need to
+		 * disable Adaptive mode.
+		 **/
+		pdata->mode = CHARGE_ADAPTIVE_DISABLE;
+		charger_enable_pps(chgnum, false);
+		return;
+	}
+	charger_is_pps_enabled(chgnum, &enabled);
+	if (!enabled) {
+		/*
+		 * Charger IC chip is not entering in PPS mode, voltage
+		 * requested may be too high.
+		 **/
+		pdata->req_mv = pdata->req_mv - CHARGE_PPS_VOLTAGE_DECREMENT <
+			curr.batt.voltage - CHARGE_MIN_PPS_VOLTAGE_DECREMENT ?
+			pdata->req_mv :
+			pdata->req_mv - CHARGE_PPS_VOLTAGE_DECREMENT;
+		ccprintf("C%d: Fixing PPS voltage = %d mV : VBAT = %d mV\n",
+			chgnum, pdata->req_mv, curr.batt.voltage);
+		pdata->ts.val = 0;
+		pd_set_new_power_request(chgnum);
+		return;
+	}
+
+	if (!timestamp_expired(pdata->ts, 0)) {
+		return;
+	}
+
+	pdata->req_mv = pdata->req_mv + CHARGE_PPS_VOLTAGE_INCREMENT >
+		curr.batt.voltage + CHARGE_MAX_PPS_VOLTAGE_INCREMENT ?
+		pdata->req_mv : pdata->req_mv + CHARGE_PPS_VOLTAGE_INCREMENT;
+	ccprintf("C%d: Adjust PPS = %d mV : VBAT = %d mV\n", chgnum,
+		pdata->req_mv, curr.batt.voltage);
+	pdata->chg_mv = pdata->req_mv + CHARGE_PPS_CHARGER_INCREMENT;
+	pdata->ts.val = get_time().val + CHARGE_PPS_REFRESH_VOLTAGE_INTERVAL;
+}
+
+/**
+ * Handles current disable mode in adaptive feature.
+ * This function is meant to be used internally.
+ *
+ * @param chgnum Charger number ID.
+ */
+static void charge_handle_adaptive_disable(int chgnum)
+{
+	struct charge_adaptive_data *pdata = &adaptive_data[chgnum];
+
+	if (pdata->prev_mode == pdata->mode) {
+		return;
+	}
+
+	ccprintf("C%d: Disabling Adapive mode\n", chgnum);
+	if (pdata->prev_mode == CHARGE_ADAPTIVE_PPS) {
+		charger_enable_pps(chgnum, false);
+		pd_enable_pps(chgnum, false);
+	}
+	pdata->prev_mode = pdata->mode;
+	pd_set_new_power_request(chgnum);
+}
+
+/**
+ * Handles current mode in adaptive feature.
+ * This function is meant to be used internally.
+ *
+ * @param chgnum Charger number ID.
+ */
+static enum charge_adaptive_mode charge_handle_adaptive(void)
+{
+	static int chgnum = CHARGE_PORT_NONE;
+	enum charge_adaptive_mode cur_mode;
+
+	if (charge_get_active_chg_chip() != chgnum) {
+		/* Active charger has bene updated */
+		if (chgnum < board_get_charger_chip_count() &&
+		    chgnum >= 0) {
+			/*
+			 * Current charger ID is still valid, force
+			 * disable mode.
+			 */
+			set_adaptive_mode(chgnum,
+					  CHARGE_ADAPTIVE_DISABLE);
+		} else {
+			chgnum = charge_get_active_chg_chip();
+		}
+	}
+	if (chgnum == CHARGE_PORT_NONE) {
+		return CHARGE_ADAPTIVE_DISABLE;
+	}
+	cur_mode = get_adaptive_mode(chgnum);
+	switch(cur_mode) {
+	case CHARGE_ADAPTIVE_DISABLE:
+		charge_handle_adaptive_disable(chgnum);
+		break;
+	case CHARGE_ADAPTIVE_LEGACY:
+		charge_handle_adaptive_legacy(chgnum);
+		break;
+	case CHARGE_ADAPTIVE_PPS:
+		charge_handle_adaptive_pps(chgnum);
+		break;
+	default:
+	}
+	return cur_mode;
+}
+
+enum charge_adaptive_mode charge_get_adaptive_mode(int chgnum)
+{
+	if (chgnum != charge_get_active_chg_chip()) {
+		return CHARGE_ADAPTIVE_DISABLE;
+	}
+
+	return get_adaptive_mode(chgnum);
+}
+
+int charge_set_adaptive_mode(int chgnum,  const enum charge_adaptive_mode mode)
+{
+	if (chgnum != charge_get_active_chg_chip()) {
+		return EC_ERROR_NOT_POWERED;
+	}
+
+	if (mode == get_adaptive_mode(chgnum)) {
+		return EC_SUCCESS;
+	}
+
+	if (mode > CHARGE_ADAPTIVE_PPS) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (mode == CHARGE_ADAPTIVE_PPS && !charge_ac_supports_pps(chgnum)) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+	set_adaptive_mode(chgnum, mode);
+
+	return EC_SUCCESS;
+}
+
+int charge_get_adaptive_request(int chgnum, int *mv, int *ma)
+{
+	struct charge_adaptive_data *pdata = &adaptive_data[chgnum];
+
+	if (chgnum != charge_get_active_chg_chip()) {
+		return EC_ERROR_NOT_POWERED;
+	}
+	if (mv) {
+		*mv = get_adaptive_mode(chgnum) ==  CHARGE_ADAPTIVE_DISABLE ?
+		      0: pdata->req_mv;
+	}
+	if (ma) {
+		*ma = get_adaptive_mode(chgnum) ==  CHARGE_ADAPTIVE_DISABLE ?
+		      0: pdata->req_ma;
+	}
+	return 0;
+}
+
+int charge_get_adaptive_charger(int chgnum, int *mv, int *ma)
+{
+	struct charge_adaptive_data *pdata = &adaptive_data[chgnum];
+
+	if (chgnum != charge_get_active_chg_chip()) {
+		return EC_ERROR_NOT_POWERED;
+	}
+	if (mv) {
+		*mv = get_adaptive_mode(chgnum) ==  CHARGE_ADAPTIVE_DISABLE ?
+		      0: pdata->chg_mv;
+	}
+	if (ma) {
+		*ma = get_adaptive_mode(chgnum) ==  CHARGE_ADAPTIVE_DISABLE ?
+		      0: pdata->chg_ma;
+	}
+	return 0;
+}
+
 void chgstate_set_manual_current(int curr_ma)
 {
 	if (curr_ma < 0)
@@ -1997,12 +2362,21 @@ void charger_task(void *u)
 #endif
 		}
 
+		if (charge_handle_adaptive() != CHARGE_ADAPTIVE_DISABLE &&
+		    curr.ac) {
+			charge_get_adaptive_charger(curr.ocpc.active_chg_chip,
+				&curr.requested_voltage,
+				&curr.requested_current);
+			if (curr.requested_voltage > curr.batt.desired_voltage) {
+				curr.requested_voltage =
+					curr.batt.desired_voltage;
+			}
+		}
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
 		charge_allocate_input_current_limit();
 #else
 		charge_request(curr.requested_voltage, curr.requested_current);
 #endif
-
 		/* How long to sleep? */
 		if (problems_exist)
 			/* If there are errors, don't wait very long. */
