@@ -86,6 +86,30 @@
       },
       "revId": "0a15ceb4fd7951b9d233f20cc0397587aa083f16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef7ff47_e3931dff",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/fan.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-20T19:07:08Z",
+      "side": 1,
+      "message": "fix for MTL is here https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3657822",
+      "parentUuid": "5a500f56_c39624d2",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "0a15ceb4fd7951b9d233f20cc0397587aa083f16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
