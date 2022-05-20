@@ -80,7 +80,7 @@ def get_version_string(project, zephyr_base, modules, static=False):
     """Get the version string associated with a build.
 
     Args:
-        project: a zmake.project.Project object
+        project: a string project name
         zephyr_base: the path to the zephyr directory
         modules: a dictionary mapping module names to module paths
         static: if set, create a version string not dependent on git
@@ -117,7 +117,7 @@ def get_version_string(project, zephyr_base, modules, static=False):
         )
 
     return "{}_v{}.{}.{}-{}".format(
-        project.config.project_name,
+        project,
         major_version,
         minor_version,
         num_commits,
