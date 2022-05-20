@@ -39,6 +39,29 @@
       },
       "revId": "c9d0468c80b1ba57731b4d2cd48a71443c3261b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf22173_d81c761a",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-20T19:33:13Z",
+      "side": 1,
+      "message": "add true false everywhere",
+      "range": {
+        "startLine": 74,
+        "startChar": 32,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "c9d0468c80b1ba57731b4d2cd48a71443c3261b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
