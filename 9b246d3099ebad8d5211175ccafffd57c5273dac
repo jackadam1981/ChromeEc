@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6977126f_e82c0f57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-20T22:18:05Z",
+      "side": 1,
+      "message": "\"make -j buildall\" would make sense here, as this would ensure that the removed code was indeed unused",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "9b246d3099ebad8d5211175ccafffd57c5273dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
