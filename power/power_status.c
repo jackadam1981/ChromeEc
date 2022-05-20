@@ -196,6 +196,58 @@ DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 #endif
 
 #ifdef CONFIG_BATTERY_DBPT_V2PLUS
+void update_dbpt(void)
+{
+	static int count;
+
+	/* return if fuel guage is not initialized */
+	if (!dbpt_initialized)
+		return;
+
+	uint16_t batt_max_peak_power;
+	uint16_t prev_batt_max_peak_power;
+	uint16_t threshold_max_power_change;
+
+	/* Read from fuel guage */
+	batt_max_peak_power = battery_maximum_power();
+
+	prev_batt_max_peak_power =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX));
+
+	/* Check for any threshold level change */
+	if (prev_batt_max_peak_power < batt_max_peak_power) {
+			threshold_max_power_change = (batt_max_peak_power -
+							prev_batt_max_peak_power);
+	} else {
+			threshold_max_power_change = (prev_batt_max_peak_power -
+							batt_max_peak_power);
+	}
+
+	/* Update the registers */
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
+                                                       batt_max_peak_power;
+
+	/* Send sci event for any threshold level change */
+	if (threshold_max_power_change >= 250) {
+		CPRINTS("PTOM:BATTERY_sci event-23 on threshold change!");
+		CPRINTS("PTOM- thresh_max_pwr_chnge-%d",
+		threshold_max_power_change);
+		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
+	}
+
+	// For testing purpose
+	if (count<5) {
+		CPRINTS("PTOM: PMAX-%d",
+			batt_max_peak_power);
+		CPRINTS("PTOM_in memap: PMAX-%d",
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)));
+		count++;
+	}
+	else
+		count = 5;
+}
+DECLARE_HOOK(HOOK_SECOND, update_dbpt, HOOK_PRIO_DEFAULT);
+
 static void init_dbpt(void)
 {
 	int rv;
@@ -212,6 +264,11 @@ static void init_dbpt(void)
 	}
 	CPRINTS("DBPT initialised!");
 	dbpt_initialized = true;
+
+	/*
+	 * Update the mememap with initial value, after initial configuration.
+	 */
+	update_dbpt();
 }
 
 #endif /* CONFIG_BATTERY_DBPT_V2PLUS */
@@ -220,10 +277,12 @@ static void power_status_init(void)
 {
 	uint8_t *memmap_psrc =  host_get_memmap(EC_MEMMAP_PWR_SRC);
 	uint16_t *memmap_artg = (uint16_t *)host_get_memmap(EC_MEMMAP_PWR_ARTG);
+	uint16_t *memmap_pmax = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
 	*memmap_artg = 0;
+	*memmap_pmax = 0;
 
 	/* Update the initial information on power source */
 	update_power_source();
