@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "797314d7_196cbe78",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-05-20T21:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7f17d8_3e7cd91a",
+      "revId": "d478fc740d3f2d29ec5839aab6343bd93c963105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dba5b542_24e19812",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-20T21:43:52Z",
       "side": 1,
       "message": "replace with \u0027If your device continuously falls into recovery on reboots after rescue\u0027",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 42
+      },
+      "revId": "d478fc740d3f2d29ec5839aab6343bd93c963105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "449d8a4f_cf3f8a5a",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-05-20T21:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dba5b542_24e19812",
       "range": {
         "startLine": 203,
         "startChar": 0,
