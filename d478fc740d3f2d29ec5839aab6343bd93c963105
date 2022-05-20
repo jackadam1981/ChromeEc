@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5caa0576_9fd323c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T21:43:52Z",
+      "side": 1,
+      "message": "Another couple of nits to your discretion, feel free to send to CQ without further reviews.",
+      "revId": "d478fc740d3f2d29ec5839aab6343bd93c963105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7f17d8_3e7cd91a",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T21:43:52Z",
+      "side": 1,
+      "message": "Can you put it at the same level with \u0027Performin GSC rescue procedure\u0027 so that it shows up on the TOC",
+      "revId": "d478fc740d3f2d29ec5839aab6343bd93c963105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba5b542_24e19812",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T21:43:52Z",
+      "side": 1,
+      "message": "replace with \u0027If your device continuously falls into recovery on reboots after rescue\u0027",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 42
+      },
+      "revId": "d478fc740d3f2d29ec5839aab6343bd93c963105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
