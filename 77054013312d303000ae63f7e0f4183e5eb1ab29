@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9756e04c_8792da27",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb3533da_9bf5d4fb",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 10
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3762a907_3eccfdcd",
@@ -55,6 +79,30 @@
       "writtenOn": "2022-05-18T21:49:25Z",
       "side": 1,
       "message": "What about just\n```\nif (ext-\u003eops-\u003ehard_reset)\n        ext-\u003eops-\u003ehard_reset(ext, data);\n```",
+      "range": {
+        "startLine": 415,
+        "startChar": 1,
+        "endLine": 418,
+        "endChar": 34
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cdec26b_61fabaee",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3762a907_3eccfdcd",
       "range": {
         "startLine": 415,
         "startChar": 1,
@@ -88,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bce21d7_0693eebc",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70a8a0a_380332f2",
+      "range": {
+        "startLine": 646,
+        "startChar": 10,
+        "endLine": 651,
+        "endChar": 52
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d927a0b7_19e1acd1",
@@ -105,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de781a4_c3613d03",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d927a0b7_19e1acd1",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e08a343a_953f0253",
@@ -118,6 +208,24 @@
       "writtenOn": "2022-05-18T21:49:25Z",
       "side": 1,
       "message": "This is no longer the name of the file. You could update, but it probably makes more sense to delete these comments. People should be able to find the declaration for a definition without much trouble, and these references can\u0027t get stale if they don\u0027t exist.",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c4763d_813f00d1",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "I have seen this pattern in one of the Zephyr files, but after looking into other files it seems not be the rule to put these comments. I will delete theme in next CL.",
+      "parentUuid": "e08a343a_953f0253",
       "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "533f0910_64b0c80d",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0d85be_df439375",
+      "range": {
+        "startLine": 990,
+        "startChar": 46,
+        "endLine": 990,
+        "endChar": 54
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57d2441f_7c3d2a34",
@@ -162,6 +294,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80622865_057326b0",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "It is not used. Removed it.",
+      "parentUuid": "57d2441f_7c3d2a34",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09552a15_b4176394",
@@ -175,6 +325,24 @@
       "writtenOn": "2022-05-18T21:49:25Z",
       "side": 1,
       "message": "I might recommend `goto` error handling to make it more obvious that this cleanup happens in every case.",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc75404b_3dbb8cdc",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09552a15_b4176394",
       "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -198,6 +366,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca9c75c2_19b6aa6d",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "I replaced `tcpci_partner_common_msg_handler` with `tcpci_partner_common_sop_msg_handler` to handle only SOP messages. Handling of hard reset is in `tcpci_partner_common_hard_reset`, so I made `tcpci_partner_transmit_op` to call it directly. Now `type` is checked against `TCPCI_MSG_SOP` only once.",
+      "parentUuid": "4eab74bd_9cbe4010",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4dcd2885_9c3326b9",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
         "patchSetId": 7
@@ -209,6 +395,24 @@
       "writtenOn": "2022-05-18T21:49:25Z",
       "side": 1,
       "message": "If there are other fixed supply PDOs, shouldn\u0027t dual role be set the same for each of them?",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc56035_2f3394b9",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_drp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "PD specification in chapter \"6.4.1.2.2 Fixed Supply Power Data Object\" states that bits 29..22 can be non-zero only in first PDO (vSafe5V). This include DUAL_ROLE bit.",
+      "parentUuid": "4dcd2885_9c3326b9",
       "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -232,6 +436,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62aab95e_ea126cf7",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_faulty_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Only if any of `TCPCI_FAULTY_SNK_*` flags is in `action_mask`",
+      "parentUuid": "ddcfe20f_7613a677",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ef52d68_430acd16",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
         "patchSetId": 7
@@ -249,6 +471,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b1ee3b1_20aea14b",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "I will remove it in next CL.",
+      "parentUuid": "3ef52d68_430acd16",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "202e5498_c3a706d2",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
         "patchSetId": 7
@@ -260,6 +500,30 @@
       "writtenOn": "2022-05-16T21:32:17Z",
       "side": 1,
       "message": "\"situations outside the TCPCI spec.\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 47,
+        "endLine": 86,
+        "endChar": 64
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0cc70a_eb9c4b4f",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "202e5498_c3a706d2",
       "range": {
         "startLine": 86,
         "startChar": 47,
@@ -289,6 +553,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cda5921_a2e87f53",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "It should be called manually when the first PDO is changed (non-default value is used)",
+      "parentUuid": "823b4dd5_76ce2058",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f1248f0_b178c747",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
         "patchSetId": 7
@@ -300,6 +582,30 @@
       "writtenOn": "2022-05-16T21:32:17Z",
       "side": 1,
       "message": "sink?",
+      "range": {
+        "startLine": 54,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa8ed1f1_8ae646e9",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f1248f0_b178c747",
       "range": {
         "startLine": 54,
         "startChar": 28,
@@ -329,6 +635,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b980fc8_e50e4d60",
+        "filename": "zephyr/test/drivers/include/test/drivers/utils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "This would require to add type field to the extension structure or something similar. I am not sure if it would be that useful. If it turns out that we need looking for a certain extension type in multiple places in the code then I would add another CL implementing it.",
+      "parentUuid": "ea011a99_f9778dec",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cba49e57_de4edd8e",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
         "patchSetId": 7
@@ -340,6 +664,30 @@
       "writtenOn": "2022-05-16T21:32:17Z",
       "side": 1,
       "message": "Nit: I find the `my_` prefix slightly odd. All the variables are yours. 😊 I think something like `src_partner` and `snk_partner` would make it a little more obvious what\u0027s going on in the rest of the code.\n\nThey were already named that, so this is out of scope if you don\u0027t feel like doing it in this CL.",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894068a4_02b8d310",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-20T14:22:37Z",
+      "side": 1,
+      "message": "Integration test use inconsistent naming schema. Some of them use `my_`, other `partner`, `partner_emul`, `source/sink`, `charger`. I think it will be more legible if there is a pattern. This CL is already quite big. I would prefer to do this in separate CL",
+      "parentUuid": "cba49e57_de4edd8e",
       "range": {
         "startLine": 47,
         "startChar": 27,
