@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167e9a46_60fa7c33",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T16:28:11Z",
+      "side": 1,
+      "message": "@Vijay,\n\nWhen Charger is not connected chg_st is PWR_STATE_DISCHARGE, and control is going inside \"else if (chg_st \u003d\u003d PWR_STATE_DISCHARGE || chg_st \u003d\u003d PWR_STATE_DISCHARGE_FULL) {\" which handles discharging state.\n\t\t  \nHow to decide charger is not connected?",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 37
+      },
+      "revId": "ad47ea44c3cd1eb30b194eac778cf6869600c0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
