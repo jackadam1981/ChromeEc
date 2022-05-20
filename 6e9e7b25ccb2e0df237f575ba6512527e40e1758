@@ -16,6 +16,46 @@
       "message": "Added based on feedback from partner in bug. Thoughts?",
       "revId": "6e9e7b25ccb2e0df237f575ba6512527e40e1758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db3b5bf_83f8cb3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T03:18:26Z",
+      "side": 1,
+      "message": "a couple of nits/suggestions",
+      "revId": "6e9e7b25ccb2e0df237f575ba6512527e40e1758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b322cfee_de772a2b",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T03:18:26Z",
+      "side": 1,
+      "message": "This should be a separate subsection, `Rescue troubleshooting` maybe?\n\nI wouold suggest an introduction along these lines:\n\n\nSometimes aftera successful rescue the GSC starts the RW successfully, and shows up on CCD, but the ChromeOS device fails to boot and falls into recovery. This could be due to stale TPM data.\n\nIn case like this Boot to a OS test image via USB through the\nrecovery screen. Once booted in the OS test image, issue the\n`crossystem clear_tpm_owner_request\u003d1` command on the kernel console. Reboot\nand allow the OS on disk to boot.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 0
+      },
+      "revId": "6e9e7b25ccb2e0df237f575ba6512527e40e1758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
