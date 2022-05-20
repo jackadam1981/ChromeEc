@@ -1075,6 +1075,86 @@ static int charge_request(int voltage, int current)
 	return EC_SUCCESS;
 }
 
+#define CHARGE_PPS_REFRESH_VOLTAGE_INTERVAL ((10 * 1000) * MSEC)
+
+int charger_pps_adjust(void)
+{
+	static int voltage;
+	static timestamp_t ts;
+	bool pps_en;
+	int chgnum = curr.ocpc.active_chg_chip;
+
+	if (!is_pd_port(chgnum)) {
+		return 0;
+	}
+
+	if (!pd_is_pps_enabled(chgnum)) {
+		voltage = 0;
+		pd_set_pps_voltage(0);
+		return 0;
+	}
+
+	if (charger_is_pps_enabled(chgnum, &pps_en)) {
+		return -1;
+	}
+
+	if (voltage == 0) {
+		voltage = curr.batt.voltage;
+		ccprintf("C%d: Activating PPS = %d mV\n", chgnum,
+			voltage);
+		ts.val = get_time().val + 1000 * MSEC;
+	} else if (get_time().val >= ts.val) {
+		if (!pps_en) {
+			voltage = voltage < curr.batt.voltage - 200 ?
+				voltage : voltage - 30;
+			ccprintf("C%d: Fixing PPS voltage = %d mV\n", chgnum,
+				voltage);
+			ts.val = get_time().val + 1000 * MSEC;
+			pd_dpm_request(chgnum, DPM_REQUEST_NEW_POWER_LEVEL);
+			task_wake(PD_PORT_TO_TASK_ID(chgnum));
+		} else {
+			voltage = voltage >= curr.batt.voltage + 300 ?
+				voltage : voltage + 20;
+			ccprintf("C%d: Adjust PPS = %d mV : VBAT = %d mV\n", chgnum,
+				voltage, curr.batt.voltage);
+			ts.val = get_time().val + CHARGE_PPS_REFRESH_VOLTAGE_INTERVAL;
+		}
+	}
+	curr.requested_voltage = voltage;
+	pd_set_pps_voltage(voltage);
+
+	return voltage;
+}
+
+void charger_pps_process(void)
+{
+	/* Active charger is valid and PPS voltage has changed */
+	int chgnum = curr.ocpc.active_chg_chip;
+	bool pps_en;
+
+	if (chgnum != CHARGER_PRIMARY) {
+		return;
+	}
+
+	if (!is_pd_port(chgnum)) {
+		return;
+	}
+
+	if (!charger_is_pps_enabled(chgnum, &pps_en)) {
+		if (pd_is_pps_enabled(chgnum) == pps_en) {
+			return;
+		}
+		ccprintf("C%d: PPS %sabled\n", chgnum, pps_en? "en" : "dis");
+		if (pd_is_pps_enabled(chgnum) && !pps_en) {
+			ccprintf("C%d: Enabling PPS\n", chgnum);
+			charger_enable_pps(chgnum, true);
+		} else if (!pd_is_pps_enabled(chgnum) && pps_en) {
+			ccprintf("C%d: Disabling PPS\n", chgnum);
+			charger_enable_pps(chgnum, false);
+		}
+	}
+}
+
 void chgstate_set_manual_current(int curr_ma)
 {
 	if (curr_ma < 0)
@@ -1968,6 +2048,8 @@ void charger_task(void *u)
 			if (battery_is_cut_off()) {
 				curr.requested_voltage = 0;
 				curr.requested_current = 0;
+			} else if (pd_is_pps_enabled(curr.ocpc.active_chg_chip)) {
+				charger_pps_adjust();
 			}
 			/*
 			 * As a safety feature, some chargers will stop
@@ -2002,7 +2084,7 @@ void charger_task(void *u)
 #else
 		charge_request(curr.requested_voltage, curr.requested_current);
 #endif
-
+		charger_pps_process();
 		/* How long to sleep? */
 		if (problems_exist)
 			/* If there are errors, don't wait very long. */

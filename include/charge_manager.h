@@ -368,4 +368,8 @@ __override_proto int board_get_vbus_voltage(int port);
 
 int is_pd_port(int port);
 
+int charge_manager_enable_pps(int port, bool enable);
+
+bool charge_manager_is_pps_enabled(int port);
+
 #endif /* __CROS_EC_CHARGE_MANAGER_H */
