@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb67901_a464e457",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "85f24cba_d1941117",
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e939035a_8fbf72b3",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-20T04:58:21Z",
       "side": 1,
       "message": "LED_FAST**\nLED_SLOW*\n\nnot sure how this gets converted to 250 \u0026 2 respectively",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5775a6a6_77bdb92a",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "FAST_PULSE_PERIOD\u003d2 ; means pulse period is 2 PULSE_TICK (125 ms each), in first tick LED will be ON and in second tick LED will be OFF. This cycle continues until pulse[].led_is_pulsing\u003d0.\n\nSLOW_PULSE_PERIOD\u003d16; means pulse period is 16 PULSE_TICK (125 ms each)\u003d 125*16 \u003d 2000 ms \u003d 2 sec; in first 8 ticks LED will be ON and in last 8 ticks LED will be OFF. This cycle continues until pulse[].led_is_pulsing\u003d0.",
+      "parentUuid": "e939035a_8fbf72b3",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a661b481_e4e2ee99",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0aff86fa_25e05fb7",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a87b7c74_d1711b37",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b854cbd1_d2550e83",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a87b7c74_d1711b37",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4719876e_4240d4cf",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-05-20T04:58:21Z",
       "side": 1,
       "message": "rvp_led",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944d3c45_c0340eea",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4719876e_4240d4cf",
       "range": {
         "startLine": 36,
         "startChar": 26,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4ad3ecc_068fae89",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "We can\u0027t do that because pulse_led_deferred() is using pulse_led_deferred_data which is being supplied from DECLARE_DEFERRED.\nso, we can\u0027t move DECLARE_DEFERRED(pulse_led_deferred);  after pulse_led_deferred() function definition.\n\n#define DECLARE_DEFERRED(routine)                                    \\\n        K_WORK_DELAYABLE_DEFINE(routine##_work_data,                 \\\n                                (void (*)(struct k_work *))routine); \\\n        __maybe_unused const struct deferred_data routine##_data \u003d { \\\n                .work \u003d \u0026routine##_work_data,                \\\n        }\n        \n\nDECLARE_DEFERRED also requires pulse_led_deferred() as routine name so we can\u0027t remove static void pulse_led_deferred(void); declaration before DECLARE_DEFERRED.",
+      "parentUuid": "d63e5cc3_d087256f",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "547aaf4d_41dc9287",
         "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
         "patchSetId": 3
@@ -146,6 +284,24 @@
       "writtenOn": "2022-05-20T04:58:21Z",
       "side": 1,
       "message": "bring it to bottom, all hooks at one place",
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dba25dc_746cbca7",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "547aaf4d_41dc9287",
       "revId": "24bb48d71229e459bc5347906f80697015701c9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +319,30 @@
       "writtenOn": "2022-05-20T04:58:21Z",
       "side": 1,
       "message": "make it part of _pulse_data",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 7
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a164d256_1294cac9",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e418ebd9_3529493a",
       "range": {
         "startLine": 51,
         "startChar": 1,
@@ -196,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83aa1805_0e468547",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "211916b4_16242b13",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f86be328_23528dbc",
@@ -209,6 +413,30 @@
       "writtenOn": "2022-05-20T04:58:21Z",
       "side": 1,
       "message": "\u003e\u003e",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df7c2ea_6626b53b",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f86be328_23528dbc",
       "range": {
         "startLine": 62,
         "startChar": 39,
@@ -242,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ce3c2f_15cf94c1",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4bdf1f67_0c5c311f",
+      "range": {
+        "startLine": 110,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e4f1843_f4c01ddb",
@@ -255,6 +507,30 @@
       "writtenOn": "2022-05-20T04:58:21Z",
       "side": 1,
       "message": "pass this as arg to function from update_led(), it will be easy to move them around",
+      "range": {
+        "startLine": 136,
+        "startChar": 14,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "24bb48d71229e459bc5347906f80697015701c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ab5e2b_673e9f49",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T06:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7e4f1843_f4c01ddb",
       "range": {
         "startLine": 136,
         "startChar": 14,
