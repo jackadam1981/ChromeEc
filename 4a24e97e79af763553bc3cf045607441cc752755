@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfa4c1e3_1a90a761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-20T18:14:38Z",
+      "side": 1,
+      "message": "1. I think the list will increase \nwe have to add similar logic as in CL:3227374 \n2. how about we add a new configs\nCONFIG_USBC_CUSTOM_VCONN \nCONFIG_USBC_CUSTOM_SBU\nCONFIG_USBC_CUSTOM_PLOARITY\netc\nand call port specific functions inside it?",
+      "parentUuid": "46abb163_4cfe6102",
+      "revId": "4a24e97e79af763553bc3cf045607441cc752755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a20184c8_f1fa511b",
         "filename": "common/usb_common.c",
         "patchSetId": 12
