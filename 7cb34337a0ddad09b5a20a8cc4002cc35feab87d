@@ -16,6 +16,24 @@
       "message": "Does this change buy us anything? It looks like it will only save a call to this function from reinit logic (which is temporary?) as rgbkbd_init is only called once from HOOK_INIT. Keeping init of lookup table in init function looks cleaner.",
       "revId": "7cb34337a0ddad09b5a20a8cc4002cc35feab87d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5265f3de_5a95d0a7",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-20T20:15:40Z",
+      "side": 1,
+      "message": "The main reason is for the late init (i.e. rgbkbd_late_init). We want to reduce the latency caused by rgbkbd_init which would be called when the RGB is actually needed.\n\nAlso, rgbkbd_init will be called whenever a demo is enabled.\n\nIf you think it\u0027s cleaner, we can call it from a HOOK_INIT.",
+      "parentUuid": "b61e843b_f7d90de0",
+      "revId": "7cb34337a0ddad09b5a20a8cc4002cc35feab87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
