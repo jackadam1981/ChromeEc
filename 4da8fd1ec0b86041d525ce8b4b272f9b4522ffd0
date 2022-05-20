@@ -16,6 +16,24 @@
       "message": "This `board_vivaldi_keybd_config` are for x86. The ARM devices don\u0027t use it and the key mapping is described in the kernel dts.",
       "revId": "4da8fd1ec0b86041d525ce8b4b272f9b4522ffd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8280cb1_ef6b3510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-05-20T01:34:44Z",
+      "side": 1,
+      "message": "yes, thanks for reminds.",
+      "parentUuid": "edf303b1_52a60290",
+      "revId": "4da8fd1ec0b86041d525ce8b4b272f9b4522ffd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
