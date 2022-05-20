@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_DTT_POWER_STATUS_H
 #define __CROS_EC_DTT_POWER_STATUS_H
 
+#define PMAX_THRESHOLD_MW 250
+
 struct dbpt_batt_params {
         uint16_t sys_resistance;
 	uint16_t min_sys_volt;
