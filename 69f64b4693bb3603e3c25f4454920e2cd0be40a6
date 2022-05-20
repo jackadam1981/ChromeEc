@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43cc3c7_3c14ce1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-20T03:28:37Z",
+      "side": 1,
+      "message": "Approving it now to unblock FSI, but this change will re-introduce b:222125478 for tarlo (another board which is a clamshell and uses the same EC image apparently)",
+      "revId": "69f64b4693bb3603e3c25f4454920e2cd0be40a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
