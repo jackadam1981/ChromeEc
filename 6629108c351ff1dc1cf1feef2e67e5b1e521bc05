@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d3e7c94_da0d3a53",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-20T04:58:21Z",
+      "side": 1,
+      "message": "can we just enable PLATFORM_EC_LED_PWM without this?",
+      "parentUuid": "ffc942a8_bb165343",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a14cd1de_d91eac5e",
         "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/pwm_leds.dts",
         "patchSetId": 1
@@ -173,6 +197,30 @@
       "side": 1,
       "message": "Yes, CONFIG_PLATFORM_EC_LED_PWM has dependency on CONFIG_PLATFORM_EC_LED_COMMON in zephyr.",
       "parentUuid": "a4a82a40_94096713",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd7d107_37c20b1d",
+        "filename": "zephyr/projects/intelrvp/adlrvp/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-20T04:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fd903e4_4cd3d8d0",
       "range": {
         "startLine": 37,
         "startChar": 0,
