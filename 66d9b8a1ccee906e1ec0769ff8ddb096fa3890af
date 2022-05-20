@@ -16,6 +16,29 @@
       "message": "Thoughts on this?\n\nI will verify that I can install newer versions on new version without any issues before landing.\n\nPlease triple check my logic!",
       "revId": "66d9b8a1ccee906e1ec0769ff8ddb096fa3890af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d15a66eb_a6f7c7aa",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T23:51:26Z",
+      "side": 1,
+      "message": "this could be\n```\nif (current_less_than_15 \u0026\u0026 to_greater_than_15 \u0026\u0026\n (image_magic \u003d\u003d MAGIC_DAUNTLESS)) {\n print error;\n exit (1);\n }\n ```\n\nto avoid attempts to update RO only, and this function does not even need to return a value in that case.",
+      "range": {
+        "startLine": 1177,
+        "startChar": 3,
+        "endLine": 1177,
+        "endChar": 16
+      },
+      "revId": "66d9b8a1ccee906e1ec0769ff8ddb096fa3890af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
