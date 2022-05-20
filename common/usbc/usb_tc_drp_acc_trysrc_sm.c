@@ -605,6 +605,19 @@ void pd_set_new_power_request(int port)
 	}
 }
 
+int pd_enable_pps(int port, bool enable)
+{
+	if (charge_manager_get_active_charge_port() != port) {
+		return -1;
+	}
+	return charge_manager_enable_pps(enable);
+}
+
+bool pd_is_pps_enabled(int port)
+{
+	return charge_manager_is_pps_enabled(port);
+}
+
 void tc_request_power_swap(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {

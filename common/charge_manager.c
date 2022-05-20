@@ -108,6 +108,7 @@ static int charge_current_uncapped = CHARGE_CURRENT_UNINITIALIZED;
 static int charge_voltage;
 static int charge_supplier = CHARGE_SUPPLIER_NONE;
 static int charge_pd_current_uncapped = CHARGE_CURRENT_UNINITIALIZED;
+static bool charger_pd_pps_enabled;
 static int override_port = OVERRIDE_OFF;
 
 static int delayed_override_port = OVERRIDE_OFF;
@@ -980,6 +981,12 @@ static void charge_manager_refresh(void)
 
 			if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled()) {
 				/* Fall-through. DPS control sink voltage */
+			} else if (charge_manager_is_pps_enabled(updated_new_port)) {
+				/*
+				 * When PPS is enabled, request is made by
+				 * PD state machine.
+				 */
+				new_req = false;
 			} else {
 				/*
 				 * Check if we can get more power from this
@@ -1490,6 +1497,63 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 	return pd_src_pdo_cnt;
 }
 #endif /* CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT && !CONFIG_USB_PD_TCPMV2 */
+
+static bool charge_manager_is_pps_available(void)
+{
+	const struct battery_info *batt_info = battery_get_info();
+	const uint32_t *src_caps = pd_get_src_caps(charge_port);
+	uint8_t src_cap_cnt = pd_get_src_cap_cnt(charge_port);
+
+	/* Check if AC adapter supports PPS and it is within range */
+	if (pd_find_apdo_index(src_cap_cnt, src_caps,
+			batt_info->voltage_min, 3000, NULL) < 0) {
+		CPRINTS("C%d: APDO min voltage not supported = %d mV",
+			charge_port, batt_info->voltage_min);
+		return false;
+	}
+	if (pd_find_apdo_index(src_cap_cnt, src_caps,
+			batt_info->voltage_max, 3000, NULL) < 0) {
+		CPRINTS("C%d: APDO max voltage not supported = %d mV",
+			charge_port, batt_info->voltage_min);
+		return false;
+	}
+
+	/*
+	 * TODO: Add further checks that will prevent enabling PPS like
+	 * Low/Dead battery
+	 */
+
+	return true;
+}
+
+bool charge_manager_is_pps_enabled(int port)
+{
+	return (port == charge_port && charger_pd_pps_enabled);
+}
+
+int charge_manager_enable_pps(bool enable)
+{
+	if (charge_port == CHARGE_PORT_NONE) {
+		return EC_ERROR_BUSY;
+	}
+
+	if (charger_pd_pps_enabled == enable) {
+		return EC_SUCCESS;
+	}
+
+	if (enable) {
+		if (!charge_manager_is_pps_available()) {
+			return EC_ERROR_BUSY;
+		}
+		charger_pd_pps_enabled = enable;
+	} else {
+		charger_pd_pps_enabled = enable;
+		pd_set_max_voltage(PD_MAX_VOLTAGE_MV);
+		pd_process_source_cap(charge_port, 0, NULL);
+		pd_set_new_power_request(charge_port);
+	}
+	return EC_SUCCESS;
+}
 
 static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 {

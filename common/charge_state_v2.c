@@ -1075,6 +1075,67 @@ static int charge_request(int voltage, int current)
 	return EC_SUCCESS;
 }
 
+#define CHARGE_PPS_REFRESH_VOLTAGE_INTERVAL ((9 * 1000) * MSEC)
+#define CHARGE_PPS_FIX_VOLTAGE_INTERVAL ((1000) * MSEC)
+
+static void charger_update_pps(void)
+{
+	static int voltage;
+	static timestamp_t ts;
+	bool pps_en;
+	int chgnum = curr.ocpc.active_chg_chip;
+
+	if (!is_pd_port(chgnum)) {
+		return;
+	}
+
+	if (!charge_manager_is_pps_enabled(chgnum)) {
+		if (voltage == 0) {
+			return;
+		}
+		ccprintf("C%d: Disabling PPS\n", chgnum);
+		charger_enable_pps(chgnum, false);
+		voltage = 0;
+		return;
+	}
+
+	if (voltage == 0) {
+		voltage = curr.batt.voltage;
+		ccprintf("C%d: Activating PPS = %d mV\n", chgnum,
+			voltage);
+		ts.val = get_time().val + CHARGE_PPS_FIX_VOLTAGE_INTERVAL;
+		pd_set_max_voltage(voltage);
+		pd_set_new_power_request(chgnum);
+		return;
+	}
+
+	if (get_time().val < ts.val) {
+		return;
+	}
+	if (charger_is_pps_enabled(chgnum, &pps_en)) {
+		return;
+	}
+
+	if (pps_en) {
+		voltage = voltage >= curr.batt.voltage + 300 ?
+			voltage : voltage + 20;
+		ccprintf("C%d: Adjust PPS = %d mV : VBAT = %d mV\n", chgnum,
+			voltage, curr.batt.voltage);
+		ts.val = get_time().val + CHARGE_PPS_REFRESH_VOLTAGE_INTERVAL;
+		pd_set_max_voltage(voltage);
+	} else {
+		charger_enable_pps(chgnum, true);
+		ccprintf("C%d: Enabling PPS\n", chgnum);
+		voltage = voltage < curr.batt.voltage - 200 ?
+			voltage : voltage - 30;
+		ccprintf("C%d: Fixing PPS voltage = %d mV\n", chgnum,
+			voltage);
+		ts.val = get_time().val + CHARGE_PPS_FIX_VOLTAGE_INTERVAL;
+		pd_set_max_voltage(voltage);
+		pd_set_new_power_request(chgnum);
+	}
+}
+
 void chgstate_set_manual_current(int curr_ma)
 {
 	if (curr_ma < 0)
@@ -2002,7 +2063,7 @@ void charger_task(void *u)
 #else
 		charge_request(curr.requested_voltage, curr.requested_current);
 #endif
-
+		charger_update_pps();
 		/* How long to sleep? */
 		if (problems_exist)
 			/* If there are errors, don't wait very long. */
