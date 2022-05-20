@@ -360,7 +360,7 @@ int battery_get_avg_current(void)
 	return (int16_t)current;
 }
 
-#ifdef CONFIG_CMD_PWR_AVG
+//#ifdef CONFIG_CMD_PWR_AVG
 /*
  * Technically returns only the instantaneous reading, but tests showed that
  * for the majority of charge states above 3% this varies by less than 40mV
@@ -373,7 +373,7 @@ int battery_get_avg_voltage(void)
 	sb_read(SB_VOLTAGE, &voltage);
 	return voltage;
 }
-#endif /* CONFIG_CMD_PWR_AVG */
+//#endif /* CONFIG_CMD_PWR_AVG */
 
 static void apply_fake_state_of_charge(struct batt_params *batt)
 {
