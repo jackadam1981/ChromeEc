@@ -22,6 +22,30 @@
       },
       "revId": "3acef77ecf9f9586d41deff1903257e7ac7d3e5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bdcd30c_60bd4389",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T05:10:06Z",
+      "side": 1,
+      "message": "Chip specific changes are taken care by Nuvoton in another CL:3640833 and merged. Now this CL only contains ADL RVP specific changes,",
+      "parentUuid": "083d070f_9351dfbf",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "3acef77ecf9f9586d41deff1903257e7ac7d3e5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
