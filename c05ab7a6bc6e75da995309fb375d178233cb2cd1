@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c40084_a759fd34",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-05-20T22:08:10Z",
+      "side": 1,
+      "message": "Confusing to reference L151 in the stm32f0 file- change to STM32F07x",
+      "range": {
+        "startLine": 727,
+        "startChar": 49,
+        "endLine": 727,
+        "endChar": 59
+      },
+      "revId": "c05ab7a6bc6e75da995309fb375d178233cb2cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0dcdde8_a3978eff",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-05-20T22:08:10Z",
+      "side": 1,
+      "message": "change to STM32F03x/04x/05x",
+      "range": {
+        "startLine": 729,
+        "startChar": 9,
+        "endLine": 729,
+        "endChar": 32
+      },
+      "revId": "c05ab7a6bc6e75da995309fb375d178233cb2cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
