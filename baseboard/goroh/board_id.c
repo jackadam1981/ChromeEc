@@ -79,7 +79,7 @@ static int adc_value_to_numeric_id(enum adc_channel ch)
 
 	for (int i = 0; i < ARRAY_SIZE(voltage_map); i++) {
 		if (IN_RANGE(mv, voltage_map[i] - threshold_mv,
-			     voltage_map[i] + threshold_mv))
+			     voltage_map[i] + threshold_mv - 1))
 			return i;
 	}
 
@@ -91,7 +91,7 @@ static int version = -1;
 /* b/163963220: Cache ADC value before board_hibernate_late() reads it */
 static void board_version_init(void)
 {
-	version = adc_value_to_numeric_id(ADC_BOARD_ID_0);
+	version = adc_value_to_numeric_id(ADC_BOARD_ID);
 	if (version < 0) {
 		ccprints("WARN:BOARD_ID_0");
 		ccprints("Assuming board id = 0");

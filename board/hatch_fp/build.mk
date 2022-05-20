@@ -9,6 +9,9 @@ CHIP:=stm32
 CHIP_FAMILY:=stm32f4
 CHIP_VARIANT:=stm32f412
 
+# Don't forget that the board build.mk is included more than once to allow
+# conditional variables to be realized. This means that we need to redefine all
+# variable or the "+=" lines will compound.
 board-rw=board_rw.o
 board-y=board.o
 
@@ -26,6 +29,7 @@ test-list-y=\
        aes \
        cec \
        compile_time_macros \
+       cortexm_fpu \
        crc \
        flash_physical \
        flash_write_protect \
@@ -33,6 +37,7 @@ test-list-y=\
        fpsensor_hw \
        mpu \
        mutex \
+       panic_data \
        pingpong \
        printf \
        queue \
@@ -45,6 +50,11 @@ test-list-y=\
        sha256_unrolled \
        static_if \
        stm32f_rtc \
+       system_is_locked \
        timer_dos \
        utils \
        utils_str \
+
+# Note that this variable includes the trailing "/"
+_hatch_fp_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
+-include $(_hatch_fp_cur_dir)../../private/board/hatch_fp/build.mk

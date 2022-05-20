@@ -106,8 +106,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = LSM6DSM_ST_DATA(g_lsm6dsm_data,
 			MOTIONSENSE_TYPE_ACCEL),
-	 .int_signal = GPIO_6AXIS_INT_L,
-	 .flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 	 .port = I2C_PORT_SENSOR,
 	 .i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
@@ -138,8 +136,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = LSM6DSM_ST_DATA(g_lsm6dsm_data,
 			MOTIONSENSE_TYPE_GYRO),
-	.int_signal = GPIO_6AXIS_INT_L,
-	.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 	 .port = I2C_PORT_SENSOR,
 	 .i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 	 .default_range = 1000 | ROUND_UP_FLAG, /* dps */
@@ -156,8 +152,12 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
  * chip and it need a board specific driver.
  * Overall, it will use chained mux framework.
  */
-static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state)
+static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state,
+			      bool *ack_required)
 {
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
+
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
 	else
@@ -319,8 +319,8 @@ static void reset_nct38xx_port(int port)
 	msleep(NCT38XX_RESET_HOLD_DELAY_MS);
 	gpio_set_level(reset_gpio_l, 1);
 	nct38xx_reset_notify(port);
-	if (NCT38XX_RESET_POST_DELAY_MS != 0)
-		msleep(NCT38XX_RESET_POST_DELAY_MS);
+	if (NCT3807_RESET_POST_DELAY_MS != 0)
+		msleep(NCT3807_RESET_POST_DELAY_MS);
 }
 
 
@@ -429,8 +429,13 @@ static void lte_usb3_mux_init(void)
 			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
 			.driver = &amd_fp5_usb_mux_driver,
 		};
+		bool unused;
+		/*
+		 * Note: Direct mux driver calls are deprecated.  Calls
+		 * should go through the usb_mux APIs instead.
+		 */
 		/* steer the mux to connect the USB 3 superspeed pairs */
-		usb_c1.driver->set(&usb_c1, USB_PD_MUX_USB_ENABLED);
+		usb_c1.driver->set(&usb_c1, USB_PD_MUX_USB_ENABLED, &unused);
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, lte_usb3_mux_init, HOOK_PRIO_DEFAULT);

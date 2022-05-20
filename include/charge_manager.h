@@ -231,6 +231,15 @@ enum charge_supplier charge_manager_get_supplier(void);
  */
 int charge_manager_get_vbus_voltage(int port);
 
+/**
+ * Get the current limit of CHARGE_PD_SUPPLIER.
+ *
+ * @return	The CHARGE_SUPPLIER_PD current limit in mA or
+ *		CHARGE_CURRENT_UNINITIALIZED if the supplier is not
+ *		CHARGE_SUPPLIER_PD.
+ */
+int charge_manager_get_pd_current_uncapped(void);
+
 #ifdef CONFIG_USB_PD_LOGGING
 /* Save power state log entry for the given port */
 void charge_manager_save_log(int port);
@@ -323,4 +332,10 @@ __override_proto
 void board_fill_source_power_info(int port,
 				  struct ec_response_usb_pd_power_info *r);
 
+/**
+ * Board specific callback to get vbus voltage.
+ *
+ * @param port  Dedicated charge port.
+ */
+__override_proto int board_get_vbus_voltage(int port);
 #endif /* __CROS_EC_CHARGE_MANAGER_H */

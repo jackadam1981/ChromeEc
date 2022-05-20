@@ -13,17 +13,19 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
+#define GPIO_PG_EC_RSMRST_ODL GPIO_RSMRST_L_PGOOD
+
 /* I2C bus configuraiton */
 #define I2C_PORT_ACCEL	I2C_PORT_SENSOR
 
 /* EC console commands  */
-#define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 #undef CONFIG_CMD_ACCELSPOOF
 #undef CONFIG_CMD_MFALLOW
 
 /* Reduce flash space usage */
 #define CONFIG_DEBUG_ASSERT_BRIEF
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
 
 #define CONFIG_LED_COMMON
 

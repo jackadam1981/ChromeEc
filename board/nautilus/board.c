@@ -6,7 +6,6 @@
 /* Poppy board-specific configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "bd99992gw.h"
 #include "board_config.h"
 #include "battery_smart.h"
@@ -138,11 +137,41 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
-	{"tcpc0",     NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"tcpc1",     NPCX_I2C_PORT0_1, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"charger",   NPCX_I2C_PORT1,   100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
-	{"pmic",      NPCX_I2C_PORT2,   400, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
-	{"accelgyro", NPCX_I2C_PORT3,   400, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
+	{
+		.name = "tcpc0",
+		.port = NPCX_I2C_PORT0_0,
+		.kbps = 400,
+		.scl  = GPIO_I2C0_0_SCL,
+		.sda  = GPIO_I2C0_0_SDA
+	},
+	{
+		.name = "tcpc1",
+		.port = NPCX_I2C_PORT0_1,
+		.kbps = 400,
+		.scl  = GPIO_I2C0_1_SCL,
+		.sda  = GPIO_I2C0_1_SDA
+	},
+	{
+		.name = "charger",
+		.port = NPCX_I2C_PORT1,
+		.kbps = 100,
+		.scl  = GPIO_I2C1_SCL,
+		.sda  = GPIO_I2C1_SDA
+	},
+	{
+		.name = "pmic",
+		.port = NPCX_I2C_PORT2,
+		.kbps = 400,
+		.scl  = GPIO_I2C2_SCL,
+		.sda  = GPIO_I2C2_SDA
+	},
+	{
+		.name = "accelgyro",
+		.port = NPCX_I2C_PORT3,
+		.kbps = 400,
+		.scl  = GPIO_I2C3_SCL,
+		.sda  = GPIO_I2C3_SDA
+	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -152,7 +181,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = NPCX_I2C_PORT0_0,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -160,7 +189,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = NPCX_I2C_PORT0_1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -230,7 +259,8 @@ void board_tcpc_init(void)
 	 * HPD pulse to enable video path
 	 */
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
-		usb_mux_hpd_update(port, 0, 0);
+		usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL_DEASSERTED |
+					 USB_PD_MUX_HPD_IRQ_DEASSERTED);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
@@ -681,8 +711,7 @@ struct motion_sensor_t motion_sensors[] = {
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
-#ifndef TEST_BUILD
-void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(int enable)
 {
 	/* If the lid is in 360 position, ignore the lid angle,
 	 * which might be faulty. Disable keyboard.
@@ -691,7 +720,6 @@ void lid_angle_peripheral_enable(int enable)
 		enable = 0;
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
-#endif
 
 static void board_chipset_reset(void)
 {
@@ -754,17 +782,17 @@ int board_has_working_reset_flags(void)
 #define BATTERY_FREE_MIN_DELTA_US		(5 * MSEC)
 static timestamp_t battery_last_i2c_time;
 
-static int is_battery_i2c(const int port, const uint16_t slave_addr_flags)
+static int is_battery_i2c(const int port, const uint16_t addr_flags)
 {
 	return (port == I2C_PORT_BATTERY)
-		&& (slave_addr_flags == BATTERY_ADDR_FLAGS);
+		&& (addr_flags == BATTERY_ADDR_FLAGS);
 }
 
-void i2c_start_xfer_notify(const int port, const uint16_t slave_addr_flags)
+void i2c_start_xfer_notify(const int port, const uint16_t addr_flags)
 {
 	unsigned int time_delta_us;
 
-	if (!is_battery_i2c(port, slave_addr_flags))
+	if (!is_battery_i2c(port, addr_flags))
 		return;
 
 	time_delta_us = time_since32(battery_last_i2c_time);
@@ -774,9 +802,9 @@ void i2c_start_xfer_notify(const int port, const uint16_t slave_addr_flags)
 	usleep(BATTERY_FREE_MIN_DELTA_US - time_delta_us);
 }
 
-void i2c_end_xfer_notify(const int port, const uint16_t slave_addr_flags)
+void i2c_end_xfer_notify(const int port, const uint16_t addr_flags)
 {
-	if (!is_battery_i2c(port, slave_addr_flags))
+	if (!is_battery_i2c(port, addr_flags))
 		return;
 
 	battery_last_i2c_time = get_time();

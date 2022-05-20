@@ -32,7 +32,7 @@ endif
 chip-y=clock.o gpio.o hwtimer.o system.o uart.o port80.o tfdp.o
 chip-$(CONFIG_ADC)+=adc.o
 chip-$(CONFIG_DMA)+=dma.o
-chip-$(CONFIG_HOSTCMD_ESPI)+=espi.o
+chip-$(CONFIG_HOST_INTERFACE_ESPI)+=espi.o
 chip-$(CONFIG_FANS)+=fan.o
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash.o
 chip-$(CONFIG_I2C)+=i2c.o
@@ -81,7 +81,7 @@ chip-lfw-flat = $(out)/RW/$(chip-lfw)-lfw.flat
 
 # build these specifically for lfw with -lfw suffix
 objs_lfw = $(patsubst %, $(out)/RW/%-lfw.o, \
-		$(addprefix common/, util gpio) \
+		$(addprefix common/, util util_stdlib gpio) \
 		$(addprefix chip/$(CHIP)/, spi qmspi dma gpio clock hwtimer tfdp) \
 		core/$(CORE)/cpu $(chip-lfw))
 

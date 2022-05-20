@@ -10,7 +10,7 @@
 
 #ifdef CONFIG_PLATFORM_EC_ADC
 
-#define ZSHIM_ADC_ID(node_id)         DT_ENUM_UPPER_TOKEN(node_id, enum_name)
+#define ZSHIM_ADC_ID(node_id) DT_STRING_UPPER_TOKEN(node_id, enum_name)
 #define ADC_ID_WITH_COMMA(node_id)    ZSHIM_ADC_ID(node_id),
 
 enum adc_channel {
@@ -24,13 +24,18 @@ enum adc_channel {
 
 struct adc_t {
 	const char *name;
+	const struct device *dev;
 	uint8_t input_ch;
 	int factor_mul;
 	int factor_div;
 	struct adc_channel_cfg channel_cfg;
 };
 
+#ifndef CONFIG_ADC_CHANNELS_RUNTIME_CONFIG
 extern const struct adc_t adc_channels[];
+#else
+extern struct adc_t adc_channels[];
+#endif /* CONFIG_ADC_CHANNELS_RUNTIME_CONFIG */
 #else
 /* Empty declaration to avoid warnings if adc.h is included */
 enum adc_channel {

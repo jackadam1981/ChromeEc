@@ -8,17 +8,23 @@
 #include "adc_chip.h"
 #include "button.h"
 #include "cbi_fw_config.h"
+#include "cbi_ssfc.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
+#include "driver/accel_bma2x2.h"
 #include "driver/accel_kionix.h"
-#include "driver/accelgyro_lsm6dsm.h"
+#include "driver/accelgyro_bmi_common.h"
+#include "driver/accelgyro_bmi160.h"
+#include "driver/accelgyro_icm_common.h"
+#include "driver/accelgyro_icm426xx.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
 #include "driver/retimer/tusb544.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/usb_mux/it5205.h"
+#include "driver/usb_mux/ps8743_public.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
@@ -314,6 +320,13 @@ static int board_tusb544_set(const struct usb_mux *me,
 	return rv;
 }
 
+static int board_ps8743_mux_set(const struct usb_mux *me,
+				mux_state_t mux_state)
+{
+	return ps8743_write(me, PS8743_REG_USB_EQ_RX,
+				PS8743_USB_EQ_RX_16_7_DB);
+}
+
 const struct usb_mux usbc1_retimer = {
 	.usb_port = 1,
 	.i2c_port = I2C_PORT_SUB_USB_C1,
@@ -322,8 +335,14 @@ const struct usb_mux usbc1_retimer = {
 	.board_set = &board_tusb544_set,
 };
 
+const struct usb_mux usbc1_virtual_mux_ps8743 = {
+	.usb_port = 1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+
 /* USB Muxes */
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
 		.i2c_port = I2C_PORT_USB_C0,
@@ -363,7 +382,7 @@ static const struct ec_response_keybd_config galtic_kb = {
 		TK_FORWARD,		/* T2 */
 		TK_REFRESH,		/* T3 */
 		TK_FULLSCREEN,		/* T4 */
-		TK_SNAPSHOT,		/* T5 */
+		TK_OVERVIEW,		/* T5 */
 		TK_BRIGHTNESS_DOWN,	/* T6 */
 		TK_BRIGHTNESS_UP,	/* T7 */
 		TK_VOL_MUTE,		/* T8 */
@@ -419,6 +438,17 @@ void board_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void setup_mux_config(void)
+{
+	if (get_cbi_ssfc_mux_redriver() == SSFC_MUX_PS8743) {
+		usb_muxes[1].i2c_addr_flags = PS8743_I2C_ADDR1_FLAG;
+		usb_muxes[1].driver = &ps8743_usb_mux_driver;
+		usb_muxes[1].next_mux = &usbc1_virtual_mux_ps8743;
+		usb_muxes[1].board_set = &board_ps8743_mux_set;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, setup_mux_config, HOOK_PRIO_INIT_I2C + 2);
 
 void board_hibernate(void)
 {
@@ -603,8 +633,98 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Sensor Data */
+static struct accelgyro_saved_data_t g_bma253_data;
 static struct kionix_accel_data  g_kx022_data;
-static struct lsm6dsm_data lsm6dsm_data = LSM6DSM_DATA;
+static struct bmi_drv_data_t g_bmi160_data;
+static struct icm_drv_data_t g_icm426xx_data;
+
+const mat33_fp_t lid_standard_ref = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
+
+const mat33_fp_t base_standard_ref_icm = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
+
+const mat33_fp_t base_standard_ref_bmi = {
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
+
+struct motion_sensor_t bma253_lid_accel = {
+	.name = "Lid Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMA255,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_LID,
+	.drv = &bma2x2_accel_drv,
+	.mutex = &g_lid_mutex,
+	.drv_data = &g_bma253_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = BMA2x2_I2C_ADDR1_FLAGS,
+	.rot_standard_ref = &lid_standard_ref,
+	.default_range = 2, /* g */
+	/* We only use 2g because its resolution is only 8-bits */
+	.min_frequency = BMA255_ACCEL_MIN_FREQ,
+	.max_frequency = BMA255_ACCEL_MAX_FREQ,
+	.config = {
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+	},
+};
+
+struct motion_sensor_t bmi160_base_accel = {
+	.name = "Base Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMI160,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &bmi160_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_bmi160_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+	.rot_standard_ref = &base_standard_ref_bmi,
+	.default_range = 4,  /* g */
+	.min_frequency = BMI_ACCEL_MIN_FREQ,
+	.max_frequency = BMI_ACCEL_MAX_FREQ,
+	.config = {
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 13000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+	},
+};
+
+struct motion_sensor_t bmi160_base_gyro = {
+	.name = "Base Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMI160,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &bmi160_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_bmi160_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+	.default_range = 1000, /* dps */
+	.rot_standard_ref = &base_standard_ref_bmi,
+	.min_frequency = BMI_GYRO_MIN_FREQ,
+	.max_frequency = BMI_GYRO_MAX_FREQ,
+};
 
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
@@ -618,8 +738,8 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_lid_mutex,
 		.drv_data = &g_kx022_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
-		.rot_standard_ref = NULL,
+		.i2c_spi_addr_flags = KX022_ADDR0_FLAGS,
+		.rot_standard_ref = &lid_standard_ref,
 		.default_range = 2, /* g */
 		/* We only use 2g because its resolution is only 8-bits */
 		.min_frequency = KX022_ACCEL_MIN_FREQ,
@@ -636,24 +756,21 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_ACCEL] = {
 		.name = "Base Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_LSM6DSM,
+		.chip = MOTIONSENSE_CHIP_ICM426XX,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &lsm6dsm_drv,
+		.drv = &icm426xx_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
-				MOTIONSENSE_TYPE_ACCEL),
-		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
+		.drv_data = &g_icm426xx_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
-		.rot_standard_ref = NULL,
+		.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
+		.rot_standard_ref = &base_standard_ref_icm,
 		.default_range = 4,  /* g */
-		.min_frequency = LSM6DSM_ODR_MIN_VAL,
-		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+		.min_frequency = ICM426XX_ACCEL_MIN_FREQ,
+		.max_frequency = ICM426XX_ACCEL_MAX_FREQ,
 		.config = {
 			[SENSOR_CONFIG_EC_S0] = {
-				.odr = 13000 | ROUND_UP_FLAG,
+				.odr = 10000 | ROUND_UP_FLAG,
 				.ec_rate = 100 * MSEC,
 			},
 			[SENSOR_CONFIG_EC_S3] = {
@@ -665,25 +782,47 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_GYRO] = {
 		.name = "Base Gyro",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_LSM6DSM,
+		.chip = MOTIONSENSE_CHIP_ICM426XX,
 		.type = MOTIONSENSE_TYPE_GYRO,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &lsm6dsm_drv,
+		.drv = &icm426xx_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
-				MOTIONSENSE_TYPE_GYRO),
-		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
+		.drv_data = &g_icm426xx_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
-		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
-		.rot_standard_ref = NULL,
-		.min_frequency = LSM6DSM_ODR_MIN_VAL,
-		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+		.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
+		.default_range = 1000, /* dps */
+		.rot_standard_ref = &base_standard_ref_icm,
+		.min_frequency = ICM426XX_GYRO_MIN_FREQ,
+		.max_frequency = ICM426XX_GYRO_MAX_FREQ,
 	},
 };
 
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BMI160)
+		bmi160_interrupt(signal);
+	else
+		icm426xx_interrupt(signal);
+}
+
+static void board_sensors_init(void)
+{
+	if (get_cbi_ssfc_lid_sensor() == SSFC_SENSOR_BMA255) {
+		motion_sensors[LID_ACCEL] = bma253_lid_accel;
+		ccprints("LID_ACCEL is BMA253");
+	} else
+		ccprints("LID_ACCEL is KX022");
+
+	if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BMI160) {
+		motion_sensors[BASE_ACCEL] = bmi160_base_accel;
+		motion_sensors[BASE_GYRO] = bmi160_base_gyro;
+		ccprints("BASE_ACCEL is BMI160");
+	} else
+		ccprints("BASE_ACCEL is ICM426XX");
+}
+DECLARE_HOOK(HOOK_INIT, board_sensors_init, HOOK_PRIO_DEFAULT);
 
 /* Thermistors */
 const struct temp_sensor_t temp_sensors[] = {
@@ -702,43 +841,61 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-const static struct ec_thermal_config thermal_charger = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(85),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(98),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-	},
-};
-const static struct ec_thermal_config thermal_vcore = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(50),
-	},
-};
-const static struct ec_thermal_config thermal_ambient = {
-	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
-	},
-	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(50),
-	},
-};
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_CHARGER \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(85), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(98), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+		}, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_charger =
+	THERMAL_CHARGER;
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_VCORE \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(50), \
+		}, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_vcore =
+	THERMAL_VCORE;
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_AMBIENT \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(50), \
+		}, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_ambient =
+	THERMAL_AMBIENT;
+
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_1] = thermal_charger,
-	[TEMP_SENSOR_2] = thermal_vcore,
-	[TEMP_SENSOR_3] = thermal_ambient,
+	[TEMP_SENSOR_1] = THERMAL_CHARGER,
+	[TEMP_SENSOR_2] = THERMAL_VCORE,
+	[TEMP_SENSOR_3] = THERMAL_AMBIENT,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
-#ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(int enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 
@@ -762,7 +919,6 @@ void lid_angle_peripheral_enable(int enable)
 			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
 	}
 }
-#endif
 
 __override void board_pulse_entering_rw(void)
 {
@@ -777,4 +933,34 @@ __override void board_pulse_entering_rw(void)
 	usleep(MSEC);
 	gpio_set_level(GPIO_EC_ENTERING_RW, 0);
 	gpio_set_level(GPIO_EC_ENTERING_RW2, 0);
+}
+
+enum battery_cell_type battery_cell;
+
+static void get_battery_cell(void)
+{
+	int val;
+
+	if (i2c_read16(I2C_PORT_USB_C0, ISL923X_ADDR_FLAGS,
+		       ISL9238_REG_INFO2, &val) == EC_SUCCESS) {
+		/* PROG resistor read out. Number of battery cells [4:0] */
+		val = val & 0x001f;
+	}
+
+	if (val == 0 || val >= 0x18)
+		battery_cell = BATTERY_CELL_TYPE_1S;
+	else if (val >= 0x01 && val <= 0x08)
+		battery_cell = BATTERY_CELL_TYPE_2S;
+	else if (val >= 0x09 && val <= 0x10)
+		battery_cell = BATTERY_CELL_TYPE_3S;
+	else
+		battery_cell = BATTERY_CELL_TYPE_4S;
+
+	CPRINTS("Get battery cells: %d", battery_cell);
+}
+DECLARE_HOOK(HOOK_INIT, get_battery_cell, HOOK_PRIO_INIT_I2C+1);
+
+enum battery_cell_type board_get_battery_cell_type(void)
+{
+	return battery_cell;
 }

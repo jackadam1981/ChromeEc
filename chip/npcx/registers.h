@@ -175,14 +175,6 @@
 #define NPCX_IRQ_COUNT                   64
 
 /******************************************************************************/
-/* Miscellaneous Device Control (MDC) registers */
-#define NPCX_FWCTRL                       REG8(NPCX_MDC_BASE_ADDR + 0x007)
-
-/* MDC register fields */
-#define NPCX_FWCTRL_RO_REGION            0
-#define NPCX_FWCTRL_FW_SLOT              1
-
-/******************************************************************************/
 /* High Frequency Clock Generator (HFCG) registers */
 #define NPCX_HFCGCTRL                     REG8(NPCX_HFCG_BASE_ADDR + 0x000)
 #define NPCX_HFCGML                       REG8(NPCX_HFCG_BASE_ADDR + 0x002)
@@ -612,7 +604,7 @@ enum {
 /* RX FIFO threshold */
 #define NPCX_SMBRXF_CTL_RX_THR           FIELD(0, 6)
 /*
- * In master receiving mode, last byte in FIFO should send ACK or NACK
+ * In controller receiving mode, last byte in FIFO should send ACK or NACK
  */
 #define NPCX_SMBRXF_CTL_LAST             7
 
@@ -624,7 +616,7 @@ enum {
 #define NPCX_DISIDL_CTL1               REG8(NPCX_PMC_BASE_ADDR + 0x005)
 #define NPCX_PWDWN_CTL_ADDR(offset)    (((offset) < 6) ? \
 			(NPCX_PMC_BASE_ADDR + 0x008 + (offset)) : \
-			(NPCX_PMC_BASE_ADDR + 0x024))
+			(NPCX_PMC_BASE_ADDR + 0x024 + (offset) - 6))
 #define NPCX_PWDWN_CTL(offset)         REG8(NPCX_PWDWN_CTL_ADDR(offset))
 
 /* PMC register fields */

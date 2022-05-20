@@ -79,7 +79,7 @@ static int adc_value_to_numeric_id(enum adc_channel ch)
 
 	for (int i = 0; i < ARRAY_SIZE(voltage_map); i++) {
 		if (IN_RANGE(mv, voltage_map[i] - threshold_mv,
-			     voltage_map[i] + threshold_mv))
+			     voltage_map[i] + threshold_mv - 1))
 			return i;
 	}
 
@@ -101,7 +101,7 @@ static void board_version_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_version_init, HOOK_PRIO_INIT_ADC + 1);
 
-int board_get_version(void)
+__override int board_get_version(void)
 {
 	return version;
 }

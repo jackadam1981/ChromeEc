@@ -4,9 +4,10 @@
 
 menuconfig CROS_EC
 	bool "Chromium OS EC app"
+	imply PRINTK
 	imply SHELL
 	imply SHELL_MINIMAL
-	imply PRINTK
+	imply STACK_SENTINEL
 	help
 	  Enable the common Chromium OS EC application. This prints a message,
 	  starts the EC tasks and sets up any drivers that are needed.
@@ -18,6 +19,12 @@ if CROS_EC
 
 rsource "soc/Kconfig"
 orsource "chip/$(ARCH)/*/Kconfig.*"
+
+#
+# Override the maximum number of preemptive priority levels.
+#
+config NUM_PREEMPT_PRIORITIES
+	default 20
 
 config LTO
 	bool "Link Time Optimization (LTO)"

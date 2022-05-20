@@ -62,10 +62,12 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 int pd_snk_is_vbus_provided(int port)
 {
 	return ppc_is_vbus_present(port);
 }
+#endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 
 int board_vbus_source_enabled(int port)
 {
@@ -127,7 +129,7 @@ static int svdm_tbt_compat_response_identity(int port, uint32_t *payload)
 	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
 	payload[VDO_I(PRODUCT)] = vdo_product;
 
-	if (pd_get_rev(port, TCPC_TX_SOP) == PD_REV30) {
+	if (pd_get_rev(port, TCPCI_MSG_SOP) == PD_REV30) {
 		/* PD Revision 3.0 */
 		payload[VDO_I(IDH)] = vdo_idh_rev30;
 		payload[VDO_I(PTYPE_UFP1_VDO)] = vdo_ufp1;
@@ -158,6 +160,23 @@ static int svdm_tbt_compat_response_modes(int port, uint32_t *payload)
 	}
 }
 
+/* Track whether we've been enabled to ACK TBT EnterModes requests */
+static bool tbt_ufp_ack_allowed[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+__override enum ec_status board_set_tbt_ufp_reply(int port,
+						 enum typec_tbt_ufp_reply reply)
+{
+	/* Note: Host command has already bounds-checked port */
+	if (reply == TYPEC_TBT_UFP_REPLY_ACK)
+		tbt_ufp_ack_allowed[port] = true;
+	else if (reply == TYPEC_TBT_UFP_REPLY_NAK)
+		tbt_ufp_ack_allowed[port] = false;
+	else
+		return EC_RES_INVALID_PARAM;
+
+	return EC_RES_SUCCESS;
+}
+
 static int svdm_tbt_compat_response_enter_mode(
 	int port, uint32_t *payload)
 {
@@ -167,6 +186,10 @@ static int svdm_tbt_compat_response_enter_mode(
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
 		return 0; /* NAK */
 
+	/* Do not enter mode while policy disallows it */
+	if (!tbt_ufp_ack_allowed[port])
+		return 0; /* NAK */
+
 	if ((PD_VDO_VID(payload[0]) != USB_VID_INTEL) ||
 		(PD_VDO_OPOS(payload[0]) != OPOS_TBT))
 		return 0; /* NAK */
@@ -174,13 +197,23 @@ static int svdm_tbt_compat_response_enter_mode(
 	mux_state = usb_mux_get(port);
 	/*
 	 * Ref: USB PD 3.0 Spec figure 6-21 Successful Enter Mode sequence
-	 * UFP (responder) should be in USB mode or safe mode before sending
-	 * Enter Mode Command response.
+	 * UFP (responder) should be in USB mode or safe mode before entering a
+	 * Mode that requires the reconfiguring of any pins.
 	 */
 	if ((mux_state & USB_PD_MUX_USB_ENABLED) ||
 		(mux_state & USB_PD_MUX_SAFE_MODE)) {
 		pd_ufp_set_enter_mode(port, payload);
 		set_tbt_compat_mode_ready(port);
+
+		/*
+		 * Ref: Above figure 6-21: UFP (responder) should be in the new
+		 * mode before sending the ACK.  However, our mux set sequence
+		 * may exceed tVDMEnterMode, so wait as long as we can
+		 * before sending the reply without violating that timer.
+		 */
+		if (!usb_mux_set_completed(port))
+			usleep(PD_T_VDM_E_MODE / 2);
+
 		CPRINTS("UFP Enter TBT mode");
 		return 1; /* ACK */
 	}

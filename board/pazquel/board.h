@@ -10,27 +10,26 @@
 
 #include "baseboard.h"
 
-/* TODO(waihong): Remove the following bringup features */
-#define CONFIG_BRINGUP
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
-#define CONFIG_USB_PD_DEBUG_LEVEL 3
-#define CONFIG_CMD_GPIO_EXTENDED
-#define CONFIG_CMD_POWERINDEBUG
-#define CONFIG_I2C_DEBUG
-
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE_BYTES (512 * 1024)  /* 512KB internal spi flash */
 
 /* Keyboard */
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
-
+#define CONFIG_KEYBOARD_REFRESH_ROW3
 #define CONFIG_PWM_KBLIGHT
+
+/* Battery */
+#define CONFIG_BATTERY_DEVICE_CHEMISTRY "LION"
+#define CONFIG_BATTERY_FUEL_GAUGE
+#define CONFIG_BATTERY_REVIVE_DISCONNECT
+#define CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION
 
 /* BC 1.2 Charger */
 #define CONFIG_BC12_DETECT_PI3USB9201
 
 /* USB */
 #define CONFIG_USB_PD_TCPM_PS8805
+#define CONFIG_USB_PD_TCPM_PS8805_FORCE_DID
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 
@@ -39,6 +38,7 @@
 #define CONFIG_USB_PORT_POWER_DUMB
 
 /* Sensors */
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* BMI160 Base accel/gyro */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
@@ -58,13 +58,17 @@
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
 #define CONFIG_GMR_TABLET_MODE
-#define GMR_TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
 
 /* GPIO alias */
 #define GPIO_AC_PRESENT GPIO_ACOK_OD
 #define GPIO_WP_L GPIO_EC_WP_ODL
 #define GPIO_SWITCHCAP_PG GPIO_SWITCHCAP_GPIO_1
 #define GPIO_ACOK_OD GPIO_CHG_ACOK_OD
+/* Da9313 */
+#define DA9313_I2C_ADDR_FLAGS 0x68
+#define DA9313_REG_PVC_CTRL 0x04
+#define DA9313_PVC_CTRL_PVC_MODE BIT(1)
+#define DA9313_PVC_CTRL_PVC_EN BIT(0)
 
 #ifndef __ASSEMBLER__
 
@@ -92,6 +96,11 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
+enum battery_type {
+	BATTERY_GANFENG,
+	BATTERY_POWTECH_SG20QT1C,
+	BATTERY_TYPE_COUNT,
+};
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);

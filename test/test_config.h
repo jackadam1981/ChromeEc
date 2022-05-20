@@ -40,6 +40,10 @@
 #define CONFIG_BACKLIGHT_REQ_GPIO GPIO_PCH_BKLTEN
 #endif
 
+#ifdef TEST_CBI_WP
+#define CONFIG_EEPROM_CBI_WP
+#endif
+
 #ifdef TEST_FLASH_LOG
 #define CONFIG_CRC8
 #define CONFIG_FLASH_ERASED_VALUE32 (-1U)
@@ -131,6 +135,11 @@
 #define CONFIG_ONLINE_CALIB
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
+#endif
+
+#ifdef TEST_RGB_KEYBOARD
+#define CONFIG_RGB_KEYBOARD
+#define CONFIG_RGBKBD_DEMO_DOT
 #endif
 
 #ifdef TEST_STILLNESS_DETECTOR
@@ -265,6 +274,8 @@ enum sensor_id {
 
 #ifdef TEST_SBS_CHARGING_V2
 #define CONFIG_BATTERY
+#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_COUNT 1
 #define CONFIG_BATTERY_MOCK
 #define CONFIG_BATTERY_SMART
 #define CONFIG_CHARGER
@@ -278,6 +289,9 @@ int board_discharge_on_ac(int enabled);
 #define I2C_PORT_MASTER 0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
+#define CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION
+#undef  CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT
+#define CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT  (2*SECOND)
 #endif
 
 #ifdef TEST_THERMAL
@@ -372,6 +386,12 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_SHA256
 #define CONFIG_SW_CRC
+#endif
+
+#if defined(TEST_USB_PD_TIMER)
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_MATH_UTIL
+#define CONFIG_TEST_USB_PD_TIMER
 #endif
 
 #if defined(TEST_USB_PRL)
@@ -481,7 +501,11 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_TCPC_LOW_POWER
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
+/* Since we have no real HW to wait on, use a minimal debounce */
+#undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
+#define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE 1
 #define CONFIG_USB_POWER_DELIVERY
 #undef CONFIG_USB_PRL_SM
 #undef CONFIG_USB_PE_SM
@@ -557,10 +581,26 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USBC_PPC_VCONN
 #endif
 
+#ifdef TEST_USB_PD_CONSOLE
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PE_SM
+#define CONFIG_CMD_PD
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_PD_TRY_SRC
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+#define CONFIG_CMD_PD_TIMER
+#undef CONFIG_USB_PD_HOST_CMD
+#undef CONFIG_USB_PRL_SM
+#endif
+
 #if defined(TEST_CHARGE_MANAGER) || defined(TEST_CHARGE_MANAGER_DRP_CHARGING)
 #define CONFIG_CHARGE_MANAGER
+#define CONFIG_USB_PD_3A_PORTS 0 /* Host does not define a 3.0 A PDO */
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_BATTERY
 #define CONFIG_BATTERY_SMART
 #define CONFIG_I2C

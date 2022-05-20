@@ -50,7 +50,7 @@
 #define BMI3_REG_GYR_CONF			0x21
 #define BMI3_REG_INT_MAP1			0x3A
 #define BMI3_REG_FIFO_WATERMARK			0x35
-
+#define BMI3_REG_UGAIN_OFF_SEL		0x3F
 #define BMI3_REG_FIFO_CONF			0x36
 #define BMI3_FIFO_STOP_ON_FULL			0x01
 #define BMI3_FIFO_TIME_EN			0x01
@@ -94,9 +94,8 @@
 #define BMI3_INT_OUTPUT_DISABLE			0
 #define BMI3_INT_OUTPUT_ENABLE			1
 
-/* FIFO sensor data lengths */
-#define BMI3_LENGTH_FIFO_ACC			0x6
-#define BMI3_LENGTH_FIFO_GYR			0x6
+/* FIFO sensor data length (in word), Accel or Gyro */
+#define BMI3_FIFO_ENTRY			0x3
 /* Macro to define accelerometer configuration value for FOC */
 #define BMI3_FOC_ACC_CONF_VAL_LSB		0xB7
 #define BMI3_FOC_ACC_CONF_VAL_MSB		0x40
@@ -107,18 +106,15 @@
 #define BMI3_ACC_FOC_16G_REF			2048
 #define BMI3_FOC_SAMPLE_LIMIT			32
 
-/* 20ms delay for 50Hz ODR */
 #define FOC_TRY_COUNT				5
+/* 20ms delay for 50Hz ODR */
 #define FOC_DELAY				20
+#define OFFSET_UPDATE_DELAY			120
 #define BMI3_INT_STATUS_FWM			0x4000
 #define BMI3_INT_STATUS_FFULL			0x8000
 #define BMI3_INT_STATUS_ORIENTATION		0x0008
 
-#define BMI3_FIFO_ACC_LENGTH			6
-#define BMI3_FIFO_GYR_LENGTH			6
-#define BMI3_SENSOR_TIME_LENGTH			2
 
-/* Masks for FIFO I2C sync data frames */
 #define BMI3_FIFO_GYRO_I2C_SYNC_FRAME		0x7f02
 #define BMI3_FIFO_ACCEL_I2C_SYNC_FRAME		0x7f01
 
@@ -129,10 +125,15 @@
 /* Feature engine General purpose register 1. */
 #define BMI3_FEATURE_IO_0			0x10
 #define BMI3_ANY_MOTION_X_EN_MASK		0x08
+
 #define BMI3_FEATURE_IO_1			0x11
-#define BMI3_FEATURE_IO_STATUS			0x14
+#define BMI3_FEATURE_IO_1_ERROR_MASK		0x0F
+#define BMI3_FEATURE_IO_1_NO_ERROR		0x05
 #define BMI3_SC_ST_STATUS_MASK			0x10
 #define BMI3_SC_RESULT_MASK			0x20
+#define BMI3_UGAIN_OFFS_UPD_COMPLETE		0x01
+
+#define BMI3_FEATURE_IO_STATUS			0x14
 
 /*
  * The max positive value of accel data is 0x7FFF, equal to range(g)
@@ -163,8 +164,7 @@
 /* 1LSB = 61 milli-dps*/
 #define BMI3_OFFSET_GYR_MDPS			(61 * 1000)
 
-/* Other definitions */
-#define BMI3_FIFO_BUFFER			64
+#define BMI3_FIFO_BUFFER			32
 
 /* General Macro Definitions */
 /* LSB and MSB mask definitions */
@@ -210,7 +210,7 @@
  * fifo_flush. The word counter is updated each time a complete frame was read
  * or written.
  */
-#define BMI3_FIFO_FILL_LVL_MASK			0x07
+#define BMI3_FIFO_FILL_LVL_MASK			0x07FF
 
 /* Enum to define interrupt lines */
 enum bmi3_hw_int_pin {
@@ -223,19 +223,7 @@ enum bmi3_hw_int_pin {
 
 /* Structure to define FIFO frame configuration */
 struct bmi3_fifo_frame {
-	/* Pointer to FIFO data */
-	uint8_t *data;
-
-	/* Number of user defined bytes of FIFO to be read */
-	uint16_t length;
-
-	/* Enables type of data to be streamed - accelerometer,
-	 *  gyroscope
-	 */
-	uint8_t available_fifo_sens;
-
-	/* Water-mark level for water-mark interrupt */
-	uint16_t wm_lvl;
+	uint16_t data[BMI3_FIFO_BUFFER + 1];
 
 	/* Available fifo length */
 	uint16_t available_fifo_len;
@@ -247,34 +235,6 @@ enum sensor_index_t {
 	SENSOR_GYRO,
 	NUM_OF_PRIMARY_SENSOR,
 };
-
-/* Structure to define FIFO accel, gyro x, y and z axes */
-struct bmi3_fifo_data {
-	/* Data in x-axis */
-	int16_t x;
-
-	/* Data in y-axis */
-	int16_t y;
-
-	/* Data in z-axis */
-	int16_t z;
-};
-
-struct bmi3xx_drv_data {
-	struct accelgyro_saved_data_t saved_data[3];
-	uint8_t flags;
-	uint8_t enabled_activities;
-	uint8_t disabled_activities;
-	/* Current resolution of accelerometer. */
-	int sensor_resolution;
-	int16_t offset[3];
-};
-
-#define BMI3_GET_DATA(_s) \
-	((struct bmi3xx_drv_data *)(_s)->drv_data)
-
-#define BMI3_GET_SAVED_DATA(_s) \
-	(&BMI3_GET_DATA(_s)->saved_data)
 
 #define BMI3_DRDY_OFF(_sensor)   (7 - (_sensor))
 #define BMI3_DRDY_MASK(_sensor)  (1 << BMI3_DRDY_OFF(_sensor))
@@ -298,5 +258,25 @@ struct bmi3xx_drv_data {
 extern const struct accelgyro_drv bmi3xx_drv;
 
 void bmi3xx_interrupt(enum gpio_signal signal);
+
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_ACCEL_INTERRUPTS)
+/*
+ * Get the motion sensor ID of the BMI3xx sensor that
+ * generates the interrupt.
+ * The interrupt is converted to the event and transferred to motion
+ * sense task that actually handles the interrupt.
+ *
+ * Here, we use alias to get the motion sensor ID
+ *
+ * e.g) base_accel is the label of a child node in /motionsense-sensors
+ * aliases {
+ *     bmi3xx-int = &base_accel;
+ * };
+ */
+#if DT_NODE_EXISTS(DT_ALIAS(bmi3xx_int))
+#define CONFIG_ACCELGYRO_BMI3XX_INT_EVENT	\
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(SENSOR_ID(DT_ALIAS(bmi3xx_int)))
+#endif
+#endif
 
 #endif /* __CROS_EC_ACCELGYRO_BMI3XX_H */

@@ -6,7 +6,6 @@
 /* Ampton/Apel board-specific configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
 #include "charge_state.h"
 #include "common.h"
@@ -14,6 +13,8 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/accelgyro_icm_common.h"
+#include "driver/accelgyro_icm42607.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/sync.h"
 #include "driver/tcpm/it83xx_pd.h"
@@ -74,7 +75,7 @@ const struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		/* Use PS8751 as mux only */
 		.usb_port = USB_PD_PORT_ITE_0,
 		.i2c_port = I2C_PORT_USBC0,
-		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.i2c_addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		.flags = USB_MUX_FLAG_NOT_TCPC,
 		.driver = &ps8xxx_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
@@ -84,7 +85,7 @@ const struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		/* Use PS8751 as mux only */
 		.usb_port = USB_PD_PORT_ITE_1,
 		.i2c_port = I2C_PORT_USBC1,
-		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.i2c_addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		.flags = USB_MUX_FLAG_NOT_TCPC,
 		.driver = &ps8xxx_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
@@ -173,9 +174,21 @@ const mat33_fp_t gyro_standard_ref = {
 	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
+const mat33_fp_t base_standard_ref_icm42607 = {
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
+
+const mat33_fp_t lid_standard_ref_sku57 = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
 /* sensor private data */
 static struct kionix_accel_data g_kx022_data;
 static struct bmi_drv_data_t g_bmi160_data;
+static struct icm_drv_data_t g_icm42607_data;
 
 /* BMA253 private data */
 static struct accelgyro_saved_data_t g_bma253_data;
@@ -207,6 +220,49 @@ static const struct motion_sensor_t motion_sensor_bma253 = {
 			.ec_rate = 0,
 		},
 	},
+};
+
+struct motion_sensor_t motion_sensor_accel_icm42607 = {
+	.name = "Base Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_ICM42607,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &icm42607_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_icm42607_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
+	.default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs. */
+	.rot_standard_ref = &base_standard_ref_icm42607,
+	.min_frequency = ICM42607_ACCEL_MIN_FREQ,
+	.max_frequency = ICM42607_ACCEL_MAX_FREQ,
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+	},
+};
+
+struct motion_sensor_t motion_sensor_gyro_icm42607 = {
+	.name = "Base Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_ICM42607,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &icm42607_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_icm42607_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = ICM42607_ADDR0_FLAGS,
+	.default_range = 1000, /* dps */
+	.rot_standard_ref = &base_standard_ref_icm42607,
+	.min_frequency = ICM42607_GYRO_MIN_FREQ,
+	.max_frequency = ICM42607_GYRO_MAX_FREQ,
 };
 
 /* Drivers */
@@ -300,13 +356,27 @@ static int board_is_convertible(void)
 {
 	/* SKU IDs of Ampton & unprovisioned: 1, 2, 3, 4, 255 */
 	return sku_id == 1 || sku_id == 2 || sku_id == 3 || sku_id == 4
-		|| sku_id == 255;
+		|| sku_id == 57 || sku_id == 255;
 	}
 
 static int board_with_sensor_bma253(void)
 {
 	/* SKU ID 3 and 4 of Ampton with BMA253 */
 	return sku_id == 3 || sku_id == 4;
+}
+
+static int board_with_sensor_icm42607(void)
+{
+	/* SKU ID 3 and 4 of Ampton with BMA253 */
+	return sku_id == 57;
+}
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (board_with_sensor_icm42607())
+		icm42607_interrupt(signal);
+	else
+		bmi160_interrupt(signal);
 }
 
 static void board_update_sensor_config_from_sku(void)
@@ -316,6 +386,16 @@ static void board_update_sensor_config_from_sku(void)
 
 		if (board_with_sensor_bma253())
 			motion_sensors[LID_ACCEL] = motion_sensor_bma253;
+		if (board_with_sensor_icm42607()) {
+			motion_sensors[BASE_ACCEL] =
+				motion_sensor_accel_icm42607;
+			motion_sensors[BASE_GYRO] =
+				motion_sensor_gyro_icm42607;
+			ccprints("Gyro sensor: ICM-42607");
+		}
+		if (sku_id == 57)
+			motion_sensors[LID_ACCEL].rot_standard_ref =
+					&lid_standard_ref_sku57;
 
 		/* Enable Base Accel interrupt */
 		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
@@ -374,9 +454,8 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	cprints(CC_USBPD, "p%d: overcurrent!", port);
 }
 
-#ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(int enable)
 {
 	/*
 	 * If the lid is in tablet position via other sensors,
@@ -388,4 +467,3 @@ void lid_angle_peripheral_enable(int enable)
 	if (board_is_convertible())
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
-#endif

@@ -5,6 +5,7 @@
  * NXP PCA9675PW I/O Port expander driver source
  */
 
+#include "gpio.h"
 #include "i2c.h"
 #include "ioexpander.h"
 #include "pca9675.h"
@@ -117,6 +118,16 @@ int pca9675_init(int ioex)
 	return pca9675_reset(ioex);
 }
 
+#ifdef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
+
+/* Read levels for whole IO expander port */
+static int pca9675_get_port(int ioex, int port, int *val)
+{
+	return pca9675_read16(ioex, (uint16_t *)val);
+}
+
+#endif
+
 const struct ioexpander_drv pca9675_ioexpander_drv = {
 	.init			= &pca9675_init,
 	.get_level		= &pca9675_get_level,
@@ -124,4 +135,7 @@ const struct ioexpander_drv pca9675_ioexpander_drv = {
 	.get_flags_by_mask	= &pca9675_get_flags_by_mask,
 	.set_flags_by_mask	= &pca9675_set_flags_by_mask,
 	.enable_interrupt	= &pca9675_enable_interrupt,
+#ifdef CONFIG_IO_EXPANDER_SUPPORT_GET_PORT
+	.get_port		= &pca9675_get_port,
+#endif
 };

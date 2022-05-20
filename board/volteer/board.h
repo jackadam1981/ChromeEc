@@ -11,14 +11,6 @@
 /* Baseboard features */
 #include "baseboard.h"
 
-/*
- * Create an EC build that requires AP-driven mode entry to facilitate debugging
- * b/177105656.
- */
-#ifdef BOARD_VOLTEER_APMODEENTRY
-#define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
-#endif
-
 #ifdef BOARD_VOLTEER_NPCX797FC
 /*
  * The RAM and flash size combination on the the NPCX797FC does not leave
@@ -137,14 +129,12 @@
 #define GPIO_PCH_SLP_S3_L		GPIO_SLP_S3_L
 #define GPIO_PCH_DSW_PWROK		GPIO_EC_PCH_DSW_PWROK
 #define GPIO_POWER_BUTTON_L		GPIO_H1_EC_PWR_BTN_ODL
-#define GPIO_RSMRST_L_PGOOD		GPIO_PG_EC_RSMRST_ODL
 #define GPIO_CPU_PROCHOT		GPIO_EC_PROCHOT_ODL
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
 #define GPIO_WP_L			GPIO_EC_WP_L
 #define GPIO_USB_C1_BC12_INT_ODL	GPIO_USB_C1_MIX_INT_ODL
 #define GPIO_VOLUME_UP_L		GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L		GPIO_EC_VOLDN_BTN_ODL
-#define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE_L
 
 /* I2C Bus Configuration */
 #define CONFIG_I2C
@@ -164,14 +154,26 @@
 
 #define CONFIG_DEBUG_ASSERT_BRIEF
 
-/* Disable volume button command in EC console */
-#undef  CONFIG_CMD_BUTTON
+/* Disable console commands to help save space */
+#undef CONFIG_CMD_ADC
+#undef CONFIG_CMD_APTHROTTLE
+#undef CONFIG_CMD_BATTFAKE
+#undef CONFIG_CMD_BUTTON
+#undef CONFIG_CMD_CBI
+#undef CONFIG_CMD_CHARGER
+#undef CONFIG_CMD_CHARGE_SUPPLIER_INFO
+#undef CONFIG_CMD_IDLE_STATS
+#undef CONFIG_CMD_INA
+#undef CONFIG_CMD_MFALLOW
+#undef CONFIG_CMD_MMAPINFO
+#undef CONFIG_CMD_POWERINDEBUG
+#undef CONFIG_CMD_PWR_AVG
+#undef CONFIG_CMD_REGULATOR
+#undef CONFIG_CMD_USB_PD_CABLE
+#undef CONFIG_CONSOLE_CMDHELP
 
 /* Disable volume button in ectool */
 #undef CONFIG_HOSTCMD_BUTTON
-
-/* Disable console command help to save space */
-#undef CONFIG_CONSOLE_CMDHELP
 
 #ifndef __ASSEMBLER__
 

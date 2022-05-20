@@ -8,12 +8,15 @@
 #include "charge_ramp.h"
 #include "charger.h"
 #include "common.h"
+#include "charge_manager.h"
+#include "charge_state_v2.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "fw_config.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
+#include "keyboard_8042_sharedlib.h"
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
@@ -22,6 +25,7 @@
 #include "switch.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -31,6 +35,8 @@
 
 #define KBLIGHT_LED_ON_LVL 100
 #define KBLIGHT_LED_OFF_LVL 0
+
+#define PD_MAX_SUSPEND_CURRENT_MA 3000
 
 /******************************************************************************/
 /* USB-A charging control */
@@ -106,3 +112,59 @@ enum battery_present battery_hw_present(void)
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
 }
+
+static void keyboard_init(void)
+{
+	/*
+	 * Set T15(KSI0/KSO11) to Lock key(KSI3/KSO9)
+	 */
+	set_scancode_set2(0, 11, get_scancode_set2(3, 9));
+}
+DECLARE_HOOK(HOOK_INIT, keyboard_init, HOOK_PRIO_DEFAULT);
+
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	/*
+	 * Need to set different input current limit depend on system state.
+	 * Guard adapter plug/ un-plug here.
+	 */
+
+	if (((max_ma == PD_MAX_CURRENT_MA) &&
+		chipset_in_state(CHIPSET_STATE_ANY_OFF)) ||
+		(max_ma != PD_MAX_CURRENT_MA))
+		charge_ma = charge_ma * 97 / 100;
+	else
+		charge_ma = charge_ma * 93 / 100;
+
+	charge_set_input_current_limit(MAX(charge_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					charge_mv);
+}
+
+static void configure_input_current_limit(void)
+{
+	/*
+	 * If adapter == 3250mA, we need system be charged at 3150mA in S5.
+	 * And system be charged at 3000mA in S0.
+	 */
+	int adapter_current_ma;
+	int adapter_current_mv;
+	/* Get adapter voltage/ current */
+	adapter_current_mv = charge_manager_get_charger_voltage();
+	adapter_current_ma = charge_manager_get_charger_current();
+
+	if ((adapter_current_ma == PD_MAX_CURRENT_MA) &&
+		chipset_in_or_transitioning_to_state(CHIPSET_STATE_SUSPEND))
+		adapter_current_ma = PD_MAX_SUSPEND_CURRENT_MA;
+	else
+		adapter_current_ma = adapter_current_ma * 97 / 100;
+
+	charge_set_input_current_limit(MAX(adapter_current_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					adapter_current_mv);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, configure_input_current_limit,
+		HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, configure_input_current_limit,
+		HOOK_PRIO_DEFAULT);

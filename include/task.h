@@ -8,8 +8,10 @@
 #ifndef __CROS_EC_TASK_H
 #define __CROS_EC_TASK_H
 
+#include "atomic_t.h"
 #include "common.h"
 #include "compile_time_macros.h"
+#include <stdbool.h>
 #include "task_id.h"
 
 /* Task event bitmasks */
@@ -79,6 +81,11 @@ void interrupt_disable(void);
  */
 void interrupt_enable(void);
 
+/**
+ * Check if interrupts are enabled
+ */
+bool is_interrupt_enabled(void);
+
 /*
  * Define irq_lock and irq_unlock that match the function signatures to Zephyr's
  * functions. In reality, these simply call the current implementation of
@@ -113,12 +120,12 @@ void irq_unlock(uint32_t key);
 /**
  * Return true if we are in interrupt context.
  */
-int in_interrupt_context(void);
+bool in_interrupt_context(void);
 
 /**
  * Return true if we are in software interrupt context.
  */
-int in_soft_interrupt_context(void);
+bool in_soft_interrupt_context(void);
 
 /**
  * Return current interrupt mask with disabling interrupt. Meaning is
@@ -161,10 +168,27 @@ static inline void task_wake(task_id_t tskid)
  */
 task_id_t task_get_current(void);
 
+#ifdef CONFIG_ZEPHYR
+/**
+ * Check if this current task is running in deferred context
+ */
+bool in_deferred_context(void);
+#else
+/* All ECOS deferred calls run from the HOOKS task */
+static inline bool in_deferred_context(void)
+{
+#ifdef HAS_TASK_HOOKS
+	return (task_get_current() == TASK_ID_HOOKS);
+#else
+	return false;
+#endif /* HAS_TASK_HOOKS */
+}
+#endif /* CONFIG_ZEPHYR */
+
 /**
  * Return a pointer to the bitmap of events of the task.
  */
-uint32_t *task_get_event_bitmap(task_id_t tskid);
+atomic_t *task_get_event_bitmap(task_id_t tskid);
 
 /**
  * Wait for the next event.
@@ -353,6 +377,13 @@ int task_reset(task_id_t id, int wait);
  */
 void task_clear_pending_irq(int irq);
 
+/**
+ * Check if irq is pending.
+ *
+ * Returns true if interrupt with given number is pending, false otherwise.
+ */
+bool task_is_irq_pending(int irq);
+
 #ifdef CONFIG_ZEPHYR
 typedef struct k_mutex mutex_t;
 
@@ -361,7 +392,7 @@ typedef struct k_mutex mutex_t;
 #else
 struct mutex {
 	uint32_t lock;
-	uint32_t waiters;
+	atomic_t waiters;
 };
 
 typedef struct mutex mutex_t;
@@ -426,12 +457,15 @@ struct irq_def {
 #define IRQ_HANDLER(irqname) CONCAT3(irq_, irqname, _handler)
 #define IRQ_HANDLER_OPT(irqname) CONCAT3(irq_, irqname, _handler_optional)
 #define DECLARE_IRQ(irq, routine, priority) DECLARE_IRQ_(irq, routine, priority)
-#define DECLARE_IRQ_(irq, routine, priority) \
-	void IRQ_HANDLER_OPT(irq)(void) __attribute__((alias(#routine)));
+#define DECLARE_IRQ_(irq, routine, priority)             \
+	static void __keep routine(void); 		 \
+	void IRQ_HANDLER_OPT(irq)(void) __attribute__((alias(#routine)))
 
 /* Include ec.irqlist here for compilation dependency */
 #define ENABLE_IRQ(x)
+#if !defined(CONFIG_DFU_BOOTMANAGER_MAIN)
 #include "ec.irqlist"
+#endif /* !defined(CONFIG_DFU_BOOTMANAGER_MAIN) */
 #endif /* CONFIG_COMMON_RUNTIME */
 #endif /* !CONFIG_ZEPHYR */
 

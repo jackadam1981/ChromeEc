@@ -70,11 +70,11 @@
 /*
  * Timeout to wait for SHI request packet
  *
- * This affects the slowest SPI clock we can support.  A delay of 8192 us
- * permits a 512-byte request at 500 KHz, assuming the master starts sending
- * bytes as soon as it asserts chip select.  That's as slow as we would
- * practically want to run the SHI interface, since running it slower
- * significantly impacts firmware update times.
+ * This affects the slowest SPI clock we can support.  A delay of 8192
+ * us permits a 512-byte request at 500 KHz, assuming the controller
+ * starts sending bytes as soon as it asserts chip select.  That's as
+ * slow as we would practically want to run the SHI interface, since
+ * running it slower significantly impacts firmware update times.
  */
 #define SHI_CMD_RX_TIMEOUT_US 8192
 
@@ -651,7 +651,7 @@ static void shi_handle_cs_assert(void)
 }
 
 /* This routine handles all interrupts of this module */
-void shi_int_handler(void)
+static void shi_int_handler(void)
 {
 	uint8_t stat_reg;
 #ifdef NPCX_SHI_V2
@@ -962,7 +962,7 @@ static void shi_reenable_on_sysjump(void)
 /* Call hook after chipset sets initial power state */
 DECLARE_HOOK(HOOK_INIT,
 	     shi_reenable_on_sysjump,
-	     HOOK_PRIO_INIT_CHIPSET + 1);
+	     HOOK_PRIO_POST_CHIPSET);
 
 /* Disable SHI bus */
 static void shi_disable(void)
@@ -1076,7 +1076,7 @@ static enum ec_status shi_get_protocol_info(struct host_cmd_handler_args *args)
 
 	args->response_size = sizeof(*r);
 
-	return EC_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, shi_get_protocol_info,
 EC_VER_MASK(0));

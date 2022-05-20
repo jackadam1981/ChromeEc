@@ -10,6 +10,7 @@
 #include "host_command.h"
 #include "keyboard_backlight.h"
 #include "lid_switch.h"
+#include "rgb_keyboard.h"
 #include "timer.h"
 #include "util.h"
 
@@ -57,13 +58,25 @@ int kblight_get(void)
 
 int kblight_enable(int enable)
 {
-#ifdef GPIO_EN_KEYBOARD_BACKLIGHT
+#ifdef CONFIG_KBLIGHT_ENABLE_PIN
 	gpio_set_level(GPIO_EN_KEYBOARD_BACKLIGHT, enable);
 #endif
 	if (!kblight.drv || !kblight.drv->enable)
 		return -1;
 	return kblight.drv->enable(enable);
 }
+
+int kblight_get_enabled(void)
+{
+#ifdef CONFIG_KBLIGHT_ENABLE_PIN
+	if (!gpio_get_level(GPIO_EN_KEYBOARD_BACKLIGHT))
+		return 0;
+#endif
+	if (kblight.drv && kblight.drv->get_enabled)
+		return kblight.drv->get_enabled();
+	return -1;
+}
+
 
 int kblight_register(const struct kblight_drv *drv)
 {
@@ -78,9 +91,11 @@ int kblight_register(const struct kblight_drv *drv)
 static void keyboard_backlight_init(void)
 {
 	/* Uses PWM by default. Can be customized by board_kblight_init */
-#ifdef CONFIG_PWM_KBLIGHT
-	kblight_register(&kblight_pwm);
-#endif
+	if (IS_ENABLED(CONFIG_PWM_KBLIGHT))
+		kblight_register(&kblight_pwm);
+	else if (IS_ENABLED(CONFIG_RGB_KEYBOARD))
+		kblight_register(&kblight_rgbkbd);
+
 	board_kblight_init();
 	if (kblight_init())
 		CPRINTS("kblight init failed");
@@ -125,19 +140,21 @@ static int cc_kblight(int argc, char **argv)
 		if (kblight_enable(i > 0))
 			return EC_ERROR_PARAM1;
 	}
-	ccprintf("Keyboard backlight: %d%%\n", kblight_get());
+	ccprintf("Keyboard backlight: %d%% enabled: %d\n",
+		kblight_get(), kblight_get_enabled());
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(kblight, cc_kblight,
 			"percent",
 			"Get/set keyboard backlight");
 
-enum ec_status hc_get_keyboard_backlight(struct host_cmd_handler_args *args)
+static enum ec_status
+hc_get_keyboard_backlight(struct host_cmd_handler_args *args)
 {
 	struct ec_response_pwm_get_keyboard_backlight *r = args->response;
 
 	r->percent = kblight_get();
-	r->enabled = 1;			/* Deprecated */
+	r->enabled = kblight_get_enabled();
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -146,7 +163,8 @@ DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT,
 		     hc_get_keyboard_backlight,
 		     EC_VER_MASK(0));
 
-enum ec_status hc_set_keyboard_backlight(struct host_cmd_handler_args *args)
+static enum ec_status
+hc_set_keyboard_backlight(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_keyboard_backlight *p = args->params;
 

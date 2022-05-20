@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "i2c.h"
 #include "kb800x.h"
 #include "time.h"
@@ -340,7 +341,7 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 	enum idh_ptype cable_type = get_usb_pd_cable_type(me->usb_port);
 	union tbt_mode_resp_cable cable_resp = {
 		.raw_value =
-			pd_get_tbt_mode_vdo(me->usb_port, TCPC_TX_SOP_PRIME)
+			pd_get_tbt_mode_vdo(me->usb_port, TCPCI_MSG_SOP_PRIME)
 	};
 
 	rv = kb800x_bulk_write(me, cio_init_addresses, cio_init_values,
@@ -376,9 +377,13 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 	return kb800x_write(me, KB800X_REG_ORIENTATION, orientation);
 }
 
-static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state)
+static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
+			    bool *ack_required)
 {
 	int rv;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	cached_mux_state[me->usb_port] = mux_state;
 	rv = kb800x_write(me, KB800X_REG_RESET, KB800X_RESET_MASK);
@@ -442,6 +447,8 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state)
 
 static int kb800x_init(const struct usb_mux *me)
 {
+	bool unused;
+
 	gpio_set_level(kb800x_control[me->usb_port].usb_ls_en_gpio, 1);
 	gpio_set_level(kb800x_control[me->usb_port].retimer_rst_gpio, 1);
 
@@ -455,7 +462,7 @@ static int kb800x_init(const struct usb_mux *me)
 	if (!gpio_get_level(kb800x_control[me->usb_port].retimer_rst_gpio))
 		return EC_ERROR_NOT_POWERED;
 
-	return kb800x_set_state(me, USB_PD_MUX_NONE);
+	return kb800x_set_state(me, USB_PD_MUX_NONE, &unused);
 }
 
 static int kb800x_enter_low_power_mode(const struct usb_mux *me)

@@ -19,6 +19,10 @@
 #define CONFIG_I2C_DEBUG /* Print i2c traces */
 #define CONFIG_CMD_S5_TIMEOUT /* Allow a user-specified timeout to exit S5 */
 
+/* Detect sleep hang after 10s */
+#undef CONFIG_SLEEP_TIMEOUT_MS
+#define CONFIG_SLEEP_TIMEOUT_MS 10000
+
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
@@ -75,10 +79,11 @@
 
 /* Thermal Config */
 #define CONFIG_ADC
+#define CONFIG_AMD_SB_RMI
+#define CONFIG_AMD_STT
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 #define CONFIG_THROTTLE_AP
 #define CONFIG_TEMP_SENSOR_SB_TSI
-#define CONFIG_TEMP_SENSOR_TMP112
 #define CONFIG_THERMISTOR
 #define CONFIG_CPU_PROCHOT_ACTIVE_LOW
 #define GPIO_CPU_PROCHOT	GPIO_PROCHOT_ODL
@@ -89,8 +94,9 @@
 #define GPIO_WP_L			GPIO_EC_WP_L
 
 /* Host communication */
+#define CONFIG_CMD_APTHROTTLE
 #define CONFIG_CMD_CHARGEN
-#define CONFIG_HOSTCMD_ESPI
+#define CONFIG_HOST_INTERFACE_ESPI
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT
 #define GPIO_EC_INT_L		GPIO_EC_SOC_INT_L
@@ -101,19 +107,22 @@
 #define CONFIG_CHIPSET_RESET_HOOK
 
 /* Keyboard Config */
+#define CONFIG_MKBP_INPUT_DEVICES
 #define CONFIG_KEYBOARD_BACKLIGHT
 
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KBLIGHT_ENABLE_PIN
 #define GPIO_EN_KEYBOARD_BACKLIGHT	GPIO_EN_KB_BL
 #define GPIO_KBD_KSO2			GPIO_EC_KSO_02_INV
 
 /* Sensors */
 #ifdef HAS_TASK_MOTIONSENSE
+
 #define CONFIG_TABLET_MODE
 #define CONFIG_GMR_TABLET_MODE
-#define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE
+#define GPIO_TABLET_MODE_L		GPIO_TABLET_MODE
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
@@ -129,7 +138,7 @@
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
-#endif
+#endif  /* HAS_TASK_MOTIONSENSE */
 
 /* Backlight config */
 #define CONFIG_BACKLIGHT_LID
@@ -157,11 +166,11 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
 
 /*
- * EC will boot AP to depthcharge if: (BAT >= 2%) || (AC >= 50W)
+ * EC will boot AP to depthcharge if: (BAT >= 2%) || (AC >= 65W)
  * CONFIG_CHARGER_LIMIT_* is not set, so there is no additional restriction on
  * Depthcharge to boot OS.
  */
-#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		50000
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		65000
 
 /*
  * We would prefer to use CONFIG_CHARGE_RAMP_HW to enable legacy BC1.2 charging
@@ -175,7 +184,6 @@
 #define CONFIG_USB_PD_TCPMV2
 #define CONFIG_USB_PD_DECODE_SOP
 #define CONFIG_USB_DRP_ACC_TRYSRC
-/* TODO: Enable TCPMv2 Fast Role Swap (FRS) */
 #define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_CMD_TCPC_DUMP
 #define CONFIG_USB_CHARGER
@@ -187,6 +195,7 @@
 #define CONFIG_USB_PD_DP_HPD_GPIO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_FRS_TCPC
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_TCPC_LOW_POWER
 #define CONFIG_USB_PD_TCPM_MUX
@@ -201,12 +210,10 @@
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
-#define CONFIG_USB_MUX_ANX7451
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USBC_PPC_NX20P3483
 #define CONFIG_USBC_RETIMER_PS8811
 #define CONFIG_USBC_RETIMER_PS8818
-#define CONFIG_USBC_RETIMER_ANX7451
 #define CONFIG_USB_MUX_RUNTIME_CONFIG
 #define CONFIG_USB_MUX_AMD_FP6
 
@@ -221,12 +228,6 @@
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
 
-#define PD_OPERATING_POWER_MW	15000
-#define PD_MAX_CURRENT_MA	5000
-#define PD_MAX_VOLTAGE_MV	20000
-/* Max Power = 100 W */
-#define PD_MAX_POWER_MW		((PD_MAX_VOLTAGE_MV * PD_MAX_CURRENT_MA) / 1000)
-
 /* USB-A config */
 #define USB_PORT_COUNT USBA_PORT_COUNT
 #define CONFIG_USB_PORT_POWER_SMART
@@ -237,8 +238,8 @@
 #define GPIO_USB1_ILIM_SEL IOEX_USB_A0_LIMIT_SDP
 #define GPIO_USB2_ILIM_SEL IOEX_USB_A1_LIMIT_SDP_DB
 
-/* Round up 3250 max current to multiple of 128mA for ISL9241 AC prochot. */
-#define GUYBRUSH_AC_PROCHOT_CURRENT_MA 3328
+/* Round up 5000 max current to multiple of 128mA for ISL9241 AC prochot. */
+#define GUYBRUSH_AC_PROCHOT_CURRENT_MA 5120
 
 /*
  * USB ID - This is allocated specifically for Guybrush
@@ -314,31 +315,11 @@ enum usba_port {
 	USBA_PORT_COUNT
 };
 
-/* ADC Channels */
-enum adc_channel {
-	ADC_TEMP_SENSOR_SOC = 0,
-	ADC_TEMP_SENSOR_CHARGER,
-	ADC_TEMP_SENSOR_MEMORY,
-	ADC_CORE_IMON1,
-	ADC_SOC_IMON2,
-	ADC_CH_COUNT
-};
-
 /* TMP112 sensors */
 enum tmp112_sensor {
 	TMP112_SOC,
 	TMP112_AMB,
 	TMP112_COUNT,
-};
-
-/* Temp Sensors */
-enum temp_sensor_id {
-	TEMP_SENSOR_SOC = 0,
-	TEMP_SENSOR_CHARGER,
-	TEMP_SENSOR_MEMORY,
-	TEMP_SENSOR_CPU,
-	TEMP_SENSOR_AMBIENT,
-	TEMP_SENSOR_COUNT
 };
 
 enum sensor_id {
@@ -375,10 +356,10 @@ void bc12_interrupt(enum gpio_signal signal);
 void ppc_interrupt(enum gpio_signal signal);
 void sbu_fault_interrupt(enum ioex_signal signal);
 
-void baseboard_en_pwr_pcore_s0(enum gpio_signal signal);
+void baseboard_en_pwr_pcore_signal(enum gpio_signal signal);
 void baseboard_en_pwr_s0(enum gpio_signal signal);
 
-int board_get_soc_temp(int idx, int *temp_k);
+int board_get_soc_temp_k(int idx, int *temp_k);
 
 /* CBI utility functions */
 uint32_t get_sku_id(void);

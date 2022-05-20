@@ -14,6 +14,7 @@
 #include "flash.h"
 #include "host_command.h"
 #include "system.h"
+#include "watchdog.h"
 
 LOG_MODULE_REGISTER(cros_flash, LOG_LEVEL_ERR);
 
@@ -24,11 +25,14 @@ struct cros_flash_it8xxx2_data {
 	bool all_protected;
 };
 
+#define GCTRL_IT8XXX2_REG_BASE \
+	((struct gctrl_it8xxx2_regs *)DT_REG_ADDR(DT_NODELABEL(gctrl)))
+
 /* Driver convenience defines */
 #define DRV_DATA(dev) ((struct cros_flash_it8xxx2_data *)(dev)->data)
 
-#define FLASH_DEV_NAME DT_CHOSEN_ZEPHYR_FLASH_CONTROLLER_LABEL
-static const struct device *flash_controller;
+static const struct device *const flash_controller =
+	DEVICE_DT_GET(DT_CHOSEN(zephyr_flash_controller));
 
 #define FWP_REG(bank) (bank / 8)
 #define FWP_MASK(bank) (1 << (bank % 8))
@@ -160,14 +164,6 @@ static int cros_flash_it8xxx2_init(const struct device *dev)
 	return EC_ERROR_UNKNOWN;
 }
 
-static int cros_flash_it8xxx2_read(const struct device *dev, int offset,
-				   int size, char *dst_data)
-{
-	ARG_UNUSED(dev);
-
-	return flash_read(flash_controller, offset, dst_data, size);
-}
-
 static int cros_flash_it8xxx2_write(const struct device *dev, int offset,
 				    int size, const char *src_data)
 {
@@ -177,6 +173,14 @@ static int cros_flash_it8xxx2_write(const struct device *dev, int offset,
 		return -EACCES;
 	}
 
+	/*
+	 * If AP sends write flash command continuously, EC might not have
+	 * chance to go back to hook task to touch watchdog. Reload watchdog
+	 * on each flash write to prevent the reset.
+	 */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG))
+		watchdog_reload();
+
 	return flash_write(flash_controller, offset, src_data, size);
 }
 
@@ -184,12 +188,48 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 				    int size)
 {
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
+	int ret = 0;
 
 	if (data->all_protected) {
 		return -EACCES;
 	}
+	/*
+	 * Before the flash erasing, the interrupts should be disabled. In
+	 * the flash erasing loop, the SHI interrupt should be enabled to
+	 * handle AP's command, so irq_lock() is not used here.
+	 */
+	if (IS_ENABLED(CONFIG_ITE_IT8XXX2_INTC)) {
+		ite_intc_save_and_disable_interrupts();
+	}
+	/*
+	 * EC still need to handle AP's EC_CMD_GET_COMMS_STATUS command
+	 * during erasing.
+	 */
+	if (IS_ENABLED(HAS_TASK_HOSTCMD) &&
+		IS_ENABLED(CONFIG_HOST_COMMAND_STATUS)) {
+		irq_enable(DT_IRQN(DT_NODELABEL(shi)));
+	}
+	/* Always use sector erase command */
+	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE) {
+		ret = flash_erase(flash_controller, offset,
+			CONFIG_FLASH_ERASE_SIZE);
+		if (ret)
+			break;
 
-	return flash_erase(flash_controller, offset, size);
+		offset += CONFIG_FLASH_ERASE_SIZE;
+		/*
+		 * If requested erase size is too large at one time on KGD
+		 * flash, we need to reload watchdog to prevent the reset.
+		 */
+		if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG) && (size > 0x10000))
+			watchdog_reload();
+	}
+	/* Restore interrupts */
+	if (IS_ENABLED(CONFIG_ITE_IT8XXX2_INTC)) {
+		ite_intc_restore_interrupts();
+	}
+
+	return ret;
 }
 
 static int cros_flash_it8xxx2_get_protect(const struct device *dev, int bank)
@@ -228,6 +268,7 @@ static int cros_flash_it8xxx2_protect_at_boot(const struct device *dev,
 
 static int cros_flash_it8xxx2_protect_now(const struct device *dev, int all)
 {
+	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
 
 	if (all) {
@@ -246,13 +287,18 @@ static int cros_flash_it8xxx2_protect_now(const struct device *dev, int all)
 #endif
 	}
 
+	/*
+	 * Eflash protect lock register which can only be write 1 and only be
+	 * cleared by power-on reset.
+	 */
+	gctrl_base->GCTRL_EPLR |= IT8XXX2_GCTRL_EPLR_ENABLE;
+
 	return EC_SUCCESS;
 }
 
 /* cros ec flash driver registration */
 static const struct cros_flash_driver_api cros_flash_it8xxx2_driver_api = {
 	.init = cros_flash_it8xxx2_init,
-	.physical_read = cros_flash_it8xxx2_read,
 	.physical_write = cros_flash_it8xxx2_write,
 	.physical_erase = cros_flash_it8xxx2_erase,
 	.physical_get_protect = cros_flash_it8xxx2_get_protect,
@@ -265,9 +311,9 @@ static int flash_it8xxx2_init(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 
-	flash_controller = device_get_binding(FLASH_DEV_NAME);
-	if (!flash_controller) {
-		LOG_ERR("Fail to find %s", FLASH_DEV_NAME);
+	if (!device_is_ready(flash_controller)) {
+		LOG_ERR("Selected flash device %s is not ready",
+			flash_controller->name);
 		return -ENODEV;
 	}
 
@@ -276,7 +322,6 @@ static int flash_it8xxx2_init(const struct device *dev)
 
 static struct cros_flash_it8xxx2_data cros_flash_data;
 
-DEVICE_DEFINE(cros_flash_it8xxx2_0, DT_INST_LABEL(0), flash_it8xxx2_init, NULL,
-	      &cros_flash_data, NULL, PRE_KERNEL_1,
-	      CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
-	      &cros_flash_it8xxx2_driver_api);
+DEVICE_DT_INST_DEFINE(0, flash_it8xxx2_init, NULL, &cros_flash_data, NULL,
+		      POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
+		      &cros_flash_it8xxx2_driver_api);

@@ -6,7 +6,6 @@
 /* Fleex board-specific configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
 #include "battery.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -200,8 +199,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
 				MOTIONSENSE_TYPE_ACCEL),
-		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 		.rot_standard_ref = &base_standard_ref,
@@ -232,8 +229,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
 				MOTIONSENSE_TYPE_GYRO),
-		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
-		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
@@ -278,9 +273,8 @@ static void cbi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
-#ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
+__override void lid_angle_peripheral_enable(int enable)
 {
 	/*
 	 * If the lid is in tablet position via other sensors,
@@ -292,7 +286,6 @@ void lid_angle_peripheral_enable(int enable)
 	if (board_is_convertible())
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
-#endif
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {

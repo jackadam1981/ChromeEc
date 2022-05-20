@@ -8,6 +8,7 @@
 #include "amd_fp6.h"
 #include "chipset.h"
 #include "common.h"
+#include "console.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "queue.h"
@@ -34,7 +35,7 @@ static struct {
 	const struct usb_mux *mux;
 	uint8_t val;
 	bool write_pending;
-} saved_mux_state[USBC_PORT_COUNT];
+} saved_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static int amd_fp6_mux_port0_read(const struct usb_mux *me, uint8_t *val)
 {
@@ -134,9 +135,13 @@ static void amd_fp6_set_mux_retry(void)
 }
 
 
-static int amd_fp6_set_mux(const struct usb_mux *me, mux_state_t mux_state)
+static int amd_fp6_set_mux(const struct usb_mux *me, mux_state_t mux_state,
+			   bool *ack_required)
 {
 	uint8_t val;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	if (mux_state == USB_PD_MUX_NONE)
 		/*

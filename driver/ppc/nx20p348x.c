@@ -22,7 +22,7 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
+static atomic_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 
 #define NX20P348X_DB_EXIT_FAIL_THRESHOLD 10
 static int db_exit_fail_count[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -234,13 +234,18 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 		return rv;
 
 	for (int i = 0; i < NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC; ++i) {
-		int sw;
+		int ds;
+		bool is_sink;
 
-		rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &sw);
+		rv = read_reg(port, NX20P348X_DEVICE_STATUS_REG, &ds);
 		if (rv != EC_SUCCESS)
 			return rv;
-		if (!!(sw & NX20P348X_SWITCH_STATUS_HVSNK) == enable)
+
+		is_sink = (ds & NX20P3483_DEVICE_MODE_MASK) ==
+			NX20P3483_MODE_HV_SNK;
+		if (enable == is_sink)
 			return EC_SUCCESS;
+
 		msleep(1);
 	}
 
@@ -558,4 +563,5 @@ const struct ppc_drv nx20p348x_drv = {
 #ifdef CONFIG_USBC_PPC_VCONN
 	.set_vconn = &nx20p348x_set_vconn,
 #endif /* defined(CONFIG_USBC_PPC_VCONN) */
+	.interrupt = &nx20p348x_interrupt,
 };

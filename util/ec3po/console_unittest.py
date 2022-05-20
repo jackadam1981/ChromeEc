@@ -10,7 +10,6 @@
 from __future__ import print_function
 
 import binascii
-# pylint: disable=cros-logging-import
 import logging
 import mock
 import tempfile
@@ -163,8 +162,8 @@ class TestConsoleEditingMethods(unittest.TestCase):
                         format=('%(asctime)s - %(module)s -'
                                 ' %(levelname)s - %(message)s'))
 
-    # Create a temp file and set both the master and slave PTYs to the file to
-    # create a loopback.
+    # Create a temp file and set both the controller and peripheral PTYs to the
+    # file to create a loopback.
     self.tempfile = tempfile.TemporaryFile()
 
     # Create some mock pipes. These won't be used since we'll mock out sends
@@ -1068,8 +1067,8 @@ class TestConsoleCompatibility(unittest.TestCase):
     logging.basicConfig(level=logging.DEBUG,
                         format=('%(asctime)s - %(module)s -'
                                 ' %(levelname)s - %(message)s'))
-    # Create a temp file and set both the master and slave PTYs to the file to
-    # create a loopback.
+    # Create a temp file and set both the controller and peripheral PTYs to the
+    # file to create a loopback.
     self.tempfile = tempfile.TemporaryFile()
 
     # Mock out the pipes.
@@ -1078,7 +1077,7 @@ class TestConsoleCompatibility(unittest.TestCase):
                                    tempfile.TemporaryFile(),
                                    mock_pipe_end_0, mock_pipe_end_1, "EC")
 
-  @mock.patch('console.Console.CheckForEnhancedECImage')
+  @mock.patch('ec3po.console.Console.CheckForEnhancedECImage')
   def test_ActAsPassThruInNonEnhancedMode(self, mock_check):
     """Verify we simply pass everything thru to non-enhanced ECs.
 
@@ -1124,7 +1123,7 @@ class TestConsoleCompatibility(unittest.TestCase):
     CheckInputBuffer(self, b'')
     CheckInputBufferPosition(self, 0)
 
-  @mock.patch('console.Console.CheckForEnhancedECImage')
+  @mock.patch('ec3po.console.Console.CheckForEnhancedECImage')
   def test_TransitionFromNonEnhancedToEnhanced(self, mock_check):
     """Verify that we transition correctly to enhanced mode.
 
@@ -1185,7 +1184,7 @@ class TestConsoleCompatibility(unittest.TestCase):
     # Verify all of the calls.
     self.console.cmd_pipe.send.assert_has_calls(expected_calls)
 
-  @mock.patch('console.Console.CheckForEnhancedECImage')
+  @mock.patch('ec3po.console.Console.CheckForEnhancedECImage')
   def test_TransitionFromEnhancedToNonEnhanced(self, mock_check):
     """Verify that we transition correctly to non-enhanced mode.
 
@@ -1351,8 +1350,8 @@ class TestOOBMConsoleCommands(unittest.TestCase):
     logging.basicConfig(level=logging.DEBUG,
                         format=('%(asctime)s - %(module)s -'
                                 ' %(levelname)s - %(message)s'))
-    # Create a temp file and set both the master and slave PTYs to the file to
-    # create a loopback.
+    # Create a temp file and set both the controller and peripheral PTYs to the
+    # file to create a loopback.
     self.tempfile = tempfile.TemporaryFile()
 
     # Mock out the pipes.
@@ -1362,7 +1361,7 @@ class TestOOBMConsoleCommands(unittest.TestCase):
                                    mock_pipe_end_0, mock_pipe_end_1, "EC")
     self.console.oobm_queue = mock.MagicMock()
 
-  @mock.patch('console.Console.CheckForEnhancedECImage')
+  @mock.patch('ec3po.console.Console.CheckForEnhancedECImage')
   def test_InterrogateCommand(self, mock_check):
     """Verify that 'interrogate' command works as expected.
 

@@ -8,20 +8,21 @@
 #ifndef __CROS_EC_ATOMIC_H
 #define __CROS_EC_ATOMIC_H
 
+#include "atomic_t.h"
 #include "common.h"
 #include "cpu.h"
 #include "task.h"
 
-typedef int atomic_t;
-typedef atomic_t atomic_val_t;
-
-static inline void atomic_clear_bits(atomic_t *addr, atomic_val_t bits)
+static inline atomic_val_t atomic_clear_bits(atomic_t *addr, atomic_val_t bits)
 {
+	atomic_val_t ret;
 	atomic_t volatile *ptr = addr;
 	uint32_t int_mask = read_clear_int_mask();
 
+	ret = *ptr;
 	*ptr &= ~bits;
 	set_int_mask(int_mask);
+	return ret;
 }
 
 static inline atomic_val_t atomic_or(atomic_t *addr, atomic_val_t bits)
@@ -68,6 +69,18 @@ static inline atomic_val_t atomic_clear(atomic_t *addr)
 
 	ret = *ptr;
 	*ptr = 0;
+	set_int_mask(int_mask);
+	return ret;
+}
+
+static inline atomic_val_t atomic_and(atomic_t *addr, atomic_val_t bits)
+{
+	atomic_val_t ret;
+	atomic_t volatile *ptr = addr;
+	uint32_t int_mask = read_clear_int_mask();
+
+	ret = *ptr;
+	*ptr &= bits;
 	set_int_mask(int_mask);
 	return ret;
 }
