@@ -129,6 +129,8 @@ inline int signal_is_ioex(int signal)
 	return 0;
 }
 
+extern const struct device *ioex_port_map[];
+
 #else
 
 /*

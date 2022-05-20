@@ -11,6 +11,7 @@
 #undef __REQUIRE_ZEPHYR_GPIOS__
 #endif
 #include "ioexpander.h"
+#include "gpio/gpio.h"
 
 LOG_MODULE_REGISTER(ioex_shim, LOG_LEVEL_ERR);
 
@@ -25,8 +26,10 @@ struct ioexpander_config_t ioex_config[0];
 
 int ioex_init(int ioex)
 {
-	if (!IS_ENABLED(CONFIG_PLATFORM_EC_IOEX_CROS_DRV))
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_IOEX_CROS_DRV)) {
+		gpio_reset_port(ioex_port_map[ioex]);
 		return EC_SUCCESS;
+	}
 
 	const struct ioexpander_drv *drv = ioex_config[ioex].drv;
 	int rv;

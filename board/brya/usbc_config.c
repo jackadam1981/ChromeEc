@@ -47,6 +47,12 @@ enum ioex_port {
 	IOEX_ID_1_C2_NCT38XX,
 	IOEX_PORT_COUNT
 };
+
+const struct device *ioex_port_map[] = {
+	[IOEX_C0_NCT38XX] = DEVICE_DT_GET(DT_NODELABEL(ioex_port1)),
+	[IOEX_C2_NCT38XX] = DEVICE_DT_GET(DT_NODELABEL(ioex_port2)),
+};
+
 #endif /* CONFIG_ZEPHYR */
 
 /* USBC TCPC configuration */
@@ -375,15 +381,6 @@ void board_reset_pd_mcu(void)
 
 	msleep(50);
 
-#ifdef CONFIG_ZEPHYR
-	gpio_reset(IOEX_USB_C0_OC_ODL);
-	gpio_reset(IOEX_USB_C0_FRS_EN);
-	gpio_reset(IOEX_USB_C0_RT_RST_ODL);
-	gpio_reset(IOEX_USB_C2_RT_RST_ODL);
-	gpio_reset(IOEX_USB_C1_OC_ODL);
-	gpio_reset(IOEX_USB_C2_OC_ODL);
-	gpio_reset(IOEX_USB_C2_FRS_EN);
-#endif
 }
 
 static void board_tcpc_init(void)
