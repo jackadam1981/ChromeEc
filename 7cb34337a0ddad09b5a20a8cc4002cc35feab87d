@@ -34,6 +34,24 @@
       "parentUuid": "b61e843b_f7d90de0",
       "revId": "7cb34337a0ddad09b5a20a8cc4002cc35feab87d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d21cbc01_60538624",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-05-20T20:35:52Z",
+      "side": 1,
+      "message": "Yes I meant late init logic (by reinit). My understanding is late init logic is a workaround and will be removed later on. But if that\u0027s not the case, this change LGTM.",
+      "parentUuid": "5265f3de_5a95d0a7",
+      "revId": "7cb34337a0ddad09b5a20a8cc4002cc35feab87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
