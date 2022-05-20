@@ -3361,6 +3361,9 @@ static void pe_snk_apply_psnkstdby(int port)
 	uint32_t mv = pd_get_requested_voltage(port);
 	uint32_t high;
 
+	if (pd_get_pps_voltage() > 0) {
+		return;
+	}
 	/*
 	 * Apply 2.5W ceiling during transition. We need choose the larger of
 	 * the current input voltage and the new PDO voltage because during a
@@ -3613,6 +3616,11 @@ static void pe_snk_ready_entry(int port)
 	/* Clear DPM Current Request */
 	pe[port].dpm_curr_request = 0;
 
+	if (pd_get_pps_voltage() > 0) {
+		pd_timer_enable(port, TC_TIMER_PPS_KEEP_ALIVE,
+				PD_T_NO_RESPONSE);
+	}
+
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait,
 	 * then do the following:
@@ -3783,6 +3791,10 @@ static void pe_snk_ready_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return;
+	}
+
+	if ((pd_get_pps_voltage() > 0) &&  pd_timer_is_expired(port, TC_TIMER_PPS_KEEP_ALIVE)){
+		pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 	}
 
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
