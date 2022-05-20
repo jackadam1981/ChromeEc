@@ -665,7 +665,7 @@ class Zmake:
 
         # Compute the version string.
         version_string = zmake.version.get_version_string(
-            project,
+            project.config.project_name,
             build_dir / "zephyr_base",
             zmake.modules.locate_from_directory(build_dir / "modules"),
         )
