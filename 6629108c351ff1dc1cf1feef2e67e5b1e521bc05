@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffc942a8_bb165343",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "PLATFORM_EC_LED_PWM_TASK_DISABLED is already there in code but was missing in Kconfig, This basically disables Chromium OS LED behavior specification.\n\nBy using this conf, we can utilize pwm shim and common code and do customization for RVP in rvp specific LED files.",
+      "parentUuid": "10441b33_eec5c442",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a14cd1de_d91eac5e",
         "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/pwm_leds.dts",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-18T20:55:08Z",
       "side": 1,
       "message": "other colors needed for compilation?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2fdf2c4_200c16fd",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/pwm_leds.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "No, We can only have one entry for green color.\nBut brightness-range is an array of all supported colors in zephyr, The order needs to be maintained. Added all entries just for more clarity.\n\nWe can remove unused color map and add comment for brightness-range:\n-------------------------------------\n  color-map-green  \u003d \u003c100\u003e;\n\n  /* brightness-range \u003d \u003cred green blue yellow white amber\u003e */\n  brightness-range \u003d \u003c0 100 0 0 0 0\u003e;\n-------------------------------------",
+      "parentUuid": "a14cd1de_d91eac5e",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fd903e4_4cd3d8d0",
+        "filename": "zephyr/projects/intelrvp/adlrvp/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "Yes, CONFIG_PLATFORM_EC_LED_PWM has dependency on CONFIG_PLATFORM_EC_LED_COMMON in zephyr.",
+      "parentUuid": "a4a82a40_94096713",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66dacf15_9ee51d9a",
         "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
         "patchSetId": 1
@@ -100,6 +172,30 @@
       "writtenOn": "2022-05-18T20:55:08Z",
       "side": 1,
       "message": "try index these with two LEDs so that duplicate functions can be avoided",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e89a732_909b4091",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66dacf15_9ee51d9a",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42f0b09_ff55f1df",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "59f664f0_4250a91d",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91b9222e_6dacf2dc",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-05-18T20:55:08Z",
       "side": 1,
       "message": "bring it to line 163 to avoid calling the function when not needed",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 44
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2e63d3_c28f4e18",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "91b9222e_6dacf2dc",
       "range": {
         "startLine": 154,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93cfa790_edbd0b20",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "43bdffc5_9ebdf1ad",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3427010c_9db3f85b",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed6ba31_ebd373ff",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3427010c_9db3f85b",
+      "range": {
+        "startLine": 165,
+        "startChar": 44,
+        "endLine": 165,
+        "endChar": 48
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da613975_5684fc50",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-05-18T20:55:08Z",
       "side": 1,
       "message": "keep only one hook and call multiple function inside it.\nTry to use HOOK_SECOND so that we dont consume bandwidth here",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 63
+      },
+      "revId": "6629108c351ff1dc1cf1feef2e67e5b1e521bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3972ad_1370fddd",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T04:17:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da613975_5684fc50",
       "range": {
         "startLine": 179,
         "startChar": 0,
