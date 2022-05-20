@@ -22,6 +22,30 @@
       },
       "revId": "1084edb4155a5ab963bf6f0cfa9e896d11e1caad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454d3151_30bda59e",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2022-05-20T09:21:32Z",
+      "side": 1,
+      "message": "Yes you are right, reason is described in details in servo_v4 CL. I didn\u0027t want to make copy paste so just linked it in commit log -\u003e https://crrev.com/c/2569652. There was mistake in my commit log I was linking wrong CL, fixed it.",
+      "parentUuid": "88443379_59ca9f7d",
+      "range": {
+        "startLine": 1132,
+        "startChar": 3,
+        "endLine": 1134,
+        "endChar": 17
+      },
+      "revId": "1084edb4155a5ab963bf6f0cfa9e896d11e1caad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
