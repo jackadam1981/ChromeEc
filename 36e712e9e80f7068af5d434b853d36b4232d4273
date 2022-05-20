@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d76b57f_f6d698f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-20T20:54:11Z",
+      "side": 1,
+      "message": "Can you also try \u0027ectool rgbkbd \u003ckey id\u003e \u003ccolor code\u003e\u0027 to see if you can change the color of a key expectedly?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "36e712e9e80f7068af5d434b853d36b4232d4273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c248b80_fc77e728",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-20T20:54:11Z",
+      "side": 1,
+      "message": "You need to use ctx-\u003ectx-\u003ecfg.row_len.",
+      "range": {
+        "startLine": 165,
+        "startChar": 32,
+        "endLine": 165,
+        "endChar": 45
+      },
+      "revId": "36e712e9e80f7068af5d434b853d36b4232d4273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
