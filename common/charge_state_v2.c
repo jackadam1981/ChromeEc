@@ -1039,6 +1039,35 @@ static int charge_request(int voltage, int current)
 		if (r3 != EC_SUCCESS)
 			charge_problem(PR_CFG_SEC_CHG, r3);
 	}
+
+	static int pps_en = -1;
+	static int ptm_en = -1;
+	if(curr.ocpc.active_chg_chip < board_get_charger_chip_count() &&
+	   curr.ocpc.active_chg_chip >= 0 ) {
+		/* Active charger is valid and PPS voltage has changed */
+		int option;
+		unsigned int pps_voltage = pd_get_pps_voltage();
+
+		charger_get_option(curr.ocpc.active_chg_chip, &option);
+		if (pps_en != !!(option & BIT(11))) {
+			pps_en = !!(option & BIT(11));
+			ccprintf("PPS %sabled<=====\n", pps_en? "en": "dis");
+		}
+		if (ptm_en != !!(option & BIT(5))) {
+			ptm_en = !!(option & BIT(5));
+			ccprintf("PTM %sabled<=====\n", ptm_en? "en": "dis");
+		}
+
+		if (pps_voltage > 0) {
+			option |= BIT(11) | BIT(5);
+		} else {
+			option &= ~(BIT(11) | BIT(5));
+		}
+		charger_set_option(curr.ocpc.active_chg_chip, option);
+	} else {
+		pps_en = -1;
+		ptm_en = -1;
+	}
 #endif /* CONFIG_OCPC */
 
 	/*
@@ -2670,7 +2699,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 				rv = EC_RES_ACCESS_DENIED;
 				break;
 			case CS_PARAM_CHG_OPTION:
-				if (charger_set_option(val))
+				if (charger_set_option(chgnum, val))
 					rv = EC_RES_ERROR;
 				break;
 			default:

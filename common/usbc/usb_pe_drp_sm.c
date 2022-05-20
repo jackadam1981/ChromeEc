@@ -281,6 +281,7 @@ enum usb_pe_state {
 	PE_GIVE_BATTERY_CAP,
 	PE_GIVE_BATTERY_STATUS,
 	PE_GIVE_STATUS,
+	PE_REQUEST_STATUS,
 	PE_SEND_ALERT,
 	PE_ALERT_RECEIVED,
 	PE_SRC_CHUNK_RECEIVED,
@@ -406,6 +407,7 @@ __maybe_unused static __const_data const char *const pe_state_names[] = {
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
 	[PE_GIVE_STATUS] = "PE_Give_Status",
+	[PE_REQUEST_STATUS] = "PE_Request_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
 	[PE_ALERT_RECEIVED] = "PE_Alert_Received",
 #else
@@ -3561,6 +3563,11 @@ static void pe_snk_ready_entry(int port)
 	/* Clear DPM Current Request */
 	pe[port].dpm_curr_request = 0;
 
+	if (pd_get_pps_voltage() > 0) {
+		pd_timer_enable(port, TC_TIMER_PPS_KEEP_ALIVE,
+				PD_T_NO_RESPONSE);
+	}
+
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait,
 	 * then do the following:
@@ -3731,6 +3738,10 @@ static void pe_snk_ready_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return;
+	}
+
+	if ((pd_get_pps_voltage() > 0) &&  pd_timer_is_expired(port, TC_TIMER_PPS_KEEP_ALIVE)){
+		pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 	}
 
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
@@ -4375,6 +4386,40 @@ static void pe_give_status_entry(int port)
 }
 
 static void pe_give_status_run(int port)
+{
+	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR) ||
+		   PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
+		pe_send_soft_reset(port, TCPCI_MSG_SOP);
+	}
+}
+
+/**
+ * PE_SRC_Request_Source_Status and
+ * PE_SNK_Request_Sink_Status
+ */
+static void pe_request_status_entry(int port)
+{
+	print_current_state(port);
+
+	/*
+	 * Only USB PD partners with major revision 3.0 could potentially
+	 * respond to Get_Revision.
+	 */
+	if (prl_get_rev(port, TCPCI_MSG_SOP) != PD_REV30) {
+		pe_set_ready_state(port);
+		return;
+	}
+
+	/* Send a Get_Revision message */
+	send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_GET_STATUS);
+}
+
+static void pe_request_status_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
@@ -8185,6 +8230,10 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_GIVE_STATUS] = {
 		.entry = pe_give_status_entry,
 		.run   = pe_give_status_run,
+	},
+	[PE_REQUEST_STATUS] = {
+		.entry = pe_request_status_entry,
+		.run   = pe_request_status_run,
 	},
 	[PE_SEND_ALERT] = {
 		.entry = pe_send_alert_entry,
