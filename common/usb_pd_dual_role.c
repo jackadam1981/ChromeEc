@@ -24,6 +24,7 @@
  * before getting source caps
  */
 static unsigned int max_request_mv = PD_MAX_VOLTAGE_MV;
+static unsigned int pps_request_mv;
 
 /* TODO(b:169532537): deprecate CONFIG_USB_PD_PREFER_MV */
 STATIC_IF_NOT(CONFIG_USB_PD_PREFER_MV)
@@ -39,6 +40,15 @@ unsigned int pd_get_max_voltage(void)
 	return max_request_mv;
 }
 
+void pd_set_pps_voltage(unsigned int mv)
+{
+	pps_request_mv = mv;
+}
+
+unsigned int pd_get_pps_voltage(void)
+{
+	return pps_request_mv;
+}
 /**
  * Return true if port is capable of communication over USB data lines.
  *
@@ -59,6 +69,33 @@ static bool pd_get_usb_comm_capable(int port)
 	}
 
 	return !!(fixed_pdo & PDO_FIXED_COMM_CAP);
+}
+
+int pd_find_apdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
+		       int mv, int ma, uint32_t *selected_pdo)
+{
+	int i, max_mv, min_mv, max_ma;
+
+	if (mv == 0) {
+		return -1;
+	}
+
+	for (i = 0; i < src_cap_cnt; i++) {
+		if ((src_caps[i] & PDO_TYPE_MASK) != PDO_TYPE_AUGMENTED)
+			continue;
+		max_mv = PDO_AUG_MAX_VOLTAGE(src_caps[i]);
+		min_mv = PDO_AUG_MIN_VOLTAGE(src_caps[i]);
+		max_ma = PDO_AUG_MAX_CURRENT(src_caps[i]);
+
+		if (mv > min_mv && mv < max_mv &&
+		    ma <= max_ma && ma > 0) {
+			if (selected_pdo) {
+				*selected_pdo = src_caps[i];
+			}
+			return i;
+		}
+	}
+	return -1;
 }
 
 /*
@@ -240,6 +277,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	int charging_allowed;
 	int max_request_allowed;
 	uint32_t max_request_mv = pd_get_max_voltage();
+	unsigned int pps_req_mv = pd_get_pps_voltage();
 	uint32_t unused;
 
 	/*
@@ -272,9 +310,14 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	 * request the max voltage, then select vSafe5V
 	 */
 	if (charging_allowed && max_request_allowed) {
-		/* find pdo index for max voltage we can request */
-		pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
-					      max_request_mv, &pdo);
+		if (pps_req_mv) {
+			pdo_index = pd_find_apdo_index(src_cap_cnt, src_caps,
+					   pps_req_mv, 3000, &pdo);
+		} else {
+			/* find pdo index for max voltage we can request */
+			pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
+					  max_request_mv, &pdo);
+		}
 	} else {
 		/* src cap 0 should be vSafe5V */
 		pdo_index = 0;
@@ -345,7 +388,11 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		int mw = uw / 1000;
 		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
-	} else {
+	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+		*ma = 3000;
+		*mv = pps_req_mv;
+		*rdo = PRDO_PPS(pdo_index + 1, pps_req_mv, *ma, flags);
+	}else {
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
 	}
 

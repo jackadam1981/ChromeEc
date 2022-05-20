@@ -1885,6 +1885,41 @@ bool pe_is_pr_swapping(int port)
 	return false;
 }
 
+int pd_enable_pps(int port, bool enable)
+{
+	int ret;
+
+	if (!IS_ENABLED(CONFIG_USB_PE_SM)) {
+		return EC_ERROR_UNIMPLEMENTED;
+	}
+
+	/* PPS is only supported for SINK mode */
+	if (pe[port].power_role != PD_ROLE_SINK) {
+		return EC_ERROR_BUSY;
+	}
+
+	ret = charge_manager_enable_pps(port, enable);
+	if (ret != EC_SUCCESS) {
+		PE_CLR_FLAG(port, PE_FLAGS_PPS_ACTIVE);
+		return ret;
+	}
+
+	if (enable) {
+		PE_SET_FLAG(port, PE_FLAGS_PPS_ACTIVE);
+		pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
+		task_wake(PD_PORT_TO_TASK_ID(port));
+	} else {
+		PE_CLR_FLAG(port, PE_FLAGS_PPS_ACTIVE);
+	}
+
+	return EC_SUCCESS;
+}
+
+bool pd_is_pps_enabled(int port)
+{
+	return charge_manager_is_pps_enabled(port);
+}
+
 void pd_request_power_swap(int port)
 {
 	/* Ignore requests when the board does not wish to swap */
@@ -3440,7 +3475,15 @@ static void pe_snk_select_capability_run(int port)
 				/* explicit contract is now in place */
 				pe_set_explicit_contract(port);
 
-				if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
+				if (IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
+				    /*
+			             * A Sink is not required to transition to
+				     * Sink Standby when operating within the
+				     * negotiated PPS APDO.
+				     *
+				     * See USB PD Spec Section 7.2.3.1
+				     */
+				    !PE_CHK_FLAG(port, PE_FLAGS_PPS_ACTIVE))
 					pe_snk_apply_psnkstdby(port);
 
 				set_state_pe(port, PE_SNK_TRANSITION_SINK);
@@ -3613,6 +3656,11 @@ static void pe_snk_ready_entry(int port)
 	/* Clear DPM Current Request */
 	pe[port].dpm_curr_request = 0;
 
+	if (PE_CHK_FLAG(port, PE_FLAGS_PPS_ACTIVE)) {
+		pd_timer_enable(port, TC_TIMER_PPS_KEEP_ALIVE,
+				PD_T_NO_RESPONSE);
+	}
+
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait,
 	 * then do the following:
@@ -3783,6 +3831,11 @@ static void pe_snk_ready_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return;
+	}
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_PPS_ACTIVE) &&
+	    pd_timer_is_expired(port, TC_TIMER_PPS_KEEP_ALIVE)){
+		pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 	}
 
 	if (pd_timer_is_disabled(port, PE_TIMER_WAIT_AND_ADD_JITTER) ||
