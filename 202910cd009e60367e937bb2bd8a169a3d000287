@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee287d1c_dd29d5bb",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T03:23:37Z",
+      "side": 1,
+      "message": "why does this have to depend on build_boards?",
+      "range": {
+        "startLine": 186,
+        "startChar": 19,
+        "endLine": 186,
+        "endChar": 31
+      },
+      "revId": "202910cd009e60367e937bb2bd8a169a3d000287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ee3d55_aab60516",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T03:23:37Z",
+      "side": 1,
+      "message": "build_cr50_extras should be a PHONY target just in case.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 16
+      },
+      "revId": "202910cd009e60367e937bb2bd8a169a3d000287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df41159_37b89d4b",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T03:23:37Z",
+      "side": 1,
+      "message": "if build_cr50_extras has to depend on build_boards there is no point in including `build_boards` here as a dependency.",
+      "range": {
+        "startLine": 192,
+        "startChar": 9,
+        "endLine": 192,
+        "endChar": 21
+      },
+      "revId": "202910cd009e60367e937bb2bd8a169a3d000287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
