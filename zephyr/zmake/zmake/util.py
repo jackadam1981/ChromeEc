@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 """Common miscellaneous utility functions for zmake."""
 
+import importlib.util
 import os
 import pathlib
 import re
@@ -184,3 +185,31 @@ def log_multi_line(logger, level, message):
     for line in message.splitlines():
         if line:
             logger.log(level, line)
+
+
+def get_version_string(project_name, zephyr_base, modules, static=False):
+    """
+    Imports the ec_version header generator script to access the current
+    version string.
+
+    Args:
+        project_name: string name of project
+        zephyr_base: Pathlib path to Zephyr installation
+        module: dictionary of {name: Pathlib} entries
+        static: if set, create a version string not dependent on git
+            commits, thus allowing binaries to be compared between two
+            commits.
+
+    Returns: version string
+    """
+
+    # Dynamically load the generate_ec_version.py script as a module
+    file_path = (
+        locate_cros_checkout() / "src/platform/ec/zephyr/util/generate_ec_version.py"
+    )
+
+    spec = importlib.util.spec_from_file_location("generate_ec_version", file_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    return module.get_version_string(project_name, zephyr_base, modules, static)

@@ -528,3 +528,18 @@ add_subdirectory("app")
 add_subdirectory("drivers")
 add_subdirectory("emul")
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
+
+# Use external script to generate the ec_version.h header
+add_custom_target(
+  ec_version_header
+  VERBATIM COMMAND
+  ${PYTHON_EXECUTABLE}
+  "${PLATFORM_EC}/zephyr/util/generate_ec_version.py"
+  "${CMAKE_CURRENT_BINARY_DIR}/include/ec_version.h"
+  "--base" "${ZEPHYR_BASE}"
+  "--name" "${CMAKE_PROJECT_NAME}"
+  "--module" "${ZEPHYR_MODULES}"
+)
+
+add_dependencies(app ec_version_header)
+zephyr_include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")

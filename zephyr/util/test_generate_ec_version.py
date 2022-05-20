@@ -2,20 +2,21 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-"""Tests for zmake version code."""
+"""Tests for zephyr/util/generate_ec_version.py"""
 
 import datetime
+import hypothesis
+import hypothesis.strategies as st
+import pathlib
 import subprocess
+import tempfile
 import unittest.mock as mock
 
 import pytest
 
-import zmake.output_packers
-import zmake.project
-import zmake.version as version
+import generate_ec_version as version
 
 # pylint:disable=redefined-outer-name,unused-argument
-
 
 def _git_init(repo):
     """Create a new git repository."""
@@ -52,18 +53,11 @@ def _setup_example_repos(tmp_path):
     Returns:
         A 3-tuple of project, zephyr_base, modules_dict.
     """
-    project_path = tmp_path / "prj"
+    project_name = "prj"
+
+    project_path = tmp_path / project_name
     project_path.mkdir()
 
-    project = zmake.project.Project(
-        zmake.project.ProjectConfig(
-            project_name="prj",
-            zephyr_board="foo",
-            output_packer=zmake.output_packers.RawBinPacker,
-            supported_toolchains=["coreboot-sdk"],
-            project_dir=project_path,
-        ),
-    )
     # Has one commit.
     zephyr_base = tmp_path / "zephyr_base"
     _git_init(zephyr_base)
@@ -88,7 +82,8 @@ def _setup_example_repos(tmp_path):
     _git_add(mod2, mod2 / "file3")
     _git_commit(mod2)
 
-    return project, zephyr_base, {"mod1": mod1, "ec": mod2}
+    return project_name, zephyr_base, \
+        version.convert_module_list_to_dict([str(mod1), str(mod2)])
 
 
 def test_version_string(tmp_path):
@@ -194,3 +189,45 @@ def test_header_gen_exists_needs_changes(fake_user_hostname, fake_date, tmp_path
 
     # Assert we overwrote.
     assert output_file.read_text() != original_contents
+
+def test_convert_module_list_to_dict(tmp_path):
+    """Test the convert_module_list_to_dict() function"""
+    # Degenerate inputs
+    assert version.convert_module_list_to_dict([]) == {}
+    assert version.convert_module_list_to_dict(None) == {}
+
+    # Non-existent module
+    with pytest.raises(FileNotFoundError):
+        version.convert_module_list_to_dict(["/dev/null/missing"])
+
+    # Create two modules
+    mod1 = tmp_path / "mod1"
+    mod1.mkdir()
+    mod1 = str(mod1).rstrip("/")
+
+    mod2 = tmp_path / "mod2"
+    mod2.mkdir()
+    mod2 = str(mod2).rstrip("/")
+
+    # List of modules as separate items (with and without trailing slash)
+    assert version.convert_module_list_to_dict([mod1, mod2]) == \
+        {"mod1": mod1, "mod2": mod2}
+    assert version.convert_module_list_to_dict([mod1+"/", mod2+"/"]) == \
+        {"mod1": mod1, "mod2": mod2}
+
+
+version_integers = st.integers(min_value=0)
+version_tuples = st.tuples(version_integers, version_integers, version_integers)
+
+@hypothesis.given(version_tuples)
+@hypothesis.settings(deadline=60000)
+def test_read_zephyr_version(version_tuple):
+    """Test reading the zephyr version."""
+    with tempfile.TemporaryDirectory() as zephyr_base:
+        with open(pathlib.Path(zephyr_base) / "VERSION", "w") as file:
+            for name, value in zip(
+                ("VERSION_MAJOR", "VERSION_MINOR", "PATCHLEVEL"), version_tuple
+            ):
+                file.write("{} = {}\n".format(name, value))
+
+        assert version.read_zephyr_version(zephyr_base) == version_tuple

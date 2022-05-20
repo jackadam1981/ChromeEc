@@ -15,21 +15,6 @@ import zmake.util as util
 
 # Strategies for use with hypothesis
 version_integers = st.integers(min_value=0)
-version_tuples = st.tuples(version_integers, version_integers, version_integers)
-
-
-@hypothesis.given(version_tuples)
-@hypothesis.settings(deadline=60000)
-def test_read_zephyr_version(version_tuple):
-    """Test reading the zephyr version."""
-    with tempfile.TemporaryDirectory() as zephyr_base:
-        with open(pathlib.Path(zephyr_base) / "VERSION", "w") as file:
-            for name, value in zip(
-                ("VERSION_MAJOR", "VERSION_MINOR", "PATCHLEVEL"), version_tuple
-            ):
-                file.write("{} = {}\n".format(name, value))
-
-        assert util.read_zephyr_version(zephyr_base) == version_tuple
 
 
 @hypothesis.given(st.integers())

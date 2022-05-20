@@ -132,13 +132,11 @@ def do_test_with_log_level(zmake_factory_from_dir, log_level, fnames=None):
     zmk = zmake_factory_from_dir(jobserver=FakeJobserver(fnames))
     with LogCapture(level=log_level) as cap:
         with unittest.mock.patch(
-            "zmake.version.get_version_string", return_value="123"
+            "zmake.util.get_version_string", return_value="123"
         ), unittest.mock.patch.object(
             zmake.project,
             "find_projects",
             return_value={"fakeproject": FakeProject()},
-        ), unittest.mock.patch(
-            "zmake.version.write_version_header", autospec=True
         ):
             zmk.build(
                 ["fakeproject"],
