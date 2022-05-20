@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a726aa89_8bca258a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T21:16:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7336d3e5_d93d6f3a",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "7251a9daf00b18f804be09fe752bc74928490958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7e62c6_7b2ed02e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf8f4ac2_f9477686",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T21:16:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c7e62c6_7b2ed02e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "7251a9daf00b18f804be09fe752bc74928490958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de719dc3_acc1baa6",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-20T20:57:32Z",
       "side": 1,
       "message": "as discussed change -1 with macro",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 31
+      },
+      "revId": "7251a9daf00b18f804be09fe752bc74928490958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b78bbd2_ded946b1",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-20T21:16:55Z",
+      "side": 1,
+      "message": "ACK. Sorry, I missed this.",
+      "parentUuid": "de719dc3_acc1baa6",
       "range": {
         "startLine": 156,
         "startChar": 29,
