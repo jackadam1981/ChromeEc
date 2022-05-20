@@ -8,7 +8,7 @@ import datetime
 import subprocess
 import unittest.mock as mock
 
-import pytest
+import pytest  # pylint: disable=import-error
 
 import zmake.output_packers
 import zmake.project
@@ -95,7 +95,7 @@ def test_version_string(tmp_path):
     """Test a that version string is as expected."""
     project, zephyr_base, modules = _setup_example_repos(tmp_path)
     assert (
-        version.get_version_string(project, zephyr_base, modules)
+        version.get_version_string(project.config.project_name, zephyr_base, modules)
         == "prj_v2.6.4-ec:b5991f,os:377d26,mod1:02fd7a"
     )
 
@@ -104,7 +104,9 @@ def test_version_string_static(tmp_path):
     """Test a that version string with no git hashes."""
     project, zephyr_base, modules = _setup_example_repos(tmp_path)
     assert (
-        version.get_version_string(project, zephyr_base, modules, static=True)
+        version.get_version_string(
+            project.config.project_name, zephyr_base, modules, static=True
+        )
         == "prj_v2.6.0-STATIC"
     )
 
