@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8945dc48_5853e381",
+        "filename": "zephyr/projects/brya/bb_retimer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-20T16:15:52Z",
+      "side": 1,
+      "message": "These properties are currently unused.  Can you update usb_muxes.c to use this node to create the bb_controls[] array?\n\nTo follow the convention of the other mux drivers, remove this node from the I2C bus and move into the `portN-muxes` node.  We\u0027re still using the legacy bb_retimer.c driver, which expects to use the I2C port enum and a statically configured I2C peripheral address to talk to the chip.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "82bc9aec4cf506bf9509258405d09f502e947dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
