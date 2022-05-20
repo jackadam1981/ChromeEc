@@ -85,10 +85,15 @@ struct boot_key_entry {
 };
 
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
+
+#define KEYBOARD_SCANCODE_ESC		0x0076
+#define KEYBOARD_SCANCODE_DOWN		0xe072
+#define KEYBOARD_SCANCODE_LEFT_SHIFT	0x0012
+
 static const struct boot_key_entry boot_key_list[] = {
-	{KEYBOARD_COL_ESC, KEYBOARD_ROW_ESC},   /* Esc */
-	{KEYBOARD_COL_DOWN, KEYBOARD_ROW_DOWN}, /* Down-arrow */
-	{KEYBOARD_COL_LEFT_SHIFT, KEYBOARD_ROW_LEFT_SHIFT}, /* Left-Shift */
+	KEYBOARD_SCANCODE_ESC,
+	KEYBOARD_SCANCODE_DOWN,
+	KEYBOARD_SCANCODE_LEFT_SHIFT,
 };
 static uint32_t boot_key_value = BOOT_KEY_NONE;
 #endif
@@ -683,8 +688,27 @@ static uint32_t check_key_list(const uint8_t *state)
 	curr_state[KEYBOARD_COL_REFRESH] &= ~keyboard_mask_refresh;
 
 	/* Update mask with all boot keys that were pressed. */
-	k = boot_key_list;
-	for (c = 0; c < ARRAY_SIZE(boot_key_list); c++, k++) {
+	for (c = 0; c < keyboard_cols; c++) {
+		uint8_t s = curr_state[c];
+
+		for (int r = 0; r < KEYBOARD_ROWS; r++) {
+			uint16_t code;
+
+			if (!(s & BIT(r)))
+				continue;
+
+			code = get_scancode_set2(r, c);
+
+			for (int i = 0; i < ARRAY_SIZE(boot_key_list); i++) {
+				if (boot_key_list[i] == code)
+					boot_key_mask |= BIT(i);
+			}
+		}
+	}
+
+	for (c = 0; c < ARRAY_SIZE(boot_key_list); c++) {
+		const struct boot_key_entry *k = &boot_key_list[c];
+
 		if (curr_state[k->col] & BIT(k->row)) {
 			boot_key_mask |= BIT(c);
 			curr_state[k->col] &= ~BIT(k->row);
