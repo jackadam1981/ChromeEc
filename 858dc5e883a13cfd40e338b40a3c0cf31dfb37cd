@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29aee94_2b3c6419",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 11
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-20T15:59:14Z",
+      "side": 1,
+      "message": "Please also add\n```\n\tdepends on PLATFORM_EC_TEMP_SENSOR\n```",
+      "revId": "858dc5e883a13cfd40e338b40a3c0cf31dfb37cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
