@@ -236,6 +236,8 @@ enum pd_task_timer {
 	 */
 	TC_TIMER_VBUS_DEBOUNCE,
 
+	TC_TIMER_PPS_KEEP_ALIVE,
+
 	PD_TIMER_COUNT
 };
 
