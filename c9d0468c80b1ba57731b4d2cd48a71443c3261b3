@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b73d34_eec463e5",
+        "filename": "zephyr/projects/intelrvp/led.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-20T19:31:13Z",
+      "side": 1,
+      "message": "doesn\u0027t align in UI.\nTry limit lines to 80-chars",
+      "revId": "c9d0468c80b1ba57731b4d2cd48a71443c3261b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822c7509_63ecc8fb",
+        "filename": "zephyr/projects/intelrvp/src/intel_rvp_led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-20T19:31:13Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "c9d0468c80b1ba57731b4d2cd48a71443c3261b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
