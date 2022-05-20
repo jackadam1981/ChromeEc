@@ -150,9 +150,17 @@ enum pd_rx_errors {
 	(RDO_OBJ_POS(n) | (flags) | RDO_FIXED_VAR_OP_CURR(op_ma) | \
 	 RDO_FIXED_VAR_MAX_CURR(max_ma))
 
+#define PRDO_VOLTAGE(mw)           ((((mw) / 20) & 0x7FF) << 9)
+#define PRDO_OP_CURRENT(mw)        ((((mw) / 50) & 0x7F) << 0)
+
 #define RDO_BATT(n, op_mw, max_mw, flags)                      \
 	(RDO_OBJ_POS(n) | (flags) | RDO_BATT_OP_POWER(op_mw) | \
 	 RDO_BATT_MAX_POWER(max_mw))
+
+#define PRDO_PPS(n, mv, op_ma, flags) \
+				(RDO_OBJ_POS(n) | (flags) | \
+				PRDO_VOLTAGE(mv) | \
+				PRDO_OP_CURRENT(op_ma))
 
 /* BDO : BIST Data Object
  * 31:28 BIST Mode
@@ -1567,6 +1575,10 @@ void pd_snk_give_back(int port, uint32_t *const ma, uint32_t *const mv);
  */
 void pd_set_max_voltage(unsigned mv);
 
+void pd_set_pps_voltage(unsigned mv);
+
+unsigned int pd_get_pps_voltage(void);
+
 /**
  * Get the max voltage that can be requested as set by pd_set_max_voltage().
  * @return max voltage
@@ -1647,6 +1659,10 @@ int pd_set_power_supply_ready(int port);
  * @param mv request voltage in millivolts.
  */
 void pd_request_source_voltage(int port, int mv);
+
+int pd_enable_pps(int port, bool enable);
+
+bool pd_is_pps_enabled(int port);
 
 /**
  * Set a voltage limit from the PD source.

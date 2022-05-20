@@ -86,6 +86,8 @@ enum {
 	PE_FLAGS_DATA_RESET_COMPLETE_FN,
 	/* Waiting for SRC to SNK settle time */
 	PE_FLAGS_SRC_SNK_SETTLE_FN,
+	/* FLAG to note PPS is active */
+	PE_FLAGS_PPS_ACTIVE_FN,
 	/* Last element */
 	PE_FLAGS_COUNT
 };

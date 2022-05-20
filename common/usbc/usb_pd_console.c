@@ -101,6 +101,17 @@ static
 			pd_request_source_voltage(port, max_volt);
 			pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 			ccprintf("max req: %dmV\n", max_volt);
+		} else if (!strcasecmp(argv[2], "pps")) {
+			if (argc >= 4) {
+				if (!strcasecmp(argv[3], "enable")) {
+					pd_enable_pps(port, true);
+				} else if (!strcasecmp(argv[3], "disable")) {
+					pd_enable_pps(port, false);
+				}
+			}
+			ccprintf("pps is %sabled\n", pd_is_pps_enabled(port) ?
+				  "en" : "dis");
+			return EC_SUCCESS;
 		} else if (!strcasecmp(argv[2], "disable")) {
 			pd_comm_enable(port, 0);
 			ccprintf("Port C%d disable\n", port);

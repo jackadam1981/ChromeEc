@@ -877,8 +877,8 @@ static void charge_manager_refresh(void)
 		charge_pd_current_uncapped = CHARGE_CURRENT_UNINITIALIZED;
 
 	/* Change the charge limit + charge port/supplier if modified. */
-	if (new_port != charge_port || new_charge_current != charge_current ||
-	    new_supplier != charge_supplier) {
+	if ((new_port != charge_port || new_charge_current != charge_current ||
+	    new_supplier != charge_supplier) && !pd_is_pps_enabled(new_port)) {
 #ifdef HAS_TASK_CHG_RAMP
 		chg_ramp_charge_supplier_change(new_port, new_supplier,
 						new_charge_current,
@@ -980,6 +980,9 @@ static void charge_manager_refresh(void)
 
 			if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled()) {
 				/* Fall-through. DPS control sink voltage */
+			} else if (pd_is_pps_enabled(updated_new_port)) {
+				/* PPS is enabled, do not send new request */
+				new_req = false;
 			} else {
 				/*
 				 * Check if we can get more power from this
@@ -1476,6 +1479,55 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 	return pd_src_pdo_cnt;
 }
 #endif /* CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT && !CONFIG_USB_PD_TCPMV2 */
+
+static bool pps_en;
+bool charge_manager_is_pps_enabled(int port)
+{
+	return pps_en;
+}
+
+int charge_manager_enable_pps(int port, bool enable)
+{
+	const uint32_t *src_caps;
+	uint8_t src_cap_cnt;
+
+	if (port != charge_port) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (charge_port == CHARGE_PORT_NONE) {
+		return EC_ERROR_BUSY;
+	}
+
+	if (enable == pps_en) {
+		return EC_SUCCESS;
+	}
+
+	src_caps = pd_get_src_caps(charge_port);
+	src_cap_cnt = pd_get_src_cap_cnt(charge_port);
+
+	if (enable) {
+		const struct battery_info *batt_info = battery_get_info();
+		/* Check if AC adapter supports PPS and it is within range */
+		if (pd_find_apdo_index(src_cap_cnt, src_caps,
+				batt_info->voltage_min, 3000, NULL) < 0) {
+			CPRINTS("C%d: APDO min voltage not supported = %d mV",
+				port, batt_info->voltage_min);
+			return EC_ERROR_INVAL;
+		}
+		if (pd_find_apdo_index(src_cap_cnt, src_caps,
+				batt_info->voltage_max, 3000, NULL) < 0) {
+			CPRINTS("C%d: APDO max voltage not supported = %d mV",
+				port, batt_info->voltage_min);
+			return EC_ERROR_INVAL;
+		}
+	}
+
+	pps_en = enable;
+	charger_pps_adjust();
+
+	return EC_SUCCESS;
+}
 
 static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 {

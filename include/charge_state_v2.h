@@ -217,6 +217,8 @@ struct charge_state_data *charge_get_status(void);
 
 enum ec_charge_control_mode get_chg_ctrl_mode(void);
 
+int charger_pps_adjust(void);
+
 __test_only void reset_prev_disp_charge(void);
 
 /**
