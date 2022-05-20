@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3907c407_0079b73f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-20T23:48:55Z",
+      "side": 1,
+      "message": "I think the possibility of there being even more options to check makes me even more inclined to add a layer of abstraction so that the common code doesn\u0027t have to deal with that. Perhaps something like this (names just placeholders at this point):\n```\n// usb_mode.c or other common code\n...\npd_set_sbu(port);\npd_set_vconn(port);\npd_set_polarity(port);\n...\n\n// usb_wire_api.c (There would be a corresponding .h file)\n// name should probably be better than usb_wire_api\ninline static void pd_set_vconn(port) {\n  if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) \u0026\u0026 board_port_has_ppc(port))\n    ppc_set_vconn(port);\n  else\n    tcpm_set_vconn(port);\n}\n\n// Other wrapper functions would look similar but possibly use different configs\n```\n\nUltimately, there\u0027s a lot of functions that could be abstracted in this way, and I think we\u0027re leaning in that direction in Zephyr. For now, wrappers for the new choices contemplated in this CL would be a good start and a good template for future refactors.",
+      "parentUuid": "bfa4c1e3_1a90a761",
+      "revId": "4a24e97e79af763553bc3cf045607441cc752755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a20184c8_f1fa511b",
         "filename": "common/usb_common.c",
         "patchSetId": 12
