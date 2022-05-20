@@ -70,6 +70,30 @@
       },
       "revId": "c4541f610a64e47764943fd3045962968b5cb2e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e623a2_f2e4aa26",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-20T15:17:14Z",
+      "side": 1,
+      "message": "So it neither uses the Request Capability Mismatch bit nor the Sink Capabilities to request the current it needs to function?  \n\nWe should attach detailed traces to a bug and discuss this with the dock vendor.  There are a number of ways in the specification for a dock to advertise that it requires more power.  The dock should use one of them so it can interoperate with systems well",
+      "parentUuid": "2a1afec7_8bca9724",
+      "range": {
+        "startLine": 760,
+        "startChar": 5,
+        "endLine": 760,
+        "endChar": 53
+      },
+      "revId": "c4541f610a64e47764943fd3045962968b5cb2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
