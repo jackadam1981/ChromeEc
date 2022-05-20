@@ -46,6 +46,30 @@
       },
       "revId": "c4541f610a64e47764943fd3045962968b5cb2e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1afec7_8bca9724",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-05-20T02:02:42Z",
+      "side": 1,
+      "message": "This dock without external power must have 3A to ensure work fine (such as plug the external SSD). In initially negotiate is 1.5A, but it doesn\u0027t request any that it needs more current, so some device will not working normally.",
+      "parentUuid": "5de1cd6d_dd9f2251",
+      "range": {
+        "startLine": 760,
+        "startChar": 5,
+        "endLine": 760,
+        "endChar": 53
+      },
+      "revId": "c4541f610a64e47764943fd3045962968b5cb2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
