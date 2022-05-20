@@ -84,3 +84,8 @@ int ver_get_num_commits(enum ec_image copy)
 	return data ? get_num_commits(data) : 0;
 }
 /* LCOV_EXCL_STOP */
+
+const char *ver_get_missing_str(void)
+{
+	return CROS_FWID_MISSING_STR;
+}

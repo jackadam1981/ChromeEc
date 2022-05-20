@@ -12,7 +12,6 @@
 #include "console.h"
 #include "cpu.h"
 #include "cros_board_info.h"
-#include "ec_version.h"
 #include "dma.h"
 #include "extpower.h"
 #include "flash.h"
@@ -821,7 +820,7 @@ const char *system_get_cros_fwid(enum ec_image copy)
 			    CROS_EC_IMAGE_DATA_COOKIE3)
 			return data->cros_fwid;
 		else
-			return CROS_FWID_MISSING_STR;
+			return ver_get_missing_str();
 	}
 	return "";
 }

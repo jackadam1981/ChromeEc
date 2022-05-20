@@ -39,3 +39,10 @@ extern const void *__image_size;
  */
 int ver_get_num_commits(enum ec_image copy);
 #endif  /* __CROS_EC_VERSION_H */
+
+/**
+ * @brief Get the string to display when version info is missing
+ *
+ * @return Pointer to the CROS_FWID_MISSING_STR string
+ */
+const char *ver_get_missing_str(void);
