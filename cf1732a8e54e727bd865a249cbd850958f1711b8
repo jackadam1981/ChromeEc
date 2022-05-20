@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b077a49a_51b365c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-20T23:13:33Z",
+      "side": 1,
+      "message": "We may not actually need FW_CONFIG at all. We can determine this at a later time.",
+      "revId": "cf1732a8e54e727bd865a249cbd850958f1711b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
