@@ -23,6 +23,11 @@
 			i2c-port = <&i2c2_0>;
 			enum-name = "I2C_PORT_USB_C1";
 		};
+		eeprom {
+			i2c-port = <&i2c3_0>;
+			remote-port = <3>;
+			enum-name = "I2C_PORT_EEPROM";
+		};
 		tcpc1 {
 			i2c-port = <&i2c2_0>;
 			enum-name = "I2C_PORT_USB_C1_TCPC";
@@ -30,10 +35,6 @@
 		ppc1 {
 			i2c-port = <&i2c2_0>;
 			enum-name = "I2C_PORT_USB_C1_PPC";
-		};
-		eeprom {
-			i2c-port = <&i2c3_0>;
-			enum-name = "I2C_PORT_EEPROM";
 		};
 		i2c_charger: charger {
 			i2c-port = <&i2c3_0>;
