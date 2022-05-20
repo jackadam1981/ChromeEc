@@ -47,6 +47,12 @@ enum ioex_port {
 	IOEX_ID_1_C2_NCT38XX,
 	IOEX_PORT_COUNT
 };
+
+const struct device *ioex_port_map[] = {
+	[IOEX_C0_NCT38XX] = DEVICE_DT_GET(DT_NODELABEL(ioex_port1)),
+	[IOEX_C2_NCT38XX] = DEVICE_DT_GET(DT_NODELABEL(ioex_port2)),
+};
+
 #endif /* CONFIG_ZEPHYR */
 
 #ifndef CONFIG_ZEPHYR
