@@ -23,11 +23,9 @@ LOG_MODULE_REGISTER(ioex_shim, LOG_LEVEL_ERR);
 struct ioexpander_config_t ioex_config[0];
 #endif
 
+#ifdef CONFIG_PLATFORM_EC_IOEX_CROS_DRV
 int ioex_init(int ioex)
 {
-	if (!IS_ENABLED(CONFIG_PLATFORM_EC_IOEX_CROS_DRV))
-		return EC_SUCCESS;
-
 	const struct ioexpander_drv *drv = ioex_config[ioex].drv;
 	int rv;
 
@@ -45,7 +43,6 @@ int ioex_init(int ioex)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_PLATFORM_EC_IOEX_CROS_DRV
 static int ioex_init_default(const struct device *unused)
 {
 	int ret;
