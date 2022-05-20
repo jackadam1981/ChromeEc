@@ -34,6 +34,8 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
+#include <ap_power/ap_power.h>
+#include <ap_power/ap_power_events.h>
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
@@ -248,6 +250,7 @@ void chipset_ap_rst_interrupt(enum gpio_signal signal)
 		hook_call_deferred(&notify_chipset_reset_data, delay);
 	}
 #endif
+	ap_power_ev_send_callbacks(AP_POWER_RESET);
 	power_signal_interrupt(signal);
 }
 

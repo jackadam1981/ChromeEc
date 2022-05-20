@@ -22,6 +22,19 @@ LOG_MODULE_REGISTER(shim_cros_shi, LOG_LEVEL_DBG);
 
 #define SHI_NODE DT_NODELABEL(shi)
 
+static void shi_clear(void)
+{
+	const struct device *cros_shi_dev = DEVICE_DT_GET(SHI_NODE);
+
+	if (!device_is_ready(cros_shi_dev)) {
+		LOG_ERR("Error: device %s is not ready", cros_shi_dev->name);
+		return;
+	}
+
+	LOG_INF("%s", __func__);
+	cros_shi_clear(cros_shi_dev);
+}
+
 static void shi_enable(void)
 {
 	const struct device *cros_shi_dev = DEVICE_DT_GET(SHI_NODE);
@@ -56,6 +69,10 @@ static void shi_power_change(struct ap_power_ev_callback *cb,
 	default:
 		return;
 
+	case AP_POWER_RESET:
+		shi_clear();
+		break;
+
 #if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
 	case AP_POWER_RESUME_INIT:
 		shi_enable();
@@ -81,6 +98,7 @@ static void shi_init(void)
 	static struct ap_power_ev_callback cb;
 
 	ap_power_ev_init_callback(&cb, shi_power_change,
+				  AP_POWER_RESET |
 #if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
 				  AP_POWER_RESUME_INIT |
 				  AP_POWER_SHUTDOWN_COMPLETE

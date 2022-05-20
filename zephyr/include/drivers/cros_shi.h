@@ -28,15 +28,40 @@
  *
  * (Internal use only.)
  */
+typedef int (*cros_shi_api_clear)(const struct device *dev);
+
 typedef int (*cros_shi_api_enable)(const struct device *dev);
 
 typedef int (*cros_shi_api_disable)(const struct device *dev);
 
 /** @brief Driver API structure. */
 __subsystem struct cros_shi_driver_api {
+	cros_shi_api_clear clear;
 	cros_shi_api_enable enable;
 	cros_shi_api_disable disable;
 };
+
+/**
+ * @brief Clear SHI Data Out Buffer.
+ *
+ * @param dev Pointer to the device structure for the driver instance.
+ *
+ * @retval non-negative if successful.
+ * @retval Negative errno code if failure.
+ */
+__syscall int cros_shi_clear(const struct device *dev);
+
+static inline int z_impl_cros_shi_clear(const struct device *dev)
+{
+	const struct cros_shi_driver_api *api =
+		(const struct cros_shi_driver_api *)dev->api;
+
+	if (!api->clear) {
+		return -ENOTSUP;
+	}
+
+	return api->clear(dev);
+}
 
 /**
  * @brief Enable SHI module.

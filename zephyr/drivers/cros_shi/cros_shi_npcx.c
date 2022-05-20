@@ -761,6 +761,19 @@ static void cros_shi_npcx_reset_prepare(struct shi_reg *const inst)
 	DEBUG_CPRINTF("RDY-");
 }
 
+static int cros_shi_npcx_clear(const struct device *dev)
+{
+	struct shi_reg *const inst = HAL_INSTANCE(dev);
+	int i;
+
+	/* Clear the Data Out Buffer */
+	for (i = 0; i < SHI_OBUF_FULL_SIZE; i++) {
+		inst->OBUF[i] = 0;
+	}
+
+	return 0;
+}
+
 static int cros_shi_npcx_enable(const struct device *dev)
 {
 	const struct cros_shi_npcx_config *const config = DRV_CONFIG(dev);
@@ -898,6 +911,7 @@ static int shi_npcx_init(const struct device *dev)
 }
 
 static const struct cros_shi_driver_api cros_shi_npcx_driver_api = {
+	.clear = cros_shi_npcx_clear,
 	.enable = cros_shi_npcx_enable,
 	.disable = cros_shi_npcx_disable,
 };
