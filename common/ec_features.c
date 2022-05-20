@@ -134,7 +134,11 @@ uint32_t get_feature_flags1(void)
 		| EC_FEATURE_MASK_1(EC_FEATURE_EFS2)
 #endif
 #ifdef CONFIG_IPI
+#if SCP_CORE_SN == 1
+		| EC_FEATURE_MASK_1(EC_FEATURE_SCP_C1)
+#else
 		| EC_FEATURE_MASK_1(EC_FEATURE_SCP)
+#endif
 #endif
 #ifdef CHIP_ISH
 		| EC_FEATURE_MASK_1(EC_FEATURE_ISH)
