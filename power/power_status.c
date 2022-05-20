@@ -196,6 +196,68 @@ DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 #endif
 
 #ifdef CONFIG_BATTERY_DBPT_V2PLUS
+void update_dbpt(void)
+{
+        static int seconds_count;
+	static int count;
+
+	if (!dbpt_initialized)
+		return;
+
+	/*
+	 * Update the registers on every 10 seconds.
+	 * Also, check for any variation in maximum power and
+	 * sustained peak power values during this 10sec time frame.
+	 */
+	if(!seconds_count) {
+		uint16_t batt_max_peak_power;
+		uint16_t prev_batt_max_peak_power;
+		uint16_t threshold_max_power_change;
+
+	//	CPRINTS("Update_DBPT in 10 sec");
+		batt_max_peak_power = battery_maximum_power();
+
+		prev_batt_max_peak_power =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX));
+
+		if (prev_batt_max_peak_power < batt_max_peak_power) {
+			threshold_max_power_change = (batt_max_peak_power -
+							prev_batt_max_peak_power);
+		} else {
+			threshold_max_power_change = (prev_batt_max_peak_power -
+							batt_max_peak_power);
+		}
+
+		*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
+                                                        batt_max_peak_power;
+
+		if (threshold_max_power_change >= 250) {
+		CPRINTS("PTOM:BATTERY_sci event-23 on threshold above 250mv/100mv");
+		CPRINTS("PTOM- thresh_max_pwr_chnge-%d",
+		threshold_max_power_change);
+		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
+		}
+
+		// For testing purpose
+		if (count<5) {
+		CPRINTS("PTOM: PMAX-%d",
+			batt_max_peak_power);
+		CPRINTS("PTOM_in memap: PMAX-%d",
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)));
+		count++;
+		}
+	}
+
+        if (seconds_count < 10) {
+		seconds_count++;
+	} else {
+		/* Reset counter on every 10seconds */
+		seconds_count = 0;
+	}
+
+}
+DECLARE_HOOK(HOOK_SECOND, update_dbpt, HOOK_PRIO_DEFAULT);
+
 static void init_dbpt(void)
 {
 	int rv;
@@ -212,6 +274,11 @@ static void init_dbpt(void)
 	}
 	CPRINTS("DBPT initialised!");
 	dbpt_initialized = true;
+
+	/*
+	 * Update the mememap with initial value, after initial configuration.
+	 */
+	update_dbpt();
 }
 
 #endif /* CONFIG_BATTERY_DBPT_V2PLUS */
@@ -220,10 +287,12 @@ static void power_status_init(void)
 {
 	uint8_t *memmap_psrc =  host_get_memmap(EC_MEMMAP_PWR_SRC);
 	uint16_t *memmap_artg = (uint16_t *)host_get_memmap(EC_MEMMAP_PWR_ARTG);
+	uint16_t *memmap_pmax = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
-	*memmap_artg = 0
+	*memmap_artg = 0;
+	*memmap_pmax = 0;
 
 	/* Update the initial information on power source */
 	update_power_source();
