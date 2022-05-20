@@ -522,9 +522,9 @@ extern "C" {
 #define USB_RETIMER_FW_UPDATE_SET_TBT 6 /* Set MUX to TBT mode   */
 #define USB_RETIMER_FW_UPDATE_DISCONNECT 7 /* Set MUX to disconnect */
 
-#define EC_ACPI_MEM_USB_RETIMER_PORT(x) ((x)&0x0f)
+#define EC_ACPI_MEM_USB_RETIMER_PORT(x) ((x) & 0x0f)
 #define EC_ACPI_MEM_USB_RETIMER_OP(x) \
-	(((x)&0xf0) >> USB_RETIMER_FW_UPDATE_OP_SHIFT)
+	(((x) & 0xf0) >> USB_RETIMER_FW_UPDATE_OP_SHIFT)
 
 /*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data
@@ -1658,6 +1658,10 @@ enum ec_feature_code {
 	 * The EC supports DP2.1 capability
 	 */
 	EC_FEATURE_TYPEC_DP2_1 = 52,
+	/*
+	 * The MCU is System Companion Processor Core 1
+	 */
+	EC_FEATURE_SCP_C1 = 53,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
@@ -4096,15 +4100,15 @@ struct ec_response_keyboard_factory_test {
 } __ec_align2;
 
 /* Fingerprint events in 'fp_events' for EC_MKBP_EVENT_FINGERPRINT */
-#define EC_MKBP_FP_RAW_EVENT(fp_events) ((fp_events)&0x00FFFFFF)
-#define EC_MKBP_FP_ERRCODE(fp_events) ((fp_events)&0x0000000F)
+#define EC_MKBP_FP_RAW_EVENT(fp_events) ((fp_events) & 0x00FFFFFF)
+#define EC_MKBP_FP_ERRCODE(fp_events) ((fp_events) & 0x0000000F)
 #define EC_MKBP_FP_ENROLL_PROGRESS_OFFSET 4
 #define EC_MKBP_FP_ENROLL_PROGRESS(fpe) \
-	(((fpe)&0x00000FF0) >> EC_MKBP_FP_ENROLL_PROGRESS_OFFSET)
+	(((fpe) & 0x00000FF0) >> EC_MKBP_FP_ENROLL_PROGRESS_OFFSET)
 #define EC_MKBP_FP_MATCH_IDX_OFFSET 12
 #define EC_MKBP_FP_MATCH_IDX_MASK 0x0000F000
 #define EC_MKBP_FP_MATCH_IDX(fpe) \
-	(((fpe)&EC_MKBP_FP_MATCH_IDX_MASK) >> EC_MKBP_FP_MATCH_IDX_OFFSET)
+	(((fpe) & EC_MKBP_FP_MATCH_IDX_MASK) >> EC_MKBP_FP_MATCH_IDX_OFFSET)
 #define EC_MKBP_FP_ENROLL BIT(27)
 #define EC_MKBP_FP_MATCH BIT(28)
 #define EC_MKBP_FP_FINGER_DOWN BIT(29)
@@ -5193,8 +5197,8 @@ struct ec_response_i2c_passthru_protect {
  * bits[31:28]: port number
  */
 #define EC_MKBP_EVENT_CEC_PACK(events, port) \
-	(((events)&GENMASK(27, 0)) | (((port)&0xf) << 28))
-#define EC_MKBP_EVENT_CEC_GET_EVENTS(event) ((event)&GENMASK(27, 0))
+	(((events) & GENMASK(27, 0)) | (((port) & 0xf) << 28))
+#define EC_MKBP_EVENT_CEC_GET_EVENTS(event) ((event) & GENMASK(27, 0))
 #define EC_MKBP_EVENT_CEC_GET_PORT(event) (((event) >> 28) & 0xf)
 
 /* CEC message from the AP to be written on the CEC bus */
@@ -6064,9 +6068,9 @@ struct ec_response_pd_log {
 #define PD_LOG_PORT_MASK 0xe0
 #define PD_LOG_PORT_SHIFT 5
 #define PD_LOG_PORT_SIZE(port, size) \
-	(((port) << PD_LOG_PORT_SHIFT) | ((size)&PD_LOG_SIZE_MASK))
+	(((port) << PD_LOG_PORT_SHIFT) | ((size) & PD_LOG_SIZE_MASK))
 #define PD_LOG_PORT(size_port) ((size_port) >> PD_LOG_PORT_SHIFT)
-#define PD_LOG_SIZE(size_port) ((size_port)&PD_LOG_SIZE_MASK)
+#define PD_LOG_SIZE(size_port) ((size_port) & PD_LOG_SIZE_MASK)
 
 /* PD event log : entry types */
 /* PD MCU events */
@@ -7428,7 +7432,8 @@ enum pchg_state {
 #define EC_MKBP_PCHG_EVENT_TO_PORT(e) (((e) >> EC_MKBP_PCHG_PORT_SHIFT) & 0xf)
 #define EC_MKBP_PCHG_PORT_TO_EVENT(p) ((p) << EC_MKBP_PCHG_PORT_SHIFT)
 /* Utility macro for extracting event bits. */
-#define EC_MKBP_PCHG_EVENT_MASK(e) ((e)&GENMASK(EC_MKBP_PCHG_PORT_SHIFT - 1, 0))
+#define EC_MKBP_PCHG_EVENT_MASK(e) \
+	((e) & GENMASK(EC_MKBP_PCHG_PORT_SHIFT - 1, 0))
 
 #define EC_MKBP_PCHG_UPDATE_OPENED BIT(0)
 #define EC_MKBP_PCHG_WRITE_COMPLETE BIT(1)
@@ -7884,7 +7889,7 @@ enum fp_capture_type {
 };
 /* Extracts the capture type from the sensor 'mode' word */
 #define FP_CAPTURE_TYPE(mode) \
-	(((mode)&FP_MODE_CAPTURE_TYPE_MASK) >> FP_MODE_CAPTURE_TYPE_SHIFT)
+	(((mode) & FP_MODE_CAPTURE_TYPE_MASK) >> FP_MODE_CAPTURE_TYPE_SHIFT)
 
 struct ec_params_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
@@ -7898,7 +7903,7 @@ struct ec_response_fp_mode {
 #define EC_CMD_FP_INFO 0x0403
 
 /* Number of dead pixels detected on the last maintenance */
-#define FP_ERROR_DEAD_PIXELS(errors) ((errors)&0x3FF)
+#define FP_ERROR_DEAD_PIXELS(errors) ((errors) & 0x3FF)
 /* Unknown number of dead pixels detected on the last maintenance */
 #define FP_ERROR_DEAD_PIXELS_UNKNOWN (0x3FF)
 /* No interrupt from the sensor */
