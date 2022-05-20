@@ -230,6 +230,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4068b8e_101f00db",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-20T23:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2c4763d_813f00d1",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c0d85be_df439375",
@@ -382,6 +400,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d137ac9_e6f7bce4",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-20T23:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca9c75c2_19b6aa6d",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dcd2885_9c3326b9",
@@ -452,6 +488,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "572d9fd2_0d239f49",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_faulty_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-20T23:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62aab95e_ea126cf7",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef52d68_430acd16",
@@ -483,6 +537,24 @@
       "side": 1,
       "message": "I will remove it in next CL.",
       "parentUuid": "3ef52d68_430acd16",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e69a55e_70bf740f",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-20T23:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b1ee3b1_20aea14b",
       "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -569,6 +641,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "719904b8_69db52cd",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_drp.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-20T23:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4cda5921_a2e87f53",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f1248f0_b178c747",
@@ -651,6 +741,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe20ac2_c43c7d22",
+        "filename": "zephyr/test/drivers/include/test/drivers/utils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-20T23:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b980fc8_e50e4d60",
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cba49e57_de4edd8e",
@@ -688,6 +796,30 @@
       "side": 1,
       "message": "Integration test use inconsistent naming schema. Some of them use `my_`, other `partner`, `partner_emul`, `source/sink`, `charger`. I think it will be more legible if there is a pattern. This CL is already quite big. I would prefer to do this in separate CL",
       "parentUuid": "cba49e57_de4edd8e",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "77054013312d303000ae63f7e0f4183e5eb1ab29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458741b5_2483279d",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-20T23:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "894068a4_02b8d310",
       "range": {
         "startLine": 47,
         "startChar": 27,
