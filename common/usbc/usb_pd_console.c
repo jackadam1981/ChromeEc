@@ -90,6 +90,19 @@ int command_pd(int argc, char **argv)
 			pd_request_source_voltage(port, max_volt);
 			pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 			ccprintf("max req: %dmV\n", max_volt);
+		} else if (!strcasecmp(argv[2], "pps")) {
+			int pps_volt;
+
+			if (argc >= 4) {
+				pps_volt = strtoi(argv[3], &e, 10);
+				if (*e)
+					return EC_ERROR_PARAM3;
+				pd_request_pps_voltage(port, pps_volt);
+				ccprintf("pps req: %dmV\n", pps_volt);
+			} else {
+				pps_volt = pd_get_pps_voltage();
+				ccprintf("pps val: %dmV\n", pps_volt);
+			}
 		} else if (!strcasecmp(argv[2], "disable")) {
 			pd_comm_enable(port, 0);
 			ccprintf("Port C%d disable\n", port);

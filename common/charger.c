@@ -96,8 +96,12 @@ void charger_get_params(struct charger_params *chg)
 {
 	int chgnum = 0;
 
-	if (IS_ENABLED(CONFIG_OCPC))
+	if (IS_ENABLED(CONFIG_OCPC)) {
 		chgnum = charge_get_active_chg_chip();
+		if (chgnum < 0) {
+			chgnum = 0;
+		}
+	}
 
 	memset(chg, 0, sizeof(*chg));
 
@@ -114,10 +118,10 @@ void charger_get_params(struct charger_params *chg)
 	if (charger_get_input_current_limit(chgnum, &chg->input_current))
 		chg->flags |= CHG_FLAG_BAD_INPUT_CURRENT;
 
-	if (charger_get_status(&chg->status))
+	if (charger_get_status(chgnum, &chg->status))
 		chg->flags |= CHG_FLAG_BAD_STATUS;
 
-	if (charger_get_option(&chg->option))
+	if (charger_get_option(chgnum, &chg->option))
 		chg->flags |= CHG_FLAG_BAD_OPTION;
 }
 
@@ -145,17 +149,17 @@ void print_charger_debug(int chgnum)
 
 	/* option */
 	print_item_name("Option:");
-	if (check_print_error(charger_get_option(&d)))
+	if (check_print_error(charger_get_option(chgnum, &d)))
 		ccprintf("%pb (0x%04x)\n", BINARY_VALUE(d, 16), d);
 
 	/* manufacturer id */
 	print_item_name("Man id:");
-	if (check_print_error(charger_manufacturer_id(&d)))
+	if (check_print_error(charger_manufacturer_id(chgnum, &d)))
 		ccprintf("0x%04x\n", d);
 
 	/* device id */
 	print_item_name("Dev id:");
-	if (check_print_error(charger_device_id(&d)))
+	if (check_print_error(charger_device_id(chgnum, &d)))
 		ccprintf("0x%04x\n", d);
 
 	/* charge voltage limit */
@@ -303,9 +307,10 @@ const struct charger_info *charger_get_info(void)
 	return chg_chips[chgnum].drv->get_info(chgnum);
 }
 
-enum ec_error_list charger_get_status(int *status)
+enum ec_error_list charger_get_status(int chgnum, int *status)
 {
-	int chgnum = 0;
+	if (chgnum < 0)
+		return EC_ERROR_INVAL;
 
 	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
@@ -573,10 +578,8 @@ enum ec_error_list charger_get_input_current(int chgnum, int *input_current)
 	return chg_chips[chgnum].drv->get_input_current(chgnum, input_current);
 }
 
-enum ec_error_list charger_manufacturer_id(int *id)
+enum ec_error_list charger_manufacturer_id(int chgnum, int *id)
 {
-	int chgnum = 0;
-
 	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
 		return EC_ERROR_INVAL;
@@ -588,10 +591,8 @@ enum ec_error_list charger_manufacturer_id(int *id)
 	return chg_chips[chgnum].drv->manufacturer_id(chgnum, id);
 }
 
-enum ec_error_list charger_device_id(int *id)
+enum ec_error_list charger_device_id(int chgnum, int *id)
 {
-	int chgnum = 0;
-
 	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
 		return EC_ERROR_INVAL;
@@ -603,9 +604,10 @@ enum ec_error_list charger_device_id(int *id)
 	return chg_chips[chgnum].drv->device_id(chgnum, id);
 }
 
-enum ec_error_list charger_get_option(int *option)
+enum ec_error_list charger_get_option(int chgnum, int *option)
 {
-	int chgnum = 0;
+	if (chgnum < 0)
+		return EC_ERROR_INVAL;
 
 	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
@@ -615,18 +617,21 @@ enum ec_error_list charger_get_option(int *option)
 	if (!chg_chips[chgnum].drv->get_option)
 		return EC_ERROR_UNIMPLEMENTED;
 
-	return chg_chips[chgnum].drv->get_option(chgnum, option);
+	int ret = chg_chips[chgnum].drv->get_option(chgnum, option);
+	if (ret == EC_SUCCESS) {
+		CPRINTS("Getting charger %d - Option: 0x%X) ", chgnum, *option);
+	}
+	return ret;
 }
 
-enum ec_error_list charger_set_option(int option)
+enum ec_error_list charger_set_option(int chgnum, int option)
 {
-	int chgnum = 0;
-
 	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
 		return EC_ERROR_INVAL;
 	}
 
+	CPRINTS("Setting charger %d - Option: 0x%X) ", chgnum, option);
 	if (!chg_chips[chgnum].drv->set_option)
 		return EC_ERROR_UNIMPLEMENTED;
 

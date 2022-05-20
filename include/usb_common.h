@@ -140,6 +140,8 @@ enum tcpc_cc_polarity get_src_polarity(enum tcpc_cc_voltage_status cc1,
 int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	int max_mv, uint32_t *selected_pdo);
 
+int pd_find_apdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps);
+
 /**
  * Extract power information out of a Power Data Object (PDO)
  *

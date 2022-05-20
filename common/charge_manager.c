@@ -926,10 +926,6 @@ static void charge_manager_refresh(void)
 		    IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE)) ||
 		    (IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
 		    IS_ENABLED(CONFIG_USB_PE_SM))) {
-			uint32_t pdo;
-			uint32_t max_voltage;
-			uint32_t max_current;
-			uint32_t unused;
 			bool new_req = false;
 			/*
 			 * Check if new voltage/current is different
@@ -941,9 +937,14 @@ static void charge_manager_refresh(void)
 			    charge_current_uncapped)
 				new_req = true;
 
+#if 0
 			if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled()) {
 				/* Fall-through. DPS control sink voltage */
 			} else {
+				uint32_t pdo;
+				uint32_t max_voltage;
+				uint32_t max_current;
+				uint32_t unused;
 				/*
 				 * Check if we can get more power from this
 				 * port. If yes, send new power request
@@ -962,6 +963,7 @@ static void charge_manager_refresh(void)
 
 			if (new_req)
 				pd_set_new_power_request(updated_new_port);
+#endif
 		} else {
 			/*
 			 * Functions for getting requested voltage/current

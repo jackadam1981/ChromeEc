@@ -580,6 +580,21 @@ void pd_request_source_voltage(int port, int mv)
 	}
 }
 
+void pd_request_pps_voltage(int port, int mv)
+{
+	/* PPS is only supported for SINK mode */
+	if (!IS_ATTACHED_SNK(port)) {
+		return;
+	}
+	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
+		pd_set_pps_voltage(mv);
+
+		pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
+
+		task_wake(PD_PORT_TO_TASK_ID(port));
+	}
+}
+
 void pd_set_external_voltage_limit(int port, int mv)
 {
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {

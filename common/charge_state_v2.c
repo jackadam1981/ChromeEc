@@ -1025,6 +1025,18 @@ static int charge_request(int voltage, int current)
 		if (r3 != EC_SUCCESS)
 			charge_problem(PR_CFG_SEC_CHG, r3);
 	}
+
+	if (pd_get_pps_voltage() > 0) {
+		int option;
+		charger_get_option(curr.ocpc.active_chg_chip, &option);
+		option |= BIT(11) | BIT(5);
+		charger_set_option(curr.ocpc.active_chg_chip, option);
+	} else {
+		int option;
+		charger_get_option(curr.ocpc.active_chg_chip, &option);
+		option &= ~(BIT(11) | BIT(5));
+		charger_set_option(curr.ocpc.active_chg_chip, option);
+	}
 #endif /* CONFIG_OCPC */
 
 	/*
@@ -2664,7 +2676,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 				rv = EC_RES_ACCESS_DENIED;
 				break;
 			case CS_PARAM_CHG_OPTION:
-				if (charger_set_option(val))
+				if (charger_set_option(chgnum, val))
 					rv = EC_RES_ERROR;
 				break;
 			default:

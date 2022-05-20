@@ -220,7 +220,7 @@ enum ec_error_list charger_post_init(void);
 const struct charger_info *charger_get_info(void);
 
 /* Get smart battery charger status. Supported flags may vary. */
-enum ec_error_list charger_get_status(int *status);
+enum ec_error_list charger_get_status(int chgnum, int *status);
 
 /* Set smart battery charger mode. Supported modes may vary. */
 enum ec_error_list charger_set_mode(int mode);
@@ -327,10 +327,10 @@ enum ec_error_list charger_get_input_current_limit(int chgnum,
  */
 enum ec_error_list charger_get_input_current(int chgnum, int *input_current);
 
-enum ec_error_list charger_manufacturer_id(int *id);
-enum ec_error_list charger_device_id(int *id);
-enum ec_error_list charger_get_option(int *option);
-enum ec_error_list charger_set_option(int option);
+enum ec_error_list charger_manufacturer_id(int chgnum, int *id);
+enum ec_error_list charger_device_id(int chgnum, int *id);
+enum ec_error_list charger_get_option(int chgnum, int *option);
+enum ec_error_list charger_set_option(int chgnum, int option);
 enum ec_error_list charger_set_hw_ramp(int enable);
 
 /**
