@@ -33,6 +33,24 @@
       "message": "Another way is to block CC_EVENTS print when initial debug is done, see in board.h:\n```\n/*\n * By default, enable all console messages excepted HC, ACPI and event:\n * The sensor stack is generating a lot of activity.\n */\n#define CC_DEFAULT     (CC_ALL \u0026 ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))\n#undef CONFIG_HOSTCMD_DEBUG_MODE\n#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF\n```",
       "revId": "44e23350f62e4c3a030b4e277d37bbca8b157d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd4256e_807503bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-21T02:39:58Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem we have this enabled in Zephyr at all, and it appears that the default is used (as CC_ALL).\nMaybe what we should have in Zephyr is a CC_CONSOLE_OFF so that we can deselect the channels we don\u0027t want, and that could be used to set CC_DEFAULT.\nI\u0027ll raise a bug and see if I can come up with a reasonable fix.",
+      "parentUuid": "ed1e1880_857c1c70",
+      "revId": "44e23350f62e4c3a030b4e277d37bbca8b157d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
