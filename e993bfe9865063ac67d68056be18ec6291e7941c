@@ -16,6 +16,23 @@
       "message": "Between the first version of the CL and the current version, Craask variant of Nissa was added. I modified the Crassk DTS to apply similar USB mux configuration change as for other Nissa variants. Please review this CL.",
       "revId": "e993bfe9865063ac67d68056be18ec6291e7941c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0e5fd1_6de711bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-21T03:56:11Z",
+      "side": 1,
+      "message": "I would have liked to have seen some re-factoring according to the suggestions I made, but given this is interim config, I\u0027m not going to hold it up.\n",
+      "revId": "e993bfe9865063ac67d68056be18ec6291e7941c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
