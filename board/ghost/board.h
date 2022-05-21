@@ -90,11 +90,7 @@
 #define GPIO_PG_EC_RSMRST_ODL		GPIO_SEQ_EC_RSMRST_ODL
 #define GPIO_POWER_BUTTON_L		GPIO_GSC_EC_PWR_BTN_ODL
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
-#define GPIO_VOLUME_DOWN_L		GPIO_EC_VOLDN_BTN_ODL
-#define GPIO_VOLUME_UP_L		GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_WP_L			GPIO_EC_WP_ODL
-
-#define GPIO_ID_1_EC_KB_BL_EN		GPIO_EC_BATT_PRES_ODL
 
 /* System has back-lit keyboard */
 #define CONFIG_PWM_KBLIGHT
@@ -179,12 +175,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_3_CHARGER,
 	TEMP_SENSOR_4_WWAN,
 	TEMP_SENSOR_COUNT
-};
-
-enum sensor_id {
-	CLEAR_ALS = 0,
-	RGB_ALS,
-	SENSOR_COUNT
 };
 
 enum ioex_port {
