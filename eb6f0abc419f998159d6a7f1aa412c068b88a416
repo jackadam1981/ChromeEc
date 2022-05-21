@@ -34,6 +34,23 @@
       "parentUuid": "f1cab781_2060ef23",
       "revId": "eb6f0abc419f998159d6a7f1aa412c068b88a416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb6dad5_8351697f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-21T22:17:35Z",
+      "side": 1,
+      "message": "Given we have a cros-config mitigation in place for this (https://chrome-internal-review.googlesource.com/c/chromeos/project/brya/taeko/+/4715527), I don\u0027t think this CL is necessary on taeko; adding it will change the code paths in firmware from what was being qualled+tested, so it\u0027s more of delta, and I don\u0027t know if that level of change in firmware is recommended close to FSI.",
+      "revId": "eb6f0abc419f998159d6a7f1aa412c068b88a416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
