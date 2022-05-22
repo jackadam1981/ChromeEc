@@ -10,6 +10,7 @@
 #define PBSS_THRESHOLD_MW 100
 #define RBFH_THRESHOLD_MOHM 5
 #define VBNL_THRESHOLD_MV 50
+#define CMPP_THRESHOLD_MA 100
 
 struct dbpt_batt_params {
         uint16_t sys_resistance;
