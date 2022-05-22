@@ -183,14 +183,16 @@ DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 #ifdef CONFIG_BATTERY_DBPT_V2PLUS
 void update_dbpt(void)
 {
-	static int count;
 	int batt_max_peak_power, batt_sus_peak_power;
 	int batt_high_freq_impedance, batt_nl_volt;
+	int batt_discharge_current;
 	int prev_batt_max_peak_power, prev_batt_sus_peak_power;
 	int prev_batt_high_freq_impedance, prev_batt_nl_volt;
+	int prev_batt_discharge_current;
 	int threshold_max_power_change, threshold_sus_peak_power_change;
 	int threshold_high_freq_impedance_change;
 	int threshold_nl_volt_change;
+	int threshold_discharge_current_change;
 
 	/* return if fuel guage is not initialized */
 	if (!dbpt_initialized)
@@ -201,6 +203,7 @@ void update_dbpt(void)
 	batt_sus_peak_power = battery_sustained_power();
 	batt_high_freq_impedance = battery_high_frequency_impedance();
 	batt_nl_volt = battery_instantaneous_no_load_volt();
+	batt_discharge_current = battery_discharge_current_capability();
 
 	prev_batt_max_peak_power =
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX));
@@ -210,6 +213,9 @@ void update_dbpt(void)
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_RBHF));
 	prev_batt_nl_volt =
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_VBNL));
+
+	prev_batt_discharge_current =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_CMPP));
 
 	/* Check for any threshold level change */
 	threshold_max_power_change = (ABS(batt_max_peak_power -
@@ -222,6 +228,8 @@ void update_dbpt(void)
 				prev_batt_high_freq_impedance));
 
 	threshold_nl_volt_change = (ABS(batt_nl_volt - prev_batt_nl_volt));
+	threshold_discharge_current_change = (ABS(batt_discharge_current -
+				prev_batt_discharge_current));
 
 	/* update ec_memmap regions */
 	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
@@ -232,12 +240,15 @@ void update_dbpt(void)
 						batt_high_freq_impedance;
 	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_VBNL)) =
 						batt_nl_volt;
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_CMPP)) =
+						batt_discharge_current;
 
 	/* Send sci event for any threshold level change */
 	if ((threshold_max_power_change >= PMAX_THRESHOLD_MW) ||
 		(threshold_sus_peak_power_change >= PBSS_THRESHOLD_MW) ||
 		(threshold_high_freq_impedance_change >= RBFH_THRESHOLD_MOHM) ||
-		(threshold_nl_volt_change >= VBNL_THRESHOLD_MV) {
+		(threshold_nl_volt_change >= VBNL_THRESHOLD_MV) ||
+	       (threshold_discharge_current_change >=CMPP_THRESHOLD_MA)) {
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 	}
 
@@ -277,6 +288,7 @@ static void power_status_init(void)
 	uint16_t *memmap_pbss = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS);
 	uint16_t *memmap_rbhf = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_RBHF);
 	uint16_t *memmap_vbnl = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_VBNL);
+	uint16_t *memmap_cmpp = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_CMPP);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
@@ -285,6 +297,7 @@ static void power_status_init(void)
 	*memmap_pbss = 0;
 	*memmap_rbhf = 0;
 	*memmap_vbnl = 0;
+	*memmap_cmpp = 0;
 
 	/* Update the initial information on power source */
 	update_power_source();
