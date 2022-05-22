@@ -204,15 +204,18 @@ void update_dbpt(void)
 	if (!dbpt_initialized)
 		return;
 
-	uint16_t batt_max_peak_power;
-	uint16_t prev_batt_max_peak_power;
-	uint16_t threshold_max_power_change;
+	uint16_t batt_max_peak_power, batt_sus_peak_power;
+	uint16_t prev_batt_max_peak_power, prev_batt_sus_peak_power;
+	uint16_t threshold_max_power_change, threshold_sus_peak_power_change;
 
 	/* Read from fuel guage */
 	batt_max_peak_power = battery_maximum_power();
+	batt_sus_peak_power = battery_sustained_power();
 
 	prev_batt_max_peak_power =
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX));
+	prev_batt_sus_peak_power =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS));
 
 	/* Check for any threshold level change */
 	if (prev_batt_max_peak_power < batt_max_peak_power) {
@@ -223,24 +226,37 @@ void update_dbpt(void)
 							batt_max_peak_power);
 	}
 
-	/* Update the registers */
-	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
-                                                       batt_max_peak_power;
+	if (prev_batt_sus_peak_power < batt_sus_peak_power) {
+			threshold_sus_peak_power_change = (batt_sus_peak_power -
+							prev_batt_sus_peak_power);
+	} else {
+			threshold_sus_peak_power_change = (prev_batt_sus_peak_power -
+							batt_sus_peak_power);
+	}
 
-	/* Send sci event for any threshold level change */
-	if (threshold_max_power_change >= 250) {
-		CPRINTS("PTOM:BATTERY_sci event-23 on threshold change!");
-		CPRINTS("PTOM- thresh_max_pwr_chnge-%d",
-		threshold_max_power_change);
+	/* update ec_memmap regions */
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
+                                                        batt_max_peak_power;
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS)) =
+							batt_sus_peak_power;
+
+	/* Send sci event for any threshold level cross */
+	if ((threshold_max_power_change >= 250) ||
+			       (threshold_sus_peak_power_change >= 100)) {
+		CPRINTS("PTOM:BATTERY_sci event-23 on threshold above 250mv/100mv");
+		CPRINTS("PTOM- thresh_max_pwr_chnge-%d,thresh_sus_pk_pwr_chnge-%d",
+		threshold_max_power_change, threshold_sus_peak_power_change);
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 	}
 
+
 	// For testing purpose
 	if (count<5) {
-		CPRINTS("PTOM: PMAX-%d",
-			batt_max_peak_power);
-		CPRINTS("PTOM_in memap: PMAX-%d",
-			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)));
+		CPRINTS("PTOM: PMAX-%d, PBSS-%d",
+			batt_max_peak_power, batt_sus_peak_power);
+		CPRINTS("PTOM_in memap: PMAX-%d, PBSS-%d",
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)),
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS)));
 		count++;
 	}
 	else
@@ -278,11 +294,13 @@ static void power_status_init(void)
 	uint8_t *memmap_psrc =  host_get_memmap(EC_MEMMAP_PWR_SRC);
 	uint16_t *memmap_artg = (uint16_t *)host_get_memmap(EC_MEMMAP_PWR_ARTG);
 	uint16_t *memmap_pmax = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX);
+	uint16_t *memmap_pbss = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
 	*memmap_artg = 0;
 	*memmap_pmax = 0;
+	*memmap_pbss = 0;
 
 	/* Update the initial information on power source */
 	update_power_source();
