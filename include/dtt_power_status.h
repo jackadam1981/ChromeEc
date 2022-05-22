@@ -9,6 +9,8 @@
 #define PMAX_THRESHOLD_MW 250
 #define PBSS_THRESHOLD_MW 100
 #define RBFH_THRESHOLD_MOHM 5
+#define VBNL_THRESHOLD_MV 50
+
 struct dbpt_batt_params {
         uint16_t sys_resistance;
 	uint16_t min_sys_volt;
