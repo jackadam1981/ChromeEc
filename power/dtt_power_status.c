@@ -196,8 +196,11 @@ void update_dbpt(void)
 {
 	static int count;
 	uint16_t batt_max_peak_power, batt_sus_peak_power;
+	uint16_t batt_high_freq_impedance;
 	uint16_t prev_batt_max_peak_power, prev_batt_sus_peak_power;
+	uint16_t prev_batt_high_freq_impedance;
 	uint16_t threshold_max_power_change, threshold_sus_peak_power_change;
+	uint16_t threshold_high_freq_impedance_change;
 
 	/* return if fuel guage is not initialized */
 	if (!dbpt_initialized)
@@ -206,11 +209,14 @@ void update_dbpt(void)
 	/* Read from fuel guage */
 	batt_max_peak_power = battery_maximum_power();
 	batt_sus_peak_power = battery_sustained_power();
+	batt_high_freq_impedance = battery_high_frequency_impedance();
 
 	prev_batt_max_peak_power =
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX));
 	prev_batt_sus_peak_power =
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS));
+	prev_batt_high_freq_impedance =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_RBHF));
 
 	/* Check for any threshold level change */
 	if (prev_batt_max_peak_power < batt_max_peak_power) {
@@ -229,15 +235,29 @@ void update_dbpt(void)
 							batt_sus_peak_power);
 	}
 
+	if (prev_batt_high_freq_impedance < batt_high_freq_impedance) {
+			threshold_high_freq_impedance_change =
+					(batt_high_freq_impedance -
+					 prev_batt_high_freq_impedance);
+	} else {
+			threshold_high_freq_impedance_change =
+					(prev_batt_high_freq_impedance -
+					 batt_high_freq_impedance);
+	}
+
 	/* update ec_memmap regions */
 	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
                                                         batt_max_peak_power;
 	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS)) =
 							batt_sus_peak_power;
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_RBHF)) =
+						batt_high_freq_impedance;
 
 	/* Send sci event for any threshold level cross */
 	if ((threshold_max_power_change >= 250) ||
-			       (threshold_sus_peak_power_change >= 100)) {
+			       (threshold_sus_peak_power_change >= 100) ||
+			       (threshold_high_freq_impedance_change >= 5)) {
+
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 	}
 
@@ -275,12 +295,14 @@ static void power_status_init(void)
 	uint16_t *memmap_artg = (uint16_t *)host_get_memmap(EC_MEMMAP_PWR_ARTG);
 	uint16_t *memmap_pmax = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX);
 	uint16_t *memmap_pbss = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS);
+	uint16_t *memmap_rbhf = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_RBHF);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
 	*memmap_artg = 0;
 	*memmap_pmax = 0;
 	*memmap_pbss = 0;
+	*memmap_rbhf = 0;
 
 	/* Update the initial information on power source */
 	update_power_source();
