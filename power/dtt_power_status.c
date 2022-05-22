@@ -183,9 +183,9 @@ DECLARE_HOOK(HOOK_AC_CHANGE, update_power_source, HOOK_PRIO_DEFAULT);
 #ifdef CONFIG_BATTERY_DBPT_V2PLUS
 void update_dbpt(void)
 {
-	int batt_max_peak_power;
-	int prev_batt_max_peak_power;
-	int threshold_max_power_change;
+	int batt_max_peak_power, batt_sus_peak_power;
+	int prev_batt_max_peak_power, prev_batt_sus_peak_power;
+	int threshold_max_power_change, threshold_sus_peak_power_change;
 
 	/* return if fuel guage is not initialized */
 	if (!dbpt_initialized)
@@ -193,20 +193,29 @@ void update_dbpt(void)
 
 	/* Read from fuel guage */
 	batt_max_peak_power = battery_maximum_power();
+	batt_sus_peak_power = battery_sustained_power();
 
 	prev_batt_max_peak_power =
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX));
+	prev_batt_sus_peak_power =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS));
 
 	/* Calculate the threshold level change */
 	threshold_max_power_change = (ABS(batt_max_peak_power -
 				prev_batt_max_peak_power) * 10); //in mW units
 
-	/* Update the registers */
+	threshold_sus_peak_power_change = (ABS(batt_sus_peak_power -
+				prev_batt_sus_peak_power) * 10); //in mW units
+
+	/* update ec_memmap regions */
 	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
-                                                       batt_max_peak_power;
+                                                        batt_max_peak_power;
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS)) =
+							batt_sus_peak_power;
 
 	/* Send sci event for any threshold level change */
-	if (threshold_max_power_change >= PMAX_THRESHOLD_MW) {
+	if ((threshold_max_power_change >= PMAX_THRESHOLD_MW) ||
+		(threshold_sus_peak_power_change >= PBSS_THRESHOLD_MW)) {
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 	}
 
@@ -243,11 +252,13 @@ static void power_status_init(void)
 	uint8_t *memmap_psrc =  host_get_memmap(EC_MEMMAP_PWR_SRC);
 	uint16_t *memmap_artg = (uint16_t *)host_get_memmap(EC_MEMMAP_PWR_ARTG);
 	uint16_t *memmap_pmax = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX);
+	uint16_t *memmap_pbss = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
 	*memmap_artg = 0;
 	*memmap_pmax = 0;
+	*memmap_pbss = 0;
 
 	/* Update the initial information on power source */
 	update_power_source();
