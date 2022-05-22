@@ -7,6 +7,7 @@
 #define __CROS_EC_DTT_POWER_STATUS_H
 
 #define PMAX_THRESHOLD_MW 250
+#define PBSS_THRESHOLD_MW 100
 
 struct dbpt_batt_params {
         uint16_t sys_resistance;
