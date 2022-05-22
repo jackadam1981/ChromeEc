@@ -197,11 +197,14 @@ void update_dbpt(void)
 	static int count;
 	uint16_t batt_max_peak_power, batt_sus_peak_power;
 	uint16_t batt_high_freq_impedance, batt_nl_volt;
+	uint16_t batt_discharge_current;
 	uint16_t prev_batt_max_peak_power, prev_batt_sus_peak_power;
 	uint16_t prev_batt_high_freq_impedance, prev_batt_nl_volt;
+	uint16_t prev_batt_discharge_current;
 	uint16_t threshold_max_power_change, threshold_sus_peak_power_change;
 	uint16_t threshold_high_freq_impedance_change;
 	uint16_t threshold_nl_volt_change;
+	uint16_t threshold_discharge_current_change;
 
 	/* return if fuel guage is not initialized */
 	if (!dbpt_initialized)
@@ -212,6 +215,7 @@ void update_dbpt(void)
 	batt_sus_peak_power = battery_sustained_power();
 	batt_high_freq_impedance = battery_high_frequency_impedance();
 	batt_nl_volt = battery_instantaneous_no_load_volt();
+	batt_discharge_current = battery_discharge_current_capability();
 
 	prev_batt_max_peak_power =
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX));
@@ -222,6 +226,9 @@ void update_dbpt(void)
 
 	prev_batt_nl_volt =
 			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_VBNL));
+
+	prev_batt_discharge_current =
+			*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_CMPP));
 
 	/* Check for any threshold level change */
 	if (prev_batt_max_peak_power < batt_max_peak_power) {
@@ -258,6 +265,16 @@ void update_dbpt(void)
 							batt_nl_volt);
 	}
 
+	if (prev_batt_discharge_current < batt_discharge_current) {
+			threshold_discharge_current_change =
+						(batt_discharge_current -
+						prev_batt_discharge_current);
+	} else {
+			threshold_discharge_current_change =
+						(prev_batt_discharge_current -
+						batt_discharge_current);
+	}
+
 	/* update ec_memmap regions */
 	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PMAX)) =
                                                         batt_max_peak_power;
@@ -267,12 +284,15 @@ void update_dbpt(void)
 						batt_high_freq_impedance;
 	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_VBNL)) =
 						batt_nl_volt;
+	*((uint16_t *)host_get_memmap(EC_MEMMAP_BATT_CMPP)) =
+						batt_discharge_current;
 
 	/* Send sci event for any threshold level cross */
 	if ((threshold_max_power_change >= 250) ||
 			       (threshold_sus_peak_power_change >= 100) ||
 			       (threshold_high_freq_impedance_change >= 5) ||
-			       (threshold_nl_volt_change >= 50)) {
+			       (threshold_nl_volt_change >= 50) ||
+			       (threshold_discharge_current_change >= 100)) {
 
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 	}
@@ -313,6 +333,7 @@ static void power_status_init(void)
 	uint16_t *memmap_pbss = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_PBSS);
 	uint16_t *memmap_rbhf = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_RBHF);
 	uint16_t *memmap_vbnl = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_VBNL);
+	uint16_t *memmap_cmpp = (uint16_t *)host_get_memmap(EC_MEMMAP_BATT_CMPP);
 
 	/* Initial Value */
 	*memmap_psrc = 0;
@@ -321,6 +342,7 @@ static void power_status_init(void)
 	*memmap_pbss = 0;
 	*memmap_rbhf = 0;
 	*memmap_vbnl = 0;
+	*memmap_cmpp = 0;
 
 	/* Update the initial information on power source */
 	update_power_source();
