@@ -387,6 +387,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PORT_POWER_SMART
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY
                                                 "${PLATFORM_EC}/common/usb_common.c"
+                                                "${PLATFORM_EC}/common/usb_control.c"
                                                 "${PLATFORM_EC}/common/usb_pd_pdo.c"
                                                 "${PLATFORM_EC}/common/usbc/usbc_task.c"
                                                 "${PLATFORM_EC}/common/usbc/usb_pd_timer.c"

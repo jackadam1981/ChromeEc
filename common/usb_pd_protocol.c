@@ -27,6 +27,7 @@
 #include "util.h"
 #include "usb_charge.h"
 #include "usb_common.h"
+#include "usb_control.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_flags.h"
