@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c483f9ff_06095889",
+        "filename": "baseboard/cherry/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-05-23T07:58:08Z",
+      "side": 1,
+      "message": "80 characters per line.\n\nI think this should be caught by the pre-submit hooks?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 89
+      },
+      "revId": "84b12400031c80378d8c12beca70fde135486834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
