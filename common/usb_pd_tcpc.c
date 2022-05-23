@@ -18,6 +18,7 @@
 #include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
+#include "typec_control.h"
 #include "util.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
@@ -1098,9 +1099,9 @@ int tcpc_set_power_status_mask(int port, uint8_t mask)
 
 int tcpc_set_vconn(int port, int enable)
 {
-#ifdef CONFIG_USBC_VCONN
-	pd_set_vconn(port, pd[port].polarity, enable);
-#endif
+	if (IS_ENABLED(CONFIG_USBC_VCONN))
+		typec_set_vconn(port, enable);
+
 	return EC_SUCCESS;
 }
 
