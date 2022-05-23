@@ -6,6 +6,7 @@
 # Required chip modules
 chip-y+=mt8195/uart.o
 chip-y+=mt8195/clock_$(CHIP_VARIANT).o
+chip-y+=mt8195/clock_s3_$(CHIP_VARIANT).o
 chip-y+=mt8195/intc_group.o
 
 ifeq ($(CHIP_VARIANT), mt8195)
