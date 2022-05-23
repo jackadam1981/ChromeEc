@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace874e1_39627429",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-05-23T10:12:45Z",
+      "side": 1,
+      "message": "OMG, you are right, thanks.",
+      "parentUuid": "aeb0bbef_86871f2f",
+      "revId": "0e760714006b32ea9db91d091264a054de2af765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4239128c_e04c653c",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-05-23T09:23:02Z",
       "side": 1,
       "message": "I would go with positive logic here\n\n  if (port \u003d\u003d configs[i].spec.port)\n    gpio_pin_configure_dt(...)\n\nthink it would be more immediate to understand since the execution is a single function.",
+      "revId": "0e760714006b32ea9db91d091264a054de2af765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bed9cc5_cee4d902",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-05-23T10:12:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4239128c_e04c653c",
       "revId": "0e760714006b32ea9db91d091264a054de2af765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
