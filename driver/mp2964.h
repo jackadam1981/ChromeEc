@@ -39,7 +39,17 @@ struct mp2964_reg_val {
 	uint16_t val;
 };
 
+enum reg_page {
+	REG_PAGE_0,
+	REG_PAGE_1,
+	REG_PAGE_COUNT
+};
+
 int mp2964_tune(const struct mp2964_reg_val *page0, int count0,
 		const struct mp2964_reg_val *page1, int count1);
+
+static void mp2964_write16(uint8_t reg, uint16_t value);
+static int mp2964_select_page(enum reg_page page);
+static int mp2964_store_user_all(void);
 
 #endif /* __CROS_EC_PMIC_MP2964_H */
