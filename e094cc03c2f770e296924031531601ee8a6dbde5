@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5dc3176_c6613e06",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-23T10:16:50Z",
+      "side": 1,
+      "message": "I think this case would end making ioex_init() trying to access ioex_port_map() out of bounds. That array map is asking for troubles I\u0027m afraid, if we really want to do it it should  be statically sized to IOEX_PORT_COUNT and cover all the enums.\n\nHow about calling gpio_reset_port() from board_tcpc_init() instead (here, outside of the if())?",
+      "revId": "e094cc03c2f770e296924031531601ee8a6dbde5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
