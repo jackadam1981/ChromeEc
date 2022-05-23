@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd309bb_6d41a7c5",
+        "filename": "common/usb_control.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-23T21:11:45Z",
+      "side": 1,
+      "message": "Hi Abe, is it okay to add board_port_has_ocp() check? \ncurrently we dont have such combinations",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "8aab4d4acf5a009131ad3529de68187f8511ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
