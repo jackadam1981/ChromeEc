@@ -26,6 +26,19 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
+#ifdef CONFIG_PLATFORM_EC_USB_CHARGER_SINGLE_TASK
+
+/* Hold the event bits for all ports, 1 byte per port. */
+static atomic_t usb_charger_port_events;
+
+/* Convert evt bits for port so it can be stored in a 32 bit value. */
+#define PORT_EVENT_PACK(port, evt) ((evt & 0xff) << (8 * port))
+
+/* Extract the event bits for port from a 32 bit value. */
+#define PORT_EVENT_UNPACK(port, evt_packed) ((evt_packed >> (8 * port)) & 0xff)
+
+#endif
+
 static void update_vbus_supplier(int port, int vbus_level)
 {
 	struct charge_port_info charge = {0};
@@ -73,7 +86,8 @@ void usb_charger_vbus_change(int port, int vbus_level)
 	/* Update VBUS supplier and signal VBUS change to USB_CHG task */
 	update_vbus_supplier(port, vbus_level);
 
-#ifdef HAS_TASK_USB_CHG_P0
+#if defined(HAS_TASK_USB_CHG_P0) || \
+	defined(CONFIG_PLATFORM_EC_USB_CHARGER_SINGLE_TASK)
 	/* USB Charger task(s) */
 	usb_charger_task_set_event(port, USB_CHG_EVENT_VBUS);
 
@@ -118,7 +132,12 @@ void usb_charger_reset_charge(int port)
 
 uint32_t usb_charger_task_set_event(int port, uint32_t event)
 {
+#ifdef CONFIG_PLATFORM_EC_USB_CHARGER_SINGLE_TASK
+	atomic_or(&usb_charger_port_events, PORT_EVENT_PACK(port, event));
+	return task_set_event(TASK_ID_USB_CHG, BIT(port));
+#else
 	return task_set_event(USB_CHG_PORT_TO_TASK_ID(port), event);
+#endif
 }
 
 static void usb_charger_init(void)
@@ -157,3 +176,42 @@ void usb_charger_task(void *u)
 		bc12_port->drv->usb_charger_task_event(port, evt);
 	}
 }
+
+#ifdef CONFIG_PLATFORM_EC_USB_CHARGER_SINGLE_TASK
+void usb_charger_task_shared(void *u)
+{
+	int port;
+	uint32_t evt;
+	uint32_t port_evt;
+	struct bc12_config *bc12_port;
+
+	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+		bc12_port = &bc12_ports[port];
+
+		ASSERT(bc12_port->drv->usb_charger_task_init);
+		ASSERT(bc12_port->drv->usb_charger_task_event);
+
+		bc12_port->drv->usb_charger_task_init(port);
+	}
+
+	while (1) {
+		evt = task_wait_event(-1);
+
+		for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+			if (!(evt & BIT(port))) {
+				continue;
+			}
+
+			port_evt = PORT_EVENT_UNPACK(
+					port,
+					atomic_get(&usb_charger_port_events));
+			atomic_and(&usb_charger_port_events,
+				   ~PORT_EVENT_PACK(port, port_evt));
+
+			bc12_port = &bc12_ports[port];
+
+			bc12_port->drv->usb_charger_task_event(port, port_evt);
+		}
+	}
+}
+#endif
