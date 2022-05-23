@@ -39,7 +39,8 @@ __override void board_cbi_init(void)
 static void board_chipset_resume(void)
 {
 	/* Allow keyboard backlight to be enabled */
-	gpio_set_level(GPIO_EC_KB_BL_EN_L, 0);
+	gpio_set_level(GPIO_KYBL_EN, 1);
+	gpio_set_level(GPIO_AMP_PWR_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -47,6 +48,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 static void board_chipset_suspend(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
-	gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
+	gpio_set_level(GPIO_KYBL_EN, 0);
+	gpio_set_level(GPIO_AMP_PWR_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
