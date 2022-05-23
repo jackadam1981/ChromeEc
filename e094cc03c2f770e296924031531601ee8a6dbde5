@@ -16,6 +16,24 @@
       "message": "I think this case would end making ioex_init() trying to access ioex_port_map() out of bounds. That array map is asking for troubles I\u0027m afraid, if we really want to do it it should  be statically sized to IOEX_PORT_COUNT and cover all the enums.\n\nHow about calling gpio_reset_port() from board_tcpc_init() instead (here, outside of the if())?",
       "revId": "e094cc03c2f770e296924031531601ee8a6dbde5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be46b19e_eaed5bf2",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-05-23T13:07:44Z",
+      "side": 1,
+      "message": "I agree that the array is not the best solution. I wanted to avoid another IFDEF statement, but maybe it\u0027s not that bad. Is that what you meant?",
+      "parentUuid": "b5dc3176_c6613e06",
+      "revId": "e094cc03c2f770e296924031531601ee8a6dbde5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
