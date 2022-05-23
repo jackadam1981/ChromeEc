@@ -1099,7 +1099,7 @@ int tcpc_set_power_status_mask(int port, uint8_t mask)
 int tcpc_set_vconn(int port, int enable)
 {
 #ifdef CONFIG_USBC_VCONN
-	pd_set_vconn(port, pd[port].polarity, enable);
+	typec_set_vconn(port, pd[port].polarity, enable);
 #endif
 	return EC_SUCCESS;
 }

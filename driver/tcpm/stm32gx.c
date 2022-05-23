@@ -79,7 +79,7 @@ static int stm32gx_tcpm_set_cc(int port, int pull)
 
 static int stm32gx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
-	return stm32gx_ucpd_set_polarity(port, polarity);
+	return stm32gx_uctypec_set_polarity(port, polarity);
 }
 
 static int stm32gx_tcpm_set_vconn(int port, int enable)

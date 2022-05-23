@@ -20,6 +20,7 @@
 #include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_common.h"
+#include "usb_control.h"
 #include "usb_pd.h"
 #include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
