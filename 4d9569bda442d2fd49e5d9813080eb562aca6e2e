@@ -22,6 +22,30 @@
       },
       "revId": "4d9569bda442d2fd49e5d9813080eb562aca6e2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba8e3ea_c689446e",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/fan.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-23T19:13:29Z",
+      "side": 1,
+      "message": "`ta2_1_in_gp73` is correct here.  This maps to the pinmux `alt3_ta2_sl1`.\n\nhttps://github.com/zephyrproject-rtos/zephyr/blob/a8c7f825104aaead6cff624fb5e188b192664255/dts/arm/nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi#L91",
+      "parentUuid": "5bf787d4_6b2010ef",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "4d9569bda442d2fd49e5d9813080eb562aca6e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
