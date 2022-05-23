@@ -22,6 +22,30 @@
       },
       "revId": "84b12400031c80378d8c12beca70fde135486834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc08e02_0b54a768",
+        "filename": "baseboard/cherry/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1534342
+      },
+      "writtenOn": "2022-05-23T11:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c483f9ff_06095889",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 89
+      },
+      "revId": "84b12400031c80378d8c12beca70fde135486834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
