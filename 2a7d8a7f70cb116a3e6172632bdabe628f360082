@@ -22,6 +22,30 @@
       },
       "revId": "2a7d8a7f70cb116a3e6172632bdabe628f360082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c826da1f_371182ef",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-23T19:52:07Z",
+      "side": 0,
+      "message": "Yeah confident enough, everything here works on a port at a time, bet the code was written to do all the ports and then refactored to do a single one. Either way in the current shape this function gets called for every port from outside so this should work fine.",
+      "parentUuid": "b44d549b_59025af2",
+      "range": {
+        "startLine": 239,
+        "startChar": 16,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "2a7d8a7f70cb116a3e6172632bdabe628f360082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
