@@ -1052,7 +1052,7 @@ enum ocp_action {
 static void tc_set_partner_role(int port, enum ppc_device_role role,
 				enum ocp_action ocp_command)
 {
-	if (IS_ENABLED(CONFIG_USBC_PPC))
+	if (IS_ENABLED(CONFIG_USBC_PPC) && board_port_has_ppc(port))
 		ppc_dev_is_connected(port, role);
 
 	if (IS_ENABLED(CONFIG_USBC_OCP)) {
@@ -1508,7 +1508,7 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 		/* Initialize USB mux to its default state */
 		usb_mux_init(port);
 
-	if (IS_ENABLED(CONFIG_USBC_PPC)) {
+	if (IS_ENABLED(CONFIG_USBC_PPC) && board_port_has_ppc(port)) {
 		/*
 		 * Wait to initialize the PPC after tcpc, which sets
 		 * the correct Rd values; otherwise the TCPC might

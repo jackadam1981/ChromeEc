@@ -13,20 +13,20 @@ void typec_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	tcpm_set_polarity(port, polarity);
 
-	if (IS_ENABLED(CONFIG_USBC_PPC_POLARITY))
+	if (IS_ENABLED(CONFIG_USBC_PPC_POLARITY) && board_port_has_ppc(port))
 		ppc_set_polarity(port, polarity);
 }
 
 void typec_set_sbu(int port, bool enable)
 {
-	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU) && board_port_has_ppc(port))
 		ppc_set_sbu(port, enable);
 }
 
 __overridable void typec_set_source_current_limit(int port,
 						enum tcpc_rp_value rp)
 {
-	if (IS_ENABLED(CONFIG_USBC_PPC))
+	if (IS_ENABLED(CONFIG_USBC_PPC) && board_port_has_ppc(port))
 		ppc_set_vbus_source_current_limit(port, rp);
 }
 
@@ -46,7 +46,8 @@ void typec_set_vconn(int port, bool enable)
 	 * Disable PPC Vconn first then TCPC in case the voltage feeds back
 	 * to TCPC and damages.
 	 */
-	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && !enable)
+	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && !enable &&
+	    board_port_has_ppc(port))
 		ppc_set_vconn(port, false);
 
 	/*
@@ -64,6 +65,7 @@ void typec_set_vconn(int port, bool enable)
 	 */
 	tcpm_set_vconn(port, enable);
 
-	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && enable)
+	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && enable &&
+	    board_port_has_ppc(port))
 		ppc_set_vconn(port, true);
 }
