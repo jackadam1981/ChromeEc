@@ -15,12 +15,6 @@
 #define MP2964_STORE_WAIT_US		(300 * MSEC)
 #define MP2964_RESTORE_WAIT_US		(2 * MSEC)
 
-enum reg_page {
-	REG_PAGE_0,
-	REG_PAGE_1,
-	REG_PAGE_COUNT
-};
-
 static int mp2964_write8(uint8_t reg, uint8_t value)
 {
 	const uint8_t tx[2] = { reg, value };
