@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6966cd_b5f3a283",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-05-23T06:20:09Z",
+      "side": 1,
+      "message": "Marco, I also have a similar change for anx7447 OCM firmware. This CL adds extra build version info for more fine grained update.\n\nand https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3645178 is the CL for handling the firmware hash and update process.",
+      "revId": "7ec16a4cc3290e73c557fc6a180dacba0afa0717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
