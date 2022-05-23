@@ -15,6 +15,7 @@
 #include "console.h"
 #include "tcpm/tcpm.h"
 #include "usb_common.h"
+#include "usb_control.h"
 #include "usb_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -243,8 +244,7 @@ void enter_usb_accepted(int port, enum tcpci_msg_type type)
 		break;
 	case USB4_ENTER_SOP:
 		/* Connect the SBU and USB lines to the connector */
-		if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
-			ppc_set_sbu(port, 1);
+		typec_set_sbu(port, true);
 
 		usb4_state[port] = USB4_ACTIVE;
 

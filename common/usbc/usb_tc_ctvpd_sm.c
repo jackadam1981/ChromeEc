@@ -472,7 +472,7 @@ static void tc_attached_snk_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
-	pd_set_polarity(port, 0);
+	typec_set_polarity(port, 0);
 
 	/*
 	 * This state can only be entered from states AttachWait.SNK
@@ -733,7 +733,7 @@ static void tc_attached_src_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
-	pd_set_polarity(port, 0);
+	typec_set_polarity(port, 0);
 
 	/* Connect Charge-Through VBUS to Host VBUS */
 	vpd_vbus_pass_en(1);
@@ -933,7 +933,7 @@ static void tc_ct_try_snk_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
-	pd_set_polarity(port, 0);
+	typec_set_polarity(port, 0);
 
 	tc[port].cc_state = PD_CC_UNSET;
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_TRY;
@@ -1029,7 +1029,7 @@ static void tc_ct_attach_wait_unsupported_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
-	pd_set_polarity(port, 0);
+	typec_set_polarity(port, 0);
 
 	tc[port].cc_state = PD_CC_UNSET;
 }
@@ -1159,7 +1159,7 @@ static void tc_ct_unattached_unsupported_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
-	pd_set_polarity(port, 0);
+	typec_set_polarity(port, 0);
 
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
 }
@@ -1227,7 +1227,7 @@ static void tc_ct_unattached_vpd_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
-	pd_set_polarity(port, 0);
+	typec_set_polarity(port, 0);
 
 	tc[port].cc_state = PD_CC_UNSET;
 }
@@ -1434,7 +1434,7 @@ static void tc_ct_attach_wait_vpd_entry(const int port)
 
 	/* Enable PD */
 	tc[port].pd_enable = 1;
-	pd_set_polarity(port, 0);
+	typec_set_polarity(port, 0);
 
 	tc[port].cc_state = PD_CC_UNSET;
 }
