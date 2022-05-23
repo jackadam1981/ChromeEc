@@ -433,6 +433,18 @@ void sr_task(void *u)
 			}
 			break;
 		case SR_S3:
+			#if CONFIG_SCP_CORE2_ENABLED == 1
+			/* wait core 2 ready */
+			clock_t start = clock();
+			while (SCP_CORE1_WDT_CFG & WDT_EN) {
+				clock_t curr = clock();
+
+				/* wait 10 ms */
+				if ((curr - start) > 10)
+					break;
+			}
+			#endif
+
 			interrupt_disable();
 			watchdog_disable();
 
@@ -444,6 +456,7 @@ void sr_task(void *u)
 
 			watchdog_enable();
 			interrupt_enable();
+			/* alert core 2 that core 1 resumed by disabling TIMER_SR */
 			timer_disable(TIMER_SR);
 			state = SR_S0;
 			break;

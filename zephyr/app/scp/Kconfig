@@ -12,4 +12,6 @@ config SCP_CORE1_RAM_PADDING
 
 config IPI_C2
 
+config SCP_CORE2_ENABLED
+
 endif
