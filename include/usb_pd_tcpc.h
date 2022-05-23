@@ -57,7 +57,6 @@ int tcpc_select_rp_value(int port, int rp);
 int tcpc_set_cc(int port, int pull);
 int tcpc_set_polarity(int port, int polarity);
 int tcpc_set_power_status_mask(int port, uint8_t mask);
-int tcpc_set_vconn(int port, int enable);
 int tcpc_set_msg_header(int port, int power_role, int data_role);
 int tcpc_set_rx_enable(int port, int enable);
 int tcpc_get_message(int port, uint32_t *payload, int *head);

@@ -18,6 +18,7 @@
 #include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
+#include "typec_control.h"
 #include "util.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
@@ -1096,14 +1097,6 @@ int tcpc_set_power_status_mask(int port, uint8_t mask)
 	return EC_SUCCESS;
 }
 
-int tcpc_set_vconn(int port, int enable)
-{
-#ifdef CONFIG_USBC_VCONN
-	pd_set_vconn(port, pd[port].polarity, enable);
-#endif
-	return EC_SUCCESS;
-}
-
 int tcpc_set_rx_enable(int port, int enable)
 {
 #if defined(CONFIG_LOW_POWER_IDLE) && !defined(CONFIG_USB_POWER_DELIVERY)
@@ -1254,7 +1247,7 @@ static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 		tcpc_set_cc(port, TCPC_REG_ROLE_CTRL_CC1(payload[1]));
 		break;
 	case TCPC_REG_POWER_CTRL:
-		tcpc_set_vconn(port, TCPC_REG_POWER_CTRL_VCONN(payload[1]));
+		typec_set_vconn(port, TCPC_REG_POWER_CTRL_VCONN(payload[1]));
 		break;
 	case TCPC_REG_TCPC_CTRL:
 		tcpc_set_polarity(port,
