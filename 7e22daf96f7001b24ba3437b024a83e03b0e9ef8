@@ -16,6 +16,24 @@
       "message": "Is it okay that this is also in gpio.dts?",
       "revId": "7e22daf96f7001b24ba3437b024a83e03b0e9ef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc0a5fe_344579dd",
+        "filename": "zephyr/projects/skyrim/i2c.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-23T19:13:35Z",
+      "side": 1,
+      "message": "This is okay for now, but I think I2C pins should be deleted from gpio.dts.  The legacy I2C bus recovery is not compiled in for Zephyr, each driver does it\u0027s own recovery.\nHaving this in both places could potentially cause problems in the future, so I opened b:233641663",
+      "parentUuid": "d8970fe7_3af9b156",
+      "revId": "7e22daf96f7001b24ba3437b024a83e03b0e9ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
