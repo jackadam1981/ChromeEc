@@ -547,6 +547,12 @@
  */
 #undef CONFIG_BATTERY_SMART
 
+/*
+ * For boards supporting Dynamic Tuning Battery Participant Technology (DBPT),
+ * this config enables the latest version, based on the fuel guage support.
+ */
+#undef CONFIG_BATTERY_DBPT_V2PLUS
+
 /* Chemistry of the battery device */
 #undef CONFIG_BATTERY_DEVICE_CHEMISTRY
 

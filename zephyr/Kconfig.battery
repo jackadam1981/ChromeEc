@@ -30,6 +30,12 @@ config PLATFORM_EC_BATTERY_SMART
 
 	  See here for the spec: http://sbs-forum.org/specs/sbdat110.pdf
 
+config PLATFORM_EC_BATTERY_DBPT_V2PLUS
+	bool "Support Dynamic Tuning of Battery Participant(DBPT)-V2plus"
+	help
+	  Enable Dynamic Tuning Battery Participant Technology(DBPT) - V2plus
+	  for boards whose battery fuel guage has support for the same.
+
 endchoice # PLATFORM_EC_BATTERY_SELECT
 
 choice PLATFORM_EC_BATTERY_PRESENT_MODE
