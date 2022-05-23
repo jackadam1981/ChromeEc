@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aeb0bbef_86871f2f",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-23T09:54:24Z",
+      "side": 1,
+      "message": "Oh they are removed in patch #3, guess they should just be dropped from here right?",
+      "parentUuid": "af28933c_78bd72e0",
+      "revId": "0e760714006b32ea9db91d091264a054de2af765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4239128c_e04c653c",
         "filename": "zephyr/shim/src/gpio.c",
         "patchSetId": 2
