@@ -9,7 +9,7 @@ irqs[SCP_INTC_IRQ_COUNT] = {
 	/* 0 */
 	[SCP_IRQ_GIPC_IN0]		= { INTC_GRP_7 },
 	[SCP_IRQ_GIPC_IN1]		= { INTC_GRP_0 },
-	[SCP_IRQ_GIPC_IN2]		= { INTC_GRP_0 },
+	[SCP_IRQ_GIPC_IN2]		= { INTC_GRP_11 },
 	[SCP_IRQ_GIPC_IN3]		= { INTC_GRP_0 },
 	/* 4 */
 	[SCP_IRQ_SPM]			= { INTC_GRP_0 },
