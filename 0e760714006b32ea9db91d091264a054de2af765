@@ -16,6 +16,23 @@
       "message": "Does this block belong to a different patch?",
       "revId": "0e760714006b32ea9db91d091264a054de2af765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4239128c_e04c653c",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-23T09:23:02Z",
+      "side": 1,
+      "message": "I would go with positive logic here\n\n  if (port \u003d\u003d configs[i].spec.port)\n    gpio_pin_configure_dt(...)\n\nthink it would be more immediate to understand since the execution is a single function.",
+      "revId": "0e760714006b32ea9db91d091264a054de2af765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
