@@ -6,6 +6,11 @@
 #ifndef __CROS_EC_USBC_OCP_H
 #define __CROS_EC_USBC_OCP_H
 
+enum ocp_action {
+	OCP_CLEAR,
+	OCP_NO_ACTION,
+};
+
 /* Common APIs for USB Type-C Overcurrent Protection (OCP) Module */
 
 /**

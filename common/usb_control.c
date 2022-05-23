@@ -1,0 +1,100 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* USB control logic source */
+
+#include "ec_commands.h"
+#include "tcpm/tcpm.h"
+#include "usb_control.h"
+
+void pd_set_polarity(int port, enum tcpc_cc_polarity polarity)
+{
+	tcpm_set_polarity(port, polarity);
+
+	if (IS_ENABLED(CONFIG_USBC_PPC_POLARITY))
+		ppc_set_polarity(port, polarity);
+}
+
+void pd_set_sbu(int port, bool enable)
+{
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+		ppc_set_sbu(port, enable);
+}
+
+void pd_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp)
+{
+	if (IS_ENABLED(CONFIG_USBC_PPC))
+		ppc_set_vbus_source_current_limit(port, rp);
+}
+
+void pd_set_partner_role(int port, enum ppc_device_role role,
+			enum ocp_action ocp_command)
+{
+	if (IS_ENABLED(CONFIG_USBC_PPC))
+		ppc_dev_is_connected(port, role);
+
+	if (IS_ENABLED(CONFIG_USBC_OCP)) {
+		usbc_ocp_snk_is_connected(port, role == PPC_DEV_SNK);
+		/*
+		 * Clear the overcurrent event counter
+		 * if we're not in ErrorRecovery due to OCP
+		 */
+		if (ocp_command == OCP_CLEAR)
+			usbc_ocp_clear_event_counter(port);
+	}
+}
+
+void pd_set_vconn(int port, bool enable)
+{
+	/*
+	 * Check our OC event counter.  If we've exceeded our threshold, then
+	 * let's latch our source path off to prevent continuous cycling.  When
+	 * the PD state machine detects a disconnection on the CC lines, we will
+	 * reset our OC event counter.
+	 */
+	if (IS_ENABLED(CONFIG_USBC_OCP) &&
+	    enable && usbc_ocp_is_port_latched_off(port))
+		return;
+
+	/*
+	 * Disable PPC Vconn first then TCPC in case the voltage feeds back
+	 * to TCPC and damages.
+	 */
+	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && !enable)
+		ppc_set_vconn(port, 0);
+
+	/*
+	 * Some TCPCs/PPC combinations can trigger OVP if the TCPC doesn't
+	 * source VCONN. This happens if the TCPC will trip OVP with 5V, and the
+	 * PPC doesn't isolate the TCPC from VCONN when sourcing. But, some PPCs
+	 * which do isolate the TCPC can't handle 5V on its host-side CC pins,
+	 * so the TCPC shouldn't source VCONN in those cases.
+	 *
+	 * In the first case, both TCPC and PPC will potentially source Vconn,
+	 * but that should be okay since Vconn has "make before break"
+	 * electrical requirements when swapping anyway.
+	 *
+	 * See b/72961003 and b/180973460
+	 */
+	tcpm_set_vconn(port, enable);
+
+	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && enable)
+		ppc_set_vconn(port, 1);
+}
+
+void pd_init(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_PPC)) {
+		/*
+		 * Wait to initialize the PPC after tcpc, which sets
+		 * the correct Rd values; otherwise the TCPC might
+		 * not be pulling the CC lines down when the PPC connects the
+		 * CC lines from the USB connector to the TCPC cause the source
+		 * to drop Vbus causing a brown out.
+		 */
+		ppc_init(port);
+	}
+
+}
