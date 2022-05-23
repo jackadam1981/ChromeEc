@@ -22,6 +22,30 @@
       },
       "revId": "6f5ce118736997074dca42739576cb6bf4d00c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525b30a9_c178c853",
+        "filename": "common/version.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-05-23T21:22:57Z",
+      "side": 1,
+      "message": "Did you mean cros_version.h? Yeah I can do that. I\u0027ll remove the line from zmake/version.py as well.",
+      "parentUuid": "cc0089fb_6e05b707",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "6f5ce118736997074dca42739576cb6bf4d00c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
