@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0089fb_6e05b707",
+        "filename": "common/version.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-23T19:37:36Z",
+      "side": 1,
+      "message": "Can we actually just move this #define to another header (e.g., version.h) since it\u0027s constant and does not need to be auto-generated?",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "6f5ce118736997074dca42739576cb6bf4d00c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
