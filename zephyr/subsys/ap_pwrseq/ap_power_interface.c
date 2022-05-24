@@ -4,6 +4,7 @@
  */
 
 #include <ap_power/ap_power_interface.h>
+#include "charge_state.h"
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 bool ap_power_in_state(
@@ -112,4 +113,13 @@ void ap_power_exit_hardoff(void)
 
 void ap_power_init_reset_log(void)
 {
+}
+
+bool ap_power_is_ok_to_power_up(void)
+{
+#if defined(CONFIG_CHARGER)
+	return !charge_prevent_power_on(false) && !charge_want_shutdown();
+#else
+	return true;
+#endif
 }
