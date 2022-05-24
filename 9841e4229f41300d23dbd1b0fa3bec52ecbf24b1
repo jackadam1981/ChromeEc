@@ -16,6 +16,57 @@
       "message": "TODO: Validate",
       "revId": "9841e4229f41300d23dbd1b0fa3bec52ecbf24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f31df6_891e9551",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-24T23:54:36Z",
+      "side": 1,
+      "message": "Doesn\u0027t `system_can_boot_ap` handle this? It seems redundant to check charger power again here.",
+      "revId": "9841e4229f41300d23dbd1b0fa3bec52ecbf24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48479065_43daa6b5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-24T23:54:36Z",
+      "side": 1,
+      "message": "I think we can remove this condition. If `system_can_boot_ap` says the AP shouldn\u0027t be booted, I don\u0027t think it matters what the EFS configuration is: we expect that the AP would fail to boot if we tried.",
+      "revId": "9841e4229f41300d23dbd1b0fa3bec52ecbf24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72762212_c63dfafd",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-24T23:54:36Z",
+      "side": 1,
+      "message": "If this loops while polling, I don\u0027t think the battery callback is useful because the charge state change would be noticed on the next poll.\n\nOn the other hand, not looping here and using a notification from the callback (similar to my suggestion on https://crrev.com/c/3631638) would be a good alternative that would want the callback.",
+      "revId": "9841e4229f41300d23dbd1b0fa3bec52ecbf24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
