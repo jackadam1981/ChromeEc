@@ -157,6 +157,13 @@ config PLATFORM_EC_USB_PD_PULLUP
 	  Valid values are 0 (USB default current), 1 (1.5A), and 2 (3.0A). See
 	  enum tcpc_rp_value.
 
+config PLATFORM_EC_USB_PD_SBU
+	bool "PD chip has integrated port protection for SBU lines"
+	help
+	  Some PD chips have integrated port protection for SBU lines.
+	  If the switches to enable those SBU lines are controlled by the PD
+	  chip, enable this config.
+
 config PLATFORM_EC_USB_PD_ONLY_FIXED_PDOS
 	bool "Only support FIXED type PDOs"
 	help

@@ -1765,6 +1765,11 @@ extern struct jump_data mock_jump_data;
 #define CONFIG_USBC_PPC_SBU
 #endif
 
+#undef CONFIG_USB_PD_SBU
+#ifdef CONFIG_PLATFORM_EC_USB_PD_SBU
+#define CONFIG_USB_PD_SBU
+#endif
+
 #undef CONFIG_USBC_PPC_VCONN
 #ifdef CONFIG_PLATFORM_EC_USBC_PPC_VCONN
 #define CONFIG_USBC_PPC_VCONN
