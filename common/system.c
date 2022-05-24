@@ -1762,8 +1762,8 @@ test_mockable int system_can_boot_ap(void)
 	return 1;
 #endif
 
-	CPRINTS("Not enough power to boot (%d %%, %d mW)", soc, pow);
-	return 0;
+	// CPRINTS("Not enough power to boot (%d %%, %d mW)", soc, pow);
+	return 1;
 }
 
 #ifdef CONFIG_SERIALNO_LEN
