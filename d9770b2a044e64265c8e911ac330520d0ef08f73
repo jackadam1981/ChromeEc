@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3e07e6_47ba1e7e",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-24T17:50:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "286d1fc7_d1d4a9a0",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "d9770b2a044e64265c8e911ac330520d0ef08f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a1af71d_345bac00",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-24T15:53:46Z",
       "side": 1,
       "message": "Add a comment indicating that the board code must define and enable it\u0027s own task for managing the LEDs.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "d9770b2a044e64265c8e911ac330520d0ef08f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ed73d3_66706b53",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-05-24T17:50:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a1af71d_345bac00",
       "range": {
         "startLine": 34,
         "startChar": 0,
