@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c3b3ba9_5ab9a79e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-05-24T18:05:13Z",
+      "side": 1,
+      "message": "I believe this CL is still waiting for another update from Josie, as we uncovered some non-intuitive behavior in our last discussion. I believe submitting this would change functionality for F0 chips that use a second DMA controller.\n\nThis is because the modulo usage of `STM32_DMAC_PER_CTRL` in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/dma.c;l\u003d70;drc\u003d04e6a2380e1cbafb169c7194f0fc58d460193ea6 seems to be functionality to delineate the first and second DMA controller, rather than a safety check. There was a comment somewhere that mentioned how they will use `8` to make sure that the enum and code is compatible with the most chips, indicating that the enums stay the same, but the implementer will choose which enum DMA channels are relevant for the chip. So, the `STM32_DMAC_PER_CTRL` constant seems to be more a property of the enum construction rather than the chip at hand.\n\nI recommended adding a comment to clarify this non-intuitive functionality and removing enums based on chip-variant to satisfy coverity and help future devs. Then, compilation of boards should be sufficient to verify that nothing is broken.",
+      "revId": "008d9948e457ca0b75ad54b38adc2bc6e3101079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
