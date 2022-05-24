@@ -5,6 +5,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <atomic.h>
 #include "compile_time_macros.h"
 #include "console.h"
 #include "hooks.h"
@@ -47,14 +48,21 @@
 
 #define SUSPEND 1
 #define RESUME  0
+#define RETIMTER_FW_UPDATE_TIMEOUT (15 * MINUTE)
 
 /* Track current port AP requested to update retimer firmware */
 static int cur_port;
 static int last_op; /* Operation received from AP via ACPI_WRITE */
 /* Operation result returned to ACPI_READ */
 static int last_result;
-/* Track port state: SUSPEND or RESUME */
-static int port_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+/*
+ * Track port state: SUSPEND or RESUME
+ * Each bit stores the state of one port.
+ * bit 0 is the state of port 0;
+ * ...
+ * bit n is the state of port n.
+ */
+static atomic_t port_state;
 
 int usb_retimer_fw_update_get_result(void)
 {
@@ -89,12 +97,15 @@ int usb_retimer_fw_update_get_result(void)
 
 static void retimer_fw_update_set_port_state(int port, int state)
 {
-	port_state[port] = state;
+	if (state)
+		atomic_or(&port_state, BIT(port));
+	else
+		atomic_clear_bits(&port_state, BIT(port));
 }
 
 static int retimer_fw_update_get_port_state(int port)
 {
-	return port_state[port];
+	return !!(port_state & BIT(port));
 }
 
 /**
@@ -138,6 +149,28 @@ static void last_result_mux_get(void)
 	last_result = retimer_fw_update_usb_mux_get(cur_port);
 }
 
+static void restore_port(void)
+{
+	int port;
+
+	if (port_state == 0)
+		return;
+
+	for  (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		if (retimer_fw_update_get_port_state(port))
+			retimer_fw_update_port_handler(port, RESUME);
+	}
+}
+
+static void retimer_fw_update_timeout_handler(void);
+DECLARE_DEFERRED(retimer_fw_update_timeout_handler);
+
+static void retimer_fw_update_timeout_handler(void)
+{
+	CPRINTS("%s: port_state(0x%x)", __func__, (int)port_state);
+	restore_port();
+}
+
 void usb_retimer_fw_update_process_op_cb(int port)
 {
 	bool result_mux_get = false;
@@ -167,6 +200,8 @@ void usb_retimer_fw_update_process_op_cb(int port)
 		 * a wake event to the PD task and enter suspended mode.
 		 */
 		hook_call_deferred(&deferred_pd_suspend_data, 0);
+		hook_call_deferred(&retimer_fw_update_timeout_handler_data,
+			RETIMTER_FW_UPDATE_TIMEOUT);
 		break;
 	case USB_RETIMER_FW_UPDATE_RESUME_PD:
 		retimer_fw_update_port_handler(port, RESUME);
@@ -249,13 +284,4 @@ void usb_retimer_fw_update_process_op(int port, int op)
  * the PD port; otherwise, PD port is suspended even system powers up again.
  * In normal case, system should not allow shutdown during firmware update.
  */
-static void restore_port(void)
-{
-	int port;
-
-	for  (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		if (retimer_fw_update_get_port_state(port))
-			retimer_fw_update_port_handler(port, RESUME);
-	}
-}
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, restore_port, HOOK_PRIO_DEFAULT);
