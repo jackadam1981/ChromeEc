@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "771c7d8b_b067a09b",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-05-24T03:42:43Z",
+      "side": 1,
+      "message": "I previously had some very long winded rants about issues with how the DMA was implemented before realizing (thanks to Josie) that I was reading the docs for the stm32-f4. Unfortunately the terminology used to manage the f4 is almost completely different from what is used to in the f0. This led to a lot of confusion (at least for me 😊) and suggests that some restructuring may be in order. Josie has already created b/233369173 to cover those details though.",
+      "revId": "c05ab7a6bc6e75da995309fb375d178233cb2cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43c40084_a759fd34",
