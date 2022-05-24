@@ -73,6 +73,13 @@ int board_ap_power_assert_pch_power_ok(void);
 bool board_ap_power_check_power_rails_enabled(void);
 
 /**
+ * @brief Check board is OK to power up
+ *
+ * @return true Power up is OK
+ * @return false Power up is not OK
+ */
+bool board_is_ready_to_power_up(void);
+/**
  * @brief macro to access configuration properties from DTS
  */
 #define AP_PWRSEQ_DT_VALUE(p)					\

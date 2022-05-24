@@ -8,6 +8,7 @@
 
 #include "battery.h"
 #include "charger.h"
+#include "charge_state.h"
 #include "charge_state_v2.h"
 #include "chipset.h"
 #include "cros_cbi.h"
@@ -110,6 +111,11 @@ static void board_setup_init(void)
  * Make sure setup is done after EEPROM is readable.
  */
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_INIT_I2C);
+
+bool board_is_ready_to_power_up(void)
+{
+	return !charge_prevent_power_on(false) && !charge_want_shutdown();
+}
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)

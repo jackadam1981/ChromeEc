@@ -87,3 +87,8 @@ int extpower_is_present(void)
 {
 	return 0;
 }
+
+bool board_is_ready_to_power_up(void)
+{
+	return true;
+}

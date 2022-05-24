@@ -42,6 +42,76 @@ static const char * const pwrsm_dbg[] = {
 #endif
 };
 
+#ifdef CONFIG_CHARGER
+static bool power_up_inhibited;
+
+static void power_up_charger_cb(struct ap_power_ev_callback *cb,
+				  struct ap_power_ev_data data)
+
+{
+	if (!power_up_inhibited)
+		return;
+
+	if (board_is_ready_to_power_up() == false) {
+		LOG_INF("power-up still inhibited");
+		return;
+	}
+
+	power_up_inhibited = false;
+
+	LOG_INF("Battery SOC ok to boot AP!");
+
+	ap_power_exit_hardoff();
+}
+
+static void register_charger_callback(void)
+{
+	static struct ap_power_ev_callback cb;
+
+	ap_power_ev_init_callback(&cb, power_up_charger_cb,
+				  AP_POWER_BATTERY_SOC_CHANGE);
+	ap_power_ev_add_callback(&cb);
+}
+#endif
+
+static int wait_power_up_ok(void)
+{
+#define CHARGER_INITIALIZED_TRIES 40
+#define CHARGER_INITIALIZED_DELAY_MS 100
+	int tries = 0;
+	/*
+	 * Allow charger to be initialized for up to defined tries,
+	 * in case we're trying to boot the AP with no battery.
+	 */
+	while ((tries < CHARGER_INITIALIZED_TRIES) &&
+	       board_is_ready_to_power_up() == false) {
+		msleep(CHARGER_INITIALIZED_DELAY_MS);
+		tries++;
+	}
+	/*
+	 * Return to G3 if battery level is too low. Set
+	 * power_up_inhibited in order to check the eligibility to boot
+	 * AP up after battery SOC changes.
+	 */
+	if (tries == CHARGER_INITIALIZED_TRIES) {
+		LOG_INF("power-up inhibited");
+		power_up_inhibited = true;
+		return -ETIMEDOUT;
+	}
+	power_up_inhibited = false;
+
+#if defined(CONFIG_VBOOT_EFS) || defined(CONFIG_VBOOT_EFS2)
+	/*
+	 * We have to test power readiness here (instead of S5->S3)
+	 * because when entering S5, EC enables EC_ROP_SLP_SUS pin
+	 * which causes (short-powered) system to brown out.
+	 */
+	while (!system_can_boot_ap())
+		msleep(200);
+#endif
+	return 0;
+}
+
 /*
  * Returns true if all signals in mask are valid.
  * This is only done for virtual wire signals.
@@ -206,6 +276,11 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_G3S5:
+		if (wait_power_up_ok()) {
+			ap_power_force_shutdown(
+				CHIPSET_SHUTDOWN_BATTERY_INHIBIT);
+			return SYS_POWER_STATE_G3;
+		}
 		if ((power_get_signals() & PWRSEQ_G3S5_UP_SIGNAL) ==
 				PWRSEQ_G3S5_UP_VALUE)
 			return SYS_POWER_STATE_S5;
@@ -553,6 +628,12 @@ static int pwrseq_init(const struct device *dev)
 	power_signal_init();
 	LOG_DBG("Init pwr seq state");
 	init_pwr_seq_state();
+
+#ifdef CONFIG_CHARGER
+	/* Receive chager change notifications */
+	register_charger_callback();
+#endif
+
 	/* Create power sequence state handler core function thread */
 	create_pwrseq_thread();
 	return 0;
