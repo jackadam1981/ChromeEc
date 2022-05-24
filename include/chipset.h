@@ -125,6 +125,11 @@ void chipset_pre_init_callback(void);
  */
 void init_reset_log(void);
 
+/**
+ * Check if conditions are OK to power up the system.
+ */
+bool chipset_is_ok_to_power_up(void);
+
 #else /* !HAS_TASK_CHIPSET */
 
 /* When no chipset is present, assume it is always off. */
@@ -155,6 +160,7 @@ static inline void chipset_power_good_interrupt(enum gpio_signal signal) { }
 static inline void chipset_watchdog_interrupt(enum gpio_signal signal) { }
 
 static inline void init_reset_log(void) { }
+bool chipset_is_ok_to_power_up(void) { }
 
 #endif /* !HAS_TASK_CHIPSET */
 

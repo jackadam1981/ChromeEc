@@ -581,3 +581,26 @@ static void power_button_pulse_setting_preserve_state(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, power_button_pulse_setting_preserve_state,
 	     HOOK_PRIO_DEFAULT);
+
+#if defined(CONFIG_CHARGER)
+static void hook_battery_soc_change(void)
+{
+	static bool cache_is_ok_to_power_up;
+	bool is_ok_to_power_up = chipset_is_ok_to_power_up();
+
+	if (is_ok_to_power_up == cache_is_ok_to_power_up) {
+		/* No change respect to previous state, return */
+		return;
+	}
+
+	cache_is_ok_to_power_up = is_ok_to_power_up;
+
+	if (is_ok_to_power_up) {
+		chipset_exit_hard_off();
+	}
+	CPRINTS("Battery is %s to boot AP!",
+		 is_ok_to_power_up ? "OK" : "NOT OK");
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, hook_battery_soc_change,
+	     HOOK_PRIO_DEFAULT);
+#endif

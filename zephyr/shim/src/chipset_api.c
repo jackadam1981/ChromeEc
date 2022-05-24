@@ -46,6 +46,11 @@ void init_reset_log(void)
 	ap_power_init_reset_log();
 }
 
+bool chipset_is_ok_to_power_up(void)
+{
+	return ap_power_is_ok_to_power_up();
+}
+
 #else
 
 #if !defined(HAS_TASK_CHIPSET)
@@ -73,6 +78,7 @@ void chipset_ap_rst_interrupt(enum gpio_signal signal) { }
 void chipset_power_good_interrupt(enum gpio_signal signal) { }
 void chipset_watchdog_interrupt(enum gpio_signal signal) { }
 void init_reset_log(void) { }
+bool chipset_is_ok_to_power_up(void) { }
 
 #endif /* !defined(HAS_TASK_CHIPSET) */
 #endif /*defined(CONFIG_AP_PWRSEQ) */
