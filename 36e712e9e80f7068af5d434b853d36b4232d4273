@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "077a2593_74688d51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-24T11:49:12Z",
+      "side": 1,
+      "message": "ectool rgbkbd 6 0x012345\n\n22-05-24 19:47:37.774 \u003e i2c: 0:0x50 wr 0xFE 0xC5 \n22-05-24 19:47:40.181 i2c: 0:0x50 wr 0xFD 0x01 \n22-05-24 19:47:40.183 i2c: 0:0x50 wr 0x05 0x01 \n22-05-24 19:47:40.184 i2c: 0:0x50 wr 0x15 0x23 \n22-05-24 19:47:40.186 i2c: 0:0x50 wr 0x25 0x45 \n22-05-24 19:47:40.187 [1084.859574 RGBKBD: Set (5,0) to color\u003d(1,35,69) grid\u003d0 offset\u003d5 (0)]",
+      "parentUuid": "8d76b57f_f6d698f8",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "36e712e9e80f7068af5d434b853d36b4232d4273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c248b80_fc77e728",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-20T20:54:11Z",
       "side": 1,
       "message": "You need to use ctx-\u003ectx-\u003ecfg.row_len.",
+      "range": {
+        "startLine": 165,
+        "startChar": 32,
+        "endLine": 165,
+        "endChar": 45
+      },
+      "revId": "36e712e9e80f7068af5d434b853d36b4232d4273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5fd2a00_2860bd52",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-24T11:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c248b80_fc77e728",
       "range": {
         "startLine": 165,
         "startChar": 32,
