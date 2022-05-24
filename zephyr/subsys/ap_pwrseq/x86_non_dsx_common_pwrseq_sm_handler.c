@@ -222,6 +222,11 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_G3S5:
+		if (!ap_power_is_ok_to_power_up()) {
+			ap_power_force_shutdown(
+				CHIPSET_SHUTDOWN_BATTERY_INHIBIT);
+			return SYS_POWER_STATE_G3;
+		}
 		if ((power_get_signals() & PWRSEQ_G3S5_UP_SIGNAL) ==
 				PWRSEQ_G3S5_UP_VALUE)
 			return SYS_POWER_STATE_S5;
