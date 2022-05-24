@@ -16,6 +16,23 @@
       "message": "Since Keith did the original commit, it may be good to get his +2",
       "revId": "5e16edeca8b666c5d1565ee8c1317aa1d7db572f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f54793_226eac37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-24T15:57:31Z",
+      "side": 1,
+      "message": "Because only one PROCHOT signal is available, it\u0027s the correct choice to configure this as an output.",
+      "revId": "5e16edeca8b666c5d1565ee8c1317aa1d7db572f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
