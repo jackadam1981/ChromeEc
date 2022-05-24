@@ -1757,16 +1757,6 @@ void charger_task(void *u)
 			curr.requested_current = curr.batt.desired_current;
 		}
 
-		/* If we *know* there's no battery, wait for one to appear. */
-		if (curr.batt.is_present == BP_NO) {
-			if (!curr.ac)
-				CPRINTS("running with no battery and no AC");
-			set_charge_state(ST_IDLE);
-			curr.batt_is_charging = 0;
-			battery_was_removed = 1;
-			goto wait_for_it;
-		}
-
 		/*
 		 * If we had trouble talking to the battery or the charger, we
 		 * should probably do nothing for a bit, and if it doesn't get
