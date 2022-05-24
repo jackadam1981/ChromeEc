@@ -87,6 +87,13 @@ enum ap_power_events {
 	AP_POWER_HARD_OFF = BIT(8),
 	/** Software reset occurred */
 	AP_POWER_RESET = BIT(9),
+	/**
+	 * Battery change that may impact power sequence.
+	 *
+	 * This will be used to notify AP power sequence of any battery state
+	 * update that will require its attention.
+	 */
+	AP_POWER_BATTERY_SOC_CHANGE = BIT(10),
 };
 
 /**

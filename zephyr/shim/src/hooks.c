@@ -218,6 +218,12 @@ static void ev_handler(struct ap_power_ev_callback *cb,
 	}
 }
 
+static void hook_battery_soc_change(void)
+{
+	ap_power_ev_send_callbacks(AP_POWER_BATTERY_SOC_CHANGE);
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, hook_battery_soc_change, HOOK_PRIO_DEFAULT);
+
 /*
  * Events are received from the AP power event system and sent to the hooks.
  */
