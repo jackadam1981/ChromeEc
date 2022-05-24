@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264e1f6e_61a6a7aa",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-24T13:38:32Z",
+      "side": 1,
+      "message": "add a space after the #ifdef",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 20
+      },
+      "revId": "ee36754dc35268a8130c26b942dbf149d8804c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c141d20_80eb62d2",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-24T13:38:32Z",
+      "side": 1,
+      "message": "add a space before the #endif, would also put the /* CONFIG_ZEPHYR */ comment, just in case we end up adding more stuff in the conditional block",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 6
+      },
+      "revId": "ee36754dc35268a8130c26b942dbf149d8804c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
