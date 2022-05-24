@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76dab70_4926761e",
+        "filename": "zephyr/shim/src/ioex.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-24T08:54:47Z",
+      "side": 1,
+      "message": "this could be just a #else at this point... actually do we still need the ioex_config stub at all if CONFIG_PLATFORM_EC_IOEX_CROS_DRV\u003dn?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "062535e1d8e89050cf74393cbc09fa17866d5337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

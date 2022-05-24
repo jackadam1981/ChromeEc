@@ -34,6 +34,24 @@
       "parentUuid": "b5dc3176_c6613e06",
       "revId": "e094cc03c2f770e296924031531601ee8a6dbde5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1195fc28_5977590e",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-24T08:54:47Z",
+      "side": 1,
+      "message": "Yeah, well, this is not exactly pretty either but at least saves an unconstrained parallel array... there\u0027s plenty other in this file anyway, I say it\u0027s alright.",
+      "parentUuid": "be46b19e_eaed5bf2",
+      "revId": "e094cc03c2f770e296924031531601ee8a6dbde5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
