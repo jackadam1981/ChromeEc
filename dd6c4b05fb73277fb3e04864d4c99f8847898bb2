@@ -16,6 +16,23 @@
       "message": "TODO: Validate",
       "revId": "dd6c4b05fb73277fb3e04864d4c99f8847898bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3792f0e0_546dd8f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-05-24T23:56:12Z",
+      "side": 1,
+      "message": "Looking at the dependent change (https://crrev.com/c/3662701), I\u0027m not sure if we need this at all. I\u0027ve left comments there for which the answers determine whether we need this.",
+      "revId": "dd6c4b05fb73277fb3e04864d4c99f8847898bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
