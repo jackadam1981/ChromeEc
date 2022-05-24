@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b95acc9_4074562b",
+        "filename": "include/gpio.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-24T14:43:50Z",
+      "side": 1,
+      "message": "Add a comment that the default flags are specified by the \"named-gpios\" node in the board devictree.",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 61
+      },
+      "revId": "42c660e6cb878b9f4de41689690f2140a0f3ab73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
