@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b775a14_371f5d6f",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-24T15:45:21Z",
+      "side": 1,
+      "message": "As documented, `CONFIG_PLATFORM_EC_IOEX_CROS_DRV` enables IOEX drivers in the legacy EC code.  `CONFIG_PLATFORM_EC_IOEX` could be enabled separately.\n\nYou\u0027ve now made this relationship required, so do we still need the `CONFIG_PLATFORM_EC_IOEX` Kconfig option?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 71
+      },
+      "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
