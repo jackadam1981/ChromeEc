@@ -15,10 +15,6 @@
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 #define CONFIG_UART_CONSOLE 0
 
-#ifdef CHIP_VARIANT_MT8195
-#define CONFIG_PANIC_CONSOLE_OUTPUT
-#endif
-
 /* IPI configs */
 #define CONFIG_IPC_SHARED_OBJ_BUF_SIZE 288
 #define CONFIG_IPC_SHARED_OBJ_ADDR                                             \
@@ -117,12 +113,6 @@
 #define KERNEL_SIZE 0xF00000
 #define DRAM_TOTAL_SIZE 0x01400000 /* 20 MB */
 #endif /* CHIP_VARIANT_MT8195 */
-
-#define CONFIG_PANIC_BASE_OFFSET 0x100 /* reserved for jump data */
-
-#ifdef CHIP_VARIANT_MT8195
-#define CONFIG_PANIC_DATA_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_BASE_OFFSET)
-#endif
 
 /* MPU settings */
 #define NR_MPU_ENTRIES 16
