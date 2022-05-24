@@ -223,6 +223,13 @@ gpio_flags_t convert_to_zephyr_flags(int ec_flags)
 			unhandled_flags);
 	}
 
+	/* NPCX ec doesn't support simultaneous in/out mode. */
+	if (IS_ENABLED(CONFIG_SOC_FAMILY_NPCX) &&
+		(ec_flags & GPIO_INPUT) && (ec_flags & GPIO_OUTPUT)) {
+		/* Change direction to output as cros gpio driver did before. */
+		ec_flags &= ~GPIO_INPUT;
+	}
+
 	if (ec_flags & GPIO_INT_F_RISING)
 		zephyr_flags |= GPIO_INT_ENABLE
 			| GPIO_INT_EDGE | GPIO_INT_HIGH_1;
