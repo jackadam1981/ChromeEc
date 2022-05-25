@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23edcb7_d78cb09e",
+        "filename": "board/agah/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-05-25T13:41:54Z",
+      "side": 1,
+      "message": "You might need to add CONFIG_TEMP_SENSOR_POWER to make this effect as well.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/thermal.c;drc\u003d42d03a00128e4be0d149e6142d1987518cfead20;l\u003d59",
+      "revId": "8558d6021c0ac45bed29e3e2789343a0b1a41c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
