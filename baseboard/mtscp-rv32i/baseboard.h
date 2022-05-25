@@ -114,6 +114,9 @@
 #define DRAM_TOTAL_SIZE 0x01400000 /* 20 MB */
 #endif /* CHIP_VARIANT_MT8195 */
 
+#define SCP_CORE1_RAM_SIZE 0x10000 /* 64K */
+#define SCP_CORE1_RAM_PADDING 0xc00 /* for 4K-alignment */
+
 /* MPU settings */
 #define NR_MPU_ENTRIES 16
 
