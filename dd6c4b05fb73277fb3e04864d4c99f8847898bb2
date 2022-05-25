@@ -50,6 +50,42 @@
       "message": "So I am not sure if extending this notification API like this is the best thing.\nThis particular API is used to replace the HOOK_CHIPSET notifications, and is generally used to send notifications from the chipset power sequence code, rather than the other way around.\nSo it does seem there is a need to provide a battery status notification API, so that the power sequence code can be notified of change.\nThe legacy code has a more generic HOOK based notification framework, and Zephyr doesn\u0027t really have anything generic, but each subsystem seems to have a separate notification framework (so that\u0027s how the ap_power notification API was built).\n\nIf you do need to hook into the existing legacy battery notification, you could do it as a shimmed hook function, and then call a function in the power sequence code.\n\n",
       "revId": "dd6c4b05fb73277fb3e04864d4c99f8847898bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba9cde7b_49f52dba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-25T02:17:04Z",
+      "side": 1,
+      "message": "Sounds good, I will do that.",
+      "parentUuid": "07d4d239_3f763dc5",
+      "revId": "dd6c4b05fb73277fb3e04864d4c99f8847898bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9d5598_55d0f9e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-25T02:17:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3792f0e0_546dd8f0",
+      "revId": "dd6c4b05fb73277fb3e04864d4c99f8847898bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
