@@ -8,11 +8,56 @@
 #include "hooks.h"
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_scan.h"
+#include "rgb_keyboard.h"
 #include "timer.h"
 
 
 #define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ## args)
+
+
+extern struct rgbkbd_drv is31fl3733b_drv;
+
+static struct rgb_s grid0[RGB_GRID0_COL * RGB_GRID0_ROW];
+
+struct rgbkbd rgbkbds[] = {
+	[0] = {
+		.cfg = &(const struct rgbkbd_cfg) {
+			.drv = &is31fl3733b_drv,
+			.i2c = I2C_PORT_KBMCU,
+			.col_len = RGB_GRID0_COL,
+			.row_len = RGB_GRID0_ROW,
+		},
+		.buf = grid0,
+	},
+};
+const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
+
+const uint8_t rgbkbd_hsize = RGB_GRID0_COL;
+const uint8_t rgbkbd_vsize = RGB_GRID0_ROW;
+
+/* TODO(b/233323599): need to check and update */
+#define LED(x, y)	RGBKBD_COORD((x), (y))
+#define DELM		RGBKBD_DELM
+const uint8_t rgbkbd_map[] = {
+	DELM,
+	LED(0, 0), DELM,
+	LED(1, 0), DELM,
+	LED(2, 0), DELM,
+	LED(3, 0), DELM,
+	LED(4, 0), DELM,
+	LED(5, 0), DELM,
+	LED(6, 0), DELM,
+	LED(7, 0), DELM,
+	LED(8, 0), DELM,
+	LED(9, 0), DELM,
+	LED(10, 0), DELM,
+	LED(11, 0), DELM,
+	DELM,
+};
+#undef LED
+#undef DELM
+const size_t rgbkbd_map_size = ARRAY_SIZE(rgbkbd_map);
 
 /* Keyboard scan setting */
 __override struct keyboard_scan_config keyscan_config = {
