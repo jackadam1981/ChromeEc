@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af87b839_106da567",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4708,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-25T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be36c51_87bc6007",
+      "revId": "1e99236ef016fa75c5689b7bcf56898b457ec323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "507437f5_8849f76a",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6ec338_ff1c1984",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-25T20:50:16Z",
+      "side": 1,
+      "message": "Done\n\nhad to add ifdef in common/typec_control.c",
+      "parentUuid": "507437f5_8849f76a",
+      "revId": "1e99236ef016fa75c5689b7bcf56898b457ec323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f469f8f7_33250047",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-05-25T16:18:36Z",
       "side": 1,
       "message": "I think this should be `#ifdef CONFIG_USB_PD_SBU`.",
+      "revId": "1e99236ef016fa75c5689b7bcf56898b457ec323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f442d8ac_7303692c",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-25T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f469f8f7_33250047",
       "revId": "1e99236ef016fa75c5689b7bcf56898b457ec323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
