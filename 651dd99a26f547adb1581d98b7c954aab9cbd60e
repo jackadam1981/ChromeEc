@@ -16,6 +16,24 @@
       "message": "Will IS_ENABLED work here?",
       "revId": "651dd99a26f547adb1581d98b7c954aab9cbd60e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac3938c_9b0c10da",
+        "filename": "common/typec_control.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-25T21:12:57Z",
+      "side": 1,
+      "message": "I am seeing compilation error for boards without CONFIG_USB_PD_TCPM_SBU",
+      "parentUuid": "806cd9ad_78beb4f1",
+      "revId": "651dd99a26f547adb1581d98b7c954aab9cbd60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
