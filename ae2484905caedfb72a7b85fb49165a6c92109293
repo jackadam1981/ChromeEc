@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bf1c37_e5d454b1",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 30
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T19:25:00Z",
+      "side": 1,
+      "message": "will remove we need to implement this soon though",
+      "parentUuid": "944f37bd_809584b6",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "ae2484905caedfb72a7b85fb49165a6c92109293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5ddf11c_f8d18c2d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-25T19:13:46Z",
       "side": 1,
       "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "ae2484905caedfb72a7b85fb49165a6c92109293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b610db_99853832",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T19:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5ddf11c_f8d18c2d",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d5ae729_0f61ea29",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T19:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f388c7bd_b3fc83ba",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "ae2484905caedfb72a7b85fb49165a6c92109293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b68d0074_e19c083d",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3e243b_2b85b086",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T19:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b68d0074_e19c083d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "ae2484905caedfb72a7b85fb49165a6c92109293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32d90d69_f8d40b93",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-05-25T19:13:46Z",
       "side": 1,
       "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "ae2484905caedfb72a7b85fb49165a6c92109293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d044faf_24be2946",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T19:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d90d69_f8d40b93",
       "range": {
         "startLine": 1,
         "startChar": 13,
