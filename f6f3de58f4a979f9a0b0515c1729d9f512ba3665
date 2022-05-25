@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9035610_65f482a3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-25T16:38:16Z",
+      "side": 1,
+      "message": "Nit: This could be in terms of `set_cable_rev`.",
+      "revId": "f6f3de58f4a979f9a0b0515c1729d9f512ba3665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
