@@ -22,6 +22,30 @@
       },
       "revId": "8aab4d4acf5a009131ad3529de68187f8511ed95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf97152_63116424",
+        "filename": "common/usb_control.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-25T00:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cd309bb_6d41a7c5",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "8aab4d4acf5a009131ad3529de68187f8511ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
