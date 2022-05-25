@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8085ad_59ef3cb6",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-25T23:28:11Z",
+      "side": 1,
+      "message": "Can you add _L suffix (in gpio.inc)? It\u0027s a convention we use to avoid mistakes like this.",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "a4dfc861d2652995f1cf274c61a1e03b3d5ba717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
