@@ -70,6 +70,30 @@
       },
       "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73382d45_7ce62c06",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-05-25T11:03:37Z",
+      "side": 1,
+      "message": "What do you mean by Legacy API? `CONFIG_PLATFORM_EC_IOEX\u003dy` and  `CONFIG_PLATFORM_EC_IOEX_CROS_DRV\u003dn` means that we support ioexpander using Zephyr drivers instead of the ones from CrosEC codebase `ec/driver/ioexpander/...`",
+      "parentUuid": "198a377e_13ff940b",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 71
+      },
+      "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
