@@ -7,6 +7,7 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/watchdog.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/pm/device.h>
 #include <soc.h>
 #include <soc/nuvoton_npcx/reg_def_cros.h>
 #include <zephyr/sys/util.h>
@@ -424,12 +425,6 @@ static void system_npcx_hibernate_by_psl(const struct device *dev,
 	ARG_UNUSED(microseconds);
 
 	/*
-	 * Configure PSL input pads from "psl-in-pads" property in device tree
-	 * file.
-	 */
-	npcx_pinctrl_psl_input_configure();
-
-	/*
 	 * Give the board a chance to do any late stage hibernation work.  This
 	 * is likely going to configure GPIOs for hibernation.  On some boards,
 	 * it's possible that this may not return at all.  On those boards,
@@ -438,8 +433,19 @@ static void system_npcx_hibernate_by_psl(const struct device *dev,
 	if (board_hibernate_late)
 		board_hibernate_late();
 
-	/* Turn off VCC1 to enter ultra-low-power mode for hibernating */
-	npcx_pinctrl_psl_output_set_inactive();
+	/*
+	 * By running a pm action on a device, 'power_domain_psl', this utility
+	 * configure PSL_IN pads from "pinctrl-0" prop. of its node. Then, turn
+	 * off VCC1 to enter ultra-low-power mode by PSL_OUT for hibernating.
+	 */
+	/*   */
+	if (IS_ENABLED(CONFIG_POWER_DOMAIN_PSL)) {
+		const struct device *dev_psl =
+			DEVICE_DT_GET(DT_NODELABEL(power_domain_psl));
+		enum pm_device_action p_action = PM_DEVICE_ACTION_TURN_OFF;
+
+		pm_device_action_run(dev_psl, p_action);
+	}
 }
 
 static int cros_system_npcx_get_reset_cause(const struct device *dev)
@@ -525,8 +531,8 @@ static int cros_system_npcx_soc_reset(const struct device *dev)
 #error "cros-ec,hibernate-wake-pins cannot be used with HIBERNATE_PSL"
 #endif
 #else
-#if DT_HAS_COMPAT_STATUS_OKAY(nuvoton_npcx_pslctrl_def)
-#error "vsby-psl-in-list cannot be used with non-HIBERNATE_PSL"
+#if DT_HAS_COMPAT_STATUS_OKAY(nuvoton_npcx_power_domain_psl)
+#error "nuvoton,npcx-power-domain-psl cannot be used with non-HIBERNATE_PSL"
 #endif
 #endif
 
