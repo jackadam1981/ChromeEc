@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f10b210_8f10e112",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-25T21:05:50Z",
+      "side": 1,
+      "message": "I just realized I suggested the opposite design pattern in the following CL. I think there might still be an opportunity to streamline this, but it\u0027s fine as is for now.",
+      "parentUuid": "95cadbbf_e2fb31d8",
+      "revId": "8eeb9da6a0ba8a713c2b2e3d96f5b46f0c39c9bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d84c1367_47f40619",
