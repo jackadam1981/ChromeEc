@@ -16,6 +16,24 @@
       "message": "This function should only ever be used at the one point in the thread, so I\u0027d prefer to inline it.",
       "revId": "c44613f1a198762e4971e0da62fd1a1949bfc8d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9186744_573ac9db",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-25T04:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19dd0e03_b656fdff",
+      "revId": "c44613f1a198762e4971e0da62fd1a1949bfc8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
