@@ -166,6 +166,8 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 	return EC_SUCCESS;
 }
 
+void *in_deferred;
+
 void hook_task(void *u)
 {
 	/* Periodic hooks will be called first time through the loop */
@@ -197,7 +199,9 @@ void hook_task(void *u)
 				interrupt_enable();
 				CPRINTS("hook call deferred 0x%pP",
 					__deferred_funcs[i].routine);
+				in_deferred = __deferred_funcs[i].routine;
 				__deferred_funcs[i].routine();
+				in_deferred = NULL;
 				interrupt_disable();
 			}
 		}

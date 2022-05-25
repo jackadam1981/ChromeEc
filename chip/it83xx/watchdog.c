@@ -36,6 +36,7 @@ static void watchdog_set_warning_timer(int32_t ms, int init)
 	ext_timer_ms(WDT_EXT_TIMER, EXT_PSR_32P768K_HZ, 1, 1, ms, init, 0);
 }
 
+extern void *in_deferred;
 void watchdog_warning_irq(void)
 {
 #ifdef CONFIG_SOFTWARE_PANIC
@@ -63,8 +64,8 @@ void watchdog_warning_irq(void)
 	 * sequential instruction for function call return purposes.
 	 * LP = PC+4 after a jump and link instruction (jal).
 	 */
-	panic_printf("Pre-WDT warning! IPC:%08x LP:%08x TASK_ID:%d\n",
-		get_ipc(), ilp, task_get_current());
+	panic_printf("Pre-WDT warning! IPC:%08x LP:%08x TASK_ID:%d, in_deferred=%pP\n",
+		     get_ipc(), ilp, task_get_current(), in_deferred);
 #elif defined(CHIP_CORE_RISCV)
 	panic_printf("Pre-WDT warning! MEPC:%08x RA:%08x TASK_ID:%d\n",
 		get_mepc(), ira, task_get_current());
