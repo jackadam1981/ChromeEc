@@ -22,6 +22,30 @@
       },
       "revId": "82bc9aec4cf506bf9509258405d09f502e947dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d2eb65_08703969",
+        "filename": "zephyr/projects/brya/bb_retimer.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-05-25T16:48:37Z",
+      "side": 1,
+      "message": "I added code to generate bb_controls in this CL. Please check if it is OK.",
+      "parentUuid": "8945dc48_5853e381",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "82bc9aec4cf506bf9509258405d09f502e947dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
