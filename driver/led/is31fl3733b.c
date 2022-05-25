@@ -134,9 +134,24 @@ static int is31fl3733b_reset(struct rgbkbd *ctx)
 static int is31fl3733b_enable(struct rgbkbd *ctx, bool enable)
 {
 	uint8_t u8;
-	int rv;
+	int i, rv;
 
 	gpio_set_level(GPIO_RGBKBD_SDB_L, enable ? 1 : 0);
+
+	if (enable) {
+		/* enable all led */
+		rv = is31fl3733b_set_page(ctx, IS31FL3733B_PAGE_CTRL);
+		if (rv) {
+			return rv;
+		}
+
+		for (i = 0; i < 0x18; i++) {
+			rv = is31fl3733b_write(ctx, i, 0xff);
+			if (rv)
+				CPRINTS("LED 0x%02x init fail (rv=%d)",
+								i, rv);
+		}
+	}
 
 	rv = is31fl3733b_get_config(ctx, IS31FL3733B_FUNC_CFG, &u8);
 	if (rv) {
@@ -190,22 +205,10 @@ static int is31fl3733b_set_gcc(struct rgbkbd *ctx, uint8_t level)
 
 static int is31fl3733b_init(struct rgbkbd *ctx)
 {
-	int i, rv;
+	int rv;
 
 	rv = is31fl3733b_reset(ctx);
 	msleep(3);
-
-	/* enable all led */
-	rv = is31fl3733b_set_page(ctx, IS31FL3733B_PAGE_CTRL);
-	if (rv) {
-		return rv;
-	}
-
-	for (i = 0; i < 0x18; i++) {
-		rv = is31fl3733b_write(ctx, i, 0xff);
-		if (rv)
-			CPRINTS("LED 0x%02x init fail (rv=%d)", i, rv);
-	}
 
 	if (IS_ENABLED(CONFIG_RGB_KEYBOARD_DEBUG)) {
 
