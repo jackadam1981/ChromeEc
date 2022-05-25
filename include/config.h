@@ -112,12 +112,6 @@
 #undef CONFIG_ACCEL_LIS2DWL
 #undef CONFIG_ACCEL_LIS2DW_COMMON
 
-/* lis2dw driver support fifo and interrupt, but letting lid accel sensor work
- * at polling mode is a common selection in current usage model. We need get a
- * option to be able to select interrupt or polling (foced mode).
- */
-#undef CONFIG_ACCEL_LIS2DW_AS_BASE
-
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_BMI220
 #undef CONFIG_ACCELGYRO_BMI260
@@ -375,6 +369,7 @@
 #undef CONFIG_ACCELGYRO_BMI260_INT_EVENT
 #undef CONFIG_ACCELGYRO_BMI3XX_INT_EVENT
 #undef CONFIG_ACCELGYRO_ICM426XX_INT_EVENT
+#undef CONFIG_ACCELGYRO_ICM42607_INT_EVENT
 #undef CONFIG_ACCEL_LSM6DSM_INT_EVENT
 #undef CONFIG_ACCEL_LSM6DSO_INT_EVENT
 #undef CONFIG_ACCEL_LIS2DS_INT_EVENT
@@ -4948,6 +4943,9 @@
 
 /* Set the default minimum battery percentage for Try.Src to be enabled */
 #define CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC 5
+
+/* Index for temperature sensor used in PD messages. Defaults to 0. */
+#define CONFIG_USB_PD_TEMP_SENSOR 0
 
 /*
  * Set the minimum battery percentage to allow a PD port to send resets as a
