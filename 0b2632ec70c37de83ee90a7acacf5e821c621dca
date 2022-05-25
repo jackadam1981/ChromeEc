@@ -94,6 +94,30 @@
       },
       "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b30f56_cf452920",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-25T17:00:00Z",
+      "side": 1,
+      "message": "Sorry I\u0027m reading more code and are even more confused, so after this `CONFIG_PLATFORM_EC_IOEX` only changes the code path here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/gpio.c;l\u003d157;drc\u003d041042627a750d7a141ce2392630464a24be39b5\n\nbut then `signal_is_ioex` is a `return 0` stub if `CONFIG_ZEPHYR` https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ioexpander.h;l\u003d127?q\u003dsignal_is_ioex\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F\n\nAm I missing something or we can rip those code out and merge the options? (in a followup patch of course)",
+      "parentUuid": "73382d45_7ce62c06",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 71
+      },
+      "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
