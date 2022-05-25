@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6e31fd_15461ce9",
+        "filename": "common/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-25T23:28:45Z",
+      "side": 1,
+      "message": "how does this map to systems with multiple fans?\ndoes DPTF end up treating them as a single fan?",
+      "range": {
+        "startLine": 489,
+        "startChar": 11,
+        "endLine": 489,
+        "endChar": 12
+      },
+      "revId": "ff4fb8fc5e8f164a2b59bf3763e2590c208f8ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de9bf39_f07885d3",
+        "filename": "common/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-25T23:28:45Z",
+      "side": 1,
+      "message": "i see it\u0027s common practice to not access the shared mem\nas \"volatile\". does that make sense?",
+      "range": {
+        "startLine": 490,
+        "startChar": 1,
+        "endLine": 490,
+        "endChar": 11
+      },
+      "revId": "ff4fb8fc5e8f164a2b59bf3763e2590c208f8ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
