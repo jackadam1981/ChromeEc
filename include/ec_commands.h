@@ -836,6 +836,15 @@ struct ec_lpc_host_args {
 #define EC_SPI_RX_READY       0xf8
 
 /*
+ * Same as EC_SPI_OLD_READY.
+ *
+ * NOTE: Some SPI configurations place the Most Significant Bit on SDO when
+ *	 CS goes low. This macro has the Most Significant Bit set to zero,
+ *	 so SDO will not be driven high when CS goes low.
+ */
+#define EC_SPI_READY 0x7d
+
+/*
  * EC has started receiving the request from the AP, but hasn't started
  * processing it yet.
  */
