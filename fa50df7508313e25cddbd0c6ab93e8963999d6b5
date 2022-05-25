@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b407e02_0600c055",
+        "filename": "board/osiris/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-25T02:09:33Z",
+      "side": 1,
+      "message": "keyboard_matrix_init should runing earlier than vivaldi_init",
+      "range": {
+        "startLine": 108,
+        "startChar": 46,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "fa50df7508313e25cddbd0c6ab93e8963999d6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
