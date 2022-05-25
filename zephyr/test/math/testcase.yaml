@@ -1,0 +1,5 @@
+tests:
+  math.foo:
+    tags: ec math zephyr
+    extra_args: DTC_OVERLAY_FILE="../../zephyr/dts/board-overlays/native_posix.dts"
+    #extra_args: CONF_FILE="/mnt/host/source/src/platform/ec/zephyr/test/math/prj.conf"
