@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ed1c77_185204df",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-25T01:13:46Z",
+      "side": 1,
+      "message": "`board_is_ready_to_power_up` calls `charge_prevent_power_on` which seems to do a few more checks compared to `system_can_boot_ap`, I think is enough leaving `board_is_ready_to_power_up`.",
+      "parentUuid": "40f31df6_891e9551",
+      "revId": "9841e4229f41300d23dbd1b0fa3bec52ecbf24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48479065_43daa6b5",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ba6e25_057922f9",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-25T01:13:46Z",
+      "side": 1,
+      "message": "Ack, see comment above.",
+      "parentUuid": "48479065_43daa6b5",
+      "revId": "9841e4229f41300d23dbd1b0fa3bec52ecbf24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72762212_c63dfafd",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-05-24T23:54:36Z",
       "side": 1,
       "message": "If this loops while polling, I don\u0027t think the battery callback is useful because the charge state change would be noticed on the next poll.\n\nOn the other hand, not looping here and using a notification from the callback (similar to my suggestion on https://crrev.com/c/3631638) would be a good alternative that would want the callback.",
+      "revId": "9841e4229f41300d23dbd1b0fa3bec52ecbf24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed2c34b_89595a1d",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-25T01:13:46Z",
+      "side": 1,
+      "message": "\u003e On the other hand, not looping here and using a notification from the callback (similar to my suggestion on https://crrev.com/c/3631638) would be a good alternative that would want the callback.\n\nAgree, is better to use notification.",
+      "parentUuid": "72762212_c63dfafd",
       "revId": "9841e4229f41300d23dbd1b0fa3bec52ecbf24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
