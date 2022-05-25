@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6be36c51_87bc6007",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4708,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-25T16:18:36Z",
+      "side": 1,
+      "message": "I think this should probably be something like `CONFIG_USB_PD_TCPM_SBU`, analogous to (and next to) `CONFIG_USB_PD_TCPM_MUX`.",
+      "revId": "1e99236ef016fa75c5689b7bcf56898b457ec323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "507437f5_8849f76a",
         "filename": "include/driver/tcpm/tcpm.h",
         "patchSetId": 6
@@ -14,6 +31,23 @@
       "writtenOn": "2022-05-25T16:09:30Z",
       "side": 1,
       "message": "AFAIK, no built-in TCPCs have this ability. My sense is that this should probably be in the `!CONFIG_USB_PD_TCPC` section above.\n\nWhat is the meaning of this return value?",
+      "revId": "1e99236ef016fa75c5689b7bcf56898b457ec323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f469f8f7_33250047",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-25T16:18:36Z",
+      "side": 1,
+      "message": "I think this should be `#ifdef CONFIG_USB_PD_SBU`.",
       "revId": "1e99236ef016fa75c5689b7bcf56898b457ec323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
