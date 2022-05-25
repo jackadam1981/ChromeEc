@@ -4,7 +4,15 @@
 # found in the LICENSE file.
 
 # Required chip modules
-chip-y+=$(CHIP_VARIANT)/uart.o
-chip-y+=$(CHIP_VARIANT)/clock.o
+chip-y+=mt8195/uart.o
+chip-y+=mt8195/clock_$(CHIP_VARIANT).o
+chip-y+=mt8195/clock_s3_$(CHIP_VARIANT).o
+chip-y+=mt8195/intc_group.o
+
+ifeq ($(CHIP_VARIANT), mt8195)
 chip-y+=$(CHIP_VARIANT)/video.o
-chip-y+=$(CHIP_VARIANT)/intc_group.o
+endif
+
+ifeq ($(CHIP_VARIANT), mt8195_core1)
+chip-y+=mt8195/ipi_ops.o
+endif

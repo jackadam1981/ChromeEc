@@ -24,7 +24,7 @@ struct mpu_entry mpu_entries[NR_MPU_ENTRIES] = {
 #endif
 	/* For SCP sys */
 	{ 0x70000000, 0x80000000, MPU_ATTR_W | MPU_ATTR_R },
-#if defined(CHIP_VARIANT_MT8195) || defined(CHIP_VARIANT_MT8188)
+#if defined(CHIP_VARIANT_MT8195) || defined(CHIP_VARIANT_MT8188) || defined(CHIP_VARIANT_MT8195_CORE1)
 	{ CONFIG_DRAM_BASE, DRAM_NC_BASE, MPU_ATTR_C | MPU_ATTR_W | MPU_ATTR_R },
 	{ DRAM_NC_BASE, KERNEL_BASE + KERNEL_SIZE, MPU_ATTR_W | MPU_ATTR_R },
 #else
@@ -39,7 +39,7 @@ static void report_previous_panic(void)
 {
 	struct panic_data *panic = panic_get_data();
 
-	if (panic == NULL && SCP_CORE0_MON_PC_LATCH == 0)
+	if (panic == NULL && SCP_CORE_MON_PC_LATCH == 0)
 		return;
 
 	ccprintf("[Previous Panic]\n");
@@ -48,8 +48,8 @@ static void report_previous_panic(void)
 	} else {
 		ccprintf("No panic data\n");
 	}
-	ccprintf("Latch PC:%x LR:%x SP:%x\n", SCP_CORE0_MON_PC_LATCH,
-		 SCP_CORE0_MON_LR_LATCH, SCP_CORE0_MON_SP_LATCH);
+	ccprintf("Latch PC:%x LR:%x SP:%x\n", SCP_CORE_MON_PC_LATCH,
+		 SCP_CORE_MON_LR_LATCH, SCP_CORE_MON_SP_LATCH);
 }
 DECLARE_HOOK(HOOK_INIT, report_previous_panic, HOOK_PRIO_DEFAULT);
 #endif

@@ -7,5 +7,9 @@
 #
 
 CHIP:=mt_scp
+ifeq ($(BOARD), cherry_scp_core1)
+CHIP_VARIANT:=mt8195_core1
+else
 CHIP_VARIANT:=mt8195
+endif
 BASEBOARD:=mtscp-rv32i
