@@ -46,6 +46,30 @@
       },
       "revId": "d9dc398e171dc01c25ec5075d7e145b80dea96cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515799e6_b6593bc4",
+        "filename": "board/c2d2/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-25T21:32:35Z",
+      "side": 0,
+      "message": "I mean, should drain_vref_lines() also set these pins to ODR_HIGH if we want to keep them in a consistent state?  Otherwise their current state will depend on whatever else c2d2 has been up to in its time since power up and the user may find they cannot set them from gpioget as expected",
+      "parentUuid": "a5919644_eaed1f31",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "d9dc398e171dc01c25ec5075d7e145b80dea96cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
