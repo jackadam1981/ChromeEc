@@ -161,6 +161,7 @@ extern "C" {
 #define EC_MEMMAP_BATT_SERIAL      0x70 /* Battery Serial Number String */
 #define EC_MEMMAP_BATT_TYPE        0x78 /* Battery Type String */
 #define EC_MEMMAP_ALS              0x80 /* ALS readings in lux (2 X 16 bits) */
+#define EC_MEMMAP_FAN_RPM          0x82 /* Current Fan Speed in RPM */
 /* Unused 0x84 - 0x8f */
 #define EC_MEMMAP_ACC_STATUS       0x90 /* Accelerometer status (8 bits )*/
 /* Unused 0x91 */
