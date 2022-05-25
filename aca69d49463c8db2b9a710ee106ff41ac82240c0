@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a77e03_e7a3fee1",
+        "filename": "board/osiris/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-25T23:58:12Z",
+      "side": 1,
+      "message": "RGB keyboard power is supposed to be controlled just like a normal keyboard backlight. We already have suspend/resume hooks in keyboard_backlight.c. osiris/board.c should only need to turn it on in board_kblight_init. board_kblight_shutdown will be called for reset.",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "aca69d49463c8db2b9a710ee106ff41ac82240c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
