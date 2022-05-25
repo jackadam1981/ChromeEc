@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f4ee9d_761cdecf",
+        "filename": "zephyr/projects/intelrvp/BUILD.py",
+        "patchSetId": 29
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42a90d28_92176de7",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f15970bd_db79fe0d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-18T23:07:46Z",
       "side": 1,
       "message": "tab",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 10
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc4b76a_2f9dc73a",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 29
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15970bd_db79fe0d",
       "range": {
         "startLine": 379,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a50109_e131f730",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/hb_retimer.dts",
+        "patchSetId": 29
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c49e629a_62f875c7",
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6467ea20_e31f750a",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-05-18T23:07:46Z",
       "side": 1,
       "message": "add in follow on CLs",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 6
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ecdc82_5ec8c009",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6467ea20_e31f750a",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72fa723f_d05b07fe",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4fb5434_57057603",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 6
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2055199_1dcf8922",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-05-18T23:07:46Z",
       "side": 1,
       "message": "refer my previous comment",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 78
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700802af_8365eaaa",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2055199_1dcf8922",
       "range": {
         "startLine": 177,
         "startChar": 0,
@@ -158,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee7e5ce0_308c6f60",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "this is highlighting a very large section of code is there a specific part you are referring to?",
+      "parentUuid": "604d80b7_6adf858e",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 0
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62bf7b14_6cd4ad3b",
         "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
         "patchSetId": 29
@@ -169,6 +331,30 @@
       "writtenOn": "2022-05-18T23:07:46Z",
       "side": 1,
       "message": "tab",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64e5bd9_d5f3c1e2",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62bf7b14_6cd4ad3b",
       "range": {
         "startLine": 29,
         "startChar": 1,
@@ -192,6 +378,30 @@
       "writtenOn": "2022-05-18T23:07:46Z",
       "side": 1,
       "message": "all it from sys_int function",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 65
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6187151_b57e3c78",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-05-25T18:43:35Z",
+      "side": 1,
+      "message": "moved this to board code instead of this mecc code",
+      "parentUuid": "2ded0ba9_27c8dac6",
       "range": {
         "startLine": 39,
         "startChar": 0,
