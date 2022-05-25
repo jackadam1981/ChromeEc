@@ -320,6 +320,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b8291cf_7b23713b",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-05-25T18:47:31Z",
+      "side": 1,
+      "message": "except below function we can remove everything\nvoid board_connect_c0_sbu(enum gpio_signal signal)\n{\n\thook_call_deferred(\u0026board_connect_c0_sbu_deferred_data, 0);\n}",
+      "parentUuid": "ee7e5ce0_308c6f60",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 0
+      },
+      "revId": "6416cdde13037ad4edb2a090b546c2c34694274f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62bf7b14_6cd4ad3b",
         "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
         "patchSetId": 29
