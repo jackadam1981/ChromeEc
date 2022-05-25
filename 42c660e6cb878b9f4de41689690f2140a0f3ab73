@@ -22,6 +22,30 @@
       },
       "revId": "42c660e6cb878b9f4de41689690f2140a0f3ab73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99eb7975_726b5fce",
+        "filename": "include/gpio.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-05-25T09:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b95acc9_4074562b",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 61
+      },
+      "revId": "42c660e6cb878b9f4de41689690f2140a0f3ab73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
