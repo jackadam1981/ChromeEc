@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507437f5_8849f76a",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-05-25T16:09:30Z",
+      "side": 1,
+      "message": "AFAIK, no built-in TCPCs have this ability. My sense is that this should probably be in the `!CONFIG_USB_PD_TCPC` section above.\n\nWhat is the meaning of this return value?",
+      "revId": "1e99236ef016fa75c5689b7bcf56898b457ec323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
