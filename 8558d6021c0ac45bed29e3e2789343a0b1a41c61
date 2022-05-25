@@ -16,6 +16,24 @@
       "message": "You might need to add CONFIG_TEMP_SENSOR_POWER to make this effect as well.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/thermal.c;drc\u003d42d03a00128e4be0d149e6142d1987518cfead20;l\u003d59",
       "revId": "8558d6021c0ac45bed29e3e2789343a0b1a41c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "270de143_e0562a0e",
+        "filename": "board/agah/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-25T23:40:15Z",
+      "side": 1,
+      "message": "LGTM after Kenny\u0027s comment is addressed.",
+      "parentUuid": "c23edcb7_d78cb09e",
+      "revId": "8558d6021c0ac45bed29e3e2789343a0b1a41c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
