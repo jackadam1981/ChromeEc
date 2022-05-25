@@ -484,11 +484,21 @@ struct pwm_fan_state {
 #define FAN_STATE_FLAG_ENABLED	BIT(0)
 #define FAN_STATE_FLAG_THERMAL	BIT(1)
 
+static void update_fan_rpm(void)
+{
+	int fan = 0;
+	uint16_t *memmap_rpm = (uint16_t *)host_get_memmap(EC_MEMMAP_FAN_RPM);
+
+	*memmap_rpm = fan_get_rpm_actual(FAN_CH(fan));
+}
+DECLARE_HOOK(HOOK_SECOND, update_fan_rpm, HOOK_PRIO_DEFAULT);
+
 static void pwm_fan_init(void)
 {
 	const struct pwm_fan_state *prev;
 	struct pwm_fan_state state;
 	uint16_t *mapped;
+	uint16_t *memmap_rpm;
 	int version, size;
 	int i;
 	int fan;
@@ -520,6 +530,13 @@ static void pwm_fan_init(void)
 	mapped = (uint16_t *)host_get_memmap(EC_MEMMAP_FAN);
 	for (i = 0; i < EC_FAN_SPEED_ENTRIES; i++)
 		mapped[i] = EC_FAN_SPEED_NOT_PRESENT;
+
+	memmap_rpm = (uint16_t *)host_get_memmap(EC_MEMMAP_FAN_RPM);
+	/* Initialize the value */
+	*memmap_rpm = 0;
+
+	/* Update the fan rpm value */
+	update_fan_rpm();
 }
 DECLARE_HOOK(HOOK_INIT, pwm_fan_init, HOOK_PRIO_DEFAULT);
 
