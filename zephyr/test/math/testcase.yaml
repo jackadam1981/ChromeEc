@@ -1,0 +1,4 @@
+tests:
+  math.foo:
+    tags: ec math zephyr
+    #extra_args: CONF_FILE="/mnt/host/source/src/platform/ec/zephyr/test/math/prj.conf"
