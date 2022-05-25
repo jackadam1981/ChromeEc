@@ -33,6 +33,23 @@
       "message": "Looking at the dependent change (https://crrev.com/c/3662701), I\u0027m not sure if we need this at all. I\u0027ve left comments there for which the answers determine whether we need this.",
       "revId": "dd6c4b05fb73277fb3e04864d4c99f8847898bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d4d239_3f763dc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-25T00:56:24Z",
+      "side": 1,
+      "message": "So I am not sure if extending this notification API like this is the best thing.\nThis particular API is used to replace the HOOK_CHIPSET notifications, and is generally used to send notifications from the chipset power sequence code, rather than the other way around.\nSo it does seem there is a need to provide a battery status notification API, so that the power sequence code can be notified of change.\nThe legacy code has a more generic HOOK based notification framework, and Zephyr doesn\u0027t really have anything generic, but each subsystem seems to have a separate notification framework (so that\u0027s how the ap_power notification API was built).\n\nIf you do need to hook into the existing legacy battery notification, you could do it as a shimmed hook function, and then call a function in the power sequence code.\n\n",
+      "revId": "dd6c4b05fb73277fb3e04864d4c99f8847898bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
