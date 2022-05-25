@@ -22,6 +22,30 @@
       },
       "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9843264_faa248a8",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-05-25T07:24:18Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t think this relationship is required. I just don\u0027t want to compile the file `ioex.c` when we use Zephyr drivers - `CONFIG_PLATFORM_EC_IOEX_CROS_DRV\u003dn`. The only function that was used from this for Zephyr drivers was `ioex_init`, but it takes as an argument the index to the `ioex_config` array, which we don\u0027t create in this case, so I switched to the `gpio_reset_port` call. E.g. for Brya `CONFIG_PLATFORM_EC_IOEX\u003dy`, but `CONFIG_PLATFORM_EC_IOEX_CROS_DRV\u003dn`.",
+      "parentUuid": "9b775a14_371f5d6f",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 71
+      },
+      "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
