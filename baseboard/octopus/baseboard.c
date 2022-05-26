@@ -330,7 +330,7 @@ void board_hibernate(void)
 	 * and never returns back to the power state machine to take down power
 	 * rails.
 	 */
-#ifdef HAS_TASK_CHIPSET
+#if HAS_AP_CHIPSET
 	if (task_get_current() == TASK_ID_CHIPSET)
 		chipset_do_shutdown();
 	else
