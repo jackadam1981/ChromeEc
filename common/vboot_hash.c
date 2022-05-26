@@ -296,7 +296,7 @@ static void vboot_hash_init(void)
 	{
 		/* Start computing the hash of RW firmware */
 		vboot_hash_start(flash_get_rw_offset(system_get_active_copy()),
-				 get_rw_size(), NULL, 0, VBOOT_HASH_DEFERRED);
+				 get_rw_size(), NULL, 0, VBOOT_HASH_BLOCKING);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, vboot_hash_init, HOOK_PRIO_INIT_VBOOT_HASH);
