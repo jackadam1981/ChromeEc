@@ -124,7 +124,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	return EC_SUCCESS;
 }
 
-#ifdef HAS_TASK_CHIPSET
+#if HAS_AP_CHIPSET
 static void std_led_shutdown(void)
 {
 	pwr_led_set_color(LED_OFF);

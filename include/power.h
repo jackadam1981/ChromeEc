@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_POWER_H
 #define __CROS_EC_POWER_H
 
+#include "chipset.h"
 #include "common.h"
 #include "compiler.h"
 #include "gpio_signal.h"
@@ -173,7 +174,7 @@ void power_set_state(enum power_state new_state);
  *
  * @return Current chipset power state
  */
-#ifdef HAS_TASK_CHIPSET
+#if HAS_AP_CHIPSET
 enum power_state power_get_state(void);
 #else
 static inline enum power_state power_get_state(void) {
@@ -204,11 +205,11 @@ enum power_state power_handle_state(enum power_state state);
 /**
  * Interrupt handler for power signal GPIOs.
  */
-#ifdef HAS_TASK_CHIPSET
+#if HAS_AP_CHIPSET
 void power_signal_interrupt(enum gpio_signal signal);
 #else
 static inline void power_signal_interrupt(enum gpio_signal signal) { }
-#endif /* !HAS_TASK_CHIPSET */
+#endif /* !HAS_AP_CHIPSET */
 
 /**
  * Interrupt handler for rsmrst signal GPIO. This interrupt handler should be
