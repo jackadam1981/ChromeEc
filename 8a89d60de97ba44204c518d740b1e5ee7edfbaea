@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae59b45_1d80c2a1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-26T16:33:02Z",
+      "side": 1,
+      "message": "The host command protocol v3 (the current version) should use this code instead of the below old code.\n\nBetter to put the new code under this line.",
+      "range": {
+        "startLine": 836,
+        "startChar": 0,
+        "endLine": 836,
+        "endChar": 34
+      },
+      "revId": "8a89d60de97ba44204c518d740b1e5ee7edfbaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc250a70_296096ac",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-26T16:33:02Z",
+      "side": 1,
+      "message": "Please create a totally new code and a new macro name.",
+      "range": {
+        "startLine": 874,
+        "startChar": 8,
+        "endLine": 874,
+        "endChar": 37
+      },
+      "revId": "8a89d60de97ba44204c518d740b1e5ee7edfbaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
