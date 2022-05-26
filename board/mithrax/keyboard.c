@@ -6,7 +6,9 @@
 #include "common.h"
 #include "ec_commands.h"
 #include "keyboard_scan.h"
+#include "rgb_keyboard.h"
 #include "timer.h"
+#include "tlc59116f.h"
 
 /* Keyboard scan setting */
 __override struct keyboard_scan_config keyscan_config = {
@@ -40,6 +42,39 @@ static const struct ec_response_keybd_config mithrax_kb = {
 	},
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY | KEYBD_CAP_NUMERIC_KEYPAD,
 };
+
+static struct rgb_s grid0[RGB_GRID0_COL * RGB_GRID0_ROW];
+
+struct rgbkbd rgbkbds[] = {
+	[0] = {
+		.cfg = &(const struct rgbkbd_cfg) {
+			.drv = &tlc59116f_drv,
+			.i2c = I2C_PORT_KBMCU,
+			.col_len = RGB_GRID0_COL,
+			.row_len = RGB_GRID0_ROW,
+		},
+		.init = &rgbkbd_default,
+		.buf = grid0,
+	},
+};
+const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
+
+const uint8_t rgbkbd_hsize = RGB_GRID0_COL;
+const uint8_t rgbkbd_vsize = RGB_GRID0_ROW;
+
+#define LED(x, y)	RGBKBD_COORD((x), (y))
+#define DELM		RGBKBD_DELM
+const uint8_t rgbkbd_map[] = {
+	DELM,
+	LED(0, 0), DELM,
+	LED(1, 0), DELM,
+	LED(2, 0), DELM,
+	LED(3, 0), DELM,
+	DELM,
+};
+#undef LED
+#undef DELM
+const size_t rgbkbd_map_size = ARRAY_SIZE(rgbkbd_map);
 
 __override const struct ec_response_keybd_config
 *board_vivaldi_keybd_config(void)
