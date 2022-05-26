@@ -920,9 +920,6 @@ extern struct jump_data mock_jump_data;
 #endif
 
 #undef CONFIG_CROS_FWID_VERSION
-#ifdef CONFIG_PLATFORM_EC_CROS_FWID_VERSION
-#define CONFIG_CROS_FWID_VERSION
-#endif
 
 #ifdef CONFIG_PLATFORM_EC_TIMER
 #define CONFIG_HWTIMER_64BIT
