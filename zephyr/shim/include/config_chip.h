@@ -920,7 +920,7 @@ extern struct jump_data mock_jump_data;
 #endif
 
 #undef CONFIG_CROS_FWID_VERSION
-#ifdef CONFIG_PLATFORM_EC_CROS_FWID_VERSION
+#if defined(CONFIG_PLATFORM_EC_CROS_FWID_VERSION) && !defined(CONFIG_ZEPHYR)
 #define CONFIG_CROS_FWID_VERSION
 #endif
 
