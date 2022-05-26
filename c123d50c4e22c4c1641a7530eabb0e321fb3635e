@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37cf51dc_f4f30459",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-26T21:31:47Z",
+      "side": 1,
+      "message": "This seems like another source of problems.  The documentation indicates this should only be called in a UART interrupt handler and that uart_irq_update() must be called each time uart_irq_tx_complete() is called.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 46
+      },
+      "revId": "c123d50c4e22c4c1641a7530eabb0e321fb3635e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
