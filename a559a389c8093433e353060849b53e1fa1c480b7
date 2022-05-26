@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a19e2b_f298ef84",
+        "filename": "zephyr/shim/include/usbc/bb_retimer_usb_mux.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-26T16:41:36Z",
+      "side": 1,
+      "message": "can you run `clang-format` on this file?",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 13,
+        "endChar": 58
+      },
+      "revId": "a559a389c8093433e353060849b53e1fa1c480b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
