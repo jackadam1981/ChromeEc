@@ -32,7 +32,8 @@
 
 		power-state-discharge-right-0 {
 			charge-state = "PWR_STATE_DISCHARGE";
-			extra-flag = "LED_BATT_BELOW_10_PCT";
+			/* Battery percent range from 0 to 10 inclusive */
+			batt-lvl = <0 10>;
 
 			/* Turn off the left LED */
 			color-0 {
@@ -51,7 +52,8 @@
 
 		power-state-discharge-right-1 {
 			charge-state = "PWR_STATE_DISCHARGE";
-			extra-flag = "LED_BATT_ABOVE_10_PCT";
+			/* Battery percent range from 11 to 100 inclusive */
+			batt-lvl = <11 100>;
 
 			/* Turn off the left LED */
 			color-0 {
