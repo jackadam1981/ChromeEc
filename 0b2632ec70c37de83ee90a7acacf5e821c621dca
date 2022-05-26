@@ -118,6 +118,30 @@
       },
       "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c209760d_7cc4e918",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-05-26T07:04:13Z",
+      "side": 1,
+      "message": "You are right, I will prepare a separate change to drop the `CONFIG_PLATFORM_EC_IOEX` config. Do you think we can submit this CL in the current form?",
+      "parentUuid": "a0b30f56_cf452920",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 71
+      },
+      "revId": "0b2632ec70c37de83ee90a7acacf5e821c621dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
