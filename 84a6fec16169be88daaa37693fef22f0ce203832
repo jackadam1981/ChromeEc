@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f79a76a4_44ad4816",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-26T17:19:42Z",
+      "side": 1,
+      "message": "can use IS_ENABLED?",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 7
+      },
+      "revId": "84a6fec16169be88daaa37693fef22f0ce203832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf36e15_e64c8f79",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-26T17:19:42Z",
+      "side": 1,
+      "message": "can use if(IS_ENABLED(...)?",
+      "range": {
+        "startLine": 445,
+        "startChar": 8,
+        "endLine": 445,
+        "endChar": 38
+      },
+      "revId": "84a6fec16169be88daaa37693fef22f0ce203832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c90936a_3ab80ae4",
+        "filename": "driver/ppc/rt1739.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-05-26T17:19:42Z",
+      "side": 1,
+      "message": "seems over-tabbed and noticing this in multiple places. you can use https://clang.llvm.org/docs/ClangFormat.html#script-for-patch-reformatting to reformat",
+      "range": {
+        "startLine": 382,
+        "startChar": 4,
+        "endLine": 382,
+        "endChar": 5
+      },
+      "revId": "84a6fec16169be88daaa37693fef22f0ce203832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
