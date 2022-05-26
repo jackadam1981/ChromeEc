@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebd2a50_8253f3c4",
+        "filename": "board/osiris/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-26T07:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6593820_4b275926",
+      "range": {
+        "startLine": 153,
+        "startChar": 8,
+        "endLine": 153,
+        "endChar": 24
+      },
+      "revId": "7ce1d341c65d00b5e043fb75bb1439987ff2e85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da99da52_2233fab2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-25T15:30:02Z",
       "side": 1,
       "message": "This needs to be much larger (128 entries). Why don\u0027t update it now?",
+      "range": {
+        "startLine": 42,
+        "startChar": 14,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "7ce1d341c65d00b5e043fb75bb1439987ff2e85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "273416ee_2db87e5a",
+        "filename": "board/osiris/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-26T07:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da99da52_2233fab2",
       "range": {
         "startLine": 42,
         "startChar": 14,
