@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed2de41_a992a629",
+        "filename": "board/damu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-26T16:12:57Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be 0?",
+      "range": {
+        "startLine": 279,
+        "startChar": 27,
+        "endLine": 279,
+        "endChar": 29
+      },
+      "revId": "910b9f5380bd8d7dd57fe6f3a9a5c2237997eefb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e779dd6_56c8f9a9",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-05-26T16:12:57Z",
+      "side": 1,
+      "message": "Why not now?",
+      "range": {
+        "startLine": 170,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 24
+      },
+      "revId": "910b9f5380bd8d7dd57fe6f3a9a5c2237997eefb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
