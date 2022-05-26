@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a8f534_f2c402a1",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1538887
+      },
+      "writtenOn": "2022-05-26T16:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bfc9195_4cc9d9ac",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "158d2e9b_f253a998",
@@ -171,6 +189,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4270a0c0_b58752e6",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1538887
+      },
+      "writtenOn": "2022-05-26T16:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "838a0b59_918aa9f1",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae217bad_c80aa207",
@@ -220,6 +256,24 @@
       "side": 1,
       "message": "It is specific to some Intel chipsets, e.g. on ADL, Intel added a note in the EDS saying that a pulse width of \u003e 100us was required for SCI#",
       "parentUuid": "ca13889f_9583a07e",
+      "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac5d5eba_8fd4c246",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1538887
+      },
+      "writtenOn": "2022-05-26T16:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ac96adf_864d89de",
       "revId": "de4281998daed99f21055dcae63d9f6f564b750e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
