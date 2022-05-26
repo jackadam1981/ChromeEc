@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2dc0bf9_cdfb6746",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-26T03:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c509aef_50d86fa2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "7b2c498b860f025584f3c9b9df1df49bc25d2bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fd55781_c35fc362",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61f3956_184d7a6d",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-26T03:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd55781_c35fc362",
+      "range": {
+        "startLine": 151,
+        "startChar": 24,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "7b2c498b860f025584f3c9b9df1df49bc25d2bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d699626b_edd717aa",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-25T15:47:31Z",
       "side": 1,
       "message": "This register is write only. So, u8 wouldn\u0027t get a meaningful value. You need to remove the read and start with u8\u003d0. (Please refer to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3654483 for an example.)\n\nAfter you fix that, please test the previous is31fl3733b_enable again. The reason it isn\u0027t working could be caused by a bad value in u8.",
+      "range": {
+        "startLine": 156,
+        "startChar": 34,
+        "endLine": 156,
+        "endChar": 54
+      },
+      "revId": "7b2c498b860f025584f3c9b9df1df49bc25d2bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4202fd_13c7f1f6",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-26T03:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d699626b_edd717aa",
       "range": {
         "startLine": 156,
         "startChar": 34,
