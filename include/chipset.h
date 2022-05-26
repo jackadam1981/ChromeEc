@@ -20,6 +20,28 @@
 #include "stddef.h"
 
 /*
+ * HAS_AP_CHIPSET is set to 1 if there is an application processor present and
+ * enabled, otherwise 0. Functions remain available if no AP is present, but
+ * act as though there were an AP present that is always off.
+ */
+#ifndef HAS_AP_CHIPSET
+# if defined(CONFIG_ZEPHYR)
+   /* Under Zephyr, using native or legacy power sequencing */
+#  define HAS_AP_CHIPSET (IS_ENABLED(CONFIG_AP_PWRSEQ) || IS_ENABLED(CONFIG_PLATFORM_EC_PWRSEQ))
+# else
+   /* Using legacy power sequencing or no AP */
+#  ifdef HAS_TASK_CHIPSET
+#   define HAS_AP_CHIPSET 1
+#  else
+#   define HAS_AP_CHIPSET 0
+#  endif
+# endif
+# define _STR(x) _XSTR(x)
+# define _XSTR(x) #x
+# pragma message "HAS_AP_CHIPSET: " _STR(HAS_AP_CHIPSET)
+#endif
+
+/*
  * Chipset state mask
  *
  * Note that this is a non-exhaustive list of states which the main chipset can
@@ -48,7 +70,7 @@ enum critical_shutdown {
 	CRITICAL_SHUTDOWN_CUTOFF,
 };
 
-#if defined(HAS_TASK_CHIPSET) || defined(CONFIG_ZEPHYR)
+#if HAS_AP_CHIPSET
 
 /**
  * Check if chipset is in a given state.
@@ -125,7 +147,7 @@ void chipset_pre_init_callback(void);
  */
 void init_reset_log(void);
 
-#else /* !HAS_TASK_CHIPSET */
+#else /* !HAS_AP_CHIPSET */
 
 /* When no chipset is present, assume it is always off. */
 static inline int chipset_in_state(int state_mask)
@@ -156,7 +178,7 @@ static inline void chipset_watchdog_interrupt(enum gpio_signal signal) { }
 
 static inline void init_reset_log(void) { }
 
-#endif /* !HAS_TASK_CHIPSET */
+#endif /* !HAS_AP_CHIPSET */
 
 /**
  * Optional chipset check if PLTRST# is valid.

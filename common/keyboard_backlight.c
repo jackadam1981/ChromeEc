@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "chipset.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "gpio.h"
@@ -115,7 +116,7 @@ static void keyboard_backlight_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, keyboard_backlight_init, HOOK_PRIO_DEFAULT);
 
-#ifdef HAS_TASK_CHIPSET
+#if HAS_AP_CHIPSET
 static void kblight_suspend(void)
 {
 	kblight_enable(0);
@@ -130,7 +131,7 @@ static void kblight_resume(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_resume, HOOK_PRIO_DEFAULT);
-#endif  // HAS_TASK_CHIPSET
+#endif  /* HAS_AP_CHIPSET */
 
 #ifdef CONFIG_LID_SWITCH
 static void kblight_lid_change(void)

@@ -191,7 +191,7 @@ int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
 /**
  * Set and update FW_CONFIG tag field
  *
- * This function is only included when HAS_TASK_CHIPSET is not defined. It is
+ * This function is only included when HAS_AP_CHIPSET is false. It is
  * intended to be used for projects which want CBI functions, but do not have an
  * AP and ectool host command access.
  *
