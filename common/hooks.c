@@ -166,6 +166,7 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 	return EC_SUCCESS;
 }
 
+extern void vboot_hash_next_chunk(void);
 void hook_task(void *u)
 {
 	/* Periodic hooks will be called first time through the loop */
@@ -194,11 +195,13 @@ void hook_task(void *u)
 				 * so it can request itself be called later.
 				 */
 				__deferred_until[i] = 0;
-				interrupt_enable();
+				if (__deferred_funcs[i].routine != vboot_hash_next_chunk)
+					interrupt_enable();
 				CPRINTS("hook call deferred 0x%pP",
 					__deferred_funcs[i].routine);
 				__deferred_funcs[i].routine();
-				interrupt_disable();
+				if (__deferred_funcs[i].routine != vboot_hash_next_chunk)
+					interrupt_disable();
 			}
 		}
 

@@ -71,7 +71,7 @@ void vboot_hash_abort(void)
 	}
 }
 
-static void vboot_hash_next_chunk(void);
+void vboot_hash_next_chunk(void);
 DECLARE_DEFERRED(vboot_hash_next_chunk);
 
 #ifndef CONFIG_MAPPED_STORAGE
@@ -146,7 +146,7 @@ static void vboot_hash_all_chunks(void)
 /**
  * Do next chunk of hashing work, if any.
  */
-static void vboot_hash_next_chunk(void)
+void vboot_hash_next_chunk(void)
 {
 	int size;
 
