@@ -16,6 +16,24 @@
       "message": "Is there a reason you\u0027re also changing nivviks as well as craask?\n",
       "revId": "60b016d265216c816fc4f77300dcede928a267af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc74475f_0cd1093c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-05-26T01:17:22Z",
+      "side": 1,
+      "message": "Nivviks and Craask are following the same LED spec so I change both in this CL.",
+      "parentUuid": "88b194fa_37a001f2",
+      "revId": "60b016d265216c816fc4f77300dcede928a267af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
