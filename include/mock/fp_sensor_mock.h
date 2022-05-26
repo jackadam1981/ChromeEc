@@ -15,7 +15,9 @@
 #include "fpsensor.h"
 
 struct mock_ctrl_fp_sensor {
+	int fp_sensor_is_initialized_return;
 	int fp_sensor_init_return;
+	int fp_sensor_perform_init_return;
 	int fp_sensor_deinit_return;
 	int fp_sensor_get_info_return;
 	enum finger_state fp_sensor_finger_status_return;
@@ -30,7 +32,9 @@ struct mock_ctrl_fp_sensor {
 
 #define MOCK_CTRL_DEFAULT_FP_SENSOR                                    \
 (struct mock_ctrl_fp_sensor) {                                         \
+	.fp_sensor_is_initialized_return             = EC_SUCCESS,     \
 	.fp_sensor_init_return                       = EC_SUCCESS,     \
+	.fp_sensor_perform_init_return               = EC_SUCCESS,     \
 	.fp_sensor_deinit_return                     = EC_SUCCESS,     \
 	.fp_sensor_get_info_return                   = EC_SUCCESS,     \
 	.fp_sensor_finger_status_return              = FINGER_NONE,    \

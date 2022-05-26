@@ -20,9 +20,19 @@
 
 struct mock_ctrl_fp_sensor mock_ctrl_fp_sensor = MOCK_CTRL_DEFAULT_FP_SENSOR;
 
+int fp_sensor_is_initialized(void)
+{
+	return mock_ctrl_fp_sensor.fp_sensor_is_initialized_return;
+}
+
 int fp_sensor_init(void)
 {
 	return mock_ctrl_fp_sensor.fp_sensor_init_return;
+}
+
+int fp_sensor_perform_init(void)
+{
+	return mock_ctrl_fp_sensor.fp_sensor_perform_init_return;
 }
 
 int fp_sensor_deinit(void)

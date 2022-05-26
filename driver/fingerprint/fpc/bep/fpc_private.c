@@ -24,6 +24,9 @@ static uint8_t enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE] __aligned(4) = {0};
 /* Recorded error flags */
 static uint16_t errors;
 
+/* tracks whether the sensor and algorithm have successfully initialized */
+static int is_initialized;
+
 /* FPC specific initialization and de-initialization functions */
 int fp_sensor_open(void);
 int fp_sensor_close(void);
@@ -153,8 +156,21 @@ int fpc_check_hwid(void)
 	return status;
 }
 
+int fp_sensor_is_initialized(void)
+{
+	return (is_initialized && !(errors & FP_ERROR_INIT_FAIL));
+}
+
 /* Reset and initialize the sensor IC */
 int fp_sensor_init(void)
+{
+	CPRINTS("-----> Request to initialize sensor");
+	is_initialized = 0;
+	return EC_SUCCESS;
+}
+
+/* needs a better name! */
+int fp_sensor_perform_init(void)
 {
 	int rc;
 
@@ -183,7 +199,15 @@ int fp_sensor_init(void)
 	/* Go back to low power */
 	fp_sensor_low_power();
 
-	return EC_SUCCESS;
+	if (errors & FP_ERROR_INIT_FAIL) {
+		is_initialized = 0;
+		rc = EC_ERROR_TRY_AGAIN;
+	} else {
+		is_initialized = 1;
+		rc = EC_SUCCESS;
+	}
+
+	return rc;
 }
 
 /* Deinitialize the sensor IC */
@@ -206,14 +230,18 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 {
 	int rc;
 
+	CPRINTS("-----> Attempting to initialize sensor");
+
 	spi_buf[0] = FPC_CMD_HW_ID;
 
 	memcpy(resp, &ec_fp_sensor_info, sizeof(struct ec_response_fp_info));
 
 	rc = spi_transaction(SPI_FP_DEVICE, spi_buf, 3, spi_buf,
 			     SPI_READBACK_ALL);
-	if (rc)
+	if (rc) {
+		errors |= FP_ERROR_SPI_COMM;
 		return EC_RES_ERROR;
+	}
 
 	resp->model_id = (spi_buf[1] << 8) | spi_buf[2];
 	resp->errors = errors;

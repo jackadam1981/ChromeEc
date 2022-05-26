@@ -47,6 +47,9 @@ static uint8_t enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE] __aligned(4);
 /* recorded error flags */
 static uint16_t errors;
 
+/* tracks whether the sensor and algorithm have successfully initialized */
+static int is_initialized;
+
 /* Sensor description */
 static struct ec_response_fp_info fpc1145_info = {
 	/* Sensor identification */
@@ -189,80 +192,113 @@ static int fpc_pulse_hw_reset(void)
 	return rc;
 }
 
+int fp_sensor_is_initialized(void)
+{
+	return (is_initialized && !(errors & FP_ERROR_INIT_FAIL));
+}
+
 /* Reset and initialize the sensor IC */
 int fp_sensor_init(void)
+{
+	CPRINTS("-----> Request to initialize sensor");
+	is_initialized = 0;
+	return EC_SUCCESS;
+}
+
+/* needs a better name! */
+int fp_sensor_perform_init(void)
 {
 	int res;
 	int attempt;
 
 	errors = FP_ERROR_DEAD_PIXELS_UNKNOWN;
 
+	CPRINTS("-----> Attempting to initialize sensor");
+
 	/* Release any previously held resources from earlier iterations */
 	res = bio_sensor_destroy(bio_sensor);
-	if (res)
+	if (res) {
+		errors |= FP_ERROR_INIT_FAIL;
 		CPRINTS("FPC Sensor resources release failed: %d", res);
+	}
 	bio_sensor = NULL;
 
 	res = bio_algorithm_exit();
-	if (res)
+	if (res) {
+		errors |= FP_ERROR_INIT_FAIL;
 		CPRINTS("FPC Algorithm resources release failed: %d", res);
+	}
 
 	/* Print the binary libfpsensor.a library version */
 	CPRINTF("FPC libfpsensor.a v%s\n", fp_sensor_get_version());
 	cflush();
 
-	attempt = 0;
-	do {
-		attempt++;
+	if (!(errors & FP_ERROR_INIT_FAIL)) {
+		attempt = 0;
+		do {
+			attempt++;
 
-		res = fpc_pulse_hw_reset();
-		if (res != EC_SUCCESS) {
-			/* In case of failure, retry after a delay. */
-			CPRINTS("H/W sensor reset failed, error flags: 0x%x",
-				errors);
+			res = fpc_pulse_hw_reset();
+			if (res != EC_SUCCESS) {
+				/* In case of failure, retry after a delay. */
+				CPRINTS(
+				  "H/W sensor reset failed, error flags: 0x%x",
+				  errors);
+				cflush();
+				usleep(FP_SENSOR_OPEN_DELAY_US);
+				continue;
+			}
+
+			/*
+			 * Ensure that any previous context data is obliterated
+			 * in case of a sensor reset.
+			 */
+			memset(ctx, 0, FP_SENSOR_CONTEXT_SIZE);
+
+			res = fp_sensor_open(ctx, FP_SENSOR_CONTEXT_SIZE);
+			/* Flush messages from the PAL if any */
 			cflush();
+			CPRINTS("Sensor init (attempt %d): 0x%x", attempt, res);
+			/*
+			 * Retry on failure. This typically happens if the user
+			 * has left their finger on the sensor after powering up
+			 * the device, DFD will fail in that case. We've seen
+			 * other error modes in the field, retry in all cases to
+			 * be more resilient.
+			 */
+			if (!res)
+				break;
 			usleep(FP_SENSOR_OPEN_DELAY_US);
-			continue;
-		}
+		} while (attempt < FP_SENSOR_MAX_INIT_ATTEMPTS);
+		if (res)
+			errors |= FP_ERROR_INIT_FAIL;
 
-		/*
-		 * Ensure that any previous context data is obliterated in case
-		 * of a sensor reset.
+		res = bio_algorithm_init();
+		/* the PAL might have spewed a lot of traces, ensure they are
+		 * visible
 		 */
-		memset(ctx, 0, FP_SENSOR_CONTEXT_SIZE);
-
-		res = fp_sensor_open(ctx, FP_SENSOR_CONTEXT_SIZE);
-		/* Flush messages from the PAL if any */
 		cflush();
-		CPRINTS("Sensor init (attempt %d): 0x%x", attempt, res);
-		/*
-		 * Retry on failure. This typically happens if the user has left
-		 * their finger on the sensor after powering up the device, DFD
-		 * will fail in that case. We've seen other error modes in the
-		 * field, retry in all cases to be more resilient.
-		 */
-		if (!res)
-			break;
-		usleep(FP_SENSOR_OPEN_DELAY_US);
-	} while (attempt < FP_SENSOR_MAX_INIT_ATTEMPTS);
-	if (res)
-		errors |= FP_ERROR_INIT_FAIL;
+		CPRINTS("Algorithm init: 0x%x", res);
+		if (res < 0)
+			errors |= FP_ERROR_INIT_FAIL;
+		res = bio_sensor_create(&bio_sensor);
+		CPRINTS("Sensor create: 0x%x", res);
+		if (res < 0)
+			errors |= FP_ERROR_INIT_FAIL;
 
-	res = bio_algorithm_init();
-	/* the PAL might have spewed a lot of traces, ensure they are visible */
-	cflush();
-	CPRINTS("Algorithm init: 0x%x", res);
-	if (res < 0)
-		errors |= FP_ERROR_INIT_FAIL;
-	res = bio_sensor_create(&bio_sensor);
-	CPRINTS("Sensor create: 0x%x", res);
-	if (res < 0)
-		errors |= FP_ERROR_INIT_FAIL;
+		/* Go back to low power */
+		fp_sensor_low_power();
+	}
 
-	/* Go back to low power */
-	fp_sensor_low_power();
+	if (errors & FP_ERROR_INIT_FAIL) {
+		is_initialized = 0;
+		res = EC_ERROR_TRY_AGAIN;
+	} else {
+		is_initialized = 1;
+		res = EC_SUCCESS;
+	}
 
-	return EC_SUCCESS;
+	return res;
 }
 
 /* Deinitialize the sensor IC */

@@ -232,7 +232,7 @@ static void fp_process_finger(void)
 
 void fp_task(void)
 {
-	int timeout_us = -1;
+	int timeout_us = 10;
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(get_fp_sensor_type()));
@@ -248,7 +248,42 @@ void fp_task(void)
 		/* Wait for a sensor IRQ or a new mode configuration */
 		evt = task_wait_event(timeout_us);
 
-		if (evt & TASK_EVENT_UPDATE_CONFIG) {
+		if (!fp_sensor_is_initialized()) {
+			int status;
+
+			CPRINTS(
+			  ":::::%s: "
+			  "sensor is not initialized, attempt now",
+			  __func__);
+			/* Reset and initialize the sensor IC */
+			status = fp_sensor_perform_init();
+			if (status == EC_SUCCESS) {
+				CPRINTS(
+				  ":::::%s: initialization succeeded",
+				  __func__);
+				timeout_us = 0;
+			} else {
+				CPRINTS(
+				  ":::::%s: "
+				  "initialization failed with 0x%x, "
+				  "resetting timer",
+				  __func__,
+				  status);
+				timeout_us = 1000 * 1000;
+			}
+		}
+
+		/* A separate check here allows to continue if the
+		 * above init succeeds but prevents other tasks on
+		 * uninitialized sensors.
+		 */
+		if (!fp_sensor_is_initialized()) {
+			CPRINTS(
+			  ":::::%s: "
+			  "sensor still not initialized, try again later",
+			  __func__);
+			continue;
+		} else if (evt & TASK_EVENT_UPDATE_CONFIG) {
 			uint32_t mode = sensor_mode;
 
 			gpio_disable_interrupt(GPIO_FPS_INT);
@@ -738,6 +773,11 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 	uint32_t mode_output = 0;
 	int rc = 0;
 
+	if (!fp_sensor_is_initialized()) {
+		CPRINTS("FP sensor is not initialized, aborting command");
+		return EC_ERROR_NOT_CALIBRATED;
+	}
+
 	if (!(sensor_mode & FP_MODE_RESET_SENSOR))
 		CPRINTS("Waiting for finger ...");
 
@@ -835,6 +875,16 @@ DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, NULL,
 			      "Enroll a new fingerprint",
 			      CMD_FLAG_RESTRICTED);
 
+static int command_reinitialize(int argc, char **argv)
+{
+	int ret = fp_sensor_init();
+
+	task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_UPDATE_CONFIG);
+	return ret;
+}
+DECLARE_CONSOLE_COMMAND_FLAGS(reinit, command_reinitialize, NULL,
+			      "Reinitialize FP sensor",
+			      CMD_FLAG_RESTRICTED);
 
 static int command_fpmatch(int argc, char **argv)
 {

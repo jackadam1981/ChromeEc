@@ -26,11 +26,26 @@
 /* --- functions provided by the sensor-specific driver --- */
 
 /**
- * Initialize the connected sensor hardware and put it in a low power mode.
+ * Returns a status indicating if the sensor has been initialized
+ *
+ * @return 0 if sensor is not initialized
+ * @return 1 if sensor is initialized
+ */
+int fp_sensor_is_initialized(void);
+
+/**
+ * Indicate that the connected sensor hardware must be initialized
  *
  * @return EC_SUCCESS always
  */
 int fp_sensor_init(void);
+
+/**
+ * Initialize the connected sensor hardware and put it in a low power mode.
+ *
+ * @return EC_SUCCESS always
+ */
+int fp_sensor_perform_init(void);
 
 /**
  * De-initialize the sensor hardware.
