@@ -127,7 +127,7 @@
 #define GPIO_WP_L			GPIO_EC_WP_ODL
 
 /* System has back-lit keyboard */
-#define CONFIG_PWM_KBLIGHT
+#define CONFIG_KEYBOARD_BACKLIGHT
 
 /* I2C Bus Configuration */
 
@@ -149,6 +149,7 @@
 #define I2C_PORT_CHARGER	NPCX_I2C_PORT7_0
 #define I2C_PORT_EEPROM		NPCX_I2C_PORT7_0
 #define I2C_PORT_MP2964		NPCX_I2C_PORT7_0
+#define I2C_PORT_KBMCU		NPCX_I2C_PORT3_0
 
 #define I2C_ADDR_EEPROM_FLAGS	0x50
 
@@ -184,6 +185,14 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
 
 #define CONFIG_KEYBOARD_REFRESH_ROW3
+
+/* RGB Keyboard */
+#ifdef SECTION_IS_RW
+#define CONFIG_RGB_KEYBOARD
+#define CONFIG_LED_DRIVER_TLC59116F     /* TLC59116F on I2C */
+#endif /* SECTION_IS_RW */
+#define RGB_GRID0_COL		4
+#define RGB_GRID0_ROW		1
 
 #ifndef __ASSEMBLER__
 
