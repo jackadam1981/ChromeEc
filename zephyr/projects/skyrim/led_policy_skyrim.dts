@@ -13,7 +13,8 @@
 		power-state-discharge-s0 {
 			charge-state = "PWR_STATE_DISCHARGE";
 			chipset-state = "POWER_S0";
-			extra-flag = "LED_BATT_ABOVE_10_PCT";
+			/* Battery percent range from 11 to 100 inclusive */
+			batt-lvl = <11 100>;
 
 			color-0 {
 				led-color = <&color_white>;
@@ -23,7 +24,8 @@
 		power-state-discharge-s0-batt-low {
 			charge-state = "PWR_STATE_DISCHARGE";
 			chipset-state = "POWER_S0";
-			extra-flag = "LED_BATT_BELOW_10_PCT";
+			/* Battery percent range from 0 to 10 inclusive */
+			batt-lvl = <0 10>;
 
 			/* White 2 sec, off 1 sec */
 			color-0 {
