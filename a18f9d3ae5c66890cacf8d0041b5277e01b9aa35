@@ -52,6 +52,24 @@
       "parentUuid": "c9a9a337_c07ecad9",
       "revId": "a18f9d3ae5c66890cacf8d0041b5277e01b9aa35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88996ab4_6c07f349",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1538887
+      },
+      "writtenOn": "2022-05-26T16:32:03Z",
+      "side": 1,
+      "message": "@Tim are you planning on adding the constant as part of this patch (new patchset) or adding it in a subsequent patch ? I have been told that these patches got even more attention as they seem to fix other issues and some would like to see them merged as soon as possible.\n\nI voted +1 on this patch as my request isn\u0027t critical as of right now and can be addressed later.",
+      "parentUuid": "5ff0f39e_37db8569",
+      "revId": "a18f9d3ae5c66890cacf8d0041b5277e01b9aa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
