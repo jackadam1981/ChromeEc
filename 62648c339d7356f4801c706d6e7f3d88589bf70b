@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469072ca_e2441437",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-05-26T20:38:34Z",
+      "side": 1,
+      "message": "that is a strange relationship. why are these related?\nif CONFIG_TABLET_MODE is defined, wouldn\u0027t you always\nwant to have the tabletmode command to go along with it?",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "62648c339d7356f4801c706d6e7f3d88589bf70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
