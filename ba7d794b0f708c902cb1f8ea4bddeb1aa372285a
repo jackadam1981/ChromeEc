@@ -22,6 +22,30 @@
       },
       "revId": "ba7d794b0f708c902cb1f8ea4bddeb1aa372285a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2aac8e9_abdc34a6",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-05-26T01:20:09Z",
+      "side": 1,
+      "message": "Hi Jimmy and Arthur, could you help to update a CL to address this concern? We would like to leverage neutral words more and sorry for not catching it earlier.",
+      "parentUuid": "14e8de87_6891e24e",
+      "range": {
+        "startLine": 862,
+        "startChar": 32,
+        "endLine": 862,
+        "endChar": 37
+      },
+      "revId": "ba7d794b0f708c902cb1f8ea4bddeb1aa372285a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
