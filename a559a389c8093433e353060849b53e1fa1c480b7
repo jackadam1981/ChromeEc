@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c55e4c08_2c299402",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-26T19:57:34Z",
+      "side": 1,
+      "message": "Can these macros get deleted after the Brya and ADLRVP boards are updated to use devicetree?",
+      "range": {
+        "startLine": 1584,
+        "startChar": 0,
+        "endLine": 1594,
+        "endChar": 0
+      },
+      "revId": "a559a389c8093433e353060849b53e1fa1c480b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28a19e2b_f298ef84",
         "filename": "zephyr/shim/include/usbc/bb_retimer_usb_mux.h",
         "patchSetId": 5
