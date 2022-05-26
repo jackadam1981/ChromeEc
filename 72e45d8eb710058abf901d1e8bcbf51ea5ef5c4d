@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b1c7b4_24553cff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-26T15:56:20Z",
+      "side": 1,
+      "message": "Hi, this is the usb charger shared thread patch. Implemented as an option right now, few boards have code that operate on tasks directly but if this works I think we can sort that out and drop the per-port thread code from Zephyr, and this can be used on legacy code as well. Made this work by refactoring the drivers into a init+loop function and then having a usb charger atomic variable for the event bits, reusing the task one to flag what port have been signaled (see the two previous patches).\n\nLet me know what you think.",
+      "revId": "72e45d8eb710058abf901d1e8bcbf51ea5ef5c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
