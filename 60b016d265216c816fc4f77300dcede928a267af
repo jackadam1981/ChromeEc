@@ -52,6 +52,24 @@
       "parentUuid": "bc74475f_0cd1093c",
       "revId": "60b016d265216c816fc4f77300dcede928a267af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f5ba1d_67f10623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-05-26T05:58:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure if Nereid also use the same LED spec as Craask/Nivviks so I keep Nereid using original led.c. Do you mean that I also need to move led.c to Nereid file?",
+      "parentUuid": "119ed1f4_d69d8977",
+      "revId": "60b016d265216c816fc4f77300dcede928a267af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
