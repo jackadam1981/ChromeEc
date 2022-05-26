@@ -46,6 +46,30 @@
       },
       "revId": "1084edb4155a5ab963bf6f0cfa9e896d11e1caad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3c67b5_6ef59c6b",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2022-05-26T15:17:32Z",
+      "side": 1,
+      "message": "But basically during next steps in do_cc we are calling  pd_power_supply_reset() next time so we setting same source voltage limit two times in row which leads to some weird behavior - communication issues and finally Hard Reset. It causes additional delay.\nSo lets not call pd_power_supply_restet, but disable VBUS only (which is done for servo_v4p1 in other code parts using these 2 lines). Eventually pd_power_supply_reset() will be called during next steps.",
+      "parentUuid": "454d3151_30bda59e",
+      "range": {
+        "startLine": 1132,
+        "startChar": 3,
+        "endLine": 1134,
+        "endChar": 17
+      },
+      "revId": "1084edb4155a5ab963bf6f0cfa9e896d11e1caad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
