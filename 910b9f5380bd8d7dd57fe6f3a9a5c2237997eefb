@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cde22d2_d7d04e9c",
+        "filename": "board/damu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-26T17:06:50Z",
+      "side": 1,
+      "message": "Yes, thanks for spotting this, should have found a smarter way of doing this patch. Fixed this one, going to do one more pass.",
+      "parentUuid": "7ed2de41_a992a629",
+      "range": {
+        "startLine": 279,
+        "startChar": 27,
+        "endLine": 279,
+        "endChar": 29
+      },
+      "revId": "910b9f5380bd8d7dd57fe6f3a9a5c2237997eefb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e779dd6_56c8f9a9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-26T16:12:57Z",
       "side": 1,
       "message": "Why not now?",
+      "range": {
+        "startLine": 170,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 24
+      },
+      "revId": "910b9f5380bd8d7dd57fe6f3a9a5c2237997eefb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68d972c6_26c82b37",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-26T17:06:50Z",
+      "side": 1,
+      "message": "Lost in the diff and forgot... thanks, added.",
+      "parentUuid": "7e779dd6_56c8f9a9",
       "range": {
         "startLine": 170,
         "startChar": 3,
