@@ -178,7 +178,7 @@ void board_hibernate(void)
 	 * To support hibernate from ectool, keyboard, and console,
 	 * ensure that the AP is fully shutdown before hibernating.
 	 */
-#ifdef HAS_TASK_CHIPSET
+#if HAS_AP_CHIPSET
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
 #endif
 

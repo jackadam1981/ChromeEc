@@ -203,7 +203,7 @@ static void bc12_power_down(int port)
 	if (pi3usb9201_bc12_chips[port].flags & PI3USB9201_ALWAYS_POWERED)
 		return;
 
-#if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
+#if defined(CONFIG_POWER_PP5000_CONTROL) && HAS_AP_CHIPSET
 	/* Indicate PP5000_A rail is not required by USB_CHG task. */
 	power_5v_enable(task_get_current(), 0);
 #endif
@@ -211,8 +211,7 @@ static void bc12_power_down(int port)
 
 static void bc12_power_up(int port)
 {
-	if (IS_ENABLED(CONFIG_POWER_PP5000_CONTROL) &&
-	    IS_ENABLED(HAS_TASK_CHIPSET) &&
+	if (IS_ENABLED(CONFIG_POWER_PP5000_CONTROL) && HAS_AP_CHIPSET &&
 	    !(pi3usb9201_bc12_chips[port].flags & PI3USB9201_ALWAYS_POWERED)) {
 		/* Turn on the 5V rail to allow the chip to be powered. */
 		power_5v_enable(task_get_current(), 1);
