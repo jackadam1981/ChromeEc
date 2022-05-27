@@ -52,6 +52,24 @@
       "parentUuid": "a8fd5bcc_de007d3f",
       "revId": "d8028e79bf4d7bd1ece398761d85da9ba3a6dcd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "777f7322_f080bfc3",
+        "filename": "zephyr/shim/src/ap_pwrseq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-27T22:49:34Z",
+      "side": 1,
+      "message": "Correct, `set_pwrbtn_to_pch` gating comes into play when system is on S5, when system is on G3, PWRBTN does not have any effect given that SOC is powered down.",
+      "parentUuid": "333b4f24_b4806343",
+      "revId": "d8028e79bf4d7bd1ece398761d85da9ba3a6dcd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec6fb90d_b1ad256d",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-27T22:49:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a5a1fb3_82bdbe77",
+      "revId": "5721b4a7878b85fe1d972617ddca46870cf06cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96fef5c5_c5e9a4ce",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-27T04:54:02Z",
       "side": 1,
       "message": "So I think this function should be in common/power_button_x86.c, or perhaps in one of the shim code files or charger files (not exactly sure where it best fits).\n\nAs I see it, this function is an external function that the power sequence code needs to call to check whether the external conditions allow starting.\nThe function likely needs to be guarded by CONFIG_AP_PWRSEQ just so it is clear that it is only used by that module.\n\nA reasonable place to put it would be next to hook_battery_soc_change. That way, you could guard both with CONFIG_AP_PWRSEQ.",
+      "revId": "5721b4a7878b85fe1d972617ddca46870cf06cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff7d7bb_0f734230",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-27T22:49:34Z",
+      "side": 1,
+      "message": "\u003e So I think this function should be in common/power_button_x86.c, or perhaps in one of the shim code files or charger files (not exactly sure where it best fits).\n\nI think having this on `common/power_button_x86.c` will not be suitable since I find this related to charger or some other external component except to power button, maybe inside `shim/src/charger.c`.\n\n\u003e As I see it, this function is an external function that the power sequence code needs to call to check whether the external conditions allow starting.\n\nMaybe having `board_is_ok_to_power_up()` defined in `zephyr/projects/nissa/src/board_power.c` (similar to calling `board_ap_power_check_power_rails_enabled`) and having board_power code evaluating charger state.",
+      "parentUuid": "96fef5c5_c5e9a4ce",
       "revId": "5721b4a7878b85fe1d972617ddca46870cf06cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
