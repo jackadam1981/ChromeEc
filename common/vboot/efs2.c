@@ -47,7 +47,8 @@ static const char *boot_mode_to_string(uint8_t mode)
 static bool is_valid_cr50_response(enum cr50_comm_err code)
 {
 	return code != CR50_COMM_ERR_TIMEOUT
-			&& (code >> 8) == CR50_COMM_ERR_PREFIX;
+			&& (code >> 8) == CR50_COMM_ERR_PREFIX
+			&& (code & 0xff) < sizeof(enum cr50_comm_err);
 }
 
 __overridable void board_enable_packet_mode(bool enable)
