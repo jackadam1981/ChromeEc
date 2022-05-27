@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c1cae5_e5c163ec",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-27T21:49:00Z",
+      "side": 1,
+      "message": "What do you think of doing a round robin to select the starting port?",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 64
+      },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6225ec2_ec7bf2c4",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-27T21:49:00Z",
+      "side": 1,
+      "message": "Why are you using this directly instead of the TASK_EVENT_CUSTOM_BIT?",
+      "range": {
+        "startLine": 58,
+        "startChar": 31,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
