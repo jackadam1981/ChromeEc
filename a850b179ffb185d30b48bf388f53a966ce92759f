@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc1c8ccd_ec60226f",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-27T19:38:36Z",
+      "side": 1,
+      "message": "If the battery reaches 0%, no node is matched due to the half-open interval. Not sure a special handling is needed or just fine?",
+      "parentUuid": "35f16504_a501f796",
+      "range": {
+        "startLine": 52,
+        "startChar": 58,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23c645dc_9864a008",
         "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
         "patchSetId": 3
