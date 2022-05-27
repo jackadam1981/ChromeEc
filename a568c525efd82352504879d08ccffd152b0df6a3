@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ca0d182_31dd8834",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-27T22:00:40Z",
+      "side": 1,
+      "message": "nit: I think a comment block explaining the packed events wouldn\u0027t hurt for readability",
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76c1cae5_e5c163ec",
         "filename": "common/usb_charger.c",
         "patchSetId": 10
@@ -26,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71b782c4_1e6b3e7f",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-27T22:00:40Z",
+      "side": 1,
+      "message": "Should we assert on this earlier in the task startup?  Otherwise we could end up waiting to assert until someone plugs something into the right port which a dev might not notice when testing a CL out",
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6225ec2_ec7bf2c4",
         "filename": "include/usb_charge.h",
         "patchSetId": 10
@@ -43,6 +77,23 @@
         "endLine": 58,
         "endChar": 49
       },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b6523f_3c03905f",
+        "filename": "zephyr/Kconfig.usb_charger",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-05-27T22:00:40Z",
+      "side": 1,
+      "message": "Should we default to \"n\" to start with?",
       "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
