@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b7c46e_47cb01b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-27T21:17:16Z",
+      "side": 1,
+      "message": "Sam - can you check the SHI_SDO signal with this change?  I don\u0027t expect any change in behavior.\n\nEric - can you verify this boots the AP on kingler?",
+      "revId": "4917041eaed1ce8624d14f7007f22869a3a14191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
