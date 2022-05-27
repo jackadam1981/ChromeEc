@@ -7,6 +7,7 @@
 	aliases {
 		gpio-wp = &gpio_ec_wp_l;
 		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
+		gpio-cbi-wp = &gpio_cbi_wp;
 	};
 
 	named-gpios {
@@ -168,6 +169,9 @@
 		gpio_usb_c0_tcpc_int_odl: usb_c0_tcpc_int_odl {
 			gpios = <&gpio7 3 GPIO_INPUT>;
 			enum-name = "GPIO_USB_C0_TCPC_INT_ODL";
+		};
+		gpio_cbi_wp: ec_cbi_wp {
+			gpios = <&gpio8 0 GPIO_OUTPUT_LOW>;
 		};
 		gpio_usb_c0_tcpc_rst: usb_c0_tcpc_rst {
 			gpios = <&gpioc 0 GPIO_OUTPUT_LOW>;
