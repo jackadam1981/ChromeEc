@@ -16,6 +16,24 @@
       "message": "I am wondering if this wouldn\u0027t be better to go into common/power_button_x86.c which seems to have a lot of related logic for looking at the charger and interfacing to the chipset API.\nYou could put it under a CONFIG_AP_PWRSEQ guard.\nThere is already logic to check the battery state in set_pwrbtn_to_pch(),\nwhich calls chipset_exit_hardoff().\nIt seems the logic in charge_prevent_power_on() should be working.\nMaybe we don\u0027t have all the right CONFIG items set?",
       "revId": "d8028e79bf4d7bd1ece398761d85da9ba3a6dcd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8fd5bcc_de007d3f",
+        "filename": "zephyr/shim/src/ap_pwrseq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-05-27T03:17:11Z",
+      "side": 1,
+      "message": "\u003e I am wondering if this wouldn\u0027t be better to go into common/power_button_x86.c which seems to have a lot of related logic for looking at the charger and interfacing to the chipset API.\n\nI agree, I can move this to that file instead.\n\n\u003e There is already logic to check the battery state in set_pwrbtn_to_pch(), which calls chipset_exit_hardoff().\n\nLogic is indeed included in `set_pwrbtn_to_pch`, but I do not see `chipset_exit_hardoff` being called there, only setting `GPIO_PCH_PWRBTN_L` level.\n\nIn either case, this change prevents moving forward on the state machine if battery is not ready:\n```\n\tcase SYS_POWER_STATE_G3S5:\n\t\tif (!ap_power_is_ok_to_power_up()) {\n\t\t\tap_power_force_shutdown(\n\t\t\t\tAP_POWER_SHUTDOWN_BATTERY_INHIBIT);\n\t\t\treturn SYS_POWER_STATE_G3;\n\t\t}\n```",
+      "parentUuid": "98d910aa_572a66ef",
+      "revId": "d8028e79bf4d7bd1ece398761d85da9ba3a6dcd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
