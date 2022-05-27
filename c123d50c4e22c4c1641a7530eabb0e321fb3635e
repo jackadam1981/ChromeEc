@@ -22,6 +22,30 @@
       },
       "revId": "c123d50c4e22c4c1641a7530eabb0e321fb3635e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b1b864_6e07d558",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-27T01:25:43Z",
+      "side": 1,
+      "message": "There\u0027s a couple of other things to look at as well:\n - the function in cmd_to_cr50 puts a large structure on the stack assuming it is only called at the start\n  - it\u0027s possible some input is lost between shutting down the shell and enabling the ring buffer (but the time is short, so that may not be an issue)",
+      "parentUuid": "37cf51dc_f4f30459",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 46
+      },
+      "revId": "c123d50c4e22c4c1641a7530eabb0e321fb3635e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
