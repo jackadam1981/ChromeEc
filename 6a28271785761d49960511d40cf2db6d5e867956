@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6f1956_4a71b3c0",
+        "filename": "driver/led/is31fl3733b.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-05-27T18:00:16Z",
+      "side": 1,
+      "message": "This is redundant. You may want to remove it in a separate CL.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 51
+      },
+      "revId": "6a28271785761d49960511d40cf2db6d5e867956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
