@@ -53,3 +53,23 @@ void sr_task(void *u)
 		}
 	}
 }
+
+void timer_test(void *u)
+{
+	int d = 0;
+
+	while(1) {
+		task_wait_event(10000);
+
+		/* GPIO95 */
+		AP_GPIO_MODE11_CLR = 0x70000000;
+		AP_GPIO_DIR2_SET = BIT(31);
+
+		if (d % 2 == 0)
+			AP_GPIO_DOUT2_SET = BIT(31);
+		if (d % 2 == 1)
+			AP_GPIO_DOUT2_CLR = BIT(31);
+		d++;
+
+	}
+}
