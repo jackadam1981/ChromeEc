@@ -16,6 +16,23 @@
       "message": "if this does not interfere with FIPS can I get a +2 please",
       "revId": "a900ff8d97d35429bf87d168abd116e0029d7e2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fceae58_13d8f1f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-05-27T01:38:12Z",
+      "side": 1,
+      "message": "it doesn\u0027t affect  FIPS. Cr50 version is here https://source.corp.google.com/chromeos_public/src/platform/cr50/board/cr50/dcrypto/dcrypto_bn.c;l\u003d182",
+      "revId": "a900ff8d97d35429bf87d168abd116e0029d7e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
