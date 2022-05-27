@@ -62,6 +62,7 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 
 __override bool pd_check_vbus_level(int port, enum vbus_level level)
 {
+#if 0
 	/*
 	 * While the charger can differentiate SAFE0V from REMOVED, doing so
 	 * requires doing a I2C read of the VBUS analog level. Because this
@@ -78,6 +79,22 @@ __override bool pd_check_vbus_level(int port, enum vbus_level level)
 	}
 	LOG_WRN("Unrecognized vbus_level value: %d", level);
 	return false;
+#else
+	int vbus_voltage;
+
+	/* If we're unable to speak to the charger, best to guess false */
+	if (charger_get_vbus_voltage(port, &vbus_voltage)) {
+		LOG_ERR("*****nereid charger_get_vbus_voltage fails\n");
+		return false;
+	}
+
+	if (level == VBUS_SAFE0V)
+		return vbus_voltage < PD_V_SAFE0V_MAX;
+	else if (level == VBUS_PRESENT)
+		return vbus_voltage > PD_V_SAFE5V_MIN;
+	else
+		return vbus_voltage < PD_V_SINK_DISCONNECT_MAX;
+#endif
 }
 
 int board_set_active_charge_port(int port)
