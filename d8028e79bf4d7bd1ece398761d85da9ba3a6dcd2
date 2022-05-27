@@ -34,6 +34,24 @@
       "parentUuid": "98d910aa_572a66ef",
       "revId": "d8028e79bf4d7bd1ece398761d85da9ba3a6dcd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "333b4f24_b4806343",
+        "filename": "zephyr/shim/src/ap_pwrseq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-27T04:54:02Z",
+      "side": 1,
+      "message": "So I don\u0027t claim to know a lot about the logic in common/power_button_x86.c, though I do see the comment at line 363 where it calls chipset_exit_hardoff() and then talks about gating via set_pwrbtn_to_pch().\nSo I see in power/intel_x86.c the function intel_x86_wait_power_up_ok(), which\ninteracts with is_power_up_inhibited() and power_up_inhibited_cb(). So presumably the goal is to replace that logic.",
+      "parentUuid": "a8fd5bcc_de007d3f",
+      "revId": "d8028e79bf4d7bd1ece398761d85da9ba3a6dcd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

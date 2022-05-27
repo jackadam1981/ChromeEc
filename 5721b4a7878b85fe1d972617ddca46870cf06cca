@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5a1fb3_82bdbe77",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-27T04:54:02Z",
+      "side": 1,
+      "message": "I think you can guard this by both CONFIG_CHARGER and CONFIG_AP_PWRSEQ, and then instead of calling chipset_is_ok_to_power_up, directly call ap_power_is_ok_to_power_up().\nThe chipset_ variant is just a wrapper for the legacy calls, and since this is a new call, the wrapper is not necessary since none of the legacy code calls it.",
+      "revId": "5721b4a7878b85fe1d972617ddca46870cf06cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96fef5c5_c5e9a4ce",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-27T04:54:02Z",
+      "side": 1,
+      "message": "So I think this function should be in common/power_button_x86.c, or perhaps in one of the shim code files or charger files (not exactly sure where it best fits).\n\nAs I see it, this function is an external function that the power sequence code needs to call to check whether the external conditions allow starting.\nThe function likely needs to be guarded by CONFIG_AP_PWRSEQ just so it is clear that it is only used by that module.\n\nA reasonable place to put it would be next to hook_battery_soc_change. That way, you could guard both with CONFIG_AP_PWRSEQ.",
+      "revId": "5721b4a7878b85fe1d972617ddca46870cf06cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
