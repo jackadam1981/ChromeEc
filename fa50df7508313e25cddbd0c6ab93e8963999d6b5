@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bd23e7b5_38b84c5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-05-27T11:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84c0e1cb_03987de7",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "fa50df7508313e25cddbd0c6ab93e8963999d6b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3b407e02_0600c055",
         "filename": "board/osiris/keyboard.c",
         "patchSetId": 1
