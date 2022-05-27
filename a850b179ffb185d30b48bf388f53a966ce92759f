@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f16504_a501f796",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-27T19:32:20Z",
+      "side": 1,
+      "message": "Note that it is a half-open interval (a, b].",
+      "range": {
+        "startLine": 52,
+        "startChar": 58,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c645dc_9864a008",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-27T19:32:20Z",
+      "side": 1,
+      "message": "BATT_LEVEL_LOW for consistency?",
+      "range": {
+        "startLine": 54,
+        "startChar": 48,
+        "endLine": 54,
+        "endChar": 60
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c11513f_986262a6",
+        "filename": "zephyr/include/dt-bindings/battery.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-27T19:32:20Z",
+      "side": 1,
+      "message": "Can you reuse the `battery.h` value, instead of duplicating them? You only need to define the `BATTERY_LEVLE_EMPTY` in `battery.h`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c31383a_fb423f8f",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-27T19:32:20Z",
+      "side": 1,
+      "message": "`int8_t` is enough for a percentage.\n\nThe below `charge_port` can also be a `int8_t`.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ee5fd1_6eb75493",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-27T19:32:20Z",
+      "side": 1,
+      "message": "Should be `\u003c\u003d` for a half-open interval.",
+      "range": {
+        "startLine": 256,
+        "startChar": 21,
+        "endLine": 256,
+        "endChar": 22
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
