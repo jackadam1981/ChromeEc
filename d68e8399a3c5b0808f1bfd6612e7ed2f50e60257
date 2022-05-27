@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716c0eec_4ff24822",
+        "filename": "board/kingoftown/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-05-27T23:17:29Z",
+      "side": 0,
+      "message": "Is this pin NC? If yes, move it to the below UNUSED() pin.",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "d68e8399a3c5b0808f1bfd6612e7ed2f50e60257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
