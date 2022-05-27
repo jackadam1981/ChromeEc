@@ -18,7 +18,12 @@
 #include "scp_timer.h"
 #include "task.h"
 
+#ifdef CHIP_VARIANT_MT8192
 #define TIMER_CLOCK_MHZ 32.5
+#elif defined(CHIP_VARIANT_MT8195) || defined(CHIP_VARIANT_MT8195_CORE1)
+#define TIMER_CLOCK_MHZ 31
+#endif
+
 #define OVERFLOW_TICKS (TIMER_CLOCK_MHZ * 0x100000000 - 1)
 
 /* High 32-bit for system timer. */
