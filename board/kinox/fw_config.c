@@ -9,6 +9,7 @@
 #include "console.h"
 #include "cros_board_info.h"
 #include "fw_config.h"
+#include "gpio.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
@@ -23,13 +24,30 @@ static const union kinox_cbi_fw_config fw_config_defaults = {
 	.dp_display = ABSENT,
 };
 
-/****************************************************************************
+/*
  * Kinox FW_CONFIG access
  */
+
+void board_check_the_btb_type(void)
+{
+	if (!gpio_get_level(GPIO_BTB1_COM_DET_L) &&
+		gpio_get_level(GPIO_BTB1_DP_DET_L) &&
+		!gpio_get_level(GPIO_BTB1_USB_DET_L)) {
+		CPRINTS("BTB: HDMI");
+		fw_config.dp_display = DB_HDMI;
+	} else if (!gpio_get_level(GPIO_BTB1_COM_DET_L) &&
+			!gpio_get_level(GPIO_BTB1_DP_DET_L) &&
+			gpio_get_level(GPIO_BTB1_USB_DET_L)) {
+		CPRINTS("BTB: DP");
+		fw_config.dp_display = DB_DP;
+	}
+}
+
 void board_init_fw_config(void)
 {
 	if (cbi_get_fw_config(&fw_config.raw_value)) {
 		CPRINTS("CBI: Read FW_CONFIG failed, using board defaults");
 		fw_config = fw_config_defaults;
 	}
+	board_check_the_btb_type();
 }
