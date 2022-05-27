@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d910aa_572a66ef",
+        "filename": "zephyr/shim/src/ap_pwrseq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-27T01:43:46Z",
+      "side": 1,
+      "message": "I am wondering if this wouldn\u0027t be better to go into common/power_button_x86.c which seems to have a lot of related logic for looking at the charger and interfacing to the chipset API.\nYou could put it under a CONFIG_AP_PWRSEQ guard.\nThere is already logic to check the battery state in set_pwrbtn_to_pch(),\nwhich calls chipset_exit_hardoff().\nIt seems the logic in charge_prevent_power_on() should be working.\nMaybe we don\u0027t have all the right CONFIG items set?",
+      "revId": "d8028e79bf4d7bd1ece398761d85da9ba3a6dcd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
