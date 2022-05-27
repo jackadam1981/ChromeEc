@@ -827,6 +827,7 @@ void sm5803_hibernate(int chgnum)
 
 static void sm5803_disable_runtime_low_power_mode(void)
 {
+#if 0
 	enum ec_error_list rv;
 	int reg;
 	int chgnum = TASK_ID_TO_PD_PORT(task_get_current());
@@ -851,6 +852,7 @@ static void sm5803_disable_runtime_low_power_mode(void)
 	if (rv)
 		CPRINTS("%s %d: Failed to set in disable runtime LPM",
 			CHARGER_NAME, chgnum);
+#endif
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT,
 		sm5803_disable_runtime_low_power_mode,
@@ -910,6 +912,7 @@ static enum ec_error_list sm5803_enable_linear_charge(int chgnum, bool enable)
 
 static void sm5803_enable_runtime_low_power_mode(void)
 {
+#if 0
 	enum ec_error_list rv;
 	int reg;
 	int chgnum = TASK_ID_TO_PD_PORT(task_get_current());
@@ -942,6 +945,7 @@ static void sm5803_enable_runtime_low_power_mode(void)
 	if (rv)
 		CPRINTS("%s %d: Failed to set in enable runtime LPM",
 			CHARGER_NAME, chgnum);
+#endif
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT,
 		sm5803_enable_runtime_low_power_mode,
