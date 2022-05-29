@@ -69,6 +69,24 @@
       "parentUuid": "96fef5c5_c5e9a4ce",
       "revId": "5721b4a7878b85fe1d972617ddca46870cf06cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee71004_4444d12d",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-05-29T00:33:41Z",
+      "side": 1,
+      "message": "Hmm yes, maybe in shim/src/charger.c\nFinding the right place for these functions is often challenging.\n\nI think we should try and put it in a reasonable common place, since it isn\u0027t really board specific.\nI think shim/src/charger.c would be fine.",
+      "parentUuid": "aff7d7bb_0f734230",
+      "revId": "5721b4a7878b85fe1d972617ddca46870cf06cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
