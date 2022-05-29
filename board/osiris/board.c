@@ -7,9 +7,11 @@
 #include "button.h"
 #include "charge_ramp.h"
 #include "charger.h"
+#include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
@@ -23,6 +25,7 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "system.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -57,3 +60,56 @@ __override void board_kblight_init(void)
 	gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
 	msleep(10);
 }
+
+#ifdef CONFIG_BOARD_KEYBOARD_KEY_CHANGE
+
+#define KEYBOARD_COL_KEY_PB	9 /* KSO */
+#define KEYBOARD_ROW_KEY_PB	3 /* KSI */
+
+#define KEYBOARD_MASK_KEY_PB	(1 << (KEYBOARD_ROW_KEY_PB))
+
+#define KEYBOARD_COL_KEY_T2	2 /* KSO */
+#define KEYBOARD_ROW_KEY_T2	3 /* KSI */
+
+#define KEYBOARD_MASK_KEY_T2	(1 << (KEYBOARD_ROW_KEY_T2))
+
+static int button_release = 0;
+static int button_press = 0;
+
+static void ap_shutdoen_deferred(void)
+{
+	if (button_release) {
+		button_release = 0;
+		cprintf(CC_SWITCH, "Keyboard matrix: shutdoen ap cancel \n");
+		return;
+	}
+	if (button_press) {
+		cprintf(CC_SWITCH, "Keyboard matrix: shutdoen ap!\n");
+		chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
+	}
+}
+DECLARE_DEFERRED(ap_shutdoen_deferred);
+
+__override void board_keyboard_key_change(const uint8_t *state)
+{
+	/* ec reboot */
+	if (state[KEYBOARD_COL_KEY_PB] == KEYBOARD_MASK_KEY_PB &&
+		state[KEYBOARD_COL_KEY_T2] == KEYBOARD_MASK_KEY_T2) {
+		cprintf(CC_SWITCH, "Keyboard matrix: power button + T2 press\n");
+		ccputs("Rebooting!\n\n\n");
+		cflush();
+		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
+	/* ec power on ap */
+	} else if (state[KEYBOARD_COL_KEY_PB] == KEYBOARD_MASK_KEY_PB) {
+		cprintf(CC_SWITCH, "Keyboard matrix: power button press\n");
+		button_press = 1;
+		hook_call_deferred(&ap_shutdoen_deferred_data, 8 * SECOND);
+		chipset_power_on();
+	/* chipset force shutdown */
+	} else if ((state[KEYBOARD_COL_KEY_PB] && KEYBOARD_MASK_KEY_PB) == 0) {
+		cprintf(CC_SWITCH, "Keyboard matrix: power button release\n");
+		button_press = 0;
+		button_release = 1;
+	}
+}
+#endif
