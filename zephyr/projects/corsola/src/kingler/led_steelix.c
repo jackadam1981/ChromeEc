@@ -257,3 +257,40 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 	led_set_brightness(EC_LED_ID_BATTERY_LED, br);
 	led_set_brightness(EC_LED_ID_POWER_LED, br);
 }
+
+static int command_pwmled(int argc, char **argv)
+{
+	char *e;
+	int index;
+	int duty;
+
+	if (argc == 3) {
+		index = strtoi(argv[1], &e, 0);
+		duty = strtoi(argv[2], &e, 0);
+		if (*e || index < -1 || index > 3 || duty < 0 || duty > 100)
+			return EC_ERROR_PARAM1;
+		led_auto_control(EC_LED_ID_BATTERY_LED, 0);
+	} else {
+		led_auto_control(EC_LED_ID_BATTERY_LED, 1);
+		return EC_ERROR_PARAM1;
+	}
+	switch (index) {
+	case 1: /* Red LED */
+		board_led_pwm_set_duty(&board_led_battery_red, duty);
+		break;
+	case 2: /* green LED */
+		board_led_pwm_set_duty(&board_led_battery_green, duty);
+		break;
+	case 3: /* green LED */
+		board_led_pwm_set_duty(&board_led_battery_blue, duty);
+		break;
+	default:
+		led_auto_control(EC_LED_ID_BATTERY_LED, 1);
+		break;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pwmled, command_pwmled,
+			"index duty",
+			"Set the led pwm duty");
