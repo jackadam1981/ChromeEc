@@ -151,6 +151,8 @@
 #define I2C_PORT_KBMCU		I2C_PORT_RGBKB
 
 
+#define CONFIG_BOARD_KEYBOARD_KEY_CHANGE
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"	/* needed by registers.h */

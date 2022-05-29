@@ -519,6 +519,12 @@ static void key_state_changed(int row, int col, uint8_t state)
 	keyboard_state_changed(row, col, !!(state & BIT(row)));
 }
 
+#ifdef CONFIG_BOARD_KEYBOARD_KEY_CHANGE
+__overridable void board_keyboard_key_change(const uint8_t *state)
+{
+}
+#endif
+
 /**
  * Update keyboard state using low-level interface to read keyboard.
  *
@@ -629,6 +635,10 @@ static int check_keys_changed(uint8_t *state)
 		/* Swallow special keys */
 		if (check_runtime_keys(state))
 			return 0;
+#endif
+
+#ifdef CONFIG_BOARD_KEYBOARD_KEY_CHANGE
+		board_keyboard_key_change(state);
 #endif
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
