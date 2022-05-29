@@ -57,3 +57,19 @@ __override void board_kblight_init(void)
 	gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
 	msleep(10);
 }
+
+#ifdef CONFIG_BOARD_KEYBOARD_KEY_CHANGE
+
+#define KEYBOARD_COL_KEY_PB	9 /* KSO */
+#define KEYBOARD_ROW_KEY_PB	3 /* KSI */
+
+#define KEYBOARD_MASK_KEY_PB	(1 << (KEYBOARD_ROW_KEY_PB))
+
+__override void board_keyboard_key_change(const uint8_t *state)
+{
+	if (state[KEYBOARD_COL_KEY_PB] == KEYBOARD_MASK_KEY_PB) {
+		cprintf(CC_SWITCH, "Keyboard matrix power button press");
+		hook_notify(HOOK_LID_CHANGE);
+	}
+}
+#endif

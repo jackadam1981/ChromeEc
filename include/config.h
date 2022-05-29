@@ -3022,6 +3022,11 @@
 #undef CONFIG_KEYBOARD_TEST
 
 /*
+ * Support configure additional key function in board.c
+ */
+#undef CONFIG_BOARD_KEYBOARD_KEY_CHANGE
+
+/*
  * Enable quasi-bidirectional buffers for KSO pins. It has an open-drain output
  * and a low-impedance pull-up. The low-impedance pull-up is active when ec
  * changes the output data buffers from 0 to 1, thereby reducing the
