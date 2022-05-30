@@ -64,8 +64,8 @@ int board_set_active_charge_port(int port)
 	if (board_vbus_source_enabled(port))
 		return EC_ERROR_INVAL;
 
-	/* Don't change the charge port */
-	if (charge_manager_get_active_charge_port() != CHARGE_PORT_NONE)
+	/* Don't change the charge port when using the barrel jack */
+	if (charge_manager_get_active_charge_port() == CHARGE_PORT_BARRELJACK)
 		return EC_ERROR_INVAL;
 
 	/* Make sure BJ adapter is sourcing power */
@@ -79,7 +79,6 @@ int board_set_active_charge_port(int port)
 
 	switch (port) {
 	case CHARGE_PORT_TYPEC0:
-		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
 		rv = ppc_vbus_sink_enable(CHARGE_PORT_TYPEC0, 1);
 		if (rv) {
 			CPRINTS("Failed to enable C0 sink path");
@@ -92,7 +91,6 @@ int board_set_active_charge_port(int port)
 			CPRINTS("Failed to disable C0 sink path");
 			return rv;
 		}
-		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
 		break;
 	default:
 		return EC_ERROR_INVAL;
@@ -122,5 +120,6 @@ DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
 
 static void board_init(void)
 {
+	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
