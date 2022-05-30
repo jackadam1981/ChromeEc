@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d52cd330_2ebcdb52",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-30T15:40:50Z",
+      "side": 1,
+      "message": "Yeah good point, documented these two and the atomic above, also moved them all in the #ifdef and renamed evt in the second macro to evt_packed to make it more understandable.",
+      "parentUuid": "3ca0d182_31dd8834",
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76c1cae5_e5c163ec",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-27T21:49:00Z",
       "side": 1,
       "message": "What do you think of doing a round robin to select the starting port?",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 64
+      },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2e60e7_846cd64e",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-30T15:40:50Z",
+      "side": 1,
+      "message": "Sounds interesting but I\u0027m thinking that doing that may end up introducing some fuzzy behavior like \"bug X happens every num_port events\" rather than \"bug X only happens on port N\". Do you have a specific use case in mind?",
+      "parentUuid": "76c1cae5_e5c163ec",
       "range": {
         "startLine": 192,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5921266a_dc98c84a",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-30T15:40:50Z",
+      "side": 1,
+      "message": "yeah good idea, done",
+      "parentUuid": "71b782c4_1e6b3e7f",
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6225ec2_ec7bf2c4",
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b34ca364_0fe01886",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-30T15:40:50Z",
+      "side": 1,
+      "message": "Cause TASK_EVENT_CUSTOM_BIT leaves 16 bits for custom events and we have 7 defined here, in `usb_charger_task_set_event` I\u0027m packing the events for up to 4 ports in a single 32 bit atomic, but then we only have 8 bits per port, so this ensures we fit all ports in.\n\nI\u0027ll add a comment.",
+      "parentUuid": "f6225ec2_ec7bf2c4",
+      "range": {
+        "startLine": 58,
+        "startChar": 31,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9b6523f_3c03905f",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-05-27T22:00:40Z",
       "side": 1,
       "message": "Should we default to \"n\" to start with?",
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9328d328_41fb746d",
+        "filename": "zephyr/Kconfig.usb_charger",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-30T15:40:50Z",
+      "side": 1,
+      "message": "I don\u0027t mind either, I thought to default it to true since this only affect Zephyr projects anyway (and not even all of them for now). Let me know if you feel strongly about it, happy to change it.",
+      "parentUuid": "f9b6523f_3c03905f",
       "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
