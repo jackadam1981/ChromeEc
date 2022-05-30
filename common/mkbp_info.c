@@ -12,15 +12,25 @@
 #include "keyboard_config.h"
 #include "keyboard_mkbp.h"
 #include "keyboard_scan.h"
+#include "mkbp_info.h"
 #include "mkbp_input_devices.h"
 #include "util.h"
+
+#ifdef CONFIG_VOLUME_BUTTONS
+__overridable bool mkbp_enable_vol_button_via_custom(void)
+{
+	return true;
+}
+#endif
 
 static uint32_t get_supported_buttons(void)
 {
 	uint32_t val = 0;
 
 #ifdef CONFIG_VOLUME_BUTTONS
-	val |= BIT(EC_MKBP_VOL_UP) | BIT(EC_MKBP_VOL_DOWN);
+	if (mkbp_enable_vol_button_via_custom()) {
+		val |= BIT(EC_MKBP_VOL_UP) | BIT(EC_MKBP_VOL_DOWN);
+	}
 #endif /* defined(CONFIG_VOLUME_BUTTONS) */
 
 #ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
