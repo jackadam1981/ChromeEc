@@ -2999,6 +2999,11 @@
 #undef CONFIG_KEYBOARD_CUSTOMIZATION
 
 /*
+ * Allow support multiple keyboard matrix for speical key.
+ */
+#undef CONFIG_KEYBOARD_MULTIPLE
+
+/*
  * Allow board-specific 8042 keyboard callback when a key state is changed.
  */
 #undef CONFIG_KEYBOARD_SCANCODE_CALLBACK
