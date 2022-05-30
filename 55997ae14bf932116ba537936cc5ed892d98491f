@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339c7144_ab527a7b",
+        "filename": "board/kinox/fw_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2022-05-30T07:33:46Z",
+      "side": 1,
+      "message": "Could you implement the else {} part? I think it should not jump into this section,  so maybe we could add some messages if we enter into this section.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "55997ae14bf932116ba537936cc5ed892d98491f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
