@@ -539,10 +539,10 @@ static void espi_peripheral_handler(const struct device *dev,
 		handle_acpi_write(event.evt_data);
 	}
 
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD) &&
-	    event_type == ESPI_PERIPHERAL_EC_HOST_CMD) {
-		handle_host_write(event.evt_data);
-	}
+	// if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD) &&
+	//     event_type == ESPI_PERIPHERAL_EC_HOST_CMD) {
+	// 	handle_host_write(event.evt_data);
+	// }
 
 	if (IS_ENABLED(CONFIG_ESPI_PERIPHERAL_8042_KBC) &&
 	    IS_ENABLED(HAS_TASK_KEYPROTO) &&
