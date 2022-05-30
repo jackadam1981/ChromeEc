@@ -22,6 +22,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
+#include "keyboard_customization.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -70,6 +71,9 @@ union volteer_cbi_fw_config fw_config_defaults = {
 
 static void board_init(void)
 {
+	#ifdef CONFIG_KEYBOARD_MULTIPLE
+	key_choose();
+	#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
