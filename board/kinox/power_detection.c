@@ -321,7 +321,20 @@ void adp_id_deferred(void)
 
 static void adp_id_init(void)
 {
-	/* Delay 220ms to get the first ADP_ID value */
-	hook_call_deferred(&adp_id_deferred_data, 220 * MSEC);
+	/* Check ADP_ID when barrel jack is present */
+	if (!gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL))
+		/* Delay 220ms to get the first ADP_ID value */
+		hook_call_deferred(&adp_id_deferred_data, 220 * MSEC);
+	else
+		/* If power on by Type-C adapter set the EN_PPVAR_BJ_ADP_L
+		 * to high
+		 */
+		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
 }
 DECLARE_HOOK(HOOK_INIT, adp_id_init, HOOK_PRIO_DEFAULT);
+
+/* IRQ for BJ plug/unplug. It shouldn't be called if BJ is the power source. */
+void barrel_jack_interrupt(enum gpio_signal signal)
+{
+	adp_id_init();
+}
