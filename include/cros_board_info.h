@@ -59,7 +59,8 @@ enum cbi_cache_status {
 
 enum cbi_storage_type {
 	CBI_STORAGE_TYPE_EEPROM = 0,
-	CBI_STORAGE_TYPE_GPIO = 1
+	CBI_STORAGE_TYPE_GPIO = 1,
+	CBI_STORAGE_TYPE_EMULATED = 2
 };
 
 /*
@@ -226,7 +227,7 @@ int cbi_get_cache_status(void);
  */
 void cbi_latch_eeprom_wp(void);
 
-#ifdef TEST_BUILD
+#if defined(TEST_BUILD) || defined(CONFIG_CBI_EMULATED)
 /**
  * Write the locally cached CBI to EEPROM.
  *
