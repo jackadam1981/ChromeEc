@@ -49,6 +49,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "530bfe19_cf882253",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-05-31T14:54:02Z",
+      "side": 1,
+      "message": "I don\u0027t really remember. I think it was to make sure the `rm -f $(FAILED_BOARDS_DIR)/*` happened before building cr50 extras.",
+      "parentUuid": "ee287d1c_dd29d5bb",
+      "range": {
+        "startLine": 186,
+        "startChar": 19,
+        "endLine": 186,
+        "endChar": 31
+      },
+      "revId": "202910cd009e60367e937bb2bd8a169a3d000287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4abbbfc_c1a2918f",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-05-31T14:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ee3d55_aab60516",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 16
+      },
+      "revId": "202910cd009e60367e937bb2bd8a169a3d000287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5df41159_37b89d4b",
         "filename": "Makefile.rules",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-20T03:23:37Z",
       "side": 1,
       "message": "if build_cr50_extras has to depend on build_boards there is no point in including `build_boards` here as a dependency.",
+      "range": {
+        "startLine": 192,
+        "startChar": 9,
+        "endLine": 192,
+        "endChar": 21
+      },
+      "revId": "202910cd009e60367e937bb2bd8a169a3d000287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17dd1741_d5bc8aeb",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-05-31T14:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df41159_37b89d4b",
       "range": {
         "startLine": 192,
         "startChar": 9,
