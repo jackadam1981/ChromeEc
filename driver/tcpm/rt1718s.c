@@ -722,42 +722,61 @@ static int command_rt1718s_gpio(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(rt1718s_gpio, command_rt1718s_gpio, "", "RT1718S GPIO");
 
+#ifdef CONFIG_USB_PD_TCPM_SBU
+static int rt1718s_set_sbu(int port, bool enable)
+{
+	/*
+	 * The `enable` here means to enable the SBU line (set 1)
+	 * - true: connect SBU lines from outer to the host
+	 * - false: isolate the SBU lines
+	 */
+	return rt1718s_update_bits8(port, RT1718S_RT2_SBU_CTRL_01,
+				    RT1718S_RT2_SBU_CTRL_01_SBU_VIEN |
+					    RT1718S_RT2_SBU_CTRL_01_SBU1_SWEN |
+					    RT1718S_RT2_SBU_CTRL_01_SBU2_SWEN,
+				    enable ? 0 : 0xFF);
+}
+#endif
+
 /* RT1718S is a TCPCI compatible port controller */
 const struct tcpm_drv rt1718s_tcpm_drv = {
-	.init			= &rt1718s_init,
-	.release		= &tcpci_tcpm_release,
-	.get_cc			= &tcpci_tcpm_get_cc,
+	.init = &rt1718s_init,
+	.release = &tcpci_tcpm_release,
+	.get_cc = &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
+	.check_vbus_level = &tcpci_tcpm_check_vbus_level,
 #endif
-	.select_rp_value	= &tcpci_tcpm_select_rp_value,
-	.set_cc			= &tcpci_tcpm_set_cc,
-	.set_polarity		= &tcpci_tcpm_set_polarity,
+	.select_rp_value = &tcpci_tcpm_select_rp_value,
+	.set_cc = &tcpci_tcpm_set_cc,
+	.set_polarity = &tcpci_tcpm_set_polarity,
 #ifdef CONFIG_USB_PD_DECODE_SOP
-	.sop_prime_enable	= &tcpci_tcpm_sop_prime_enable,
+	.sop_prime_enable = &tcpci_tcpm_sop_prime_enable,
 #endif
-	.set_vconn		= &tcpci_tcpm_set_vconn,
-	.set_msg_header		= &tcpci_tcpm_set_msg_header,
-	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
-	.get_message_raw	= &tcpci_tcpm_get_message_raw,
-	.transmit		= &tcpci_tcpm_transmit,
-	.tcpc_alert		= &rt1718s_alert,
+	.set_vconn = &tcpci_tcpm_set_vconn,
+	.set_msg_header = &tcpci_tcpm_set_msg_header,
+	.set_rx_enable = &tcpci_tcpm_set_rx_enable,
+	.get_message_raw = &tcpci_tcpm_get_message_raw,
+	.transmit = &tcpci_tcpm_transmit,
+	.tcpc_alert = &rt1718s_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
-	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
+	.tcpc_discharge_vbus = &tcpci_tcpc_discharge_vbus,
 #endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	.drp_toggle		= &tcpci_tcpc_drp_toggle,
+	.drp_toggle = &tcpci_tcpc_drp_toggle,
 #endif
-	.get_chip_info		= &tcpci_get_chip_info,
-	.set_snk_ctrl		= &rt1718s_tcpm_set_snk_ctrl,
-	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
+	.get_chip_info = &tcpci_get_chip_info,
+	.set_snk_ctrl = &rt1718s_tcpm_set_snk_ctrl,
+	.set_src_ctrl = &tcpci_tcpm_set_src_ctrl,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode	= &rt1718s_enter_low_power_mode,
+	.enter_low_power_mode = &rt1718s_enter_low_power_mode,
 #endif
 #ifdef CONFIG_USB_PD_FRS_TCPC
-	.set_frs_enable		= &rt1718s_set_frs_enable,
+	.set_frs_enable = &rt1718s_set_frs_enable,
 #endif
-	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
+	.set_bist_test_mode = &tcpci_set_bist_test_mode,
+#ifdef CONFIG_USB_PD_TCPM_SBU
+	.set_sbu = &rt1718s_set_sbu,
+#endif
 };
 
 const struct bc12_drv rt1718s_bc12_drv = {
