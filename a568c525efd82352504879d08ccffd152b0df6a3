@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5085eaf_13a93fc6",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-31T16:23:54Z",
+      "side": 1,
+      "message": "My thinking was to avoid starving the higher number ports.  Especially for Chromebooks with 3 or more type-C ports.\n\nI suppose we already have this issue now with the separate threads for each port - the lower port numbers are a higher priority.",
+      "parentUuid": "da2e60e7_846cd64e",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 64
+      },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71b782c4_1e6b3e7f",
         "filename": "common/usb_charger.c",
         "patchSetId": 10

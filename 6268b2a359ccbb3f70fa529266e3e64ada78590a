@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3e9fbf_804b75fa",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-31T16:23:54Z",
+      "side": 1,
+      "message": "How about changing the `event` parameter to `uint8_t` when `CONFIG_PLATFORM_EC_USB_CHARGER_SINGLE_TASK\u003dy`?  I think this will generate a build time error error if someone attempts to pass in `event` \u003e 0xFF.\n\nNo callers are actually checking the return value and on Zephyr, task_set_event() always returns 0.",
+      "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96640898_a2e99039",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-31T16:23:54Z",
+      "side": 1,
+      "message": "Can you also add a check that `USB_CHARGER_EVT_BIT(7) \u003d\u003d TASK_EVENT_CUSTOM_BIT(7)`?  If somewhere were to move TASK_EVENT_CUSTOM_BIT from the low order bits, the assumptions made by this driver would break silently.",
+      "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
