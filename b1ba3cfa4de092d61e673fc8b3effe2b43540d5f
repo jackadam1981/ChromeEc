@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b261dfa2_86afb018",
+        "filename": "zephyr/projects/nissa/craask_overlay.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-31T17:49:23Z",
+      "side": 1,
+      "message": "It could make sense to name this \"adl_tcss_mux_0\" or \"adl_virtual_mux_0\" to make it clearer that this is required for platforms based on the Alderlake chipset.",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 199,
+        "endChar": 16
+      },
+      "revId": "b1ba3cfa4de092d61e673fc8b3effe2b43540d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
