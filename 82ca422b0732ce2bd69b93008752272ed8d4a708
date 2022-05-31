@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01cfe82_023929d4",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "This should be changed to a variable to support different addresses. Or a global configuration.",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e48c6b_22dadcaf",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "Is this planned to be implemented? Via SWRST call",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf991d3_673c4e9f",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "suggestion to eliminate magic `0x10` value:\n```\nfor (i \u003d TLC59116F_PWM0; i \u003c\u003d TLC59116F_PWM15; i++) {\n\t\trv \u003d tlc59116f_write(ctx, i, 0x00);\n```",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b022e73_004dd00e",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "What is 0xAA? Please define it",
+      "range": {
+        "startLine": 55,
+        "startChar": 51,
+        "endLine": 55,
+        "endChar": 55
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1667de_c710ab37",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "same here:\n```\nfor (j \u003d TLC59116F_LEDOUT0; j \u003c\u003d TLC59116F_LEDOUT3; j++) {\n\trv \u003d tlc59116f_write(ctx, j, 0xAA);\n```\n\nSame comment on line 135",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7755dc34_e94762a4",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "If bit 4 of TLC59116F_MODE1 is 0 - it will not be set to 1 ever. Example:\n0 \u0026 1 -\u003e 0",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96e05f5_a91711dc",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "Please define",
+      "range": {
+        "startLine": 136,
+        "startChar": 51,
+        "endLine": 136,
+        "endChar": 55
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d899ff48_ccdecaaf",
+        "filename": "driver/led/tlc59116f.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "inclusive language: secondary",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ea2a00_a4f93047",
+        "filename": "driver/led/tlc59116f.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "All those are not used (and not defined in datasheet)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e2b5f2_e7261028",
+        "filename": "driver/led/tlc59116f.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T17:57:56Z",
+      "side": 1,
+      "message": "This is common code, so we cannot assume how A0,A1,A2,A3 are connected.\nPlease add all the possible addresses, e.g:\nTLC59116F_ADDR0_FLAG 0x60\nTLC59116F_ADDR1_FLAG 0x61\n...\nTLC59116F_ADDR15_FLAG 0x6f",
+      "revId": "82ca422b0732ce2bd69b93008752272ed8d4a708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
