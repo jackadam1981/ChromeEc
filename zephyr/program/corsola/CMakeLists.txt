@@ -23,6 +23,14 @@ zephyr_library_sources_ifdef(CONFIG_VARIANT_CORSOLA_DB_DETECTION
 if(DEFINED CONFIG_BOARD_KRABBY)
 	project(krabby)
 	add_subdirectory(krabby)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
+				     "src/ec_ec_comm.c")
+elseif(DEFINED CONFIG_BOARD_KRABBY_KB)
+	project(krabby_kb)
+	add_subdirectory(krabby_kb)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
+				     "src/ec_ec_comm.c")
+	zephyr_library_sources("../../../driver/touchpad_elan.c")
 elseif(DEFINED CONFIG_BOARD_KINGLER)
 	project(kingler)
 	add_subdirectory(kingler)
