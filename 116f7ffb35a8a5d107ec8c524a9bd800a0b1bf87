@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c02f15e_f25dbe4c",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-05-31T16:53:14Z",
+      "side": 1,
+      "message": "Why is CONFIG_MKBP_INPUT_DEVICES required here?\nI suggest leaving only CONFIG_TABLET_MODE in this condition.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 69
+      },
+      "revId": "116f7ffb35a8a5d107ec8c524a9bd800a0b1bf87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
