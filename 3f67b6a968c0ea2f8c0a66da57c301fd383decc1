@@ -16,6 +16,23 @@
       "message": "Resolved merge conflict",
       "revId": "3f67b6a968c0ea2f8c0a66da57c301fd383decc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb787ec5_fcb4c4f6",
+        "filename": "board/osiris/keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-05-31T02:45:29Z",
+      "side": 1,
+      "message": "May I know what\u0027s the reason to raise its priority to the highest level?",
+      "revId": "3f67b6a968c0ea2f8c0a66da57c301fd383decc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
