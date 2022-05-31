@@ -17,6 +17,7 @@
  * Newer project should have all of these fixed.
  */
 BUILD_ASSERT(IS_ENABLED(CONFIG_BOARD_KRABBY) ||
+	     IS_ENABLED(CONFIG_BOARD_KRABBY_KB) ||
 	     IS_ENABLED(CONFIG_BOARD_TENTACRUEL));
 
 static void enter_hidden_mode(void)
