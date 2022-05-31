@@ -28,7 +28,11 @@ typedef union {
 } timestamp_t;
 
 /* Data type for POSIX style clock() implementation */
+#ifdef __cplusplus
+typedef unsigned long clock_t;
+#else
 typedef long clock_t;
+#endif
 
 /**
  * Initialize the timer module.
