@@ -16,6 +16,24 @@
       "message": "thank you Li for the CL, can you verify from command line if this works \n\nhere are simple steps:\n\n-echo 1 \u003e offline/rescan on a port \n- dd if\u003dnvm.bin of\u003d\u003cpath to nonnvmemdir\u003e\n- echo 1 \u003e nvm_athenticate \u0026\u0026 echo 0 \u003e offline. { should be in same command with out 5 secs delay)",
       "revId": "cf362559f716a105db13a818718c947e1e6cf495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad13be3_6822334a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341715
+      },
+      "writtenOn": "2022-05-31T02:41:53Z",
+      "side": 1,
+      "message": "This seems working with the CL",
+      "parentUuid": "80a6e110_13b75a38",
+      "revId": "cf362559f716a105db13a818718c947e1e6cf495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
