@@ -51,6 +51,24 @@
       "parentUuid": "0bc61e0a_ffcbb1f9",
       "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2b1863_f1b48044",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-05-31T18:22:57Z",
+      "side": 1,
+      "message": "OK. Thanks for the update.\n\nI\u0027d like Daniel to chime in whether this behaviour is sufficient from a fwupd perspective (or whether we are missing any edge cases)",
+      "parentUuid": "e27b8290_91aec0a2",
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
