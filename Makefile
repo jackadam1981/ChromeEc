@@ -291,7 +291,7 @@ all-obj-$(1)+=$(call objs_from_dir_p,chip/$(CHIP),chip,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,$(BASEDIR),baseboard,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,$(BDIR),board,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,private,private,$(1))
-all-obj-$(1)+=$(call objs_from_dir_p,private-kandou,private-kandou,$(1))
+#all-obj-$(1)+=$(call objs_from_dir_p,private-kandou,private-kandou,$(1))
 ifneq ($(PDIR),)
 all-obj-$(1)+=$(call objs_from_dir_p,$(PDIR),$(PDIR),$(1))
 endif
@@ -342,7 +342,7 @@ host-srcs := $(foreach u,$(host-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) \
 
 dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
 	cts/common cts/$(CTS_MODULE) $(out)/gen
-dirs+= private private-kandou $(PDIR) $(PBDIR)
+dirs+= private $(PDIR) $(PBDIR)
 dirs+=$(shell find common -type d)
 dirs+=$(shell find driver -type d)
 common_dirs=util
