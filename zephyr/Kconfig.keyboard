@@ -46,6 +46,9 @@ config PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP
 	  (row, col), to the AP and the kernel driver will map this scan code to
 	  a key.
 
+config PLATFORM_EC_KEYBOARD_PROTOCOL_NONE
+	bool  "none"
+
 endchoice # PLATFORM_EC_KEYBOARD_PROTOCOL_MODE
 
 config PLATFORM_EC_KEYBOARD_DISCRETE
