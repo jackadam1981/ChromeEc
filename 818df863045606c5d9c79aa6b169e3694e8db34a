@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1650f140_55c146e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-05-31T09:33:00Z",
+      "side": 1,
+      "message": "Sorry added a new file and lost the +2... turns out zephyr/projects/intelrvp/mtlrvp/src/board_power.c had to be converted as well... missed it because it\u0027s not built for some reason, will address that separately.",
+      "revId": "818df863045606c5d9c79aa6b169e3694e8db34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
