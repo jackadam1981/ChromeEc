@@ -1,0 +1,78 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Corsola program common DTS includes */
+
+#include "../common.dtsi"
+#include "../power_signal.dtsi"
+#include "../usba.dtsi"
+#include "../ite_adc.dtsi"
+#include "../ite_gpio.dtsi"
+#include "../ite_keyboard.dtsi"
+#include "../ite_i2c.dtsi"
+#include "../ite_interrupts.dtsi"
+#include "../ite_led.dtsi"
+#include "../ite_motionsense.dtsi"
+#include "../ite_usbc.dtsi"
+
+
+/ {
+	batteries {
+		default_battery: c235 {
+			compatible = "celxpert,c235-41", "battery-smart";
+		};
+	};
+
+	named-gpios {
+		touchpad: touchpad {
+			gpios = <&gpioi 3 GPIO_INPUT>;
+		};
+	};
+
+	gpio-interrupts {
+		int_touchpad: touchpad {
+			irq-pin = <&touchpad>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "touchpad_interrupt";
+		};
+	};
+
+	unused-pins {
+		unused-gpios =
+			/* pg_pp5000_z2_od */
+			<&gpiod 2 GPIO_INPUT>,
+			/* pg_mt6315_proc_b_odl */
+			<&gpioe 1 GPIO_INPUT>,
+			/* ec_pen_chg_dis_odl */
+			<&gpioh 3 GPIO_ODR_HIGH>,
+			/* unnamed nc pins */
+			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
+			<&gpioa 6 GPIO_INPUT_PULL_DOWN>,
+			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiod 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 6 GPIO_INPUT_PULL_DOWN>,
+			<&gpiom 6 (GPIO_INPUT_PULL_DOWN | GPIO_VOLTAGE_1P8)>,
+			/* spi_clk_gpg6 */
+			<&gpiog 6 GPIO_INPUT_PULL_UP>,
+			/* spi_mosi_gpg4 */
+			<&gpiog 4 GPIO_OUTPUT_LOW>,
+			/* spi_miso_gpg5 */
+			<&gpiog 5 GPIO_OUTPUT_LOW>,
+			/* spi_cs_gpg7 */
+			<&gpiog 7 GPIO_OUTPUT_LOW>;
+	};
+};
+
+&i2c2 {
+	touchpad@15 {
+		compatible = "elan,ekth3000";
+		status = "okay";
+		reg = <0x15>;
+		irq = <&int_touchpad>;
+	};
+};
