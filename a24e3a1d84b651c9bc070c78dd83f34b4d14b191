@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee8911c_4af021d0",
+        "filename": "zephyr/projects/intelrvp/adlrvp/src/adlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-05-31T19:46:23Z",
+      "side": 1,
+      "message": "This should also get moved into the devicetree.  I opened b/234482311 to add this capability.",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 11
+      },
+      "revId": "a24e3a1d84b651c9bc070c78dd83f34b4d14b191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
