@@ -17,6 +17,9 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+#undef CONFIG_CBI_EEPROM
+#define CONFIG_CBI_EMULATED
+
 /* Save some flash space */
 #define CONFIG_CHIP_INIT_ROM_REGION
 #undef  CONFIG_CONSOLE_CMDHELP

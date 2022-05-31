@@ -14,6 +14,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
+#include "cros_board_info.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/bc12/pi3usb9201.h"
@@ -120,6 +121,21 @@ const struct adc_t adc_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+static void board_cbi_init(void)
+{
+	/*
+	 * Duplo is using emulated CBI, so we'll need to set the values
+	 * every boot.
+	 */
+	 int board_version = 0;
+	 int oem_id = 0;
+	 uint32_t sku_id = 0x7fffffff;
+	 cbi_set_board_info(CBI_TAG_BOARD_VERSION, (uint8_t*)&board_version, sizeof(board_version));
+	 cbi_set_board_info(CBI_TAG_OEM_ID, (uint8_t*)&oem_id, sizeof(oem_id));
+	 cbi_set_board_info(CBI_TAG_SKU_ID, (uint8_t*)&sku_id, sizeof(sku_id));
+}
+DECLARE_HOOK(HOOK_INIT, board_cbi_init, HOOK_PRIO_FIRST);
 
 void board_init(void)
 {
