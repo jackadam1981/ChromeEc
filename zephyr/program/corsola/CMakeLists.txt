@@ -20,7 +20,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usb_pd_policy.c")
 zephyr_library_sources_ifdef(CONFIG_VARIANT_CORSOLA_DB_DETECTION
 			     "src/variant_db_detection.c")
 
-if(DEFINED CONFIG_BOARD_KRABBY)
+if(DEFINED CONFIG_BOARD_KRABBY OR DEFINED CONFIG_BOARD_KRABBY_KB)
 	project(krabby)
 	zephyr_library_sources("src/krabby/hooks.c"
 			       "src/krabby/charger_workaround.c"
@@ -30,6 +30,8 @@ if(DEFINED CONFIG_BOARD_KRABBY)
 				     "src/krabby/usb_pd_policy.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 				     "src/krabby/usbc_config.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
+				     "src/krabby/ec_ec_comm.c")
 elseif(DEFINED CONFIG_BOARD_KINGLER)
 	project(kingler)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_I2C "src/kingler/i2c.c")
