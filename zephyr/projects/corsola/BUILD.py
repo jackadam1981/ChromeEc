@@ -50,6 +50,24 @@ register_corsola_project(
 )
 
 register_corsola_project(
+    "krabby_kb",
+    extra_dts_overlays=[
+        here / "adc_krabby.dts",
+        here / "battery_krabby.dts",
+        here / "gpio_krabby.dts",
+        here / "i2c_krabby.dts",
+        here / "interrupts_krabby.dts",
+        here / "led_krabby.dts",
+        here / "motionsense_krabby.dts",
+        here / "usbc_krabby.dts",
+    ],
+    extra_kconfig_files=[
+        here / "prj_it81202_base.conf",
+        here / "prj_krabby_kb.conf",
+    ],
+)
+
+register_corsola_project(
     project_name="kingler",
     chip="npcx9m3f",
     extra_dts_overlays=[
