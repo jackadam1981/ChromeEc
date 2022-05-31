@@ -31,6 +31,7 @@ def register_corsola_project(
 
 
 register_corsola_project("krabby")
+register_corsola_project("krabby_kb")
 
 register_corsola_project(
     project_name="kingler",

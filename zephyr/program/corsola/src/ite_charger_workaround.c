@@ -16,7 +16,7 @@
  * tentacruel devices.
  * Newer project should have all of these fixed.
  */
-BUILD_ASSERT(IS_ENABLED(CONFIG_BOARD_KRABBY) ||
+BUILD_ASSERT(IS_ENABLED(CONFIG_BOARD_KRABBY) || IS_ENABLED(CONFIG_BOARD_KRABBY_KB) ||
 	     IS_ENABLED(CONFIG_BOARD_TENTACRUEL) || IS_ENABLED(CONFIG_TEST));
 
 /* b/194967754#comment5: work around for IBUS ADC unstable issue */
