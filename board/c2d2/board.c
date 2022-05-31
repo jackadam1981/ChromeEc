@@ -44,6 +44,7 @@ static int vref_monitor_disable;
 #define VREF_MON_DIS_H1_RST_HELD	BIT(0)
 #define VREF_MON_DIS_EC_PWR_HELD	BIT(1)
 #define VREF_MON_DIS_SPI_MODE		BIT(2)
+#define VREF_MON_DIS_H1_VREF_3V3	BIT(3)
 
 /*
  * Tracks if bus pins are locked by a function like UART holding, I2C,
@@ -871,6 +872,55 @@ DECLARE_CONSOLE_COMMAND(h1_reset, command_h1_reset,
 			"[0|1|pulse]?",
 			"Get/set the h1 reset state");
 
+static int command_force_h1_3V3(int argc, char **argv)
+{
+	if (argc > 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* Updating the state */
+	if (argc == 2) {
+		char *e;
+		const int force_3V3 = strtoi(argv[1], &e, 0);
+
+		if (*e || (force_3V3 < 0) || (force_3V3 > 1))
+			return EC_ERROR_PARAM1;
+
+		mutex_lock(&vref_bus_state_mutex);
+
+		if (vref_monitor_disable & VREF_MON_DIS_SPI_MODE) {
+			ccprintf("Cannot force vref while in SPI mode.\n");
+			goto busy_error_unlock;
+		}
+
+		if (!!(vref_monitor_disable & VREF_MON_DIS_H1_VREF_3V3) ==
+		    force_3V3) {
+			/* No change, do nothing */
+		} else if (force_3V3) {
+			/* Force high */
+			gpio_set_level(GPIO_SEL_SPIVREF_H1VREF_3V3, 1);
+			/* Disable monitor*/
+			vref_monitor_disable |= VREF_MON_DIS_H1_VREF_3V3;
+		} else {
+			/* Transitioning out of hold, correct vrefs */
+			hook_call_deferred(&update_vrefs_and_shifters_data, 0);
+			vref_monitor_disable &= ~VREF_MON_DIS_H1_VREF_3V3;
+		}
+
+		mutex_unlock(&vref_bus_state_mutex);
+	}
+
+	/* Print status for both get and set case */
+	ccprintf("Forcing H1 Vref to 3.3V: %s\n",
+		 vref_monitor_disable & VREF_MON_DIS_H1_VREF_3V3 ? "yes":"no");
+
+	return EC_SUCCESS;
+
+busy_error_unlock:
+	mutex_unlock(&vref_bus_state_mutex);
+	return EC_ERROR_BUSY;
+}
+DECLARE_CONSOLE_COMMAND(force_h1_3v3, command_force_h1_3V3, "[0|1]",
+			"Forced h1 Vref to 3.3V");
 
 /******************************************************************************
  * Vref detection logic
