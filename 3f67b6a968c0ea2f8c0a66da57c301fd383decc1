@@ -51,6 +51,24 @@
       "parentUuid": "eb787ec5_fcb4c4f6",
       "revId": "3f67b6a968c0ea2f8c0a66da57c301fd383decc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60c2107_30ed6096",
+        "filename": "board/osiris/keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-05-31T06:04:41Z",
+      "side": 1,
+      "message": "In this case, I think we should use \"HOOK_PRIO_PRE_DEFAULT\" for more intuitive here.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/hooks.h;drc\u003dec216b503d419fcbe6d25909fbfc0b5735dca2ad;l\u003d18\n\nAlthough `keyboard_matrix_init` only related to memory operation, but I\u0027m worry about side effect to perform this before \"HOOK_PRIO_INIT_DMA\", \"HOOK_PRIO_INIT_LPC\" or even \"HOOK_PRIO_INIT_CHIPSET\".",
+      "parentUuid": "e01e67d3_97a89d51",
+      "revId": "3f67b6a968c0ea2f8c0a66da57c301fd383decc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
