@@ -222,6 +222,30 @@ static int rt1718s_workaround(int port)
 	return EC_SUCCESS;
 }
 
+static int rt1718s_set_vconn(int port, int enable)
+{
+	/*
+	 * b/233698718#comment9: The initial output spike will be likely trigger
+	 * the Vconn OCP. Workaround this by disabling the OCP at the beginning
+	 * of sourcing Vconn, and then enable OCP back after Vconn sourced.
+	 */
+	if (enable)
+		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCON_CTRL3,
+						  RT1718S_VCON_LIMIT_MODE,
+						  0xFF));
+
+	RETURN_ERROR(tcpci_tcpm_set_vconn(port, enable));
+
+	if (enable) {
+		/* The spike tooks around 104us in the experient. */
+		udelay(100);
+		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCON_CTRL3,
+						  RT1718S_VCON_LIMIT_MODE, 0));
+	}
+
+	return EC_SUCCESS;
+}
+
 static int rt1718s_init(int port)
 {
 	static bool need_sw_reset = true;
@@ -736,7 +760,7 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DECODE_SOP
 	.sop_prime_enable	= &tcpci_tcpm_sop_prime_enable,
 #endif
-	.set_vconn		= &tcpci_tcpm_set_vconn,
+	.set_vconn		= &rt1718s_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message_raw	= &tcpci_tcpm_get_message_raw,
