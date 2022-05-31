@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515d5f64_9868f887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-31T21:13:51Z",
+      "side": 1,
+      "message": "Hi Jeremy,\nI saw you filed a couple of bugs about covering the recent EC changes I made. All these changes are from one use case, so this CL is just adding one new test but it will cover the added functionality you mentioned in these two bugs (https://buganizer.corp.google.com/issues/232536412 and https://buganizer.corp.google.com/issues/233455723). Basically, these changes are to enable a dock with a power button to turn a device on and off using USB PD messages (go/power-button). For this to work, I had to add Status/Alert/Revision message support to the source emulator. Let me know if you have any questions.\n\nFYI, here are the updated coverage metrics.\nAll line coverage: 62.7% -\u003e 63.0% (+0.3%)\nAll functions: \t71.1% -\u003e 71.4% (+0.3%)\nAll branches: 44.6% -\u003e 44.8% (+0.2%)\nplatform/ec/common/usbc line coverage: 58.8% -\u003e 61.5% (+2.7%)\nplatform/ec/common/usbc functions: 73.6% -\u003e 76.7% (+3.1%)\nplatform/ec/common/usbc branches: 46.6% -\u003e 48.7% (+2.1%)\n\nHi Tristan,\nI heard you were working on updating the zephyr unit test emulated partners to use USB PD Rev 3.0. There may be some overlap with the CL which is adding support for a couple USB PD Rev 3.0 messages and even a USB PD Rev 3.1 message (Revision). This is to test a particular use case where a dock with a power button uses PD messages to turn a device on and off (go/power-button). Can you take a look to see if this conflicts with any of your current or planned work?\n\nThanks,\nJameson",
+      "revId": "f4c569596a362ef4afc476be64a226cc32b4e93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
