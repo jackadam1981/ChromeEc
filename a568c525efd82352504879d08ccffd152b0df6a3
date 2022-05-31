@@ -191,6 +191,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0811f094_68c2c72d",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-31T22:13:14Z",
+      "side": 1,
+      "message": "nit:\nCan we just keep this unabbreviated as `EVENT` instead of `EVT`?",
+      "range": {
+        "startLine": 58,
+        "startChar": 20,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9b6523f_3c03905f",
         "filename": "zephyr/Kconfig.usb_charger",
         "patchSetId": 10

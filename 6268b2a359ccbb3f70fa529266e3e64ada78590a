@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dafd1da_e361e15a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-31T22:13:14Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027m no expert here.",
+      "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ee7d20_24e5b802",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-05-31T22:13:14Z",
+      "side": 1,
+      "message": "nit: evt \u003d\u003e event to be consistent",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de3e9fbf_804b75fa",
