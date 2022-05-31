@@ -46,4 +46,10 @@ config PLATFORM_EC_CBI_GPIO
 	  the BOARD ID and SKU ID from GPIOs and then substantiate in-memory
 	  CBI for AP to query.
 
+config PLATFORM_EC_CBI_EMULATED
+	bool "CBI emulation support"
+	help
+	  Enables Chromium OS Board Info (CBI) but utilizes the CBI cache
+	  as the backing store. Note that the data will not be persistent
+	  across resets.
 endchoice

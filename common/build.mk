@@ -55,6 +55,7 @@ common-$(CONFIG_BLUETOOTH_LE_STACK)+=btle_hci_controller.o btle_ll.o
 common-$(CONFIG_BODY_DETECTION)+=body_detection.o
 common-$(CONFIG_CAPSENSE)+=capsense.o
 common-$(CONFIG_CEC)+=cec.o
+common-$(CONFIG_CBI_EMULATED)+=cbi.o
 common-$(CONFIG_CBI_EEPROM)+=cbi.o cbi_eeprom.o
 common-$(CONFIG_USB_PD_FLAGS)+=usb_pd_flags.o
 common-$(CONFIG_CBI_GPIO)+=cbi.o cbi_gpio.o

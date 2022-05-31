@@ -572,4 +572,36 @@ int cbi_set_fw_config(uint32_t fw_config)
 }
 #endif
 
+#ifdef CONFIG_CBI_EMULATED
+/* Emulated CBI uses the cache as the backing store */
+static int emulated_store(uint8_t *cache)
+{
+	/* No-op as there's nothing to write to */
+	return EC_SUCCESS;
+}
+
+static int emulated_load(uint8_t offset, uint8_t *data, int len)
+{
+	/* No-op as cache is always up to date */
+	return EC_SUCCESS;
+}
+
+static int emulated_is_wp(void)
+{
+	/* Assume never write-protected */
+	return 0;
+}
+
+struct cbi_storage_driver emulated_cbi_drv = {
+	.store = emulated_store,
+	.load = emulated_load,
+	.is_protected = emulated_is_wp,
+};
+
+const struct cbi_storage_config_t cbi_config = {
+	.storage_type = CBI_STORAGE_TYPE_EMULATED,
+	.drv = &emulated_cbi_drv,
+};
+#endif /* CONFIG_CBI_EMULATEDS */
+
 #endif /* !HOST_TOOLS_BUILD */
