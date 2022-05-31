@@ -33,6 +33,24 @@
       "message": "Could you summarize what is the expected observed behavior on the host side with this patch, if fwupd immediately tries to online the port without waiting 5 seconds?",
       "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27b8290_91aec0a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341715
+      },
+      "writtenOn": "2022-05-31T18:20:51Z",
+      "side": 1,
+      "message": "I see the update was successful and no errors observed if user doesnt wait 5 secs , also port seems to recover fine,\n\nlocalhost /home # dd if\u003d/home/BBR_CDR_A1_ADL_P_LP4_PORTS_2_rev3_10_SEC1_sign.bin of\u003d/sys/bus/thunderbolt/devices/1-0\\:1.1/nvm_non_active0/nvmem \n464+0 records in\n464+0 records out\n237568 bytes (238 kB, 232 KiB) copied, 0.0115618 s, 20.5 MB/s\n\nlocalhost /home # echo 1 \u003e /sys/bus/thunderbolt/devices/1-0\\:1.1/nvm_authenticate \u0026\u0026 echo 0 \u003e /sys/bus/thunderbolt/devices/1-0/usb4_port1/offline ( no 5 secs wait before we take port online and was successful)\n\nthe mux on the port is also cleared and looks fine.",
+      "parentUuid": "0bc61e0a_ffcbb1f9",
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
