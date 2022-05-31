@@ -219,6 +219,46 @@ static int rt1718s_workaround(int port)
 		break;
 	}
 
+	/* Increase the Vconn OCP shoot detection from 200ns to 3~5us */
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCON_CTRL4,
+					  RT1718S_VCON_CTRL4_OVP_CP_EN, 0));
+
+	return EC_SUCCESS;
+}
+
+static int rt1718s_set_vconn(int port, int enable)
+{
+	if (enable) {
+		/*
+		 * b/233698718#comment9: The initial output spike will be likely
+		 * trigger the Vconn OCP. Workaround this by disabling the OCP
+		 * at the beginning of sourcing Vconn, and then enable OCP back
+		 * after Vconn sourced.
+		 */
+		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCON_CTRL3,
+						  RT1718S_VCON_LIMIT_MODE,
+						  0xFF));
+
+		/* Enable Vconn RVP */
+		RETURN_ERROR(rt1718s_update_bits8(
+			port, RT1718S_VCONN_CONTROL_2,
+			RT1718S_VCONN_CONTROL_2_RVP_EN, 0xFF));
+	}
+
+	RETURN_ERROR(tcpci_tcpm_set_vconn(port, enable));
+
+	if (enable) {
+		/* It takes 10ms that we can switch back to shutdown mode. */
+		msleep(10);
+		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCON_CTRL3,
+						  RT1718S_VCON_LIMIT_MODE, 0));
+	} else {
+		/* Disable Vconn RVP */
+		RETURN_ERROR(rt1718s_update_bits8(
+			port, RT1718S_VCONN_CONTROL_2,
+			RT1718S_VCONN_CONTROL_2_RVP_EN, 0x0));
+	}
+
 	return EC_SUCCESS;
 }
 
@@ -752,7 +792,7 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DECODE_SOP
 	.sop_prime_enable	= &tcpci_tcpm_sop_prime_enable,
 #endif
-	.set_vconn		= &tcpci_tcpm_set_vconn,
+	.set_vconn		= &rt1718s_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message_raw	= &tcpci_tcpm_get_message_raw,
