@@ -57,6 +57,30 @@
       },
       "revId": "f4c569596a362ef4afc476be64a226cc32b4e93f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b51ff3_e16b338b",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_src.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-05-31T23:28:14Z",
+      "side": 1,
+      "message": "Yes, but those are just extended messages. All extended messages carry data, even the Extended_Control Message is using a data block to extend control message space. When the extended bit is used, the Number of data objects or CNT field depends on whether or not chunking is used. But, when it is set to 0, that just means that the data size is set in the extended message header. What I have added is similar to how we check message type in TCMPv2. See pe_snk_ready_run or pe_src_ready_run in src/platform/ec/common/usbc/usb_pe_drp_sm.c. First we check the extended field to find extended message, then cnt to distinguish between data and control messages.\n\nDescribed in the pd spec below.\n6.2.1.1.2 Number of Data Objects\n\nWhen both the Extended bit and Chunked bit are set to one, the Number of Data Objects field Shall indicate the number of Data Objects in the Message padded to the 4-byte boundary including the Extended Header as part of the first Data Object.\n\nWhen the Extended bit is set to one and Chunked bit is set to zero, the Number of Data Objects field Shall be Reserved. Note that in this case, the message length is determined solely by the Data Size field in the Extended Message Header.",
+      "parentUuid": "326d25bd_7bbb463a",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 26
+      },
+      "revId": "f4c569596a362ef4afc476be64a226cc32b4e93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
