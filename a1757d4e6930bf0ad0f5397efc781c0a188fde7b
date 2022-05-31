@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f722bcc1_71aa1613",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T19:40:25Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "a1757d4e6930bf0ad0f5397efc781c0a188fde7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e478f8_fd786550",
+        "filename": "board/duplo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-05-31T19:40:25Z",
+      "side": 1,
+      "message": "huge nit, missing preposition: not sure whether it is \"in\" or \"on\" or something else.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "a1757d4e6930bf0ad0f5397efc781c0a188fde7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
