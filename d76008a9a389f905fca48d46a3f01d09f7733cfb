@@ -16,6 +16,46 @@
       "message": "Hi Eric, could you help to review the CL, thanks.",
       "revId": "d76008a9a389f905fca48d46a3f01d09f7733cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf52cd52_5fa5b3dd",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-01T07:47:09Z",
+      "side": 1,
+      "message": "Move this into a new CL.",
+      "revId": "d76008a9a389f905fca48d46a3f01d09f7733cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a9ae1e5_74fd86b2",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-01T07:47:09Z",
+      "side": 1,
+      "message": "It seems the order of dts has been messed up, but for this CL please still keep the order.\n```\n        here / \"usba_steelix.dts\",\n        here / \"usbc_kingler.dts\",\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "d76008a9a389f905fca48d46a3f01d09f7733cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
