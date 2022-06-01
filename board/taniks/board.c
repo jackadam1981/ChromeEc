@@ -29,6 +29,8 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
+#include "aw20198.h"
+#include "rgb_keyboard.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -130,4 +132,73 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 	charge_set_input_current_limit(MAX(charge_ma,
 					CONFIG_CHARGER_INPUT_CURRENT),
 					charge_mv);
+}
+
+static int aw20198_read(struct rgbkbd *ctx, uint8_t addr, uint8_t *value)
+{
+	return i2c_xfer(ctx->cfg->i2c, AW20198_I2C_ADDR_FLAG,
+			&addr, sizeof(addr), value, sizeof(*value));
+}
+
+static int aw20198_write(struct rgbkbd *ctx, uint8_t addr, uint8_t value)
+{
+	uint8_t buf[2] = {
+		[0] = addr,
+		[1] = value,
+	};
+
+	return i2c_xfer(ctx->cfg->i2c, AW20198_I2C_ADDR_FLAG,
+			buf, sizeof(buf), NULL, 0);
+}
+
+static int aw20198_set_page(struct rgbkbd *ctx, uint8_t page)
+{
+	return aw20198_write(ctx, AW20198_REG_PAGE, page);
+}
+
+static int aw20198_get_config(struct rgbkbd *ctx, uint8_t addr, uint8_t *value)
+{
+	int rv = aw20198_set_page(ctx, AW20198_PAGE_FUNC);
+	if (rv) {
+		return rv;
+	}
+
+	return aw20198_read(ctx, addr, value);
+}
+
+static int aw20198_set_swsel(uint8_t num)
+{
+	uint8_t cfg;
+	int rv = EC_SUCCESS;
+
+	for (int i = 0; i < rgbkbd_count; i++) {
+		struct rgbkbd *ctx = &rgbkbds[i];
+		rv = aw20198_get_config(ctx, AW20198_REG_GCR, &cfg);
+
+		cfg &= ~AW20198_REG_GCR_SWSEL_MASK;
+		cfg |= (num << AW20198_REG_GCR_SWSEL_SHIFT);
+		rv = aw20198_write(ctx, AW20198_REG_GCR, cfg);
+	}
+	return rv;
+}
+
+__override void board_aw20198_init(void)
+{
+	CPRINTS("taniks AW20198 init");
+
+	/*
+	 * Modify SWSEL bit4-7 from SW11 to SW8 to fulfill the LED
+	 * module design layout
+	 */
+	aw20198_set_swsel(AW20198_REG_GCR_SW1_TO_SW8_ACTIVE);
+}
+
+__override void board_aw20198_set_scale(uint8_t *buf)
+{
+	CPRINTS("taniks AW20198 set scale");
+
+	for (int i = 0; i < AW20198_REG_NUM_PAG2 / 3; i++) {
+		/* Modify RED SLn to 190(60mA) for HW change the total Sink current to 80mA */
+		*(buf + i*3) = 190;
+	}
 }
