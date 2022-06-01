@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0da1d2_7ea23318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-01T23:27:25Z",
+      "side": 1,
+      "message": "I\u0027m curious as to whether compare_build.sh passes with this change.  You could try it out just on one board.  If the compiler recognized no callers check the return value, it\u0027s possible the compiler optimized out the return 0.",
+      "revId": "9f876f04c1af9a359ba6ca9db9c6976770eafd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d79406_754a061c",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-01T23:27:25Z",
+      "side": 1,
+      "message": "Please update the comment.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 67
+      },
+      "revId": "9f876f04c1af9a359ba6ca9db9c6976770eafd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
