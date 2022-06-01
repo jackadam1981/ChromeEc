@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47622e51_6c08fe7e",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-01T14:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14ee7d20_24e5b802",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de3e9fbf_804b75fa",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddacdd8_e78ab7c5",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-01T14:26:58Z",
+      "side": 1,
+      "message": "Good idea, let me change it.\n\nFor the return value, nothing anywhere seems to be checking it and no implementation does anything other than return 0. How about I do a separate patch to change the API and drop that return value?",
+      "parentUuid": "de3e9fbf_804b75fa",
+      "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96640898_a2e99039",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-05-31T16:23:54Z",
       "side": 1,
       "message": "Can you also add a check that `USB_CHARGER_EVT_BIT(7) \u003d\u003d TASK_EVENT_CUSTOM_BIT(7)`?  If somewhere were to move TASK_EVENT_CUSTOM_BIT from the low order bits, the assumptions made by this driver would break silently.",
+      "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c53489_26cb79b4",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-01T14:26:58Z",
+      "side": 1,
+      "message": "Yeah good point, I can actually make this check match what\u0027s used in the code and check for port event BIT() as well, let me do that.",
+      "parentUuid": "96640898_a2e99039",
       "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

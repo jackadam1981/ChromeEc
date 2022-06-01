@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb6f9a3_eee8a9bb",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-01T14:26:58Z",
+      "side": 1,
+      "message": "If a low number port gets flooded of request? That may make sense, but I\u0027m thinking more of if we hit some timing at the limit, having this in sequence may make it look more of an intermittent issue. I\u0027d rather leave this as is now, can always change it later if it turns out to be a problem.",
+      "parentUuid": "a5085eaf_13a93fc6",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 64
+      },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71b782c4_1e6b3e7f",
@@ -202,6 +226,30 @@
       "writtenOn": "2022-05-31T22:13:14Z",
       "side": 1,
       "message": "nit:\nCan we just keep this unabbreviated as `EVENT` instead of `EVT`?",
+      "range": {
+        "startLine": 58,
+        "startChar": 20,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cffbd4_c027647b",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-01T14:26:58Z",
+      "side": 1,
+      "message": "That makes a lot of sense... not sure why I even changed it, thanks for pointing it out.",
+      "parentUuid": "0811f094_68c2c72d",
       "range": {
         "startLine": 58,
         "startChar": 20,
