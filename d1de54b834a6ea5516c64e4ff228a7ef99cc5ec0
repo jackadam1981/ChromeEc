@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e205e67d_d02db704",
+        "filename": "board/osiris/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-06-01T10:11:01Z",
+      "side": 1,
+      "message": "Change frequency to 25KHz due to this comment.\nhttps://b.corp.google.com/issues/229039902#comment3",
+      "revId": "d1de54b834a6ea5516c64e4ff228a7ef99cc5ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
