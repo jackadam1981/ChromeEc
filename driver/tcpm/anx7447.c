@@ -36,6 +36,9 @@ static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 static struct anx_state anx[CONFIG_USB_PD_PORT_MAX_COUNT];
 static struct anx_usb_mux mux[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+#define ANX_FRS_ENABLED                   BIT(0)
+static uint8_t anx_frs_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 /*
  * ANX7447 has two co-existence I2C addresses, TCPC address and
  * SPI address. The registers of TCPC address are partly compliant
@@ -460,10 +463,49 @@ int anx7447_board_charging_enable(int port, int enable)
 	return tcpc_write(port, TCPC_REG_COMMAND, enable ? 0x55 : 0x44);
 }
 
+static void anx7447_vendor_defined_alert(int port)
+{
+	int alert;
+
+	tcpc_read(port, ANX7447_REG_VD_ALERT, &alert);
+
+	/* write to clear alerts */
+	tcpc_write(port, ANX7447_REG_VD_ALERT, alert);
+
+	if (anx_frs_state[port] & ANX_FRS_ENABLED &&
+	    (alert & ANX7447_FRSWAP_SSIGNAL_DETECTED))
+		pd_got_frs_signal(port);
+}
+
+
 static void anx7447_tcpc_alert(int port)
 {
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
+		anx7447_vendor_defined_alert(port);
+
 	/* process and clear alert status */
 	tcpci_tcpc_alert(port);
+}
+
+static int anx7447_set_frs_enable(int port, int enable)
+{
+	int val;
+
+	RETURN_ERROR(tcpc_update8(port, ANX7447_REG_FRSWAP_CTRL,
+				  ANX7447_FRSWAP_DETECT_ENABLE, MASK_SET));
+
+	RETURN_ERROR(anx7447_reg_read(port, ANX7447_REG_ADDR_GPIO_CTRL_1, &val));
+
+	if (enable) {
+		val |= ANX7447_ADDR_GPIO_CTRL_1_FRS_EN_DATA;
+		anx_frs_state[port] |= ANX_FRS_ENABLED;
+	} else {
+		val &= ~ANX7447_ADDR_GPIO_CTRL_1_FRS_EN_DATA;
+		anx_frs_state[port] &= ~ANX_FRS_ENABLED;
+	}
+
+	RETURN_ERROR(anx7447_reg_write(port, ANX7447_REG_ADDR_GPIO_CTRL_1, val));
+	return EC_SUCCESS;
 }
 
 /*
@@ -915,6 +957,9 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
+#endif
+#ifdef CONFIG_USB_PD_FRS_TCPC
+	.set_frs_enable		= &anx7447_set_frs_enable,
 #endif
 	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
 #ifdef CONFIG_CMD_TCPC_DUMP
