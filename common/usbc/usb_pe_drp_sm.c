@@ -4964,6 +4964,10 @@ static void pe_prs_snk_src_send_swap_run(int port)
 					     PE_PRS_SNK_SRC_TRANSITION_TO_OFF);
 			} else if ((type == PD_CTRL_REJECT) ||
 						(type == PD_CTRL_WAIT)) {
+				if (type == PD_CTRL_REJECT)
+					ccprints("!!! type == PD_CTRL_REJECT !!!");
+				else if (type == PD_CTRL_WAIT)
+					ccprints("!!! type == PD_CTRL_WAIT !!!");
 				if (IS_ENABLED(CONFIG_USB_PD_REV30))
 					set_state_pe(port,
 						pe_in_frs_mode(port)
@@ -4982,6 +4986,7 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	 *   1) The SenderResponseTimer times out.
 	 */
 	if (pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE)) {
+		ccprints("!!! PE_TIMER_SENDER_RESPONSE timer expired !!!");
 		if (IS_ENABLED(CONFIG_USB_PD_REV30))
 			set_state_pe(port,
 				pe_in_frs_mode(port)
@@ -5000,6 +5005,7 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
 	    pe_in_frs_mode(port) &&
 		PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+		ccprints("!!! PE_FLAGS_PROTOCOL_ERROR !!!");
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 	}

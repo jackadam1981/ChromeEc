@@ -731,6 +731,7 @@ static void charge_manager_get_best_charge_port(int *new_port,
 
 	*new_port = port;
 	*new_supplier = supplier;
+	ccprints("!!! %s return supplier = %d !!!", __func__, supplier);
 }
 
 /**
@@ -790,6 +791,7 @@ static void charge_manager_refresh(void)
 		 * Zero the available charge on the rejected port so that
 		 * it is no longer chosen.
 		 */
+		ccprints("!!! Zero the available charge !!!");
 		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
 			available_charge[i][new_port].current = 0;
 			available_charge[i][new_port].voltage = 0;

@@ -35,6 +35,7 @@ static void update_vbus_supplier(int port, int vbus_level)
 		charge.current = USB_CHARGER_MIN_CURR_MA;
 	}
 
+	ccprints("!!! %s !!!", __func__);
 	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, port, &charge);
 }
 
@@ -71,6 +72,7 @@ void usb_charger_vbus_change(int port, int vbus_level)
 		pd_vbus_low(port);
 
 	/* Update VBUS supplier and signal VBUS change to USB_CHG task */
+	ccprints("!!! %s !!!", __func__);
 	update_vbus_supplier(port, vbus_level);
 
 #ifdef HAS_TASK_USB_CHG_P0
