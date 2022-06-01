@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
-#include <devicetree.h>
-#include <drivers/bbram.h>
+#include <zephyr/devicetree.h>
+#include <zephyr/drivers/bbram.h>
 #include <soc.h>
 
 #include "clock_chip.h"
