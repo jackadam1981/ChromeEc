@@ -16,6 +16,24 @@
       "message": "Hi Tom,\n\nSince we\u0027re going to modify `mkbp_info.c` which does not exist in firmware branch,\nit will rely on at least 3 CL chains which need to be cherry-pick (some of them already been backport and slightly modified in firmware branch): \n\nhttp://crrev/c/2782231\nhttp://crrev/c/2782364\nhttp://crrev/c/2669355\n\n1) I don\u0027t know this CL\u0027s approach is good enough or not, please have review.\n\n2) If 1) is done, since we\u0027re going to modify `mkbp_info.c` which does not \n   exist in firmware branch, it will rely on at least 3 CL chains which need to be \n   cherry-pick (some of them had been backport and slightly modified in firmware \n   branch already).\n   shall we shape this CL to adapt firmware branch or try to pick all these CL \n   chains for it ?\n\nAny advise will be useful, thank you.",
       "revId": "5c6c83286c9dc098c387882ca3000249348197ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b35c54_b9a9c57f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-01T23:59:38Z",
+      "side": 1,
+      "message": "If possible, cherry-pick these dependent CLs to the branch. If hard to do so, create a custom version of this CL in the branch.",
+      "parentUuid": "450e5398_bd0e6cd2",
+      "revId": "5c6c83286c9dc098c387882ca3000249348197ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

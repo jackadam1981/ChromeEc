@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4521baf9_57fd06ae",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-01T23:59:38Z",
+      "side": 1,
+      "message": "Split this board-specific change into a separate CL. It is easy to cherry-pick.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "6f5d75763964b225c0eef73643d478a54e79f04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
