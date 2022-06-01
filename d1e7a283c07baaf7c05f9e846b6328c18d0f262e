@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5420e757_08b130fa",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-01T22:15:00Z",
+      "side": 1,
+      "message": "So were we logging led\u0027s incorrectly before? If so, that should be it\u0027s own tiny CL. Feel free to assign me.",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68b82ed_10907d19",
+        "filename": "zephyr/test/drivers/led_driver/led_pins.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-01T22:15:00Z",
+      "side": 1,
+      "message": "Let\u0027s specifically comment that these are copied herobrine pins. Eventually someone we\u0027ll likely copy this file but forget to maybe add or remove pins when testing a different board.\n\nActually, how do we feel about just symlinking or #including them?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb02e47d_703fa218",
+        "filename": "zephyr/test/drivers/led_driver/led_policy.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-01T22:15:00Z",
+      "side": 1,
+      "message": "See above herobrine comment.",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3a8419_23d90a35",
+        "filename": "zephyr/test/drivers/led_driver/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-01T22:15:00Z",
+      "side": 1,
+      "message": "Why are we making this \"n\" when it\u0027s \"y\" in herobrine?",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7ba4a3_aa7497cc",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-01T22:15:00Z",
+      "side": 1,
+      "message": "Why do we reset the left LED but then don\u0027t test it? Should this be in a before?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16e80ad2_885224ff",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-01T22:15:00Z",
+      "side": 1,
+      "message": "Can we be a bit more explicit about what we\u0027re testing here than led_control? I\u0027m not really familiar with these values or why we chose to test led_control with them specifically. Is it arbitrary?",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628863fc_d35bd968",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-01T22:15:00Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
