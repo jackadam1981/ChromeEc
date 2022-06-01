@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9bc973_56d309eb",
+        "filename": "zephyr/projects/corsola/prj_kingler.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-06-01T07:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef2a6ae8_d5ed7d36",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "8e88824da4ba1e0badb76f30630265ccbfb14abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e48a5761_f6065c1c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-01T06:14:49Z",
       "side": 1,
       "message": "You can move this to `rt1718s_set_sbu`.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 11
+      },
+      "revId": "8e88824da4ba1e0badb76f30630265ccbfb14abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df942742_561951ae",
+        "filename": "zephyr/projects/corsola/src/kingler/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-06-01T07:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e48a5761_f6065c1c",
       "range": {
         "startLine": 195,
         "startChar": 0,
