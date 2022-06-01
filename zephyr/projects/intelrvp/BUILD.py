@@ -51,7 +51,10 @@ register_intelrvp_project(
         here / "adlrvp/adlrvp_mchp/keyboard.dts",
         here / "adlrvp/adlrvp_mchp/usbc.dts",
     ],
-    extra_kconfig_files=[here / "adlrvp/adlrvp_mchp/prj.conf"],
+    extra_kconfig_files=[
+        here / "legacy_ec_pwrseq.conf",
+        here / "adlrvp/adlrvp_mchp/prj.conf",
+    ],
 )
 
 
