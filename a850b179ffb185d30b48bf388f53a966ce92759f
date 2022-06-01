@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2ff1ff8_fbdd57ed",
+        "filename": "zephyr/include/dt-bindings/battery.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-01T18:19:29Z",
+      "side": 1,
+      "message": "The Zephyr convention is to define shared names in the dt-bindings file, and then have the header file include the bindings file.\n\nProbably best to follow what was done for the USB muxes.  If compiling Zephyr, use the dt-bindings file as the source of truth. This allows the legacy EC to have a single source of flags, and Zephyr EC to have it\u0027s own single source.\n\nhttp://cs/chromeos_public/src/platform/ec/include/usb_mux.h?rcl\u003d086009f55adcee29e4d3d8d8d0379d13a99ce946\u0026l\u003d21",
+      "parentUuid": "8c11513f_986262a6",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c31383a_fb423f8f",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 3
