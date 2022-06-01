@@ -18,6 +18,14 @@
 
 #define BUF_SIZE	(SIZE_OF_RGB * AW20198_GRID_SIZE)
 
+__overridable void board_aw20198_init(void)
+{
+}
+
+__overridable void board_aw20198_set_scale(uint8_t *buf)
+{
+}
+
 static int aw20198_read(struct rgbkbd *ctx, uint8_t addr, uint8_t *value)
 {
 	return i2c_xfer(ctx->cfg->i2c, AW20198_I2C_ADDR_FLAG,
@@ -131,6 +139,8 @@ static int aw20198_set_scale(struct rgbkbd *ctx, uint8_t offset,
 		buf[i * SIZE_OF_RGB + 3] = scale.b;
 	}
 
+	board_aw20198_set_scale(&buf[1]);
+
 	return i2c_xfer(ctx->cfg->i2c, AW20198_I2C_ADDR_FLAG,
 			buf, frame_len, NULL, 0);
 }
@@ -154,6 +164,8 @@ static int aw20198_init(struct rgbkbd *ctx)
 		return rv;
 	}
 	CPRINTS("ID=0x%02x", id);
+
+	board_aw20198_init();
 
 	return rv;
 }

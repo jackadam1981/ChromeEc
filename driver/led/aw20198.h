@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_DRIVER_LED_AW20198_H
 #define __CROS_EC_DRIVER_LED_AW20198_H
 
+#include "common.h"
+
 /* This depends on AD0 and AD1. (GRD, GRD) = 0x20. */
 #define AW20198_I2C_ADDR_FLAG	0x20
 
@@ -18,6 +20,20 @@
 #define AW20198_PAGE_SCALE	0xC2
 
 #define AW20198_REG_GCR		0x00
+#define AW20198_REG_GCR_SWSEL_MASK          0xF0
+#define AW20198_REG_GCR_SWSEL_SHIFT         4
+#define AW20198_REG_GCR_SW1_ACTIVE          0
+#define AW20198_REG_GCR_SW1_TO_SW2_ACTIVE	1
+#define AW20198_REG_GCR_SW1_TO_SW3_ACTIVE	2
+#define AW20198_REG_GCR_SW1_TO_SW4_ACTIVE	3
+#define AW20198_REG_GCR_SW1_TO_SW5_ACTIVE	4
+#define AW20198_REG_GCR_SW1_TO_SW6_ACTIVE	5
+#define AW20198_REG_GCR_SW1_TO_SW7_ACTIVE	6
+#define AW20198_REG_GCR_SW1_TO_SW8_ACTIVE	7
+#define AW20198_REG_GCR_SW1_TO_SW9_ACTIVE	8
+#define AW20198_REG_GCR_SW1_TO_SW10_ACTIVE	9
+#define AW20198_REG_GCR_SW1_TO_SW11_ACTIVE	10
+
 #define AW20198_REG_GCC		0x01
 #define AW20198_REG_RSTN	0x2F
 #define AW20198_REG_MIXCR	0x46
@@ -25,6 +41,11 @@
 
 #define AW20198_RESET_MAGIC	0xAE
 
+#define AW20198_REG_NUM_PAG2    198
+
 extern const struct rgbkbd_drv aw20198_drv;
+
+__override_proto void board_aw20198_init(void);
+__override_proto void board_aw20198_set_scale(uint8_t *buf);
 
 #endif  /* __CROS_EC_DRIVER_LED_AW20198_H */
