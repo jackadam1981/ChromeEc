@@ -34,6 +34,24 @@
       "parentUuid": "c7795a6e_291d36b9",
       "revId": "602172bd0aeeba378bc677455f6a463bf40e06fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5894e92_fd3b9524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-01T20:08:56Z",
+      "side": 1,
+      "message": "My mistake, looking at the bug I saw CL:3384480 excluded this test, but I didn\u0027t notice that there was another CL that re-enabled the test.",
+      "parentUuid": "943b7bf4_b8d9add5",
+      "revId": "602172bd0aeeba378bc677455f6a463bf40e06fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
