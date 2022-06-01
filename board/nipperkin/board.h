@@ -48,6 +48,11 @@
 
 #ifndef __ASSEMBLER__
 
+/* DNS - AP driven mux control */
+#define CONFIG_USB_MUX_AP_CONTROL
+#define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
+#define CONFIG_USB_PD_VDM_AP_CONTROL
+
 #include "gpio_signal.h"
 #include "registers.h"
 
