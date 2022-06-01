@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e995b7_5d447b42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-01T05:42:22Z",
+      "side": 1,
+      "message": "LGTM, I would like to just make sure we want to have this as a free int and not a choice.",
+      "revId": "8a37ab54cb895f414582df3c5585848d688dcabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8839f0b_9ba9905a",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-01T05:42:22Z",
+      "side": 1,
+      "message": "Do we want this to be a free int or should this be a `choice`? I assume there\u0027s a fixed set of values this should be.",
+      "revId": "8a37ab54cb895f414582df3c5585848d688dcabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
