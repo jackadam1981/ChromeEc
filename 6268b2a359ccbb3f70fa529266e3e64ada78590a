@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a727ee_0b83a442",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-01T14:29:35Z",
+      "side": 1,
+      "message": "Changed my mind already, dropped the return value here.",
+      "parentUuid": "cddacdd8_e78ab7c5",
+      "revId": "6268b2a359ccbb3f70fa529266e3e64ada78590a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96640898_a2e99039",
