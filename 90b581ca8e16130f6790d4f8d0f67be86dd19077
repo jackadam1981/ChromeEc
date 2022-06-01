@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab9bf7e_cf7c7b68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2022-06-01T16:01:08Z",
+      "side": 1,
+      "message": "There is currently uncertainty over whether we can even read above 100 C.  Please wait until we have resolution on https://b.corp.google.com/issues/233256456 before updating these values",
+      "revId": "90b581ca8e16130f6790d4f8d0f67be86dd19077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
