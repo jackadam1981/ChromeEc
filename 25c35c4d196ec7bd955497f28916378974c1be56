@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0e1c0d_b6e94281",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-01T04:45:46Z",
+      "side": 1,
+      "message": "nit: use `LOG_WRN` if this is recoverable, otherwise I would expect this to return `ret`",
+      "range": {
+        "startLine": 609,
+        "startChar": 3,
+        "endLine": 609,
+        "endChar": 10
+      },
+      "revId": "25c35c4d196ec7bd955497f28916378974c1be56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
