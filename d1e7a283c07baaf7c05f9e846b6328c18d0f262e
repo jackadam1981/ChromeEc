@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "212fcdb5_d1c7961c",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-01T23:26:55Z",
+      "side": 1,
+      "message": "There was a linker error for conflicting with the definition in led_gpio.c:18 when compiling test-drivers. I can make this a separate CL.",
+      "parentUuid": "5420e757_08b130fa",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d68b82ed_10907d19",
         "filename": "zephyr/test/drivers/led_driver/led_pins.dts",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-01T22:15:00Z",
       "side": 1,
       "message": "Let\u0027s specifically comment that these are copied herobrine pins. Eventually someone we\u0027ll likely copy this file but forget to maybe add or remove pins when testing a different board.\n\nActually, how do we feel about just symlinking or #including them?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b8c004_4f32c6b8",
+        "filename": "zephyr/test/drivers/led_driver/led_pins.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-01T23:26:55Z",
+      "side": 1,
+      "message": "While I did copy these from the changes introduced in https://crrev.com/c/3635067.  I did modify them a bit to obtain better coverage, mainly changing `AMBER` to `BLUE` for the colors",
+      "parentUuid": "d68b82ed_10907d19",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b531a3_e55fb036",
+        "filename": "zephyr/test/drivers/led_driver/led_policy.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-01T23:26:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb02e47d_703fa218",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b3a8419_23d90a35",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-06-01T22:15:00Z",
       "side": 1,
       "message": "Why are we making this \"n\" when it\u0027s \"y\" in herobrine?",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aed987d_2b7a640a",
+        "filename": "zephyr/test/drivers/led_driver/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-01T23:26:55Z",
+      "side": 1,
+      "message": "Are we looking at the right file?http://cs/chromeos_public/src/platform/ec/zephyr/projects/herobrine/prj_herobrine.conf?l\u003d9",
+      "parentUuid": "4b3a8419_23d90a35",
       "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9e4e3ef_9970c3a6",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-01T23:26:55Z",
+      "side": 1,
+      "message": "This is mainly to hit coverage for the error case in led_control which does nothing\nhttp://cs/chromeos_public/src/platform/ec/zephyr/shim/src/led_driver/led.c?l\u003d310\nI can add a comment to be a bit clearer here.",
+      "parentUuid": "be7ba4a3_aa7497cc",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16e80ad2_885224ff",
         "filename": "zephyr/test/drivers/led_driver/src/led.c",
         "patchSetId": 1
@@ -123,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f321bc22_9e9d79e0",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-01T23:26:55Z",
+      "side": 1,
+      "message": "I can add some comments for clarity. Mainly exercising the different paths within the function.",
+      "parentUuid": "16e80ad2_885224ff",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "628863fc_d35bd968",
         "filename": "zephyr/test/drivers/led_driver/src/led.c",
         "patchSetId": 1
@@ -134,6 +260,24 @@
       "writtenOn": "2022-06-01T22:15:00Z",
       "side": 1,
       "message": "Same as above.",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30be18b0_ec1cb1f4",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-01T23:26:55Z",
+      "side": 1,
+      "message": "I can add more details here.",
+      "parentUuid": "628863fc_d35bd968",
       "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
