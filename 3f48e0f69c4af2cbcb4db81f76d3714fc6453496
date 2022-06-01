@@ -33,6 +33,42 @@
       "message": "...and does krabby need similar fix?",
       "revId": "3f48e0f69c4af2cbcb4db81f76d3714fc6453496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971959f0_6259e7b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-01T08:45:55Z",
+      "side": 1,
+      "message": "The remote port is reported by EC hostcommand, you can access that by `ectool locatechips 0 0`, and the code reports the local port directly (and it just happened being the same as sbs remote port).",
+      "parentUuid": "afd60cc2_00be9666",
+      "revId": "3f48e0f69c4af2cbcb4db81f76d3714fc6453496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56e9bdb_8f1120c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-01T08:45:55Z",
+      "side": 1,
+      "message": "I don\u0027t have a krabby to test remotely, so I am not sure about this.",
+      "parentUuid": "86ab8880_7eb79019",
+      "revId": "3f48e0f69c4af2cbcb4db81f76d3714fc6453496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
