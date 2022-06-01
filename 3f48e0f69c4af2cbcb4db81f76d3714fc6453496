@@ -69,6 +69,24 @@
       "parentUuid": "86ab8880_7eb79019",
       "revId": "3f48e0f69c4af2cbcb4db81f76d3714fc6453496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28d2d10_3384026d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-01T08:47:51Z",
+      "side": 1,
+      "message": "btw, the I2C_PWR_CBI uses i2c0, and the remote-port assignment in kernel side is 1 now.",
+      "parentUuid": "a56e9bdb_8f1120c1",
+      "revId": "3f48e0f69c4af2cbcb4db81f76d3714fc6453496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
