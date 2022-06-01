@@ -22,6 +22,30 @@
       },
       "revId": "4022a02a3da0b8518c73232bfc2a3caa8e4a974c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bf86c4_2af8f307",
+        "filename": "board/kingoftown/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2022-06-01T03:22:05Z",
+      "side": 0,
+      "message": "Hi Tom,\n\nThanks for notice.\nPazquel is pull up \u0026 kingoftown is floating.\nSetup to unused to prevent unexpect problem.",
+      "parentUuid": "d341a37e_0a601f80",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "4022a02a3da0b8518c73232bfc2a3caa8e4a974c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
