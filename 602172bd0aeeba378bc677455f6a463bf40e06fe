@@ -16,6 +16,24 @@
       "message": "Should this change remove `stillness_detector` from the `cov-dont-test` list in the makefile?",
       "revId": "602172bd0aeeba378bc677455f6a463bf40e06fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "943b7bf4_b8d9add5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-01T17:37:09Z",
+      "side": 1,
+      "message": "It isn\u0027t in the cov-dont-test list in the makefile. http://cs/chromeos_public/src/platform/ec/test/build.mk;l\u003d126;rcl\u003db819eeca8b38477fdc4b2f5d8a89555af66633e6\n\nAlso was that comment really worthy of withholding CR+2?",
+      "parentUuid": "c7795a6e_291d36b9",
+      "revId": "602172bd0aeeba378bc677455f6a463bf40e06fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
