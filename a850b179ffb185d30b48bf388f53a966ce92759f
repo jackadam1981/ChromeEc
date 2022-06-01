@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95f00758_7ab63cfc",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-01T21:57:00Z",
+      "side": 1,
+      "message": "I have used closed interval. Adjusted the values using + 1 and - 1. \n\nIf we use half-open intervals, we still need to adjust the values using +1 and -1 in case of BATTERY_LEVEL_SHUTDOWN (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/battery.h;l\u003d48?q\u003dBATTERY_LEVEL_CRITICAL\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2F).\n\nUpdated the description.",
+      "parentUuid": "dc1c8ccd_ec60226f",
+      "range": {
+        "startLine": 52,
+        "startChar": 58,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23c645dc_9864a008",
         "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
         "patchSetId": 3
@@ -61,6 +85,30 @@
       "writtenOn": "2022-05-27T19:32:20Z",
       "side": 1,
       "message": "BATT_LEVEL_LOW for consistency?",
+      "range": {
+        "startLine": 54,
+        "startChar": 48,
+        "endLine": 54,
+        "endChar": 60
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9462667_cbeae0b0",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-colors.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-01T21:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c645dc_9864a008",
       "range": {
         "startLine": 54,
         "startChar": 48,
@@ -118,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc60cfc2_b3863cda",
+        "filename": "zephyr/include/dt-bindings/battery.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-01T21:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ff1ff8_fbdd57ed",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c31383a_fb423f8f",
@@ -141,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc7c8755_f8c6de89",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-01T21:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c31383a_fb423f8f",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6ee5fd1_6eb75493",
@@ -154,6 +250,30 @@
       "writtenOn": "2022-05-27T19:32:20Z",
       "side": 1,
       "message": "Should be `\u003c\u003d` for a half-open interval.",
+      "range": {
+        "startLine": 256,
+        "startChar": 21,
+        "endLine": 256,
+        "endChar": 22
+      },
+      "revId": "a850b179ffb185d30b48bf388f53a966ce92759f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07d7327_69ec4fcc",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-01T21:57:00Z",
+      "side": 1,
+      "message": "I have used closed interval.",
+      "parentUuid": "e6ee5fd1_6eb75493",
       "range": {
         "startLine": 256,
         "startChar": 21,
