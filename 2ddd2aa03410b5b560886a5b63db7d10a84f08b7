@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f317fc_a1509452",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-02T21:23:01Z",
+      "side": 1,
+      "message": "please split the 8811 and 8818 related changes into separate patches.",
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f702514_3d399662",
+        "filename": "board/agah/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-02T21:23:01Z",
+      "side": 1,
+      "message": "common code does not know about this function,\nso there\u0027s no need to implement a no-op here.\nare you planning to add more functionality?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5412fefd_9b2a8bb3",
+        "filename": "board/agah/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-02T21:23:01Z",
+      "side": 1,
+      "message": "we usually try to avoid polling for devices.\nwhat is the underlying issue - do you need to\nadd a delay to wait for the chip to come out of reset?",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45eea63_be886f1c",
+        "filename": "board/agah/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-02T21:23:01Z",
+      "side": 1,
+      "message": "do you really need the extra variable?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43c9ded_8fa4101d",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-02T21:23:01Z",
+      "side": 1,
+      "message": "please convert these register operations into an array\nand iterate over it.\n\nthe ps8818_i2c_field_update8() API should really take\nan array of values since that\u0027s the typical use case.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11a9a81_b003a6a4",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-02T21:23:01Z",
+      "side": 1,
+      "message": "also static?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 5
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
