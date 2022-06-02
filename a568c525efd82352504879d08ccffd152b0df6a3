@@ -293,6 +293,24 @@
       "parentUuid": "f9b6523f_3c03905f",
       "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a53da90_dd0b6d7c",
+        "filename": "zephyr/Kconfig.usb_charger",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-02T22:06:10Z",
+      "side": 1,
+      "message": "I think it should be okay.  It\u0027s not as if we have zephyr boards that are stabilizing for release right now",
+      "parentUuid": "9328d328_41fb746d",
+      "revId": "a568c525efd82352504879d08ccffd152b0df6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
