@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dfc5bff_5b5d2877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-02T20:21:00Z",
+      "side": 1,
+      "message": "Prashant, I hit a couple of questions with the fields the AP would like to set. \n\nFor polarity, you can either specify the polarity or we could just derive it in the EC.\n\nFor the USB2 mode, this is something of a strange field that is only really used to set switches on very old platforms (ex. reef, eve, oak, poppy).  I didn\u0027t see any recent platforms using it, but it does contribute to whether we let the muxes go into LPM (which is itself somewhat strange, given that older platforms were using BC 1.2 and charger chips for their USB2.0 switching and so don\u0027t directly tie to the mux power state...)",
+      "revId": "60f9cd18a3ca1ea93c0af4236df16b592ac48398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
