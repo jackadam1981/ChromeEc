@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc2876c_9af3450e",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-06-02T23:23:16Z",
+      "side": 0,
+      "message": "Could this be intentional because only svid is being set and the other properties of the response struct are not? This would result in only responding 2 bytes instead of 28 bytes.",
+      "range": {
+        "startLine": 176,
+        "startChar": 24,
+        "endLine": 176,
+        "endChar": 38
+      },
+      "revId": "c779c79b0dfdde37c753c76d9de3bb751c5b5d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
