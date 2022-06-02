@@ -17,6 +17,11 @@
 		cros-ec,watchdog = &twd0;
 	};
 
+	aliases {
+		i2c-4 = &i2c4;
+
+	};
+
 	named-bbram-regions {
 		compatible = "named-bbram-regions";
 
