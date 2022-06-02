@@ -80,6 +80,34 @@ __override bool pd_check_vbus_level(int port, enum vbus_level level)
 	return false;
 }
 
+/*
+ * Putting chargers into LPM when in suspend reduces power draw by about 8mW
+ * per charger, but also seems critical to correct operation in source mode:
+ * if chargers are not in LPM when a sink is first connected, VBUS sourcing
+ * works even if the partner is later removed (causing LPM entry) and
+ * reconnected (causing LPM exit). If in LPM initially, sourcing VBUS
+ * consistently causes the charger to report (apparently spurious) overcurrent
+ * failures.
+ *
+ * In short, this is important to making things work correctly but we don't
+ * understand why.
+ */
+static void board_wake_chargers(void)
+{
+	sm5803_disable_low_power_mode(CHARGER_PRIMARY);
+	if (board_get_charger_chip_count() > 1)
+		sm5803_disable_low_power_mode(CHARGER_SECONDARY);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_wake_chargers, HOOK_PRIO_DEFAULT);
+
+static void board_suspend_chargers(void)
+{
+	sm5803_enable_low_power_mode(CHARGER_PRIMARY);
+	if (board_get_charger_chip_count() > 1)
+		sm5803_enable_low_power_mode(CHARGER_SECONDARY);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_suspend_chargers, HOOK_PRIO_DEFAULT);
+
 int board_set_active_charge_port(int port)
 {
 	int is_real_port = (port >= 0 && port < board_get_usb_pd_port_count());
