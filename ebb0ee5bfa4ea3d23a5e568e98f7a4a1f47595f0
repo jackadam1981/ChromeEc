@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3732b3_f54342d6",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-02T22:39:37Z",
+      "side": 1,
+      "message": "If there\u0027s no different in led color can we check that it remained whatever color it was before? Maybe move alter this test to first set a color?",
+      "revId": "ebb0ee5bfa4ea3d23a5e568e98f7a4a1f47595f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

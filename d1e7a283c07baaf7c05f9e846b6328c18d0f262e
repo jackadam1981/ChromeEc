@@ -357,6 +357,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd676909_4d99dc79",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-02T22:39:37Z",
+      "side": 1,
+      "message": "This smells like a before rule? Is that wrong?\n\nWe might want to break these up as just two separate tests with the reset as a before.",
+      "parentUuid": "f321bc22_9e9d79e0",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "628863fc_d35bd968",
         "filename": "zephyr/test/drivers/led_driver/src/led.c",
         "patchSetId": 1
