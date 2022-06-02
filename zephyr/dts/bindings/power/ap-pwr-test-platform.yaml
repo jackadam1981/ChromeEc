@@ -1,0 +1,21 @@
+ # Copyright 2022 The Chromium OS Authors. All rights reserved.
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+
+description: |
+  Power sequence test platform.
+
+compatible: "ap-pwr-test-platform"
+
+properties:
+  name-id:
+    type: string
+    required: true
+    description: |
+      Name of set of related emulated IO power signals for this test platform.
+
+  io-signals:
+    type: phandles
+    required: true
+    description: |
+       phandle array of emulated power signals fir this test platform.
