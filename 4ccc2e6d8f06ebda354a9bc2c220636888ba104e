@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e25aedc_7639c484",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-02T02:15:08Z",
+      "side": 1,
+      "message": "power up AP",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 52
+      },
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ce19f1_458a5679",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-02T02:15:08Z",
+      "side": 1,
+      "message": "This can likely go at the top, since it is not dependent on CONFIG_AP_PWRSEQ.\nIt should just declare some externs.",
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9eedecd_00ffb335",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-02T02:15:08Z",
+      "side": 1,
+      "message": "So I am not sure about the logic here, and what the expectation is.\nThis hook gets called when there is a change in battery status, either\nbecoming full, or being removed etc.\nSo caching a positive result and then never checking again may cause an\nissue if charger_ready is set, then the battery is drained or unplugged, and the CPU is turned off, and then the battery is charged again, but the CPU is never turned on again.\n\nIs there any reason to cache this? Could ap_power_is_ok_to_power_up() just return the value of the check rather than caching it?\nSince chipset_exit_hard_off() will check the current state, calling it when the\nCPU is already running will be a no-op.",
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
