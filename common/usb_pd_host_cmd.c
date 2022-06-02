@@ -173,7 +173,7 @@ static enum ec_status hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
 	/* TODO(b/148528713): Use TCPMv2's separate storage for SOP'. */
 	if (p->svid_idx >= pd_get_svid_count(p->port, TCPCI_MSG_SOP)) {
 		r->svid = 0;
-		args->response_size = sizeof(r->svid);
+		args->response_size = sizeof(*r);
 		return EC_RES_SUCCESS;
 	}
 
