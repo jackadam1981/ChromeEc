@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb89ef8_e871301e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-06-02T18:50:59Z",
+      "side": 1,
+      "message": "this build is failing because of a reference to STM32_DMAC_CHANNEL7 in dma.c: http://cs/chromeos_public/src/platform/ec/chip/stm32/dma.c?rcl\u003d04e6a2380e1cbafb169c7194f0fc58d460193ea6\u0026l\u003d363\n\nThis line takes the min of channel 7 (which is an enumeration with value 6) or STM32_DMAC_COUNT which is either 5 or 7 depending on the chip:\nhttp://cs/chromeos_public/src/platform/ec/chip/stm32/registers-stm32f0.h?rcl\u003d4b600b1b7609ce301fa4d57a15f7dedd874eba2c\u0026l\u003d719\n",
+      "revId": "bc68eb07c514abe45e38d7014be691d7f911feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
