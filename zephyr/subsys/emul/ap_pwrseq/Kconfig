@@ -1,0 +1,8 @@
+if ZTEST
+
+config EMUL_POWER_SIGNALS
+	bool "Enable Power Signals emulator"
+	help
+	  Enable Power Signals emulator.
+
+endif
