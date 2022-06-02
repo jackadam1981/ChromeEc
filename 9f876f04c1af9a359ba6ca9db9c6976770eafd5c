@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94eb1c3_f8c621ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-02T10:22:19Z",
+      "side": 1,
+      "message": "Binary files /tmp/compare_build.aqwH/build-9f876f04c1af9a359ba6ca9db9c6976770eafd5c/brya-ec.bin and /tmp/compare_build.aqwH/build-8c68f124fe7c469b2581ff1d37d3eefb9d2ceac2/brya-ec.bin differ\n\n\nLet\u0027s see what happenes:\n\ndiff: https://paste.googleplex.com/6698417670586368\nwith return: https://paste.googleplex.com/6502292166541312\nwith no return: https://paste.googleplex.com/4796924583477248\n\nThe r0 load is gone which I guess is expected, interesting how the branch to z_impl_k_poll_signal_raise changed.",
+      "parentUuid": "4a0da1d2_7ea23318",
+      "revId": "9f876f04c1af9a359ba6ca9db9c6976770eafd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69d79406_754a061c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-01T23:27:25Z",
       "side": 1,
       "message": "Please update the comment.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 67
+      },
+      "revId": "9f876f04c1af9a359ba6ca9db9c6976770eafd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8a76d7_2f441466",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-02T10:22:19Z",
+      "side": 1,
+      "message": "Woops, done, funny it mentioned wait...",
+      "parentUuid": "69d79406_754a061c",
       "range": {
         "startLine": 152,
         "startChar": 0,
