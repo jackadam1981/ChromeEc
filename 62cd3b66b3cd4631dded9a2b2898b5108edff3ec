@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d2562c8_046f88ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2022-06-02T22:52:44Z",
+      "side": 1,
+      "message": "Right at this time, if the user waits for 5 seconds, and then issues  another echo 0 \u003e offline command, just before retry_online() is called, what would happen (when the port is in disabled state)?",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "61ed9b43_47a79084",
@@ -89,6 +112,29 @@
         "startChar": 0,
         "endLine": 160,
         "endChar": 0
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765bc33b_0db3110f",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2022-06-02T22:52:44Z",
+      "side": 1,
+      "message": "Should this call be guarded with an if (retimer_fw_update_get_port_state(port)), as in restore_port()?",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 31
       },
       "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
