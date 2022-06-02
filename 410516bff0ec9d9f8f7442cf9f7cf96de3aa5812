@@ -16,6 +16,23 @@
       "message": "Eric - can you verify that the kingler keyboard works with this CL?\nAndrew - can you verify that the nissa keyboard works with this CL?\nDiana - could you verify that the skyrim keyboard works with this CL?\n",
       "revId": "410516bff0ec9d9f8f7442cf9f7cf96de3aa5812",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef5a16c_c9f22122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-02T03:26:49Z",
+      "side": 1,
+      "message": "I am unable to build this CL with the ToT zephyr. What\u0027s the zephyr version you used?\n\n```\ndevicetree error: \u0027pinctrl-names\u0027 is marked as required in \u0027properties:\u0027 in /mnt/host/source/src/platform/ec/zephyr/dts/bindings/cros_kb_raw/nuvoton,npcx-cros-kb-raw.yaml, but does not appear in \u003cNode /soc/cros-kb-raw@400a3000 in \u0027/mnt/host/source/src/third_party/zephyr/main/misc/e\nmpty_file.c\u0027\u003e\ndevicetree error: \u0027pinctrl-names\u0027 is marked as required in \u0027properties:\u0027 in /mnt/host/source/src/platform/ec/zephyr/dts/bindings/cros_kb_raw/nuvoton,npcx-cros-kb-raw.yaml, but does not appear in \u003cNode /soc/cros-kb-raw@400a3000 in \u0027/mnt/host/source/src/third_party/zephyr/main/misc/e\nmpty_file.c\u0027\u003e\n```",
+      "revId": "410516bff0ec9d9f8f7442cf9f7cf96de3aa5812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
