@@ -34,6 +34,24 @@
       "parentUuid": "450e5398_bd0e6cd2",
       "revId": "5c6c83286c9dc098c387882ca3000249348197ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55081c18_d2619a05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2022-06-02T05:28:15Z",
+      "side": 1,
+      "message": "I\u0027ll go for a custom version since it depends on at least 15 CLs which may cause some impact.\nThanks for the advise.",
+      "parentUuid": "90b35c54_b9a9c57f",
+      "revId": "5c6c83286c9dc098c387882ca3000249348197ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
