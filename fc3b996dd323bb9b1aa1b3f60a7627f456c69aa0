@@ -16,6 +16,24 @@
       "message": "How was enter mode working before this?",
       "revId": "fc3b996dd323bb9b1aa1b3f60a7627f456c69aa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f88584_a6a268ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-02T21:42:28Z",
+      "side": 1,
+      "message": "It was working until I thoughtlessly added the UFP policy case under this without inserting a \"break\".  So a window of perhaps a few months in which I\u0027m guessing no one was using ectool to enter modes (successfully, at least).  I think our automated tests are changing modes via changing user policies and logins, which goes down the kernel path rather than the ectool path",
+      "parentUuid": "bb564f14_ba0c4564",
+      "revId": "fc3b996dd323bb9b1aa1b3f60a7627f456c69aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
