@@ -14,7 +14,7 @@ properties:
 
 child-binding:
     description: Each child node describes all the PWM pins that need to be
-                 altered to set a specific color. Eg. For blue and amber PWM
+                 altered to set a specific color. e.g. For blue and amber PWM
                  channels, in order to set color amber, a node looks like
                  this where 100 is PWM duty cycle in percentage
                  color-amber {
@@ -26,7 +26,8 @@ child-binding:
         led-color:
             type: string
             required: true
-            description: Used to link the color nodes with the pin nodes
+            description: Used to link the color nodes with the pin nodes.
+                         Only required to support ectool functionality.
             enum:
                 - LED_OFF
                 - LED_RED
@@ -38,10 +39,8 @@ child-binding:
         led-id:
             type: string
             required: true
-            description: Used to link the color nodes with the pin nodes in
-                         case of multiple LEDs. Also required by ectool to
-                         identify led-ids supported. It needs to match the
-                         enum names defined in ec_commands.h
+            description: Required by ectool to identify led-ids supported.
+                         It must match the enum names defined in ec_commands.h
             enum:
                 - EC_LED_ID_BATTERY_LED
                 - EC_LED_ID_POWER_LED
@@ -54,7 +53,7 @@ child-binding:
             type: string
             required: false
             description: This is used in the ectool brightness range APIs.
-                         It needs to match the enum names defined in ec_commands.h
+                         It must match the enum names defined in ec_commands.h
             enum:
                 - EC_LED_COLOR_RED
                 - EC_LED_COLOR_GREEN
@@ -64,4 +63,4 @@ child-binding:
                 - EC_LED_COLOR_AMBER
         led-pins:
             type: phandle-array
-            required: false
+            required: true
