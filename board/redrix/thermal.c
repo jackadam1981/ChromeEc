@@ -40,9 +40,27 @@ static const struct fan_step *fan_step_table;
 static const struct fan_step fan_table_clamshell[] = {
 	{
 		/* level 0 */
-		.on = {53, 53, 0, -1},
+		.on = {50, 50, 0, -1},
 		.off = {99, 99, 99, -1},
 		.rpm = {0, 0},
+	},
+	{
+		/* level 0.1 */
+		.on = {51, 51, 0, -1},
+		.off = {50, 50, 99, -1},
+		.rpm = {900, 1300},
+	},
+	{
+		/* level 0.2 */
+		.on = {52, 52, 0, -1},
+		.off = {51, 51, 99, -1},
+		.rpm = {1900, 2300},
+	},
+	{
+		/* level 0.3 */
+		.on = {53, 53, 0, -1},
+		.off = {52, 52, 99, -1},
+		.rpm = {2900, 2300},
 	},
 	{
 		/* level 1 */
@@ -85,9 +103,27 @@ static const struct fan_step fan_table_clamshell[] = {
 static const struct fan_step fan_table_tablet[] = {
 	{
 		/* level 0 */
-		.on = {52, 55, 0, -1},
+		.on = {49, 52, 0, -1},
 		.off = {99, 99, 99, -1},
 		.rpm = {0, 0},
+	},
+	{
+		/* level 0.1 */
+		.on = {50, 53, 0, -1},
+		.off = {49, 52, 99, -1},
+		.rpm = {1100, 1200},
+	},
+	{
+		/* level 0.2 */
+		.on = {51, 54, 0, -1},
+		.off = {50, 53, 99, -1},
+		.rpm = {2100, 2200},
+	},
+	{
+		/* level 0.3 */
+		.on = {52, 55, 0, -1},
+		.off = {51, 54, 99, -1},
+		.rpm = {3100, 3200},
 	},
 	{
 		/* level 1 */
