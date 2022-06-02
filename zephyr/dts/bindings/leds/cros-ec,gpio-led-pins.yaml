@@ -8,9 +8,11 @@ compatible: "cros-ec,gpio-led-pins"
 
 child-binding:
     description: Each child node describes all the GPIO pins that need to be
-                 altered to set a specific color. Eg. for a board supporting
-                 Blue and Amber LEDs - to set LED_AMBER color, amber LED will
-                 need to be set to 1 and blue LED to 0. So a node looks like
+                 altered to set a specific color.
+                 e.g. for a board supporting Blue and Amber LEDs - to set
+                 LED_AMBER color, amber LED will need to be set to 1 and
+                 blue LED to 0. 1 always turns on the LED and 0 always turns
+                 off the LED. So a node looks like
                  color-amber {
                               led-color = "LED_AMBER";
                               led-pins = <&gpio_ec_chg_led_y_c1 1>,
@@ -21,6 +23,7 @@ child-binding:
             type: string
             required: true
             description: Used to link the color nodes with the pin nodes
+                         Only required to support ectool functionality.
             enum:
                 - LED_OFF
                 - LED_RED
@@ -32,10 +35,8 @@ child-binding:
         led-id:
             type: string
             required: true
-            description: Used to link the color nodes with the pin nodes in
-                         case of multiple LEDs. Also required by ectool to
-                         identify led-ids supported. It needs to match the
-                         enum names defined in ec_commands.h
+            description: Required by ectool to identify led-ids supported.
+                         It must match the enum names defined in ec_commands.h
             enum:
                 - EC_LED_ID_BATTERY_LED
                 - EC_LED_ID_POWER_LED
@@ -48,7 +49,7 @@ child-binding:
             type: string
             required: false
             description: This is used in the ectool brightness range APIs.
-                         It needs to match the enum names defined in ec_commands.h
+                         It must match the enum names defined in ec_commands.h
             enum:
                 - EC_LED_COLOR_RED
                 - EC_LED_COLOR_GREEN
