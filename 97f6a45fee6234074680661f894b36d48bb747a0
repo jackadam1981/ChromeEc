@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87fb5629_58fe29cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-02T17:52:42Z",
+      "side": 1,
+      "message": "It passed a dry-run so I know it actually passed a ztestall but we should also say zmake testall here as well since this shimmed driver change could *maybe* affect other compilations too.\n\nI like to keep these in the commits in case someone looks back at commit messages and doesn\u0027t get confused about when to run which tests.\n\nso just replace:\nTEST\u003dzmake test test-drivers\nwith:\nTEST\u003dzmake testall",
+      "revId": "97f6a45fee6234074680661f894b36d48bb747a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
