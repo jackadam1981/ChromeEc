@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28471116_310b24da",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-06-02T01:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6e286f8_ae69b43b",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "1a17022faae2378567bdccd0c084dae33212d552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b11b9296_a60a2ab7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-01T20:11:40Z",
       "side": 1,
       "message": "nit: this is just\n\n  return tlc59116f_write(ctx, TLC59116F_GRPPWM, level);",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 19
+      },
+      "revId": "1a17022faae2378567bdccd0c084dae33212d552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9798c0_1a2d1177",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-06-02T01:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b11b9296_a60a2ab7",
       "range": {
         "startLine": 142,
         "startChar": 0,
