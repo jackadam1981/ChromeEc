@@ -20,6 +20,8 @@
 #include "test/drivers/utils.h"
 #include "test/drivers/test_state.h"
 
+#define TEST_PORT USBC_PORT_C0
+
 struct usbc_alt_mode_fixture {
 	const struct emul *tcpci_emul;
 	const struct emul *charger_emul;
@@ -127,7 +129,7 @@ ZTEST_F(usbc_alt_mode, verify_discovery)
 	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
 	struct ec_response_typec_discovery *discovery =
 		(struct ec_response_typec_discovery *)response_buffer;
-	host_cmd_typec_discovery(USBC_PORT_C0, TYPEC_PARTNER_SOP,
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP,
 			response_buffer, sizeof(response_buffer));
 
 	/* The host command does not count the VDM header in identity_count. */
