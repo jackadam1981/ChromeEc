@@ -69,6 +69,75 @@
       "parentUuid": "e27b8290_91aec0a2",
       "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be04f9b_066fd4ec",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-02T21:36:41Z",
+      "side": 1,
+      "message": "If this command fails, you\u0027re sleeping for 25ms but not actually rechecking if the mux operation completed.\n\nThe normal path uses `last_result_mux_get()` which retries the `usb_mux_set_completed()` call forever.\n\nCan you refactor this to reuse `last_result_mux_get()`?",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627e1313_95194d12",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-02T21:36:41Z",
+      "side": 1,
+      "message": "Nit - you don\u0027t need the forward reference here.  You can just add the DECLARE_DEFERRED after the `retimer_check_online()` definition at line 194.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d54298_ca0c95dc",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-02T21:36:41Z",
+      "side": 1,
+      "message": "Why is the loop needed? Doesn\u0027t the FW update only support updating a single port at a time?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 53
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
