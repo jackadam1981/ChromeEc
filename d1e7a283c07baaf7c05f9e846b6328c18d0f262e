@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57f82ce2_084478b0",
+        "filename": "zephyr/test/drivers/led_driver/led_pins.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-02T17:39:57Z",
+      "side": 1,
+      "message": "Okay let\u0027s include that as a comment here.",
+      "parentUuid": "b7b8c004_4f32c6b8",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb02e47d_703fa218",
         "filename": "zephyr/test/drivers/led_driver/led_policy.dts",
         "patchSetId": 1
@@ -161,6 +185,24 @@
       "side": 1,
       "message": "Are we looking at the right file?http://cs/chromeos_public/src/platform/ec/zephyr/projects/herobrine/prj_herobrine.conf?l\u003d9",
       "parentUuid": "4b3a8419_23d90a35",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bc0f4f_52cba486",
+        "filename": "zephyr/test/drivers/led_driver/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-02T17:39:57Z",
+      "side": 1,
+      "message": "I guess not :)",
+      "parentUuid": "4aed987d_2b7a640a",
       "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
