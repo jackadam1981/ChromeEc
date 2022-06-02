@@ -1,0 +1,7 @@
+tests:
+  drivers.integration.usbc:
+    tags: ec drivers zephyr
+    timeout: 300
+    extra_args:
+      DTC_OVERLAY_FILE="../../zephyr/dts/board-overlays/native_posix.dts;../../../overlay.dts"
+      CONF_FILE="../../../prj.conf"
