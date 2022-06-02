@@ -25,7 +25,11 @@
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+<<<<<<< HEAD   (4be10f kingoftown: Remove tablet mode)
 #include "pi3usb9201.h"
+=======
+#include "mkbp_info.h"
+>>>>>>> CHANGE (669aa4 lazor: Setup volume buttons for lazor only)
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -747,6 +751,7 @@ int board_set_active_charge_port(int port)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (4be10f kingoftown: Remove tablet mode)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
@@ -780,3 +785,9 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
+=======
+__override int mkbp_support_volume_buttons(void)
+{
+	return board_has_side_volume_buttons();
+}
+>>>>>>> CHANGE (669aa4 lazor: Setup volume buttons for lazor only)
