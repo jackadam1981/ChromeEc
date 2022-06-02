@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6240ab76_cdb2bab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-06-02T16:38:09Z",
+      "side": 1,
+      "message": "I fixed minor issue in u2f_test.py - missing \u0027b\u0027 to define a byte string.",
+      "revId": "3731ec9092a3a1f9cfdfe348db1bdabbeed681dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
