@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42434c65_9582a0c1",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-02T19:51:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "212fcdb5_d1c7961c",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d68b82ed_10907d19",
@@ -97,6 +115,30 @@
       "side": 1,
       "message": "Okay let\u0027s include that as a comment here.",
       "parentUuid": "b7b8c004_4f32c6b8",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f577de63_a5770373",
+        "filename": "zephyr/test/drivers/led_driver/led_pins.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-02T19:51:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f82ce2_084478b0",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -254,6 +296,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b290a85_5937ebc3",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-02T19:51:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9e4e3ef_9970c3a6",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16e80ad2_885224ff",
@@ -320,6 +386,24 @@
       "side": 1,
       "message": "I can add more details here.",
       "parentUuid": "628863fc_d35bd968",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecbaa914_5c974bd0",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-02T19:51:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30be18b0_ec1cb1f4",
       "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
