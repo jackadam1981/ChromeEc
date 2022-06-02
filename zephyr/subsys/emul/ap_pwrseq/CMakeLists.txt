@@ -1,0 +1,1 @@
+zephyr_library_sources_ifdef(CONFIG_EMUL_AP_PWRSEQ	ap_pwrseq.c)

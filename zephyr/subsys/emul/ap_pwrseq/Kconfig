@@ -1,0 +1,8 @@
+if ZTEST
+
+config EMUL_AP_PWRSEQ
+	bool "Enable AP power sequence emulator"
+	help
+	  Enable AP power sequence emulator.
+
+endif

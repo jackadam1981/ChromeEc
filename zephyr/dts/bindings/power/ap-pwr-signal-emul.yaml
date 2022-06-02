@@ -1,0 +1,45 @@
+ # Copyright 2022 The Chromium OS Authors. All rights reserved.
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+
+description: |
+  Emulated power signal.
+
+compatible: "ap-pwr-signal-emul"
+
+properties:
+  output-signal:
+    type: phandle
+    required: true
+    description: |
+      Output power signal that will trigger input signals for
+      power sequence.
+
+child-binding:
+  description:
+    Input signal operation that will be triggered by this ouput signal.
+
+  properties:
+    input-signal:
+      type: phandle
+      required: true
+
+    assert-value:
+      type: int
+      required: false
+      default: 1
+
+    assert-delay-ms:
+      type: int
+      required: false
+      default: 10
+
+    deassert-value:
+      type: int
+      required: false
+      default: 0
+
+    deassert-delay-ms:
+      type: int
+      required: false
+      default: 10
