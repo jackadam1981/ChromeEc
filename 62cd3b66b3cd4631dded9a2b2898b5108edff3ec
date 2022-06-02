@@ -138,6 +138,30 @@
       },
       "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4b2c2e_ffbe4946",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-02T21:50:12Z",
+      "side": 1,
+      "message": "With FWUPD, the behavior is to put all PD ports offline one by one, then update firmware, then  put all PD ports online one by one to complete the update. I thought the same way as your comments, but not exactly. It\u0027s like:\noffline port 0: suspend-\u003eusb-\u003esafe-\u003eTBT\noffline port 1: suspend-\u003eusb-\u003esafe-\u003eTBT\n...\nupdate port 0\nupdate port 1\n...\nonline port 0: disconnect USB mux\u003d0-\u003eresume\nonline port 1: disconnect USB mux\u003d0-\u003eresume\n...\nSince ACPI write/read are in pairs, I don\u0027t see mix of EC got ACPI write to one port, but got ACPI read for another port.",
+      "parentUuid": "92d54298_ca0c95dc",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 53
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
