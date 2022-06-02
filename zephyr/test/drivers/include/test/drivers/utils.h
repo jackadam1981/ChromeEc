@@ -450,6 +450,15 @@ int host_cmd_motion_sense_spoof(uint8_t sensor_num, uint8_t enable,
  */
 void host_cmd_typec_discovery(int port, enum typec_partner_type partner_type,
 			      void *response, size_t response_size);
+/**
+ * @brief Run the host command to get the PD alternative mode response.
+ *
+ * @param port          The USB-C port number
+ * @param response      Destination for command response.
+ */
+void host_cmd_usb_pd_get_amode(
+	uint8_t port, uint16_t svid_idx,
+	struct ec_params_usb_pd_get_mode_response *response);
 
 #define GPIO_ACOK_OD_NODE DT_NODELABEL(gpio_acok_od)
 #define GPIO_ACOK_OD_PIN  DT_GPIO_PIN(GPIO_ACOK_OD_NODE, gpios)
