@@ -122,7 +122,7 @@ static void usbc_alt_mode_after(void *data)
 	disconnect_partner_from_port((struct usbc_alt_mode_fixture *)data);
 }
 
-ZTEST_F(usbc_alt_mode, verify_discovery)
+ZTEST_F(usbc_alt_mode, test_verify_discovery)
 {
 	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
 	struct ec_response_typec_discovery *discovery =

@@ -278,7 +278,7 @@ static void integration_usb_attach_snk_then_src_after(void *state)
 	attach_src_snk_common_after(&fixture->my_emulator_state);
 }
 
-ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_pd_info)
+ZTEST_F(integration_usb_attach_src_then_snk, test_verify_snk_port_pd_info)
 {
 	struct ec_response_usb_pd_power_info response;
 
@@ -316,7 +316,7 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_pd_info)
 		      response.max_power);
 }
 
-ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_pd_info)
+ZTEST_F(integration_usb_attach_src_then_snk, test_verify_src_port_pd_info)
 {
 	struct ec_response_usb_pd_power_info response;
 
@@ -347,7 +347,7 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_pd_info)
 	/* current limit */
 }
 
-ZTEST_F(integration_usb_attach_snk_then_src, verify_snk_port_pd_info)
+ZTEST_F(integration_usb_attach_snk_then_src, test_verify_snk_port_pd_info)
 {
 	struct ec_response_usb_pd_power_info response;
 
@@ -386,7 +386,7 @@ ZTEST_F(integration_usb_attach_snk_then_src, verify_snk_port_pd_info)
 		      response.max_power);
 }
 
-ZTEST_F(integration_usb_attach_snk_then_src, verify_src_port_pd_info)
+ZTEST_F(integration_usb_attach_snk_then_src, test_verify_src_port_pd_info)
 {
 	struct ec_response_usb_pd_power_info response;
 
@@ -418,7 +418,7 @@ ZTEST_F(integration_usb_attach_snk_then_src, verify_src_port_pd_info)
 	/* current limit */
 }
 
-ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_typec_status)
+ZTEST_F(integration_usb_attach_src_then_snk, test_verify_snk_port_typec_status)
 {
 	struct ec_response_typec_status response =
 		host_cmd_typec_status(SNK_PORT);
@@ -448,7 +448,7 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_typec_status)
 		      response.power_role);
 }
 
-ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_typec_status)
+ZTEST_F(integration_usb_attach_src_then_snk, test_verify_src_port_typec_status)
 {
 	struct ec_response_typec_status response =
 		host_cmd_typec_status(SRC_PORT);
@@ -478,7 +478,7 @@ ZTEST_F(integration_usb_attach_src_then_snk, verify_src_port_typec_status)
 		      response.power_role);
 }
 
-ZTEST_F(integration_usb_attach_snk_then_src, verify_snk_port_typec_status)
+ZTEST_F(integration_usb_attach_snk_then_src, test_verify_snk_port_typec_status)
 {
 	struct ec_response_typec_status response =
 		host_cmd_typec_status(SNK_PORT);
@@ -508,7 +508,7 @@ ZTEST_F(integration_usb_attach_snk_then_src, verify_snk_port_typec_status)
 		      response.power_role);
 }
 
-ZTEST_F(integration_usb_attach_snk_then_src, verify_src_port_typec_status)
+ZTEST_F(integration_usb_attach_snk_then_src, test_verify_src_port_typec_status)
 {
 	struct ec_response_typec_status response =
 		host_cmd_typec_status(SRC_PORT);
@@ -603,7 +603,7 @@ static void usb_detach_test_after(void *state)
 	attach_src_snk_common_after(&fixture->fixture);
 }
 
-ZTEST_F(usb_detach_test, verify_detach_src_snk)
+ZTEST_F(usb_detach_test, test_verify_detach_src_snk)
 {
 	struct emul_state *fixture = &this->fixture;
 	struct ec_response_usb_pd_power_info src_power_info = { 0 };
@@ -665,7 +665,7 @@ ZTEST_F(usb_detach_test, verify_detach_src_snk)
 		      src_power_info.meas.current_max);
 }
 
-ZTEST_F(usb_detach_test, verify_detach_snk_src)
+ZTEST_F(usb_detach_test, test_verify_detach_snk_src)
 {
 	struct emul_state *fixture = &this->fixture;
 	struct ec_response_usb_pd_power_info src_power_info = { 0 };
@@ -727,7 +727,7 @@ ZTEST_F(usb_detach_test, verify_detach_snk_src)
 		      src_power_info.meas.current_max);
 }
 
-ZTEST_F(usb_detach_test, verify_detach_sink)
+ZTEST_F(usb_detach_test, test_verify_detach_sink)
 {
 	struct emul_state *fixture = &this->fixture;
 	struct ec_response_usb_pd_power_info pd_power_info = { 0 };
@@ -769,7 +769,7 @@ ZTEST_F(usb_detach_test, verify_detach_sink)
 		      pd_power_info.max_power);
 }
 
-ZTEST_F(usb_detach_test, verify_detach_source)
+ZTEST_F(usb_detach_test, test_verify_detach_source)
 {
 	struct emul_state *fixture = &this->fixture;
 	struct ec_response_usb_pd_power_info pd_power_info = { SNK_PORT };

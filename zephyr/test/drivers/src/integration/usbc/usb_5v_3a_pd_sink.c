@@ -265,7 +265,7 @@ ZTEST_F(usb_attach_5v_3a_pd_sink, test_disconnect_power_info)
  * Expected Results
  *  - Sink completes Goto Min PD negotiation
  */
-ZTEST_F(usb_attach_5v_3a_pd_sink, verify_goto_min)
+ZTEST_F(usb_attach_5v_3a_pd_sink, test_verify_goto_min)
 {
 	pd_dpm_request(0, DPM_REQUEST_GOTO_MIN);
 	k_sleep(K_SECONDS(1));
@@ -284,7 +284,7 @@ ZTEST_F(usb_attach_5v_3a_pd_sink, verify_goto_min)
  * Expected Results
  *  - Sink received ping message
  */
-ZTEST_F(usb_attach_5v_3a_pd_sink, verify_ping_msg)
+ZTEST_F(usb_attach_5v_3a_pd_sink, test_verify_ping_msg)
 {
 	tcpci_snk_emul_clear_ping_received(&this->snk_ext);
 
@@ -307,7 +307,7 @@ ZTEST_F(usb_attach_5v_3a_pd_sink, verify_ping_msg)
  *  - EC_SUCCESS returned from pd_broadcast_alert_msg
  *  - sink_5v_3a.data.alert_received is true
  */
-ZTEST_F(usb_attach_5v_3a_pd_sink, verify_alert_msg)
+ZTEST_F(usb_attach_5v_3a_pd_sink, test_verify_alert_msg)
 {
 	tcpci_snk_emul_clear_alert_received(&this->snk_ext);
 	zassert_false(this->snk_ext.alert_received, NULL);

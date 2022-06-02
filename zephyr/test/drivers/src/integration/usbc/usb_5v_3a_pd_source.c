@@ -219,7 +219,7 @@ ZTEST_F(usb_attach_5v_3a_pd_source, test_disconnect_power_info)
 		     power_info.meas.current_lim);
 }
 
-ZTEST_F(usb_attach_5v_3a_pd_source, verify_dock_with_power_button)
+ZTEST_F(usb_attach_5v_3a_pd_source, test_verify_dock_with_power_button)
 {
 	/* Clear Alert and Status receive checks */
 	tcpci_src_emul_clear_alert_received(&this->src_ext);
