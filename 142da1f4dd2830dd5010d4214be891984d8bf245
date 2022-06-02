@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1892e80a_e33864a6",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-02T22:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f68299_d67abd70",
+      "range": {
+        "startLine": 26,
+        "startChar": 50,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "142da1f4dd2830dd5010d4214be891984d8bf245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aa3cf83_cc4b67ac",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-02T17:13:22Z",
       "side": 1,
       "message": "Same comment here - reference EC_CMD_LED_CONTROL instead of ectool.",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "142da1f4dd2830dd5010d4214be891984d8bf245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d68a181c_0319c4ed",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-02T22:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa3cf83_cc4b67ac",
       "range": {
         "startLine": 38,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e89fc79_5343ef5f",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-02T22:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "547c7f08_b8b96978",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "142da1f4dd2830dd5010d4214be891984d8bf245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08996652_8c3dfe26",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-02T17:13:22Z",
       "side": 1,
       "message": "These enums could use descriptions for each option.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "142da1f4dd2830dd5010d4214be891984d8bf245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76ee230_5417dd07",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-02T22:37:20Z",
+      "side": 1,
+      "message": "Done. LED_BATT* will be removed with https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3669088/4/zephyr/dts/bindings/leds/cros-ec%252Cled-colors.yaml#b58",
+      "parentUuid": "08996652_8c3dfe26",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87f91661_47dd196b",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-02T22:37:20Z",
+      "side": 1,
+      "message": "OK to bring in as a follow-up? Figuring out if I can merge both the files as PWM frequency parent property and led-pins property description is the only difference.",
+      "parentUuid": "cb860c78_1b0be202",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "142da1f4dd2830dd5010d4214be891984d8bf245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60753ab3_be87d576",
         "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
         "patchSetId": 4
@@ -129,6 +249,30 @@
       "writtenOn": "2022-06-02T17:13:22Z",
       "side": 1,
       "message": "Please add a description.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "142da1f4dd2830dd5010d4214be891984d8bf245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "692d6b7d_009ea0bf",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-02T22:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60753ab3_be87d576",
       "range": {
         "startLine": 64,
         "startChar": 0,
