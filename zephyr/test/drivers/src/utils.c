@@ -340,6 +340,22 @@ void host_cmd_typec_discovery(int port, enum typec_partner_type partner_type,
 		   "Failed to get Type-C state for port %d", port);
 }
 
+void host_cmd_usb_pd_get_amode(
+	uint8_t port, uint16_t svid_idx,
+	struct ec_params_usb_pd_get_mode_response *response)
+{
+	struct ec_params_usb_pd_get_mode_request params = {
+		.port = port,
+		.svid_idx = svid_idx,
+	};
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND_PARAMS(EC_CMD_USB_PD_GET_AMODE, 0, params);
+	args.response = response;
+
+	zassume_ok(host_command_process(&args),
+		   "Failed to get alternate-mode info for port %d", port);
+}
+
 K_HEAP_DEFINE(test_heap, 2048);
 
 void *test_malloc(size_t bytes)
