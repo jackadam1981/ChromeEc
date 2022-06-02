@@ -22,6 +22,30 @@
       },
       "revId": "7da510bd1cc3330dbbfe5b8290bde8231663beb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3fb2d39_fe404a77",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-02T22:42:25Z",
+      "side": 1,
+      "message": "Adding that to both the files creates a circular dependency\n\nPLATFORM_EC_LED_COMMON (defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig.led:5), with definition...\nmenuconfig PLATFORM_EC_LED_COMMON\n\tbool \"LED Support\"\n\tdepends on !PLATFORM_EC_LED_DT \u0026\u0026 PLATFORM_EC\n\thelp\n\t  Enable the common LED module supporting automatic control of the\n\t  battery and power LEDs.\n...depends on PLATFORM_EC_LED_DT (defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig.led_dt:5), with definition...\nmenuconfig PLATFORM_EC_LED_DT\n\tbool \"LED Support\"\n\tdepends on !PLATFORM_EC_LED_COMMON \u0026\u0026 PLATFORM_EC\n\thelp\n\t  Enable devicetree based LED module supporting automatic control of the\n\t  battery and power LEDs.\n...depends again on PLATFORM_EC_LED_COMMON (defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig.led:5)",
+      "parentUuid": "81e768fd_2a148c85",
+      "range": {
+        "startLine": 6,
+        "startChar": 13,
+        "endLine": 6,
+        "endChar": 31
+      },
+      "revId": "7da510bd1cc3330dbbfe5b8290bde8231663beb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
