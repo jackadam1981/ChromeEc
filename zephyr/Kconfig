@@ -6,6 +6,7 @@ rsource "app/Kconfig"
 rsource "drivers/Kconfig"
 rsource "emul/Kconfig"
 rsource "subsys/Kconfig"
+rsource "subsys/emul/Kconfig"
 
 if ZTEST
 
