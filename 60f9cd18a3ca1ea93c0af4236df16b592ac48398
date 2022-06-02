@@ -33,6 +33,24 @@
       "message": "Is the -1 all-muxes value a secret value that can only be used internally to the EC?",
       "revId": "60f9cd18a3ca1ea93c0af4236df16b592ac48398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "344c763b_48b86929",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10121,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-02T21:46:29Z",
+      "side": 1,
+      "message": "That\u0027s the current plan, but we\u0027ll see where we end up wanting to go with it.",
+      "parentUuid": "a61e4fbe_9bd9f62b",
+      "revId": "60f9cd18a3ca1ea93c0af4236df16b592ac48398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
