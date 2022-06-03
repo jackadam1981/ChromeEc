@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15b9f13_452897e8",
+        "filename": "board/osiris/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-03T05:50:00Z",
+      "side": 1,
+      "message": "UNUSED() pins are already set to input with pull-up.\ni\u0027m surprised this makes a difference.\n\nalso, i\u0027m not sure this is what you really want.\nyou may want to configure this pin in ALT mode like GPIO40/TA1.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "31216176a1d2804bd90a813ae37bab39063d6f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
