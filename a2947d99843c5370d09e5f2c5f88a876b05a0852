@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a43210ad_1529d6b2",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-03T16:25:54Z",
+      "side": 1,
+      "message": "You can use the \"|\" character to start the description text on the next line, which will lessen the indent level and improve readability.\n\nExample here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/fc85f0c7/zephyr/dts/bindings/battery/battery-fuel-gauge.yaml#18\n\nThis should also help fix the other property descriptions that exceed 80 characters.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "a2947d99843c5370d09e5f2c5f88a876b05a0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0799d9f5_fc5518bb",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-03T16:25:54Z",
+      "side": 1,
+      "message": "I\u0027m not following this description.  I see that `find_node_with_extra_flag()` calls `charge_get_flags()`, but doesn\u0027t use `get_chg_ctrl_mode()`.  Also, what does `CHARGE_CONTROL_NORMAL` mean?  Is the battery actively charging in this state?  `CHARGE_CONTROL_IDLE` appears to mean the battery is discharging (charging is idle).\n\nI wonder if these enums should all reference the battery state:\n```\nLED_BATT_IS_DISCHARGING  /* was LED_CHFLAG_FORCE_IDLE */\nLED_BATT_IS_CHARGING  /* was LED_CHFLAG_DEFAULT */\nLED_BATT_BELOW_10_PCT\nLED_BATT_ABOVE_10_PCT\n```\n\nWDYT?",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "a2947d99843c5370d09e5f2c5f88a876b05a0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

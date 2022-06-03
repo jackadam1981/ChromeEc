@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05d5df99_7cf8addf",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-03T16:25:54Z",
+      "side": 1,
+      "message": "A follow up CL is fine.",
+      "parentUuid": "ba338356_0d4e7bd3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "142da1f4dd2830dd5010d4214be891984d8bf245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60753ab3_be87d576",
         "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
         "patchSetId": 4
