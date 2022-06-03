@@ -142,6 +142,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78fc38db_83218195",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-03T16:45:24Z",
+      "side": 1,
+      "message": "+1.  You have two variables here to track the port state: `port_state[]` and  `ports_online_requested`.  What do you think about adding a new state to `port_state[]`?\n\n```\nenum retimer_port_state {\n    RETIMER_ONLINE,\n    RETIMER_OFFLINE,\n    RETIMER_ONLINE_REQUESTED\n};\n```\n\nThis aligns better with the kernel terms (offline/online).  This also makes a clear distinction between the `pd_set_suspend(state)`, where the `state` really is a boolean indicating to suspend.",
+      "parentUuid": "765bc33b_0db3110f",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 31
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "627e1313_95194d12",
         "filename": "common/usbc/usb_retimer_fw_update.c",
         "patchSetId": 3
@@ -205,6 +229,29 @@
         "startChar": 0,
         "endLine": 180,
         "endChar": 53
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29380be3_e8c2da9b",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-03T16:45:24Z",
+      "side": 1,
+      "message": "Is this comment still accurate?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 0
       },
       "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
