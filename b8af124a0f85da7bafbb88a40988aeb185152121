@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "148679f6_c5e12c61",
+        "filename": "chip/stm32/config-stm32f4.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-03T20:31:36Z",
+      "side": 1,
+      "message": "I gotcha. I guess you moved `SET_RTC_MATCH_DELAY` here, so that the value is available to the unit test.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "b8af124a0f85da7bafbb88a40988aeb185152121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
