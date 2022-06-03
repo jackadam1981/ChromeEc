@@ -100,7 +100,7 @@ static int is31fl3743b_set_color(struct rgbkbd *ctx, uint8_t offset,
 	msg->cmd.id = IS31FL3743B_CMD_ID;
 	msg->cmd.page = IS31FL3743B_PAGE_PWM;
 
-	if (frame_offset + frame_len > sizeof(buf)) {
+	if (frame_len > sizeof(buf)) {
 		return EC_ERROR_OVERFLOW;
 	}
 
@@ -120,16 +120,17 @@ static int is31fl3743b_set_scale(struct rgbkbd *ctx, uint8_t offset,
 	uint8_t buf[sizeof(struct is31fl3743b_msg) + IS31FL3743B_BUF_SIZE];
 	struct is31fl3743b_msg *msg = (void *)buf;
 	const int frame_len = len * SIZE_OF_RGB + sizeof(*msg);
+	const int frame_offset = offset * SIZE_OF_RGB;
 
 	msg->cmd.read = 0;
 	msg->cmd.id = IS31FL3743B_CMD_ID;
 	msg->cmd.page = IS31FL3743B_PAGE_SCALE;
 
-	if (offset + frame_len > sizeof(buf)) {
+	if (frame_len > sizeof(buf)) {
 		return EC_ERROR_OVERFLOW;
 	}
 
-	msg->addr = offset + 1;	/* Address base is 1. */
+	msg->addr = frame_offset + 1;	/* Address base is 1. */
 	memset(msg->payload, scale, len * SIZE_OF_RGB);
 
 	return spi_transaction(SPI(ctx->cfg->spi), buf, frame_len, NULL, 0);
