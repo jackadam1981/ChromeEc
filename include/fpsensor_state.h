@@ -37,7 +37,7 @@
 #define TASK_EVENT_SENSOR_IRQ     TASK_EVENT_CUSTOM_BIT(0)
 #define TASK_EVENT_UPDATE_CONFIG  TASK_EVENT_CUSTOM_BIT(1)
 
-#define FP_NO_SUCH_TEMPLATE -1
+#define FP_NO_SUCH_TEMPLATE 255
 
 /* --- Global variables defined in fpsensor_state.c --- */
 
@@ -56,7 +56,7 @@ extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
 extern uint8_t fp_positive_match_salt
 	[FP_MAX_FINGER_COUNT][FP_POSITIVE_MATCH_SALT_BYTES];
 /* Index of the last enrolled but not retrieved template. */
-extern int8_t template_newly_enrolled;
+extern uint8_t template_newly_enrolled;
 /* Number of used templates */
 extern uint32_t templ_valid;
 /* Bitmap of the templates with local modifications */
@@ -72,7 +72,7 @@ extern uint32_t sensor_mode;
 
 struct positive_match_secret_state {
 	/* Index of the most recently matched template. */
-	int8_t template_matched;
+	uint8_t template_matched;
 	/* Flag indicating positive match secret can be read. */
 	bool readable;
 	/* Deadline to read positive match secret. */
