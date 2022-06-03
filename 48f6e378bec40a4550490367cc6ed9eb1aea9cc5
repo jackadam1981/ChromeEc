@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73f0efc_81213d83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-03T19:54:35Z",
+      "side": 1,
+      "message": "\u003e Are the mux/retimer configurations on initial connect (i.e to USB SS mode) going to be controlled by the EC? I think that\u0027s what we\u0027d arrived at, but wanted to confirm.\n\nYes, currently the EC is still driving those.  And also setting the muxes back to \"none\" on partner disconnect\n\n\u003e Currently on nipperkin, will the EC continue to control DP alt-mode entry decisions (and subsequently the \"control\" of the mux/retimer, even if the AP actually sends the TYPEC_CONTROL_COMMAND_USB_MUX_SET HC)? If so, what host event will the EC use to inform the AP that mux/retimer state needs to be changed.\n\nThe EC will keep controlling the DP mode entry process until we\u0027re ready to turn that off.  We can talk more about how we want to orchestrate it, but once the VDM host command is in place then we could just turn off the EC\"s DP module altogether, letting the AP drive the muxes and VDMs.  \n\nQuestions for you:\n- Does the AP want to set the polarity, or just have the EC auto-fill it?  There\u0027s also an option to set USB 2.0 switches in our mux set API, but it only practically applies to some very old platforms\n- Would you want a feature flag to indicate the mux control sub-command is present, or would you prefer to just test for its presence by attempting to use the command?",
+      "parentUuid": "dcec28d8_80ca9e23",
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4238e4_eef53139",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-03T18:28:28Z",
       "side": 1,
       "message": "Is the the retimer considered another mux? If so, is there a specific index orderinng (e.g retimer is 0, mux is 1) which is assumed?\n\nI know in b/208882941#comment5 we mentioned an assumption of programming the retimer before the mux.",
+      "range": {
+        "startLine": 6707,
+        "startChar": 1,
+        "endLine": 6707,
+        "endChar": 19
+      },
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51724320_25f31780",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6707,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-03T19:54:35Z",
+      "side": 1,
+      "message": "For the purposes of the host commands, I was thinking we\u0027ll treat every entry in the mux chain agnostic of whether it\u0027s a retimer or a mux.  And then the next host command I\u0027m working on is the one to return the chip details to you, so you\u0027ll know which index is which for the board.  But the HC and the events are named to be generic for now",
+      "parentUuid": "7c4238e4_eef53139",
       "range": {
         "startLine": 6707,
         "startChar": 1,
