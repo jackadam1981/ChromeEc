@@ -16,6 +16,24 @@
       "message": "nit: Can/Should this file be split into rgb_keyboard.c and rgb_keyboard_demo.c?",
       "revId": "06d914544a4dd07864d782f7bb1c2b7c0ef299e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f90757_d3eb5ea6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-03T22:02:22Z",
+      "side": 1,
+      "message": "That\u0027ll require exporting some of the static functions. I don\u0027t see much value. Maybe in the future.",
+      "parentUuid": "b91fb569_dc20879d",
+      "revId": "06d914544a4dd07864d782f7bb1c2b7c0ef299e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
