@@ -131,6 +131,30 @@
       },
       "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46d85fe2_98ebb3fa",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-03T16:24:00Z",
+      "side": 1,
+      "message": "Thanks! Vincent was aware that there is a problem, and it could be disastrous 😮\n\nI remember I was carefully checking the code for setting RTC alarm months ago (when I prepared the first patchset) because I suspected a rounding error and haven\u0027t found any problem. I\u0027ll take a look once again.\n\nThanks for reviewing it quckly. I will implement a unit test ASAP.",
+      "parentUuid": "cf263396_b49be9bd",
+      "range": {
+        "startLine": 449,
+        "startChar": 28,
+        "endLine": 449,
+        "endChar": 31
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
