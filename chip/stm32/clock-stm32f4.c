@@ -441,8 +441,12 @@ static int dsleep_recovery_margin_us = 1000000;
 /*
  * SET_RTC_MATCH_DELAY: max time to set RTC match alarm. If we set the alarm
  * in the past, it will never wake up and cause a watchdog.
+ *
+ * This value is minimal time for which we can set RTC match alarm. It was
+ * obtained by setting the alarm and checking if the alarm interrupt was
+ * triggered.
  */
-#define SET_RTC_MATCH_DELAY 120 /* us */
+#define SET_RTC_MATCH_DELAY 200 /* us */
 
 
 void low_power_init(void)
