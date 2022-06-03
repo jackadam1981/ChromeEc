@@ -369,6 +369,30 @@
       },
       "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d32945_7cf5a997",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-03T20:14:52Z",
+      "side": 1,
+      "message": "Wow, that couldn\u0027t get much closer!",
+      "parentUuid": "1054502a_d9ddc279",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 27
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
