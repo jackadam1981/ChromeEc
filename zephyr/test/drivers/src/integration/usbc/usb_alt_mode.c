@@ -1,3 +1,8 @@
+
+
+#include <stdbool.h>
+#pragma clang optimize off
+
 /* Copyright 2022 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -50,7 +55,9 @@ static void connect_partner_to_port(struct usbc_alt_mode_fixture *fixture)
 
 static void disconnect_partner_from_port(struct usbc_alt_mode_fixture *fixture)
 {
+	tcpci_partner_common_send_hard_reset(&fixture->partner);
 	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul), NULL);
+	k_sleep(K_SECONDS(1));
 	isl923x_emul_set_adc_vbus(fixture->charger_emul, 0);
 	k_sleep(K_SECONDS(1));
 }
@@ -102,6 +109,31 @@ static void *usbc_alt_mode_setup(void)
 		0, MODE_DP_PIN_C, 1, CABLE_PLUG, MODE_DP_V13, MODE_DP_SNK);
 	partner->modes_vdos = VDO_INDEX_HDR + 2;
 
+	/* DisplayPort alt mode setup remain in the same suite as discovery due
+	 * to a required discovery alt mode responses for the DPM to request
+	 * entry into DisplayPort mode
+	 */
+	/* Add DisplayPort EnterMode response VDOs */
+	partner->dp_vdm[VDO_INDEX_HDR] =
+		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
+		    VDO_CMDT(CMDT_RSP_ACK) | CMD_ENTER_MODE);
+	partner->dp_vdos = VDO_INDEX_HDR + 1;
+	/* Add DisplayPort StatusUpdate response VDO */
+	partner->dp_status_vdm[VDO_INDEX_HDR] =
+		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
+		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DP_STATUS);
+	partner->dp_status_vdm[VDO_INDEX_HDR + 1] =
+		/* Copied largely from hoho */
+		VDO_DP_STATUS(0, /* IRQ_HPD */
+			      false, /* HPD_HI|LOW - Changed*/
+			      0, /* request exit DP */
+			      0, /* request exit USB */
+			      0, /* MF pref */
+			      true, // DP Enabled
+			      0, /* power low e.g. normal */
+			      0x2 /* Connected as Sink */);
+	partner->dp_status_vdos = VDO_INDEX_HDR + 2;
+
 	/* Sink 5V 3A. */
 	snk_ext->pdo[1] = PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED);
 
@@ -121,7 +153,14 @@ static void usbc_alt_mode_before(void *data)
 
 static void usbc_alt_mode_after(void *data)
 {
+	/* Set chipset to OFF to clear discovery identity*/
+	/*
+	 * TODO(b/219562077): This should not be required and just work with
+	 * attach/detach.
+	 */
+	test_set_chipset_to_g3();
 	disconnect_partner_from_port((struct usbc_alt_mode_fixture *)data);
+	k_sleep(K_SECONDS(1));
 }
 
 ZTEST_F(usbc_alt_mode, verify_discovery)
@@ -131,6 +170,7 @@ ZTEST_F(usbc_alt_mode, verify_discovery)
 		(struct ec_response_typec_discovery *)response_buffer;
 	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP,
 			response_buffer, sizeof(response_buffer));
+
 
 	/* The host command does not count the VDM header in identity_count. */
 	zassert_equal(discovery->identity_count,
@@ -154,6 +194,28 @@ ZTEST_F(usbc_alt_mode, verify_discovery)
 	zassert_equal(discovery->svids[0].mode_vdo[0],
 		      this->partner.modes_vdm[1],
 		      "DP mode VDOs did not match");
+}
+
+ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
+{
+	struct usbc_alt_mode_fixture fixture = *this;
+	/* Verify host command when VDOs are present. */
+	struct ec_params_usb_pd_get_mode_request params = {
+		.port = TEST_PORT,
+		.svid_idx = 0,
+	};
+	struct ec_params_usb_pd_get_mode_response response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_GET_AMODE, 0, response, params);
+
+	zassume_ok(host_command_process(&args), NULL);
+	zassume_ok(args.result, NULL);
+
+	/* Response should be populated with a DisplayPort VDO */
+	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_equal(response.svid, USB_SID_DISPLAYPORT, NULL);
+	zassert_equal(response.vdo[0], fixture.partner.modes_vdm[response.opos],
+		      NULL);
 }
 
 ZTEST_SUITE(usbc_alt_mode, drivers_predicate_post_main, usbc_alt_mode_setup,
