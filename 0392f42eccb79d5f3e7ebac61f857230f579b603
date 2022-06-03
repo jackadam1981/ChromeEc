@@ -345,6 +345,30 @@
       },
       "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1054502a_d9ddc279",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2022-06-03T19:44:25Z",
+      "side": 1,
+      "message": "Without this patch\n```\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   2762    21.70    3.27    32.47    17.34\n@@    pp1800_dx_fp_mv   2762  1808.00    0.00  1808.00  1808.00\n@@    pp1800_dx_fp_mw   2762     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   2762  3288.02    0.40  3296.00  3288.00\n@@    pp3300_dx_fp_mw   2762     0.00    0.01     0.26     0.00\n@@   pp3300_dx_mcu_mv   2762  3288.00    0.00  3288.00  3288.00\n@@   pp3300_dx_mcu_mw   2762     2.38    0.27    10.26     2.10\n```\n\nWith this patch\n```\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   2769    21.65    3.22    32.09    17.27\n@@    pp1800_dx_fp_mv   2769  1808.00    0.00  1808.00  1808.00\n@@    pp1800_dx_fp_mw   2769     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   2769  3288.05    0.62  3296.00  3288.00\n@@    pp3300_dx_fp_mw   2769     0.00    0.01     0.26     0.00\n@@   pp3300_dx_mcu_mv   2769  3288.00    0.00  3288.00  3288.00\n@@   pp3300_dx_mcu_mw   2769     2.38    0.29    10.26     2.10\n```",
+      "parentUuid": "0466e580_8762a1a5",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 27
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
