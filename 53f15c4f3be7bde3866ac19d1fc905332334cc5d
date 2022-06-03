@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99853fe_1e20ab40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-03T22:34:58Z",
+      "side": 1,
+      "message": "This is the code we walked through the other day, still a WIP that needs some cleanup. \n\nI got these errors in pre-commit hooks that I\u0027m not sure how to deal with. I assume this is because Zephyr doesn\u0027t support FPMCU but I figured it was worth checking.\n```\n[FAILED] chromiumos/platform/ec: migrated_files                              \n    Hook script \"util/migrated_files.sh ${PRESUBMIT_FILES}\" failed with code 1:\n      WARNING: common/mock/fp_sensor_mock.c is not used in Zephyr EC. Do not edit this unless you also find the zephyr copy and fix the same code there.\n      WARNING: driver/fingerprint/fpc/bep/fpc_private.c is not used in Zephyr EC. Do not edit this unless you also find the zephyr copy and fix the same code there.\n      WARNING: driver/fingerprint/fpc/libfp/fpc_private.c is not used in Zephyr EC. Do not edit this unless you also find the zephyr copy and fix the same code there.\n```",
+      "revId": "53f15c4f3be7bde3866ac19d1fc905332334cc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
