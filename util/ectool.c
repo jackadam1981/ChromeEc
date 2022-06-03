@@ -1300,10 +1300,13 @@ static void cmd_rgbkbd_help(char *cmd)
 	"  Usage2: %s clear <RGB>\n"
 	"          Set the color of all keys to <RGB>.\n"
 	"\n"
-	"  Usage2: %s demo <num>\n"
+	"  Usage3: %s demo <num>\n"
 	"          Run demo-<num>. 0: Off, 1: Flow, 2: Dot.\n"
+	"\n"
+	"  Usage4: %s scale <key> <val>\n"
+	"          Set the scale parameter of key_<key> to <val>.\n"
 	"\n",
-	cmd, cmd, cmd);
+	cmd, cmd, cmd, cmd);
 }
 
 static int cmd_rgbkbd_parse_rgb_text(const char *text, struct rgb_s *color)
@@ -1388,12 +1391,31 @@ static int cmd_rgbkbd(int argc, char *argv[])
 		struct ec_params_rgbkbd p;
 
 		val = strtol(argv[2], &e, 0);
-		if ((e && *e) || val >= EC_RGBKBD_SUBCMD_COUNT) {
+		if ((e && *e) || val >= EC_RGBKBD_DEMO_COUNT) {
 			fprintf(stderr, "Invalid demo id: %s\n", argv[2]);
 			return -1;
 		}
 		p.subcmd = EC_RGBKBD_SUBCMD_DEMO;
 		p.demo = val;
+		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), NULL, 0);
+	} else if (argc == 4 && !strcasecmp(argv[1], "scale")) {
+		/* Usage 4 */
+		struct ec_params_rgbkbd p;
+
+		val = strtol(argv[2], &e, 0);
+		if ((e && *e) || val > EC_RGBKBD_MAX_KEY_COUNT) {
+			fprintf(stderr, "Invalid key number: %s\n", argv[2]);
+			return -1;
+		}
+		p.set_scale.key = val;
+
+		val = strtol(argv[3], &e, 0);
+		if ((e && *e) || val > EC_RGBKBD_MAX_SCALE) {
+			fprintf(stderr, "Invalid scale value: %s\n", argv[3]);
+			return -1;
+		}
+		p.set_scale.scale = val;
+		p.subcmd = EC_RGBKBD_SUBCMD_SET_SCALE;
 		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), NULL, 0);
 	} else {
 		/* Usage 1 */
