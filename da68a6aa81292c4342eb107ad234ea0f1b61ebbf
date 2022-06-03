@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d4a7f1_6e38770e",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-03T14:55:01Z",
+      "side": 1,
+      "message": "Hi John, These addresses are contiguous, right? So, you can send one I2C frame for multiple colors at once. That\u0027s what is31fl3743b and aw20198 do for speed optimization. tlc59116f_write accepts only one byte. So, you need to upgrade it or use i2c_xfer.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 17
+      },
+      "revId": "da68a6aa81292c4342eb107ad234ea0f1b61ebbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
