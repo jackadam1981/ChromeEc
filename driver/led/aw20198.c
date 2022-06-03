@@ -84,10 +84,9 @@ static int aw20198_set_color(struct rgbkbd *ctx, uint8_t offset,
 {
 	uint8_t buf[sizeof(offset) + BUF_SIZE];
 	const int frame_len = len * SIZE_OF_RGB + sizeof(offset);
-	const int frame_offset = offset * SIZE_OF_RGB;
 	int i, rv;
 
-	if (frame_offset + frame_len > sizeof(buf)) {
+	if (frame_len > sizeof(buf)) {
 		return EC_ERROR_OVERFLOW;
 	}
 
@@ -112,10 +111,9 @@ static int aw20198_set_scale(struct rgbkbd *ctx, uint8_t offset, uint8_t scale,
 {
 	uint8_t buf[sizeof(offset) + BUF_SIZE];
 	const int frame_len = len * SIZE_OF_RGB + sizeof(offset);
-	const int frame_offset = offset * SIZE_OF_RGB;
 	int rv;
 
-	if (frame_offset + frame_len > sizeof(buf)) {
+	if (frame_len > sizeof(buf)) {
 		return EC_ERROR_OVERFLOW;
 	}
 
