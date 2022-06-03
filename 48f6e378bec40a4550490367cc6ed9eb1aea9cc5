@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c4238e4_eef53139",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6707,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-03T18:28:28Z",
+      "side": 1,
+      "message": "Is the the retimer considered another mux? If so, is there a specific index orderinng (e.g retimer is 0, mux is 1) which is assumed?\n\nI know in b/208882941#comment5 we mentioned an assumption of programming the retimer before the mux.",
+      "range": {
+        "startLine": 6707,
+        "startChar": 1,
+        "endLine": 6707,
+        "endChar": 19
+      },
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
