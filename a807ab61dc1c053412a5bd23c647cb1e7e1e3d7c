@@ -22,6 +22,30 @@
       },
       "revId": "a807ab61dc1c053412a5bd23c647cb1e7e1e3d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c8cf0e_4ed9ce34",
+        "filename": "zephyr/test/drivers/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-03T17:39:56Z",
+      "side": 1,
+      "message": "Whoops. Thanks!\n\nAdded comment and changed test slightly based on feedback from prior CL.",
+      "parentUuid": "cb6fe09c_f4b0dd89",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 11
+      },
+      "revId": "a807ab61dc1c053412a5bd23c647cb1e7e1e3d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
