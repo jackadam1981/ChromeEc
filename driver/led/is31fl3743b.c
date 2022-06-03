@@ -106,21 +106,22 @@ static int is31fl3743b_set_color(struct rgbkbd *ctx, uint8_t offset,
 
 	msg->addr = frame_offset + 1;	/* Register addr base is 1. */
 	for (i = 0; i < len; i++) {
-		msg->payload[i * SIZE_OF_RGB +0] = color[i].r;
-		msg->payload[i * SIZE_OF_RGB +1] = color[i].g;
-		msg->payload[i * SIZE_OF_RGB +2] = color[i].b;
+		msg->payload[i * SIZE_OF_RGB + 0] = color[i].r;
+		msg->payload[i * SIZE_OF_RGB + 1] = color[i].g;
+		msg->payload[i * SIZE_OF_RGB + 2] = color[i].b;
 	}
 
 	return spi_transaction(SPI(ctx->cfg->spi), buf, frame_len, NULL, 0);
 }
 
 static int is31fl3743b_set_scale(struct rgbkbd *ctx, uint8_t offset,
-				 uint8_t scale, uint8_t len)
+				 struct rgb_s scale, uint8_t len)
 {
 	uint8_t buf[sizeof(struct is31fl3743b_msg) + IS31FL3743B_BUF_SIZE];
 	struct is31fl3743b_msg *msg = (void *)buf;
 	const int frame_len = len * SIZE_OF_RGB + sizeof(*msg);
 	const int frame_offset = offset * SIZE_OF_RGB;
+	int i;
 
 	msg->cmd.read = 0;
 	msg->cmd.id = IS31FL3743B_CMD_ID;
@@ -131,7 +132,11 @@ static int is31fl3743b_set_scale(struct rgbkbd *ctx, uint8_t offset,
 	}
 
 	msg->addr = frame_offset + 1;	/* Address base is 1. */
-	memset(msg->payload, scale, len * SIZE_OF_RGB);
+	for (i = 0; i < len; i++) {
+		msg->payload[i * SIZE_OF_RGB + 0] = scale.r;
+		msg->payload[i * SIZE_OF_RGB + 1] = scale.g;
+		msg->payload[i * SIZE_OF_RGB + 2] = scale.b;
+	}
 
 	return spi_transaction(SPI(ctx->cfg->spi), buf, frame_len, NULL, 0);
 }
