@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc84580_389122da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-03T03:45:42Z",
+      "side": 1,
+      "message": "I think the biggest risk here is the expectation that HAS_AP_CHIPSET is always defined but is either set to 0 or 1, and much code expects these kinds of symbols either to be defined or not (and folks may expect to use #if defined(HAS_AP_CHIPSET) without realising it is actually a value rather than a defined symbol or not.\n\nIf you do want to use a set value that is always defined, perhaps it is better to avoid using preprocessor condition controls, and instead use it directly in code e.g:\n\n     if (HAS_AP_CHIPSET) {\n         chipset_force_shutdown(CHIP...);\n     }\n\nHowever, of course, this changes the code so that the right declarations are necessary.\n\nAn alternative is to really use it as a defined or not defined symbol, similar to the rest of these kinds of symbols. I think that would almost be preferable, so that it is obvious it is a conditional compilation symbol.\nThen IS_ENABLED() and #if defined() could used.\nAll the other HAS_... symbols are done this way.",
+      "revId": "436062ef9eae3bd4fa0e78bc4067c17bdd720475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
