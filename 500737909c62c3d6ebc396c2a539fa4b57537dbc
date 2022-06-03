@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "966701c4_12d5ef3b",
+        "filename": "zephyr/projects/nissa/src/nereid/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-03T00:40:41Z",
+      "side": 1,
+      "message": "Use ap_power_ev_add_callback instead of the legacy hooks (like in board_power_change())",
+      "revId": "500737909c62c3d6ebc396c2a539fa4b57537dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
