@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab4ef8d_50a2bd4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-03T15:51:18Z",
+      "side": 1,
+      "message": "were",
+      "range": {
+        "startLine": 12,
+        "startChar": 66,
+        "endLine": 12,
+        "endChar": 69
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6911c9f6_f26a97ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-03T15:51:18Z",
+      "side": 1,
+      "message": "millions",
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cec5d68_8881230a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-03T15:51:18Z",
+      "side": 1,
+      "message": "I think the number of devices is smaller since it\u0027s only one with fingerprint sensors (and I guess only STM32F412). See \"Eligible Devices\" here: http://shortn/_V1t4Og0Kw0. The actual number of devices may be confidential, so instead of putting the absolute numbers, can you calculate a percentage? (Or you could leave the number out and just keep the part about \"probability was very low\".)",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 64
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b74a46_4bcdce21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-03T15:51:18Z",
+      "side": 1,
+      "message": "Can you create a unit test from this that makes sure `SET_RTC_MATCH_DELAY` passes (`int_received \u003d\u003d expected`)? You\u0027ll need to move `SET_RTC_MATCH_DELAY` into a header file so it can be shared. When you do that, you can also add a comment to `SET_RTC_MATCH_DELAY` that points to the unit test.\n\nYou can add the test in a separate CL if you want to go ahead and submit this by itself to meet the merge cutoff.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10920f94_2959d033",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-03T15:51:18Z",
+      "side": 1,
+      "message": "Can you check that the power numbers haven\u0027t increased too much with this change?\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md#power",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 27
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
