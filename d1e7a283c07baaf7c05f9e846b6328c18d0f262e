@@ -375,6 +375,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ca18b49_91f5f0e3",
+        "filename": "zephyr/test/drivers/led_driver/src/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-03T14:48:27Z",
+      "side": 1,
+      "message": "The `RESET_STATE` changes the led colors based on current state of the system (battery level, power-state, etc.).  If I start modifying these items, this becomes more of a integration test for the specific board rather than an independent unit test.",
+      "parentUuid": "fd676909_4d99dc79",
+      "revId": "d1e7a283c07baaf7c05f9e846b6328c18d0f262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "628863fc_d35bd968",
         "filename": "zephyr/test/drivers/led_driver/src/led.c",
         "patchSetId": 1
