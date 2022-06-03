@@ -108,6 +108,29 @@
       },
       "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf263396_b49be9bd",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-06-03T16:04:51Z",
+      "side": 1,
+      "message": "FYI, I was looking at how the value had originally been selected and found [these comments from the original code review](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2537631/comments/5826b8b9_46c216e6):\n\n\u003e my long term testing is still showing a RTC issue (often after 6 to 15 hours), this number might be too short or actually something is incorrect in the (pre-existing) RTC code. still painfully debugging this\n\n\u003e the code is us_to_rtcss() is actually doing a rounding error which sometimes ends up with a negative number written in a (unsigned) register... boom no RTC alarm firing.\n\u003e I will upload a separate fix for this one.\n\n\nI haven\u0027t been able to find the subsequent change with the \"fix\" for the error described in the second comment.",
+      "range": {
+        "startLine": 449,
+        "startChar": 28,
+        "endLine": 449,
+        "endChar": 31
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
