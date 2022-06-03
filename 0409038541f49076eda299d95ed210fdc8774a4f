@@ -16,6 +16,24 @@
       "message": "If `update_fpmcu_firmware` is still the preferred method of flashing in mass production then I could see readers seeing this and becoming confused about whether to use `update_fpmcu_firmware` or `flash_fp_mcu`. IIRC, point of `update_fpmcu_firmware.py` that is more robust and user friendly it might make more sense to either remove this sentence entirely (neither advocate nor prohibit) or state something like \n\n\u003e While not the preferred method, it is possible to use the `flash_fp_mcu` script as a low-level flashing tool. The `update_fpmcu_firmware.py` script is preferred because it enhances the capabilities of `flash_fp_mcu` with improved robustness and failure prevention.\n\nDoes that sound reasonable? Is it even accurate?",
       "revId": "0409038541f49076eda299d95ed210fdc8774a4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d22aa77_8b43553f",
+        "filename": "docs/fingerprint/fingerprint-factory-requirements.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-03T22:59:58Z",
+      "side": 1,
+      "message": "It\u0027s not really accurate since `update_fpmcu_firmware.py` doesn\u0027t add any robustness; it\u0027s really just a wrapper around `flash_fp_mcu`.\n\nI\u0027ll try rephrasing it to make that clearer.",
+      "parentUuid": "05c88739_0d80ab35",
+      "revId": "0409038541f49076eda299d95ed210fdc8774a4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
