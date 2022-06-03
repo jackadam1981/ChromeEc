@@ -22,6 +22,30 @@
       },
       "revId": "b8af124a0f85da7bafbb88a40988aeb185152121",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "764f9bb0_68ba4857",
+        "filename": "chip/stm32/config-stm32f4.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-03T20:39:49Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "148679f6_c5e12c61",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "b8af124a0f85da7bafbb88a40988aeb185152121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
