@@ -1,3 +1,7 @@
+
+
+#pragma clang optimize off
+
 /* Copyright 2019 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -3129,7 +3133,7 @@ static void pe_snk_startup_entry(int port)
 		 * Set DiscoverIdentityTimer to trigger when we enter
 		 * snk_ready for the first time.
 		 */
-		pd_timer_enable(port, PE_TIMER_DISCOVER_IDENTITY, 0);
+	pd_timer_enable(port, PE_TIMER_DISCOVER_IDENTITY, 0);
 
 		/* Clear port discovery/mode flags */
 		pd_dfp_discovery_init(port);
