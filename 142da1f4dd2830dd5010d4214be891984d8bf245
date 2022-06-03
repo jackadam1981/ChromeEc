@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba338356_0d4e7bd3",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-03T00:49:48Z",
+      "side": 1,
+      "message": "FYI, the pwm-frequency entry will be moved to the pwm entry, per b/230093078.",
+      "parentUuid": "87f91661_47dd196b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "142da1f4dd2830dd5010d4214be891984d8bf245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60753ab3_be87d576",
         "filename": "zephyr/dts/bindings/leds/cros-ec,pwm-led-pins.yaml",
         "patchSetId": 4
