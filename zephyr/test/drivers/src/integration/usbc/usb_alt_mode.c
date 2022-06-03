@@ -1,3 +1,7 @@
+
+
+#pragma clang optimize off
+
 /* Copyright 2022 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -86,6 +90,10 @@ static void *usbc_alt_mode_setup(void)
 	partner->identity_vdm[VDO_INDEX_AMA] = 0x12000000;
 	partner->identity_vdos = VDO_INDEX_AMA + 1;
 
+	/*
+	 * TODO(b/aaronmassey): Make the array index a lot simpler. This is
+	 * harder than it needs to be.
+	 */
 	/* Support DisplayPort VID. */
 	partner->svids_vdm[VDO_INDEX_HDR] =
 		VDO(USB_SID_PD, /* structured VDM */ true,
@@ -154,6 +162,31 @@ ZTEST_F(usbc_alt_mode, verify_discovery)
 	zassert_equal(discovery->svids[0].mode_vdo[0],
 		      this->partner.modes_vdm[1],
 		      "DP mode VDOs did not match");
+}
+
+ZTEST_USER(espi, test_host_command_usb_pd_get_amode)
+{
+	/* Verify host command when VDOs are present. */
+	struct ec_params_usb_pd_get_mode_request params = {
+		.port = TEST_PORT,
+		.svid_idx = 0,
+	};
+	struct ec_params_usb_pd_get_mode_response response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
+		EC_CMD_USB_PD_GET_AMODE, 0, response, params);
+
+	zassert_ok(host_command_process(&args), NULL);
+	zassert_ok(args.result, NULL);
+
+	zassert_equal(args.response_size, sizeof(response), NULL);
+}
+
+ZTEST_F(usbc_alt_mode, verify_dp_mode_entry)
+{
+	struct ec_params_usb_pd_get_mode_response response;
+	host_cmd_usb_pd_get_amode(TEST_PORT, 0, &response);
+
+	zassert_equal(0, response.svid, NULL);
 }
 
 ZTEST_SUITE(usbc_alt_mode, drivers_predicate_post_main, usbc_alt_mode_setup,

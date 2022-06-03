@@ -1,3 +1,7 @@
+
+
+#pragma clang optimize off
+
 /* Copyright 2021 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -485,6 +489,33 @@ void tcpci_partner_stop_sender_response_timer(struct tcpci_partner_data *data)
 }
 
 static enum tcpci_partner_handler_res
+tcpci_partner_common_mode_entry_handler(struct tcpci_partner_data *data,
+					const struct tcpci_emul_msg *message,
+					uint32_t vdm_header)
+{
+	printf("enter mode in partner\n");
+	/* Here we assume all command types are requests i.e. CMDT_INIT */
+
+	uint32_t opos = PD_VDO_OPOS(vdm_header);
+
+	printf("0x%x\n", opos);
+
+	#define dp_mode_under_test_FIXME 1
+
+	if (opos == dp_mode_under_test_FIXME) {
+		printf("DP Mode being entered!\n");
+		tcpci_partner_send_data_msg(data, PD_DATA_VENDOR_DEF,
+					    data->identity_vdm,
+					    data->identity_vdos, 0);
+	}
+
+
+	/* How do I check if its DP mode? */
+
+	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+}
+
+static enum tcpci_partner_handler_res
 tcpci_partner_common_vdm_handler(struct tcpci_partner_data *data,
 				 const struct tcpci_emul_msg *message)
 {
@@ -521,6 +552,9 @@ tcpci_partner_common_vdm_handler(struct tcpci_partner_data *data,
 		}
 		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 	/* TODO(b/219562077): Support DP mode entry. */
+	case CMD_ENTER_MODE:
+		return tcpci_partner_common_mode_entry_handler(data, message,
+							       vdm_header);
 	default:
 		/* TCPCI r. 2.0: Ignore unsupported commands. */
 		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
