@@ -15,6 +15,8 @@
 #define RGBKBD_MAX_GCC_LEVEL	0xff
 #define RGBKBD_MAX_SCALE	0xff
 
+#define RGBKBD_CTX_TO_GRID(ctx)	((ctx) - &rgbkbds[0])
+
 struct rgbkbd_cfg {
 	/* Driver for LED IC */
 	const struct rgbkbd_drv * const drv;
