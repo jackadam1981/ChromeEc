@@ -22,6 +22,30 @@
       },
       "revId": "c779c79b0dfdde37c753c76d9de3bb751c5b5d52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a22cb9b_c7815b62",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-03T17:29:37Z",
+      "side": 0,
+      "message": "After some additional digging with Keith, I think it is intentional to just transfer fewer bytes, despite as mentioned in the commit message the size doesn\u0027t seem to be checked by any consumers of this host command.\n\nHowever, I am abandoning this CL due to the varied numbers of response sizes outside of usb pd host commands. I thought there might\u0027ve been a pattern of setting it to be the size of the struct, but that was a mistake.",
+      "parentUuid": "5bc2876c_9af3450e",
+      "range": {
+        "startLine": 176,
+        "startChar": 24,
+        "endLine": 176,
+        "endChar": 38
+      },
+      "revId": "c779c79b0dfdde37c753c76d9de3bb751c5b5d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
