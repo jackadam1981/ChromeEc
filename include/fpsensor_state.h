@@ -57,7 +57,7 @@ extern uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 /* Index of the last enrolled but not retrieved template. */
 extern int8_t template_newly_enrolled;
 /* Number of used templates */
-extern uint32_t templ_valid;
+extern int32_t templ_valid;
 /* Bitmap of the templates with local modifications */
 extern uint32_t templ_dirty;
 /* Current user ID */
