@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "192bc76e_f3f6dfa5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-03T16:44:53Z",
+      "side": 1,
+      "message": "Would there be any value in leaving this code (or something similar) in the FPMCU, even if just in a test? I could imagine a change being made to some clock configuration that results in this time changing and it would be nice to catch it before the bug returns.",
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43b74a46_4bcdce21",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -83,6 +100,23 @@
         "endLine": 45,
         "endChar": 65
       },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b19106dc_7e7adf5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-03T16:44:53Z",
+      "side": 1,
+      "message": "That\u0027s a tricky bug, good find!",
       "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -147,6 +181,30 @@
       "side": 1,
       "message": "Thanks! Vincent was aware that there is a problem, and it could be disastrous 😮\n\nI remember I was carefully checking the code for setting RTC alarm months ago (when I prepared the first patchset) because I suspected a rounding error and haven\u0027t found any problem. I\u0027ll take a look once again.\n\nThanks for reviewing it quckly. I will implement a unit test ASAP.",
       "parentUuid": "cf263396_b49be9bd",
+      "range": {
+        "startLine": 449,
+        "startChar": 28,
+        "endLine": 449,
+        "endChar": 31
+      },
+      "revId": "0392f42eccb79d5f3e7ebac61f857230f579b603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e726432_0fb50345",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-03T16:44:53Z",
+      "side": 1,
+      "message": "I wonder if the coverity logs could be helpful in detecting this.",
+      "parentUuid": "46d85fe2_98ebb3fa",
       "range": {
         "startLine": 449,
         "startChar": 28,
