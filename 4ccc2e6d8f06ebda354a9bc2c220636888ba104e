@@ -74,6 +74,24 @@
       "parentUuid": "c9eedecd_00ffb335",
       "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcab4fc7_4bedfdde",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-04T01:58:22Z",
+      "side": 1,
+      "message": "OK thanks for the reference, that\u0027s helpful.\nSo I think that CL logic is doing something a bit different to this change.\nI don\u0027t think caching the result of ap_power_is_ok_to_power_up() is needed here,\nsince the only time it is checked is in hook_battery_soc_change() - I don\u0027t quite\nunderstand the need to cache it, and I may be missing something here.\nThe comment says \"if we know it is ready\", but that can be determined without the cached value by just calling ap_power_is_ok_to_power_up().\nI\u0027m also getting my head around the inversion of the logic (ready vs inhibited),\n\nLet me check I have the intent correct:\nhook_battery_soc_change() should call chipset_exit_hard_off() if and only if the AP has not been started because ap_power_is_ok_to_power_up() says it is not ok to power up.\ncharger_ready is the last result of the check, though at the time it is checked the real value may well be different.\n\nI wonder if the logic would be clearer to have:\n\nstatic bool power_up_ok_seen;\n\nbool ap_power_is_ok_to_power_up(void)\n{\n   bool ready \u003d !charge_prevent_power_on(false) \u0026\u0026 !charge_want_shutdown();\n   if (ready) {\n       power_up_ok_seen \u003d true;\n   }\n   return ready;\n }\n \n and in hook_battery_soc_change() use power_up_ok_seen instead of charger_ready.\n I think the comments need some expanding so that the intent is clearer.\n I guess I am concerned about the use of charger_ready as a cached value, and how it is used. It\u0027s not great that ap_power_is_ok_to_power_up() has a side effect, and strictly speaking, the right place to set that value is in the SYS_POWER_STATE_G3S5 handling, but scope is the issue. Maybe I\u0027ve got my head in knots about this.\n \nI think decoupling this static bool from the result of ap_power_is_ok_to_power_up() is likely a good thing, since that makes the intent of that bool much clearer. The question arises as to the best way of setting it.",
+      "parentUuid": "1f8f8ef1_3f618fe8",
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
