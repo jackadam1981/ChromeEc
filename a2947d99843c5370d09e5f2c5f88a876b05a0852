@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8bc5efe_ee7ba88d",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,gpio-led-pins.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-05T00:40:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a43210ad_1529d6b2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "a2947d99843c5370d09e5f2c5f88a876b05a0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0799d9f5_fc5518bb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-03T16:25:54Z",
       "side": 1,
       "message": "I\u0027m not following this description.  I see that `find_node_with_extra_flag()` calls `charge_get_flags()`, but doesn\u0027t use `get_chg_ctrl_mode()`.  Also, what does `CHARGE_CONTROL_NORMAL` mean?  Is the battery actively charging in this state?  `CHARGE_CONTROL_IDLE` appears to mean the battery is discharging (charging is idle).\n\nI wonder if these enums should all reference the battery state:\n```\nLED_BATT_IS_DISCHARGING  /* was LED_CHFLAG_FORCE_IDLE */\nLED_BATT_IS_CHARGING  /* was LED_CHFLAG_DEFAULT */\nLED_BATT_BELOW_10_PCT\nLED_BATT_ABOVE_10_PCT\n```\n\nWDYT?",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "a2947d99843c5370d09e5f2c5f88a876b05a0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f14eac_739a7338",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-05T00:40:22Z",
+      "side": 1,
+      "message": "charge_get_flags() implemented in [1] calls get_chg_ctrl_mode(). CHARGE_FLAG_FORCE_IDLE is set if charge_ctrl_mode !\u003d CHARGE_CONTROL_NORMAL and indicates factory mode during PWR_STATE_IDLE [2]. I don\u0027t understand the comment in [2] which states external power connected.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/charge_state_v2.c;l\u003d2230\n\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/lazor/led.c;l\u003d109\n\nLED_BATT_BELOW_10_PCT and LED_BATT_ABOVE_10_PCT are removed, instead we are now using battery range in the batt-lvl property.",
+      "parentUuid": "0799d9f5_fc5518bb",
       "range": {
         "startLine": 52,
         "startChar": 25,
