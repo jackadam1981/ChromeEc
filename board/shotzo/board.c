@@ -386,24 +386,9 @@ struct motion_sensor_t bma422_lid_accel = {
 	},
 };
 
-static void board_update_motion_sensor_config(void)
-{
-	if (get_cbi_ssfc_lid_sensor() == SSFC_SENSOR_BMA422)
-		motion_sensors[LID_ACCEL] = bma422_lid_accel;
-}
-
 void board_init(void)
 {
 	int on;
-	enum fw_config_db db = get_cbi_fw_config_db();
-
-	if (db == DB_1A_HDMI || db == DB_LTE_HDMI || db == DB_1A_HDMI_LTE) {
-		/* Select HDMI option */
-		gpio_set_level(GPIO_HDMI_SEL_L, 0);
-	} else {
-		/* Select AUX option */
-		gpio_set_level(GPIO_HDMI_SEL_L, 1);
-	}
 
 	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_INT_ODL);
@@ -421,20 +406,6 @@ void board_init(void)
 		hook_call_deferred(&check_c1_line_data, 0);
 
 	gpio_enable_interrupt(GPIO_USB_C0_CCSBU_OVP_ODL);
-
-	if (get_cbi_fw_config_tablet_mode() == TABLET_MODE_PRESENT) {
-		motion_sensor_count = ARRAY_SIZE(motion_sensors);
-		/* Enable Base Accel interrupt */
-		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
-
-		board_update_motion_sensor_config();
-	} else {
-		motion_sensor_count = 0;
-		gmr_tablet_switch_disable();
-		/* Base accel is not stuffed, don't allow line to float */
-		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
-			       GPIO_INPUT | GPIO_PULL_DOWN);
-	}
 
 	gpio_enable_interrupt(GPIO_PEN_DET_ODL);
 
@@ -536,32 +507,12 @@ __override void board_power_5v_enable(int enable)
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
-	enum fw_config_db db = get_cbi_fw_config_db();
-
-	if (db == DB_1A_HDMI || db == DB_NONE || db == DB_LTE_HDMI
-			|| db == DB_1A_HDMI_LTE)
-		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-	else if (db == DB_1C || db == DB_1C_LTE || db == DB_1C_1A
-			|| db == DB_1C_1A_LTE)
-		return CONFIG_USB_PD_PORT_MAX_COUNT;
-
-	ccprints("Unhandled DB configuration: %d", db);
-	return 0;
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
 __override uint8_t board_get_charger_chip_count(void)
 {
-	enum fw_config_db db = get_cbi_fw_config_db();
-
-	if (db == DB_1A_HDMI || db == DB_NONE || db == DB_LTE_HDMI
-			|| db == DB_1A_HDMI_LTE)
-		return CHARGER_NUM - 1;
-	else if (db == DB_1C || db == DB_1C_LTE || db == DB_1C_1A
-			|| db == DB_1C_1A_LTE)
-		return CHARGER_NUM;
-
-	ccprints("Unhandled DB configuration: %d", db);
-	return 0;
+	return CHARGER_NUM;
 }
 
 uint16_t tcpc_get_alert_status(void)
