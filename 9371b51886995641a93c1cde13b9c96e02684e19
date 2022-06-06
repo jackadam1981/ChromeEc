@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09da428d_5a75c32b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-06T18:49:33Z",
+      "side": 1,
+      "message": "I would like to better understand why this is necessary before doing it, because it doesn\u0027t seem like PD activity should be using all of the CPU (blocking watchdog updates on the idle thread) for several seconds; it involves a lot of I2C that should yield the CPU, I\u0027d think.",
+      "revId": "9371b51886995641a93c1cde13b9c96e02684e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
