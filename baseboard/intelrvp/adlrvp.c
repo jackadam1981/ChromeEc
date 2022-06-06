@@ -540,3 +540,15 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
 }
+
+/*
+ * The FUSB TCPC chip does not support dual role auto toggle by
+ * default. Hence, the PD state of a non-attached port remains in
+ * PD_DRP_TOGGLE_ON in active state. Thus the TCPC ports do not
+ * enter Low power mode. To fix the issue, added board specific
+ * code to disable the dual role toggle in S0.
+ **/
+__override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
+{
+	return PD_DRP_TOGGLE_OFF;
+}
