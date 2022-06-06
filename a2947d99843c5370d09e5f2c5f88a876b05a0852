@@ -93,6 +93,30 @@
       },
       "revId": "a2947d99843c5370d09e5f2c5f88a876b05a0852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b269995_514a918d",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-06T17:45:57Z",
+      "side": 1,
+      "message": "Agree with Keith that the description is not clear.\n\nThe `extra_flag` should be a super class of all the flags the policies care about. It collects all the long-tail flags, which may not be justify to have a dedicated property to match the condition. So far it only contains the `charge_flag` [1]. I think the description only needs to mention the `charge_flag` which is an output of `charge_get_flags()`. The `charge_control_mode` or `get_chg_ctrl_mode()` is the implementation detail which don\u0027t need to mention.\n\nFor matching the flag, e.g. `CHARGE_FLAG_FORCE_IDLE`, better to reuse the same name, without modification, so easier to understand, not some new terms. The values are one bit to match the true condition and another bit to match the false condition, e.g.\n\n```\nCHARGE_FLAG_FORCE_IDLE_SET\nCHARGE_FLAG_FORCE_IDLE_CLEARED\n```\n\nThe type of this property should be an integer, instead of an enum. So some policies can match multiple conditions, like:\n  extra_flag \u003d \u003c(CHARGE_FLAG_FORCE_IDLE_SET | CHARGE_FLAG_EXTERNAL_POWER_CLEARED)\u003e\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/charge_state.h;l\u003d53",
+      "parentUuid": "55f14eac_739a7338",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "a2947d99843c5370d09e5f2c5f88a876b05a0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
