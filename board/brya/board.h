@@ -26,6 +26,13 @@
 
 #define CONFIG_MP2964
 
+/* 
+ * Dangerous Config to enable.
+ * Config is enabled to unlock board to allow reconfiguration of
+ * board version.
+ */
+#define CONFIG_SYSTEM_UNLOCKED
+
 /* LED */
 #define CONFIG_LED_PWM
 #define CONFIG_LED_PWM_COUNT 2
