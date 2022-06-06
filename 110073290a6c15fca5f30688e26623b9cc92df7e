@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45695725_cce738da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-06T18:35:55Z",
+      "side": 1,
+      "message": "It\u0027s surprising to me that this makes a difference, but suppose the difference might be in interrupt latency since we could take about 5ms to detect a charger interrupt if one occurs shortly after a TCPC interrupt.\n\nI implemented this the old way to reduce the amount of polling, but since it only gets polled in assorted wait states it seems okay to poll this despite the performance cost of doing I2C reads in a loop.",
+      "revId": "110073290a6c15fca5f30688e26623b9cc92df7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
