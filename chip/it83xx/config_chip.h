@@ -122,5 +122,6 @@
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
 #define __RAM_CODE_SECTION_NAME ".ram_code"
+#define __RAM_CODE_ILM0_SECTION_NAME ".ram_code_ilm0"
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
