@@ -540,3 +540,9 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
 }
+
+__override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
+{
+	/* Disable dual role */
+	return PD_DRP_TOGGLE_OFF;
+}
