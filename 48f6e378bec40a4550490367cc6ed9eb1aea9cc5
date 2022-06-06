@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "677382aa_8287c7d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-06T21:15:48Z",
+      "side": 1,
+      "message": "\u003e \u003e OK. Will the EC send out (VIRTUAL_MUX) host events to the AP when DP alt mode is entered?\n\u003e \n\u003e I thought when we discussed the feature progression diagrams we decided to skip the virtual mux step for external mux boards? \n\nYep, that\u0027s right; the AP alt mode driver will direct the entry, so no events required. At present though, the EC  DP module is governing alt mode entry (IIUC); so in the current state, how does the EC tell the AP that DP alt mode has been entered and we need to update the muxes/retimers (my apologies if I inadvertently conflated VIRTUAL_MUX usage here, but that\u0027s the closest analog I am familiar with)?",
+      "parentUuid": "e12e3d01_c78573d7",
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4238e4_eef53139",
@@ -157,6 +175,30 @@
       "side": 1,
       "message": "\u003e If we are assuming an ordering between the two (retimer first then mux), perhaps the HC for chip details is no longer needed?\n\nPotentially.  We\u0027d need to ensure that we make it known there\u0027s a required order to list the muxes in if a board is using this feature.  \n\nIf we did create the new HC, it could convey additional information that could be generally useful about the chips present, similar to `enum motionsensor_chip`",
       "parentUuid": "7c895d18_1881f5b0",
+      "range": {
+        "startLine": 6707,
+        "startChar": 1,
+        "endLine": 6707,
+        "endChar": 19
+      },
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae47e2b_723563a4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6707,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-06T21:15:48Z",
+      "side": 1,
+      "message": "\u003e \u003e If we are assuming an ordering between the two (retimer first then mux), perhaps the HC for chip details is no longer needed?\n\u003e \n\u003e Potentially.  We\u0027d need to ensure that we make it known there\u0027s a required order to list the muxes in if a board is using this feature.  \n\nWould this be through documentation in code, or a hardware requirements doc?\n\n\u003e \n\u003e If we did create the new HC, it could convey additional information that could be generally useful about the chips present, similar to `enum motionsensor_chip`\n\nDon\u0027t mind a \"tagging along\" with a new CHIP_INFO command if one\u0027s going to be introduced anyway 😊\nI\u0027m guessing this property will be a boolean (\"retimer-first\" ?)\n\nI wonder if this is something pertinent to go/typec-altmode-fw-bindings (I hope I am not throwing the thread on a tangent...).",
+      "parentUuid": "07a4644e_7c58629c",
       "range": {
         "startLine": 6707,
         "startChar": 1,
