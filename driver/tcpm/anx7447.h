@@ -94,9 +94,9 @@
 #define ANX7447_SOFT_INTP                               BIT(5)
 #define ANX7447_VCONN_VOLTAGE_ALARM_LO                  BIT(4)
 #define ANX7447_VCONN_VOLTAGE_ALARM_HI                  BIT(3)
-#define ANX7447_VCONN_OCP_OCURRED                       BIT(2)
-#define ANX7447_VBUS_OCP_OCURRED                        BIT(1)
-#define ANX7447_FRSWAP_SSIGNAL_DETECTED                 BIT(0)
+#define ANX7447_VCONN_OCP_OCCURRED                       BIT(2)
+#define ANX7447_VBUS_OCP_OCCURRED                        BIT(1)
+#define ANX7447_FRSWAP_SIGNAL_DETECTED                 BIT(0)
 
 
 /*
