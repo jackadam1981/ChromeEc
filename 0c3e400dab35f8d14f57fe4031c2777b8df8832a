@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c81a59a_d0f6d7de",
+        "filename": "docs/gsc_without_servod.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-06-06T19:27:14Z",
+      "side": 1,
+      "message": "You might could use `ccd open` to clear nvmem. This would be pretty easy on DBG images `ccd open` `ccd reset factory` `ccd set OpenNoTPMWipe IfOpened` `ccd lock` `ccd open`",
+      "range": {
+        "startLine": 206,
+        "startChar": 29,
+        "endLine": 206,
+        "endChar": 52
+      },
+      "revId": "0c3e400dab35f8d14f57fe4031c2777b8df8832a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
