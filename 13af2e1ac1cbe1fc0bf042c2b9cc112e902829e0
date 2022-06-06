@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ceb547c_0286a414",
+        "filename": "board/banshee/keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-06-06T13:52:48Z",
+      "side": 1,
+      "message": "Please use banshee_kb_id1 and banshee_kb_evt_id2 (line 47)",
+      "range": {
+        "startLine": 28,
+        "startChar": 45,
+        "endLine": 28,
+        "endChar": 59
+      },
+      "revId": "13af2e1ac1cbe1fc0bf042c2b9cc112e902829e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
