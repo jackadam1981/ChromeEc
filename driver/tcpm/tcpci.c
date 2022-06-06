@@ -1042,6 +1042,21 @@ static int register_mask_reset(int port)
 	return 0;
 }
 
+static int tcpci_restore_register_mask(int port)
+{
+	int rv;
+
+	/* Initialize power_status_mask */
+	rv = init_power_status_mask(port);
+	/* Initialize alert_mask */
+	rv |= init_alert_mask(port);
+
+	CPRINTS("C%d: TCPC restore register mask %s", port, rv ?
+		"failed!" : "success!");
+
+	return rv;
+}
+
 static int tcpci_get_fault(int port, int *fault)
 {
 	return tcpc_read(port, TCPC_REG_FAULT_STATUS, fault);
@@ -1270,6 +1285,7 @@ void tcpci_tcpc_alert(int port)
 	if (alert & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
 		CPRINTS("C%d Hard Reset received", port);
+		tcpci_restore_register_mask(port);
 		pd_event |= PD_EVENT_RX_HARD_RESET;
 	}
 
