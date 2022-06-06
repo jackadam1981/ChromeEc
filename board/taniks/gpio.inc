@@ -22,7 +22,6 @@ GPIO_INT(SEQ_EC_RSMRST_ODL,              PIN(E, 2), GPIO_INT_BOTH, power_signal_
 GPIO_INT(SLP_S3_L,                       PIN(A, 5), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SLP_SUS_L,                      PIN(2, 5), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SYS_SLP_S0IX_L,                 PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(TABLET_MODE_L,                  PIN(9, 5), GPIO_INT_BOTH, gmr_tablet_switch_isr)
 GPIO_INT(USB_C0_BC12_INT_ODL,            PIN(C, 6), GPIO_INT_FALLING, bc12_interrupt)
 GPIO_INT(USB_C0_TCPC_INT_ODL,            PIN(2, 3), GPIO_INT_FALLING, tcpc_alert_event)
 GPIO_INT(USB_C0_PPC_INT_ODL,             PIN(6, 2), GPIO_INT_FALLING, ppc_interrupt)
@@ -89,6 +88,7 @@ GPIO(USB_C1_RT_RST_R_ODL,            PIN(0, 2), GPIO_ODR_HIGH)
 GPIO(VCCST_PWRGD_OD,                 PIN(A, 4), GPIO_ODR_LOW)
 GPIO(KBMCU_INT_ODL,                  PIN(7, 0), GPIO_ODR_HIGH)
 GPIO(EMMC_SKU_DET,                   PIN(D, 4), GPIO_INPUT)
+GPIO(TABLET_MODE_L,                  PIN(9, 5), GPIO_INPUT)
 
 /* KB Outputs */
 #define GPIO_KB_OUTPUT               (GPIO_OUT_HIGH)
