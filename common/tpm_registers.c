@@ -789,10 +789,16 @@ int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 {
 	uint32_t evt;
 
-	cprints(CC_TASK, "%s(%d, %d)", __func__,
-		wait_until_done, wipe_nvmem_first);
+	cprints(CC_TASK, "%s(%d, %d, %d)", __func__,
+		wait_until_done, wipe_nvmem_first, reset_in_progress);
 
-	if (reset_in_progress) {
+	/*
+	 * Ignore reset_in_progress if a wipe was requested. The last reset
+	 * might not have wiped the tpm.
+	 */
+	if (wipe_nvmem_first) {
+		cprints(CC_TASK, "%s: wipe nvmem", __func__);
+	} else if (reset_in_progress) {
 		cprints(CC_TASK, "%s: already scheduled", __func__);
 		return EC_ERROR_BUSY;
 	}
