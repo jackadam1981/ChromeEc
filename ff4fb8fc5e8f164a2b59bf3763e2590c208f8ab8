@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad075dec_2f3f1db5",
+        "filename": "common/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-06T20:40:39Z",
+      "side": 1,
+      "message": "ping @Sumeet",
+      "parentUuid": "8b6e31fd_15461ce9",
+      "range": {
+        "startLine": 489,
+        "startChar": 11,
+        "endLine": 489,
+        "endChar": 12
+      },
+      "revId": "ff4fb8fc5e8f164a2b59bf3763e2590c208f8ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9de9bf39_f07885d3",
         "filename": "common/fan.c",
         "patchSetId": 7
