@@ -1313,9 +1313,11 @@ void tcpci_tcpc_alert(int port)
 
 	/*
 	 * Check registers to see if we can tell that the TCPC has reset. If
-	 * so, perform a tcpc_init.
+	 * so, perform a tcpc_init. However, if we got hard reset received,
+	 * waiting for hard reset is completed, then restore our mask register,
+	 * see b/232326002 for more detail.
 	 */
-	if (register_mask_reset(port))
+	if (register_mask_reset(port) && !(alert & TCPC_REG_ALERT_RX_HARD_RST))
 		pd_event |= PD_EVENT_TCPC_RESET;
 
 	/*
