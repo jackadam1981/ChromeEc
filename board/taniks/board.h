@@ -27,6 +27,9 @@
 #define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
 
 #undef CONFIG_MKBP_INPUT_DEVICES
+#undef CONFIG_TABLET_MODE
+#undef CONFIG_GMR_TABLET_MODE
+#undef CONFIG_TABLET_MODE_SWITCH
 
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
