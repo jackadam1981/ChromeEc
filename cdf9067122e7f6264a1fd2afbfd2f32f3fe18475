@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca68880f_1ece5c0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-06-06T14:47:38Z",
+      "side": 1,
+      "message": "Hi Yuval,\n\nCQ+2, error message as,\nUncaught Exception: ValueError(\u0027No JSON object could be decoded\u0027)\n\nAble to pass all compilations: $ zmake testall\nPlease help to check what the root cause is.",
+      "revId": "cdf9067122e7f6264a1fd2afbfd2f32f3fe18475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
