@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e3fe40_c147f12a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-06T21:19:14Z",
+      "side": 1,
+      "message": "\u003e Yep, that\u0027s right; the AP alt mode driver will direct the entry, so no events required. At present though, the EC  DP module is governing alt mode entry (IIUC); so in the current state, how does the EC tell the AP that DP alt mode has been entered and we need to update the muxes/retimers (my apologies if I inadvertently conflated VIRTUAL_MUX usage here, but that\u0027s the closest analog I am familiar with)?\n\nContext: On the AP, the Mux driver will be linked to the main port driver. So the kernel\u0027s port driver would be the one telling the mux driver that port X is in Y state. `ectool` doesn\u0027t exercise the same codde paths as the mux driver would.",
+      "parentUuid": "677382aa_8287c7d8",
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4238e4_eef53139",
