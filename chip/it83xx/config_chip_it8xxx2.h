@@ -82,7 +82,23 @@
 || defined(CHIP_VARIANT_IT81202AX_1024) \
 || defined(CHIP_VARIANT_IT81302BX_1024) \
 || defined(CHIP_VARIANT_IT81202BX_1024)
+<<<<<<< HEAD   (5cffd2 riscv: it8xxx2: pull __switch_task function into ram_code_il)
 #define CONFIG_FLASH_SIZE_BYTES           0x00100000
+=======
+
+/*
+ * Workaround mul instruction bug, see:
+ * https://www.ite.com.tw/uploads/product_download/it81202-bx-chip-errata.pdf
+ */
+#undef CONFIG_RISCV_EXTENSION_M
+#define CONFIG_IT8XXX2_MUL_WORKAROUND
+
+#if defined(CHIP_VARIANT_IT81302BX_512)
+#define CONFIG_FLASH_SIZE_BYTES     0x00080000
+#define CONFIG_RAM_BASE             0x80080000
+#else
+#define CONFIG_FLASH_SIZE_BYTES     0x00100000
+>>>>>>> CHANGE (4a2e33 it8xxx2: The "M" extension is disabled by default)
 #define CONFIG_RAM_BASE             0x80100000
 #define CONFIG_RAM_SIZE             0x0000f000
 
