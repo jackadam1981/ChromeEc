@@ -238,6 +238,18 @@ static int nct38xx_tcpm_set_snk_ctrl(int port, int enable)
 	return tcpci_tcpm_set_snk_ctrl(port, enable);
 }
 
+static int nct38xx_hard_reset_reinit(int port)
+{
+	int rv;
+
+	/* Initialize power_status_mask */
+	rv = init_power_status_mask(port);
+	/* Initialize alert_mask */
+	rv |= init_alert_mask(port);
+
+	return rv;
+}
+
 static inline int tcpc_read_alert_no_lpm_exit(int port, int *val)
 {
 	return tcpc_addr_read16_no_lpm_exit(
@@ -393,4 +405,5 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 	.set_frs_enable = &nct38xx_set_frs_enable,
 #endif
 	.handle_fault = &nct3807_handle_fault,
+	.hard_reset_reinit = &nct38xx_hard_reset_reinit,
 };

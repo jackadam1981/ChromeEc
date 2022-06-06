@@ -307,7 +307,7 @@ int tcpci_get_cached_rp(int port)
 	return cached_rp[port];
 }
 
-static int init_alert_mask(int port)
+int init_alert_mask(int port)
 {
 	int rv;
 	uint16_t mask;
@@ -354,7 +354,7 @@ static int clear_alert_mask(int port)
 	return tcpc_write16(port, TCPC_REG_ALERT_MASK, 0);
 }
 
-static int init_power_status_mask(int port)
+int init_power_status_mask(int port)
 {
 	uint8_t mask;
 	int rv;
@@ -1270,6 +1270,13 @@ void tcpci_tcpc_alert(int port)
 	if (alert & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
 		CPRINTS("C%d Hard Reset received", port);
+
+		if (tcpc_config[port].drv->hard_reset_reinit) {
+			if (tcpc_config[port].drv->hard_reset_reinit(port))
+				CPRINTS("C%d: Hard Reset re-initialize failed",
+					port);
+		}
+
 		pd_event |= PD_EVENT_RX_HARD_RESET;
 	}
 
