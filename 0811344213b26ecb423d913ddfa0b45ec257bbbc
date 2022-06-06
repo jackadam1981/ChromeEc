@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b33607_9ea78a3f",
+        "filename": "board/osiris/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-06-06T01:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1419b5a_c240896b",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "0811344213b26ecb423d913ddfa0b45ec257bbbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9009f93_2165d93e",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-03T05:23:27Z",
       "side": 1,
       "message": "doesn\u0027t this just remove all the thresholds?",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "0811344213b26ecb423d913ddfa0b45ec257bbbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "591699cb_8c3e73b4",
+        "filename": "board/osiris/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-06-06T01:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9009f93_2165d93e",
       "range": {
         "startLine": 134,
         "startChar": 8,
