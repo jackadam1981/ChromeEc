@@ -89,6 +89,11 @@
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
 
+/* Dedicated barreljack charger port */
+#undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
+#define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
+#define DEDICATED_CHARGE_PORT 2
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -145,6 +150,12 @@ enum battery_type {
 	BATTERY_COS_2,
 	BATTERY_ATL,
 	BATTERY_TYPE_COUNT,
+};
+
+enum charge_port {
+	CHARGE_PORT_TYPEC0,
+	CHARGE_PORT_TYPEC1,
+	CHARGE_PORT_BARRELJACK,
 };
 
 #endif /* !__ASSEMBLER__ */
