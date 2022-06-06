@@ -540,3 +540,16 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
 }
+
+/* 
+ * By default, toggling is enabled in Active state. But, ADL RVP uses
+ * a combination of ITE and FUSB based TCPC chips where FUSB based
+ * TCPC chip doesnot support Auto toggling while ITE based
+ * supports toggling. In this case, toggling must be disabled.
+ * Also, disabling Auto Toggle can put the pd ports to low power
+ * state,in NDA case.
+ **/ 
+__override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
+{
+	return PD_DRP_TOGGLE_OFF;
+}
