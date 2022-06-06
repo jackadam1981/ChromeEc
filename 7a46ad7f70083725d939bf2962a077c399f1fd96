@@ -16,6 +16,23 @@
       "message": "Adding Bhanu since I\u0027m not sure of our current FW branch policy. \n\nIf we are cherry-picking this one, we should cherry-pick this CL as well to ensure we don\u0027t hit issues with FRS hubs: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3671454",
       "revId": "7a46ad7f70083725d939bf2962a077c399f1fd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "345f5d6f_0d4b1f1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-06-06T20:09:35Z",
+      "side": 1,
+      "message": "This will get included in next fast forward. No action required.",
+      "revId": "7a46ad7f70083725d939bf2962a077c399f1fd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
