@@ -12,7 +12,7 @@
 #include "usb_pd_tcpc.h"
 #include "usb_pd_tcpm.h"
 
-static int init_alert_mask(int port)
+int init_alert_mask(int port)
 {
 	uint16_t mask;
 	int rv;
@@ -30,7 +30,7 @@ static int init_alert_mask(int port)
 	return rv;
 }
 
-static int init_power_status_mask(int port)
+int init_power_status_mask(int port)
 {
 	return tcpc_set_power_status_mask(port, 0);
 }
