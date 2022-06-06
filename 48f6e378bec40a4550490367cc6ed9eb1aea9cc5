@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12e3d01_c78573d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-06T21:02:54Z",
+      "side": 1,
+      "message": "\u003e OK. Will the EC send out (VIRTUAL_MUX) host events to the AP when DP alt mode is entered?\n\nI thought when we discussed the feature progression diagrams we decided to skip the virtual mux step for external mux boards? \n\n\u003e I haven\u0027t thought about this TBH. How would it work for Intel-style situations, where the retimer is programmed by the EC, but the mux by the AP (there, orientation has been an issue in the past)?  It\u0027s probably fine to auto-fill for external mux+retimer situations, but the mixed use case is the one to look out for.\n\nAt the moment, the EC would fill in the polarity it has on the PD connection for the external retimer and the AP would set whatever it wanted on the internal one.  It does seem wise to expect the AP to set polarity though, if we\u0027re going to hit issues with tricky mux chains. I\u0027ll put in a CL to change that behavior\n\n\u003e Feature flag. This makes the code paths a lot cleaner in the driver (and makes it easy for userspace to determine whether a board supports a certain feature or not).\n\nI\u0027ll work on a CL for that one",
+      "parentUuid": "e24c4f73_172761df",
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4238e4_eef53139",
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "\u003e And then the next host command I\u0027m working on is the one to return the chip details to you, so you\u0027ll know which index is which for the board.\n\nAck.\nFrom the looks of how the ACPI tables is shaping up, we have to encode whether there is a retimer and/or a mux in devicetree overrides itself.\n\nIf we are assuming an ordering between the two (retimer first then mux), perhaps the HC for chip details is no longer needed?",
       "parentUuid": "51724320_25f31780",
+      "range": {
+        "startLine": 6707,
+        "startChar": 1,
+        "endLine": 6707,
+        "endChar": 19
+      },
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a4644e_7c58629c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6707,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-06T21:02:54Z",
+      "side": 1,
+      "message": "\u003e If we are assuming an ordering between the two (retimer first then mux), perhaps the HC for chip details is no longer needed?\n\nPotentially.  We\u0027d need to ensure that we make it known there\u0027s a required order to list the muxes in if a board is using this feature.  \n\nIf we did create the new HC, it could convey additional information that could be generally useful about the chips present, similar to `enum motionsensor_chip`",
+      "parentUuid": "7c895d18_1881f5b0",
       "range": {
         "startLine": 6707,
         "startChar": 1,
