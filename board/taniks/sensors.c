@@ -363,7 +363,9 @@ static void baseboard_sensors_init(void)
 	} else {
 		CPRINTS("Clamshell");
 		motion_sensor_count = 0;
+#ifdef CONFIG_TABLET_MODE_SWITCH
 		gmr_tablet_switch_disable();
+#endif
 		gpio_set_flags(GPIO_TABLET_MODE_L, GPIO_INPUT | GPIO_PULL_DOWN);
 		/* Gyro is not present, don't allow line to float */
 		gpio_set_flags(GPIO_EC_IMU_INT_R_L, GPIO_INPUT |
