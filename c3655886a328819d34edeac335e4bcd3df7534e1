@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd4e199_681fab39",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2022-06-06T00:39:26Z",
+      "side": 1,
+      "message": "Resolved, thank you.",
+      "parentUuid": "f1b27970_ae28df6f",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 1
+      },
+      "revId": "c3655886a328819d34edeac335e4bcd3df7534e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "368866c3_ae21a723",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-02T16:51:18Z",
       "side": 1,
       "message": "buttons",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 32
+      },
+      "revId": "c3655886a328819d34edeac335e4bcd3df7534e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a9e566f_4ad9cbe8",
+        "filename": "board/lazor/sku.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2022-06-06T00:39:26Z",
+      "side": 1,
+      "message": "Rename to buttons, thanks.",
+      "parentUuid": "368866c3_ae21a723",
       "range": {
         "startLine": 95,
         "startChar": 26,
