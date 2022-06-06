@@ -53,16 +53,11 @@ __override void board_cbi_init(void)
 
 void board_init(void)
 {
-
-	if (ec_cfg_has_tabletmode()) {
-
-	} else {
-		/* only clamshell todo */
-		gpio_set_flags(GPIO_EC_VOLUP_BTN_ODL, GPIO_INPUT | GPIO_PULL_DOWN);
-		gpio_set_flags(GPIO_EC_VOLDN_BTN_ODL, GPIO_INPUT | GPIO_PULL_DOWN);
-		button_disable_gpio(BUTTON_VOLUME_UP);
-		button_disable_gpio(BUTTON_VOLUME_DOWN);
-	}
+	/* clamshell todo */
+	gpio_set_flags(GPIO_EC_VOLUP_BTN_ODL, GPIO_INPUT | GPIO_PULL_DOWN);
+	gpio_set_flags(GPIO_EC_VOLDN_BTN_ODL, GPIO_INPUT | GPIO_PULL_DOWN);
+	button_disable_gpio(BUTTON_VOLUME_UP);
+	button_disable_gpio(BUTTON_VOLUME_DOWN);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
