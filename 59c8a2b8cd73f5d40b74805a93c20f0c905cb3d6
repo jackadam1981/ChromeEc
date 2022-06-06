@@ -16,6 +16,24 @@
       "message": "Jeremy - do you have insight as to why the cq-coverage runs are failing?  Is this only affecting this CL?",
       "revId": "59c8a2b8cd73f5d40b74805a93c20f0c905cb3d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59703802_f71e2c7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-06-06T10:55:25Z",
+      "side": 1,
+      "message": "It looks like more CLs are affected by this. Here\u0027s a bug created by the fingerprint team: b/234983305",
+      "parentUuid": "1362012f_4e6ae29a",
+      "revId": "59c8a2b8cd73f5d40b74805a93c20f0c905cb3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
