@@ -94,6 +94,14 @@
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
 #define DEDICATED_CHARGE_PORT 2
 
+/*
+ * LED backlight controller
+ */
+#define CONFIG_LED_DRIVER_OZ554
+
+/* I2C Bus Configuration */
+#define I2C_PORT_BACKLIGHT	IT83XX_I2C_CH_C
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

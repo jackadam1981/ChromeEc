@@ -18,6 +18,7 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/sm5803.h"
+#include "driver/led/oz554.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -246,6 +247,11 @@ static void adp_state_init(void)
 	adp_connect_deferred();
 }
 DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
+
+void board_backlight_enable_interrupt(enum gpio_signal signal)
+{
+	oz554_interrupt(signal);
+}
 
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
@@ -489,6 +495,32 @@ static void board_update_motion_sensor_config(void)
 		motion_sensors[LID_ACCEL] = bma422_lid_accel;
 }
 
+void oz554_board_init(void)
+{
+	int pin_status = 0;
+
+	pin_status |= gpio_get_level(GPIO_PANEL_ID0) << 0;
+	pin_status |= gpio_get_level(GPIO_PANEL_ID1) << 1;
+
+	switch (pin_status) {
+	case 0x00:
+		CPRINTS("PANEL_HAN01.10A");
+		oz554_set_config(0, 0xF3);
+		oz554_set_config(2, 0x4C);
+		oz554_set_config(5, 0xB7);
+		break;
+	case 0x02:
+		CPRINTS("PANEL_WF9_SSA2");
+		oz554_set_config(0, 0xF3);
+		oz554_set_config(2, 0x55);
+		oz554_set_config(5, 0x87);
+		break;
+	default:
+		CPRINTS("PANEL UNKNOWN");
+		break;
+	}
+}
+
 void board_init(void)
 {
 	int on;
@@ -538,6 +570,9 @@ void board_init(void)
 	/* Make sure pen detection is triggered or not at sysjump */
 	if (!gpio_get_level(GPIO_PEN_DET_ODL))
 		gpio_set_level(GPIO_EN_PP5000_PEN, 1);
+
+	oz554_board_init();
+	gpio_enable_interrupt(GPIO_PANEL_BACKLIGHT_EN);
 
 	/* Make sure HDMI_HPD signal can be reported to CPU at sysjump */
 	board_enable_hdmi_hpd(1);
