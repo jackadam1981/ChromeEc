@@ -454,6 +454,12 @@ SECTIONS
 #else
 		. = ALIGN(4);
 #endif
+
+		/*
+		 * Global Offset Table
+		 */
+		*(.got*)
+
 		__data_end = .;
 
 		/*
