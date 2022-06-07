@@ -486,8 +486,11 @@ flash_fp_mcu_stm32() {
 }
 
 config_hatch() {
+  local device="/dev/spidev1.1"
+  # Support kernel version 4.4 during transition to 5.4
+  match_kernel_regex "^4\.4\." && device="/dev/spidev32765.0"
   readonly TRANSPORT="SPI"
-  readonly DEVICE="/dev/spidev1.1"
+  readonly DEVICE=${device}
   # See
   # third_party/coreboot/src/soc/intel/cannonlake/include/soc/gpio_soc_defs.h
   # for pin name to number mapping.
@@ -500,6 +503,10 @@ config_hatch() {
   readonly GPIO_BOOT0=222
   # FP_PWR_EN is on GPP_C11 = 456 + (192 - 181) = 456 + 11 = 467
   readonly GPIO_PWREN=467
+}
+
+config_hatch-kernelnext(){
+  config_hatch
 }
 
 config_herobrine() {
