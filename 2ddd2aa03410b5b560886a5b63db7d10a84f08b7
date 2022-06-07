@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d0a0d0d_4966e4aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-07T07:54:43Z",
+      "side": 1,
+      "message": "I upload PS8818 first, PS8811 will upload if we needed.",
+      "parentUuid": "18f317fc_a1509452",
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f702514_3d399662",
         "filename": "board/agah/board.c",
         "patchSetId": 17
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-02T21:23:01Z",
       "side": 1,
       "message": "common code does not know about this function,\nso there\u0027s no need to implement a no-op here.\nare you planning to add more functionality?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6eac05a_bcf9a4cb",
+        "filename": "board/agah/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-07T07:54:43Z",
+      "side": 1,
+      "message": "Will upload if we need PS8811 setting.",
+      "parentUuid": "4f702514_3d399662",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9b81ae6_5ebc419c",
+        "filename": "board/agah/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-07T07:54:43Z",
+      "side": 1,
+      "message": "Will upload if we need PS8811 setting.",
+      "parentUuid": "5412fefd_9b2a8bb3",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a45eea63_be886f1c",
         "filename": "board/agah/board.c",
         "patchSetId": 17
@@ -77,6 +143,30 @@
       "writtenOn": "2022-06-02T21:23:01Z",
       "side": 1,
       "message": "do you really need the extra variable?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99af435e_a755c853",
+        "filename": "board/agah/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-07T07:54:43Z",
+      "side": 1,
+      "message": "Will upload if we need PS8811 setting.",
+      "parentUuid": "a45eea63_be886f1c",
       "range": {
         "startLine": 96,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c925958_8a7226a2",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-07T07:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e43c9ded_8fa4101d",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c11a9a81_b003a6a4",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-06-02T21:23:01Z",
       "side": 1,
       "message": "also static?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 5
+      },
+      "revId": "2ddd2aa03410b5b560886a5b63db7d10a84f08b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea126433_764b795d",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-07T07:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c11a9a81_b003a6a4",
       "range": {
         "startLine": 154,
         "startChar": 0,
