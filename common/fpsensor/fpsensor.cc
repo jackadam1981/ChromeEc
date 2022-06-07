@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 #include "compile_time_macros.h"
+#include <array>
+#include <optional>
 
 /* Boringssl headers need to be included before extern "C" section. */
 #include "openssl/mem.h"
@@ -228,6 +230,18 @@ static void fp_process_finger(void)
 extern "C" void fp_task(void)
 {
 	int timeout_us = -1;
+
+	std::array<int, 3> a = { 1, 2, 3 };
+	CPRINTS("std::array a[0]: %d", a[0]);
+	a[0] = 5;
+	CPRINTS("std::array a[0]: %d", a[0]);
+
+	std::optional<int> foo;
+
+	if (!foo)
+		CPRINTS("foo has no value");
+	foo = 10;
+	CPRINTS("foo: %d", *foo);
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(fpsensor_detect_get_type()));
