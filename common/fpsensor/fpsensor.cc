@@ -4,8 +4,10 @@
  */
 
 #include "compile_time_macros.h"
+#include <array>
 #include <cstring>
 #include <cstdlib>
+#include <optional>
 
 #ifdef __cplusplus
 extern "C" {
@@ -245,6 +247,18 @@ static void fp_process_finger(void)
 extern "C" void fp_task(void)
 {
 	int timeout_us = -1;
+
+	std::array<int, 3> a = { 1, 2, 3 };
+	CPRINTS("std::array a[0]: %d", a[0]);
+	a[0] = 5;
+	CPRINTS("std::array a[0]: %d", a[0]);
+
+	std::optional<int> foo;
+
+	if (!foo)
+		CPRINTS("foo has no value");
+	foo = 10;
+	CPRINTS("foo: %d", *foo);
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(get_fp_sensor_type()));
