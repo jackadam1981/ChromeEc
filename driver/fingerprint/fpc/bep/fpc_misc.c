@@ -45,6 +45,7 @@ void __unused fpc_log_var(const char *source, uint8_t level, const char *format,
 	va_end(args);
 }
 
+#if 0
 uint32_t abs(int32_t a)
 {
 	/*
@@ -53,3 +54,4 @@ uint32_t abs(int32_t a)
 	 */
 	ASSERT(false);
 }
+#endif
