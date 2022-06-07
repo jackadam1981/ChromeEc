@@ -14,21 +14,13 @@ LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
  */
 enum power_states_ndsx chipset_pwr_seq_get_state(void)
 {
+	LOG_INF("*****chipset_pwr_seq_get_state:signal mask: 0x%x",power_get_signals());
+
 	/*
 	 * Chip is shut down.
 	 */
 	if ((power_get_signals() & MASK_ALL_POWER_GOOD) == 0) {
 		LOG_DBG("Power rails off, G3 state");
-		return SYS_POWER_STATE_G3;
-	}
-	/*
-	 * If not all the power rails are available,
-	 * then force shutdown to G3 to get to known state.
-	 */
-	if ((power_get_signals() & MASK_ALL_POWER_GOOD)
-			!= MASK_ALL_POWER_GOOD) {
-		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
-		LOG_INF("Not all power rails up, forcing shutdown");
 		return SYS_POWER_STATE_G3;
 	}
 
@@ -56,6 +48,20 @@ enum power_states_ndsx chipset_pwr_seq_get_state(void)
 		LOG_DBG("All VW signals valid after %d ms", delay * 10);
 		break;
 	}
+
+	LOG_INF("*****chipset_pwr_seq_get_state:signal mask: 0x%x",power_get_signals());
+
+	/*
+	 * If not all the power rails are available,
+	 * then force shutdown to G3 to get to known state.
+	 */
+	if ((power_get_signals() & MASK_ALL_POWER_GOOD)
+			!= MASK_ALL_POWER_GOOD) {
+		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
+		LOG_INF("Not all power rails up, forcing shutdown");
+		return SYS_POWER_STATE_S5;
+	}
+
 	/*
 	 * S0, all power OK, no suspend or sleep on.
 	 */
