@@ -22,6 +22,30 @@
       },
       "revId": "6dc784deeb06c9c095d9d0b4412bafd42d11dccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f15c405_8484e453",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-06-07T01:53:53Z",
+      "side": 1,
+      "message": "The test is conducted on Kingler, and setting `enable ? 0xFF : 0` can not run drive the external type c display (the display I used also draw power from Kingler through this port).\n\nOr maybe this is a hardware design bug in Kingler?",
+      "parentUuid": "b3c76419_3d400325",
+      "range": {
+        "startLine": 737,
+        "startChar": 16,
+        "endLine": 737,
+        "endChar": 25
+      },
+      "revId": "6dc784deeb06c9c095d9d0b4412bafd42d11dccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
