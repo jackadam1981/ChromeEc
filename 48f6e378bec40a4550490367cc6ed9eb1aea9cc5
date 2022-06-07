@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8334ebe9_5209496b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-07T22:44:34Z",
+      "side": 1,
+      "message": "\u003e Does the AP need to be notified of all mux changes then, even ones it didn\u0027t initiate?  \n\nNot in the case of all-EC retimer+mux.\n\nIn the case of combo configurations (i.e Intel) it would, since the AP needs to know to put its AP mux in initial (USB) state. This would be true for the complete feature too.\n\nFor the all-EC retimer+mux config, the complete feature would not need it (since the AP drives everything); but, at present we need a way to test that the mux+retimer HC calls for DP alt mode are working (otherwise nothing will call the mux commands); a DNS/Hack CL would also be sufficient here (if it isn\u0027t suitable for production code).",
+      "parentUuid": "784dbf9b_96edece7",
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4238e4_eef53139",
@@ -259,6 +277,30 @@
       "side": 1,
       "message": "\u003e Would this be through documentation in code, or a hardware requirements doc?\n\nI\u0027ll take a look at what options we have with zephyr.  We may be able to make it a part of the devicetree field descriptions as we move the muxes and retimers to devicetree. \n\n\u003e Don\u0027t mind a \"tagging along\" with a new CHIP_INFO command if one\u0027s going to be introduced anyway 😊\nI\u0027m guessing this property will be a boolean (\"retimer-first\" ?)\n\n\u003e I wonder if this is something pertinent to go/typec-altmode-fw-bindings (I hope I am not throwing the thread on a tangent...).\n\nPotentially.  I was thinking it would be chip name, chip type (mux or retimer), and then some reserved fields in case we find we want to report FW versions. \n\nIt could be pertinent, though it\u0027s a representation of port chips more so than available port features",
       "parentUuid": "bae47e2b_723563a4",
+      "range": {
+        "startLine": 6707,
+        "startChar": 1,
+        "endLine": 6707,
+        "endChar": 19
+      },
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6388e8f6_17c1fd4a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6707,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-07T22:44:34Z",
+      "side": 1,
+      "message": "Ack.\n\nBTW, on nipperkin, what index is the retimer and mux (respectively) ? Can use that data while prototyping the callbacks in the kernel.",
+      "parentUuid": "a6bd2a2f_221fca68",
       "range": {
         "startLine": 6707,
         "startChar": 1,
