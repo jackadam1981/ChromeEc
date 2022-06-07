@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e80cc7_8b6db378",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "Do you use it?",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1731ccdc_17b96a95",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "Do you use it?",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f63187_26386040",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "This is probably redundant because rgbkbd_init calls rgbkbd_reset_color. Can you take a look at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3689778/5/common/rgb_keyboard.c to study what\u0027s being initialzed by rgbkbd module?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56939610_ea672f02",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "Probably we want an error message.",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 7
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79268996_ea9f31e9",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "Please define a macro for it.",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c1959d_9ac6099c",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "Can you define a macro for this?",
+      "range": {
+        "startLine": 96,
+        "startChar": 44,
+        "endLine": 96,
+        "endChar": 45
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21357694_ae334c2d",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "Can you define a macro for this?",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a452c2_2f589598",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "Scale isn\u0027t supported? If so, can you add comments?",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 30
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fee259c_d56d567b",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-07T20:13:42Z",
+      "side": 1,
+      "message": "This is being changed to struct rgb_s.",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 15
+      },
+      "revId": "f2cf8c5bf8d0f4e4e86cc9986ed0d81063abd41e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
