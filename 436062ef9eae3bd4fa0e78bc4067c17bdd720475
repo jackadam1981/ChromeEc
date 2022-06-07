@@ -57,6 +57,30 @@
       },
       "revId": "436062ef9eae3bd4fa0e78bc4067c17bdd720475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a1bd8b_60dd9028",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-07T03:43:44Z",
+      "side": 1,
+      "message": "Doing it in kconfig for zephyr seems to make the most sense, but putting it in the right place is a little more difficult. I wanted to reuse CONFIG_AP but it looks like that doesn\u0027t work because some boards (for example, the npcx EVB) have APs but don\u0027t do any power sequencing. Will need to think about where the best place for it is.",
+      "parentUuid": "9fabcd74_9975b72f",
+      "range": {
+        "startLine": 1177,
+        "startChar": 0,
+        "endLine": 1177,
+        "endChar": 18
+      },
+      "revId": "436062ef9eae3bd4fa0e78bc4067c17bdd720475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
