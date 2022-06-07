@@ -69,6 +69,30 @@
       },
       "revId": "ff4fb8fc5e8f164a2b59bf3763e2590c208f8ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e188e31_73d8121d",
+        "filename": "common/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-07T19:33:53Z",
+      "side": 1,
+      "message": "Hopefully these values are not getting updated in two different contexts simultaneously, in which case that could be a problem",
+      "parentUuid": "9de9bf39_f07885d3",
+      "range": {
+        "startLine": 490,
+        "startChar": 1,
+        "endLine": 490,
+        "endChar": 11
+      },
+      "revId": "ff4fb8fc5e8f164a2b59bf3763e2590c208f8ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
