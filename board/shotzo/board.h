@@ -66,7 +66,6 @@
 
 /* Keyboard */
 #define CONFIG_KEYBOARD_FACTORY_TEST
-#define CONFIG_PWM_KBLIGHT
 
 /* TCPC */
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
@@ -93,6 +92,15 @@
 #undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
 #define DEDICATED_CHARGE_PORT 2
+
+/*
+ * LED backlight controller
+ */
+#define CONFIG_LED_DRIVER_OZ554
+#undef CONFIG_BACKLIGHT_LID
+
+/* I2C Bus Configuration */
+#define I2C_PORT_BACKLIGHT	IT83XX_I2C_CH_C
 
 #ifndef __ASSEMBLER__
 
