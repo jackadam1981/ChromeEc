@@ -14,6 +14,8 @@ LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
  */
 enum power_states_ndsx chipset_pwr_seq_get_state(void)
 {
+	LOG_INF("*****chipset_pwr_seq_get_state:signal mask: 0x%x",power_get_signals());
+
 	/*
 	 * Chip is shut down.
 	 */
@@ -29,7 +31,7 @@ enum power_states_ndsx chipset_pwr_seq_get_state(void)
 			!= MASK_ALL_POWER_GOOD) {
 		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
 		LOG_INF("Not all power rails up, forcing shutdown");
-		return SYS_POWER_STATE_G3;
+		return SYS_POWER_STATE_S5;
 	}
 
 	/*
