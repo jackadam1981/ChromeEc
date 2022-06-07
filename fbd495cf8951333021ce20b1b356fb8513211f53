@@ -22,6 +22,30 @@
       },
       "revId": "fbd495cf8951333021ce20b1b356fb8513211f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d5abc2_644ade62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-06-07T07:06:52Z",
+      "side": 1,
+      "message": "Kingler proto 0 used the NPCX996, the related CL:3303265 did not land in ToT.\n\nI think if we need the EC firmware for Kingler Proto 0, we should local build with CL:3303265 and revert this CL.",
+      "parentUuid": "731b360c_de044f7e",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "fbd495cf8951333021ce20b1b356fb8513211f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
