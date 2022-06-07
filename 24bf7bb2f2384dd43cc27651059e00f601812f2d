@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cba427c_3c955b95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-07T05:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "974d0f6b_2588c849",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "24bf7bb2f2384dd43cc27651059e00f601812f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73ab95ab_afab1340",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "625f7ac1_2a19dfaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-07T05:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ab95ab_afab1340",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "24bf7bb2f2384dd43cc27651059e00f601812f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61fb3ace_e4ead355",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-06T20:19:40Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 546,
+        "startChar": 22,
+        "endLine": 546,
+        "endChar": 25
+      },
+      "revId": "24bf7bb2f2384dd43cc27651059e00f601812f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a612957_9ec542d4",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-07T05:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61fb3ace_e4ead355",
       "range": {
         "startLine": 546,
         "startChar": 22,
