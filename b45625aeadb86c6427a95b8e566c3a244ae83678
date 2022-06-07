@@ -16,6 +16,29 @@
       "message": "Done. Please review the changes.",
       "revId": "b45625aeadb86c6427a95b8e566c3a244ae83678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d531c9f4_504dd00c",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-06-07T19:21:44Z",
+      "side": 1,
+      "message": "Typo, extra https.",
+      "range": {
+        "startLine": 607,
+        "startChar": 5,
+        "endLine": 607,
+        "endChar": 13
+      },
+      "revId": "b45625aeadb86c6427a95b8e566c3a244ae83678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
