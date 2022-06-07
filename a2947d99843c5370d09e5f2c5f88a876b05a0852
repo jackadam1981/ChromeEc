@@ -117,6 +117,30 @@
       },
       "revId": "a2947d99843c5370d09e5f2c5f88a876b05a0852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23066854_670a3e82",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-07T00:07:12Z",
+      "side": 1,
+      "message": "Ack. Have created https://buganizer.corp.google.com/issues/235150842 to change this property type and will update the description with this bug.",
+      "parentUuid": "4b269995_514a918d",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "a2947d99843c5370d09e5f2c5f88a876b05a0852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
