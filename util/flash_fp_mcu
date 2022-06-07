@@ -486,8 +486,9 @@ flash_fp_mcu_stm32() {
 }
 
 config_hatch() {
+  local device="/dev/spidev1.1"
   readonly TRANSPORT="SPI"
-  readonly DEVICE="/dev/spidev1.1"
+  readonly DEVICE=${device}
   # See
   # third_party/coreboot/src/soc/intel/cannonlake/include/soc/gpio_soc_defs.h
   # for pin name to number mapping.
@@ -500,6 +501,24 @@ config_hatch() {
   readonly GPIO_BOOT0=222
   # FP_PWR_EN is on GPP_C11 = 456 + (192 - 181) = 456 + 11 = 467
   readonly GPIO_PWREN=467
+}
+
+config_hatch-kernelnext(){
+  local device="/dev/spidev1.1"
+  readonly TRANSPORT="SPI"
+  readonly DEVICE=${device}
+  # See
+  # third_party/coreboot/src/soc/intel/cannonlake/include/soc/gpio_soc_defs.h
+  # for pin name to number mapping.
+  # Examine `cat /sys/kernel/debug/pinctrl/INT34BB:00/gpio-ranges` on a hatch
+  # device to determine gpio number from pin number.
+  readonly GPIO_CHIP="gpiochip712"
+  # FPMCU RST_ODL is on GPP_A12 = 712 + 12 = 724
+  readonly GPIO_NRST=724
+  # FPMCU BOOT0 is on GPP_A22 = 712 + 22 = 734
+  readonly GPIO_BOOT0=734
+  # FP_PWR_EN is on GPP_C11 = 968 + (192 - 181) = 968 + 11 = 979
+  readonly GPIO_PWREN=979
 }
 
 config_herobrine() {
