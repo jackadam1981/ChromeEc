@@ -46,6 +46,30 @@
       },
       "revId": "6dc784deeb06c9c095d9d0b4412bafd42d11dccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f491e76d_5dac9e5b",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-07T05:11:17Z",
+      "side": 1,
+      "message": "It seems corsola missed to configure the sbu pins in svdm_dp_post_config, so you might need to another CL for that to fix the issue you see.",
+      "parentUuid": "9f15c405_8484e453",
+      "range": {
+        "startLine": 737,
+        "startChar": 16,
+        "endLine": 737,
+        "endChar": 25
+      },
+      "revId": "6dc784deeb06c9c095d9d0b4412bafd42d11dccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
