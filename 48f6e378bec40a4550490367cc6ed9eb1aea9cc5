@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "784dbf9b_96edece7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-07T22:27:24Z",
+      "side": 1,
+      "message": "Does the AP need to be notified of all mux changes then, even ones it didn\u0027t initiate?  To update the kernel\u0027s port driver for instances like initial connection which the EC may be auto-setting?",
+      "parentUuid": "c9e3fe40_c147f12a",
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4238e4_eef53139",
@@ -217,6 +235,30 @@
       "side": 1,
       "message": "\u003e \u003e If we are assuming an ordering between the two (retimer first then mux), perhaps the HC for chip details is no longer needed?\n\u003e \n\u003e Potentially.  We\u0027d need to ensure that we make it known there\u0027s a required order to list the muxes in if a board is using this feature.  \n\nWould this be through documentation in code, or a hardware requirements doc?\n\n\u003e \n\u003e If we did create the new HC, it could convey additional information that could be generally useful about the chips present, similar to `enum motionsensor_chip`\n\nDon\u0027t mind a \"tagging along\" with a new CHIP_INFO command if one\u0027s going to be introduced anyway 😊\nI\u0027m guessing this property will be a boolean (\"retimer-first\" ?)\n\nI wonder if this is something pertinent to go/typec-altmode-fw-bindings (I hope I am not throwing the thread on a tangent...).",
       "parentUuid": "07a4644e_7c58629c",
+      "range": {
+        "startLine": 6707,
+        "startChar": 1,
+        "endLine": 6707,
+        "endChar": 19
+      },
+      "revId": "48f6e378bec40a4550490367cc6ed9eb1aea9cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6bd2a2f_221fca68",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6707,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-07T22:27:24Z",
+      "side": 1,
+      "message": "\u003e Would this be through documentation in code, or a hardware requirements doc?\n\nI\u0027ll take a look at what options we have with zephyr.  We may be able to make it a part of the devicetree field descriptions as we move the muxes and retimers to devicetree. \n\n\u003e Don\u0027t mind a \"tagging along\" with a new CHIP_INFO command if one\u0027s going to be introduced anyway 😊\nI\u0027m guessing this property will be a boolean (\"retimer-first\" ?)\n\n\u003e I wonder if this is something pertinent to go/typec-altmode-fw-bindings (I hope I am not throwing the thread on a tangent...).\n\nPotentially.  I was thinking it would be chip name, chip type (mux or retimer), and then some reserved fields in case we find we want to report FW versions. \n\nIt could be pertinent, though it\u0027s a representation of port chips more so than available port features",
+      "parentUuid": "bae47e2b_723563a4",
       "range": {
         "startLine": 6707,
         "startChar": 1,
