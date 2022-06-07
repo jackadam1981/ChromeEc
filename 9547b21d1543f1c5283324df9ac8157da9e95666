@@ -22,6 +22,30 @@
       },
       "revId": "9547b21d1543f1c5283324df9ac8157da9e95666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca5bdac_cb3d676c",
+        "filename": "zephyr/projects/skyrim/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-07T21:56:13Z",
+      "side": 1,
+      "message": "Yup, the power/amd_x86.c code uses this naming for... reasons? \n\nGuybrush defined: `#define GPIO_PCH_SLP_S0_L\tGPIO_SLP_S3_S0I3_L`",
+      "parentUuid": "60e94345_68f3b1d6",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "9547b21d1543f1c5283324df9ac8157da9e95666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
