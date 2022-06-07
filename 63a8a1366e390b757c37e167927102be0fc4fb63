@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "258ced81_13e982d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-07T16:05:19Z",
+      "side": 1,
+      "message": "Do you want to add the fix to this list?",
+      "parentUuid": "a295e290_d094978e",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 59
+      },
+      "revId": "63a8a1366e390b757c37e167927102be0fc4fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b33c4677_b1f1d175",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
