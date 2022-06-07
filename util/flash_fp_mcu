@@ -638,6 +638,27 @@ config_volteer() {
   readonly GPIO_PWREN=237
 }
 
+config_volteer-kernelnext() {
+  readonly TRANSPORT="SPI"
+  readonly DEVICE="/dev/spidev1.0"
+
+  # See kernel/v5.4/drivers/pinctrl/intel/pinctrl-tigerlake.c
+  # for pin name and pin number.
+  # Examine `cat /sys/kernel/debug/pinctrl/INT34C5:00/gpio-ranges` on a
+  # volteer device to determine gpio number from pin number.
+  # For example: GPP_C23 is UART2_CTS which can be queried from EDS
+  # the pin number is 194. From the gpio-ranges, the gpio value is
+  # 408 + (194-171) = 431
+
+  readonly GPIO_CHIP="gpiochip664"
+  # FPMCU RST_ODL is on GPP_C23 = 920 + (194 - 171) = 943
+  readonly GPIO_NRST=943
+  # FPMCU BOOT0 is on GPP_C22 = 920 + (193 - 171) = 942
+  readonly GPIO_BOOT0=942
+  # FP_PWR_EN is on GPP_A21 = 728 + (63 - 42) = 749
+  readonly GPIO_PWREN=749
+}
+
 config_brya() {
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev0.0"
