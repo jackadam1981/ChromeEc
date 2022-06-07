@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a295e290_d094978e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-07T15:59:24Z",
+      "side": 1,
+      "message": "\u003e Is this list incomplete?\nAccording to `fingerprint-relevant-paths.txt` it\u0027s complete.\n\n\u003e Maybe it\u0027s because the fix for the clock does not fall directly under the fingerprint sensor folder and it\u0027s not included here.\n\nThat\u0027s right.",
+      "parentUuid": "df6de2fd_dbbf7169",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 59
+      },
+      "revId": "63a8a1366e390b757c37e167927102be0fc4fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b33c4677_b1f1d175",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
