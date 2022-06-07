@@ -60,6 +60,22 @@
 	COND_CODE_0(IS_EMPTY(mux_id), (DT_CAT(USB_MUX_NODE_, mux_id)), (EMPTY))
 
 /**
+ * @brief Add pointer sufix to USB mux structure name
+ *
+ * @param struct_name USB mux structure name
+ */
+#define USB_MUX_STRUCT_NAME_PTR(struct_name)	DT_CAT(struct_name, _ptr)
+
+/**
+ * @brief Name of pointer to USB mux structure. Note, that this pointer is not
+ *        valid for root of chain, since it has no structure defined.
+ *
+ * @param mux_id USB mux node ID
+ */
+#define USB_MUX_STRUCT_PTR(mux_id)					\
+	USB_MUX_STRUCT_NAME_PTR(USB_MUX_STRUCT_NAME(mux_id))
+
+/**
  * @brief USB muxes in chain should be constant only if configuration
  *        cannot change in runtime
  */
@@ -73,6 +89,14 @@
  */
 #define USB_MUX_STRUCT_DECLARE(mux_id)					\
 	MAYBE_CONST struct usb_mux USB_MUX_STRUCT_NAME(mux_id)
+
+/**
+ * @brief Declaration of pointer to USB mux structure
+ *
+ * @param mux_id USB mux node ID
+ */
+#define USB_MUX_STRUCT_PTR_DECLARE(mux_id)				\
+	MAYBE_CONST struct usb_mux *USB_MUX_STRUCT_PTR(mux_id)
 
 /**
  * @brief Get pointer by referencing @p name or NULL if @p name is EMPTY
@@ -201,6 +225,17 @@
 	USB_MUX_CALL_OP(USB_MUX_GET_CHAIN_N(idx, port_id), port_id, idx, op)
 
 /**
+ * @brief Get USB mux node ID and USBC node ID from @p alt_mux_id alternative
+ *        USB mux node and call USB_MUX_CALL_OP
+ *
+ * @param alt_mux_id Alternative USB mux node ID
+ * @param op Operation to perform on USB muxes
+ */
+#define USB_MUX_DO_ALT_MUX(alt_mux_id, op)				\
+	USB_MUX_CALL_OP(DT_PHANDLE(alt_mux_id, usb_mux),		\
+			DT_PHANDLE(alt_mux_id, port), 0, op)
+
+/**
  * @brief Declare USB mux structure
  *
  * @param mux_id USB mux node ID
@@ -212,7 +247,39 @@
 	extern USB_MUX_STRUCT_DECLARE(mux_id);
 
 /**
- * @brief Define USB mux structure using driver USB_MUX_CONFIG_* macro
+ * @brief Declare pointer to USB mux structure
+ *
+ * @param mux_id USB mux node ID
+ * @param port_id USBC node ID
+ * @param idx Position of USB mux in chain
+ * @param conf Driver configuration function
+ */
+#define USB_MUX_DECLARE_PTR(mux_id, port_id, idx, conf)			\
+	extern USB_MUX_STRUCT_PTR_DECLARE(mux_id);
+
+/**
+ * @brief Define and initialise pointer to USB mux structure to @p struct_name
+ *
+ * @param mux_id USB mux node ID
+ * @param struct_name Name of structure that pointer should point to
+ */
+#define USB_MUX_DEFINE_PTR(mux_id, struct_name)				\
+	USB_MUX_STRUCT_PTR_DECLARE(mux_id) = &struct_name
+
+/**
+ * @brief Define pointer to USB mux structure for first USB mux in chain
+ *
+ * @param mux_id USB mux node ID
+ * @param port_id USBC node ID
+ * @param idx Position of USB mux in chain
+ * @param conf Driver configuration function
+ */
+#define USB_MUX_DEFINE_FIRST_PTR(mux_id, port_id, idx, conf)		\
+	USB_MUX_DEFINE_PTR(mux_id, usb_muxes[USB_MUX_PORT(port_id)]);
+
+/**
+ * @brief Define USB mux structure using driver USB_MUX_CONFIG_* macro.
+ *        Define pointer to USB mux structure and initialise it.
  *
  * @param mux_id USB mux node ID
  * @param port_id USBC node ID
@@ -220,7 +287,8 @@
  * @param conf Driver configuration function
  */
 #define USB_MUX_DEFINE(mux_id, port_id, idx, conf)			\
-	USB_MUX_STRUCT_DECLARE(mux_id) = conf(mux_id, port_id, idx);
+	USB_MUX_STRUCT_DECLARE(mux_id) = conf(mux_id, port_id, idx);	\
+	USB_MUX_DEFINE_PTR(mux_id, USB_MUX_STRUCT_NAME(mux_id));
 
 /**
  * @brief Define entry of usb_muxes array using driver USB_MUX_CONFIG_* macro
@@ -266,6 +334,28 @@
 #define USB_MUX_NO_FIRST(port_id, op)					\
 	DT_FOREACH_PROP_ELEM_VARGS(port_id, usb_muxes,			\
 				   USB_MUX_DO_SKIP_FIRST, op)
+
+/**
+ * @brief Call USB_MUX_DO for @p idx USB mux
+ *
+ * @param port_id USBC node ID
+ * @param unused2 This argument is expected by DT_FOREACH_PROP_ELEM_VARGS
+ * @param idx Position of USB mux in chain
+ * @param op Operation to perform on USB muxes
+ */
+#define USB_MUX_DO_ALL(port_id, unused2, idx, op)			\
+	USB_MUX_DO(port_id, idx, op)
+
+/**
+ * @brief Call @p op with all muxes in chain
+ *
+ * @param port_id USBC node ID
+ * @param op Operation to perform on USB muxes in chain. Needs to accept
+ *           USB mux node ID, USBC port node ID, position in chain, and driver
+ *           config as arguments.
+ */
+#define USB_MUX_ALL(port_id, op)					\
+	DT_FOREACH_PROP_ELEM_VARGS(port_id, usb_muxes, USB_MUX_DO_ALL, op)
 
 /**
  * @brief Call @p op if @p idx mux in chain has BB retimer compatible
@@ -327,9 +417,107 @@
 				     filter, op)
 
 /**
+ * @brief For every alternative USB mux call @p op
+ *
+ * @param op Operation to perform on USB mux. Needs to accept USB mux node
+ *           ID, USBC port node ID, position in chain, and driver config as
+ *           arguments.
+ */
+#define USB_MUX_FOREACH_ALT_USB_MUX(op)					\
+	DT_FOREACH_STATUS_OKAY_VARGS(cros_ec_alt_usb_mux,		\
+				     USB_MUX_DO_ALT_MUX, op)
+
+/**
+ * @brief For every alternative USBC muxes chain, call @p op with every mux
+ *        in chain that passes @p filter
+ *
+ * @param filter Macro that should filter USB muxes and call @p op on them.
+ *               It has USBC port node ID and @p op as arguments.
+ * @param op Operation to perform on USB muxes. Needs to accept USB mux node
+ *           ID, USBC port node ID, position in chain, and driver config as
+ *           arguments.
+ */
+#define USB_MUX_FOREACH_ALT_USB_MUX_CHAIN(filter, op)			\
+	DT_FOREACH_STATUS_OKAY_VARGS(cros_ec_alt_usb_mux_chain,		\
+				     filter, op)
+
+/**
  * Forward declare all usb_mux structures e.g.
  * MAYBE_CONST struct usb_mux USB_MUX_NODE_<node_id>;
  */
 USB_MUX_FOREACH_USBC_PORT(USB_MUX_NO_FIRST, USB_MUX_DECLARE)
+
+/**
+ * Forward delcare all alternative usb_mux structures
+ */
+USB_MUX_FOREACH_ALT_USB_MUX(USB_MUX_DECLARE)
+
+/**
+ * Forward declare all pointers to usb_mux structures e.g.
+ * extern MAYBE_CONST struct usb_mux *USB_MUX_NODE_<node_id>_ptr;
+ */
+USB_MUX_FOREACH_USBC_PORT(USB_MUX_ALL, USB_MUX_DECLARE_PTR)
+USB_MUX_FOREACH_ALT_USB_MUX_CHAIN(USB_MUX_ALL, USB_MUX_DECLARE_PTR)
+
+/**
+ * @brief Set cur_mux to point at port ID emelent of usb_muxes array. Copy
+ *        the first USB mux structure from alternative mux chain if it is
+ *        different from the first USB mux from orginal chain.
+ *        This macro should be used only internally.
+ *
+ * @param alt_id Alternative USB mux chain node ID
+ * @param port_id USBC node ID
+ */
+#define USB_MUX_ALTERNATE_CHANGE_ROOT(alt_id, port_id)			\
+	cur_mux = &usb_muxes[USB_MUX_PORT(port_id)];			\
+	/* Replacing is required only if first mux is different */	\
+	if (!DT_SAME_NODE(USB_MUX_GET_CHAIN_N(0, alt_id),		\
+			  USB_MUX_GET_CHAIN_N(0, port_id))) {		\
+		memcpy(cur_mux,						\
+		       USB_MUX_STRUCT_PTR(				\
+				USB_MUX_GET_CHAIN_N(0, alt_id)),	\
+		       sizeof(struct usb_mux));				\
+	}
+
+
+/**
+ * @brief Set next_mux in @p idx alternative USB mux structure. In case of
+ *        the first mux in chain call USB_MUX_ALTERNATE_CHANGE_FIRST.
+ *        This macro should be used only internally.
+ *
+ * @param alt_id Alternative USB mux chain node ID
+ * @param unused2 This argument is expected by DT_FOREACH_PROP_ELEM_VARGS
+ * @param idx Position of USB mux in chain
+ * @param port_id USBC node ID
+ */
+#define USB_MUX_ALTERNATE_NEXT(alt_id, unused2, idx, port_id)		\
+	COND_CODE_0(UTIL_BOOL(idx),					\
+		    (USB_MUX_ALTERNATE_CHANGE_ROOT(alt_id, port_id)),	\
+		    (cur_mux = &USB_MUX_STRUCT_NAME(			\
+				USB_MUX_GET_CHAIN_N(idx, alt_id));))	\
+	cur_mux->next_mux = USB_MUX_NEXT_POINTER(alt_id, idx);
+
+/**
+ * @brief Enable alternative USB mux chain. Introduce temporary cur_mux pointer
+ *
+ * @param alt_id Alternative USB mux chain node ID
+ */
+#define USB_MUX_ENABLE_ALTERNATE_NODE(alt_id)				\
+	do {								\
+		struct usb_mux *cur_mux;				\
+		BUILD_ASSERT(DT_NODE_EXISTS(alt_id),			\
+			     "USB mux alternate node does not exist");	\
+		DT_FOREACH_PROP_ELEM_VARGS(				\
+			alt_id, usb_muxes, USB_MUX_ALTERNATE_NEXT,	\
+			DT_PHANDLE(alt_id, alternate_for))		\
+	} while (0)
+
+/**
+ * @brief Enable alternative USB mux chain
+ *
+ * @param nodelabel Label of alternative USB mux chain
+ */
+#define USB_MUX_ENABLE_ALTERNATE(nodelabel)				\
+	USB_MUX_ENABLE_ALTERNATE_NODE(DT_NODELABEL(nodelabel))
 
 #endif /* ZEPHYR_CHROME_USBC_USB_MUXES_H */

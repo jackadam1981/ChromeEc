@@ -1,0 +1,17 @@
+description: Alternative USBC mux chip
+
+compatible: "cros-ec,alt-usb-mux"
+
+properties:
+  usb-mux:
+    type: phandle
+    required: true
+    description: |
+      Alternative usb mux that can be used in an alternative usb mux chain
+
+  port:
+    type: phandle
+    required: true
+    description: |
+      USBC port to which the usb mux is connected
+

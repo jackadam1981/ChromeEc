@@ -44,6 +44,12 @@ MAYBE_CONST struct usb_mux usb_muxes[] = {
 };
 
 /**
+ * Define pointer to the first USB mux in chain e.g.
+ * MAYBE_CONST struct usb_mux *USB_MUX_NODE_<node_id>_ptr = &usb_muxes[0];
+ */
+USB_MUX_FOREACH_USBC_PORT(USB_MUX_FIRST, USB_MUX_DEFINE_FIRST_PTR)
+
+/**
  * Define all USB muxes except roots e.g.
  * MAYBE_CONST struct usb_mux USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_mux_0 = {
  *         .usb_port = 0,
@@ -54,9 +60,21 @@ MAYBE_CONST struct usb_mux usb_muxes[] = {
  *         .driver = &virtual_usb_mux_driver,
  *         .hpd_update = &virtual_hpd_update,
  * };
+ * MAYBE_CONST struct usb_mux *USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_mux_0_ptr =
+ *         &USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_mux_0;
  * MAYBE_CONST struct usb_mux USB_MUX_NODE_<node_id> = { ... };
+ * MAYBE_CONST struct usb_mux *USB_MUX_NODE_<node_id>_ptr =
+ *         &USB_MUX_NODE_<node_id>;
  */
 USB_MUX_FOREACH_USBC_PORT(USB_MUX_NO_FIRST, USB_MUX_DEFINE)
+
+/**
+ * Define all alternative USB muxes e.g.
+ * MAYBE_CONST struct usb_mux USB_MUX_NODE_<node_id> = { ... };
+ * MAYBE_CONST struct usb_mux *USB_MUX_NODE_<node_id>_ptr =
+ *         &USB_MUX_NODE_<node_id>;
+ */
+USB_MUX_FOREACH_ALT_USB_MUX(USB_MUX_DEFINE)
 
 /* Create bb_controls only if BB retimer driver is enabled */
 #ifdef CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB

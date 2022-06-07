@@ -1,0 +1,19 @@
+description: Alternative usb mux chain
+
+compatible: "cros-ec,alt-usb-mux-chain"
+
+properties:
+  usb-muxes:
+    type: phandles
+    required: true
+    description: |
+      Alternative list of USB-C muxes and retimers for the USB-C port. The USB-C
+      subsystem may use this list to replace default chain present in
+      a named-usbc-port node.
+
+  alternate-for:
+    type: phandle
+    required: true
+    description: |
+      Pointer to the USBC port which usb mux chain can be replaced at runtime
+      by this chain.
