@@ -93,6 +93,29 @@
       },
       "revId": "ff4fb8fc5e8f164a2b59bf3763e2590c208f8ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c0fa0d_c16ee287",
+        "filename": "common/fan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-07T19:37:21Z",
+      "side": 1,
+      "message": "Isn\u0027t this doing effectively the same thing (but only for one fan) as `pwm_fan_second` below (line 543) ?",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 0
+      },
+      "revId": "ff4fb8fc5e8f164a2b59bf3763e2590c208f8ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
