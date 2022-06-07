@@ -16,6 +16,24 @@
       "message": "Hi,\nI found a potential issue for the console task\u0027s priority:\n\nThis removes the priority adjust for the console task and let the priority adjust done in the shell_init_from_work function (i.e. when uart_shell_start function is called.) \nHowever, uart_shell_start is currently called in the /common/vboot/efs2.c only.\nIf there is a project which doesn\u0027t  define EFS2, it will make the console task\u0027s priority keep in the Zephyr\u0027s default priority. It may cause a potential problem.",
       "revId": "d6fbd393dfc1fa204d6c3f4afeae2cb705c5ce94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652515ba_5c7b2c5d",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-07T16:59:39Z",
+      "side": 0,
+      "message": "Would the CONFIG_SHELL_THREAD_PRIORITY be enough for that case?",
+      "parentUuid": "425e899a_e03d4899",
+      "revId": "d6fbd393dfc1fa204d6c3f4afeae2cb705c5ce94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
