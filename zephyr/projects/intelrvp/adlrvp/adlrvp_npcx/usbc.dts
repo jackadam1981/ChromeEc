@@ -31,6 +31,13 @@
 				reset-pin = <&usb_c0_bb_retimer_rst>;
 				ls-en-pin = <&usb_c0_bb_retimer_ls_en>;
 			};
+			usb_c0_soc_side_bb_retimer: jhl8040r-c0-soc-side {
+				compatible = "intel,jhl8040r";
+				port = <&typec_0>;
+				i2c-addr-flags = <0x54>;
+				reset-pin = <&usb_c0_bb_retimer_rst>;
+				ls-en-pin = <&usb_c0_bb_retimer_ls_en>;
+			};
 			virtual_mux_c0: virtual-mux-c0 {
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
@@ -52,6 +59,13 @@
 				compatible = "intel,jhl8040r";
 				port = <&typec_1>;
 				i2c-addr-flags = <0x57>;
+				reset-pin = <&usb_c1_bb_retimer_rst>;
+				ls-en-pin = <&usb_c1_bb_retimer_ls_en>;
+			};
+			usb_c1_soc_side_bb_retimer: jhl8040r-c1-soc-side {
+				compatible = "intel,jhl8040r";
+				port = <&typec_0>;
+				i2c-addr-flags = <0x55>;
 				reset-pin = <&usb_c1_bb_retimer_rst>;
 				ls-en-pin = <&usb_c1_bb_retimer_ls_en>;
 			};
@@ -106,6 +120,32 @@
 			virtual_mux_c3: virtual-mux-c3 {
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
+		};
+	};
+	usbc-alt-chips {
+		usb_port0_soc_side_mux: alt-chain-port0 {
+			compatible = "cros-ec,alt-usb-mux-chain";
+			alternate-for = <&usbc_port0>;
+			usb-muxes = <&usb_c0_bb_retimer
+				     &usb_c0_soc_side_bb_retimer
+				     &virtual_mux_c0>;
+		};
+		c0-soc-side-bb-retimer {
+			compatible = "cros-ec,alt-usb-mux";
+			port = <&usbc_port0>;
+			usb-mux = <&usb_c0_soc_side_bb_retimer>;
+		};
+		usb_port1_soc_side_mux: alt-chain-port1 {
+			compatible = "cros-ec,alt-usb-mux-chain";
+			alternate-for = <&usbc_port1>;
+			usb-muxes = <&usb_c1_bb_retimer
+				     &usb_c1_soc_side_bb_retimer
+				     &virtual_mux_c1>;
+		};
+		c1-soc-side-bb-retimer {
+			compatible = "cros-ec,alt-usb-mux";
+			port = <&usbc_port1>;
+			usb-mux = <&usb_c1_soc_side_bb_retimer>;
 		};
 	};
 };

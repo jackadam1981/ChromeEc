@@ -96,27 +96,6 @@ struct ppc_config_t ppc_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
-/* USB Mux Configuration for Soc side BB-Retimers for Dual retimer config */
-static struct usb_mux soc_side_bb_retimer0_usb_mux = {
-	.usb_port = TYPE_C_PORT_0,
-	.next_mux = USB_MUX_NEXT_POINTER(DT_NODELABEL(usbc_port0), 0),
-	.driver = &bb_usb_retimer,
-	.hpd_update = bb_retimer_hpd_update,
-	.i2c_port = I2C_PORT_TYPEC_0,
-	.i2c_addr_flags = I2C_PORT0_BB_RETIMER_SOC_ADDR,
-};
-
-#if defined(HAS_TASK_PD_C1)
-static struct usb_mux soc_side_bb_retimer1_usb_mux = {
-	.usb_port = TYPE_C_PORT_1,
-	.next_mux = USB_MUX_NEXT_POINTER(DT_NODELABEL(usbc_port1), 0),
-	.driver = &bb_usb_retimer,
-	.hpd_update = bb_retimer_hpd_update,
-	.i2c_port = I2C_PORT_TYPEC_1,
-	.i2c_addr_flags = I2C_PORT1_BB_RETIMER_SOC_ADDR,
-};
-#endif
-
 /* Cache BB retimer power state */
 static bool cache_bb_enable[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -275,11 +254,9 @@ static void configure_retimer_usbmux(void)
 		 * Change the default usb mux config on runtime to support
 		 * dual retimer topology.
 		 */
-		usb_muxes[TYPE_C_PORT_0].next_mux
-			= &soc_side_bb_retimer0_usb_mux;
+		USB_MUX_ENABLE_ALTERNATE(usb_port0_soc_side_mux);
 #if defined(HAS_TASK_PD_C1)
-		usb_muxes[TYPE_C_PORT_1].next_mux
-			= &soc_side_bb_retimer1_usb_mux;
+		USB_MUX_ENABLE_ALTERNATE(usb_port1_soc_side_mux);
 #endif
 		break;
 

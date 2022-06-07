@@ -16,13 +16,6 @@
 
 #define I2C_ADDR_PCA9675_TCPC_AIC_IOEX  0x21
 
-
-/* SOC side BB retimers (dual retimer config) */
-#define I2C_PORT0_BB_RETIMER_SOC_ADDR   0x54
-#if defined(HAS_TASK_PD_C1)
-#define I2C_PORT1_BB_RETIMER_SOC_ADDR   0x55
-#endif
-
 #define ADLM_LP4_RVP1_SKU_BOARD_ID      0x01
 #define ADLM_LP5_RVP2_SKU_BOARD_ID      0x02
 #define ADLM_LP5_RVP3_SKU_BOARD_ID      0x03
