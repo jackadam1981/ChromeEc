@@ -54,7 +54,7 @@ void clock_normal(void)
 {
 	struct pcr_regs *const pcr = HAL_PCR_REG_BASE_ADDR;
 
-	pcr->PROC_CLK_CTRL = 4;
+	pcr->PROC_CLK_CTRL = 2;
 	__DSB();
 	__ISB();
 	__NOP();

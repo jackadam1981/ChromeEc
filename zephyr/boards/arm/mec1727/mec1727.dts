@@ -101,7 +101,6 @@
 
 &cpu0 {
 	status = "okay";
-/* cpu-power-states = <&suspend_to_idle_instant &suspend_to_idle_normal>; */
 };
 
 &bbram {
