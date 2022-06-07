@@ -16,6 +16,23 @@
       "message": "Seems there\u0027s a cq bug same as b/234983305.",
       "revId": "7f60c7c5bdb5db8f8767fa676fd74843422aae08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be0c195_1b7358d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2022-06-07T00:21:05Z",
+      "side": 1,
+      "message": "cq blocking by b/234884349, wait till it fixed.",
+      "revId": "7f60c7c5bdb5db8f8767fa676fd74843422aae08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
