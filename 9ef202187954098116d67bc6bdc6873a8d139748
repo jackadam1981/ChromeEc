@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b501ccec_3f58c6bd",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-07T16:14:56Z",
+      "side": 1,
+      "message": "Add a comment explaining offset calculation",
+      "revId": "9ef202187954098116d67bc6bdc6873a8d139748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f75c81_6179c7c4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7132,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-07T16:14:56Z",
+      "side": 1,
+      "message": "0xFF for consistency?",
+      "revId": "9ef202187954098116d67bc6bdc6873a8d139748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
