@@ -19,8 +19,9 @@ enum ec_cfg_audio_type {
 };
 
 enum ec_cfg_bj_power {
-	BJ_135W = 0,
-	BJ_230W = 1
+	BJ_120W = 0,
+	BJ_135W = 1,
+	BJ_230W = 2
 };
 
 union brask_cbi_fw_config {

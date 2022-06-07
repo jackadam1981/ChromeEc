@@ -31,14 +31,18 @@ static const struct {
 	int voltage;
 	int current;
 } bj_power[] = {
-	[BJ_135W] = { /* 0 - 135W (also default) */
+	[BJ_120W] = { /* 0 - 120W  (also default) */
+			.voltage = 19500,
+			.current = 6150
+	},
+	[BJ_135W] = { /* 1 - 135W */
 			.voltage = 19500,
 			.current = 6920
 	},
-	[BJ_230W] = { /* 1 - 230W */
+	[BJ_230W] = { /* 2 - 230W */
 			.voltage = 19500,
 			.current = 11800
-	}
+	},
 };
 
 /****************************************************************************
