@@ -99,7 +99,13 @@ static void keyboard_backlight_init(void)
 	/* Don't leave kblight enable state undetermined */
 	kblight_enable(0);
 }
+#ifdef HAS_TASK_CHIPSET
+/* We're running on a system EC. Initialize kblight once per AP start-up. */
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, keyboard_backlight_init, HOOK_PRIO_DEFAULT);
+#else
+/* We're running on a KBMCU thus powered when AP starts. Do init on reset. */
 DECLARE_HOOK(HOOK_INIT, keyboard_backlight_init, HOOK_PRIO_DEFAULT);
+#endif
 
 static void kblight_suspend(void)
 {
