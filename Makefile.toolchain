@@ -142,7 +142,8 @@ HOST_CPPFLAGS=$(CFLAGS_DEFINE) $(CFLAGS_INCLUDE) $(CFLAGS_TEST) \
 	 -DSECTION_IS_$(BLD)=$(EMPTY) -DSECTION=$(BLD) $(CPPFLAGS_$(BLD))
 ifneq ($(BOARD),host)
 # TODO(b/236025198): Remove when compiling C++
-CPPFLAGS+=-fno-builtin -fno-PIC
+#CPPFLAGS+=-fno-builtin
+CPPFLAGS+=-fno-PIC
 ifeq ($(USE_BUILTIN_STDLIB), 1)
 CPPFLAGS+=-ffreestanding -nostdinc -nostdlib
 CPPFLAGS+=-Ibuiltin/
