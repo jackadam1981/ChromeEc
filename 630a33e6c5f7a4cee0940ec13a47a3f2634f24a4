@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be716290_2cb27f91",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1467080
+      },
+      "writtenOn": "2022-06-07T22:03:13Z",
+      "side": 1,
+      "message": "This will cause something similar to b/218213808 because the ${BOARD} and ${BOARD}-kernelnext change meaning as the kernel goes through its upgrade cycle (first it holds the new kernel, then it temporarily holds the old kernel for A/B testing, then it points upstream for continuous rebase).\n\nFor the nami uprev we resolved this by checking the kernel version instead of the board name (see config_nami()).",
+      "revId": "630a33e6c5f7a4cee0940ec13a47a3f2634f24a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
