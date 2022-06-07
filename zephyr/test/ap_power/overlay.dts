@@ -55,35 +55,35 @@
 		compatible = "intel,ap-pwrseq";
 	};
 
-	pwr-en-pp5000-s5 {
+	en_pp5000: pwr-en-pp5000-s5 {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "PP5000_S5 enable output to regulator";
 		enum-name = "PWR_EN_PP5000_A";
 		gpios = <&gpio0 10 0>;
 		output;
 	};
-	pwr-en-pp3300-s5 {
+	en_pp3300: pwr-en-pp3300-s5 {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "PP3300_S5 enable output to LS";
 		enum-name = "PWR_EN_PP3300_A";
 		gpios = <&gpio0 11 0>;
 		output;
 	};
-	pwr-pg-ec-rsmrst-odl {
+	rsmrst: pwr-pg-ec-rsmrst-odl {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "RSMRST power good from regulator";
 		enum-name = "PWR_RSMRST";
 		gpios = <&gpio0 12 0>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
-	pwr-ec-pch-rsmrst-odl {
+	ec_pch_rsmrst: pwr-ec-pch-rsmrst-odl {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "RSMRST output to PCH";
 		enum-name = "PWR_EC_PCH_RSMRST";
 		gpios = <&gpio0 13 0>;
 		output;
 	};
-	pwr-slp-s0-l {
+	slp_s0: pwr-slp-s0-l {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SLP_S0_L input from PCH";
 		enum-name = "PWR_SLP_S0";
@@ -91,21 +91,21 @@
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 		no-enable;
 	};
-	pwr-slp-s3-l {
+	slp_s3: pwr-slp-s3-l {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SLP_S3_L input from PCH";
 		enum-name = "PWR_SLP_S3";
 		gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
-	pwr-slp-sus-l {
+	slp_sus: pwr-slp-sus-l {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SLP_SUS_L input from PCH";
 		enum-name = "PWR_SLP_SUS";
 		gpios = <&gpio0 16 GPIO_ACTIVE_LOW>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
-	pwr-ec-soc-dsw-pwrok {
+	ec_soc_dsw_pwrok: pwr-ec-soc-dsw-pwrok {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "DSW_PWROK output to PCH";
 		enum-name = "PWR_EC_SOC_DSW_PWROK";
@@ -146,26 +146,26 @@
 		gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
 		output;
 	};
-	pwr-slp-s4 {
+	slp_s4: pwr-slp-s4 {
 		compatible = "intel,ap-pwrseq-vw";
 		dbg-label = "SLP_S4 virtual wire input from PCH";
 		enum-name = "PWR_SLP_S4";
 		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S4";
 		vw-invert;
 	};
-	pwr-slp-s5 {
+	slp_s5: pwr-slp-s5 {
 		compatible = "intel,ap-pwrseq-vw";
 		dbg-label = "SLP_S5 virtual wire input from PCH";
 		enum-name = "PWR_SLP_S5";
 		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S5";
 		vw-invert;
 	};
-	pwr-all-sys-pwrgd {
+	all_sys_pwrgd: pwr-all-sys-pwrgd {
 		compatible = "intel,ap-pwrseq-external";
 		dbg-label = "Combined all power good";
 		enum-name = "PWR_ALL_SYS_PWRGD";
 	};
-	pwr-pp3300-pwrok {
+	dsw_pwrok: pwr-pp3300-pwrok {
 		compatible = "intel,ap-pwrseq-external";
 		dbg-label = "PP3300 PWROK";
 		enum-name = "PWR_DSW_PWROK";
@@ -179,6 +179,68 @@
 	clock: clock {
 		compatible = "cros,clock-control-emul";
 		clock-frequency = <DT_FREQ_M(100)>; /* 100 MHz */
+	};
+
+	en_pp3300_emul: en-pp3300-emul {
+		compatible = "ap-pwr-signal-emul";
+		output-signal = <&en_pp3300>;
+		pp3300-dsw-pwrok-emul {
+			input-signal = <&dsw_pwrok>;
+		};
+	};
+
+	en_pp5000_emul: en-pp5000-emul {
+		compatible = "ap-pwr-signal-emul";
+		output-signal = <&en_pp5000>;
+		pp5000-rsmrst-emul {
+			input-signal = <&rsmrst>;
+			assert-delay-ms = <40>;
+		};
+	};
+
+	ec_soc_dsw_pwrok_emul: ec-soc-dsw-pwrok-emul {
+		compatible = "ap-pwr-signal-emul";
+		output-signal = <&ec_soc_dsw_pwrok>;
+		ec-dsw-pwrok-slp-sus-emul {
+			input-signal = <&slp_sus>;
+			assert-delay-ms = <20>;
+			assert-value = <0>;
+		};
+	};
+
+	ec_pch_rsmrst_emul: ec-pch-rsmrst-emul {
+		compatible = "ap-pwr-signal-emul";
+		output-signal = <&ec_pch_rsmrst>;
+		ec-pch-rsmrst-slp-s5-emul {
+			input-signal = <&slp_s5>;
+			assert-delay-ms = <20>;
+			assert-value = <0>;
+		};
+		ec-pch-rsmrst-slp-s4-emul {
+			input-signal = <&slp_s4>;
+			assert-delay-ms = <30>;
+			assert-value = <0>;
+		};
+		ec-pch-rsmrst-slp-s3-emul {
+			input-signal = <&slp_s3>;
+			assert-delay-ms = <40>;
+			assert-value = <0>;
+		};
+		ec-pch-rsmrst-slp-s0-emul {
+			input-signal = <&slp_s0>;
+			assert-delay-ms = <45>;
+			assert-value = <0>;
+		};
+		ec-pch-rsmrst-all-sys-pwrgd {
+			input-signal = <&all_sys_pwrgd>;
+			assert-delay-ms = <50>;
+		};
+	};
+
+	test-platform-s0 {
+		compatible = "ap-pwr-test-platform";
+		name-id = "TEST_S0";
+		io-signals = <&en_pp3300_emul &en_pp5000_emul &ec_soc_dsw_pwrok_emul &ec_pch_rsmrst_emul>;
 	};
 };
 
