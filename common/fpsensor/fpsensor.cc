@@ -4,6 +4,7 @@
  */
 
 #include <array>
+#include <optional>
 
 #ifdef __cplusplus
 extern "C" {
@@ -248,6 +249,13 @@ extern "C" void fp_task(void)
 	CPRINTS("std::array a[0]: %d", a[0]);
 	a[0] = 5;
 	CPRINTS("std::array a[0]: %d", a[0]);
+
+	std::optional<int> foo;
+
+	if (!foo)
+		CPRINTS("foo has no value");
+	foo = 10;
+	CPRINTS("foo: %d", *foo);
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(get_fp_sensor_type()));
