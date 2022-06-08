@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f8ec30_3808961b",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-08T07:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7483686_220c167f",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "bd2486b6acbd3d0c709915d3614f329e43973fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa366778_d90c8f63",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-08T00:57:28Z",
       "side": 1,
       "message": "Shotzo",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "bd2486b6acbd3d0c709915d3614f329e43973fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "895d78f2_e741fd46",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-08T07:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa366778_d90c8f63",
       "range": {
         "startLine": 6,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36683e0a_1d396005",
+        "filename": "board/shotzo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-08T07:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f395c09d_7eb6b3ec",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 73
+      },
+      "revId": "bd2486b6acbd3d0c709915d3614f329e43973fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25a6ba9a_6ee6c9fe",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-06-08T00:57:28Z",
       "side": 1,
       "message": "Remove extra line.",
+      "revId": "bd2486b6acbd3d0c709915d3614f329e43973fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38c5de13_c836bedd",
+        "filename": "board/shotzo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-08T07:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a6ba9a_6ee6c9fe",
       "revId": "bd2486b6acbd3d0c709915d3614f329e43973fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
