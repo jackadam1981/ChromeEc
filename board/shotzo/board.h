@@ -55,6 +55,11 @@
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
 #define DEDICATED_CHARGE_PORT 2
 
+/*
+ * LED backlight controller
+ */
+#define CONFIG_LED_DRIVER_OZ554
+
 /* Unused Features */
 #define CONFIG_POWER_BUTTON_IGNORE_LID
 #undef CONFIG_BACKLIGHT_LID
@@ -64,6 +69,9 @@
 #undef CONFIG_CMD_KEYBOARD
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_VOLUME_BUTTONS
+
+/* I2C Bus Configuration */
+#define I2C_PORT_BACKLIGHT	IT83XX_I2C_CH_C
 
 #ifndef __ASSEMBLER__
 
