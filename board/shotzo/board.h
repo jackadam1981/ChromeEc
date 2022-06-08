@@ -53,6 +53,9 @@
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
 #define DEDICATED_CHARGE_PORT 1
 
+/* LED backlight controller */
+#define CONFIG_LED_DRIVER_OZ554
+
 /* Unused Features */
 #undef CONFIG_BACKLIGHT_LID
 #undef CONFIG_CMD_KEYBOARD
