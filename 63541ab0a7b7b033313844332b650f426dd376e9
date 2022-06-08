@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df0b5c2_f372d8cf",
+        "filename": "driver/led/aw20198.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T15:31:51Z",
+      "side": 1,
+      "message": "nit: can you merge them? we just need one (e.g. uint8_t u8).",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 16
+      },
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c98f03e_a1706cca",
+        "filename": "driver/led/aw20198.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T15:31:51Z",
+      "side": 1,
+      "message": "nit: How about \u0027match the LED layout\u0027?",
+      "range": {
+        "startLine": 158,
+        "startChar": 27,
+        "endLine": 158,
+        "endChar": 63
+      },
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847e9ea9_ecf89bcc",
+        "filename": "driver/led/aw20198.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T15:31:51Z",
+      "side": 1,
+      "message": "you want to return on error.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 3
+      },
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf177756_176b0ac6",
+        "filename": "driver/led/aw20198.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T15:31:51Z",
+      "side": 1,
+      "message": "Can you output GCR: CPRINTS(\"GCR\u003d0x%02x\", u8)?",
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a3f810_ef8fd7d7",
+        "filename": "driver/led/aw20198.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T15:31:51Z",
+      "side": 1,
+      "message": "nit: can you align indentation (using tabs)?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
