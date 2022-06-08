@@ -131,7 +131,7 @@
 #define USB_IFACE_USART3_STREAM	3
 #define USB_IFACE_USART4_STREAM	4
 #define USB_IFACE_UPDATE	5
-#define USB_IFACE_COUNT		6
+#define USB_IFACE_COUNT		7
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
@@ -141,7 +141,10 @@
 #define USB_EP_USART3_STREAM	4
 #define USB_EP_USART4_STREAM	5
 #define USB_EP_UPDATE		6
-#define USB_EP_COUNT		7
+#define USB_EP_COUNT		8
+
+#define USB_IFACE_HID_KEYBOARD 6
+#define USB_EP_HID_KEYBOARD 7
 
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
@@ -268,6 +271,7 @@
 #define TIM_CLOCK32 2
 #define TIM_ADC     3
 
+#undef CONFIG_USB_HID_KEYBOARD_VIVALDI
 
 #include "gpio_signal.h"
 
