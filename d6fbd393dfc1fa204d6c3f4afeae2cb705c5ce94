@@ -52,6 +52,24 @@
       "parentUuid": "652515ba_5c7b2c5d",
       "revId": "d6fbd393dfc1fa204d6c3f4afeae2cb705c5ce94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "302f97ae_ba4ff753",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-08T16:45:44Z",
+      "side": 0,
+      "message": "Yeah, we don\u0027t really need to change it dynamically, we need to make sure that it\u0027s the one we want. Would it work to add a build time check that CONFIG_SHELL_THREAD_PRIORITY matches with EC_SHELL_PRIO? That way we should be confident that the static priority tracks the intended ones.",
+      "parentUuid": "6f5fc2eb_ab2cadfb",
+      "revId": "d6fbd393dfc1fa204d6c3f4afeae2cb705c5ce94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
