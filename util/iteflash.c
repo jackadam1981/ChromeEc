@@ -988,7 +988,7 @@ static int ccd_trigger_special_waveform(struct common_hnd *chnd)
 	size_t rsize;
 	uint8_t req[] = {
 		0, /* Port 0. Might be necessary to modify. */
-		CROS_CMD_ADDR, /* Chrome OS dedicated address. */
+		CROS_CMD_ADDR, /* ChromeOS dedicated address. */
 		1,	/* Will send a single byte command. */
 		0,	/* No need to read back anything. */
 		CROS_CMD_ITE_SYNC

@@ -6,7 +6,7 @@ First written: 2019-04-02
 <br>
 Last updated: 2019-04-03
 
-Familiarity with [Chromium OS](https://www.chromium.org/chromium-os)
+Familiarity with [ChromiumOS](https://www.chromium.org/chromium-os)
 [Embedded Controller (EC) development](../README.md) is assumed.
 
 [TOC]
@@ -18,14 +18,14 @@ Familiarity with [Chromium OS](https://www.chromium.org/chromium-os)
 **ITE EC** refers to the [ITE](http://www.ite.com.tw/)
 [IT8320](http://www.ite.com.tw/en/product/view?mid=96)
 [Embedded Controller (EC)](https://en.wikipedia.org/wiki/Embedded_controller)
-microcontroller when used as a Chromium OS / Chrome OS EC.
+microcontroller when used as a ChromiumOS / ChromeOS EC.
 
-**CrOS** refers to Chromium OS, Chrome OS, or both, depending on the context.
-The distinction between Chromium OS and Chrome OS is largely immaterial to this
+**CrOS** refers to ChromiumOS, ChromeOS, or both, depending on the context.
+The distinction between ChromiumOS and ChromeOS is largely immaterial to this
 document.
 
 **Servo** refers to a debug board providing direct debug access to various
-circuits on a Chrome OS device motherboard. As of this writing, the most common
+circuits on a ChromeOS device motherboard. As of this writing, the most common
 [servos](https://www.chromium.org/chromium-os/servo) used by CrOS developers are
 [CR50 (CCD)](https://www.chromium.org/chromium-os/ccd),
 [Servo Micro](https://www.chromium.org/chromium-os/servo/servomicro), and
