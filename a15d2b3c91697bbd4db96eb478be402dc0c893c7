@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db22f878_d7929534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T16:07:54Z",
+      "side": 1,
+      "message": "Hi John, the code mostly looks good. A few comments to increase the readability. Thanks,",
+      "revId": "a15d2b3c91697bbd4db96eb478be402dc0c893c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f129369_ce095a3a",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T16:07:54Z",
+      "side": 1,
+      "message": "Can you use TLC59116_AI_BRIGHTNESS_ONLY? The name will help other developers guess the functionality without reading the datasheet.",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 37
+      },
+      "revId": "a15d2b3c91697bbd4db96eb478be402dc0c893c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0f1646_7cfd9f9d",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T16:07:54Z",
+      "side": 1,
+      "message": "nit: Irrelevant to this patch. Removing this would reduce the chance of a merge conflict.",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 6
+      },
+      "revId": "a15d2b3c91697bbd4db96eb478be402dc0c893c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27a4bc7_6d2d034d",
+        "filename": "driver/led/tlc59116f.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T16:07:54Z",
+      "side": 1,
+      "message": "These aren\u0027t very helpful. Let\u0027s define TLC59116_AI_BRIGHTNESS_ONLY (\u003d BIT(7) | BIT(5)).\n\nYou may also define TLC59116_AI_ALL, TLC59116_AI_GCR_ONLY, and TLC59116_AI_NONE for completeness if you like.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "a15d2b3c91697bbd4db96eb478be402dc0c893c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
