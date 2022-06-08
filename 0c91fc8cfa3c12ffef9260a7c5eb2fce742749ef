@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10eb8eb_cb36f024",
+        "filename": "board/beadrix/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-06-08T01:03:33Z",
+      "side": 0,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/beadrix/board.c;drc\u003d8f772e845b07758b18ab1d613646c263b4043ba2;l\u003d362\nGPIO_BASE_SIXAXIS_INT_L is still used here.",
+      "revId": "0c91fc8cfa3c12ffef9260a7c5eb2fce742749ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
