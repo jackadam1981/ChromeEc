@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba2270c_ffdcd866",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:41:51Z",
+      "side": 1,
+      "message": "You don\u0027t have to set anything when it\u0027s disabled?",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "6f26c38ace790dce9ff2c4e361123e2d2508f6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72b7d6f_453922cc",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:41:51Z",
+      "side": 1,
+      "message": "This is redundant. You can return below.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 13
+      },
+      "revId": "6f26c38ace790dce9ff2c4e361123e2d2508f6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
