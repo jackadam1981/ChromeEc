@@ -22,6 +22,30 @@
       },
       "revId": "81ea44c63a333bcd844ec16dfa80d95cb8e2337e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b86016_8c559371",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-08T07:53:51Z",
+      "side": 0,
+      "message": "Move these changes to another CL. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3694914",
+      "parentUuid": "dea5a659_0ddb3d26",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 40
+      },
+      "revId": "81ea44c63a333bcd844ec16dfa80d95cb8e2337e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
