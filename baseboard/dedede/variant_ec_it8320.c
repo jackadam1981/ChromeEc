@@ -74,7 +74,7 @@ BUILD_ASSERT(ARRAY_SIZE(vcmp_list) <= CHIP_VCMP_COUNT);
 BUILD_ASSERT(ARRAY_SIZE(vcmp_list) == VCMP_COUNT);
 
 /* I2C Ports */
-const struct i2c_port_t i2c_ports[] = {
+__attribute__((weak)) const struct i2c_port_t i2c_ports[] = {
 	{
 		.name = "eeprom",
 		.port = I2C_PORT_EEPROM,
