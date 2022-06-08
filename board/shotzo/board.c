@@ -143,13 +143,6 @@ static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
 	pd_handle_cc_overvoltage(0);
 }
 
-static void pen_detect_interrupt(enum gpio_signal s)
-{
-	int pen_detect = !gpio_get_level(GPIO_PEN_DET_ODL);
-
-	gpio_set_level(GPIO_EN_PP5000_PEN, pen_detect);
-}
-
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
 
@@ -406,12 +399,6 @@ void board_init(void)
 		hook_call_deferred(&check_c1_line_data, 0);
 
 	gpio_enable_interrupt(GPIO_USB_C0_CCSBU_OVP_ODL);
-
-	gpio_enable_interrupt(GPIO_PEN_DET_ODL);
-
-	/* Make sure pen detection is triggered or not at sysjump */
-	if (!gpio_get_level(GPIO_PEN_DET_ODL))
-		gpio_set_level(GPIO_EN_PP5000_PEN, 1);
 
 	/* Charger on the MB will be outputting PROCHOT_ODL and OD CHG_DET */
 	sm5803_configure_gpio0(CHARGER_PRIMARY, GPIO0_MODE_PROCHOT, 1);
