@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "280dd281_c3565bdf",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-08T08:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c715ea1d_1a7ba383",
+      "range": {
+        "startLine": 515,
+        "startChar": 12,
+        "endLine": 515,
+        "endChar": 21
+      },
+      "revId": "279dbb5d3f9e0daa9af5966733d04bf1f3d968bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "389c8a4b_4159c497",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8d5173_61c054e1",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-08T08:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389c8a4b_4159c497",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 522,
+        "endChar": 58
+      },
+      "revId": "279dbb5d3f9e0daa9af5966733d04bf1f3d968bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ae6653b_7048953c",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-06-08T08:11:03Z",
       "side": 1,
       "message": "Should we ignore non-PD port?",
+      "revId": "279dbb5d3f9e0daa9af5966733d04bf1f3d968bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6677a0_7885880d",
+        "filename": "board/shotzo/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-08T08:29:25Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "9ae6653b_7048953c",
       "revId": "279dbb5d3f9e0daa9af5966733d04bf1f3d968bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
