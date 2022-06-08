@@ -5,7 +5,7 @@
 
 /* Adds the &alt1_no_lpc_espi setting over the NPCX9 default setting. */
 &{/def-io-conf-list} {
-	pinctrl-0 = <&alt0_gpio_no_spip
+	pinmux = <&alt0_gpio_no_spip
 		   &alt0_gpio_no_fpip
 		   &alt1_no_pwrgd
 		   &alt1_no_lpc_espi
