@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb6b1c00_9b3639a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:28:02Z",
+      "side": 1,
+      "message": "b:232737379",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "c61146f0cb317a3f6dc303e31410fc2baf807a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d02e5b5_1e0d0107",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:28:02Z",
+      "side": 1,
+      "message": "I think a better implementation is to set a pointer once on start-up based on the ssfc value and use the pointer to access KB1scancode_set2 or KB2scancode_set2. Same for set_scancode_set2.",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "c61146f0cb317a3f6dc303e31410fc2baf807a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bb770e_61750011",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:28:02Z",
+      "side": 1,
+      "message": "nit: please put comment in the branched section. I think separating if and else if by a comment reduces the readability.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 45
+      },
+      "revId": "c61146f0cb317a3f6dc303e31410fc2baf807a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbeb7486_428c2b14",
+        "filename": "board/delbin/keyboard_customization.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:28:02Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "c61146f0cb317a3f6dc303e31410fc2baf807a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "463c7a2b_9ff4e71b",
+        "filename": "board/delbin/keyboard_customization.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:28:02Z",
+      "side": 1,
+      "message": "Why don\u0027t you just use BIT() macro?",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "c61146f0cb317a3f6dc303e31410fc2baf807a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f5ef00e_103a92fd",
+        "filename": "board/delbin/keyboard_customization.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:28:02Z",
+      "side": 1,
+      "message": "lower case please.",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 12
+      },
+      "revId": "c61146f0cb317a3f6dc303e31410fc2baf807a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c8d7572_5260323b",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:28:02Z",
+      "side": 1,
+      "message": "All structs used in common code should be defined in common headers (e.g. include/*.h).",
+      "range": {
+        "startLine": 458,
+        "startChar": 11,
+        "endLine": 458,
+        "endChar": 18
+      },
+      "revId": "c61146f0cb317a3f6dc303e31410fc2baf807a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4ad2d5_f0986de1",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-08T21:28:02Z",
+      "side": 1,
+      "message": "We don\u0027t indent macro conditions.\n\nYou may also try if (IS_ENABLED(CONFIG_KEYBOARD_MULTIPLE)).",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 1
+      },
+      "revId": "c61146f0cb317a3f6dc303e31410fc2baf807a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
