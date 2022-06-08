@@ -94,6 +94,30 @@
       },
       "revId": "fbd495cf8951333021ce20b1b356fb8513211f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cf4adf_bf28382c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-06-08T12:40:07Z",
+      "side": 1,
+      "message": "I updated the FAFT_EC results at https://partnerissuetracker.corp.google.com/issues/234572040#comment24,\nthe results look not bad, but should we do more tests? Not sure what scene will encounter problems",
+      "parentUuid": "000ff383_e8fda302",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "fbd495cf8951333021ce20b1b356fb8513211f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
