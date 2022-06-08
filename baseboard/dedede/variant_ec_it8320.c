@@ -107,5 +107,13 @@ const struct i2c_port_t i2c_ports[] = {
 	  .kbps = 1000,
 	  .scl = GPIO_EC_I2C_USB_C0_SCL,
 	  .sda = GPIO_EC_I2C_USB_C0_SDA },
+
+#ifdef BOARD_SHOTZO
+	{ .name = "backlight",
+	  .port = I2C_PORT_BACKLIGHT,
+	  .kbps = 400,
+	  .scl = GPIO_EC_I2C_BACKLIGHT_SCL,
+	  .sda = GPIO_EC_I2C_BACKLIGHT_SDA },
+#endif
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
