@@ -16,11 +16,11 @@
 # closest tag in the tree.
 #
 # This admittedly brittle script automates the process of tagging for the EC
-# git tree in Chrome OS repo, but it could be used for any other Chrome OS
+# git tree in ChromeOS repo, but it could be used for any other ChromeOS
 # repo git tree just as well.
 #
 # The script is brittle because it relies on the following assumptions which
-# are true for Chrome OS repo at the time of writing:
+# are true for ChromeOS repo at the time of writing:
 #
 # - the upstream branch alias name shows up in the 'git branch -a' output
 #   separated by ->
@@ -52,6 +52,7 @@ if [[ -z "${BRANCH_POINT}" ]]; then
 fi
 
 # Derive tag base string from the upstream branch name as described above.
+# shellcheck disable=SC2001
 TAG_BASE="$(sed 's/.*-//       # drop everything up to including the last -
                  s/\./_/g      # replace dots and dashes with underscores
       ' <<< "${UPSTREAM}" )"
@@ -71,14 +72,14 @@ echo "Will run git tag -a -m \"firmware branch ${TAG}\" ${TAG} ${BASE_SHA}"
 if git tag -a -m "firmware branch ${TAG}" "${TAG}" "${BASE_SHA}"; then
   cat <<EOF
 
-A new tag '$TAG' has been set. Use the following command
+A new tag '${TAG}' has been set. Use the following command
 to push it to the server
 
 git push --tags ${ORIGIN} ${TAG}
 
 Or if you want to delete it:
 
-git tag -d $TAG
+git tag -d ${TAG}
 
 EOF
 fi
