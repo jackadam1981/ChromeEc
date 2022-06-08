@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea5a659_0ddb3d26",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-06-08T01:08:24Z",
+      "side": 0,
+      "message": "Why remove this on this CL? If you want use the pin. please set UNIMPLEMENTED gpio.",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 40
+      },
+      "revId": "81ea44c63a333bcd844ec16dfa80d95cb8e2337e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
