@@ -70,6 +70,24 @@
       "parentUuid": "6f5fc2eb_ab2cadfb",
       "revId": "d6fbd393dfc1fa204d6c3f4afeae2cb705c5ce94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e41436e_13e2222c",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-06-08T17:04:37Z",
+      "side": 0,
+      "message": "That would be http://crrev.com/c/3696146, can you check it it works for that use case?",
+      "parentUuid": "302f97ae_ba4ff753",
+      "revId": "d6fbd393dfc1fa204d6c3f4afeae2cb705c5ce94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
