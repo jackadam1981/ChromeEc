@@ -24,4 +24,10 @@ config SHELL_PROMPT_UART
 config LEGACY_INCLUDE_PATH
 	default n
 
+config SHELL_THREAD_PRIORITY_OVERRIDE
+	default y
+
+config SHELL_THREAD_PRIORITY
+	default 13
+
 orsource "Kconfig.defaults-$(ARCH)"
