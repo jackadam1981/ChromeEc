@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0679436d_50236368",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-06-08T07:55:05Z",
+      "side": 1,
+      "message": "You can remove this override function as well.",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 52
+      },
+      "revId": "139f2d7efea9a7922dd11d5de60db834cf846ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be3fca6_20703167",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-06-08T07:55:05Z",
+      "side": 1,
+      "message": "Also can remove this.",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 53
+      },
+      "revId": "139f2d7efea9a7922dd11d5de60db834cf846ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
