@@ -16,6 +16,69 @@
       "message": "This was change was tested on both volteer (kernel 5.4) and volteer-kernelnext (kernel 5.18)",
       "revId": "eef9ab677852971d66b1a91ec59064f08fb65dd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486b3e8b_3eb4113f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-08T02:42:18Z",
+      "side": 1,
+      "message": "The [style guide](go/shell-style-ext#variable-expansion) specifies that we should stay consistent with existing code but, barring that, should use braces around variable names. In general this file has an inconsistent use of braces around variable usage so I\u0027m not sure which is the best strategy here.",
+      "range": {
+        "startLine": 644,
+        "startChar": 28,
+        "endLine": 644,
+        "endChar": 36
+      },
+      "revId": "eef9ab677852971d66b1a91ec59064f08fb65dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ff6113_1e528402",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-08T02:42:18Z",
+      "side": 1,
+      "message": "Per https://go/cros-shstyle#arithmetic, we should be using `$((${gpionrst} - ${offset}))` rather than `expr`. I realize this is ironic since I recommended you use `expr` but I learned something new today and had to share 😊",
+      "range": {
+        "startLine": 644,
+        "startChar": 22,
+        "endLine": 644,
+        "endChar": 26
+      },
+      "revId": "eef9ab677852971d66b1a91ec59064f08fb65dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8570f322_d10eaab2",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-08T02:42:18Z",
+      "side": 1,
+      "message": "Outside the scope of this CL but, given the fact that this is an 826 line shell script, can/should we consider replacing it with a Python script or standalone app? go/deshell-chromeos",
+      "revId": "eef9ab677852971d66b1a91ec59064f08fb65dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
