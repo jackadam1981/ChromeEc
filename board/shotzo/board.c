@@ -137,33 +137,6 @@ static void usb_c1_interrupt(enum gpio_signal s)
 	hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
 }
 
-static void board_enable_hdmi_hpd(int enable)
-{
-	enum fw_config_db db = get_cbi_fw_config_db();
-	int hdmi_hpd = gpio_get_level(GPIO_VOLUP_BTN_ODL_HDMI_HPD);
-
-	if (db == DB_1A_HDMI || db == DB_LTE_HDMI || db == DB_1A_HDMI_LTE) {
-		/* Check if we can report HDMI_HPD signal to CPU  */
-		if (enable)
-			gpio_set_level(GPIO_EC_AP_USB_C1_HDMI_HPD, hdmi_hpd);
-		else
-			gpio_set_level(GPIO_EC_AP_USB_C1_HDMI_HPD, 0);
-	}
-}
-
-static void button_sub_hdmi_hpd_interrupt(enum gpio_signal s)
-{
-	enum fw_config_db db = get_cbi_fw_config_db();
-	int hdmi_hpd = gpio_get_level(GPIO_VOLUP_BTN_ODL_HDMI_HPD);
-
-	if (db == DB_1A_HDMI || db == DB_LTE_HDMI || db == DB_1A_HDMI_LTE) {
-		/* Do not report HDMI_HPD signal to CPU when system off. */
-		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
-			gpio_set_level(GPIO_EC_AP_USB_C1_HDMI_HPD, hdmi_hpd);
-	} else
-		button_interrupt(s);
-}
-
 static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
 {
 	cprints(CC_USBPD, "C0: CC OVP, SBU OVP, or thermal event");
@@ -469,9 +442,6 @@ void board_init(void)
 	if (!gpio_get_level(GPIO_PEN_DET_ODL))
 		gpio_set_level(GPIO_EN_PP5000_PEN, 1);
 
-	/* Make sure HDMI_HPD signal can be reported to CPU at sysjump */
-	board_enable_hdmi_hpd(1);
-
 	/* Charger on the MB will be outputting PROCHOT_ODL and OD CHG_DET */
 	sm5803_configure_gpio0(CHARGER_PRIMARY, GPIO0_MODE_PROCHOT, 1);
 	sm5803_configure_chg_det_od(CHARGER_PRIMARY, 1);
@@ -493,9 +463,6 @@ static void board_resume(void)
 	sm5803_disable_low_power_mode(CHARGER_PRIMARY);
 	if (board_get_charger_chip_count() > 1)
 		sm5803_disable_low_power_mode(CHARGER_SECONDARY);
-
-	/* Enable reporting HDMI_HPD to CPU when system resume */
-	board_enable_hdmi_hpd(1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_resume, HOOK_PRIO_DEFAULT);
 
@@ -509,8 +476,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_suspend, HOOK_PRIO_DEFAULT);
 
 static void board_shutdown(void)
 {
-	/* Disable reporting HDMI_HPD to CPU at shutdown */
-	board_enable_hdmi_hpd(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_shutdown, HOOK_PRIO_DEFAULT);
 

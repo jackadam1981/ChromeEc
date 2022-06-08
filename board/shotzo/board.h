@@ -12,9 +12,6 @@
 #define VARIANT_DEDEDE_EC_IT8320
 #include "baseboard.h"
 
-#undef GPIO_VOLUME_UP_L
-#define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL_HDMI_HPD
-
 /* Battery */
 #define CONFIG_BATTERY_FUEL_GAUGE
 
@@ -88,6 +85,9 @@
 /* USB Type A Features */
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
+
+/* Disabled Features */
+#undef CONFIG_VOLUME_BUTTONS
 
 #ifndef __ASSEMBLER__
 
