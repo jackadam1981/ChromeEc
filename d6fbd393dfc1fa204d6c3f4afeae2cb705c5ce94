@@ -34,6 +34,24 @@
       "parentUuid": "425e899a_e03d4899",
       "revId": "d6fbd393dfc1fa204d6c3f4afeae2cb705c5ce94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f5fc2eb_ab2cadfb",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-06-08T02:23:06Z",
+      "side": 0,
+      "message": "Do you mean you want to use CONFIG_SHELL_THREAD_PRIORITY statically instead of changing the thread\u0027s priority dynamically?",
+      "parentUuid": "652515ba_5c7b2c5d",
+      "revId": "d6fbd393dfc1fa204d6c3f4afeae2cb705c5ce94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
