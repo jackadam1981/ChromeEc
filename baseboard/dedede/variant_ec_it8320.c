@@ -74,7 +74,7 @@ BUILD_ASSERT(ARRAY_SIZE(vcmp_list) <= CHIP_VCMP_COUNT);
 BUILD_ASSERT(ARRAY_SIZE(vcmp_list) == VCMP_COUNT);
 
 /* I2C Ports */
-const struct i2c_port_t i2c_ports[] = {
+__attribute__((weak)) const struct i2c_port_t i2c_ports[] = {
 	{ .name = "eeprom",
 	  .port = I2C_PORT_EEPROM,
 	  .kbps = 400,
@@ -108,4 +108,4 @@ const struct i2c_port_t i2c_ports[] = {
 	  .scl = GPIO_EC_I2C_USB_C0_SCL,
 	  .sda = GPIO_EC_I2C_USB_C0_SDA },
 };
-const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+__attribute__((weak)) const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
