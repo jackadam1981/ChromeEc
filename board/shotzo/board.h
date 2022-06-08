@@ -19,7 +19,6 @@
 #define CONFIG_BC12_DETECT_PI3USB9201
 
 /* Charger */
-#define CONFIG_CHARGE_RAMP_HW
 #define CONFIG_CHARGER_SM5803 /* C0 and C1: Charger */
 #define PD_MAX_VOLTAGE_MV 15000
 #define CONFIG_USB_PD_VBUS_DETECT_CHARGER
@@ -51,6 +50,11 @@
 
 /* Buttons */
 #define CONFIG_POWER_BUTTON_IGNORE_LID
+
+/* Dedicated barreljack charger port */
+#undef CONFIG_DEDICATED_CHARGE_PORT_COUNT
+#define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
+#define DEDICATED_CHARGE_PORT 1
 
 /* Unused Features */
 #undef CONFIG_BACKLIGHT_LID
@@ -106,7 +110,11 @@ enum battery_type {
 
 enum charge_port {
 	CHARGE_PORT_TYPEC0,
+	CHARGE_PORT_BARRELJACK,
 };
+
+/* Pin renaming */
+#define GPIO_AC_PRESENT GPIO_BJ_ADP_PRESENT_L
 
 #endif /* !__ASSEMBLER__ */
 
