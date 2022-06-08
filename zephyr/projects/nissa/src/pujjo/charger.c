@@ -1,4 +1,4 @@
-/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+/* Copyright 2022 The ChromiumOS Authors.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -31,7 +31,7 @@ int extpower_is_present(void)
 }
 
 /*
- * Pujjo does not have a GPIO indicating whether extpower is present,
+ * Craask does not have a GPIO indicating whether extpower is present,
  * so detect using the charger(s).
  */
 __override void board_check_extpower(void)
