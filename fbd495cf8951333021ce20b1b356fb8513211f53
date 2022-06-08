@@ -46,6 +46,30 @@
       },
       "revId": "fbd495cf8951333021ce20b1b356fb8513211f53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f5f643_3a769bff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-08T06:52:28Z",
+      "side": 1,
+      "message": "This is a bit tricky for now. Most people are still using H1 boards, and we only have limited D2 boards, so if we merge this CL, this might cause lots of regressions.  Before merge this, can you run FAFT on H1 boards to ensure that this CL doesn\u0027t cause lots of the regressions?",
+      "parentUuid": "40d5abc2_644ade62",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "fbd495cf8951333021ce20b1b356fb8513211f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
