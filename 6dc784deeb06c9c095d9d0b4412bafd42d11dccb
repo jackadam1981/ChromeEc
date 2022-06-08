@@ -70,6 +70,30 @@
       },
       "revId": "6dc784deeb06c9c095d9d0b4412bafd42d11dccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bce83878_b088bb9b",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-06-08T07:49:02Z",
+      "side": 1,
+      "message": "Fix Kingler with CL:3694922, and correct the behavior here.",
+      "parentUuid": "f491e76d_5dac9e5b",
+      "range": {
+        "startLine": 737,
+        "startChar": 16,
+        "endLine": 737,
+        "endChar": 25
+      },
+      "revId": "6dc784deeb06c9c095d9d0b4412bafd42d11dccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
