@@ -32,7 +32,8 @@
 #define FLAG_FRS_ENABLED		BIT(0)
 #define FLAG_FRS_RX_SIGNALLED		BIT(1)
 #define FLAG_FRS_VBUS_VALID_FALL	BIT(2)
-static atomic_t frs_flag[CONFIG_USB_PD_PORT_MAX_COUNT];
+#define FLAG_VCONN_ENABLED              BIT(3)
+static atomic_t rt1718s_flag[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* i2c_write function which won't wake TCPC from low power mode. */
 static int rt1718s_write(int port, int reg, int val, int len)
@@ -222,12 +223,31 @@ static int rt1718s_workaround(int port)
 	return EC_SUCCESS;
 }
 
+/* Enable OCP shutdown mode */
+static void rt1718s_vconn_ocp_shutdown(void)
+{
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		if (!(rt1718s_flag[i] & FLAG_VCONN_ENABLED))
+			continue;
+
+		rt1718s_update_bits8(i, RT1718S_VCON_CTRL3,
+				     RT1718S_VCON_LIMIT_MODE, 0);
+	}
+}
+DECLARE_DEFERRED(rt1718s_vconn_ocp_shutdown);
+
 static int rt1718s_set_vconn(int port, int enable)
 {
+	if (enable)
+		atomic_or(&rt1718s_flag[port], FLAG_VCONN_ENABLED);
+	else
+		atomic_clear_bits(&rt1718s_flag[port], FLAG_VCONN_ENABLED);
+
 	/*
-	 * b/233698718#comment9: The initial output spike will be likely trigger
-	 * the Vconn OCP. Workaround this by disabling the OCP at the beginning
-	 * of sourcing Vconn, and then enable OCP back after Vconn sourced.
+	 * b/233698718#comment9: The initial output spike will be likely
+	 * triggering the Vconn OCP. Workaround this by disabling the OCP at the
+	 * beginning of sourcing Vconn, and then enable OCP back after Vconn
+	 * sourced.
 	 */
 	if (enable)
 		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCON_CTRL3,
@@ -236,12 +256,11 @@ static int rt1718s_set_vconn(int port, int enable)
 
 	RETURN_ERROR(tcpci_tcpm_set_vconn(port, enable));
 
-	if (enable) {
+	if (enable)
 		/* It takes 10ms that we can switch back to shutdown mode. */
-		msleep(10);
-		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_VCON_CTRL3,
-						  RT1718S_VCON_LIMIT_MODE, 0));
-	}
+		hook_call_deferred(&rt1718s_vconn_ocp_shutdown_data, 10 * MSEC);
+	else
+		hook_call_deferred(&rt1718s_vconn_ocp_shutdown_data, -1);
 
 	return EC_SUCCESS;
 }
@@ -291,7 +310,7 @@ static int rt1718s_init(int port)
 				MASK_SET));
 
 	if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
-		memset(frs_flag, 0,
+		memset(rt1718s_flag, 0,
 		       sizeof(atomic_t) * CONFIG_USB_PD_PORT_MAX_COUNT);
 		/* Set Rx frs and valid vbus fall unmasked */
 		RETURN_ERROR(rt1718s_update_bits8(
@@ -406,12 +425,12 @@ static void frs_gpio_disable_deferred(void)
 	int i;
 
 	for (i = 0; i < board_get_usb_pd_port_count(); ++i) {
-		if (frs_flag[i] & FLAG_FRS_VBUS_VALID_FALL) {
-			atomic_clear_bits(&frs_flag[i],
+		if (rt1718s_flag[i] & FLAG_FRS_VBUS_VALID_FALL) {
+			atomic_clear_bits(&rt1718s_flag[i],
 					  FLAG_FRS_RX_SIGNALLED |
 						  FLAG_FRS_VBUS_VALID_FALL);
 			/* If the FRS gets enabled again, do not disable it. */
-			if (!(frs_flag[i] & FLAG_FRS_ENABLED))
+			if (!(rt1718s_flag[i] & FLAG_FRS_ENABLED))
 				board_rt1718s_set_frs_enable(i, 0);
 		}
 	}
@@ -433,7 +452,7 @@ void rt1718s_vendor_defined_alert(int port)
 			return;
 
 		if ((int1 & RT1718S_RT_INT1_INT_RX_FRS) &&
-		    frs_flag[port] & FLAG_FRS_ENABLED) {
+		    rt1718s_flag[port] & FLAG_FRS_ENABLED) {
 			/*
 			 * 1. Sometimes we get Rx signalled even if the
 			 * FRS is disabled, so filter it.
@@ -448,8 +467,8 @@ void rt1718s_vendor_defined_alert(int port)
 			 * we will still enter the FRS AMS, but it will
 			 * fail eventually, and back to CC open state.
 			 */
-			if (!(frs_flag[port] & FLAG_FRS_RX_SIGNALLED)) {
-				atomic_or(&frs_flag[port],
+			if (!(rt1718s_flag[port] & FLAG_FRS_RX_SIGNALLED)) {
+				atomic_or(&rt1718s_flag[port],
 					  FLAG_FRS_RX_SIGNALLED);
 				/* notify TCPM we got FRS signal */
 				pd_got_frs_signal(port);
@@ -462,9 +481,9 @@ void rt1718s_vendor_defined_alert(int port)
 			 * VBUS_FRS_LOW alert could be raised multiple times
 			 * if VBUS 5V is glitched.
 			 */
-			if ((frs_flag[port] & FLAG_FRS_RX_SIGNALLED) &&
-			    !(frs_flag[port] & FLAG_FRS_VBUS_VALID_FALL)) {
-				atomic_or(&frs_flag[port],
+			if ((rt1718s_flag[port] & FLAG_FRS_RX_SIGNALLED) &&
+			    !(rt1718s_flag[port] & FLAG_FRS_VBUS_VALID_FALL)) {
+				atomic_or(&rt1718s_flag[port],
 					  FLAG_FRS_VBUS_VALID_FALL);
 				/*
 				 * b/223086905:comment8&comment17
@@ -648,16 +667,16 @@ int rt1718s_set_frs_enable(int port, int enable)
 	int frs_ctrl2 = 0x10, vbus_ctrl_en = 0x3F;
 
 	if (enable) {
-		atomic_or(&frs_flag[port], FLAG_FRS_ENABLED);
+		atomic_or(&rt1718s_flag[port], FLAG_FRS_ENABLED);
 		frs_ctrl2 |= RT1718S_FRS_CTRL2_RX_FRS_EN;
 		frs_ctrl2 |= RT1718S_FRS_CTRL2_VBUS_FRS_EN;
 
 		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN;
 		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN;
 	} else {
-		atomic_clear_bits(&frs_flag[port], FLAG_FRS_ENABLED);
+		atomic_clear_bits(&rt1718s_flag[port], FLAG_FRS_ENABLED);
 		if (FLAG_FRS_RX_SIGNALLED ==
-		    (frs_flag[port] &
+		    (rt1718s_flag[port] &
 		     (FLAG_FRS_RX_SIGNALLED | FLAG_FRS_VBUS_VALID_FALL))) {
 			/*
 			 * Skip disable if we had only FRS_RX_SIGNALLED, and
@@ -677,7 +696,7 @@ int rt1718s_set_frs_enable(int port, int enable)
 	 * we'll deferred the GPIO disabled until the VBUS valid drop. So
 	 * don't disable it here.
 	 */
-	if (enable || !(frs_flag[port] & FLAG_FRS_RX_SIGNALLED))
+	if (enable || !(rt1718s_flag[port] & FLAG_FRS_RX_SIGNALLED))
 		RETURN_ERROR(board_rt1718s_set_frs_enable(port, enable));
 
 	return EC_SUCCESS;
