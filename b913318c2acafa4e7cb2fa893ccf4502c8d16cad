@@ -178,6 +178,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e07c6446_48f64f70",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-06-09T18:27:20Z",
+      "side": 1,
+      "message": "This speed increment is only taken effect in sysjump function, i.e. lfw function in legacy code. since EC is downing hundreds KB of RO / RW image into SRAM in sysjump, so increasing SPI speed can save timing. For EC application code, e.g. hash computation etc., SPI speed is defined in board level configuration mec172.dts file.",
+      "parentUuid": "38f47a41_fbdee961",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 9
+      },
+      "revId": "b913318c2acafa4e7cb2fa893ccf4502c8d16cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccc67c55_d4dd8a97",
