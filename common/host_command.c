@@ -372,6 +372,7 @@ host_packet_bad:
  * @param command	Command number to find
  * @return The command structure, or NULL if no match found.
  */
+#ifndef CONFIG_EC_HOST_CMD
 static const struct host_command *find_host_command(int command)
 {
 	if (IS_ENABLED(CONFIG_SYSTEM_SAFE_MODE) && system_is_in_safe_mode()) {
@@ -413,6 +414,7 @@ static const struct host_command *find_host_command(int command)
 		return NULL;
 	}
 }
+#endif
 
 static void host_command_init(void)
 {
@@ -434,6 +436,7 @@ static void host_command_init(void)
 
 void host_command_task(void *u)
 {
+#ifndef CONFIG_EC_HOST_CMD
 	timestamp_t t0, t1, t_recess;
 	t_recess.val = 0;
 	t1.val = 0;
@@ -465,6 +468,9 @@ void host_command_task(void *u)
 			/* Short recess */
 			usleep(CONFIG_HOSTCMD_RATE_LIMITING_RECESS);
 	}
+#else
+	host_command_init();
+#endif
 }
 
 /*****************************************************************************/
@@ -529,6 +535,7 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP, host_command_read_memmap,
 		     EC_VER_MASK(0));
 #endif
 
+#ifndef CONFIG_EC_HOST_CMD
 static enum ec_status
 host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 {
@@ -565,6 +572,7 @@ static int host_command_is_suppressed(uint16_t cmd)
 #endif
 	return 0;
 }
+#endif
 
 /*
  * Print & reset suppressed command counters. It should be called periodically
@@ -603,6 +611,7 @@ DECLARE_HOOK(HOOK_SYSJUMP, dump_host_command_suppressed_, HOOK_PRIO_DEFAULT);
 }
 #endif /* CONFIG_SUPPRESSED_HOST_COMMANDS */
 
+#ifndef CONFIG_EC_HOST_CMD
 /**
  * Print debug output for the host command request, before it's processed.
  *
@@ -714,6 +723,7 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 
 	return rv;
 }
+#endif
 
 #ifdef CONFIG_HOST_COMMAND_STATUS
 /* Returns current command status (busy or not) */

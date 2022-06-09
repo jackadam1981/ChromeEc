@@ -21,6 +21,9 @@ void host_command_task(void *u);
 /* Takes over the main thread and runs the host command loop. */
 void host_command_main(void);
 
+/* True if running in the main thread. */
+bool in_host_command_main(void);
+
 /*
  * Returns the main thread id. Will be the same as the HOSTCMD thread
  * when CONFIG_TASK_HOSTCMD_THREAD_MAIN is enabled.
@@ -38,6 +41,14 @@ k_tid_t get_hostcmd_thread(void);
 /**
  * See include/host_command.h for documentation.
  */
+#if defined(CONFIG_EC_HOST_CMD)
+
+#include <zephyr/mgmt/ec_host_cmd.h>
+#define DECLARE_HOST_COMMAND(id, handler, ver) \
+	EC_HOST_CMD_HANDLER_UNBOUND(id, (ec_host_cmd_handler_cb)handler, ver)
+
+#else
+
 #define DECLARE_HOST_COMMAND(_command, _routine, _version_mask)         \
 	static const STRUCT_SECTION_ITERABLE(host_command,              \
 					     _cros_hcmd_##_command) = { \
@@ -45,6 +56,9 @@ k_tid_t get_hostcmd_thread(void);
 		.handler = _routine,                                    \
 		.version_mask = _version_mask,                          \
 	}
+
+#endif /* defined(CONFIG_EC_HOST_CMD) */
+
 #else /* !CONFIG_PLATFORM_EC_HOSTCMD */
 
 /*
