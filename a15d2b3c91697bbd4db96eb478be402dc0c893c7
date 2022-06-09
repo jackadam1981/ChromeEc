@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30af6b5_f1f3a928",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-06-09T02:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f129369_ce095a3a",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 37
+      },
+      "revId": "a15d2b3c91697bbd4db96eb478be402dc0c893c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a0f1646_7cfd9f9d",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "876de636_7bc3e624",
+        "filename": "driver/led/tlc59116f.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-06-09T02:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a0f1646_7cfd9f9d",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 6
+      },
+      "revId": "a15d2b3c91697bbd4db96eb478be402dc0c893c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c27a4bc7_6d2d034d",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-06-08T16:07:54Z",
       "side": 1,
       "message": "These aren\u0027t very helpful. Let\u0027s define TLC59116_AI_BRIGHTNESS_ONLY (\u003d BIT(7) | BIT(5)).\n\nYou may also define TLC59116_AI_ALL, TLC59116_AI_GCR_ONLY, and TLC59116_AI_NONE for completeness if you like.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "a15d2b3c91697bbd4db96eb478be402dc0c893c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05fae41c_965b402d",
+        "filename": "driver/led/tlc59116f.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-06-09T02:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c27a4bc7_6d2d034d",
       "range": {
         "startLine": 67,
         "startChar": 0,
