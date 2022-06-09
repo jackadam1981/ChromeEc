@@ -2241,7 +2241,7 @@ uint32_t charge_get_flags(void)
 	return flags;
 }
 
-int charge_get_percent(void)
+test_mockable int charge_get_percent(void)
 {
 	/*
 	 * Since there's no way to indicate an error to the caller, we'll just

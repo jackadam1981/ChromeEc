@@ -23,11 +23,28 @@
 #include "throttle_ap.h"
 #include "usbc_config.h"
 
+#include "driver/nvidia_gpu.h"
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
+struct d_notify_policy d_notify_policies[] = {
+	AC_ATLEAST_W(100),
+	AC_ATLEAST_W(65),
+	AC_DC,
+	DC_ATLEAST_SOC(20),
+	DC_ATLEAST_SOC(5),
+};
+BUILD_ASSERT(ARRAY_SIZEOF(d_notify_policies) == D_NOTIFY_COUNT)
+
+static void board_gpu_init(void)
+{
+	nvidia_gpu_init_policy(d_notify_policies);
+}
+DECLARE_HOOK(HOOK_INIT, board_gpu_init, HOOK_PRIO_DEFAULT);
 
 __override void board_cbi_init(void)
 {

@@ -9,6 +9,9 @@
 # Note that this variable includes the trailing "/"
 _driver_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 
+
+driver-$(CONFIG_GPU_NVIDIA)+=nvidia_gpu.o
+
 # Accelerometers
 driver-$(CONFIG_ACCEL_BMA255)+=accel_bma2x2.o
 driver-$(CONFIG_ACCEL_KXCJ9)+=accel_kionix.o
@@ -242,3 +245,5 @@ driver-$(CONFIG_MP2964)+=mp2964.o
 # SOC Interface
 driver-$(CONFIG_AMD_SB_RMI)+=sb_rmi.o
 driver-$(CONFIG_AMD_STT)+=amd_stt.o
+
+
