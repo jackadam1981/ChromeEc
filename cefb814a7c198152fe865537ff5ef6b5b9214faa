@@ -16,6 +16,46 @@
       "message": "Followup from the comment in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3585602/10/zephyr/shim/src/tasks.c#b333",
       "revId": "cefb814a7c198152fe865537ff5ef6b5b9214faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9863f2_0a886465",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-06-09T02:50:28Z",
+      "side": 1,
+      "message": "The shell thread priority should be 12.\ni.e. \nEC_TASK_PRIORITY(EC_SHELL_PRIO)\n-\u003e EC_TASK_PRIO_COUNT - EC_SHELL_PRIO - 1\n-\u003e 26 - 13 - 1 \u003d12",
+      "revId": "cefb814a7c198152fe865537ff5ef6b5b9214faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e18e5d_94dee2c3",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-06-09T02:50:28Z",
+      "side": 1,
+      "message": "it should be:\n`EC_TASK_PRIORITY(EC_SHELL_PRIO)`",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "cefb814a7c198152fe865537ff5ef6b5b9214faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
