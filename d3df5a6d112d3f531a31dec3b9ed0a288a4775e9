@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9daaa7_8933e61f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-06-09T02:09:02Z",
+      "side": 1,
+      "message": "This introduces the same workaround from the Zephyr codebase:\nhttps://github.com/zephyrproject-rtos/zephyr/pull/45881",
+      "revId": "d3df5a6d112d3f531a31dec3b9ed0a288a4775e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
