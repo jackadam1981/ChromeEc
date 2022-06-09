@@ -16,6 +16,24 @@
       "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/beadrix/board.c;drc\u003d8f772e845b07758b18ab1d613646c263b4043ba2;l\u003d362\nGPIO_BASE_SIXAXIS_INT_L is still used here.",
       "revId": "0c91fc8cfa3c12ffef9260a7c5eb2fce742749ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b05b492_62dc3dac",
+        "filename": "board/beadrix/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-06-09T07:29:44Z",
+      "side": 0,
+      "message": "I have remove the line of GPIO_BASE_SIXAXIS_INT_L.\n\nApart from accelerometer, I find non-existing accelerometer\nand gyroscope. After I confirm with ECS, I also remove code about non-existing accelerometer\nand gyroscope setting.\n\tmodified:   board/beadrix/board.c\n\tmodified:   board/beadrix/board.h\n\tmodified:   board/beadrix/ec.tasklist\nReference: [Beadrix_Component Deviation List Google DVT 0519.xlsx](https://docs.google.com/spreadsheets/d/1g2gV8o_RMYPlGW0NGXxSJce7DiIs0D25/edit?usp\u003dsharing\u0026ouid\u003d115860446549715556354\u0026rtpof\u003dtrue\u0026sd\u003dtrue)",
+      "parentUuid": "b10eb8eb_cb36f024",
+      "revId": "0c91fc8cfa3c12ffef9260a7c5eb2fce742749ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
