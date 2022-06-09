@@ -13,6 +13,8 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_NVIDIA_GPU
+
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
  * until we can confirm all earlier chips are out of service.
@@ -147,6 +149,7 @@
  */
 
 #define CONFIG_ADC_CHANNELS_RUNTIME_CONFIG
+
 
 #ifndef __ASSEMBLER__
 

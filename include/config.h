@@ -6895,4 +6895,10 @@
 #define CONFIG_S5_EXIT_WAIT 4
 #endif
 
+#undef HAS_GPU_DRIVER
+#if defined(HAS_GPU_DRIVER)
+/* D-Notify and GPIO Management for Nvidia GPUS */
+#undef CONFIG_NVIDIA_GPU
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
