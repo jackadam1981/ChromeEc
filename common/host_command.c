@@ -368,6 +368,7 @@ host_packet_bad:
  * @param command	Command number to find
  * @return The command structure, or NULL if no match found.
  */
+#ifndef CONFIG_EC_HOST_CMD
 static const struct host_command *find_host_command(int command)
 {
 	if (IS_ENABLED(CONFIG_ZEPHYR)) {
@@ -405,6 +406,7 @@ static const struct host_command *find_host_command(int command)
 		return NULL;
 	}
 }
+#endif
 
 static void host_command_init(void)
 {
@@ -548,6 +550,7 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP,
 		     EC_VER_MASK(0));
 #endif
 
+#ifndef CONFIG_EC_HOST_CMD
 static enum ec_status
 host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 {
@@ -571,7 +574,9 @@ host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS,
 		     host_command_get_cmd_versions,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
+#endif
 
+#ifndef CONFIG_EC_HOST_CMD
 static int host_command_is_suppressed(uint16_t cmd)
 {
 #ifdef CONFIG_SUPPRESSED_HOST_COMMANDS
@@ -585,6 +590,7 @@ static int host_command_is_suppressed(uint16_t cmd)
 #endif
 	return 0;
 }
+#endif
 
 /*
  * Print & reset suppressed command counters. It should be called periodically
@@ -622,6 +628,7 @@ DECLARE_HOOK(HOOK_SYSJUMP,
 }
 #endif /* CONFIG_SUPPRESSED_HOST_COMMANDS */
 
+#ifndef CONFIG_EC_HOST_CMD
 /**
  * Print debug output for the host command request, before it's processed.
  *
@@ -725,6 +732,7 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 
 	return rv;
 }
+#endif
 
 #ifdef CONFIG_HOST_COMMAND_STATUS
 /* Returns current command status (busy or not) */
