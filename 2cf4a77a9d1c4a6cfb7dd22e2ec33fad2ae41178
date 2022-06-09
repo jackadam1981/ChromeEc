@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0acc15bf_491a977a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-06-09T02:54:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but we can change it if it is not enough.\nThanks,\nXin",
+      "parentUuid": "3921f806_9cdeb358",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "2cf4a77a9d1c4a6cfb7dd22e2ec33fad2ae41178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45ccef63_41c52ea5",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "714147ae_02220497",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-06-09T02:54:17Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "45ccef63_41c52ea5",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "2cf4a77a9d1c4a6cfb7dd22e2ec33fad2ae41178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a0392c9_c7f34911",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-09T02:51:12Z",
       "side": 1,
       "message": "BIT(0)",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "2cf4a77a9d1c4a6cfb7dd22e2ec33fad2ae41178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8597367e_eecd72ce",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-06-09T02:54:17Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "9a0392c9_c7f34911",
       "range": {
         "startLine": 47,
         "startChar": 33,
