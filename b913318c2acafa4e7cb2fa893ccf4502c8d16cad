@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a57b2c9_5a7565bf",
+        "filename": "zephyr/shim/chip/mchp/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-06-09T15:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08863795_bbd81652",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "b913318c2acafa4e7cb2fa893ccf4502c8d16cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bf14466_f2eb211d",
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "Ack.\nOriginally, for debugging purpose, added more debug constants in this array, for product code, those debug constants are removed, will modify as,\n\n#ifdef CONFIG_CROS_EC_RO\nconst uint32_t mchp_cfg_ec_tbl \u003d MCHP_ECRO_WORD;\n#elif CONFIG_CROS_EC_RW\nconst uint32_t mchp_cfg_ec_tbl \u003d MCHP_ECRW_WORD;\n#endif",
       "parentUuid": "ccc67c55_d4dd8a97",
+      "range": {
+        "startLine": 29,
+        "startChar": 30,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "b913318c2acafa4e7cb2fa893ccf4502c8d16cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a988bdf_9d89c43d",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-06-09T15:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3c7691_0b0b98f1",
       "range": {
         "startLine": 29,
         "startChar": 30,
