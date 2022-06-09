@@ -55,33 +55,6 @@ static int board_enable_bj_port(void)
 	return charger_enable_bypass_mode(0, 1);
 }
 
-/*
- * TODO:
- *
- * When AC is being plugged in (including switching source port),
- *   1. Deassert NVIDIA_GPU_ACOFF_ODL.
- *   2. Call evaluate_d_notify.
- *
- * When AC is being lost,
- *   1. Assert NVIDIA_GPU_ACOFF_ODL.
- *   2. Set D-Notify to D5.
- *   3. Differ-call
- *      a. Deassert NVIDIA_GPU_ACOFF_ODL.
- *      b. evaluate_d_notify
- */
-static int board_throttle_ap_gpu(bool enable)
-{
-	int rv = EC_SUCCESS;
-
-	if (!chipset_in_state(CHIPSET_STATE_ON))
-		return EC_SUCCESS;
-
-	CPRINTS("TODO: %s to %s AP & GPU (%d)", rv ? "Failed" : "Succeeded",
-		enable ? "throttle" : "unthrottle", rv);
-
-	return rv;
-}
-
 /* Disable all VBUS sink ports except <port>. <port> = -1 disables all ports. */
 static int board_disable_vbus_sink(int port)
 {
@@ -139,8 +112,6 @@ int board_set_active_charge_port(int port)
 	if (port == CHARGE_PORT_NONE) {
 		CPRINTS("Disabling all charger ports");
 
-		board_throttle_ap_gpu(1);
-
 		board_disable_bj_port();
 		board_disable_vbus_sink(-1);
 
@@ -191,10 +162,6 @@ int board_set_active_charge_port(int port)
 			return EC_ERROR_UNKNOWN;
 		board_enable_bj_port();
 	}
-
-	/* Switching port is complete. Turn off throttling. */
-	if (supplier != CHARGE_SUPPLIER_NONE)
-		board_throttle_ap_gpu(0);
 
 	CPRINTS("New charger p%d", port);
 
