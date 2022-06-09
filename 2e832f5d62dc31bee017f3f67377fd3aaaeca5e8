@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9219e4_8bbfbbe6",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-06-09T06:41:25Z",
+      "side": 1,
+      "message": "OK, I\u0027ll change it.",
+      "parentUuid": "da4583c3_22dc06d3",
+      "range": {
+        "startLine": 886,
+        "startChar": 2,
+        "endLine": 886,
+        "endChar": 7
+      },
+      "revId": "2e832f5d62dc31bee017f3f67377fd3aaaeca5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "054035e6_a8dc301f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8402d77_dc98600b",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-06-09T06:41:25Z",
+      "side": 1,
+      "message": "Need clear.",
+      "parentUuid": "054035e6_a8dc301f",
+      "range": {
+        "startLine": 888,
+        "startChar": 5,
+        "endLine": 888,
+        "endChar": 10
+      },
+      "revId": "2e832f5d62dc31bee017f3f67377fd3aaaeca5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b731102d_bcb07ff2",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-09T06:34:26Z",
       "side": 1,
       "message": "MASK_SET?",
+      "range": {
+        "startLine": 890,
+        "startChar": 32,
+        "endLine": 890,
+        "endChar": 40
+      },
+      "revId": "2e832f5d62dc31bee017f3f67377fd3aaaeca5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f345dc2e_6e3a1909",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-06-09T06:41:25Z",
+      "side": 1,
+      "message": "MASK_CLR, the cc debounce time total use 9bit, the CC_DEBOUNCE_TIME_HI_BIT is bit 8, ANX7447_REG_CC_DEBOUNCE_TIME is bit 0 ~ 7, as no need to use it, so always clear it.\nThanks,\nXin",
+      "parentUuid": "b731102d_bcb07ff2",
       "range": {
         "startLine": 890,
         "startChar": 32,
