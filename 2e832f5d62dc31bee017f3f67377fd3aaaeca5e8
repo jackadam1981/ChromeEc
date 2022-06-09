@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4583c3_22dc06d3",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-09T06:34:26Z",
+      "side": 1,
+      "message": "You can drop \u0027rv\u0027, and use RETURN_ERROR() macro instead. e.g.:\n\n  RETURN_ERROR(tcpc_update8(...,....));",
+      "range": {
+        "startLine": 886,
+        "startChar": 2,
+        "endLine": 886,
+        "endChar": 7
+      },
+      "revId": "2e832f5d62dc31bee017f3f67377fd3aaaeca5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "054035e6_a8dc301f",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-09T06:34:26Z",
+      "side": 1,
+      "message": "Set?",
+      "range": {
+        "startLine": 888,
+        "startChar": 5,
+        "endLine": 888,
+        "endChar": 10
+      },
+      "revId": "2e832f5d62dc31bee017f3f67377fd3aaaeca5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b731102d_bcb07ff2",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-09T06:34:26Z",
+      "side": 1,
+      "message": "MASK_SET?",
+      "range": {
+        "startLine": 890,
+        "startChar": 32,
+        "endLine": 890,
+        "endChar": 40
+      },
+      "revId": "2e832f5d62dc31bee017f3f67377fd3aaaeca5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
