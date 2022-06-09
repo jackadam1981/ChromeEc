@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67169c5f_b1bbf035",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-09T08:29:18Z",
+      "side": 1,
+      "message": "This says bit 8, but the macros is actually bit 0? Also, you need to use tcpc_update16 to update a 16bit value.\n\nIf the HI-BIT(bit 8) defaults to 0, then you don\u0027t need to update that, you just need:\n  ```\n     RETURN_ERROR(tcpc_update8(port, ANX7447_REG_TCPC_CTRL_1,\n\t\t\t\t\t  CC_DEBOUNCE_MS, enable? MASK_SET : MASK_CLR));\n  ```",
+      "range": {
+        "startLine": 896,
+        "startChar": 18,
+        "endLine": 896,
+        "endChar": 25
+      },
+      "revId": "2db3334bfc8a70adaadafd7e163b256c58d0c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
