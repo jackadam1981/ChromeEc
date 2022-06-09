@@ -16,6 +16,75 @@
       "message": "Hi,\nAny review feedbacks on this CL? ",
       "revId": "b913318c2acafa4e7cb2fa893ccf4502c8d16cad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b855e9_7b11e740",
+        "filename": "zephyr/shim/chip/mchp/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-09T05:48:25Z",
+      "side": 1,
+      "message": "Please add some comment about what this function does.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "b913318c2acafa4e7cb2fa893ccf4502c8d16cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf14466_f2eb211d",
+        "filename": "zephyr/shim/chip/mchp/system_download_from_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-09T05:48:25Z",
+      "side": 1,
+      "message": "Why make this change?",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 9
+      },
+      "revId": "b913318c2acafa4e7cb2fa893ccf4502c8d16cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc67c55_d4dd8a97",
+        "filename": "zephyr/shim/chip/mchp/system_external_storage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-09T05:48:25Z",
+      "side": 1,
+      "message": "Why use an array? Looks like only [0] is referenced.",
+      "range": {
+        "startLine": 29,
+        "startChar": 30,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "b913318c2acafa4e7cb2fa893ccf4502c8d16cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
