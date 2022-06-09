@@ -57,6 +57,7 @@
 		}; /* GPIO115 */
 		std_adp_prsnt: std-adp-prsnt {
 			gpios = <&gpio_040_076 3 GPIO_INPUT>;
+			enum-name= "GPIO_DC_JACK_PRESENT";
 		}; /* GPIO043 */
 		bc_acok: bc-acok {
 			gpios = <&gpio_140_176 14 GPIO_INPUT>;
@@ -158,10 +159,10 @@
 		edp_bklt_en_mecc {
 			gpios = <&gpio_000_036 18 GPIO_OUTPUT_HIGH>;
 		}; /* GPIO022 */
-		led_1_l {
+		led_red_l: led-1-l {
 			gpios = <&gpio_140_176 15 GPIO_OUTPUT_HIGH>;
 		}; /* GPIO157 */
-		led_2_l {
+		led_white_l: led-2-l {
 			gpios = <&gpio_140_176 11 GPIO_OUTPUT_HIGH>;
 		}; /* GPIO153 */
 		therm_sen_mecc {

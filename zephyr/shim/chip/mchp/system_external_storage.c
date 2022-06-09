@@ -25,15 +25,14 @@ static const struct device *const bbram_dev =
 	COND_CODE_1(DT_HAS_CHOSEN(cros_ec_bbram),
 		    DEVICE_DT_GET(DT_CHOSEN(cros_ec_bbram)), NULL);
 
-/* DEBUG values from config_chip.h */
-const uint32_t mchp_cfg_ec_tbl[] = {
+/* Build image type string in RO/RW image */
 #ifdef CONFIG_CROS_EC_RO
-	MCHP_ECRO_WORD,
+const uint32_t mchp_image_type = MCHP_ECRO_WORD;
+#elif CONFIG_CROS_EC_RW
+const uint32_t mchp_image_type = MCHP_ECRW_WORD;
+#else
+#error "Unsupported image type!"
 #endif
-#ifdef CONFIG_CROS_EC_RW
-	MCHP_ECRW_WORD,
-#endif
-};
 
 /*
  * Make sure CONFIG_XXX flash offsets are correct for MEC172x 512KB SPI flash.
@@ -96,7 +95,7 @@ enum ec_image system_get_shrspi_image_copy(void)
 
 	if (img == EC_IMAGE_UNKNOWN) {
 		img = EC_IMAGE_RO;
-		if (mchp_cfg_ec_tbl[0] == MCHP_ECRW_WORD) {
+		if (mchp_image_type == MCHP_ECRW_WORD) {
 			img = EC_IMAGE_RW;
 		}
 		system_set_image_copy(img);

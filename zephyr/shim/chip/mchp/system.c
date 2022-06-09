@@ -15,6 +15,11 @@ LOG_MODULE_REGISTER(shim_xec_system, LOG_LEVEL_ERR);
 	DT_PROP(DT_PATH(named_bbram_regions, node), offset)
 #define GET_BBRAM_SZ(node) DT_PROP(DT_PATH(named_bbram_regions, node), size)
 
+/*
+ * Reset image type back to RO in BBRAM as watchdog resets.
+ * Watchdog reset will reset EC chip, ROM loader loads RO
+ * image stored in SPI flash chip in default.
+ */
 void cros_chip_wdt_handler(const struct device *wdt_dev, int channel_id)
 {
 	const struct device *bbram_dev = DEVICE_DT_GET(DT_NODELABEL(bbram));
