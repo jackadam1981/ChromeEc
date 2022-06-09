@@ -8,11 +8,18 @@
 
 	chosen {
 		cros,rtc = &mtc;
+		zephyr,ec-host-interface = &host_cmd;
 	};
 
 	ec-console {
 		compatible = "ec-console";
 		disabled = "events", "lpc", "hostcmd";
+	};
+
+	host_cmd: host-cmd {
+		compatible = "zephyr,ec-host-cmd-periph-espi";
+		label = "host-cmd-espi";
+		bus = <&espi0>;
 	};
 };
 
