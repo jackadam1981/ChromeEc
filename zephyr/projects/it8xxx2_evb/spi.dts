@@ -1,0 +1,30 @@
+/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <zephyr/dt-bindings/spi/it8xxx2-spi.h>
+
+/* SSPI 0 & 1*/
+&spi0 {
+	status = "okay";
+	sckfreq = <SSPI_SCKFREQ_24MHZ>;
+	spimode = <SSPI_MODE_0>;
+	pinctrl-0 = <&spi_ssce0_default
+				&spi_ssck_default
+				&spi_smosi_default
+				&spi_smiso_default>;
+	pinctrl-names = "default";
+};
+
+&spi1 {
+	status = "okay";
+	sckfreq = <SSPI_SCKFREQ_24MHZ>;
+	spimode = <SSPI_MODE_0>;
+	pinctrl-0 = <&spi_ssce1_default
+				&spi_ssck_default
+				&spi_smosi_default
+				&spi_smiso_default>;
+	pinctrl-names = "default";
+};
+
