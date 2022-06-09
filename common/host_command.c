@@ -555,6 +555,29 @@ host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 	const struct ec_params_get_cmd_versions_v1 *p_v1 = args->params;
 	struct ec_response_get_cmd_versions *r = args->response;
 
+#ifdef CONFIG_ZEPHYR
+	if (IS_ENABLED(CONFIG_EC_HOST_CMD)) {
+		const struct ec_host_cmd_handler *found_handler = NULL;
+
+		STRUCT_SECTION_FOREACH(ec_host_cmd_handler, handler)
+		{
+			int searched_id =
+				(args->version == 1) ? p_v1->cmd : p->cmd;
+			if (handler->id == searched_id) {
+				found_handler = handler;
+				break;
+			}
+		}
+
+		if (!found_handler)
+			return EC_RES_INVALID_PARAM;
+		r->version_mask = found_handler->version_mask;
+
+		args->response_size = sizeof(*r);
+
+		return EC_RES_SUCCESS;
+	}
+#endif
 	const struct host_command *cmd =
 		(args->version == 1) ? find_host_command(p_v1->cmd) :
 				       find_host_command(p->cmd);
@@ -572,6 +595,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS,
 		     host_command_get_cmd_versions,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+#ifndef CONFIG_EC_HOST_CMD
 static int host_command_is_suppressed(uint16_t cmd)
 {
 #ifdef CONFIG_SUPPRESSED_HOST_COMMANDS
@@ -585,6 +609,7 @@ static int host_command_is_suppressed(uint16_t cmd)
 #endif
 	return 0;
 }
+#endif
 
 /*
  * Print & reset suppressed command counters. It should be called periodically
@@ -622,6 +647,7 @@ DECLARE_HOOK(HOOK_SYSJUMP,
 }
 #endif /* CONFIG_SUPPRESSED_HOST_COMMANDS */
 
+#ifndef CONFIG_EC_HOST_CMD
 /**
  * Print debug output for the host command request, before it's processed.
  *
@@ -725,6 +751,7 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 
 	return rv;
 }
+#endif
 
 #ifdef CONFIG_HOST_COMMAND_STATUS
 /* Returns current command status (busy or not) */
