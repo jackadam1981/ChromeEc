@@ -877,6 +877,34 @@ static int anx7447_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
+enum ec_error_list anx7447_set_bist_test_mode(const int port, const bool enable)
+{
+	int rv;
+
+	if (!enable) {
+		/* Set CC debounce type as microsecond */
+		rv = tcpc_update8(port, ANX7447_REG_TCPC_CTRL_1,
+				  CC_DEBOUNCE_MS, MASK_CLR);
+		/* Clear high bit(bit 8) of CC debounce time */
+		rv |= tcpc_update8(port, ANX7447_REG_TCPC_CTRL_1,
+				   CC_DEBOUNCE_TIME_HI_BIT, MASK_CLR);
+		/* Set CC debounce time(bit 0 - 7) to 10us */
+		rv |= tcpc_write(port, ANX7447_REG_CC_DEBOUNCE_TIME, 10);
+		return rv;
+	}
+
+	/* Set CC debounce type as millisecond */
+	rv = tcpc_update8(port, ANX7447_REG_TCPC_CTRL_1,
+			  CC_DEBOUNCE_MS, MASK_SET);
+	/* Clear high bit(bit 8) of CC debounce time */
+	rv |= tcpc_update8(port, ANX7447_REG_TCPC_CTRL_1,
+			   CC_DEBOUNCE_TIME_HI_BIT, MASK_CLR);
+	/* Set CC debounce time(bit 0 - 7) to 2ms */
+	rv |= tcpc_write(port, ANX7447_REG_CC_DEBOUNCE_TIME, 2);
+
+	return rv;
+}
+
 /*
  * ANX7447 is a TCPCI compatible port controller, with some caveats.
  * It seems to require both CC lines to be set always, instead of just
@@ -916,7 +944,7 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
 #endif
-	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
+	.set_bist_test_mode	= &anx7447_set_bist_test_mode,
 #ifdef CONFIG_CMD_TCPC_DUMP
 	.dump_registers		= &anx7447_dump_registers,
 #endif
