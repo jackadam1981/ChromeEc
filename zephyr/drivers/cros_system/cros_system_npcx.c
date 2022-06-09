@@ -412,6 +412,9 @@ static const char *cros_system_npcx_get_chip_revision(const struct device *dev)
 	return rev;
 }
 
+#if DT_HAS_COMPAT_STATUS_OKAY(nuvoton_npcx_power_psl)
+PINCTRL_DT_DEFINE(DT_NODELABEL(power_ctrl_psl));
+#endif
 static void system_npcx_hibernate_by_psl(const struct device *dev,
 					 uint32_t seconds,
 					 uint32_t microseconds)
@@ -424,11 +427,17 @@ static void system_npcx_hibernate_by_psl(const struct device *dev,
 	ARG_UNUSED(seconds);
 	ARG_UNUSED(microseconds);
 
-	/*
-	 * Configure PSL input pads from "psl-in-pads" property in device tree
-	 * file.
-	 */
-	npcx_pinctrl_psl_input_configure();
+	/* Configure detection settings of PSL_IN pads first */
+	if (DT_HAS_COMPAT_STATUS_OKAY(nuvoton_npcx_power_psl)) {
+		const struct pinctrl_dev_config *pcfg =
+			PINCTRL_DT_DEV_CONFIG_GET(DT_NODELABEL(power_ctrl_psl));
+		int ret = pinctrl_apply_state(pcfg, PINCTRL_STATE_SLEEP);
+
+		if (ret < 0) {
+			LOG_ERR("PSL_IN pinctrl setup failed (%d)", ret);
+			return;
+		}
+	}
 
 	/*
 	 * Give the board a chance to do any late stage hibernation work.  This
@@ -439,8 +448,17 @@ static void system_npcx_hibernate_by_psl(const struct device *dev,
 	if (board_hibernate_late)
 		board_hibernate_late();
 
-	/* Turn off VCC1 to enter ultra-low-power mode for hibernating */
-	npcx_pinctrl_psl_output_set_inactive();
+	/**
+	 * A transition from 0 to 1 of specific IO (GPIO85) data-out bit
+	 * set PSL_OUT to inactive state. Then, it will turn Core Domain
+	 * power supply (VCC1) off for better power consumption.
+	 */
+	if (DT_HAS_COMPAT_STATUS_OKAY(nuvoton_npcx_power_psl)) {
+		struct gpio_dt_spec enable = GPIO_DT_SPEC_GET(
+				DT_NODELABEL(power_ctrl_psl), enable_gpios);
+
+		gpio_pin_set_dt(&enable, 1);
+	};
 }
 
 static int cros_system_npcx_get_reset_cause(const struct device *dev)
@@ -526,8 +544,8 @@ static int cros_system_npcx_soc_reset(const struct device *dev)
 #error "cros-ec,hibernate-wake-pins cannot be used with HIBERNATE_PSL"
 #endif
 #else
-#if DT_HAS_COMPAT_STATUS_OKAY(nuvoton_npcx_pslctrl_def)
-#error "vsby-psl-in-list cannot be used with non-HIBERNATE_PSL"
+#if DT_HAS_COMPAT_STATUS_OKAY(nuvoton_npcx_power_psl)
+#error "power_ctrl_psl cannot be used with non-HIBERNATE_PSL"
 #endif
 #endif
 
