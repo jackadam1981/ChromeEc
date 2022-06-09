@@ -22,6 +22,30 @@
       },
       "revId": "561a043110517fe5d6bde8c6e4ad458606c00d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d26b03a_f8b175f2",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-06-09T06:13:08Z",
+      "side": 1,
+      "message": "OK, I just double confirmed, it can be moved into .set_bist_test_mode callback interface, please check patchset #4.\nThanks,\nXin",
+      "parentUuid": "ea480ed4_a712701e",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 12
+      },
+      "revId": "561a043110517fe5d6bde8c6e4ad458606c00d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
