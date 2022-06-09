@@ -67,6 +67,7 @@ GPIO(VCCST_PWRGD_OD,                 PIN(A, 4), GPIO_ODR_LOW)
 GPIO(EN_USB_A_LOW_POWER,             PIN(9, 3), GPIO_OUT_LOW)
 GPIO(PG_PP3300_S5_EC_SEQ_OD,         PIN(B, 5), GPIO_OUT_LOW)
 GPIO(USB_C2_FRS_EN,                  PIN(D, 4), GPIO_OUT_LOW)
+GPIO(NVIDIA_GPU_ACOFF_ODL,           PIN(9, 5), GPIO_ODR_HIGH)
 
 /* Barreljack */
 GPIO(EN_PPVAR_BJ_ADP_L,              PIN(A, 2), GPIO_OUT_LOW)
@@ -123,7 +124,6 @@ UNUSED(PIN(0, 2))       /* GPIO02 */
 UNUSED(PIN(6, 6))       /* GPIO66 */
 UNUSED(PIN(5, 7))       /* GPIO57/SER_IRQ/ESPI_ALERT_L */
 UNUSED(PIN(8, 1))       /* GPIO81 */
-UNUSED(PIN(9, 5))       /* GPIO95 */
 UNUSED(PIN(7, 3))       /* GPIO73 */
 UNUSED(PIN(4, 1))       /* GPIO41 */
 UNUSED(PIN(5, 0))       /* GPIO50 */
