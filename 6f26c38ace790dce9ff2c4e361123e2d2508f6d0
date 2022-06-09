@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e3b0694_6b41b995",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-09T06:01:35Z",
+      "side": 1,
+      "message": "Yes, I enable PS8818_DEBUG can see register back to default when unplug USBC device.",
+      "parentUuid": "4ba2270c_ffdcd866",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "6f26c38ace790dce9ff2c4e361123e2d2508f6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b72b7d6f_453922cc",
         "filename": "board/agah/usbc_config.c",
         "patchSetId": 20
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-08T21:41:51Z",
       "side": 1,
       "message": "This is redundant. You can return below.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 13
+      },
+      "revId": "6f26c38ace790dce9ff2c4e361123e2d2508f6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb00f62_f73c214a",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-09T06:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b72b7d6f_453922cc",
       "range": {
         "startLine": 144,
         "startChar": 0,
