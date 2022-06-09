@@ -370,6 +370,17 @@ static int anx7447_init(int port)
 	if (rv)
 		return rv;
 
+	/* Set CC debounce type as millisecond */
+	rv = tcpc_update8(port, ANX7447_REG_TCPC_CTRL_1,
+			  CC_DEBOUNCE_MS, MASK_SET);
+	/* Clear high bit(bit 8) of CC debounce time */
+	rv |= tcpc_update8(port, ANX7447_REG_TCPC_CTRL_1,
+			   CC_DEBOUNCE_TIME_HI_BIT, MASK_CLR);
+	/* Set CC debounce time(bit 0 - 7) to 2ms */
+	rv |= tcpc_write(port, ANX7447_REG_CC_DEBOUNCE_TIME, 2);
+	if (rv)
+		return rv;
+
 #ifdef CONFIG_USB_PD_TCPM_MUX
 	/*
 	 * Run mux_set() here for considering CCD(Case-Closed Debugging) case
