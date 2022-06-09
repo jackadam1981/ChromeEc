@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "382e1f2d_ecd8c05a",
+        "filename": "driver/led/aw20198.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-09T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df0b5c2_f372d8cf",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 16
+      },
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c98f03e_a1706cca",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-08T15:31:51Z",
       "side": 1,
       "message": "nit: How about \u0027match the LED layout\u0027?",
+      "range": {
+        "startLine": 158,
+        "startChar": 27,
+        "endLine": 158,
+        "endChar": 63
+      },
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed64abce_8958d2d1",
+        "filename": "driver/led/aw20198.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-09T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c98f03e_a1706cca",
       "range": {
         "startLine": 158,
         "startChar": 27,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec16560_170adc73",
+        "filename": "driver/led/aw20198.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-09T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "847e9ea9_ecf89bcc",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 3
+      },
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf177756_176b0ac6",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4853c5d3_dc995765",
+        "filename": "driver/led/aw20198.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-09T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf177756_176b0ac6",
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91a3f810_ef8fd7d7",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-06-08T15:31:51Z",
       "side": 1,
       "message": "nit: can you align indentation (using tabs)?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "63541ab0a7b7b033313844332b650f426dd376e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ebbec47_da1c7233",
+        "filename": "driver/led/aw20198.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-09T01:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91a3f810_ef8fd7d7",
       "range": {
         "startLine": 20,
         "startChar": 0,
