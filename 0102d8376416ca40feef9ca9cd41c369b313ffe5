@@ -22,6 +22,30 @@
       },
       "revId": "0102d8376416ca40feef9ca9cd41c369b313ffe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7bee0d7_2dac74fe",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-06-09T09:00:21Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "68aa416c_7fff7da5",
+      "range": {
+        "startLine": 895,
+        "startChar": 8,
+        "endLine": 895,
+        "endChar": 9
+      },
+      "revId": "0102d8376416ca40feef9ca9cd41c369b313ffe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
