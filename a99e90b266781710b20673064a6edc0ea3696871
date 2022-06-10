@@ -88,6 +88,24 @@
       "parentUuid": "0ba51efd_821a4389",
       "revId": "a99e90b266781710b20673064a6edc0ea3696871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc6b4fdb_a694cbc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-06-10T08:43:26Z",
+      "side": 1,
+      "message": "In this stage,thermal team suggest 4700 rpm for this fan feature, so factory test change to the 4700 rpm, and ec must change the value(4700) to ensure it can over  4200 rpm to the thermal team\u0027s suggestion(4700 rpm).",
+      "parentUuid": "503de15a_3235b192",
+      "revId": "a99e90b266781710b20673064a6edc0ea3696871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
