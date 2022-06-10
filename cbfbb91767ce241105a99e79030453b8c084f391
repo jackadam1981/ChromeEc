@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66b43b9_0c938007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-10T16:23:46Z",
+      "side": 1,
+      "message": "/tmp/ccev3Z2u.ltrans0.ltrans.o: in function `board_init\u0027:\n/mnt/host/source/src/platform/ec/board/taniks/board.c:74: undefined reference to `rgbkbd_register_init_setting\u0027",
+      "revId": "cbfbb91767ce241105a99e79030453b8c084f391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
