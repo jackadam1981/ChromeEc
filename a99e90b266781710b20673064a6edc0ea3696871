@@ -16,6 +16,24 @@
       "message": "Where is the data coming from? Could you attach the spec?",
       "revId": "a99e90b266781710b20673064a6edc0ea3696871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d8f6ee_0e66741e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-06-10T05:26:56Z",
+      "side": 1,
+      "message": "Because this stage we don\u0027t have fan\u0027s spec, we need change rpm for the factory test. When we have the spec, we will provide as soon as possible.",
+      "parentUuid": "05e5b4b8_08849645",
+      "revId": "a99e90b266781710b20673064a6edc0ea3696871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
