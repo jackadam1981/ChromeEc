@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d40b6f2_ba46166b",
+        "filename": "baseboard/brya/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-10T03:51:31Z",
+      "side": 1,
+      "message": "Done. CL:3695792",
+      "parentUuid": "fde54b9f_3b7f5eb8",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "f56b6bf4c4f9c2cae4039098c0b3e06d05801838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5525404_2df60394",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99c8cf5_4f06c8ca",
+        "filename": "board/taniks/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-10T03:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5525404_2df60394",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 1
+      },
+      "revId": "f56b6bf4c4f9c2cae4039098c0b3e06d05801838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b67ccb9_a7aae05b",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-06-09T14:32:09Z",
       "side": 1,
       "message": "Since this CL removes CONFIG_TABLET_MODE_SWITCH - you can just delete the line...",
+      "revId": "f56b6bf4c4f9c2cae4039098c0b3e06d05801838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "162aa62c_27735cb1",
+        "filename": "board/taniks/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-10T03:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b67ccb9_a7aae05b",
       "revId": "f56b6bf4c4f9c2cae4039098c0b3e06d05801838",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
