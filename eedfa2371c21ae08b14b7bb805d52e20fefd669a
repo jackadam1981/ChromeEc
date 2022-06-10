@@ -63,6 +63,53 @@
       },
       "revId": "eedfa2371c21ae08b14b7bb805d52e20fefd669a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7679d39_fe56e302",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-10T20:48:38Z",
+      "side": 1,
+      "message": "The \"pd state\" command is frequently used in PD FAFT. Check:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/cros/servo/pd_console.py;l\u003d100\n\nLike Diana said, please run the PD FAFT suite to ensure not break any test.",
+      "parentUuid": "6952a1bd_d14de22e",
+      "range": {
+        "startLine": 164,
+        "startChar": 21,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "eedfa2371c21ae08b14b7bb805d52e20fefd669a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91bb1c8_2ba71953",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-10T20:48:38Z",
+      "side": 1,
+      "message": "What is this new cc_state?\n\nThe PD FAFT parses \"CC%d\" to get the polarity but now the polarity is moved to \"Pol%d\". I\u0027d prefer to pick a different string for this new cc_state for backward-compatibility, so we are able to run PD FAFT on devices already shipped (RO locked).",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 34
+      },
+      "revId": "eedfa2371c21ae08b14b7bb805d52e20fefd669a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
