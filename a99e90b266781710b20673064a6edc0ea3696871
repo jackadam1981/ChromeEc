@@ -52,6 +52,24 @@
       "parentUuid": "08d8f6ee_0e66741e",
       "revId": "a99e90b266781710b20673064a6edc0ea3696871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba51efd_821a4389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-06-10T06:02:24Z",
+      "side": 1,
+      "message": "Because the factory test need test the 4700 rpm, brya\u0027s default max value is 4200 , this will cause the test fail when max value is 4200. So we need change the max value to make sure fan can 4700 rpm.",
+      "parentUuid": "341a1f3c_b0fa125f",
+      "revId": "a99e90b266781710b20673064a6edc0ea3696871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
