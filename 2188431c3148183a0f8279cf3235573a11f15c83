@@ -22,6 +22,30 @@
       },
       "revId": "2188431c3148183a0f8279cf3235573a11f15c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ad083b_26012aef",
+        "filename": "driver/usb_mux/ps8743.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-06-10T07:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccd3efe8_de6de619",
+      "range": {
+        "startLine": 186,
+        "startChar": 21,
+        "endLine": 186,
+        "endChar": 49
+      },
+      "revId": "2188431c3148183a0f8279cf3235573a11f15c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
