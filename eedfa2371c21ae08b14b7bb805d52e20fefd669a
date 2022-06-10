@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07849336_73b81ca8",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-10T20:59:25Z",
+      "side": 1,
+      "message": "Okay thank you. As its not fixing anything may be I can add one more arg something like this\nif (!strcasecmp(argv[2], \"cc\")) \n  ccprintf(\"Port C%d CC%d\", port, pd_get_task_cc_state(port));",
+      "parentUuid": "b7679d39_fe56e302",
+      "range": {
+        "startLine": 164,
+        "startChar": 21,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "eedfa2371c21ae08b14b7bb805d52e20fefd669a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b91bb1c8_2ba71953",
         "filename": "common/usbc/usb_pd_console.c",
         "patchSetId": 1
