@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d3e385_dae2f49c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-10T03:41:15Z",
+      "side": 1,
+      "message": "on brya, we have extra code so that the same EC image\ncan support boards with and without the GPIO change based\non board ID.\n\nif supporting older boards is important,\ni suggest adding similar code here.",
+      "revId": "52c141128da29a6333aa16b34552b421fc2567fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
