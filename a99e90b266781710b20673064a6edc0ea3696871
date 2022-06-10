@@ -70,6 +70,24 @@
       "parentUuid": "341a1f3c_b0fa125f",
       "revId": "a99e90b266781710b20673064a6edc0ea3696871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503de15a_3235b192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-10T08:02:01Z",
+      "side": 1,
+      "message": "Why the factory need to test 4700rpm without a formal spec? If there is no spec, why don\u0027t you just set it as 4200rpm as the max value?",
+      "parentUuid": "0ba51efd_821a4389",
+      "revId": "a99e90b266781710b20673064a6edc0ea3696871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
