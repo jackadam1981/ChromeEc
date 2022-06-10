@@ -12,7 +12,9 @@ $(call set-option,CROSS_COMPILE,\
 	/opt/coreboot-sdk/bin/arm-eabi-)
 
 # FPU compilation flags
-CFLAGS_FPU-$(CONFIG_FPU)=-mfpu=fpv4-sp-d16 -mfloat-abi=hard
+# -mfpu=auto will choose correct hardware based on settings of -mcpu and -march
+# https://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html
+CFLAGS_FPU-$(CONFIG_FPU)=-mfpu=auto -mfloat-abi=hard
 
 # CPU specific compilation flags
 CFLAGS_CPU+=-mthumb
