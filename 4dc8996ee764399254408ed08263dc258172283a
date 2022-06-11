@@ -16,6 +16,74 @@
       "message": "Invite Andrew/Peter to review as well, thanks!",
       "revId": "4dc8996ee764399254408ed08263dc258172283a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a6d0e7_3ed90a9e",
+        "filename": "zephyr/projects/nissa/pujjo_cbi.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-11T19:06:57Z",
+      "side": 1,
+      "message": "Here and everywhere else, replace Nivviks with Pujjo.\nAlso, this file may not be required, since this was a proto requirement for nivviks only.",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b39525_a5e894e8",
+        "filename": "zephyr/projects/nissa/pujjo_motionsense.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-11T19:06:57Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this inverted node.",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6fe6e0_90158b1d",
+        "filename": "zephyr/projects/nissa/src/pujjo/form_factor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-11T19:06:57Z",
+      "side": 1,
+      "message": "So this file was only required because of the optional form factor of the proto nivviks. It may not be required.",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79cbc635_0c4e76c2",
+        "filename": "zephyr/projects/nissa/src/pujjo/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-11T19:06:57Z",
+      "side": 1,
+      "message": "There are some changes that went into nivviks recently, https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3701138\nMake sure these changes get in as well.",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
