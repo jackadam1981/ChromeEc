@@ -16,6 +16,24 @@
       "message": "/tmp/ccev3Z2u.ltrans0.ltrans.o: in function `board_init\u0027:\n/mnt/host/source/src/platform/ec/board/taniks/board.c:74: undefined reference to `rgbkbd_register_init_setting\u0027",
       "revId": "cbfbb91767ce241105a99e79030453b8c084f391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f24d47_02a7bce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-06-11T17:57:52Z",
+      "side": 1,
+      "message": "my local git branch code revert this CL:3606090 before, then can build pass. Keep debug about it.",
+      "parentUuid": "d66b43b9_0c938007",
+      "revId": "cbfbb91767ce241105a99e79030453b8c084f391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
