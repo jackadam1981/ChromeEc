@@ -81,6 +81,30 @@
       },
       "revId": "436062ef9eae3bd4fa0e78bc4067c17bdd720475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55905b46_cc88740b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-13T22:45:18Z",
+      "side": 1,
+      "message": "CONFIG_AP_POWER_CONTROL is now set in kconfig for zephyr builds, or config.h for legacy builds.",
+      "parentUuid": "85a1bd8b_60dd9028",
+      "range": {
+        "startLine": 1177,
+        "startChar": 0,
+        "endLine": 1177,
+        "endChar": 18
+      },
+      "revId": "436062ef9eae3bd4fa0e78bc4067c17bdd720475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
