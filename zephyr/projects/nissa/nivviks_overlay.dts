@@ -13,6 +13,10 @@
 		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
 	};
 
+	chosen {
+		zephyr,ec-host-interface = &host_cmd;
+	};
+
 	ec-console {
 		compatible = "ec-console";
 		disabled = "events", "lpc", "hostcmd";
@@ -294,6 +298,12 @@
 			<&gpiof 2 0>,
 			<&gpiof 3 0>;
 	 };
+
+	host_cmd: host-cmd {
+		compatible = "zephyr,ec-host-cmd-periph-espi";
+		label = "host-cmd-espi";
+		bus = <&espi0>;
+	};
 };
 
 &thermistor_3V3_51K1_47K_4050B {
