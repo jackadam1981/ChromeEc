@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4dbb093_32aa4c7d",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:33:14Z",
+      "side": 1,
+      "message": "will just remove as on mtlrvp port 0 and 1 are always paired",
+      "parentUuid": "4c746374_203ea528",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d899cab7_fdeddb73",
@@ -77,6 +101,24 @@
       "writtenOn": "2022-06-13T18:30:21Z",
       "side": 1,
       "message": "nit : Add it in NPCX CL",
+      "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af26ec74_2dffe32f",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:33:14Z",
+      "side": 1,
+      "message": "will just remove as mtlrvp 0 and 1 are paired",
+      "parentUuid": "d899cab7_fdeddb73",
       "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
