@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6301faa6_68e6eb7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-06-13T05:36:22Z",
+      "side": 1,
+      "message": "Suggest changing to Override keyboard layout for UK keyboard.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "dc73df0293f2d28292434c89f0a23a5d8e9dc906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a893974a_c6908af9",
+        "filename": "board/lantis/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-06-13T05:36:22Z",
+      "side": 1,
+      "message": "Lower case or chagne to board_update_keyboard_layout",
+      "range": {
+        "startLine": 607,
+        "startChar": 14,
+        "endLine": 607,
+        "endChar": 16
+      },
+      "revId": "dc73df0293f2d28292434c89f0a23a5d8e9dc906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
