@@ -116,6 +116,24 @@
       "parentUuid": "72e1cf68_770db977",
       "revId": "cc41726ab1701f661a30ef33cd5a2d17367b96c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7fe15b_15a8eefb",
+        "filename": "board/osiris/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-06-13T09:42:47Z",
+      "side": 1,
+      "message": "e.g. C_TO_K(78), C_TO_K(90), C_TO_K(75) from \"ZBR(OSIRIS)_EC-Table-0601\"",
+      "parentUuid": "3cd5be64_b7c00a46",
+      "revId": "cc41726ab1701f661a30ef33cd5a2d17367b96c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
