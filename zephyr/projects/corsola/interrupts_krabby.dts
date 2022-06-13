@@ -61,7 +61,7 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "icm42607_interrupt";
 		};
-		int_accel: accel {
+		int_lid_imu: lid_imu {
 			irq-pin = <&lid_accel_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "lis2dw12_interrupt";
