@@ -14,6 +14,7 @@
 #include "driver/charger/sm5803.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx_public.h"
+#include "driver/tcpm/rt1715_public.h"
 #include "driver/tcpm/tcpci.h"
 
 #include "nissa_common.h"
@@ -36,11 +37,9 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C1_TCPC,
-			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
+			.addr_flags = RT1715_I2C_ADDR_FLAGS,
 		},
-		.drv = &ps8xxx_tcpm_drv,
-		/* PS8745 implements TCPCI 2.0 */
-		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+		.drv = &rt1715_tcpm_drv,
 	},
 };
 
@@ -108,9 +107,9 @@ static void board_chargers_suspend(struct ap_power_ev_callback *const cb,
 		return;
 	}
 
-	fn(CHARGER_PRIMARY);
+	fn(0);
 	if (board_get_charger_chip_count() > 1)
-		fn(CHARGER_SECONDARY);
+		fn(1);
 }
 
 static int board_chargers_suspend_init(const struct device *unused)

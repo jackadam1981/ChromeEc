@@ -304,7 +304,7 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 		 */
 		rv |= validate_sink_safety(chgnum);
 
-		if (chgnum == CHARGER_PRIMARY) {
+		if (chgnum == 0) {
 			/* Magic for new silicon */
 			if (dev_id >= 3) {
 				rv |= main_write8(chgnum, 0x1F, 0x1);
@@ -331,19 +331,19 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 		} else {
 			if (dev_id >= 3) {
 				/* Touch of magic on the primary charger */
-				rv |= main_write8(CHARGER_PRIMARY, 0x1F, 0x1);
-				rv |= test_write8(CHARGER_PRIMARY, 0x44, 0x20);
-				rv |= main_write8(CHARGER_PRIMARY, 0x1F, 0x0);
+				rv |= main_write8(0, 0x1F, 0x1);
+				rv |= test_write8(0, 0x44, 0x20);
+				rv |= main_write8(0, 0x1F, 0x0);
 
 				/*
 				 * Disable linear, pre-charge, and linear fast
 				 * charge for primary charger.
 				 */
-				rv = chg_read8(CHARGER_PRIMARY,
+				rv = chg_read8(0,
 					       SM5803_REG_FLOW3, &regval);
 				regval &= ~(BIT(6) | BIT(5) | BIT(4));
 
-				rv |= chg_write8(CHARGER_PRIMARY,
+				rv |= chg_write8(0,
 						 SM5803_REG_FLOW3, regval);
 			}
 		}
@@ -351,20 +351,20 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 		/* Last but not least, enable sinking */
 		rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_SINK, MASK_SET);
 	} else {
-		if (chgnum == CHARGER_PRIMARY)
+		if (chgnum == 0)
 			rv |= sm5803_flow2_update(chgnum,
 						  SM5803_FLOW2_AUTO_ENABLED,
 						  MASK_CLR);
 
-		if (chgnum == CHARGER_SECONDARY) {
-			rv |= sm5803_flow1_update(CHARGER_PRIMARY,
+		if (chgnum == 1) {
+			rv |= sm5803_flow1_update(0,
 						  SM5803_FLOW1_LINEAR_CHARGE_EN,
 						  MASK_CLR);
 
-			rv = chg_read8(CHARGER_PRIMARY, SM5803_REG_FLOW3,
+			rv = chg_read8(0, SM5803_REG_FLOW3,
 				       &regval);
 			regval &= ~(BIT(6) | BIT(5) | BIT(4));
-			rv |= chg_write8(CHARGER_PRIMARY, SM5803_REG_FLOW3,
+			rv |= chg_write8(0, SM5803_REG_FLOW3,
 					 regval);
 		}
 
@@ -717,7 +717,7 @@ static void sm5803_init(int chgnum)
 	 */
 	rv |= chg_write8(chgnum, SM5803_REG_FLOW2, SM5803_FLOW2_HOST_MODE_EN);
 
-	if (chgnum == CHARGER_PRIMARY) {
+	if (chgnum == 0) {
 		int ibat_eoc_ma;
 
 		/* Set end of fast charge threshold */
@@ -728,7 +728,7 @@ static void sm5803_init(int chgnum)
 		rv |= chg_read8(chgnum, SM5803_REG_FAST_CONF5, &reg);
 		reg &= ~SM5803_CONF5_IBAT_EOC_TH;
 		reg |= ibat_eoc_ma;
-		rv |= chg_write8(CHARGER_PRIMARY, SM5803_REG_FAST_CONF5, reg);
+		rv |= chg_write8(0, SM5803_REG_FAST_CONF5, reg);
 
 		/* Setup the proper precharge thresholds. */
 		cells = batt_info->voltage_max / 4;
@@ -804,7 +804,7 @@ void sm5803_hibernate(int chgnum)
 	}
 
 	/* Disable LDO bits - note the primary LDO should not be disabled */
-	if (chgnum != CHARGER_PRIMARY) {
+	if (chgnum != 0) {
 		reg |= (BIT(0) | BIT(1));
 		rv |= main_write8(chgnum, SM5803_REG_REFERENCE, reg);
 	}
@@ -891,7 +891,7 @@ static enum ec_error_list sm5803_enable_linear_charge(int chgnum, bool enable)
 		 * current in case the battery moves beyond that threshold.
 		 */
 		batt_info = battery_get_info();
-		rv |= sm5803_set_current(CHARGER_PRIMARY,
+		rv |= sm5803_set_current(0,
 					 batt_info->precharge_current);
 
 		/* Enable linear charge mode. */
@@ -1142,19 +1142,19 @@ void sm5803_handle_interrupt(int chgnum)
 		}
 		platform_id &= SM5803_PLATFORM_ID;
 		act_chg = charge_manager_get_active_charge_port();
-		rv = meas_read8(CHARGER_PRIMARY,
+		rv = meas_read8(0,
 					SM5803_REG_VBATSNSP_MEAS_MSB,
 					&meas_reg);
 		if (rv)
 			return;
 		meas_volt = meas_reg << 2;
-		rv = meas_read8(CHARGER_PRIMARY,
+		rv = meas_read8(0,
 					SM5803_REG_VBATSNSP_MEAS_LSB,
 					&meas_reg);
 		if (rv)
 			return;
 		meas_volt |= meas_reg & 0x03;
-		rv = meas_read8(CHARGER_PRIMARY,
+		rv = meas_read8(0,
 			SM5803_REG_VBATSNSP_MAX_TH, &meas_reg);
 		if (rv)
 			return;
@@ -1163,7 +1163,7 @@ void sm5803_handle_interrupt(int chgnum)
 			/* 2S Battery */
 			CPRINTS("%s %d : VBAT_SNSP_HIGH_TH: %d mV ! - "
 				"VBAT %d mV",
-				CHARGER_NAME, CHARGER_PRIMARY,
+				CHARGER_NAME, 0,
 				meas_reg * 408/10,
 				meas_volt * 102/10);
 		}
@@ -1172,13 +1172,13 @@ void sm5803_handle_interrupt(int chgnum)
 			/* 3S Battery */
 			CPRINTS("%s %d : VBAT_SNSP_HIGH_TH: %d mV ! "
 				"- VBAT %d mV",
-				CHARGER_NAME, CHARGER_PRIMARY,
+				CHARGER_NAME, 0,
 				meas_reg * 616/10,
 				meas_volt * 154/10);
 		}
 
 		/* Set Vbat Threshold to Max value to re-arm the interrupt */
-		rv = meas_write8(CHARGER_PRIMARY,
+		rv = meas_write8(0,
 			SM5803_REG_VBATSNSP_MAX_TH, 0xFF);
 
 		/* Disable battery charge */
@@ -1186,13 +1186,13 @@ void sm5803_handle_interrupt(int chgnum)
 			MASK_CLR);
 		if (is_platform_id_2s(platform_id)) {
 			/* 2S battery: set VBAT_SENSP TH 9V */
-			rv |= meas_write8(CHARGER_PRIMARY,
+			rv |= meas_write8(0,
 				SM5803_REG_VBATSNSP_MAX_TH,
 				SM5803_VBAT_SNSP_MAXTH_2S_LEVEL);
 		}
 		if (is_platform_id_3s(platform_id)) {
 			/* 3S battery: set VBAT_SENSP TH 13.3V */
-			rv |= meas_write8(CHARGER_PRIMARY,
+			rv |= meas_write8(0,
 				SM5803_REG_VBATSNSP_MAX_TH,
 				SM5803_VBAT_SNSP_MAXTH_3S_LEVEL);
 		}
@@ -1252,7 +1252,7 @@ void sm5803_handle_interrupt(int chgnum)
 			hook_call_deferred(&sm5803_restart_charging_data,
 					   30 * SECOND);
 		} else if ((status_reg & SM5803_STATUS_CHG_OV_VBAT) &&
-						act_chg == CHARGER_PRIMARY) {
+						act_chg == 0) {
 			active_restart_port = act_chg;
 			hook_call_deferred(&sm5803_restart_charging_data,
 					   1 * SECOND);
@@ -1470,7 +1470,7 @@ static enum ec_error_list sm5803_set_voltage(int chgnum, int voltage)
 	rv |= chg_write8(chgnum, SM5803_REG_VBAT_FAST_LSB, (regval & 0x7));
 
 	/* Once battery is connected, set up fast charge enable */
-	if (fast_charge_disabled && chgnum == CHARGER_PRIMARY &&
+	if (fast_charge_disabled && chgnum == 0 &&
 	    battery_get_disconnect_state() == BATTERY_NOT_DISCONNECTED) {
 		rv = sm5803_flow2_update(chgnum,
 					 SM5803_FLOW2_AUTO_ENABLED,
@@ -1478,21 +1478,21 @@ static enum ec_error_list sm5803_set_voltage(int chgnum, int voltage)
 		fast_charge_disabled = false;
 	}
 
-	if (IS_ENABLED(CONFIG_OCPC) && chgnum != CHARGER_PRIMARY) {
+	if (IS_ENABLED(CONFIG_OCPC) && chgnum != 0) {
 		/*
 		 * Check to see if the BFET is enabled.  If not, enable it by
 		 * toggling linear mode on the primary charger.  The BFET can be
 		 * disabled if the system is powered up from an auxiliary charge
 		 * port and the battery is dead.
 		 */
-		rv |= chg_read8(CHARGER_PRIMARY, SM5803_REG_LOG1, &regval);
+		rv |= chg_read8(0, SM5803_REG_LOG1, &regval);
 		if (!(regval & SM5803_BATFET_ON) && !attempt_bfet_enable) {
 			CPRINTS("SM5803: Attempting to turn on BFET");
 			cflush();
-			rv |= sm5803_flow1_update(CHARGER_PRIMARY,
+			rv |= sm5803_flow1_update(0,
 						  SM5803_FLOW1_LINEAR_CHARGE_EN,
 						  MASK_SET);
-			rv |= sm5803_flow1_update(CHARGER_PRIMARY,
+			rv |= sm5803_flow1_update(0,
 						  SM5803_FLOW1_LINEAR_CHARGE_EN,
 						  MASK_CLR);
 			attempt_bfet_enable = 1;
