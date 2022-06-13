@@ -16,6 +16,24 @@
       "message": "is there a bug related to this?",
       "revId": "3609eef5c0f73173d3abb9d4baa8edae58a8cf1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34553f92_d649e559",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-13T23:15:43Z",
+      "side": 1,
+      "message": "+1, pre-upload should have failed due to the missing BUG\u003d",
+      "parentUuid": "8a418c2a_2099e348",
+      "revId": "3609eef5c0f73173d3abb9d4baa8edae58a8cf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
