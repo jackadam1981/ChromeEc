@@ -60,6 +60,10 @@
  */
 #define CONFIG_LED_DRIVER_OZ554
 
+/* EC Defines */
+#define CONFIG_DEDICATED_RECOVERY_BUTTON
+#define CONFIG_EMULATED_SYSRQ
+
 /* Unused Features */
 #define CONFIG_POWER_BUTTON_IGNORE_LID
 #undef CONFIG_BACKLIGHT_LID
@@ -131,6 +135,7 @@ enum charge_port {
 
 /* Pin renaming */
 #define GPIO_AC_PRESENT		GPIO_BJ_ADP_PRESENT_L
+#define GPIO_RECOVERY_L         GPIO_EC_RECOVERY_BTN_ODL
 
 #endif /* !__ASSEMBLER__ */
 
