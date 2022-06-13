@@ -16,6 +16,29 @@
       "message": "Thanks, swapped the names and added copyright.",
       "revId": "fcbaec362f41011b1576fb733c03ccb114a17a5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e03e7f_c203d39c",
+        "filename": "zephyr/projects/herobrine/prj_hoglin.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-13T22:35:03Z",
+      "side": 1,
+      "message": "You can change these configs in `prj.conf` as default. No project makes the difference. Please also remove the `src/led.c` and its references. A follow-up CL is fine.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "fcbaec362f41011b1576fb733c03ccb114a17a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
