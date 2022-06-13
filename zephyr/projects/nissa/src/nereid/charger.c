@@ -49,8 +49,8 @@ __override void board_hibernate(void)
 {
 	/* Shut down the chargers */
 	if (board_get_usb_pd_port_count() == 2)
-		sm5803_hibernate(CHARGER_SECONDARY);
-	sm5803_hibernate(CHARGER_PRIMARY);
+		sm5803_hibernate(1);
+	sm5803_hibernate(0);
 	LOG_INF("Charger(s) hibernated");
 	cflush();
 }

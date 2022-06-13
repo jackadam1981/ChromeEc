@@ -108,9 +108,9 @@ static void board_chargers_suspend(struct ap_power_ev_callback *const cb,
 		return;
 	}
 
-	fn(CHARGER_PRIMARY);
+	fn(0);
 	if (board_get_charger_chip_count() > 1)
-		fn(CHARGER_SECONDARY);
+		fn(1);
 }
 
 static int board_chargers_suspend_init(const struct device *unused)
