@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7ea4b6d_10d5a1d7",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-13T20:32:11Z",
+      "side": 1,
+      "message": "I think we don\u0027t have to wait endlessly(any reason to make it call forever?) for usb_mux_set_completed() to return true. The reason is host only waits 300ms for the result, if timeout, an error will be returned. So here I modified to wait 300ms for mux set is completed.\nlast_result_mux_get() and retry_online() use the same wait now.",
+      "parentUuid": "3be04f9b_066fd4ec",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "765bc33b_0db3110f",
         "filename": "common/usbc/usb_retimer_fw_update.c",
         "patchSetId": 3
@@ -164,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "954fd3ef_e98646ec",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-13T20:32:11Z",
+      "side": 1,
+      "message": "Added the retimer_port_state, removed ports_online_requested.\n\n@Raj, when retry_online is called, the port is checked already. \nif (retimer_fw_update_get_port_state(i) \u003d\u003d\n\t\tRETIMER_ONLINE_REQUESTED) {\n\t\t\tretry_online",
+      "parentUuid": "78fc38db_83218195",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 31
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "627e1313_95194d12",
@@ -177,6 +225,30 @@
       "writtenOn": "2022-06-02T21:36:41Z",
       "side": 1,
       "message": "Nit - you don\u0027t need the forward reference here.  You can just add the DECLARE_DEFERRED after the `retimer_check_online()` definition at line 194.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b955ab_2e9ccd7b",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-13T20:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "627e1313_95194d12",
       "range": {
         "startLine": 173,
         "startChar": 0,
@@ -234,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2175b97e_cf8f7c71",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-13T20:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c4b2c2e_ffbe4946",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 53
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29380be3_e8c2da9b",
@@ -247,6 +343,30 @@
       "writtenOn": "2022-06-03T16:45:24Z",
       "side": 1,
       "message": "Is this comment still accurate?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 0
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972233ea_8176d223",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-13T20:32:11Z",
+      "side": 1,
+      "message": "Updated the comments.",
+      "parentUuid": "29380be3_e8c2da9b",
       "range": {
         "startLine": 284,
         "startChar": 0,
