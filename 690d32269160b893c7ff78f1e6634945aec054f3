@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36da9462_3825bd25",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-13T15:22:04Z",
+      "side": 1,
+      "message": "Don\u0027t we need arbitrate two processes on the host contending over one chip or another? We return \u0027bus busy\u0027 or something?",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 2
+      },
+      "revId": "690d32269160b893c7ff78f1e6634945aec054f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8361ce_d894046c",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-13T15:22:04Z",
+      "side": 1,
+      "message": "nit: Is this needed? Can it be called just \u0027chip select\u0027 packet?",
+      "range": {
+        "startLine": 235,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 22
+      },
+      "revId": "690d32269160b893c7ff78f1e6634945aec054f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca77d4f_dfb4655e",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-13T15:22:04Z",
+      "side": 1,
+      "message": "nit",
+      "range": {
+        "startLine": 241,
+        "startChar": 68,
+        "endLine": 241,
+        "endChar": 69
+      },
+      "revId": "690d32269160b893c7ff78f1e6634945aec054f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
