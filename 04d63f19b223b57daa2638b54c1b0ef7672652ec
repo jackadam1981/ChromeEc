@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1dfb717_ebbbcd74",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/battery.dts",
+        "patchSetId": 34
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "separating out and will submit in new patch",
+      "parentUuid": "3b79dcbb_42aab41e",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6391ae0c_9f92b26a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-10T16:53:31Z",
       "side": 1,
       "message": "add a space after the :\n\nI also think it\u0027s conventional to only use lowercase only for node names and aliases, would it be possible to change these in a separate patch?",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 25
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b28d035_e7747ec6",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 34
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "Will just update them in this patch since they are the definitions for the Nuvoton port gpios",
+      "parentUuid": "6391ae0c_9f92b26a",
       "range": {
         "startLine": 348,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "791c5f3e_f132f6d9",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 34
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "Initial patch had incorrect ioex locations for the ports (other platforms use 0x70 and code was based on that) These are the correct locations for the RVP platform",
+      "parentUuid": "e8a7fbdf_700f8b96",
+      "range": {
+        "startLine": 352,
+        "startChar": 9,
+        "endLine": 352,
+        "endChar": 13
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2468bfa9_b07897ad",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-10T16:53:31Z",
       "side": 1,
       "message": "separate charger patch?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff1de14_7253270a",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 34
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "The usb charger code relies heavily on the type c code hence adding it all as one patch",
+      "parentUuid": "2468bfa9_b07897ad",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e41967_b8e753f9",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "will expand to virtual wire...there will probably be no changes here as we don\u0027t really care about this on RVP",
+      "parentUuid": "f7ae0004_0a0e68dd",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0080a0e_0fb763b3",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-06-10T16:53:31Z",
       "side": 1,
       "message": "redundant comment, spells exactly the function name, drop it",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 18
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb79b14_560dce6f",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0080a0e_0fb763b3",
       "range": {
         "startLine": 115,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ae999a_da3252ff",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6664cd1b_4cc671ae",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "366f0fda_b5fed2c7",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-06-10T16:53:31Z",
       "side": 1,
       "message": "nit: bring to the previous line",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 29
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e919f1_98ef6ecb",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366f0fda_b5fed2c7",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39bd3010_70c316cd",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd55b40_66005ce8",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd485b5b_2de0799c",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-06-10T16:53:31Z",
       "side": 1,
       "message": "bit of a personal choice but I think this would be easier to read if you use an \"if\" specifically, it\u0027s not like you need a ternary anyway\n\n```\nif (tcpc_aic_gpios[port].ppc_intr_handler)\n        return ppc_is_sourcing_vbus(port);\nelse\n        return tcpc_config[port].drv-\u003eget_src_ctrl(port);\n```",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "04d63f19b223b57daa2638b54c1b0ef7672652ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86c83f1_d5419d22",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-13T18:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd485b5b_2de0799c",
       "range": {
         "startLine": 85,
         "startChar": 0,
