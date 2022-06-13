@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a236482b_addc47e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-06-13T21:11:54Z",
+      "side": 1,
+      "message": "Interesting that the `number of bytes in RAM still available` remains the same, although the `number of bytes in flash` went up.",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "365db0a198b35e5c15dd911c889fdaab77d54188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
