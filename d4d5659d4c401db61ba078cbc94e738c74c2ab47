@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a174e036_537ca756",
+        "filename": "common/base64.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-06-13T21:26:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dcb6d75d_c7a00f88",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "d4d5659d4c401db61ba078cbc94e738c74c2ab47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "714b9052_4b374038",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "added a couple of #defines to make things clearer.",
       "parentUuid": "714b9052_4b374038",
+      "revId": "d4d5659d4c401db61ba078cbc94e738c74c2ab47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c63d5c84_ed00207e",
+        "filename": "common/base64.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-06-13T21:26:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2b76f3d_a6809bc8",
       "revId": "d4d5659d4c401db61ba078cbc94e738c74c2ab47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

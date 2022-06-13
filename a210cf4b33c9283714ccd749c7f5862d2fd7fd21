@@ -16,6 +16,24 @@
       "message": "While I have no objections on adding it, I noticed in the code. Sure, Base64 would need fewer symbols, but do we really have any use for it?\n\n```\n/* Support base32 text encoding */\n#undef CONFIG_BASE32\n```",
       "revId": "a210cf4b33c9283714ccd749c7f5862d2fd7fd21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ce9e6c_cd0cb6ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-06-13T21:26:56Z",
+      "side": 1,
+      "message": "base64 will be used to generate certificates in pem form.",
+      "parentUuid": "9cd07db8_0a211888",
+      "revId": "a210cf4b33c9283714ccd749c7f5862d2fd7fd21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
