@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65434716_9a98b89c",
+        "filename": "board/banshee/keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-06-13T18:27:10Z",
+      "side": 1,
+      "message": "Remove this, please don\u0027t use phases (evt/dvt/...) in codebase. Use id1, id2, etc instead",
+      "range": {
+        "startLine": 47,
+        "startChar": 56,
+        "endLine": 47,
+        "endChar": 60
+      },
+      "revId": "b2b262fd2c9786d36df7c4790eee60bea8e0be28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
