@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19881935_cdf3bc1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-13T18:34:14Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "73a14637b96eb9ff752f134e6379529f583eb66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f58b57_b9b0b3ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-13T18:34:14Z",
+      "side": 1,
+      "message": "MTLRVP uses same battery as used in ADLRVP hence reuse the ADLRVP battery aliases",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "73a14637b96eb9ff752f134e6379529f583eb66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6712725_b4d07339",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-13T18:34:14Z",
+      "side": 1,
+      "message": "TEST\u003dBattery console command works on MTLRVP",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "73a14637b96eb9ff752f134e6379529f583eb66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
