@@ -16,6 +16,40 @@
       "message": "Could you please review the change for Hoglin LED indicator in different states. It is pretty much copy of villager board with very minor modifications. Thanks.",
       "revId": "d9a96257ca4fbb9cd645b78c3e9bdcf053bb36d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b5d1c8_1326caa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-13T16:23:52Z",
+      "side": 1,
+      "message": "led_policy_hoglin.dts and led_pins_hoglin.dts file names have been interchanged. File that has gpio_led_pins node should be led_pins_hoglin.dts and one with led-colors node should be led_policy_hoglin.dts. ",
+      "revId": "d9a96257ca4fbb9cd645b78c3e9bdcf053bb36d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200fad58_001da6ac",
+        "filename": "zephyr/projects/herobrine/led_pins_hoglin.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-13T16:23:52Z",
+      "side": 1,
+      "message": "Please add Copyright notice.",
+      "revId": "d9a96257ca4fbb9cd645b78c3e9bdcf053bb36d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
