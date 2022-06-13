@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcb6d75d_c7a00f88",
+        "filename": "common/base64.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-06-13T18:47:11Z",
+      "side": 1,
+      "message": "this function results in a single encoded 4 character block. The input is expected to be three bytes, but in case the input buffer size is not evenly divisible by 3 the last input could be shorter than 3 bytes.\n\nThe calling function splits the original binary input text into 3 byte quantities until the last one, which could be shorter.",
+      "parentUuid": "767cc1be_a99a2c4b",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "d4d5659d4c401db61ba078cbc94e738c74c2ab47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "714b9052_4b374038",
         "filename": "common/base64.c",
         "patchSetId": 4
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-13T18:31:01Z",
       "side": 1,
       "message": "Maybe a comment that 3 is to make sure in_length is less than the size of uint32_t",
+      "revId": "d4d5659d4c401db61ba078cbc94e738c74c2ab47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b76f3d_a6809bc8",
+        "filename": "common/base64.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-06-13T18:47:11Z",
+      "side": 1,
+      "message": "added a couple of #defines to make things clearer.",
+      "parentUuid": "714b9052_4b374038",
       "revId": "d4d5659d4c401db61ba078cbc94e738c74c2ab47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
