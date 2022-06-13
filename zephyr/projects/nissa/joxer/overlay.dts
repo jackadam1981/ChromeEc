@@ -12,6 +12,10 @@
 		int-wp = &int_wp_l;
 	};
 
+	chosen {
+		zephyr,ec-host-interface = &host_cmd;
+	};
+
 	ec-console {
 		compatible = "ec-console";
 		disabled = "events", "lpc", "hostcmd";
@@ -280,6 +284,7 @@
 			};
 		};
 	};
+
 	fans {
 		compatible = "cros-ec,fans";
 
@@ -291,6 +296,12 @@
 			rpm_max = <6500>;
 			enable_gpio = <&gpio_fan_enable>;
 		};
+	};
+
+	host_cmd: host-cmd {
+		compatible = "zephyr,ec-host-cmd-periph-espi";
+		label = "host-cmd-espi";
+		bus = <&espi0>;
 	};
 };
 
