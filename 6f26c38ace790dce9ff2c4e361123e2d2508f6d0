@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0c9913_90ab91b8",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-06-13T01:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7e3b0694_6b41b995",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "6f26c38ace790dce9ff2c4e361123e2d2508f6d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b72b7d6f_453922cc",
