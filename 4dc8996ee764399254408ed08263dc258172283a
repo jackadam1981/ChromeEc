@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2b952d_8ac68245",
+        "filename": "zephyr/projects/nissa/pujjo_cbi.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-06-13T12:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83a6d0e7_3ed90a9e",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29b39525_a5e894e8",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-11T19:06:57Z",
       "side": 1,
       "message": "I don\u0027t think you need this inverted node.",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef16169_71e04360",
+        "filename": "zephyr/projects/nissa/pujjo_motionsense.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-06-13T12:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29b39525_a5e894e8",
       "revId": "4dc8996ee764399254408ed08263dc258172283a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff5f48f_ff7c762f",
+        "filename": "zephyr/projects/nissa/pujjo_overlay.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-06-13T12:34:24Z",
+      "side": 1,
+      "message": "We are now following nivviks settings just for template.\nAlthough pujjo has fixed configuration for 3 sub-boards, we still cannot remove the aliases node due to there are gpio defines in common code sub_board.c.\nMay need to discuss how to modify this part to match the schematic.",
+      "parentUuid": "3cf0eb82_5f10a777",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c6fe6e0_90158b1d",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-06-11T19:06:57Z",
       "side": 1,
       "message": "So this file was only required because of the optional form factor of the proto nivviks. It may not be required.",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24755a66_84a0278f",
+        "filename": "zephyr/projects/nissa/src/pujjo/form_factor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-06-13T12:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6fe6e0_90158b1d",
       "revId": "4dc8996ee764399254408ed08263dc258172283a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41761673_a64974e4",
+        "filename": "zephyr/projects/nissa/src/pujjo/keyboard.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-06-13T12:34:24Z",
+      "side": 1,
+      "message": "Currently we still don\u0027t have keyboard layout to follow, we will confirm it once it is launched",
+      "parentUuid": "3f248f08_448e1ff1",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79cbc635_0c4e76c2",
@@ -116,6 +206,24 @@
       "writtenOn": "2022-06-11T19:06:57Z",
       "side": 1,
       "message": "There are some changes that went into nivviks recently, https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3701138\nMake sure these changes get in as well.",
+      "revId": "4dc8996ee764399254408ed08263dc258172283a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b40f574_317ed4c8",
+        "filename": "zephyr/projects/nissa/src/pujjo/usbc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-06-13T12:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cbc635_0c4e76c2",
       "revId": "4dc8996ee764399254408ed08263dc258172283a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
