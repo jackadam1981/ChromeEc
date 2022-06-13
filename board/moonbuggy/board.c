@@ -347,7 +347,16 @@ static void board_init(void)
 	 * button is not available.
 	 */
 	if (board_version < 2)
+<<<<<<< HEAD   (59763d dooly: update GPIO status in HOOK_INIT)
 		button_disable_gpio(GPIO_EC_RECOVERY_BTN_ODL);
+=======
+		button_disable_gpio(BUTTON_RECOVERY);
+
+	/* ADS GPIO interrupt enable*/
+	gpio_enable_interrupt(GPIO_ADS_5VS_V2_ADP_PRESENT_L);
+	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
+
+>>>>>>> CHANGE (1e103a moonbuggy: enable ADS control interrupt)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
