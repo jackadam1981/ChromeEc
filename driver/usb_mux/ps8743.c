@@ -168,6 +168,18 @@ const struct usb_mux_driver ps8743_usb_mux_driver = {
 	.get = ps8743_get_mux,
 };
 
+static bool ps8743_port_is_usb_mode_only(const struct usb_mux *me)
+{
+	int val;
+
+	if (ps8743_read(me, PS8743_MISC_HPD_DP_USB_FLIP, &val))
+		return false;
+
+	val &= (PS8743_USB_MODE_STATUS | PS8743_DP_MODE_STATUS);
+
+	return val == PS8743_USB_MODE_STATUS;
+}
+
 static bool ps8743_port_is_usb2_only(const struct usb_mux *me)
 {
 	int val;
@@ -190,12 +202,14 @@ static void ps8743_update_usb_mode_all(bool is_resume)
 		if (mux->driver != &ps8743_usb_mux_driver)
 			continue;
 
-		if (is_resume) {
-			ps8743_field_update(mux, PS8743_REG_MODE,
-					    PS8743_MODE_USB_ENABLE, 0xFF);
-		} else if (ps8743_port_is_usb2_only(mux)) {
-			ps8743_field_update(mux, PS8743_REG_MODE,
-					    PS8743_MODE_USB_ENABLE, 0);
+		if (!ps8743_port_is_usb_mode_only(mux))
+			continue;
+
+		/* Only apply power optimization if only usb2 device presents */
+		if (ps8743_port_is_usb2_only(mux)) {
+			ps8743_field_update(
+				mux, PS8743_REG_MODE, PS8743_MODE_USB_ENABLE,
+				is_resume ? PS8743_MODE_USB_ENABLE : 0);
 		}
 	}
 }
