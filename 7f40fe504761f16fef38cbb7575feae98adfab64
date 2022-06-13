@@ -22,6 +22,30 @@
       },
       "revId": "7f40fe504761f16fef38cbb7575feae98adfab64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d0ba21_bdf39341",
+        "filename": "driver/usb_mux/ps8743.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-06-13T10:14:26Z",
+      "side": 1,
+      "message": "The usb mode bit is zero, so it is a bug here. Fixed in the next patchset.",
+      "parentUuid": "1040b6cb_73dbe1f2",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 41
+      },
+      "revId": "7f40fe504761f16fef38cbb7575feae98adfab64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
