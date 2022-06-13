@@ -46,6 +46,40 @@
       },
       "revId": "cc41726ab1701f661a30ef33cd5a2d17367b96c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a6c722f_0a705a6c",
+        "filename": "board/osiris/fans.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-06-13T09:01:54Z",
+      "side": 1,
+      "message": "Please modify comment to match the code definition if possible.\nThis value should comes from https://b.corp.google.com/issues/234545460#comment2?",
+      "revId": "cc41726ab1701f661a30ef33cd5a2d17367b96c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e1cf68_770db977",
+        "filename": "board/osiris/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-06-13T09:01:54Z",
+      "side": 1,
+      "message": "Please modify comment to match the code definition if possible.\nThis value should comes from https://b.corp.google.com/issues/234545460#comment2?",
+      "revId": "cc41726ab1701f661a30ef33cd5a2d17367b96c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
