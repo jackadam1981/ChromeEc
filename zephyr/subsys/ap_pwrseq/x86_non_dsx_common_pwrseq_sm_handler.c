@@ -11,6 +11,7 @@ static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack,
 			CONFIG_AP_PWRSEQ_STACK_SIZE);
 static struct k_thread pwrseq_thread_data;
 static struct pwrseq_context pwrseq_ctx;
+
 /* S5 inactive timer*/
 K_TIMER_DEFINE(s5_inactive_timer, NULL, NULL);
 
@@ -231,7 +232,7 @@ static int common_pwr_sm_run(int state)
 			if (k_timer_status_get(&s5_inactive_timer) > 0)
 				/* Timer is expired */
 				return SYS_POWER_STATE_S5G3;
-			else if (k_timer_remaining_get(
+			else if (k_timer_remaining_ticks(
 						&s5_inactive_timer) == 0)
 				/* Timer is not started or stopped */
 				k_timer_start(&s5_inactive_timer,
