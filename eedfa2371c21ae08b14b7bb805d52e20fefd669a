@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3daaf866_2bd74e8c",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-13T16:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07849336_73b81ca8",
+      "range": {
+        "startLine": 164,
+        "startChar": 21,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "eedfa2371c21ae08b14b7bb805d52e20fefd669a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b91bb1c8_2ba71953",
