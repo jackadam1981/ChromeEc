@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea381c3_2616914c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-06-13T06:24:18Z",
+      "side": 1,
+      "message": "Since the board drawcia_riscv does not exist on the branch, manually fix the cherry-pick conflict.\n\nAlso verified the below items on the Hayato:\n- boots kernel.\n- battery charge/discharge.\n- keyboard works.\n- console command of \u0027crash divzero\u0027.\n- run suspend_stress_test over 10000 times.",
+      "revId": "ad2dac45f9ab13780723639935b36232503a8245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
