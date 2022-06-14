@@ -15,6 +15,7 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "power_button.h"
 #include "stdbool.h"
 #include "system.h"
 #include "task.h"
@@ -278,6 +279,7 @@ enum usb_pe_state {
 	PE_GIVE_BATTERY_STATUS,
 	PE_GIVE_STATUS,
 	PE_SEND_ALERT,
+	PE_ALERT_RECEIVED,
 	PE_SRC_CHUNK_RECEIVED,
 	PE_SNK_CHUNK_RECEIVED,
 	PE_VCS_FORCE_VCONN,
@@ -403,6 +405,7 @@ __maybe_unused static __const_data const char * const pe_state_names[] = {
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
 	[PE_GIVE_STATUS] = "PE_Give_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
+	[PE_ALERT_RECEIVED] = "PE_Alert_Received",
 #else
 	[PE_SRC_CHUNK_RECEIVED] = "PE_SRC_Chunk_Received",
 	[PE_SNK_CHUNK_RECEIVED] = "PE_SNK_Chunk_Received",
@@ -451,6 +454,8 @@ GEN_NOT_SUPPORTED(PE_SNK_CHUNK_RECEIVED);
 #define PE_SNK_CHUNK_RECEIVED PE_SNK_CHUNK_RECEIVED_NOT_SUPPORTED
 GEN_NOT_SUPPORTED(PE_GET_REVISION);
 #define PE_GET_REVISION PE_GET_REVISION_NOT_SUPPORTED
+GEN_NOT_SUPPORTED(PE_ALERT_RECEIVED);
+#define PE_ALERT_RECEIVED PE_ALERT_RECEIVED_NOT_SUPPORTED
 #endif /* CONFIG_USB_PD_REV30 */
 
 #if !defined(CONFIG_USBC_VCONN) || !defined(CONFIG_USB_PD_REV30)
@@ -2765,6 +2770,11 @@ static void pe_src_ready_run(int port)
 			case PD_DATA_BIST:
 				set_state_pe(port, PE_BIST_TX);
 				return;
+#ifdef CONFIG_USB_PD_REV30
+			case PD_DATA_ALERT:
+				set_state_pe(port, PE_ALERT_RECEIVED);
+				return;
+#endif /* CONFIG_USB_PD_REV30 */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 				return;
@@ -3613,6 +3623,11 @@ static void pe_snk_ready_run(int port)
 			case PD_DATA_BIST:
 				set_state_pe(port, PE_BIST_TX);
 				break;
+#ifdef CONFIG_USB_PD_REV30
+			case PD_DATA_ALERT:
+				set_state_pe(port, PE_ALERT_RECEIVED);
+				return;
+#endif /* CONFIG_USB_PD_REV30 */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -4411,6 +4426,20 @@ static void pe_send_alert_run(int port)
 		pe_set_ready_state(port);
 	}
 }
+
+/**
+ * PE_SNK_Source_Alert_Received and
+ * PE_SRC_Sink_Alert_Received
+ */
+static void pe_alert_received_entry(int port)
+{
+	uint32_t *ado = (uint32_t *)rx_emsg[port].buf;
+
+	print_current_state(port);
+	dpm_handle_alert(port, *ado);
+	pe_set_ready_state(port);
+}
+
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 /**
@@ -8178,6 +8207,9 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_SEND_ALERT] = {
 		.entry = pe_send_alert_entry,
 		.run   = pe_send_alert_run,
+	},
+	[PE_ALERT_RECEIVED] = {
+		.entry = pe_alert_received_entry,
 	},
 #else
 	[PE_SRC_CHUNK_RECEIVED] = {

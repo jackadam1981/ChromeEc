@@ -1273,16 +1273,17 @@ enum pd_ext_msg_type {
 };
 
 /* Alert Data Object fields for REV 3.1 */
-#define ADO_EXTENDED_ALERT_EVENT        (BIT(24) << 7)
+#define ADO_EXTENDED_ALERT_EVENT         (BIT(24) << 7)
+#define ADO_EXTENDED_ALERT_EVENT_TYPE(n) (n & 0xf)
 /* Alert Data Object fields for REV 3.0 */
-#define ADO_OVP_EVENT                   (BIT(24) << 6)
-#define ADO_SOURCE_INPUT_CHANGE         (BIT(24) << 5)
-#define ADO_OPERATING_CONDITION_CHANGE  (BIT(24) << 4)
-#define ADO_OTP_EVENT                   (BIT(24) << 3)
-#define ADO_OCP_EVENT                   (BIT(24) << 2)
-#define ADO_BATTERY_STATUS_CHANGE       (BIT(24) << 1)
-#define ADO_FIXED_BATTERIES(n)          ((n & 0xf) << 20)
-#define ADO_HOT_SWAPPABLE_BATTERIES(n)  ((n & 0xf) << 16)
+#define ADO_OVP_EVENT                    (BIT(24) << 6)
+#define ADO_SOURCE_INPUT_CHANGE          (BIT(24) << 5)
+#define ADO_OPERATING_CONDITION_CHANGE   (BIT(24) << 4)
+#define ADO_OTP_EVENT                    (BIT(24) << 3)
+#define ADO_OCP_EVENT                    (BIT(24) << 2)
+#define ADO_BATTERY_STATUS_CHANGE        (BIT(24) << 1)
+#define ADO_FIXED_BATTERIES(n)           ((n & 0xf) << 20)
+#define ADO_HOT_SWAPPABLE_BATTERIES(n)   ((n & 0xf) << 16)
 
 /* Extended alert event types for REV 3.1 */
 enum ado_extended_alert_event_type {
