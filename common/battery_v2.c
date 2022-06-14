@@ -368,11 +368,16 @@ void update_dynamic_battery_info(void)
 	tmp |= curr->batt_is_charging ? EC_BATT_FLAG_CHARGING :
 				       EC_BATT_FLAG_DISCHARGING;
 
+	if (battery_is_cut_off())
+		tmp |= EC_BATT_CUT_OFF_ENABLED;
+
 	/* Tell the AP to re-read battery status if charge state changes */
 	if (bd->flags != tmp)
 		send_batt_status_event++;
 
 	bd->flags = tmp;
+
+	bd->battery_cut_off = battery_is_cut_off();
 
 #ifdef HAS_TASK_HOSTCMD
 	battery_memmap_refresh(BATT_IDX_MAIN);
