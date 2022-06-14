@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2061377b_05ed13d0",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:10:08Z",
+      "side": 1,
+      "message": "Does it make sense to move this handling upstream?",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 0
+      },
+      "revId": "772e41ac28b87db9b174ab723352c10df232bc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5adb2694_c236e9b9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:10:08Z",
+      "side": 1,
+      "message": "Add space between #include and filename.",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 8
+      },
+      "revId": "772e41ac28b87db9b174ab723352c10df232bc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a9d59f_696498e4",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:10:08Z",
+      "side": 1,
+      "message": "Is there a plan to use `EC_HOST_CMD_HANDLER` when appropriate?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "772e41ac28b87db9b174ab723352c10df232bc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
