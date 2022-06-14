@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef4a74f_7294d575",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:54:09Z",
+      "side": 1,
+      "message": "This node seems to be redundant.  Why are both `alt-usb-mux-chain` and `alt-usb-mux` nodes required?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 4
+      },
+      "revId": "217d33c9206054b0b22ae62754224f7a277f7545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
