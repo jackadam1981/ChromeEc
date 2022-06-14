@@ -243,6 +243,15 @@ int pd_broadcast_alert_msg(uint32_t ado);
 int pd_send_alert_msg(int port, uint32_t ado);
 
 /**
+ * Handles USB PD button release alerts by determining press type (short, long
+ * or invalid) and triggering the appropriate response based on power state.
+ *
+ * @param press_time - USB PD button press time returned by get_time().val
+ * @param release_time - USB PD button release time returned by get_time().val
+ */
+void handle_pd_button_release(uint64_t press_time, uint64_t release_time);
+
+/**
  * Sets up a hard reset to send on the port
  *
  * @param port - the port to send the hard reset on

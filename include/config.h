@@ -4968,6 +4968,18 @@
 #define CONFIG_USB_PD_TEMP_SENSOR 0
 
 /*
+ * Time limit in ms for USB PD power button press to be considered a short
+ * press. Defaults to 4000.
+ */
+#define CONFIG_USB_PD_SHORT_PRESS_LIMIT 4000
+
+/*
+ * Time limit for USB PD power button press to be considered a long press.
+ * Any press length beyond this is invalid. Defaults to 8000.
+ */
+#define CONFIG_USB_PD_LONG_PRESS_LIMIT 8000
+
+/*
  * Set the minimum battery percentage to allow a PD port to send resets as a
  * sink (and risk a hard reset, losing Vbus).  Note this may cause a high-power
  * charger to appear as only a low-power 15W charger until a reset is sent to
