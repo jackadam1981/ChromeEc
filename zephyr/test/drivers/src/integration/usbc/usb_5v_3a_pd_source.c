@@ -6,8 +6,10 @@
 #include <ztest.h>
 
 #include "battery_smart.h"
+#include "chipset.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
+#include "emul/tcpc/emul_tcpci_partner_common.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "hooks.h"
 #include "test/drivers/stubs.h"
@@ -58,6 +60,9 @@ static void usb_attach_5v_3a_pd_source_before(void *data)
 
 	connect_source_to_port(&fixture->source_5v_3a, &fixture->src_ext, 1,
 			       fixture->tcpci_emul, fixture->charger_emul);
+
+	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
+	tcpci_src_emul_clear_status_received(&fixture->src_ext);
 }
 
 static void usb_attach_5v_3a_pd_source_after(void *data)
@@ -65,6 +70,9 @@ static void usb_attach_5v_3a_pd_source_after(void *data)
 	struct usb_attach_5v_3a_pd_source_fixture *fixture = data;
 
 	disconnect_source_from_port(fixture->tcpci_emul, fixture->charger_emul);
+
+	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
+	tcpci_src_emul_clear_status_received(&fixture->src_ext);
 }
 
 ZTEST_SUITE(usb_attach_5v_3a_pd_source, drivers_predicate_post_main,
@@ -219,11 +227,11 @@ ZTEST_F(usb_attach_5v_3a_pd_source, test_disconnect_power_info)
 		     power_info.meas.current_lim);
 }
 
-ZTEST_F(usb_attach_5v_3a_pd_source, verify_dock_with_power_button)
+ZTEST_F(usb_attach_5v_3a_pd_source, verify_alert_on_power_state_change)
 {
-	/* Clear Alert and Status receive checks */
-	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
-	tcpci_src_emul_clear_status_received(&fixture->src_ext);
+	uint32_t ado;
+
+	/* Check Alert and Status received checks are cleared */
 	zassert_false(fixture->src_ext.alert_received, NULL);
 	zassert_false(fixture->src_ext.status_received, NULL);
 
@@ -268,8 +276,59 @@ ZTEST_F(usb_attach_5v_3a_pd_source, verify_dock_with_power_button)
 	k_sleep(K_SECONDS(2));
 	zassert_true(fixture->src_ext.alert_received, NULL);
 	zassert_true(fixture->src_ext.status_received, NULL);
-	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
-	tcpci_src_emul_clear_status_received(&fixture->src_ext);
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source, verify_startup_on_usb_pd_power_button)
+{
+	uint32_t ado;
+
+	/* Check Alert and Status received checks are cleared */
 	zassert_false(fixture->src_ext.alert_received, NULL);
 	zassert_false(fixture->src_ext.status_received, NULL);
+
+	/* Setting up revision for the full Status message */
+	prl_set_rev(TEST_USB_PORT, TCPCI_MSG_SOP, PD_REV30);
+	k_sleep(K_MSEC(10));
+	pd_dpm_request(TEST_USB_PORT, DPM_REQUEST_GET_REVISION);
+	k_sleep(K_MSEC(10));
+
+	/* While awake expect nothing on short press */
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_PRESS;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_RELEASE;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_false(fixture->src_ext.status_received, NULL);
+
+	/* Shutdown device to test wake from USB PD power button */
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_BUTTON);
+	k_sleep(K_SECONDS(10));
+
+	/* While in S5/G3 expect nothing on invalid long press */
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_PRESS;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(10));
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_RELEASE;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_false(fixture->src_ext.status_received, NULL);
+
+	/* While in S5/G3 expect Alert->Get_Status->Status on short press */
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_PRESS;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_RELEASE;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_true(fixture->src_ext.alert_received, NULL);
+	zassert_true(fixture->src_ext.status_received, NULL);
 }
