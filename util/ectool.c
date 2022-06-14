@@ -7950,6 +7950,16 @@ void print_battery_flags(int flags)
 	printf("\n");
 }
 
+void print_battery_cutoff(uint8_t battery_cut_off)
+{
+	printf("  Battery Cutoff Status   ");
+	if (battery_cut_off)
+		printf("CUT_OFF");
+	else
+		printf("NORMAL");
+	printf("\n");
+}
+
 int get_battery_command(int index)
 {
 	struct ec_params_battery_static_info static_p;
@@ -8032,6 +8042,9 @@ int get_battery_command(int index)
 	printf("  Desired current         %u mA\n", dynamic_r.desired_current);
 
 	print_battery_flags(dynamic_r.flags);
+
+	print_battery_cutoff(dynamic_r.battery_cut_off);
+
 	return 0;
 
 cmd_error:

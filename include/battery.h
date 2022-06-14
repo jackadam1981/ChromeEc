@@ -206,6 +206,16 @@ void battery_get_params(struct batt_params *batt);
  */
 void battery_override_params(struct batt_params *batt);
 
+/**
+ * Set the mem-mapped flag to indicate `ectool batterycutoff` has been issued.
+ */
+void set_battery_cutoff(void);
+
+/**
+ * Clear the mem-mapped flag to indicate `ectool batterycutoff` has been issued.
+ */
+void clear_battery_cutoff(void);
+
 #if defined(CONFIG_BATTERY) || defined(CONFIG_BATTERY_PRESENT_CUSTOM)
 /**
  * Check for presence of battery.
