@@ -16,6 +16,24 @@
       "message": "A couple of thoughts since we\u0027ve hit this...\n- Were there regressions in host command behavior on platforms without chargesplash, or did it only affect those defining the feature? \n- Should we change the ordering so 0x00A4 is actually grouped by other numbers similar to it? \n- Could the build enforce no overlapping EC_CMD_* defines somehow? ",
       "revId": "d97a35b9cc52da1a41ffdbc003851c46f5a91ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a008861c_93207a6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-14T16:05:38Z",
+      "side": 1,
+      "message": "\u003e Were there regressions in host command behavior on platforms without chargesplash, or did it only affect those defining the feature?\n\nOnly those enabling the feature. Otherwise, this is just an unused #define.\n\n\u003e Should we change the ordering so 0x00A4 is actually grouped by other numbers similar to it?\n\nRight now all the charging commands are together. I agree it\u0027s weird that EC_CMD_HOST_EVENT uses a number out of order.\n\n\u003e Could the build enforce no overlapping EC_CMD_* defines somehow?\n\nThat\u0027s a great idea. I opened b/235988571",
+      "parentUuid": "129f20b2_ef2d1cd7",
+      "revId": "d97a35b9cc52da1a41ffdbc003851c46f5a91ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
