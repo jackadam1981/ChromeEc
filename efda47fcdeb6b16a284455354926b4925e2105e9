@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "152d5300_0800e18b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-14T14:52:35Z",
+      "side": 1,
+      "message": "Minor name and date changes.",
+      "revId": "efda47fcdeb6b16a284455354926b4925e2105e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a626c030_d2ffad7e",
+        "filename": "zephyr/projects/nissa/pujjo_motionsense.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-14T14:52:35Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "efda47fcdeb6b16a284455354926b4925e2105e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b8801d_a223b6df",
+        "filename": "zephyr/projects/nissa/pujjo_overlay.dts",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-14T14:52:35Z",
+      "side": 1,
+      "message": "2022",
+      "revId": "efda47fcdeb6b16a284455354926b4925e2105e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd36dd81_3ad0475a",
+        "filename": "zephyr/projects/nissa/src/pujjo/charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-14T14:52:35Z",
+      "side": 1,
+      "message": "Pujjo",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "efda47fcdeb6b16a284455354926b4925e2105e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a856678_196e1313",
+        "filename": "zephyr/projects/nissa/src/pujjo/fan.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-14T14:52:35Z",
+      "side": 1,
+      "message": "Pujjo",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "efda47fcdeb6b16a284455354926b4925e2105e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
