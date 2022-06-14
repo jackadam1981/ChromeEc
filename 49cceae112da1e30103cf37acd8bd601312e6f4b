@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391fd9db_9ab2a862",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-14T23:17:04Z",
+      "side": 1,
+      "message": "For EC commit messages, the EC coding guidelines want the first line to include the directory of the changed files. For example, for this commit, it would be:\n\n```\ncommon: Fix host command print formatting\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "49cceae112da1e30103cf37acd8bd601312e6f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "583b480e_22df362a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-14T23:17:04Z",
+      "side": 1,
+      "message": "This can be lowercase: \"host commands\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "49cceae112da1e30103cf37acd8bd601312e6f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e230747a_6a4d35bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-14T23:17:04Z",
+      "side": 1,
+      "message": "Can you clarify that the previous way would not result in incorrect output for commands requiring more than two digits?",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "49cceae112da1e30103cf37acd8bd601312e6f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2152638c_dc485446",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-14T23:17:04Z",
+      "side": 1,
+      "message": "FYI, you can have multiple `TEST` lines, so you can do:\n\n```\nTEST\u003d./test/run_device_test.py --board bloonchipper\nTEST\u003dmake buildall\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 66
+      },
+      "revId": "49cceae112da1e30103cf37acd8bd601312e6f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
