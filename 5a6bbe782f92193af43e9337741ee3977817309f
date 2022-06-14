@@ -1,0 +1,92 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0eb422c_26c2824a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T15:50:30Z",
+      "side": 1,
+      "message": "See comment on next CL. ",
+      "revId": "5a6bbe782f92193af43e9337741ee3977817309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b351a1f7_813b9969",
+        "filename": "zephyr/dts/bindings/usbc/cros-ec,alt-usb-mux.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T15:50:30Z",
+      "side": 1,
+      "message": "See the comment on the next CL.  This node only specifies redundant information.  Can the usb_muxes.c create the needed data structures without this node?",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 32
+      },
+      "revId": "5a6bbe782f92193af43e9337741ee3977817309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeba1623_2fccee83",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T15:50:30Z",
+      "side": 1,
+      "message": "\u003e \"delcare\" is a possible misspelling of \"declare\".\n\nPlease fix.",
+      "parentUuid": "329fbe65_f8e2b364",
+      "range": {
+        "startLine": 451,
+        "startChar": 11,
+        "endLine": 451,
+        "endChar": 18
+      },
+      "revId": "5a6bbe782f92193af43e9337741ee3977817309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ca8799_11079064",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T15:50:30Z",
+      "side": 1,
+      "message": "\u003e \"orginal\" is a possible misspelling of \"original\".\n\nPlease fix.",
+      "parentUuid": "861528fb_052ab376",
+      "range": {
+        "startLine": 465,
+        "startChar": 48,
+        "endLine": 465,
+        "endChar": 55
+      },
+      "revId": "5a6bbe782f92193af43e9337741ee3977817309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
