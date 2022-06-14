@@ -113,8 +113,6 @@ int board_set_active_charge_port(int port)
 
 	switch (port) {
 	case CHARGE_PORT_TYPEC0:
-	case CHARGE_PORT_TYPEC1:
-	case CHARGE_PORT_TYPEC2:
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
 		break;
 	case CHARGE_PORT_BARRELJACK:
@@ -195,7 +193,9 @@ static void update_5v_usage(void)
 	 */
 	if (rear_ports > 0)
 		base_5v_power_s5 += PWR_S5_REAR_HIGH - PWR_S5_REAR_LOW;
-	if (!gpio_get_level(GPIO_HDMI_CONN_OC_ODL))
+	if (!gpio_get_level(GPIO_HDMIB_CONN_OC_ODL))
+		base_5v_power_s5 += PWR_S5_HDMI;
+	if (!gpio_get_level(GPIO_HDMIA_CONN_OC_ODL))
 		base_5v_power_s5 += PWR_S5_HDMI;
 	base_5v_power_z1 = PWR_Z1_BASE_LOAD;
 	if (usbc_overcurrent)
@@ -273,7 +273,8 @@ DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
 static void board_init(void)
 {
 	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_ODL);
-	gpio_enable_interrupt(GPIO_HDMI_CONN_OC_ODL);
+	gpio_enable_interrupt(GPIO_HDMIA_CONN_OC_ODL);
+	gpio_enable_interrupt(GPIO_HDMIB_CONN_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A0_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A1_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
@@ -459,26 +460,6 @@ static void power_monitor(void)
 					gap += POWER_GAIN_TYPE_C;
 			}
 			/*
-			 * If the type-C port is sourcing power,
-			 * check whether it should be throttled.
-			 */
-			if (ppc_is_sourcing_vbus(1) && gap <= 0) {
-				new_state |= THROT_TYPE_C1;
-				headroom_5v_z1 += PWR_Z1_C_HIGH - PWR_Z1_C_LOW;
-				if (!(current_state & THROT_TYPE_C1))
-					gap += POWER_GAIN_TYPE_C;
-			}
-			/*
-			 * If the type-C port is sourcing power,
-			 * check whether it should be throttled.
-			 */
-			if (ppc_is_sourcing_vbus(2) && gap <= 0) {
-				new_state |= THROT_TYPE_C2;
-				headroom_5v_z1 += PWR_Z1_C_HIGH - PWR_Z1_C_LOW;
-				if (!(current_state & THROT_TYPE_C2))
-					gap += POWER_GAIN_TYPE_C;
-			}
-			/*
 			 * As a last resort, turn on PROCHOT to
 			 * throttle the CPU.
 			 */
@@ -584,7 +565,6 @@ static void power_monitor(void)
 		int typea_bc = (new_state & THROT_TYPE_A_FRONT) ? 1 : 0;
 
 		gpio_set_level(GPIO_USB_A_LOW_PWR2_OD, typea_bc);
-		gpio_set_level(GPIO_USB_A_LOW_PWR3_OD, typea_bc);
 	}
 	hook_call_deferred(&power_monitor_data, delay);
 }
