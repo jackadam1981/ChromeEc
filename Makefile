@@ -115,6 +115,12 @@ CFLAGS_BASEBOARD=
 endif
 include chip/$(CHIP)/build.mk
 
+# The toolchain must be set before referencing any toolchain-related variables
+# (CC, CPP, CXX, etc.) so that the correct toolchain is used. The CORE variable
+# is set in the CHIP build file, so this include must come after including the
+# CHIP build file.
+include core/$(CORE)/toolchain.mk
+
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
 # be done before evaluating config.h.
