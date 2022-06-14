@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3ff083_5581a305",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-14T21:16:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4bae13f_0f0e7523",
+      "revId": "2b2ca9fd2b5e6dd8025ed0d126cd7e7649dc5d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7574d95_098c3071",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2d4d880_6ac4dd63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-14T21:16:28Z",
+      "side": 1,
+      "message": "Yes here, For ITE TCPC as well as for FUSBC TCPC, DRP state - Auto toggle is disabled when nothing is connected. Also, this change will force the state to TC_LOW_POWER_MODE  from tc_unattached_src/snk_run() ( File - common/usbc/usb_tc_drp_acc_trysrc_sm.c ). Now, coming to ITE specific tcpm driver, the low power mode entry function(it83xx_tcpm_enter_low_power_mode) does really nothing , as it is controlled by ITE TCPC clk in deep sleep mode.  So, for ITE specific TCPC port, this change should not really matter. In RVP, P0 is ITE based and P1/P2/P3 is FUSB based. On veryfying with TBT and USB4 connection, both ports seemed to exit low power mode and devices were enumerated fine.",
+      "parentUuid": "a7574d95_098c3071",
+      "revId": "2b2ca9fd2b5e6dd8025ed0d126cd7e7649dc5d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1accc8f0_13372f9b",
         "filename": "baseboard/intelrvp/adlrvp.c",
         "patchSetId": 6
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-14T15:13:25Z",
       "side": 1,
       "message": "Can you comment this function? I don\u0027t think it will be obvious to future readers.",
+      "revId": "2b2ca9fd2b5e6dd8025ed0d126cd7e7649dc5d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4ac92e_b9db2b07",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-14T21:16:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1accc8f0_13372f9b",
       "revId": "2b2ca9fd2b5e6dd8025ed0d126cd7e7649dc5d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
