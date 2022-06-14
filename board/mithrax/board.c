@@ -67,6 +67,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 static void board_chipset_startup(void)
 {
 	pen_config();
+	kb_backlight_config();
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -168,5 +169,14 @@ void pen_config(void)
 static void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_EN_PP5000_PEN, 0);
+	gpio_set_level(GPIO_EN_PP5000_LED, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+
+void kb_backlight_config(void)
+{
+	if (ec_cfg_kb_backlight() == RGB)
+		gpio_set_level(GPIO_EN_PP5000_LED, 1);
+	else
+		gpio_set_level(GPIO_EN_PP5000_LED, 0);
+}
