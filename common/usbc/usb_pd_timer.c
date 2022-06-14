@@ -88,6 +88,7 @@ __maybe_unused static __const_data const char * const pd_timer_names[] = {
 	[TC_TIMER_TIMEOUT]		= "TC-TIMEOUT",
 	[TC_TIMER_TRY_WAIT_DEBOUNCE]	= "TC-TRY_WAIT_DEBOUNCE",
 	[TC_TIMER_VBUS_DEBOUNCE]	= "TC-VBUS_DEBOUNCE",
+	[DPM_TIMER_PD_BUTTON_PRESS]	= "DPM-PD_BUTTON_PRESS",
 };
 
 /*****************************************************************************
