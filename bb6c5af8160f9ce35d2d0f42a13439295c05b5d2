@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0074012_83385f35",
+        "filename": "board/mithrax/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-14T11:05:21Z",
+      "side": 1,
+      "message": "do you plan to call this function from outside this file?\nif not, maybe just declare it as static.",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 25
+      },
+      "revId": "bb6c5af8160f9ce35d2d0f42a13439295c05b5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
