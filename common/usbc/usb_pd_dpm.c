@@ -23,8 +23,9 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_dpm.h"
-#include "usb_pd_tcpm.h"
 #include "usb_pd_pdo.h"
+#include "usb_pd_tcpm.h"
+#include "usb_pd_timer.h"
 #include "usb_pe_sm.h"
 #include "usb_tbt_alt_mode.h"
 
@@ -48,6 +49,7 @@ static struct {
 	uint32_t vdm_attention[DPM_ATTENION_MAX_VDO];
 	int vdm_cnt;
 	mutex_t vdm_attention_mutex;
+	enum dpm_pd_button_state pd_button_state;
 } dpm[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define DPM_SET_FLAG(port, flag) atomic_or(&dpm[(port)].flags, (flag))
@@ -65,6 +67,8 @@ static struct {
 #define DPM_FLAG_SEND_ATTENTION       BIT(5)
 #define DPM_FLAG_DATA_RESET_REQUESTED BIT(6)
 #define DPM_FLAG_DATA_RESET_DONE      BIT(7)
+#define DPM_FLAG_PD_BUTTON_PRESSED    BIT(8)
+#define DPM_FLAG_PD_BUTTON_RELEASED   BIT(9)
 
 #ifdef CONFIG_ZEPHYR
 static int init_vdm_attention_mutex(const struct device *dev)
@@ -153,6 +157,7 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 void dpm_init(int port)
 {
 	dpm[port].flags = 0;
+	dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
 }
 
 void dpm_mode_exit_complete(int port)
@@ -495,6 +500,77 @@ static void dpm_send_attention_vdm(int port)
 	DPM_CLR_FLAG(port, DPM_FLAG_SEND_ATTENTION);
 }
 
+
+void dpm_handle_pd_button_press(int port)
+{
+	DPM_SET_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED);
+}
+
+void dpm_handle_pd_button_release(int port)
+{
+	DPM_SET_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED);
+}
+
+static void dpm_run_pd_button_sm(int port)
+{
+	/*
+	 * Check for invalid flag combination. Alerts can only send a press or
+	 * release event at once and only one flag should be set. If press and
+	 * release flags are both set, we cannot know the order they were
+	 * received. Clear the flags, disable the timer and return to an idle
+	 * state.
+	 */
+	if (DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED) &&
+	    DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED)) {
+		DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED);
+		DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED);
+		pd_timer_disable(port, DPM_TIMER_PD_BUTTON_PRESS);
+		dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
+		return;
+	}
+
+	switch (dpm[port].pd_button_state) {
+	case DPM_PD_BUTTON_IDLE:
+		if (DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED)) {
+			pd_timer_enable(port, DPM_TIMER_PD_BUTTON_PRESS,
+					CONFIG_USB_PD_LONG_PRESS_LIMIT*MSEC);
+			dpm[port].pd_button_state = DPM_PD_BUTTON_PRESSED;
+		}
+		break;
+	case DPM_PD_BUTTON_PRESSED:
+		if (DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED)) {
+			pd_timer_enable(port, DPM_TIMER_PD_BUTTON_PRESS,
+					CONFIG_USB_PD_LONG_PRESS_LIMIT*MSEC);
+		} else if (DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED)) {
+			pd_timer_enable(port, DPM_TIMER_PD_BUTTON_PRESS,
+					CONFIG_USB_PD_LONG_PRESS_LIMIT*MSEC);
+			pd_timer_disable(port, DPM_TIMER_PD_BUTTON_PRESS);
+			dpm[port].pd_button_state = DPM_PD_BUTTON_RELEASED;
+		} else if (pd_timer_is_expired(port,
+					       DPM_TIMER_PD_BUTTON_PRESS)) {
+			pd_timer_disable(port, DPM_TIMER_PD_BUTTON_PRESS);
+			dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
+		}
+		break;
+	case DPM_PD_BUTTON_RELEASED:
+#if defined(HAS_TASK_CHIPSET) && (defined(CONFIG_POWER_BUTTON_X86) || \
+	defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280))
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+			chipset_power_on();
+		}
+#endif /*
+	* defined(HAS_TASK_CHIPSET) && (defined(CONFIG_POWER_BUTTON_X86) ||
+	* defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280))
+	*/
+		dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
+		break;
+	}
+
+	/* After checking flags, clear them. */
+	DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED);
+	DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED);
+}
+
 void dpm_run(int port)
 {
 	if (pd_get_data_role(port) == PD_ROLE_DFP) {
@@ -503,6 +579,9 @@ void dpm_run(int port)
 			dpm_attempt_mode_exit(port);
 		else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE))
 			dpm_attempt_mode_entry(port);
+
+		/* Run USB PD Power button state machine */
+		dpm_run_pd_button_sm(port);
 	} else {
 		/* Run UFP related DPM requests */
 		if (DPM_CHK_FLAG(port, DPM_FLAG_SEND_ATTENTION))

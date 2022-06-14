@@ -218,6 +218,12 @@ enum pd_task_timer {
 	 */
 	TC_TIMER_VBUS_DEBOUNCE,
 
+	/*
+	 * Timer to wait for a button release alert after receiving a button
+	 * press alert.
+	 */
+	DPM_TIMER_PD_BUTTON_PRESS,
+
 	PD_TIMER_COUNT
 };
 

@@ -139,6 +139,20 @@ int dpm_get_source_current(const int port);
  */
 int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len);
 
+/*
+ * DPM function to handle an alert signalling a PD button press
+ *
+ * @param port		USB-C port number
+ */
+void dpm_handle_pd_button_press(int port);
+
+/*
+ * DPM function to handle an alert signalling a PD button release
+ *
+ * @param port		USB-C port number
+ */
+void dpm_handle_pd_button_release(int port);
+
 /* Enum for modules to describe to the DPM their setup status */
 enum dpm_msg_setup_status {
 	MSG_SETUP_SUCCESS,
@@ -147,4 +161,10 @@ enum dpm_msg_setup_status {
 	MSG_SETUP_MUX_WAIT,
 };
 
+/* Enum to describe current state of connected USB PD buttons */
+enum dpm_pd_button_state {
+	DPM_PD_BUTTON_IDLE,
+	DPM_PD_BUTTON_PRESSED,
+	DPM_PD_BUTTON_RELEASED,
+};
 #endif  /* __CROS_EC_USB_DPM_H */
