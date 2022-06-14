@@ -6,8 +6,10 @@
 #include <ztest.h>
 
 #include "battery_smart.h"
+#include "chipset.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
+#include "emul/tcpc/emul_tcpci_partner_common.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "hooks.h"
 #include "test/drivers/stubs.h"
@@ -221,6 +223,8 @@ ZTEST_F(usb_attach_5v_3a_pd_source, test_disconnect_power_info)
 
 ZTEST_F(usb_attach_5v_3a_pd_source, verify_dock_with_power_button)
 {
+	uint32_t ado;
+
 	/* Clear Alert and Status receive checks */
 	tcpci_src_emul_clear_alert_received(&this->src_ext);
 	tcpci_src_emul_clear_status_received(&this->src_ext);
@@ -243,26 +247,6 @@ ZTEST_F(usb_attach_5v_3a_pd_source, verify_dock_with_power_button)
 	zassert_false(this->src_ext.alert_received, NULL);
 	zassert_false(this->src_ext.status_received, NULL);
 
-	/* Shutdown and check partner received Alert and Status messages */
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
-	k_sleep(K_SECONDS(2));
-	zassert_true(this->src_ext.alert_received, NULL);
-	zassert_true(this->src_ext.status_received, NULL);
-	tcpci_src_emul_clear_alert_received(&this->src_ext);
-	tcpci_src_emul_clear_status_received(&this->src_ext);
-	zassert_false(this->src_ext.alert_received, NULL);
-	zassert_false(this->src_ext.status_received, NULL);
-
-	/* Startup and check partner received Alert and Status messages */
-	hook_notify(HOOK_CHIPSET_STARTUP);
-	k_sleep(K_SECONDS(2));
-	zassert_true(this->src_ext.alert_received, NULL);
-	zassert_true(this->src_ext.status_received, NULL);
-	tcpci_src_emul_clear_alert_received(&this->src_ext);
-	tcpci_src_emul_clear_status_received(&this->src_ext);
-	zassert_false(this->src_ext.alert_received, NULL);
-	zassert_false(this->src_ext.status_received, NULL);
-
 	/* Resume and check partner received Alert and Status messages */
 	hook_notify(HOOK_CHIPSET_RESUME);
 	k_sleep(K_SECONDS(2));
@@ -272,4 +256,37 @@ ZTEST_F(usb_attach_5v_3a_pd_source, verify_dock_with_power_button)
 	tcpci_src_emul_clear_status_received(&this->src_ext);
 	zassert_false(this->src_ext.alert_received, NULL);
 	zassert_false(this->src_ext.status_received, NULL);
+
+	/* Expect nothing to happen on short dock button press */
+	ado = 0x80000002;
+	tcpci_partner_send_data_msg(&this->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	ado = 0x80000003;
+	tcpci_partner_send_data_msg(&this->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_false(this->src_ext.alert_received, NULL);
+	zassert_false(this->src_ext.status_received, NULL);
+
+	/* Shutdown device to test wake from USB PD power button */
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_BUTTON);
+	k_sleep(K_SECONDS(10));
+
+	/* While in S5/G3 expect Alert->Get_Status->Status on short press */
+	ado = 0x80000002;
+	tcpci_partner_send_data_msg(&this->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	ado = 0x80000003;
+	tcpci_partner_send_data_msg(&this->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_true(this->src_ext.alert_received, NULL);
+	zassert_true(this->src_ext.status_received, NULL);
+	tcpci_src_emul_clear_alert_received(&this->src_ext);
+	tcpci_src_emul_clear_status_received(&this->src_ext);
+	zassert_false(this->src_ext.alert_received, NULL);
+	zassert_false(this->src_ext.status_received, NULL);
+
 }
