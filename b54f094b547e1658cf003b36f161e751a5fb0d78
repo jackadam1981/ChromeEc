@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ebe76a_72282a05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-14T16:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a72626e6_4bf3c77f",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2efa1925_4ae9ee77",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-14T16:23:51Z",
       "side": 1,
       "message": "Line length.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5501981c_ec3521ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-14T16:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2efa1925_4ae9ee77",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f3b13e_c258adab",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-14T16:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f87ab7_d8b4be6f",
+      "range": {
+        "startLine": 170,
+        "startChar": 52,
+        "endLine": 170,
+        "endChar": 61
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55023c3e_fcdb230b",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-14T16:23:51Z",
       "side": 1,
       "message": "\"is not enabled\" or \"is disabled\"",
+      "range": {
+        "startLine": 194,
+        "startChar": 63,
+        "endLine": 194,
+        "endChar": 73
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f5a597_b4c9598f",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-14T16:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55023c3e_fcdb230b",
       "range": {
         "startLine": 194,
         "startChar": 63,
