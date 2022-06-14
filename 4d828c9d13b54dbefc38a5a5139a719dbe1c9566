@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5dcea9_b33b7598",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-06-14T02:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47fb9b3d_764592bf",
+      "range": {
+        "startLine": 98,
+        "startChar": 40,
+        "endLine": 98,
+        "endChar": 41
+      },
+      "revId": "4d828c9d13b54dbefc38a5a5139a719dbe1c9566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d16f4ac_6d8f1fc0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-14T02:17:08Z",
       "side": 1,
       "message": "5?",
+      "range": {
+        "startLine": 61,
+        "startChar": 17,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "4d828c9d13b54dbefc38a5a5139a719dbe1c9566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2606979_f4289a87",
+        "filename": "board/banshee/keyboard_customization.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-06-14T02:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d16f4ac_6d8f1fc0",
       "range": {
         "startLine": 61,
         "startChar": 17,
