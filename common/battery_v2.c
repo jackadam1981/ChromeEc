@@ -37,6 +37,8 @@ static void battery_update(enum battery_index i)
 	int *memmap_cap = (int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
 	int *memmap_lfcc = (int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
 	uint8_t *memmap_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
+	uint8_t *memmap_battery_cut_off =
+		host_get_memmap(EC_MEMMAP_BATT_CUT_OFF);
 
 	/* Smart battery serial number is 16 bits */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_SERIAL);
@@ -77,6 +79,7 @@ static void battery_update(enum battery_index i)
 	*memmap_cap = battery_dynamic[i].remaining_capacity;
 	*memmap_lfcc = battery_dynamic[i].full_capacity;
 	*memmap_flags = battery_dynamic[i].flags;
+	*memmap_battery_cut_off = battery_dynamic[i].battery_cut_off;
 }
 
 #ifdef CONFIG_HOSTCMD_BATTERY_V2
@@ -361,7 +364,7 @@ void update_dynamic_battery_info(void)
 	}
 
 	if (curr->batt.is_present == BP_YES &&
-	    !(curr->batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
+	!(curr->batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
 	    curr->batt.state_of_charge <= BATTERY_LEVEL_CRITICAL)
 		tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
 
@@ -374,6 +377,8 @@ void update_dynamic_battery_info(void)
 
 	bd->flags = tmp;
 
+	bd->battery_cut_off = battery_is_cut_off();
+
 #ifdef HAS_TASK_HOSTCMD
 	battery_memmap_refresh(BATT_IDX_MAIN);
 #endif
@@ -384,4 +389,20 @@ void update_dynamic_battery_info(void)
 	if (send_batt_status_event)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 #endif
+}
+
+void set_battery_cutoff(void)
+{
+	uint8_t *memmap_battery_cutoff =
+		host_get_memmap(EC_MEMMAP_BATT_CUT_OFF);
+
+	*memmap_battery_cutoff |= EC_BATT_CUT_OFF_ENABLED;
+}
+
+void clear_battery_cutoff(void)
+{
+	uint8_t *memmap_battery_cutoff =
+		host_get_memmap(EC_MEMMAP_BATT_CUT_OFF);
+
+	*memmap_battery_cutoff &= ~EC_BATT_CUT_OFF_ENABLED;
 }

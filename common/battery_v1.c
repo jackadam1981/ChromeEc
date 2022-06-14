@@ -170,3 +170,17 @@ void update_dynamic_battery_info(void)
 	if (send_batt_status_event)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 }
+
+void set_battery_cutoff(void)
+{
+	/* Only supported for Battery V2 APIs.
+	 * Do nothing.
+	 */
+}
+
+void clear_battery_cutoff(void)
+{
+	/* Only supported for Battery V2 APIs.
+	 * Do nothing.
+	 */
+}

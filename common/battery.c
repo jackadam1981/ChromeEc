@@ -299,9 +299,11 @@ int battery_is_cut_off(void)
 	return (battery_cutoff_state == BATTERY_CUTOFF_STATE_CUT_OFF);
 }
 
-static void pending_cutoff_deferred(void)
+static int cutoff_battery(void)
 {
 	int rv;
+
+	set_battery_cutoff();
 
 	rv = board_cut_off_battery();
 
@@ -312,6 +314,13 @@ static void pending_cutoff_deferred(void)
 		CUTOFFPRINTS("failed!");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
 	}
+
+	return rv;
+}
+
+static void pending_cutoff_deferred(void)
+{
+	cutoff_battery();
 }
 DECLARE_DEFERRED(pending_cutoff_deferred);
 
@@ -319,6 +328,7 @@ static void clear_pending_cutoff(void)
 {
 	if (extpower_is_present()) {
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
+		clear_battery_cutoff();
 		hook_call_deferred(&pending_cutoff_deferred_data, -1);
 	}
 }
@@ -327,7 +337,6 @@ DECLARE_HOOK(HOOK_AC_CHANGE, clear_pending_cutoff, HOOK_PRIO_DEFAULT);
 static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_cutoff *p;
-	int rv;
 
 	if (args->version == 1) {
 		p = args->params;
@@ -338,15 +347,7 @@ static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 		}
 	}
 
-	rv = board_cut_off_battery();
-	if (rv == EC_RES_SUCCESS) {
-		CUTOFFPRINTS("is successful.");
-		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
-	} else {
-		CUTOFFPRINTS("has failed.");
-	}
-
-	return rv;
+	return cutoff_battery();
 }
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
 		EC_VER_MASK(0) | EC_VER_MASK(1));
@@ -364,8 +365,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, check_pending_cutoff, HOOK_PRIO_LAST);
 
 static int command_cutoff(int argc, char **argv)
 {
-	int rv;
-
 	if (argc > 1) {
 		if (!strcasecmp(argv[1], "at-shutdown")) {
 			battery_cutoff_state = BATTERY_CUTOFF_STATE_PENDING;
@@ -375,14 +374,7 @@ static int command_cutoff(int argc, char **argv)
 		}
 	}
 
-	rv = board_cut_off_battery();
-	if (rv == EC_RES_SUCCESS) {
-		ccprints("Battery cut off");
-		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
-		return EC_SUCCESS;
-	}
-
-	return EC_ERROR_UNKNOWN;
+	return cutoff_battery();
 }
 DECLARE_CONSOLE_COMMAND(cutoff, command_cutoff,
 		"[at-shutdown]",

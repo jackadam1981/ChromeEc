@@ -150,7 +150,7 @@ extern "C" {
 #define EC_MEMMAP_BATT_FLAG        0x4c /* Battery State, see below (8-bit) */
 #define EC_MEMMAP_BATT_COUNT       0x4d /* Battery Count (8-bit) */
 #define EC_MEMMAP_BATT_INDEX       0x4e /* Current Battery Data Index (8-bit) */
-/* Unused 0x4f */
+#define EC_MEMMAP_BATT_CUT_OFF     0x4f /* Battery Cutoff, see below (8-bit) */
 #define EC_MEMMAP_BATT_DCAP        0x50 /* Battery Design Capacity */
 #define EC_MEMMAP_BATT_DVLT        0x54 /* Battery Design Voltage */
 #define EC_MEMMAP_BATT_LFCC        0x58 /* Battery Last Full Charge Capacity */
@@ -231,6 +231,9 @@ extern "C" {
 #define EC_BATT_FLAG_LEVEL_CRITICAL 0x10
 /* Set if some of the static/dynamic data is invalid (or outdated). */
 #define EC_BATT_FLAG_INVALID_DATA 0x20
+
+/* EC_MEMMAP_BATT_CUT_OFF flags */
+#define EC_BATT_CUT_OFF_ENABLED 0x01
 
 /* Switch flags at EC_MEMMAP_SWITCHES */
 #define EC_SWITCH_LID_OPEN               0x01
@@ -7590,6 +7593,8 @@ struct ec_params_battery_dynamic_info {
  * @flags: Flags, see EC_BATT_FLAG_*
  * @desired_voltage: Charging voltage desired by battery (mV)
  * @desired_current: Charging current desired by battery (mA)
+ * @battery_cut_off: Status of `ectool batterycutoff` command
+ * @padding: Alignment padding
  */
 struct ec_response_battery_dynamic_info {
 	int16_t actual_voltage;
@@ -7599,6 +7604,8 @@ struct ec_response_battery_dynamic_info {
 	int16_t flags;
 	int16_t desired_voltage;
 	int16_t desired_current;
+	uint8_t battery_cut_off;
+	uint8_t padding;
 } __ec_align2;
 
 /*
