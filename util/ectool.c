@@ -7947,6 +7947,8 @@ void print_battery_flags(int flags)
 		printf(" CHARGING");
 	if (flags & EC_BATT_FLAG_LEVEL_CRITICAL)
 		printf(" LEVEL_CRITICAL");
+	if (flags & EC_BATT_FLAG_CUT_OFF)
+		printf(" CUT_OFF");
 	printf("\n");
 }
 
@@ -8032,6 +8034,7 @@ int get_battery_command(int index)
 	printf("  Desired current         %u mA\n", dynamic_r.desired_current);
 
 	print_battery_flags(dynamic_r.flags);
+
 	return 0;
 
 cmd_error:
