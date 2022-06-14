@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "807800d7_47c3cb80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-06-14T17:41:08Z",
+      "side": 1,
+      "message": "Is there a flag that prevents reading and just always erases \u0026 writes the new image (as I understand --do-not-diff doesn\u0027t do that - it doesn\u0027t erase)? Writing w/o reading first in many cases speeds up flashing.",
+      "revId": "c8887870166dcae9ffc40e1d29370773a68a8a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
