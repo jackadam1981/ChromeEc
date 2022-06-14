@@ -140,6 +140,22 @@ struct tcpci_partner_data {
 	int svids_vdos;
 	uint32_t modes_vdm[VDO_MAX_SIZE];
 	int modes_vdos;
+	struct {
+		/* Index of the last battery we requested capabilities for. The
+		 * BCDB response does not include the index so we need to track
+		 * it manually. -1 indicates no outstanding request.
+		 */
+		int index;
+		/* Stores Battery Capability Data Blocks (BCDBs) requested and
+		 * received from the TCPM for later analysis. See USB-PD spec
+		 * Rev 3.1, Ver 1.3 section 6.5.5
+		 */
+		struct pd_bcdb bcdb[PD_BATT_MAX];
+		/* Stores a boolean status for each battery index indicating
+		 * whether we have received a BCDB response for that battery.
+		 */
+		bool have_response[PD_BATT_MAX];
+	} battery_capabilities;
 };
 
 /** Structure of message used by TCPCI partner emulator */
@@ -154,6 +170,8 @@ struct tcpci_partner_msg {
 	int type;
 	/** Number of data objects */
 	int data_objects;
+	/** True if this is an extended message */
+	bool extended;
 };
 
 /** Identify sender of logged PD message */
@@ -280,15 +298,28 @@ struct tcpci_partner_extension_ops {
 void tcpci_partner_init(struct tcpci_partner_data *data, enum pd_rev_type rev);
 
 /**
- * @brief Allocate message with space for header and given number of data
- *        objects. Type of message is set to TCPCI_MSG_SOP by default.
+ * @brief Allocate space for a standard (non-extended) message, containing the
+ * specified number of data objects.
  *
- * @param data_objects Number of data objects in message
- *
- * @return Pointer to new message on success
- * @return NULL on error
+ * @param num_data_objects Number of 32-bit DOs this message contains, if data
+ * message. Pass 0 if control message.
+ * @return struct tcpci_partner_msg* if successful
+ * @return NULL in case of error
  */
-struct tcpci_partner_msg *tcpci_partner_alloc_msg(int data_objects);
+struct tcpci_partner_msg *
+tcpci_partner_alloc_standard_msg(int num_data_objects);
+
+/**
+ * @brief Allocate space for an extended message, containing a payload of
+ * specified size
+ *
+ * @param payload_size Size of extended message payload. Do not count either
+ * message header.
+ * @return struct tcpci_partner_msg* if successful
+ * @return NULL in case of error
+ */
+struct tcpci_partner_msg *tcpci_partner_alloc_extended_msg(size_t payload_size);
+
 
 /**
  * @brief Free message's memory
@@ -296,6 +327,21 @@ struct tcpci_partner_msg *tcpci_partner_alloc_msg(int data_objects);
  * @param msg Pointer to message
  */
 void tcpci_partner_free_msg(struct tcpci_partner_msg *msg);
+
+/**
+ * @brief Send an extended PD message to the port partner
+ *
+ * @param data Pointer to TCPCI partner emulator
+ * @param type Extended message type
+ * @param delay Optional delay
+ * @param payload Pointer to data payload. Does not include any headers.
+ * @param payload_size Number of bytes in above payload
+ * @return negative on failure, 0 on success
+ */
+int tcpci_partner_send_extended_msg(struct tcpci_partner_data *data,
+				   enum pd_ext_msg_type type, uint64_t delay,
+				   uint8_t *payload, size_t payload_size);
+
 
 /**
  * @brief Set header of the message
@@ -385,6 +431,25 @@ void tcpci_partner_common_send_hard_reset(struct tcpci_partner_data *data);
  * @param data Pointer to TCPCI partner emulator
  */
 void tcpci_partner_common_send_soft_reset(struct tcpci_partner_data *data);
+
+/**
+ * @brief Send a Get Battery Capabilities request to the TCPM
+ *
+ * @param data Pointer to TCPCI partner emulator
+ * @param battery_index Request capability info on this battery. Must
+ *        be (0 <= battery_index < PD_BATT_MAX)
+ */
+void tcpci_partner_common_send_get_battery_capabilities(
+	struct tcpci_partner_data *data, int battery_index);
+
+/**
+ * @brief Resets the data structure used for tracking battery capability
+ *        requests and responses.
+ *
+ * @param data Emulator state
+ */
+void tcpci_partner_reset_battery_capability_state(
+	struct tcpci_partner_data *data);
 
 /**
  * @brief Start sender response timer for TCPCI_PARTNER_RESPONSE_TIMEOUT_MS.
