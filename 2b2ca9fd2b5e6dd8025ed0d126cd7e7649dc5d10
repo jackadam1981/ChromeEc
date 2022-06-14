@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4bae13f_0f0e7523",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-14T15:13:25Z",
+      "side": 1,
+      "message": "Nit: Please fix various spelling and grammar mistakes in commit message.",
+      "revId": "2b2ca9fd2b5e6dd8025ed0d126cd7e7649dc5d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7574d95_098c3071",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-14T15:13:25Z",
+      "side": 1,
+      "message": "Am I correct in understanding that, for the RVP boards using an ITE TCPC, this will disable DRP AutoToggle when it otherwise would have worked?",
+      "revId": "2b2ca9fd2b5e6dd8025ed0d126cd7e7649dc5d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1accc8f0_13372f9b",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-14T15:13:25Z",
+      "side": 1,
+      "message": "Can you comment this function? I don\u0027t think it will be obvious to future readers.",
+      "revId": "2b2ca9fd2b5e6dd8025ed0d126cd7e7649dc5d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
