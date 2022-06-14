@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64c75df_29d70513",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:03:16Z",
+      "side": 1,
+      "message": "Do we have any unit tests that exercise the legacy host_command path? Can these also be run with CONFIG_EC_HOST_CMD defined?\n\nAlso, please run the `ectool stress` test before switching on CONFIG_EC_HOST_CMD for any board.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "79a0e5ac2eba7db91a633a8a471216ea2691bdc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
