@@ -15,6 +15,7 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "power_button.h"
 #include "stdbool.h"
 #include "system.h"
 #include "task.h"
@@ -278,6 +279,7 @@ enum usb_pe_state {
 	PE_GIVE_BATTERY_STATUS,
 	PE_GIVE_STATUS,
 	PE_SEND_ALERT,
+	PE_ALERT_RECEIVED,
 	PE_SRC_CHUNK_RECEIVED,
 	PE_SNK_CHUNK_RECEIVED,
 	PE_VCS_FORCE_VCONN,
@@ -403,6 +405,7 @@ __maybe_unused static __const_data const char * const pe_state_names[] = {
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
 	[PE_GIVE_STATUS] = "PE_Give_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
+	[PE_ALERT_RECEIVED] = "PE_Alert_Received",
 #else
 	[PE_SRC_CHUNK_RECEIVED] = "PE_SRC_Chunk_Received",
 	[PE_SNK_CHUNK_RECEIVED] = "PE_SNK_Chunk_Received",
@@ -467,6 +470,8 @@ GEN_NOT_SUPPORTED(PE_GIVE_STATUS);
 #define PE_GIVE_STATUS PE_GIVE_STATUS_NOT_SUPPORTED
 GEN_NOT_SUPPORTED(PE_SEND_ALERT);
 #define PE_SEND_ALERT PE_SEND_ALERT_NOT_SUPPORTED
+GEN_NOT_SUPPORTED(PE_ALERT_RECEIVED);
+#define PE_ALERT_RECEIVED PE_ALERT_RECEIVED_NOT_SUPPORTED
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
@@ -640,6 +645,12 @@ static struct policy_engine {
 	 * dpm_vdm_naked().
 	 */
 	uint8_t vconn_swap_counter;
+
+	/*
+	 * This holds the last time of a power button press alert. After
+	 * receiving a power button release alert, it is cleared.
+	 */
+	uint64_t pd_button_press_time;
 
 	/* Last received source cap */
 	uint32_t src_caps[PDO_MAX_OBJECTS];
@@ -1418,6 +1429,11 @@ static void pe_clear_port_data(int port)
 	pe[port].partner_rmdo.major_ver = 0;
 	pe[port].partner_rmdo.minor_rev = 0;
 	pe[port].partner_rmdo.major_rev = 0;
+
+	/*
+	 * USB PD button press time no longer valid on disconnect
+	 */
+	pe[port].pd_button_press_time = 0;
 
 	/* Clear any stored discovery data, but leave modes for alt mode exit */
 	pd_dfp_discovery_init(port);
@@ -2765,6 +2781,11 @@ static void pe_src_ready_run(int port)
 			case PD_DATA_BIST:
 				set_state_pe(port, PE_BIST_TX);
 				return;
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
+			case PD_DATA_ALERT:
+				set_state_pe(port, PE_ALERT_RECEIVED);
+				return;
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 				return;
@@ -3613,6 +3634,11 @@ static void pe_snk_ready_run(int port)
 			case PD_DATA_BIST:
 				set_state_pe(port, PE_BIST_TX);
 				break;
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
+			case PD_DATA_ALERT:
+				set_state_pe(port, PE_ALERT_RECEIVED);
+				return;
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -4411,6 +4437,35 @@ static void pe_send_alert_run(int port)
 		pe_set_ready_state(port);
 	}
 }
+
+/**
+ * PE_SNK_Source_Alert_Received and
+ * PE_SRC_Sink_Alert_Received
+ */
+static void pe_alert_received_entry(int port)
+{
+	uint32_t *ado = (uint32_t *)rx_emsg[port].buf;
+
+	print_current_state(port);
+
+	if (*ado & ADO_EXTENDED_ALERT_EVENT) {
+		/* Extended Alert */
+		if (ADO_EXTENDED_ALERT_EVENT_TYPE(*ado) ==
+		    ADO_POWER_BUTTON_PRESS) {
+			/* Log time on power button press */
+			pe[port].pd_button_press_time = get_time().val;
+		} else if (ADO_EXTENDED_ALERT_EVENT_TYPE(*ado) ==
+			   ADO_POWER_BUTTON_RELEASE) {
+			/* Handle release and clear logged press time */
+			handle_pd_button_release(
+			    pe[port].pd_button_press_time, get_time().val);
+			pe[port].pd_button_press_time = 0;
+		}
+	}
+
+	pe_set_ready_state(port);
+}
+
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 /**
@@ -8178,6 +8233,9 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_SEND_ALERT] = {
 		.entry = pe_send_alert_entry,
 		.run   = pe_send_alert_run,
+	},
+	[PE_ALERT_RECEIVED] = {
+		.entry = pe_alert_received_entry,
 	},
 #else
 	[PE_SRC_CHUNK_RECEIVED] = {

@@ -1044,6 +1044,38 @@ int pd_send_alert_msg(int port, uint32_t ado)
 #endif
 }
 
+void handle_pd_button_release(uint64_t press_time, uint64_t release_time)
+{
+#if defined(HAS_TASK_CHIPSET) && (defined(CONFIG_POWER_BUTTON_X86) || \
+	defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280))
+	bool long_press;
+
+	/* Determine press type */
+	if (!press_time || (release_time - press_time <
+			    CONFIG_USB_PD_SHORT_PRESS_LIMIT*MSEC)) {
+		/* short press */
+		long_press = false;
+	} else if (release_time - press_time <
+		   CONFIG_USB_PD_LONG_PRESS_LIMIT*MSEC) {
+		/* Long press */
+		long_press = true;
+	} else {
+		/* Invalid press length */
+		return;
+	}
+
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_SOFT_OFF) ||
+	    chipset_in_or_transitioning_to_state(CHIPSET_STATE_HARD_OFF)) {
+		chipset_power_on();
+	} else if (long_press &&
+	    (chipset_in_or_transitioning_to_state(CHIPSET_STATE_SUSPEND) ||
+	     chipset_in_or_transitioning_to_state(CHIPSET_STATE_STANDBY) ||
+	     chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON))) {
+		chipset_force_shutdown(CHIPSET_SHUTDOWN_BUTTON);
+	}
+#endif /* HAS_TASK_CHIPSET */
+}
+
 #if defined(HAS_TASK_HOSTCMD) && !defined(TEST_BUILD)
 void pd_send_host_event(int mask)
 {
