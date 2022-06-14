@@ -22,6 +22,30 @@
       },
       "revId": "365db0a198b35e5c15dd911c889fdaab77d54188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16136a4f_a3581e4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-14T18:48:17Z",
+      "side": 1,
+      "message": "I would expect the flag to only change the generated instructions (which reside in flash) and not necessarily change anything related to the variables stored in RAM (this calculation is only calculating compile-time RAM usage).",
+      "parentUuid": "a236482b_addc47e4",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "365db0a198b35e5c15dd911c889fdaab77d54188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
