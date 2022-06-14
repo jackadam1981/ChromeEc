@@ -1044,6 +1044,23 @@ int pd_send_alert_msg(int port, uint32_t ado)
 #endif
 }
 
+void handle_pd_button_release(uint64_t press_time, uint64_t release_time)
+{
+#if defined(HAS_TASK_CHIPSET) && (defined(CONFIG_POWER_BUTTON_X86) || \
+	defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280))
+	/* Check for invalid press */
+	if (release_time - press_time > CONFIG_USB_PD_LONG_PRESS_LIMIT*MSEC) {
+		return;
+	}
+
+	/* Any valid press while the device is in S5/G3 will wake it */
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_SOFT_OFF) ||
+	    chipset_in_or_transitioning_to_state(CHIPSET_STATE_HARD_OFF)) {
+		chipset_power_on();
+	}
+#endif /* HAS_TASK_CHIPSET */
+}
+
 #if defined(HAS_TASK_HOSTCMD) && !defined(TEST_BUILD)
 void pd_send_host_event(int mask)
 {
