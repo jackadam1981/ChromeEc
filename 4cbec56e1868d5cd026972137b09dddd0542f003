@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9136a3_b3c04281",
+        "filename": "driver/usb_mux/ps8743.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-14T07:08:37Z",
+      "side": 1,
+      "message": "This is a little bit tricky if you always enable USB mode when resume from the suspend. What if the usb peripheral was unplugged in suspend? Will the USB mux be set if nothing plugged in such case?\n\nIf so, you can take a look at the HOOK_USB_PD_DISCONNECT.",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "4cbec56e1868d5cd026972137b09dddd0542f003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
