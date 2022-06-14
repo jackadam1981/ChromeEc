@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eca7422f_83d0c207",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:10:51Z",
+      "side": 1,
+      "message": "This is improved, but it would be clearer to define the actual behavior of setting this field.  Is it accurate to say that setting \"LED_CHFLAG_DEFAULT\" causes the LED to only turn on while the battery is charging?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "b1f39a820b75187d405a89769b0e5310e1c1e5c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
