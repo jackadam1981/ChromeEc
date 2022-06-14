@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72626e6_4bf3c77f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:23:51Z",
+      "side": 1,
+      "message": "Nit - line length.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2efa1925_4ae9ee77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:23:51Z",
+      "side": 1,
+      "message": "Line length.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f87ab7_d8b4be6f",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:23:51Z",
+      "side": 1,
+      "message": "CONFIG_AP_POWER_CONTROL?",
+      "range": {
+        "startLine": 170,
+        "startChar": 52,
+        "endLine": 170,
+        "endChar": 61
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55023c3e_fcdb230b",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:23:51Z",
+      "side": 1,
+      "message": "\"is not enabled\" or \"is disabled\"",
+      "range": {
+        "startLine": 194,
+        "startChar": 63,
+        "endLine": 194,
+        "endChar": 73
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1dc7e7_5cbc534d",
+        "filename": "zephyr/Kconfig.ap_power",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T16:23:51Z",
+      "side": 1,
+      "message": "As a follow on CL, can you make `CONFIG_PLATFORM_EC_POWERSEQ` and `CONFIG_AP_PWRSEQ` mutually exclusive?  One of these configs add a `depends on !\u003cOTHER_CONFIG\u003e`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "b54f094b547e1658cf003b36f161e751a5fb0d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
