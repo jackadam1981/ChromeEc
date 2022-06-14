@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74b3a559_a25f3ccf",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-14T08:05:33Z",
+      "side": 1,
+      "message": "Looking at the code around e.g. USB_SPI_REQ_ENABLE at the bottom of this file, it is evident that there is no attempt at guarding against multiple host processes simultaneously trying to use the USB-\u003eSPI forwarding.\n\nI think it is reasonable to expect servod or an equivalent host-side process to perform arbitration between multiple processes attempting to use the same SPI controller.  For one thing, only one process can claim the particular USB interface at a time, so whatever process does that would have to forward requests from other processes, which may want to simultaneously perform SPI operations.\n\nGiven the above, I think it is reasonable to have the uServo/HyperDebug firmware we \"dumb\" and not attempt to keep track of multiple host processes passing it requests.",
+      "parentUuid": "36da9462_3825bd25",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 2
+      },
+      "revId": "690d32269160b893c7ff78f1e6634945aec054f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea8361ce_d894046c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b0acc9_7581b16f",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-14T08:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8361ce_d894046c",
+      "range": {
+        "startLine": 235,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 22
+      },
+      "revId": "690d32269160b893c7ff78f1e6634945aec054f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ca77d4f_dfb4655e",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-13T15:22:04Z",
       "side": 1,
       "message": "nit",
+      "range": {
+        "startLine": 241,
+        "startChar": 68,
+        "endLine": 241,
+        "endChar": 69
+      },
+      "revId": "690d32269160b893c7ff78f1e6634945aec054f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf00958_3ef1d313",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-14T08:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca77d4f_dfb4655e",
       "range": {
         "startLine": 241,
         "startChar": 68,
