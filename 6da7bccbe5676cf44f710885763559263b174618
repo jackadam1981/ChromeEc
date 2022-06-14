@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89fce36e_4256eb46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-14T22:12:40Z",
+      "side": 1,
+      "message": "The FUSB TCPC chip does not support dual role auto toggle by default, hence the PD state of a non-attached port remains in PD_DRP_TOGGLE_ON in active state thus the TCPC ports do not enter Low power mode. To fix the issue, added board specific code to disable the dual role toggle in S0.\n\nNote: Originally CL:3088161 was merged to fix this issue but it was\nreverted due to b:197298349 (CL:3109275). \n\nBUG\u003db:195406641\nBRANCH\u003dnone\nTEST\u003dTested on ADL RVP, both ITE \u0026 FUSB TCPC ports enter LPM\n     in NDA case and exit LPM when a device is attached.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 53
+      },
+      "revId": "6da7bccbe5676cf44f710885763559263b174618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a026a4_37d33fcd",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-14T22:12:40Z",
+      "side": 1,
+      "message": "The FUSB TCPC chip does not support dual role auto toggle by default, hence the PD state of a non-attached port remains in PD_DRP_TOGGLE_ON in active state thus the TCPC ports do not enter Low power mode. To fix the issue, added board specific code to disable the dual role toggle in S0.",
+      "range": {
+        "startLine": 544,
+        "startChar": 1,
+        "endLine": 551,
+        "endChar": 5
+      },
+      "revId": "6da7bccbe5676cf44f710885763559263b174618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
