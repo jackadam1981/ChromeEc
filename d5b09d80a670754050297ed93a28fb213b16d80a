@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f685f4d_d55a7580",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:15:20Z",
+      "side": 1,
+      "message": "It would be helpful to describe that the LEDs are configured in two steps. Step 1 configures an LED color based on the state of one or more pins.  Step 2 configures the LED policies.",
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c7159d_2a17633d",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:15:20Z",
+      "side": 1,
+      "message": "\"Configure GPIO based LEDs using `cros-ec,gpio-led-pins` compatible node described by [cros-ec,gpio_led_pins.yaml].\"",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 86
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c3aea3_3d18448c",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:15:20Z",
+      "side": 1,
+      "message": "PWM based LEDs are configured with two separate nodes.  The `cros-ec,pwm-pin-config` node, described in [cros-ec,pwm_led_pin_config.yaml], configures the PWM channel and frequency.  The `cros-ec,pwm-led-pins` node, described in [cros-ec,pwm_led_pins.yaml], configures the LED colors.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 166
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ea2a4e_8205da6d",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:15:20Z",
+      "side": 1,
+      "message": "`cros-ec,gpio-led-pins`",
+      "range": {
+        "startLine": 99,
+        "startChar": 81,
+        "endLine": 99,
+        "endChar": 94
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1459e9_7e50cd88",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:15:20Z",
+      "side": 1,
+      "message": "Reference the compatible name throughout, for example \u0027cros-ec,led-policy`.  \"led_policy\" is the node path, and can be changed by the user.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84290ca6_640b7c7b",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:15:20Z",
+      "side": 1,
+      "message": "`cros-ec,pwm-led-pins`",
+      "range": {
+        "startLine": 99,
+        "startChar": 98,
+        "endLine": 99,
+        "endChar": 110
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed92985d_59eb171e",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-14T14:15:20Z",
+      "side": 1,
+      "message": "Can you rework this to describe the desired physical LED behavior first, then show how the devicetree is used to describe this behavior?\n\nFor instance: \"If you want an LED to blink, then create 2 color policies, one to turn on the LED and one to turn off the LED\".   You can then also describe adding the charge-state and chipset-state properties and the affect on the LED.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 218
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
