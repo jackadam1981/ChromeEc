@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e86c367_4da10af1",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-15T22:22:58Z",
+      "side": 1,
+      "message": "Yup, setting the flag before `send_batt_status_event` is checked is the important part.   Using your snippet looks good.\n\nThanks for the help.",
+      "parentUuid": "d76d19fc_2d031e19",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 371,
+        "endChar": 4
+      },
+      "revId": "63ad547fc79b9a33257227b569f96e7afcbfaaae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29400b5d_748e45a9",

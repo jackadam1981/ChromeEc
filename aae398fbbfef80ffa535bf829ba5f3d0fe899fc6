@@ -34,6 +34,24 @@
       "parentUuid": "f5cd3457_bbee2968",
       "revId": "aae398fbbfef80ffa535bf829ba5f3d0fe899fc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6dd4d7_bf67b03d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-15T22:22:58Z",
+      "side": 1,
+      "message": "The goal of this CL is to allow \"no battery\" testing without having to physically remove the battery, by issuing `ectool batterycutoff`.   This is part of supporting low/no battery boot on AMD devices (Monkey Island, Skyrim): go/mi-sk-low-no-battery-boot\n\nSupporting this allows for a tast test that can (hopefully) be automated someday:\n3699171: power: Add test ShutdownWithCommandBatteryCutoff | https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3699171",
+      "parentUuid": "3abdced0_b9069a38",
+      "revId": "aae398fbbfef80ffa535bf829ba5f3d0fe899fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
