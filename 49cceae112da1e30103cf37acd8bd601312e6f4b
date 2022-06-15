@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1994cc0d_832f3838",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-06-15T00:08:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "391fd9db_9ab2a862",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "49cceae112da1e30103cf37acd8bd601312e6f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "583b480e_22df362a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-14T23:17:04Z",
       "side": 1,
       "message": "This can be lowercase: \"host commands\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "49cceae112da1e30103cf37acd8bd601312e6f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e088ff4_e2a625cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-06-15T00:08:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "583b480e_22df362a",
       "range": {
         "startLine": 9,
         "startChar": 29,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbde5e4e_b696290a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-06-15T00:08:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e230747a_6a4d35bd",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "49cceae112da1e30103cf37acd8bd601312e6f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2152638c_dc485446",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-14T23:17:04Z",
       "side": 1,
       "message": "FYI, you can have multiple `TEST` lines, so you can do:\n\n```\nTEST\u003d./test/run_device_test.py --board bloonchipper\nTEST\u003dmake buildall\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 66
+      },
+      "revId": "49cceae112da1e30103cf37acd8bd601312e6f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4b375d_3508609b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-06-15T00:08:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2152638c_dc485446",
       "range": {
         "startLine": 15,
         "startChar": 0,
