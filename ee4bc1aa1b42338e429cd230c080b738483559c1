@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "480440bd_2a792239",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-15T01:36:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1db24427_b8b8b741",
+      "range": {
+        "startLine": 227,
+        "startChar": 2,
+        "endLine": 227,
+        "endChar": 8
+      },
+      "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35c01629_0daac609",
         "filename": "common/usbc/usb_retimer_fw_update.c",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-14T15:48:52Z",
       "side": 1,
       "message": "Should any new host operations get blocked during the 7 second online delay?  Should this routine check the current port state?",
+      "range": {
+        "startLine": 322,
+        "startChar": 9,
+        "endLine": 322,
+        "endChar": 11
+      },
+      "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4e31a3_c5d861a9",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-15T01:36:53Z",
+      "side": 1,
+      "message": "I feel It\u0027s not necessary to block host operation during this 7 seconds online delay.\nThis is based on host(FWUPD) is following fixed steps. \nAfter firmware update, host should wait 5 seconds (for retimer to come to functional state). \nThen host requests PD port 0 online: a) disconnect USB mux; b) resume port.\nSince 5 seconds is not enforced, this CL will handle this case.\n\nHere is my reasoning:\n1. If retimer is accessible, both a) \u0026 b) are succeed, then port status is RETIMER_ONLINE; By the time retimer_check_online() is triggered, it will not do anything to this port since it is not RETIMER_ONLINE_REQUESTED.\nMeanwhile, during this 7 seconds delay, the port can do offline again; it can even request online again, but port is not suspended, it will get error back as expected.\n\n2. If retimer is not accessible; At online request step a), port state is changed to RETIMER_ONLINE_REQUESTED, host fails to set USB mux to 0; and host won\u0027t do b) to resume port. After 7 seconds, retimer_check_online() will resume this port.\nFWUPD will not do anything with this port after this failure.\nUnless someone manually does offline upon failure, this will change port state. I assume only developer could do so.\n@Kranthi, correct me if I miss any scenario in host/FWUPD side.",
+      "parentUuid": "35c01629_0daac609",
       "range": {
         "startLine": 322,
         "startChar": 9,
