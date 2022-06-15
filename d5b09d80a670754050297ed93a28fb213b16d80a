@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11446de_5fd4a0bc",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T03:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f685f4d_d55a7580",
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5c7159d_2a17633d",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "984eff09_c19ecd38",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T03:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c7159d_2a17633d",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 86
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50c3aea3_3d18448c",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-06-14T14:15:20Z",
       "side": 1,
       "message": "PWM based LEDs are configured with two separate nodes.  The `cros-ec,pwm-pin-config` node, described in [cros-ec,pwm_led_pin_config.yaml], configures the PWM channel and frequency.  The `cros-ec,pwm-led-pins` node, described in [cros-ec,pwm_led_pins.yaml], configures the LED colors.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 166
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f419a06_057c7645",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T03:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c3aea3_3d18448c",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -133,6 +199,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0480e0_135f4b77",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T03:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84290ca6_640b7c7b",
+      "range": {
+        "startLine": 99,
+        "startChar": 98,
+        "endLine": 99,
+        "endChar": 110
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6377d588_b2ad1eeb",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T03:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1459e9_7e50cd88",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "637df831_373ba6d8",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T03:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4ea2a4e_8205da6d",
+      "range": {
+        "startLine": 99,
+        "startChar": 81,
+        "endLine": 99,
+        "endChar": 94
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed92985d_59eb171e",
@@ -146,6 +284,54 @@
       "writtenOn": "2022-06-14T14:15:20Z",
       "side": 1,
       "message": "Can you rework this to describe the desired physical LED behavior first, then show how the devicetree is used to describe this behavior?\n\nFor instance: \"If you want an LED to blink, then create 2 color policies, one to turn on the LED and one to turn off the LED\".   You can then also describe adding the charge-state and chipset-state properties and the affect on the LED.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 218
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610a17c2_ebd76ec8",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T03:47:52Z",
+      "side": 1,
+      "message": "Reworked, is this what you were suggesting? Also",
+      "parentUuid": "ed92985d_59eb171e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 218
+      },
+      "revId": "d5b09d80a670754050297ed93a28fb213b16d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fd91ee_0933cc43",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T03:47:52Z",
+      "side": 1,
+      "message": "Done, is this what you were looking for? Also removed Example 2 as it wasn\u0027t adding any new info.",
+      "parentUuid": "ed92985d_59eb171e",
       "range": {
         "startLine": 104,
         "startChar": 0,
