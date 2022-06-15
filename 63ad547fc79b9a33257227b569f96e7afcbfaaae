@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d76d19fc_2d031e19",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-15T18:49:58Z",
+      "side": 1,
+      "message": "Does the following not do what you want?\n\n```\nif (battery_is_cut_off())\n  tmp |\u003d EC_BATT_CUT_OFF_ENABLED;\n```\n\nIt should then increment `send_batt_status_event` below and send a notification.\n\nWe do need something to call `update_dynamic_battery_info` when `battery_cutoff_state` is modified so we send the notification to ACPI.",
+      "parentUuid": "5c548730_4215eb9b",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 371,
+        "endChar": 4
+      },
+      "revId": "63ad547fc79b9a33257227b569f96e7afcbfaaae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29400b5d_748e45a9",
         "filename": "include/battery.h",
         "patchSetId": 1
