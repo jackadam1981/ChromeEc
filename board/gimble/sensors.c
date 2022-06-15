@@ -11,6 +11,7 @@
 #include "driver/accel_bma422.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/tcpm/ps8xxx_public.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
@@ -354,8 +355,19 @@ __maybe_unused static const struct ec_thermal_config thermal_cpu = THERMAL_CPU;
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
 		}, \
 	}
-__maybe_unused static const struct ec_thermal_config thermal_inductor =
-	THERMAL_INDUCTOR;
+
+#define THERMAL_FAN \
+	{ \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(75), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(100), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+		}, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_fan =
+	THERMAL_FAN;
 
 /* this should really be "const" */
 struct ec_thermal_config thermal_params[] = {
@@ -364,4 +376,23 @@ struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_2_FAN] = THERMAL_INDUCTOR,
 	[TEMP_SENSOR_3_CHARGER] = THERMAL_INDUCTOR,
 };
+
+struct ec_thermal_config temp_sensor_2_fan_set[] = {
+	[TEMP_SENSOR_2_FAN] = THERMAL_FAN,
+};
+
+static void config_thermal_params(void)
+{
+	int rv, val;
+
+	rv = i2c_read8(I2C_PORT_USB_C1_TCPC,
+			PS8XXX_I2C_ADDR1_FLAGS, 0x00, &val);
+
+	if (rv != 0) {
+		thermal_params[TEMP_SENSOR_2_FAN] =
+			temp_sensor_2_fan_set[TEMP_SENSOR_2_FAN];
+	}
+}
+DECLARE_HOOK(HOOK_INIT, config_thermal_params, HOOK_PRIO_INIT_I2C + 1);
+
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
