@@ -22,6 +22,30 @@
       },
       "revId": "b1f39a820b75187d405a89769b0e5310e1c1e5c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e20e2c_9e7ae8b3",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-15T21:30:33Z",
+      "side": 1,
+      "message": "So I dug more to understand what CHARGE_CONTROL_NORMAL and other charge control modes mean. CHARGE_CONTROL_NORMAL just means normal working condition. i.e. 1. Battery will discharge without AC, 2. Battery will charge on AC if it\u0027s not full.\n\nCHFLAG_FORCE_IDLE is set when charge control mode is not CHARGE_CONTROL_NORMAL. So my understanding is it specifies that the battery is not in normal working condition. i.e. It will not charge even if AC is present.\n\nThis flag in legacy boards for LEDs is used when charge_state is PWR_STATE_IDLE [1].\n\nSo if the charge control mode is not default - CHARGE_CONTROL_NORMAL (there\u0027s a host command to control the mode) LED_CHFLAG_FORCE_IDLE can be used.\n\n[1] - https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/lazor/led.c;l\u003d109\n\nWhat do you think about describing it this way:\n\n\"Use LED_CHFLAG_FORCE_IDLE to control LED color if charging/discharging mode of battery is not normal/default.\nUse LED_CHFLAG_DEFAULT to control LED color if charging/discharging mode of battery is normal/default.\"",
+      "parentUuid": "eca7422f_83d0c207",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "b1f39a820b75187d405a89769b0e5310e1c1e5c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
