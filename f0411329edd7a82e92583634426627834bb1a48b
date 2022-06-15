@@ -16,6 +16,29 @@
       "message": "Friendly pin.",
       "revId": "f0411329edd7a82e92583634426627834bb1a48b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7409db2a_ab4d77e9",
+        "filename": "board/agah/usbc_config.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-15T03:51:35Z",
+      "side": 1,
+      "message": "i thin you also want |\u003d here.",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "f0411329edd7a82e92583634426627834bb1a48b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
