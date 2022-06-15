@@ -16,6 +16,24 @@
       "message": "It\u0027s pretty strange that this call doesn\u0027t return the right value.",
       "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08d1896_cb340a6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-06-15T07:08:17Z",
+      "side": 1,
+      "message": "Hi Andrew,\nk_timer_remaining_get() returns time in \u0027milliseconds\u0027 and k_timer_remaining_ticks() returns time in unit of \u0027system ticks\u0027. Hence using k_timer_remaining_ticks() we can get more accurate values.",
+      "parentUuid": "3f367ab1_550e4d5c",
+      "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
