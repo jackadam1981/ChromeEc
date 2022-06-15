@@ -16,6 +16,24 @@
       "message": "What is the point? Sorry, I didn\u0027t see an explanation in the bug. If power is going away shortly, what does it matter if the AP is throttled or not?",
       "revId": "aae398fbbfef80ffa535bf829ba5f3d0fe899fc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3abdced0_b9069a38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-06-15T21:50:43Z",
+      "side": 1,
+      "message": "Or is the intention to continue to run while the battery is cutoff on AC alone?",
+      "parentUuid": "f5cd3457_bbee2968",
+      "revId": "aae398fbbfef80ffa535bf829ba5f3d0fe899fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
