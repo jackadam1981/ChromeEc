@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcbcf734_0c2b3353",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T15:15:10Z",
+      "side": 1,
+      "message": "Please briefly describe the effects or lack thereof on the ITE TCPC in the function comment.",
+      "parentUuid": "d2d4d880_6ac4dd63",
+      "revId": "2b2ca9fd2b5e6dd8025ed0d126cd7e7649dc5d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1accc8f0_13372f9b",
         "filename": "baseboard/intelrvp/adlrvp.c",
         "patchSetId": 6
