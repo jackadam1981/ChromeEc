@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f032bd4_8d2c6ae0",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-15T16:26:10Z",
+      "side": 1,
+      "message": "shell_stopped is essentially a cached copy of ..-\u003ectx-\u003estate, and is more correct, since it gets set without waiting for the shell to asynchronously stop.\nThe issue I think is that shell_stopped is not set true at start time.\nA better fix may be to rename shell_stopped to shell_running (so the initial state is false), and then invert the logic where shell_stopped is used i.e\nWhere it is currently set to true, set it false (and vice versa), and the check\nbecomes !shell_running.\n\nI think this is a clearer fix.",
+      "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
