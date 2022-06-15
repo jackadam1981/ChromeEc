@@ -34,6 +34,41 @@
       "parentUuid": "3f367ab1_550e4d5c",
       "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15794296_8d165589",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-15T17:02:41Z",
+      "side": 1,
+      "message": "I\u0027m copying Keith, since this is a very weird behaviour of the timer functions.\n",
+      "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d407b0_fe67d14e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-15T17:02:41Z",
+      "side": 1,
+      "message": "I understand what you are saying, but k_timer_remaining_get is just an inline wrapper around k_timer_remaining_ticks, and if it is checking against 0, then it shouldn\u0027t matter which one you call. That\u0027s what I find odd.\nThe inline is in the Zephyr source in include/zephyr/kernel.h:\nstatic inline uint32_t k_timer_remaining_get(struct k_timer *timer)\n{\n        return k_ticks_to_ms_floor32(k_timer_remaining_ticks(timer));\n}\n\nAll the conversion factor does is convert ticks to ms.\nEspecially when we are just checking whether the timer is expired, it should not make any difference which we call.\nThat\u0027s what concerns me, that perhaps something else is going on here.\nI\u0027m OK with making this change, if you verify it fixes the issue, but I\u0027d really like to know why.",
+      "parentUuid": "c08d1896_cb340a6c",
+      "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
