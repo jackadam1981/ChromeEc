@@ -3023,6 +3023,8 @@ static void tc_attached_src_entry(const int port)
 			 */
 			tc_set_data_role(port, PD_ROLE_DFP);
 
+			hook_notify(HOOK_USB_PD_CONNECT);
+
 			/*
 			 * Start sourcing Vconn before Vbus to ensure
 			 * we are within USB Type-C Spec 1.4 tVconnON
@@ -3076,6 +3078,14 @@ static void tc_attached_src_entry(const int port)
 		tc_set_data_role(port, PD_ROLE_DFP);
 
 		/*
+		 * We can go through this during a PRS, in which case this isn't
+		 * a new connection and should not notify.
+		 */
+		if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
+			hook_notify(HOOK_USB_PD_CONNECT);
+		}
+
+		/*
 		 * Start sourcing Vconn before Vbus to ensure
 		 * we are within USB Type-C Spec 1.4 tVconnON
 		 *
@@ -3103,14 +3113,6 @@ static void tc_attached_src_entry(const int port)
 	/* Initialize type-C supplier to seed the charge manger */
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 		typec_set_input_current_limit(port, 0, 0);
-
-	/*
-	 * Only notify if we're not performing a power role swap.  During a
-	 * power role swap, the port partner is not disconnecting/connecting.
-	 */
-	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
-		hook_notify(HOOK_USB_PD_CONNECT);
-	}
 
 	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
 		tcpm_debug_accessory(port, 1);
