@@ -69,6 +69,24 @@
       "parentUuid": "c08d1896_cb340a6c",
       "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8391d5_63546ee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-15T18:11:09Z",
+      "side": 1,
+      "message": "I think there\u0027s actually a race here that using a finer time unit reduces the chances of, but doesn\u0027t fix.\n\n`pwrseq_loop_thread` runs the state machine at least every 10ms; if the time remaining on the S5 inactivity timer is near enough to zero that it rounds down or the timer expires after the call to `k_timer_status_get` but before `k_timer_remaining_get` then we\u0027ll incorrectly assume it wasn\u0027t started, when in fact it\u0027s just expired or is about to: this causes the timer to be reset in either case, losing the expiration.\n\nWhen getting the time in ms, there\u0027s approximately a 10% chance that we\u0027ll hit this race on any given timeout; the chance is smaller but still nonzero when working with ticks.\n\n---\n\nThe fundamental flaw here is that `k_timer_*_get` can\u0027t be used to determine whether a timer was already started. We need to ensure the timer is started exactly once on every entry to S5- this is somewhat difficult with the current state machine structure, but every alternative is subject to the same sort of race.",
+      "parentUuid": "31d407b0_fe67d14e",
+      "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
