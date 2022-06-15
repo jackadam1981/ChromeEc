@@ -87,6 +87,24 @@
       "parentUuid": "31d407b0_fe67d14e",
       "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c080e907_ed153906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-15T18:42:48Z",
+      "side": 1,
+      "message": "It might also work to only check whether the timer expired after polling the remaining time:\n\n```\nif (k_timer_remaining_ticks(...) \u003d\u003d 0 \u0026\u0026 k_timer_status_get(...) \u003d\u003d 0) {\n    // Timer was not started\n} else {\n    // Timer expired\n}\n```\n\nhowever I\u0027m not certain that `k_timer_remaining_ticks` always returns nonzero on timers that have yet to expire.",
+      "parentUuid": "2b8391d5_63546ee5",
+      "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
