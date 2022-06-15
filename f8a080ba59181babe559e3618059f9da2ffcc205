@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ea3fc6_dbeef42d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T16:04:59Z",
+      "side": 1,
+      "message": "Please split this CL into\n1. Extended message support in emulator (possibly preceded by additions to usb_pd.h)\n2. Battery caps fields defined in usb_pd.h.\n3. Battery caps support in partner.\n4. Test for extended battery caps.\n\nI added comments here pertaining to 1., so preserve the current Change ID in that commit.",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd6099d_ee2d3242",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T16:04:59Z",
+      "side": 1,
+      "message": "Nit: Capitalize first word in sentences. Write out \"with\" and \"without.\"",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da00c97_ff89163c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T16:04:59Z",
+      "side": 1,
+      "message": "Why make this change?",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d365e3_00839127",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T16:04:59Z",
+      "side": 1,
+      "message": "There should be code somewhere, probably, to set `data_objects` to 0 for extended messages.",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491bbdac_c33d6224",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T16:04:59Z",
+      "side": 1,
+      "message": "Remove these comments.",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79838bb5_f8de48e0",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T16:04:59Z",
+      "side": 1,
+      "message": "If you intend to keep a bug open for chunking support, mention it here. Otherwise, remove the TODO and just have a comment saying that multiple chunks aren\u0027t supported. Either way, add an assert that the payload size will fit in one chunk.",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d1be4e_6b7f3978",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T16:04:59Z",
+      "side": 1,
+      "message": "You should probably comment here that the interpretation of this field depends on whether the message is extended (and indeed, whether it is a control or data message if non-extended). Alternatively, you could have separate fields for the extended header fields that overlap in functionality with the non-extended header fields.",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db45a11_211360e3",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-15T16:04:59Z",
+      "side": 1,
+      "message": "These alloc functions are only used in emul_tcpci_partner_common.c. Do they even need to be in the header?",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
