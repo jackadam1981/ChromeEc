@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef184501_cd40049f",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-15T01:37:35Z",
+      "side": 1,
+      "message": "Why not allocate a flag instead of allocating a new byte?",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 371,
+        "endChar": 4
+      },
+      "revId": "63ad547fc79b9a33257227b569f96e7afcbfaaae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
