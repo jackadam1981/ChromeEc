@@ -22,6 +22,30 @@
       },
       "revId": "217d33c9206054b0b22ae62754224f7a277f7545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeaa7475_913858f1",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-06-15T17:18:47Z",
+      "side": 1,
+      "message": "`alt-usb-mux` is used to force generation of `struct usb_mux` for USB muxes that are not part of the `named-usbc-port` chain. I think it isn\u0027t possible to use `alt-usb-mux-chain` for generating `struct usb_mux` as this would lead to duplicated structures (e.g. `virtual_mux_c0` would be generated twice). Once again the problem is that `struct usb_mux` contains both mux specific data and pointer to next mux.",
+      "parentUuid": "4ef4a74f_7294d575",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 4
+      },
+      "revId": "217d33c9206054b0b22ae62754224f7a277f7545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
