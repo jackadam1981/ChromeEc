@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9691e71_59c8f512",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-15T18:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c18026f_390cd22b",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "63ad547fc79b9a33257227b569f96e7afcbfaaae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef184501_cd40049f",
@@ -73,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c548730_4215eb9b",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-15T18:20:14Z",
+      "side": 1,
+      "message": "Writes to the offset `EC_MEMMAP_BATT_FLAG` are lost, so the ACPI code can\u0027t do anything based on them.\n\nThe following EC code:\n\n```\nvoid set_battery_cutoff(void)\n{\n[[[... Add to EC_MEMMAP_BATT_FLAG ...]]]\n\tuint8_t *memmap_battery_cutoff \u003d\n\t\thost_get_memmap(EC_MEMMAP_BATT_FLAG);\n\t*memmap_battery_cutoff |\u003d EC_BATT_CUT_OFF_ENABLED;\n\n\tCPRINTF(\"TIMTIM \u003e\u003e %s::%d \u003e\u003e *memmap_battery_cutoff \u003d 0x%02X\\n\",\n\t\t__FILE__, __LINE__, *memmap_battery_cutoff);\n\n[[[... New EC_MEMMAP_BATT_CUT_OFF...]]]\n\tmemmap_battery_cutoff \u003d\n\t\thost_get_memmap(EC_MEMMAP_BATT_CUT_OFF);\n\t*memmap_battery_cutoff \u003d 0x1;\n\n\tCPRINTF(\"TIMTIM \u003e\u003e %s::%d \u003e\u003e *memmap_battery_cutoff \u003d 0x%02X\\n\",\n\t\t__FILE__, __LINE__, *memmap_battery_cutoff);\n}\n```\n\nGives this output to the EC console:\n\n```\n22-06-15 12:02:05.515 TIMTIM \u003e\u003e common/battery_v2.c::401 \u003e\u003e *memmap_battery_cutoff \u003d 0x4B\n22-06-15 12:02:05.520 TIMTIM \u003e\u003e common/battery_v2.c::408 \u003e\u003e *memmap_battery_cutoff \u003d 0x01\n```\n\nThe following ACPI code:\n\n```\n[[[ src/ec/google/chromeec/acpi/emem.asl ]]]\nOffset (0x40),\nBTVO, 32,\t// Battery Present Voltage\nBTPR, 32,\t// Battery Present Rate\nBTRA, 32,\t// Battery Remaining Capacity\nACEX, 1,\t// AC Present\nBTEX, 1,\t// Battery Present\nBFDC, 1,\t// Battery Discharging\nBFCG, 1,\t// Battery Charging\nBFCR, 1,\t// Battery Level Critical\nBFIV, 1,\t// Invalid Battery Data\nBFCT, 1,\t// Battery cutoff  \u003c\u003c---- Add to EC_MEMMAP_BATT_FLAG\nOffset (0x4d),\nBTCN, 8,\t// Battery Count\nBTIX, 8,\t// Battery index\nBCUT, 8,\t// Battery cutoff  \u003c\u003c---- New EC_MEMMAP_BATT_CUT_OFF\n```\n\n```\n[[[ SSDT1.dsl ]]]\n    Scope (\\_SB)\n    {\n        Method (DPTC, 0, Serialized)\n        {\n            If (\\_SB.PCI0.LPCB.EC0.BFCT)\n            {\n                Debug \u003d \"TIMTIM \u003e\u003e BFCT is 1\" \u003c\u003c---- Add to EC_MEMMAP_BATT_FLAG\n            }\n\n            If (\\_SB.PCI0.LPCB.EC0.BCUT)\n            {\n                Debug \u003d \"TIMTIM \u003e\u003e BCUT is 1\" \u003c\u003c---- New EC_MEMMAP_BATT_CUT_OFF\n            }\n```\n\nGives the following ACPI output:\n\n```\n[  259.784745] ACPI Debug:  \"EC: BATTERY STATUS\"\n[  259.784851] ACPI Debug:  \"ALIB call: func 1 params 0x03 0x00 0x00\"\n[  259.787458] ACPI Debug:  \"TIMTIM \u003e\u003e BCUT is 1\" \u003c\u003c--- New EC_MEMMAP_BATT_CUT_OFF\n[  259.787505] ACPI Debug:  \"DPTC: No/Low battery. Throttling SOC.\"\n```\n\nBased on the above, the block `EC_MEMMAP_BATT_CUT_OFF` is not mutable by `ectool`.   Writing the values \"works\" in that `ectool` can see the updated value, but the mem-mapped block isn\u0027t actually modified so ACPI never sees the updated value.\n\nInstead, creating a new flag at another offset allows ACPI to see the new value and throttle the SOC.\n\nIs there something else I\u0027m missing to allow adding a new flag to `EC_MEMMAP_BATT_FLAG`?",
+      "parentUuid": "73f5c471_72aab114",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 371,
+        "endChar": 4
+      },
+      "revId": "63ad547fc79b9a33257227b569f96e7afcbfaaae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29400b5d_748e45a9",
         "filename": "include/battery.h",
         "patchSetId": 1
@@ -84,6 +132,24 @@
       "writtenOn": "2022-06-15T15:07:07Z",
       "side": 1,
       "message": "Please add comment describing interface.",
+      "revId": "63ad547fc79b9a33257227b569f96e7afcbfaaae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e64fe1_1782ccdd",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-15T18:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29400b5d_748e45a9",
       "revId": "63ad547fc79b9a33257227b569f96e7afcbfaaae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
