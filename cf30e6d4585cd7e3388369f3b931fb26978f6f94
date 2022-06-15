@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461948ab_99affdde",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-15T18:44:55Z",
+      "side": 1,
+      "message": "This will utilize `gpiochip152` for kernel versions 4.x, 5.0.x through 5.17.* which isn\u0027t obvious from the preceding comment.",
+      "range": {
+        "startLine": 634,
+        "startChar": 22,
+        "endLine": 634,
+        "endChar": 57
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
