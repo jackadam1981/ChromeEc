@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ac3205_08f9faab",
+        "filename": "board/lantis/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-15T19:43:27Z",
+      "side": 1,
+      "message": "Does the scancode at 2,7 need set as well, or is it fine in its default state?",
+      "range": {
+        "startLine": 542,
+        "startChar": 26,
+        "endLine": 542,
+        "endChar": 49
+      },
+      "revId": "17b1518201af2af0699ac267d4fd38befe18df3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
