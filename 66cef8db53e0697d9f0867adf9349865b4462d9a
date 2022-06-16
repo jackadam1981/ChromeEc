@@ -81,6 +81,24 @@
       "parentUuid": "6f032bd4_8d2c6ae0",
       "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83745961_a2c988da",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-16T02:56:09Z",
+      "side": 1,
+      "message": "Hmm, yes. The shell is initialised in subsys/shell/backends/shell_uart.c with\nSYS_INIT with POST_KERNEL and priority CONFIG_SHELL_BACKEND_SERIAL_INIT_PRIORITY\nI would suggest you add a SYS_INIT with POST_KERNEL priority 99 that sets shell_running to true. Any logging prior to that will go to printk, which I think is quite reasonable.\nI\u0027m keen to keep the checks in this function as minimal as possible and also not to try and duplicate the checks.",
+      "parentUuid": "611675aa_a0c5089b",
+      "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
