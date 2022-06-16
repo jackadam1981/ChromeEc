@@ -28,6 +28,8 @@ struct button_config {
 };
 
 enum button {
+	BUTTON_BRIGHTNESS_UP,
+	BUTTON_BRIGHTNESS_DOWN,
 #ifdef CONFIG_VOLUME_BUTTONS
 	BUTTON_VOLUME_UP,
 	BUTTON_VOLUME_DOWN,
@@ -102,5 +104,21 @@ int button_is_adc_detected(enum gpio_signal gpio);
  * Returns the physical state of the button.
  */
 int adc_to_physical_value(enum gpio_signal gpio);
+
+/*
+ * Is this button using navkey to detect state?
+ *
+ * @param gpio	The GPIO of interest.
+ * Returns 1 if button state is detected by navkey, 0 if not.
+ */
+int button_is_navkey_detected(enum gpio_signal gpio);
+
+/*
+ * Sample the navkey and convert to a physical pressed/not pressed state.
+ *
+ * @param gpio	navkey detected GPIO.
+ * Returns the physical state of the button.
+ */
+int navkey_to_physical_value(enum gpio_signal gpio);
 
 #endif  /* __CROS_EC_BUTTON_H */
