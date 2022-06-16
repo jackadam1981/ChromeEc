@@ -94,7 +94,7 @@ struct tcpc_emul_data {
 	const struct i2c_common_emul_cfg i2c_cfg;
 };
 
-#define TCPCI_EMUL_DEFINE(n, init, cfg_ptr, chip_data_ptr)                   \
+#define TCPCI_EMUL_DEFINE(n, init, cfg_ptr, chip_data_ptr, bus_api)          \
 	static uint8_t tcpci_emul_tx_buf_##n[128];                           \
 	static struct tcpci_emul_msg tcpci_emul_tx_msg_##n = {               \
 		.buf = tcpci_emul_tx_buf_##n,                                \
@@ -123,7 +123,7 @@ struct tcpc_emul_data {
 			.addr = DT_INST_REG_ADDR(n),                       \
 		},                                                         \
 	}; \
-	EMUL_DEFINE(init, DT_DRV_INST(n), cfg_ptr, &tcpc_emul_data_##n)
+	EMUL_DEFINE(init, DT_DRV_INST(n), cfg_ptr, &tcpc_emul_data_##n, bus_api)
 
 /** Response from TCPCI specific device operations */
 enum tcpci_emul_ops_resp {
@@ -264,7 +264,7 @@ struct tcpci_emul_partner_ops {
  *
  * @return Pointer to I2C TCPCI emulator
  */
-struct i2c_emul *tcpci_emul_get_i2c_emul(const struct emul *emul);
+struct i2c_emul *tcpci_emul_get_emul(const struct emul *emul);
 
 /**
  * @brief Set value of given register of TCPCI

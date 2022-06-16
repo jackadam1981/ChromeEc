@@ -25,7 +25,7 @@
 #define GPIO_USB_C1_FRS_EN_PATH DT_PATH(named_gpios, usb_c1_frs_en)
 
 struct ppc_syv682x_fixture {
-	struct i2c_emul *ppc_emul;
+	const struct emul *ppc_emul;
 	const struct device *frs_en_gpio_port;
 	int frs_en_gpio_pin;
 };
@@ -55,7 +55,7 @@ static void *syv682x_test_setup(void)
 static void syv682x_test_after(void *data)
 {
 	struct ppc_syv682x_fixture *fixture = data;
-	struct i2c_emul *emul = fixture->ppc_emul;
+	const struct emul *emul = fixture->ppc_emul;
 
 	/* Disable the power path and clear interrupt conditions. */
 	zassume_ok(syv682x_emul_set_reg(emul, SYV682X_CONTROL_1_REG,
@@ -658,7 +658,7 @@ ZTEST(ppc_syv682x, test_syv682x_ppc_dump)
  * reg_access_to_fail on read number N, where N is the initial value of
  * reg_access_fail_countdown.
  */
-static int mock_read_intercept_reg_fail(struct i2c_emul *emul, int reg,
+static int mock_read_intercept_reg_fail(const struct emul *emul, int reg,
 					uint8_t *val, int bytes, void *data)
 {
 	struct reg_to_fail_data *test_data = data;

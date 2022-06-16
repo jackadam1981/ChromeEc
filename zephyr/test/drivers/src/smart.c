@@ -24,13 +24,12 @@
 ZTEST_USER(smart_battery, test_battery_getters)
 {
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	char block[32];
 	int expected;
 	int word;
 
-	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	zassert_equal(EC_SUCCESS, battery_get_mode(&word), NULL);
 	zassert_equal(bat->mode, word, "%d != %d", bat->mode, word);
@@ -81,11 +80,11 @@ ZTEST_USER(smart_battery, test_battery_getters)
 ZTEST_USER(smart_battery, test_battery_get_capacity)
 {
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	int word;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	/* Test fail when checking battery mode */
 	i2c_common_emul_set_read_fail_reg(emul, SB_BATTERY_MODE);
@@ -118,12 +117,12 @@ ZTEST_USER(smart_battery, test_battery_get_capacity)
 ZTEST_USER(smart_battery, test_battery_status)
 {
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	int expected;
 	int status;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	bat->status = 0;
 	bat->cur = -200;
@@ -143,7 +142,7 @@ ZTEST_USER(smart_battery, test_battery_status)
 /** Test wait for stable function */
 ZTEST_USER(smart_battery, test_battery_wait_for_stable)
 {
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
 
@@ -160,7 +159,7 @@ ZTEST_USER(smart_battery, test_battery_wait_for_stable)
 ZTEST_USER(smart_battery, test_battery_manufacture_date)
 {
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	int day, month, year;
 	int exp_month = 5;
 	int exp_year = 2018;
@@ -168,7 +167,7 @@ ZTEST_USER(smart_battery, test_battery_manufacture_date)
 	uint16_t date;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	date = sbat_emul_date_to_word(exp_day, exp_month, exp_year);
 	bat->mf_date = date;
@@ -184,13 +183,13 @@ ZTEST_USER(smart_battery, test_battery_manufacture_date)
 ZTEST_USER(smart_battery, test_battery_time_at_rate)
 {
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	int expect_time;
 	int minutes;
 	int rate;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	/* Test fail on rate 0 */
 	rate = 0;
@@ -243,11 +242,11 @@ ZTEST_USER(smart_battery, test_battery_get_params)
 {
 	struct sbat_emul_bat_data *bat;
 	struct batt_params batt;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	int flags;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	/* Fail temperature read */
 	i2c_common_emul_set_read_fail_reg(emul, SB_TEMPERATURE);
@@ -335,7 +334,7 @@ struct mfgacc_data {
 	int len;
 };
 
-static int mfgacc_read_func(struct i2c_emul *emul, int reg, uint8_t *val,
+static int mfgacc_read_func(const struct emul *emul, int reg, uint8_t *val,
 			    int bytes, void *data)
 {
 	struct mfgacc_data *conf = data;
@@ -352,14 +351,14 @@ ZTEST_USER(smart_battery, test_battery_mfacc)
 {
 	struct sbat_emul_bat_data *bat;
 	struct mfgacc_data mfacc_conf;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	uint8_t recv_buf[10];
 	uint8_t mf_data[10];
 	uint16_t cmd;
 	int len;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	/* Select arbitrary command number for the test */
 	cmd = 0x1234;
@@ -428,14 +427,14 @@ ZTEST_USER(smart_battery, test_battery_fake_charge)
 {
 	struct sbat_emul_bat_data *bat;
 	struct batt_params batt;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	int remaining_cap;
 	int fake_charge;
 	int charge;
 	int flags;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	/* Success on command with no argument */
 	zassert_equal(EC_SUCCESS, shell_execute_cmd(get_ec_shell(), "battfake"),
@@ -501,12 +500,12 @@ ZTEST_USER(smart_battery, test_battery_fake_temperature)
 {
 	struct sbat_emul_bat_data *bat;
 	struct batt_params batt;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	int fake_temp;
 	int flags;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	/* Success on command with no argument */
 	zassert_equal(EC_SUCCESS,
