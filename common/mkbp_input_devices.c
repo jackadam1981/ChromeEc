@@ -19,6 +19,7 @@
 #include "power_button.h"
 #include "tablet_mode.h"
 #include "util.h"
+#include "i2c.h"
 
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ## args)
 
@@ -61,6 +62,32 @@ void mkbp_button_update(enum keyboard_button_type button, int is_pressed)
 		mkbp_button_state |= (is_pressed << EC_MKBP_RECOVERY);
 		break;
 
+	case KEYBOARD_BUTTON_NAVKEY:
+		int navkey;
+
+		i2c_read8(I2C_PORT_SCALER, SCALER_I2C_ADDR_FLAGS,
+				SCALER_I2C_REG_FLAGS, &navkey);
+		switch (navkey) {
+		case 1:
+		mkbp_button_state &= ~BIT(EC_MKBP_VOL_UP);
+		mkbp_button_state |= (is_pressed << EC_MKBP_VOL_UP);
+		break;
+		case 2:
+		mkbp_button_state &= ~BIT(EC_MKBP_VOL_DOWN);
+		mkbp_button_state |= (is_pressed << EC_MKBP_VOL_DOWN);
+		break;
+		case 4:
+		mkbp_button_state &= ~BIT(EC_MKBP_BRIGHTNESS_UP);
+		mkbp_button_state |= (is_pressed << EC_MKBP_BRIGHTNESS_UP);
+		break;
+		case 8:
+		mkbp_button_state &= ~BIT(EC_MKBP_BRIGHTNESS_DOWN);
+		mkbp_button_state |= (is_pressed << EC_MKBP_BRIGHTNESS_DOWN);
+		break;
+		default:
+		break;
+		}
+		break;
 	default:
 		/* ignored. */
 		return;

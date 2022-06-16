@@ -17,6 +17,10 @@
 #define BUTTON_FLAG_DISABLED     BIT(1)   /* Button disabled */
 
 
+#define I2C_PORT_SCALER 5
+#define SCALER_I2C_ADDR_FLAGS	0x6E
+#define SCALER_I2C_REG_FLAGS	0x00
+
 #define BUTTON_DEBOUNCE_US (30 * MSEC)
 
 struct button_config {
@@ -38,6 +42,7 @@ enum button {
 	BUTTON_RECOVERY_2,
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON_2) */
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+	BUTTON_NAVKEY,
 	BUTTON_COUNT,
 };
 

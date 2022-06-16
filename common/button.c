@@ -833,6 +833,13 @@ const struct button_config buttons[BUTTON_COUNT] = {
 #else
 struct button_config buttons[BUTTON_COUNT] = {
 #endif
+	[BUTTON_NAVKEY] = {
+		.name = "NavKey",
+		.type = KEYBOARD_BUTTON_NAVKEY,
+		.gpio = GPIO_KAVKEY_INT_L,
+		.debounce_us = BUTTON_DEBOUNCE_US,
+		.flags = 0,
+	},
 #ifdef CONFIG_VOLUME_BUTTONS
 	[BUTTON_VOLUME_UP] = {
 		.name = "Volume Up",
