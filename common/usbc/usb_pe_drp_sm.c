@@ -1529,6 +1529,8 @@ static bool common_src_snk_dpm_requests(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES) &&
 			PE_CHK_DPM_REQUEST(port, DPM_REQUEST_SEND_ALERT)) {
+		if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30)
+			return false;
 		pe_set_dpm_curr_request(port, DPM_REQUEST_SEND_ALERT);
 		set_state_pe(port, PE_SEND_ALERT);
 		return true;
@@ -1631,6 +1633,8 @@ static bool common_src_snk_dpm_requests(int port)
 		return true;
 	} else if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
 		   PE_CHK_DPM_REQUEST(port, DPM_REQUEST_GET_REVISION)) {
+		if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30)
+			return false;
 		pe_set_dpm_curr_request(port, DPM_REQUEST_GET_REVISION);
 		set_state_pe(port, PE_GET_REVISION);
 		return true;
@@ -7172,15 +7176,6 @@ __maybe_unused static void pe_get_revision_entry(int port)
 {
 	print_current_state(port);
 
-	/*
-	 * Only USB PD partners with major revision 3.0 could potentially
-	 * respond to Get_Revision.
-	 */
-	if (prl_get_rev(port, TCPCI_MSG_SOP) != PD_REV30) {
-		pe_set_ready_state(port);
-		return;
-	}
-
 	/* Send a Get_Revision message */
 	send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_GET_REVISION);
 	pe_sender_response_msg_entry(port);
@@ -7192,9 +7187,6 @@ __maybe_unused static void pe_get_revision_run(int port)
 	int cnt;
 	int ext;
 	enum pe_msg_check msg_check;
-
-	if (prl_get_rev(port, TCPCI_MSG_SOP) != PD_REV30)
-		return;
 
 	/* Check the state of the message sent */
 	msg_check = pe_sender_response_msg_run(port);
@@ -7240,9 +7232,6 @@ __maybe_unused static void pe_get_revision_run(int port)
 
 __maybe_unused static void pe_get_revision_exit(int port)
 {
-	if (prl_get_rev(port, TCPCI_MSG_SOP) != PD_REV30)
-		return;
-
 	pe_sender_response_msg_exit(port);
 }
 
