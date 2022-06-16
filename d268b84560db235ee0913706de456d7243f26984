@@ -16,6 +16,57 @@
       "message": "How about change it to CONFIG_KEYBOARD_MULTIPLE_DELBIN to limit any possible impact to the Delbin/DelbinG devices only?",
       "revId": "d268b84560db235ee0913706de456d7243f26984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1664fc9c_17793a7e",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-06-16T08:54:30Z",
+      "side": 1,
+      "message": "Would you like to guard this section by CONFIG_KEYBOARD_MULTIPLE?\nIf yes, why would you guard every places related to this feature?\ne.g. board/delbin/keyboard_customization.h#128?",
+      "revId": "d268b84560db235ee0913706de456d7243f26984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8128dc63_fc40881c",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-06-16T08:54:30Z",
+      "side": 1,
+      "message": "Will this impact to those project who use CONFIG_KEYBOARD_CUSTOMIZATION already?\ne.g. Banshee, it would include \"keyboard_customization.h\" twice, it might cause duplicate include error?",
+      "revId": "d268b84560db235ee0913706de456d7243f26984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4d7b559_bb011af5",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-06-16T08:54:30Z",
+      "side": 1,
+      "message": "Why don\u0027t you use #ifndef CONFIG_KEYBOARD_MULTIPLE here?",
+      "revId": "d268b84560db235ee0913706de456d7243f26984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
