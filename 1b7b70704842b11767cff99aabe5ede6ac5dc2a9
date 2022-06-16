@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d801d911_cfcdd49d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-16T23:45:08Z",
+      "side": 1,
+      "message": "Hi Diana and Abe,\ncurrently we are sending alert messages to partners on power state changes, and alert dpm requests are not gated based on partner revision. This can lead to an issue if the partner does not know how to react to an alert. In one case (https://b.corp.google.com/issues/235925532) a small lenovo hub will hard reset and wake the device which alerted it that it was going to sleep. This CL adds a guard to the dpm request function to prevent sending alerts to USB PD 2.0 partners. It also updates the guard used to prevent sending Get_Revision to USB PD 2.0 partners to match the same style as alert dpm requests.",
+      "revId": "1b7b70704842b11767cff99aabe5ede6ac5dc2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
