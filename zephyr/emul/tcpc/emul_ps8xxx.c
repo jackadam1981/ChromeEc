@@ -125,8 +125,8 @@ uint16_t ps8xxx_emul_get_product_id(const struct emul *emul)
 }
 
 /** Check description in emul_ps8xxx.h */
-struct i2c_emul *ps8xxx_emul_get_i2c_emul(const struct emul *emul,
-					  enum ps8xxx_emul_port port)
+const struct emul *ps8xxx_emul_get_emul(const struct emul *emul,
+					enum ps8xxx_emul_port port)
 {
 	const struct ps8xxx_emul_cfg *cfg = emul->cfg;
 	struct tcpc_emul_data *tcpc_data = emul->data;
@@ -134,12 +134,12 @@ struct i2c_emul *ps8xxx_emul_get_i2c_emul(const struct emul *emul,
 
 	switch (port) {
 	case PS8XXX_EMUL_PORT_0:
-		return &data->p0_data.emul;
+		return data->p0_data.emul.target;
 	case PS8XXX_EMUL_PORT_1:
-		return &data->p1_data.emul;
+		return data->p1_data.emul.target;
 	case PS8XXX_EMUL_PORT_GPIO:
 		if (cfg->gpio_cfg.addr != 0) {
-			return &data->gpio_data.emul;
+			return data->gpio_data.emul.target;
 		} else {
 			return NULL;
 		}
@@ -159,15 +159,13 @@ struct i2c_emul *ps8xxx_emul_get_i2c_emul(const struct emul *emul,
  * @return 0 on success
  * @return -EIO on invalid read request
  */
-static int ps8xxx_emul_tcpc_read_byte(struct i2c_emul *i2c_emul, int reg,
+static int ps8xxx_emul_tcpc_read_byte(const struct emul *emul, int reg,
 				      uint8_t *val, int bytes)
 {
 	uint16_t reg_val;
-	const struct emul *emul;
+	const struct i2c_emul *i2c_emul = emul->bus.i2c;
 
 	LOG_DBG("PS8XXX TCPC 0x%x: read reg 0x%x", i2c_emul->addr, reg);
-
-	emul = i2c_emul->parent;
 
 	switch (reg) {
 	case PS8XXX_REG_FW_REV:
@@ -196,7 +194,7 @@ static int ps8xxx_emul_tcpc_read_byte(struct i2c_emul *i2c_emul, int reg,
 /**
  * @brief Function called for each byte of write message to TCPC chip
  *
- * @param i2c_emul Pointer to PS8xxx emulator
+ * @param emul Pointer to PS8xxx emulator
  * @param reg First byte of write message
  * @param val Received byte of write message
  * @param bytes Number of bytes already received
@@ -204,15 +202,13 @@ static int ps8xxx_emul_tcpc_read_byte(struct i2c_emul *i2c_emul, int reg,
  * @return 0 on success
  * @return -EIO on invalid write request
  */
-static int ps8xxx_emul_tcpc_write_byte(struct i2c_emul *i2c_emul, int reg,
+static int ps8xxx_emul_tcpc_write_byte(const struct emul *emul, int reg,
 				       uint8_t val, int bytes)
 {
 	uint16_t prod_id;
-	const struct emul *emul;
+	struct i2c_emul *i2c_emul = emul->bus.i2c;
 
 	LOG_DBG("PS8XXX TCPC 0x%x: write reg 0x%x", i2c_emul->addr, reg);
-
-	emul = i2c_emul->parent;
 
 	tcpci_emul_get_reg(emul, TCPC_REG_PRODUCT_ID, &prod_id);
 
@@ -246,22 +242,20 @@ static int ps8xxx_emul_tcpc_write_byte(struct i2c_emul *i2c_emul, int reg,
 /**
  * @brief Function called on the end of write message to TCPC chip
  *
- * @param i2c_emul Pointer to PS8xxx emulator
+ * @param emul Pointer to PS8xxx emulator
  * @param reg Register which is written
  * @param msg_len Length of handled I2C message
  *
  * @return 0 on success
  * @return -EIO on error
  */
-static int ps8xxx_emul_tcpc_finish_write(struct i2c_emul *i2c_emul, int reg,
+static int ps8xxx_emul_tcpc_finish_write(const struct emul *emul, int reg,
 					 int msg_len)
 {
 	uint16_t prod_id;
-	const struct emul *emul;
+	struct i2c_emul *i2c_emul = emul->bus.i2c;
 
 	LOG_DBG("PS8XXX TCPC 0x%x: finish write reg 0x%x", i2c_emul->addr, reg);
-
-	emul = i2c_emul->parent;
 
 	tcpci_emul_get_reg(emul, TCPC_REG_PRODUCT_ID, &prod_id);
 
@@ -289,14 +283,14 @@ static int ps8xxx_emul_tcpc_finish_write(struct i2c_emul *i2c_emul, int reg,
  * @brief Get currently accessed register, which always equals to selected
  *        register from TCPC chip.
  *
- * @param i2c_emul Pointer to TCPCI emulator
+ * @param emul Pointer to TCPCI emulator
  * @param reg First byte of last write message
  * @param bytes Number of bytes already handled from current message
  * @param read If currently handled is read message
  *
  * @return Currently accessed register
  */
-static int ps8xxx_emul_tcpc_access_reg(struct i2c_emul *i2c_emul, int reg,
+static int ps8xxx_emul_tcpc_access_reg(const struct emul *emul, int reg,
 				       int bytes, bool read)
 {
 	return reg;
@@ -322,16 +316,15 @@ static int ps8xxx_emul_tcpc_reset(const struct emul *emul)
 /**
  * @brief Get port associated with given "hidden" I2C device
  *
- * @param i2c_emul Pointer to "hidden" I2C device
+ * @param emul Pointer to "hidden" emulated device
  *
  * @return Port associated with given I2C device
  */
-static enum ps8xxx_emul_port ps8xxx_emul_get_port(struct i2c_emul *i2c_emul)
+static enum ps8xxx_emul_port ps8xxx_emul_get_port(const struct emul *emul)
 {
 	const struct ps8xxx_emul_cfg *cfg;
-	const struct emul *emul;
+	struct i2c_emul *i2c_emul = emul->bus.i2c;
 
-	emul = i2c_emul->parent;
 	cfg = emul->cfg;
 
 	if (cfg->p0_cfg.addr == i2c_emul->addr) {
@@ -352,7 +345,7 @@ static enum ps8xxx_emul_port ps8xxx_emul_get_port(struct i2c_emul *i2c_emul)
 /**
  * @brief Function called for each byte of read message
  *
- * @param i2c_emul Pointer to PS8xxx emulator
+ * @param emul Pointer to PS8xxx emulator
  * @param reg First byte of last write message
  * @param val Pointer where byte to read should be stored
  * @param bytes Number of bytes already read
@@ -360,18 +353,17 @@ static enum ps8xxx_emul_port ps8xxx_emul_get_port(struct i2c_emul *i2c_emul)
  * @return 0 on success
  * @return -EIO on invalid read request
  */
-static int ps8xxx_emul_read_byte(struct i2c_emul *i2c_emul, int reg,
-				 uint8_t *val, int bytes)
+static int ps8xxx_emul_read_byte(const struct emul *emul, int reg, uint8_t *val,
+				 int bytes)
 {
 	struct tcpc_emul_data *tcpc_data;
 	struct ps8xxx_emul_data *data;
 	enum ps8xxx_emul_port port;
-	const struct emul *emul;
+	struct i2c_emul *i2c_emul = emul->bus.i2c;
 	uint16_t i2c_dbg_reg;
 
 	LOG_DBG("PS8XXX 0x%x: read reg 0x%x", i2c_emul->addr, reg);
 
-	emul = i2c_emul->parent;
 	tcpc_data = emul->data;
 	data = tcpc_data->chip_data;
 
@@ -382,7 +374,7 @@ static int ps8xxx_emul_read_byte(struct i2c_emul *i2c_emul, int reg,
 		return -EIO;
 	}
 
-	port = ps8xxx_emul_get_port(i2c_emul);
+	port = ps8xxx_emul_get_port(emul);
 
 	/* This is only 2 bytes register so handle it separately */
 	if (data->prod_id == PS8815_PRODUCT_ID && port == PS8XXX_EMUL_PORT_1 &&
@@ -433,7 +425,7 @@ static int ps8xxx_emul_read_byte(struct i2c_emul *i2c_emul, int reg,
 /**
  * @brief Function called for each byte of write message
  *
- * @param i2c_emul Pointer to PS8xxx emulator
+ * @param emul Pointer to PS8xxx emulator
  * @param reg First byte of write message
  * @param val Received byte of write message
  * @param bytes Number of bytes already received
@@ -441,18 +433,17 @@ static int ps8xxx_emul_read_byte(struct i2c_emul *i2c_emul, int reg,
  * @return 0 on success
  * @return -EIO on invalid write request
  */
-static int ps8xxx_emul_write_byte(struct i2c_emul *i2c_emul, int reg,
-				  uint8_t val, int bytes)
+static int ps8xxx_emul_write_byte(const struct emul *emul, int reg, uint8_t val,
+				  int bytes)
 {
 	struct ps8xxx_emul_data *data;
 	struct tcpc_emul_data *tcpc_data;
 	enum ps8xxx_emul_port port;
-	const struct emul *emul;
+	const struct i2c_emul *i2c_emul = emul->bus.i2c;
 	uint16_t i2c_dbg_reg;
 
 	LOG_DBG("PS8XXX 0x%x: write reg 0x%x", i2c_emul->addr, reg);
 
-	emul = i2c_emul->parent;
 	tcpc_data = emul->data;
 	data = tcpc_data->chip_data;
 
@@ -463,7 +454,7 @@ static int ps8xxx_emul_write_byte(struct i2c_emul *i2c_emul, int reg,
 		return -EIO;
 	}
 
-	port = ps8xxx_emul_get_port(i2c_emul);
+	port = ps8xxx_emul_get_port(emul);
 
 	if (bytes != 1) {
 		LOG_ERR("Writing more than one byte at once");
@@ -514,7 +505,7 @@ static int ps8xxx_emul_init(const struct emul *emul,
 	struct tcpci_ctx *tcpci_ctx = tcpc_data->tcpci_ctx;
 	const struct ps8xxx_emul_cfg *cfg = emul->cfg;
 	const struct device *i2c_dev;
-	int ret;
+	int ret = 0;
 
 	i2c_dev = parent;
 
@@ -527,32 +518,25 @@ static int ps8xxx_emul_init(const struct emul *emul,
 
 	data->p0_data.emul.api = &i2c_common_emul_api;
 	data->p0_data.emul.addr = cfg->p0_cfg.addr;
-	data->p0_data.emul.parent = emul;
+	data->p0_data.emul.target = emul;
 	data->p0_data.i2c = i2c_dev;
 	data->p0_data.cfg = &cfg->p0_cfg;
 	i2c_common_emul_init(&data->p0_data);
 
 	data->p1_data.emul.api = &i2c_common_emul_api;
 	data->p1_data.emul.addr = cfg->p1_cfg.addr;
-	data->p1_data.emul.parent = emul;
+	data->p1_data.emul.target = emul;
 	data->p1_data.i2c = i2c_dev;
 	data->p1_data.cfg = &cfg->p1_cfg;
 	i2c_common_emul_init(&data->p1_data);
 
-	ret = i2c_emul_register(i2c_dev, emul->dev_label,
-				&tcpci_ctx->common.emul);
-	ret |= i2c_emul_register(i2c_dev, emul->dev_label, &data->p0_data.emul);
-	ret |= i2c_emul_register(i2c_dev, emul->dev_label, &data->p1_data.emul);
-
 	if (cfg->gpio_cfg.addr != 0) {
 		data->gpio_data.emul.api = &i2c_common_emul_api;
 		data->gpio_data.emul.addr = cfg->gpio_cfg.addr;
-		data->gpio_data.emul.parent = emul;
+		data->gpio_data.emul.target = emul;
 		data->gpio_data.i2c = i2c_dev;
 		data->gpio_data.cfg = &cfg->gpio_cfg;
 		i2c_common_emul_init(&data->gpio_data);
-		ret |= i2c_emul_register(i2c_dev, emul->dev_label,
-					 &data->gpio_data.emul);
 	}
 
 	ret |= ps8xxx_emul_tcpc_reset(emul);
@@ -602,7 +586,7 @@ static int ps8xxx_emul_init(const struct emul *emul,
 		},							\
 	}; \
 	TCPCI_EMUL_DEFINE(n, ps8xxx_emul_init, &ps8xxx_emul_cfg_##n,  \
-			  &ps8xxx_emul_data_##n)
+			  &ps8xxx_emul_data_##n, &i2c_common_emul_api)
 
 DT_INST_FOREACH_STATUS_OKAY(PS8XXX_EMUL)
 

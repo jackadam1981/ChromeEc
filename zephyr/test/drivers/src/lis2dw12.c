@@ -1,4 +1,4 @@
-/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+/* Copyright 2021 The Chromium OS Authors. All rights reserved
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -63,8 +63,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_read_who_am_i)
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
 	int rv;
 
-	i2c_common_emul_set_read_fail_reg(lis2dw12_emul_to_i2c_emul(emul),
-					  LIS2DW12_WHO_AM_I_REG);
+	i2c_common_emul_set_read_fail_reg(emul, LIS2DW12_WHO_AM_I_REG);
 	rv = ms->drv->init(ms);
 	zassert_equal(EC_ERROR_INVAL, rv, NULL);
 }
@@ -89,8 +88,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_write_soft_reset)
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
 	int rv;
 
-	i2c_common_emul_set_write_fail_reg(lis2dw12_emul_to_i2c_emul(emul),
-					   LIS2DW12_SOFT_RESET_ADDR);
+	i2c_common_emul_set_write_fail_reg(emul, LIS2DW12_SOFT_RESET_ADDR);
 	rv = ms->drv->init(ms);
 	zassert_equal(EC_ERROR_INVAL, rv, NULL);
 }
@@ -101,16 +99,15 @@ ZTEST(lis2dw12, test_lis2dw12_init__timeout_read_soft_reset)
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
 	int rv;
 
-	i2c_common_emul_set_read_fail_reg(lis2dw12_emul_to_i2c_emul(emul),
-					  LIS2DW12_SOFT_RESET_ADDR);
+	i2c_common_emul_set_read_fail_reg(emul, LIS2DW12_SOFT_RESET_ADDR);
 	rv = ms->drv->init(ms);
 	zassert_equal(EC_ERROR_TIMEOUT, rv, "init returned %d but expected %d",
 		      rv, EC_ERROR_TIMEOUT);
 }
 
-static int lis2dw12_test_mock_write_fail_set_bdu(struct i2c_emul *emul, int reg,
-						 uint8_t val, int bytes,
-						 void *data)
+static int lis2dw12_test_mock_write_fail_set_bdu(const struct emul *emul,
+						 int reg, uint8_t val,
+						 int bytes, void *data)
 {
 	if (reg == LIS2DW12_BDU_ADDR && bytes == 1 &&
 	    (val & LIS2DW12_BDU_MASK) != 0) {
@@ -125,9 +122,8 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_set_bdu)
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
 	int rv;
 
-	i2c_common_emul_set_write_func(lis2dw12_emul_to_i2c_emul(emul),
-				       lis2dw12_test_mock_write_fail_set_bdu,
-				       NULL);
+	i2c_common_emul_set_write_func(
+		emul, lis2dw12_test_mock_write_fail_set_bdu, NULL);
 	rv = ms->drv->init(ms);
 	zassert_equal(EC_ERROR_INVAL, rv, "init returned %d but expected %d",
 		      rv, EC_ERROR_INVAL);
@@ -141,8 +137,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_set_lir)
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
 	int rv;
 
-	i2c_common_emul_set_read_fail_reg(lis2dw12_emul_to_i2c_emul(emul),
-					  LIS2DW12_LIR_ADDR);
+	i2c_common_emul_set_read_fail_reg(emul, LIS2DW12_LIR_ADDR);
 
 	rv = ms->drv->init(ms);
 	zassert_equal(EC_ERROR_INVAL, rv, "init returned %d but expected %d",
@@ -151,7 +146,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_set_lir)
 		     "expected at least one soft reset");
 }
 
-static int lis2dw12_test_mock_write_fail_set_power_mode(struct i2c_emul *emul,
+static int lis2dw12_test_mock_write_fail_set_power_mode(const struct emul *emul,
 							int reg, uint8_t val,
 							int bytes, void *data)
 {
@@ -170,8 +165,7 @@ ZTEST(lis2dw12, test_lis2dw12_init__fail_set_power_mode)
 	int rv;
 
 	i2c_common_emul_set_write_func(
-		lis2dw12_emul_to_i2c_emul(emul),
-		lis2dw12_test_mock_write_fail_set_power_mode, NULL);
+		emul, lis2dw12_test_mock_write_fail_set_power_mode, NULL);
 
 	rv = ms->drv->init(ms);
 	zassert_equal(EC_ERROR_INVAL, rv, "init returned %d but expected %d",
@@ -216,8 +210,7 @@ ZTEST(lis2dw12, test_lis2dw12_set_power_mode)
 		      EC_ERROR_UNIMPLEMENTED, rv);
 
 	/* Part 3: attempt to set mode but cannot modify reg. */
-	i2c_common_emul_set_read_fail_reg(lis2dw12_emul_to_i2c_emul(emul),
-					  LIS2DW12_ACC_MODE_ADDR);
+	i2c_common_emul_set_read_fail_reg(emul, LIS2DW12_ACC_MODE_ADDR);
 	rv = lis2dw12_set_power_mode(ms, LIS2DW12_LOW_POWER,
 				     LIS2DW12_LOW_POWER_MODE_2);
 	zassert_equal(rv, EC_ERROR_INVAL, "Expected %d but got %d",
@@ -241,8 +234,7 @@ ZTEST(lis2dw12, test_lis2dw12_set_range)
 		      ms->current_range);
 
 	/* Part 2: Error accessing register */
-	i2c_common_emul_set_read_fail_reg(lis2dw12_emul_to_i2c_emul(emul),
-					  LIS2DW12_FS_ADDR);
+	i2c_common_emul_set_read_fail_reg(emul, LIS2DW12_FS_ADDR);
 	rv = ms->drv->set_range(ms, LIS2DW12_ACCEL_FS_MAX_VAL, 0);
 	zassert_equal(rv, EC_ERROR_INVAL, "Expected %d but got %d",
 		      EC_ERROR_INVAL, rv);
@@ -251,7 +243,7 @@ ZTEST(lis2dw12, test_lis2dw12_set_range)
 ZTEST(lis2dw12, test_lis2dw12_set_rate)
 {
 	const struct emul *emul = emul_get_binding(EMUL_LABEL);
-	struct i2c_emul *i2c_emul = lis2dw12_emul_to_i2c_emul(emul);
+
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
 	struct stprivate_data *drv_data = ms->drv_data;
 	int rv;
@@ -259,11 +251,9 @@ ZTEST(lis2dw12, test_lis2dw12_set_rate)
 	/* Part 1: Turn off sensor with rate=0 */
 	rv = ms->drv->set_data_rate(ms, 0, 0);
 
-	zassert_equal(lis2dw12_emul_peek_odr(i2c_emul),
-		      LIS2DW12_ODR_POWER_OFF_VAL,
+	zassert_equal(lis2dw12_emul_peek_odr(emul), LIS2DW12_ODR_POWER_OFF_VAL,
 		      "Output data rate should be %d but got %d",
-		      LIS2DW12_ODR_POWER_OFF_VAL,
-		      lis2dw12_emul_peek_odr(i2c_emul));
+		      LIS2DW12_ODR_POWER_OFF_VAL, lis2dw12_emul_peek_odr(emul));
 	zassert_equal(drv_data->base.odr, LIS2DW12_ODR_POWER_OFF_VAL,
 		      "Output data rate should be %d but got %d",
 		      LIS2DW12_ODR_POWER_OFF_VAL, drv_data->base.odr);
@@ -319,7 +309,7 @@ ZTEST(lis2dw12, test_lis2dw12_set_rate)
 			test_params[i].expected_norm_rate, drv_data->base.odr);
 
 		/* Read ODR and mode bits back from CTRL1 register */
-		uint8_t odr_bits = lis2dw12_emul_peek_odr(i2c_emul);
+		uint8_t odr_bits = lis2dw12_emul_peek_odr(emul);
 
 		zassert_equal(
 			odr_bits, test_params[i].expected_reg_val,
@@ -332,8 +322,8 @@ ZTEST(lis2dw12, test_lis2dw12_set_rate)
 		 * 200,000mHz
 		 */
 
-		uint8_t mode_bits = lis2dw12_emul_peek_mode(i2c_emul);
-		uint8_t lpmode_bits = lis2dw12_emul_peek_lpmode(i2c_emul);
+		uint8_t mode_bits = lis2dw12_emul_peek_mode(emul);
+		uint8_t lpmode_bits = lis2dw12_emul_peek_lpmode(emul);
 
 		if (odr_bits > LIS2DW12_ODR_200HZ_VAL) {
 			/* High performance mode, LP mode immaterial */
@@ -358,7 +348,7 @@ ZTEST(lis2dw12, test_lis2dw12_set_rate)
 ZTEST(lis2dw12, test_lis2dw12_read)
 {
 	const struct emul *emul = emul_get_binding(EMUL_LABEL);
-	struct i2c_emul *i2c_emul = lis2dw12_emul_to_i2c_emul(emul);
+
 	struct motion_sensor_t *ms = &motion_sensors[LIS2DW12_SENSOR_ID];
 	struct stprivate_data *drvdata = ms->drv_data;
 	intv3_t sample = { 0, 0, 0 };
@@ -376,7 +366,7 @@ ZTEST(lis2dw12, test_lis2dw12_read)
 	 * ready bit
 	 */
 
-	i2c_common_emul_set_read_fail_reg(i2c_emul, LIS2DW12_STATUS_REG);
+	i2c_common_emul_set_read_fail_reg(emul, LIS2DW12_STATUS_REG);
 
 	rv = ms->drv->read(ms, sample);
 
@@ -388,8 +378,7 @@ ZTEST(lis2dw12, test_lis2dw12_read)
 	 * case, the driver should return the reading in from `ms->raw_xyz`
 	 */
 
-	i2c_common_emul_set_read_fail_reg(i2c_emul,
-					  I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 	lis2dw12_emul_clear_accel_reading(emul);
 	ms->raw_xyz[X] = 123;
 	ms->raw_xyz[Y] = 456;
@@ -406,7 +395,7 @@ ZTEST(lis2dw12, test_lis2dw12_read)
 	 */
 	intv3_t fake_sample = { 100, 200, 300 };
 
-	i2c_common_emul_set_read_fail_reg(i2c_emul, LIS2DW12_OUT_X_L_ADDR);
+	i2c_common_emul_set_read_fail_reg(emul, LIS2DW12_OUT_X_L_ADDR);
 	lis2dw12_emul_set_accel_reading(emul, fake_sample);
 
 	rv = ms->drv->read(ms, sample);
@@ -429,8 +418,7 @@ ZTEST(lis2dw12, test_lis2dw12_read)
 			fake_sample[i] * (1 << (16 - LIS2DW12_RESOLUTION));
 	}
 
-	i2c_common_emul_set_read_fail_reg(i2c_emul,
-					  I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	lis2dw12_emul_set_accel_reading(emul, fake_sample);
 

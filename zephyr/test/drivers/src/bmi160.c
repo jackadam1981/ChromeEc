@@ -50,7 +50,7 @@ static void rotate_int3v_by_test_rotation(intv3_t v)
 }
 
 /** Set emulator accelerometer offset values to intv3_t vector */
-static void set_emul_acc_offset(struct i2c_emul *emul, intv3_t offset)
+static void set_emul_acc_offset(const struct emul *emul, intv3_t offset)
 {
 	bmi_emul_set_off(emul, BMI_EMUL_ACC_X, offset[0]);
 	bmi_emul_set_off(emul, BMI_EMUL_ACC_Y, offset[1]);
@@ -58,7 +58,7 @@ static void set_emul_acc_offset(struct i2c_emul *emul, intv3_t offset)
 }
 
 /** Save emulator accelerometer offset values to intv3_t vector */
-static void get_emul_acc_offset(struct i2c_emul *emul, intv3_t offset)
+static void get_emul_acc_offset(const struct emul *emul, intv3_t offset)
 {
 	offset[0] = bmi_emul_get_off(emul, BMI_EMUL_ACC_X);
 	offset[1] = bmi_emul_get_off(emul, BMI_EMUL_ACC_Y);
@@ -66,7 +66,7 @@ static void get_emul_acc_offset(struct i2c_emul *emul, intv3_t offset)
 }
 
 /** Set emulator accelerometer values to intv3_t vector */
-static void set_emul_acc(struct i2c_emul *emul, intv3_t acc)
+static void set_emul_acc(const struct emul *emul, intv3_t acc)
 {
 	bmi_emul_set_value(emul, BMI_EMUL_ACC_X, acc[0]);
 	bmi_emul_set_value(emul, BMI_EMUL_ACC_Y, acc[1]);
@@ -74,7 +74,7 @@ static void set_emul_acc(struct i2c_emul *emul, intv3_t acc)
 }
 
 /** Set emulator gyroscope offset values to intv3_t vector */
-static void set_emul_gyr_offset(struct i2c_emul *emul, intv3_t offset)
+static void set_emul_gyr_offset(const struct emul *emul, intv3_t offset)
 {
 	bmi_emul_set_off(emul, BMI_EMUL_GYR_X, offset[0]);
 	bmi_emul_set_off(emul, BMI_EMUL_GYR_Y, offset[1]);
@@ -82,7 +82,7 @@ static void set_emul_gyr_offset(struct i2c_emul *emul, intv3_t offset)
 }
 
 /** Save emulator gyroscope offset values to intv3_t vector */
-static void get_emul_gyr_offset(struct i2c_emul *emul, intv3_t offset)
+static void get_emul_gyr_offset(const struct emul *emul, intv3_t offset)
 {
 	offset[0] = bmi_emul_get_off(emul, BMI_EMUL_GYR_X);
 	offset[1] = bmi_emul_get_off(emul, BMI_EMUL_GYR_Y);
@@ -90,7 +90,7 @@ static void get_emul_gyr_offset(struct i2c_emul *emul, intv3_t offset)
 }
 
 /** Set emulator gyroscope values to vector of three int16_t */
-static void set_emul_gyr(struct i2c_emul *emul, intv3_t gyr)
+static void set_emul_gyr(const struct emul *emul, intv3_t gyr)
 {
 	bmi_emul_set_value(emul, BMI_EMUL_GYR_X, gyr[0]);
 	bmi_emul_set_value(emul, BMI_EMUL_GYR_Y, gyr[1]);
@@ -137,7 +137,7 @@ static void compare_int3v_f(intv3_t exp_v, intv3_t v, int eps, int line)
 ZTEST_USER(bmi160, test_bmi_acc_get_offset)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int16_t ret[3];
 	intv3_t ret_v;
 	intv3_t exp_v;
@@ -192,7 +192,7 @@ ZTEST_USER(bmi160, test_bmi_acc_get_offset)
 ZTEST_USER(bmi160, test_bmi_gyr_get_offset)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int16_t ret[3];
 	intv3_t ret_v;
 	intv3_t exp_v;
@@ -256,7 +256,7 @@ ZTEST_USER(bmi160, test_bmi_gyr_get_offset)
 ZTEST_USER(bmi160, test_bmi_acc_set_offset)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int16_t input_v[3];
 	int16_t temp = 0;
 	intv3_t ret_v;
@@ -334,7 +334,7 @@ ZTEST_USER(bmi160, test_bmi_acc_set_offset)
 ZTEST_USER(bmi160, test_bmi_gyr_set_offset)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int16_t input_v[3];
 	int16_t temp = 0;
 	intv3_t ret_v;
@@ -404,7 +404,7 @@ ZTEST_USER(bmi160, test_bmi_gyr_set_offset)
  * Try to set accelerometer range and check if expected range was set
  * in driver and in emulator.
  */
-static void check_set_acc_range_f(struct i2c_emul *emul,
+static void check_set_acc_range_f(const struct emul *emul,
 				  struct motion_sensor_t *ms, int range,
 				  int rnd, int exp_range, int line)
 {
@@ -450,7 +450,7 @@ static void check_set_acc_range_f(struct i2c_emul *emul,
 ZTEST_USER(bmi160, test_bmi_acc_set_range)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int start_range;
 
 	emul = bmi_emul_get(BMI_ORD);
@@ -509,7 +509,7 @@ ZTEST_USER(bmi160, test_bmi_acc_set_range)
  * Try to set gyroscope range and check if expected range was set in driver and
  * in emulator.
  */
-static void check_set_gyr_range_f(struct i2c_emul *emul,
+static void check_set_gyr_range_f(const struct emul *emul,
 				  struct motion_sensor_t *ms, int range,
 				  int rnd, int exp_range, int line)
 {
@@ -558,7 +558,7 @@ static void check_set_gyr_range_f(struct i2c_emul *emul,
 ZTEST_USER(bmi160, test_bmi_gyr_set_range)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int start_range;
 
 	emul = bmi_emul_get(BMI_ORD);
@@ -643,7 +643,7 @@ ZTEST_USER(bmi160, test_bmi_get_resolution)
  * Try to set accelerometer data rate and check if expected rate was set
  * in driver and in emulator.
  */
-static void check_set_acc_rate_f(struct i2c_emul *emul,
+static void check_set_acc_rate_f(const struct emul *emul,
 				 struct motion_sensor_t *ms, int rate, int rnd,
 				 int exp_rate, int line)
 {
@@ -703,7 +703,7 @@ static void check_set_acc_rate_f(struct i2c_emul *emul,
 ZTEST_USER(bmi160, test_bmi_acc_rate)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	uint8_t reg_rate;
 	int pmu_status;
 	int drv_rate;
@@ -832,7 +832,7 @@ ZTEST_USER(bmi160, test_bmi_acc_rate)
  * Try to set gyroscope data rate and check if expected rate was set
  * in driver and in emulator.
  */
-static void check_set_gyr_rate_f(struct i2c_emul *emul,
+static void check_set_gyr_rate_f(const struct emul *emul,
 				 struct motion_sensor_t *ms, int rate, int rnd,
 				 int exp_rate, int line)
 {
@@ -892,7 +892,7 @@ static void check_set_gyr_rate_f(struct i2c_emul *emul,
 ZTEST_USER(bmi160, test_bmi_gyr_rate)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	uint8_t reg_rate;
 	int pmu_status;
 	int drv_rate;
@@ -1049,7 +1049,7 @@ ZTEST_USER(bmi160, test_bmi_scale)
 ZTEST_USER(bmi160, test_bmi_read_temp)
 {
 	struct motion_sensor_t *ms_acc, *ms_gyr;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int ret_temp;
 	int exp_temp;
 
@@ -1128,7 +1128,7 @@ ZTEST_USER(bmi160, test_bmi_read_temp)
 ZTEST_USER(bmi160, test_bmi_acc_read)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	intv3_t ret_v;
 	intv3_t exp_v;
 	int16_t scale[3] = { MOTION_SENSE_DEFAULT_SCALE,
@@ -1236,7 +1236,7 @@ ZTEST_USER(bmi160, test_bmi_acc_read)
 ZTEST_USER(bmi160, test_bmi_gyr_read)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	intv3_t ret_v;
 	intv3_t exp_v;
 	int16_t scale[3] = { MOTION_SENSE_DEFAULT_SCALE,
@@ -1344,7 +1344,7 @@ ZTEST_USER(bmi160, test_bmi_gyr_read)
  * Custom emulatro read function which always return not ready STATUS register.
  * Used in calibration test.
  */
-static int emul_nrdy(struct i2c_emul *emul, int reg, uint8_t *val, int byte,
+static int emul_nrdy(const struct emul *emul, int reg, uint8_t *val, int byte,
 		     void *data)
 {
 	if (reg == BMI160_STATUS) {
@@ -1361,7 +1361,7 @@ static int emul_nrdy(struct i2c_emul *emul, int reg, uint8_t *val, int byte,
 ZTEST_USER(bmi160, test_bmi_acc_perform_calib)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	uint8_t pmu_status;
 	intv3_t start_off;
 	intv3_t exp_off;
@@ -1489,7 +1489,7 @@ ZTEST_USER(bmi160, test_bmi_acc_perform_calib)
 ZTEST_USER(bmi160, test_bmi_gyr_perform_calib)
 {
 	struct motion_sensor_t *ms;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	uint8_t pmu_status;
 	intv3_t start_off;
 	intv3_t exp_off;
@@ -1578,7 +1578,7 @@ ZTEST_USER(bmi160, test_bmi_gyr_perform_calib)
 ZTEST_USER(bmi160, test_bmi_init)
 {
 	struct motion_sensor_t *ms_acc, *ms_gyr;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 
 	emul = bmi_emul_get(BMI_ORD);
 	ms_acc = &motion_sensors[BMI_ACC_SENSOR_ID];
@@ -1600,7 +1600,7 @@ struct fifo_func_data {
  * to value passed as additional data. It sets interrupt registers to 0 after
  * access.
  */
-static int emul_fifo_func(struct i2c_emul *emul, int reg, uint8_t *val,
+static int emul_fifo_func(const struct emul *emul, int reg, uint8_t *val,
 			  int byte, void *data)
 {
 	struct fifo_func_data *d = data;
@@ -1715,7 +1715,7 @@ ZTEST_USER(bmi160, test_bmi_acc_fifo)
 	struct motion_sensor_t *ms, *ms_gyr;
 	struct fifo_func_data func_data;
 	struct bmi_emul_frame f[3];
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int gyr_range = 125;
 	int acc_range = 2;
 	int event;
@@ -1860,7 +1860,7 @@ ZTEST_USER(bmi160, test_bmi_gyr_fifo)
 ZTEST_USER(bmi160, test_bmi_sec_raw_read8)
 {
 	struct motion_sensor_t *ms = &motion_sensors[BMI_ACC_SENSOR_ID];
-	struct i2c_emul *emul = bmi_emul_get(BMI_ORD);
+	const struct emul *emul = bmi_emul_get(BMI_ORD);
 
 	uint8_t expected_read_value = 0xAA;
 	uint8_t requested_reg_addr = 0x55;
@@ -1893,7 +1893,7 @@ ZTEST_USER(bmi160, test_bmi_sec_raw_read8)
 ZTEST_USER(bmi160, test_bmi_sec_raw_write8)
 {
 	struct motion_sensor_t *ms = &motion_sensors[BMI_ACC_SENSOR_ID];
-	struct i2c_emul *emul = bmi_emul_get(BMI_ORD);
+	const struct emul *emul = bmi_emul_get(BMI_ORD);
 
 	uint8_t expected_write_value = 0xAB;
 	uint8_t requested_reg_addr = 0x56;
@@ -1962,7 +1962,7 @@ ZTEST_USER(bmi160, test_bmi_perform_calib_invalid_type)
 /** Test reading the onboard temperature sensor */
 ZTEST_USER(bmi160, test_bmi_temp_sensor)
 {
-	struct i2c_emul *emul = bmi_emul_get(BMI_ORD);
+	const struct emul *emul = bmi_emul_get(BMI_ORD);
 	int ret;
 
 	/* Part 1:
@@ -2023,14 +2023,14 @@ ZTEST_USER(bmi160, test_bmi_interrupt_handler)
 
 /* Make an I2C emulator mock wrapped in FFF for use with test_bmi_init_chip_id()
  */
-FAKE_VALUE_FUNC(int, bmi_init_chip_id_mock_write_fn, struct i2c_emul *, int,
+FAKE_VALUE_FUNC(int, bmi_init_chip_id_mock_write_fn, const struct emul *, int,
 		uint8_t, int, void *);
 
 /** Test handling of invalid or unreadable chip IDs in init() */
 ZTEST_USER(bmi160, test_bmi_init_chip_id)
 {
 	struct motion_sensor_t *ms = &motion_sensors[BMI_ACC_SENSOR_ID];
-	struct i2c_emul *emul = bmi_emul_get(BMI_ORD);
+	const struct emul *emul = bmi_emul_get(BMI_ORD);
 	int ret;
 
 	/* Part 1: Cannot read the Chip ID register */
@@ -2083,7 +2083,7 @@ ZTEST_USER(bmi160, test_bmi_init_chip_id)
 static void bmi160_before(void *fixture)
 {
 	ARG_UNUSED(fixture);
-	struct i2c_emul *emul = bmi_emul_get(BMI_ORD);
+	const struct emul *emul = bmi_emul_get(BMI_ORD);
 	struct motion_sensor_t *acc_ms;
 	struct motion_sensor_t *gyr_ms;
 
