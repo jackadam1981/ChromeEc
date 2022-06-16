@@ -184,9 +184,16 @@ test_static int test_vsnprintf_int(void)
 	 * is still functional on 64-bit systems.
 	 */
 	if (sizeof(long) == sizeof(uint32_t)) {
-		T(expect_success(err_str,     "%lx",    0x7b));
-		T(expect_success(err_str,     "%08lu",  0x7b));
-		T(expect_success("13ERROR",   "%d%lu", 13, 14));
+		if (IS_ENABLED(BOARD_BLOONCHIPPER) ||
+		    IS_ENABLED(BOARD_DARTMONKEY)) {
+			T(expect_success("7b",     "%lx",    0x7b));
+			T(expect_success("00000123",     "%08lu",  0x7b));
+			T(expect_success("1314",   "%d%lu", 13, 14));
+		} else {
+			T(expect_success(err_str,     "%lx",    0x7b));
+			T(expect_success(err_str,     "%08lu",  0x7b));
+			T(expect_success("13ERROR",   "%d%lu", 13, 14));
+		}
 	} else {
 		T(expect_success("7b",        "%lx",    0x7b));
 		T(expect_success("00000123",  "%08lu",  123));
