@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9170f099_1cea4967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-16T17:20:25Z",
+      "side": 1,
+      "message": "lgtm. just one nit.",
+      "revId": "25ab27db7435702b6a186ca6bfd1f2fbc14883e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8260a5_596a4d01",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-16T17:20:25Z",
+      "side": 1,
+      "message": "Don\u0027t you want to name this bit so that you can share it with the host (via ec_commands.h)?",
+      "range": {
+        "startLine": 355,
+        "startChar": 14,
+        "endLine": 355,
+        "endChar": 20
+      },
+      "revId": "25ab27db7435702b6a186ca6bfd1f2fbc14883e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
