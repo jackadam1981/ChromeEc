@@ -117,6 +117,24 @@
       "parentUuid": "83745961_a2c988da",
       "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39084c28_ffc0d219",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-16T07:33:15Z",
+      "side": 1,
+      "message": "Understand, though IMHO the bug tracker is good at discussing the root cause, and capturing the data, and gerrit should be about the fix and it\u0027s implementation.\nIn any case, I agree that this fix is likely the best short time fix, though\nI think it likely says that there are wider issues that need to be addressed\nin this console and logging area.",
+      "parentUuid": "818a6a87_577e9668",
+      "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
