@@ -336,11 +336,6 @@ DECLARE_HOOK(HOOK_INIT, stubs_interrupt_init, HOOK_PRIO_POST_I2C);
 void board_set_switchcap_power(int enable)
 {
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_switchcap_on), enable);
-	/* TODO(b/217554681): So, the ln9310 emul should probably be setting
-	 * this instead of setting it here.
-	 */
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_src_vph_pwr_pg), enable);
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_mb_power_good), enable);
 }
 
 int board_is_switchcap_enabled(void)
