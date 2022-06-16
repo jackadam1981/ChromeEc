@@ -3507,7 +3507,7 @@ int main(int argc, char *argv[])
 	if (get_boot_mode)
 		exit(process_get_boot_mode(&td));
 
-	if (get_flog) 
+	if (get_flog)
 		process_get_flog(&td, prev_log_entry, show_machine_output, is_dauntless);
 
 	if (erase_ap_ro_hash)
