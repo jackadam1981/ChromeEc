@@ -44,10 +44,8 @@ ZTEST_USER(bb_retimer_no_tasks, test_bb_set_state)
 {
 	struct pd_discovery *disc;
 	uint32_t conn, exp_conn;
-	struct i2c_emul *emul;
+	const struct emul *emul = bb_emul_get(BB_RETIMER_ORD);
 	bool ack_required;
-
-	emul = bb_emul_get(BB_RETIMER_ORD);
 
 	set_test_runner_tid();
 
@@ -201,7 +199,7 @@ ZTEST_USER(bb_retimer_no_tasks, test_bb_set_dfp_state)
 	union tbt_mode_resp_cable cable_resp;
 	struct pd_discovery *disc, *dev_disc;
 	uint32_t conn, exp_conn;
-	struct i2c_emul *emul;
+	const struct emul *emul = bb_emul_get(BB_RETIMER_ORD);
 	bool ack_required;
 
 	emul = bb_emul_get(BB_RETIMER_ORD);
@@ -463,7 +461,7 @@ ZTEST_USER(bb_retimer, test_bb_init)
 {
 	const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_USB_C1_LS_EN_PATH, gpios));
-	struct i2c_emul *emul;
+	const struct emul *emul = bb_emul_get(BB_RETIMER_ORD);
 
 	zassert_not_null(gpio_dev, "Cannot get GPIO device");
 
