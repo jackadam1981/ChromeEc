@@ -34,6 +34,24 @@
       "parentUuid": "b3d3e385_dae2f49c",
       "revId": "52c141128da29a6333aa16b34552b421fc2567fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3675376_1109a9f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2022-06-16T01:26:23Z",
+      "side": 1,
+      "message": "NOTES:\nOEM approves that newer EC firmware doesn\u0027t need to support older boards.\nwe could merge this one.",
+      "parentUuid": "2551520f_733c25b7",
+      "revId": "52c141128da29a6333aa16b34552b421fc2567fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
