@@ -13,6 +13,9 @@
 
 #include "system.h"
 #include "system_chip.h"
+//// mchp
+#include <zephyr/drivers/interrupt_controller/intc_mchp_xec_ecia.h>
+//// mchp
 
 LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
 
@@ -121,6 +124,10 @@ noreturn static int cros_system_xec_soc_reset(const struct device *dev)
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable_all();
 
+//// mchp
+	/* Stop the watchdog */
+	system_xec_watchdog_stop();
+//// mchp
 	/* Trigger chip reset */
 	pcr->SYS_RST |= MCHP_PCR_SYS_RESET_NOW;
 	/* Wait for the soc reset */
@@ -130,21 +137,382 @@ noreturn static int cros_system_xec_soc_reset(const struct device *dev)
 	/* return 0; */
 }
 
+//// mchp
+/* Macros to access registers */
+#define REG32_ADDR(addr) ((volatile uint32_t *)(addr))
+#define REG16_ADDR(addr) ((volatile uint16_t *)(addr))
+#define REG8_ADDR(addr)  ((volatile uint8_t  *)(addr))
+
+#define REG32(addr) (*REG32_ADDR(addr))
+#define REG16(addr) (*REG16_ADDR(addr))
+#define REG8(addr)  (*REG8_ADDR(addr))
+
+#define MCHP_PCR_BASE		0x40080100
+#define MCHP_PCR_CLK_REQ0		REG32(MCHP_PCR_BASE + 0x50)
+#define MCHP_PCR_CLK_REQ1		REG32(MCHP_PCR_BASE + 0x54)
+#define MCHP_PCR_CLK_REQ2		REG32(MCHP_PCR_BASE + 0x58)
+#define MCHP_PCR_CLK_REQ3		REG32(MCHP_PCR_BASE + 0x5C)
+#define MCHP_PCR_CLK_REQ4		REG32(MCHP_PCR_BASE + 0x60)
+
+/* ADC */
+#define MCHP_ADC_BASE		0x40007c00
+#define MCHP_ADC_CTRL		REG32(MCHP_ADC_BASE + 0x0)
+
+/* Basic timers */
+#define MCHP_TMR32_0_BASE	0x40000c80
+#define MCHP_TMR_SPACING	0x20
+#define MCHP_TMR32_BASE(n)	(MCHP_TMR32_0_BASE + (n) * MCHP_TMR_SPACING)
+#define MCHP_TMR32_CTL(x)	REG32(MCHP_TMR32_BASE(x) + 0x10)
+
+/* eSPI */
+#define MCHP_ESPI_IO_BASE	0x400f3400
+#define MCHP_ESPI_ACTIVATE		REG8(MCHP_ESPI_IO_BASE + 0x330)
+
+/* UART */
+#define MCHP_UART0_BASE		0x400f2400
+//#define MCHP_UART_SPACING	0x400
+#define MCHP_UART_CFG_OFS	0x300
+#define MCHP_UART_CONFIG_BASE(x) \
+	(MCHP_UART0_BASE + MCHP_UART_CFG_OFS + ((x) * MCHP_UART_SPACING))
+#define MCHP_UART_ACT(x)	REG8(MCHP_UART_CONFIG_BASE(x) + 0x30)
+
+/* Macro to access 32-bit registers */
+#define CPUREG(addr) (*(volatile uint32_t*)(addr))
+/* Nested Vectored Interrupt Controller */
+#define CPU_NVIC_EN(x)         CPUREG(0xe000e100 + 4 * (x))
+#define CPU_NVIC_DIS(x)        CPUREG(0xe000e180 + 4 * (x))
+#define CPU_NVIC_PEND(x)       CPUREG(0xe000e200 + 4 * (x))
+
+#define CPU_NVIC_UNPEND(x)     CPUREG(0xe000e280 + 4 * (x))
+#define CPU_NVIC_PRI(x)        CPUREG(0xe000e400 + 4 * (x))
+
+#define MCHP_IRQ_MAX 180
+
+/* Power/Clocks/Resets */
+#define MCHP_PCR_SYS_SLP_HEAVY		(BIT(3) | BIT(0))
+#define MCHP_PCR_SYS_SLP_ALL		(1ul << 3)
+#define MCHP_PCR_BASE				0x40080100
+#define MCHP_PCR_SYS_SLP_CTL		REG32(MCHP_PCR_BASE + 0x00)
+
+/* EC Interrupt aggregator (ECIA) */
+#define MCHP_INT_BASE		0x4000e000
+/* EC Interrupt aggregator (ECIA) */
+#define MCHP_INT_GIRQ_LEN	20 /* 5 32-bit registers */
+#define MCHP_INT_GIRQ_FIRST	8
+#define MCHP_INT_GIRQ_LAST	26
+#define MCHP_INT_GIRQ_NUM	(26-8+1)
+/* MCHP_INT_GIRQ_FIRST <= x <= MCHP_INT_GIRQ_LAST */
+#define MCHP_INTx_BASE(x) (MCHP_INT_BASE + (((x) - 8) * MCHP_INT_GIRQ_LEN))
+#define MCHP_INT_SOURCE(x)		REG32(MCHP_INTx_BASE(x) + 0x0)
+#define MCHP_INT_ENABLE(x)		REG32(MCHP_INTx_BASE(x) + 0x4)
+#define MCHP_INT_RESULT(x)		REG32(MCHP_INTx_BASE(x) + 0x8)
+#define MCHP_INT_DISABLE(x)		REG32(MCHP_INTx_BASE(x) + 0xc)
+
+/* Quad Master SPI (QMSPI) */
+#define MCHP_QMSPI0_BASE	0x40070000
+#define MCHP_QMSPI0_MODE		REG32(MCHP_QMSPI0_BASE + 0x00)
+#define MCHP_QMSPI0_MODE_ACT_SRST	REG8(MCHP_QMSPI0_BASE + 0x00)
+#define MCHP_QMSPI0_MODE_SPI_MODE	REG8(MCHP_QMSPI0_BASE + 0x01)
+
+/* Bits in MCHP_QMSPI0_MODE */
+#define MCHP_QMSPI_M_ACTIVATE		BIT(0)
+#define MCHP_QMSPI_M_SOFT_RESET		BIT(1)
+
+#define MCHP_EC_BASE		0x4000fc00
+#define MCHP_EC_JTAG_EN		REG32(MCHP_EC_BASE + 0x20)
+
+
+/////////////////////////////////////////////////////////////////////////
+/*  */
 static int cros_system_xec_hibernate(const struct device *dev,
 				     uint32_t seconds, uint32_t microseconds)
 {
+	int i;
+
+#if 1
+	printk("hib: MCHP_PCR_CLK_REQ0 = %08X \n", MCHP_PCR_CLK_REQ0);
+	printk("hib: MCHP_PCR_CLK_REQ1 = %08X \n", MCHP_PCR_CLK_REQ1);
+	printk("hib: MCHP_PCR_CLK_REQ2 = %08X \n", MCHP_PCR_CLK_REQ2);
+	printk("hib: MCHP_PCR_CLK_REQ3 = %08X \n", MCHP_PCR_CLK_REQ3);
+	printk("hib: MCHP_PCR_CLK_REQ4 = %08X \n", MCHP_PCR_CLK_REQ4);
+#endif
+
 	/* Disable interrupt first */
 	interrupt_disable_all();
-
+	printk("cros_system_xec_hibernate: dis irq s=%d ms=%d\n", seconds, microseconds);
 	/* Stop the watchdog */
 	system_xec_watchdog_stop();
 
 	/* Enter hibernate mode */
+	/* 1: disable all individaul block interrupt and source */
+	for (i = MCHP_INT_GIRQ_FIRST; i <= MCHP_INT_GIRQ_LAST; ++i) {
+		MCHP_INT_DISABLE(i) = 0xffffffff;
+		MCHP_INT_SOURCE(i)  = 0xffffffff;
+	}
+
+	/* 2: clear all NVIC interrupt pending */
+	for (i = 0; i < MCHP_IRQ_MAX; ++i) {
+		irq_disable(i);
+		mchp_xec_ecia_nvic_clr_pend(i);
+	}
+
+	/* 3: disable JATG and RTM */
+	/* TODO */
+	/* Disable JTAG */
+#if 1
+	MCHP_EC_JTAG_EN &= ~1;
+	/* jtag GPIO */
+	*(volatile unsigned long*) 0x40081194 = 0x8040;
+	*(volatile unsigned long*) 0x40081198 = 0x8040;
+	*(volatile unsigned long*) 0x4008119C = 0x8040;
+	*(volatile unsigned long*) 0x400811A0 = 0x8040;
+#endif
+
+	/* 4: disable blocks */
+	/* 4.1: disable ADC */
+	MCHP_ADC_CTRL &= ~1;
+	/* 4.2: disable eSPI */
+	/* espi gpio as input, otherwise, block can not enter deep sleep */
+	*(volatile unsigned long*) 0x400810D4 = 0x8040;
+	*(volatile unsigned long*) 0x400810D8 = 0x8040;
+	*(volatile unsigned long*) 0x400810e0 = 0x8040;
+	*(volatile unsigned long*) 0x400810e4 = 0x8040;
+	*(volatile unsigned long*) 0x400810e8 = 0x8040;
+	*(volatile unsigned long*) 0x400810ec = 0x8040;
+	*(volatile unsigned long*) 0x400810c4 = 0x8040;
+	/* alert */
+	*(volatile unsigned long*) 0x400810cc = 0x8040;
+	MCHP_ESPI_ACTIVATE &= ~0x01;
+	/* 4.2: disable SMB / I2C */
+	/* disable I2C blocks */
+	*(volatile unsigned long*) 0x40004028 |= BIT(9);
+	*(volatile unsigned long*) 0x40004428 |= BIT(9);
+	*(volatile unsigned long*) 0x40004828 |= BIT(9);
+	*(volatile unsigned long*) 0x40004C28 |= BIT(9);
+	*(volatile unsigned long*) 0x40005028 |= BIT(9);
+	*(volatile unsigned long*) 0x40004028 &= ~BIT(9);
+	*(volatile unsigned long*) 0x40004428 &= ~BIT(9);
+	*(volatile unsigned long*) 0x40004828 &= ~BIT(9);
+	*(volatile unsigned long*) 0x40004C28 &= ~BIT(9);
+	*(volatile unsigned long*) 0x40005028 &= ~BIT(9);
+
+// copy from legacy ec
+	/* disable DMA */
+	*(volatile unsigned long *)0x40002400 = 0;
+//	dma_disable_all();
+	/* dis qmspi */
+	MCHP_QMSPI0_MODE_ACT_SRST = MCHP_QMSPI_M_SOFT_RESET;
+	//unused = MCHP_QMSPI0_MODE_ACT_SRST;
+	MCHP_QMSPI0_MODE_ACT_SRST = 0;
+//	MCHP_PCR_SLP_EN_DEV(MCHP_PCR_QMSPI);
+	/* dis etm */
+	*(volatile unsigned long *)0x4000FC1C = 0;
+
+/* Zephyr - disable local DMA */
+*(volatile unsigned long *)0x40070000 = 0;
+*(volatile unsigned long *)0x40070004 = 0;
+*(volatile unsigned long *)0x40070010 = 0xffffffff;
+
+	/* GPIOs */
+	//#051, 0.5mA, SMC_WAKE_SCI_N_MECC = 1
+    //*(unsigned long *)0x400810a4 = $gpioval 
+	*(volatile unsigned long*) 0x400810a4 = 0x8040;
+	//#016, 0.5ma, PM_PWRBTN_N = 1
+    //set *(unsigned long *)0x40081038 = $gpioval    
+	*(volatile unsigned long*) 0x40081038 = 0x8040;
+
+	// GPIO000 - not used???
+	*(volatile unsigned long*) 0x40081000 = 0x8040;
+	// GPIO161 GPIO162
+	*(volatile unsigned long*) 0x400811c4 = 0x8040;
+	*(volatile unsigned long*) 0x400811c8 = 0x8040;
+
+	// cfg interrupt GPIOs as input disable
+	//#GPIO 0057 @ 0x400810bc:	0x000004f0
+	*(volatile unsigned long*) 0x400810bc = 0x8040;
+	//#GPIO 0221 @ 0x40081244:	0x000004f0
+	*(volatile unsigned long*) 0x40081244 = 0x8040;
+	//#GPIO 0243 @ 0x4008128c:	0x000004f0
+	*(volatile unsigned long*) 0x4008128c = 0x8040;
+	//#GPIO 0201 @ 0x40081204:	0x010004f0
+	*(volatile unsigned long*) 0x40081204 = 0x8040;
+	//#GPIO 0227 @ 0x4008125c:	0x000004f0
+	*(volatile unsigned long*) 0x4008125c = 0x8040;
+	//#GPIO 0036 @ 0x40081078:	0x010004f1
+	*(volatile unsigned long*) 0x40081078 = 0x8040;
+	//#GPIO 0254 @ 0x400812b0:	0x010004f1
+	*(volatile unsigned long*) 0x400812b0 = 0x8040;
+
+	//#GPIO 0226 @ 0x40081258:	0x010004f1
+	//#GPIO 0115 @ 0x40081134:	0x010004f0
+	//#GPIO 0043 @ 0x4008108c:	0x010004f0
+	//#GPIO 0156 @ 0x400811b8:	0x010004f0
+
+	//#GPIO 0222 @ 0x40081248:	0x000004f0
+	*(volatile unsigned long*) 0x40081248 = 0x8040;
+	//#GPIO 0014 @ 0x40081030:	0x000004f0
+ 	*(volatile unsigned long*) 0x40081030 = 0x8040;
+	//#GPIO 0175 @ 0x400811f4:	0x010004f0
+ 	*(volatile unsigned long*) 0x400811f4 = 0x8040;
+	//#GPIO 0105 @ 0x40081114:	0x01001440
+ 	*(volatile unsigned long*) 0x40081114 = 0x8040;
+	//#GPIO 0143 @ 0x4008118c:	0x010004f0
+ 	*(volatile unsigned long*) 0x4008118c = 0x8040;
+	//#GPIO 0240 @ 0x40081280:	0x010004f0
+	*(volatile unsigned long*) 0x40081280 = 0x8040;
+	//#GPIO 0241 @ 0x40081284:	0x010004f0
+	*(volatile unsigned long*) 0x40081284 = 0x8040;
+	//#GPIO 0101 @ 0x40081104:	0x000004f0
+ 	*(volatile unsigned long*) 0x40081104 = 0x8040;
+
+	/* Tune another 3 GPIOs */
+	//#GPIO 022 @ 0x40081048
+ 	*(volatile unsigned long*) 0x40081048 = 0x8040;
+	//#GPIO 046 @ 0x40081098
+ 	*(volatile unsigned long*) 0x40081098 = 0x8040;
+	//#GPIO 0170 @ 0x400811E0
+ 	*(volatile unsigned long*) 0x400811E0 = 0x8040;
+
+	// turn off both leds: GPIO153 GPIO157
+	*(volatile unsigned long*) 0x400811ac = 0x10240;
+	*(volatile unsigned long*) 0x400811bc = 0x10240;
+
+#if 1
+// Zephyr test
+
+// 01 - 8.4
+
+// 02 - 6.5 --> 5.5
+	*(volatile unsigned long*) 0x40081050 = 0x8040;
+  	*(volatile unsigned long*) 0x4008106C = 0x8040;
+
+// 03 - 5.4
+ 	*(volatile unsigned long*) 0x40081160 = 0x8040;
+  	*(volatile unsigned long*) 0x40081164 = 0x8040;
+
+// 04 - vtr1 0.59 -> 0.29
+ 	*(volatile unsigned long*) 0x400810DC = 0x8040;
+
+#endif
+
+// end of copy from legacy ec
+
+	/* 5: disable timers - 32bit timer 0 */
+	MCHP_TMR32_CTL(0) &= ~1;
+	/* 6: setup GPIOs for hibernate */
+	/* 7: enable wakeup pins */
+	/* enable power button irq - gpio GPIO115 (GIRQ9.13bit) */
+	MCHP_INT_ENABLE(9) = BIT(13);
+	irq_enable(1);
+	/* LID irq - gpio GPIO226 (GIRQ12.22bit) */
+	MCHP_INT_ENABLE(12) = BIT(22);
+	irq_enable(4);
+	/* AC ok irq - gpio GPIO156 (GIRQ8.14bit) */
+	MCHP_INT_ENABLE(8) = BIT(14);
+	irq_enable(0);
+
+	/* 8: init htimer and enable interupt if times are not 0 */
+	if (seconds || microseconds) {
+		printk("cros_system_xec_hibernate: init and enable htimer \n");
+		//htimer_init();
+		//system_set_htimer_alarm(seconds, microseconds);
+		//interrupt_enable();
+	}
+
+	// test purpose
+	printk("hib: 1 MCHP_PCR_CLK_REQ0 = %08X \n", MCHP_PCR_CLK_REQ0);
+	printk("hib: 1 MCHP_PCR_CLK_REQ1 = %08X \n", MCHP_PCR_CLK_REQ1);
+	printk("hib: 1 MCHP_PCR_CLK_REQ2 = %08X \n", MCHP_PCR_CLK_REQ2);
+	printk("hib: 1 MCHP_PCR_CLK_REQ3 = %08X \n", MCHP_PCR_CLK_REQ3);
+	printk("hib: 1 MCHP_PCR_CLK_REQ4 = %08X \n", MCHP_PCR_CLK_REQ4);
+	printk("hib: enter sleep #### \n");
+
+	/* 9: disable uart0 and JTAG */
+	/* Flush console before hibernating */
+	cflush();
+	/* Disable UART */
+	MCHP_UART_ACT(0) &= ~0x1;
+	for (i = MCHP_INT_GIRQ_FIRST; i <= MCHP_INT_GIRQ_LAST; ++i) {
+		MCHP_INT_SOURCE(i)  = 0xffffffff;
+	}
+
+	/* 9.3. wait clk idle */
+	/* check all clock required status */
+    while(MCHP_PCR_CLK_REQ0 != 0);
+    while(MCHP_PCR_CLK_REQ1 != 0x100);    /* bit8=PROCESSOR */
+    while(MCHP_PCR_CLK_REQ2 != 0);
+    while(MCHP_PCR_CLK_REQ3 != 0);
+    while(MCHP_PCR_CLK_REQ4 != 0);	
+
+	/* 10: enter deep sleep */
+	/*
+	 * Set sleep state
+	 * arm sleep state to trigger on next WFI
+	 */
+	MCHP_PCR_SYS_SLP_CTL |= MCHP_PCR_SYS_SLP_HEAVY;
+	MCHP_PCR_SYS_SLP_CTL |= MCHP_PCR_SYS_SLP_ALL;
+
+	/* 11: wfi */
+	/* GPIO171 as Tst GPIO */
+	*(volatile unsigned long*) 0x400811E4 = 0x00240;
+	*(volatile unsigned long*) 0x400811E4 = 0x10240;
+	*(volatile unsigned long*) 0x400811E4 = 0x00240;
+	*(volatile unsigned long*) 0x400811E4 = 0x10240;
+	*(volatile unsigned long*) 0x400811E4 = 0x00240;
+	*(volatile unsigned long*) 0x400811E4 = 0x10240;
+	*(volatile unsigned long*) 0x400811E4 = 0x00240;
+	*(volatile unsigned long*) 0x400811E4 = 0x10240;
+	*(volatile unsigned long*) 0x400811E4 = 0x8040;
+
+#if 0
+while(1)
+	;
+#endif
+
+	/* arm sleep state to trigger on next WFI */
+	__asm__ volatile("dsb");
+	__asm__ volatile("wfi");
+	__asm__ volatile("isb");
+	__asm__ volatile("nop");
+
+#if 1	/* debugging purpose */
+	/* Enable UART after wakeup */
+	MCHP_UART_ACT(0) |= 0x1;
+	printk("hib: waken up by source!!!!\n");
+
+	/* trace out block source */
+	for (i = MCHP_INT_GIRQ_FIRST; i <= MCHP_INT_GIRQ_LAST; ++i) {
+		printk("hib: 2 GIRQi iii= %08X \n", i);
+		printk("hib: 2 GIRQi           SRC= %08X \n", MCHP_INT_SOURCE(i));
+	}
+	/* trace out NVIC source */
+	printk("hib: nvic pending 0 = %08X \n", CPU_NVIC_PEND(0));
+	printk("hib: nvic enable  0 = %08X \n", CPU_NVIC_EN(0));
+	printk("hib: nvic pending 1 = %08X \n", CPU_NVIC_PEND(1));
+	printk("hib: nvic enable  1 = %08X \n", CPU_NVIC_EN(1));
+	printk("hib: nvic pending 2 = %08X \n", CPU_NVIC_PEND(2));
+	printk("hib: nvic enable  2 = %08X \n", CPU_NVIC_EN(2));
+	printk("hib: nvic pending 3 = %08X \n", CPU_NVIC_PEND(3));
+	printk("hib: nvic enable  3 = %08X \n", CPU_NVIC_EN(3));
+	printk("hib: nvic pending 4 = %08X \n", CPU_NVIC_PEND(4));
+	printk("hib: nvic enable  4 = %08X \n", CPU_NVIC_EN(4));
+#endif
+
+	/* GPIO171 as Tst GPIO */
+	*(volatile unsigned long*) 0x400811E4 = 0x00240;
+	*(volatile unsigned long*) 0x400811E4 = 0x10240;
+	*(volatile unsigned long*) 0x400811E4 = 0x00240;
+	*(volatile unsigned long*) 0x400811E4 = 0x10240;
+	*(volatile unsigned long*) 0x400811E4 = 0x00240;
+	*(volatile unsigned long*) 0x400811E4 = 0x8040;
+	/* 12: reboot - _system_reset(0, 1); */
+	cros_system_xec_soc_reset(dev);
 
 	/* MCHP TODO */
-
+	printk("cros_system_xec_hibernate: ### fail to enter hibernate mode \n");
 	return 0;
 }
+//// mchp
 
 static struct cros_system_xec_data cros_system_xec_dev_data;
 

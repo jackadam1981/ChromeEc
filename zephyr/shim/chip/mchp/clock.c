@@ -63,6 +63,17 @@ void clock_normal(void)
 	__NOP();
 	__NOP();
 	__NOP();
+	
+// 02 - 6.5 --> 5.5
+	*(volatile unsigned long*) 0x40081050 = 0x8040;
+  	*(volatile unsigned long*) 0x4008106C = 0x8040;
+
+// 03 - 5.4
+ 	*(volatile unsigned long*) 0x40081160 = 0x8040;
+  	*(volatile unsigned long*) 0x40081164 = 0x8040;
+
+// 04 - vtr1 0.59 -> 0.29
+ 	*(volatile unsigned long*) 0x400810DC = 0x8040;
 }
 
 void clock_enable_module(enum module_id module, int enable)

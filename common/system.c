@@ -1060,13 +1060,14 @@ void system_enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	 * this is to prevent an action triggered by developers.
 	 * See: b/192259035
 	 */
+#if 0	
 	if (IS_ENABLED(CONFIG_EXTPOWER) &&
 	    (IS_ENABLED(HAS_TASK_CHIPSET) || IS_ENABLED(CONFIG_AP_PWRSEQ)) &&
 	    extpower_is_present()) {
 		CPRINTS("AC on, skip hibernate");
 		return;
 	}
-
+#endif
 	/*
 	 * If chipset is already off, then call system_hibernate directly. Else,
 	 * let chipset_task bring down the power rails and transition to proper
