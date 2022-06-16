@@ -21,10 +21,6 @@ LOG_MODULE_REGISTER(emul_tcs);
 
 #include "driver/als_tcs3400.h"
 
-#define TCS_DATA_FROM_I2C_EMUL(_emul)                                        \
-	CONTAINER_OF(CONTAINER_OF(_emul, struct i2c_common_emul_data, emul), \
-		     struct tcs_emul_data, common)
-
 /** Run-time data used by the emulator */
 struct tcs_emul_data {
 	/** Common I2C data */
@@ -65,7 +61,7 @@ struct tcs_emul_data {
 };
 
 /** Check description in emul_tcs3400.h */
-void tcs_emul_set_reg(struct i2c_emul *emul, int reg, uint8_t val)
+void tcs_emul_set_reg(const struct emul *emul, int reg, uint8_t val)
 {
 	struct tcs_emul_data *data;
 
@@ -74,12 +70,12 @@ void tcs_emul_set_reg(struct i2c_emul *emul, int reg, uint8_t val)
 	}
 
 	reg -= TCS_EMUL_FIRST_REG;
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 	data->reg[reg] = val;
 }
 
 /** Check description in emul_tcs3400.h */
-uint8_t tcs_emul_get_reg(struct i2c_emul *emul, int reg)
+uint8_t tcs_emul_get_reg(const struct emul *emul, int reg)
 {
 	struct tcs_emul_data *data;
 
@@ -87,18 +83,18 @@ uint8_t tcs_emul_get_reg(struct i2c_emul *emul, int reg)
 		return 0;
 	}
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 	reg -= TCS_EMUL_FIRST_REG;
 
 	return data->reg[reg];
 }
 
 /** Check description in emul_tcs3400.h */
-int tcs_emul_get_val(struct i2c_emul *emul, enum tcs_emul_axis axis)
+int tcs_emul_get_val(const struct emul *emul, enum tcs_emul_axis axis)
 {
 	struct tcs_emul_data *data;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 
 	switch (axis) {
 	case TCS_EMUL_R:
@@ -117,11 +113,11 @@ int tcs_emul_get_val(struct i2c_emul *emul, enum tcs_emul_axis axis)
 }
 
 /** Check description in emul_tcs3400.h */
-void tcs_emul_set_val(struct i2c_emul *emul, enum tcs_emul_axis axis, int val)
+void tcs_emul_set_val(const struct emul *emul, enum tcs_emul_axis axis, int val)
 {
 	struct tcs_emul_data *data;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 
 	switch (axis) {
 	case TCS_EMUL_R:
@@ -143,29 +139,29 @@ void tcs_emul_set_val(struct i2c_emul *emul, enum tcs_emul_axis axis, int val)
 }
 
 /** Check description in emul_tcs3400.h */
-void tcs_emul_set_err_on_ro_write(struct i2c_emul *emul, bool set)
+void tcs_emul_set_err_on_ro_write(const struct emul *emul, bool set)
 {
 	struct tcs_emul_data *data;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 	data->error_on_ro_write = set;
 }
 
 /** Check description in emul_tcs3400.h */
-void tcs_emul_set_err_on_rsvd_write(struct i2c_emul *emul, bool set)
+void tcs_emul_set_err_on_rsvd_write(const struct emul *emul, bool set)
 {
 	struct tcs_emul_data *data;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 	data->error_on_rsvd_write = set;
 }
 
 /** Check description in emul_tcs3400.h */
-void tcs_emul_set_err_on_msb_first(struct i2c_emul *emul, bool set)
+void tcs_emul_set_err_on_msb_first(const struct emul *emul, bool set)
 {
 	struct tcs_emul_data *data;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 	data->error_on_msb_first = set;
 }
 
@@ -203,11 +199,11 @@ static const uint8_t tcs_emul_rsvd_mask[] = {
  *
  * @param emul Pointer to TCS3400 emulator
  */
-static void tcs_emul_reset(struct i2c_emul *emul)
+static void tcs_emul_reset(const struct emul *emul)
 {
 	struct tcs_emul_data *data;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 
 	data->reg[TCS_I2C_ENABLE - TCS_EMUL_FIRST_REG] = 0x00;
 	data->reg[TCS_I2C_ATIME - TCS_EMUL_FIRST_REG] = 0xff;
@@ -275,11 +271,11 @@ static int tcs_emul_get_cycles(uint8_t atime)
  *
  * @param emul Pointer to TCS3400 emulator
  */
-static void tcs_emul_clear_int(struct i2c_emul *emul)
+static void tcs_emul_clear_int(const struct emul *emul)
 {
 	struct tcs_emul_data *data;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 
 	data->reg[TCS_I2C_STATUS - TCS_EMUL_FIRST_REG] = 0x00;
 }
@@ -297,12 +293,12 @@ static void tcs_emul_clear_int(struct i2c_emul *emul)
  * @return 0 on success
  * @return -EIO on error
  */
-static int tcs_emul_handle_write(struct i2c_emul *emul, int reg, int bytes)
+static int tcs_emul_handle_write(const struct emul *emul, int reg, int bytes)
 {
 	struct tcs_emul_data *data;
 	uint8_t val;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 
 	/* This write only selected register for I2C read message */
 	if (bytes < 2) {
@@ -389,8 +385,8 @@ static int tcs_emul_handle_write(struct i2c_emul *emul, int reg, int bytes)
  * @return 0 on success
  * @return -EIO when accessing MSB before LSB
  */
-static int tcs_emul_get_reg_val(struct i2c_emul *emul, int reg, bool *lsb_read,
-				bool lsb, unsigned int val)
+static int tcs_emul_get_reg_val(const struct emul *emul, int reg,
+				bool *lsb_read, bool lsb, unsigned int val)
 {
 	struct tcs_emul_data *data;
 	uint64_t reg_val;
@@ -399,7 +395,7 @@ static int tcs_emul_get_reg_val(struct i2c_emul *emul, int reg, bool *lsb_read,
 	int cycles;
 	int gain;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 
 	if (lsb) {
 		*lsb_read = 1;
@@ -453,14 +449,14 @@ static int tcs_emul_get_reg_val(struct i2c_emul *emul, int reg, bool *lsb_read,
  * @return 0 on success
  * @return -EIO on error
  */
-static int tcs_emul_handle_read(struct i2c_emul *emul, int reg, uint8_t *buf,
+static int tcs_emul_handle_read(const struct emul *emul, int reg, uint8_t *buf,
 				int bytes)
 {
 	struct tcs_emul_data *data;
 	unsigned int c_ir;
 	int ret;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 
 	reg += bytes;
 
@@ -548,12 +544,12 @@ static int tcs_emul_handle_read(struct i2c_emul *emul, int reg, uint8_t *buf,
  * @return 0 on success
  * @return -EIO on error
  */
-static int tcs_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
+static int tcs_emul_write_byte(const struct emul *emul, int reg, uint8_t val,
 			       int bytes)
 {
 	struct tcs_emul_data *data;
 
-	data = TCS_DATA_FROM_I2C_EMUL(emul);
+	data = emul->data;
 
 	if (bytes > 1) {
 		LOG_ERR("Too long write command");
@@ -582,19 +578,15 @@ static int tcs_emul_init(const struct emul *emul, const struct device *parent)
 {
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
 	struct i2c_common_emul_data *data = cfg->data;
-	int ret;
 
-	data->emul.api = &i2c_common_emul_api;
 	data->emul.addr = cfg->addr;
 	data->i2c = parent;
 	data->cfg = cfg;
 	i2c_common_emul_init(data);
 
-	ret = i2c_emul_register(parent, emul->dev_label, &data->emul);
+	tcs_emul_reset(emul);
 
-	tcs_emul_reset(&data->emul);
-
-	return ret;
+	return 0;
 }
 
 #define TCS3400_EMUL(n)                                               \
@@ -628,16 +620,16 @@ static int tcs_emul_init(const struct emul *emul, const struct device *parent)
 		.addr = DT_INST_REG_ADDR(n),                          \
 	};                                                            \
 	EMUL_DEFINE(tcs_emul_init, DT_DRV_INST(n), &tcs_emul_cfg_##n, \
-		    &tcs_emul_data_##n)
+		    &tcs_emul_data_##n, &i2c_common_emul_api)
 
 DT_INST_FOREACH_STATUS_OKAY(TCS3400_EMUL)
 
 #define TCS3400_EMUL_CASE(n)     \
 	case DT_INST_DEP_ORD(n): \
-		return &tcs_emul_data_##n.common.emul;
+		return tcs_emul_data_##n.common.emul.target;
 
 /** Check description in emul_tcs3400.h */
-struct i2c_emul *tcs_emul_get(int ord)
+const struct emul *tcs_emul_get(int ord)
 {
 	switch (ord) {
 		DT_INST_FOREACH_STATUS_OKAY(TCS3400_EMUL_CASE)
@@ -647,17 +639,24 @@ struct i2c_emul *tcs_emul_get(int ord)
 	}
 }
 
-#ifdef CONFIG_ZTEST_NEW_API
-#define TCS3400_EMUL_RESET_RULE_BEFORE(n) \
-	tcs_emul_reset(&(tcs_emul_data_##n.common.emul));
-static void emul_tcs3400_reset_rule_before(const struct ztest_unit_test *test,
-					   void *data)
-{
-	ARG_UNUSED(test);
-	ARG_UNUSED(data);
-	DT_INST_FOREACH_STATUS_OKAY(TCS3400_EMUL_RESET_RULE_BEFORE);
-}
-ZTEST_RULE(emul_tcs3400_reset, emul_tcs3400_reset_rule_before, NULL);
-#endif /* CONFIG_ZTEST_NEW_API */
+/* #ifdef CONFIG_ZTEST_NEW_API */
+/* #define TCS3400_EMUL_RESET_RULE_BEFORE(n) \ */
+/* 	tcs_emul_reset((tcs_emul_data_##n.common.emul.target)); */
+/* static void emul_tcs3400_reset_rule_before(const struct ztest_unit_test
+ * *test, */
+/* 					   void *data) */
+/* { */
+/* 	ARG_UNUSED(test); */
+/* 	ARG_UNUSED(data); */
+/* 	DT_INST_FOREACH_STATUS_OKAY(TCS3400_EMUL_RESET_RULE_BEFORE); */
+/* } */
+/* ZTEST_RULE(emul_tcs3400_reset, emul_tcs3400_reset_rule_before, NULL); */
+/* #endif /\* CONFIG_ZTEST_NEW_API *\/ */
 
 DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
+
+struct i2c_common_emul_data *
+emul_tcs3400_get_i2c_common_data(const struct emul *emul)
+{
+	return emul->data;
+}
