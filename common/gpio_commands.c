@@ -67,8 +67,20 @@ static enum ec_error_list set(const char *name, int value)
 	if (!gpio_is_implemented(signal))
 		return EC_ERROR_INVAL;
 
+#ifdef CONFIG_GPIO_GET_EXTENDED
+	/*
+	 * Take into account that the configuration of the pin might
+	 * have changed from input to output since startup.
+	 */
+	if (!(gpio_get_flags(signal) & GPIO_OUTPUT))
+		return EC_ERROR_INVAL;
+#else
+	/*
+	 * No means of taking configuration change into account.
+	 */
 	if (!(gpio_get_default_flags(signal) & GPIO_OUTPUT))
 		return EC_ERROR_INVAL;
+#endif
 
 	gpio_set_level(signal, value);
 
