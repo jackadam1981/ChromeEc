@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3fd4a99_b2f66d56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2022-06-16T22:31:11Z",
+      "side": 1,
+      "message": "This isn\u0027t quite right, or at least the way I\u0027m reading this sentence is \"we worried older code would feed in 64-bit arguments with %l\". Here\u0027s my attempt at this sentence, which you can feel free to use or write your own:\n\nThere was concern that new code using %l with 32-bit values would be cherry-picked to older branches without the updated printf. The older code would interpret that %l as 64-bit argument, causing it to over-ingest arguments and potentially behave in an undefined manner.",
+      "range": {
+        "startLine": 15,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84968732_5d61a7c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2022-06-16T22:31:11Z",
+      "side": 1,
+      "message": "Looks good with some nits. Adding a +1 for now to give others time to review, I can upgrade to a +2 if needed.",
+      "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3312fc_28d24feb",
+        "filename": "test/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2022-06-16T22:31:11Z",
+      "side": 1,
+      "message": "We can fix up this comment to explain that it\u0027s deprecated on all ECs except FPMCUs, which don\u0027t maintain long running firmware branches.",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 38
+      },
+      "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
