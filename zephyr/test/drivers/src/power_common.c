@@ -296,7 +296,7 @@ ZTEST(power_common, test_power_hc_smart_discharge)
 	struct ec_params_smart_discharge params;
 	struct host_cmd_handler_args args =
 		BUILD_HOST_COMMAND(EC_CMD_SMART_DISCHARGE, 0, response, params);
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	int hours_to_zero;
 	int hibern_drate;
 	int cutoff_drate;
@@ -391,13 +391,13 @@ ZTEST(power_common, test_power_board_system_is_idle)
 	struct host_cmd_handler_args args =
 		BUILD_HOST_COMMAND(EC_CMD_SMART_DISCHARGE, 0, response, params);
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	uint64_t last_shutdown_time = 0;
 	uint64_t target;
 	uint64_t now;
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	/* Set up host command parameters */
 	params.drate.hibern = 100; /* uA */
@@ -458,11 +458,11 @@ static void setup_hibernation_delay(void *state)
 	struct host_cmd_handler_args args =
 		BUILD_HOST_COMMAND(EC_CMD_SMART_DISCHARGE, 0, response, params);
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	ARG_UNUSED(state);
 
 	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+	bat = emul->data;
 
 	/* Setup smart discharge zone and set capacity to safe zone */
 	params.drate.hibern = 100; /* uA */

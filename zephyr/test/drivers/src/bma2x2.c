@@ -19,9 +19,9 @@
 /** How accurate comparision of vectors should be. */
 #define V_EPS 8
 
-#define EMUL_LABEL DT_NODELABEL(bma_emul)
+#define EMUL_NODE DT_NODELABEL(bma_emul)
 
-#define BMA_ORD DT_DEP_ORD(EMUL_LABEL)
+#define BMA_ORD DT_DEP_ORD(EMUL_NODE)
 
 /** Mutex for test motion sensor  */
 static mutex_t sensor_mutex;
@@ -52,13 +52,13 @@ static struct motion_sensor_t ms = {
 	.mutex = &sensor_mutex,
 	.drv_data = &acc_data,
 	.port = NAMED_I2C(accel),
-	.i2c_spi_addr_flags = DT_REG_ADDR(EMUL_LABEL),
+	.i2c_spi_addr_flags = DT_REG_ADDR(EMUL_NODE),
 	.rot_standard_ref = NULL,
 	.current_range = 0,
 };
 
 /** Set emulator offset values to vector of three int16_t */
-static void set_emul_offset(struct i2c_emul *emul, int16_t *offset)
+static void set_emul_offset(const struct emul *emul, int16_t *offset)
 {
 	bma_emul_set_off(emul, BMA_EMUL_AXIS_X, offset[0]);
 	bma_emul_set_off(emul, BMA_EMUL_AXIS_Y, offset[1]);
@@ -66,7 +66,7 @@ static void set_emul_offset(struct i2c_emul *emul, int16_t *offset)
 }
 
 /** Save emulator offset values to vector of three int16_t */
-static void get_emul_offset(struct i2c_emul *emul, int16_t *offset)
+static void get_emul_offset(const struct emul *emul, int16_t *offset)
 {
 	offset[0] = bma_emul_get_off(emul, BMA_EMUL_AXIS_X);
 	offset[1] = bma_emul_get_off(emul, BMA_EMUL_AXIS_Y);
@@ -74,7 +74,7 @@ static void get_emul_offset(struct i2c_emul *emul, int16_t *offset)
 }
 
 /** Set emulator accelerometer values to vector of three int16_t */
-static void set_emul_acc(struct i2c_emul *emul, int16_t *acc)
+static void set_emul_acc(const struct emul *emul, int16_t *acc)
 {
 	bma_emul_set_acc(emul, BMA_EMUL_AXIS_X, acc[0]);
 	bma_emul_set_acc(emul, BMA_EMUL_AXIS_Y, acc[1]);
@@ -121,7 +121,7 @@ struct reset_func_data {
  * accessing register data.ok_before_fail times. Error is returned during next
  * data.fail_attempts times.
  */
-static int emul_read_reset(struct i2c_emul *emul, int reg, uint8_t *buf,
+static int emul_read_reset(const struct emul *emul, int reg, uint8_t *buf,
 			   int bytes, void *data)
 {
 	struct reset_func_data *d = data;
@@ -156,7 +156,7 @@ static int emul_read_reset(struct i2c_emul *emul, int reg, uint8_t *buf,
  */
 ZTEST_USER(bma2x2, test_bma_get_offset)
 {
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int16_t ret_offset[3];
 	int16_t exp_offset[3];
 	int16_t temp;
@@ -207,7 +207,7 @@ ZTEST_USER(bma2x2, test_bma_get_offset)
  */
 ZTEST_USER(bma2x2, test_bma_set_offset)
 {
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int16_t ret_offset[3];
 	int16_t exp_offset[3];
 	int16_t temp = 0;
@@ -259,7 +259,7 @@ ZTEST_USER(bma2x2, test_bma_set_offset)
  * Try to set range and check if expected range was set in driver and in
  * emulator.
  */
-static void check_set_range_f(struct i2c_emul *emul, int range, int rnd,
+static void check_set_range_f(const struct emul *emul, int range, int rnd,
 			      int exp_range, int line)
 {
 	uint8_t exp_range_reg;
@@ -304,7 +304,7 @@ static void check_set_range_f(struct i2c_emul *emul, int range, int rnd,
 /** Test set range with and without I2C errors. */
 ZTEST_USER(bma2x2, test_bma_set_range)
 {
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int start_range;
 
 	emul = bma_emul_get(BMA_ORD);
@@ -378,7 +378,7 @@ ZTEST_USER(bma2x2, test_bma_set_range)
 ZTEST_USER(bma2x2, test_bma_init)
 {
 	struct reset_func_data reset_func_data;
-	struct i2c_emul *emul;
+	const struct emul *emul;
 
 	emul = bma_emul_get(BMA_ORD);
 
@@ -450,7 +450,7 @@ ZTEST_USER(bma2x2, test_bma_init)
  * Try to set data rate and check if expected rate was set in driver and in
  * emulator.
  */
-static void check_set_rate_f(struct i2c_emul *emul, int rate, int rnd,
+static void check_set_rate_f(const struct emul *emul, int rate, int rnd,
 			     int exp_rate, int line)
 {
 	uint8_t exp_rate_reg;
@@ -508,7 +508,7 @@ static void check_set_rate_f(struct i2c_emul *emul, int rate, int rnd,
 /** Test set and get rate with and without I2C errors. */
 ZTEST_USER(bma2x2, test_bma_rate)
 {
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	uint8_t reg_rate;
 	int drv_rate;
 
@@ -616,7 +616,7 @@ ZTEST_USER(bma2x2, test_bma_rate)
 /** Test read with and without I2C errors. */
 ZTEST_USER(bma2x2, test_bma_read)
 {
-	struct i2c_emul *emul;
+	const struct emul *emul;
 	int16_t ret_acc[3];
 	int16_t exp_acc[3];
 	intv3_t ret_acc_v;
@@ -705,7 +705,7 @@ struct calib_func_data {
  * error when offset control register is accessed when cal ready bit is not set
  * and data.read_fail is not zero.
  */
-static int emul_read_calib_func(struct i2c_emul *emul, int reg, uint8_t *val,
+static int emul_read_calib_func(const struct emul *emul, int reg, uint8_t *val,
 				int bytes, void *data)
 {
 	struct calib_func_data *d = data;
@@ -737,7 +737,7 @@ static int emul_read_calib_func(struct i2c_emul *emul, int reg, uint8_t *val,
  * calib_start field in data with time when offset compensation process was
  * triggerd.
  */
-static int emul_write_calib_func(struct i2c_emul *emul, int reg, uint8_t val,
+static int emul_write_calib_func(const struct emul *emul, int reg, uint8_t val,
 				 int bytes, void *data)
 {
 	struct calib_func_data *d = data;
@@ -758,7 +758,7 @@ static int emul_write_calib_func(struct i2c_emul *emul, int reg, uint8_t val,
 ZTEST_USER(bma2x2, test_bma_perform_calib)
 {
 	struct calib_func_data func_data;
-	struct i2c_emul *emul;
+	const struct emul *emul = bma_emul_get(BMA_ORD);
 	int16_t start_off[3];
 	int16_t exp_off[3];
 	int16_t ret_off[3];
@@ -767,8 +767,6 @@ ZTEST_USER(bma2x2, test_bma_perform_calib)
 	mat33_fp_t rot = { { FLOAT_TO_FP(1), 0, 0 },
 			   { 0, FLOAT_TO_FP(1), 0 },
 			   { 0, 0, FLOAT_TO_FP(-1) } };
-
-	emul = bma_emul_get(BMA_ORD);
 
 	/* Range and rate cannot change after calibration */
 	range = 4;
