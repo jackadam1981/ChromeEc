@@ -180,13 +180,22 @@ test_static int test_vsnprintf_int(void)
 	T(expect_success("5E",        "%X",     0X5E));
 
 	/*
-	 * %l is deprecated on 32-bit systems (see crbug.com/984041), but is
-	 * is still functional on 64-bit systems.
+	 * %l is functional on 64-bit systems but is not supported on 32-bit
+	 * systems (see crbug.com/984041) unless explicitly enabled via
+	 * configuration. Presently, only Bloonchipper and Dartmonkey boards
+	 * have enabled this configuration.
 	 */
 	if (sizeof(long) == sizeof(uint32_t)) {
-		T(expect_success(err_str,     "%lx",    0x7b));
-		T(expect_success(err_str,     "%08lu",  0x7b));
-		T(expect_success("13ERROR",   "%d%lu", 13, 14));
+		if (IS_ENABLED(BOARD_BLOONCHIPPER) ||
+		    IS_ENABLED(BOARD_DARTMONKEY)) {
+			T(expect_success("7b",     "%lx",    0x7b));
+			T(expect_success("00000123",     "%08lu",  0x7b));
+			T(expect_success("1314",   "%d%lu", 13, 14));
+		} else {
+			T(expect_success(err_str,     "%lx",    0x7b));
+			T(expect_success(err_str,     "%08lu",  0x7b));
+			T(expect_success("13ERROR",   "%d%lu", 13, 14));
+		}
 	} else {
 		T(expect_success("7b",        "%lx",    0x7b));
 		T(expect_success("00000123",  "%08lu",  123));
