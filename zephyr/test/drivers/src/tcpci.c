@@ -263,25 +263,22 @@ static void set_usb_mux_tcpc(void)
 ZTEST(tcpci, test_generic_tcpci_mux_init)
 {
 	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
-	struct i2c_emul *i2c_emul = tcpci_emul_get_i2c_emul(emul);
 	struct usb_mux *tcpci_usb_mux = &usb_muxes[USBC_PORT_C0];
 
 	/* Set as usb mux with TCPC for first init call */
 	set_usb_mux_tcpc();
 
 	/* Make sure that TCPC is not accessed */
-	i2c_common_emul_set_read_fail_reg(i2c_emul,
-					  I2C_COMMON_EMUL_FAIL_ALL_REG);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_FAIL_ALL_REG);
 	zassert_equal(EC_SUCCESS, tcpci_tcpm_mux_init(tcpci_usb_mux), NULL);
 
 	/* Set as only usb mux without TCPC for rest of the test */
 	set_usb_mux_not_tcpc();
 
 	/* Test fail on power status read */
-	i2c_common_emul_set_read_fail_reg(i2c_emul, TCPC_REG_POWER_STATUS);
+	i2c_common_emul_set_read_fail_reg(emul, TCPC_REG_POWER_STATUS);
 	zassert_equal(EC_ERROR_INVAL, tcpci_tcpm_mux_init(tcpci_usb_mux), NULL);
-	i2c_common_emul_set_read_fail_reg(i2c_emul,
-					  I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Test fail on uninitialised bit set */
 	tcpci_emul_set_reg(emul, TCPC_REG_POWER_STATUS,
@@ -294,16 +291,15 @@ ZTEST(tcpci, test_generic_tcpci_mux_init)
 			   TCPC_REG_POWER_STATUS_VBUS_DET);
 
 	/* Test fail on alert mask write fail */
-	i2c_common_emul_set_write_fail_reg(i2c_emul, TCPC_REG_ALERT_MASK);
+	i2c_common_emul_set_write_fail_reg(emul, TCPC_REG_ALERT_MASK);
 	zassert_equal(EC_ERROR_UNKNOWN, tcpci_tcpm_mux_init(tcpci_usb_mux),
 		      NULL);
 
 	/* Test fail on alert write fail */
-	i2c_common_emul_set_write_fail_reg(i2c_emul, TCPC_REG_ALERT);
+	i2c_common_emul_set_write_fail_reg(emul, TCPC_REG_ALERT);
 	zassert_equal(EC_ERROR_UNKNOWN, tcpci_tcpm_mux_init(tcpci_usb_mux),
 		      NULL);
-	i2c_common_emul_set_write_fail_reg(i2c_emul,
-					   I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Set arbitrary value to alert and alert mask registers */
 	tcpci_emul_set_reg(emul, TCPC_REG_ALERT, 0xffff);
@@ -319,15 +315,13 @@ ZTEST(tcpci, test_generic_tcpci_mux_init)
 ZTEST(tcpci, test_generic_tcpci_mux_enter_low_power)
 {
 	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
-	struct i2c_emul *i2c_emul = tcpci_emul_get_i2c_emul(emul);
 	struct usb_mux *tcpci_usb_mux = &usb_muxes[USBC_PORT_C0];
 
 	/* Set as usb mux with TCPC for first enter_low_power call */
 	set_usb_mux_tcpc();
 
 	/* Make sure that TCPC is not accessed */
-	i2c_common_emul_set_write_fail_reg(i2c_emul,
-					   I2C_COMMON_EMUL_FAIL_ALL_REG);
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_FAIL_ALL_REG);
 	zassert_equal(EC_SUCCESS, tcpci_tcpm_mux_enter_low_power(tcpci_usb_mux),
 		      NULL);
 
@@ -335,11 +329,10 @@ ZTEST(tcpci, test_generic_tcpci_mux_enter_low_power)
 	set_usb_mux_not_tcpc();
 
 	/* Test error on failed command set */
-	i2c_common_emul_set_write_fail_reg(i2c_emul, TCPC_REG_COMMAND);
+	i2c_common_emul_set_write_fail_reg(emul, TCPC_REG_COMMAND);
 	zassert_equal(EC_ERROR_INVAL,
 		      tcpci_tcpm_mux_enter_low_power(tcpci_usb_mux), NULL);
-	i2c_common_emul_set_write_fail_reg(i2c_emul,
-					   I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Test correct command is issued */
 	zassert_equal(EC_SUCCESS, tcpci_tcpm_mux_enter_low_power(tcpci_usb_mux),
@@ -351,7 +344,6 @@ ZTEST(tcpci, test_generic_tcpci_mux_enter_low_power)
 static void test_generic_tcpci_mux_set_get(void)
 {
 	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
-	struct i2c_emul *i2c_emul = tcpci_emul_get_i2c_emul(emul);
 	struct usb_mux *tcpci_usb_mux = &usb_muxes[USBC_PORT_C0];
 	mux_state_t mux_state, mux_state_get;
 	uint16_t exp_val, initial_val;
@@ -360,21 +352,18 @@ static void test_generic_tcpci_mux_set_get(void)
 	mux_state = USB_PD_MUX_NONE;
 
 	/* Test fail on standard output config register read */
-	i2c_common_emul_set_read_fail_reg(i2c_emul, TCPC_REG_CONFIG_STD_OUTPUT);
+	i2c_common_emul_set_read_fail_reg(emul, TCPC_REG_CONFIG_STD_OUTPUT);
 	zassert_equal(EC_ERROR_INVAL,
 		      tcpci_tcpm_mux_set(tcpci_usb_mux, mux_state, &ack), NULL);
 	zassert_equal(EC_ERROR_INVAL,
 		      tcpci_tcpm_mux_get(tcpci_usb_mux, &mux_state_get), NULL);
-	i2c_common_emul_set_read_fail_reg(i2c_emul,
-					  I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Test fail on standard output config register write */
-	i2c_common_emul_set_write_fail_reg(i2c_emul,
-					   TCPC_REG_CONFIG_STD_OUTPUT);
+	i2c_common_emul_set_write_fail_reg(emul, TCPC_REG_CONFIG_STD_OUTPUT);
 	zassert_equal(EC_ERROR_INVAL,
 		      tcpci_tcpm_mux_set(tcpci_usb_mux, mux_state, &ack), NULL);
-	i2c_common_emul_set_write_fail_reg(i2c_emul,
-					   I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Set initial value for STD output register. Chosen arbitrary. */
 	initial_val = TCPC_REG_CONFIG_STD_OUTPUT_AUDIO_CONN_N |
