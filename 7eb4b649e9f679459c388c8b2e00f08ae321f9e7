@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0db6c5e8_7bb29c3b",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-16T22:38:35Z",
+      "side": 1,
+      "message": "How about `CONFIG_HAS_32BIT_LONG` or `CONFIG_LONG_IS_32BIT`? `USE` makes it sound like we\u0027re somehow forcing the size of `long`. \n\nAlternatively, given Evan\u0027s description that this is purely to prevent cherry-picking `printf` formatting changes that would cause problems in old branches, it may be best to choose a less generic name. i.e., purely targeted to the issue we\u0027re working around. Something like `CONFIG_PRINTF_DISABLE_LONG_WORKAROUND` or `CONFIG_PRINTF_HANDLE_LONG_CORRECTLY`.",
+      "range": {
+        "startLine": 228,
+        "startChar": 20,
+        "endLine": 228,
+        "endChar": 41
+      },
+      "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b3312fc_28d24feb",
         "filename": "test/printf.c",
         "patchSetId": 1
@@ -59,6 +82,29 @@
         "startChar": 4,
         "endLine": 183,
         "endChar": 38
+      },
+      "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271d7b58_b514703f",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-16T22:38:35Z",
+      "side": 1,
+      "message": "I think you also need to [update config.h](https://chromium.googlesource.com/chromiumos/platform/ec/+/db857eb8d8b54dab26620b20b13f691e2be94842/include/config.h#41)",
+      "range": {
+        "startLine": 694,
+        "startChar": 0,
+        "endLine": 694,
+        "endChar": 21
       },
       "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
