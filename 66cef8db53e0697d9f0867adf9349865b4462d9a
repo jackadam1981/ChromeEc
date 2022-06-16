@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "182a0fbb_83d274f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-16T01:08:57Z",
+      "side": 1,
+      "message": "can you add b:235896474?",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f032bd4_8d2c6ae0",
         "filename": "zephyr/shim/src/console.c",
         "patchSetId": 2
