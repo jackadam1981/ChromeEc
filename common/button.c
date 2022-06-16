@@ -78,6 +78,9 @@ static int raw_button_pressed(const struct button_config *button)
 			button_is_adc_detected(button->gpio)) {
 			physical_value =
 				adc_to_physical_value(button->gpio);
+		} else if (button_is_navkey_detected(button->gpio)) {
+			physical_value =
+				navkey_to_physical_value(button->gpio);
 		} else {
 			physical_value = (!!gpio_get_level(button->gpio) ==
 				!!(button->flags & BUTTON_FLAG_ACTIVE_HIGH));
@@ -833,6 +836,20 @@ const struct button_config buttons[BUTTON_COUNT] = {
 #else
 struct button_config buttons[BUTTON_COUNT] = {
 #endif
+	[BUTTON_BRIGHTNESS_UP] = {
+		.name = "Brightness Up",
+		.type = KEYBOARD_BUTTON_BRIGHTNESS_UP,
+		.gpio = GPIO_BRIGHTNESS_UP_L,
+		.debounce_us = BUTTON_DEBOUNCE_US,
+		.flags = 0,
+	},
+	[BUTTON_BRIGHTNESS_DOWN] = {
+		.name = "Brightness Down",
+		.type = KEYBOARD_BUTTON_BRIGHTNESS_DOWN,
+		.gpio = GPIO_BRIGHTNESS_DOWN_L,
+		.debounce_us = BUTTON_DEBOUNCE_US,
+		.flags = 0,
+	},
 #ifdef CONFIG_VOLUME_BUTTONS
 	[BUTTON_VOLUME_UP] = {
 		.name = "Volume Up",

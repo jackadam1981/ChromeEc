@@ -74,6 +74,9 @@ GPIO(CPU_C10_GATE_L,                 PIN(6, 7), GPIO_INPUT)
 GPIO(EC_PCH_PWR_BTN_ODL,             PIN(C, 1), GPIO_ODR_HIGH)
 GPIO(GSC_EC_RECOVERY_BTN_OD,         PIN(2, 2), GPIO_INPUT)
 
+/* Scaler */
+GPIO(EC_OSD_INT_ODL,             PIN(8, 6), GPIO_INPUT)
+
 /* NFC */
 /* TODO(b/194068530): Enable NFC */
 GPIO(NFC_COIL_ACT_L,                 PIN(D, 4), GPIO_INPUT)
@@ -94,8 +97,8 @@ GPIO(HDMI_CEC_OUT,                   PIN(D, 3), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
 GPIO(HDMI_CEC_PULL_UP,               PIN(C, 2), GPIO_OUT_HIGH)
 
 /* I2C SCL/SDA */
-GPIO(EC_I2C_QI_SCL,                  PIN(3, 3), GPIO_INPUT)
-GPIO(EC_I2C_QI_SDA,                  PIN(3, 6), GPIO_INPUT)
+GPIO(EC_I2C_SCALER_SCL,                  PIN(3, 3), GPIO_INPUT)
+GPIO(EC_I2C_SCALER_SDA,                  PIN(3, 6), GPIO_INPUT)
 GPIO(EC_I2C_MISC_SCL_R,              PIN(B, 3), GPIO_INPUT)
 GPIO(EC_I2C_MISC_SDA_R,              PIN(B, 2), GPIO_INPUT)
 GPIO(EC_I2C_DP_SCL,                  PIN(B, 5), GPIO_INPUT)
@@ -169,6 +172,15 @@ ALTERNATE(PIN_MASK(3, 0x10), 0, MODULE_ADC, 0)               /* GPIO34/PS2_DAT2/
 ALTERNATE(PIN_MASK(4, 0x38), 0, MODULE_ADC, 0)               /* GPIO45/ADC0, GPIO44/ADC1, GPIO43/ADC2 */
 ALTERNATE(PIN_MASK(E, 0x02), 0, MODULE_ADC, 0)               /* GPIOE1/ADC7 */
 
+/*
+ * Gaelin doesn't have these physical pins coming to the EC but uses other
+ * logic.
+*/
+UNIMPLEMENTED(VOLDN_BTN_ODL)
+UNIMPLEMENTED(VOLUP_BTN_ODL)
+UNIMPLEMENTED(BRIGHTNESSDN_BTN_ODL)
+UNIMPLEMENTED(BRIGHTNESSUP_BTN_ODL)
+
 /* Unused Pins */
 UNUSED(PIN(D, 6))       /* GPOD6/CR_SOUT3/SHDF_ESPI_L */
 UNUSED(PIN(3, 2))       /* GPO32/TRIS_L */
@@ -177,7 +189,6 @@ UNUSED(PIN(6, 6))       /* GPIO66 */
 UNUSED(PIN(8, 1))       /* GPIO81/PECI_DATA */
 UNUSED(PIN(5, 6))       /* GPIO56/CLKRUN# */
 UNUSED(PIN(9, 7))       /* GPIO97 */
-UNUSED(PIN(8, 6))       /* GPIO86/TXD/CR_SOUT2 */
 UNUSED(PIN(1, 3))       /* KSO06/GPO13/GP_SEL# */
 UNUSED(PIN(1, 2))       /* KSO07/GPO12/JEN# */
 UNUSED(PIN(0, 6))       /* KSO11/GPIO06/P80_CLK */

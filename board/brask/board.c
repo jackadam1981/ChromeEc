@@ -28,6 +28,12 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
+#define NAVKEY_VOL_UP_MASK     BIT(0)
+#define NAVKEY_VOL_DOWN_MASK   BIT(1)
+#define NAVKEY_BRIGHTNESS_UP_MASK   BIT(2)
+#define NAVKEY_BRIGHTNESS_DOWN_MASK   BIT(3)
+static uint8_t new_navkey_state;
+
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
 
@@ -563,3 +569,68 @@ static void power_monitor(void)
 	}
 	hook_call_deferred(&power_monitor_data, delay);
 }
+
+int navkey_to_physical_value(enum gpio_signal gpio)
+{
+	if (gpio == GPIO_VOLUME_UP_L)
+		return !!(new_navkey_state & NAVKEY_VOL_UP_MASK);
+	else if (gpio == GPIO_VOLUME_DOWN_L)
+		return !!(new_navkey_state & NAVKEY_VOL_DOWN_MASK);
+	else if (gpio == GPIO_BRIGHTNESS_UP_L)
+		return !!(new_navkey_state & NAVKEY_BRIGHTNESS_UP_MASK);
+	else if (gpio == GPIO_BRIGHTNESS_DOWN_L)
+		return !!(new_navkey_state & NAVKEY_BRIGHTNESS_DOWN_MASK);
+
+	CPRINTS("Not a volume/brightness up or down key");
+	return 0;
+}
+
+int button_is_navkey_detected(enum gpio_signal gpio)
+{
+	return (gpio == GPIO_VOLUME_DOWN_L) || (gpio == GPIO_VOLUME_UP_L)
+	|| (gpio == GPIO_BRIGHTNESS_DOWN_L) || (gpio == GPIO_BRIGHTNESS_UP_L);
+}
+
+static void navkey_press_check(void)
+{
+	static uint8_t old_navkey_state;
+	uint8_t navkey_state_change;
+	int navkey;
+
+	if (gpio_get_level(GPIO_KAVKEY_INT_L) == 0) {
+		navkey = 0;
+		i2c_read8(I2C_PORT_SCALER, SCALER_I2C_ADDR_FLAGS,
+			SCALER_I2C_REG_FLAGS, &navkey);
+		if (navkey == 1) {
+			/* volume-up is pressed */
+			new_navkey_state = NAVKEY_VOL_UP_MASK;
+		} else if (navkey == 2) {
+			/* volume-down is pressed */
+			new_navkey_state = NAVKEY_VOL_DOWN_MASK;
+		} else if (navkey == 4) {
+			/* brightness-up is pressed*/
+			new_navkey_state = NAVKEY_BRIGHTNESS_UP_MASK;
+		} else if (navkey == 8) {
+			/* brightness-down is pressed */
+			new_navkey_state = NAVKEY_BRIGHTNESS_DOWN_MASK;
+		} else {
+			new_navkey_state = 0;
+		}
+	} else {
+		new_navkey_state = 0;
+	}
+	if (new_navkey_state != old_navkey_state) {
+		navkey_state_change = old_navkey_state ^ new_navkey_state;
+		if (navkey_state_change & NAVKEY_VOL_UP_MASK)
+			button_interrupt(GPIO_VOLUME_UP_L);
+		if (navkey_state_change & NAVKEY_VOL_DOWN_MASK)
+			button_interrupt(GPIO_VOLUME_DOWN_L);
+		if (navkey_state_change & NAVKEY_BRIGHTNESS_UP_MASK)
+			button_interrupt(GPIO_BRIGHTNESS_UP_L);
+		if (navkey_state_change & NAVKEY_BRIGHTNESS_DOWN_MASK)
+			button_interrupt(GPIO_BRIGHTNESS_DOWN_L);
+
+		old_navkey_state = new_navkey_state;
+	}
+}
+DECLARE_HOOK(HOOK_TICK, navkey_press_check, HOOK_PRIO_DEFAULT);

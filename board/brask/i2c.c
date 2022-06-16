@@ -52,11 +52,11 @@ const struct i2c_port_t i2c_ports[] = {
 	},
 	{
 		/* I2C5 */
-		.name = "wireless_charger",
-		.port = I2C_PORT_QI,
+		.name = "scaler",
+		.port = I2C_PORT_SCALER,
 		.kbps = 400,
-		.scl = GPIO_EC_I2C_QI_SCL,
-		.sda = GPIO_EC_I2C_QI_SDA,
+		.scl = GPIO_EC_I2C_SCALER_SCL,
+		.sda = GPIO_EC_I2C_SCALER_SDA,
 	},
 	{
 		/* I2C6 */
