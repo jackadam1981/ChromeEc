@@ -46,6 +46,30 @@
       },
       "revId": "b1f39a820b75187d405a89769b0e5310e1c1e5c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507f16cc_e3969bc7",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-16T00:08:37Z",
+      "side": 1,
+      "message": "I think this description should not mention too much about the implementation detail. The implementation detail is encapsulated in the charger task and other modules (like this LED policy) access the state/flag through APIs.\n\nThis extra flag property contains a flag returned from the `charge_get_flags()`. The charge_flag is well defined in the `charge_state.h`\n\n```\n/* Charge state flags */ \n/* Forcing idle state */ \n#define CHARGE_FLAG_FORCE_IDLE BIT(0)\n```\n\nSo the DTS property respects the same definition, like 2 bits: matching the flag set and matching the flag cleared:\n * CHARGE_FLAG_FORCE_IDLE_SET\n * CHARGE_FLAG_FORCE_IDLE_CLEARED",
+      "parentUuid": "51e20e2c_9e7ae8b3",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "b1f39a820b75187d405a89769b0e5310e1c1e5c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
