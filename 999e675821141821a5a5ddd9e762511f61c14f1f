@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ded2d6_5ca7121d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-16T10:40:24Z",
+      "side": 1,
+      "message": "also mention this is only triggered when the daughterboard\nis not detected.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 33
+      },
+      "revId": "999e675821141821a5a5ddd9e762511f61c14f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "171d7251_422b1926",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-16T10:40:24Z",
+      "side": 1,
+      "message": "THERMAL_FAN_MISSING or some other name that indicates this\nis really intended for the no-fan case.",
+      "range": {
+        "startLine": 361,
+        "startChar": 8,
+        "endLine": 361,
+        "endChar": 19
+      },
+      "revId": "999e675821141821a5a5ddd9e762511f61c14f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
