@@ -27,13 +27,13 @@
 void test_set_chipset_to_s0(void)
 {
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	const struct device *battery_gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_BATT_PRES_ODL_PATH, gpios));
 
 	printk("%s: Forcing power on\n", __func__);
-	emul = sbat_emul_get_ptr(BATTERY_ORD);
-	bat = sbat_emul_get_bat_data(emul);
+
+	bat = emul->data;
 
 	/*
 	 * Make sure that battery is in good condition to
