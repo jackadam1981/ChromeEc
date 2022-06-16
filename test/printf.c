@@ -180,13 +180,21 @@ test_static int test_vsnprintf_int(void)
 	T(expect_success("5E",        "%X",     0X5E));
 
 	/*
-	 * %l is deprecated on 32-bit systems (see crbug.com/984041), but is
-	 * is still functional on 64-bit systems.
+	 * %l is functional on 64-bit systems but is not supported on 32-bit
+	 * systems (see crbug.com/984041) unless explicitly enabled via
+	 * configuration. Presently, only Bloonchipper and Dartmonkey boards
+	 * have enabled this configuration.
 	 */
 	if (sizeof(long) == sizeof(uint32_t)) {
-		T(expect_success(err_str,     "%lx",    0x7b));
-		T(expect_success(err_str,     "%08lu",  0x7b));
-		T(expect_success("13ERROR",   "%d%lu", 13, 14));
+		if (IS_ENABLED(CONFIG_PRINTF_LONG_IS_32BITS)) {
+			T(expect_success("7b",     "%lx",    0x7b));
+			T(expect_success("00000123",     "%08lu",  0x7b));
+			T(expect_success("1314",   "%d%lu", 13, 14));
+		} else {
+			T(expect_success(err_str,     "%lx",    0x7b));
+			T(expect_success(err_str,     "%08lu",  0x7b));
+			T(expect_success("13ERROR",   "%d%lu", 13, 14));
+		}
 	} else {
 		T(expect_success("7b",        "%lx",    0x7b));
 		T(expect_success("00000123",  "%08lu",  123));
@@ -293,6 +301,17 @@ test_static int test_vsnprintf_combined(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_printf_long32_enabled(void)
+{
+	bool use_l32 = IS_ENABLED(CONFIG_PRINTF_LONG_IS_32BITS);
+
+	if (IS_ENABLED(BOARD_BLOONCHIPPER) || IS_ENABLED(BOARD_DARTMONKEY))
+		TEST_ASSERT(use_l32);
+	else
+		TEST_ASSERT(!use_l32);
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -305,6 +324,7 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_vsnprintf_timestamps);
 	RUN_TEST(test_vsnprintf_hexdump);
 	RUN_TEST(test_vsnprintf_combined);
+	RUN_TEST(test_printf_long32_enabled);
 
 	test_print_result();
 }

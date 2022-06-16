@@ -225,7 +225,9 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 
 			/*
 			 * Handle length:
-			 * %l - DEPRECATED (see below)
+			 * %l - supports 64-bit longs, 32-bit longs are
+			 *      supported with a config flag, see comment
+			 *      below for more details
 			 * %ll - long long
 			 * %z - size_t
 			 */
@@ -240,9 +242,12 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 				}
 
 				/*
-				 * %l on 32-bit systems is deliberately
-				 * deprecated. It was originally used as
-				 * shorthand for 64-bit values. When
+				 * The CONFIG_PRINTF_LONG_IS_32BITS flag is
+				 * required to enable the %l flag on systems
+				 * where it would signify a 32-bit value.
+				 * Otherwise, %l on 32-bit systems is
+				 * deliberately deprecated. It was originally
+				 * used as shorthand for 64-bit values. When
 				 * compile-time printf format checking was
 				 * enabled, it had to be cleaned up to be
 				 * sizeof(long), which is 32 bits on today's
@@ -251,7 +256,8 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 				 * cherry-picked into an old firmware branch.
 				 * See crbug.com/984041 for more context.
 				 */
-				if (!(flags & PF_64BIT)) {
+				if (!IS_ENABLED(CONFIG_PRINTF_LONG_IS_32BITS)
+				    && !(flags & PF_64BIT)) {
 					format = error_str;
 					continue;
 				}

@@ -3627,6 +3627,15 @@
 #undef CONFIG_PRINTF_LEGACY_LI_FORMAT
 
 /*
+ * Allow the use of the "long" printf length modifier ('l') to be in 32-bit
+ * systems along with any supported conversion specifiers. Note that this
+ * differs from  CONFIG_PRINTF_LEGACY_LI_FORMAT in that the 'i' format is still
+ * not supported by printf and this config will only take effect if sizeof(long)
+ * == sizeof(uint32_t).
+ */
+#undef CONFIG_PRINTF_LONG_IS_32BITS
+
+/*
  * On x86 systems, define this option if the CPU_PROCHOT signal is active low.
  * This setting also applies to monitoring the PROCHOT input if provided by
  * the board.
