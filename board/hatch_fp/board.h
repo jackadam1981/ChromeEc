@@ -238,6 +238,7 @@
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_WP_ACTIVE_HIGH
 #define CONFIG_PANIC_STRIP_GPR
+#define CONFIG_PRINTF_DISABLE_32BIT_LONG_WORKAROUND
 
 /*
  * Bloonchipper FPMCU RO has RV32I core panic data structure in their panic
