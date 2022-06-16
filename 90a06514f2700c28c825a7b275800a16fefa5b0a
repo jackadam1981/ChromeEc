@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88f44e16_284b2f92",
+        "filename": "driver/usb_mux/ps8743.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-16T02:48:14Z",
+      "side": 1,
+      "message": "We should support this for both RESUME_INIT and RESUME hooks.\n\nYou can guard this by CONFIG macros:\n\n```\n  #ifdef CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK\n  DECLARE_HOOK(HOOK_CHIPSET_RESUME_INIT, ps8743_resume, HOOK_PRIO_DEFAULT);\n  #else\n  DECLARE_HOOK(HOOK_CHIPSET_RESUME, ps8743_resume, HOOK_PRIO_DEFAULT);\n  #endif",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 73
+      },
+      "revId": "90a06514f2700c28c825a7b275800a16fefa5b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cf30ee2_b2e086a7",
         "filename": "driver/usb_mux/ps8743.c",
         "patchSetId": 4
