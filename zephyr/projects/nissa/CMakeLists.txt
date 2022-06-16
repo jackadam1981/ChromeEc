@@ -49,3 +49,12 @@ if(DEFINED CONFIG_BOARD_PUJJO)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/pujjo/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "src/pujjo/charger.c")
 endif()
+if(DEFINED CONFIG_BOARD_JOXER)
+	project(joxer)
+	zephyr_library_sources(
+			"src/led.c"
+			"src/joxer/keyboard.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/joxer/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "src/joxer/charger.c")
+endif()
