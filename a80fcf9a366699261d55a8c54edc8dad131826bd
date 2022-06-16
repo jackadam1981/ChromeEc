@@ -105,6 +105,24 @@
       "parentUuid": "2b8391d5_63546ee5",
       "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537295e4_032acd83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-06-16T05:33:39Z",
+      "side": 1,
+      "message": "Thanks for bringing this point.\nAgree there can be a race condition.\n\nPlease let me know your thoughts on below. \n\nAdd an intentional delay when k_timer_remaining_ticks() returns zero,\nthis is to ensure we give some time for kernel to update the timer status if it has expired.\nAfter a delay, read the timer status k_timer_status_get(\u0026s5_inactive_timer) to check if the timer is expired/not started and make decision accordingly.\n\n      Ex: pseudo code:\n\n                        else if (k_timer_remaining_ticks(\n                                                \u0026s5_inactive_timer) \u003d\u003d 0)\n                        {\n                                k_msleep(1);\n                                if (k_timer_status_get(\u0026s5_inactive_timer) \u003d\u003d 0)\n                                       k_timer_start(\u0026s5_inactive_timer,\n                                                K_SECONDS(AP_PWRSEQ_DT_VALUE(\n                                                        s5_inactivity_timeout)),\n                                                K_NO_WAIT);\n                                else\n                                        return SYS_POWER_STATE_S5G3;\n                        }\n\n\nOR\nMaintain a static global bool variable like \"s5_timer_start_status\" and set this to \"true\" once timer has started. Later in S5 state just keep checking the timer status to determine its expiry.\nOnce the system state transits to the S5G3/S5S4 clear the static variable.\n\n   Ex: pseudo code:\n\n                        else if (s5_timer_start_status \u003d\u003d false)\n                        {\n                                s5_timer_start_status \u003d true.\n                                    k_timer_start(\u0026s5_inactive_timer,\n                                                K_SECONDS(AP_PWRSEQ_DT_VALUE(\n                                                        s5_inactivity_timeout)),\n                                                K_NO_WAIT);\n                        }",
+      "parentUuid": "c080e907_ed153906",
+      "revId": "a80fcf9a366699261d55a8c54edc8dad131826bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
