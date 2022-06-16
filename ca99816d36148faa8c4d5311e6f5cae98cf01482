@@ -16,6 +16,52 @@
       "message": "add zhuohao",
       "revId": "ca99816d36148faa8c4d5311e6f5cae98cf01482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c5d632_8c74ff8e",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-16T15:35:52Z",
+      "side": 1,
+      "message": "I would suggest to split this to two button event. ie. BUTTON_BRIGHTNESS_UP and BUTTON_BRIGHTNESS_DOWN",
+      "range": {
+        "startLine": 836,
+        "startChar": 2,
+        "endLine": 836,
+        "endChar": 15
+      },
+      "revId": "ca99816d36148faa8c4d5311e6f5cae98cf01482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe7594d_35d882ab",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-16T15:35:52Z",
+      "side": 1,
+      "message": "I think you should move the i2c_read to the button.c instead of putting here to read the key event. You can refer to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2431310 to add the button read in the board layer.\n\nIn this function, you can just handle the Brightness up/down event.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "ca99816d36148faa8c4d5311e6f5cae98cf01482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
