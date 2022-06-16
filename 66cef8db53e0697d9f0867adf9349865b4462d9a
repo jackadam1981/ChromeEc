@@ -99,6 +99,24 @@
       "parentUuid": "611675aa_a0c5089b",
       "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "818a6a87_577e9668",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-06-16T05:33:59Z",
+      "side": 1,
+      "message": "I posted my comment in b:235896474. Let\u0027s discuss the solution there as the UI is more fancy and easier to discuss.",
+      "parentUuid": "83745961_a2c988da",
+      "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
