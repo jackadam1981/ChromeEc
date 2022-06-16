@@ -22,6 +22,30 @@
       },
       "revId": "17b1518201af2af0699ac267d4fd38befe18df3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb68635_a6e88537",
+        "filename": "board/lantis/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-16T01:57:12Z",
+      "side": 1,
+      "message": "No, scancode at 2,7 doesn\u0027t need to set.\nBecause landrid UK and US keyboard share the same matrix(ANSI), there is no key-45(2,7) on it.",
+      "parentUuid": "61ac3205_08f9faab",
+      "range": {
+        "startLine": 542,
+        "startChar": 26,
+        "endLine": 542,
+        "endChar": 49
+      },
+      "revId": "17b1518201af2af0699ac267d4fd38befe18df3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
