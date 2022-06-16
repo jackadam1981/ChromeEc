@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79749af1_320fbfdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-06-16T02:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "182a0fbb_83d274f7",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f032bd4_8d2c6ae0",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-15T16:26:10Z",
       "side": 1,
       "message": "shell_stopped is essentially a cached copy of ..-\u003ectx-\u003estate, and is more correct, since it gets set without waiting for the shell to asynchronously stop.\nThe issue I think is that shell_stopped is not set true at start time.\nA better fix may be to rename shell_stopped to shell_running (so the initial state is false), and then invert the logic where shell_stopped is used i.e\nWhere it is currently set to true, set it false (and vice versa), and the check\nbecomes !shell_running.\n\nI think this is a clearer fix.",
+      "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611675aa_a0c5089b",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-06-16T02:29:11Z",
+      "side": 1,
+      "message": "The question is that the shell_stopped (or shell_running) is updated in uart_shell_start/uart_shell_stop functions.\nNote that these two function are called currently only in efs2.c.\nIt means that the shell_stopped (or shell_running) may not synchronize with the \nshell_uart_dev-\u003ectx-\u003estate if:\n1. CONFIG_PLATFORM_EC_VBOOT_EFS2\u003dn\n2. CONFIG_PLATFORM_EC_VBOOT_EFS2\u003dy, and\na. sysjump to RW  (EFS2 will immediately [return](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/vboot/efs2.c;l\u003d262) if image is already RW\nb. sysjump from RW to RO (EFS2 will immediately [return](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/vboot/efs2.c;l\u003d274) if EC_RESET_FLAG_STAY_IN_RO is set",
+      "parentUuid": "6f032bd4_8d2c6ae0",
       "revId": "66cef8db53e0697d9f0867adf9349865b4462d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
