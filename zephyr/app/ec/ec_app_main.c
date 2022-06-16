@@ -11,6 +11,7 @@
 #include "ap_power/ap_pwrseq.h"
 #include "button.h"
 #include "chipset.h"
+#include "cros_board_info.h"
 #include "ec_tasks.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
@@ -69,6 +70,12 @@ void ec_app_main(void)
 		 * For RW, it returns immediately.
 		 */
 		vboot_main();
+	}
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_EEPROM_CBI_WP) &&
+	    system_is_locked()) {
+		/* EC_CBI_WP should have been latched since WP enable. */
+		cbi_latch_eeprom_wp();
 	}
 
 	/* Call init hooks before main tasks start */
