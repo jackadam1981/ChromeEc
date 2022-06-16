@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ba8a23_62dfbcf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-06-16T09:46:39Z",
+      "side": 1,
+      "message": "* For reviewer\u0027s information, there are some discussions in b/234688239#comment15 for GPIO deviations from EC side to sub-board.\n* If this CL is just to make the initial version of pujjo without really addressing the deviation then I would be also good for this patch. But noted that we need to address these deviation in next CL chains and there should be a deviation table for the reference; otherwise reviewers are hard to follow.",
+      "revId": "c71b213ebdbc145290f9568e44055775451f66c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
