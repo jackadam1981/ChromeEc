@@ -46,6 +46,30 @@
       },
       "revId": "217d33c9206054b0b22ae62754224f7a277f7545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2299aa_419985f1",
+        "filename": "zephyr/projects/intelrvp/adlrvp/adlrvp_npcx/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-16T17:40:56Z",
+      "side": 1,
+      "message": "The redundant data is error prone and easy for the user to mis-configure.\n\nI\u0027ve opened b/236274003 to discuss removing `next_mux` from the other constant data.",
+      "parentUuid": "aeaa7475_913858f1",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 4
+      },
+      "revId": "217d33c9206054b0b22ae62754224f7a277f7545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
