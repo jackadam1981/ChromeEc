@@ -5,18 +5,20 @@
 
 #define DT_DRV_COMPAT cros_ln9310_emul
 
+#include <errno.h>
 #include <zephyr/device.h>
 #include <zephyr/devicetree/gpio.h>
+#include <zephyr/drivers/emul.h>
+#include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
-#include <zephyr/drivers/emul.h>
-#include <errno.h>
 #include <zephyr/sys/__assert.h>
 
 #include "driver/ln9310.h"
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_ln9310.h"
+#include "hooks.h"
 #include "i2c.h"
 
 #include <zephyr/logging/log.h>
@@ -465,11 +467,33 @@ static int ln9310_emul_access_reg(struct i2c_emul *emul, int reg, int bytes,
 	return reg;
 }
 
+static void ln9310_emul_enable_switchback_irq_deferred(void)
+{
+	/* Initially switchbach is not enabled */
+	static bool enabled;
+	/* Pin is edge triggered */
+	enabled = !enabled;
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_src_vph_pwr_pg), enabled);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_mb_power_good), enabled);
+}
+DECLARE_DEFERRED(ln9310_emul_enable_switchback_irq_deferred);
+
+static void ln9310_emul_enable_switchback_interrupt(const struct device *port,
+						    struct gpio_callback *cb,
+						    gpio_port_pins_t pins)
+{
+	hook_call_deferred(&ln9310_emul_enable_switchback_irq_deferred_data, 0);
+}
+
+static struct gpio_callback enable_callback;
+
 static int emul_ln9310_init(const struct emul *emul,
 			    const struct device *parent)
 {
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
 	struct ln9310_emul_data *data = emul->data;
+	const struct gpio_dt_spec *switchcap_on =
+		GPIO_DT_FROM_NODELABEL(gpio_switchcap_on);
 
 	data->common.emul.api = &i2c_common_emul_api;
 	data->common.emul.addr = cfg->addr;
@@ -477,6 +501,12 @@ static int emul_ln9310_init(const struct emul *emul,
 	data->common.i2c = parent;
 	data->common.cfg = cfg;
 	i2c_common_emul_init(&data->common);
+
+	gpio_init_callback(&enable_callback,
+			   &ln9310_emul_enable_switchback_interrupt,
+			   BIT(switchcap_on->pin));
+	gpio_add_callback(switchcap_on->port, &enable_callback);
+	gpio_pin_interrupt_configure_dt(switchcap_on, GPIO_INT_EDGE_BOTH);
 
 	singleton = emul;
 
