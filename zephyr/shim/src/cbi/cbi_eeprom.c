@@ -35,7 +35,10 @@ static int eeprom_is_write_protected(void)
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_BYPASS_CBI_EEPROM_WP_CHECK))
 		return 0;
 
-	return write_protect_is_asserted();
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_EEPROM_CBI_WP))
+		return gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_cbi_wp));
+	else
+		return write_protect_is_asserted();
 }
 
 static int eeprom_store(uint8_t *cbi)
