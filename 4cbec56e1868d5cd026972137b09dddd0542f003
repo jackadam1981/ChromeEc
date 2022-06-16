@@ -22,6 +22,30 @@
       },
       "revId": "4cbec56e1868d5cd026972137b09dddd0542f003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55473b03_9836890c",
+        "filename": "driver/usb_mux/ps8743.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-06-16T01:43:19Z",
+      "side": 1,
+      "message": "That is very help, restructure the logic and added enum to store the status.",
+      "parentUuid": "0d9136a3_b3c04281",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "4cbec56e1868d5cd026972137b09dddd0542f003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
