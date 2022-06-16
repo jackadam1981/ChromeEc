@@ -137,6 +137,12 @@ static void kblight_resume(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_resume, HOOK_PRIO_DEFAULT);
+
+static void kblight_shutdown(void)
+{
+	board_kblight_shutdown();
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, kblight_shutdown, HOOK_PRIO_DEFAULT);
 #endif  /* CONFIG_AP_POWER_CONTROL */
 
 #ifdef CONFIG_LID_SWITCH
