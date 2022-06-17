@@ -16,6 +16,24 @@
       "message": "Prefer that you use a fixture here instead of global state.",
       "revId": "9b2c503de84c438dd2cd42e797e7af2b2868bd61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff5faac_516efd1a",
+        "filename": "zephyr/test/drivers/src/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-17T17:00:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41bd4f13_c2f28a47",
+      "revId": "9b2c503de84c438dd2cd42e797e7af2b2868bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
