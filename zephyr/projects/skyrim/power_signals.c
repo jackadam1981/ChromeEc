@@ -4,11 +4,13 @@
  */
 
 #include "ap_power/ap_power.h"
+#include "charger.h"
 #include "chipset.h"
 #include "config.h"
 #include "gpio_signal.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "ioexpander.h"
 #include "power.h"
 #include "power/amd_x86.h"
@@ -77,6 +79,9 @@ static void baseboard_init(void)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_pg_groupc_s0));
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_pg_lpddr_s0));
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_pg_lpddr_s3));
+
+	/* Enable thermtrip interrupt */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_soc_thermtrip));
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_POST_I2C);
 
@@ -123,12 +128,29 @@ void baseboard_set_soc_pwr_pgood(enum gpio_signal unused)
 			gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_s0_pgood)));
 }
 
+static void set_ocp_power(void)
+{
+	ccprints("Setting up the OCP power hopefully");
+	if (i2c_write16(chg_chips[0].i2c_port, 0x20, 0x76, 0x65A))
+		ccprints("Bah, didn't set the OCP power");
+
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_soc_pcore_ocp));
+}
+DECLARE_DEFERRED(set_ocp_power);
+
 void baseboard_s0_pgood(enum gpio_signal signal)
 {
 	baseboard_set_soc_pwr_pgood(signal);
 
 	/* Chain off power signal interrupt handler for PG_PCORE_S0_R_OD */
 	power_signal_interrupt(signal);
+
+	/* Enable/disable Pcore OCP interrupt, which is powered in S0 */
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_s0_pgood)))
+		hook_call_deferred(&set_ocp_power_data, 100 * MSEC);
+	else
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_soc_pcore_ocp));
 }
 
 /* Note: signal parameter unused */
@@ -192,4 +214,16 @@ void baseboard_set_en_pwr_s3(enum gpio_signal signal)
 
 	/* Chain off the normal power signal interrupt handler */
 	power_signal_interrupt(signal);
+}
+
+void baseboard_soc_thermtrip(enum gpio_signal signal)
+{
+	ccprints("SoC thermtrip reported, shutting down");
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_THERMAL);
+}
+
+void baseboard_soc_pcore_ocp(enum gpio_signal signal)
+{
+	ccprints("SoC Pcore OCP reported, shutting down");
+	// chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
 }
