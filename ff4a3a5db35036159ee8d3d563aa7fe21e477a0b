@@ -56,6 +56,30 @@
       },
       "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "256b9ab8_f09de30f",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2022-06-17T18:17:33Z",
+      "side": 1,
+      "message": "Conditionalizing it on the boards ties the board configuration to the testing. In some sense this is a Good Thing because the test will now catch if anybody accidentally turns this config off on these boards. On the other hand, it creates a small maintenance burden, as new boards that want to enable this config will now have to add themselves to this list. Really the board list is an imperfect proxy for \"who uses this precompiled library\".\n\nI\u0027ll defer to the FPMCU folks, I don\u0027t feel strongly either way. Having the test catch if the configuration changes seems mildly useful, and if there aren\u0027t a ton of new FPMCU boards coming maybe the maintenance cost is negligible?",
+      "parentUuid": "a0a5a49b_d50b71c0",
+      "range": {
+        "startLine": 189,
+        "startChar": 17,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
