@@ -200,6 +200,30 @@
       },
       "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9410d5_b7ad2ae7",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-17T22:40:13Z",
+      "side": 1,
+      "message": "Latest version adds a test named `test_printf_long32_enabled` ensures that only dartmonkey and bloonchipper enable long32 formatting.",
+      "parentUuid": "9390c726_d04483bd",
+      "range": {
+        "startLine": 189,
+        "startChar": 17,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
