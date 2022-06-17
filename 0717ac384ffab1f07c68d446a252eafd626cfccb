@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160df620_1dc3ab5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T15:56:25Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "0717ac384ffab1f07c68d446a252eafd626cfccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d511a86_41241a4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T15:56:25Z",
+      "side": 1,
+      "message": "How about \u0027read-only transaction\u0027?",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "0717ac384ffab1f07c68d446a252eafd626cfccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2d0f006_17ec4380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T15:56:25Z",
+      "side": 1,
+      "message": "Only nits and a request for CL split.",
+      "revId": "0717ac384ffab1f07c68d446a252eafd626cfccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6137e0_3b4a6d13",
+        "filename": "chip/stm32/spi_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T15:56:25Z",
+      "side": 1,
+      "message": "Can you please put this in a separate CL?",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 2
+      },
+      "revId": "0717ac384ffab1f07c68d446a252eafd626cfccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
