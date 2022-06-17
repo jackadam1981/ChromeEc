@@ -33,6 +33,24 @@
       "message": "Keith, do you know how to reproduce this error locally?\n\nluci.chromeos.cq/firmware-zephyr-cov-cq JOB_FAILED https://cr-buildbucket.appspot.com/build/8811081294579081297",
       "revId": "2f51eee2be39bc15dcf7e69e1853812c5105929b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8674b003_3b1506cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T21:04:35Z",
+      "side": 1,
+      "message": "zephyr/firmware_builder.py --metrics /tmp/tmpb1k9vctu --code-coverage build\n\npasses locally.",
+      "parentUuid": "06e1f838_3af0554c",
+      "revId": "2f51eee2be39bc15dcf7e69e1853812c5105929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
