@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d49d87_1e447610",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-17T19:26:56Z",
+      "side": 1,
+      "message": "Do these need to be guarded by a CONFIG_ option? Won\u0027t the linker optimize out unused functions (I believe LTO is enabled on EC now)",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 33
+      },
+      "revId": "7572a33c1aaee7bd76fb54f2fd433052f4d37be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
