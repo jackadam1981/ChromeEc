@@ -164,6 +164,30 @@
       },
       "revId": "02f3449adccc28f8a60d042bb38296a359303d53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3dc940d_1bc99507",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T22:23:26Z",
+      "side": 1,
+      "message": "Please ignore my comment. crrev/c/3712029 has a flaw as well. I can\u0027t think of a better solution.",
+      "parentUuid": "4d83ecab_e93e7d3c",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "02f3449adccc28f8a60d042bb38296a359303d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
