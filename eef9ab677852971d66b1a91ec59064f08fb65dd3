@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ceeb365_add202ed",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-17T22:03:44Z",
+      "side": 1,
+      "message": "Ahh, sorry for the thrashing, I\u0027m only seeing this convo now.\n\nRight, and further style improvement is to remove the ${} from variables in a math block. See crrev.com/c/3693868/comment/9811c06a_c64f5772 .",
+      "parentUuid": "f8ec05bf_115a5561",
+      "range": {
+        "startLine": 644,
+        "startChar": 22,
+        "endLine": 644,
+        "endChar": 26
+      },
+      "revId": "eef9ab677852971d66b1a91ec59064f08fb65dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8570f322_d10eaab2",
