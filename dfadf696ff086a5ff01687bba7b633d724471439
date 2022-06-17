@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94dc782f_a1a00f09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-17T00:32:57Z",
+      "side": 1,
+      "message": "Hi Diana and Abe, can you take a look at this CL to add USB PD power button support to the EC?\n\nA remote power button like the one docks may have should be using multiple interfaces. Both USB PD and HID, because they are each limited in some way. \n\nFor example, we cannot trigger suspend from EC. So a remote power button needs to use HID to suspend a device. Similarly, we cannot wake a device with HID if it is in G3. So the remote power button needs to use USB PD to wake the device from that state.\n\nI\u0027ll write a 1-2 pager proposing how remote power button behavior should be divided across HID and USB PD interface, but to begin this CL will only enable wake from S5/G3 over USB PD. If we decide to expand the capabilities of the power button over USB PD, I\u0027ll add it in a followup CL. We should only need to change handle_pd_button_release in usb_common.c",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
