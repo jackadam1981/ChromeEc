@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e5feabc_c105d5f9",
+        "filename": "power/power_status.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-17T19:30:46Z",
+      "side": 1,
+      "message": "Why does this even need to be in 50mW increments? What are the odds of finding a charger that is 14.05 W? I think just Watts would be enough here and would also mean it could fit in 8 bits, saving a bit of precious EC ACPI memory mapped space.",
+      "parentUuid": "3deca087_b2c6204d",
+      "range": {
+        "startLine": 47,
+        "startChar": 18,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "28791ea6fa6a7779a814c6423ebc9f0848c69a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40933b2f_fb67de5d",
         "filename": "power/power_status.c",
         "patchSetId": 5
