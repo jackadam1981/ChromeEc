@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd4fca6_fb17c66f",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-17T17:54:21Z",
+      "side": 1,
+      "message": "As noted above, `CONFIG_PRINTF_DISABLE_32BIT_LONG_WORKAROUND` makes this too long. Need a better name.",
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40eb79b1_9a30feb2",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3627,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-17T17:54:21Z",
+      "side": 1,
+      "message": "I\u0027m worried about `CONFIG_PRINTF_LEGACY_LI_FORMAT` and this update being so similar. maybe it\u0027s worth just wrapping the two together but then I worry about unintended consequences on other devices. Thoughts?",
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a5a49b_d50b71c0",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-17T17:54:21Z",
+      "side": 1,
+      "message": "I went back and forth on whether the check should be on the config flag (`CONFIG_PRINTF_DISABLE_32BIT_LONG_WORKAROUND`) or the devices in which that flag should be enabled. I feel like the board names is a better option but what do you think?",
+      "range": {
+        "startLine": 189,
+        "startChar": 17,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
