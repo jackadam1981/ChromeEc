@@ -14,7 +14,7 @@ __stdlib_compat int strcasecmp(const char *s1, const char *s2)
 	int diff;
 
 	do {
-		diff = tolower(*s1) - tolower(*s2);
+		diff = tolower((int)*s1) - tolower((int)*s2);
 		if (diff)
 			return diff;
 	} while (*(s1++) && *(s2++));
@@ -115,14 +115,14 @@ __stdlib_compat int parse_bool(const char *s, int *dest)
 {
 	/* off, disable, false, no */
 	if (!strcasecmp(s, "off") || !strncasecmp(s, "dis", 3) ||
-	    tolower(*s) == 'f' || tolower(*s) == 'n') {
+	    tolower((int)*s) == 'f' || tolower((int)*s) == 'n') {
 		*dest = 0;
 		return 1;
 	}
 
 	/* on, enable, true, yes */
 	if (!strcasecmp(s, "on") || !strncasecmp(s, "ena", 3) ||
-	    tolower(*s) == 't' || tolower(*s) == 'y') {
+	    tolower((int)*s) == 't' || tolower((int)*s) == 'y') {
 		*dest = 1;
 		return 1;
 	}
