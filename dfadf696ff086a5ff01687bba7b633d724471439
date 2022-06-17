@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "787f3199_3c0ce195",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-17T16:26:22Z",
+      "side": 1,
+      "message": "Just as a side question, what have you typically been seeing for power button press times in testing?",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8514e2_52126e77",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2784,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-17T16:26:22Z",
+      "side": 1,
+      "message": "Should this be gated on extended message support?  Alert itself isn\u0027t an extended message, though obviously the status messages are related to it",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6090b61c_aa97b15e",
@@ -31,6 +65,41 @@
       "writtenOn": "2022-06-17T16:05:38Z",
       "side": 1,
       "message": "It\u0027s possible for the port partner to incorrectly send an ADO_POWER_BUTTON_RELEASE before the ADO_POWER_BUTTON_PRESS or any combination of the two messages.\n\nI think this should be converted into a state machine where you have:\n\nIdle Alert State --\u003e Press Alert State --\u003e Release Alert State\n\n1) Transition from IDLE_STATE to PRESS_STATE on ADO_POWER_BUTTON_PRESS reception\n2) Transition from PRESS_STATE to IDLE_STATE on a timeout (ADO_POWER_BUTTON_RELEASE never received)\n3) Transition from PRESS_STATE to RELEASE_STATE on ADO_POWER_BUTTON_RELEASE reception\n\nPerform the short and long press times in RELEASE_STATE and return to IDLE_STATE",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0f279b_0fa32efd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4455,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-17T16:26:22Z",
+      "side": 1,
+      "message": "And I\u0027d propose that state machine live in the DPM portion of the code, just for a clean policy separation from the PE",
+      "parentUuid": "6090b61c_aa97b15e",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a93928c_2e831c31",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4972,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-17T16:26:22Z",
+      "side": 1,
+      "message": "Units on 4000?  I\u0027m assuming ms?",
       "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
