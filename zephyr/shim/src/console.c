@@ -17,6 +17,7 @@
 #include <zephyr/zephyr.h>
 #include <zephyr/logging/log.h>
 
+#include "builtin/stdio.h"
 #include "console.h"
 #include "printf.h"
 #include "task.h"
