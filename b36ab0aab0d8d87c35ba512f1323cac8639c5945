@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef64ae22_3851a3d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-17T19:56:13Z",
+      "side": 1,
+      "message": "Current status: Code in set_vbus that should iterate the VBUS callback section, but no linker script to define the start and end and link the nodes. Consequently, it will compile but not link, and I don\u0027t know if it will work after it links.",
+      "revId": "b36ab0aab0d8d87c35ba512f1323cac8639c5945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
