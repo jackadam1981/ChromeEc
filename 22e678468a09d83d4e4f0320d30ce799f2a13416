@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af74a14_61f86dd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-17T21:40:59Z",
+      "side": 1,
+      "message": "The Zephyr CQ errors refer to a gpio.c file, which has not been touched by this CL.  I assume it is a fluke, trying again...",
+      "revId": "22e678468a09d83d4e4f0320d30ce799f2a13416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
