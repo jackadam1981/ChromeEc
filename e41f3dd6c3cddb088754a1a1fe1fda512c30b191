@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a91f6b_5636effd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T22:21:20Z",
+      "side": 1,
+      "message": "Actually, I\u0027m not sure about this. gpio_get_flags could be called by a board without CONFIG_GPIO_GET_EXTENDED. And callers wouldn\u0027t know whether it\u0027s getting default flags or runtime flags.",
+      "revId": "e41f3dd6c3cddb088754a1a1fe1fda512c30b191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
