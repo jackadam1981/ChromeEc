@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e091577_b10c8c64",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T16:04:20Z",
+      "side": 1,
+      "message": "Looks like IS_ENABLED(CONFIG_GPIO_GET_EXTENDED) should work?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "02f3449adccc28f8a60d042bb38296a359303d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afddc208_5da1f9e8",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T16:04:20Z",
+      "side": 1,
+      "message": "nit: it\u0027s kind of obvious in IMHO.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "02f3449adccc28f8a60d042bb38296a359303d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af09ff2f_a83de9d0",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-17T16:04:20Z",
+      "side": 1,
+      "message": "Do you still need this case? The new case covers it.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "02f3449adccc28f8a60d042bb38296a359303d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
