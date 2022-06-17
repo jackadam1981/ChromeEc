@@ -280,6 +280,7 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 		 */
 		if (svdm_dp_get_mux_mode(port) == USB_PD_MUX_DP_ENABLED) {
 			usb_mux_set_safe_mode(port);
+			host_set_single_event(EC_HOST_EVENT_USB_MUX);
 			return MSG_SETUP_MUX_WAIT;
 		}
 		/* Fall through if no mux set is needed */
