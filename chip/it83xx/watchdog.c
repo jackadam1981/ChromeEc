@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "cpu.h"
+#include "console.h"
 #include "hooks.h"
 #include "hwtimer_chip.h"
 #include "panic.h"
@@ -93,6 +94,16 @@ void watchdog_reload(void)
 	}
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
+
+void watchdog_reload_on_sysjump(void)
+{
+	/* Restart (tickle) watchdog timer. */
+	IT83XX_ETWD_EWDKEYR = ITE83XX_WATCHDOG_MAGIC_WORD;
+
+	ccprintf("---touching watchdog---\n");
+	cflush();
+}
+DECLARE_HOOK(HOOK_SYSJUMP, watchdog_reload_on_sysjump, HOOK_PRIO_LAST);
 
 int watchdog_init(void)
 {
