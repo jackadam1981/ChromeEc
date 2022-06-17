@@ -240,6 +240,16 @@ gpio_flags_t convert_to_zephyr_flags(int ec_flags)
 	return zephyr_flags;
 }
 
+int gpio_get_flags(enum gpio_signal signal)
+{
+	const struct gpio_info *g = gpio_list + signal;
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_GPIO_GET_EXTENDED))
+		return gpio_get_flags_by_mask(g->port, g->mask);
+	else
+		return gpio_get_default_flags(signal);
+}
+
 int gpio_get_default_flags(enum gpio_signal signal)
 {
 	if (!gpio_is_implemented(signal))
