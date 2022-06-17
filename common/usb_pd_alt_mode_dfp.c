@@ -939,6 +939,8 @@ __overridable void svdm_dp_post_config(int port)
 	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT,
 		    polarity_rm_dts(pd_get_polarity(port)));
 
+	host_set_single_event(EC_HOST_EVENT_USB_MUX);
+
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
