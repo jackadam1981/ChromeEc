@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6585ff3f_83fb3eef",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-17T21:31:00Z",
+      "side": 1,
+      "message": "We could but I generally prefer the `if (IS_ENABLED` syntax because it ensures the code inside the condition gets checked on all compilations. It\u0027s probably not a bit deal in this case but it definitely helps maintainability. \n\nIf we can\u0027t find a short enough name then maybe we can just accept that this one line violates the rule. 😊",
+      "parentUuid": "029c9163_420323f6",
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40eb79b1_9a30feb2",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Interesting!\n\nI looked at the list of devices where this is used and I see only FPMCU and nucleo boards:\n\n\n```\nbaseboard/nucleo-h743zi/base-board.h\n95:#define CONFIG_PRINTF_LEGACY_LI_FORMAT\n\nbaseboard/nucleo-f412zg/base-board.h\n167:#define CONFIG_PRINTF_LEGACY_LI_FORMAT\n\nbuild/bloonchipper/.config\n176:CONFIG_PRINTF_LEGACY_LI_FORMAT\u003dy\n\ninclude/printf.h\n54: *   - \u0027i\u0027 - signed integer if CONFIG_PRINTF_LEGACY_LI_FORMAT is set (ignore l)\n\ninclude/config.h\n3622:#undef CONFIG_PRINTF_LEGACY_LI_FORMAT\n\nboard/hatch_fp/board.h\n233:#define CONFIG_PRINTF_LEGACY_LI_FORMAT\n\nboard/nocturne_fp/board.h\n109:#define CONFIG_PRINTF_LEGACY_LI_FORMAT\n\ncommon/printf.c\n342:#ifdef CONFIG_PRINTF_LEGACY_LI_FORMAT\n347:#endif /* CONFIG_PRINTF_LEGACY_LI_FORMAT */\n\nutil/config_allowed.txt\n720:CONFIG_PRINTF_LEGACY_LI_FORMAT\n```\n\nIf we squashed the two flags we would need to rename the existing one, right?",
       "parentUuid": "40eb79b1_9a30feb2",
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599c9de4_0241c900",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3627,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-17T21:31:00Z",
+      "side": 1,
+      "message": "Yeah, a good option might be to replace `CONFIG_PRINTF_LEGACY_LI_FORMAT` and `CONFIG_PRINTF_DISABLE_32BIT_LONG_WORKAROUND` with a single flag named `CONFIG_PRINTF_ENABLE_32BIT_LONG_FMT` (or something similar). Thoughts?",
+      "parentUuid": "2b71d1c0_3acc1bbf",
       "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +168,30 @@
       "side": 1,
       "message": "Would there be any benefit in using the config flag (`CONFIG_PRINTF_DISABLE_32BIT_LONG_WORKAROUND`) here then add a separate test to ensure that our FPMCU boards set the flag?\n\nIf someone looks at `printf` code in the future it might not be obvious why the implementation uses a conditional logic based on `CONFIG_PRINTF_DISABLE_32BIT_LONG_WORKAROUND` while the tests use board names.\n\nOr maybe my suggestions is only making things more complicated 😊",
       "parentUuid": "256b9ab8_f09de30f",
+      "range": {
+        "startLine": 189,
+        "startChar": 17,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9390c726_d04483bd",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-17T21:31:00Z",
+      "side": 1,
+      "message": "I hadn\u0027t considered that option before but I think that is a more direct and obvious way to accomplish what I was trying to accomplish.",
+      "parentUuid": "3ab0568a_ebba5286",
       "range": {
         "startLine": 189,
         "startChar": 17,
