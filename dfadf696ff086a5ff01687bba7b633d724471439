@@ -16,6 +16,23 @@
       "message": "Hi Diana and Abe, can you take a look at this CL to add USB PD power button support to the EC?\n\nA remote power button like the one docks may have should be using multiple interfaces. Both USB PD and HID, because they are each limited in some way. \n\nFor example, we cannot trigger suspend from EC. So a remote power button needs to use HID to suspend a device. Similarly, we cannot wake a device with HID if it is in G3. So the remote power button needs to use USB PD to wake the device from that state.\n\nI\u0027ll write a 1-2 pager proposing how remote power button behavior should be divided across HID and USB PD interface, but to begin this CL will only enable wake from S5/G3 over USB PD. If we decide to expand the capabilities of the power button over USB PD, I\u0027ll add it in a followup CL. We should only need to change handle_pd_button_release in usb_common.c",
       "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6090b61c_aa97b15e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4455,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-06-17T16:05:38Z",
+      "side": 1,
+      "message": "It\u0027s possible for the port partner to incorrectly send an ADO_POWER_BUTTON_RELEASE before the ADO_POWER_BUTTON_PRESS or any combination of the two messages.\n\nI think this should be converted into a state machine where you have:\n\nIdle Alert State --\u003e Press Alert State --\u003e Release Alert State\n\n1) Transition from IDLE_STATE to PRESS_STATE on ADO_POWER_BUTTON_PRESS reception\n2) Transition from PRESS_STATE to IDLE_STATE on a timeout (ADO_POWER_BUTTON_RELEASE never received)\n3) Transition from PRESS_STATE to RELEASE_STATE on ADO_POWER_BUTTON_RELEASE reception\n\nPerform the short and long press times in RELEASE_STATE and return to IDLE_STATE",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
