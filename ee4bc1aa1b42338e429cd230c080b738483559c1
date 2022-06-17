@@ -355,6 +355,30 @@
       },
       "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a19b26ef_f4493294",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-17T22:39:30Z",
+      "side": 1,
+      "message": "\u003e if its already specified that user space should wait 5 secs ( fwupd in this case) \n\u003e why would fwupd try with out wait ,then collect -ebusy and retry again after 5 secs ?\n\u003e \n\nThat would be a question for campello@.",
+      "parentUuid": "fbdc7742_cde43dd0",
+      "range": {
+        "startLine": 322,
+        "startChar": 9,
+        "endLine": 322,
+        "endChar": 11
+      },
+      "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
