@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e997ce5_c542c167",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-17T21:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160df620_1dc3ab5e",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "0717ac384ffab1f07c68d446a252eafd626cfccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d511a86_41241a4d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-17T15:56:25Z",
       "side": 1,
       "message": "How about \u0027read-only transaction\u0027?",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "0717ac384ffab1f07c68d446a252eafd626cfccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb635839_6052590a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-17T21:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d511a86_41241a4d",
       "range": {
         "startLine": 14,
         "startChar": 21,
@@ -77,6 +125,30 @@
       "writtenOn": "2022-06-17T15:56:25Z",
       "side": 1,
       "message": "Can you please put this in a separate CL?",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 2
+      },
+      "revId": "0717ac384ffab1f07c68d446a252eafd626cfccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8ab2234_bd27f355",
+        "filename": "chip/stm32/spi_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-17T21:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6137e0_3b4a6d13",
       "range": {
         "startLine": 388,
         "startChar": 0,
