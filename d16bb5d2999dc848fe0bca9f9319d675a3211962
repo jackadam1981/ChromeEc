@@ -33,6 +33,52 @@
       "message": "Invite Andrew/Peter to review, thanks!",
       "revId": "d16bb5d2999dc848fe0bca9f9319d675a3211962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ddf20d_0fcfebb5",
+        "filename": "zephyr/projects/nissa/src/xivu/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-17T20:54:58Z",
+      "side": 1,
+      "message": "xivu",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 32
+      },
+      "revId": "d16bb5d2999dc848fe0bca9f9319d675a3211962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d24d7205_ccc77264",
+        "filename": "zephyr/projects/nissa/xivu_overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-17T20:54:58Z",
+      "side": 1,
+      "message": "xivu",
+      "range": {
+        "startLine": 248,
+        "startChar": 12,
+        "endLine": 248,
+        "endChar": 19
+      },
+      "revId": "d16bb5d2999dc848fe0bca9f9319d675a3211962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
