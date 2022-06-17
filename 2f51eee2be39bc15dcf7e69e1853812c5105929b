@@ -68,6 +68,23 @@
       "message": "There was an update to llvm/clang that breaks the Zephyr builds: b/236404972.  If you update your chroot, you\u0027ll see the same failure.",
       "revId": "2f51eee2be39bc15dcf7e69e1853812c5105929b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a145a4_6e40bae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-17T22:00:27Z",
+      "side": 1,
+      "message": "CL:3712360 fixes the llvm issue.",
+      "revId": "2f51eee2be39bc15dcf7e69e1853812c5105929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
