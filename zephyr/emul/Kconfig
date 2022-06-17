@@ -80,6 +80,11 @@ config EMUL_CROS_FLASH
 	help
 	  This option enables the flash emulator for testing.
 
+config EMUL_VBUS
+	bool "Emulated VBUS wire for connection to port hardware emulators"
+	help
+	  TODO: Provide help text and select config when appropriate
+
 rsource "Kconfig.ln9310"
 rsource "Kconfig.lis2dw12"
 rsource "Kconfig.i2c_mock"

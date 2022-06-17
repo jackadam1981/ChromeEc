@@ -21,6 +21,7 @@ zephyr_library_sources_ifdef(CONFIG_EMUL_SMART_BATTERY	emul_smart_battery.c)
 zephyr_library_sources_ifdef(CONFIG_EMUL_SN5S330	emul_sn5s330.c)
 zephyr_library_sources_ifdef(CONFIG_EMUL_PPC_SYV682X	emul_syv682x.c)
 zephyr_library_sources_ifdef(CONFIG_EMUL_TCS3400	emul_tcs3400.c)
+zephyr_library_sources_ifdef(CONFIG_EMUL_VBUS		emul_vbus.c)
 zephyr_library_sources_ifdef(CONFIG_I2C_MOCK		i2c_mock.c)
 
 cros_ec_library_include_directories_ifdef(CONFIG_EMUL_CROS_FLASH include)

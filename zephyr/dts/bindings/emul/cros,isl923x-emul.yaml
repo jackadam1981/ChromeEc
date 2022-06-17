@@ -15,3 +15,9 @@ properties:
      required: false
      description:
        Reference to battery emulator.
+   vbus:
+     type: phandle
+     description:
+       Emulated VBUS wire connected to this device.
+     required: false
+

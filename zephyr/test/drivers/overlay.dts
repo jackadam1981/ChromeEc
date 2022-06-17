@@ -45,6 +45,11 @@
 		};
 	};
 
+	vbus1: vbus_emul {
+		compatible = "cros,vbus_emul";
+		status = "okay";
+	};
+
 	/*
 	 * Keep these GPIOs in pin order.
 	 * If you need to add one, make sure you increase
@@ -879,6 +884,7 @@
 		reg = <0x9>;
 		label = "ISL923X_EMUL";
 		battery = <&battery>;
+		vbus = <&vbus1>;
 	};
 
 	tcpci_emul: tcpci_emul@82 {

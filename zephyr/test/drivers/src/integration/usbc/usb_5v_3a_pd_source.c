@@ -8,6 +8,7 @@
 #include "battery_smart.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
+#include "emul/emul_vbus.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "hooks.h"
 #include "test/drivers/stubs.h"
@@ -58,6 +59,7 @@ static void usb_attach_5v_3a_pd_source_before(void *data)
 
 	connect_source_to_port(&fixture->source_5v_3a, &fixture->src_ext, 1,
 			       fixture->tcpci_emul, fixture->charger_emul);
+	vbus_emul_set(NULL, PDO_FIXED_GET_VOLT(fixture->src_ext.pdo[1]), 3000);
 }
 
 static void usb_attach_5v_3a_pd_source_after(void *data)
@@ -65,6 +67,7 @@ static void usb_attach_5v_3a_pd_source_after(void *data)
 	struct usb_attach_5v_3a_pd_source_fixture *fixture = data;
 
 	disconnect_source_from_port(fixture->tcpci_emul, fixture->charger_emul);
+	vbus_emul_set(NULL, 0, 0);
 }
 
 ZTEST_SUITE(usb_attach_5v_3a_pd_source, drivers_predicate_post_main,

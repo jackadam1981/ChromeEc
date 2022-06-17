@@ -18,6 +18,7 @@
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
+#include "emul/emul_vbus.h"
 #include "i2c.h"
 
 #include <zephyr/logging/log.h>
@@ -421,7 +422,16 @@ static int emul_isl923x_init(const struct emul *emul,
 	return i2c_emul_register(parent, emul->dev_label, &data->common.emul);
 }
 
-#define INIT_ISL923X(n)                                                        \
+void emul_isl923x_vbus_changed(const struct emul *vbus_parent,
+			       const struct emul *dev_emul, int old_voltage_mv,
+			       int old_current_ma, int new_voltage_mv,
+			       int new_current_ma)
+{
+	/* TODO: Check vbus node and maybe old voltage */
+	isl923x_emul_set_adc_vbus(dev_emul, new_voltage_mv);
+}
+
+#define INIT_ISL923X(n)                                                          \
 	static struct isl923x_emul_data isl923x_emul_data_##n = {              \
 		.common = {                                                    \
 			.write_byte = isl923x_emul_write_byte,                 \
@@ -432,16 +442,16 @@ static int emul_isl923x_init(const struct emul *emul,
 			DT_INST_NODE_HAS_PROP(n, battery),                     \
 			(DT_DEP_ORD(DT_INST_PROP(n, battery))),                \
 			(-1)),                                                 \
-	};                                                                     \
+	}; \
 	static struct isl923x_emul_cfg isl923x_emul_cfg_##n = {                \
 	.common = {                                                            \
 		.i2c_label = DT_INST_BUS_LABEL(n),                             \
 		.dev_label = DT_INST_LABEL(n),                                 \
 		.addr = DT_INST_REG_ADDR(n),                                   \
 		},                                                             \
-	};                                                                     \
-	EMUL_DEFINE(emul_isl923x_init, DT_DRV_INST(n), &isl923x_emul_cfg_##n,  \
-		    &isl923x_emul_data_##n)
+	}; \
+	EMUL_DEFINE(emul_isl923x_init, DT_DRV_INST(n), &isl923x_emul_cfg_##n,    \
+		    &isl923x_emul_data_##n);
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_ISL923X)
 
