@@ -211,6 +211,30 @@
       },
       "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d175dbd_89010bba",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-17T16:38:12Z",
+      "side": 1,
+      "message": "Regarding #2 - you say if UPDATE_DISCONNECT fails, the AP won\u0027t send UPDATE_RESUME_PD.  However, this CL is getting added because the AP does something unexpected (fails to wait 5 seconds before online request).\n\nIf the EC sets the state to RETIMER_ONLINE_REQUESTED, but the AP still sends UPDATE_RESUME_PD, the state will get changed to RETIMER_ONLINE without successfully completing the `usb_mux_set(USB_NONE)`.\n\nThe UPDATE_SUSPEND_PD command also has the potential to change the state from RETIMER_ONLINE_REQUESTED before the a call to `usb_mux_set(USB_NONE)` by the deferred task.\n\nThe RETIMER_ONLINE_REQUESTED deferred call is guaranteed to change the state back to RETIMER_ONLINE, even if the deferred `usb_mux_set()` fails.  \n\nI think blocking all host operations while the state is RETIMER_ONLINE_REQUESTED is a safer approach.\n\nI would like someone from the host side to comment on this as well.",
+      "parentUuid": "eb4e31a3_c5d861a9",
+      "range": {
+        "startLine": 322,
+        "startChar": 9,
+        "endLine": 322,
+        "endChar": 11
+      },
+      "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

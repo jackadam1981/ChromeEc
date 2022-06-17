@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3326574d_bdddf6ea",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-17T16:38:12Z",
+      "side": 1,
+      "message": "Add a comment that the last_result_mux_get() will automatically change the port state to RETIMER_ONLINE if the usb_mux_set() call is successful.",
+      "revId": "e229f942ac8c7225974e5fb8efe0ba3ade4086cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
