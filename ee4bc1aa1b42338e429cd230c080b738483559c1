@@ -307,6 +307,30 @@
       },
       "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d68e300_6bb8fff6",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-17T22:11:24Z",
+      "side": 1,
+      "message": "\u003e So if \"disconnect USB mux\" is failed, no more request from host/FWUPD.\n\nWhat about AP resets? Are there chip hooks which try to resume PD on a port if it was earlier suspended (I think there are, but I may be misremembering).\n\nRegardless, any request that comes in while the timeout has not elapsed should just return -EBUSY to the kernel. That solves the issue of raciness, and also lets fwupd actually recover and retry (with EIO is just gives up).",
+      "parentUuid": "a5a26f51_e21ae6a0",
+      "range": {
+        "startLine": 322,
+        "startChar": 9,
+        "endLine": 322,
+        "endChar": 11
+      },
+      "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
