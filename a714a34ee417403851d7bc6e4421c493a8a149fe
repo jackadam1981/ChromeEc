@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25efa2b2_ac9bdb90",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-17T20:30:36Z",
+      "side": 1,
+      "message": "You should check that the incoming VID is DP before responding for these VDMs and ignore ones that aren\u0027t DP. (I think. Check the spec for what PD 2.0 does with an unsupported Enter Mode.)",
+      "revId": "a714a34ee417403851d7bc6e4421c493a8a149fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be93de87_627aaed2",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-17T20:30:36Z",
+      "side": 1,
+      "message": "Is this related to DP entry?",
+      "revId": "a714a34ee417403851d7bc6e4421c493a8a149fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a075e6_5e419c19",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-17T20:30:36Z",
+      "side": 1,
+      "message": "Nit: At this point, it might be worth making a separate function to populate the VDM responses.",
+      "revId": "a714a34ee417403851d7bc6e4421c493a8a149fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
