@@ -95,7 +95,7 @@
 			reg = <3>;
 			tcpc {
 				compatible = "cypress,ccgxxf";
-				port = <&typec_aic2>;
+				port = <&typec_aic2_2>;
 				i2c-addr-flags = "CCGXXF_I2C_ADDR2_FLAGS";
 			};
 			usb-muxes = <&usb_c3_hb_retimer &virtual_mux_c3>;
