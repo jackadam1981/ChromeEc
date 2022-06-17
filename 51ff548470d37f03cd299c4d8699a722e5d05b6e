@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c7c00e_463444d3",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-17T21:45:31Z",
+      "side": 1,
+      "message": "nit; as you planned to adding TCPC as pair, remove this now",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24b6b09_5473c589",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-17T21:45:31Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d34c3f5_e95accd2",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-17T21:45:31Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815650de_0977e033",
+        "filename": "zephyr/shim/src/usb_muxes.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-17T21:45:31Z",
+      "side": 1,
+      "message": "nit: submit a separate CL",
+      "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
