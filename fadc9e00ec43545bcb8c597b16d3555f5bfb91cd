@@ -16,6 +16,24 @@
       "message": "We\u0027re planning to add a similar byte: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3698047/. I assume yours is different from Nvidia\u0027s D-Notify level.",
       "revId": "fadc9e00ec43545bcb8c597b16d3555f5bfb91cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453baf0b_b5830ad5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-17T15:36:56Z",
+      "side": 1,
+      "message": "Hi Dai,\nThese Cls are related to Power \u0026 battery participants and corresponding changes are taken care in Coreboot too now. This is the base EC CL.\nIn this relation chain, I have used below addresses both at EC and CB.\nRelated EC CLs- 0xa6 (CL:3545778), 0xa7(CL:3545780), battery participant related addresses(CL:3639523). If it is just a single address change by you, could you please use 0xb3? or would you prefer me to change the addresses for these cLs  at EC \u0026 CB? Let me know.\n\n/* Power Participant related components */\n#define EC_MEMMAP_PWR_SRC          0xa6 /* Power source (8-bit) */  \n#define EC_MEMMAP_PWR_ARTG         0xa7 /* Adapter rating (mW) (16 bits) */\n/* Battery Participant related components */\n#define EC_MEMMAP_BATT_PMAX        0xa9 /* Maximum peak power (mW)-16 bits */\n#define EC_MEMMAP_BATT_PBSS        0xab /* Sustained peak power (mW)-16 bits */\n#define EC_MEMMAP_BATT_CMPP        0xad /* Discharge current capability \n\t\t\t\t\t   (mA)-16 bits*/\n#define EC_MEMMAP_BATT_RBHF        0xaf /* High frequency impedance\n\t\t\t\t\t   (mohm)-16 bits */\n#define EC_MEMMAP_BATT_VBNL        0xb1 /* Instantaneous No load Voltage\n\t\t\t\t\t   (mV)-16 bits */\n/* Unused 0xb3 - 0xdf */",
+      "parentUuid": "24de02b5_8b909488",
+      "revId": "fadc9e00ec43545bcb8c597b16d3555f5bfb91cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
