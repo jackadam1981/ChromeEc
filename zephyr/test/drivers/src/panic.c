@@ -20,10 +20,31 @@
 #include "test/drivers/stubs.h"
 #include "test/drivers/test_state.h"
 
+struct panic_data saved_pdata;
+
+static void panic_before(void *state)
+{
+	struct panic_data *pdata = get_panic_data_write();
+
+	ARG_UNUSED(state);
+
+	saved_pdata = *pdata;
+}
+
+static void panic_after(void *state)
+{
+	struct panic_data *pdata = get_panic_data_write();
+
+	ARG_UNUSED(state);
+
+	*pdata = saved_pdata;
+}
+
 /**
  * @brief Test Suite: Verifies panic functionality.
  */
-ZTEST_SUITE(panic, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
+ZTEST_SUITE(panic, drivers_predicate_post_main, NULL, panic_before, panic_after,
+	    NULL);
 
 /**
  * @brief TestPurpose: Verify panic set/get reason.
