@@ -22,6 +22,121 @@
       },
       "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f1114e_c61be877",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-17T21:28:57Z",
+      "side": 1,
+      "message": "should be quoted as per style guide\n\n```sh\nreadonly GPIO_CHIP\u003d\"${gpiochip}\"\n```\n\n---\n\nQuote strings containing vars - https://google.github.io/styleguide/shellguide.html#quoting",
+      "range": {
+        "startLine": 635,
+        "startChar": 21,
+        "endLine": 635,
+        "endChar": 32
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b733ce_bfc534e6",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-17T21:28:57Z",
+      "side": 1,
+      "message": "Probably should rm this extra space",
+      "range": {
+        "startLine": 636,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 2
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9811c06a_c64f5772",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-17T21:28:57Z",
+      "side": 1,
+      "message": "This should probably be\n\n```sh\nreadonly GPIO_NRST\u003d$(( gpionrst - offset ))\n```\n\nVars are auto expanded in math block thingy and Chrome OS style guide says to use this feature.\n\n---\n\nQuote strings containing vars - https://google.github.io/styleguide/shellguide.html#quoting\n\nArithmetic \nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/shell.md#arithmetic",
+      "range": {
+        "startLine": 644,
+        "startChar": 21,
+        "endLine": 644,
+        "endChar": 51
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960bf8e8_851a4674",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-17T21:28:57Z",
+      "side": 1,
+      "message": "same arithmetic correction",
+      "range": {
+        "startLine": 647,
+        "startChar": 22,
+        "endLine": 647,
+        "endChar": 52
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86228383_2196e9d4",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-17T21:28:57Z",
+      "side": 1,
+      "message": "same arithmetic correction",
+      "range": {
+        "startLine": 650,
+        "startChar": 22,
+        "endLine": 650,
+        "endChar": 53
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

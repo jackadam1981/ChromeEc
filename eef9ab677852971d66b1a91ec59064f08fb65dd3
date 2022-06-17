@@ -127,6 +127,24 @@
       "message": "Outside the scope of this CL but, given the fact that this is an 826 line shell script, can/should we consider replacing it with a Python script or standalone app? go/deshell-chromeos",
       "revId": "eef9ab677852971d66b1a91ec59064f08fb65dd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05854513_9a97c913",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-17T21:28:57Z",
+      "side": 1,
+      "message": "Although I love shell scripting more than anything on earth, yes.\n\nI tried to make the first move with crrev.com/c/3060744 and even pushed the script into test images with crrev.com/c/3064302.\nWe probably need to stat replacing references to `flash_fp_mcu` with `fptool flash`.",
+      "parentUuid": "8570f322_d10eaab2",
+      "revId": "eef9ab677852971d66b1a91ec59064f08fb65dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
