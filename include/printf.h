@@ -11,14 +11,8 @@
 #include <stdarg.h> /* For va_list */
 #include <stdbool.h>
 #include <stddef.h> /* For size_t */
-#include "common.h"
-
-/* The declaration of snprintf is changed to crec_snprintf for Zephyr,
- * so include stdio.h from Zephyr.
- */
-#ifdef CONFIG_ZEPHYR
 #include <stdio.h>
-#endif
+#include "common.h"
 
 /**
  * Buffer size in bytes large enough to hold the largest possible timestamp.
@@ -69,8 +63,6 @@
  *   - '%pP' - raw pointer.
  */
 
-#ifndef HIDE_EC_STDLIB
-
 /**
  * Print formatted output to a function, like vfprintf()
  *
@@ -120,8 +112,6 @@ crec_snprintf(char *str, size_t size, const char *format, ...);
  */
 __warn_unused_result __stdlib_compat int
 crec_vsnprintf(char *str, size_t size, const char *format, va_list args);
-
-#endif /* !HIDE_EC_STDLIB */
 
 #ifdef TEST_BUILD
 /**
