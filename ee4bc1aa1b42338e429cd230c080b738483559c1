@@ -259,6 +259,30 @@
       },
       "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27fd875f_915ee3b0",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-17T21:37:05Z",
+      "side": 1,
+      "message": "Yes, we need comments from host side/FWUPD.\n\nMy understanding is the ONLINE request from host is 2-step action; 1st: requests EC disconnect USB mux; 2nd: requests EC to resume. host won\u0027t send out resume request separately. So if \"disconnect USB mux\" is failed, no more request from host/FWUPD.",
+      "parentUuid": "9cbe8f87_db719f86",
+      "range": {
+        "startLine": 322,
+        "startChar": 9,
+        "endLine": 322,
+        "endChar": 11
+      },
+      "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
