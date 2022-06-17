@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac3d0de_3be8d101",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-17T20:26:03Z",
+      "side": 1,
+      "message": "Can we pass this to ACPI firmware as Watts (and thus 8 bits)?",
+      "range": {
+        "startLine": 176,
+        "startChar": 43,
+        "endLine": 176,
+        "endChar": 61
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef82987_9c7ab8b3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-17T20:26:03Z",
+      "side": 1,
+      "message": "Can we pass this to ACPI firmware as Watts (and thus 8 bits)?",
+      "range": {
+        "startLine": 177,
+        "startChar": 8,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac992bf_ee82b980",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-17T20:26:03Z",
+      "side": 1,
+      "message": "Can we pass this to ACPI firmware as Amps (and thus 8 bits)?",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 27
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18432bc_85b6c543",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-17T20:26:03Z",
+      "side": 1,
+      "message": "Any chance we can pass this in ohms to ACPI and save some bits?",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 27
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdcb017e_547c580d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-17T20:26:03Z",
+      "side": 1,
+      "message": "I bet you can guess what I\u0027m going to suggest here 😊",
+      "range": {
+        "startLine": 182,
+        "startChar": 8,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
