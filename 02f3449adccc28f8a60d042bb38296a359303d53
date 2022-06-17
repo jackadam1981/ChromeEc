@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b80062_2ae16d04",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-17T21:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e091577_b10c8c64",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "02f3449adccc28f8a60d042bb38296a359303d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afddc208_5da1f9e8",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bea07e_b982d474",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-17T21:27:26Z",
+      "side": 1,
+      "message": "That is probably right.  I have removed the comments.",
+      "parentUuid": "afddc208_5da1f9e8",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "02f3449adccc28f8a60d042bb38296a359303d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af09ff2f_a83de9d0",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-17T16:04:20Z",
       "side": 1,
       "message": "Do you still need this case? The new case covers it.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "02f3449adccc28f8a60d042bb38296a359303d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be616c7_6786dfda",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-17T21:27:26Z",
+      "side": 1,
+      "message": "Yes, it would.  But the method gpio_get_flags() only has an implementation if CONFIG_GPIO_GET_EXTENDED is defined.",
+      "parentUuid": "af09ff2f_a83de9d0",
       "range": {
         "startLine": 81,
         "startChar": 0,
