@@ -146,6 +146,11 @@ static void setup_mp2845(void)
 			 MP2845A_I2C_ADDR_FLAGS, MP2854A_MFR_VOUT_CMPS_MAX_REG,
 			 MP2854A_MFR_LOW_PWR_SEL, MASK_CLR))
 		ccprints("Failed to send mp2845 workaround");
+
+	if (i2c_write16(chg_chips[0].i2c_port, 0x20, 0x76, 0x65A))
+		ccprints("Bah, didn't set the OCP power");
+
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_soc_pcore_ocp));
 }
 DECLARE_DEFERRED(setup_mp2845);
 
@@ -159,6 +164,9 @@ void baseboard_s0_pgood(enum gpio_signal signal)
 	/* Set up the MP2845, which is powered in S0 */
 	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_s0_pgood)))
 		hook_call_deferred(&setup_mp2845_data, 50 * MSEC);
+	else
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_soc_pcore_ocp));
 }
 
 /* Note: signal parameter unused */
@@ -228,4 +236,11 @@ void baseboard_soc_thermtrip(enum gpio_signal signal)
 {
 	ccprints("SoC thermtrip reported, shutting down");
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_THERMAL);
+}
+
+void baseboard_soc_pcore_ocp(enum gpio_signal signal)
+{
+	// Ignore if S0 pgood fell?
+	ccprints("SoC Pcore OCP reported, shutting down");
+	// chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
 }
