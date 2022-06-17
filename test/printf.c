@@ -12,6 +12,8 @@
 #include "test_util.h"
 #include "util.h"
 
+#include <builtin/stdio.h>
+
 #define INIT_VALUE 0x5E
 #define NO_BYTES_TOUCHED NULL
 
@@ -33,7 +35,8 @@ int run(int expect_ret, const char *expect, bool output_null, size_t size_limit,
 	TEST_ASSERT(expect_size <= size_limit);
 	memset(output, INIT_VALUE, sizeof(output));
 
-	rv = vsnprintf(output_null ? NULL : output, size_limit, format, args);
+	rv = crec_vsnprintf(output_null ? NULL : output, size_limit, format,
+			    args);
 	ccprintf("received='%.*s'   | ret          =%d\n", 30, output, rv);
 
 	TEST_ASSERT_ARRAY_EQ(output, expect, expect_size);
