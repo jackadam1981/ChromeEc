@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb6c3ed_76fa2a10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-17T17:16:37Z",
+      "side": 1,
+      "message": "\u003e \"Avalable\" is a possible misspelling of \"Available\".\n\nPlease fix.",
+      "parentUuid": "ce357c46_301a1b29",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "dbd0982b608e73f2bc89dddf9fbda9fed680c7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b17062_1998949f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-17T17:16:37Z",
+      "side": 1,
+      "message": "Available",
+      "range": {
+        "startLine": 1642,
+        "startChar": 35,
+        "endLine": 1642,
+        "endChar": 43
+      },
+      "revId": "dbd0982b608e73f2bc89dddf9fbda9fed680c7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
