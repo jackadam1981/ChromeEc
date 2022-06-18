@@ -31,7 +31,7 @@ test_mockable void exit_trng(void)
 {
 }
 
-test_mockable void rand_bytes(void *buffer, size_t len)
+test_mockable void trng_rand_bytes(void *buffer, size_t len)
 {
 	uint8_t *b, *end;
 
