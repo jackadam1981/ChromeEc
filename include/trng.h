@@ -31,15 +31,13 @@ void exit_trng(void);
  *
  * Not supported on all platforms.
  **/
-#ifndef HIDE_EC_STDLIB
-uint32_t rand(void);
-#endif
+uint32_t trng_rand(void);
 
 /**
  * Output len random bytes into buffer.
  *
  * Not supported on all platforms.
  **/
-void rand_bytes(void *buffer, size_t len);
+void trng_rand_bytes(void *buffer, size_t len);
 
 #endif /* __EC_INCLUDE_TRNG_H */
