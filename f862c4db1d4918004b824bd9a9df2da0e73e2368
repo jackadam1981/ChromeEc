@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "012e27e2_b489d919",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-18T00:19:21Z",
+      "side": 1,
+      "message": "So that\u0027s a good question, whether it is necessary to know whether it is a sysjump or not.  I would have to look at the legacy code as to what that does.\nMy inclination is that regardless of whether it is a sysjump or a reboot, the logic should be the same, because there are times when depthcharge will request the EC to reboot (e.g after it has updated the RW), and I guess the AP should remain in whatever state it is in already.",
+      "parentUuid": "d3830de5_fe0beb79",
+      "revId": "f862c4db1d4918004b824bd9a9df2da0e73e2368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c9d7f14_d38ae275",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-18T00:01:39Z",
       "side": 1,
       "message": "MTL doesn\u0027t have SLP_SUS. we can remove it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 34
+      },
+      "revId": "f862c4db1d4918004b824bd9a9df2da0e73e2368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05cb963c_678d90df",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_power_signals.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-18T00:19:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c9d7f14_d38ae275",
       "range": {
         "startLine": 77,
         "startChar": 3,
