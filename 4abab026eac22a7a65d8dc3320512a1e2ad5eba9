@@ -16,6 +16,24 @@
       "message": "Thanks for the split. This will allow us to blame this change (or the other) in case things go wrong.",
       "revId": "4abab026eac22a7a65d8dc3320512a1e2ad5eba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2d25fe_1252de31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-18T12:03:04Z",
+      "side": 1,
+      "message": "You are absolutely right.  Being able to selectively roll back one or the other is to everyone\u0027s benefit.",
+      "parentUuid": "aaa65d71_9c2ee312",
+      "revId": "4abab026eac22a7a65d8dc3320512a1e2ad5eba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
