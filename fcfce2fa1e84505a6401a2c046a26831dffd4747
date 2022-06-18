@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74517db7_fefd1772",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-18T02:14:09Z",
+      "side": 1,
+      "message": "this is TCPC_REG_VENDOR_ID?",
+      "range": {
+        "startLine": 391,
+        "startChar": 27,
+        "endLine": 391,
+        "endChar": 31
+      },
+      "revId": "fcfce2fa1e84505a6401a2c046a26831dffd4747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb2a143_fdd4287a",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-06-18T02:14:09Z",
+      "side": 1,
+      "message": "you can get this more reliably from\ntcpc_config[USBC_PORT_C1].\n\ni think you can also use tcpc_addr_read16_no_lpm_exit()\ninstead.",
+      "range": {
+        "startLine": 390,
+        "startChar": 16,
+        "endLine": 391,
+        "endChar": 26
+      },
+      "revId": "fcfce2fa1e84505a6401a2c046a26831dffd4747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
