@@ -402,7 +402,7 @@ static void add_entropy_deferred(void)
 
 	init_trng();
 	do {
-		rand_bytes(rand, sizeof(rand));
+		trng_rand_bytes(rand, sizeof(rand));
 		if (rollback_add_entropy(rand, sizeof(rand)) != EC_SUCCESS) {
 			add_entropy_rv = EC_RES_ERROR;
 			goto out;
