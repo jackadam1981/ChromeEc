@@ -34,6 +34,23 @@
       "parentUuid": "7af74a14_61f86dd8",
       "revId": "22e678468a09d83d4e4f0320d30ce799f2a13416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e12fdf_9f7e1877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-18T12:01:29Z",
+      "side": 1,
+      "message": "Thanks for pointing out b/236404972.  Even though it is not yet marked as resolved, I do see a submit in its history, so I am hoping that the problems have been solved.",
+      "revId": "22e678468a09d83d4e4f0320d30ce799f2a13416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
