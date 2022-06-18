@@ -473,9 +473,9 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		enc_info = (void *)fp_enc_buffer;
 		enc_info->struct_version = FP_TEMPLATE_FORMAT_VERSION;
 		init_trng();
-		rand_bytes(enc_info->nonce, FP_CONTEXT_NONCE_BYTES);
-		rand_bytes(enc_info->encryption_salt,
-			   FP_CONTEXT_ENCRYPTION_SALT_BYTES);
+		trng_rand_bytes(enc_info->nonce, FP_CONTEXT_NONCE_BYTES);
+		trng_rand_bytes(enc_info->encryption_salt,
+				FP_CONTEXT_ENCRYPTION_SALT_BYTES);
 		exit_trng();
 
 		if (fgr == template_newly_enrolled) {
@@ -486,8 +486,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			 */
 			template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 			init_trng();
-			rand_bytes(fp_positive_match_salt[fgr],
-				   FP_POSITIVE_MATCH_SALT_BYTES);
+			trng_rand_bytes(fp_positive_match_salt[fgr],
+					FP_POSITIVE_MATCH_SALT_BYTES);
 			exit_trng();
 		}
 
@@ -648,8 +648,8 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 		if (template_needs_validation_value(enc_info)) {
 			CPRINTS("fgr%d: Generating positive match salt.", idx);
 			init_trng();
-			rand_bytes(positive_match_salt,
-				   FP_POSITIVE_MATCH_SALT_BYTES);
+			trng_rand_bytes(positive_match_salt,
+					FP_POSITIVE_MATCH_SALT_BYTES);
 			exit_trng();
 		}
 		if (bytes_are_trivial(positive_match_salt,

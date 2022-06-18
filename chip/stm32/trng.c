@@ -15,7 +15,7 @@
 #include "trng.h"
 #include "util.h"
 
-uint32_t rand(void)
+uint32_t trng_rand(void)
 {
 	int tries = 300;
 	/* Wait for a valid random number */
@@ -28,10 +28,10 @@ uint32_t rand(void)
 	return STM32_RNG_DR;
 }
 
-test_mockable void rand_bytes(void *buffer, size_t len)
+test_mockable void trng_rand_bytes(void *buffer, size_t len)
 {
 	while (len) {
-		uint32_t number = rand();
+		uint32_t number = trng_rand();
 		size_t cnt = 4;
 		/* deal with the lack of alignment guarantee in the API */
 		uintptr_t align = (uintptr_t)buffer & 3;
@@ -108,7 +108,7 @@ static int command_rand(int argc, char **argv)
 	uint8_t data[32];
 
 	init_trng();
-	rand_bytes(data, sizeof(data));
+	trng_rand_bytes(data, sizeof(data));
 	exit_trng();
 
 	ccprintf("rand %ph\n", HEX_BUF(data, sizeof(data)));
@@ -131,7 +131,7 @@ static enum ec_status host_command_rand(struct host_cmd_handler_args *args)
 		return EC_RES_OVERFLOW;
 
 	init_trng();
-	rand_bytes(r->rand, num_rand_bytes);
+	trng_rand_bytes(r->rand, num_rand_bytes);
 	exit_trng();
 
 	args->response_size = num_rand_bytes;
