@@ -16,6 +16,24 @@
       "message": "My only suggestion is to swap these 2 if/else statements so that the first check is whether the timer is started or not, so that the k_timer_status_get is not executed until the timer is guaranteed to have been started.\nThe API may allow it, but it seems odd to be checking a timer when it hasn\u0027t been started (and this removes any possibility of the timer being left running from before).\nMaybe the name should be s5_inactive_tmr_running? Or _started?",
       "revId": "5506aca67d0e3de5931b1e50bb14466ed35a6124",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f98912_d23c7933",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-06-19T13:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f6419c8_51c9cafd",
+      "revId": "5506aca67d0e3de5931b1e50bb14466ed35a6124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
