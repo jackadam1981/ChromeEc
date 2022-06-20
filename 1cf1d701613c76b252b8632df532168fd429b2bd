@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ce685c_6e27991e",
+        "filename": "board/kuldax/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-06-20T02:39:20Z",
+      "side": 1,
+      "message": "update it,",
+      "parentUuid": "74814394_11a23de8",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 34
+      },
+      "revId": "1cf1d701613c76b252b8632df532168fd429b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "559c7c2a_75ae2864",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-18T01:16:40Z",
       "side": 1,
       "message": "could you sort these by pin number?",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 14
+      },
+      "revId": "1cf1d701613c76b252b8632df532168fd429b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9fc003_17eeedad",
+        "filename": "board/kuldax/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-06-20T02:39:20Z",
+      "side": 1,
+      "message": "update it",
+      "parentUuid": "559c7c2a_75ae2864",
       "range": {
         "startLine": 148,
         "startChar": 3,
