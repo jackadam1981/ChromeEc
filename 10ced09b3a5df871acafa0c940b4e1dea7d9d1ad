@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfeb0202_6d71d141",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-06-20T19:49:52Z",
+      "side": 1,
+      "message": "Tested on Volteer2 with kernel 5.4(volteer-cq/R105-14927) and kernel 5.18(volteer-kernelnext/R104-14899.0.0)\n\nTODO: confirm that kernel 5.18 is first kernel with gpio number change",
+      "revId": "10ced09b3a5df871acafa0c940b4e1dea7d9d1ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
