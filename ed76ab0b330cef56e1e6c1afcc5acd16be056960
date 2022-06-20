@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1dffd89_acb4e1d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-20T23:28:19Z",
+      "side": 1,
+      "message": "Can you provide some more detail on what this fixes and justify why it\u0027s still correct?\n\nIt seems wrong to say that signals remain at their previous state following a reset, unless this is actually supposed to represent a large shift in the understanding of VW validity.",
+      "revId": "ed76ab0b330cef56e1e6c1afcc5acd16be056960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
