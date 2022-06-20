@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472844df_d4041c6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-20T07:47:26Z",
+      "side": 1,
+      "message": "setting?",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "6772e944b039e14d479faa1d87445dcee08a2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17474d71_35642e84",
+        "filename": "board/kuldax/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-20T07:47:26Z",
+      "side": 1,
+      "message": "We only support one HDMI CEC in the EC code. Perhaps you can move these pin setting to unused.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 63
+      },
+      "revId": "6772e944b039e14d479faa1d87445dcee08a2ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
