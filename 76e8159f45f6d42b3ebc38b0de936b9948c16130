@@ -16,6 +16,24 @@
       "message": "Do we need another CL to enable EN_PP5000_USB_A0_VBUS_X in usb_a0_interrupt()?",
       "revId": "76e8159f45f6d42b3ebc38b0de936b9948c16130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2487bb19_f644234a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-06-20T09:27:45Z",
+      "side": 1,
+      "message": "no, vbus will be controlled through the `usb_charge_set_mode` call in `usb_a0_interrupt`, and `usba-port-enable-list` DT node has the correct pin defined.",
+      "parentUuid": "b5c7177c_ddb5dcb0",
+      "revId": "76e8159f45f6d42b3ebc38b0de936b9948c16130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
