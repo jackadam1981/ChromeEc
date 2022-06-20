@@ -97,6 +97,7 @@ void pwr_sm_set_state(enum power_states_ndsx new_state)
 
 void request_exit_hardoff(bool should_exit)
 {
+	LOG_DBG("Set request exit hard-off = %d", should_exit);
 	pwrseq_ctx.want_g3_exit = should_exit;
 }
 
@@ -191,6 +192,7 @@ static int common_pwr_sm_run(int state)
 	switch (state) {
 	case SYS_POWER_STATE_G3:
 		if (chipset_is_exit_hardoff()) {
+			LOG_DBG("Request to exit G3");
 			request_exit_hardoff(false);
 			/*
 			 * G3->S0 transition should happen only after the
@@ -245,6 +247,7 @@ static int common_pwr_sm_run(int state)
 		shutdown_and_notify(AP_POWER_SHUTDOWN_G3);
 		/* Notify power event before we enter G3 */
 		ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
+		request_exit_hardoff(false);
 		return SYS_POWER_STATE_G3;
 
 	case SYS_POWER_STATE_S5S4:
