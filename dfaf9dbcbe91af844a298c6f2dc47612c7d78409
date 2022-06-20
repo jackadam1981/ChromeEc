@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8e5a79_eb4a95a4",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-06-20T13:15:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76a3f9d5_8680f233",
+      "revId": "dfaf9dbcbe91af844a298c6f2dc47612c7d78409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "271d9de5_f4179b83",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-20T00:27:43Z",
       "side": 1,
       "message": "nit: `!s5_inactive_tmr_running`",
+      "range": {
+        "startLine": 233,
+        "startChar": 7,
+        "endLine": 233,
+        "endChar": 39
+      },
+      "revId": "dfaf9dbcbe91af844a298c6f2dc47612c7d78409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fca6b9_b8623b65",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-06-20T13:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "271d9de5_f4179b83",
       "range": {
         "startLine": 233,
         "startChar": 7,
