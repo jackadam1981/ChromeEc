@@ -16,6 +16,24 @@
       "message": "Can you provide some more detail on what this fixes and justify why it\u0027s still correct?\n\nIt seems wrong to say that signals remain at their previous state following a reset, unless this is actually supposed to represent a large shift in the understanding of VW validity.",
       "revId": "ed76ab0b330cef56e1e6c1afcc5acd16be056960",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db58f99_d65acdd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-20T23:55:35Z",
+      "side": 1,
+      "message": "I\u0027ve updated the bug with some more details.\nIn essence, it appears the bus assert/de-assert callbacks are not guaranteed to arrive before the signal update.\nThis is something I\u0027ll have to take up with Nuvoton, but in the meantime, the fix is to allow the signals to be updated at any time (after EC start-up).",
+      "parentUuid": "f1dffd89_acb4e1d3",
+      "revId": "ed76ab0b330cef56e1e6c1afcc5acd16be056960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
