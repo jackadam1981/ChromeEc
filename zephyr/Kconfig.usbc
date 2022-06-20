@@ -163,4 +163,30 @@ config PLATFORM_EC_USB_PD_ONLY_FIXED_PDOS
 	  Ignore all non-fixed PDOs received from a src_caps message. Enable
 	  this for boards (like servo_v4) which only support FIXED PDO types.
 
+# Define power related settings here for now to allow projects to overwrite
+# them. Ideally they would be defined in the devicetree.
+config PLATFORM_EC_PD_OPERATING_POWER_MW
+	int "PD operating power in milliwatt"
+	default 15000
+
+config PLATFORM_EC_PD_MAX_POWER_MW
+	int "PD maximum power in milliwatt"
+	default 60000
+
+config PLATFORM_EC_PD_MAX_CURRENT_MA
+	int "PD maximum current in milliampere"
+	default 3000
+
+config PLATFORM_EC_PD_MAX_VOLTAGE_MV
+	int "PD maximum voltage in millivolt"
+	default 20000
+
+config PLATFORM_EC_PD_POWER_SUPPLY_TURN_ON_DELAY
+	int "Power supply turn on delay in us"
+	default 30000
+
+config PLATFORM_EC_PD_POWER_SUPPLY_TURN_OFF_DELAY
+	int "Power supply turn off delay in us"
+	default 30000
+
 endif  # PLATFORM_EC_USBC
