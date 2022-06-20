@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a3f9d5_8680f233",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-20T00:27:43Z",
+      "side": 1,
+      "message": "We could save allocating this extra static by using `k_timer_user_data_{get,set}`, maybe setting it to either NULL or a pointer to the timer (as a convenient non-NULL value).\n\nBut maybe that\u0027s not worth sacrificing the clarity of a separate value for one byte of RAM savings.",
+      "revId": "dfaf9dbcbe91af844a298c6f2dc47612c7d78409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271d9de5_f4179b83",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-20T00:27:43Z",
+      "side": 1,
+      "message": "nit: `!s5_inactive_tmr_running`",
+      "range": {
+        "startLine": 233,
+        "startChar": 7,
+        "endLine": 233,
+        "endChar": 39
+      },
+      "revId": "dfaf9dbcbe91af844a298c6f2dc47612c7d78409",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
