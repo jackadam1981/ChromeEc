@@ -64,9 +64,11 @@ static void espi_handler(const struct device *dev,
 
 	case ESPI_BUS_RESET:
 		/*
-		 * Clear the signal valid mask.
+		 * Clear the signal valid mask if the
+		 * reset is asserted.
 		 */
-		atomic_clear(&signal_valid);
+		if (event.evt_data == 1)
+			atomic_clear(&signal_valid);
 		break;
 
 	case ESPI_BUS_EVENT_VWIRE_RECEIVED:
