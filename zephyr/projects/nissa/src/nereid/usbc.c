@@ -90,6 +90,7 @@ __override bool pd_check_vbus_level(int port, enum vbus_level level)
  * In short, this is important to making things work correctly but we don't
  * understand why.
  */
+/*
 static void board_chargers_suspend(struct ap_power_ev_callback *const cb,
 				   const struct ap_power_ev_data data)
 {
@@ -123,6 +124,7 @@ static int board_chargers_suspend_init(const struct device *unused)
 	return 0;
 }
 SYS_INIT(board_chargers_suspend_init, APPLICATION, 0);
+ */
 
 int board_set_active_charge_port(int port)
 {
