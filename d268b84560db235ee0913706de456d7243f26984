@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbfe7942_ae7fdf79",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-06-20T06:40:29Z",
+      "side": 1,
+      "message": "I will remove it. Thanks.",
+      "parentUuid": "1664fc9c_17793a7e",
+      "revId": "d268b84560db235ee0913706de456d7243f26984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8128dc63_fc40881c",
@@ -70,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b939ec_60f4499b",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-06-20T06:40:29Z",
+      "side": 1,
+      "message": "I use \"make BOARD\u003dbanshee\" and it would not impact the project. I think it is better change to CONFIG_KEYBOARD_MULTIPLE. Thanks.",
+      "parentUuid": "8128dc63_fc40881c",
+      "revId": "d268b84560db235ee0913706de456d7243f26984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4d7b559_bb011af5",
@@ -83,6 +119,24 @@
       "writtenOn": "2022-06-16T08:54:30Z",
       "side": 1,
       "message": "Why don\u0027t you use #ifndef CONFIG_KEYBOARD_MULTIPLE here?",
+      "revId": "d268b84560db235ee0913706de456d7243f26984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace7a752_1c0fe63f",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-06-20T06:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d7b559_bb011af5",
       "revId": "d268b84560db235ee0913706de456d7243f26984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
