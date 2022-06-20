@@ -13,6 +13,7 @@ static struct k_thread pwrseq_thread_data;
 static struct pwrseq_context pwrseq_ctx;
 /* S5 inactive timer*/
 K_TIMER_DEFINE(s5_inactive_timer, NULL, NULL);
+static bool request_g3_exit, extend_s5_timer;
 
 LOG_MODULE_REGISTER(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
@@ -95,14 +96,17 @@ void pwr_sm_set_state(enum power_states_ndsx new_state)
 	pwrseq_ctx.power_state = new_state;
 }
 
-void request_exit_hardoff(bool should_exit)
+void request_exit_hardoff(void)
 {
-	pwrseq_ctx.want_g3_exit = should_exit;
-}
-
-static bool chipset_is_exit_hardoff(void)
-{
-	return pwrseq_ctx.want_g3_exit;
+	LOG_DBG("Request exit hard-off");
+	request_g3_exit = true;
+	/*
+	 * If in S5, extend the timer to give the CPU more time
+	 * to respond to a power button press.
+	 */
+	if (pwr_sm_get_state() == SYS_POWER_STATE_S5) {
+		extend_s5_timer = true;
+	}
 }
 
 void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
@@ -190,8 +194,9 @@ static int common_pwr_sm_run(int state)
 {
 	switch (state) {
 	case SYS_POWER_STATE_G3:
-		if (chipset_is_exit_hardoff()) {
-			request_exit_hardoff(false);
+		if (request_g3_exit) {
+			LOG_DBG("Request to exit G3");
+			request_g3_exit = false;
 			/*
 			 * G3->S0 transition should happen only after the
 			 * user specified delay. Hence, wait until the
@@ -221,6 +226,13 @@ static int common_pwr_sm_run(int state)
 			rsmrst_pass_thru_handler();
 			if (signals_valid_and_off(IN_PCH_SLP_S5)) {
 				k_timer_stop(&s5_inactive_timer);
+				/*
+				 * A request to exit hard off may have
+				 * been set, so clear it to avoid
+				 * responding it next time the AP
+				 * goes to G3.
+				 */
+				request_g3_exit = false;
 				return SYS_POWER_STATE_S5S4;
 			}
 		}
@@ -231,13 +243,15 @@ static int common_pwr_sm_run(int state)
 			if (k_timer_status_get(&s5_inactive_timer) > 0)
 				/* Timer is expired */
 				return SYS_POWER_STATE_S5G3;
-			else if (k_timer_remaining_get(
-						&s5_inactive_timer) == 0)
+			else if (extend_s5_timer || k_timer_remaining_get(
+						&s5_inactive_timer) == 0) {
 				/* Timer is not started or stopped */
+				extend_s5_timer = false;
 				k_timer_start(&s5_inactive_timer,
 					K_SECONDS(AP_PWRSEQ_DT_VALUE(
 						s5_inactivity_timeout)),
 					K_NO_WAIT);
+			}
 		}
 		break;
 
@@ -535,7 +549,7 @@ void ap_pwrseq_task_start(void)
 
 static void init_pwr_seq_state(void)
 {
-	request_exit_hardoff(false);
+	request_g3_exit = false;
 	/*
 	 * The state of the CPU needs to be determined now
 	 * so that init routines can check the state of
