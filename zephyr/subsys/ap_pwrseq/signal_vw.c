@@ -40,9 +40,8 @@ DT_FOREACH_STATUS_OKAY(MY_COMPAT, INIT_ESPI_SIGNAL)
  */
 static atomic_t signal_data;
 /*
- * Mask of valid signals. If the bus is reset, this is cleared,
- * and when a signal is updated the associated bit is set to indicate
- * the signal is valid.
+ * Mask of valid signals. A signal is considered valid once an
+ * initial value has been received for it.
  */
 static atomic_t signal_valid;
 
@@ -60,13 +59,6 @@ static void espi_handler(const struct device *dev,
 	default:
 		__ASSERT(0, "ESPI unknown event type: %d",
 			 event.evt_type);
-		break;
-
-	case ESPI_BUS_RESET:
-		/*
-		 * Clear the signal valid mask.
-		 */
-		atomic_clear(&signal_valid);
 		break;
 
 	case ESPI_BUS_EVENT_VWIRE_RECEIVED:
@@ -103,7 +95,6 @@ void power_signal_vw_init(void)
 
 	/* Configure handler for eSPI events */
 	espi_init_callback(&espi_cb, espi_handler,
-			   ESPI_BUS_RESET |
 			   ESPI_BUS_EVENT_VWIRE_RECEIVED);
 	espi_add_callback(espi_dev, &espi_cb);
 	/*
