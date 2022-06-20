@@ -12,7 +12,7 @@ host_command_reboot_ap_on_g3(struct host_cmd_handler_args *args)
 	const struct ec_params_reboot_ap_on_g3_v1 *cmd = args->params;
 
 	/* Store request for processing at g3 */
-	request_exit_hardoff(true);
+	request_exit_hardoff();
 
 	switch (args->version) {
 	case 0:

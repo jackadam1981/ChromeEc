@@ -23,7 +23,7 @@
 enum power_states_ndsx chipset_pwr_sm_run(enum power_states_ndsx curr_state);
 void init_chipset_pwr_seq_state(void);
 enum power_states_ndsx chipset_pwr_seq_get_state(void);
-void request_exit_hardoff(bool should_exit);
+void request_exit_hardoff(void);
 enum power_states_ndsx pwr_sm_get_state(void);
 const char * const pwr_sm_get_state_name(enum power_states_ndsx state);
 void apshutdown(void);
