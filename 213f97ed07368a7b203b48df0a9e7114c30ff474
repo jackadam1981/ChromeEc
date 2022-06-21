@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526ce655_cb900da9",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-21T06:56:04Z",
+      "side": 1,
+      "message": "Just `ESPI_CHANNEL_VWIRE`; the macro is already defined as a bit so this appears to work by accident (note how the mchp_xec driver just sets `evt_details \u003d ESPI_CHANNEL_*`).",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "213f97ed07368a7b203b48df0a9e7114c30ff474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

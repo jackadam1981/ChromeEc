@@ -34,6 +34,24 @@
       "parentUuid": "f1dffd89_acb4e1d3",
       "revId": "ed76ab0b330cef56e1e6c1afcc5acd16be056960",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be86153_712ac9aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-21T06:56:04Z",
+      "side": 1,
+      "message": "This seems fine, since we no longer assume a state for any VW implies validity of all of them.",
+      "parentUuid": "4db58f99_d65acdd1",
+      "revId": "ed76ab0b330cef56e1e6c1afcc5acd16be056960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
