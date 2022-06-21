@@ -1359,11 +1359,13 @@ enum cable_outlet {
 #define PD_DEFAULT_STATE(port) PD_STATE_SRC_DISCONNECTED
 #endif
 
-/* build extended message header */
-/* All extended messages are chunked, so set bit 15 */
+/* Build extended message header with chunking */
 #define PD_EXT_HEADER(cnum, rchk, dsize) \
 	 (BIT(15) | ((cnum) << 11) | \
 	 ((rchk) << 10) | (dsize))
+
+/* Build extended message header without chunking */
+#define PD_EXT_HEADER_UNCHUNKED(dsize) (dsize)
 
 /* build message header */
 #define PD_HEADER(type, prole, drole, id, cnt, rev, ext) \
