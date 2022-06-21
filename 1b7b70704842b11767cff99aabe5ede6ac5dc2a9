@@ -68,6 +68,40 @@
       "parentUuid": "06e68e4a_8a414c95",
       "revId": "1b7b70704842b11767cff99aabe5ede6ac5dc2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0840ad0c_cc9f86e9",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-21T23:51:58Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "1b7b70704842b11767cff99aabe5ede6ac5dc2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb3553e_5cc68fa9",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-21T23:51:58Z",
+      "side": 1,
+      "message": "I\u0027d like for tests to interact with the PD stack through emulators and host commands rather than direct library calls. I think the appropriate way to do this is to change the _before or _setup function to set the partner emulator to be PD 3.0.",
+      "revId": "1b7b70704842b11767cff99aabe5ede6ac5dc2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
