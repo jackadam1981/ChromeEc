@@ -24,15 +24,23 @@ orsource "chip/$(ARCH)/*/Kconfig.*"
 # Override the maximum number of preemptive priority levels.
 #
 config NUM_PREEMPT_PRIORITIES
-	default 26
+	default 28
 
 #
 # In Zephyr, the default system workqueue thread priority level is the lowest
 # cooperative priority. Override its priority to the second lowest preempt
-# priority. (i.e. NUM_PREEMPT_PRIORITIES - 1)
+# priority. (i.e. NUM_PREEMPT_PRIORITIES - 1), and set the shell
+# to the next lowest priority. The shell priority must be higher
+# than the sysworkq priority.
 #
 config SYSTEM_WORKQUEUE_PRIORITY
-	default 24
+	default 27
+
+config SHELL_THREAD_PRIORITY_OVERRIDE
+	default y
+
+config SHELL_THREAD_PRIORITY
+	default 26
 
 config LTO
 	bool "Link Time Optimization (LTO)"

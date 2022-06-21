@@ -36,6 +36,12 @@
 
 LOG_MODULE_REGISTER(shim_console, LOG_LEVEL_ERR);
 
+/*
+ * Compile check to ensure shell is running higher priority
+ * than sysworkq.
+ */
+BUILD_ASSERT(CONFIG_SHELL_THREAD_PRIORITY < CONFIG_SYSTEM_WORKQUEUE_PRIORITY);
+
 static const struct device *uart_shell_dev =
 	DEVICE_DT_GET(DT_CHOSEN(zephyr_shell_uart));
 static const struct shell *shell_zephyr;
