@@ -60,6 +60,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8a3d9d4a_fd7a4a13",
+        "filename": "driver/nvidia_gpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-21T21:07:05Z",
+      "side": 1,
+      "message": "Done.\n\nAdded HOOK_POWER_SUPPLY_CHANGE. When board_set_active_charge_port is called, power supply info (current \u0026 voltage) is not fully updated.",
+      "parentUuid": "deac1dfb_7a1d1205",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 66
+      },
+      "revId": "5c2ad0a8162c8df4af04c6ee3c11c979abab0246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9a230861_1b74af8a",
         "filename": "test/nvidia_gpu.c",
         "patchSetId": 6
