@@ -33,6 +33,23 @@
       "message": "The CL passes CQ Dry run",
       "revId": "6c1587ca70f558b4f96b3f0b18ad8b027d3ba99d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d89fb183_e6dd0816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-21T19:55:32Z",
+      "side": 1,
+      "message": "Confirmed that the only changes between our branch and the merge point in `main`  (commit `a46d3f3fea`) are the `OWNERS`  files changes we\u0027ve made in our branch:\n\n```\ngit diff a46d3f3fea..HEAD --stat | cat\n OWNERS                    |  9 ++---\n board/hatch_fp/OWNERS     |  1 -\n board/nocturne_fp/OWNERS  |  1 -\n common/fpsensor/OWNERS    |  6 ----\n docs/fingerprint/OWNERS   |  1 -\n driver/fingerprint/OWNERS |  1 -\n test/OWNERS               | 84 -----------------------------------------------\n util/OWNERS               | 15 ---------\n util/ec3po/OWNERS         |  3 --\n 9 files changed, 2 insertions(+), 119 deletions(-)\n```\n",
+      "revId": "6c1587ca70f558b4f96b3f0b18ad8b027d3ba99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
