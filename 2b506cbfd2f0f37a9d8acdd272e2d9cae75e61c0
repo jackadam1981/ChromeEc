@@ -142,6 +142,24 @@
       "parentUuid": "e318091e_7f32c470",
       "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8b8fc2_5fa4e2a5",
+        "filename": "zephyr/shim/src/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-21T22:58:58Z",
+      "side": 1,
+      "message": "OK, seems fair enough to build check the priority, though the calculation of the shell priority is internal to the shell code, but we can likely replicate some of that in a build assert.",
+      "parentUuid": "201c80fd_e87b36ee",
+      "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
