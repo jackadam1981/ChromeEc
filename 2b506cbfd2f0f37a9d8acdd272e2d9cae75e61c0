@@ -106,6 +106,24 @@
       "parentUuid": "a7f21ffb_cbfb9ca5",
       "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e318091e_7f32c470",
+        "filename": "zephyr/shim/src/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-21T19:35:09Z",
+      "side": 1,
+      "message": "udelay was meant to be a busy wait in CrOS EC OS, IIRC. Can we just fix the shim impl to call k_busy_wait?\n\nBesides `waitms`, I think there\u0027s also `panic watchdog` that relies on this.",
+      "parentUuid": "26889b0f_f42a1d45",
+      "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
