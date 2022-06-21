@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "288badd5_bdf2a011",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-21T21:09:35Z",
+      "side": 1,
+      "message": "reset only one port, add a comment.\nshould not reset if VBUS is coming from this chip on dead battery boot",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 0
+      },
+      "revId": "032fbb56bb460921d511a8be76858169cd42e58c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
