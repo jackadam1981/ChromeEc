@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3535c03c_7e2320aa",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-06-21T19:49:42Z",
+      "side": 1,
+      "message": "Minor: should these be in alphabetical order?\n\nIt looks like they almost are, with the exception of `CONFIG_PANIC_STRIP_GPR`.",
+      "revId": "a06b31dca23015f7b1d9f304305a037bc5cc39c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0244acdb_609604e0",
+        "filename": "board/nocturne_fp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-06-21T19:49:42Z",
+      "side": 1,
+      "message": "Minor: same comment about alphabetical order.",
+      "revId": "a06b31dca23015f7b1d9f304305a037bc5cc39c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
