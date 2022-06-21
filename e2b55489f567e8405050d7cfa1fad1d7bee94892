@@ -70,6 +70,24 @@
       "parentUuid": "8b567cf6_2c97823c",
       "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff6246f4_7be8fd6e",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81302bx_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-06-21T06:41:33Z",
+      "side": 1,
+      "message": "Changed to use chip variants to disable unused gpio group. Please revisit.",
+      "parentUuid": "13631cd1_9b66ce71",
+      "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
