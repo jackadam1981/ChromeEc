@@ -56,6 +56,13 @@ static void service_one_port(int port)
 
 	tcpc_alert(port);
 
+	/*
+	 * Some TCPCs do not properly disable interrupts during BIST test mode.
+	 * Stop tracking interrupt storms during this time.(see b/229812911)
+	 */
+	if (pd_is_bist_test_mode_enabled(port))
+		return;
+
 	now = get_time();
 	if (timestamp_expired(storm_tracker[port].time, &now)) {
 		/* Reset timer into future */
