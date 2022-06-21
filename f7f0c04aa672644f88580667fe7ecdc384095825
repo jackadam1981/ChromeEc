@@ -22,6 +22,30 @@
       },
       "revId": "f7f0c04aa672644f88580667fe7ecdc384095825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5672b9_45d5fd4b",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-06-21T02:14:32Z",
+      "side": 1,
+      "message": "Remove PWM KBLIGHT after patch set 11.",
+      "parentUuid": "715914a4_c3951194",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 15
+      },
+      "revId": "f7f0c04aa672644f88580667fe7ecdc384095825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
