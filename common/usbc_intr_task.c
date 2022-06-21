@@ -29,7 +29,7 @@
  * intensive operations such as FW update over PD. This value has tested well
  * preventing watchdog resets with a single bad port partner plugged in.
  */
-#define ALERT_STORM_MAX_COUNT 480
+#define ALERT_STORM_MAX_COUNT 1800
 #define ALERT_STORM_INTERVAL SECOND
 
 static uint8_t pd_int_task_id[CONFIG_USB_PD_PORT_MAX_COUNT];
