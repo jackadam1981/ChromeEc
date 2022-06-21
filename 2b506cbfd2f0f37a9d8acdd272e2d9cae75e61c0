@@ -34,6 +34,24 @@
       "parentUuid": "0e7cf440_d3a290c0",
       "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11083537_d897f23e",
+        "filename": "zephyr/shim/src/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-21T06:27:06Z",
+      "side": 1,
+      "message": "On Nereid I see sysworkq at 24 and shell_uart at 12, which seems correct (smaller numbers are higher priority).",
+      "parentUuid": "72294072_c58abb58",
+      "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
