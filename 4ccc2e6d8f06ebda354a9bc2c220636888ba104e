@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62bdef0_24dd2978",
+        "filename": "zephyr/include/ap_power/ap_power_interface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-06-21T20:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e25aedc_7639c484",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 52
+      },
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59ce19f1_458a5679",
@@ -108,6 +132,24 @@
       "side": 1,
       "message": "\u003e I don\u0027t think caching the result of ap_power_is_ok_to_power_up() is needed here, since the only time it is checked is in hook_battery_soc_change() - I don\u0027t quite understand the need to cache it, and I may be missing something here.\nMy best guess for caching this this, is to avoid having to call `charge_prevent_power_on` \u0026 `charge_want_shutdown` on every charger update, only when required, this is, when system was not successfully powered on due to low charge in battery.\n\n\n\u003e I\u0027m also getting my head around the inversion of the logic (ready vs inhibited),\nSYS_POWER_STATE_G3S5 handler may favor to use \"inhibited\", given that event triggered upon charger not being ready is called `AP_POWER_SHUTDOWN_BATTERY_INHIBIT`.\n\n\n\u003e Let me check I have the intent correct: hook_battery_soc_change() should call chipset_exit_hard_off() if and only if the AP has not been started because ap_power_is_ok_to_power_up() says it is not ok to power up. charger_ready is the last result of the check, though at the time it is checked the real value may well be different.\nYes, this is the behavior on CL:753294, with global variable `power_up_inhibited`, I verified this behavior on a brya with legacy EC.\n\nI think I get your point regarding setting static bool variable, it should only be set in one place based on `ap_power_is_ok_to_power_up` result, this is SYS_POWER_STATE_G3S5 handler.",
       "parentUuid": "dcab4fc7_4bedfdde",
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803c6e07_aed2a3c8",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-06-21T20:04:45Z",
+      "side": 1,
+      "message": "For simplicity and due to scope issues, I opted for the following changes in logic:\n1. Only process battery events while AP is powered down\nNo need to check during power up since this is to support auto power on feature.\n\n2. Cache variable is only intended for logging purposes, it will not impact feature logic.",
+      "parentUuid": "dc27af2a_5247a76c",
       "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
