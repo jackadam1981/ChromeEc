@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5db6da_857d5cc3",
+        "filename": "power/power_status.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-21T22:27:52Z",
+      "side": 1,
+      "message": "remove this debug code",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 42
+      },
+      "revId": "463c0094fbf10842b9e5457b0529184bba950a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e30b145_2acec259",
+        "filename": "power/power_status.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-21T22:27:52Z",
+      "side": 1,
+      "message": "probably don\u0027t need this anymore",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 12
+      },
+      "revId": "463c0094fbf10842b9e5457b0529184bba950a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
