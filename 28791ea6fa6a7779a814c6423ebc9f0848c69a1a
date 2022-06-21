@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f44407b_2468040f",
+        "filename": "power/power_status.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-21T20:00:18Z",
+      "side": 1,
+      "message": "Hi Tim,\nPractically, adapter rating cannot go beyond of maximum of 100 -200 Watts , which means 200,000 mW, which is within 32 bits. So, overflow of 32 bits is not practically possible is my guess! Now, reasoning behind rating in  50mW units: suppose 200,000mW , it crosses [0:15] bits to 17th bit. so to limit the value within [0:15] bits, division by 50.  I agree that adapter rating in Watts would have saved some 8 bits of memory on EC side, but looks like Power Boss Action Table probably has a dependency on the accurate value adapter rating in MW itself. To quote an example, suppose, if we use a low power charging cable like suzyQ, then adapter rating would be 7500mW (1500mA /5000mV). If we prefer to save it in terms of watts only , then EC would report it as 7Watts instead of 7.5 Watts.",
+      "parentUuid": "3e5feabc_c105d5f9",
+      "range": {
+        "startLine": 47,
+        "startChar": 18,
+        "endLine": 47,
+        "endChar": 57
+      },
+      "revId": "28791ea6fa6a7779a814c6423ebc9f0848c69a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40933b2f_fb67de5d",
         "filename": "power/power_status.c",
         "patchSetId": 5
