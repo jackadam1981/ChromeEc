@@ -379,7 +379,11 @@ static int command_wait(int argc, char **argv)
 	 * watchdog timeout. This is intended behaviour and is in fact used by
 	 * a FAFT test to check that the watchdog timer is working.
 	 */
+#ifdef CONFIG_ZEPHYR
+	udelay_busy_wait(i * 1000);
+#else
 	udelay(i * 1000);
+#endif
 
 	return EC_SUCCESS;
 }

@@ -23,7 +23,25 @@ uint32_t __hw_clock_event_get(void)
 	return 0;
 }
 
+/*
+ * This Zephyr version of udelay only impacts the current thread.
+ */
 void udelay(unsigned us)
 {
 	k_busy_wait(us);
+}
+
+/*
+ * This is intended as a busy-wait delay i.e the thread
+ * should not yield.
+ * The waitms console command uses this to force a watchdog.
+ */
+void udelay_busy_wait(unsigned us)
+{
+	uint64_t target = __hw_clock_source_read64() + us;
+
+	k_sched_lock();
+	while (__hw_clock_source_read64() < target)
+		;
+	k_sched_unlock();
 }

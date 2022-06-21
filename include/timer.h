@@ -79,6 +79,14 @@ int timestamp_expired(timestamp_t deadline, const timestamp_t *now);
  */
 void udelay(unsigned us);
 
+#ifdef CONFIG_ZEPHYR
+/**
+ * Separate function for udelay that is busy-wait.
+ * The Zephyr udelay only delays the thread, and is not busy-wait.
+ */
+void udelay_busy_wait(unsigned us);
+#endif
+
 /**
  * Sleep.
  *
