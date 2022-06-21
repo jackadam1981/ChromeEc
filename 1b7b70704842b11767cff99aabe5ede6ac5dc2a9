@@ -50,6 +50,24 @@
       "message": "The request needs to be cleared with PE_CLR_DPM_REQUEST or else we\u0027ll never progress through the if/else tree on subsequent calls.  \n\nIdeally, we\u0027d also continue on to process the other DPM requests during the call where we clear it, but I acknowledge that could be awkward to implement with the if/else flow",
       "revId": "1b7b70704842b11767cff99aabe5ede6ac5dc2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2134dacd_81fc156b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-21T22:36:17Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve added the PE_CLR_DPM_REQUEST and moved DPM_REQUEST_SEND_ALERT to the bottom of the function so now it\u0027s grouped with the other 2 dpm requests which can be gated by partner revision (DPM_REQUEST_GET_REVISION and DPM_REQUEST_DATA_RESET).\n\nI also added a PE_CLR_DPM_REQUEST call to the SOP revision guard on DPM_REQUEST_DATA_RESET dpm requests. Currently it is only calling dpm_data_reset_complete which runs the following to clear flags in the DPM.\n\n\u003e  void dpm_data_reset_complete(int port)\n\u003e  {\n\u003e    DPM_CLR_FLAG(port, DPM_FLAG_DATA_RESET_REQUESTED);\n\u003e    DPM_SET_FLAG(port, DPM_FLAG_DATA_RESET_DONE);\n\u003e    DPM_CLR_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE);\n\u003e  }",
+      "parentUuid": "06e68e4a_8a414c95",
+      "revId": "1b7b70704842b11767cff99aabe5ede6ac5dc2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
