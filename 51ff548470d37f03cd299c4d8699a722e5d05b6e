@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c27a96_dd7c6f83",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-21T21:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5c7c00e_463444d3",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a24b6b09_5473c589",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-17T21:45:31Z",
       "side": 1,
       "message": "nit: extra line",
+      "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700c7866_6771e6a4",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-21T21:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a24b6b09_5473c589",
       "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f99c10_01f0d84a",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-21T21:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d34c3f5_e95accd2",
+      "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "815650de_0977e033",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-06-17T21:45:31Z",
       "side": 1,
       "message": "nit: submit a separate CL",
+      "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa49330_3875f88e",
+        "filename": "zephyr/shim/src/usb_muxes.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-21T21:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "815650de_0977e033",
       "revId": "51ff548470d37f03cd299c4d8699a722e5d05b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
