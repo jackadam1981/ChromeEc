@@ -88,6 +88,24 @@
       "parentUuid": "13631cd1_9b66ce71",
       "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0dfd38_0ffcc345",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81302bx_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-21T21:24:00Z",
+      "side": 1,
+      "message": "Some of the shared CONFIG_ options should get moved to the Kconfig.defconfig file, which is shared by both the it81202bx and it81301bx variants.\n\nExample from upstream is here:\nhttps://github.com/zephyrproject-rtos/zephyr/blob/main/boards/arm/mimxrt1064_evk/Kconfig.defconfig\n\nAt a minimum, all the ITE drivers should get setup the Kconfig.defconfig file\n\n```\nif I2C\nconfig I2C_ITE_IT8XXX2\n\tdefault y\nendif\n\nif ADC\nconfig ADC_ITE_IT8XXX2\n\tdefault y\nconfig PLATFORM_EC_ADC\n\tdefault y\nconfig PLATFORM_EC_ADC_RESOLUTION\n\tdefault 10\nendif\n```\n\nBecause the Kconfig.defconfig supports the `source/rsource` commands, we could also move the EC common defaults (such as the CONSOLE/SHELL settings) into a shared file that each board/Kconfig.defconfig includes via `source/rsource`.  The EC common defaults is outside the scope of this change.",
+      "parentUuid": "ff6246f4_7be8fd6e",
+      "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
