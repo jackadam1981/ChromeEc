@@ -16,6 +16,24 @@
       "message": "The legacy version of udelay appears to do the same thing, just spinning the current thread. Watchdog reloads happen in the hooks thread there, which is lowest priority much like the work queue that reloads the watchdog in Zephyr. It seems like this should work without any changes, because a busy-wait in the shell thread should have higher priority than the system work queue.",
       "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72294072_c58abb58",
+        "filename": "zephyr/shim/src/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-21T05:33:58Z",
+      "side": 1,
+      "message": "The shell priority is 25, so this is lower than the workq.",
+      "parentUuid": "0e7cf440_d3a290c0",
+      "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
