@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4745d02c_c391b37f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-21T21:01:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4edf380_cdb3ad69",
+      "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c746374_203ea528",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "will just remove as mtlrvp 0 and 1 are paired",
       "parentUuid": "d899cab7_fdeddb73",
+      "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a5c5e3_e5784076",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-21T21:01:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af26ec74_2dffe32f",
       "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
