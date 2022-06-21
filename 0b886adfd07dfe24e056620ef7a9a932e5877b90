@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6332c3da_6562d933",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-21T20:49:20Z",
+      "side": 1,
+      "message": "I mean the ACPI routine that presents it to DPTF can do the multiplication by 1000, but we would save 8 bits of EC ACPI memory-mapped space per value that we want to communicate over",
+      "parentUuid": "e27f64cb_f6d0ae26",
+      "range": {
+        "startLine": 176,
+        "startChar": 43,
+        "endLine": 176,
+        "endChar": 61
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bef82987_9c7ab8b3",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
