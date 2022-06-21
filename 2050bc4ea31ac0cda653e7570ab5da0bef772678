@@ -16,6 +16,40 @@
       "message": "The change still needs some cleanup, but it works and every test works as it did before the commit. Please review the TCPC emulators architecture. ",
       "revId": "2050bc4ea31ac0cda653e7570ab5da0bef772678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a22acef_4cdbac1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-21T05:29:17Z",
+      "side": 1,
+      "message": "Sorry it took so long.",
+      "revId": "2050bc4ea31ac0cda653e7570ab5da0bef772678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda246ca_f2de322c",
+        "filename": "zephyr/dts/bindings/emul/cros,tcpci-generic-emul.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-21T05:29:17Z",
+      "side": 1,
+      "message": "nit: update year",
+      "revId": "2050bc4ea31ac0cda653e7570ab5da0bef772678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
