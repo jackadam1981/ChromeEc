@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9a14a0b_cdcfc784",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-21T20:52:20Z",
+      "side": 1,
+      "message": "Not all boards have enabled it yet. So we need the guard still.",
+      "parentUuid": "41d49d87_1e447610",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 33
+      },
+      "revId": "7572a33c1aaee7bd76fb54f2fd433052f4d37be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19f4a9bf_e615031c",
         "filename": "driver/battery/smart.c",
         "patchSetId": 3
