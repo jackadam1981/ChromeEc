@@ -9,6 +9,109 @@
 #include "console.h"
 #include "tcpm/tcpci.h"
 
+/*
+ * TODO (b/) : If the dual port CCGXXF chip's ports are connected to single
+ * I2C bus of EC, CCGXXF chip stops responding over I2C for about 10 seconds
+ * once the PD negitiation completes. As a a workaround, until the Physical
+ * layer firmware is fixed use the cached values of role and status register
+ * to get the CC status.
+ */
+struct ccgxxf_cc {
+	int role;
+	int status;
+};
+
+#define CCGXXF_INVALID_CC_STATE		-1
+
+static struct ccgxxf_cc ccgxxf_cc_cache[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static int ccgxxf_tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
+	enum tcpc_cc_voltage_status *cc2)
+{
+	int role;
+	int status;
+	int cc1_present_rd, cc2_present_rd;
+	int rv;
+
+	/* errors will return CC as open */
+	*cc1 = TYPEC_CC_VOLT_OPEN;
+	*cc2 = TYPEC_CC_VOLT_OPEN;
+
+	/* Get the ROLE CONTROL and CC STATUS values */
+	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+	if (rv) {
+		if (ccgxxf_cc_cache[port].role == CCGXXF_INVALID_CC_STATE)
+			return rv;
+
+		role = ccgxxf_cc_cache[port].role;
+	} else {
+		ccgxxf_cc_cache[port].role = role;
+	}
+
+	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
+	if (rv) {
+		if (ccgxxf_cc_cache[port].status == CCGXXF_INVALID_CC_STATE)
+			return rv;
+
+		status = ccgxxf_cc_cache[port].status;
+	} else {
+		ccgxxf_cc_cache[port].status = status;
+	}
+
+	/* Get the current CC values from the CC STATUS */
+	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
+	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
+
+	/* Determine if we are presenting Rd */
+	cc1_present_rd = 0;
+	cc2_present_rd = 0;
+	if (role & TCPC_REG_ROLE_CTRL_DRP_MASK) {
+		/*
+		 * We are doing DRP.  We will use the CC STATUS
+		 * ConnectResult to determine if we are presenting
+		 * Rd or Rp.
+		 */
+		int term;
+
+		term = TCPC_REG_CC_STATUS_TERM(status);
+
+		if (*cc1 != TYPEC_CC_VOLT_OPEN)
+			cc1_present_rd = term;
+		if (*cc2 != TYPEC_CC_VOLT_OPEN)
+			cc2_present_rd = term;
+	} else {
+		/*
+		 * We are not doing DRP.  We will use the ROLE CONTROL
+		 * CC values to determine if we are presenting Rd or Rp.
+		 */
+		int role_cc1, role_cc2;
+
+		role_cc1 = TCPC_REG_ROLE_CTRL_CC1(role);
+		role_cc2 = TCPC_REG_ROLE_CTRL_CC2(role);
+
+		if (*cc1 != TYPEC_CC_VOLT_OPEN)
+			cc1_present_rd = !!(role_cc1 == TYPEC_CC_RD);
+		if (*cc2 != TYPEC_CC_VOLT_OPEN)
+			cc2_present_rd = !!(role_cc2 == TYPEC_CC_RD);
+	}
+	*cc1 |= cc1_present_rd << 2;
+	*cc2 |= cc2_present_rd << 2;
+
+	return EC_SUCCESS;
+}
+
+static int ccgxxf_tcpci_tcpm_init(int port)
+{
+	int i;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		ccgxxf_cc_cache[i].role = CCGXXF_INVALID_CC_STATE;
+		ccgxxf_cc_cache[i].status = CCGXXF_INVALID_CC_STATE;
+	}
+
+	return tcpci_tcpm_init(port);
+}
+
 #ifdef CONFIG_USB_PD_TCPM_SBU
 static int ccgxxf_tcpc_set_sbu(int port, bool enable)
 {
@@ -33,9 +136,9 @@ static void ccgxxf_dump_registers(int port)
 #endif
 
 const struct tcpm_drv ccgxxf_tcpm_drv = {
-	.init			= &tcpci_tcpm_init,
+	.init			= &ccgxxf_tcpci_tcpm_init,
 	.release		= &tcpci_tcpm_release,
-	.get_cc			= &tcpci_tcpm_get_cc,
+	.get_cc			= &ccgxxf_tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
 #endif
