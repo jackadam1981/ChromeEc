@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065b6ae0_f75f64ee",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-21T16:39:02Z",
+      "side": 1,
+      "message": "Reference b/236712633",
+      "range": {
+        "startLine": 167,
+        "startChar": 8,
+        "endLine": 167,
+        "endChar": 56
+      },
+      "revId": "aab01bcfc243adb37bb2863e1fd8a1e4b96ef420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34aa9a6d_f0072a34",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-21T16:39:02Z",
+      "side": 1,
+      "message": "Please add help text to each config option.  2-3 line description is desired.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 40
+      },
+      "revId": "aab01bcfc243adb37bb2863e1fd8a1e4b96ef420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
