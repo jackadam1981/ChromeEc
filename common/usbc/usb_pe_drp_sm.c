@@ -2736,6 +2736,8 @@ static void pe_src_ready_entry(int port)
 
 static void pe_src_ready_run(int port)
 {
+	if (pd_is_bist_test_mode_enabled(port))
+		return;
 	/*
 	 * Handle incoming messages before discovery and DPMs other than hard
 	 * reset
@@ -3585,6 +3587,8 @@ static void pe_snk_ready_entry(int port)
 
 static void pe_snk_ready_run(int port)
 {
+	if (pd_is_bist_test_mode_enabled(port))
+		return;
 	/*
 	 * Handle incoming messages before discovery and DPMs other than hard
 	 * reset

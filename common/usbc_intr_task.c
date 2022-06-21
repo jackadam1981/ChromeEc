@@ -56,6 +56,9 @@ static void service_one_port(int port)
 
 	tcpc_alert(port);
 
+	if (pd_is_bist_test_mode_enabled(port))
+		return;
+
 	now = get_time();
 	if (timestamp_expired(storm_tracker[port].time,
 			      &now)) {
