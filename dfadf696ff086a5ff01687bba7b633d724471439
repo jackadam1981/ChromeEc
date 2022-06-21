@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98497571_5e74da6e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-21T21:30:53Z",
+      "side": 1,
+      "message": "This gets assigned the EC time in microseconds, and because I am usually testing shortly after a reboot it is around 50 million to 1 billion. I\u0027ve removed this in the latest patchset which is using its own timer, but this is also how the pd timers work. They also assign get_time().val to a uint64_t (line 225 of src/platform/ec/common/usbc/usb_pd_timer.c).",
+      "parentUuid": "787f3199_3c0ce195",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f8514e2_52126e77",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-17T16:26:22Z",
       "side": 1,
       "message": "Should this be gated on extended message support?  Alert itself isn\u0027t an extended message, though obviously the status messages are related to it",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2797595d_ed465036",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2784,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-21T21:30:53Z",
+      "side": 1,
+      "message": "Thanks for catching this, no it should be gated on USB PD 3.0 support.",
+      "parentUuid": "9f8514e2_52126e77",
       "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3dd74aa_27cf2b80",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4455,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-21T21:30:53Z",
+      "side": 1,
+      "message": "Thanks for your feedback, a state machine sounds good to me. In this patchset, I have moved handling this to a state machine in usb_pd_dpm.c. The PE just needs to check if alerts are a button press or release when it receives them, and call either dpm_handle_pd_button_press(port) or dpm_handle_pd_button_release(port). The state machine in usb_pd_dpm is responsible for tracking presses and releases to decide if any action needs to be taken on the alert.\n\nA couple difference between the state machine you\u0027re describing and what I\u0027ve implemented. There is also a PRESS_STATE -\u003e PRESS_STATE path which resets the timer in a case where the partner sends two consecutive presses. And, given this CL will only handle waking a device from S5/G3 using the USB PD power button, The SM in this CL does not distinguish between short and long presses. Both short and long presses should wake the device from G3/S5. The timeout in PRESS_STATE will still prevent powering on a device when presses exceed the long press time limit.",
+      "parentUuid": "ce0f279b_0fa32efd",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a93928c_2e831c31",
@@ -100,6 +154,24 @@
       "writtenOn": "2022-06-17T16:26:22Z",
       "side": 1,
       "message": "Units on 4000?  I\u0027m assuming ms?",
+      "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a64ccf_c78cce44",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4972,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-21T21:30:53Z",
+      "side": 1,
+      "message": "I\u0027ve removed this config in the latest patchset because it only enables wake from S5/G3 which happens the same way for short and long presses. But, yes this is in ms and I\u0027ve updated the long press limit comment to note this.",
+      "parentUuid": "6a93928c_2e831c31",
       "revId": "dfadf696ff086a5ff01687bba7b633d724471439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
