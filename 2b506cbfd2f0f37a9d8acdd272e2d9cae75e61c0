@@ -88,6 +88,24 @@
       "parentUuid": "590aef49_b886ef34",
       "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26889b0f_f42a1d45",
+        "filename": "zephyr/shim/src/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-21T07:43:24Z",
+      "side": 1,
+      "message": "That\u0027s why I created another function to be explicit about the busy-wait.\nThe use of udelay() in Zephyr seems OK for callers in the legacy part of EC-OS (though of course the problem is depending on the task priority, it may be pre-empted or otherwise, as we see in Nivviks) - the main caller that seems to rely on it being a real busy-wait is the \u0027waitms\u0027 command which assumes that the watchdog will not be fed.\nSo that\u0027s why the only caller is the waitms command.\nThe fact that we have different behaviours on nivviks \u0026 nereid is of some concern, but the intent of the usleep_busy_wait() function is to really ensure it is not pre-empted by the watchdog.\n\nIt\u0027s a reasonable point that waitms makes an assumption that udelay will not be preempted by the watchdog, but that\u0027s not explicitly stated anywhere, and the reliance on this by the FAFT test seems rather fragile.\nUnfortunately I don\u0027t know what else waitms is being used for.\nMaybe the best thing is to fix the shell priority and then put some kind of build time check to ensure the shell priority is always higher than the workq.\nIt does seem a very odd restriction, just to support a single use of a test command.",
+      "parentUuid": "a7f21ffb_cbfb9ca5",
+      "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
