@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c1d5468_fc742b70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-06-21T06:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e23245_fcf8343d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "688b03f67c630037e54fe8e239bccb3ec8f64f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfd2a8e7_b1d7e927",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-21T03:15:20Z",
       "side": 1,
       "message": "`TEST` label should follow the `BUG` label:\n\n```\nBUG\u003db:234409654\nTEST\u003dzmake build tentacruel --clobber\nBRANCH\u003dNone\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "688b03f67c630037e54fe8e239bccb3ec8f64f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a8d7df_4e82988f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-06-21T06:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd2a8e7_b1d7e927",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ecf672_92e9f04b",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-06-21T06:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b82467d8_0ac8d191",
+      "range": {
+        "startLine": 109,
+        "startChar": 25,
+        "endLine": 109,
+        "endChar": 53
+      },
+      "revId": "688b03f67c630037e54fe8e239bccb3ec8f64f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ec83fc5_efe57d76",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-21T03:15:20Z",
       "side": 1,
       "message": "drop the tabs for indention.",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 6
+      },
+      "revId": "688b03f67c630037e54fe8e239bccb3ec8f64f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b748c17a_4b5c3506",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-06-21T06:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ec83fc5_efe57d76",
       "range": {
         "startLine": 57,
         "startChar": 4,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b635ef81_44e4139c",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-06-21T06:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6ad8d55_60d2be0d",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "688b03f67c630037e54fe8e239bccb3ec8f64f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f0393be_fe256239",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4f16b2_f2f249de",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-06-21T06:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f0393be_fe256239",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 8
+      },
+      "revId": "688b03f67c630037e54fe8e239bccb3ec8f64f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7832a67_7e303342",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-06-21T03:15:20Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 8
+      },
+      "revId": "688b03f67c630037e54fe8e239bccb3ec8f64f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb64e59_d8b0ea02",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-06-21T06:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7832a67_7e303342",
       "range": {
         "startLine": 64,
         "startChar": 4,
