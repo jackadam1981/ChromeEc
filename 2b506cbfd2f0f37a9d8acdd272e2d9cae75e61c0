@@ -178,6 +178,24 @@
       "parentUuid": "0c8b8fc2_5fa4e2a5",
       "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74d06610_5558d658",
+        "filename": "zephyr/shim/src/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-06-22T09:26:29Z",
+      "side": 1,
+      "message": "Hi all,\nI have found the issue few weeks ago and Fabio provide a fix.\nPlease also refer to the https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3696146/",
+      "parentUuid": "ca7fdd4c_b6bc5070",
+      "revId": "2b506cbfd2f0f37a9d8acdd272e2d9cae75e61c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
