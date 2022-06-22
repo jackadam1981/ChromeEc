@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79116b83_b574ac99",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-22T03:18:31Z",
+      "side": 1,
+      "message": "We have the config name in a couple of threads, but just wanted to follow up here to say that for readability it is definitely better to have positive name like you suggested than the negative name (`DISABLE`) that I suggested: http://go/tott/530.",
+      "parentUuid": "c2ab2b62_9f3c00e3",
+      "range": {
+        "startLine": 228,
+        "startChar": 20,
+        "endLine": 228,
+        "endChar": 41
+      },
+      "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b3312fc_28d24feb",
         "filename": "test/printf.c",
         "patchSetId": 1

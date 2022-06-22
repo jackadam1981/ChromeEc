@@ -33,6 +33,29 @@
       "message": "Minor: same comment about alphabetical order.",
       "revId": "a06b31dca23015f7b1d9f304305a037bc5cc39c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc27fd91_97e105d6",
+        "filename": "test/printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-22T03:18:31Z",
+      "side": 1,
+      "message": "nit: `bool`",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 4
+      },
+      "revId": "a06b31dca23015f7b1d9f304305a037bc5cc39c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
