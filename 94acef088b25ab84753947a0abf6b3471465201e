@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86f6721_625681cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:26:16Z",
+      "side": 1,
+      "message": "If tcpci_tcpc_alert requires a wait, should the wait be inside tcpci_tcpc_alert? This seems like something future test writers could trip over as well.",
+      "revId": "94acef088b25ab84753947a0abf6b3471465201e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
