@@ -41,6 +41,7 @@ enum {
 	OPT_PCB_SUPPLIER,
 	OPT_SSFC,
 	OPT_REWORK_ID,
+	OPT_AUX_DATA32,
 	OPT_SIZE,
 	OPT_ERASE_BYTE,
 	OPT_SHOW_ALL,
@@ -59,6 +60,7 @@ static const struct option opts_create[] = {
 	{"pcb_supplier", 1, 0, OPT_PCB_SUPPLIER},
 	{"ssfc", 1, 0, OPT_SSFC},
 	{"rework_id", 1, 0, OPT_REWORK_ID},
+	{"aux_data32", 1, 0, OPT_AUX_DATA32},
 	{"size", 1, 0, OPT_SIZE},
 	{"erase_byte", 1, 0, OPT_ERASE_BYTE},
 	{NULL, 0, 0, 0}
@@ -82,6 +84,7 @@ static const char *field_name[] = {
 	"PCB_SUPPLIER",
 	"SSFC",
 	"REWORK_ID",
+	"AUX_DATA32",
 };
 BUILD_ASSERT(ARRAY_SIZE(field_name) == CBI_TAG_COUNT);
 
@@ -105,6 +108,7 @@ const char help_create[] =
 	"  --pcb_supplier <value>     PCB supplier\n"
 	"  --ssfc <value>             Second Source Factory Cache bit-field\n"
 	"  --rework_id <lvalue>       REWORK_ID\n"
+	"  --aux_data32 <value>       Auxiliary data (32 bit)\n"
 	"\n"
 	"<value> must be a positive integer <= 0XFFFFFFFF, <lvalue> must be a\n"
 	"  positive integer <= 0xFFFFFFFFFFFFFFFF and field size can be\n"
@@ -314,6 +318,7 @@ static int cmd_create(int argc, char **argv)
 		struct integer_field pcb_supplier;
 		struct integer_field ssfc;
 		struct long_integer_field rework;
+		struct integer_field aux_data32;
 		const char *dram_part_num;
 		const char *oem_name;
 	} bi;
@@ -398,6 +403,10 @@ static int cmd_create(int argc, char **argv)
 			if (parse_uint64_field(optarg, &bi.rework))
 				return -1;
 			break;
+		case OPT_AUX_DATA32:
+			if (parse_integer_field(optarg, &bi.aux_data32))
+				return -1;
+			break;
 		}
 	}
 
@@ -430,6 +439,8 @@ static int cmd_create(int argc, char **argv)
 			bi.pcb_supplier.size);
 	p = cbi_set_data(p, CBI_TAG_SSFC, &bi.ssfc.val, bi.ssfc.size);
 	p = cbi_set_data(p, CBI_TAG_REWORK_ID, &bi.rework.val, bi.rework.size);
+	p = cbi_set_data(p, CBI_TAG_AUX_DATA32, &bi.aux_data32.val,
+			 bi.aux_data32.size);
 	p = cbi_set_string(p, CBI_TAG_DRAM_PART_NUM, bi.dram_part_num);
 	p = cbi_set_string(p, CBI_TAG_OEM_NAME, bi.oem_name);
 
@@ -564,6 +575,7 @@ static int cmd_show(int argc, char **argv)
 	print_integer(buf, CBI_TAG_PCB_SUPPLIER);
 	print_integer(buf, CBI_TAG_SSFC);
 	print_integer(buf, CBI_TAG_REWORK_ID);
+	print_integer(buf, CBI_TAG_AUX_DATA32);
 	print_string(buf, CBI_TAG_DRAM_PART_NUM);
 	print_string(buf, CBI_TAG_OEM_NAME);
 
