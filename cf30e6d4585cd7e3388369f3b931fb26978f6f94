@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44e2a22e_bd5d1abb",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-22T06:12:06Z",
+      "side": 1,
+      "message": "I think listing the discrete kernel versions that will use the fallback path, might be easier to understand. Given b/234856729#comment5, it might look like `^5\\.4\\.|^5\\.10\\.`.\n\n---\n\nAlso, the `^` isn\u0027t distributed unless you wrap all of OR expressions in parentheses.\nLike: `^(4\\..|5\\.[0-9]\\.|5\\.1[0-7]\\.)`\n\nhttps://regex101.com/r/ug02z3/1",
+      "parentUuid": "e5808417_c3d9ade0",
+      "range": {
+        "startLine": 634,
+        "startChar": 22,
+        "endLine": 634,
+        "endChar": 57
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07f1114e_c61be877",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 6
