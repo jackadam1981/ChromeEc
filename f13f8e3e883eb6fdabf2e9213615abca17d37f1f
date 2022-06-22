@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa7fd02_a67e73b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-22T18:12:47Z",
+      "side": 1,
+      "message": "Hi Diana and Abe, can you take a look at this change? It adds another place where the policy engine may notify the AP of cable discovery to address this bug (https://buganizer.corp.google.com/issues/235534422). Basically, this is for the scenario where a user connects a non-PD sink with a PD cable, and we are only able to discover cable identity before failing discovery due to the partner not supporting USB PD.",
+      "revId": "f13f8e3e883eb6fdabf2e9213615abca17d37f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
