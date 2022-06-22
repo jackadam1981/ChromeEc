@@ -33,6 +33,24 @@
       "message": "Is this still accurate?",
       "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7aace36_deae0ed5",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-22T16:04:34Z",
+      "side": 1,
+      "message": "I\u0027d guess so based on the current EC tasklist.  I imagine there could be another CL coming removing other portions of the code where removing the PD port would make sense (ex. charger task, BC 1.2 tasks, etc.)",
+      "parentUuid": "0ef2a3ec_3ce13dfd",
+      "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
