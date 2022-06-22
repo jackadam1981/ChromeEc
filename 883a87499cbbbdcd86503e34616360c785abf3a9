@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "766f29a6_1d6de1e8",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T21:41:39Z",
+      "side": 1,
+      "message": "What\u0027s the overall plan for files like this? Are we going to have 3.0 versions of all our existing tests? If we update the 2.0 tests should we correspondingly update the 3.0 tests? Do we need a 3.0 test for every 2.0 test?",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9ecada7_8dae1a84",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
         "patchSetId": 1
@@ -123,6 +140,24 @@
       "writtenOn": "2022-06-22T18:02:56Z",
       "side": 1,
       "message": "Battery being present or not present should be separate tests here. Maybe have a zassume_true(battery_is_present())?",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78aede32_f1f52337",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T21:41:39Z",
+      "side": 1,
+      "message": "+1. This function has a lot of nesting. The lines end up being short and truncated, and the test body is long and takes a bit of work to parse. I\u0027d suggest a code structure where each test covers one scenario in as linear a fashion as possible.",
+      "parentUuid": "eae746e9_3bb7580b",
       "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
