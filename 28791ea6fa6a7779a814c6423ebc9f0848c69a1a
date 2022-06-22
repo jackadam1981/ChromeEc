@@ -93,6 +93,30 @@
       },
       "revId": "28791ea6fa6a7779a814c6423ebc9f0848c69a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e746d8bf_24fd6bab",
+        "filename": "power/power_status.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-22T20:22:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40933b2f_fb67de5d",
+      "range": {
+        "startLine": 171,
+        "startChar": 9,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "28791ea6fa6a7779a814c6423ebc9f0848c69a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
