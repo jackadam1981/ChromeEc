@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e4de8e_30649eb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-22T17:22:47Z",
+      "side": 1,
+      "message": "Yeah, I ran it with just this suite shuffled and repeated.",
+      "parentUuid": "4d6d0c64_c36642ea",
+      "revId": "d8263ac7665da12ed20645b31185a6ff95ba121e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "736f1fee_c728143f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-22T16:53:30Z",
       "side": 1,
       "message": "Can this be static?",
+      "revId": "d8263ac7665da12ed20645b31185a6ff95ba121e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "757f0857_b645447a",
+        "filename": "zephyr/test/drivers/src/host_cmd/host_event_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-22T17:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "736f1fee_c728143f",
       "revId": "d8263ac7665da12ed20645b31185a6ff95ba121e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf335cd1_a4bdee42",
+        "filename": "zephyr/test/drivers/src/host_cmd/host_event_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-22T17:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "741834f2_cd4e6eaf",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "d8263ac7665da12ed20645b31185a6ff95ba121e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a9271ef_c0554d29",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-06-22T16:53:30Z",
       "side": 1,
       "message": "nit:\nMake \"#endif /* CONFIG_HOSTCMD_X86 */\"",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "d8263ac7665da12ed20645b31185a6ff95ba121e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8bb289_81a8e85a",
+        "filename": "zephyr/test/drivers/src/host_cmd/host_event_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-06-22T17:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a9271ef_c0554d29",
       "range": {
         "startLine": 107,
         "startChar": 1,
