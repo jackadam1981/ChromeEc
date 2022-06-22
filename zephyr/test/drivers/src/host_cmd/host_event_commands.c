@@ -48,8 +48,8 @@ ZTEST_SUITE(host_cmd_host_event_commands, drivers_predicate_post_main,
 	    host_cmd_host_event_commands_after, NULL);
 
 static enum ec_status host_event_cmd_helper(enum ec_host_event_action action,
-				     uint8_t mask,
-				     struct ec_response_host_event *r)
+					    uint8_t mask,
+					    struct ec_response_host_event *r)
 {
 	enum ec_status ret_val;
 
@@ -73,11 +73,9 @@ ZTEST_USER(host_cmd_host_event_commands, test_host_event_invalid_cmd)
 	enum ec_status ret_val;
 	struct ec_response_host_event result = { 0 };
 
-	ret_val = host_event_cmd_helper(0xFF, 0,
-					&result);
+	ret_val = host_event_cmd_helper(0xFF, 0, &result);
 
-	zassert_equal(ret_val, EC_RES_INVALID_PARAM,
-		      "Expected=%d, returned=%d",
+	zassert_equal(ret_val, EC_RES_INVALID_PARAM, "Expected=%d, returned=%d",
 		      EC_RES_INVALID_PARAM, ret_val);
 }
 
@@ -187,4 +185,76 @@ ZTEST_USER(host_cmd_host_event_commands, test_host_event_clear_cmd)
 			      "Expected [%d] result=%d, returned=%d", i,
 			      event_set[i].result, ret_val);
 	}
+}
+
+enum ec_status host_event_mask_cmd_helper(uint32_t command, uint32_t mask,
+					  struct ec_response_host_event_mask *r)
+{
+	enum ec_status ret_val;
+
+	struct ec_params_host_event_mask params = {
+		.mask = mask,
+	};
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(command, 0, *r, params);
+
+	ret_val = host_command_process(&args);
+
+	return ret_val;
+}
+
+/**
+ * @brief TestPurpose: Verify EC_CMD_HOST_EVENT_CLEAR clear host command.
+ */
+ZTEST_USER(host_cmd_host_event_commands, test_host_event_clear__cmd)
+{
+	enum ec_status ret_val;
+	host_event_t events;
+	struct ec_response_host_event_mask response = { 0 };
+
+	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+	events = host_get_events();
+
+	zassert_true(events & (1 << (EC_HOST_EVENT_LID_OPEN - 1)),
+		     "events=0x%X", events);
+
+	ret_val = host_event_mask_cmd_helper(EC_CMD_HOST_EVENT_CLEAR, 1,
+					     &response);
+
+	zassert_equal(ret_val, EC_RES_SUCCESS, "Expected %d, returned %d",
+		      EC_RES_SUCCESS, ret_val);
+
+	events = host_get_events();
+	zassert_false(events & (1 << (EC_HOST_EVENT_LID_OPEN - 1)),
+		      "events=0x%X", events);
+}
+
+/**
+ * @brief TestPurpose: Verify EC_CMD_HOST_EVENT_CLEAR_B clear host command.
+ */
+ZTEST_USER(host_cmd_host_event_commands, test_host_event_clear_b_cmd)
+{
+	enum ec_status ret_val;
+	host_event_t events_b;
+
+	struct ec_response_host_event_mask response = { 0 };
+	struct ec_response_host_event result = { 0 };
+
+	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+
+	host_event_cmd_helper(EC_HOST_EVENT_GET, EC_HOST_EVENT_B, &result);
+	events_b = result.value;
+	zassert_true(events_b & (1 << (EC_HOST_EVENT_LID_OPEN - 1)),
+		     "events_b=0x%X", events_b);
+
+	ret_val = host_event_mask_cmd_helper(EC_CMD_HOST_EVENT_CLEAR_B, 1,
+					     &response);
+
+	zassert_equal(ret_val, EC_RES_SUCCESS, "Expected %d, returned %d",
+		      EC_RES_SUCCESS, ret_val);
+
+	host_event_cmd_helper(EC_HOST_EVENT_GET, EC_HOST_EVENT_B, &result);
+	events_b = result.value;
+	zassert_false(events_b & (1 << (EC_HOST_EVENT_LID_OPEN - 1)),
+		      "events_b=0x%X", events_b);
 }
