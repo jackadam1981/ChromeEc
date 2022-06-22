@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78478013_622c0903",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72ea3fc6_dbeef42d",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a1fb6ad_b76ba8cc",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-15T19:42:59Z",
       "side": 1,
       "message": "Since you can\u0027t just cast a void* to this struct and expect it to work due to endianness, why bother packing it?\n\nAlso, since this is only used in the emul, does it need to be in this header?",
+      "range": {
+        "startLine": 1221,
+        "startChar": 2,
+        "endLine": 1221,
+        "endChar": 10
+      },
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590a725b_69a6623f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "I thought it might be useful for future use in the PD stack itself since it currently treats this message type as an array of uint16_t\u0027s, which is wrong since the last field is a uint8_t, it\u0027s hard to read, and assumes a LE processor anyways. I\u0027d solve the endianness problem by using Zephyr\u0027s byteorder macros when accessing the struct members (https://docs.zephyrproject.org/apidoc/latest/byteorder_8h.html#ae4176f3e082f21488dedcd02b406cb43) so it\u0027d be like using htons() in the unix sockets API\n\n(Struct has since moved to https://crrev.com/c/3715697)",
+      "parentUuid": "1a1fb6ad_b76ba8cc",
       "range": {
         "startLine": 1221,
         "startChar": 2,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bcc9c72_c89cd6c7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2dd6099d_ee2d3242",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2da00c97_ff89163c",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-06-15T16:04:59Z",
       "side": 1,
       "message": "Why make this change?",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda2ac5c_5305cacc",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "Wanted to make sure all the fields were zeroed out while debugging. Might not be necessary in practice",
+      "parentUuid": "2da00c97_ff89163c",
       "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8c1146_51b40c9f",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "It\u0027s being set implicitly with the calloc, but since we changed to using chunking we should actually be encoding the payload size here",
+      "parentUuid": "59d365e3_00839127",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "491bbdac_c33d6224",
@@ -122,6 +218,24 @@
       "writtenOn": "2022-06-15T16:04:59Z",
       "side": 1,
       "message": "Remove these comments.",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f56cd9a_42bc155c",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "With pleasure, these are annoying",
+      "parentUuid": "491bbdac_c33d6224",
       "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9284151c_bfb472e9",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "79838bb5_f8de48e0",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2d1be4e_6b7f3978",
@@ -160,6 +292,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9577e313_d2b91367",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2d1be4e_6b7f3978",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4db45a11_211360e3",
@@ -173,6 +323,24 @@
       "writtenOn": "2022-06-15T16:04:59Z",
       "side": 1,
       "message": "These alloc functions are only used in emul_tcpci_partner_common.c. Do they even need to be in the header?",
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8331c328_99d2d9fc",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-22T01:55:59Z",
+      "side": 1,
+      "message": "The original alloc function was exported, so I followed suit. But no, it isn\u0027t being used anywhere. I will make them static.",
+      "parentUuid": "4db45a11_211360e3",
       "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
