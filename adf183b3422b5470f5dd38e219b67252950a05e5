@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d6d018_162348a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "FYI Scott: In-flight change to DPM state machine.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c4c99c_1878b28f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "Nit: You can OR these together into one call. There might be a situation where having these two clears not be atomic would change the behavior, but I can\u0027t immediately think of a realistic one, and it\u0027s probably not a big deal.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23a1739_1f9d8a48",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "This line has no effect because of the following line.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdfe86de_bf1b5b18",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "You should be able to use IS_ENABLED here (even for the HAS_TASK).",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5301d606_ec9a43b3",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "Should we also power off if we\u0027re on?",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414ec4fb_9f3faf32",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4445,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "Probably any of the possible events that an Alert can indicate would need to be handled by the DPM. So you could just make one new function `dpm_handle_alert` and pass in the whole ADO for parsing in the DPM. Just a thought. It seems nice to keep the DPM\u0027s API small, but I could go either way on this. I\u0027d probably lean more towards parsing in the DPM the more types of Alerts we handle.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6c0621_9fd2c2ef",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4972,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "Nit: I\u0027d remove the default comment. The actual value is right here. If it changes, the comment will need to be updated, or it will be wrong.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95bd4e2_a0cafbd8",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4974,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "What about CONFIG_USB_PD_LONG_PRESS_MAX_MS or similar? That way, it will be clear from references to this value, a) that it is an upper limit, and b) what the units are.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94cff18_e7d754d3",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "Nit: Putting this at the beginning would maintain the top-to-bottom ordering of this enum.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b6ac3c_75798a52",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "Nit: I\u0027d break this test up by alert type.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff6fad9f_863a8e01",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this part. The implementation doesn\u0027t have a check for rejecting short presses. Should nothing happen here because the press is short, or should nothing happen because the AP is already on?",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b6064f_ba4939b8",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "Can you construct these in a way that is human-readable here?",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4f7f7f_10cd0e6b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T00:22:35Z",
+      "side": 1,
+      "message": "We should probably clear the _received bits in the _after function, but it seems unnecessary to check that they\u0027ve been cleared after clearing them.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
