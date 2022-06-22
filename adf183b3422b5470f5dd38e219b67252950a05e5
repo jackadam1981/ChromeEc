@@ -105,6 +105,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b10f055a_04851def",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4445,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-22T21:15:04Z",
+      "side": 1,
+      "message": "I also tend to lean towards the DPM parsing the ADO itself.  This gets us closer to an interface like the spec describes, where the PE is just notifying the DPM and not thinking much about the message contents beyond that.",
+      "parentUuid": "414ec4fb_9f3faf32",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c6c0621_9fd2c2ef",
         "filename": "include/config.h",
         "patchSetId": 8
