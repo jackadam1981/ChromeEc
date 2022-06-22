@@ -16,6 +16,24 @@
       "message": "If tcpci_tcpc_alert requires a wait, should the wait be inside tcpci_tcpc_alert? This seems like something future test writers could trip over as well.",
       "revId": "94acef088b25ab84753947a0abf6b3471465201e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b219d55_0cb4e7c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:08:13Z",
+      "side": 1,
+      "message": "Since this is in the TCPM code I\u0027d rather write a wrapper. I\u0027d imagine that work being part of b/221439302",
+      "parentUuid": "c86f6721_625681cf",
+      "revId": "94acef088b25ab84753947a0abf6b3471465201e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
