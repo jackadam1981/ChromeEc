@@ -98,6 +98,7 @@ int cbi_get_fw_config(uint32_t *fw_config);
 int cbi_get_pcb_supplier(uint32_t *pcb_supplier);
 int cbi_get_ssfc(uint32_t *ssfc);
 int cbi_get_rework_id(uint64_t *id);
+int cbi_get_aux_data32(uint32_t *aux_data32);
 
 /**
  * Get data from CBI store
