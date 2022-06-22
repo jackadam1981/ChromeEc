@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1763d099_c4a792ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T21:12:22Z",
+      "side": 1,
+      "message": "Nothing but nits.",
+      "revId": "0edca963f38221500fcd4404a958ac79130962f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0505fe06_3ca67629",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T21:12:22Z",
+      "side": 1,
+      "message": "If you\u0027re going to refer to tables, then stipulate the spec version, because the table numbers can change when they add content.\n\nI would suggest instead referencing enums here (or macros, if that\u0027s what we have). The enum/macro definitions can reference the spec.",
+      "revId": "0edca963f38221500fcd4404a958ac79130962f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8ce243_100ba4bc",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T21:12:22Z",
+      "side": 1,
+      "message": "Nit: \"Optional\" is not quite accurate. You need to specify it, but it can be 0. Specify the unit, as above. Maybe change the parameter name to delay_ms.",
+      "revId": "0edca963f38221500fcd4404a958ac79130962f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14b1e99_8905f705",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T21:12:22Z",
+      "side": 1,
+      "message": "Is there some sort of Zephyr enum/typedef/concept with a name for this return value idiom? It seems tedious to have to explain it each time we do it.",
+      "revId": "0edca963f38221500fcd4404a958ac79130962f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
