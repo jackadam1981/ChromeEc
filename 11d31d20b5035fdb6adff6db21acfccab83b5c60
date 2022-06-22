@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb61ee5_db40e9aa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-22T22:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483703a5_cc7d3e8d",
+      "range": {
+        "startLine": 233,
+        "startChar": 8,
+        "endLine": 233,
+        "endChar": 31
+      },
+      "revId": "11d31d20b5035fdb6adff6db21acfccab83b5c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a93ede07_62feabba",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-17T19:51:15Z",
       "side": 1,
       "message": "We should use \u0027flags\u0027, right? Adding new fields require upreving the command version, which is tedious.",
+      "range": {
+        "startLine": 7604,
+        "startChar": 0,
+        "endLine": 7605,
+        "endChar": 17
+      },
+      "revId": "11d31d20b5035fdb6adff6db21acfccab83b5c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07716f8_5ac384d9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7605,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-22T22:54:36Z",
+      "side": 1,
+      "message": "Yup. Done.",
+      "parentUuid": "a93ede07_62feabba",
       "range": {
         "startLine": 7604,
         "startChar": 0,
