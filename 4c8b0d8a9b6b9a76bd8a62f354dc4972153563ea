@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38316a0c_7b737690",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-22T21:32:10Z",
+      "side": 1,
+      "message": "Nit - explicitly specify the payload index:\n```\nuint8_t payload[1] \u003d { [0] \u003d battery_index };\n```",
+      "revId": "4c8b0d8a9b6b9a76bd8a62f354dc4972153563ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "686e983d_827718be",
         "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
         "patchSetId": 1
