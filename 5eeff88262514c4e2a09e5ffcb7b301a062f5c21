@@ -46,6 +46,30 @@
       },
       "revId": "5eeff88262514c4e2a09e5ffcb7b301a062f5c21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54919b65_a8545dce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2022-06-22T17:21:18Z",
+      "side": 1,
+      "message": "That can be done -- I was thinking about making it opaque so it may be reused for different purpose by other projects, though.",
+      "parentUuid": "0a5b7b66_7f9b5c35",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "5eeff88262514c4e2a09e5ffcb7b301a062f5c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
