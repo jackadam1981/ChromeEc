@@ -1365,7 +1365,7 @@ extern struct jump_data mock_jump_data;
 #define CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 
 /* TODO(b:189855648): hard-code a few things here; move to zephyr? */
-#define IT83XX_USBPD_PHY_PORT_COUNT    2
+#define IT83XX_USBPD_PHY_PORT_COUNT CONFIG_SOC_IT8XXX2_USBPD_PHY_PORT_COUNT
 #endif
 
 #undef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
@@ -1466,9 +1466,9 @@ extern struct jump_data mock_jump_data;
 #endif /* CONFIG_PLATFORM_EC_USB_CHARGER */
 
 #undef CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT
-#ifdef CONFIG_PLATFORM_EC_USB_PD_ITE_ACTIVE_PORT_COUNT
+#ifdef CONFIG_SOC_USBPD_ITE_ACTIVE_PORT_COUNT
 #define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT \
-	CONFIG_PLATFORM_EC_USB_PD_ITE_ACTIVE_PORT_COUNT
+	CONFIG_SOC_USBPD_ITE_ACTIVE_PORT_COUNT
 #endif
 
 /* Remove PD_INT_C* task for ports managed by ITE embedded TCPC */
