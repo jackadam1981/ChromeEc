@@ -76,6 +76,9 @@ void connect_source_to_port(struct tcpci_partner_data *partner,
 			    const struct emul *tcpci_emul,
 			    const struct emul *charger_emul)
 {
+	/* Clear any received battery capacity info */
+	tcpci_partner_reset_battery_capability_state(partner);
+
 	set_ac_enabled(true);
 	zassume_ok(tcpci_partner_connect_to_tcpci(partner, tcpci_emul), NULL);
 
