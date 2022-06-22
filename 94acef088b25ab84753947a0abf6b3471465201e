@@ -34,6 +34,24 @@
       "parentUuid": "c86f6721_625681cf",
       "revId": "94acef088b25ab84753947a0abf6b3471465201e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2acae6_ee38699b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T18:29:02Z",
+      "side": 1,
+      "message": "That makes sense. I was thinking that that was an emulator function. I see you already have a TODO.\n\nI think the way this should actually work is that `tcpci_emul_set_reg` should result in the emulator raising the interrupt GPIO, and if the test needs to yield for the interrupt task to run, then the emulator code should have whatever sleep inside it.",
+      "parentUuid": "0b219d55_0cb4e7c0",
+      "revId": "94acef088b25ab84753947a0abf6b3471465201e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
