@@ -156,6 +156,24 @@
       "parentUuid": "8bb3553e_5cc68fa9",
       "revId": "1b7b70704842b11767cff99aabe5ede6ac5dc2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c75087a3_252b29b1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-22T21:44:43Z",
+      "side": 1,
+      "message": "I\u0027d accept either. I think Tristan\u0027s CL is almost ready to submit. If you leave it like this, leave a TODO.",
+      "parentUuid": "2d61d851_b0c3fe98",
+      "revId": "1b7b70704842b11767cff99aabe5ede6ac5dc2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
