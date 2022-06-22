@@ -130,7 +130,8 @@ extern "C" {
 
 /* The offset address of each type of data in mapped memory. */
 #define EC_MEMMAP_TEMP_SENSOR      0x00 /* Temp sensors 0x00 - 0x0f */
-#define EC_MEMMAP_FAN              0x10 /* Fan speeds 0x10 - 0x17 */
+#define EC_MEMMAP_FAN              0x10 /* Fan speeds 0x10 - 0x11 */
+#define EC_MEMMAP_FAN_2            0x12 /* Fan speeds 0x12 - 0x13 */
 #define EC_MEMMAP_TEMP_SENSOR_B    0x18 /* More temp sensors 0x18 - 0x1f */
 #define EC_MEMMAP_ID               0x20 /* 0x20 == 'E', 0x21 == 'C' */
 #define EC_MEMMAP_ID_VERSION       0x22 /* Version of data in 0x20 - 0x2f */
