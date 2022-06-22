@@ -16,6 +16,24 @@
       "message": "Tested with earliest hatch-kernelnext failure on stainless (R101-14542.0.0, kernel version 5.17.0.) and it passes.",
       "revId": "509af25bd34501b78f89584f2150b83d7d6076a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f989b4_fd0c0a03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-22T06:17:16Z",
+      "side": 1,
+      "message": "Based on b/234856729#comment5, are you sure that 5.15 doesn\u0027t change gpios too?",
+      "parentUuid": "820bafd8_b21786cc",
+      "revId": "509af25bd34501b78f89584f2150b83d7d6076a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
