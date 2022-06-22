@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d186814_5c85b950",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-22T15:39:25Z",
+      "side": 1,
+      "message": "Split this into 2 CLs.  1st CL add support to force power state.  2nd CL fixes motionsense host command tests.\n\nPlease also amend the commit header to be more specific about the change instead of recycling \"fix test order dependency\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "70c17647bd0beaffcf72e5e896ac0ee29fef836a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58e26893_09280c85",
+        "filename": "zephyr/test/drivers/src/host_cmd/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-22T15:39:25Z",
+      "side": 1,
+      "message": "Move the changes in this file to a separate CL.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 43
+      },
+      "revId": "70c17647bd0beaffcf72e5e896ac0ee29fef836a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
