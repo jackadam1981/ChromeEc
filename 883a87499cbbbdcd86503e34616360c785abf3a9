@@ -3,6 +3,195 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9286032e_7dab5576",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "subject should be no more than 50 characters.\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25900113_148aaef2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "Wrap the body text to 72 characters.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 73
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9ecada7_8dae1a84",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "Replace with TEST_USB_PORT",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d6a7e2_7ece8777",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "declare in top of function",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 7
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b4915d_b7b3e9bb",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "I think these are supposed to be declared in the top of the function.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae746e9_3bb7580b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "Battery being present or not present should be separate tests here. Maybe have a zassume_true(battery_is_present())?",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcca0d0f_b66299ad",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "Where does this number come from?",
+      "range": {
+        "startLine": 125,
+        "startChar": 33,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9161f1_c50ee15c",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "Will this ever be the case given we\u0027re running these tests on Zephyr enabled ECs only?",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05492cf5_27d1b6e1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "why are we shifting left by zero?",
+      "range": {
+        "startLine": 185,
+        "startChar": 9,
+        "endLine": 185,
+        "endChar": 10
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1858d81c_7f689b93",
         "filename": "zephyr/test/drivers/src/utils.c",
         "patchSetId": 1
@@ -14,6 +203,24 @@
       "writtenOn": "2022-06-22T14:39:04Z",
       "side": 1,
       "message": "This seems like something that should happen inside the partner library on every connection. The partner can\u0027t have received any battery info if it\u0027s not connected yet.",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c626856_0193083a",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-22T18:02:56Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1858d81c_7f689b93",
       "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
