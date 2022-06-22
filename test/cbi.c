@@ -186,6 +186,9 @@ DECLARE_EC_TEST(test_all_tags)
 	zassert_equal(cbi_set_board_info(CBI_TAG_REWORK_ID, &d8, sizeof(d8)),
 		      EC_SUCCESS, NULL);
 	count++;
+	zassert_equal(cbi_set_board_info(CBI_TAG_AUX_DATA32, &d8, sizeof(d8)),
+		      EC_SUCCESS, NULL);
+	count++;
 
 	/* Read out all */
 	zassert_equal(cbi_get_board_version(&d32), EC_SUCCESS, NULL);
@@ -219,6 +222,8 @@ DECLARE_EC_TEST(test_all_tags)
 	zassert_equal(cbi_get_pcb_supplier(&d32), EC_SUCCESS, NULL);
 	zassert_equal(d32, d8, "0x%x, 0x%x", d32, d8);
 	zassert_equal(cbi_get_ssfc(&d32), EC_SUCCESS, NULL);
+	zassert_equal(d32, d8, "0x%x, 0x%x", d32, d8);
+	zassert_equal(cbi_get_aux_data32(&d32), EC_SUCCESS, NULL);
 	zassert_equal(d32, d8, "0x%x, 0x%x", d32, d8);
 	zassert_equal(cbi_get_rework_id(&d64), EC_SUCCESS, NULL);
 	/* This should be zassert_equal, but for EC test fmt is always "0x%x"
