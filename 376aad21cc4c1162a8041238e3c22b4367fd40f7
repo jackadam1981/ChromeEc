@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "914e3656_ac16d511",
+        "filename": "power/power_status.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-22T20:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85ff4218_bc2e682b",
+      "revId": "376aad21cc4c1162a8041238e3c22b4367fd40f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1548dbd2_18c7a3e1",
+        "filename": "power/power_status.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-22T20:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e95c24_2d2da4fe",
+      "range": {
+        "startLine": 182,
+        "startChar": 43,
+        "endLine": 182,
+        "endChar": 47
+      },
+      "revId": "376aad21cc4c1162a8041238e3c22b4367fd40f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f44bc24e_420168ae",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-06-17T19:21:23Z",
       "side": 1,
       "message": "I think this is unnecessary (see prior CL). If PROCHOT# does get cleared twice, it shouldn\u0027t hurt anything",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 48
+      },
+      "revId": "376aad21cc4c1162a8041238e3c22b4367fd40f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "980f3b0e_3a169e13",
+        "filename": "power/power_status.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-22T20:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44bc24e_420168ae",
       "range": {
         "startLine": 189,
         "startChar": 5,
