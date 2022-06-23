@@ -16,7 +16,7 @@
  * RW only, no flash
  * +-------------------- 0xaf000 + 0
  * | ROM vectortable, .text, .rodata, .data LMA
- * +-------------------- 0xaf000 + 0xb000 = 0xba000
+ * +-------------------- 0xaf000 + 0xc000 = 0xbb000
  * | RAM .bss, .data
  * +-------------------- 0xaf000 + 0xfc00 = 0xbec00
  * | Reserved (padding for 1k-alignment)
@@ -32,7 +32,7 @@
  * The core address 0x0~0x10000 are translated to 0xaf000~0xbf000.
  */
 #define CONFIG_ROM_BASE 0x0
-#define CONFIG_RAM_BASE 0xb000
+#define CONFIG_RAM_BASE 0xc000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
 #define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - \
 			 CONFIG_RAM_BASE)
