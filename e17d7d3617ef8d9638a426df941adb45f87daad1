@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1590ad99_fd79914f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-06-23T00:23:59Z",
+      "side": 1,
+      "message": "We see errors on chromeos-5.15 about unhandled vb reg 11. Looks like this will fix it.",
+      "revId": "e17d7d3617ef8d9638a426df941adb45f87daad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
