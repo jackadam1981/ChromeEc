@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef04eab9_261813bd",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-23T19:18:21Z",
+      "side": 1,
+      "message": "+1\n\nI think `CONFIG_PLATFORM_EC_POWERSEQ` implies `!defined(CONFIG_AP_PWRSEQ)` as we won\u0027t enable 2 duplicated power sequence code. It is more clear to combine these 2 conditions, i.e. use `CONFIG_PLATFORM_EC_POWERSEQ` to replace all `!defined(CONFIG_AP_PWRSEQ)` as `CONFIG_PLATFORM_EC_POWERSEQ` is a subset.",
+      "parentUuid": "381b18f0_e93f9081",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 43
+      },
+      "revId": "e99a5d17d8a118ead5658d1d6e3f716f788612b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43cf3fab_9628a154",
         "filename": "zephyr/shim/src/espi.c",
         "patchSetId": 1
