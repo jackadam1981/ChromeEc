@@ -1068,6 +1068,7 @@ static int tcpci_get_fault(int port, int *fault)
 
 static int tcpci_handle_fault(int port, int fault)
 {
+	CPRINTS("%s: handling fault on port C%d", __func__, port);
 	int rv = EC_SUCCESS;
 
 	CPRINTS("C%d FAULT 0x%02X detected", port, fault);
