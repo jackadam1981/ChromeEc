@@ -51,6 +51,24 @@
       "parentUuid": "0ef2a3ec_3ce13dfd",
       "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0bd94c_4132f539",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-23T00:58:23Z",
+      "side": 1,
+      "message": "It should be 1. I believe there will be some other CLs to remove the typec related setting. I\u0027ll defer this question to the ODM team.",
+      "parentUuid": "f7aace36_deae0ed5",
+      "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
