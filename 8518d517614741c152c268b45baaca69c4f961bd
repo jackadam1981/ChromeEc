@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "045c693b_24797318",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1544274
+      },
+      "writtenOn": "2022-06-23T21:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5966815_e3688e48",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "8518d517614741c152c268b45baaca69c4f961bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1c92647_f8f37f46",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-23T20:46:05Z",
       "side": 1,
       "message": "Can you be more explicit on the command your ran and the device you tested it on?\n\nFor example,\n\n```\nTEST\u003dOn skyrim device, ran \"flash_fp_mcu /path/to/firmware\" and tested fingerprint authentication in the UI\n```\n\n(or whatever you actually did)",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "8518d517614741c152c268b45baaca69c4f961bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb617c57_42c254b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1544274
+      },
+      "writtenOn": "2022-06-23T21:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1c92647_f8f37f46",
       "range": {
         "startLine": 11,
         "startChar": 5,
