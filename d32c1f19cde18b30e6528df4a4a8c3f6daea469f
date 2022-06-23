@@ -33,6 +33,24 @@
       "message": "Was it determined that a full TCPC init is really necessary after hard reset?  Has the vendor confirmed that the chip requires this? \n\nThe alternative approach could be to confirm whether we could just restore the mask register and move on.  We may want to enable it for just this family of chips to avoid regressing other platforms, but it seems like it would generally save time to avoid a full re-init.",
       "revId": "d32c1f19cde18b30e6528df4a4a8c3f6daea469f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c173295e_967f65d6",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-06-23T05:37:17Z",
+      "side": 1,
+      "message": "I will check vendor soon.",
+      "parentUuid": "d0ff19e4_b9917434",
+      "revId": "d32c1f19cde18b30e6528df4a4a8c3f6daea469f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
