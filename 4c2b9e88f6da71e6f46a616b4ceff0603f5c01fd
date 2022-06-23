@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e36c3cd_bb396c3f",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-23T21:30:50Z",
+      "side": 1,
+      "message": "Remove the TODO and link to the legacy documentation: ../configuration/leds.md.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "4c2b9e88f6da71e6f46a616b4ceff0603f5c01fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84bd9c60_8d8487f2",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-23T21:30:50Z",
+      "side": 1,
+      "message": "Organize this section as follows\n## Devicetree Nodes\nLEDs are configured in two steps...\n\n### Configure LED Colors\nThe LED colors are configured using either GPIO based LEDs or PWM based LEDs.\n\n#### GPIO based LEDs\n...\n#### PWM based LEDs\n...\n\n### Configure LED Policies\ncros-ec,led-policy nodes describe the LED...",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "4c2b9e88f6da71e6f46a616b4ceff0603f5c01fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b858aa_339962eb",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-23T21:30:50Z",
+      "side": 1,
+      "message": "Wrap with single back-ticks.",
+      "range": {
+        "startLine": 43,
+        "startChar": 32,
+        "endLine": 43,
+        "endChar": 53
+      },
+      "revId": "4c2b9e88f6da71e6f46a616b4ceff0603f5c01fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910e27cc_4218a8f0",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-23T21:30:50Z",
+      "side": 1,
+      "message": "It would be helpful to describe the hardware configuration here:\n\ne.g. \"For this example, the board contains dual-channel LED, one channel turns on the blue color, and one channel turns on the yellow color.  To set the LED color to amber, the yellow channel is enabled and the blue channel is disabled\".",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "4c2b9e88f6da71e6f46a616b4ceff0603f5c01fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9896884_ec314527",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-06-23T21:30:50Z",
+      "side": 1,
+      "message": "Same here - provide details about the hardware configuration.  Also note that PWM LEDs can set a intensity percentage, providing finer color control over GPIO LEDs.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 7
+      },
+      "revId": "4c2b9e88f6da71e6f46a616b4ceff0603f5c01fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
