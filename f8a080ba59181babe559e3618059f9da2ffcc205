@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aae238e_a4801da1",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T21:56:14Z",
+      "side": 1,
+      "message": "Going to mark this as resolved but feel free to bring up over in https://crrev.com/c/3715697 where this code moved to.",
+      "parentUuid": "590a725b_69a6623f",
+      "range": {
+        "startLine": 1221,
+        "startChar": 2,
+        "endLine": 1221,
+        "endChar": 10
+      },
+      "revId": "f8a080ba59181babe559e3618059f9da2ffcc205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dd6099d_ee2d3242",

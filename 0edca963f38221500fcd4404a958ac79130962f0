@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8044699_7164e41a",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T21:56:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0505fe06_3ca67629",
+      "revId": "0edca963f38221500fcd4404a958ac79130962f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da8ce243_100ba4bc",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07eb61fa_451c5ad5",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T21:56:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da8ce243_100ba4bc",
+      "revId": "0edca963f38221500fcd4404a958ac79130962f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d14b1e99_8905f705",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-06-22T21:12:22Z",
       "side": 1,
       "message": "Is there some sort of Zephyr enum/typedef/concept with a name for this return value idiom? It seems tedious to have to explain it each time we do it.",
+      "revId": "0edca963f38221500fcd4404a958ac79130962f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72eca3b7_9614b128",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T21:56:14Z",
+      "side": 1,
+      "message": "I did some searches for Zephyr return code conventions. They seem to like negative errno\u0027s, which this is using too, but those are just ints (and \"success\" isn\u0027t one of them) so I don\u0027t have a singular enum type I could specify here...",
+      "parentUuid": "d14b1e99_8905f705",
       "revId": "0edca963f38221500fcd4404a958ac79130962f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
