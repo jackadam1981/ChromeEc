@@ -447,10 +447,12 @@ void board_set_current_limit(void)
 {
 	const int no_battery_current_limit_override_ma = 6000;
 	/*
-	 * When there is no battery, override charger current limit to
-	 * prevent brownout during boot.
+	 * When there is no battery or battery is bad, override charger
+	 * current limit to prevent brownout during boot.
 	 */
-	if (battery_is_present() == BP_NO) {
+	if (battery_is_present() == BP_NO ||
+		battery_get_disconnect_state() == BATTERY_DISCONNECT_ERROR ||
+		battery_get_disconnect_state() == BATTERY_DISCONNECTED) {
 		ccprints("No Battery Found - Override Current Limit to %dmA",
 			 no_battery_current_limit_override_ma);
 		charger_set_input_current_limit(
@@ -459,3 +461,5 @@ void board_set_current_limit(void)
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_set_current_limit,
 	     HOOK_PRIO_INIT_EXTPOWER);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_set_current_limit,
+	     HOOK_PRIO_DEFAULT);
