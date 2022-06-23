@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "381b18f0_e93f9081",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-23T09:58:53Z",
+      "side": 1,
+      "message": "Does it make sense to hoist this into the #if above? Otherwise `ec_signal` is dead when this option is disabled.",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 43
+      },
+      "revId": "e99a5d17d8a118ead5658d1d6e3f716f788612b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43cf3fab_9628a154",
         "filename": "zephyr/shim/src/espi.c",
         "patchSetId": 1
@@ -79,6 +102,24 @@
       "side": 1,
       "message": "Possibly both could be enabled (e.g a system with legacy power sequencing), or none, or either.\nPotentially I could have used a separate callback for that particular signal, but that would have invoked both callbacks for each VW signal change, which seemed excessive.\nThe change is to essentially treat the PLTRST VW signal specially (when that CONFIG is enabled), regardless which kind of power sequence we are doing.",
       "parentUuid": "43cf3fab_9628a154",
+      "revId": "e99a5d17d8a118ead5658d1d6e3f716f788612b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f67d6e_bf2dbffc",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-23T09:58:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8df53bb8_870ff9af",
       "revId": "e99a5d17d8a118ead5658d1d6e3f716f788612b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
