@@ -24,9 +24,11 @@ static uint8_t init_done, tx_started;
 
 void uart_init(void)
 {
-	const uint32_t baud_rate = CONFIG_UART_BAUD_RATE;
+	/* const uint32_t baud_rate = CONFIG_UART_BAUD_RATE; */
+	const uint32_t baud_rate = 921600;
 	const uint32_t uart_clock = 26000000;
-	const uint32_t div = DIV_ROUND_NEAREST(uart_clock, baud_rate * 16);
+	/* const uint32_t div = DIV_ROUND_NEAREST(uart_clock, baud_rate * 16); */
+	uint32_t div;
 
 	uart_init_pinmux();
 
@@ -37,7 +39,13 @@ void uart_init(void)
 	/* Line control: parity none, 8 bit, 1 stop bit */
 	UART_LCR(UARTN) = UART_LCR_WLEN8;
 	/* For baud rate <= 115200 */
-	UART_HIGHSPEED(UARTN) = 0;
+	if (baud_rate == 921600) {
+		div = DIV_ROUND_NEAREST(uart_clock, baud_rate * 4);
+		UART_HIGHSPEED(UARTN) = 2;
+	} else {
+		div = DIV_ROUND_NEAREST(uart_clock, baud_rate * 16);
+		UART_HIGHSPEED(UARTN) = 0;
+	}
 
 	/* DLAB start */
 	UART_LCR(UARTN) |= UART_LCR_DLAB;
