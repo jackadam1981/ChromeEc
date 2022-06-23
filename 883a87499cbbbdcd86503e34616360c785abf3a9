@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19535dcd_7f154a39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9286032e_7dab5576",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25900113_148aaef2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-22T18:02:56Z",
       "side": 1,
       "message": "Wrap the body text to 72 characters.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 73
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99cf9f82_83d6172d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25900113_148aaef2",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "984c2021_203fe2fa",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "This is something I hope that Twister could help with soon. Idea is we could parameterize all of our PD tests (via a config option like CONFIG_TEST_USB_PD_REV) so they run with rev 2 and again with 3 (though some tests, like this one, would be rev 3-only). For now I\u0027d like to just keep rev 3 tests here in this file.",
+      "parentUuid": "766f29a6_1d6de1e8",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9ecada7_8dae1a84",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
         "patchSetId": 1
@@ -71,6 +131,30 @@
       "writtenOn": "2022-06-22T18:02:56Z",
       "side": 1,
       "message": "Replace with TEST_USB_PORT",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68dbdf95_032b9a27",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9ecada7_8dae1a84",
       "range": {
         "startLine": 43,
         "startChar": 13,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97ef438_15e158de",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "see below",
+      "parentUuid": "d1d6a7e2_7ece8777",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 7
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06b4915d_b7b3e9bb",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-06-22T18:02:56Z",
       "side": 1,
       "message": "I think these are supposed to be declared in the top of the function.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ab5c26_7153b161",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "That is a very old C convention from a time when compilers needed to see all the automatic variables upfront. If the presubmit checker allows it, I strongly prefer declaring these near the point of use for readability.",
+      "parentUuid": "06b4915d_b7b3e9bb",
       "range": {
         "startLine": 103,
         "startChar": 1,
@@ -164,6 +296,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b3f3cfc_3b1fb163",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "zassume: Will failing on a zassume discount the entire test or just exit the test early? Everything above this line is still valid with or without the battery.\n\nnesting: Yeah, I agree. This is straight from how the PD stack calculates it (with some cleanup) and I replicated it here to cover all of our bases. If we want to test these separately we have to add a way to mock battery_is_present() and the memmap function. Should we do that?",
+      "parentUuid": "eae746e9_3bb7580b",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcca0d0f_b66299ad",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
         "patchSetId": 1
@@ -175,6 +325,30 @@
       "writtenOn": "2022-06-22T18:02:56Z",
       "side": 1,
       "message": "Where does this number come from?",
+      "range": {
+        "startLine": 125,
+        "startChar": 33,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27dbdcc2_692e33d3",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "That\u0027s the conversion factor for obtaining deciwatthours (0.1Wh, the units PD uses) from millivolts and milliamphours. Divide by a million (\u003d1000*1000) to get Wh and multiply by 10 for dWh",
+      "parentUuid": "dcca0d0f_b66299ad",
       "range": {
         "startLine": 125,
         "startChar": 33,
@@ -198,6 +372,24 @@
       "writtenOn": "2022-06-22T18:02:56Z",
       "side": 1,
       "message": "Will this ever be the case given we\u0027re running these tests on Zephyr enabled ECs only?",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e39a5e5_bb308070",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "Unclear; its based on HAS_TASK_HOSTCMD and whether we can pull values form the memmap. That may or may not be correlated with running on Zephyr. I will ask Keith.",
+      "parentUuid": "5e9161f1_c50ee15c",
       "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -256,6 +448,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "1858d81c_7f689b93",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "524683db_0435e071",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-23T00:16:57Z",
+      "side": 1,
+      "message": "I agree and will move it somewhere there, but in the previous CL",
+      "parentUuid": "4c626856_0193083a",
       "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
