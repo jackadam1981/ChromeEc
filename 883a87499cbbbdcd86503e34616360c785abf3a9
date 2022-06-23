@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa84e95e_21ff8498",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-23T21:49:19Z",
+      "side": 1,
+      "message": "Since nothing in this files appears specific to a 5V 3A source, I would suggest naming it something related to PD 3.0 new message flows.",
+      "parentUuid": "984c2021_203fe2fa",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9ecada7_8dae1a84",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
         "patchSetId": 1
@@ -259,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ad14bb_1637f84c",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-23T21:49:19Z",
+      "side": 1,
+      "message": "I agree with your sentiment. But the Linux style guide doesn\u0027t. I\u0027m a bit surprised this got past checkpatch.pl. If you ran pre-upload checks normally, then I\u0027m OK with this.",
+      "parentUuid": "d5ab5c26_7153b161",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eae746e9_3bb7580b",
@@ -314,6 +356,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2f26d34_7bc0ce4a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-23T21:49:19Z",
+      "side": 1,
+      "message": "The real right way to separate the tests would be use predicates for each test based on `HAS_TASK_HOSTCMD` and some kind of devicetree check for a battery. Then we\u0027d Twister this suite across configs/devicetrees representing the different combos we care about.\n\nAs it stands, we only have one config and devicetree for this suite. So are the non-battery, non-host command branches in this test even running? Does this test cover those branches in the EC code? If not, I\u0027d just leave those out and put TODOs here if you want.",
+      "parentUuid": "6b3f3cfc_3b1fb163",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcca0d0f_b66299ad",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
         "patchSetId": 1
@@ -349,6 +409,30 @@
       "side": 1,
       "message": "That\u0027s the conversion factor for obtaining deciwatthours (0.1Wh, the units PD uses) from millivolts and milliamphours. Divide by a million (\u003d1000*1000) to get Wh and multiply by 10 for dWh",
       "parentUuid": "dcca0d0f_b66299ad",
+      "range": {
+        "startLine": 125,
+        "startChar": 33,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cded2ad4_e10a0600",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-23T21:49:19Z",
+      "side": 1,
+      "message": "IMO, this deserves at least a comment. The typical reader will not be aware of the units of the memmap host command, much less the PD message. I\u0027d also suggest give `design_volt`, `expected_design_cap`, etc. suffixes to indicate their units, e.g. `_mw`.\n\nAnd type out `1000 * 1000 / 10`.",
+      "parentUuid": "27dbdcc2_692e33d3",
       "range": {
         "startLine": 125,
         "startChar": 33,
