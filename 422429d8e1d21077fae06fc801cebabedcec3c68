@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7fad722_5ca1f455",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-23T15:03:25Z",
+      "side": 1,
+      "message": "Let\u0027s wait until the HW design is locked down. From the today\u0027s meeting, it looks like there are some discussion about the power design.",
+      "revId": "422429d8e1d21077fae06fc801cebabedcec3c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32de79b8_43eed83d",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-23T15:03:25Z",
+      "side": 1,
+      "message": "The design should only have one typec",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 19
+      },
+      "revId": "422429d8e1d21077fae06fc801cebabedcec3c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
