@@ -411,3 +411,16 @@ static void board_do_chipset_suspend(void)
 	gpio_set_level(GPIO_EN_KB_BL, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_do_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+#ifdef CONFIG_CHIPSET_RESET_HOOK
+static void board_do_chipset_reset(void)
+{
+        CPRINTS("board_do_chipset_reset() enter");
+	CPRINTS("board_do_chipset_reset() power off and power on SSD");
+	gpio_set_level(GPIO_EN_PP3300_SSD, 0);
+	usleep(10 * MSEC);
+	gpio_set_level(GPIO_EN_PP3300_SSD, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESET, board_do_chipset_reset, HOOK_PRIO_DEFAULT);
+#endif
+

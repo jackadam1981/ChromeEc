@@ -9,6 +9,9 @@
 
 #include "baseboard.h"
 
+#define CONFIG_BRINGUP
+#define CONFIG_CHIPSET_RESET_HOOK
+
 /* Optional features */
 #define CONFIG_LTO
 #define CONFIG_PRESERVE_LOGS

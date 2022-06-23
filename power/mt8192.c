@@ -179,6 +179,9 @@ void chipset_reset(enum chipset_shutdown_reason reason)
 	GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
 	usleep(SYS_RST_PULSE_LENGTH);
 	GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
+#ifdef CONFIG_CHIPSET_RESET_HOOK
+	 hook_notify(HOOK_CHIPSET_RESET);
+#endif
 }
 
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
