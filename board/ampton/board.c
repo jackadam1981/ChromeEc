@@ -418,6 +418,31 @@ static void board_customize_usbc_mux(uint32_t board_version)
 	}
 }
 
+#define POWER_SIGNAL_TIMEOUT_MS 6000
+#define POWER_SIGNAL_TIMEOUT_COUNT \
+	(POWER_SIGNAL_TIMEOUT_MS / HOOK_TICK_INTERVAL_MS)
+static int power_signal_monitor_count;
+static void slp3_sl4_pltrst_monitor(void)
+{
+	if (power_get_state() == POWER_S0) {
+		if (!gpio_get_level(GPIO_PCH_PLTRST_L) &&
+			gpio_get_level(GPIO_PCH_SLP_S4_L) &&
+			gpio_get_level(GPIO_PCH_SLP_S3_L)) {
+			power_signal_monitor_count++;
+		} else {
+			power_signal_monitor_count = 0;
+		}
+
+		if (power_signal_monitor_count > POWER_SIGNAL_TIMEOUT_COUNT) {
+			power_signal_monitor_count = 0;
+			chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
+		}
+	} else {
+		power_signal_monitor_count = 0;
+	}
+}
+DECLARE_HOOK(HOOK_TICK, slp3_sl4_pltrst_monitor, HOOK_PRIO_LAST);
+
 /* Read CBI from i2c eeprom and initialize variables for board variants */
 static void cbi_init(void)
 {
