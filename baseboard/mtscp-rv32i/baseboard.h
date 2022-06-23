@@ -67,6 +67,12 @@
  * ---+-------------------- (5) CONFIG_DRAM_SIZE + DRAM_TOTAL_SIZE (NA)
  *
  *     base       size
+ * MT8188
+ * (1) 0x50000000 0x500000
+ * (2) 0x50500000 0
+ * (3) 0x50500000 0
+ * (4) 0x50500000 0xF00000
+ * (5) 0x51400000
  * MT8192
  * (1) 0x10000000 0x500000
  * (2) 0x10500000 0
@@ -89,6 +95,21 @@
 #define CONFIG_PANIC_DRAM_BASE (DRAM_NC_BASE + DRAM_NC_SIZE)
 /* base of (4) */
 #define KERNEL_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_DRAM_SIZE)
+
+#if defined(CHIP_VARIANT_MT8188)
+/* base of (1) */
+#define CONFIG_DRAM_BASE 0x50000000
+/* Shared memory address in AP physical address space. */
+#define CONFIG_DRAM_BASE_LOAD 0x50000000
+/* size of (2) */
+#define DRAM_NC_SIZE 0
+/* size of (3) */
+#define CONFIG_PANIC_DRAM_SIZE 0
+/* size of (4) */
+#define KERNEL_SIZE 0xF00000
+/* DRAM total size for (5) */
+#define DRAM_TOTAL_SIZE 0x01400000 /* 20 MB */
+#endif /* CHIP_VARIANT_MT8192 */
 
 #if defined(CHIP_VARIANT_MT8192)
 /* base of (1) */
