@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede8a746_357e6ac7",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c4c99c_1878b28f",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c23a1739_1f9d8a48",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-22T00:22:35Z",
       "side": 1,
       "message": "This line has no effect because of the following line.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04ef75a6_9ecf1271",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Thanks for catching this, I removed the timer enable line",
+      "parentUuid": "c23a1739_1f9d8a48",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08ee4e43_32b18be6",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Testing this with make try_build_boards, it looks like we need to use ifdef to prevent an implicit declaration error if the function is declared behind a config. But if the function is declared and not defined, either ifdef of IS_ENABLED will work to prevent an undefined reference error.\n\nIn this case, chipset_power_on is declared in chipset.h but only if CONFIG_AP_POWER_CONTROL is defined. So, we need to use ifdef to check that CONFIG_AP_POWER_CONTROL is defined before calling it. It is defined in power_button_x86.c and qcom.c, so IS_ENABLED will work for the rest of the conditions here to make sure we don\u0027t call it if it\u0027s declared but never defined.",
+      "parentUuid": "fdfe86de_bf1b5b18",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5301d606_ec9a43b3",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 8
@@ -82,6 +136,24 @@
       "writtenOn": "2022-06-22T00:22:35Z",
       "side": 1,
       "message": "Should we also power off if we\u0027re on?",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5289fce9_456d7ccb",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Yes, but the the EC has limited control over the AP power state. So, docks should be sending both USB PD Alerts and HID events on a button press. Across suspending, resuming, shutting down and starting up, only starting up needs to be handled by the EC because the AP will not be able to process HID events in G3. Shutting down, suspending and resuming should be handled by the AP in response to HID events from the dock. I still need to update the design dock to reflect this.",
+      "parentUuid": "5301d606_ec9a43b3",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b428ec_22b488d3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4445,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Done. I moved this all to the DPM, now the PE will only call `dpm_handle_alert`",
+      "parentUuid": "b10f055a_04851def",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c6c0621_9fd2c2ef",
@@ -134,6 +224,24 @@
       "writtenOn": "2022-06-22T00:22:35Z",
       "side": 1,
       "message": "Nit: I\u0027d remove the default comment. The actual value is right here. If it changes, the comment will need to be updated, or it will be wrong.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb74a271_c06675ae",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4972,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c6c0621_9fd2c2ef",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +263,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d100753b_4b1ba987",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4974,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c95bd4e2_a0cafbd8",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c94cff18_e7d754d3",
@@ -168,6 +294,24 @@
       "writtenOn": "2022-06-22T00:22:35Z",
       "side": 1,
       "message": "Nit: Putting this at the beginning would maintain the top-to-bottom ordering of this enum.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63fe15e9_70c86cb3",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c94cff18_e7d754d3",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -189,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a2cff2_367ecebe",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Done, there are now 2 tests.\n\n1. verify_alert_on_power_state_change - where we are sending alerts due to a power state change\n\n2. verify_startup_on_usb_pd_power_button - where we are receiving alerts from the partner. Note that this does lead to a power state change, so there in both tests we are sending alerts and going through the Alert-\u003eGet_Status-\u003eStatus transaction with the partner. The main difference is that in verify_alert_on_power_state_change we initiate the transaction but in verify_startup_on_usb_pd_power_button the partner initiates it.",
+      "parentUuid": "15b6ac3c_75798a52",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff6fad9f_863a8e01",
@@ -202,6 +364,24 @@
       "writtenOn": "2022-06-22T00:22:35Z",
       "side": 1,
       "message": "I\u0027m not sure I understand this part. The implementation doesn\u0027t have a check for rejecting short presses. Should nothing happen here because the press is short, or should nothing happen because the AP is already on?",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e918fa1e_b10c135a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "This is a remnant from an earlier version of this CL (patchset 4) which included shutting down the AP on long button presses. Then, it was right before a long button press so it was to show that while the device was awake, a short button press doesn\u0027t do anything but a long button press will shutdown the AP.\n\nI left it in after removing AP shutdown to show that short presses will do nothing when the device is awake, but wake the device when it is in G3/S5. But, you\u0027re right that now the comment is misleading.\n\nTo answer your question - nothing should happen because the AP is already on. I changed the comment accordingly.\n\nAlso, I added another press to this test so now there are 3. (1) valid press while AP is on - nothing should happen. (2) Invalid press while AP is off - nothing should happen. (3) Valid press while AP is off - device should wake.",
+      "parentUuid": "ff6fad9f_863a8e01",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -223,6 +403,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5327ed86_eec221fe",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "Done.\n\nPress is changed from 0x80000002 to ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_PRESS and release is changed from 0x80000003 ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_RELEASE",
+      "parentUuid": "13b6064f_ba4939b8",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f4f7f7f_10cd0e6b",
@@ -236,6 +434,24 @@
       "writtenOn": "2022-06-22T00:22:35Z",
       "side": 1,
       "message": "We should probably clear the _received bits in the _after function, but it seems unnecessary to check that they\u0027ve been cleared after clearing them.",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2ff7e9_7ec8e8e1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-23T17:29:11Z",
+      "side": 1,
+      "message": "I moved the first and last clearing of alert and status received bits to the before and after function but am still checking that the bits were cleared at a few points throughout the tests. This is to confirm that the bits being asserted later on in the test are caused by the PE sending messages and not by some bug in the tcpci_src_emul_clear_*_received preventing them from ever being de-asserted.",
+      "parentUuid": "4f4f7f7f_10cd0e6b",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
