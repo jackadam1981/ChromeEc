@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c92647_f8f37f46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-23T20:46:05Z",
+      "side": 1,
+      "message": "Can you be more explicit on the command your ran and the device you tested it on?\n\nFor example,\n\n```\nTEST\u003dOn skyrim device, ran \"flash_fp_mcu /path/to/firmware\" and tested fingerprint authentication in the UI\n```\n\n(or whatever you actually did)",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "8518d517614741c152c268b45baaca69c4f961bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad934c0a_66d1860b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-23T20:46:05Z",
+      "side": 1,
+      "message": "We\u0027re in the process of migrating this script to Python. Can you add the equivalent change to the top of [this CL stack](https://crrev.com/c/3405642)?",
+      "range": {
+        "startLine": 677,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 1
+      },
+      "revId": "8518d517614741c152c268b45baaca69c4f961bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
