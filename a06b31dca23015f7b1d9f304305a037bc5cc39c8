@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef21466e_260fb2f6",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-23T17:13:35Z",
+      "side": 1,
+      "message": "I don\u0027t know of any standard that says we should but I also don\u0027t know of any reason that we shouldn\u0027t! I moved this one under `CONFIG_PRINTF_LEGACY_LI_FORMAT` and likely end up merging the two together anyway.",
+      "parentUuid": "3535c03c_7e2320aa",
+      "revId": "a06b31dca23015f7b1d9f304305a037bc5cc39c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0244acdb_609604e0",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8199d1_564940d6",
+        "filename": "board/nocturne_fp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-23T17:13:35Z",
+      "side": 1,
+      "message": "Same comment about moving and merging 😊",
+      "parentUuid": "0244acdb_609604e0",
+      "revId": "a06b31dca23015f7b1d9f304305a037bc5cc39c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc27fd91_97e105d6",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-06-22T03:18:31Z",
       "side": 1,
       "message": "nit: `bool`",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 4
+      },
+      "revId": "a06b31dca23015f7b1d9f304305a037bc5cc39c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b49f6f_06d5fa7d",
+        "filename": "test/printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-23T17:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc27fd91_97e105d6",
       "range": {
         "startLine": 306,
         "startChar": 1,

@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ef3abc_70fdfcd1",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-23T17:13:35Z",
+      "side": 1,
+      "message": "\u003e Can you do this?\n\u003e  if (!IS_ENABLED(\n\u003e     CONFIG_... \u0026\u0026\n\u003e     )\nSadly, no. The alignment and open paren makes 38 characters and the name is 44 characters! 😮 \n\n\u003e Worst case we can ignore the long line presubmit error. I\u0027d rather have a good name than try to force it to fit within 80 characters\nAgreed. I think we can find a shorter name that doesn\u0027t impact readability.\n\nI\u0027m going to close out this thread to reduce confusion and either get the name to fit or just accept that it doesn\u0027t.",
+      "parentUuid": "643f1e60_eeef2573",
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40eb79b1_9a30feb2",
@@ -175,6 +193,24 @@
       "side": 1,
       "message": "Looks like all of the affected boards are ones that we work on. The listed nucleo boards are development boards from ST that used the same MCU as our boards, so it looks like any changes only affect us. See [this table](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md#hardware).\n\nLooking at the blame history, it looks like [that config might have been added for the same reason](https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/ec/+/5e93965e944370748a9d114e6de44c8bfe09047e) (vpalatin@ did most of the original FPMCU work).\n\nI haven\u0027t looked at this closely, but the name of the config implies that `%li` is a \"legacy format\". Is that the case? If it\u0027s not a legacy format, then combining them makes sense.",
       "parentUuid": "bf7063f1_63d13d9b",
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "993cb7ce_a2c81523",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3627,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-23T17:13:35Z",
+      "side": 1,
+      "message": "\u003e Looks like all of the affected boards are ones that we work on. The listed nucleo boards are development boards from ST that used the same MCU as our boards, so it looks like any changes only affect us. See  this table .\n\nOh, I didn\u0027t realize the Nucleo boards were the MCU dev boards. That definitely reduces the risk of changes here.\n\n\u003e I haven\u0027t looked at this closely, but the name of the config implies that  %li  is a \"legacy format\". Is that the case? If it\u0027s not a legacy format, then combining them makes sense.\n\nThe name \"legacy format\" is a bit misleading because prior to disabling `%li` it was explicitly assumed 64-bit ints. I suspect the intent was actually \"standard printf format\" rather than \"legacy printf format\" but it\u0027s hard to say for sure.\n\nI was initially hesitant to mess with this format but based on what we\u0027ve seen in here I think we can merge them without issue.",
+      "parentUuid": "caeeb378_4ebfe79c",
       "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

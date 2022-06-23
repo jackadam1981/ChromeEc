@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8752ee51_d6c74114",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-23T17:13:35Z",
+      "side": 1,
+      "message": "\u003e We have the config name in a couple of threads\nI closed out the other thread about long lines (due to the long name) to reduce confusion. \n\n\u003e just wanted to follow up here to say that for readability it is definitely better to have positive name like you suggested than the negative name ( DISABLE ) that I suggested: http://go/tott/530.\n\nGood point. As an aside, I like the `New Coke` reference in that tott link!\n\nAs for the config name, I was thinking maybe going broader may simplify the issue and considered `CONFIG_CHIP_32BIT_LONG` or `CONFIG_BOARD_32BIT_LONG`. After doing so, I realized those could be more confusing if someone were to enable on a 32-bit device that didn\u0027t accommodate the workaround in other ways. \n\nAfter thinking about it some more I tried a simpler option, `CONFIG_PRINTF_LONG_IS_32BITS`. It perfectly describes the configuration\u0027s intent but doesn\u0027t necessarily call out that it exists to disable the workaround. Based on previous comments, that probably is not necessary anymore and, if the context is needed, it is described by the comment in the only place it is used. \n\nThoughts?",
+      "parentUuid": "79116b83_b574ac99",
+      "range": {
+        "startLine": 228,
+        "startChar": 20,
+        "endLine": 228,
+        "endChar": 41
+      },
+      "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b3312fc_28d24feb",
         "filename": "test/printf.c",
         "patchSetId": 1
