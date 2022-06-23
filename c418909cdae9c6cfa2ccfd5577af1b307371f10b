@@ -69,6 +69,24 @@
       "parentUuid": "f7aace36_deae0ed5",
       "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd95fbcb_b0ff09d6",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-06-23T01:58:54Z",
+      "side": 1,
+      "message": "Yes, The charger, bc1.2 and pd INT are complex and also impact currnet design. We will have other CLs for this.",
+      "parentUuid": "1d0bd94c_4132f539",
+      "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
