@@ -797,11 +797,6 @@ void sm5803_hibernate(int chgnum)
 		rv |= main_write8(chgnum, SM5803_REG_REFERENCE, reg);
 	}
 
-	/* Slow the clock speed */
-	rv |= main_read8(chgnum, SM5803_REG_CLOCK_SEL, &reg);
-	reg |= SM5803_CLOCK_SEL_LOW;
-	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
-
 	/* Turn off GPADCs */
 	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, 0);
 	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG2, 0);
@@ -921,10 +916,6 @@ static void sm5803_enable_runtime_low_power_mode(void)
 			chgnum);
 		return;
 	}
-	/* Slow the clock speed */
-	rv |= main_read8(chgnum, SM5803_REG_CLOCK_SEL, &reg);
-	reg |= SM5803_CLOCK_SEL_LOW;
-	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
 	/* Disable ADC sigma delta */
 	rv |= chg_read8(chgnum, SM5803_REG_CC_CONFIG1, &reg);
