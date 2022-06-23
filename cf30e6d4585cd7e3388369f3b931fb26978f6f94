@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e17de984_4cc06a15",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-23T02:29:07Z",
+      "side": 1,
+      "message": "\u003e Also, the  ^  isn\u0027t distributed unless you wrap all of OR expressions in parentheses.\n\u003e Like:  ^(4\\..|5\\.[0-9]\\.|5\\.1[0-7]\\.) \n\nAh, I had totally forgotten that! \n\n\u003e I think listing the discrete kernel versions that will use the fallback path, might be easier to understand. Given b/234856729#comment5, it might look like ^5\\.4\\.|^5\\.10\\. .\n\nThat\u0027s a good point and is likely easier to read. However, in that example the | would only be scoped between the . and the ^, so you\u0027d need `^((5\\.4\\.)|(5\\.10\\.))`\n\nAin\u0027t regex fun? 😄",
+      "parentUuid": "44e2a22e_bd5d1abb",
+      "range": {
+        "startLine": 634,
+        "startChar": 22,
+        "endLine": 634,
+        "endChar": 57
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07f1114e_c61be877",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 6
