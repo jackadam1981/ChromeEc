@@ -119,6 +119,7 @@ int sb_read_sized_block(int offset, uint8_t *data, int len)
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
 {
 	int rv;
+	static int first_read_done;
 
 	/*
 	 * First two bytes returned from read are command sent hence read
@@ -131,6 +132,15 @@ int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
 	rv = sb_write(SB_MANUFACTURER_ACCESS, cmd);
 	if (rv)
 		return rv;
+
+	/*
+	 * Delay 2s to skip the incorrect D-FET status read after the battery
+	 * resume from cut off.
+	 */
+	if (!first_read_done) {
+		sleep(2);
+		first_read_done = 1;
+	}
 
 	/*
 	 * Read data on the register block.
