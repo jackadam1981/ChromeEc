@@ -116,6 +116,30 @@
       },
       "revId": "8518d517614741c152c268b45baaca69c4f961bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec722d0_fcde0187",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1544274
+      },
+      "writtenOn": "2022-06-23T22:29:53Z",
+      "side": 1,
+      "message": "I talked to Ofer about this change, he will take care of it.\nhttps://b.corp.google.com/issues/237006707",
+      "parentUuid": "ad934c0a_66d1860b",
+      "range": {
+        "startLine": 677,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 1
+      },
+      "revId": "8518d517614741c152c268b45baaca69c4f961bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
