@@ -32,6 +32,7 @@ enum throttle_sources {
 	THROTTLE_SRC_THERMAL = 0,
 	THROTTLE_SRC_BAT_DISCHG_CURRENT,
 	THROTTLE_SRC_BAT_VOLTAGE,
+	THROTTLE_SRC_AC,
 };
 
 /**
@@ -62,6 +63,10 @@ struct prochot_cfg {
 	defined(CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE)
 
 void throttle_ap(enum throttle_level level,
+		 enum throttle_type type,
+		 enum throttle_sources source);
+
+void throttle_gpu(enum throttle_level level,
 		 enum throttle_type type,
 		 enum throttle_sources source);
 
