@@ -33,6 +33,8 @@ void dp_init(int port);
  */
 bool dp_is_active(int port);
 
+bool dp_is_inactive(int port);
+
 /*
  * Checks whether the mode entry sequence for DisplayPort alternate mode is done
  * for a port.
