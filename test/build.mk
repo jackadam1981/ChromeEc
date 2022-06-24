@@ -90,6 +90,9 @@ test-list-host += sha256_unrolled
 test-list-host += shmalloc
 test-list-host += static_if
 test-list-host += static_if_error
+# NOTE: When building for the host, we're linking against the toolchain's C
+# standard library, so these tests are actually testing the toolchain's C
+# standard library.
 test-list-host += stdlib
 test-list-host += system
 test-list-host += thermal
