@@ -34,6 +34,24 @@
       "parentUuid": "8d3ab7ed_6136957e",
       "revId": "18ff9044f8e28d719bf88ee4332d0a213af5c7f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62906cbc_2d88708a",
+        "filename": "zephyr/projects/nissa/src/nereid/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-24T23:28:53Z",
+      "side": 1,
+      "message": "Weirdly enough, gerrit showed me an older patchset, and I had just added a comment and it refreshed to the latest... hmmm",
+      "parentUuid": "791f16a4_46de3966",
+      "revId": "18ff9044f8e28d719bf88ee4332d0a213af5c7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
