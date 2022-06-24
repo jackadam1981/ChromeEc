@@ -31,7 +31,7 @@ if(subproject_path STREQUAL "")
     src/bc12.c
     src/bma2x2.c
     src/bmi160.c
-    src/bmi260.c
+    src/button_config.c
     src/charge_manager.c
     src/console_cmd/charge_manager.c
     src/console_cmd/charge_state.c
