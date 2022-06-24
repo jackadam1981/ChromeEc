@@ -236,8 +236,10 @@ bool tbt_cable_entry_required_for_usb4(int port)
 
 	/* Request to enter Thunderbolt mode for the cable prior to entering
 	 * USB4 mode if -
-	 * 1. Thunderbolt Mode SOP' VDO active/passive bit (B25) is
-	 *    TBT_CABLE_ACTIVE or
+	 * 1. ID header VDO product type is IDH_PTYPE_PCABLE; and Thunderbolt
+	 *    Mode SOP' VDO active/passive bit (B25) is TBT_CABLE_ACTIVE
+	 *    (An example is LRD, the linear Re-driver cable)
+	 *    or
 	 * 2. It's an active cable with VDM version < 2.0 or
 	 *    VDO version < 1.3
 	 */
@@ -247,7 +249,8 @@ bool tbt_cable_entry_required_for_usb4(int port)
 	cable_mode_resp.raw_value =
 			pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
 
-	if (cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE &&
+		cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
 		return true;
 
 	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
@@ -280,7 +283,8 @@ void intel_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 				pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
 		/* For LRD cables, Enter mode SOP' -> Enter mode SOP */
 		if (disc->identity.product_t1.a_rev20.sop_p_p &&
-		    cable_mode_resp.tbt_active_passive != TBT_CABLE_ACTIVE) {
+		    !(get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE &&
+		    cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)) {
 			tbt_state[port] = TBT_ENTER_SOP_PRIME_PRIME;
 		} else {
 			TBT_SET_FLAG(port, TBT_FLAG_CABLE_ENTRY_DONE);
