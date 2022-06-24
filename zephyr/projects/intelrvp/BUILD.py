@@ -49,6 +49,7 @@ register_intelrvp_project(
         here / "adlrvp/adlrvp_mchp/gpio.dts",
         here / "adlrvp/adlrvp_mchp/interrupts.dts",
         here / "adlrvp/adlrvp_mchp/keyboard.dts",
+        here / "adlrvp/adlrvp_mchp/temp_sensor.dts",
         here / "adlrvp/adlrvp_mchp/usbc.dts",
     ],
     extra_kconfig_files=[

@@ -41,6 +41,31 @@
 			enum-name = "I2C_PORT_TYPEC_3";
 		};
 	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_ambient: ambient {
+			label = "ADC_TEMP_SNS_AMBIENT";
+			enum-name = "ADC_TEMP_SENSOR_1";
+			io-channels = <&adc0 3>;
+		};
+		adc_ddr: ddr {
+			label = "ADC_TEMP_SNS_DDR";
+			enum-name = "ADC_TEMP_SENSOR_2";
+			io-channels = <&adc0 5>;
+		};
+		adc_skin: skin {
+			label = "ADC_TEMP_SNS_SKIN";
+			enum-name = "ADC_TEMP_SENSOR_3";
+			io-channels = <&adc0 4>;
+		};
+		adc_vr: vr {
+			label = "ADC_TEMP_SNS_VR";
+			enum-name = "ADC_TEMP_SENSOR_4";
+			io-channels = <&adc0 0>;
+		};
+	};
 };
 
 /* charger */
@@ -115,5 +140,14 @@
 	clock-frequency = <I2C_BITRATE_FAST>;
 	port_sel = <2>;
 	pinctrl-0 = <&i2c02_scl_gpio155 &i2c02_sda_gpio154>;
+	pinctrl-names = "default";
+};
+
+&adc0 {
+	status = "okay";
+	pinctrl-0 = <&adc00_gpio200
+		     &adc03_gpio203
+		     &adc04_gpio204
+		     &adc05_gpio205>;
 	pinctrl-names = "default";
 };

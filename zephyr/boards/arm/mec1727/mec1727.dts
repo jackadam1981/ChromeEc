@@ -54,31 +54,6 @@
 		compatible = "named-pwms";
 	};
 
-	named-adc-channels {
-		compatible = "named-adc-channels";
-
-		adc_ddr_soc: ddr_soc {
-			label = "TEMP_DDR_SOC";
-			enum-name = "ADC_TEMP_SENSOR_1_DDR_SOC";
-			io-channels = <&adc0 5>;
-		};
-		adc_ambient: ambient {
-			label = "TEMP_AMBIENT";
-			enum-name = "ADC_TEMP_SENSOR_2_AMBIENT";
-			io-channels = <&adc0 3>;
-		};
-		adc_charger: charger {
-			label = "TEMP_CHARGER";
-			enum-name = "ADC_TEMP_SENSOR_3_CHARGER";
-			io-channels = <&adc0 0>;
-		};
-		adc_wwan: wwan {
-			label = "TEMP_WWAN";
-			enum-name = "ADC_TEMP_SENSOR_4_WWAN";
-			io-channels = <&adc0 4>;
-		};
-	};
-
 	soc {
 		/delete-node/ rtc@400f5000;
 		/delete-node/ kscan@40009c00;
@@ -221,13 +196,4 @@
 /* Chrome design: KSI02 to H1 has not pull-up resistor */
 &ksi2_gpio021 {
 	bias-pull-up;
-};
-
-&adc0 {
-	status = "okay";
-	pinctrl-0 = <&adc00_gpio200
-		     &adc03_gpio203
-		     &adc04_gpio204
-		     &adc05_gpio205>;
-	pinctrl-names = "default";
 };
