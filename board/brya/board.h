@@ -147,9 +147,6 @@
 #define GPIO_VOLUME_UP_L		GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_WP_L			GPIO_EC_WP_ODL
 
-/* System has back-lit keyboard */
-#define CONFIG_PWM_KBLIGHT
-
 /* I2C Bus Configuration */
 
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT0_0
