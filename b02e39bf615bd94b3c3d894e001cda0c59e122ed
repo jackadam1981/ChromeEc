@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33655a54_60018a78",
+        "filename": "include/driver/tcpm/anx7447_public.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-06-24T10:50:23Z",
+      "side": 1,
+      "message": "No need to do forward declaration, this is already defined in usb_mux.h.",
+      "revId": "b02e39bf615bd94b3c3d894e001cda0c59e122ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
