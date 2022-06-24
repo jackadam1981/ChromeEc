@@ -127,6 +127,8 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 
 	switch (mode) {
 	case TYPEC_MODE_DP:
+		if (dp_is_inactive(port))
+			dp_init(port);
 		DPM_SET_FLAG(port, DPM_FLAG_ENTER_DP);
 		break;
 #ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
@@ -363,6 +365,7 @@ static void dpm_attempt_mode_entry(int port)
 
 	/* If not, check if they support DisplayPort alt mode. */
 	if (status == MSG_SETUP_UNSUPPORTED &&
+	    /* TODO: This is redundant */
 	    !DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE) &&
 	    pd_is_mode_discovered_for_svid(port, TCPCI_MSG_SOP,
 					   USB_SID_DISPLAYPORT) &&
