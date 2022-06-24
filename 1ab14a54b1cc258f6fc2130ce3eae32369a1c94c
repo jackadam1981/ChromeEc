@@ -16,6 +16,23 @@
       "message": "EC console prints:`found batt:Celxpert`, cutoff and ectool batterycutoff works",
       "revId": "1ab14a54b1cc258f6fc2130ce3eae32369a1c94c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9bd26c_af37a562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-24T02:27:00Z",
+      "side": 1,
+      "message": "Sung-Chi,\n\nCan you review this CL? \n\nYou can check the datasheet in https://b.corp.google.com/issues/235332195#comment2.",
+      "revId": "1ab14a54b1cc258f6fc2130ce3eae32369a1c94c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
