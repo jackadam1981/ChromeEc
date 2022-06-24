@@ -207,6 +207,10 @@ ZTEST_F(usbc_alt_mode, verify_discovery)
 
 ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 {
+	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
+				   TYPEC_MODE_DP);
+	k_sleep(K_SECONDS(1));
+
 	/* Verify host command when VDOs are present. */
 	struct ec_params_usb_pd_get_mode_request params = {
 		.port = TEST_PORT,
