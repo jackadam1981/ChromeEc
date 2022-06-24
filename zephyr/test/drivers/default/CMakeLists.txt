@@ -5,6 +5,7 @@ target_sources(app PRIVATE
     src/bma2x2.c
     src/bmi160.c
     src/bmi260.c
+    src/button_config.c
     src/charge_manager.c
     src/console.c
     src/console_cmd/adc.c
