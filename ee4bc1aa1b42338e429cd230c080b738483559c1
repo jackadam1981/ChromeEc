@@ -379,6 +379,30 @@
       },
       "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e5d7ae_d2621987",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2022-06-24T16:57:17Z",
+      "side": 1,
+      "message": "I think this has been discussed many times and I have expressed the reasoning why on the Buganizer bug b/212235056#comment76. Please continue this conversation on the bug if needed. \n\nIn general, I think expecting a sysfs interface to be used appropriately by user space (fwupd, or any other client with -possibly concurrently- access to the interface) and failing unrecoverable otherwise is a bad idea.",
+      "parentUuid": "a19b26ef_f4493294",
+      "range": {
+        "startLine": 322,
+        "startChar": 9,
+        "endLine": 322,
+        "endChar": 11
+      },
+      "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
