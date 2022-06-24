@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03ff327_c01cefca",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-06-24T01:37:48Z",
+      "side": 1,
+      "message": "Fair enough. Thanks for changing these places.",
+      "parentUuid": "64e863f4_6aa27487",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 43
+      },
+      "revId": "e99a5d17d8a118ead5658d1d6e3f716f788612b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43cf3fab_9628a154",
