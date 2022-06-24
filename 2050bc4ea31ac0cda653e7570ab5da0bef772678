@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "914fc01d_ad6493b1",
+        "filename": "zephyr/dts/bindings/emul/cros,tcpci-generic-emul.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-06-24T14:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dda246ca_f2de322c",
+      "revId": "2050bc4ea31ac0cda653e7570ab5da0bef772678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d9b4bee_5c3b4bc7",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f2f3038_9a75c86a",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-06-24T14:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d9b4bee_5c3b4bc7",
+      "revId": "2050bc4ea31ac0cda653e7570ab5da0bef772678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "553d45dd_2cf2f2e0",
@@ -82,6 +118,24 @@
       "writtenOn": "2022-06-22T16:16:38Z",
       "side": 1,
       "message": "Similar to previous comment. You can use `sys_put_le16` here.",
+      "revId": "2050bc4ea31ac0cda653e7570ab5da0bef772678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f979d1_a3ee82a3",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-06-24T14:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "553d45dd_2cf2f2e0",
       "revId": "2050bc4ea31ac0cda653e7570ab5da0bef772678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
