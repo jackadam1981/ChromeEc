@@ -52,6 +52,24 @@
       "parentUuid": "453baf0b_b5830ad5",
       "revId": "fadc9e00ec43545bcb8c597b16d3555f5bfb91cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad76364d_e3ef35dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-24T07:31:15Z",
+      "side": 1,
+      "message": "HI Dai,\nI see that you have already received +2 in your NVdia related CL:3716794 . Is it ok that you  may change the address to 0xb3 , as you have single CL in EC \u0026 CB? or do we need to change on our implementation with starting address as 0xa7?\nLet me know. Thanks!",
+      "parentUuid": "4f5f746a_7ac329eb",
+      "revId": "fadc9e00ec43545bcb8c597b16d3555f5bfb91cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
