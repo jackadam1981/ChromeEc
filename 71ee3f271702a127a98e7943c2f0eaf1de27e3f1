@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048fd94d_020ce8fb",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-24T06:20:45Z",
+      "side": 1,
+      "message": "Maybe sm5803_set_main_clock_speed\nWe don\u0027t really use \u0027ensure\u0027 in this way.",
+      "revId": "71ee3f271702a127a98e7943c2f0eaf1de27e3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5e9df5_05808a4c",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-24T06:20:45Z",
+      "side": 1,
+      "message": "Maybe \u0027failed to set main clock speed\u0027.",
+      "revId": "71ee3f271702a127a98e7943c2f0eaf1de27e3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b0d061_1b82a3f4",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-24T06:20:45Z",
+      "side": 1,
+      "message": "Consider moving the error message display into sm5803_ensure_main_clock_speed to avoid\nduplication, but not a big deal.",
+      "revId": "71ee3f271702a127a98e7943c2f0eaf1de27e3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
