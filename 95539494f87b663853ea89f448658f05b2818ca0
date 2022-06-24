@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1561afbd_cddde834",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-24T18:56:03Z",
+      "side": 1,
+      "message": "I finally got around to testing the power utilization on Icetower, see below for the process and the results. All tests executed on [ec @ 02c753ab1c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/;drc\u003d02c753ab1c89d293c9e4c5845b1fa2d6cc9948e4), by following the instructions from [Icetower v0.1](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md#icetower-v0_1). The formatting is a bit weird due to the limitations on comment formatting.\n\n- Baseline\n\u003e Executed with no debugger connected, and no code changes from `cros/main`\n```\n      (inside)$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n      ...\n      @@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n      @@       sample_msecs   3444    17.38    3.50    48.28    12.79\n      @@    pp3300_dx_fp_mv   3444  4502.20    3.40  4512.00  4488.00\n      @@    pp3300_dx_fp_mw   3444     0.00    0.00     0.00     0.00\n      @@   pp3300_dx_mcu_mv   3444  4501.86    3.64  4512.00  4488.00\n      @@   pp3300_dx_mcu_mw   3444    11.51    0.35    23.06    10.09\n```\n\n- Code updated\n\u003e Still no debugger connected\n\u003e Apply the patch at the bottom of this comment (slightly different from this CL)\n\u003e Build / install updated code\n\u003e Execute test\n```\n(inside)$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n...\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   3920    15.28    2.42    41.77    11.81\n@@    pp3300_dx_fp_mv   3920  4501.80    3.60  4512.00  4488.00\n@@    pp3300_dx_fp_mw   3920     0.00    0.00     0.00     0.00\n@@   pp3300_dx_mcu_mv   3920  4501.72    3.72  4512.00  4496.00\n@@   pp3300_dx_mcu_mw   3920    11.68    0.51    23.06     9.35\n```\n\n- Code updated and debugger connected\n\u003e Connect debugger cable\n\u003e Start debugging session in VSCode\n\u003e Continue after breaking in main loop\n\u003e Execute test\n```\n(inside)$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n...\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   3811    15.71    2.40    57.29    12.71\n@@    pp3300_dx_fp_mv   3811  4514.51    3.88  4520.00  4504.00\n@@    pp3300_dx_fp_mw   3811     0.00    0.00     0.00     0.00\n@@   pp3300_dx_mcu_mv   3811  4503.63    2.44  4512.00  4496.00\n@@   pp3300_dx_mcu_mw   3811   103.96    0.41   105.93   103.23\n```\n\nHere is the patch that was used for this testing (note that it supports Icetower and Dragonclaw but only Icetower has been tested so far):\n\n```\ndiff --git a/chip/stm32/clock-stm32f4.c b/chip/stm32/clock-stm32f4.c\nindex b30edc1fa2..1427cf1c2f 100644\n--- a/chip/stm32/clock-stm32f4.c\n+++ b/chip/stm32/clock-stm32f4.c\n@@ -11,6 +11,7 @@\n #include \"common.h\"\n #include \"console.h\"\n #include \"cpu.h\"\n+#include \"debug.h\"\n #include \"hooks.h\"\n #include \"hwtimer.h\"\n #include \"registers.h\"\n@@ -540,7 +541,8 @@ void __idle(void)\n                        /* ensure outstanding memory transactions complete */\n                        asm volatile(\"dsb\");\n \n-                       asm(\"wfi\");\n+                       if (!debugger_is_connected())\n+                               asm(\"wfi\");\n \n                        CPU_SCB_SYSCTRL \u0026\u003d ~0x4;\n \n@@ -573,7 +575,8 @@ void __idle(void)\n                        idle_sleep_cnt++;\n \n                        /* Normal idle : only CPU clock stopped */\n-                       asm(\"wfi\");\n+                       if (!debugger_is_connected())\n+                               asm(\"wfi\");\n                }\n                interrupt_enable();\n        }\ndiff --git a/chip/stm32/clock-stm32h7.c b/chip/stm32/clock-stm32h7.c\nindex 57dc170dd9..9be48c2085 100644\n--- a/chip/stm32/clock-stm32h7.c\n+++ b/chip/stm32/clock-stm32h7.c\n@@ -21,6 +21,7 @@\n #include \"common.h\"\n #include \"console.h\"\n #include \"cpu.h\"\n+#include \"debug.h\"\n #include \"hooks.h\"\n #include \"hwtimer.h\"\n #include \"registers.h\"\n@@ -544,7 +545,8 @@ void __idle(void)\n                        /* ensure outstanding memory transactions complete */\n                        asm volatile(\"dsb\");\n \n-                       asm(\"wfi\");\n+                       if (!debugger_is_connected())\n+                               asm(\"wfi\");\n \n                        CPU_SCB_SYSCTRL \u0026\u003d ~0x4;\n \n@@ -579,7 +581,8 @@ void __idle(void)\n                        idle_sleep_cnt++;\n \n                        /* normal idle : only CPU clock stopped */\n-                       asm(\"wfi\");\n+                       if (!debugger_is_connected())\n+                               asm(\"wfi\");\n                }\n                interrupt_enable();\n        }\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
