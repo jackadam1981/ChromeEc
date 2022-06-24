@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a75f1d28_a2819787",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-06-24T07:31:34Z",
+      "side": 1,
+      "message": "Also,note that, we have  sci event associated with these values in the upcoming CLs, where the sci events should be triggered, if there are change in these values (PMAX,PBSS,RBHF,VBNL,CMPP) like \u003e 250 mw, 100 mw , 5mohms, 50mv \u0026 100mA. So, We will end up missing these accuracies in event as well, if we don’t represent it in mw.",
+      "parentUuid": "de6d75ac_fbd3e85c",
+      "range": {
+        "startLine": 176,
+        "startChar": 43,
+        "endLine": 176,
+        "endChar": 61
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bef82987_9c7ab8b3",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
