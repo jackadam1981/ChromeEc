@@ -34,6 +34,16 @@ void dp_init(int port);
 bool dp_is_active(int port);
 
 /*
+ * Returns True if DisplayPort mode entry has not started, or mode exit has
+ * already finished.
+ *
+ * @param port      USB-C port number
+ * @return          True if DisplayPort mode is in inactive state
+ *                  False otherwise.
+ */
+bool dp_is_inactive(int port);
+
+/*
  * Checks whether the mode entry sequence for DisplayPort alternate mode is done
  * for a port.
  *
