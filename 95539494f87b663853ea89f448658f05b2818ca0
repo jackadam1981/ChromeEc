@@ -46,6 +46,29 @@
       },
       "revId": "95539494f87b663853ea89f448658f05b2818ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4684a57_21fc36e8",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-06-24T23:13:01Z",
+      "side": 1,
+      "message": "Just a heads up, no action required:\nThis would only apply in situation where low-power-idle is disabled from the compiler. This routine is overridden in may chip specific situation.\n\n\nIn the FP context, this will only work when the chip is in RO [(disabled low-power-idle)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/hatch_fp/board.h;l\u003d249;drc\u003d1325864861eeb119386f2c9ee8c35ca622f78f8b).\n\nH7\u0027s low-power-idle func:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/clock-stm32h7.c;l\u003d547;drc\u003ddb897e2f88124f8ba840372518635dc58e3595f7\n\nF4\u0027s low-pwr-idle:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/clock-stm32f4.c;l\u003d543;drc\u003d38b9c4b824f34b3aa81f2399ce91b88077197d52\n\nMany more redefined __idle func.",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
