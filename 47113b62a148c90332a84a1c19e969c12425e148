@@ -16,6 +16,23 @@
       "message": "I can\u0027t see where you\u0027ve change the callback flags so that\nyou will get a callback for a bus reset event.\nSee the espi_init_callback() in power_signal_vw_init()\nWithout that change, you are never going to get a bus reset event.\n",
       "revId": "47113b62a148c90332a84a1c19e969c12425e148",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "915f60f7_50271a60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-24T07:03:09Z",
+      "side": 1,
+      "message": "I added the bus reset event mask to the callback init.\nUnfortunately it doesn\u0027t pass firmware_ECPowerButton, but haven\u0027t debugged anything.",
+      "revId": "47113b62a148c90332a84a1c19e969c12425e148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
