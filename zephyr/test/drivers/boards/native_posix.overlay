@@ -895,6 +895,18 @@
 	led-colors {
 		compatible = "cros-ec,led-policy";
 	};
+
+	button-cfg {
+		compatible = "cros-ec,button-cfg";
+
+		power_button_cfg: power_button_cfg {
+			button_name = "POWER_BUTTON";
+			button_type = <0>;
+			gpio = <&gpio_ec_pwr_btn_odl>;
+			debounce_us = <30000>;
+			flags = <0>;
+		};
+	};
 };
 
 &espi0 {
