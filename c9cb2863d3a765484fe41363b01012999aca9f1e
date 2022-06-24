@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "424000bd_28a8fea6",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_alt_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-24T17:32:41Z",
+      "side": 1,
+      "message": "Oof thanks.",
+      "parentUuid": "525714fb_d6244b37",
+      "range": {
+        "startLine": 64,
+        "startChar": 23,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "c9cb2863d3a765484fe41363b01012999aca9f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f33b13d_cf95970c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac8f4a0a_8d87babe",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_alt_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-24T17:32:41Z",
+      "side": 1,
+      "message": "Oof. Thanks.",
+      "parentUuid": "2f33b13d_cf95970c",
+      "range": {
+        "startLine": 66,
+        "startChar": 17,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "c9cb2863d3a765484fe41363b01012999aca9f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da6a6ec1_77d4070f",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-24T16:16:59Z",
       "side": 1,
       "message": "Discover SVIDs",
+      "range": {
+        "startLine": 88,
+        "startChar": 17,
+        "endLine": 88,
+        "endChar": 22
+      },
+      "revId": "c9cb2863d3a765484fe41363b01012999aca9f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee75572_367d497e",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_alt_mode.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-24T17:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6a6ec1_77d4070f",
       "range": {
         "startLine": 88,
         "startChar": 17,
