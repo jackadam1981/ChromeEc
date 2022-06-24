@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e863f4_6aa27487",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-24T00:08:50Z",
+      "side": 1,
+      "message": "I guess I meant that doing that replacement as you suggest won\u0027t work in this circumstance (in all places). It\u0027s possible we can be selectively, and choose the particular cases where this works.\nI haven\u0027t looked at the detail of the test, beyond checking there is no regression and the test compiles (likely this is part of lpc testing).\nConceiveably a test could be written to check the PLTRST handling at some stage, and this is actually a callback, so the test won\u0027t reference it directly.\n\nI changed the !defined(CONFIG_AP_PWRSEQ) to defined(CONFIG_PLATFORM_EC_POWERSEQ) in a couple of places. I am not sure this makes things clearer or not. Maybe I\u0027ll add some comments to try and explain it.",
+      "parentUuid": "f4f17c4a_0fe0b8fb",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 43
+      },
+      "revId": "e99a5d17d8a118ead5658d1d6e3f716f788612b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43cf3fab_9628a154",
