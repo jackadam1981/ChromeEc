@@ -29,6 +29,13 @@ struct usbc_alt_mode_fixture {
 	struct tcpci_snk_emul_data snk_ext;
 };
 
+struct usbc_alt_mode_dp_nak_fixture {
+	const struct emul *tcpci_emul;
+	const struct emul *charger_emul;
+	struct tcpci_partner_data partner;
+	struct tcpci_snk_emul_data snk_ext;
+};
+
 static void connect_partner_to_port(struct usbc_alt_mode_fixture *fixture)
 {
 	const struct emul *tcpc_emul = fixture->tcpci_emul;
@@ -157,6 +164,32 @@ static void *usbc_alt_mode_setup(void)
 	return &fixture;
 }
 
+static void *usbc_alt_mode_dp_nak_setup(void)
+{
+	static struct usbc_alt_mode_fixture fixture;
+	struct tcpci_partner_data *partner = &fixture.partner;
+	struct tcpci_snk_emul_data *snk_ext = &fixture.snk_ext;
+
+	tcpci_partner_init(partner, PD_REV20);
+	partner->extensions = tcpci_snk_emul_init(snk_ext, partner, NULL);
+
+	/* Get references for the emulators */
+	fixture.tcpci_emul =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(tcpci_emul)));
+	/* The configured TCPCI rev must match the emulator's supported rev. */
+	tcpc_config[TEST_PORT].flags |= TCPC_FLAGS_TCPCI_REV2_0;
+	tcpci_emul_set_rev(fixture.tcpci_emul, TCPCI_EMUL_REV2_0_VER1_1);
+	fixture.charger_emul =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
+
+	add_discover_responses(partner);
+
+	/* Sink 5V 3A. */
+	snk_ext->pdo[1] = PDO_FIXED(5000, 3000, PDO_FIXED_UNCONSTRAINED);
+
+	return &fixture;
+}
+
 static void usbc_alt_mode_before(void *data)
 {
 	/* Set chipset to ON, this will set TCPM to DRP */
@@ -175,6 +208,42 @@ static void usbc_alt_mode_after(void *data)
 
 ZTEST_F(usbc_alt_mode, verify_discovery)
 {
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_response_typec_discovery *discovery =
+		(struct ec_response_typec_discovery *)response_buffer;
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP,
+			response_buffer, sizeof(response_buffer));
+
+	/* The host command does not count the VDM header in identity_count. */
+	zassert_equal(discovery->identity_count,
+		      fixture->partner.identity_vdos - 1,
+		      "Expected %d identity VDOs, got %d",
+		      fixture->partner.identity_vdos - 1,
+		      discovery->identity_count);
+	zassert_mem_equal(discovery->discovery_vdo,
+			  fixture->partner.identity_vdm + 1,
+			  discovery->identity_count *
+				  sizeof(*discovery->discovery_vdo),
+			  "Discovered SOP identity ACK did not match");
+	zassert_equal(discovery->svid_count, 1, "Expected 1 SVID, got %d",
+		      discovery->svid_count);
+	zassert_equal(discovery->svids[0].svid, USB_SID_DISPLAYPORT,
+		      "Expected SVID 0x%0000x, got 0x%0000x",
+		      USB_SID_DISPLAYPORT, discovery->svids[0].svid);
+	zassert_equal(discovery->svids[0].mode_count, 1,
+		      "Expected 1 DP mode, got %d",
+		      discovery->svids[0].mode_count);
+	zassert_equal(discovery->svids[0].mode_vdo[0],
+		      fixture->partner.modes_vdm[1],
+		      "DP mode VDOs did not match");
+}
+
+ZTEST_F(usbc_alt_mode_dp_nak, verify_discovery)
+{
+	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
+				   TYPEC_MODE_DP);
+	k_sleep(K_SECONDS(1));
+
 	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
 	struct ec_response_typec_discovery *discovery =
 		(struct ec_response_typec_discovery *)response_buffer;
@@ -274,3 +343,7 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 
 ZTEST_SUITE(usbc_alt_mode, drivers_predicate_post_main, usbc_alt_mode_setup,
 	    usbc_alt_mode_before, usbc_alt_mode_after, NULL);
+
+ZTEST_SUITE(usbc_alt_mode_dp_nak, drivers_predicate_post_main,
+	    usbc_alt_mode_dp_nak_setup, usbc_alt_mode_before,
+	    usbc_alt_mode_after, NULL);
