@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ec067c7_00e08079",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-24T13:48:01Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "aa84e95e_21ff8498",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9ecada7_8dae1a84",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
         "patchSetId": 1
