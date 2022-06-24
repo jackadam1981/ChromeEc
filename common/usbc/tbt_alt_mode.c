@@ -145,7 +145,8 @@ static bool tbt_is_lrd_active_cable(int port)
 	cable_mode_resp.raw_value =
 			pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
 
-	if (cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE &&
+		cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
 		return true;
 
 	return false;
