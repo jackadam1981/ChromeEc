@@ -16,14 +16,15 @@
 
 #define PWM_CH_COGO	PWM_CH_KBLIGHT
 
-#define COGO_TICK_INTERVAL_US (50 * MSEC)	/* 20 Hz */
+#define xxxCOGO_TICK_INTERVAL_US (50 * MSEC)	/* 20 Hz */
+#define COGO_TICK_INTERVAL_US (33 * MSEC)	/* 33.3 Hz */
 
 /*
  * one cosine cycle, 100% to 20%
  * in 80 steps (4 seconds at 20 Hz)
  */
 
-static const uint8_t v_cosine[] = {
+__maybe_unused static const uint8_t v_cosine_20Hz[] = {
 	[  0] = 100, [  1] =  99, [  2] =  99, [  3] =  98,
 	[  4] =  98, [  5] =  96, [  6] =  95, [  7] =  94,
 	[  8] =  92, [  9] =  90, [ 10] =  88, [ 11] =  85,
@@ -51,7 +52,7 @@ static const uint8_t v_cosine[] = {
  * in 40 steps (2 seconds at 20 Hz)
  */
 
-static const uint8_t v_ramp_up[] = {
+__maybe_unused static const uint8_t v_ramp_up_20Hz[] = {
 	[  0] =   0, [  1] =   0, [  2] =   0, [  3] =   1,
 	[  4] =   2, [  5] =   3, [  6] =   5, [  7] =   7,
 	[  8] =   9, [  9] =  11, [ 10] =  14, [ 11] =  17,
@@ -62,6 +63,36 @@ static const uint8_t v_ramp_up[] = {
 	[ 28] =  79, [ 29] =  82, [ 30] =  85, [ 31] =  88,
 	[ 32] =  90, [ 33] =  92, [ 34] =  94, [ 35] =  96,
 	[ 36] =  97, [ 37] =  98, [ 38] =  99, [ 39] =  99,
+};
+
+/*
+ * double pulse in 30 steps plus 30 steps off
+ * (2 seconds at 33.3 Hz)
+ */
+
+__maybe_unused static const uint8_t v_dtap_33p3Hz[] = {
+	/* 1.5 cycles sine wave */
+	[  0] =   0, [  1] =  14, [  2] =  49, [  3] =  85,
+	[  4] = 100, [  5] =  85, [  6] =  50, [  7] =  14,
+	[  8] =   0, [  9] =  14, [ 10] =  49, [ 11] =  85,
+	/* high */
+	[ 12] = 100, [ 13] = 100, [ 14] = 100, [ 15] = 100,
+	[ 16] = 100, [ 17] = 100, [ 18] = 100, [ 19] = 100,
+	/* half cosine wave */
+	[ 20] =  97, [ 21] =  90, [ 22] =  79, [ 23] =  65,
+	[ 24] =  50, [ 25] =  34, [ 26] =  20, [ 27] =   9,
+	[ 28] =   2, [ 29] =   0, 
+	/* low */
+	0, 0, 0,
+	0, 0, 0,
+	0, 0, 0,
+	0, 0, 0,
+	0, 0, 0,
+	0, 0, 0,
+	0, 0, 0,
+	0, 0, 0,
+	0, 0, 0,
+	0, 0, 0,
 };
 
 void cogo_task(void *u)
@@ -76,6 +107,7 @@ void cogo_task(void *u)
 	pwm_enable(PWM_CH_COGO, 1);
 	gpio_set_level(GPIO_EC_KB_BL_EN_L, 0);
 
+#if 0
 	/* ramp up signal */
 
 	anim_data = v_ramp_up;
@@ -93,11 +125,14 @@ void cogo_task(void *u)
 		pwm_set_duty(PWM_CH_COGO, anim_data[step]);
 		step = (step + 1) % anim_points;
 	} while (step != 0);
+#endif
 
 	/* output wave forever */
 
-	anim_data = v_cosine;
-	anim_points = ARRAY_SIZE(v_cosine);
+//	anim_data = v_cosine;
+//	anim_points = ARRAY_SIZE(v_cosine);
+	anim_data = v_dtap_33p3Hz;
+	anim_points = ARRAY_SIZE(v_dtap_33p3Hz);
 
 	step = 0;
 	while (1) {
