@@ -1,0 +1,5 @@
+dts_overlays:
+  - ${here}/led_pins.dts
+  - ${here}/led_policy.dts
+kconfig_files:
+  - ${here}/prj.conf
