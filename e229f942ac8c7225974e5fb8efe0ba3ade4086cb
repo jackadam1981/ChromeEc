@@ -33,6 +33,24 @@
       "message": "Add a comment that the last_result_mux_get() will automatically change the port state to RETIMER_ONLINE if the usb_mux_set() call is successful.",
       "revId": "e229f942ac8c7225974e5fb8efe0ba3ade4086cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e16d35_0b6b3714",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-26T16:56:59Z",
+      "side": 1,
+      "message": "Comments added to top of file to explain the port state changes. And also I put some comments here at the line.\nTo clarify, usb_mux_set() call is successful within 300 ms, then host will send resume request, and then port state is changed to `RETIMER_ONLINE`. usb_mux_set() call won\u0027t change port state.",
+      "parentUuid": "3326574d_bdddf6ea",
+      "revId": "e229f942ac8c7225974e5fb8efe0ba3ade4086cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

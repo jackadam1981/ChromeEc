@@ -403,6 +403,30 @@
       },
       "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afac54f_74f53fcd",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-26T16:56:59Z",
+      "side": 1,
+      "message": "Hi Keith and Prashant,\n\nThe blocking is added. We have to allow `UPDATE_RESUME` at least.\nOnline request includes two steps: `UPDATE_DISCONNECT` (this sets port to `RETIMER_ONLINE_REQUESTED`) and  `UPDATE_RESUME`(this sets port to `RETIMER_ONLINE`). After port is in `RETIMER_ONLINE_REQUESTED`, it\u0027s expected a resume will be sent to EC in a successful case. So we have to allow `UPDATE_RESUME`.\n\n\u003e What about AP resets? Are there chip hooks which try to resume PD on a port if it was earlier suspended (I think there are, but I may be misremembering).\nThat\u0027s a good point. The hook implemented to restore ports is shutdown. I just added AP reset hook to restore ports in this CL.\n\n\u003e Regardless, any request that comes in while the timeout has not elapsed should just return -EBUSY to the kernel. That solves the issue of raciness, and also lets fwupd actually recover and retry (with EIO is just gives up).\nNow the blocking is added. Once timeout, the deferred call will resume the port. Host online retry after timeout is not needed since the port is resumed.",
+      "parentUuid": "82e5d7ae_d2621987",
+      "range": {
+        "startLine": 322,
+        "startChar": 9,
+        "endLine": 322,
+        "endChar": 11
+      },
+      "revId": "ee4bc1aa1b42338e429cd230c080b738483559c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

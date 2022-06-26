@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8afe34c7_c64820e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-26T16:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7f22a9_cbca0de4",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "61ed9b43_47a79084",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "I think we don\u0027t have to wait endlessly(any reason to make it call forever?) for usb_mux_set_completed() to return true. The reason is host only waits 300ms for the result, if timeout, an error will be returned. So here I modified to wait 300ms for mux set is completed.\nlast_result_mux_get() and retry_online() use the same wait now.",
       "parentUuid": "3be04f9b_066fd4ec",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "62cd3b66b3cd4631dded9a2b2898b5108edff3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae02c9d_a2af0e8d",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-26T16:56:59Z",
+      "side": 1,
+      "message": "Since host only polls result for 300ms, I changed the retry of `usb_mux_set_completed` up to 300ms. Added a query_usb_mux_set_completed_timeout(), so last_result_mux_get() and retry_online() call the same function.",
+      "parentUuid": "e7ea4b6d_10d5a1d7",
       "range": {
         "startLine": 158,
         "startChar": 0,
