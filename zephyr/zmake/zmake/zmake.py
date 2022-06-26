@@ -457,6 +457,7 @@ class Zmake:
                         self.module_paths["ec"] / "zephyr" / "include" / "drivers"
                     ),
                     "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
+                    "CROS_PROJECT_NAME": project.config.project_name,
                 },
             )
 
