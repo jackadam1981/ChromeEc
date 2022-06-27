@@ -6031,6 +6031,29 @@ static void pe_init_vdm_modes_request_run(int port)
 
 static void pe_init_vdm_modes_request_exit(int port)
 {
+	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT)) {
+		const struct svid_mode_data *mode_data;
+		uint16_t requested_svid;
+
+		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT);
+
+		mode_data = pd_get_next_mode(port, pe[port].tx_type);
+		assert(mode_data);
+		assert(mode_data->discovery == PD_DISC_NEEDED);
+		requested_svid = mode_data->svid;
+		/*
+		 * Mark failure to respond as discovery failure.
+		 *
+		 * For PD 2.0 partners (6.10.3 Applicability of Structured VDM
+		 * Commands Note 3):
+		 *
+		 * If Structured VDMs are not supported, a Structured VDM
+		 * Command received by a DFP or UFP Shall be Ignored.
+		 */
+		pd_set_modes_discovery(port, pe[port].tx_type, requested_svid,
+				PD_DISC_FAIL);
+	}
+
 	if (pd_get_modes_discovery(port, pe[port].tx_type) != PD_DISC_NEEDED)
 		/* Mode discovery done, notify the AP */
 		pd_notify_event(port, pe[port].tx_type == TCPCI_MSG_SOP ?
