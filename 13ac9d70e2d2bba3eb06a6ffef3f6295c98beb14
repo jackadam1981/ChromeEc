@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b21786_b52890f4",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-27T22:12:52Z",
+      "side": 1,
+      "message": "this may be a good case for `.variant`, which does the dict merging for you",
+      "revId": "13ac9d70e2d2bba3eb06a6ffef3f6295c98beb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
