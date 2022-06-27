@@ -72,8 +72,8 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-#define THERMAL_CPU \
-	{ \
+#define THERMAL_CPU              \
+	{                        \
 		.temp_host = { \
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(85), \
 			[EC_TEMP_THRESH_HALT] = C_TO_K(90), \
@@ -86,8 +86,8 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 	}
 __maybe_unused static const struct ec_thermal_config thermal_cpu = THERMAL_CPU;
 
-#define THERMAL_AMBIENT \
-	{ \
+#define THERMAL_AMBIENT          \
+	{                        \
 		.temp_host = { \
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(85), \
 			[EC_TEMP_THRESH_HALT] = C_TO_K(90), \
@@ -112,8 +112,8 @@ __maybe_unused static const struct ec_thermal_config thermal_ambient =
  * Inductors: limit of 125c
  * PCB: limit is 80c
  */
-#define THERMAL_CHARGER \
-	{ \
+#define THERMAL_CHARGER          \
+	{                        \
 		.temp_host = { \
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(105), \
 			[EC_TEMP_THRESH_HALT] = C_TO_K(120), \
@@ -127,8 +127,8 @@ __maybe_unused static const struct ec_thermal_config thermal_ambient =
 __maybe_unused static const struct ec_thermal_config thermal_charger =
 	THERMAL_CHARGER;
 
-#define THERMAL_WWAN \
-	{ \
+#define THERMAL_WWAN             \
+	{                        \
 		.temp_host = { \
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(130), \
 			[EC_TEMP_THRESH_HALT] = C_TO_K(130), \
