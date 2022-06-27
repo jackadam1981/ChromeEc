@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f2c578_eaf4ef1b",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-27T21:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a441688_ea27ad2f",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9812551_ad8249fd",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "Right, see line 57.",
       "parentUuid": "b9812551_ad8249fd",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 1
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae76f43_266c6566",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-27T21:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd293ef_4f60b65f",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -214,6 +262,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35dc98e8_bbac00d0",
+        "filename": "zephyr/test/drivers/led_driver/TEST.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-27T21:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74cfbfb3_f0e5bd69",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76a14ead_1b7f7cca",
@@ -227,6 +299,30 @@
       "writtenOn": "2022-06-27T19:40:19Z",
       "side": 1,
       "message": "Would suggest `ZMAKE_PROJECT_NAME` to be similar to `ZMAKE_INCLUDE_DIR`.",
+      "range": {
+        "startLine": 460,
+        "startChar": 21,
+        "endLine": 460,
+        "endChar": 38
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395a33a4_1f7a5187",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-27T21:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76a14ead_1b7f7cca",
       "range": {
         "startLine": 460,
         "startChar": 21,
