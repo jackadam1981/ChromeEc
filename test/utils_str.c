@@ -246,10 +246,8 @@ static int test_strncasecmp(void)
 
 static int test_atoi(void)
 {
-	TEST_CHECK((atoi("  901") == 901) &&
-		   (atoi("-12c") == -12) &&
-		   (atoi("   0  ") == 0) &&
-		   (atoi("\t111") == 111));
+	TEST_CHECK((atoi("  901") == 901) && (atoi("-12c") == -12) &&
+		   (atoi("   0  ") == 0) && (atoi("\t111") == 111));
 }
 
 static int test_snprintf(void)
