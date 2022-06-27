@@ -16,6 +16,23 @@
       "message": "Jeremy, I want to chat about this tomorrow. We\u0027re seeing increased tests that are failing based on test order. Our initial goal was to have them in a single binary in order to optimize both runtime and compile time, but I worry it\u0027s coming at too high of a maintenance cost. Some initial thoughts:\n\n1. This CL will allow us to split the tests without having to also split the configs/dts. This should reduce some of the mental overhead of splitting up the tests.\n2. The tests that are split off are simple libraries, once we do fix the test order dependencies we can run the tests in a single binary again fairly easily.\n3. This is likely how we\u0027ll be adding project inheritence to twister eventually so it should also work well moving forward.\n\nI\u0027m putting a -1 verified on this right now because the `led_driver` test is failing. It seems there\u0027s a dependency on having an active charge port that\u0027s not satisfied when running alone. I hope Al might be able to resolve this since he wrote the test.",
       "revId": "ab07927dc0cb223ce7336eaa8eb119409ff1faaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99329899_aec75683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-27T16:41:02Z",
+      "side": 1,
+      "message": "I like the general idea here, and that it is so easy to split off a subdir.\n\nWouldn\u0027t it be simpler though to just add a BUILD.py to the subdir, since it doesn\u0027t depend on any of the source code in the parent dir?\n\nI think the steps are this:\n\n* Switch `zephyr_interface_library_named` to `project` to the subdir/CMakeLists.txt file.\n* Switch `zephyr_library_sources(` to `target_sources(app PRIVATE`\n* Add a BUILD.py to the subdir.\n* Remove add_subdirectory from the top level CMakeLists.txt\n\nYou could even leave the old code commented out with a TODO to fix the test order dependency.\n\nIf it\u0027s not as simple as I seem to think, then I\u0027m ok with this change as well.\n\nJack, do you have any ideas for a simple way to accomplish what Yuvall is trying to do?  He wants to split some srcs out into a new test, but only temporarily, so it should be really simple to split or unsplit those srcs.",
+      "revId": "ab07927dc0cb223ce7336eaa8eb119409ff1faaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
