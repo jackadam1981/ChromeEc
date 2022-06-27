@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a441688_ea27ad2f",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-27T20:06:59Z",
+      "side": 1,
+      "message": "All config should just directly go into the root level `BUILD.py`. It\u0027s meant to be a config language. (like starlark)",
+      "parentUuid": "edf913fb_1232938e",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9812551_ad8249fd",
         "filename": "zephyr/test/drivers/BUILD.py",
         "patchSetId": 3
