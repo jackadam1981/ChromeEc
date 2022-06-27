@@ -50,6 +50,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4638c655_aad0d6e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-27T13:52:55Z",
+      "side": 1,
+      "message": "I don\u0027t know offhand but after posting that comment I realized that the 3.3V supplies are outputting 4.5V. I wouldn\u0027t expect that to have such a big impact on overall power output, but I\u0027m guessing that there\u0027s something wrong with that servo. I\u0027ll rerun the tests with my other servo that is outputting correct Voltages.",
+      "parentUuid": "89e62ab9_3641eacd",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e60d62f_462e23ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-27T13:52:55Z",
+      "side": 1,
+      "message": "DRAGONCLAW results:\n\nAll tests executed on [ec @ 02c753ab1c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/;drc\u003d02c753ab1c89d293c9e4c5845b1fa2d6cc9948e4), by following the instructions from [Dragonclaw v0.2](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md#dragonclaw-v0_2). The formatting is a bit weird due to the limitations on comment formatting.\n\n- Baseline\n\u003e Executed with no debugger plugged in\n\u003e Started by reverting patch from Icetower testing, otherwise follow the same process\n\n```\n(inside)$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp1800_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw pp1800_dx_fp_mw\n...\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   3981    15.05    2.31    47.66    13.17\n@@    pp1800_dx_fp_mv   3981  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   3981     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   3981  2777.40   16.16  2816.00  2736.00\n@@    pp3300_dx_fp_mw   3981     0.06    0.12     0.23    -0.23\n@@   pp3300_dx_mcu_mv   3981  2771.05   14.29  2816.00  2736.00\n@@   pp3300_dx_mcu_mw   3981    17.64    0.20    19.10    17.12\n```\n\n- Code updated\n\u003e Still no debugger connected\n\u003e Apply same patch as Icetower\n\u003e Follow same process (build/flash)\n\u003e Run test\n```\n(inside)$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp1800_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw pp1800_dx_fp_mw\n...\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   4091    14.65    1.48    52.72    13.08\n@@    pp1800_dx_fp_mv   4091  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   4091     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   4091  2815.44   16.34  2856.00  2776.00\n@@    pp3300_dx_fp_mw   4091     0.06    0.12     0.23    -0.23\n@@   pp3300_dx_mcu_mv   4091  2808.58   13.65  2848.00  2776.00\n@@   pp3300_dx_mcu_mw   4091    17.94    0.19    19.21    17.37\n```\n\n- Code updated and debugger connected\n\u003e Connect debugger cable\n\u003e Start debugging session in VSCode\n\u003e Continue after breaking in main loop\n\u003e Execute test\n\n```\n(inside)$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n...\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   4051    14.79    1.38    39.47    13.30\n@@    pp1800_dx_fp_mv   4051  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   4051     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   4051  2627.87   11.55  2664.00  2600.00\n@@    pp3300_dx_fp_mw   4051     0.05    0.10     0.21    -0.21\n@@   pp3300_dx_mcu_mv   4051  2615.06    9.31  2648.00  2592.00\n@@   pp3300_dx_mcu_mw   4051    50.51    0.23    51.48    49.86\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4684a57_21fc36e8",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -61,6 +108,30 @@
       "writtenOn": "2022-06-24T23:13:01Z",
       "side": 1,
       "message": "Just a heads up, no action required:\nThis would only apply in situation where low-power-idle is disabled from the compiler. This routine is overridden in may chip specific situation.\n\n\nIn the FP context, this will only work when the chip is in RO [(disabled low-power-idle)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/hatch_fp/board.h;l\u003d249;drc\u003d1325864861eeb119386f2c9ee8c35ca622f78f8b).\n\nH7\u0027s low-power-idle func:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/clock-stm32h7.c;l\u003d547;drc\u003ddb897e2f88124f8ba840372518635dc58e3595f7\n\nF4\u0027s low-pwr-idle:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/stm32/clock-stm32f4.c;l\u003d543;drc\u003d38b9c4b824f34b3aa81f2399ce91b88077197d52\n\nMany more redefined __idle func.",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a863f2_511b7501",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-27T13:52:55Z",
+      "side": 1,
+      "message": "Yeah, my comment above is a little confusing because it doesn\u0027t actually test against the patch in this CL, but a different patch that I pasted at the end of the comment. This was because the source files have changed since the CL was initially created so I had to manually reapply the patch. \n\nI should push that change as an update.",
+      "parentUuid": "d4684a57_21fc36e8",
       "range": {
         "startLine": 110,
         "startChar": 3,
