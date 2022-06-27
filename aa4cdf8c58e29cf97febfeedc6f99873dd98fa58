@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c88034f_e24029a6",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-27T19:32:01Z",
+      "side": 1,
+      "message": "We want to avoid doing any file I/O in `BUILD.py`. It\u0027s meant to be a config language here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9812551_ad8249fd",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-27T19:32:01Z",
+      "side": 1,
+      "message": "we should call `register_host_test` once for each test, right?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 1
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67e3c9a_fb6dcc15",
+        "filename": "zephyr/test/drivers/led_driver/TEST.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-27T19:32:01Z",
+      "side": 1,
+      "message": "Let\u0027s encode this in `BUILD.py` instead of YAML files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
