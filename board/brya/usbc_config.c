@@ -36,8 +36,8 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
-#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 #ifdef CONFIG_ZEPHYR
 enum ioex_port {
@@ -86,7 +86,7 @@ const struct tcpc_config_t tcpc_config[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
-#endif  /* !CONFIG_ZEPHYR */
+#endif /* !CONFIG_ZEPHYR */
 
 /******************************************************************************/
 /* USB-A charging control */
@@ -255,8 +255,8 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 	}
 
 	if (voltage < BC12_MIN_VOLTAGE) {
-		CPRINTS("%s: port %d: vbus %d lower than %d", __func__,
-			port, voltage, BC12_MIN_VOLTAGE);
+		CPRINTS("%s: port %d: vbus %d lower than %d", __func__, port,
+			voltage, BC12_MIN_VOLTAGE);
 		return 1;
 	}
 
@@ -391,11 +391,11 @@ static void board_tcpc_init(void)
 	if (!system_jumped_late())
 		board_reset_pd_mcu();
 
-	/*
-	 * These IO expander pins are implemented using the
-	 * C0/C2 TCPC, so they must be set up after the TCPC has
-	 * been taken out of reset.
-	 */
+		/*
+		 * These IO expander pins are implemented using the
+		 * C0/C2 TCPC, so they must be set up after the TCPC has
+		 * been taken out of reset.
+		 */
 #ifndef CONFIG_ZEPHYR
 	if (get_board_id() == 1) {
 		ioex_init(IOEX_ID_1_C0_NCT38XX);
