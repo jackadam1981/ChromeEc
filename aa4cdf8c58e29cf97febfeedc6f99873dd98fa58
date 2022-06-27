@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daac8e65_fd07a9b3",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-27T19:38:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure how I would be able to achieve this without the IO here, the goal is to have one \"core\" test and many variations of it.",
+      "parentUuid": "3c88034f_e24029a6",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9812551_ad8249fd",
         "filename": "zephyr/test/drivers/BUILD.py",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebd293ef_4f60b65f",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-27T19:38:05Z",
+      "side": 1,
+      "message": "Right, see line 57.",
+      "parentUuid": "b9812551_ad8249fd",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 1
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e67e3c9a_fb6dcc15",
         "filename": "zephyr/test/drivers/led_driver/TEST.yaml",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-27T19:32:01Z",
       "side": 1,
       "message": "Let\u0027s encode this in `BUILD.py` instead of YAML files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74cfbfb3_f0e5bd69",
+        "filename": "zephyr/test/drivers/led_driver/TEST.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-27T19:38:05Z",
+      "side": 1,
+      "message": "Comment is similar to the one in `BUILD.py`. Can we mark this one resolved and keep the discussion going there? Or the other way around (whichever makes the most sense to you).",
+      "parentUuid": "e67e3c9a_fb6dcc15",
       "range": {
         "startLine": 1,
         "startChar": 0,
