@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5819d7a4_a62b64dc",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T17:29:01Z",
+      "side": 1,
+      "message": "Usually, these days, we avoid `#ifdef`ing declarations in header files to make it easier to use `IS_ENABLED`. But it\u0027s probably best to save a cleanup of chipset.h for another CL.",
+      "parentUuid": "08ee4e43_32b18be6",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5301d606_ec9a43b3",
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "Yes, but the the EC has limited control over the AP power state. So, docks should be sending both USB PD Alerts and HID events on a button press. Across suspending, resuming, shutting down and starting up, only starting up needs to be handled by the EC because the AP will not be able to process HID events in G3. Shutting down, suspending and resuming should be handled by the AP in response to HID events from the dock. I still need to update the design dock to reflect this.",
       "parentUuid": "5301d606_ec9a43b3",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea3b9ff_23abf6f1",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T17:29:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5289fce9_456d7ccb",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -388,6 +424,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48538102_445de2f3",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T17:29:01Z",
+      "side": 1,
+      "message": "Nit: Can each of these scenarios be its own test?",
+      "parentUuid": "e918fa1e_b10c135a",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13b6064f_ba4939b8",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
         "patchSetId": 8
@@ -452,6 +506,24 @@
       "side": 1,
       "message": "I moved the first and last clearing of alert and status received bits to the before and after function but am still checking that the bits were cleared at a few points throughout the tests. This is to confirm that the bits being asserted later on in the test are caused by the PE sending messages and not by some bug in the tcpci_src_emul_clear_*_received preventing them from ever being de-asserted.",
       "parentUuid": "4f4f7f7f_10cd0e6b",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d21ff848_098ff45b",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T17:29:01Z",
+      "side": 1,
+      "message": "Nit: Since these asserts would only fail due to a programming error in the test, they should use `zassume_false`. (See `test/drivers/util.h`.)",
+      "parentUuid": "de2ff7e9_7ec8e8e1",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

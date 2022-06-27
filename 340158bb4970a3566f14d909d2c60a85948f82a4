@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1343cf7b_23ab7166",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T17:29:01Z",
+      "side": 1,
+      "message": "Nits only. Feel free to address in follow-up CLs if you see fit.",
+      "revId": "340158bb4970a3566f14d909d2c60a85948f82a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2fd69db_7573b884",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T17:29:01Z",
+      "side": 1,
+      "message": "Nit: Tristan\u0027s partner PD 3.0 CL has merged. Either add a TODO to set up PD 3.0 in the partner properly or just do it in this CL.",
+      "revId": "340158bb4970a3566f14d909d2c60a85948f82a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
