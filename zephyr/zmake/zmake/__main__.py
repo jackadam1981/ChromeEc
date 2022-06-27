@@ -176,11 +176,23 @@ def get_argparser():
         "configure",
         help="Set up a build directory to be built later by the build subcommand",
     )
+    configure.add_argument(
+        "--skip-host-tests",
+        action="store_true",
+        dest="skip_host_tests",
+        help="Skip all test projects",
+    )
     add_common_configure_args(configure)
 
     build = sub.add_parser(
         "build",
         help="Configure and build projects",
+    )
+    build.add_argument(
+        "--skip-host-tests",
+        action="store_true",
+        dest="skip_host_tests",
+        help="Skip all test projects",
     )
     add_common_configure_args(build)
 
@@ -288,6 +300,12 @@ def add_common_configure_args(sub_parser: argparse.ArgumentParser):
         "--extra-cflags",
         help="Additional CFLAGS to use for target builds",
     )
+    sub_parser.add_argument(
+        "--delete-intermediates",
+        action="store_true",
+        dest="delete_intermediates",
+        help="Delete intermediate files to save disk space",
+    )
     group = sub_parser.add_mutually_exclusive_group(required=True)
     group.add_argument(
         "-a",
@@ -301,6 +319,12 @@ def add_common_configure_args(sub_parser: argparse.ArgumentParser):
         action="store_true",
         dest="host_tests_only",
         help="Select all test projects",
+    )
+    group.add_argument(
+        "--boards-only",
+        action="store_true",
+        dest="boards_only",
+        help="Select all board projects (not tests)",
     )
     group.add_argument(
         "project_names",
