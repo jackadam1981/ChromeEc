@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "949ac3b7_230ab4d6",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-27T00:17:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048fd94d_020ce8fb",
+      "revId": "71ee3f271702a127a98e7943c2f0eaf1de27e3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff5e9df5_05808a4c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c26b42_16ab0962",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-27T00:17:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff5e9df5_05808a4c",
+      "revId": "71ee3f271702a127a98e7943c2f0eaf1de27e3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b0d061_1b82a3f4",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-24T06:20:45Z",
       "side": 1,
       "message": "Consider moving the error message display into sm5803_ensure_main_clock_speed to avoid\nduplication, but not a big deal.",
+      "revId": "71ee3f271702a127a98e7943c2f0eaf1de27e3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33795cd_8b1528b6",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-06-27T00:17:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4b0d061_1b82a3f4",
       "revId": "71ee3f271702a127a98e7943c2f0eaf1de27e3f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
