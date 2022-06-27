@@ -16,6 +16,57 @@
       "message": "Adding Abe since he worked on our initial BIST mode support",
       "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a9a34c_4e14cfa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T18:37:31Z",
+      "side": 1,
+      "message": "I think this CL chain needs to be restructured to confine the logic more to the TCPC layer and specifically the ANX3447 driver if possible. I suspect that the other layers can mostly remain unaware of the driver quirk.",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c5ffcc_80bee60a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2755,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T18:37:31Z",
+      "side": 1,
+      "message": "When does this operate? Even if the ANX3447 doesn\u0027t support TCPCI BIST mode properly, I would expect the PE to stay in PE_BIST_TX state until the test ends via Hard Reset.",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443eec09_560ffd4e",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T18:37:31Z",
+      "side": 1,
+      "message": "Does BIST traffic on the ANX3447 (with the other fixes in place) cause an apparent interrupt storm?\n\nIf not, this seems superfluous. We wouldn\u0027t want even normal BIST traffic to be able to watchdog us.",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
