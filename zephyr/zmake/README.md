@@ -35,7 +35,7 @@ Chromium OS's meta-build tool for Zephyr
 
 ### zmake configure
 
-**Usage:** `zmake configure [-h] [-t TOOLCHAIN] [--bringup] [--clobber] [--allow-warnings] [-B BUILD_DIR] [-c] [--extra-cflags EXTRA_CFLAGS] (-a | --host-tests-only | project_name [project_name ...])`
+**Usage:** `zmake configure [-h] [--skip-host-tests] [-t TOOLCHAIN] [--bringup] [--clobber] [--allow-warnings] [-B BUILD_DIR] [-c] [--extra-cflags EXTRA_CFLAGS] [--delete-intermediates] (-a | --host-tests-only | --boards-only | project_name [project_name ...])`
 
 #### Positional Arguments
 
@@ -48,6 +48,7 @@ Chromium OS's meta-build tool for Zephyr
 |   |   |
 |---|---|
 | `-h`, `--help` | show this help message and exit |
+| `--skip-host-tests` | Skip all test projects |
 | `-t TOOLCHAIN`, `--toolchain TOOLCHAIN` | Name of toolchain to use |
 | `--bringup` | Enable bringup debugging features |
 | `--clobber` | Delete existing build directories, even if configuration is unchanged |
@@ -55,12 +56,14 @@ Chromium OS's meta-build tool for Zephyr
 | `-B BUILD_DIR`, `--build-dir BUILD_DIR` | Root build directory, project files will be in ${build_dir}/${project_name} |
 | `-c`, `--coverage` | Enable CONFIG_COVERAGE Kconfig. |
 | `--extra-cflags EXTRA_CFLAGS` | Additional CFLAGS to use for target builds |
+| `--delete-intermediates` | Delete intermediate files to save disk space |
 | `-a`, `--all` | Select all projects |
 | `--host-tests-only` | Select all test projects |
+| `--boards-only` | Select all board projects (not tests) |
 
 ### zmake build
 
-**Usage:** `zmake build [-h] [-t TOOLCHAIN] [--bringup] [--clobber] [--allow-warnings] [-B BUILD_DIR] [-c] [--extra-cflags EXTRA_CFLAGS] (-a | --host-tests-only | project_name [project_name ...])`
+**Usage:** `zmake build [-h] [--skip-host-tests] [-t TOOLCHAIN] [--bringup] [--clobber] [--allow-warnings] [-B BUILD_DIR] [-c] [--extra-cflags EXTRA_CFLAGS] [--delete-intermediates] (-a | --host-tests-only | --boards-only | project_name [project_name ...])`
 
 #### Positional Arguments
 
@@ -73,6 +76,7 @@ Chromium OS's meta-build tool for Zephyr
 |   |   |
 |---|---|
 | `-h`, `--help` | show this help message and exit |
+| `--skip-host-tests` | Skip all test projects |
 | `-t TOOLCHAIN`, `--toolchain TOOLCHAIN` | Name of toolchain to use |
 | `--bringup` | Enable bringup debugging features |
 | `--clobber` | Delete existing build directories, even if configuration is unchanged |
@@ -80,8 +84,10 @@ Chromium OS's meta-build tool for Zephyr
 | `-B BUILD_DIR`, `--build-dir BUILD_DIR` | Root build directory, project files will be in ${build_dir}/${project_name} |
 | `-c`, `--coverage` | Enable CONFIG_COVERAGE Kconfig. |
 | `--extra-cflags EXTRA_CFLAGS` | Additional CFLAGS to use for target builds |
+| `--delete-intermediates` | Delete intermediate files to save disk space |
 | `-a`, `--all` | Select all projects |
 | `--host-tests-only` | Select all test projects |
+| `--boards-only` | Select all board projects (not tests) |
 
 ### zmake list-projects
 
@@ -102,7 +108,7 @@ Chromium OS's meta-build tool for Zephyr
 
 ### zmake test
 
-**Usage:** `zmake test [-h] [--no-rebuild] [-t TOOLCHAIN] [--bringup] [--clobber] [--allow-warnings] [-B BUILD_DIR] [-c] [--extra-cflags EXTRA_CFLAGS] (-a | --host-tests-only | project_name [project_name ...])`
+**Usage:** `zmake test [-h] [--no-rebuild] [-t TOOLCHAIN] [--bringup] [--clobber] [--allow-warnings] [-B BUILD_DIR] [-c] [--extra-cflags EXTRA_CFLAGS] [--delete-intermediates] (-a | --host-tests-only | --boards-only | project_name [project_name ...])`
 
 #### Positional Arguments
 
@@ -123,8 +129,10 @@ Chromium OS's meta-build tool for Zephyr
 | `-B BUILD_DIR`, `--build-dir BUILD_DIR` | Root build directory, project files will be in ${build_dir}/${project_name} |
 | `-c`, `--coverage` | Enable CONFIG_COVERAGE Kconfig. |
 | `--extra-cflags EXTRA_CFLAGS` | Additional CFLAGS to use for target builds |
+| `--delete-intermediates` | Delete intermediate files to save disk space |
 | `-a`, `--all` | Select all projects |
 | `--host-tests-only` | Select all test projects |
+| `--boards-only` | Select all board projects (not tests) |
 
 ### zmake testall
 
