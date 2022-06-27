@@ -16,6 +16,115 @@
       "message": "I\u0027m OK now.",
       "revId": "76b3523b72e6e4e87e72ec42b4f225ead1ab7368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dabce05_cc01dd44",
+        "filename": "board/moli/fans.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-27T02:47:49Z",
+      "side": 1,
+      "message": "Need to clarify this value in the bug.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "76b3523b72e6e4e87e72ec42b4f225ead1ab7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a727957_c42a3146",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-27T02:47:49Z",
+      "side": 1,
+      "message": "Where do you get the value from?",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "76b3523b72e6e4e87e72ec42b4f225ead1ab7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b6dbdba_077bcb50",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-27T02:47:49Z",
+      "side": 1,
+      "message": "same as here",
+      "range": {
+        "startLine": 89,
+        "startChar": 34,
+        "endLine": 89,
+        "endChar": 37
+      },
+      "revId": "76b3523b72e6e4e87e72ec42b4f225ead1ab7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0614942b_102afa30",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-27T02:47:49Z",
+      "side": 1,
+      "message": "same as here",
+      "range": {
+        "startLine": 92,
+        "startChar": 34,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "76b3523b72e6e4e87e72ec42b4f225ead1ab7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df27bed0_d43aa956",
+        "filename": "board/moli/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-06-27T02:47:49Z",
+      "side": 1,
+      "message": "Why do you need this variable? Is it only for the debug purpose?",
+      "revId": "76b3523b72e6e4e87e72ec42b4f225ead1ab7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
