@@ -210,6 +210,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db018226_8dd32dc5",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-27T17:30:14Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "8752ee51_d6c74114",
+      "range": {
+        "startLine": 228,
+        "startChar": 20,
+        "endLine": 228,
+        "endChar": 41
+      },
+      "revId": "7eb4b649e9f679459c388c8b2e00f08ae321f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b3312fc_28d24feb",
         "filename": "test/printf.c",
         "patchSetId": 1

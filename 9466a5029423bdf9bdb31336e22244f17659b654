@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca228778_8612adb5",
+        "filename": "common/printf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-27T17:30:14Z",
+      "side": 1,
+      "message": "For clarity, it might be good to replace `It` with `%l`.",
+      "range": {
+        "startLine": 249,
+        "startChar": 32,
+        "endLine": 249,
+        "endChar": 34
+      },
+      "revId": "9466a5029423bdf9bdb31336e22244f17659b654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074b1fa4_b16e12c6",
+        "filename": "common/printf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-27T17:30:14Z",
+      "side": 1,
+      "message": "Nit: This was migrated to buganizer, so let\u0027s update the bug in case there\u0027s any further activity on it (e.g, re-opened).\n\nFor public bugs, it\u0027s nicer to use https://issuetracker.google.com/172210614 instead of `b/`. See https://issuetracker.google.com/187788091 and http://b/138731601 for details.",
+      "range": {
+        "startLine": 257,
+        "startChar": 11,
+        "endLine": 257,
+        "endChar": 27
+      },
+      "revId": "9466a5029423bdf9bdb31336e22244f17659b654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

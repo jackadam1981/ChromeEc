@@ -217,6 +217,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ab0aa11_92742550",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3627,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-27T17:30:14Z",
+      "side": 1,
+      "message": "Agreed. Let\u0027s go ahead and replace `CONFIG_PRINTF_LEGACY_LI_FORMAT` with the new config.",
+      "parentUuid": "993cb7ce_a2c81523",
+      "revId": "ff4a3a5db35036159ee8d3d563aa7fe21e477a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0a5a49b_d50b71c0",
         "filename": "test/printf.c",
         "patchSetId": 2
