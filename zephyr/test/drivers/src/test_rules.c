@@ -8,7 +8,7 @@
 #include "motion_sense_fifo.h"
 
 static void motion_sense_fifo_reset_before(const struct ztest_unit_test *test,
-					    void *data)
+					   void *data)
 {
 	ARG_UNUSED(test);
 	ARG_UNUSED(data);
