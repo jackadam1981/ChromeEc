@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0210e71c_fdf3fbf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T18:20:53Z",
+      "side": 1,
+      "message": "Adding myself as a reviewer here to review this feature in total.",
+      "revId": "503a8e40ce2352ef18290f2c8923aee9064d5a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40776a93_f41fb686",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3257,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T18:20:53Z",
+      "side": 1,
+      "message": "From what I can see in the following CLs, it\u0027s not clear to me that this feature needs to be exposed outside the PD task (or even outside the TCPC driver). The interrupt task already directly calls TCPC driver functions, and this function will probably just be an atomic flag check.\n\nI think the proper way to do this is to add a member to `struct tcpm_drv` for checking if BIST test mode is enabled, and implement that member for the driver in question.",
+      "revId": "503a8e40ce2352ef18290f2c8923aee9064d5a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
