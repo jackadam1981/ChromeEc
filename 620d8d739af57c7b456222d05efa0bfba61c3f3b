@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "799cd3bd_da08d8bb",
+        "filename": "include/trng.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-27T22:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c46e6ac_269310fb",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "620d8d739af57c7b456222d05efa0bfba61c3f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8997c189_b88646ea",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-27T20:45:54Z",
       "side": 1,
       "message": "For consistency, should this be renamed to `trng_exit`?",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "620d8d739af57c7b456222d05efa0bfba61c3f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7da2f53_7eecdea9",
+        "filename": "include/trng.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-27T22:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8997c189_b88646ea",
       "range": {
         "startLine": 27,
         "startChar": 5,
