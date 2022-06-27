@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469a3564_f5e4acdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-27T17:59:03Z",
+      "side": 1,
+      "message": "The number of checks in one place and number of separate places is making it hard to keep track of what this logic is semantically doing.\n\nCan you upload a chain of 3 separate CLs to do the following?\n1. Add helper functions to check if we need to do anything with SOP\u0027 and SOP\u0027\u0027, similar to https://crrev.com/c/3350616 and update all existing logic to use those functions if it\u0027s a no-op, but _don\u0027t_ change the actual logic anywhere.\n2. Update the logic in the helper functions to do the correct thing, similar to the logic change in this CL.\n3. For any remaining places in this code that don\u0027t use the helper functions, because they have logic different than what they should, update them to call the helper functions. For instance, I think the exit mode logic needs to be updated in this way.",
+      "revId": "334a85e46d7f72059bdffb298587794eae5df7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
