@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "955da119_efc8f96e",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-27T19:40:19Z",
+      "side": 1,
+      "message": "Yes. If we put the configs directly in `BUILD.py` and avoid making YAML files, this should be sufficient to remove the File I/O.",
+      "parentUuid": "daac8e65_fd07a9b3",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9812551_ad8249fd",
         "filename": "zephyr/test/drivers/BUILD.py",
         "patchSetId": 3
@@ -137,6 +161,29 @@
         "startChar": 0,
         "endLine": 5,
         "endChar": 20
+      },
+      "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a14ead_1b7f7cca",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-27T19:40:19Z",
+      "side": 1,
+      "message": "Would suggest `ZMAKE_PROJECT_NAME` to be similar to `ZMAKE_INCLUDE_DIR`.",
+      "range": {
+        "startLine": 460,
+        "startChar": 21,
+        "endLine": 460,
+        "endChar": 38
       },
       "revId": "aa4cdf8c58e29cf97febfeedc6f99873dd98fa58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
