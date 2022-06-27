@@ -5,6 +5,7 @@
 
 /* Keyboard scanner module for Chrome EC */
 
+#include "adc.h"
 #include "chipset.h"
 #include "clock.h"
 #include "common.h"
@@ -32,21 +33,21 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYSCAN, outstr)
-#define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ## args)
-#define CPRINTS(format, args...) cprints(CC_KEYSCAN, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_KEYSCAN, format, ##args)
 
 #ifdef CONFIG_KEYBOARD_DEBUG
 #define CPUTS5(outstr) cputs(CC_KEYSCAN, outstr)
-#define CPRINTS5(format, args...) cprints(CC_KEYBOARD, format, ## args)
+#define CPRINTS5(format, args...) cprints(CC_KEYBOARD, format, ##args)
 #else
 #define CPUTS5(outstr)
 #define CPRINTS5(format, args...)
 #endif
 
-#define SCAN_TIME_COUNT 32  /* Number of last scan times to track */
+#define SCAN_TIME_COUNT 32 /* Number of last scan times to track */
 
 /* If we're waiting for a scan to happen, we'll give it this long */
-#define SCAN_TASK_TIMEOUT_US	(100 * MSEC)
+#define SCAN_TASK_TIMEOUT_US (100 * MSEC)
 
 #ifndef CONFIG_KEYBOARD_POST_SCAN_CLOCKS
 /*
@@ -81,20 +82,12 @@ __overridable struct keyboard_scan_config keyscan_config = {
 	},
 };
 
-/* Boot key list.  Must be in same order as enum boot_key. */
-#ifndef CONFIG_KEYBOARD_MULTIPLE
-struct boot_key_entry {
-	uint8_t mask_index;
-	uint8_t mask_value;
-};
-#endif
-
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
 #ifndef CONFIG_KEYBOARD_MULTIPLE
 static const struct boot_key_entry boot_key_list[] = {
-	{KEYBOARD_COL_ESC, KEYBOARD_MASK_ESC},   /* Esc */
-	{KEYBOARD_COL_DOWN, KEYBOARD_MASK_DOWN}, /* Down-arrow */
-	{KEYBOARD_COL_LEFT_SHIFT, KEYBOARD_MASK_LEFT_SHIFT}, /* Left-Shift */
+	{ KEYBOARD_COL_ESC, KEYBOARD_ROW_ESC }, /* Esc */
+	{ KEYBOARD_COL_DOWN, KEYBOARD_ROW_DOWN }, /* Down-arrow */
+	{ KEYBOARD_COL_LEFT_SHIFT, KEYBOARD_ROW_LEFT_SHIFT }, /* Left-Shift */
 };
 #else
 struct boot_key_entry boot_key_list[] = {
@@ -109,34 +102,34 @@ static uint32_t boot_key_value = BOOT_KEY_NONE;
 uint8_t keyboard_cols = KEYBOARD_COLS_MAX;
 
 /* Debounced key matrix */
-static uint8_t __bss_slow debounced_state[KEYBOARD_COLS_MAX];
+static uint8_t debounced_state[KEYBOARD_COLS_MAX];
 /* Mask of keys being debounced */
-static uint8_t __bss_slow debouncing[KEYBOARD_COLS_MAX];
+static uint8_t debouncing[KEYBOARD_COLS_MAX];
 /* Keys simulated-pressed */
-static uint8_t __bss_slow simulated_key[KEYBOARD_COLS_MAX];
+static uint8_t simulated_key[KEYBOARD_COLS_MAX];
 #ifdef CONFIG_KEYBOARD_LANGUAGE_ID
-static uint8_t __bss_slow keyboard_id[KEYBOARD_IDS];
+static uint8_t keyboard_id[KEYBOARD_IDS];
 #endif
 
 /* Times of last scans */
-static uint32_t __bss_slow scan_time[SCAN_TIME_COUNT];
+static uint32_t scan_time[SCAN_TIME_COUNT];
 /* Current scan_time[] index */
-static int __bss_slow scan_time_index;
+static int scan_time_index;
 
 /* Index into scan_time[] when each key started debouncing */
-static uint8_t __bss_slow scan_edge_index[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
+static uint8_t scan_edge_index[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
 
 /* Minimum delay between keyboard scans based on current clock frequency */
-static uint32_t __bss_slow post_scan_clock_us;
+static uint32_t post_scan_clock_us;
 
 /*
  * Print all keyboard scan state changes?  Off by default because it generates
  * a lot of debug output, which makes the saved EC console data less useful.
  */
-static int __bss_slow print_state_changes;
+static int print_state_changes;
 
 /* Must init to 0 for scanning at boot */
-static volatile uint32_t __bss_slow disable_scanning_mask;
+static volatile uint32_t disable_scanning_mask;
 
 /* Constantly incrementing counter of the number of times we polled */
 static volatile int kbd_polls;
@@ -154,9 +147,9 @@ void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
 {
 	/* Access atomically */
 	if (enable) {
-		atomic_clear_bits((uint32_t *)&disable_scanning_mask, mask);
+		atomic_clear_bits((atomic_t *)&disable_scanning_mask, mask);
 	} else {
-		atomic_or((uint32_t *)&disable_scanning_mask, mask);
+		atomic_or((atomic_t *)&disable_scanning_mask, mask);
 		clear_typematic_key();
 	}
 
@@ -208,6 +201,51 @@ static void ensure_keyboard_scanned(int old_polls)
 		usleep(keyscan_config.scan_period_us);
 }
 
+#ifdef CONFIG_KEYBOARD_SCAN_ADC
+/**
+ * Read KSI ADC rows
+ *
+ * Read each adc channel and look for voltage crossing threshold level
+ */
+static int keyboard_read_adc_rows(void)
+{
+	uint8_t kb_row = 0;
+
+	/* Read each adc channel to build row byte */
+	for (int i = 0; i < KEYBOARD_ROWS; i++) {
+		if (adc_read_channel(ADC_KSI_00 + i) >
+		    keyscan_config.ksi_threshold_mv)
+			kb_row |= (1 << i);
+	}
+
+	return kb_row;
+}
+
+/**
+ * Read refresh key
+ *
+ * Refresh key is detached from rest of the matrix in ADC based
+ * keyboard, so needs to be read through GPIO
+ *
+ * @param state		Destination for new state (must be KEYBOARD_COLS_MAX
+ *			long).
+ */
+static void keyboard_read_refresh_key(uint8_t *state)
+{
+	#ifndef CONFIG_KEYBOARD_MULTIPLE
+	if (!gpio_get_level(GPIO_RFR_KEY_L))
+		state[KEYBOARD_COL_REFRESH] |= BIT(KEYBOARD_ROW_REFRESH);
+	else
+		state[KEYBOARD_COL_REFRESH] &= ~BIT(KEYBOARD_ROW_REFRESH);
+	#else
+	if (!gpio_get_level(GPIO_RFR_KEY_L))
+		state[key_typ.col_refresh] |= BIT(key_typ.row_refresh);
+	else
+		state[key_typ.col_refresh] &= ~BIT(key_typ.row_refresh);
+	#endif
+}
+#endif
+
 /**
  * Simulate a keypress.
  *
@@ -220,7 +258,7 @@ static void simulate_key(int row, int col, int pressed)
 	int old_polls;
 
 	if ((simulated_key[col] & BIT(row)) == ((pressed ? 1 : 0) << row))
-		return;  /* No change */
+		return; /* No change */
 
 	simulated_key[col] ^= BIT(row);
 
@@ -240,8 +278,8 @@ static void simulate_key(int row, int col, int pressed)
 	 * That means it needs to have run and for enough time.
 	 */
 	ensure_keyboard_scanned(old_polls);
-	usleep(pressed ?
-	       keyscan_config.debounce_down_us : keyscan_config.debounce_up_us);
+	usleep(pressed ? keyscan_config.debounce_down_us :
+			 keyscan_config.debounce_up_us);
 	ensure_keyboard_scanned(kbd_polls);
 }
 
@@ -280,13 +318,26 @@ static int read_matrix(uint8_t *state)
 		udelay(keyscan_config.output_settle_us);
 
 		/* Read the row state */
+#ifdef CONFIG_KEYBOARD_SCAN_ADC
+		state[c] = keyboard_read_adc_rows();
+#else
 		state[c] = keyboard_raw_read_rows();
+#endif
 
 		/* Use simulated keyscan sequence instead if testing active */
 		if (IS_ENABLED(CONFIG_KEYBOARD_TEST))
 			state[c] = keyscan_seq_get_scan(c, state[c]);
 	}
 
+#ifdef CONFIG_KEYBOARD_SCAN_ADC
+	/* Account for the refresh key */
+	keyboard_read_refresh_key(state);
+
+	/*
+	 * KB with ADC support doesn't have transitional ghost,
+	 * this check isn't required
+	 */
+#else
 	/* 2. Detect transitional ghost */
 	for (c = 0; c < keyboard_cols; c++) {
 		int c2;
@@ -310,6 +361,7 @@ static int read_matrix(uint8_t *state)
 			}
 		}
 	}
+#endif
 
 	/* 3. Fix result */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -325,7 +377,6 @@ static int read_matrix(uint8_t *state)
 
 		/* Mask off keys that don't exist on the actual keyboard */
 		state[c] &= keyscan_config.actual_key_mask[c];
-
 	}
 
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
@@ -389,47 +440,6 @@ static int check_runtime_keys(const uint8_t *state)
 {
 	int num_press = 0;
 	int c;
-
-#ifdef BOARD_SAMUS
-	int16_t chg_override;
-
-	/*
-	 * TODO(crosbug.com/p/34850): remove these hot-keys for samus, should
-	 * be done at higher level than this.
-	 */
-	/*
-	 * On samus, ctrl + search + 0|1|2 sets the active charge port
-	 * by sending the charge override host command. Should only be sent
-	 * when chipset is in S0. Note that 'search' and '1' keys are on
-	 * the same column.
-	 */
-	if ((state[KEYBOARD_COL_LEFT_CTRL] == KEYBOARD_MASK_LEFT_CTRL ||
-	     state[KEYBOARD_COL_RIGHT_CTRL] == KEYBOARD_MASK_RIGHT_CTRL) &&
-	    ((state[KEYBOARD_COL_SEARCH] & KEYBOARD_MASK_SEARCH) ==
-						KEYBOARD_MASK_SEARCH) &&
-	    chipset_in_state(CHIPSET_STATE_ON)) {
-		if (state[KEYBOARD_COL_KEY_0] == KEYBOARD_MASK_KEY_0) {
-			/* Charge from neither port */
-			chg_override = -2;
-			pd_host_command(EC_CMD_PD_CHARGE_PORT_OVERRIDE, 0,
-					&chg_override, 2, NULL, 0);
-			return 0;
-		} else if (state[KEYBOARD_COL_KEY_1] ==
-			   (KEYBOARD_MASK_KEY_1 | KEYBOARD_MASK_SEARCH)) {
-			/* Charge from port 0 (left side) */
-			chg_override = 0;
-			pd_host_command(EC_CMD_PD_CHARGE_PORT_OVERRIDE, 0,
-					&chg_override, 2, NULL, 0);
-			return 0;
-		} else if (state[KEYBOARD_COL_KEY_2] == KEYBOARD_MASK_KEY_2) {
-			/* Charge from port 1 (right side) */
-			chg_override = 1;
-			pd_host_command(EC_CMD_PD_CHARGE_PORT_OVERRIDE, 0,
-					&chg_override, 2, NULL, 0);
-			return 0;
-		}
-	}
-#endif
 
 	/*
 	 * All runtime key combos are (right or left ) alt + volume up + (some
@@ -554,7 +564,7 @@ static int check_keys_changed(uint8_t *state)
 	int any_pressed = 0;
 	int c, i;
 	int any_change = 0;
-	static uint8_t __bss_slow new_state[KEYBOARD_COLS_MAX];
+	static uint8_t new_state[KEYBOARD_COLS_MAX];
 	uint32_t tnow = get_time().le.lo;
 
 	/* Save the current scan time */
@@ -565,9 +575,11 @@ static int check_keys_changed(uint8_t *state)
 	/* Read the raw key state */
 	any_pressed = read_matrix(new_state);
 
-	/* Ignore if so many keys are pressed that we're ghosting. */
-	if (has_ghosting(new_state))
-		return any_pressed;
+	if (!IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC)) {
+		/* Ignore if so many keys are pressed that we're ghosting. */
+		if (has_ghosting(new_state))
+			return any_pressed;
+	}
 
 	/* Check for changes between previous scan and this one */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -580,7 +592,7 @@ static int check_keys_changed(uint8_t *state)
 			if (tnow - scan_time[scan_edge_index[c][i]] <
 			    (state[c] ? keyscan_config.debounce_down_us :
 					keyscan_config.debounce_up_us))
-				continue;  /* Not done debouncing */
+				continue; /* Not done debouncing */
 			debouncing[c] &= ~BIT(i);
 
 			if (!IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE))
@@ -625,7 +637,6 @@ static int check_keys_changed(uint8_t *state)
 	}
 
 	if (any_change) {
-
 #ifdef CONFIG_KEYBOARD_SUPPRESS_NOISE
 		/* Suppress keyboard noise */
 		keyboard_suppress_noise();
@@ -638,9 +649,9 @@ static int check_keys_changed(uint8_t *state)
 		/* Print delta times from now back to each previous scan */
 		CPRINTF("[%pT kb deltaT", PRINTF_TIMESTAMP_NOW);
 		for (i = 0; i < SCAN_TIME_COUNT; i++) {
-			int tnew = scan_time[
-				(SCAN_TIME_COUNT + scan_time_index - i) %
-				SCAN_TIME_COUNT];
+			int tnew = scan_time[(SCAN_TIME_COUNT +
+					      scan_time_index - i) %
+					     SCAN_TIME_COUNT];
 			CPRINTF(" %d", tnow - tnew);
 		}
 		CPRINTF("]\n");
@@ -692,8 +703,9 @@ static uint32_t check_key_list(const uint8_t *state)
 	 * button hold, and ignore it if so.
 	 */
 	for (c = 0; c < keyboard_cols; c++)
-		if ((keyscan_config.actual_key_mask[c] & KEYBOARD_MASK_PWRBTN)
-		    && !(curr_state[c] & KEYBOARD_MASK_PWRBTN))
+		if ((keyscan_config.actual_key_mask[c] &
+		     KEYBOARD_MASK_PWRBTN) &&
+		    !(curr_state[c] & KEYBOARD_MASK_PWRBTN))
 			break;
 
 	if (c == keyboard_cols)
@@ -709,22 +721,12 @@ static uint32_t check_key_list(const uint8_t *state)
 
 	/* Update mask with all boot keys that were pressed. */
 	k = boot_key_list;
-
-	#ifndef CONFIG_KEYBOARD_MULTIPLE
-	for (c = 0; c < ARRAY_SIZE(boot_key_list); c++, k++) {
-		if (curr_state[k->mask_index] & k->mask_value) {
-			boot_key_mask |= BIT(c);
-			curr_state[k->mask_index] &= ~k->mask_value;
-		}
-	}
-	#else
 	for (c = 0; c < ARRAY_SIZE(boot_key_list); c++, k++) {
 		if (curr_state[k->col] & BIT(k->row)) {
 			boot_key_mask |= BIT(c);
 			curr_state[k->col] &= ~BIT(k->row);
 		}
 	}
-	#endif
 
 	/* If any other key was pressed, ignore all boot keys. */
 	for (c = 0; c < keyboard_cols; c++) {
@@ -735,6 +737,31 @@ static uint32_t check_key_list(const uint8_t *state)
 	CPRINTS("KB boot key mask %x", boot_key_mask);
 	return boot_key_mask;
 }
+
+#ifdef CONFIG_KEYBOARD_SCAN_ADC
+static void read_adc_boot_keys(uint8_t *state)
+{
+	int k;
+
+	for (k = 0; k < ARRAY_SIZE(boot_key_list); k++) {
+		int c = boot_key_list[k].col;
+		int r = boot_key_list[k].row;
+
+		/* Select column, then wait a bit for it to settle */
+		keyboard_raw_drive_column(c);
+		udelay(keyscan_config.output_settle_us);
+
+		if (adc_read_channel(ADC_KSI_00 + r) >
+		    keyscan_config.ksi_threshold_mv)
+			state[c] |= BIT(r);
+	}
+
+	/* Read refresh key */
+	keyboard_read_refresh_key(state);
+
+	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
+}
+#endif
 
 /**
  * Check what boot key is down, if any.
@@ -773,7 +800,7 @@ static uint32_t check_boot_key(const uint8_t *state)
 static void keyboard_freq_change(void)
 {
 	post_scan_clock_us = (CONFIG_KEYBOARD_POST_SCAN_CLOCKS * 1000) /
-		(clock_get_freq() / 1000);
+			     (clock_get_freq() / 1000);
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, keyboard_freq_change, HOOK_PRIO_DEFAULT);
 
@@ -809,17 +836,22 @@ void keyboard_scan_init(void)
 	}
 
 	/* Configure refresh key matrix */
-	keyboard_mask_refresh = KEYBOARD_ROW_TO_MASK(
-		board_keyboard_row_refresh());
+	keyboard_mask_refresh =
+		KEYBOARD_ROW_TO_MASK(board_keyboard_row_refresh());
 
-	/* Configure GPIO */
-	keyboard_raw_init();
+	if (!IS_ENABLED(CONFIG_KEYBOARD_SCAN_ADC))
+		/* Configure GPIO */
+		keyboard_raw_init();
 
 	/* Tri-state the columns */
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
 
 	/* Initialize raw state */
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 	read_matrix(debounced_state);
+#else
+	read_adc_boot_keys(debounced_state);
+#endif
 
 #ifdef CONFIG_KEYBOARD_LANGUAGE_ID
 	/* Check keyboard ID state */
@@ -886,7 +918,8 @@ void keyboard_scan_task(void *u)
 
 			if (local_disable_scanning != new_disable_scanning)
 				CPRINTS("KB disable_scanning_mask changed: "
-					"0x%08x", new_disable_scanning);
+					"0x%08x",
+					new_disable_scanning);
 
 			if (!new_disable_scanning) {
 				/* Enabled now */
@@ -914,9 +947,16 @@ void keyboard_scan_task(void *u)
 			 * user pressing a key and enable_interrupt()
 			 * starting to pay attention to edges.
 			 */
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 			if (!local_disable_scanning &&
 			    (keyboard_raw_read_rows() || force_poll))
 				break;
+#else
+			if (!local_disable_scanning &&
+			    (keyboard_read_adc_rows() || force_poll ||
+			     !gpio_get_level(GPIO_RFR_KEY_L)))
+				break;
+#endif
 			else
 				task_wait_event(-1);
 		}
@@ -935,15 +975,16 @@ void keyboard_scan_task(void *u)
 
 			/* Check for keys down */
 			if (check_keys_changed(debounced_state)) {
-				poll_deadline.val = start.val
-					+ keyscan_config.poll_timeout_us;
+				poll_deadline.val =
+					start.val +
+					keyscan_config.poll_timeout_us;
 			} else if (timestamp_expired(poll_deadline, &start)) {
 				break;
 			}
 
 			/* Delay between scans */
 			wait_time = keyscan_config.scan_period_us -
-				(get_time().val - start.val);
+				    (get_time().val - start.val);
 
 			if (wait_time < keyscan_config.min_post_scan_delay_us)
 				wait_time =
@@ -1005,8 +1046,7 @@ mkbp_command_simulate_key(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_MKBP_SIMULATE_KEY,
-		     mkbp_command_simulate_key,
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_SIMULATE_KEY, mkbp_command_simulate_key,
 		     EC_VER_MASK(0));
 
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
@@ -1024,17 +1064,15 @@ int keyboard_factory_test_scan(void)
 
 	/* Set all of KSO/KSI pins to internal pull-up and input */
 	for (i = 0; i < keyboard_factory_scan_pins_used; i++) {
-
 		if (keyboard_factory_scan_pins[i][0] < 0)
 			continue;
 
 		port = keyboard_factory_scan_pins[i][0];
 		id = keyboard_factory_scan_pins[i][1];
 
-		gpio_set_alternate_function(port, 1 << id,
-					GPIO_ALT_FUNC_NONE);
+		gpio_set_alternate_function(port, 1 << id, GPIO_ALT_FUNC_NONE);
 		gpio_set_flags_by_mask(port, 1 << id,
-			GPIO_INPUT | GPIO_PULL_UP);
+				       GPIO_INPUT | GPIO_PULL_UP);
 	}
 
 	/*
@@ -1042,7 +1080,6 @@ int keyboard_factory_test_scan(void)
 	 * going to low level, it indicate the two pins are shorted.
 	 */
 	for (i = 0; i < keyboard_factory_scan_pins_used; i++) {
-
 		if (keyboard_factory_scan_pins[i][0] < 0)
 			continue;
 
@@ -1051,20 +1088,19 @@ int keyboard_factory_test_scan(void)
 
 		gpio_set_flags_by_mask(port, 1 << id, GPIO_OUT_LOW);
 
-		for (j = 0; j < i; j++) {
-
-			if (keyboard_factory_scan_pins[j][0] < 0)
+		for (j = 0; j < keyboard_factory_scan_pins_used; j++) {
+			if (keyboard_factory_scan_pins[j][0] < 0 || i == j)
 				continue;
 
 			if (keyboard_raw_is_input_low(
-					keyboard_factory_scan_pins[j][0],
-					keyboard_factory_scan_pins[j][1])) {
+				    keyboard_factory_scan_pins[j][0],
+				    keyboard_factory_scan_pins[j][1])) {
 				shorted = i << 8 | j;
 				goto done;
 			}
 		}
 		gpio_set_flags_by_mask(port, 1 << id,
-			GPIO_INPUT | GPIO_PULL_UP);
+				       GPIO_INPUT | GPIO_PULL_UP);
 	}
 done:
 	gpio_config_module(MODULE_KEYBOARD_SCAN, 1);
@@ -1092,8 +1128,7 @@ static enum ec_status keyboard_factory_test(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_KEYBOARD_FACTORY_TEST,
-		     keyboard_factory_test,
+DECLARE_HOST_COMMAND(EC_CMD_KEYBOARD_FACTORY_TEST, keyboard_factory_test,
 		     EC_VER_MASK(0));
 #endif
 
@@ -1134,14 +1169,12 @@ static int command_ksstate(int argc, char **argv)
 	print_state(debounced_state, "debounced ");
 	print_state(debouncing, "debouncing");
 
-	ccprintf("Keyboard scan disable mask: 0x%08x\n",
-		 disable_scanning_mask);
+	ccprintf("Keyboard scan disable mask: 0x%08x\n", disable_scanning_mask);
 	ccprintf("Keyboard scan state printing %s\n",
 		 print_state_changes ? "on" : "off");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ksstate, command_ksstate,
-			"ksstate [on | off | force]",
+DECLARE_CONSOLE_COMMAND(ksstate, command_ksstate, "ksstate [on | off | force]",
 			"Show or toggle printing keyboard scan state");
 
 static int command_keyboard_press(int argc, char **argv)
@@ -1185,7 +1218,6 @@ static int command_keyboard_press(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
-			"[col row [0 | 1]]",
+DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press, "[col row [0 | 1]]",
 			"Simulate keypress");
 #endif
