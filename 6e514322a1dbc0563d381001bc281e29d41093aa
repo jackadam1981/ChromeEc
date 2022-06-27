@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c9f78c_414fb6ea",
+        "filename": "board/dojo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-06-27T12:15:20Z",
+      "side": 1,
+      "message": "This is not make sense. you will override all charge_ma to 2944 even if we only attached 15V@2.25A charger.",
+      "range": {
+        "startLine": 392,
+        "startChar": 1,
+        "endLine": 392,
+        "endChar": 17
+      },
+      "revId": "6e514322a1dbc0563d381001bc281e29d41093aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
