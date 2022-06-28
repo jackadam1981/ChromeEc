@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b93ec08_7c050b50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-28T21:00:04Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "5657b406_98b3a0c7",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4684a57_21fc36e8",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "Let\u0027s go ahead and make it a single commit. Since you were able to verify power numbers, it looks like the change is safe enough to apply to all cortex-m/m0, so let\u0027s go ahead and clean it up everywhere that we can.",
       "parentUuid": "984be9cc_caf62018",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c51d29_922c5497",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-28T21:00:04Z",
+      "side": 1,
+      "message": "\u003e it looks like the change is safe enough to apply to all cortex-m/m0\n\nThe list of devices I\u0027m seeing for cortex-m and cortex-m0 is:\n - mchp\n - max32660\n - stm32f0\n - stm32f3\n - stm32f4\n - stm32g4\n - stm32l4\n - stm32h7\n - stm32l5\n - npcx\n - mt818x\n - mec1322\n\nDoes this sound like the correct list to you? I got the list by searching for `cortex-m` in `chip/**/build.mk` in case that\u0027s helpful.\n\nLooking for other instances of the `wfi` instruction I also found some RISC-V devices (such as it83xx). I\u0027m not planning to update those since we don\u0027t have a debug.c/debug.h file that\u0027s been tested on RISC-V. Okay?\n\n\u003e let\u0027s go ahead and clean it up everywhere that we can\n\nI assume that we want to also handle other places where we call `wfi` too, such as:\n -  [_idle task with CONFIG_LOW_POWER_IDLE set for cortex-m0](http://go/cscros/chromiumos/codesearch/+/HEAD:src/platform/ec/core/cortex-m0/task.c;l\u003d75)\n - [hibernate` in mchp](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/chip/mchp/system.c;l\u003d552)",
+      "parentUuid": "a804475f_cfa01715",
       "range": {
         "startLine": 110,
         "startChar": 3,
