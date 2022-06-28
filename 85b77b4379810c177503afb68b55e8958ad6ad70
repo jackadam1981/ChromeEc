@@ -232,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cd3b7ee_3e398119",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T19:03:58Z",
+      "side": 1,
+      "message": "I\u0027ll test it again but I did test initially with this change and it was working will verify again with battery connected",
+      "parentUuid": "9a735dd0_4ebddeed",
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fcb5d1c6_a80345f3",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 25
