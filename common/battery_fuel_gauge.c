@@ -9,6 +9,7 @@
 #include "battery_smart.h"
 #include "console.h"
 #include "hooks.h"
+#include "timer.h"
 #include "i2c.h"
 #include "util.h"
 
@@ -295,11 +296,18 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 {
 	int reg;
 	int type = get_battery_type();
+	static int first_check_done;
 
 	/* If battery type is not known, can't check CHG/DCHG FETs */
 	if (type == BATTERY_TYPE_COUNT) {
 		/* Still don't know, so return here */
 		return BATTERY_DISCONNECT_ERROR;
+	}
+
+	if (!first_check_done &&
+	    board_battery_info[type].fuel_gauge.fet.delay) {
+		sleep(board_battery_info[type].fuel_gauge.fet.delay);
+		first_check_done = 1;
 	}
 
 	if (battery_get_fet_status_regval(&reg))

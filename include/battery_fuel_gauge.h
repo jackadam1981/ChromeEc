@@ -36,6 +36,7 @@ struct sleep_mode_info {
 };
 
 struct fet_info {
+	const int delay;
 	const int mfgacc_support;
 	const uint8_t reg_addr;
 	const uint16_t reg_mask;
