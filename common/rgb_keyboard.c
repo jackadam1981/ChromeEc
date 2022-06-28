@@ -541,8 +541,18 @@ DECLARE_HOST_COMMAND(EC_CMD_RGBKBD_SET_COLOR, hc_rgbkbd_set_color,
 static enum ec_status hc_rgbkbd(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rgbkbd *p = args->params;
+	struct ec_response_rgbkbd *r = args->response;
 	enum ec_status rv = EC_RES_SUCCESS;
 
+<<<<<<< HEAD   (4413e9 ectool: Bypass GEC_LOCK for COMM_USB interfaces)
+=======
+	/* Default value is 0 */
+	args->response_size = 0;
+
+	if (rgbkbd_late_init())
+		return EC_RES_ERROR;
+
+>>>>>>> CHANGE (0fedae rgbkbd: Add get_config subcommand to rgbkbd host command)
 	switch (p->subcmd) {
 	case EC_RGBKBD_SUBCMD_CLEAR:
 		rgbkbd_reset_color(p->color);
@@ -555,6 +565,10 @@ static enum ec_status hc_rgbkbd(struct host_cmd_handler_args *args)
 	case EC_RGBKBD_SUBCMD_SET_SCALE:
 		if (rgbkbd_set_scale(p->set_scale.scale, p->set_scale.key))
 			rv = EC_RES_ERROR;
+		break;
+	case EC_RGBKBD_SUBCMD_GET_CONFIG:
+		args->response_size = sizeof(*r);
+		r->rgbkbd_type = rgbkbd_type;
 		break;
 	default:
 		rv = EC_RES_INVALID_PARAM;

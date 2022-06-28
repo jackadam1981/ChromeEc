@@ -154,9 +154,16 @@ extern const uint8_t rgbkbd_hsize;
 extern const uint8_t rgbkbd_vsize;
 
 /*
+<<<<<<< HEAD   (4413e9 ectool: Bypass GEC_LOCK for COMM_USB interfaces)
  * Called to power on or off the RGB keyboard module.
  */
 __override_proto void board_enable_rgb_keyboard(bool enable);
+=======
+ * rgbkbd_type describes the rgb kb type supported.
+ * i.e. Number of zones and number of LEDs
+ */
+extern const enum ec_rgbkbd_type rgbkbd_type;
+>>>>>>> CHANGE (0fedae rgbkbd: Add get_config subcommand to rgbkbd host command)
 
 /*
  * rgbkbd_map describes a mapping from key IDs to LED IDs.
