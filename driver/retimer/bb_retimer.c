@@ -419,7 +419,6 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	 * 1 – DP connected
 	 */
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
-		set_retimer_con |= BB_RETIMER_DP_CONNECTION;
 
 		/*
 		 * Bit 11-10: DP_PIN_ASSIGNMENT (ignored if BIT8 = 0)
@@ -502,11 +501,13 @@ void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
 	 * 0 - HPD_State Low
 	 * 1 - HPD_State High
 	 */
-	if (mux_state & USB_PD_MUX_HPD_LVL)
+	if (mux_state & USB_PD_MUX_HPD_LVL) {
 		retimer_con_reg |= BB_RETIMER_HPD_LVL;
-	else
+		retimer_con_reg |= BB_RETIMER_DP_CONNECTION;
+	} else {
 		retimer_con_reg &= ~BB_RETIMER_HPD_LVL;
-
+		retimer_con_reg &= ~BB_RETIMER_DP_CONNECTION;
+	}
 	/* Writing the register4 */
 	bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, retimer_con_reg);
 }
