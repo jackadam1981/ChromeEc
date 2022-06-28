@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e854201_5828bd67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-28T22:34:32Z",
+      "side": 1,
+      "message": "For the changes that touch fingerprint code, if you can run `compare_build.sh` with `-b fp` that will make it easy to verify it\u0027s definitely a format-only change.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "78c1c8a8411ebec992b4d275359301cd68cc0ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
