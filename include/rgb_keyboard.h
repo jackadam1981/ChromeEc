@@ -28,6 +28,7 @@ struct rgbkbd_cfg {
 	/* Grid size */
 	const uint8_t col_len;
 	const uint8_t row_len;
+	const enum ec_rgbkbd_support_mode support_mode;
 };
 
 struct rgbkbd_init {
@@ -152,6 +153,12 @@ extern struct rgbkbd rgbkbds[];
 extern const uint8_t rgbkbd_count;
 extern const uint8_t rgbkbd_hsize;
 extern const uint8_t rgbkbd_vsize;
+
+/*
+ * support_mode describes the HW mode supported.
+ * i.e. Number of zones and number of LEDs
+ */
+extern const enum ec_rgbkbd_support_mode support_mode;
 
 /*
  * rgbkbd_map describes a mapping from key IDs to LED IDs.
