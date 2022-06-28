@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d90c4aa_da50d3d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-28T23:13:53Z",
+      "side": 1,
+      "message": "Overall my bikeshedding comment is that I don\u0027t like the \u0027barebone\u0027 name.\nA more suitable name may be \u0027example\u0027.",
+      "revId": "e682cb7a984599b0dba6f2c25670a8bba9952e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e6d2fa_04e0b7d0",
+        "filename": "zephyr/projects/barebone/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-28T23:13:53Z",
+      "side": 1,
+      "message": "It would be good to remove gpio_map.h entirely.\nNot sure what is depending on it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "e682cb7a984599b0dba6f2c25670a8bba9952e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
