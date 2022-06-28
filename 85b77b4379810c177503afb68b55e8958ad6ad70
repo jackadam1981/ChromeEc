@@ -214,6 +214,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a735dd0_4ebddeed",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-28T19:02:02Z",
+      "side": 1,
+      "message": "if the device is booting from dead battery it might reset again so can cause reset loop.\ntry see if dead battery boot works with this on p2\u00263",
+      "parentUuid": "ce2f08d3_206b3f1c",
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fcb5d1c6_a80345f3",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 25
