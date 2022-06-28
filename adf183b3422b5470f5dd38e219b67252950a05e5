@@ -440,6 +440,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca50cea_ccb35803",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-28T23:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48538102_445de2f3",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13b6064f_ba4939b8",
@@ -524,6 +542,24 @@
       "side": 1,
       "message": "Nit: Since these asserts would only fail due to a programming error in the test, they should use `zassume_false`. (See `test/drivers/util.h`.)",
       "parentUuid": "de2ff7e9_7ec8e8e1",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb39ab1_a745ff29",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-28T23:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d21ff848_098ff45b",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
