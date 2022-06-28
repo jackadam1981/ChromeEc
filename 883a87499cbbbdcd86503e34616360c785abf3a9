@@ -154,6 +154,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ebb4ef4_107fe55a",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-28T21:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec067c7_00e08079",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9ecada7_8dae1a84",
@@ -390,6 +408,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e866d6ba_5671eadd",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-28T21:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2f26d34_7bc0ce4a",
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcca0d0f_b66299ad",
@@ -461,6 +497,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4459a631_e0dec36a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-28T21:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cded2ad4_e10a0600",
+      "range": {
+        "startLine": 125,
+        "startChar": 33,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e9161f1_c50ee15c",
@@ -509,6 +569,30 @@
       "writtenOn": "2022-06-22T18:02:56Z",
       "side": 1,
       "message": "why are we shifting left by zero?",
+      "range": {
+        "startLine": 185,
+        "startChar": 9,
+        "endLine": 185,
+        "endChar": 10
+      },
+      "revId": "883a87499cbbbdcd86503e34616360c785abf3a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdb8f19_e196778d",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source_rev3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-28T21:27:47Z",
+      "side": 1,
+      "message": "Consistency/readability to show the 0th bit is being set.",
+      "parentUuid": "05492cf5_27d1b6e1",
       "range": {
         "startLine": 185,
         "startChar": 9,
