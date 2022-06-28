@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a27372_ca4a8d7a",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-28T03:17:43Z",
+      "side": 1,
+      "message": "You can actually avoid writing a separate register function entirely:\n\n```\ndrivers \u003d register_host_test(...)\nisl923x \u003d drivers.variant(project_name\u003d\"drivers-isl923x\")\nled_driver \u003d drivers.variant(project_name\u003d\"drivers-led_driver\", dts_overlays\u003d[here / \"led_driver\" / \"led_pins.dts\", ...], kconfig_files\u003d[here/ \"led_driver\" / \"prj.conf\"])\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "64ee2101631b161920679b3a43f5e6e487c3e371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
