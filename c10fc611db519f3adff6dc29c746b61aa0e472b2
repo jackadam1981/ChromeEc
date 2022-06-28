@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcdb1af3_dc1429f4",
+        "filename": "test/utils_str.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-28T01:42:57Z",
+      "side": 1,
+      "message": "It\u0027s probably more readable (esp. if there are failures), if you change it so that each check is separate:\n\n```\nTEST_CHECK(atoi(\"...));\nTEST_CHECK(atoi(\"...));\n```",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 54
+      },
+      "revId": "c10fc611db519f3adff6dc29c746b61aa0e472b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
