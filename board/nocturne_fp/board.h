@@ -183,7 +183,7 @@
 
 /* RW does slow compute, RO does slow flash erase. */
 #undef CONFIG_WATCHDOG_PERIOD_MS
-#define CONFIG_WATCHDOG_PERIOD_MS 10000
+#define CONFIG_WATCHDOG_PERIOD_MS 100000
 
 /*
  * Add rollback protection
