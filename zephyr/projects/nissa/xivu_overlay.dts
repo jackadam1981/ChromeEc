@@ -22,6 +22,9 @@
 		default_battery: lgc {
 			compatible = "lgc,ap18c8k", "battery-smart";
 		};
+		as3gwqd3jb_c490-42 {
+			compatible = "as3gwqd3jb,c490-42", "battery-smart";
+		};
 	};
 
 	hibernate-wake-pins {
