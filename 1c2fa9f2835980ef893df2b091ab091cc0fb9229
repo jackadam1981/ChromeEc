@@ -16,6 +16,167 @@
       "message": "LGTM, but let\u0027s give Jack a chance to look too.",
       "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd56bd26_9c360a84",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-28T21:44:55Z",
+      "side": 1,
+      "message": "`pathlib.Path` would be the appropriate type for paths.",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a8d06d_b468b3eb",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-28T21:44:55Z",
+      "side": 1,
+      "message": "`path.is_dir()`, if it were a `pathlib.Path`",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990e7556_f3c971ff",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-28T21:44:55Z",
+      "side": 1,
+      "message": "This should have functionality like `maybe_reexec` in zmake for developer convenience, for when you make changes to the script.\n\n(or, I might suggest just making this a subcommand of `zmake`, as you get it all for free then)",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8657c6_e3889b88",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-28T21:44:55Z",
+      "side": 1,
+      "message": "Don\u0027t use `+` for literal concatenation.\n\nPutting the strings side-by-side is the preferred style.",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc7526e_f8c38d95",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-28T21:44:55Z",
+      "side": 1,
+      "message": "A lot of this appears to be duplicating what the zmake CLI already has. I would much prefer it\u0027s just a `version` subcommand of zmake, which is a singnificantly simpler solution.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b648d216_db42bc97",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-28T21:44:55Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b892f075_0d2f715a",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-28T21:44:55Z",
+      "side": 1,
+      "message": "CROS_FWID is deprecated. I would just remove this.",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
