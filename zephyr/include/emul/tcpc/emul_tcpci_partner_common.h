@@ -14,6 +14,7 @@
 
 #include <zephyr/drivers/emul.h>
 #include <zephyr/kernel.h>
+#include <zephyr/sys/atomic.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -131,6 +132,7 @@ struct tcpci_partner_data {
 	enum tcpci_emul_tx_status *received_msg_status;
 	/** Whether port partner is configured in DisplayPort mode */
 	bool displayport_configured;
+	atomic_t displayport_enter_attempts;
 
 	/* VDMs with which the partner responds to discovery REQs. The VDM
 	 * buffers include the VDM header, and the VDO counts include 1 for the

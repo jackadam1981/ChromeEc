@@ -303,6 +303,19 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 	zassert_true(fixture->partner.displayport_configured, NULL);
 }
 
+ZTEST_F(usbc_alt_mode_dp_nak, verify_displayport_mode_entry)
+{
+	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
+				   TYPEC_MODE_DP);
+	k_sleep(K_SECONDS(1));
+
+	zassert_false(fixture->partner.displayport_configured, NULL);
+	int dp_attempts =
+		atomic_get(&fixture->partner.displayport_enter_attempts);
+	zassert_equal(dp_attempts, 1, "Expected 1 DP attempt, got %d",
+		      dp_attempts);
+}
+
 ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 {
 	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
