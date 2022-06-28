@@ -317,6 +317,7 @@
 	pinctrl-0 = <&i2c4_clk_gpe0_default
 		     &i2c4_data_gpe7_default>;
 	pinctrl-names = "default";
+	dynamic-speed;
 };
 
 &i2c5 {
