@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6364b086_132165e6",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T18:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a032d13e_55d6b671",
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b216fb3f_565e0831",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T18:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a16faf4d_af098868",
+      "range": {
+        "startLine": 1071,
+        "startChar": 0,
+        "endLine": 1071,
+        "endChar": 1
+      },
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f73c52b_8af613cb",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-06-28T18:22:03Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 27
+      },
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c19be74e_866d6caa",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T18:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f73c52b_8af613cb",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b66ae8_819207ea",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T18:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3506cdb8_1abe23eb",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a893738_a9269f52",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-06-28T18:22:03Z",
       "side": 1,
       "message": "do it only if battery present and VBUS is not coming from port-2 or 3",
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2f08d3_206b3f1c",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T18:43:29Z",
+      "side": 1,
+      "message": "this reset needs to take place for all devices...or else the pd can get stuck in a bad state if a device is connected at boot. (maybe a limitation of the pd?)",
+      "parentUuid": "7a893738_a9269f52",
       "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f639bf26_8445e1b4",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T18:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb5d1c6_a80345f3",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51f5fe46_1497d263",
@@ -140,6 +272,24 @@
       "writtenOn": "2022-06-28T18:22:03Z",
       "side": 1,
       "message": "if defined(HAS_TASK_PD_C2)",
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde85bea_ec6ba931",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T18:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51f5fe46_1497d263",
       "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
