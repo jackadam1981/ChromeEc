@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5657b406_98b3a0c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-28T19:54:43Z",
+      "side": 1,
+      "message": "That\u0027s strange since it doesn\u0027t look like this CL is set as \"Work-in-Progress\". I\u0027ll rebase the changes and upload.",
+      "parentUuid": "92d99b54_3627c8ff",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4684a57_21fc36e8",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "I wasn\u0027t sure if it made more sense to replace this change or to add a new commit so I opted for the latter. See https://crrev.com/c/3731612/1\n\n\u003e Many more redefined __idle func.\nNote, I only handled the cases for stm32f4 and stm32h7.",
       "parentUuid": "c950755e_0195f5ac",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a804475f_cfa01715",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-28T19:54:43Z",
+      "side": 1,
+      "message": "Let\u0027s go ahead and make it a single commit. Since you were able to verify power numbers, it looks like the change is safe enough to apply to all cortex-m/m0, so let\u0027s go ahead and clean it up everywhere that we can.",
+      "parentUuid": "984be9cc_caf62018",
       "range": {
         "startLine": 110,
         "startChar": 3,
