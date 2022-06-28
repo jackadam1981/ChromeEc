@@ -70,6 +70,30 @@
       },
       "revId": "64ee2101631b161920679b3a43f5e6e487c3e371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7560833e_8ba8c737",
+        "filename": "zephyr/test/drivers/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-28T03:41:34Z",
+      "side": 1,
+      "message": "```\ndrivers \u003d register_host_test(...)\nisl923x \u003d drivers.variant(project_name\u003d\"drivers-isl923x\")\n```\n\nResulted in `KeyError: \u0027test-drivers-isl923x`",
+      "parentUuid": "37a694d5_25ff61cf",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "64ee2101631b161920679b3a43f5e6e487c3e371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
