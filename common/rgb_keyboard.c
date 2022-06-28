@@ -550,6 +550,12 @@ static enum ec_status hc_rgbkbd(struct host_cmd_handler_args *args)
 		if (rgbkbd_set_scale(p->set_scale.scale, p->set_scale.key))
 			rv = EC_RES_ERROR;
 		break;
+	case EC_RGBKBD_SUBCMD_GET_CONFIG:
+		struct ec_response_rgbkbd *r = args->response;
+
+		args->response_size = sizeof(*r);
+		r->rgbkbd_type = rgbkbd_type;
+		break;
 	default:
 		rv = EC_RES_INVALID_PARAM;
 		break;
