@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "901e382c_0f842058",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-28T19:13:16Z",
+      "side": 1,
+      "message": "From CL:3722796 comments:\nAdd helper functions to check if we need to do anything with SOP\u0027 and SOP\u0027\u0027, similar to https://crrev.com/c/3350616 and update all existing logic to use those functions if it\u0027s a no-op, but _don\u0027t_ change the actual logic anywhere.\n\nNext one will fix Apple new pro issue.",
+      "revId": "d6f0b2341b4bb6e7c2d860eafc5ecd22819a3975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
