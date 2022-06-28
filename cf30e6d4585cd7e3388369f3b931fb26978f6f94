@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47de93f1_018a59c2",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 6
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-06-28T23:16:53Z",
+      "side": 1,
+      "message": "added parentheses: `^((4\\..)|(5\\.4\\.)|(5\\.10\\.))` https://regex101.com/r/0IJgz0/1",
+      "parentUuid": "e17de984_4cc06a15",
+      "range": {
+        "startLine": 634,
+        "startChar": 22,
+        "endLine": 634,
+        "endChar": 57
+      },
+      "revId": "cf30e6d4585cd7e3388369f3b931fb26978f6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07f1114e_c61be877",
