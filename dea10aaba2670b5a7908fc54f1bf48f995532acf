@@ -16,6 +16,24 @@
       "message": "This probably leaves a bunch of files now including these definitions transitively through this file. In a future CL, you might want to fix that.",
       "revId": "dea10aaba2670b5a7908fc54f1bf48f995532acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc53971_717cf298",
+        "filename": "include/util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-28T23:55:59Z",
+      "side": 1,
+      "message": "Yes, it would be best to include them directly, so I\u0027ll try to clean that up in the future (large change).",
+      "parentUuid": "1cedec76_b81b800f",
+      "revId": "dea10aaba2670b5a7908fc54f1bf48f995532acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
