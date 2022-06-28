@@ -22,6 +22,30 @@
       },
       "revId": "c96fa229d2e69b779a48a7951398cbb0d4499dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f55bb44_ab8ffb9c",
+        "filename": "zephyr/dts/bindings/battery/cosmx,l22x3pg0.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-06-28T03:39:59Z",
+      "side": 1,
+      "message": "discussed with vendor via email, they suggested setting the `discharging_max_：70` and updated the battery SPEC, see more detail in b/235460488",
+      "parentUuid": "b9f3eed1_7e104117",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "c96fa229d2e69b779a48a7951398cbb0d4499dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
