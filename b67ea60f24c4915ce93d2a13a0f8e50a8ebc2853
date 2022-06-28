@@ -16,6 +16,23 @@
       "message": "This will fix the broken builds on gitlab.com (https://gitlab.com/zephyr-ec/ec/-/commits/main) so please submit it without crrev/c/3727644 if this current CQ run doesn\u0027t work.",
       "revId": "b67ea60f24c4915ce93d2a13a0f8e50a8ebc2853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff2ce398_acaf627b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2022-06-28T21:20:25Z",
+      "side": 1,
+      "message": "Trying to submit separately from GCC change.",
+      "revId": "b67ea60f24c4915ce93d2a13a0f8e50a8ebc2853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
