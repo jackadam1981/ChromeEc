@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a032d13e_55d6b671",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-28T18:22:03Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f73c52b_8af613cb",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-28T18:22:03Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 27
+      },
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3506cdb8_1abe23eb",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-28T18:22:03Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a893738_a9269f52",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-28T18:22:03Z",
+      "side": 1,
+      "message": "do it only if battery present and VBUS is not coming from port-2 or 3",
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb5d1c6_a80345f3",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-28T18:22:03Z",
+      "side": 1,
+      "message": "USBC_PORT_C2",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f5fe46_1497d263",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-28T18:22:03Z",
+      "side": 1,
+      "message": "if defined(HAS_TASK_PD_C2)",
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
