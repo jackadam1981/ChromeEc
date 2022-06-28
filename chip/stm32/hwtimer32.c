@@ -293,6 +293,7 @@ const struct irq_priority __keep IRQ_PRIORITY(IRQ_WD)
 
 void hwtimer_setup_watchdog(void)
 {
+#if 0
 	int freq;
 
 	/* Enable clock */
@@ -345,6 +346,7 @@ void hwtimer_setup_watchdog(void)
 
 	/* Enable timer interrupts */
 	task_enable_irq(IRQ_WD);
+#endif
 }
 
 void hwtimer_reset_watchdog(void)
