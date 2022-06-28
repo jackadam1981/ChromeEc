@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40a70c1_fba179b5",
+        "filename": "board/dewatt/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-06-28T14:18:15Z",
+      "side": 1,
+      "message": "This triple negative is hard to read. Please make it more verbose. i.e.\nbattery_get_disconnect_state() \u003d\u003d BATTERY_DISCONNECTED || battery_get_disconnect_state() \u003d\u003d BATTERY_DISCONNECT_ERROR",
+      "revId": "4fb6e1e458b766b5e5a644a16fd1c35b859f5986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
