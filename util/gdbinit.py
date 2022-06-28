@@ -23,11 +23,14 @@ import textwrap
 import gdb
 
 
-BOARD = os.getenv("BOARD", "")
+#BOARD = os.getenv("BOARD", "")
 # PROJECT can be changed to be the name of a unit test, such as "sha256"
 PROJECT = os.getenv("PROJECT", "ec")
-GDBSERVER = os.getenv("GDBSERVER", "openocd")
-USING_CLION = distutils.util.strtobool(os.getenv("USING_CLION", "FALSE"))
+#GDBSERVER = os.getenv("GDBSERVER", "openocd")
+#USING_CLION = distutils.util.strtobool(os.getenv("USING_CLION", "FALSE"))
+BOARD = 'dartmonkey'
+GDBSERVER = 'segger'
+USING_CLION = 'TRUE'
 
 if GDBSERVER == "openocd":
     DEFAULT_GDB_PORT = "3333"
@@ -85,10 +88,11 @@ if BOARD != "":
     )
 
     # When using gdb from CLion, this kills gdb.
-    if not USING_CLION:
-        gdb.execute(f"file {obj_elf}")
-    gdb.execute(f"add-symbol-file {ro_elf}")
-    gdb.execute(f"add-symbol-file {rw_elf}")
+    #if not USING_CLION:
+    #    gdb.execute(f"file {obj_elf}")
+    #gdb.execute(f"add-symbol-file {ro_elf}")
+    #gdb.execute(f"add-symbol-file {rw_elf}")
+    gdb.execute('file ' + os.path.join(build, BIN_DIR, 'RW', BIN_NAME + '.RW.elf'))
 
 if GDBSERVER == "openocd":
     gdb.execute("set $GDBSERVER_OPENOCD = 1")
