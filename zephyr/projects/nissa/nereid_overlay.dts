@@ -319,6 +319,10 @@
 	pinctrl-names = "default";
 };
 
+&i2c_ec_i2c_sub_usb_c1 {
+  dynamic-speed;
+};
+
 &i2c5 {
 	label = "I2C_USB_C0_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
