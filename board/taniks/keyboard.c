@@ -62,6 +62,14 @@ const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
 const uint8_t rgbkbd_hsize = RGB_GRID0_COL;
 const uint8_t rgbkbd_vsize = RGB_GRID0_ROW;
 
+<<<<<<< HEAD   (4413e9 ectool: Bypass GEC_LOCK for COMM_USB interfaces)
+=======
+const enum ec_rgbkbd_type rgbkbd_type = EC_RGBKBD_TYPE_FOUR_ZONES_40_LEDS;
+
+#define LED(x, y) RGBKBD_COORD((x), (y))
+#define DELM RGBKBD_DELM
+
+>>>>>>> CHANGE (7c733a taniks: rgbkbd: Add rgb keyboard type field)
 const uint8_t rgbkbd_map[] = {
 	RGBKBD_DELM,
 };
