@@ -103,8 +103,16 @@ const uint8_t rgbkbd_count = ARRAY_SIZE(rgbkbds);
 const uint8_t rgbkbd_hsize = RGB_GRID0_COL + RGB_GRID1_COL;
 const uint8_t rgbkbd_vsize = RGB_GRID0_ROW;
 
+<<<<<<< HEAD   (4c1260 nereid: vbus measurement using charger ic ADC)
 #define LED(x, y)	RGBKBD_COORD((x), (y))
 #define DELM		RGBKBD_DELM
+=======
+const enum ec_rgbkbd_type rgbkbd_type = EC_RGBKBD_TYPE_PER_KEY;
+
+#define LED(x, y) RGBKBD_COORD((x), (y))
+#define DELM RGBKBD_DELM
+
+>>>>>>> CHANGE (fa3766 prism: rgbkbd: Add rgb keyboard type field)
 const uint8_t rgbkbd_map[] = {
 	DELM,				/* 0: (null) */
 	LED( 0, 1), DELM,		/* 1: ~ ` */
