@@ -16,6 +16,24 @@
       "message": "So this would be the name of the HPD update function?  Is that a standard use of enums in the devicetree?",
       "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c184338_65a5a995",
+        "filename": "zephyr/dts/bindings/usbc/mux/analogix,usbc-mux-anx7447.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-28T00:48:53Z",
+      "side": 1,
+      "message": "I am not sure what\u0027s the standard use of enum. I followed the previous CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3586441 which adds an enum for ps8xxx_tcpc_update_hpd_status.",
+      "parentUuid": "675597f9_5d39552f",
+      "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
