@@ -97,6 +97,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92d99b54_3627c8ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-28T15:48:33Z",
+      "side": 1,
+      "message": "I tried to rebase this CL to resolve the merge conflict but that was rejected with a message stating \"only users with Toggle-Wip-State permission can modify Work-in-Progress\". I think this means that either Tom needs to do it or that I need permission.  I could try manually merging master in but I don\u0027t believe it would help because this CL would be merged before the merge.",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4684a57_21fc36e8",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -156,6 +179,30 @@
       "side": 1,
       "message": "Yes, please do.",
       "parentUuid": "01a863f2_511b7501",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984be9cc_caf62018",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-28T15:48:33Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if it made more sense to replace this change or to add a new commit so I opted for the latter. See https://crrev.com/c/3731612/1\n\n\u003e Many more redefined __idle func.\nNote, I only handled the cases for stm32f4 and stm32h7.",
+      "parentUuid": "c950755e_0195f5ac",
       "range": {
         "startLine": 110,
         "startChar": 3,
