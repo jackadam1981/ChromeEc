@@ -544,7 +544,9 @@ void __idle(void)
 			/* ensure outstanding memory transactions complete */
 			asm volatile("dsb");
 
+#if 0
 			asm("wfi");
+#endif
 
 			CPU_SCB_SYSCTRL &= ~0x4;
 
@@ -579,7 +581,9 @@ void __idle(void)
 			idle_sleep_cnt++;
 
 			/* normal idle : only CPU clock stopped */
+#if 0
 			asm("wfi");
+#endif
 		}
 		interrupt_enable();
 	}
