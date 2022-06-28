@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e926d0_0bfad647",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T17:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "633756f3_91ab6447",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4edf380_cdb3ad69",
@@ -182,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af7f3fb_6f87ce68",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T17:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d25f786_6cbe42b4",
+      "range": {
+        "startLine": 296,
+        "startChar": 31,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a177ef_cfc3d73a",
@@ -195,6 +243,24 @@
       "writtenOn": "2022-06-13T18:30:21Z",
       "side": 1,
       "message": "tabs",
+      "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4e33ee_1b63bbf8",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2022-06-28T17:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3a177ef_cfc3d73a",
       "revId": "28db95082a97d077ec5d21a34ae8f5021ed15836",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
