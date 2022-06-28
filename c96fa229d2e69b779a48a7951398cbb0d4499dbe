@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f3eed1_7e104117",
+        "filename": "zephyr/dts/bindings/battery/cosmx,l22x3pg0.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-28T03:15:23Z",
+      "side": 1,
+      "message": "There are many coeffs, I think we should use `operating temp` or `Tdm` which is more reasonable, since the firmware protection is the other protection functions which can prevent from the broken system damaging the battery.\n\n```\noperating temp \u003d -20~60\ndischarge protection is set at 73, and the low limit is --40\nTdm \u003d 50\n```",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "c96fa229d2e69b779a48a7951398cbb0d4499dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
