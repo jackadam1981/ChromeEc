@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a16faf4d_af098868",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-06-28T18:23:41Z",
+      "side": 1,
+      "message": "We can delete this log, because line 1074 already logging required information.",
+      "range": {
+        "startLine": 1071,
+        "startChar": 0,
+        "endLine": 1071,
+        "endChar": 1
+      },
+      "revId": "85b77b4379810c177503afb68b55e8958ad6ad70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f73c52b_8af613cb",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 25
