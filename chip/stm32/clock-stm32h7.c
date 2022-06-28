@@ -21,6 +21,7 @@
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
+#include "debug.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "registers.h"
@@ -544,7 +545,8 @@ void __idle(void)
 			/* ensure outstanding memory transactions complete */
 			asm volatile("dsb");
 
-			asm("wfi");
+			if (!debugger_is_connected())
+				asm("wfi");
 
 			CPU_SCB_SYSCTRL &= ~0x4;
 
@@ -579,7 +581,8 @@ void __idle(void)
 			idle_sleep_cnt++;
 
 			/* normal idle : only CPU clock stopped */
-			asm("wfi");
+			if (!debugger_is_connected())
+				asm("wfi");
 		}
 		interrupt_enable();
 	}
