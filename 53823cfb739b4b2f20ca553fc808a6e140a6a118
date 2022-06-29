@@ -16,6 +16,24 @@
       "message": "This is fine but we should add a todo for verifying the DPM does this on its own without the host command, right?",
       "revId": "53823cfb739b4b2f20ca553fc808a6e140a6a118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4808552_0e470bdc",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "608c6ad6_e0be63bd",
+      "revId": "53823cfb739b4b2f20ca553fc808a6e140a6a118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
