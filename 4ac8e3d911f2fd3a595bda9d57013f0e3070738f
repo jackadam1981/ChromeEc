@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a970f2_969d52de",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-29T17:53:31Z",
+      "side": 1,
+      "message": "if vsys is not available, could it print e.g. `(unknown)` instead of `-1 mV`?",
+      "range": {
+        "startLine": 425,
+        "startChar": 28,
+        "endLine": 425,
+        "endChar": 34
+      },
+      "revId": "4ac8e3d911f2fd3a595bda9d57013f0e3070738f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
