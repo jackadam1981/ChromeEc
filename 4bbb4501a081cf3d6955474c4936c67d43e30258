@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5066633_0443621b",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-29T17:56:34Z",
+      "side": 1,
+      "message": "I think this is only called from task context, is the watchdog reload necessary?",
+      "range": {
+        "startLine": 636,
+        "startChar": 2,
+        "endLine": 636,
+        "endChar": 20
+      },
+      "revId": "4bbb4501a081cf3d6955474c4936c67d43e30258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
