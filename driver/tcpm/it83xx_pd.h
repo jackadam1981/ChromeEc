@@ -361,6 +361,11 @@
 #endif
 
 #if defined(CONFIG_USB_PD_TCPM_ITE_ON_CHIP) && defined(CONFIG_ZEPHYR)
+//move to shim/config_chip (in CONFIG_USB_PD_TCPM_ITE_ON_CHIP)?
+//check
+//1.not define CONFIG_USB_PD_TCPM_ITE_ON_CHIP
+//2.define CONFIG_USB_PD_TCPM_ITE_ON_CHIP and
+//         (CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2 or CONFIG_USB_PD_TCPM_DRIVER_IT83XX)
 /* Use the Zephyr names here. When upstreaming we can update this */
 #include <zephyr/dt-bindings/interrupt-controller/ite-intc.h>
 
@@ -376,6 +381,8 @@
 #define USB_VID_ITE 0x048d
 
 /* ITE chip supports PD features */
+//need define CONFIG_SOCIT8XXX2_... in zephyr kconfig.soc?
+//then define IT83XX_INTC_FAST_SWAP_SUPPORT CONFIG_SOCIT8XXX2_... in shim/config_chip?
 #define IT83XX_INTC_FAST_SWAP_SUPPORT
 #define IT83XX_INTC_PLUG_IN_OUT_SUPPORT
 #endif
