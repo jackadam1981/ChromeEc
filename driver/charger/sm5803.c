@@ -648,14 +648,8 @@ static void sm5803_init(int chgnum)
 	 * Turn on GPADCs to default.  Enable the IBAT_CHG ADC in order to
 	 * measure battery current and calculate system resistance.
 	 */
-	reg = SM5803_GPADCC1_TINT_EN     |
-	      SM5803_GPADCC1_VSYS_EN     |
-	      SM5803_GPADCC1_VCHGPWR_EN  |
-	      SM5803_GPADCC1_VBUS_EN     |
-	      SM5803_GPADCC1_IBAT_CHG_EN |
-	      SM5803_GPADCC1_IBAT_DIS_EN |
-	      SM5803_GPADCC1_VBATSNSP_EN;
-	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, reg);
+	
+	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, 0);
 
 	/* Enable Psys DAC */
 	rv |= meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
