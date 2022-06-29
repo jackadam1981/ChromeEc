@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800c8453_4a2d112d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T22:12:29Z",
+      "side": 1,
+      "message": "Nit: This should be down by the tbt_sop_*_needed functions.",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193cbff9_df9b045d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T22:12:29Z",
+      "side": 1,
+      "message": "Nit: The high-level concept is that the cable reports as passive in Discover Identity but active in the TBT mode VDO. Is there a high-level name for this? Is it guaranteed that all cables that do this will be LRD cables, or is that just the most common example?",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f9c5ec_79f812f0",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T22:12:29Z",
+      "side": 1,
+      "message": "Nit: For posterity (if someone is looking at this commit in 6 months), put a TODO here noting that the logic needs to change to check that the cable is passive in Discover ID, and add a sentence to the commit message saying that this is a no-op refactor.",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928c10ae_498f04a5",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T22:12:29Z",
+      "side": 1,
+      "message": "Maybe this is something you want to fix in a later CL, but should this eventually be a `tbt_sop_prime_prime_needed` check?",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9066c329_fa40230f",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T22:12:29Z",
+      "side": 1,
+      "message": "I\u0027d say this comment is slightly too low-level for this location. Maybe something like this would be more useful to the reader:\n\"For some cables, the TCPM may need to enter TBT mode with the cable to support USB4 mode with the partner. Request to enter Thunderbolt mode for the cable prior to entering USB4 for the port partner if\n1. The cable advertises itself as passive in its Identity VDO but active in its TBT mode VDO, or\n2. The cable advertises itself as active, but its PD support is not new enough to support Enter_USB.\"",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 4
+      },
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0900ea9_b470fd1e",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T22:12:29Z",
+      "side": 1,
+      "message": "Should this be a `tbt_sop_prime_prime_needed` check?",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
