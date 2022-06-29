@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32fd15d2_8e9adea1",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T19:32:22Z",
+      "side": 1,
+      "message": "Can you help me come up with a better name for this? As it stands `dp_is_active(port) \u003d\u003d false` does not imply that `dp_is_inactive(port) \u003d\u003d true`, and I don\u0027t really want to put that in the codebase. Maybe it makes sense to change the name of `dp_is_active.`\n\nThe actual concepts are something like\n* `dp_is_active`: DP entry is done, and the port is in DP alt mode. DP exit may be about to start but hasn\u0027t really started yet.\n* `dp_is_inactive` (new): DP entry has not started, or DP exit has already finished.\n* `dp_entry_is_done`: DP entry has completed successfully, or DP exit has completed, successfully or otherwise.",
+      "revId": "6eb6de2f9486112d66378fe562a43701204e770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
