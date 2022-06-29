@@ -367,6 +367,7 @@ void host_cmd_typec_discovery(int port, enum typec_partner_type partner_type,
 		   "Failed to get Type-C state for port %d", port);
 }
 
+/* TODO: Test without helper */
 void host_cmd_typec_control(int port, enum typec_control_command command,
 			    enum typec_mode mode)
 {
