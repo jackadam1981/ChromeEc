@@ -94,6 +94,30 @@
       },
       "revId": "9d2aa487915b7be23f3e0aeff9266cb204e9cbfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7bc7c99_f04181dd",
+        "filename": "test/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-29T16:35:00Z",
+      "side": 1,
+      "message": "So OWNERS isn\u0027t exactly an intended mechanism to prevent breakages ... trying to get exclusive OWNERS on all files that the fingerprint firmware in any way depends on doesn\u0027t sound good either.\n\nCan your team look at enabling the necessary testing you need in the CQ instead?",
+      "parentUuid": "7ae6b4a5_c05cda22",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "9d2aa487915b7be23f3e0aeff9266cb204e9cbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
