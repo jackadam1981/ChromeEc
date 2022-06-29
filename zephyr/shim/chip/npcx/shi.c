@@ -10,6 +10,8 @@
 #include <zephyr/logging/log.h>
 #include <soc.h>
 #include <zephyr/zephyr.h>
+#include <zephyr/device.h>
+#include <zephyr/pm/device_runtime.h>
 
 #include <ap_power/ap_power.h>
 #include "chipset.h"
@@ -32,7 +34,7 @@ static void shi_enable(void)
 	}
 
 	LOG_INF("%s", __func__);
-	cros_shi_enable(cros_shi_dev);
+	pm_device_runtime_get(cros_shi_dev);
 }
 
 static void shi_disable(void)
@@ -45,7 +47,7 @@ static void shi_disable(void)
 	}
 
 	LOG_INF("%s", __func__);
-	cros_shi_disable(cros_shi_dev);
+	pm_device_runtime_put(cros_shi_dev);
 }
 DECLARE_HOOK(HOOK_SYSJUMP, shi_disable, HOOK_PRIO_DEFAULT);
 
@@ -78,6 +80,7 @@ static void shi_power_change(struct ap_power_ev_callback *cb,
 
 static void shi_init(void)
 {
+	const struct device *cros_shi_dev = DEVICE_DT_GET(SHI_NODE);
 	static struct ap_power_ev_callback cb;
 
 	ap_power_ev_init_callback(&cb, shi_power_change,
@@ -89,6 +92,8 @@ static void shi_init(void)
 #endif
 	);
 	ap_power_ev_add_callback(&cb);
+
+	pm_device_runtime_enable(cros_shi_dev);
 
 	if (IS_ENABLED(CONFIG_CROS_SHI_NPCX_DEBUG) ||
 	    (system_jumped_late() && chipset_in_state(CHIPSET_STATE_ON))) {

@@ -21,6 +21,19 @@
 #include "soc_miwu.h"
 #include "system.h"
 
+int shi_suspended = 0;
+int shi_resumed = 0;
+int shi_unknown = 0;
+
+int shi_npcx_enabled = 0;
+int shi_npcx_enabled_fail = 0;
+int shi_npcx_disabled = 0;
+
+int shi_enabled = 0;
+int shi_get = 0;
+int shi_put = 0;
+int shi_enabled_after_get = 0;
+
 #ifdef CONFIG_CROS_SHI_NPCX_DEBUG
 #define DEBUG_CPRINTS(format, args...) cprints(CC_SPI, format, ##args)
 #define DEBUG_CPRINTF(format, args...) cprintf(CC_SPI, format, ##args)
@@ -127,7 +140,7 @@ enum cros_shi_npcx_state {
 	SHI_STATE_BAD_RECEIVED_DATA,
 };
 
-static enum cros_shi_npcx_state state;
+enum cros_shi_npcx_state state = SHI_STATE_NONE;
 
 /* Device config */
 struct cros_shi_npcx_config {
@@ -909,8 +922,36 @@ static const struct cros_shi_driver_api cros_shi_npcx_driver_api = {
 	.disable = cros_shi_npcx_disable,
 };
 
+#ifdef CONFIG_PM_DEVICE
+#include <zephyr/pm/device.h>
+static int cros_shi_npcx_pm_cb(const struct device *dev, enum pm_device_action action)
+{
+	int ret = 0;
+	switch (action) {
+	case PM_DEVICE_ACTION_SUSPEND:
+		shi_suspended++;
+		printk("## pm_cb: suspend ##\n");
+		break;
+	case PM_DEVICE_ACTION_RESUME:
+		shi_resumed++;
+		cros_shi_npcx_enable(dev);
+		printk("## pm_cb: resume ##\n");
+		break;
+	default:
+		shi_unknown++;
+		ret = -ENOTSUP;
+		printk("## pm_cb: (%d) ##\n", action);
+		break;
+	}
+
+	return ret;
+}
+#endif
+
+PM_DEVICE_DT_INST_DEFINE(0, cros_shi_npcx_pm_cb);
+
 static struct cros_shi_npcx_data cros_shi_data;
-DEVICE_DT_INST_DEFINE(0, shi_npcx_init, /* pm_control_fn= */ NULL,
+DEVICE_DT_INST_DEFINE(0, shi_npcx_init, PM_DEVICE_DT_INST_GET(0),
 		      &cros_shi_data, &cros_shi_cfg, PRE_KERNEL_1,
 		      CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,
 		      &cros_shi_npcx_driver_api);
