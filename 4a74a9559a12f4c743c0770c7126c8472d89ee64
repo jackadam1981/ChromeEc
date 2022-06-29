@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b863f7_4c8f9924",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-29T17:53:44Z",
+      "side": 1,
+      "message": "maybe I missed it, is this ADC conversion time documented?",
+      "range": {
+        "startLine": 333,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 13
+      },
+      "revId": "4a74a9559a12f4c743c0770c7126c8472d89ee64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
