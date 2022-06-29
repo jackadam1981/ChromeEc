@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdb21f61_992a103c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-29T14:46:20Z",
+      "side": 1,
+      "message": "FYI: I must have been working from a pre-rebased branch because when I pushed version 4 it looks like I undid your rebase. I think I fixed the issue, rebuilding and testing now before pushing again.",
+      "parentUuid": "5b93ec08_7c050b50",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4684a57_21fc36e8",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
