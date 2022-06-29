@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc37ce16_38730309",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-29T02:46:17Z",
+      "side": 1,
+      "message": "I am not so convinced that channel readiness is just for flow control (which I think implies something different) and the spec explicitly states that VW packets are not subject to flow control, so maybe better to reword this. All the traces I\u0027ve seen indicates that this callback (when asserted) indicates that indeed the channel is ready for receiving signals. I think where the problem lies is that we should have been using PLTRST to reset the VW values, and not to  invalidate the signals.",
+      "revId": "e1f27a5a35291c2fc06c42f0648c2bc4593d006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69e22c3_c5289ba9",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-29T02:46:17Z",
+      "side": 1,
+      "message": "Also when a sysjump happens.",
+      "range": {
+        "startLine": 46,
+        "startChar": 43,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "e1f27a5a35291c2fc06c42f0648c2bc4593d006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79dbb3d9_fdd82c7f",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-29T02:46:17Z",
+      "side": 1,
+      "message": "I think the spec is not definitive here about some of these signals, at least on my reading of it - I think a valid interpretation is that the Reset can come from the ESPI slave (likely when the EC starts at sysjump), and this reset may not reset these SLP signals on the AP.",
+      "revId": "e1f27a5a35291c2fc06c42f0648c2bc4593d006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46def2ee_ad27a2e9",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-29T02:46:17Z",
+      "side": 1,
+      "message": "I think you can drop the non-SLP signals, since they are not used here at all.\nAlso guard the SLP signals with CONFIG_PLATFORM_EC_ESPI_VW_SLP_Sx",
+      "revId": "e1f27a5a35291c2fc06c42f0648c2bc4593d006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d51381_4d7bb51c",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-29T02:46:17Z",
+      "side": 1,
+      "message": "I think the spec says these should be reset to default values when PLTRST is sent, not when the ESPI bus is reset (P67).\nThe spec is a little ambiguous here about what RESET# does to the signals (see note 1, table 10). I haven\u0027t found anywhere in the spec where it explicitly says that RESET# should set these signals to the default value, only when PLTRST is sent (which is understandable).\nThe concern I have here is that if RESET# resets these signals to the default value after a sysjump, these signals are then marked valid and set to their default value, but the value may actually be different from what the AP has (and consequently the power sequence state machine may act incorrectly on the state of these signals, especially if there is a delay between the bus reset and the actual value of the signals being updated from the AP).\n\nI think the best thing to do here is to not use bus reset for any signal setting,\nand instead rely on the signals being updated by the vw signal, so the valid\nstate is only changed at the point an initial signal is sent.\nThe PLTRST VW signal should (if asserted) be handled by setting the SLP signals to their default values (and marked valid if not already valid).",
+      "revId": "e1f27a5a35291c2fc06c42f0648c2bc4593d006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e2d33d_fd4cfd3b",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-29T02:46:17Z",
+      "side": 1,
+      "message": "Can you add:\nTODO(b/237449433): Fix ESPI init and callback setup\n\nThe wider problem we have here is that splitting the ESPI init and config for the shim and pwrseq code will possibly caused missed events and signals, since the shim inits/configures the ESPI driver, and the pwrseq driver registers callbacks after this.",
+      "revId": "e1f27a5a35291c2fc06c42f0648c2bc4593d006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc25e79_4df6c2bc",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-29T02:46:17Z",
+      "side": 1,
+      "message": "Maybe \u0027bus\u0027 -\u003e \u0027channel\u0027 to match the function call.",
+      "revId": "e1f27a5a35291c2fc06c42f0648c2bc4593d006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd71d90_25fbcc6f",
+        "filename": "zephyr/test/ap_power/src/signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-29T02:46:17Z",
+      "side": 1,
+      "message": "Please create a bug for this.",
+      "range": {
+        "startLine": 409,
+        "startChar": 9,
+        "endLine": 409,
+        "endChar": 15
+      },
+      "revId": "e1f27a5a35291c2fc06c42f0648c2bc4593d006d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
