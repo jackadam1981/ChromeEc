@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b931009_40f922f7",
+        "filename": "driver/nvidia_gpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-29T18:00:11Z",
+      "side": 1,
+      "message": "So the idea is now the board code has to call `throttle_gpu()` on A/C changes?",
+      "revId": "f5bbd819f6fc65052826c6b9c492bd210d9161cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
