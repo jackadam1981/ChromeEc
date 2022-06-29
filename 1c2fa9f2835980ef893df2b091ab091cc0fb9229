@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0375eab_2bc4bc99",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:07:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fd56bd26_9c360a84",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15a8d06d_b468b3eb",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-28T21:44:55Z",
       "side": 1,
       "message": "`path.is_dir()`, if it were a `pathlib.Path`",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a9c020_db4e5474",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:07:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15a8d06d_b468b3eb",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d322b72d_2a884961",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:07:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "990e7556_f3c971ff",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d8657c6_e3889b88",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-28T21:44:55Z",
       "side": 1,
       "message": "Don\u0027t use `+` for literal concatenation.\n\nPutting the strings side-by-side is the preferred style.",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71974b0c_9c55ff03",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:07:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d8657c6_e3889b88",
       "range": {
         "startLine": 49,
         "startChar": 8,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af557763_a7b3003e",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:07:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4fc7526e_f8c38d95",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b648d216_db42bc97",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-06-28T21:44:55Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3590449d_271ebf65",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:07:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b648d216_db42bc97",
       "range": {
         "startLine": 62,
         "startChar": 8,
@@ -175,6 +319,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee796aec_ea162809",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:07:52Z",
+      "side": 1,
+      "message": "I think Yuval intends for this comment to indicate what initiated generation of the header. With this change it will read zmake for zmake-initiated builds, but gen_ec_version.py when invoked via Twister/CMake, which is much easier to trace out by searching where that script is called, in case somebody wants to debug stuff",
+      "parentUuid": "162e45b2_736b8fc7",
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b892f075_0d2f715a",
         "filename": "zephyr/zmake/zmake/version.py",
         "patchSetId": 6
@@ -186,6 +348,30 @@
       "writtenOn": "2022-06-28T21:44:55Z",
       "side": 1,
       "message": "CROS_FWID is deprecated. I would just remove this.",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9193e022_df6a4fe5",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:07:52Z",
+      "side": 1,
+      "message": "version.c still expects a reference to CROS_FWID32. Should I remove it there too? (would be a separate CL)",
+      "parentUuid": "b892f075_0d2f715a",
       "range": {
         "startLine": 168,
         "startChar": 4,
