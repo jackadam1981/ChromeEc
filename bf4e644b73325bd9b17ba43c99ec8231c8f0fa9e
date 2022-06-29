@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f808bc43_1804280c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-29T15:50:31Z",
+      "side": 1,
+      "message": "Since you\u0027re really the author now, let\u0027s go ahead and update the commit to reflect that.",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 47
+      },
+      "revId": "bf4e644b73325bd9b17ba43c99ec8231c8f0fa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff6d278_ce6cc016",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-29T15:50:31Z",
+      "side": 1,
+      "message": "For posterity, could you summarize the power numbers that you added as comments? Just something simple like:\n\n```\nicetower v0.1: XX mW w/o debugger, YY mW w/ debugger attached\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "bf4e644b73325bd9b17ba43c99ec8231c8f0fa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ce2c221_185785f7",
         "filename": "core/cortex-m/cpu.h",
         "patchSetId": 5
@@ -26,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b1a9594_f6ad196b",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-29T15:50:31Z",
+      "side": 1,
+      "message": "I commented in that CL, but if you want that one merged first, you should rebase so it\u0027s first in the stack.",
+      "parentUuid": "4ce2c221_185785f7",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "bf4e644b73325bd9b17ba43c99ec8231c8f0fa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c4f15df_bf81319e",
         "filename": "core/cortex-m/cpu.h",
         "patchSetId": 5
@@ -37,6 +107,30 @@
       "writtenOn": "2022-06-29T15:03:35Z",
       "side": 1,
       "message": "Note: Rather than spreading a bunch if `if(!is_debugger_connected())` lines everywhere I opted to abstract this into a static inline function. This should be a bit more readable, easier to maintain, and have no performance impact. I couldn\u0027t decide whether I preferred the more generic `cpu_enter_suspend_mode` or the more technically accurate `cpu_wait_for_interrupt` but I went with the former.",
+      "range": {
+        "startLine": 141,
+        "startChar": 19,
+        "endLine": 141,
+        "endChar": 41
+      },
+      "revId": "bf4e644b73325bd9b17ba43c99ec8231c8f0fa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93123ba4_83e45bda",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-29T15:50:31Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "5c4f15df_bf81319e",
       "range": {
         "startLine": 141,
         "startChar": 19,
