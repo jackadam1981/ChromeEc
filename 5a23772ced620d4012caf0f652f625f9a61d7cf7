@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef3b93d_23f336ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-29T15:32:36Z",
+      "side": 1,
+      "message": "For changes that shouldn\u0027t affect the generated code (like this one), it\u0027s nice to run the `compare_build.sh` script. That will verify that the compiled binary is exactly the same:\n\n```\n./util/compare_build.sh -b all -j 120\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "5a23772ced620d4012caf0f652f625f9a61d7cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2a3178df_4879c786",
