@@ -22,6 +22,30 @@
       },
       "revId": "4bbb4501a081cf3d6955474c4936c67d43e30258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20e91de_fba641fa",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-29T18:50:44Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e5066633_0443621b",
+      "range": {
+        "startLine": 636,
+        "startChar": 2,
+        "endLine": 636,
+        "endChar": 20
+      },
+      "revId": "4bbb4501a081cf3d6955474c4936c67d43e30258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
