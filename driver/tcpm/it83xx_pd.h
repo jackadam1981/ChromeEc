@@ -11,6 +11,10 @@
 
 #include <stdint.h>
 
+#if defined(CONFIG_USB_PD_TCPM_ITE_ON_CHIP) && defined(CONFIG_ZEPHYR)
+#include <zephyr/dt-bindings/interrupt-controller/ite-intc.h>
+#endif
+
 /* USBPD Controller */
 #if defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX)
 #define IT83XX_USBPD_BASE(port) (0x00F03700 + (0x100 * (port)))
@@ -362,26 +366,6 @@
 #elif defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2)
 #define USBPD_IS_FAST_SWAP_DETECT(port) \
 	IS_MASK_SET(IT83XX_USBPD_IFS(port), USBPD_REG_FAST_SWAP_DETECT_STAT)
-#endif
-
-#if defined(CONFIG_USB_PD_TCPM_ITE_ON_CHIP) && defined(CONFIG_ZEPHYR)
-/* Use the Zephyr names here. When upstreaming we can update this */
-#include <zephyr/dt-bindings/interrupt-controller/ite-intc.h>
-
-#define IT83XX_GPIO_GPCRF4 GPCRF4
-#define IT83XX_GPIO_GPCRF5 GPCRF5
-#define IT83XX_GPIO_GPCRH1 GPCRH1
-#define IT83XX_GPIO_GPCRH2 GPCRH2
-#define IT83XX_GPIO_GPCRP0 IT8XXX2_GPIO_GPCRP0
-#define IT83XX_GPIO_GPCRP1 IT8XXX2_GPIO_GPCRP1
-#define IT83XX_IRQ_USBPD0 IT8XXX2_IRQ_USBPD0
-#define IT83XX_IRQ_USBPD1 IT8XXX2_IRQ_USBPD1
-#define IT83XX_IRQ_USBPD2 IT8XXX2_IRQ_USBPD2
-#define USB_VID_ITE 0x048d
-
-/* ITE chip supports PD features */
-#define IT83XX_INTC_FAST_SWAP_SUPPORT
-#define IT83XX_INTC_PLUG_IN_OUT_SUPPORT
 #endif
 
 enum usbpd_port {
