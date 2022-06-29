@@ -22,6 +22,30 @@
       },
       "revId": "4ac8e3d911f2fd3a595bda9d57013f0e3070738f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220e39d8_35f994d6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-29T18:49:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89a970f2_969d52de",
+      "range": {
+        "startLine": 425,
+        "startChar": 28,
+        "endLine": 425,
+        "endChar": 34
+      },
+      "revId": "4ac8e3d911f2fd3a595bda9d57013f0e3070738f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
