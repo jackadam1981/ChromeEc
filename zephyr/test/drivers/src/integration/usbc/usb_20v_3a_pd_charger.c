@@ -9,6 +9,7 @@
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
+#include "test/drivers/stubs.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 #include "usb_pd.h"
@@ -57,6 +58,10 @@ static void *usb_attach_20v_3a_pd_charger_setup(void)
 		emul_get_binding(DT_LABEL(DT_NODELABEL(tcpci_emul)));
 	test_fixture.charger_emul =
 		emul_get_binding(DT_LABEL(DT_NODELABEL(isl923x_emul)));
+
+	/* Set TCPCI to revision 2 */
+	tcpc_config[USBC_PORT_C0].flags |= TCPC_FLAGS_TCPCI_REV2_0;
+	tcpci_emul_set_rev(test_fixture.tcpci_emul, TCPCI_EMUL_REV2_0_VER1_1);
 
 	/* Initialized the charger to supply 20V and 3A */
 	tcpci_partner_init(&test_fixture.charger_20v, PD_REV20);

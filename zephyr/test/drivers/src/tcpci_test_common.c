@@ -468,6 +468,10 @@ void test_tcpci_get_rx_message_raw(const struct emul *emul,
 	int i, head;
 	int size;
 
+	/* Set TCPCI to revision 2 */
+	tcpc_config[port].flags |= TCPC_FLAGS_TCPCI_REV2_0;
+	tcpci_emul_set_rev(emul, TCPCI_EMUL_REV2_0_VER1_1);
+
 	tcpci_emul_set_reg(emul, TCPC_REG_ALERT, 0x0);
 	tcpci_emul_set_reg(emul, TCPC_REG_DEV_CAP_2,
 			   TCPC_REG_DEV_CAP_2_LONG_MSG);
@@ -542,6 +546,10 @@ void test_tcpci_transmit(const struct emul *emul, enum usbc_port port)
 	uint32_t data[6];
 	uint16_t header;
 	int i;
+
+	/* Set TCPCI to revision 2 */
+	tcpc_config[port].flags |= TCPC_FLAGS_TCPCI_REV2_0;
+	tcpci_emul_set_rev(emul, TCPCI_EMUL_REV2_0_VER1_1);
 
 	msg = tcpci_emul_get_tx_msg(emul);
 
