@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "840aeefd_5a651a14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-29T15:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdb21f61_992a103c",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4684a57_21fc36e8",
@@ -347,6 +371,30 @@
       "side": 1,
       "message": "\u003e  I got the list by searching for  cortex-m  in  chip/**/build.mk  in case that\u0027s helpful.\n\nThat sounds right.\n\n\u003e I\u0027m not planning to update those since we don\u0027t have a debug.c/debug.h file that\u0027s been tested on RISC-V. Okay?\n\nSounds right.\n\n\u003e I assume that we want to also handle other places where we call  wfi  too\n\nCorrect",
       "parentUuid": "e2c51d29_922c5497",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 14
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88738698_6006e217",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-29T15:03:35Z",
+      "side": 1,
+      "message": "I believe all of the above comments have been addressed. The only remaining `wfi` instruction calls should be in `cortex-m0/cpu.h`, `cortex-m/cpu.h`, and the RISC-V chips (it83xx and riscv-rv32i). This should cover all idle tasks for cortex-m and cortex-m0 chips.",
+      "parentUuid": "c1973bce_c53de695",
       "range": {
         "startLine": 110,
         "startChar": 3,

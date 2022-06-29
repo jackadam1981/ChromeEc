@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce2c221_185785f7",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-29T15:03:35Z",
+      "side": 1,
+      "message": "This little line here cost me an hour or two. Apparently both `debug_printf.h` and `debug.h` used the `__CROS_EC_DEBUG_H` include guard. So by including `debug.h` here I effectively prevented `debug_printf.h` from being included. I resolved that in the other CL (http://go/cl-c/3735349/2), which must be merged first.",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "bf4e644b73325bd9b17ba43c99ec8231c8f0fa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4f15df_bf81319e",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-29T15:03:35Z",
+      "side": 1,
+      "message": "Note: Rather than spreading a bunch if `if(!is_debugger_connected())` lines everywhere I opted to abstract this into a static inline function. This should be a bit more readable, easier to maintain, and have no performance impact. I couldn\u0027t decide whether I preferred the more generic `cpu_enter_suspend_mode` or the more technically accurate `cpu_wait_for_interrupt` but I went with the former.",
+      "range": {
+        "startLine": 141,
+        "startChar": 19,
+        "endLine": 141,
+        "endChar": 41
+      },
+      "revId": "bf4e644b73325bd9b17ba43c99ec8231c8f0fa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
