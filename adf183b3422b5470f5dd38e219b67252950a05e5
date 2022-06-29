@@ -562,6 +562,24 @@
       "parentUuid": "d21ff848_098ff45b",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff93f6c9_3bee13a1",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-29T04:35:39Z",
+      "side": 1,
+      "message": "The ones that check the thing the test is directly about should still be zassert. Like the ones that check if an Alert was received when an Alert was supposed to be received. But right now, there\u0027s no functional difference, so go ahead and merge before anything else happens.",
+      "parentUuid": "cfb39ab1_a745ff29",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
