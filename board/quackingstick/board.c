@@ -447,6 +447,16 @@ void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
+void board_delay_on_first_power_on(void)
+{
+	if (system_get_reset_flags() == EC_RESET_FLAG_POWER_ON) {
+		CPRINTS("Workaround: Delay 2s on the first power on.");
+		sleep(2);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_delay_on_first_power_on,
+	     HOOK_PRIO_INIT_CHARGE_MANAGER - 1);
+
 void board_hibernate(void)
 {
 	int i;
