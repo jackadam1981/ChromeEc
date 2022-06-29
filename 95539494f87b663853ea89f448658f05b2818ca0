@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "440cad00_6daaa6ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-29T21:03:21Z",
+      "side": 1,
+      "message": "Here are the results with with patchset 7 for Dragonclaw but I keep getting timeout issues when trying to run on Icetower. It\u0027s not immediately obvious if it\u0027s an issue with my setup or the patch but I\u0027m leaning towards it being the setup. I have two servo micro boards and both appear to have issues on the 3.3V line. One outputs ~2.8V and the other ~4.5V. The 2.8V servo doesn\u0027t appear capable of driving the ECU output significant errors and the 4.5V servo doesn\u0027t appear to sleep at all.\n\nDragonclaw:\n - no debugger:\n```\nfpmcu_slp_alt:off\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   4258    14.09    1.19    44.46    12.75\n@@    pp1800_dx_fp_mv   4258  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   4258     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   4258  2713.84   24.82  2768.00  2664.00\n@@    pp3300_dx_fp_mw   4258     0.06    0.12     0.22    -0.22\n@@   pp3300_dx_mcu_mv   4258  2706.55   22.56  2760.00  2664.00\n@@   pp3300_dx_mcu_mw   4258    17.12    0.22    18.55    16.46\nfpmcu_slp_alt:on\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   4243    14.13    1.15    41.61    12.80\n@@    pp1800_dx_fp_mv   4243  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   4243     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   4243  2784.48   22.97  2832.00  2736.00\n@@    pp3300_dx_fp_mw   4243     0.06    0.12     0.45    -0.23\n@@   pp3300_dx_mcu_mv   4243  2780.01   20.60  2832.00  2728.00\n@@   pp3300_dx_mcu_mw   4243     0.78    0.28     7.59     0.22\n```\n - with debugger\n```\nfpmcu_slp_alt:off\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   4302    13.94    1.38    38.55    12.85\n@@    pp1800_dx_fp_mv   4302  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   4302     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   4302  2540.38   23.19  2600.00  2496.00\n@@    pp3300_dx_fp_mw   4302     0.05    0.10     0.21    -0.21\n@@   pp3300_dx_mcu_mv   4302  2527.52   21.88  2576.00  2480.00\n@@   pp3300_dx_mcu_mw   4302    48.81    0.45    49.87    47.72\nfpmcu_slp_alt:on\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   4360    13.76    0.64    27.77    12.84\n@@    pp1800_dx_fp_mv   4360  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   4360     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   4360  2719.93   18.36  2760.00  2664.00\n@@    pp3300_dx_fp_mw   4360     0.06    0.11     0.22    -0.22\n@@   pp3300_dx_mcu_mv   4360  2712.92   16.08  2752.00  2640.00\n@@   pp3300_dx_mcu_mw   4360    15.99    0.61    30.32    15.44\n```",
+      "parentUuid": "0e60d62f_462e23ce",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "95539494f87b663853ea89f448658f05b2818ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92d99b54_3627c8ff",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
