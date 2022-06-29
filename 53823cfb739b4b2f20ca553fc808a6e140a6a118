@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608c6ad6_e0be63bd",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-06-29T17:47:17Z",
+      "side": 1,
+      "message": "This is fine but we should add a todo for verifying the DPM does this on its own without the host command, right?",
+      "revId": "53823cfb739b4b2f20ca553fc808a6e140a6a118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
