@@ -566,6 +566,30 @@
       },
       "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d7f224_88c2baca",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-29T23:27:05Z",
+      "side": 1,
+      "message": "Per offline conversation: we\u0027ll leave this alone for now.",
+      "parentUuid": "9193e022_df6a4fe5",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
