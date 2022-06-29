@@ -16,6 +16,24 @@
       "message": "So the idea is now the board code has to call `throttle_gpu()` on A/C changes?",
       "revId": "f5bbd819f6fc65052826c6b9c492bd210d9161cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a50707_7475e81e",
+        "filename": "driver/nvidia_gpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-29T18:03:05Z",
+      "side": 1,
+      "message": "Ah I see in the following patch, `board_set_active_charge_port()` should also be responsible for calling it as well. Is it worth noting that somewhere?",
+      "parentUuid": "4b931009_40f922f7",
+      "revId": "f5bbd819f6fc65052826c6b9c492bd210d9161cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
