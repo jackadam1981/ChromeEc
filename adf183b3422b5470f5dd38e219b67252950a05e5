@@ -580,6 +580,24 @@
       "parentUuid": "cfb39ab1_a745ff29",
       "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72ff103_ba310433",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-06-29T06:17:25Z",
+      "side": 1,
+      "message": "Thanks. Right now this CL is gated by a lack of room on lazor and volteer, so I went ahead and updated the tests to use zassert on checks which are directly related to what the test is looking at.",
+      "parentUuid": "ff93f6c9_3bee13a1",
+      "revId": "adf183b3422b5470f5dd38e219b67252950a05e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
