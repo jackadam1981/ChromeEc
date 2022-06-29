@@ -34,6 +34,24 @@
       "parentUuid": "f40a70c1_fba179b5",
       "revId": "4fb6e1e458b766b5e5a644a16fd1c35b859f5986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2bd744f_c5f6ac65",
+        "filename": "board/dewatt/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-06-29T02:00:50Z",
+      "side": 1,
+      "message": "As your concern, could we regard b/237336324 as expected behavior and abandon this CL?",
+      "parentUuid": "27bcc0b4_7e72e547",
+      "revId": "4fb6e1e458b766b5e5a644a16fd1c35b859f5986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
