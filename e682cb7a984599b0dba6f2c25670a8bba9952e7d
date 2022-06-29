@@ -39,6 +39,30 @@
       },
       "revId": "e682cb7a984599b0dba6f2c25670a8bba9952e7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63934a8_0801508c",
+        "filename": "zephyr/projects/barebone/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-29T01:43:55Z",
+      "side": 1,
+      "message": "Right now it\u0027s required if you have a `named-gpios` node. https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/shim/include/board.h#19\n\nDo we have a way to do `GPIO_UNIMPLEMENTED` with just device tree? I would prefer that to putting it in `gpio_map.h`.",
+      "parentUuid": "30e6d2fa_04e0b7d0",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "e682cb7a984599b0dba6f2c25670a8bba9952e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
