@@ -22,6 +22,30 @@
       },
       "revId": "79a0e5ac2eba7db91a633a8a471216ea2691bdc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67057d82_60517df2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-06-29T15:26:48Z",
+      "side": 1,
+      "message": "I have only brya, so I can\u0027t test it on skyrim or nissa.\nResults from brya:\nCrOS EC: \t73s\nZephyr shim:\t110s\nZephyr HC API:\t107s\n\nRegarding the unit tests, there are some, but they depend on the cros ec architecture. The zephyr has simulator for host commands. There will also be eSPI emulator, so in the future there can be added dedicated tests.",
+      "parentUuid": "e64c75df_29d70513",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "79a0e5ac2eba7db91a633a8a471216ea2691bdc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
