@@ -16,6 +16,24 @@
       "message": "I copy-pasted this from the previous VDM states, but do you think people would get the idea with just one of these?",
       "revId": "d9ee89c8918e848c18017f5cbff2258c9e4ec420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5951f40_e59089ec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6178,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-06-29T15:13:23Z",
+      "side": 1,
+      "message": "Like, one of the comment blocks referencing our spec justification for treating this as a NAK?",
+      "parentUuid": "bc3fc7de_b8e7c9da",
+      "revId": "d9ee89c8918e848c18017f5cbff2258c9e4ec420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
