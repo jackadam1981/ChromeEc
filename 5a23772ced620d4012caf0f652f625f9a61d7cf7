@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3178df_4879c786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-29T15:30:40Z",
+      "side": 1,
+      "message": "This needs to come before the other commit, right? (Or be submitted at the same time.)",
+      "revId": "5a23772ced620d4012caf0f652f625f9a61d7cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9d41d0_160b7d81",
+        "filename": "chip/stm32/debug_printf.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-29T15:30:40Z",
+      "side": 1,
+      "message": "Can you file a \"cleanup\"-type bug to audit the header guards? It would probably be good to change them to follow the [Google style](https://google.github.io/styleguide/cppguide.html#The__define_Guard) to avoid potential collisions. For platform2 I know we have a lint check for the name. I think it comes from `cpplint`. We could probably add `cpplint` and set it to check the [header guard check](https://chromium.googlesource.com/chromium/tools/depot_tools/+/9997ceb9a1c8680b029e85dc9fe7515dec23cf69/cpplint.py#188).",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "5a23772ced620d4012caf0f652f625f9a61d7cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
