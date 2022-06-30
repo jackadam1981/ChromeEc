@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2081795_0f25c4e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-30T21:20:36Z",
+      "side": 1,
+      "message": "Here are my results from [icetower](http://shortn/_b00siUQiJv) and [dragonclaw](http://shortn/_zrooyKYCIl).\n\nIcetower:\n\nWhen debugger is disconnected:\n\npp3300_dx_mcu_mw ~44 mW when MCU is idle, ~5.5 mW when MCU in low power mode\n\nWhen debugger is connected:\n\npp3300_dx_mcu_mw ~75 mW when MCU is idle, ~70 mW when MCU in low power mode\n\nDragonclaw:\n\nWhen debugger is disconnected:\n\npp3300_dx_mcu_mw ~22 mW when MCU is idle, ~ 1.5mW when MCU in low power mode\n\nWhen debugger is connected:\n\npp3300_dx_mcu_mw ~64 mW when MCU is idle, ~19 mW when MCU in low power mode\n\nAfter reverting the change, the power numbers for the \"debugger is disconnected\" case are about the same, so this change looks good to submit after updating the commit message.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "5e6d1403c25f067ad786e7ab30953ee8a0371597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
