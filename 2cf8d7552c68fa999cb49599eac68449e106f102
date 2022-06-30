@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a44e847e_103d724a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-30T23:04:37Z",
+      "side": 1,
+      "message": "\u003e CV cannot start a Run because this CL is missing  Verified\n\nI added the verified flag, but there\u0027s also this warning:\n\n\u003e WARNING: The owner of this change has voted on the Code-Review label. Self-approving a change is not allowed and might prevent it from being submitted.\n\nLooks like a side effect of me being the one that created the CL. You\u0027ll also need to CR+2 for it to land I think.",
+      "revId": "2cf8d7552c68fa999cb49599eac68449e106f102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
