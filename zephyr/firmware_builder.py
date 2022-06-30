@@ -29,7 +29,13 @@ def build(opts):
     """Builds all Zephyr firmware targets"""
     metric_list = firmware_pb2.FwBuildMetricList()
 
-    cmd = ['zmake', '-D', 'build', '-a']
+    goma_running = subprocess.run(['goma_ctl', 'ensure_start'], check=False).returncode == 0
+
+    cmd = ['zmake', '-D']
+    if goma_running:
+        cmd.append('--goma')
+    cmd.append('build')
+    cmd.append('-a')
     if opts.code_coverage:
         cmd.append('--coverage')
     subprocess.run(cmd, cwd=pathlib.Path(__file__).parent, check=True)
@@ -180,7 +186,14 @@ def test(opts):
     config_files = zephyr_dir.rglob('**/BUILD.py')
     subprocess.run(['black', '--diff', '--check', *config_files], check=True)
 
-    cmd = ['zmake', '-D', 'test', '-a', '--no-rebuild']
+    goma_running = subprocess.run(['goma_ctl', 'ensure_start'], check=False).returncode == 0
+
+    cmd = ['zmake', '-D']
+    if goma_running:
+        cmd.append('--goma')
+    cmd.append('test')
+    cmd.append('-a')
+    cmd.append('--no-rebuild')
     if opts.code_coverage:
         cmd.append('--coverage')
     ret = subprocess.run(cmd, check=True).returncode
