@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6300ba_b35b95fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-30T06:27:01Z",
+      "side": 1,
+      "message": "LGTM, Enzo can add +1 from Intel once Retimer team confirms this is fine",
+      "revId": "a174ef987d996f76790467b046b0b394fcfcd217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c527590_ad15af71",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-06-30T06:27:01Z",
+      "side": 1,
+      "message": "how about adding below comment here also in commit msg?\n\nEnable the DP bit only when the HPD bit is set so that the Retimer stays in low power mode until the external monitor is connected.",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 43
+      },
+      "revId": "a174ef987d996f76790467b046b0b394fcfcd217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
