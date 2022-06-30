@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "381aa3c8_66d51fcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-30T18:43:38Z",
+      "side": 1,
+      "message": "This is failing in CQ due to lazor flash space issues. I think Jameson is working on a fix for that.",
+      "revId": "8acbe5118c3719ebca50f5e90ac3259c2996a652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
