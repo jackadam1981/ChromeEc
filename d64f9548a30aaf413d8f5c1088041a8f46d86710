@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00fcf0f8_2ae07cd7",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-30T21:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6297d5e_df4489b1",
+      "revId": "d64f9548a30aaf413d8f5c1088041a8f46d86710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec252b6c_984634e6",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-30T20:53:56Z",
       "side": 1,
       "message": "ec_rgbkbd_type to match the member prefix.",
+      "range": {
+        "startLine": 7179,
+        "startChar": 5,
+        "endLine": 7179,
+        "endChar": 27
+      },
+      "revId": "d64f9548a30aaf413d8f5c1088041a8f46d86710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4275d70e_8bcb00ef",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 7179,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-30T21:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec252b6c_984634e6",
       "range": {
         "startLine": 7179,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e976305_934f35c1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 7180,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-30T21:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7669e96_1885f685",
+      "range": {
+        "startLine": 7180,
+        "startChar": 1,
+        "endLine": 7180,
+        "endChar": 24
+      },
+      "revId": "d64f9548a30aaf413d8f5c1088041a8f46d86710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bb5fc5e_5d94e415",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad9bf640_c9d0d645",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 7204,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-30T21:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb5fc5e_5d94e415",
+      "range": {
+        "startLine": 7204,
+        "startChar": 11,
+        "endLine": 7204,
+        "endChar": 15
+      },
+      "revId": "d64f9548a30aaf413d8f5c1088041a8f46d86710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0bbd90c_12646056",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-06-30T20:53:56Z",
       "side": 1,
       "message": "\u0027type\u0027 to be aligned.",
+      "range": {
+        "startLine": 7207,
+        "startChar": 9,
+        "endLine": 7207,
+        "endChar": 21
+      },
+      "revId": "d64f9548a30aaf413d8f5c1088041a8f46d86710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b053b25e_58e878e0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 7207,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-06-30T21:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0bbd90c_12646056",
       "range": {
         "startLine": 7207,
         "startChar": 9,
