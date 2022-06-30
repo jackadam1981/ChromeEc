@@ -181,6 +181,7 @@ class AllTests:
             TestConfig(test_name='cec'),
             TestConfig(test_name='cortexm_fpu'),
             TestConfig(test_name='crc'),
+            TestConfig(test_name='debug'),
             TestConfig(test_name='flash_physical', image_to_use=ImageType.RO,
                        toggle_power=True),
             TestConfig(test_name='flash_write_protect',
