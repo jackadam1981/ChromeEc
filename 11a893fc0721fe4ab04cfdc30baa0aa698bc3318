@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "add3d5fc_5e38d3a6",
+        "filename": "zephyr/projects/corsola/prj_it81202_base.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T07:50:36Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "c9ea9c9c_73b3e954",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "11a893fc0721fe4ab04cfdc30baa0aa698bc3318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "884e58b0_e88c0215",
@@ -518,6 +542,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f39cb376_2dcbc923",
+        "filename": "zephyr/projects/corsola/prj_it81202_base.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T07:50:36Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "d072ecef_d7e83887",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "revId": "11a893fc0721fe4ab04cfdc30baa0aa698bc3318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc022906_1405ea13",
@@ -602,6 +650,30 @@
       "side": 0,
       "message": "move `CONFIG_SHELL_HELP`, `CONFIG_SHELL_TAB`, `CONFIG_SHELL_TAB_AUTOCOMPLETION`, `CONFIG_SHELL_HISTORY` in another cleanup CL for restructuring common options so that we can verify from the generated config.",
       "parentUuid": "7d489de8_8adf5ae2",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "11a893fc0721fe4ab04cfdc30baa0aa698bc3318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2bd948_271a6455",
+        "filename": "zephyr/projects/corsola/prj_npcx993_base.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T07:50:36Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "6eb6dfb9_44ba02cd",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -790,6 +862,30 @@
       "side": 0,
       "message": "move `CONFIG_PLATFORM_EC_POWER_BUTTON` in another cleanup CL for restructuring common options so that we can verify from the generated config.",
       "parentUuid": "4482bc5a_6b3fde64",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "11a893fc0721fe4ab04cfdc30baa0aa698bc3318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ff2b0e_304f3025",
+        "filename": "zephyr/projects/corsola/prj_npcx993_base.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T07:50:36Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "9af55297_d07733bf",
       "range": {
         "startLine": 77,
         "startChar": 0,
