@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18641a73_0726fe32",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-30T19:35:32Z",
+      "side": 1,
+      "message": "I still see it here. This should be under EC_RGBKBD_SUBCMD_GET_CONFIG, right?",
+      "range": {
+        "startLine": 538,
+        "startChar": 1,
+        "endLine": 538,
+        "endChar": 34
+      },
+      "revId": "6a73baff60e8f0b67fde3e72c22ca4e014ea8776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
