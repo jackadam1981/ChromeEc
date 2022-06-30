@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1d9ad9_08be53d1",
+        "filename": "power/mt8186.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T06:45:06Z",
+      "side": 1,
+      "message": "Should this be moved to line 299? mt8186_exit_off() will wake task_chipset.",
+      "revId": "0576baa74141d7880e9a90cb55f987d8589b0a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64681a9_5ac3ce4c",
+        "filename": "power/mt8186.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T06:45:06Z",
+      "side": 1,
+      "message": "How about:\n\n    chipset_in_state(CHIPSET_STATE_ANY_OFF)",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 309,
+        "endChar": 52
+      },
+      "revId": "0576baa74141d7880e9a90cb55f987d8589b0a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
