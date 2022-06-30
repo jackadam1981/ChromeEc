@@ -34,6 +34,24 @@
       "parentUuid": "32fd15d2_8e9adea1",
       "revId": "6eb6de2f9486112d66378fe562a43701204e770f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3978134_906e94b7",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-30T17:48:09Z",
+      "side": 1,
+      "message": "I adopted `dp_is_idle` to disambiguate the API as it exists in this CL. I have an idea to consolidate it and avoid the issue, but it would change the semantics of `dp_is_active` and, consequently, the conditions for mode exit, and I don\u0027t want to expand the scope of this CL in the interest of getting the fix in.\n\nAdded a TODO. Will add further discussion in the bug.",
+      "parentUuid": "b1395863_13fd229e",
+      "revId": "6eb6de2f9486112d66378fe562a43701204e770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
