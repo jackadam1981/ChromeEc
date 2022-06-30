@@ -10,6 +10,7 @@ This is the entry point for the custom firmware builder workflow recipe.
 
 import argparse
 import multiprocessing
+import os
 import pathlib
 import re
 import subprocess
@@ -55,7 +56,19 @@ def build(opts):
         cwd=platform_ec,
     )
 
-    cmd = ["zmake", "-D", "build", "-a"]
+    subprocess.run(
+        ["/mnt/host/depot_tools/.cipd_bin/gomacc", "--help"], check=False
+    )
+    goma_running = (
+        subprocess.run(["goma_ctl", "ensure_start"], check=False).returncode
+        == 0
+    )
+
+    cmd = ["zmake", "-D"]
+    # if goma_running:
+    cmd.append("--goma")
+    cmd.append("build")
+    cmd.append("-a")
     if opts.code_coverage:
         cmd.append("--coverage")
     subprocess.run(cmd, cwd=zephyr_dir, check=True)
@@ -209,7 +222,17 @@ def test(opts):
         [zephyr_dir / "zmake" / "run_tests.sh"], check=True, cwd=zephyr_dir
     )
 
-    cmd = ["zmake", "-D", "test", "-a", "--no-rebuild"]
+    goma_running = (
+        subprocess.run(["goma_ctl", "ensure_start"], check=False).returncode
+        == 0
+    )
+
+    cmd = ["zmake", "-D"]
+    if goma_running:
+        cmd.append("--goma")
+    cmd.append("test")
+    cmd.append("-a")
+    cmd.append("--no-rebuild")
     if opts.code_coverage:
         cmd.append("--coverage")
     subprocess.run(cmd, check=True, cwd=zephyr_dir)
