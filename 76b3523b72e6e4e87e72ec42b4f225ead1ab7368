@@ -256,6 +256,24 @@
       "message": "Since you have added the \u003c0 case, i think you can also add \u003e\u003dnum_fan_levels case to avoid out of bounds access.",
       "revId": "76b3523b72e6e4e87e72ec42b4f225ead1ab7368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac674613_310526e3",
+        "filename": "board/moli/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-06-30T10:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e536077_b1d40b26",
+      "revId": "76b3523b72e6e4e87e72ec42b4f225ead1ab7368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
