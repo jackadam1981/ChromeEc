@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "182fe52d_f2e13f8e",
+        "filename": "power/mt8186.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-06-30T07:11:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1d9ad9_08be53d1",
+      "revId": "0576baa74141d7880e9a90cb55f987d8589b0a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e64681a9_5ac3ce4c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-30T06:45:06Z",
       "side": 1,
       "message": "How about:\n\n    chipset_in_state(CHIPSET_STATE_ANY_OFF)",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 309,
+        "endChar": 52
+      },
+      "revId": "0576baa74141d7880e9a90cb55f987d8589b0a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0a78c4_01e3088a",
+        "filename": "power/mt8186.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-06-30T07:11:51Z",
+      "side": 1,
+      "message": "can\u0027t use chipset_in_state() because the global `state` is not initialized yet",
+      "parentUuid": "e64681a9_5ac3ce4c",
       "range": {
         "startLine": 309,
         "startChar": 2,
