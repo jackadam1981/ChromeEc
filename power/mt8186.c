@@ -305,6 +305,9 @@ enum power_state power_chipset_init(void)
 		/* Force shutdown from S5 if the PMIC is already up. */
 		chipset_force_shutdown(CHIPSET_SHUTDOWN_INIT);
 
+	is_exiting_off = exit_hard_off &&
+		(init_state == POWER_S5 || init_state == POWER_G3);
+
 	return init_state;
 }
 
