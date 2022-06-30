@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338d6d94_0d4a4314",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-06-30T06:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c52f2db7_fa9605d5",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 4
+      },
+      "revId": "640369b8c93e1846ceaf209b1baaac4266efb223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd1174f0_673ef762",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4907a0ed_ba80ac53",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-06-30T06:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1174f0_673ef762",
+      "revId": "640369b8c93e1846ceaf209b1baaac4266efb223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5ddc6b0_519f2a86",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-06-30T05:39:03Z",
       "side": 1,
       "message": "nit: \n retimer_con_reg |\u003d (BB_RETIMER_HPD_LVL | BB_RETIMER_DP_CONNECTION)\n retimer_con_reg \u0026\u003d ~(BB_RETIMER_HPD_LVL | BB_RETIMER_DP_CONNECTION)",
+      "range": {
+        "startLine": 505,
+        "startChar": 2,
+        "endLine": 509,
+        "endChar": 47
+      },
+      "revId": "640369b8c93e1846ceaf209b1baaac4266efb223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68a36556_602ae82d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-06-30T06:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5ddc6b0_519f2a86",
       "range": {
         "startLine": 505,
         "startChar": 2,
