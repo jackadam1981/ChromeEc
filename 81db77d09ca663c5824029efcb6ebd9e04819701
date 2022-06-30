@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd260d3_e651afc5",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-30T00:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0a6895a_9fff82af",
+      "range": {
+        "startLine": 95,
+        "startChar": 38,
+        "endLine": 95,
+        "endChar": 46
+      },
+      "revId": "81db77d09ca663c5824029efcb6ebd9e04819701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c89ed278_8bfe37bb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-29T18:35:39Z",
       "side": 1,
       "message": "nit: `BIT(0)`",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "81db77d09ca663c5824029efcb6ebd9e04819701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa11643_c72f114a",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-06-30T00:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89ed278_8bfe37bb",
       "range": {
         "startLine": 160,
         "startChar": 3,
