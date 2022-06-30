@@ -33,7 +33,6 @@ if(subproject_path STREQUAL "")
     src/bmi160.c
     src/bmi260.c
     src/charge_manager.c
-    src/chargesplash.c
     src/console_cmd/charge_manager.c
     src/console_cmd/charge_state.c
     src/console_cmd/accelinit.c
@@ -83,6 +82,8 @@ if(subproject_path STREQUAL "")
     src/vboot_hash.c
     src/watchdog.c
   )
+
+    add_subdirectory(chargesplash)
 else()
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}${subproject_path})
 endif()
