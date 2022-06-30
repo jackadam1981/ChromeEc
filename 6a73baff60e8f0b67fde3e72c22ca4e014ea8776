@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4be8ecd3_2ae59f09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-30T19:42:17Z",
+      "side": 1,
+      "message": "Can you make the title include get_config? I believe that\u0027s more important.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "6a73baff60e8f0b67fde3e72c22ca4e014ea8776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18641a73_0726fe32",
         "filename": "common/rgb_keyboard.c",
         "patchSetId": 7
@@ -19,6 +42,29 @@
         "startChar": 1,
         "endLine": 538,
         "endChar": 34
+      },
+      "revId": "6a73baff60e8f0b67fde3e72c22ca4e014ea8776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8245af_f33f225c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 7184,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-06-30T19:42:17Z",
+      "side": 1,
+      "message": "We need to prefix them EC_RGBKBD_TYPE_ or something to avoid name conflicts as they\u0027re exported. Please make the enum name match the prefix.",
+      "range": {
+        "startLine": 7180,
+        "startChar": 0,
+        "endLine": 7184,
+        "endChar": 43
       },
       "revId": "6a73baff60e8f0b67fde3e72c22ca4e014ea8776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
