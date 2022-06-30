@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f081cc5c_81f152bd",
+        "filename": "zephyr/test/drivers/src/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-06-30T21:39:27Z",
+      "side": 1,
+      "message": "this line won\u0027t execute if one of the asserts fail. can you put this in the `after` function of the suite?",
+      "revId": "ddbc20eea5d0d25277c449828bc2833a158fcd10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
