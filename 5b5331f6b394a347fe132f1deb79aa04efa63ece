@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "322fca0e_af1d8ad9",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-06-30T18:40:38Z",
+      "side": 1,
+      "message": "Alright, it sounds like LRD is probably the right name. If the spec gets more complicated, we can rename the function. (Knock on wood.)",
+      "parentUuid": "df3bc2ec_bae9dc66",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8f9c5ec_79f812f0",
