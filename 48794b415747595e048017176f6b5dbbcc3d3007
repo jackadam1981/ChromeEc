@@ -16,6 +16,24 @@
       "message": "how about checking the EC_RESET_FLAG_AP_IDLE flag?",
       "revId": "48794b415747595e048017176f6b5dbbcc3d3007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1662530_f4f102fb",
+        "filename": "power/mt8192.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-06-30T12:20:32Z",
+      "side": 1,
+      "message": "Yes, seems it works!",
+      "parentUuid": "448c2fea_cb87ee76",
+      "revId": "48794b415747595e048017176f6b5dbbcc3d3007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
