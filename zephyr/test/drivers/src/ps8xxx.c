@@ -589,6 +589,9 @@ static void test_ps8xxx_get_chip_info(uint16_t current_product_id)
 	zassert_equal(fw_rev, info.fw_version_number, NULL);
 
 	zassert_equal(false, check_ps8755_chip(USBC_PORT_C1), NULL);
+
+	/* Set correct firmware revision */
+	tcpci_emul_set_reg(ps8xxx_emul, PS8XXX_REG_FW_REV, 0x31);
 }
 
 ZTEST(ps8805, test_ps8805_get_chip_info)
