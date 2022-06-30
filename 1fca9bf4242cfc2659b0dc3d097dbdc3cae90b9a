@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ff5e0a_139b317d",
+        "filename": "zephyr/projects/corsola/src/krabby/led_tentacruel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T06:36:07Z",
+      "side": 1,
+      "message": "sort the header:\n```\n#include \"board_led.h\"\n#include \"chipset.h\"\n#include \"common.h\"\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "1fca9bf4242cfc2659b0dc3d097dbdc3cae90b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc79330_fe843432",
+        "filename": "zephyr/projects/corsola/src/krabby/led_tentacruel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T06:36:07Z",
+      "side": 1,
+      "message": "Multi-line comment should have the first line empty:\n\nhttps://www.kernel.org/doc/html/v4.10/process/coding-style.html#commenting\n\n```\n\t/*\n\t * Battery error LED behavior as below:\n\t * S0: Blinking Amber LED, 1s on/ 1s off\n\t * S3/S5: following S3/S5 behavior\n\t * Add function to let battery error LED follow S3/S5 behavior in S3/S5.\n\t */\n\t ```",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 4
+      },
+      "revId": "1fca9bf4242cfc2659b0dc3d097dbdc3cae90b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620d68a9_4c0ac18f",
+        "filename": "zephyr/projects/corsola/src/krabby/led_tentacruel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-06-30T06:36:07Z",
+      "side": 1,
+      "message": "On zephyr, we have new coding guidelines.\nAlways adds the parenthese even it\u0027s an one-line statement.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 29
+      },
+      "revId": "1fca9bf4242cfc2659b0dc3d097dbdc3cae90b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
