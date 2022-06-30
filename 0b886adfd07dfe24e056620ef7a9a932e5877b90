@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9b891e1_324d348e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-06-30T19:38:32Z",
+      "side": 1,
+      "message": "What kind of policy cares if the fuel gauge is reading back 61000 or 61001 mW? What is the system going to do differently? What if we have a battery with \u003e 65535 mW for PMAX?",
+      "parentUuid": "a75f1d28_a2819787",
+      "range": {
+        "startLine": 176,
+        "startChar": 43,
+        "endLine": 176,
+        "endChar": 61
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bef82987_9c7ab8b3",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
