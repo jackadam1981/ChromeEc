@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d08835_49d93c81",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-30T07:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "800c8453_4a2d112d",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3bc2ec_bae9dc66",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-30T07:19:22Z",
+      "side": 1,
+      "message": "I\u0027m looking for a generic name too. I checked USB Type-C cable spec R2.1 which is latest, in Table 6-3 \"USB4 cable identity summary\", LRD is listed as name of the cable which has ID header VDO active but TBT3 Discover mode VDO is active; in Figure 5-1 the flow has \"TBT3 LRD active\", that is asking if TBT3 Discover Mode VDO bit 25 is active. I couldn\u0027t find a formal name used by USB spec. If \"LRD\" is too specific, how about call this \"passive with TBT3 active cable\"?  tbt_is_passive_with_tbt3_active_cable()? or just \"TBT3 active cable?",
+      "parentUuid": "193cbff9_df9b045d",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8f9c5ec_79f812f0",
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f23912_978fcc97",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-30T07:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8f9c5ec_79f812f0",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "928c10ae_498f04a5",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-06-29T22:12:29Z",
       "side": 1,
       "message": "Maybe this is something you want to fix in a later CL, but should this eventually be a `tbt_sop_prime_prime_needed` check?",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c115d8d7_0b71d8c7",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-30T07:19:22Z",
+      "side": 1,
+      "message": "TODO added. This should be fixed in a later CL.",
+      "parentUuid": "928c10ae_498f04a5",
       "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aff4017_5f2563e3",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-30T07:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9066c329_fa40230f",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 4
+      },
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0900ea9_b470fd1e",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-06-29T22:12:29Z",
       "side": 1,
       "message": "Should this be a `tbt_sop_prime_prime_needed` check?",
+      "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48393c73_2745eaec",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-06-30T07:19:22Z",
+      "side": 1,
+      "message": "Right. This will be fixed in a later CL.",
+      "parentUuid": "e0900ea9_b470fd1e",
       "revId": "5b5331f6b394a347fe132f1deb79aa04efa63ece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
