@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bc8e2e6_a3d2787c",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-06-30T23:35:31Z",
+      "side": 1,
+      "message": "Oops, sorry to pop in early!",
+      "parentUuid": "18311fcc_5fdc222a",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 92
+      },
+      "revId": "422e6955a2ca839392e2e240143ae22da51f8c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bfce0ce_20c3fd28",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 1
