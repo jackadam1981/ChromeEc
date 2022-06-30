@@ -24,6 +24,10 @@
 			i2c-port = <&i2c_smb_0>;
 			enum-name = "I2C_PORT_CHARGER";
 		};
+		eeprom {
+			i2c-port = <&i2c_smb_0>;
+			enum-name = "I2C_PORT_EEPROM";
+		};	
 		port80 {
 			i2c-port = <&i2c_smb_0>;
 			enum-name = "I2C_PORT_PORT80";
