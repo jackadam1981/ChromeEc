@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18311fcc_5fdc222a",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-30T22:29:36Z",
+      "side": 1,
+      "message": "You will notice that I didn\u0027t add any reviewers to this cl. I\u0027m trying random things in the cq to see what works.",
+      "parentUuid": "0d83b878_716e2e1e",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 92
+      },
+      "revId": "422e6955a2ca839392e2e240143ae22da51f8c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bfce0ce_20c3fd28",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 1
