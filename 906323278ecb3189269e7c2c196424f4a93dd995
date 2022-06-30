@@ -16,6 +16,24 @@
       "message": "@agrandi and @patrykd, can one of you see if you get similar numbers? Bobby is seeing much different numbers, so we want to make sure that my setup is correct.",
       "revId": "906323278ecb3189269e7c2c196424f4a93dd995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9836c5f1_3d74d073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-30T22:45:25Z",
+      "side": 1,
+      "message": "Actually, I think it\u0027s only necessary to do it for the new firmware in these CLs:\n\n* https://crrev.com/c/3739314\n* https://crrev.com/c/3739315\n\nThat will save some time.",
+      "parentUuid": "6fc43346_8ec9be63",
+      "revId": "906323278ecb3189269e7c2c196424f4a93dd995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
