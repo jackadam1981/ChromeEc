@@ -547,6 +547,9 @@ static void test_ps8xxx_get_chip_info(uint16_t current_product_id)
 	zassert_equal(device_id, info.device_id, NULL);
 	zassert_equal(fw_rev, info.fw_version_number, NULL);
 
+	/* Restore firmware revision */
+	tcpci_emul_set_reg(ps8xxx_emul, PS8XXX_REG_FW_REV, 0x31);
+
 	/* Set wrong vendor id */
 	vendor = 0;
 	tcpci_emul_set_reg(ps8xxx_emul, TCPC_REG_VENDOR_ID, vendor);
