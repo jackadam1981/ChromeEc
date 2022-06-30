@@ -204,10 +204,15 @@ DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
 enum power_state power_chipset_init(void)
 {
 	int exit_hard_off = 1;
+	uint32_t reset_flags = system_get_reset_flags();
 
 	/* Enable reboot / sleep control inputs from AP */
 	gpio_enable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
 	gpio_enable_interrupt(GPIO_AP_IN_SLEEP_L);
+
+	if ((reset_flags & EC_RESET_FLAG_SYSJUMP) &&
+	    !(reset_flags & EC_RESET_FLAG_INITIAL_PWR))
+		exit_hard_off = 0;
 
 	if (system_jumped_late()) {
 		if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
@@ -216,9 +221,9 @@ enum power_state power_chipset_init(void)
 			CPRINTS("already in S0");
 			return POWER_S0;
 		}
-	} else if (system_get_reset_flags() & EC_RESET_FLAG_AP_OFF) {
+	} else if (reset_flags & EC_RESET_FLAG_AP_OFF) {
 		exit_hard_off = 0;
-	} else if ((system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
+	} else if ((reset_flags & EC_RESET_FLAG_HIBERNATE) &&
 			gpio_get_level(GPIO_AC_PRESENT)) {
 		/*
 		 * If AC present, assume this is a wake-up by AC insert.
