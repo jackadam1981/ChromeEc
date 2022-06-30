@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40c1d69_effc5a05",
+        "filename": "zephyr/projects/intelrvp/zephyr_ap_pwrseq.conf",
+        "patchSetId": 14
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-06-30T01:02:02Z",
+      "side": 1,
+      "message": "I think X86_NON_DSX_PWRSEQ_HOST_CMD is default \u0027y\u0027 so this shouldn\u0027t be necessary.",
+      "revId": "4075067d820e10f0bac120a5b73b8f3386badba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
