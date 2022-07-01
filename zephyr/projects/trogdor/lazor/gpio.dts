@@ -115,7 +115,6 @@
 		};
 		ec_entering_rw {
 			gpios = <&gpioe 1 GPIO_OUTPUT_LOW>;
-			enum-name = "GPIO_ENTERING_RW";
 		};
 		ec_batt_pres_odl {
 			gpios = <&gpioe 5 GPIO_INPUT>;

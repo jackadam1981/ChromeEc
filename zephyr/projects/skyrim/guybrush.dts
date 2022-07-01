@@ -36,7 +36,6 @@
 		};
 		ec_entering_rw {
 			gpios = <&gpio6 6 GPIO_OUTPUT_LOW>;
-			enum-name = "GPIO_ENTERING_RW";
 		};
 		ec_clr_cmos {
 			gpios = <&gpioa 1 GPIO_OUTPUT_LOW>;
