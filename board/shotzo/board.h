@@ -24,6 +24,7 @@
 #define CONFIG_USB_PD_5V_CHARGER_CTRL
 #define CONFIG_CHARGER_OTG
 #undef  CONFIG_CHARGER_SINGLE_CHIP
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 87750
 
 /* PWM */
 #define CONFIG_PWM
@@ -84,6 +85,8 @@ enum chg_id {
 };
 
 enum pwm_channel {
+	PWM_CH_LED_RED,
+	PWM_CH_LED_WHITE,
 	PWM_CH_COUNT,
 };
 
@@ -117,6 +120,9 @@ enum charge_port {
 	CHARGE_PORT_TYPEC1,
 	CHARGE_PORT_BARRELJACK,
 };
+
+/* Board specific handlers */
+void led_alert(int enable);
 
 /* Pin renaming */
 #define GPIO_AC_PRESENT		GPIO_BJ_ADP_PRESENT_L
