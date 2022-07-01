@@ -9,6 +9,8 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
+#include <zephyr/drivers/pinctrl.h>
+#include <zephyr/dt-bindings/pinctrl/it8xxx2-pinctrl.h>
 #include <zephyr/sys/printk.h>
 
 #include "driver/tcpm/tcpci.h"
@@ -86,6 +88,11 @@ static void lte_power_handler(struct ap_power_ev_callback *cb,
 	}
 }
 
+#if DT_NODE_EXISTS(DT_NODELABEL(i2c4))
+#define I2C4_NODE DT_NODELABEL(i2c4)
+PINCTRL_DT_DEFINE(I2C4_NODE);
+#endif
+
 /**
  * Configure GPIOs (and other pin functions) that vary with present sub-board.
  *
@@ -148,6 +155,12 @@ static void nereid_subboard_config(void)
 		static struct gpio_callback hdmi_hpd_cb;
 		int rv, irq_key;
 
+#if DT_NODE_EXISTS(DT_NODELABEL(i2c4))
+		const struct pinctrl_dev_config *pcfg =
+			PINCTRL_DT_DEV_CONFIG_GET(I2C4_NODE);
+
+		pinctrl_apply_state(pcfg, PINCTRL_STATE_SLEEP);
+#endif
 		/* HDMI power enable outputs */
 		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
 				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
