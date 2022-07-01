@@ -11,11 +11,13 @@ zmake build --clobber test-drivers || exit 1
 echo "Searching for '${1}'..."
 found_errors=0
 loop_count=100
+start_time=$(date +%Y-%m-%d_%H.%M.%S)
 EXECUTABLE=./build/zephyr/test-drivers/build-singleimage/zephyr/zephyr.exe
 while [ "${loop_count}" -gt 0 ]; do
   seed=${RANDOM}
   echo "[$((100 - loop_count))] Using seed=${seed}"
   error_count=$(timeout 150s "${EXECUTABLE}" -seed="${seed}" 2>&1 |
+    tee /tmp/shuffle_"${start_time}"_"${seed}".log |
     grep -c "${1}")
   status=$?
 
