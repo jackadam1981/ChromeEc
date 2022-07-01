@@ -175,6 +175,24 @@
       "parentUuid": "1a10b410_59947c86",
       "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "010ae038_aa8b6eaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-01T18:42:28Z",
+      "side": 1,
+      "message": "\u003e One thing that\u0027s somewhat confusing about  JLinkRemoteServerCLExe  (case 3) is that starting it does not actually establish a debug session\nYeah, that\u0027s actually what I like about it. I can leave it open and use JTAG when I want to and it\u0027s not connected when I don\u0027t. I had started using `JLinkRemoteServerCLExe` with an Ethernet connection after observing weird behavior with the USB connection, which I now believe is actually related to the unusual Voltage levels in my servos when the servo is running from the same source.\n\nI ran some additional test using `JLinkExe` and published the results below. I\u0027m definitely seeing the C_DEBUGEN held across power cycles of either the JTrace or the MCU but not both.\n* Test 4: Using JLinkExe\n    * Starting conditions: Servo unplugged, J-Trace connected, `JLinkExe` not running\n    * Plug in servo-micro\n    * Start `servod`\n    * Start `JLinkExe`\n    * Execute test with debugger: `test/run_device_tests.py --board bloonchipper --flasher servo_micro -t debug`\n    * Results: PASSED\n* Test 5: Kill JLinkExe\n    * Starting conditions: Immediately after previous test\n    * Kill `JLinkExe` with `Ctrl-C`\n    * Execute test with debugger: `test/run_device_tests.py -b bloonchipper --remote 127.0.0.1 --jlink_port 19020 -t debug`\n    * Results: PASSED (this indicates that `JLinkExe` did not clear C_DEBUGEN, even after rebooting MCU)\n* Test 6: Power cycle JTrace\n    * Starting conditions: Immediately after previous test\n    * Power cycle JTrace (MCU still powered via servo)\n    * Execute test with debugger: `test/run_device_tests.py -b bloonchipper --remote 127.0.0.1 --jlink_port 19020 -t debug`\n    * Results: PASSED (this indicates that `JLinkExe` did not clear C_DEBUGEN, even after rebooting JTrace)\n* Test 7: Power cycle JTrace\n    * Unplug servo, wait 5 seconds, plug servo back in\n    * Start `servod`\n    * Execute test with debugger: `test/run_device_tests.py -b bloonchipper --remote 127.0.0.1 --jlink_port 19020 -t debug`\n    * Results: FAILED (C_DEBUGEN cleared)",
+      "parentUuid": "5f803d42_7c45ccf9",
+      "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
