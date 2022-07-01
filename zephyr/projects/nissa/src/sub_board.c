@@ -54,17 +54,6 @@ static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 		break;
 	}
 }
-
-static void hdmi_hpd_interrupt(const struct device *device,
-			       struct gpio_callback *callback,
-			       gpio_port_pins_t pins)
-{
-	int state = gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_hpd_odl));
-
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_hdmi_hpd), state);
-	LOG_DBG("HDMI HPD changed state to %d", state);
-}
-
 static void lte_power_handler(struct ap_power_ev_callback *cb,
 			       struct ap_power_ev_data data)
 {

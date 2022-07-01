@@ -92,6 +92,16 @@
 	};
 
 	named-gpios {
+		gpio_en_pp5000_fan: en_pp5000_fan {
+			gpios = <&gpiol 4 GPIO_OUTPUT_HIGH>;
+		};
+		gpio_ec_kb_lock: ec_kb_lock {
+			gpios = <&gpioc 3 GPIO_INPUT>;
+		};
+		gpio_power_led_gate: power_led_gate {
+			gpios = <&gpiof 1 GPIO_OUTPUT_LOW>;
+		};
+
 		/*
 		 * EC doesn't take any specific action on CC/SBU disconnect due to
 		 * fault, but this definition is useful for hardware testing.
@@ -104,11 +114,6 @@
 			gpios = <&gpioe 6 0>;
 			no-auto-init;
 		};
-		gpio_sb_2: sb_2 {
-			gpios = <&gpiof 0 0>;
-			no-auto-init;
-		};
-
 		gpio_sb_3: sb_3 {
 			gpios = <&gpioe 7 0>;
 			no-auto-init;
@@ -126,21 +131,12 @@
 	  /* USB-C: interrupt input. I2C pins are on i2c_ec_i2c_sub_usb_c1 */
 		gpio-usb-c1-int-odl = &gpio_sb_1;
 		/*
-		 * USB-A: VBUS enable output
-		 * LTE: power enable output
-		 */
-		gpio-en-usb-a1-vbus = &gpio_sb_2;
-		/*
 		 * HDMI: power enable output, HDMI enable output,
 		 * and HPD input
 		 */
 		gpio-en-rails-odl = &gpio_sb_1;
 		gpio-hdmi-en-odl = &gpio_sb_4;
 		gpio-hpd-odl = &gpio_sb_3;
-		/*
-		 * Enable S5 rails for LTE sub-board
-		 */
-		gpio-en-sub-s5-rails = &gpio_sb_2;
 	};
 
 	named-temp-sensors {
@@ -196,7 +192,7 @@
 		 * sub-boards that don't have USB-A so is safe to control
 		 * regardless of system configuration.
 		 */
-		enable-pins = <&gpio_en_usb_a0_vbus &gpio_sb_2>;
+		enable-pins = <&gpio_en_usb_a0_vbus>;
 		status = "okay";
 	};
 
@@ -248,6 +244,20 @@
 			tcpci_mux_1: tcpci-mux-1 {
 				compatible = "parade,usbc-mux-ps8xxx";
 			};
+		};
+	};
+
+	fans {
+		compatible = "cros-ec,fans";
+
+		fan_0 {
+			pwms = <&pwm7 7 PWM_KHZ(1) PWM_POLARITY_NORMAL>;
+			pwm-frequency = <1000>;
+			rpm_min = <2200>;
+			rpm_start = <2200>;
+			rpm_max = <4200>;
+			tach = <&tach1>;
+			enable_gpio = <&gpio_en_pp5000_fan>;
 		};
 	};
 };
@@ -324,5 +334,13 @@
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 	pinctrl-0 = <&i2c5_clk_gpa4_default
 		     &i2c5_data_gpa5_default>;
+	pinctrl-names = "default";
+};
+
+&tach1 {
+	status = "okay";
+	channel = <IT8XXX2_TACH_CHANNEL_A>;
+	pulses-per-round = <2>;
+	pinctrl-0 = <&tach1a_gpd7_default>;
 	pinctrl-names = "default";
 };
