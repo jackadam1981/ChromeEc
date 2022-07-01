@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b684898d_bd2f000e",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-01T13:43:52Z",
+      "side": 1,
+      "message": "Can we figure it out from devicetree instead of using a kconfig for it?",
+      "revId": "4f421c06be4007334cb040fa4db41a84a9d8807d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be27921a_81a620c5",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-01T13:43:52Z",
+      "side": 1,
+      "message": "Remove, that\u0027s already the default for booleans.",
+      "revId": "4f421c06be4007334cb040fa4db41a84a9d8807d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
