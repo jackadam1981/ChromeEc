@@ -549,9 +549,17 @@ const char *ec_image_to_string(enum ec_image copy)
 
 __overridable void board_pulse_entering_rw(void)
 {
+	/*
+	 * Non-zephyr boards define GPIO_ENTERING_RW (often using
+	 * GPIO_UNIMPLEMENTED), so only check for this configuration
+	 * when Zephyr is used so that all legacy boards do not need this
+	 * config to be retrofitted.
+	 */
+#if !defined(CONFIG_ZEPHYR) || defined(CONFIG_GPIO_ENTERING_RW)
 	gpio_set_level(GPIO_ENTERING_RW, 1);
 	usleep(MSEC);
 	gpio_set_level(GPIO_ENTERING_RW, 0);
+#endif
 }
 
 /**

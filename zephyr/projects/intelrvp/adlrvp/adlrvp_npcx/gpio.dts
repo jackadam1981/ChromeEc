@@ -146,7 +146,6 @@
 		};
 		ec-entering-rw {
 			gpios = <&gpiod 4 GPIO_OUTPUT_LOW>;
-			enum-name = "GPIO_ENTERING_RW";
 		};
 		ccd_mode_odl: ccd-mode-odl {
 			gpios = <&gpiof 4 GPIO_INPUT>;

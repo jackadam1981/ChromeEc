@@ -10,8 +10,6 @@
 #include <zephyr/devicetree.h>
 #include <gpio_signal.h>
 
-#define GPIO_ENTERING_RW		GPIO_UNIMPLEMENTED
-
 #ifdef CONFIG_PLATFORM_EC_USB_PD_TCPM_RT1718S
 #define GPIO_EN_USB_C1_SINK         RT1718S_GPIO1
 #define GPIO_EN_USB_C1_SOURCE       RT1718S_GPIO2
