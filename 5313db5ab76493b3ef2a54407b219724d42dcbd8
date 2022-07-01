@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049cb6cd_9843f4b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-01T15:04:22Z",
+      "side": 1,
+      "message": "Would this test be run as part of the normal test suite? My concern is that it would fail whenever we run without the JLink connected and could be confusing.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97ad7801_8e9b0d5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-01T15:04:22Z",
+      "side": 1,
+      "message": "Does it make sense to add an argument to this to specify expected state? In that case `runtest false` should pass rather than having \"failure\" mean it worked?",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
