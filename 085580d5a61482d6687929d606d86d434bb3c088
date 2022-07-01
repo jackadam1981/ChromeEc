@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0461cb6e_02812203",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-01T18:22:41Z",
+      "side": 1,
+      "message": "Interesting, I thought it was adding spaces between operators in other locations (e.g., `500 * MSEC` above).",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 34,
+        "endChar": 61
+      },
+      "revId": "085580d5a61482d6687929d606d86d434bb3c088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
