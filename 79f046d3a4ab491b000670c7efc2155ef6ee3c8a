@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864f5b20_adf5c368",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-01T04:45:00Z",
+      "side": 1,
+      "message": "I\u0027d prefer to avoid making a copies of sub_board.c: keep it where it is and don\u0027t make copies, but still make the CMakeLists change to build it only for those boards that want it.",
+      "revId": "79f046d3a4ab491b000670c7efc2155ef6ee3c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
