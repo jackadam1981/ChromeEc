@@ -2555,6 +2555,11 @@ extern struct jump_data mock_jump_data;
 #define CONFIG_FW_RESET_VECTOR
 #endif
 
+#undef CONFIG_GPIO_ENTERING_RW
+#ifdef CONFIG_PLATFORM_EC_GPIO_ENTERING_RW
+#define CONFIG_GPIO_ENTERING_RW
+#endif
+
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #if defined(CONFIG_HCDEBUG_OFF)
 #define CONFIG_HOSTCMD_DEBUG_MODE 0
