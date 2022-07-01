@@ -168,19 +168,25 @@ class AllTests:
     """All possible tests."""
 
     @staticmethod
-    def get(board_config: BoardConfig) -> List[TestConfig]:
-        public_tests = AllTests.get_public_tests(board_config)
+    def get(board_config: BoardConfig,
+            debugger_connected: bool) -> List[TestConfig]:
+        public_tests = AllTests.get_public_tests(board_config,
+                                                 debugger_connected)
         private_tests = AllTests.get_private_tests()
 
         return public_tests + private_tests
 
     @staticmethod
-    def get_public_tests(board_config: BoardConfig) -> List[TestConfig]:
+    def get_public_tests(board_config: BoardConfig,
+                         debugger_connected: bool) -> List[TestConfig]:
         tests = [
             TestConfig(test_name='aes'),
             TestConfig(test_name='cec'),
             TestConfig(test_name='cortexm_fpu'),
             TestConfig(test_name='crc'),
+            TestConfig(test_name='debug',
+                       test_args=['debugger' if debugger_connected
+                                  else 'no_debugger']),
             TestConfig(test_name='flash_physical', image_to_use=ImageType.RO,
                        toggle_power=True),
             TestConfig(test_name='flash_write_protect',
@@ -567,16 +573,17 @@ def run_test(test: TestConfig, console: io.FileIO,
                 return test.num_fails == 0
 
 
-def get_test_list(config: BoardConfig, test_args) -> List[TestConfig]:
+def get_test_list(config: BoardConfig, debugger_connected: bool,
+                  test_args) -> List[TestConfig]:
     """Get a list of tests to run."""
     if test_args == 'all':
-        return AllTests.get(config)
+        return AllTests.get(config, debugger_connected)
 
     test_list = []
     for t in test_args:
         logging.debug('test: %s', t)
         test_regex = re.compile(t)
-        tests = [test for test in AllTests.get(config)
+        tests = [test for test in AllTests.get(config, debugger_connected)
                  if test_regex.fullmatch(test.config_name)]
         if not tests:
             logging.error('Unable to find test config for "%s"', t)
@@ -674,7 +681,8 @@ def main():
 
     e = ThreadPoolExecutor(max_workers=1)
 
-    test_list = get_test_list(board_config, args.tests)
+    debugger_connected = True if args.flasher == JTRACE else False
+    test_list = get_test_list(board_config, debugger_connected, args.tests)
     logging.debug(
         'Running tests: %s', [
             test.config_name for test in test_list])
