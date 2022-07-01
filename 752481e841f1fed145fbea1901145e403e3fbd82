@@ -51,6 +51,24 @@
       "parentUuid": "25aabc1e_34b20633",
       "revId": "752481e841f1fed145fbea1901145e403e3fbd82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "406f6d7b_7f526f75",
+        "filename": "zephyr/dts/bindings/battery/as3gwqd3jb,c490-42.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-01T03:27:32Z",
+      "side": 1,
+      "message": "So there may be a misunderstanding here - I suspect that what has been provided is the name of the device as provided by the manufacturer, not the name of the manufacturer themselves.\nUnless of course, I am mistaken and this is _actually_ the name of the manufacturer.\nIn any case, I\u0027d appreciate if you could attach the data sheet of the battery to the linked bug, so I can take a quick look for myself.",
+      "parentUuid": "376ee61e_c785b0f8",
+      "revId": "752481e841f1fed145fbea1901145e403e3fbd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
