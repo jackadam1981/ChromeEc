@@ -33,6 +33,24 @@
       "message": "The numbers align with the recent [Icetower power consumption test data](http://go/doc/1BonBmFh1TEnx3QxLVnI1o2xUG0suBQ7qN6wd3gOfJW4?resourcekey\u003d0-CfIwuIXrN9sg692R8lgMyA#) but I\u0027ll let someone else +2 after reproducing results.",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838fa3e9_b30fd02c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-01T16:53:46Z",
+      "side": 1,
+      "message": "I can definitely help and repeat the experiment, but I\u0027d like to confirm the exact steps to avoid confusion.\n\nAre these the correct tests to run?\n\n```\n$ dut-control fpmcu_slp_alt:off\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n```\n\n```\n$ dut-control fpmcu_slp_alt:on\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n```\n\nShould the JLink debugger be disconnected? Anything else?",
+      "parentUuid": "65acb9a0_697a0dc1",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
