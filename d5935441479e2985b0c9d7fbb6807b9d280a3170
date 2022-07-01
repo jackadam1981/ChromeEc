@@ -16,6 +16,23 @@
       "message": "@agrandi and @patrykd, can one of you see if you get similar numbers? Bobby is seeing much different numbers, so we want to make sure that my setup is correct.",
       "revId": "d5935441479e2985b0c9d7fbb6807b9d280a3170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "756e2639_46c54f4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-01T16:13:33Z",
+      "side": 1,
+      "message": "The numbers align with the recent [Dragonclaw power consumption test doc](https://crrev.com/c/2713754 - Google Docs](http://go/doc/1Nns4kpLHBYMr4wS-dSX4mNVl1RGqXivJqVkvGuAURGU?forcehl\u003d1#) but I\u0027ll let someone else +2 after reproducing results.",
+      "revId": "d5935441479e2985b0c9d7fbb6807b9d280a3170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
