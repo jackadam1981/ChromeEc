@@ -87,6 +87,24 @@
       "parentUuid": "2286ac5c_690610d8",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "130955c3_c76abde6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-01T21:46:09Z",
+      "side": 1,
+      "message": "There\u0027s some difference when `fpmcu_slp_alt:off` is set (mine was `43.86`), but it\u0027s fairly close (and not 10\u0027s of mW different). For `fpmcu_slp_alt:on`, they are close (mine was `5.74`).\n\nOne interesting difference I see. You have a much higher sample `COUNT`. I haven\u0027t updated my servo_micro firmware in a while (`servo_micro_v2.4.35-f1113c92b`) and I may be using an old version of `servod` in the chroot I\u0027m using to test.\n\nAlso, it looks like your board might be running at 2.8V (`pp3300_dx_mcu_mv` is `2859.10`), not 3.3V (my `pp3300_dx_mcu_mv` is `3248.00`). One difference in my setup may be that I have servo_micro connected to a powered USB hub. I just tried using a port on my laptop though, and I don\u0027t see a difference.",
+      "parentUuid": "a56ce49f_241a0359",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
