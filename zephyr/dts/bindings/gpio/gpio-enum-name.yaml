@@ -4,12 +4,17 @@ properties:
     type: string
     description:
       Enum used in code.
-      These names should only be used for legacy common code.
+      These names MUST ONLY be referenced by legacy code that is
+      included with Zephyr projects.
 
       Some development boards like trogdor, volteer etc. shim in
       the older baseboard/board headers and code, so they
       are also using most of these names. When these
-      boards get removed, these names can be removed
+      boards get removed, these names can be removed.
+
+      Do not add any more names to this list. Please remove
+      any names that are not referenced by Zephyr projects (or
+      are not in included common legacy code).
     enum:
       - GPIO_AC_PRESENT
       - GPIO_AP_EC_SYSRST_ODL
