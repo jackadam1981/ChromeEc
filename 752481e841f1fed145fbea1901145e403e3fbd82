@@ -123,6 +123,24 @@
       "parentUuid": "c85f1f95_adada2d4",
       "revId": "752481e841f1fed145fbea1901145e403e3fbd82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880844b2_420a64fd",
+        "filename": "zephyr/dts/bindings/battery/as3gwqd3jb,c490-42.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-01T06:40:40Z",
+      "side": 1,
+      "message": "It appears there are already SMP compatibles here, so you could use\none like smp,l22m3pg0.yaml as an example to copy.\nIn fact, I\u0027m not sure why we\u0027re creating new compats for every type of battery, but I guess it\u0027s easier to set the defaults that way.\n\nMy main requests are:\n - put in a reasonable description, like \"SMP Li-Po 4335mAh\"\n - use the appropriate compat e.g smp,c31n2005\n - use the same name for the enum-name\n - use \"SMP\" as the manufacturer name\n - use the same name for the compat device as device_name",
+      "parentUuid": "227797e8_bfacace3",
+      "revId": "752481e841f1fed145fbea1901145e403e3fbd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
