@@ -129,7 +129,6 @@
 		};
 		entering_rw: entering_rw {
 			gpios = <&gpioc 5 GPIO_OUTPUT_LOW>;
-			enum-name = "GPIO_ENTERING_RW";
 		};
 		gpio_en_5v_usm: en_5v_usm {
 			gpios = <&gpiog 3 GPIO_OUTPUT_LOW>;
