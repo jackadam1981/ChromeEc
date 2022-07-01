@@ -46,4 +46,12 @@ config PLATFORM_EC_FW_RESET_VECTOR
 	  needs to be provided is system_get_fw_reset_vector that
 	  will return the address of the reset vector.
 
+config PLATFORM_EC_GPIO_ENTERING_RW
+	bool "A GPIO is defined to signal when the EC is entering RW"
+	default n
+	help
+	  This defines if a GPIO is configured that is to be
+	  toggled when the EC enters RW.
+	  The enum-name of the GPIO must be GPIO_ENTERING_RW.
+
 endif # PLATFORM_EC
