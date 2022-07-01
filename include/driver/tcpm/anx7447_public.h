@@ -23,6 +23,6 @@
 extern const struct tcpm_drv anx7447_tcpm_drv;
 extern const struct usb_mux_driver anx7447_usb_mux_driver;
 
-void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
+void anx7447_tcpc_update_hpd_status(const struct usb_mux *me, int port,
 				    mux_state_t mux_state, bool *ack_required);
 #endif /* __CROS_EC_DRIVER_TCPM_ANX7447_PUBLIC_H */

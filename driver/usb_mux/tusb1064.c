@@ -31,8 +31,8 @@ static int tusb1064_write(const struct usb_mux *me, uint8_t reg, uint8_t val)
 }
 
 #if defined(CONFIG_USB_MUX_TUSB1044)
-void tusb1044_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
-			 bool *ack_required)
+void tusb1044_hpd_update(const struct usb_mux *me, int port,
+			 mux_state_t mux_state, bool *ack_required)
 {
 	int res;
 	uint8_t reg;
@@ -89,8 +89,8 @@ int tusb1064_set_dp_rx_eq(const struct usb_mux *me, int db)
 }
 
 /* Writes control register to set switch mode */
-static int tusb1064_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			    bool *ack_required)
+static int tusb1064_set_mux(const struct usb_mux *me, int port,
+			    mux_state_t mux_state, bool *ack_required)
 {
 	uint8_t reg;
 	int rv;
@@ -130,7 +130,8 @@ static int tusb1064_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 }
 
 /* Reads control register and updates mux_state accordingly */
-static int tusb1064_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int tusb1064_get_mux(const struct usb_mux *me, int port,
+			    mux_state_t *mux_state)
 {
 	uint8_t reg;
 	int res;
@@ -155,7 +156,7 @@ static int tusb1064_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 }
 
 /* Generic driver init function */
-static int tusb1064_init(const struct usb_mux *me)
+static int tusb1064_init(const struct usb_mux *me, int port)
 {
 	int res;
 	bool unused;
@@ -165,7 +166,7 @@ static int tusb1064_init(const struct usb_mux *me)
 	 * since the task calling init already holds this port's mux lock.
 	 */
 	/* Disconnect USB3.1 and DP */
-	res = tusb1064_set_mux(me, USB_PD_MUX_NONE, &unused);
+	res = tusb1064_set_mux(me, port, USB_PD_MUX_NONE, &unused);
 	if (res)
 		return res;
 

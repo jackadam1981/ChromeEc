@@ -40,7 +40,7 @@ static const struct anx7440_id_t anx7440_device_ids[] = {
 	{ ANX7440_DEVICE_VERSION, ANX7440_REG_DEVICE_VERSION },
 };
 
-static int anx7440_init(const struct usb_mux *me)
+static int anx7440_init(const struct usb_mux *me, int port)
 {
 	int i;
 	int val;
@@ -60,8 +60,8 @@ static int anx7440_init(const struct usb_mux *me)
 }
 
 /* Writes control register to set switch mode */
-static int anx7440_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required)
+static int anx7440_set_mux(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required)
 {
 	int reg, res;
 
@@ -84,7 +84,8 @@ static int anx7440_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 }
 
 /* Reads control register and updates mux_state accordingly */
-static int anx7440_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int anx7440_get_mux(const struct usb_mux *me, int port,
+			   mux_state_t *mux_state)
 {
 	int reg, res;
 

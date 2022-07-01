@@ -47,8 +47,8 @@ static mutex_t bb_retimer_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
 /**
  * Utility functions
  */
-static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
-			   uint32_t *data)
+static int bb_retimer_read(const struct usb_mux *me, int port,
+			   const uint8_t offset, uint32_t *data)
 {
 	int rv, retry = 0;
 	uint8_t buf[BB_RETIMER_READ_SIZE];
@@ -72,8 +72,7 @@ static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
 			break;
 
 		if (++retry >= BB_RETIMER_I2C_RETRY) {
-			CPRINTS("C%d: Retimer I2C read err=%d", me->usb_port,
-				rv);
+			CPRINTS("C%d: Retimer I2C read err=%d", port, rv);
 			return rv;
 		}
 		msleep(10);
@@ -87,8 +86,8 @@ static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
 	return EC_SUCCESS;
 }
 
-static int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
-			    uint32_t data)
+static int bb_retimer_write(const struct usb_mux *me, int port,
+			    const uint8_t offset, uint32_t data)
 {
 	int rv, retry = 0;
 	uint8_t buf[BB_RETIMER_WRITE_SIZE];
@@ -120,8 +119,7 @@ static int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
 			break;
 
 		if (++retry >= BB_RETIMER_I2C_RETRY) {
-			CPRINTS("C%d: Retimer I2C write err=%d", me->usb_port,
-				rv);
+			CPRINTS("C%d: Retimer I2C write err=%d", port, rv);
 			break;
 		}
 		msleep(10);
@@ -129,9 +127,10 @@ static int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
 	return rv;
 }
 
-__overridable int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
+__overridable int bb_retimer_power_enable(const struct usb_mux *me, int port,
+					  bool enable)
 {
-	const struct bb_usb_control *control = &bb_controls[me->usb_port];
+	const struct bb_usb_control *control = &bb_controls[port];
 
 	/* handle retimer's power domain */
 
@@ -377,12 +376,11 @@ static void retimer_set_state_ufp(int port, mux_state_t mux_state,
 /**
  * Driver interface functions
  */
-static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
-			     bool *ack_required)
+static int retimer_set_state(const struct usb_mux *me, int port,
+			     mux_state_t mux_state, bool *ack_required)
 {
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
-	int port = me->usb_port;
 	int rv = 0;
 
 	/* This driver does not use host command ACKs */
@@ -474,24 +472,23 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
 		retimer_set_state_ufp(port, mux_state, &set_retimer_con);
 
 	/* Writing the register4 */
-	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+	rv = bb_retimer_write(me, port, BB_RETIMER_REG_CONNECTION_STATE,
 			      set_retimer_con);
 	mutex_unlock(&bb_retimer_lock[port]);
 	return rv;
 }
 
-void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required)
+void bb_retimer_hpd_update(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required)
 {
 	uint32_t retimer_con_reg = 0;
-	int port = me->usb_port;
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
 	mutex_lock(&bb_retimer_lock[port]);
 
-	if (bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE,
+	if (bb_retimer_read(me, port, BB_RETIMER_REG_CONNECTION_STATE,
 			    &retimer_con_reg) != EC_SUCCESS) {
 		mutex_unlock(&bb_retimer_lock[port]);
 		return;
@@ -529,27 +526,29 @@ void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
 			~(BB_RETIMER_HPD_LVL | BB_RETIMER_DP_CONNECTION);
 
 	/* Writing the register4 */
-	bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, retimer_con_reg);
+	bb_retimer_write(me, port, BB_RETIMER_REG_CONNECTION_STATE,
+			 retimer_con_reg);
 
 	mutex_unlock(&bb_retimer_lock[port]);
 }
 
-void bb_retimer_set_usb3(const struct usb_mux *me, bool enable)
+void bb_retimer_set_usb3(const struct usb_mux *me, int port, bool enable)
 {
 	int rv;
 	uint32_t reg_val = 0;
-	int port = me->usb_port;
 
 	mutex_lock(&bb_retimer_lock[port]);
 
-	rv = bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE, &reg_val);
+	rv = bb_retimer_read(me, port, BB_RETIMER_REG_CONNECTION_STATE,
+			     &reg_val);
 	if (rv != EC_SUCCESS) {
 		mutex_unlock(&bb_retimer_lock[port]);
 		return;
 	}
 	/* Bit 5: USB_3_CONNECTION */
 	WRITE_BIT(reg_val, 5, enable);
-	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, reg_val);
+	rv = bb_retimer_write(me, port, BB_RETIMER_REG_CONNECTION_STATE,
+			      reg_val);
 	if (rv != EC_SUCCESS) {
 		mutex_unlock(&bb_retimer_lock[port]);
 		return;
@@ -570,9 +569,9 @@ static void init_retimer_mutexes(void)
 DECLARE_HOOK(HOOK_INIT, init_retimer_mutexes, HOOK_PRIO_FIRST);
 #endif
 
-static int retimer_low_power_mode(const struct usb_mux *me)
+static int retimer_low_power_mode(const struct usb_mux *me, int port)
 {
-	return bb_retimer_power_enable(me, false);
+	return bb_retimer_power_enable(me, port, false);
 }
 
 static bool is_retimer_fw_update_capable(void)
@@ -580,7 +579,7 @@ static bool is_retimer_fw_update_capable(void)
 	return true;
 }
 
-static int retimer_init(const struct usb_mux *me)
+static int retimer_init(const struct usb_mux *me, int port)
 {
 	int rv;
 	uint32_t data;
@@ -588,25 +587,25 @@ static int retimer_init(const struct usb_mux *me)
 	/* Burnside Bridge is powered by main AP rail */
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
 		/* Ensure reset is asserted while chip is not powered */
-		bb_retimer_power_enable(me, false);
+		bb_retimer_power_enable(me, port, false);
 		return EC_ERROR_NOT_POWERED;
 	}
 
-	rv = bb_retimer_power_enable(me, true);
+	rv = bb_retimer_power_enable(me, port, true);
 	if (rv != EC_SUCCESS)
 		return rv;
 
-	rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
+	rv = bb_retimer_read(me, port, BB_RETIMER_REG_VENDOR_ID, &data);
 	/*
 	 * After reset, i2c controller may not be ready, if this fails,
 	 * retry one more time.
 	 * TODO: revisit the delay time after retimer reset.
 	 */
 	if (rv != EC_SUCCESS)
-		rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
+		rv = bb_retimer_read(me, port, BB_RETIMER_REG_VENDOR_ID, &data);
 	if (rv != EC_SUCCESS)
 		return rv;
-	CPRINTS("C%d: retimer power enable success", me->usb_port);
+	CPRINTS("C%d: retimer power enable success", port);
 #ifdef CONFIG_USBC_RETIMER_INTEL_HB
 	if (data != BB_RETIMER_DEVICE_ID)
 		return EC_ERROR_INVAL;
@@ -614,7 +613,7 @@ static int retimer_init(const struct usb_mux *me)
 	if ((data != BB_RETIMER_VENDOR_ID_1) && data != BB_RETIMER_VENDOR_ID_2)
 		return EC_ERROR_INVAL;
 
-	rv = bb_retimer_read(me, BB_RETIMER_REG_DEVICE_ID, &data);
+	rv = bb_retimer_read(me, port, BB_RETIMER_REG_DEVICE_ID, &data);
 	if (rv != EC_SUCCESS)
 		return rv;
 	if (data != BB_RETIMER_DEVICE_ID)
@@ -680,11 +679,12 @@ static int console_command_bb_retimer(int argc, const char **argv)
 		mux = mux_chain->mux;
 		if (mux->driver == &bb_usb_retimer) {
 			if (rw == 'r')
-				rv = bb_retimer_read(mux, reg, &data);
+				rv = bb_retimer_read(mux, port, reg, &data);
 			else {
-				rv = bb_retimer_write(mux, reg, val);
+				rv = bb_retimer_write(mux, port, reg, val);
 				if (rv == EC_SUCCESS) {
-					rv = bb_retimer_read(mux, reg, &data);
+					rv = bb_retimer_read(mux, port, reg,
+							     &data);
 					if (rv == EC_SUCCESS && data != val)
 						rv = EC_ERROR_UNKNOWN;
 				}

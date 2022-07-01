@@ -289,26 +289,26 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 		switch (config) {
 		case USB_MUX_INIT:
 			if (drv && drv->init) {
-				rv = drv->init(mux_ptr);
+				rv = drv->init(mux_ptr, port);
 				if (rv)
 					break;
 			}
 
 			/* Apply board specific initialization */
 			if (mux_ptr->board_init)
-				rv = mux_ptr->board_init(mux_ptr);
+				rv = mux_ptr->board_init(mux_ptr, port);
 
 			break;
 
 		case USB_MUX_LOW_POWER:
 			if (drv && drv->enter_low_power_mode)
-				rv = drv->enter_low_power_mode(mux_ptr);
+				rv = drv->enter_low_power_mode(mux_ptr, port);
 
 			break;
 
 		case USB_MUX_CHIPSET_RESET:
 			if (drv && drv->chipset_reset)
-				rv = drv->chipset_reset(mux_ptr);
+				rv = drv->chipset_reset(mux_ptr, port);
 
 			break;
 
@@ -323,7 +323,7 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 				lcl_state ^= USB_PD_MUX_POLARITY_INVERTED;
 
 			if (drv && drv->set) {
-				rv = drv->set(mux_ptr, lcl_state,
+				rv = drv->set(mux_ptr, port, lcl_state,
 					      &ack_required);
 				if (rv)
 					break;
@@ -331,7 +331,8 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 
 			/* Apply board specific setting */
 			if (mux_ptr->board_set)
-				rv = mux_ptr->board_set(mux_ptr, lcl_state);
+				rv = mux_ptr->board_set(mux_ptr, port,
+							lcl_state);
 
 			/* Inform the AP its selected mux is set */
 			if (IS_ENABLED(CONFIG_USB_MUX_AP_CONTROL)) {
@@ -355,7 +356,7 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 			 * we will end up with the correct value in the end.
 			 */
 			if (drv && drv->get) {
-				rv = drv->get(mux_ptr, &lcl_state);
+				rv = drv->get(mux_ptr, port, &lcl_state);
 				if (rv)
 					break;
 				*mux_state |= lcl_state;
@@ -364,7 +365,7 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 
 		case USB_MUX_HPD_UPDATE:
 			if (mux_ptr->hpd_update)
-				mux_ptr->hpd_update(mux_ptr, *mux_state,
+				mux_ptr->hpd_update(mux_ptr, port, *mux_state,
 						    &ack_required);
 		}
 

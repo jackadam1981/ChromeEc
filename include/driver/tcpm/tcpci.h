@@ -335,11 +335,12 @@ void tcpci_tcpc_discharge_vbus(int port, int enable);
 void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable);
 int tcpci_tcpc_debug_accessory(int port, bool enable);
 
-int tcpci_tcpm_mux_init(const struct usb_mux *me);
-int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state,
-		       bool *ack_required);
-int tcpci_tcpm_mux_get(const struct usb_mux *me, mux_state_t *mux_state);
-int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *me);
+int tcpci_tcpm_mux_init(const struct usb_mux *me, int port);
+int tcpci_tcpm_mux_set(const struct usb_mux *me, int port,
+		       mux_state_t mux_state, bool *ack_required);
+int tcpci_tcpm_mux_get(const struct usb_mux *me, int port,
+		       mux_state_t *mux_state);
+int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *me, int port);
 int tcpci_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 *chip_info);
 int tcpci_get_vbus_voltage(int port, int *vbus);

@@ -29,7 +29,7 @@ int tusb544_i2c_field_update8(const struct usb_mux *me, int offset,
 	return rv;
 }
 
-static int tusb544_enter_low_power_mode(const struct usb_mux *me)
+static int tusb544_enter_low_power_mode(const struct usb_mux *me, int port)
 {
 	int reg;
 	int rv;
@@ -46,13 +46,13 @@ static int tusb544_enter_low_power_mode(const struct usb_mux *me)
 	return tusb544_write(me, TUSB544_REG_GENERAL4, reg);
 }
 
-static int tusb544_init(const struct usb_mux *me)
+static int tusb544_init(const struct usb_mux *me, int port)
 {
 	return EC_SUCCESS;
 }
 
-static int tusb544_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required)
+static int tusb544_set_mux(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required)
 {
 	int reg;
 	int rv;
@@ -61,7 +61,7 @@ static int tusb544_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	*ack_required = false;
 
 	if (mux_state == USB_PD_MUX_NONE)
-		return tusb544_enter_low_power_mode(me);
+		return tusb544_enter_low_power_mode(me, port);
 
 	rv = tusb544_read(me, TUSB544_REG_GENERAL4, &reg);
 	if (rv)

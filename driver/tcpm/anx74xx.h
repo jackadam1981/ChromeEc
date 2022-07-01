@@ -217,7 +217,7 @@ extern const struct tcpm_drv anx74xx_tcpm_drv;
 extern const struct usb_mux_driver anx74xx_tcpm_usb_mux_driver;
 void anx74xx_tcpc_set_vbus(int port, int enable);
 void anx74xx_tcpc_clear_hpd_status(int port);
-void anx74xx_tcpc_update_hpd_status(const struct usb_mux *me,
+void anx74xx_tcpc_update_hpd_status(const struct usb_mux *me, int port,
 				    mux_state_t mux_state, bool *ack_required);
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
