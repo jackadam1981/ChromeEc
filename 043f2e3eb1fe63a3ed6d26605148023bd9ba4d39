@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63147d14_2db5cd94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-07-01T16:22:56Z",
+      "side": 1,
+      "message": "nits for copyright header",
+      "revId": "043f2e3eb1fe63a3ed6d26605148023bd9ba4d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ea4e0a_03eb00e6",
+        "filename": "board/hyperdebug/ec.tasklist",
+        "patchSetId": 34
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-07-01T16:22:56Z",
+      "side": 1,
+      "message": "nit: 2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "043f2e3eb1fe63a3ed6d26605148023bd9ba4d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c1d5810_56d7c4f5",
+        "filename": "board/hyperdebug/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-07-01T16:22:56Z",
+      "side": 1,
+      "message": "nit: 2022",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "043f2e3eb1fe63a3ed6d26605148023bd9ba4d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
