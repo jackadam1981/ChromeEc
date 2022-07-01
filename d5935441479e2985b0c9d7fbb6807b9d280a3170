@@ -33,6 +33,24 @@
       "message": "The numbers align with the recent [Dragonclaw power consumption test doc](https://crrev.com/c/2713754 - Google Docs](http://go/doc/1Nns4kpLHBYMr4wS-dSX4mNVl1RGqXivJqVkvGuAURGU?forcehl\u003d1#) but I\u0027ll let someone else +2 after reproducing results.",
       "revId": "d5935441479e2985b0c9d7fbb6807b9d280a3170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0027c2f3_a86df0b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-01T19:59:30Z",
+      "side": 1,
+      "message": "Here are the number I collected on my bloonchipper using HEAD of `main`:\n\n```\n$ dut-control fpmcu_slp_alt:off\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp1800_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw pp1800_dx_fp_mw\n\n\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   2491    24.04    5.57    82.89    13.43\n@@    pp1800_dx_fp_mv   2491  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   2491     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   2491  3280.00    0.00  3280.00  3280.00\n@@    pp3300_dx_fp_mw   2491     0.01    0.04     0.26     0.00\n@@   pp3300_dx_mcu_mv   2491  3277.85    3.55  3280.00  3272.00\n@@   pp3300_dx_mcu_mw   2491    22.29    0.08    23.62    22.04\n\n\n$ dut-control fpmcu_slp_alt:on\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp1800_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw pp1800_dx_fp_mw\n\n\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   2579    23.23    6.04    86.55    13.89\n@@    pp1800_dx_fp_mv   2579  1800.00    0.00  1800.00  1800.00\n@@    pp1800_dx_fp_mw   2579     0.00    0.00     0.00     0.00\n@@    pp3300_dx_fp_mv   2579  3280.22    1.30  3288.00  3280.00\n@@    pp3300_dx_fp_mw   2579     0.01    0.04     0.26     0.00\n@@   pp3300_dx_mcu_mv   2579  3280.00    0.00  3280.00  3280.00\n@@   pp3300_dx_mcu_mw   2579     1.86    0.41    10.23     1.84\n```\n\nDo they look reasonable?",
+      "parentUuid": "a02459e0_75c8d21c",
+      "revId": "d5935441479e2985b0c9d7fbb6807b9d280a3170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
