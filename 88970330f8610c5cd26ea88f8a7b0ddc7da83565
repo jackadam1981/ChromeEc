@@ -22,6 +22,30 @@
       },
       "revId": "88970330f8610c5cd26ea88f8a7b0ddc7da83565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd87f97_44505733",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-07-01T14:08:20Z",
+      "side": 1,
+      "message": "The servo v5 will probably be on zephyr, but the question is when will that happen. If you think that it\u0027s better to remove them and eventually restore when they will be needed, then I see no problem.",
+      "parentUuid": "eeafc6b1_242891c2",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "88970330f8610c5cd26ea88f8a7b0ddc7da83565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
