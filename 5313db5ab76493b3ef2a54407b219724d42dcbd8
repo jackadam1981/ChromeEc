@@ -45,6 +45,23 @@
       },
       "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a10b410_59947c86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-01T15:51:23Z",
+      "side": 1,
+      "message": "FYI I ran a couple of tests to see the behavior in different configurations, all with the JTrace plugged into the a Dragonclaw. I couldn\u0027t test on Icetower because that board is doing weird things. I should note that PASSED and FAILED status here really just indicate the test output but there are cases where we expect it to fail. \n* Test 1: JLink Server running, test over JTAG\n    * Starting conditions: Servo unplugged, J-Trace connected, `JLinkRemoteServerCLExe` not running\n    * Plug in servo-micro\n    * Start `servod`\n    * Start `JLinkRemoteServerCLExe`\n    * Execute test with debugger: `test/run_device_tests.py -b bloonchipper --remote 127.0.0.1 --jlink_port 19020 -t debug`\n    * Results: PASSED\n* Test 2: JLink Server not running, test over servo\n    * Starting conditions: Servo unplugged, J-Trace connected, `JLinkRemoteServerCLExe` not running\n    * Plug in servo-micro\n    * Start `servod`\n    * Execute test with servo `test/run_device_tests.py --board bloonchipper --flasher servo_micro -t debug`\n    * Results : FAILED\n* Test 3: JLink Server running, test over servo\n    * Starting conditions: Servo unplugged, J-Trace connected, `JLinkRemoteServerCLExe` not running\n    * Plug in servo-micro\n    * Start `servod`\n    * Start `JLinkRemoteServerCLExe`\n    * Execute `test/run_device_tests.py --board bloonchipper --flasher servo_micro -t debug`\n    * Results: FAILED\n",
+      "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
