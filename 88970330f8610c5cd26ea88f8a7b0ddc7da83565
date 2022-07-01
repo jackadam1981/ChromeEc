@@ -46,6 +46,30 @@
       },
       "revId": "88970330f8610c5cd26ea88f8a7b0ddc7da83565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110b3c5c_cf511633",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-01T14:22:43Z",
+      "side": 1,
+      "message": "These enums are only for the legacy named-gpios, which we\u0027re trying to deprecate, so it\u0027s likely they won\u0027t be used for future products.",
+      "parentUuid": "afd87f97_44505733",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "88970330f8610c5cd26ea88f8a7b0ddc7da83565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
