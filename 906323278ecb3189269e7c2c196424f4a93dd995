@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a785ed_e386941b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-01T20:15:23Z",
+      "side": 1,
+      "message": "Sounds good! If I understand correctly, there is no AR required from my side in this particular code review.",
+      "parentUuid": "9836c5f1_3d74d073",
+      "revId": "906323278ecb3189269e7c2c196424f4a93dd995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "335d1c43_de3615fd",
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "I\u0027m not really sure. I don\u0027t know if `servod` changed how frequently it samples or if I accidentally specified a different `-t` value when I ran it before.",
       "parentUuid": "335d1c43_de3615fd",
+      "range": {
+        "startLine": 362,
+        "startChar": 25,
+        "endLine": 362,
+        "endChar": 28
+      },
+      "revId": "906323278ecb3189269e7c2c196424f4a93dd995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef277cf_11799f9b",
+        "filename": "docs/fingerprint/fingerprint.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-01T20:15:23Z",
+      "side": 1,
+      "message": "FYI, I am also seeing wildly different numbers in my test.\n\nI ran it for 60 seconds and it collected 2500+ samples.",
+      "parentUuid": "93e65423_db883587",
       "range": {
         "startLine": 362,
         "startChar": 25,
