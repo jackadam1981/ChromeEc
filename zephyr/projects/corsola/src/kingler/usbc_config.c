@@ -84,39 +84,49 @@ void board_usb_mux_init(void)
 {
 	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
 		/* Disable DCI function. This is not needed for ARM. */
-		ps8743_field_update(&usb_muxes[1], PS8743_REG_DCI_CONFIG_2,
+		ps8743_field_update(usb_muxes[1].mux, PS8743_REG_DCI_CONFIG_2,
 				    PS8743_AUTO_DCI_MODE_MASK,
 				    PS8743_AUTO_DCI_MODE_FORCE_USB);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
 
-const struct usb_mux usbc0_virtual_mux = {
-	.usb_port = USBC_PORT_C0,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+const struct usb_mux_chain usbc0_virtual_mux = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C0,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
 
-const struct usb_mux usbc1_virtual_mux = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+const struct usb_mux_chain usbc1_virtual_mux = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.driver = &anx7447_usb_mux_driver,
-		.hpd_update = &anx7447_tcpc_update_hpd_status,
-		.next_mux = &usbc0_virtual_mux,
+		.mux = &(struct usb_mux) {
+			.usb_port = USBC_PORT_C0,
+			.driver = &anx7447_usb_mux_driver,
+			.hpd_update = &anx7447_tcpc_update_hpd_status,
+		},
+		.next = &usbc0_virtual_mux,
 	},
 	[USBC_PORT_C1] = {
-		.usb_port = USBC_PORT_C1,
-		.i2c_port = I2C_PORT_USB_C1,
-		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
-		.driver = &ps8743_usb_mux_driver,
-		.next_mux = &usbc1_virtual_mux,
-		.board_init = &ps8743_tune_mux,
+		.mux = &(struct usb_mux) {
+			.usb_port = USBC_PORT_C1,
+			.i2c_port = I2C_PORT_USB_C1,
+			.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
+			.driver = &ps8743_usb_mux_driver,
+			.board_init = &ps8743_tune_mux,
+		},
+		.next = &usbc1_virtual_mux,
 	},
 };
 

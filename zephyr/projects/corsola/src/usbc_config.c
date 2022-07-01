@@ -279,11 +279,12 @@ static void baseboard_x_ec_gpio2_init(void)
 	bc12_ports[USBC_PORT_C1] =
 		(const struct bc12_config){ .drv = &virtual_bc12_drv };
 	/* Use virtual mux to notify AP the mainlink direction. */
-	usb_muxes[USBC_PORT_C1] = (struct usb_mux){
+	*usb_muxes[USBC_PORT_C1].mux = (struct usb_mux){
 		.usb_port = USBC_PORT_C1,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	};
+	usb_muxes[USBC_PORT_C1].next = NULL;
 
 	/*
 	 * If a HDMI DB is attached, C1 port tasks will be exiting in that

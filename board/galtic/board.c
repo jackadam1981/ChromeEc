@@ -308,34 +308,46 @@ static int board_ps8743_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 	return ps8743_write(me, PS8743_REG_USB_EQ_RX, PS8743_USB_EQ_RX_16_7_DB);
 }
 
-const struct usb_mux usbc1_retimer = {
-	.usb_port = 1,
-	.i2c_port = I2C_PORT_SUB_USB_C1,
-	.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS0,
-	.driver = &tusb544_drv,
-	.board_set = &board_tusb544_set,
+const struct usb_mux_chain usbc1_retimer = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = 1,
+			.i2c_port = I2C_PORT_SUB_USB_C1,
+			.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS0,
+			.driver = &tusb544_drv,
+			.board_set = &board_tusb544_set,
+		},
 };
 
-const struct usb_mux usbc1_virtual_mux_ps8743 = {
-	.usb_port = 1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+const struct usb_mux_chain usbc1_virtual_mux_ps8743 = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = 1,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
 
 /* USB Muxes */
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.usb_port = 0,
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
-		.driver = &it5205_usb_mux_driver,
+		.mux =
+			&(struct usb_mux){
+				.usb_port = 0,
+				.i2c_port = I2C_PORT_USB_C0,
+				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
+				.driver = &it5205_usb_mux_driver,
+			},
 	},
 	{
-		.usb_port = 1,
-		.i2c_port = I2C_PORT_SUB_USB_C1,
-		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
-		.driver = &it5205_usb_mux_driver,
-		.next_mux = &usbc1_retimer,
+		.mux =
+			&(struct usb_mux){
+				.usb_port = 1,
+				.i2c_port = I2C_PORT_SUB_USB_C1,
+				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
+				.driver = &it5205_usb_mux_driver,
+			},
+		.next = &usbc1_retimer,
 	},
 };
 
@@ -423,10 +435,10 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 void setup_mux_config(void)
 {
 	if (get_cbi_ssfc_mux_redriver() == SSFC_MUX_PS8743) {
-		usb_muxes[1].i2c_addr_flags = PS8743_I2C_ADDR1_FLAG;
-		usb_muxes[1].driver = &ps8743_usb_mux_driver;
-		usb_muxes[1].next_mux = &usbc1_virtual_mux_ps8743;
-		usb_muxes[1].board_set = &board_ps8743_mux_set;
+		usb_muxes[1].mux->i2c_addr_flags = PS8743_I2C_ADDR1_FLAG;
+		usb_muxes[1].mux->driver = &ps8743_usb_mux_driver;
+		usb_muxes[1].next = &usbc1_virtual_mux_ps8743;
+		usb_muxes[1].mux->board_set = &board_ps8743_mux_set;
 	}
 }
 DECLARE_HOOK(HOOK_INIT, setup_mux_config, HOOK_PRIO_INIT_I2C + 2);

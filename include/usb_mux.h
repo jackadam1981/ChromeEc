@@ -127,9 +127,6 @@ struct usb_mux {
 	/* Mux driver */
 	const struct usb_mux_driver *driver;
 
-	/* Linked list chain of secondary MUXes. NULL terminated */
-	const struct usb_mux *next_mux;
-
 	/**
 	 * Optional method for tuning for USB mux during mux->driver->init().
 	 *
@@ -161,6 +158,19 @@ struct usb_mux {
 			   bool *ack_required);
 };
 
+/* Linked list chain of secondary MUXes. NULL terminated */
+struct usb_mux_chain {
+	/* Structure describing USB mux */
+#ifdef CONFIG_USB_MUX_RUNTIME_CONFIG
+	struct usb_mux *mux;
+#else
+	const struct usb_mux *mux;
+#endif
+
+	/* Pointer to next mux */
+	const struct usb_mux_chain *next;
+};
+
 /* Supported USB mux drivers */
 extern const struct usb_mux_driver amd_fp5_usb_mux_driver;
 extern const struct usb_mux_driver amd_fp6_usb_mux_driver;
@@ -176,9 +186,9 @@ extern const struct usb_mux_driver virtual_usb_mux_driver;
 
 /* USB muxes present in system, ordered by PD port #, defined at board-level */
 #ifdef CONFIG_USB_MUX_RUNTIME_CONFIG
-extern struct usb_mux usb_muxes[];
+extern struct usb_mux_chain usb_muxes[];
 #else
-extern const struct usb_mux usb_muxes[];
+extern const struct usb_mux_chain usb_muxes[];
 #endif
 
 /* Supported hpd_update functions */

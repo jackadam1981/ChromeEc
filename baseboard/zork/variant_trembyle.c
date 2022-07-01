@@ -489,25 +489,34 @@ static int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 	return rv;
 }
 
-const struct usb_mux usbc1_ps8802 = {
-	.usb_port = USBC_PORT_C1,
-	.i2c_port = I2C_PORT_TCPC1,
-	.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
-	.driver = &ps8802_usb_mux_driver,
-	.board_set = &board_ps8802_mux_set,
+const struct usb_mux_chain usbc1_ps8802 = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.i2c_port = I2C_PORT_TCPC1,
+			.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
+			.driver = &ps8802_usb_mux_driver,
+			.board_set = &board_ps8802_mux_set,
+		},
 };
-const struct usb_mux usbc1_ps8818 = {
-	.usb_port = USBC_PORT_C1,
-	.i2c_port = I2C_PORT_TCPC1,
-	.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
-	.driver = &ps8818_usb_retimer_driver,
-	.board_set = &board_ps8818_mux_set,
+const struct usb_mux_chain usbc1_ps8818 = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.i2c_port = I2C_PORT_TCPC1,
+			.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
+			.driver = &ps8818_usb_retimer_driver,
+			.board_set = &board_ps8818_mux_set,
+		},
 };
-struct usb_mux usbc1_amd_fp5_usb_mux = {
-	.usb_port = USBC_PORT_C1,
-	.i2c_port = I2C_PORT_USB_AP_MUX,
-	.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
-	.driver = &amd_fp5_usb_mux_driver,
+struct usb_mux_chain usbc1_amd_fp5_usb_mux = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.i2c_port = I2C_PORT_USB_AP_MUX,
+			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
+			.driver = &amd_fp5_usb_mux_driver,
+		},
 };
 
 /*

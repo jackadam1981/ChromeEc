@@ -30,7 +30,7 @@
 #include "test/drivers/utils.h"
 
 /** Copy of original usb_muxes[USB_PORT_C1] */
-struct usb_mux usb_mux_c1;
+struct usb_mux_chain usb_mux_c1;
 
 /** Number of usb mux proxies in chain */
 #define NUM_OF_PROXY 3
@@ -277,39 +277,45 @@ static void reset_proxy_fakes(void)
 }
 
 /** Chain of 3 proxy usb muxes */
-struct usb_mux proxy_chain_2 = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &proxy_usb_mux,
-	.next_mux = NULL,
-	.i2c_addr_flags = 2,
-	.hpd_update = &proxy_hpd_update,
+struct usb_mux_chain proxy_chain_2 = { .mux = &(struct usb_mux){
+					       .usb_port = USBC_PORT_C1,
+					       .driver = &proxy_usb_mux,
+					       .i2c_addr_flags = 2,
+					       .hpd_update = &proxy_hpd_update,
+				       } };
+
+struct usb_mux_chain proxy_chain_1 = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.driver = &proxy_usb_mux,
+			.i2c_addr_flags = 1,
+			.hpd_update = &proxy_hpd_update,
+		},
+	.next = &proxy_chain_2,
 };
 
-struct usb_mux proxy_chain_1 = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &proxy_usb_mux,
-	.next_mux = &proxy_chain_2,
-	.i2c_addr_flags = 1,
-	.hpd_update = &proxy_hpd_update,
-};
-
-struct usb_mux proxy_chain_0 = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &proxy_usb_mux,
-	.next_mux = &proxy_chain_1,
-	.i2c_addr_flags = 0,
-	.hpd_update = &proxy_hpd_update,
+struct usb_mux_chain proxy_chain_0 = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.driver = &proxy_usb_mux,
+			.i2c_addr_flags = 0,
+			.hpd_update = &proxy_hpd_update,
+		},
+	.next = &proxy_chain_1,
 };
 
 /** Setup first 3 usb muxes of port 1 with proxy */
 static void setup_usb_mux_proxy_chain(void)
 {
-	const struct usb_mux *t;
+	const struct usb_mux_chain *t;
 	int i;
 
-	memcpy(&usb_mux_c1, &usb_muxes[USBC_PORT_C1], sizeof(struct usb_mux));
+	memcpy(&usb_mux_c1, &usb_muxes[USBC_PORT_C1],
+	       sizeof(struct usb_mux_chain));
 	memcpy(&usb_muxes[USBC_PORT_C1], &proxy_chain_0,
-	       sizeof(struct usb_mux));
+	       sizeof(struct usb_mux_chain));
 
 	/*
 	 * Setup org_mux array to point real driver which should be called by
@@ -317,23 +323,26 @@ static void setup_usb_mux_proxy_chain(void)
 	 */
 	t = &usb_mux_c1;
 	for (i = 0; i < NUM_OF_PROXY; i++) {
-		org_mux[i] = t;
 		if (t != NULL) {
-			t = t->next_mux;
+			org_mux[i] = t->mux;
+			t = t->next;
+		} else {
+			org_mux[i] = NULL;
 		}
 	}
 
-	if (org_mux[2] != NULL) {
-		proxy_chain_2.next_mux = org_mux[2]->next_mux;
+	if (t != NULL) {
+		proxy_chain_2.next = t;
 	} else {
-		proxy_chain_2.next_mux = NULL;
+		proxy_chain_2.next = NULL;
 	}
 }
 
 /** Restore original usb_mux chain without proxy */
 static void restore_usb_mux_chain(void)
 {
-	memcpy(&usb_muxes[USBC_PORT_C1], &usb_mux_c1, sizeof(struct usb_mux));
+	memcpy(&usb_muxes[USBC_PORT_C1], &usb_mux_c1,
+	       sizeof(struct usb_mux_chain));
 }
 
 /**
@@ -346,15 +355,15 @@ static void restore_usb_mux_chain(void)
 		zassert_equal(num, proxy##_fake.call_count, "%d != %d", num, \
 			      proxy##_fake.call_count);                      \
 		if (num >= 1) {                                              \
-			zassert_equal(&usb_muxes[USBC_PORT_C1],              \
+			zassert_equal(usb_muxes[USBC_PORT_C1].mux,           \
 				      proxy##_fake.arg0_history[0], NULL);   \
 		}                                                            \
 		if (num >= 2) {                                              \
-			zassert_equal(&proxy_chain_1,                        \
+			zassert_equal(proxy_chain_1.mux,                     \
 				      proxy##_fake.arg0_history[1], NULL);   \
 		}                                                            \
 		if (num >= 3) {                                              \
-			zassert_equal(&proxy_chain_2,                        \
+			zassert_equal(proxy_chain_2.mux,                     \
 				      proxy##_fake.arg0_history[2], NULL);   \
 		}                                                            \
 	} while (0)
@@ -406,16 +415,16 @@ ZTEST(usb_uninit_mux, test_usb_mux_init)
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, 2);
 
 	/* Test board init callback */
-	proxy_chain_1.board_init = &mock_board_init;
+	proxy_chain_1.mux->board_init = &mock_board_init;
 	reset_proxy_fakes();
 	usb_mux_init(USBC_PORT_C1);
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, NUM_OF_PROXY);
 	/* Check if board_init was called for proxy 1 */
 	zassert_equal(1, mock_board_init_fake.call_count, NULL);
-	zassert_equal(&proxy_chain_1, mock_board_init_fake.arg0_history[0],
+	zassert_equal(proxy_chain_1.mux, mock_board_init_fake.arg0_history[0],
 		      NULL);
 
-	proxy_chain_1.board_init = NULL;
+	proxy_chain_1.mux->board_init = NULL;
 }
 
 /** Test usb_mux setting mux mode */
@@ -425,7 +434,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_set)
 	mux_state_t exp_mode;
 
 	/* Set flag for usb mux 1 to disable polarity setting */
-	proxy_chain_1.flags = USB_MUX_FLAG_SET_WITHOUT_FLIP;
+	proxy_chain_1.mux->flags = USB_MUX_FLAG_SET_WITHOUT_FLIP;
 
 	/* Test setting mux mode without polarity inversion */
 	reset_proxy_fakes();
@@ -452,14 +461,14 @@ ZTEST(usb_uninit_mux, test_usb_mux_set)
 
 	/* Test board set callback */
 	reset_proxy_fakes();
-	proxy_chain_1.board_set = &mock_board_set;
+	proxy_chain_1.mux->board_set = &mock_board_set;
 	usb_mux_set(USBC_PORT_C1, exp_mode, USB_SWITCH_CONNECT,
 		    0 /* = polarity */);
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, 0);
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_set, NUM_OF_PROXY, exp_mode);
 	/* Check if board_set was called for proxy 1 */
 	zassert_equal(1, mock_board_set_fake.call_count, NULL);
-	zassert_equal(&proxy_chain_1, mock_board_set_fake.arg0_history[0],
+	zassert_equal(proxy_chain_1.mux, mock_board_set_fake.arg0_history[0],
 		      NULL);
 	zassert_equal(exp_mode, mock_board_set_fake.arg1_history[0], NULL);
 
@@ -473,7 +482,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_set)
 	/* board_set shouldn't be called after fail */
 	zassert_equal(0, mock_board_set_fake.call_count, NULL);
 
-	proxy_chain_1.board_set = NULL;
+	proxy_chain_1.mux->board_set = NULL;
 }
 
 /** Test usb_mux reset in g3 when required flag is set */
@@ -489,7 +498,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_reset_in_g3)
 	CHECK_PROXY_FAKE_CALL_CNT_MUX_STATE(proxy_set, NUM_OF_PROXY, exp_mode);
 
 	/* Usb muxes of port 1 should stay initialised */
-	usb_muxes[USBC_PORT_C1].flags = 0;
+	usb_muxes[USBC_PORT_C1].mux->flags = 0;
 	hook_notify(HOOK_CHIPSET_HARD_OFF);
 
 	/* Test that init is not called */
@@ -609,7 +618,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_flip)
 	mux_state_t exp_mode;
 
 	/* Set flag for usb mux 1 to disable polarity setting */
-	proxy_chain_1.flags = USB_MUX_FLAG_SET_WITHOUT_FLIP;
+	proxy_chain_1.mux->flags = USB_MUX_FLAG_SET_WITHOUT_FLIP;
 
 	/* Test flip port without polarity inverted */
 	exp_mode = USB_PD_MUX_USB_ENABLED;
@@ -641,15 +650,16 @@ ZTEST(usb_uninit_mux, test_usb_mux_flip)
 ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 {
 	mux_state_t exp_mode, mode, virt_mode;
+	struct usb_mux *virtual_mux = usbc1_virtual_usb_mux.mux;
 
 	/* Get current state of virtual usb mux and set mock */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, &virt_mode);
+	virtual_mux->driver->get(virtual_mux, &virt_mode);
 
 	/* Test no hpd level and no irq */
 	exp_mode = virt_mode;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if virtual usb mux mode is updated correctly */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, &mode);
+	virtual_mux->driver->get(virtual_mux, &mode);
 	zassert_equal(exp_mode, mode, "virtual mux mode is 0x%x (!= 0x%x)",
 		      mode, exp_mode);
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, NUM_OF_PROXY);
@@ -661,7 +671,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 	exp_mode = virt_mode | USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if virtual usb mux mode is updated correctly */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, &mode);
+	virtual_mux->driver->get(virtual_mux, &mode);
 	zassert_equal(exp_mode, mode, "virtual mux mode is 0x%x (!= 0x%x)",
 		      mode, exp_mode);
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, 0);
@@ -673,7 +683,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 	exp_mode = virt_mode | USB_PD_MUX_HPD_IRQ;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if virtual usb mux mode is updated correctly */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, &mode);
+	virtual_mux->driver->get(virtual_mux, &mode);
 	zassert_equal(exp_mode, mode, "virtual mux mode is 0x%x (!= 0x%x)",
 		      mode, exp_mode);
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, 0);
@@ -685,7 +695,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 	exp_mode = virt_mode | USB_PD_MUX_HPD_LVL;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if virtual usb mux mode is updated correctly */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, &mode);
+	virtual_mux->driver->get(virtual_mux, &mode);
 	zassert_equal(exp_mode, mode, "virtual mux mode is 0x%x (!= 0x%x)",
 		      mode, exp_mode);
 	CHECK_PROXY_FAKE_CALL_CNT(proxy_init, 0);
@@ -693,15 +703,22 @@ ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 					    exp_mode);
 
 	/* Test ps8xxx hpd update */
-	usb_muxes[USBC_PORT_C1].usb_port = 1;
-	usb_muxes[USBC_PORT_C1].driver = &tcpci_tcpm_usb_mux_driver;
-	usb_muxes[USBC_PORT_C1].hpd_update = &ps8xxx_tcpc_update_hpd_status;
+	usb_muxes[USBC_PORT_C1].mux->usb_port = 1;
+	usb_muxes[USBC_PORT_C1].mux->driver = &tcpci_tcpm_usb_mux_driver;
+	usb_muxes[USBC_PORT_C1].mux->hpd_update =
+		&ps8xxx_tcpc_update_hpd_status;
 
 	reset_proxy_fakes();
 	exp_mode = virt_mode | USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if PS8xxx mux mode is updated correctly */
-	tcpci_tcpm_usb_mux_driver.get(&usb_muxes[USBC_PORT_C1], &mode);
+	tcpci_tcpm_usb_mux_driver.get(usb_muxes[USBC_PORT_C1].mux, &mode);
+
+	/* Restore proxy chain 0 */
+	usb_muxes[USBC_PORT_C1].mux->usb_port = USBC_PORT_C1;
+	usb_muxes[USBC_PORT_C1].mux->driver = &proxy_usb_mux;
+	usb_muxes[USBC_PORT_C1].mux->hpd_update = &proxy_hpd_update;
+
 	zassert_equal(0, mode, "mux mode is 0x%x (!= 0x%x)", mode, 0);
 }
 
@@ -847,7 +864,7 @@ void usb_uninit_mux_before(void *state)
 	set_test_runner_tid();
 
 	/* Makes sure that usb muxes of port 1 are not init */
-	usb_muxes[USBC_PORT_C1].flags = USB_MUX_FLAG_RESETS_IN_G3;
+	usb_muxes[USBC_PORT_C1].mux->flags = USB_MUX_FLAG_RESETS_IN_G3;
 	hook_notify(HOOK_CHIPSET_HARD_OFF);
 	reset_proxy_fakes();
 }

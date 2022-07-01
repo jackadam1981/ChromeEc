@@ -142,9 +142,12 @@ const struct usb_mux_driver usbc0_sbu_mux_driver = {
  * Since PI3USB221 is not a i2c device, .i2c_port and
  * .i2c_addr_flags are not required here.
  */
-const struct usb_mux usbc0_sbu_mux = {
-	.usb_port = USBC_PORT_C0,
-	.driver = &usbc0_sbu_mux_driver,
+const struct usb_mux_chain usbc0_sbu_mux = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C0,
+			.driver = &usbc0_sbu_mux_driver,
+		},
 };
 
 /*****************************************************************************
@@ -161,9 +164,9 @@ static void setup_mux(void)
 		 * table entry.
 		 */
 		memcpy(&usb_muxes[USBC_PORT_C1], &usbc1_amd_fp5_usb_mux,
-		       sizeof(struct usb_mux));
+		       sizeof(struct usb_mux_chain));
 		/* Set the TUSB544 as the secondary MUX */
-		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_tusb544;
+		usb_muxes[USBC_PORT_C1].next = &usbc1_tusb544;
 	} else if (ec_config_has_usbc1_retimer_ps8743()) {
 		ccprints("C1 PS8743 detected");
 		/*
@@ -173,21 +176,24 @@ static void setup_mux(void)
 		 * table entry.
 		 */
 		memcpy(&usb_muxes[USBC_PORT_C1], &usbc1_ps8743,
-		       sizeof(struct usb_mux));
+		       sizeof(struct usb_mux_chain));
 		/* Set the AMD FP5 as the secondary MUX */
-		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_amd_fp5_usb_mux;
+		usb_muxes[USBC_PORT_C1].next = &usbc1_amd_fp5_usb_mux;
 		/* Don't have the AMD FP5 flip */
-		usbc1_amd_fp5_usb_mux.flags = USB_MUX_FLAG_SET_WITHOUT_FLIP;
+		usbc1_amd_fp5_usb_mux.mux->flags =
+			USB_MUX_FLAG_SET_WITHOUT_FLIP;
 	}
 }
 
-struct usb_mux usb_muxes[] = {
+struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.i2c_port = I2C_PORT_USB_AP_MUX,
-		.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
-		.driver = &amd_fp5_usb_mux_driver,
-		.next_mux = &usbc0_sbu_mux,
+		.mux = &(struct usb_mux) {
+			.usb_port = USBC_PORT_C0,
+			.i2c_port = I2C_PORT_USB_AP_MUX,
+			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
+			.driver = &amd_fp5_usb_mux_driver,
+		},
+		.next = &usbc0_sbu_mux,
 	},
 	[USBC_PORT_C1] = {
 		/* Filled in dynamically at startup */
@@ -260,18 +266,24 @@ static int board_tusb544_mux_set(const struct usb_mux *me,
 	return EC_SUCCESS;
 }
 
-const struct usb_mux usbc1_tusb544 = {
-	.usb_port = USBC_PORT_C1,
-	.i2c_port = I2C_PORT_TCPC1,
-	.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS1,
-	.driver = &tusb544_drv,
-	.board_set = &board_tusb544_mux_set,
+const struct usb_mux_chain usbc1_tusb544 = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.i2c_port = I2C_PORT_TCPC1,
+			.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS1,
+			.driver = &tusb544_drv,
+			.board_set = &board_tusb544_mux_set,
+		},
 };
-const struct usb_mux usbc1_ps8743 = {
-	.usb_port = USBC_PORT_C1,
-	.i2c_port = I2C_PORT_TCPC1,
-	.i2c_addr_flags = PS8743_I2C_ADDR1_FLAG,
-	.driver = &ps8743_usb_mux_driver,
+const struct usb_mux_chain usbc1_ps8743 = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.i2c_port = I2C_PORT_TCPC1,
+			.i2c_addr_flags = PS8743_I2C_ADDR1_FLAG,
+			.driver = &ps8743_usb_mux_driver,
+		},
 };
 
 /*****************************************************************************

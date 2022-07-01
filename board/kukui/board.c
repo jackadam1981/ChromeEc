@@ -157,13 +157,16 @@ __override const struct rt946x_init_setting *board_rt946x_init_setting(void)
 	return &battery_init_setting;
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.usb_port = 0,
-		.i2c_port = I2C_PORT_USB_MUX,
-		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
-		.driver = &it5205_usb_mux_driver,
-		.hpd_update = &board_hpd_update,
+		.mux =
+			&(struct usb_mux){
+				.usb_port = 0,
+				.i2c_port = I2C_PORT_USB_MUX,
+				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
+				.driver = &it5205_usb_mux_driver,
+				.hpd_update = &board_hpd_update,
+			},
 	},
 };
 
@@ -358,8 +361,8 @@ static void board_rev_init(void)
 	if (board_get_version() < 5) {
 		gpio_set_flags(GPIO_USB_C0_DP_OE_L, GPIO_OUT_HIGH);
 		gpio_set_flags(GPIO_USB_C0_DP_POLARITY, GPIO_OUT_LOW);
-		usb_muxes[0].driver = &virtual_usb_mux_driver;
-		usb_muxes[0].hpd_update = &virtual_hpd_update;
+		usb_muxes[0].mux->driver = &virtual_usb_mux_driver;
+		usb_muxes[0].mux->hpd_update = &virtual_hpd_update;
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
