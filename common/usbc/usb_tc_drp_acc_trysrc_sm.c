@@ -3913,6 +3913,7 @@ void tc_run(const int port)
 static void pd_chipset_resume(void)
 {
 	int i;
+	struct rmdo partner_rmdo;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		if (IS_ENABLED(CONFIG_USB_PE_SM))
@@ -3922,7 +3923,11 @@ static void pd_chipset_resume(void)
 					   PD_EVENT_UPDATE_DUAL_ROLE |
 						   PD_EVENT_POWER_STATE_CHANGE);
 
-		if (tc[i].data_role == PD_ROLE_DFP) {
+		partner_rmdo = pe_get_partner_rmdo(i);
+		if ((tc[i].data_role == PD_ROLE_DFP) &&
+				(((partner_rmdo.major_rev == 3) &&
+				  (partner_rmdo.minor_rev >= 1)) ||
+				 (partner_rmdo.major_rev > 3))) {
 			pd_send_alert_msg(i, ADO_EXTENDED_ALERT_EVENT |
 						     ADO_POWER_STATE_CHANGE);
 		}
@@ -3935,13 +3940,18 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_chipset_resume, HOOK_PRIO_DEFAULT);
 static void pd_chipset_suspend(void)
 {
 	int i;
+	struct rmdo partner_rmdo;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		pd_set_dual_role_and_event(i, pd_get_drp_state_in_suspend(),
 					   PD_EVENT_UPDATE_DUAL_ROLE |
 						   PD_EVENT_POWER_STATE_CHANGE);
 
-		if (tc[i].data_role == PD_ROLE_DFP) {
+		partner_rmdo = pe_get_partner_rmdo(i);
+		if ((tc[i].data_role == PD_ROLE_DFP) &&
+				(((partner_rmdo.major_rev == 3) &&
+				  (partner_rmdo.minor_rev >= 1)) ||
+				 (partner_rmdo.major_rev > 3))) {
 			pd_send_alert_msg(i, ADO_EXTENDED_ALERT_EVENT |
 						     ADO_POWER_STATE_CHANGE);
 		}
@@ -3990,6 +4000,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESET, pd_chipset_reset, HOOK_PRIO_DEFAULT);
 static void pd_chipset_startup(void)
 {
 	int i;
+	struct rmdo partner_rmdo;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
@@ -4005,7 +4016,11 @@ static void pd_chipset_startup(void)
 		if (IS_ENABLED(CONFIG_USB_PE_SM))
 			pd_dpm_request(i, DPM_REQUEST_PORT_DISCOVERY);
 
-		if (tc[i].data_role == PD_ROLE_DFP) {
+		partner_rmdo = pe_get_partner_rmdo(i);
+		if ((tc[i].data_role == PD_ROLE_DFP) &&
+				(((partner_rmdo.major_rev == 3) &&
+				  (partner_rmdo.minor_rev >= 1)) ||
+				 (partner_rmdo.major_rev > 3))) {
 			pd_send_alert_msg(i, ADO_EXTENDED_ALERT_EVENT |
 						     ADO_POWER_STATE_CHANGE);
 		}
@@ -4018,6 +4033,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 static void pd_chipset_shutdown(void)
 {
 	int i;
+	struct rmdo partner_rmdo;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
@@ -4025,7 +4041,11 @@ static void pd_chipset_shutdown(void)
 					   PD_EVENT_UPDATE_DUAL_ROLE |
 						   PD_EVENT_POWER_STATE_CHANGE);
 
-		if (tc[i].data_role == PD_ROLE_DFP) {
+		partner_rmdo = pe_get_partner_rmdo(i);
+		if ((tc[i].data_role == PD_ROLE_DFP) &&
+				(((partner_rmdo.major_rev == 3) &&
+				  (partner_rmdo.minor_rev >= 1)) ||
+				 (partner_rmdo.major_rev > 3))) {
 			pd_send_alert_msg(i, ADO_EXTENDED_ALERT_EVENT |
 						     ADO_POWER_STATE_CHANGE);
 		}
