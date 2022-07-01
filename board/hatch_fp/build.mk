@@ -40,6 +40,7 @@ test-list-y=\
        mutex \
        panic_data \
        pingpong \
+       power_utilization \
        printf \
        queue \
        rollback \

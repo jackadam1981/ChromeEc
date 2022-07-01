@@ -52,7 +52,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import BinaryIO, Dict, List, Optional
+from typing import BinaryIO, Dict, List, Tuple, Callable, Optional
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
@@ -119,6 +119,99 @@ BLOONCHIPPER_V5938_IMAGE_PATH = os.path.join(
 )
 
 
+def verify_power_utilization(fp_expected: Tuple[float, float],
+                             mcu_expected: Tuple[float, float]) -> bool:
+    """Get the name of the console for a given board."""
+    cmd = [
+        'dut-control',
+        '--value_only', # only the summary will print the field names
+        '-t', '10',  # sample time in seconds
+        'pp3300_dx_mcu_mw',
+        'pp3300_dx_fp_mw',
+    ]
+    logging.debug('Running command: "%s"', ' '.join(cmd))
+
+    pp3300_dx_fp_mw = None
+    pp3300_dx_mcu_mw = None
+    with subprocess.Popen(cmd, stdout=subprocess.PIPE) as proc:
+        for line in io.TextIOWrapper(proc.stdout):  # type: ignore[arg-type]
+            # Only the summary is required and those lines start with @@ and have 6 other fields
+            # (NAME, COUNT, AVERAGE, STDDEV, MAX, MIN)
+            response = line.split()
+            if len(response) != 7 or response[0] != '@@':
+                continue
+
+            resp_name, _, resp_avg, _, _, _ = response[1:]
+
+            if resp_name == 'pp3300_dx_fp_mw':
+                pp3300_dx_fp_mw = float(resp_avg.strip())
+            elif resp_name == 'pp3300_dx_mcu_mw':
+                pp3300_dx_mcu_mw = float(resp_avg.strip())
+
+            if pp3300_dx_fp_mw is not None and pp3300_dx_mcu_mw is not None:
+                fp_mw_expected, fp_mw_range = fp_expected
+                mcu_mw_expected, mcu_mw_range = mcu_expected
+
+                fp_mw_delta = abs(pp3300_dx_fp_mw - fp_mw_expected)
+                mcu_mw_delta = abs(pp3300_dx_mcu_mw - mcu_mw_expected)
+
+                logging.info('pp3300_dx_fp_mw\t'
+                             'actual: %0.2f expected: %0.2f threshold: +/-%0.2f',
+                             pp3300_dx_fp_mw,
+                             fp_mw_expected,
+                             fp_mw_range)
+                logging.info('pp3300_dx_mcu_mw:\t'
+                             'actual: %0.2f expected: %0.2f threshold: +/-%0.2f',
+                             pp3300_dx_mcu_mw,
+                             mcu_mw_expected,
+                             mcu_mw_range)
+
+                return (fp_mw_delta <= fp_mw_range and
+                        mcu_mw_delta <= mcu_mw_range)
+    return False
+
+
+def verify_idle_power_utilization(build_board: str) -> bool:
+    """ Verifies that idle power utilization is within range for the specified board """
+    ret = False
+
+    # Values for Icetower v0.1 and Dragonclaw v0.2 are taken from the documentation in
+    #   ec/docs/fingerprint/fingerprint.md (rounded to nearest 0.1 mw)
+    if build_board == DARTMONKEY:  # Icetower
+        ret = verify_power_utilization((0.0, 0.1), (43.9, 8.8))
+    elif build_board == BLOONCHIPPER:  # Dragonclaw
+        ret = verify_power_utilization((0.0, 0.1), (21.8, 4.4))
+
+    return ret
+
+
+def verify_sleep_power_utilization(build_board: str) -> bool:
+    """ Verifies that sleep power utilization is within range for the specified board """
+    ret = False
+
+    # Values for Icetower v0.1 and Dragonclaw v0.2 are taken from the documentation in
+    #   ec/docs/fingerprint/fingerprint.md (rounded to nearest 0.1 mw)
+    if build_board == DARTMONKEY:  # Icetower
+        ret = verify_power_utilization((0.0, 0.1), (5.7, 1.6))
+    elif build_board == BLOONCHIPPER:  # Dragonclaw
+        ret = verify_power_utilization((0.0, 0.1), (1.6, 1.0))
+
+    return ret
+
+
+# config is not used by enter_sleep_mode but it is required if used as a pre-commit hook
+# pylint: disable=unused-argument
+def enter_sleep_mode(config=None) -> bool:
+    """Get the name of the console for a given board."""
+    cmd = [
+        'dut-control',
+        'fpmcu_slp_alt:on',
+    ]
+    logging.debug('Running command: "%s"', ' '.join(cmd))
+    subprocess.run(cmd).check_returncode()  # pylint: disable=subprocess-run-check
+    return True
+
+
 class ImageType(Enum):
     """EC Image type to use for the test."""
 
@@ -160,6 +253,10 @@ class TestConfig:
     passed: bool = field(init=False, default=False)
     num_passes: int = field(init=False, default=0)
     num_fails: int = field(init=False, default=0)
+    pre_test_callback: Callable = field(init=True, default=None)
+    post_test_callback: Callable = field(init=True, default=None)
+    use_app_image: bool = field(init=True, default=False)
+
 
     def __post_init__(self):
         if self.finish_regexes is None:
@@ -281,6 +378,23 @@ class AllTests:
             TestConfig(test_name="timer_dos"),
             TestConfig(test_name="utils", timeout_secs=20),
             TestConfig(test_name="utils_str"),
+            TestConfig(
+                config_name="power_utilization_idle",
+                test_name="power_utilization",
+                image_to_use=ImageType.RW,
+                toggle_power=True,
+                post_test_callback=verify_idle_power_utilization,
+                use_app_image=True,
+                finish_regexes=[re.compile(r".*RW verify OK.*")]),
+            TestConfig(
+                config_name="power_utilization_sleep",
+                test_name="power_utilization",
+                image_to_use=ImageType.RW,
+                toggle_power=True,
+                pre_test_callback=enter_sleep_mode,
+                post_test_callback=verify_sleep_power_utilization,
+                use_app_image=True,
+                finish_regexes=[re.compile(r".*RW verify OK.*")]),
         ]
 
         if board_config.name == BLOONCHIPPER:
@@ -475,6 +589,14 @@ def power(board_config: BoardConfig, on: bool) -> None:
     ).check_returncode()  # pylint: disable=subprocess-run-check
 
 
+def reboot(board_config: BoardConfig) -> None:
+    """Reboots the boards."""
+    logging.debug("rebooting board")
+    power(board_config, on=False)
+    time.sleep(1)
+    power(board_config, on=True)
+
+
 def hw_write_protect(enable: bool) -> None:
     """Enable/disable hardware write protect."""
     if enable:
@@ -492,7 +614,7 @@ def hw_write_protect(enable: bool) -> None:
     ).check_returncode()  # pylint: disable=subprocess-run-check
 
 
-def build(test_name: str, board_name: str, compiler: str) -> None:
+def build(test_name: str, board_name: str, compiler: str, use_app_image=False) -> None:
     """Build specified test for specified board."""
     cmd = ["make"]
 
@@ -501,9 +623,15 @@ def build(test_name: str, board_name: str, compiler: str) -> None:
 
     cmd = cmd + [
         "BOARD=" + board_name,
-        "test-" + test_name,
         "-j",
     ]
+
+    # The use_app_image flag indicates that the test requires a standard image
+    # rather than a test image, so the test- prefix should not be applied
+    if not use_app_image:
+        cmd = cmd + [
+            'test-' + test_name,
+        ]
 
     logging.debug('Running command: "%s"', " ".join(cmd))
     subprocess.run(
@@ -598,7 +726,10 @@ def process_console_output_line(line: bytes, test: TestConfig):
 
 
 def run_test(
-    test: TestConfig, console: io.FileIO, executor: ThreadPoolExecutor
+    test: TestConfig,
+    build_board: str,
+    console: io.FileIO,
+    executor: ThreadPoolExecutor
 ) -> bool:
     """Run specified test."""
     start = time.time()
@@ -610,8 +741,16 @@ def run_test(
         console.write("reboot ro\n".encode())
         time.sleep(1)
 
-    test_cmd = "runtest " + " ".join(test.test_args) + "\n"
-    console.write(test_cmd.encode())
+    # Skip runtest if using standard app image
+    if not test.use_app_image:
+        test_cmd = "runtest " + " ".join(test.test_args) + "\n"
+        console.write(test_cmd.encode())
+
+    if callable(test.pre_test_callback):
+        logging.debug('running pre_test_callback: %s', test.pre_test_callback.__name__)
+        pre_cb_passed = test.pre_test_callback(build_board)
+    else:
+        pre_cb_passed = True
 
     while True:
         console.flush()
@@ -643,7 +782,14 @@ def run_test(
                 for line in lines:
                     process_console_output_line(line, test)
 
-                return test.num_fails == 0
+                if callable(test.post_test_callback):
+                    logging.debug('running post_test_callback: %s',
+                                  test.post_test_callback.__name__)
+                    post_cb_passed = test.post_test_callback(build_board)
+                else:
+                    post_cb_passed = True
+
+                return pre_cb_passed and test.num_fails == 0 and post_cb_passed
 
 
 def get_test_list(config: BoardConfig, test_args) -> List[TestConfig]:
@@ -682,11 +828,18 @@ def flash_and_run_test(
         build_board = test.build_board
 
     # build test binary
-    build(test.test_name, build_board, args.compiler)
+    build(test.test_name, build_board, args.compiler, use_app_image=test.use_app_image)
 
-    image_path = os.path.join(
-        EC_DIR, "build", build_board, test.test_name, test.test_name + ".bin"
-    )
+    if test.use_app_image:
+        image_path = os.path.join(
+            EC_DIR, "build", build_board, "ec.bin"
+        )
+    else:
+        image_path = os.path.join(EC_DIR, 'build',
+                                  build_board,
+                                  test.test_name,
+                                  test.test_name + '.bin')
+    logging.debug('image_path: %s', image_path)
 
     if test.ro_image is not None:
         try:
@@ -695,6 +848,7 @@ def flash_and_run_test(
             logging.warning(
                 "An exception occurred while patching " "image: %s", exception
             )
+            test.passed = False
             return False
 
     # flash test binary
@@ -717,9 +871,7 @@ def flash_and_run_test(
         return False
 
     if test.toggle_power:
-        power(board_config, on=False)
-        time.sleep(1)
-        power(board_config, on=True)
+        reboot(board_config)
 
     hw_write_protect(test.enable_hw_write_protect)
 
@@ -736,7 +888,7 @@ def flash_and_run_test(
                 open(get_console(board_config), "wb+", buffering=0)
             )
 
-        return run_test(test, console, executor=executor)
+        return run_test(test, build_board, console, executor=executor)
 
 
 def parse_remote_arg(remote: str) -> str:
