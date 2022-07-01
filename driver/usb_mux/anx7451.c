@@ -46,12 +46,12 @@ static int anx7451_power_off(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
-static int anx7451_wake_up(const struct usb_mux *me)
+static int anx7451_wake_up(const struct usb_mux *me, int port)
 {
 	timestamp_t start;
 	int rv;
 	int val;
-	uint16_t usb_i2c_addr = board_anx7451_get_usb_i2c_addr(me);
+	uint16_t usb_i2c_addr = board_anx7451_get_usb_i2c_addr(me, port);
 
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		return EC_ERROR_NOT_POWERED;
@@ -88,8 +88,8 @@ static int anx7451_wake_up(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
-static int anx7451_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required)
+static int anx7451_set_mux(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required)
 {
 	int reg;
 
@@ -108,7 +108,7 @@ static int anx7451_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	if (!(mux_state & (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED)))
 		return anx7451_power_off(me);
 
-	RETURN_ERROR(anx7451_wake_up(me));
+	RETURN_ERROR(anx7451_wake_up(me, port));
 
 	/* ULP_CFG_MODE_EN overrides pin control. Always set it */
 	reg = ANX7451_ULP_CFG_MODE_EN;
@@ -122,7 +122,8 @@ static int anx7451_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	return anx7451_write(me, ANX7451_REG_ULP_CFG_MODE, reg);
 }
 
-static int anx7451_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int anx7451_get_mux(const struct usb_mux *me, int port,
+			   mux_state_t *mux_state)
 {
 	int reg;
 
@@ -130,7 +131,7 @@ static int anx7451_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		return USB_PD_MUX_NONE;
 
-	RETURN_ERROR(anx7451_wake_up(me));
+	RETURN_ERROR(anx7451_wake_up(me, port));
 
 	*mux_state = 0;
 	RETURN_ERROR(anx7451_read(me, ANX7451_REG_ULP_CFG_MODE, &reg));

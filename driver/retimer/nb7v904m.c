@@ -50,13 +50,13 @@ static int set_low_power_mode(const struct usb_mux *me, bool enable)
 	return nb7v904m_write(me, NB7V904M_REG_GEN_DEV_SETTINGS, regval);
 }
 
-static int nb7v904m_enter_low_power_mode(const struct usb_mux *me)
+static int nb7v904m_enter_low_power_mode(const struct usb_mux *me, int port)
 {
 	int rv = set_low_power_mode(me, 1);
 
 	if (rv)
-		CPRINTS("C%d: NB7V904M: Failed to enter low power mode!",
-			me->usb_port);
+		CPRINTS("C%d: NB7V904M: Failed to enter low power mode!", port);
+
 	return rv;
 }
 
@@ -133,17 +133,17 @@ int nb7v904m_set_aux_ch_switch(const struct usb_mux *me, uint8_t aux_ch)
 	return rv;
 }
 
-static int nb7v904m_init(const struct usb_mux *me)
+static int nb7v904m_init(const struct usb_mux *me, int port)
 {
 	int rv = set_low_power_mode(me, 0);
 
 	if (rv)
-		CPRINTS("C%d: NB7V904M: init failed!", me->usb_port);
+		CPRINTS("C%d: NB7V904M: init failed!", port);
 	return rv;
 }
 
-static int nb7v904m_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			    bool *ack_required)
+static int nb7v904m_set_mux(const struct usb_mux *me, int port,
+			    mux_state_t mux_state, bool *ack_required)
 {
 	int rv = EC_SUCCESS;
 	int regval;
@@ -154,16 +154,16 @@ static int nb7v904m_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 
 	/* Turn off redriver if it's not needed at all. */
 	if (mux_state == USB_PD_MUX_NONE)
-		return nb7v904m_enter_low_power_mode(me);
+		return nb7v904m_enter_low_power_mode(me, port);
 
-	rv = nb7v904m_init(me);
+	rv = nb7v904m_init(me, port);
 	if (rv)
 		return rv;
 
 	/* Clear operation mode field */
 	rv = nb7v904m_read(me, NB7V904M_REG_GEN_DEV_SETTINGS, &regval);
 	if (rv) {
-		CPRINTS("C%d %s: Failed to obtain dev settings!", me->usb_port,
+		CPRINTS("C%d %s: Failed to obtain dev settings!", port,
 			__func__);
 		return rv;
 	}
@@ -211,7 +211,7 @@ static int nb7v904m_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 
 	rv |= nb7v904m_write(me, NB7V904M_REG_GEN_DEV_SETTINGS, regval);
 	if (rv)
-		CPRINTS("C%d: %s failed!", me->usb_port, __func__);
+		CPRINTS("C%d: %s failed!", port, __func__);
 
 	return rv;
 }

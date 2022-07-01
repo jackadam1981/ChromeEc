@@ -48,7 +48,7 @@ int ps8822_set_dp_rx_eq(const struct usb_mux *me, int db)
 	return ps8822_write(me, PS8822_REG_PAGE1, PS8822_REG_DP_EQ, dpeq_reg);
 }
 
-static int ps8822_init(const struct usb_mux *me)
+static int ps8822_init(const struct usb_mux *me, int port)
 {
 	char id[PS8822_ID_LEN + 1];
 	int reg;
@@ -74,8 +74,8 @@ static int ps8822_init(const struct usb_mux *me)
 }
 
 /* Writes control register to set switch mode */
-static int ps8822_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			  bool *ack_required)
+static int ps8822_set_mux(const struct usb_mux *me, int port,
+			  mux_state_t mux_state, bool *ack_required)
 {
 	int reg;
 	int rv;
@@ -101,7 +101,8 @@ static int ps8822_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 }
 
 /* Reads control register and updates mux_state accordingly */
-static int ps8822_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int ps8822_get_mux(const struct usb_mux *me, int port,
+			  mux_state_t *mux_state)
 {
 	int reg;
 	int res;

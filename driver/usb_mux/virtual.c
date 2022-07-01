@@ -62,7 +62,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state,
 		*ack_required = true;
 }
 
-static int virtual_init(const struct usb_mux *me)
+static int virtual_init(const struct usb_mux *me, int port)
 {
 	return EC_SUCCESS;
 }
@@ -71,10 +71,9 @@ static int virtual_init(const struct usb_mux *me)
  * Set the state of our 'virtual' mux. The EC does not actually control this
  * mux, so update the desired state, then notify the host of the update.
  */
-static int virtual_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required)
+static int virtual_set_mux(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required)
 {
-	int port = me->usb_port;
 	mux_state_t new_mux_state;
 
 	/*
@@ -98,20 +97,17 @@ static int virtual_set_mux(const struct usb_mux *me, mux_state_t mux_state,
  * control this mux, and the EC has no way of knowing its actual status,
  * we return the desired state here.
  */
-static int virtual_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int virtual_get_mux(const struct usb_mux *me, int port,
+			   mux_state_t *mux_state)
 {
-	int port = me->usb_port;
-
 	*mux_state = virtual_mux_state[port];
 
 	return EC_SUCCESS;
 }
 
-void virtual_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
-			bool *ack_required)
+void virtual_hpd_update(const struct usb_mux *me, int port,
+			mux_state_t mux_state, bool *ack_required)
 {
-	int port = me->usb_port;
-
 	/* Current HPD related mux status + existing USB & DP mux status */
 	mux_state_t new_mux_state =
 		mux_state | (virtual_mux_state[port] & USB_PD_MUX_USB_DP_STATE);

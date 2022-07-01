@@ -48,7 +48,7 @@ static const struct mux_chip_id_t mux_chip_id_verify[] = {
 	{ '5', IT5205_REG_CHIP_ID0 },
 };
 
-static int it5205_init(const struct usb_mux *me)
+static int it5205_init(const struct usb_mux *me, int port)
 {
 	int i, val, ret;
 
@@ -91,8 +91,8 @@ enum ec_error_list it5205h_enable_csbu_switch(const struct usb_mux *me, bool en)
 }
 
 /* Writes control register to set switch mode */
-static int it5205_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			  bool *ack_required)
+static int it5205_set_mux(const struct usb_mux *me, int port,
+			  mux_state_t mux_state, bool *ack_required)
 {
 	uint8_t reg;
 
@@ -121,7 +121,8 @@ static int it5205_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 }
 
 /* Reads control register and updates mux_state accordingly */
-static int it5205_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int it5205_get_mux(const struct usb_mux *me, int port,
+			  mux_state_t *mux_state)
 {
 	int reg, ret;
 
@@ -150,7 +151,7 @@ static int it5205_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 	return EC_SUCCESS;
 }
 
-static int it5205_enter_low_power_mode(const struct usb_mux *me)
+static int it5205_enter_low_power_mode(const struct usb_mux *me, int port)
 {
 	int rv;
 

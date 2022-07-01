@@ -62,7 +62,7 @@ int ps8743_check_chip_id(const struct usb_mux *me, int *val)
 	return EC_SUCCESS;
 }
 
-static int ps8743_init(const struct usb_mux *me)
+static int ps8743_init(const struct usb_mux *me, int port)
 {
 	int id1;
 	int id2;
@@ -111,8 +111,8 @@ static int ps8743_init(const struct usb_mux *me)
 }
 
 /* Writes control register to set switch mode */
-static int ps8743_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			  bool *ack_required)
+static int ps8743_set_mux(const struct usb_mux *me, int port,
+			  mux_state_t mux_state, bool *ack_required)
 {
 	/*
 	 * For CE_DP, CE_USB, and FLIP, disable pin control and enable I2C
@@ -128,7 +128,7 @@ static int ps8743_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	if (mux_state & USB_PD_MUX_USB_ENABLED)
 		reg |= PS8743_MODE_USB_ENABLE;
 	else
-		saved_usb_conn_status[me->usb_port] = NO_DEVICE;
+		saved_usb_conn_status[port] = NO_DEVICE;
 
 	if (mux_state & USB_PD_MUX_DP_ENABLED)
 		reg |= PS8743_MODE_DP_ENABLE | PS8743_MODE_IN_HPD_ASSERT;
@@ -139,7 +139,8 @@ static int ps8743_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 }
 
 /* Reads control register and updates mux_state accordingly */
-static int ps8743_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int ps8743_get_mux(const struct usb_mux *me, int port,
+			  mux_state_t *mux_state)
 {
 	int reg;
 	int res;

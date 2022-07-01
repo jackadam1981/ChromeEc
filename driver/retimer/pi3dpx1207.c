@@ -61,9 +61,8 @@ static int pi3dpx1207_i2c_write(const struct usb_mux *me, uint8_t offset,
 	return rv;
 }
 
-static void pi3dpx1207_shutoff_power(const struct usb_mux *me)
+static void pi3dpx1207_shutoff_power(const struct usb_mux *me, int port)
 {
-	const int port = me->usb_port;
 	const int gpio_enable = pi3dpx1207_controls[port].enable_gpio;
 	const int gpio_dp_enable = pi3dpx1207_controls[port].dp_enable_gpio;
 
@@ -74,27 +73,25 @@ static void pi3dpx1207_shutoff_power(const struct usb_mux *me)
 /**
  * Driver interface code
  */
-static int pi3dpx1207_init(const struct usb_mux *me)
+static int pi3dpx1207_init(const struct usb_mux *me, int port)
 {
-	const int port = me->usb_port;
 	const int gpio_enable = pi3dpx1207_controls[port].enable_gpio;
 
 	gpio_or_ioex_set_level(gpio_enable, 1);
 	return EC_SUCCESS;
 }
 
-static int pi3dpx1207_enter_low_power_mode(const struct usb_mux *me)
+static int pi3dpx1207_enter_low_power_mode(const struct usb_mux *me, int port)
 {
-	pi3dpx1207_shutoff_power(me);
+	pi3dpx1207_shutoff_power(me, port);
 	return EC_SUCCESS;
 }
 
-static int pi3dpx1207_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			      bool *ack_required)
+static int pi3dpx1207_set_mux(const struct usb_mux *me, int port,
+			      mux_state_t mux_state, bool *ack_required)
 {
 	int rv = EC_SUCCESS;
 	uint8_t mode_val = PI3DPX1207_MODE_WATCHDOG_EN;
-	const int port = me->usb_port;
 	const int gpio_enable = pi3dpx1207_controls[port].enable_gpio;
 	const int gpio_dp_enable = pi3dpx1207_controls[port].dp_enable_gpio;
 
@@ -129,7 +126,7 @@ static int pi3dpx1207_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	}
 	/* Nothing enabled, power down the retimer */
 	else {
-		pi3dpx1207_shutoff_power(me);
+		pi3dpx1207_shutoff_power(me, port);
 		return EC_SUCCESS;
 	}
 

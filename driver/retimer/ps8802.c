@@ -159,7 +159,7 @@ int ps8802_i2c_wake(const struct usb_mux *me)
 /*
  * Setting operation mode to standby mode
  */
-static int ps8802_enter_low_power_mode(const struct usb_mux *me)
+static int ps8802_enter_low_power_mode(const struct usb_mux *me, int port)
 {
 	int rv;
 
@@ -167,20 +167,19 @@ static int ps8802_enter_low_power_mode(const struct usb_mux *me)
 			      PS8802_MODE_STANDBY_MODE);
 
 	if (rv)
-		CPRINTS("C%d: PS8802: Failed to enter low power mode!",
-			me->usb_port);
+		CPRINTS("C%d: PS8802: Failed to enter low power mode!", port);
 
 	return rv;
 }
 
-static int ps8802_init(const struct usb_mux *me)
+static int ps8802_init(const struct usb_mux *me, int port)
 {
-	ps8802_enter_low_power_mode(me);
+	ps8802_enter_low_power_mode(me, port);
 	return EC_SUCCESS;
 }
 
-static int ps8802_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			  bool *ack_required)
+static int ps8802_set_mux(const struct usb_mux *me, int port,
+			  mux_state_t mux_state, bool *ack_required)
 {
 	int val;
 	int rv;
@@ -198,8 +197,7 @@ static int ps8802_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 		return rv;
 
 	if (PS8802_DEBUG)
-		ccprintf("%s(%d, 0x%02X) %s %s %s\n", __func__, me->usb_port,
-			 mux_state,
+		ccprintf("%s(%d, 0x%02X) %s %s %s\n", __func__, port, mux_state,
 			 (mux_state & USB_PD_MUX_USB_ENABLED) ? "USB" : "",
 			 (mux_state & USB_PD_MUX_DP_ENABLED) ? "DP" : "",
 			 (mux_state & USB_PD_MUX_POLARITY_INVERTED) ? "FLIP" :
@@ -221,7 +219,8 @@ static int ps8802_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	return rv;
 }
 
-static int ps8802_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int ps8802_get_mux(const struct usb_mux *me, int port,
+			  mux_state_t *mux_state)
 {
 	int rv;
 	int val;

@@ -22,7 +22,7 @@ int ps8740_write(const struct usb_mux *me, uint8_t reg, uint8_t val)
 	return i2c_write8(me->i2c_port, me->i2c_addr_flags, reg, val);
 }
 
-static int ps8740_init(const struct usb_mux *me)
+static int ps8740_init(const struct usb_mux *me, int port)
 {
 	int id1;
 	int id2;
@@ -68,8 +68,8 @@ static int ps8740_init(const struct usb_mux *me)
 }
 
 /* Writes control register to set switch mode */
-static int ps8740_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			  bool *ack_required)
+static int ps8740_set_mux(const struct usb_mux *me, int port,
+			  mux_state_t mux_state, bool *ack_required)
 {
 	uint8_t reg = 0;
 
@@ -87,7 +87,8 @@ static int ps8740_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 }
 
 /* Reads control register and updates mux_state accordingly */
-static int ps8740_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int ps8740_get_mux(const struct usb_mux *me, int port,
+			  mux_state_t *mux_state)
 {
 	int reg;
 	int res;
