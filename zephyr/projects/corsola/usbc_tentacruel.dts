@@ -29,9 +29,6 @@
 				status = "okay";
 				port = <&i2c_charger>;
 			};
-			usb-muxes = <&it5205_mux_0 &virtual_mux_0>;
-		};
-		port0-muxes {
 			it5205_mux_0: it5205-mux-0 {
 				compatible = "ite,it5205";
 				port = <&i2c_usb_mux0>;
@@ -39,6 +36,10 @@
 			};
 			virtual_mux_0: virtual-mux-0 {
 				compatible = "cros-ec,usbc-mux-virtual";
+			};
+			usb-mux-chain-0 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&it5205_mux_0 &virtual_mux_0>;
 			};
 		};
 
@@ -60,9 +61,6 @@
 			tcpc {
 				compatible = "ite,it8xxx2-tcpc";
 			};
-			usb-muxes = <&ps8743_mux_1 &virtual_mux_1>;
-		};
-		port1-muxes {
 			ps8743_mux_1: ps8743-mux-1 {
 				compatible = "parade,ps8743";
 				port = <&i2c_usb_mux1>;
@@ -70,6 +68,10 @@
 			};
 			virtual_mux_1: virtual-mux-1 {
 				compatible = "cros-ec,usbc-mux-virtual";
+			};
+			usb-mux-chain-1 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&ps8743_mux_1 &virtual_mux_1>;
 			};
 		};
 	};

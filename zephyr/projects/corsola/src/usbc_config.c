@@ -253,6 +253,11 @@ static void baseboard_x_ec_gpio2_init(void)
 	static struct ppc_drv virtual_ppc_drv = { 0 };
 	static struct tcpm_drv virtual_tcpc_drv = { 0 };
 	static struct bc12_drv virtual_bc12_drv = { 0 };
+	static struct usb_mux virtual_usb_mux = {
+		.usb_port = USBC_PORT_C1,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+	};
 
 	/* type-c: USB_C1_PPC_INT_ODL / hdmi: PS185_EC_DP_HPD */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_x_ec_gpio2));
@@ -279,11 +284,8 @@ static void baseboard_x_ec_gpio2_init(void)
 	bc12_ports[USBC_PORT_C1] =
 		(const struct bc12_config){ .drv = &virtual_bc12_drv };
 	/* Use virtual mux to notify AP the mainlink direction. */
-	usb_muxes[USBC_PORT_C1] = (struct usb_mux){
-		.usb_port = USBC_PORT_C1,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-	};
+	usb_muxes[USBC_PORT_C1].mux = &virtual_usb_mux;
+	usb_muxes[USBC_PORT_C1].next = NULL;
 
 	/*
 	 * If a HDMI DB is attached, C1 port tasks will be exiting in that
