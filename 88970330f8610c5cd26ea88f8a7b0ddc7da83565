@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeafc6b1_242891c2",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-01T04:06:41Z",
+      "side": 1,
+      "message": "Unless there are specific references in legacy code that is included with any Zephyr boards, can we remove any unused enum-names here?",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "88970330f8610c5cd26ea88f8a7b0ddc7da83565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
