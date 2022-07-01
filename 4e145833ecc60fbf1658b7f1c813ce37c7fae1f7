@@ -22,6 +22,30 @@
       },
       "revId": "4e145833ecc60fbf1658b7f1c813ce37c7fae1f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7121a632_669218d1",
+        "filename": "zephyr/projects/corsola/gpio_steelix.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-07-01T07:28:15Z",
+      "side": 1,
+      "message": "Hi Andrew, thanks for your suggestion, submit CL:3739989 and CL:3739990.",
+      "parentUuid": "029ec262_7d2d3e03",
+      "range": {
+        "startLine": 87,
+        "startChar": 16,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "4e145833ecc60fbf1658b7f1c813ce37c7fae1f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
