@@ -182,10 +182,10 @@ static inline bool ec_config_has_hdmi_conn_hpd(void)
 	 (ec_config_has_usbc1_retimer_ps8743()) ? GPIO_DP1_HPD :    \
 						  GPIO_DP2_HPD)
 
-extern const struct usb_mux usbc1_tusb544;
-extern const struct usb_mux usbc1_ps8818;
-extern const struct usb_mux usbc1_ps8743;
-extern struct usb_mux usbc1_amd_fp5_usb_mux;
+extern const struct usb_mux_chain usbc1_tusb544;
+extern const struct usb_mux_chain usbc1_ps8818;
+extern const struct usb_mux_chain usbc1_ps8743;
+extern struct usb_mux_chain usbc1_amd_fp5_usb_mux;
 
 void motion_interrupt(enum gpio_signal signal);
 void hdmi_hpd_interrupt(enum gpio_signal signal);

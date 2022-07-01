@@ -830,8 +830,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pen_charge_check, HOOK_PRIO_LAST);
 static void setup_mux(void)
 {
 	if (get_cbi_ssfc_usb_mux() == SSFC_USBMUX_PS8743) {
-		usb_muxes[USBC_PORT_C1].i2c_addr_flags = PS8743_I2C_ADDR0_FLAG;
-		usb_muxes[USBC_PORT_C1].driver = &ps8743_usb_mux_driver;
+		usb_muxes[USBC_PORT_C1].mux->i2c_addr_flags =
+			PS8743_I2C_ADDR0_FLAG;
+		usb_muxes[USBC_PORT_C1].mux->driver = &ps8743_usb_mux_driver;
 		ccprints("PS8743 USB MUX");
 	} else
 		ccprints("PS8762 USB MUX");
@@ -1026,18 +1027,22 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USBC_PORT_C0] = {
-		.usb_port = 0,
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
-		.driver = &pi3usb3x532_usb_mux_driver,
+		.mux = &(struct usb_mux) {
+			.usb_port = 0,
+			.i2c_port = I2C_PORT_USB_C0,
+			.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
+			.driver = &pi3usb3x532_usb_mux_driver,
+		},
 	},
 	[USBC_PORT_C1] = {
-		.usb_port = 1,
-		.i2c_port = I2C_PORT_SUB_USB_C1,
-		.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS_CUSTOM,
-		.driver = &ps8802_usb_mux_driver,
+		.mux = &(struct usb_mux) {
+			.usb_port = 1,
+			.i2c_port = I2C_PORT_SUB_USB_C1,
+			.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS_CUSTOM,
+			.driver = &ps8802_usb_mux_driver,
+		},
 	}
 };
 

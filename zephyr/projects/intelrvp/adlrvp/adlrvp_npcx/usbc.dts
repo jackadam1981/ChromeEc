@@ -21,9 +21,6 @@
 				status = "okay";
 				port = <&i2c_charger>;
 			};
-			usb-muxes = <&usb_c0_bb_retimer &virtual_mux_c0>;
-		};
-		port0-muxes {
 			usb_c0_bb_retimer: jhl8040r-c0 {
 				compatible = "intel,jhl8040r";
 				port = <&typec_0>;
@@ -35,6 +32,10 @@
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
+		usb-mux-chain-0 {
+			compatible = "cros-ec,usb-mux-chain";
+			usb-muxes = <&usb_c0_bb_retimer &virtual_mux_c0>;
+		};
 
 		usbc_port1: port1@1 {
 			compatible = "named-usbc-port";
@@ -45,9 +46,6 @@
 				port = <&typec_1>;
 				i2c-addr-flags = "FUSB302_I2C_ADDR_FLAGS";
 			};
-			usb-muxes = <&usb_c1_bb_retimer &virtual_mux_c1>;
-		};
-		port1-muxes {
 			usb_c1_bb_retimer: jhl8040r-c1 {
 				compatible = "intel,jhl8040r";
 				port = <&typec_1>;
@@ -59,6 +57,10 @@
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
+		usb-mux-chain-1 {
+			compatible = "cros-ec,usb-mux-chain";
+			usb-muxes = <&usb_c1_bb_retimer &virtual_mux_c1>;
+		};
 
 		port2@2 {
 			compatible = "named-usbc-port";
@@ -69,9 +71,6 @@
 				port = <&typec_2>;
 				i2c-addr-flags = "FUSB302_I2C_ADDR_FLAGS";
 			};
-			usb-muxes = <&usb_c2_bb_retimer &virtual_mux_c2>;
-		};
-		port2-muxes {
 			usb_c2_bb_retimer: jhl8040r-c2 {
 				compatible = "intel,jhl8040r";
 				port = <&typec_2>;
@@ -83,6 +82,10 @@
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
+		usb-mux-chain-2 {
+			compatible = "cros-ec,usb-mux-chain";
+			usb-muxes = <&usb_c2_bb_retimer &virtual_mux_c2>;
+		};
 
 		port3@3 {
 			compatible = "named-usbc-port";
@@ -93,9 +96,6 @@
 				port = <&typec_3>;
 				i2c-addr-flags = "FUSB302_I2C_ADDR_FLAGS";
 			};
-			usb-muxes = <&usb_c3_bb_retimer &virtual_mux_c3>;
-		};
-		port3-muxes {
 			usb_c3_bb_retimer: jhl8040r-c3 {
 				compatible = "intel,jhl8040r";
 				port = <&typec_3>;
@@ -106,6 +106,10 @@
 			virtual_mux_c3: virtual-mux-c3 {
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
+		};
+		usb-mux-chain-3 {
+			compatible = "cros-ec,usb-mux-chain";
+			usb-muxes = <&usb_c3_bb_retimer &virtual_mux_c3>;
 		};
 	};
 };

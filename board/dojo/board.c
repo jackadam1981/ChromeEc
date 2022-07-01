@@ -119,20 +119,20 @@ static struct kionix_accel_data g_kx022_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
 static const mat33_fp_t base_standard_ref = { { 0, FLOAT_TO_FP(-1), 0 },
-						{ FLOAT_TO_FP(1), 0, 0 },
-						{ 0, 0, FLOAT_TO_FP(1) } };
+					      { FLOAT_TO_FP(1), 0, 0 },
+					      { 0, 0, FLOAT_TO_FP(1) } };
 
 static const mat33_fp_t lid_standard_ref = { { FLOAT_TO_FP(1), 0, 0 },
 					     { 0, FLOAT_TO_FP(-1), 0 },
 					     { 0, 0, FLOAT_TO_FP(-1) } };
 
 static const mat33_fp_t icm42607_standard_ref = { { FLOAT_TO_FP(-1), 0, 0 },
-					      { 0, FLOAT_TO_FP(-1), 0 },
-					      { 0, 0, FLOAT_TO_FP(1) } };
+						  { 0, FLOAT_TO_FP(-1), 0 },
+						  { 0, 0, FLOAT_TO_FP(1) } };
 
 static const mat33_fp_t icm426xx_standard_ref = { { FLOAT_TO_FP(-1), 0, 0 },
-					      { 0, FLOAT_TO_FP(-1), 0 },
-					      { 0, 0, FLOAT_TO_FP(1) } };
+						  { 0, FLOAT_TO_FP(-1), 0 },
+						  { 0, 0, FLOAT_TO_FP(1) } };
 
 struct motion_sensor_t motion_sensors[] = {
 	/*
@@ -417,26 +417,32 @@ static int board_anx3443_mux_set(const struct usb_mux *me,
 	return EC_SUCCESS;
 }
 
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.usb_port = 0,
-		.i2c_port = I2C_PORT_USB_MUX0,
-		.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
-		.driver = &ps8802_usb_mux_driver,
-		.board_init = &board_ps8762_mux_init,
-		.board_set = &board_ps8762_mux_set,
+		.mux =
+			&(struct usb_mux){
+				.usb_port = 0,
+				.i2c_port = I2C_PORT_USB_MUX0,
+				.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
+				.driver = &ps8802_usb_mux_driver,
+				.board_init = &board_ps8762_mux_init,
+				.board_set = &board_ps8762_mux_set,
+			},
 	},
 	{
-		.usb_port = 1,
-		.i2c_port = I2C_PORT_USB_MUX1,
-		.i2c_addr_flags = ANX3443_I2C_ADDR0_FLAGS,
-		.driver = &anx3443_usb_mux_driver,
-		.board_set = &board_anx3443_mux_set,
+		.mux =
+			&(struct usb_mux){
+				.usb_port = 1,
+				.i2c_port = I2C_PORT_USB_MUX1,
+				.i2c_addr_flags = ANX3443_I2C_ADDR0_FLAGS,
+				.driver = &anx3443_usb_mux_driver,
+				.board_set = &board_anx3443_mux_set,
+			},
 	},
 };
 
-void board_set_charge_limit(int port, int supplier, int charge_ma,
-			    int max_ma, int charge_mv)
+void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
+			    int charge_mv)
 {
 	/* Limit input current lower than 2944 mA for safety */
 	charge_ma = MIN(charge_ma, 2944);

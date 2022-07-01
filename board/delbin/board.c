@@ -66,21 +66,21 @@ __override struct key {
 	uint8_t row;
 	uint8_t col;
 } vivaldi_keys[] = {
-	{.row = 0, .col = 2},	/* T1 */
-	{.row = 3, .col = 2},	/* T2 */
-	{.row = 2, .col = 2},	/* T3 */
-	{.row = 1, .col = 2},	/* T4 */
-	{.row = 3, .col = 4},	/* T5 */
-	{.row = 2, .col = 4},	/* T6 */
-	{.row = 1, .col = 4},	/* T7 */
-	{.row = 2, .col = 9},	/* T8 */
-	{.row = 1, .col = 9},	/* T9 */
-	{.row = 0, .col = 4},	/* T10 */
-	{.row = 0, .col = 1},	/* T11 */
-	{.row = 1, .col = 5},	/* T12 */
-	{.row = 3, .col = 5},	/* T13 */
-	{.row = 0, .col = 9},	/* T14 */
-	{.row = 0, .col = 11},	/* T15 */
+	{ .row = 0, .col = 2 }, /* T1 */
+	{ .row = 3, .col = 2 }, /* T2 */
+	{ .row = 2, .col = 2 }, /* T3 */
+	{ .row = 1, .col = 2 }, /* T4 */
+	{ .row = 3, .col = 4 }, /* T5 */
+	{ .row = 2, .col = 4 }, /* T6 */
+	{ .row = 1, .col = 4 }, /* T7 */
+	{ .row = 2, .col = 9 }, /* T8 */
+	{ .row = 1, .col = 9 }, /* T9 */
+	{ .row = 0, .col = 4 }, /* T10 */
+	{ .row = 0, .col = 1 }, /* T11 */
+	{ .row = 1, .col = 5 }, /* T12 */
+	{ .row = 3, .col = 5 }, /* T13 */
+	{ .row = 0, .col = 9 }, /* T14 */
+	{ .row = 0, .col = 11 }, /* T15 */
 };
 BUILD_ASSERT(ARRAY_SIZE(vivaldi_keys) == MAX_TOP_ROW_KEYS);
 
@@ -483,32 +483,42 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
 
 /******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
-static const struct usb_mux usbc0_usb3_mb_retimer = {
-	.usb_port = USBC_PORT_C0,
-	.driver = &tcpci_tcpm_usb_mux_driver,
-	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-	.next_mux = NULL,
+static const struct usb_mux_chain usbc0_usb3_mb_retimer = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C0,
+			.driver = &tcpci_tcpm_usb_mux_driver,
+			.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		},
+	.next = NULL,
 };
 
-static const struct usb_mux usbc1_usb3_db_retimer = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &tcpci_tcpm_usb_mux_driver,
-	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-	.next_mux = NULL,
+static const struct usb_mux_chain usbc1_usb3_db_retimer = {
+	.mux =
+		&(struct usb_mux){
+			.usb_port = USBC_PORT_C1,
+			.driver = &tcpci_tcpm_usb_mux_driver,
+			.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		},
+	.next = NULL,
 };
 
-const struct usb_mux usb_muxes[] = {
+const struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc0_usb3_mb_retimer,
+		.mux = &(struct usb_mux) {
+			.usb_port = USBC_PORT_C0,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
+		.next = &usbc0_usb3_mb_retimer,
 	},
 	[USBC_PORT_C1] = {
-		.usb_port = USBC_PORT_C1,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc1_usb3_db_retimer,
+		.mux = &(struct usb_mux) {
+			.usb_port = USBC_PORT_C1,
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
+		.next = &usbc1_usb3_db_retimer,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
