@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46abb65_4387b9ff",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-01T13:41:05Z",
+      "side": 1,
+      "message": "Should it be a list of aliases, if multiple are required?\n\nThat would obsolete the `enum-name` property then too.",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "975ae37f_c75fac2c",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-01T13:41:05Z",
+      "side": 1,
+      "message": "format with `clang-format`",
+      "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75668f06_cfb07eea",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-01T13:41:05Z",
+      "side": 1,
+      "message": "Any chance we can combine these into our `enum gpio_signal`, so they have the same type as a gpio_signal?",
+      "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
