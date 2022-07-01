@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "810a1205_2f354067",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-01T18:49:03Z",
+      "side": 1,
+      "message": "I named it `debug` to match the `debug.c` and `debug.h` source files. I agree `debugger` might be a little clearer, but the general style of naming the tests in EC seems to be to have the test name match the source file names.",
+      "parentUuid": "700a420b_2331bbec",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "049cb6cd_9843f4b6",
@@ -108,6 +132,30 @@
       "writtenOn": "2022-07-01T18:44:43Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "ef804240_a18c39cc",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d20642_73a36d92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-01T18:49:03Z",
+      "side": 1,
+      "message": "I made that a separate commit since it [looks like it won\u0027t work without some more effort](https://crrev.com/c/3741075). For now I\u0027m not going to do anything more with that CL.",
       "parentUuid": "ef804240_a18c39cc",
       "range": {
         "startLine": 15,
@@ -215,6 +263,24 @@
       "side": 1,
       "message": "\u003e One thing that\u0027s somewhat confusing about  JLinkRemoteServerCLExe  (case 3) is that starting it does not actually establish a debug session\nYeah, that\u0027s actually what I like about it. I can leave it open and use JTAG when I want to and it\u0027s not connected when I don\u0027t. I had started using `JLinkRemoteServerCLExe` with an Ethernet connection after observing weird behavior with the USB connection, which I now believe is actually related to the unusual Voltage levels in my servos when the servo is running from the same source.\n\nI ran some additional test using `JLinkExe` and published the results below. I\u0027m definitely seeing the C_DEBUGEN held across power cycles of either the JTrace or the MCU but not both.\n* Test 4: Using JLinkExe\n    * Starting conditions: Servo unplugged, J-Trace connected, `JLinkExe` not running\n    * Plug in servo-micro\n    * Start `servod`\n    * Start `JLinkExe`\n    * Execute test with debugger: `test/run_device_tests.py --board bloonchipper --flasher servo_micro -t debug`\n    * Results: PASSED\n* Test 5: Kill JLinkExe\n    * Starting conditions: Immediately after previous test\n    * Kill `JLinkExe` with `Ctrl-C`\n    * Execute test with debugger: `test/run_device_tests.py -b bloonchipper --remote 127.0.0.1 --jlink_port 19020 -t debug`\n    * Results: PASSED (this indicates that `JLinkExe` did not clear C_DEBUGEN, even after rebooting MCU)\n* Test 6: Power cycle JTrace\n    * Starting conditions: Immediately after previous test\n    * Power cycle JTrace (MCU still powered via servo)\n    * Execute test with debugger: `test/run_device_tests.py -b bloonchipper --remote 127.0.0.1 --jlink_port 19020 -t debug`\n    * Results: PASSED (this indicates that `JLinkExe` did not clear C_DEBUGEN, even after rebooting JTrace)\n* Test 7: Power cycle JTrace\n    * Unplug servo, wait 5 seconds, plug servo back in\n    * Start `servod`\n    * Execute test with debugger: `test/run_device_tests.py -b bloonchipper --remote 127.0.0.1 --jlink_port 19020 -t debug`\n    * Results: FAILED (C_DEBUGEN cleared)",
       "parentUuid": "5f803d42_7c45ccf9",
+      "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab326124_c5e454fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-01T18:49:03Z",
+      "side": 1,
+      "message": "Yeah, the issue with `C_DEBUGEN` not being cleared is definitely a Segger bug: http://b/180945056. I\u0027m also seeing [different behavior on icetower vs dragonclaw](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3739316/2//COMMIT_MSG).\n\n\u003e which I now believe is actually related to the unusual Voltage levels in my servos when the servo is running from the same source.\n\nFWIW, in my setup I have JTrace and servo_micro plugged into a powered USB hub.",
+      "parentUuid": "010ae038_aa8b6eaa",
       "revId": "5313db5ab76493b3ef2a54407b219724d42dcbd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
