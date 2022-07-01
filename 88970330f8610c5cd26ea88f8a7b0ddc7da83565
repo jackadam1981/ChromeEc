@@ -70,6 +70,30 @@
       },
       "revId": "88970330f8610c5cd26ea88f8a7b0ddc7da83565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2138d0_5eca3ab1",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-07-01T14:27:51Z",
+      "side": 1,
+      "message": "Understood, then there\u0027s no reason for these enums. They were just gathered from whole source code. Feel free to remove them.",
+      "parentUuid": "110b3c5c_cf511633",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "88970330f8610c5cd26ea88f8a7b0ddc7da83565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
