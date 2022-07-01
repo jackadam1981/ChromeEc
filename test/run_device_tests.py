@@ -105,6 +105,50 @@ BLOONCHIPPER_V4277_IMAGE_PATH = os.path.join(
 BLOONCHIPPER_V5938_IMAGE_PATH = os.path.join(
     TEST_ASSETS_BUCKET, 'bloonchipper_v2.0.5938-197506c1.bin')
 
+def enter_sleep_mode() -> bool:
+    """Get the name of the console for a given board."""
+    cmd = [
+        'dut-control',
+        'fpmcu_slp_alt:on',
+    ]
+    logging.debug('Running command: "%s"', ' '.join(cmd))
+    subprocess.run(cmd).check_returncode()  # pylint: disable=subprocess-run-check
+    return True
+
+def verify_power_utilization(pp3300_dx_fp_mw_threshold: float,
+                             pp3300_dx_mcu_mw_threshold: float) -> bool:
+    """Get the name of the console for a given board."""
+    cmd = [
+        'dut-control',
+        'pp3300_dx_mcu_mw',
+        'pp3300_dx_fp_mw',
+    ]
+    logging.debug('Running command: "%s"', ' '.join(cmd))
+
+    pp3300_dx_fp_mw = None
+    pp3300_dx_mcu_mw = None
+    with subprocess.Popen(cmd, stdout=subprocess.PIPE) as proc:
+        for line in io.TextIOWrapper(proc.stdout):  # type: ignore[arg-type]
+            logging.debug(line)
+            response = line.split(':')
+            if len(response) == 2 and response[0] == 'pp3300_dx_fp_mw':
+                pp3300_dx_fp_mw = float(response[1].strip())
+            elif len(response) == 2 and response[0] == 'pp3300_dx_mcu_mw':
+                pp3300_dx_mcu_mw = float(response[1].strip())
+            if pp3300_dx_fp_mw is not None and pp3300_dx_mcu_mw is not None:
+                logging.info('verify: pp3300_dx_fp_mw (%0.2f mw) < %0.2f mw',
+                             pp3300_dx_fp_mw, pp3300_dx_fp_mw_threshold)
+                logging.info('verify: pp3300_dx_mcu_mw (%0.2f mw) < %0.2f mw',
+                             pp3300_dx_mcu_mw, pp3300_dx_mcu_mw_threshold)
+                return (pp3300_dx_fp_mw < pp3300_dx_fp_mw_threshold and
+                        pp3300_dx_mcu_mw < pp3300_dx_mcu_mw_threshold)
+    return False
+
+def verify_idle_power_utilization() -> bool:
+    return verify_power_utilization(0.1, 25.0)
+
+def verify_sleep_power_utilization() -> bool:
+    return verify_power_utilization(0.1, 2.5)
 
 class ImageType(Enum):
     """EC Image type to use for the test."""
@@ -134,7 +178,8 @@ class TestConfig:
                  finish_regexes=None, fail_regexes=None, toggle_power=False,
                  test_args=None, num_flash_attempts=2, timeout_secs=10,
                  enable_hw_write_protect=False, ro_image=None, build_board=None,
-                 config_name=None):
+                 config_name=None, pre_test_callback=None,
+                 post_test_callback=None, use_app_image=False):
         if test_args is None:
             test_args = []
         if finish_regexes is None:
@@ -161,7 +206,9 @@ class TestConfig:
         self.num_passes = 0
         self.ro_image = ro_image
         self.build_board = build_board
-
+        self.pre_test_callback = pre_test_callback
+        self.post_test_callback = post_test_callback
+        self.use_app_image = use_app_image
 
 # All possible tests.
 class AllTests:
@@ -224,6 +271,19 @@ class AllTests:
             TestConfig(test_name='timer_dos'),
             TestConfig(test_name='utils', timeout_secs=20),
             TestConfig(test_name='utils_str'),
+            TestConfig(test_name='power_utilization_idle',
+                       image_to_use=ImageType.RW,
+                       toggle_power=True,
+                       post_test_callback=verify_idle_power_utilization,
+                       use_app_image=True,
+                       finish_regexes=[re.compile(r'.*RW verify OK.*')]),
+            TestConfig(test_name='power_utilization_sleep',
+                       image_to_use=ImageType.RW,
+                       toggle_power=True,
+                       pre_test_callback=enter_sleep_mode,
+                       post_test_callback=verify_sleep_power_utilization,
+                       use_app_image=True,
+                       finish_regexes=[re.compile(r'.*RW verify OK.*')]),
         ]
 
         if board_config.name == BLOONCHIPPER:
@@ -425,7 +485,8 @@ def hw_write_protect(enable: bool) -> None:
     subprocess.run(cmd).check_returncode()  # pylint: disable=subprocess-run-check
 
 
-def build(test_name: str, board_name: str, compiler: str) -> None:
+def build(test_name: str, board_name: str, compiler: str,
+          use_app_image=False) -> None:
     """Build specified test for specified board."""
     cmd = ['make']
 
@@ -434,9 +495,13 @@ def build(test_name: str, board_name: str, compiler: str) -> None:
 
     cmd = cmd + [
         'BOARD=' + board_name,
-        'test-' + test_name,
         '-j',
     ]
+
+    if not use_app_image:
+        cmd = cmd + [
+            'test-' + test_name,
+        ]
 
     logging.debug('Running command: "%s"', ' '.join(cmd))
     subprocess.run(cmd).check_returncode()  # pylint: disable=subprocess-run-check
@@ -533,6 +598,13 @@ def run_test(test: TestConfig, console: io.FileIO,
     test_cmd = 'runtest ' + ' '.join(test.test_args) + '\n'
     console.write(test_cmd.encode())
 
+    if callable(test.pre_test_callback):
+        logging.debug('running pre_test_callback: %s',
+                      str(test.pre_test_callback))
+        pre_cb_passed = test.pre_test_callback()
+    else:
+        pre_cb_passed = True
+
     while True:
         console.flush()
         line = readline(executor, console, 1)
@@ -563,7 +635,14 @@ def run_test(test: TestConfig, console: io.FileIO,
                 for line in lines:
                     process_console_output_line(line, test)
 
-                return test.num_fails == 0
+                if callable(test.post_test_callback):
+                    logging.debug('running post_test_callback: %s',
+                                  str(test.post_test_callback))
+                    post_cb_passed = test.post_test_callback()
+                else:
+                    post_cb_passed = True
+
+                return pre_cb_passed and test.num_fails == 0 and post_cb_passed
 
 
 def get_test_list(config: BoardConfig, test_args) -> List[TestConfig]:
@@ -685,11 +764,17 @@ def main():
         if test.build_board is not None:
             build_board = test.build_board
 
-        # build test binary
-        build(test.test_name, build_board, args.compiler)
+        build(test.test_name, build_board,
+              args.compiler, use_app_image=test.use_app_image)
 
-        image_path = os.path.join(EC_DIR, 'build', build_board, test.test_name,
-                                  test.test_name + '.bin')
+        if test.use_app_image:
+            image_path = os.path.join(EC_DIR, 'build', build_board, 'ec.bin')
+        else:
+            # build test binary
+            image_path = os.path.join(EC_DIR, 'build',
+                                      build_board,
+                                      test.test_name,
+                                      test.test_name + '.bin')
 
         if test.ro_image is not None:
             try:
