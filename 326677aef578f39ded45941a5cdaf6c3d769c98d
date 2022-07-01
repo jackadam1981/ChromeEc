@@ -34,6 +34,24 @@
       "parentUuid": "675597f9_5d39552f",
       "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef7604c_6cba03da",
+        "filename": "zephyr/dts/bindings/usbc/mux/analogix,usbc-mux-anx7447.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-01T20:44:28Z",
+      "side": 1,
+      "message": "I don\u0027t see that one translating to an enum?  Unless I\u0027m mis-reading the yaml, which I could be",
+      "parentUuid": "4c184338_65a5a995",
+      "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
