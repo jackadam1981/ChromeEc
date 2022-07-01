@@ -34,6 +34,46 @@
       "parentUuid": "6fc43346_8ec9be63",
       "revId": "906323278ecb3189269e7c2c196424f4a93dd995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c46f4f_3d0017a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-01T16:07:08Z",
+      "side": 1,
+      "message": "Looks good to me but I\u0027ll let someone else +2 after replicating the tests",
+      "revId": "906323278ecb3189269e7c2c196424f4a93dd995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335d1c43_de3615fd",
+        "filename": "docs/fingerprint/fingerprint.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-01T16:07:08Z",
+      "side": 1,
+      "message": "Out of curiosity, why is COUNT now 462 when it used to be 115? Did the number of samples per second change or did the previous test run for less time?",
+      "range": {
+        "startLine": 362,
+        "startChar": 25,
+        "endLine": 362,
+        "endChar": 28
+      },
+      "revId": "906323278ecb3189269e7c2c196424f4a93dd995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
