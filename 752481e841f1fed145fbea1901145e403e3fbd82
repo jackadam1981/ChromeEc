@@ -33,6 +33,24 @@
       "message": "So my understanding is that this is the name of the manufacturer, not the name of the device.\nSee dts/bindings/battery/battery-fuel-gauge.yam\nWouldn\u0027t this be \u0027Simplo\u0027? It\u0027s just that AS3GWQd3jB seems a very strange manufacturer\u0027s name - it seems more like a device or model name.",
       "revId": "752481e841f1fed145fbea1901145e403e3fbd82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376ee61e_c785b0f8",
+        "filename": "zephyr/dts/bindings/battery/as3gwqd3jb,c490-42.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2022-07-01T03:21:54Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3713881/2/board/mithrax/battery.c#92\nThis is the ManufacturerName provided by the manufacturer, and there is another project written like this, all according to the spec provided by the manufacturer\n\nhttps://partnerissuetracker.corp.google.com/issues/237192635#comment2\nIt is also explained here",
+      "parentUuid": "25aabc1e_34b20633",
+      "revId": "752481e841f1fed145fbea1901145e403e3fbd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
