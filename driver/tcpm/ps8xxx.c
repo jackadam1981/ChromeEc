@@ -93,7 +93,7 @@ static bool ps8815_disconnected[CONFIG_USB_PD_PORT_MAX_COUNT];
  */
 static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-void ps8xxx_wake_from_standby(const struct usb_mux *me);
+void ps8xxx_wake_from_standby(const struct usb_mux *me, int port);
 
 #if defined(CONFIG_USB_PD_TCPM_PS8705) ||     \
 	defined(CONFIG_USB_PD_TCPM_PS8751) || \
@@ -303,34 +303,34 @@ static int get_reg_by_product(const int port,
 	return INT32_MAX;
 }
 
-static int dp_set_hpd(const struct usb_mux *me, int enable)
+static int dp_set_hpd(const struct usb_mux *me, int port, int enable)
 {
 	int reg;
 	int rv;
 
-	rv = mux_read(me, MUX_IN_HPD_ASSERTION_REG, &reg);
+	rv = mux_read(me, port, MUX_IN_HPD_ASSERTION_REG, &reg);
 	if (rv)
 		return rv;
 	if (enable)
 		reg |= IN_HPD;
 	else
 		reg &= ~IN_HPD;
-	return mux_write(me, MUX_IN_HPD_ASSERTION_REG, reg);
+	return mux_write(me, port, MUX_IN_HPD_ASSERTION_REG, reg);
 }
 
-static int dp_set_irq(const struct usb_mux *me, int enable)
+static int dp_set_irq(const struct usb_mux *me, int port, int enable)
 {
 	int reg;
 	int rv;
 
-	rv = mux_read(me, MUX_IN_HPD_ASSERTION_REG, &reg);
+	rv = mux_read(me, port, MUX_IN_HPD_ASSERTION_REG, &reg);
 	if (rv)
 		return rv;
 	if (enable)
 		reg |= HPD_IRQ;
 	else
 		reg &= ~HPD_IRQ;
-	return mux_write(me, MUX_IN_HPD_ASSERTION_REG, reg);
+	return mux_write(me, port, MUX_IN_HPD_ASSERTION_REG, reg);
 }
 
 /* LCOV_EXCL_START */
@@ -378,10 +378,9 @@ bool check_ps8755_chip(int port)
 	return is_ps8755;
 }
 
-void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
+void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me, int port,
 				   mux_state_t mux_state, bool *ack_required)
 {
-	int port = me->usb_port;
 	int hpd_lvl = (mux_state & USB_PD_MUX_HPD_LVL) ? 1 : 0;
 	int hpd_irq = (mux_state & USB_PD_MUX_HPD_IRQ) ? 1 : 0;
 
@@ -389,11 +388,11 @@ void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
 	*ack_required = false;
 
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8751_CUSTOM_MUX_DRIVER) &&
-	    product_id[me->usb_port] == PS8751_PRODUCT_ID &&
+	    product_id[port] == PS8751_PRODUCT_ID &&
 	    me->flags & USB_MUX_FLAG_NOT_TCPC)
-		ps8xxx_wake_from_standby(me);
+		ps8xxx_wake_from_standby(me, port);
 
-	dp_set_hpd(me, hpd_lvl);
+	dp_set_hpd(me, port, hpd_lvl);
 
 	if (hpd_irq) {
 		uint64_t now = get_time().val;
@@ -401,9 +400,9 @@ void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
 		if (now < hpd_deadline[port])
 			usleep(hpd_deadline[port] - now);
 
-		dp_set_irq(me, 0);
+		dp_set_irq(me, port, 0);
 		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
-		dp_set_irq(me, hpd_irq);
+		dp_set_irq(me, port, hpd_irq);
 	}
 	/* enforce 2-ms delay between HPD pulses */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -1085,15 +1084,15 @@ struct i2c_stress_test_dev ps8xxx_i2c_stress_test_dev = {
 
 #ifdef CONFIG_USB_PD_TCPM_PS8751_CUSTOM_MUX_DRIVER
 
-static int ps8xxx_mux_init(const struct usb_mux *me)
+static int ps8xxx_mux_init(const struct usb_mux *me, int port)
 {
-	RETURN_ERROR(tcpci_tcpm_mux_init(me));
+	RETURN_ERROR(tcpci_tcpm_mux_init(me, port));
 
 	/* If this MUX is also the TCPC, then skip init */
 	if (!(me->flags & USB_MUX_FLAG_NOT_TCPC))
 		return EC_SUCCESS;
 
-	product_id[me->usb_port] = board_get_ps8xxx_product_id(me->usb_port);
+	product_id[port] = board_get_ps8xxx_product_id(port);
 
 	return EC_SUCCESS;
 }
@@ -1105,21 +1104,21 @@ static int ps8xxx_mux_init(const struct usb_mux *me)
  *
  * To wake device documentation recommends read content of 0xA0 register.
  */
-void ps8xxx_wake_from_standby(const struct usb_mux *me)
+void ps8xxx_wake_from_standby(const struct usb_mux *me, int port)
 {
 	int reg;
 
 	/* Since we are waking up device, this call will most likely fail */
-	mux_read(me, PS8XXX_REG_I2C_DEBUGGING_ENABLE, &reg);
+	mux_read(me, port, PS8XXX_REG_I2C_DEBUGGING_ENABLE, &reg);
 	msleep(10);
 }
 
-static int ps8xxx_mux_set(const struct usb_mux *me, mux_state_t mux_state,
-			  bool *ack_required)
+static int ps8xxx_mux_set(const struct usb_mux *me, int port,
+			  mux_state_t mux_state, bool *ack_required)
 {
-	if (product_id[me->usb_port] == PS8751_PRODUCT_ID &&
+	if (product_id[port] == PS8751_PRODUCT_ID &&
 	    me->flags & USB_MUX_FLAG_NOT_TCPC) {
-		ps8xxx_wake_from_standby(me);
+		ps8xxx_wake_from_standby(me, port);
 
 		/*
 		 * To operate properly, when working as mux only, PS8751 CC
@@ -1128,43 +1127,44 @@ static int ps8xxx_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 		 */
 		if (mux_state != USB_PD_MUX_NONE)
 			RETURN_ERROR(
-				mux_write(me, TCPC_REG_ROLE_CTRL,
+				mux_write(me, port, TCPC_REG_ROLE_CTRL,
 					  TCPC_REG_ROLE_CTRL_SET(
 						  TYPEC_NO_DRP, TYPEC_RP_USB,
 						  TYPEC_CC_RD, TYPEC_CC_RD)));
 	}
 
-	return tcpci_tcpm_mux_set(me, mux_state, ack_required);
+	return tcpci_tcpm_mux_set(me, port, mux_state, ack_required);
 }
 
-static int ps8xxx_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
+static int ps8xxx_mux_get(const struct usb_mux *me, int port,
+			  mux_state_t *mux_state)
 {
-	if (product_id[me->usb_port] == PS8751_PRODUCT_ID &&
+	if (product_id[port] == PS8751_PRODUCT_ID &&
 	    me->flags & USB_MUX_FLAG_NOT_TCPC)
-		ps8xxx_wake_from_standby(me);
+		ps8xxx_wake_from_standby(me, port);
 
-	return tcpci_tcpm_mux_get(me, mux_state);
+	return tcpci_tcpm_mux_get(me, port, mux_state);
 }
 
-static int ps8xxx_mux_enter_low_power(const struct usb_mux *me)
+static int ps8xxx_mux_enter_low_power(const struct usb_mux *me, int port)
 {
 	/*
 	 * Set PS8751 lines to RP. This allows device to standby
 	 * automatically after ~2 seconds
 	 */
-	if (product_id[me->usb_port] == PS8751_PRODUCT_ID &&
+	if (product_id[port] == PS8751_PRODUCT_ID &&
 	    me->flags & USB_MUX_FLAG_NOT_TCPC) {
 		/*
 		 * It may happen that this write will fail, but
 		 * RP seems to be set correctly
 		 */
-		mux_write(me, TCPC_REG_ROLE_CTRL,
+		mux_write(me, port, TCPC_REG_ROLE_CTRL,
 			  TCPC_REG_ROLE_CTRL_SET(TYPEC_NO_DRP, TYPEC_RP_USB,
 						 TYPEC_CC_RP, TYPEC_CC_RP));
 		return EC_SUCCESS;
 	}
 
-	return tcpci_tcpm_mux_enter_low_power(me);
+	return tcpci_tcpm_mux_enter_low_power(me, port);
 }
 
 const struct usb_mux_driver ps8xxx_usb_mux_driver = {

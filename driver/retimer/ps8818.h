@@ -88,9 +88,11 @@
 
 extern const struct usb_mux_driver ps8818_usb_retimer_driver;
 
-int ps8818_i2c_read(const struct usb_mux *me, int page, int offset, int *data);
-int ps8818_i2c_write(const struct usb_mux *me, int page, int offset, int data);
-int ps8818_i2c_field_update8(const struct usb_mux *me, int page, int offset,
-			     uint8_t field_mask, uint8_t set_value);
+int ps8818_i2c_read(const struct usb_mux *me, int port, int page, int offset,
+		    int *data);
+int ps8818_i2c_write(const struct usb_mux *me, int port, int page, int offset,
+		     int data);
+int ps8818_i2c_field_update8(const struct usb_mux *me, int port, int page,
+			     int offset, uint8_t field_mask, uint8_t set_value);
 
 #endif /* __CROS_EC_USB_RETIMER_PS8818_H */

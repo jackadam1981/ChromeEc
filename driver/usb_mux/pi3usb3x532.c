@@ -62,7 +62,7 @@ static int pi3usb3x532_reset(const struct usb_mux *me)
 					 PI3USB3X532_CTRL_RSVD);
 }
 
-static int pi3usb3x532_init(const struct usb_mux *me)
+static int pi3usb3x532_init(const struct usb_mux *me, int port)
 {
 	uint8_t val;
 	int res;
@@ -80,8 +80,8 @@ static int pi3usb3x532_init(const struct usb_mux *me)
 }
 
 /* Writes control register to set switch mode */
-static int pi3usb3x532_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			       bool *ack_required)
+static int pi3usb3x532_set_mux(const struct usb_mux *me, int port,
+			       mux_state_t mux_state, bool *ack_required)
 {
 	uint8_t reg = 0;
 
@@ -100,7 +100,8 @@ static int pi3usb3x532_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 }
 
 /* Reads control register and updates mux_state accordingly */
-static int pi3usb3x532_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int pi3usb3x532_get_mux(const struct usb_mux *me, int port,
+			       mux_state_t *mux_state)
 {
 	uint8_t reg = 0;
 	uint8_t res;

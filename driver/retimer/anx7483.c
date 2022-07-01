@@ -192,7 +192,7 @@ static inline int anx7483_write(const struct usb_mux *me, uint8_t reg,
 	return i2c_write8(me->i2c_port, me->i2c_addr_flags, reg, val);
 }
 
-static int anx7483_init(const struct usb_mux *me)
+static int anx7483_init(const struct usb_mux *me, int port)
 {
 	timestamp_t start;
 	int rv;
@@ -222,8 +222,8 @@ static int anx7483_init(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
-static int anx7483_set(const struct usb_mux *me, mux_state_t mux_state,
-		       bool *ack_required)
+static int anx7483_set(const struct usb_mux *me, int port,
+		       mux_state_t mux_state, bool *ack_required)
 {
 	int reg;
 
@@ -251,7 +251,8 @@ static int anx7483_set(const struct usb_mux *me, mux_state_t mux_state,
 	return anx7483_write(me, ANX7483_ANALOG_STATUS_CTRL_REG, reg);
 }
 
-static int anx7483_get(const struct usb_mux *me, mux_state_t *mux_state)
+static int anx7483_get(const struct usb_mux *me, int port,
+		       mux_state_t *mux_state)
 {
 	int reg;
 
@@ -286,7 +287,8 @@ static enum ec_error_list anx7483_apply_tuning(const struct usb_mux *me,
 	return EC_SUCCESS;
 }
 
-int anx7483_set_default_tuning(const struct usb_mux *me, mux_state_t mux_state)
+int anx7483_set_default_tuning(const struct usb_mux *me, int port,
+			       mux_state_t mux_state)
 {
 	bool flipped = mux_state & USB_PD_MUX_POLARITY_INVERTED;
 

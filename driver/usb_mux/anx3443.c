@@ -42,14 +42,14 @@ static inline int anx3443_write(const struct usb_mux *me, uint8_t reg,
 	return i2c_write8(me->i2c_port, me->i2c_addr_flags, reg, val);
 }
 
-static int anx3443_power_off(const struct usb_mux *me)
+static int anx3443_power_off(const struct usb_mux *me, int port)
 {
 	/**
 	 * No-op if the mux is already down.
 	 *
 	 * Writing or reading any register wakes the mux up.
 	 */
-	if (!saved_mux_state[me->usb_port].awake)
+	if (!saved_mux_state[port].awake)
 		return EC_SUCCESS;
 
 	/*
@@ -57,11 +57,11 @@ static int anx3443_power_off(const struct usb_mux *me)
 	 * response and always return success.
 	 */
 	anx3443_write(me, ANX3443_REG_POWER_CNTRL, ANX3443_POWER_CNTRL_OFF);
-	saved_mux_state[me->usb_port].awake = false;
+	saved_mux_state[port].awake = false;
 	return EC_SUCCESS;
 }
 
-static int anx3443_wake_up(const struct usb_mux *me)
+static int anx3443_wake_up(const struct usb_mux *me, int port)
 {
 	timestamp_t start;
 	int rv;
@@ -83,24 +83,24 @@ static int anx3443_wake_up(const struct usb_mux *me)
 	/* ULTRA_LOW_POWER must always be disabled (Fig 2-2) */
 	RETURN_ERROR(anx3443_write(me, ANX3443_REG_ULTRA_LOW_POWER,
 				   ANX3443_ULTRA_LOW_POWER_DIS));
-	saved_mux_state[me->usb_port].awake = true;
+	saved_mux_state[port].awake = true;
 
 	return EC_SUCCESS;
 }
 
-static int anx3443_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required)
+static int anx3443_set_mux(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required)
 {
 	int reg;
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
-	saved_mux_state[me->usb_port].mux_state = mux_state;
+	saved_mux_state[port].mux_state = mux_state;
 
 	/* To disable both DP and USB the mux must be powered off. */
 	if (!(mux_state & (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED)))
-		return anx3443_power_off(me);
+		return anx3443_power_off(me, port);
 
 	/**
 	 * If the request state is not NONE, process it after we back to
@@ -109,7 +109,7 @@ static int anx3443_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
 		return EC_SUCCESS;
 
-	RETURN_ERROR(anx3443_wake_up(me));
+	RETURN_ERROR(anx3443_wake_up(me, port));
 
 	/* ULP_CFG_MODE_EN overrides pin control. Always set it */
 	reg = ANX3443_ULP_CFG_MODE_EN;
@@ -123,7 +123,8 @@ static int anx3443_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	return anx3443_write(me, ANX3443_REG_ULP_CFG_MODE, reg);
 }
 
-static int anx3443_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int anx3443_get_mux(const struct usb_mux *me, int port,
+			   mux_state_t *mux_state)
 {
 	int reg;
 
@@ -131,7 +132,7 @@ static int anx3443_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		return USB_PD_MUX_NONE;
 
-	RETURN_ERROR(anx3443_wake_up(me));
+	RETURN_ERROR(anx3443_wake_up(me, port));
 
 	*mux_state = 0;
 	RETURN_ERROR(anx3443_read(me, ANX3443_REG_ULP_CFG_MODE, &reg));
@@ -146,7 +147,7 @@ static int anx3443_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 	return EC_SUCCESS;
 }
 
-static int anx3443_init(const struct usb_mux *me)
+static int anx3443_init(const struct usb_mux *me, int port)
 {
 	uint64_t now;
 	bool unused;
@@ -159,14 +160,15 @@ static int anx3443_init(const struct usb_mux *me)
 	if (now < ANX3443_I2C_READY_DELAY)
 		usleep(ANX3443_I2C_READY_DELAY - now);
 
-	RETURN_ERROR(anx3443_wake_up(me));
+	RETURN_ERROR(anx3443_wake_up(me, port));
 
 	/*
 	 * Note that bypassing the usb_mux API is okay for internal driver calls
 	 * since the task calling init already holds this port's mux lock.
 	 */
 	/* Default to USB mode */
-	RETURN_ERROR(anx3443_set_mux(me, USB_PD_MUX_USB_ENABLED, &unused));
+	RETURN_ERROR(
+		anx3443_set_mux(me, port, USB_PD_MUX_USB_ENABLED, &unused));
 
 	return EC_SUCCESS;
 }
@@ -177,10 +179,9 @@ const struct usb_mux_driver anx3443_usb_mux_driver = {
 	.get = anx3443_get_mux,
 };
 
-static bool anx3443_port_is_usb2_only(const struct usb_mux *me)
+static bool anx3443_port_is_usb2_only(const struct usb_mux *me, int port)
 {
 	int val;
-	int port = me->usb_port;
 
 	if (!(saved_mux_state[port].mux_state & USB_PD_MUX_USB_ENABLED))
 		return false;
@@ -194,13 +195,13 @@ static bool anx3443_port_is_usb2_only(const struct usb_mux *me)
 static void anx3443_suspend(void)
 {
 	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		const struct usb_mux *mux = &usb_muxes[i];
+		const struct usb_mux *mux = usb_muxes[i].mux;
 
 		if (mux->driver != &anx3443_usb_mux_driver)
 			continue;
 
-		if (anx3443_port_is_usb2_only(mux))
-			anx3443_power_off(mux);
+		if (anx3443_port_is_usb2_only(mux, i))
+			anx3443_power_off(mux, i);
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, anx3443_suspend, HOOK_PRIO_DEFAULT);
@@ -208,14 +209,13 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, anx3443_suspend, HOOK_PRIO_DEFAULT);
 static void anx3443_resume(void)
 {
 	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		int port = usb_muxes[i].usb_port;
 		bool ack_required;
 
-		if (usb_muxes[i].driver != &anx3443_usb_mux_driver)
+		if (usb_muxes[i].mux->driver != &anx3443_usb_mux_driver)
 			continue;
 
-		anx3443_set_mux(&usb_muxes[i], saved_mux_state[port].mux_state,
-				&ack_required);
+		anx3443_set_mux(usb_muxes[i].mux, i,
+				saved_mux_state[i].mux_state, &ack_required);
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, anx3443_resume, HOOK_PRIO_DEFAULT);

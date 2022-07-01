@@ -53,6 +53,6 @@ extern const struct usb_mux_driver anx7451_usb_mux_driver;
  * This address may conflict with other ANX74* parts. Implement
  * board_anx7451_get_usb_i2c_addr to set a non-conflicting 7-bit address.
  */
-uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me);
+uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me, int port);
 
 #endif /* __CROS_EC_USB_MUX_ANX7451_H */

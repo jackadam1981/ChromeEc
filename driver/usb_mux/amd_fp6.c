@@ -133,8 +133,8 @@ static void amd_fp6_set_mux_retry(void)
 				   CMD_RETRY_INTERVAL_MS * MSEC);
 }
 
-static int amd_fp6_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required)
+static int amd_fp6_set_mux(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required)
 {
 	uint8_t val;
 
@@ -155,29 +155,29 @@ static int amd_fp6_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	else if (mux_state & USB_PD_MUX_DP_ENABLED)
 		val = AMD_FP6_MUX_MODE_DP;
 	else {
-		CPRINTSUSB("C%d: unhandled mux_state %x\n", me->usb_port,
-			   mux_state);
+		CPRINTSUSB("C%d: unhandled mux_state %x\n", port, mux_state);
 		return EC_ERROR_INVAL;
 	}
 
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		val |= AMD_FP6_MUX_ORIENTATION;
 
-	saved_mux_state[me->usb_port].mux = me;
-	saved_mux_state[me->usb_port].val = val;
+	saved_mux_state[port].mux = me;
+	saved_mux_state[port].val = val;
 
 	/* Mux is not powered in Z1 */
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		return (mux_state == USB_PD_MUX_NONE) ? EC_SUCCESS :
 							EC_ERROR_NOT_POWERED;
 
-	saved_mux_state[me->usb_port].write_pending = true;
+	saved_mux_state[port].write_pending = true;
 	amd_fp6_set_mux_retry();
 
 	return EC_SUCCESS;
 }
 
-static int amd_fp6_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
+static int amd_fp6_get_mux(const struct usb_mux *me, int port,
+			   mux_state_t *mux_state)
 {
 	uint8_t val;
 	bool inverted;
@@ -219,7 +219,7 @@ static void amd_fp6_chipset_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, amd_fp6_chipset_resume, HOOK_PRIO_DEFAULT);
 
-static int amd_fp6_chipset_reset(const struct usb_mux *me)
+static int amd_fp6_chipset_reset(const struct usb_mux *me, int port)
 {
 	amd_fp6_chipset_resume();
 	return EC_SUCCESS;

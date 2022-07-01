@@ -78,7 +78,7 @@ extern const struct tcpm_drv ps8xxx_tcpm_drv;
  */
 __override_proto uint16_t board_get_ps8xxx_product_id(int port);
 
-void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
+void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me, int port,
 				   mux_state_t mux_state, bool *ack_required);
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC

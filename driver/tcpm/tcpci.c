@@ -1539,7 +1539,7 @@ int tcpci_tcpm_init(int port)
  * via mux init because tcpc_init won't run for the device. This is borrowed
  * from tcpc_init.
  */
-int tcpci_tcpm_mux_init(const struct usb_mux *me)
+int tcpci_tcpm_mux_init(const struct usb_mux *me, int port)
 {
 	int error;
 	int power_status;
@@ -1551,7 +1551,8 @@ int tcpci_tcpm_mux_init(const struct usb_mux *me)
 
 	/* Wait for the device to exit low power state */
 	while (1) {
-		error = mux_read(me, TCPC_REG_POWER_STATUS, &power_status);
+		error = mux_read(me, port, TCPC_REG_POWER_STATUS,
+				 &power_status);
 		/*
 		 * If read succeeds and the uninitialized bit is clear, then
 		 * initialization is complete.
@@ -1564,23 +1565,23 @@ int tcpci_tcpm_mux_init(const struct usb_mux *me)
 	}
 
 	/* Turn off all alerts and acknowledge any pending IRQ */
-	error = mux_write16(me, TCPC_REG_ALERT_MASK, 0);
-	error |= mux_write16(me, TCPC_REG_ALERT, 0xffff);
+	error = mux_write16(me, port, TCPC_REG_ALERT_MASK, 0);
+	error |= mux_write16(me, port, TCPC_REG_ALERT, 0xffff);
 
 	return error ? EC_ERROR_UNKNOWN : EC_SUCCESS;
 }
 
-int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *me)
+int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *me, int port)
 {
 	/* If this MUX is also the TCPC, then skip low power */
 	if (!(me->flags & USB_MUX_FLAG_NOT_TCPC))
 		return EC_SUCCESS;
 
-	return mux_write(me, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+	return mux_write(me, port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
 }
 
-int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state,
-		       bool *ack_required)
+int tcpci_tcpm_mux_set(const struct usb_mux *me, int port,
+		       mux_state_t mux_state, bool *ack_required)
 {
 	int rv;
 	int reg = 0;
@@ -1589,7 +1590,7 @@ int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 	*ack_required = false;
 
 	/* Parameter is port only */
-	rv = mux_read(me, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
+	rv = mux_read(me, port, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
 	if (rv != EC_SUCCESS)
 		return rv;
 
@@ -1603,11 +1604,12 @@ int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 		reg |= TCPC_REG_CONFIG_STD_OUTPUT_CONNECTOR_FLIPPED;
 
 	/* Parameter is port only */
-	return mux_write(me, TCPC_REG_CONFIG_STD_OUTPUT, reg);
+	return mux_write(me, port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 
 /* Reads control register and updates mux_state accordingly */
-int tcpci_tcpm_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
+int tcpci_tcpm_mux_get(const struct usb_mux *me, int port,
+		       mux_state_t *mux_state)
 {
 	int rv;
 	int reg = 0;
@@ -1615,7 +1617,7 @@ int tcpci_tcpm_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
 	*mux_state = 0;
 
 	/* Parameter is port only */
-	rv = mux_read(me, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
+	rv = mux_read(me, port, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
 	if (rv != EC_SUCCESS)
 		return rv;
 

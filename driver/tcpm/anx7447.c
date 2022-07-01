@@ -31,8 +31,8 @@ struct anx_usb_mux {
 	int state;
 };
 
-static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required);
+static int anx7447_mux_set(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required);
 
 static struct anx_state anx[CONFIG_USB_PD_PORT_MAX_COUNT];
 static struct anx_usb_mux mux[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -286,7 +286,7 @@ DECLARE_CONSOLE_COMMAND(anx_ocm, command_anx_ocm, "port [erase]",
 static int anx7447_init(int port)
 {
 	int rv, reg, i;
-	const struct usb_mux *me = &usb_muxes[port];
+	const struct usb_mux_chain *me = &usb_muxes[port];
 	bool unused;
 
 	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
@@ -384,15 +384,15 @@ static int anx7447_init(int port)
 	 * Run mux_set() here for considering CCD(Case-Closed Debugging) case
 	 * If this TCPC is not also the MUX then don't initialize to NONE
 	 */
-	while ((me != NULL) && (me->driver != &anx7447_usb_mux_driver))
-		me = me->next_mux;
+	while ((me != NULL) && (me->mux->driver != &anx7447_usb_mux_driver))
+		me = me->next;
 
 	/*
 	 * Note that bypassing the usb_mux API is okay for internal driver calls
 	 * since the task calling init already holds this port's mux lock.
 	 */
-	if (me != NULL && !(me->flags & USB_MUX_FLAG_NOT_TCPC))
-		rv = anx7447_mux_set(me, USB_PD_MUX_NONE, &unused);
+	if (me != NULL && !(me->mux->flags & USB_MUX_FLAG_NOT_TCPC))
+		rv = anx7447_mux_set(me->mux, port, USB_PD_MUX_NONE, &unused);
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
 	return rv;
@@ -573,11 +573,10 @@ static int anx7447_set_frs_enable(int port, int enable)
  */
 static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
+void anx7447_tcpc_update_hpd_status(const struct usb_mux *me, int port,
 				    mux_state_t mux_state, bool *ack_required)
 {
 	int reg = 0;
-	int port = me->usb_port;
 	int hpd_lvl = (mux_state & USB_PD_MUX_HPD_LVL) ? 1 : 0;
 	int hpd_irq = (mux_state & USB_PD_MUX_HPD_IRQ) ? 1 : 0;
 
@@ -623,15 +622,14 @@ void anx7447_tcpc_clear_hpd_status(int port)
 }
 
 #ifdef CONFIG_USB_PD_TCPM_MUX
-static int anx7447_mux_init(const struct usb_mux *me)
+static int anx7447_mux_init(const struct usb_mux *me, int port)
 {
-	int port = me->usb_port;
 	int i;
 	bool unused;
 	const uint16_t tcpc_i2c_addr =
-		I2C_STRIP_FLAGS(tcpc_config[me->usb_port].i2c_info.addr_flags);
+		I2C_STRIP_FLAGS(tcpc_config[port].i2c_info.addr_flags);
 	const uint16_t mux_i2c_addr =
-		I2C_STRIP_FLAGS(usb_muxes[port].i2c_addr_flags);
+		I2C_STRIP_FLAGS(usb_muxes[port].mux->i2c_addr_flags);
 
 	/*
 	 * find corresponding anx7447 SPI address according to
@@ -650,7 +648,7 @@ static int anx7447_mux_init(const struct usb_mux *me)
 	}
 	if (!I2C_STRIP_FLAGS(anx[port].i2c_addr_flags)) {
 		ccprintf("TCPC I2C addr 0x%x is invalid for ANX7447\n",
-			 I2C_STRIP_FLAGS(usb_muxes[port].i2c_addr_flags));
+			 I2C_STRIP_FLAGS(usb_muxes[port].mux->i2c_addr_flags));
 		return EC_ERROR_UNKNOWN;
 	}
 
@@ -668,41 +666,41 @@ static int anx7447_mux_init(const struct usb_mux *me)
 	 * USB_PD_MUX_DP_ENABLED) when reinitialized, we need to force
 	 * initialize it to USB_PD_MUX_NONE
 	 */
-	return anx7447_mux_set(me, USB_PD_MUX_NONE, &unused);
+	return anx7447_mux_set(me, port, USB_PD_MUX_NONE, &unused);
 }
 
 #ifdef CONFIG_USB_PD_TCPM_ANX7447_AUX_PU_PD
-static void anx7447_mux_safemode(const struct usb_mux *me, int on_off)
+static void anx7447_mux_safemode(const struct usb_mux *me, int port, int on_off)
 {
 	int reg;
 
-	mux_read(me, ANX7447_REG_ANALOG_CTRL_9, &reg);
+	mux_read(me, port, ANX7447_REG_ANALOG_CTRL_9, &reg);
 
 	if (on_off)
 		reg |= ANX7447_REG_SAFE_MODE;
 	else
 		reg &= ~(ANX7447_REG_SAFE_MODE);
 
-	mux_write(me, ANX7447_REG_ANALOG_CTRL_9, reg);
-	CPRINTS("C%d set mux to safemode %s, reg = 0x%x", me->usb_port,
+	mux_write(me, port, ANX7447_REG_ANALOG_CTRL_9, reg);
+	CPRINTS("C%d set mux to safemode %s, reg = 0x%x", port,
 		(on_off) ? "on" : "off", reg);
 }
 
-static inline void anx7447_configure_aux_src(const struct usb_mux *me,
+static inline void anx7447_configure_aux_src(const struct usb_mux *me, int port,
 					     int on_off)
 {
 	int reg;
 
-	mux_read(me, ANX7447_REG_ANALOG_CTRL_9, &reg);
+	mux_read(me, port, ANX7447_REG_ANALOG_CTRL_9, &reg);
 
 	if (on_off)
 		reg |= ANX7447_REG_R_AUX_RES_PULL_SRC;
 	else
 		reg &= ~(ANX7447_REG_R_AUX_RES_PULL_SRC);
 
-	mux_write(me, ANX7447_REG_ANALOG_CTRL_9, reg);
+	mux_write(me, port, ANX7447_REG_ANALOG_CTRL_9, reg);
 
-	CPRINTS("C%d set aux_src to %s, reg = 0x%x", me->usb_port,
+	CPRINTS("C%d set aux_src to %s, reg = 0x%x", port,
 		(on_off) ? "on" : "off", reg);
 }
 #endif
@@ -716,14 +714,13 @@ static inline void anx7447_configure_aux_src(const struct usb_mux *me,
  *
  * a2, a3, a10, a11, b2, b3, b10, b11 are pins on the USB-C connector.
  */
-static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required)
+static int anx7447_mux_set(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required)
 {
 	int cc_direction;
 	mux_state_t mux_type;
 	int sw_sel = 0x00, aux_sw = 0x00;
 	int rv;
-	int port = me->usb_port;
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -771,11 +768,11 @@ static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 	 * first. After the  mux configured, should set mux to normal mode.
 	 */
 #ifdef CONFIG_USB_PD_TCPM_ANX7447_AUX_PU_PD
-	anx7447_mux_safemode(me, 1);
+	anx7447_mux_safemode(me, port, 1);
 #endif
-	rv = mux_write(me, ANX7447_REG_TCPC_SWITCH_0, sw_sel);
-	rv |= mux_write(me, ANX7447_REG_TCPC_SWITCH_1, sw_sel);
-	rv |= mux_write(me, ANX7447_REG_TCPC_AUX_SWITCH, aux_sw);
+	rv = mux_write(me, port, ANX7447_REG_TCPC_SWITCH_0, sw_sel);
+	rv |= mux_write(me, port, ANX7447_REG_TCPC_SWITCH_1, sw_sel);
+	rv |= mux_write(me, port, ANX7447_REG_TCPC_AUX_SWITCH, aux_sw);
 
 	mux[port].state = mux_state;
 
@@ -785,20 +782,19 @@ static int anx7447_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 	 * normal mode, otherwise: keep safe mode.
 	 */
 	if (mux_type != USB_PD_MUX_NONE) {
-		anx7447_configure_aux_src(me, 1);
-		anx7447_mux_safemode(me, 0);
+		anx7447_configure_aux_src(me, port, 1);
+		anx7447_mux_safemode(me, port, 0);
 	} else
-		anx7447_configure_aux_src(me, 0);
+		anx7447_configure_aux_src(me, port, 0);
 #endif
 
 	return rv;
 }
 
 /* current mux state */
-static int anx7447_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
+static int anx7447_mux_get(const struct usb_mux *me, int port,
+			   mux_state_t *mux_state)
 {
-	int port = me->usb_port;
-
 	*mux_state = mux[port].state;
 
 	return EC_SUCCESS;

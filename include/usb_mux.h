@@ -49,30 +49,33 @@ struct usb_mux_driver {
 	 * power mode).
 	 *
 	 * @param me usb_mux
+	 * @param port The Type-C port number.
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*init)(const struct usb_mux *me);
+	int (*init)(const struct usb_mux *me, int port);
 
 	/**
 	 * Set USB mux state.
 	 *
 	 * @param[in]  me usb_mux
+	 * @param[in]  port The Type-C port number.
 	 * @param[in]  mux_state State to set mux to.
 	 * @param[out] bool ack_required - indication of whether this mux needs
 	 * to wait on a host command ACK at the end of a set
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*set)(const struct usb_mux *me, mux_state_t mux_state,
+	int (*set)(const struct usb_mux *me, int port, mux_state_t mux_state,
 		   bool *ack_required);
 
 	/**
 	 * Get current state of USB mux.
 	 *
 	 * @param me usb_mux
+	 * @param port The Type-C port number.
 	 * @param mux_state Gets set to current state of mux.
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*get)(const struct usb_mux *me, mux_state_t *mux_state);
+	int (*get)(const struct usb_mux *me, int port, mux_state_t *mux_state);
 
 	/**
 	 * Return if retimer supports firmware update
@@ -90,27 +93,23 @@ struct usb_mux_driver {
 	 * will put the chip into lower power mode.
 	 *
 	 * @param me usb_mux
+	 * @param port The Type-C port number.
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*enter_low_power_mode)(const struct usb_mux *me);
+	int (*enter_low_power_mode)(const struct usb_mux *me, int port);
 
 	/**
 	 * Optional method that is called on HOOK_CHIPSET_RESET.
 	 *
 	 * @param me usb_mux
+	 * @param port The Type-C port number.
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*chipset_reset)(const struct usb_mux *me);
+	int (*chipset_reset)(const struct usb_mux *me, int port);
 };
 
 /* Describes a USB mux present in the system */
 struct usb_mux {
-	/*
-	 * This is index into usb_muxes that points to the start of the
-	 * possible chain of usb_mux entries that this entry is on.
-	 */
-	int usb_port;
-
 	/*
 	 * I2C port and address. This is optional if your MUX is not
 	 * an I2C interface.  If this is the case, use usb_port to
@@ -128,38 +127,48 @@ struct usb_mux {
 	/* Mux driver */
 	const struct usb_mux_driver *driver;
 
-	/* Linked list chain of secondary MUXes. NULL terminated */
-	const struct usb_mux *next_mux;
-
 	/**
 	 * Optional method for tuning for USB mux during mux->driver->init().
 	 *
 	 * @param me usb_mux
+	 * @param port The Type-C port number.
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*board_init)(const struct usb_mux *me);
+	int (*board_init)(const struct usb_mux *me, int port);
 
 	/*
 	 * USB mux/retimer board specific set mux_state.
 	 *
 	 * @param me usb_mux
+	 * @param port The Type-C port number.
 	 * @param mux_state State to set mode to.
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*board_set)(const struct usb_mux *me, mux_state_t mux_state);
+	int (*board_set)(const struct usb_mux *me, int port,
+			 mux_state_t mux_state);
 
 	/*
 	 * USB Type-C DP alt mode support. Notify Type-C controller
 	 * there is DP dongle hot-plug.
 	 *
 	 * @param[in]  me usb_mux
+	 * @param[in]  port The Type-C port number.
 	 * @param[in]  mux_state with HPD IRQ and HPD LVL flags set
 	 *	       accordingly
 	 * @param[out] ack_required: indication of whether this function
 	 *	       requires a wait for an AP ACK after
 	 */
-	void (*hpd_update)(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required);
+	void (*hpd_update)(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required);
+};
+
+/* Linked list chain of secondary MUXes. NULL terminated */
+struct usb_mux_chain {
+	/* Structure describing USB mux */
+	const struct usb_mux *mux;
+
+	/* Pointer to next mux */
+	const struct usb_mux_chain *next;
 };
 
 /* Supported USB mux drivers */
@@ -177,46 +186,50 @@ extern const struct usb_mux_driver virtual_usb_mux_driver;
 
 /* USB muxes present in system, ordered by PD port #, defined at board-level */
 #ifdef CONFIG_USB_MUX_RUNTIME_CONFIG
-extern struct usb_mux usb_muxes[];
+extern struct usb_mux_chain usb_muxes[];
 #else
-extern const struct usb_mux usb_muxes[];
+extern const struct usb_mux_chain usb_muxes[];
 #endif
 
 /* Supported hpd_update functions */
-void virtual_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
-			bool *ack_required);
+void virtual_hpd_update(const struct usb_mux *me, int port,
+			mux_state_t mux_state, bool *ack_required);
 
 /*
  * Helper methods that either use tcpc communication or direct i2c
  * communication depending on how the TCPC/MUX device is configured.
  */
 #ifdef CONFIG_USB_PD_TCPM_MUX
-static inline int mux_write(const struct usb_mux *me, int reg, int val)
+static inline int mux_write(const struct usb_mux *me, int port, int reg,
+			    int val)
 {
 	return me->flags & USB_MUX_FLAG_NOT_TCPC ?
 		       i2c_write8(me->i2c_port, me->i2c_addr_flags, reg, val) :
-		       tcpc_write(me->usb_port, reg, val);
+		       tcpc_write(port, reg, val);
 }
 
-static inline int mux_read(const struct usb_mux *me, int reg, int *val)
+static inline int mux_read(const struct usb_mux *me, int port, int reg,
+			   int *val)
 {
 	return me->flags & USB_MUX_FLAG_NOT_TCPC ?
 		       i2c_read8(me->i2c_port, me->i2c_addr_flags, reg, val) :
-		       tcpc_read(me->usb_port, reg, val);
+		       tcpc_read(port, reg, val);
 }
 
-static inline int mux_write16(const struct usb_mux *me, int reg, int val)
+static inline int mux_write16(const struct usb_mux *me, int port, int reg,
+			      int val)
 {
 	return me->flags & USB_MUX_FLAG_NOT_TCPC ?
 		       i2c_write16(me->i2c_port, me->i2c_addr_flags, reg, val) :
-		       tcpc_write16(me->usb_port, reg, val);
+		       tcpc_write16(port, reg, val);
 }
 
-static inline int mux_read16(const struct usb_mux *me, int reg, int *val)
+static inline int mux_read16(const struct usb_mux *me, int port, int reg,
+			     int *val)
 {
 	return me->flags & USB_MUX_FLAG_NOT_TCPC ?
 		       i2c_read16(me->i2c_port, me->i2c_addr_flags, reg, val) :
-		       tcpc_read16(me->usb_port, reg, val);
+		       tcpc_read16(port, reg, val);
 }
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 

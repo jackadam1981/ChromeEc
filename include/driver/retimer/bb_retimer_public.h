@@ -40,7 +40,7 @@ extern struct bb_usb_control bb_controls[];
  *
  * @return EC_SUCCESS, or non-zero on error.
  */
-__override_proto int bb_retimer_power_enable(const struct usb_mux *me,
+__override_proto int bb_retimer_power_enable(const struct usb_mux *me, int port,
 					     bool enable);
 
 /**
@@ -53,8 +53,8 @@ __override_proto int bb_retimer_power_enable(const struct usb_mux *me,
  * @param[out] ack_required	Outputs whether the given change will require
  *				the AP to ACK before proceeding
  */
-void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
-			   bool *ack_required);
+void bb_retimer_hpd_update(const struct usb_mux *me, int port,
+			   mux_state_t mux_state, bool *ack_required);
 
 /**
  * Enable/disable the USB3 state of BB retimer
@@ -62,6 +62,6 @@ void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
  * @param me     Pointer to USB mux
  * @param enable BB retimer USB3 state to be changed
  */
-void bb_retimer_set_usb3(const struct usb_mux *me, bool enable);
+void bb_retimer_set_usb3(const struct usb_mux *me, int port, bool enable);
 
 #endif /* __CROS_EC_DRIVER_RETIMER_BB_RETIMER_PUBLIC_H */

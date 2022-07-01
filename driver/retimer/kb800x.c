@@ -139,21 +139,21 @@ static int kb800x_assign_rx_to_eb(const struct usb_mux *me,
 	return kb800x_write(me, address, regval | field_value);
 }
 
-static bool kb800x_in_dpmf(const struct usb_mux *me)
+static bool kb800x_in_dpmf(const struct usb_mux *me, int port)
 {
-	if ((cached_mux_state[me->usb_port] & USB_PD_MUX_DP_ENABLED) &&
-	    (cached_mux_state[me->usb_port] & USB_PD_MUX_USB_ENABLED))
+	if ((cached_mux_state[port] & USB_PD_MUX_DP_ENABLED) &&
+	    (cached_mux_state[port] & USB_PD_MUX_USB_ENABLED))
 		return true;
 	else
 		return false;
 }
 
-static bool kb800x_is_dp_lane(const struct usb_mux *me,
+static bool kb800x_is_dp_lane(const struct usb_mux *me, int port,
 			      enum kb800x_ss_lane ss_lane)
 {
-	if (cached_mux_state[me->usb_port] & USB_PD_MUX_DP_ENABLED) {
+	if (cached_mux_state[port] & USB_PD_MUX_DP_ENABLED) {
 		/* DP ALT mode */
-		if (kb800x_in_dpmf(me)) {
+		if (kb800x_in_dpmf(me, port)) {
 			/* DPMF pin configuration */
 			if ((ss_lane == KB800X_TX1) ||
 			    (ss_lane == KB800X_RX1)) {
@@ -191,7 +191,7 @@ static bool kb800x_phy_ss_lane_is_rx(enum kb800x_phy_lane phy_lane,
 }
 
 /* Assign SS lane to PHY. Assumes A/B is connector-side, and C/D is host-side */
-static int kb800x_assign_lane(const struct usb_mux *me,
+static int kb800x_assign_lane(const struct usb_mux *me, int port,
 			      enum kb800x_phy_lane phy_lane,
 			      enum kb800x_ss_lane ss_lane)
 {
@@ -202,11 +202,11 @@ static int kb800x_assign_lane(const struct usb_mux *me,
 	 * lanes are flipped in the AP. If they are not, they shouldn't be
 	 * flipped for the AP-side lanes, but should for connector-side
 	 */
-	if (cached_mux_state[me->usb_port] & USB_PD_MUX_POLARITY_INVERTED)
+	if (cached_mux_state[port] & USB_PD_MUX_POLARITY_INVERTED)
 		ss_lane = KB800X_FLIP_SS_LANE(ss_lane);
 
-	if (kb800x_is_dp_lane(me, ss_lane)) {
-		if (kb800x_in_dpmf(me)) {
+	if (kb800x_is_dp_lane(me, port, ss_lane)) {
+		if (kb800x_in_dpmf(me, port)) {
 			/* Route USB3 RX/TX to EB1/4, and ML0/1 to EB5/6 */
 			switch (ss_lane) {
 			case KB800X_TX1: /* ML1 */
@@ -239,14 +239,14 @@ static int kb800x_assign_lane(const struct usb_mux *me,
 					      usb_ss_lane_to_eb[ss_lane]);
 }
 
-static int kb800x_xbar_override(const struct usb_mux *me)
+static int kb800x_xbar_override(const struct usb_mux *me, int port)
 {
 	int rv;
 	int i;
 
 	for (i = KB800X_A0; i < KB800X_PHY_LANE_COUNT; ++i) {
-		rv = kb800x_assign_lane(
-			me, i, kb800x_control[me->usb_port].ss_lanes[i]);
+		rv = kb800x_assign_lane(me, port, i,
+					kb800x_control[port].ss_lanes[i]);
 		if (rv)
 			return rv;
 	}
@@ -331,15 +331,15 @@ static int kb800x_usb3_init(const struct usb_mux *me, mux_state_t mux_state)
 	return EC_SUCCESS;
 }
 
-static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
+static int kb800x_cio_init(const struct usb_mux *me, int port,
+			   mux_state_t mux_state)
 {
 	uint8_t orientation = 0x0;
 	int rv;
 
-	enum idh_ptype cable_type = get_usb_pd_cable_type(me->usb_port);
+	enum idh_ptype cable_type = get_usb_pd_cable_type(port);
 	union tbt_mode_resp_cable cable_resp = {
-		.raw_value =
-			pd_get_tbt_mode_vdo(me->usb_port, TCPCI_MSG_SOP_PRIME)
+		.raw_value = pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME)
 	};
 
 	rv = kb800x_bulk_write(me, cio_init_addresses, cio_init_values,
@@ -375,15 +375,15 @@ static int kb800x_cio_init(const struct usb_mux *me, mux_state_t mux_state)
 	return kb800x_write(me, KB800X_REG_ORIENTATION, orientation);
 }
 
-static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
-			    bool *ack_required)
+static int kb800x_set_state(const struct usb_mux *me, int port,
+			    mux_state_t mux_state, bool *ack_required)
 {
 	int rv;
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
-	cached_mux_state[me->usb_port] = mux_state;
+	cached_mux_state[port] = mux_state;
 	rv = kb800x_write(me, KB800X_REG_RESET, KB800X_RESET_MASK);
 	if (rv)
 		return rv;
@@ -405,7 +405,7 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	/* CIO mode (USB4/TBT) */
 	if (mux_state &
 	    (USB_PD_MUX_USB4_ENABLED | USB_PD_MUX_TBT_COMPAT_ENABLED)) {
-		rv = kb800x_cio_init(me, mux_state);
+		rv = kb800x_cio_init(me, port, mux_state);
 		if (rv)
 			return rv;
 		rv = kb800x_write(me, KB800X_REG_PROTOCOL, KB800X_PROTOCOL_CIO);
@@ -435,7 +435,7 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 		return rv;
 
 #ifdef CONFIG_KB800X_CUSTOM_XBAR
-	rv = kb800x_xbar_override(me);
+	rv = kb800x_xbar_override(me, port);
 	if (rv)
 		return rv;
 #endif /* CONFIG_KB800X_CUSTOM_XBAR */
@@ -443,12 +443,12 @@ static int kb800x_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	return kb800x_write(me, KB800X_REG_RESET, 0x00);
 }
 
-static int kb800x_init(const struct usb_mux *me)
+static int kb800x_init(const struct usb_mux *me, int port)
 {
 	bool unused;
 
-	gpio_set_level(kb800x_control[me->usb_port].usb_ls_en_gpio, 1);
-	gpio_set_level(kb800x_control[me->usb_port].retimer_rst_gpio, 1);
+	gpio_set_level(kb800x_control[port].usb_ls_en_gpio, 1);
+	gpio_set_level(kb800x_control[port].retimer_rst_gpio, 1);
 
 	/*
 	 * Delay after enabling power and releasing the reset to allow the power
@@ -457,17 +457,17 @@ static int kb800x_init(const struct usb_mux *me)
 	 * error.
 	 */
 	msleep(KB800X_POWER_ON_DELAY_MS);
-	if (!gpio_get_level(kb800x_control[me->usb_port].retimer_rst_gpio))
+	if (!gpio_get_level(kb800x_control[port].retimer_rst_gpio))
 		return EC_ERROR_NOT_POWERED;
 
-	return kb800x_set_state(me, USB_PD_MUX_NONE, &unused);
+	return kb800x_set_state(me, port, USB_PD_MUX_NONE, &unused);
 }
 
-static int kb800x_enter_low_power_mode(const struct usb_mux *me)
+static int kb800x_enter_low_power_mode(const struct usb_mux *me, int port)
 {
-	gpio_set_level(kb800x_control[me->usb_port].retimer_rst_gpio, 0);
+	gpio_set_level(kb800x_control[port].retimer_rst_gpio, 0);
 	/* Power-down sequencing must be handled in HW */
-	gpio_set_level(kb800x_control[me->usb_port].usb_ls_en_gpio, 0);
+	gpio_set_level(kb800x_control[port].usb_ls_en_gpio, 0);
 
 	return EC_SUCCESS;
 }
@@ -479,6 +479,7 @@ static int console_command_kb800x_xfer(int argc, const char **argv)
 	char rw, *e;
 	int rv, port, reg, val;
 	uint8_t data;
+	const struct usb_mux_chain *mux_chain;
 	const struct usb_mux *mux;
 
 	if (argc < 4)
@@ -489,15 +490,17 @@ static int console_command_kb800x_xfer(int argc, const char **argv)
 	if (*e || !board_is_usb_pd_port_present(port))
 		return EC_ERROR_PARAM1;
 
-	mux = &usb_muxes[port];
-	while (mux) {
-		if (mux->driver == &kb800x_usb_mux_driver)
+	mux_chain = &usb_muxes[port];
+	while (mux_chain) {
+		if (mux_chain->mux->driver == &kb800x_usb_mux_driver)
 			break;
-		mux = mux->next_mux;
+		mux_chain = mux_chain->next;
 	}
 
-	if (!mux)
+	if (!mux_chain)
 		return EC_ERROR_PARAM1;
+
+	mux = mux_chain->mux;
 
 	/* Validate r/w selection */
 	rw = argv[2][0];
