@@ -33,6 +33,29 @@
       "message": "Remove, that\u0027s already the default for booleans.",
       "revId": "4f421c06be4007334cb040fa4db41a84a9d8807d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc69bd0_9df25b94",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-01T20:54:07Z",
+      "side": 1,
+      "message": "For the boards where you are deleting this enum-name, is this gpio used at all any more? Maybe just delete it completely.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 18
+      },
+      "revId": "4f421c06be4007334cb040fa4db41a84a9d8807d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
