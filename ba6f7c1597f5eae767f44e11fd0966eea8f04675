@@ -69,6 +69,24 @@
       "parentUuid": "838fa3e9_b30fd02c",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56ce49f_241a0359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-01T20:11:52Z",
+      "side": 1,
+      "message": "Sounds good! Here are the numbers I collected on the Icetower:\n\n```\n$ dut-control fpmcu_slp_alt:off\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   3890    15.39    5.40   106.97     9.55\n@@    pp3300_dx_fp_mv   3890  2842.15    6.53  2856.00  2824.00\n@@    pp3300_dx_fp_mw   3890     0.03    0.07     0.23     0.00\n@@   pp3300_dx_mcu_mv   3890  2834.24    7.10  2848.00  2816.00\n@@   pp3300_dx_mcu_mw   3890    38.78    0.20    39.76    38.18\n\n\n$ dut-control fpmcu_slp_alt:on\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   2538    23.57   10.24   123.05    13.36\n@@    pp3300_dx_fp_mv   2538  2861.81    4.44  2872.00  2840.00\n@@    pp3300_dx_fp_mw   2538     0.01    0.04     0.23     0.00\n@@   pp3300_dx_mcu_mv   2538  2859.10    5.81  2872.00  2832.00\n@@   pp3300_dx_mcu_mw   2538     5.42    0.36    13.48     4.35\n```\n\nDo they look reasonable?",
+      "parentUuid": "2286ac5c_690610d8",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
