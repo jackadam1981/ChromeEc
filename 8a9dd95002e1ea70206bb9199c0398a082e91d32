@@ -69,6 +69,24 @@
       "parentUuid": "846d5bd2_3fe6494b",
       "revId": "8a9dd95002e1ea70206bb9199c0398a082e91d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "902858c2_1dd39f7d",
+        "filename": "zephyr/dts/bindings/battery/as3gwqd3jb,c490-42.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1520632
+      },
+      "writtenOn": "2022-07-01T03:16:46Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3713881/2/board/mithrax/battery.c#92\nThis is the ManufacturerName provided by the manufacturer, and there is another project written like this, all according to the spec provided by the manufacturer",
+      "parentUuid": "477aca6d_1185949f",
+      "revId": "8a9dd95002e1ea70206bb9199c0398a082e91d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
