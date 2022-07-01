@@ -145,3 +145,22 @@ enum ioexpander_id {
 const struct gpio_dt_spec *gpio_get_dt_spec(enum gpio_signal signal);
 
 #undef IOEXPANDER_ID_FROM_INST_WITH_COMMA
+
+/*
+ * Create a list of aliases to allow remapping of aliased names.
+ */
+#define GPIO_DT_MK_ALIAS(id)	\
+enum { \
+  DT_STRING_UPPER_TOKEN(id, alias) = DT_STRING_UPPER_TOKEN(id, enum_name) \
+};
+
+#define GPIO_DT_ALIAS_LIST(id)	\
+	COND_CODE_1(DT_NODE_HAS_PROP(id, alias),  \
+		    (GPIO_DT_MK_ALIAS(id)), \
+		    ())
+
+#if DT_NODE_EXISTS(DT_PATH(named_gpios))
+	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_DT_ALIAS_LIST)
+#endif
+#undef GPIO_DT_ALIAS_LIST
+#undef GPIO_DT_MK_ALIAS
