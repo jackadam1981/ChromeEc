@@ -41,19 +41,38 @@
 
 #define GPIO_SIGNAL(id) GPIO_SIGNAL_NAME(id)
 #define GPIO_SIGNAL_WITH_COMMA(id) GPIO_SIGNAL(id),
+
+/*
+ * Currently there is no macro to get a STRING_UPPER_TOKEN
+ * from an element of a string array, so make one.
+ */
+#define GPIO_UNIMPL_TOKEN(id, prop, idx) \
+	DT_CAT6(id, _P_, prop, _IDX_, idx, _UPPER_TOKEN)
+
+#define GPIO_UNIMPL(id, prop, idx) \
+	GPIO_UNIMPL_TOKEN(id, prop, idx) = GPIO_UNIMPLEMENTED,
+
+#define GPIO_UNIMPL_LIST(id) DT_FOREACH_PROP_ELEM(id, names, GPIO_UNIMPL)
+
 enum gpio_signal {
 	GPIO_UNIMPLEMENTED = -1,
 #if DT_NODE_EXISTS(DT_PATH(named_gpios))
 	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_SIGNAL_WITH_COMMA)
 #endif
 		GPIO_COUNT,
-	GPIO_LIMIT = 0x0FFF,
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_unimplemented_gpios)
+	DT_FOREACH_STATUS_OKAY(cros_ec_unimplemented_gpios, GPIO_UNIMPL_LIST)
+#endif
+		GPIO_LIMIT = 0x0FFF,
 
 	IOEX_SIGNAL_START = GPIO_LIMIT + 1,
 	IOEX_SIGNAL_END = IOEX_SIGNAL_START,
 	IOEX_LIMIT = 0x1FFF,
 };
 #undef GPIO_SIGNAL_WITH_COMMA
+#undef GPIO_UNIMPL_LIST
+#undef GPIO_UNIMPL
+#undef GPIO_UNIMPL_TOKEN
 
 BUILD_ASSERT(GPIO_COUNT < GPIO_LIMIT);
 
