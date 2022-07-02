@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57c626d7_a8c9b796",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-02T00:36:00Z",
+      "side": 1,
+      "message": "I tried to think of a way, but there\u0027s no easy way to figure this out.\n\nI do have a couple of alternatives that may be worth considering.\nThere are a couple of other pesky defines in gpio_map.h that use a redefinition to GPIO_UNIMPLEMENTED to essentially null out  a GPIO reference in common code (and GPIO_ENTERING_RW is another example of that). My first inclination was to use Kconfig to properly option the code, but it gets messy (the ones in question is the skyrim/guybrush redefinition of GPIO_PCH_SYS_PWROK and the intelrvp redefinition of GPIO_EN_PP5000).\nI could create a named-gpios-unimplemented compatible and have these GPIOs added to that. I could also used that for GPIO_ENTERING_RW as well.\nAlternatively I could make the gpio phandle in named-gpios optional, and if it is missing, use GPIO_UNIMPLEMENTED (-1) for it - I prefer the former approach, since that seems more obvious and cleaner.\n\nIt seemms a bit of a crude approach to redefine these GPIOs to GPIO_UNIMPLEMENTED, but this is mostly to solve legacy issues, so I think I have come around to seeing that this may be the best compromise. Thoughts welcome.",
+      "parentUuid": "b684898d_bd2f000e",
+      "revId": "4f421c06be4007334cb040fa4db41a84a9d8807d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be27921a_81a620c5",
         "filename": "zephyr/Kconfig.system",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-01T13:43:52Z",
       "side": 1,
       "message": "Remove, that\u0027s already the default for booleans.",
+      "revId": "4f421c06be4007334cb040fa4db41a84a9d8807d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b30afea_b6472f07",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-02T00:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be27921a_81a620c5",
       "revId": "4f421c06be4007334cb040fa4db41a84a9d8807d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2022-07-01T20:54:07Z",
       "side": 1,
       "message": "For the boards where you are deleting this enum-name, is this gpio used at all any more? Maybe just delete it completely.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 18
+      },
+      "revId": "4f421c06be4007334cb040fa4db41a84a9d8807d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05286dd0_7e0d178b",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-02T00:36:00Z",
+      "side": 1,
+      "message": "It\u0027s hard to know exactly why these boards define these GPIOs - I am loathe to just delete them, because then they won\u0027t appear in the gpioget/gpioset list, and the GPIO should be maybe put into the unused-gpios list.\nI think it should be a board-maintainer decision to delete them.",
+      "parentUuid": "4bc69bd0_9df25b94",
       "range": {
         "startLine": 113,
         "startChar": 2,
