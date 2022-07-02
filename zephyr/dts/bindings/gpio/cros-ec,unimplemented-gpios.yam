@@ -1,0 +1,16 @@
+description: Unimplemented GPIOs for legacy GPIO enum names
+
+compatible: "cros-ec,unimplemented-gpios"
+
+properties:
+  names:
+    description:
+      The set of GPIO names that are to be mapped to
+      GPIO_UNIMPLEMENTED.
+
+      This is used to safely neutralise GPIO references in legacy
+      common code so that that operations on that GPIO are
+      null. This avoids having to conditionally compile out these
+      references. This should only be used for legacy code.
+    type: string-array
+    required: true
