@@ -308,6 +308,11 @@
 		};
 	};
 
+	unimplemented_gpios {
+		compatible = "cros-ec,unimplemented-gpios";
+		enum-names = "GPIO_EN_PP5000";
+	};
+
 	def-lvol-io-list {
 		compatible = "nuvoton,npcx-lvolctrl-def";
 		lvol-io-pads = <

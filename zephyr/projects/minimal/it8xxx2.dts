@@ -15,4 +15,8 @@
 			gpios = <&gpioa 0 GPIO_INPUT>;
 		};
 	};
+	unimplemented_gpios {
+		compatible = "cros-ec,unimplemented-gpios";
+		enum-names = "GPIO_ENTERING_RW";
+	};
 };
