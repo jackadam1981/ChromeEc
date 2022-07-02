@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a520de7_d215c683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2022-07-02T14:33:48Z",
+      "side": 1,
+      "message": "\u003e Patch Set 3: Code-Review+1\n\u003e \n\u003e By voting Code-Review+1 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1296157\u003e:\n\u003e * zephyr/projects/nissa/nivviks_overlay.dts\n\u003e * zephyr/projects/nissa/prj.conf\n\u003e \n\nFew queries:\n(1).\nI think prj.conf change is common to all Nissa variants. But here modifications done only for Nivviks(nivviks_overlay.dts), is it not required similar changes in all other variants nereid_overlay.dts, nirwen_overlay.dts ...\n\n(2).\nAny reason why this issue is seen in Nivviks and not seen in legacy platforms ?",
+      "revId": "d93657f81ba0ea3d64eae212fc4ff469629d2aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
