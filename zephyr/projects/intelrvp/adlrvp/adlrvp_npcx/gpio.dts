@@ -338,4 +338,8 @@
 			enum-name = "IOEX_USB_C2_C3_OC";
 		};
 	};
+	unimplemented_gpios {
+		compatible = "unimplemented-gpios";
+		enum-names = "GPIO_EN_PP5000";
+	};
 };

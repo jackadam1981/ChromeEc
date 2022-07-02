@@ -184,6 +184,10 @@
 			};
 		};
 	};
+	unimplemented_gpios {
+		compatible = "unimplemented-gpios";
+		enum-names = "GPIO_ENTERING_RW", "GPIO_PCH_SYS_PWROK";
+	};
 
 	/* Rotation matrices for motion sensors. */
 	motionsense-rotation-ref {

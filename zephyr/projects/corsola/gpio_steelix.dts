@@ -221,6 +221,10 @@
 			enum-name = "GPIO_CCD_MODE_ODL";
 		};
 	};
+	unimplemented_gpios {
+		compatible = "unimplemented-gpios";
+		enum-names = "GPIO_ENTERING_RW";
+	};
 
 	/*
 	 * aliases for sub-board GPIOs
