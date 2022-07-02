@@ -16,6 +16,10 @@
 			HOST_EVENT_HANG_DETECT |
 			HOST_EVENT_MODE_CHANGE)>;
 	};
+	unimplemented_gpios {
+		compatible = "unimplemented-gpios";
+		enum-names = "GPIO_ENTERING_RW";
+	};
 
 	ec-mkbp-event-wakeup-mask {
 		compatible = "ec-wake-mask-event";

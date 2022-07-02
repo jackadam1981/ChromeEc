@@ -306,6 +306,10 @@
 			no-auto-init;
 		};
 	};
+	unimplemented_gpios {
+		compatible = "unimplemented-gpios";
+		enum-names = "GPIO_ENTERING_RW";
+	};
 
 	usba-port-enable-list {
 		compatible = "cros-ec,usba-port-enable-pins";
