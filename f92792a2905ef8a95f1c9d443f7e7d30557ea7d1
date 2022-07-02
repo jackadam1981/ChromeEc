@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd68af09_3b2d7c12",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-02T00:08:25Z",
+      "side": 1,
+      "message": "You\u0027re right, we could actually make enum-names a string array, and then we wouldn\u0027t need the \u0027alias\u0027 at all.\nMaybe overall that\u0027s a better approach.\nLet me give that a try and we will see how it goes.",
+      "parentUuid": "d46abb65_4387b9ff",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "975ae37f_c75fac2c",
         "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-01T13:41:05Z",
       "side": 1,
       "message": "format with `clang-format`",
+      "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4607f44c_999e649d",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-02T00:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "975ae37f_c75fac2c",
       "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,24 @@
       "writtenOn": "2022-07-01T13:41:05Z",
       "side": 1,
       "message": "Any chance we can combine these into our `enum gpio_signal`, so they have the same type as a gpio_signal?",
+      "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d23d48_18933d5a",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-02T00:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75668f06_cfb07eea",
       "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
