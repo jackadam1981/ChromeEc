@@ -22,6 +22,30 @@
       },
       "revId": "7eac20bc60b5cd624dbf220e50cff6d69f5b114a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73fd3635_1ff64ee5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 7207,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-07-02T01:38:46Z",
+      "side": 1,
+      "message": "This is returned on the libec using the function call GetConfig() which returns Resp-\u003ergbkbd_type. For that call, having rgbkbd is clearer.",
+      "parentUuid": "6bda3134_f299926e",
+      "range": {
+        "startLine": 7207,
+        "startChar": 9,
+        "endLine": 7207,
+        "endChar": 16
+      },
+      "revId": "7eac20bc60b5cd624dbf220e50cff6d69f5b114a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
