@@ -1630,7 +1630,18 @@ static bool common_src_snk_dpm_requests(int port)
 		return true;
 	} else if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES) &&
 		   PE_CHK_DPM_REQUEST(port, DPM_REQUEST_SEND_ALERT)) {
-		if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30) {
+		/*
+		 * The Alert Data Object (ADO) definition changed between USB PD
+		 * Revision 3.0 and 3.1. Clear reserved bits from the USB PD 3.0
+		 * ADO before sending to a USB PD 3.0 partner and block the
+		 * message if the ADO is empty or partner is USB PD 2.0.
+		 */
+		if (pe[port].partner_rmdo.major_rev == 0) {
+			pe[port].ado &= ~(ADO_EXTENDED_ALERT_EVENT |
+					  ADO_EXTENDED_ALERT_EVENT_TYPE);
+		}
+
+		if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30 || !pe[port].ado) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_SEND_ALERT);
 			return false;
 		}
