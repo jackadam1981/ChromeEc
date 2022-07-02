@@ -16,6 +16,29 @@
       "message": "Hi Diana and Vijay,\ncan you take a look at this CL to block extended alert events from USB PD 3.0 devices?",
       "revId": "bf6734d7971894ab68c7883a1c8d3461a5bf5522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c27b56_f3538791",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-02T18:48:10Z",
+      "side": 1,
+      "message": "This is a bit of a shortcut. It\u0027s meant to catch USB PD 3.0 devices. Because Get_Revison/Revision was added in USB PD 3.1 we can just check that the major revision field is zero which we would get if the partner responded to Get_Revision with Not_Supported.",
+      "range": {
+        "startLine": 1639,
+        "startChar": 6,
+        "endLine": 1639,
+        "endChar": 42
+      },
+      "revId": "bf6734d7971894ab68c7883a1c8d3461a5bf5522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
