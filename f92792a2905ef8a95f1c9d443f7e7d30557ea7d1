@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c735cdd_c8bcb496",
+        "filename": "zephyr/dts/bindings/gpio/named-gpios.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-03T03:27:49Z",
+      "side": 1,
+      "message": "Unfortunately, if string-array is used for the enum-name, the enum list that is used for validation doesn\u0027t work if 2 enum-names are used in a config.\nI think we are stuck using this alias approach.",
+      "parentUuid": "dd68af09_3b2d7c12",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "f92792a2905ef8a95f1c9d443f7e7d30557ea7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "975ae37f_c75fac2c",
         "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
         "patchSetId": 3
