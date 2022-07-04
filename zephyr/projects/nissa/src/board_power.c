@@ -167,3 +167,31 @@ int board_power_signal_set(enum power_signal signal, int value)
 {
 	return -EINVAL;
 }
+
+#ifdef CONFIG_SOC_IT8XXX2
+/*
+ * When eSPI CS# is held low, it prevents IT8xxx2 from entering deep doze.
+ * To allow deep doze and save power, disable the eSPI inputs while the AP is
+ * in G3.
+ */
+static void espi_enable_callback(struct ap_power_ev_callback *cb,
+				 struct ap_power_ev_data data)
+{
+	espi_it8xxx2_enable_pad_ctrl(dev, data.event == AP_POWER_PRE_INIT);
+}
+
+static int init_espi_enable_callback(const struct device *unused)
+{
+	static struct ap_power_ev_callback cb;
+
+	ap_power_ev_init_callback(&cb, AP_POWER_PRE_INIT | AP_POWER_HARD_OFF);
+	ap_power_ev_add_callback(&cb);
+
+	if (ap_power_in_state(AP_POWER_STATE_HARD_OFF)) {
+		espi_it8xxx2_enable_pad_ctrl(dev, false);
+	}
+
+	return 0;
+}
+SYS_INIT(init_espi_enable_callback, APPLICATION, 10);
+#endif
