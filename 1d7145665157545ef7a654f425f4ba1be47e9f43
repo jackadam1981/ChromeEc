@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6723845e_1b004e93",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2755,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-07-04T03:20:44Z",
+      "side": 1,
+      "message": "today, i will try remove some settings,and test again, The current patch is provided by the manufacturer",
+      "parentUuid": "c9c5ffcc_80bee60a",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "443eec09_560ffd4e",
         "filename": "common/usbc_intr_task.c",
         "patchSetId": 4
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-27T18:37:31Z",
       "side": 1,
       "message": "Does BIST traffic on the ANX3447 (with the other fixes in place) cause an apparent interrupt storm?\n\nIf not, this seems superfluous. We wouldn\u0027t want even normal BIST traffic to be able to watchdog us.",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de4e135_ffe7a5b9",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-07-04T03:20:44Z",
+      "side": 1,
+      "message": "Yes, we learned from the vendor that anx3447 itself does not support BIST mode",
+      "parentUuid": "443eec09_560ffd4e",
       "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
