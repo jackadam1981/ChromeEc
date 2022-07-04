@@ -93,6 +93,24 @@
       "parentUuid": "a352c8f9_ba08939a",
       "revId": "ae1d24f272ce32340947f9bcc769f64b5f3540a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52edaa5_65de5746",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3931,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-04T14:17:12Z",
+      "side": 1,
+      "message": "Hi Jameson \u0026 Diana! I tested CL which Jameson has pushed and seems working fine, but a message that gives a wrong impression appears on every clearing of dPM request. I have commented in the cross bug with details.\nWith this solution, as we send the request only based on pd revision, we wont probably hit any scenario requiring handling of unsupported alert request itself for port partners\u0027 rev \u003c3.1.",
+      "parentUuid": "fa06f0ce_32909d3f",
+      "revId": "ae1d24f272ce32340947f9bcc769f64b5f3540a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
