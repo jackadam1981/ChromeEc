@@ -17,7 +17,7 @@
 #include "gpio_signal.h"
 #include "gpio/gpio.h"
 
-LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
+LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
 #define X86_NON_DSX_ADLP_NONPWRSEQ_FORCE_SHUTDOWN_TO_MS 5
 
@@ -167,3 +167,51 @@ int board_power_signal_set(enum power_signal signal, int value)
 {
 	return -EINVAL;
 }
+
+#ifdef CONFIG_SOC_IT8XXX2
+/*
+ * When eSPI CS# is held low, it prevents IT8xxx2 from entering deep doze.
+ * To allow deep doze and save power, disable the eSPI inputs while the AP is
+ * in G3.
+ */
+#include <soc_espi.h>
+
+static const struct device *const ESPI_DEVICE =
+	DEVICE_DT_GET(DT_NODELABEL(espi0));
+
+static void espi_enable_callback(struct ap_power_ev_callback *cb,
+				 struct ap_power_ev_data data)
+{
+	bool enable = data.event == AP_POWER_PRE_INIT;
+
+	LOG_DBG("%sabling eSPI in response to AP power event",
+		enable ? "en" : "dis");
+	espi_it8xxx2_enable_pad_ctrl(ESPI_DEVICE,
+				     data.event == AP_POWER_PRE_INIT);
+}
+
+static int init_espi_enable_callback(const struct device *unused)
+{
+	static struct ap_power_ev_callback cb;
+	int key;
+
+	ap_power_ev_init_callback(&cb, espi_enable_callback,
+				  AP_POWER_PRE_INIT | AP_POWER_HARD_OFF);
+	ap_power_ev_add_callback(&cb);
+
+	/*
+	 * Critical section: AP power must not change state between read and
+	 * update, otherwise we might be leaving it disabled if it leaves G3
+	 * after we read state but before we disable eSPI.
+	 */
+	key = irq_lock();
+	if (ap_power_in_state(AP_POWER_STATE_HARD_OFF)) {
+		LOG_DBG("AP off; disabling eSPI for now");
+		espi_it8xxx2_enable_pad_ctrl(ESPI_DEVICE, false);
+	}
+	irq_unlock(key);
+
+	return 0;
+}
+SYS_INIT(init_espi_enable_callback, APPLICATION, 10);
+#endif
