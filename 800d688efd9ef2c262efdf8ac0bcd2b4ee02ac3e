@@ -33,6 +33,24 @@
       "message": "I\u0027m not clear on how this is supposed to work. If the RX bit is being set, and we\u0027re skipping the code that clears it, won\u0027t we just end up back in this function?",
       "revId": "800d688efd9ef2c262efdf8ac0bcd2b4ee02ac3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d612404_ab23be77",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-07-04T08:50:14Z",
+      "side": 1,
+      "message": "While BIST data send to anx3447, tcpci will always generate alert to EC TCPM. So just ignore all message alert here, otherwise read BIST data will cost many times.",
+      "parentUuid": "cd2512a6_fb563968",
+      "revId": "800d688efd9ef2c262efdf8ac0bcd2b4ee02ac3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
