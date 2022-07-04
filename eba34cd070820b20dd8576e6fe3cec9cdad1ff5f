@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74a62576_c9b8e575",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-07-04T07:53:29Z",
+      "side": 1,
+      "message": "SOC_USBPD_ITE_ACTIVE_PORT_COUNT is used in upstream and cros_ec drivers:\nIn upstream (PR: https://github.com/zephyrproject-rtos/zephyr/pull/47015), we define SOC_USBPD_ITE_ACTIVE_PORT_COUNT default value 0 for gpio driver (disable unused cc pins and configure as gpio). \n\nIn cros_ec, if we enable ITE on chip pd module, we re-configure SOC_USBPD_ITE_ACTIVE_PORT_COUNT default value to 1.\nIn it8xxx2.c pd driver it8xxx2_tcpm_hook_connect/disconnect() according CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT value, we scan the port to set sleep mask (CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT \nvalue depends on SOC_USBPD_ITE_ACTIVE_PORT_COUNT).\n\nCONFIG_PLATFORM_EC_* is only defined in cros_ec and the prefix is not suit for upstream, so I rename it to SOC_USBPD_ITE_ACTIVE_PORT_COUNT.",
+      "parentUuid": "56fdf8a1_0b4f0283",
+      "revId": "eba34cd070820b20dd8576e6fe3cec9cdad1ff5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b6744fd_c5c90dd9",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-04T03:23:24Z",
       "side": 1,
       "message": "This can be removed, since we\u0027re no longer hard-coding 2.",
+      "revId": "eba34cd070820b20dd8576e6fe3cec9cdad1ff5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5088abe6_c140b5e4",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-07-04T07:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b6744fd_c5c90dd9",
       "revId": "eba34cd070820b20dd8576e6fe3cec9cdad1ff5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
