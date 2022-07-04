@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fdf8a1_0b4f0283",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-04T03:23:24Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me why this was renamed. What\u0027s the reason for the change?",
+      "revId": "eba34cd070820b20dd8576e6fe3cec9cdad1ff5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b6744fd_c5c90dd9",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-04T03:23:24Z",
+      "side": 1,
+      "message": "This can be removed, since we\u0027re no longer hard-coding 2.",
+      "revId": "eba34cd070820b20dd8576e6fe3cec9cdad1ff5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
