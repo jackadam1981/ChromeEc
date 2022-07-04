@@ -70,6 +70,30 @@
       },
       "revId": "98e4c4cecf3cddb1937ff6908323ea6f69f0a056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc54c03_9d31c0a6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-04T10:31:24Z",
+      "side": 1,
+      "message": "Ah.. I uploaded the experiment code.\n\nThe 3/4 should be removed.",
+      "parentUuid": "b46926bd_70465872",
+      "range": {
+        "startLine": 565,
+        "startChar": 68,
+        "endLine": 565,
+        "endChar": 76
+      },
+      "revId": "98e4c4cecf3cddb1937ff6908323ea6f69f0a056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
