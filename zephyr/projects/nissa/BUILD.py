@@ -102,6 +102,7 @@ joxer = register_nissa_project(
     chip="it8xxx2",
     extra_dts_overlays=[
         here / "joxer_generated.dts",
+        here / "joxer_cbi.dts",
         here / "joxer_overlay.dts",
         here / "joxer_motionsense.dts",
         here / "joxer_keyboard.dts",
