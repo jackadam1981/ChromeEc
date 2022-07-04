@@ -46,6 +46,30 @@
       },
       "revId": "98e4c4cecf3cddb1937ff6908323ea6f69f0a056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46926bd_70465872",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1179294
+      },
+      "writtenOn": "2022-07-04T10:21:03Z",
+      "side": 1,
+      "message": "In the previous implementation, the 3/4 is IT8xxx2-specified.\nShould we remove it from the code? (We should not change other chips\u0027 CONFIG_FLASH_SIZE_BYTES definition)",
+      "parentUuid": "23973a10_1ee32c79",
+      "range": {
+        "startLine": 565,
+        "startChar": 68,
+        "endLine": 565,
+        "endChar": 76
+      },
+      "revId": "98e4c4cecf3cddb1937ff6908323ea6f69f0a056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
