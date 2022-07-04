@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10b4149_32c95270",
+        "filename": "zephyr/projects/corsola/src/krabby/led_tentacruel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2022-07-04T06:30:45Z",
+      "side": 1,
+      "message": "Add one space after \u0027{\u0027, before \u0027}\u0027.\nRemove one space before \u00273\u0027\n```\n{ LED_OFF, 3 * LED_ONE_SEC } },\n```\n\nOr you can try the clang-format.py command\n```\n.../src/platform/ec$ ../../repohooks/clang-format.py --commit d1fae697de25077b5cda712657bd5cb58e9b8177 --fix\n\n.../src/platform/ec$ git diff\ndiff --git a/zephyr/projects/corsola/src/krabby/led_tentacruel.c b/zephyr/projects/corsola/src/krabby/led_tentacruel.c\nindex 810e61fafc..18a66752e2 100644\n--- a/zephyr/projects/corsola/src/krabby/led_tentacruel.c\n+++ b/zephyr/projects/corsola/src/krabby/led_tentacruel.c\n@@ -44,7 +44,7 @@ __override struct led_descriptor\n                                                 { LED_OFF, 3 * LED_ONE_SEC } },\n                [STATE_DISCHARGE_S3] \u003d { { EC_LED_COLOR_WHITE,\n                                           1 * LED_ONE_SEC },\n-                                        {LED_OFF,  3 * LED_ONE_SEC} },\n+                                        { LED_OFF, 3 * LED_ONE_SEC } },\n                [STATE_DISCHARGE_S5] \u003d { { LED_OFF, LED_INDEFINITE } },\n                [STATE_BATTERY_ERROR] \u003d { { EC_LED_COLOR_AMBER,\n                                            1 * LED_ONE_SEC },\n\n```",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "d1fae697de25077b5cda712657bd5cb58e9b8177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
