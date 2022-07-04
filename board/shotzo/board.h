@@ -13,7 +13,6 @@
 #include "baseboard.h"
 
 /* Battery */
-#define CONFIG_BATTERY_FUEL_GAUGE
 #define CONFIG_BATTERY_PRESENT_CUSTOM
 
 /* Charger */
@@ -60,9 +59,14 @@
 /* LED backlight controller */
 #define CONFIG_LED_DRIVER_OZ554
 
+/* Include math_util for round_divide used in charge_state_v2 */
+#define CONFIG_MATH_UTIL
+
 /* Unused Features */
 #undef CONFIG_BACKLIGHT_LID
+#undef CONFIG_BATTERY_CUT_OFF
 #undef CONFIG_BATTERY_PRESENT_GPIO
+#undef CONFIG_BATTERY_SMART
 #undef CONFIG_CMD_KEYBOARD
 #undef CONFIG_HIBERNATE
 #undef CONFIG_KEYBOARD_BOOT_KEYS
@@ -102,21 +106,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_3,
 	TEMP_SENSOR_4,
 	TEMP_SENSOR_COUNT
-};
-
-/* List of possible batteries */
-enum battery_type {
-	BATTERY_DYNAPACK_COS,
-	BATTERY_DYNAPACK_ATL,
-	BATTERY_DYNAPACK_HIGHPOWER,
-	BATTERY_DYNAPACK_BYD,
-	BATTERY_SAMSUNG_SDI,
-	BATTERY_SIMPLO_COS,
-	BATTERY_SIMPLO_HIGHPOWER,
-	BATTERY_COS,
-	BATTERY_COS_2,
-	BATTERY_ATL,
-	BATTERY_TYPE_COUNT,
 };
 
 enum charge_port {
