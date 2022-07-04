@@ -34,6 +34,24 @@
       "parentUuid": "4a520de7_d215c683",
       "revId": "d93657f81ba0ea3d64eae212fc4ff469629d2aa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "431f7ca3_fe550298",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-07-04T05:35:25Z",
+      "side": 1,
+      "message": "Thanks. \n(1).\nThe change is expended for all the derivatives of nissa, yes similar change is applicable for all derivatives.\n(2)\nIt depends on the platform implementation, legacy platforms like voxel, gimble, redrix uses EC DSW PWR OK GPIO to check if the sensor is powered or not.\n(3)\nFrom the code, I do not see an IIR implementation but the values read from sensor are liner interpolated. API  thermistor_linear_interpolate()",
+      "parentUuid": "e1c3677f_8c6486a9",
+      "revId": "d93657f81ba0ea3d64eae212fc4ff469629d2aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
