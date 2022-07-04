@@ -16,6 +16,24 @@
       "message": "Maybe this functionality should be part of nereid_subboard_config rather than a separate function.",
       "revId": "9d2a0ac327eab70a042da23ed010e959a26793ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f249b68_01b7d8f5",
+        "filename": "zephyr/projects/nissa/src/nereid/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-04T03:28:03Z",
+      "side": 1,
+      "message": "Agree, this should go in the same block where we disable the port 1 charger task. That\u0027s common to all boards so it should be gated on `CONFIG_SOC_IT8XXX2`, but that\u0027s otherwise desirable so it applies to all boards using the same EC.",
+      "parentUuid": "7b0f58fb_51993607",
+      "revId": "9d2a0ac327eab70a042da23ed010e959a26793ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
