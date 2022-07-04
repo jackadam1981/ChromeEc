@@ -586,3 +586,26 @@ const struct temp_sensor_t temp_sensors[] = {
 			   .idx = ADC_TEMP_SENSOR_4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+static void board_usb_tc_connect(void)
+{
+	gpio_set_level(GPIO_EN_PP8000_PD, 0);
+
+	/* Control buck voltage regulator between barrel jack and type-c */
+	/*
+	 * int port = TASK_ID_TO_PD_PORT(task_get_current());
+	 * if (board_vbus_source_enabled(port))
+	 * gpio_set_level(GPIO_EN_PP8000_PD, 1);
+	 * else
+	 * gpio_set_level(GPIO_EN_PP8000_PD, 0);
+	 */
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, board_usb_tc_connect, HOOK_PRIO_DEFAULT);
+
+static void board_usb_tc_disconnect(void)
+{
+	/* Disable buck voltage regulator between barrel jack and type-c */
+	gpio_set_level(GPIO_EN_PP8000_PD, 0);
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, board_usb_tc_disconnect,
+	     HOOK_PRIO_DEFAULT);
