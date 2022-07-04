@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e46fe76_2730a120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-04T07:10:35Z",
+      "side": 1,
+      "message": "Minor nits.",
+      "revId": "5bf8bfcb242e6cf18a4c0aa94c80b6320887f83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c80ef10_7dd099e5",
+        "filename": "zephyr/dts/bindings/battery/smp,l22m3pg1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-04T07:10:35Z",
+      "side": 1,
+      "message": "Maybe a little more in the description (such as battery capacity/technology etc.)",
+      "revId": "5bf8bfcb242e6cf18a4c0aa94c80b6320887f83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7d3894_a0f66887",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,l22d3pg1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-04T07:10:35Z",
+      "side": 1,
+      "message": "We seem to be dropping the \"All rights reserved.\" phrase.",
+      "revId": "5bf8bfcb242e6cf18a4c0aa94c80b6320887f83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e1fb843_386aeb71",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,l22d3pg1.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-04T07:10:35Z",
+      "side": 1,
+      "message": "Again, please add the technology (e.g LiPo) and capacity.",
+      "revId": "5bf8bfcb242e6cf18a4c0aa94c80b6320887f83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
