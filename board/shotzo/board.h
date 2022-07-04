@@ -12,9 +12,6 @@
 #define VARIANT_DEDEDE_EC_IT8320
 #include "baseboard.h"
 
-/* Battery */
-#define CONFIG_BATTERY_FUEL_GAUGE
-
 /* Charger */
 #define CONFIG_CHARGER_SM5803 /* C0 and C1: Charger */
 #define PD_MAX_VOLTAGE_MV 15000
@@ -61,6 +58,7 @@
 
 /* Unused Features */
 #undef CONFIG_BACKLIGHT_LID
+#undef CONFIG_BATTERY_CUT_OFF
 #undef CONFIG_BATTERY_PRESENT_GPIO
 #undef CONFIG_CMD_KEYBOARD
 #undef CONFIG_HIBERNATE
@@ -101,21 +99,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_3,
 	TEMP_SENSOR_4,
 	TEMP_SENSOR_COUNT
-};
-
-/* List of possible batteries */
-enum battery_type {
-	BATTERY_DYNAPACK_COS,
-	BATTERY_DYNAPACK_ATL,
-	BATTERY_DYNAPACK_HIGHPOWER,
-	BATTERY_DYNAPACK_BYD,
-	BATTERY_SAMSUNG_SDI,
-	BATTERY_SIMPLO_COS,
-	BATTERY_SIMPLO_HIGHPOWER,
-	BATTERY_COS,
-	BATTERY_COS_2,
-	BATTERY_ATL,
-	BATTERY_TYPE_COUNT,
 };
 
 enum charge_port {
