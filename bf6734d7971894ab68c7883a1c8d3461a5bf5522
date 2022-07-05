@@ -39,6 +39,29 @@
       },
       "revId": "bf6734d7971894ab68c7883a1c8d3461a5bf5522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a4ba62_d713b9d8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1646,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-05T20:59:59Z",
+      "side": 1,
+      "message": "Returning false here leads to a \"Unhandled DPM Request 10000 received\" message in the EC console. If this is an issue, we can instead do this check in pe_send_alert_msg (L1024 of src/platform/ec/common/usb_common.c). That way, we would not initiate the DPM request when the ADO is entirely cleared due to revision and still only check for revision in one place.\n\nEither work for me, should I change this CL to have the check in usb_common.c?",
+      "range": {
+        "startLine": 1646,
+        "startChar": 3,
+        "endLine": 1646,
+        "endChar": 16
+      },
+      "revId": "bf6734d7971894ab68c7883a1c8d3461a5bf5522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
