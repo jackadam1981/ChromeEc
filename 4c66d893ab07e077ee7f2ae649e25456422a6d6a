@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231a4be3_9af80ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-07-05T03:32:48Z",
+      "side": 1,
+      "message": "Captured the error log from the CQ:\n\n```\nSTART - test_bb_set_state\n[24.125100 C1: Exit Low Power Mode]\n[24.125100 C1: Unattached.SNK]\n[24.140400 C1: Retimer I2C write err\u003d5]\n    Assertion failed at CMAKE_SOURCE_DIR/src/bb_retimer.c:168: bb_retimer_test_bb_set_state: (exp_conn not equal to conn)\nExpected state 0x181, got 0x81\n FAIL - test_bb_set_state in 0.41 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE bb_retimer failed.\nRunning TESTSUITE bc12\n```",
+      "revId": "4c66d893ab07e077ee7f2ae649e25456422a6d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
