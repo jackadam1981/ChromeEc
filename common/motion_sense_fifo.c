@@ -148,7 +148,8 @@ static void fifo_pop(void)
 	fifo_lost++;
 
 	/* Increment lost counter if we have valid data. */
-	if (!is_timestamp(head))
+	if (!is_timestamp(head) &&
+		(head->sensor_num < motion_sensor_count))
 		motion_sensors[head->sensor_num].lost++;
 
 	/*
@@ -465,6 +466,11 @@ void motion_sense_fifo_commit_data(void)
 			continue;
 
 		period = motion_sensors[i].collection_rate;
+
+		/* When sensor number is more then reality sensors, skip it. */
+		if (i >= motion_sensor_count)
+			continue;
+
 		/*
 		 * Clamp the sample period to the MIN of collection_rate and the
 		 * window length / (sample count - 1).
@@ -502,6 +508,10 @@ commit_data_end:
 		/* Get the sensor number and point to the timestamp entry. */
 		sensor_num = data->sensor_num;
 		data = peek_fifo_staged(i - 1);
+
+		/* When sensor number is more then reality sensors, skip it. */
+		if (sensor_num >= motion_sensor_count)
+			continue;
 
 		/* Verify we're pointing at a timestamp. */
 		if (!is_timestamp(data)) {
