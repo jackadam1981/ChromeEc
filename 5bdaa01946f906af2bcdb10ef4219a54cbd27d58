@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd598cc4_2b0d262a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-05T00:52:00Z",
+      "side": 1,
+      "message": "dummy?",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "5bdaa01946f906af2bcdb10ef4219a54cbd27d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e046f19e_0e6ea8e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-05T00:52:00Z",
+      "side": 1,
+      "message": "If we want to use dummy battery for Vsys. We may try to remove manuf_name or other battery info while bringing up.",
+      "revId": "5bdaa01946f906af2bcdb10ef4219a54cbd27d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
