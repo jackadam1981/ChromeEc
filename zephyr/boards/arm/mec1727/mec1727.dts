@@ -9,6 +9,7 @@
 #include <cros/thermistor/thermistor.dtsi>
 #include <dt-bindings/gpio_defines.h>
 #include <microchip/mec1727nsz.dtsi>
+#include <zephyr/dt-bindings/pwm/pwm.h>
 
 / {
 	model = "MEC1727";

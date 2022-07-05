@@ -165,7 +165,7 @@
 		led_white_l: led-2-l {
 			gpios = <&gpio_140_176 11 GPIO_OUTPUT_HIGH>;
 		}; /* GPIO153 */
-		therm_sen_mecc {
+		gpio_fan_control: therm-sen-mecc {
 			gpios = <&gpio_140_176 1 GPIO_OUTPUT_LOW>;
 		}; /* GPIO141 */
 		smb_bs_clk {
