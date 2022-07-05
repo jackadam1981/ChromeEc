@@ -411,7 +411,7 @@ static enum ec_error_list rt9490_get_actual_current(int chgnum, int *current)
 	uint16_t reg_val;
 
 	RETURN_ERROR(rt9490_read16(chgnum, RT9490_REG_IBAT_ADC, &reg_val));
-	*current = (int)reg_val * 1000;
+	*current = (int)reg_val;
 	return EC_SUCCESS;
 }
 
@@ -420,7 +420,7 @@ static enum ec_error_list rt9490_get_actual_voltage(int chgnum, int *voltage)
 	uint16_t reg_val;
 
 	RETURN_ERROR(rt9490_read16(chgnum, RT9490_REG_VBAT_ADC, &reg_val));
-	*voltage = (int)reg_val * 1000;
+	*voltage = (int)reg_val;
 	return EC_SUCCESS;
 }
 
@@ -435,7 +435,7 @@ static enum ec_error_list rt9490_get_vbus_voltage(int chgnum, int port,
 	uint16_t reg_val;
 
 	RETURN_ERROR(rt9490_read16(chgnum, RT9490_REG_VBUS_ADC, &reg_val));
-	*voltage = (int)reg_val * 1000;
+	*voltage = (int)reg_val;
 	return EC_SUCCESS;
 }
 
