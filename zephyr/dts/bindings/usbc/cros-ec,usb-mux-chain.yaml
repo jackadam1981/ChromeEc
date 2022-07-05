@@ -15,3 +15,9 @@ properties:
       traverses this list in the order specified. The phandles are references to
       cros-ec,usbc-mux nodes. All muxes has to be children of the same USB-C
       port.
+
+  alternative-chain:
+    type: boolean
+    description: |
+      Set if this is alternative USB-C muxes chain. It can be selected in
+      runtime using USB_MUX_ENABLE_ALTERNATIVE macro.
