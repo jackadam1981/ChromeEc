@@ -291,6 +291,25 @@
 	}
 
 /**
+ * @brief Helper macro to set chain structure value for @p idx mux
+ *
+ * @param chain_id Chain DTS node ID
+ * @param idx USB mux index
+ */
+#define USB_MUX_CHAIN_STRUCT_SET(chain_id, idx) \
+	(struct usb_mux_chain) USB_MUX_CHAIN_STRUCT_INIT(chain_id, idx)
+
+/**
+ * @brief Declaration of USB mux chain extern structure for @p idx mux in
+ *        @p chain_id chain
+ *
+ * @param chain_id USB mux chain node ID
+ * @param idx Place in chain
+ */
+#define USB_MUX_CHAIN_STRUCT_DECLARE_EXTERN_OP(chain_id, idx) \
+	extern USB_MUX_CHAIN_STRUCT_DECLARE(USB_MUX_CHAIN_PORT(chain_id), idx);
+
+/**
  * @brief Declaration of USB mux chain structure for @p idx mux in @p chain_id
  *        chain
  *
@@ -298,7 +317,7 @@
  * @param idx Place in chain
  */
 #define USB_MUX_CHAIN_STRUCT_DECLARE_OP(chain_id, idx) \
-	extern USB_MUX_CHAIN_STRUCT_DECLARE(USB_MUX_CHAIN_PORT(chain_id), idx);
+	USB_MUX_CHAIN_STRUCT_DECLARE(USB_MUX_CHAIN_PORT(chain_id), idx);
 
 /**
  * @brief Definition of USB mux chain structure for @p idx mux in @p chain_id
@@ -340,6 +359,17 @@
 	[USB_MUX_CHAIN_PORT(chain_id)] = USB_MUX_CHAIN_STRUCT_INIT(chain_id, 0),
 
 /**
+ * @brief Call @p op only if chain @p chain_id is not alternative
+ *
+ * @param chain_id Chain DTS node ID
+ * @param op Operation to perform on main USB mux chain
+ * @param ... Arguments to pass to the @p op operation
+ */
+#define USB_MUX_FOR_MAIN_CHAIN(chain_id, op, ...)         \
+	COND_CODE_0(DT_PROP(chain_id, alternative_chain), \
+		    (op(chain_id, ##__VA_ARGS__)), ())
+
+/**
  * @brief Call @p op for each USB mux chain
  *
  * @param op Operation to perform on USB mux chain
@@ -357,6 +387,37 @@
 	DT_FOREACH_STATUS_OKAY_VARGS(cros_ec_usb_mux_chain, op, __VA_ARGS__)
 
 /**
+ * @brief Set usb_mux_chain structure for mux @p idx in chain @p chain_id
+ *
+ * @param chain_id Alternative USB mux chain node ID
+ * @param idx Position of the mux in chain
+ */
+#define USB_MUX_SET_ALTERNATIVE(chain_id, idx)                         \
+	USB_MUX_CHAIN_STRUCT_NAME(idx, USB_MUX_CHAIN_PORT(chain_id)) = \
+		USB_MUX_CHAIN_STRUCT_SET(chain_id, idx);
+
+/**
+ * @brief Enable alternative USB mux chain
+ *
+ * @param chain_id Alternative USB mux chain node ID
+ */
+#define USB_MUX_ENABLE_ALTERNATIVE_NODE(chain_id)                     \
+	do {                                                          \
+		usb_muxes[USB_MUX_CHAIN_PORT(chain_id)] =             \
+			USB_MUX_CHAIN_STRUCT_SET(chain_id, 0);        \
+		USB_MUX_FOREACH_NO_FIRST_MUX(chain_id,                \
+					     USB_MUX_SET_ALTERNATIVE) \
+	} while (0)
+
+/**
+ * @brief Enable alternative USB mux chain
+ *
+ * @param nodelabel Label of alternative USB mux chain
+ */
+#define USB_MUX_ENABLE_ALTERNATIVE(nodelabel) \
+	USB_MUX_ENABLE_ALTERNATIVE_NODE(DT_NODELABEL(nodelabel))
+
+/**
  * Forward declare all usb_mux structures e.g.
  * MAYBE_CONST struct usb_mux USB_MUX_NODE_<node_id>;
  */
@@ -368,6 +429,6 @@ USB_MUX_FOREACH_MUX(USB_MUX_DECLARE)
  * USB_MUX_chain_port_<node_id>_mux_<position_id>;
  */
 USB_MUX_FOREACH_CHAIN_VARGS(USB_MUX_FOREACH_NO_FIRST_MUX,
-			    USB_MUX_CHAIN_STRUCT_DECLARE_OP)
+			    USB_MUX_CHAIN_STRUCT_DECLARE_EXTERN_OP)
 
 #endif /* ZEPHYR_CHROME_USBC_USB_MUXES_H */
