@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c884a32c_b35197b8",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-05T00:14:51Z",
+      "side": 1,
+      "message": "That means the upstream definition of this option will conflict with this one when they are both present, as far as I can tell. I think this definition should be removed and the code can continue to use it as long as this change only lands after the corresponding upstream change.",
+      "parentUuid": "74a62576_c9b8e575",
+      "revId": "eba34cd070820b20dd8576e6fe3cec9cdad1ff5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b6744fd_c5c90dd9",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 2
