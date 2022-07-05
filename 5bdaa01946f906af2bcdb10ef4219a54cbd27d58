@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e818f287_cd43a4a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-07-05T03:04:00Z",
+      "side": 1,
+      "message": "Because chromium doesn\u0027t accept the word \"dummy\".",
+      "parentUuid": "bd598cc4_2b0d262a",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "5bdaa01946f906af2bcdb10ef4219a54cbd27d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e046f19e_0e6ea8e0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
