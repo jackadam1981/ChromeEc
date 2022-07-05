@@ -16,6 +16,24 @@
       "message": "Captured the error log from the CQ:\n\n```\nSTART - test_bb_set_state\n[24.125100 C1: Exit Low Power Mode]\n[24.125100 C1: Unattached.SNK]\n[24.140400 C1: Retimer I2C write err\u003d5]\n    Assertion failed at CMAKE_SOURCE_DIR/src/bb_retimer.c:168: bb_retimer_test_bb_set_state: (exp_conn not equal to conn)\nExpected state 0x181, got 0x81\n FAIL - test_bb_set_state in 0.41 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE bb_retimer failed.\nRunning TESTSUITE bc12\n```",
       "revId": "4c66d893ab07e077ee7f2ae649e25456422a6d6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44cfbba_fc855537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-07-05T09:07:27Z",
+      "side": 1,
+      "message": "To check the test_bb_set_state in bb_retimer.c, it\u0027s failed on Test DP mode. Cannot got BB_RETIMER_DP_CONNECTION bit8 status.\n\nBefore the CL, the BB_RETIMER_DP_CONNECTION be enabled when got USB_PD_MUX_DP_ENABLED of mux_state, it\u0027s mapping the BB retimer test suite(crrev.com/c/3110087).\n\n```\n/* Test DP mode */\n zassert_equal(EC_SUCCESS, bb_usb_retimer.set(\u0026usb_muxes[USBC_PORT_C1], \n               USB_PD_MUX_DP_ENABLED, \u0026ack_required), NULL);\n zassert_false(ack_required, \"ACK is never required for BB retimer\");\n conn \u003d bb_emul_get_reg(emul, BB_RETIMER_REG_CONNECTION_STATE);\n exp_conn \u003d BB_RETIMER_USB_DATA_ROLE | BB_RETIMER_DATA_CONNECTION_PRESENT | \n            BB_RETIMER_DP_CONNECTION;\n zassert_equal(exp_conn, conn, \"Expected state 0x%lx, got 0x%lx\",\n```\n\nBut we change BB_RETIMER_DP_CONNECTION enabled only when mux_state gets HPD event.\nNot sure if we need to change the BB retimer test suite to mapping this CL.",
+      "parentUuid": "231a4be3_9af80ebc",
+      "revId": "4c66d893ab07e077ee7f2ae649e25456422a6d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
