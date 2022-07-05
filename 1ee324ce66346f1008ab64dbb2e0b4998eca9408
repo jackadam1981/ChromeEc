@@ -34,6 +34,29 @@
       "parentUuid": "e37b192e_4546399d",
       "revId": "1ee324ce66346f1008ab64dbb2e0b4998eca9408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a2db63_d16f91fb",
+        "filename": "board/dojo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2022-07-05T08:21:02Z",
+      "side": 1,
+      "message": "IMHO, since b/237963220 says: \u0027Latest DOJO dessign is BMI 260 for GYRO\u0027, we should put bmi260_base_accel in motion_sensors as the default component from the very beginning and update motion_sensors only in special cases. \nSomething like:\n```\nstruct motion_sensor_t motion_sensors[] \u003d {\n\t[BASE_ACCEL] \u003d {\n\t\t.name \u003d \"Base Accel BMI260\",\n\t\t// BMI 260 settings\n\t},\n\t[BASE_GYRO] \u003d {\n\t\t.name \u003d \"Base Gyro BMI260\",\n\t\t// BMI 260 settings\n\t},\n\t......\n};\n\nstatic void board_update_motion_sensor_config(void)\n{\n\tif (base_sensor \u003d\u003d SSFC_SENSOR_ICM42607) {\n\t\tmotion_sensors[BASE_ACCEL] \u003d icm42607_base_accel;\n\t\tmotion_sensors[BASE_GYRO] \u003d icm42607_base_gyro;\n\t}\n\t\n\tif ((board_version \u003c 2)) {\n\t\tmotion_sensors[BASE_ACCEL] \u003d icm426xx_base_accel;\n\t\tmotion_sensors[BASE_GYRO] \u003d icm426xx_base_gyro;\n\t}\n\t\n\tccprints(motion_sensors[BASE_ACCEL].name);\n}\n\nvoid motion_interrupt(enum gpio_signal signal)\n{\n\t// the same logic\n}\n```",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 2
+      },
+      "revId": "1ee324ce66346f1008ab64dbb2e0b4998eca9408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
