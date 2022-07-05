@@ -385,6 +385,7 @@
 		usb_muxes[USBC_PORT(chain_id)] =                               \
 			USB_MUX_CHAIN_STRUCT_SET(chain_id, 0);                 \
 		USB_MUX_FOREACH_NO_ROOT_MUX(chain_id, USB_MUX_SET_ALTERNATIVE) \
+		BB_RETIMER_ALTERNATIVE_CONFIG(chain_id)                        \
 	} while (0)
 
 /**
