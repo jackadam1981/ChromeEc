@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f429de_c4ce7a26",
+        "filename": "zephyr/dts/bindings/gpio/unimplemented-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-05T12:55:18Z",
+      "side": 1,
+      "message": "Would be great to standardize the prefix of all our \"soft\" bindings, @jrosenth what do you think? We don\u0027t have a registered one in vendor-prefixes.txt (thought we did...). I think it\u0027s cool to submit this as is since it\u0027s coherent with other bindings there but let\u0027s open a separate conversation about it.",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 32
+      },
+      "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36be822_b9f6c196",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-05T12:55:18Z",
+      "side": 1,
+      "message": "odd, worth upstreaming one?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
