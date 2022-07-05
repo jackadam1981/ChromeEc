@@ -148,7 +148,8 @@ static void fifo_pop(void)
 	fifo_lost++;
 
 	/* Increment lost counter if we have valid data. */
-	if (!is_timestamp(head))
+	if (!is_timestamp(head) &&
+		(head->sensor_num < motion_sensor_count))
 		motion_sensors[head->sensor_num].lost++;
 
 	/*
