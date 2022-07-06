@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d342c282_38a768e5",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-07-06T01:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ce19f1_458a5679",
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9eedecd_00ffb335",
@@ -150,6 +168,24 @@
       "side": 1,
       "message": "For simplicity and due to scope issues, I opted for the following changes in logic:\n1. Only process battery events while AP is powered down\nNo need to check during power up since this is to support auto power on feature.\n\n2. Cache variable is only intended for logging purposes, it will not impact feature logic.",
       "parentUuid": "dc27af2a_5247a76c",
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec9f190_f8a01911",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-07-06T01:59:13Z",
+      "side": 1,
+      "message": "Ping.. is this las proposal OK?",
+      "parentUuid": "803c6e07_aed2a3c8",
       "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
