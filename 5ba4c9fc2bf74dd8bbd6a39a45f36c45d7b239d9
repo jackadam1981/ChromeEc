@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae3f08d2_9ff42703",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-07-06T08:17:50Z",
+      "side": 1,
+      "message": "But if we just remove below lines, the thermal_params won\u0027t be appended.\n\n```\nif (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION)) {\n\t\tstruct ec_response_motion_sensor_data vector \u003d {\n\t\t\t.flags \u003d MOTIONSENSE_SENSOR_FLAG_BYPASS_FIFO,\n\t\t\t.activity_data \u003d {\n\t\t\t\t.activity \u003d MOTIONSENSE_ACTIVITY_BODY_DETECTION,\n\t\t\t\t.state \u003d state,\n\t\t\t},\n\t\t\t.sensor_num \u003d MOTION_SENSE_ACTIVITY_SENSOR_ID,\n\t\t};\n\t\tmotion_sense_fifo_stage_data(\u0026vector, NULL, 0,\n\t\t\t\t\t     __hw_clock_source_read());\n\t\tmotion_sense_fifo_commit_data();\n\t}\n```",
+      "parentUuid": "a1c60172_adca1fa1",
+      "revId": "5ba4c9fc2bf74dd8bbd6a39a45f36c45d7b239d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d35e3f5e_2243160c",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 3
