@@ -9,6 +9,8 @@ set_compiler_property(PROPERTY hosted)
 
 # Disable position independent code.
 add_compile_options(-fno-PIC)
+# Match the behavior of Makefile.toolchain
+add_compile_options(-Wno-pointer-sign)
 
 check_set_compiler_property(APPEND PROPERTY warning_extended -Wunused-variable
 	-Werror=unused-variable -Werror=missing-braces
