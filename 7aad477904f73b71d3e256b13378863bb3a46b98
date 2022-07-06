@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "565250b6_0d8d1ba2",
+        "filename": "test/utils_str.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-06T15:31:33Z",
+      "side": 0,
+      "message": "Should we just change `TEST_CHECK` to `TEST_EQ` or `TEST_ASSERT`?\n\nIf it were a build issue, then I would say we should follow the [revert first policy](http://shortn/_lRbFdl3kVG), but in this case it\u0027s not blocking anyone, so I think we can go ahead and apply a fix directly.",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "7aad477904f73b71d3e256b13378863bb3a46b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
