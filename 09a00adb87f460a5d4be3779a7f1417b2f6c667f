@@ -33,6 +33,24 @@
       "message": "Can you add comments, e.g.:\n\n/*\n * Returns the maximum power the system can request when DPS enabled.\n * This is to prevent the system think it\u0027s using a low power charger.\n */",
       "revId": "09a00adb87f460a5d4be3779a7f1417b2f6c667f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f863b7_7c4aae2e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-06T08:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63211226_0c6fe7a9",
+      "revId": "09a00adb87f460a5d4be3779a7f1417b2f6c667f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
