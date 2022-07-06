@@ -22,6 +22,30 @@
       },
       "revId": "7aad477904f73b71d3e256b13378863bb3a46b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6ff79c_b4a60bc0",
+        "filename": "test/utils_str.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-06T15:36:51Z",
+      "side": 0,
+      "message": "I\u0027m okay with that. I mostly put this in place to call out the issue. I\u0027ll abandon this and create a new CL today to fix the behavior.",
+      "parentUuid": "565250b6_0d8d1ba2",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "7aad477904f73b71d3e256b13378863bb3a46b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
