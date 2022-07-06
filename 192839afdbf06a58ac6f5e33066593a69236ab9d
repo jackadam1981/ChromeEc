@@ -16,6 +16,23 @@
       "message": "Hi Abe, with this CL I observed some problem on my Brya. My steps are:\nreboot system; plug in cable + TBT dock; system enter DP mode; log in OS; host requests to enter TBT, but EC doesn\u0027t go any further. It stops here.\n22-07-05 14:54:42.663 -----------------C2 hc_typec_control: host ask 2\n22-07-05 14:54:42.667 -----------------C2 hc_typec_control: host ask enter mode 1\n22-07-05 14:54:42.670 ------------C2 pd_request_enter_mode: enter TBT requested \n\nthe mux is usb\u003d1 only. Tried with 2 docks and passive/active cable, same result.\n\nIf I reset head not using this CL, there is no issue.\nWondering if you tried this and is it working in your set up.",
       "revId": "192839afdbf06a58ac6f5e33066593a69236ab9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0774d973_bc88ff84",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-06T00:47:21Z",
+      "side": 1,
+      "message": "If not change this line, it works fine.",
+      "revId": "192839afdbf06a58ac6f5e33066593a69236ab9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
