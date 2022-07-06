@@ -62,6 +62,30 @@
       },
       "revId": "bf6734d7971894ab68c7883a1c8d3461a5bf5522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379b241c_ae1c0ec5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1646,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-07-06T06:45:49Z",
+      "side": 1,
+      "message": "Yea.I think, it is a better solution with check in pd_send_alert_msg(). Can you plz make the change in CL?",
+      "parentUuid": "14a4ba62_d713b9d8",
+      "range": {
+        "startLine": 1646,
+        "startChar": 3,
+        "endLine": 1646,
+        "endChar": 16
+      },
+      "revId": "bf6734d7971894ab68c7883a1c8d3461a5bf5522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
