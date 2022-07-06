@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55a3de5_df3eb07c",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-06T01:55:55Z",
+      "side": 1,
+      "message": "Perhaps this is best done in subsys/ap_power/signal_vw.c where the ESPI and power handling is common, and allows this issue to be handled in a common place.\nThe init code could be part of power_signal_vw_init(), which we know is called\nas part of the power sequence init.",
+      "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e6dead_aa2b3ce1",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-06T01:55:55Z",
+      "side": 1,
+      "message": "This sounds like it should be managed via the pinctrl API. Is this possible?",
+      "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea2ed63_3c3523ea",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-06T01:55:55Z",
+      "side": 1,
+      "message": "This will rely on the AP power code to have completed its initialisation and determined the state of the CPU.\nI wonder if a more reliable approach is to create an event (AP_POWER_READY or something like that) that is signalled when the power sequence has finished its init and the state of the AP is known.\nThis would avoid any reliance on init priorities, and allow this code to be run completely from callbacks, removing any critical section issues.",
+      "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
