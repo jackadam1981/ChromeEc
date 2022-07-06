@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eacc8841_a7e52061",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-06T10:23:42Z",
+      "side": 1,
+      "message": "bump",
+      "parentUuid": "dacb488d_ab819ffc",
+      "revId": "66689bc43b4037a47dd7bea0170f2a8a5367854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34d9bd0b_90f41fbc",
         "filename": "zephyr/dts/bindings/usbc/mux/parade,ps8743.yaml",
         "patchSetId": 1
