@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include <stdarg.h>
 
-#if defined(CONFIG_ZEPHYR) || defined(TEST_BUILD)
+#if defined(CONFIG_ZEPHYR)
 #define EC_SNPRINTF crec_snprintf
 #define EC_VSNPRINTF crec_vsnprintf
 #else
