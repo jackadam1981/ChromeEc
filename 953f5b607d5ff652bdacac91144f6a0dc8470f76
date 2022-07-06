@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "619cea9f_9028796c",
+        "filename": "test/printf.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-06T23:47:48Z",
+      "side": 1,
+      "message": "nit: This comment likely will not age well, so I would consider leaving it out. e.g., it will be very easy to add `CONFIG_PRINTF_LONG_IS_32BITS` and not update this comment.",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 65
+      },
+      "revId": "953f5b607d5ff652bdacac91144f6a0dc8470f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
