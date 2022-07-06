@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9750925_06d18eef",
+        "filename": "zephyr/dts/bindings/usbc/mux/parade,ps8743.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-07-06T10:12:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d698ab1_83d272e4",
+      "range": {
+        "startLine": 1,
+        "startChar": 41,
+        "endLine": 1,
+        "endChar": 45
+      },
+      "revId": "66689bc43b4037a47dd7bea0170f2a8a5367854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50bff3db_87a70eb5",
+        "filename": "zephyr/dts/bindings/usbc/mux/parade,ps8743.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-07-06T10:12:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34d9bd0b_90f41fbc",
+      "range": {
+        "startLine": 1,
+        "startChar": 21,
+        "endLine": 1,
+        "endChar": 32
+      },
+      "revId": "66689bc43b4037a47dd7bea0170f2a8a5367854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d5d9740_92478f51",
@@ -123,6 +171,78 @@
       "writtenOn": "2022-07-06T09:00:09Z",
       "side": 1,
       "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "66689bc43b4037a47dd7bea0170f2a8a5367854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd315e3f_dc87771d",
+        "filename": "zephyr/projects/corsola/usbc_tentacruel.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-07-06T10:12:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e64b2483_130bb34b",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "66689bc43b4037a47dd7bea0170f2a8a5367854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "492dfa01_6cb9e132",
+        "filename": "zephyr/projects/corsola/usbc_tentacruel.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-07-06T10:12:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d5d9740_92478f51",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "66689bc43b4037a47dd7bea0170f2a8a5367854d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a329993a_7f073a86",
+        "filename": "zephyr/projects/corsola/usbc_tentacruel.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-07-06T10:12:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "275327fa_3380ed19",
       "range": {
         "startLine": 1,
         "startChar": 13,
