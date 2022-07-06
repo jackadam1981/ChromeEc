@@ -22,6 +22,30 @@
       },
       "revId": "786d2238a18d9e4a6a28701e2d19d6d43f9e5e90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1868aa16_6aead020",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-06T06:00:05Z",
+      "side": 1,
+      "message": "product_t1 is union, only for active cable it\u0027s active cable VDO and has sop_p_p field. Can\u0027t swap the order. but can change to this way:\n{\n      if (get_usb_pd_cable_type(port) \u003d\u003d IDH_PTYPE_ACABLE \u0026\u0026\n               pd_get_am_discovery(port, TCPCI_MSG_SOP_PRIME)-\u003e\n               identity.product_t1.a_rev20.sop_p_p)\n                return true;\n        return false;\n}\npd_get_am_discovery() doesn\u0027t have to be called for passive cable.\nbut isn\u0027t too long, not concise?",
+      "parentUuid": "4bb1859c_81dfed65",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 47
+      },
+      "revId": "786d2238a18d9e4a6a28701e2d19d6d43f9e5e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
