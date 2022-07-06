@@ -52,6 +52,24 @@
       "parentUuid": "f44cfbba_fc855537",
       "revId": "4c66d893ab07e077ee7f2ae649e25456422a6d6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3663e59d_ae50efbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-06T17:11:54Z",
+      "side": 1,
+      "message": "It looks like the unit test for the BB retimer needs to be updated to understand the new expected behavior.  \n\nYou can find the test under `zephyr/test/drivers/src/bb_retimer.c` and test updates to it via running `zmake test test-drivers` to build the tests followed by `./build/zephyr/test-drivers/build-singleimage/zephyr/zephyr.exe -test\u003d\u0027bb_retimer::*\u0027` to execute the tests.  You can also use `zmake testall`, but it\u0027ll take longer than building and running the individual suite.",
+      "parentUuid": "970a3db6_61d3f3bd",
+      "revId": "4c66d893ab07e077ee7f2ae649e25456422a6d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
