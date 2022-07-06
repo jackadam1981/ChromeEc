@@ -86,6 +86,30 @@
       },
       "revId": "bf6734d7971894ab68c7883a1c8d3461a5bf5522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4555570a_5a78966e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1646,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-06T16:02:23Z",
+      "side": 1,
+      "message": "dzigterman@, any preference here? FWIW, when we build the Status message we decide whether or not to include USB PD Rev 3.1 fields where the message is being constructed (dpm_get_status_msg L913 of src/platform/ec/common/usbc/usb_pd_dpm.c). The PE calls dpm_get_status, but it does not filter out USB PD 3.1 fields.",
+      "parentUuid": "379b241c_ae1c0ec5",
+      "range": {
+        "startLine": 1646,
+        "startChar": 3,
+        "endLine": 1646,
+        "endChar": 16
+      },
+      "revId": "bf6734d7971894ab68c7883a1c8d3461a5bf5522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
