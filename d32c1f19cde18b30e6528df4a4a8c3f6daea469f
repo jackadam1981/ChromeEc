@@ -51,6 +51,24 @@
       "parentUuid": "d0ff19e4_b9917434",
       "revId": "d32c1f19cde18b30e6528df4a4a8c3f6daea469f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10db7907_5c76cbf0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-06T16:40:33Z",
+      "side": 1,
+      "message": "This looks like a great solution.  What would you think about making a hard_reset_reinit() or similar as an optional member of `struct tcpm_drv`? That way, we could roll it out on a chip-by-chip basis as we confirm the chips are following the TCPCI spec correctly.",
+      "parentUuid": "c173295e_967f65d6",
+      "revId": "d32c1f19cde18b30e6528df4a4a8c3f6daea469f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
