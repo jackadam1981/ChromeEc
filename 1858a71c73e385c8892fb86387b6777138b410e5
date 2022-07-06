@@ -16,6 +16,23 @@
       "message": "Initial commit. Making second CL for ServoV4p0. Do not submit yet.",
       "revId": "1858a71c73e385c8892fb86387b6777138b410e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a73f05_ed82a1bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2022-07-06T21:03:17Z",
+      "side": 1,
+      "message": "Upon consideration of the \"DP:Status\" [Enabled] field:\n\n0 \u003d Adapter DP functionality is disabled.\n1 \u003d Adapter DP functionality is enabled and operational.\n \nI will abandon this change and leave it as dynamic per the mux.\n\nThe reason being I think it may be interpreted loosely as \"if I talk on SBU/AUX, will I hear back\". And until the MUX is set, that answer is clearly \"no\".\n\nI will run some more experiments to see if this causes any ecosystem incompatibility issues.",
+      "revId": "1858a71c73e385c8892fb86387b6777138b410e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
