@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77068459_a058bafb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-06T18:10:39Z",
+      "side": 1,
+      "message": "Hi Abe and Tristan,\nfollowing up on this bug (https://b.corp.google.com/issues/236975670), this CL moves a couple zephyr test which require a USB PD 3.0 partner to usb_pd_rev3.c. Can you help review this?\n\nThanks,\nJameson",
+      "revId": "7400cfa32d03acd36c2077be745139963d039ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
