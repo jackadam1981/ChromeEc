@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebded0f2_bb1dc9f3",
+        "filename": "driver/tcpm/ccgxxf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-06T16:14:02Z",
+      "side": 1,
+      "message": "This seems like a lot of repeated code from tcpci_tcpm_get_cc().  Would you be able to use that function instead, caching the results on a successful call and using the cached readings on a failed call (or returning failure if there are no cached readings)?",
+      "revId": "8ba91d5b6b242683b1fd37069c1a12e76ff35012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
