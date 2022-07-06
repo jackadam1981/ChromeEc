@@ -10,7 +10,7 @@
 #include "printf.h"
 #include "util.h"
 
-#if defined(CONFIG_ZEPHYR) || defined(TEST_BUILD)
+#if defined(CONFIG_ZEPHYR)
 #include "builtin/stdio.h"
 #else
 #include <stdio.h>
