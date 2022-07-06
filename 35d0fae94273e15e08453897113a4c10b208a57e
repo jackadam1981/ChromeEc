@@ -69,6 +69,30 @@
       },
       "revId": "35d0fae94273e15e08453897113a4c10b208a57e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a12363_a3a09031",
+        "filename": "include/power/amd_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-06T17:43:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb9f037c_906dac53",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "35d0fae94273e15e08453897113a4c10b208a57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
