@@ -50,6 +50,76 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e20405a_3370ede0",
+        "filename": "zephyr/dts/bindings/gpio/unimplemented-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-06T16:22:44Z",
+      "side": 1,
+      "message": "Yes, we\u0027re trying to make `cros-ec` the standard prefix. Some of the older stuff didn\u0027t have it but let\u0027s try and make the new stuff right.",
+      "parentUuid": "d7fbceda_73e5918d",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 32
+      },
+      "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8478eebb_f0178efa",
+        "filename": "zephyr/dts/bindings/gpio/unimplemented-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-06T16:22:44Z",
+      "side": 1,
+      "message": "Maybe a better name than `enum-names`. Perhaps just `names`?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d51b741_eb7dc5a9",
+        "filename": "zephyr/projects/corsola/common.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-06T16:22:44Z",
+      "side": 1,
+      "message": "can we make it `cros-ec,unimplemented-gpios`?",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e36be822_b9f6c196",
         "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
         "patchSetId": 4
