@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c60172_adca1fa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-07-06T04:54:34Z",
+      "side": 1,
+      "message": "Thanks for pointing out the data corruption. It is not the right fix, adding the activity sensors should not corrupt unrelated memory locations.\n1. There is a function to return sensor from id (or NULL) - (host_sensor_id_to_real_sensor()). \n2. There may be other location when the sensor code is trying to write back information to the sensor object.",
+      "revId": "5ba4c9fc2bf74dd8bbd6a39a45f36c45d7b239d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35e3f5e_2243160c",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-07-06T04:54:34Z",
+      "side": 1,
+      "message": "indentation.",
+      "revId": "5ba4c9fc2bf74dd8bbd6a39a45f36c45d7b239d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
