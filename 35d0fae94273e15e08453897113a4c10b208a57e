@@ -45,6 +45,30 @@
       },
       "revId": "35d0fae94273e15e08453897113a4c10b208a57e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9f037c_906dac53",
+        "filename": "include/power/amd_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-06T17:42:26Z",
+      "side": 1,
+      "message": "Zork has the same enum, but guybrush has an extra signal that was removed in Skyrim in position 0 here",
+      "parentUuid": "f28dff53_6359c237",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "35d0fae94273e15e08453897113a4c10b208a57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
