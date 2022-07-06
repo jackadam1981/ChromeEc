@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f740627d_b0ccb0c7",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-06T19:46:32Z",
+      "side": 1,
+      "message": "Are we deprecating `firmware-ec-cov-cq` with this change?",
+      "range": {
+        "startLine": 215,
+        "startChar": 14,
+        "endLine": 215,
+        "endChar": 38
+      },
+      "revId": "a8bbe239709415d5f653b6afae870d6dfc4d7e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
