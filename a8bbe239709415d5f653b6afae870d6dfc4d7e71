@@ -22,6 +22,30 @@
       },
       "revId": "a8bbe239709415d5f653b6afae870d6dfc4d7e71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbcae3c4_6291d9eb",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-06T22:20:30Z",
+      "side": 1,
+      "message": "Good idea, I\u0027ve changed the target to match what that builder does.",
+      "parentUuid": "f740627d_b0ccb0c7",
+      "range": {
+        "startLine": 215,
+        "startChar": 14,
+        "endLine": 215,
+        "endChar": 38
+      },
+      "revId": "a8bbe239709415d5f653b6afae870d6dfc4d7e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
