@@ -34,6 +34,24 @@
       "parentUuid": "ee898d73_1238cb6d",
       "revId": "e7adeb81a7f570c9a89b8309b6622eab73b8ee50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f417354_5d787854",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-06T21:43:57Z",
+      "side": 0,
+      "message": "Ah, interesting. I think it warns the opposite for source files. Can you create a separate CL to fix that? (It\u0027s good to fix, but since it\u0027s unrelated to this change it\u0027s a bit cleaner to keep it in a separate commit.)",
+      "parentUuid": "b92fa092_240ca2a3",
+      "revId": "e7adeb81a7f570c9a89b8309b6622eab73b8ee50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
