@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb1859c_81dfed65",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-06T02:41:07Z",
+      "side": 1,
+      "message": "nit: swap line 195 with 196, so that other function doesn\u0027t get called in case of sop_p_p false",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 47
+      },
+      "revId": "786d2238a18d9e4a6a28701e2d19d6d43f9e5e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
