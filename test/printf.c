@@ -89,19 +89,15 @@ test_static int test_vsnprintf_args(void)
 	T(expect_success("", ""));
 	T(expect_success("a", "a"));
 
+#ifdef USE_BUILTIN_STDLIB
 	T(expect(/* expect an invalid args error */
 		 EC_ERROR_INVAL, NO_BYTES_TOUCHED,
 		 /* given 0 as output size limit */
 		 false, 0, ""));
-	T(expect(/* expect SUCCESS */
-		 EC_SUCCESS, "",
-		 /* given 1 as output size limit and a blank format */
-		 false, 1, ""));
 	T(expect(/* expect an overflow error */
 		 EC_ERROR_OVERFLOW, "",
 		 /* given 1 as output size limit with a non-blank format */
 		 false, 1, "a"));
-
 	T(expect(/* expect an invalid args error */
 		 EC_ERROR_INVAL, NO_BYTES_TOUCHED,
 		 /* given NULL as the output buffer */
@@ -110,6 +106,11 @@ test_static int test_vsnprintf_args(void)
 		 EC_ERROR_INVAL, NO_BYTES_TOUCHED,
 		 /* given a NULL format string */
 		 false, sizeof(output), NULL));
+#endif
+	T(expect(/* expect SUCCESS */
+		 EC_SUCCESS, "",
+		 /* given 1 as output size limit and a blank format */
+		 false, 1, ""));
 
 	return EC_SUCCESS;
 }
@@ -143,7 +144,9 @@ test_static int test_vsnprintf_int(void)
 	 * T(expect_success("00123",     "%00*d",   5, 123));
 	 * Actual: "ERROR"
 	 */
+#ifdef USE_BUILTIN_STDLIB
 	T(expect_success("0+123", "%+0*d", 5, 123));
+#endif
 	/*
 	 * TODO(crbug.com/974084): This odd behavior should be fixed.
 	 * T(expect_success("0+123",     "%+00*d",  5, 123));
@@ -152,17 +155,21 @@ test_static int test_vsnprintf_int(void)
 
 	T(expect_success("123  ", "%-5d", 123));
 	T(expect_success("+123 ", "%-+5d", 123));
+#ifdef USE_BUILTIN_STDLIB
 	T(expect_success(err_str, "%+-5d", 123));
+#endif
 	T(expect_success("123  ", "%-05d", 123));
 	T(expect_success("123  ", "%-005d", 123));
 	T(expect_success("+123 ", "%-+05d", 123));
 	T(expect_success("+123 ", "%-+005d", 123));
 
+#ifdef USE_BUILTIN_STDLIB
 	T(expect_success("0.00123", "%.5d", 123));
 	T(expect_success("+0.00123", "%+.5d", 123));
 	T(expect_success("0.00123", "%7.5d", 123));
 	T(expect_success("  0.00123", "%9.5d", 123));
 	T(expect_success(" +0.00123", "%+9.5d", 123));
+#endif
 
 	T(expect_success("123", "%u", 123));
 	T(expect_success("4294967295", "%u", -1));
@@ -242,7 +249,9 @@ test_static int test_vsnprintf_strings(void)
 	 * Ignoring the padding parameter is slightly
 	 * odd behavior and could use a review.
 	 */
+#ifdef USE_BUILTIN_STDLIB
 	T(expect_success("ab", "%5.2s", "abc"));
+#endif
 	T(expect_success("abc", "%.4s", "abc"));
 
 	/*
@@ -288,13 +297,15 @@ void run_test(int argc, char **argv)
 {
 	test_reset();
 
-	RUN_TEST(test_vsnprintf_args);
 	RUN_TEST(test_vsnprintf_int);
-	RUN_TEST(test_vsnprintf_pointers);
+	RUN_TEST(test_vsnprintf_args);
 	RUN_TEST(test_vsnprintf_chars);
 	RUN_TEST(test_vsnprintf_strings);
+#ifdef USE_BUILTIN_STDLIB
+	RUN_TEST(test_vsnprintf_pointers);
 	RUN_TEST(test_vsnprintf_timestamps);
 	RUN_TEST(test_vsnprintf_hexdump);
+#endif
 	RUN_TEST(test_vsnprintf_combined);
 
 	test_print_result();
