@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1bc8221_be340b05",
+        "filename": "zephyr/dts/bindings/gpio/unimplemented-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-06T16:27:52Z",
+      "side": 1,
+      "message": "Cool, if we use `cros-ec`, it sounds like an application thing more than a vendor, so it probably does not belong to `vendor-prefixes.txt`, I\u0027d say let\u0027s skip that step. Renaming the existing one could be a good onboarding project.",
+      "parentUuid": "6e20405a_3370ede0",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 32
+      },
+      "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8478eebb_f0178efa",
         "filename": "zephyr/dts/bindings/gpio/unimplemented-gpios.yaml",
         "patchSetId": 4
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "Yes, I will look into doing this.",
       "parentUuid": "e36be822_b9f6c196",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72d84dd_cd9178d1",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-06T16:27:52Z",
+      "side": 1,
+      "message": "Upstream first?",
+      "parentUuid": "8a25808b_7133afb6",
       "range": {
         "startLine": 46,
         "startChar": 0,
