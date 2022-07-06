@@ -14,13 +14,11 @@
 #include "test/drivers/stubs.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
+#include "usb_common.h"
 #include "usb_pd.h"
-#include "usb_prl_sm.h"
 #include "util.h"
 
 #define BATTERY_ORD DT_DEP_ORD(DT_NODELABEL(battery))
-
-#define TEST_USB_PORT USBC_PORT_C0
 
 struct usb_attach_5v_3a_pd_source_rev3_fixture {
 	struct tcpci_partner_data source_5v_3a;
@@ -155,4 +153,63 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_batt_cap_invalid)
 			 .battery_type) &
 			BIT(0),
 		"Invalid battery ref bit should be set");
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, verify_alert_msg)
+{
+	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_equal(pd_broadcast_alert_msg(ADO_OTP_EVENT), EC_SUCCESS, NULL);
+
+	k_sleep(K_SECONDS(2));
+	zassert_true(fixture->src_ext.alert_received, NULL);
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, verify_dock_with_power_button)
+{
+	/* Clear Alert and Status receive checks */
+	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
+	tcpci_src_emul_clear_status_received(&fixture->src_ext);
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_false(fixture->src_ext.status_received, NULL);
+
+	/* Suspend and check partner received Alert and Status messages */
+	hook_notify(HOOK_CHIPSET_SUSPEND);
+	k_sleep(K_SECONDS(2));
+	zassert_true(fixture->src_ext.alert_received, NULL);
+	zassert_true(fixture->src_ext.status_received, NULL);
+	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
+	tcpci_src_emul_clear_status_received(&fixture->src_ext);
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_false(fixture->src_ext.status_received, NULL);
+
+	/* Shutdown and check partner received Alert and Status messages */
+	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	k_sleep(K_SECONDS(2));
+	zassert_true(fixture->src_ext.alert_received, NULL);
+	zassert_true(fixture->src_ext.status_received, NULL);
+	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
+	tcpci_src_emul_clear_status_received(&fixture->src_ext);
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_false(fixture->src_ext.status_received, NULL);
+
+	/* Startup and check partner received Alert and Status messages */
+	hook_notify(HOOK_CHIPSET_STARTUP);
+	k_sleep(K_SECONDS(2));
+	zassert_true(fixture->src_ext.alert_received, NULL);
+	zassert_true(fixture->src_ext.status_received, NULL);
+	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
+	tcpci_src_emul_clear_status_received(&fixture->src_ext);
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_false(fixture->src_ext.status_received, NULL);
+
+	/* Resume and check partner received Alert and Status messages */
+	hook_notify(HOOK_CHIPSET_RESUME);
+	k_sleep(K_SECONDS(2));
+	zassert_true(fixture->src_ext.alert_received, NULL);
+	zassert_true(fixture->src_ext.status_received, NULL);
+	tcpci_src_emul_clear_alert_received(&fixture->src_ext);
+	tcpci_src_emul_clear_status_received(&fixture->src_ext);
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_false(fixture->src_ext.status_received, NULL);
 }
