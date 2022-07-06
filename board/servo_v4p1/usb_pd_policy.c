@@ -999,7 +999,7 @@ static int dp_status(int port, uint32_t *payload)
 	int opos = PD_VDO_OPOS(payload[0]);
 	int hpd = get_hpd_level();
 	mux_state_t state = usb_mux_get(DUT);
-	int dp_enabled = !!(state & USB_PD_MUX_DP_ENABLED);
+	int dp_enabled = !!(alt_dp_config & ALT_DP_ENABLE);
 
 	if (opos != OPOS)
 		return 0; /* NAK */
@@ -1011,7 +1011,8 @@ static int dp_status(int port, uint32_t *payload)
 				   (alt_dp_config & ALT_DP_MF_PREF) != 0, /* MF
 									     pref
 									   */
-				   dp_enabled, 0, /* power low */
+				   dp_enabled, /* adapter DP functionality */
+				   0, /* power low */
 				   hpd ? 0x2 : 0);
 
 	return 2;
