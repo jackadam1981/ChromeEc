@@ -68,6 +68,29 @@
       },
       "revId": "d09eb3d7d0babc03e17ad3da452d83d1e8eb9be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea781b3a_2f3af8ca",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-07T16:28:19Z",
+      "side": 1,
+      "message": "Can we get a `#define` for this value?",
+      "range": {
+        "startLine": 226,
+        "startChar": 35,
+        "endLine": 226,
+        "endChar": 38
+      },
+      "revId": "d09eb3d7d0babc03e17ad3da452d83d1e8eb9be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
