@@ -213,6 +213,24 @@
       "parentUuid": "d1253321_f064ea24",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa9712a_28de3b18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T23:47:46Z",
+      "side": 1,
+      "message": "I ran some more tests\n\nOriginal setup:\n\n```\nservod --version\nservod v1.0.1240\n\ncurrent \u0027servo_micro\u0027 firmware: servo_micro_v2.4.35-f1113c92b\n```\n\n```\ndut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n```\n\n```\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   3109    19.27   14.12   301.95    11.42\n@@    pp3300_dx_fp_mv   3109  3256.00    0.00  3256.00  3256.00\n@@    pp3300_dx_fp_mw   3109     0.00    0.00     0.00     0.00\n@@   pp3300_dx_mcu_mv   3109  3248.00    0.00  3248.00  3248.00\n@@   pp3300_dx_mcu_mw   3109    44.23    0.11    45.21    44.17\n```\n\nUpdated servo_micro firmware (same serovd version):\n\n`servo_micro_v2.4.57-ce329f64f`\n\n```\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   3022    19.82   18.45   361.85    11.51\n@@    pp3300_dx_fp_mv   3022  3256.00    0.00  3256.00  3256.00\n@@    pp3300_dx_fp_mw   3022     0.00    0.00     0.00     0.00\n@@   pp3300_dx_mcu_mv   3022  3248.00    0.00  3248.00  3248.00\n@@   pp3300_dx_mcu_mw   3022    44.36    0.12    45.21    44.17\n```\n\nUpdated servod to version:\n\n`servod v1.0.1427`\n\n```\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   3408    17.57    3.73    45.80    11.55\n@@    pp3300_dx_fp_mv   3408  3256.00    0.00  3256.00  3256.00\n@@    pp3300_dx_fp_mw   3408     0.00    0.00     0.00     0.00\n@@   pp3300_dx_mcu_mv   3408  3248.00    0.00  3248.00  3248.00\n@@   pp3300_dx_mcu_mw   3408    44.53    0.15    45.47    44.17\n```\n\nIt looks like the `servod` version and `servo_micro` firmware version doesn\u0027t have an impact on `pp3300_dx_mcu_mv` or `pp3300_dx_mcu_mw`.\n\nFor completeness, [here is the position of the switches on my board](https://screenshot.googleplex.com/5piEnprDTkM5Q2A).",
+      "parentUuid": "a1767a7b_131badfd",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
