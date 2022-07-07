@@ -529,3 +529,9 @@ const struct temp_sensor_t temp_sensors[] = {
 			    .idx = ADC_TEMP_SENSOR_4 },
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+enum gpio_signal board_usbc_port_to_hpd_gpio(int port)
+{
+	/* shotzo only has port C0 */
+	return GPIO_EC_AP_USB_C0_HPD;
+}
