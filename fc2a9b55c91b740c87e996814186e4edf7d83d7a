@@ -34,6 +34,24 @@
       "parentUuid": "7c7d872c_4b0f5003",
       "revId": "fc2a9b55c91b740c87e996814186e4edf7d83d7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "637a5795_15ac5025",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T06:07:45Z",
+      "side": 1,
+      "message": "Ah I see that an expiration handler has been added - I missed that bit.",
+      "parentUuid": "a0f48465_c2e0ea43",
+      "revId": "fc2a9b55c91b740c87e996814186e4edf7d83d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
