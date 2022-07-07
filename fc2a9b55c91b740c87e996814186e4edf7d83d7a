@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7d872c_4b0f5003",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T05:35:53Z",
+      "side": 1,
+      "message": "I\u0027m curious how this is planned to work when there is a timer being\nchecked in a state e.g in SYS_POWER_STATE_S5 an inactivity timer is started, and then there is an expectation that the timer will be checked regularly.",
+      "revId": "fc2a9b55c91b740c87e996814186e4edf7d83d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
