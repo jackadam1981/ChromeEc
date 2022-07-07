@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5787408_7bd46f29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-07T18:09:21Z",
+      "side": 1,
+      "message": "Not sure how I missed the `strncmp` failure but it was exactly what this CL was intended to prevent. That tests should have failed before but was masked by a TEST_CHECK that succeeded before it.",
+      "revId": "380a6b7388889975539a891fb3b120551b352a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
