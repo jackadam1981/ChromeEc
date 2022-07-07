@@ -51,6 +51,24 @@
       "parentUuid": "cd2512a6_fb563968",
       "revId": "800d688efd9ef2c262efdf8ac0bcd2b4ee02ac3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "877d50cb_07fad00e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-07T23:25:30Z",
+      "side": 1,
+      "message": "Ack. I was thinking that ALERT would not be cleared because of this `break`. However, it will be cleared on line 1272, after the end of the loop.",
+      "parentUuid": "8d612404_ab23be77",
+      "revId": "800d688efd9ef2c262efdf8ac0bcd2b4ee02ac3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

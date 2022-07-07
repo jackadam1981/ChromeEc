@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df84c677_7a71167d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-07T23:25:30Z",
+      "side": 1,
+      "message": "This CL was in the middle of a chain of 3, but it looks like you uploaded it by itself. You should be uploading CLs to Gerrit with `repo upload` (not `git push`). Next time you upload this CL, please upload the whole chain, so the chain stays together.",
+      "revId": "e6ad13fa2fbc4bda90c544db432450097acefa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
