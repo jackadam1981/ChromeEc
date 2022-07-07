@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95b6711_ce81d6af",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T15:57:42Z",
+      "side": 1,
+      "message": "With the current `flash_fp_mcu` settings will we ever hit this case? (It looks like `GPIO_PWREN` is set in all configs.) I think it\u0027s fine to leave it, but I wanted to make sure I understood the behavior. It would be good to manually test this code path.",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 27
+      },
+      "revId": "8458912cfcee778ad8e5a06416a1cf1c95e93428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f203c52_2d40968c",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T15:57:42Z",
+      "side": 1,
+      "message": "This is new? I\u0027m assuming that it\u0027s to make sure it stays low long enough, but can you add a comment?",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 14
+      },
+      "revId": "8458912cfcee778ad8e5a06416a1cf1c95e93428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
