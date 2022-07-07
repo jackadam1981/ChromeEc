@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f35039_1c6346e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-07T21:30:19Z",
+      "side": 1,
+      "message": "Hi Abe,\ncan you take a look at this CL? It puts non-error PPC logging behind a config so it can be disabled by a board.h/baseboard.h file to free flash space.\n\nThanks,\nJameson",
+      "revId": "3509574fe6afa7dfd831a2791a49d7dffffa83f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
