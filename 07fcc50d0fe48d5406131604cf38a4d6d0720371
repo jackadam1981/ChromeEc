@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "359ad4b7_5165b710",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-07T23:55:19Z",
+      "side": 1,
+      "message": "AFAIK, this would be the appropriate function for TCPCI TCPCs in general. Should this just be `tcpci_hard_reset_reinit` in `tcpci.c`?",
+      "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596e1ad5_1746ed8d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-07T23:55:19Z",
+      "side": 1,
+      "message": "If these are going to be public functions, then they should have `tcpci_` names.\n\nBut if you do this as an optional driver function, then maybe you don\u0027t need to make them public. You\u0027d have something like `int tcpci_hard_reset_reinit` in this file, and would call these functions, which could remain `static`. Then in the `struct tcpc_drv`, you\u0027d have `.hard_reset_reinit \u003d tcpci_hard_reset_reinit`.",
+      "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6999bec6_73d6135e",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 8
