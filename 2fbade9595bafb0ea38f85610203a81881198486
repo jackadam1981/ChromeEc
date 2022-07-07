@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882e2efb_2ddf881e",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-07T18:48:33Z",
+      "side": 1,
+      "message": "Add a comment \"Increase this value if the system requires more than 15 watts to boot without a battery.\"",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 68
+      },
+      "revId": "2fbade9595bafb0ea38f85610203a81881198486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
