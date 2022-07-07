@@ -72,6 +72,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b02fc59_daf95651",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-07T20:26:08Z",
+      "side": 1,
+      "message": "Why is this tied to PD rather than something like CONFIG_BATTERY?",
+      "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80a915a4_eb961121",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 6
@@ -83,6 +100,30 @@
       "writtenOn": "2022-07-07T16:12:56Z",
       "side": 1,
       "message": "parens around this function call are redundant",
+      "range": {
+        "startLine": 110,
+        "startChar": 6,
+        "endLine": 110,
+        "endChar": 36
+      },
+      "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad26ed0_cf9612f0",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-07T20:26:08Z",
+      "side": 1,
+      "message": "What\u0027s the end goal of checking pd_is_disconnected()?  Are we concerned that the active charge port isn\u0027t actually connected to anything? \n\nI don\u0027t think pd_is_disconnected() is set up correctly for this type of call.  If the port is CHARGE_PORT_NONE, the API isn\u0027t protecting itself from invalid memory references.  The API either needs improved, or this call should be changed to verify it\u0027s not CHARGE_PORT_NONE",
+      "parentUuid": "80a915a4_eb961121",
       "range": {
         "startLine": 110,
         "startChar": 6,
