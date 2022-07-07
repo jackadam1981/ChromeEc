@@ -52,6 +52,57 @@
       "parentUuid": "513e69b6_33d5fe6e",
       "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8dcbaf1_412fd710",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T03:56:24Z",
+      "side": 1,
+      "message": "Also add the new state debug string in pwrsm_dbg",
+      "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a4cdcc_edb5719a",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T03:56:24Z",
+      "side": 1,
+      "message": "Please add a LOG_ERR here.",
+      "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff27257_1bfcc17c",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T03:56:24Z",
+      "side": 1,
+      "message": "Can you add a LOG_ERR here?",
+      "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
