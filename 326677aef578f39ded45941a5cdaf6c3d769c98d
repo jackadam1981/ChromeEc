@@ -52,6 +52,24 @@
       "parentUuid": "4c184338_65a5a995",
       "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87dbd526_274f24bb",
+        "filename": "zephyr/dts/bindings/usbc/mux/analogix,usbc-mux-anx7447.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-07-07T07:15:04Z",
+      "side": 1,
+      "message": "I mean this line: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3586441/7/zephyr/dts/bindings/usbc/mux/cros-ec%252Cusbc-mux-tcpci.yaml#18\n\nBut I agree we could drop this line if the enum is not mandatory.",
+      "parentUuid": "9ef7604c_6cba03da",
+      "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
