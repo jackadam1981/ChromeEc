@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ca730a_a491f05b",
+        "filename": "builtin/stdlib.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T21:05:20Z",
+      "side": 1,
+      "message": "What\u0027s the need for this ifdef?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba81ffae_83cce808",
+        "filename": "builtin/stdlib.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T21:05:20Z",
+      "side": 1,
+      "message": "Is the intention that we eventually hide this file from the EC build? If so, then Zephyr will continue need the EC\u0027s printf implementation, as it\u0027s non-standard.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c7b509_cc23f0ae",
+        "filename": "test/printf.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T21:05:20Z",
+      "side": 1,
+      "message": "Can this be `\u003cstdio.h\u003e`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a272f88_b0ae3a59",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T21:05:20Z",
+      "side": 1,
+      "message": "Can this be `\u003cstdio.h\u003e`?",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
