@@ -69,6 +69,24 @@
       "parentUuid": "c173295e_967f65d6",
       "revId": "d32c1f19cde18b30e6528df4a4a8c3f6daea469f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7978508b_27db963f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-07T03:19:08Z",
+      "side": 1,
+      "message": "I added an optional member for `tcpm_drv`, Thank you for the suggestion. The benifet we can add furthur control in hard_reset_reinit() on other TCPCs.",
+      "parentUuid": "10db7907_5c76cbf0",
+      "revId": "d32c1f19cde18b30e6528df4a4a8c3f6daea469f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
