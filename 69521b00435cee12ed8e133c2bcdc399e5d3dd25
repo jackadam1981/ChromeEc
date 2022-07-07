@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b54fc35_5648ae52",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T18:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330b9a1d_8686d7d6",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 38
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ade9713b_9b44b220",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-07T17:51:42Z",
       "side": 1,
       "message": "This has no closing comment but the other do... Not sure we require them or not but they are probably not needed here, I\u0027d say just be coherent and either have them everwhere in the file or drop them.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44658e5f_60ebf463",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T18:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ade9713b_9b44b220",
       "range": {
         "startLine": 33,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2cfd70a_29c9c907",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T18:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "074c6db5_e39e7360",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2bb5e34_5935c208",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede30929_4eb49f31",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T18:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2bb5e34_5935c208",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eb0eced_66d3369c",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-07-07T17:51:42Z",
       "side": 1,
       "message": "nit: braces",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "850441a3_4fbd1b98",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T18:04:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eb0eced_66d3369c",
       "range": {
         "startLine": 45,
         "startChar": 0,
