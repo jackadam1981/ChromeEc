@@ -22,6 +22,30 @@
       },
       "revId": "953f5b607d5ff652bdacac91144f6a0dc8470f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e627e41_270c81a0",
+        "filename": "test/printf.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-07T16:49:15Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "619cea9f_9028796c",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 65
+      },
+      "revId": "953f5b607d5ff652bdacac91144f6a0dc8470f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
