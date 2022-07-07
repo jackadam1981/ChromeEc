@@ -631,3 +631,11 @@ static void board_usb_tc_disconnect(void)
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, board_usb_tc_disconnect,
 	     HOOK_PRIO_DEFAULT);
+
+#ifndef CONFIG_BATTERY_PRESENT_GPIO
+enum battery_present battery_is_present(void)
+{
+	/* Shotzo has no battery, so always return no battery present. */
+	return BP_NO;
+}
+#endif
