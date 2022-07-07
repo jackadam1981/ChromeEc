@@ -527,3 +527,21 @@ const struct temp_sensor_t temp_sensors[] = {
 			    .idx = ADC_TEMP_SENSOR_4 },
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+void svdm_set_hpd_gpio(int port, int en)
+{
+	/* shotzo onlt has C0 */
+	if (port)
+		return;
+
+	gpio_set_level(GPIO_EC_AP_USB_C0_HPD, en);
+}
+
+int svdm_get_hpd_gpio(int port)
+{
+	/* shotzo onlt has C0 */
+	if (port)
+		return 0;
+
+	return gpio_get_level(GPIO_EC_AP_USB_C0_HPD);
+}
