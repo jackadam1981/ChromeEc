@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0d89d0_a91e8214",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T16:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9aada7_d16fc367",
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe82adfe_28270cf0",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-07T14:09:54Z",
       "side": 1,
       "message": "Sounds a bit cryptic, can you expand?",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4705c036_2fbe7b1e",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T16:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe82adfe_28270cf0",
       "range": {
         "startLine": 110,
         "startChar": 10,
@@ -77,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f53b7fae_39f66577",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T16:45:06Z",
+      "side": 1,
+      "message": "Yes, however plan is to remove baseboard/intelrvp/chg_usb_pd.c once the ADL-RVP support reaches end of life hence added a duplicate file.",
+      "parentUuid": "a7e56d6a_7a9926d5",
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc26aa8e_f3f4e3e7",
         "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
         "patchSetId": 42
@@ -88,6 +148,30 @@
       "writtenOn": "2022-07-07T14:09:54Z",
       "side": 1,
       "message": "I would split this, add a return code variable, make the `tcpc_aic_gpios[port].ppc_intr_handler` in its own `if` etc...",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd82fe55_d32b3bcc",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T16:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc26aa8e_f3f4e3e7",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7adc33bd_07d47158",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T16:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "debd0a49_b0cd9340",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "804ad58e_d5eae007",
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6423c5_f2f53bd0",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T16:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "804ad58e_d5eae007",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab2df7a_3ced2674",
@@ -157,6 +289,30 @@
       "writtenOn": "2022-07-07T14:09:54Z",
       "side": 1,
       "message": "same, move to an if and have two explicit return, not much benefit for using a ternary here",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 45
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5583941e_07fcdce9",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T16:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab2df7a_3ced2674",
       "range": {
         "startLine": 77,
         "startChar": 8,
