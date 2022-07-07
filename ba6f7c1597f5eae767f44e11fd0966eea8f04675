@@ -123,6 +123,24 @@
       "parentUuid": "130955c3_c76abde6",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ed6388_9e27cfa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T17:38:05Z",
+      "side": 1,
+      "message": "\u003e Could this be affected by the switches on the board?\n\n\nNo, it should always be running at 3.3V. We\u0027re adding a setting to run at 1.8V in newer versions of the board, but the current board should only run at 3.3V.",
+      "parentUuid": "1c77a561_368543f8",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
