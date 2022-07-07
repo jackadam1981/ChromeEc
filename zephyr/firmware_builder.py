@@ -15,11 +15,9 @@ import re
 import subprocess
 import sys
 
-from google.protobuf import json_format  # pylint: disable=import-error
 import zmake.project
-
 from chromite.api.gen_sdk.chromite.api import firmware_pb2
-
+from google.protobuf import json_format  # pylint: disable=import-error
 
 DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
 DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
@@ -135,6 +133,13 @@ def bundle_coverage(opts):
     meta.lcov_info.type = (
         firmware_pb2.FirmwareArtifactInfo.LcovTarballInfo.LcovType.LCOV
     )
+    tarball_name = 'html.tbz2'
+    tarball_path = bundle_dir / tarball_name
+    cmd = ['tar', 'cvfj', tarball_path, 'lcov_rpt']
+    subprocess.run(cmd, cwd=build_dir, check=True)
+    meta = info.objects.add()
+    meta.file_name = tarball_name
+    meta.coverage_html.SetInParent()
 
     write_metadata(opts, info)
 
@@ -239,6 +244,12 @@ def test(opts):
             cmd, cwd=pathlib.Path(__file__).parent, check=True,
             stdout=subprocess.PIPE, universal_newlines=True).stdout
         _extract_lcov_summary('ALL_MERGED', metrics, output)
+
+        subprocess.run([
+            '/usr/bin/genhtml', '--branch-coverage', '-q', '-o',
+            build_dir / 'lcov_rpt', '-t', 'All boards and tests merged',
+            '-s', build_dir / 'lcov.info',
+            ], cwd=pathlib.Path(__file__).parent, check=True)
 
     with open(opts.metrics, 'w') as file:
         file.write(json_format.MessageToJson(metrics))
