@@ -22,6 +22,30 @@
       },
       "revId": "0c10ab9cf4fed08a3baae81f6b1302f29f2f5da1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e736bff4_dc499a34",
+        "filename": "builtin/stdint.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-07T20:26:54Z",
+      "side": 1,
+      "message": "Good point, I\u0027ll do that. The primary reason that it wasn\u0027t done is that it wasn\u0027t strictly required. The issue with `INT64_MIN` was that C doesn\u0027t actually deal with negative literal integers. So when you specify a negative integer it first takes the numerical portion and interprets it as a positive signed value, then applies the unary `-` operator. However if we\u0027re specifying `-9223372036854775808` then it overflows as a positive signed so it attempts to promote it to an unsigned value and throws a warning. Specifying it as a `-9223372036854775807 - 1` ensures that it fits in a signed value, applies the unary `-`, then successfully subtracts 1. For the `INT32_MIN` case it wasn\u0027t needed because the compiler can promote to an `int64_t` instead.",
+      "parentUuid": "435e4976_62967352",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "0c10ab9cf4fed08a3baae81f6b1302f29f2f5da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
