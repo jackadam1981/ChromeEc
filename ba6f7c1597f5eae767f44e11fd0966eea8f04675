@@ -195,6 +195,24 @@
       "parentUuid": "7f96d162_a9393862",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1767a7b_131badfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-07T21:37:32Z",
+      "side": 1,
+      "message": "I repeated the test again connecting the servo micro directly to the USB-A port of my laptop instead of using the hub.\n\nThe results seem similar to my previous run and I still measure 2.7V instead of 3.3V:\n\n```\n$ dut-control fpmcu_slp_alt:off\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   4368    13.67    2.95    45.50     9.28\n@@    pp3300_dx_fp_mv   4368  2721.32    5.72  2728.00  2696.00\n@@    pp3300_dx_fp_mw   4368     0.02    0.07     0.22     0.00\n@@   pp3300_dx_mcu_mv   4368  2712.70    5.47  2720.00  2696.00\n@@   pp3300_dx_mcu_mw   4368    37.14    0.16    38.08    36.77\n\n$ dut-control fpmcu_slp_alt:on\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   4650    12.84    2.60    51.68     8.83\n@@    pp3300_dx_fp_mv   4650  2731.60    4.70  2744.00  2720.00\n@@    pp3300_dx_fp_mw   4650     0.01    0.03     0.22    -0.22\n@@   pp3300_dx_mcu_mv   4650  2730.11    5.04  2744.00  2712.00\n@@   pp3300_dx_mcu_mw   4650     5.09    0.33    12.73     3.93\n```\n\nI have another servo micro in the office, but won\u0027t be able to use it for additional tests until Tuesday of next week.",
+      "parentUuid": "d1253321_f064ea24",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
