@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b78ba8e_425d370e",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-07T00:50:47Z",
+      "side": 1,
+      "message": "No, this is separate from pin control; it\u0027s twiddling a disconnect bit in the eSPI peripheral specifically.",
+      "parentUuid": "d6e6dead_aa2b3ce1",
+      "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ea2ed63_3c3523ea",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-06T01:55:55Z",
       "side": 1,
       "message": "This will rely on the AP power code to have completed its initialisation and determined the state of the CPU.\nI wonder if a more reliable approach is to create an event (AP_POWER_READY or something like that) that is signalled when the power sequence has finished its init and the state of the AP is known.\nThis would avoid any reliance on init priorities, and allow this code to be run completely from callbacks, removing any critical section issues.",
+      "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda35341_91e4bddb",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-07T00:50:47Z",
+      "side": 1,
+      "message": "That wouldn\u0027t eliminate init priority issues, because this function would still need to run before `AP_POWER_READY` in order to register the callback. It would just invert the dependency. That said, I think `ap_power_in_state` needs to return an obviously not-a-state value before init completes rather than the zero-initialized state so I\u0027ve created another CL for that.\n\nCritical sections in code that looks at AP power state is an existing problem: code using `chipset_in_state` and friends simply doesn\u0027t acknowledge the potential races. I noted on b/235893584 that this should be improved, but it requires an API change.\n\nI will have a look at priority here to verify it seems okay.",
+      "parentUuid": "1ea2ed63_3c3523ea",
       "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
