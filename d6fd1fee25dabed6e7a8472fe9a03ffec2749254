@@ -16,6 +16,47 @@
       "message": "I\u0027m not sure why I see these errors locally at ToT when it hasn\u0027t shown up in CQ. But does it make sense that we would need to explicitly set our flags in this file to match Makefile.toolchain?",
       "revId": "d6fd1fee25dabed6e7a8472fe9a03ffec2749254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f2ee2d_2ed14f92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T03:58:22Z",
+      "side": 1,
+      "message": "If this isn\u0027t happening in postsubmit, then the issue is almost certainly something you\u0027ve got going locally.\n\nYou can try `repo status` to make sure you don\u0027t have any changes to ToT in any repo, and `cros_sdk --replace` to replace your chroot, if necessary.",
+      "parentUuid": "469eefa6_498a7e9a",
+      "revId": "d6fd1fee25dabed6e7a8472fe9a03ffec2749254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab234b57_c64918ce",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T03:58:22Z",
+      "side": 1,
+      "message": "I think cmake compiler properties are the preferred way to set warning levels.  You can see the example below.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "d6fd1fee25dabed6e7a8472fe9a03ffec2749254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
