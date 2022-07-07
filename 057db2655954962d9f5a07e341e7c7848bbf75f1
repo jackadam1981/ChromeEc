@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e98cd8_b134f364",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T23:42:30Z",
+      "side": 1,
+      "message": "ppc_set_sbu(0, 0);",
+      "revId": "057db2655954962d9f5a07e341e7c7848bbf75f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91942fe_b5b82791",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T23:42:30Z",
+      "side": 1,
+      "message": "board_ap_power_force_shutdown()\nremove just return without doing anything",
+      "revId": "057db2655954962d9f5a07e341e7c7848bbf75f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd6fbf6_84c9d523",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T23:42:30Z",
+      "side": 1,
+      "message": "ppc_set_sbu(0, 1);",
+      "revId": "057db2655954962d9f5a07e341e7c7848bbf75f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e8473f_4c8c62fd",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T23:42:30Z",
+      "side": 1,
+      "message": "board_ap_power_force_shutdown()\nmake it just return without doing anything",
+      "revId": "057db2655954962d9f5a07e341e7c7848bbf75f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7394d831_d60a12e2",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T23:42:30Z",
+      "side": 1,
+      "message": "if (ioex_gpio \u003d\u003d high) {\n\tioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);\n        ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 0);\n        tc_set_power_role(USBC_PORT_C0, PD_ROLE_SINK);       \n}",
+      "revId": "057db2655954962d9f5a07e341e7c7848bbf75f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
