@@ -70,6 +70,24 @@
       "parentUuid": "9ef7604c_6cba03da",
       "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7a7899_c9083c50",
+        "filename": "zephyr/dts/bindings/usbc/mux/analogix,usbc-mux-anx7447.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-07T19:01:56Z",
+      "side": 1,
+      "message": "The usb_mux shim does currently require the `hpd-update` enum.  If the board dts file excludes the `hpd-update` property, then the `usb_mux.hpd_update` field is set to NULL.\nThis provides flexibility for enabling/disabling HPD updates.\n\n@tmichalec@google.com - why is `hpd-update` an enum property instead of a bool property?",
+      "parentUuid": "87dbd526_274f24bb",
+      "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
