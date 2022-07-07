@@ -103,6 +103,24 @@
       "parentUuid": "443eec09_560ffd4e",
       "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e80727_0b939320",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-07T23:35:13Z",
+      "side": 1,
+      "message": "This should have a comment. No need to mention the specific device in common code. Just say something like,\n```\n/* Some TCPCs do not properly disable interrupts during BIST test mode. Stop tracking interrupt storms during this  time. */\n```",
+      "parentUuid": "0de4e135_ffe7a5b9",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
