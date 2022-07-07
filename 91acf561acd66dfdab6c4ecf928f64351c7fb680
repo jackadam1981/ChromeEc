@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e6e34a_654f9019",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-07-07T09:34:56Z",
+      "side": 1,
+      "message": "Please review the hoglin shutdown delay increase. This is as suggested by Tom in https://partnerissuetracker.corp.google.com/issues/212222920#comment29. Hoglin currently requires ~435 ms extra delay. I have kept 450/460 ms and tried multiple times and it could power on successfully. I have kept 460 ms, hopefully that should be fine.\nThanks.",
+      "revId": "91acf561acd66dfdab6c4ecf928f64351c7fb680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
