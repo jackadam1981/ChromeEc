@@ -10,7 +10,9 @@
 
 static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack, CONFIG_AP_PWRSEQ_STACK_SIZE);
 static struct k_thread pwrseq_thread_data;
-static struct pwrseq_context pwrseq_ctx;
+static struct pwrseq_context pwrseq_ctx = {
+	.power_state = SYS_POWER_STATE_UNINIT,
+};
 /* S5 inactive timer*/
 K_TIMER_DEFINE(s5_inactive_timer, NULL, NULL);
 /*
