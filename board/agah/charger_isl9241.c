@@ -35,6 +35,7 @@
 
 #include "common.h"
 
+#include "adc.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charge_state_v2.h"
@@ -63,17 +64,97 @@ const struct charger_config_t chg_chips[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(chg_chips) == CHARGER_NUM);
 
+static const char *const adapter_name[] = {
+	"45W", "65W", "90W", "120W", "135W", "150W", "unknown",
+};
+
+struct adp_typ_voltage {
+	/* adp_typ up and low limit in mV */
+	int low_limit;
+	int high_limit;
+};
+
+static const struct adp_typ_voltage bj_adp_typ[] = {
+	/*
+	 * Select adapter if adp_typ volatge
+	 * between low_limit(mV) and high_limit(mV)
+	 */
+
+	/* 45W  */
+	{ .low_limit = 799, .high_limit = 884 },
+	/* 65W */
+	{ .low_limit = 1009, .high_limit = 1115 },
+	/* 90W */
+	{ .low_limit = 1284, .high_limit = 1419 },
+	/* 120W */
+	{ .low_limit = 1558, .high_limit = 1721 },
+	/* 135W */
+	{ .low_limit = 1739, .high_limit = 1865 },
+	/* 150W */
+	{ .low_limit = 1881, .high_limit = 2017 },
+};
+
+static const struct charge_port_info bj_power[] = {
+	/* 45W */
+	{ .voltage = 19500, .current = 2310 },
+	/* 65W */
+	{ .voltage = 19500, .current = 3330 },
+	/* 90W */
+	{ .voltage = 19500, .current = 4620 },
+	/* 120W */
+	{ .voltage = 19500, .current = 6150 },
+	/* 135W */
+	{ .voltage = 19500, .current = 6920 },
+	/* 150W */
+	{ .voltage = 19500, .current = 7700 },
+};
+
+int bj_count;
+
+static int board_get_bj_watt(void)
+{
+	return bj_count;
+}
+
+static void board_update_bj_setting(void)
+{
+	int adp_typ_mv;
+
+	adp_typ_mv = adc_read_channel(ADC_ADP_TYP);
+
+	for (bj_count = ADAPTER_45W; bj_count < ADAPTER_UNKNOWN; bj_count++) {
+		if (adp_typ_mv >= bj_adp_typ[bj_count].low_limit &&
+		    adp_typ_mv <= bj_adp_typ[bj_count].high_limit) {
+			CPRINTS("Barrel Jack adapter is %s (%dmv)",
+				adapter_name[bj_count], adp_typ_mv);
+			break;
+		}
+	}
+
+	/* TODO: if we need support higher watt adapter */
+	if (adp_typ_mv > bj_adp_typ[ADAPTER_150W].high_limit) {
+		CPRINTS("Adapter over 150W treat as 150W (%dmv)", adp_typ_mv);
+		bj_count = ADAPTER_150W;
+	}
+
+	charge_manager_update_charge(
+		CHARGE_SUPPLIER_DEDICATED, DEDICATED_CHARGE_PORT,
+		bj_count != ADAPTER_UNKNOWN ? &bj_power[bj_count] : NULL);
+}
+
 static int board_enable_bj_port(bool enable)
 {
 	if (enable) {
 		if (gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL))
 			return EC_ERROR_INVAL;
-		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
+		if (board_get_bj_watt() != ADAPTER_UNKNOWN)
+			gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 0);
 	} else {
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
 	}
 
-	CPRINTS("BJ power is %sabled", enable ? "en" : "dis");
+	CPRINTS("BJ power is %sabled",
+		!gpio_get_level(GPIO_EN_PPVAR_BJ_ADP_L) ? "en" : "dis");
 
 	return EC_SUCCESS;
 }
@@ -188,6 +269,8 @@ int board_set_active_charge_port(int port)
 		 */
 		if (board_disable_other_vbus_sink(-1))
 			return EC_ERROR_UNKNOWN;
+
+		board_update_bj_setting();
 		board_enable_bj_port(true);
 	}
 
@@ -203,18 +286,15 @@ void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
 }
 
-static const struct charge_port_info bj_power = {
-	/* 150W (also default) */
-	.voltage = 19500,
-	.current = 7700,
-};
-
 /* Debounce time for BJ plug/unplug */
-#define BJ_DEBOUNCE_MS CONFIG_EXTPOWER_DEBOUNCE_MS
+#define BJ_DEBOUNCE_MS 200
 
 int board_should_charger_bypass(void)
 {
-	return charge_manager_get_active_charge_port() == DEDICATED_CHARGE_PORT;
+	return board_get_bj_watt() != ADAPTER_UNKNOWN ?
+		       charge_manager_get_active_charge_port() ==
+			       DEDICATED_CHARGE_PORT :
+		       0;
 }
 
 static void bj_connect(void)
@@ -231,7 +311,7 @@ static void bj_connect(void)
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
 				     DEDICATED_CHARGE_PORT,
-				     connected ? &bj_power : NULL);
+				     connected ? &bj_power[0] : NULL);
 }
 DECLARE_DEFERRED(bj_connect);
 
