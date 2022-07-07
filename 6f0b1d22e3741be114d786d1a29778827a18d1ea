@@ -16,6 +16,24 @@
       "message": "can\u0027t we use this?",
       "revId": "6f0b1d22e3741be114d786d1a29778827a18d1ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9133724e_292ec954",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-07T23:53:42Z",
+      "side": 1,
+      "message": "It seems as though the test requires a transition from g3 to s3 and finally s4. I have this as a separate utility function.",
+      "parentUuid": "0edb4202_e49ee627",
+      "revId": "6f0b1d22e3741be114d786d1a29778827a18d1ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
