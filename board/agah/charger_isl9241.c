@@ -35,6 +35,7 @@
 
 #include "common.h"
 
+#include "adc.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charge_state_v2.h"
@@ -203,14 +204,49 @@ void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
 }
 
-static const struct charge_port_info bj_power = {
-	/* 150W (also default) */
-	.voltage = 19500,
-	.current = 7700,
+struct adp_typ_voltage {
+	/* adp_typ up and low limit in mV */
+	int low_limit;
+	int high_limit;
+};
+
+static const struct adp_typ_voltage bj_adp_typ[] = {
+	/*
+	 * Select adapter if adp_typ volatge
+	 * between low_limit(mV) and high_limit(mV)
+	 */
+
+	/* 45W  */
+	{ .low_limit = 816, .high_limit = 867 },
+	/* 65W */
+	{ .low_limit = 1030, .high_limit = 1104 },
+	/* 90W */
+	{ .low_limit = 1311, .high_limit = 1406 },
+	/* 120W */
+	{ .low_limit = 1590, .high_limit = 1705 },
+	/* 135W */
+	{ .low_limit = 1748, .high_limit = 1874 },
+	/* 150W */
+	{ .low_limit = 1891, .high_limit = 2027 },
+};
+
+static const struct charge_port_info bj_power[] = {
+	/* 45W */
+	{ .voltage = 19500, .current = 2310 },
+	/* 65W */
+	{ .voltage = 19500, .current = 3330 },
+	/* 90W */
+	{ .voltage = 19500, .current = 4620 },
+	/* 120W */
+	{ .voltage = 19500, .current = 6150 },
+	/* 135W */
+	{ .voltage = 19500, .current = 6920 },
+	/* 150W */
+	{ .voltage = 19500, .current = 7700 },
 };
 
 /* Debounce time for BJ plug/unplug */
-#define BJ_DEBOUNCE_MS CONFIG_EXTPOWER_DEBOUNCE_MS
+#define BJ_DEBOUNCE_MS 200
 
 int board_should_charger_bypass(void)
 {
@@ -221,6 +257,7 @@ static void bj_connect(void)
 {
 	static int8_t bj_connected = -1;
 	int connected = !gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL);
+	int bj_count = 0, adp_typ_mv;
 
 	/* Debounce */
 	if (connected == bj_connected)
@@ -229,9 +266,26 @@ static void bj_connect(void)
 	bj_connected = connected;
 	CPRINTS("BJ %sconnected", connected ? "" : "dis");
 
+	if (connected) {
+		adp_typ_mv = adc_read_channel(ADC_ADP_TYP);
+
+		ccprintf("adp_typ_mv:%d\n", adp_typ_mv);
+
+		for (bj_count = 0; bj_count <
+			 sizeof(bj_adp_typ)/sizeof(struct adp_typ_voltage);
+			 bj_count++) {
+			if (adp_typ_mv > bj_adp_typ[bj_count].low_limit
+			   && adp_typ_mv < bj_adp_typ[bj_count].high_limit)
+				break;
+		}
+
+		if (bj_count == 6)
+			bj_count = 0; /* treat as 45W */
+	}
+
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
 				     DEDICATED_CHARGE_PORT,
-				     connected ? &bj_power : NULL);
+				     connected ? &bj_power[bj_count] : NULL);
 }
 DECLARE_DEFERRED(bj_connect);
 
@@ -278,6 +332,5 @@ static void bj_state_init(void)
 			charge_manager_update_charge(j, i, NULL);
 	}
 
-	bj_connect();
 }
 DECLARE_HOOK(HOOK_INIT, bj_state_init, HOOK_PRIO_INIT_CHARGE_MANAGER + 1);
