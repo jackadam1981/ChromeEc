@@ -129,6 +129,22 @@ enum sm5803_gpio0_modes {
 #define SM5803_GPADCC1_VSYS_EN BIT(6) /* NOTE: DO NOT CLEAR */
 #define SM5803_GPADCC1_TINT_EN BIT(7)
 
+/*
+ * Default value for GPADCC1, set at initialization: the normal operating state.
+ *
+ * IBAT_CHG is enabled in order to measure battery current and calculate system
+ * resistance.
+ */
+#define SM5803_GPADCC1_DEFAULT_ENABLE ( \
+	SM5803_GPADCC1_TINT_EN     | \
+	SM5803_GPADCC1_VSYS_EN     | \
+	SM5803_GPADCC1_VCHGPWR_EN  | \
+	SM5803_GPADCC1_VBUS_EN     | \
+	SM5803_GPADCC1_IBAT_CHG_EN | \
+	SM5803_GPADCC1_IBAT_DIS_EN | \
+	SM5803_GPADCC1_VBATSNSP_EN   \
+)
+
 #define SM5803_REG_GPADC_CONFIG2 0x02
 
 #define SM5803_REG_PSYS1 0x04
