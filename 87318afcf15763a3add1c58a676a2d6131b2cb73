@@ -16,6 +16,24 @@
       "message": "In the general case, I think having a state that says \u0027uninitialised\u0027 is a bad code smell, since it highlights a likely broken dependency issue i.e any code that is checking the CPU state before it is determined has some kind of initialisation priority or starting issue.\nThe idea is, exactly what will that code do knowing the state is \u0027unknown\u0027? It can\u0027t do anything meaningful, and so I posit it should never have asked in the first place.\nIf anything it should perhaps have an assert or other error, not actually return a state.\n\nCode that checks this kind of state should likely be using a callback to drive the checks, and so there won\u0027t be any issue with calling this check at that point.\nIt would be good to find an actual use case where this is required.\nIf it is a valid use case, this could be a place where a \u0027AP_POWER_READY\u0027 callback could be used to tell dependent code that the power sequence code has been initialised and is now ready to return sensible results.\n",
       "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "513e69b6_33d5fe6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T01:28:09Z",
+      "side": 1,
+      "message": "This isn\u0027t to say that internally the power sequence knows that it has not been initialised, and is ready to deal sensibly (lots of bells and whistles and logs) with any call that is asking about its state before it is ready.\nSo putting in an internal state is good, it\u0027s just that we perhaps shouldn\u0027t expose it outside.",
+      "parentUuid": "27c03277_08920bf5",
+      "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
