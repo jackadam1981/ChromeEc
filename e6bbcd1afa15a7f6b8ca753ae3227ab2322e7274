@@ -16,6 +16,155 @@
       "message": "Hi fabio, can you please share feedback to this CL?",
       "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c9aada7_d16fc367",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T14:09:54Z",
+      "side": 1,
+      "message": "Can you run these through clang-format? (clang-format -i mtlrvp.c), we are in the process of adopting that to help out with coding style, it should be changing a couple of details in this.",
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe82adfe_28270cf0",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T14:09:54Z",
+      "side": 1,
+      "message": "Sounds a bit cryptic, can you expand?",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e56d6a_7a9926d5",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T14:09:54Z",
+      "side": 1,
+      "message": "Is this the same as baseboard/intelrvp/chg_usb_pd.c? If that\u0027s the case I\u0027d say just reuse the existing file, no need to have two copies.",
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc26aa8e_f3f4e3e7",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd_mecc_1_1.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T14:09:54Z",
+      "side": 1,
+      "message": "I would split this, add a return code variable, make the `tcpc_aic_gpios[port].ppc_intr_handler` in its own `if` etc...",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "debd0a49_b0cd9340",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T14:09:54Z",
+      "side": 1,
+      "message": "Can you use explicit braces? https://docs.zephyrproject.org/latest/contribute/guidelines.html?highlight\u003dbraces#coding-style\n\nWe are trying to stick to the Zephyr style, same for the rest of the file.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "804ad58e_d5eae007",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T14:09:54Z",
+      "side": 1,
+      "message": "move this to an explicit if()... easier to read",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab2df7a_3ced2674",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T14:09:54Z",
+      "side": 1,
+      "message": "same, move to an if and have two explicit return, not much benefit for using a ternary here",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 45
+      },
+      "revId": "e6bbcd1afa15a7f6b8ca753ae3227ab2322e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
