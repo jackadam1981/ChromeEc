@@ -62,6 +62,9 @@
  */
 #define CONFIG_LED_DRIVER_OZ554
 
+/* EC Defines */
+#define CONFIG_USB_PD_DP_HPD_GPIO_CUSTOM
+
 /* Unused Features */
 #undef CONFIG_BACKLIGHT_LID
 #undef CONFIG_CMD_KEYBOARD
@@ -71,6 +74,7 @@
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_USB_CHARGER
 #undef CONFIG_VOLUME_BUTTONS
+#undef GPIO_USB_C1_DP_HPD
 
 /* I2C Bus Configuration */
 #define I2C_PORT_EDID IT83XX_I2C_CH_B
