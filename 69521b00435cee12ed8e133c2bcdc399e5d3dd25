@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "330b9a1d_8686d7d6",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T17:51:42Z",
+      "side": 1,
+      "message": "nit: braces :-)",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 38
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade9713b_9b44b220",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T17:51:42Z",
+      "side": 1,
+      "message": "This has no closing comment but the other do... Not sure we require them or not but they are probably not needed here, I\u0027d say just be coherent and either have them everwhere in the file or drop them.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074c6db5_e39e7360",
+        "filename": "zephyr/projects/intelrvp/src/chg_usb_pd.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T17:51:42Z",
+      "side": 1,
+      "message": "If you move this inside the function body (same as with the two above) and make this function a noop if the \"not\" case, then you can drop the #if around board_dc_jack_handle() below.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2bb5e34_5935c208",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T17:51:42Z",
+      "side": 1,
+      "message": "nit: braces",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb0eced_66d3369c",
+        "filename": "zephyr/projects/intelrvp/src/usb_pd_policy_mecc_1_1.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-07T17:51:42Z",
+      "side": 1,
+      "message": "nit: braces",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "69521b00435cee12ed8e133c2bcdc399e5d3dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
