@@ -37,9 +37,14 @@ static int check_pch_out_of_suspend(void)
 int all_sys_pwrgd_handler(void)
 {
 	int retry = 0;
+	int timeout_ms = AP_PWRSEQ_DT_VALUE(all_sys_pwrgd_timeout);
 
 	/* TODO: Add condition for no power sequencer */
-	k_msleep(AP_PWRSEQ_DT_VALUE(all_sys_pwrgd_timeout));
+	while ((power_signal_get(PWR_ALL_SYS_PWRGD) == 0) &&
+		(timeout_ms > 0)) {
+		msleep(1);
+		timeout_ms--;
+	};
 
 	if (power_signal_get(PWR_DSW_PWROK) == 0) {
 	/* Todo: Remove workaround for the retry
