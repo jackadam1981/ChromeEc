@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f06b8af_39d9e63d",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T21:33:56Z",
+      "side": 1,
+      "message": "I missed the strongbad config. Can you test that codepath manually to make sure it works?",
+      "parentUuid": "10aa860f_9e89a50a",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 27
+      },
+      "revId": "8458912cfcee778ad8e5a06416a1cf1c95e93428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f203c52_2d40968c",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 2
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I\u0027ve copied that from stm32mon loop:\n```\n  for attempt in $(seq \"${FLAGS_retries}\"); do\n    # Reset sequence to enter bootloader mode\n    gpio 0 \"${gpio_nrst}\"\n    sleep 0.01\n\n    # Release reset as the SPI bus is now ready\n    gpio 1 \"${gpio_nrst}\"\n```\n\nI added this to make sure that we keep FPMCU in reset for long enough, but I\u0027m not sure if we really need it.",
       "parentUuid": "6f203c52_2d40968c",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 14
+      },
+      "revId": "8458912cfcee778ad8e5a06416a1cf1c95e93428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d08e91_3ae5131e",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T21:33:56Z",
+      "side": 1,
+      "message": "I think it\u0027s probably good to have the sleep, but can you add a comment about it in case there\u0027s some question in the future?",
+      "parentUuid": "e87fbc82_40fb5785",
       "range": {
         "startLine": 453,
         "startChar": 0,
