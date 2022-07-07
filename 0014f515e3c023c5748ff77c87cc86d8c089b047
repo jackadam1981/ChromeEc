@@ -86,6 +86,24 @@
       "parentUuid": "1ea2ed63_3c3523ea",
       "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28fe234a_5186d258",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T01:10:49Z",
+      "side": 1,
+      "message": "The priority issue is solved if this init is done as part of power_signal_vw_init() (see the comment above), which is guaranteed to be called as part of the power sequence initialisation.\nThe callbacks are then guaranteed to be registered before the power sequence init is done. And since then the callbacks are then known to operate at the start, you will reliably get a callback once the power sequence init is done.\nFor this particular situation, you won\u0027t need to add an initial \u0027unitialised\u0027 state for the AP state - which doesn\u0027t mean it shouldn\u0027t be added, but maybe that\u0027s a separate issue that needs a bit more thought (so perhaps let\u0027s keep that separate).",
+      "parentUuid": "fda35341_91e4bddb",
+      "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
