@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6999bec6_73d6135e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-07T17:01:53Z",
+      "side": 1,
+      "message": "Usually the \"if\" checks are hiding in the static inline tcpm_* function, found in `include/driver/tcpm/tcpm.h`.\n\nThat function could return EC_ERROR_UNIMPLEMENTED if the function isn\u0027t implemented for a particular chip",
+      "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aea023a_dfa20fba",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-07T17:01:53Z",
+      "side": 1,
+      "message": "We might want more documentation here letting the developer know how/why they may implement this function.  Note that if the function alters the alert mask and power status mask, this indicates the chip does not require a full TCPCI re-init after a hard reset",
+      "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
