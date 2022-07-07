@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "435e4976_62967352",
+        "filename": "builtin/stdint.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T17:10:01Z",
+      "side": 1,
+      "message": "nit: any reason why this isn\u0027t `-2147483647 - 1` like the style of `INT64_MIN`? I see that style isn\u0027t used for the other `MIN` values though. It would be nice for them all to be consistent, so you could do that in a followup commit.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "0c10ab9cf4fed08a3baae81f6b1302f29f2f5da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
