@@ -31,6 +31,9 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ##args)
 
+#define OFFSET_UPDATE_PER_TRY 10
+BUILD_ASSERT((OFFSET_UPDATE_DELAY % OFFSET_UPDATE_PER_TRY) == 0);
+
 /* Sensor definition */
 STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR)
 void irq_set_orientation(struct motion_sensor_t *s);
@@ -403,15 +406,17 @@ static int reset_offset(const struct motion_sensor_t *s, uint8_t offset_en)
 	RETURN_ERROR(bmi3_write_n(s, BMI3_REG_CMD, reg_data, 2));
 
 	/* Delay time for offset update */
-	msleep(OFFSET_UPDATE_DELAY);
+	for (int i = 0; i <= OFFSET_UPDATE_DELAY; i += OFFSET_UPDATE_PER_TRY) {
+		msleep(OFFSET_UPDATE_PER_TRY);
 
-	/* Read the configuration from the feature engine register */
-	RETURN_ERROR(bmi3_read_n(s, BMI3_FEATURE_IO_1, reg_data, 4));
+		/* Read the configuration from the feature engine register */
+		RETURN_ERROR(bmi3_read_n(s, BMI3_FEATURE_IO_1, reg_data, 4));
 
-	if ((reg_data[3] & BMI3_UGAIN_OFFS_UPD_COMPLETE) &&
-	    ((reg_data[2] & BMI3_FEATURE_IO_1_ERROR_MASK) ==
-	     BMI3_FEATURE_IO_1_NO_ERROR)) {
-		return EC_SUCCESS;
+		if ((reg_data[3] & BMI3_UGAIN_OFFS_UPD_COMPLETE) &&
+		    ((reg_data[2] & BMI3_FEATURE_IO_1_ERROR_MASK) ==
+		     BMI3_FEATURE_IO_1_NO_ERROR)) {
+			return EC_SUCCESS;
+		}
 	}
 
 	return EC_ERROR_NOT_CALIBRATED;
@@ -478,15 +483,17 @@ static int write_gyro_offset(const struct motion_sensor_t *s, int *val)
 				8);
 	RETURN_ERROR(bmi3_write_n(s, BMI3_REG_CMD, reg_data, 2));
 
-	msleep(OFFSET_UPDATE_DELAY);
+	for (int i = 0; i <= OFFSET_UPDATE_DELAY; i += OFFSET_UPDATE_PER_TRY) {
+		msleep(OFFSET_UPDATE_PER_TRY);
 
-	/* Read the configuration from the feature engine register */
-	RETURN_ERROR(bmi3_read_n(s, BMI3_FEATURE_IO_1, reg_data, 4));
+		/* Read the configuration from the feature engine register */
+		RETURN_ERROR(bmi3_read_n(s, BMI3_FEATURE_IO_1, reg_data, 4));
 
-	if ((reg_data[3] & BMI3_UGAIN_OFFS_UPD_COMPLETE) &&
-	    ((reg_data[2] & BMI3_FEATURE_IO_1_ERROR_MASK) ==
-	     BMI3_FEATURE_IO_1_NO_ERROR)) {
-		return EC_SUCCESS;
+		if ((reg_data[3] & BMI3_UGAIN_OFFS_UPD_COMPLETE) &&
+		    ((reg_data[2] & BMI3_FEATURE_IO_1_ERROR_MASK) ==
+		     BMI3_FEATURE_IO_1_NO_ERROR)) {
+			return EC_SUCCESS;
+		}
 	}
 
 	return EC_ERROR_NOT_CALIBRATED;
@@ -594,15 +601,17 @@ static int write_accel_offsets(const struct motion_sensor_t *s, int *val)
 
 	RETURN_ERROR(bmi3_write_n(s, BMI3_REG_CMD, reg_data, 2));
 
-	msleep(OFFSET_UPDATE_DELAY);
+	for (int i = 0; i <= OFFSET_UPDATE_DELAY; i += OFFSET_UPDATE_PER_TRY) {
+		msleep(OFFSET_UPDATE_PER_TRY);
 
-	/* Read the configuration from the feature engine register */
-	RETURN_ERROR(bmi3_read_n(s, BMI3_FEATURE_IO_1, reg_data, 4));
+		/* Read the configuration from the feature engine register */
+		RETURN_ERROR(bmi3_read_n(s, BMI3_FEATURE_IO_1, reg_data, 4));
 
-	if ((reg_data[3] & BMI3_UGAIN_OFFS_UPD_COMPLETE) &&
-	    ((reg_data[2] & BMI3_FEATURE_IO_1_ERROR_MASK) ==
-	     BMI3_FEATURE_IO_1_NO_ERROR)) {
-		return EC_SUCCESS;
+		if ((reg_data[3] & BMI3_UGAIN_OFFS_UPD_COMPLETE) &&
+		    ((reg_data[2] & BMI3_FEATURE_IO_1_ERROR_MASK) ==
+		     BMI3_FEATURE_IO_1_NO_ERROR)) {
+			return EC_SUCCESS;
+		}
 	}
 
 	return EC_ERROR_NOT_CALIBRATED;
