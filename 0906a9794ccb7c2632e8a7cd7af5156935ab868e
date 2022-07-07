@@ -283,6 +283,30 @@
       },
       "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ff039e_9962b920",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T00:47:21Z",
+      "side": 1,
+      "message": "With the rework, this isn\u0027t necessary any more.",
+      "parentUuid": "c72d84dd_cd9178d1",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "0906a9794ccb7c2632e8a7cd7af5156935ab868e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
