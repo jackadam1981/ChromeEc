@@ -961,10 +961,6 @@ static void sm5803_enable_runtime_low_power_mode(void)
 			chgnum);
 		return;
 	}
-	/* Slow the clock speed */
-	rv |= main_read8(chgnum, SM5803_REG_CLOCK_SEL, &reg);
-	reg |= SM5803_CLOCK_SEL_LOW;
-	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
 	/* Disable ADC sigma delta */
 	rv |= chg_read8(chgnum, SM5803_REG_CC_CONFIG1, &reg);
@@ -978,6 +974,11 @@ static void sm5803_enable_runtime_low_power_mode(void)
 		reg &= ~SM5803_PHOT1_COMPARATOR_EN;
 		rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
 	}
+
+	/* Slow the clock speed */
+	rv |= main_read8(chgnum, SM5803_REG_CLOCK_SEL, &reg);
+	reg |= SM5803_CLOCK_SEL_LOW;
+	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
 	if (rv)
 		CPRINTS("%s %d: Failed to set in enable runtime LPM",
