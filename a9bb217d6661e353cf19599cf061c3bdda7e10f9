@@ -16,6 +16,24 @@
       "message": "Lost CR+2 after rebase. Can you take a look?",
       "revId": "a9bb217d6661e353cf19599cf061c3bdda7e10f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77f4ee7_d5898a26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T18:03:15Z",
+      "side": 1,
+      "message": "This is just waiting on a CR+2 that was lost after rebase.",
+      "parentUuid": "655ad7d2_a893b481",
+      "revId": "a9bb217d6661e353cf19599cf061c3bdda7e10f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
