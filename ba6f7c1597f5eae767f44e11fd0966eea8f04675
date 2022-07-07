@@ -177,6 +177,24 @@
       "parentUuid": "7f96d162_a9393862",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1253321_f064ea24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-07T19:23:54Z",
+      "side": 1,
+      "message": "\u003e The COUNT values that Andrea is reporting are similar to what I am seeing. Maybe the servo is running at the wrong frequency? Tom, are you running the latest version of the servo firmware? If not, maybe there is a bug in the firmware that is causing increased power draw that is sagging the bus?\n\nI had previously assumed that long running samples with `-t \u003cn\u003e` was managed by the servo itself rather than by `dut_control.py` but that\u0027s actually not the case ([see here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/third_party/hdctools/servo/dut_control.py;l\u003d184)). The fact that Andrea and I are seeing much higher COUNTs implies that either our computers are running much faster (unlikely) or the round trip sample time is much faster.",
+      "parentUuid": "7f96d162_a9393862",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
