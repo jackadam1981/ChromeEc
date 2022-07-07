@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10aa860f_9e89a50a",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-07T21:07:33Z",
+      "side": 1,
+      "message": "This is part of `config_strongbad()`\n```\n  if en_fp_rails\u003d$(gpiofind EN_FP_RAILS); then\n    readonly GPIO_PWREN\u003d$((${gpiobase} + $(echo $en_fp_rails|cut -f2 -d\" \")))\n  else\n    readonly GPIO_PWREN\u003d-1\n  fi\n```\nIf I understand correctly, there could be strongbad board that doesn\u0027t have GPIO_PWREN.\n\nAnother point is that, we need to have a fallback.",
+      "parentUuid": "d95b6711_ce81d6af",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 27
+      },
+      "revId": "8458912cfcee778ad8e5a06416a1cf1c95e93428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f203c52_2d40968c",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-07T15:57:42Z",
       "side": 1,
       "message": "This is new? I\u0027m assuming that it\u0027s to make sure it stays low long enough, but can you add a comment?",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 14
+      },
+      "revId": "8458912cfcee778ad8e5a06416a1cf1c95e93428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87fbc82_40fb5785",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-07T21:07:33Z",
+      "side": 1,
+      "message": "I\u0027ve copied that from stm32mon loop:\n```\n  for attempt in $(seq \"${FLAGS_retries}\"); do\n    # Reset sequence to enter bootloader mode\n    gpio 0 \"${gpio_nrst}\"\n    sleep 0.01\n\n    # Release reset as the SPI bus is now ready\n    gpio 1 \"${gpio_nrst}\"\n```\n\nI added this to make sure that we keep FPMCU in reset for long enough, but I\u0027m not sure if we really need it.",
+      "parentUuid": "6f203c52_2d40968c",
       "range": {
         "startLine": 453,
         "startChar": 0,
