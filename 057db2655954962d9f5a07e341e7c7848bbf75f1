@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecb6df89_3a00f9bf",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-07T23:46:06Z",
+      "side": 1,
+      "message": "if H1 is not triggering interrupt call board level function to enable disable this from\nstatic inline int tcpm_debug_accessory(int port, bool enable)",
+      "revId": "057db2655954962d9f5a07e341e7c7848bbf75f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68e98cd8_b134f364",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 3
