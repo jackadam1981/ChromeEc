@@ -913,6 +913,14 @@ static int svdm_response_identity(int port, uint32_t *payload)
 {
 	int dp_supported = (alt_dp_config & ALT_DP_ENABLE) != 0;
 
+	/*
+	 * TODO: Per USB-IF NAK should not be done here.
+	 * "Modes supported" should be a fixed item.
+	 *
+	 * Move this to EnterMode check.
+	 */
+	dp_supported = true;
+
 	if (dp_supported) {
 		payload[VDO_I(IDH)] = vdo_idh;
 		payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
@@ -1034,6 +1042,15 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 	if ((PD_VDO_VID(payload[0]) != USB_SID_DISPLAYPORT) ||
 	    (PD_VDO_OPOS(payload[0]) != OPOS))
 		return 0; /* NAK */
+
+	/* CCD uses the SBU lines; don't enable DP when dts-mode enabled */
+	if (!(cc_config & CC_DISABLE_DTS)) {
+		CPRINTS("WARNING: EnterMode DP with [CCD on AUX/SBU]");
+		return 0; /* NAK */
+	} else if (!(alt_dp_config & ALT_DP_ENABLE)) {
+		CPRINTS("WARNING: EnterMode DP with [usbc dp disable]");
+		return 0; /* NAK */
+	}
 
 	alt_mode = OPOS;
 	return 1;
