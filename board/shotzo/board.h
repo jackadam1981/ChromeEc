@@ -68,6 +68,7 @@
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_USB_CHARGER
 #undef CONFIG_VOLUME_BUTTONS
+#undef GPIO_USB_C1_DP_HPD
 
 /* I2C Bus Configuration */
 #define I2C_PORT_BACKLIGHT IT83XX_I2C_CH_C
@@ -115,6 +116,7 @@ enum charge_port {
 
 /* Board specific handlers */
 void led_alert(int enable);
+#define PORT_TO_HPD(port) (GPIO_USB_C0_DP_HPD)
 
 /* Pin renaming */
 #define GPIO_AC_PRESENT GPIO_BJ_ADP_PRESENT_L
