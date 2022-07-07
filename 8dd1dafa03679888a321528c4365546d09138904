@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0786a396_305557d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2022-07-07T00:46:04Z",
+      "side": 1,
+      "message": "Initial commit. Manual of style had to be bent due to abvoid \"WARNING: Avoid unnecessary line continuations\" false-positives, such as ServoV4p1 L334, L349.\n\nTDC trace of fix in action in associated bug.",
+      "revId": "8dd1dafa03679888a321528c4365546d09138904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
