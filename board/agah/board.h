@@ -213,6 +213,16 @@ enum charge_port {
 	CHARGE_PORT_BARRELJACK,
 };
 
+enum adapter_type {
+	ADAPTER_45W = 0,
+	ADAPTER_65W,
+	ADAPTER_90W,
+	ADAPTER_120W,
+	ADAPTER_135W,
+	ADAPTER_150W,
+	ADAPTER_UNKNOWN,
+};
+
 /**
  * Interrupt handler for PG_PP3300_S5_OD changes.
  *
