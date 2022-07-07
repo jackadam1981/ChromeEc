@@ -16,6 +16,98 @@
       "message": "PTAL since I have refactored this according to review comments in the design doc.\n",
       "revId": "8d6f45a145eab9be2cf72b291f1eff1c7ddeb004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701d3e57_1f1f4f36",
+        "filename": "zephyr/projects/brya/gpio.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T03:23:11Z",
+      "side": 1,
+      "message": "device-tree node names should use hyphen (`-`)",
+      "range": {
+        "startLine": 306,
+        "startChar": 10,
+        "endLine": 306,
+        "endChar": 11
+      },
+      "revId": "8d6f45a145eab9be2cf72b291f1eff1c7ddeb004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1343033c_ebabf319",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T03:23:11Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 217,
+        "startChar": 10,
+        "endLine": 217,
+        "endChar": 11
+      },
+      "revId": "8d6f45a145eab9be2cf72b291f1eff1c7ddeb004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6771d5cb_f73f73af",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T03:23:11Z",
+      "side": 1,
+      "message": "can you format with `clang-format`?\n\n(I am in the process of getting enforcement enabled, so very soon it\u0027ll be pre-upload that complains instead of me 🙃)",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "8d6f45a145eab9be2cf72b291f1eff1c7ddeb004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d4bba9_5c32a51b",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-07T03:23:11Z",
+      "side": 1,
+      "message": "clang-format",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "8d6f45a145eab9be2cf72b291f1eff1c7ddeb004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
