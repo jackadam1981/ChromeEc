@@ -159,6 +159,24 @@
       "parentUuid": "14ed6388_9e27cfa1",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d69d44_496c4fc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T19:15:39Z",
+      "side": 1,
+      "message": "I\u0027m definitely running a different version of `servod` and `servo`:\n\n```\nservod --version\nservod v1.0.1240\n```\n\n```\ncurrent \u0027servo_micro\u0027 firmware: servo_micro_v2.4.35-f1113c92b\n```\n\nI\u0027m hesitant to update either since they do seem to be working now, but since I think it\u0027s easy to flash old/new servo firmware versions I can try that first.\n\nOne thing that\u0027s interesting is that Andrea\u0027s [numbers from dragonclaw look like they\u0027re close to 3.3V](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3739314/comments/a02459e0_75c8d21c), so it seems like the servo itself is probably not bad.",
+      "parentUuid": "7f96d162_a9393862",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
