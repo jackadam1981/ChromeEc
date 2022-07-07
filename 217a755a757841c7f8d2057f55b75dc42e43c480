@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba52459_334e17aa",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-07-07T09:42:42Z",
+      "side": 1,
+      "message": "Is RSMRST# asserted when AP_POWER_PRE_INIT event is sent?\n(The eSPI pad should be enabled before EC de-assert the RSMRST#)\n\nDoes EC send AP_POWER_HARD_OFF event on force shutdown?\n(e.g run apshutdown command from EC console)",
+      "range": {
+        "startLine": 199,
+        "startChar": 6,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "217a755a757841c7f8d2057f55b75dc42e43c480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
