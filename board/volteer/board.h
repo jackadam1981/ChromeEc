@@ -23,7 +23,7 @@
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
 /* Remove PRL state names to free flash space */
-#define CONFIG_USB_PD_DEBUG_LEVEL 1
+#define CONFIG_USB_PD_DEBUG_LEVEL 0
 
 #define CONFIG_VBOOT_EFS2
 
@@ -97,6 +97,9 @@
 #define CONFIG_USBC_PPC_SN5S330 /* USBC port C0 */
 #define CONFIG_USBC_PPC_SYV682X /* USBC port C1 */
 #define CONFIG_USB_PD_FRS_PPC
+
+/* Disable PPC logging to reduce EC image size */
+#define CONFIG_USBC_PPC_REMOVE_LOGGING
 
 /* BC 1.2 */
 
@@ -176,6 +179,7 @@
 #undef CONFIG_CMD_REGULATOR
 #undef CONFIG_CMD_USB_PD_CABLE
 #undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_CONSOLE_HISTORY
 
 /* Disable volume button in ectool */
 #undef CONFIG_HOSTCMD_BUTTON
