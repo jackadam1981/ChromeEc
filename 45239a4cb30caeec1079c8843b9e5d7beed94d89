@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9dd76c_61273b76",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-07-07T06:13:35Z",
+      "side": 1,
+      "message": "This seems not an ideal format..., we probably need a comma separator to make clang-format work.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "45239a4cb30caeec1079c8843b9e5d7beed94d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
