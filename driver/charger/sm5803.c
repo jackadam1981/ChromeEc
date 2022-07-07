@@ -135,31 +135,45 @@ test_update8(int chgnum, const int offset, const uint8_t mask,
 }
 
 /*
- * Ensure the charger clocks are at normal operating speed, setting them to
- * that speed if not already.
+ * Ensure the charger configuration is safe for operation, updating registers
+ * as necessary to become safe.
  *
  * The SM5803 runs multiple digital control loops that are important to correct
- * operation. The CLOCK_SEL_LOW register reduced their speed by about 10x, which
+ * operation. The CLOCK_SEL_LOW register reduces their speed by about 10x, which
  * is dangerous when either sinking or sourcing is to be enabled because the
  * control loops will respond much more slowly. Leaving clocks at low speed can
  * cause incorrect operation or even hardware damage.
  *
+ * The GPADCs are inputs to the control loops, and disabling them can also cause
+ * incorrect operation or hardware damage. They must be enabled for the charger
+ * to be safe to operate.
+ *
  * This function is used by the functions that enable sinking or sourcing to
- * ensure the control loops are running at full speed before enabling switching
- * on the charger.
+ * ensure the current configuration is safe before enabling switching on the
+ * charger.
  */
-static int sm5803_set_full_clock_speed(int chgnum)
+static int sm5803_set_active_safe(int chgnum)
 {
 	int rv, val;
 
+	/*
+	 * Set clocks to full speed.
+	 *
+	 * This should occur first because enabling GPADCs with clocks slowed
+	 * can cause spurious acquisition.
+	 */
 	rv = main_read8(chgnum, SM5803_REG_CLOCK_SEL, &val);
-	if (rv) {
-		goto out;
-	}
-	if (val & SM5803_CLOCK_SEL_LOW) {
+	if (rv == 0 && val & SM5803_CLOCK_SEL_LOW) {
 		rv = main_write8(chgnum, SM5803_REG_CLOCK_SEL,
 				 val & ~SM5803_CLOCK_SEL_LOW);
 	}
+	if (rv) {
+		goto out;
+	}
+
+	/* Enable default GPADCs */
+	rv = meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1,
+			 SM5803_GPADCC1_DEFAULT_ENABLE);
 
 out:
 	if (rv) {
@@ -319,7 +333,7 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 		return rv;
 
 	if (enable) {
-		rv = sm5803_set_full_clock_speed(chgnum);
+		rv = sm5803_set_active_safe(chgnum);
 		if (rv) {
 			return rv;
 		}
@@ -661,15 +675,9 @@ static void sm5803_init(int chgnum)
 	reg &= ~SM5803_CLOCK_SEL_LOW;
 	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
-	/*
-	 * Turn on GPADCs to default.  Enable the IBAT_CHG ADC in order to
-	 * measure battery current and calculate system resistance.
-	 */
-	reg = SM5803_GPADCC1_TINT_EN | SM5803_GPADCC1_VSYS_EN |
-	      SM5803_GPADCC1_VCHGPWR_EN | SM5803_GPADCC1_VBUS_EN |
-	      SM5803_GPADCC1_IBAT_CHG_EN | SM5803_GPADCC1_IBAT_DIS_EN |
-	      SM5803_GPADCC1_VBATSNSP_EN;
-	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, reg);
+	/* Turn on GPADCs to default. */
+	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1,
+			  SM5803_GPADCC1_DEFAULT_ENABLE);
 
 	/* Enable Psys DAC */
 	rv |= meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
@@ -868,6 +876,10 @@ static void sm5803_disable_runtime_low_power_mode(void)
 	reg &= ~SM5803_CLOCK_SEL_LOW;
 	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
+	/* Enable GPADCs */
+	rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1,
+			  SM5803_GPADCC1_DEFAULT_ENABLE);
+
 	/* Enable ADC sigma delta */
 	rv |= chg_read8(chgnum, SM5803_REG_CC_CONFIG1, &reg);
 	reg |= SM5803_CC_CONFIG1_SD_PWRUP;
@@ -941,6 +953,22 @@ static void sm5803_enable_runtime_low_power_mode(void)
 		CPRINTS("%s %d: Failed to read REFERENCE reg", CHARGER_NAME,
 			chgnum);
 		return;
+	}
+
+	/*
+	 * Turn off GPADCs.
+	 *
+	 * This is only safe to do if the charger is inactive. We ensure that
+	 * they are enabled again in sm5803_set_active_safe() before the charger
+	 * is enabled, and verify here that the charger is not currently active.
+	 */
+	rv |= chg_read8(chgnum, SM5803_REG_FLOW1, &reg);
+	if (rv == 0 && (reg & SM5803_FLOW1_MODE) == CHARGER_MODE_DISABLED) {
+		rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1, 0);
+		rv |= meas_write8(chgnum, SM5803_REG_GPADC_CONFIG2, 0);
+	} else {
+		CPRINTS("%s %d: FLOW1 %x is active! Not disabling GPADCs",
+			CHARGER_NAME, chgnum, reg);
 	}
 
 	/* Disable ADC sigma delta */
@@ -1529,6 +1557,14 @@ static enum ec_error_list sm5803_get_vbus_voltage(int chgnum, int port,
 	int reg;
 	int volt_bits;
 
+	rv = meas_read8(chgnum, SM5803_REG_GPADC_CONFIG1, &reg);
+	if (rv)
+		return rv;
+	if ((reg & SM5803_GPADCC1_VBUS_EN) == 0) {
+		/* VBUS ADC is currently disabled */
+		return EC_ERROR_NOT_POWERED;
+	}
+
 	rv = meas_read8(chgnum, SM5803_REG_VBUS_MEAS_MSB, &reg);
 	if (rv)
 		return rv;
@@ -1542,6 +1578,54 @@ static enum ec_error_list sm5803_get_vbus_voltage(int chgnum, int port,
 	/* Vbus ADC is in 23.4 mV steps */
 	*voltage = (volt_bits * 234) / 10;
 	return rv;
+}
+
+bool sm5803_check_vbus_level(int chgnum, enum vbus_level level)
+{
+	int rv, vbus_voltage;
+
+	/*
+	 * Analog reading of VBUS is more accurate and helps reliability when
+	 * doing power role swaps, but if the charger is in LPM with the GPADCs
+	 * disabled then the reading won't update.
+	 *
+	 * Digital VBUS presence (with transitions flagged by STATUS1_CHG_DET
+	 * interrupt) still works when GPADCs are off, and shouldn't otherwise
+	 * impact performance because the GPADCs should be enabled in any
+	 * situation where we're doing a PRS.
+	 */
+	rv = sm5803_get_vbus_voltage(chgnum, chgnum, &vbus_voltage);
+	if (rv == EC_ERROR_NOT_POWERED) {
+		/* VBUS ADC is disabled, use digital presence */
+		switch (level) {
+		case VBUS_PRESENT:
+			return sm5803_is_vbus_present(chgnum);
+		case VBUS_SAFE0V:
+		case VBUS_REMOVED:
+			return !sm5803_is_vbus_present(chgnum);
+		default:
+			CPRINTS("%s: unrecognized vbus_level value: %d",
+				__func__, level);
+			return false;
+		}
+	}
+	if (rv != EC_SUCCESS) {
+		/* Unhandled communication error; assume unsatisfied */
+		return false;
+	}
+
+	switch (level) {
+	case VBUS_PRESENT:
+		return vbus_voltage > PD_V_SAFE5V_MIN;
+	case VBUS_SAFE0V:
+		return vbus_voltage < PD_V_SAFE0V_MAX;
+	case VBUS_REMOVED:
+		return vbus_voltage < PD_V_SINK_DISCONNECT_MAX;
+	default:
+		CPRINTS("%s: unrecognized vbus_level value: %d", __func__,
+			level);
+		return false;
+	}
 }
 
 static enum ec_error_list sm5803_set_input_current_limit(int chgnum,
@@ -1711,7 +1795,7 @@ static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled)
 	if (enabled) {
 		int selected_current;
 
-		rv = sm5803_set_full_clock_speed(chgnum);
+		rv = sm5803_set_active_safe(chgnum);
 		if (rv) {
 			return rv;
 		}
