@@ -141,6 +141,24 @@
       "parentUuid": "1c77a561_368543f8",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f96d162_a9393862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-07T18:23:50Z",
+      "side": 1,
+      "message": "\u003e One difference in my setup may be that I have servo_micro connected to a powered USB hub.\n\nI ran some experiments last week and saw minor differences in the 3.3V line when connected to various powered hubs vs the laptop itself but the difference was less than 10 mV.\n\n\u003e I had also noticed the higher  COUNT , although I don\u0027t know if that would necessarily affect the mV and mW measurements.\n\nThe `COUNT` values that Andrea is reporting are similar to what I am seeing. Maybe the servo is running at the wrong frequency? Tom, are you running the latest version of the servo firmware? If not, maybe there is a bug in the firmware that is causing increased power draw that is sagging the bus?  If not, then maybe Andrea and I have servo from a bad batch? \n\nSelfishly, I\u0027m somewhat happy to know that I\u0027m not the only one with a bad servo!",
+      "parentUuid": "14ed6388_9e27cfa1",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
