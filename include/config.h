@@ -5069,6 +5069,9 @@
 /* PPC has level interrupts and has a dedicated interrupt pin to check */
 #undef CONFIG_USBC_PPC_DEDICATED_INT
 
+/* Disable non-error logging related to the PPC to reduce EC image size */
+#undef CONFIG_USBC_PPC_REMOVE_LOGGING
+
 /* Support for USB type-c superspeed mux */
 #undef CONFIG_USBC_SS_MUX
 

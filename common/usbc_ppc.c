@@ -24,11 +24,11 @@
 
 int ppc_prints(const char *string, int port)
 {
-#ifndef TEST_BUILD
-	return CPRINTS("ppc p%d %s", port, string);
-#else
+#if defined(TEST_BUILD) || defined(CONFIG_USBC_PPC_REMOVE_LOGGING)
 	return 0;
-#endif
+#else
+	return CPRINTS("ppc p%d %s", port, string);
+#endif /* defined(TEST_BUILD) || defined(CONFIG_USBC_PPC_REMOVE_LOGGING) */
 }
 
 int ppc_err_prints(const char *string, int port, int error)
