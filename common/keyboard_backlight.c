@@ -100,10 +100,7 @@ int kblight_register(const struct kblight_drv *drv)
 	return EC_SUCCESS;
 }
 
-/*
- * Hooks
- */
-static void keyboard_backlight_init(void)
+__overridable void keyboard_type_choose(void)
 {
 	/* Uses PWM by default. Can be customized by board_kblight_init */
 	if (IS_ENABLED(CONFIG_PWM_KBLIGHT))
@@ -111,6 +108,14 @@ static void keyboard_backlight_init(void)
 	else if (IS_ENABLED(CONFIG_RGB_KEYBOARD))
 		kblight_register(&kblight_rgbkbd);
 
+}
+
+/*
+ * Hooks
+ */
+static void keyboard_backlight_init(void)
+{
+	keyboard_type_choose();
 	board_kblight_init();
 	if (kblight_init())
 		CPRINTS("kblight init failed");

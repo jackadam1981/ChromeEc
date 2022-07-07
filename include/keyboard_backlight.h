@@ -61,6 +61,8 @@ __override_proto void board_kblight_init(void);
  */
 __override_proto void board_kblight_shutdown(void);
 
+void keyboard_type_choose(void);
+
 /**
  * Set keyboard backlight brightness
  *
