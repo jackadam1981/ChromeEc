@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f630200c_d4e91524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2022-07-07T05:32:38Z",
+      "side": 1,
+      "message": "PD trace on TCPMv2 GUYBRUSH included in b/238142672 .\n\nThe more significant submarine change is the \"always on\" DiscID.\nThere is no reason not to leave this enabled, as it enhances our logging.\n\n(i.e. \"Now we can tell a ServoV4pX is connected, of what FW version.\")\n\nNote CrOS appears to Enter-(fail)-\u003eExit-\u003eEnter-(fail)-\u003eExit on EnterMode NAK.\nI can\u0027t comment CB policy is spec-acceptable...\n...but AMA NAK\u0027ing EnterMode is fully compliant.\nAny bugs that fall out of the Top-Of-Tree are bugs that should be fixed.",
+      "revId": "7340f391ca9f8b41d543ef15fa15f3cfa9ca0ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
