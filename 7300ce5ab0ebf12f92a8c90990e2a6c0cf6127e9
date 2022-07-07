@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4a3635_8c647feb",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1440,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-07-07T01:26:12Z",
+      "side": 1,
+      "message": "Is the \"GetConfig:\\n\" needed?",
+      "range": {
+        "startLine": 1440,
+        "startChar": 10,
+        "endLine": 1440,
+        "endChar": 22
+      },
+      "revId": "7300ce5ab0ebf12f92a8c90990e2a6c0cf6127e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
