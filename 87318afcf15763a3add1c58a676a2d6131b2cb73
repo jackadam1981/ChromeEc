@@ -34,6 +34,24 @@
       "parentUuid": "27c03277_08920bf5",
       "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5c9f632_ea1ec6c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-07T03:51:36Z",
+      "side": 1,
+      "message": "This doesn\u0027t expose the `UNINIT` state externally: callers interact with this through `chipset_in_state` and friends which will return \"no\" for any question \"is the AP in (my favorite state)?\" Only the power sequencing code is allowed to directly inspect the current state.\n\nCleanliness of hypothetical callers aside, this seems strictly like an improvement because it hardens the code against accidental misuse.",
+      "parentUuid": "513e69b6_33d5fe6e",
+      "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
