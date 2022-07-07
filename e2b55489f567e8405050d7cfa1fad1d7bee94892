@@ -106,6 +106,24 @@
       "parentUuid": "ff6246f4_7be8fd6e",
       "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018677dc_969d5cb7",
+        "filename": "zephyr/boards/riscv/it8xxx2/it81302bx_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-07-07T05:57:17Z",
+      "side": 1,
+      "message": "Remove redefined configs(CL:3745104), and move specific configs to project(CL:3745105), and move the common configs to Kconfig.defconfig(CL:3745106).",
+      "parentUuid": "3c0dfd38_0ffcc345",
+      "revId": "e2b55489f567e8405050d7cfa1fad1d7bee94892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
