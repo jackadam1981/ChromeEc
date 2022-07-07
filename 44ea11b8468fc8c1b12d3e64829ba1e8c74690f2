@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4014642e_c388bf35",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-07T23:08:29Z",
+      "side": 1,
+      "message": "Update this comment.",
+      "revId": "44ea11b8468fc8c1b12d3e64829ba1e8c74690f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72a2acc_d5a78b7c",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-07T23:08:29Z",
+      "side": 1,
+      "message": "Honestly, I could go either way on this. I didn\u0027t realize the PPC logging would save so much space. I\u0027m tempted to say leave the TCPM logging at level 1 for now. But we\u0027ll probably end up setting it to 0 in O(months) anyway.",
+      "revId": "44ea11b8468fc8c1b12d3e64829ba1e8c74690f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
