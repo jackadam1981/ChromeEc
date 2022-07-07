@@ -9,7 +9,7 @@
 
 def register_nissa_project(
     project_name,
-    chip="it8xxx2",
+    chip="it81302bx",
     extra_dts_overlays=(),
     extra_kconfig_files=(),
 ):
@@ -43,7 +43,7 @@ nivviks = register_nissa_project(
 
 nereid = register_nissa_project(
     project_name="nereid",
-    chip="it8xxx2",
+    chip="it81302bx",
     extra_dts_overlays=[
         here / "nereid_generated.dts",
         here / "nereid_overlay.dts",
