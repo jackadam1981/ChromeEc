@@ -16,6 +16,23 @@
       "message": "Hi Abe, \ncan you take a look at this change to clear volteer EC space? It\u0027s doing 3 things to free about 3,200 bytes. \n\n1. setting CONFIG_USB_PD_DEBUG_LEVEL to 0 (frees ~1,900 bytes)\n2. undef-ing CONFIG_CONSOLE_HISTORY (frees about ~200 bytes)\n3. Putting CPRINTS in ppc_prints behind a config and disabling it for volteer. ppc_err_prints is unchanged. (frees about 1,100 bytes). \n\nLet me know if you think I should remove any of these from the CL.\n\nThanks,\nJameson",
       "revId": "89e354ae0d223644225ce7f085527c649c4acbb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa081763_7ddde995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-07-07T18:56:33Z",
+      "side": 1,
+      "message": "Could you split this up into the volteer specific changes, the PPC changes, and documentation update?",
+      "revId": "89e354ae0d223644225ce7f085527c649c4acbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
