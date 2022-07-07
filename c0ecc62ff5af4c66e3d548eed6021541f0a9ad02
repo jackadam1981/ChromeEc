@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad5be89c_b8d7c995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-07T07:20:21Z",
+      "side": 1,
+      "message": "can we use LIST_DROP_EMPTY to remove empty items here?\n\nref https://docs.zephyrproject.org/latest/kernel/util/index.html#c.LIST_DROP_EMPTY",
+      "revId": "c0ecc62ff5af4c66e3d548eed6021541f0a9ad02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
