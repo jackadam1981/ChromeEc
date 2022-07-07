@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfa1164_a19dff2a",
+        "filename": "zephyr/projects/brya/gpio.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T03:35:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "701d3e57_1f1f4f36",
+      "range": {
+        "startLine": 306,
+        "startChar": 10,
+        "endLine": 306,
+        "endChar": 11
+      },
+      "revId": "8d6f45a145eab9be2cf72b291f1eff1c7ddeb004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1343033c_ebabf319",
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55967076_6f783c0e",
+        "filename": "zephyr/shim/include/zephyr_gpio_signal.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T03:35:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6771d5cb_f73f73af",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "8d6f45a145eab9be2cf72b291f1eff1c7ddeb004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52d4bba9_5c32a51b",
@@ -100,6 +148,30 @@
       "writtenOn": "2022-07-07T03:23:11Z",
       "side": 1,
       "message": "clang-format",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "8d6f45a145eab9be2cf72b291f1eff1c7ddeb004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de9b279e_6b6d9c80",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-07T03:35:07Z",
+      "side": 1,
+      "message": "Ah sorry, just keep forgetting that.",
+      "parentUuid": "52d4bba9_5c32a51b",
       "range": {
         "startLine": 58,
         "startChar": 0,
