@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "146cebbb_13dd8c3f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-08T11:03:31Z",
+      "side": 1,
+      "message": "Actually, I have a CoachZ device that doesn\u0027t have GPIO_PWREN 😄 I confirmed manually that it works. Also ran FP TAST tests and all test passed.",
+      "parentUuid": "9f06b8af_39d9e63d",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 27
+      },
+      "revId": "8458912cfcee778ad8e5a06416a1cf1c95e93428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f203c52_2d40968c",
