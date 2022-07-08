@@ -57,9 +57,9 @@
  *   - 'x' - unsigned integer, print as lower-case hexadecimal
  *   - 'X' - unsigned integer, print as upper-case hexadecimal
  *   - 'b' - unsigned integer, print as binary
+ *   - 'p' - pointer
  *
  * Special format codes:
- *   - '%pP' - raw pointer.
  */
 
 /**
