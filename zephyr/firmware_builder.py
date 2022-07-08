@@ -171,6 +171,7 @@ def test(opts):
     metrics = firmware_pb2.FwTestMetricList()
 
     zephyr_dir = pathlib.Path(__file__).parent.resolve()
+    platform_ec = zephyr_dir.parent
 
     # Run zmake tests to ensure we have a fully working zmake before
     # proceeding.
@@ -180,6 +181,8 @@ def test(opts):
     config_files = zephyr_dir.rglob('**/BUILD.py')
     subprocess.run(['black', '--diff', '--check', *config_files], check=True)
 
+    subprocess.run([platform_ec / "util" / "check_clang_format.py"], check=True)
+
     cmd = ['zmake', '-D', 'test', '-a', '--no-rebuild']
     if opts.code_coverage:
         cmd.append('--coverage')
@@ -187,7 +190,6 @@ def test(opts):
     if ret:
         return ret
     if opts.code_coverage:
-        platform_ec = zephyr_dir.parent
         build_dir = platform_ec / 'build' / 'zephyr'
         # Merge lcov files here because bundle failures are "infra" failures.
         cmd = [
