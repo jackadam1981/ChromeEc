@@ -191,6 +191,9 @@ def test(opts):
     with open(opts.metrics, 'w') as f:
         f.write(json_format.MessageToJson(metrics))
 
+    ec_dir = pathlib.Path(__file__).parent
+    subprocess.run([ec_dir / "util" / "check_clang_format.py"], check=True)
+
     # If building for code coverage, build the 'coverage' target, which
     # builds the posix-based unit tests for code coverage and assembles
     # the LCOV information.
