@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc56f27_5072919b",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-08T22:45:13Z",
+      "side": 1,
+      "message": "nit: Instead of adding `free` everywhere, can you use the \"goto cleanup\" style? \n\n\n```\nint ret \u003d 1;\n\nif (!s) {\n   ret \u003d 0;\n   goto cleanup;\n}\n\n...\n   \ncleanup:\n    free(copy);\n    return ret;\n```\n\nNote that it\u0027s fine to call `free(NULL)`, so this way (and the way you have written) works even when the `strdup` allocation failed.\n\nYou\u0027ll see lots of examples in the EC code if you search for usages with `git grep goto`.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "b81d2e589c525277898abfcbe1c989cb600f2773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
