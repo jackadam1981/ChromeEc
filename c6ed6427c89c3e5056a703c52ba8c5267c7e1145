@@ -16,6 +16,24 @@
       "message": "Are you going to enable server-side enforcement? Based on past experience, the client-side checks will not be sufficient to prevent new format errors from being submitted: http://b/203448780",
       "revId": "c6ed6427c89c3e5056a703c52ba8c5267c7e1145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f737dec_8e67f458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-08T19:36:01Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the plan.",
+      "parentUuid": "a76cb35c_cd967cf8",
+      "revId": "c6ed6427c89c3e5056a703c52ba8c5267c7e1145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
