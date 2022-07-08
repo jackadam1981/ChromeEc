@@ -33,6 +33,24 @@
       "message": "Sorry, just realized this, when you split it into a separate binary you don\u0027t need this. The above `if` will go to the `else`. You need to either have this OR add the new build in BUILD.py (not both)",
       "revId": "06a92bf5f622897ffddaad95c50c3fd5bfc7976d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb18266a_efe61f4d",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-08T17:31:51Z",
+      "side": 1,
+      "message": "So when I remove this code locally, I don\u0027t see the chargesplash test suite being run with the test-drivers binary.\n\nIf I instead remove the change from BUILD.py, I no longer have a separate binary for test-drivers-chargesplash.\n\nMy understanding is that our goal is to have a separate chargesplash test binary but also still include it in the test-drivers binary. Hence my commit message TEST\u003d lines.\n\nAre we sure really only need one of these?",
+      "parentUuid": "9c0eb441_789c835e",
+      "revId": "06a92bf5f622897ffddaad95c50c3fd5bfc7976d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
