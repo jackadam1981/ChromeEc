@@ -45,6 +45,31 @@ def build(opts):
     """
     metric_list = firmware_pb2.FwBuildMetricList()
 
+    # Run formatting checks on all python files.
+    subprocess.run(["black", "--check", "."], check=True)
+    subprocess.run(
+        [
+            "isort",
+            "--settings-file=.isort.cfg",
+            "--check",
+            "--gitignore",
+            "--dont-follow-links",
+            ".",
+        ],
+        check=True,
+    )
+    subprocess.run(
+        [
+            "isort",
+            "--settings-file=.isort.cfg",
+            "--check",
+            "--gitignore",
+            "--dont-follow-links",
+            ".",
+        ],
+        check=True,
+    )
+
     if opts.code_coverage:
         print(
             "When --code-coverage is selected, 'build' is a no-op. "
@@ -191,6 +216,10 @@ def test(opts):
     metrics = firmware_pb2.FwTestMetricList()
     with open(opts.metrics, "w") as f:
         f.write(json_format.MessageToJson(metrics))
+
+    # Run zmake tests to ensure we have a fully working zmake before
+    # proceeding.
+    subprocess.run([zephyr_dir / "zmake" / "run_tests.sh"], check=True)
 
     # If building for code coverage, build the 'coverage' target, which
     # builds the posix-based unit tests for code coverage and assembles
