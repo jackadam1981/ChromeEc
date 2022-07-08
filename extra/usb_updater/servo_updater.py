@@ -410,7 +410,7 @@ def main():
     # If the user only cares about the information then just print it here,
     # and exit.
     if args.print_only:
-        output = ("board: %s\n" "channel: %s\n" "firmware: %s") % (
+        output = ("board: %s\nchannel: %s\nfirmware: %s") % (
             args.board,
             args.channel,
             newvers,
