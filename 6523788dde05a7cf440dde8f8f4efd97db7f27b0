@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b2df19_e750d0d8",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-08T17:34:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae485857_5de514d6",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 0
+      },
+      "revId": "6523788dde05a7cf440dde8f8f4efd97db7f27b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9012cf52_5da7cac8",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-07-08T02:56:21Z",
       "side": 1,
       "message": "This could hang forever. Use WAIT_FOR(expr, timeout, delay_stmt) macro instead:\n\n```\nWAIT_FOR(chiset_in_state(CHIPSET_STATE_ANY_OFF), 1000000 /* 1s */, k_msleep(5));\n```",
+      "range": {
+        "startLine": 428,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 2
+      },
+      "revId": "6523788dde05a7cf440dde8f8f4efd97db7f27b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e919744_8607d990",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-08T17:34:18Z",
+      "side": 1,
+      "message": "Ahh I was looking for that macro. Thank you",
+      "parentUuid": "9012cf52_5da7cac8",
       "range": {
         "startLine": 428,
         "startChar": 1,
