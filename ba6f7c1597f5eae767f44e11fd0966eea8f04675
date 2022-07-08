@@ -231,6 +231,24 @@
       "parentUuid": "a1767a7b_131badfd",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfdb960b_e4a3f556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-08T19:04:19Z",
+      "side": 1,
+      "message": "Thanks for the sharing the photo. I confirmed that the position of the switches in my board is aligned with yours.\n\nThe `COUNT` has significantly increased in the last series of tests, even in the first run before the updates of servod and servomicro firmware.",
+      "parentUuid": "dfa9712a_28de3b18",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
