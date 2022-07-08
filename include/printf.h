@@ -13,6 +13,7 @@
 #include <stddef.h> /* For size_t */
 #include <stdio.h>
 #include "common.h"
+#include "console.h"
 
 /**
  * Buffer size in bytes large enough to hold the largest possible timestamp.
@@ -163,5 +164,8 @@ int snprintf_timestamp(char *str, size_t size, uint64_t timestamp);
  * @return -EC_ERROR_INVAL when @size is 0.
  */
 int snprintf_timestamp_now(char *str, size_t size);
+
+int snprintf_hex_buffer(char *str_buf, int str_buf_len,
+			const struct hex_buffer_params *params);
 
 #endif /* __CROS_EC_PRINTF_H */
