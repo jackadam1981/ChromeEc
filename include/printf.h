@@ -12,6 +12,7 @@
 #include <stddef.h> /* For size_t */
 #include <stdio.h>
 #include "common.h"
+#include "console.h"
 
 /*
  * Printf formatting: % [flags] [width] [.precision] [length] [type]
@@ -80,5 +81,8 @@ int snprintf_timestamp(char *str, size_t size, uint64_t timestamp);
 int snprintf_timestamp_now(char *str, size_t size);
 
 #define PRINTF_TIMESTAMP_BUF_SIZE 22
+
+int snprintf_hex_buffer(char *str_buf, int str_buf_len,
+			const struct hex_buffer_params *params);
 
 #endif /* __CROS_EC_PRINTF_H */

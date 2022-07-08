@@ -635,6 +635,7 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 	static int hc_prev_cmd;
 	static int hc_prev_count;
 	static uint64_t hc_prev_time;
+	char str_buf[args->params_size * 2 + 1];
 
 	/*
 	 * In normal output mode, skip printing repeats of the same command
@@ -662,10 +663,12 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		hc_prev_cmd = args->command;
 	}
 
-	if (hcdebug >= HCDEBUG_PARAMS && args->params_size)
-		CPRINTS("HC 0x%04x.%d:%ph", args->command, args->version,
-			HEX_BUF(args->params, args->params_size));
-	else
+	if (hcdebug >= HCDEBUG_PARAMS && args->params_size) {
+		snprintf_hex_buffer(str_buf, sizeof(str_buf),
+				    HEX_BUF(args->params, args->params_size));
+		CPRINTS("HC 0x%04x.%d:%s", args->command, args->version,
+			str_buf);
+	} else
 		CPRINTS("HC 0x%04x", args->command);
 }
 
