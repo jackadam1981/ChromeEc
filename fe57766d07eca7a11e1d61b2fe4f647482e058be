@@ -16,6 +16,23 @@
       "message": "lets plan to have common code, pls keep it only for testing ",
       "revId": "fe57766d07eca7a11e1d61b2fe4f647482e058be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553b247d_08b9c2e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-07-08T16:53:36Z",
+      "side": 1,
+      "message": "this CL is not a mandatory, since in project file:\nCONFIG_PLATFORM_EC_LED_PWM\u003dn\nCONFIG_PLATFORM_EC_LED_PWM_TASK_DISABLED\u003dn\ncan be added.\n\nsecondly, if this requirement is really needed in general (look like yes since it is in shim layer general code), this pwm mode can be supported with reassigning GPIO pins with PWM function to LEDs on board design. ",
+      "revId": "fe57766d07eca7a11e1d61b2fe4f647482e058be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
