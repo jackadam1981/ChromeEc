@@ -8,7 +8,7 @@ import datetime
 import subprocess
 import unittest.mock as mock
 
-import pytest
+import pytest  # pylint:disable=import-error
 import zmake.output_packers
 import zmake.project
 import zmake.version as version
