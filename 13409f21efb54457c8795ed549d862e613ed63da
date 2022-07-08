@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c0ce8f_88fa01e0",
+        "filename": "zephyr/test/drivers/src/bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2100,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-08T11:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04485f57_4138c84e",
+      "range": {
+        "startLine": 2100,
+        "startChar": 1,
+        "endLine": 2100,
+        "endChar": 14
+      },
+      "revId": "13409f21efb54457c8795ed549d862e613ed63da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30cf7bfc_91c9ec0f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-08T03:00:50Z",
       "side": 1,
       "message": "Should not assert in `after` it runs in the main test thread so a failure here would break all other tests and cause the program to hang. Use `__ASSERT_NO_MSG` if needed which will terminate the process.",
+      "range": {
+        "startLine": 2114,
+        "startChar": 1,
+        "endLine": 2117,
+        "endChar": 14
+      },
+      "revId": "13409f21efb54457c8795ed549d862e613ed63da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f2336c_80c828e1",
+        "filename": "zephyr/test/drivers/src/bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2117,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-08T11:12:57Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not that familiar with the testing procedures. Not using neither `zassert_equal` nor `zassume_equal` here makes sense to me.",
+      "parentUuid": "30cf7bfc_91c9ec0f",
       "range": {
         "startLine": 2114,
         "startChar": 1,
