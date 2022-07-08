@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7576d6b_937c53f0",
+        "filename": "util/python-pre-upload.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-08T21:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665d138d_0c361b44",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "8575027740803671615f25d5d76c25eeac917b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec4f940_9fecd11d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-08T19:44:48Z",
       "side": 1,
       "message": "Do we want `${PYTHON_FILES[*]}` here instead?",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "8575027740803671615f25d5d76c25eeac917b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b6ee1c_b4585b35",
+        "filename": "util/python-pre-upload.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-08T21:06:48Z",
+      "side": 1,
+      "message": "Done\n\nThe output looks like this on a cl that edits 59 files.\n\n```\n[FAILED] chromiumos/platform/ec: python_preupload           \n    Hook script \"util/python-pre-upload.sh ${PRESUBMIT_FILES}\" failed with code 1:\n      would reformat /mnt/host/source/src/platform/ec/firmware_builder.py\n      would reformat /mnt/host/source/src/platform/ec/util/ec3po/interpreter_unittest.py\n      would reformat /mnt/host/source/src/platform/ec/util/ec3po/console.py\n      Oh no! 💥 💔 💥\n      3 files would be reformatted, 59 files would be left unchanged.\n      Looks like black\u0027s formatter detected that formatting changes\n      need applied.  Fix by running this command from the platform/ec\n      directory and amending your changes:\n      \n        black \"/mnt/host/source/src/platform/ec/chip/ish/util/pack_ec.py /mnt/host/source/src/platform/ec/chip/mchp/util/pack_ec.py /mnt/host/source/src/platform/ec/chip/mchp/util/pack_ec_mec152x.py /mnt/host/source/src/platform/ec/chip/mchp/util/pack_ec_mec172x.py /mnt/host/source/src/platform/ec/chip/mec1322/util/pack_ec.py /mnt/host/source/src/platform/ec/cts/common/board.py /mnt/host/source/src/platform/ec/cts/cts.py /mnt/host/source/src/platform/ec/extra/cr50_rma_open/cr50_rma_open.py /mnt/host/source/src/platform/ec/extra/stack_analyzer/stack_analyzer.py /mnt/host/source/src/platform/ec/extra/stack_analyzer/stack_analyzer_unittest.py /mnt/host/source/src/platform/ec/extra/tigertool/ecusb/__init__.py /mnt/host/source/src/platform/ec/extra/tigertool/ecusb/pty_driver.py /mnt/host/source/src/platform/ec/extra/tigertool/ecusb/stm32uart.py /mnt/host/source/src/platform/ec/extra/tigertool/ecusb/stm32usb.py /mnt/host/source/src/platform/ec/extra/tigertool/ecusb/tiny_servo_common.py /mnt/host/source/src/platform/ec/extra/tigertool/ecusb/tiny_servod.py /mnt/host/source/src/platform/ec/extra/tigertool/tigertest.py /mnt/host/source/src/platform/ec/extra/tigertool/tigertool.py /mnt/host/source/src/platform/ec/extra/usb_power/convert_power_log_board.py /mnt/host/source/src/platform/ec/extra/usb_power/convert_servo_ina.py /mnt/host/source/src/platform/ec/extra/usb_power/powerlog.py /mnt/host/source/src/platform/ec/extra/usb_power/powerlog_unittest.py /mnt/host/source/src/platform/ec/extra/usb_power/stats_manager.py /mnt/host/source/src/platform/ec/extra/usb_power/stats_manager_unittest.py /mnt/host/source/src/platform/ec/extra/usb_serial/console.py /mnt/host/source/src/platform/ec/extra/usb_updater/fw_update.py /mnt/host/source/src/platform/ec/extra/usb_updater/servo_updater.py /mnt/host/source/src/platform/ec/firmware_builder.py /mnt/host/source/src/platform/ec/setup.py /mnt/host/source/src/platform/ec/test/run_device_tests.py /mnt/host/source/src/platform/ec/test/timer_calib.py /mnt/host/source/src/platform/ec/test/timer_jump.py /mnt/host/source/src/platform/ec/util/build_with_clang.py /mnt/host/source/src/platform/ec/util/config_option_check.py /mnt/host/source/src/platform/ec/util/ec3po/console.py /mnt/host/source/src/platform/ec/util/ec3po/console_unittest.py /mnt/host/source/src/platform/ec/util/ec3po/interpreter.py /mnt/host/source/src/platform/ec/util/ec3po/interpreter_unittest.py /mnt/host/source/src/platform/ec/util/ec3po/threadproc_shim.py /mnt/host/source/src/platform/ec/util/ec_openocd.py /mnt/host/source/src/platform/ec/util/flash_jlink.py /mnt/host/source/src/platform/ec/util/fptool.py /mnt/host/source/src/platform/ec/util/inject-keys.py /mnt/host/source/src/platform/ec/util/kconfig_check.py /mnt/host/source/src/platform/ec/util/kconfiglib.py /mnt/host/source/src/platform/ec/util/run_ects.py /mnt/host/source/src/platform/ec/util/test_kconfig_check.py /mnt/host/source/src/platform/ec/util/uart_stress_tester.py /mnt/host/source/src/platform/ec/util/unpack_ftb.py /mnt/host/source/src/platform/ec/util/update_release_branch.py /mnt/host/source/src/platform/ec/zephyr/firmware_builder.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/conftest.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_build_config.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_generate_readme.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_modules.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_packers.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_project.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_reexec.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_toolchains.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_util.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_version.py /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_zmake.py\"\n\n```",
+      "parentUuid": "eec4f940_9fecd11d",
       "range": {
         "startLine": 38,
         "startChar": 9,
