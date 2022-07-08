@@ -175,6 +175,42 @@ static int print_hex_buffer(int (*addchar)(void *context, int c), void *context,
 	return EC_SUCCESS;
 }
 
+struct hex_char_context {
+	struct hex_buffer_params hex_buf_params;
+	char *str_buf;
+	int str_buf_len;
+	int str_buf_offset;
+};
+
+int add_hex_char(void *context, int c)
+{
+	struct hex_char_context *ctx = context;
+
+	if (ctx->str_buf_offset > ctx->str_buf_len)
+		return EC_ERROR_OVERFLOW;
+
+	ctx->str_buf[ctx->str_buf_offset++] = c;
+	return 0;
+}
+
+int print_hex(const struct hex_buffer_params *params, char *str_buf,
+	      int str_buf_len)
+{
+	int rc;
+
+	struct hex_char_context context = { .hex_buf_params = *params,
+					    .str_buf = str_buf,
+					    .str_buf_len = str_buf_len,
+					    .str_buf_offset = 0 };
+	rc = print_hex_buffer(add_hex_char, &context, params->buffer,
+			      params->size, 0, 0);
+	if (context.str_buf_offset >= context.str_buf_len)
+		return EC_ERROR_OVERFLOW;
+
+	str_buf[context.str_buf_offset++] = '\0';
+	return rc;
+}
+
 int vfnprintf(int (*addchar)(void *context, int c), void *context,
 	      const char *format, va_list args)
 {

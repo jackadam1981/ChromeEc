@@ -399,6 +399,23 @@ test_static int test_vsnprintf_hexdump(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_hexdump(void)
+{
+	const char bytes[] = { 0x00, 0x5E };
+	char str_buf[5];
+
+	print_hex(HEX_BUF(bytes, 2), str_buf, sizeof(str_buf));
+	TEST_ASSERT_ARRAY_EQ(str_buf, "005e", sizeof("005e"));
+
+	print_hex(HEX_BUF(bytes, 0), str_buf, sizeof(str_buf));
+	TEST_ASSERT_ARRAY_EQ(str_buf, "", sizeof(""));
+
+	print_hex(HEX_BUF(bytes, 1), str_buf, sizeof(str_buf));
+	TEST_ASSERT_ARRAY_EQ(str_buf, "00", sizeof("00"));
+
+	return EC_SUCCESS;
+}
+
 test_static int test_vsnprintf_combined(void)
 {
 	T(expect_success("abc", "%c%s", 'a', "bc"));
@@ -410,6 +427,7 @@ void run_test(int argc, char **argv)
 {
 	test_reset();
 
+#if 0
 	RUN_TEST(test_vsnprintf_args);
 	RUN_TEST(test_vsnprintf_int);
 	RUN_TEST(test_printf_long32_enabled);
@@ -421,5 +439,9 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_vsnprintf_hexdump);
 	RUN_TEST(test_vsnprintf_combined);
 	RUN_TEST(test_snprintf_timestamp);
+#endif
+
+	RUN_TEST(test_hexdump);
+
 	test_print_result();
 }
