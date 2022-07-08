@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665d138d_0c361b44",
+        "filename": "util/python-pre-upload.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-08T19:44:48Z",
+      "side": 1,
+      "message": "python",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "8575027740803671615f25d5d76c25eeac917b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec4f940_9fecd11d",
+        "filename": "util/python-pre-upload.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-08T19:44:48Z",
+      "side": 1,
+      "message": "Do we want `${PYTHON_FILES[*]}` here instead?",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "8575027740803671615f25d5d76c25eeac917b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
