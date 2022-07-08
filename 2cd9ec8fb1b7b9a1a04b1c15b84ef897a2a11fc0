@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e276aab6_8723cab4",
+        "filename": "util/python-pre-upload.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-08T21:09:21Z",
+      "side": 1,
+      "message": "`the ${cmd} formatter`?\n\n`the black\u0027s formatter` reads a bit funny",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "2cd9ec8fb1b7b9a1a04b1c15b84ef897a2a11fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff6ed97_8cbd7b47",
+        "filename": "util/python-pre-upload.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-08T21:09:21Z",
+      "side": 1,
+      "message": "Drop the quotes here so each file is a separate arg.",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "2cd9ec8fb1b7b9a1a04b1c15b84ef897a2a11fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
