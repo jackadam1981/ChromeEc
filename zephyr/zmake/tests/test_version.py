@@ -9,7 +9,6 @@ import subprocess
 import unittest.mock as mock
 
 import pytest
-
 import zmake.output_packers
 import zmake.project
 import zmake.version as version
