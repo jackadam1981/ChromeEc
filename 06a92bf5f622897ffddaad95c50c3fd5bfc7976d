@@ -16,6 +16,23 @@
       "message": "There was a problem with the old CL..\n\nI never renamed the file \u003e_\u003e",
       "revId": "06a92bf5f622897ffddaad95c50c3fd5bfc7976d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0eb441_789c835e",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-08T02:50:18Z",
+      "side": 1,
+      "message": "Sorry, just realized this, when you split it into a separate binary you don\u0027t need this. The above `if` will go to the `else`. You need to either have this OR add the new build in BUILD.py (not both)",
+      "revId": "06a92bf5f622897ffddaad95c50c3fd5bfc7976d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
