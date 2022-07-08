@@ -88,6 +88,24 @@
       "parentUuid": "87dbd526_274f24bb",
       "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04d0cc4a_269b25d1",
+        "filename": "zephyr/dts/bindings/usbc/mux/analogix,usbc-mux-anx7447.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-08T12:31:51Z",
+      "side": 1,
+      "message": "`hpd-update` is an enum to explicitly set the `hpd_update` function name. I wasn\u0027t sure if it is possible to have device that has one compatible but two or more different `hpd-update` functions to choose from. If it is true that there is only one `hpd-update` variant for one compatible, then `hpd-update` can be bool and the `usb_mux.hpd_update` would be set by some macro based on compatible.",
+      "parentUuid": "eb7a7899_c9083c50",
+      "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
