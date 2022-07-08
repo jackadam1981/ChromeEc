@@ -141,20 +141,26 @@ int parse_vidpid(const char *input, uint16_t *vid_ptr, uint16_t *pid_ptr)
 	copy = strdup(input);
 
 	s = strchr(copy, ':');
-	if (!s)
+	if (!s) {
+		free(copy);
 		return 0;
+	}
 	*s++ = '\0';
 
 	e = NULL;
 	*vid_ptr = strtoul(copy, &e, 16);
-	if (e && *e)
+	if (e && *e) {
+		free(copy);
 		return 0;
+	}
 
 	e = NULL;
 	*pid_ptr = strtoul(s, &e, 16);
-	if (e && *e)
+	if (e && *e) {
+		free(copy);
 		return 0;
-
+	}
+	free(copy);
 	return 1;
 }
 
