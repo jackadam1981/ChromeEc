@@ -16,6 +16,29 @@
       "message": "This CL replaces soc specific functions with pinctrl mechanism for psl implementation. (Please refer to [PR46428](https://github.com/zephyrproject-rtos/zephyr/pull/46428) for more detail) on downstream repo. Please give your comment freely. Thanks.",
       "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2cd531_ac49a6fb",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-08T11:08:30Z",
+      "side": 1,
+      "message": "How about moving this and the one below to separate local static functions, have a single #if statement and redefine these to no-op in the #else case? Less preprocessor conditions kicking around and would allow moving the implementation comment with the function itself.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
