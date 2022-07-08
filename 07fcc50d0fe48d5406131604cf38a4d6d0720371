@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e042e702_617fa48d",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-08T05:28:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "359ad4b7_5165b710",
+      "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "596e1ad5_1746ed8d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-07T23:55:19Z",
       "side": 1,
       "message": "If these are going to be public functions, then they should have `tcpci_` names.\n\nBut if you do this as an optional driver function, then maybe you don\u0027t need to make them public. You\u0027d have something like `int tcpci_hard_reset_reinit` in this file, and would call these functions, which could remain `static`. Then in the `struct tcpc_drv`, you\u0027d have `.hard_reset_reinit \u003d tcpci_hard_reset_reinit`.",
+      "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d836132_3ad9fc50",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-08T05:28:24Z",
+      "side": 1,
+      "message": "Ack, Thank you for the suggestion.",
+      "parentUuid": "596e1ad5_1746ed8d",
       "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee63f27_671b4aed",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-08T05:28:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6999bec6_73d6135e",
+      "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aea023a_dfa20fba",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-07-07T17:01:53Z",
       "side": 1,
       "message": "We might want more documentation here letting the developer know how/why they may implement this function.  Note that if the function alters the alert mask and power status mask, this indicates the chip does not require a full TCPCI re-init after a hard reset",
+      "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e2c68d_4f6ee1ba",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-08T05:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aea023a_dfa20fba",
       "revId": "07fcc50d0fe48d5406131604cf38a4d6d0720371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
