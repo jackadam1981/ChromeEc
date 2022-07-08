@@ -93,6 +93,30 @@
       },
       "revId": "13409f21efb54457c8795ed549d862e613ed63da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a435a8a_a61d39a7",
+        "filename": "zephyr/test/drivers/src/bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2117,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-08T15:18:45Z",
+      "side": 1,
+      "message": "No worries at all, this will be quite the change for everyone involved. We\u0027ve made a ton of changes to how testing is done.",
+      "parentUuid": "64f2336c_80c828e1",
+      "range": {
+        "startLine": 2114,
+        "startChar": 1,
+        "endLine": 2117,
+        "endChar": 14
+      },
+      "revId": "13409f21efb54457c8795ed549d862e613ed63da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
