@@ -39,6 +39,30 @@
       },
       "revId": "7e31e769dcb9f7e7224f28b3681aa914ff6307bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49929de9_fea7d09b",
+        "filename": "zephyr/projects/npcx_evb/npcx9/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-08T11:21:56Z",
+      "side": 1,
+      "message": "hey how about moving\n\n```\n\u0026power_ctrl_psl {\n\tpinctrl-names \u003d \"sleep\";\n\tenable-gpios \u003d \u003c\u0026gpio8 5 GPIO_ACTIVE_HIGH\u003e;\n}\n```\n\nin `zephyr/boards/arm/npcx9/npcx9.dts` (or npcx7, or another file there)? If that pin definition is fixed.",
+      "parentUuid": "cbde7ada_09afa5b7",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "7e31e769dcb9f7e7224f28b3681aa914ff6307bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
