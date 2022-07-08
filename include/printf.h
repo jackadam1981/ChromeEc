@@ -118,6 +118,11 @@ crec_snprintf(char *str, size_t size, const char *format, ...);
 __warn_unused_result __stdlib_compat int
 crec_vsnprintf(char *str, size_t size, const char *format, va_list args);
 
+int snprintf_timestamp(char *str, size_t size, uint64_t timestamp);
+int snprintf_timestamp_now(char *str, size_t size);
+
+#define PRINTF_TIMESTAMP_BUF_SIZE 22
+
 #endif /* !HIDE_EC_STDLIB */
 
 #endif /* __CROS_EC_PRINTF_H */

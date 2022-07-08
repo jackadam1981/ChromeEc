@@ -58,6 +58,82 @@ static int hexdigit(int c)
 #define PF_64BIT BIT(3) /* Number is 64-bit */
 #endif
 
+char *integer_to_string(uint64_t v, int precision, int base, bool uppercase_hex,
+			char *intbuf, int intbuf_len)
+{
+	int vlen;
+	char *vstr;
+
+	/* TODO: check intbuf_len */
+
+	/*
+	 * Convert integer to string, starting at end of
+	 * buffer and working backwards.
+	 */
+	vstr = intbuf + intbuf_len - 1;
+	*(vstr) = '\0';
+
+	/*
+	 * Fixed-point precision must fit in our buffer.
+	 * Leave space for "0." and the terminating null.
+	 */
+	if (precision > (int)(intbuf_len - 3))
+		precision = intbuf_len - 3;
+
+	/*
+	 * Handle digits to right of decimal for fixed point
+	 * numbers.
+	 */
+	for (vlen = 0; vlen < precision; vlen++)
+		*(--vstr) = '0' + divmod(&v, 10);
+	if (precision >= 0)
+		*(--vstr) = '.';
+
+	if (!v)
+		*(--vstr) = '0';
+
+	while (v) {
+		int digit = divmod(&v, base);
+		if (digit < 10)
+			*(--vstr) = '0' + digit;
+		else if (uppercase_hex)
+			*(--vstr) = 'A' + digit - 10;
+		else
+			*(--vstr) = 'a' + digit - 10;
+	}
+
+	return vstr;
+}
+
+int snprintf_timestamp_now(char *str, size_t size)
+{
+	return snprintf_timestamp(str, size, get_time().val);
+}
+
+int snprintf_timestamp(char *str, size_t size, uint64_t timestamp)
+{
+	int len;
+	int precision;
+	char *vstr;
+	char intbuf[34];
+	int base = 10;
+
+	if (IS_ENABLED(CONFIG_CONSOLE_VERBOSE)) {
+		precision = 6;
+	} else {
+		precision = 3;
+		timestamp /= 1000;
+	}
+
+	vstr = integer_to_string(timestamp, precision, base, false, intbuf,
+				 sizeof(intbuf));
+
+	/* TODO: check strlen will fit. */
+	len = strlen(vstr);
+	memcpy(str, vstr, len + 1);
+	return len;
+}
+
 /*
  * Print the buffer as a string of bytes in hex.
  * Returns 0 on success or an error on failure.
@@ -372,41 +448,8 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 			if (format == error_str)
 				continue; /* Bad format specifier */
 
-			/*
-			 * Convert integer to string, starting at end of
-			 * buffer and working backwards.
-			 */
-			vstr = intbuf + sizeof(intbuf) - 1;
-			*(vstr) = '\0';
-
-			/*
-			 * Fixed-point precision must fit in our buffer.
-			 * Leave space for "0." and the terminating null.
-			 */
-			if (precision > (int)(sizeof(intbuf) - 3))
-				precision = sizeof(intbuf) - 3;
-
-			/*
-			 * Handle digits to right of decimal for fixed point
-			 * numbers.
-			 */
-			for (vlen = 0; vlen < precision; vlen++)
-				*(--vstr) = '0' + divmod(&v, 10);
-			if (precision >= 0)
-				*(--vstr) = '.';
-
-			if (!v)
-				*(--vstr) = '0';
-
-			while (v) {
-				int digit = divmod(&v, base);
-				if (digit < 10)
-					*(--vstr) = '0' + digit;
-				else if (c == 'X')
-					*(--vstr) = 'A' + digit - 10;
-				else
-					*(--vstr) = 'a' + digit - 10;
-			}
+			vstr = integer_to_string(v, precision, base, c == 'X',
+						 intbuf, sizeof(intbuf));
 
 			if (sign)
 				*(--vstr) = sign;
