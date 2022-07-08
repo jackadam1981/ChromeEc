@@ -309,6 +309,28 @@ test_static int test_vsnprintf_pointers(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_pointer(void)
+{
+	void *ptr = (void *)0x55005E00;
+	void *leading_zero_ptr = (void *)0x0000FFFF;
+	void *ptr_64 = (void*)0xF0F0F0F0F0F0F0F0;
+	ccprintf("sizeof(unsigned long): %lu\n", sizeof(unsigned long));
+
+	T(expect_success("55005e00", "%x", ptr));
+	T(expect_success("55005e00", "%pP", ptr));
+
+	T(expect_success("f0f0f0f0f0f0f0f0", "%pP", ptr_64));
+	/* This doesn't work. */
+#if 0
+	T(expect_success("f0f0f0f0f0f0f0f0", "%x", ptr_64));
+#endif
+
+	T(expect_success("ffff", "%pP", leading_zero_ptr));
+	T(expect_success("ffff", "%x", leading_zero_ptr));
+
+	return EC_SUCCESS;
+}
+
 test_static int test_vsnprintf_chars(void)
 {
 	T(expect_success("a", "%c", 'a'));
@@ -444,6 +466,7 @@ void run_test(int argc, char **argv)
 #endif
 
 	RUN_TEST(test_hexdump);
+	RUN_TEST(test_pointer);
 
 	test_print_result();
 }
