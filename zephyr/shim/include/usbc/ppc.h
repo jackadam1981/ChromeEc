@@ -15,18 +15,16 @@
 #include "usbc_ppc.h"
 
 #define PPC_ID(id) DT_CAT(PPC_, id)
-#define PPC_ID_WITH_COMMA(id) PPC_ID(id),
 #define PPC_ALT_FOR(alt_id) USBC_PORT(DT_PHANDLE(alt_id, alternate_for))
 
-#define PPC_ALT_ENUM(id)                                 \
-	COND_CODE_1(DT_NODE_HAS_PROP(id, alternate_for), \
-		    (PPC_ID_WITH_COMMA(id)), ())
+#define PPC_ALT_ENUM(id) \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, alternate_for), (PPC_ID(id)), (EMPTY))
 
 enum ppc_chips_alt_id {
-	DT_FOREACH_STATUS_OKAY(RT1739_PPC_COMPAT, PPC_ALT_ENUM)
-		DT_FOREACH_STATUS_OKAY(SN5S330_COMPAT, PPC_ALT_ENUM)
-			DT_FOREACH_STATUS_OKAY(SYV682X_COMPAT, PPC_ALT_ENUM)
-				PPC_CHIP_ALT_COUNT
+	LIST_DROP_EMPTY(DT_FOREACH_STATUS_OKAY(RT1739_PPC_COMPAT, PPC_ALT_ENUM),
+			DT_FOREACH_STATUS_OKAY(SN5S330_COMPAT, PPC_ALT_ENUM),
+			DT_FOREACH_STATUS_OKAY(SYV682X_COMPAT, PPC_ALT_ENUM),
+			PPC_CHIP_ALT_COUNT)
 };
 
 extern struct ppc_config_t ppc_chips_alt[];
