@@ -352,6 +352,42 @@ test_static int test_vsnprintf_timestamps(void)
 	T(expect_success("0.123456", "%pT", &ts));
 	ts = 9999999000000;
 	T(expect_success("9999999.000000", "%pT", &ts));
+	ts = UINT64_MAX;
+	T(expect_success("18446744073709.551615", "%pT", &ts));
+
+	return EC_SUCCESS;
+}
+
+test_static int test_snprintf_timestamp(void)
+{
+	char str[38];
+	int ret;
+	uint64_t ts = 0;
+
+	ret = snprintf_timestamp(str, sizeof(str), ts);
+	ccprintf("%s\n", str);
+	TEST_EQ(ret, 8, "%d");
+	TEST_ASSERT_ARRAY_EQ(str, "0.000000", sizeof("0.000000"));
+
+	ts = 123456;
+	ret = snprintf_timestamp(str, sizeof(str), ts);
+	ccprintf("%s\n", str);
+	TEST_EQ(ret, 8, "%d");
+	TEST_ASSERT_ARRAY_EQ(str, "0.123456", sizeof("0.123456"));
+
+	ts = 9999999000000;
+	ret = snprintf_timestamp(str, sizeof(str), ts);
+	ccprintf("%s\n", str);
+	TEST_EQ(ret, 14, "%d");
+	TEST_ASSERT_ARRAY_EQ(str, "9999999.000000", sizeof("9999999.000000"));
+
+	ts = UINT64_MAX;
+	ret = snprintf_timestamp(str, sizeof(str), ts);
+	ccprintf("%s\n", str);
+	TEST_EQ(ret, 21, "%d");
+	TEST_ASSERT_ARRAY_EQ(str, "18446744073709.551615",
+			     sizeof("18446744073709.551615"));
+
 	return EC_SUCCESS;
 }
 
@@ -386,5 +422,6 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_vsnprintf_timestamps);
 	RUN_TEST(test_vsnprintf_hexdump);
 	RUN_TEST(test_vsnprintf_combined);
+	RUN_TEST(test_snprintf_timestamp);
 	test_print_result();
 }
