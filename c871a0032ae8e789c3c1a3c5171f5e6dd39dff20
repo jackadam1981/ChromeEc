@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c312666f_5daa4b44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-08T01:31:24Z",
+      "side": 1,
+      "message": "This CL replaces soc specific functions with pinctrl mechanism for psl implementation. (Please refer to [PR46428](https://github.com/zephyrproject-rtos/zephyr/pull/46428) for more detail) on downstream repo. Please give your comment freely. Thanks.",
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
