@@ -470,7 +470,7 @@ static int command_ble_hci_cmd(int argc, char **argv)
 
 	hci_cmd(hci_buf);
 
-	CPRINTS("hci cmd @%pP", hci_buf);
+	CPRINTS("hci cmd @%p", hci_buf);
 
 	return EC_SUCCESS;
 }
@@ -510,7 +510,7 @@ static int command_hcitool(int argc, char **argv)
 
 	hci_cmd(hci_buf);
 
-	CPRINTS("hci cmd @%pP", hci_buf);
+	CPRINTS("hci cmd @%p", hci_buf);
 
 	return EC_SUCCESS;
 }
@@ -554,7 +554,7 @@ static int command_ble_hci_acl(int argc, char **argv)
 
 	hci_cmd(hci_buf);
 
-	CPRINTS("hci acl @%pP", hci_buf);
+	CPRINTS("hci acl @%p", hci_buf);
 
 	return EC_SUCCESS;
 }
