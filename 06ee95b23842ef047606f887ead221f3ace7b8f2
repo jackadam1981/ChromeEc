@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f74049b_f10a2e84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-08T23:02:02Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something, but I don\u0027t see this CL removing a call to `tcpm_init` or similar. Is there going to be a follow-up CL?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "06ee95b23842ef047606f887ead221f3ace7b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03bb0d4d_c6a841ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-08T23:02:02Z",
+      "side": 1,
+      "message": "Topic for a follow-up CL: Should this same thing happen when ",
+      "revId": "06ee95b23842ef047606f887ead221f3ace7b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
