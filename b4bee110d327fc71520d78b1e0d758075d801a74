@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55b1e3ae_5de8ea92",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-08T04:17:18Z",
+      "side": 1,
+      "message": "I figured these may be more important to print out so I didn\u0027t put them behind the config. But, either way works for me. Now it is behind the config which saves another 200 bytes.",
+      "parentUuid": "c782b6e6_04ece84a",
+      "revId": "b4bee110d327fc71520d78b1e0d758075d801a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dda16050_27610d52",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-07T23:04:28Z",
       "side": 1,
       "message": "Nit: I\u0027d make this `#define CONFIG_USBC_PPC_LOGGING`. It reduces the number of double negatives people have to parse.",
+      "revId": "b4bee110d327fc71520d78b1e0d758075d801a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c409e7a8_07e9b57e",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5073,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-08T04:17:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dda16050_27610d52",
       "revId": "b4bee110d327fc71520d78b1e0d758075d801a74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
