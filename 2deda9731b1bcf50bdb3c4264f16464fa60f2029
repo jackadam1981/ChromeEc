@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b057a171_d1bb6612",
+        "filename": "firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-08T20:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77059216_a59e21b9",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "2deda9731b1bcf50bdb3c4264f16464fa60f2029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05f4aa89_8ce8704d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45bdb0f_9d8676bd",
+        "filename": "util/check_clang_format.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-08T20:53:18Z",
+      "side": 1,
+      "message": "Avoiding these for now as they\u0027re pretty macro heavy usually, and I noticed clang-format tended to make most of them worse.",
+      "parentUuid": "05f4aa89_8ce8704d",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "2deda9731b1bcf50bdb3c4264f16464fa60f2029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d5a7f35_5e34bd4a",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-08T20:38:57Z",
       "side": 1,
       "message": "Why do this in both builders? Doing it in one or the other should be enough.",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 69
+      },
+      "revId": "2deda9731b1bcf50bdb3c4264f16464fa60f2029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a139c38d_d6eb6403",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-08T20:53:18Z",
+      "side": 1,
+      "message": "2 reasons:\n\n1. If one builder is made informational, the other will catch it.\n2. It\u0027s fast anyway, why not \u003d)",
+      "parentUuid": "9d5a7f35_5e34bd4a",
       "range": {
         "startLine": 184,
         "startChar": 2,
