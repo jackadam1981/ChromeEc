@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
+#include "keyboard_scan.h"
 #include "driver/als_tcs3400.h"
 #include "driver/charger/isl9241.h"
 #include "fw_config.h"
@@ -108,6 +109,12 @@ static void configure_keyboard(void)
 		gpio_set_flags(GPIO_EC_KSO_04_INV, GPIO_ODR_HIGH);
 		gpio_set_alternate_function(GPIO_PORT_1, (BIT(5) | BIT(7)),
 					    GPIO_ALT_FUNC_DEFAULT);
+		/**
+		 * For b/231265647 comment#39 short-term solution.
+		 * Change the recover key from esc to T5.
+		 */
+		boot_key_list[0].col = 10;
+		boot_key_list[0].row = 4;
 	}
 
 	board_id_keyboard_col_inverted((int)board_id);
