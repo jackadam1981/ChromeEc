@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -48,7 +48,7 @@ if(DEFINED CONFIG_PLATFORM_EC)
   include(fpu.cmake)
 
   # When LTO is enabled, enable only for the "app" library, which compiles
-  # and links all Chromium OS sources.
+  # and links all ChromiumOS sources.
   # TODO: Enable LTO for all sources when Zephyr supports it.
   # See https://github.com/zephyrproject-rtos/zephyr/issues/2112
   if (DEFINED CONFIG_LTO)
@@ -85,7 +85,7 @@ get_property(APP_LTO_PROPERTY TARGET app PROPERTY INTERPROCEDURAL_OPTIMIZATION)
 set_property(TARGET ec_shim PROPERTY INTERPROCEDURAL_OPTIMIZATION ${APP_LTO_PROPERTY})
 set_property(TARGET ec_shim APPEND PROPERTY COMPILE_DEFINITIONS __REQUIRE_ZEPHYR_GPIOS__)
 
-# Switch from the "zephyr" library to the "app" library for all Chromium OS
+# Switch from the "zephyr" library to the "app" library for all ChromiumOS
 # sources.
 set(ZEPHYR_CURRENT_LIBRARY app)
 

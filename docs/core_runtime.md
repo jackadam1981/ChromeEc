@@ -1,4 +1,4 @@
-# Chromium OS Embedded Controller Runtime
+# ChromiumOS Embedded Controller Runtime
 
 ## Design Principles
 

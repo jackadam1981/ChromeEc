@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -101,7 +101,7 @@ def get_argparser():
     """
     parser = argparse.ArgumentParser(
         prog="zmake",
-        description="Chromium OS's meta-build tool for Zephyr",
+        description="ChromiumOS's meta-build tool for Zephyr",
     )
     parser.add_argument(
         "--checkout", type=pathlib.Path, help="Path to ChromiumOS checkout"
@@ -158,7 +158,7 @@ def get_argparser():
         type=pathlib.Path,
         help="The path to a directory containing all modules "
         "needed.  If unspecified, zmake will assume you have "
-        "a Chrome OS checkout and try locating them in the "
+        "a ChromeOS checkout and try locating them in the "
         "checkout.",
     )
     parser.add_argument(

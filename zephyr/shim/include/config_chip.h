@@ -1,4 +1,4 @@
-/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+/* Copyright 2020 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -40,7 +40,7 @@
  */
 
 /*
- * ROM resident support. The ROM resident capabilities in the Chromium OS
+ * ROM resident support. The ROM resident capabilities in the ChromiumOS
  * code are used with EC chipsets that provide more flash space than
  * executable RAM. These options allow storing the initialized data into
  * an unused area of flash where it is copied directly from flash into data

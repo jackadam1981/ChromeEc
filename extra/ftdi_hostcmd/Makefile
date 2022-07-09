@@ -1,9 +1,9 @@
-# Copyright 2015 The Chromium OS Authors. All rights reserved.
+# Copyright 2015 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 # Use your own libmpsse if you want, but we're going to use the files
-# that are part of the Chromium OS trunks_client program.
+# that are part of the ChromiumOS trunks_client program.
 PLATFORM2 = ../../../../platform2
 MPSSE_DIR = $(PLATFORM2)/trunks/ftdi
 

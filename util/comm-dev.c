@@ -1,4 +1,4 @@
-/* Copyright 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -58,7 +58,7 @@ static const char *strresult(int i)
 	return meanings[i];
 }
 
-/* Old ioctl format, used by Chrome OS 3.18 and older */
+/* Old ioctl format, used by ChromeOS 3.18 and older */
 
 static int ec_command_dev(int command, int version, const void *outdata,
 			  int outsize, void *indata, int insize)
@@ -120,7 +120,7 @@ static int ec_readmem_dev(int offset, int bytes, void *dest)
 			      dest, bytes);
 }
 
-/* New ioctl format, used by Chrome OS 4.4 and later as well as upstream 4.0+ */
+/* New ioctl format, used by ChromeOS 4.4 and later as well as upstream 4.0+ */
 
 static int ec_command_dev_v2(int command, int version, const void *outdata,
 			     int outsize, void *indata, int insize)

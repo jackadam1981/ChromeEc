@@ -8,7 +8,7 @@
 
 **Usage:** `zmake [-h] [--checkout CHECKOUT] [-j JOBS] [--goma] [-l {DEBUG,INFO,WARNING,ERROR,CRITICAL} | -D] [-L] [--log-label] [--modules-dir MODULES_DIR] [--zephyr-base ZEPHYR_BASE] subcommand ...`
 
-Chromium OS's meta-build tool for Zephyr
+ChromiumOS's meta-build tool for Zephyr
 
 #### Positional Arguments
 
@@ -28,7 +28,7 @@ Chromium OS's meta-build tool for Zephyr
 | `-D`, `--debug` | Alias for --log-level=DEBUG |
 | `-L`, `--no-log-label` | Turn off logging labels |
 | `--log-label` | Turn on logging labels |
-| `--modules-dir MODULES_DIR` | The path to a directory containing all modules needed.  If unspecified, zmake will assume you have a Chrome OS checkout and try locating them in the checkout. |
+| `--modules-dir MODULES_DIR` | The path to a directory containing all modules needed.  If unspecified, zmake will assume you have a ChromeOS checkout and try locating them in the checkout. |
 | `--zephyr-base ZEPHYR_BASE` | Path to Zephyr OS repository |
 
 ## Subcommands

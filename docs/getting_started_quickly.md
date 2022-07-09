@@ -3,16 +3,16 @@
 [TOC]
 
 The
-[Chromium OS Developer Guide](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md)
+[ChromiumOS Developer Guide](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md)
 and [README](../README.md) walk through the steps needed to fetch and build
-Chromium OS source. These steps can be followed to retrieve and build EC source
+ChromiumOS source. These steps can be followed to retrieve and build EC source
 as well. On the other hand, if your sole interest is building an EC image, the
 general developer guide contains some extra unneeded steps.
 
 ## Building
 
 Here is a set of steps to set up a development environment to build EC images
-inside the Chromium OS chroot:
+inside the ChromiumOS chroot:
 
 
 1.  Create a folder for your chroot:

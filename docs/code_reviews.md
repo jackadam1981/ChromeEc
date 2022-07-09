@@ -35,7 +35,7 @@ comments by the author within 1 business day.
 
 ## Review guidelines
 
-Authors and reviewers should follow the Chrome OS firmware review
+Authors and reviewers should follow the ChromeOS firmware review
 [guidelines][2] while publishing and reviewing code.
 
 ## How can I join the rotation?
@@ -44,7 +44,7 @@ Add your name to the [list of reviewers][1].
 
 ## Reference
 
-*   [Chrome OS firmware review guidelines][2]
+*   [ChromeOS firmware review guidelines][2]
 *   [Coreboot Gerrit Guidelines][3]
 *   [Google small CL guidelines][5]
 

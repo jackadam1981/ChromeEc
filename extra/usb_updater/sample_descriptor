@@ -1,8 +1,8 @@
-# Copyright 2018 The Chromium OS Authors. All rights reserved.
+# Copyright 2018 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
-# Hash descriptor database file consists of sections for various Chrome OS
+# Hash descriptor database file consists of sections for various ChromeOS
 # boards. Each board description section starts with a line of 4 characters
 # which is the board ID (the same as the board's RLZ code).
 #

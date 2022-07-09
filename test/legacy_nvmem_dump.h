@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 The Chromium OS Authors. All rights reserved.
+ * Copyright 2016 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -7,7 +7,7 @@
 /*
  * This is a test NVMEM snapshot, it includes a couple of key,value pairs and
  * a set of TPM reserved and evictable objects, as created after the first
- * Chrome OS boot on a device.
+ * ChromeOS boot on a device.
  *
  * This binary dump is placed in a separate file not to free up the test file
  * using it.

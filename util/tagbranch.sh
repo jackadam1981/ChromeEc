@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2017 The Chromium OS Authors. All rights reserved.
+# Copyright 2017 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -16,11 +16,11 @@
 # closest tag in the tree.
 #
 # This admittedly brittle script automates the process of tagging for the EC
-# git tree in Chrome OS repo, but it could be used for any other Chrome OS
+# git tree in ChromeOS repo, but it could be used for any other ChromeOS
 # repo git tree just as well.
 #
 # The script is brittle because it relies on the following assumptions which
-# are true for Chrome OS repo at the time of writing:
+# are true for ChromeOS repo at the time of writing:
 #
 # - the upstream branch alias name shows up in the 'git branch -a' output
 #   separated by ->

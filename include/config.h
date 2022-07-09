@@ -1,4 +1,4 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -3094,7 +3094,7 @@
 #undef CONFIG_LED_POLICY_STD
 
 /*
- * Support common PWM-controlled LEDs that conform to the Chrome OS LED
+ * Support common PWM-controlled LEDs that conform to the ChromeOS LED
  * behaviour specification.
  */
 #undef CONFIG_LED_PWM

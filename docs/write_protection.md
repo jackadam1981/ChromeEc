@@ -38,7 +38,7 @@ firmware jumps to it.
 
 ## Hardware Write Protect {#hw_wp}
 
-On modern Chrome OS devices, the Cr50 (aka GSC / TPM) provides a "hardware write
+On modern ChromeOS devices, the Cr50 (aka GSC / TPM) provides a "hardware write
 protect" GPIO that is connected to the AP SPI flash, EC SPI flash, EEPROM, and
 FPMCU via a [GPIO][write_protect_gpio]. This "hardware write protect" can only
 be disabled with [Servo] or [SuzyQ](["CCD open"]) and corresponds to
@@ -49,7 +49,7 @@ In the case of the FPMCU, the hardware write protect GPIO is tied to the STM32
 `BOOT0` pin, which is what tells the MCU to enter the STM32 bootloader mode.
 
 You may see various references to a
-[write protect screw in documentation][wp_screw]. Older Chrome OS devices had a
+[write protect screw in documentation][wp_screw]. Older ChromeOS devices had a
 write protect screw that had to be physically removed. More details on this
 history can be found here: http://go/cros-wp-status.
 
