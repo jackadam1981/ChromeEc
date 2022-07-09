@@ -1,15 +1,15 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 menuconfig CROS_EC
-	bool "Chromium OS EC app"
+	bool "ChromiumOS EC app"
 	imply PRINTK
 	imply SHELL
 	imply SHELL_MINIMAL
 	imply STACK_SENTINEL
 	help
-	  Enable the common Chromium OS EC application. This prints a message,
+	  Enable the common ChromiumOS EC application. This prints a message,
 	  starts the EC tasks and sets up any drivers that are needed.
 
 	  This depends on PLATFORM_EC at present, since without the shimmed
@@ -42,7 +42,7 @@ config LTO
 	  LTO expands the scope of optimizations to encompass the whole program,
 	  reducing the image size.
 
-	  At this time, LTO is only enabled for Chromium OS source files and
+	  At this time, LTO is only enabled for ChromiumOS source files and
 	  is not enabled for the Zephyr kernel or drivers due.
 	  https://github.com/zephyrproject-rtos/zephyr/issues/2112
 
@@ -52,7 +52,7 @@ choice CBPRINTF_IMPLEMENTATION
 endchoice
 
 choice
-	prompt "Chromium OS EC firmware section"
+	prompt "ChromiumOS EC firmware section"
 
 config CROS_EC_RO
 	bool "This build is will be for the RO copy of the EC"

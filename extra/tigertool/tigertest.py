@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Copyright 2022 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -76,7 +76,9 @@ def test_sequence():
 
 def main(argv):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("-c", "--count", type=int, default=1, help="loops to run")
+    parser.add_argument(
+        "-c", "--count", type=int, default=1, help="loops to run"
+    )
 
     opts = parser.parse_args(argv)
 

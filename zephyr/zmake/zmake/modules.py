@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 """Registry of known Zephyr modules."""
@@ -29,12 +29,12 @@ known_modules = {
 
 
 def locate_from_checkout(checkout_dir):
-    """Find modules from a Chrome OS checkout.
+    """Find modules from a ChromeOS checkout.
 
     Important: this function should only conditionally be called if a
-    checkout exists.  Zmake *can* be used without a Chrome OS source
+    checkout exists.  Zmake *can* be used without a ChromeOS source
     tree.  You should call locate_from_directory if outside of a
-    Chrome OS source tree.
+    ChromeOS source tree.
 
     Args:
         checkout_dir: The path to the chromiumos source.

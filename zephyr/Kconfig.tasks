@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -178,7 +178,7 @@ config HAS_TASK_POWERBTN
 	  this task triggers a power-up sequence on a power-button press. When
 	  the AP is on (S3 or above state) x86 machines normally reset when the
 	  power button is held for 4 seconds but this tasks adjusts that to 8
-	  seconds, to allow time for the usual Chromium OS shutdown sequence.
+	  seconds, to allow time for the usual ChromiumOS shutdown sequence.
 
 if HAS_TASK_POWERBTN
 

@@ -89,7 +89,7 @@
 *   **FAFT - Fully Automated Firmware Tests** {#faft}
 
     A collection of tests and related infrastructure that exercise and verify
-    capabilities of Chrome OS. See the [FAFT design doc] and
+    capabilities of ChromeOS. See the [FAFT design doc] and
     [chromium.org documentation](https://www.chromium.org/for-testers/faft) for
     more details. Replaced [SAFT](#saft).
 

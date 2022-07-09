@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -142,7 +142,9 @@ def flash(jlink_exe, remote, device, interface, cmd_file):
 
         logging.debug(f"Checking connection to {remote}.")
         if not is_tcp_port_open(ip, port):
-            logging.error(f"JLink server doesn't seem to be listening on {remote}.")
+            logging.error(
+                f"JLink server doesn't seem to be listening on {remote}."
+            )
             logging.error("Ensure that JLinkRemoteServerCLExe is running.")
             return 1
         cmd.extend(["-ip", remote])
@@ -162,7 +164,9 @@ def flash(jlink_exe, remote, device, interface, cmd_file):
         ]
     )
     logging.debug('Running command: "%s"', " ".join(cmd))
-    completed_process = subprocess.run(cmd)  # pylint: disable=subprocess-run-check
+    completed_process = subprocess.run(
+        cmd
+    )  # pylint: disable=subprocess-run-check
     logging.debug("JLink return code: %d", completed_process.returncode)
     return completed_process.returncode
 
@@ -205,7 +209,9 @@ def main(argv: list):
     )
 
     log_level_choices = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
-    parser.add_argument("--log_level", "-l", choices=log_level_choices, default="DEBUG")
+    parser.add_argument(
+        "--log_level", "-l", choices=log_level_choices, default="DEBUG"
+    )
 
     args = parser.parse_args(argv)
     logging.basicConfig(level=args.log_level)

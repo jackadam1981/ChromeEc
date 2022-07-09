@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2017 The Chromium OS Authors. All rights reserved.
+# Copyright 2017 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -61,10 +61,13 @@ def main(argv):
             boardfile.write(",\n")
             scenario.write(",\n")
 
-        record = '  {"name": "%s", "rs": %f, "sweetberry": "A", "channel": %d}' % (
-            rec[2],
-            rec[4],
-            rec[1] - 64,
+        record = (
+            '  {"name": "%s", "rs": %f, "sweetberry": "A", "channel": %d}'
+            % (
+                rec[2],
+                rec[4],
+                rec[1] - 64,
+            )
         )
         boardfile.write(record)
         scenario.write('"%s"' % rec[2])

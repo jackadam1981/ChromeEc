@@ -1,4 +1,4 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2017 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -11,7 +11,7 @@
 /*
  * Enable PD in RO image for TCPMv2, otherwise there is only Type-c functions.
  * NOTE: This configuration is only for development board and will never be
- *       released on a chrome os device.
+ *       released on a chromeOS device.
  */
 #define CONFIG_SYSTEM_UNLOCKED
 

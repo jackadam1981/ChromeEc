@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -19,12 +19,12 @@ config HAS_TEST_TASKS
 endif # ZTEST
 
 menuconfig PLATFORM_EC
-	bool "Chromium OS EC shim"
+	bool "ChromiumOS EC shim"
 	imply PRINTK
 	imply SHELL
 	help
 	  The platform/ec Zephyr module allows some code from the
-	  existing Chromium OS EC project to be "shimmed" into Zephyr. With
+	  existing ChromiumOS EC project to be "shimmed" into Zephyr. With
 	  this it is possible to use the existing code base within Zephyr.
 
 	  Once we manage to get a platform fully running with Zephyr we will
@@ -271,7 +271,7 @@ config PLATFORM_EC_CROS_FWID_VERSION
 	bool "Include CrOS FWID version"
 	default n
 	help
-	  Include Chrome OS FWID in version output. The CrOS FWID will be common
+	  Include ChromeOS FWID in version output. The CrOS FWID will be common
 	  across OS, AP firmware and EC firmware when built together.
 
 config PLATFORM_EC_DEBUG_ASSERT
@@ -538,7 +538,7 @@ config PLATFORM_EC_POWER_BUTTON
 	depends on PLATFORM_EC_HOSTCMD
 	help
 	  Enable shimming the power button implementation and related
-	  commands in platform/ec.  This is used to implement the Chromium OS
+	  commands in platform/ec.  This is used to implement the ChromiumOS
 	  shutdown sequence.
 
 	  This requires a GPIO named GPIO_POWER_BUTTON_L.
@@ -683,7 +683,7 @@ config PLATFORM_EC_VBOOT_EFS2
 	default y if !SOC_POSIX
 	help
 	  Enables Early Firmware Selection v2 (EFS2) verified boot. When booting
-	  a Chromium OS image we're actually packing both an RO image and an RW
+	  a ChromiumOS image we're actually packing both an RO image and an RW
 	  image into flash. The RO image is loaded first. EFS2 runs at boot and
 	  verifies the integrity of the RW image by sending a hash of the image
 	  to the Google Security Chip (GSC). Once the GSC verifies the hash,

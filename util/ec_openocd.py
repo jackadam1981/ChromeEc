@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Copyright 2022 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -83,7 +83,10 @@ def debug(interface, board, port, executable):
     openocd_args += ["-c", f"gdb_port {port}"]
 
     openocd = subprocess.Popen(
-        openocd_args, encoding="utf-8", stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+        openocd_args,
+        encoding="utf-8",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
     )
 
     # Wait for OpenOCD to start, it'll open a port for GDB connections
@@ -213,11 +216,15 @@ def main():
         target_file = args.file.resolve()
 
     if args.command == "flash":
-        image_file = get_flash_file(args.board) if target_file == None else target_file
+        image_file = (
+            get_flash_file(args.board) if target_file == None else target_file
+        )
         flash(args.interface, args.board, image_file, args.verify)
     elif args.command == "debug":
         executable_file = (
-            get_executable_file(args.board) if target_file == None else target_file
+            get_executable_file(args.board)
+            if target_file == None
+            else target_file
         )
         debug(args.interface, args.board, args.port, executable_file)
     else:

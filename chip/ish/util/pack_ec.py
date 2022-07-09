@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-"
 
-# Copyright 2019 The Chromium OS Authors. All rights reserved.
+# Copyright 2019 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -79,7 +79,9 @@ def main():
         print("      kernel binary size:", args.kernel_size)
         kern_rdup_pg_size = roundup_page(args.kernel_size)
         # Add manifest for main ISH binary
-        f.write(gen_manifest(b"ISHM", b"ISH_KERN", HEADER_SIZE, kern_rdup_pg_size))
+        f.write(
+            gen_manifest(b"ISHM", b"ISH_KERN", HEADER_SIZE, kern_rdup_pg_size)
+        )
 
         if args.aon is not None:
             print("      AON binary size:   ", args.aon_size)
@@ -89,7 +91,11 @@ def main():
                 gen_manifest(
                     b"ISHM",
                     b"AON_TASK",
-                    (HEADER_SIZE + kern_rdup_pg_size * PAGE_SIZE - MANIFEST_ENTRY_SIZE),
+                    (
+                        HEADER_SIZE
+                        + kern_rdup_pg_size * PAGE_SIZE
+                        - MANIFEST_ENTRY_SIZE
+                    ),
                     aon_rdup_pg_size,
                 )
             )

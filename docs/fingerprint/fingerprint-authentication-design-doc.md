@@ -101,7 +101,7 @@ attack surface again.
 ## Overview {#overview}
 
 Devices have a dedicated microcontroller (MCU) running a firmware based on the
-[Chromium OS EC] codebase that is used as the *Secure Biometric Processor*
+[ChromiumOS EC] codebase that is used as the *Secure Biometric Processor*
 (**SBP**), where all enrollment and matching operations take place. Even if
 attackers gained control of the AP, they still would not be able to access the
 fingerprint (FP) data since it never leaves the SBP unencrypted.
@@ -605,7 +605,7 @@ biod has 3 main states:
 
 ##### Multi-threading/multi-process
 
-We use the [primitives][EC primitives] of the Chromium OS EC: tasks, hooks, and
+We use the [primitives][EC primitives] of the ChromiumOS EC: tasks, hooks, and
 deferred functions.
 
 ##### Memory allocation
@@ -718,7 +718,7 @@ The log file is `/var/log/cros_fp.log`.
 [biod upstart script]: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/biod/init/biod.conf
 [ccd open]: https://chromium.googlesource.com/chromiumos/platform/ec/+/cr50_stab/docs/case_closed_debugging_cr50.md#Open-CCD
 [CDD]: https://source.android.com/compatibility/android-cdd#7_3_10_fingerprint_sensor
-[Chromium OS EC]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
+[ChromiumOS EC]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/README.md
 [clobber-state]: https://chromium.googlesource.com/chromiumos/platform2/+/962ab1bc481db0cf504b5449eb3a3d5008ea7601/init/clobber_state.cc#475
 [cryptohome daemon store folder]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/sandboxing.md#securely-mounting-cryptohome-daemon-store-folders
 [cryptohome]: https://www.chromium.org/chromium-os/chromiumos-design-docs/protecting-cached-user-data

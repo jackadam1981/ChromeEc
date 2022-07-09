@@ -1,4 +1,4 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -120,7 +120,7 @@ struct usb_hid_keyboard_output_report {
 #define HID_KEYBOARD_TABLET_MODE_SWITCH 0xf1
 #define HID_KEYBOARD_EXTRA_HIGH 0xf1
 
-/* The standard Chrome OS keyboard matrix table. See HUT 1.12v2 Table 12 and
+/* The standard ChromeOS keyboard matrix table. See HUT 1.12v2 Table 12 and
  * https://www.w3.org/TR/DOM-Level-3-Events-code .
  *
  * Assistant key is mapped as 0xf0, but this key code is never actually send.

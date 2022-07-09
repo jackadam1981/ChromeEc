@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 """Encapsulation of a build configuration."""
@@ -19,7 +19,11 @@ class BuildConfig:
     """
 
     def __init__(
-        self, environ_defs=None, cmake_defs=None, kconfig_defs=None, kconfig_files=None
+        self,
+        environ_defs=None,
+        cmake_defs=None,
+        kconfig_defs=None,
+        kconfig_files=None,
     ):
         self.environ_defs = dict(environ_defs or {})
         self.cmake_defs = dict(cmake_defs or {})
@@ -68,7 +72,9 @@ class BuildConfig:
             )
             conf_file_config = BuildConfig(
                 cmake_defs={
-                    "CONF_FILE": ";".join(str(p.resolve()) for p in kconfig_files)
+                    "CONF_FILE": ";".join(
+                        str(p.resolve()) for p in kconfig_files
+                    )
                 }
             )
             return (base_config | conf_file_config).popen_cmake(
@@ -93,7 +99,9 @@ class BuildConfig:
         """Combine two BuildConfig instances."""
         if not isinstance(other, BuildConfig):
             raise TypeError(
-                "Unsupported operation | for {} and {}".format(type(self), type(other))
+                "Unsupported operation | for {} and {}".format(
+                    type(self), type(other)
+                )
             )
 
         return BuildConfig(

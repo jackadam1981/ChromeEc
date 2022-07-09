@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Copyright 2021 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -41,7 +41,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
 
     log_level_choices = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
-    parser.add_argument("--log_level", "-l", choices=log_level_choices, default="DEBUG")
+    parser.add_argument(
+        "--log_level", "-l", choices=log_level_choices, default="DEBUG"
+    )
 
     parser.add_argument(
         "--num_threads", "-j", type=int, default=multiprocessing.cpu_count()
@@ -67,7 +69,8 @@ def main() -> int:
 
     if len(failed_boards) > 0:
         logging.error(
-            "The following boards failed to compile:\n%s", "\n".join(failed_boards)
+            "The following boards failed to compile:\n%s",
+            "\n".join(failed_boards),
         )
         return 1
 

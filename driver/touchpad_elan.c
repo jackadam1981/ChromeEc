@@ -1,4 +1,4 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -111,7 +111,7 @@ struct {
 
 /*
  * Report a more reasonable pressure value, so that no adjustment is necessary
- * on Chrome OS side. 3216/1024 ~= 3.1416.
+ * on ChromeOS side. 3216/1024 ~= 3.1416.
  */
 const int pressure_mult = 3216;
 const int pressure_div = 1024;

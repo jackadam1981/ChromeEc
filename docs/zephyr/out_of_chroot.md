@@ -1,6 +1,6 @@
 # Building Zephyr Out-of-Chroot
 
-It is possible to build Zephyr outside of the Chromium OS chroot,
+It is possible to build Zephyr outside of the ChromiumOS chroot,
 albeit with additional steps.
 
 *** note
@@ -52,7 +52,7 @@ make
 make install PREFIX=~/.local         # You can install this where it suits
 ```
 
-If you have a Chromium OS checkout then you should do:
+If you have a ChromiumOS checkout then you should do:
 
 ```bash
 cd ~/.local/bin

@@ -10,7 +10,7 @@
 
 ## Introduction
 
-The Chromium OS project includes open source software for embedded controllers
+The ChromiumOS project includes open source software for embedded controllers
 (EC) used in recent ARM and x86 based Chromebooks. This software includes a
 lightweight, multitasking OS with modules for power sequencing, keyboard
 control, thermal control, battery charging, and verified boot. The EC software
@@ -20,7 +20,7 @@ is written in C and supports
 This document is a guide to help make you familiar with the EC code, current
 features, and the process for submitting code patches.
 
-For more see the Chrome OS Embedded Controller
+For more see the ChromeOS Embedded Controller
 [presentation](https://docs.google.com/presentation/d/1Xa_Z6SjW-soPvkugAR8__TEJFrJpzoZUa9HNR14Sjs8/pub?start=false&loop=false&delayms=3000)
 and [video](http://youtu.be/Ie7LRGgCXC8) from the
 [2014 Firmware Summit](http://dev.chromium.org/chromium-os/2014-firmware-summit).
@@ -30,7 +30,7 @@ and [video](http://youtu.be/Ie7LRGgCXC8) from the
 1.  A Chromebook with a compatible EC. This includes the Samsung Chromebook
     (XE303C12) and all Chromebooks shipped after the Chromebook Pixel 2013
     (inclusive). See the
-    [Chrome OS devices](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
+    [ChromeOS devices](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
     page for a list.
 1.  A Linux development environment. The latest Debian Stable (x86_64) is commonly used.
     Linux in a VM may work if you have a powerful host machine.
@@ -42,12 +42,12 @@ and [video](http://youtu.be/Ie7LRGgCXC8) from the
 
 ### EC
 
-EC (aka Embedded Controller) can refer to many things in the Chrome OS
+EC (aka Embedded Controller) can refer to many things in the ChromeOS
 documentation due to historical reasons. If you just see the term "EC", it
-probably refers to "the" EC (i.e. the first one that existed). Most Chrome OS
+probably refers to "the" EC (i.e. the first one that existed). Most ChromeOS
 devices have an MCU, known as "the EC" that controls lots of things (key
 presses, turning the AP on/off). The OS that was written for "the" EC is now
-running on several different MCUs on Chrome OS devices with various tweaks (e.g.
+running on several different MCUs on ChromeOS devices with various tweaks (e.g.
 the FPMCU, the touchpad one that can do palm rejection, etc.). It's quite
 confusing, so try to be specific and use terms like FPMCU to distinguish the
 fingerprint MCU from "the EC".
@@ -57,12 +57,12 @@ glossary.
 
 ## Getting the EC code
 
-The code for the EC is open source and is included in the Chromium OS
+The code for the EC is open source and is included in the ChromiumOS
 development environment (`~/trunk/src/platform/ec/</code>`).
 See[ http://www.chromium.org/chromium-os/quick-start-guide](http://dev.chromium.org/chromium-os/quick-start-guide)
 for build setup instructions. If you want instant gratification, you can fetch
 the source code directly. However, you will need the tool-chain provided by the
-Chromium OS development environment to build a binary.
+ChromiumOS development environment to build a binary.
 
 ```bash
 git clone https://chromium.googlesource.com/chromiumos/platform/ec
@@ -168,7 +168,7 @@ git log --left-right --graph --cherry-pick --oneline cros/main...HEAD
 
 ## Building an EC binary
 
-Note: The EC is normally built from within the Chromium OS development chroot to
+Note: The EC is normally built from within the ChromiumOS development chroot to
 use the correct toolchain.
 
 Building directly from the EC repository:
@@ -185,7 +185,7 @@ The make command will generate an EC binary at `build/<boardname>/ec.bin`. The
 `-j` tells make to build multi-threaded which can be much faster on a multi-core
 machine.
 
-### Building via emerge (the build file used when you build Chrome OS):
+### Building via emerge (the build file used when you build ChromeOS):
 
 (optional) Run this command if you want to build from local source instead of
 the most recent stable version:
@@ -218,7 +218,7 @@ or
 
 The `devicename` is the name of a device (also referred as board or variant) which belongs to a family of baseboard. `boardname` is the baseboard name in this case. Example : `/build/dedede/firmware/madoo/ec.bin`
 
-The ebuild file used by Chromium OS is found
+The ebuild file used by ChromiumOS is found
 [here](https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/main/chromeos-base/chromeos-ec/chromeos-ec-9999.ebuild):
 
 ```bash
@@ -251,7 +251,7 @@ firmware image will be at:
 (chroot) $ ~/trunk/src/platform/ec/build/<boardname>/ec.bin
 ```
 
-If you build Chrome OS with `build_packages` the firmware image will be at:
+If you build ChromeOS with `build_packages` the firmware image will be at:
 
 ```bash
 (chroot) $ /build/<boardname>/firmware/ec.bin
@@ -489,7 +489,7 @@ Other style notes:
     all contributions to the Chromium project:
 
     ```
-    /* Copyright <year> The Chromium OS Authors. All rights reserved.
+    /* Copyright <year> The ChromiumOS Authors. All rights reserved.
      * Use of this source code is governed by a BSD-style license that can be
      * found in the LICENSE file.
      */

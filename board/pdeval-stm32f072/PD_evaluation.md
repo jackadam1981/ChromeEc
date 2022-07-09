@@ -8,7 +8,7 @@ new TCPM file can be implemented as explained in the
 
 ## Building
 
-### Chromium OS chroot
+### ChromiumOS chroot
 
 All the following instructions have been verified in a ChromiumOS chroot. You
 can find how to set one up on the Chromium development:

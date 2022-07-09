@@ -8,4 +8,4 @@
 *   [Getting Started Quickly](/docs/getting_started_quickly.md)
 *   [File a Bug](https://issuetracker.google.com/issues/new?component=960650)
 *   [Report Security Issue](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/reporting_bugs.md#security)
-*   [Chromium OS Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/README.md)
+*   [ChromiumOS Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/README.md)

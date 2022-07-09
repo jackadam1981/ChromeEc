@@ -1,12 +1,12 @@
-/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+/* Copyright 2022 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /**
  * @file
- * @brief Chrome OS-specific API for raw keyboard access
- * This exists only support the interface expected by the Chrome OS EC. It seems
+ * @brief ChromeOS-specific API for raw keyboard access
+ * This exists only support the interface expected by the ChromeOS EC. It seems
  * better to implement this so we can make use of most of the existing code in
  * its keyboard_scan.c file and thus make sure we operate the same way.
  *

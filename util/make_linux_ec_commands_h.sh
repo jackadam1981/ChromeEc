@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2019 The Chromium OS Authors. All rights reserved.
+# Copyright 2019 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -28,7 +28,7 @@ if [ $# -ne 2 ]; then
 fi
 
 if [ ! -d "${CROS_WORKON_SRCROOT}" ]; then
-  printf "Not in Chrome OS chroot!\n\n"
+  printf "Not in ChromeOS chroot!\n\n"
   usage
   exit 0
 fi
@@ -47,7 +47,7 @@ trap cleanup EXIT
 # Replace license
 patch "${tmp}" << EOF
 @@ -1,6 +1,11 @@
--/* Copyright 2014 The Chromium OS Authors. All rights reserved.
+-/* Copyright 2014 The ChromiumOS Authors. All rights reserved.
 - * Use of this source code is governed by a BSD-style license that can be
 - * found in the LICENSE file.
 +/* SPDX-License-Identifier: GPL-2.0-only */

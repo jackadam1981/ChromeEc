@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2013 The Chromium OS Authors. All rights reserved.
+# Copyright 2013 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -231,7 +231,11 @@ def parseargs():
         "--loader_file", help="EC loader binary", default="ecloader.bin"
     )
     parser.add_argument(
-        "-s", "--spi_size", type=int, help="Size of the SPI flash in MB", default=4
+        "-s",
+        "--spi_size",
+        type=int,
+        help="Size of the SPI flash in MB",
+        default=4,
     )
     parser.add_argument(
         "-l",
@@ -281,7 +285,10 @@ def parseargs():
         default=0xB,
     )
     parser.add_argument(
-        "--image_size", type=int, help="Size of a single image.", default=(96 * 1024)
+        "--image_size",
+        type=int,
+        help="Size of a single image.",
+        default=(96 * 1024),
     )
     return parser.parse_args()
 

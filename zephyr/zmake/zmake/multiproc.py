@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -297,7 +297,9 @@ class Executor:
              exception.
         """
         with self.lock:
-            thread = threading.Thread(target=lambda: self._run_fn(func), daemon=True)
+            thread = threading.Thread(
+                target=lambda: self._run_fn(func), daemon=True
+            )
             thread.start()
             self.threads.append(thread)
 

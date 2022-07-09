@@ -1,4 +1,4 @@
-/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+/* Copyright 2021 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -137,7 +137,7 @@ void update_dynamic_battery_info(void)
 		/*
 		 * If we're running off the battery, it must have some charge.
 		 * Don't report zero charge, as that has special meaning
-		 * to Chrome OS powerd.
+		 * to ChromeOS powerd.
 		 */
 		if (curr->batt.remaining_capacity == 0 &&
 		    !curr->batt_is_charging)

@@ -9,7 +9,7 @@ Unlike the legacy EC codebase, Zephyr projects all live together in
 one big happy directory.  The intent of this design is to encourage
 code-sharing between projects, and reduce the amount of copy/paste
 that is required to bring up a new project.  This directory can, but
-does not have to, correlate to the unified build Chrome OS board,
+does not have to, correlate to the unified build ChromeOS board,
 however firmware authors can always choose a different structure if it
 makes sense for the specific scenario.  As a hypothetical example,
 similar Chromeboxes and Chromebooks may wish to share the Zephyr EC
@@ -53,7 +53,7 @@ When `BUILD.py` is sourced, the following two globals are defined:
 - `zephyr_board` (required): The name of the Zephyr board to use for
   the project.  The Zephyr build system expects a Zephyr board
   directory under `boards/${ARCH}/${ZEPHYR_BOARD_NAME}`.  **Note:**
-  the concept of a Zephyr board does not align with the Chrome OS
+  the concept of a Zephyr board does not align with the ChromeOS
   concept of a board: for most projects this will typically be the
   name of the EC chip used, not the name of the model or overlay.
 - `supported_toolchains` (required): A list of the toolchain names
@@ -148,7 +148,7 @@ Below is an example of how programs may wish to structure this in
 `BUILD.py`:
 
 ``` python
-# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Copyright 2021 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
