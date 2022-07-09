@@ -1,12 +1,12 @@
-/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+/* Copyright 2021 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /**
  * @file
- * @brief Chrome OS-specific API for real-time clock (RTC).
- * This exists only support the interface expected by the Chrome OS EC. It
+ * @brief ChromeOS-specific API for real-time clock (RTC).
+ * This exists only support the interface expected by the ChromeOS EC. It
  * provides raw access to RTC module.
  *
  * This API and any drivers should be removed once we can safely move to using

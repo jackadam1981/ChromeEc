@@ -2,16 +2,16 @@
 
 [TOC]
 
-Chromium OS EC uses the `zmake` tool to build Zephyr.
+ChromiumOS EC uses the `zmake` tool to build Zephyr.
 
 This section describes how to build and use zmake.
 
 ## Environment Setup
 
-Follow the [Chromium OS Developer Guide] to sync the source and get
+Follow the [ChromiumOS Developer Guide] to sync the source and get
 the chroot setup.
 
-It is also possible to build without a Chromium OS chroot, albeit with
+It is also possible to build without a ChromiumOS chroot, albeit with
 additional setup steps.  See [out-of-chroot building] if this
 interests you.
 
@@ -81,7 +81,7 @@ ninja -C /tmp/z/volteer/build-ro menuconfig
 However at present this does not work [b/184662866](http://b/184662866).
 
 
-[Chromium OS Developer Guide]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md
+[ChromiumOS Developer Guide]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md
 [Zmake Documentation]: ../../zephyr/zmake/README.md
 [an ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/HEAD/chromeos-base/chromeos-zephyr/chromeos-zephyr-9999.ebuild
 [out-of-chroot building]: ./out_of_chroot.md

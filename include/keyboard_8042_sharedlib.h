@@ -1,4 +1,4 @@
-/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -28,14 +28,14 @@ struct button_8042_t {
 void register_scancode_set2(uint16_t *scancode_set, size_t size);
 
 /**
- * Get the standard Chrome OS keyboard matrix set 2 scanset
+ * Get the standard ChromeOS keyboard matrix set 2 scanset
  * @param row	Row number
  * @param col	Column number
  * @return	0 on error, scanset for the (row,col) if successful
  **/
 uint16_t get_scancode_set2(uint8_t row, uint8_t col);
 /**
- * Set the standard Chrome OS keyboard matrix set 2 scanset
+ * Set the standard ChromeOS keyboard matrix set 2 scanset
  * @param row	Row number
  * @param col	Column number
  * @param val	Value to set

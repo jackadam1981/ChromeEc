@@ -112,7 +112,7 @@ Instructions for setup are described in [Fingerprint Debugging].
 
 ## Software Setup
 
-### Get the Chromium OS source code
+### Get the ChromiumOS source code
 
 *   First, make sure you [have the prerequisites].
 *   Then [get the source].
@@ -362,12 +362,12 @@ Disable hardware write protect:
 If you’re not familiar with `git`, Gerrit (code review) and `repo`, here are
 some docs to help you get started:
 
-*   [Git and Gerrit Intro for Chromium OS]: Useful to get started as quickly as
+*   [Git and Gerrit Intro for ChromiumOS]: Useful to get started as quickly as
     possible, but does not explain how `git` works under the hood.
 *   [Set your editor]: Use your favorite editor when writing `git` commit
     messages.
-*   [Chromium OS Contributing Guide]: Detailed overview of contributing changes
-    to Chromium OS and the workflow we use.
+*   [ChromiumOS Contributing Guide]: Detailed overview of contributing changes
+    to ChromiumOS and the workflow we use.
 *   [Git: Concepts and Workflow]: Good overview of how `git` actually works.
 *   [Gerrit: Concepts and Workflow]: Good overview of how Gerrit works; assumes
     you understand `git` basics.
@@ -570,7 +570,7 @@ Make sure that this interface is disabled:
 [have the prerequisites]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#Prerequisites
 [get the source]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#get-the-source
 [enter the `chroot`]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#building-chromium-os
-[Chromium OS Contributing Guide]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md
+[ChromiumOS Contributing Guide]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md
 [Servo Micro Info]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servo_micro.md
 [Set your editor]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#Set-your-editor
 [Life of a patch]: https://source.android.com/setup/contribute/life-of-a-patch
@@ -582,7 +582,7 @@ Make sure that this interface is disabled:
 [Gerrit Credentials Setup]: https://www.chromium.org/chromium-os/developer-guide/gerrit-guide
 [Micro USB Cable]: https://www.monoprice.com/product?p_id=9762
 [PNM]: https://en.wikipedia.org/wiki/Netpbm_format
-[Git and Gerrit Intro for Chromium OS]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/git_and_gerrit_intro.md
+[Git and Gerrit Intro for ChromiumOS]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/git_and_gerrit_intro.md
 [Installing Chromium]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#installing-chromium-os-on-your-device
 [FPMCU documentation]: ./fingerprint.md
 [Fingerprint Debugging]: ./fingerprint-debugging.md

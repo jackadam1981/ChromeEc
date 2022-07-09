@@ -1,4 +1,4 @@
-/* Copyright 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -467,7 +467,7 @@ int i2c_port_to_controller(int port);
  * and i2c_set_response will be called when a peripheral is expected to send a
  * response.
  *
- * Using these, Chrome OS host command protocol should be separated from
+ * Using these, ChromeOS host command protocol should be separated from
  * i2c peripheral drivers (e.g. i2c-stm32f0.c, i2c-stm32f3.c).
  *
  * @param port: I2C port number

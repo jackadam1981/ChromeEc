@@ -1,4 +1,4 @@
-/* Copyright 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -13,7 +13,7 @@
 #include "usb_hw.h"
 
 /*
- * This SPI flash programming interface is designed to talk to a Chromium OS
+ * This SPI flash programming interface is designed to talk to a ChromiumOS
  * device over a Raiden USB connection.
  *
  * USB SPI Version 2:

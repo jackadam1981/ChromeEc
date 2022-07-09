@@ -33,7 +33,7 @@ static uint16_t KB2scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
 	{ 0x0023, 0x005a, 0x0075, 0x0079, 0x007a, 0x0072, 0x007D, 0x0069 },
 };
 
-/* The standard Chrome OS keyboard matrix table in scan code set 2. */
+/* The standard ChromeOS keyboard matrix table in scan code set 2. */
 static uint16_t KB1scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
 	{ 0x0000, 0x0000, 0x0014, 0xe01f, 0xe014, 0xe007, 0x0000, 0x0000 },
 	{ 0xe01f, 0x0076, 0x000d, 0x000e, 0x001c, 0x001a, 0x0016, 0x0015 },

@@ -1,4 +1,4 @@
-/* Copyright 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -28,7 +28,7 @@
 /*
  * x86 chipsets have a hardware timer on the power button input which causes
  * them to reset when the button is pressed for more than 4 seconds.  This is
- * problematic for Chrome OS, which needs more time than that to transition
+ * problematic for ChromeOS, which needs more time than that to transition
  * through the lock and logout screens.  So when the system is on, we need to
  * stretch the power button signal so that the chipset will hard-reboot after 8
  * seconds instead of 4.

@@ -1,4 +1,4 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -244,7 +244,7 @@ int charger_profile_override(struct charge_state_data *curr)
 	/*
 	 * When the charger says it's done charging, even if fuel gauge says
 	 * SOC < BATTERY_LEVEL_NEAR_FULL, we'll overwrite SOC with
-	 * BATTERY_LEVEL_NEAR_FULL. So we can ensure both Chrome OS UI
+	 * BATTERY_LEVEL_NEAR_FULL. So we can ensure both ChromeOS UI
 	 * and battery LED indicate full charge.
 	 */
 	if (rt946x_is_charge_done()) {

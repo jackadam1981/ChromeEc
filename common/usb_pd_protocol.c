@@ -1,4 +1,4 @@
-/* Copyright 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -114,7 +114,7 @@ static const int debug_level;
  * explicit contract is established.  200ms was chosen somewhat arbitrarily as
  * it should be long enough for sources to decide to send a message if they were
  * going to, but not so long that a "low power charger connected" notification
- * would be shown in the chrome OS UI.
+ * would be shown in the ChromeOS UI.
  */
 #define SNK_READY_HOLD_OFF_US (200 * MSEC)
 /*

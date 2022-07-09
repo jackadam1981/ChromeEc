@@ -1,4 +1,4 @@
-# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Copyright 2022 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -182,10 +182,10 @@ config PLATFORM_EC_USB_PD_ALT_MODE_UFP
 	  Enable support for USB Power Delivery alternate mode of Upward
 	  Facing Port (UFP).
 
-	  By default, Chromium OS only enables alternate modes (Display Port,
+	  By default, ChromiumOS only enables alternate modes (Display Port,
 	  USB4, Thuderbolt, etc) when the USB data role resolves to the
 	  Downstream Facing Port (DFP) role. Enable this option to support
-	  USB4 and ThunderBolt operation when the Chromium OS data role
+	  USB4 and ThunderBolt operation when the ChromiumOS data role
 	  resolves to the UFP role.
 
 config PLATFORM_EC_USB_PD_USB32_DRD
@@ -268,7 +268,7 @@ config PLATFORM_EC_HOSTCMD_PD_CONTROL
 	  and enabling power.
 
 	  This host command can be manually executed using the
-	  "ectool pdcontrol" command from the Chromium OS shell.
+	  "ectool pdcontrol" command from the ChromiumOS shell.
 
 config PLATFORM_EC_USB_PD_LOGGING
 	bool "Host command: EC_CMD_PD_GET_LOG_ENTRY"

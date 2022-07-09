@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Today, the Chromium OS Embedded Controller (EC) has a very rich debug console
+Today, the ChromiumOS Embedded Controller (EC) has a very rich debug console
 that is very helpful and has features including command history, editing,
 timestamps, channels and much more. However, all of these features currently use
 up valuable flash space that a number of our boards desperately need. We

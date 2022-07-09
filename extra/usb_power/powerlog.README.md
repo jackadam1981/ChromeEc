@@ -22,7 +22,7 @@ this session, a `.scenario` file.
     This will generate `<board>_r0_loc.board` and `<board>_r0_loc.scenario`
     locally, which can be used with `powerlog.py`.
 
--   Method 2 (recommended for Chrome OS developers, requires chroot)
+-   Method 2 (recommended for ChromeOS developers, requires chroot)
 
     If you are using `powerlog.py` within the chroot, copy `<board>_r0_loc.py`
     to `src/third_party/hdctools/servo/data`, then add this line to file:
