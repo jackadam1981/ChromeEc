@@ -12,7 +12,7 @@ repository.
 
 Now that Google has joined [Zephyr OS](https://www.zephyrproject.org/), the EC
 team is moving toward it instead of platform/ec code on embedded controllers for
-future Chrome OS devices. See the
+future ChromeOS devices. See the
 [originally proposed idea](https://goto.google.com/cros-ec-rtos) and a more
 specific [Zephyr process doc](https://goto.google.com/zephyr-structure) of what
 future development on Zephyr will look like.
@@ -23,7 +23,7 @@ fragmented, with various parties using their own custom solution. We see the
 strong open-source community at Zephyr as potentially helping to consolidate
 efforts in the embedded controller space. It will also benefit our partners
 (both chip vendors and OEMs) since they should only have to support one embedded
-OS (i.e., Zephyr) for both their Chrome OS and Windows based devices.
+OS (i.e., Zephyr) for both their ChromeOS and Windows based devices.
 
 Migrating to use Zephyr fully is going to take a few years. We do not want to
 diverge from the active development happening on platform/ec code. We

@@ -1,9 +1,9 @@
-/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+/* Copyright 2018 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* PWM LED control to conform to Chrome OS LED behaviour specification. */
+/* PWM LED control to conform to ChromeOS LED behaviour specification. */
 
 /*
  * This assumes that a single logical LED is shared between both power and

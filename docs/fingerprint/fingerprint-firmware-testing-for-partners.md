@@ -34,7 +34,7 @@ This document will assume you are using Servo V4.
 ### Hardware Setup
 
 *   Connect the "HOST" side of Servo V4 to your host machine (which should have
-    a Chromium OS chroot).
+    a ChromiumOS chroot).
 *   Connect the other side of Servo V4 to a USB port on the Chromebook with
     fingerprint sensor.
 *   Connect the "DUT POWER" side of Servo V4 to power supply.
@@ -46,7 +46,7 @@ This document will assume you are using Servo V4.
 
 ## Software Setup
 
-### Get the Chromium OS source code.
+### Get the ChromiumOS source code.
 
 *   First, make sure you [have the prerequisites].
 *   Then [get the source].

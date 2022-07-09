@@ -6,7 +6,7 @@
 
 /*
  * @file
- * @brief Nuvoton NPCX register structure definitions used by the Chrome OS EC.
+ * @brief Nuvoton NPCX register structure definitions used by the ChromeOS EC.
  */
 
 #ifndef _NUVOTON_NPCX_REG_DEF_CROS_H

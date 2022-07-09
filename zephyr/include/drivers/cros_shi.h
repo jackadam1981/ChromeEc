@@ -1,11 +1,11 @@
-/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+/* Copyright 2021 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /**
  * @file
- * @brief Chrome OS-specific API for Serial Host Interface (SHI)
+ * @brief ChromeOS-specific API for Serial Host Interface (SHI)
  */
 
 #ifndef ZEPHYR_INCLUDE_DRIVERS_CROS_SHI_H_

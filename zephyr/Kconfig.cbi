@@ -1,4 +1,4 @@
-# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Copyright 2022 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -35,13 +35,13 @@ config PLATFORM_EC_CBI_EEPROM
 	bool "CBI EEPROM support"
 	depends on EEPROM
 	help
-	  Enables full Chromium OS Board Info (CBI) support, with CBI data
+	  Enables full ChromiumOS Board Info (CBI) support, with CBI data
 	  stored in an on-board EEPROM.
 
 config PLATFORM_EC_CBI_GPIO
 	bool "CBI GPIO support"
 	help
-	  Enables Chromium OS Board Info (CBI) from strapping pins. EC reads
+	  Enables ChromiumOS Board Info (CBI) from strapping pins. EC reads
 	  the BOARD ID and SKU ID from GPIOs and then substantiate in-memory
 	  CBI for AP to query.
 

@@ -52,7 +52,7 @@ to determine the FPMCU that it contains:
 (dut) $ cros_config /fingerprint board
 ```
 
-Alternatively, if you have a Chromium OS build, you can use [ChromeOS Config] in
+Alternatively, if you have a ChromiumOS build, you can use [ChromeOS Config] in
 the chroot to determine the FPMCU:
 
 ```bash
@@ -209,14 +209,14 @@ flash (both RO and RW). The FPMCU can only be put into bootloader mode when
 [hardware write protection] is disabled, which means [`flash_fp_mcu`] can only
 be used when [hardware write protection] is disabled.
 
-[`flash_fp_mcu`] is available in the [Chromium OS test image].
+[`flash_fp_mcu`] is available in the [ChromiumOS test image].
 
 ### `stm32mon`
 
 [`stm32mon`] is a tool used to send commands to the STM32 bootloader. We use it
 for development (through [`flash_fp_mcu`]) to erase and flash the entire chip.
 
-[`stm32mon`] is available in the [Chromium OS test image].
+[`stm32mon`] is available in the [ChromiumOS test image].
 
 ## Keys
 
@@ -566,7 +566,7 @@ that are connected via UART use [`cros_ec_uart.c`].
 [`timberslide`]: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/timberslide
 [cros_ec_debugfs]: https://chromium.googlesource.com/chromiumos/third_party/kernel/+/9db44685934a2e4bc9180ea2de87a6c429672395/drivers/platform/chrome/cros_ec_debugfs.c
 [Fingerprint Factory Requirements]: ./fingerprint-factory-requirements.md
-[Chromium OS test image]: https://chromium.googlesource.com/chromiumos/platform/factory/+/HEAD/README.md#building-test-image
+[ChromiumOS test image]: https://chromium.googlesource.com/chromiumos/platform/factory/+/HEAD/README.md#building-test-image
 [ChromeOS Config]: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/chromeos-config/README.md
 [ChromeOS Config fingerprint]: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/chromeos-config/README.md#fingerprint
 [section on testing properties]: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/chromeos-config/README.md#adding-and-testing-new-properties

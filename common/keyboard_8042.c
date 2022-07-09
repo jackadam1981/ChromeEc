@@ -1,4 +1,4 @@
-/* Copyright 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -649,7 +649,7 @@ static int handle_keyboard_data(uint8_t data, uint8_t *output)
 			break;
 
 		case I8042_CMD_SETLEDS:
-			/* Chrome OS doesn't have keyboard LEDs, so ignore */
+			/* ChromeOS doesn't have keyboard LEDs, so ignore */
 			output[out_len++] = I8042_RET_ACK;
 			data_port_state = STATE_SETLEDS;
 			break;

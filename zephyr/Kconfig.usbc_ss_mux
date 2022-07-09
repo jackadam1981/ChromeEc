@@ -1,4 +1,4 @@
-# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Copyright 2022 The ChromiumOS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -24,7 +24,7 @@ config PLATFORM_EC_USB_MUX_RUNTIME_CONFIG
 	  declared as such in the board config.
 
 	  This is useful when the board has runtime information that changes
-	  the configuration, such as Chromium OS Board Info (CBI set in the
+	  the configuration, such as ChromiumOS Board Info (CBI set in the
 	  factory. Without this, multiple EC images would need to be installed
 	  depending on the board.
 
