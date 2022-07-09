@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9ba3d2_241934dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344729
+      },
+      "writtenOn": "2022-07-09T18:14:24Z",
+      "side": 1,
+      "message": "Li, \n\ndid you check TBT3 device as well,\nI was getting below with the patch \n\nlocalhost ~ # ectool usbpdmuxinfo\nioctl -1, errno 95 (Operation not supported), EC result 255 (\u003cunknown\u003e)\n\n\n\n",
+      "revId": "a470e196e138df77d171192d20adbc9fb7e38149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
