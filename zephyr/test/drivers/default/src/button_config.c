@@ -28,14 +28,15 @@
  */
 ZTEST(button_config, test_button_config)
 {
-	const struct button_config *button;
+	const struct button_config_v2 *button;
 
 	for (int i = 0; i < BUTTON_CFG_COUNT; i++) {
 		button = get_button_cfg(i);
 
-		printf("button[%d]= {%s, %d, %d, %d, %d}\n", i, button->name,
-		       button->type, button->gpio, button->debounce_us,
-		       button->flags);
+		printf("button[%d]= {%s, %d, %d, {%d, 0x%X}, %d, %d}\n", i,
+		       button->name, button->type, button->gpio,
+		       button->spec.pin, button->spec.dt_flags,
+		       button->debounce_us, button->flags);
 	}
 
 	button = get_button_cfg(BUTTON_CFG_POWER_BUTTON);

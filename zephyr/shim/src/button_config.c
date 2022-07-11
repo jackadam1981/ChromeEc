@@ -10,20 +10,21 @@
 #include "include/button.h"
 #include "button_config.h"
 
-#define BUTTON_CFG_DEF(node)                           \
-	{ .name = DT_PROP(node, button_name),          \
-	  .type = DT_PROP_OR(node, button_type, 0),    \
-	  .gpio = GPIO_SIGNAL(DT_PHANDLE(node, gpio)), \
-	  .debounce_us = DT_PROP(node, debounce_us),   \
+#define BUTTON_CFG_DEF(node)                                       \
+	{ .name = DT_PROP(node, button_name),                      \
+	  .type = DT_PROP_OR(node, button_type, 0),                \
+	  .gpio = GPIO_SIGNAL(DT_PHANDLE(node, spec)),             \
+	  .spec = GPIO_DT_SPEC_GET(DT_PHANDLE(node, spec), gpios), \
+	  .debounce_us = DT_PROP(node, debounce_us),               \
 	  .flags = DT_PROP(node, flags) },
 
 #if DT_NODE_EXISTS(DT_BUTTON_CFG_NODE)
-static const struct button_config button_configs[] = { DT_FOREACH_CHILD(
+static const struct button_config_v2 button_configs[] = { DT_FOREACH_CHILD(
 	DT_BUTTON_CFG_NODE, BUTTON_CFG_DEF) };
 
-const struct button_config *get_button_cfg(enum button_cfg_type type)
+const struct button_config_v2 *get_button_cfg(enum button_cfg_type type)
 {
-	const struct button_config *cfg = NULL;
+	const struct button_config_v2 *cfg = NULL;
 
 	if (type < BUTTON_CFG_COUNT) {
 		cfg = &button_configs[type];
