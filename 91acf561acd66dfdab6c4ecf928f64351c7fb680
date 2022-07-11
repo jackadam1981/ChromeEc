@@ -16,6 +16,52 @@
       "message": "Please review the hoglin shutdown delay increase. This is as suggested by Tom in https://partnerissuetracker.corp.google.com/issues/212222920#comment29. Hoglin currently requires ~435 ms extra delay. I have kept 450/460 ms and tried multiple times and it could power on successfully. I have kept 460 ms, hopefully that should be fine.\nThanks.",
       "revId": "91acf561acd66dfdab6c4ecf928f64351c7fb680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "028a3ea7_1ab924d4",
+        "filename": "zephyr/projects/herobrine/switchcap_hoglin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-07-11T22:20:15Z",
+      "side": 1,
+      "message": "Please separate this change to a standalone CL. One CL for the general support the `poff-delay-ms` property and one CL for the project-specific change. It is convenient for future cherry-picking to branches which target to specific projects.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "91acf561acd66dfdab6c4ecf928f64351c7fb680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3355cf_4670729c",
+        "filename": "zephyr/shim/src/switchcap_gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-07-11T22:20:15Z",
+      "side": 1,
+      "message": "Make it `const` too.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "91acf561acd66dfdab6c4ecf928f64351c7fb680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
