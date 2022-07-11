@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "8701f0549b20fcb2757f8cdec9698e7881182145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b68c435_d57e3906",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 11
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-07-11T21:58:06Z",
+      "side": 1,
+      "message": "For posterity, I don\u0027t think this will work for kernel 4.x on volteer, since it would probably need a change to `DEVICE\u003d\"/dev/spidev1.0\"` variable.",
+      "range": {
+        "startLine": 630,
+        "startChar": 24,
+        "endLine": 630,
+        "endChar": 30
+      },
+      "revId": "8701f0549b20fcb2757f8cdec9698e7881182145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
