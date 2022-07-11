@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2e806d_4d69665d",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-11T21:21:50Z",
+      "side": 1,
+      "message": "Based on further internal discussion, we shouldn\u0027t be disabling interrupt storm tracking even during BIST mode. Storm tracking is a feature to prevent the EC from watchdogging. Further comment on the bug.",
+      "revId": "3d71ad3dc69839850dc52f43d5d01de130cdbe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
