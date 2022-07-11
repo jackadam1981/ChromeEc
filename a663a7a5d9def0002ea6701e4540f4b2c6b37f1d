@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4cc048_c445fcbb",
+        "filename": "board/mithrax/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-07-11T10:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f911ad_d5cc50e8",
+      "revId": "a663a7a5d9def0002ea6701e4540f4b2c6b37f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d21d089_37a03089",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-08T20:03:40Z",
       "side": 1,
       "message": "maybe move this into the default board_kblight_init,\nthen provide custom implementation for mithrax.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 36
+      },
+      "revId": "a663a7a5d9def0002ea6701e4540f4b2c6b37f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc5dc0d3_865eb4b2",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-07-11T10:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d21d089_37a03089",
       "range": {
         "startLine": 105,
         "startChar": 1,
