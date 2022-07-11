@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0153aaff_670cb500",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-11T05:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b541a5_e039d207",
+      "range": {
+        "startLine": 415,
+        "startChar": 17,
+        "endLine": 415,
+        "endChar": 29
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f2cd531_ac49a6fb",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-08T11:08:30Z",
       "side": 1,
       "message": "How about moving this and the one below to separate local static functions, have a single #if statement and redefine these to no-op in the #else case? Less preprocessor conditions kicking around and would allow moving the implementation comment with the function itself.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dbd54a8_2672b627",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-11T05:51:52Z",
+      "side": 1,
+      "message": "Done. I used weak functions instead. Please give your comment freely.",
+      "parentUuid": "3f2cd531_ac49a6fb",
       "range": {
         "startLine": 433,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25e6928_78f20672",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-11T05:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b92e04a4_f19169a5",
+      "range": {
+        "startLine": 452,
+        "startChar": 2,
+        "endLine": 452,
+        "endChar": 4
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87b2ba54_248c6ec0",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-08T20:41:15Z",
       "side": 1,
       "message": "please run `clang-format -i ${FILE}` on this file.",
+      "range": {
+        "startLine": 459,
+        "startChar": 1,
+        "endLine": 459,
+        "endChar": 2
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c303e45_19f917b8",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-11T05:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87b2ba54_248c6ec0",
       "range": {
         "startLine": 459,
         "startChar": 1,
