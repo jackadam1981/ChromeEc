@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af59c728_2425378a",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T16:58:49Z",
+      "side": 1,
+      "message": "I do see some value refactoring this so it can be shared by all the zephyr tools front-ends.  This can be done as a separate CL.",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "84747064f60c0c973cc53c90285cbc085e21d906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
