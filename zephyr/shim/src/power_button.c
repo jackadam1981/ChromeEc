@@ -11,12 +11,6 @@
 #include "gpio.h"
 #include "gpio/gpio.h"
 
-static const struct button_config power_button = {
-	.name = "power button",
-	.gpio = GPIO_POWER_BUTTON_L,
-	.debounce_us = BUTTON_DEBOUNCE_US,
-	.flags = CONFIG_POWER_BUTTON_FLAGS,
-};
 
 static int debounced_power_pressed; /* Debounced power button state */
 static int simulate_power_pressed;
@@ -36,11 +30,16 @@ int power_button_signal_asserted(void)
  */
 static void power_button_init(void)
 {
-	/* TODO
-	 *	if (raw_power_button_pressed())
-	 *	debounced_power_pressed = 1;
-	 *
-	 *	Enable interrupts, now that we've initialized
+	const struct gpio_dt_spec *pwr_btn = GPIO_DT_FROM_NODE(
+		DT_PHANDLE(DT_NODELABEL(btn_power_button_cfg), gpio));
+
+	/* TODO */
+	if (gpio_pin_get_dt(pwr_btn))
+		debounced_power_pressed = 1;
+
+	/* Enable interrupts, now that we've initialized
 	 * gpio_enable_interrupt(power_button.gpio);
-	 * /
+	 */
 }
+
+DECLARE_HOOK(HOOK_INIT, power_button_init, HOOK_PRIO_DEFAULT);

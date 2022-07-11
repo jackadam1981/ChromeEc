@@ -29,7 +29,7 @@
  */
 ZTEST(button_config, test_button_config)
 {
-	const struct button_config *button;
+	const struct button_config_v2 *button;
 
 	for (int i = 0; i < BUTTON_CFG_COUNT; i++) {
 		button = get_button_cfg(i);

@@ -20,6 +20,15 @@ enum button_cfg_type {
 		BUTTON_CFG_ENUM(COUNT)
 };
 
-const struct button_config *get_button_cfg(enum button_cfg_type type);
+struct button_config_v2 {
+	const char *name;
+	enum keyboard_button_type type;
+	enum gpio_signal gpio;
+	const struct gpio_dt_spec *spec;
+	uint32_t debounce_us;
+	int flags;
+};
+
+const struct button_config_v2 *get_button_cfg(enum button_cfg_type type);
 
 #endif /* __BUTTON_CONFIG_H */
