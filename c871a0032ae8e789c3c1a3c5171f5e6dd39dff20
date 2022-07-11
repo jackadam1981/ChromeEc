@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6999cd8d_fe5a37bb",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-11T10:45:36Z",
+      "side": 1,
+      "message": "Done. If the status of `nuvoton_npcx_power_psl` is not okay, ec is not allowed to enter hibernate mode.",
+      "parentUuid": "41de5acf_580301cb",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b92e04a4_f19169a5",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 5
