@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19e8de6_48cb7913",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-07-11T16:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df781e65_ff33c6bc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "e3f759b0a100ea42f1ef6a7259259a67bc0fa1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38243433_abd62b75",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I experimented with labels using google3. If I have only one label and there is no goto statement that calls it, it generates an error: \"unused label\". If I have multiple labels, it was only going to the rest of the labels if there is a goto statement to the first label.",
       "parentUuid": "38243433_abd62b75",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 14
+      },
+      "revId": "e3f759b0a100ea42f1ef6a7259259a67bc0fa1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97bdc0ed_305a7a5c",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-07-11T16:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80dd886_47b47712",
       "range": {
         "startLine": 165,
         "startChar": 1,
