@@ -12,6 +12,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 
+#include "cros_board_info.h"
 #include "driver/tcpm/tcpci.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -23,12 +24,16 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
+static uint32_t board_ver;
+
 static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 			       struct ap_power_ev_data data)
 {
-	/* Enable rails for S3 */
-	const struct gpio_dt_spec *s3_rail =
-		GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl);
+#if DT_NODE_EXISTS(DT_ALIAS(gpio_hdmi_en_odl))
+		/* Enable rails for S3 */
+		const struct gpio_dt_spec *s3_rail =
+			GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl);
+#endif
 	/* Connect AP's DDC to sub-board (default is USB-C aux) */
 	const struct gpio_dt_spec *ddc_select =
 		GPIO_DT_FROM_NODELABEL(gpio_hdmi_sel);
@@ -39,12 +44,16 @@ static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 		gpio_pin_set_dt(ddc_select, 1);
 		break;
 	case AP_POWER_STARTUP:
-		LOG_DBG("Enabling HDMI VCC");
-		gpio_pin_set_dt(s3_rail, 1);
+		if (board_ver <= 1) {
+			LOG_DBG("Enabling HDMI VCC");
+			gpio_pin_set_dt(s3_rail, 1);
+		}
 		break;
 	case AP_POWER_SHUTDOWN:
-		LOG_DBG("Disabling HDMI VCC");
-		gpio_pin_set_dt(s3_rail, 0);
+		if (board_ver <= 1) {
+			LOG_DBG("Disabling HDMI VCC");
+			gpio_pin_set_dt(s3_rail, 0);
+		}
 		break;
 	case AP_POWER_HARD_OFF:
 		LOG_DBG("Disconnecting HDMI sub-board DDC");
@@ -173,14 +182,15 @@ static void nereid_subboard_config(void)
 #if CONFIG_SOC_IT8XXX2 && DT_NODE_EXISTS(I2C4_NODE)
 		/* disable i2c4 alternate function for better power number */
 		soc_it8xxx2_disable_i2c4_alt();
+
+		cbi_get_board_version(&board_ver);
 #endif
-		/* HDMI power enable outputs */
-		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
-				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
-					      GPIO_PULL_UP | GPIO_ACTIVE_LOW);
-		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
-				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+		if (board_ver <= 1) {
+			/* HDMI power enable outputs */
+			gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+					      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
 					      GPIO_ACTIVE_LOW);
+		}
 		/* Control HDMI power in concert with AP */
 		ap_power_ev_init_callback(
 			&power_cb, hdmi_power_handler,
