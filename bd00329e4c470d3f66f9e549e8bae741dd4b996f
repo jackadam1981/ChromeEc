@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1606f41_10ad830e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528512
+      },
+      "writtenOn": "2022-07-11T10:49:39Z",
+      "side": 1,
+      "message": "If this could address EVT/DVT KB reading CBI timing issue in order to enter recovery mode, we need to land this solution for EVT AU to have better DFer experience. ",
+      "revId": "bd00329e4c470d3f66f9e549e8bae741dd4b996f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
