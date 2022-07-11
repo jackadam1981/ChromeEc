@@ -63,6 +63,30 @@
       },
       "revId": "7e31e769dcb9f7e7224f28b3681aa914ff6307bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5d1311_686d048d",
+        "filename": "zephyr/projects/npcx_evb/npcx9/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-11T05:56:25Z",
+      "side": 1,
+      "message": "I believe it is a further discussion from [here](https://github.com/zephyrproject-rtos/zephyr/pull/45931#discussion_r880374185). Regarding putting a `GPIO_ACTIVE_HIGH` flag, it might be more confusing. I have a [discussion](https://github.com/zephyrproject-rtos/zephyr/pull/45931#discussion_r888459429) with Keith during code review. In npcx datasheet section 4.8.1., it describes \u0027A transition from 0 to 1 of GPIO85 data-out bit 5 in P8DOUT register indicates a firmware request to dessert PSL_OUT. (I have added a comment in cros_system_npcx.c) Actually, PSL_OUT is low in inactive mode and is the opposite of `GPIO_ACTIVE_HIGH`\n\nRegarding fixed \u0027enable-gpios\u0027 node, I have moved it to \u0027zephyr/boards/arm/npcx9/npcx9.dts\u0027, \u0027zephyr/boards/arm/npcx7/npcx7.dts\u0027, `zephyr/boards/arm/npcx_evb/npcx7_evb`, and `zephyr/boards/arm/npcx_evb/npcx9_evb` in its parent CL.\n\nRegarding `pinctrl-names` DT node, usually, `pinctrl-names` and `pinctrl-x` are pairs for pinctrl mechanism. Putting it and pinctrl-0 property together has a better understanding.",
+      "parentUuid": "49929de9_fea7d09b",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "7e31e769dcb9f7e7224f28b3681aa914ff6307bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
