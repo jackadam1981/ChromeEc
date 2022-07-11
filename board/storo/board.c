@@ -891,6 +891,14 @@ void motion_interrupt(enum gpio_signal signal)
 	}
 }
 
+int board_sensor_at_360(void)
+{
+	if (power_get_state() == POWER_G3)
+		return 0;
+
+	return !gpio_get_level(GPIO_TABLET_MODE_L);
+}
+
 /* Thermistors */
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_1] = { .name = "Memory",
