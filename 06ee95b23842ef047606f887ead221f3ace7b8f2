@@ -80,6 +80,24 @@
       "message": "I ran the zmake testall does\u0027t see the error.",
       "revId": "06ee95b23842ef047606f887ead221f3ace7b8f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23ef0df_c9e74aef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-11T16:06:29Z",
+      "side": 1,
+      "message": "Looks like a clang format error.  I believe we recently set up clang formatting, though I thought it was meant to run as a part of the repo upload hooks before patches get sent to review\n\n```\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/driver/tcpm/tcpci.c:1092:51: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        CPRINTS(\"C%d: Hard Reset re-initialize %s\", port, rv ?\nERROR:root:                                                         ^\nERROR:root:/mnt/host/source/src/platform/ec/driver/tcpm/tcpci.c:1092:56: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        CPRINTS(\"C%d: Hard Reset re-initialize %s\", port, rv ?\nERROR:root:                                                              ^\n```",
+      "parentUuid": "ea7d7ffe_5444a41c",
+      "revId": "06ee95b23842ef047606f887ead221f3ace7b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
