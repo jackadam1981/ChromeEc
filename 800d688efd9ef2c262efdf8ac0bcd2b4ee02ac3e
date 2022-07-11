@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e65a442a_82db28e6",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-07-11T08:18:53Z",
+      "side": 1,
+      "message": "after remove this settings, TD.PD.PHY.E6 Receiver Swing Tolerance  \u0026 TD.PD.PHY.E7 Receiver Bit Rate Tolerance  \u0026 TD.PD.PHY.E8 Receiver Bit Rate Deviation Tolerance would fail.",
+      "parentUuid": "25f6ddff_fe1d07cd",
+      "revId": "800d688efd9ef2c262efdf8ac0bcd2b4ee02ac3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd2512a6_fb563968",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7
