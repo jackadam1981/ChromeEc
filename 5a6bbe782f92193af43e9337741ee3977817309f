@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97263d45_92aeaa2f",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-11T13:08:10Z",
+      "side": 1,
+      "message": "This does not longer apply to new version of the CL.",
+      "parentUuid": "aeba1623_2fccee83",
+      "range": {
+        "startLine": 451,
+        "startChar": 11,
+        "endLine": 451,
+        "endChar": 18
+      },
+      "revId": "5a6bbe782f92193af43e9337741ee3977817309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7ca8799_11079064",
@@ -79,6 +103,30 @@
       "side": 1,
       "message": "\u003e \"orginal\" is a possible misspelling of \"original\".\n\nPlease fix.",
       "parentUuid": "861528fb_052ab376",
+      "range": {
+        "startLine": 465,
+        "startChar": 48,
+        "endLine": 465,
+        "endChar": 55
+      },
+      "revId": "5a6bbe782f92193af43e9337741ee3977817309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c143f5d6_9d43d8bf",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-11T13:08:10Z",
+      "side": 1,
+      "message": "This does not longer apply to new version of the CL.",
+      "parentUuid": "e7ca8799_11079064",
       "range": {
         "startLine": 465,
         "startChar": 48,
