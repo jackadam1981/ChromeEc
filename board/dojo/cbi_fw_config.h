@@ -26,6 +26,8 @@ enum fw_config_kblight_type {
 enum fw_config_kblayout_type {
 	KB_BL_TOGGLE_KEY_ABSENT = 0, /* Vol-up key on T12 */
 	KB_BL_TOGGLE_KEY_PRESENT = 1, /* Vol-up key on T13 */
+	UK_KB_BL_TOGGLE_KEY_ABSENT = 2, /* UK Vol-up key on T12 */
+	UK_KB_BL_TOGGLE_KEY_PRESENT = 3, /* UK Vol-up key on T13 */
 };
 #define FW_CONFIG_KB_LAYOUT_OFFSET 4
 #define FW_CONFIG_KB_LAYOUT_MASK GENMASK(5, 4)
