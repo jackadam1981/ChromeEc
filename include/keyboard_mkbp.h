@@ -18,4 +18,6 @@
  */
 int mkbp_keyboard_add(const uint8_t *buffp);
 
+__override_proto void mkbp_keyboard_cheat(uint8_t *state);
+
 #endif /* __CROS_EC_KEYBOARD_MKBP_H */

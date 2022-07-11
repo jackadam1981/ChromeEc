@@ -664,6 +664,7 @@ static int check_keys_changed(uint8_t *state)
 #endif
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
+		mkbp_keyboard_cheat(state);
 		mkbp_keyboard_add(state);
 #endif
 	}
