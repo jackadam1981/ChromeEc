@@ -23,9 +23,12 @@ child-binding:
       type: int
       required: false
       description: Keyboard button type
-    gpio:
+    spec:
       type: phandle
       required: true
+    gpio_int:
+      type: phandle
+      required: false
     debounce_us:
       type: int
       required: true
