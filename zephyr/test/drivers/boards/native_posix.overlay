@@ -153,7 +153,7 @@
 			/* GPIO_PULL_UP will cause this start asserted,
 			 * i.e. not pressed.
 			 */
-			gpios = <&gpio0 25 (GPIO_INPUT | GPIO_PULL_UP)>;
+			gpios = <&gpio0 25 (GPIO_INPUT_PULL_UP)>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
 		gpio_src_vph_pwr_pg: src_vph_pwr_pg {
@@ -899,10 +899,10 @@
 	button-cfg {
 		compatible = "cros-ec,button-cfg";
 
-		power_button_cfg: power_button_cfg {
+		btn_power_button_cfg: power_button_cfg {
 			button_name = "POWER_BUTTON";
 			button_type = <0>;
-			gpio = <&gpio_ec_pwr_btn_odl>;
+			spec = <&gpio_ec_pwr_btn_odl>;
 			debounce_us = <30000>;
 			flags = <0>;
 		};
