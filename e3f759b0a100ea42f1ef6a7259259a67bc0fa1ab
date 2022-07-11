@@ -141,6 +141,30 @@
       },
       "revId": "e3f759b0a100ea42f1ef6a7259259a67bc0fa1ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d20ecdd_af31ca1e",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-07-11T17:05:47Z",
+      "side": 1,
+      "message": "removed goto statement",
+      "parentUuid": "97bdc0ed_305a7a5c",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 14
+      },
+      "revId": "e3f759b0a100ea42f1ef6a7259259a67bc0fa1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
