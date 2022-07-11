@@ -249,6 +249,39 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+/*
+ * To reduce power consumption, disable gpio pins when
+ * the system is into suspend.
+ */
+static void disable_hdmi_output(void)
+{
+	enum nissa_sub_board_type sb = nissa_get_sb_type();
+
+	if (sb == NISSA_SB_HDMI_A) {
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+					  GPIO_DISCONNECTED);
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+					  GPIO_DISCONNECTED);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_hdmi_output, HOOK_PRIO_DEFAULT);
+
+/* Enable gpio pins when the system resumed */
+static void enable_hdmi_output(void)
+{
+	enum nissa_sub_board_type sb = nissa_get_sb_type();
+
+	if (sb == NISSA_SB_HDMI_A) {
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					      GPIO_PULL_UP | GPIO_ACTIVE_LOW);
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					      GPIO_ACTIVE_LOW);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_hdmi_output, HOOK_PRIO_DEFAULT);
+
 /* Trigger shutdown by enabling the Z-sleep circuit */
 __override void board_hibernate_late(void)
 {
