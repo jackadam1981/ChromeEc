@@ -22,6 +22,29 @@
       },
       "revId": "0a4a9a4d27c9c316874a822e401abef66790b7a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ced775_70d0ed73",
+        "filename": "zephyr/shim/src/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T15:06:16Z",
+      "side": 1,
+      "message": "If CONFIG_EC_HOST_CMD is enabled, are there two threads created?  One for the host_command_task() an done for the upstream handle_host_cmds_entry()?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "0a4a9a4d27c9c316874a822e401abef66790b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
