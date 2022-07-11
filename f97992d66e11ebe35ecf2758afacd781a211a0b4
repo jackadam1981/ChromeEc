@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f3add3_1f005e35",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-11T16:25:36Z",
+      "side": 1,
+      "message": "Please introduce an API to perform this read and write from the BB retimer driver.  \n\nI strongly suggest you consider mutexing access to the BB_RETIMER_REG_CONNECTION_STATE register within the BB retimer driver since multiple tasks could be read/modify/writing it at once, which will lead to bugs when one function\u0027s modification gets overwritten.",
+      "revId": "f97992d66e11ebe35ecf2758afacd781a211a0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
