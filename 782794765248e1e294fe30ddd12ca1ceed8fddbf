@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d6e79e_9a14665b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-11T18:35:37Z",
+      "side": 1,
+      "message": "Can you change it to prefer single quotes (`\u0027`) over double quotes (`\"`)? The default ChromiumOS `pytlintrc` [prefers single quotes](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:infra/chromite-HEAD/pylintrc;l\u003d36-39;drc\u003d90ca15871b03fa26a98c12e49c7cc8a30302e336), so unless there\u0027s a reason to deviate we shouldn\u0027t: https://crrev.com/c/1731477",
+      "range": {
+        "startLine": 67,
+        "startChar": 36,
+        "endLine": 67,
+        "endChar": 48
+      },
+      "revId": "782794765248e1e294fe30ddd12ca1ceed8fddbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
