@@ -689,6 +689,12 @@ void motion_sense_set_data_period(int sensor_num, uint32_t data_period)
 	next_timestamp_initialized &= ~BIT(sensor_num);
 }
 
+void motion_sense_set_data_period(int sensor_num, uint32_t data_period)
+{
+	expected_data_periods[sensor_num] = data_period;
+	next_timestamp_initialized &= ~BIT(sensor_num);
+}
+
 #ifdef CONFIG_CMD_ACCEL_FIFO
 static int motion_sense_read_fifo(int argc, char **argv)
 {
