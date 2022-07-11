@@ -81,12 +81,9 @@
 		gpio_accel_gyro_int_l: accel_gyro_int_l {
 			gpios = <&gpioa 0 GPIO_INPUT>;
 		};
-		/* unimplemented GPIOs */
-		entering-rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
-		pch-sys-prwok {
-			enum-name = "GPIO_PCH_SYS_PWROK";
+		gpio_fan_enable: fan-enable {
+			gpios = <&gpiof 1 GPIO_OUTPUT>;
+			no-auto-init;
 		};
 	};
 
@@ -187,6 +184,31 @@
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_IO_DB_NONE_ANX7483";
 				value = <1>;
+				default;
+			};
+		};
+
+		/*
+		 * FW_CONFIG field to enable fan or not.
+		 */
+		fan {
+			enum-name = "FW_FAN";
+			start = <10>;
+			size = <1>;
+
+			no-fan {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FAN_NOT_PRESENT";
+				value = <0>;
+			};
+			fan-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_FAN_PRESENT";
+				value = <1>;
+				/*
+				 * Set as default so that unprovisioned
+				 * configs will run the fan regardless.
+				 */
 				default;
 			};
 		};
