@@ -46,6 +46,30 @@
       },
       "revId": "79a0e5ac2eba7db91a633a8a471216ea2691bdc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3826d8_c7198697",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T15:13:22Z",
+      "side": 1,
+      "message": "There are some unit tests that exercise the host command path.  I see that test-drivers, includes the `host_command_task()`.  I\u0027d like the unit tests run with CONFIG_EC_HOST_CMD enabled as well.",
+      "parentUuid": "67057d82_60517df2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "79a0e5ac2eba7db91a633a8a471216ea2691bdc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
