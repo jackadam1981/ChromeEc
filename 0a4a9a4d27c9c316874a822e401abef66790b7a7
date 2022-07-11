@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d74ee8c5_1e2f48d4",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T14:51:35Z",
+      "side": 1,
+      "message": "It\u0027s worth a comment here to note that CONFIG_EC_HOST_CMD enables the Zephyr upstream host command support.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 26
+      },
+      "revId": "0a4a9a4d27c9c316874a822e401abef66790b7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
