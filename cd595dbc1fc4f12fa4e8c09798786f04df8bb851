@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "128d93fa_07b885be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T15:51:10Z",
+      "side": 1,
+      "message": "This needs to get split up into multiple CLs.  You\u0027ll have to use the Cq-Depends property to ensure the CLs merge together.  This would be organized as the legacy driver changes, the shim changes, and then many CLs to group board changes together.\n\nBefore you go through that effort, I\u0027d like Diana or Abe to review the overall concept.\n\nAlso, can you you check if there is a RAM savings on platforms that use `CONFIG_USB_MUX_RUNTIME_CONFIG`?\n",
+      "revId": "cd595dbc1fc4f12fa4e8c09798786f04df8bb851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31fae7a9_84b4511e",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T15:51:10Z",
+      "side": 1,
+      "message": "The USB mux configuration should always constant data, even if `CONFIG_USB_MUX_RUNTIME_CONFIG` is defined.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "cd595dbc1fc4f12fa4e8c09798786f04df8bb851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1fc28f_be45441d",
+        "filename": "zephyr/projects/brya/usbc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T15:51:10Z",
+      "side": 1,
+      "message": "Can this live under the `named-usbc-port` node?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "cd595dbc1fc4f12fa4e8c09798786f04df8bb851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
