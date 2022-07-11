@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0961b2cc_27242a7a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-11T23:52:54Z",
+      "side": 1,
+      "message": "16 bytes. I changed it because this CL was 8 bytes too large for adlrvpp_mchp1521 RW flash locally. But, even with the smaller condition, it ended up being 16 bytes too large for adlrvpp_mchp1521 in the CQ dry run. I\u0027ve changed it back and will look for a way to free up space on adlrvpp_mchp1521",
+      "parentUuid": "2cd5aa2a_1bc0fa66",
+      "revId": "c14d633ccf97effe159fdcfc21915e6818fc3f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8c449bcd_5608ad9d",
         "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_rev3.c",
         "patchSetId": 15
