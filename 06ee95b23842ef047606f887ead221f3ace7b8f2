@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "67e24a37_83ba8fe6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-11T16:11:45Z",
+      "side": 1,
+      "message": "Abe, if your curious to the history for this kind of strange TCPC reset behavior, there were some TCPCs a few years ago that needed this treatment: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1014355/\n\nI believe they were the same ones which also needed to go through a full TCPC re-init after LPM later, which also isn\u0027t something from the TCPCI spec.",
+      "parentUuid": "2829877d_395b3ea0",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "06ee95b23842ef047606f887ead221f3ace7b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "03bb0d4d_c6a841ae",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
