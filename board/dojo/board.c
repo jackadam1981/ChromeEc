@@ -22,6 +22,7 @@
 #include "driver/usb_mux/anx3443.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_mkbp.h"
 #include "keyboard_scan.h"
 #include "motion_sense.h"
 #include "pwm.h"
@@ -66,7 +67,8 @@ const struct vol_up_key vol_up_key_matrix_T12 = {
 static void board_update_vol_up_key(void)
 {
 	if (board_version >= 2) {
-		if (get_cbi_fw_config_kblayout() == KB_BL_TOGGLE_KEY_PRESENT) {
+		if (get_cbi_fw_config_kblayout() == KB_BL_TOGGLE_KEY_PRESENT ||
+		    get_cbi_fw_config_kblayout() == UK_KB_BL_TOGGLE_KEY_PRESENT) {
 			/*
 			 * Set vol up key to T13 for KB_BL_TOGGLE_KEY_PRESENT
 			 * and board_version >= 2
@@ -85,6 +87,18 @@ static void board_update_vol_up_key(void)
 		/* Set vol up key to T13 for board_version < 2 */
 		set_vol_up_key(vol_up_key_matrix_T13.row,
 			       vol_up_key_matrix_T13.col);
+	}
+}
+
+/* UK KB special layout */
+__override void mkbp_keyboard_cheat(uint8_t *state)
+{
+	if (get_cbi_fw_config_kblayout() == UK_KB_BL_TOGGLE_KEY_ABSENT ||
+	    get_cbi_fw_config_kblayout() == UK_KB_BL_TOGGLE_KEY_PRESENT) {
+		if (state[0] & BIT(4)) {
+			state[0] &= ~BIT(4);
+			state[7] |= BIT(2);
+		}
 	}
 }
 
