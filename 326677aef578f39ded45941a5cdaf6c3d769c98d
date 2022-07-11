@@ -124,6 +124,24 @@
       "parentUuid": "04d0cc4a_269b25d1",
       "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4cea6f7_a447f537",
+        "filename": "zephyr/dts/bindings/usbc/mux/analogix,usbc-mux-anx7447.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T19:34:34Z",
+      "side": 1,
+      "message": "For a board specific function, it would be more appropriate if `hpd-update` is a string type. The enum type forces the user to select from a discrete list.\n\nI think for now we should convert `hpd-update` to a bool, and add the flexibility for a board override only if it is needed later on.  But this outside the scope of this change.",
+      "parentUuid": "99dd21f0_a2247fd3",
+      "revId": "326677aef578f39ded45941a5cdaf6c3d769c98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
