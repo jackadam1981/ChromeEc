@@ -15,6 +15,7 @@
 #include "hooks.h"
 #include "driver/als_tcs3400.h"
 #include "driver/charger/isl9241.h"
+#include "driver/retimer/bb_retimer.h"
 #include "fw_config.h"
 #include "hooks.h"
 #include "keyboard_customization.h"
@@ -32,15 +33,53 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
+/*
+ * USBA card connect to chromebook the USB_3_CONNECTION
+ * bit would be enable.
+ * It will increase BBR power consumption, so clear
+ * USB3_Connection bit in S0ix and enable when return S0.
+ */
+void set_bb_retimer_usb3_state(bool enable)
+{
+	int rv;
+	uint32_t reg_val;
+	mux_state_t mux_state = 0;
+
+	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		const struct usb_mux *mux = &usb_muxes[i];
+
+		mux_state = usb_mux_get(i);
+
+		if ((mux_state & USB_PD_MUX_USB_ENABLED)) {
+			rv = bb_retimer_read(
+				mux, BB_RETIMER_REG_CONNECTION_STATE, &reg_val);
+			if (rv) {
+				CPRINTS("Fail to read bb_retimer USB3");
+				return;
+			}
+			/* Bit 5: USB_3_CONNECTION */
+			WRITE_BIT(reg_val, 5, enable);
+			rv = bb_retimer_write(
+				mux, BB_RETIMER_REG_CONNECTION_STATE, reg_val);
+			if (rv) {
+				CPRINTS("Fail to set bb_retimer USB3");
+				return;
+			}
+		}
+	}
+}
+
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
+	set_bb_retimer_usb3_state(true);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
+	set_bb_retimer_usb3_state(false);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
