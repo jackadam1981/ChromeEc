@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5a2e120_4a4cf466",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-07-11T11:55:21Z",
+      "side": 1,
+      "message": "Add the fix to other locations in motion_sense_fifo.c.",
+      "parentUuid": "631cdcc6_b3171526",
+      "revId": "5ba4c9fc2bf74dd8bbd6a39a45f36c45d7b239d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d35e3f5e_2243160c",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 3
