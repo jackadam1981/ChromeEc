@@ -188,6 +188,24 @@
       "parentUuid": "803c6e07_aed2a3c8",
       "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0fd23ec_62b95abd",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-07-11T21:52:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec9f190_f8a01911",
+      "revId": "4ccc2e6d8f06ebda354a9bc2c220636888ba104e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

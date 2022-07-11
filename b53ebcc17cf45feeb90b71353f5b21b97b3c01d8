@@ -16,6 +16,29 @@
       "message": "With further testing I found some corner cases not covered by this implementation.",
       "revId": "b53ebcc17cf45feeb90b71353f5b21b97b3c01d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "864560ff_cbc13661",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-07-11T21:52:00Z",
+      "side": 1,
+      "message": "We can still receive this notification while AP power sequence is in S3 or S4, thus we would be losing it and breaking this functionality.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "b53ebcc17cf45feeb90b71353f5b21b97b3c01d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
