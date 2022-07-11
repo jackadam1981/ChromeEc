@@ -111,6 +111,10 @@ static uint8_t simulated_key[KEYBOARD_COLS_MAX];
 static uint8_t keyboard_id[KEYBOARD_IDS];
 #endif
 
+#ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
+static uint8_t mkbp_keyboard_add_state[KEYBOARD_COLS_MAX];
+#endif
+
 /* Times of last scans */
 static uint32_t scan_time[SCAN_TIME_COUNT];
 /* Current scan_time[] index */
@@ -664,7 +668,11 @@ static int check_keys_changed(uint8_t *state)
 #endif
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
-		mkbp_keyboard_add(state);
+		for (c = 0; c < KEYBOARD_COLS_MAX; c++)
+			mkbp_keyboard_add_state[c] = state[c];
+
+		mkbp_keyboard_cheat(mkbp_keyboard_add_state);
+		mkbp_keyboard_add(mkbp_keyboard_add_state);
 #endif
 	}
 

@@ -75,6 +75,10 @@ test_mockable int mkbp_keyboard_add(const uint8_t *buffp)
 	return mkbp_fifo_add((uint8_t)EC_MKBP_EVENT_KEY_MATRIX, buffp);
 }
 
+__overridable void mkbp_keyboard_cheat(uint8_t *state)
+{
+}
+
 static int keyboard_get_next_event(uint8_t *out)
 {
 	return mkbp_fifo_get_next_event(out, EC_MKBP_EVENT_KEY_MATRIX);
