@@ -42,6 +42,24 @@ static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 		LOG_DBG("Enabling HDMI VCC");
 		gpio_pin_set_dt(s3_rail, 1);
 		break;
+	case AP_POWER_RESUME:
+		LOG_DBG("Enabling HDMI gpios");
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					      GPIO_PULL_UP | GPIO_ACTIVE_LOW);
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					      GPIO_ACTIVE_LOW);
+		LOG_DBG("Enabling HDMI VCC");
+		gpio_pin_set_dt(s3_rail, 1);
+		break;
+	case AP_POWER_SUSPEND:
+		LOG_DBG("Disconnecting HDMI gpios");
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+					  GPIO_DISCONNECTED);
+		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+					  GPIO_DISCONNECTED);
+		break;
 	case AP_POWER_SHUTDOWN:
 		LOG_DBG("Disabling HDMI VCC");
 		gpio_pin_set_dt(s3_rail, 0);
@@ -185,7 +203,8 @@ static void nereid_subboard_config(void)
 		ap_power_ev_init_callback(
 			&power_cb, hdmi_power_handler,
 			AP_POWER_PRE_INIT | AP_POWER_HARD_OFF |
-				AP_POWER_STARTUP | AP_POWER_SHUTDOWN);
+				AP_POWER_STARTUP | AP_POWER_SHUTDOWN |
+				AP_POWER_RESUME | AP_POWER_SUSPEND);
 		ap_power_ev_add_callback(&power_cb);
 
 		/*
@@ -248,6 +267,12 @@ static void board_init(void)
 		gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c1));
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/*
+ * To reduce power consumption, disable gpio pins when
+ * the system is into suspend.
+ */
+
 
 /* Trigger shutdown by enabling the Z-sleep circuit */
 __override void board_hibernate_late(void)
