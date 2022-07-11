@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68010bd_d6e5e239",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T23:03:24Z",
+      "side": 1,
+      "message": "This is a great improvement, thanks.  It would be more illustrative if you showed a combination with multiple LEDs set, even if this isn\u0027t used on a board.\n\n```\n\t/* Amber - turn on yellow LED */\n\tcolor_amber: color-amber {\n\t\tled-pins \u003d \u003c\u0026gpio_ec_chg_led_y_c1 1\u003e,\n\t\t\t   \u003c\u0026gpio_ec_chg_led_b_c1 0\u003e;\n\t};\n\t/* Blue - turn on blue LED */\n\tcolor_blue: color-blue {\n\t\tled-pins \u003d \u003c\u0026gpio_ec_chg_led_y_c1 0\u003e,\n\t\t\t   \u003c\u0026gpio_ec_chg_led_b_c1 1\u003e;\n\t};\n\t/* White - turn on both LEDs */\n\tcolor_amber: color-white {\n\t\tled-pins \u003d \u003c\u0026gpio_ec_chg_led_y_c1 1\u003e,\n\t\t\t   \u003c\u0026gpio_ec_chg_led_b_c1 1\u003e;\n\t};\n\t/* Off - turn off both LEDs */\n\tcolor_amber: color-white {\n\t\tled-pins \u003d \u003c\u0026gpio_ec_chg_led_y_c1 0\u003e,\n\t\t\t   \u003c\u0026gpio_ec_chg_led_b_c1 0\u003e;\n\t};\n\n```",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 0
+      },
+      "revId": "0f59f6ca0ae6792aef07d2b776cff7b3a49f9e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10ba49d_ba656c6a",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T23:03:24Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 70,
+        "startChar": 86,
+        "endLine": 70,
+        "endChar": 87
+      },
+      "revId": "0f59f6ca0ae6792aef07d2b776cff7b3a49f9e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763a9c00_ce45f45a",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T23:03:24Z",
+      "side": 1,
+      "message": "delete to remove passive voice",
+      "range": {
+        "startLine": 114,
+        "startChar": 15,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "0f59f6ca0ae6792aef07d2b776cff7b3a49f9e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa45742a_29591080",
+        "filename": "docs/zephyr/zephyr_leds.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T23:03:24Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 116,
+        "startChar": 34,
+        "endLine": 116,
+        "endChar": 38
+      },
+      "revId": "0f59f6ca0ae6792aef07d2b776cff7b3a49f9e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
