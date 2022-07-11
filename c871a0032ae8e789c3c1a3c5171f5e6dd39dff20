@@ -208,6 +208,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a65279c_0de2c58f",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-11T11:10:16Z",
+      "side": 1,
+      "message": "Oh cool, maybe the option is redundant then? I\u0027m thinking we can submit this as is, and then in the future see if we can reduce the number of Kconfig options by either dropping them and just keep the DT conditional, or making the option default dependent on the DT node status... we already have a bit of those and it seems like that schema is being adopted a lot upstream as well (saw ton of conversion patches recently (the `default $(dt_compat_enabled, ...)` thing).",
+      "parentUuid": "840118eb_90fb73f4",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b92e04a4_f19169a5",
