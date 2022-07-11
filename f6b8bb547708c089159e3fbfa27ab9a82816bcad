@@ -16,6 +16,24 @@
       "message": "Google, Nuvoton, Does this change need to make it to Zephyr drivers also? Is it already incorporated there?",
       "revId": "f6b8bb547708c089159e3fbfa27ab9a82816bcad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57052856_f0ddb65c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-11T14:01:44Z",
+      "side": 1,
+      "message": "Digging deeper, this change may not be working as intended on NPCX9.  I added a comment to b:230366077 to continue the conversation.",
+      "parentUuid": "af4de404_ef4dc37a",
+      "revId": "f6b8bb547708c089159e3fbfa27ab9a82816bcad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
