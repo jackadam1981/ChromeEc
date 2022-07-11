@@ -7,6 +7,7 @@
 #define __BUTTON_CONFIG_H
 
 #include <zephyr/devicetree.h>
+#include <zephyr/drivers/gpio.h>
 
 #define BUTTON_CFG_COMPAT cros_ec_button_cfg
 #define DT_BUTTON_CFG_NODE DT_COMPAT_GET_ANY_STATUS_OKAY(BUTTON_CFG_COMPAT)
@@ -22,6 +23,15 @@ enum button_cfg_type {
 		BUTTON_CFG_ENUM(COUNT),
 };
 
-const struct button_config *get_button_cfg(enum button_cfg_type type);
+struct button_config_v2 {
+	const char *name;
+	enum keyboard_button_type type;
+	enum gpio_signal gpio;
+	const struct gpio_dt_spec spec;
+	uint32_t debounce_us;
+	int flags;
+};
+
+const struct button_config_v2 *get_button_cfg(enum button_cfg_type type);
 
 #endif /* __BUTTON_CONFIG_H */
