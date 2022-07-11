@@ -24,7 +24,7 @@ endif()
 string(SUBSTRING "${ZMAKE_PROJECT_NAME}" 12 -1 subproject_path)
 string(REPLACE "-" "/" subproject_path "${subproject_path}")
 
-if(subproject_path STREQUAL "")
+if(subproject_path STREQUAL "" OR subproject_path STREQUAL "/ec_host_cmd")
   target_sources(app PRIVATE
     src/battery.c
     src/bb_retimer.c

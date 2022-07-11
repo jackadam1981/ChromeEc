@@ -5,6 +5,9 @@
 """Construct the drivers test binaries"""
 
 
+from httplib2 import KeyCerts
+
+
 drivers = register_host_test(
     test_name="drivers",
     dts_overlays=[
@@ -27,3 +30,10 @@ led_driver = drivers.variant(
     ],
     kconfig_files=[here / "led_driver" / "prj.conf"],
 )
+
+# Run all the tests (that aren't split to subdirs) with CONFIG_EC_HOST_CMD enabled
+ec_host_cmd = drivers.variant(
+    project_name="test-drivers-ec_host_cmd",
+    kconfig_files=[here / "ec_host_cmd.conf"],
+)
+
