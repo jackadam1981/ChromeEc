@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36249a79_3607f50c",
+        "filename": "builtin/stdlib.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-11T19:50:12Z",
+      "side": 1,
+      "message": "Yeah, I saw http://b/177065615 and https://github.com/zephyrproject-rtos/zephyr/pull/28882.\n\nLong term it would be nice to split the custom format options into different functions. Then we could use standard library for all the normal format options and the other function for the special format options (timestamp, etc.): http://b/238433667.\n\nI\u0027ll add a comment mentioning that bug.",
+      "parentUuid": "ba81ffae_83cce808",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64c7b509_cc23f0ae",
         "filename": "test/printf.c",
         "patchSetId": 18
