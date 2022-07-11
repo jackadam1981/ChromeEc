@@ -18,6 +18,7 @@
 #include "driver/als_tcs3400.h"
 #include "fw_config.h"
 #include "hooks.h"
+#include "keyboard_8042_sharedlib.h"
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
@@ -36,6 +37,9 @@
 __override void board_cbi_init(void)
 {
 	config_usb_db_type();
+
+	if (ec_cfg_keyboard_layout() == KB_LAYOUT_1)
+		set_scancode_set2(4, 0, get_scancode_set2(2, 7));
 }
 
 /* Called on AP S3 -> S0 transition */
