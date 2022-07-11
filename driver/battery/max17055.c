@@ -93,7 +93,7 @@ int battery_device_name(char *device_name, int buf_size)
 
 	rv = max17055_read(REG_DEVICE_NAME, &dev_id);
 	if (!rv)
-		snprintf(device_name, buf_size, "0x%04x", dev_id);
+		rv = snprintf(device_name, buf_size, "0x%04x", dev_id);
 
 	return rv;
 }
