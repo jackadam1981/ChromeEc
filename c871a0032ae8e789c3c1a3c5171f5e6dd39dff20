@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "840118eb_90fb73f4",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-11T10:51:32Z",
+      "side": 1,
+      "message": "The previous comment is not fully correct. It relies on [CONFIG_PLATFORM_EC_HIBERNATE_PSL](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/drivers/cros_system/cros_system_npcx.c#544) is enabled.",
+      "parentUuid": "6999cd8d_fe5a37bb",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b92e04a4_f19169a5",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 5
