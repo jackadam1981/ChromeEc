@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41de5acf_580301cb",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-11T10:18:30Z",
+      "side": 1,
+      "message": "I think it\u0027d be more obvious to have an explicit function for the else case, I find the weak one without implementation confusing, explicitly defining should make the intent clear. (I also don\u0027t quite understand how the int weak function with no body works but somehow it does, wow).",
+      "parentUuid": "0dbd54a8_2672b627",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b92e04a4_f19169a5",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 5
