@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfa1d41b_9f4b9152",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-11T19:11:12Z",
+      "side": 1,
+      "message": "expansion",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "f97992d66e11ebe35ecf2758afacd781a211a0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff278a3_9dd77089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-11T19:11:12Z",
+      "side": 1,
+      "message": "Agree with Diana\u0027s suggestion to implement this in the driver. Please make a CL for the driver change and a separate CL for banshee to use it. ",
+      "revId": "f97992d66e11ebe35ecf2758afacd781a211a0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95f3add3_1f005e35",
         "filename": "board/banshee/board.c",
         "patchSetId": 2
@@ -14,6 +54,29 @@
       "writtenOn": "2022-07-11T16:25:36Z",
       "side": 1,
       "message": "Please introduce an API to perform this read and write from the BB retimer driver.  \n\nI strongly suggest you consider mutexing access to the BB_RETIMER_REG_CONNECTION_STATE register within the BB retimer driver since multiple tasks could be read/modify/writing it at once, which will lead to bugs when one function\u0027s modification gets overwritten.",
+      "revId": "f97992d66e11ebe35ecf2758afacd781a211a0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6df4abd_8d42b68b",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-11T19:11:12Z",
+      "side": 1,
+      "message": "Please check rv before.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 33
+      },
       "revId": "f97992d66e11ebe35ecf2758afacd781a211a0b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
