@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd5aa2a_1bc0fa66",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-11T23:28:34Z",
+      "side": 1,
+      "message": "How much space does this save? IMO, keeping these checks semantically high-level is worth 10s of instructions. We have space pressure on some boards, but generally speaking, we shouldn\u0027t write code as if code size were more important than clarity.",
+      "revId": "c14d633ccf97effe159fdcfc21915e6818fc3f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c449bcd_5608ad9d",
+        "filename": "zephyr/test/drivers/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-11T23:28:34Z",
+      "side": 1,
+      "message": "I\u0027m just going to assume that this test code is essentially identical to that which previously appeared in the other test file.",
+      "revId": "c14d633ccf97effe159fdcfc21915e6818fc3f8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
