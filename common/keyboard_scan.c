@@ -727,12 +727,13 @@ static uint32_t check_key_list(const uint8_t *state)
 			curr_state[k->col] &= ~BIT(k->row);
 		}
 	}
-
+#ifndef DISABLE_IGNORE_BOOT_KEY
 	/* If any other key was pressed, ignore all boot keys. */
 	for (c = 0; c < keyboard_cols; c++) {
 		if (curr_state[c])
 			return BOOT_KEY_NONE;
 	}
+#endif
 
 	CPRINTS("KB boot key mask %x", boot_key_mask);
 	return boot_key_mask;
