@@ -46,6 +46,30 @@
       },
       "revId": "782794765248e1e294fe30ddd12ca1ceed8fddbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ba9077_96321fdf",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-11T18:41:03Z",
+      "side": 1,
+      "message": "See also https://b.corp.google.com/issues/233893248. It seems that cros format is going to go with black.",
+      "parentUuid": "25cf8fba_4e11c13e",
+      "range": {
+        "startLine": 67,
+        "startChar": 36,
+        "endLine": 67,
+        "endChar": 48
+      },
+      "revId": "782794765248e1e294fe30ddd12ca1ceed8fddbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
