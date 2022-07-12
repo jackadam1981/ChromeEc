@@ -16,6 +16,24 @@
       "message": "This should already be handled in hdmi_power_handler()",
       "revId": "a3dd662f771bebfff2a5fdd3fe363b701be7b7a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02127310_1e484967",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-12T01:18:07Z",
+      "side": 1,
+      "message": "You may have to add the extra SUSPEND/RESUME events to be handled to that callback handler.",
+      "parentUuid": "23c68342_491d62ed",
+      "revId": "a3dd662f771bebfff2a5fdd3fe363b701be7b7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
