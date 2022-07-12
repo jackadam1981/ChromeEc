@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7aa6522e_d2a769f3",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-12T18:57:59Z",
+      "side": 1,
+      "message": "It is probably worth prefixing all lines with bash commands with `(chroot) $ ` just to be explicit that they are all from the chroot and all separate commands.",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "86fe99f7e16fbf7ea4029d40fbbcd2f5d56d2f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d3b5924_51cb1fca",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-12T18:57:59Z",
+      "side": 1,
+      "message": "I believe this will update all repositories within chromeos to the revision used as of 3744666, which may be a *lot* more changes than people are expecting. I got a message stating: `[chromiumos/chromite] 3744666/13 depends on 441 unmerged changes`\n\nOne of the two options below may be easier:\n1. Cherry pick only this change on top of chromite @ cros/main: `git fetch https://chromium.googlesource.com/chromiumos/chromite refs/changes/66/3744666/13 \u0026\u0026 git cherry-pick FETCH_HEAD`\n2. Just check out the specified version as a branch (in this case you wouldn\u0027t need the `git checkout main` or `git pull`) `git fetch https://chromium.googlesource.com/chromiumos/chromite refs/changes/66/3744666/13 \u0026\u0026 git checkout -b change-3744666 FETCH_HEAD`",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 45
+      },
+      "revId": "86fe99f7e16fbf7ea4029d40fbbcd2f5d56d2f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82b69c4c_7c68ed0f",
         "filename": "docs/ide-support.md",
         "patchSetId": 1
