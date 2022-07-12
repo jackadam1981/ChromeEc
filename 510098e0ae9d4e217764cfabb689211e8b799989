@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d1001a_fe95aaa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-12T19:30:05Z",
+      "side": 1,
+      "message": "This currently fails.\n\n```\nError:\tThe EC is in the process of migrating to Zephyr.\n\tZephyr uses Kconfig for configuration rather than ad-hoc #defines.\n\tAny new EC CONFIG options must ALSO be added to Zephyr so that new\n\tfunctionality is available in Zephyr also. The following new ad-hoc\n\tCONFIG options were detected:\n\nCONFIG_PERIPHERAL_CHARGER\n\nPlease add these via Kconfig instead. Find a suitable Kconfig\nfile in zephyr/ and add a \u0027config\u0027 or \u0027menuconfig\u0027 option.\nAlso see details in http://issuetracker.google.com/181253613\n\nTo temporarily disable this, use: ALLOW_CONFIG\u003d1 make ...\n```",
+      "revId": "510098e0ae9d4e217764cfabb689211e8b799989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
