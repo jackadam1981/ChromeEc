@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7b08f5_42ec4a40",
+        "filename": "zephyr/projects/herobrine/switchcap_hoglin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-07-12T12:49:54Z",
+      "side": 1,
+      "message": "Thanks, created https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3757284",
+      "parentUuid": "028a3ea7_1ab924d4",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "91acf561acd66dfdab6c4ecf928f64351c7fb680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce3355cf_4670729c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-11T22:20:15Z",
       "side": 1,
       "message": "Make it `const` too.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "91acf561acd66dfdab6c4ecf928f64351c7fb680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eb4d201_bf9c0b51",
+        "filename": "zephyr/shim/src/switchcap_gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-07-12T12:49:54Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ce3355cf_4670729c",
       "range": {
         "startLine": 29,
         "startChar": 0,
