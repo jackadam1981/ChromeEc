@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea477941_f990ce6c",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:43:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ccff146_a7dbdec8",
+      "range": {
+        "startLine": 33,
+        "startChar": 13,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "105c71e8_3ef1bec7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-07T16:12:56Z",
       "side": 1,
       "message": "probably should init to 0 in case CONFIG_USB_POWER_DELIVERY is not enabled",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf363cd_a04df30a",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:43:02Z",
+      "side": 1,
+      "message": "initialized along with function.",
+      "parentUuid": "105c71e8_3ef1bec7",
       "range": {
         "startLine": 80,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2184ef20_6922a728",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:43:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "925ea860_2465fff5",
+      "range": {
+        "startLine": 87,
+        "startChar": 24,
+        "endLine": 87,
+        "endChar": 25
+      },
+      "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b02fc59_daf95651",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-07-07T20:26:08Z",
       "side": 1,
       "message": "Why is this tied to PD rather than something like CONFIG_BATTERY?",
+      "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f4384a_e605f11a",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:43:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b02fc59_daf95651",
       "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -134,6 +224,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeab4619_47d93f49",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:43:02Z",
+      "side": 1,
+      "message": "Infact, As on any PD port source removal itself means power source will move to battery, we need only single check condition for power source.",
+      "parentUuid": "6ad26ed0_cf9612f0",
+      "range": {
+        "startLine": 110,
+        "startChar": 6,
+        "endLine": 110,
+        "endChar": 36
+      },
+      "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "840066c1_6e4473bc",
@@ -147,6 +261,30 @@
       "writtenOn": "2022-07-07T16:12:56Z",
       "side": 1,
       "message": "could be:\n`pd_state_sequence \u003d (pd_state_sequence + 1) % PD_STATE_SEQUENCE_MAX;`\nif you redefined PD_STATE_SEQUENCE_MAX to 16",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "fed03d7d7f4fa314e1f89f5c75fe463c4bb5ead8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5ff8f0_a8bad1fc",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:43:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "840066c1_6e4473bc",
       "range": {
         "startLine": 119,
         "startChar": 3,
