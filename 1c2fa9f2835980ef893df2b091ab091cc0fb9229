@@ -541,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1cacc8_5f6956c2",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-12T00:30:08Z",
+      "side": 1,
+      "message": "I believe the current patch here reflects what we agreed upon at that meeting and has two approvals at this point. I don\u0027t want to keep reworking this code and delaying Twister progress, so I\u0027m going to move forward with this. I\u0027m sorry to anybody who would have preferred to see it done a different way.",
+      "parentUuid": "5c506ed1_14c99a6c",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b648d216_db42bc97",

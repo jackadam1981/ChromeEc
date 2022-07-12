@@ -22,6 +22,30 @@
       },
       "revId": "84747064f60c0c973cc53c90285cbc085e21d906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a7d196_7b97ce2c",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-12T00:30:08Z",
+      "side": 1,
+      "message": "Yes, we could move this to zmake.util or something so it can be shared. I don\u0027t think I can import it from its current location in zmake\u0027s __init__.py",
+      "parentUuid": "af59c728_2425378a",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "84747064f60c0c973cc53c90285cbc085e21d906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
