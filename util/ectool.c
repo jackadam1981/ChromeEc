@@ -1373,15 +1373,17 @@ static int cmd_rgbkbd(int argc, char *argv[])
 	if (argc == 3 && !strcasecmp(argv[1], "clear")) {
 		/* Usage 2 */
 		struct ec_params_rgbkbd p;
+		struct ec_response_rgbkbd r;
 
 		p.subcmd = EC_RGBKBD_SUBCMD_CLEAR;
 		if (cmd_rgbkbd_parse_rgb_text(argv[2], &p.color))
 			return -1;
 
-		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), NULL, 0);
+		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
 	} else if (argc == 3 && !strcasecmp(argv[1], "demo")) {
 		/* Usage 3 */
 		struct ec_params_rgbkbd p;
+		struct ec_response_rgbkbd r;
 
 		val = strtol(argv[2], &e, 0);
 		if ((e && *e) || val >= EC_RGBKBD_DEMO_COUNT) {
@@ -1390,7 +1392,7 @@ static int cmd_rgbkbd(int argc, char *argv[])
 		}
 		p.subcmd = EC_RGBKBD_SUBCMD_DEMO;
 		p.demo = val;
-		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), NULL, 0);
+		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
 	} else {
 		/* Usage 1 */
 		rv = cmd_rgbkbd_set_color(argc, argv);
