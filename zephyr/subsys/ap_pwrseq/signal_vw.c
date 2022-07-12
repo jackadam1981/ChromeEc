@@ -48,38 +48,38 @@ static atomic_t signal_valid;
 
 BUILD_ASSERT(ARRAY_SIZE(vw_config) <= (sizeof(atomic_t) * 8));
 
-static void espi_handler(const struct device *dev, struct espi_callback *cb,
-			 struct espi_event event)
+static void vw_rx(int index, uint32_t data)
 {
-	LOG_DBG("ESPI event type 0x%x %d:%d", event.evt_type, event.evt_details,
-		event.evt_data);
-	switch (event.evt_type) {
-	default:
-		__ASSERT(0, "ESPI unknown event type: %d", event.evt_type);
-		break;
+	bool value = vw_config[index].invert ? !data : !!data;
 
-	case ESPI_BUS_EVENT_CHANNEL_READY:
-		/* Virtual wire channel is not ready, clear valid flag */
-		if (event.evt_details == ESPI_CHANNEL_VWIRE &&
-		    !event.evt_data) {
-			atomic_clear(&signal_valid);
-		}
-		break;
+	atomic_set_bit_to(&signal_data, index, value);
+	atomic_set_bit(&signal_valid, index);
+	power_signal_interrupt(vw_config[index].signal, value);
+}
 
-	case ESPI_BUS_EVENT_VWIRE_RECEIVED:
+/*
+ * Receive and process a VW signal.
+ * This may be called before power_signal_vw_init() is called, since
+ * it is called from the ESPI shim handler, so possibly
+ * power_signal_interrupt() will be called before any of the
+ * power sequence init is done (this should be fine).
+ */
+void power_signal_vw_received(enum espi_vwire_signal sig, uint32_t data)
+{
+	/*
+	 * A platform reset signal is handled specially by
+	 * resetting all signals to their default (0) values.
+	 */
+	if (sig == ESPI_VWIRE_SIGNAL_PLTRST) {
 		for (int i = 0; i < ARRAY_SIZE(vw_config); i++) {
-			if (event.evt_details == vw_config[i].espi_signal) {
-				bool value = vw_config[i].invert ?
-						     !event.evt_data :
-						     !!event.evt_data;
-
-				atomic_set_bit_to(&signal_data, i, value);
-				atomic_set_bit(&signal_valid, i);
-				power_signal_interrupt(vw_config[i].signal,
-						       value);
+			vw_rx(i, 0);
+		}
+	} else {
+		for (int i = 0; i < ARRAY_SIZE(vw_config); i++) {
+			if (sig == vw_config[i].espi_signal) {
+				vw_rx(i, data);
 			}
 		}
-		break;
 	}
 }
 
@@ -94,18 +94,13 @@ int power_signal_vw_get(enum pwr_sig_vw vw)
 
 void power_signal_vw_init(void)
 {
-	static struct espi_callback espi_cb;
-
-	/* Assumes ESPI device is already configured. */
-
-	/* Configure handler for eSPI events */
-	espi_init_callback(&espi_cb, espi_handler,
-			   ESPI_BUS_EVENT_CHANNEL_READY |
-				   ESPI_BUS_EVENT_VWIRE_RECEIVED);
-	espi_add_callback(espi_dev, &espi_cb);
 	/*
 	 * Check whether the bus is ready, and if so,
 	 * initialise the current values of the signals.
+	 * This may not be necessary any more since the
+	 * vw handler is now invoked from the shim handler,
+	 * and potentially there may be a race condition here.
+	 * TODO: Consider removing this.
 	 */
 	if (espi_get_channel_status(espi_dev, ESPI_CHANNEL_VWIRE)) {
 		for (int i = 0; i < ARRAY_SIZE(vw_config); i++) {
@@ -114,11 +109,7 @@ void power_signal_vw_init(void)
 			if (espi_receive_vwire(espi_dev,
 					       vw_config[i].espi_signal,
 					       &vw_value) == 0) {
-				atomic_set_bit_to(&signal_data, i,
-						  vw_config[i].invert ?
-							  !vw_value :
-							  !!vw_value);
-				atomic_set_bit(&signal_valid, i);
+				vw_rx(i, vw_value);
 			}
 		}
 	}
