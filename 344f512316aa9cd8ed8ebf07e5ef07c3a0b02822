@@ -22,6 +22,30 @@
       },
       "revId": "344f512316aa9cd8ed8ebf07e5ef07c3a0b02822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edd7a75_40f1e6b7",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-12T23:50:11Z",
+      "side": 1,
+      "message": "This one is correct, if you are running the test from platform/ec, if you don\u0027t run from platform/ec, then it can\u0027t find the platform/ec/zephyr dir.\n\nThe makefile must be running from the build dir, because that one works also.",
+      "parentUuid": "51d89afd_15b24ef3",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 77
+      },
+      "revId": "344f512316aa9cd8ed8ebf07e5ef07c3a0b02822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
