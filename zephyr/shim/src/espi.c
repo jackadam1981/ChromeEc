@@ -14,6 +14,7 @@
 
 #include <ap_power/ap_power.h>
 #include <ap_power/ap_power_events.h>
+#include <ap_power/ap_power_vw.h>
 #include "acpi.h"
 #include "chipset.h"
 #include "common.h"
@@ -168,8 +169,10 @@ DECLARE_DEFERRED(espi_chipset_reset);
  * PLTRST (platform reset) is handled specially by
  * invoking HOOK_CHIPSET_RESET.
  */
-#if defined(CONFIG_PLATFORM_EC_POWERSEQ) || \
-	defined(CONFIG_PLATFORM_EC_CHIPSET_RESET_HOOK)
+#if (defined(CONFIG_PLATFORM_EC_POWERSEQ) ||           \
+     defined(CONFIG_PLATFORM_EC_CHIPSET_RESET_HOOK) || \
+     (defined(CONFIG_AP_PWRSEQ) &&                     \
+      DT_HAS_COMPAT_STATUS_OKAY(intel_ap_pwrseq_vw)))
 static void espi_vwire_handler(const struct device *dev,
 			       struct espi_callback *cb,
 			       struct espi_event event)
@@ -187,6 +190,9 @@ static void espi_vwire_handler(const struct device *dev,
 	    event.evt_data == 0) {
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 	}
+#endif
+#if (defined(CONFIG_AP_PWRSEQ) && DT_HAS_COMPAT_STATUS_OKAY(intel_ap_pwrseq_vw))
+	power_signal_vw_received(event.evt_details, event.evt_data);
 #endif
 }
 #endif
@@ -588,8 +594,10 @@ static int zephyr_shim_setup_espi(const struct device *unused)
 		espi_callback_handler_t handler;
 		enum espi_bus_event event_type;
 	} callbacks[] = {
-#if defined(CONFIG_PLATFORM_EC_POWERSEQ) || \
-	defined(CONFIG_PLATFORM_EC_CHIPSET_RESET_HOOK)
+#if (defined(CONFIG_PLATFORM_EC_POWERSEQ) ||           \
+     defined(CONFIG_PLATFORM_EC_CHIPSET_RESET_HOOK) || \
+     (defined(CONFIG_AP_PWRSEQ) &&                     \
+      DT_HAS_COMPAT_STATUS_OKAY(intel_ap_pwrseq_vw)))
 		{
 			.handler = espi_vwire_handler,
 			.event_type = ESPI_BUS_EVENT_VWIRE_RECEIVED,
