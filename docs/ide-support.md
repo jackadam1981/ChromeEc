@@ -55,3 +55,59 @@ includes selectable sub-configurations for every board/image pair.
     ```bash
     cp .vscode/settings.json.default .vscode/settings.json
     ```
+
+## VSCode CrOS IDE
+
+CrOS IDE is a VSCode extension to enable code completion and navigation for
+ChromeOS source files.
+
+Support for `platform/ec` is not available out of the box (yet), but can be
+manually enabled following these steps.
+
+### Prerequisites
+
+1.  Install CrOS IDE following the [quickstart guide]
+1.  Install `bear`, a utility to generate the compilation database
+
+    ```
+    (chroot) $ sudo emerge bear
+    ```
+
+1.  Update the extension and cherry-pick the patch to enable `platform/ec`
+
+    ```bash
+    (chroot) $ cd ~/chromiumos/chromite/ide_tooling/scripts
+    git checkout main
+    git pull
+    ~/chromiumos/chromite/ide_tooling/cros-ide/install.sh
+    repo download chromiumos/chromite 3744666
+    ```
+
+[quickstart guide]: https://chromium.googlesource.com/chromiumos/chromite/+/main/ide_tooling/docs/quickstart.md
+
+### Configure EC Board
+
+1.  Delete any old copy of `compile_commands.json` from EC repo to avoid
+    confusion
+
+    ```bash
+    rm ~/chromiumos/src/platform/ec/compile_commands.json
+    ```
+
+1.  Build the image and create new compile_commands.json using `bear`
+
+    ```
+    (chroot) $ cd ~/chromiumos/src/platform/ec
+    export BOARD=bloonchipper
+    bear make -j BOARD=${BOARD}
+    mv compile_commands.json compile_commands_inside_chroot.json
+    ```
+
+1.  Generate the new compile_commands.json (use the absolute path outside chroot
+    as first argument)
+
+    ```bash
+    (chroot) $ python compdb_no_chroot.py /home/${USER}/chromiumos \
+      < ~/chromiumos/src/platform/ec/compile_commands_inside_chroot.json \
+      > ~/chromiumos/src/platform/ec/compile_commands.json
+    ```
