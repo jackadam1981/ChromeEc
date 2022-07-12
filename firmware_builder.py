@@ -16,11 +16,10 @@ import pathlib
 import subprocess
 import sys
 
-# pylint: disable=import-error
-from google.protobuf import json_format
-
 from chromite.api.gen_sdk.chromite.api import firmware_pb2
 
+# pylint: disable=import-error
+from google.protobuf import json_format
 
 DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
 DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
@@ -193,6 +192,10 @@ def test(opts):
     metrics = firmware_pb2.FwTestMetricList()
     with open(opts.metrics, 'w') as f:
         f.write(json_format.MessageToJson(metrics))
+
+    subprocess.run(
+        ["util/run_tests.sh"], cwd=os.path.dirname(__file__), check=True
+    )
 
     # If building for code coverage, build the 'coverage' target, which
     # builds the posix-based unit tests for code coverage and assembles
