@@ -73,16 +73,6 @@ manually enabled following these steps.
     (chroot) $ sudo emerge bear
     ```
 
-1.  Update the extension and cherry-pick the patch to enable `platform/ec`
-
-    ```bash
-    (chroot) $ cd ~/chromiumos/chromite/ide_tooling/scripts
-    git checkout main
-    git pull
-    ~/chromiumos/chromite/ide_tooling/cros-ide/install.sh
-    repo download chromiumos/chromite 3744666
-    ```
-
 [quickstart guide]: https://chromium.googlesource.com/chromiumos/chromite/+/main/ide_tooling/docs/quickstart.md
 
 ### Configure EC Board
