@@ -16,6 +16,24 @@
       "message": "Is still clang-format error?",
       "revId": "cb4bf31c086db1931db11910aaf255705d8023ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d1ada5_18d82f75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-12T14:48:27Z",
+      "side": 1,
+      "message": "Ugh, no. `fusb307bgevb`, a board I am unfamiliar with, ran out of flash space.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/reducing_ec_image_size.md describes ways to reduce image size. The board sounds like an eval board, so you probably have a relatively free hand. Probably the easiest way is just to disable a couple console commands.\n\nPut that in a separate commit before this one, and this commit should get past this error.",
+      "parentUuid": "567da0d3_83878e42",
+      "revId": "cb4bf31c086db1931db11910aaf255705d8023ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
