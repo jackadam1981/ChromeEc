@@ -64,9 +64,11 @@ void tablet_set_mode(int mode, uint32_t trigger)
 {
 	uint32_t old_mode = tablet_mode;
 
+#if 0 /* TIMTIM */
 	/* If tablet_mode is forced via a console command, ignore set. */
 	if (tablet_mode_forced)
 		return;
+#endif
 
 	if (disabled) {
 		CPRINTS("Tablet mode set while disabled (ignoring)!");
