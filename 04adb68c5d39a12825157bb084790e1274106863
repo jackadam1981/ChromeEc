@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7395c40d_c97a0f73",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-12T16:04:47Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s obvious. I understand not wanting the overhead in init since it\u0027s only called once, can we put the reset logic in reset? For example: https://source.chromium.org/chromium/chromiumos/platform/ec/+/main:zephyr/test/drivers/src/test_rules.c;l\u003d13;drc\u003da3190634902ca2800b200b9cecf250b3112916db was only calling reset for every test. I wouldn\u0027t have thought to need to call both get_info and reset.",
+      "parentUuid": "b0e3b382_e1f404f2",
+      "revId": "04adb68c5d39a12825157bb084790e1274106863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed7d2f4a_9f9b4e2d",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
