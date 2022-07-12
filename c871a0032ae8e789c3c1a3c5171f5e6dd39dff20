@@ -232,6 +232,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "025d3731_e8615744",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-12T01:53:25Z",
+      "side": 1,
+      "message": "Sure. I will prepare a CL that tries to reduce the number of Kconfig options. \n\nAfter discussing with my team member, we prefer `making the option default dependent on the DT node status`, this approach. The status of DT node represents the hardware device is ready to use. But hibernating is a feature on the application (chromium ec application) level. In case we might use this PSL DT node for the other application feature in the future, I think keeping CONFIG_PLATFORM_EC_HIBERNATE_PSL option is a better idea.",
+      "parentUuid": "3a65279c_0de2c58f",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 0
+      },
+      "revId": "c871a0032ae8e789c3c1a3c5171f5e6dd39dff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b92e04a4_f19169a5",
