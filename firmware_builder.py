@@ -195,6 +195,10 @@ def test(opts):
     with open(opts.metrics, "w") as f:
         f.write(json_format.MessageToJson(metrics))
 
+    subprocess.run(
+        ["util/run_tests.sh"], cwd=os.path.dirname(__file__), check=True
+    )
+
     # If building for code coverage, build the 'coverage' target, which
     # builds the posix-based unit tests for code coverage and assembles
     # the LCOV information.
