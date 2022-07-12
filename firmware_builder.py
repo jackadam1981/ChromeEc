@@ -50,8 +50,8 @@ def build(opts):
             "When --code-coverage is selected, 'build' is a no-op. "
             "Run 'test' with --code-coverage instead."
         )
-        with open(opts.metrics, "w") as f:
-            f.write(json_format.MessageToJson(metric_list))
+        with open(opts.metrics, "w") as file:
+            file.write(json_format.MessageToJson(metric_list))
         return
 
     ec_dir = pathlib.Path(__file__).parent
@@ -75,8 +75,8 @@ def build(opts):
             )
             if memsize_file.exists():
                 parse_memsize(memsize_file, metric, variant)
-    with open(opts.metrics, "w") as f:
-        f.write(json_format.MessageToJson(metric_list))
+    with open(opts.metrics, "w") as file:
+        file.write(json_format.MessageToJson(metric_list))
 
     # Ensure that there are no regressions for boards that build successfully
     # with clang: b/172020503.
@@ -94,6 +94,7 @@ UNITS = {
 
 
 def parse_memsize(filename, metric, variant):
+    """Parse the output of the build to extract the image size."""
     with open(filename, "r") as infile:
         # Skip header line
         infile.readline()
@@ -107,6 +108,7 @@ def parse_memsize(filename, metric, variant):
 
 
 def bundle(opts):
+    """Bundle the artifacts."""
     if opts.code_coverage:
         bundle_coverage(opts)
     else:
@@ -132,8 +134,8 @@ def write_metadata(opts, info):
     bundle_metadata_file = (
         opts.metadata if opts.metadata else DEFAULT_BUNDLE_METADATA_FILE
     )
-    with open(bundle_metadata_file, "w") as f:
-        f.write(json_format.MessageToJson(info))
+    with open(bundle_metadata_file, "w") as file:
+        file.write(json_format.MessageToJson(info))
 
 
 def bundle_coverage(opts):
@@ -192,8 +194,8 @@ def test(opts):
     """Runs all of the unit tests for EC firmware"""
     # TODO(b/169178847): Add appropriate metric information
     metrics = firmware_pb2.FwTestMetricList()
-    with open(opts.metrics, "w") as f:
-        f.write(json_format.MessageToJson(metrics))
+    with open(opts.metrics, "w") as file:
+        file.write(json_format.MessageToJson(metrics))
 
     subprocess.run(["util/run_tests.sh"], cwd=os.path.dirname(__file__), check=True)
 
@@ -244,6 +246,7 @@ def main(args):
 
 
 def parse_args(args):
+    """Parse all command line args and return opts dict."""
     parser = argparse.ArgumentParser(description=__doc__)
 
     parser.add_argument(
