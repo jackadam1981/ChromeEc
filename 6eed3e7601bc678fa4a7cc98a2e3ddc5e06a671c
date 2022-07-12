@@ -16,6 +16,24 @@
       "message": "Could use power_wait_signals_timeout:\n\npower_wait_signals_timeout(POWER_SIGNAL_MASK(PWR_ALL_SYS_PWRGD),\n            AP_PWRSEQ_DT_VALUE(all_sys_pwrgd_timeout));",
       "revId": "6eed3e7601bc678fa4a7cc98a2e3ddc5e06a671c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "100a7729_c2e98350",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-07-12T09:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d07c43b_2dd8119a",
+      "revId": "6eed3e7601bc678fa4a7cc98a2e3ddc5e06a671c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
