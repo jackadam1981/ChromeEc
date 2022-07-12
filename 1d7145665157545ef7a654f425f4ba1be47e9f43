@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a6d57a5_89239a7f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2755,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-07-12T03:07:26Z",
+      "side": 1,
+      "message": "ok, jixin is the code owner. thanks",
+      "parentUuid": "ce5b6a89_3df18eb3",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "443eec09_560ffd4e",
         "filename": "common/usbc_intr_task.c",
         "patchSetId": 4
