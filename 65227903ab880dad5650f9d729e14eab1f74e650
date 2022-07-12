@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36492e39_659a5247",
+        "filename": "zephyr/projects/skyrim/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-12T15:49:09Z",
+      "side": 1,
+      "message": "Should we check the board version and keep the fan enabled on older models?  Or should we invert the meanings (0 \u003d fan present) so the older boards still run their fans with their current CBI contents?",
+      "revId": "65227903ab880dad5650f9d729e14eab1f74e650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4c9e28_135066dc",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-12T15:49:09Z",
+      "side": 1,
+      "message": "I thought this GPIO was the EN_PWR_S0 signal?",
+      "range": {
+        "startLine": 85,
+        "startChar": 13,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "65227903ab880dad5650f9d729e14eab1f74e650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b54c019c_5458c051",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-12T15:49:09Z",
+      "side": 1,
+      "message": "Does this still build with the unimplemented GPIOS removed?",
+      "revId": "65227903ab880dad5650f9d729e14eab1f74e650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
