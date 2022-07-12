@@ -8,6 +8,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "printf.h"
 #include "spi.h"
 #include "timer.h"
 #include "util.h"
@@ -45,8 +46,13 @@ static int command_spixfer(int argc, char **argv)
 
 		rv = spi_transaction(&spi_devices[dev_id], &cmd, 1, data, v);
 
-		if (!rv)
-			ccprintf("Data: %ph\n", HEX_BUF(data, v));
+		if (!rv) {
+			int data_len_bytes = v;
+			char str_buf[data_len_bytes * 2 + 1];
+			snprintf_hex_buffer(str_buf, sizeof(str_buf),
+					    HEX_BUF(data, data_len_bytes));
+			ccprintf("Data: %s\n", str_buf);
+		}
 
 	} else if (strcasecmp(argv[1], "w") == 0) {
 		/* 8-bit write */

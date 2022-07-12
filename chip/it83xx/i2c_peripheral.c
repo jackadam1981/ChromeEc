@@ -178,13 +178,18 @@ void i2c_peripheral_read_write_data(int port)
 			/* Peripheral finish */
 			if (periph_status & IT83XX_I2C_P_CLR) {
 				if (wr_done[idx]) {
+					int data_size_bytes =
+						I2C_MAX_BUFFER_SIZE;
+					char str_buf[data_size_bytes * 2 + 1];
 					/*
 					 * TODO(b:129360157): Handle controller
 					 * write data by "in_data" array.
 					 */
-					CPRINTS("WData: %ph",
-						HEX_BUF(in_data[idx],
-							I2C_MAX_BUFFER_SIZE));
+					snprintf_hex_buffer(str_buf, sizeof
+							    (str_buf), HEX_BUF(in_data[idx],
+							data_size_bytes));
+					CPRINTS("WData: %s",
+						str_buf);
 					wr_done[idx] = 0;
 				}
 			}
