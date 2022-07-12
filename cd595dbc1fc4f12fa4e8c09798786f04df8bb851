@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a8b44b_94412025",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-12T16:47:11Z",
+      "side": 1,
+      "message": "Average size increased by 48 bytes. For some boards free flash increased. Free RAM usually decreased. You can find output for `make newsizes` here: https://paste.googleplex.com/5815467454234624",
+      "parentUuid": "128d93fa_07b885be",
+      "revId": "cd595dbc1fc4f12fa4e8c09798786f04df8bb851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31fae7a9_84b4511e",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a70e5945_cdc018ce",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-12T16:47:11Z",
+      "side": 1,
+      "message": "This required changes in some boards code, but I managed to always use constant `struct usb_mux`.",
+      "parentUuid": "31fae7a9_84b4511e",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "cd595dbc1fc4f12fa4e8c09798786f04df8bb851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd1fc28f_be45441d",
         "filename": "zephyr/projects/brya/usbc.dts",
         "patchSetId": 2
@@ -54,6 +96,30 @@
       "writtenOn": "2022-07-11T15:51:10Z",
       "side": 1,
       "message": "Can this live under the `named-usbc-port` node?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "cd595dbc1fc4f12fa4e8c09798786f04df8bb851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c186a080_0b2081ff",
+        "filename": "zephyr/projects/brya/usbc.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-12T16:47:11Z",
+      "side": 1,
+      "message": "Yes it can. I changed this in Cl\u0027s version 3. I thought that there will be circular dependency but since `usb-mux-chain` is separate node, it is no problem anymore.",
+      "parentUuid": "bd1fc28f_be45441d",
       "range": {
         "startLine": 48,
         "startChar": 0,
