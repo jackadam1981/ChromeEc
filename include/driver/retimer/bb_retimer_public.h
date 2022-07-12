@@ -56,4 +56,26 @@ __override_proto int bb_retimer_power_enable(const struct usb_mux *me,
 void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
 			   bool *ack_required);
 
+/**
+ * Read from BB retimer.
+ *
+ * @param  me		Pointer to USB mux
+ * @param  offset	Data to send
+ * @param  data		Destination buffer for data.
+ * @return EC_SUCCESS, or non-zero if error.
+ */
+int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
+		    uint32_t *data);
+
+/**
+ * Write to BB retimer.
+ *
+ * @param  me		Pointer to USB mux
+ * @param  offset	Data to send
+ * @param  data		Data to write to BB retimer.
+ * @return EC_SUCCESS, or non-zero if error.
+ */
+int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
+		     uint32_t data);
+
 #endif /* __CROS_EC_DRIVER_RETIMER_BB_RETIMER_PUBLIC_H */
