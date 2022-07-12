@@ -19,6 +19,10 @@
 extern "C" {
 #endif
 
+#ifndef noreturn
+#define noreturn
+#endif
+
 enum cortex_panic_frame_registers {
 	CORTEX_PANIC_FRAME_REGISTER_R0 = 0,
 	CORTEX_PANIC_FRAME_REGISTER_R1,
