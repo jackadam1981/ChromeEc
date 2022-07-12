@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20767d62_cb4e53a1",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-12T10:05:08Z",
+      "side": 1,
+      "message": "Is it possible to combine some of these cases  ?\nCan  _STARTUP and _RESUME be combined? And same for _SUSPEND and SHUTDOWN?",
+      "revId": "d93ef9c1549cc8374b8b8a03af92ff787c0e1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803f0b82_acd1cf57",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-12T10:05:08Z",
+      "side": 1,
+      "message": "Don\u0027t need both log statements.",
+      "revId": "d93ef9c1549cc8374b8b8a03af92ff787c0e1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
