@@ -249,6 +249,24 @@
       "parentUuid": "dfa9712a_28de3b18",
       "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e5b609_bd4a930e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-12T22:09:50Z",
+      "side": 1,
+      "message": "I repeated the measurement with a different servo micro (and USB cable). Same board and fingerprint sensor.\n\n```\n$ dut-control fpmcu_slp_alt:off\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   5367    11.16    1.34    58.93     9.76\n@@    pp3300_dx_fp_mv   5367  3280.00    0.00  3280.00  3280.00\n@@    pp3300_dx_fp_mw   5367     0.00    0.01     0.26     0.00\n@@   pp3300_dx_mcu_mv   5367  3272.00    0.15  3280.00  3272.00\n@@   pp3300_dx_mcu_mw   5367    45.13    0.25    46.33    45.02\n```\n\n\n```\n$ dut-control fpmcu_slp_alt:on\n$ dut-control -t 60 pp3300_dx_mcu_mv pp3300_dx_fp_mv pp3300_dx_mcu_mw pp3300_dx_fp_mw\n\n@@               NAME  COUNT  AVERAGE  STDDEV      MAX      MIN\n@@       sample_msecs   5437    11.01    1.06    31.36     9.75\n@@    pp3300_dx_fp_mv   5437  3280.02    0.41  3288.00  3280.00\n@@    pp3300_dx_fp_mw   5437     0.00    0.00     0.00     0.00\n@@   pp3300_dx_mcu_mv   5437  3280.00    0.15  3288.00  3280.00\n@@   pp3300_dx_mcu_mw   5437     5.98    0.50    15.22     3.94\n```\n\nNumbers seems to be aligned with your measurements. There is probably something wrong with the servo micro I have at home.\n\nVersion numbers for reference:\n\n```\n$ servod --version\nservod v1.0.1362\n\nCurrent servo_micro version is   servo_micro_v2.4.57-ce329f64f\n```",
+      "parentUuid": "cfdb960b_e4a3f556",
+      "revId": "ba6f7c1597f5eae767f44e11fd0966eea8f04675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
