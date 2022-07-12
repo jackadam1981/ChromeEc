@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78b2f18_ff829198",
+        "filename": "board/brya/tune_mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2022-07-12T17:14:26Z",
+      "side": 1,
+      "message": "Should this return status variable instead?",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "3e45c86c0db13cce88553f33d44fd8b44b87941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
