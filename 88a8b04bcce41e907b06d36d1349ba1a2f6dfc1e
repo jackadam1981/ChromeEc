@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e539c367_b4b26446",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-12T06:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00927b26_b260d662",
+      "revId": "88a8b04bcce41e907b06d36d1349ba1a2f6dfc1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2385b62_4de58f4d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-08T22:52:52Z",
       "side": 1,
       "message": "Does `tbt_sop_prime_prime_needed(port) \u003d\u003d true` imply `tbt_sop_prime_needed(port) \u003d\u003d true`? If so, this could be more direct as\n```\nif (tbt_sop_prime_prime_needed())\n...\nelse if (tbt_sop_prime_neede())\n...\nelse\n...\n```\n\nSame for the analogous block in `intel_vdm_naked`.",
+      "revId": "88a8b04bcce41e907b06d36d1349ba1a2f6dfc1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6fd9cd_f2521f46",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-12T06:52:50Z",
+      "side": 1,
+      "message": "Right. Made change to the flow. Thanks.",
+      "parentUuid": "a2385b62_4de58f4d",
       "revId": "88a8b04bcce41e907b06d36d1349ba1a2f6dfc1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
