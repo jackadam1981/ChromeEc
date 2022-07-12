@@ -9,6 +9,7 @@
 #include "console.h"
 #include "host_command.h"
 #include "panic.h"
+#include "printf.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -103,17 +104,20 @@ test_mockable void trng_exit(void)
  * update RO once in production.
  */
 #if defined(SECTION_IS_RW)
-DECLARE_CONSOLE_COMMAND(rand, command_rand,
-			NULL, "Output random bytes to console.");
+DECLARE_CONSOLE_COMMAND(rand, command_rand, NULL,
+			"Output random bytes to console.");
 static int command_rand(int argc, char **argv)
 {
 	uint8_t data[32];
+	char str_buf[sizeof(data) * 2 + 1];
 
 	trng_init();
 	trng_rand_bytes(data, sizeof(data));
 	trng_exit();
 
-	ccprintf("rand %ph\n", HEX_BUF(data, sizeof(data)));
+	snprintf_hex_buffer(str_buf, sizeof(str_buf),
+			    HEX_BUF(data, sizeof(data)));
+	ccprintf("rand %s\n", str_buf);
 
 	return EC_SUCCESS;
 }

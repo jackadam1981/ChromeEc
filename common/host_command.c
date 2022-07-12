@@ -635,6 +635,7 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 	static int hc_prev_cmd;
 	static int hc_prev_count;
 	static uint64_t hc_prev_time;
+	char str_buf[args->params_size * 2 + 1];
 
 	/*
 	 * In normal output mode, skip printing repeats of the same command
@@ -662,10 +663,12 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		hc_prev_cmd = args->command;
 	}
 
-	if (hcdebug >= HCDEBUG_PARAMS && args->params_size)
-		CPRINTS("HC 0x%04x.%d:%ph", args->command, args->version,
-			HEX_BUF(args->params, args->params_size));
-	else
+	if (hcdebug >= HCDEBUG_PARAMS && args->params_size) {
+		snprintf_hex_buffer(str_buf, sizeof(str_buf),
+				    HEX_BUF(args->params, args->params_size));
+		CPRINTS("HC 0x%04x.%d:%s", args->command, args->version,
+			str_buf);
+	} else
 		CPRINTS("HC 0x%04x", args->command);
 }
 
@@ -721,9 +724,13 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 	if (rv != EC_RES_SUCCESS)
 		CPRINTS("HC 0x%04x err %d", args->command, rv);
 
-	if (hcdebug >= HCDEBUG_PARAMS && args->response_size)
-		CPRINTS("HC resp:%ph",
-			HEX_BUF(args->response, args->response_size));
+	if (hcdebug >= HCDEBUG_PARAMS && args->response_size) {
+		char str_buf[2 * args->response_size + 1];
+		snprintf_hex_buffer(str_buf, sizeof(str_buf),
+				    HEX_BUF(args->response,
+					    args->response_size));
+		CPRINTS("HC resp:%s", str_buf);
+	}
 
 	return rv;
 }
@@ -890,10 +897,12 @@ static int command_host_command(int argc, char **argv)
 
 	if (res != EC_RES_SUCCESS)
 		ccprintf("Command returned %d\n", res);
-	else if (args.response_size)
-		ccprintf("Response: %ph\n",
-			 HEX_BUF(cmd_params, args.response_size));
-	else
+	else if (args.response_size) {
+		char str_buf[2 * args.response_size + 1];
+		snprintf_hex_buffer(str_buf, sizeof(str_buf),
+				    HEX_BUF(cmd_params, args.response_size));
+		ccprintf("Response: %s\n", str_buf);
+	} else
 		ccprintf("Command succeeded; no response.\n");
 
 	shared_mem_release(cmd_params);

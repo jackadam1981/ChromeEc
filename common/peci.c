@@ -143,7 +143,6 @@ static int peci_cmd(int argc, char **argv)
 		ccprintf("PECI transaction error\n");
 		return EC_ERROR_UNKNOWN;
 	}
-	ccprintf("PECI read data: %ph\n", HEX_BUF(r_buf, peci.r_len));
 	return EC_SUCCESS;
 }
 
