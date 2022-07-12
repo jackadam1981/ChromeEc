@@ -370,6 +370,79 @@ test_static int test_vsnprintf_combined(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_uint64_to_str(void)
+{
+	/* Longest uin64 in decimal = 20, plus terminating NUL. */
+	char buf[21];
+	char *str;
+
+	str = uint64_to_str(buf, sizeof(buf), 0, -1, 10, false);
+	TEST_ASSERT_ARRAY_EQ(str, "0", sizeof("0"));
+
+	str = uint64_to_str(buf, sizeof(buf), UINT64_MAX, -1, 10, false);
+	TEST_ASSERT_ARRAY_EQ(str, "18446744073709551615",
+			     sizeof("18446744073709551615"));
+
+	/* Buffer too small by 1. */
+	str = uint64_to_str(buf, 20, UINT64_MAX, -1, 10, false);
+	TEST_ASSERT(str == NULL);
+
+	/* lower case hex */
+	str = uint64_to_str(buf, sizeof(buf), 0, -1, 16, false);
+	TEST_ASSERT_ARRAY_EQ(str, "0", sizeof("0"));
+
+	str = uint64_to_str(buf, sizeof(buf), UINT64_MAX, -1, 16, false);
+	TEST_ASSERT_ARRAY_EQ(str, "ffffffffffffffff",
+			     sizeof("fffffffffffffff"));
+
+	/* upper case hex */
+	str = uint64_to_str(buf, sizeof(buf), 0, -1, 16, true);
+	TEST_ASSERT_ARRAY_EQ(str, "0", sizeof("0"));
+
+	str = uint64_to_str(buf, sizeof(buf), UINT64_MAX, -1, 16, true);
+	TEST_ASSERT_ARRAY_EQ(str, "FFFFFFFFFFFFFFFF",
+			     sizeof("FFFFFFFFFFFFFFF"));
+
+	/* precision 0 */
+	str = uint64_to_str(buf, sizeof(buf), 1, 0, 10, false);
+	TEST_ASSERT_ARRAY_EQ(str, "1.", sizeof("1."));
+
+	/* precision 6 */
+	str = uint64_to_str(buf, sizeof(buf), 1, 6, 10, false);
+	TEST_ASSERT_ARRAY_EQ(str, "0.000001", sizeof("0.000001"));
+
+	/* Reduced precision due to buffer that is too small. */
+	str = uint64_to_str(buf, 8, 1, 6, 10, false);
+	TEST_ASSERT_ARRAY_EQ(str, "0.00001", sizeof("0.00001"));
+
+	/* Reduced precision due to buffer that is too small, so precision
+	 * gets changed to 0. */
+	str = uint64_to_str(buf, 3, 1, 6, 10, false);
+	TEST_ASSERT_ARRAY_EQ(str, "1.", sizeof("1."));
+
+	/* Precision is unable to fit. */
+	str = uint64_to_str(buf, 2, 1, 6, 10, false);
+	TEST_ASSERT(str == NULL);
+
+	/* Negative base. */
+	str = uint64_to_str(buf, sizeof(buf), 0, -1, -1, false);
+	TEST_ASSERT(str == NULL);
+
+	/* Buffer size 1. */
+	str = uint64_to_str(buf, 1, 0, -1, 10, false);
+	TEST_ASSERT(str == NULL);
+
+	/* Buffer size 0. */
+	str = uint64_to_str(buf, 0, 0, -1, 10, false);
+	TEST_ASSERT(str == NULL);
+
+	/* Buffer size -1. */
+	str = uint64_to_str(buf, -1, 0, -1, 10, false);
+	TEST_ASSERT(str == NULL);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -384,5 +457,7 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_vsnprintf_timestamps);
 	RUN_TEST(test_vsnprintf_hexdump);
 	RUN_TEST(test_vsnprintf_combined);
+	RUN_TEST(test_uint64_to_str);
+
 	test_print_result();
 }
