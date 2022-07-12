@@ -163,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "849d9dc1_5f6fe3c0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:44:52Z",
+      "side": 1,
+      "message": "For 61000 or 61001mW of power, the 250 mW is not making any much difference. But , if fuel guage reads 10000mW for a battery , then 250 mW change makes a big difference and PBOSS policy has to adjust PLL, based on the value.\nTo not skip scenarios, where battery with \u003e 65535 mW , we are saving value in 10 mW units(cW units) , so that it fits in 16 bit storage.",
+      "parentUuid": "c9b891e1_324d348e",
+      "range": {
+        "startLine": 176,
+        "startChar": 43,
+        "endLine": 176,
+        "endChar": 61
+      },
+      "revId": "0b886adfd07dfe24e056620ef7a9a932e5877b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bef82987_9c7ab8b3",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
