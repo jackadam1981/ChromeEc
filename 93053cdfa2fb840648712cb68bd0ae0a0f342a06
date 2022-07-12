@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b220da6e_ffe1039d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-07-12T03:11:38Z",
+      "side": 1,
+      "message": "Please bring board.c changes in a separate CL as they are not part of the original CL. You can use cq-depend to create dependency between this revert CL and the new board.c CL.",
+      "revId": "93053cdfa2fb840648712cb68bd0ae0a0f342a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
