@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f1f0063_2e93111a",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-07-12T19:07:04Z",
+      "side": 1,
+      "message": "Is this function expecting to return 0 for success or \u003e\u003d 0 for success?",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "c58d329f53b9c294a68e0422ead7a2ad8e19d8cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
