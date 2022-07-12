@@ -16,6 +16,24 @@
       "message": "If this board always has a fan, then the FW config may not need to be checked.\nIn which case the fan enable should not be no-auto-init, and this fan_init may not be needed.",
       "revId": "0199eac5940bc5c9bd31ea49ae59991cc9768cd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d977bdaa_451657b1",
+        "filename": "zephyr/projects/nissa/src/joxer/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-07-12T03:00:01Z",
+      "side": 1,
+      "message": "We have 6w(no fan) and 15w(have fan) sku, so we plan to use FW_CONFIG to check.",
+      "parentUuid": "d4f8d268_85d0eca8",
+      "revId": "0199eac5940bc5c9bd31ea49ae59991cc9768cd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
