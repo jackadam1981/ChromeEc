@@ -14,3 +14,7 @@ cd "$(dirname "$(realpath -e "${BASH_SOURCE[0]}")")"/..
 
 # Run pytest
 pytest util "$@"
+
+# Run shell tests
+cd util
+./test-inject-keys.sh
