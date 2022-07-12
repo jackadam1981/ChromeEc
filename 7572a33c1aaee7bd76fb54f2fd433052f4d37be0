@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98543f65_cb90b459",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:44:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b792661c_21bec9c5",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 33
+      },
+      "revId": "7572a33c1aaee7bd76fb54f2fd433052f4d37be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19f4a9bf_e615031c",
@@ -85,6 +109,30 @@
       "writtenOn": "2022-06-17T20:24:43Z",
       "side": 1,
       "message": "Somewhere can we add all of the units of these?",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 1
+      },
+      "revId": "7572a33c1aaee7bd76fb54f2fd433052f4d37be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a37ad587_838f1092",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-12T20:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f4a9bf_e615031c",
       "range": {
         "startLine": 365,
         "startChar": 0,
