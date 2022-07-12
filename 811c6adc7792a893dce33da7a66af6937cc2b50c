@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20fca9c1_5147acf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-12T17:32:11Z",
+      "side": 1,
+      "message": "Yes, it should be https://b.corp.google.com/issues/236274003",
+      "parentUuid": "5b0cfa62_88a03efd",
+      "revId": "811c6adc7792a893dce33da7a66af6937cc2b50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f800fc8_1049a076",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-12T17:21:11Z",
       "side": 1,
       "message": "I don\u0027t have any strong complaints about this new API vs the old one, but what is the motivation for doing this?\n\nWhat is an \"alternative\" mux chain? Does it require this API change?",
+      "revId": "811c6adc7792a893dce33da7a66af6937cc2b50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "619a3e15_6839bdd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-12T17:32:11Z",
+      "side": 1,
+      "message": "Alternative mux chain is added in next CLs. It was cumbersome to implement this with old API. Alternative mux chain is defined in DTS and in board code user need to call one macro to enable alternative chain instead of manually changing usb_mux structures.",
+      "parentUuid": "1f800fc8_1049a076",
       "revId": "811c6adc7792a893dce33da7a66af6937cc2b50c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
