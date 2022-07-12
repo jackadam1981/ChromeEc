@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0b08de_f479dc0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2022-07-12T22:17:20Z",
+      "side": 1,
+      "message": "Since this patch still requires human intervention to set this persistent configuration why about simply run the following commands from the EC console ?\n\n    # Read MFR_GATECLK_DIS (0x1a) register - Verify that bit 15 is not set\n    ▶ i2cxfer r16 9 0x20 0x1a\n    0x1c00 [7168]\n    # Disable Power Save: set MFR_GATECLK_DIS bit 15\n    ▶ i2cxfer w16 9 0x20 0x1a 0x9c00\n    # Verify\n    ▶ i2cxfer r16 9 0x20 0x1a\n    0x9c00 [39936]\n    # Store in EEPROM\n    ▶ i2cxfer rlen 9 0x20 0x15 0x0\n    # Reboot and Verify\n    ▶ reboot\n    ▶ i2cxfer r16 9 0x20 0x1a\n    0x9c00 [39936]\n\n",
+      "revId": "3e45c86c0db13cce88553f33d44fd8b44b87941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f78b2f18_ff829198",
