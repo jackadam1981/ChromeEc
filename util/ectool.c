@@ -1378,7 +1378,11 @@ static int cmd_rgbkbd(int argc, char *argv[])
 		if (cmd_rgbkbd_parse_rgb_text(argv[2], &p.color))
 			return -1;
 
+<<<<<<< HEAD   (5253a7 RGBKBD: Add demo sub-command to EC_CMD_RGBKBD)
 		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), NULL, 0);
+=======
+		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
+>>>>>>> CHANGE (fa9398 rgbkbd: ectool: fix response size for rgbkbd host command)
 	} else if (argc == 3 && !strcasecmp(argv[1], "demo")) {
 		/* Usage 3 */
 		struct ec_params_rgbkbd p;
@@ -1390,7 +1394,53 @@ static int cmd_rgbkbd(int argc, char *argv[])
 		}
 		p.subcmd = EC_RGBKBD_SUBCMD_DEMO;
 		p.demo = val;
+<<<<<<< HEAD   (5253a7 RGBKBD: Add demo sub-command to EC_CMD_RGBKBD)
 		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), NULL, 0);
+=======
+		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
+	} else if (argc == 4 && !strcasecmp(argv[1], "scale")) {
+		/* Usage 4 */
+		val = strtol(argv[2], &e, 0);
+		if ((e && *e) || val > EC_RGBKBD_MAX_KEY_COUNT) {
+			fprintf(stderr, "Invalid key number: %s\n", argv[2]);
+			return -1;
+		}
+		p.set_scale.key = val;
+		if (cmd_rgbkbd_parse_rgb_text(argv[3], &p.set_scale.scale)) {
+			fprintf(stderr, "Invalid scale value: %s\n", argv[3]);
+			return -1;
+		}
+		p.subcmd = EC_RGBKBD_SUBCMD_SET_SCALE;
+		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
+	} else if (argc == 2 && !strcasecmp(argv[1], "getconfig")) {
+		/* Usage 5 */
+		char *type;
+
+		p.subcmd = EC_RGBKBD_SUBCMD_GET_CONFIG;
+		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
+
+		if (rv < 0)
+			return rv;
+
+		switch ((enum ec_rgbkbd_type)r.rgbkbd_type) {
+		case EC_RGBKBD_TYPE_PER_KEY:
+			type = "EC_RGBKBD_TYPE_PER_KEY";
+			break;
+		case EC_RGBKBD_TYPE_FOUR_ZONES_40_LEDS:
+			type = "EC_RGBKBD_TYPE_FOUR_ZONES_40_LEDS";
+			break;
+		case EC_RGBKBD_TYPE_FOUR_ZONES_12_LEDS:
+			type = "EC_RGBKBD_TYPE_FOUR_ZONES_12_LEDS";
+			break;
+		case EC_RGBKBD_TYPE_FOUR_ZONES_15_LEDS:
+			type = "EC_RGBKBD_TYPE_FOUR_ZONES_15_LEDS";
+			break;
+		default:
+			type = "EC_RGBKBD_TYPE_UNKNOWN";
+		}
+
+		printf("RGBKBD_TYPE: %s\n", type);
+>>>>>>> CHANGE (fa9398 rgbkbd: ectool: fix response size for rgbkbd host command)
 	} else {
 		/* Usage 1 */
 		rv = cmd_rgbkbd_set_color(argc, argv);
