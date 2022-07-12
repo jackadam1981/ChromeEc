@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12b4b1b9_fea4ac74",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-12T21:51:19Z",
+      "side": 1,
+      "message": "I agree the error message can be confusing and in practice this file is going to be overwritten at the next steps, so now I am wondering whether we need this at all.",
+      "parentUuid": "e259534d_7b9cc5fa",
+      "revId": "b79e91923bfbbd906ddcb5ee21cabaa1dc222938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15de80f1_f3a82b57",
         "filename": "docs/ide-support.md",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-12T18:57:59Z",
       "side": 1,
       "message": "The previous step moved out of the `~/chromiumos/chromite/ide_tooling/scripts` dir, so this should probably start with: `(chroot) $ cd ~/chromiumos/chromite/ide_tooling/scripts`",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "b79e91923bfbbd906ddcb5ee21cabaa1dc222938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69645a8f_bad7b591",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-12T21:51:19Z",
+      "side": 1,
+      "message": "Good catch! I re-ordered the steps and missed this.",
+      "parentUuid": "15de80f1_f3a82b57",
       "range": {
         "startLine": 111,
         "startChar": 4,
