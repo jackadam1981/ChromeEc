@@ -22,6 +22,30 @@
       },
       "revId": "78ecef45bb5106eb24b9c39beacbf90fefa41d28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6970fd_54775eb9",
+        "filename": "zephyr/test/drivers/include/test/drivers/utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-13T22:46:33Z",
+      "side": 1,
+      "message": "Really?\n\n```\n\tif (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {\n\t\tk_poll_signal_reset(\u0026shutdown_complete_signal);\n\t\tchipset_force_shutdown(CHIPSET_RESET_INIT);\n\t\tk_poll(\u0026shutdown_complete_event, 1, K_MSEC(1000));\n\t}\n\n\t/*\n\t * Signal will trigger during S3-\u003eS5, but we want to wait until we\u0027re\n\t * actually at S5.  Give it a quick sleep if required.\n\t */\n\twhile (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {\n\t\tmsleep(5);\n\t}\n```\n\nWas the original code? It seemed like we\u0027re actually trying to get into S5 and it\u0027s what I saw with print statements.",
+      "parentUuid": "9bcb7d67_06860b7d",
+      "range": {
+        "startLine": 454,
+        "startChar": 10,
+        "endLine": 455,
+        "endChar": 6
+      },
+      "revId": "78ecef45bb5106eb24b9c39beacbf90fefa41d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
