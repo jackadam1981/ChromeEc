@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8367eda7_e88a8ecc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-13T23:59:05Z",
+      "side": 1,
+      "message": "have we pushed back on parade to correct this?\ni suggest blocking AVL approval.",
+      "range": {
+        "startLine": 9,
+        "startChar": 47,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7379afad_13efe5ea",
         "filename": "zephyr/Kconfig.tcpm",
         "patchSetId": 6
