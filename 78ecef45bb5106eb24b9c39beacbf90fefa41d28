@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bcb7d67_06860b7d",
+        "filename": "zephyr/test/drivers/include/test/drivers/utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-13T22:06:45Z",
+      "side": 1,
+      "message": "I don\u0027t think this was ever the intention of this code. It\u0027s made to get to `CHIPSET_STATE_ANY_OFF`. A.K.A., either G3 or S5 qualifies.",
+      "range": {
+        "startLine": 454,
+        "startChar": 10,
+        "endLine": 455,
+        "endChar": 6
+      },
+      "revId": "78ecef45bb5106eb24b9c39beacbf90fefa41d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
