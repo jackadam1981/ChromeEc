@@ -22,6 +22,30 @@
       },
       "revId": "08555d72d16084e76de62a4a5aff43e22974f87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "011eb25a_f87e4980",
+        "filename": "zephyr/shim/src/switchcap_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-07-13T02:17:07Z",
+      "side": 1,
+      "message": "Thanks Tom. I have updated with single line. I will update my local environment for updated repo upload hooks. Currently I don\u0027t have access to build logs, hopefully will not not need.",
+      "parentUuid": "b749b2b9_b58d96e0",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "08555d72d16084e76de62a4a5aff43e22974f87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
