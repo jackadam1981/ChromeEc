@@ -38,6 +38,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62f26df8_7712339e",
+        "filename": "board/brya/tune_mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-13T00:00:13Z",
+      "side": 1,
+      "message": "this register is only on page 0.",
+      "range": {
+        "startLine": 17,
+        "startChar": 35,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "3e45c86c0db13cce88553f33d44fd8b44b87941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032764f2_c5abbb6b",
+        "filename": "board/brya/tune_mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-13T00:00:13Z",
+      "side": 1,
+      "message": "we\u0027ll have to tweak the implementation to allow\na zero sized array/empty list to handle cases\nwhere we only want to update one of the two pages.",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "3e45c86c0db13cce88553f33d44fd8b44b87941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f78b2f18_ff829198",
         "filename": "board/brya/tune_mp2964.c",
         "patchSetId": 1
