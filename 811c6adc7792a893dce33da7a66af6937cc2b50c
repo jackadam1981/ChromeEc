@@ -87,6 +87,24 @@
       "parentUuid": "619a3e15_6839bdd9",
       "revId": "811c6adc7792a893dce33da7a66af6937cc2b50c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb63be6_5190d064",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-13T14:46:12Z",
+      "side": 1,
+      "message": "Alternative mux chain is for boards that choose mux configuration in runtime. A board code can define an alternative mux chain in a DTS and enable it using one macro. Currently, board code has to define `struct usb_mux` in `board.c` or `usbc_config.c` file. How the board code is affected, you can see in CL https://crrev.com/c/3700331\n\nAlternative mux chain doesn\u0027t add new functionality. It only moves some configuration from source code to DTS.",
+      "parentUuid": "a35cf37b_2c28ce17",
+      "revId": "811c6adc7792a893dce33da7a66af6937cc2b50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
