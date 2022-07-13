@@ -16,6 +16,24 @@
       "message": "Is there ever a time we would want this option to be off?\nCan we just assume that we want the right ID?\nMaybe we can just check PLATFORM_EC_USB_PD_TCPM_PS8745 and if this is set\nassume we need to disambiguate.",
       "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7405b004_b5f6c985",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-13T03:12:21Z",
+      "side": 1,
+      "message": "It could be useful if a platform knows the chips it\u0027s built with are always well-behaved, and this follows the pattern established for PS8805 and PS8815.",
+      "parentUuid": "7379afad_13efe5ea",
+      "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
