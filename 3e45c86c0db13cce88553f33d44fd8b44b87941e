@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c6345bb_54be910d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2022-07-13T16:41:23Z",
+      "side": 1,
+      "message": "\u003e Because we need to do it on more than 15 devices.\nWell, scripting the EC interaction would be a good option too. If you really want to do it over with a temporary IFWI image why don\u0027t you make it hook instead of a command ?",
+      "parentUuid": "abf8a50b_74509df4",
+      "revId": "3e45c86c0db13cce88553f33d44fd8b44b87941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62f26df8_7712339e",
         "filename": "board/brya/tune_mp2964.c",
         "patchSetId": 1
