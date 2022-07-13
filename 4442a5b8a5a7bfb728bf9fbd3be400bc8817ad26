@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34601b5e_6df23ddf",
+        "filename": "zephyr/projects/corsola/prj_krabby.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-13T20:39:38Z",
+      "side": 1,
+      "message": "My mistake - I didn\u0027t notice that there are two CONFIG options, PHY_PORT_COUNT and ACTIVE_PORT_COUNT.",
+      "parentUuid": "2fc9ea3f_4bb0b5a4",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "4442a5b8a5a7bfb728bf9fbd3be400bc8817ad26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "058843ef_38a64557",
