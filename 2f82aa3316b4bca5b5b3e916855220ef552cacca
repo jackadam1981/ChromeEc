@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a060cdeb_1c9435e1",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-13T15:27:22Z",
+      "side": 1,
+      "message": "I\u0027d like to make common pre-upload hooks for this in the future. I sent CL:3759266 for black, and I\u0027d like to make anther for isort too.\n\n(point is: fine for now, but be prepared to delete this shell script 😎)",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 63
+      },
+      "revId": "2f82aa3316b4bca5b5b3e916855220ef552cacca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
