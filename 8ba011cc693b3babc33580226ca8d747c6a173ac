@@ -16,6 +16,24 @@
       "message": "I take it that this CL is an experiment. Ultimately, perhaps this should be a utility library that gets linked into tests by default. Do we expect to actually use the real `interrupt_generator` in any tests?",
       "revId": "8ba011cc693b3babc33580226ca8d747c6a173ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de721557_6d65555f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-13T21:45:12Z",
+      "side": 1,
+      "message": "There is a default implementation of interrupt_generator (as a weak symbol) which just sets a variable. \n\ntest/interrupt.c uses interrupt_generator, but we exclude that in coverage because it hangs.\n\nI\u0027m just trying to get core/host/task.c:398 to be covered consistently. Right now it only runs intermittently depending on how fast the interrupt_thread starts.\n\nUltimately, this is all a little silly, since everything in core/host only runs in tests.",
+      "parentUuid": "f17f495a_c35b7d8b",
+      "revId": "8ba011cc693b3babc33580226ca8d747c6a173ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
