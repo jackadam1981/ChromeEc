@@ -46,6 +46,30 @@
       },
       "revId": "08555d72d16084e76de62a4a5aff43e22974f87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7640216_1c382a27",
+        "filename": "zephyr/shim/src/switchcap_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-07-13T02:24:18Z",
+      "side": 1,
+      "message": "Before removal,\n```\n$ clang-format --dry-run zephyr/shim/src/switchcap_gpio.c\nzephyr/shim/src/switchcap_gpio.c:25:71: warning: code should be clang-formatted [-Wclang-format-violations]\n#define SC_PIN_POWER_GOOD GPIO_DT_FROM_NODE(SC_PIN_POWER_GOOD_PHANDLE)\n                                                                      ^\n```\nAfter removal, clean.",
+      "parentUuid": "011eb25a_f87e4980",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "08555d72d16084e76de62a4a5aff43e22974f87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
