@@ -16,6 +16,52 @@
       "message": "There are a few minor nits but overall I think the doc looks good. +1 because I\u0027d like another opinion.",
       "revId": "bebee6c32dbc28804f0ebccf48b7fda5800e6c2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4e5e0b_b46415c2",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-07-13T17:40:29Z",
+      "side": 1,
+      "message": "I am not sure if adding a scope (or objective) section will add additional clarify to the document. I felt it a little weird to start reading a section about odd file types/names.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "bebee6c32dbc28804f0ebccf48b7fda5800e6c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b778ad83_79c214f3",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-07-13T17:40:29Z",
+      "side": 1,
+      "message": "this is confusing to me. \"for a single image for a single board\". please consider rewriting it",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 72
+      },
+      "revId": "bebee6c32dbc28804f0ebccf48b7fda5800e6c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
