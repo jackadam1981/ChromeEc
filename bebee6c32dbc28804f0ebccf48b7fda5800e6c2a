@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b2ffd3_c48dd5ad",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-13T20:57:09Z",
+      "side": 1,
+      "message": "That\u0027s good feedback! I agree it would be useful to add a sentence explaining the purpose of the document.\n\nI added this in a separate patch: https://crrev.com/c/3761218",
+      "parentUuid": "bd4e5e0b_b46415c2",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "bebee6c32dbc28804f0ebccf48b7fda5800e6c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b778ad83_79c214f3",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-13T17:40:29Z",
       "side": 1,
       "message": "this is confusing to me. \"for a single image for a single board\". please consider rewriting it",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 72
+      },
+      "revId": "bebee6c32dbc28804f0ebccf48b7fda5800e6c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f3015a_5e1d6d4a",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-13T20:57:09Z",
+      "side": 1,
+      "message": "This might be confusing to developers that are not familiar with the RW/RO images. Maybe adding a link to additional documentation explaining these concepts could help?\n\nFor example `~/chromiumos/src/platform/ec/docs/write_protection.md`.\n\nI don\u0027t think this is the right document for a detailed explanation of what RO and RW images are.",
+      "parentUuid": "b778ad83_79c214f3",
       "range": {
         "startLine": 22,
         "startChar": 24,

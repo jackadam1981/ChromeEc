@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6835a1e2_bc710756",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-13T20:57:09Z",
+      "side": 1,
+      "message": "Thanks for doing some research of existing `md` files. The *explicit* examples I have seen are usually single lines, which makes sense.\n\nFor multi-line commands I have seen an example [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/docs/unit_tests.md;l\u003d185) which is aligned with what I used.",
+      "parentUuid": "98b133f8_27986e17",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "86fe99f7e16fbf7ea4029d40fbbcd2f5d56d2f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d3b5924_51cb1fca",
