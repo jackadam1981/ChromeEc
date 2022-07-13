@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f850c28_9fe5a60d",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-13T15:37:45Z",
+      "side": 1,
+      "message": "Now I feel very dense. Done.",
+      "parentUuid": "541a8584_3f7f2ce7",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 77
+      },
+      "revId": "344f512316aa9cd8ed8ebf07e5ef07c3a0b02822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96ea3a7e_1eed400f",
@@ -109,6 +133,30 @@
       "writtenOn": "2022-07-13T15:24:21Z",
       "side": 1,
       "message": "Indentation seems off. Run black?",
+      "range": {
+        "startLine": 234,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 11
+      },
+      "revId": "344f512316aa9cd8ed8ebf07e5ef07c3a0b02822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "482c59f0_badedc7a",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-13T15:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96ea3a7e_1eed400f",
       "range": {
         "startLine": 234,
         "startChar": 3,
