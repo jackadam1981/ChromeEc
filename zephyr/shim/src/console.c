@@ -3,12 +3,6 @@
  * found in the LICENSE file.
  */
 
-/*
- * TODO(b/238433667): Include EC printf functions
- * (crec_vsnprintf/crec_snprintf) until we switch to the standard
- * vsnprintf/snprintf.
- */
-#include "builtin/stdio.h"
 #include "console.h"
 #include "printf.h"
 #include "task.h"
@@ -17,6 +11,7 @@
 #include "zephyr_console_shim.h"
 
 #include <stdbool.h>
+#include <stdio.h>
 #include <string.h>
 
 #include <zephyr/device.h>
@@ -550,7 +545,7 @@ int cvprintf(enum console_channel channel, const char *format, va_list args)
 	if (console_channel_is_disabled(channel))
 		return EC_SUCCESS;
 
-	rv = crec_vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
+	rv = vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
 	handle_sprintf_rv(rv, &len);
 
 	zephyr_print(buff, len);
@@ -586,16 +581,14 @@ int cvprints(enum console_channel channel, const char *format, va_list args)
 	rv = snprintf_timestamp_now(buff + len, sizeof(buff) - len);
 	handle_sprintf_rv(rv, &len);
 
-	rv = crec_snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			   " ");
+	rv = snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len, " ");
 	handle_sprintf_rv(rv, &len);
 
-	rv = crec_vsnprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			    format, args);
+	rv = vsnprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len, format,
+		       args);
 	handle_sprintf_rv(rv, &len);
 
-	rv = crec_snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			   "]\n");
+	rv = snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len, "]\n");
 	handle_sprintf_rv(rv, &len);
 
 	zephyr_print(buff, len);
