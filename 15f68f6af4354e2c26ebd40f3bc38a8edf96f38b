@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee2f56e_d39cc70a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-13T16:55:09Z",
+      "side": 1,
+      "message": "These tests should be broken up with before/after functions to reset the HW revision, but that\u0027s for another CL.",
+      "revId": "15f68f6af4354e2c26ebd40f3bc38a8edf96f38b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
