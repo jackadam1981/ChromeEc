@@ -567,6 +567,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2983b263_f6952479",
+        "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-13T22:54:33Z",
+      "side": 1,
+      "message": "We had talked about over chat this needs to be a subcommand of zmake. I will file a bug to make sure the cleanup gets handled since it looks like this merged already.",
+      "parentUuid": "0f1cacc8_5f6956c2",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "1c2fa9f2835980ef893df2b091ab091cc0fb9229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b648d216_db42bc97",
         "filename": "zephyr/zmake/zephyr_build_tools/generate_ec_version.py",
         "patchSetId": 6
