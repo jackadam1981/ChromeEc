@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17f495a_c35b7d8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-13T21:38:39Z",
+      "side": 1,
+      "message": "I take it that this CL is an experiment. Ultimately, perhaps this should be a utility library that gets linked into tests by default. Do we expect to actually use the real `interrupt_generator` in any tests?",
+      "revId": "8ba011cc693b3babc33580226ca8d747c6a173ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
