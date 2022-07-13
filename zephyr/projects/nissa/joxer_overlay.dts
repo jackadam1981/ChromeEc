@@ -96,6 +96,22 @@
 		 * EC doesn't take any specific action on CC/SBU disconnect due to
 		 * fault, but this definition is useful for hardware testing.
 		 */
+		gpio_pwm_led_1_odl: pwm_led_1_odl {
+			gpios = <&gpioa 1 GPIO_OUTPUT_LOW>;
+		};
+		gpio_pwm_led_2_odl: pwm_led_2_odl {
+			gpios = <&gpioa 2 GPIO_OUTPUT_LOW>;
+		};
+		gpio_led_3_l: led_3_l {
+			gpios = <&gpiol 2 GPIO_OUTPUT_LOW>;
+		};
+		gpio_pwm_led_4_l: led_4_l {
+			gpios = <&gpiol 3 GPIO_OUTPUT_LOW>;
+		};
+		gpio_tablet_mode_l: tablet_mode_l {
+			gpios = <&gpioj 7 GPIO_INPUT>;
+			enum-name = "GPIO_TABLET_MODE_L";
+		};
 		gpio_usb_c0_prot_fault_odl: usb_c0_prot_fault_odl {
 			gpios = <&gpiok 6 GPIO_INPUT_PULL_UP>;
 		};
