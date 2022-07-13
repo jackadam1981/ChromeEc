@@ -39,6 +39,23 @@
       "message": "When you find issues like this the same error is likely replicated across the codebase and it\u0027s nice to clean up all of them if it\u0027s easy. I think the following will do it:\n\n```\nfor f in $(find . -name \u0027*.md\u0027);\n  do printf \u0027%s\u0027 \"$(cat ${f})\" \u003e ${f};\ndone\n```\n\n(If you do a scripted cleanup, make sure to include the commands run in the commit message.)",
       "revId": "588c2ba7f7be545d080a2e3b2782d2e3da01e318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "906b061a_226eb184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548047
+      },
+      "writtenOn": "2022-07-13T19:48:48Z",
+      "side": 1,
+      "message": "This specific file had its trailing newlines removed by another CL and I ran cros lint on everything and there weren\u0027t any trivial fixes to be made so I am going to abandon this CL.",
+      "revId": "588c2ba7f7be545d080a2e3b2782d2e3da01e318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
