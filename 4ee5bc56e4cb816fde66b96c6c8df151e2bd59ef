@@ -16,6 +16,40 @@
       "message": "As discussed in the meeting, compal team will update a doc to the buganizer to explain the recovery problem.",
       "revId": "4ee5bc56e4cb816fde66b96c6c8df151e2bd59ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549971d6_682b9289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-13T00:31:48Z",
+      "side": 1,
+      "message": "I\u0027m not 100% aligned on the purpose of this CL. It would be better to correct the keyboard matrix for id2 and avoid workarounds.",
+      "revId": "4ee5bc56e4cb816fde66b96c6c8df151e2bd59ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6252f20e_99f444f7",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-13T00:31:48Z",
+      "side": 1,
+      "message": "Please define a proper config (for example CONFIG_KEYBOARD_SKIP_KEYS_ON_BOOT) in config.h. This should be done in a separate CL.",
+      "revId": "4ee5bc56e4cb816fde66b96c6c8df151e2bd59ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
