@@ -70,6 +70,53 @@
       },
       "revId": "344f512316aa9cd8ed8ebf07e5ef07c3a0b02822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541a8584_3f7f2ce7",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-13T15:24:21Z",
+      "side": 1,
+      "message": "Note that this code cannot be executed from an ebuild context due to this referencing the relative paths in the source tree, not the places that cros_workon will check things out.\n\nI think that\u0027s fine, we just need to add a big warning to run_tests that the code should not be called from ebuilds.",
+      "parentUuid": "5aa9ebc9_e838fd47",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 77
+      },
+      "revId": "344f512316aa9cd8ed8ebf07e5ef07c3a0b02822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ea3a7e_1eed400f",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-13T15:24:21Z",
+      "side": 1,
+      "message": "Indentation seems off. Run black?",
+      "range": {
+        "startLine": 234,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 11
+      },
+      "revId": "344f512316aa9cd8ed8ebf07e5ef07c3a0b02822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
