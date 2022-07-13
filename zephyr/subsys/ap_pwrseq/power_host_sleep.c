@@ -5,6 +5,7 @@
 
 #include <ap_power/ap_power_interface.h>
 #include <ap_power/ap_pwrseq.h>
+#include <x86_non_dsx_common_pwrseq_host_sleep.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
@@ -187,6 +188,7 @@ void ap_power_sleep_notify_transition(enum ap_power_sleep_type check_state)
 void ap_power_reset_host_sleep_state(void)
 {
 	power_set_host_sleep_state(HOST_SLEEP_EVENT_DEFAULT_RESET);
+	sleep_reset_tracking();
 	ap_power_chipset_handle_host_sleep_event(HOST_SLEEP_EVENT_DEFAULT_RESET,
 						 NULL);
 }
@@ -210,6 +212,7 @@ void ap_power_chipset_handle_host_sleep_event(
 		 * notification needs to be sent to listeners.
 		 */
 		ap_power_sleep_set_notify(AP_POWER_SLEEP_SUSPEND);
+		sleep_start_suspend(ctx);
 		power_signal_enable(PWR_SLP_S0);
 
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
@@ -220,6 +223,7 @@ void ap_power_chipset_handle_host_sleep_event(
 		ap_power_sleep_set_notify(AP_POWER_SLEEP_RESUME);
 		power_s0ix_resume_restore_masks();
 		power_signal_disable(PWR_SLP_S0);
+		sleep_complete_resume(ctx);
 
 		/*
 		 * If the sleep signal timed out and never transitioned, then
@@ -235,5 +239,127 @@ void ap_power_chipset_handle_host_sleep_event(
 #endif /* CONFIG_AP_PWRSEQ_S0IX */
 	ap_pwrseq_wake();
 }
+
+#ifdef CONFIG_AP_PWRSEQ_S0IX_ERROR_RECOVERY
+
+static uint16_t sleep_signal_timeout;
+static uint16_t host_sleep_timeout_default = CONFIG_SLEEP_TIMEOUT_MS;
+static uint32_t sleep_signal_transitions;
+static enum sleep_hang_type timeout_hang_type;
+
+static void sleep_transition_timeout(struct k_work *work);
+
+static K_WORK_DELAYABLE_DEFINE(sleep_transition_timeout_data,
+			       sleep_transition_timeout);
+
+static void sleep_transition_timeout(struct k_work *work)
+{
+	/* Mark the timeout. */
+	sleep_signal_transitions |= EC_HOST_RESUME_SLEEP_TIMEOUT;
+	k_work_cancel_delayable(&sleep_transition_timeout_data);
+
+	if (timeout_hang_type != SLEEP_HANG_NONE) {
+		power_chipset_handle_sleep_hang(timeout_hang_type);
+	}
+}
+
+static void sleep_increment_transition(void)
+{
+	if ((sleep_signal_transitions & EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK) <
+	    EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK)
+		sleep_signal_transitions += 1;
+}
+
+void sleep_suspend_transition(void)
+{
+	sleep_increment_transition();
+	k_work_cancel_delayable(&sleep_transition_timeout_data);
+}
+
+void sleep_resume_transition(void)
+{
+	sleep_increment_transition();
+
+	/*
+	 * Start the timer again to ensure the AP doesn't get itself stuck in
+	 * a state where it's no longer in a sleep state (S0ix/S3), but from
+	 * the Linux perspective is still suspended. Perhaps a bug in the SoC-
+	 * internal periodic housekeeping code might result in a situation
+	 * like this.
+	 */
+	if (sleep_signal_timeout) {
+		timeout_hang_type = SLEEP_HANG_S0IX_RESUME;
+		k_work_schedule(&sleep_transition_timeout_data,
+				K_MSEC(sleep_signal_timeout));
+	}
+}
+
+void sleep_start_suspend(struct host_sleep_event_context *ctx)
+{
+	uint16_t timeout = ctx->sleep_timeout_ms;
+
+	sleep_signal_transitions = 0;
+
+	/* Use 0xFFFF to disable the timeout */
+	if (timeout == EC_HOST_SLEEP_TIMEOUT_INFINITE) {
+		sleep_signal_timeout = 0;
+		return;
+	}
+
+	/* Use zero internally to indicate host doesn't set timeout value;
+	 * we will use default timeout.
+	 */
+	if (timeout == EC_HOST_SLEEP_TIMEOUT_DEFAULT) {
+		timeout = host_sleep_timeout_default;
+	}
+
+	sleep_signal_timeout = timeout;
+	timeout_hang_type = SLEEP_HANG_S0IX_SUSPEND;
+	k_work_schedule(&sleep_transition_timeout_data, K_MSEC(timeout));
+}
+
+void sleep_complete_resume(struct host_sleep_event_context *ctx)
+{
+	/*
+	 * Ensure we don't schedule another sleep_transition_timeout
+	 * if the the HOST_SLEEP_EVENT_S0IX_RESUME message arrives before
+	 * the CHIPSET task transitions to the POWER_S0ixS0 state.
+	 */
+	sleep_signal_timeout = 0;
+	k_work_cancel_delayable(&sleep_transition_timeout_data);
+	ctx->sleep_transitions = sleep_signal_transitions;
+}
+
+void sleep_reset_tracking(void)
+{
+	sleep_signal_transitions = 0;
+	sleep_signal_timeout = 0;
+	timeout_hang_type = SLEEP_HANG_NONE;
+}
+
+#else /* !CONFIG_AP_PWRSEQ_S0IX_ERROR_RECOVERY */
+
+/* No action */
+void sleep_suspend_transition(void)
+{
+}
+
+void sleep_resume_transition(void)
+{
+}
+
+void sleep_start_suspend(struct host_sleep_event_context *ctx)
+{
+}
+
+void sleep_complete_resume(struct host_sleep_event_context *ctx)
+{
+}
+
+void sleep_reset_tracking(void)
+{
+}
+
+#endif /* CONFIG_AP_PWRSEQ_S0IX_ERROR_RECOVERY */
 
 #endif /* CONFIG_AP_PWRSEQ_HOST_SLEEP */
