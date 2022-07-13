@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7379afad_13efe5ea",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-13T03:09:53Z",
+      "side": 1,
+      "message": "Is there ever a time we would want this option to be off?\nCan we just assume that we want the right ID?\nMaybe we can just check PLATFORM_EC_USB_PD_TCPM_PS8745 and if this is set\nassume we need to disambiguate.",
+      "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
