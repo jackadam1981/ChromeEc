@@ -52,6 +52,24 @@
       "parentUuid": "7405b004_b5f6c985",
       "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "823ffad0_c1f57300",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-13T03:50:38Z",
+      "side": 1,
+      "message": "Yes; version 0x20 (which is on every device that hasn\u0027t yet been updated, AFAIK) says it\u0027s a PS8815-A2, whereas version 0x02 says it\u0027s a PS8745 with device ID 3 (which is less wrong, but still wrong). Future versions will probably have correct IDs.",
+      "parentUuid": "05536b32_d417aed3",
+      "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
