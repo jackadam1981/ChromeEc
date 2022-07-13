@@ -566,3 +566,11 @@ add_dependencies(app ec_version_header)
 
 # Include the directory containing the generated header.
 zephyr_include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")
+
+# MEMFAULT integration
+# Latest Zephyr port is v2.4
+set(ENV{MEMFAULT_ZEPHYR_PORT_TARGET} v2.4)
+set(ENV{MEMFAULT_SDK_DIR} ${CMAKE_CURRENT_LIST_DIR}/../third_party/memfault/memfault-firmware-sdk)
+set(MEMFAULT_ZEPHYR_PORT_TARGET $ENV{MEMFAULT_ZEPHYR_PORT_TARGET})
+
+cros_ec_library_include_directories(memfault)

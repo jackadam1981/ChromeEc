@@ -22,6 +22,19 @@
 #include "zephyr_espi_shim.h"
 #include "ec_app_main.h"
 
+#ifdef CONFIG_MEMFAULT
+#include "memfault/components.h"
+
+void memfault_platform_get_device_info(sMemfaultDeviceInfo *info) {
+  *info = (sMemfaultDeviceInfo) {
+    .device_serial = "herobrine",
+    .software_type = "zephyr0ec",
+    .software_version = "1.0.0-dev",
+    .hardware_version = "boardid0",
+  };
+}
+#endif
+
 /* For testing purposes this is not named main. See main_shim.c for the real
  * main() function.
  */
@@ -91,6 +104,11 @@ void ec_app_main(void)
 	 * the majority of the time.
 	 */
 	cprints(CC_SYSTEM, "Inits done");
+
+#ifdef CONFIG_MEMFAULT
+	cprints(CC_SYSTEM, "Memfault initialization");
+	memfault_device_info_dump();
+#endif
 
 	/* Start the EC tasks after performing all main initialization */
 	if (IS_ENABLED(CONFIG_SHIMMED_TASKS)) {

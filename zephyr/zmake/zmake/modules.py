@@ -25,6 +25,7 @@ known_modules = {
     "cmsis": third_party_module,
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
     "nanopb": third_party_module,
+    "memfault": lambda name, checkout: (checkout / "src" / "platform" / "ec" / "third_party" / "memfault" / "memfault-firmware-sdk"),
 }
 
 
