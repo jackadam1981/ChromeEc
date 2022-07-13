@@ -3076,6 +3076,11 @@
  */
 #undef CONFIG_8042_AUX
 
+/*
+ *  ignore any non-boot key press during EC is checking the boot key
+ */
+#undef CONFIG_KEYBOARD_SKIP_KEYS_ON_BOOT
+
 /*****************************************************************************/
 
 /*
