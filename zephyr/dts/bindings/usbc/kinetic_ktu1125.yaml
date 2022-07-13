@@ -1,0 +1,14 @@
+description: USBC PPC
+
+compatible: "kinetic,ktu1125"
+
+include: ppc-chip.yaml
+
+properties:
+  i2c-addr-flags:
+    default: "KTU1125_ADDR0_FLAGS"
+    enum:
+      - "KTU1125_ADDR0_FLAGS"
+      - "KTU1125_ADDR1_FLAGS"
+      - "KTU1125_ADDR2_FLAGS"
+      - "KTU1125_ADDR3_FLAGS"

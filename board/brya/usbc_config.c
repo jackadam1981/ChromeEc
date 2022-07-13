@@ -13,6 +13,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "driver/bc12/pi3usb9201_public.h"
+#include "driver/ppc/ktu1125_public.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/retimer/bb_retimer_public.h"
@@ -101,6 +102,7 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 /******************************************************************************/
 
 /* USBC PPC configuration */
+#ifndef CONFIG_ZEPHYR
 struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
@@ -124,7 +126,7 @@ struct ppc_config_t ppc_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
 
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
-
+#endif
 /* USBC mux configuration - Alder Lake includes internal mux */
 static const struct usb_mux usbc0_tcss_usb_mux = {
 	.usb_port = USBC_PORT_C0,
@@ -486,7 +488,7 @@ void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
-		syv682x_interrupt(USBC_PORT_C0);
+		ktu1125_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C1_PPC_INT_ODL:
 		switch (ec_cfg_usb_db_type()) {

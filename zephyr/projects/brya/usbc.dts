@@ -34,6 +34,13 @@
 				status = "okay";
 				port = <&i2c_charger>;
 			};
+			ppc {
+				compatible = "kinetic,ktu1125";
+				status = "okay";
+				port = <&ppc0_2>;
+				i2c-addr-flags = "KTU1125_ADDR0_FLAGS";
+			};
+
 		};
 
 		port1@1 {
