@@ -22,6 +22,53 @@
       },
       "revId": "4442a5b8a5a7bfb728bf9fbd3be400bc8817ad26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e48b98d_10b708cd",
+        "filename": "zephyr/projects/corsola/prj_krabby.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-07-13T08:18:55Z",
+      "side": 1,
+      "message": "Does it misunderstand?\nconfig SOC_USBPD_ITE_ACTIVE_PORT_COUNT default value is 0 in upstream.",
+      "parentUuid": "2fc9ea3f_4bb0b5a4",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "4442a5b8a5a7bfb728bf9fbd3be400bc8817ad26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "058843ef_38a64557",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-07-13T08:18:55Z",
+      "side": 1,
+      "message": "Change name for upstream reviewer requestion.",
+      "range": {
+        "startLine": 1367,
+        "startChar": 36,
+        "endLine": 1367,
+        "endChar": 71
+      },
+      "revId": "4442a5b8a5a7bfb728bf9fbd3be400bc8817ad26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
