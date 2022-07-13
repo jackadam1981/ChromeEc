@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "085345bf_3d490ce8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-07-13T22:17:09Z",
+      "side": 1,
+      "message": "Is there any problem if the servo v4.x NAK\u0027s the DiscID here?\n\nIf a Type-C dongle doesn\u0027t support the DP, e.g. a normal USB hub, the dongle NAK\u0027s the DiscID, right?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "7340f391ca9f8b41d543ef15fa15f3cfa9ca0ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f630200c_d4e91524",
