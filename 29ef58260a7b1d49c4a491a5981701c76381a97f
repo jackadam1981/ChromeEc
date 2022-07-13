@@ -34,6 +34,24 @@
       "parentUuid": "7379afad_13efe5ea",
       "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05536b32_d417aed3",
+        "filename": "zephyr/Kconfig.tcpm",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-13T03:23:38Z",
+      "side": 1,
+      "message": "Hmm OK are you actually seeing different f/w versions that give different results?\nHow would we know when to disable this option? I imagine older chips had some issues, but we don\u0027t want to generate new Kconfig options just for the sake of it.",
+      "parentUuid": "7405b004_b5f6c985",
+      "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
