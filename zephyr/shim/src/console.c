@@ -388,7 +388,7 @@ int cprintf(enum console_channel channel, const char *format, ...)
 		return EC_SUCCESS;
 
 	va_start(args, format);
-	rv = crec_vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
+	rv = vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
 	va_end(args);
 	handle_sprintf_rv(rv, &len);
 
@@ -412,13 +412,12 @@ int cprints(enum console_channel channel, const char *format, ...)
 	handle_sprintf_rv(rv, &len);
 
 	va_start(args, format);
-	rv = crec_vsnprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			    format, args);
+	rv = vsnprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len, format,
+		       args);
 	va_end(args);
 	handle_sprintf_rv(rv, &len);
 
-	rv = crec_snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			   "]\n");
+	rv = snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len, "]\n");
 	handle_sprintf_rv(rv, &len);
 
 	zephyr_print(buff, len);
