@@ -34,6 +34,24 @@
       "parentUuid": "c9793654_a43f3cac",
       "revId": "452a51a67de2cf8be501bbf593e5d03827ed1ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66cc3192_f9fe79f1",
+        "filename": "zephyr/include/ap_power/ap_power_espi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-13T04:58:11Z",
+      "side": 1,
+      "message": "I think we still need to clearly document here that the application must arrange for this to be called in response to the listed events.\n\nThe macro for the event types is good, but there should be text clearly indicating how you should use it. Adding a pointer in plaintext docs as in https://crrev.com/c/3586434 would be particularly useful so users don\u0027t need to discover requirements by looking in random header files.",
+      "parentUuid": "289fadae_8d4e6cd8",
+      "revId": "452a51a67de2cf8be501bbf593e5d03827ed1ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
