@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98b133f8_27986e17",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-13T15:50:35Z",
+      "side": 1,
+      "message": "Good question. I had never looked into this before but I remember seeing docs with code blocks that you can copy but the shell prompt doesn\u0027t copy. Looking into it I found this [g3doc-markdown](go/g3doc-markdown#shell-code-blocks) doc but I couldn\u0027t find anything similar in the gitiles docs except for this section about [specifying bash in code blocks](https://gerrit.googlesource.com/gitiles/+/HEAD/Documentation/markdown.md#scripting) but that doesn\u0027t appear to add the prompt.\n\nLooking through other examples it seems like sometimes lines begin with `(chroot) $` [[1]](https://crrev.com/bebee6c32dbc28804f0ebccf48b7fda5800e6c2a/docs/write_protection.md#enable-hardware-write-protection) [[2]](https://crrev.com/bebee6c32dbc28804f0ebccf48b7fda5800e6c2a/docs/fingerprint/fingerprint-debugging.md#software) [[3]](https://crrev.com/bebee6c32dbc28804f0ebccf48b7fda5800e6c2a/docs/fingerprint/fingerprint-firmware-testing-for-partners.md#build-the-autotest-codebase)), sometimes it is specified above the code block [[4]](https://crrev.com/bebee6c32dbc28804f0ebccf48b7fda5800e6c2a/docs/hammer.md#build-ec), and sometimes it is just in the text [[5]](https://crrev.com/bebee6c32dbc28804f0ebccf48b7fda5800e6c2a/docs/getting_started_quickly.md#building).\n\nMy preference is generally for the most explicit option `(chroot) $ ` because it\u0027s less likely to be misread but it does make copy/paste slightly more difficult. As long as we\u0027re keeping consistent with the one of the existing inconsistencies I think we\u0027re okay though. 😄",
+      "parentUuid": "4aadd78a_c76acbaf",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "86fe99f7e16fbf7ea4029d40fbbcd2f5d56d2f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d3b5924_51cb1fca",
         "filename": "docs/ide-support.md",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Strange! I thought this would apply only to the current repository.\n\nIn that case, I agree that cherry-picking the specific commit is better.\nHow about using the `repo` command? That is:\n\n```\nrepo download -c chromiumos/chromite 3744666\n```",
       "parentUuid": "5d3b5924_51cb1fca",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 45
+      },
+      "revId": "86fe99f7e16fbf7ea4029d40fbbcd2f5d56d2f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0425abda_0ba79e0d",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-13T15:50:35Z",
+      "side": 1,
+      "message": "Yes, that\u0027s perfect, I wasn\u0027t previously aware that it existed 😂",
+      "parentUuid": "81caa545_30f4ef14",
       "range": {
         "startLine": 83,
         "startChar": 4,

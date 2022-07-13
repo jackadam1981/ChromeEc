@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "affd8ce6_a38b2b16",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-13T15:50:35Z",
+      "side": 1,
+      "message": "Good point, maybe just put some text in stating that \"if an existing `compile_commands.json` file exists, it will be overwritten\"?",
+      "parentUuid": "12b4b1b9_fea4ac74",
+      "revId": "b79e91923bfbbd906ddcb5ee21cabaa1dc222938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15de80f1_f3a82b57",
         "filename": "docs/ide-support.md",
         "patchSetId": 2
