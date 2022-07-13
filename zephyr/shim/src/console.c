@@ -11,18 +11,13 @@
 #endif
 #include <zephyr/shell/shell_uart.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <string.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/ring_buffer.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-/*
- * TODO(b/238433667): Include EC printf functions
- * (crec_vsnprintf/crec_snprintf) until we switch to the standard
- * vsnprintf/snprintf.
- */
-#include "builtin/stdio.h"
 #include "console.h"
 #include "printf.h"
 #include "task.h"
@@ -410,7 +405,7 @@ int cprintf(enum console_channel channel, const char *format, ...)
 		return EC_SUCCESS;
 
 	va_start(args, format);
-	rv = crec_vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
+	rv = vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
 	va_end(args);
 	handle_sprintf_rv(rv, &len);
 
@@ -441,13 +436,12 @@ int cprints(enum console_channel channel, const char *format, ...)
 	handle_sprintf_rv(rv, &len);
 
 	va_start(args, format);
-	rv = crec_vsnprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			    format, args);
+	rv = vsnprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len, format,
+		       args);
 	va_end(args);
 	handle_sprintf_rv(rv, &len);
 
-	rv = crec_snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			   "]\n");
+	rv = snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len, "]\n");
 	handle_sprintf_rv(rv, &len);
 
 	zephyr_print(buff, len);
