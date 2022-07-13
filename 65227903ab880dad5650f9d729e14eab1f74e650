@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78f655f_721e4cd3",
+        "filename": "zephyr/projects/skyrim/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1544274
+      },
+      "writtenOn": "2022-07-13T00:52:31Z",
+      "side": 1,
+      "message": "Agreed 1\u003dpresent. This flag will be checked in newer boards.",
+      "parentUuid": "36492e39_659a5247",
+      "revId": "65227903ab880dad5650f9d729e14eab1f74e650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c4c9e28_135066dc",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5700038_13df949e",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1544274
+      },
+      "writtenOn": "2022-07-13T00:52:31Z",
+      "side": 1,
+      "message": "Removed GPIO definition in patchset 2.",
+      "parentUuid": "2c4c9e28_135066dc",
+      "range": {
+        "startLine": 85,
+        "startChar": 13,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "65227903ab880dad5650f9d729e14eab1f74e650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b54c019c_5458c051",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-07-12T15:49:09Z",
       "side": 1,
       "message": "Does this still build with the unimplemented GPIOS removed?",
+      "revId": "65227903ab880dad5650f9d729e14eab1f74e650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d900087b_4a616ef5",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1544274
+      },
+      "writtenOn": "2022-07-13T00:52:31Z",
+      "side": 1,
+      "message": "Brought back the unimplemented GPIOs",
+      "parentUuid": "b54c019c_5458c051",
       "revId": "65227903ab880dad5650f9d729e14eab1f74e650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
