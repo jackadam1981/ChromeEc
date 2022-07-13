@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ddf3219_bf39d3b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-13T04:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c9f632_ea1ec6c8",
+      "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7a4cdcc_edb5719a",
@@ -88,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf30567_83784fb9",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-13T04:51:51Z",
+      "side": 1,
+      "message": "I think `WRN` is more appropriate, but done otherwise.",
+      "parentUuid": "e7a4cdcc_edb5719a",
+      "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cff27257_1bfcc17c",
@@ -101,6 +137,24 @@
       "writtenOn": "2022-07-07T03:56:24Z",
       "side": 1,
       "message": "Can you add a LOG_ERR here?",
+      "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60262b86_8aa46e5b",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-13T04:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cff27257_1bfcc17c",
       "revId": "87318afcf15763a3add1c58a676a2d6131b2cb73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
