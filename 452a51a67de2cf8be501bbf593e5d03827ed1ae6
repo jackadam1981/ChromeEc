@@ -52,6 +52,24 @@
       "parentUuid": "289fadae_8d4e6cd8",
       "revId": "452a51a67de2cf8be501bbf593e5d03827ed1ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b98be1d_931f2cfd",
+        "filename": "zephyr/include/ap_power/ap_power_espi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-13T05:21:49Z",
+      "side": 1,
+      "message": "Hmm likely that doc itself isn\u0027t a great place, since it\u0027s more dealing with the config of the signals, not so much the internal ESPI signal plumbing.\n\nDocumenting it in signal_vw.c as well will help.\nIt seems fairly straightforward in terms of the requirements though.\nKeeping it internally within the ESPI handling seems reasonable.\nPerhaps I\u0027m missing something? I am not sure I am understanding...",
+      "parentUuid": "66cc3192_f9fe79f1",
+      "revId": "452a51a67de2cf8be501bbf593e5d03827ed1ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
