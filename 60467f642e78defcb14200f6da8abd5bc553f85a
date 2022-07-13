@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "766196f0_3a974529",
+        "filename": "builtin/stdlib.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-13T23:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ca730a_a491f05b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba81ffae_83cce808",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3559252_c46784d7",
+        "filename": "builtin/stdlib.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-13T23:41:28Z",
+      "side": 1,
+      "message": "I created CLs to remove the custom formats and replace them with standalone functions that can be used in EC or Zephyr (see earlier CLs in the stack).",
+      "parentUuid": "36249a79_3607f50c",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64c7b509_cc23f0ae",
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb3e464_036f47ec",
+        "filename": "test/printf.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-13T23:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c7b509_cc23f0ae",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a272f88_b0ae3a59",
@@ -107,6 +179,30 @@
       "writtenOn": "2022-07-07T21:05:20Z",
       "side": 1,
       "message": "Can this be `\u003cstdio.h\u003e`?",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "60467f642e78defcb14200f6da8abd5bc553f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6930f95b_8e5552e7",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-13T23:41:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a272f88_b0ae3a59",
       "range": {
         "startLine": 20,
         "startChar": 9,
