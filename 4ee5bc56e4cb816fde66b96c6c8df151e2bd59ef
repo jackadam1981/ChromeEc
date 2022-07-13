@@ -104,6 +104,24 @@
       "parentUuid": "6252f20e_99f444f7",
       "revId": "4ee5bc56e4cb816fde66b96c6c8df151e2bd59ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3fdd40f_651c1731",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-07-13T03:01:39Z",
+      "side": 1,
+      "message": "Separate CL for common config (crrev.com/c/3759826).",
+      "parentUuid": "d3613541_63ce8909",
+      "revId": "4ee5bc56e4cb816fde66b96c6c8df151e2bd59ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
