@@ -13,4 +13,8 @@
 #define ASSERT __ASSERT_NO_MSG
 #define assert __ASSERT_NO_MSG
 
+#ifdef CONFIG_MEMFAULT
+#define MEMFAULT_NORETURN __attribute__((__noreturn__))
+#endif
+
 #endif /* __CROS_EC_ASSERT_H */
