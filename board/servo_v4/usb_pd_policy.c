@@ -811,13 +811,31 @@ uint32_t vdo_dp_mode[MODE_CNT];
 
 static int svdm_response_modes(int port, uint32_t *payload)
 {
-	vdo_dp_mode[0] = VDO_MODE_DP(0, /* UFP pin cfg supported: none */
-				     alt_dp_config_pins(), /* DFP pin */
-				     1, /* no usb2.0 signalling in AMode */
-				     alt_dp_config_cable(), /* plug or
-							       receptacle */
-				     MODE_DP_V13, /* DPv1.3 Support, no Gen2 */
-				     MODE_DP_SNK); /* Its a sink only */
+
+	int ufp_pins = 0;
+	int dfp_pins = 0;
+
+	switch (alt_dp_config_cable()) {
+	case CABLE_RECEPTACLE:
+		ufp_pins = alt_dp_config_pins();
+		dfp_pins = 0;
+		break;
+	case CABLE_PLUG:
+		ufp_pins = 0;
+		dfp_pins = alt_dp_config_pins();
+		break;
+	default:
+		CPRINTS("Bad cable config! [%d]", alt_dp_config_cable());
+		return 0; /* NAK */
+	}
+
+	vdo_dp_mode[0] = VDO_MODE_DP(
+			ufp_pins, /* UFP pin cfg (receptacle) */
+			dfp_pins, /* DFP pin cfg (plug) */
+			1, /* no usb2.0 signalling in AMode */
+			alt_dp_config_cable(), /* plug or receptacle */
+			MODE_DP_V13, /* DPv1.3 Support, no Gen2 */
+			MODE_DP_SNK); /* Its a sink only */
 
 	/* Setting "AltModes" bit in DiscID MANDATES a reply here */
 
