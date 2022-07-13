@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cfc4775_56d103fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-07-13T16:33:36Z",
+      "side": 1,
+      "message": "Increasing margin a bit more as today\u0027s EC tip either has some optimizations or something changed which is making 500 ms a bit less reliable. I may need to check it periodically in case any other change disturbs this delay. Thanks.",
+      "revId": "d23acaea3a2d981be68839077ee744d298baad72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
