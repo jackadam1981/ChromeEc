@@ -16,6 +16,24 @@
       "message": "Have you test if it will not effect the behavior of changing power source in S0?",
       "revId": "dc9ec07c0852c12cbe2a31af4d98e7f9c1819920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b427e408_19ac3621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-07-13T08:49:57Z",
+      "side": 1,
+      "message": "Yes, the EC log does not have the Requested charge port change info.",
+      "parentUuid": "b4f8959c_375099c2",
+      "revId": "dc9ec07c0852c12cbe2a31af4d98e7f9c1819920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
