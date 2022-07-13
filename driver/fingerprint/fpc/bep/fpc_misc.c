@@ -47,5 +47,9 @@ void __unused fpc_log_var(const char *source, uint8_t level, const char *format,
 
 uint32_t abs(int32_t a)
 {
-	return (a < 0) ? (uint32_t)(-a) : (uint32_t)a;
+	/*
+	 * b/236025198: According to FPC, this should never be called. It was
+	 * only used for test applications.
+	 */
+	ASSERT(false);
 }
