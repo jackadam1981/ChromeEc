@@ -34,6 +34,24 @@
       "parentUuid": "567da0d3_83878e42",
       "revId": "cb4bf31c086db1931db11910aaf255705d8023ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebbf32e1_d068eefe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-13T05:55:41Z",
+      "side": 1,
+      "message": "I added a [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3759824) to reduce flash size. Thank you Abe !",
+      "parentUuid": "11d1ada5_18d82f75",
+      "revId": "cb4bf31c086db1931db11910aaf255705d8023ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
