@@ -105,6 +105,24 @@
       "parentUuid": "a35cf37b_2c28ce17",
       "revId": "811c6adc7792a893dce33da7a66af6937cc2b50c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f704c07_259eade2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-13T20:43:06Z",
+      "side": 1,
+      "message": "From my discussion with Keith yesterday, if we\u0027re going to have alternative PPC and mux configs and maybe alternative TCPC configs to represent varying hardware in the same build, the DTS might be easier to read if we had entire alternative port nodes (with just one hardware config inside of them).\n\nBut this API change seems fine. I didn\u0027t check all 500 board files 😊",
+      "parentUuid": "0cb63be6_5190d064",
+      "revId": "811c6adc7792a893dce33da7a66af6937cc2b50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
