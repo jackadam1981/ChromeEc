@@ -22,6 +22,30 @@
       },
       "revId": "2f82aa3316b4bca5b5b3e916855220ef552cacca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f595189_3ad3e07a",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-13T15:45:28Z",
+      "side": 1,
+      "message": "Sounds good. Do note that cros lint already checks isort though, so you may not need that one.",
+      "parentUuid": "a060cdeb_1c9435e1",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 63
+      },
+      "revId": "2f82aa3316b4bca5b5b3e916855220ef552cacca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
