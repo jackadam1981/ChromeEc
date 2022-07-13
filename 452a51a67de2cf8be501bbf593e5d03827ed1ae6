@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9793654_a43f3cac",
+        "filename": "zephyr/include/ap_power/ap_power_espi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-13T03:53:08Z",
+      "side": 1,
+      "message": "Document that the application must ensure this callback is called on the required events (and enumerate which ones) in order for VW signals to be handled correctly.",
+      "revId": "452a51a67de2cf8be501bbf593e5d03827ed1ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
