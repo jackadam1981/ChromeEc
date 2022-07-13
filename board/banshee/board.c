@@ -127,6 +127,12 @@ __override void board_pre_task_i2c_peripheral_init(void)
 {
 	/* Configure board specific keyboard */
 	configure_keyboard();
+
+	/* Workaround for b:238683420 with board id = 2*/
+	if (board_id >= 2) {
+		udelay(500 * MSEC);
+		CPRINTS("Add delay to check boot key");
+	}
 }
 
 __override uint8_t board_keyboard_row_refresh(void)
