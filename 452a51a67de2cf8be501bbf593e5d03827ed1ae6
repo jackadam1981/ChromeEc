@@ -70,6 +70,24 @@
       "parentUuid": "66cc3192_f9fe79f1",
       "revId": "452a51a67de2cf8be501bbf593e5d03827ed1ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fac9aa_5328acae",
+        "filename": "zephyr/include/ap_power/ap_power_espi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-13T06:04:01Z",
+      "side": 1,
+      "message": "I was mostly just musing on how this sort of thing should ideally go in proper documentation, which this doesn\u0027t currently have. The docs on the function seem fine now.",
+      "parentUuid": "7b98be1d_931f2cfd",
+      "revId": "452a51a67de2cf8be501bbf593e5d03827ed1ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
