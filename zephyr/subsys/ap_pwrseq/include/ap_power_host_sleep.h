@@ -56,4 +56,40 @@ enum ap_power_sleep_type ap_power_sleep_get_notify(void);
 void ap_power_sleep_notify_transition(enum ap_power_sleep_type check_state);
 #endif /* CONFIG_AP_PWRSEQ_S0IX */
 
+/**
+ * Type of sleep hang detected
+ */
+enum sleep_hang_type {
+	SLEEP_HANG_NONE,
+	SLEEP_HANG_S0IX_SUSPEND,
+	SLEEP_HANG_S0IX_RESUME
+};
+
+/**
+ * Start the suspend process.
+ *
+ * It is called in power_chipset_handle_host_sleep_event(), after it receives
+ * a host sleep event to hint that the suspend process starts.
+ *
+ * power_chipset_handle_sleep_hang() and power_board_handle_sleep_hang() will
+ * be called when a sleep hang is detected.
+ *
+ * @param ctx Possible sleep parameters and return values, depending on state.
+ */
+void sleep_start_suspend(struct host_sleep_event_context *ctx);
+
+/**
+ * Complete the resume process.
+ *
+ * It is called in power_chipset_handle_host_sleep_event(), after it receives
+ * a host sleep event to hint that the resume process completes.
+ *
+ * @param ctx Possible sleep parameters and return values, depending on state.
+ */
+void sleep_complete_resume(struct host_sleep_event_context *ctx);
+
+/**
+ * Reset the transition counter and timer.
+ */
+void sleep_reset_tracking(void);
 #endif /* __AP_PWRSEQ_HOST_SLEEP_H */
