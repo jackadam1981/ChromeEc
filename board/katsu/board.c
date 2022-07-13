@@ -13,6 +13,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_icm_common.h"
 #include "driver/accelgyro_icm426xx.h"
 #include "driver/charger/rt946x.h"
@@ -54,6 +55,10 @@ static void gauge_interrupt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_CHARGER);
 }
+
+#ifdef SECTION_IS_RW
+static void motion_interrupt(enum gpio_signal signal);
+#endif /* SECTION_IS_RW */
 
 #include "gpio_list.h"
 
@@ -392,7 +397,90 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+static struct bmi_drv_data_t g_bmi260_data;
+
+const mat33_fp_t lid_ref_bmi260 = {
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
+struct motion_sensor_t bmi260_lid_accel = {
+	 .name = "Lid Accel",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMI260,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi260_drv,
+	 .mutex = &g_lid_mutex,
+	 .drv_data = &g_bmi260_data,
+	 .port = I2C_PORT_ACCEL,
+	 .i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
+	 .rot_standard_ref = &lid_ref_bmi260,
+	 .min_frequency = BMI_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI_ACCEL_MAX_FREQ,
+	 .config = {
+		[SENSOR_CONFIG_EC_S0] = {
+				.odr = TAP_ODR,
+				.ec_rate = 100 * MSEC,
+		},
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = TAP_ODR,
+			.ec_rate = 100 * MSEC,
+		},
+	 },
+};
+
+struct motion_sensor_t bmi260_lid_gyro = {
+	 .name = "Lid Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMI260,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi260_drv,
+	 .mutex = &g_lid_mutex,
+	 .drv_data = &g_bmi260_data,
+	 .port = I2C_PORT_ACCEL,
+	 .i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+	 .default_range = 1000, /* dps */
+	 .rot_standard_ref = &lid_ref_bmi260,
+	 .min_frequency = BMI_GYRO_MIN_FREQ,
+	 .max_frequency = BMI_GYRO_MAX_FREQ,
+};
+
+static bool is_bmi260_present;
+
+static void board_detect_bmi260(void)
+{
+	int id = -1;
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+
+	/* Detect accelgyro chip */
+	bmi_read8(I2C_PORT_ACCEL, BMI260_ADDR0_FLAGS, BMI260_CHIP_ID, &id);
+	if (id == BMI260_CHIP_ID_MAJOR) {
+		is_bmi260_present = true;
+		motion_sensors[LID_ACCEL] = bmi260_lid_accel;
+		motion_sensors[LID_GYRO] = bmi260_lid_gyro;
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_detect_bmi260, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_detect_bmi260, HOOK_PRIO_DEFAULT + 1);
+
 #endif /* VARIANT_KUKUI_NO_SENSORS */
+
+#ifdef SECTION_IS_RW
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (is_bmi260_present)
+		bmi260_interrupt(signal);
+	else
+		icm426xx_interrupt(signal);
+}
+#endif /* SECTION_IS_RW */
 
 /*
  * Return if VBUS is sagging too low
