@@ -51,14 +51,22 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 		.rpm = &node_id##_rpm,   \
 	},
 
-#define FAN_CONTROL_INST(node_id)                                      \
-	[node_id] = {                                                  \
-		.pwm = DEVICE_DT_GET(DT_PWMS_CTLR(node_id)),           \
-		.channel = DT_PWMS_CHANNEL(node_id),                   \
-		.flags = DT_PWMS_FLAGS(node_id),                       \
-		.period_ns = (NSEC_PER_SEC / DT_PWMS_PERIOD(node_id)), \
-		.tach = DEVICE_DT_GET(DT_PHANDLE(node_id, tach)),      \
+#define FAN_CONTROL_INST(node_id)                                 \
+	[node_id] = {                                             \
+		.pwm_dt_spec = PWM_DT_SPEC_GET(node_id),          \
+		.tach = DEVICE_DT_GET(DT_PHANDLE(node_id, tach)), \
 	},
+
+#define FAN_PWM_DEV(pwm_dt_spec) (pwm_dt_spec.dev)
+
+#define FAN_PWM_CHANNEL(pwm_dt_spec) (pwm_dt_spec.channel)
+
+#define FAN_PWM_FLAGS(pwm_dt_spec) (pwm_dt_spec.flags)
+
+#define FAN_PWM_PERIOD(pwm_dt_spec) (pwm_dt_spec.period)
+
+#define FAN_PWM_PERIOD_NS(pwm_dt_spec) \
+	(NSEC_PER_SEC / FAN_PWM_PERIOD(pwm_dt_spec))
 
 DT_INST_FOREACH_CHILD(0, FAN_CONFIGS)
 
@@ -102,10 +110,7 @@ struct fan_data {
 
 /* Data structure to define PWM and tachometer. */
 struct fan_config {
-	const struct device *pwm;
-	uint32_t channel;
-	pwm_flags_t flags;
-	uint32_t period_ns;
+	struct pwm_dt_spec pwm_dt_spec;
 
 	const struct device *tach;
 };
@@ -122,25 +127,31 @@ static void fan_pwm_update(int ch)
 	uint32_t pulse_ns;
 	int ret;
 
-	if (!device_is_ready(cfg->pwm)) {
-		LOG_ERR("PWM device %s not ready", cfg->pwm->name);
+	if (!device_is_ready(FAN_PWM_DEV(cfg->pwm_dt_spec))) {
+		LOG_ERR("PWM device %s not ready",
+			FAN_PWM_DEV(cfg->pwm_dt_spec)->name);
 		return;
 	}
 
 	if (data->pwm_enabled) {
-		pulse_ns = DIV_ROUND_NEAREST(cfg->period_ns * data->pwm_percent,
-					     100);
+		pulse_ns = DIV_ROUND_NEAREST(
+			FAN_PWM_PERIOD_NS(cfg->pwm_dt_spec) * data->pwm_percent,
+			100);
 	} else {
 		pulse_ns = 0;
 	}
 
-	LOG_DBG("FAN PWM %s set percent (%d), pulse %d", cfg->pwm->name,
-		data->pwm_percent, pulse_ns);
+	LOG_DBG("FAN PWM %s set percent (%d), pulse %d",
+		FAN_PWM_DEV(cfg->pwm_dt_spec)->name, data->pwm_percent,
+		pulse_ns);
 
-	ret = pwm_set(cfg->pwm, cfg->channel, cfg->period_ns, pulse_ns,
-		      cfg->flags);
+	ret = pwm_set(FAN_PWM_DEV(cfg->pwm_dt_spec),
+		      FAN_PWM_CHANNEL(cfg->pwm_dt_spec),
+		      FAN_PWM_PERIOD_NS(cfg->pwm_dt_spec), pulse_ns,
+		      FAN_PWM_FLAGS(cfg->pwm_dt_spec));
 	if (ret) {
-		LOG_ERR("pwm_set() failed %s (%d)", cfg->pwm->name, ret);
+		LOG_ERR("pwm_set() failed %s (%d)",
+			FAN_PWM_DEV(cfg->pwm_dt_spec)->name, ret);
 	}
 }
 
