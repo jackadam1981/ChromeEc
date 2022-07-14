@@ -11,3 +11,5 @@ include: bmi160.yaml
 properties:
   default-range:
     default: 1000
+  gyro:
+    default: 1

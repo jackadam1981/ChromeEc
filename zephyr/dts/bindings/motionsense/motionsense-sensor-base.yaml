@@ -65,6 +65,10 @@ properties:
   int-signal:
     type: phandle
     description: pin which triggers interrupt for sensor
+  gyro:
+    type: int
+    required: false
+    description: Indicates that the sensor is a gyroscope
 
 #
 # examples:

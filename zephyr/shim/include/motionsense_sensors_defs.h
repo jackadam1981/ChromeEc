@@ -20,14 +20,28 @@
 		   (COND_CODE_0(DT_NODE_HAS_PROP(id, alternate_for), \
 				(SENSOR_ID(id), ), ())))
 
+#define ACCEL_ID_WITH_COMMA(id) \
+	COND_CODE_0(DT_NODE_HAS_PROP(id, gyro), (SENSOR_ID_WITH_COMMA(id)), ())
+
+#define GYRO_ID_WITH_COMMA(id) \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, gyro), (SENSOR_ID_WITH_COMMA(id)), ())
+
+/*
+ * The order of the IDs is important, accelerometers must come
+ * first, followed by gyros. The sensor processing task assumes
+ * this order.
+ */
 enum sensor_id {
 #if DT_NODE_EXISTS(SENSOR_NODE)
-	DT_FOREACH_CHILD(SENSOR_NODE, SENSOR_ID_WITH_COMMA)
+	DT_FOREACH_CHILD(SENSOR_NODE, ACCEL_ID_WITH_COMMA)
+		DT_FOREACH_CHILD(SENSOR_NODE, GYRO_ID_WITH_COMMA)
 #endif
-		SENSOR_COUNT,
+			SENSOR_COUNT,
 };
 
 #undef SENSOR_ID_WITH_COMMA
+#undef ACCEL_ID_WITH_COMMA
+#undef GYRO_ID_WITH_COMMA
 /* Define the SENSOR_ID if:
  * DT_NODE_HAS_STATUS(id, okay) && DT_NODE_HAS_PROP(id, alternate_for)
  */
