@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b790480d_6c906388",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-14T23:57:24Z",
+      "side": 1,
+      "message": "Remove this or also guard references to `s3_rail` in the same way, since currently lines 49 and 55 will fail to build if the alias doesn\u0027t exist.",
+      "revId": "dce7f53c502aff42ce31f2ee7c6eda7a031e0338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95a711d_4ff5c95c",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-14T23:57:24Z",
+      "side": 1,
+      "message": "Move this down so it\u0027s outside the unrelated `#if` and check the return value for errors accessing CBI.",
+      "revId": "dce7f53c502aff42ce31f2ee7c6eda7a031e0338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
