@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e84e42b_3e8bbc4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-14T01:25:20Z",
+      "side": 1,
+      "message": "We have a newer firmware that reports correct IDs, but most devices still have the old firmware. This patch is part of allowing them to be updated.",
+      "parentUuid": "8367eda7_e88a8ecc",
+      "range": {
+        "startLine": 9,
+        "startChar": 47,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "29ef58260a7b1d49c4a491a5981701c76381a97f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7379afad_13efe5ea",
