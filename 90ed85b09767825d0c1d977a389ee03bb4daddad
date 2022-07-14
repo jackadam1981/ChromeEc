@@ -16,6 +16,24 @@
       "message": "Is this change needed after https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3759129 ?",
       "revId": "90ed85b09767825d0c1d977a389ee03bb4daddad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951a1b35_608bec40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-07-14T00:39:07Z",
+      "side": 1,
+      "message": "oh, yes. didn\u0027t set dependency",
+      "parentUuid": "12f95a03_e9f535e2",
+      "revId": "90ed85b09767825d0c1d977a389ee03bb4daddad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
