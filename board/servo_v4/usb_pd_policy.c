@@ -1369,6 +1369,26 @@ static int cmd_usbc_action(int argc, char *argv[])
 		CPRINTF("DRP = %d, host_mode = %d\n",
 			!!(cc_config & CC_ENABLE_DRP),
 			!!(cc_config & CC_ALLOW_SRC));
+	} else if (!strcasecmp(argv[1], "reqma")) {
+		int request_ma;
+
+		if (argc != 3)
+			return EC_ERROR_PARAM2;
+
+		request_ma = atoi(argv[2]);
+		if (!request_ma)
+			return EC_ERROR_PARAM2;
+
+		pd_set_request_current_limit(request_ma);
+		do_cc(CONFIG_PDSNK(cc_config));
+		/*
+		 * TODO(b:140256624): servod captures 'chg SRC' keyword to
+		 * recognize if this command is supported in the firmware.
+		 * Drop this message if when we phase out the usbc_role control.
+		 */
+		ccprintf("CHG SNK CURR LIMIT %dmA\n", user_limited_max_mv);
+
+		pd_set_new_power_request(DUT);
 	} else if (!strcasecmp(argv[1], "chg")) {
 		int sink_v;
 
@@ -1417,5 +1437,6 @@ static int cmd_usbc_action(int argc, char *argv[])
 }
 DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
 			"5v|12v|20v|dev|pol0|pol1|drp|dp|chg x(x=voltage)|"
+			"reqma x(x=mA)|"
 			"drswap [1|0]|prswap [1|0]",
 			"Set Servo v4 type-C port state");
