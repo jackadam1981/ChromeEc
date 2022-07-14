@@ -39,7 +39,9 @@ def build(opts):
         for project in zmake.project.find_projects(zephyr_dir).values():
             if project.config.is_test:
                 continue
-            build_dir = platform_ec / "build" / "zephyr" / project.config.project_name
+            build_dir = (
+                platform_ec / "build" / "zephyr" / project.config.project_name
+            )
             metric = metric_list.value.add()
             metric.target_name = project.config.project_name
             metric.platform_name = project.config.zephyr_board
@@ -152,7 +154,9 @@ def bundle_firmware(opts):
     for project in zmake.project.find_projects(zephyr_dir).values():
         if project.config.is_test:
             continue
-        build_dir = platform_ec / "build" / "zephyr" / project.config.project_name
+        build_dir = (
+            platform_ec / "build" / "zephyr" / project.config.project_name
+        )
         artifacts_dir = build_dir / "output"
         tarball_name = f"{project.config.project_name}.firmware.tbz2"
         tarball_path = bundle_dir.joinpath(tarball_name)
@@ -223,7 +227,11 @@ def test(opts):
         subprocess.run(cmd, cwd=platform_ec, check=True)
 
         output = subprocess.run(
-            ["/usr/bin/lcov", "--summary", platform_ec / "build/coverage/lcov.info"],
+            [
+                "/usr/bin/lcov",
+                "--summary",
+                platform_ec / "build/coverage/lcov.info",
+            ],
             cwd=pathlib.Path(__file__).parent,
             check=True,
             stdout=subprocess.PIPE,
@@ -272,7 +280,9 @@ def test(opts):
     return 0
 
 
-COVERAGE_RE = re.compile(r"lines\.*: *([0-9\.]+)% \(([0-9]+) of ([0-9]+) lines\)")
+COVERAGE_RE = re.compile(
+    r"lines\.*: *([0-9\.]+)% \(([0-9]+) of ([0-9]+) lines\)"
+)
 
 
 def _extract_lcov_summary(name, metrics, output):
@@ -318,14 +328,18 @@ def parse_args(args):
         "--metadata",
         required=False,
         help=(
-            "Full pathname for the file in which to write build artifact " "metadata."
+            "Full pathname for the file in which to write build artifact "
+            "metadata."
         ),
     )
 
     parser.add_argument(
         "--output-dir",
         required=False,
-        help=("Full pathname for the directory in which to bundle build " "artifacts."),
+        help=(
+            "Full pathname for the directory in which to bundle build "
+            "artifacts."
+        ),
     )
 
     parser.add_argument(
