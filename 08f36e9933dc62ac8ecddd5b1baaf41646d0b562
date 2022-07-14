@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c03b8c7_0d414828",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-14T09:43:58Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this if shotzo only define SM5803.",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 465,
+        "endChar": 0
+      },
+      "revId": "08f36e9933dc62ac8ecddd5b1baaf41646d0b562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0548a75d_33f2d283",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-14T09:43:58Z",
+      "side": 1,
+      "message": "sm5803_is_acok",
+      "range": {
+        "startLine": 467,
+        "startChar": 7,
+        "endLine": 467,
+        "endChar": 17
+      },
+      "revId": "08f36e9933dc62ac8ecddd5b1baaf41646d0b562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
