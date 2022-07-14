@@ -102,7 +102,7 @@ static uint32_t pd_src_chg_pdo[ARRAY_SIZE(pd_src_voltages_mv)];
 static uint8_t chg_pdo_cnt;
 
 const uint32_t pd_snk_pdo[] = {
-		PDO_FIXED(5000, 500, CHG_PDO_FIXED_FLAGS),
+		PDO_FIXED(5000, 3000, CHG_PDO_FIXED_FLAGS),
 		PDO_BATT(4750, 21000, 15000),
 		PDO_VAR(4750, 21000, 3000),
 };
@@ -1200,6 +1200,28 @@ static int cmd_fake_disconnect(int argc, char *argv[])
 DECLARE_CONSOLE_COMMAND(fakedisconnect, cmd_fake_disconnect,
 			"<delay_ms> <duration_ms>", NULL);
 
+static int cmd_dut_srccaps(int argc, char *argv[])
+{
+	int i;
+	const uint32_t * const srccaps = pd_get_src_caps(DUT);
+
+	for (i = 0; i < pd_get_src_cap_cnt(CHG); ++i) {
+		uint32_t max_ma, max_mv, unused;
+
+		if (IS_ENABLED(CONFIG_USB_PD_ONLY_FIXED_PDOS) &&
+		    (srccaps[i] & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
+			continue;
+
+		pd_extract_pdo_power(srccaps[i], &max_ma, &max_mv, &unused);
+		ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dut_srccaps, cmd_dut_srccaps,
+			"",
+			"Print DUT SrcCap");
+
 static int cmd_ada_srccaps(int argc, char *argv[])
 {
 	int i;
@@ -1369,6 +1391,21 @@ static int cmd_usbc_action(int argc, char *argv[])
 		CPRINTF("DRP = %d, host_mode = %d\n",
 			!!(cc_config & CC_ENABLE_DRP),
 			!!(cc_config & CC_ALLOW_SRC));
+	} else if (!strcasecmp(argv[1], "reqma")) {
+		int request_ma;
+
+		if (argc != 3)
+			return EC_ERROR_PARAM2;
+
+		request_ma = atoi(argv[2]);
+		if (!request_ma)
+			return EC_ERROR_PARAM2;
+
+		pd_set_request_current_limit(request_ma);
+		do_cc(CONFIG_PDSNK(cc_config));
+		ccprintf("CHG SNK CURR LIMIT %dmA\n", request_ma);
+		pd_set_new_power_request(DUT);
+
 	} else if (!strcasecmp(argv[1], "chg")) {
 		int sink_v;
 
@@ -1417,5 +1454,6 @@ static int cmd_usbc_action(int argc, char *argv[])
 }
 DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
 			"5v|12v|20v|dev|pol0|pol1|drp|dp|chg x(x=voltage)|"
+			"reqma x(x=mA)|"
 			"drswap [1|0]|prswap [1|0]",
 			"Set Servo v4 type-C port state");

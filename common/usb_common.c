@@ -50,6 +50,9 @@ int usb_get_battery_soc(void)
 STATIC_IF_NOT(CONFIG_USB_PD_PREFER_MV)
 struct pd_pref_config_t __maybe_unused pd_pref_config;
 
+#define PD_REQUEST_CURR_LIMIT_DEFAULT 5000
+static uint32_t pd_request_curr_limit = PD_REQUEST_CURR_LIMIT_DEFAULT;
+
 /*
  * CC values for regular sources and Debug sources (aka DTS)
  *
@@ -295,6 +298,19 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *max_mv,
 	*ma = MIN(max_ma, PD_MAX_CURRENT_MA);
 }
 
+void pd_set_request_current_limit(int ma)
+{
+	if (ma < 0)
+		pd_request_curr_limit = PD_REQUEST_CURR_LIMIT_DEFAULT;
+	else
+		pd_request_curr_limit = ma;
+}
+
+int pd_get_request_current_limit(void)
+{
+	return pd_request_curr_limit;
+}
+
 void pd_build_request(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 			int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 			uint32_t *mv, enum pd_request_type req_type,
@@ -351,6 +367,8 @@ void pd_build_request(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	}
 
 	uw = *ma * *mv;
+
+	*ma = MIN(pd_request_curr_limit, *ma);
 	/* Mismatch bit set if less power offered than the operating power */
 	if (uw < (1000 * PD_OPERATING_POWER_MW))
 		flags |= RDO_CAP_MISMATCH;

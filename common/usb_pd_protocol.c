@@ -1509,6 +1509,7 @@ static int pd_send_request_msg(int port, int always_send_request)
 	const int max_request_allowed = 1;
 #endif
 
+	CPRINTS("\033[31m%s(%d, %d)\033[m", __func__, port, always_send_request);
 	/* Clear new power request */
 	pd[port].new_power_request = 0;
 
@@ -1524,8 +1525,12 @@ static int pd_send_request_msg(int port, int always_send_request)
 		pd_get_max_voltage());
 
 	if (!always_send_request) {
-		/* Don't re-request the same voltage */
-		if (pd[port].prev_request_mv == supply_voltage)
+		/*
+		 * Don't re-request when the requested current is the same and
+		 * Don't re-request the same voltage
+		 */
+		if (pd[port].curr_limit == curr_limit &&
+		    pd[port].prev_request_mv == supply_voltage)
 			return EC_SUCCESS;
 #ifdef CONFIG_CHARGE_MANAGER
 		/* Limit current to PD_MIN_MA during transition */
