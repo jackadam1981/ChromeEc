@@ -12,6 +12,7 @@
 #include "fan.h"
 #include "hooks.h"
 #include "pwm.h"
+#include "util.h"
 
 /* MFT channels. These are logically separate from pwm_channels. */
 const struct mft_t mft_channels[] = {
@@ -71,3 +72,142 @@ const struct fan_t fans[FAN_CH_COUNT] = {
 		.rpm = &fan_rpm_1,
 	},
 };
+
+/* fan control */
+
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
+
+struct fan_table_config {
+	/* number of control_table */
+	uint8_t step;
+	/* fan control table */
+	const struct fan_step *control_table;
+};
+
+const struct fan_step fan_table0[] = {
+	{ .on = 30, .off = 0, .rpm = 3000 },
+	{ .on = 47, .off = 43, .rpm = 3200 },
+	{ .on = 50, .off = 47, .rpm = 3500 },
+	{ .on = 53, .off = 50, .rpm = 4500 },
+	{ .on = 56, .off = 53, .rpm = 5500 },
+	{ .on = 59, .off = 56, .rpm = 6000 },
+};
+const int fan_table0_count = ARRAY_SIZE(fan_table0);
+
+const struct fan_step fan_table1[] = {
+	{ .on = 32, .off = 0, .rpm = 0 },
+	{ .on = 55, .off = 52, .rpm = 4600 },
+	{ .on = 58, .off = 55, .rpm = 5600 },
+	{ .on = 61, .off = 58, .rpm = 6000 },
+};
+const int fan_table1_count = ARRAY_SIZE(fan_table1);
+
+/* Fan control configuration */
+static struct fan_table_config fan_tables[] = {
+	[FAN_CH_0] = {
+		.step = fan_table0_count,
+		.control_table = (const struct fan_step *) &fan_table0,
+	},
+	[FAN_CH_1] = {
+		.step = fan_table1_count,
+		.control_table = (const struct fan_step *) &fan_table1,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(fan_tables) == FAN_CH_COUNT);
+
+static int current_level[] = { 0, 0 };
+BUILD_ASSERT(ARRAY_SIZE(current_level) == FAN_CH_COUNT);
+
+static int previous_level[] = { 0, 0 };
+BUILD_ASSERT(ARRAY_SIZE(previous_level) == FAN_CH_COUNT);
+
+#define BOARD_FAN_TEST
+
+#ifdef BOARD_FAN_TEST
+static int manual_temp = -1;
+#endif
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static struct fan_table_config *fan_table;
+	static int previous_pct;
+	int i;
+
+	fan_table = &fan_tables[fan];
+
+#ifdef BOARD_FAN_TEST
+	if (manual_temp != -1)
+		pct = manual_temp;
+#endif
+
+	/*
+	 * Compare the pct and previous pct, we have the three paths :
+	 *  1. decreasing path. (check the off point)
+	 *  2. increasing path. (check the on point)
+	 *  3. invariant path. (return the current RPM)
+	 */
+	if (pct < previous_pct) {
+		for (i = current_level[fan]; i >= 0; i--) {
+			if (pct <= fan_table->control_table[i].off)
+				current_level[fan] = i - 1;
+			else
+				break;
+		}
+	} else if (pct > previous_pct) {
+		for (i = current_level[fan] + 1; i < fan_table->step; i++) {
+			if (pct >= fan_table->control_table[i].on)
+				current_level[fan] = i;
+			else
+				break;
+		}
+	}
+
+	if (current_level[fan] < 0)
+		current_level[fan] = 0;
+
+	if (current_level[fan] != previous_level[fan])
+		cprints(CC_THERMAL, "Fan %d: Set fan RPM to %d", fan,
+			fan_table->control_table[current_level[fan]].rpm);
+
+	if (fan == (FAN_CH_COUNT - 1))
+		previous_pct = pct;
+
+#ifdef BOARD_FAN_TEST
+	if (manual_temp != -1)
+		ccprints("Fan%d: temps:%d curr:%d prev:%d rpm:%d", fan, pct,
+			 current_level[fan], previous_level[fan],
+			 fan_table->control_table[current_level[fan]].rpm);
+#endif
+
+	previous_level[fan] = current_level[fan];
+
+	return fan_table->control_table[current_level[fan]].rpm;
+}
+
+#ifdef BOARD_FAN_TEST
+static int command_thermal_test(int argc, char **argv)
+{
+	char *e;
+	int t;
+
+	if (argc > 1) {
+		t = strtoi(argv[1], &e, 0);
+		if (*e) {
+			ccprints("Invalid test temp");
+			return EC_ERROR_INVAL;
+		}
+		manual_temp = t;
+		ccprints("manual temp is %d", manual_temp);
+		return EC_SUCCESS;
+	}
+	manual_temp = -1;
+	ccprints("manual temp reset");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(tt, command_thermal_test, "[temperature]",
+			"set manual temperature for fan test");
+#endif
