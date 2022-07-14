@@ -16,6 +16,24 @@
       "message": "Could you #define these values?",
       "revId": "751c2f6fc58674da6575e08aa5e5400333c6432b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30d7abf_08dbab33",
+        "filename": "zephyr/projects/skyrim/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-14T22:47:28Z",
+      "side": 1,
+      "message": "We could.  I was torn about how much support to put in for a temporary workaround. Usually I\u0027m a strong advocate of chip accesses being limited to driver files, but in this case the lift seems unnecessary most likely (unless the pcore OCP discussion resolves to require EC intervention, in which case we should definitely put in a full driver).\n\nSince we have the new datasheet now, we can actually put names to all the fields. I\u0027ll whip up some defines tomorrow and update",
+      "parentUuid": "5cf0f95f_7d12d246",
+      "revId": "751c2f6fc58674da6575e08aa5e5400333c6432b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
