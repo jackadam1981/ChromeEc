@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d099938_7eaaa6dd",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-07-14T05:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803f0b82_acd1cf57",
+      "revId": "d93ef9c1549cc8374b8b8a03af92ff787c0e1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f538cd8a_3260b99d",
@@ -70,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6224520_391b79ea",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-07-14T05:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f538cd8a_3260b99d",
+      "revId": "d93ef9c1549cc8374b8b8a03af92ff787c0e1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67bd4605_beb93413",
@@ -83,6 +119,24 @@
       "writtenOn": "2022-07-12T23:52:35Z",
       "side": 1,
       "message": "If we\u0027re going to do this, we should simply never control this pin instead. Disabling the pin in sleep breaks wake on HDMI if the pin does anything (it\u0027s not connected on board version 2+), so if we\u0027re going to assume the pin is unneeded we should remove all code that touches it.",
+      "revId": "d93ef9c1549cc8374b8b8a03af92ff787c0e1a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9913cdbb_dbb95dd9",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-07-14T05:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67bd4605_beb93413",
       "revId": "d93ef9c1549cc8374b8b8a03af92ff787c0e1a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
