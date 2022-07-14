@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055a8366_a54f569e",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-14T12:27:37Z",
+      "side": 1,
+      "message": "If we can know the adapter current limit. Could we use charger PROCHOT# to limit SOC/DGPU(EC_GPU_ACOFF_ODL) power to prevent OC?",
+      "range": {
+        "startLine": 99,
+        "startChar": 32,
+        "endLine": 99,
+        "endChar": 36
+      },
+      "revId": "e958d2e3d6ce3601acae96efa95d7dfca216393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
