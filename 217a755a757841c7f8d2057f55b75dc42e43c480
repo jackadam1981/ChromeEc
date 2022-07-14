@@ -46,6 +46,30 @@
       },
       "revId": "217a755a757841c7f8d2057f55b75dc42e43c480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335ee22e_74ee7856",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-07-14T02:41:52Z",
+      "side": 1,
+      "message": "\u003e Yes, `PRE_INIT` is emitted after `SLP_SUS` is deasserted and before `RSMRST`. \nAck.\n\n\u003e `HARD_OFF` should similarly be emitted on force shutdown (and if it\u0027s not that\u0027s a bug).\nVerify -1: I tried to shutdown the system by running apshutdown command but the eSPI pad is still enabled.",
+      "parentUuid": "f88942f6_8a1e1670",
+      "range": {
+        "startLine": 199,
+        "startChar": 6,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "217a755a757841c7f8d2057f55b75dc42e43c480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
