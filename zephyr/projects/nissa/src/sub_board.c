@@ -24,8 +24,8 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
-#define BOARD_HAS_HDMI_SUPPORT DT_NODE_EXISTS(DT_NODELABEL(gpio_hdmi_sel))
-#if BOARD_HAS_HDMI_SUPPORT
+#if NISSA_BOARD_HAS_HDMI_SUPPORT
+#include "nissa_hdmi.h"
 static void hdmi_power_handler(struct ap_power_ev_callback *cb,
 			       struct ap_power_ev_data data)
 {
@@ -68,7 +68,26 @@ static void hdmi_hpd_interrupt(const struct device *device,
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_hdmi_hpd), state);
 	LOG_DBG("HDMI HPD changed state to %d", state);
 }
-#endif
+
+void nissa_configure_hdmi_rails(void)
+{
+	gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+			      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+				      GPIO_PULL_UP | GPIO_ACTIVE_LOW);
+}
+
+void nissa_configure_hdmi_vcc(void)
+{
+	gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+			      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+				      GPIO_ACTIVE_LOW);
+}
+
+__overridable void nissa_configure_hdmi_power_gpios(void)
+{
+	nissa_configure_hdmi_rails();
+}
+#endif /* NISSA_BOARD_HAS_HDMI_SUPPORT */
 
 static void lte_power_handler(struct ap_power_ev_callback *cb,
 			      struct ap_power_ev_data data)
@@ -164,7 +183,7 @@ static void nereid_subboard_config(void)
 #endif
 
 	switch (sb) {
-#if BOARD_HAS_HDMI_SUPPORT
+#if NISSA_BOARD_HAS_HDMI_SUPPORT
 	case NISSA_SB_HDMI_A: {
 		/*
 		 * HDMI: two outputs control power which must be configured to
@@ -175,43 +194,23 @@ static void nereid_subboard_config(void)
 			GPIO_DT_FROM_ALIAS(gpio_hpd_odl);
 		static struct gpio_callback hdmi_hpd_cb;
 		int rv, irq_key;
-		bool use_vcc_enable = false;
+
+		nissa_configure_hdmi_power_gpios();
 
 #if CONFIG_SOC_IT8XXX2 && DT_NODE_EXISTS(I2C4_NODE)
 		/* disable i2c4 alternate function for better power number */
 		soc_it8xxx2_disable_i2c4_alt();
 #endif
-		/* HDMI power enable outputs */
-		if (IS_ENABLED(CONFIG_BOARD_NEREID)) {
-			/*
-			 * Nereid versions before 2 need hdmi-en-odl to be
-			 * pulled down to enable VCC on the HDMI port, but later
-			 * versions (and other boards) disconnect this so
-			 * the port's VCC directly follows en-rails-odl. Only
-			 * configure the GPIO if needed, to save power.
-			 */
-			uint32_t board_version = 0;
 
-			/* CBI errors ignored, will configure the pin */
-			cbi_get_board_version(&board_version);
-			if (board_version < 2) {
-				gpio_pin_configure_dt(
-					GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
-					GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
-						GPIO_ACTIVE_LOW);
-				use_vcc_enable = true;
-			}
-		}
-		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
-				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
-					      GPIO_PULL_UP | GPIO_ACTIVE_LOW);
-		/* Control HDMI power in concert with AP */
+		/*
+		 * Control HDMI power according to AP power state. Some events
+		 * won't do anything if the corresponding pin isn't configured,
+		 * but that's okay.
+		 */
 		ap_power_ev_init_callback(
 			&power_cb, hdmi_power_handler,
 			AP_POWER_PRE_INIT | AP_POWER_HARD_OFF |
-				(use_vcc_enable ?
-					 AP_POWER_STARTUP | AP_POWER_SHUTDOWN :
-					 0));
+				AP_POWER_STARTUP | AP_POWER_SHUTDOWN);
 		ap_power_ev_add_callback(&power_cb);
 
 		/*
