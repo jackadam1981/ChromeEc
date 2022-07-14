@@ -1,31 +1,18 @@
-/* Copyright 2022 The Chromium OS Authors. All rights reserved.
+/* Copyright 2022 The ChromiumOS Authors.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* Nissa common declarations */
+/* Nissa shared HDMI sub-board functionality */
 
 #ifndef __CROS_EC_NISSA_NISSA_COMMON_H__
 #define __CROS_EC_NISSA_NISSA_COMMON_H__
 
-#include "usb_mux.h"
+#include "common.h"
 
 /** True if the board supports an HDMI sub-board. */
 #define NISSA_BOARD_HAS_HDMI_SUPPORT DT_NODE_EXISTS(DT_NODELABEL(gpio_hdmi_sel))
 
-enum nissa_sub_board_type {
-	NISSA_SB_UNKNOWN = -1, /* Uninitialised */
-	NISSA_SB_NONE = 0, /* No board defined */
-	NISSA_SB_C_A = 1, /* USB type C, USB type A */
-	NISSA_SB_C_LTE = 2, /* USB type C, WWAN LTE */
-	NISSA_SB_HDMI_A = 3, /* HDMI, USB type A */
-};
-
-extern struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT];
-
-enum nissa_sub_board_type nissa_get_sb_type(void);
-
-#if NISSA_BOARD_HAS_HDMI_SUPPORT
 /**
  * Configure the GPIO that controls core rails on the HDMI sub-board.
  *
@@ -64,6 +51,5 @@ void nissa_configure_hdmi_vcc(void);
  * HDMI, or if some pins need to be conditionally enabled.
  */
 __overridable void nissa_configure_hdmi_power_gpios(void);
-#endif /* NISSA_BOARD_HAS_HDMI_SUPPORT */
 
 #endif /* __CROS_EC_NISSA_NISSA_COMMON_H__ */
