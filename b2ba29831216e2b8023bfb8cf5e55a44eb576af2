@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54610bc4_75c77615",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-14T16:24:14Z",
+      "side": 1,
+      "message": "`test_export_static` to prevent leakage outside this file beyond tests?",
+      "revId": "b2ba29831216e2b8023bfb8cf5e55a44eb576af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d4f62c_a2040569",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-14T16:24:14Z",
+      "side": 1,
+      "message": "Can fit on one line I think",
+      "revId": "b2ba29831216e2b8023bfb8cf5e55a44eb576af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
