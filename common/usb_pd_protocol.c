@@ -1524,6 +1524,9 @@ static int pd_send_request_msg(int port, int always_send_request)
 		pd_get_max_voltage());
 
 	if (!always_send_request) {
+		/* Don't re-request when the requested current is below  */
+		if (pd[port].curr_limit == curr_limit)
+			return EC_SUCCESS;
 		/* Don't re-request the same voltage */
 		if (pd[port].prev_request_mv == supply_voltage)
 			return EC_SUCCESS;
