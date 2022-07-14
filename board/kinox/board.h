@@ -112,6 +112,10 @@
 /* ADC */
 #define CONFIG_ADC
 
+/* Reference voltage toterance +-1% */
+#define TOTERANCE_MIN (999 / 1000)
+#define ADC_MAX_VOLT_MIN (ADC_MAX_VOLT * TOTERANCE_MIN)
+
 /*
  * TODO(b/197478860): Enable the fan control. We need
  * to check the sensor value and adjust the fan speed.
