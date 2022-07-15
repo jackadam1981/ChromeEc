@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9532b289_01d86558",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-15T06:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45a3b684_9c2bec64",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "6b19c3127c95e75666e7f2f330179bbe01a3a777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c090fa4d_8c48399a",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-07-15T06:05:33Z",
       "side": 1,
       "message": "Maybe \"when this event is triggered,\" since \"after\" is unclear about whether the state is valid during this callback.",
+      "range": {
+        "startLine": 103,
+        "startChar": 17,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "6b19c3127c95e75666e7f2f330179bbe01a3a777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e27ec65_24c28b17",
+        "filename": "zephyr/include/ap_power/ap_power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-15T06:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cad9b9f_00ff35ca",
       "range": {
         "startLine": 103,
         "startChar": 17,
