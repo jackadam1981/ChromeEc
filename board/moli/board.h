@@ -181,6 +181,19 @@ enum fan_channel { FAN_CH_0 = 0, FAN_CH_COUNT };
 
 enum mft_channel { MFT_CH_0 = 0, MFT_CH_COUNT };
 
+enum monitor_port {
+	HDMI1_MONITOR,
+	HDMI2_MONITOR,
+	OPTION_MONITOR,
+	MONITOR_COUNT
+};
+
+enum monitor_state { MONITOR_OFF, MONITOR_ON };
+
+enum ec_config_power_on_by_monitor {
+	POWER_ON_BY_MONITOR_ENABLE = 0,
+	POWER_ON_BY_MONITOR_DISABLE = 1
+};
 uint8_t ec_config_power_on_by_monitor(void);
 
 /*
@@ -197,6 +210,7 @@ uint8_t ec_config_power_on_by_monitor(void);
 #define EC_CFG_POWER_ON_BY_MONITOR 7
 
 extern void adp_connect_interrupt(enum gpio_signal signal);
+extern void monitor_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
