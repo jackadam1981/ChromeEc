@@ -487,11 +487,11 @@ static int emul_ln9310_init(const struct emul *emul,
 #define LN9310_GET_GPIO_INT_PIN(n) \
 	DT_GPIO_PIN(DT_INST_PROP(n, pg_int_pin), gpios)
 
-#define INIT_LN9310(n)                                                           \
-	const struct ln9310_config_t ln9310_config = {                           \
-		.i2c_port = NAMED_I2C(power),                                    \
-		.i2c_addr_flags = DT_INST_REG_ADDR(n),                           \
-	};                                                                       \
+#define INIT_LN9310(n)                                                         \
+	const struct ln9310_config_t ln9310_config = {                         \
+		.i2c_port = NAMED_I2C(i2c0),                                   \
+		.i2c_addr_flags = DT_INST_REG_ADDR(n),                         \
+	};                                                                     \
 	static struct ln9310_emul_data ln9310_emul_data_##n = {                \
 		.common = {                                                    \
 			.start_write = ln9310_emul_start_write,                \
