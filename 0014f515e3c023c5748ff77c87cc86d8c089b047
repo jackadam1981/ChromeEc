@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "229c4f5d_e0ca2529",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-15T01:38:13Z",
+      "side": 1,
+      "message": "Yes, it\u0027s hard to find the best place for it.\nIt belongs where IT8XXX2 and ESPI and power events intersect, wherever that is.\nI don\u0027t think there will be a perfect place. Maybe the shim.\nThere are IT8XXX2 specific drivers in drivers/. Maybe one of these may be more suitable. I think it does need to be somwewhere common so that this does not become a board level function that needs to be cut\u0027n\u0027pasted.\n\nInit dependency is the thing to ensure that a callback solution\nworks correctly. I think as long as we say the power sequence init is always done at APPLICATION level, anything that registers callbacks before then should be fine.\nIf you registered via a PRE_KERNEL or POST_KERNEL, that\u0027s pretty clear.\nIf the init dependency was OK, you wouldn\u0027t have to worry about a READY event, since presumably you would be guaranteed to get a PRE_INIT or SHUTDOWN callback at the right time.\nThe interesting question arises as to whether some events need to be generated at the start once the state of the AP is known - all the current events are just that - \u0027events\u0027 caused by transitions, not states, so I think it is reasonable to add another event that says the power sequence init is done and the AP state is known (as you say, a \u0027READY\u0027 event).\n\nI would less inclined on the idea of treating a READY registeration specially - I think this can be solved by having a clear contract that any callback registrations must take place before APPLICATION init, otherwise events may be lost. These seems consistent with the rest of the Zephyr model.",
+      "parentUuid": "5e51b50f_66fa28f2",
+      "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6e6dead_aa2b3ce1",
         "filename": "zephyr/projects/nissa/src/board_power.c",
         "patchSetId": 3
