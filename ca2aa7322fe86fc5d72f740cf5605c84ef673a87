@@ -16,6 +16,24 @@
       "message": "Just because `HDMI_NODE` isn\u0027t a very clear name, maybe abstract this out a little more:\n\n```\n#define BOARD_HAS_HDMI_SUPPORT DT_NODE_EXISTS(DT_NODELABEL(gpio_hdmi_sel))\n\n#if BOARD_HAS_HDMI_SUPPORT\n...\n#endif\n```",
       "revId": "ca2aa7322fe86fc5d72f740cf5605c84ef673a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "319231b1_c2e3d112",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-07-15T05:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b9e2f6d_68b5f290",
+      "revId": "ca2aa7322fe86fc5d72f740cf5605c84ef673a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
