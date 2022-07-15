@@ -16,6 +16,29 @@
       "message": "Hey, just realized now:\n\n```\ncommit ca5a4fe994ba0dcb520620343f989b1add03338b (HEAD)\nAuthor: madhurimaparuchuri \u003cmparuchuri@google.com\u003e\nDate:   Fri Jul 15 23:07:20 2022 +0530\n\n    zephyr: shim: fan: Replace multiple members of \u0027fan_config\u0027 structure with \u0027pwm_dt_spec\u0027\n```\n\nYou probably want to look into your ~/.gitconfig to set user.name correctly (look ath the \"Author\" line), it\u0027s usually done with `git config --global user.name`. It\u0027s the same data used to sign the patch, I presume you are not using `git commit -s` now...",
       "revId": "ca5a4fe994ba0dcb520620343f989b1add03338b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b28862e_e8e914c0",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-15T18:23:12Z",
+      "side": 1,
+      "message": "Drop the parenthesis, \u0026cfg-\u003epwm should work just fine.",
+      "range": {
+        "startLine": 135,
+        "startChar": 19,
+        "endLine": 135,
+        "endChar": 29
+      },
+      "revId": "ca5a4fe994ba0dcb520620343f989b1add03338b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
