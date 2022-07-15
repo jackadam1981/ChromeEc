@@ -3,9 +3,11 @@
  * found in the LICENSE file.
  */
 
-#include <fff.h>
+#include <functional>
+
+#include <zephyr/fff.h>
 #include <zephyr/shell/shell.h>
-#include <ztest.h>
+#include <zephyr/ztest.h>
 
 #include "accelgyro.h"
 #include "console.h"
@@ -53,9 +55,9 @@ static void console_cmd_accelread_before(void *fixture)
 
 static void console_cmd_accelread_after(void *fixture)
 {
-	struct console_cmd_accelread_fixture *this = fixture;
-
-	motion_sensors[0].drv = this->sensor_0_drv;
+	motion_sensors[0].drv =
+		static_cast<struct console_cmd_accelread_fixture *>(fixture)
+			->sensor_0_drv;
 }
 
 ZTEST_SUITE(console_cmd_accelread, drivers_predicate_post_main,
@@ -87,17 +89,12 @@ ZTEST_USER(console_cmd_accelread, test_invalid_sensor_num)
 		      EC_ERROR_PARAM1, rv);
 }
 
-static struct console_cmd_accelread_fixture *current_fixture;
-
-int mock_read_call_super(const struct motion_sensor_t *s, int *v)
-{
-	return current_fixture->sensor_0_drv->read(s, v);
-}
-
 ZTEST_USER_F(console_cmd_accelread, test_read)
 {
-	current_fixture = fixture;
-	mock_read_fake.custom_fake = mock_read_call_super;
+	auto custom_fake = [/*fixture*/](const struct motion_sensor_t *s, int *v) {
+		return 0; //fixture->sensor_0_drv->read(s, v);
+	};
+	mock_read_fake.custom_fake = custom_fake;
 	mock_get_data_rate_fake.return_val = 100;
 	motion_sensors[0].drv = &fixture->mock_drv;
 
