@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe83abb_8302c5be",
+        "filename": "zephyr/include/ap_power/ap_power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-15T06:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c090fa4d_8c48399a",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "6b19c3127c95e75666e7f2f330179bbe01a3a777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cad9b9f_00ff35ca",
