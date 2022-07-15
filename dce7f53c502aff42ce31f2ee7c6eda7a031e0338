@@ -33,6 +33,23 @@
       "message": "Move this down so it\u0027s outside the unrelated `#if` and check the return value for errors accessing CBI.",
       "revId": "dce7f53c502aff42ce31f2ee7c6eda7a031e0338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156aaa00_074ffd58",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-15T00:48:14Z",
+      "side": 1,
+      "message": "An option here is to avoid the callbacks for _STARTUP and _SHUTDOWN if board_ver \u003c\u003d 1, so that they don\u0027t even get invoked:\n\nap_power_ev_init_callback(\n   \u0026power_cb, hdmi_power_handler,\n   AP_POWER_PRE_INIT | AP_POWER_HARD_OFF);\nif (board_ver \u003c\u003d 1) {\n   power_cb.events |\u003d AP_POWER_STARTUP | AP_POWER_SHUTDOWN;\n}\n\nSo that the check doesn\u0027t need to be made in the callback.\nThen you don\u0027t need to keep the board_ver cached value around, it can just be local to this function.",
+      "revId": "dce7f53c502aff42ce31f2ee7c6eda7a031e0338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
