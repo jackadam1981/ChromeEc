@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb7db9e_c1b76934",
+        "filename": "zephyr/projects/skyrim/adc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-15T20:46:07Z",
+      "side": 1,
+      "message": "Rename the node to \"cpu\" so that the `ectool temps all` output remains similar.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "d50df32a0686eb8271cd3bfddd740e9593dfa659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
