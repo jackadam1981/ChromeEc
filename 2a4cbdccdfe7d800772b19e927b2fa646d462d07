@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fafd4e_08f53630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-15T15:23:24Z",
+      "side": 1,
+      "message": "This looks great - it looks like you\u0027ll be able to migrate most (all?) our shim drivers onto the I2C bus.",
+      "revId": "2a4cbdccdfe7d800772b19e927b2fa646d462d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3877e8_458dffe9",
+        "filename": "zephyr/dts/bindings/usbc/pericom,pi3usb9201.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-15T15:23:24Z",
+      "side": 1,
+      "message": "This property can be deleted.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "2a4cbdccdfe7d800772b19e927b2fa646d462d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
