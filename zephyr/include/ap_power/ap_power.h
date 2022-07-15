@@ -9,7 +9,16 @@
  *
  * Defines the API for AP event notification,
  * the API to register and receive notification callbacks when
- * application processor (AP) events happen
+ * application processor (AP) events happen.
+ *
+ * When the Zephyr based AP power sequence config is enabled,
+ * the callbacks are almost all invoked within the context
+ * of the power sequence task context, so the state is stable
+ * during the callback. The only exception to this is AP_POWER_RESET, which is
+ * invoked as a result of receiving a PLTRST# virtual wire signal (if enabled).
+ *
+ * When the legacy power sequence config is enabled, the callbacks are invoked
+ * from the HOOK_CHIPSET notifications.
  */
 
 #ifndef __AP_POWER_AP_POWER_H__
@@ -87,6 +96,15 @@ enum ap_power_events {
 	AP_POWER_HARD_OFF = BIT(8),
 	/** Software reset occurred */
 	AP_POWER_RESET = BIT(9),
+	/**
+	 * AP power state is now known.
+	 *
+	 * Prior to this event, the state of the AP is unknown
+	 * and invalid. After this event, the state is known
+	 * and can be queried. Used by clients when their
+	 * initialisation depends upon the initial state of the AP.
+	 */
+	AP_POWER_INITIALIZED = BIT(10),
 };
 
 /**
