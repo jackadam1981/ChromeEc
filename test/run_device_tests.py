@@ -812,7 +812,8 @@ def main():
     validate_args_combination(args)
 
     board_config = BOARD_CONFIGS[args.board]
-    e = ThreadPoolExecutor(max_workers=1)
+    # ThreadPoolExecutor is shut down explicitly using non-default wait=False
+    e = ThreadPoolExecutor(max_workers=1)  # pylint: disable=consider-using-with
     test_list = get_test_list(board_config, args.tests)
     logging.debug("Running tests: %s", [test.config_name for test in test_list])
 
