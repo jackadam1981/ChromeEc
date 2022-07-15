@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f43d7c_bfef2ba0",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-15T05:34:25Z",
+      "side": 1,
+      "message": "This implies there is a node named \u0027board-has-hdmi-support\u0027, which is how I initially read it. Maybe better as:\n\n#define BOARD_HAS_HDMI_SUPPORT DT_NODE_EXISTS(DT_NODELABEL(gpio_hdmi_sel))\n\n#if BOARD_HAS_HDMI_SUPPORT\n...",
+      "revId": "bd383ca9a578326966b34b84f437ce4fd7ccd0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
