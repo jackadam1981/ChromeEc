@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e8f82b_4462c52f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-15T23:58:13Z",
+      "side": 1,
+      "message": "Should we change it to use `with` and remove the `e.shutdown(wait\u003dFalse)`? I can\u0027t remember why I used `wait\u003dFalse`. It may have been to try to avoid the hang we see after the tests finish, but it looks like `wait\u003dFalse` wouldn\u0027t fix that:\n\n```\nRegardless of the value of wait, the entire Python program will not exit until all pending futures are done executing.\n```",
+      "range": {
+        "startLine": 815,
+        "startChar": 4,
+        "endLine": 815,
+        "endChar": 77
+      },
+      "revId": "f2db98cb62c2e523cc97ff4d7a384a333ad8b288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
