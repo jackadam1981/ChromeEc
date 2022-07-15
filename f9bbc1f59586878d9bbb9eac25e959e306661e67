@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34928b50_c99f45ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-15T15:52:26Z",
+      "side": 1,
+      "message": "The gitlab build is failing after this cl. I have no idea why, but it is certainly this cl. Only the skyrim build is failing, but it\u0027s not failing in the chroot.\n\n```\nzmake build skyrim\n\n/usr/bin/objcopy: Unable to recognise the format of the input file `/builds/zephyr-ec/ec/build/skyrim/build-rw/modules/ec/shim/chip/npcx/npcx_monitor/npcx_monitor.elf\u0027\n```\n\nFull log: https://gitlab.com/zephyr-ec/ec/-/jobs/2724604404",
+      "revId": "f9bbc1f59586878d9bbb9eac25e959e306661e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

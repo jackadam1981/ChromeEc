@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3864e8_9f4e392b",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-15T15:52:26Z",
+      "side": 0,
+      "message": "This is causing these warnings to be printed during the build, it probably should have been project(ec) or project(skyrim) all along.\n\n```\nCMake Warning (dev) in CMakeLists.txt:\n  No project() command is present.  The top-level CMakeLists.txt file must\n  contain a literal, direct call to the project() command.  Add a line of\n  code such as\n    project(ProjectName)\n  near the top of the file, but after cmake_minimum_required().\n  CMake is pretending there is a \"project(Project)\" command on the first\n  line.\nThis warning is for project developers.  Use -Wno-dev to suppress it.\n\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 17
+      },
+      "revId": "64c42ed1907d5e66b827e1bf74b0892f5cb10c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
