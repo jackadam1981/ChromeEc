@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbdf412d_1e885c9e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-15T21:35:51Z",
+      "side": 1,
+      "message": "I don\u0027t understand? EC_MEMMAP_FAN was already space for 8 fans?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 68
+      },
+      "revId": "a9f0ba769147b91ff66d3b8463168dabf381430a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
