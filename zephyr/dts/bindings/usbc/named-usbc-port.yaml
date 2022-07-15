@@ -9,6 +9,9 @@ compatible: "named-usbc-port"
 include: base.yaml
 
 properties:
+  bc12:
+    type: phandles
+    required: false
   usb-muxes:
     type: phandles
     required: false
