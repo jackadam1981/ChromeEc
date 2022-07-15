@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef111f3_227e7d53",
+        "filename": "board/moli/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-07-15T07:53:54Z",
+      "side": 1,
+      "message": "i think you can simplify the code to:\n\nif (blue \u0026\u0026 duty) {\n    gpio_set_level(GPIO_LED_BLUE_CONTROL, 1);\n    pwm_set_duty(PWM_CH_LED_BLUE, duty);\n} else {\n    gpio_set_level(GPIO_LED_BLUE_CONTROL, 0);\n    pwm_set_duty(PWM_CH_LED_BLUE, 0);\n}",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "65e63b5364130761112cbc306410c8fe2e8acbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
