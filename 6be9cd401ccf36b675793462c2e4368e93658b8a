@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2921dc94_338afb58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-15T17:10:55Z",
+      "side": 1,
+      "message": "As a check you can run `./util/compare_build.sh -b all` to make sure that the compiled binaries are exactly the same.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "6be9cd401ccf36b675793462c2e4368e93658b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa508c0c_ea9bbc0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-15T17:10:55Z",
+      "side": 1,
+      "message": "Fingerprint-related files look fine.",
+      "revId": "6be9cd401ccf36b675793462c2e4368e93658b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
