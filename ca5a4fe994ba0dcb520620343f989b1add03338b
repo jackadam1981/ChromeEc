@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "305de2a9_9672834c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-07-15T19:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a8379ad_e5a1dcbe",
+      "revId": "ca5a4fe994ba0dcb520620343f989b1add03338b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b28862e_e8e914c0",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-15T18:23:12Z",
       "side": 1,
       "message": "Drop the parenthesis, \u0026cfg-\u003epwm should work just fine.",
+      "range": {
+        "startLine": 135,
+        "startChar": 19,
+        "endLine": 135,
+        "endChar": 29
+      },
+      "revId": "ca5a4fe994ba0dcb520620343f989b1add03338b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf81e1dc_09c0de9c",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-07-15T19:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b28862e_e8e914c0",
       "range": {
         "startLine": 135,
         "startChar": 19,
