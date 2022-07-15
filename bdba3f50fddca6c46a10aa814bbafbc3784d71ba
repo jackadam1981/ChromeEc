@@ -16,6 +16,29 @@
       "message": "This is an alternative to the approach in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3551682 for the random num command",
       "revId": "bdba3f50fddca6c46a10aa814bbafbc3784d71ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df0f2d5_9237aaf5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-15T20:58:38Z",
+      "side": 1,
+      "message": "This changes the semantics of the original struct. The `uint rand[0]` as the only item is a \"trick\" that takes advantage of the fact that the first item in a struct has the same address as the struct itself (in pseudocode: `addressof(struct ec_response_rand_num)) \u003d\u003d `addressof(ec_response_rand_num.rand)`).\n\n`rand[0]` doesn\u0027t actually provide any memory to hold the contents, so when this is used, we [use allocated memory](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/ectool.c;l\u003d1554;drc\u003dfa9398743f429539cbd2d987790bb2af4a9e6517).\n\nIf we change it to `rand[1]`, it looks like it\u0027s supposed to be an array of size 1 (i.e., there is memory already allocated and no allocation is needed).\n\nInstead, I think you can make the `BUILD_ASSERT` size conditional on C++ vs C.",
+      "range": {
+        "startLine": 1920,
+        "startChar": 1,
+        "endLine": 1920,
+        "endChar": 17
+      },
+      "revId": "bdba3f50fddca6c46a10aa814bbafbc3784d71ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
