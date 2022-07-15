@@ -14,17 +14,23 @@
 	DT_HAS_COMPAT_STATUS_OKAY(RT9490_BC12_COMPAT) || \
 	DT_HAS_COMPAT_STATUS_OKAY(PI3USB9201_COMPAT)
 
-#define BC12_CHIP(id, fn) [USBC_PORT(id)] = fn(id)
+#define BC12_CHIP_FIND(id)                                      \
+	COND_CODE_1(DT_NODE_HAS_COMPAT(id, RT1739_BC12_COMPAT), \
+		    (BC12_CHIP_RT1739(id)), ())                 \
+	COND_CODE_1(DT_NODE_HAS_COMPAT(id, RT9490_BC12_COMPAT), \
+		    (BC12_CHIP_RT9490(id)), ())                 \
+	COND_CODE_1(DT_NODE_HAS_COMPAT(id, PI3USB9201_COMPAT),  \
+		    (BC12_CHIP_PI3USB9201(id)), ())
+
+#define BC12_CHIP_ENTRY(usbc_id, bc12_id) \
+	[DT_REG_ADDR(usbc_id)] = BC12_CHIP_FIND(id)
+
+#define BC12_CHIP(usbc_id)                           \
+	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, bc12), \
+		    (BC12_CHIP_ENTRY(usbc_id, DT_PHANDLE(usbc_id, bc12))), ())
 
 /* Power Path Controller */
-struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = {
-	DT_FOREACH_STATUS_OKAY_VARGS(RT1739_BC12_COMPAT, BC12_CHIP,
-				     BC12_CHIP_RT1739)
-		DT_FOREACH_STATUS_OKAY_VARGS(RT9490_BC12_COMPAT, BC12_CHIP,
-					     BC12_CHIP_RT9490)
-			DT_FOREACH_STATUS_OKAY_VARGS(PI3USB9201_COMPAT,
-						     BC12_CHIP,
-						     BC12_CHIP_PI3USB9201)
-};
+struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = { DT_FOREACH_STATUS_OKAY(
+	named_usbc_port, BC12_CHIP) };
 
 #endif /* #if DT_HAS_COMPAT_STATUS_OKAY */

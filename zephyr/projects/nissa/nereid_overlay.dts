@@ -210,10 +210,7 @@
 		port0@0 {
 			compatible = "named-usbc-port";
 			reg = <0>;
-			bc12 {
-				compatible = "pericom,pi3usb9201";
-				port = <&i2c_ec_i2c_usb_c0>;
-			};
+			bc12 = <&bc120>;
 			chg {
 				compatible = "siliconmitus,sm5803";
 				status = "okay";
@@ -229,10 +226,7 @@
 		port1@1 {
 			compatible = "named-usbc-port";
 			reg = <1>;
-			bc12 {
-				compatible = "pericom,pi3usb9201";
-				port = <&i2c_ec_i2c_sub_usb_c1>;
-			};
+			bc12 = <&bc121>;
 			chg {
 				compatible = "siliconmitus,sm5803";
 				status = "okay";
@@ -331,6 +325,12 @@
 	pinctrl-1 = <&i2c4_clk_gpe0_sleep
 		     &i2c4_data_gpe7_sleep>;
 	pinctrl-names = "default", "sleep";
+
+	bc121: pi3usb9201@5f {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5f>;
+	};
 };
 
 &i2c_ec_i2c_sub_usb_c1 {
@@ -349,4 +349,10 @@
 	pinctrl-0 = <&i2c5_clk_gpa4_default
 		     &i2c5_data_gpa5_default>;
 	pinctrl-names = "default";
+
+	bc120: pi3usb9201@5f {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5f>;
+	};
 };
