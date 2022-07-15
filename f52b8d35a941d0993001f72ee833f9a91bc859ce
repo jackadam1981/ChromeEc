@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d52dd81_21df1e87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-15T15:18:36Z",
+      "side": 1,
+      "message": "Thanks for letting me know. I couldn\u0027t access build failure so not sure what happened. \n\nThe interesting thing is after I fix the clang-format using \"src/repohooks/clang-format.py --fix --commit 58546aaa5666c1a54bd67160cff9f42c1511687a\",\n\"repo upload\" reported style error:\nchromiumos/platform/ec: checkpatch_check                     \n    /mnt/host/source/src/repohooks/checkpatch.pl errors/warnings\n    \n    WARNING: please, no spaces at the start of a line\n    #32: FILE: include/config.h:6507:\n    +     defined(CONFIG_USBC_RETIMER_INTEL_HB)) \u0026\u0026 \\$\n    \n    total: 0 errors, 1 warnings, 16 lines checked\n    \n    NOTE: For some of the reported defects, checkpatch may be able to\n          mechanically convert to the typical style using --fix or --fix-inplace.\n    \n    Your patch has style problem\n    s, please review.\n\ncheckpatch doesn\u0027t like space at the beginning of line, while clang-format changed tab to spaces.",
+      "revId": "f52b8d35a941d0993001f72ee833f9a91bc859ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
