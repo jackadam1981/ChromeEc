@@ -46,6 +46,13 @@
  */
 #define I2C_PORT_NODELABEL(label) I2C_PORT_BUS(DT_NODELABEL(label))
 
+/*
+ * Get the I2C port enum value.
+ *
+ * @param dev_id: node id of a device on the I2C bus
+ */
+#define I2C_PORT_BY_DEV(dev_id) I2C_PORT_BUS(DT_BUS(dev_id))
+
 enum i2c_ports_chip {
 	I2C_FOREACH_PORT(I2C_PORT_BUS_WITH_COMMA) I2C_PORT_COUNT
 };
