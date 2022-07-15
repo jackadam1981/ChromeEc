@@ -8,6 +8,7 @@
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
+#include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
@@ -29,6 +30,9 @@
 
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
+
+#define HDMI_MONITOR_EVENT_SUSPEND TASK_EVENT_CUSTOM_BIT(0)
+#define HDMI_MONITOR_EVENT_ANY_OFF TASK_EVENT_CUSTOM_BIT(1)
 
 /******************************************************************************/
 /* USB-A charging control */
@@ -198,6 +202,9 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A3_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A4_OC_ODL);
+	gpio_enable_interrupt(GPIO_HDMI1_MONITOR_ON);
+	gpio_enable_interrupt(GPIO_HDMI2_MONITOR_ON);
+	gpio_enable_interrupt(GPIO_OPTION_MONITOR_ON);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -432,3 +439,111 @@ static void power_monitor(void)
  * Start power monitoring after ADCs have been initialised.
  */
 DECLARE_HOOK(HOOK_INIT, power_monitor, HOOK_PRIO_INIT_ADC + 1);
+
+/******************************************************************************/
+/*
+ * System power on and wake up by monitor power button.
+ *
+ * After pressing power button of monitor for power on, monitor will send power
+ * on signal with 3.3V / 200ms to DT. If DT detect that pulse, there are three
+ * DT behavior:
+ *
+ *  - Do nothing in state S0.
+ *  - Wake up from state S0ix.
+ *  - Power on from state S5 and G3.
+ */
+
+/* Debounce time for HDMI power button press */
+#define MONITOR_DEBOUNCE_MS 100
+
+static void monitor_irq_deferred(void);
+DECLARE_DEFERRED(monitor_irq_deferred);
+
+struct monitor_config {
+	enum gpio_signal gpio;
+	uint8_t state;
+};
+
+static struct monitor_config monitors[MONITOR_COUNT] = {
+	[HDMI1_MONITOR] = {
+		.gpio = GPIO_HDMI1_MONITOR_ON,
+		.state = MONITOR_OFF,
+	},
+
+	[HDMI2_MONITOR] = {
+		.gpio = GPIO_HDMI2_MONITOR_ON,
+		.state = MONITOR_OFF,
+	},
+
+	[OPTION_MONITOR] = {
+		.gpio = GPIO_OPTION_MONITOR_ON,
+		.state = MONITOR_OFF,
+	},
+};
+
+static void monitor_irq_deferred(void)
+{
+	int i;
+
+	for (i = 0; i < MONITOR_COUNT; i++) {
+		if (monitors[i].state && gpio_get_level(monitors[i].gpio)) {
+			/*
+			 * System power on from state S5 and G3.
+			 */
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+				task_set_event(TASK_ID_HDMI_MONITOR, HDMI_MONITOR_EVENT_ANY_OFF);
+			/*
+			 * System wake up from state S0ix.
+			 */
+			else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+				task_set_event(TASK_ID_HDMI_MONITOR, HDMI_MONITOR_EVENT_SUSPEND);
+			}
+		}
+		monitors[i].state = MONITOR_OFF;
+	}
+}
+
+/* Power on by HDMI monitor. */
+void monitor_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_HDMI1_MONITOR_ON:
+		monitors[HDMI1_MONITOR].state = MONITOR_ON;
+		break;
+	case GPIO_HDMI2_MONITOR_ON:
+		monitors[HDMI2_MONITOR].state = MONITOR_ON;
+		break;
+	case GPIO_OPTION_MONITOR_ON:
+		monitors[OPTION_MONITOR].state = MONITOR_ON;
+		break;
+	default:
+		break;
+	}
+	hook_call_deferred(&monitor_irq_deferred_data,
+			   MONITOR_DEBOUNCE_MS * MSEC);
+}
+
+static void power_on_from_suspend(void)
+{
+	power_button_simulate_press(200);
+}
+
+static void power_on_from_any_off(void)
+{
+	chipset_power_on();
+}
+
+void hdmi_monitor_task(void *u)
+{
+	uint32_t evt;
+
+	while (1) {
+		evt = task_wait_event(-1);
+
+		if (evt & HDMI_MONITOR_EVENT_SUSPEND)
+			power_on_from_suspend();
+
+		if (evt & CHIPSET_STATE_ANY_OFF)
+			power_on_from_any_off();
+	}
+}
