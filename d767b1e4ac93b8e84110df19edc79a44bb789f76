@@ -57,6 +57,30 @@
       },
       "revId": "d767b1e4ac93b8e84110df19edc79a44bb789f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6dc7f67_67f7f58a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-15T15:52:21Z",
+      "side": 1,
+      "message": "Good catch, Eric.  Have you already made a follow-up CL?",
+      "parentUuid": "5af116cc_e967707f",
+      "range": {
+        "startLine": 737,
+        "startChar": 16,
+        "endLine": 737,
+        "endChar": 18
+      },
+      "revId": "d767b1e4ac93b8e84110df19edc79a44bb789f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
