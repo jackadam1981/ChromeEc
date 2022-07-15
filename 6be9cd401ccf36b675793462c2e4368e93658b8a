@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c89aba4d_e21b2ea5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2022-07-15T21:02:09Z",
+      "side": 1,
+      "message": "$ ALLOW_CONFIG\u003d1 ./util/compare_build.sh -b all\n\n..................\n\n# Comparing Files\n\n# Verdict: MATCH",
+      "parentUuid": "2921dc94_338afb58",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "6be9cd401ccf36b675793462c2e4368e93658b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "aa508c0c_ea9bbc0c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
