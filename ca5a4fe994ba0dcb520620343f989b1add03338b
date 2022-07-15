@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8379ad_e5a1dcbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-15T18:21:56Z",
+      "side": 1,
+      "message": "Hey, just realized now:\n\n```\ncommit ca5a4fe994ba0dcb520620343f989b1add03338b (HEAD)\nAuthor: madhurimaparuchuri \u003cmparuchuri@google.com\u003e\nDate:   Fri Jul 15 23:07:20 2022 +0530\n\n    zephyr: shim: fan: Replace multiple members of \u0027fan_config\u0027 structure with \u0027pwm_dt_spec\u0027\n```\n\nYou probably want to look into your ~/.gitconfig to set user.name correctly (look ath the \"Author\" line), it\u0027s usually done with `git config --global user.name`. It\u0027s the same data used to sign the patch, I presume you are not using `git commit -s` now...",
+      "revId": "ca5a4fe994ba0dcb520620343f989b1add03338b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
