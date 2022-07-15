@@ -22,6 +22,30 @@
       },
       "revId": "64c42ed1907d5e66b827e1bf74b0892f5cb10c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc59dd5d_21635333",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-07-15T16:13:36Z",
+      "side": 0,
+      "message": "Thanks for letting me know.\n\nWhile `emerge-skyrim chromeos-zephyr` builds successfully, I\u0027m able to recreate the error with `zmake build skyrim`.\n\nRather than fixing forward:\n\n- Revert is available here:\n3765443: Revert \"Skyrim: Remove guybrush support\" | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3765443\n\n- Fixed CL is available here:\n3765445: Skyrim: Remove guybrush support | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3765445",
+      "parentUuid": "dd3864e8_9f4e392b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 17
+      },
+      "revId": "64c42ed1907d5e66b827e1bf74b0892f5cb10c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
