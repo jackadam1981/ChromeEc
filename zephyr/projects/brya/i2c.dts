@@ -47,6 +47,7 @@
 		c1_bc12: c1_bc12 {
 			i2c-port = <&i2c6_1>;
 			enum-name = "I2C_PORT_USB_C1_BC12";
+			dynamic-speed;
 		};
 		c0_c2_bc12: c0_c2_bc12 {
 			i2c-port = <&i2c2_0>;

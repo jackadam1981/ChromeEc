@@ -9,6 +9,7 @@
 
 		i2c_power: power {
 			i2c-port = <&i2c0_0>;
+			remote-port = <0>;
 			enum-name = "I2C_PORT_POWER";
 		};
 		battery {
@@ -18,10 +19,12 @@
 		};
 		virtual-battery {
 			i2c-port = <&i2c0_0>;
+			remote-port = <0>;
 			enum-name = "I2C_PORT_VIRTUAL_BATTERY";
 		};
 		i2c_charger: charger {
 			i2c-port = <&i2c0_0>;
+			remote-port = <0>;
 			enum-name = "I2C_PORT_CHARGER";
 		};
 		i2c_tcpc0: tcpc0 {

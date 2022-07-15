@@ -14,6 +14,7 @@
 		};
 		virtual-battery {
 			i2c-port = <&i2c1>;
+			remote-port = <1>;
 			enum-name = "I2C_PORT_VIRTUAL_BATTERY";
 		};
 		eeprom {
