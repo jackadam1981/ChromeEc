@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "967dfb3c_9cc8240c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-15T20:25:14Z",
+      "side": 1,
+      "message": "I confirmed this will fix the gitlab build by building locally in a docker image.",
+      "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9fef701_12180049",
@@ -35,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0fbdcb_764f82da",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-15T20:25:14Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters what the project name is, but whatever.",
+      "parentUuid": "f9fef701_12180049",
+      "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3149efea_3f680945",
@@ -48,6 +83,24 @@
       "writtenOn": "2022-07-15T17:14:08Z",
       "side": 1,
       "message": "We could probably also remove these from prj.conf in the first place since I\u0027m guessing we\u0027ll make followers use the new zephyr LED dts",
+      "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a624b650_7f2bd73c",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-15T20:25:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3149efea_3f680945",
       "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
