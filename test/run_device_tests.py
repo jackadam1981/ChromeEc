@@ -298,7 +298,7 @@ class AllTests:
             if not have_private:
                 return []
             sys.path.append(private_dir)
-            import private_tests  # pylint: disable=import-error
+            import private_tests  # pylint: disable=import-error,import-outside-toplevel
 
             for test_args in private_tests.tests:
                 tests.append(TestConfig(**test_args))
@@ -356,9 +356,10 @@ def read_file_gsutil(path: str) -> bytes:
     cmd = ["gsutil", "cat", path]
 
     logging.debug('Running command: "%s"', " ".join(cmd))
+    # pylint: disable=subprocess-run-check
     gsutil = subprocess.run(
         cmd, stdout=subprocess.PIPE
-    )  # pylint: disable=subprocess-run-check
+    )
     gsutil.check_returncode()
 
     return gsutil.stdout
