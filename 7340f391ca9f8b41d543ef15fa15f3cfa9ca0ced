@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d5c34a_4b691ca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2022-07-15T01:12:38Z",
+      "side": 1,
+      "message": "As primer for explanation:\n\nCurrently, ServoV4pX doesn\u0027t have concept of \"emulation of peripheral type\". By that, I mean \"usbc dp \u003cenable|disable\u003e\" does not properly follow spec (in all packet behaviors) for a certain product types.\n\nRegarding this CL:\n\nCurrent \"usbc dp disable\" *incompletely* emulates a \"Structured VDM incapable, USB-PD aware hub\". If a DiscID is sent, it will be NAKed. But if DiscMode or DiscSVID (L814) is sent, the ServoV4pX will currently respond. This is noncompliant for the \"peripheral emulated\".\n\nProposed behavior is to behave a single peripheral type (with varying policy): \"USB-C DP dongle with AMA support\". With policy-based modal entry. With proposed approach, the ServoV4pX will behave like a Thunderbolt hard drive (with|without) DC barrel jack for sufficient power to operate. EnterMode will be NAKed if sate is invalid (DTS on), EnterMode will be ACKed if state is valid (enabled and working).\n\nIn the future, I can add a CL for \"ServoV4pX to emulate peripheral type\". This will require custom behavior in each packet response (usb-pd hub, dp adapter, non-SVDM device).",
+      "parentUuid": "085345bf_3d490ce8",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "7340f391ca9f8b41d543ef15fa15f3cfa9ca0ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f630200c_d4e91524",
