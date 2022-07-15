@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ba57d8_f7b4502d",
+        "filename": "zephyr/include/ap_power/ap_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-15T05:07:03Z",
+      "side": 1,
+      "message": "Yes, that seems an appropriate place to put it.",
+      "parentUuid": "d2426afa_97b805db",
+      "revId": "03d87a075bb15da469420569ccf3f851a619dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "704a20bb_f7902d30",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-15T03:51:12Z",
       "side": 1,
       "message": "`INITIALIZED`? I think our code style prefers American spellings. We could `#define` an alias with the alternate spelling though.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "03d87a075bb15da469420569ccf3f851a619dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d51bdb_d26530c9",
+        "filename": "zephyr/include/ap_power/ap_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-15T05:07:03Z",
+      "side": 1,
+      "message": "Ha ha old habits die hard...",
+      "parentUuid": "704a20bb_f7902d30",
       "range": {
         "startLine": 98,
         "startChar": 1,
