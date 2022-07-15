@@ -86,6 +86,20 @@
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 	pinctrl-0 = <&i2c2_0_sda_scl_gp91_92>;
 	pinctrl-names = "default";
+
+	bc120: pi3usb9201@5f {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5f>;
+		irq = <&int_usb_c0_bc12>;
+	};
+
+	bc122: pi3usb9201@5d {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5d>;
+		irq = <&int_usb_c1_bc12>;
+	};
 };
 
 &i2c_ctrl2 {
@@ -130,6 +144,13 @@
 	clock-frequency = <I2C_BITRATE_FAST>;
 	pinctrl-0 = <&i2c6_1_sda_scl_gpe3_e4>;
 	pinctrl-names = "default";
+
+	bc121: pi3usb9201@5f {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5f>;
+		irq = <&int_usb_c1_bc12>;
+	};
 };
 
 &i2c_ctrl6 {
