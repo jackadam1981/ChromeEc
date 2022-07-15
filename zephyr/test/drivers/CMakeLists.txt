@@ -9,6 +9,7 @@ project(drivers)
 add_subdirectory(common)
 
 get_target_property(TEST_SOURCES app SOURCES)
+zephyr_ld_options(-Wl,-z,norelro)
 
 # Support zmake for now
 if("${ZMAKE_PROJECT_NAME}" STREQUAL "test-drivers")
