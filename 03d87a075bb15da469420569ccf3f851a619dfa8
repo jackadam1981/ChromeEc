@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2426afa_97b805db",
+        "filename": "zephyr/include/ap_power/ap_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-15T03:51:12Z",
+      "side": 1,
+      "message": "May be useful to note that this can be important when a single state must be known. A user could flip their priority to always run after power init (which is synchronous), but in that situation the user is subject to the usual races with the state machine thread.\n\nMaybe we need a section in the file-level docs describing how events are always synchronous with the power state machine and can depend on the state being stable during their execution?",
+      "revId": "03d87a075bb15da469420569ccf3f851a619dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704a20bb_f7902d30",
+        "filename": "zephyr/include/ap_power/ap_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-15T03:51:12Z",
+      "side": 1,
+      "message": "`INITIALIZED`? I think our code style prefers American spellings. We could `#define` an alias with the alternate spelling though.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "03d87a075bb15da469420569ccf3f851a619dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
