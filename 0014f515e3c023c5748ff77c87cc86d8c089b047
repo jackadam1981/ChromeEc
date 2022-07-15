@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e51b50f_66fa28f2",
+        "filename": "zephyr/projects/nissa/src/board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-15T01:03:43Z",
+      "side": 1,
+      "message": "I don\u0027t like the idea of putting this in the AP power code, because that should be independent of any particular device. Similarly putting it in the eSPI shim would work (because we know that gets initialized before power sequencing), but it\u0027s kind of a weird place for it.\n\nI think the best overall solution is to add a READY event to power sequencing that gets run when the thread starts up, or immediately (but asynchronously) if registered after the subsystem is running, since that solves this sort of issue for all future needs.",
+      "parentUuid": "b55a3de5_df3eb07c",
+      "revId": "0014f515e3c023c5748ff77c87cc86d8c089b047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6e6dead_aa2b3ce1",
         "filename": "zephyr/projects/nissa/src/board_power.c",
         "patchSetId": 3
