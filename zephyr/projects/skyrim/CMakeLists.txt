@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.13.1)
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-project(guybrush)
+project(skyrim)
 
 cros_ec_library_include_directories_ifdef(CONFIG_BOARD_SKYRIM include)
 cros_ec_library_include_directories_ifdef(CONFIG_BOARD_GUYBRUSH include_guybrush)
