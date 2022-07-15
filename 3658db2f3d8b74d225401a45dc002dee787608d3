@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555f1d89_815f7019",
+        "filename": "common/host_command.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-07-15T14:56:21Z",
+      "side": 1,
+      "message": "Should this be declared in the local scope that it is used, like you did in host_command_process. That should remove the need of additional stack unless it is going to be used.",
+      "range": {
+        "startLine": 631,
+        "startChar": 1,
+        "endLine": 631,
+        "endChar": 10
+      },
+      "revId": "3658db2f3d8b74d225401a45dc002dee787608d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37ce8a64_3c4423f7",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-07-15T14:56:21Z",
+      "side": 1,
+      "message": "Should this be scoped to be in the local usage scope?",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 51
+      },
+      "revId": "3658db2f3d8b74d225401a45dc002dee787608d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872a24ae_50d0e1aa",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-07-15T14:56:21Z",
+      "side": 1,
+      "message": "Could scope this in the inner for loop and convert/print each string one at a time. This would reduce stack usage.",
+      "range": {
+        "startLine": 584,
+        "startChar": 1,
+        "endLine": 584,
+        "endChar": 38
+      },
+      "revId": "3658db2f3d8b74d225401a45dc002dee787608d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
