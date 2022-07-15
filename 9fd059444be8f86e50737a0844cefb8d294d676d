@@ -46,6 +46,30 @@
       },
       "revId": "9fd059444be8f86e50737a0844cefb8d294d676d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e4b975_ffceeb62",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-15T22:58:25Z",
+      "side": 1,
+      "message": "Forgot to add a link to the [\"other comment\"](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3766495/comments/a05bf922_50d0028e).",
+      "parentUuid": "90f98e69_0f0572e5",
+      "range": {
+        "startLine": 306,
+        "startChar": 8,
+        "endLine": 306,
+        "endChar": 38
+      },
+      "revId": "9fd059444be8f86e50737a0844cefb8d294d676d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
