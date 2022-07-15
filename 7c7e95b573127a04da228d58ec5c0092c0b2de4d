@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e054d6_4734c91e",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-15T22:40:46Z",
+      "side": 1,
+      "message": "Double-check, but I think you need to re-enable it now that it\u0027s no longer on a single line.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 32
+      },
+      "revId": "7c7e95b573127a04da228d58ec5c0092c0b2de4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
