@@ -3,11 +3,15 @@
 # found in the LICENSE file.
 
 cmake_minimum_required(VERSION 3.13.1)
+
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+
 project(${ZMAKE_PROJECT_NAME})
 
 zephyr_include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 zephyr_include_directories("${PLATFORM_EC}/driver/ppc/")
+
+zephyr_ld_options(-Wl,-z,norelro)
 
 # Common sources
 target_sources(app PRIVATE
@@ -41,7 +45,7 @@ if(subproject_path STREQUAL "")
     src/console_cmd/accelspoof.c
     src/console_cmd/accelrate.c
     src/console_cmd/accelrange.c
-    src/console_cmd/accelread.c
+    src/console_cmd/accelread.cc
     src/console_cmd/accelres.c
     src/console_cmd/usb_pd_console.c
     src/cros_cbi.c
