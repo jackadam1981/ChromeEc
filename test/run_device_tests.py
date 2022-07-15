@@ -127,6 +127,7 @@ class ImageType(Enum):
 @dataclass
 class BoardConfig:
     """Board-specific configuration."""
+
     name: str
     servo_uart_name: str
     servo_power_enable: str
@@ -139,6 +140,7 @@ class BoardConfig:
 @dataclass
 class TestConfig:
     """Configuration for a given test."""
+
     # pylint: disable=too-many-instance-attributes
     test_name: str
     image_to_use: ImageType = ImageType.RW
@@ -358,9 +360,7 @@ def read_file_gsutil(path: str) -> bytes:
 
     logging.debug('Running command: "%s"', " ".join(cmd))
     # pylint: disable=subprocess-run-check
-    gsutil = subprocess.run(
-        cmd, stdout=subprocess.PIPE
-    )
+    gsutil = subprocess.run(cmd, stdout=subprocess.PIPE)
     gsutil.check_returncode()
 
     return gsutil.stdout
@@ -642,8 +642,9 @@ def get_test_list(config: BoardConfig, test_args) -> List[TestConfig]:
     return test_list
 
 
-def flash_and_run_test(test: TestConfig, board_config: BoardConfig,
-                       args: argparse.Namespace, executor) -> bool:
+def flash_and_run_test(
+    test: TestConfig, board_config: BoardConfig, args: argparse.Namespace, executor
+) -> bool:
     """Run a single test using the test and board configuration specified"""
     build_board = args.board
     # If test provides this information, build image for board specified
@@ -674,16 +675,13 @@ def flash_and_run_test(test: TestConfig, board_config: BoardConfig,
     flash_succeeded = False
     for i in range(0, test.num_flash_attempts):
         logging.debug("Flash attempt %d", i + 1)
-        if flash(image_path, args.board, args.flasher, args.remote,
-                 args.jlink_port):
+        if flash(image_path, args.board, args.flasher, args.remote, args.jlink_port):
             flash_succeeded = True
             break
         time.sleep(1)
 
     if not flash_succeeded:
-        logging.debug(
-            "Flashing failed after max attempts: %d", test.num_flash_attempts
-        )
+        logging.debug("Flashing failed after max attempts: %d", test.num_flash_attempts)
         return False
 
     if test.toggle_power:
@@ -701,7 +699,8 @@ def flash_and_run_test(test: TestConfig, board_config: BoardConfig,
             console_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             console_socket.connect((args.remote, args.console_port))
             console = stack.enter_context(
-                console_socket.makefile(mode="rwb", buffering=0))
+                console_socket.makefile(mode="rwb", buffering=0)
+            )
         else:
             console = stack.enter_context(
                 open(get_console(board_config), "wb+", buffering=0)
@@ -795,7 +794,7 @@ def main():
         "--remote",
         "-n",
         help="The remote host connected to one or both of: J-Link and Servo.",
-        type=parse_remote_arg
+        type=parse_remote_arg,
     )
 
     parser.add_argument(
