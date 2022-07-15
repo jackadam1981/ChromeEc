@@ -8,6 +8,7 @@
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
+#include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
@@ -198,6 +199,9 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A3_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A4_OC_ODL);
+	gpio_enable_interrupt(GPIO_HDMI1_MONITOR_ON);
+	gpio_enable_interrupt(GPIO_HDMI2_MONITOR_ON);
+	gpio_enable_interrupt(GPIO_OPTION_MONITOR_ON);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -432,3 +436,66 @@ static void power_monitor(void)
  * Start power monitoring after ADCs have been initialised.
  */
 DECLARE_HOOK(HOOK_INIT, power_monitor, HOOK_PRIO_INIT_ADC + 1);
+
+/******************************************************************************/
+#define MONITOR_DEBOUNCE_MS 100 /* Debounce time for HDMI power button press */
+static void monitor_irq_deferred(void);
+DECLARE_DEFERRED(monitor_irq_deferred);
+
+struct monitor_state {
+	enum gpio_signal gpio;
+	int8_t state;
+};
+
+static struct monitor_state monitors[MONITOR_COUNT] = {
+	[HDMI1_MONITOR] = {
+		.gpio = GPIO_HDMI1_MONITOR_ON,
+		.state = 0,
+	},
+
+	[HDMI2_MONITOR] = {
+    	.gpio = GPIO_HDMI2_MONITOR_ON,
+    	.state = 0,
+	},
+
+	[OPTION_MONITOR] = {
+    	.gpio = GPIO_OPTION_MONITOR_ON,
+    	.state = 0,
+	},
+};
+
+/* Power on by HDMI monitor. */
+void monitor_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_HDMI1_MONITOR_ON:
+		monitors[0].state = 1;
+		break;
+	case GPIO_HDMI2_MONITOR_ON:
+		monitors[1].state = 1;
+		break;
+	case GPIO_OPTION_MONITOR_ON:
+		monitors[2].state = 1;
+		break;
+	default:
+		break;
+	}
+	hook_call_deferred(&monitor_irq_deferred_data, MONITOR_DEBOUNCE_MS * MSEC);
+}
+
+static void monitor_irq_deferred(void)
+{
+	int i;
+	for (i = 0; i < MONITOR_COUNT; i++) {
+		if (monitors[i].state && gpio_get_level(monitors[i].gpio)) {
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+				chipset_power_on();
+			else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+				gpio_set_level(GPIO_PCH_PWRBTN_L, 0);
+				msleep(32);
+				gpio_set_level(GPIO_PCH_PWRBTN_L, 1);
+			}
+		}
+		monitors[i].state = 0;
+	}
+}
