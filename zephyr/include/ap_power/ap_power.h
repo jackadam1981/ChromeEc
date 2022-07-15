@@ -87,6 +87,15 @@ enum ap_power_events {
 	AP_POWER_HARD_OFF = BIT(8),
 	/** Software reset occurred */
 	AP_POWER_RESET = BIT(9),
+	/**
+	 * AP power state is now known.
+	 *
+	 * Prior to this event, the state of the AP is unknown
+	 * and invalid. After this event, the state is known
+	 * and can be queried. Used by clients when their
+	 * initialisation depends upon the initial state of the AP.
+	 */
+	AP_POWER_INITIALISED = BIT(10),
 };
 
 /**
