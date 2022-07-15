@@ -189,6 +189,7 @@ enum mft_channel { MFT_CH_0 = 0, MFT_CH_COUNT };
 #define EC_CFG_BJ_POWER_MASK GENMASK(EC_CFG_BJ_POWER_H, EC_CFG_BJ_POWER_L)
 
 extern void adp_connect_interrupt(enum gpio_signal signal);
+extern void monitor_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
