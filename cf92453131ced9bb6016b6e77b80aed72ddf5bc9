@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aacb404e_d9a57672",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-07-15T17:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74a6137d_291e559d",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 31
+      },
+      "revId": "cf92453131ced9bb6016b6e77b80aed72ddf5bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fe59bc7_9285453b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-14T16:05:20Z",
       "side": 1,
       "message": "I would suggest not using macros in this case, instead use a local variable to save the `struct device *`.",
+      "range": {
+        "startLine": 130,
+        "startChar": 22,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "cf92453131ced9bb6016b6e77b80aed72ddf5bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231c5cb9_f5e69bf4",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-07-15T17:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe59bc7_9285453b",
       "range": {
         "startLine": 130,
         "startChar": 22,
@@ -142,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bf973b_d846fa4d",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-07-15T17:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff336e2_5567dad2",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 38
+      },
+      "revId": "cf92453131ced9bb6016b6e77b80aed72ddf5bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2fe48b3_95a088e1",
@@ -155,6 +227,30 @@
       "writtenOn": "2022-07-14T16:05:20Z",
       "side": 1,
       "message": "hey you should be able to use `pwm_set_dt` directly here, then the macros should be not needed anymore.",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 14
+      },
+      "revId": "cf92453131ced9bb6016b6e77b80aed72ddf5bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d3ad73_340999a9",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-07-15T17:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2fe48b3_95a088e1",
       "range": {
         "startLine": 148,
         "startChar": 7,
