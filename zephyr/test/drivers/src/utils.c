@@ -436,6 +436,12 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE,
 
 void test_set_chipset_to_g3_then_transition_to_s5(void)
 {
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		/* If we're already in off we can go to S5 */
+		test_set_chipset_to_power_level(POWER_S5);
+		/* Assert is not required here */
+		return;
+	}
 	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		k_poll_signal_reset(&shutdown_complete_signal);
 		chipset_force_shutdown(CHIPSET_RESET_INIT);
@@ -453,4 +459,8 @@ void test_set_chipset_to_g3_then_transition_to_s5(void)
 	 * TODO(b/236726670): Why do we need to sleep after restarting chipset?
 	 */
 	k_sleep(K_SECONDS(1));
+
+	/* Check if chipset is in correct state */
+	zassert_equal(POWER_S5, power_get_state(), "Expected S5, got %d",
+		      power_get_state());
 }
