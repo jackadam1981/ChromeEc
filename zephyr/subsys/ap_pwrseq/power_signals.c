@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include <zephyr/ap_pwrseq/ap_pwrseq.h>
 #include <zephyr/kernel.h>
 #include <zephyr/toolchain.h>
 #include <zephyr/logging/log.h>
@@ -82,6 +83,8 @@ static const struct ps_config sig_config[] = {
 static const uint8_t polled_signals[] = { DT_FOREACH_STATUS_OKAY(
 	intel_ap_pwrseq_external, PWR_SIGNAL_POLLED) };
 
+/* AP power sequence driver reference */
+static const struct device * ap_pwrseq_dev;
 /*
  * Bitmasks of power signals. A previous copy is held so that
  * logging of changes can occur if the signal is in the debug mask.
@@ -134,6 +137,7 @@ void power_signal_interrupt(enum power_signal signal, int value)
 {
 	atomic_set_bit_to(&power_signals, signal, value);
 	check_debug(signal);
+	ap_pwrseq_post_event(ap_pwrseq_dev, AP_PWRSEQ_EVENT_POWER_SIGNAL);
 }
 
 int power_wait_mask_signals_timeout(power_signal_mask_t mask,
@@ -282,6 +286,8 @@ const char *power_signal_name(enum power_signal signal)
 
 void power_signal_init(void)
 {
+	ap_pwrseq_dev = ap_pwrseq_get_instance();
+
 	if (IS_ENABLED(HAS_GPIO_SIGNALS)) {
 		power_signal_gpio_init();
 	}

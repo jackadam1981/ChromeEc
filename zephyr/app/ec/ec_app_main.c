@@ -3,12 +3,12 @@
  * found in the LICENSE file.
  */
 
+#include <zephyr/ap_pwrseq/ap_pwrseq.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/shell/shell_uart.h>
 #include <zephyr/zephyr.h>
 
-#include "ap_power/ap_pwrseq.h"
 #include "button.h"
 #include "chipset.h"
 #include "cros_board_info.h"
@@ -97,6 +97,8 @@ void ec_app_main(void)
 		start_ec_tasks();
 	}
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ)) {
-		ap_pwrseq_task_start();
+		const struct device * ap_pwrseq_dev =
+				ap_pwrseq_get_instance();
+		ap_pwrseq_start(ap_pwrseq_dev);
 	}
 }
