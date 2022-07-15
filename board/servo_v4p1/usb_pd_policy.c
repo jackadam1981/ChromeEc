@@ -110,6 +110,13 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+static uint32_t pd_snk_pdo_dynamic[] = {
+	PDO_FIXED(5000, 0, CHG_PDO_FIXED_FLAGS),
+	PDO_BATT(4750, 21000, 0),
+	PDO_VAR(4750, 21000, 0),
+};
+static int pd_snk_pdo_cnt_dynamic = ARRAY_SIZE(pd_snk_pdo_dynamic);
+
 struct vbus_prop {
 	int mv;
 	int ma;
@@ -366,6 +373,28 @@ __override uint8_t board_get_src_dts_polarity(int port)
 		return !!(cc_config & CC_POLARITY);
 
 	return 0;
+}
+
+__override int board_get_snk_cap(const uint32_t **snk_pdo, const int port)
+{
+	int pdo_cnt = 0;
+
+	switch (port) {
+	case DUT:
+		pd_snk_pdo_dynamic[0] &=
+			~(PDO_FIXED_UNCONSTRAINED | PDO_FIXED_UNCONSTRAINED);
+
+		*snk_pdo = pd_snk_pdo_dynamic;
+		pdo_cnt = pd_snk_pdo_cnt_dynamic;
+		break;
+
+	case CHG:
+	default:
+		*snk_pdo = pd_snk_pdo;
+		pdo_cnt = pd_snk_pdo_cnt;
+	}
+
+	return pdo_cnt;
 }
 
 int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel)
