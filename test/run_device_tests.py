@@ -303,6 +303,7 @@ class AllTests:
             for test_args in private_tests.tests:
                 tests.append(TestConfig(**test_args))
         # Catch all exceptions to avoid disruptions in public repo
+        # pylint: disable=broad-except
         except BaseException as e:
             logging.debug("Failed to get list of private tests: %s", str(e))
             logging.debug("Ignore error and continue.")
@@ -759,6 +760,7 @@ def main():
         if test.ro_image is not None:
             try:
                 patch_image(test, image_path)
+            # pylint: disable=broad-except
             except Exception as exception:
                 logging.warning(
                     "An exception occurred while patching " "image: %s", exception
