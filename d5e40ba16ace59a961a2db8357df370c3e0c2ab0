@@ -70,6 +70,30 @@
       },
       "revId": "d5e40ba16ace59a961a2db8357df370c3e0c2ab0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f759c5_84119b3a",
+        "filename": "board/moli/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-07-15T01:13:11Z",
+      "side": 1,
+      "message": "Already modify the value of power on to 45W.\nThanks.",
+      "parentUuid": "9c713ef5_e16af5bd",
+      "range": {
+        "startLine": 55,
+        "startChar": 49,
+        "endLine": 55,
+        "endChar": 54
+      },
+      "revId": "d5e40ba16ace59a961a2db8357df370c3e0c2ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
