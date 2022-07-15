@@ -27,6 +27,7 @@
 #define I2C_PORT_BUS(i2c_port_id) DT_CAT(I2C_BUS_, i2c_port_id)
 #define I2C_PORT_BUS_WITH_COMMA(i2c_port_id) I2C_PORT_BUS(i2c_port_id),
 #define I2C_PORT(i2c_named_id) I2C_PORT_BUS(DT_PHANDLE(i2c_named_id, i2c_port))
+#define I2C_PORT_BY_DEV(dev_id) I2C_PORT_BUS(DT_BUS(dev_id))
 
 enum i2c_ports_chip {
 	I2C_FOREACH_PORT(I2C_PORT_BUS_WITH_COMMA) I2C_PORT_COUNT
