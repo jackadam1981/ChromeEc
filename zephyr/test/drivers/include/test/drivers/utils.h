@@ -60,11 +60,12 @@ void test_set_chipset_to_g3(void);
  * @param chgnum The charger number to query.
  * @return The result of the query.
  */
-static inline struct ec_response_charge_state host_cmd_charge_state(int chgnum)
+static inline struct ec_response_charge_state
+host_cmd_charge_state(uint8_t chgnum)
 {
 	struct ec_params_charge_state params = {
-		.chgnum = chgnum,
 		.cmd = CHARGE_STATE_CMD_GET_STATE,
+		.chgnum = chgnum,
 	};
 	struct ec_response_charge_state response;
 	struct host_cmd_handler_args args =
@@ -84,7 +85,8 @@ static inline struct ec_response_charge_state host_cmd_charge_state(int chgnum)
  * @param port The USB port to get info from.
  * @return The result of the query.
  */
-static inline struct ec_response_usb_pd_power_info host_cmd_power_info(int port)
+static inline struct ec_response_usb_pd_power_info
+host_cmd_power_info(uint8_t port)
 {
 	struct ec_params_usb_pd_power_info params = { .port = port };
 	struct ec_response_usb_pd_power_info response;
@@ -105,7 +107,8 @@ static inline struct ec_response_usb_pd_power_info host_cmd_power_info(int port)
  * @param port The USB port to get info from.
  * @return The result of the query.
  */
-static inline struct ec_response_typec_status host_cmd_typec_status(int port)
+static inline struct ec_response_typec_status
+host_cmd_typec_status(uint8_t port)
 {
 	struct ec_params_typec_status params = { .port = port };
 	struct ec_response_typec_status response;
@@ -118,9 +121,11 @@ static inline struct ec_response_typec_status host_cmd_typec_status(int port)
 }
 
 static inline struct ec_response_usb_pd_control
-host_cmd_usb_pd_control(int port, enum usb_pd_control_swap swap)
+host_cmd_usb_pd_control(uint8_t port, enum usb_pd_control_swap swap)
 {
-	struct ec_params_usb_pd_control params = { .port = port, .swap = swap };
+	struct ec_params_usb_pd_control params = {
+		.port = port, .swap = ((uint8_t)swap)
+	};
 	struct ec_response_usb_pd_control response;
 	struct host_cmd_handler_args args =
 		BUILD_HOST_COMMAND(EC_CMD_USB_PD_CONTROL, 0, response, params);
