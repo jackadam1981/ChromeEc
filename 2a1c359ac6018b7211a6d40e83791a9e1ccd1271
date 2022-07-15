@@ -16,6 +16,40 @@
       "message": "This fixes the gitlab issues.   I\u0027m fine fixing forward if that\u0027s ok with everyone else.",
       "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9fef701_12180049",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-15T17:14:08Z",
+      "side": 1,
+      "message": "I\u0027m guessing based on the examples in nissa and corsola that project() should contain a board name",
+      "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3149efea_3f680945",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-15T17:14:08Z",
+      "side": 1,
+      "message": "We could probably also remove these from prj.conf in the first place since I\u0027m guessing we\u0027ll make followers use the new zephyr LED dts",
+      "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
