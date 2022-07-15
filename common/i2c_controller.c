@@ -91,16 +91,6 @@ static int i2c_port_is_locked(int port)
 	if (port < 0)
 		return 0;
 
-	if (IS_ENABLED(CONFIG_ZEPHYR)) {
-		/*
-		 * For Zephyr: to convert an i2c port enum value to a port
-		 * number in mutex_lock(), this number should be soc's i2c port
-		 * where the i2 device is connected to.
-		 */
-		if (i2c_get_physical_port(port) >= 0)
-			port = i2c_get_physical_port(port);
-	}
-
 	return (i2c_port_active_list >> port) & 1;
 }
 
@@ -325,16 +315,6 @@ void i2c_lock(int port, int lock)
 	/* Lock the controller, not the port */
 	port = i2c_port_to_controller(port);
 #endif
-	if (IS_ENABLED(CONFIG_ZEPHYR)) {
-		/*
-		 * For Zephyr: to convert an i2c port enum value to a port
-		 * number in mutex_lock(), this number should be soc's i2c port
-		 * where the i2 device is connected to.
-		 */
-		if (i2c_get_physical_port(port) >= 0)
-			port = i2c_get_physical_port(port);
-	}
-
 	if (port < 0 || port >= ARRAY_SIZE(port_mutex))
 		return;
 

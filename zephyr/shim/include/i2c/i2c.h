@@ -12,36 +12,42 @@
 #ifdef CONFIG_PLATFORM_EC_I2C
 #if DT_NODE_EXISTS(DT_PATH(named_i2c_ports))
 
-#define I2C_PORT(id) DT_STRING_UPPER_TOKEN(id, enum_name)
-#define I2C_PORT_WITH_COMMA(id) I2C_PORT(id),
+#define NPCX_PORT_COMPAT nuvoton_npcx_i2c_port
+#define ITE_IT8XXX2_PORT_COMPAT ite_it8xxx2_i2c
+#define ITE_ENHANCE_PORT_COMPAT ite_enhance_i2c
+#define MICROCHIP_XEC_COMPAT microchip_xec_i2c_v2
+#define I2C_EMUL_COMPAT zephyr_i2c_emul_controller
+#define I2C_FOREACH_PORT(fn)                                \
+	DT_FOREACH_STATUS_OKAY(NPCX_PORT_COMPAT, fn)        \
+	DT_FOREACH_STATUS_OKAY(ITE_IT8XXX2_PORT_COMPAT, fn) \
+	DT_FOREACH_STATUS_OKAY(ITE_ENHANCE_PORT_COMPAT, fn) \
+	DT_FOREACH_STATUS_OKAY(MICROCHIP_XEC_COMPAT, fn)    \
+	DT_FOREACH_STATUS_OKAY(I2C_EMUL_COMPAT, fn)
+
+#define I2C_PORT_BUS(i2c_port_id) DT_CAT(I2C_BUS_, i2c_port_id)
+#define I2C_PORT_BUS_WITH_COMMA(i2c_port_id) I2C_PORT_BUS(i2c_port_id),
+
+enum i2c_ports_chip {
+	I2C_FOREACH_PORT(I2C_PORT_BUS_WITH_COMMA)
+	I2C_PORT_COUNT
+};
+
+BUILD_ASSERT(I2C_PORT_COUNT != 0, "No I2C devices defined");
+
+#define I2C_PORT(i2c_named_id) DT_STRING_UPPER_TOKEN(i2c_named_id, enum_name)
+#define I2C_PORT_ENUM(i2c_named_id) \
+	I2C_PORT(i2c_named_id) =    \
+		I2C_PORT_BUS(DT_PHANDLE(i2c_named_id, i2c_port))
+#define I2C_PORT_WITH_COMMA(i2c_named_id) I2C_PORT_ENUM(i2c_named_id),
 
 enum i2c_ports {
 	DT_FOREACH_CHILD(DT_PATH(named_i2c_ports), I2C_PORT_WITH_COMMA)
-		I2C_PORT_COUNT
 };
 #define NAMED_I2C(name) I2C_PORT(DT_PATH(named_i2c_ports, name))
 #endif /* named_i2c_ports */
 #endif /* CONFIG_PLATFORM_EC_I2C */
 
-#ifdef CONFIG_I2C_NPCX
-#define I2C_COMPAT nuvoton_npcx_i2c_port
-#elif CONFIG_I2C_ITE_IT8XXX2
-#define I2C_COMPAT ite_it8xxx2_i2c
-#elif CONFIG_I2C_XEC_V2
-#define I2C_COMPAT microchip_xec_i2c_v2
-#elif CONFIG_I2C_EMUL
-#define I2C_COMPAT zephyr_i2c_emul_controller
-#else
-#error An undefined I2C driver is used.
-#endif
-
-#if defined(CONFIG_I2C_ITE_IT8XXX2) && defined(CONFIG_I2C_ITE_ENHANCE)
-#define I2C_DEVICE_COUNT                           \
-	DT_NUM_INST_STATUS_OKAY(ite_it8xxx2_i2c) + \
-		DT_NUM_INST_STATUS_OKAY(ite_enhance_i2c)
-#else
-#define I2C_DEVICE_COUNT DT_NUM_INST_STATUS_OKAY(I2C_COMPAT)
-#endif
+#define I2C_DEVICE_COUNT I2C_PORT_COUNT
 
 /**
  * @brief Adaptation of platform/ec's port IDs which map a port/bus to a device.

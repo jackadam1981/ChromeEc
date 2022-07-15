@@ -7,7 +7,7 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 		accel-0 {
-			i2c-port = <&bmi_i2c>;
+			i2c-port = <&i2c0>;
 			enum-name = "I2C_PORT_ACCEL";
 		};
 	};
