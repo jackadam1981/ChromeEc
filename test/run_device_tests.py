@@ -304,8 +304,8 @@ class AllTests:
                 tests.append(TestConfig(**test_args))
         # Catch all exceptions to avoid disruptions in public repo
         # pylint: disable=broad-except
-        except BaseException as e:
-            logging.debug("Failed to get list of private tests: %s", str(e))
+        except BaseException as err:
+            logging.debug("Failed to get list of private tests: %s", str(err))
             logging.debug("Ignore error and continue.")
             return []
         return tests
@@ -411,14 +411,14 @@ def copy_section(src: bytes, dst: bytearray, section: str):
     dst[dst_start:dst_end] = src[src_start:src_end] + filling
 
 
-def replace_ro(image: bytearray, ro: bytes):
+def replace_ro(image: bytearray, ro_section: bytes):
     """Replace RO in image with provided one"""
     # Backup RO public key since its private part was used to sign RW.
     ro_pubkey = read_section(image, "KEY_RO")
 
     # Copy RO part of the firmware to the image. Please note that RO public key
     # is copied too since EC_RO area includes KEY_RO area.
-    copy_section(ro, image, "EC_RO")
+    copy_section(ro_section, image, "EC_RO")
 
     # Restore RO public key.
     write_section(ro_pubkey, image, "KEY_RO")
@@ -442,9 +442,9 @@ def get_console(board_config: BoardConfig) -> Optional[str]:
     return None
 
 
-def power(board_config: BoardConfig, on: bool) -> None:
+def power(board_config: BoardConfig, power_on: bool) -> None:
     """Turn power to board on/off."""
-    if on:
+    if power_on:
         state = "pp3300"
     else:
         state = "off"
@@ -520,31 +520,31 @@ def flash(
 
 def patch_image(test: TestConfig, image_path: str):
     """Replace RO part of the firmware with provided one."""
-    with open(image_path, "rb+") as f:
-        image = bytearray(f.read())
-        ro = read_file_gsutil(test.ro_image)
-        replace_ro(image, ro)
-        f.seek(0)
-        f.write(image)
-        f.truncate()
+    with open(image_path, "rb+") as image_file:
+        image = bytearray(image_file.read())
+        ro_section = read_file_gsutil(test.ro_image)
+        replace_ro(image, ro_section)
+        image_file.seek(0)
+        image_file.write(image)
+        image_file.truncate()
 
 
 def readline(
-    executor: ThreadPoolExecutor, f: BinaryIO, timeout_secs: int
+    executor: ThreadPoolExecutor, file: BinaryIO, timeout_secs: int
 ) -> Optional[bytes]:
     """Read a line with timeout."""
-    a = executor.submit(f.readline)
+    future = executor.submit(file.readline)
     try:
-        return a.result(timeout_secs)
+        return future.result(timeout_secs)
     except concurrent.futures.TimeoutError:
         return None
 
 
-def readlines_until_timeout(executor, f: BinaryIO, timeout_secs: int) -> List[bytes]:
+def readlines_until_timeout(executor, file: BinaryIO, timeout_secs: int) -> List[bytes]:
     """Continuously read lines for timeout_secs."""
     lines: List[bytes] = []
     while True:
-        line = readline(executor, f, timeout_secs)
+        line = readline(executor, file, timeout_secs)
         if not line:
             return lines
         lines.append(line)
@@ -607,8 +607,8 @@ def run_test(
             # ignore it.
             continue
 
-        for r in test.finish_regexes:
-            if r.match(line_str):
+        for finish_re in test.finish_regexes:
+            if finish_re.match(line_str):
                 # flush read the remaining
                 lines = readlines_until_timeout(executor, console, 1)
                 logging.debug(lines)
@@ -626,16 +626,16 @@ def get_test_list(config: BoardConfig, test_args) -> List[TestConfig]:
         return AllTests.get(config)
 
     test_list = []
-    for t in test_args:
-        logging.debug("test: %s", t)
-        test_regex = re.compile(t)
+    for test in test_args:
+        logging.debug("test: %s", test)
+        test_regex = re.compile(test)
         tests = [
             test
             for test in AllTests.get(config)
             if test_regex.fullmatch(test.config_name)
         ]
         if not tests:
-            logging.error('Unable to find test config for "%s"', t)
+            logging.error('Unable to find test config for "%s"', test)
             sys.exit(1)
         test_list += tests
 
@@ -687,9 +687,9 @@ def flash_and_run_test(test: TestConfig, board_config: BoardConfig,
         return False
 
     if test.toggle_power:
-        power(board_config, on=False)
+        power(board_config, power_on=False)
         time.sleep(1)
-        power(board_config, on=True)
+        power(board_config, power_on=True)
 
     hw_write_protect(test.enable_hw_write_protect)
 
@@ -698,9 +698,10 @@ def flash_and_run_test(test: TestConfig, board_config: BoardConfig,
 
     with ExitStack() as stack:
         if args.remote and args.console_port:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connect((args.remote, args.console_port))
-            console = stack.enter_context(s.makefile(mode="rwb", buffering=0))
+            console_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            console_socket.connect((args.remote, args.console_port))
+            console = stack.enter_context(
+                console_socket.makefile(mode="rwb", buffering=0))
         else:
             console = stack.enter_context(
                 open(get_console(board_config), "wb+", buffering=0)
@@ -715,8 +716,8 @@ def parse_remote_arg(remote: str) -> str:
         return ""
 
     try:
-        ip = socket.gethostbyname(remote)
-        return ip
+        ip_addr = socket.gethostbyname(remote)
+        return ip_addr
     except socket.gaierror:
         logging.error('Failed to resolve host "%s".', remote)
         sys.exit(1)
@@ -814,12 +815,12 @@ def main():
     board_config = BOARD_CONFIGS[args.board]
     # ThreadPoolExecutor is shut down explicitly using non-default wait=False
     # pylint: disable=consider-using-with
-    e = ThreadPoolExecutor(max_workers=1)
+    tpe = ThreadPoolExecutor(max_workers=1)
     test_list = get_test_list(board_config, args.tests)
     logging.debug("Running tests: %s", [test.config_name for test in test_list])
 
     for test in test_list:
-        test.passed = flash_and_run_test(test, board_config, args, e)
+        test.passed = flash_and_run_test(test, board_config, args, tpe)
 
     colorama.init()
     exit_code = 0
@@ -834,7 +835,7 @@ def main():
 
         print(colorama.Style.RESET_ALL)
 
-    e.shutdown(wait=False)
+    tpe.shutdown(wait=False)
     sys.exit(exit_code)
 
 
