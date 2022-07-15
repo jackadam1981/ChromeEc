@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6df96e22_202b5f83",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-07-15T10:17:25Z",
+      "side": 1,
+      "message": "The period seems to be in KHZ from the device tree config Fabio : https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/projects/brya/fan.dts;l\u003d11",
+      "parentUuid": "a90edb24_536c1f7d",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 38
+      },
+      "revId": "cf92453131ced9bb6016b6e77b80aed72ddf5bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2fe48b3_95a088e1",
         "filename": "zephyr/shim/src/fan.c",
         "patchSetId": 1
