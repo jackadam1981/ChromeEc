@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518233d6_dfef6221",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-15T15:29:20Z",
+      "side": 1,
+      "message": "Is this check still needed?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "395f03f3da0dcd03ac6024d6c34032d3a4d256b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3174974_ba3a6121",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-15T15:29:20Z",
+      "side": 1,
+      "message": "This change looks great.  Before merging, can you create a test that validates the port locking?\n\nFor example, if named-i2c-ports has the following:\n```\n{\n  compatible \u003d \"named-i2c-ports\";\n  eeprom {\n    i2c-port \u003d \u003c\u0026i2c7_0\u003e;\n    enum-name \u003d \"I2C_EEPROM\";\n  };\n  charger {\n    i2c-port \u003d \u003c\u0026i2c7_0\u003e;\n    enum-name \u003d \"I2C_PORT_CHARGER\";\n  };\n```\n\nThe test would call `i2c_lock(I2C_EEPROM, true)` and then verify that `i2c_lock(I2C_PORT_CHARGER, true)` gets blocked.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 33
+      },
+      "revId": "395f03f3da0dcd03ac6024d6c34032d3a4d256b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
