@@ -714,8 +714,11 @@ static void isl923x_init(int chgnum)
 			goto init_fail;
 	}
 
-	/* Revert all changes done by isl9238c_hibernate(). */
-	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C) && isl9238c_resume(chgnum))
+	/*
+	/* Revert all changes done by isl9238c_hibernate().
+	/* ISL9238A/B/C support the isl9238c_hibernate and isl9238c_resume.
+	 */
+	if (isl9238c_resume(chgnum))
 		goto init_fail;
 
 	if (IS_ENABLED(CHARGER_ISL9238X) ||
