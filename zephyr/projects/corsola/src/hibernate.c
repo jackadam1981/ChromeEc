@@ -11,7 +11,7 @@
 /* Corsola board specific hibernate implementation */
 __override void board_hibernate(void)
 {
-#ifdef CONFIG_CHARGER_ISL9238C
+#ifdef CONFIG_CHARGER_ISL9238C /* check this works well on ISL9238B or not */
 	isl9238c_hibernate(CHARGER_SOLO);
 #endif
 }
