@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2d6b3e8_84253869",
+        "filename": "board/kinox/power_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2022-07-17T07:05:50Z",
+      "side": 1,
+      "message": "Why you use \"\u003e\u003d\" instead of \"\u003d\u003d\"?",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "3d8da92f54aa42528026592ff113c710a243d365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
