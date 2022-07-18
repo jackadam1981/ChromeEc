@@ -240,11 +240,12 @@ ZTEST_F(usbc_alt_mode, verify_discovery)
 
 ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 {
+	enum typec_mode entry_type = TYPEC_MODE_DP;
 	/* TODO(b/237553647): Test EC-driven mode entry (requires a separate
 	 * config).
 	 */
 	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
-			       TYPEC_MODE_DP);
+			       &entry_type, sizeof(entry_type));
 	k_sleep(K_SECONDS(1));
 
 	/* Verify host command when VDOs are present. */
@@ -266,20 +267,23 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 
 ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 {
+	enum typec_mode entry_type = TYPEC_MODE_DP;
+
 	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
-			       TYPEC_MODE_DP);
+			       &entry_type, sizeof(entry_type));
 	k_sleep(K_SECONDS(1));
 
 	/* DPM configures the partner on DP mode entry */
 	/* Verify port partner thinks its configured for DisplayPort */
 	zassert_true(fixture->partner.displayport_configured, NULL);
 
-	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_EXIT_MODES, 0);
+	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_EXIT_MODES,
+			       NULL, 0);
 	k_sleep(K_SECONDS(1));
 	zassert_false(fixture->partner.displayport_configured, NULL);
 
 	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
-			       TYPEC_MODE_DP);
+			       &entry_type, sizeof(entry_type));
 	k_sleep(K_SECONDS(1));
 	zassert_true(fixture->partner.displayport_configured, NULL);
 
@@ -305,8 +309,10 @@ ZTEST_SUITE(usbc_alt_mode, drivers_predicate_post_main, usbc_alt_mode_setup,
  */
 ZTEST_F(usbc_alt_mode_dp_unsupported, verify_discovery)
 {
+	enum typec_mode entry_type = TYPEC_MODE_DP;
+
 	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
-			       TYPEC_MODE_DP);
+			       &entry_type, sizeof(entry_type));
 	k_sleep(K_SECONDS(1));
 
 	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
@@ -344,8 +350,10 @@ ZTEST_F(usbc_alt_mode_dp_unsupported, verify_discovery)
  */
 ZTEST_F(usbc_alt_mode_dp_unsupported, verify_displayport_mode_nonentry)
 {
+	enum typec_mode entry_type = TYPEC_MODE_DP;
+
 	host_cmd_typec_control(TEST_PORT, TYPEC_CONTROL_COMMAND_ENTER_MODE,
-			       TYPEC_MODE_DP);
+			       &entry_type, sizeof(entry_type));
 	k_sleep(K_SECONDS(1));
 
 	zassert_false(fixture->partner.displayport_configured, NULL);
