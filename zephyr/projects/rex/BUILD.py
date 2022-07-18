@@ -5,7 +5,7 @@
 """Rex Projects."""
 
 
-def register_variant(project_name, extra_kconfig_files=()):
+def register_variant(project_name, extra_dts_overlays=(), extra_kconfig_files=()):
     """Register a variant of rex."""
     register_npcx_project(
         project_name=project_name,
@@ -26,5 +26,8 @@ def register_variant(project_name, extra_kconfig_files=()):
 
 register_variant(
     project_name="rex",
+    extra_dts_overlays=[
+        here / "generated.dts",
+    ],
     extra_kconfig_files=[here / "prj_rex.conf"],
 )
