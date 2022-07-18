@@ -70,6 +70,30 @@
       },
       "revId": "3d8da92f54aa42528026592ff113c710a243d365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6444e2c_e813daa2",
+        "filename": "board/kinox/power_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-07-18T11:55:00Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "a450971e_cbf99209",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "3d8da92f54aa42528026592ff113c710a243d365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
