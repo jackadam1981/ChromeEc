@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e654ab_ef9a9e6e",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-18T17:17:15Z",
+      "side": 1,
+      "message": "Note that this code does not actually use the executor `e`.  However, the hang happens in the shutdown function invoked as soon `e` goes out of scope.\n\nIf I de-indent these lines, the summary with the results won\u0027t be printed.\n\nCurrent patch:\n\n```\nDEBUG:root:b\u0027Running test_cros_crc8...\\r\\n\u0027\nDEBUG:root:b\u0027Pass: crc \u003d\u003d 170\\r\\n\u0027\nDEBUG:root:b\u0027OK\\r\\n\u0027\nDEBUG:root:b\u0027Pass!\\r\\n\u0027\nDEBUG:root:[b\u0027\u003e [2.117225 MKBP not cleared within threshold, toggling.]\\r\\n\u0027, b\u0027[3.117319 MKBP not cleared within threshold, toggling.]\\r\\n\u0027]\nTest \"aes\": PASSED\n\nTest \"crc\": PASSED\n\n\u003cHang\u003e\n\n^CError in atexit._run_exitfuncs:\n\n``` \n\nIf I remove an indentation level in this block:\n\n```\nDEBUG:root:b\u0027Running test_cros_crc8...\\r\\n\u0027\nDEBUG:root:b\u0027Pass: crc \u003d\u003d 170\\r\\n\u0027\nDEBUG:root:b\u0027OK\\r\\n\u0027\nDEBUG:root:b\u0027Pass!\\r\\n\u0027\nDEBUG:root:[b\u0027\u003e [2.117378 MKBP not cleared within threshold, toggling.]\\r\\n\u0027, b\u0027[3.117472 MKBP not cleared within threshold, toggling.]\\r\\n\u0027]\n\n\u003cHang\u003e\n\n^CTraceback (most recent call last):\n```",
+      "range": {
+        "startLine": 822,
+        "startChar": 0,
+        "endLine": 833,
+        "endChar": 43
+      },
+      "revId": "92f1a1c5279f52fc4ab2e2548ea4aa40c7eb3edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
