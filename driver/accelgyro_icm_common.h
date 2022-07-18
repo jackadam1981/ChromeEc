@@ -9,10 +9,10 @@
 #define __CROS_EC_ACCELGYRO_ICM_COMMON_H
 
 #include "accelgyro.h"
-#include "builtin/stddef.h"
 #include "hwtimer.h"
 #include "timer.h"
 
+#include <stddef.h>
 #include <sys/types.h>
 
 #if !defined(CONFIG_ACCELGYRO_ICM_COMM_SPI) && \
