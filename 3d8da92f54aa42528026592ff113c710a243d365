@@ -22,6 +22,30 @@
       },
       "revId": "3d8da92f54aa42528026592ff113c710a243d365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f341f43d_6b2b3249",
+        "filename": "board/kinox/power_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-07-18T02:44:21Z",
+      "side": 1,
+      "message": "Update the patch4.",
+      "parentUuid": "d2d6b3e8_84253869",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "3d8da92f54aa42528026592ff113c710a243d365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
