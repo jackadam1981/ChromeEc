@@ -8,7 +8,6 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "builtin/assert.h"
-#include "builtin/endian.h"
 #include "charge_manager.h"
 #include "charger.h"
 #include "common.h"
@@ -23,6 +22,8 @@
 #include "usb_charge.h"
 #include "usb_pd.h"
 #include "util.h"
+
+#include <endian.h>
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
