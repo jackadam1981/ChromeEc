@@ -74,3 +74,9 @@ register_variant(
     ],
     extra_kconfig_files=[here / "prj_villager.conf"],
 )
+
+
+register_variant(
+    project_name="evoker",
+    extra_kconfig_files=[here / "prj_evoker.conf"],
+)
