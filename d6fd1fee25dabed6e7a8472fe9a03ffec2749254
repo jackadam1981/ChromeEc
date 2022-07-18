@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f82a982_fd19ec7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-18T15:52:32Z",
+      "side": 1,
+      "message": "It turned out to be even more local than that.",
+      "parentUuid": "52f2ee2d_2ed14f92",
+      "revId": "d6fd1fee25dabed6e7a8472fe9a03ffec2749254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab234b57_c64918ce",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-07-07T03:58:22Z",
       "side": 1,
       "message": "I think cmake compiler properties are the preferred way to set warning levels.  You can see the example below.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "d6fd1fee25dabed6e7a8472fe9a03ffec2749254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744357a3_261600df",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-18T15:52:32Z",
+      "side": 1,
+      "message": "Ironically, if I had tried this, it wouldn\u0027t have worked, and I might have saved a few steps in my debugging.",
+      "parentUuid": "ab234b57_c64918ce",
       "range": {
         "startLine": 13,
         "startChar": 0,
