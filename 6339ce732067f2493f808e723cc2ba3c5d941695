@@ -16,6 +16,69 @@
       "message": "First shot at an AP mux control feature test!\n\nI decided to have it iterate over both mux indexes since each produces its own unique event.  I wasn\u0027t as sure whether it should iterate over both ports or over different mux settings, since that could be more the domain of the chip driver tests. ",
       "revId": "6339ce732067f2493f808e723cc2ba3c5d941695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb545092_11285368",
+        "filename": "zephyr/test/drivers/ap_mux_control/src/ap_mux_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-18T17:24:19Z",
+      "side": 1,
+      "message": "Should be \u003czephyr/ztest.h\u003e",
+      "revId": "6339ce732067f2493f808e723cc2ba3c5d941695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274bf126_998bd08d",
+        "filename": "zephyr/test/drivers/ap_mux_control/src/ap_mux_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-18T17:24:19Z",
+      "side": 1,
+      "message": "This seems like a magic-number. Can we grab it from a Kconfig or devicetree? Or are we always guaranteed to have 2 muxes per port? If so, we might want to state that as a comment.",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "6339ce732067f2493f808e723cc2ba3c5d941695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f250db_785289f3",
+        "filename": "zephyr/test/drivers/ap_mux_control/src/ap_mux_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-18T17:24:19Z",
+      "side": 1,
+      "message": "TODO(b/##)",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "6339ce732067f2493f808e723cc2ba3c5d941695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
