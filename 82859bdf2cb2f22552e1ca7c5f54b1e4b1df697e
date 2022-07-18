@@ -33,6 +33,24 @@
       "message": "I didn\u0027t really have a plan for supporting other sub-commands, but I had hoped to avoid forcing the tester to deal with `ec_params_typec_control` containing a union. This change gets rid of type-checking and forces the caller to know what size things are. Ways that might be a bit more high-level:\n* The remaining union members become function params. That\u0027s a bit verbose and forces the caller to specify placeholder values for multiple parameters. They also have to understand which params are used for which sub-command, but they\u0027d have to do that with other approaches as well.\n* Have the caller directly specify the `ec_params_typec_control`. This would break the pattern in this file, and I was trying to avoid it, but it would be essentially foolproof.\n* Give the union inside `ec_params_typec_control` a name and have a parameter of that type here. This would keep the function calls terse and high-level. The main downside would be giving a name to something we don\u0027t want people to use in most contexts.",
       "revId": "82859bdf2cb2f22552e1ca7c5f54b1e4b1df697e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f993cb_3654e143",
+        "filename": "zephyr/test/drivers/include/test/drivers/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-18T20:56:58Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t have massively happy feelings for how to make this interface both type-safe and easy to use.\n\nWhat would you think about having one helper per-command?  The helper would be able to type-check and fill in what\u0027s appropriate and that might be decently readable compared to making a million arguments for a \"generic\" command helper",
+      "parentUuid": "7cc0f84a_db44f9bc",
+      "revId": "82859bdf2cb2f22552e1ca7c5f54b1e4b1df697e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
