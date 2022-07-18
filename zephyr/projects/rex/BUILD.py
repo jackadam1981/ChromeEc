@@ -24,6 +24,7 @@ def register_variant(project_name, extra_dts_overlays=(), extra_kconfig_files=()
 register_variant(
     project_name="rex",
     extra_dts_overlays=[
+        here / "nivviks_generated.dts",
     ],
     extra_kconfig_files=[here / "prj_rex.conf"],
 )
