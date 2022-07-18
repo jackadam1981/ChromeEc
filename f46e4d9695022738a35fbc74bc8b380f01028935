@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3e2839_62a75977",
+        "filename": "zephyr/projects/rex/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-07-18T21:08:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67684c0e_bdd544c9",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "f46e4d9695022738a35fbc74bc8b380f01028935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee6913c4_bfdc6441",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-07-18T20:28:40Z",
       "side": 1,
       "message": "tried to build this, fails because it\u0027s looking for GPIO_ENTERING_RW, you can define it here, something like\n\n```\ngpio_ec_entering_rw: ec_entering_rw {\n        enum-name \u003d \"GPIO_ENTERING_RW\";\n};\n```\n\n(listing it with no \"gpios\" property is going to end up marking it as unimplemented)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "f46e4d9695022738a35fbc74bc8b380f01028935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0526b0_6c9952e9",
+        "filename": "zephyr/projects/rex/npcx9.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-07-18T21:08:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee6913c4_bfdc6441",
       "range": {
         "startLine": 17,
         "startChar": 0,
