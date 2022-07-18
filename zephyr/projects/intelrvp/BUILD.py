@@ -45,7 +45,6 @@ register_intelrvp_project(
     chip="mec1727",
     extra_dts_overlays=[
         here / "adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
-        here / "adlrvp/adlrvp_mchp/bb_retimer.dts",
         here / "adlrvp/adlrvp_mchp/gpio.dts",
         here / "adlrvp/adlrvp_mchp/interrupts.dts",
         here / "adlrvp/adlrvp_mchp/keyboard.dts",

@@ -292,8 +292,8 @@ noreturn static int cros_system_xec_hibernate(const struct device *dev,
 	struct espi_iom_regs *espi0 = STRUCT_ESPI_REG_BASE_ADDR;
 	struct kscan_regs *kbd = STRUCT_KBD_REG_BASE_ADDR;
 	struct qmspi_regs *qmspi0 = STRUCT_QMSPI_REG_BASE_ADDR;
-	struct pwm_regs *pwm0 = STRUCT_PWM_REG_BASE_ADDR;
-	struct tach_regs *tach0 = STRUCT_TACH_REG_BASE_ADDR;
+	//struct pwm_regs *pwm0 = STRUCT_PWM_REG_BASE_ADDR;
+	//struct tach_regs *tach0 = STRUCT_TACH_REG_BASE_ADDR;
 	struct ecia_regs *ecia = (struct ecia_regs *)(ECIA_BASE_ADDR);
 	int i;
 
