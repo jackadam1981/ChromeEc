@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f718e42_c7326b7c",
+        "filename": "zephyr/projects/rex/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-18T19:57:06Z",
+      "side": 1,
+      "message": "Think this should be renamed to rex.dts as a start (or even better f\"{project_name}.dts\"). We can always rename it but that I think would be coherent with other projects.",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "f46e4d9695022738a35fbc74bc8b380f01028935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
