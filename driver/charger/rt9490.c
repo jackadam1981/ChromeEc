@@ -5,10 +5,11 @@
  * Richtek 5A 1-4 cell buck-boost switching battery charger driver.
  */
 
+#include <endian.h>
+
 #include "battery.h"
 #include "battery_smart.h"
 #include "builtin/assert.h"
-#include "builtin/endian.h"
 #include "charger.h"
 #include "charge_manager.h"
 #include "common.h"
