@@ -22,6 +22,30 @@
       },
       "revId": "f2db98cb62c2e523cc97ff4d7a384a333ad8b288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6539b46_f880c635",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-18T15:42:06Z",
+      "side": 1,
+      "message": "I see, I was reading the documentation and I thought about an attempt to fix the hang at the end of the execution.\n\nI\u0027ll update the code and use `with`.",
+      "parentUuid": "11e8f82b_4462c52f",
+      "range": {
+        "startLine": 815,
+        "startChar": 4,
+        "endLine": 815,
+        "endChar": 77
+      },
+      "revId": "f2db98cb62c2e523cc97ff4d7a384a333ad8b288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
