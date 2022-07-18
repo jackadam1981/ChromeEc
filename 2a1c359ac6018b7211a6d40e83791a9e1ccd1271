@@ -121,6 +121,24 @@
       "parentUuid": "a624b650_7f2bd73c",
       "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a85bac_175c141a",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-18T19:16:50Z",
+      "side": 1,
+      "message": "Yup, you can definitely load the change onto your skyrim and check the basic LED states (solid white in S0, flashing white in S0ix, solid amber while charging)",
+      "parentUuid": "71f89a9f_b88d0239",
+      "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
