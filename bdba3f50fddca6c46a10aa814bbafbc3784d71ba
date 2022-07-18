@@ -39,6 +39,30 @@
       },
       "revId": "bdba3f50fddca6c46a10aa814bbafbc3784d71ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac20c1f6_4514d764",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-18T15:49:06Z",
+      "side": 1,
+      "message": "Hmm maybe we can sync on this. Android\u0027s CHRE does something very similar which I thought could apply here too. For example, they have sensor samples which look like:\n\n```\nstruct sample_data {\n  struct sample_data_header header; //\u003c Header includes num_samples which must\n                                    //  always be at least 1\n  struct data {\n    ...\n  } samples[1];\n};\n```\n\nWhat this does is that the common case can be allocated with a simple `struct sample_data data`, but if you want multiple samples you can just allocate\n\n```\nuint8_t buffer[sizeof(struct sample_data) + (n-1) * sizeof(struct data)];\nstruct sample_data *data \u003d buffer; //\u003c has n samples allocated\ndata-\u003eheader-\u003enum_samples \u003d n;\n```",
+      "parentUuid": "8df0f2d5_9237aaf5",
+      "range": {
+        "startLine": 1920,
+        "startChar": 1,
+        "endLine": 1920,
+        "endChar": 17
+      },
+      "revId": "bdba3f50fddca6c46a10aa814bbafbc3784d71ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
