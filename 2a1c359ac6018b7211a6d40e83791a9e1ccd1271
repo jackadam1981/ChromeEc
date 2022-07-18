@@ -103,6 +103,24 @@
       "parentUuid": "3149efea_3f680945",
       "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f89a9f_b88d0239",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-07-18T18:50:23Z",
+      "side": 1,
+      "message": "Is there something we should look at to make sure the LEDs are behaving correctly with this change?",
+      "parentUuid": "a624b650_7f2bd73c",
+      "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
