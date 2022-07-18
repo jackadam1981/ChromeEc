@@ -21,6 +21,21 @@
 		default_battery: smp {
 			compatible = "smp,l20m3pg0", "battery-smart";
 		};
+		cosmx_gh02047xl {
+			compatible = "cosmx,gh02047xl", "battery-smart";
+		};
+		dynapack_atl_gh02047xl {
+			compatible = "dynapack_atl,gh02047xl", "battery-smart";
+		};
+		dynapack_cosmx_gh02047xl {
+			compatible = "dynapack_cosmx,gh02047xl", "battery-smart";
+		};
+		smp_coslight_gh02047xl {
+			compatible = "smp_coslight,gh02047xl", "battery-smart";
+		};
+		smp_highpower_gh02047xl {
+			compatible = "smp_highpower,gh02047xl", "battery-smart";
+		};
 	};
 
 	hibernate-wake-pins {
@@ -120,6 +135,18 @@
 		gpio_fan_enable: fan-enable {
 			gpios = <&gpiol 4 GPIO_OUTPUT>;
 			no-auto-init;
+		};
+		gpio_pwm_led_1_odl: pwm_led_1_odl {
+			gpios = <&gpioa 1 GPIO_OUTPUT_LOW>;
+		};
+		gpio_pwm_led_2_odl: pwm_led_2_odl {
+			gpios = <&gpioa 2 GPIO_OUTPUT_LOW>;
+		};
+		gpio_led_3_l: led_3_l {
+			gpios = <&gpiol 2 GPIO_OUTPUT_LOW>;
+		};
+		gpio_pwm_led_4_l: led_4_l {
+			gpios = <&gpiol 3 GPIO_OUTPUT_LOW>;
 		};
 	};
 
