@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa2b44a_b325a768",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-18T05:40:20Z",
+      "side": 1,
+      "message": "declared as open-drain output signal",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "951f38f496942d4b17074a7fb9ba327085feb6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e43cfb_56786c89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-18T05:40:20Z",
+      "side": 1,
+      "message": "correctly",
+      "revId": "951f38f496942d4b17074a7fb9ba327085feb6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6627db98_ef4096c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-18T05:40:20Z",
+      "side": 1,
+      "message": "Tricky, yes, that reading the output signal does not return the current state whether it is on or not. Using the mask is reasonable, but perhaps add some more comments explaining why the reading the mask works, and why reading the signal\ndirectly fails.\nThere is also a risk here with sysjump to RW, in that the output may have been set prior to sysjump and after sysjump the signal mask will be 0. In this case it will be impossible to tell whether that signal has been set or not.\nI don\u0027t think this will be a problem because I don\u0027t see sysjump happening at the time this logic runs, but it is something to be aware of.\n\nI think the upstream changes have landed where GPIO configs can be read, and perhaps we can use this to correctly set the current state of the output.\nI\u0027ll investigate this.",
+      "revId": "951f38f496942d4b17074a7fb9ba327085feb6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
