@@ -16,6 +16,24 @@
       "message": "I think you have tried this part, but may I know why you revise the number?",
       "revId": "8b45852648d272dfa017ace85d338b5b7ce4c47e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "def8d452_686ad15f",
+        "filename": "board/kinox/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-07-18T11:54:28Z",
+      "side": 0,
+      "message": "Because when the input voltage is 3.3v(0x3FF).\nThe NPCX ADC formula is (0x3FF*2186/(1023+1)) it will cause the calculation can get the max is 2183, not the 2186 max voltage.",
+      "parentUuid": "7700c8b6_860a5028",
+      "revId": "8b45852648d272dfa017ace85d338b5b7ce4c47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
