@@ -81,6 +81,30 @@
       },
       "revId": "d767b1e4ac93b8e84110df19edc79a44bb789f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77e6a7c_03339c53",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-07-18T00:43:55Z",
+      "side": 1,
+      "message": "Yes, please check: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3752433",
+      "parentUuid": "a6dc7f67_67f7f58a",
+      "range": {
+        "startLine": 737,
+        "startChar": 16,
+        "endLine": 737,
+        "endChar": 18
+      },
+      "revId": "d767b1e4ac93b8e84110df19edc79a44bb789f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
