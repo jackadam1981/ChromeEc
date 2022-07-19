@@ -6286,6 +6286,13 @@ static void pe_vdm_response_entry(int port)
 		pe_set_ready_state(port);
 		return;
 #endif
+#ifdef USB_VID_ACER
+	case CMD_ACER_ATTENTION:
+		acer_mode_attention(port, rx_payload);
+		ccprints("[SC] acer attention 0x15");
+		pe_set_ready_state(port);
+		return;
+#endif
 	default:
 		CPRINTF("VDO ERR:CMD:%d\n", vdo_cmd);
 	}

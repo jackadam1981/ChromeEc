@@ -1874,7 +1874,7 @@ int pd_dfp_exit_mode(int port, enum tcpci_msg_type type, uint16_t svid,
  * @param payload  payload data.
  */
 void dfp_consume_attention(int port, uint32_t *payload);
-
+void acer_mode_attention(int port, uint32_t *payload);
 /**
  * Consume the discover identity message
  *
