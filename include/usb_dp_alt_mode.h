@@ -23,7 +23,9 @@
  * @param port USB-C port number
  */
 void dp_init(int port);
-
+#ifdef USB_VID_ACER
+void acer_mode_init(int port);
+#endif
 /*
  * Returns True if DisplayPort mode is in active state
  *
@@ -53,7 +55,9 @@ bool dp_is_idle(int port);
  *                  False otherwise
  */
 bool dp_entry_is_done(int port);
-
+#ifdef USB_VID_ACER
+bool acer_mode_entry_is_done(int port);
+#endif
 /*
  * Handles received DisplayPort VDM ACKs.
  *
@@ -64,7 +68,10 @@ bool dp_entry_is_done(int port);
  */
 void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		  uint32_t *vdm);
-
+#ifdef USB_VID_ACER
+void acer_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
+		  uint32_t *vdm);
+#endif
 /*
  * Handles NAKed (or Not Supported or timed out) DisplayPort VDM requests.
  *
@@ -87,5 +94,8 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd);
  */
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					    uint32_t *vdm);
-
+#ifdef USB_VID_ACER
+enum dpm_msg_setup_status acer_setup_next_vdm(int port, int *vdo_count,
+					    uint32_t *vdm);
+#endif
 #endif /* __CROS_EC_USB_DP_ALT_MODE_H */
