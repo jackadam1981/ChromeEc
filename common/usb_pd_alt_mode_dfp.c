@@ -1458,6 +1458,32 @@ __overridable int svdm_tbt_compat_attention(int port, uint32_t *payload)
 }
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
 
+#ifdef USB_VID_ACER
+__overridable int svdm_enter_acer_mode(int port, uint32_t mode_caps)
+{
+	return 0;
+}
+
+__overridable void svdm_exit_acer_mode(int port)
+{
+}
+
+__overridable int svdm_acer_status(int port, uint32_t *payload)
+{
+	return 0;
+}
+
+__overridable int svdm_acer_config(int port, uint32_t *payload)
+{
+	return 0;
+}
+
+__overridable int svdm_acer_attention(int port, uint32_t *payload)
+{
+	return 0;
+}
+#endif /* USB_VID_ACER */
+
 /*
  * TODO: b:169262276: For TCPMv2, move alternate mode specific entry, exit and
  * configuration to Device Policy Manager.
@@ -1491,6 +1517,17 @@ const struct svdm_amode_fx supported_modes[] = {
 		.exit = &svdm_tbt_compat_exit_mode,
 	},
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
+
+#ifdef USB_VID_ACER
+	{
+		.svid = USB_VID_ACER,
+		.enter = &svdm_enter_acer_mode,
+		.status = &svdm_acer_status,
+		.config = &svdm_acer_config,
+		.attention = &svdm_acer_attention,
+		.exit = &svdm_exit_acer_mode,
+	},
+#endif /* USB_VID_ACER */
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 
