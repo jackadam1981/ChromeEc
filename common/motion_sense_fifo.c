@@ -181,6 +181,69 @@ static void fifo_pop(void)
 	}
 }
 
+__maybe_unused static void stub_fifo_pop(void)
+{
+	struct ec_response_motion_sensor_data *head = get_fifo_head();
+	const size_t initial_count = queue_count(&fifo);
+
+	/* Check that we have something to pop. */
+	if (!initial_count && !fifo_staged.count)
+		return;
+
+	/*
+	 * If all the data is staged (nothing in the committed queue), we'll
+	 * need to move the head and the tail over to simulate poping from the
+	 * staged data.
+	 */
+	if (!initial_count)
+		queue_advance_tail(&fifo, 1);
+
+	/*
+	 * If we're about to pop a wakeup flag, we should remember it as though
+	 * it was committed.
+	 */
+	if (head->flags & MOTIONSENSE_SENSOR_FLAG_WAKEUP)
+		wake_up_needed = 1;
+	/*
+	 * By not using queue_remove_unit we're avoiding an un-necessary memcpy.
+	 */
+	queue_advance_head(&fifo, 1);
+	fifo_lost++;
+
+	/* Increment lost counter if we have valid data. */
+	if (!is_timestamp(head))
+		motion_sensors[head->sensor_num].lost++;
+
+	/*
+	 * We're done if the initial count was non-zero and we only advanced the
+	 * head. Else, decrement the staged count and update staged metadata.
+	 */
+	if (initial_count)
+		return;
+
+	fifo_staged.count--;
+
+	/* If we removed a timestamp there's nothing else for us to do. */
+	if (is_timestamp(head))
+		return;
+
+	/*
+	 * Decrement sample count, if the count was 2 before, we might not need
+	 * to spread anymore. Loop through and check.
+	 */
+	if (--fifo_staged.sample_count[head->sensor_num] < 2) {
+		int i;
+
+		fifo_staged.requires_spreading = 0;
+		for (i = 0; i < MAX_MOTION_SENSORS; i++) {
+			if (fifo_staged.sample_count[i] > 1) {
+				fifo_staged.requires_spreading = 1;
+				break;
+			}
+		}
+	}
+}
+
 /**
  * Make sure that the fifo has at least 1 empty spot to stage data into.
  */
