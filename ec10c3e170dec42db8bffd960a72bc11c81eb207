@@ -16,6 +16,24 @@
       "message": "Interesting, I thought there was already a mass-format done to make the style compatible with `black`: https://crrev.com/c/3749242.",
       "revId": "ec10c3e170dec42db8bffd960a72bc11c81eb207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d3d209_342e7876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-19T17:34:33Z",
+      "side": 1,
+      "message": "Interesting... Maybe I accidentally introduced some of these errors while updating the code in this chain of patches, but I see a couple of edits in lines that I don\u0027t think were affected.",
+      "parentUuid": "217dcd20_67aaa8fb",
+      "revId": "ec10c3e170dec42db8bffd960a72bc11c81eb207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
