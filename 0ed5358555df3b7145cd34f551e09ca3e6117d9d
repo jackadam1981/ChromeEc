@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d24c062_81f3aaa9",
+        "filename": "zephyr/projects/herobrine/battery_evoker.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-07-19T00:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79750066_40d81417",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0ed5358555df3b7145cd34f551e09ca3e6117d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e758d10_1790e86c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb081f4b_eedde4ca",
+        "filename": "zephyr/projects/herobrine/prj_evoker.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-07-19T00:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e758d10_1790e86c",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "0ed5358555df3b7145cd34f551e09ca3e6117d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aa43de7_05b74483",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-18T23:38:51Z",
       "side": 1,
       "message": "Set CONFIG_BOARD_EVOKER\u003dy",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 22
+      },
+      "revId": "0ed5358555df3b7145cd34f551e09ca3e6117d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab1cd86_d3dfe02c",
+        "filename": "zephyr/projects/herobrine/prj_evoker.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-07-19T00:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa43de7_05b74483",
       "range": {
         "startLine": 6,
         "startChar": 0,
