@@ -34,6 +34,24 @@
       "parentUuid": "2f1b86f0_f771c6ac",
       "revId": "caf5218e076a9e482d43a75c4c383bd9467c6382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e697459_71c19585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-19T21:18:53Z",
+      "side": 1,
+      "message": "Yeah. You could just put code in `tcpc_lock` that calls `pd_wait_exit_low_power_mode` if `lock \u003d\u003d true`. I think that would be functionally equivalent to this patchset.",
+      "parentUuid": "82276feb_11e2d548",
+      "revId": "caf5218e076a9e482d43a75c4c383bd9467c6382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
