@@ -12,6 +12,10 @@
 #include "hooks.h"
 #include "watchdog.h"
 
+#ifdef CONFIG_MEMFAULT
+#include "memfault/ports/watchdog.h"
+#endif
+
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
 
 #define wdt DEVICE_DT_GET(DT_CHOSEN(cros_ec_watchdog))
@@ -82,6 +86,9 @@ void watchdog_reload(void)
 	if (!device_is_ready(wdt))
 		LOG_ERR("Error: device %s is not ready", wdt->name);
 
+#ifdef CONFIG_MEMFAULT
+	memfault_software_watchdog_feed();
+#endif
 	wdt_feed(wdt, 0);
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);

@@ -24,11 +24,12 @@
 
 #ifdef CONFIG_MEMFAULT
 #include "memfault/components.h"
+#include "memfault/ports/watchdog.h"
 
 void memfault_platform_get_device_info(sMemfaultDeviceInfo *info) {
   *info = (sMemfaultDeviceInfo) {
     .device_serial = "herobrine",
-    .software_type = "zephyr0ec",
+    .software_type = "zephyr-ec",
     .software_version = "1.0.0-dev",
     .hardware_version = "boardid0",
   };
@@ -106,8 +107,9 @@ void ec_app_main(void)
 	cprints(CC_SYSTEM, "Inits done");
 
 #ifdef CONFIG_MEMFAULT
-	cprints(CC_SYSTEM, "Memfault initialization");
+	memfault_build_info_dump();
 	memfault_device_info_dump();
+	memfault_software_watchdog_enable();
 #endif
 
 	/* Start the EC tasks after performing all main initialization */
