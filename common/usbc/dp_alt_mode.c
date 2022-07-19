@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include "assert.h"
 #include "atomic.h"
+#include "chipset.h"
 #include "console.h"
 #include "usb_common.h"
 #include "usb_dp_alt_mode.h"
@@ -52,6 +53,17 @@ static const uint8_t state_vdm_cmd[DP_STATE_COUNT] = {
 	[DP_ENTER_RETRY] = CMD_ENTER_MODE,
 };
 
+#ifdef USB_VID_ACER
+/* The state of the DP negotiation */
+enum acer_vdm_states {
+	ACER_VDM_START = 0,
+	ACER_VDM_WAIT_ATTENTION,
+	ACER_VDM_GET_CONFIG,
+	ACER_VDM_DONE,
+	ACER_VDM_STATE_COUNT
+};
+static enum acer_vdm_states acer_vdm_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+#endif
 /*
  * Track if we're retrying due to an Enter Mode NAK
  */
@@ -76,6 +88,9 @@ bool dp_is_idle(int port)
 void dp_init(int port)
 {
 	dp_state[port] = DP_START;
+#ifdef USB_VID_ACER
+	acer_vdm_state[port] = ACER_VDM_START;
+#endif
 	dpm_dp_flags[port] = 0;
 }
 
@@ -83,6 +98,13 @@ bool dp_entry_is_done(int port)
 {
 	return dp_state[port] == DP_ACTIVE || dp_state[port] == DP_INACTIVE;
 }
+
+#ifdef USB_VID_ACER
+bool acer_mode_entry_is_done(int port)
+{
+	return acer_vdm_state[port] == ACER_VDM_DONE || acer_vdm_state[port] == ACER_VDM_WAIT_ATTENTION;
+}
+#endif
 
 static void dp_entry_failed(int port)
 {
@@ -130,6 +152,51 @@ static void dp_exit_to_usb_mode(int port)
 	dp_state[port] = DP_INACTIVE;
 }
 
+#ifdef USB_VID_ACER
+void acer_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
+		uint32_t *vdm)
+{
+	//const struct svdm_amode_data *modep =
+	//	pd_get_amode_data(port, type, USB_VID_ACER);
+	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
+
+	if (!dp_response_valid(port, type, "ACK", vdm_cmd))
+		return;
+	ccprints("[SC] ack, acer_vdm_state[port]=%d", acer_vdm_state[port]);
+	switch (acer_vdm_state[port]) {
+		case ACER_VDM_START:
+			acer_vdm_state[port] = ACER_VDM_WAIT_ATTENTION;
+			CPRINTS("C%d: Entered ACER mode", port);
+			break;
+		case ACER_VDM_GET_CONFIG:
+			acer_vdm_state[port] = ACER_VDM_DONE;
+			switch ((vdm[1] & MONITOR_STATUS_MASK) >> 3) {
+				case MONITOR_STATUS_OFF_TO_ON:
+					ccprints("[SC] off to on");
+					if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+						chipset_power_on();
+					break;
+				case MONITOR_STATUS_STANDBY_TO_OFF:
+					ccprints("[SC] standby to off");
+					break;
+				case MONITOR_STATUS_ON_TO_OFF:
+					ccprints("[SC] on to off");
+					break;
+				default:
+					break;
+			}
+			break;
+		default:
+			break;
+	}
+}
+
+void acer_mode_attention(int port, uint32_t *payload)
+{
+	acer_vdm_state[port] = ACER_VDM_GET_CONFIG;
+}
+#endif
+
 void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		  uint32_t *vdm)
 {
@@ -141,7 +208,7 @@ void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		return;
 
 	/* TODO(b/155890173): Validate VDO count for specific commands */
-
+	ccprints("[SC] ack dp_state[port]=%d", dp_state[port]);
 	switch (dp_state[port]) {
 	case DP_START:
 	case DP_ENTER_RETRY:
@@ -223,7 +290,60 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 		break;
 	}
 }
+#ifdef USB_VID_ACER
+enum dpm_msg_setup_status acer_setup_next_vdm(int port, int *vdo_count,
+					    uint32_t *vdm)
+{
+	int vdo_count_ret = 0;
 
+	if (*vdo_count < VDO_MAX_SIZE)
+		return MSG_SETUP_ERROR;
+	ccprints("[SC] acer_vdm_state[port]=%d", acer_vdm_state[port]);
+	switch (acer_vdm_state[port]) {
+		case ACER_VDM_START:
+			vdm[0] = pd_dfp_enter_mode(port, TCPCI_MSG_SOP,
+					USB_VID_ACER, 0);
+			CPRINTS("[SC] acer_setup_next_vdm");
+			CPRINTS("[SC] vdm[0]=%x", vdm[0]);
+			if (vdm[0] == 0)
+				return MSG_SETUP_ERROR;
+			/* CMDT_INIT is 0, so this is a no-op */
+			vdm[0] |= VDO_CMDT(CMDT_INIT);
+			vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+			vdo_count_ret = 1;
+			CPRINTS("C%d: Attempting to enter ACER mode", port);
+			break;
+		case ACER_VDM_GET_CONFIG:
+			vdm[0] = VDO(USB_VID_ACER, 1, CMD_ACER_CONFIG);
+			vdm[0] |= VDO_CMDT(CMDT_INIT);
+			vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+
+			if (chipset_in_state(CHIPSET_STATE_ON))
+				/* S0 */
+				vdm[1] |= SYSTEM_STATUS_ON;
+			else if (chipset_in_state(CHIPSET_STATE_SOFT_OFF))
+				/* S5 */
+				vdm[1] |= SYSTEM_STATUS_S5;
+			else if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+				/* G3 */
+				vdm[1] |= SYSTEM_STATUS_G3;
+			else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+				/* S3 */
+				vdm[1] |= SYSTEM_STATUS_SUSPEND;
+
+			vdo_count_ret = 2;
+			break;
+		default:
+			break;
+	}
+
+	if (vdo_count_ret) {
+		*vdo_count = vdo_count_ret;
+		return MSG_SETUP_SUCCESS;
+	}
+	return MSG_SETUP_UNSUPPORTED;
+}
+#endif
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					    uint32_t *vdm)
 {
@@ -233,7 +353,7 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 
 	if (*vdo_count < VDO_MAX_SIZE)
 		return MSG_SETUP_ERROR;
-
+	ccprints("[SC] dp_state[port]=%d", dp_state[port]);
 	switch (dp_state[port]) {
 	case DP_START:
 	case DP_ENTER_RETRY:

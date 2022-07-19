@@ -236,6 +236,11 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 			intel_vdm_acked(port, type, vdo_count, vdm);
 			break;
 		}
+#ifdef USB_VID_ACER
+	case USB_VID_ACER:
+		acer_vdm_acked(port, type, vdo_count, vdm);
+		break;
+#endif
 	default:
 		CPRINTS("C%d: Received unexpected VDM ACK for SVID %d", port,
 			svid);
@@ -296,8 +301,10 @@ static void dpm_attempt_mode_entry(int port)
 	 * of the modes can get out of sync, causing the attempt to
 	 * enter the mode to fail prematurely.
 	 */
+#ifndef USB_VID_ACER
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
 		return;
+#endif
 #endif
 	/*
 	 * If discovery has not occurred for modes, do not attempt to switch
@@ -307,11 +314,16 @@ static void dpm_attempt_mode_entry(int port)
 	    pd_get_modes_discovery(port, TCPCI_MSG_SOP) != PD_DISC_COMPLETE)
 		return;
 
-	if (dp_entry_is_done(port) ||
-	    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
+	if ((dp_entry_is_done(port)
+#ifdef USB_VID_ACER
+	&& acer_mode_entry_is_done(port)
+#endif
+		)
+	    || (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	     tbt_entry_is_done(port)) ||
 	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
 		dpm_set_mode_entry_done(port);
+		ccprints("[SC] done, return");
 		return;
 	}
 
@@ -374,12 +386,23 @@ static void dpm_attempt_mode_entry(int port)
 	    !DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE) &&
 	    pd_is_mode_discovered_for_svid(port, TCPCI_MSG_SOP,
 					   USB_SID_DISPLAYPORT) &&
-	    dpm_mode_entry_requested(port, TYPEC_MODE_DP)) {
+	    dpm_mode_entry_requested(port, TYPEC_MODE_DP)
+#ifdef USB_VID_ACER
+		&& !dp_entry_is_done(port)
+#endif
+		) {
 		enter_mode_requested = true;
 		vdo_count = ARRAY_SIZE(vdm);
+		ccprints("[SC] dp_setup_next_vdm");
 		status = dp_setup_next_vdm(port, &vdo_count, vdm);
-	}
-
+#ifdef USB_VID_ACER
+	}  else if (pd_is_mode_discovered_for_svid(port, TCPCI_MSG_SOP,
+				USB_VID_ACER)) {
+		vdo_count = ARRAY_SIZE(vdm);
+		status = acer_setup_next_vdm(port, &vdo_count, vdm);
+		CPRINTS(" ===== USB_VID_ACER enter");
+#endif
+    }
 	/* Not ready to send a VDM, check again next cycle */
 	if (status == MSG_SETUP_MUX_WAIT)
 		return;
@@ -581,7 +604,11 @@ void dpm_run(int port)
 		/* Run DFP related DPM requests */
 		if (DPM_CHK_FLAG(port, DPM_FLAG_EXIT_REQUEST))
 			dpm_attempt_mode_exit(port);
-		else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE))
+		else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE)
+#ifdef USB_VID_ACER
+		|| !acer_mode_entry_is_done(port)
+#endif
+		)
 			dpm_attempt_mode_entry(port);
 
 		/* Run USB PD Power button state machine */
