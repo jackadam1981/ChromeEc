@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c617dd_ba52fcba",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:29:38Z",
+      "side": 1,
+      "message": "nit: can we combine these lines so it\u0027s a little shorter?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "5398bc6ab4f60043853a829b62b030b61d7cf35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5b9bcb_29d0f9aa",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:29:38Z",
+      "side": 1,
+      "message": "`Adapter rating` maybe? ARTG is not a very informative message for those just reading the console",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "5398bc6ab4f60043853a829b62b030b61d7cf35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe15e93_0dbd4089",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:29:38Z",
+      "side": 1,
+      "message": "nit: no reason to add blank line",
+      "revId": "5398bc6ab4f60043853a829b62b030b61d7cf35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
