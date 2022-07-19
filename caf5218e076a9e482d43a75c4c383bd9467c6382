@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1b86f0_f771c6ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-19T18:53:48Z",
+      "side": 1,
+      "message": "By my count, this guards all of the usages of `tcpc_lock` that acquire the lock. Would it make sense to just call this inside `tcpc_lock` to prevent future errors?",
+      "revId": "caf5218e076a9e482d43a75c4c383bd9467c6382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
