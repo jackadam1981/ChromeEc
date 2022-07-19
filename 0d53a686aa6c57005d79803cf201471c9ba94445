@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0c49a48_9c599340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511663
+      },
+      "writtenOn": "2022-07-19T06:49:29Z",
+      "side": 1,
+      "message": "Please split into two CLs: one adding the macro to the header file, and one enabling it for mt8195. Please add mt8195 to the subject of the latter CL.\n\nAlso, please rebase, as chip/mt_scp/mt8195/video.c was recently reformatted.",
+      "revId": "0d53a686aa6c57005d79803cf201471c9ba94445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
