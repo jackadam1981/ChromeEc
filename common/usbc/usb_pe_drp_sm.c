@@ -6187,6 +6187,9 @@ static void pe_vdm_response_entry(int port)
 	uint32_t *tx_payload;
 	uint8_t vdo_cmd;
 	svdm_rsp_func func = NULL;
+#ifdef USB_VID_USBC_MONITOR
+	int is_customized_vdm;
+#endif
 
 	print_current_state(port);
 
@@ -6273,6 +6276,14 @@ static void pe_vdm_response_entry(int port)
 		return;
 #endif
 	default:
+#ifdef USB_VID_USBC_MONITOR
+		is_customized_vdm =
+			board_customized_vdm_response(port, rx_payload);
+		if (is_customized_vdm) {
+			pe_set_ready_state(port);
+			return;
+		}
+#endif
 		CPRINTF("VDO ERR:CMD:%d\n", vdo_cmd);
 	}
 
@@ -7768,6 +7779,10 @@ void pd_dfp_mode_init(int port)
 	/* Reset the DPM and DP modules to enable alternate mode entry. */
 	dpm_mode_exit_complete(port);
 	dp_init(port);
+
+#ifdef USB_VID_USBC_MONITOR
+	docking_monitor_mode_init(port);
+#endif
 
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
 		tbt_init(port);
