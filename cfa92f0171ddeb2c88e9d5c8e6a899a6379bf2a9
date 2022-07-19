@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "324832eb_d69bc186",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-19T21:34:34Z",
+      "side": 1,
+      "message": "Is the power boss OK ACK part of another CL?",
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84f9fe8d_47a98902",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 7
@@ -20,6 +37,23 @@
         "endLine": 71,
         "endChar": 15
       },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "182ae55a_375fdc11",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-19T21:34:34Z",
+      "side": 1,
+      "message": "A more accurate variable name might be `prochot_counter` or similar.  \"PD state\" sounds like it would be tied to the states in the PD task",
       "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -49,6 +83,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4ec368c_236ebbf1",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-19T21:34:34Z",
+      "side": 1,
+      "message": "I\u0027d say this would be worth defining a new throttle reason, just since this isn\u0027t actually evaluating the discharge current itself",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 36
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bebe18b_f04ca253",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 7
@@ -66,6 +123,23 @@
         "endLine": 117,
         "endChar": 51
       },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce103041_b81ac20b",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-19T21:34:34Z",
+      "side": 1,
+      "message": "The source could be a barrel jack on some platforms.  You could consider referencing the charge manager\u0027s data for the active charge port in order to detect this.\n\nIf barrel jack platforms aren\u0027t in scope for this first round, leave a TODO and bug",
       "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
