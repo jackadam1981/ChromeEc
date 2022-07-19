@@ -1491,6 +1491,17 @@ const struct svdm_amode_fx supported_modes[] = {
 		.exit = &svdm_tbt_compat_exit_mode,
 	},
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
+
+#ifdef USB_VID_ACER
+	{
+		.svid = USB_VID_ACER,
+		.enter = &svdm_enter_gfu_mode,
+		.status = &svdm_gfu_status,
+		.config = &svdm_gfu_config,
+		.attention = &svdm_gfu_attention,
+		.exit = &svdm_exit_gfu_mode,
+	},
+#endif /* USB_VID_ACER */
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 
