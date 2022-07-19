@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f712ca6a_aafa64a8",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-19T17:34:46Z",
+      "side": 1,
+      "message": "Nope",
+      "parentUuid": "518233d6_dfef6221",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "395f03f3da0dcd03ac6024d6c34032d3a4d256b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3174974_ba3a6121",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-15T15:29:20Z",
       "side": 1,
       "message": "This change looks great.  Before merging, can you create a test that validates the port locking?\n\nFor example, if named-i2c-ports has the following:\n```\n{\n  compatible \u003d \"named-i2c-ports\";\n  eeprom {\n    i2c-port \u003d \u003c\u0026i2c7_0\u003e;\n    enum-name \u003d \"I2C_EEPROM\";\n  };\n  charger {\n    i2c-port \u003d \u003c\u0026i2c7_0\u003e;\n    enum-name \u003d \"I2C_PORT_CHARGER\";\n  };\n```\n\nThe test would call `i2c_lock(I2C_EEPROM, true)` and then verify that `i2c_lock(I2C_PORT_CHARGER, true)` gets blocked.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 33
+      },
+      "revId": "395f03f3da0dcd03ac6024d6c34032d3a4d256b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a333da_5fe47c0b",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-19T17:34:46Z",
+      "side": 1,
+      "message": "Actually, i2c_lock uses mutex, which can be locked multiple times by the same thread, so I had to do it in a different way.",
+      "parentUuid": "e3174974_ba3a6121",
       "range": {
         "startLine": 312,
         "startChar": 0,
