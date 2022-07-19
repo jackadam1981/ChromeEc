@@ -16,6 +16,24 @@
       "message": "By my count, this guards all of the usages of `tcpc_lock` that acquire the lock. Would it make sense to just call this inside `tcpc_lock` to prevent future errors?",
       "revId": "caf5218e076a9e482d43a75c4c383bd9467c6382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82276feb_11e2d548",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-19T21:11:45Z",
+      "side": 1,
+      "message": "Are you thinking one API that requests the LPM exit and also locks `tcpc_lock` for functions to use which have the `tcpc_lock`?",
+      "parentUuid": "2f1b86f0_f771c6ac",
+      "revId": "caf5218e076a9e482d43a75c4c383bd9467c6382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
