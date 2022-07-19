@@ -52,6 +52,24 @@
       "parentUuid": "def8d452_686ad15f",
       "revId": "8b45852648d272dfa017ace85d338b5b7ce4c47e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174fb782_9f70bdd5",
+        "filename": "board/kinox/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2022-07-19T06:24:34Z",
+      "side": 0,
+      "message": "I mean why you change `ADC_READ_MAX + 1` to `ADC_READ_MAX`",
+      "parentUuid": "e3e0afad_e3fc2d0d",
+      "revId": "8b45852648d272dfa017ace85d338b5b7ce4c47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
