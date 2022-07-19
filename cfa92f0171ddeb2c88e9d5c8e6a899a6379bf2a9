@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f9fe8d_47a98902",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:27:06Z",
+      "side": 1,
+      "message": "How would this scenario ever happen in a production system (no battery) ?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 15
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef594f9e_38c11c7f",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:27:06Z",
+      "side": 1,
+      "message": "We already have host events for low-battery indications, what is this one for?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bebe18b_f04ca253",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:27:06Z",
+      "side": 1,
+      "message": "`2 seconds`",
+      "range": {
+        "startLine": 117,
+        "startChar": 43,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
