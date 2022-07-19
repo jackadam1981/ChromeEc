@@ -16,6 +16,24 @@
       "message": "Will this still be updating when the GPADCs are turned off?  \n\nWhen is it that we expect to have Vbus present while the GPADCs are off?  Just while waking from low power mode?",
       "revId": "b419957072bf37de138e6ed3045b4de495507f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "594375e1_6e88c66d",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-19T23:38:59Z",
+      "side": 1,
+      "message": "Yes, the `CHG_DET` bit that `is_vbus_present` reads still updates when the GPADCs are turned off. This path for digital presence exists precisely because not doing it makes the port get stuck looking for VBUS when a charger is connected while the GPADCs are off.\n\nAnd yes, I expect this path to only be needed when a parter is connected while the charger is in LPM: we only disable the GPADCs when entering LPM, so this should only be relevant when we\u0027re evaluating whether we need to exit LPM.",
+      "parentUuid": "0b025c45_061e98fd",
+      "revId": "b419957072bf37de138e6ed3045b4de495507f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
