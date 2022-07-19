@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a7d56f1_189ed9c1",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:42:17Z",
+      "side": 1,
+      "message": "nit: unnecessary braces",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "28fc0cc84f9d2a7129a2ae9d8b048497973106bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a7ca1a_e86e4428",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:42:17Z",
+      "side": 1,
+      "message": "There is already a hook for `HOOK_BATTERY_SOC_CHANGE`, is that maybe less wasteful than just polling every second?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 58
+      },
+      "revId": "28fc0cc84f9d2a7129a2ae9d8b048497973106bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
