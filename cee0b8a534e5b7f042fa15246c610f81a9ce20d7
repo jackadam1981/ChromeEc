@@ -22,6 +22,30 @@
       },
       "revId": "cee0b8a534e5b7f042fa15246c610f81a9ce20d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff376d3b_b549d945",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-19T17:30:29Z",
+      "side": 1,
+      "message": "Good question! 😊\n\nIt turns out that one of the pylint error was actually trivial to resolve so I removed the linter directive and updated the code.\n\nFor the other error, the code is written intentionally that way and I don\u0027t think there is an easy way around it.",
+      "parentUuid": "d0b5ba5c_26083e13",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "cee0b8a534e5b7f042fa15246c610f81a9ce20d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

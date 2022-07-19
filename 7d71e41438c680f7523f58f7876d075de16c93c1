@@ -22,6 +22,30 @@
       },
       "revId": "7d71e41438c680f7523f58f7876d075de16c93c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b5597d_b2917160",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-19T17:30:29Z",
+      "side": 1,
+      "message": "Fixed by explicitly setting `check\u003dFalse`, which is the default value.",
+      "parentUuid": "05679059_8c10bee5",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 28
+      },
+      "revId": "7d71e41438c680f7523f58f7876d075de16c93c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
