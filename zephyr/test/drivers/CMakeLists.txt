@@ -33,7 +33,6 @@ if(subproject_path STREQUAL "")
     src/bmi160.c
     src/bmi260.c
     src/charge_manager.c
-    src/chargesplash.c
     src/console_cmd/charge_manager.c
     src/console_cmd/charge_state.c
     src/console_cmd/accelinit.c
@@ -53,11 +52,9 @@ if(subproject_path STREQUAL "")
     src/integration/usbc/usb_20v_3a_pd_charger.c
     src/integration/usbc/usb_5v_3a_pd_sink.c
     src/integration/usbc/usb_5v_3a_pd_source.c
-    src/integration/usbc/usb_alt_mode.c
     src/integration/usbc/usb_attach_src_snk.c
     src/integration/usbc/usb_pd_ctrl_msg.c
     src/integration/usbc/usb_pd_rev3.c
-    src/integration/usbc/usb_malfunction_sink.c
     src/i2c_passthru.c
     src/isl923x.c
     src/keyboard_scan.c
@@ -83,6 +80,8 @@ if(subproject_path STREQUAL "")
     src/vboot_hash.c
     src/watchdog.c
   )
+
+    add_subdirectory(usb_malfunction_sink)
 else()
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}${subproject_path})
 endif()

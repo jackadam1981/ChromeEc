@@ -15,8 +15,18 @@ drivers = register_host_test(
     ],
 )
 
+# Per Suite Builds
+
+chargesplash = drivers.variant(
+    project_name="test-drivers-chargesplash",
+)
+
 isl923x = drivers.variant(
     project_name="test-drivers-isl923x",
+)
+
+usbc_alt_mode = drivers.variant(
+    project_name="test-drivers-usbc_alt_mode",
 )
 
 led_driver = drivers.variant(

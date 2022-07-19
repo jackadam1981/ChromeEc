@@ -9,8 +9,10 @@
 #define __CROS_EC_PRINTF_H
 
 #include <stdarg.h> /* For va_list */
+#include <stdbool.h>
 #include <stddef.h> /* For size_t */
 #include "common.h"
+#include "console.h"
 
 /* The declaration of snprintf is changed to crec_snprintf for Zephyr,
  * so include stdio.h from Zephyr.
@@ -18,6 +20,11 @@
 #ifdef CONFIG_ZEPHYR
 #include <stdio.h>
 #endif
+
+/**
+ * Buffer size in bytes large enough to hold the largest possible timestamp.
+ */
+#define PRINTF_TIMESTAMP_BUF_SIZE 22
 
 /*
  * Printf formatting: % [flags] [width] [.precision] [length] [type]
@@ -61,9 +68,6 @@
  *   - '%ph' - binary data, print as hex; Use HEX_BUF(buffer, size) to encode
  *             parameters.
  *   - '%pP' - raw pointer.
- *   - "%pT" - current time in seconds - interpreted as "%.6T" for precision.
- *           Supply PRINTF_TIMESTAMP_NOW to use the current time, or supply a
- *           pointer to a 64-bit timestamp to print.
  */
 
 #ifndef HIDE_EC_STDLIB
@@ -99,7 +103,8 @@ __stdlib_compat int vfnprintf(int (*addchar)(void *context, int c),
  * @param format	Format string
  * @return EC_SUCCESS, or EC_ERROR_OVERFLOW if the output was truncated.
  */
-__attribute__((__format__(__printf__, 3, 4))) __stdlib_compat int
+__attribute__((__format__(__printf__, 3, 4)))
+__warn_unused_result __stdlib_compat int
 crec_snprintf(char *str, size_t size, const char *format, ...);
 
 /**
@@ -114,9 +119,83 @@ crec_snprintf(char *str, size_t size, const char *format, ...);
  * @return The string length written to str, or a negative value on error.
  *         The negative values can be -EC_ERROR_INVAL or -EC_ERROR_OVERFLOW.
  */
-__stdlib_compat int crec_vsnprintf(char *str, size_t size, const char *format,
-				   va_list args);
+__warn_unused_result __stdlib_compat int
+crec_vsnprintf(char *str, size_t size, const char *format, va_list args);
 
 #endif /* !HIDE_EC_STDLIB */
+
+#ifdef TEST_BUILD
+/**
+ * Converts @val to a string written in @buf. The value is converted from
+ * least-significant digit to most-significant digit, so the pointer returned
+ * does not necessarily point to the start of @buf.
+ *
+ * This function shouldn't be used directly; it's a helper function for other
+ * printf functions and only exposed for testing.
+ *
+ * @param[out] buf Destination buffer
+ * @param[in] buf_len Length of @buf in bytes
+ * @param[in] val Value to convert
+ * @param[in] precision Fixed point precision; -1 disables fixed point
+ * @param[in] base Base
+ * @param[in] uppercase true to print hex characters uppercase
+ * @return pointer to start of string on success (not necessarily the start of
+ * @buf).
+ * @return NULL on error
+ */
+char *uint64_to_str(char *buf, int buf_len, uint64_t val, int precision,
+		    int base, bool uppercase);
+#endif /* TEST_BUILD */
+
+/**
+ * Print timestamp as string to the provided buffer.
+ *
+ * Guarantees NUL-termination if size != 0.
+ *
+ * @param[out] str Destination string
+ * @param[in] size Size of @str in bytes
+ * @param[in] timestamp Timestamp
+ * @return Length of string written to @str, not including terminating NUL.
+ * @return -EC_ERROR_OVERFLOW when @str buffer is not large enough. @str[0]
+ * is set to '\0'.
+ * @return -EC_ERROR_INVAL when @size is 0.
+ */
+int snprintf_timestamp(char *str, size_t size, uint64_t timestamp);
+
+/**
+ * Print the current time as a string to the provided buffer.
+ *
+ * Guarantees NUL-termination if size != 0.
+ *
+ * @param[out] str Destination string
+ * @param[in] size Size of @str in bytes
+ * @return Length of string written to @str, not including terminating NUL.
+ * @return -EC_ERROR_OVERFLOW when @str buffer is not large enough. @str[0]
+ * is set to '\0'.
+ * @return -EC_ERROR_INVAL when @size is 0.
+ */
+int snprintf_timestamp_now(char *str, size_t size);
+
+/**
+ * Prints bytes as a hex string in the provided buffer.
+ *
+ * Guarantees NUL-termination if size != 0.
+ *
+ * @param[out] str Destination string
+ * @param[in] size Size of @str in bytes
+ * @param[in] params Data to print
+ * @return Length of string written to @str, not including terminating NUL.
+ * @return -EC_ERROR_OVERFLOW when @str buffer is not large enough.
+ * @return -EC_ERROR_INVAL when @size is 0.
+ */
+int snprintf_hex_buffer(char *str, size_t size,
+			const struct hex_buffer_params *params);
+
+/**
+ * @param[in] num_bytes
+ * @return number of bytes needed to store @num_bytes as a string (including
+ * terminating '\0').
+ */
+size_t hex_str_buf_size(size_t num_bytes);
 
 #endif /* __CROS_EC_PRINTF_H */
