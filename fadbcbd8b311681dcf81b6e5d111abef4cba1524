@@ -22,6 +22,29 @@
       },
       "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447c9346_740662fa",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-19T21:09:33Z",
+      "side": 1,
+      "message": "we usually use system_jumped_late() to avoid double initialization\nbetween RO and RW.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/ec/board/brya/usbc_config.c;l\u003d350\n\n\nthe issue is that when using EFS2, the EC jumps to RW very early\nin its boot sequence. most of the init code doesn\u0027t even run in\nthis case, so we don\u0027t have to worry about double init.\n\nplease check that this new initialization happens when intended\nin the EFS2 case.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
