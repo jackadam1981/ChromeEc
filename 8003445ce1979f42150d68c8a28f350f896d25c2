@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7b2581_738bbd1a",
+        "filename": "zephyr/projects/nissa/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-19T06:19:39Z",
+      "side": 1,
+      "message": "Could we make `register_nissa_project` automatically compose these paths? That would make it hard to misuse and reduce some boilerplate.\n\n```\nextra_dts_overlays \u003d [\n    here / project_name / filename for filename in extra_dts_overlays\n]\nkconfig_files \u003d [here / \"prj.conf\", here / project_name / \"prj.conf\"]\n```\n\nPossibly even better, we could glob for DTS files and avoid needing to put all the names in here (assuming we\u0027d never want to include a file that\u0027s not used or have a subdirectory inside a project):\n\n```\ndts_overlays \u003d [\"cbi.dts\"] + (here / project_name).glob(\u0027*.dts\u0027)\n```",
+      "revId": "8003445ce1979f42150d68c8a28f350f896d25c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
