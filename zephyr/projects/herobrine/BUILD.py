@@ -31,6 +31,20 @@ def register_variant(project_name, extra_dts_overlays=(), extra_kconfig_files=()
 
 
 register_variant(
+    project_name="evoker",
+    extra_dts_overlays=[
+        here / "battery_evoker.dts",
+        here / "gpio_evoker.dts",
+        here / "led_pins_evoker.dts",
+        here / "led_policy_evoker.dts",
+        here / "motionsense_evoker.dts",
+        here / "switchcap.dts",
+        here / "usbc_evoker.dts",
+    ],
+    extra_kconfig_files=[here / "prj_evoker.conf"],
+)
+
+register_variant(
     project_name="herobrine",
     extra_dts_overlays=[
         here / "display.dts",

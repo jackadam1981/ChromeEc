@@ -15,7 +15,9 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_I2C
   "src/i2c.c")
 
-if(DEFINED CONFIG_BOARD_HEROBRINE)
+if(DEFINED CONFIG_BOARD_EVOKER)
+	project(evoker)
+elseif(DEFINED CONFIG_BOARD_HEROBRINE)
 	project(herobrine)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 	  "src/herobrine/alt_dev_replacement.c")
