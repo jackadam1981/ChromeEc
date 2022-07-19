@@ -70,6 +70,24 @@
       "parentUuid": "e3e0afad_e3fc2d0d",
       "revId": "8b45852648d272dfa017ace85d338b5b7ce4c47e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62b1033_19f594d2",
+        "filename": "board/kinox/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-07-19T08:08:30Z",
+      "side": 0,
+      "message": "The original formula of ADC is regValue * factor_mul / factor_div.\nAnd in the board layer will set the .factor_div \u003d ADC_READ_MAX + 1.\n\nIf ADP_ID is pull-high the voltage to 3.3V. In the regValue of NPCX will get 1023(0x3FF).\n\nThe whole formula becomes (0x3FF*2816/(1023+1))\nThis will cause the calculated value max is 2813 instead of 2816\n\nSo modify the .factor_div \u003d ADC_READ_MAX let the formula max value is 2816(equal to ADC_MAX_VOLT)",
+      "parentUuid": "174fb782_9f70bdd5",
+      "revId": "8b45852648d272dfa017ace85d338b5b7ce4c47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
