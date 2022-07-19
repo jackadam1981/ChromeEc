@@ -384,10 +384,19 @@ void adp_id_deferred(void)
 
 static void barrel_jack_setting(void)
 {
+	struct charge_port_info pi = { 0 };
 	/* Check ADP_ID when barrel jack is present */
-	if (!gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL))
+	if (!gpio_get_level(GPIO_BJ_ADP_PRESENT_ODL)) {
+		/* Set the default 65w adaptor */
+		pi.voltage = 20000;
+		pi.current = 3250;
+
+		charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
+					     DEDICATED_CHARGE_PORT, &pi);
+
 		/* Delay 220ms to get the first ADP_ID value */
 		hook_call_deferred(&adp_id_deferred_data, 220 * MSEC);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, barrel_jack_setting, HOOK_PRIO_DEFAULT);
 
@@ -415,3 +424,10 @@ static void typec_adapter_setting(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, typec_adapter_setting, HOOK_PRIO_DEFAULT);
+
+/* IRQ for BJ plug/unplug. It shouldn't be called if BJ is the power source. */
+void adp_connect_interrupt(enum gpio_signal signal)
+{
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		hook_call_deferred(&adp_id_deferred_data, 0);
+}
