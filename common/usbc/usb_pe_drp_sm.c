@@ -6250,7 +6250,7 @@ static void pe_vdm_response_entry(int port)
 
 	/* Add SVDM structured version being used */
 	tx_payload[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
-
+	ccprints("[SC] vdo_cmd=%x", vdo_cmd);
 	/* Use VDM command to select the response handler function */
 	switch (vdo_cmd) {
 	case CMD_DISCOVER_IDENT:
@@ -6283,6 +6283,13 @@ static void pe_vdm_response_entry(int port)
 		 * (just goodCRC) return zero here.
 		 */
 		dfp_consume_attention(port, rx_payload);
+		pe_set_ready_state(port);
+		return;
+#endif
+#ifdef USB_VID_ACER
+	case CMD_ACER_ATTENTION:
+		acer_mode_attention(port, rx_payload);
+		ccprints("[SC] acer attention 0x15");
 		pe_set_ready_state(port);
 		return;
 #endif
@@ -7775,6 +7782,10 @@ void pd_dfp_mode_init(int port)
 	/* Reset the DPM and DP modules to enable alternate mode entry. */
 	dpm_mode_exit_complete(port);
 	dp_init(port);
+
+#ifdef USB_VID_ACER
+	acer_mode_init(port);
+#endif
 
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
 		tbt_init(port);
