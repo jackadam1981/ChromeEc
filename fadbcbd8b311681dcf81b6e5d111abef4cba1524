@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037da227_80b47485",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-07-19T19:10:56Z",
+      "side": 1,
+      "message": "this code wasn\u0027t formatted with clang-format ... I think pre-upload hooks should have complained. Please don\u0027t bypass them.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
