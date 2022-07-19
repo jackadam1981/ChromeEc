@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41216f89_1a4e2e0b",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-07-19T19:40:39Z",
+      "side": 1,
+      "message": "to avoid the #ifdefs, can this just be\n```\nstatic void init_dbpt(void)\n{\n\tif (!IS_ENABLED(CONFIG_BATTERY_DBPT_V2PLUS))\n\t\treturn;\n}\n```",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 39
+      },
+      "revId": "e0404adcf6ab23706667e606a0c559bfda4b7b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
