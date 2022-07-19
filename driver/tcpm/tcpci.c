@@ -221,6 +221,9 @@ int tcpc_xfer(int port, const uint8_t *out, int out_size, uint8_t *in,
 	      int in_size)
 {
 	int rv;
+
+	pd_wait_exit_low_power(port);
+
 	/* Dispatching to tcpc_xfer_unlocked reduces code size growth. */
 	tcpc_lock(port, 1);
 	rv = tcpc_xfer_unlocked(port, out, out_size, in, in_size,
@@ -233,8 +236,6 @@ int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size, uint8_t *in,
 		       int in_size, int flags)
 {
 	int rv;
-
-	pd_wait_exit_low_power(port);
 
 	rv = i2c_xfer_unlocked(tcpc_config[port].i2c_info.port,
 			       tcpc_config[port].i2c_info.addr_flags, out,
@@ -744,6 +745,7 @@ static int tcpci_rev2_0_tcpm_get_message_raw(int port, uint32_t *payload,
 	 * Register 0x30 is Readable Byte Count, Buffer frame type, and RX buf
 	 * byte X.
 	 */
+	pd_wait_exit_low_power(port);
 	tcpc_lock(port, 1);
 	rv = tcpc_xfer_unlocked(port, (uint8_t *)&reg, 1, tmp, 2,
 				I2C_XFER_START);
@@ -957,6 +959,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 		reg = TCPC_REG_TX_BUFFER;
 		/* TX_BYTE_CNT includes extra bytes for message header */
 		cnt += sizeof(header);
+		pd_wait_exit_low_power(port);
 		tcpc_lock(port, 1);
 		rv = tcpc_xfer_unlocked(port, (uint8_t *)&reg, 1, NULL, 0,
 					I2C_XFER_START);

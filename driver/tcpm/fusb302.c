@@ -776,6 +776,7 @@ static int fusb302_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 	uint8_t buf[32];
 	int rv, len;
 
+	pd_wait_exit_low_power(port);
 	/* Read until we have a non-GoodCRC packet or an empty FIFO */
 	do {
 		buf[0] = TCPC_REG_FIFOS;
