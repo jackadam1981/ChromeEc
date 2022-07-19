@@ -52,6 +52,22 @@ static const uint8_t state_vdm_cmd[DP_STATE_COUNT] = {
 	[DP_ENTER_RETRY] = CMD_ENTER_MODE,
 };
 
+#ifdef USB_VID_ACER
+/* The state of the DP negotiation */
+enum acer_vdm_states {
+	ACER_VDM_START = 0,
+	ACER_VDM_ENTER_ACKED,
+	ACER_VDM_ENTER_NAKED,
+	ACER_VDM_STATUS_ACKED,
+	ACER_VDM_PREPARE_CONFIG,
+	ACER_VDM_ACTIVE,
+	ACER_VDM_ENTER_RETRY,
+	ACER_VDM_PREPARE_EXIT,
+	ACER_VDM_INACTIVE,
+	ACER_VDM_STATE_COUNT
+};
+static enum acer_vdm_states acer_vdm_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+#endif
 /*
  * Track if we're retrying due to an Enter Mode NAK
  */
@@ -76,6 +92,9 @@ bool dp_is_idle(int port)
 void dp_init(int port)
 {
 	dp_state[port] = DP_START;
+#ifdef USB_VID_ACER
+	acer_vdm_state[port] = ACER_VDM_START;
+#endif
 	dpm_dp_flags[port] = 0;
 }
 
@@ -130,6 +149,14 @@ static void dp_exit_to_usb_mode(int port)
 	dp_state[port] = DP_INACTIVE;
 }
 
+#ifdef USB_VID_ACER
+void acer_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
+		uint32_t *vdm)
+{
+	dp_state[port] = DP_ACTIVE;
+	CPRINTS("C%d: Entered ACER mode", port);
+}
+#endif
 void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		  uint32_t *vdm)
 {
@@ -141,7 +168,7 @@ void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		return;
 
 	/* TODO(b/155890173): Validate VDO count for specific commands */
-
+	ccprints("[SC] ack dp_state[port]=%d", dp_state[port]);
 	switch (dp_state[port]) {
 	case DP_START:
 	case DP_ENTER_RETRY:
@@ -223,7 +250,39 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 		break;
 	}
 }
+#ifdef USB_VID_ACER
+enum dpm_msg_setup_status acer_setup_next_vdm(int port, int *vdo_count,
+					    uint32_t *vdm)
+{
+	int vdo_count_ret;
 
+	if (*vdo_count < VDO_MAX_SIZE)
+		return MSG_SETUP_ERROR;
+	switch (acer_vdm_state[port]) {
+		case ACER_VDM_START:
+			vdm[0] = pd_dfp_enter_mode(port, TCPCI_MSG_SOP,
+					USB_VID_ACER, 0);
+			CPRINTS("[SC] acer_setup_next_vdm");
+			CPRINTS("[SC] vdm[0]=%x", vdm[0]);
+			if (vdm[0] == 0)
+				return MSG_SETUP_ERROR;
+			/* CMDT_INIT is 0, so this is a no-op */
+			vdm[0] |= VDO_CMDT(CMDT_INIT);
+			vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPCI_MSG_SOP));
+			vdo_count_ret = 1;
+			CPRINTS("C%d: Attempting to enter ACER mode", port);
+			break;
+		default:
+			break;
+	}
+
+	if (vdo_count_ret) {
+		*vdo_count = vdo_count_ret;
+		return MSG_SETUP_SUCCESS;
+	}
+	return MSG_SETUP_UNSUPPORTED;
+}
+#endif
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					    uint32_t *vdm)
 {
@@ -233,7 +292,7 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 
 	if (*vdo_count < VDO_MAX_SIZE)
 		return MSG_SETUP_ERROR;
-
+	ccprints("[SC] dp_state[port]=%d", dp_state[port]);
 	switch (dp_state[port]) {
 	case DP_START:
 	case DP_ENTER_RETRY:

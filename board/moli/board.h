@@ -14,7 +14,7 @@
 #include "baseboard.h"
 
 #define CONFIG_MP2964
-
+#define USB_VID_ACER 0x0502
 /* Barrel Jack */
 #define DEDICATED_CHARGE_PORT 2
 
