@@ -13,7 +13,10 @@
 #include <stdint.h>
 #include "atomic.h"
 #include "builtin/assert.h"
+#include "chipset.h"
 #include "console.h"
+#include "power_button.h"
+#include "timer.h"
 #include "usb_common.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_pd.h"
@@ -130,6 +133,14 @@ static void dp_exit_to_usb_mode(int port)
 	dp_state[port] = DP_INACTIVE;
 }
 
+#ifdef USB_VID_DOCKING_MONITOR
+__overridable void board_docking_monitor_vdm_acked(int port, enum tcpci_msg_type type,
+			       int vdo_count, uint32_t *vdm)
+{
+	return;
+}
+#endif
+
 void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		  uint32_t *vdm)
 {
@@ -223,7 +234,13 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 		break;
 	}
 }
-
+#ifdef USB_VID_DOCKING_MONITOR
+__overridable enum dpm_msg_setup_status
+board_docking_monitor_setup_next_vdm(int port, int *vdo_count, uint32_t *vdm)
+{
+	return 1;
+}
+#endif
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					    uint32_t *vdm)
 {
