@@ -1889,6 +1889,15 @@ int pd_dfp_exit_mode(int port, enum tcpci_msg_type type, uint16_t svid,
  */
 void dfp_consume_attention(int port, uint32_t *payload);
 
+#ifdef USB_VID_DOCKING_MONITOR
+/**
+ * Consume the SVDM attention data
+ *
+ * @param port USB-C port number
+ * @param payload  payload data.
+ */
+void docking_monitor_mode_attention(int port, uint32_t *payload);
+#endif
 /**
  * Consume the discover identity message
  *

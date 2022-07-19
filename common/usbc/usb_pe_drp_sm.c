@@ -6272,6 +6272,13 @@ static void pe_vdm_response_entry(int port)
 		pe_set_ready_state(port);
 		return;
 #endif
+#ifdef USB_VID_DOCKING_MONITOR
+	case CMD_DOCKING_MONITOR_ATTENTION:
+		ccprints("docking monitor attention 0x15");
+		docking_monitor_mode_attention(port, rx_payload);
+		pe_set_ready_state(port);
+		return;
+#endif
 	default:
 		CPRINTF("VDO ERR:CMD:%d\n", vdo_cmd);
 	}
@@ -7768,6 +7775,10 @@ void pd_dfp_mode_init(int port)
 	/* Reset the DPM and DP modules to enable alternate mode entry. */
 	dpm_mode_exit_complete(port);
 	dp_init(port);
+
+#ifdef USB_VID_DOCKING_MONITOR
+	docking_monitor_mode_init(port);
+#endif
 
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
 		tbt_init(port);
