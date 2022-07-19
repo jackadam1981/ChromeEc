@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f9cd4fc_b9651e38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-19T20:50:07Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 13,
+        "startChar": 20,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "97752a78ecf08a3ecdcfd91027bba0ed0b845dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7ae81f8_28c1fff1",
         "filename": "common/i2c_controller.c",
         "patchSetId": 1
