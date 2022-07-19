@@ -139,6 +139,24 @@
       "parentUuid": "71f89a9f_b88d0239",
       "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c882be5a_866d8f97",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-19T17:13:22Z",
+      "side": 1,
+      "message": "There is literally no change here.\n\n```\ngit checkout 215049dbe573b57994db09b2ea2805aaec024609\nzmake build skyrim --clobber\ncp build/zephyr/skyrim/build-ro/zephyr/.config after-ro.config\ncp build/zephyr/skyrim/build-rw/zephyr/.config after-rw.config\n\ngit checkout 2d7c0960c5\nzmake build skyrim --clobber\ncp build/zephyr/skyrim/build-ro/zephyr/.config before-ro.config\ncp build/zephyr/skyrim/build-rw/zephyr/.config before-rw.config\n\ndiff before-ro.config after-ro.config \ndiff before-rw.config after-rw.config\n```",
+      "parentUuid": "72a85bac_175c141a",
+      "revId": "2a1c359ac6018b7211a6d40e83791a9e1ccd1271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
