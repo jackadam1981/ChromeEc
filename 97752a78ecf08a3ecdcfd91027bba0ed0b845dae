@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ae81f8_28c1fff1",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-19T20:49:39Z",
+      "side": 1,
+      "message": "CONFIG_ZTEST",
+      "range": {
+        "startLine": 84,
+        "startChar": 14,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "97752a78ecf08a3ecdcfd91027bba0ed0b845dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a0e661_59fa249a",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-19T20:49:39Z",
+      "side": 1,
+      "message": "CONFIG_ZTEST",
+      "range": {
+        "startLine": 602,
+        "startChar": 7,
+        "endLine": 602,
+        "endChar": 17
+      },
+      "revId": "97752a78ecf08a3ecdcfd91027bba0ed0b845dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97505b9f_1c719385",
+        "filename": "zephyr/test/i2c/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-19T20:49:39Z",
+      "side": 1,
+      "message": "Unlock I2C_PORT_EEPROM as final cleanup.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "97752a78ecf08a3ecdcfd91027bba0ed0b845dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
