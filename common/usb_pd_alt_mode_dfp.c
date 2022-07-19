@@ -1099,6 +1099,32 @@ __overridable int svdm_tbt_compat_attention(int port, uint32_t *payload)
 }
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
 
+#ifdef USB_VID_DOCKING_MONITOR
+__overridable int svdm_enter_docking_monitor_mode(int port, uint32_t mode_caps)
+{
+	return 0;
+}
+
+__overridable void svdm_exit_docking_monitor_mode(int port)
+{
+}
+
+__overridable int svdm_docking_monitor_status(int port, uint32_t *payload)
+{
+	return 0;
+}
+
+__overridable int svdm_docking_monitor_config(int port, uint32_t *payload)
+{
+	return 0;
+}
+
+__overridable int svdm_docking_monitor_attention(int port, uint32_t *payload)
+{
+	return 0;
+}
+#endif /* USB_VID_DOCKING_MONITOR */
+
 /*
  * TODO: b:169262276: For TCPMv2, move alternate mode specific entry, exit and
  * configuration to Device Policy Manager.
@@ -1133,6 +1159,17 @@ const struct svdm_amode_fx supported_modes[] = {
 		.exit = &svdm_tbt_compat_exit_mode,
 	},
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
+
+#ifdef USB_VID_DOCKING_MONITOR
+	{
+		.svid = USB_VID_DOCKING_MONITOR,
+		.enter = &svdm_enter_docking_monitor_mode,
+		.status = &svdm_docking_monitor_status,
+		.config = &svdm_docking_monitor_config,
+		.attention = &svdm_docking_monitor_attention,
+		.exit = &svdm_exit_docking_monitor_mode,
+	},
+#endif /* USB_VID_DOCKING_MONITOR */
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 
