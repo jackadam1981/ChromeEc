@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85180dc7_fc0c6b9a",
+        "filename": "common/host_command.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-19T02:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "555f1d89_815f7019",
+      "range": {
+        "startLine": 631,
+        "startChar": 1,
+        "endLine": 631,
+        "endChar": 10
+      },
+      "revId": "3658db2f3d8b74d225401a45dc002dee787608d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37ce8a64_3c4423f7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5e4ff2_d72f485e",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-19T02:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ce8a64_3c4423f7",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 51
+      },
+      "revId": "3658db2f3d8b74d225401a45dc002dee787608d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "872a24ae_50d0e1aa",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-15T14:56:21Z",
       "side": 1,
       "message": "Could scope this in the inner for loop and convert/print each string one at a time. This would reduce stack usage.",
+      "range": {
+        "startLine": 584,
+        "startChar": 1,
+        "endLine": 584,
+        "endChar": 38
+      },
+      "revId": "3658db2f3d8b74d225401a45dc002dee787608d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cde58a7_88c81fa0",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-19T02:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "872a24ae_50d0e1aa",
       "range": {
         "startLine": 584,
         "startChar": 1,
