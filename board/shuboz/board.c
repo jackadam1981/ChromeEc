@@ -224,7 +224,8 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
-static int board_ps8743_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_ps8743_mux_set(const struct usb_mux *me, int port,
+				mux_state_t mux_state)
 {
 	int res;
 
@@ -248,8 +249,8 @@ static int board_ps8743_mux_set(const struct usb_mux *me, mux_state_t mux_state)
  * chip and it need a board specific driver.
  * Overall, it will use chained mux framework.
  */
-static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			      bool *ack_required)
+static int fsusb42umx_set_mux(const struct usb_mux *me, int port,
+			      mux_state_t mux_state, bool *ack_required)
 {
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -279,7 +280,6 @@ const struct usb_mux_driver usbc0_sbu_mux_driver = {
 const struct usb_mux_chain usbc0_sbu_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C0,
 			.driver = &usbc0_sbu_mux_driver,
 		},
 };
@@ -287,7 +287,6 @@ const struct usb_mux_chain usbc0_sbu_mux = {
 struct usb_mux_chain usbc1_amd_fp5_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.i2c_port = I2C_PORT_USB_AP_MUX,
 			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
 			.driver = &amd_fp5_usb_mux_driver,
@@ -298,7 +297,6 @@ struct usb_mux_chain usbc1_amd_fp5_usb_mux = {
 struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C0,
 			.i2c_port = I2C_PORT_USB_AP_MUX,
 			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
 			.driver = &amd_fp5_usb_mux_driver,
@@ -307,7 +305,6 @@ struct usb_mux_chain usb_muxes[] = {
 	},
 	[USBC_PORT_C1] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C1,
 			.i2c_port = I2C_PORT_TCPC1,
 			.i2c_addr_flags = PS8743_I2C_ADDR1_FLAG,
 			.driver = &ps8743_usb_mux_driver,

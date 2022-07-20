@@ -117,8 +117,8 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
  * chip and it need a board specific driver.
  * Overall, it will use chained mux framework.
  */
-static int pi3usb221_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			     bool *ack_required)
+static int pi3usb221_set_mux(const struct usb_mux *me, int port,
+			     mux_state_t mux_state, bool *ack_required)
 {
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -145,7 +145,6 @@ const struct usb_mux_driver usbc0_sbu_mux_driver = {
 const struct usb_mux_chain usbc0_sbu_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C0,
 			.driver = &usbc0_sbu_mux_driver,
 		},
 };
@@ -189,7 +188,6 @@ static void setup_mux(void)
 struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C0,
 			.i2c_port = I2C_PORT_USB_AP_MUX,
 			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
 			.driver = &amd_fp5_usb_mux_driver,
@@ -203,7 +201,7 @@ struct usb_mux_chain usb_muxes[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 
-static int board_tusb544_mux_set(const struct usb_mux *me,
+static int board_tusb544_mux_set(const struct usb_mux *me, int port,
 				 mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -269,14 +267,12 @@ static int board_tusb544_mux_set(const struct usb_mux *me,
 }
 
 const struct usb_mux usbc1_tusb544 = {
-	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS1,
 	.driver = &tusb544_drv,
 	.board_set = &board_tusb544_mux_set,
 };
 const struct usb_mux usbc1_ps8743 = {
-	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = PS8743_I2C_ADDR1_FLAG,
 	.driver = &ps8743_usb_mux_driver,

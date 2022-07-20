@@ -339,7 +339,6 @@ BUILD_ASSERT(ARRAY_SIZE(pi3dpx1207_controls) == USBC_PORT_COUNT);
 const struct usb_mux_chain usbc0_pi3dpx1207_usb_retimer = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C0,
 			.i2c_port = I2C_PORT_TCPC0,
 			.i2c_addr_flags = PI3DPX1207_I2C_ADDR_FLAGS,
 			.driver = &pi3dpx1207_usb_retimer,
@@ -349,7 +348,6 @@ const struct usb_mux_chain usbc0_pi3dpx1207_usb_retimer = {
 struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C0,
 			.i2c_port = I2C_PORT_USB_AP_MUX,
 			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
 			.driver = &amd_fp5_usb_mux_driver,
