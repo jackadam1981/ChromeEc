@@ -92,6 +92,22 @@
 			gpios = <&gpiod 4 GPIO_OUTPUT>;
 			no-auto-init;
 		};
+
+		/*
+		 * Set I2C pins for type C sub-board to be
+		 * low voltage (I2C5_1).
+		 * We do this for all boards, since the pins are
+		 * 3.3V tolerant, and the only 2 types of sub-boards
+		 * used on nivviks both have type-C ports on them.
+		 */
+		gpio_sb_3: sb_3 {
+			gpios = <&gpiof 4 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+			no-auto-init;
+		};
+		gpio_sb_4: sb_4 {
+			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			no-auto-init;
+		};
 	};
 
 	/*
@@ -228,18 +244,6 @@
 			<&gpio6 0 0>,
 			<&gpiof 2 0>,
 			<&gpiof 3 0>;
-	 };
-
-	/*
-	 * Set I2C pins for type C sub-board to be
-	 * low voltage (I2C5_1).
-	 * We do this for all boards, since the pins are
-	 * 3.3V tolerant, and the only 2 types of sub-boards
-	 * used on nivviks both have type-C ports on them.
-	 */
-	 def-lvol-io-list {
-		compatible = "nuvoton,npcx-lvolctrl-def";
-		lvol-io-pads = <&lvol_iof5 &lvol_iof4>;
 	 };
 };
 
