@@ -22,6 +22,30 @@
       },
       "revId": "d5888ed2e9c8673bfa6a7ca2eda37c341f740f7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224ca4b5_3e56891b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-20T22:41:17Z",
+      "side": 1,
+      "message": "I fixed this in a separate CL at the top of the chain.\n\nIn an attempt to keep this simpler, in this CL I simply ran black with the new configuration file that the pre-submit hook is using.",
+      "parentUuid": "1630c364_98c1d61f",
+      "range": {
+        "startLine": 541,
+        "startChar": 7,
+        "endLine": 541,
+        "endChar": 45
+      },
+      "revId": "d5888ed2e9c8673bfa6a7ca2eda37c341f740f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
