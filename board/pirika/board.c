@@ -269,7 +269,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 /* USB Retimer */
 enum tusb544_conf { USB_DP = 0, USB_DP_INV, USB, USB_INV, DP, DP_INV };
 
-static int board_tusb544_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_tusb544_set(const struct usb_mux *me, int port,
+			     mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 	enum tusb544_conf usb_mode = 0;
@@ -363,7 +364,6 @@ static int board_tusb544_set(const struct usb_mux *me, mux_state_t mux_state)
 const struct usb_mux_chain usbc1_retimer = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = 1,
 			.i2c_port = I2C_PORT_SUB_USB_C1,
 			.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS0,
 			.driver = &tusb544_drv,
@@ -376,7 +376,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 0,
 				.i2c_port = I2C_PORT_USB_C0,
 				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 				.driver = &it5205_usb_mux_driver,
@@ -385,7 +384,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 1,
 				.i2c_port = I2C_PORT_SUB_USB_C1,
 				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 				.driver = &it5205_usb_mux_driver,
