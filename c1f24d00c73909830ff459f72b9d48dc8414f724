@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd754c7_ab63f09c",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:15:05Z",
+      "side": 1,
+      "message": "Renamed to PSRC_SEQUENCE_MASK.",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "c1f24d00c73909830ff459f72b9d48dc8414f724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a4d8190_87832f88",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:15:05Z",
+      "side": 1,
+      "message": "Renamed to get_cached_psrc_sequence()",
+      "range": {
+        "startLine": 161,
+        "startChar": 11,
+        "endLine": 161,
+        "endChar": 33
+      },
+      "revId": "c1f24d00c73909830ff459f72b9d48dc8414f724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216dad73_ddeda59d",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:15:05Z",
+      "side": 1,
+      "message": "renamed to cached_psrc_sequence",
+      "range": {
+        "startLine": 163,
+        "startChar": 5,
+        "endLine": 163,
+        "endChar": 23
+      },
+      "revId": "c1f24d00c73909830ff459f72b9d48dc8414f724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
