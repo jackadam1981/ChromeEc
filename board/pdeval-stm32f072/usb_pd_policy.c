@@ -28,7 +28,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 0,
 				.driver = &anx7447_usb_mux_driver,
 			},
 	},
@@ -213,13 +212,13 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 		 * Note: Direct mux driver calls are deprecated.  Calls
 		 * should go through the usb_mux APIs instead.
 		 */
-		mux->driver->set(mux, mux_state, &unused);
+		mux->driver->set(mux, port, mux_state, &unused);
 		break;
 	case MODE_DP_PIN_B:
 	case MODE_DP_PIN_D:
 	case MODE_DP_PIN_F:
 		mux_state |= USB_PD_MUX_DOCK;
-		mux->driver->set(mux, mux_state, &unused);
+		mux->driver->set(mux, port, mux_state, &unused);
 		break;
 	}
 #endif
@@ -248,7 +247,8 @@ __override void svdm_dp_post_config(int port)
 	/* Note: Usage is deprecated, use usb_mux_hpd_update instead */
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_ANX7447))
 		anx7447_tcpc_update_hpd_status(
-			mux, USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ_DEASSERTED,
+			mux, port,
+			USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ_DEASSERTED,
 			&unused);
 }
 
@@ -266,7 +266,7 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 
 	/* Note: Usage is deprecated, use usb_mux_hpd_update instead */
 	CPRINTS("Attention: 0x%x", payload[1]);
-	anx7447_tcpc_update_hpd_status(mux, mux_state, &unused);
+	anx7447_tcpc_update_hpd_status(mux, port, mux_state, &unused);
 #endif
 	dp_status[port] = payload[1];
 
