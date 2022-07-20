@@ -444,7 +444,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 0,
 				.i2c_port = I2C_PORT_USB_C0,
 				.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
 				.driver = &pi3usb3x532_usb_mux_driver,
