@@ -69,7 +69,7 @@ static void tca_evt(enum gpio_signal signal)
  * TUSB1064 set mux board tuning.
  * Adds in board specific gain and DP lane count configuration
  */
-static int board_tusb1064_dp_rx_eq_set(const struct usb_mux *me,
+static int board_tusb1064_dp_rx_eq_set(const struct usb_mux *me, int port,
 				       mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -93,7 +93,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		/* DUT port with UFP mux */
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = DUT,
 				.i2c_port = I2C_PORT_MASTER,
 				.i2c_addr_flags = TUSB1064_I2C_ADDR10_FLAGS,
 				.driver = &tusb1064_usb_mux_driver,
