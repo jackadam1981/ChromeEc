@@ -172,7 +172,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 0,
 				.driver = &anx7688_usb_mux_driver,
 			},
 	},
