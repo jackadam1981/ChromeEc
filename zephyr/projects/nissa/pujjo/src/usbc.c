@@ -31,6 +31,7 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_VBUS_MONITOR,
 	},
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 	{ /* sub-board */
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -42,6 +43,7 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_VBUS_MONITOR,
 	},
+#endif
 };
 
 int board_is_sourcing_vbus(int port)
@@ -223,8 +225,11 @@ void board_reset_pd_mcu(void)
 
 static void poll_c0_int(void);
 DECLARE_DEFERRED(poll_c0_int);
+
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 static void poll_c1_int(void);
 DECLARE_DEFERRED(poll_c1_int);
+#endif
 
 static void usbc_interrupt_trigger(int port)
 {
@@ -247,11 +252,13 @@ static void poll_c0_int(void)
 		      &poll_c0_int_data);
 }
 
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 static void poll_c1_int(void)
 {
 	poll_usb_gpio(1, GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl),
 		      &poll_c1_int_data);
 }
+#endif
 
 void usb_interrupt(enum gpio_signal signal)
 {
@@ -261,10 +268,13 @@ void usb_interrupt(enum gpio_signal signal)
 	if (signal == GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_int_odl))) {
 		port = 0;
 		ud = &poll_c0_int_data;
-	} else {
+	}
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+	else {
 		port = 1;
 		ud = &poll_c1_int_data;
 	}
+#endif
 	/*
 	 * We've just been called from a falling edge, so there's definitely
 	 * no lost IRQ right now. Cancel any pending check.
