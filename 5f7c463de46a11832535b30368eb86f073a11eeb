@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c16d563_d9c45786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-20T20:40:50Z",
+      "side": 1,
+      "message": "Is this true?  I though that since C99 when designator expressions are used, the order isn\u0027t important.\n\nhttps://en.cppreference.com/w/c/language/struct_initialization",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "5f7c463de46a11832535b30368eb86f073a11eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
