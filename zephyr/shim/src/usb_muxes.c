@@ -9,54 +9,46 @@
 #include "usbc/usb_muxes.h"
 
 /**
- * @brief Macro that can be used in USB_MUX_FOREACH_USBC_PORT as filter
- *        argument. It allows to evaluate to "1 ||" for each named USBC port
- *        that has usb-muxes property.
- */
-#define USB_MUX_PORT_HAS_MUX(unused1, unused2) 1 ||
-
-/**
- * Check if there is any named USBC port with usb-muxes property. It evaluates
- * to "1 || 1 || ... 1 || 0" when there are multiple named USBC ports with
- * usb-muxes property and to "0" when any named USBC port has usb-muxes
- * property.
- *
  * This prevents creating struct usb_mux usb_muxes[] for platforms that didn't
  * migrate USB mux configuration to DTS yet.
  */
-#if USB_MUX_FOREACH_USBC_PORT(USB_MUX_PORT_HAS_MUX, _) 0
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_usb_mux_chain)
+
+/**
+ * Define usb_mux_chain structures e.g.
+ *
+ * MAYBE_CONST struct usb_mux_chain
+ * USB_MUX_chain_port_<port_id>_mux_<position_id> = {
+ *         .mux = &USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_virtual_mux_0,
+ *         .next = &USB_MUX_chain_port_0_mux_1,
+ * }
+ */
+USB_MUX_FOREACH_CHAIN_VARGS(USB_MUX_FOREACH_NO_ROOT_MUX,
+			    USB_MUX_CHAIN_STRUCT_DEFINE_OP)
 
 /**
  * Forward declarations for board_init and board_set callbacks. e.g.
  * int c0_mux0_board_init(const struct usb_mux *);
  * int c1_mux0_board_set(const struct usb_mux *, mux_state_t);
  */
-USB_MUX_FOREACH_USBC_PORT(USB_MUX_HAS_CB_BOARD_INIT,
-			  USB_MUX_CB_BOARD_INIT_DECLARE)
-USB_MUX_FOREACH_USBC_PORT(USB_MUX_HAS_CB_BOARD_SET,
-			  USB_MUX_CB_BOARD_SET_DECLARE)
+USB_MUX_FOREACH_MUX(USB_MUX_CB_BOARD_INIT_DECLARE_IF_EXISTS)
+USB_MUX_FOREACH_MUX(USB_MUX_CB_BOARD_SET_DECLARE_IF_EXISTS)
 
 /**
  * Define root of each USB muxes chain e.g.
  * [0] = {
- *         .usb_port = 0,
- *         .next_mux = &USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_it5205_mux_0,
- *         .board_init = &board_init,
- *         .board_set = NULL,
- *         .flags = 0,
- *         .driver = &virtual_usb_mux_driver,
- *         .hpd_update = &virtual_hpd_update,
+ *         .mux = &USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_virtual_mux_0,
+ *         .next = &USB_MUX_chain_port_0_mux_1,
  * },
  * [1] = { ... },
  */
-MAYBE_CONST struct usb_mux usb_muxes[] = { USB_MUX_FOREACH_USBC_PORT(
-	USB_MUX_FIRST, USB_MUX_ARRAY) };
+MAYBE_CONST struct usb_mux_chain usb_muxes[] = { USB_MUX_FOREACH_CHAIN(
+	USB_MUX_DEFINE_ROOT_MUX) };
+BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
 /**
- * Define all USB muxes except roots e.g.
+ * Define all USB muxes e.g.
  * MAYBE_CONST struct usb_mux USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_mux_0 = {
- *         .usb_port = 0,
- *         .next_mux = NULL,
  *         .board_init = NULL,
  *         .board_set = NULL,
  *         .flags = 0,
@@ -65,7 +57,7 @@ MAYBE_CONST struct usb_mux usb_muxes[] = { USB_MUX_FOREACH_USBC_PORT(
  * };
  * MAYBE_CONST struct usb_mux USB_MUX_NODE_<node_id> = { ... };
  */
-USB_MUX_FOREACH_USBC_PORT(USB_MUX_NO_FIRST, USB_MUX_DEFINE)
+USB_MUX_FOREACH_MUX(USB_MUX_DEFINE)
 
 /* Create bb_controls only if BB or HB retimer driver is enabled */
 #if defined(CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB) || \
@@ -87,8 +79,8 @@ USB_MUX_FOREACH_USBC_PORT(USB_MUX_NO_FIRST, USB_MUX_DEFINE)
  * [1] = { ... },
  */
 BB_CONTROLS_CONST struct bb_usb_control bb_controls[] = {
-	USB_MUX_FOREACH_USBC_PORT(USB_MUX_BB_RETIMERS, USB_MUX_ARRAY)
+	USB_MUX_BB_RETIMERS_CONTROLS_ARRAY
 };
 #endif /* CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB/HB */
 
-#endif /* #if USB_MUX_FOREACH_USBC_PORT(USB_MUX_PORT_HAS_MUX, _) */
+#endif /* #if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_usb_mux_chain) */
