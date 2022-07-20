@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "619c494e_7ab8bdfc",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:13:31Z",
+      "side": 1,
+      "message": "Renamed this to PSRC_SEQUENCE_MAX",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "324832eb_d69bc186",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 7
@@ -125,6 +148,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4351872c_1df13742",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:13:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "293cad23_3ed52480",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 15
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "182ae55a_375fdc11",
@@ -173,6 +220,24 @@
       "writtenOn": "2022-07-20T19:06:28Z",
       "side": 1,
       "message": "Yes, I think that naming would keep it from being confused with the PD task states",
+      "parentUuid": "57b0676a_4be29329",
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf03f0c_70a2d06f",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:13:31Z",
+      "side": 1,
+      "message": "Renamed to psrc_sequence_num.",
       "parentUuid": "57b0676a_4be29329",
       "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -343,6 +408,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b19d45_f24659c2",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a8d60b_a866f575",
+      "range": {
+        "startLine": 117,
+        "startChar": 43,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce103041_b81ac20b",
@@ -374,6 +463,24 @@
       "side": 1,
       "message": "Yes, Barrel jack is not under scope now. Will add Todo",
       "parentUuid": "ce103041_b81ac20b",
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42cfb015_fa5062a7",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d8b194a_b4ecd653",
       "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
