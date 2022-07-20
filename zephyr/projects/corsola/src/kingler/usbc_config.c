@@ -37,7 +37,7 @@
 /* USB Mux */
 
 /* USB Mux C1 : board_init of PS8743 */
-int ps8743_mux_1_board_init(const struct usb_mux *me)
+int ps8743_mux_1_board_init(const struct usb_mux *me, int port)
 {
 	ps8743_tune_usb_eq(me, PS8743_USB_EQ_TX_3_6_DB,
 			   PS8743_USB_EQ_RX_16_0_DB);
@@ -49,7 +49,7 @@ void board_usb_mux_init(void)
 {
 	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
 		/* Disable DCI function. This is not needed for ARM. */
-		ps8743_field_update(&usb_muxes[1], PS8743_REG_DCI_CONFIG_2,
+		ps8743_field_update(usb_muxes[1].mux, PS8743_REG_DCI_CONFIG_2,
 				    PS8743_AUTO_DCI_MODE_MASK,
 				    PS8743_AUTO_DCI_MODE_FORCE_USB);
 	}
