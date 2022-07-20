@@ -154,7 +154,7 @@ struct ppc_config_t ppc_chips[] = {
 #ifdef SECTION_IS_RW
 
 /* TUSB1064 set mux board tuning for DP Rx path */
-static int board_tusb1064_dp_rx_eq_set(const struct usb_mux *me,
+static int board_tusb1064_dp_rx_eq_set(const struct usb_mux *me, int mux,
 				       mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -189,7 +189,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_HOST,
 			.i2c_port = I2C_PORT_I2C1,
 			.i2c_addr_flags = TUSB1064_I2C_ADDR0_FLAGS,
 			.driver = &tusb1064_usb_mux_driver,
@@ -198,7 +197,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 	[USB_PD_PORT_DP] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_DP,
 			.i2c_port = I2C_PORT_I2C3,
 			.i2c_addr_flags = PS8XXX_I2C_ADDR2_FLAGS,
 			.driver = &tcpci_tcpm_usb_mux_driver,
