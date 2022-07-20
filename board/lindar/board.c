@@ -528,7 +528,6 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
 static const struct usb_mux_chain usbc1_usb3_db_retimer = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &tcpci_tcpm_usb_mux_driver,
 			.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		},
@@ -538,7 +537,6 @@ static const struct usb_mux_chain usbc1_usb3_db_retimer = {
 const struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C0,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -546,7 +544,6 @@ const struct usb_mux_chain usb_muxes[] = {
 	},
 	[USBC_PORT_C1] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},

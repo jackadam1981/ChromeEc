@@ -44,7 +44,6 @@ static const struct tcpc_config_t tcpc_config_p1_usb3 = {
 static const struct usb_mux_chain usbc1_usb3_db_retimer = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &tcpci_tcpm_usb_mux_driver,
 			.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		},
@@ -54,7 +53,6 @@ static const struct usb_mux_chain usbc1_usb3_db_retimer = {
 static const struct usb_mux_chain mux_config_p1_usb3_active = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -64,7 +62,6 @@ static const struct usb_mux_chain mux_config_p1_usb3_active = {
 static const struct usb_mux_chain mux_config_p1_usb3_passive = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		}
@@ -220,7 +217,6 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 struct usb_mux_chain usbc1_tcss_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		}
@@ -229,14 +225,12 @@ struct usb_mux_chain usbc1_tcss_usb_mux = {
 struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C0,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
 	},
 	[USBC_PORT_C1] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C1,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_1_MIX,
