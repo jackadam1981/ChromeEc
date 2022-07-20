@@ -89,7 +89,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_fault_interrupt_disable,
  * not needed as well. usb_mux.c can handle the situation
  * properly.
  */
-static int ioex_set_flip(const struct usb_mux *, mux_state_t, bool *);
+static int ioex_set_flip(const struct usb_mux *, int, mux_state_t, bool *);
 struct usb_mux_driver ioex_sbu_mux_driver = {
 	.set = ioex_set_flip,
 };
@@ -101,7 +101,6 @@ struct usb_mux_driver ioex_sbu_mux_driver = {
 struct usb_mux_chain usbc0_sbu_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C0,
 			.driver = &ioex_sbu_mux_driver,
 		},
 };
@@ -109,18 +108,17 @@ struct usb_mux_chain usbc0_sbu_mux = {
 struct usb_mux_chain usbc1_sbu_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &ioex_sbu_mux_driver,
 		},
 };
 
-int baseboard_anx7483_c0_mux_set(const struct usb_mux *me,
+int baseboard_anx7483_c0_mux_set(const struct usb_mux *me, int port,
 				 mux_state_t mux_state)
 {
-	return anx7483_set_default_tuning(me, mux_state);
+	return anx7483_set_default_tuning(me, port, mux_state);
 }
 
-int baseboard_anx7483_c1_mux_set(const struct usb_mux *me,
+int baseboard_anx7483_c1_mux_set(const struct usb_mux *me, int port,
 				 mux_state_t mux_state)
 {
 	bool flipped = mux_state & USB_PD_MUX_POLARITY_INVERTED;
@@ -128,7 +126,7 @@ int baseboard_anx7483_c1_mux_set(const struct usb_mux *me,
 	/* Remove flipped from the state for easier compraisons */
 	mux_state = mux_state & ~USB_PD_MUX_POLARITY_INVERTED;
 
-	RETURN_ERROR(anx7483_set_default_tuning(me, mux_state));
+	RETURN_ERROR(anx7483_set_default_tuning(me, port, mux_state));
 
 	if (mux_state == USB_PD_MUX_USB_ENABLED) {
 		RETURN_ERROR(anx7483_set_eq(me, ANX7483_PIN_URX1,
@@ -174,7 +172,6 @@ int baseboard_anx7483_c1_mux_set(const struct usb_mux *me,
 struct usb_mux_chain usbc0_anx7483 = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C0,
 			.i2c_port = I2C_PORT_TCPC0,
 			.i2c_addr_flags = ANX7483_I2C_ADDR0_FLAGS,
 			.driver = &anx7483_usb_retimer_driver,
@@ -183,7 +180,7 @@ struct usb_mux_chain usbc0_anx7483 = {
 	.next = &usbc0_sbu_mux,
 };
 
-__overridable int board_c1_ps8818_mux_set(const struct usb_mux *me,
+__overridable int board_c1_ps8818_mux_set(const struct usb_mux *me, int port,
 					  mux_state_t mux_state)
 {
 	CPRINTSUSB("C1: PS8818 mux using default tuning");
@@ -200,7 +197,6 @@ __overridable int board_c1_ps8818_mux_set(const struct usb_mux *me,
 struct usb_mux_chain usbc1_ps8818 = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.i2c_port = I2C_PORT_TCPC1,
 			.flags = USB_MUX_FLAG_RESETS_IN_G3,
 			.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
@@ -212,7 +208,6 @@ struct usb_mux_chain usbc1_ps8818 = {
 struct usb_mux_chain usbc1_anx7483 = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.i2c_port = I2C_PORT_TCPC1,
 			.i2c_addr_flags = ANX7483_I2C_ADDR0_FLAGS,
 			.driver = &anx7483_usb_retimer_driver,
@@ -224,7 +219,6 @@ struct usb_mux_chain usbc1_anx7483 = {
 struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C0,
 			.i2c_port = I2C_PORT_USB_MUX,
 			.i2c_addr_flags = AMD_FP6_C0_MUX_I2C_ADDR,
 			.driver = &amd_fp6_usb_mux_driver,
@@ -233,7 +227,6 @@ struct usb_mux_chain usb_muxes[] = {
 	},
 	[USBC_PORT_C1] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C1,
 			.i2c_port = I2C_PORT_USB_MUX,
 			.i2c_addr_flags = AMD_FP6_C4_MUX_I2C_ADDR,
 			.driver = &amd_fp6_usb_mux_driver,
@@ -247,13 +240,13 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
  * USB C0 (general) and C1 (just ANX DB) use IOEX pins to
  * indicate flipped polarity to a protection switch.
  */
-static int ioex_set_flip(const struct usb_mux *me, mux_state_t mux_state,
-			 bool *ack_required)
+static int ioex_set_flip(const struct usb_mux *me, int port,
+			 mux_state_t mux_state, bool *ack_required)
 {
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
-	if (me->usb_port == USBC_PORT_C0) {
+	if (port == USBC_PORT_C0) {
 		if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 			ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
 		else
