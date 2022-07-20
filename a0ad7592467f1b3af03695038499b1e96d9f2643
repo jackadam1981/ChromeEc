@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5ce9d2_99c26f8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-20T17:24:05Z",
+      "side": 1,
+      "message": "Nit: I think there\u0027s a weird line length here. Conventionally, git commit body line length is 72 characters. I don\u0027t know if our style says anything about making that different, but we should probably at least be 80 or fewer.",
+      "revId": "a0ad7592467f1b3af03695038499b1e96d9f2643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae7fde6_93494916",
+        "filename": "zephyr/test/drivers/include/test/drivers/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-20T17:24:05Z",
+      "side": 1,
+      "message": "Should there be any reference here to the events that can be in this mask?",
+      "revId": "a0ad7592467f1b3af03695038499b1e96d9f2643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
