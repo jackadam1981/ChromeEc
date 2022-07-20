@@ -233,17 +233,16 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
-static int fsusb42umx_set_mux(const struct usb_mux *, mux_state_t);
+static int fsusb42umx_set_mux(const struct usb_mux *, int, mux_state_t);
 
-__overridable int board_c1_ps8818_mux_set(const struct usb_mux *me,
+__overridable int board_c1_ps8818_mux_set(const struct usb_mux *me, int port,
 					  mux_state_t mux_state)
 {
 	CPRINTSUSB("C1: PS8818 mux using default tuning");
 	return 0;
 }
 
-struct usb_mux usbc1_ps8818 = {
-	.usb_port = USBC_PORT_C1,
+const struct usb_mux usbc1_ps8818 = {
 	.i2c_port = I2C_PORT_TCPC1,
 	.flags = USB_MUX_FLAG_RESETS_IN_G3,
 	.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
@@ -251,15 +250,14 @@ struct usb_mux usbc1_ps8818 = {
 	.board_set = &board_c1_ps8818_mux_set,
 };
 
-__overridable int board_c1_anx7451_mux_set(const struct usb_mux *me,
+__overridable int board_c1_anx7451_mux_set(const struct usb_mux *me, int port,
 					   mux_state_t mux_state)
 {
 	CPRINTSUSB("C1: ANX7451 mux using default tuning");
 	return 0;
 }
 
-struct usb_mux usbc1_anx7451 = {
-	.usb_port = USBC_PORT_C1,
+const struct usb_mux usbc1_anx7451 = {
 	.i2c_port = I2C_PORT_TCPC1,
 	.flags = USB_MUX_FLAG_RESETS_IN_G3,
 	.i2c_addr_flags = ANX7491_I2C_ADDR3_FLAGS,
@@ -267,20 +265,25 @@ struct usb_mux usbc1_anx7451 = {
 	.board_set = &board_c1_anx7451_mux_set,
 };
 
-struct usb_mux usb_muxes[] = {
+/* Filled in by setup_mux based on fw_config */
+struct usb_mux_chain usbc1_mux1;
+
+struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.i2c_port = I2C_PORT_USB_MUX,
-		.i2c_addr_flags = AMD_FP6_C0_MUX_I2C_ADDR,
-		.driver = &amd_fp6_usb_mux_driver,
-		.board_set = &fsusb42umx_set_mux,
+		.mux = &(const struct usb_mux) {
+			.i2c_port = I2C_PORT_USB_MUX,
+			.i2c_addr_flags = AMD_FP6_C0_MUX_I2C_ADDR,
+			.driver = &amd_fp6_usb_mux_driver,
+			.board_set = &fsusb42umx_set_mux,
+		},
 	},
 	[USBC_PORT_C1] = {
-		.usb_port = USBC_PORT_C1,
-		.i2c_port = I2C_PORT_USB_MUX,
-		.i2c_addr_flags = AMD_FP6_C4_MUX_I2C_ADDR,
-		.driver = &amd_fp6_usb_mux_driver,
-		/* .next_mux = filled in by setup_mux based on fw_config */
+		.mux = &(const struct usb_mux) {
+			.i2c_port = I2C_PORT_USB_MUX,
+			.i2c_addr_flags = AMD_FP6_C4_MUX_I2C_ADDR,
+			.driver = &amd_fp6_usb_mux_driver,
+		},
+		.next = &usbc1_mux1,
 	}
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
@@ -358,7 +361,8 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
  * chip and it needs a board specific driver.
  * It is called through the C0 mux's board_set.
  */
-static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state)
+static int fsusb42umx_set_mux(const struct usb_mux *me, int port,
+			      mux_state_t mux_state)
 {
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
@@ -373,14 +377,15 @@ static void setup_mux(void)
 	switch (board_get_usb_c1_mux()) {
 	case USB_C1_MUX_PS8818:
 		CPRINTSUSB("C1: Setting PS8818 mux");
-		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_ps8818;
+		usbc1_mux1.mux = &usbc1_ps8818;
 		break;
 	case USB_C1_MUX_ANX7451:
 		CPRINTSUSB("C1: Setting ANX7451 mux");
-		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_anx7451;
+		usbc1_mux1.mux = &usbc1_anx7451;
 		break;
 	default:
 		CPRINTSUSB("C1: Mux is unknown");
+		usb_muxes[USBC_PORT_C1].next = NULL;
 	}
 }
 DECLARE_HOOK(HOOK_INIT, setup_mux, HOOK_PRIO_INIT_I2C);
@@ -755,7 +760,7 @@ board_a1_ps8811_retimer_init(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
-static int baseboard_a1_ps8811_retimer_init(const struct usb_mux *me)
+static int baseboard_a1_ps8811_retimer_init(const struct usb_mux *me, int port)
 {
 	int rv;
 	int tries = 2;
@@ -780,7 +785,6 @@ static int baseboard_a1_ps8811_retimer_init(const struct usb_mux *me)
 
 /* PS8811 is just a type-A USB retimer, reusing mux structure for convience. */
 const struct usb_mux usba1_ps8811 = {
-	.usb_port = USBA_PORT_A1,
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS3,
 	.board_init = &baseboard_a1_ps8811_retimer_init,
@@ -792,7 +796,7 @@ board_a1_anx7491_retimer_init(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
-static int baseboard_a1_anx7491_retimer_init(const struct usb_mux *me)
+static int baseboard_a1_anx7491_retimer_init(const struct usb_mux *me, int port)
 {
 	int rv;
 	int tries = 2;
@@ -815,7 +819,6 @@ static int baseboard_a1_anx7491_retimer_init(const struct usb_mux *me)
 
 /* ANX7491 is just a type-A USB retimer, reusing mux structure for convience. */
 const struct usb_mux usba1_anx7491 = {
-	.usb_port = USBA_PORT_A1,
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = ANX7491_I2C_ADDR0_FLAGS,
 	.board_init = &baseboard_a1_anx7491_retimer_init,
@@ -835,7 +838,7 @@ void baseboard_a1_retimer_setup(void)
 		CPRINTSUSB("A1: Unknown retimer!");
 		return;
 	}
-	a1_retimer.board_init(&a1_retimer);
+	a1_retimer.board_init(&a1_retimer, USBA_PORT_A1);
 }
 DECLARE_DEFERRED(baseboard_a1_retimer_setup);
 
