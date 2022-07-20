@@ -46,6 +46,30 @@
       },
       "revId": "5f7c463de46a11832535b30368eb86f073a11eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc321b0_3d8fab61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-20T21:04:10Z",
+      "side": 1,
+      "message": "I think this is one of those areas that C and C++ differ: https://en.cppreference.com/w/cpp/language/aggregate_initialization",
+      "parentUuid": "5f201d37_4f612659",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "5f7c463de46a11832535b30368eb86f073a11eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
