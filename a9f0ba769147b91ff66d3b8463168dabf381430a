@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcec71d0_c32e57d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2022-07-20T13:59:12Z",
+      "side": 1,
+      "message": "Planning to abandon this change as per above comment.",
+      "revId": "a9f0ba769147b91ff66d3b8463168dabf381430a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbdf412d_1e885c9e",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-07-15T21:35:51Z",
       "side": 1,
       "message": "I don\u0027t understand? EC_MEMMAP_FAN was already space for 8 fans?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 68
+      },
+      "revId": "a9f0ba769147b91ff66d3b8463168dabf381430a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9154c974_31b87a31",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2022-07-20T13:59:12Z",
+      "side": 1,
+      "message": "Thanks for this review comment. Yes, we do not need this change.",
+      "parentUuid": "cbdf412d_1e885c9e",
       "range": {
         "startLine": 133,
         "startChar": 0,
