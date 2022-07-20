@@ -155,7 +155,7 @@ static void nereid_subboard_config(void)
 		/* Configure interrupt input */
 		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl),
 				      GPIO_INPUT | GPIO_PULL_UP);
-	} else {
+	} else if (CONFIG_USB_PD_PORT_MAX_COUNT > 1) {
 		/* Disable the port 1 charger task */
 		task_disable_task(TASK_ID_USB_CHG_P1);
 		usb_muxes[1].next_mux = NULL;
