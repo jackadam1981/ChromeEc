@@ -361,6 +361,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcf93fd_de8737da",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a756fce_e05ff40b",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 36
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bebe18b_f04ca253",
