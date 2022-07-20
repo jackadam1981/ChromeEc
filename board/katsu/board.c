@@ -114,8 +114,8 @@ struct mt6370_thermal_bound thermal_bound = {
 	.err = 4,
 };
 
-static void board_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
-			     bool *ack_required)
+static void board_hpd_update(const struct usb_mux *me, int port,
+			     mux_state_t mux_state, bool *ack_required)
 {
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -145,7 +145,6 @@ struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 0,
 				.i2c_port = I2C_PORT_USB_MUX,
 				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 				.driver = &it5205_usb_mux_driver,
