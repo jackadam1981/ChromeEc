@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ce2580c_02e99fb1",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-20T19:45:54Z",
+      "side": 1,
+      "message": "Should this also use `sm5803_set_active_safe()` just to consolidate the shared logic?",
+      "revId": "b419957072bf37de138e6ed3045b4de495507f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf72923_05e88bb4",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-20T19:45:54Z",
+      "side": 1,
+      "message": "Same question here",
+      "revId": "b419957072bf37de138e6ed3045b4de495507f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b025c45_061e98fd",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 3
