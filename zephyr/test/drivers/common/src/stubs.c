@@ -152,14 +152,12 @@ int board_is_sourcing_vbus(int port)
 struct usb_mux_chain usbc0_virtual_usb_mux_chain = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C0,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
 };
 
 struct usb_mux usbc1_virtual_usb_mux = {
-	.usb_port = USBC_PORT_C1,
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
@@ -169,7 +167,6 @@ struct usb_mux_chain usbc1_virtual_usb_mux_chain = {
 };
 
 struct usb_mux usbc0_mux0 = {
-	.usb_port = USBC_PORT_C0,
 	.driver = &tcpci_tcpm_usb_mux_driver,
 	.i2c_port = I2C_PORT_USB_C0,
 	.i2c_addr_flags = DT_REG_ADDR(DT_NODELABEL(tcpci_emul)),
@@ -182,7 +179,6 @@ struct usb_mux_chain usb_muxes[] = {
 	},
 	[USBC_PORT_C1] = {
 		.mux = &(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C1,
