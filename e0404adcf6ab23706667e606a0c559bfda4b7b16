@@ -22,6 +22,30 @@
       },
       "revId": "e0404adcf6ab23706667e606a0c559bfda4b7b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fddc94f1_eb1925dc",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:18:10Z",
+      "side": 1,
+      "message": "Intention is to assign with inital value just once. If config is not enabled, will not call this function itself anyways.",
+      "parentUuid": "41216f89_1a4e2e0b",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 39
+      },
+      "revId": "e0404adcf6ab23706667e606a0c559bfda4b7b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
