@@ -52,6 +52,24 @@
       "parentUuid": "808d0034_3f6e815f",
       "revId": "dc7d08fc7daaf04b84c31a1652f01e47cc6a9c20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f692eff_9f9abf3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-20T10:03:52Z",
+      "side": 1,
+      "message": "yeah `repo sync \u0026\u0026 sudo emerge dev-python/kconfiglib` fixed it",
+      "parentUuid": "376b1bdd_efddad92",
+      "revId": "dc7d08fc7daaf04b84c31a1652f01e47cc6a9c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
