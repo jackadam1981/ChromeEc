@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87273194_91524683",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-20T19:06:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eb409393_235afb8b",
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84f9fe8d_47a98902",
@@ -85,6 +103,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "293cad23_3ed52480",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-20T19:06:28Z",
+      "side": 1,
+      "message": "We can also hit that situation on chromeboxes, so it seems reasonable to support",
+      "parentUuid": "f93b691a_ffcc6e1e",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 15
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "182ae55a_375fdc11",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 7
@@ -114,6 +156,24 @@
       "side": 1,
       "message": "Doc #626708 8.1.6 gives the definition like this :\nPower Delivery State Change Sequence Number.\n But, you are also right that this looks like related to states in pd task. This is infact represenation of psrc bits[7:4]. May be renaming to psrc_pd_state_sequence ?  or reframing just the comment as /* Power delivery state change sequence in PSRC bit[7:4] */ ?",
       "parentUuid": "182ae55a_375fdc11",
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41bd14f6_544f0d64",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-20T19:06:28Z",
+      "side": 1,
+      "message": "Yes, I think that naming would keep it from being confused with the PD task states",
+      "parentUuid": "57b0676a_4be29329",
       "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -202,6 +262,30 @@
       "side": 1,
       "message": "I thought of using this as throttle reason, because here prochot is send during AC removal or in low battery condition, which means battery is in  discharging condition. So, i just reused one of this.\nAt present, we have these 4 conditions:\n        THROTTLE_SRC_THERMAL \u003d 0,\n        THROTTLE_SRC_BAT_DISCHG_CURRENT,\n        THROTTLE_SRC_BAT_VOLTAGE,\n        THROTTLE_SRC_AC,\n\n  But , yea..not evaluating any discharging current! 😊  which one sounds as a better reasoning to add? THROTTLE_SRC_BAT_DISCHG  or THROTTLE_SRC_DTT or THROTTLE_SRC_DTT_POWERBOSS_ACTION ?",
       "parentUuid": "e4ec368c_236ebbf1",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 36
+      },
+      "revId": "cfa92f0171ddeb2c88e9d5c8e6a899a6379bf2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e1a6a75_928749e0",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-20T19:06:28Z",
+      "side": 1,
+      "message": "THROTTLE_SRC_DTT seems accurate and succinct",
+      "parentUuid": "2a756fce_e05ff40b",
       "range": {
         "startLine": 115,
         "startChar": 5,
