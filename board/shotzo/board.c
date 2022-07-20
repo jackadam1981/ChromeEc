@@ -476,6 +476,18 @@ __override void board_power_5v_enable(int enable)
 	}
 }
 
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	/* Shotzo has only 1 pd port */
+	return 1;
+}
+
+__override uint8_t board_get_charger_chip_count(void)
+{
+	/* Shotzo has only 1 charger chip */
+	return 1;
+}
+
 uint16_t tcpc_get_alert_status(void)
 {
 	/*
