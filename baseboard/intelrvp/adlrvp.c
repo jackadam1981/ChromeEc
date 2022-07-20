@@ -93,94 +93,113 @@ BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == CONFIG_USB_PD_PORT_MAX_COUNT);
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /* USB-C retimer Configuration */
-struct usb_mux usbc0_tcss_usb_mux = {
-	.usb_port = TYPE_C_PORT_0,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+struct usb_mux bb_retimer0_usb_mux = {
+	.driver = &bb_usb_retimer,
+	.hpd_update = bb_retimer_hpd_update,
+	.i2c_port = I2C_PORT_TYPEC_0,
+	.i2c_addr_flags = I2C_PORT0_BB_RETIMER_ADDR,
+};
+struct usb_mux_chain usbc0_tcss_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
 #if defined(HAS_TASK_PD_C1)
-struct usb_mux usbc1_tcss_usb_mux = {
-	.usb_port = TYPE_C_PORT_1,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+struct usb_mux bb_retimer1_usb_mux = {
+	.driver = &bb_usb_retimer,
+	.hpd_update = bb_retimer_hpd_update,
+	.i2c_port = I2C_PORT_TYPEC_1,
+	.i2c_addr_flags = I2C_PORT1_BB_RETIMER_ADDR,
+};
+struct usb_mux_chain usbc1_tcss_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
 #endif
 #if defined(HAS_TASK_PD_C2)
-struct usb_mux usbc2_tcss_usb_mux = {
-	.usb_port = TYPE_C_PORT_2,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+struct usb_mux bb_retimer2_usb_mux = {
+	.driver = &bb_usb_retimer,
+	.hpd_update = bb_retimer_hpd_update,
+	.i2c_port = I2C_PORT_TYPEC_2,
+	.i2c_addr_flags = I2C_PORT2_BB_RETIMER_ADDR,
+};
+struct usb_mux_chain usbc2_tcss_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
 #endif
 #if defined(HAS_TASK_PD_C3)
-struct usb_mux usbc3_tcss_usb_mux = {
-	.usb_port = TYPE_C_PORT_3,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+struct usb_mux_chain usbc3_tcss_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
 #endif
 
 /* USB muxes Configuration */
-struct usb_mux usb_muxes[] = {
+struct usb_mux_chain usb_muxes[] = {
 	[TYPE_C_PORT_0] = {
-		.usb_port = TYPE_C_PORT_0,
-		.next_mux = &usbc0_tcss_usb_mux,
-		.driver = &bb_usb_retimer,
-		.hpd_update = bb_retimer_hpd_update,
-		.i2c_port = I2C_PORT_TYPEC_0,
-		.i2c_addr_flags = I2C_PORT0_BB_RETIMER_ADDR,
+		.mux = &bb_retimer0_usb_mux,
+		.next = &usbc0_tcss_usb_mux,
 	},
 #if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
-		.usb_port = TYPE_C_PORT_1,
-		.next_mux = &usbc1_tcss_usb_mux,
-		.driver = &bb_usb_retimer,
-		.hpd_update = bb_retimer_hpd_update,
-		.i2c_port = I2C_PORT_TYPEC_1,
-		.i2c_addr_flags = I2C_PORT1_BB_RETIMER_ADDR,
+		.mux = &bb_retimer1_usb_mux,
+		.next = &usbc1_tcss_usb_mux,
 	},
 #endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
-		.usb_port = TYPE_C_PORT_2,
-		.next_mux = &usbc2_tcss_usb_mux,
-		.driver = &bb_usb_retimer,
-		.hpd_update = bb_retimer_hpd_update,
-		.i2c_port = I2C_PORT_TYPEC_2,
-		.i2c_addr_flags = I2C_PORT2_BB_RETIMER_ADDR,
+		.mux = &bb_retimer2_usb_mux,
+		.next = &usbc2_tcss_usb_mux,
 	},
 #endif
 #if defined(HAS_TASK_PD_C3)
 	[TYPE_C_PORT_3] = {
-		.usb_port = TYPE_C_PORT_3,
-		.next_mux = &usbc3_tcss_usb_mux,
-		.driver = &bb_usb_retimer,
-		.hpd_update = bb_retimer_hpd_update,
-		.i2c_port = I2C_PORT_TYPEC_3,
-		.i2c_addr_flags = I2C_PORT3_BB_RETIMER_ADDR,
+		.mux = &(const struct usb_mux) {
+			.driver = &bb_usb_retimer,
+			.hpd_update = bb_retimer_hpd_update,
+			.i2c_port = I2C_PORT_TYPEC_3,
+			.i2c_addr_flags = I2C_PORT3_BB_RETIMER_ADDR,
+		},
+		.next = &usbc3_tcss_usb_mux,
 	},
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
 /* USB Mux Configuration for Soc side BB-Retimers for Dual retimer config */
-struct usb_mux soc_side_bb_retimer0_usb_mux = {
-	.usb_port = TYPE_C_PORT_0,
-	.next_mux = &usbc0_tcss_usb_mux,
-	.driver = &bb_usb_retimer,
-	.hpd_update = bb_retimer_hpd_update,
-	.i2c_port = I2C_PORT_TYPEC_0,
-	.i2c_addr_flags = I2C_PORT0_BB_RETIMER_SOC_ADDR,
+struct usb_mux_chain soc_side_bb_retimer0_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &bb_usb_retimer,
+			.hpd_update = bb_retimer_hpd_update,
+			.i2c_port = I2C_PORT_TYPEC_0,
+			.i2c_addr_flags = I2C_PORT0_BB_RETIMER_SOC_ADDR,
+		},
+	.next = &usbc0_tcss_usb_mux,
 };
 
 #if defined(HAS_TASK_PD_C1)
-struct usb_mux soc_side_bb_retimer1_usb_mux = {
-	.usb_port = TYPE_C_PORT_1,
-	.next_mux = &usbc1_tcss_usb_mux,
-	.driver = &bb_usb_retimer,
-	.hpd_update = bb_retimer_hpd_update,
-	.i2c_port = I2C_PORT_TYPEC_1,
-	.i2c_addr_flags = I2C_PORT1_BB_RETIMER_SOC_ADDR,
+struct usb_mux_chain soc_side_bb_retimer1_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &bb_usb_retimer,
+			.hpd_update = bb_retimer_hpd_update,
+			.i2c_port = I2C_PORT_TYPEC_1,
+			.i2c_addr_flags = I2C_PORT1_BB_RETIMER_SOC_ADDR,
+		},
+	.next = &usbc1_tcss_usb_mux,
 };
 #endif
 
@@ -263,7 +282,8 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	ioex_set_level(oc_signal, is_overcurrented ? 0 : 1);
 }
 
-__override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
+__override int bb_retimer_power_enable(const struct usb_mux *me, int port,
+				       bool enable)
 {
 	/*
 	 * ADL-P-DDR5 RVP SKU has cascaded retimer topology.
@@ -271,14 +291,14 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	 * hence no need to set the power state again if the 1st retimer's power
 	 * status has already changed.
 	 */
-	if (cache_bb_enable[me->usb_port] == enable)
+	if (cache_bb_enable[port] == enable)
 		return EC_SUCCESS;
 
-	cache_bb_enable[me->usb_port] = enable;
+	cache_bb_enable[port] = enable;
 
 	/* Handle retimer's power domain.*/
 	if (enable) {
-		ioex_set_level(bb_controls[me->usb_port].usb_ls_en_gpio, 1);
+		ioex_set_level(bb_controls[port].usb_ls_en_gpio, 1);
 
 		/*
 		 * minimum time from VCC to RESET_N de-assertion is 100us
@@ -287,7 +307,7 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		 * this function.
 		 */
 		msleep(1);
-		ioex_set_level(bb_controls[me->usb_port].retimer_rst_gpio, 1);
+		ioex_set_level(bb_controls[port].retimer_rst_gpio, 1);
 
 		/*
 		 * Allow 1ms time for the retimer to power up lc_domain
@@ -296,9 +316,9 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		msleep(1);
 
 	} else {
-		ioex_set_level(bb_controls[me->usb_port].retimer_rst_gpio, 0);
+		ioex_set_level(bb_controls[port].retimer_rst_gpio, 0);
 		msleep(1);
-		ioex_set_level(bb_controls[me->usb_port].usb_ls_en_gpio, 0);
+		ioex_set_level(bb_controls[port].usb_ls_en_gpio, 0);
 	}
 	return EC_SUCCESS;
 }
@@ -378,21 +398,20 @@ static void configure_retimer_usbmux(void)
 	case ADLN_LP5_ERB_SKU_BOARD_ID:
 	case ADLN_LP5_RVP_SKU_BOARD_ID:
 		/* enable TUSB1044RNQR redriver on Port0  */
-		usb_muxes[TYPE_C_PORT_0].i2c_addr_flags =
-			TUSB1064_I2C_ADDR14_FLAGS;
-		usb_muxes[TYPE_C_PORT_0].driver = &tusb1064_usb_mux_driver;
-		usb_muxes[TYPE_C_PORT_0].hpd_update = tusb1044_hpd_update;
+		bb_retimer0_usb_mux.i2c_addr_flags = TUSB1064_I2C_ADDR14_FLAGS;
+		bb_retimer0_usb_mux.driver = &tusb1064_usb_mux_driver;
+		bb_retimer0_usb_mux.hpd_update = tusb1044_hpd_update;
 
 #if defined(HAS_TASK_PD_C1)
-		usb_muxes[TYPE_C_PORT_1].driver = NULL;
-		usb_muxes[TYPE_C_PORT_1].hpd_update = NULL;
+		bb_retimer1_usb_mux.driver = NULL;
+		bb_retimer1_usb_mux.hpd_update = NULL;
 #endif
 		break;
 
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
 		/* No retimer on Port-2 */
 #if defined(HAS_TASK_PD_C2)
-		usb_muxes[TYPE_C_PORT_2].driver = NULL;
+		bb_retimer2_usb_mux.driver = NULL;
 #endif
 		break;
 
@@ -402,11 +421,9 @@ static void configure_retimer_usbmux(void)
 		 * Change the default usb mux config on runtime to support
 		 * dual retimer topology.
 		 */
-		usb_muxes[TYPE_C_PORT_0].next_mux =
-			&soc_side_bb_retimer0_usb_mux;
+		usb_muxes[TYPE_C_PORT_0].next = &soc_side_bb_retimer0_usb_mux;
 #if defined(HAS_TASK_PD_C1)
-		usb_muxes[TYPE_C_PORT_1].next_mux =
-			&soc_side_bb_retimer1_usb_mux;
+		usb_muxes[TYPE_C_PORT_1].next = &soc_side_bb_retimer1_usb_mux;
 #endif
 		break;
 

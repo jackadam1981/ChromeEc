@@ -121,15 +121,19 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 #ifndef CONFIG_ZEPHYR
 /* USBC mux configuration - Alder Lake includes internal mux */
-static const struct usb_mux usbc0_tcss_usb_mux = {
-	.usb_port = USBC_PORT_C0,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+static const struct usb_mux_chain usbc0_tcss_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
-static const struct usb_mux usbc2_tcss_usb_mux = {
-	.usb_port = USBC_PORT_C2,
-	.driver = &virtual_usb_mux_driver,
-	.hpd_update = &virtual_hpd_update,
+static const struct usb_mux_chain usbc2_tcss_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 };
 
 /*
@@ -137,35 +141,40 @@ static const struct usb_mux usbc2_tcss_usb_mux = {
  * to the virtual_usb_mux_driver so the AP gets notified of mux changes
  * and updates the TCSS configuration on state changes.
  */
-static const struct usb_mux usbc1_usb3_db_retimer = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &tcpci_tcpm_usb_mux_driver,
-	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+static const struct usb_mux_chain usbc1_usb3_db_retimer = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &tcpci_tcpm_usb_mux_driver,
+			.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		},
 };
 
-const struct usb_mux usb_muxes[] = {
+const struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.driver = &bb_usb_retimer,
-		.hpd_update = bb_retimer_hpd_update,
-		.i2c_port = I2C_PORT_USB_C0_C2_MUX,
-		.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
-		.next_mux = &usbc0_tcss_usb_mux,
+		.mux = &(const struct usb_mux) {
+			.driver = &bb_usb_retimer,
+			.hpd_update = bb_retimer_hpd_update,
+			.i2c_port = I2C_PORT_USB_C0_C2_MUX,
+			.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
+		},
+		.next = &usbc0_tcss_usb_mux,
 	},
 	[USBC_PORT_C1] = {
-		/* PS8815 DB */
-		.usb_port = USBC_PORT_C1,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-		.next_mux = &usbc1_usb3_db_retimer,
+		.mux = &(const struct usb_mux) {
+			/* PS8815 DB */
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
+		.next = &usbc1_usb3_db_retimer,
 	},
 	[USBC_PORT_C2] = {
-		.usb_port = USBC_PORT_C2,
-		.driver = &bb_usb_retimer,
-		.hpd_update = bb_retimer_hpd_update,
-		.i2c_port = I2C_PORT_USB_C0_C2_MUX,
-		.i2c_addr_flags = USBC_PORT_C2_BB_RETIMER_I2C_ADDR,
-		.next_mux = &usbc2_tcss_usb_mux,
+		.mux = &(const struct usb_mux) {
+			.driver = &bb_usb_retimer,
+			.hpd_update = bb_retimer_hpd_update,
+			.i2c_port = I2C_PORT_USB_C0_C2_MUX,
+			.i2c_addr_flags = USBC_PORT_C2_BB_RETIMER_I2C_ADDR,
+		},
+		.next = &usbc2_tcss_usb_mux,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
@@ -258,25 +267,26 @@ void config_usb_db_type(void)
 	CPRINTS("Configured USB DB type number is %d", db_type);
 }
 
-__override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
+__override int bb_retimer_power_enable(const struct usb_mux *me, int port,
+				       bool enable)
 {
 	enum ioex_signal rst_signal;
 
-	if (me->usb_port == USBC_PORT_C0) {
+	if (port == USBC_PORT_C0) {
 /* TODO: explore how to handle board id in zephyr*/
 #ifndef CONFIG_ZEPHYR
 		rst_signal = IOEX_USB_C0_RT_RST_ODL;
 #else
 		/* On Zephyr use bb_controls generated from DTS */
-		rst_signal = bb_controls[me->usb_port].retimer_rst_gpio;
+		rst_signal = bb_controls[port].retimer_rst_gpio;
 #endif /* !CONFIG_ZEPHYR */
-	} else if (me->usb_port == USBC_PORT_C2) {
+	} else if (port == USBC_PORT_C2) {
 /* TODO: explore how to handle board id in zephyr*/
 #ifndef CONFIG_ZEPHYR
 		rst_signal = IOEX_USB_C2_RT_RST_ODL;
 #else
 		/* On Zephyr use bb_controls generated from DTS */
-		rst_signal = bb_controls[me->usb_port].retimer_rst_gpio;
+		rst_signal = bb_controls[port].retimer_rst_gpio;
 #endif /* !CONFIG_ZEPHYR */
 	} else {
 		return EC_ERROR_INVAL;
