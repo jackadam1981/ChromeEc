@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "259859a1_d7200473",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-20T19:01:59Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ll fix it.  This seems like something we should have a repo upload hook for...",
+      "parentUuid": "3d5ce9d2_99c26f8b",
+      "revId": "a0ad7592467f1b3af03695038499b1e96d9f2643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eae7fde6_93494916",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-20T17:24:05Z",
       "side": 1,
       "message": "Should there be any reference here to the events that can be in this mask?",
+      "revId": "a0ad7592467f1b3af03695038499b1e96d9f2643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8efb41a_6d6e7cc4",
+        "filename": "zephyr/test/drivers/include/test/drivers/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-20T19:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eae7fde6_93494916",
       "revId": "a0ad7592467f1b3af03695038499b1e96d9f2643",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
