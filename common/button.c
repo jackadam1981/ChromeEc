@@ -857,7 +857,7 @@ struct button_config buttons[BUTTON_COUNT] = {
 		.type = KEYBOARD_BUTTON_RECOVERY,
 		.gpio = GPIO_RECOVERY_L,
 		.debounce_us = BUTTON_DEBOUNCE_US,
-		.flags = 0,
+		.flags = 1,
 	},
 #ifdef CONFIG_DEDICATED_RECOVERY_BUTTON_2
 	[BUTTON_RECOVERY_2] = {
