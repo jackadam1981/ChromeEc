@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9b1b90_d8b321c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-20T09:28:33Z",
+      "side": 1,
+      "message": "second",
+      "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba17741_939f2f1e",
+        "filename": "zephyr/projects/nissa/pujjo/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-20T09:28:33Z",
+      "side": 1,
+      "message": "I think you can just remove this (the default is to assume a single charger unless this is set).",
+      "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5bd6d56_0393ff9a",
+        "filename": "zephyr/projects/nissa/pujjo/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-20T09:28:33Z",
+      "side": 1,
+      "message": "Can this code just be removed? This and the other code that is guarded by this check.",
+      "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
