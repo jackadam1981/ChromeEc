@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec75d3a0_4dde4eb9",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:15:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01c617dd_ba52fcba",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "5398bc6ab4f60043853a829b62b030b61d7cf35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf5b9bcb_29d0f9aa",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-19T19:29:38Z",
       "side": 1,
       "message": "`Adapter rating` maybe? ARTG is not a very informative message for those just reading the console",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "5398bc6ab4f60043853a829b62b030b61d7cf35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c3a4f77_f93ac387",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:15:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf5b9bcb_29d0f9aa",
       "range": {
         "startLine": 46,
         "startChar": 10,
