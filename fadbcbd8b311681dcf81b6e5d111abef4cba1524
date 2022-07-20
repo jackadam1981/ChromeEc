@@ -49,6 +49,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5cdb631_62ce4e2e",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-07-20T02:42:34Z",
+      "side": 1,
+      "message": "From my experiment, this function can not distinguish the RO image and RW image",
+      "parentUuid": "447c9346_740662fa",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "590122b1_195cf345",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-07-20T02:42:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "037da227_80b47485",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82b1313f_6f1e5c46",
         "filename": "board/banshee/board.c",
         "patchSetId": 6
@@ -60,6 +108,24 @@
       "writtenOn": "2022-07-19T22:00:09Z",
       "side": 1,
       "message": "Can you please try adding the following condition here\n```\nif (!gpio_get_level(GPIO_EC_KSO_05_INV))\n```\n\nIt will ensure that the additional 500ms added only when KSO5 is held LOW. In the non-recovery boot EC should not be delayed. This should help passing the boottime test too.",
+      "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53e669a_db3d3950",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-07-20T02:42:34Z",
+      "side": 1,
+      "message": "This condition is true when EC jumps to RW, so EC still runs the udelay at the RW image.",
+      "parentUuid": "82b1313f_6f1e5c46",
       "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
