@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da5a1112_5f873740",
+        "filename": "zephyr/projects/brya/i2c.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-20T17:14:27Z",
+      "side": 1,
+      "message": "This looks great.",
+      "parentUuid": "a589157c_03f0498b",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "11827822043af6be2f3cbc00ebf88f025fb51631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3291c8ee_91d86d3e",
         "filename": "zephyr/shim/include/i2c/i2c.h",
         "patchSetId": 3
