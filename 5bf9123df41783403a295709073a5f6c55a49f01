@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb6299a_891730a5",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-20T20:20:21Z",
+      "side": 1,
+      "message": "If the user doesn\u0027t pick a multiple of HOOK_TICK_INTERVAL_MS, the code will just round up correct?  Should we have a build time check for this?",
+      "range": {
+        "startLine": 94,
+        "startChar": 35,
+        "endLine": 95,
+        "endChar": 39
+      },
+      "revId": "5bf9123df41783403a295709073a5f6c55a49f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
