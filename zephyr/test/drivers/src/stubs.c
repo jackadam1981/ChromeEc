@@ -30,6 +30,7 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(stubs);
 
+/* Testing CL */
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
