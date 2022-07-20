@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa8b11fb_bd461ae1",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:17:16Z",
+      "side": 1,
+      "message": "Infact, these wont be called if config is not enabled.",
+      "parentUuid": "3bba5a65_39ede0b0",
+      "revId": "9ec10dfe3a5d60ed8ca89cac19a25d22f6dc6461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ccd9239_7ce000f7",
         "filename": "driver/battery/smart.c",
         "patchSetId": 6
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-19T19:33:03Z",
       "side": 1,
       "message": "nit: space after `,`",
+      "range": {
+        "startLine": 380,
+        "startChar": 16,
+        "endLine": 380,
+        "endChar": 20
+      },
+      "revId": "9ec10dfe3a5d60ed8ca89cac19a25d22f6dc6461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a7aa9b_6ea6d6c9",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ccd9239_7ce000f7",
       "range": {
         "startLine": 380,
         "startChar": 16,
@@ -54,6 +96,30 @@
       "writtenOn": "2022-07-19T19:33:03Z",
       "side": 1,
       "message": "should we check the return values of sb_read() calls?",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 33
+      },
+      "revId": "9ec10dfe3a5d60ed8ca89cac19a25d22f6dc6461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26344f50_918c0c45",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:17:16Z",
+      "side": 1,
+      "message": "didnot add, as there seems no check for the read pass check in other already existing functions in this file.",
+      "parentUuid": "49389b2c_57c1cce7",
       "range": {
         "startLine": 383,
         "startChar": 0,
