@@ -45,13 +45,13 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /* USB Mux */
-static int goroh_usb_c0_init_mux(const struct usb_mux *me)
+static int goroh_usb_c0_init_mux(const struct usb_mux *me, int port)
 {
-	return virtual_usb_mux_driver.init(me);
+	return virtual_usb_mux_driver.init(me, port);
 }
 
-static int goroh_usb_c0_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-				bool *ack_required)
+static int goroh_usb_c0_set_mux(const struct usb_mux *me, int port,
+				mux_state_t mux_state, bool *ack_required)
 {
 	/*
 	 * b/188376636: Inverse C0 polarity.
@@ -61,13 +61,13 @@ static int goroh_usb_c0_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	 */
 	mux_state = mux_state ^ USB_PD_MUX_POLARITY_INVERTED;
 
-	return virtual_usb_mux_driver.set(me, mux_state, ack_required);
+	return virtual_usb_mux_driver.set(me, port, mux_state, ack_required);
 }
 
-static int goroh_usb_c0_get_mux(const struct usb_mux *me,
+static int goroh_usb_c0_get_mux(const struct usb_mux *me, int port,
 				mux_state_t *mux_state)
 {
-	return virtual_usb_mux_driver.get(me, mux_state);
+	return virtual_usb_mux_driver.get(me, port, mux_state);
 }
 
 static struct usb_mux_driver goroh_usb_c0_mux_driver = {
@@ -76,25 +76,29 @@ static struct usb_mux_driver goroh_usb_c0_mux_driver = {
 	.get = goroh_usb_c0_get_mux,
 };
 
-static const struct usb_mux goroh_usb_c1_ps8818_retimer = {
-	.usb_port = USBC_PORT_C1,
-	.i2c_port = I2C_PORT_USB_C1,
-	.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
-	.driver = &ps8818_usb_retimer_driver,
-	.next_mux = NULL,
+static const struct usb_mux_chain goroh_usb_c1_ps8818_retimer = {
+	.mux =
+		&(const struct usb_mux){
+			.i2c_port = I2C_PORT_USB_C1,
+			.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
+			.driver = &ps8818_usb_retimer_driver,
+		},
+	.next = NULL,
 };
 
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.driver = &goroh_usb_c0_mux_driver,
-		.hpd_update = &virtual_hpd_update,
+		.mux = &(const struct usb_mux) {
+			.driver = &goroh_usb_c0_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
 	},
 	[USBC_PORT_C1] = {
-		.usb_port = USBC_PORT_C1,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-		.next_mux = &goroh_usb_c1_ps8818_retimer,
+		.mux = &(const struct usb_mux) {
+			.driver = &virtual_usb_mux_driver,
+			.hpd_update = &virtual_hpd_update,
+		},
+		.next = &goroh_usb_c1_ps8818_retimer,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
