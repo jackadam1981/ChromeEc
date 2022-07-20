@@ -1,0 +1,17 @@
+# Copyright 2022 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: USB-C muxes chain
+
+compatible: "cros-ec,usb-mux-chain"
+
+properties:
+  usb-muxes:
+    type: phandles
+    required: true
+    description: |
+      List of USB-C muxes and retimers for the USB-C port. The USB-C subsystem
+      traverses this list in the order specified. The phandles are references to
+      cros-ec,usbc-mux nodes. All muxes has to be children of the same USB-C
+      port.
