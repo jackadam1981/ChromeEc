@@ -51,6 +51,24 @@
       "message": "Do you repo upload with `--no-verify`?",
       "revId": "496f9d6db399e943c3e66d544dd6e5f7f6be3bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5cda3c3_b129fb0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-07-20T03:25:31Z",
+      "side": 1,
+      "message": "Sorry, I used \u0027git push\u0027.\nAlready change to use \u0027repo upload\u0027.\nCould you review again? Thanks.",
+      "parentUuid": "e5683f27_9a64f672",
+      "revId": "496f9d6db399e943c3e66d544dd6e5f7f6be3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
