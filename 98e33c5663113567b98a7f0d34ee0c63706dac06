@@ -105,6 +105,24 @@
       "message": "Let me try CQ again.",
       "revId": "98e33c5663113567b98a7f0d34ee0c63706dac06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a7087e_1db05f7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-07-20T15:38:53Z",
+      "side": 1,
+      "message": "Ah.. i forgot to cros-workon start the chromeos-ec when using the firmware branch source code...",
+      "parentUuid": "560879b2_c40e5371",
+      "revId": "98e33c5663113567b98a7f0d34ee0c63706dac06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
