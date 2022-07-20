@@ -68,12 +68,11 @@ int ppc_get_alert_status(int port)
 #define USB_PD_PORT_ITE_0 0
 #define USB_PD_PORT_ITE_1 1
 
-static int tune_mux(const struct usb_mux *me);
+static int tune_mux(const struct usb_mux *me, int port);
 
 const struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		/* Use PS8751 as mux only */
-		.usb_port = USB_PD_PORT_ITE_0,
 		.i2c_port = I2C_PORT_USBC0,
 		.i2c_addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		.flags = USB_MUX_FLAG_NOT_TCPC,
@@ -83,7 +82,6 @@ const struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 	[USB_PD_PORT_ITE_1] = {
 		/* Use PS8751 as mux only */
-		.usb_port = USB_PD_PORT_ITE_1,
 		.i2c_port = I2C_PORT_USBC1,
 		.i2c_addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		.flags = USB_MUX_FLAG_NOT_TCPC,
@@ -96,13 +94,14 @@ const struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 /* Some external monitors can't display content normally (eg. ViewSonic VX2880).
  * We need to turn the mux for monitors to function normally.
  */
-static int tune_mux(const struct usb_mux *me)
+static int tune_mux(const struct usb_mux *me, int port)
 {
 	/* Auto EQ disabled, compensate for channel lost up to 3.6dB */
-	RETURN_ERROR(mux_write(me, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98));
-	/* DP output swing adjustment +15% */
 	RETURN_ERROR(
-		mux_write(me, PS8XXX_REG_MUX_DP_OUTPUT_CONFIGURATION, 0xc0));
+		mux_write(me, port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98));
+	/* DP output swing adjustment +15% */
+	RETURN_ERROR(mux_write(me, port, PS8XXX_REG_MUX_DP_OUTPUT_CONFIGURATION,
+			       0xc0));
 
 	return EC_SUCCESS;
 }
