@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f1a5846_dd1c5c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T05:20:10Z",
+      "side": 1,
+      "message": "While I was toying around with the possibility of creating our own package I messed with the build files enough to realize that my initial hopes of having each suite in a library cannot work under the current build configuration. This change drastically simplifies the build rules while keeping the same modularity. This should make it much easier for people to mirror during fix-it. Note that I also found a lot of include_directories for directories that didn\u0027t exist as a side-effect of people just copy-pasting",
+      "revId": "7c651b4acbf0ca273a33ed59c12c0397bdfcfd1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
