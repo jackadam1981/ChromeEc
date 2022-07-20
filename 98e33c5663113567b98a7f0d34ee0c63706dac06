@@ -34,6 +34,24 @@
       "parentUuid": "81377db3_b21b50da",
       "revId": "98e33c5663113567b98a7f0d34ee0c63706dac06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fac10b71_79d902e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-20T00:05:01Z",
+      "side": 1,
+      "message": "my local build is failing with:\n[brya] $ make V\u003d1\n...\nZEPHYR_BASE\u003d/mnt/host/source/src/third_party/zephyr/main ./util/kconfig_check.py -c build/brya/.config -a util/config_allowed.txt -p PLATFORM_EC_ -s zephyr/ -I /mnt/host/source/src/third_party/zephyr/main -i AUDIO_CODEC -i DAC -i DMA -i EEPROM -i I2C_BITBANG -i INA219 -i PECI -i PS2 -i SPI -i UART_CONSOLE check\nTypeError: __init__() got an unexpected keyword argument \u0027search_paths\u0027\nmake: *** [Makefile.rules:278: notice] Error 1\n\ncould you check if you\u0027re also getting this failure?",
+      "parentUuid": "d0e08dbc_edd65720",
+      "revId": "98e33c5663113567b98a7f0d34ee0c63706dac06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
