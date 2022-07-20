@@ -275,15 +275,14 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-static int ps8751_tune_mux(const struct usb_mux *me)
+static int ps8751_tune_mux(const struct usb_mux *me, int port)
 {
 	/* 0x98 sets lower EQ of DP port (3.6db) */
-	mux_write(me, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
+	mux_write(me, port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 	return EC_SUCCESS;
 }
 
 struct usb_mux usb_mux_ps8751 = {
-	.usb_port = USB_PD_PORT_PS8751,
 	.driver = &tcpci_tcpm_usb_mux_driver,
 	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 };
@@ -294,7 +293,6 @@ struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 	[USB_PD_PORT_ANX7447] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_ANX7447,
 			.driver = &anx7447_usb_mux_driver,
 			.hpd_update = &anx7447_tcpc_update_hpd_status,
 		},
