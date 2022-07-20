@@ -52,7 +52,7 @@ void set_bb_retimer_usb3_state(bool enable)
 		mux_state = usb_mux_get(i);
 
 		if ((mux_state & USB_PD_MUX_USB_ENABLED)) {
-			bb_retimer_set_usb3(mux, enable);
+			bb_retimer_set_usb3(mux, i, enable);
 		}
 	}
 }

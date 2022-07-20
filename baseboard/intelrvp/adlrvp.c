@@ -94,7 +94,6 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /* USB-C retimer Configuration */
 struct usb_mux bb_retimer0_usb_mux = {
-	.usb_port = TYPE_C_PORT_0,
 	.driver = &bb_usb_retimer,
 	.hpd_update = bb_retimer_hpd_update,
 	.i2c_port = I2C_PORT_TYPEC_0,
@@ -103,14 +102,12 @@ struct usb_mux bb_retimer0_usb_mux = {
 struct usb_mux_chain usbc0_tcss_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = TYPE_C_PORT_0,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
 };
 #if defined(HAS_TASK_PD_C1)
 struct usb_mux bb_retimer1_usb_mux = {
-	.usb_port = TYPE_C_PORT_1,
 	.driver = &bb_usb_retimer,
 	.hpd_update = bb_retimer_hpd_update,
 	.i2c_port = I2C_PORT_TYPEC_1,
@@ -119,7 +116,6 @@ struct usb_mux bb_retimer1_usb_mux = {
 struct usb_mux_chain usbc1_tcss_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = TYPE_C_PORT_1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -127,7 +123,6 @@ struct usb_mux_chain usbc1_tcss_usb_mux = {
 #endif
 #if defined(HAS_TASK_PD_C2)
 struct usb_mux bb_retimer2_usb_mux = {
-	.usb_port = TYPE_C_PORT_2,
 	.driver = &bb_usb_retimer,
 	.hpd_update = bb_retimer_hpd_update,
 	.i2c_port = I2C_PORT_TYPEC_2,
@@ -136,7 +131,6 @@ struct usb_mux bb_retimer2_usb_mux = {
 struct usb_mux_chain usbc2_tcss_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = TYPE_C_PORT_2,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -146,7 +140,6 @@ struct usb_mux_chain usbc2_tcss_usb_mux = {
 struct usb_mux_chain usbc3_tcss_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = TYPE_C_PORT_3,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -174,7 +167,6 @@ struct usb_mux_chain usb_muxes[] = {
 #if defined(HAS_TASK_PD_C3)
 	[TYPE_C_PORT_3] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = TYPE_C_PORT_3,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_TYPEC_3,
@@ -190,7 +182,6 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 struct usb_mux_chain soc_side_bb_retimer0_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = TYPE_C_PORT_0,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_TYPEC_0,
@@ -203,7 +194,6 @@ struct usb_mux_chain soc_side_bb_retimer0_usb_mux = {
 struct usb_mux_chain soc_side_bb_retimer1_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = TYPE_C_PORT_1,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_TYPEC_1,
@@ -292,7 +282,8 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	ioex_set_level(oc_signal, is_overcurrented ? 0 : 1);
 }
 
-__override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
+__override int bb_retimer_power_enable(const struct usb_mux *me, int port,
+				       bool enable)
 {
 	/*
 	 * ADL-P-DDR5 RVP SKU has cascaded retimer topology.
@@ -300,14 +291,14 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	 * hence no need to set the power state again if the 1st retimer's power
 	 * status has already changed.
 	 */
-	if (cache_bb_enable[me->usb_port] == enable)
+	if (cache_bb_enable[port] == enable)
 		return EC_SUCCESS;
 
-	cache_bb_enable[me->usb_port] = enable;
+	cache_bb_enable[port] = enable;
 
 	/* Handle retimer's power domain.*/
 	if (enable) {
-		ioex_set_level(bb_controls[me->usb_port].usb_ls_en_gpio, 1);
+		ioex_set_level(bb_controls[port].usb_ls_en_gpio, 1);
 
 		/*
 		 * minimum time from VCC to RESET_N de-assertion is 100us
@@ -316,7 +307,7 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		 * this function.
 		 */
 		msleep(1);
-		ioex_set_level(bb_controls[me->usb_port].retimer_rst_gpio, 1);
+		ioex_set_level(bb_controls[port].retimer_rst_gpio, 1);
 
 		/*
 		 * Allow 1ms time for the retimer to power up lc_domain
@@ -325,9 +316,9 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		msleep(1);
 
 	} else {
-		ioex_set_level(bb_controls[me->usb_port].retimer_rst_gpio, 0);
+		ioex_set_level(bb_controls[port].retimer_rst_gpio, 0);
 		msleep(1);
-		ioex_set_level(bb_controls[me->usb_port].usb_ls_en_gpio, 0);
+		ioex_set_level(bb_controls[port].usb_ls_en_gpio, 0);
 	}
 	return EC_SUCCESS;
 }

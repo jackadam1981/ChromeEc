@@ -89,7 +89,6 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 static const struct usb_mux_chain usbc1_usb3_db_retimer = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &tcpci_tcpm_usb_mux_driver,
 			.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		},
@@ -98,7 +97,6 @@ static const struct usb_mux_chain usbc1_usb3_db_retimer = {
 struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C2] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C2,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -106,7 +104,6 @@ struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C1] = {
 		.mux = &(const struct usb_mux) {
 			/* PS8815 DB */
-			.usb_port = USBC_PORT_C1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -164,13 +161,14 @@ void config_usb_db_type(void)
 	CPRINTS("Configured USB DB type number is %d", db_type);
 }
 
-__override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
+__override int bb_retimer_power_enable(const struct usb_mux *me, int port,
+				       bool enable)
 {
 	int rst_signal;
 
-	if (me->usb_port == USBC_PORT_C1)
+	if (port == USBC_PORT_C1)
 		rst_signal = IOEX_USB_C1_RT_RST_ODL;
-	else if (me->usb_port == USBC_PORT_C2)
+	else if (port == USBC_PORT_C2)
 		rst_signal = IOEX_USB_C2_RT_RST_ODL;
 	else
 		return EC_ERROR_INVAL;
