@@ -166,6 +166,30 @@
       },
       "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500409ec_368581f3",
+        "filename": "zephyr/test/math/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T06:06:23Z",
+      "side": 1,
+      "message": "I tried this locally without this and it fails, Odd that setting DTS_ROOT doesn\u0027t solve the issue, I would have thought that it would find the overlay",
+      "parentUuid": "d8ee4e53_b9d4a098",
+      "range": {
+        "startLine": 5,
+        "startChar": 5,
+        "endLine": 5,
+        "endChar": 83
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
