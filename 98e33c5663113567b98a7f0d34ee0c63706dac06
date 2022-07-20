@@ -123,6 +123,23 @@
       "parentUuid": "560879b2_c40e5371",
       "revId": "98e33c5663113567b98a7f0d34ee0c63706dac06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02782783_f82f8963",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-20T22:43:06Z",
+      "side": 1,
+      "message": "same issue... \n\nchromeos-ec-0.0.2-r11968:   CHECK_ALLOWED build/adlrvpm_ite/.config\nchromeos-ec-0.0.2-r11968: WARNING: kconfiglib failed\nchromeos-ec-0.0.2-r11968: Traceback (most recent call last):\nchromeos-ec-0.0.2-r11968: kconfiglib.KconfigError: emul/tcpc/Kconfig:20: \u0027subsys/logging/Kconfig.template.log_config\u0027 not found (in \u0027source \"subsys/logging/Kconfig.template.log_config\"\u0027). Check that environment variables are set correctly (e.g. $srctree, which is set to \u0027zephyr/\u0027). Also note that unset environment variables expand to the empty string.\nchromeos-ec-0.0.2-r11968: Error:\tThe EC is in the process of migrating to Zephyr.\nchromeos-ec-0.0.2-r11968: \tZephyr uses Kconfig for configuration rather than ad-hoc #defines.\nchromeos-ec-0.0.2-r11968: \tAny new EC CONFIG options must ALSO be added to Zephyr so that new\nchromeos-ec-0.0.2-r11968: \tfunctionality is available in Zephyr also. The following new ad-hoc\nchromeos-ec-0.0.2-r11968: \tCONFIG options were detected:\nchromeos-ec-0.0.2-r11968: \nchromeos-ec-0.0.2-r11968: CONFIG_I2C_BITBANG\nchromeos-ec-0.0.2-r11968: \nchromeos-ec-0.0.2-r11968: Please add these via Kconfig instead. Find a suitable Kconfig\nchromeos-ec-0.0.2-r11968: file in zephyr/ and add a \u0027config\u0027 or \u0027menuconfig\u0027 option.\nchromeos-ec-0.0.2-r11968: Also see details in http://issuetracker.google.com/181253613\nchromeos-ec-0.0.2-r11968: \nchromeos-ec-0.0.2-r11968: To temporarily disable this, use: ALLOW_CONFIG\u003d1 make ...\n",
+      "revId": "98e33c5663113567b98a7f0d34ee0c63706dac06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
