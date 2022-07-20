@@ -111,14 +111,14 @@ const enum gpio_signal hibernate_wake_pins[] = {
 
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
-static void it83xx_tcpc_update_hpd_status(const struct usb_mux *me,
+static void it83xx_tcpc_update_hpd_status(const struct usb_mux *me, int port,
 					  mux_state_t mux_state,
 					  bool *ack_required)
 {
 	int hpd_lvl = (mux_state & USB_PD_MUX_HPD_LVL) ? 1 : 0;
 	int hpd_irq = (mux_state & USB_PD_MUX_HPD_IRQ) ? 1 : 0;
-	enum gpio_signal gpio = me->usb_port ? GPIO_USB_C1_HPD_1P8_ODL :
-					       GPIO_USB_C0_HPD_1P8_ODL;
+	enum gpio_signal gpio = port ? GPIO_USB_C1_HPD_1P8_ODL :
+				       GPIO_USB_C0_HPD_1P8_ODL;
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -133,20 +133,24 @@ static void it83xx_tcpc_update_hpd_status(const struct usb_mux *me,
 	}
 }
 
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.usb_port = 0,
-		.i2c_port = I2C_PORT_USB_MUX,
-		.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
-		.driver = &pi3usb3x532_usb_mux_driver,
-		.hpd_update = &it83xx_tcpc_update_hpd_status,
+		.mux =
+			&(const struct usb_mux){
+				.i2c_port = I2C_PORT_USB_MUX,
+				.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
+				.driver = &pi3usb3x532_usb_mux_driver,
+				.hpd_update = &it83xx_tcpc_update_hpd_status,
+			},
 	},
 	{
-		.usb_port = 1,
-		.i2c_port = I2C_PORT_USB_MUX,
-		.i2c_addr_flags = 0x10,
-		.driver = &ps8740_usb_mux_driver,
-		.hpd_update = &it83xx_tcpc_update_hpd_status,
+		.mux =
+			&(const struct usb_mux){
+				.i2c_port = I2C_PORT_USB_MUX,
+				.i2c_addr_flags = 0x10,
+				.driver = &ps8740_usb_mux_driver,
+				.hpd_update = &it83xx_tcpc_update_hpd_status,
+			},
 	},
 };
 
