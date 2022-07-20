@@ -655,27 +655,31 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-static int ps8743_tune_mux_c0(const struct usb_mux *me);
-static int ps8743_tune_mux_c1(const struct usb_mux *me);
+static int ps8743_tune_mux_c0(const struct usb_mux *me, int port);
+static int ps8743_tune_mux_c1(const struct usb_mux *me, int port);
 
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.usb_port = 0,
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
-		.driver = &ps8743_usb_mux_driver,
-		.board_init = &ps8743_tune_mux_c0,
+		.mux =
+			&(const struct usb_mux){
+				.i2c_port = I2C_PORT_USB_C0,
+				.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
+				.driver = &ps8743_usb_mux_driver,
+				.board_init = &ps8743_tune_mux_c0,
+			},
 	},
 	{
-		.usb_port = 1,
-		.i2c_port = I2C_PORT_SUB_USB_C1,
-		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
-		.driver = &ps8743_usb_mux_driver,
-		.board_init = &ps8743_tune_mux_c1,
+		.mux =
+			&(const struct usb_mux){
+				.i2c_port = I2C_PORT_SUB_USB_C1,
+				.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
+				.driver = &ps8743_usb_mux_driver,
+				.board_init = &ps8743_tune_mux_c1,
+			},
 	}
 };
 /* USB Mux C0 : board_init of PS8743 */
-static int ps8743_tune_mux_c0(const struct usb_mux *me)
+static int ps8743_tune_mux_c0(const struct usb_mux *me, int port)
 {
 	ps8743_tune_usb_eq(me, PS8743_USB_EQ_TX_3_6_DB,
 			   PS8743_USB_EQ_RX_16_0_DB);
@@ -683,7 +687,7 @@ static int ps8743_tune_mux_c0(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 /* USB Mux C1 : board_init of PS8743 */
-static int ps8743_tune_mux_c1(const struct usb_mux *me)
+static int ps8743_tune_mux_c1(const struct usb_mux *me, int port)
 {
 	ps8743_tune_usb_eq(me, PS8743_USB_EQ_TX_3_6_DB,
 			   PS8743_USB_EQ_RX_16_0_DB);

@@ -229,7 +229,8 @@ enum tusb544_conf { USB_DP = 0, USB_DP_INV, USB, USB_INV, DP, DP_INV };
  * the EQ settings, please make sure that both configurations are correct;
  * otherwise you need to separate EQ settings then.
  */
-static int board_tusb544_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_tusb544_set(const struct usb_mux *me, int port,
+			     mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 	int reg;
@@ -317,28 +318,34 @@ static int board_tusb544_set(const struct usb_mux *me, mux_state_t mux_state)
 }
 
 /* USB Retimer */
-const struct usb_mux usbc1_retimer = {
-	.usb_port = 1,
-	.i2c_port = I2C_PORT_SUB_USB_C1,
-	.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS0,
-	.driver = &tusb544_drv,
-	.board_set = &board_tusb544_set,
+const struct usb_mux_chain usbc1_retimer = {
+	.mux =
+		&(const struct usb_mux){
+			.i2c_port = I2C_PORT_SUB_USB_C1,
+			.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS0,
+			.driver = &tusb544_drv,
+			.board_set = &board_tusb544_set,
+		},
 };
 
 /* USB Muxes */
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.usb_port = 0,
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
-		.driver = &it5205_usb_mux_driver,
+		.mux =
+			&(const struct usb_mux){
+				.i2c_port = I2C_PORT_USB_C0,
+				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
+				.driver = &it5205_usb_mux_driver,
+			},
 	},
 	{
-		.usb_port = 1,
-		.i2c_port = I2C_PORT_SUB_USB_C1,
-		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
-		.driver = &it5205_usb_mux_driver,
-		.next_mux = &usbc1_retimer,
+		.mux =
+			&(const struct usb_mux){
+				.i2c_port = I2C_PORT_SUB_USB_C1,
+				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
+				.driver = &it5205_usb_mux_driver,
+			},
+		.next = &usbc1_retimer,
 	},
 };
 
