@@ -470,9 +470,7 @@ def power(board_config: BoardConfig, power_on: bool) -> None:
         board_config.servo_power_enable + ":" + state,
     ]
     logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(
-        cmd
-    ).check_returncode()  # pylint: disable=subprocess-run-check
+    subprocess.run(cmd, check=False).check_returncode()
 
 
 def hw_write_protect(enable: bool) -> None:
@@ -487,9 +485,7 @@ def hw_write_protect(enable: bool) -> None:
         "fw_wp_state:" + state,
     ]
     logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(
-        cmd
-    ).check_returncode()  # pylint: disable=subprocess-run-check
+    subprocess.run(cmd, check=False).check_returncode()
 
 
 def build(test_name: str, board_name: str, compiler: str) -> None:
@@ -506,9 +502,7 @@ def build(test_name: str, board_name: str, compiler: str) -> None:
     ]
 
     logging.debug('Running command: "%s"', " ".join(cmd))
-    subprocess.run(
-        cmd
-    ).check_returncode()  # pylint: disable=subprocess-run-check
+    subprocess.run(cmd, check=False).check_returncode()
 
 
 def flash(
@@ -536,9 +530,7 @@ def flash(
         ]
     )
     logging.debug('Running command: "%s"', " ".join(cmd))
-    completed_process = subprocess.run(
-        cmd
-    )  # pylint: disable=subprocess-run-check
+    completed_process = subprocess.run(cmd, check=False)
     return completed_process.returncode == 0
 
 
