@@ -1,0 +1,154 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c031f3_a8a99fe6",
+        "filename": "twister",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T04:12:48Z",
+      "side": 1,
+      "message": "nit: add newline at end of file",
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe914e2f_66055e8b",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T04:12:48Z",
+      "side": 1,
+      "message": "Can you file a bug to support it and link here using \u0027b/\\d+\u0027 format?\n\nI played around with this and I believe that you can just default cros_checkout to:\n\n```\nPath(__file__).resolve().parent.parent\n```",
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26036977_633eec9c",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T04:12:48Z",
+      "side": 1,
+      "message": "Can we just iterate over `cros_checkout/src/third_party/zephyr/*`? We might have more modules there, but they shouldn\u0027t affect the compile if their Kconfigs aren\u0027t enabled.",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 68
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f37f9b_d750d90f",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T04:12:48Z",
+      "side": 1,
+      "message": "ec_base",
+      "range": {
+        "startLine": 55,
+        "startChar": 34,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ec48fc_fa7bb490",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T04:12:48Z",
+      "side": 1,
+      "message": "\u003e \"undesireable\" is a possible misspelling of \"undesirable\".\n\nPlease fix.",
+      "parentUuid": "5d44e6fd_bb88fa9f",
+      "range": {
+        "startLine": 71,
+        "startChar": 49,
+        "endLine": 71,
+        "endChar": 61
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f059f17_37979d94",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T04:12:48Z",
+      "side": 1,
+      "message": "Maybe only print this if user passed -v?",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ee4e53_b9d4a098",
+        "filename": "zephyr/test/math/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-20T04:12:48Z",
+      "side": 1,
+      "message": "Do we really need this? I\u0027m surprised it doesn\u0027t find the native_posix board overlay",
+      "range": {
+        "startLine": 5,
+        "startChar": 5,
+        "endLine": 5,
+        "endChar": 83
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
