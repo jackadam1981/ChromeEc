@@ -24,10 +24,6 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(ln9310_emul, CONFIG_LN9310_EMUL_LOG_LEVEL);
 
-#define LN9310_DATA_FROM_I2C_EMUL(_emul)                                     \
-	CONTAINER_OF(CONTAINER_OF(_emul, struct i2c_common_emul_data, emul), \
-		     struct ln9310_emul_data, common)
-
 enum functional_mode {
 	/* TODO shutdown_mode, */
 	/* TODO bypass, */
@@ -251,20 +247,20 @@ enum battery_cell_type board_get_battery_cell_type(void)
 	return data->battery_cell_type;
 }
 
-static int ln9310_emul_start_write(struct i2c_emul *emul, int reg)
+static int ln9310_emul_start_write(const struct emul *emul, int reg)
 {
 	return 0;
 }
 
-static int ln9310_emul_finish_write(struct i2c_emul *emul, int reg, int bytes)
+static int ln9310_emul_finish_write(const struct emul *emul, int reg, int bytes)
 {
 	return 0;
 }
 
-static int ln9310_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
+static int ln9310_emul_write_byte(const struct emul *emul, int reg, uint8_t val,
 				  int bytes)
 {
-	struct ln9310_emul_data *data = LN9310_DATA_FROM_I2C_EMUL(emul);
+	struct ln9310_emul_data *data = emul->data;
 
 	__ASSERT(bytes == 1, "bytes 0x%x != 0x1 on reg 0x%x", bytes, reg);
 
@@ -352,14 +348,14 @@ static int ln9310_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 	return 0;
 }
 
-static int ln9310_emul_start_read(struct i2c_emul *emul, int reg)
+static int ln9310_emul_start_read(const struct emul *emul, int reg)
 {
 	return 0;
 }
 
-static int ln9310_emul_finish_read(struct i2c_emul *emul, int reg, int bytes)
+static int ln9310_emul_finish_read(const struct emul *emul, int reg, int bytes)
 {
-	struct ln9310_emul_data *data = LN9310_DATA_FROM_I2C_EMUL(emul);
+	struct ln9310_emul_data *data = emul->data;
 
 	switch (reg) {
 	case LN9310_REG_INT1:
@@ -370,10 +366,10 @@ static int ln9310_emul_finish_read(struct i2c_emul *emul, int reg, int bytes)
 	return 0;
 }
 
-static int ln9310_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
+static int ln9310_emul_read_byte(const struct emul *emul, int reg, uint8_t *val,
 				 int bytes)
 {
-	struct ln9310_emul_data *data = LN9310_DATA_FROM_I2C_EMUL(emul);
+	struct ln9310_emul_data *data = emul->data;
 
 	__ASSERT(bytes == 0, "bytes 0x%x != 0x0 on reg 0x%x", bytes, reg);
 
@@ -459,7 +455,7 @@ static int ln9310_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 	return 0;
 }
 
-static int ln9310_emul_access_reg(struct i2c_emul *emul, int reg, int bytes,
+static int ln9310_emul_access_reg(const struct emul *emul, int reg, int bytes,
 				  bool read)
 {
 	return reg;
@@ -493,9 +489,8 @@ static int emul_ln9310_init(const struct emul *emul,
 	const struct gpio_dt_spec *switchcap_on =
 		GPIO_DT_FROM_NODELABEL(gpio_switchcap_on);
 
-	data->common.emul.api = &i2c_common_emul_api;
 	data->common.emul.addr = cfg->addr;
-	data->common.emul.parent = emul;
+	data->common.emul.target = emul;
 	data->common.i2c = parent;
 	data->common.cfg = cfg;
 	i2c_common_emul_init(&data->common);
@@ -508,7 +503,7 @@ static int emul_ln9310_init(const struct emul *emul,
 
 	singleton = emul;
 
-	return i2c_emul_register(parent, emul->dev_label, &data->common.emul);
+	return 0;
 }
 
 #define LN9310_GET_GPIO_INT_PORT(n) \
@@ -541,6 +536,6 @@ static int emul_ln9310_init(const struct emul *emul,
 		.addr = DT_INST_REG_ADDR(n),                                     \
 	};                                                                       \
 	EMUL_DEFINE(emul_ln9310_init, DT_DRV_INST(n), &ln9310_emul_cfg_##n,      \
-		    &ln9310_emul_data_##n)
+		    &ln9310_emul_data_##n, &i2c_common_emul_api)
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_LN9310)
