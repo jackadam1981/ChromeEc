@@ -387,7 +387,8 @@ BUILD_ASSERT(CONFIG_IO_EXPANDER_PORT_COUNT == USBC_PORT_COUNT);
  * PS8802 set mux board tuning.
  * Adds in board specific gain and DP lane count configuration
  */
-static int board_ps8802_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_ps8802_mux_set(const struct usb_mux *me, int port,
+				mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 
@@ -425,35 +426,36 @@ static int board_ps8802_mux_set(const struct usb_mux *me, mux_state_t mux_state)
  * PS8818 set mux board tuning.
  * Adds in board specific gain and DP lane count configuration
  */
-static int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_ps8818_mux_set(const struct usb_mux *me, int port,
+				mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 
 	/* USB specific config */
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/* Boost the USB gain */
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX1EQ_10G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX2EQ_10G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX1EQ_5G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX2EQ_5G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
@@ -461,7 +463,7 @@ static int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 			return rv;
 
 		/* Set the RX input termination */
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_RX_PHY,
 					      PS8818_RX_INPUT_TERM_MASK,
 					      ZORK_PS8818_RX_INPUT_TERM);
@@ -472,7 +474,7 @@ static int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 	/* DP specific config */
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		/* Boost the DP gain */
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_DPEQ_LEVEL,
 					      PS8818_DPEQ_LEVEL_UP_MASK,
 					      PS8818_DPEQ_LEVEL_UP_19DB);
@@ -490,21 +492,18 @@ static int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 }
 
 struct usb_mux usbc1_ps8802 = {
-	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
 	.driver = &ps8802_usb_mux_driver,
 	.board_set = &board_ps8802_mux_set,
 };
 const struct usb_mux usbc1_ps8818 = {
-	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
 	.driver = &ps8818_usb_retimer_driver,
 	.board_set = &board_ps8818_mux_set,
 };
 struct usb_mux usbc1_amd_fp5_usb_mux = {
-	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_USB_AP_MUX,
 	.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
 	.driver = &amd_fp5_usb_mux_driver,
