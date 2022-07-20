@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8851b6_2db7e559",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e92983e0_381fd342",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "4c5b79a91ecb5c40315e3f89c4740b48d88abcda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a332ad9_081d10f8",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16efd843_b3a68677",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a332ad9_081d10f8",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "4c5b79a91ecb5c40315e3f89c4740b48d88abcda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "343a5fe8_da546f64",
@@ -83,6 +131,30 @@
       "writtenOn": "2022-07-19T19:36:17Z",
       "side": 1,
       "message": "nit: tabs for indents",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 193,
+        "endChar": 13
+      },
+      "revId": "4c5b79a91ecb5c40315e3f89c4740b48d88abcda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11ec258_5b7ac54f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:17:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "343a5fe8_da546f64",
       "range": {
         "startLine": 189,
         "startChar": 24,
