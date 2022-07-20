@@ -104,6 +104,24 @@
       "parentUuid": "b5bd6d56_0393ff9a",
       "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8349a6d2_fed1a0d0",
+        "filename": "zephyr/projects/nissa/pujjo/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-20T23:42:59Z",
+      "side": 1,
+      "message": "This is board-specific code, so it should be deleted because we know it will never be used. If common code depends on it, the common code should be guarded.",
+      "parentUuid": "7091b9e0_01b34938",
+      "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
