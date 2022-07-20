@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35b2207_bcaf5b74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-07-20T09:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9b1b90_d8b321c9",
+      "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aba17741_939f2f1e",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b63233_7c8c4ea0",
+        "filename": "zephyr/projects/nissa/pujjo/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-07-20T09:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba17741_939f2f1e",
+      "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5bd6d56_0393ff9a",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-07-20T09:28:33Z",
       "side": 1,
       "message": "Can this code just be removed? This and the other code that is guarded by this check.",
+      "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7091b9e0_01b34938",
+        "filename": "zephyr/projects/nissa/pujjo/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-07-20T09:45:14Z",
+      "side": 1,
+      "message": "I\u0027m afraid not.\nDue to the port1 node is deleted, some of the code that is guarded will not be defined.\nAnd the others are to guard the port1 interrupt.",
+      "parentUuid": "b5bd6d56_0393ff9a",
       "revId": "74f9c435138e5f6b71285e56cb42f8b41d76d489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
