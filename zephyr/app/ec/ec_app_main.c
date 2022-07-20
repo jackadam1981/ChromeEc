@@ -24,7 +24,6 @@
 
 #ifdef CONFIG_MEMFAULT
 #include "memfault/components.h"
-#include "memfault/ports/watchdog.h"
 
 void memfault_platform_get_device_info(sMemfaultDeviceInfo *info) {
   *info = (sMemfaultDeviceInfo) {
@@ -109,7 +108,6 @@ void ec_app_main(void)
 #ifdef CONFIG_MEMFAULT
 	memfault_build_info_dump();
 	memfault_device_info_dump();
-	memfault_software_watchdog_enable();
 #endif
 
 	/* Start the EC tasks after performing all main initialization */

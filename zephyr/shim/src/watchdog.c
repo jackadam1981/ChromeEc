@@ -13,7 +13,8 @@
 #include "watchdog.h"
 
 #ifdef CONFIG_MEMFAULT
-#include "memfault/ports/watchdog.h"
+#include "zephyr/shim/include/builtin/assert.h"
+#include "memfault/components.h"
 #endif
 
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
@@ -35,6 +36,10 @@ static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 	extern void cros_chip_wdt_handler(const struct device *wdt_dev,
 					  int channel_id);
 	cros_chip_wdt_handler(wdt_dev, channel_id);
+#endif
+
+#ifdef CONFIG_MEMFAULT
+	MEMFAULT_SOFTWARE_WATCHDOG();
 #endif
 }
 
@@ -86,9 +91,6 @@ void watchdog_reload(void)
 	if (!device_is_ready(wdt))
 		LOG_ERR("Error: device %s is not ready", wdt->name);
 
-#ifdef CONFIG_MEMFAULT
-	memfault_software_watchdog_feed();
-#endif
 	wdt_feed(wdt, 0);
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
