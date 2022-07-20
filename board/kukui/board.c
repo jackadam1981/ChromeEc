@@ -131,8 +131,8 @@ void board_set_dp_mux_control(int output_enable, int polarity)
 		gpio_set_level(GPIO_USB_C0_DP_POLARITY, polarity);
 }
 
-static void board_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
-			     bool *ack_required)
+static void board_hpd_update(const struct usb_mux *me, int port,
+			     mux_state_t mux_state, bool *ack_required)
 {
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -159,7 +159,6 @@ __override const struct rt946x_init_setting *board_rt946x_init_setting(void)
 }
 
 struct usb_mux usbc0_mux0 = {
-	.usb_port = 0,
 	.i2c_port = I2C_PORT_USB_MUX,
 	.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 	.driver = &it5205_usb_mux_driver,
