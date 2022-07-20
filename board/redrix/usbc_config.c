@@ -81,7 +81,6 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 static const struct usb_mux_chain usbc0_tcss_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C0,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -89,7 +88,6 @@ static const struct usb_mux_chain usbc0_tcss_usb_mux = {
 static const struct usb_mux_chain usbc1_tcss_usb_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -98,7 +96,6 @@ static const struct usb_mux_chain usbc1_tcss_usb_mux = {
 const struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C0,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C0_MUX,
@@ -108,7 +105,6 @@ const struct usb_mux_chain usb_muxes[] = {
 	},
 	[USBC_PORT_C1] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C1,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C1_MUX,
@@ -157,13 +153,14 @@ struct ioexpander_config_t ioex_config[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 
-__override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
+__override int bb_retimer_power_enable(const struct usb_mux *me, int port,
+				       bool enable)
 {
 	enum ioex_signal rst_signal;
 
-	if (me->usb_port == USBC_PORT_C0) {
+	if (port == USBC_PORT_C0) {
 		rst_signal = IOEX_USB_C0_RT_RST_ODL;
-	} else if (me->usb_port == USBC_PORT_C1) {
+	} else if (port == USBC_PORT_C1) {
 		rst_signal = IOEX_USB_C1_RT_RST_ODL;
 	} else {
 		return EC_ERROR_INVAL;

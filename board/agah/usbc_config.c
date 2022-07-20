@@ -116,7 +116,8 @@ const static struct ps8818_reg_val equalizer_default_table[] = {
 
 #define NUM_EQ_DEFAULT_ARRAY ARRAY_SIZE(equalizer_default_table)
 
-int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+int board_ps8818_mux_set(const struct usb_mux *me, int port,
+			 mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 	int i;
@@ -126,7 +127,7 @@ int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 		/* Boost the USB gain */
 		for (i = 0; i < NUM_EQ_DEFAULT_ARRAY; i++)
 			rv |= ps8818_i2c_field_update8(
-				me, PS8818_REG_PAGE1,
+				me, port, PS8818_REG_PAGE1,
 				equalizer_default_table[i].reg,
 				equalizer_default_table[i].mask,
 				equalizer_default_table[i].val);
@@ -135,7 +136,7 @@ int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 	/* DP specific config */
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		/* Boost the DP gain */
-		rv |= ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv |= ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					       PS8818_REG1_DPEQ_LEVEL,
 					       PS8818_DPEQ_LEVEL_UP_MASK,
 					       PS8818_DPEQ_LEVEL_UP_19DB);
@@ -147,7 +148,6 @@ int board_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 const static struct usb_mux_chain usbc2_ps8818 = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C2,
 			.i2c_port = I2C_PORT_USB_C2_TCPC,
 			.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
 			.driver = &ps8818_usb_retimer_driver,
@@ -159,14 +159,12 @@ const static struct usb_mux_chain usbc2_ps8818 = {
 const struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C0,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
 	},
 	[USBC_PORT_C2] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USBC_PORT_C2,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
