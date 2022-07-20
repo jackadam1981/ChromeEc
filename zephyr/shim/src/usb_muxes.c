@@ -15,32 +15,121 @@
 #if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_usb_mux_chain)
 
 /**
- * @brief Check if @p mux_id is not part of @p chain_id or if @p chain_id USBC
- *        port is the same as @p mux_port. Result ends with && to construct
- *        logical expression using FOREACH macro.
+ * @brief Assert if two ports are different
  *
- * @param chain_id Chain DTS node ID
- * @param mux_id USB mux node ID
- * @param mux_port Port which should be associated with @p mux_id
+ * @param mux1 First USB mux DTS node
+ * @param mux1 Second USB mux DTS node
  */
-#define USB_MUX_NOT_IN_CHAIN_OR_PORT_EQ(chain_id, mux_id, mux_port) \
-	((USB_MUX_FIND_PORT(chain_id, mux_id)(-1)) == -1 ||         \
-	 USBC_PORT(chain_id) == mux_port) &&
+#define USB_MUX_BUILD_ASSERT_SAME_MUXES(mux1, mux2)                \
+	COND_CODE_1(IS_EMPTY(mux1), (),                            \
+		    (BUILD_ASSERT(!DT_SAME_NODE(mux1, mux2), #mux2 \
+				  " present in chains from different ports")))
 
 /**
- * @brief Check if all chains that contains @p mux_id have the same USB-C port
+ * @brief Compare @p idx mux from @p chain_id with each elemnt of @p mux_list
  *
- * @param mux_id USB mux node ID
- * @param unused_conf Unused argument required by USB_MUX_FOREACH_MUX()
+ * @param chain_id Chain DTS node ID
+ * @param unused2 This argument is expected by DT_FOREACH_PROP_ELEM_VARGS
+ * @param idx Position of USB mux in chain
+ * @param mux_list List of muxes enclosed in parentheses
  */
-#define USB_MUX_CHECK_ALL_PORTS_ARE_SAME(mux_id, unused_conf)                \
-	BUILD_ASSERT(                                                        \
-		USB_MUX_FOREACH_CHAIN_VARGS(USB_MUX_NOT_IN_CHAIN_OR_PORT_EQ, \
-					    mux_id, USB_MUX_PORT(mux_id)) 1, \
-		"USB mux  " #mux_id " is in chains for different ports");
+#define USB_MUX_COMPARE_MUX_WITH_LIST(chain_id, unused2, idx, mux_list) \
+	FOR_EACH_FIXED_ARG(USB_MUX_BUILD_ASSERT_SAME_MUXES, (;),        \
+			   USB_MUX_GET_CHAIN_N(chain_id, idx),          \
+			   __DEBRACKET mux_list)
 
-/** Check if for every mux, chains where mux is present have the same port */
-USB_MUX_FOREACH_MUX(USB_MUX_CHECK_ALL_PORTS_ARE_SAME)
+/**
+ * @brief Get @p idx mux from @p chain_id and append comma
+ *
+ * @param chain_id Chain DTS node ID
+ * @param unused2 This argument is expected by DT_FOREACH_PROP_ELEM_VARGS
+ * @param idx Position of USB mux in chain
+ * @param unused4 This argument is expected by DT_FOREACH_PROP_ELEM_VARGS
+ */
+#define USB_MUX_GET_MUX_WITH_COMMA(chain_id, unused2, idx, unused4) \
+	USB_MUX_GET_CHAIN_N(chain_id, idx),
+
+/**
+ * @brief Filter only DTS nodes that are USB mux chains. On each mux on the
+ *        @p chain_id perform @p op
+ *
+ * @param chain_id Potential chain DTS node ID
+ * @param op Operation to perform on each mux. Take chain_id, usb_muxes,
+ *           mux_idx, ... as arguments
+ * @param ... Arguments to pass to the @p op operation
+ */
+#define USB_MUX_ONLY_CHAIN_CHILD(chain_id, op, ...)                      \
+	COND_CODE_1(DT_NODE_HAS_COMPAT(chain_id, cros_ec_usb_mux_chain), \
+		    (DT_FOREACH_PROP_ELEM_VARGS(chain_id, usb_muxes, op, \
+						__VA_ARGS__)),           \
+		    ())
+
+/**
+ * @brief Perform operation @p op on each mux that is present in chains on port
+ *        @port_id
+ *
+ * @param port_id Named usbc port node ID
+ * @param op Operation to perform on each mux. Take chain_id, usb_muxes,
+ *           mux_idx, ... as arguments
+ * @param ... Arguments to pass to the @p op operation
+ */
+#define USB_MUX_FOREACH_MUX_IN_PORT(port_id, op, ...)                 \
+	DT_FOREACH_CHILD_VARGS(port_id, USB_MUX_ONLY_CHAIN_CHILD, op, \
+			       __VA_ARGS__)
+
+/**
+ * @brief Get list of muxes present in chains on port @p inst
+ *
+ * @param inst Named usbc port instance number
+ * @param unused2 Unused argument to satisfy LISTIFY API
+ */
+#define USB_MUX_GET_MUX_LIST_FROM_PORT(inst, unused2)  \
+	USB_MUX_FOREACH_MUX_IN_PORT(DT_DRV_INST(inst), \
+				    USB_MUX_GET_MUX_WITH_COMMA, EMPTY)
+
+/**
+ * @brief Get all muxes from all chains on named usbc port instances lower than
+ *        @p inst
+ *
+ * Example:
+ *     USB_MUX_GET_MUX_LIST_FROM_PORT(0, EMPTY)
+ *     USB_MUX_GET_MUX_LIST_FROM_PORT(1, EMPTY)
+ *     ...
+ *     USB_MUX_GET_MUX_LIST_FROM_PORT(inst - 1, EMPTY)
+ *     EMPTY
+ *
+ * @param inst Named usbc port instance number
+ */
+#define USB_MUX_GET_MUXES_FOR_PORT_LESS_THAN(inst) \
+	LISTIFY(inst, USB_MUX_GET_MUX_LIST_FROM_PORT, (), EMPTY) EMPTY
+
+/**
+ * @brief Check that muxes on port @p inst don't exist on ports with instance
+ *        number lower than @p inst
+ *
+ * @param inst Named usbc port instance number to check
+ */
+#define USB_MUX_CHECK_MUXES_ON_PORT_INST(inst)                    \
+	USB_MUX_FOREACH_MUX_IN_PORT(                              \
+		DT_DRV_INST(inst), USB_MUX_COMPARE_MUX_WITH_LIST, \
+		(USB_MUX_GET_MUXES_FOR_PORT_LESS_THAN(inst)))
+
+/*
+ * Use DT_DRV_COMPAT to make DT_INST_FOREACH_STATUS_OKAY work. This method of
+ * of getting all named usbc port instance is used, because
+ * USB_MUX_CHECK_MUXES_ON_PORT_INST already use LISTIFY and FOR_EACH_* macros
+ */
+#ifdef DT_DRV_COMPAT
+#undef DT_DRV_COMPAT
+#endif /* DT_DRV_COMPAT */
+
+#define DT_DRV_COMPAT named_usbc_port
+
+/*
+ * For each named usbc port, check if all muxes on the port are different from
+ * muxes on ports with lower instance number.
+ */
+DT_INST_FOREACH_STATUS_OKAY(USB_MUX_CHECK_MUXES_ON_PORT_INST)
 
 /**
  * Declare all usb_mux_chain structures e.g.
@@ -85,7 +174,6 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 /**
  * Define all USB muxes e.g.
  * MAYBE_CONST struct usb_mux USB_MUX_NODE_DT_N_S_usbc_S_port0_0_S_mux_0 = {
- *         .usb_port = 0,
  *         .board_init = NULL,
  *         .board_set = NULL,
  *         .flags = 0,

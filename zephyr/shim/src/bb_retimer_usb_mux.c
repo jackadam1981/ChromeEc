@@ -14,8 +14,6 @@
  */
 #if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_usb_mux_chain)
 
-BB_RETIMER_CHECK_SAME_CONTROLS(BB_RETIMER_INSTANCES_LIST)
-
 /**
  * @brief bb_controls array should be constant only if configuration cannot
  *        change in runtime
@@ -23,6 +21,26 @@ BB_RETIMER_CHECK_SAME_CONTROLS(BB_RETIMER_INSTANCES_LIST)
 #define BB_CONTROLS_CONST                                                    \
 	COND_CODE_1(CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG, \
 		    (), (const))
+
+/** Define BB retimer GPIO signals for each chain */
+BB_RETIMER_DEFINE_GPIO_FOREACH_CHAIN(BB_RETIMER_RESET_GPIO)
+BB_RETIMER_DEFINE_GPIO_FOREACH_CHAIN(BB_RETIMER_LS_EN_GPIO)
+
+/**
+ * Check if for all chains, all BB retimers present on a chain has the same GPIO
+ * signal property. This is required, because bb_controls[] is defined per
+ * USBC port/chain not per BB retimer instance.
+ */
+BB_RETIMER_CHECK_GPIO_FOREACH_CHAIN(BB_RETIMER_RESET_GPIO)
+BB_RETIMER_CHECK_GPIO_FOREACH_CHAIN(BB_RETIMER_LS_EN_GPIO)
+
+/**
+ * If CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG is disabled, check
+ * that all alternative chains associated with the same USBC port, have the same
+ * GPIO configuration
+ */
+BB_RETIMER_CHECK_ALTERNATIVE_CHAIN_GPIO(BB_RETIMER_RESET_GPIO)
+BB_RETIMER_CHECK_ALTERNATIVE_CHAIN_GPIO(BB_RETIMER_RESET_GPIO)
 
 /**
  * Define bb_controls for BB retimers in USB muxes chain e.g.

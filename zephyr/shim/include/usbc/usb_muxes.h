@@ -98,15 +98,15 @@
  * @param mux_id USB mux node ID
  */
 #define USB_MUX_CB_BOARD_INIT_DECLARE(mux_id) \
-	int DT_STRING_TOKEN(mux_id, board_init)(const struct usb_mux *);
+	int DT_STRING_TOKEN(mux_id, board_init)(const struct usb_mux *, int);
 
 /**
  * @brief Declaration of USB mux board_set function
  *
  * @param mux_id USB mux node ID
  */
-#define USB_MUX_CB_BOARD_SET_DECLARE(mux_id)                           \
-	int DT_STRING_TOKEN(mux_id, board_set)(const struct usb_mux *, \
+#define USB_MUX_CB_BOARD_SET_DECLARE(mux_id)                                \
+	int DT_STRING_TOKEN(mux_id, board_set)(const struct usb_mux *, int, \
 					       mux_state_t);
 
 /**
@@ -176,7 +176,6 @@
  * @param flags_val Value that should be used instead for masked bits
  */
 #define USB_MUX_COMMON_FIELDS_WITH_FLAGS(mux_id, flags_mask, flags_val) \
-	.usb_port = USB_MUX_PORT(mux_id),                               \
 	.board_init = USB_MUX_CALLBACK_OR_NULL(mux_id, board_init),     \
 	.board_set = USB_MUX_CALLBACK_OR_NULL(mux_id, board_set),       \
 	.flags = (DT_PROP(mux_id, flags) & ~(flags_mask)) | (flags_val)
@@ -255,46 +254,8 @@
  * @param op Operation to perform on each USB mux. Should accept mux node ID and
  *           driver config as arguments.
  */
-#define USB_MUX_FOREACH_MUX_DT_VARGS(op) \
+#define USB_MUX_FOREACH_MUX(op) \
 	FOR_EACH_FIXED_ARG(USB_MUX_DRIVER_CONFIG, (), op, USB_MUX_DRIVERS)
-
-/**
- * @brief Convert @p mux_id and @p conf pair into USB_MUX_LIST entry
- *
- * @param mux_id USB mux node ID
- * @param conf Driver configuration function
- */
-#define USB_MUX_TO_LIST(mux_id, conf) , (mux_id, conf)
-
-/**
- * @brief List of all USB muxes with config matched by compatible. List is in
- *        format (mux1_id, conf1) , (mux2_id, conf2) ...
- */
-#define USB_MUX_LIST \
-	LIST_DROP_EMPTY(USB_MUX_FOREACH_MUX_DT_VARGS(USB_MUX_TO_LIST))
-
-/**
- * @brief Call @p op with @p args arguments
- *
- * @param op Operation to perform on USB mux. Should accept mux node ID and
- *           driver config as arguments.
- * @param args Arguments for @p op. Should be in format (mux_id, conf).
- */
-#define USB_MUX_CALL_OP(args, op) op args
-
-/**
- * @brief Call @p op operation for each USB mux node from USB_MUX_LIST. This is
- *        like USB_MUX_FOREACH_MUX_DT_VARGS(), except
- *        DT_FOREACH_STATUS_OKAY_VARGS() macro can be used in @p op
- *
- * @param op Operation to perform on each USB mux. Should accept mux node ID and
- *           driver config as arguments.
- */
-#define USB_MUX_FOREACH_MUX(op)                                              \
-	COND_CODE_0(                                                         \
-		IS_EMPTY(USB_MUX_LIST),                                      \
-		(FOR_EACH_FIXED_ARG(USB_MUX_CALL_OP, (), op, USB_MUX_LIST)), \
-		(EMPTY))
 
 /**
  * @brief Initialise chain structure for @p idx mux
@@ -405,54 +366,6 @@
 	DT_FOREACH_STATUS_OKAY_VARGS(cros_ec_usb_mux_chain, op, __VA_ARGS__)
 
 /**
- * @brief Construct first half of conditional expression (?:) that evaluates to
- *        @p chain_id USB port if @p idx mux in @p chain_id is the same as
- *        @p mux_id
- *
- * @param chain_id USB mux chain node ID
- * @param unused2 This argument is expected by DT_FOREACH_PROP_ELEM_VARGS
- * @param idx Position of USB mux in chain
- * @param mux_id USB mux node ID to compare with @p idx mux
- */
-#define USB_MUX_PORT_IF_SAME_NODES(chain_id, unused2, idx, mux_id) \
-	DT_SAME_NODE(mux_id, USB_MUX_GET_CHAIN_N(chain_id, idx)) ? \
-		USBC_PORT(chain_id):
-
-/**
- * @brief Compare @p mux_id with all muxes in @p chain_id
- *
- * @param chain_id USB mux chain node ID
- * @param mux_id USB mux node ID
- */
-#define USB_MUX_FIND_PORT(chain_id, mux_id)             \
-	DT_FOREACH_PROP_ELEM_VARGS(chain_id, usb_muxes, \
-				   USB_MUX_PORT_IF_SAME_NODES, mux_id)
-
-/**
- * @brief Get port for @p mux_id by looking for an usb mux chain where @p mux_id
- *        is present. If the mux is not present in any chain, this macro
- *        evaluate to -1.
- *
- * This expands to:
- *     (DT_DEP_ORD(mux_id) == DT_DEP_ORD(USB_MUX_GET_CHAIN_N(chain1_id, 0))) ?
- *         USBC_PORT(chain1_id) :
- *     (DT_DEP_ORD(mux_id) == DT_DEP_ORD(USB_MUX_GET_CHAIN_N(chain1_id, 1))) ?
- *         USBC_PORT(chain1_id) :
- *         ...
- *     (DT_DEP_ORD(mux_id) == DT_DEP_ORD(USB_MUX_GET_CHAIN_N(chain1_id, n))) ?
- *         USBC_PORT(chain1_id) :
- *     (DT_DEP_ORD(mux_id) == DT_DEP_ORD(USB_MUX_GET_CHAIN_N(chain2_id, 0))) ?
- *         USBC_PORT(chain2_id) :
- *         ...
- *     (DT_DEP_ORD(mux_id) == DT_DEP_ORD(USB_MUX_GET_CHAIN_N(chainm_id, k))) ?
- *         USBC_PORT(chainm_id) : (-1)
- *
- * @param mux_id USB mux node ID
- */
-#define USB_MUX_PORT(mux_id) \
-	(USB_MUX_FOREACH_CHAIN_VARGS(USB_MUX_FIND_PORT, mux_id)(-1))
-
-/**
  * @brief Set usb_mux_chain structure for mux @p idx in chain @p chain_id
  *
  * @param chain_id Alternative USB mux chain node ID
@@ -472,6 +385,7 @@
 		usb_muxes[USBC_PORT(chain_id)] =                               \
 			USB_MUX_CHAIN_STRUCT_SET(chain_id, 0);                 \
 		USB_MUX_FOREACH_NO_ROOT_MUX(chain_id, USB_MUX_SET_ALTERNATIVE) \
+		BB_RETIMER_ALTERNATIVE_CONFIG(chain_id)                        \
 	} while (0)
 
 /**
