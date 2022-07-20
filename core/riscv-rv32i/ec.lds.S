@@ -14,6 +14,18 @@
 #define FW_SIZE_(section) CONFIG_##section##_SIZE
 #define FW_SIZE(section) FW_SIZE_(section)
 
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+#define MTK_PRIVATE_SRAM_EXCLUDE(section) \
+	EXCLUDE_FILE( \
+	STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) \
+	STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o) \
+	) *(.##section##*)
+
+#define MTK_PRIVATE_DRAM_INCLUDE(section) \
+	STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.##section##*) \
+	STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/img*.o) (.##section##*)
+#endif
+
 OUTPUT_FORMAT(BFD_FORMAT, BFD_FORMAT, BFD_FORMAT)
 OUTPUT_ARCH(BFD_ARCH)
 ENTRY(__reset)
@@ -98,8 +110,8 @@ SECTIONS
 		OUTDIR/chip/it83xx/hwtimer.o (.rodata)
 		. = ALIGN(16);
 #endif
-#if defined(CHIP_VARIANT_MT8195_CORE1)
-		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o)) *(.text*)
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+		MTK_PRIVATE_SRAM_EXCLUDE(text)
 #else
 		*(.text*)
 #endif
@@ -251,8 +263,8 @@ SECTIONS
 
 		. = ALIGN(4);
 
-#if defined(CHIP_VARIANT_MT8195_CORE1)
-		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o)) *(.rodata*)
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+		MTK_PRIVATE_SRAM_EXCLUDE(rodata)
 #else
 		*(.rodata*)
 #endif
@@ -311,8 +323,8 @@ SECTIONS
 	.data : {
 		. = ALIGN(4);
 		__data_start = .;
-#if defined(CHIP_VARIANT_MT8195_CORE1)
-		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o)) *(.data)
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+		MTK_PRIVATE_SRAM_EXCLUDE(data)
 #else
 		*(.data)
 #endif
@@ -339,8 +351,8 @@ SECTIONS
 		*(.sbss)
 		. = ALIGN(4);
 		/* Rest of .bss takes care of its own alignment */
-#if defined(CHIP_VARIANT_MT8195_CORE1)
-		EXCLUDE_FILE (STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o)) *(.bss)
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+		MTK_PRIVATE_SRAM_EXCLUDE(bss)
 #else
 		*(.bss)
 #endif
@@ -446,8 +458,8 @@ SECTIONS
 		. = ALIGN(4);
 		KEEP(*(SORT(.dram.text.keep.*)))
 		*(SORT(.dram.text.*))
-#if defined(CHIP_VARIANT_MT8195_CORE1)
-		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.text*)
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+		MTK_PRIVATE_DRAM_INCLUDE(text)
 #endif
 		. = ALIGN(4);
 	} > DRAM
@@ -456,8 +468,8 @@ SECTIONS
 		. = ALIGN(4);
 		KEEP(*(SORT(.dram.rodata.keep.*)))
 		*(SORT(.dram.rodata.*))
-#if defined(CHIP_VARIANT_MT8195_CORE1)
-		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.rodata*)
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+		MTK_PRIVATE_DRAM_INCLUDE(rodata)
 #endif
 		. = ALIGN(4);
 	} > DRAM
@@ -470,8 +482,8 @@ SECTIONS
 		. = ALIGN(4);
 		__dram_data_start = .;
 		*(.dram.data*)
-#if defined(CHIP_VARIANT_MT8195_CORE1)
-		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.data)
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+		MTK_PRIVATE_DRAM_INCLUDE(data)
 #endif
 		. = ALIGN(4);
 		__dram_data_end = .;
@@ -494,8 +506,8 @@ SECTIONS
 		. = ALIGN(4);
 		__dram_bss_start = .;
 		*(SORT(.dram.bss*))
-#if defined(CHIP_VARIANT_MT8195_CORE1)
-		STRINGIFY(OUTDIR/private-mt-scp/board/BOARD/cam*.o) (.bss)
+#if defined(MOVE_MTK_PRIVATE_ON_DRAM)
+		MTK_PRIVATE_DRAM_INCLUDE(bss)
 #endif
 		. = ALIGN(4);
 		__dram_bss_end = .;
