@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "934801ac_b6749600",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c1e8f0_10d13253",
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87c031f3_a8a99fe6",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b9c244e_afbe2ea5",
+        "filename": "twister",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:25:30Z",
+      "side": 1,
+      "message": "This is just the symlink so I don\u0027t think I have control over what\u0027s inside it",
+      "parentUuid": "87c031f3_a8a99fe6",
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe914e2f_66055e8b",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-07-20T04:12:48Z",
       "side": 1,
       "message": "Can you file a bug to support it and link here using \u0027b/\\d+\u0027 format?\n\nI played around with this and I believe that you can just default cros_checkout to:\n\n```\nPath(__file__).resolve().parent.parent\n```",
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e92aea9_87ff2120",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:25:30Z",
+      "side": 1,
+      "message": "I will just do this now",
+      "parentUuid": "fe914e2f_66055e8b",
       "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e23bca_9a76533a",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:25:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26036977_633eec9c",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 68
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06f37f9b_d750d90f",
@@ -88,6 +166,30 @@
       "writtenOn": "2022-07-20T04:12:48Z",
       "side": 1,
       "message": "ec_base",
+      "range": {
+        "startLine": 55,
+        "startChar": 34,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6ebd47c_b3fb102c",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:25:30Z",
+      "side": 1,
+      "message": "(TOOLCHAIN_ROOT changed to zephyr_base)",
+      "parentUuid": "06f37f9b_d750d90f",
       "range": {
         "startLine": 55,
         "startChar": 34,
@@ -122,6 +224,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3202f5e9_7b1bb2aa",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:25:30Z",
+      "side": 1,
+      "message": "Weird, the pre-submit spell checker didn\u0027t catch this.",
+      "parentUuid": "f2ec48fc_fa7bb490",
+      "range": {
+        "startLine": 71,
+        "startChar": 49,
+        "endLine": 71,
+        "endChar": 61
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f059f17_37979d94",
@@ -135,6 +261,30 @@
       "writtenOn": "2022-07-20T04:12:48Z",
       "side": 1,
       "message": "Maybe only print this if user passed -v?",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0e743f_b9868ffe",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:25:30Z",
+      "side": 1,
+      "message": "Sure, I\u0027d need to intercept -v the same way as the -T flags",
+      "parentUuid": "5f059f17_37979d94",
       "range": {
         "startLine": 93,
         "startChar": 4,
@@ -182,6 +332,30 @@
       "side": 1,
       "message": "I tried this locally without this and it fails, Odd that setting DTS_ROOT doesn\u0027t solve the issue, I would have thought that it would find the overlay",
       "parentUuid": "d8ee4e53_b9d4a098",
+      "range": {
+        "startLine": 5,
+        "startChar": 5,
+        "endLine": 5,
+        "endChar": 83
+      },
+      "revId": "1d5a16f608a844e254089f749d5f7b98dd5f5094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b89d27e_67f49cce",
+        "filename": "zephyr/test/math/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:25:30Z",
+      "side": 1,
+      "message": "Fixed via https://crrev.com/c/3774888",
+      "parentUuid": "500409ec_368581f3",
       "range": {
         "startLine": 5,
         "startChar": 5,
