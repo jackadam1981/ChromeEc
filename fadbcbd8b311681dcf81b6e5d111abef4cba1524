@@ -128,6 +128,24 @@
       "parentUuid": "82b1313f_6f1e5c46",
       "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd8e500_f7a64716",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-20T19:43:52Z",
+      "side": 1,
+      "message": "If that doesn\u0027t help - lets revert the condition to \n```\nif (board_id \u003e\u003d 2) {\n```",
+      "parentUuid": "b53e669a_db3d3950",
+      "revId": "fadbcbd8b311681dcf81b6e5d111abef4cba1524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
