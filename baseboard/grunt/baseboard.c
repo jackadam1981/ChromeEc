@@ -270,12 +270,12 @@ void board_reset_pd_mcu(void)
 
 static uint32_t sku_id;
 
-static int ps8751_tune_mux(const struct usb_mux *me)
+static int ps8751_tune_mux(const struct usb_mux *me, int port)
 {
 	/* Tune USB mux registers for treeya's port 1 Rx measurement */
 	if (((sku_id >= 0xa0) && (sku_id <= 0xaf)) || sku_id == 0xbe ||
 	    sku_id == 0xbf)
-		mux_write(me, PS8XXX_REG_MUX_USB_C2SS_EQ, 0x40);
+		mux_write(me, port, PS8XXX_REG_MUX_USB_C2SS_EQ, 0x40);
 
 	return EC_SUCCESS;
 }
@@ -284,7 +284,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 #ifdef VARIANT_GRUNT_TCPC_0_ANX3429
 	[USB_PD_PORT_ANX74XX] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_ANX74XX,
 			.driver = &anx74xx_tcpm_usb_mux_driver,
 			.hpd_update = &anx74xx_tcpc_update_hpd_status,
 		},
@@ -292,7 +291,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 #elif defined(VARIANT_GRUNT_TCPC_0_ANX3447)
 	[USB_PD_PORT_ANX74XX] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_ANX74XX,
 			.driver = &anx7447_usb_mux_driver,
 			.hpd_update = &anx7447_tcpc_update_hpd_status,
 		},
@@ -300,7 +298,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 #endif
 	[USB_PD_PORT_PS8751] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_PS8751,
 			.driver = &tcpci_tcpm_usb_mux_driver,
 			.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 			.board_init = &ps8751_tune_mux,
