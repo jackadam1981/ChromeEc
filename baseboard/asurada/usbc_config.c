@@ -200,7 +200,8 @@ void usb_a0_interrupt(enum gpio_signal signal)
 		usb_charge_set_mode(i, mode, USB_ALLOW_SUSPEND_CHARGE);
 }
 
-static int board_ps8743_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_ps8743_mux_set(const struct usb_mux *me, int port,
+				mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 	int reg = 0;
@@ -230,7 +231,6 @@ static int board_ps8743_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 const struct usb_mux_chain usbc0_virtual_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = 0,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -239,7 +239,6 @@ const struct usb_mux_chain usbc0_virtual_mux = {
 const struct usb_mux_chain usbc1_virtual_mux = {
 	.mux =
 		&(const struct usb_mux){
-			.usb_port = 1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
 		},
@@ -249,7 +248,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 0,
 				.i2c_port = I2C_PORT_USB_MUX0,
 				.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 				.driver = &it5205_usb_mux_driver,
@@ -259,7 +257,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 1,
 				.i2c_port = I2C_PORT_USB_MUX1,
 				.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
 				.driver = &ps8743_usb_mux_driver,
