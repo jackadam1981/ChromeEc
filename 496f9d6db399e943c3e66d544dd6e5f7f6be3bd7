@@ -16,6 +16,41 @@
       "message": "Hi Zhuohao, can you access the failed logs link above? Because we cannot access it.",
       "revId": "496f9d6db399e943c3e66d544dd6e5f7f6be3bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb518ab_2a6fc82e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-07-20T03:03:08Z",
+      "side": 1,
+      "message": "INFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/board/moli/led.c:97:38: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#define LED_PULSE_TICK_US (10 * MSEC)\nERROR:root:                                     ^\nERROR:root:/mnt/host/source/src/platform/ec/board/moli/led.c:118:45: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#define CONFIG_TICK(interval, period, color) \\\nERROR:root:                                            ^\nERROR:root:/mnt/host/source/src/platform/ec/board/moli/led.c:119:60: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        config_tick((interval), 100 / (LED_PULSE_US / (interval)), \\\nERROR:root:                                                                  ^\nERROR:root:/mnt/host/source/src/platform/ec/board/moli/led.c:122:57: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:static void config_tick(uint32_t interval, int duty_inc,\nERROR:root:                                                        ^\nERROR:root:/mnt/host/source/src/platform/ec/board/moli/led.c:123:19: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:                                        int time_off, enum led_color color)\nERROR:root:                                                     ^\nERROR:root:/mnt/host/source/src/platform/ec/board/moli/led.c:154:48: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        next \u003d (led_pulse.duty - led_pulse.duty_inc) ? next : next + led_pulse.time_off;\nERROR:root:                                                      ^\nERROR:root:/mnt/host/source/src/platform/ec/board/moli/led.c:154:55: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        next \u003d (led_pulse.duty - led_pulse.duty_inc) ? next : next + led_pulse.time_off;\nERROR:root:                                                             ^\nbuild_api: Unhandled exception:\nTraceback (most recent call last):\n  File \"/mnt/host/source/chromite/third_party/google/protobuf/json_format.py\", line 429, in Parse\n    js \u003d json.loads(text, object_pairs_hook\u003d_DuplicateChecker)\n  File \"/usr/lib64/python3.6/json/__init__.py\", line 367, in loads\n    return cls(**kw).decode(s)\n  File \"/usr/lib64/python3.6/json/decoder.py\", line 339, in decode\n    obj, end \u003d self.raw_decode(s, idx\u003d_w(s, 0).end())\n  File \"/usr/lib64/python3.6/json/decoder.py\", line 357, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/mnt/host/source/chromite/bin/build_api\", line 208, in \u003cmodule\u003e\n    DoMain()\n  File \"/mnt/host/source/chromite/bin/build_api\", line 204, in DoMain\n    commandline.ScriptWrapperMain(FindTarget)\n  File \"/mnt/host/source/chromite/lib/commandline.py\", line 1082, in ScriptWrapperMain\n    ret \u003d target(argv[1:])\n  File \"/mnt/host/source/chromite/scripts/build_api.py\", line 164, in main\n    output_handlers, opts.config_handler)\n  File \"/mnt/host/source/chromite/api/router.py\", line 248, in Route\n    return_code \u003d method_impl(input_msg, output_msg, config)\n  File \"/mnt/host/source/chromite/api/faux.py\", line 57, in _success\n    return func(input_proto, output_proto, config, *args, **kwargs)\n  File \"/mnt/host/source/chromite/api/faux.py\", line 113, in _empty_error\n    return func(input_proto, output_proto, config, *args, **kwargs)\n  File \"/mnt/host/source/chromite/api/validate.py\", line 234, in _require\n    return func(input_proto, output_proto, config, *args, **kwargs)\n  File \"/mnt/host/source/chromite/api/validate.py\", line 324, in _validate_only\n    return func(request, response, configs, *args, **kwargs)\n  File \"/mnt/host/source/chromite/api/controller/firmware.py\", line 139, in BuildAllFirmware\n    \u0027build\u0027, *args)\n  File \"/mnt/host/source/chromite/api/controller/firmware.py\", line 67, in _call_entry\n    json_format.Parse(response, metric_proto)\n  File \"/mnt/host/source/chromite/third_party/google/protobuf/json_format.py\", line 431, in Parse\n    raise ParseError(\u0027Failed to load JSON: {0}.\u0027.format(str(e)))\nchromite.third_party.google.protobuf.json_format.ParseError: Failed to load JSON: Expecting value: line 1 column 1 (char 0).\n04:12:32.041: INFO: Endpoint execution completed, return code: 1\n04:12:32.041: WARNING: No content found in /b/s/w/ir/cache/cros_chroot/chroot/tmp/tmpm_17xh7p/output_proto to deserialize.",
+      "parentUuid": "1e6abaa8_1d84242f",
+      "revId": "496f9d6db399e943c3e66d544dd6e5f7f6be3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5683f27_9a64f672",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-07-20T03:03:08Z",
+      "side": 1,
+      "message": "Do you repo upload with `--no-verify`?",
+      "revId": "496f9d6db399e943c3e66d544dd6e5f7f6be3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
