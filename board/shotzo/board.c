@@ -152,6 +152,7 @@ static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
 
 static int barrel_jack_adapter_is_present(void)
 {
+	return 1;
 	/* Shotzo barrel jack adapter present pin is active low. */
 	return !gpio_get_level(GPIO_BJ_ADP_PRESENT_L);
 }
