@@ -48,13 +48,13 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 /* USB-C MUX Configuration */
 
 /* TODO(crbug.com/826441): Consolidate this logic with other impls */
-static void board_it83xx_hpd_status(const struct usb_mux *me,
+static void board_it83xx_hpd_status(const struct usb_mux *me, int port,
 				    mux_state_t mux_state, bool *ack_required)
 {
 	int hpd_lvl = (mux_state & USB_PD_MUX_HPD_LVL) ? 1 : 0;
 	int hpd_irq = (mux_state & USB_PD_MUX_HPD_IRQ) ? 1 : 0;
-	enum gpio_signal gpio = me->usb_port ? GPIO_USB_C1_HPD_1V8_ODL :
-					       GPIO_USB_C0_HPD_1V8_ODL;
+	enum gpio_signal gpio = port ? GPIO_USB_C1_HPD_1V8_ODL :
+				       GPIO_USB_C0_HPD_1V8_ODL;
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -74,7 +74,6 @@ static void board_it83xx_hpd_status(const struct usb_mux *me,
 struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_ITE_0,
 			.i2c_port = I2C_PORT_USB_MUX,
 			.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
 			.driver = &it5205_usb_mux_driver,
@@ -83,7 +82,6 @@ struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 	[USB_PD_PORT_ITE_1] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_ITE_1,
 			/* Use PS8751 as mux only */
 			.i2c_port = I2C_PORT_USBC1,
 			.i2c_addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
