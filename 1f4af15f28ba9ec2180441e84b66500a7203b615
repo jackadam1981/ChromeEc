@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b49a24_8dd4be91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-20T22:27:17Z",
+      "side": 1,
+      "message": "Precommit hooks were complaining about this file after I modified it, so I split black\u0027s changes off in to a preceeding CL.",
+      "revId": "1f4af15f28ba9ec2180441e84b66500a7203b615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
