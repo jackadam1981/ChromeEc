@@ -63,15 +63,15 @@ COMMON_WARN = -Wall -Wundef -Werror-implicit-function-declaration \
 	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
 	-fno-common -fno-strict-aliasing -fno-strict-overflow
 
-ifndef ALLOW_WARNINGS
-COMMON_WARN+=-Werror
-ifeq ($(cc-name),clang)
-COMMON_WARN+=-Werror=uninitialized
-endif
-ifeq ($(cc-name),gcc)
-COMMON_WARN+=-Werror=maybe-uninitialized
-endif
-endif
+#ifndef ALLOW_WARNINGS
+#COMMON_WARN+=-Werror
+#ifeq ($(cc-name),clang)
+#COMMON_WARN+=-Werror=uninitialized
+#endif
+#ifeq ($(cc-name),gcc)
+#COMMON_WARN+=-Werror=maybe-uninitialized
+#endif
+#endif
 
 ifeq ($(cc-name),clang)
 # TODO(b/172020503): Re-enabling this warning requires a large CL.
