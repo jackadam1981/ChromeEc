@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b895aed2_eb9d335f",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:18:52Z",
+      "side": 1,
+      "message": "In next CLs, there are multiple conditions added to if. In that case braces would clearly distinguish the start \u0026 end conditions for better readability.\n\nFinal snippet looks like this:\n\nif ((threshold_max_power_change \u003e\u003d PMAX_THRESHOLD_MW) ||\n\t\t(threshold_sus_peak_power_change \u003e\u003d PBSS_THRESHOLD_MW) ||\n\t\t(threshold_high_freq_impedance_change \u003e\u003d RBFH_THRESHOLD_MOHM) ||\n\t\t(threshold_nl_volt_change \u003e\u003d VBNL_THRESHOLD_MV) ||\n\t        (threshold_discharge_current_change \u003e\u003dCMPP_THRESHOLD_MA)) {\n\t            host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);\n\t}",
+      "parentUuid": "7a7d56f1_189ed9c1",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "28fc0cc84f9d2a7129a2ae9d8b048497973106bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36a7ca1a_e86e4428",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 7
