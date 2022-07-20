@@ -186,19 +186,19 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 
-struct usb_mux usb_muxes[] = {
+struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = DT_REG_ADDR(DT_NODELABEL(tcpci_emul)),
+		.mux = &(struct usb_mux) {
+			.driver = &tcpci_tcpm_usb_mux_driver,
+			.i2c_port = I2C_PORT_USB_C0,
+			.i2c_addr_flags = DT_REG_ADDR(DT_NODELABEL(tcpci_emul)),
+		},
 	},
 };
 
 /* USBC PPC configuration */
 struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_USB_C0,
 		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
 		.drv = &sn5s330_drv,
 	},
