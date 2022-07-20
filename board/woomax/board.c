@@ -329,7 +329,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 /*****************************************************************************
  * USB-C MUX/Retimer dynamic configuration
  */
-static int woomax_ps8818_mux_set(const struct usb_mux *me,
+static int woomax_ps8818_mux_set(const struct usb_mux *me, int port,
 				 mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -337,28 +337,28 @@ static int woomax_ps8818_mux_set(const struct usb_mux *me,
 	/* USB specific config */
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/* Boost the USB gain */
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX1EQ_10G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_18DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX2EQ_10G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_18DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX1EQ_5G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX2EQ_5G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
@@ -369,7 +369,7 @@ static int woomax_ps8818_mux_set(const struct usb_mux *me,
 	/* DP specific config */
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		/* Boost the DP gain */
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_DPEQ_LEVEL,
 					      PS8818_DPEQ_LEVEL_UP_MASK,
 					      PS8818_DPEQ_LEVEL_UP_19DB);
@@ -383,25 +383,26 @@ static int woomax_ps8818_mux_set(const struct usb_mux *me,
 	}
 
 	if (!(mux_state & USB_PD_MUX_POLARITY_INVERTED)) {
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_CRX1EQ_10G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
-		rv |= ps8818_i2c_write(me, PS8818_REG_PAGE1,
+		rv |= ps8818_i2c_write(me, port, PS8818_REG_PAGE1,
 				       PS8818_REG1_APRX1_DE_LEVEL, 0x02);
 	}
 
 	/* set the RX input termination */
-	rv |= ps8818_i2c_field_update8(me, PS8818_REG_PAGE1, PS8818_REG1_RX_PHY,
+	rv |= ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
+				       PS8818_REG1_RX_PHY,
 				       PS8818_RX_INPUT_TERM_MASK,
 				       PS8818_RX_INPUT_TERM_85_OHM);
 	/* set register 0x40 ICP1 for 1G PD loop */
-	rv |= ps8818_i2c_write(me, PS8818_REG_PAGE1, 0x40, 0x84);
+	rv |= ps8818_i2c_write(me, port, PS8818_REG_PAGE1, 0x40, 0x84);
 
 	return rv;
 }
 
-static int woomax_ps8802_mux_set(const struct usb_mux *me,
+static int woomax_ps8802_mux_set(const struct usb_mux *me, int port,
 				 mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -449,12 +450,14 @@ static int woomax_ps8802_mux_set(const struct usb_mux *me,
 }
 
 const struct usb_mux usbc1_woomax_ps8818 = {
-	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_TCPC1,
 	.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
 	.driver = &ps8818_usb_retimer_driver,
 	.board_set = &woomax_ps8818_mux_set,
 };
+
+/* Place holder for second mux in USBC1 chain */
+struct usb_mux_chain usbc1_mux1;
 
 static void setup_mux(void)
 {
@@ -467,12 +470,11 @@ static void setup_mux(void)
 		 * Replace usb_muxes[USBC_PORT_C1] with the PS8802
 		 * table entry.
 		 */
-		memcpy(&usb_muxes[USBC_PORT_C1], &usbc1_ps8802,
-		       sizeof(struct usb_mux));
+		usb_muxes[USBC_PORT_C1].mux = &usbc1_ps8802;
 
 		/* Set the AMD FP5 as the secondary MUX */
-		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_amd_fp5_usb_mux;
-		usb_muxes[USBC_PORT_C1].board_set = &woomax_ps8802_mux_set;
+		usbc1_mux1.mux = &usbc1_amd_fp5_usb_mux;
+		usbc1_ps8802.board_set = &woomax_ps8802_mux_set;
 
 		/* Don't have the AMD FP5 flip */
 		usbc1_amd_fp5_usb_mux.flags = USB_MUX_FLAG_SET_WITHOUT_FLIP;
@@ -486,11 +488,10 @@ static void setup_mux(void)
 		 * Replace usb_muxes[USBC_PORT_C1] with the AMD FP5
 		 * table entry.
 		 */
-		memcpy(&usb_muxes[USBC_PORT_C1], &usbc1_amd_fp5_usb_mux,
-		       sizeof(struct usb_mux));
+		usb_muxes[USBC_PORT_C1].mux = &usbc1_amd_fp5_usb_mux;
 
 		/* Set the PS8818 as the secondary MUX */
-		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_woomax_ps8818;
+		usbc1_mux1.mux = &usbc1_woomax_ps8818;
 	}
 }
 
@@ -669,7 +670,7 @@ static uint8_t pi3dpx1207_dali_eq[] = {
 	0x71,
 };
 
-static int board_pi3dpx1207_mux_set(const struct usb_mux *me,
+static int board_pi3dpx1207_mux_set(const struct usb_mux *me, int port,
 				    mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -721,24 +722,28 @@ const struct pi3dpx1207_usb_control pi3dpx1207_controls[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3dpx1207_controls) == USBC_PORT_COUNT);
 
-const struct usb_mux usbc0_pi3dpx1207_usb_retimer = {
-	.usb_port = USBC_PORT_C0,
-	.i2c_port = I2C_PORT_TCPC0,
-	.i2c_addr_flags = PI3DPX1207_I2C_ADDR_FLAGS,
-	.driver = &pi3dpx1207_usb_retimer,
-	.board_set = &board_pi3dpx1207_mux_set,
+const struct usb_mux_chain usbc0_pi3dpx1207_usb_retimer = {
+	.mux =
+		&(const struct usb_mux){
+			.i2c_port = I2C_PORT_TCPC0,
+			.i2c_addr_flags = PI3DPX1207_I2C_ADDR_FLAGS,
+			.driver = &pi3dpx1207_usb_retimer,
+			.board_set = &board_pi3dpx1207_mux_set,
+		},
 };
 
-struct usb_mux usb_muxes[] = {
+struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.i2c_port = I2C_PORT_USB_AP_MUX,
-		.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
-		.driver = &amd_fp5_usb_mux_driver,
-		.next_mux = &usbc0_pi3dpx1207_usb_retimer,
+		.mux = &(const struct usb_mux) {
+			.i2c_port = I2C_PORT_USB_AP_MUX,
+			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
+			.driver = &amd_fp5_usb_mux_driver,
+		},
+		.next = &usbc0_pi3dpx1207_usb_retimer,
 	},
 	[USBC_PORT_C1] = {
 		/* Filled in dynamically at startup */
+		.next = &usbc1_mux1,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);

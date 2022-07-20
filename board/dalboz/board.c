@@ -217,7 +217,8 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
-static int board_ps8743_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_ps8743_mux_set(const struct usb_mux *me, int port,
+				mux_state_t mux_state)
 {
 	if (mux_state & USB_PD_MUX_DP_ENABLED)
 		/* Enable IN_HPD on the DB */
@@ -238,8 +239,8 @@ static int board_ps8743_mux_set(const struct usb_mux *me, mux_state_t mux_state)
  * chip and it need a board specific driver.
  * Overall, it will use chained mux framework.
  */
-static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state,
-			      bool *ack_required)
+static int fsusb42umx_set_mux(const struct usb_mux *me, int port,
+			      mux_state_t mux_state, bool *ack_required)
 {
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
@@ -266,33 +267,41 @@ const struct usb_mux_driver usbc0_sbu_mux_driver = {
  * Since FSUSB42UMX is not a i2c device, .i2c_port and
  * .i2c_addr_flags are not required here.
  */
-const struct usb_mux usbc0_sbu_mux = {
-	.usb_port = USBC_PORT_C0,
-	.driver = &usbc0_sbu_mux_driver,
+const struct usb_mux_chain usbc0_sbu_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.driver = &usbc0_sbu_mux_driver,
+		},
 };
 
-struct usb_mux usbc1_amd_fp5_usb_mux = {
-	.usb_port = USBC_PORT_C1,
-	.i2c_port = I2C_PORT_USB_AP_MUX,
-	.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
-	.driver = &amd_fp5_usb_mux_driver,
-	.flags = USB_MUX_FLAG_SET_WITHOUT_FLIP,
+struct usb_mux usbc1_ps8xxx_mux = {
+	.i2c_port = I2C_PORT_TCPC1,
+	.i2c_addr_flags = PS8743_I2C_ADDR1_FLAG,
+	.driver = &ps8743_usb_mux_driver,
 };
 
-struct usb_mux usb_muxes[] = {
+struct usb_mux_chain usbc1_amd_fp5_usb_mux = {
+	.mux =
+		&(const struct usb_mux){
+			.i2c_port = I2C_PORT_USB_AP_MUX,
+			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
+			.driver = &amd_fp5_usb_mux_driver,
+			.flags = USB_MUX_FLAG_SET_WITHOUT_FLIP,
+		},
+};
+
+struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
-		.usb_port = USBC_PORT_C0,
-		.i2c_port = I2C_PORT_USB_AP_MUX,
-		.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
-		.driver = &amd_fp5_usb_mux_driver,
-		.next_mux = &usbc0_sbu_mux,
+		.mux = &(const struct usb_mux) {
+			.i2c_port = I2C_PORT_USB_AP_MUX,
+			.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
+			.driver = &amd_fp5_usb_mux_driver,
+		},
+		.next = &usbc0_sbu_mux,
 	},
 	[USBC_PORT_C1] = {
-		.usb_port = USBC_PORT_C1,
-		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr_flags = PS8743_I2C_ADDR1_FLAG,
-		.driver = &ps8743_usb_mux_driver,
-		.next_mux = &usbc1_amd_fp5_usb_mux,
+		.mux = &usbc1_ps8xxx_mux,
+		.next = &usbc1_amd_fp5_usb_mux,
 	}
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
@@ -542,14 +551,14 @@ static void setup_fw_config(void)
 	if (cbi_get_board_version(&board_version) == EC_SUCCESS &&
 	    board_version >= 2) {
 		ccprints("PS8743 USB MUX");
-		usb_muxes[USBC_PORT_C1].i2c_addr_flags = PS8743_I2C_ADDR1_FLAG;
-		usb_muxes[USBC_PORT_C1].driver = &ps8743_usb_mux_driver;
-		usb_muxes[USBC_PORT_C1].board_set = &board_ps8743_mux_set;
+		usbc1_ps8xxx_mux.i2c_addr_flags = PS8743_I2C_ADDR1_FLAG;
+		usbc1_ps8xxx_mux.driver = &ps8743_usb_mux_driver;
+		usbc1_ps8xxx_mux.board_set = &board_ps8743_mux_set;
 	} else {
 		ccprints("PS8740 USB MUX");
-		usb_muxes[USBC_PORT_C1].i2c_addr_flags = PS8740_I2C_ADDR0_FLAG;
-		usb_muxes[USBC_PORT_C1].driver = &ps8740_usb_mux_driver;
-		usb_muxes[USBC_PORT_C1].board_set = NULL;
+		usbc1_ps8xxx_mux.i2c_addr_flags = PS8740_I2C_ADDR0_FLAG;
+		usbc1_ps8xxx_mux.driver = &ps8740_usb_mux_driver;
+		usbc1_ps8xxx_mux.board_set = NULL;
 	}
 
 	if (ec_config_get_usb_db() == DALBOZ_DB_D_OPT2_USBA_HDMI) {
