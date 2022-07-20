@@ -217,7 +217,7 @@ board_a1_ps8811_retimer_init(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
-__override int board_c1_ps8818_mux_set(const struct usb_mux *me,
+__override int board_c1_ps8818_mux_set(const struct usb_mux *me, int port,
 				       mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -225,28 +225,28 @@ __override int board_c1_ps8818_mux_set(const struct usb_mux *me,
 	/* USB specific config */
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/* Boost the USB gain */
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX1EQ_10G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX2EQ_10G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX1EQ_5G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
 		if (rv)
 			return rv;
 
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_APTX2EQ_5G_LEVEL,
 					      PS8818_EQ_LEVEL_UP_MASK,
 					      PS8818_EQ_LEVEL_UP_19DB);
@@ -254,7 +254,7 @@ __override int board_c1_ps8818_mux_set(const struct usb_mux *me,
 			return rv;
 
 		/* Set the RX input termination */
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_RX_PHY,
 					      PS8818_RX_INPUT_TERM_MASK,
 					      PS8818_RX_INPUT_TERM_112_OHM);
@@ -265,7 +265,7 @@ __override int board_c1_ps8818_mux_set(const struct usb_mux *me,
 	/* DP specific config */
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		/* Boost the DP gain */
-		rv = ps8818_i2c_field_update8(me, PS8818_REG_PAGE1,
+		rv = ps8818_i2c_field_update8(me, port, PS8818_REG_PAGE1,
 					      PS8818_REG1_DPEQ_LEVEL,
 					      PS8818_DPEQ_LEVEL_UP_MASK,
 					      PS8818_DPEQ_LEVEL_UP_19DB);
@@ -287,9 +287,9 @@ __override int board_c1_ps8818_mux_set(const struct usb_mux *me,
  * to 0x29 for the USB i2c address. This moves ANX7451(C1) USB i2c
  * address to 0x2A. ANX7491(A1) will stay at the default 0x29.
  */
-uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me)
+uint16_t board_anx7451_get_usb_i2c_addr(const struct usb_mux *me, int port)
 {
-	ASSERT(me->usb_port == USBC_PORT_C1);
+	ASSERT(port == USBC_PORT_C1);
 	return 0x2a;
 }
 
