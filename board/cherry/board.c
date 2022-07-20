@@ -197,7 +197,8 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* USB Mux */
 
-static int board_ps8762_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_ps8762_mux_set(const struct usb_mux *me, int port,
+				mux_state_t mux_state)
 {
 	/* Make sure the PS8802 is awake */
 	RETURN_ERROR(ps8802_i2c_wake(me));
@@ -222,7 +223,7 @@ static int board_ps8762_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 	return EC_SUCCESS;
 }
 
-static int board_ps8762_mux_init(const struct usb_mux *me)
+static int board_ps8762_mux_init(const struct usb_mux *me, int port)
 {
 	return ps8802_i2c_field_update8(me, PS8802_REG_PAGE1, PS8802_REG_DCIRX,
 					PS8802_AUTO_DCI_MODE_DISABLE |
@@ -230,7 +231,7 @@ static int board_ps8762_mux_init(const struct usb_mux *me)
 					PS8802_AUTO_DCI_MODE_DISABLE);
 }
 
-static int board_anx3443_mux_set(const struct usb_mux *me,
+static int board_anx3443_mux_set(const struct usb_mux *me, int port,
 				 mux_state_t mux_state)
 {
 	gpio_set_level(GPIO_USB_C1_DP_IN_HPD,
@@ -242,7 +243,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 0,
 				.i2c_port = I2C_PORT_USB_MUX0,
 				.i2c_addr_flags = PS8802_I2C_ADDR_FLAGS,
 				.driver = &ps8802_usb_mux_driver,
@@ -253,7 +253,6 @@ const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.mux =
 			&(const struct usb_mux){
-				.usb_port = 1,
 				.i2c_port = I2C_PORT_USB_MUX1,
 				.i2c_addr_flags = ANX3443_I2C_ADDR0_FLAGS,
 				.driver = &anx3443_usb_mux_driver,
