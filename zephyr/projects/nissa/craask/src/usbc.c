@@ -7,9 +7,11 @@
 
 #include "charge_state_v2.h"
 #include "chipset.h"
+#include "cros_board_info.h"
 #include "hooks.h"
 #include "usb_mux.h"
 #include "system.h"
+#include "driver/bc12/max14637.h"
 #include "driver/charger/isl923x_public.h"
 #include "driver/retimer/anx7483_public.h"
 #include "driver/tcpm/tcpci.h"
@@ -275,3 +277,36 @@ void usb_interrupt(enum gpio_signal signal)
 	/* Check for lost interrupts in a bit */
 	hook_call_deferred(ud, USBC_INT_POLL_DELAY_US);
 }
+
+/* BC 1.2 chip Configuration */
+const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.chip_enable_pin =
+			GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_bc12_vbus_on)),
+		.chg_det_pin =
+			GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_bc12_chg_det_l)),
+		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
+	},
+	{
+		.chip_enable_pin =
+			GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c1_bc12_vbus_on)),
+		.chg_det_pin =
+			GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c1_bc12_chg_det_l)),
+		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
+	},
+};
+
+void bc12_chips_init(void)
+{
+	int i, val;
+
+	if (cbi_get_board_version(&val) == EC_SUCCESS && val == 2) {
+		ccprints("BC12 is MAX14637");
+		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+			bc12_ports[i].drv = &max14637_drv;
+		}
+	} else {
+		ccprints("BC12 is PI3USB9201");
+	}
+}
+DECLARE_HOOK(HOOK_INIT, bc12_chips_init, HOOK_PRIO_DEFAULT);
