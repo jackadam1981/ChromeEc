@@ -46,6 +46,8 @@
  */
 #define SCP_FW_END SCP_CORE1_RAM_SIZE
 
+#define MOVE_MTK_PRIVATE_ON_DRAM
+
 #else
 
 /*
