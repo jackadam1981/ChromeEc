@@ -33,6 +33,8 @@ LOG_MODULE_REGISTER(stubs);
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
+/* Test Branch CL */
+
 /* All of these definitions are just to get the test to link. None of these
  * functions are useful or behave as they should. Please remove them once the
  * real code is able to be added.  Most of the things here should either be
