@@ -34,6 +34,24 @@
       "parentUuid": "01de3db3_faf85673",
       "revId": "dc7d08fc7daaf04b84c31a1652f01e47cc6a9c20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376b1bdd_efddad92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-20T10:02:23Z",
+      "side": 1,
+      "message": "Oh this is one in dev-python, nevermind.\n\nScott: can you try update_chroot?",
+      "parentUuid": "808d0034_3f6e815f",
+      "revId": "dc7d08fc7daaf04b84c31a1652f01e47cc6a9c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
