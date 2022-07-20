@@ -22,6 +22,30 @@
       },
       "revId": "e8f3bd10d1329f7f940909c7c8843beeae41b2ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bba629a_8ecfb362",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-20T21:19:15Z",
+      "side": 1,
+      "message": "Spec says to read every second and check for theshold level change. Memap region is updtated in every read as well because inorder to check for any level change in next read, updation of memmap is required in every read.\nReference: #d0c : 626708 - session 11.5, table 11-1",
+      "parentUuid": "0d43c31c_9c87bf37",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "e8f3bd10d1329f7f940909c7c8843beeae41b2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
