@@ -112,7 +112,8 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	ioex_set_level(oc_signal, is_overcurrented ? 0 : 1);
 }
 
-__override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
+__override int bb_retimer_power_enable(const struct usb_mux *me, int port,
+				       bool enable)
 {
 	/*
 	 * ADL-P-DDR5 RVP SKU has cascaded retimer topology.
@@ -120,14 +121,14 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	 * hence no need to set the power state again if the 1st retimer's power
 	 * status has already changed.
 	 */
-	if (cache_bb_enable[me->usb_port] == enable)
+	if (cache_bb_enable[port] == enable)
 		return EC_SUCCESS;
 
-	cache_bb_enable[me->usb_port] = enable;
+	cache_bb_enable[port] = enable;
 
 	/* Handle retimer's power domain.*/
 	if (enable) {
-		ioex_set_level(bb_controls[me->usb_port].usb_ls_en_gpio, 1);
+		ioex_set_level(bb_controls[port].usb_ls_en_gpio, 1);
 
 		/*
 		 * minimum time from VCC to RESET_N de-assertion is 100us
@@ -136,7 +137,7 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		 * this function.
 		 */
 		msleep(1);
-		ioex_set_level(bb_controls[me->usb_port].retimer_rst_gpio, 1);
+		ioex_set_level(bb_controls[port].retimer_rst_gpio, 1);
 
 		/*
 		 * Allow 1ms time for the retimer to power up lc_domain
@@ -145,9 +146,9 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		msleep(1);
 
 	} else {
-		ioex_set_level(bb_controls[me->usb_port].retimer_rst_gpio, 0);
+		ioex_set_level(bb_controls[port].retimer_rst_gpio, 0);
 		msleep(1);
-		ioex_set_level(bb_controls[me->usb_port].usb_ls_en_gpio, 0);
+		ioex_set_level(bb_controls[port].usb_ls_en_gpio, 0);
 	}
 	return EC_SUCCESS;
 }
