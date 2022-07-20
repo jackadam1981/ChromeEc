@@ -135,7 +135,8 @@ struct ppc_config_t ppc_chips[] = {
  * PS8802 set mux board tuning.
  * Adds in board specific gain and DP lane count configuration
  */
-static int board_ps8822_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+static int board_ps8822_mux_set(const struct usb_mux *me, int port,
+				mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
 
@@ -157,7 +158,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.mux = &(const struct usb_mux) {
-			.usb_port = USB_PD_PORT_HOST,
 			.i2c_port = I2C_PORT_I2C1,
 			.i2c_addr_flags = PS8822_I2C_ADDR3_FLAG,
 			.driver = &ps8822_usb_mux_driver,
