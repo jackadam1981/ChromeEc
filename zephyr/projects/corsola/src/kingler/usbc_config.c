@@ -37,7 +37,7 @@
 /* USB Mux */
 
 /* USB Mux C1 : board_init of PS8743 */
-int ps8743_mux_1_board_init(const struct usb_mux *me)
+int ps8743_mux_1_board_init(const struct usb_mux *me, int port)
 {
 	ps8743_tune_usb_eq(me, PS8743_USB_EQ_TX_3_6_DB,
 			   PS8743_USB_EQ_RX_16_0_DB);
