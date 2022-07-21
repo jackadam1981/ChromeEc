@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cac9a4d_24532262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-21T06:56:54Z",
+      "side": 1,
+      "message": "This CL removes GPIO_VOLTAGE_1P8 flag at `named-gpio` nodes which power rail is VHIF and VSPI. If they are used for reminding their power rail are 1.8V only, I suggest comment them instead. `GPIO_VOLTAGE_1P8` flag is used for GPIOs which power rail is VCC1(3.3V) now. And their detecion level can be switch to 1.8V dynamically. \n\nThis CL also adds `GPIO_VOLTAGE_1P8` flag based on `def-lvol-io-list` node and few useless comments for better comparison since I\u0027m not sure whether 1.8V detection should be enabled. It can be removed later. \n\nPS. This CL is the changes in board DT files for [PR 47996](https://github.com/zephyrproject-rtos/zephyr/pull/47996).",
+      "revId": "3788293f62f181d431d5ce5bd3355679d7193c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
