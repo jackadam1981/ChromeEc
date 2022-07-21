@@ -16,6 +16,23 @@
       "message": "public fingerprint files LGTM\n\nprivate/* files still need to be updated",
       "revId": "2c2c489bcb1c6cd7ee3dfb74de445c1deda8b155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe627bf_13ce68c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-07-21T15:51:36Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be changing Copyright headers. My understanding is that they\u0027re not to be touched after introducing them. It might be worth reaching out to legal to confirm.",
+      "revId": "2c2c489bcb1c6cd7ee3dfb74de445c1deda8b155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
