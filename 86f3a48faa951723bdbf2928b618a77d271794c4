@@ -16,6 +16,23 @@
       "message": "Neat! Was unsure on whether we could just drop it or if we had to implement an equivalent function with a dedicated bitmask but if nothing is generating events against it we are good to go!",
       "revId": "86f3a48faa951723bdbf2928b618a77d271794c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a89aca1_5e2f5740",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-21T09:37:02Z",
+      "side": 1,
+      "message": "Actually, can you drop it from `corsola/prj.conf` as well?",
+      "revId": "86f3a48faa951723bdbf2928b618a77d271794c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
