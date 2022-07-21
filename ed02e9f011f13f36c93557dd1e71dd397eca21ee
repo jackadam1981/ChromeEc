@@ -88,6 +88,24 @@
       "parentUuid": "1984c4e8_c93ce722",
       "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab836c4_7d3423ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-07-21T02:29:58Z",
+      "side": 1,
+      "message": "Yes, still failing.\nLet me see what else is missing\n\u003e Did you cros_workon\u0027d chromeos-ec for your test?\n\nNot when I tested last, however, `make BOARD\u003dxxx` does not require `cros-workon` as far as I understand",
+      "parentUuid": "1984c4e8_c93ce722",
+      "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
