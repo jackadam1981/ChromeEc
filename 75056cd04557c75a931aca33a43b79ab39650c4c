@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04194018_8cd813fb",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-21T14:17:17Z",
+      "side": 1,
+      "message": "Hey can you explain the commit message why the GPIO_VOLTAGE_1P8 flag is not needed here? Also wondering if the comment is needed at all...",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "75056cd04557c75a931aca33a43b79ab39650c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e147e99_f81a1f21",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-21T14:17:17Z",
+      "side": 1,
+      "message": "I would drop these comments, that\u0027s what the GPIO_VOLTAGE_1P8 means right? If that\u0027s the case then I say that the comment is redundant.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "75056cd04557c75a931aca33a43b79ab39650c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
