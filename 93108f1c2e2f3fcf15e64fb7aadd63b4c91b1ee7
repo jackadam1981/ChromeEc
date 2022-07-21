@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02e49175_37ac76b6",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-21T10:25:23Z",
+      "side": 1,
+      "message": "You can use pwm_set_pulse_dt here, takes one less argument.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "93108f1c2e2f3fcf15e64fb7aadd63b4c91b1ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
