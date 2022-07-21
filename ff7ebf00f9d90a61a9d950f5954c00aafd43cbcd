@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c6edcd_7a0937f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-21T16:31:42Z",
+      "side": 1,
+      "message": "Does this CL stack depend on the upstream PR https://github.com/zephyrproject-rtos/zephyr/pull/47996?",
+      "revId": "ff7ebf00f9d90a61a9d950f5954c00aafd43cbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "58f7a4d4_19577c05",
