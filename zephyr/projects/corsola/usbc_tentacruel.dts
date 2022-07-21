@@ -11,12 +11,13 @@
 		port0@0 {
 			compatible = "named-usbc-port";
 			reg = <0>;
-			bc12 = <&bc12_port0>;
+
 			ppc {
-				compatible = "richtek,rt1739-ppc";
+				compatible = "silergy,syv682x";
 				status = "okay";
 				port = <&i2c_usb_c0>;
-				i2c-addr-flags = "RT1739_ADDR1_FLAGS";
+				i2c-addr-flags = "SYV682X_ADDR0_FLAGS";
+				frs_en_gpio = <&gpio_usb_c0_frs_en>;
 			};
 			tcpc {
 				compatible = "ite,it8xxx2-tcpc";
