@@ -11,6 +11,7 @@
 #include <zephyr/drivers/i2c_emul.h>
 
 #include "emul/emul_pi3usb9201.h"
+#include "test/drivers/utils.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(emul_pi3usb9201, LOG_LEVEL_DBG);
@@ -193,3 +194,5 @@ struct i2c_emul *pi3usb9201_emul_get(int ord)
 		return NULL;
 	}
 }
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

@@ -16,6 +16,7 @@ LOG_MODULE_REGISTER(emul_bb_retimer);
 
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_bb_retimer.h"
+#include "test/drivers/utils.h"
 
 #include "driver/retimer/bb_retimer.h"
 
@@ -358,3 +359,5 @@ struct i2c_emul *bb_emul_get(int ord)
 		return NULL;
 	}
 }
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
