@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a82d855_0474accf",
+        "filename": "zephyr/projects/herobrine/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-21T16:42:26Z",
+      "side": 1,
+      "message": "In upstream Zephyr, how will users set 1.8V support for a pin that isn\u0027t a GPIO?  Zephyr upstream doesn\u0027t include the \u0027named-gpios\u0027 node, so there doesn\u0027t appear to be any place where users can configure an I2C bus for 1.8V operation.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 54
+      },
+      "revId": "82d767553201efa402eec3173ea09833415ada2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c004fb40_6579527a",
         "filename": "zephyr/projects/herobrine/gpio_evoker.dts",
         "patchSetId": 4
