@@ -27,12 +27,12 @@
 void test_set_chipset_to_s0(void)
 {
 	struct sbat_emul_bat_data *bat;
-	struct i2c_emul *emul;
+	const struct emul *emul = sbat_emul_get_ptr(BATTERY_ORD);
 	const struct device *battery_gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_BATT_PRES_ODL_PATH, gpios));
 
 	printk("%s: Forcing power on\n", __func__);
-	emul = sbat_emul_get_ptr(BATTERY_ORD);
+
 	bat = sbat_emul_get_bat_data(emul);
 
 	/*
@@ -467,3 +467,14 @@ void test_set_chipset_to_g3_then_transition_to_s5(void)
 	 */
 	k_sleep(K_SECONDS(1));
 }
+
+int emul_init_stub(const struct device *dev)
+{
+	ARG_UNUSED(dev);
+
+	return 0;
+}
+
+/* These 2 lines are needed because we don't define an espi host driver */
+#define DT_DRV_COMPAT zephyr_espi_emul_espi_host
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
