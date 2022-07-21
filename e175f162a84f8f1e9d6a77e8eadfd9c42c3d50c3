@@ -91,6 +91,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "57558eac_139f62f1",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-21T22:01:52Z",
+      "side": 1,
+      "message": "I\u0027ll go ahead and close this thread to submit this patch.\n\nWe will address this in a separate patch.",
+      "parentUuid": "dafd97e8_acb3077e",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 81
+      },
+      "revId": "e175f162a84f8f1e9d6a77e8eadfd9c42c3d50c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d0764277_b27948a7",
         "filename": "docs/ide-support.md",
         "patchSetId": 5
@@ -102,6 +126,30 @@
       "writtenOn": "2022-07-21T21:42:48Z",
       "side": 1,
       "message": "Nice, I dig the (chroot) only appearing on the first line!",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "e175f162a84f8f1e9d6a77e8eadfd9c42c3d50c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd592de8_ca2e4514",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-21T22:01:52Z",
+      "side": 1,
+      "message": "Thanks! There was some debate about this with Bobby, but I think this is clear enough.",
+      "parentUuid": "d0764277_b27948a7",
       "range": {
         "startLine": 83,
         "startChar": 4,
@@ -173,6 +221,30 @@
       "side": 1,
       "message": "Still might want to change to `~/` at some point.",
       "parentUuid": "fc3fabe4_7e653163",
+      "range": {
+        "startLine": 95,
+        "startChar": 31,
+        "endLine": 95,
+        "endChar": 44
+      },
+      "revId": "e175f162a84f8f1e9d6a77e8eadfd9c42c3d50c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a5fb46_af50fc94",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-07-21T22:01:52Z",
+      "side": 1,
+      "message": "Actually you are right about \"This is not accurate for corp desktop/cloudtop, where it uses a  /usr/local...  path.\"\n\nAs mentioned above, this should be \"the **absolute** path outside chroot\", which is why I cannot use `~/`.\n\nTo be honest, I find the interface of this script a bit confusing but the idea is to translate the path from `chroot` to `outside`.",
+      "parentUuid": "cb885ec9_18c49f74",
       "range": {
         "startLine": 95,
         "startChar": 31,
