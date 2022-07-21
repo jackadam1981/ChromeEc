@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a81ff0_292d6a92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-21T06:44:19Z",
+      "side": 1,
+      "message": "This CL adds two new `named-gpio` nodes, `gpio_sb_3` and `gpio_sb_4` for `GPIO_VOLTAGE_1P8` support. If the naming of theses nodes are incorrect, please give your comments freely.",
+      "revId": "a0afa91ad29798c4f48a7f4284992f75791ddb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
