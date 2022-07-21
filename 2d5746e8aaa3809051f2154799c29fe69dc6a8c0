@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10634cfa_30c2c419",
+        "filename": "zephyr/projects/brya/i2c.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-21T14:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48635046_7e4942d8",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "2d5746e8aaa3809051f2154799c29fe69dc6a8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab1c4c20_af4b8343",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-19T21:48:42Z",
       "side": 1,
       "message": "bc121 (or bc12_1/bc12_port1)",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "2d5746e8aaa3809051f2154799c29fe69dc6a8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae090b01_56b5e50f",
+        "filename": "zephyr/projects/herobrine/usbc_hoglin.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-21T14:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab1c4c20_af4b8343",
       "range": {
         "startLine": 42,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb1a9d1_5d7d71e0",
+        "filename": "zephyr/projects/nissa/craask_overlay.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-21T14:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5391b04e_f4a00b8a",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 23
+      },
+      "revId": "2d5746e8aaa3809051f2154799c29fe69dc6a8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2f3fb53_5305076c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-19T21:48:42Z",
       "side": 1,
       "message": "This could use a helper macro, as you\u0027re going to need to do the same thing for ppc and tcpc drivers.\n\nThere already exists `#define USBC_PORT(id) DT_REG_ADDR(DT_PARENT(id))`, so the legacy macro will eventually get deleted.\n\nHow about `USBC_PORT_NEW()` for now, and then rename to `USBC_PORT()` once all the drivers are moved over?",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "2d5746e8aaa3809051f2154799c29fe69dc6a8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b676b15a_fb568df6",
+        "filename": "zephyr/shim/src/bc12.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-21T14:58:36Z",
+      "side": 1,
+      "message": "Agree, done",
+      "parentUuid": "f2f3fb53_5305076c",
       "range": {
         "startLine": 36,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d275336_8d5040ec",
+        "filename": "zephyr/shim/src/bc12.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-21T14:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9ba0c07_67c2ddee",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "2d5746e8aaa3809051f2154799c29fe69dc6a8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b4783aa_1e6edc1e",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-07-19T21:48:42Z",
       "side": 1,
       "message": "This could also use a helper macro as this will be a common pattern for legacy drivers.\n\nHow about\n\n```\n#define I2C_PORT_BY_PHANDLE(pha) I2C_PORT_BUS(DT_BUS(pha))\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 14,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "2d5746e8aaa3809051f2154799c29fe69dc6a8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e50481_3a7fe0af",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-21T14:58:36Z",
+      "side": 1,
+      "message": "I don\u0027t like the name `I2C_PORT_BY_PHANDLE(pha)`. It suggests we need to pass the phandle as an argument, not id of a device onto the i2c bus. How about `I2C_PORT_BY_DEV` ?",
+      "parentUuid": "9b4783aa_1e6edc1e",
       "range": {
         "startLine": 25,
         "startChar": 14,
