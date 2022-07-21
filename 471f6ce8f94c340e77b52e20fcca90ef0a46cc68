@@ -16,6 +16,24 @@
       "message": "Does this change need to be duplicated across all of the different firmware-release folders as well https://source.corp.google.com/search?q\u003d%22Perform%20I2C%20transfer%20on%20EC%27s%20I2C%20bus%5Cn%22? Or is this sufficient? @dbrockus",
       "revId": "471f6ce8f94c340e77b52e20fcca90ef0a46cc68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b18f3c2_982b7cca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2022-07-21T20:52:58Z",
+      "side": 1,
+      "message": "Sean, I no longer work on EC so I am not sure if the change needs to propagate to the release or depot3 folders. The change is correct for this instance and you should ping a wider audience to see if others feel it is needed in the other folders",
+      "parentUuid": "f4d6cb86_ee130417",
+      "revId": "471f6ce8f94c340e77b52e20fcca90ef0a46cc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
