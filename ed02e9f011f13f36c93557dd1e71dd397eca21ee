@@ -16,6 +16,24 @@
       "message": "CQ failure -- perhaps this needs to wait for CL:3778403?",
       "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ac879d_b665b2a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2022-07-21T01:15:47Z",
+      "side": 1,
+      "message": "Take that back -- CQ was trying both CLs but failed.\n\nhttps://ci.chromium.org/ui/p/chromeos/builders/cq/firmware-brya-14505-cq/b8808075464163501297/overview",
+      "parentUuid": "2beb91d0_9aae86dc",
+      "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
