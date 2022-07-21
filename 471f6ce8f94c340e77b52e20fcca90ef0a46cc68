@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d6cb86_ee130417",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545672
+      },
+      "writtenOn": "2022-07-21T20:47:28Z",
+      "side": 1,
+      "message": "Does this change need to be duplicated across all of the different firmware-release folders as well https://source.corp.google.com/search?q\u003d%22Perform%20I2C%20transfer%20on%20EC%27s%20I2C%20bus%5Cn%22? Or is this sufficient? @dbrockus",
+      "revId": "471f6ce8f94c340e77b52e20fcca90ef0a46cc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
