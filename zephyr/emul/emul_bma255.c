@@ -18,6 +18,7 @@ LOG_MODULE_REGISTER(emul_bma255);
 #include "emul/emul_bma255.h"
 
 #include "driver/accel_bma2x2.h"
+#include "test/drivers/utils.h"
 
 #define BMA_DATA_FROM_I2C_EMUL(_emul)                                        \
 	CONTAINER_OF(CONTAINER_OF(_emul, struct i2c_common_emul_data, emul), \
@@ -1034,3 +1035,5 @@ struct i2c_emul *bma_emul_get(int ord)
 		return NULL;
 	}
 }
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

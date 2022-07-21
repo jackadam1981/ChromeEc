@@ -477,3 +477,10 @@ void test_set_chipset_to_g3_then_transition_to_s5(void)
 	zassert_equal(POWER_S5, power_get_state(), "Expected S5, got %d",
 		      power_get_state());
 }
+
+int emul_init_stub(const struct device *dev)
+{
+	ARG_UNUSED(dev);
+
+	return 0;
+}

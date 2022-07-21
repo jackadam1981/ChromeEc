@@ -13,6 +13,10 @@
 
 #define PORT 0
 
+/* These 2 lines are needed because we don't define an espi host driver */
+#define DT_DRV_COMPAT zephyr_espi_emul_espi_host
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
+
 ZTEST_USER(espi, test_host_command_get_protocol_info)
 {
 	struct ec_response_get_protocol_info response;

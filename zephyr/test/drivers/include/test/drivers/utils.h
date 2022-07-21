@@ -8,6 +8,7 @@
 
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
+#include <zephyr/ztest.h>
 #include <stddef.h>
 #include <string.h>
 
@@ -460,5 +461,31 @@ void test_free(void *mem);
  *
  */
 void test_set_chipset_to_g3_then_transition_to_s5(void);
+
+/*
+ * Needed for emulators without corresponding DEVICE_DT_DEFINE drivers
+ */
+int emul_init_stub(const struct device *dev);
+
+struct emul_stub_dev_data {
+	/* Stub */
+};
+struct emul_stub_dev_config {
+	/* Stub */
+};
+struct emul_stub_dev_api {
+	/* Stub */
+};
+
+#define EMUL_STUB_DEVICE(n)                                             \
+                                                                        \
+	/* Since this is only stub, allocate the structs once. */       \
+	static struct emul_stub_dev_data stub_data_##n;                 \
+	static struct emul_stub_dev_config stub_config_##n;             \
+	static struct emul_stub_dev_api stub_api_##n;                   \
+                                                                        \
+	DEVICE_DT_INST_DEFINE(n, &emul_init_stub, NULL, &stub_data_##n, \
+			      &stub_config_##n, POST_KERNEL, 1,         \
+			      &stub_api_##n);
 
 #endif /* ZEPHYR_TEST_DRIVERS_INCLUDE_UTILS_H_ */

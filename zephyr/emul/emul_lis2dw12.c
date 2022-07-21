@@ -16,6 +16,7 @@
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_lis2dw12.h"
 #include "i2c.h"
+#include "test/drivers/utils.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(lis2dw12_emul, CONFIG_LIS2DW12_EMUL_LOG_LEVEL);
@@ -313,3 +314,4 @@ void lis2dw12_emul_clear_accel_reading(const struct emul *emul)
 		    &lis2dw12_emul_cfg_##n, &lis2dw12_emul_data_##n)
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_LIS2DW12)
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

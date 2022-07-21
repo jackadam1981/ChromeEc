@@ -16,6 +16,7 @@ LOG_MODULE_REGISTER(emul_bmi);
 
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_bmi.h"
+#include "test/drivers/utils.h"
 
 #include "driver/accelgyro_bmi160.h"
 #include "driver/accelgyro_bmi260.h"
@@ -1111,3 +1112,5 @@ struct i2c_emul *bmi_emul_get(int ord)
 		return NULL;
 	}
 }
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

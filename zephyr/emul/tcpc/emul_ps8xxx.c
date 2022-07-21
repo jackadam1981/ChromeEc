@@ -19,6 +19,7 @@ LOG_MODULE_REGISTER(ps8xxx_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 #include "emul/emul_common_i2c.h"
 #include "emul/tcpc/emul_ps8xxx.h"
 #include "emul/tcpc/emul_tcpci.h"
+#include "test/drivers/utils.h"
 
 #include "driver/tcpm/ps8xxx.h"
 
@@ -618,3 +619,5 @@ static void ps8xxx_emul_reset_rule_before(const struct ztest_unit_test *test,
 }
 ZTEST_RULE(PS8XXX_emul_reset, ps8xxx_emul_reset_rule_before, NULL);
 #endif /* CONFIG_ZTEST_NEW_API */
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
