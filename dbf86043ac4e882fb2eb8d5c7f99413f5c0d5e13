@@ -51,6 +51,24 @@
       "message": "Would you recommend we need to push a FW update for this?  What\u0027s the likelihood of a system hitting this issue? ",
       "revId": "dbf86043ac4e882fb2eb8d5c7f99413f5c0d5e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc3c731_ecd7fe07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-21T23:48:39Z",
+      "side": 1,
+      "message": "We\u0027re not aware of any ongoing issues with dedede around this, probably because of the 45W limit. It looks like the current PDO selection logic prefers earlier indexes when power limited so it will tend to prefer 15V (which fits in with how the platform appears to set the power limit to improve charger efficiency by preferring a 15V source).\n\nSince fixed PDOs are specified to be sent first and in order of increasing voltage, we\u0027d expect to always see the 15V 45W capability first and choose it. The Source Power Rules also force sources that support 20V operation to support 15V/3A operation, so we\u0027d be guaranteed to choose the lower voltage capability provided a standard-compliant charger.\n\nSo we can conclude that it\u0027s currently safe without limited voltage, but this change will ensure it remains safe if PDO selection logic changes (perhaps if DPS were to be enabled) and it enables the following change to the driver that prevents accidental overvoltage at compile time.",
+      "parentUuid": "2462ea66_bdd6d183",
+      "revId": "dbf86043ac4e882fb2eb8d5c7f99413f5c0d5e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
