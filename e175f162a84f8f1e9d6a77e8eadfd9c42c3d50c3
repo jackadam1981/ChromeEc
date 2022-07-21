@@ -16,6 +16,29 @@
       "message": "Adding Craig to the review.\n\nNeed CR+2 before I can submit.",
       "revId": "e175f162a84f8f1e9d6a77e8eadfd9c42c3d50c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f1a6d7_216ff18e",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-07-21T18:36:53Z",
+      "side": 1,
+      "message": "This has to run from the chroot, right? \nI tried following the instructions. I got this error when I ran Reset IntelliSense Database. I will send you a screen shot of the error?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 81
+      },
+      "revId": "e175f162a84f8f1e9d6a77e8eadfd9c42c3d50c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
