@@ -18,6 +18,7 @@
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_ln9310.h"
 #include "i2c.h"
+#include "test/drivers/utils.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(ln9310_emul, CONFIG_LN9310_EMUL_LOG_LEVEL);
@@ -514,3 +515,4 @@ static int emul_ln9310_init(const struct emul *emul,
 		    &ln9310_emul_data_##n)
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_LN9310)
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

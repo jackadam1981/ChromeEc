@@ -19,6 +19,7 @@
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
 #include "i2c.h"
+#include "test/drivers/utils.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(isl923x_emul, CONFIG_ISL923X_EMUL_LOG_LEVEL);
@@ -459,3 +460,5 @@ static void emul_isl923x_reset_before(const struct ztest_unit_test *test,
 }
 ZTEST_RULE(emul_isl923x_reset, emul_isl923x_reset_before, NULL);
 #endif /* CONFIG_ZTEST_NEW_API */
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

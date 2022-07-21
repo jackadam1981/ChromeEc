@@ -20,6 +20,7 @@ LOG_MODULE_REGISTER(syv682x);
 
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_syv682x.h"
+#include "test/drivers/utils.h"
 
 #define EMUL_REG_COUNT (SYV682X_CONTROL_4_REG + 1)
 #define EMUL_REG_IS_VALID(reg) (reg >= 0 && reg < EMUL_REG_COUNT)
@@ -315,3 +316,5 @@ static void emul_syv682x_reset_before(const struct ztest_unit_test *test,
 }
 ZTEST_RULE(emul_syv682x_reset, emul_syv682x_reset_before, NULL);
 #endif /* CONFIG_ZTEST_NEW_API */
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

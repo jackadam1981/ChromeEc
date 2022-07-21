@@ -17,6 +17,7 @@ LOG_MODULE_REGISTER(emul_tcs);
 
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_tcs3400.h"
+#include "test/drivers/utils.h"
 
 #include "driver/als_tcs3400.h"
 
@@ -658,3 +659,5 @@ static void emul_tcs3400_reset_rule_before(const struct ztest_unit_test *test,
 }
 ZTEST_RULE(emul_tcs3400_reset, emul_tcs3400_reset_rule_before, NULL);
 #endif /* CONFIG_ZTEST_NEW_API */
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
