@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35292c0_3948fb9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-21T02:54:51Z",
+      "side": 1,
+      "message": "Looking at the diff it appears that maybe this CL was refactored after this comment was written because `e.shutdown(wait\u003dFalse)` was removed in [d5888ed2e9c8673bfa6a7ca2eda37c341f740f7a](http://go/crrv/d5888ed2e9c8673bfa6a7ca2eda37c341f740f7a/test/run_device_tests.py)",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "8d953c64dcca37954ce33c131684dad565a21d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
