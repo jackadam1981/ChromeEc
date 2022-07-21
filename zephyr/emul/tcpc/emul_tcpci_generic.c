@@ -15,6 +15,7 @@ LOG_MODULE_REGISTER(tcpci_generic_emul, CONFIG_TCPCI_EMUL_LOG_LEVEL);
 #include <ztest.h>
 
 #include "tcpm/tcpci.h"
+#include "test/drivers/utils.h"
 
 #include "emul/emul_common_i2c.h"
 #include "emul/tcpc/emul_tcpci.h"
@@ -170,3 +171,5 @@ tcpci_generic_emul_reset_rule_before(const struct ztest_unit_test *test,
 ZTEST_RULE(tcpci_generic_emul_reset, tcpci_generic_emul_reset_rule_before,
 	   NULL);
 #endif /* CONFIG_ZTEST_NEW_API */
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

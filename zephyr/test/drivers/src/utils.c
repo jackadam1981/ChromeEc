@@ -467,3 +467,14 @@ void test_set_chipset_to_g3_then_transition_to_s5(void)
 	 */
 	k_sleep(K_SECONDS(1));
 }
+
+int emul_init_stub(const struct device *dev)
+{
+	ARG_UNUSED(dev);
+
+	return 0;
+}
+
+/* These 2 lines are needed because we don't define an espi host driver */
+#define DT_DRV_COMPAT zephyr_espi_emul_espi_host
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

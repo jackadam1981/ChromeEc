@@ -19,6 +19,7 @@
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_sn5s330.h"
 #include "i2c.h"
+#include "test/drivers/utils.h"
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(sn5s330_emul, CONFIG_SN5S330_EMUL_LOG_LEVEL);
@@ -368,3 +369,4 @@ static int emul_sn5s330_init(const struct emul *emul,
 		    &sn5s330_emul_data_##n)
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_SN5S330)
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);

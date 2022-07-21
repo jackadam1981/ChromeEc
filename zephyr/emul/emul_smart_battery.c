@@ -20,6 +20,7 @@ LOG_MODULE_REGISTER(smart_battery);
 
 #include "crc8.h"
 #include "battery_smart.h"
+#include "test/drivers/utils.h"
 
 #define SBAT_DATA_FROM_I2C_EMUL(_emul)                                       \
 	CONTAINER_OF(CONTAINER_OF(_emul, struct i2c_common_emul_data, emul), \
@@ -917,3 +918,5 @@ static void emul_sbat_reset(const struct ztest_unit_test *test, void *data)
 }
 
 ZTEST_RULE(emul_smart_battery_reset, NULL, emul_sbat_reset);
+
+DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
