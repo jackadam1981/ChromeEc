@@ -107,7 +107,7 @@ register_corsola_project(
         here / "battery_tentacruel.dts",
         here / "gpio_tentacruel.dts",
         here / "i2c_krabby.dts",
-        here / "interrupts_krabby.dts",
+        here / "interrupts_tentacruel.dts",
         here / "cbi_eeprom.dts",
         here / "led_tentacruel.dts",
         here / "motionsense_krabby.dts",
