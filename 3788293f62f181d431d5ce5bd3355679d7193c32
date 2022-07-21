@@ -16,6 +16,98 @@
       "message": "This CL removes GPIO_VOLTAGE_1P8 flag at `named-gpio` nodes which power rail is VHIF and VSPI. If they are used for reminding their power rail are 1.8V only, I suggest comment them instead. `GPIO_VOLTAGE_1P8` flag is used for GPIOs which power rail is VCC1(3.3V) now. And their detecion level can be switch to 1.8V dynamically. \n\nThis CL also adds `GPIO_VOLTAGE_1P8` flag based on `def-lvol-io-list` node and few useless comments for better comparison since I\u0027m not sure whether 1.8V detection should be enabled. It can be removed later. \n\nPS. This CL is the changes in board DT files for [PR 47996](https://github.com/zephyrproject-rtos/zephyr/pull/47996).",
       "revId": "3788293f62f181d431d5ce5bd3355679d7193c32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa795eaf_437ae497",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-07-21T08:33:01Z",
+      "side": 1,
+      "message": "Move this comment above this line to meet 80 characters per line. (and also below)",
+      "range": {
+        "startLine": 32,
+        "startChar": 54,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "3788293f62f181d431d5ce5bd3355679d7193c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc90ef3f_4a14568c",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-07-21T08:33:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 36,
+        "startChar": 54,
+        "endLine": 36,
+        "endChar": 69
+      },
+      "revId": "3788293f62f181d431d5ce5bd3355679d7193c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a82593e7_646faaef",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-07-21T08:33:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 40,
+        "startChar": 53,
+        "endLine": 40,
+        "endChar": 69
+      },
+      "revId": "3788293f62f181d431d5ce5bd3355679d7193c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b678286_13c16be3",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-07-21T08:33:01Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 149,
+        "startChar": 54,
+        "endLine": 149,
+        "endChar": 69
+      },
+      "revId": "3788293f62f181d431d5ce5bd3355679d7193c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
