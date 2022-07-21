@@ -2178,11 +2178,6 @@ extern struct jump_data mock_jump_data;
 #define CONFIG_DEBUG_ASSERT_REBOOTS
 #endif
 
-#undef CONFIG_MPU
-#ifdef CONFIG_PLATFORM_EC_MPU
-#define CONFIG_MPU
-#endif
-
 #undef CONFIG_CMD_SYSINFO
 #ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_SYSINFO
 #define CONFIG_CMD_SYSINFO
