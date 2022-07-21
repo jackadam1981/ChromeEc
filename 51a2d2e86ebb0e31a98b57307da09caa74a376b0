@@ -16,6 +16,24 @@
       "message": "I have got split this CL into:\n- this CL which modifies common EC code\n- https://crrev.com/c/3779618 CL that changes Zephyr shim layer to create usb_mux_chain structures from DTS\n- https://crrev.com/c/3780413 CL that changes EC test\n- https://crrev.com/c/3780421 CL that changes Zephyr test\n- Bunch of other CLs that update boards code. I tried to group them by baseboard. I am not sure if it is the best way to group boards together, so please comment if any patch should be split or merged with another one.",
       "revId": "51a2d2e86ebb0e31a98b57307da09caa74a376b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0928ade_a3a89b9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-21T17:33:44Z",
+      "side": 1,
+      "message": "Personally, despite not reviewing all the board files, I\u0027d suggest keeping it as one giant CL. By adding all the Cq-Depends, you should be able to keep ToT from ever being broken while you submit this chain. But that won\u0027t stop someone from checking out one of these commits after they are submitted, for instance if they were bisecting a bug. Having 47 commits in a row that don\u0027t build would be pretty annoying and confusing during a bisect, particularly if you didn\u0027t know why it was happening. Generally, we try to ensure that every commit in a CL chain builds cleanly.",
+      "parentUuid": "121c08c4_891a118b",
+      "revId": "51a2d2e86ebb0e31a98b57307da09caa74a376b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
