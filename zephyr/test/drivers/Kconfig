@@ -23,4 +23,7 @@ config LINK_TEST_SUITE_USB_MALFUNCTION_SINK
 config LINK_TEST_SUITE_USBC_ALT_MODE
 	bool "Link and test the usbc_alt_mode tests"
 
+config B240710893
+       bool  "Fix likely type coercion memory error - b/240710893"
+
 source "Kconfig.zephyr"
