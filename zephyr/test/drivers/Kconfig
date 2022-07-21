@@ -23,4 +23,8 @@ config LINK_TEST_SUITE_USB_MALFUNCTION_SINK
 config LINK_TEST_SUITE_USBC_ALT_MODE
 	bool "Link and test the usbc_alt_mode tests"
 
+config MOCK_POWER_SEQUENCE
+	bool "Use a mocked power sequence driver"
+	default n
+
 source "Kconfig.zephyr"
