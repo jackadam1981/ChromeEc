@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6cb3a5_999e6197",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-07-21T09:06:18Z",
+      "side": 1,
+      "message": "Also add usbpd status \"okay\" for ITE ec project joxer and tentacruel.\n\nThis CL need depend on upstream PR, so I add Cq-Depend. After third-party cherry-pick upstream PR, I will correct the depended ID. ",
+      "revId": "7263557753fe1efeda0c5c37f95969a176320a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
