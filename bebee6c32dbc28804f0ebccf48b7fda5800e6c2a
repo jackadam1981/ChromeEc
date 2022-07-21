@@ -134,6 +134,30 @@
       },
       "revId": "bebee6c32dbc28804f0ebccf48b7fda5800e6c2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ffc877_d2ed4d49",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-21T02:42:46Z",
+      "side": 1,
+      "message": "I agree that we don\u0027t want to go into details about RO and RW images but it might be worth at least pointing to the fact that EC has some particular challenges. Maybe something this:\n\n\u003e EC firmware presents some unique challenges because it is designed to support a number of different MCUs and board configurations, each of which is split across separate RO (Read-Only) and RW (Read-Write) applications. For this reason, you must specify the specific board/image pair when requesting defines and includes.\n\nDoes that work?",
+      "parentUuid": "b1f3015a_5e1d6d4a",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 72
+      },
+      "revId": "bebee6c32dbc28804f0ebccf48b7fda5800e6c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
