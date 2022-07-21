@@ -39,6 +39,30 @@
       },
       "revId": "e175f162a84f8f1e9d6a77e8eadfd9c42c3d50c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7788b2b_961f0f70",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-07-21T21:33:23Z",
+      "side": 1,
+      "message": "Yes, these commands need to be run inside the chroot, while the current working directory is src/platform/ec",
+      "parentUuid": "e7f1a6d7_216ff18e",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 81
+      },
+      "revId": "e175f162a84f8f1e9d6a77e8eadfd9c42c3d50c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
