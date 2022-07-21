@@ -52,6 +52,24 @@
       "parentUuid": "a8ac879d_b665b2a4",
       "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1984c4e8_c93ce722",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2022-07-21T02:09:43Z",
+      "side": 1,
+      "message": "No, I cherry-picked both locally and `emerge-brya chromeos-ec` still failed.",
+      "parentUuid": "53770204_ff38f8c3",
+      "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
