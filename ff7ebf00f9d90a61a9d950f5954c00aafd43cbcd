@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f7a4d4_19577c05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-21T06:40:14Z",
+      "side": 1,
+      "message": "These CLs are the changes in board DT files for [PR 47996](https://github.com/zephyrproject-rtos/zephyr/pull/47996). All of them passed \u0027zmake build board_name --clobber\u0027 and \u0027zmake build --all\u0027 eventually. We also checked the LVOL_CTRL registers on our evb and herobrine Chromebook. There are few CLs,[CL 3775794](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3775794), [CL 3775796](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3775796) and [CL 3775797](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3775797), might need further discussion. ",
+      "revId": "ff7ebf00f9d90a61a9d950f5954c00aafd43cbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
