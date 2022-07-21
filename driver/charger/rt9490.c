@@ -32,7 +32,7 @@
 #define CHARGE_V_MIN 3000
 #define CHARGE_V_STEP 10
 #define CHARGE_I_MAX 5000
-#define CHARGE_I_MIN 50
+#define CHARGE_I_MIN 256
 #define CHARGE_I_STEP 10
 #define INPUT_I_MAX 3300
 #define INPUT_I_MIN 100
