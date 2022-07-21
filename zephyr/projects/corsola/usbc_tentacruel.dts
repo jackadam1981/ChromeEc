@@ -12,7 +12,7 @@
 			compatible = "named-usbc-port";
 			reg = <0>;
 			bc12 = <&bc12_port0>;
-			ppc {
+			ppc_port0: ppc {
 				compatible = "richtek,rt1739-ppc";
 				status = "okay";
 				port = <&i2c_usb_c0>;
@@ -64,6 +64,16 @@
 			virtual_mux_1: virtual-mux-1 {
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
+		};
+	};
+	usbc-alt-chips {
+		ppc_port0_syv: ppc-port0 {
+			compatible = "silergy,syv682x";
+			status = "okay";
+			port = <&i2c_usb_c0>;
+			i2c-addr-flags = "SYV682X_ADDR0_FLAGS";
+			frs_en_gpio = <&gpio_usb_c0_frs_en>;
+			alternate-for = <&ppc_port0>;
 		};
 	};
 };
