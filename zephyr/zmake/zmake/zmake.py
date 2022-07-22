@@ -467,6 +467,9 @@ class Zmake:
                     "SYSCALL_INCLUDE_DIRS": str(
                         self.module_paths["ec"] / "zephyr" / "include" / "drivers"
                     ),
+                    "USER_CACHE_DIR": str(
+                        self.module_paths["ec"] / "build" / "zephyr" / "user-cache"
+                    ),
                     "ZMAKE_INCLUDE_DIR": str(generated_include_dir),
                     "ZMAKE_PROJECT_NAME": project.config.project_name,
                 },
@@ -691,7 +694,7 @@ class Zmake:
 
         # Compute the version string.
         version_string = zmake.version.get_version_string(
-            project,
+            project.config.project_name,
             build_dir / "zephyr_base",
             zmake.modules.locate_from_directory(build_dir / "modules"),
         )
@@ -700,8 +703,7 @@ class Zmake:
         # instead of configure, as the tree may have changed since
         # configure was run.
         zmake.version.write_version_header(
-            version_string,
-            build_dir / "include" / "ec_version.h",
+            version_string, build_dir / "include" / "ec_version.h", "zmake"
         )
 
         gcov = "gcov.sh-not-found"

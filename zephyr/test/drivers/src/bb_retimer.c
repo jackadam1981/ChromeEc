@@ -40,7 +40,7 @@ ZTEST_USER(bb_retimer, test_bb_is_fw_update_capable)
 }
 
 /** Test is retimer fw update capable function. */
-ZTEST_USER(bb_retimer, test_bb_set_state)
+ZTEST_USER(bb_retimer_no_tasks, test_bb_set_state)
 {
 	struct pd_discovery *disc;
 	uint32_t conn, exp_conn;
@@ -67,6 +67,7 @@ ZTEST_USER(bb_retimer, test_bb_set_state)
 
 	/* Set UFP role for whole test */
 	tc_set_data_role(USBC_PORT_C1, PD_ROLE_UFP);
+	zassume_equal(PD_ROLE_UFP, pd_get_data_role(USBC_PORT_C1), NULL);
 
 	/* Test none mode */
 	bb_emul_set_reg(emul, BB_RETIMER_REG_CONNECTION_STATE, 0x12144678);
@@ -162,8 +163,7 @@ ZTEST_USER(bb_retimer, test_bb_set_state)
 	zassert_false(ack_required, "ACK is never required for BB retimer");
 	conn = bb_emul_get_reg(emul, BB_RETIMER_REG_CONNECTION_STATE);
 	exp_conn = BB_RETIMER_USB_DATA_ROLE |
-		   BB_RETIMER_DATA_CONNECTION_PRESENT |
-		   BB_RETIMER_DP_CONNECTION;
+		   BB_RETIMER_DATA_CONNECTION_PRESENT;
 	zassert_equal(exp_conn, conn, "Expected state 0x%lx, got 0x%lx",
 		      exp_conn, conn);
 
@@ -176,8 +176,7 @@ ZTEST_USER(bb_retimer, test_bb_set_state)
 	zassert_false(ack_required, "ACK is never required for BB retimer");
 	conn = bb_emul_get_reg(emul, BB_RETIMER_REG_CONNECTION_STATE);
 	exp_conn = BB_RETIMER_USB_DATA_ROLE |
-		   BB_RETIMER_DATA_CONNECTION_PRESENT |
-		   BB_RETIMER_DP_CONNECTION | BB_RETIMER_IRQ_HPD;
+		   BB_RETIMER_DATA_CONNECTION_PRESENT | BB_RETIMER_IRQ_HPD;
 	zassert_equal(exp_conn, conn, "Expected state 0x%lx, got 0x%lx",
 		      exp_conn, conn);
 
@@ -190,14 +189,13 @@ ZTEST_USER(bb_retimer, test_bb_set_state)
 	zassert_false(ack_required, "ACK is never required for BB retimer");
 	conn = bb_emul_get_reg(emul, BB_RETIMER_REG_CONNECTION_STATE);
 	exp_conn = BB_RETIMER_USB_DATA_ROLE |
-		   BB_RETIMER_DATA_CONNECTION_PRESENT |
-		   BB_RETIMER_DP_CONNECTION | BB_RETIMER_HPD_LVL;
+		   BB_RETIMER_DATA_CONNECTION_PRESENT | BB_RETIMER_HPD_LVL;
 	zassert_equal(exp_conn, conn, "Expected state 0x%lx, got 0x%lx",
 		      exp_conn, conn);
 }
 
 /** Test setting different options for DFP role */
-ZTEST_USER(bb_retimer, test_bb_set_dfp_state)
+ZTEST_USER(bb_retimer_no_tasks, test_bb_set_dfp_state)
 {
 	union tbt_mode_resp_device device_resp;
 	union tbt_mode_resp_cable cable_resp;
@@ -211,6 +209,7 @@ ZTEST_USER(bb_retimer, test_bb_set_dfp_state)
 	set_test_runner_tid();
 
 	tc_set_data_role(USBC_PORT_C1, PD_ROLE_DFP);
+	zassume_equal(PD_ROLE_DFP, pd_get_data_role(USBC_PORT_C1), NULL);
 
 	/* Test PD mux none mode with DFP should clear all bits in state */
 	bb_emul_set_reg(emul, BB_RETIMER_REG_CONNECTION_STATE, 0x12144678);
@@ -571,5 +570,8 @@ ZTEST_USER(bb_retimer, test_bb_console_cmd)
 	rv = shell_execute_cmd(get_ec_shell(), "bb 1 w 2 x");
 	zassert_equal(EC_ERROR_PARAM4, rv, "rv=%d", rv);
 }
+
+ZTEST_SUITE(bb_retimer_no_tasks, drivers_predicate_pre_main, NULL, NULL, NULL,
+	    NULL);
 
 ZTEST_SUITE(bb_retimer, drivers_predicate_post_main, NULL, NULL, NULL, NULL);

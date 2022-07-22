@@ -85,7 +85,6 @@
 		};
 		en_pp5000_usb_a1_vbus: en_pp5000_usb_a1_vbus_x {
 			gpios = <&gpiof 5 GPIO_OUTPUT_LOW>;
-			enum-name = "GPIO_EN_PP5000_USB_A1_VBUS";
 		};
 		usb_a1_fault_odl {
 			gpios = <&gpiof 4 GPIO_INPUT>;
@@ -119,7 +118,6 @@
 		};
 		ec_entering_rw {
 			gpios = <&gpio0 3 GPIO_OUTPUT_LOW>;
-			enum-name = "GPIO_ENTERING_RW";
 		};
 		charger_prochot_odl {
 			gpios = <&gpiob 1 GPIO_INPUT>;
@@ -183,9 +181,8 @@
 		gpio_usb_c0_tcpc_rst: usb_c0_tcpc_rst {
 			gpios = <&gpioc 0 GPIO_OUTPUT_LOW>;
 		};
-		en_pp5000_usb_a0_vbus: en_pp5000_usb_a0_vbus_x {
+		en_pp5000_usb_a0_vbus: en_pp5000_usb_a0_vbus {
 			gpios = <&gpio6 0 GPIO_OUTPUT_LOW>;
-			enum-name = "GPIO_EN_PP5000_USB_A0_VBUS";
 		};
 		gpio_hdmi_prsnt_odl: hdmi_prsnt_odl {
 			gpios = <&gpio3 7 GPIO_INPUT>;
@@ -221,6 +218,10 @@
 		ccd_mode_odl {
 			gpios = <&gpioe 5 GPIO_INPUT>;
 			enum-name = "GPIO_CCD_MODE_ODL";
+		};
+		/* unimplemented GPIOs */
+		entering-rw {
+			enum-name = "GPIO_ENTERING_RW";
 		};
 	};
 
