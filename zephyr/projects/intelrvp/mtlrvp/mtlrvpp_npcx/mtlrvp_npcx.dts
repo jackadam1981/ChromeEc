@@ -88,6 +88,15 @@
 		ngpios = <16>;
 	};
 
+	pca95xx_2: pca95xx@23 {
+		compatible = "nxp,pca95xx";
+		label = "PCA95XX";
+		reg = <0x23>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <16>;
+	};
+
 	rvp_board_id: rvp-board-id {
 		compatible = "intel,rvp-board-id";
 

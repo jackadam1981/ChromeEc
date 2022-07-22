@@ -328,11 +328,18 @@ static inline int tcpm_auto_toggle_supported(int port)
 int tcpm_enable_drp_toggle(int port);
 #endif
 
+void board_debug_accessory(bool enable) __attribute__((weak));
+
 static inline int tcpm_debug_accessory(int port, bool enable)
 {
+	int rv = EC_SUCCESS;
+
 	if (tcpc_config[port].drv->debug_accessory)
-		return tcpc_config[port].drv->debug_accessory(port, enable);
-	return EC_SUCCESS;
+		rv = tcpc_config[port].drv->debug_accessory(port, enable);
+	if (!rv && board_debug_accessory)
+		board_debug_accessory(enable);
+
+	return rv;
 }
 
 static inline int tcpm_debug_detach(int port)
