@@ -789,8 +789,7 @@ __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = { [PWM_CH_KBLIGHT] = {
 					      .channel = 0,
-					      .flags = PWM_CONFIG_DSLEEP,
-					      .freq_hz = 10000,
+					      .freq_hz = 2400,
 				      } };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
