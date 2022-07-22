@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "632100d1_d3c2c812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-07-22T21:30:09Z",
+      "side": 1,
+      "message": "This is fine for copy/paste, but keep in mind that shell script style guide says to always quote variable containing strings.\n\nhttps://google.github.io/styleguide/shellguide.html#quoting",
+      "revId": "2261b2f38d636406d8d92abda54c83fb89ecb3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
