@@ -354,6 +354,15 @@
 			enum-name = "IOEX_USB_C3_HBR_LS_EN";
 			no-auto-init;
 		};
+		/*
+		 * Use dip switch signal ESPI_TESTCRD_DET to indicate
+		 * 1 - Intel CCD
+		 * 0 - Google CCD
+		 */
+		intel_ccd_det: espi-testcrd-det {
+			gpios = <&pca95xx_2 8 GPIO_INPUT>;
+			no-auto-init;
+		};
 		usb-c2-c3-prochot-n {
 			gpios = <&ioex_c2_port0 0 GPIO_INPUT>;
 			no-auto-init;

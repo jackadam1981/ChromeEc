@@ -28,6 +28,7 @@
 #include "task.h"
 #include "tusb1064.h"
 #include "usb_mux.h"
+#include "usb_tc_sm.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -49,6 +50,9 @@ enum ioex_port {
 #endif
 	IOEX_COUNT
 };
+
+/* Intel Debug device attached; if true, don't force power shutdown */
+static bool intel_ccd_attached;
 
 /* USB-C ports */
 enum usbc_port {
@@ -102,29 +106,63 @@ const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_aic_gpios) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
+bool is_intel_intel_ccd_attached(void)
+{
+	return intel_ccd_attached;
+}
+
 static void board_connect_c0_sbu_deferred(void)
 {
-	enum pd_power_role prole;
+	char *dev_name;
+	bool google_ccd_attached = false;
 
-	if (gpio_get_level(GPIO_CCD_MODE_ODL)) {
-		CPRINTS("Default AUX line connected");
-		/* Default set the SBU lines to AUX mode */
-		ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
-		ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
-	} else {
-		prole = pd_get_power_role(USBC_PORT_C0);
-		CPRINTS("%s debug device is attached",
-			prole == PD_ROLE_SINK ? "Servo V4C/SuzyQ" : "Intel");
+	intel_ccd_attached = false;
 
-		if (prole == PD_ROLE_SINK) {
-			/* Set the SBU lines to Google CCD mode */
-			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 1);
-			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
+	/*
+	 * With a jumper setting on RVP, user is forcing SBU lines to be always
+	 * connected to Intel DBC.
+	 * Intel DBC follows USB 3.1 Debug Class Specification over Type-C.
+	 */
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(intel_ccd_det))) {
+		intel_ccd_attached = true;
+		tc_set_power_role(USBC_PORT_C0, PD_ROLE_SINK);
+		dev_name = "Intel DBC";
+	} else if (!gpio_get_level(GPIO_CCD_MODE_ODL)) {
+		/*
+		 * User must ensure to isolate the VBUS on Intel I3C debugger
+		 * to differentiate Google CCD with Intel I3C CCD.
+		 */
+		if (pd_get_power_role(USBC_PORT_C0) == PD_ROLE_SINK) {
+			google_ccd_attached = true;
+			dev_name = "Servo V4C/SuzyQ";
 		} else {
+			intel_ccd_attached = true;
+			dev_name = "Intel I3C";
+		}
+	}
+
+	if (intel_ccd_attached || google_ccd_attached) {
+		ppc_set_sbu(USBC_PORT_C0, 1);
+
+		if (intel_ccd_attached) {
 			/* Set the SBU lines to Intel CCD mode */
 			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
 			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 0);
+		} else {
+			/* Set the SBU lines to Google CCD mode */
+			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 1);
+			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
 		}
+
+		CPRINTS("%s debug device is attached", dev_name);
+	} else {
+		ppc_set_sbu(USBC_PORT_C0, 0);
+
+		/* Default set the SBU lines to AUX mode */
+		ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
+		ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
+
+		CPRINTS("Default AUX line connected");
 	}
 }
 DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
