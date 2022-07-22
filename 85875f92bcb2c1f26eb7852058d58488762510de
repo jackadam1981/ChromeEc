@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4d51dc_fcfe796b",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-22T05:01:11Z",
+      "side": 1,
+      "message": "Looking at the builder output you can see that this is being run from a different directory (`/mnt/host/source/src/scripts`):\n\n```\nINFO    - Writing JSON report /mnt/host/source/src/scripts/twister-out/twister.json\nINFO    - Writing xunit report /mnt/host/source/src/scripts/twister-out/twister.xml...\nINFO    - Writing xunit report /mnt/host/source/src/scripts/twister-out/twister_report.xml...\n```\n\nSince we specify `build_dir` explicitly, we can do the same with twister via `--outdir ${platform_ec}/twister_out`",
+      "range": {
+        "startLine": 214,
+        "startChar": 12,
+        "endLine": 214,
+        "endChar": 58
+      },
+      "revId": "85875f92bcb2c1f26eb7852058d58488762510de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
