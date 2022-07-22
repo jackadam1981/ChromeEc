@@ -191,8 +191,17 @@ def test(opts):
     cmd = [platform_ec / "twister", "--outdir", platform_ec / "twister-out"]
     if opts.code_coverage:
         # Tell Twister to collect coverage data. We must specify an explicit platform
-        # type in this case, as well.
-        cmd.extend(["--coverage", "-p", "native_posix"])
+        # type in this case, as well. We also use llvm-cov as the code coverage tool,
+        # but need to wrap it in a script because it must be invoked as "llvm-cov gcov"
+        cmd.extend(
+            [
+                "--coverage",
+                "-p",
+                "native_posix",
+                "--gcov-tool",
+                platform_ec / "util" / "llvm-cov.sh",
+            ]
+        )
     ret = subprocess.run(cmd, check=True).returncode
     if ret:
         return ret
