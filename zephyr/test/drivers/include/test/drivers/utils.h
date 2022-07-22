@@ -52,101 +52,6 @@ void test_set_chipset_to_g3(void);
 #define zassume_unreachable(msg, ...) zassert_unreachable(msg, ##__VA_ARGS__)
 
 /**
- * @brief Assume that @a cond is true
- * @param cond Condition to check
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_true(cond, msg, ...) zassert_true(cond, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that @a cond is false
- * @param cond Condition to check
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_false(cond, msg, ...) zassert_false(cond, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that @a cond is 0 (success)
- * @param cond Condition to check
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_ok(cond, msg, ...) zassert_ok(cond, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that @a ptr is NULL
- * @param ptr Pointer to compare
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_is_null(ptr, msg, ...) zassert_is_null(ptr, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that @a ptr is not NULL
- * @param ptr Pointer to compare
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_not_null(ptr, msg, ...) \
-	zassert_not_null(ptr, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that @a a equals @a b
- *
- * @a a and @a b won't be converted and will be compared directly.
- *
- * @param a Value to compare
- * @param b Value to compare
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_equal(a, b, msg, ...) zassert_equal(a, b, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that @a a does not equal @a b
- *
- * @a a and @a b won't be converted and will be compared directly.
- *
- * @param a Value to compare
- * @param b Value to compare
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_not_equal(a, b, msg, ...) \
-	zassert_not_equal(a, b, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that @a a equals @a b
- *
- * @a a and @a b will be converted to `void *` before comparing.
- *
- * @param a Value to compare
- * @param b Value to compare
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_equal_ptr(a, b, msg, ...) \
-	zassert_equal_ptr(a, b, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that @a a is within @a b with delta @a d
- *
- * @param a Value to compare
- * @param b Value to compare
- * @param d Delta
- * @param msg Optional message to print if the assumption fails
- */
-#define zassume_within(a, b, d, msg, ...) \
-	zassert_within(a, b, d, msg, ##__VA_ARGS__)
-
-/**
- * @brief Assume that 2 memory buffers have the same contents
- *
- * This macro calls the final memory comparison assumption macro.
- * Using double expansion allows providing some arguments by macros that
- * would expand to more than one values (ANSI-C99 defines that all the macro
- * arguments have to be expanded before macro call).
- *
- * @param ... Arguments, see @ref zassume_mem_equal__
- *            for real arguments accepted.
- */
-#define zassume_mem_equal(...) zassert_mem_equal(##__VA_ARGS__)
-
-/**
  * Run the host command to get the charge state for a given charger number.
  *
  * This function assumes a successful host command processing and will make a
@@ -451,22 +356,57 @@ int host_cmd_motion_sense_spoof(uint8_t sensor_num, uint8_t enable,
  */
 void host_cmd_typec_discovery(int port, enum typec_partner_type partner_type,
 			      void *response, size_t response_size);
+/**
+ * @brief Run the host command to get the PD alternative mode response.
+ *
+ * @param port          The USB-C port number
+ * @param response      Destination for command response.
+ * @param response_size Destination of response size from request params.
+ */
+void host_cmd_usb_pd_get_amode(
+	uint8_t port, uint16_t svid_idx,
+	struct ec_params_usb_pd_get_mode_response *response,
+	int *response_size);
 
 /**
- * Run the host command to control PD port behavior. For now, this function only
- * supports entering and exiting modes.
+ * Run the host command to control PD port behavior, with the sub-command of
+ * TYPEC_CONTROL_COMMAND_ENTER_MODE
+ *
+ * @param port	The USB-C port number
+ * @param mode	Mode to enter
+ */
+void host_cmd_typec_control_enter_mode(int port, enum typec_mode mode);
+
+/**
+ * Run the host command to control PD port behavior, with the sub-command of
+ * TYPEC_CONTROL_COMMAND_EXIT_MODES
  *
  * @param port      The USB-C port number
- * @param command   Sub-command to perform on the port
- * @param mode      The mode to enter if command is
- *                  TYPEC_CONTROL_COMMAND_ENTER_MODE.
- * @param response_size Number of bytes in response
  */
-void host_cmd_typec_control(int port, enum typec_control_command command,
-			    enum typec_mode mode);
+void host_cmd_typec_control_exit_modes(int port);
+
+/**
+ * Run the host command to control PD port behavior, with the sub-command of
+ * TYPEC_CONTROL_COMMAND_USB_MUX_SET
+ *
+ * @param port		The USB-C port number
+ * @param mux_set	Mode and mux index to set
+ */
+void host_cmd_typec_control_usb_mux_set(int port,
+					struct typec_usb_mux_set mux_set);
+
+/**
+ * Run the host command to control PD port behavior, with the sub-command of
+ * TYPEC_CONTROL_COMMAND_CLEAR_EVENTS
+ *
+ * @param port		The USB-C port number
+ * @param events	Events to clear for the port (see PD_STATUS_EVENT_*
+ *			definitions for options)
+ */
+void host_cmd_typec_control_clear_events(int port, uint32_t events);
 
 #define GPIO_ACOK_OD_NODE DT_NODELABEL(gpio_acok_od)
-#define GPIO_ACOK_OD_PIN  DT_GPIO_PIN(GPIO_ACOK_OD_NODE, gpios)
+#define GPIO_ACOK_OD_PIN DT_GPIO_PIN(GPIO_ACOK_OD_NODE, gpios)
 
 /**
  * Set whether or not AC is enabled.
@@ -533,5 +473,12 @@ void *test_malloc(size_t bytes);
  * @param mem Pointer to the memory
  */
 void test_free(void *mem);
+
+/**
+ * @brief Force the chipset to state G3 and then transition to S3 and finally
+ * S5.
+ *
+ */
+void test_set_chipset_to_g3_then_transition_to_s5(void);
 
 #endif /* ZEPHYR_TEST_DRIVERS_INCLUDE_UTILS_H_ */
