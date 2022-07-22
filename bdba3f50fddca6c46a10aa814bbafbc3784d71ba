@@ -63,6 +63,30 @@
       },
       "revId": "bdba3f50fddca6c46a10aa814bbafbc3784d71ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "157dfb42_af8f2243",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-22T17:35:48Z",
+      "side": 1,
+      "message": "To avoid changing the original struct, I think you will need to make different versions of this struct for C and C++.",
+      "parentUuid": "ac20c1f6_4514d764",
+      "range": {
+        "startLine": 1920,
+        "startChar": 1,
+        "endLine": 1920,
+        "endChar": 17
+      },
+      "revId": "bdba3f50fddca6c46a10aa814bbafbc3784d71ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
