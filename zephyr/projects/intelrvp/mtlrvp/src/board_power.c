@@ -22,9 +22,15 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 #if CONFIG_X86_NON_DSX_PWRSEQ_MTL
 #define X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS 50
 
+extern bool ccd_attached;
+
 void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS;
+
+	/* Do not shutdown; debug device is attached */
+	if (ccd_attached)
+		return;
 
 	/* Turn off PCH_RMSRST to meet tPCH12 */
 	power_signal_set(PWR_EC_PCH_RSMRST, 0);

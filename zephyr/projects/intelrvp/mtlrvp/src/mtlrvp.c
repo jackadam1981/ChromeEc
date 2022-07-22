@@ -28,6 +28,7 @@
 #include "task.h"
 #include "tusb1064.h"
 #include "usb_mux.h"
+#include "usb_tc_sm.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -49,6 +50,9 @@ enum ioex_port {
 #endif
 	IOEX_COUNT
 };
+
+/* Debug device attached or not */
+bool ccd_attached;
 
 /* USB-C ports */
 enum usbc_port {
@@ -107,19 +111,34 @@ static void board_connect_c0_sbu_deferred(void)
 	enum pd_power_role prole;
 
 	if (gpio_get_level(GPIO_CCD_MODE_ODL)) {
+		ccd_attached = false;
+
+		ppc_set_sbu(0, 0);
 		CPRINTS("Default AUX line connected");
 		/* Default set the SBU lines to AUX mode */
 		ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
 		ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
 	} else {
+		ccd_attached = true;
+
+		ppc_set_sbu(0, 1);
 		prole = pd_get_power_role(USBC_PORT_C0);
 		CPRINTS("%s debug device is attached",
 			prole == PD_ROLE_SINK ? "Servo V4C/SuzyQ" : "Intel");
 
 		if (prole == PD_ROLE_SINK) {
-			/* Set the SBU lines to Google CCD mode */
-			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 1);
-			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
+			int det_value = gpio_pin_get_dt(
+				GPIO_DT_FROM_NODELABEL(intel_ccd_det));
+			/* Set the SBU lines to I3C CCD mode */
+			if (det_value == 1) {
+				ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
+				ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 0);
+				tc_set_power_role(USBC_PORT_C0, PD_ROLE_SINK);
+			} else {
+				/* Set the SBU lines to Google CCD mode */
+				ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 1);
+				ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 1);
+			}
 		} else {
 			/* Set the SBU lines to Intel CCD mode */
 			ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);
