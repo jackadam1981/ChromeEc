@@ -384,9 +384,15 @@ uint16_t tcpc_get_alert_status(void)
 	return 0;
 }
 
+/* Called when the charge manager has switched to a new port. */
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 			    int charge_mv)
 {
+	/* Blink alert if insufficient power per system_can_boot_ap(). */
+	int insufficient_power =
+		(charge_ma * charge_mv) <
+		(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000);
+	led_alert(insufficient_power);
 }
 
 __override int extpower_is_present(void)
@@ -497,7 +503,18 @@ __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 }
 
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
-const struct pwm_t pwm_channels[] = {};
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_LED_RED] = {
+		.channel = 2,
+		.flags = PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 2000,
+	},
+	[PWM_CH_LED_WHITE] = {
+		.channel = 1,
+		.flags = PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 2000,
+	},
+};
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* Thermistors */

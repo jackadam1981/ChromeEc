@@ -24,6 +24,7 @@
 #define CONFIG_USB_PD_VBUS_DETECT_CHARGER
 #define CONFIG_USB_PD_5V_CHARGER_CTRL
 #define CONFIG_CHARGER_OTG
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 0
 
 /* PWM */
 #define CONFIG_PWM
@@ -78,6 +79,8 @@
 #include "registers.h"
 
 enum pwm_channel {
+	PWM_CH_LED_RED,
+	PWM_CH_LED_WHITE,
 	PWM_CH_COUNT,
 };
 
@@ -110,6 +113,9 @@ enum charge_port {
 	CHARGE_PORT_TYPEC0,
 	CHARGE_PORT_BARRELJACK,
 };
+
+/* Board specific handlers */
+void led_alert(int enable);
 
 /* Pin renaming */
 #define GPIO_AC_PRESENT GPIO_BJ_ADP_PRESENT_L
