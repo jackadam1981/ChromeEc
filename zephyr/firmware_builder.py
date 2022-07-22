@@ -48,6 +48,23 @@ def build(opts):
                 parse_buildlog(build_log, metric, variant.upper())
     with open(opts.metrics, "w") as file:
         file.write(json_format.MessageToJson(metric_list))
+
+    # Twister-based build
+    platform_ec = zephyr_dir.parent
+    cmd = [
+        platform_ec / "twister",
+        "--outdir",
+        platform_ec / "twister-out",
+        "--build-only",
+    ]
+    if opts.code_coverage:
+        # Tell Twister to collect coverage data. We must specify an explicit platform
+        # type in this case, as well.
+        cmd.extend(["--coverage", "-p", "native_posix"])
+    ret = subprocess.run(cmd, check=True).returncode
+    if ret:
+        return ret
+
     return 0
 
 
@@ -188,7 +205,12 @@ def test(opts):
 
     # Twister-based tests
     platform_ec = zephyr_dir.parent
-    cmd = [platform_ec / "twister", "--outdir", platform_ec / "twister-out"]
+    cmd = [
+        platform_ec / "twister",
+        "--outdir",
+        platform_ec / "twister-out",
+        "--test-only",
+    ]
     if opts.code_coverage:
         # Tell Twister to collect coverage data. We must specify an explicit platform
         # type in this case, as well.
