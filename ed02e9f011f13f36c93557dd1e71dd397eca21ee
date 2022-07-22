@@ -123,6 +123,24 @@
       "message": "the CQ failure is explained here:\nhttps://b.corp.google.com/issues/238773780#comment16",
       "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad5a118_fe1ed392",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528447
+      },
+      "writtenOn": "2022-07-22T18:59:25Z",
+      "side": 1,
+      "message": "crrev/c/3781209 was submitted to Disable Kconfig checker from ebuild",
+      "parentUuid": "489f9071_32a781c8",
+      "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
