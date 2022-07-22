@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c486a43_44b0cdab",
+        "filename": "zephyr/zephyr_to_resultdb.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-22T16:31:43Z",
+      "side": 1,
+      "message": "I think that if status was null, we should either:\n1. remove the test from the results (my preference)\n2. Mark it as skipped",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "242b170ef92e093ae77e38a6e89de34ccadf1b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0177d9fd_ac988926",
+        "filename": "zephyr/zephyr_to_resultdb.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-22T16:31:43Z",
+      "side": 1,
+      "message": "Please add a todo and file a bug to add all of the configs as either tags or variants.",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "242b170ef92e093ae77e38a6e89de34ccadf1b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745296e4_f6098838",
+        "filename": "zephyr/zephyr_to_resultdb.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-22T16:31:43Z",
+      "side": 1,
+      "message": "You an add `-v` to argparse for verbose logging if you\u0027d like to leave this",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "242b170ef92e093ae77e38a6e89de34ccadf1b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cf6987_801cb12b",
+        "filename": "zephyr/zephyr_to_resultdb.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-22T16:31:43Z",
+      "side": 1,
+      "message": "This should probably throw?",
+      "revId": "242b170ef92e093ae77e38a6e89de34ccadf1b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
