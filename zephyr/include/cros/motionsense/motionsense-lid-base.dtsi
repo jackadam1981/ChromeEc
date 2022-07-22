@@ -1,0 +1,22 @@
+/ {
+        motionsense-mutex {
+                compatible = "cros-ec,motionsense-mutex";
+
+                lid_mutex: lid-mutex {
+                };
+
+                base_mutex: base-mutex {
+                };
+        };
+
+        motionsense-rotation-ref {
+                compatible = "cros-ec,motionsense-rotation-ref";
+
+                lid_rot_ref: lid-rotation-ref {
+                };
+
+                base_rot_ref: base-rotation-ref {
+                };
+        };
+
+};
