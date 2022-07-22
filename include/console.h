@@ -16,6 +16,10 @@
 #include "zephyr_console_shim.h"
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Define uart_shell_stop() and uart_shell_start() functions to start/stop the
  * running shell. To avoid having a guard on the build type, non-Zephyr builds
@@ -167,7 +171,7 @@ cprintf(enum console_channel channel, const char *format, ...);
 
 /**
  * Print formatted output with timestamp. This is like:
- *   cprintf(channel, "[%pT " + format + "]\n", PRINTF_TIMESTAMP_NOW, ...)
+ *   cprintf(channel, "[<TIMESTAMP> " + format + "]\n", ...)
  *
  * @param channel	Output channel
  * @param format	Format string; see printf.h for valid formatting codes
@@ -270,5 +274,9 @@ void console_has_input(void);
 			  ~CMD_FLAG_RESTRICTED))
 
 #endif /* HAS_TASK_CONSOLE */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_CONSOLE_H */
