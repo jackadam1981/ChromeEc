@@ -16,6 +16,23 @@
       "message": "Verified with lantis, landrid and landia.",
       "revId": "ac0a52490dcfcee5a50a5ad279192ec46824d4c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f5e83d5_8d05a1d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-07-22T16:25:08Z",
+      "side": 1,
+      "message": "100Hz seems much too low and would cause a flicker. How about 1Khz?",
+      "revId": "ac0a52490dcfcee5a50a5ad279192ec46824d4c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
