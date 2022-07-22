@@ -87,6 +87,30 @@
       },
       "revId": "bdba3f50fddca6c46a10aa814bbafbc3784d71ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27bdd30_94df1d14",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-22T17:43:13Z",
+      "side": 1,
+      "message": "I don\u0027t think it makes a difference really, the struct is used from `struct host_cmd_handler_args` which has `void *response`. So the response field isn\u0027t inlined with the args which means it isn\u0027t actually getting bigger by default. Since it\u0027s not really valid to send a 0 byte `ec_response_rand_num` this change shouldn\u0027t affect any behavior from all the reference to ec_response_rand_num I\u0027ve been able to find.",
+      "parentUuid": "157dfb42_af8f2243",
+      "range": {
+        "startLine": 1920,
+        "startChar": 1,
+        "endLine": 1920,
+        "endChar": 17
+      },
+      "revId": "bdba3f50fddca6c46a10aa814bbafbc3784d71ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
