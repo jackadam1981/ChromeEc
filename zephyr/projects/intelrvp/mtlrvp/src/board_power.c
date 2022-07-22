@@ -16,6 +16,7 @@
 
 #include "gpio_signal.h"
 #include "gpio/gpio.h"
+#include "intelrvp.h"
 
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
@@ -25,6 +26,10 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS;
+
+	/* Do not shutdown; Intel debug device is attached */
+	if (is_intel_ccd_attached())
+		return;
 
 	/* Turn off PCH_RMSRST to meet tPCH12 */
 	power_signal_set(PWR_EC_PCH_RSMRST, 0);
