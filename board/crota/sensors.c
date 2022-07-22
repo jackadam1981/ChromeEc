@@ -16,6 +16,7 @@
 #include "thermal.h"
 #include "temp_sensor/thermistor.h"
 
+#define SENSOR_SOC_THRESHOLD 51
 /* ADC configuration */
 const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SENSOR_1_SOC] = {
@@ -178,7 +179,7 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-#define THERMAL_CPU              \
+#define THERMAL_CPU_0              \
 	{                        \
 		.temp_host = { \
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(77), \
@@ -187,10 +188,30 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 		.temp_host_release = { \
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(77), \
 		}, \
-		.temp_fan_off = C_TO_K(39), \
-		.temp_fan_max = C_TO_K(52), \
+		.temp_fan_off = C_TO_K(40), \
+		.temp_fan_max = C_TO_K(51), \
 	}
-__maybe_unused static const struct ec_thermal_config thermal_cpu = THERMAL_CPU;
+__maybe_unused static const struct ec_thermal_config thermal_cpu_0 = THERMAL_CPU_0;
+
+#define THERMAL_CPU_1              \
+	{                        \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(77), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(77), \
+		}, \
+		.temp_fan_off = C_TO_K(51), \
+		.temp_fan_max = C_TO_K(53), \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_cpu_1 = THERMAL_CPU_1;
+
+#define THERMAL_DDR                                                 \
+	{                                                               \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_ddr =
+	THERMAL_DDR;
 
 #define THERMAL_CHARGER                                                 \
 	{                                                               \
@@ -201,14 +222,43 @@ __maybe_unused static const struct ec_thermal_config thermal_charger =
 
 #define THERMAL_AMBIENT                                                 \
 	{                                                               \
-		.temp_fan_off = C_TO_K(26), .temp_fan_max = C_TO_K(31), \
 	}
 __maybe_unused static const struct ec_thermal_config thermal_ambient =
 	THERMAL_AMBIENT;
 
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_1_SOC] = THERMAL_CPU,
+	[TEMP_SENSOR_1_SOC] = THERMAL_CPU_0,
+	[TEMP_SENSOR_2_DDR] = THERMAL_DDR,
 	[TEMP_SENSOR_3_CHARGER] = THERMAL_CHARGER,
 	[TEMP_SENSOR_4_AMBIENT] = THERMAL_AMBIENT,
 };
+
+struct ec_thermal_config temp_sensor_1_fan_set_0[] = {
+	[TEMP_SENSOR_1_SOC] = THERMAL_CPU_0,
+};
+
+struct ec_thermal_config temp_sensor_1_fan_set_1[] = {
+	[TEMP_SENSOR_1_SOC] = THERMAL_CPU_1,
+};
+
+static void config_thermal_params(void)
+{
+	int thermal_sensor_soc;
+	int soc_temp_c;
+
+	temp_sensor_read(TEMP_SENSOR_1_SOC, &thermal_sensor_soc);
+	soc_temp_c = K_TO_C(thermal_sensor_soc);
+
+	ccprints("----------------------------");
+	ccprints("1🐶 🐶 %d", soc_temp_c);
+
+	if (soc_temp_c > SENSOR_SOC_THRESHOLD)
+		thermal_params[TEMP_SENSOR_1_SOC] =
+			temp_sensor_1_fan_set_1[TEMP_SENSOR_1_SOC];
+	else
+		thermal_params[TEMP_SENSOR_1_SOC] =
+			temp_sensor_1_fan_set_0[TEMP_SENSOR_1_SOC];
+}
+DECLARE_HOOK(HOOK_TICK, config_thermal_params, HOOK_PRIO_INIT_I2C + 1);
+
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
