@@ -5,8 +5,8 @@
 
 / {
 	batteries {
-		default_battery: ap16l5j {
-			compatible = "panasonic,ap16l5j", "battery-smart";
+		default_battery: pc_vp_bp141 {
+			compatible = "smp,pc-vp-bp141", "battery-smart";
 		};
 	};
 };
