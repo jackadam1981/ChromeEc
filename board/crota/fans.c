@@ -33,14 +33,14 @@ static const struct fan_conf fan_conf_0 = {
 };
 
 static const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 3500,
-	.rpm_start = 3500,
-	.rpm_max = 4300,
+	.rpm_min = 2200,
+	.rpm_start = 2200,
+	.rpm_max = 4000,
 };
 
 static const struct fan_rpm fan_rpm_1 = {
-	.rpm_min = 4300,
-	.rpm_start = 4300,
+	.rpm_min = 4000,
+	.rpm_start = 4000,
 	.rpm_max = 4700,
 };
 
@@ -122,16 +122,12 @@ void board_override_fan_control(int fan, int *tmp)
 
 	int pct;
 	int sensor_soc;
-	int sensor_ambient;
 	int sensor_charger;
 	bool fan_triggered;
 
 	sensor_soc = thermal_fan_percent(thermal_params[0].temp_fan_off,
 					 thermal_params[0].temp_fan_max,
 					 C_TO_K(tmp[0]));
-	sensor_ambient = thermal_fan_percent(thermal_params[3].temp_fan_off,
-					     thermal_params[3].temp_fan_max,
-					     C_TO_K(tmp[3]));
 	sensor_charger = thermal_fan_percent(thermal_params[2].temp_fan_off,
 					     thermal_params[2].temp_fan_max,
 					     C_TO_K(tmp[2]));
@@ -141,7 +137,7 @@ void board_override_fan_control(int fan, int *tmp)
 		pct = sensor_charger;
 	} else {
 		fan_triggered = false;
-		pct = MIN(sensor_soc, sensor_ambient);
+		pct = sensor_soc;
 	}
 
 	/* transfer percent to rpm */
