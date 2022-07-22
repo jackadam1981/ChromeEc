@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e25929c_6f99afe5",
+        "filename": "zephyr/zephyr_to_resultdb.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-07-22T17:53:38Z",
+      "side": 1,
+      "message": "The removing of test from results is handled on line 103.  I\u0027ll clean this up as we shouldn\u0027t hit this scenario here.",
+      "parentUuid": "8c486a43_44b0cdab",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "242b170ef92e093ae77e38a6e89de34ccadf1b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0177d9fd_ac988926",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "459e4755_1e339fab",
+        "filename": "zephyr/zephyr_to_resultdb.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-07-22T17:53:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "745296e4_f6098838",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "242b170ef92e093ae77e38a6e89de34ccadf1b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0cf6987_801cb12b",
@@ -83,6 +131,24 @@
       "writtenOn": "2022-07-22T16:31:43Z",
       "side": 1,
       "message": "This should probably throw?",
+      "revId": "242b170ef92e093ae77e38a6e89de34ccadf1b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f06e68_4b4b88e7",
+        "filename": "zephyr/zephyr_to_resultdb.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-07-22T17:53:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0cf6987_801cb12b",
       "revId": "242b170ef92e093ae77e38a6e89de34ccadf1b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
