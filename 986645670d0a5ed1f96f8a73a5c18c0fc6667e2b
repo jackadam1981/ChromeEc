@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t the vendor be dynapack and (already existing) smp?\nThis should just be the vendor.",
       "revId": "986645670d0a5ed1f96f8a73a5c18c0fc6667e2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a36cb5_654d0a19",
+        "filename": "zephyr/dts/bindings/vendor-prefixes.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-07-22T01:10:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "671bce7b_ca25d803",
+      "revId": "986645670d0a5ed1f96f8a73a5c18c0fc6667e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
