@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7056c9bb_b7e479e7",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-22T23:56:57Z",
+      "side": 1,
+      "message": "Could we see if we can share this so we don\u0027t need to duplicate the CLI args?",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "1b9428aaa4a3e08b5d905491f72d7e3ee48c79fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "676949b1_d05a13ef",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 1
