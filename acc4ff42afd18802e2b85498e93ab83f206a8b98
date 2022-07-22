@@ -16,6 +16,24 @@
       "message": "Please make this \u0027\u003e 1\u0027\n\nThis is required to pass the clang-format presubmit",
       "revId": "acc4ff42afd18802e2b85498e93ab83f206a8b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0d11a8_5d57a23e",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-07-22T03:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c285a27_8c2a3338",
+      "revId": "acc4ff42afd18802e2b85498e93ab83f206a8b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
