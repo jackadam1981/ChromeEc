@@ -106,6 +106,23 @@
       "parentUuid": "1984c4e8_c93ce722",
       "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489f9071_32a781c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-22T11:04:57Z",
+      "side": 1,
+      "message": "the CQ failure is explained here:\nhttps://b.corp.google.com/issues/238773780#comment16",
+      "revId": "ed02e9f011f13f36c93557dd1e71dd397eca21ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
