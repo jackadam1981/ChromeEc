@@ -1597,10 +1597,11 @@ static void revive_battery(int *need_static)
 	battery_seems_dead = battery_was_removed = 0;
 }
 
+static int sleep_usec = CHARGE_POLL_PERIOD_CHARGE;
+
 /* Main loop */
 void charger_task(void *u)
 {
-	int sleep_usec;
 	int battery_critical;
 	int need_static = 1;
 	const struct charger_info *const info = charger_get_info();

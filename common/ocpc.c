@@ -482,6 +482,8 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 
 	/* Obtain the drive from our PID controller. */
 	if ((ocpc->last_vsys != OCPC_UNINIT) && (ph > PHASE_PRECHARGE)) {
+		extern int ocpc_max_step_up_mv;
+
 		drive = (k_p * error / k_p_div) +
 			(k_i * ocpc->integral / k_i_div) +
 			(k_d * derivative / k_d_div);
@@ -490,8 +492,8 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 		 * VSYS rather quickly, but we'll be conservative on
 		 * increasing VSYS.
 		 */
-		if (drive > 10)
-			drive = 10;
+		if (drive > ocpc_max_step_up_mv)
+			drive = ocpc_max_step_up_mv;
 		CPRINTS_DBG("drive = %d", drive);
 	}
 

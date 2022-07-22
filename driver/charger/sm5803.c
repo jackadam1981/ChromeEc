@@ -1967,3 +1967,73 @@ const struct charger_drv sm5803_drv = {
 	.dump_registers = &command_sm5803_dump,
 #endif
 };
+
+#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+static int update_ms = 0;
+int ocpc_max_step_up_mv = 10;
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	if (update_ms <= 0) {
+		return 0;
+	}
+	return update_ms * MSEC;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_UNAVAILABLE;
+}
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_UNAVAILABLE;
+}
+
+static int command_ocpcrate(int argc, char **argv)
+{
+	int rate;
+	char *e;
+
+	if (argc == 1) {
+		if (update_ms <= 0) {
+			CPRINTS("Default rate");
+		} else {
+			CPRINTS("%d ms", update_ms);
+		}
+	} else if (argc == 2) {
+		rate = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+		update_ms = rate;
+	} else {
+		return EC_ERROR_PARAM_COUNT;
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(ocpcrate, command_ocpcrate,
+			"[interval_ms]",
+			"Get/set charge state machine update rate");
+
+static int command_ocpcstep(int argc, char **argv)
+{
+	int step;
+	char *e;
+
+	if (argc == 1) {
+		CPRINTS("%d mV", ocpc_max_step_up_mv);
+	} else if (argc == 2) {
+		step = strtoi(argv[1], &e, 0);
+		if (*e || step <= 0)
+			return EC_ERROR_PARAM1;
+		ocpc_max_step_up_mv = step;
+	} else {
+		return EC_ERROR_PARAM_COUNT;
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(ocpcstep, command_ocpcstep,
+		        "[step_mv]",
+		        "Get/set maximum OCPC positive step");
+#endif
