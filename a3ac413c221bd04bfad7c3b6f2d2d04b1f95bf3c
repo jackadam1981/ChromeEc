@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15b2840_2ed7a54f",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-22T13:05:16Z",
+      "side": 1,
+      "message": "Nice, one more thing, you can save pins_node-\u003epwm_pins[j] in a temporary variable and then this call would become nice and compact.",
+      "range": {
+        "startLine": 77,
+        "startChar": 21,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "a3ac413c221bd04bfad7c3b6f2d2d04b1f95bf3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
