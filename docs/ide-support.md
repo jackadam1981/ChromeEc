@@ -66,6 +66,10 @@ includes selectable sub-configurations for every board/image pair.
 CrOS IDE is a VSCode extension to enable code completion and navigation for
 ChromeOS source files.
 
+Note: CrOS IDE uses the VSCode extension `clangd` for code completion and
+navigation. The installation of CrOS IDE disables the built-in
+`C/C++ IntelliSense` because it is not compatible with `clangd`.
+
 Support for `platform/ec` is not available out of the box (yet), but can be
 manually enabled following these steps.
 
