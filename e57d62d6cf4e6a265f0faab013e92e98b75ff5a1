@@ -16,6 +16,23 @@
       "message": "can you also fix it in the zephyr/CMakeLists.txt in another CL?",
       "revId": "e57d62d6cf4e6a265f0faab013e92e98b75ff5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef98e97_e2b38c80",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-23T01:58:08Z",
+      "side": 1,
+      "message": "this seems to not be there?",
+      "revId": "e57d62d6cf4e6a265f0faab013e92e98b75ff5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
