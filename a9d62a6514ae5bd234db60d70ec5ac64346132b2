@@ -34,6 +34,24 @@
       "parentUuid": "a0cf0fe6_b9ee6508",
       "revId": "a9d62a6514ae5bd234db60d70ec5ac64346132b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b6b0f2_03d389a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-23T00:21:07Z",
+      "side": 1,
+      "message": "In terms of the reduced coverage with the new code, this is error handling code that is not provided for by the emul code, unfortunately.",
+      "parentUuid": "35b00f4e_901fdb59",
+      "revId": "a9d62a6514ae5bd234db60d70ec5ac64346132b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
