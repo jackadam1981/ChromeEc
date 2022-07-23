@@ -16,6 +16,24 @@
       "message": "Is this something we could add test coverage for using the GPIO emulator?",
       "revId": "a9d62a6514ae5bd234db60d70ec5ac64346132b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b00f4e_901fdb59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-23T00:18:34Z",
+      "side": 1,
+      "message": "I added the config to the drivers test to enable using this code, so that we get the coverage of the new code.\nLooking at the emul code, it doesn\u0027t support setting input values on an output port, so without changes, we can\u0027t test the case where the output is set to one value,and separately reads the pin value as something different (maybe I can look at enhancing that code to handle that case).",
+      "parentUuid": "a0cf0fe6_b9ee6508",
+      "revId": "a9d62a6514ae5bd234db60d70ec5ac64346132b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
