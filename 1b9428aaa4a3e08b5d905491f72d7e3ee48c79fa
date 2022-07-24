@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f4df36_815f74ff",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-07-24T16:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7056c9bb_b7e479e7",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "1b9428aaa4a3e08b5d905491f72d7e3ee48c79fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "676949b1_d05a13ef",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-22T21:57:30Z",
       "side": 1,
       "message": "I think you need the coverage flags in the build",
+      "revId": "1b9428aaa4a3e08b5d905491f72d7e3ee48c79fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe8f62a_73078880",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-07-24T16:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "676949b1_d05a13ef",
       "revId": "1b9428aaa4a3e08b5d905491f72d7e3ee48c79fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
