@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932455b8_ab0b5669",
+        "filename": "zephyr/projects/corsola/cbi_tentacruel.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-25T10:59:27Z",
+      "side": 1,
+      "message": "use tab to indent",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "8152170fe7fa333d4f9b87f4308d26f6316a6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09932557_013d0a09",
+        "filename": "zephyr/projects/corsola/motionsense_tentacruel.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-25T10:59:27Z",
+      "side": 1,
+      "message": "I guess this doesn\u0027t work..?\n\nThis node path is identical to the one above. You\u0027ll need to give it another name.",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 37
+      },
+      "revId": "8152170fe7fa333d4f9b87f4308d26f6316a6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
