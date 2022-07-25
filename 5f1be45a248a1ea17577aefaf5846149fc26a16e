@@ -22,6 +22,30 @@
       },
       "revId": "5f1be45a248a1ea17577aefaf5846149fc26a16e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5c6e3b_b179b4bd",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_host_sleep.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-25T20:03:24Z",
+      "side": 1,
+      "message": "Added this declaration by error. Its not required. Already defined in another file.\n\nRemoving sleep_start_suspend from this file.",
+      "parentUuid": "67250cda_ae605572",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 69
+      },
+      "revId": "5f1be45a248a1ea17577aefaf5846149fc26a16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
