@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f8e869_ddf5d960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T06:48:39Z",
+      "side": 1,
+      "message": "Sorry for late updates. Currently, all 10 CLs rely on [PR 47996](https://github.com/zephyrproject-rtos/zephyr/pull/47996) which already landed on upstream repo. (Please refer [CL 3782768](https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3782768), [CL 3782769](https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3782769), and [CL 3782770](https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3782770)) I also modified the other nodes if there are a few nodes doesn\u0027t follow the rule in `name-gpios` for `hyphen-case` request. Please feel free to give me your comment.\n",
+      "revId": "210ee0dcb569f24458f3655290f2dbc1409e57b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

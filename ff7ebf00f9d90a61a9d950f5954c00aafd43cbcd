@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "078d1292_19c5def3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T06:48:39Z",
+      "side": 1,
+      "message": "Yes, it doese. All 10 CLs rely on [PR 47996](https://github.com/zephyrproject-rtos/zephyr/pull/47996) which already landed on upstream repo. Please refer [CL 3782768](https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3782768), [CL 3782769](https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3782769), and [CL 3782770](https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3782770) for more detail.",
+      "parentUuid": "60c6edcd_7a0937f3",
+      "revId": "ff7ebf00f9d90a61a9d950f5954c00aafd43cbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "58f7a4d4_19577c05",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfdfdd43_6bfb8c5e",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T06:48:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d2241f7_0691c6b2",
+      "revId": "ff7ebf00f9d90a61a9d950f5954c00aafd43cbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b7b2a97_b7bbb863",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-07-21T16:32:51Z",
       "side": 1,
       "message": "Device tree node names should use `hyphen-case`.",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 25
+      },
+      "revId": "ff7ebf00f9d90a61a9d950f5954c00aafd43cbcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0476a4_0cf41e9a",
+        "filename": "docs/zephyr/zephyr_gpio.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T06:48:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b7b2a97_b7bbb863",
       "range": {
         "startLine": 251,
         "startChar": 8,
