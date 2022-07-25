@@ -186,6 +186,25 @@ def bundle_firmware(opts):
     write_metadata(opts, info)
 
 
+def upload_results(platform_ec):
+    """Uploads Zephyr Test results to ResultDB"""
+    json_path = platform_ec / "twister-out" / "twister.json"
+    cmd = [
+        "rdb",
+        "stream",
+        "-new",
+        "-realm chromium:public",
+        "--",
+        platform_ec / "util/zephyr_to_result_db.py",
+        "--result=" + str(json_path),
+        "--upload=True",
+    ]
+
+    ret = subprocess.run(cmd, check=True).returncode
+
+    return ret
+
+
 def test(opts):
     """Runs all of the unit tests for Zephyr firmware"""
     metrics = firmware_pb2.FwTestMetricList()
@@ -206,6 +225,7 @@ def test(opts):
     # Twister-based tests
     platform_ec = zephyr_dir.parent
     run_twister(platform_ec, opts, "--test-only")
+    upload_results(platform_ec)
 
     if opts.code_coverage:
         build_dir = platform_ec / "build" / "zephyr"
