@@ -77,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcd1390_badd4f63",
+        "filename": "zephyr/projects/nissa/nivviks/overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff6cd674_3013ca64",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "d346d6c16babdacbc7043fa9e11984617a024bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4d2929c_bd267068",
@@ -90,6 +114,30 @@
       "writtenOn": "2022-07-21T16:36:00Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 121,
+        "startChar": 13,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "d346d6c16babdacbc7043fa9e11984617a024bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b9fa836_577ff4d5",
+        "filename": "zephyr/projects/nissa/nivviks/overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4d2929c_bd267068",
       "range": {
         "startLine": 121,
         "startChar": 13,
