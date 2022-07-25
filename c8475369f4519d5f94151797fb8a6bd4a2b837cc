@@ -34,6 +34,24 @@
       "parentUuid": "36ab01f8_a62daa7d",
       "revId": "c8475369f4519d5f94151797fb8a6bd4a2b837cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a741300_43d8d78f",
+        "filename": "zephyr/test/drivers/src/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-25T15:59:13Z",
+      "side": 1,
+      "message": "I\u0027m more or less OK with this, but if a cleanup action in the `_after` function failed, it might not be the worst thing if the test executable just stopped. If it continues, the tests that run afterward are running in an unexpected state.",
+      "parentUuid": "d636c413_b642ccb7",
+      "revId": "c8475369f4519d5f94151797fb8a6bd4a2b837cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
