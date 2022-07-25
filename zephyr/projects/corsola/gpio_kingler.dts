@@ -10,6 +10,15 @@
 		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
 	};
 
+	gpiox: gpio@0 {
+		status = "okay";
+		compatible = "zephyr,gpio-emul";
+		reg = <0 4>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		label = "GPIO_EMUL";
+	};
+
 	named-gpios {
 		compatible = "named-gpios";
 
@@ -139,7 +148,7 @@
 			enum-name = "GPIO_PACKET_MODE_EN";
 		};
 		gpio_x_ec_gpio2: x_ec_gpio2 {
-			gpios = <&gpiod 4 GPIO_INPUT>;
+			gpios = <&gpiox 0 GPIO_INPUT>;
 		};
 		ap_sysrst_odl_r: ap_sysrst_odl_r {
 			gpios = <&gpioa 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8 |
@@ -247,4 +256,11 @@
 			&lvol_io40 /*  GPIO40 GPIO_EC_BL_EN_OD */
 		>;
 	};
+};
+
+&uart3 {
+	current-speed = <115200>;
+	status = "okay";
+	pinctrl-0 = <&uart3_sin_gpd4 &uart3_sout_gpd6>;
+	pinctrl-names = "default";
 };

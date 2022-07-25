@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include <zephyr/drivers/uart.h>
+#include <kernel.h>
+
 #include "charge_manager.h"
 #include "console.h"
 #include "driver/ppc/rt1718s.h"
@@ -72,3 +75,84 @@ int pd_snk_is_vbus_provided(int port)
 	/* TODO: use ADC? */
 	return tcpm_check_vbus_level(port, VBUS_PRESENT);
 }
+
+/*
+ * reg table:
+ * CR_UART3 = 400E 4000h
+ *
+ * UMDSL
+ * ERD bit(5)
+ * ETD bit(4)
+ *
+ *
+ * MDMA3 = 4001 1300h
+ */
+static uint8_t recv_buf[8];
+
+static const struct device* uart = DEVICE_DT_GET(DT_NODELABEL(uart3));
+
+struct uart_npcx_config {
+	struct uart_reg *inst;
+};
+
+struct mdma_reg {
+	volatile uint32_t CTL;
+	volatile uint32_t SRCB;
+	volatile uint32_t DSTB;
+	volatile uint32_t TCNT;
+	volatile uint32_t unused;
+	volatile uint32_t CDST;
+	volatile uint32_t CTCNT;
+};
+
+/* receive dma */
+static volatile struct mdma_reg *const mdma3_ch0 = (void*)(0x40011300);
+
+/* transmit dma */
+/*
+static volatile struct mdma_reg *const mdma3_ch1 = (void*)(0x40011320);
+*/
+
+static int command_uart_test(int argc, char **argv)
+{
+	memset(recv_buf, 0x56, sizeof(recv_buf));
+
+	mdma3_ch0->CTL |= BIT(0);
+
+	uart_poll_out(uart, 't');
+	uart_poll_out(uart, 'e');
+	uart_poll_out(uart, 's');
+	uart_poll_out(uart, 't');
+
+	usleep(10 * MSEC);
+	CPRINTS(" %d %d %d %d %d %d %d %d", recv_buf[0], recv_buf[1], recv_buf[2], recv_buf[3],
+			recv_buf[4], recv_buf[5], recv_buf[6], recv_buf[7]);
+
+	CPRINTS(" CTL: %08x", mdma3_ch0->CTL);
+	CPRINTS(" DSTB: %08x", mdma3_ch0->DSTB);
+	CPRINTS(" TCNT: %08x", mdma3_ch0->TCNT);
+	CPRINTS(" CDST: %08x", mdma3_ch0->CDST);
+	CPRINTS(" CTCNT: %08x", mdma3_ch0->CTCNT);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(a, command_uart_test, NULL, "");
+
+static int kingler_uart_init(const struct device *unused)
+{
+	const struct uart_npcx_config *const config = uart->config;
+	struct uart_reg *const inst = config->inst;
+	volatile uint8_t *pwdwn_ctl9 = (void*)0x4000D026;
+
+	*pwdwn_ctl9 &= ~BIT(2);
+
+	mdma3_ch0->DSTB = (uintptr_t)recv_buf;
+	mdma3_ch0->TCNT = sizeof(recv_buf);
+
+	inst->UMDSL |= BIT(5);
+
+	CPRINTS("\x1b[1;31m%s done\x1b[m", __func__);
+
+	return 0;
+}
+SYS_INIT(kingler_uart_init, APPLICATION, 1);
