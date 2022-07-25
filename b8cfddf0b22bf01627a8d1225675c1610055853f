@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e7aaa1_94c51d0e",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-07-25T08:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d14bf8_c88e3512",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "b8cfddf0b22bf01627a8d1225675c1610055853f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "740937fe_a1a40190",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d58d1a_6d1d7cba",
+        "filename": "zephyr/projects/corsola/cbi_tentacruel.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-07-25T08:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "740937fe_a1a40190",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "b8cfddf0b22bf01627a8d1225675c1610055853f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53c05323_7eb744c2",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-25T07:31:47Z",
       "side": 1,
       "message": "Space between \u0027#\u0027 and \u0027Sensor\u0027",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "b8cfddf0b22bf01627a8d1225675c1610055853f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89102397_7f8b9fba",
+        "filename": "zephyr/projects/corsola/prj_tentacruel.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-07-25T08:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c05323_7eb744c2",
       "range": {
         "startLine": 15,
         "startChar": 1,
