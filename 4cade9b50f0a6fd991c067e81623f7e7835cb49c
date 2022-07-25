@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3160533_0b0c0e4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-07-25T02:33:57Z",
+      "side": 1,
+      "message": "Error when compiling common/acpi.c\n\ncommon/acpi.c: In function \u0027acpi_ap_to_ec\u0027:\ncommon/acpi.c:319:4: error: a label can only be part of a statement and a declaration is not a statement\n    char ts_str[PRINTF_TIMESTAMP_BUF_SIZE];\n    ^~~~\n\nProbalby add bracket to fix it ?",
+      "revId": "4cade9b50f0a6fd991c067e81623f7e7835cb49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
