@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d14bf8_c88e3512",
+        "filename": "zephyr/projects/corsola/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-25T07:31:47Z",
+      "side": 1,
+      "message": "Use the same naming style as other files: sensor_tentacruel.c",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "b8cfddf0b22bf01627a8d1225675c1610055853f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740937fe_a1a40190",
+        "filename": "zephyr/projects/corsola/cbi_tentacruel.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-25T07:31:47Z",
+      "side": 1,
+      "message": "upper case FW_BASE_NONE",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "b8cfddf0b22bf01627a8d1225675c1610055853f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c05323_7eb744c2",
+        "filename": "zephyr/projects/corsola/prj_tentacruel.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-25T07:31:47Z",
+      "side": 1,
+      "message": "Space between \u0027#\u0027 and \u0027Sensor\u0027",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "b8cfddf0b22bf01627a8d1225675c1610055853f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
