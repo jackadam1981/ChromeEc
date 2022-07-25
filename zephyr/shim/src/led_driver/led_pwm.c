@@ -8,12 +8,15 @@
 #include "ec_commands.h"
 #include "led.h"
 #include "util.h"
+#include "console.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/pwm.h>
 #include <zephyr/logging/log.h>
 
 #if DT_HAS_COMPAT_STATUS_OKAY(COMPAT_PWM_LED)
+
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 LOG_MODULE_REGISTER(pwm_led, LOG_LEVEL_ERR);
 
@@ -98,8 +101,13 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {
 		int br_color = pins_node[i]->br_color;
 
-		if (br_color != -1)
+		if (pins_node[i]->led_id != led_id) {
+			continue;
+		}
+
+		if (br_color != -1) {
 			brightness_range[br_color] = 100;
+		}
 	}
 }
 
@@ -109,6 +117,10 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 
 	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {
 		int br_color = pins_node[i]->br_color;
+
+		if (pins_node[i]->led_id != led_id) {
+			continue;
+		}
 
 		if ((br_color != -1) && (brightness[br_color] != 0)) {
 			color_set = true;
