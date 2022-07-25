@@ -16,6 +16,24 @@
       "message": "If this happens, does the test fail or succeed?",
       "revId": "c8475369f4519d5f94151797fb8a6bd4a2b837cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d636c413_b642ccb7",
+        "filename": "zephyr/test/drivers/src/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-25T15:55:59Z",
+      "side": 1,
+      "message": "The test is marked as passed. `after` function is not called in test thread so it is not possible to mark the test as failed at this stage. `TC_ERROR` only print a fail message, so it is possible to see the message in logs when examining a failure of further test. We cannot use zaasert or zassume, because `after` function is running in the main thread and it would stop execution of the whole executable.",
+      "parentUuid": "36ab01f8_a62daa7d",
+      "revId": "c8475369f4519d5f94151797fb8a6bd4a2b837cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
