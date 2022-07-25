@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc43fc80_0ed52b39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-25T16:41:42Z",
+      "side": 1,
+      "message": "#3, it basically allows us to a-la-cart add these so you can easily split them into separate tests or combine them later on.",
+      "parentUuid": "b847b73a_7f143acd",
+      "revId": "0c0c4e57f97325575d26552bfb7eb49405518aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39986723_e7a411ef",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-25T16:32:00Z",
       "side": 1,
       "message": "Is this a direct copy of `zephyr/test/drivers/overlay.dts`?",
+      "revId": "0c0c4e57f97325575d26552bfb7eb49405518aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e627c81f_1f56d35e",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-25T16:41:42Z",
+      "side": 1,
+      "message": "Sorry, I forgot to commit the delete overlay.dts, it\u0027s a 1:1 `mv`",
+      "parentUuid": "39986723_e7a411ef",
       "revId": "0c0c4e57f97325575d26552bfb7eb49405518aa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
