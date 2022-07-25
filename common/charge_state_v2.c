@@ -977,10 +977,10 @@ static int charge_request(int voltage, int current)
 #endif
 	}
 
-	if (curr.ac) {
-		if (prev_volt != voltage || prev_curr != current)
-			CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
-	}
+	// if (curr.ac) {
+	// 	if (prev_volt != voltage || prev_curr != current)
+	// 		CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
+	// }
 
 	/*
 	 * Set current before voltage so that if we are just starting
