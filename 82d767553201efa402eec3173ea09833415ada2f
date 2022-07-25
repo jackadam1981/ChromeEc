@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd1a744_846b6c1a",
+        "filename": "zephyr/projects/herobrine/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d0f6c8d_c0f90b5f",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 19
+      },
+      "revId": "82d767553201efa402eec3173ea09833415ada2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a82d855_0474accf",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-21T16:42:26Z",
       "side": 1,
       "message": "In upstream Zephyr, how will users set 1.8V support for a pin that isn\u0027t a GPIO?  Zephyr upstream doesn\u0027t include the \u0027named-gpios\u0027 node, so there doesn\u0027t appear to be any place where users can configure an I2C bus for 1.8V operation.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 54
+      },
+      "revId": "82d767553201efa402eec3173ea09833415ada2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fca11bb_f45c206a",
+        "filename": "zephyr/projects/herobrine/gpio.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:43:55Z",
+      "side": 1,
+      "message": "I think it depends on how the application layer configures gpio pins via gpio api functions. On chromium ec, we use `named-gpios` DT node to configure pins in the [shimmed driver](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/shim/src/gpio.c#285). On Zephyr upstream repo, there are no strict rules between gpio api functions and DT nodes. The basic principle is that users need to add a DT node with `phandle-array` property for GPIO module cells at the board DT file. Then, use GPIO DT macros to get necessary information used by gpio api such as `gpio_pin_configure_dt()`. \n\nHence, we might configure i2c port to 1.8V without `named-gpios` DT node by:\n1. Declare a DT nod with `phandle-array` property for GPIO module cells first.\n2. Add gpios which i2c port is 1.8V with GPIO_VOLTAGE_1P8 flag in this DT node. \n3. Use `gpio_pin_configure_dt` gpio api during initialization in application layer",
+      "parentUuid": "7a82d855_0474accf",
       "range": {
         "startLine": 231,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf664e52_c7bef32e",
+        "filename": "zephyr/projects/herobrine/gpio_evoker.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c004fb40_6579527a",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 19
+      },
+      "revId": "82d767553201efa402eec3173ea09833415ada2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f6c5d98_6b54b66c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-21T16:33:41Z",
       "side": 1,
       "message": "And the rest too",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 19
+      },
+      "revId": "82d767553201efa402eec3173ea09833415ada2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7944a1_addcd956",
+        "filename": "zephyr/projects/herobrine/gpio_hoglin.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f6c5d98_6b54b66c",
       "range": {
         "startLine": 228,
         "startChar": 2,
