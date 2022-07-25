@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e59d74_7443ce12",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b102e1ed_99272e08",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "75056cd04557c75a931aca33a43b79ab39650c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e147e99_f81a1f21",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "The comment only reminds the reviewers that the detection level has been changed in this CL since we already support \u0027GPIO_VOLTAGE_1P8\u0027 flag. Comparing with the last board DT file, only gpio40 and gpioe3 have been changed to 1.8V detection level. I will remove them later.",
       "parentUuid": "5e147e99_f81a1f21",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "75056cd04557c75a931aca33a43b79ab39650c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3847b6a_cf5443a3",
+        "filename": "zephyr/projects/corsola/gpio_kingler.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85430a69_1453a2c1",
       "range": {
         "startLine": 53,
         "startChar": 0,
