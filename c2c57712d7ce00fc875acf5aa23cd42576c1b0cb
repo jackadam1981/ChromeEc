@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a9f3c99_a824eb9f",
+        "filename": "zephyr/projects/nissa/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-25T19:38:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "69b8e9e6_e2fdccfe",
+      "revId": "c2c57712d7ce00fc875acf5aa23cd42576c1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db972a0c_a6c8cf7f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-22T23:39:14Z",
       "side": 1,
       "message": "is it \"Detect failure to enter Sleep state and recover\"?",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 61
+      },
+      "revId": "c2c57712d7ce00fc875acf5aa23cd42576c1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e0f806d_78f40343",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-25T19:38:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db972a0c_a6c8cf7f",
       "range": {
         "startLine": 111,
         "startChar": 15,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9d41eb_ad24c4d0",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-25T19:38:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "508a9387_4792f964",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 11
+      },
+      "revId": "c2c57712d7ce00fc875acf5aa23cd42576c1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bfcc97c_2e76910a",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-22T23:39:14Z",
       "side": 1,
       "message": "nit: add function comments",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "c2c57712d7ce00fc875acf5aa23cd42576c1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bebbc1b_24d54411",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_host_sleep.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-25T19:38:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bfcc97c_2e76910a",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced41e2b_e162185f",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-25T19:38:36Z",
+      "side": 1,
+      "message": "Its mask.\n\n\n--------------------------------------------------------\n\n/* A timeout occurred when this bit is set */\n#define EC_HOST_RESUME_SLEEP_TIMEOUT 0x80000000\n\n/*\n * The mask defining which bits correspond to the number of sleep transitions,\n * as well as the maximum number of suspend line transitions that will be\n * reported back to the host.\n */\n#define EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK 0x7FFFFFFF\n\n\n--------------------------------------------------\n\nThis logic is carried forward from legacy implementation. Its being used to handle the timeout scenario.\n\nstatic void sleep_transition_timeout(struct k_work *work)\n{\n\t/* Mark the timeout. */\n\tsleep_signal_transitions |\u003d EC_HOST_RESUME_SLEEP_TIMEOUT;\n\t....\n\t....\n\t....\n}",
+      "parentUuid": "53fc9b17_cf85e1da",
+      "range": {
+        "startLine": 267,
+        "startChar": 33,
+        "endLine": 267,
+        "endChar": 70
+      },
+      "revId": "c2c57712d7ce00fc875acf5aa23cd42576c1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63968d56_50ddbc2b",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-07-22T23:39:14Z",
       "side": 1,
       "message": "overridable?\nif unused may be remove it and add it when needed?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "c2c57712d7ce00fc875acf5aa23cd42576c1b0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6113f84a_052bd876",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-25T19:38:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63968d56_50ddbc2b",
       "range": {
         "startLine": 11,
         "startChar": 0,
