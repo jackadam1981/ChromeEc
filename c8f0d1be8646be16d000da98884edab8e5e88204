@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77167db3_d5bd7ce3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-25T19:20:08Z",
+      "side": 1,
+      "message": "To verify that DP mode entry still doesn\u0027t loop, can you do this?\n```\ncd platform/ec\nzmake -j 72 -D test test-drivers-usbc_alt_mode\n```\nIt should pass before and after your CL.",
+      "revId": "c8f0d1be8646be16d000da98884edab8e5e88204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc9de72_69c1be0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-25T19:20:08Z",
+      "side": 1,
+      "message": "Looks good generally.",
+      "revId": "c8f0d1be8646be16d000da98884edab8e5e88204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea2d20e8_e60a8ced",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-25T19:20:08Z",
+      "side": 1,
+      "message": "Can you add something like this?\n```\n/* TODO(b/235984702#comment21): Refactor alt mode modules to better support mode reentry. */\n```",
+      "revId": "c8f0d1be8646be16d000da98884edab8e5e88204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
