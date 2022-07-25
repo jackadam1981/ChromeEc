@@ -34,6 +34,24 @@
       "parentUuid": "8f4f292f_ba282cbf",
       "revId": "7c5c89343d41d96fb81849d534b113e3679885f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5461783f_9c533456",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-07-25T19:43:12Z",
+      "side": 1,
+      "message": "Apparently there\u0027s this new lint enforcer called \"black\". I wonder if my chroot just doesn\u0027t have it. I\u0027ll try update_chroot (shudders) and try again.\n\n(whoops forgot to submit this)\n\nEven after updating my chroot, I have this error. Adding Jeremy for any insights.\n\n```\nERROR: Traceback (most recent call last):\n  File \"/usr/local/google/home/aaboagye/src/cros/.repo/repo/hooks.py\", line 343, in _ExecuteHookViaImport\n    context[\u0027main\u0027](**kwargs)\n  File \"/usr/local/google/home/aaboagye/src/cros/src/repohooks/pre-upload.py\", line 2510, in main\n    if _run_project_hooks(project, proj_dir\u003dworktree):\n  File \"/usr/local/google/home/aaboagye/src/cros/src/repohooks/pre-upload.py\", line 2455, in _run_project_hooks\n    hooks \u003d _get_project_hooks(presubmit, config_file)\n  File \"/usr/local/google/home/aaboagye/src/cros/src/repohooks/pre-upload.py\", line 2370, in _get_project_hooks\n    enabled_hooks, disabled_hooks \u003d _get_override_hooks(config)\n  File \"/usr/local/google/home/aaboagye/src/cros/src/repohooks/pre-upload.py\", line 2288, in _get_override_hooks\n    raise ValueError(f\u0027{_CONFIG_FILE}: [{SECTION}]: unknown keys: \u0027\nValueError: PRESUBMIT.cfg: [Hook Overrides]: unknown keys: {\u0027black_check\u0027}\n\nFailed to run main() for pre-upload hook; see traceback above.\n```",
+      "parentUuid": "aeb066f7_6fdfa3e8",
+      "revId": "7c5c89343d41d96fb81849d534b113e3679885f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
