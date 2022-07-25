@@ -545,3 +545,11 @@ int svdm_get_hpd_gpio(int port)
 
 	return gpio_get_level(GPIO_EC_AP_USB_C0_HPD);
 }
+
+#ifndef CONFIG_BATTERY_PRESENT_GPIO
+enum battery_present battery_is_present(void)
+{
+	/* Shotzo has no battery, so always return no battery present. */
+	return BP_NO;
+}
+#endif
