@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b847b73a_7f143acd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-25T16:32:00Z",
+      "side": 1,
+      "message": "Are these extra Kconfigs intended primarily to\n1. support only running certain tests during development?\n2. support running with zmake during the  transition period?\n3. make it easier to move separated tests back into the same binary later if we want to?\n4. All of the above?",
+      "revId": "0c0c4e57f97325575d26552bfb7eb49405518aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39986723_e7a411ef",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-25T16:32:00Z",
+      "side": 1,
+      "message": "Is this a direct copy of `zephyr/test/drivers/overlay.dts`?",
+      "revId": "0c0c4e57f97325575d26552bfb7eb49405518aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
