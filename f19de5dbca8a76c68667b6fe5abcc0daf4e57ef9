@@ -16,6 +16,24 @@
       "message": "Merge conflict?",
       "revId": "f19de5dbca8a76c68667b6fe5abcc0daf4e57ef9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4402c136_5da60ffa",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-25T15:28:37Z",
+      "side": 0,
+      "message": "This config isn\u0027t needed.  When pulling in memfault I get a duplicated definition error.  I will submit a separate CL that removes this config.",
+      "parentUuid": "864b6ded_1556c6f6",
+      "revId": "f19de5dbca8a76c68667b6fe5abcc0daf4e57ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
