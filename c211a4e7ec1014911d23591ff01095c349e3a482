@@ -39,6 +39,30 @@
       },
       "revId": "c211a4e7ec1014911d23591ff01095c349e3a482",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376366a3_5c296188",
+        "filename": "zephyr/Kconfig.usb_charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-07-25T08:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02d5f6d0_988f677e",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "c211a4e7ec1014911d23591ff01095c349e3a482",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
