@@ -414,7 +414,14 @@ int cprints(enum console_channel channel, const char *format, ...)
 	if (console_channel_is_disabled(channel))
 		return EC_SUCCESS;
 
-	rv = snprintf_timestamp_now(buff, sizeof(buff));
+	rv = crec_snprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, "[");
+	handle_sprintf_rv(rv, &len);
+
+	rv = snprintf_timestamp_now(buff + len, sizeof(buff) - len);
+	handle_sprintf_rv(rv, &len);
+
+	rv = crec_snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
+			   " ");
 	handle_sprintf_rv(rv, &len);
 
 	va_start(args, format);
