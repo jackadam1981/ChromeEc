@@ -90,7 +90,7 @@ static int pi3usb9201_set_mode(int port, int desired_mode)
 			      desired_mode << PI3USB9201_REG_CTRL_1_MODE_SHIFT);
 }
 
-static int pi3usb9201_get_mode(int port, int *mode)
+static __maybe_unused int pi3usb9201_get_mode(int port, int *mode)
 {
 	int rv;
 
@@ -255,6 +255,7 @@ static void pi3usb9201_usb_charger_task_event(const int port, uint32_t evt)
 			 * BC1.2 detection has completed.
 			 */
 			bc12_update_charge_manager(port, client);
+#ifndef CONFIG_BC12_CLIENT_MODE_ONLY_PI3USB9201
 		if (!rv && host) {
 			/*
 			 * Switch to SDP after device is plugged in to avoid
@@ -272,6 +273,7 @@ static void pi3usb9201_usb_charger_task_event(const int port, uint32_t evt)
 				pi3usb9201_set_mode(port,
 						    PI3USB9201_CDP_HOST_MODE);
 		}
+#endif
 		/*
 		 * TODO(b/124061702): Use host status to allocate power more
 		 * intelligently.
@@ -303,6 +305,7 @@ static void pi3usb9201_usb_charger_task_event(const int port, uint32_t evt)
 		}
 	}
 
+#ifndef CONFIG_BC12_CLIENT_MODE_ONLY_PI3USB9201
 	if (evt & USB_CHG_EVENT_DR_DFP) {
 		int mode;
 		int rv;
@@ -334,6 +337,7 @@ static void pi3usb9201_usb_charger_task_event(const int port, uint32_t evt)
 			pi3usb9201_interrupt_mask(port, 0);
 		}
 	}
+#endif
 
 	if (evt & USB_CHG_EVENT_CC_OPEN)
 		bc12_power_down(port);
