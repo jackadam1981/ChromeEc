@@ -28,11 +28,8 @@
 #error "SM5803 is a NVDC charger, please enable CONFIG_CHARGER_NARROW_VDC."
 #endif
 
-#ifdef PD_MAX_VOLTAGE_MV
-#if PD_MAX_VOLTAGE_MV > 15000
-/* See https://issuetracker.google.com/230712704 for details. */
-#error "VBUS >15V is forbidden for SM5803 because it can cause hardware damage"
-#endif
+#ifdef CONFIG_CHARGER_SINGLE_CHIP
+#define CHARGER_PRIMARY CHARGER_SOLO
 #endif
 
 /* Console output macros */
@@ -397,6 +394,7 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 			rv |= sm5803_flow2_update(
 				chgnum, SM5803_FLOW2_AUTO_ENABLED, MASK_CLR);
 
+#ifndef CONFIG_CHARGER_SINGLE_CHIP
 		if (chgnum == CHARGER_SECONDARY) {
 			rv |= sm5803_flow1_update(CHARGER_PRIMARY,
 						  SM5803_FLOW1_LINEAR_CHARGE_EN,
@@ -408,6 +406,7 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 			rv |= chg_write8(CHARGER_PRIMARY, SM5803_REG_FLOW3,
 					 regval);
 		}
+#endif
 
 		/* Disable sink mode, unless currently sourcing out */
 		if (!sm5803_is_sourcing_otg_power(chgnum, chgnum))
