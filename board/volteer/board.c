@@ -28,7 +28,6 @@
 #include "switch.h"
 #include "system.h"
 #include "task.h"
-#include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "timer.h"
 #include "uart.h"
