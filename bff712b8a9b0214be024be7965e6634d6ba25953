@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d225bc5_561cfe92",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bb713d_bb3fc0f9",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 19
+      },
+      "revId": "bff712b8a9b0214be024be7965e6634d6ba25953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bef55b1_5e9680eb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-21T16:34:14Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 19
+      },
+      "revId": "bff712b8a9b0214be024be7965e6634d6ba25953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de9a103_b677e99f",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-07-25T07:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bef55b1_5e9680eb",
       "range": {
         "startLine": 225,
         "startChar": 2,
