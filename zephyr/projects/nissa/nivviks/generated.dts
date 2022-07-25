@@ -230,7 +230,9 @@
 	pinctrl-0 = <&adc0_chan0_gp45
 		     &adc0_chan1_gp44
 		     &adc0_chan4_gp41
-		     &adc0_chan6_gp34>;
+		     &adc0_chan6_gp34
+		     &adc0_chan10_gpe0
+		     >;
 	pinctrl-names = "default";
 };
 
