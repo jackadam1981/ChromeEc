@@ -26,8 +26,14 @@
 #undef CONFIG_CMD_TASK_RESET
 
 /* Battery */
+<<<<<<< HEAD   (29ed38 Revert "mkbp: don't queue mkbp events in S3")
 #define CONFIG_BATTERY_DEVICE_CHEMISTRY  "LION"
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
+=======
+#define CONFIG_BATTERY_DEVICE_CHEMISTRY "LION"
+#undef CONFIG_BATTERY_PRESENT_GPIO
+#define CONFIG_BATTERY_PRESENT_CUSTOM
+>>>>>>> CHANGE (44f479 Quackingstick: Move 2s delay time to battery_is_present)
 #define CONFIG_BATTERY_FUEL_GAUGE
 #define CONFIG_BATTERY_VENDOR_PARAM
 
