@@ -52,6 +52,24 @@
       "parentUuid": "4b0d3b2a_34f94ec2",
       "revId": "51e2296bca7c4ed9bbd1b34e39c2d4fdc5bb3a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded3e99e_dbc2909b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-07-26T11:08:20Z",
+      "side": 1,
+      "message": "\u003eone of the pins used for power sequence control has a low voltage, and reads as \u00270\u0027 when it actually has been set to \u00271\u0027.\n\nDoes the power sequence code need to read the level of this open-drain output pin?\nOr the reading is needed when debugging via gpioget console command?",
+      "parentUuid": "6d93e9f7_1e2651c7",
+      "revId": "51e2296bca7c4ed9bbd1b34e39c2d4fdc5bb3a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
