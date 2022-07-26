@@ -16,6 +16,24 @@
       "message": "interesting, so you got the same coverage numbers this way? I\u0027m surprised you don\u0027t need it in the build phase to turn off optimizations",
       "revId": "13557894ed19bdecc091c4262a18a92bccfa8e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a80e65_aae35507",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-07-26T01:49:25Z",
+      "side": 1,
+      "message": "You\u0027re right, we do need this specified during build and I\u0027ll make an upstream patch so Twister doesn\u0027t attempt and fail to actually collect coverage info when only building.",
+      "parentUuid": "09f937a7_097d5c5b",
+      "revId": "13557894ed19bdecc091c4262a18a92bccfa8e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
