@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "23226430_e91b1335",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-26T05:43:51Z",
+      "side": 1,
+      "message": "Test is passing.\n\n75.223900C0: TCPC Enter Low Power Mode]\n PASS - verify_displayport_mode_nonentry in 15.1 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE usbc_alt_mode_dp_unsupported succeeded\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPROJECT EXECUTION SUCCESSFUL",
+      "parentUuid": "77167db3_d5bd7ce3",
+      "revId": "c8f0d1be8646be16d000da98884edab8e5e88204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fcc9de72_69c1be0c",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-25T19:20:08Z",
       "side": 1,
       "message": "Can you add something like this?\n```\n/* TODO(b/235984702#comment21): Refactor alt mode modules to better support mode reentry. */\n```",
+      "revId": "c8f0d1be8646be16d000da98884edab8e5e88204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6656243_18465c4a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-07-26T05:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea2d20e8_e60a8ced",
       "revId": "c8f0d1be8646be16d000da98884edab8e5e88204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
