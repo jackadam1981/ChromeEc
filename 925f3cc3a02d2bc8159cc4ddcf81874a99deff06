@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49efa86_6b5c41b8",
+        "filename": "zephyr/projects/brya/i2c.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-26T11:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d8b3e10_b3d7ce01",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "925f3cc3a02d2bc8159cc4ddcf81874a99deff06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b938c551_9e64ec05",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-25T16:00:31Z",
       "side": 1,
       "message": "Is `name` still accurate as the parameter here?  The previous usage converted a node name to the I2C port enum.\n\nNow, this converts the I2C phandle to the equivalent I2C port enum.\n\nPlease add a comment for the uses of `NAMED_I2C` and `I2C_PORT`.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "925f3cc3a02d2bc8159cc4ddcf81874a99deff06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba1a767_12d0137f",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-26T11:29:58Z",
+      "side": 1,
+      "message": "I removed the NAMED_I2C, I2C_PORT_NODELABEL is used instead. I think it is better to point the real I2C port device.",
+      "parentUuid": "b938c551_9e64ec05",
       "range": {
         "startLine": 48,
         "startChar": 8,

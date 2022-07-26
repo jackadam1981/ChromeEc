@@ -22,6 +22,30 @@
       },
       "revId": "47ef04c2ab93eedcd742ceccf9157535e820714d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002fedee_c3595fbf",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-26T11:29:58Z",
+      "side": 0,
+      "message": "It is supported by not the way we would like to - the entire array has to be defined e.g. [I2C_PORT_CHARGER], [I2C_PORT_CHARGER, I2C_PORT_BATTERY], etc. We may consider something like enum-element property to specify possible elements in the array. Anyway, I don\u0027t think it is needed because in the case of incorrect enum value we just get an undefined symbol error, which is easy to fix.",
+      "parentUuid": "e38ac5d1_4bef406b",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "47ef04c2ab93eedcd742ceccf9157535e820714d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
