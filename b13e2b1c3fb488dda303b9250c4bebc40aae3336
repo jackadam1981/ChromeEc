@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f025cbbf_11262d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-26T20:57:22Z",
+      "side": 1,
+      "message": "How about adding this to the shim/zhip/it8xxx2/power_policy.c file - or at least that directory?\n\nI also pondered whether `espi_it8xxx2_enable_pad_ctrl()` should be invoked using callback\u0027s from Zephyr\u0027s PM subsystem.  But I think you have the right approach here to use the callbacks from the AP power sequencing as the trigger.",
+      "parentUuid": "7755d355_892faa74",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fd8d9a4_9fc734fa",
@@ -37,6 +55,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "720c1694_6131714a",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-26T20:57:22Z",
+      "side": 1,
+      "message": "Why all caps?",
+      "range": {
+        "startLine": 18,
+        "startChar": 34,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1360bf49_6448f135",
         "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
         "patchSetId": 6
@@ -48,6 +89,47 @@
       "writtenOn": "2022-07-26T04:40:30Z",
       "side": 1,
       "message": "To follow the existing usage, maybe this should be:\n\n#define espi_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_espi))\n\nI think rather than saving this as a static, using DEVICE_DT_GET will get\nyou a pointer to the global device instance, so you don\u0027t have to save it,\njust use that directly.",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02102faa_9844d02a",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-26T20:57:22Z",
+      "side": 1,
+      "message": "The comments in device.h upstream indicate one should call `device_is_ready()` before using the pointer returned by `DEVICE_DT_GET`.",
+      "parentUuid": "1360bf49_6448f135",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4379cf_830fbc6b",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-26T20:57:22Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 42
+      },
       "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
