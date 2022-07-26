@@ -42,7 +42,7 @@ if(DEFINED CONFIG_PLATFORM_EC)
   # Force compiler warnings to generate errors
   option(ALLOW_WARNINGS "Do not treat warnings as errors")
   if (NOT ALLOW_WARNINGS)
-    zephyr_compile_options(-Werror)
+    zephyr_compile_options(-Werror -Wno-error=\#pragma-messages)
   endif()
 
   include(fpu.cmake)
