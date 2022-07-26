@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "681cfbb9_94cc6189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-26T15:10:06Z",
+      "side": 1,
+      "message": "nit add details about DBC \u0026 I3C degug devices, why no force shutdown",
+      "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd985b5_b43ca1e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-26T15:10:06Z",
+      "side": 1,
+      "message": "add test",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9065a823_8aebc915",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-26T15:10:06Z",
+      "side": 1,
+      "message": "code looks good",
+      "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dfc85b8_e18f6cfe",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-26T15:10:06Z",
+      "side": 1,
+      "message": "nit: add note about repurposed netname",
+      "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66ad647_b33334ea",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-26T15:10:06Z",
+      "side": 1,
+      "message": "no force",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

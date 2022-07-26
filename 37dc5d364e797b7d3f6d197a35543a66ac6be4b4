@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef3a1411_d81f1f51",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-26T15:10:06Z",
+      "side": 1,
+      "message": "its is for DBC in WIP CL",
+      "parentUuid": "544c2a03_7d65d277",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 30
+      },
+      "revId": "37dc5d364e797b7d3f6d197a35543a66ac6be4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b194c48_e634a9bd",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 1
