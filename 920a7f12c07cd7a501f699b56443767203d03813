@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b9c9afc_8e2543f4",
+        "filename": "docs/zephyr/zephyr_bc12.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-26T16:38:30Z",
+      "side": 1,
+      "message": "This paragraph needs to be updated.  The BC1.2 device node is added to the I2C bus node, and the `bc12` property on the USBC port node refers to the BC1.2 device.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "920a7f12c07cd7a501f699b56443767203d03813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
