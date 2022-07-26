@@ -85,30 +85,43 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  * DDR temperature limit (85 C)
  */
 /*
- * TODO(b/202062363): Remove when clang is fixed.
+ * TODO(b/238260272): Remove when clang is fixed.
  */
 #define THERMAL_CPU              \
 	{                        \
 		.temp_host = { \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(70), \
-			[EC_TEMP_THRESH_HALT] = C_TO_K(80), \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(75), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(90), \
 		}, \
 		.temp_host_release = { \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(65), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(70), \
 		}, \
 		.temp_fan_off = C_TO_K(35), \
-		.temp_fan_max = C_TO_K(50), \
+		.temp_fan_max = C_TO_K(89), \
 	}
 __maybe_unused static const struct ec_thermal_config thermal_cpu = THERMAL_CPU;
 
+#define THERMAL_FAN              \
+	{                        \
+		.temp_host = { \
+			[EC_TEMP_THRESH_HIGH] = 0, \
+			[EC_TEMP_THRESH_HALT] = 0, \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_HIGH] = 0, \
+		}, \
+		.temp_fan_off = 0, \
+		.temp_fan_max = 0, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_fan = THERMAL_FAN;
+
 /*
- * TODO(b/197478860): add the thermal sensor setting
+ * TODO(b/238260272): add the thermal sensor setting
  */
-/* this should really be "const" */
 struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_1_CPU] = THERMAL_CPU,
-	[TEMP_SENSOR_2_CPU_VR] = THERMAL_CPU,
-	[TEMP_SENSOR_3_WIFI] = THERMAL_CPU,
-	[TEMP_SENSOR_4_DIMM] = THERMAL_CPU,
+	[TEMP_SENSOR_2_CPU_VR] = THERMAL_FAN,
+	[TEMP_SENSOR_3_WIFI] = THERMAL_FAN,
+	[TEMP_SENSOR_4_DIMM] = THERMAL_FAN,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
