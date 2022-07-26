@@ -51,6 +51,10 @@ void set_bb_retimer_usb3_state(bool enable)
 
 		mux_state = usb_mux_get(i);
 
+		if (!usb_mux_set_completed(i)) {
+			usleep(PD_T_VDM_E_MODE / 2);
+		}
+
 		if ((mux_state & USB_PD_MUX_USB_ENABLED)) {
 			bb_retimer_set_usb3(mux, enable);
 		}
