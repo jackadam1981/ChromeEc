@@ -83,6 +83,9 @@
 #undef PLL_CLOCK
 #define PLL_CLOCK 96000000
 
+/* Disable LTO */
+#undef CONFIG_LTO
+
 #ifndef __ASSEMBLER__
 
 enum adlrvp_i2c_channel {
