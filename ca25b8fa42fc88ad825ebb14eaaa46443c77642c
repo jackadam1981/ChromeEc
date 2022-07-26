@@ -52,6 +52,23 @@
       "parentUuid": "bfb9a224_1a1f6cc4",
       "revId": "ca25b8fa42fc88ad825ebb14eaaa46443c77642c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1d0c69_c23e8a14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-26T07:21:08Z",
+      "side": 1,
+      "message": "You\u0027re very right, and previous revisions did not have this particular temp sensor on the board, but I see that it is now present.\nWe should install the proper temp sensor configuration for this pin.\nI\u0027ll raise a bug and do this.\n",
+      "revId": "ca25b8fa42fc88ad825ebb14eaaa46443c77642c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
