@@ -16,6 +16,24 @@
       "message": "Need to test on Nivviks to check that it actually does go down from 20V (testing on Nereid isn\u0027t useful since Nereid is limited to 15V input).",
       "revId": "b5c5fd8091962d77f5e774cbeec096b09f1f0a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c524687_d38dd366",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-26T01:39:10Z",
+      "side": 1,
+      "message": "Tested on Nivviks OK.",
+      "parentUuid": "827fabf6_6fb77aa6",
+      "revId": "b5c5fd8091962d77f5e774cbeec096b09f1f0a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
