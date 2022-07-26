@@ -138,7 +138,7 @@ def get_flash_file(board):
         / "zephyr"
         / board
         / "output"
-        / "zephyr.bin"
+        / "ec.bin"
     ).resolve()
 
 
