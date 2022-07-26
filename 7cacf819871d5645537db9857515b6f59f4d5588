@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8839141f_15e16f77",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-07-26T02:38:37Z",
+      "side": 1,
+      "message": "This can be replaced with `buff[0] \u003d \u0027[\u0027; rv \u003d 1;` to reduce the instruction counts.",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 62
+      },
+      "revId": "7cacf819871d5645537db9857515b6f59f4d5588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
