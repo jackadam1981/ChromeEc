@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24fbb5b4_39a11e6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-07-26T06:11:40Z",
+      "side": 1,
+      "message": "Hi Googlers,\nI have the question of this change.\nWith this change, when gpio_get_level is called for a OUTPUT pin, it will return the configuration setting but the actually pin\u0027s level.\nIt will make the behavior of legacy Cros-EC and zephyr-EC diverge for this API.\nDoes Google intend to change the API\u0027s behavior for Zephyr-EC OS?\n",
+      "revId": "51e2296bca7c4ed9bbd1b34e39c2d4fdc5bb3a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
