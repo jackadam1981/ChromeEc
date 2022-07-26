@@ -21,7 +21,7 @@
 #error "Define EC chip variant"
 #endif
 
-#define CONFIG_LTO
+/* TODO: Enable LTO */
 
 /*
  * Allow dangerous commands.
