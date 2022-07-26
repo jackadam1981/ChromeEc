@@ -21,8 +21,6 @@
 #error "Define EC chip variant"
 #endif
 
-#define CONFIG_LTO
-
 /*
  * Allow dangerous commands.
  * TODO: Remove this config before production.
