@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99a50e1_4c1e3972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-07-26T08:24:35Z",
+      "side": 1,
+      "message": "I found that usb functionality of servo v4 is not working after setting the client only mode (control 1 register is 0x08, which is `client mode`, `lsusb` does not report the usb eth card). Do we want to set `USB path on` mode instead?",
+      "revId": "490f33cc26f9a32f77bdc8e66fef59313e04ee30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
