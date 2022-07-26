@@ -16,6 +16,24 @@
       "message": "Rather than configuring this pin as an ADC, should \"gpioe 0\" be added to the unused GPIO pins?\nWould that also provide the same saving?\n",
       "revId": "ca25b8fa42fc88ad825ebb14eaaa46443c77642c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5cb891_1111f318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-07-26T05:51:22Z",
+      "side": 1,
+      "message": "Thanks, will try declaring it as unused pin and check on the results.\n\nFrom discussions, declaring it as GPIO is the problem here due to the resistor divider circuit connected to the pin.\n\nPlease find more comments from the CH Lin below:\n------------------------------------------------\nGPIOE0/ADC10 (TEMP_SENSOR_3): the resistor divider circuit is connected to this I/O and the driver is not configured it to ADC function.\nThis pin is set to default GPIO state (i. e. input.) This is a contributor to the high current consumption as the resistor divider on its input causing the voltage level to be in the undefined zone of the I/O buffer.\nWith the attached patch (select ADC10 function ), it can save ~0.55mA/1.815mW",
+      "parentUuid": "bfb9a224_1a1f6cc4",
+      "revId": "ca25b8fa42fc88ad825ebb14eaaa46443c77642c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
