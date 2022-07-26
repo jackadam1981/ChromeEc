@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd82319_f8e14fe2",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-07-26T13:40:17Z",
+      "side": 1,
+      "message": "You should be able to use `PWM_DT_SPEC_GET_BY_IDX` here (and below).",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 25
+      },
+      "revId": "48a937a2d1085caaa3576f3387e33a6841ec63a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
