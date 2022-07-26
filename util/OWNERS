@@ -13,3 +13,6 @@ per-file fptool.py=file:../common/fpsensor/OWNERS
 
 per-file stm32mon.c=set noparent
 per-file stm32mon.c=file:../common/fpsensor/OWNERS
+
+# For refactorings, etc.
+jbettis@chromium.org
