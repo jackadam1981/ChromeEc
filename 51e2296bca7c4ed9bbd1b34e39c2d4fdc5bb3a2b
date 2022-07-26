@@ -34,6 +34,24 @@
       "parentUuid": "24fbb5b4_39a11e6d",
       "revId": "51e2296bca7c4ed9bbd1b34e39c2d4fdc5bb3a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d93e9f7_1e2651c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-07-26T08:49:26Z",
+      "side": 1,
+      "message": "Hi Andrew,\nIs the open-drain output pin in question among one of these two pins:\n1. GPIOA4 (EC_SOC_VCCST_PWRGD_OD)\n2. GPIOF1 (EC_PROCHOT_ODL)\nIf it is, the root cause of the incorrect level reading is that they are pulled up to an un-supported power rail (1.05 Voltage).\nPlease also refer to the comment #42 and #47 in the bug b:228222441 for the detailed.\nIn normal case, the level should be read correctly via PxDIN register no matter GPIO input or output.",
+      "parentUuid": "4b0d3b2a_34f94ec2",
+      "revId": "51e2296bca7c4ed9bbd1b34e39c2d4fdc5bb3a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
