@@ -16,6 +16,24 @@
       "message": "Hi Googlers,\nI have the question of this change.\nWith this change, when gpio_get_level is called for a OUTPUT pin, it will return the configuration setting but the actually pin\u0027s level.\nIt will make the behavior of legacy Cros-EC and zephyr-EC diverge for this API.\nDoes Google intend to change the API\u0027s behavior for Zephyr-EC OS?\n",
       "revId": "51e2296bca7c4ed9bbd1b34e39c2d4fdc5bb3a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b0d3b2a_34f94ec2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-26T07:30:46Z",
+      "side": 1,
+      "message": "Yes, the intent is to be more reliable with what this function returns for OUTPUT pins.\nWhere it makes most sense is for open drain pins - one of the pins used for power sequence control has a low voltage, and reads as \u00270\u0027 when it actually has been set to \u00271\u0027. So this change will reliably return what the output has been set to, which is more correct.\n\nThe legacy EC code did not rely on the return value except where it was clear that the actual value on the pin reflected what the output state should be.",
+      "parentUuid": "24fbb5b4_39a11e6d",
+      "revId": "51e2296bca7c4ed9bbd1b34e39c2d4fdc5bb3a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
