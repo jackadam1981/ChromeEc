@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c99109c_2bb0179e",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-26T20:05:55Z",
+      "side": 1,
+      "message": "That was missed. Thanks for pointing this out, Added function call in C file.",
+      "parentUuid": "50f5b280_01f3d068",
+      "range": {
+        "startLine": 271,
+        "startChar": 5,
+        "endLine": 271,
+        "endChar": 29
+      },
+      "revId": "7ea0559a5597ed4f54512569c3e8f04d30a8f74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fa748a3_bbb3626c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-26T03:33:06Z",
       "side": 1,
       "message": "Same for this, where is it called?",
+      "range": {
+        "startLine": 277,
+        "startChar": 5,
+        "endLine": 277,
+        "endChar": 28
+      },
+      "revId": "7ea0559a5597ed4f54512569c3e8f04d30a8f74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72d2555_50209878",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-26T20:05:55Z",
+      "side": 1,
+      "message": "Added call in c file.",
+      "parentUuid": "4fa748a3_bbb3626c",
       "range": {
         "startLine": 277,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6721b28c_358eae1f",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-26T20:05:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c9aa688_8c271a89",
+      "range": {
+        "startLine": 301,
+        "startChar": 27,
+        "endLine": 301,
+        "endChar": 47
+      },
+      "revId": "7ea0559a5597ed4f54512569c3e8f04d30a8f74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd801c0d_682080b2",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-26T03:33:06Z",
       "side": 1,
       "message": "nit: How about move this block up; before line 301?",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 2
+      },
+      "revId": "7ea0559a5597ed4f54512569c3e8f04d30a8f74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9961bd45_c8d66dad",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-26T20:05:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd801c0d_682080b2",
       "range": {
         "startLine": 306,
         "startChar": 0,
