@@ -16,6 +16,24 @@
       "message": "Can you please add a test to zephyr/test/drivers/led_driver/src/led.c for this new case?",
       "revId": "fb188a471275a675d00b594cbe1a2ce851c07d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0454ebcb_09e2aa5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-07-26T09:53:14Z",
+      "side": 1,
+      "message": "The existing test code does not cover led_pwm driver at all. I will submit another CL for it.",
+      "parentUuid": "15141a71_d89109f0",
+      "revId": "fb188a471275a675d00b594cbe1a2ce851c07d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
