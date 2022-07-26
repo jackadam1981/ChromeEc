@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a7a10f_efe15bba",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-26T16:34:07Z",
+      "side": 1,
+      "message": "Please add an example devicetree snippet and use for these macros.  See devicetree.h in the Zephyr upstream for examples.",
+      "revId": "b985a419a2d5246de327f2f9aa8b11ad2a198ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
