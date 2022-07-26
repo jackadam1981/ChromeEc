@@ -34,6 +34,24 @@
       "parentUuid": "bfb9a224_1a1f6cc4",
       "revId": "ca25b8fa42fc88ad825ebb14eaaa46443c77642c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b5aeac_dc87efd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-07-26T05:54:28Z",
+      "side": 1,
+      "message": "In the schematic, the pad GPIOE0/ADC10 is designed to connect to the temperature sensor. The register divider is apply to the pad. If it is not switched to the ADC function, it will cause the he high current consumption as the resistor divider on its input causing the voltage level to be in the undefined zone of the I/O buffer.\nThat\u0027s why it needed to be configured to ADC function.",
+      "parentUuid": "bfb9a224_1a1f6cc4",
+      "revId": "ca25b8fa42fc88ad825ebb14eaaa46443c77642c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
