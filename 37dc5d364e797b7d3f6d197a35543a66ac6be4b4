@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89ef05fa_9cf2d6f2",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-26T06:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8777dd9_9bffb5c2",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "37dc5d364e797b7d3f6d197a35543a66ac6be4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d88d580f_a78d6d75",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67134f20_acc9c4dd",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-26T06:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d88d580f_a78d6d75",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "37dc5d364e797b7d3f6d197a35543a66ac6be4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "526c1840_19c46090",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-24T05:32:58Z",
       "side": 1,
       "message": "nit: move to line 147\n\nalso need to differentiate\n\"Servo V4C/SuzyQ\", \"Intel I3C\", \"Intel DBC\"",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 56
+      },
+      "revId": "37dc5d364e797b7d3f6d197a35543a66ac6be4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa785d38_0cbfdc92",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-26T06:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "526c1840_19c46090",
       "range": {
         "startLine": 126,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "544c2a03_7d65d277",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-26T06:51:11Z",
+      "side": 1,
+      "message": "I3C or DBC? Those are same as hard coded in the CL:3620843 [WIP] Temporary Workarounds for MTL. aren\u0027t those for I3C?\n```\n\tioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_1, 0);\n        ioex_set_level(IOEX_USB_C0_MUX_SBU_SEL_0, 0);\n\tppc_set_sbu(0, 1);\n\ttc_set_power_role(USBC_PORT_C0, PD_ROLE_SINK);\n```",
+      "parentUuid": "c435e86d_381345f4",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 30
+      },
+      "revId": "37dc5d364e797b7d3f6d197a35543a66ac6be4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b194c48_e634a9bd",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2022-07-24T05:32:58Z",
       "side": 1,
       "message": "I3C CCD",
+      "range": {
+        "startLine": 143,
+        "startChar": 33,
+        "endLine": 143,
+        "endChar": 36
+      },
+      "revId": "37dc5d364e797b7d3f6d197a35543a66ac6be4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f1fbf2_3eaeea26",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-26T06:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b194c48_e634a9bd",
       "range": {
         "startLine": 143,
         "startChar": 33,
