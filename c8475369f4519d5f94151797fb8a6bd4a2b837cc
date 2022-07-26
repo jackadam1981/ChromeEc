@@ -52,6 +52,24 @@
       "parentUuid": "d636c413_b642ccb7",
       "revId": "c8475369f4519d5f94151797fb8a6bd4a2b837cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32894f8_2d3671cd",
+        "filename": "zephyr/test/drivers/src/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-07-26T08:08:22Z",
+      "side": 1,
+      "message": "Yuval said in the other review that we shouldn\u0027t use asserts in `_after` (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3748784/2..4/zephyr/test/drivers/src/bmi160.c#b2117)\n\nI will leave it as it is for now. We can fix all cleanup functions later, when we come to conclusion about stopping the main thread.",
+      "parentUuid": "9a741300_43d8d78f",
+      "revId": "c8475369f4519d5f94151797fb8a6bd4a2b837cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
