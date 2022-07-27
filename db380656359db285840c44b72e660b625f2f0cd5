@@ -26,6 +26,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62fd25ba_ab12d88d",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-27T07:55:28Z",
+      "side": 1,
+      "message": "The macros",
+      "parentUuid": "3f839fc2_d827c81e",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "db380656359db285840c44b72e660b625f2f0cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "962a9597_4257f97e",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-27T07:55:28Z",
+      "side": 1,
+      "message": "The macros always return `enum i2c_ports_chip`. By `I2C port enum` I mean general I2C enum, my intention wasn\u0027t to specify `enum i2c_ports` or `enum i2c_ports_chip`. Should I change the description?",
+      "parentUuid": "3f839fc2_d827c81e",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "db380656359db285840c44b72e660b625f2f0cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76c8af73_5aa7dea0",
         "filename": "zephyr/shim/include/i2c/i2c.h",
         "patchSetId": 11
@@ -37,6 +85,30 @@
       "writtenOn": "2022-07-26T18:00:05Z",
       "side": 1,
       "message": "Please add a trailing comment with the output:\n\n```\nI2C_PORT_BUS(DT_NODELABEL(i2c2_0)) // I2C_BUS_???\n```",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "db380656359db285840c44b72e660b625f2f0cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f3b743_aa41fd37",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-27T07:55:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76c8af73_5aa7dea0",
       "range": {
         "startLine": 44,
         "startChar": 0,
