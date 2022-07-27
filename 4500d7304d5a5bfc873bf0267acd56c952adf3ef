@@ -22,6 +22,30 @@
       },
       "revId": "4500d7304d5a5bfc873bf0267acd56c952adf3ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cdecd84_e226a967",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-27T05:11:21Z",
+      "side": 1,
+      "message": "These are exactly as output from the VIF tool (including the DOS line endings), so loading them and re-exporting should yield the same output. I referred to genvif to decide what options should be chosen when it was unclear what was appropriate.\n\nTo my knowledge there are no fields currently flagged in the tool as invalid.",
+      "parentUuid": "5d270a7e_c5d9c017",
+      "range": {
+        "startLine": 12,
+        "startChar": 60,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "4500d7304d5a5bfc873bf0267acd56c952adf3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
