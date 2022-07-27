@@ -16,6 +16,23 @@
       "message": "also pls check if ADL-P ITE, NPCX, MCHP has enough memory ",
       "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd94c08_57debb01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-27T05:08:01Z",
+      "side": 1,
+      "message": "could you please explain how this change relates to the\nobserved failure? the fact that CONFIG_LTO affects a\nwatchdog issue seems coincidental.\n",
+      "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
