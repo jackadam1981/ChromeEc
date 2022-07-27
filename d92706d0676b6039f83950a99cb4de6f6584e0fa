@@ -33,6 +33,24 @@
       "message": "Dry run has \"build firmware.call build API script\" fail, and I don\u0027t have authority to check the failed job, what shall I do next? ",
       "revId": "d92706d0676b6039f83950a99cb4de6f6584e0fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75110f16_90d0e29e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-27T17:13:00Z",
+      "side": 1,
+      "message": "Please add `CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT` to the file util/config_allowed.txt.  There is a script that checks if a Kconfig option has been created for each #define in include/config.h.  However, in this case the Kconfig option was deleted, so the allow list is used to define the exceptions.",
+      "parentUuid": "b8c9cb12_89c28fe1",
+      "revId": "d92706d0676b6039f83950a99cb4de6f6584e0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
