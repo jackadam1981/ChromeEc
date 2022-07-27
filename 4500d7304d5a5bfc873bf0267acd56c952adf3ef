@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d270a7e_c5d9c017",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-07-27T05:00:23Z",
+      "side": 1,
+      "message": "help me understand. so, if you import this into the USB-IF VIF\ntool and re-export, you basically get the same content?\n\nalso, i assume there are no red/flagged fields within the tool?\n\nlast time i touched genvif, i actually tried to get its\noutput to better align with the official tool to ease\ncomparison. it\u0027s a moving target, but hopefully still\nclose enough for humans.",
+      "range": {
+        "startLine": 12,
+        "startChar": 60,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "4500d7304d5a5bfc873bf0267acd56c952adf3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
