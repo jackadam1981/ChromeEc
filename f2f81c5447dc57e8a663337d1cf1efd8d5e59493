@@ -16,6 +16,24 @@
       "message": "Should we check this before or after trying to get the mux state?",
       "revId": "f2f81c5447dc57e8a663337d1cf1efd8d5e59493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cd5677_3ddec25d",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-07-27T01:47:06Z",
+      "side": 1,
+      "message": "The issue still occurs when checking before getting the mux state.\nSo we need to check this after getting the mux state.",
+      "parentUuid": "357f6489_7af59ebb",
+      "revId": "f2f81c5447dc57e8a663337d1cf1efd8d5e59493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
