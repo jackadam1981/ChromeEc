@@ -105,6 +105,24 @@
       "parentUuid": "c763866c_d3d4744b",
       "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b27da78_4b01d8fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-07-27T07:10:29Z",
+      "side": 1,
+      "message": "Hi Usha,\n\nEnable config only for adlrvpp_mchp1521 board and remove this for all other derivatives as it is not needed.",
+      "parentUuid": "7aef099a_ba66e063",
+      "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
