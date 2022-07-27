@@ -22,6 +22,30 @@
       },
       "revId": "357d874d826398ad0bc88f6eeb2514d76ad8efe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f19ba6f_428477f7",
+        "filename": ".gitignore",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-27T22:57:46Z",
+      "side": 1,
+      "message": "Oops, I added it, and then did git pull, so now it is there twice.",
+      "parentUuid": "1cef3af3_1abf788c",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "357d874d826398ad0bc88f6eeb2514d76ad8efe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
