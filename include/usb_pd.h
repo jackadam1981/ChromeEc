@@ -175,6 +175,8 @@ enum pd_rx_errors {
 #define BIST_CARRIER_MODE_3 6
 #define BIST_EYE_PATTERN 7
 #define BIST_TEST_DATA 8
+#define BIST_SHARED_MODE_ENTER 9
+#define BIST_SHARED_MODE_EXIT 10
 
 #define SVID_DISCOVERY_MAX 16
 
