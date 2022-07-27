@@ -384,3 +384,13 @@
 	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
 	pinctrl-names = "default";
 };
+
+/*
+ * Declare GPIOs that have leakage current caused by hardware issue here. NPCX
+ * ec will disable their input buffer automatically and restore them after
+ * waking up for better power consumption.
+ */
+&power_leakage_io {
+	leak-gpios = <&gpioa 4 0
+		      &gpiof 1 0>;
+};
