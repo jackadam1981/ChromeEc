@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e076c1be_63afae20",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-27T15:38:17Z",
+      "side": 1,
+      "message": "I think I understand now.  `enum i2c_ports_chip` creates the unique enums that are mapped 1:1 with the Zephyr device handles.  These enums can be used by legacy drivers and passed to the legacy I2C controller implementation as the `int port` parameter. `enum i2c_ports` is used to map the hard-coded I2C enum values to the unique `enum i2c_ports_chip` values.\n\nSo I think modifying the description to something like:\n\n\"Get the legacy I2C port enum value from the I2C bus node identifier. \nThe value returned by this macro is passed as the \u0027int port\u0027 parameter to all the legacy APIs provided by\ni2c_controller.h\"",
+      "parentUuid": "962a9597_4257f97e",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "db380656359db285840c44b72e660b625f2f0cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76c8af73_5aa7dea0",
         "filename": "zephyr/shim/include/i2c/i2c.h",
         "patchSetId": 11
