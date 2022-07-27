@@ -33,6 +33,42 @@
       "message": "could you please explain how this change relates to the\nobserved failure? the fact that CONFIG_LTO affects a\nwatchdog issue seems coincidental.\n",
       "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3890ffe_eb2db0b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362541
+      },
+      "writtenOn": "2022-07-27T05:35:51Z",
+      "side": 1,
+      "message": "Observed that the ADL-N RVP board was failing to boot to OS with ToT EC image having the following traces on EC console.\n\n22-07-22 23:12:52.357 --- UART initialized after reboot ---\n22-07-22 23:12:52.361 [Image: RO, adlrvpm_ite_1.1.9999-3ffc37b adlrvpm_ite_14990.0.22_07_22  @up-NUC7i7BNH]\n22-07-22 23:12:52.365 [Reset cause: reset-pin power-on]\n22-07-22 23:12:53.447 Pre-WDT warning! IPC:0000299e LP:000029ae TASK_ID:255\n22-07-22 23:12:53.481 Pre-WDT warning! IPC:0000299e LP:000029ae TASK_ID:255\n22-07-22 23:12:53.510 Pre-WDT warning! IPC:0000299e LP:000029ae TASK_ID:255\n22-07-22 23:12:53.540 Pre-WDT warning! IPC:0000299e LP:000029ae TASK_ID:255\n\nThis was regression and when tried to bisect the failure, found that CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3761356 was causing the regression.\n\nBy disabling LTO for adlrvpm_ite board we are still able to see enough flash memory available and also able to boot ADL-N RVP board to OS successfully.",
+      "parentUuid": "2bd94c08_57debb01",
+      "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d5edb7_1e6eaf03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362541
+      },
+      "writtenOn": "2022-07-27T05:35:51Z",
+      "side": 1,
+      "message": "Hi Vijay, observed that the build for adlrvpp_mchp1521 was failing with the revert patch. Hence updated the CL to just disable LTO for adlrvpm_ite board only.\nWith this new change ADL-P ITE, NPCX, MCHP seems to have enough memory. Thank you.",
+      "parentUuid": "4bce1846_75fa28c0",
+      "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
