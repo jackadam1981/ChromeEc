@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab30d71e_5f44f937",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-27T18:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7d56227_dbbc77b9",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "8a3b119b95977b0b46c5609d7ac38512b4aee8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2e98acb_56b1fab2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5cd5c80_24d5a7f2",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-27T18:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e98acb_56b1fab2",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "8a3b119b95977b0b46c5609d7ac38512b4aee8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93295205_4053677f",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-27T15:38:17Z",
       "side": 1,
       "message": "Add a comment indicating this enum maps the hard-coded I2C port names (such as I2C_PORT_BATTERY) to the unique port numbers created by enum i2c_ports_chip above.",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 14
+      },
+      "revId": "8a3b119b95977b0b46c5609d7ac38512b4aee8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5eb1c91_664b594a",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-07-27T18:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93295205_4053677f",
       "range": {
         "startLine": 112,
         "startChar": 5,
