@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d9a2dc_1abcda27",
+        "filename": "zephyr/test/drivers/common/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-27T15:07:14Z",
+      "side": 0,
+      "message": "Is there a way to keep this if no `-test` or `-list`?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "0ad9fd4e835cb3c6d18b76f10097b45e2fec5bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
