@@ -41,6 +41,8 @@ struct tcpci_snk_emul_data {
 	bool ping_received;
 	/** PD_DATA_ALERT message received  */
 	bool alert_received;
+	/** Last received 5V fixed source cap */
+	uint32_t last_5v_source_cap;
 };
 
 /**
