@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecabfc99_88535f79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-27T00:18:50Z",
+      "side": 1,
+      "message": "I opted not to put it under `shim` because this code is unrelated to legacy EC support, either in ensuring legacy APIs work correctly of implementing them in terms of Zephyr. This placement makes it clear that it\u0027s relevant to all boards using this chip and otherwise has no special requirements.\n\nBut I could move it if you disagree with my assessment.",
+      "parentUuid": "f025cbbf_11262d8c",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fd8d9a4_9fc734fa",
         "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
         "patchSetId": 6
@@ -49,6 +67,24 @@
       "writtenOn": "2022-07-26T04:40:30Z",
       "side": 1,
       "message": "Maybe LOG_MODULE_DECLARE(espi,...",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42879d6_bb7dfc77",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-27T00:18:50Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s correct to put this in another module because it lives somewhere completely different, but reusing the default eSPI log level seems okay because that can be overridden at runtime if desired.",
+      "parentUuid": "3fd8d9a4_9fc734fa",
       "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -66,6 +102,30 @@
       "writtenOn": "2022-07-26T20:57:22Z",
       "side": 1,
       "message": "Why all caps?",
+      "range": {
+        "startLine": 18,
+        "startChar": 34,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac4b759_8be5b1c8",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-27T00:18:50Z",
+      "side": 1,
+      "message": "It\u0027s a module-level constant, so screaming snake case seems like the correct naming convention.",
+      "parentUuid": "720c1694_6131714a",
       "range": {
         "startLine": 18,
         "startChar": 34,
@@ -111,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c23575e_602f5788",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-27T00:18:50Z",
+      "side": 1,
+      "message": "\u003e DT_CHOSEN(cros_ec_espi)\n\nI don\u0027t think a chosen node is correct here, because this code is tightly coupled to the SoC. If there were some kind of external eSPI controller that a board chose this code would not work correctly if it tried to use that device.\n\n\u003e rather than saving this as a static...\n\nI assume this can be trivially optimized to inline the resultant pointer (so there\u0027s no difference in generated code) and I think this way is nicer to read since it does things like show the reader what the type is.\n\n\u003e `device_is_ready()`\n\nDone.",
+      "parentUuid": "02102faa_9844d02a",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd4379cf_830fbc6b",
@@ -134,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc34beaa_9bc390c3",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-27T00:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd4379cf_830fbc6b",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dcbfe02_037fd75e",
@@ -147,6 +249,24 @@
       "writtenOn": "2022-07-26T04:40:30Z",
       "side": 1,
       "message": "This \u0027should never happen\u0027, so perhaps should be an assert.",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27ab3558_037f56d6",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-27T00:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dcbfe02_037fd75e",
       "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
