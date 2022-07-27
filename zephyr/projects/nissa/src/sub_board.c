@@ -182,7 +182,8 @@ static void nereid_subboard_config(void)
 		soc_it8xxx2_disable_i2c4_alt();
 #endif
 		/* HDMI power enable outputs */
-		if (IS_ENABLED(CONFIG_BOARD_NEREID)) {
+		if (IS_ENABLED(CONFIG_BOARD_NEREID) ||
+		    IS_ENABLED(CONFIG_BOARD_PUJJO)) {
 			/*
 			 * Nereid versions before 2 need hdmi-en-odl to be
 			 * pulled down to enable VCC on the HDMI port, but later
@@ -194,17 +195,21 @@ static void nereid_subboard_config(void)
 
 			/* CBI errors ignored, will configure the pin */
 			cbi_get_board_version(&board_version);
-			if (board_version < 2) {
+			if (IS_ENABLED(CONFIG_BOARD_PUJJO) ||
+			    (IS_ENABLED(CONFIG_BOARD_NEREID) &&
+			     board_version < 2)) {
 				gpio_pin_configure_dt(
 					GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
 					GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
 						GPIO_ACTIVE_LOW);
 				use_vcc_enable = true;
 			}
+		} else {
+			gpio_pin_configure_dt(
+				GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+				GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					GPIO_PULL_UP | GPIO_ACTIVE_LOW);
 		}
-		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
-				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
-					      GPIO_PULL_UP | GPIO_ACTIVE_LOW);
 		/* Control HDMI power in concert with AP */
 		ap_power_ev_init_callback(
 			&power_cb, hdmi_power_handler,
