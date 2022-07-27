@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b1f11b0_8fe3b58c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-27T17:32:43Z",
+      "side": 1,
+      "message": "Fair enough.",
+      "parentUuid": "ecabfc99_88535f79",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fd8d9a4_9fc734fa",
@@ -144,6 +162,30 @@
       "side": 1,
       "message": "It\u0027s a module-level constant, so screaming snake case seems like the correct naming convention.",
       "parentUuid": "720c1694_6131714a",
+      "range": {
+        "startLine": 18,
+        "startChar": 34,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e408e0a9_9df9b023",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-27T17:32:43Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be a common pattern.  Other users of `DEVICE_DT_GET` assign to lower case name.  I won\u0027t block this change, but prefer the lower case since this is referring to a static variable.",
+      "parentUuid": "eac4b759_8be5b1c8",
       "range": {
         "startLine": 18,
         "startChar": 34,
