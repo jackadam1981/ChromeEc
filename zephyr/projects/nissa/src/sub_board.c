@@ -202,9 +202,18 @@ static void nereid_subboard_config(void)
 				use_vcc_enable = true;
 			}
 		}
-		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
-				      GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
-					      GPIO_PULL_UP | GPIO_ACTIVE_LOW);
+		if (IS_ENABLED(CONFIG_BOARD_PUJJO)) {
+			gpio_pin_configure_dt(
+				GPIO_DT_FROM_ALIAS(gpio_hdmi_en_odl),
+				GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					GPIO_ACTIVE_LOW);
+			use_vcc_enable = true;
+		} else {
+			gpio_pin_configure_dt(
+				GPIO_DT_FROM_ALIAS(gpio_en_rails_odl),
+				GPIO_OUTPUT_INACTIVE | GPIO_OPEN_DRAIN |
+					GPIO_PULL_UP | GPIO_ACTIVE_LOW);
+		}
 		/* Control HDMI power in concert with AP */
 		ap_power_ev_init_callback(
 			&power_cb, hdmi_power_handler,
