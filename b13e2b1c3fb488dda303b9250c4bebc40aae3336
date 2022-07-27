@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf7d7aa_db402655",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-27T00:50:50Z",
+      "side": 1,
+      "message": "Creating a new log module does generate some overhead, and having a lot of them can become burdensome - at one point I turned on CONFIG_SHELL_LOG_BACKEND, and saw that everyone of these register macros generated a different logging category, and the list was getting long.\nWe likely need to start to put some structure around these categories.\nIt seemed sensible to keep this logging under the standard espi logging module, in spite of where the code lives, and theoretically this would allow runtime adjustment of just the espi logging, which seems more useful than setting a global log level for all logging.\nI think it\u0027s OK for the moment to use a new module, but longer term we need to coalesce these into a much smaller set, and perhaps integrate it with the \u0027chan\u0027 handling in some way.",
+      "parentUuid": "a42879d6_bb7dfc77",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "720c1694_6131714a",
@@ -185,6 +203,24 @@
       "side": 1,
       "message": "\u003e DT_CHOSEN(cros_ec_espi)\n\nI don\u0027t think a chosen node is correct here, because this code is tightly coupled to the SoC. If there were some kind of external eSPI controller that a board chose this code would not work correctly if it tried to use that device.\n\n\u003e rather than saving this as a static...\n\nI assume this can be trivially optimized to inline the resultant pointer (so there\u0027s no difference in generated code) and I think this way is nicer to read since it does things like show the reader what the type is.\n\n\u003e `device_is_ready()`\n\nDone.",
       "parentUuid": "02102faa_9844d02a",
+      "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e61e987_feb914f1",
+        "filename": "zephyr/app/ec/chip/riscv/riscv-ite/it8xxx2-espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-27T00:50:50Z",
+      "side": 1,
+      "message": "You\u0027re likely right that since this is not EC specific code, using the chosen node may not be appropriate.\n\nIn terms of the static constant, my comment is mainly about not creating and storing a value unnecessarily, and also following the common pattern.\nIf the macro gives you same thing, why create a static constant and take up the space?\n\nMaybe it can be a local temp constant in the function:\n\n... espi_enable_callback...\n{\n    const struct device *const dev \u003d\n\tDEVICE_DT_GET(DT_NODELABEL(espi0));\n\t\n    if (!device_is_ready(dev)) {\n        LOG...\n        return;\n    }\n    ...\n\nIMHO I find the whole \u0027device_is_ready()\u0027 thing a little strange since it forces some kind of special check when it could just use some kind of normal error handling (and what do you do if the device is not ready? Seems like a serious system error that shouldn\u0027t happen).",
+      "parentUuid": "5c23575e_602f5788",
       "revId": "b13e2b1c3fb488dda303b9250c4bebc40aae3336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
