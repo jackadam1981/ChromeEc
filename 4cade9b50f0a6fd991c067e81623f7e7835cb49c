@@ -16,6 +16,23 @@
       "message": "Error when compiling common/acpi.c\n\ncommon/acpi.c: In function \u0027acpi_ap_to_ec\u0027:\ncommon/acpi.c:319:4: error: a label can only be part of a statement and a declaration is not a statement\n    char ts_str[PRINTF_TIMESTAMP_BUF_SIZE];\n    ^~~~\n\nProbalby add bracket to fix it ?",
       "revId": "4cade9b50f0a6fd991c067e81623f7e7835cb49c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "965d68d3_b73dc02e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-07-27T07:43:07Z",
+      "side": 1,
+      "message": "Hi Asena/Diana,\n\nseems it has already been fixed in main: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3787557\nCould you please include this ?",
+      "revId": "4cade9b50f0a6fd991c067e81623f7e7835cb49c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
