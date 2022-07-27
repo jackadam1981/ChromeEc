@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa112e2_a622e097",
+        "filename": "docs/zephyr/zephyr_bc12.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-27T22:49:02Z",
+      "side": 1,
+      "message": "is an I2C controller",
+      "range": {
+        "startLine": 93,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "07e7668e738396bd913f45ac96a72a4d319a9af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f2fecf_90b2a3f1",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-07-27T22:49:02Z",
+      "side": 1,
+      "message": "Get the legacy I2C port enum for a child device on an I2C bus.",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "07e7668e738396bd913f45ac96a72a4d319a9af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
