@@ -52,6 +52,24 @@
       "parentUuid": "698c6312_1f1892c8",
       "revId": "3d71ad3dc69839850dc52f43d5d01de130cdbe47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c90cf19_9eb4c12b",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2022-07-27T02:49:16Z",
+      "side": 1,
+      "message": "Maybe use ALERT_STORM_INTERVAL is a good idea, but I\u0027m not understand with its mechanism.",
+      "parentUuid": "19face44_8a111d0b",
+      "revId": "3d71ad3dc69839850dc52f43d5d01de130cdbe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
