@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a3b18e6_2a91fbfa",
+        "filename": "zephyr/projects/nissa/joxer/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-07-27T23:53:13Z",
+      "side": 1,
+      "message": "OK to do this for now, but I will raise a separate CL to move the common PWM config to the sub-board configs.",
+      "revId": "55b9a69502bd53e67ab93f3075a0c1541ab31704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
