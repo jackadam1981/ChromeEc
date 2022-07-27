@@ -52,6 +52,24 @@
       "parentUuid": "b3cd5677_3ddec25d",
       "revId": "f2f81c5447dc57e8a663337d1cf1efd8d5e59493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d16be85_055e2670",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-27T16:17:13Z",
+      "side": 1,
+      "message": "I\u0027d like to try understanding the problem in more detail.\n\n- What have you been seeing for the mux state before the mux set completes?  What mux set is in progress when we hit this clause (set to none, to USB)? \n- Should the mux set be preserving the bit 5 which the below API changes? (i.e. should all mux sets be performing a read/modify/write rather than just a write)\n- Reading the bug, I see there\u0027s an i2c error mentioned.  Do you know the root cause of the i2c error?\n- Is the call to bb_retimer_set_usb3() in the correct location (called on power transitions), or is it also needed in general during mux sets (similar to a board_set API defined to be called every time a mux is set)?",
+      "parentUuid": "3a2550b9_712a3010",
+      "revId": "f2f81c5447dc57e8a663337d1cf1efd8d5e59493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
