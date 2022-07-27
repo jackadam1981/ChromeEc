@@ -87,6 +87,24 @@
       "parentUuid": "08d5edb7_1e6eaf03",
       "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aef099a_ba66e063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362541
+      },
+      "writtenOn": "2022-07-27T07:04:14Z",
+      "side": 1,
+      "message": "Hi Vijay, patchset 2 is updated to disable LTO only for adlrvpm_ite board as needed.",
+      "parentUuid": "c763866c_d3d4744b",
+      "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
