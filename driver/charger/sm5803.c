@@ -181,6 +181,19 @@ static int sm5803_set_active_safe(int chgnum)
 	/* Enable default GPADCs */
 	rv = meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1,
 			 SM5803_GPADCC1_DEFAULT_ENABLE);
+	if (rv) {
+		goto out;
+	}
+
+	rv = chg_read8(chgnum, 0x5C, &val);
+	if (rv) {
+		goto out;
+	}
+	if (val != 0x7A) {
+		CPRINTS("Charger %d in unexpected state: 0x5C = 0x%02x", chgnum, val);
+		CPRINTS("Killing the charger task to permit debug!");
+		k_thread_abort(k_current_get());
+	}
 
 out:
 	if (rv) {
