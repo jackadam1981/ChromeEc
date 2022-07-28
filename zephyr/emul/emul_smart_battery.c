@@ -41,14 +41,34 @@ struct sbat_emul_data {
 	int num_to_read;
 };
 
+static struct sbat_emul_bat_data *original_ptr = NULL;
+static struct sbat_emul_data *original_emul_data_ptr = NULL;
+
 /** Check description in emul_smart_battery.h */
 struct sbat_emul_bat_data *sbat_emul_get_bat_data(const struct emul *emul)
 {
-	struct sbat_emul_data *data;
+	ARG_UNUSED(emul);
+	return original_ptr;
 
-	data = emul->data;
+	/* Here be dragons */
 
-	return &data->bat;
+	/* struct sbat_emul_data *data; */
+
+	/* data = emul->data; */
+
+	/* printf("addr being returned by get_bat_data is 0x%x\n", &data->bat);
+	 */
+
+	/* if (data != original_emul_data_ptr) */
+	/* { */
+	/* 	printf("starting giving wrong emul_data address\n"); */
+	/* } */
+	/* if (&data->bat != original_ptr) */
+	/* { */
+	/* 	printf("started giving wrong address\n"); */
+	/* } */
+
+	/* return &data->bat; */
 }
 
 /** Check description in emul_smart_battery.h */
@@ -284,6 +304,11 @@ static uint16_t sbat_emul_read_status(const struct emul *emul)
 	bat = sbat_emul_get_bat_data(emul);
 
 	status = bat->status;
+
+	printf("address of bat->cur is 0x%x\n", &bat->cur);
+	printf("sbat address of bat-data is 0x%x\n", &bat);
+	printf("sbat address of sbat is 0x%x\n", emul);
+	printf("battery current at read is: %d\n", bat->cur);
 
 	/*
 	 * Over charged and terminate charger alarm cannot appear when battery
@@ -790,6 +815,11 @@ static int sbat_emul_init(const struct emul *emul, const struct device *parent)
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
 	struct sbat_emul_data *data = emul->data;
 
+	printf("init sbat address of bat-data is 0x%x\n", &data->bat);
+
+	original_ptr = &data->bat;
+	original_emul_data_ptr = data;
+
 	data->common.emul.addr = cfg->addr;
 	data->common.emul.target = emul;
 	data->common.i2c = parent;
@@ -879,7 +909,26 @@ static int sbat_emul_init(const struct emul *emul, const struct device *parent)
 	EMUL_DEFINE(sbat_emul_init, DT_DRV_INST(n), &sbat_emul_cfg_##n, \
 		    &sbat_emul_data_##n, &i2c_common_emul_api)
 
-DT_INST_FOREACH_STATUS_OKAY(SMART_BATTERY_EMUL)
+static struct sbat_emul_data sbat_emul_data_0 = { . bat = { . mf_access = 0 , . at_rate_full_mw_support = 0 , . spec_info = ( ( 3 << 4 ) & 0x00F0 ) | ( ( 0 << 8 ) & 0x0F00 ) | ( ( 0 << 12 ) & 0xF000 ) | 1 , . mode = ( 0 * ( 1UL << ( 0 ) ) ) | ( 0 * ( 1UL << ( 1 ) ) ) , . design_mv = 5000 , . design_cap = 5000 , . temp = 2930 , . volt = 5000 , . cur = 1000 , . avg_cur = 1000 , . max_error = 0 , . cap = 2000 , . default_cap = 2000 , . full_cap = 4000 , . default_full_cap = 4000 , . desired_charg_cur = 1000 , . desired_charg_volt = 5000 , . cycle_count = 99 , . sn = 7 , . mf_name = "zephyr" , . mf_name_len = sizeof ( "zephyr" ) - 1 , . mf_data = "LION" , . mf_data_len = sizeof ( "LION" ) - 1 , . dev_name = "smartbat" , . dev_name_len = sizeof ( "smartbat" ) - 1 , . dev_chem = "LION" , . dev_chem_len = sizeof ( "LION" ) - 1 , . mf_date = 0 , . cap_alarm = 0 , . time_alarm = 0 , . at_rate = 0 , . status = ( 1UL << ( 7 ) ) , . error_code = 0 , } , . cur_cmd = - 1 , . common = { . start_write = ( ( void * ) 0 ) , . write_byte = sbat_emul_write_byte , . finish_write = sbat_emul_finalize_write_msg , . start_read = sbat_emul_handle_read_msg , . read_byte = sbat_emul_read_byte , . finish_read = ( ( void * ) 0 ) , . access_reg = sbat_emul_access_reg , } , } ;
+static const struct i2c_common_emul_cfg sbat_emul_cfg_0 = {
+	.i2c_label = "I2C_0",
+	.dev_label = "BATTERY",
+	.data = &sbat_emul_data_0.common,
+	.addr = 11,
+};
+static struct i2c_emul(__emulreg_DT_N_S_i2c_100_S_sb_b_bus) = {
+	.api = &i2c_common_emul_api,
+	.addr = 11,
+};
+static struct emul(__emulreg_DT_N_S_i2c_100_S_sb_b)
+	__attribute__((__section__(".emulators"))) __attribute__((__used__)) = {
+		.init = (sbat_emul_init),
+		.dev = (&__device_dts_ord_88),
+		.cfg = (&sbat_emul_cfg_0),
+		.data = (&sbat_emul_data_0),
+		.bus_type = EMUL_BUS_TYPE_I2C,
+		.bus = { .i2c = &((__emulreg_DT_N_S_i2c_100_S_sb_b_bus)) },
+	};
 
 #define SMART_BATTERY_EMUL_CASE(n) \
 	case DT_INST_DEP_ORD(n):   \
