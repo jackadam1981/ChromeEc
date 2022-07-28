@@ -463,7 +463,6 @@ static void sm5803_init(int chgnum)
 {
 	enum ec_error_list rv;
 	int reg;
-	int vbus_mv;
 	const struct battery_info *batt_info;
 	int pre_term;
 	int cells;
@@ -472,21 +471,14 @@ static void sm5803_init(int chgnum)
 	 * If a charger is not currently present, disable switching per OCPC
 	 * requirements
 	 */
-	rv = charger_get_vbus_voltage(chgnum, &vbus_mv);
-	if (rv == EC_SUCCESS) {
-		if (vbus_mv < 4000) {
-			/*
-			 * No charger connected, disable CHG_EN
-			 * (note other bits default to 0)
-			 */
-			rv = chg_write8(chgnum, SM5803_REG_FLOW1, 0);
-		} else if (!sm5803_is_sourcing_otg_power(chgnum, chgnum)) {
-			charger_vbus[chgnum] = 1;
-		}
-	} else {
-		CPRINTS("%s %d: Failed to read VBUS voltage during init",
-			CHARGER_NAME, chgnum);
-		return;
+	if (!sm5803_check_vbus_level(chgnum, VBUS_PRESENT)) {
+		/*
+		 * No charger connected, disable CHG_EN
+		 * (note other bits default to 0)
+		 */
+		rv = chg_write8(chgnum, SM5803_REG_FLOW1, 0);
+	} else if (!sm5803_is_sourcing_otg_power(chgnum, chgnum)) {
+		charger_vbus[chgnum] = 1;
 	}
 
 	/*
