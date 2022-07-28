@@ -527,3 +527,8 @@ void i2c_init(void)
 
 	CPRINTS("Done i2c_init");
 }
+
+int i2c_get_line_levels(int port)
+{
+	return I2C_LINE_IDLE;
+}

@@ -31,7 +31,14 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_CONTROLLER
 
+#ifdef BOARD_ADLRVP_ISH
+#define CONFIG_ACCELGYRO_BMI260 /* For BMI260 */
+#define CONFIG_ACCELGYRO_BMI_COMM_I2C
+#undef CONFIG_ACCELGYRO_BMI_COMM_SPI
+#else
 #define CONFIG_ACCELGYRO_LSM6DSM /* For LSM6DS3 */
+#endif
+
 #define CONFIG_ACCEL_FORCE_MODE_MASK BIT(BASE_ACCEL)
 
 /* Host command over HECI */
@@ -48,7 +55,7 @@
 
 /* Undefined features */
 #undef CONFIG_CMD_HASH
-#undef CONFIG_CMD_I2C_SCAN
+#define CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_KEYBOARD
 #undef CONFIG_CMD_POWER_AP
 #undef CONFIG_CMD_POWERINDEBUG
@@ -71,13 +78,14 @@
 #define CONFIG_DMA_PAGING
 
 /* power management definitions */
-#define CONFIG_LOW_POWER_IDLE
-
+/* #define CONFIG_LOW_POWER_IDLE */
+#if 0
 #define CONFIG_ISH_PM_D0I1
 #define CONFIG_ISH_PM_D0I2
 #define CONFIG_ISH_PM_D0I3
 #define CONFIG_ISH_PM_D3
 #define CONFIG_ISH_PM_RESET_PREP
+#endif
 
 #define CONFIG_ISH_IPAPG
 
