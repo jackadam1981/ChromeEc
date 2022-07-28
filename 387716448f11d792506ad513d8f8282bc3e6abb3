@@ -16,6 +16,24 @@
       "message": "This changes the old behavior to only configure en_rails_odl if the other pin is not configured; I don\u0027t think that\u0027s correct.",
       "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f62c3a3_575f91ab",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-07-28T05:22:51Z",
+      "side": 1,
+      "message": "That is why I have to make a copy and modify it the way I previous did.\nPujjo don\u0027t need to configure en_rails_odl so it is more reasonable to judge by the board is pujjo or not to configure gpio_hdmi_en_odl or gpio_en_rails_odl.\nShould I change it back?",
+      "parentUuid": "941ddad1_683f283a",
+      "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
