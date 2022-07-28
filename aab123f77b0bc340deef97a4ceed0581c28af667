@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6ccfc8_d2b5d549",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-28T07:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "681cfbb9_94cc6189",
+      "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbd985b5_b43ca1e8",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-26T15:10:06Z",
       "side": 1,
       "message": "add test",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9bd34a4_e897e471",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-28T07:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbd985b5_b43ca1e8",
       "range": {
         "startLine": 11,
         "startChar": 5,
@@ -71,6 +113,24 @@
       "writtenOn": "2022-07-26T15:10:06Z",
       "side": 1,
       "message": "nit: add note about repurposed netname",
+      "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1fd4c79_2208c223",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-28T07:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dfc85b8_e18f6cfe",
       "revId": "aab123f77b0bc340deef97a4ceed0581c28af667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
