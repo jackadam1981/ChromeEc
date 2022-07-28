@@ -16,6 +16,23 @@
       "message": "Added config_allowed since CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT is used by legacy code. Seems a little bit like the config checker is overzealous in this case.",
       "revId": "8ad250cf13a3e776df357c9ed0b4e31d7f3eba5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef05f41b_f640dee8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-07-28T02:21:37Z",
+      "side": 1,
+      "message": "Who could give Code-Review+2 and Code-Coverage+2 ? Thanks~",
+      "revId": "8ad250cf13a3e776df357c9ed0b4e31d7f3eba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
