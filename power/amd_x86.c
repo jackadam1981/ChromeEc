@@ -203,6 +203,7 @@ static host_event_t backup_smi_mask;
  */
 static void lpc_s0ix_suspend_clear_masks(void)
 {
+	ccprints("TEST: lpc_s0ix_suspend_clear_masks");
 	backup_sci_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SCI);
 	backup_smi_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SMI);
 
@@ -223,6 +224,7 @@ static void lpc_s0ix_resume_restore_masks(void)
 	 * enter S0ix(SLP_S0# assertion) and hence SCI/SMI masks were never
 	 * backed up.
 	 */
+	ccprints("TEST: lpc_s0ix_resume_restore_masks");
 	if (!backup_sci_mask && !backup_smi_mask)
 		return;
 
@@ -248,8 +250,8 @@ __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, sleep_wake_mask);
 	}
 
-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
-	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+	CPRINTS("Warning: Detected sleep hang! NOT waking host up!");
+	// host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
 }
 
 static void handle_chipset_reset(void)

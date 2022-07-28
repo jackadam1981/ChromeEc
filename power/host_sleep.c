@@ -25,6 +25,14 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 	/* Default weak implementation -- no action required. */
 }
 
+
+static void assert_battery_status_event(void) {
+	ccprints("TEST: assert_battery_status_event");
+	host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
+}
+
+DECLARE_DEFERRED(assert_battery_status_event);
+
 static enum ec_status
 host_command_host_sleep_event(struct host_cmd_handler_args *args)
 {
@@ -32,6 +40,8 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 	struct ec_response_host_sleep_event_v1 *r = args->response;
 	struct host_sleep_event_context ctx;
 	enum host_sleep_event state = p->sleep_event;
+
+	hook_call_deferred(&assert_battery_status_event_data, 50 * 1000); // 50 msec
 
 	host_sleep_state = state;
 	ctx.sleep_transitions = 0;
@@ -165,7 +175,7 @@ static void sleep_transition_timeout(void)
 
 	if (timeout_hang_type != SLEEP_HANG_NONE) {
 		power_chipset_handle_sleep_hang(timeout_hang_type);
-		power_board_handle_sleep_hang(timeout_hang_type);
+		// power_board_handle_sleep_hang(timeout_hang_type);
 	}
 }
 
