@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "941ddad1_683f283a",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-28T04:15:22Z",
+      "side": 1,
+      "message": "This changes the old behavior to only configure en_rails_odl if the other pin is not configured; I don\u0027t think that\u0027s correct.",
+      "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
