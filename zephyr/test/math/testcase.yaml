@@ -1,7 +1,6 @@
-common:
-  platform_allow: native_posix
 tests:
   util.math.fixed_point:
-    extra_args: OVERLAY_CONFIG=./fixed_point.conf
+    type: unit
   util.math.floating_point:
-    extra_args: OVERLAY_CONFIG=./floating_point.conf
+    type: unit
+    extra_args: -DCONFIG_FPU=1
