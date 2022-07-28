@@ -34,6 +34,24 @@
       "parentUuid": "941ddad1_683f283a",
       "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07571b7_9ef4ee83",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-28T05:33:26Z",
+      "side": 1,
+      "message": "I see; it\u0027s more complex than I thought. That\u0027s complex enough that I think we should break it out into one or more function then.\n\n```\n// Default implementation configures en_rails only\n__overridable void nissa_board_configure_hdmi_gpios(void) {\n    nissa_configure_hdmi_rails();\n}\n```\n\nAnd (optionally) in a per-board file:\n\n```\n// Nereid also configures hdmi_en_odl on old revisions\n__override void nissa_board_configure_hdmi_gpios(void) {\n    if (board_version \u003c 2)\n        nissa_configure_hdmi_vcc();\n    nissa_configure_hdmi_rails();\n}\n\n// Pujjo only configures hdmi_en_odl\n__override void nissa_board_configure_hdmi_gpios(void) {\n    nissa_configure_hdmi_vcc();\n}\n```\n\nOtherwise I imagine the control flow would quickly become confusing as more boards need to do things differently.",
+      "parentUuid": "9f62c3a3_575f91ab",
+      "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
