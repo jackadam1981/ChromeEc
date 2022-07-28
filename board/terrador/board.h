@@ -15,6 +15,8 @@
 #define CONFIG_USB_PD_DEBUG_LEVEL 2
 #undef CONFIG_CONSOLE_CMDHELP
 #undef CONFIG_CMD_BATTFAKE
+#define CONFIG_DEBUG_ASSSERT_BRIEF
+#undef CONFIG_DEBUG_ASSERT_REBOOTS
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
