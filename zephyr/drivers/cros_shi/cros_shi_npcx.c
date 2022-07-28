@@ -3,10 +3,9 @@
  * found in the LICENSE file.
  */
 
-#define DT_DRV_COMPAT nuvoton_npcx_cros_shi
+#define DT_DRV_COMPAT nuvoton_npcx_shi
 
 #include <zephyr/arch/arm/aarch32/cortex_m/cmsis.h>
-#include <assert.h>
 #include <zephyr/dt-bindings/clock/npcx_clock.h>
 #include <zephyr/drivers/clock_control.h>
 #include <zephyr/drivers/pinctrl.h>
@@ -14,9 +13,10 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/kernel.h>
+#include <zephyr/pm/device.h>
 #include <soc.h>
 #include <soc/nuvoton_npcx/reg_def_cros.h>
-
+#include <assert.h>
 #include "host_command.h"
 #include "soc_miwu.h"
 #include "system.h"
@@ -31,7 +31,7 @@
 
 LOG_MODULE_REGISTER(cros_shi, LOG_LEVEL_DBG);
 
-#define SHI_NODE DT_NODELABEL(shi)
+#define SHI_NODE DT_NODELABEL(shi0)
 #define SHI_VER_CTRL_PH DT_PHANDLE_BY_IDX(SHI_NODE, ver_ctrl, 0)
 #define SHI_VER_CTRL_ALT_FILED(f) DT_PHA_BY_IDX(SHI_VER_CTRL_PH, alts, 0, f)
 
@@ -904,22 +904,31 @@ static int shi_npcx_init(const struct device *dev)
 	return ret;
 }
 
-static const struct cros_shi_driver_api cros_shi_npcx_driver_api = {
-	.enable = cros_shi_npcx_enable,
-	.disable = cros_shi_npcx_disable,
-};
+#ifdef CONFIG_PM_DEVICE
+static int cros_shi_npcx_pm_cb(const struct device *dev,
+			       enum pm_device_action action)
+{
+	int ret = 0;
+
+	switch (action) {
+	case PM_DEVICE_ACTION_SUSPEND:
+		cros_shi_npcx_disable(dev);
+		break;
+	case PM_DEVICE_ACTION_RESUME:
+		cros_shi_npcx_enable(dev);
+		break;
+	default:
+		ret = -ENOTSUP;
+		break;
+	}
+
+	return ret;
+}
+#endif
+
+PM_DEVICE_DT_INST_DEFINE(0, cros_shi_npcx_pm_cb);
 
 static struct cros_shi_npcx_data cros_shi_data;
-DEVICE_DT_INST_DEFINE(0, shi_npcx_init, /* pm_control_fn= */ NULL,
+DEVICE_DT_INST_DEFINE(0, shi_npcx_init, PM_DEVICE_DT_INST_GET(0),
 		      &cros_shi_data, &cros_shi_cfg, PRE_KERNEL_1,
-		      CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,
-		      &cros_shi_npcx_driver_api);
-
-/* KBS register structure check */
-NPCX_REG_SIZE_CHECK(shi_reg, 0x120);
-NPCX_REG_OFFSET_CHECK(shi_reg, SHICFG1, 0x001);
-NPCX_REG_OFFSET_CHECK(shi_reg, EVENABLE, 0x005);
-NPCX_REG_OFFSET_CHECK(shi_reg, IBUFSTAT, 0x00a);
-NPCX_REG_OFFSET_CHECK(shi_reg, EVENABLE2, 0x010);
-NPCX_REG_OFFSET_CHECK(shi_reg, OBUF, 0x020);
-NPCX_REG_OFFSET_CHECK(shi_reg, IBUF, 0x0A0);
+		      CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, NULL);
