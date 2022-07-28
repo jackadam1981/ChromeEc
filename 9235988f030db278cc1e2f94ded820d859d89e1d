@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ce4bb4_563089db",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-28T00:49:21Z",
+      "side": 1,
+      "message": "I\u0027d rather include this in the above block than make a copy.\n\n```\nif (IS_ENABLED(CONFIG_BOARD_NEREID) || IS_ENABLED(CONFIG_BOARD_PUJJO)) {\n    ...\n    if (IS_ENABLED(CONFIG_BOARD_PUJJO) || (IS_ENABLED(CONFIG_BOARD_NEREID) \u0026\u0026 board_version \u003c 2) {\n        ...\n    }\n}\n```",
+      "revId": "9235988f030db278cc1e2f94ded820d859d89e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
