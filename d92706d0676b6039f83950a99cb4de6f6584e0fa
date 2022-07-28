@@ -51,6 +51,23 @@
       "parentUuid": "b8c9cb12_89c28fe1",
       "revId": "d92706d0676b6039f83950a99cb4de6f6584e0fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba06e25_22de3f0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-28T00:36:14Z",
+      "side": 1,
+      "message": "The integrated TCPC on Nereid is currently broken without this change, so I\u0027m submitting it.",
+      "revId": "d92706d0676b6039f83950a99cb4de6f6584e0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
