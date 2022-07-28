@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d22bb42_2d5f38c6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-28T17:32:50Z",
+      "side": 1,
+      "message": "There\u0027s also the PRL file\u0027s debug level.\n\nIt seems like it would be ideal to centralize the debug levels, since we treat it as one level for the entire stack, but then actually track it in many places.",
+      "revId": "b550afd2f373cede28bbb95dff17796ec24387b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
