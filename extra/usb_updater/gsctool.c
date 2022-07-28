@@ -2376,6 +2376,9 @@ static int process_get_apro_boot_status(struct transfer_descriptor *td)
 	case AP_RO_IN_PROGRESS:
 		printf("in progress.");
 		break;
+	case AP_RO_FAIL_CLEARED:
+		printf("fail CLEARED!");
+		break;
 	default:
 		fprintf(stderr, "unknown status\n");
 		return update_error;
