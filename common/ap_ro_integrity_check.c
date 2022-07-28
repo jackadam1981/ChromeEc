@@ -1409,6 +1409,16 @@ static void release_ec_reset_override(void)
 	enable_sleep(SLEEP_MASK_AP_RO_VERIFICATION);
 }
 
+/* Only call this through a key combo. */
+void ap_ro_clear_ec_rst_override(void)
+{
+	if (!ec_rst_override())
+		return;
+	apro_result = AP_RO_FAIL_CLEARED;
+	release_ec_reset_override();
+	CPRINTS("%s: done", __func__);
+}
+
 int ec_rst_override(void)
 {
 	return apro_result == AP_RO_FAIL;
