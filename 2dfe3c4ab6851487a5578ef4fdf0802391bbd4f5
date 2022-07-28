@@ -16,6 +16,24 @@
       "message": "Hi YH, I don\u0027t see CL:3792315 in the changelog. Is it missing?",
       "revId": "2dfe3c4ab6851487a5578ef4fdf0802391bbd4f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c30b46_21c9bd15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-07-28T22:55:55Z",
+      "side": 1,
+      "message": "I can see it here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3792319/1//MERGE_LIST#46\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3792319/-1..1/common/usbc/usb_pd_dpm.c",
+      "parentUuid": "f0880cb7_ad2d2196",
+      "revId": "2dfe3c4ab6851487a5578ef4fdf0802391bbd4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
