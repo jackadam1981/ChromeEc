@@ -16,6 +16,24 @@
       "message": "How is it that this works?  I thought the cached charger_vbus[] value would be used when the ADC is off, but would it be initialized at this point?",
       "revId": "bcdf1bdc32833b34b0a15aef7fdd4c1c3857527a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6978e80b_2fc8864e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-28T23:45:37Z",
+      "side": 1,
+      "message": "Looks like it\u0027ll always be zeroed at this point on startup. I think the better fix for this is to directly poll charger presence via the CHG_DET bit, or possibly to ensure ADCs are enabled first.",
+      "parentUuid": "7b0daef2_94e598be",
+      "revId": "bcdf1bdc32833b34b0a15aef7fdd4c1c3857527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
