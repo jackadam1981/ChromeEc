@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5817a39_63111828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-28T01:09:23Z",
+      "side": 1,
+      "message": "Added config_allowed since CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT is used by legacy code. Seems a little bit like the config checker is overzealous in this case.",
+      "revId": "8ad250cf13a3e776df357c9ed0b4e31d7f3eba5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
