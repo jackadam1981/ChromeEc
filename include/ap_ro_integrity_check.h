@@ -17,6 +17,7 @@ enum ap_ro_status {
 	AP_RO_UNSUPPORTED_TRIGGERED,
 	AP_RO_PASS,
 	AP_RO_IN_PROGRESS,
+	AP_RO_FAIL_CLEARED,
 };
 /*
  * validate_ap_ro: based on information saved in an H1 RO flash page verify
@@ -40,5 +41,11 @@ int ap_ro_board_id_blocked(void);
  * ap_ro_device_reset: Clear AP RO verification state on a new boot.
  */
 void ap_ro_device_reset(void);
+
+/*
+ * Clear the AP RO result and release the EC from reset. This should only be
+ * done through a key combo.
+ */
+void ap_ro_clear_ec_rst_override(void);
 
 #endif /* ! __CR50_INCLUDE_AP_RO_INTEGRITY_CHECK_H */
