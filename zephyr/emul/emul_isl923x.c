@@ -1,3 +1,7 @@
+
+
+#pragma clang optimize off
+
 /* Copyright 2021 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -391,6 +395,10 @@ static int isl923x_emul_finish_write(const struct emul *emul, int reg,
 				if (bat != NULL) {
 					current = REG_TO_CURRENT(
 						data->current_limit_reg);
+					/* printf("isl923x setting battery current to %d\n", current); */
+					/* printf("isl923x address of bat->cur is 0x%x\n", &bat->cur); */
+					/* printf("isl923x address of bat-data is 0x%x\n", &bat); */
+					/* printf("isl923x address of sbat_emul is 0x%x\n", battery_emul); */
 					if (current > 0)
 						bat->cur = current;
 					else

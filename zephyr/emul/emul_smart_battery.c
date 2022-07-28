@@ -41,14 +41,34 @@ struct sbat_emul_data {
 	int num_to_read;
 };
 
+static struct sbat_emul_bat_data *original_ptr = NULL;
+static struct sbat_emul_data *original_emul_data_ptr = NULL;
+
 /** Check description in emul_smart_battery.h */
 struct sbat_emul_bat_data *sbat_emul_get_bat_data(const struct emul *emul)
 {
-	struct sbat_emul_data *data;
+	ARG_UNUSED(emul);
+	return original_ptr;
 
-	data = emul->data;
+	/* Here be dragons */
 
-	return &data->bat;
+	/* struct sbat_emul_data *data; */
+
+	/* data = emul->data; */
+
+	/* printf("addr being returned by get_bat_data is 0x%x\n", &data->bat);
+	 */
+
+	/* if (data != original_emul_data_ptr) */
+	/* { */
+	/* 	printf("starting giving wrong emul_data address\n"); */
+	/* } */
+	/* if (&data->bat != original_ptr) */
+	/* { */
+	/* 	printf("started giving wrong address\n"); */
+	/* } */
+
+	/* return &data->bat; */
 }
 
 /** Check description in emul_smart_battery.h */
@@ -789,6 +809,11 @@ static int sbat_emul_init(const struct emul *emul, const struct device *parent)
 {
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
 	struct sbat_emul_data *data = emul->data;
+
+	printf("init sbat address of bat-data is 0x%x\n", &data->bat);
+
+	original_ptr = &data->bat;
+	original_emul_data_ptr = data;
 
 	data->common.emul.addr = cfg->addr;
 	data->common.emul.target = emul;
