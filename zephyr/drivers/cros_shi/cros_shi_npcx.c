@@ -334,7 +334,7 @@ static void shi_write_first_pkg_outbuf(struct shi_reg *const inst,
 	shi_params.sz_sending += size;
 
 	/* Write data to beginning of OBUF if we've reached the end */
-	if (obuf_ptr == inst->OBUF + SHI_IBUF_FULL_SIZE)
+	if (obuf_ptr == inst->OBUF + SHI_OBUF_FULL_SIZE)
 		obuf_ptr = inst->OBUF;
 
 	/* Fill next half output buffer */
@@ -732,7 +732,7 @@ static void cros_shi_npcx_reset_prepare(struct shi_reg *const inst)
 	shi_params.rx_msg = in_msg;
 	shi_params.tx_msg = out_msg;
 	shi_params.rx_buf = inst->IBUF;
-	shi_params.tx_buf = inst->IBUF + SHI_OBUF_HALF_SIZE;
+	shi_params.tx_buf = inst->OBUF;
 	shi_params.sz_received = 0;
 	shi_params.sz_sending = 0;
 	shi_params.sz_request = 0;
