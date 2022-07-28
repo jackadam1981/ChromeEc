@@ -52,6 +52,24 @@
       "parentUuid": "9f62c3a3_575f91ab",
       "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009e2ce7_cb6fbe68",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-07-28T06:42:54Z",
+      "side": 1,
+      "message": "Got it.\nHowever, which board file should we add the override configure function?\nAlso I don\u0027t think I have the permission to modify Nereid board file.",
+      "parentUuid": "f07571b7_9ef4ee83",
+      "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
