@@ -472,7 +472,11 @@ static void sm5803_init(int chgnum)
 	 * If a charger is not currently present, disable switching per OCPC
 	 * requirements
 	 */
-	rv = charger_get_vbus_voltage(chgnum, &vbus_mv);
+	/* Tune on GPADCs before read VBUS ADC */
+	rv = meas_write8(chgnum, SM5803_REG_GPADC_CONFIG1,
+			 SM5803_GPADCC1_DEFAULT_ENABLE);
+
+	rv |= charger_get_vbus_voltage(chgnum, &vbus_mv);
 	if (rv == EC_SUCCESS) {
 		if (vbus_mv < 4000) {
 			/*
@@ -677,8 +681,10 @@ static void sm5803_init(int chgnum)
 	reg &= ~(BIT(0) | BIT(1));
 	rv |= main_write8(chgnum, SM5803_REG_REFERENCE, reg);
 
-	/* Reset clocks and enable GPADCs */
-	rv |= sm5803_set_active_safe(chgnum);
+	/* Set a higher clock speed in case it was lowered for z-state */
+	rv |= main_read8(chgnum, SM5803_REG_CLOCK_SEL, &reg);
+	reg &= ~SM5803_CLOCK_SEL_LOW;
+	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL, reg);
 
 	/* Enable Psys DAC */
 	rv |= meas_read8(chgnum, SM5803_REG_PSYS1, &reg);
