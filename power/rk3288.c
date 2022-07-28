@@ -23,6 +23,7 @@
  *
  */
 
+#include "assert.h"
 #include "battery.h"
 #include "charge_state.h"
 #include "chipset.h" /* This module implements chipset functions too */

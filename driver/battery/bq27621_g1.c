@@ -5,6 +5,7 @@
  * Battery driver for BQ27621-G1
  */
 
+#include "assert.h"
 #include "battery.h"
 #include "console.h"
 #include "extpower.h"
