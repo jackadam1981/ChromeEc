@@ -41,14 +41,26 @@ struct sbat_emul_data {
 	int num_to_read;
 };
 
+
+static struct sbat_emul_bat_data * original_ptr = NULL;
+
 /** Check description in emul_smart_battery.h */
 struct sbat_emul_bat_data *sbat_emul_get_bat_data(const struct emul *emul)
 {
-	struct sbat_emul_data *data;
+	ARG_UNUSED(emul);
+	return original_ptr;
+	/* struct sbat_emul_data *data; */
 
-	data = emul->data;
+	/* data = emul->data; */
 
-	return &data->bat;
+	/* printf("addr being returned by get_bat_data is 0x%x\n", &data->bat); */
+
+	/* if (&data->bat != original_ptr) */
+	/* { */
+	/* 	printf("started giving wrong address\n"); */
+	/* } */
+
+	/* return &data->bat; */
 }
 
 /** Check description in emul_smart_battery.h */
@@ -284,6 +296,11 @@ static uint16_t sbat_emul_read_status(const struct emul *emul)
 	bat = sbat_emul_get_bat_data(emul);
 
 	status = bat->status;
+
+	printf("address of bat->cur is 0x%x\n", &bat->cur);
+	printf("sbat address of bat-data is 0x%x\n", &bat);
+	printf("sbat address of sbat is 0x%x\n", emul);
+	printf("battery current at read is: %d\n", bat->cur);
 
 	/*
 	 * Over charged and terminate charger alarm cannot appear when battery
@@ -789,6 +806,10 @@ static int sbat_emul_init(const struct emul *emul, const struct device *parent)
 {
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
 	struct sbat_emul_data *data = emul->data;
+
+	printf("init sbat address of bat-data is 0x%x\n", &data->bat);
+
+	original_ptr = &data->bat;
 
 	data->common.emul.addr = cfg->addr;
 	data->common.emul.target = emul;
