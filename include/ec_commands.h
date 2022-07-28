@@ -1325,6 +1325,21 @@ struct ec_response_get_version_v1 {
 /* Read test - OBSOLETE */
 #define EC_CMD_READ_TEST 0x0003
 
+struct ec_response_get_chg_info {
+	int RSOC;
+	int charge_current;
+	int charge_voltage;
+	int ChargingCurrent;
+	int ChargingVoltage;
+	int remaining_capacity;
+	int full_capacity;
+	int cycle_count;
+	int temp;
+} __ec_align_size1;
+struct ec_params_get_chg_info {
+	uint8_t index;
+} __ec_align_size1;
+
 /*
  * Get build information
  *
@@ -2218,6 +2233,8 @@ struct ec_params_pwm_get_duty {
 struct ec_response_pwm_get_duty {
 	uint16_t duty; /* Duty cycle, EC_PWM_MAX_DUTY = 100% */
 } __ec_align2;
+
+#define EC_CMD_GET_CHARGER_INFO 0x0027
 
 /*****************************************************************************/
 /*
