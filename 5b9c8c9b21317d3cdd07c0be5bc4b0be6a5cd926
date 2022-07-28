@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae59918_9f27f104",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_bist_shared.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-28T23:04:01Z",
+      "side": 1,
+      "message": "I know you can\u0027t start an identifier with a \"5\", but what does the \"f\" stand for?",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "5b9c8c9b21317d3cdd07c0be5bc4b0be6a5cd926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
