@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14f3358_c58d011b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-28T06:09:15Z",
+      "side": 1,
+      "message": "none",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc2f88a_60b2e47f",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-28T06:09:15Z",
+      "side": 1,
+      "message": "nit: \"Mask enable\" is confusing, because this line actually disables (\u003d\u003d masks off) the RCP interrupt. Suggesting:\n/* Mask RCP 5V SRC */",
+      "range": {
+        "startLine": 319,
+        "startChar": 2,
+        "endLine": 319,
+        "endChar": 29
+      },
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa42295b_7cdfa92d",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5055,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-28T06:09:15Z",
+      "side": 1,
+      "message": "1. This is list of different PPCs. Please add the new config separately, with a one-liner comment.\n2. Since it is relevant only for NX20P348x, please include the name inside the config. I.e.:\n`#define CONFIG_USBC_NX20P348X_RCP_5VSRC_MASK_ENABLE`\nif it is only relevant for NX20P3483 - then:\n`#define CONFIG_USBC_NX20P3483_RCP_5VSRC_MASK_ENABLE`",
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4585cf_a10bc82b",
+        "filename": "zephyr/Kconfig.ppc",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-28T06:09:15Z",
+      "side": 1,
+      "message": "Replace with\n`depends on PLATFORM_EC_USBC_PPC_NX20P3483`",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 28
+      },
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b93c85_e0288616",
+        "filename": "zephyr/Kconfig.ppc",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-07-28T06:09:15Z",
+      "side": 1,
+      "message": "current",
+      "range": {
+        "startLine": 96,
+        "startChar": 50,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
