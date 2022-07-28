@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88b007c_f483f022",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-28T22:59:38Z",
+      "side": 1,
+      "message": "Is there any provision to clear this on disconnect? It\u0027s outside the DPM state that would ordinarily be cleared.",
+      "revId": "dd956ef781930f900244c31bb54083c58a17e368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c73b4a4_a74b5a69",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-28T22:59:38Z",
+      "side": 1,
+      "message": "Is there a scenario where we don\u0027t have any 3A ports but support shared mode?",
+      "revId": "dd956ef781930f900244c31bb54083c58a17e368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6200ce5_be1f606a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-07-28T22:59:38Z",
+      "side": 1,
+      "message": "Just a question: Wouldn\u0027t it make sense for `BDO_MODE_*` to be implemented in terms of `BIST_*_MODE`?",
+      "revId": "dd956ef781930f900244c31bb54083c58a17e368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
