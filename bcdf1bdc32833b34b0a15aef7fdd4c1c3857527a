@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0daef2_94e598be",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-28T22:52:57Z",
+      "side": 1,
+      "message": "How is it that this works?  I thought the cached charger_vbus[] value would be used when the ADC is off, but would it be initialized at this point?",
+      "revId": "bcdf1bdc32833b34b0a15aef7fdd4c1c3857527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
