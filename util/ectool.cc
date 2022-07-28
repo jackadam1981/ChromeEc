@@ -11602,8 +11602,22 @@ static int cmd_s0ix_counter(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_joxer(int argc, char *argv[])
+{
+	struct ec_params_get_chg_info p;
+	struct ec_response_get_chg_info r;
+	int rv;
+	p.index=0;
+	rv = ec_command(EC_CMD_GET_CHARGER_INFO, 0, &p, sizeof(p), &r, sizeof(r));
+	printf("Capacity:%d, Current:%d mA, Voltage:%d mV, ChargingCurrent:%d mA, ChargingVoltage:%dmV, RemainCapacity:%d mAh/mWh, FullChargeCapacity:%d mAh/mWh, Cyclecount:%d, Temperature:%d C\n",
+		r.RSOC, r.charge_current, r.charge_voltage, r.ChargingCurrent, r.ChargingVoltage, r.remaining_capacity, r.full_capacity, r.cycle_count, (r.temp-2731)/10);
+
+	return rv;
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{ "joxer", cmd_joxer},
 	{ "adcread", cmd_adc_read },
 	{ "addentropy", cmd_add_entropy },
 	{ "apreset", cmd_apreset },
