@@ -5,6 +5,7 @@
 
 /* I2C port module for MEC1322 */
 
+#include "assert.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
