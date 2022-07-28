@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a3a61c_b33a22fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-28T16:41:25Z",
+      "side": 1,
+      "message": "If Intel CCD is connected, AP\u0027s code is halted to do single step debug hence EC may not receive the needed signals on time hence disable the force power shutdown.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1f0db376_98f0a44b",
@@ -14,6 +37,75 @@
       "writtenOn": "2022-07-28T07:33:37Z",
       "side": 1,
       "message": "H1 is not triggering interrupt, will add board level function in  tcpm_debug_accessory(int port, bool enable). ",
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de98b305_0acd7da2",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-28T16:41:25Z",
+      "side": 1,
+      "message": "DBC",
+      "range": {
+        "startLine": 359,
+        "startChar": 14,
+        "endLine": 359,
+        "endChar": 15
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b6f629_aae82575",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-28T16:41:25Z",
+      "side": 1,
+      "message": "/ Intel I3C CCD",
+      "range": {
+        "startLine": 360,
+        "startChar": 16,
+        "endLine": 360,
+        "endChar": 19
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cd9cda_bc1b7e5d",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-28T16:41:25Z",
+      "side": 1,
+      "message": "i think need to bring it HOOK_INIT with last priority as we are setting TCPM state inside the code.\nPD thread wont be running when this is called",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 33
+      },
       "revId": "2eba078fd04157926a172748a39941e16242f006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
