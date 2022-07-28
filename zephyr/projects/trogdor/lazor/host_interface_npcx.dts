@@ -3,6 +3,18 @@
  * found in the LICENSE file.
  */
 
+/ {
+	chosen {
+		zephyr,ec-host-interface = &host_cmd;
+	};
+
+	host_cmd: host-cmd {
+		compatible = "zephyr,ec-host-cmd-periph-shi";
+		label = "host-cmd-shi";
+		bus = <&shi0>;
+	};
+};
+
 /* host interface */
 &shi0 {
 	status = "okay";
