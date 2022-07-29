@@ -15,10 +15,12 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "power.h"
+#include "power_button.h"
 #include "system.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
 #include "temp_sensor.h"
+#include "timer.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mode.h"
 #include "usb_mux.h"
@@ -51,6 +53,7 @@ static struct {
 	int vdm_cnt;
 	mutex_t vdm_attention_mutex;
 	enum dpm_pd_button_state pd_button_state;
+	uint64_t pd_button_press_time;
 } dpm[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define DPM_SET_FLAG(port, flag) atomic_or(&dpm[(port)].flags, (flag))
@@ -163,6 +166,7 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 void dpm_init(int port)
 {
 	dpm[port].flags = 0;
+	dpm[port].pd_button_press_time = 0;
 	dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
 }
 
@@ -520,6 +524,16 @@ void dpm_handle_alert(int port, uint32_t ado)
 
 static void dpm_run_pd_button_sm(int port)
 {
+#ifdef CONFIG_AP_POWER_CONTROL
+	if (!IS_ENABLED(CONFIG_POWER_BUTTON_X86) &&
+	    !IS_ENABLED(CONFIG_CHIPSET_SC7180) &&
+	    !IS_ENABLED(CONFIG_CHIPSET_SC7280)) {
+		/* Insufficient chipset API support for USB PD power button. */
+		DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED);
+		DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED);
+		return;
+	}
+
 	/*
 	 * Check for invalid flag combination. Alerts can only send a press or
 	 * release event at once and only one flag should be set. If press and
@@ -542,33 +556,57 @@ static void dpm_run_pd_button_sm(int port)
 			pd_timer_enable(port, DPM_TIMER_PD_BUTTON_PRESS,
 					CONFIG_USB_PD_LONG_PRESS_MAX_MS * MSEC);
 			dpm[port].pd_button_state = DPM_PD_BUTTON_PRESSED;
+			dpm[port].pd_button_press_time = get_time().val;
 		}
 		break;
 	case DPM_PD_BUTTON_PRESSED:
 		if (DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED)) {
 			pd_timer_enable(port, DPM_TIMER_PD_BUTTON_PRESS,
 					CONFIG_USB_PD_LONG_PRESS_MAX_MS * MSEC);
-		} else if (DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED)) {
-			pd_timer_disable(port, DPM_TIMER_PD_BUTTON_PRESS);
-			dpm[port].pd_button_state = DPM_PD_BUTTON_RELEASED;
+			dpm[port].pd_button_press_time = get_time().val;
 		} else if (pd_timer_is_expired(port,
 					       DPM_TIMER_PD_BUTTON_PRESS)) {
 			pd_timer_disable(port, DPM_TIMER_PD_BUTTON_PRESS);
 			dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
-		}
-		break;
-	case DPM_PD_BUTTON_RELEASED:
-#ifdef CONFIG_AP_POWER_CONTROL
-		if (IS_ENABLED(CONFIG_POWER_BUTTON_X86) ||
-		    IS_ENABLED(CONFIG_CHIPSET_SC7180) ||
-		    IS_ENABLED(CONFIG_CHIPSET_SC7280)) {
-			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+			dpm[port].pd_button_press_time = 0;
+		} else if (DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED)) {
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+				/*
+				 * Wake chipset on any button press when the
+				 * system is off.
+				 */
 				chipset_power_on();
+			} else if (chipset_in_state(
+					   CHIPSET_STATE_ANY_SUSPEND) ||
+				   chipset_in_state(CHIPSET_STATE_ON)) {
+				if (get_time().val -
+					    dpm[port].pd_button_press_time >
+				    CONFIG_USB_PD_SHORT_PRESS_MAX_MS * MSEC) {
+					/*
+					 * Shutdown chipset on long USB PD power
+					 * button press.
+					 */
+					chipset_force_shutdown(
+						CHIPSET_SHUTDOWN_BUTTON);
+				} else {
+					/*
+					 * Simulate a short power button press
+					 * on short USB PD power button press.
+					 * This will wake the system from
+					 * suspend, or bring up the power UI
+					 * when the system is on.
+					 */
+					power_button_simulate_press(
+						USB_PD_SHORT_BUTTON_PRESS_MS);
+				}
+			}
+			pd_timer_disable(port, DPM_TIMER_PD_BUTTON_PRESS);
+			dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
+			dpm[port].pd_button_press_time = 0;
 		}
-#endif
-		dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
 		break;
 	}
+#endif /* CONFIG_AP_POWER_CONTROL */
 
 	/* After checking flags, clear them. */
 	DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED);
