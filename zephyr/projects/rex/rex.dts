@@ -5,15 +5,12 @@
 
 / {
 	aliases {
-		gpio-wp = &ec_wp_l;
+		gpio-wp = &gpio_ec_wp_l;
+		gpio-ec-pch-wake-odl = &gpio_ec_soc_wake_r_odl;
 	};
 
 	named-gpios {
 		compatible = "named-gpios";
-
-		ec_wp_l: write-protect {
-			gpios = <&gpioa 0 GPIO_INPUT>;
-		};
 
 		gpio_ec_entering_rw: ec_entering_rw {
 			enum-name = "GPIO_ENTERING_RW";
@@ -24,6 +21,13 @@
 &cros_kb_raw {
 	status = "okay";
 	pinctrl-0 = <>;
+	pinctrl-names = "default";
+};
+
+/* host interface */
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
 	pinctrl-names = "default";
 };
 
