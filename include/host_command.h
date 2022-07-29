@@ -354,6 +354,13 @@ void host_send_sysrq(uint8_t key);
 uint32_t get_feature_flags0(void);
 uint32_t get_feature_flags1(void);
 
+/**
+ * Updates ap boot time data.
+ *
+ * @param boot time param needs to be updated
+ */
+void update_ap_boot_time(enum boot_time_param param);
+
 #ifdef CONFIG_ZTEST
 static inline void
 stub_send_response_callback(struct host_cmd_handler_args *args)

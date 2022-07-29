@@ -34,6 +34,8 @@
 
 static struct host_cmd_handler_args *pending_args;
 
+struct ec_boot_time_data g_boot_time;
+
 #ifndef CONFIG_HOSTCMD_X86
 /*
  * Simulated memory map.  Must be word-aligned, because some of the elements
@@ -929,3 +931,61 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+
+/* Updates ap boot time */
+void update_ap_boot_time(enum boot_time_param param)
+{
+	uint64_t t = get_time().val;
+
+	switch (param) {
+	case ARAIL:
+		g_boot_time.arail = t;
+		break;
+
+	case RSMRST:
+		g_boot_time.rsmrst = t;
+		break;
+
+	case ESPIRST:
+		g_boot_time.espirst = t;
+		break;
+
+	case PLTRST_LOW:
+		g_boot_time.pltrst_low = t;
+		g_boot_time.cnt++;
+		break;
+
+	case PLTRST_HIGH:
+		g_boot_time.pltrst_high = t;
+		break;
+
+	case EC_CUR_TIME:
+		g_boot_time.ec_cur_time = t;
+		break;
+
+	case RESET_CNT:
+		t = g_boot_time.cnt = 0;
+		break;
+	}
+	ccprintf("Boot Time: %d, %lld\n", param, t);
+}
+
+/* Returns boot time data */
+static enum ec_status
+host_command_get_boot_time(struct host_cmd_handler_args *args)
+{
+	struct ec_boot_time_data *boot_time = args->response;
+
+	/* update current time */
+	update_ap_boot_time(EC_CUR_TIME);
+
+	/* copy data from g_boot_time struct */
+	memcpy(boot_time, &g_boot_time, sizeof(g_boot_time));
+
+	args->response_size = sizeof(*boot_time);
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_GET_BOOT_TIME, host_command_get_boot_time,
+		     EC_VER_MASK(0));
