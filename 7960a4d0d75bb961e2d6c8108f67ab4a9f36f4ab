@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0121d65c_6bfacf2d",
+        "filename": "zephyr/include/emul/emul_bb_retimer.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-29T16:57:33Z",
+      "side": 1,
+      "message": "OK to move to another CL but this function isn\u0027t needed since you should be getting `const struct emul*` via `emul_get_binding` or Abe\u0027s `EMUL_DT_GET` (same with the other files)",
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d327c2c2_c394441b",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-29T16:57:33Z",
+      "side": 1,
+      "message": "You renamed this function but the return type is the same, can you add details?",
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
