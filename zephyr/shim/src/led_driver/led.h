@@ -105,7 +105,7 @@ struct led_pins_node_t {
  * @param color		LED Color to enable
  * @param led_id	LED ID to set the color for
  */
-void led_set_color(enum led_color color, enum ec_led_id led_id);
+test_mockable void led_set_color(enum led_color color, enum ec_led_id led_id);
 
 /**
  * Set LED color using pins node
