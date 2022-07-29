@@ -1,0 +1,114 @@
+/* Copyright 2022 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+ /* Based off of `ec/zephyr/projects/herobrine/led_pins_herobrine.dts`
+  * Modified led-colors to obtain better test coverage.
+  */
+
+#include <zephyr/dt-bindings/pwm/pwm.h>
+
+/ {
+	pwms {
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		pwm0: pwm@0 {
+			compatible = "cros,pwm-mock";
+			reg = <0 1>;
+			#pwm-cells = <3>;
+			status = "okay";
+		};
+
+		pwm1: pwm@1 {
+			compatible = "cros,pwm-mock";
+			reg = <1 1>;
+			#pwm-cells = <3>;
+			status = "okay";
+		};
+
+		pwm2: pwm@2 {
+			compatible = "cros,pwm-mock";
+			reg = <2 1>;
+			#pwm-cells = <3>;
+			status = "okay";
+		};
+
+		pwm3: pwm@3 {
+			compatible = "cros,pwm-mock";
+			reg = <3 1>;
+			#pwm-cells = <3>;
+			status = "okay";
+		};
+	};
+
+	pwmleds {
+		compatible = "cros-ec,pwm-pin-config";
+
+		pwmled_ec_chg_led_a_c0: pwmled_ec_chg_led_a_c0 {
+			#led-pin-cells = <1>;
+			pwms = <&pwm0 0 PWM_HZ(324) 0>;
+		};
+		pwmled_ec_chg_led_w_c0: pwmled_ec_chg_led_w_c0 {
+			#led-pin-cells = <1>;
+			pwms = <&pwm1 0 PWM_HZ(324) 0>;
+		};
+		pwmled_ec_chg_led_y_c1: pwmled_ec_chg_led_y_c1 {
+			#led-pin-cells = <1>;
+			pwms = <&pwm2 0 PWM_HZ(324) 0>;
+		};
+		pwmled_ec_chg_led_w_c1: pwmled_ec_chg_led_w_c1 {
+			#led-pin-cells = <1>;
+			pwms = <&pwm3 0 PWM_HZ(324) 0>;
+		};
+	};
+
+	pwm-led-pins {
+		compatible = "cros-ec,pwm-led-pins";
+
+		color_off_left: color-off-left {
+			led-color = "LED_OFF";
+			led-id = "EC_LED_ID_LEFT_LED";
+			led-pins;
+		};
+		color_off_right: color-off-right {
+			led-color = "LED_OFF";
+			led-id = "EC_LED_ID_RIGHT_LED";
+			led-pins = <&pwmled_ec_chg_led_a_c0 0>,
+				   <&pwmled_ec_chg_led_w_c0 0>;
+		};
+		color_blue_left: color-blue-left {
+			led-color = "LED_BLUE";
+			led-id = "EC_LED_ID_LEFT_LED";
+			br-color = "EC_LED_COLOR_BLUE";
+			led-pins = <&pwmled_ec_chg_led_y_c1 100>,
+				   <&pwmled_ec_chg_led_w_c1 0>;
+		};
+		color_amber_right: color-blue-right {
+			led-color = "LED_AMBER";
+			led-id = "EC_LED_ID_RIGHT_LED";
+			br-color = "EC_LED_COLOR_AMBER";
+			led-pins = <&pwmled_ec_chg_led_a_c0 100>,
+				   <&pwmled_ec_chg_led_w_c0 0>;
+		};
+		color_white_left: color-white-left {
+			led-color = "LED_WHITE";
+			led-id = "EC_LED_ID_LEFT_LED";
+			br-color = "EC_LED_COLOR_WHITE";
+			led-pins = <&pwmled_ec_chg_led_y_c1 0>,
+				   <&pwmled_ec_chg_led_w_c1 100>;
+		};
+		color_white_right: color-white-right {
+			led-color = "LED_WHITE";
+			led-id = "EC_LED_ID_RIGHT_LED";
+			br-color = "EC_LED_COLOR_WHITE";
+			led-pins = <&pwmled_ec_chg_led_a_c0 0>,
+				   <&pwmled_ec_chg_led_w_c0 100>;
+		};
+	};
+
+	led-colors {
+		compatible = "cros-ec,led-colors";
+	};
+};

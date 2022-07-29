@@ -42,3 +42,11 @@ led_driver = drivers.variant(
     ],
     kconfig_files=[here / "led_driver" / "prj.conf"],
 )
+
+pwm_led_driver = drivers.variant(
+    project_name="test-drivers-pwm_led_driver",
+    dts_overlays=[
+        here / "pwm_led_driver" / "led_pins.dts",
+    ],
+    kconfig_files=[here / "pwm_led_driver" / "prj.conf"],
+)
