@@ -273,6 +273,9 @@ static void espi_vw_idx7_isr(uint8_t flag_changed, uint8_t vw_evt)
 static void espi_chipset_reset(void)
 {
 	hook_notify(HOOK_CHIPSET_RESET);
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	update_ap_boot_time(ESPIRST);
+#endif
 }
 DECLARE_DEFERRED(espi_chipset_reset);
 #endif
@@ -284,12 +287,18 @@ static void espi_vw_idx3_isr(uint8_t flag_changed, uint8_t vw_evt)
 
 		if (pltrst) {
 			espi_vw_host_startup();
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+			update_ap_boot_time(PLTRST_HIGH);
+#endif
 		} else {
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 			hook_call_deferred(&espi_chipset_reset_data, MSEC);
 #endif
 			/* Store port 80 reset event */
 			port_80_write(PORT_80_EVENT_RESET);
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+			update_ap_boot_time(PLTRST_LOW);
+#endif
 		}
 
 		CPRINTS("VW PLTRST_L %sasserted", pltrst ? "de" : "");
