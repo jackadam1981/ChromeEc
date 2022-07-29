@@ -44,15 +44,14 @@ ZTEST_USER(bb_retimer_no_tasks, test_bb_set_state)
 {
 	struct pd_discovery *disc;
 	uint32_t conn, exp_conn;
-	struct i2c_emul *emul;
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
+	struct i2c_emul *i2c_emul = bb_retimer_emul_to_i2c_emul(emul);
 	bool ack_required;
-
-	emul = bb_emul_get(BB_RETIMER_ORD);
 
 	set_test_runner_tid();
 
 	/* Setup emulator fail on write */
-	i2c_common_emul_set_write_fail_reg(emul,
+	i2c_common_emul_set_write_fail_reg(i2c_emul,
 					   BB_RETIMER_REG_CONNECTION_STATE);
 
 	/* Test fail on reset register write */
@@ -63,7 +62,7 @@ ZTEST_USER(bb_retimer_no_tasks, test_bb_set_state)
 	zassert_false(ack_required, "ACK is never required for BB retimer");
 
 	/* Do not fail on write */
-	i2c_common_emul_set_write_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_write_fail_reg(i2c_emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	/* Set UFP role for whole test */
 	tc_set_data_role(USBC_PORT_C1, PD_ROLE_UFP);
@@ -201,10 +200,8 @@ ZTEST_USER(bb_retimer_no_tasks, test_bb_set_dfp_state)
 	union tbt_mode_resp_cable cable_resp;
 	struct pd_discovery *disc, *dev_disc;
 	uint32_t conn, exp_conn;
-	struct i2c_emul *emul;
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
 	bool ack_required;
-
-	emul = bb_emul_get(BB_RETIMER_ORD);
 
 	set_test_runner_tid();
 
@@ -463,17 +460,16 @@ ZTEST_USER(bb_retimer, test_bb_init)
 {
 	const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_USB_C1_LS_EN_PATH, gpios));
-	struct i2c_emul *emul;
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
+	struct i2c_emul *i2c_emul = bb_retimer_emul_to_i2c_emul(emul);
 
 	zassert_not_null(gpio_dev, "Cannot get GPIO device");
-
-	emul = bb_emul_get(BB_RETIMER_ORD);
 
 	/* Set AP to normal state and wait for chipset task */
 	test_set_chipset_to_s0();
 
 	/* Setup emulator fail on read */
-	i2c_common_emul_set_read_fail_reg(emul, BB_RETIMER_REG_VENDOR_ID);
+	i2c_common_emul_set_read_fail_reg(i2c_emul, BB_RETIMER_REG_VENDOR_ID);
 	/* Test fail on vendor ID read */
 	zassert_equal(EC_ERROR_INVAL,
 		      bb_usb_retimer.init(&usb_muxes[USBC_PORT_C1]), NULL);
@@ -485,7 +481,7 @@ ZTEST_USER(bb_retimer, test_bb_init)
 		NULL);
 
 	/* Setup wrong vendor ID */
-	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(i2c_emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 	bb_emul_set_reg(emul, BB_RETIMER_REG_VENDOR_ID, 0x12144678);
 	/* Test fail on wrong vendor ID */
 	zassert_equal(EC_ERROR_INVAL,
@@ -497,7 +493,7 @@ ZTEST_USER(bb_retimer, test_bb_init)
 		NULL);
 
 	/* Setup emulator fail on device ID read */
-	i2c_common_emul_set_read_fail_reg(emul, BB_RETIMER_REG_DEVICE_ID);
+	i2c_common_emul_set_read_fail_reg(i2c_emul, BB_RETIMER_REG_DEVICE_ID);
 	bb_emul_set_reg(emul, BB_RETIMER_REG_VENDOR_ID, BB_RETIMER_VENDOR_ID_1);
 	/* Test fail on device ID read */
 	zassert_equal(EC_ERROR_INVAL,
@@ -509,7 +505,7 @@ ZTEST_USER(bb_retimer, test_bb_init)
 		NULL);
 
 	/* Setup wrong device ID */
-	i2c_common_emul_set_read_fail_reg(emul, I2C_COMMON_EMUL_NO_FAIL_REG);
+	i2c_common_emul_set_read_fail_reg(i2c_emul, I2C_COMMON_EMUL_NO_FAIL_REG);
 	bb_emul_set_reg(emul, BB_RETIMER_REG_DEVICE_ID, 0x12144678);
 	/* Test fail on wrong device ID */
 	zassert_equal(EC_ERROR_INVAL,

@@ -478,7 +478,7 @@ static int emul_ln9310_init(const struct emul *emul,
 
 	singleton = emul;
 
-	return i2c_emul_register(parent, emul->dev_label, &data->common.emul);
+	return 0;
 }
 
 #define LN9310_GET_GPIO_INT_PORT(n) \
@@ -486,6 +486,19 @@ static int emul_ln9310_init(const struct emul *emul,
 
 #define LN9310_GET_GPIO_INT_PIN(n) \
 	DT_GPIO_PIN(DT_INST_PROP(n, pg_int_pin), gpios)
+
+static int ln9310_i2c_transfer(const struct emul *target, struct i2c_msg *msgs,
+			       int num_msgs, int addr)
+{
+	return i2c_common_emul_transfer(
+		(const struct i2c_common_emul_cfg *)(target->cfg),
+		&((struct ln9310_emul_data)(target->data))->common, msgs,
+		num_msgs, addr);
+}
+
+static const struct i2c_emul_api ln9310_i2c_api = {
+	.transfer = ln9310_i2c_transfer,
+};
 
 #define INIT_LN9310(n)                                                           \
 	const struct ln9310_config_t ln9310_config = {                           \
@@ -511,6 +524,6 @@ static int emul_ln9310_init(const struct emul *emul,
 		.addr = DT_INST_REG_ADDR(n),                                     \
 	};                                                                       \
 	EMUL_DEFINE(emul_ln9310_init, DT_DRV_INST(n), &ln9310_emul_cfg_##n,      \
-		    &ln9310_emul_data_##n)
+		    &ln9310_emul_data_##n, &ln9310_i2c_api)
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_LN9310)

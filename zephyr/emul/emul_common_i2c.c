@@ -15,62 +15,42 @@ LOG_MODULE_REGISTER(emul_common_i2c);
 #include "emul/emul_common_i2c.h"
 
 /** Check description in emul_common_i2c.h */
-int i2c_common_emul_lock_data(struct i2c_emul *emul, k_timeout_t timeout)
+int i2c_common_emul_lock_data(struct i2c_common_emul_data *data, k_timeout_t timeout)
 {
-	struct i2c_common_emul_data *data;
-
-	data = CONTAINER_OF(emul, struct i2c_common_emul_data, emul);
-
 	return k_mutex_lock(&data->data_mtx, timeout);
 }
 
 /** Check description in emul_common_i2c.h */
-int i2c_common_emul_unlock_data(struct i2c_emul *emul)
+int i2c_common_emul_unlock_data(struct i2c_common_emul_data *data)
 {
-	struct i2c_common_emul_data *data;
-
-	data = CONTAINER_OF(emul, struct i2c_common_emul_data, emul);
-
 	return k_mutex_unlock(&data->data_mtx);
 }
 
 /** Check description in emul_common_i2c.h */
-void i2c_common_emul_set_write_func(struct i2c_emul *emul,
+void i2c_common_emul_set_write_func(struct i2c_common_emul_data *emul_data,
 				    i2c_common_emul_write_func func, void *data)
 {
-	struct i2c_common_emul_data *emul_data;
-
-	emul_data = CONTAINER_OF(emul, struct i2c_common_emul_data, emul);
 	emul_data->write_func = func;
 	emul_data->write_func_data = data;
 }
 
 /** Check description in emul_common_i2c.h */
-void i2c_common_emul_set_read_func(struct i2c_emul *emul,
+void i2c_common_emul_set_read_func(struct i2c_common_emul_data *emul_data,
 				   i2c_common_emul_read_func func, void *data)
 {
-	struct i2c_common_emul_data *emul_data;
-
-	emul_data = CONTAINER_OF(emul, struct i2c_common_emul_data, emul);
 	emul_data->read_func = func;
 	emul_data->read_func_data = data;
 }
 
 /** Check description in emul_common_i2c.h */
-void i2c_common_emul_set_read_fail_reg(struct i2c_emul *emul, int reg)
+void i2c_common_emul_set_read_fail_reg(struct i2c_common_emul_data *data, int reg)
 {
-	struct i2c_common_emul_data *data;
-
-	data = CONTAINER_OF(emul, struct i2c_common_emul_data, emul);
 	data->read_fail_reg = reg;
 }
 
 /** Check description in emul_common_i2c.h */
-void i2c_common_emul_set_write_fail_reg(struct i2c_emul *emul, int reg)
+void i2c_common_emul_set_write_fail_reg(struct i2c_common_emul_data *data, int reg)
 {
-	struct i2c_common_emul_data *data;
-
-	data = CONTAINER_OF(emul, struct i2c_common_emul_data, emul);
 	data->write_fail_reg = reg;
 }
 
@@ -83,7 +63,7 @@ void i2c_common_emul_set_write_fail_reg(struct i2c_emul *emul, int reg)
  *
  * @retval start_write emulator callback return code
  */
-static int i2c_common_emul_start_write(struct i2c_emul *emul,
+static int i2c_common_emul_start_write(const struct emul *emul,
 				       struct i2c_common_emul_data *data)
 {
 	int ret = 0;
@@ -108,7 +88,7 @@ static int i2c_common_emul_start_write(struct i2c_emul *emul,
  *
  * @retval finish_write emulator callback return code
  */
-static int i2c_common_emul_finish_write(struct i2c_emul *emul,
+static int i2c_common_emul_finish_write(const struct emul *emul,
 					struct i2c_common_emul_data *data)
 {
 	int ret = 0;
@@ -131,7 +111,7 @@ static int i2c_common_emul_finish_write(struct i2c_emul *emul,
  *
  * @retval start_read emulator callback return code
  */
-static int i2c_common_emul_start_read(struct i2c_emul *emul,
+static int i2c_common_emul_start_read(const struct emul *emul,
 				      struct i2c_common_emul_data *data)
 {
 	int ret = 0;
@@ -156,7 +136,7 @@ static int i2c_common_emul_start_read(struct i2c_emul *emul,
  *
  * @retval finish_read emulator callback return code
  */
-static int i2c_common_emul_finish_read(struct i2c_emul *emul,
+static int i2c_common_emul_finish_read(const struct emul *emul,
 				       struct i2c_common_emul_data *data)
 {
 	int ret = 0;
@@ -183,7 +163,7 @@ static int i2c_common_emul_finish_read(struct i2c_emul *emul,
  * @retval 0 If successful
  * @retval -EIO General input / output error
  */
-static int i2c_common_emul_write_byte(struct i2c_emul *emul,
+static int i2c_common_emul_write_byte(const struct emul *emul,
 				      struct i2c_common_emul_data *data,
 				      uint8_t val)
 {
@@ -239,7 +219,7 @@ static int i2c_common_emul_write_byte(struct i2c_emul *emul,
  * @retval 0 If successful
  * @retval -EIO General input / output error
  */
-static int i2c_common_emul_read_byte(struct i2c_emul *emul,
+static int i2c_common_emul_read_byte(const struct emul *emul,
 				     struct i2c_common_emul_data *data,
 				     uint8_t *val)
 {
@@ -280,25 +260,20 @@ static int i2c_common_emul_read_byte(struct i2c_emul *emul,
 	return 0;
 }
 
-/** Check description in emul_common_i2c.h */
-int i2c_common_emul_transfer(struct i2c_emul *emul, struct i2c_msg *msgs,
-			     int num_msgs, int addr)
+int i2c_common_emul_transfer(const struct emul *emul,
+			     struct i2c_common_emul_data *data,
+			     struct i2c_msg *msgs, int num_msgs, int addr)
 {
-	const struct i2c_common_emul_cfg *cfg;
-	struct i2c_common_emul_data *data;
 	bool read, stop;
 	int ret, i;
 
-	data = CONTAINER_OF(emul, struct i2c_common_emul_data, emul);
-	cfg = data->cfg;
-
-	if (cfg->addr != addr) {
-		LOG_ERR("Address mismatch, expected %02x, got %02x", cfg->addr,
+	if (data->addr != addr) {
+		LOG_ERR("Address mismatch, expected %02x, got %02x", data->addr,
 			addr);
 		return -EIO;
 	}
 
-	i2c_dump_msgs(cfg->dev_label, msgs, num_msgs, addr);
+	i2c_dump_msgs(data->i2c->name, msgs, num_msgs, addr);
 
 	for (; num_msgs > 0; num_msgs--, msgs++) {
 		read = msgs->flags & I2C_MSG_READ;
@@ -430,7 +405,3 @@ void i2c_common_emul_init(struct i2c_common_emul_data *data)
 
 	k_mutex_init(&data->data_mtx);
 }
-
-struct i2c_emul_api i2c_common_emul_api = {
-	.transfer = i2c_common_emul_transfer,
-};

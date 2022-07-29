@@ -151,8 +151,23 @@ static int tcpci_generic_emul_init(const struct emul *emul,
 	return ret;
 }
 
-#define TCPCI_GENERIC_EMUL(n) \
-	TCPCI_EMUL_DEFINE(n, tcpci_generic_emul_init, NULL, NULL)
+static int tcpci_i2c_transfer(const struct emul *target,
+				   struct i2c_msg *msgs, int num_msgs, int addr)
+{
+	struct tcpc_emul_data *tcpc_data = emul->data;
+	struct tcpci_ctx *tcpci_ctx = tcpc_data->tcpci_ctx;
+
+	return i2c_common_emul_transfer(target, &tcpci_ctx->common, msgs,
+					num_msgs, addr);
+}
+
+static const struct i2c_emul_api tcpci_i2c_api = {
+	.transfer = tcpci_i2c_transfer,
+};
+
+#define TCPCI_GENERIC_EMUL(n)                                     \
+	TCPCI_EMUL_DEFINE(n, tcpci_generic_emul_init, NULL, NULL, \
+			  &tcpci_i2c_api)
 
 DT_INST_FOREACH_STATUS_OKAY(TCPCI_GENERIC_EMUL)
 

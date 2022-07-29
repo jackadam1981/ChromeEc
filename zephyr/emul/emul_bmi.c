@@ -86,29 +86,33 @@ struct bmi_emul_data {
 	const struct bmi_emul_type_data *type_data;
 };
 
-/** Check description in emul_bmi.h */
-void bmi_emul_set_reg(struct i2c_emul *emul, int reg, uint8_t val)
+struct i2c_emul *bmi_emul_to_i2c_emul(const struct emul *emul)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
+
+	return &(data->common.emul);
+}
+
+/** Check description in emul_bmi.h */
+void bmi_emul_set_reg(const struct emul *emul, int reg, uint8_t val)
+{
+	struct bmi_emul_data *data = emul->data;
 
 	if (reg < 0 || reg > BMI_EMUL_MAX_REG) {
 		return;
 	}
 
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 	data->reg[reg] = val;
 }
 
 /** Check description in emul_bmi.h */
-uint8_t bmi_emul_get_reg(struct i2c_emul *emul, int reg)
+uint8_t bmi_emul_get_reg(const struct emul *emul, int reg)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 
 	if (reg < 0 || reg > BMI_EMUL_MAX_REG) {
 		return 0;
 	}
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 
 	return data->reg[reg];
 }
@@ -258,11 +262,9 @@ static uint16_t bmi_emul_gyr_off_to_nvm(int16_t off)
 }
 
 /** Check description in emul_bmi.h */
-int16_t bmi_emul_get_off(struct i2c_emul *emul, enum bmi_emul_axis axis)
+int16_t bmi_emul_get_off(const struct emul *emul, enum bmi_emul_axis axis)
 {
-	struct bmi_emul_data *data;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
+	struct bmi_emul_data *data = emul->data;
 
 	switch (axis) {
 	case BMI_EMUL_ACC_X:
@@ -283,14 +285,12 @@ int16_t bmi_emul_get_off(struct i2c_emul *emul, enum bmi_emul_axis axis)
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_set_off(struct i2c_emul *emul, enum bmi_emul_axis axis,
+void bmi_emul_set_off(const struct emul *emul, enum bmi_emul_axis axis,
 		      int16_t val)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 	uint16_t gyr_off;
 	uint8_t gyr98_shift;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 
 	switch (axis) {
 	case BMI_EMUL_ACC_X:
@@ -342,11 +342,9 @@ void bmi_emul_set_off(struct i2c_emul *emul, enum bmi_emul_axis axis,
 }
 
 /** Check description in emul_bmi.h */
-int32_t bmi_emul_get_value(struct i2c_emul *emul, enum bmi_emul_axis axis)
+int32_t bmi_emul_get_value(const struct emul *emul, enum bmi_emul_axis axis)
 {
-	struct bmi_emul_data *data;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
+	struct bmi_emul_data *data = emul->data;
 
 	switch (axis) {
 	case BMI_EMUL_ACC_X:
@@ -370,9 +368,7 @@ int32_t bmi_emul_get_value(struct i2c_emul *emul, enum bmi_emul_axis axis)
 void bmi_emul_set_value(struct i2c_emul *emul, enum bmi_emul_axis axis,
 			int32_t val)
 {
-	struct bmi_emul_data *data;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
+	struct bmi_emul_data *data = emul->data;
 
 	switch (axis) {
 	case BMI_EMUL_ACC_X:
@@ -397,47 +393,41 @@ void bmi_emul_set_value(struct i2c_emul *emul, enum bmi_emul_axis axis,
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_set_err_on_ro_write(struct i2c_emul *emul, bool set)
+void bmi_emul_set_err_on_ro_write(const struct emul *emul, bool set)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 	data->error_on_ro_write = set;
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_set_err_on_rsvd_write(struct i2c_emul *emul, bool set)
+void bmi_emul_set_err_on_rsvd_write(const struct emul *emul, bool set)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 	data->error_on_rsvd_write = set;
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_set_err_on_wo_read(struct i2c_emul *emul, bool set)
+void bmi_emul_set_err_on_wo_read(const struct emul *emul, bool set)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 	data->error_on_wo_read = set;
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_simulate_cmd_exec_time(struct i2c_emul *emul, bool set)
+void bmi_emul_simulate_cmd_exec_time(const struct emul *emul, bool set)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 	data->simulate_command_exec_time = set;
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_set_skipped_frames(struct i2c_emul *emul, uint8_t skip)
+void bmi_emul_set_skipped_frames(const struct emul *emul, uint8_t skip)
 {
-	struct bmi_emul_data *data;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
+	struct bmi_emul_data *data = emul->data;
 
 	data->fifo_skip = skip;
 }
@@ -734,11 +724,9 @@ static void bmi_emul_restore_nvm(struct i2c_emul *emul)
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_flush_fifo(struct i2c_emul *emul, bool tag_time, bool header)
+void bmi_emul_flush_fifo(const struct emul *emul, bool tag_time, bool header)
 {
-	struct bmi_emul_data *data;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
+	struct bmi_emul_data *data = emul->data;
 
 	data->fifo_skip = 0;
 	data->fifo_frame = NULL;
@@ -750,11 +738,9 @@ void bmi_emul_flush_fifo(struct i2c_emul *emul, bool tag_time, bool header)
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_reset_common(struct i2c_emul *emul, bool tag_time, bool header)
+void bmi_emul_reset_common(const struct emul *emul, bool tag_time, bool header)
 {
-	struct bmi_emul_data *data;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
+	struct bmi_emul_data *data = emul->data;
 
 	/* Restore registers backed in NVM */
 	bmi_emul_restore_nvm(emul);
@@ -767,21 +753,17 @@ void bmi_emul_reset_common(struct i2c_emul *emul, bool tag_time, bool header)
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_set_cmd_end_time(struct i2c_emul *emul, int time)
+void bmi_emul_set_cmd_end_time(const struct emul *emul, int time)
 {
-	struct bmi_emul_data *data;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
+	struct bmi_emul_data *data = emul->data;
 
 	data->cmd_end_time = k_uptime_get_32() + time;
 }
 
 /** Check description in emul_bmi.h */
-bool bmi_emul_is_cmd_end(struct i2c_emul *emul)
+bool bmi_emul_is_cmd_end(const struct emul *emul)
 {
-	struct bmi_emul_data *data;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
+	struct bmi_emul_data *data = emul->data;
 
 	/* We are simulating command execution time and it doesn't expired */
 	if (data->simulate_command_exec_time &&
@@ -858,15 +840,13 @@ static int bmi_emul_handle_write(struct i2c_emul *emul, int reg, uint8_t val,
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_state_to_reg(struct i2c_emul *emul, int acc_shift, int gyr_shift,
+void bmi_emul_state_to_reg(const struct emul *emul, int acc_shift, int gyr_shift,
 			   int acc_reg, int gyr_reg, int sensortime_reg,
 			   bool acc_off_en, bool gyr_off_en)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 	int32_t val[3];
 	int i;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 
 	if (gyr_off_en) {
 		val[0] = data->gyr_x - data->off_gyr_x;
@@ -902,12 +882,10 @@ void bmi_emul_state_to_reg(struct i2c_emul *emul, int acc_shift, int gyr_shift,
 }
 
 /** Check description in emul_bmi.h */
-void bmi_emul_append_frame(struct i2c_emul *emul, struct bmi_emul_frame *frame)
+void bmi_emul_append_frame(const struct emul *emul, struct bmi_emul_frame *frame)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 	struct bmi_emul_frame *tmp_frame;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 
 	if (data->fifo_frame == NULL) {
 		data->fifo_frame = frame;
@@ -921,13 +899,11 @@ void bmi_emul_append_frame(struct i2c_emul *emul, struct bmi_emul_frame *frame)
 }
 
 /** Check description in emul_bmi.h */
-uint16_t bmi_emul_fifo_len(struct i2c_emul *emul, bool tag_time, bool header)
+uint16_t bmi_emul_fifo_len(const struct emul *emul, bool tag_time, bool header)
 {
+	struct bmi_emul_data *data = emul->data;
 	struct bmi_emul_frame *frame;
-	struct bmi_emul_data *data;
 	uint16_t len = 0;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 
 	if (data->fifo_skip != 0 && header) {
 		len += 2;
@@ -947,13 +923,11 @@ uint16_t bmi_emul_fifo_len(struct i2c_emul *emul, bool tag_time, bool header)
 }
 
 /** Check description in emul_bmi.h */
-uint8_t bmi_emul_get_fifo_data(struct i2c_emul *emul, int byte, bool tag_time,
+uint8_t bmi_emul_get_fifo_data(const struct emul *emul, int byte, bool tag_time,
 			       bool header, int acc_shift, int gyr_shift)
 {
-	struct bmi_emul_data *data;
+	struct bmi_emul_data *data = emul->data;
 	int ret;
-
-	data = BMI_DATA_FROM_I2C_EMUL(emul);
 
 	if (byte == 0) {
 		/* Repeat uncompleated read of frame */
@@ -1037,7 +1011,6 @@ static int bmi_emul_init(const struct emul *emul, const struct device *parent)
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
 	struct i2c_common_emul_data *data = cfg->data;
 	struct bmi_emul_data *bmi_data;
-	int ret;
 
 	data->emul.api = &i2c_common_emul_api;
 	data->emul.addr = cfg->addr;
@@ -1059,12 +1032,23 @@ static int bmi_emul_init(const struct emul *emul, const struct device *parent)
 	/* Set callback access_reg to type specific function */
 	data->access_reg = bmi_data->type_data->access_reg;
 
-	ret = i2c_emul_register(parent, emul->dev_label, &data->emul);
-
 	bmi_data->type_data->reset(bmi_data->reg, &data->emul);
 
-	return ret;
+	return 0;
 }
+
+static int bmi_i2c_transfer(const struct emul *target, struct i2c_msg *msgs,
+			    int num_msgs, int addr)
+{
+	return i2c_common_emul_transfer(
+		(const struct i2c_common_emul_cfg *)(target->cfg),
+		&((struct bmi_emul_data *)(target->data))->common, msgs, num_msgs,
+		addr);
+}
+
+static const struct i2c_emul_api bmi_i2c_api = {
+	.transfer = bmi_i2c_transfer,
+};
 
 #define BMI_EMUL(n)                                                   \
 	static struct bmi_emul_data bmi_emul_data_##n = {		\
@@ -1093,21 +1077,6 @@ static int bmi_emul_init(const struct emul *emul, const struct device *parent)
 		.addr = DT_INST_REG_ADDR(n),                          \
 	};                                                            \
 	EMUL_DEFINE(bmi_emul_init, DT_DRV_INST(n), &bmi_emul_cfg_##n, \
-		    &bmi_emul_data_##n)
+		    &bmi_emul_data_##n, &bmi_i2c_api)
 
 DT_INST_FOREACH_STATUS_OKAY(BMI_EMUL)
-
-#define BMI_EMUL_CASE(n)         \
-	case DT_INST_DEP_ORD(n): \
-		return &bmi_emul_data_##n.common.emul;
-
-/** Check description in emul_bmi.h */
-struct i2c_emul *bmi_emul_get(int ord)
-{
-	switch (ord) {
-		DT_INST_FOREACH_STATUS_OKAY(BMI_EMUL_CASE)
-
-	default:
-		return NULL;
-	}
-}

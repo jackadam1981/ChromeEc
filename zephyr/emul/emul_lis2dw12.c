@@ -247,23 +247,6 @@ static int lis2dw12_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 	return 0;
 }
 
-static int emul_lis2dw12_init(const struct emul *emul,
-			      const struct device *parent)
-{
-	const struct lis2dw12_emul_cfg *lis2dw12_cfg = emul->cfg;
-	const struct i2c_common_emul_cfg *cfg = &(lis2dw12_cfg->common);
-	struct lis2dw12_emul_data *data = emul->data;
-
-	data->common.emul.api = &i2c_common_emul_api;
-	data->common.emul.addr = cfg->addr;
-	data->common.emul.parent = emul;
-	data->common.i2c = parent;
-	data->common.cfg = cfg;
-	i2c_common_emul_init(&data->common);
-
-	return i2c_emul_register(parent, emul->dev_label, &data->common.emul);
-}
-
 int lis2dw12_emul_set_accel_reading(const struct emul *emul, intv3_t reading)
 {
 	__ASSERT(emul, "emul is NULL");
@@ -294,6 +277,36 @@ void lis2dw12_emul_clear_accel_reading(const struct emul *emul)
 	memset(data->accel_data, 0, sizeof(data->accel_data));
 	data->status_reg &= ~LIS2DW12_STS_DRDY_UP;
 }
+
+static int emul_lis2dw12_init(const struct emul *emul,
+			      const struct device *parent)
+{
+	const struct lis2dw12_emul_cfg *lis2dw12_cfg = emul->cfg;
+	const struct i2c_common_emul_cfg *cfg = &(lis2dw12_cfg->common);
+	struct lis2dw12_emul_data *data = emul->data;
+
+	data->common.emul.api = &i2c_common_emul_api;
+	data->common.emul.addr = cfg->addr;
+	data->common.emul.parent = emul;
+	data->common.i2c = parent;
+	data->common.cfg = cfg;
+	i2c_common_emul_init(&data->common);
+
+	return 0;
+}
+
+static int lis2dw12_i2c_transfer(const struct emul *target,
+				   struct i2c_msg *msgs, int num_msgs, int addr)
+{
+	return i2c_common_emul_transfer(
+		&((const struct lis2dw12_emul_cfg *)(target->cfg))->common,
+		&((struct lis2dw12_emul_data *)(target->data))->common, msgs, num_msgs,
+		addr);
+}
+
+static const struct i2c_emul_api lis2dw12_i2c_api = {
+	.transfer = lis2dw12_i2c_transfer,
+};
 
 #define INIT_LIS2DW12(n)                                                    \
 	static struct lis2dw12_emul_data lis2dw12_emul_data_##n = {       \

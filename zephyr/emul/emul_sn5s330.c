@@ -340,15 +340,28 @@ static int emul_sn5s330_init(const struct emul *emul,
 	data->common.cfg = &cfg->common;
 	i2c_common_emul_init(&data->common);
 
-	return i2c_emul_register(parent, emul->dev_label, &data->common.emul);
+	return 0;
 }
+
+static int sn5s330_i2c_transfer(const struct emul *target, struct i2c_msg *msgs,
+				int num_msgs, int addr)
+{
+	return i2c_common_emul_transfer(
+		&((const struct sn5s330_emul_cfg *)(target->cfg))->common,
+		&((struct sn5s330_emul_data)(target->data))->common, msgs,
+		num_msgs, addr);
+}
+
+static const struct i2c_emul_api sn5s330_i2c_api = {
+	.transfer = sn5s330_i2c_transfer,
+};
 
 #define SN5S330_GET_GPIO_INT_PORT(n) \
 	DEVICE_DT_GET(DT_GPIO_CTLR(DT_INST_PROP(n, int_pin), gpios))
 
 #define SN5S330_GET_GPIO_INT_PIN(n) DT_GPIO_PIN(DT_INST_PROP(n, int_pin), gpios)
 
-#define INIT_SN5S330(n)                                                          \
+#define INIT_SN5S330(n)                                                        \
 	static struct sn5s330_emul_data sn5s330_emul_data_##n = {              \
 		.common = {                                                    \
 			.write_byte = sn5s330_emul_write_byte,                 \
@@ -364,7 +377,7 @@ static int emul_sn5s330_init(const struct emul *emul,
 			.addr = DT_INST_REG_ADDR(n),                           \
 		},                                                             \
 	}; \
-	EMUL_DEFINE(emul_sn5s330_init, DT_DRV_INST(n), &sn5s330_emul_cfg_##n,    \
-		    &sn5s330_emul_data_##n)
+	EMUL_DEFINE(emul_sn5s330_init, DT_DRV_INST(n), &sn5s330_emul_cfg_##n,  \
+		    &sn5s330_emul_data_##n, &sn5s330_i2c_api)
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_SN5S330)

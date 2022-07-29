@@ -581,7 +581,6 @@ static int tcs_emul_init(const struct emul *emul, const struct device *parent)
 {
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
 	struct i2c_common_emul_data *data = cfg->data;
-	int ret;
 
 	data->emul.api = &i2c_common_emul_api;
 	data->emul.addr = cfg->addr;
@@ -589,12 +588,23 @@ static int tcs_emul_init(const struct emul *emul, const struct device *parent)
 	data->cfg = cfg;
 	i2c_common_emul_init(data);
 
-	ret = i2c_emul_register(parent, emul->dev_label, &data->emul);
-
 	tcs_emul_reset(&data->emul);
 
-	return ret;
+	return 0;
 }
+
+static int tcs3400_i2c_transfer(const struct emul *target,
+				   struct i2c_msg *msgs, int num_msgs, int addr)
+{
+	return i2c_common_emul_transfer(
+		(const struct i2c_common_emul_cfg *)(target->cfg),
+		&((struct tcs_emul_data *)(target->data))->common, msgs, num_msgs,
+		addr);
+}
+
+static const struct i2c_emul_api tcs3400_i2c_api = {
+	.transfer = tcs3400_i2c_transfer,
+};
 
 #define TCS3400_EMUL(n)                                               \
 	static struct tcs_emul_data tcs_emul_data_##n = {		\
@@ -627,7 +637,7 @@ static int tcs_emul_init(const struct emul *emul, const struct device *parent)
 		.addr = DT_INST_REG_ADDR(n),                          \
 	};                                                            \
 	EMUL_DEFINE(tcs_emul_init, DT_DRV_INST(n), &tcs_emul_cfg_##n, \
-		    &tcs_emul_data_##n)
+		    &tcs_emul_data_##n, &tcs3400_i2c_api)
 
 DT_INST_FOREACH_STATUS_OKAY(TCS3400_EMUL)
 

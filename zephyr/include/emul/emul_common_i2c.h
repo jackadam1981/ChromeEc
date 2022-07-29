@@ -74,7 +74,8 @@ enum i2c_common_emul_msg_state {
  * @return 0 on success
  * @return -EIO on error
  */
-typedef int (*i2c_common_emul_start_write_func)(struct i2c_emul *emul, int reg);
+typedef int (*i2c_common_emul_start_write_func)(const struct emul *emul,
+						int reg);
 
 /**
  * @brief Function type that is used by I2C device emulator at the end of
@@ -88,8 +89,8 @@ typedef int (*i2c_common_emul_start_write_func)(struct i2c_emul *emul, int reg);
  * @return 0 on success
  * @return -EIO on error
  */
-typedef int (*i2c_common_emul_finish_write_func)(struct i2c_emul *emul, int reg,
-						 int bytes);
+typedef int (*i2c_common_emul_finish_write_func)(const struct emul *emul,
+						 int reg, int bytes);
 
 /**
  * @brief Function type that is used by I2C device emulator on each byte of
@@ -105,7 +106,7 @@ typedef int (*i2c_common_emul_finish_write_func)(struct i2c_emul *emul, int reg,
  * @return 0 on success
  * @return -EIO on error
  */
-typedef int (*i2c_common_emul_write_byte_func)(struct i2c_emul *emul, int reg,
+typedef int (*i2c_common_emul_write_byte_func)(const struct emul *emul, int reg,
 					       uint8_t val, int bytes);
 
 /**
@@ -119,7 +120,8 @@ typedef int (*i2c_common_emul_write_byte_func)(struct i2c_emul *emul, int reg,
  * @return 0 on success
  * @return -EIO on error
  */
-typedef int (*i2c_common_emul_start_read_func)(struct i2c_emul *emul, int reg);
+typedef int (*i2c_common_emul_start_read_func)(const struct emul *emul,
+					       int reg);
 
 /**
  * @brief Function type that is used by I2C device emulator at the end of
@@ -133,8 +135,8 @@ typedef int (*i2c_common_emul_start_read_func)(struct i2c_emul *emul, int reg);
  * @return 0 on success
  * @return -EIO on error
  */
-typedef int (*i2c_common_emul_finish_read_func)(struct i2c_emul *emul, int reg,
-						int bytes);
+typedef int (*i2c_common_emul_finish_read_func)(const struct emul *emul,
+						int reg, int bytes);
 
 /**
  * @brief Function type that is used by I2C device emulator on each byte of
@@ -150,7 +152,7 @@ typedef int (*i2c_common_emul_finish_read_func)(struct i2c_emul *emul, int reg,
  * @return 0 on success
  * @return -EIO on error
  */
-typedef int (*i2c_common_emul_read_byte_func)(struct i2c_emul *emul, int reg,
+typedef int (*i2c_common_emul_read_byte_func)(const struct emul *emul, int reg,
 					      uint8_t *val, int bytes);
 
 /**
@@ -169,7 +171,7 @@ typedef int (*i2c_common_emul_read_byte_func)(struct i2c_emul *emul, int reg,
  * @return Register address that should be compared with user-defined fail
  *         register
  */
-typedef int (*i2c_common_emul_access_reg_func)(struct i2c_emul *emul, int reg,
+typedef int (*i2c_common_emul_access_reg_func)(const struct emul *emul, int reg,
 					       int bytes, bool read);
 
 /**
@@ -188,7 +190,7 @@ typedef int (*i2c_common_emul_access_reg_func)(struct i2c_emul *emul, int reg,
  * @return 1 continue with normal emulator handler
  * @return negative on error
  */
-typedef int (*i2c_common_emul_read_func)(struct i2c_emul *emul, int reg,
+typedef int (*i2c_common_emul_read_func)(const struct emul *emul, int reg,
 					 uint8_t *val, int bytes, void *data);
 
 /**
@@ -207,29 +209,15 @@ typedef int (*i2c_common_emul_read_func)(struct i2c_emul *emul, int reg,
  * @return 1 continue with normal emulator handler
  * @return negative on error
  */
-typedef int (*i2c_common_emul_write_func)(struct i2c_emul *emul, int reg,
+typedef int (*i2c_common_emul_write_func)(const struct emul *emul, int reg,
 					  uint8_t val, int bytes, void *data);
-
-/** Static configuration, common for all i2c emulators */
-struct i2c_common_emul_cfg {
-	/** Label of the I2C bus this emulator connects to */
-	const char *i2c_label;
-	/** Label of the I2C device being emulated */
-	const char *dev_label;
-	/** Pointer to run-time data */
-	struct i2c_common_emul_data *data;
-	/** Address of emulator on i2c bus */
-	uint16_t addr;
-};
 
 /** Run-time data used by the emulator, common for all i2c emulators */
 struct i2c_common_emul_data {
-	/** I2C emulator detail */
-	struct i2c_emul emul;
 	/** Emulator device */
 	const struct device *i2c;
-	/** Configuration information */
-	const struct i2c_common_emul_cfg *cfg;
+	/** Address of emulator on i2c bus */
+	const uint16_t addr;
 
 	/** Current state of I2C bus (if emulator is handling message) */
 	enum i2c_common_emul_msg_state msg_state;
@@ -276,9 +264,6 @@ struct i2c_common_emul_data {
 	struct k_mutex data_mtx;
 };
 
-/** A common API that simply links to the i2c_common_emul_transfer function */
-extern struct i2c_emul_api i2c_common_emul_api;
-
 /**
  * @brief Lock access to emulator properties. After acquiring lock, user
  *        may change emulator behaviour in multi-thread setup.
@@ -288,7 +273,7 @@ extern struct i2c_emul_api i2c_common_emul_api;
  *
  * @return k_mutex_lock return code
  */
-int i2c_common_emul_lock_data(struct i2c_emul *emul, k_timeout_t timeout);
+int i2c_common_emul_lock_data(struct i2c_common_emul_data *data, k_timeout_t timeout);
 
 /**
  * @brief Unlock access to emulator properties.
@@ -297,7 +282,7 @@ int i2c_common_emul_lock_data(struct i2c_emul *emul, k_timeout_t timeout);
  *
  * @return k_mutex_unlock return code
  */
-int i2c_common_emul_unlock_data(struct i2c_emul *emul);
+int i2c_common_emul_unlock_data(struct i2c_common_emul_data *data);
 
 /**
  * @brief Set write handler for I2C messages. This function is called before
@@ -307,7 +292,7 @@ int i2c_common_emul_unlock_data(struct i2c_emul *emul);
  * @param func Pointer to custom function
  * @param data User data passed on call of custom function
  */
-void i2c_common_emul_set_write_func(struct i2c_emul *emul,
+void i2c_common_emul_set_write_func(struct i2c_common_emul_data *data,
 				    i2c_common_emul_write_func func,
 				    void *data);
 
@@ -319,7 +304,7 @@ void i2c_common_emul_set_write_func(struct i2c_emul *emul,
  * @param func Pointer to custom function
  * @param data User data passed on call of custom function
  */
-void i2c_common_emul_set_read_func(struct i2c_emul *emul,
+void i2c_common_emul_set_read_func(struct i2c_common_emul_data *data,
 				   i2c_common_emul_read_func func, void *data);
 
 /**
@@ -329,7 +314,7 @@ void i2c_common_emul_set_read_func(struct i2c_emul *emul,
  * @param reg Register address or one of special values
  *            (I2C_COMMON_EMUL_FAIL_ALL_REG, I2C_COMMON_EMUL_NO_FAIL_REG)
  */
-void i2c_common_emul_set_read_fail_reg(struct i2c_emul *emul, int reg);
+void i2c_common_emul_set_read_fail_reg(struct i2c_common_emul_data *data, int reg);
 
 /**
  * @brief Setup fail on write of given register of emulator
@@ -338,7 +323,7 @@ void i2c_common_emul_set_read_fail_reg(struct i2c_emul *emul, int reg);
  * @param reg Register address or one of special values
  *            (I2C_COMMON_EMUL_FAIL_ALL_REG, I2C_COMMON_EMUL_NO_FAIL_REG)
  */
-void i2c_common_emul_set_write_fail_reg(struct i2c_emul *emul, int reg);
+void i2c_common_emul_set_write_fail_reg(struct i2c_common_emul_data *data, int reg);
 
 /**
  * @biref Emulate an I2C transfer to an emulator
@@ -347,7 +332,7 @@ void i2c_common_emul_set_write_fail_reg(struct i2c_emul *emul, int reg);
  * I2C message, calling user custom functions, failing on reading/writing
  * registers selected by user and calling device specific functions.
  *
- * @param emul I2C emulation information
+ * @param data I2C common emulator runtime data
  * @param msgs List of messages to process
  * @param num_msgs Number of messages to process
  * @param addr Address of the I2C target device
@@ -355,8 +340,9 @@ void i2c_common_emul_set_write_fail_reg(struct i2c_emul *emul, int reg);
  * @retval 0 If successful
  * @retval -EIO General input / output error
  */
-int i2c_common_emul_transfer(struct i2c_emul *emul, struct i2c_msg *msgs,
-			     int num_msgs, int addr);
+int i2c_common_emul_transfer(const struct emul *emul,
+			     struct i2c_common_emul_data *data,
+			     struct i2c_msg *msgs, int num_msgs, int addr);
 
 /**
  * @brief Initialize common emulator data structure

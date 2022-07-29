@@ -417,8 +417,21 @@ static int emul_isl923x_init(const struct emul *emul,
 	data->common.cfg = &cfg->common;
 	i2c_common_emul_init(&data->common);
 
-	return i2c_emul_register(parent, emul->dev_label, &data->common.emul);
+	return 0;
 }
+
+static int isl923x_i2c_transfer(const struct emul *target, struct i2c_msg *msgs,
+				int num_msgs, int addr)
+{
+	return i2c_common_emul_transfer(
+		&((const struct isl923x_emul_cfg *)(target->cfg))->common,
+		&((struct isl923x_emul_data *)(target->data))->common, msgs,
+		num_msgs, addr);
+}
+
+static const struct i2c_emul_api isl923x_i2c_api = {
+	.transfer = isl923x_i2c_transfer,
+};
 
 #define INIT_ISL923X(n)                                                          \
 	static struct isl923x_emul_data isl923x_emul_data_##n = {              \
@@ -440,7 +453,7 @@ static int emul_isl923x_init(const struct emul *emul,
 		},                                                             \
 	}; \
 	EMUL_DEFINE(emul_isl923x_init, DT_DRV_INST(n), &isl923x_emul_cfg_##n,    \
-		    &isl923x_emul_data_##n)
+		    &isl923x_emul_data_##n, &isl923x_i2c_api)
 
 DT_INST_FOREACH_STATUS_OKAY(INIT_ISL923X)
 

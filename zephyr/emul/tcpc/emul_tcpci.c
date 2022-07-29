@@ -1397,11 +1397,7 @@ void tcpci_emul_i2c_init(const struct emul *emul, const struct device *i2c_dev)
 	struct tcpc_emul_data *tcpc_data = emul->data;
 	struct tcpci_ctx *ctx = tcpc_data->tcpci_ctx;
 
-	ctx->common.emul.api = &i2c_common_emul_api;
-	ctx->common.emul.addr = tcpc_data->i2c_cfg.addr;
-	ctx->common.emul.parent = emul;
 	ctx->common.i2c = i2c_dev;
-	ctx->common.cfg = &tcpc_data->i2c_cfg;
 
 	i2c_common_emul_init(&ctx->common);
 }

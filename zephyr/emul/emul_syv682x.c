@@ -258,8 +258,21 @@ static int syv682x_emul_init(const struct emul *emul,
 	i2c_common_emul_init(&data->common);
 
 	syv682x_emul_reset(data);
-	return i2c_emul_register(parent, emul->dev_label, &data->common.emul);
+	return 0;
 }
+
+static int syv682x_i2c_transfer(const struct emul *target,
+				   struct i2c_msg *msgs, int num_msgs, int addr)
+{
+	return i2c_common_emul_transfer(
+		&((const struct syv682x_emul_cfg *)(target->cfg))->common,
+		&((struct syv682x_emul_data *)(target->data))->common, msgs, num_msgs,
+		addr);
+}
+
+static const struct i2c_emul_api syv682x_i2c_api = {
+	.transfer = syv682x_i2c_transfer,
+};
 
 /* Device instantiation */
 #define SYV682X_EMUL(n)                                                          \
@@ -285,7 +298,7 @@ static int syv682x_emul_init(const struct emul *emul,
 		},                                                             \
 	}; \
 	EMUL_DEFINE(syv682x_emul_init, DT_DRV_INST(n), &syv682x_emul_cfg_##n,    \
-		    &syv682x_emul_data_##n)
+		    &syv682x_emul_data_##n, &syv682x_i2c_api)
 
 DT_INST_FOREACH_STATUS_OKAY(SYV682X_EMUL)
 

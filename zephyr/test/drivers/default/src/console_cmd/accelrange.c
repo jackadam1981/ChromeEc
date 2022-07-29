@@ -18,11 +18,9 @@
 
 #define EMUL_LABEL DT_NODELABEL(bma_emul)
 
-#define BMA_ORD DT_DEP_ORD(EMUL_LABEL)
-
 static void console_cmd_accelrange_after(void *fixture)
 {
-	struct i2c_emul *emul = bma_emul_get(BMA_ORD);
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
 
 	ARG_UNUSED(fixture);
 	shell_execute_cmd(get_ec_shell(), "accelrange 0 2");
@@ -101,7 +99,7 @@ ZTEST_USER(console_cmd_accelrange, test_set_range_round_down)
 
 ZTEST_USER(console_cmd_accelrange, test_i2c_error)
 {
-	struct i2c_emul *emul = bma_emul_get(BMA_ORD);
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
 	int rv;
 
 	i2c_common_emul_set_read_fail_reg(emul, BMA2x2_RANGE_SELECT_ADDR);

@@ -31,6 +31,10 @@ struct ps8xxx_emul_data {
 	struct i2c_common_emul_data p1_data;
 	struct i2c_common_emul_data gpio_data;
 
+	struct i2c_emul p0_i2c_emul;
+	struct i2c_emul p1_i2c_emul;
+	struct i2c_emul gpio_i2c_emul;
+
 	/** Product ID of emulated device */
 	int prod_id;
 
@@ -494,6 +498,31 @@ static int ps8xxx_emul_write_byte(struct i2c_emul *i2c_emul, int reg,
 	return -EIO;
 }
 
+static int ps8xxx_i2c_transfer(const struct emul *target, struct i2c_msg *msgs,
+			       int num_msgs, int addr)
+{
+	struct tcpc_emul_data *emul_data = target->data;
+	struct ps8xxx_emul_data *ps8xxx_emul_data = emul_data->chip_data;
+	struct i2c_common_emul_data *data = NULL;
+
+	if (addr == ps8xxx_emul_data->p0_data->addr) {
+		data = &ps8xxx_emul_data->p0_data;
+	} else if (addr == ps8xxx_emul_data->p1_data->addr) {
+		data = &ps8xxx_emul_data->p1_data;
+	} else if (ps8xxx_emul_data->gpio_data.addr != 0 &&
+		   addr == ps8xxx_emul_data->gpio_data.addr) {
+		data = &ps8xxx_emul_data->gpio_data;
+	} else {
+		return -ENOSYS;
+	}
+
+	return i2c_common_emul_transfer(cfg, data, msgs, num_msgs, addr);
+}
+
+static const struct i2c_emul_api ps8xxx_i2c_api = {
+	.transfer = ps8xxx_i2c_transfer,
+};
+
 /**
  * @brief Set up a new PS8xxx emulator
  *
@@ -525,34 +554,30 @@ static int ps8xxx_emul_init(const struct emul *emul,
 
 	tcpci_emul_i2c_init(emul, i2c_dev);
 
-	data->p0_data.emul.api = &i2c_common_emul_api;
-	data->p0_data.emul.addr = cfg->p0_cfg.addr;
-	data->p0_data.emul.parent = emul;
 	data->p0_data.i2c = i2c_dev;
-	data->p0_data.cfg = &cfg->p0_cfg;
+	data->p0_i2c_emul.target = emul;
+	data->p0_i2c_emul.api = &ps8xxx_i2c_api;
+	data->p0_i2c_emul.addr = data->p0_data.addr;
 	i2c_common_emul_init(&data->p0_data);
 
-	data->p1_data.emul.api = &i2c_common_emul_api;
-	data->p1_data.emul.addr = cfg->p1_cfg.addr;
-	data->p1_data.emul.parent = emul;
 	data->p1_data.i2c = i2c_dev;
-	data->p1_data.cfg = &cfg->p1_cfg;
+	data->p0_i2c_emul.target = emul;
+	data->p0_i2c_emul.api = &ps8xxx_i2c_api;
+	data->p0_i2c_emul.addr = data->p1_data.addr;
 	i2c_common_emul_init(&data->p1_data);
 
-	ret = i2c_emul_register(i2c_dev, emul->dev_label,
-				&tcpci_ctx->common.emul);
-	ret |= i2c_emul_register(i2c_dev, emul->dev_label, &data->p0_data.emul);
-	ret |= i2c_emul_register(i2c_dev, emul->dev_label, &data->p1_data.emul);
+	/* Context is registered by default */
+	ret = i2c_emul_register(i2c_dev, emul->dev_label, &data->p0_i2c_emul);
+	ret |= i2c_emul_register(i2c_dev, emul->dev_label, &data->p1_i2cemul);
 
-	if (cfg->gpio_cfg.addr != 0) {
-		data->gpio_data.emul.api = &i2c_common_emul_api;
-		data->gpio_data.emul.addr = cfg->gpio_cfg.addr;
-		data->gpio_data.emul.parent = emul;
+	if (data->gpio_data.addr != 0) {
 		data->gpio_data.i2c = i2c_dev;
-		data->gpio_data.cfg = &cfg->gpio_cfg;
+		data->gpio_i2c_emul.targer = emul;
+		data->gpio_i2c_emul.api = &ps8xxx_i2c_api;
+		data->gpio_i2c_emul.addr = data->gpio_data.addr;
 		i2c_common_emul_init(&data->gpio_data);
 		ret |= i2c_emul_register(i2c_dev, emul->dev_label,
-					 &data->gpio_data.emul);
+					 &data->gpio_i2c_emul);
 	}
 
 	ret |= ps8xxx_emul_tcpc_reset(emul);
@@ -564,45 +589,27 @@ static int ps8xxx_emul_init(const struct emul *emul,
 	return ret;
 }
 
-#define PS8XXX_EMUL(n)                                                \
-	static struct ps8xxx_emul_data ps8xxx_emul_data_##n = {		\
-		.prod_id = PS8805_PRODUCT_ID,				\
-		.p0_data = {						\
-			.write_byte = ps8xxx_emul_write_byte,		\
-			.read_byte = ps8xxx_emul_read_byte,		\
-		},							\
-		.p1_data = {						\
-			.write_byte = ps8xxx_emul_write_byte,		\
-			.read_byte = ps8xxx_emul_read_byte,		\
-		},							\
-		.gpio_data = {						\
-			.write_byte = ps8xxx_emul_write_byte,		\
-			.read_byte = ps8xxx_emul_read_byte,		\
-		},							\
-	};    \
-                                                                      \
-	static const struct ps8xxx_emul_cfg ps8xxx_emul_cfg_##n = {	\
-		.p0_cfg = {						\
-			.i2c_label = DT_LABEL(DT_BUS(DT_DRV_INST(n))),	\
-			.dev_label = DT_INST_LABEL(n),			\
-			.data = &ps8xxx_emul_data_##n.p0_data,		\
-			.addr = DT_INST_PROP(n, p0_i2c_addr),		\
-		},							\
-		.p1_cfg = {						\
-			.i2c_label = DT_LABEL(DT_BUS(DT_DRV_INST(n))),	\
-			.dev_label = DT_INST_LABEL(n),			\
-			.data = &ps8xxx_emul_data_##n.p1_data,		\
-			.addr = DT_INST_PROP(n, p1_i2c_addr),		\
-		},							\
-		.gpio_cfg = {						\
-			.i2c_label = DT_LABEL(DT_BUS(DT_DRV_INST(n))),	\
-			.dev_label = DT_INST_LABEL(n),			\
-			.data = &ps8xxx_emul_data_##n.gpio_data,	\
-			.addr = DT_INST_PROP(n, gpio_i2c_addr),		\
-		},							\
-	}; \
-	TCPCI_EMUL_DEFINE(n, ps8xxx_emul_init, &ps8xxx_emul_cfg_##n,  \
-			  &ps8xxx_emul_data_##n)
+#define PS8XXX_EMUL(n)                                                      \
+	static struct ps8xxx_emul_data ps8xxx_emul_data_##n = {             \
+		.prod_id = PS8805_PRODUCT_ID,                               \
+		.p0_data = {                                                \
+			.write_byte = ps8xxx_emul_write_byte,               \
+			.read_byte = ps8xxx_emul_read_byte,                 \
+			.addr = DT_INST_PROP(n, p0_i2c_addr),               \
+		},                                                          \
+		.p1_data = {                                                \
+			.write_byte = ps8xxx_emul_write_byte,               \
+			.read_byte = ps8xxx_emul_read_byte,                 \
+			.addr = DT_INST_PROP(n, p1_i2c_addr),               \
+		},                                                          \
+		.gpio_data = {                                              \
+			.write_byte = ps8xxx_emul_write_byte,               \
+			.read_byte = ps8xxx_emul_read_byte,                 \
+			.addr = DT_INST_PROP(n, gpio_i2c_addr),             \
+		},                                                          \
+	};                                                                  \
+	TCPCI_EMUL_DEFINE(n, ps8xxx_emul_init, NULL, &ps8xxx_emul_data_##n, \
+			  &ps8xxx_i2c_api)
 
 DT_INST_FOREACH_STATUS_OKAY(PS8XXX_EMUL)
 

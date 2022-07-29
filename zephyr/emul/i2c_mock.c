@@ -53,8 +53,21 @@ static int i2c_mock_init(const struct emul *emul, const struct device *parent)
 	data->cfg = cfg;
 	i2c_common_emul_init(data);
 
-	return i2c_emul_register(parent, emul->dev_label, &data->emul);
+	return 0;
 }
+
+static int i2c_mock_i2c_transfer(const struct emul *target,
+				   struct i2c_msg *msgs, int num_msgs, int addr)
+{
+	return i2c_common_emul_transfer(
+		(const struct i2c_common_emul_cfg *)(target->cfg),
+		(struct i2c_common_emul_data *)(target->data), msgs, num_msgs,
+		addr);
+}
+
+static const struct i2c_emul_api i2c_mock_i2c_api = {
+	.transfer = i2c_mock_i2c_transfer,
+};
 
 #define INIT_I2C_MOCK(n)                                              \
 	static const struct i2c_common_emul_cfg i2c_mock_cfg_##n = {  \
