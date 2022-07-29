@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "093537c6_a07a918d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-07-29T02:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14f3358_c58d011b",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcc2f88a_60b2e47f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-28T06:09:15Z",
       "side": 1,
       "message": "nit: \"Mask enable\" is confusing, because this line actually disables (\u003d\u003d masks off) the RCP interrupt. Suggesting:\n/* Mask RCP 5V SRC */",
+      "range": {
+        "startLine": 319,
+        "startChar": 2,
+        "endLine": 319,
+        "endChar": 29
+      },
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1b8feb_c56c5ca0",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-07-29T02:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcc2f88a_60b2e47f",
       "range": {
         "startLine": 319,
         "startChar": 2,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "122e2c1f_001b20e7",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5055,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-07-29T02:40:16Z",
+      "side": 1,
+      "message": "I will add other CL for define \"CONFIG_USBC_NX20P3483_RCP_5VSRC_MASK_ENABLE\" this configuration on board/taniks/board.h and borad/taeko/board.h.",
+      "parentUuid": "fa42295b_7cdfa92d",
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b4585cf_a10bc82b",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb6f70a_23acf29d",
+        "filename": "zephyr/Kconfig.ppc",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-07-29T02:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b4585cf_a10bc82b",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 28
+      },
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22b93c85_e0288616",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-07-28T06:09:15Z",
       "side": 1,
       "message": "current",
+      "range": {
+        "startLine": 96,
+        "startChar": 50,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "1a1bb1174aad59f8f1fb30f825356744b01f0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6aac86_feaee18b",
+        "filename": "zephyr/Kconfig.ppc",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-07-29T02:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22b93c85_e0288616",
       "range": {
         "startLine": 96,
         "startChar": 50,
