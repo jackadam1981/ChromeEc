@@ -233,6 +233,8 @@ else
 common-y+=test_util.o
 endif
 
+common-$(CONFIG_SYSTEM_BOOT_TIME_LOGGING)+=system_boottime.o
+
 ifneq ($(CONFIG_RSA_OPTIMIZED),)
 $(out)/RW/common/rsa.o: CFLAGS+=-O3
 $(out)/RO/common/rsa.o: CFLAGS+=-O3

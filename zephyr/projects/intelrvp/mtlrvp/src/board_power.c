@@ -16,6 +16,7 @@
 
 #include "gpio_signal.h"
 #include "gpio/gpio.h"
+#include "system_boottime.h"
 
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
@@ -47,6 +48,9 @@ void board_ap_power_action_g3_s5(void)
 	/* Turn on the PP3300_PRIM rail. */
 	power_signal_set(PWR_EN_PP3300_A, 1);
 
+	if (IS_ENABLED(CONFIG_SYSTEM_BOOT_TIME_LOGGING)) {
+		update_ap_boot_time(ARAIL);
+	}
 	if (!power_wait_signals_timeout(
 		    IN_PGOOD_ALL_CORE,
 		    AP_PWRSEQ_DT_VALUE(wait_signal_timeout))) {
