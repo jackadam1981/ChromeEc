@@ -24,6 +24,7 @@
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "motion_sense.h"
+#include "power.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "system.h"
@@ -467,13 +468,11 @@ static void enable_nvme(void)
 {
 	gpio_set_level(GPIO_EN_PP3300_SSD, 1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME_INIT, enable_nvme, HOOK_PRIO_FIRST);
 
 static void disable_nvme(void)
 {
 	gpio_set_level(GPIO_EN_PP3300_SSD, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_nvme, HOOK_PRIO_DEFAULT);
 
 static void board_do_chipset_resume(void)
 {
@@ -486,3 +485,15 @@ static void board_do_chipset_suspend(void)
 	gpio_set_level(GPIO_EN_KB_BL, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_do_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+void ap_in_sleep_power_signal_interrupt(enum gpio_signal signal)
+{
+	/* AP resume */
+	if (gpio_get_level(signal) == GPIO_SIGNAL_RESUME)
+		enable_nvme();
+	/* AP suspend */
+	else
+		disable_nvme();
+
+	power_signal_interrupt(signal);
+}
