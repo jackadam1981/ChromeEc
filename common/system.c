@@ -1086,6 +1086,9 @@ static void system_common_shutdown(void)
 	if (reboot_at_shutdown)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
 	handle_pending_reboot(reboot_at_shutdown);
+
+	/* Reset cnt on cold boot */
+	update_ap_boot_time(RESET_CNT);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, system_common_shutdown,
 	     HOOK_PRIO_DEFAULT);

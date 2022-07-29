@@ -10,6 +10,7 @@
 #include "task.h"
 #include "chipset.h"
 #include "console.h"
+#include "host_command.h"
 #include "uart.h"
 #include "util.h"
 #include "power.h"
@@ -456,11 +457,14 @@ void espi_vw_evt_pltrst(void)
 		/* Enable eSPI peripheral channel */
 		SET_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCHANEN);
 #endif
+		update_ap_boot_time(PLTRST_HIGH);
+
 	} else {
 		/* PLTRST# asserted */
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 #endif
+		update_ap_boot_time(PLTRST_LOW);
 	}
 }
 
@@ -520,6 +524,8 @@ void espi_espirst_handler(void)
 {
 	/* Clear pending bit of WUI */
 	SET_BIT(NPCX_WKPCL(MIWU_TABLE_0, MIWU_GROUP_5), 5);
+
+	update_ap_boot_time(ESPIRST);
 
 	CPRINTS("eSPI RST issued!");
 }

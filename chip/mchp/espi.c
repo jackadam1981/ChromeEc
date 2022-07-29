@@ -870,12 +870,15 @@ void espi_vw_evt_pltrst_n(uint32_t wire_state, uint32_t bpos)
 {
 	CPRINTS("VW PLTRST#: %d", wire_state);
 
-	if (wire_state) /* Platform Reset de-assertion */
+	if (wire_state) { /* Platform Reset de-assertion */
 		espi_host_init();
-	else /* assertion */
+		update_ap_boot_time(PLTRST_HIGH);
+	} else { /* assertion */
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 #endif
+		update_ap_boot_time(PLTRST_LOW);
+	}
 }
 
 /* OOB Reset Warn event handler */
