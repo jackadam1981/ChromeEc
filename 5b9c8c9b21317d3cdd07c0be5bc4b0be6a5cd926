@@ -22,6 +22,30 @@
       },
       "revId": "5b9c8c9b21317d3cdd07c0be5bc4b0be6a5cd926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "451d1750_db88b47c",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_bist_shared.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-29T19:26:32Z",
+      "side": 1,
+      "message": "\"fixed\".  I figured it works well enough given we\u0027re also verifying the fact that the first PDO is a 5V fixed one",
+      "parentUuid": "8ae59918_9f27f104",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "5b9c8c9b21317d3cdd07c0be5bc4b0be6a5cd926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
