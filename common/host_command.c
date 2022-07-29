@@ -34,6 +34,8 @@
 
 static struct host_cmd_handler_args *pending_args;
 
+struct ec_boot_time_data g_boot_time = { 0 };
+
 #ifndef CONFIG_HOSTCMD_X86
 /*
  * Simulated memory map.  Must be word-aligned, because some of the elements
@@ -929,3 +931,73 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+
+/* Updates boot time */
+void update_boot_time(enum boot_time_param param)
+{
+	switch (param) {
+	case ARAIL:
+		g_boot_time.arail = get_time().val;
+		ccprintf("BOOT_DATA:g_boot_time.arail=%lld\n",
+			 g_boot_time.arail);
+		break;
+
+	case RSMRST:
+		g_boot_time.rsmrst = get_time().val;
+		ccprintf("BOOT_DATA:g_boot_time.rsmrst=%lld\n",
+			 g_boot_time.rsmrst);
+		break;
+
+	case ESPIRST:
+		g_boot_time.espirst = get_time().val;
+		ccprintf("BOOT_DATA:g_boot_time.espirst=%lld\n",
+			 g_boot_time.pltrst_high);
+		break;
+
+	case PLTRST_LOW:
+		g_boot_time.pltrst_low = get_time().val;
+		ccprintf("BOOT_DATA:g_boot_time.pltrst_low=%lld\n",
+			 g_boot_time.pltrst_low);
+
+		g_boot_time.cnt++;
+		ccprintf("BOOT_DATA:g_boot_time.cnt=%d\n", g_boot_time.cnt);
+		break;
+
+	case PLTRST_HIGH:
+		g_boot_time.pltrst_high = get_time().val;
+		ccprintf("BOOT_DATA:g_boot_time.pltrst_high=%lld\n",
+			 g_boot_time.pltrst_high);
+		break;
+
+	case EC_CUR_TIME:
+		g_boot_time.ec_cur_time = get_time().val;
+		ccprintf("BOOT_DATA:g_boot_time.ec_cur_time=%lld\n",
+			 g_boot_time.ec_cur_time);
+		break;
+
+	case RESET_CNT:
+		g_boot_time.cnt = 0;
+		ccprintf("BOOT_DATA:g_boot_time.cnt=%d\n", g_boot_time.cnt);
+		break;
+	}
+}
+
+/* Returns boot time data */
+static enum ec_status
+host_command_get_boot_time(struct host_cmd_handler_args *args)
+{
+	struct ec_boot_time_data *boot_time = args->response;
+
+	/* update current time */
+	update_boot_time(EC_CUR_TIME);
+
+	/* copy data from g_boot_time struct */
+	memcpy(boot_time, &g_boot_time, sizeof(g_boot_time));
+
+	args->response_size = sizeof(*boot_time);
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_GET_BOOT_TIME, host_command_get_boot_time,
+		     EC_VER_MASK(0));
