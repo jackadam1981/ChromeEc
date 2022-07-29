@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+/* FIXME - not for checkin! */
+
 #ifndef __CROS_EC_CONFIG_CHIP_H
 #define __CROS_EC_CONFIG_CHIP_H
 
