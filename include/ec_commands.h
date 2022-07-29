@@ -7641,6 +7641,28 @@ struct ec_params_usb_pd_mux_ack {
 	uint8_t port; /* USB-C port number */
 } __ec_align1;
 
+/* Get boot time */
+#define EC_CMD_GET_BOOT_TIME 0x0604
+
+struct ec_boot_time_data {
+	/* arail gets updated only when AP cold boot happens */
+	uint64_t arail;
+	/* rsmrst gets updated only when AP cold boot happens */
+	uint64_t rsmrst;
+	/* espirst gets updated only when AP cold boot happens */
+	uint64_t espirst;
+	/* pltrst_low gets updated only when AP warm boot happens
+	 * it will be 0 on first boot */
+	uint64_t pltrst_low;
+	/* pltrst_high gets updated only when AP warm boot happens and on
+	 * first boot */
+	uint64_t pltrst_high;
+	/* cnt increment for warm boot, reset to 0 when cold boot happens */
+	uint16_t    cnt;
+	/* ec_cur_time Get updated only when EC cold boot happens */
+	uint64_t ec_cur_time;
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or

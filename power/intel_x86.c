@@ -26,6 +26,8 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ##args)
 
+extern struct ec_boot_time_data g_boot_time;
+
 enum sys_sleep_state {
 	SYS_SLEEP_S3,
 	SYS_SLEEP_S4,
@@ -582,6 +584,10 @@ void common_intel_x86_handle_rsmrst(enum power_state state)
 		msleep(10);
 
 	gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
+
+	/* update rsmrst time */
+	g_boot_time.rsmrst = get_time().val;
+	ccprintf("\nBOOT_DATA:g_boot_time.rsmrst=%lld",g_boot_time.rsmrst);
 
 	CPRINTS("Pass through GPIO_PG_EC_RSMRST_ODL: %d", rsmrst_in);
 
