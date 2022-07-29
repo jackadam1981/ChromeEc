@@ -41,7 +41,7 @@
  * Tentacool's battery pack requests 256mA as the minimum current,
  * so that can be a SW workaround.
  */
-#define CHARGE_I_MIN 256
+#define CHARGE_I_MIN 250
 #define CHARGE_I_STEP 10
 #define INPUT_I_MAX 3300
 #define INPUT_I_MIN 100
