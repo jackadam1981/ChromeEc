@@ -5708,6 +5708,9 @@
  */
 #undef CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT
 
+/* Define this to enable ap boot time data */
+#undef CONFIG_BOOT_TIME_DATA
+
 /*
  * The USB port used for CCD. Defaults to 0/C0.
  */

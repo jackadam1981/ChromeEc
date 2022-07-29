@@ -1086,6 +1086,11 @@ static void system_common_shutdown(void)
 	if (reboot_at_shutdown)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
 	handle_pending_reboot(reboot_at_shutdown);
+
+#ifdef CONFIG_BOOT_TIME_DATA
+	/* Reset cnt on cold boot */
+	update_ap_boot_time(RESET_CNT);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, system_common_shutdown,
 	     HOOK_PRIO_DEFAULT);
@@ -1828,3 +1833,45 @@ __test_only void system_common_reset_state(void)
 	reset_flags = 0;
 	jumped_to_image = 0;
 }
+
+#ifdef CONFIG_BOOT_TIME_DATA
+
+static struct ec_boot_time_data g_boot_time;
+
+/* Updates ap boot time */
+void update_ap_boot_time(enum boot_time_param param)
+{
+	uint64_t t = get_time().val;
+
+	switch (param) {
+	case ARAIL:
+		g_boot_time.arail = t;
+		break;
+	case RSMRST:
+		g_boot_time.rsmrst = t;
+		break;
+	case ESPIRST:
+		g_boot_time.espirst = t;
+		break;
+	case PLTRST_LOW:
+		g_boot_time.pltrst_low = t;
+		g_boot_time.cnt++;
+		break;
+	case PLTRST_HIGH:
+		g_boot_time.pltrst_high = t;
+		break;
+	case EC_CUR_TIME:
+		g_boot_time.ec_cur_time = t;
+		break;
+	case RESET_CNT:
+		t = g_boot_time.cnt = 0;
+		break;
+	}
+	ccprintf("Boot Time: %d, %lld\n", param, t);
+}
+
+struct ec_boot_time_data *get_ap_boot_time(void)
+{
+	return &g_boot_time;
+}
+#endif /* CONFIG_BOOT_TIME_DATA */

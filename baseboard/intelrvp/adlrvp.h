@@ -166,6 +166,9 @@
 /* Config to indicate battery type doesn't auto detect */
 #define CONFIG_BATTERY_TYPE_NO_AUTO_DETECT
 
+/* Enable ap boot time data */
+#define CONFIG_BOOT_TIME_DATA
+
 #ifndef __ASSEMBLER__
 
 enum adlrvp_charge_ports {
