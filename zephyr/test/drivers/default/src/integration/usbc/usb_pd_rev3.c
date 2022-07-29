@@ -284,3 +284,32 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, verify_startup_on_pd_button_press)
 	zassert_true(fixture->src_ext.alert_received, NULL);
 	zassert_true(fixture->src_ext.status_received, NULL);
 }
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3, verify_chipset_on_pd_button_behavior)
+{
+	uint32_t ado;
+
+	/* Expect no power state change on short press */
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_PRESS;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_RELEASE;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_false(fixture->src_ext.alert_received, NULL);
+	zassert_false(fixture->src_ext.status_received, NULL);
+
+	/* Expect power state change on long press */
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_PRESS;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(6));
+	ado = ADO_EXTENDED_ALERT_EVENT | ADO_POWER_BUTTON_RELEASE;
+	tcpci_partner_send_data_msg(&fixture->source_5v_3a, PD_DATA_ALERT, &ado,
+				    1, 0);
+	k_sleep(K_SECONDS(2));
+	zassert_true(fixture->src_ext.alert_received, NULL);
+	zassert_true(fixture->src_ext.status_received, NULL);
+}

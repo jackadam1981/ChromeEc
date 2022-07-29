@@ -246,6 +246,16 @@ int pd_timer_next_expiration(int port)
 	return ret_value;
 }
 
+uint64_t pd_timer_get_remaining_time(int port, enum pd_task_timer timer)
+{
+	if (pd_timer_is_disabled(port, timer) ||
+	    pd_timer_is_inactive(port, timer)) {
+		return 0;
+	}
+
+	return (timer_expires[port][timer] - get_time().val);
+}
+
 #ifdef CONFIG_CMD_PD_TIMER
 test_mockable_static void pd_timer_dump(int port)
 {

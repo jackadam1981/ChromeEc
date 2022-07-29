@@ -316,6 +316,16 @@ void pd_timer_manage_expired(int port);
 int pd_timer_next_expiration(int port);
 
 /*
+ * Get remaining time on a pd timer.
+ *
+ * @param port USB-C port number
+ * @param timer Requested pd_task_timer
+ * @return 0 if the timer is disabled or inactive, otherwise the amount of time
+ * left on the timer in microseconds.
+ */
+uint64_t pd_timer_get_remaining_time(int port, enum pd_task_timer timer);
+
+/*
  * pd_timer_dump
  * Debug display of the timers for a given port
  *

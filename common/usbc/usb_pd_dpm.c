@@ -15,6 +15,7 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "power.h"
+#include "power_button.h"
 #include "system.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
@@ -549,7 +550,6 @@ static void dpm_run_pd_button_sm(int port)
 			pd_timer_enable(port, DPM_TIMER_PD_BUTTON_PRESS,
 					CONFIG_USB_PD_LONG_PRESS_MAX_MS * MSEC);
 		} else if (DPM_CHK_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED)) {
-			pd_timer_disable(port, DPM_TIMER_PD_BUTTON_PRESS);
 			dpm[port].pd_button_state = DPM_PD_BUTTON_RELEASED;
 		} else if (pd_timer_is_expired(port,
 					       DPM_TIMER_PD_BUTTON_PRESS)) {
@@ -558,14 +558,50 @@ static void dpm_run_pd_button_sm(int port)
 		}
 		break;
 	case DPM_PD_BUTTON_RELEASED:
+
 #ifdef CONFIG_AP_POWER_CONTROL
 		if (IS_ENABLED(CONFIG_POWER_BUTTON_X86) ||
 		    IS_ENABLED(CONFIG_CHIPSET_SC7180) ||
 		    IS_ENABLED(CONFIG_CHIPSET_SC7280)) {
-			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+				/*
+				 * Wake chipset on any button press when the
+				 * system is off
+				 */
 				chipset_power_on();
+			} else if (chipset_in_state(
+					   CHIPSET_STATE_ANY_SUSPEND) ||
+				   chipset_in_state(CHIPSET_STATE_ON)) {
+				if (pd_timer_get_remaining_time(
+					    port, DPM_TIMER_PD_BUTTON_PRESS) <
+				    (CONFIG_USB_PD_LONG_PRESS_MAX_MS -
+				     CONFIG_USB_PD_SHORT_PRESS_MAX_MS) *
+					    MSEC) {
+					/*
+					 * Shutdown chipset on long USB PD power
+					 * button press
+					 */
+					chipset_force_shutdown(
+						CHIPSET_SHUTDOWN_BUTTON);
+				} else {
+					/*
+					 * Simulate a short power button press
+					 * on short USB PD power button press.
+					 * This will wake the system from
+					 * suspend, or bring up the power UI
+					 * when the system is on.
+					 */
+					power_button_simulate_press(
+						USB_PD_SHORT_BUTTON_PRESS_MS);
+				}
+			}
 		}
 #endif
+		/*
+		 * Disable timer and return to idle after processing button
+		 * press.
+		 */
+		pd_timer_disable(port, DPM_TIMER_PD_BUTTON_PRESS);
 		dpm[port].pd_button_state = DPM_PD_BUTTON_IDLE;
 		break;
 	}
