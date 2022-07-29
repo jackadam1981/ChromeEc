@@ -545,6 +545,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_MAX695X_SEVEN_SEGMENT_DISPLAY
 						"${PLATFORM_EC}/driver/led/max695x.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_DRIVER_TLC59116F
                                                 "${PLATFORM_EC}/driver/led/tlc59116f.c")
+zephyr_library_sources_ifdef(CONFIG_SYSTEM_BOOT_TIME_LOGGING
+                                                "${PLATFORM_EC}/common/system_boottime.c")
 # Switch to ec_shim library for all Zephyr sources
 set(ZEPHYR_CURRENT_LIBRARY ec_shim)
 

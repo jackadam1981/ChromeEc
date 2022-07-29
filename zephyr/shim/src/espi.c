@@ -27,6 +27,7 @@
 #include "task.h"
 #include "timer.h"
 #include "zephyr_espi_shim.h"
+#include "system_boottime.h"
 
 #define VWIRE_PULSE_TRIGGER_TIME \
 	CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_DEFAULT_VW_WIDTH_US
@@ -160,6 +161,10 @@ static void espi_chipset_reset(void)
 	} else {
 		hook_notify(HOOK_CHIPSET_RESET);
 	}
+
+	if (IS_ENABLED(CONFIG_SYSTEM_BOOT_TIME_LOGGING)) {
+		update_ap_boot_time(ESPIRST);
+	}
 }
 DECLARE_DEFERRED(espi_chipset_reset);
 #endif /* CONFIG_PLATFORM_EC_CHIPSET_RESET_HOOK */
@@ -187,6 +192,14 @@ static void espi_vwire_handler(const struct device *dev,
 	if (event.evt_details == ESPI_VWIRE_SIGNAL_PLTRST &&
 	    event.evt_data == 0) {
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
+		if (IS_ENABLED(CONFIG_SYSTEM_BOOT_TIME_LOGGING)) {
+			update_ap_boot_time(PLTRST_LOW);
+		}
+	} else if (event.evt_details == ESPI_VWIRE_SIGNAL_PLTRST &&
+		   event.evt_data == 1) {
+		if (IS_ENABLED(CONFIG_SYSTEM_BOOT_TIME_LOGGING)) {
+			update_ap_boot_time(PLTRST_HIGH);
+		}
 	}
 #endif
 }
