@@ -8297,6 +8297,26 @@ int cmd_board_version(int argc, char *argv[])
 	return rv;
 }
 
+int cmd_boottime(int argc, char *argv[])
+{
+	struct ec_boot_time_data response;
+	int rv;
+
+	rv = ec_command(EC_CMD_GET_BOOT_TIME, 0, NULL, 0, &response,
+			sizeof(response));
+	if (rv < 0)
+		return rv;
+
+	printf("arail: %ld\n", response.arail);
+	printf("rsmrst: %ld\n", response.rsmrst);
+	printf("espirst: %ld\n", response.espirst);
+	printf("pltrst_low: %ld\n", response.pltrst_low);
+	printf("pltrst_high: %ld\n", response.pltrst_high);
+	printf("cnt: %d\n", response.cnt);
+	printf("ec_cur_time: %ld\n", response.ec_cur_time);
+	return rv;
+}
+
 static void cmd_cbi_help(char *cmd)
 {
 	fprintf(stderr,
@@ -10842,6 +10862,7 @@ const struct command commands[] = {
 	{ "batterycutoff", cmd_battery_cut_off },
 	{ "batteryparam", cmd_battery_vendor_param },
 	{ "boardversion", cmd_board_version },
+	{ "boottime", cmd_boottime },
 	{ "button", cmd_button },
 	{ "cbi", cmd_cbi },
 	{ "chargecurrentlimit", cmd_charge_current_limit },

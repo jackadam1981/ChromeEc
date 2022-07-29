@@ -767,4 +767,18 @@ uint32_t flash_get_rw_offset(enum ec_image copy);
  */
 void system_compensate_rtc(void);
 
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+/**
+ * Updates ap boot time data.
+ *
+ * @param boot time param needs to be updated
+ */
+void update_ap_boot_time(enum boot_time_param param);
+
+/**
+ * get ap boot time data.
+ */
+struct ec_boot_time_data *get_ap_boot_time(void);
+#endif /* CONFIG_SYSTEM_BOOT_TIME_LOGGING */
+
 #endif /* __CROS_EC_SYSTEM_H */

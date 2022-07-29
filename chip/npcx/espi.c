@@ -456,10 +456,17 @@ void espi_vw_evt_pltrst(void)
 		/* Enable eSPI peripheral channel */
 		SET_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCHANEN);
 #endif
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+		update_ap_boot_time(PLTRST_HIGH);
+#endif
+
 	} else {
 		/* PLTRST# asserted */
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
+#endif
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+		update_ap_boot_time(PLTRST_LOW);
 #endif
 	}
 }
@@ -520,6 +527,10 @@ void espi_espirst_handler(void)
 {
 	/* Clear pending bit of WUI */
 	SET_BIT(NPCX_WKPCL(MIWU_TABLE_0, MIWU_GROUP_5), 5);
+
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	update_ap_boot_time(ESPIRST);
+#endif
 
 	CPRINTS("eSPI RST issued!");
 }
