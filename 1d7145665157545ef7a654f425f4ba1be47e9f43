@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78094524_792e685a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2755,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-07-29T03:27:41Z",
+      "side": 1,
+      "message": "This code is for decreasing I2C access time, otherwise pe_src_ready_run() will takes some time to read I2C register.",
+      "parentUuid": "213bddd4_8c847cf0",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "443eec09_560ffd4e",
         "filename": "common/usbc_intr_task.c",
         "patchSetId": 4
