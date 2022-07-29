@@ -37,6 +37,10 @@ enum bbram_data_index {
 	BBRM_DATA_INDEX_PANIC_BKUP = 36, /* Panic data (index 35-63)*/
 	BBRM_DATA_INDEX_LCT_TIME = 64, /* The start time of LCT(4 bytes)
 					*/
+	BBRAM_DATA_INDEX_BOOTTIME = 68, /* logging boottime
+					 * sizeof(struct ec_boot_time_data) = 50
+					 * bytes
+					 */
 };
 
 enum psl_pin_t {

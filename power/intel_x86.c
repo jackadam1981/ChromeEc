@@ -583,6 +583,10 @@ void common_intel_x86_handle_rsmrst(enum power_state state)
 
 	gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
 
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	update_ap_boot_time(RSMRST);
+#endif
+
 	CPRINTS("Pass through GPIO_PG_EC_RSMRST_ODL: %d", rsmrst_in);
 
 	board_after_rsmrst(rsmrst_in);
