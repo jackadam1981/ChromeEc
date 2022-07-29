@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "155b4068_0d0c4b46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2022-07-29T03:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8efa7c44_00df86e4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "8052f8ecd24456463d6afd75e12639e4bbbd1c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d732223_0d31398f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-29T02:11:40Z",
       "side": 1,
       "message": "Could you please include an example of the dts modification for enabling the uart console? This will make the user life easier.",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "8052f8ecd24456463d6afd75e12639e4bbbd1c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd2d390_b8b9cf4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2022-07-29T03:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d732223_0d31398f",
       "range": {
         "startLine": 10,
         "startChar": 44,
