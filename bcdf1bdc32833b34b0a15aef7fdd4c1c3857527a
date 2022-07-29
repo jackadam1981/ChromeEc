@@ -34,6 +34,24 @@
       "parentUuid": "7b0daef2_94e598be",
       "revId": "bcdf1bdc32833b34b0a15aef7fdd4c1c3857527a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2327f0d2_9b068dd8",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-07-29T03:18:01Z",
+      "side": 1,
+      "message": "The previous version look like the CHG_DET bit is not sync VBUS. I prefer to turnning on GPADCs before reading.",
+      "parentUuid": "6978e80b_2fc8864e",
+      "revId": "bcdf1bdc32833b34b0a15aef7fdd4c1c3857527a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
