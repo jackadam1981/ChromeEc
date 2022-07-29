@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b627e46_b03ce029",
+        "filename": "zephyr/include/emul/emul_bb_retimer.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-29T18:30:05Z",
+      "side": 1,
+      "message": "I\u0027d like to do this in a followup CL. I\u0027d like to get this merged and working well.",
+      "parentUuid": "0121d65c_6bfacf2d",
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d327c2c2_c394441b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-29T16:57:33Z",
       "side": 1,
       "message": "You renamed this function but the return type is the same, can you add details?",
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224d8d22_aec61d83",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-29T18:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d327c2c2_c394441b",
       "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -59,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6ed61e_a5beb7e9",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-29T18:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88aa13b2_425b8ddb",
+      "range": {
+        "startLine": 460,
+        "startChar": 31,
+        "endLine": 460,
+        "endChar": 41
+      },
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fcc1113_a445bf07",
@@ -76,6 +136,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "313cb57b_51cf0430",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-29T18:30:05Z",
+      "side": 1,
+      "message": "Doing this in a follow-up CL.",
+      "parentUuid": "4fcc1113_a445bf07",
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d239b7fc_4bb4712f",
@@ -89,6 +167,24 @@
       "writtenOn": "2022-07-29T17:52:49Z",
       "side": 1,
       "message": "NIT: Same as line 83. Can be cleaned up.",
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e935100_29d2fa88",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-07-29T18:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d239b7fc_4bb4712f",
       "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
