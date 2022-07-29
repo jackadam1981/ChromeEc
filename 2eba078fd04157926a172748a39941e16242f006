@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6274d24_b228bcb4",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-29T01:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89796df_61cec5e7",
+      "range": {
+        "startLine": 360,
+        "startChar": 16,
+        "endLine": 360,
+        "endChar": 19
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3cd9cda_bc1b7e5d",
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "Move to HOOK_INIT, it\u0027s called a little bit late than before, around 0.8s, but before TCPC init ready printed. Is the time good?",
       "parentUuid": "a3cd9cda_bc1b7e5d",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 33
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2d2df5_5435b805",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-29T01:42:17Z",
+      "side": 1,
+      "message": "how about HOOK_CHIPSET_PRE_INIT or HOOK_CHIPSET_STARTUP ?\n\nalso we have to see if VBUS is triggering some TCPM events if so have to find a way to configure to PD_ROLE_SINK",
+      "parentUuid": "c03e0b96_141086aa",
       "range": {
         "startLine": 331,
         "startChar": 0,
