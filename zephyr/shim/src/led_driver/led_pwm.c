@@ -37,8 +37,10 @@ LOG_MODULE_REGISTER(pwm_led, LOG_LEVEL_ERR);
 			100),                                                 \
 	},
 
-#define SET_PWM_PIN(node_id) \
-	{ DT_FOREACH_PROP_ELEM(node_id, led_pins, SET_PIN) };
+#define SET_PWM_PIN(node_id)                                                \
+	COND_CODE_1(DT_NODE_HAS_PROP(node_id, led_pins),                    \
+		    ({ DT_FOREACH_PROP_ELEM(node_id, led_pins, SET_PIN) }), \
+		    ({}));
 
 #define GEN_PINS_ARRAY(id) struct pwm_pin_t PINS_ARRAY(id)[] = SET_PWM_PIN(id)
 
@@ -49,7 +51,7 @@ DT_FOREACH_CHILD(PWM_LED_PINS_NODE, GEN_PINS_ARRAY)
 	  .led_id = GET_PROP(node_id, led_id),         \
 	  .br_color = GET_PROP_NVE(node_id, br_color), \
 	  .pwm_pins = PINS_ARRAY(node_id),             \
-	  .pins_count = DT_PROP_LEN(node_id, led_pins) };
+	  .pins_count = DT_PROP_LEN_OR(node_id, led_pins, 0) };
 
 /*
  * Initialize led_pins_node_t struct for each pin node defined
@@ -82,7 +84,7 @@ void led_set_color_with_node(const struct led_pins_node_t *pins_node)
 /*
  * Iterate through LED pins nodes to find the color matching node.
  */
-void led_set_color(enum led_color color, enum ec_led_id led_id)
+test_mockable void led_set_color(enum led_color color, enum ec_led_id led_id)
 {
 	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {
 		if ((pins_node[i]->led_color == color) &&
@@ -95,6 +97,8 @@ void led_set_color(enum led_color color, enum ec_led_id led_id)
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
+	memset(brightness_range, 0, EC_LED_COLOR_COUNT);
+
 	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {
 		int br_color = pins_node[i]->br_color;
 
