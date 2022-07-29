@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7310400_1549ca65",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-29T15:47:46Z",
+      "side": 1,
+      "message": "Weirdly enough, there is neither a requirement to clear on disconnect nor a requirement not to clear on disconnect.  \n\n\u00276.4.3.3.2 BIST Shared Test Mode Exit\u0027 has a lot of very specific conditions where we can\u0027t clear the mode (resets, swaps), and specifically requires that we exit upon receiving our exit message or powering off.  I don\u0027t see any indications of what a disconnect should do. \n\nReading the PD3 CTSr1.4 V4 spec, I can\u0027t find where the tester would ever send us a Shared Mode Test Exit message... I\u0027ll start a thread with the PD WG",
+      "parentUuid": "a88b007c_f483f022",
+      "revId": "dd956ef781930f900244c31bb54083c58a17e368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c73b4a4_a74b5a69",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-28T22:59:38Z",
       "side": 1,
       "message": "Is there a scenario where we don\u0027t have any 3A ports but support shared mode?",
+      "revId": "dd956ef781930f900244c31bb54083c58a17e368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff402a2_2a827c3c",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-29T15:47:46Z",
+      "side": 1,
+      "message": "The CONFIG name isn\u0027t the best at describing it, but at this point it\u0027s basically an indicator for whether a board is using the DPM\u0027s shared power logic.  The boards that disable it are either 1) incapable of sourcing 3.0 A on all ports due to a sub-board connector issue or 2) always sourcing a bunch of power (honeybuns)\n\nSo if a board were to implement their own shared power strategy, we\u0027d need to have them overriding all the relevant dpm_* callbacks",
+      "parentUuid": "8c73b4a4_a74b5a69",
       "revId": "dd956ef781930f900244c31bb54083c58a17e368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-07-28T22:59:38Z",
       "side": 1,
       "message": "Just a question: Wouldn\u0027t it make sense for `BDO_MODE_*` to be implemented in terms of `BIST_*_MODE`?",
+      "revId": "dd956ef781930f900244c31bb54083c58a17e368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87904043_5385f4c2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-07-29T15:47:46Z",
+      "side": 1,
+      "message": "One could argue as such, yes.  I will if I\u0027m feeling ambitious today...",
+      "parentUuid": "a6200ce5_be1f606a",
       "revId": "dd956ef781930f900244c31bb54083c58a17e368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
