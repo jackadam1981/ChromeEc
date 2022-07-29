@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1543c635_825ea83a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-07-29T23:21:36Z",
+      "side": 1,
+      "message": "Hi Diana and Abe.\nI initially planned to only have wake from shutdown supported by the USB PD power button and handle other functionality over HID. But, we are getting some requests to expand USB PD power button support for devices which will only send extended alert events (no HID events) on external button presses. Can you take a look at this CL to do so?\n\nThe device will still wake from S4/S5/G3 on any valid button press. But, now it will shutdown on long presses (\u003e4s) when the device is in S3/S0ix/S0. Short presses when the device is in S3/S0ix/S0 will trigger a 500ms simulated power button press to bring up the shutdown/signout/lock UI when the device is on or wake the device if it is suspended. These changes are passing zephyr and non-zephyr (make runhosttests) ec tests and I have checked they work interactively with an HP Thunderbolt G4 dock. Let me know if you have any questions.",
+      "revId": "3080f53344d78df98cc300c994d093c6cdbf5699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
