@@ -786,4 +786,10 @@ config PLATFORM_EC_MATH_UTIL
 	  Math utilities including bitmask manipulation, division rounding,
 	  trigonometric function, etc.
 
+config SYSTEM_BOOT_TIME_LOGGING
+	bool "boot time logging"
+	help
+	  This config enables boot time logging functionality in EC which
+	  is used for calculating system boot time.
+
 endif # PLATFORM_EC
