@@ -78,6 +78,8 @@ atomic_t sleep_mask;
 atomic_t idle_disabled;
 #endif
 
+extern struct ec_boot_time_data g_boot_time;
+
 /* SKU ID sourced from AP */
 static uint32_t ap_sku_id;
 
@@ -1086,6 +1088,9 @@ static void system_common_shutdown(void)
 	if (reboot_at_shutdown)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
 	handle_pending_reboot(reboot_at_shutdown);
+
+	/*Reset cnt on cold boot*/
+	g_boot_time.cnt = 0;
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, system_common_shutdown,
 	     HOOK_PRIO_DEFAULT);

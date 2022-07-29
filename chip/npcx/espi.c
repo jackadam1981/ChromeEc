@@ -27,6 +27,8 @@
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ##args)
 #endif
 
+extern struct ec_boot_time_data g_boot_time;
+
 /* Default eSPI configuration for VW events */
 struct vwevms_config_t {
 	uint8_t idx; /* VW index */
@@ -456,11 +458,24 @@ void espi_vw_evt_pltrst(void)
 		/* Enable eSPI peripheral channel */
 		SET_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCHANEN);
 #endif
+		g_boot_time.pltrst_high = get_time().val;
+
+		ccprintf("\nBOOT_DATA:g_boot_time.pltrst_high=%lld",
+			 g_boot_time.pltrst_high);
+
 	} else {
 		/* PLTRST# asserted */
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 #endif
+		g_boot_time.pltrst_low = get_time().val;
+
+		ccprintf("\nBOOT_DATA:g_boot_time.pltrst_low=%lld",
+			 g_boot_time.pltrst_low);
+
+		g_boot_time.cnt++;
+
+		ccprintf("\nBOOT_DATA:g_boot_time.cnt=%d", g_boot_time.cnt);
 	}
 }
 
@@ -520,6 +535,9 @@ void espi_espirst_handler(void)
 {
 	/* Clear pending bit of WUI */
 	SET_BIT(NPCX_WKPCL(MIWU_TABLE_0, MIWU_GROUP_5), 5);
+	/* update espirst time */
+	g_boot_time.espirst = get_time().val;
+	ccprintf("\nBOOT_DATA:g_boot_time.espirst=%lld", g_boot_time.espirst);
 
 	CPRINTS("eSPI RST issued!");
 }
