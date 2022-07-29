@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c343fb0_4b9a4c36",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-29T16:28:50Z",
+      "side": 1,
+      "message": "nit: Is there anything we can poll for rather than a hard 3 second timeout?",
+      "range": {
+        "startLine": 486,
+        "startChar": 4,
+        "endLine": 486,
+        "endChar": 11
+      },
+      "revId": "cb9080dbd9c95bf33821a9ef7738e183c35aedf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
