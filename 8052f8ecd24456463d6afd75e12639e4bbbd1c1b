@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efa7c44_00df86e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-07-29T02:11:40Z",
+      "side": 1,
+      "message": "AFAIK, this is for your internal hardening practice. I would suggest that you specify the purpose in the commit message for future reference.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "8052f8ecd24456463d6afd75e12639e4bbbd1c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d732223_0d31398f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-07-29T02:11:40Z",
+      "side": 1,
+      "message": "Could you please include an example of the dts modification for enabling the uart console? This will make the user life easier.",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "8052f8ecd24456463d6afd75e12639e4bbbd1c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
