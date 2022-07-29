@@ -13,6 +13,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "power.h"
 #include "power/alderlake_slg4bd44540.h"
 #include "power/intel_x86.h"
@@ -251,6 +252,10 @@ enum power_state power_handle_state(enum power_state state)
 	switch (state) {
 	case POWER_G3S5:
 		GPIO_SET_LEVEL(GPIO_EN_S5_RAILS, 1);
+
+#ifdef CONFIG_BOOT_TIME_DATA
+		update_ap_boot_time(ARAIL);
+#endif
 
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;

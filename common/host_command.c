@@ -930,3 +930,25 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+
+#ifdef CONFIG_BOOT_TIME_DATA
+/* Returns boot time data */
+static enum ec_status
+host_command_get_boot_time(struct host_cmd_handler_args *args)
+{
+	struct ec_boot_time_data *boot_time = args->response;
+
+	/* update current time */
+	update_ap_boot_time(EC_CUR_TIME);
+
+	/* copy data from g_boot_time struct */
+	memcpy(boot_time, get_ap_boot_time(), sizeof(struct ec_boot_time_data));
+
+	args->response_size = sizeof(*boot_time);
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_GET_BOOT_TIME, host_command_get_boot_time,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_BOOT_TIME_DATA */
