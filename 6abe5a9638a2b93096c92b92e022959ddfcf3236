@@ -16,6 +16,23 @@
       "message": "Aaron, we\u0027ll talk in the morning, but I think you can use this to start. I believe that bb_retimer, bma255, tcpci_generic, and ps8xxx should be working with this (or at least close to working). As you can see it required re-architecting how the emul_common_i2c worked. Basically, we need to relinquish control over the i2c_emul struct, but in the case of the ps8xxx we do need to create an additional 3 instances and register them. We then run a series of if...else if on the address to figure out which sub-chip we\u0027re talking to.\n\nWe\u0027ll sync in the morning.",
       "revId": "6abe5a9638a2b93096c92b92e022959ddfcf3236",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f8612c_0e59c35e",
+        "filename": "zephyr/emul/emul_bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-07-29T20:58:34Z",
+      "side": 1,
+      "message": "If you look at my WIP that I sent you, I removed `emul` from common. This will help avoid poor matching, can you see if removing that field (and cleaning up) helps?",
+      "revId": "6abe5a9638a2b93096c92b92e022959ddfcf3236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
