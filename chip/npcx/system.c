@@ -95,6 +95,11 @@ static int bbram_is_byte_access(enum bbram_data_index index)
 {
 	return index == BBRM_DATA_INDEX_PD0 || index == BBRM_DATA_INDEX_PD1 ||
 	       index == BBRM_DATA_INDEX_PD2 ||
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	       (index >= BBRAM_DATA_INDEX_BOOTTIME &&
+		index <= BBRAM_DATA_INDEX_BOOTTIME +
+				 sizeof(struct ec_boot_time_data)) ||
+#endif
 	       index == BBRM_DATA_INDEX_PANIC_FLAGS;
 }
 
@@ -198,6 +203,12 @@ static int bbram_idx_lookup(enum system_bbram_idx idx)
 		return BBRM_DATA_INDEX_PD2;
 	if (idx == SYSTEM_BBRAM_IDX_TRY_SLOT)
 		return BBRM_DATA_INDEX_TRY_SLOT;
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	if (idx >= SYSTEM_BBRAM_IDX_BOOTTIME &&
+	    idx <= SYSTEM_BBRAM_IDX_BOOTTIME + sizeof(struct ec_boot_time_data))
+		return BBRAM_DATA_INDEX_BOOTTIME +
+		       (idx - SYSTEM_BBRAM_IDX_BOOTTIME);
+#endif
 	return -1;
 }
 

@@ -1087,6 +1087,11 @@ static void system_common_shutdown(void)
 	if (reboot_at_shutdown)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
 	handle_pending_reboot(reboot_at_shutdown);
+
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+	/* Reset cnt on cold boot */
+	update_ap_boot_time(RESET_CNT);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, system_common_shutdown,
 	     HOOK_PRIO_DEFAULT);
@@ -1839,3 +1844,84 @@ __test_only enum ec_reboot_cmd system_common_get_reset_reboot_at_shutdown(void)
 
 	return ret;
 }
+
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+
+static struct ec_boot_time_data g_boot_time;
+
+/* Updates ap boot time */
+void update_ap_boot_time(enum boot_time_param param)
+{
+	uint64_t t = get_time().val;
+	static int read_flag = 1;
+
+	/* read back from bbram only once if sysjump */
+	if (system_jumped_late() && read_flag) {
+		int i = 0;
+		unsigned char *data = (char *)&g_boot_time;
+
+		for (i = 0; i < sizeof(struct ec_boot_time_data); i++) {
+			system_get_bbram(SYSTEM_BBRAM_IDX_BOOTTIME + i,
+					 data + i);
+		}
+		read_flag = 0;
+	}
+
+	switch (param) {
+	case ARAIL:
+		g_boot_time.arail = t;
+		break;
+	case RSMRST:
+		g_boot_time.rsmrst = t;
+		break;
+	case ESPIRST:
+		g_boot_time.espirst = t;
+		break;
+	case PLTRST_LOW:
+		g_boot_time.pltrst_low = t;
+		g_boot_time.cnt++;
+		break;
+	case PLTRST_HIGH:
+		g_boot_time.pltrst_high = t;
+		break;
+	case EC_CUR_TIME:
+		g_boot_time.ec_cur_time = t;
+		break;
+	case RESET_CNT:
+		t = g_boot_time.cnt = 0;
+		break;
+	}
+	ccprintf("Boot Time: %d, %lld\n", param, t);
+}
+
+/* Returns system boot time data */
+static enum ec_status
+host_command_get_boot_time(struct host_cmd_handler_args *args)
+{
+	struct ec_boot_time_data *boot_time = args->response;
+
+	/* update current time */
+	update_ap_boot_time(EC_CUR_TIME);
+
+	/* copy data from g_boot_time struct */
+	memcpy(boot_time, &g_boot_time, sizeof(struct ec_boot_time_data));
+
+	args->response_size = sizeof(*boot_time);
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_GET_BOOT_TIME, host_command_get_boot_time,
+		     EC_VER_MASK(0));
+
+static void boottime_data_update_bbram(void)
+{
+	int i = 0;
+	unsigned char *data = (char *)&g_boot_time;
+
+	for (i = 0; i < sizeof(struct ec_boot_time_data); i++) {
+		system_set_bbram(SYSTEM_BBRAM_IDX_BOOTTIME + i, *(data + i));
+	}
+}
+DECLARE_HOOK(HOOK_SYSJUMP, boottime_data_update_bbram, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_SYSTEM_BOOT_TIME_LOGGING */

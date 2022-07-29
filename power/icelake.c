@@ -10,9 +10,11 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "power.h"
 #include "power/intel_x86.h"
 #include "power_button.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 
@@ -279,6 +281,11 @@ enum power_state power_handle_state(enum power_state state)
 		 */
 		/* Turn on the PP3300_DSW rail. */
 		GPIO_SET_LEVEL(GPIO_EN_PP3300_A, 1);
+
+#ifdef CONFIG_SYSTEM_BOOT_TIME_LOGGING
+		update_ap_boot_time(ARAIL);
+#endif
+
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;
 
