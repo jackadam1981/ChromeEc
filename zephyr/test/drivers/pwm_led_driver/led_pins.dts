@@ -1,0 +1,42 @@
+/* Copyright 2022 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+/ {
+	pwm-led-pins {
+		compatible = "cros-ec,pwm-led-pins";
+
+		color_off_left: color-off-left {
+			led-color = "LED_OFF";
+			led-id = "EC_LED_ID_LEFT_LED";
+		};
+		color_off_right: color-off-right {
+			led-color = "LED_OFF";
+			led-id = "EC_LED_ID_RIGHT_LED";
+		};
+		color_blue_left: color-blue-left {
+			led-color = "LED_BLUE";
+			led-id = "EC_LED_ID_LEFT_LED";
+			br-color = "EC_LED_COLOR_BLUE";
+		};
+		color_amber_right: color-blue-right {
+			led-color = "LED_AMBER";
+			led-id = "EC_LED_ID_RIGHT_LED";
+			br-color = "EC_LED_COLOR_AMBER";
+		};
+		color_white_left: color-white-left {
+			led-color = "LED_WHITE";
+			led-id = "EC_LED_ID_LEFT_LED";
+			br-color = "EC_LED_COLOR_WHITE";
+		};
+		color_white_right: color-white-right {
+			led-color = "LED_WHITE";
+			led-id = "EC_LED_ID_RIGHT_LED";
+			br-color = "EC_LED_COLOR_WHITE";
+		};
+	};
+
+	led-colors {
+		compatible = "cros-ec,led-colors";
+	};
+};
