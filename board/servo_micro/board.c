@@ -139,10 +139,17 @@ USB_STREAM_CONFIG_USART_IFACE(usart3_usb,
 static struct usart_config const usart4;
 struct usb_stream_config const usart4_usb;
 
+<<<<<<< HEAD   (06f1d9 Clear OWNERS for factory/firmware branch)
 static struct queue const usart4_to_usb = QUEUE_DIRECT(64, uint8_t,
 	usart4.producer, usart4_usb.consumer);
 static struct queue const usb_to_usart4 = QUEUE_DIRECT(64, uint8_t,
 	usart4_usb.producer, usart4.consumer);
+=======
+static struct queue const usart4_to_usb =
+	QUEUE_DIRECT(1024, uint8_t, usart4.producer, usart4_usb.consumer);
+static struct queue const usb_to_usart4 =
+	QUEUE_DIRECT(64, uint8_t, usart4_usb.producer, usart4.consumer);
+>>>>>>> CHANGE (712d9a servo_micro: increase the usart4_to_usb buf size)
 
 static struct usart_config const usart4 =
 	USART_CONFIG(usart4_hw,
