@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4fbe3fcd_cb04b2b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-29T01:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a3a61c_b33a22fa",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1f0db376_98f0a44b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d56d30_80baae1e",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-29T01:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de98b305_0acd7da2",
+      "range": {
+        "startLine": 359,
+        "startChar": 14,
+        "endLine": 359,
+        "endChar": 15
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2b6f629_aae82575",
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e89796df_61cec5e7",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/gpio.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-29T01:25:43Z",
+      "side": 1,
+      "message": "0 will be used for any cases if it\u0027s not Intel DBC CCD? I changed to \"all other cases\" here to include no device, other typec devices attached, also Intel I3C CCD, google CCD.",
+      "parentUuid": "e2b6f629_aae82575",
+      "range": {
+        "startLine": 360,
+        "startChar": 16,
+        "endLine": 360,
+        "endChar": 19
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3cd9cda_bc1b7e5d",
         "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
         "patchSetId": 7
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-28T16:41:25Z",
       "side": 1,
       "message": "i think need to bring it HOOK_INIT with last priority as we are setting TCPM state inside the code.\nPD thread wont be running when this is called",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 33
+      },
+      "revId": "2eba078fd04157926a172748a39941e16242f006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03e0b96_141086aa",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/src/mtlrvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-07-29T01:25:43Z",
+      "side": 1,
+      "message": "Move to HOOK_INIT, it\u0027s called a little bit late than before, around 0.8s, but before TCPC init ready printed. Is the time good?",
+      "parentUuid": "a3cd9cda_bc1b7e5d",
       "range": {
         "startLine": 331,
         "startChar": 0,
