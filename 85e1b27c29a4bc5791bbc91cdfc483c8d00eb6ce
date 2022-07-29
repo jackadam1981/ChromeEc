@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3486a3_d24061db",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-29T19:22:30Z",
+      "side": 1,
+      "message": "I understand why you mocked this, but we would get more coverage with a pwm_driver emulator instead. Maybe create a bug for a pwm emulator, and add a TODO either here or in the test.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "85e1b27c29a4bc5791bbc91cdfc483c8d00eb6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
