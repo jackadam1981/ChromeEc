@@ -33,6 +33,64 @@
       "message": "You renamed this function but the return type is the same, can you add details?",
       "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88aa13b2_425b8ddb",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-07-29T17:52:49Z",
+      "side": 1,
+      "message": "\u003e \"assoicated\" is a possible misspelling of \"associated\".\n\nPlease fix.",
+      "parentUuid": "013e8cfb_f53614ac",
+      "range": {
+        "startLine": 460,
+        "startChar": 31,
+        "endLine": 460,
+        "endChar": 41
+      },
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fcc1113_a445bf07",
+        "filename": "zephyr/test/drivers/src/power_common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-07-29T17:52:49Z",
+      "side": 1,
+      "message": "NIT: can probably clean this up.",
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d239b7fc_4bb4712f",
+        "filename": "zephyr/test/drivers/src/smart.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-07-29T17:52:49Z",
+      "side": 1,
+      "message": "NIT: Same as line 83. Can be cleaned up.",
+      "revId": "7960a4d0d75bb961e2d6c8108f67ab4a9f36f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
