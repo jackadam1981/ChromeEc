@@ -34,6 +34,8 @@
 
 static struct host_cmd_handler_args *pending_args;
 
+struct ec_boot_time_data g_boot_time = { 0 };
+
 #ifndef CONFIG_HOSTCMD_X86
 /*
  * Simulated memory map.  Must be word-aligned, because some of the elements
@@ -929,3 +931,24 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+
+/* Retrieve all discovery results for the given port and transmit type */
+static enum ec_status
+host_command_get_boot_time(struct host_cmd_handler_args *args)
+{
+	struct ec_boot_time_data *boot_time = args->response;
+
+	/* copy data from g_boot_time struct */
+	memcpy(boot_time, &g_boot_time, sizeof(g_boot_time));
+
+	/* update current time */
+	boot_time->ec_cur_time = get_time().val;
+	ccprintf("\nBOOT_DATA:boot_time->ec_cur_time=%lld",
+		 boot_time->ec_cur_time);
+	args->response_size = sizeof(*boot_time);
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_GET_BOOT_TIME, host_command_get_boot_time,
+		     EC_VER_MASK(0));

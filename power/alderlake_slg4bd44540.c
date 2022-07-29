@@ -48,6 +48,8 @@
 /* The wait time is ~150 msec, allow for safety margin. */
 #define IN_PCH_SLP_SUS_WAIT_TIME_USEC (250 * MSEC)
 
+extern struct ec_boot_time_data g_boot_time;
+
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	[X86_SLP_S0_DEASSERTED] = {
@@ -251,6 +253,11 @@ enum power_state power_handle_state(enum power_state state)
 	switch (state) {
 	case POWER_G3S5:
 		GPIO_SET_LEVEL(GPIO_EN_S5_RAILS, 1);
+
+		/* update rail time */
+		g_boot_time.arail = get_time().val;
+		ccprintf("\nBOOT_DATA:g_boot_time.arail=%lld",
+			 g_boot_time.arail);
 
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;
