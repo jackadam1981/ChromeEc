@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "637188d0_b5f64cd6",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-30T03:16:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3987b703_4f2949ef",
+      "range": {
+        "startLine": 936,
+        "startChar": 5,
+        "endLine": 936,
+        "endChar": 21
+      },
+      "revId": "df668055cae1aae96450c0150092987cd005dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a85d3d_370ff1c3",
