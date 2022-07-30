@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a4e159_74ebdb0b",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-30T01:50:57Z",
+      "side": 1,
+      "message": "remove, globals will auto set to zero by startup code",
+      "range": {
+        "startLine": 37,
+        "startChar": 36,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "df668055cae1aae96450c0150092987cd005dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3987b703_4f2949ef",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-30T01:50:57Z",
+      "side": 1,
+      "message": "may be update_ap_boot_time",
+      "range": {
+        "startLine": 936,
+        "startChar": 5,
+        "endLine": 936,
+        "endChar": 21
+      },
+      "revId": "df668055cae1aae96450c0150092987cd005dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a85d3d_370ff1c3",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-30T01:50:57Z",
+      "side": 1,
+      "message": "keep only one print at the end, its consuming memory\n\nt \u003d get_time().val;\n\nswitch() {\ncase xyz:\n   abc.def\u003d t;\n****\n}\n\nccprintf(\"Boot time: %d, %lld\\n\", param, t);",
+      "range": {
+        "startLine": 941,
+        "startChar": 0,
+        "endLine": 942,
+        "endChar": 23
+      },
+      "revId": "df668055cae1aae96450c0150092987cd005dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6571fe5f_e8ac7ef9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7658,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-30T01:50:57Z",
+      "side": 1,
+      "message": "remove\nsame for below lines",
+      "range": {
+        "startLine": 7658,
+        "startChar": 4,
+        "endLine": 7658,
+        "endChar": 9
+      },
+      "revId": "df668055cae1aae96450c0150092987cd005dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36ca7637_51999d59",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7658,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-07-30T01:50:57Z",
+      "side": 1,
+      "message": "boots\n\nsame for below lines",
+      "range": {
+        "startLine": 7658,
+        "startChar": 41,
+        "endLine": 7658,
+        "endChar": 53
+      },
+      "revId": "df668055cae1aae96450c0150092987cd005dadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
