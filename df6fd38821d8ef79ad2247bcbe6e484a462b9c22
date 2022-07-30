@@ -16,6 +16,24 @@
       "message": "avoid extern, define a function\n\nvoid update_boot_time(enum boot_time_param parm)\n{\n   swithc(param)\n   case RSMRST: \n          get_time()\n\netc etc",
       "revId": "df6fd38821d8ef79ad2247bcbe6e484a462b9c22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb5660b_69433ada",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-07-30T00:31:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11b0b8e3_7bf2fe3e",
+      "revId": "df6fd38821d8ef79ad2247bcbe6e484a462b9c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
