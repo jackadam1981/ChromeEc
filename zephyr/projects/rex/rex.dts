@@ -52,7 +52,7 @@
 };
 
 &i2c1_0 {
-	label = "I2C_PORT_USB_C0_TCPC";
+	label = "I2C_USB_C0_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 	pinctrl-0 = <&i2c1_0_sda_scl_gp87_90>;
@@ -60,7 +60,7 @@
 };
 
 &i2c2_0 {
-	label = "I2C_PORT_PPC0";
+	label = "I2C_PPC0";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 	pinctrl-0 = <&i2c2_0_sda_scl_gp91_92>;
@@ -68,7 +68,7 @@
 };
 
 &i2c3_0 {
-	label = "I2C_PORT_USB_C0_C2_MUX";
+	label = "I2C_USB_C0_C2_MUX";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 	pinctrl-0 = <&i2c3_0_sda_scl_gpd0_d1>;
@@ -76,7 +76,7 @@
 };
 
 &i2c4_1 {
-	label = "I2C_PORT_USB_C1_TCPC";
+	label = "I2_USB_C1_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 	pinctrl-0 = <&i2c4_1_sda_scl_gpf2_f3>;
@@ -84,7 +84,7 @@
 };
 
 &i2c5_0 {
-	label = "I2C_PORT_BATTERY";
+	label = "I2C__BATTERY";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 	pinctrl-0 = <&i2c5_0_sda_scl_gp33_36>;
@@ -92,7 +92,7 @@
 };
 
 &i2c6_1 {
-	label = "I2C_PORT_USB_1_MIX";
+	label = "I2C_USB_1_MIX";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 	pinctrl-0 = <&i2c6_1_sda_scl_gpe3_e4>;
@@ -100,7 +100,7 @@
 };
 
 &i2c7_0 {
-	label = "I2C_PORT_CHARGER";
+	label = "I2C_CHARGER";
 	clock-frequency = <I2C_BITRATE_FAST>;
 
 	pinctrl-0 = <&i2c7_0_sda_scl_gpb2_b3>;
