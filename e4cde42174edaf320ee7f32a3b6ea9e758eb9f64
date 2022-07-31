@@ -16,6 +16,24 @@
       "message": "I believe we need to raise the clocks before we can safely turn the GPADCs on again.  You could probably call the set_active_safe() function from here before checking the Vbus ADC",
       "revId": "e4cde42174edaf320ee7f32a3b6ea9e758eb9f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269dd61b_368cbdbd",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-07-31T23:36:34Z",
+      "side": 1,
+      "message": "I like that idea; it means we\u0027re just moving the call to `set_active_safe` up here from where it was before.",
+      "parentUuid": "08e0cba5_2272961f",
+      "revId": "e4cde42174edaf320ee7f32a3b6ea9e758eb9f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
