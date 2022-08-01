@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8a8cd3_ecc6c807",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 56
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-01T23:17:20Z",
+      "side": 1,
+      "message": "nit: we\u0027re up to 240W now as of PD 3.1 :)",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "997c576d3a037a40bcda1a0edd38ecd80add8a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27e0303_1c394691",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 56
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-01T23:17:20Z",
+      "side": 1,
+      "message": "nit: since I don\u0027t know of any of our platforms supporting this mode, it could be left to the reader to dive into the type-c spec if they care",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "997c576d3a037a40bcda1a0edd38ecd80add8a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
