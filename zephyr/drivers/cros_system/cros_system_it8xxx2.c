@@ -10,6 +10,7 @@
 #include <zephyr/logging/log.h>
 #include <soc.h>
 #include <soc/ite_it8xxx2/reg_def_cros.h>
+#include <zephyr/drivers/clock_control/it8xxx2_clock_control.h>
 
 #include "drivers/cros_system.h"
 #include "gpio/gpio_int.h"
