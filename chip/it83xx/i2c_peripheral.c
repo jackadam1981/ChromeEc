@@ -337,6 +337,10 @@ static void i2c_peripheral_init(void)
 	/* DLM 52k~56k size select enable */
 	IT83XX_GCTRL_MCCR2 |= (1 << 4);
 
+	pbuffer[0]= 0x11;
+	pbuffer[1]= 0x22;
+	pbuffer[2]= 0x33;
+	pbuffer[3]= 0x55;
 	/* Enable I2C Peripheral function */
 	for (i = 0; i < i2c_periphs_used; i++) {
 		/* I2c peripheral port mapping. */
