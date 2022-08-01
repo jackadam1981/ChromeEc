@@ -874,6 +874,11 @@ void sm5803_hibernate(int chgnum)
 		CPRINTS("%s %d: Failed to set hibernate", CHARGER_NAME, chgnum);
 }
 
+static const struct gpio_dt_spec trace_gpio = {
+	.port = DEVICE_DT_GET(DT_NODELABEL(gpiol)),
+	.pin = 2,
+};
+
 static void sm5803_disable_runtime_low_power_mode(void)
 {
 	enum ec_error_list rv;
@@ -899,6 +904,10 @@ static void sm5803_disable_runtime_low_power_mode(void)
 	if (rv)
 		CPRINTS("%s %d: Failed to set in disable runtime LPM",
 			CHARGER_NAME, chgnum);
+
+	if (chgnum == CHARGER_SECONDARY) {
+		gpio_pin_set_dt(&trace_gpio, 1);
+	}
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, sm5803_disable_runtime_low_power_mode,
 	     HOOK_PRIO_FIRST);
@@ -964,6 +973,10 @@ static void sm5803_enable_runtime_low_power_mode(void)
 		CPRINTS("%s %d: Failed to read REFERENCE reg", CHARGER_NAME,
 			chgnum);
 		return;
+	}
+
+	if (chgnum == CHARGER_SECONDARY) {
+		gpio_pin_set_dt(&trace_gpio, 0);
 	}
 
 	/*
