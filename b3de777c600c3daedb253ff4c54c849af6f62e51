@@ -16,6 +16,24 @@
       "message": "Caveh, is brya still performing merge commits or has it begun cherry-picking? ",
       "revId": "b3de777c600c3daedb253ff4c54c849af6f62e51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b5f898_efa68bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2022-08-01T18:06:21Z",
+      "side": 1,
+      "message": "Still merge commits at this point on the firmware branch. This change is applying to the factory branch and is affecting host side tools, though.\n\nThanks.",
+      "parentUuid": "b1648d66_32c780fb",
+      "revId": "b3de777c600c3daedb253ff4c54c849af6f62e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
