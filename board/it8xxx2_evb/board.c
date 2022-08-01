@@ -7,6 +7,7 @@
 #include "adc_chip.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "i2c_peripheral.h"
 
 /*
  * PWM channels. Must be in the exactly same order as in enum pwm_channel.
@@ -77,3 +78,12 @@ const struct adc_t adc_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* I2C slave address */
+#define I2C_SLAVE_ADDRA 0x52
+
+/* I2C slave ports */
+const struct i2c_periph_port_t i2c_periph_ports[] = {
+	{"evb-a", IT83XX_I2C_CH_A, I2C_SLAVE_ADDRA},
+};
+const unsigned int i2c_periphs_used = ARRAY_SIZE(i2c_periph_ports);

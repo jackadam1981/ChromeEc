@@ -11,6 +11,8 @@
 /* Select Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_I2C_PERIPHERAL
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
