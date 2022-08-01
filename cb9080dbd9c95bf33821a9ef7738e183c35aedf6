@@ -22,6 +22,30 @@
       },
       "revId": "cb9080dbd9c95bf33821a9ef7738e183c35aedf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8051f70_18b863dc",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-01T07:53:25Z",
+      "side": 1,
+      "message": "No. In this case the transport is UART, so `cros_fp` is missing and can only be recovered with a reboot.",
+      "parentUuid": "1c343fb0_4b9a4c36",
+      "range": {
+        "startLine": 486,
+        "startChar": 4,
+        "endLine": 486,
+        "endChar": 11
+      },
+      "revId": "cb9080dbd9c95bf33821a9ef7738e183c35aedf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
