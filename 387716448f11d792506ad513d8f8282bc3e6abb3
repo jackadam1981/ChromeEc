@@ -106,6 +106,24 @@
       "parentUuid": "ba189030_2e747366",
       "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e00a96_3978da20",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-01T00:45:33Z",
+      "side": 1,
+      "message": "It seemed quicker to make those changes myself, so I\u0027ve made them in this latest patchset.",
+      "parentUuid": "80f085c2_dbfacbe0",
+      "revId": "387716448f11d792506ad513d8f8282bc3e6abb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
