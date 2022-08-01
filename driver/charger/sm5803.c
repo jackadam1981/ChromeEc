@@ -472,6 +472,11 @@ static void init_mutexes(void)
 DECLARE_HOOK(HOOK_INIT, init_mutexes, HOOK_PRIO_FIRST);
 #endif
 
+static const struct gpio_dt_spec trace_gpio = {
+	.port = DEVICE_DT_GET(DT_NODELABEL(gpiol)),
+	.pin = 2,
+};
+
 static void sm5803_init(int chgnum)
 {
 	enum ec_error_list rv;
@@ -480,6 +485,8 @@ static void sm5803_init(int chgnum)
 	const struct battery_info *batt_info;
 	int pre_term;
 	int cells;
+
+	gpio_pin_configure_dt(&trace_gpio, GPIO_OUTPUT_HIGH);
 
 	/*
 	 * If a charger is not currently present, disable switching per OCPC
@@ -897,6 +904,10 @@ static void sm5803_disable_runtime_low_power_mode(void)
 	if (rv)
 		CPRINTS("%s %d: Failed to set in disable runtime LPM",
 			CHARGER_NAME, chgnum);
+
+	if (chgnum == CHARGER_SECONDARY) {
+		gpio_pin_set_dt(&trace_gpio, 1);
+	}
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, sm5803_disable_runtime_low_power_mode,
 	     HOOK_PRIO_FIRST);
@@ -962,6 +973,10 @@ static void sm5803_enable_runtime_low_power_mode(void)
 		CPRINTS("%s %d: Failed to read REFERENCE reg", CHARGER_NAME,
 			chgnum);
 		return;
+	}
+
+	if (chgnum == CHARGER_SECONDARY) {
+		gpio_pin_set_dt(&trace_gpio, 0);
 	}
 
 	/*
