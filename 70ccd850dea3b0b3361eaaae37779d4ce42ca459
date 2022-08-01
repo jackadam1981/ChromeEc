@@ -67,6 +67,24 @@
       "message": "This is a little incongruous to me, and I\u0027m having some trouble getting my head around it.\nConditionally compiling HDMI support for an optional sub-board type may be\nbetter handled by having a separate nissa/src/hdmi.c, and remove HDMI references\nfrom this file, and having a separate HOOK_INIT in the other file for HDMI init.",
       "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bcfea4b_233e99af",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-01T22:52:04Z",
+      "side": 1,
+      "message": "I think there\u0027s value in keeping all the sub-board configuration in the same place, since they all operate on the same few resources so it\u0027s easier to reason about what it\u0027s doing.\n\nThis is conditionally compiled because some boards don\u0027t define the GPIO aliases, so what if we added a `GPIO_DT_FROM_ALIAS_OR` macro that allows it to still be built but early-return if used for some reason?",
+      "parentUuid": "e36f46a7_6a6a01bd",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
