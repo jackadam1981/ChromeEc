@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10480165_758031c2",
+        "filename": "zephyr/projects/nissa/nereid/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-01T22:20:31Z",
+      "side": 1,
+      "message": "I think we can early-return here if `old_port \u003d\u003d port` instead, which will behave more predictably.\n\n`charger_discharge_on_ac` just calls `sm5803_vbus_sink_enable` in this configuration, so not returning here will end up just re-enabling VBUS sinking twice on the same port.",
+      "revId": "9a8c142e531bea770c1c591b9cd8e158db94ed4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
