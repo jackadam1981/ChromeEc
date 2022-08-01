@@ -92,6 +92,10 @@
 	};
 
 	named-gpios {
+		c1_lpm_trace {
+			gpios = <&gpiol 2 GPIO_OUTPUT>;
+		};
+
 		/*
 		 * EC doesn't take any specific action on CC/SBU disconnect due to
 		 * fault, but this definition is useful for hardware testing.
