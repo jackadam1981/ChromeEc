@@ -34,6 +34,19 @@
 #include "panic.h"
 #include "usb_pd.h"
 
+
+#include "common.h"
+#include "console.h"
+#include "usb_common.h"
+#include "usb_pd_timer.h"
+#include "usb_pe_sm.h"
+#include "usb_tc_sm.h"
+#include "util.h"
+#include "config.h"
+#include "usb_pd_pdo.h"
+#include "usb_pd_tcpm.h"
+#include "charge_manager.h"
+
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
 
@@ -54,6 +67,10 @@ enum {
 	OPT_I2C_BUS,
 	OPT_DEVICE,
 };
+extern void pd_request_source_voltage(int port, int mv);
+extern unsigned pd_get_max_voltage(void);
+extern void pd_dpm_request(int port, enum pd_dpm_request req);
+
 
 static struct option long_opts[] = { { "dev", 1, 0, OPT_DEV },
 				     { "interface", 1, 0, OPT_INTERFACE },
@@ -2825,6 +2842,31 @@ pd_flash_error:
 
 int cmd_pd_set_amode(int argc, char *argv[])
 {
+	int port=0;
+	int max_volt;
+	char *e;
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE)) {
+		if (argc < 4) {
+			fprintf(stderr, "Usage: %s <port> <dev> <max_volt>\n",
+				argv[0]);
+			return -1;
+		}
+
+		if (argc == 3) {
+			max_volt = strtol(argv[3], &e, 10) * 1000;
+			fprintf(stderr,"max req: %dmV\n", max_volt);
+			if (max_volt < 0 )
+				return EC_ERROR_PARAM3;
+		} else {
+			max_volt = pd_get_max_voltage();
+		}
+		pd_request_source_voltage(port, max_volt);
+		pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
+		fprintf(stderr,"max req: %dmV\n", max_volt);
+	}
+	return 0;
+
+#if 0
 	char *e;
 	struct ec_params_usb_pd_set_mode_request *p =
 		(struct ec_params_usb_pd_set_mode_request *)ec_outbuf;
@@ -2859,6 +2901,8 @@ int cmd_pd_set_amode(int argc, char *argv[])
 		return -1;
 	}
 	return ec_command(EC_CMD_USB_PD_SET_AMODE, 0, p, sizeof(*p), NULL, 0);
+#endif
+
 }
 
 int cmd_pd_get_amode(int argc, char *argv[])
