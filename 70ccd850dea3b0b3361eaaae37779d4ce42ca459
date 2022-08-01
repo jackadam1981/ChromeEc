@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3e2e2c_060ab70d",
+        "filename": "zephyr/projects/nissa/include/nissa_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-01T03:22:53Z",
+      "side": 1,
+      "message": "Maybe move the HDMI specific calls to include/nissa_hdmi.h\nThen it can be included only in boards that support HDMI sub-board.",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac95baba_4bf3d9e0",
+        "filename": "zephyr/projects/nissa/nereid/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-01T03:22:53Z",
+      "side": 1,
+      "message": "Maybe the file should be named nereid/src/hdmi.c",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae40f8ef_a3164c06",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-01T03:22:53Z",
+      "side": 1,
+      "message": "Maybe we should also have nissa/src/hdmi.c and only include that for boards that require it.\nI think that allows a clearer selection (and avoids more conditional compilation)",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36f46a7_6a6a01bd",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-01T03:22:53Z",
+      "side": 1,
+      "message": "This is a little incongruous to me, and I\u0027m having some trouble getting my head around it.\nConditionally compiling HDMI support for an optional sub-board type may be\nbetter handled by having a separate nissa/src/hdmi.c, and remove HDMI references\nfrom this file, and having a separate HOOK_INIT in the other file for HDMI init.",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
