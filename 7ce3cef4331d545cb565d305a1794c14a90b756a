@@ -22,6 +22,30 @@
       },
       "revId": "7ce3cef4331d545cb565d305a1794c14a90b756a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19ffbd3_1c490b30",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-08-01T17:29:08Z",
+      "side": 1,
+      "message": "`reg` is register address selected by the last write message. In this case it is register that will be read in the following read message.\n\nReading register requires write message followed by read message: `write_message(ISL923X_REG_CHG_CURRENT) (isl923x_emul_finish_write executed between messages with bytes \u003d\u003d 1 and reg \u003d\u003d ISL923X_REG_CHG_CURRENT) read_message(2 bytes, emulator register value)`.\n\nWriting register requires only one message: `write_message(ISL923X_REG_CHG_CURRENT + 2 bytes with data to be written) (isl923x_emul_finish_write executed with bytes \u003d\u003d 3 and reg \u003d\u003d ISL923X_REG_CHG_CURRENT)`",
+      "parentUuid": "aba02c6d_1d2f0aa4",
+      "range": {
+        "startLine": 378,
+        "startChar": 64,
+        "endLine": 378,
+        "endChar": 67
+      },
+      "revId": "7ce3cef4331d545cb565d305a1794c14a90b756a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
