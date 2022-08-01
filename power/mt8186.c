@@ -493,6 +493,7 @@ DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_changed, HOOK_PRIO_DEFAULT);
 __override void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 {
 	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(hang_detect), 1);
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
 }
 
@@ -510,6 +511,7 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 		 */
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
 		sleep_start_suspend(ctx);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(suspend_rdy), 1);
 
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
 		/*
@@ -519,6 +521,7 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 		sleep_set_notify(SLEEP_NOTIFY_RESUME);
 		task_wake(TASK_ID_CHIPSET);
 		sleep_complete_resume(ctx);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(suspend_rdy), 0);
 	}
 }
 #endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */

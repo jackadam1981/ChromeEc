@@ -149,6 +149,12 @@
 			gpios = <&gpiod 4 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_PACKET_MODE_EN";
 		};
+		suspend_rdy: suspend_rdy {
+			gpios = <&gpiod 7 GPIO_OUTPUT_LOW>;
+		};
+		hang_detect: hang_detect {
+			gpios = <&gpioh 6 GPIO_OUTPUT_LOW>;
+		};
 	};
 
 	/*
