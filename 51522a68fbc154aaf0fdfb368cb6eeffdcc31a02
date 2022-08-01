@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ecd4afc_ec051944",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-01T19:30:17Z",
+      "side": 1,
+      "message": "Can we enforce this by using an _ASSERT_NO_MSG on the charger_emul?\n\nWe can access the device of a struct emul type by emul-\u003edev to confirm it\u0027s the emulator for the device we\u0027re looking for.",
+      "revId": "51522a68fbc154aaf0fdfb368cb6eeffdcc31a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d0917b2_faadda01",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-01T19:30:17Z",
+      "side": 1,
+      "message": "See above.",
+      "revId": "51522a68fbc154aaf0fdfb368cb6eeffdcc31a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
