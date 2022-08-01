@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a397a08_fad1abe9",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 45
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-08-01T15:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e48cd2fc_571df143",
+      "range": {
+        "startLine": 224,
+        "startChar": 37,
+        "endLine": 224,
+        "endChar": 38
+      },
+      "revId": "1a0442e8dc25b1da22c012d0cb44020692624bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08c77fca_c0d1c30a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-08T19:23:39Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "1a0442e8dc25b1da22c012d0cb44020692624bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4921f8da_d42e51dc",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 45
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-08-01T15:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c77fca_c0d1c30a",
       "range": {
         "startLine": 7,
         "startChar": 11,
