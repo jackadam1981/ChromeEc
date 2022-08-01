@@ -39,6 +39,30 @@
       },
       "revId": "422429d8e1d21077fae06fc801cebabedcec3c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71599426_2c7e01ef",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-01T09:41:29Z",
+      "side": 1,
+      "message": "The binding of the Sm5803 driver to the second port type-c is too strong.\nWe need to change huge codes to remove the second port type-c from Sm5803 driver.\nThe later CL:3775278 will use board_get_usb_pd_port_count to override it.",
+      "parentUuid": "32de79b8_43eed83d",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 19
+      },
+      "revId": "422429d8e1d21077fae06fc801cebabedcec3c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
