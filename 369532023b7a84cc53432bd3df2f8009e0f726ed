@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f187d40e_80aafae7",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-08-02T15:27:55Z",
+      "side": 1,
+      "message": "nit: these used mixed spaces/tabs for indent, can you follow the style in this file?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 44
+      },
+      "revId": "369532023b7a84cc53432bd3df2f8009e0f726ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

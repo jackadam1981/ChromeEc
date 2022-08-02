@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7965d365_fe4ee6de",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-08-02T15:27:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa8b11fb_bd461ae1",
+      "revId": "9ec10dfe3a5d60ed8ca89cac19a25d22f6dc6461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ccd9239_7ce000f7",
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "didnot add, as there seems no check for the read pass check in other already existing functions in this file.",
       "parentUuid": "49389b2c_57c1cce7",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 33
+      },
+      "revId": "9ec10dfe3a5d60ed8ca89cac19a25d22f6dc6461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa3ab15_02e3975e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-08-02T15:27:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26344f50_918c0c45",
       "range": {
         "startLine": 383,
         "startChar": 0,
