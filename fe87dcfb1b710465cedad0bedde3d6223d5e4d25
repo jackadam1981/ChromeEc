@@ -39,6 +39,30 @@
       },
       "revId": "fe87dcfb1b710465cedad0bedde3d6223d5e4d25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea30d6d2_92e41d9a",
+        "filename": "zephyr/test/drivers/src/utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-02T15:30:01Z",
+      "side": 1,
+      "message": "Yep. Code\u0027s been removed though in favor of test_set_chipset_to_g3.",
+      "parentUuid": "ce1c60ad_5efaaa18",
+      "range": {
+        "startLine": 455,
+        "startChar": 10,
+        "endLine": 455,
+        "endChar": 11
+      },
+      "revId": "fe87dcfb1b710465cedad0bedde3d6223d5e4d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
