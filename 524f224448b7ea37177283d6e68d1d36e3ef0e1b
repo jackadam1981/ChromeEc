@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f06fe1f_f9c63a18",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-08-02T21:22:09Z",
+      "side": 1,
+      "message": "I seem to remember a unit test for this. Does that still exists? If so can you add a unit test for this new code please?",
+      "range": {
+        "startLine": 301,
+        "startChar": 11,
+        "endLine": 301,
+        "endChar": 22
+      },
+      "revId": "524f224448b7ea37177283d6e68d1d36e3ef0e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
