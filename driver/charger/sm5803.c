@@ -169,11 +169,10 @@ static int sm5803_set_active_safe(int chgnum)
 	 * This should occur first because enabling GPADCs with clocks slowed
 	 * can cause spurious acquisition.
 	 */
+	/* Experiment: always run the clocks slow */
 	rv = main_read8(chgnum, SM5803_REG_CLOCK_SEL, &val);
-	if (rv == 0 && val & SM5803_CLOCK_SEL_LOW) {
-		rv = main_write8(chgnum, SM5803_REG_CLOCK_SEL,
-				 val & ~SM5803_CLOCK_SEL_LOW);
-	}
+	rv |= main_write8(chgnum, SM5803_REG_CLOCK_SEL,
+			  val | SM5803_CLOCK_SEL_LOW);
 	if (rv) {
 		goto out;
 	}
