@@ -22,6 +22,30 @@
       },
       "revId": "85e1b27c29a4bc5791bbc91cdfc483c8d00eb6ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0a8e194_d7a2eb4d",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-02T09:05:27Z",
+      "side": 1,
+      "message": "Done\n\nlooks like a good task for the fixit week",
+      "parentUuid": "cf3486a3_d24061db",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "85e1b27c29a4bc5791bbc91cdfc483c8d00eb6ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
