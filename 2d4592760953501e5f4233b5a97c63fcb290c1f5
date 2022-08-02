@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce675a7_2e211ffc",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-08-02T01:47:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5675eff_f1eb1720",
+      "range": {
+        "startLine": 1522,
+        "startChar": 7,
+        "endLine": 1522,
+        "endChar": 40
+      },
+      "revId": "2d4592760953501e5f4233b5a97c63fcb290c1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2c473cd_2f946ba9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-01T16:19:05Z",
       "side": 1,
       "message": "CONFIG_USBC_NX20P348X_RCP_5VSRC_MASK_ENABLE",
+      "range": {
+        "startLine": 1524,
+        "startChar": 8,
+        "endLine": 1524,
+        "endChar": 41
+      },
+      "revId": "2d4592760953501e5f4233b5a97c63fcb290c1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c4138b1_86bd4236",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2022-08-02T01:47:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2c473cd_2f946ba9",
       "range": {
         "startLine": 1524,
         "startChar": 8,
