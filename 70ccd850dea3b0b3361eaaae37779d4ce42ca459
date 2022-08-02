@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4459acdf_2e9caa37",
+        "filename": "zephyr/projects/nissa/include/nissa_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-02T00:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e3e2e2c_060ab70d",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac95baba_4bf3d9e0",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d95e83a_d964b316",
+        "filename": "zephyr/projects/nissa/nereid/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-02T00:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac95baba_4bf3d9e0",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae40f8ef_a3164c06",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-01T03:22:53Z",
       "side": 1,
       "message": "Maybe we should also have nissa/src/hdmi.c and only include that for boards that require it.\nI think that allows a clearer selection (and avoids more conditional compilation)",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6750a1e_fa1c056f",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-02T00:58:52Z",
+      "side": 1,
+      "message": "The same thing applies as on the lower block: I prefer to keep this in the same file so it\u0027s easier to reason about how sub-board configuration varies.",
+      "parentUuid": "ae40f8ef_a3164c06",
       "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -101,6 +155,24 @@
       "side": 1,
       "message": "It\u0027s a tradeoff, and at some point it might make sense to split the HDMI handling out if more boards are not supporting it. Happy to leave it in the same file for now, if that\u0027s what you think is best.\n\nSo I am not sure why some boards haven\u0027t added the aliases. The easiest fix is\nmaybe just add the aliases so it is consistent (the DTS contract here is that\nany of these gpios should go through an alias).\nIf it\u0027s the situation that these boards don\u0027t use HDMI, then maybe that code should be conditionally compiled using the NISSA_BOARD_HAS_HDMI_SUPPORT guard.",
       "parentUuid": "1bcfea4b_233e99af",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bab4aa_18362103",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-02T00:58:52Z",
+      "side": 1,
+      "message": "Xivu doesn\u0027t support HDMI at all, so it doesn\u0027t define those IOs. It would be wrong to add them. The `BOARD_HAS_HDMI_SUPPORT` guard is currently set based on whether the aliases exist, so I think that does what you\u0027re thinking.\n\nI prefer to leave it like this for now, but we might revisit later.",
+      "parentUuid": "ad7f35df_1a0287f2",
       "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
