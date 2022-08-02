@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2106fb_1caac427",
+        "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-02T00:51:05Z",
+      "side": 1,
+      "message": "Can you collapse these 3 ifdefs into a single ifdef that includes all 3 files?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "5dd6087b2adc5d57a78db68ebfe0be6fd430369d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9b84d2_6f380cce",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-02T00:51:05Z",
+      "side": 1,
+      "message": "Maybe \u0027to enter or exit Sleep state\u0027",
+      "revId": "5dd6087b2adc5d57a78db68ebfe0be6fd430369d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a8972c_384d3a5d",
+        "filename": "zephyr/subsys/ap_pwrseq/include/ap_power_host_sleep.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-02T00:51:05Z",
+      "side": 1,
+      "message": "So my main feedback here is that I think this wires in these calls too much into the core state machine unnecessarily, since these are only enabled conditionally.\n\nI suggest adding some extra ap_power events that can be used to signal these\nevents (in include/ap_power/ap_power.h), say:\n AP_POWER_S0IX_SUSPEND, AP_POWER_S0IX_RESUME\n Not sure if you need some extra ones like _S0IX_RESUME_COMPLETE or something like that.\n \n The core code can then use ap_power_ev_send_callbacks to send multiple events as needed.\n \n You may even be able to collapse the ap_power_sleep_set_notify functionality\n into the same events.\n \n Then, you can have a separate file that is conditionally included if this sleep checker is required, and this code can add itself via a SYS_INIT hook, and\n add a callback for the relevant events.\n This file can be completely separate from the core code, and just rely on the\n callbacks for being notified, without having to wire in the explicit calls.",
+      "revId": "5dd6087b2adc5d57a78db68ebfe0be6fd430369d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
