@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97556687_cff36227",
+        "filename": "zephyr/projects/nissa/include/nissa_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-02T01:16:17Z",
+      "side": 1,
+      "message": "This portion should have been moved to nissa_hdmi.h?",
+      "revId": "cd52b4f16447eb9757a7906230e86145f62b27c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9253685d_569b8574",
+        "filename": "zephyr/projects/nissa/include/nissa_hdmi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-02T01:16:17Z",
+      "side": 1,
+      "message": "COMMON -\u003e HDMI",
+      "revId": "cd52b4f16447eb9757a7906230e86145f62b27c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
