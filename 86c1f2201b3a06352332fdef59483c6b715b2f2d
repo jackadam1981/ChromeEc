@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d46d895_6a034f11",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-08-02T15:29:51Z",
+      "side": 1,
+      "message": "I think this can be\n```\n\tif (IS_ENABLED(CONFIG_BATTERY_DBPT_V2PLUS))\n\t\tinit_dbpt();\n```\n(no #ifdef)",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 6
+      },
+      "revId": "86c1f2201b3a06352332fdef59483c6b715b2f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

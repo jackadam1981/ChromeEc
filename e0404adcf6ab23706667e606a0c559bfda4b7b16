@@ -46,6 +46,30 @@
       },
       "revId": "e0404adcf6ab23706667e606a0c559bfda4b7b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49b8611_fd81d3cf",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-08-02T15:29:51Z",
+      "side": 1,
+      "message": "Right, so the #ifdefs should be unnecessary.",
+      "parentUuid": "fddc94f1_eb1925dc",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 39
+      },
+      "revId": "e0404adcf6ab23706667e606a0c559bfda4b7b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
