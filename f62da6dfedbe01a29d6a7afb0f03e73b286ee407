@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff63113_f75b3c6c",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5055,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-08-02T05:13:24Z",
+      "side": 1,
+      "message": "lines 5047-5055 are listing all the different PPC chips. Please add an empty line between this list and CONFIG_USBC_NX20P348X_RCP_5VSRC_MASK_ENABLE. Please add a one-line comment (look at examples below)",
+      "revId": "f62da6dfedbe01a29d6a7afb0f03e73b286ee407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
