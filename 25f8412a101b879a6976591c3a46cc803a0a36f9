@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c769c279_ff264710",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-02T21:04:14Z",
+      "side": 1,
+      "message": "I am referring 650-09105-01-SCH rve 1.04.\n\nR329\u003d0.005 \u0026 R307\u003d0.01\nso 5 \u0026 10 respectively?\n10 \u0026 20 will also behaves same but it will be clean to use 5 \u0026 10.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 47
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3911cc76_8d74295e",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-02T21:04:14Z",
+      "side": 1,
+      "message": "typo?\n15W \u003d 15000",
+      "range": {
+        "startLine": 66,
+        "startChar": 53,
+        "endLine": 66,
+        "endChar": 58
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4779e16_71dab7ad",
         "filename": "zephyr/projects/rex/prj.conf",
         "patchSetId": 1
