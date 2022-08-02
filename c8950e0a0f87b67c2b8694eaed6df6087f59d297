@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5a2b10_aa907eab",
+        "filename": "zephyr/test/drivers/common/src/utils.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-02T17:47:25Z",
+      "side": 1,
+      "message": "nit: \"ix923x\" should be \"isl923x\"",
+      "range": {
+        "startLine": 139,
+        "startChar": 37,
+        "endLine": 139,
+        "endChar": 39
+      },
+      "revId": "c8950e0a0f87b67c2b8694eaed6df6087f59d297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
