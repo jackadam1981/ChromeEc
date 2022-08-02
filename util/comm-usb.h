@@ -34,4 +34,8 @@ int comm_init_usb(uint16_t vid, uint16_t pid);
  */
 void comm_usb_exit(void);
 
+<<<<<<< HEAD   (0c8b23 taniks: rgbkbd: Add rgb keyboard type field)
 #endif  /* __UTIL_COMM_USB_H */
+=======
+#endif /* __UTIL_COMM_USB_H */
+>>>>>>> BRANCH (ca9e23 zephyr: test: bc12: Clear AC enabled pin after test)
