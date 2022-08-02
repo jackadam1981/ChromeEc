@@ -219,10 +219,17 @@ int usb_i2c_board_is_enabled(void) { return 1; }
 static struct usart_config const usart1;
 struct usb_stream_config const usart1_usb;
 
+<<<<<<< HEAD   (06f1d9 Clear OWNERS for factory/firmware branch)
 static struct queue const usart1_to_usb = QUEUE_DIRECT(128, uint8_t,
 	usart1.producer, usart1_usb.consumer);
 static struct queue const usb_to_usart1 = QUEUE_DIRECT(64, uint8_t,
 	usart1_usb.producer, usart1.consumer);
+=======
+static struct queue const usart1_to_usb =
+	QUEUE_DIRECT(1024, uint8_t, usart1.producer, usart1_usb.consumer);
+static struct queue const usb_to_usart1 =
+	QUEUE_DIRECT(64, uint8_t, usart1_usb.producer, usart1.consumer);
+>>>>>>> CHANGE (e55cc5 c2d2: increase the usart1_to_usb size)
 
 static struct usart_rx_dma const usart1_rx_dma =
 	USART_RX_DMA(STM32_DMAC_CH5, 32);
