@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a7c60f0_5877513f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T22:29:12Z",
+      "side": 1,
+      "message": "keep",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "df5822d304de2d1db4c9156758b28a82bf4acd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e6482ec8_4eb8a22f",
@@ -14,6 +37,75 @@
       "writtenOn": "2022-08-02T17:51:47Z",
       "side": 1,
       "message": "Adding Keith for some additional CMake experience.",
+      "revId": "df5822d304de2d1db4c9156758b28a82bf4acd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8ff073_3f580983",
+        "filename": "zephyr/share/cros-package/cmake/CrosConfig.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T22:29:12Z",
+      "side": 1,
+      "message": "Nit - line length. Moving the src/dst files to the next line improves readability.",
+      "range": {
+        "startLine": 14,
+        "startChar": 37,
+        "endLine": 14,
+        "endChar": 113
+      },
+      "revId": "df5822d304de2d1db4c9156758b28a82bf4acd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3470802_8f5012f4",
+        "filename": "zephyr/test/math/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T22:29:12Z",
+      "side": 1,
+      "message": "You probably want to add a dependency here. `zephyr_file_copy(\u003coldname\u003e \u003cnewname\u003e [ONLY_IF_DIFFERENT])` may also do what you want.  Presumable the dependency file created for math_util.c, will correctly have a dependency on `${CMAKE_BINARY_DIR}/include/math_util.h`",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "df5822d304de2d1db4c9156758b28a82bf4acd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a9af8d_31d515ac",
+        "filename": "zephyr/test/math/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T22:29:12Z",
+      "side": 1,
+      "message": "2 spaces for indent.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 49
+      },
       "revId": "df5822d304de2d1db4c9156758b28a82bf4acd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
