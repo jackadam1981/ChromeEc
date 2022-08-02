@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "665fe3bc_8b750845",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-02T20:27:18Z",
+      "side": 1,
+      "message": "Hi Li, can you please check if we need to add glitch removal logic in native code for Rex?",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0c39e46_407d5d94",
         "filename": "zephyr/projects/rex/src/board_power.c",
         "patchSetId": 2
