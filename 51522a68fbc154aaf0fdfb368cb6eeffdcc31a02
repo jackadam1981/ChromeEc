@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83ab868_a9167b77",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-02T16:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ecd4afc_ec051944",
+      "revId": "51522a68fbc154aaf0fdfb368cb6eeffdcc31a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d0917b2_faadda01",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-01T19:30:17Z",
       "side": 1,
       "message": "See above.",
+      "revId": "51522a68fbc154aaf0fdfb368cb6eeffdcc31a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f280fc22_4e27b3b1",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-02T16:40:43Z",
+      "side": 1,
+      "message": "Turns out this comment is only relevant to the source disconnect, so removing it",
+      "parentUuid": "5d0917b2_faadda01",
       "revId": "51522a68fbc154aaf0fdfb368cb6eeffdcc31a02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
