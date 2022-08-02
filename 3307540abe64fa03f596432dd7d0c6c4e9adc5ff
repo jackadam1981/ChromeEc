@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce75fe48_bd774204",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-08-02T15:33:02Z",
+      "side": 1,
+      "message": "I believe there is a parenthesis missing here",
+      "range": {
+        "startLine": 236,
+        "startChar": 48,
+        "endLine": 236,
+        "endChar": 50
+      },
+      "revId": "3307540abe64fa03f596432dd7d0c6c4e9adc5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
