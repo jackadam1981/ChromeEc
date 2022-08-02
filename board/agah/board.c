@@ -15,6 +15,7 @@
 #include "hooks.h"
 #include "fw_config.h"
 #include "hooks.h"
+#include "keyboard_8042_sharedlib.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power_button.h"
@@ -73,6 +74,13 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_ODL);
 
 	nvidia_gpu_init_policy(d_notify_policies);
+
+	/*
+	 * If keyboard is US2(KB_LAYOUT_1), we need translate right ctrl
+	 * to backslash(\|) key.
+	 */
+	if (get_ec_cfg_keyboard_layout() == KB_LAYOUT_1)
+		set_scancode_set2(4, 0, get_scancode_set2(2, 7));
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

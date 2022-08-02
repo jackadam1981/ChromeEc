@@ -19,14 +19,25 @@ enum ec_cfg_keyboard_backlight_type {
 	KEYBOARD_BACKLIGHT_ENABLED = 1
 };
 
+enum ec_cfg_keyboard_layout { KB_LAYOUT_DEFAULT = 0, KB_LAYOUT_1 = 1 };
+
 union agah_cbi_fw_config {
 	struct {
+		uint32_t sd_db : 2;
 		enum ec_cfg_keyboard_backlight_type kb_bl : 1;
 		uint32_t audio : 3;
-		uint32_t reserved_1 : 21;
+		enum ec_cfg_keyboard_layout kb_layout : 2;
+		uint32_t reserved_1 : 24;
 	};
 	uint32_t raw_value;
 };
+
+/**
+ * Get keyboard type from FW_CONFIG.
+ *
+ * @return the keyboard type.
+ */
+enum ec_cfg_keyboard_layout get_ec_cfg_keyboard_layout(void);
 
 /**
  * Read the cached FW_CONFIG.  Guaranteed to have valid values.

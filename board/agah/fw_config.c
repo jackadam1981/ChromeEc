@@ -38,3 +38,8 @@ union agah_cbi_fw_config get_fw_config(void)
 {
 	return fw_config;
 }
+
+enum ec_cfg_keyboard_layout get_ec_cfg_keyboard_layout(void)
+{
+	return fw_config.kb_layout;
+}
