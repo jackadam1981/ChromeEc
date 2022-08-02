@@ -881,11 +881,10 @@ void sm5803_hibernate(int chgnum)
 		CPRINTS("%s %d: Failed to set hibernate", CHARGER_NAME, chgnum);
 }
 
-static void sm5803_disable_runtime_low_power_mode(void)
+static void sm5803_disable_runtime_low_power_mode_on(int chgnum)
 {
 	enum ec_error_list rv;
 	int reg;
-	int chgnum = TASK_ID_TO_PD_PORT(task_get_current());
 
 	CPRINTS("%s %d: disable runtime low power mode", CHARGER_NAME, chgnum);
 	rv = main_read8(chgnum, SM5803_REG_REFERENCE, &reg);
@@ -910,6 +909,12 @@ static void sm5803_disable_runtime_low_power_mode(void)
 	if (chgnum == CHARGER_SECONDARY) {
 		gpio_pin_set_dt(&trace_gpio, 1);
 	}
+}
+
+static void sm5803_disable_runtime_low_power_mode(void)
+{
+	int chgnum = TASK_ID_TO_PD_PORT(task_get_current());
+	sm5803_disable_runtime_low_power_mode_on(chgnum);
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, sm5803_disable_runtime_low_power_mode,
 	     HOOK_PRIO_FIRST);
@@ -963,11 +968,10 @@ static enum ec_error_list sm5803_enable_linear_charge(int chgnum, bool enable)
 	return rv;
 }
 
-static void sm5803_enable_runtime_low_power_mode(void)
+static void sm5803_enable_runtime_low_power_mode_on(int chgnum)
 {
 	enum ec_error_list rv;
 	int reg;
-	int chgnum = TASK_ID_TO_PD_PORT(task_get_current());
 
 	CPRINTS("%s %d: enable runtime low power mode", CHARGER_NAME, chgnum);
 	rv = main_read8(chgnum, SM5803_REG_REFERENCE, &reg);
@@ -1018,6 +1022,12 @@ static void sm5803_enable_runtime_low_power_mode(void)
 	if (rv)
 		CPRINTS("%s %d: Failed to set in enable runtime LPM",
 			CHARGER_NAME, chgnum);
+}
+
+static void sm5803_enable_runtime_low_power_mode(void)
+{
+	int chgnum = TASK_ID_TO_PD_PORT(task_get_current());
+	sm5803_enable_runtime_low_power_mode_on(chgnum);
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, sm5803_enable_runtime_low_power_mode,
 	     HOOK_PRIO_LAST);
@@ -2070,3 +2080,32 @@ const struct charger_drv sm5803_drv = {
 	.dump_registers = &command_sm5803_dump,
 #endif
 };
+
+static int console_set_lpm(int argc, char **argv)
+{
+	char *e;
+	int chgnum, to_lpm;
+
+	if (argc == 3) {
+		chgnum = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+		chgnum = chgnum == 0 ? CHARGER_PRIMARY : CHARGER_SECONDARY;
+
+		to_lpm = strtoi(argv[2], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM2;
+
+		if (to_lpm) {
+			sm5803_enable_runtime_low_power_mode_on(chgnum);
+		} else {
+			sm5803_disable_runtime_low_power_mode_on(chgnum);
+		}
+	} else {
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sm5803lpm, console_set_lpm, "chgnum enable",
+			"Set SM5803 in or out of runtime LPM");
