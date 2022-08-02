@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0000532a_52e6f3f6",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "Delete.  Because this isn\u0027t an acronym, this can just be \"Retimer\"",
+      "range": {
+        "startLine": 189,
+        "startChar": 6,
+        "endLine": 189,
+        "endChar": 16
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c5c8cc_a54913ff",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "Add a header to this list \"See the [EC Acronyms and Technologies] (../ec_terms.md) document for definitions for the following terms:\"",
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e0fd83_8865edbe",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "Retimer",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381cc30c_e2d48208",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "Is there a specific order a user should configure each of these sub-components?  In other words, what is the minimum a user must enable to turn on USB-C and power delivery?\n\nAlso, is it ever possible to enable USB-C support without power delivery?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 77
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a8110b_830a58c5",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "Use the document title text here instead [Zephyr EC PD Configuration].  Although, I prefer \"Zephyr EC Power Delivery Configuration\".",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8903919_e577c021",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "[Zephyr EC PPC Configuration] do the same for all sub-components.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67534019_7883263c",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "Combine the retimer and SS mux sections, because there is so much overlap.",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7afa23_de76aa30",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "This section seems to be a duplicate of the Zephyr EC PD Configuration.\n\nIf USB-C always requires PD, then the overall devicetree example should be here.  Otherwise only show this example in the PD section.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0972926_de15f81f",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-02T20:28:49Z",
+      "side": 1,
+      "message": "Note - bc12 devices have moved onto the I2C bus.  And all the other USB-C chips will be moving to the I2C bus soon.  The \"named-usbc-port\" will only contain phandle references to the devices.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
