@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4779e16_71dab7ad",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-02T05:33:08Z",
+      "side": 1,
+      "message": "nit: trailing whiteline",
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82f780b_0d9ba328",
+        "filename": "zephyr/projects/rex/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-02T05:33:08Z",
+      "side": 1,
+      "message": "add braces (zephyr style), same below in pd_set_power_supply_ready()",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f210dac_530b15c0",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-02T05:33:08Z",
+      "side": 1,
+      "message": "how about flipping the logic around here to have validation at the start and unindent the rest?\n\n```\nif (port !\u003d USBC_PORT_C0) {\n  return;\n}\nreset_gpio_l \u003d ...\n```\n\nassuming this code is always going to have only one port...",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e03b7e6_894e49ba",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-02T05:33:08Z",
+      "side": 1,
+      "message": "add braces",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 38
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53480bfd_789bb6c7",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-02T05:33:08Z",
+      "side": 1,
+      "message": "What about having a couple of top file #defines for these? It\u0027s fairly common to have stuff like\n\n#define GPIO_USB_C0_TCPC_INT_NODE GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_int_odl)\n#define GPIO_USB_C0_TCPC_RST_NODE GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst_odl)\n\nThinking it may make this code a bit more compact, save some line wrap and triple parenthesis.",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e21ada_8357404f",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-02T05:33:08Z",
+      "side": 1,
+      "message": "I would move this block in a separate function, save the triple-indentation.",
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48b488b_3141b493",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-02T05:33:08Z",
+      "side": 1,
+      "message": "you could change the condition here and save one level of indentation, make everything a bit more compact\n\nif (nct38xx_get_boot_type(i) !\u003d NCT38XX_BOOT_DEAD_BATTERY) {\n  continue;\n}\n...",
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
