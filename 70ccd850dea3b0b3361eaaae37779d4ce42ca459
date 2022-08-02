@@ -85,6 +85,24 @@
       "parentUuid": "e36f46a7_6a6a01bd",
       "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7f35df_1a0287f2",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-02T00:34:42Z",
+      "side": 1,
+      "message": "It\u0027s a tradeoff, and at some point it might make sense to split the HDMI handling out if more boards are not supporting it. Happy to leave it in the same file for now, if that\u0027s what you think is best.\n\nSo I am not sure why some boards haven\u0027t added the aliases. The easiest fix is\nmaybe just add the aliases so it is consistent (the DTS contract here is that\nany of these gpios should go through an alias).\nIf it\u0027s the situation that these boards don\u0027t use HDMI, then maybe that code should be conditionally compiled using the NISSA_BOARD_HAS_HDMI_SUPPORT guard.",
+      "parentUuid": "1bcfea4b_233e99af",
+      "revId": "70ccd850dea3b0b3361eaaae37779d4ce42ca459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
