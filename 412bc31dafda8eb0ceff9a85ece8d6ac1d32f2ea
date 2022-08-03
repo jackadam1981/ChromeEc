@@ -33,6 +33,23 @@
       "message": "Has 80% current been validated to fulfill the CrOS charging requirement S0 active power 4hr, S3/S5 3hr ?",
       "revId": "412bc31dafda8eb0ceff9a85ece8d6ac1d32f2ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91850e32_f30db112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-08-03T15:25:06Z",
+      "side": 1,
+      "message": "20% is a lot. Historically, we\u0027ve only seen ~4% required for users of this part.",
+      "revId": "412bc31dafda8eb0ceff9a85ece8d6ac1d32f2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
