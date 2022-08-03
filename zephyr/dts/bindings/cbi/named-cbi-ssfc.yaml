@@ -20,6 +20,7 @@ child-binding:
             description:
               Enum values used only for description purposes
             enum:
+            - AUDIO_CODEC
             - BASE_SENSOR
             - LID_SENSOR
             - LIGHTBAR
@@ -52,4 +53,3 @@ child-binding:
 #             devices = <&base_accel_kx022>;
 #         };
 #     };
-# };
