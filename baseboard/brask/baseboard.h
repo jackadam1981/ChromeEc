@@ -30,6 +30,7 @@
 /* EC Defines */
 #define CONFIG_LTO
 #define CONFIG_FPU
+#define CONFIG_USE_FLOATING_POINT
 
 /* Verified boot configs */
 #define CONFIG_VBOOT_EFS2

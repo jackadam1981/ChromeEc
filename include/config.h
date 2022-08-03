@@ -2146,11 +2146,14 @@
 /* Allow EC serial console input to wake up the EC from STOP mode */
 #undef CONFIG_FORCE_CONSOLE_RESUME
 
-/* Enable support for floating point unit */
+/* CPU has a FPU and it should be used */
 #undef CONFIG_FPU
 
 /* Enable warnings on FPU exceptions */
 #undef CONFIG_FPU_WARNINGS
+
+/* Use floating-point arithmetic where useful (otherwise fixed-point) */
+#undef CONFIG_USE_FLOATING_POINT
 
 /*****************************************************************************/
 /* Firmware region configuration */
@@ -3342,7 +3345,7 @@
 /* Need for a math library */
 #undef CONFIG_MATH_UTIL
 
-/* Include sensor online calibration (requires CONFIG_FPU) */
+/* Include sensor online calibration (requires CONFIG_USE_FLOATING_POINT) */
 #undef CONFIG_ONLINE_CALIB
 
 /*
@@ -6700,8 +6703,8 @@
 #define CONFIG_CRC8
 #endif
 
-#if defined(CONFIG_ONLINE_CALIB) && !defined(CONFIG_FPU)
-#error "Online calibration requires CONFIG_FPU"
+#if defined(CONFIG_ONLINE_CALIB) && !defined(CONFIG_USE_FLOATING_POINT)
+#error "Online calibration requires CONFIG_USE_FLOATING_POINT"
 #endif
 
 /* Set default values for accelerometer calibration if not defined. */

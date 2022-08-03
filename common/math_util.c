@@ -69,11 +69,11 @@ fp_t arc_cos(fp_t x)
  */
 #ifdef CONFIG_FPU
 /*
- * Use library sqrtf instruction, if available, since it's usually much faster
- * and smaller. On Cortex-M4, this becomes a single instruction which takes
- * 14 cycles to execute. This produces identical results to binary search,
- * except when the floating point representation of the square root rounds up
- * to an integer.
+ * Use hardware (floating-point) sqrt if available, since it's usually
+ * much faster and smaller. On Cortex-M4, this becomes a single instruction
+ * which takes 14 cycles to execute. This produces identical results to binary
+ * search, except when the floating point representation of the square root
+ * rounds up to an integer.
  */
 inline int int_sqrtf(fp_inter_t x)
 {

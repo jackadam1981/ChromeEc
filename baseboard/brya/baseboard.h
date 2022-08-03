@@ -32,6 +32,7 @@
 #define CONFIG_CRC8
 #define CONFIG_DPTF
 #define CONFIG_FPU
+#define CONFIG_USE_FLOATING_POINT
 
 /* Verified boot configs */
 #define CONFIG_VBOOT_EFS2

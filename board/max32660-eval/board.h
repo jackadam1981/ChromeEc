@@ -14,6 +14,7 @@
 #define CONFIG_I2C_CONTROLLER
 
 #define CONFIG_FPU
+#define CONFIG_USE_FLOATING_POINT
 
 /* Modules we want to exclude */
 #undef CONFIG_LID_SWITCH

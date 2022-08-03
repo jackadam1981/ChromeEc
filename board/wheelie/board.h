@@ -24,7 +24,8 @@
 /* Charger */
 #define CONFIG_CHARGER_SM5803 /* C0 and C1: Charger */
 #define PD_MAX_VOLTAGE_MV 15000
-#define CONFIG_FPU /* For charger calculations */
+#define CONFIG_FPU
+#define CONFIG_USE_FLOATING_POINT /* For charger calculations */
 #define CONFIG_USB_PD_VBUS_DETECT_CHARGER
 #define CONFIG_USB_PD_5V_CHARGER_CTRL
 #define CONFIG_CHARGER_OTG

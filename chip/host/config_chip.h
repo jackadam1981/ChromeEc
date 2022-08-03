@@ -27,6 +27,7 @@ extern char __host_flash[CONFIG_FLASH_SIZE_BYTES];
 #define CONFIG_RAM_SIZE 0x0 /* Not supported */
 
 #define CONFIG_FPU
+#define CONFIG_USE_FLOATING_POINT
 
 /* Memory-mapped internal flash */
 #define CONFIG_INTERNAL_STORAGE

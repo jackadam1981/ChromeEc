@@ -338,15 +338,16 @@ config PLATFORM_EC_FLASH_CROS
 	  e.g. to support auto-update. Various write-protection features are
 	  also provided.
 
-config PLATFORM_EC_FPU
-	bool "Support floating point"
+config PLATFORM_EC_USE_FLOATING_POINT
+	bool "Use floating-point arithmetic"
 	depends on FPU && (CPU_CORTEX_M || RISCV) && !NEWLIB_LIBC
 	default y
 	help
-	  This enables support for floating point. This is generally already
-	  provided in Zephyr, but the EC side expects a few functions to be
-	  available which are not available with Zephyr's minimal lib: sqrtf()
-	  and fabsf(). Enabling this options defines them.
+    Enabling this causes code to use floating-point arithmetic and types where
+    it is useful. When disabled, those code paths instead use fixed-point.
+
+    Enabling this option also builds some floating-point functions that are
+    expected by the EC code but aren't provided in Zephyr: sqrtf() and fabsf().
 
 config PLATFORM_EC_HOOKS
 	bool "Hooks and deferred compatibility shim"

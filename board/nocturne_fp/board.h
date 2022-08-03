@@ -94,6 +94,7 @@
 #define CONFIG_DMA
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_FPU
+#define CONFIG_USE_FLOATING_POINT
 /*
  * Don't enable FPU warnings on STM32H7, because FPU interrupt is not triggered
  * (see, errata ES0392 Rev 8, 2.1.2 Cortex-M7 FPU interrupt not present on NVIC

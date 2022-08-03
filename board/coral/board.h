@@ -120,6 +120,7 @@
 #undef CONFIG_EXTPOWER_DEBOUNCE_MS
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 1000
 #define CONFIG_FPU
+#define CONFIG_USE_FLOATING_POINT
 /* Region sizes are not a power of 2 so we can't use MPU */
 #undef CONFIG_MPU
 #define CONFIG_HOSTCMD_FLASH_SPI_INFO
