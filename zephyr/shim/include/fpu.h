@@ -16,7 +16,7 @@
  * This code is taken from core/cortex-m/include/fpu.h
  */
 
-#ifdef CONFIG_PLATFORM_EC_FPU
+#ifdef CONFIG_PLATFORM_EC_FLOATING_POINT_SUPPORT
 
 /* Implementation for Cortex-M */
 #ifdef CONFIG_CPU_CORTEX_M
@@ -55,10 +55,15 @@ static inline float fabsf(float v)
 	__asm__("fabs.s %0, %1" : "=f"(abs) : "f"(v));
 	return abs;
 }
-#else
+
+#endif /* CONFIG_SOC_IT8XXX2 && CONFIG_PLATFORM_EC_SOFT_FLOAT */
+#else /* CONFIG_RISCV */
+#ifdef CONFIG_PLATFORM_EC_SOFT_FLOAT
+#warning "Software floating-point is enabled"
+#endif
 #error "Unsupported core: please add an implementation"
 #endif
 
-#endif /* CONFIG_PLATFORM_EC_FPU */
+#endif /* CONFIG_PLATFORM_EC_FLOATING_POINT_SUPPORT */
 
 #endif /* __CROS_EC_MATH_H */
