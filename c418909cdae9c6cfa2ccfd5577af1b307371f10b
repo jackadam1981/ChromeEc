@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f34cc85c_43f76a24",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-03T09:45:40Z",
+      "side": 1,
+      "message": "Your comment is inconsistent with this patch: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3805501/1/board/shotzo/board.h#b27 which removed the option.\n\nFor the sm5803, i think you can change the sm5803\u0027s code. You can add the #ifdef CONFIG_CHARGER_SINGLE_CHIP to rename the CHARGER_PRIMARY to CHARGER_SOLO and skip the CHARGER_SECONDARY.",
+      "parentUuid": "b67da1a1_76d1858d",
+      "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ef2a3ec_3ce13dfd",
         "filename": "board/shotzo/board.h",
         "patchSetId": 12
