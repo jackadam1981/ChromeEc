@@ -279,7 +279,7 @@ static int test_charge_state(void)
 	TEST_ASSERT(!(flags & CHARGE_FLAG_FORCE_IDLE));
 	charge_control(CHARGE_CONTROL_IDLE);
 	state = wait_charging_state();
-	TEST_ASSERT(state == PWR_STATE_IDLE);
+	TEST_ASSERT(state == PWR_STATE_FORCED_IDLE);
 	flags = charge_get_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(flags & CHARGE_FLAG_FORCE_IDLE);
@@ -490,7 +490,7 @@ static int test_external_funcs(void)
 	/* Now let's force idle on and off */
 	UART_INJECT("chg idle on\n");
 	state = wait_charging_state();
-	TEST_ASSERT(state == PWR_STATE_IDLE);
+	TEST_ASSERT(state == PWR_STATE_FORCED_IDLE);
 	flags = charge_get_flags();
 	TEST_ASSERT(flags & CHARGE_FLAG_EXTERNAL_POWER);
 	TEST_ASSERT(flags & CHARGE_FLAG_FORCE_IDLE);
