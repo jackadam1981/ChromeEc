@@ -340,8 +340,10 @@ config PLATFORM_EC_FLASH_CROS
 
 config PLATFORM_EC_USE_FLOATING_POINT
 	bool "Use floating-point arithmetic"
-	depends on FPU && (CPU_CORTEX_M || RISCV) && !NEWLIB_LIBC
-	default y
+	depends on FPU || SOC_IT8XXX2
+	depends on CPU_CORTEX_M || RISCV
+	depends on !NEWLIB_LIBC
+	default y if FPU
 	help
     Enabling this causes code to use floating-point arithmetic and types where
     it is useful. When disabled, those code paths instead use fixed-point.
