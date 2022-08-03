@@ -84,8 +84,18 @@
 #define BMI3_PORTRAIT_INVERT			2
 #define BMI3_LANDSCAPE_INVERT			3
 
+<<<<<<< HEAD   (7c92cc Pazquel360: Modify motion sensor matrix)
 #define ACC_DP_OFF_X				0x60
 #define GYR_DP_OFF_X				0x66
+=======
+#define BMI3_ACC_DP_OFF_X 0x60
+#define BMI3_ACC_DP_OFF_Y 0x62
+#define BMI3_ACC_DP_OFF_Z 0x64
+
+#define BMI3_GYR_DP_OFF_X 0x66
+#define BMI3_GYR_DP_OFF_Y 0x68
+#define BMI3_GYR_DP_OFF_Z 0x6A
+>>>>>>> CHANGE (bf87fd driver/bmi323: Update calibration code)
 
 #define BMI3_REG_CMD				0x7E
 #define BMI3_CMD_SOFT_RESET			0xDEAF
