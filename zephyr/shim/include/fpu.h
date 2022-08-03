@@ -44,7 +44,30 @@ static inline float sqrtf(float v)
 {
 	float root;
 
+#if CONFIG_SOC_IT8XXX2 && !CONFIG_FPU
+	/*
+	 * IT8xxx2 can't enable CONFIG_FPU but does support the F extension.
+	 * These functions are implemented in terms of the relevant opcodes
+	 * because the CPU is known to support the instructions but the
+	 * assembler does not recognize their mnemonics when CONFIG_FPU is off.
+	 * See riscv-ite/float-emul.S for more detail and related functions.
+	 */
+	register float vt __asm__("t0") = v;
+
+	__asm__(
+		/*
+		 * When F is disabled we use the soft-float calling convention
+		 * so need to move the input and output values between integer
+		 * and floating-point registers.
+		 */
+		".word 0xf0028053\n" /* fmv.w.x ft0, t0 */
+		".word 0x58007053\n" /* fsqrt.s ft0, ft0 */
+		".word 0xe00002d3\n" /* fmv.x.w t0, ft0 */
+		: "+r"(vt));
+	root = vt;
+#else
 	__asm__("fsqrt.s %0, %1" : "=f"(root) : "f"(v));
+#endif
 	return root;
 }
 
