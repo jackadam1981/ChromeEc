@@ -33,6 +33,24 @@
       "message": "Hi Dai/Tim,\nI dont seem to have access to this Auto-merge build fail link.\nCan you share me failure logs or guide me on what needs to be done ?\n As per my understanding, this change in this CL doesn\u0027t seem to have any corresponding zephyr change.\n Thanks!",
       "revId": "5824d64911a8982cee0afd02a4f7a23b97968671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00431d7_ca6f3155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2022-08-03T19:00:57Z",
+      "side": 1,
+      "message": "Here you go\n```\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/include/ec_commands.h:184:26: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#define EC_MEMMAP_PWR_SRC          0xa7 /* Power source (8-bit) */\nERROR:root:                         ^\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 429, in \u003cmodule\u003e\n    sys.exit(main(sys.argv[1:]))\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 354, in main\n    opts.func(opts)\n  File \"/mnt/host/source/src/platform/ec/zephyr/firmware_builder.py\", line 55, in build\n    cwd\u003dplatform_ec,\n  File \"/usr/lib64/python3.6/subprocess.py\", line 438, in run\n    output\u003dstdout, stderr\u003dstderr)\nsubprocess.CalledProcessError: Command \u0027[PosixPath(\u0027/mnt/host/source/src/platform/ec/util/check_clang_format.py\u0027)]\u0027 returned non-zero exit status 1.\n```\n\n\ntl;dr please run clang-format on your code first 😊",
+      "parentUuid": "2ee54665_5a9772e9",
+      "revId": "5824d64911a8982cee0afd02a4f7a23b97968671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
