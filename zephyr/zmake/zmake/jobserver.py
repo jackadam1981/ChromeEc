@@ -8,6 +8,7 @@ import multiprocessing
 import os
 import re
 import select
+import shlex
 import subprocess
 
 import zmake
@@ -52,7 +53,18 @@ class JobClient:
         kwargs["env"].update(self.env())
 
         logger = logging.getLogger(self.__class__.__name__)
-        logger.debug("Running %s", zmake.util.repr_command(argv))
+        logger.debug(
+            " ".join(
+                [
+                    "Running `env -i",
+                    *[
+                        f"{k}={shlex.quote(v)}"
+                        for k, v in kwargs["env"].items()
+                    ],
+                    zmake.util.repr_command(argv),
+                ]
+            )
+        )
         return subprocess.Popen(argv, **kwargs)
 
 
