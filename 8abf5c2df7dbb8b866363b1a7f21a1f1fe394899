@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "906b05cc_bd30e009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-03T09:40:02Z",
+      "side": 1,
+      "message": "I think you can modify the sequence of the patch. Please rebase this patch on top of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3805501/1 ",
+      "revId": "8abf5c2df7dbb8b866363b1a7f21a1f1fe394899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
