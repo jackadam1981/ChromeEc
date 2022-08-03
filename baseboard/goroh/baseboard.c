@@ -161,13 +161,6 @@ const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 	return &cc_parameter[port];
 }
 
-void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
-			    int charge_mv)
-{
-	charge_set_input_current_limit(
-		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
-}
-
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
 	/*

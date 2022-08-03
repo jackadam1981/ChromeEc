@@ -186,8 +186,9 @@ __overridable void board_ps8xxx_tcpc_init(int port)
 			PS8815_REG_RX_EQ_AT_5G);
 }
 
-__override void board_set_charge_limit(int port, int supplier, int charge_ma,
-				       int max_ma, int charge_mv)
+__override __override void board_set_charge_limit(int port, int supplier,
+						  int charge_ma, int max_ma,
+						  int charge_mv)
 {
 	/*
 	 * Follow OEM request to limit the input current to
