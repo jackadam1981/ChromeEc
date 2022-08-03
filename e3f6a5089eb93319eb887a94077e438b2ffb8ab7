@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0577dde6_8ed179b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-03T23:45:53Z",
+      "side": 1,
+      "message": "I double checked power signal gpios.",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4238051_f36212c6",
@@ -114,6 +131,24 @@
       "side": 1,
       "message": "Looks like this config is enabled by default for TGL platforms only. I\u0027m pretty sure I had this \u0027\u003dn\u0027 because I saw that in MTLRVP, but I wasn\u0027t sure if that was specific to RVP. I don\u0027t see any other projects set this config explicitly\n\nconfig PLATFORM_EC_POWERSEQ_SLP_S3_L_OVERRIDE\n\tbool \"Enable a quirk to release SLP_S3_L after DSW_PWROK is high\"\n\tdefault y if AP_X86_INTEL_TGL\n\thelp\n\t  Enable a quirk to reconfigure SLP_S3_L back to an input a\n\t  short delay after DSW_PWROK goes high.",
       "parentUuid": "537b861a_35c44a44",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e0bd16_b144dc94",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-03T23:45:53Z",
+      "side": 1,
+      "message": "I will check how to add the config support in MTL RVP code. With this CL, we can leave this config as `n`. And a separate CL to add support for this config.",
+      "parentUuid": "38e14838_af126884",
       "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
