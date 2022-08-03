@@ -67,7 +67,7 @@ fp_t arc_cos(fp_t x)
 /**
  * Integer square root.
  */
-#ifdef CONFIG_FPU
+#ifdef MATH_UTIL_USE_FPU
 /*
  * Use library sqrtf instruction, if available, since it's usually much faster
  * and smaller. On Cortex-M4, this becomes a single instruction which takes
@@ -133,7 +133,7 @@ fp_t fp_sqrtf(fp_t x)
 
 	return int_sqrtf(preshift_x);
 }
-#endif /* CONFIG_FPU */
+#endif /* MATH_UTIL_USE_FPU */
 
 int vector_magnitude(const intv3_t v)
 {
