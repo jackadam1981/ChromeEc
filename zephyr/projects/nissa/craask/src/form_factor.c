@@ -8,6 +8,7 @@
 
 #include "accelgyro.h"
 #include "cros_board_info.h"
+#include "cros_cbi.h"
 #include "hooks.h"
 #include "motionsense_sensors.h"
 
@@ -36,6 +37,14 @@ static void form_factor_init(void)
 		LOG_INF("Switching to ver1 base");
 		motion_sensors[BASE_SENSOR].rot_standard_ref = &ALT_MAT;
 		motion_sensors[BASE_GYRO].rot_standard_ref = &ALT_MAT;
+	}
+
+	if (cros_cbi_ssfc_check_match(
+		    CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_1)))) {
+		MOTIONSENSE_ENABLE_ALTERNATE(alt_lid_accel);
+		LOG_INF("LID ACCEL: BMA422");
+	} else {
+		LOG_INF("LID ACCEL: LIS2DW12");
 	}
 }
 DECLARE_HOOK(HOOK_INIT, form_factor_init, HOOK_PRIO_POST_I2C);

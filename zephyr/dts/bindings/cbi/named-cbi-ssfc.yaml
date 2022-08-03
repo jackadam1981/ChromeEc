@@ -24,6 +24,7 @@ child-binding:
             - LID_SENSOR
             - LIGHTBAR
             - USB_SS_MUX
+            - RESERVED
         size:
             type: int
             required: true
