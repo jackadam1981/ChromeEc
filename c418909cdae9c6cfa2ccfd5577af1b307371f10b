@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356ea7de_49137156",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-03T12:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a31a78e2_38d20938",
+      "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ef2a3ec_3ce13dfd",
@@ -193,6 +211,24 @@
       "side": 1,
       "message": "Yes, The charger, bc1.2 and pd INT are complex and also impact currnet design. We will have other CLs for this.",
       "parentUuid": "1d0bd94c_4132f539",
+      "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3075d2b2_115c8d04",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-03T12:37:40Z",
+      "side": 1,
+      "message": "The next patch modified this. So, i marked this comment as Resolved.",
+      "parentUuid": "bd95fbcb_b0ff09d6",
       "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
