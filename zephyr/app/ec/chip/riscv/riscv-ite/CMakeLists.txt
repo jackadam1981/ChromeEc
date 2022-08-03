@@ -1,3 +1,6 @@
 if (CONFIG_ESPI_IT8XXX2)
     zephyr_library_sources_ifdef(CONFIG_AP_POWER_CONTROL it8xxx2-espi.c)
+    if (CONFIG_PLATFORM_EC_USE_FLOATING_POINT AND NOT CONFIG_FPU)
+        zephyr_library_sources(float-emul.S)
+    endif ()
 endif ()
