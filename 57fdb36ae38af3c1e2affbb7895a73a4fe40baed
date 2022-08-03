@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f900ab1_9510bf14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-03T10:12:13Z",
+      "side": 1,
+      "message": "Can you file a bug for the EC change or reuse this b/235983675 ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 8
+      },
+      "revId": "57fdb36ae38af3c1e2affbb7895a73a4fe40baed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c59d57_de4fd088",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-03T10:12:13Z",
+      "side": 1,
+      "message": "You need to make sure every patch can be built pass.",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "57fdb36ae38af3c1e2affbb7895a73a4fe40baed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8134a842_5f3a826a",
         "filename": "board/shotzo/board.h",
         "patchSetId": 14
