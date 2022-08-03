@@ -11,7 +11,31 @@
 #include <stdint.h>
 #include "limits.h"
 
-#ifdef CONFIG_FPU
+/*
+ * TODO: this should probably be a Kconfig symbol.
+ *
+ * Currently FP usage is implied by FPU and PLATFORM_EC_FPU configs. But we
+ * actually want everything to use PLATFORM_EC_FPU or similar because we
+ * actually want a switch for each of "build with FP" and "use FP" since we
+ * can use FP without an FPU.
+ *
+ * EC use of CONFIG_FPU should switch to a new symbol "CONFIG_FP" that enables
+ * floating-point. Implementation of floating-point can still look at
+ * CONFIG_FPU. This is messy because legacy code uses the same symbol as zephyr
+ * but they have different meanings.
+ *
+ * Concretely:
+ *  * In legacy code, CONFIG_FPU -> CONFIG_FP
+ *  * In Zephyr code, CONFIG_PLATFORM_EC_FPU -> CONFIG_FP
+ *
+ * Conveniently it seems the latter is only used in one place so is nearly
+ * useless. CONFIG_FP should default to match CONFIG_FPU in Zephyr.
+ */
+#if defined(CONFIG_FPU) || (defined(CONFIG_ZEPHYR) && CONFIG_PLATFORM_EC_FPU)
+#define MATH_UTIL_USE_FPU 1
+#endif
+
+#ifdef MATH_UTIL_USE_FPU
 typedef float fp_t;
 typedef float fp_inter_t;
 
@@ -57,7 +81,7 @@ typedef int64_t fp_inter_t;
  * work identically.
  */
 
-#ifdef CONFIG_FPU
+#ifdef MATH_UTIL_USE_FPU
 static inline fp_t fp_mul(fp_t a, fp_t b)
 {
 	return a * b;
