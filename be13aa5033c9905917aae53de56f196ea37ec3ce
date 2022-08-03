@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c83c16f6_4582bb0a",
+        "filename": "board/crota/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-03T18:42:23Z",
+      "side": 1,
+      "message": "did you decide against using CBI to determine\nthe sensor chip type used on the board?",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "be13aa5033c9905917aae53de56f196ea37ec3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
