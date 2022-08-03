@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49589362_c1a7c016",
+        "filename": "chip/mt_scp/rv32i_common/video.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-08-03T08:12:26Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3771327\nYou can separate this patch:\n1: define inner racing\n2: define av1\n3: enable av1\n4: enable inner racing\n5: add tastlist",
+      "revId": "dfca4c3acc67eccd683efc257c3f67be9e923031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
