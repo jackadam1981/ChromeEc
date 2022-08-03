@@ -122,8 +122,9 @@ static void keyboard_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, keyboard_init, HOOK_PRIO_DEFAULT);
 
-__override void board_set_charge_limit(int port, int supplier, int charge_ma,
-				       int max_ma, int charge_mv)
+__override __override void board_set_charge_limit(int port, int supplier,
+						  int charge_ma, int max_ma,
+						  int charge_mv)
 {
 	/*
 	 * Need to set different input current limit depend on system state.

@@ -116,8 +116,9 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
 }
 
-__override void board_set_charge_limit(int port, int supplier, int charge_ma,
-				       int max_ma, int charge_mv)
+__override __override void board_set_charge_limit(int port, int supplier,
+						  int charge_ma, int max_ma,
+						  int charge_mv)
 {
 	/*
 	 * Follow OEM request to limit the input current to

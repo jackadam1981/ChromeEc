@@ -860,8 +860,9 @@ int fan_percent_to_rpm(int fan, int pct)
 	return fan_table[current_level].rpm;
 }
 
-__override void board_set_charge_limit(int port, int supplier, int charge_ma,
-				       int max_ma, int charge_mv)
+__override __override void board_set_charge_limit(int port, int supplier,
+						  int charge_ma, int max_ma,
+						  int charge_mv)
 {
 	/*
 	 * Limit the input current to 95% negotiated limit,

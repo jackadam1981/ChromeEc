@@ -170,8 +170,9 @@ __override bool board_is_tbt_usb4_port(int port)
 		((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
 }
 
-__override void board_set_charge_limit(int port, int supplier, int charge_ma,
-				       int max_ma, int charge_mv)
+__override __override void board_set_charge_limit(int port, int supplier,
+						  int charge_ma, int max_ma,
+						  int charge_mv)
 {
 	/*
 	 * b/166728543

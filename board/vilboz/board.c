@@ -500,8 +500,9 @@ const int usb_port_enable[USBA_PORT_COUNT] = {
 	GPIO_EN_USB_A1_5V,
 };
 
-__override void board_set_charge_limit(int port, int supplier, int charge_ma,
-				       int max_ma, int charge_mv)
+__override __override void board_set_charge_limit(int port, int supplier,
+						  int charge_ma, int max_ma,
+						  int charge_mv)
 {
 	/*
 	 * Limit the input current to 95% negotiated limit,

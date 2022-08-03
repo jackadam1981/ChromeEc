@@ -298,7 +298,7 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port);
 int board_set_active_charge_port(int charge_port);
 
 /**
- * Set the charge current limit.
+ * Board specific function to set the charge current limit.
  *
  * @param port PD port.
  * @param supplier Identified CHARGE_SUPPLIER_*.
@@ -306,8 +306,10 @@ int board_set_active_charge_port(int charge_port);
  * @param max_ma Maximum charge current limit, >= charge_ma.
  * @param charge_mv Negotiated charge voltage (mV).
  */
-void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
-			    int charge_mv);
+__override_proto __override void board_set_charge_limit(int port, int supplier,
+							int charge_ma,
+							int max_ma,
+							int charge_mv);
 
 /**
  * Get whether the port is sourcing power on VBUS.
