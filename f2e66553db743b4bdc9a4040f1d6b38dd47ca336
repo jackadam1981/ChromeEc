@@ -46,6 +46,30 @@
       },
       "revId": "f2e66553db743b4bdc9a4040f1d6b38dd47ca336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccfa2758_d2cd0eee",
+        "filename": "zephyr/shim/include/usbc/anx7447_usb_mux.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-03T04:47:08Z",
+      "side": 1,
+      "message": "sad...",
+      "parentUuid": "0a615ec2_2000b842",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "f2e66553db743b4bdc9a4040f1d6b38dd47ca336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
