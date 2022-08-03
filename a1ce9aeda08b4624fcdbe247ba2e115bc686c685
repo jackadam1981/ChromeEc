@@ -22,6 +22,30 @@
       },
       "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f3545d_26bd5b0c",
+        "filename": "zephyr/projects/corsola/usbc_tentacruel.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-03T06:23:05Z",
+      "side": 1,
+      "message": "The IT8XX2 TCPC isn\u0027t under an i2c bus. You can check that by looking at the entry in the `tcpc_config` array:\n```\n#define TCPC_CONFIG_IT8XXX2(id)                   \\\n\t{                                         \\\n\t\t.bus_type \u003d EC_BUS_TYPE_EMBEDDED, \\\n\t\t.drv \u003d \u0026it8xxx2_tcpm_drv,         \\\n\t\t.flags \u003d 0,                       \\\n\t},\n```\n`bus_type` is `EC_BUS_TYPE_EMBEDDED`, but other TCPCs have `EC_BUS_TYPE_I2C`.",
+      "parentUuid": "11d05375_a872a06a",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
