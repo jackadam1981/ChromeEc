@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523c9e02_10b2de6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-03T07:53:49Z",
+      "side": 1,
+      "message": "Rather than using bits in the fw_config, it may be possible to use\nthe SSFC (Second Source Firmware Config).\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr/zephyr_ssfc.md",
+      "revId": "dd59fdc937548020ff364079cff72a26328a0bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
