@@ -16,6 +16,29 @@
       "message": "The `Popen` call gives me a `pylint` error about using `with` to allocate resources (R1732), but I also see that at ToT, and I\u0027m not sure what to do about it, since the only thing I\u0027d do inside the `with` is `return`.",
       "revId": "949eb6d0b8ce50c793cca396ef719b1108f14a3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a524a78_7717917b",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-03T22:16:13Z",
+      "side": 1,
+      "message": "This could be a bit simpler:\n\n`logging.debug(\"Running env -i %s %s\", \" \".join(f\"{k}\u003d{shlex.quote(v)}\" for k, v ...), zmake.util.repr_command(argv))`?",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "949eb6d0b8ce50c793cca396ef719b1108f14a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
