@@ -63,6 +63,30 @@
       },
       "revId": "949eb6d0b8ce50c793cca396ef719b1108f14a3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2de02f11_2739bc9e",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T22:46:23Z",
+      "side": 1,
+      "message": "For now, changing `repr_command` seems like more trouble than it\u0027s worth. It\u0027s currently called in 3 places:\n1. This one, `jobserver.popen`.\n2. In `Zmake.build` immediately before calling `jobserver.popen`. The resulting log lines are redundant and right next to each other.\n3. In `get_process_failure_msg`, after the process has terminated. I don\u0027t see a way to get the environment from a completed `subprocess.CompletedProcess`. In any case, each call to to `get_process_failure_msg` is preceded by a call to `jobserver.popen`, so logging the full command again is a little redundant.",
+      "parentUuid": "ac20d9fa_44722860",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "949eb6d0b8ce50c793cca396ef719b1108f14a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
