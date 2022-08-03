@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00f619dd_106cd5ff",
+        "filename": "zephyr/dts/bindings/usbc/anologix,anx7447-tcpc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-03T17:20:10Z",
+      "side": 1,
+      "message": "Use \"i2c-device.yaml\", this requires the \"reg\" property. Do this for all the I2C based TCPCs.",
+      "range": {
+        "startLine": 5,
+        "startChar": 9,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf7b149_bc068eed",
+        "filename": "zephyr/projects/brya/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-03T17:20:10Z",
+      "side": 1,
+      "message": "As a follow-in CL, can you move the `nct3808_0_P1` node from the brya/gpio.dts file to here, so all I2C devices are specified in one place?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c34b66_4bfdcb3f",
+        "filename": "zephyr/projects/corsola/usbc_krabby.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-03T17:20:10Z",
+      "side": 1,
+      "message": "Move this to be adjacent to the `\u0026usbpd0` node below.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e40196ad_1438a443",
+        "filename": "zephyr/projects/corsola/usbc_krabby.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-03T17:20:10Z",
+      "side": 1,
+      "message": "Move to after the `\u0026usbpd1` node.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11d05375_a872a06a",
         "filename": "zephyr/projects/corsola/usbc_tentacruel.dts",
         "patchSetId": 5
@@ -43,6 +135,52 @@
         "startChar": 0,
         "endLine": 41,
         "endChar": 4
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ca357a_5be093af",
+        "filename": "zephyr/projects/herobrine/usbc_evoker.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-03T17:20:10Z",
+      "side": 1,
+      "message": "In a follow up CL.  Move this to i2c_evoker.dts - and do the same for all herobrine boards.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71060229_a17e943e",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-03T17:20:10Z",
+      "side": 1,
+      "message": "Use a consistent parameter name between `TCPC_CHIP_ENTRY` and `CHECK_COMPAT`.  How about `config_fn`?",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 53
       },
       "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
