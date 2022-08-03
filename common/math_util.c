@@ -67,20 +67,17 @@ fp_t arc_cos(fp_t x)
 /**
  * Integer square root.
  */
-#ifdef CONFIG_FPU
+#if defined(CONFIG_FPU) || defined(CONFIG_SOFT_FLOAT)
 /*
- * Use library sqrtf instruction, if available, since it's usually much faster
- * and smaller. On Cortex-M4, this becomes a single instruction which takes
- * 14 cycles to execute. This produces identical results to binary search,
- * except when the floating point representation of the square root rounds up
- * to an integer.
+ * Use the floating-point implementation, which is usually faster and smaller
+ * when a FPU is available.
  */
 inline int int_sqrtf(fp_inter_t x)
 {
 	return sqrtf(x);
 }
 
-/* If the platform support FPU, just return sqrtf. */
+/* Delegate to the library implementation. */
 fp_t fp_sqrtf(fp_t x)
 {
 	return sqrtf(x);

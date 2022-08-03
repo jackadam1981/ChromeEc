@@ -108,6 +108,12 @@
 #define HOOK_TICK_INTERVAL CONFIG_CROS_EC_HOOK_TICK_INTERVAL
 #define HOOK_TICK_INTERVAL_MS (HOOK_TICK_INTERVAL / 1000)
 
+/* Opt in to software floating point */
+#undef CONFIG_SOFT_FLOAT
+#ifdef CONFIG_PLATFORM_EC_SOFT_FLOAT
+#define CONFIG_SOFT_FLOAT
+#endif
+
 /* Chipset and power configuration */
 #ifdef CONFIG_AP_ARM_QUALCOMM_SC7180
 #define CONFIG_CHIPSET_SC7180

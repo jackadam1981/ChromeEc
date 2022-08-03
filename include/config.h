@@ -2146,8 +2146,11 @@
 /* Allow EC serial console input to wake up the EC from STOP mode */
 #undef CONFIG_FORCE_CONSOLE_RESUME
 
-/* Enable support for floating point unit */
+/* CPU has a FPU and it should be used */
 #undef CONFIG_FPU
+
+/* Use software floating-point emulation */
+#undef CONFIG_SOFT_FLOAT
 
 /* Enable warnings on FPU exceptions */
 #undef CONFIG_FPU_WARNINGS
@@ -3342,7 +3345,7 @@
 /* Need for a math library */
 #undef CONFIG_MATH_UTIL
 
-/* Include sensor online calibration (requires CONFIG_FPU) */
+/* Include sensor online calibration (requires floating-point) */
 #undef CONFIG_ONLINE_CALIB
 
 /*
@@ -6706,8 +6709,9 @@
 #define CONFIG_CRC8
 #endif
 
-#if defined(CONFIG_ONLINE_CALIB) && !defined(CONFIG_FPU)
-#error "Online calibration requires CONFIG_FPU"
+#if defined(CONFIG_ONLINE_CALIB) && \
+	!(defined(CONFIG_FPU) || defined(CONFIG_SOFT_FLOAT))
+#error "Online calibration requires floating-point arithemtic"
 #endif
 
 /* Set default values for accelerometer calibration if not defined. */

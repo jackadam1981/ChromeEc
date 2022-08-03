@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include "limits.h"
 
-#ifdef CONFIG_FPU
+#if defined(CONFIG_FPU) || defined(CONFIG_SOFT_FLOAT)
 typedef float fp_t;
 typedef float fp_inter_t;
 
@@ -57,7 +57,7 @@ typedef int64_t fp_inter_t;
  * work identically.
  */
 
-#ifdef CONFIG_FPU
+#if defined(CONFIG_FPU) || defined(CONFIG_SOFT_FLOAT)
 static inline fp_t fp_mul(fp_t a, fp_t b)
 {
 	return a * b;
