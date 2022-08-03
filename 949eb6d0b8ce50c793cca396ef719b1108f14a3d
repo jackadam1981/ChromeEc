@@ -39,6 +39,30 @@
       },
       "revId": "949eb6d0b8ce50c793cca396ef719b1108f14a3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac20d9fa_44722860",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-03T22:18:56Z",
+      "side": 1,
+      "message": "Or, perhaps we should adjust `repr_command` to take an `env` option?",
+      "parentUuid": "7a524a78_7717917b",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "949eb6d0b8ce50c793cca396ef719b1108f14a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
