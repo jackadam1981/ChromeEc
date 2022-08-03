@@ -63,6 +63,30 @@
       },
       "revId": "422429d8e1d21077fae06fc801cebabedcec3c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709e50ad_70ac56bc",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-03T02:13:10Z",
+      "side": 1,
+      "message": "I think you need to remove the typec1 setting. There is only one typec port in the Shotzo.",
+      "parentUuid": "71599426_2c7e01ef",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 19
+      },
+      "revId": "422429d8e1d21077fae06fc801cebabedcec3c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
