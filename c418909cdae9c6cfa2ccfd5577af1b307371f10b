@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a31a78e2_38d20938",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-03T10:41:58Z",
+      "side": 1,
+      "message": "Please make a CQ-depend of this https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3805501/1/board/shotzo/board.h to  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3807184",
+      "parentUuid": "3714a822_ec1ffcaa",
+      "revId": "c418909cdae9c6cfa2ccfd5577af1b307371f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ef2a3ec_3ce13dfd",
         "filename": "board/shotzo/board.h",
         "patchSetId": 12
