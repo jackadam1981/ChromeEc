@@ -1,0 +1,31 @@
+/* Copyright 2022 The Chromium OS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	/* Craask-specific fw_config fields. */
+	craask-fw-config {
+		compatible = "cros-ec,cbi-fw-config";
+		/*
+		 * FW_CONFIG field to identify LID motion sensor.
+		 */
+		lid-accel {
+			enum-name = "FW_LID_ACCEL";
+			start = <12>;
+			size = <1>;
+
+			lis2dw12 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_LID_LIS2DW12";
+				value = <0>;
+				default;
+			};
+			bma422 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_LID_BMA422";
+				value = <1>;
+			};
+		};
+	};
+};
