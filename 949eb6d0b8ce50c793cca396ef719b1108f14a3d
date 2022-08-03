@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4facc943_d69ea883",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T22:02:58Z",
+      "side": 1,
+      "message": "The `Popen` call gives me a `pylint` error about using `with` to allocate resources (R1732), but I also see that at ToT, and I\u0027m not sure what to do about it, since the only thing I\u0027d do inside the `with` is `return`.",
+      "revId": "949eb6d0b8ce50c793cca396ef719b1108f14a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
