@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "add5425b_aee979fd",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-03T12:23:14Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "0c32dee3_348ea1fa",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "3805390c2f7b62ead5f46435a46912da9da9978b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19a5fcc2_fd7a1b58",
@@ -133,6 +157,30 @@
       "side": 0,
       "message": "It will be removed in CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3688158/21",
       "parentUuid": "19a5fcc2_fd7a1b58",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "3805390c2f7b62ead5f46435a46912da9da9978b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8512e65b_b5824778",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-03T12:23:14Z",
+      "side": 0,
+      "message": "Remove CONFIG_CHARGE_RAMP_HW in this CL.",
+      "parentUuid": "0529c6d1_4fa9709d",
       "range": {
         "startLine": 25,
         "startChar": 8,
