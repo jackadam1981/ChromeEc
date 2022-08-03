@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d05375_a872a06a",
+        "filename": "zephyr/projects/corsola/usbc_tentacruel.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-03T01:28:27Z",
+      "side": 1,
+      "message": "I might be missing something, but shouldn\u0027t the tcpc_port0 be under an i2c entry like the other .dts files for other boards?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
