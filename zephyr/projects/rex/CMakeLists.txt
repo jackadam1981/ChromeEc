@@ -7,3 +7,7 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(ec)
 
 zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
+
+if(DEFINED CONFIG_BOARD_REX0)
+	project(rex0)
+endif()
