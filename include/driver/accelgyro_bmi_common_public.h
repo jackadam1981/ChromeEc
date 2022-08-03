@@ -15,6 +15,7 @@
 
 struct bmi_drv_data_t {
 	struct accelgyro_saved_data_t saved_data[3];
+	uint8_t chipid;
 	uint8_t flags;
 	uint8_t enabled_activities;
 	uint8_t disabled_activities;
