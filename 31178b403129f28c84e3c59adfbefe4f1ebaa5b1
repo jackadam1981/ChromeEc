@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c2e979_02556a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T17:18:20Z",
+      "side": 1,
+      "message": "1. Thanks for writing tests. Try setting CQ+1 to see what your incremental test coverage is.\n2. It looks like you\u0027re substantially replicating the power button state machine within the DPM, such that you\u0027re reproducing some of the power button time limits outside the DPM. This might be too involved to be worth it, but would it make sense to have the DPM directly simulate both press and release events and then have the power button code handle everything else?",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e46804_8786c3b8",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T17:18:20Z",
+      "side": 1,
+      "message": "Delete",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2467c331_c345b28b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T17:18:20Z",
+      "side": 1,
+      "message": "These lines are getting pretty truncated. You might want to think about refactoring this to let these `IS_ENABLED` checks be a guard clause where you break early.",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d69881c_347524b3",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T17:18:20Z",
+      "side": 1,
+      "message": "I vaguely get what you\u0027re trying to do here, but I find this math hard to follow. The mechanic of checking the remaining time on a timer for an event that has already happened is unconventional. Elsewhere in the PD stack, we would deal with this by disabling the old timer and setting a new timer. This also seems to depend on how soon the DPM runs again after the button is released in a way that I don\u0027t feel like I understand, because the timer is still running.\n\nCan you clarify this, ideally in the form of simplified code?",
+      "range": {
+        "startLine": 575,
+        "startChar": 8,
+        "endLine": 579,
+        "endChar": 13
+      },
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54db247c_e2311945",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T17:18:20Z",
+      "side": 1,
+      "message": "Why is the minimum press time in this file, but the maximum time is a config item?",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a79e047a_a942b357",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T17:18:20Z",
+      "side": 1,
+      "message": "How are you checking the power state in this test?",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
