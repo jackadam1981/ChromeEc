@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd476a60_aa5d4aa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-03T10:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f900ab1_9510bf14",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 8
+      },
+      "revId": "57fdb36ae38af3c1e2affbb7895a73a4fe40baed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37c59d57_de4fd088",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c500474f_41788401",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-03T10:33:23Z",
+      "side": 1,
+      "message": "Done. Thanks for reminding.",
+      "parentUuid": "37c59d57_de4fd088",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "57fdb36ae38af3c1e2affbb7895a73a4fe40baed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8134a842_5f3a826a",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-03T10:01:56Z",
       "side": 1,
       "message": "Why do you put this under the Unused Features?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 38
+      },
+      "revId": "57fdb36ae38af3c1e2affbb7895a73a4fe40baed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9e60e3_86eaa69e",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-03T10:33:23Z",
+      "side": 1,
+      "message": "Because it is needed to remove lid.\nI move it to the /* Buttons */ region.",
+      "parentUuid": "8134a842_5f3a826a",
       "range": {
         "startLine": 55,
         "startChar": 0,
