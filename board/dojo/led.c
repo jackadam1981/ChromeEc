@@ -182,15 +182,15 @@ static void board_led_set_battery(void)
 		set_active_port_color(LED_WHITE);
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE */
-		if (chflags & CHARGE_FLAG_FORCE_IDLE) {
-			battery_led_blink_cycle =
-				battery_ticks % (2 * TIMES_TICK_ONE_SEC);
-			set_active_port_color(
-				(battery_led_blink_cycle < TIMES_TICK_ONE_SEC) ?
-					LED_AMBER :
-					LED_OFF);
-		} else
-			set_active_port_color(LED_WHITE);
+		set_active_port_color(LED_WHITE);
+		break;
+	case PWR_STATE_FORCED_IDLE:
+		battery_led_blink_cycle =
+			battery_ticks % (2 * TIMES_TICK_ONE_SEC);
+		set_active_port_color(
+			(battery_led_blink_cycle < TIMES_TICK_ONE_SEC) ?
+				LED_AMBER :
+				LED_OFF);
 		break;
 	default:
 		/* Other states don't alter LED behavior */
