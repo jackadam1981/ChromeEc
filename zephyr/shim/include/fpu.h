@@ -40,6 +40,42 @@ static inline float fabsf(float v)
 	return root;
 }
 #elif CONFIG_RISCV
+
+#if CONFIG_SOC_IT8XXX2 && !CONFIG_FPU
+/*
+ * IT8xxx2 can't enable CONFIG_FPU but does support the F extension.
+ * These functions are implemented in terms of the relevant opcodes
+ * because the CPU is known to support the instructions but the
+ * assembler does not recognize their mnemonics when CONFIG_FPU is off.
+ * See riscv-ite/float-emul.S for more detail and related functions.
+ *
+ * CONFIG_FPU is off, so we know that the soft-float ABI is in use: we need to
+ * move values from integer to floating-point registers and back when done.
+ */
+static inline float sqrtf(float v)
+{
+	register float a0 __asm__("a0") = v;
+
+	__asm__(".word 0xf0050053\n" /* fmv.w.x ft0, a0 */
+		".word 0x58007053\n" /* fsqrt.s ft0, ft0 */
+		".word 0xe0000553\n" /* fmv.x.w a0, ft0 */
+		: "+r"(a0));
+	return a0;
+}
+
+static inline float fabsf(float v)
+{
+	register float a0 __asm__("a0") = v;
+
+	__asm__(".word 0xf0050053\n" /* fmv.w.x ft0, a0 */
+		".word 0x20002053\n" /* fabs.s ft0, ft0 */
+		".word 0xe0000553\n" /* fmv.x.w a0, ft0 */
+		: "+r"(a0));
+	return a0;
+}
+
+#else /* CONFIG_SOC_IT8XXX2 && !CONFIG_FPU */
+
 static inline float sqrtf(float v)
 {
 	float root;
@@ -55,7 +91,9 @@ static inline float fabsf(float v)
 	__asm__("fabs.s %0, %1" : "=f"(abs) : "f"(v));
 	return abs;
 }
-#else
+
+#endif /* CONFIG_SOC_IT8XXX2 && !CONFIG_FPU */
+#else /* CONFIG_RISCV */
 #error "Unsupported core: please add an implementation"
 #endif
 

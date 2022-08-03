@@ -340,8 +340,10 @@ config PLATFORM_EC_FLASH_CROS
 
 config PLATFORM_EC_FPU
 	bool "Support floating point"
-	depends on FPU && (CPU_CORTEX_M || RISCV) && !NEWLIB_LIBC
-	default y
+	depends on FPU || SOC_IT8XXX2
+	depends on CPU_CORTEX_M || RISCV
+	depends on !NEWLIB_LIBC
+	default y if FPU
 	help
 	  This enables support for floating point. This is generally already
 	  provided in Zephyr, but the EC side expects a few functions to be
