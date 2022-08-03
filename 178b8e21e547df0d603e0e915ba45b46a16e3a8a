@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc0aa79_364cac39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T22:49:10Z",
+      "side": 1,
+      "message": "Just as an FYI, while testing this, I discovered that we\u0027re not scrubbing the environment for the `ninja` invocation. It prints out some pretty obscure, unhelpful stuff like `LS_COLORS` and `BASH_FUNC__git_branch_ps1%%`. If you don\u0027t like the idea of that, maybe we should scrub the `ninja` environment before submitting this.",
+      "revId": "178b8e21e547df0d603e0e915ba45b46a16e3a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
