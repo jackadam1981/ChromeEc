@@ -25,15 +25,13 @@
 #define CONFIG_USB_PD_VBUS_DETECT_CHARGER
 #define CONFIG_USB_PD_5V_CHARGER_CTRL
 #define CONFIG_CHARGER_OTG
-#undef CONFIG_CHARGER_SINGLE_CHIP
 
 /* PWM */
 #define CONFIG_PWM
 
 /* TCPC */
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_ITE_ON_CHIP /* C0: ITE EC TCPC */
-#define CONFIG_USB_PD_TCPM_PS8705 /* C1: PS8705 TCPC*/
 #define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 1
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_TCPC_LOW_POWER
@@ -67,12 +65,6 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
-
-enum chg_id {
-	CHARGER_PRIMARY,
-	CHARGER_SECONDARY,
-	CHARGER_NUM,
-};
 
 enum pwm_channel {
 	PWM_CH_COUNT,
@@ -110,6 +102,10 @@ enum battery_type {
 	BATTERY_COS_2,
 	BATTERY_ATL,
 	BATTERY_TYPE_COUNT,
+};
+
+enum charge_port {
+	CHARGE_PORT_TYPEC0,
 };
 
 #endif /* !__ASSEMBLER__ */
