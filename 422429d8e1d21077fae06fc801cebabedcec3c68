@@ -87,6 +87,30 @@
       },
       "revId": "422429d8e1d21077fae06fc801cebabedcec3c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54cd3977_b59c5100",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-03T07:06:49Z",
+      "side": 1,
+      "message": "Yes, I will remove all C1 function in coming CL.",
+      "parentUuid": "709e50ad_70ac56bc",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 19
+      },
+      "revId": "422429d8e1d21077fae06fc801cebabedcec3c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
