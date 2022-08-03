@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4238051_f36212c6",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-03T21:19:01Z",
+      "side": 1,
+      "message": "We usually has this one at bring up:\nCONFIG_PLATFORM_EC_BRINGUP\u003dy\n@Vijay: Is this config still current?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b073e8b6_77c4a55a",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-03T21:19:01Z",
+      "side": 1,
+      "message": "Duplicate of line 25.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "665fe3bc_8b750845",
         "filename": "zephyr/projects/rex/prj.conf",
         "patchSetId": 2
@@ -14,6 +60,47 @@
       "writtenOn": "2022-08-02T20:27:18Z",
       "side": 1,
       "message": "Hi Li, can you please check if we need to add glitch removal logic in native code for Rex?",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd7101b4_16415a0e",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-03T21:19:01Z",
+      "side": 1,
+      "message": "Hi Vijay,\nMTL RVP doesn\u0027t enable CONFIG_PLATFORM_EC_POWERSEQ_SLP_S3_L_OVERRIDE. I think it should be same here.",
+      "parentUuid": "665fe3bc_8b750845",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf388aed_37322423",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-03T21:19:01Z",
+      "side": 1,
+      "message": "Please add CONFIG_X86_NON_DSX_PWRSEQ_HOST_CMD\u003dy",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 43
+      },
       "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
