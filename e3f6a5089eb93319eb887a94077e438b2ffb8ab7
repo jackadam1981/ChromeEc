@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "537b861a_35c44a44",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-03T21:41:33Z",
+      "side": 1,
+      "message": "RVP can handle S3 glitches with H/w circuitry.\nMay be CEP needs it, pls refer legacy code, same feature has to be added in native code",
+      "parentUuid": "cd7101b4_16415a0e",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf388aed_37322423",
