@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31dc837a_99448b90",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2755,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T15:54:41Z",
+      "side": 1,
+      "message": "How does `pe_src_ready_run` execute during a BIST test? If the PE gets a BIST Test Data message, it should enter `PE_BIST_TX` and stay there until it receives a Hard Reset or disconnects.\n\nhttps://source.chromium.org/chromium/chromiumos/platform/ec/+/main:common/usbc/usb_pe_drp_sm.c;l\u003d5279;drc\u003df685fdad662e8ff47ac434ecec0adea9bae7f0bd\nhttps://source.chromium.org/chromium/chromiumos/platform/ec/+/main:common/usbc/usb_pe_drp_sm.c;l\u003d5323;drc\u003df685fdad662e8ff47ac434ecec0adea9bae7f0bd",
+      "parentUuid": "78094524_792e685a",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "443eec09_560ffd4e",
         "filename": "common/usbc_intr_task.c",
         "patchSetId": 4

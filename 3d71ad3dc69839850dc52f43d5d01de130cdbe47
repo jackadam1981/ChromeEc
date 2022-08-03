@@ -142,6 +142,24 @@
       "parentUuid": "a6a6b6c3_295667d1",
       "revId": "3d71ad3dc69839850dc52f43d5d01de130cdbe47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7506f4_88be19ce",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-03T15:54:41Z",
+      "side": 1,
+      "message": "I\u0027m asking you to experimentally determine a sufficient value of `ALERT_STORM_MAX_COUNT`. If you\u0027re getting 1024 interrupts in 2 s, back-of-the-envelope math would suggest that you could set `ALERT_STORM_MAX_COUNT` to at least 512. Try the test at 600 and see what happens.",
+      "parentUuid": "c8c7055a_7801eeb5",
+      "revId": "3d71ad3dc69839850dc52f43d5d01de130cdbe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
