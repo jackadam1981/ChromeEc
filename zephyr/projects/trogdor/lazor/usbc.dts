@@ -23,12 +23,7 @@
 				i2c-addr-flags = "PS8XXX_I2C_ADDR1_FLAGS";
 			};
 
-			ppc {
-				compatible = "ti,sn5s330";
-				status = "okay";
-				port = <&i2c_tcpc0>;
-				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
-			};
+			ppc = <&ppc_port0>;
 
 			chg {
 				compatible = "intersil,isl923x";
@@ -49,12 +44,7 @@
 				i2c-addr-flags = "PS8XXX_I2C_ADDR1_FLAGS";
 			};
 
-			ppc {
-				compatible = "ti,sn5s330";
-				status = "okay";
-				port = <&i2c_tcpc1>;
-				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
-			};
+			ppc = <&ppc_port1>;
 		};
 	};
 };
