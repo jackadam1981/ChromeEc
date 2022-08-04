@@ -22,6 +22,30 @@
       },
       "revId": "eaa12ee6aa3268259e813826784e3e1ac446a231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83b8784_30f5cb34",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T02:41:48Z",
+      "side": 1,
+      "message": "Sorry, it my mistake during change the sequence of the patch.\nMove this to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3688158/24",
+      "parentUuid": "4d2c3b3e_7050b732",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "eaa12ee6aa3268259e813826784e3e1ac446a231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
