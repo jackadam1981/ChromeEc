@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df92a692_4d22adf8",
+        "filename": "board/mithrax/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-04T23:41:01Z",
+      "side": 1,
+      "message": "If that\u0027s true, you will probably also want to remove this stuff, and there may be some more TBT/BB stuff elsewhere in the board code.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 26
+      },
+      "revId": "d8bdc76aae338545929df47bb0b8e65c1fe2a758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
