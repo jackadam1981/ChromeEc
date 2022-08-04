@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6cfb2f5_c428f982",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-04T21:55:08Z",
+      "side": 1,
+      "message": "I couldn\u0027t find any boards using more than one alternate PPC chip. So it\u0027s  not worth the complication of supporting multiple alternates per port at this time.",
+      "parentUuid": "c94b231c_5e4784c1",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53bd3742_a7571ce6",
         "filename": "zephyr/projects/corsola/i2c_krabby.dts",
         "patchSetId": 1
@@ -107,6 +125,30 @@
       "side": 1,
       "message": "Yes, it is. I think the next step is to merge these kinds of chips (ppc+bc12, tcpc+bc12) into one node `richtek,rt1739`. We can easily define the arrays(ppc_chips, tcpc_configs) from it with the current architecture.",
       "parentUuid": "53bd3742_a7571ce6",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c1099ad_4c5af265",
+        "filename": "zephyr/projects/corsola/i2c_krabby.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-04T21:55:08Z",
+      "side": 1,
+      "message": "As implemented, this will cause build warnings because the `@xx` address is duplicated.\n\nThe correct way to do this is to create a parent device that is shared by both the BC1.2 and PPC drivers:\n```\n    rt1739@70 {\n        compatible \u003d \"richtek,rt1739\";\n        reg \u003d \u003c0x70\u003e;\n        bc12_port0: bc12-port0 {\n            compatible \u003d \"richtek,rt1739-bc12\";\n            status \u003d \"okay\"; \n        };\n        ppc_port0: bc12-port0 {\n            compatible \u003d \"richtek,rt1739-bc12\";\n            status \u003d \"okay\"; \n        };\n    };\n```\n\nThe driver code that extract the I2C device address will need to reference the parent:\n```\n    .i2c_port \u003d I2C_PORT_BY_DEV(DT_PARENT(id)),\n    .i2c_addr_flags \u003d DT_REG_ADDR(DT_PARENT(id)),\n```\nBecause the `i2c_port` and `i2c_addr_flags` is unused by the BC1.2 driver, I think you can make this change in this CL.\n\nWhen this driver moves upstream, the PPC and BC1.2 drivers will live in separate files, and will each use the parent \"richtek,rt1739\" driver to access the chip registers.",
+      "parentUuid": "ec570c29_fb59ce51",
       "range": {
         "startLine": 82,
         "startChar": 0,
