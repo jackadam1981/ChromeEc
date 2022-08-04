@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ce59d8_39eee1d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:23:40Z",
+      "side": 1,
+      "message": "Thank you for double checking.",
+      "parentUuid": "0577dde6_8ed179b0",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4238051_f36212c6",
@@ -255,6 +273,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a45565_6a53e12c",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:23:40Z",
+      "side": 1,
+      "message": "I added a TODO and enabled eSPI VW for SLP_S3",
+      "parentUuid": "1969f290_fcc51986",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf388aed_37322423",
@@ -338,6 +374,30 @@
       "writtenOn": "2022-08-02T04:23:42Z",
       "side": 1,
       "message": "add {} braces (zephyr coding style)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4466fbc2_37a10c5e",
+        "filename": "zephyr/projects/rex/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a02affff_12fa0a04",
       "range": {
         "startLine": 41,
         "startChar": 0,
