@@ -237,6 +237,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1969f290_fcc51986",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-04T00:26:37Z",
+      "side": 1,
+      "message": "How about we add a TODO for now and use Virtual Wire for S3 too. \nIf glitches are observed on S3 physical line, we can add code in native power sequence similar to legacy code.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/power/meteorlake.c#181",
+      "parentUuid": "f44905c5_b5b2966c",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf388aed_37322423",
