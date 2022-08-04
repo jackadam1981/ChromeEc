@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37af308_8284d365",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T11:31:15Z",
+      "side": 1,
+      "message": "This is almost the same as the sensor i2c except the name. I think you can just merge this to the sensor setting. ie:\n```\n#if defined(HAS_TASK_MOTIONSENSE) || defined(BOARD_SHOTZO)\n\t{ .name \u003d \"sensor\",\n\t  .port \u003d I2C_PORT_SENSOR,\n\t  .kbps \u003d 400,\n\t  .scl \u003d GPIO_EC_I2C_SENSOR_SCL,\n\t  .sda \u003d GPIO_EC_I2C_SENSOR_SDA },\n#endif\n```",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "79c5f9034361a58ad81d2560d9221a6d85676f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e910b8_4a512f0e",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T11:31:15Z",
+      "side": 1,
+      "message": "I2C_PORT_SENSOR",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "79c5f9034361a58ad81d2560d9221a6d85676f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a05921_8d342f17",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T11:31:15Z",
+      "side": 1,
+      "message": "This can be removed if you merge the setting to the sensor i2c.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 56
+      },
+      "revId": "79c5f9034361a58ad81d2560d9221a6d85676f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
