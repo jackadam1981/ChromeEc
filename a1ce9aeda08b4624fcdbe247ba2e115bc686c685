@@ -285,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70ce12b5_079f5088",
+        "filename": "zephyr/projects/herobrine/usbc_evoker.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-04T19:35:25Z",
+      "side": 1,
+      "message": "I see benefits to having all I2C devices specified in one file per project, as well as splitting the I2C devices between a common file a project file.\n\nI\u0027ve posted a question on the chat to gather people\u0027s thoughts on this.",
+      "parentUuid": "a09eede5_b22b84f3",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "a1ce9aeda08b4624fcdbe247ba2e115bc686c685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71060229_a17e943e",
         "filename": "zephyr/shim/src/tcpc.c",
         "patchSetId": 5

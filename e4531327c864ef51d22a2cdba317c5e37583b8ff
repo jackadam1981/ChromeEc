@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53a5ba7_d8974c5d",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-04T19:35:25Z",
+      "side": 1,
+      "message": "This is clever, but hard to follow. I suggest creating a helper macro so the `#if` condition is easier to read.\n\n```\n#define DT_HAS_TCPC \\\n    0 DT_FOREACH_STATUS_OKAY(named_usbc_port, HAS_TCPC_PROP)\n    \n#if DT_HAS_TCPC\n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 60
+      },
+      "revId": "e4531327c864ef51d22a2cdba317c5e37583b8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
