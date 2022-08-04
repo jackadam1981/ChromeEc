@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b1bdd4d_9c7e07fe",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-04T19:00:21Z",
+      "side": 1,
+      "message": "Per discussed, regarding the solution 2, the new charge flag is folded in the main charge_state state enums. This logic should be moved to the `common/charge_state_v2.c`, so the `charge_get_state()` will directly return the new `PWR_STATE_FORCED_IDLE` flag.\n\nThe related legacy code should be modified, like `common/led_policy_std.c`, `common/led_onoff_states.c`, `driver/led/ds2413.c`. Looks like they checks the  `charge_get_flags()` too and their logics can be simplified.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 3
+      },
+      "revId": "a8e30d89e15b18ba37f9afd2229580c8a6cbf824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
