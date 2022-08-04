@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a218d37b_7210aece",
+        "filename": "zephyr/projects/nissa/craask/cbi.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T03:26:09Z",
+      "side": 1,
+      "message": "I don\u0027t have any visibility about what this CODEC field is.\nIt would be good to use a more descriptive name than just \u0027RESERVED\u0027.",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "9b205860785d0f6729f40daf9aa1595c1dc9bb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c1ad742_4e7e0fe7",
+        "filename": "zephyr/projects/nissa/craask/src/form_factor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T03:26:09Z",
+      "side": 1,
+      "message": "I think you can just call motion_sensors_check_ssfc() to perform this check.",
+      "revId": "9b205860785d0f6729f40daf9aa1595c1dc9bb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
