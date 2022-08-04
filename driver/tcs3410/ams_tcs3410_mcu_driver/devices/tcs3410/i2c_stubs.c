@@ -7,7 +7,7 @@
  */
 
 /*
- * This file contains the i2c stub routines that are platform and architecure 
+ * This file contains the i2c stub routines that are platform and architecure
  * specific and are essential to proper operation of the ams device driver.
  *
  * These are just examples of possible candidates for the i2c interface.  The
@@ -28,11 +28,11 @@
 int i2c_block_read(uint8_t addr, uint8_t reg, uint8_t *data, int size)
 {
     int ret;
-        
+
     /*
      * Insert platform-specific i2c block read here:
      */
-     
+
     return(ret);
 }
 
@@ -44,11 +44,11 @@ int i2c_read(uint8_t addr, uint8_t reg, uint8_t *data)
 int i2c_block_write(uint8_t addr, uint8_t reg, uint8_t *data, int size)
 {
     int ret;
-    
+
     /*
      * Insert platform-specific i2c block write here:
      */
-     
+
     return(ret);
 }
 
@@ -73,7 +73,7 @@ int i2c_init(uint8_t scl, uint8_t sda)
 
     /*
      * Insert platform-specific i2c initialization here:
-     * ^ For example, pins used for the i2c bus.^ 
+     * ^ For example, pins used for the i2c bus.^
      */
 
     return ret;

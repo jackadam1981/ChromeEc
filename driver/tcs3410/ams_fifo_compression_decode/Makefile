@@ -2,8 +2,8 @@
 CC      = arm-linux-gnueabihf-gcc
 AR      = arm-linux-gnueabihf-ar
 RANLIB  = arm-linux-gnueabihf-gcc-ranlib
- 
-INC_PATH    = h  
+
+INC_PATH    = h
 # just another way of add the -I
 #INC_DIR    = $(foreach d, $(INC_PATH), -I$d)
 INC_DIR     = $(INC_PATH:%=-I%)
@@ -17,9 +17,9 @@ LFLAGS      = ruv
 
 LIB_NAME    = libams_fifo_decode.a
 
-SRC         = $(wildcard $(SRC_DIR)/*.c) 
+SRC         = $(wildcard $(SRC_DIR)/*.c)
 
-OBJ         = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o) 
+OBJ         = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 .PHONY: all clean
 

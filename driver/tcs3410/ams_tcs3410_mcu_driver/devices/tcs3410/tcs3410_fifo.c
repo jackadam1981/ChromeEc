@@ -32,8 +32,8 @@ static bool check_for_end_marker(uint8_t *pbuffer, uint32_t len)
 {
     bool ret_val = false;
 
-    if ((pbuffer[len]) == 0 && 
-        (pbuffer[len + 1]  == 0) && 
+    if ((pbuffer[len]) == 0 &&
+        (pbuffer[len + 1]  == 0) &&
         (pbuffer[len + 2]  == 0)
        )
     {
@@ -83,7 +83,7 @@ ams_errno_t sensor_read_fifo(uint8_t *shadow_regs, volatile ams_current_state_t 
         /* pfifo is pointing to the next available data location */
         /* from previous fifo read                               */
     }
-    
+
     while (level > 0)
     {
         /* Determine packet size - limited by I2C interface */
@@ -95,7 +95,7 @@ ams_errno_t sensor_read_fifo(uint8_t *shadow_regs, volatile ams_current_state_t 
         {
             i2c_size = level;
         }
-        
+
         sensor_read(REG_FIFO_DATA, (uint8_t *)pfifo, i2c_size);
         pfifo += i2c_size;
         level -= i2c_size;
@@ -109,23 +109,23 @@ ams_errno_t sensor_process_fifo(uint8_t *shadow_regs, volatile ams_current_state
     uint32_t data_len, fd_len;
     ams_errno_t ret_val = AMS_SUCCESS;
     uint8_t *pfifo;
- 
+
     data_len = pcurr_state->fifo.total_len;
 
     pfifo = &fifo_data[0];
-    
+
     /* If ALS is enabled - parse, the counts, gains and status */
     if (pcurr_state->features[AMS_FEATURE_ALS] == AMS_FEATURE_ENABLE)
     {
         /* Perform the lux, etc calculations */
         process_als_data(pcurr_state, pfifo);
-        
+
         /* remove the als data from the overall fifo length */
         data_len = pcurr_state->fifo.total_len - ALS_DATA_SZ;
 
         /* indicate the start of the flicker data */
         pfifo = &fifo_data[ALS_DATA_SZ];
-        
+
         ret_val = AMS_SUCCESS;
     }
 
@@ -165,7 +165,7 @@ ams_errno_t sensor_process_fifo(uint8_t *shadow_regs, volatile ams_current_state
 
     pcurr_state->fifo.total_len = 0;
     pcurr_state->fifo.fifo_state = AMS_FIFO_IDLE;
-    
+
     return (ret_val);
 }
 

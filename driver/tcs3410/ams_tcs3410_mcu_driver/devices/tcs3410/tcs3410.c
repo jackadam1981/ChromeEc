@@ -28,7 +28,7 @@ static char const * const VERSION = "1.1";
 bool irq_log_enable = true;
 
 /*
- * These are the registers that can be modified - 
+ * These are the registers that can be modified -
  * Some registers you do not want to write or overwrite
  */
 static const uint8_t restorable_regs[] =
@@ -90,7 +90,7 @@ static const uint8_t restorable_regs[] =
 
 /*
  * APC is enabled for this MCU reference driver
- */ 
+ */
 struct _device_ids
 {
     uint8_t device;
@@ -107,13 +107,13 @@ static struct _device_ids const dev_ids[] =
 static char const * const device_names[] =
 {
     "tcs3410",
-}; 
+};
 
 /* Holds the index into the dev_ids and device_names structures above */
 static uint8_t selected_device;
 
 /* state variables for the current i2c session */
-static volatile ams_current_state_t current_state = 
+static volatile ams_current_state_t current_state =
 {
     .validated = false,
     .pon       = false,
@@ -188,7 +188,7 @@ const double gain_reg_2_gain[] =
 static bool validate_device_id(void)
 {
     uint8_t buffer[3] = {0};
-    struct _device_ids id = 
+    struct _device_ids id =
     {
         .device = 0,
         .rev    = 0,
@@ -264,7 +264,7 @@ static bool validate_device_id(void)
  *   |  STEP 3   |  WB, Green   |   Blue (4)   |   Red (5)    |
  *   |           |  (0,1,2,3)   |              |              |
  *   |--------------------------------------------------------|
- * 
+ *
  */
 static void sensor_update_phd_smux(void)
 {
@@ -357,7 +357,7 @@ static void sensor_flush_regs(void)
  */
 static void sensor_set_agc_mode(agc_mode mode)
 {
-    uint8_t i2c_data = 0;   
+    uint8_t i2c_data = 0;
     if ((mode == AGC_SAT_ENABLED) || (mode == AGC_SAT_PREDICT_ENABLED))
     {
         /* Assume ASAT is turned on for all steps -> 0xF */
@@ -392,10 +392,10 @@ void sensor_soft_reset(void)
 
 /*
  * NOTES:
- * 
+ *
  * 1. The alternate registers for Sample Time, ALS Samples and FD Samples are
  *    set to the same as the primary registers.  The Selection is set to 0 (Use
- *    the primary registers for all) 
+ *    the primary registers for all)
  *
  */
 static void sensor_init_config(ams_registers_t *config)
@@ -406,17 +406,17 @@ static void sensor_init_config(ams_registers_t *config)
     shadow_regs[REG_MEAS_MODE0]   = ((MEAS_MODE0_MEAS_SEQR_SINGLE_SHOT_MODE_MASK)   |
                                      (MEAS_MODE0_FIFO_ALS_STATUS_WRITE_ENABLE_MASK) |
                                      (0x04) /* ALS SCALE - # of MSBs that must be 0 */
-                                    );   
+                                    );
     shadow_regs[REG_MEAS_MODE1]   = ((MEAS_MODE1_MOD_FIFO_FD_END_MARKER_WRITE_EN_MASK) |
                                      (MEAS_MODE1_MOD_FIFO_FD_GAIN_WRITE_EN_MASK)       |
                                      (DEFAULT_ALS_MSB_POSITION << MEAS_MODE1_ALS_MSB_POSITION_SHIFT));
- 
+
     shadow_regs[REG_ALS_NR_SAMPLES0]     = (current_config.als_nr_samples & ALS_NR_SAMPLES0_MASK) << ALS_NR_SAMPLES0_SHIFT;
     shadow_regs[REG_ALS_NR_SAMPLES1]     = (current_config.als_nr_samples >> ALS_NR_SAMPLES1_SHIFT) & ALS_NR_SAMPLES1_MASK;
-   
+
     shadow_regs[REG_FD_NR_SAMPLES0]      = (current_config.fd_nr_samples & FD_NR_SAMPLES0_MASK) << FD_NR_SAMPLES0_SHIFT;
     shadow_regs[REG_FD_NR_SAMPLES1]      = (current_config.fd_nr_samples >> FD_NR_SAMPLES1_SHIFT) & FD_NR_SAMPLES1_MASK;
-    
+
     shadow_regs[REG_WTIME]               = (current_config.wait_time & WTIME_MASK) << WTIME_SHIFT;
 
     /* Not using thresholds or AINT  - ALS data written to FIFO */
@@ -430,7 +430,7 @@ static void sensor_init_config(ams_registers_t *config)
     /* REG_STATUS thru REG_STATUS6 - no initial config */
 
     shadow_regs[REG_CFG0] = CFG0_SAI_MASK | 0x08; /* do not overwrite lower 5 bits */
-    shadow_regs[REG_CFG1] = 0; // CFG1_MASK_DO_ALS_FINAL_PROCESSING: Only needed if fd and als in same step 
+    shadow_regs[REG_CFG1] = 0; // CFG1_MASK_DO_ALS_FINAL_PROCESSING: Only needed if fd and als in same step
     shadow_regs[REG_CFG2] = current_config.fifo_threshold & CFG2_FIFO_THRESH0_MASK;
     shadow_regs[REG_CFG3] = 0;  // no pinmap or vsync config
     shadow_regs[REG_CFG4] = ((SINT_BY_ROUND << CFG4_MEAS_SEQR_SINT_PER_STEP_SHIFT) |   /* bit 6 must be 0 for AGC to work properly */
@@ -510,9 +510,9 @@ static void sensor_init_config(ams_registers_t *config)
                                            (0 << MOD_FD_FIFO_DATA2_DIFF_EN_SHIFT)     |
                                            (0 << MOD_FD_FIFO_DATA2_WIDTH_EN_SHIFT)
                                           );
-                                      
+
     shadow_regs[REG_FIFO_THR]           = ((current_config.fifo_threshold >> FIFO_THRESH1_SHIFT) & FIFO_THRESH1_MASK);
-    
+
     sensor_flush_regs();
 
     return;
@@ -661,7 +661,7 @@ void sensor_blk_write(uint8_t reg, uint8_t *buffer, uint8_t bytes)
     (void)ams_i2c_block_write(SLAVE_ADDR_0, reg, buffer, bytes);
     return;
 }
- 
+
 void sensor_write(uint8_t reg, uint8_t *sh, uint8_t val)
 {
     (void)ams_i2c_write(SLAVE_ADDR_0, sh, reg, val);
@@ -701,7 +701,7 @@ ams_errno_t sensor_status(void *data)
     stat->log_irq    = irq_log_enable;
     stat->als_en     = current_state.features[AMS_FEATURE_ALS];
     stat->fd_en      = current_state.features[AMS_FEATURE_FLICKER];
-    
+
     sensor_read(REG_STATUS4, &i2c_buff, 1);
     current_state.sai.active = (i2c_buff & STATUS4_SAI_ACTIVE) >> STATUS4_SAI_ACTIVE_SHIFT;
     stat->sai        = current_state.sai;
@@ -709,7 +709,7 @@ ams_errno_t sensor_status(void *data)
     stat->als        = current_state.als;
     stat->fd         = current_state.fd;
     stat->fifo       = current_state.fifo;
-    
+
     return(AMS_SUCCESS);
 }
 
@@ -943,7 +943,7 @@ uint16_t sensor_get_sample_time(void)
 void ams_sensor_irq_handler(__attribute__((unused)) uint32_t pin)
 {
     sensor_process_irq(sh);
-    
+
     return;
 }
 
@@ -958,7 +958,7 @@ ams_errno_t ams_sensor_init(struct ams_device *device)
     if (!validate_device_id())
     {
         AMS_LOG_PRINTF(LOG_ERROR, "Sensor failed to validate");
-        return(AMS_DEVICE_VALIDATE_ERROR);               
+        return(AMS_DEVICE_VALIDATE_ERROR);
     }
 
     device->write     = sensor_write;
@@ -992,6 +992,6 @@ ams_errno_t ams_sensor_init(struct ams_device *device)
     current_state.fd.sample_freq =  DEFAULT_MODULATOR_CLOCK_HZ/(current_config.sample_time + 1);
 
     AMS_LOG_PRINTF(LOG_INFO, "Sensor initialization complete.");
-   
+
     return(ret_val);
 }

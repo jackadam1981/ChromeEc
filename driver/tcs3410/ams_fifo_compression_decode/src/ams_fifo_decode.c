@@ -22,7 +22,7 @@
 static size_t previous_bit_index = 0;
 
 /***********************************************************************************
- * Function to get n-bit packetized array for given multi-channel input encode data 
+ * Function to get n-bit packetized array for given multi-channel input encode data
  ***********************************************************************************/
 static uint32_t get_packetized_array_multichl(uint8_t* input_byte, uint16_t num_bytes, int packet_size)
 {
@@ -47,7 +47,7 @@ static uint32_t get_packetized_array_multichl(uint8_t* input_byte, uint16_t num_
 }
 
 /**********************************************************************
- * Function to get n-bit packetized array from given input encode data 
+ * Function to get n-bit packetized array from given input encode data
  **********************************************************************/
 static uint32_t get_packetized_array(uint8_t* input_byte, uint16_t index, int packet_size)
 {
@@ -81,8 +81,8 @@ ams_fifo_decode_result_t fifo_data_decode(void *input, void *output, int num_of_
 
 	uint32_t packet_data;
 	
-	/* Here temp_fifo_data[0] is used for string previous data 
-		temp_fifo_data[1] is used for channel data 
+	/* Here temp_fifo_data[0] is used for string previous data
+		temp_fifo_data[1] is used for channel data
 	*/
 	uint32_t temp_fifo_data[2];  // used to be -> (uint32_t *)malloc((num_of_chls + 1) * sizeof(uint32_t));
 	uint32_t previous_fifo_data[3]= {0x0000};
@@ -140,7 +140,7 @@ ams_fifo_decode_result_t fifo_data_decode(void *input, void *output, int num_of_
 				fifo_output_count++;
 				count_zero_sample_ind = 0;
 			}
-			else 
+			else
 			{
 				/* In this case the indicator is 0, therefore the next packet is required in order to complete the decode */
 				temp_fifo_data[0] = temp_fifo_data[0] + (packet_data << (count_zero_sample_ind * data_width));
@@ -164,7 +164,7 @@ ams_fifo_decode_result_t fifo_data_decode(void *input, void *output, int num_of_
 			//printf("\n%d  packet_data:0x%04x ", i, packet_data);
 
 			/* check if packet_data is a signed number, i.e MSB bit of packet data set to 1 */
-			if (packet_data  & signed_mask) 
+			if (packet_data  & signed_mask)
 			{
 				/* Transform a 'packet_data' into a sign-extended number */
 				packet_data = (packet_data ^ signed_mask) - signed_mask;
@@ -212,7 +212,7 @@ ams_fifo_decode_result_t fifo_data_decode(void *input, void *output, int num_of_
 				signed_data = temp_fifo_data[1];
 
 				/* check if packet_data is a signed number, i.e MSB bit of packet data set to 1 */
-                
+
 				//if (temp_fifo_data[1]  & signed_mask)
                 if ((packet_data & signed_mask) != 0)
 				{
@@ -226,7 +226,7 @@ ams_fifo_decode_result_t fifo_data_decode(void *input, void *output, int num_of_
 				count_zero_sample_ind = 0;
 				if (fifo_output_count < output_sz_bytes)
                 {
-                    if (fifo_output_count != 0) 
+                    if (fifo_output_count != 0)
                         fifo_output[fifo_output_count] = (uint16_t)(fifo_output[fifo_output_count - 1] + temp_fifo_data[1]);
                     else
                         fifo_output[0] = (uint16_t)temp_fifo_data[1];
@@ -278,7 +278,7 @@ ams_fifo_decode_result_t fifo_data_decode(void *input, void *output, int num_of_
 				temp_fifo_data[chl_num + 1] = temp_fifo_data[0] + (packet_data << (count_zero_sample_ind * data_width));
 				//printf("temp[0]:0x%04x temp[%d]:0x%04x ", temp_fifo_data[0], chl_num + 1, temp_fifo_data[chl_num + 1]);
 
-				fifo_output[fifo_output_count] = temp_fifo_data[chl_num + 1]; 
+				fifo_output[fifo_output_count] = temp_fifo_data[chl_num + 1];
 				//printf("chl_%d fifo[%d]0x%04x\n",chl_num, fifo_output_count, fifo_output[fifo_output_count]);
 				temp_fifo_data[0] = 0x0000;
 				count_zero_sample_ind = 0;
@@ -288,7 +288,7 @@ ams_fifo_decode_result_t fifo_data_decode(void *input, void *output, int num_of_
 				if (chl_num >= num_of_chls)
 					chl_num = 0;
 			}
-			else 
+			else
 			{
 				/* In this case the indicator is 0, therefore the next packet is required in order to complete the decode */
 				temp_fifo_data[0] = temp_fifo_data[0] + (packet_data << (count_zero_sample_ind * data_width));
@@ -355,7 +355,7 @@ ams_fifo_decode_result_t fifo_data_decode(void *input, void *output, int num_of_
 				if (chl_num >= num_of_chls)
 					chl_num = 0;
 			}
-			else 
+			else
 			{
 				/* In this case the indicator is 0, therefore the next packet is required in order to complete the decode */
 				temp_fifo_data[0] = temp_fifo_data[0] + (packet_data << (count_zero_sample_ind * data_width));

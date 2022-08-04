@@ -25,7 +25,7 @@
 /*                                                                            */
 /*                       Global APIs                                          */
 /*                                                                            */
-/******************************************************************************/ 
+/******************************************************************************/
 ams_errno_t process_als_data(volatile ams_current_state_t *pcurr_state, uint8_t *pfifo)
 {
     ams_errno_t ret_val = AMS_SUCCESS;
