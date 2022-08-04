@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66420a7e_e406b801",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_host_sleep.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T01:03:57Z",
+      "side": 1,
+      "message": "I think you can just move this declaration into ap_power_host_sleep.h\nIf it isn\u0027t called by anybody, then it\u0027s not an issue.\nAvoid having too many small header files.",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6d7160_68e5d581",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T01:03:57Z",
+      "side": 1,
+      "message": "Maybe this function should be in the host command file",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfabcedc_0ee1c3c3",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T01:03:57Z",
+      "side": 1,
+      "message": "Having just empty functions here tells me that the API for these functions\nare optional, so maybe this interface should be thought through a bit more.\nThey all seem to be related to events, and so could be plumbed in using the\nstandard event notification. That way, if CONFIG_AP_PWRSEQ_S0IX_ERROR_RECOVERY is set, then the event callback can be registered, and the main part of the code is untouched.\n\nThere are also calls like ap_power_sleep_set_notify, which seem to me to be a parallel notification API, so I\u0027m getting confused about the structure of all these sleep handlers, and what they do.\n\nThere should be enough of the ap_power events to be able to plumb in the appropriate code without having to insert special calls in (like these sleep calls).\nThat way, the error recovery code can be a completely separate file without any explicit calls to it, but catching everything through the standard notification API.\n\nIt may take a little thought and refactoring to get this API right, so I don\u0027t mind if this get submitted as is, if it is urgent, and then some work can be done to re-arrange it as necessary.",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1527d880_bf2c0c4d",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T01:03:57Z",
+      "side": 1,
+      "message": "I can\u0027t see where this is being used?",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0326b8_1cb666eb",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T01:03:57Z",
+      "side": 1,
+      "message": "Instead of guarding this whole file, use CMakeList.txt to include it if the config item is set.",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4a1c5e_b9f0c578",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T01:03:57Z",
+      "side": 1,
+      "message": "So these 2 calls can be combined, as:\n\n   ap_power_ev_send_callbacks(AP_POWER_S0IX_RESUME\n#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK\n                              | AP_POWER_RESUME_INIT\n#endif\n                              );",
+      "range": {
+        "startLine": 437,
+        "startChar": 2,
+        "endLine": 437,
+        "endChar": 28
+      },
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
