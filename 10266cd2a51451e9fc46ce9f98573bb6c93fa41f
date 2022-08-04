@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c94b231c_5e4784c1",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-04T12:26:56Z",
+      "side": 1,
+      "message": "It assumes that we can have only one alternate PPC chip pre port. I don\u0027t know if it is a correct assumption. Keith should be able to tell more.",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53bd3742_a7571ce6",
         "filename": "zephyr/projects/corsola/i2c_krabby.dts",
         "patchSetId": 1
@@ -20,6 +37,64 @@
         "endLine": 86,
         "endChar": 3
       },
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec570c29_fb59ce51",
+        "filename": "zephyr/projects/corsola/i2c_krabby.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-04T12:26:56Z",
+      "side": 1,
+      "message": "Yes, it is. I think the next step is to merge these kinds of chips (ppc+bc12, tcpc+bc12) into one node `richtek,rt1739`. We can easily define the arrays(ppc_chips, tcpc_configs) from it with the current architecture.",
+      "parentUuid": "53bd3742_a7571ce6",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47b82c60_f799f856",
+        "filename": "zephyr/projects/herobrine/i2c.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-04T12:26:56Z",
+      "side": 1,
+      "message": "Why do we need that change?",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb9fd20_975c7115",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-04T12:26:56Z",
+      "side": 1,
+      "message": "I think it might be useful to have an option to enable the alt PPC for a certain port, not for all ports only.",
       "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
