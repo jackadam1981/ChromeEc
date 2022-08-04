@@ -17,7 +17,6 @@
 #include "tcs3410.h"
 #include "tcs3410_als.h"
 #include "tcs3410_utils.h"
-#include "master_i2c.h"
 #include "ams_device.h"
 #include "ams_platform.h"
 

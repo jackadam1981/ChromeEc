@@ -21,61 +21,47 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "ams_errno.h"
-#include "master_i2c.h"
+#include "common.h"
+#include "i2c.h"
+#include "ams_i2c.h"
 #include "ams_device.h"
 
-int i2c_block_read(uint8_t addr, uint8_t reg, uint8_t *data, int size)
+int ams_i2c_block_read(uint8_t addr, uint8_t reg, uint8_t *data, int size)
 {
-    int ret;
-
-    /*
-     * Insert platform-specific i2c block read here:
-     */
-
-    return(ret);
+	return i2c_read_block(CONFIG_ALS_TCS3410_PORT, addr, reg, data, size);
 }
 
-int i2c_read(uint8_t addr, uint8_t reg, uint8_t *data)
+int ams_i2c_read(uint8_t addr, uint8_t reg, int *data)
 {
-    return i2c_block_read(addr, reg, data, 1);
+	return i2c_read8(CONFIG_ALS_TCS3410_PORT, addr, reg, data);
 }
 
-int i2c_block_write(uint8_t addr, uint8_t reg, uint8_t *data, int size)
+int ams_i2c_block_write(uint8_t addr, uint8_t reg, uint8_t *data, int size)
 {
-    int ret;
-
-    /*
-     * Insert platform-specific i2c block write here:
-     */
-
-    return(ret);
+	return i2c_write_block(CONFIG_ALS_TCS3410_PORT, addr, reg, data, size);
 }
 
-int i2c_write(uint8_t addr, uint8_t reg, uint8_t data)
+int ams_i2c_write(uint8_t addr, uint8_t *sh, uint8_t reg, int data)
 {
-    return i2c_block_write(addr, reg, &data, 1);
+	int ret = ams_i2c_write_direct(addr, reg, data);
+
+	if (ret == EC_SUCCESS)
+		sh[reg] = data;
+
+	return ret;
 }
 
-int i2c_modify(uint8_t addr, uint8_t reg, uint8_t mask, uint8_t val)
+int ams_i2c_write_direct(uint8_t addr, uint8_t reg, uint8_t data)
 {
-    uint8_t temp;
-
-    i2c_read(addr, reg, &temp);
-    temp &= ~mask;
-    temp |= val;
-    return i2c_write(addr, reg, temp);
+	return i2c_write8(CONFIG_ALS_TCS3410_PORT, addr, reg, data);
 }
 
-int i2c_init(uint8_t scl, uint8_t sda)
+int ams_i2c_modify(uint8_t addr, uint8_t *sh, uint8_t reg, uint8_t mask, uint8_t val)
 {
-    int ret;
+	int temp;
 
-    /*
-     * Insert platform-specific i2c initialization here:
-     * ^ For example, pins used for the i2c bus.^
-     */
-
-    return ret;
+	ams_i2c_read(addr, reg, &temp);
+	temp &= ~mask;
+	temp |= val;
+	return ams_i2c_write(addr, sh, reg, temp);
 }
-

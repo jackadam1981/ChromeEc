@@ -20,7 +20,7 @@
 #include "tcs3410_utils.h"
 #include "tcs3410_fifo.h"
 #include "tcs3410_als.h"
-#include "master_i2c.h"
+#include "ams_i2c.h"
 #include "ams_device.h"
 #include "ams_platform.h"
 
