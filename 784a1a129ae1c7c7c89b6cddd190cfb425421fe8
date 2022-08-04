@@ -22,6 +22,30 @@
       },
       "revId": "784a1a129ae1c7c7c89b6cddd190cfb425421fe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "121cb1cf_42ae08fd",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T10:25:41Z",
+      "side": 1,
+      "message": "This define is for alert led to warning insufficient power to bring up.\nThe spec of power is still undecided, so remove it from here.",
+      "parentUuid": "f53ff2c7_2cd8f8d6",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "784a1a129ae1c7c7c89b6cddd190cfb425421fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
