@@ -22,6 +22,30 @@
       },
       "revId": "796f94e6478af481015c1771a6ef7eb5c4465f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd70fdc0_b80226bf",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T07:04:39Z",
+      "side": 1,
+      "message": "I try to remove unnecessary line and keep the original coding style, but it failed to upload to TOT.\nIt always say that file has formatting errors and need to run /mnt/host/source/src/repohooks/clang-format.py --fix --commit hash_id` to fix this .\nAfter running the command, the code form is modified like this.",
+      "parentUuid": "7a480fa8_f9babbbc",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 7
+      },
+      "revId": "796f94e6478af481015c1771a6ef7eb5c4465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
