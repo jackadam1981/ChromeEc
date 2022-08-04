@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd59da0_350c1704",
+        "filename": "zephyr/projects/nissa/craask/cbi.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-08-04T07:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a218d37b_7210aece",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "9b205860785d0f6729f40daf9aa1595c1dc9bb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c1ad742_4e7e0fe7",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-04T03:26:09Z",
       "side": 1,
       "message": "I think you can just call motion_sensors_check_ssfc() to perform this check.",
+      "revId": "9b205860785d0f6729f40daf9aa1595c1dc9bb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60ac879_67da8846",
+        "filename": "zephyr/projects/nissa/craask/src/form_factor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-08-04T07:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1ad742_4e7e0fe7",
       "revId": "9b205860785d0f6729f40daf9aa1595c1dc9bb63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
