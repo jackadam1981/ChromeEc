@@ -980,10 +980,10 @@ static int charge_request(int voltage, int current)
 #endif
 	}
 
-	if (curr.ac) {
-		if (prev_volt != voltage || prev_curr != current)
-			CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
-	}
+	// if (curr.ac) {
+	// 	if (prev_volt != voltage || prev_curr != current)
+	// 		CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
+	// }
 
 	/*
 	 * Enable bypass mode if applicable. Transition from Bypass to Bypass +
@@ -1495,7 +1495,8 @@ static int get_desired_input_current(enum battery_present batt_present,
 #endif
 	} else {
 #ifdef CONFIG_USB_POWER_DELIVERY
-		return MIN(PD_MAX_CURRENT_MA, info->input_current_max);
+		// return MIN(PD_MAX_CURRENT_MA, info->input_current_max);
+		return PD_MAX_CURRENT_MA;
 #else
 		return info->input_current_max;
 #endif

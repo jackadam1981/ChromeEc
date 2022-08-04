@@ -530,3 +530,11 @@ enum gpio_signal board_usbc_port_to_hpd_gpio(int port)
 	/* shotzo only has port C0 */
 	return GPIO_EC_AP_USB_C0_HPD;
 }
+
+#ifndef CONFIG_BATTERY_PRESENT_GPIO
+enum battery_present battery_is_present(void)
+{
+	/* Shotzo has no battery, so always return no battery present. */
+	return BP_NO;
+}
+#endif
