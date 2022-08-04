@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910eb0b5_13925b27",
+        "filename": "zephyr/shim/include/charger/chg_bq25710.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-04T19:12:51Z",
+      "side": 1,
+      "message": "Because you\u0027ve made the `reg` property required, use the devicetree value instead of the hard-coded value here.  Do this for all charger devices.",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 45
+      },
+      "revId": "cb2c2a6daab3882909232fa2852435c1c108de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
