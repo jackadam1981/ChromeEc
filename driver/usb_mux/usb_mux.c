@@ -19,6 +19,8 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBCHARGE);
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)

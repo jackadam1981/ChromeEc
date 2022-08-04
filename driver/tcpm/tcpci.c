@@ -26,8 +26,10 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 bool sop_prime_en[CONFIG_USB_PD_PORT_MAX_COUNT];

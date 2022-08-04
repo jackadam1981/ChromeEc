@@ -18,6 +18,9 @@
 #include "usb_pd.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBCHARGE);
+
+/* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 
 enum pi3usb9201_client_sts {

@@ -24,6 +24,8 @@ extern __error("k_usleep() should only be called from Zephyr code") int32_t
 	k_usleep(int32_t);
 #endif /* CONFIG_ZEPHYR */
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)

@@ -30,6 +30,8 @@
 #error "Unsupported config options of Stm32gx PD driver"
 #endif
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 

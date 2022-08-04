@@ -15,9 +15,11 @@
 #include "timer.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_THERMAL);
+
 /* Console output macros */
-#define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_THERMAL, format, ##args)
+#define CPUTS(outstr) cputs(CC_THERMAL, outstr)
 
 #define SB_RMI_MAILBOX_TIMEOUT_MS 200
 #define SB_RMI_MAILBOX_RETRY_DELAY_MS 5

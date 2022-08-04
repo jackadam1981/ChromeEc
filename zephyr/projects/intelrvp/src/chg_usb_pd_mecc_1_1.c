@@ -16,6 +16,7 @@
 #include "usbc_ppc.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+LOG_MODULE_DECLARE(usbpd);
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 void tcpc_alert_event(enum gpio_signal signal)

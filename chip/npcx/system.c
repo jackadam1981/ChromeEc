@@ -46,6 +46,8 @@
 /*  Legacy SuperI/O Configuration D register offset */
 #define SIOCFD_REG_OFFSET 0x2D
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)

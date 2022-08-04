@@ -35,6 +35,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 static uint32_t last_deadline;

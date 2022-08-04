@@ -15,6 +15,7 @@
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 int fusb307_power_supply_reset(int port)

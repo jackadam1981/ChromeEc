@@ -15,6 +15,8 @@
 #include "timer.h"
 #include "usb_mux.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBCHARGE);
+
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 

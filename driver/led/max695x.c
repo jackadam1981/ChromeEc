@@ -13,6 +13,8 @@
 #include "max695x.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
+
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 static inline int max695x_i2c_write8(uint8_t offset, uint8_t data)

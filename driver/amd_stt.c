@@ -16,9 +16,10 @@
 /* Debug flag can be toggled with console command: stt debug */
 static bool amd_stt_debug;
 
-/* Console output macros */
-#define CPUTS(outstr) cputs(CC_THERMAL, outstr)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_THERMAL);
+
 #define CPRINTS(format, args...) cprints(CC_THERMAL, format, ##args)
+#define CPUTS(outstr) cputs(CC_THERMAL, outstr)
 
 static const char *const amd_stt_sensor_name[] = {
 	[AMD_STT_PCB_SENSOR_APU] = "APU",

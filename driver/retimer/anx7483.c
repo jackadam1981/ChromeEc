@@ -15,6 +15,8 @@
 #include "usb_mux.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBCHARGE);
+
 /*
  * Programming guide specifies it may be as much as 30ms after chip power on
  * before it's ready for i2c

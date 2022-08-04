@@ -17,6 +17,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_LPC);
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ##args)
 
 static int cmd_gp_get_config(int argc, char **argv)

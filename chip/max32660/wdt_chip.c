@@ -17,6 +17,8 @@
 #include "board.h"
 #include "wdt_regs.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_COMMAND);
+
 #define CPUTS(outstr) cputs(CC_COMMAND, outstr)
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ##args)
 

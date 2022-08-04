@@ -9,6 +9,8 @@
 #include "hid_device.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_LPC);
+
 #ifdef HID_SUBSYS_DEBUG
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ##args)

@@ -1,0 +1,204 @@
+# These Logging Modules were pre generated from CrOS EC console_channel.inc
+
+config LOG
+	default y
+
+config PLATFORM_EC_LOG_FULL
+	bool "Enable core Zephyr logging features"
+	imply LOG_SPEED
+	imply LOG_OUTPUT_FORMAT_LINUX_TIMESTAMP
+	imply LOG_RUNTIME_FILTERING
+	help
+	  The Zephyr logging subsystem is quite robust. Selecting this option
+	  will enable the core Zephyr logging features used by EC.
+	  The logging subsystem consumes a significant amount of storage and memory,
+	  so some EC projects will not be able to utilize it.
+
+choice LOG_MODE
+	default LOG_MODE_IMMEDIATE if PLATFORM_EC_LOG_FULL
+	default LOG_MODE_MINIMAL
+endchoice
+
+module = CC_COMMAND
+module-str = command
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_ACCEL
+module-str = accel
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_AUDIO_CODEC
+module-str = audio_codec
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_BLUETOOTH_LE
+module-str = bluetooth_le
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_BLUETOOTH_LL
+module-str = bluetooth_ll
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_BLUETOOTH_HCI
+module-str = bluetooth_hci
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_CEC
+module-str = cec
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_CHARGER
+module-str = charger
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_CHIPSET
+module-str = chipset
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_CLOCK
+module-str = clock
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_DMA
+module-str = dma
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_EVENTS
+module-str = events
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_FP
+module-str = fingerprint
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_GESTURE
+module-str = gesture
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_GPIO
+module-str = gpio
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_HOSTCMD
+module-str = hostcmd
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_I2C
+module-str = i2c
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_IPI
+module-str = ipi
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_KEYBOARD
+module-str = keyboard
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_KEYSCAN
+module-str = keyscan
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_LIDANGLE
+module-str = lidangle
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_LOGOLED
+module-str = logoled
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_LIGHTBAR
+module-str = lightbar
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_RGBKBD
+module-str = rgbkbd
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_LPC
+module-str = lpc
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_MOTION_LID
+module-str = motionlid
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_MOTION_SENSE
+module-str = motionsense
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_PD_HOST_CMD
+module-str = pdhostcm
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_PORT80
+module-str = port80
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_PS2
+module-str = ps2
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_PCHG
+module-str = pchg
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_PWM
+module-str = pwm
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_SPI
+module-str = spi
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_SWITCH
+module-str = switch
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_SYSTEM
+module-str = system
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_TASK
+module-str = task
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_TOUCHPAD
+module-str = touchpad
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_DPTF
+module-str = dptf
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_ALS
+module-str = als
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_THERMAL
+module-str = thermal
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_USB
+module-str = usb
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_USBCHARGE
+module-str = usbcharge
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_USBPD
+module-str = usbpd
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_VBOOT
+module-str = vboot
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_HOOK
+module-str = hook
+source "subsys/logging/Kconfig.template.log_config"
+
+module = CC_GPU
+module-str = gpu
+source "subsys/logging/Kconfig.template.log_config"

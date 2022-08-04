@@ -24,6 +24,7 @@
 #include "variant_db_detection.h"
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 

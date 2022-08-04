@@ -22,6 +22,8 @@
 #define ANX7451_I2C_WAKE_TIMEOUT_MS 20
 #define ANX7451_I2C_WAKE_RETRY_DELAY_US 500
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBCHARGE);
+
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 

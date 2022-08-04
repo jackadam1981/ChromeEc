@@ -49,13 +49,15 @@
 	 PD_FLAGS_UPDATE_SRC_CAPS | PD_FLAGS_TS_DTS_PARTNER |               \
 	 PD_FLAGS_SNK_WAITING_BATT | PD_FLAGS_CHECK_VCONN_STATE)
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
-static int tcpc_prints(const char *string, int port)
+static void tcpc_prints(const char *string, int port)
 {
-	return CPRINTS("TCPC p%d %s", port, string);
+	CPRINTS("TCPC p%d %s", port, string);
 }
 
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT <= EC_USB_PD_MAX_PORTS);

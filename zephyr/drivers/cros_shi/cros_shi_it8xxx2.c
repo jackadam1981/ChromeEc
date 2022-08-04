@@ -21,8 +21,8 @@
 #include "host_command.h"
 
 /* Console output macros */
-#define CPRINTS(format, args...) cprints(CC_SPI, format, ##args)
-#define CPRINTF(format, args...) cprintf(CC_SPI, format, ##args)
+#define CPRINTS(format, args...) LOG_ERR(CC_SPI, format, ##args)
+#define CPRINTF(format, args...) LOG_ERR(CC_SPI, format, ##args)
 
 LOG_MODULE_REGISTER(cros_shi, LOG_LEVEL_ERR);
 

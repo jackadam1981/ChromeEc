@@ -10,6 +10,7 @@
 #include "usbc_ppc.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+LOG_MODULE_DECLARE(usbpd);
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 static inline void board_pd_set_vbus_discharge(int port, bool enable)

@@ -7,7 +7,7 @@
 #include "device_state.h"
 #include "hooks.h"
 
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
 
 /**
  * Return text description for a state

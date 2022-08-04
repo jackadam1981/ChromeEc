@@ -10,6 +10,8 @@
 #include "cros_board_info.h"
 #include "write_protect.h"
 
+LOG_MODULE_REGISTER(cbi_eeprom_shim);
+
 #if DT_NODE_EXISTS(DT_NODELABEL(cbi_eeprom))
 #define CBI_EEPROM_DEV DEVICE_DT_GET(DT_NODELABEL(cbi_eeprom))
 
@@ -20,7 +22,7 @@
 
 void cbi_latch_eeprom_wp(void)
 {
-	cprints(CC_SYSTEM, "CBI WP latched");
+	LOG_INF("CBI WP latched");
 	gpio_pin_set_dt(GPIO_DT_FROM_ALIAS(gpio_cbi_wp), 1);
 }
 #endif /* CONFIG_PLATFORM_EC_EEPROM_CBI_WP */

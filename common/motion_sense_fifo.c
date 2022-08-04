@@ -15,6 +15,8 @@
 #include "online_calibration.h"
 #include "stdbool.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_MOTION_SENSE);
+
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
 
 /**

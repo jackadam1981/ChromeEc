@@ -18,6 +18,8 @@
 #include "hooks.h"
 #include "timer.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_LPC);
+
 /* Console output macros */
 #if !(DEBUG_ESPI)
 #define CPUTS(...)

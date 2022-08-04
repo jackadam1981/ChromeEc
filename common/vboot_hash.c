@@ -23,6 +23,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_VBOOT);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_VBOOT, outstr)
 #define CPRINTS(format, args...) cprints(CC_VBOOT, format, ##args)

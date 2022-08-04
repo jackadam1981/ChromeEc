@@ -37,6 +37,8 @@
 #endif
 #endif
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 bool rx_en[IT83XX_USBPD_PHY_PORT_COUNT];

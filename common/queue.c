@@ -10,6 +10,8 @@
 #include "queue.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_MOTION_SENSE);
+
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
 
 static void queue_action_null(struct queue_policy const *policy, size_t count)

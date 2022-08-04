@@ -21,6 +21,7 @@
 #define PCT2075_SHIFT1 (16 - PCT2075_RESOLUTION)
 #define PCT2075_SHIFT2 (PCT2075_RESOLUTION - 8)
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_THERMAL);
 #define CPRINTS(format, args...) cprints(CC_THERMAL, format, ##args)
 
 static int temp_mk_local[PCT2075_COUNT];

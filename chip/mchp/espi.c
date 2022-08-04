@@ -29,6 +29,8 @@
 #include "timer.h"
 #include "tfdp_chip.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_LPC);
+
 /* Console output macros */
 #ifdef CONFIG_MCHP_ESPI_DEBUG
 #ifdef CONFIG_MCHP_TFDP

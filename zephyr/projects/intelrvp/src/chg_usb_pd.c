@@ -13,6 +13,7 @@
 #include "tcpm/tcpci.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+LOG_MODULE_DECLARE(usbpd);
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 bool is_typec_port(int port)

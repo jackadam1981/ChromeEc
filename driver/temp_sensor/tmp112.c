@@ -21,6 +21,7 @@
 #define TMP112_SHIFT1 (16 - TMP112_RESOLUTION)
 #define TMP112_SHIFT2 (TMP112_RESOLUTION - 8)
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_THERMAL);
 #define CPRINTS(format, args...) cprints(CC_THERMAL, format, ##args)
 
 static int temp_mk_local[TMP112_COUNT];

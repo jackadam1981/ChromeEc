@@ -7,6 +7,8 @@
 #include <zephyr/sys/printk.h>
 #include <zephyr/shell/shell_uart.h>
 #include <zephyr/zephyr.h>
+#include <zephyr/logging/log.h>
+#include <zephyr/logging/log_ctrl.h>
 
 #include "ap_power/ap_pwrseq.h"
 #include "button.h"
@@ -22,6 +24,8 @@
 #include "zephyr_espi_shim.h"
 #include "ec_app_main.h"
 
+LOG_MODULE_REGISTER(ec_main);
+
 /* For testing purposes this is not named main. See main_shim.c for the real
  * main() function.
  */
@@ -34,6 +38,16 @@ void ec_app_main(void)
 	 */
 	if (IS_ENABLED(CONFIG_CMD_AP_RESET_LOG)) {
 		init_reset_log();
+	}
+
+	if (IS_ENABLED(CONFIG_LOG)) {
+		LOG_CORE_INIT();
+		LOG_INIT();
+		/* TODO: Must be set to 1000 because 1000 is expected
+		 *  internally. Must come after LOG_INIT Need to figure out how
+		 *  this is so broken.
+		 */
+		log_output_timestamp_freq_set(1000);
 	}
 
 	system_print_banner();
@@ -90,7 +104,7 @@ void ec_app_main(void)
 	 * into account the time before timer_init(), but it'll at least catch
 	 * the majority of the time.
 	 */
-	cprints(CC_SYSTEM, "Inits done");
+	LOG_INF("Inits done");
 
 	/* Start the EC tasks after performing all main initialization */
 	if (IS_ENABLED(CONFIG_SHIMMED_TASKS)) {

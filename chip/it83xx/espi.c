@@ -17,6 +17,8 @@
 #include "uart.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_LPC);
+
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ##args)
 

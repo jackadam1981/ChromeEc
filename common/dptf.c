@@ -17,6 +17,8 @@
 #include "temp_sensor/temp_sensor.h"
 #endif
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_DPTF);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_DPTF, outstr)
 #define CPRINTS(format, args...) cprints(CC_DPTF, format, ##args)

@@ -13,7 +13,7 @@
 #include "gpio/gpio.h"
 #include "hooks.h"
 
-LOG_MODULE_DECLARE(skyrim, CONFIG_SKYRIM_LOG_LEVEL);
+LOG_MODULE_REGISTER(skyrim_fan);
 
 /*
  * Skyrim fan support

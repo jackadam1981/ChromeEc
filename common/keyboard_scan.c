@@ -32,6 +32,8 @@
 #include "keyboard_customization.h"
 #endif
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_KEYSCAN);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYSCAN, outstr)
 #define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ##args)

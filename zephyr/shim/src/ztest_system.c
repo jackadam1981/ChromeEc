@@ -9,8 +9,6 @@
 #include "charge_manager.h"
 #include "sysjump.h"
 
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
-
 struct jump_data mock_jump_data = {};
 
 /* When CONFIG_RAM_SIZE is defined, this is provided by common/system.c */

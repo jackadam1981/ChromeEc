@@ -13,6 +13,8 @@
 #include "usb_pd.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 /* The macro is used to prevent a DBZ exception while decoding PDOs. */

@@ -11,6 +11,8 @@
 #include "usb_console.h"
 #include "util.h"
 
+#ifndef CONFIG_ZEPHYR
+
 #ifdef CONFIG_CONSOLE_CHANNEL
 /* Default to all channels active */
 #ifndef CC_DEFAULT
@@ -28,6 +30,7 @@ static uint32_t channel_mask_saved = CC_DEFAULT;
  * might also become more important if we have >32 channels - for example, if
  * we decide to replace enum console_channel with enum module_id.
  */
+
 static const char *const channel_names[] = {
 #define CONSOLE_CHANNEL(enumeration, string) string,
 #include "console_channel.inc"
@@ -72,6 +75,7 @@ bool console_channel_is_disabled(enum console_channel channel)
 	return false;
 }
 #endif /* CONFIG_CONSOLE_CHANNEL */
+#endif
 
 #ifndef CONFIG_ZEPHYR
 /*****************************************************************************/
@@ -149,6 +153,7 @@ void cflush(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifndef CONFIG_ZEPHYR
 #ifdef CONFIG_CONSOLE_CHANNEL
 /* Set active channels */
 static int command_ch(int argc, char **argv)
@@ -191,3 +196,4 @@ static int command_ch(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(chan, command_ch, "[ save | restore | <mask> ]",
 			     "Save, restore, get or set console channel mask");
 #endif /* CONFIG_CONSOLE_CHANNEL */
+#endif

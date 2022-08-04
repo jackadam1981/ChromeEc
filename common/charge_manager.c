@@ -31,8 +31,9 @@
 #error Mock defined HAS_MOCK_CHARGE_MANAGER
 #endif
 
-#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBCHARGE);
 
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define POWER(charge_port) ((charge_port.current) * (charge_port.voltage))
 
 /* Timeout for delayed override power swap, allow for 500ms extra */

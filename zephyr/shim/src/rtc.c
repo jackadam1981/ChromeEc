@@ -149,7 +149,7 @@ static int command_system_rtc(int argc, char **argv)
 		return EC_ERROR_INVAL;
 	}
 
-	print_system_rtc(CC_COMMAND);
+	print_system_rtc();
 
 	return EC_SUCCESS;
 }
@@ -176,7 +176,7 @@ static int command_rtc_alarm_test(int argc, char **argv)
 			return EC_ERROR_PARAM2;
 	}
 
-	ccprintf("Setting RTC alarm\n");
+	printk("Setting RTC alarm\n");
 
 	system_set_rtc_alarm(s, us);
 

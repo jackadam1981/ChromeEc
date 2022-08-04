@@ -41,6 +41,8 @@
 #define AC_REG_TO_CURRENT(REG) (((REG)*ISL9241_DEFAULT_RS1) / BOARD_RS1)
 #define AC_CURRENT_TO_REG(CUR) (((CUR)*BOARD_RS1) / ISL9241_DEFAULT_RS1)
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_CHARGER);
+
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHARGER, "ISL9241 " format, ##args)
 

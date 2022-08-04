@@ -16,6 +16,8 @@
 #include "timer.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_PORT80);
+
 #define CPRINTF(format, args...) cprintf(CC_PORT80, format, ##args)
 
 #ifdef CONFIG_PORT80_4_BYTE

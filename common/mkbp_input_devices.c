@@ -20,6 +20,8 @@
 #include "tablet_mode.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_KEYBOARD);
+
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ##args)
 
 /* Buttons and switch state. */

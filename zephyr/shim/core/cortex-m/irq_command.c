@@ -28,7 +28,7 @@ static int command_irq(int argc, char **argv)
 
 	for (int i = 0; i < CONFIG_NUM_IRQS; i++) {
 		if (irq_count[i])
-			ccprintf("  IRQ %d: %d\n", i, irq_count[i]);
+			printk("  IRQ %d: %d\n", i, irq_count[i]);
 	}
 
 	return EC_SUCCESS;

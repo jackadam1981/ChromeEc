@@ -7,6 +7,54 @@
 #define __CROS_EC_ZEPHYR_CONSOLE_SHIM_H
 
 #include <zephyr/shell/shell.h>
+#include <zephyr/logging/log.h>
+
+#define Z_CC_COMMAND command
+#define Z_CC_ACCEL accel
+#define Z_CC_AUDIO_CODEC audio_codec
+#define Z_CC_BLUETOOTH_LE bluetooth_le
+#define Z_CC_BLUETOOTH_LL bluetooth_ll
+#define Z_CC_BLUETOOTH_HCI bluetooth_hci
+#define Z_CC_CEC cec
+#define Z_CC_CHARGER charger
+#define Z_CC_CHIPSET chipset
+#define Z_CC_CLOCK clock
+#define Z_CC_DMA dma
+#define Z_CC_EVENTS events
+#define Z_CC_FP fingerprint
+#define Z_CC_GESTURE gesture
+#define Z_CC_GPIO gpio
+#define Z_CC_HOSTCMD hostcmd
+#define Z_CC_I2C i2c
+#define Z_CC_IPI ipi
+#define Z_CC_KEYBOARD keyboard
+#define Z_CC_KEYSCAN keyscan
+#define Z_CC_LIDANGLE lidangle
+#define Z_CC_LOGOLED logoled
+#define Z_CC_LIGHTBAR lightbar
+#define Z_CC_RGBKBD rgbkbd
+#define Z_CC_LPC lpc
+#define Z_CC_MOTION_LID motionlid
+#define Z_CC_MOTION_SENSE motionsense
+#define Z_CC_PD_HOST_CMD pdhostcm
+#define Z_CC_PORT80 port80
+#define Z_CC_PS2 ps2
+#define Z_CC_PCHG pchg
+#define Z_CC_PWM pwm
+#define Z_CC_SPI spi
+#define Z_CC_SWITCH switch
+#define Z_CC_SYSTEM system
+#define Z_CC_TASK task
+#define Z_CC_TOUCHPAD touchpad
+#define Z_CC_DPTF dptf
+#define Z_CC_ALS als
+#define Z_CC_THERMAL thermal
+#define Z_CC_USB usb
+#define Z_CC_USBCHARGE usbcharge
+#define Z_CC_USBPD usbpd
+#define Z_CC_VBOOT vboot
+#define Z_CC_HOOK hook
+#define Z_CC_GPU gpu
 
 struct zephyr_console_command {
 	/* Handler for the command.  argv[0] will be the command name. */

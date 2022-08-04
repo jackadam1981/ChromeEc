@@ -30,6 +30,7 @@
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ##args)
+LOG_MODULE_DECLARE(command);
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ##args)
 
 /* TCPC AIC GPIO Configuration */

@@ -13,6 +13,8 @@
 #include "tablet_mode.h"
 #include "timer.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_MOTION_LID);
+
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_LID, format, ##args)
 

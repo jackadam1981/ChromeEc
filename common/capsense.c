@@ -12,6 +12,8 @@
 #include "printf.h"
 #include "timer.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_KEYBOARD);
+
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ##args)

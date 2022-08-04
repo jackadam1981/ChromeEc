@@ -16,6 +16,8 @@
 #include "task.h"
 #include "timer.h"
 
+LOG_MODULE_REGISTER(hooks_shim);
+
 /*
  * hook_registry maps each hook_type to the list of handlers for that hook type.
  *
@@ -50,8 +52,7 @@ static K_WORK_DELAYABLE_DEFINE(hook_ticks_work_data, hook_tick_work);
 
 static void work_queue_error(const void *data, int rv)
 {
-	cprints(CC_HOOK,
-		"Warning: deferred call not submitted, "
+	LOG_WRN("deferred call not submitted, "
 		"deferred_data=0x%p, err=%d",
 		data, rv);
 }
@@ -88,8 +89,7 @@ static void check_hook_task_priority(void)
 	 * related threads cannot preempt any of the shimmed tasks.
 	 */
 	if (k_thread_priority_get(thread) < (TASK_ID_COUNT - 1))
-		cprintf(CC_HOOK,
-			"ERROR: %s has priority %d but must be >= %d\n",
+		LOG_ERR("%s has priority %d but must be >= %d\n",
 			k_thread_name_get(thread),
 			k_thread_priority_get(thread), (TASK_ID_COUNT - 1));
 }

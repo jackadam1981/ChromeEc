@@ -23,6 +23,8 @@
 #include "usb_common.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_LPC);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
 #define CPRINTF(format, args...) cprintf(CC_LPC, format, ##args)

@@ -42,6 +42,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 test_mockable __keep int main(void)

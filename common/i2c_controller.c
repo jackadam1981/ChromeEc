@@ -37,6 +37,8 @@
 #define UNWEDGE_SCL_ATTEMPTS 10
 #define UNWEDGE_SDA_ATTEMPTS 3
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_I2C);
+
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ##args)

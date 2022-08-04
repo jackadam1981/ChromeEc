@@ -17,6 +17,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
+
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)

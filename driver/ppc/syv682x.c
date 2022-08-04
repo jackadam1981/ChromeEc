@@ -68,6 +68,7 @@ static timestamp_t vconn_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 "instead of the TCPC"
 #endif
 
+	ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 	static int

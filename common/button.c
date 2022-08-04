@@ -23,6 +23,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SWITCH);
+
 /* Console output macro */
 #define CPRINTS(format, args...) cprints(CC_SWITCH, format, ##args)
 

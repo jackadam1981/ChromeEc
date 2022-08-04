@@ -12,6 +12,8 @@
 #include "i2c.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_THERMAL);
+
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
 /*

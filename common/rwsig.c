@@ -26,6 +26,7 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
 #if !defined(CONFIG_MAPPED_STORAGE)

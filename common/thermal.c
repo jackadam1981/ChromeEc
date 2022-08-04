@@ -23,6 +23,8 @@
 #include "temp_sensor/temp_sensor.h"
 #endif
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_THERMAL);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_THERMAL, outstr)
 #define CPRINTS(format, args...) cprints(CC_THERMAL, format, ##args)

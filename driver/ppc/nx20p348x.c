@@ -19,8 +19,11 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
+/* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 
 static atomic_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 

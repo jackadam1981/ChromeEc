@@ -11,6 +11,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTL(format, args...) \
 	CPRINTS("%s:%d: " format, __func__, __LINE__, ##args)

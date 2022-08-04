@@ -21,6 +21,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_CHARGER);
+
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 #define CUTOFFPRINTS(info) CPRINTS("%s %s", "Battery cut off", info)
@@ -379,7 +381,7 @@ static int command_cutoff(int argc, char **argv)
 
 	rv = board_cut_off_battery();
 	if (rv == EC_RES_SUCCESS) {
-		ccprints("Battery cut off");
+		CPRINTS("Battery cut off");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
 		return EC_SUCCESS;
 	}

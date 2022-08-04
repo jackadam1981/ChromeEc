@@ -11,6 +11,8 @@
 #include "usb_sm.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USB);
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USB, format, ##args)

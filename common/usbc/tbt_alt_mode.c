@@ -56,6 +56,8 @@
  *     -----------------------------------------------------------------|
  */
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
@@ -80,9 +82,9 @@ static uint8_t tbt_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 #define TBT_CLR_FLAG(port, flag) (tbt_flags[port] &= (~flag))
 #define TBT_CHK_FLAG(port, flag) (tbt_flags[port] & (flag))
 
-static int tbt_prints(const char *string, int port)
+static tbt_prints(const char *string, int port)
 {
-	return CPRINTS("C%d: TBT %s", port, string);
+	CPRINTS("C%d: TBT %s", port, string);
 }
 
 /* The states of Thunderbolt negotiation */

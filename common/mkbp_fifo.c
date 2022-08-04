@@ -14,6 +14,8 @@
 #include "task.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_KEYBOARD);
+
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ##args)
 

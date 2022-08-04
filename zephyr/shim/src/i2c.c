@@ -10,6 +10,8 @@
 #include "i2c.h"
 #include "i2c/i2c.h"
 
+LOG_MODULE_REGISTER(i2c_shim);
+
 /*
  * The named-i2c-ports node is required by the I2C shim
  */
@@ -79,9 +81,9 @@ static int command_i2c_portmap(int argc, char **argv)
 {
 	int i;
 
-	ccprintf("Zephyr remote I2C ports (%d):\n", I2C_PORT_COUNT);
+	LOG_INF("Zephyr remote I2C ports (%d):\n", I2C_PORT_COUNT);
 	for (i = 0; i < I2C_PORT_COUNT; i++) {
-		ccprintf("  %d : %d\n", i, i2c_remote_ports[i]);
+		LOG_INF("  %d : %d\n", i, i2c_remote_ports[i]);
 	}
 
 	return EC_RES_SUCCESS;

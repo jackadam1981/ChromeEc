@@ -14,6 +14,10 @@
 
 #ifdef CONFIG_ZEPHYR
 #include "zephyr_console_shim.h"
+#define ZEPHYR_LOG_MODULE_DECLARE_SHIM(cc_name) \
+	LOG_MODULE_DECLARE(Z_##cc_name, CONFIG_##cc_name##_LOG_LEVEL)
+#else
+#define ZEPHYR_LOG_MODULE_DECLARE_SHIM(name, args...)
 #endif
 
 #ifdef __cplusplus
@@ -274,6 +278,24 @@ void console_has_input(void);
 			  ~CMD_FLAG_RESTRICTED))
 
 #endif /* HAS_TASK_CONSOLE */
+
+#ifdef CONFIG_ZEPHYR
+
+#undef cprints
+#define cprints(channel, format, args...) LOG_INF(format, ##args)
+#undef cprintf
+#define cprintf(channel, format, args...) LOG_PRINTK(format, ##args)
+#undef cputs
+#define cputs(channel, str) LOG_PRINTK("%s", str)
+
+#undef ccprints
+#define ccprints(format, args...) LOG_PRINTK(format, ##args)
+#undef ccprintf
+#define ccprintf(format, args...) LOG_PRINTK(format, ##args)
+#undef ccputs
+#define ccputs(str) LOG_PRINTK("%s", str)
+
+#endif
 
 #ifdef __cplusplus
 }

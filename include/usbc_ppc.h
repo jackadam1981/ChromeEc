@@ -183,7 +183,7 @@ extern unsigned int ppc_cnt;
  * @param string: message string to display on the console.
  * @param port: The Type-C port number
  */
-int ppc_prints(const char *string, int port);
+void ppc_prints(const char *string, int port);
 
 /**
  * Common CPRINTS for PPC drivers with an error code.
@@ -192,7 +192,7 @@ int ppc_prints(const char *string, int port);
  * @param port: The Type-C port number
  * @param error: The error code to display at the end of the message.
  */
-int ppc_err_prints(const char *string, int port, int error);
+void ppc_err_prints(const char *string, int port, int error);
 
 /**
  * Discharge PD VBUS on src/sink disconnect & power role swap

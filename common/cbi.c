@@ -21,6 +21,7 @@
 #include "util.h"
 #endif
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
 /*
  * Functions and variables defined here shared with host tools (e.g. cbi-util).
  * TODO: Move these to common/cbi/cbi.c and common/cbi/utils.c if they grow.

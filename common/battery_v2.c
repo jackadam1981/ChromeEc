@@ -16,6 +16,7 @@
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_CHARGER);
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
 /*

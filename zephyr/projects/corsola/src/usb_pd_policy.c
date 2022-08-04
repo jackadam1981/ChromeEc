@@ -20,9 +20,6 @@
 #error Corsola reference must have at least one 3.0 A port
 #endif
 
-#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
-
 static int active_aux_port = -1;
 
 int pd_check_vconn_swap(int port)

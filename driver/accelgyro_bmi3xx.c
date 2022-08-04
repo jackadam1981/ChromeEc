@@ -28,9 +28,12 @@
 #define ACCELGYRO_BMI3XX_INT_ENABLE
 #endif
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_ACCEL);
+
+/* Console output macros */
+#define CPRINTS(format, args...) cprints(CC_ACCEL, format, ##args)
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ##args)
-#define CPRINTS(format, args...) cprints(CC_ACCEL, format, ##args)
 
 #define OFFSET_UPDATE_PER_TRY 10
 

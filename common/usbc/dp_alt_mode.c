@@ -19,13 +19,10 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
-#ifdef CONFIG_COMMON_RUNTIME
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
-#else
-#define CPRINTF(format, args...)
-#define CPRINTS(format, args...)
-#endif
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 
 /* The state of the DP negotiation */
 enum dp_states {

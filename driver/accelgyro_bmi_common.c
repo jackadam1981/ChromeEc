@@ -18,6 +18,8 @@
 #include "motion_sense_fifo.h"
 #include "spi.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_ACCEL);
+
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ##args)

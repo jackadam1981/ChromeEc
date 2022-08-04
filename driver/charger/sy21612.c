@@ -15,6 +15,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_CHARGER);
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
 static int sy21612_clear_set_reg(int reg, int clear, int set)

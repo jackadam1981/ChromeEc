@@ -27,6 +27,8 @@
 #include "util.h"
 #include "system_chip.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_LPC);
+
 /* Console output macros */
 #if !(DEBUG_LPC)
 #define CPUTS(...)

@@ -17,6 +17,8 @@
 #include "task.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_EVENTS);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_EVENTS, outstr)
 #define CPRINTS(format, args...) cprints(CC_EVENTS, format, ##args)

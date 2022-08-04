@@ -21,6 +21,7 @@
 #define AC_CURRENT_TO_REG(CUR) ((CUR)*R_AC / DEFAULT_R_AC)
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 static int dev_id[CONFIG_USB_PD_PORT_MAX_COUNT] = { -1 };

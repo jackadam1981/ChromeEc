@@ -20,6 +20,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_THERMAL, outstr)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_THERMAL);
 #define CPRINTS(format, args...) cprints(CC_THERMAL, format, ##args)
 
 /*

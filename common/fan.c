@@ -17,6 +17,10 @@
 #include "system.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_PWM);
+
+#define CPRINTS(format, args...) cprints(CC_PWM, format, ##args)
+
 /* True if we're listening to the thermal control task. False if we're setting
  * things manually. */
 static int thermal_control_enabled[CONFIG_FANS];
@@ -522,7 +526,7 @@ static void pwm_fan_second(void)
 		if (fan_is_stalled(FAN_CH(fan))) {
 			rpm = EC_FAN_SPEED_STALLED;
 			stalled = 1;
-			cprints(CC_PWM, "Fan %d stalled!", fan);
+			CPRINTS("Fan %d stalled!", fan);
 		} else {
 			rpm = fan_get_rpm_actual(FAN_CH(fan));
 		}

@@ -336,105 +336,26 @@ void uart_clear_input(void)
 	ring_buf_reset(&rx_buffer);
 }
 
-static void handle_sprintf_rv(int rv, size_t *len)
-{
-	if (rv < 0) {
-		LOG_ERR("Print buffer is too small");
-		*len = CONFIG_SHELL_PRINTF_BUFF_SIZE;
-	} else {
-		*len += rv;
-	}
-}
-
-static void zephyr_print(const char *buff, size_t size)
-{
-	/*
-	 * shell_* functions can not be used in ISRs so use printk instead.
-	 * If the shell is about to be (or is) stopped, use printk, since the
-	 * output may be stalled and the shell mutex held.
-	 * Also, console_buf_notify_chars uses a mutex, which may not be
-	 * locked in ISRs.
-	 */
-	if (k_is_in_isr() || shell_stopped ||
-	    shell_zephyr->ctx->state != SHELL_STATE_ACTIVE) {
-		printk("%s", buff);
-	} else {
-		shell_fprintf(shell_zephyr, SHELL_NORMAL, "%s", buff);
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE))
-			console_buf_notify_chars(buff, size);
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_DEBUG))
-			printk("%s", buff);
-	}
-}
-
 #if defined(CONFIG_USB_CONSOLE) || defined(CONFIG_USB_CONSOLE_STREAM)
 BUILD_ASSERT(0, "USB console is not supported with Zephyr");
 #endif /* defined(CONFIG_USB_CONSOLE) || defined(CONFIG_USB_CONSOLE_STREAM) */
 
-int cputs(enum console_channel channel, const char *outstr)
-{
-	/* Filter out inactive channels */
-	if (console_channel_is_disabled(channel))
-		return EC_SUCCESS;
+/*
+ * This is a copy of LOG_MODULE_REGISTER with LOG_MODULE_DECLARE line removed.
+ * This allows registering multiple modules in the same file, otherwise
+ * LOG_MODULE_DECLARE would cause conflicts.
+ * TODO: Remove after upstreaming a equivleant macro.
+ */
+#define LOG_MODULE_REGISTER_NO_DECLARE(...)                                 \
+	COND_CODE_1(                                                        \
+		Z_DO_LOG_MODULE_REGISTER(__VA_ARGS__),                      \
+		(_LOG_MODULE_DATA_CREATE(GET_ARG_N(1, __VA_ARGS__),         \
+					 _LOG_LEVEL_RESOLVE(__VA_ARGS__))), \
+		())
 
-	zephyr_print(outstr, strlen(outstr));
-
-	return 0;
-}
-
-int cprintf(enum console_channel channel, const char *format, ...)
-{
-	int rv;
-	va_list args;
-	size_t len = 0;
-	char buff[CONFIG_SHELL_PRINTF_BUFF_SIZE];
-
-	/* Filter out inactive channels */
-	if (console_channel_is_disabled(channel))
-		return EC_SUCCESS;
-
-	va_start(args, format);
-	rv = crec_vsnprintf(buff, CONFIG_SHELL_PRINTF_BUFF_SIZE, format, args);
-	va_end(args);
-	handle_sprintf_rv(rv, &len);
-
-	zephyr_print(buff, len);
-
-	return rv > 0 ? EC_SUCCESS : rv;
-}
-
-int cprints(enum console_channel channel, const char *format, ...)
-{
-	int rv;
-	va_list args;
-	char buff[CONFIG_SHELL_PRINTF_BUFF_SIZE];
-	size_t len = 0;
-
-	/* Filter out inactive channels */
-	if (console_channel_is_disabled(channel))
-		return EC_SUCCESS;
-
-	buff[0] = '[';
-	len = 1;
-
-	rv = snprintf_timestamp_now(buff + len, sizeof(buff) - len);
-	handle_sprintf_rv(rv, &len);
-
-	rv = crec_snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			   " ");
-	handle_sprintf_rv(rv, &len);
-
-	va_start(args, format);
-	rv = crec_vsnprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			    format, args);
-	va_end(args);
-	handle_sprintf_rv(rv, &len);
-
-	rv = crec_snprintf(buff + len, CONFIG_SHELL_PRINTF_BUFF_SIZE - len,
-			   "]\n");
-	handle_sprintf_rv(rv, &len);
-
-	zephyr_print(buff, len);
-
-	return rv > 0 ? EC_SUCCESS : rv;
-}
+#define CONSOLE_CHANNEL(enumeration, name)              \
+	LOG_MODULE_REGISTER_NO_DECLARE(Z_##enumeration, \
+				       CONFIG_##enumeration##_LOG_LEVEL)
+#undef CONFIG_I2C
+#include "include/console_channel.inc"
+#undef CONSOLE_CHANNEL

@@ -33,6 +33,8 @@
 #define BC12_DETECT_US (312 * MSEC)
 #define BD9995X_VSYS_PRECHARGE_OFFSET_MV 200
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_CHARGER);
+
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 

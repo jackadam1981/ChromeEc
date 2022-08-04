@@ -29,6 +29,8 @@
 #include "usb_pd.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 #if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)

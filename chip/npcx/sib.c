@@ -25,6 +25,8 @@
 #define HOST_TRANSACTION_TIMEOUT_US 5
 #endif
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_SYSTEM);
+
 /* Console output macros */
 #ifdef DEBUG_SIB
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)

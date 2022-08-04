@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#include <zephyr/logging/log.h>
+#include <zephyr/logging/log_ctrl.h>
+
 #include "ap_power/ap_power.h"
 #include "charger.h"
 #include "chipset.h"
@@ -16,6 +19,8 @@
 #include "power.h"
 #include "power/amd_x86.h"
 #include "timer.h"
+
+LOG_MODULE_DECLARE(switch, CONFIG_SWITCH_LOG_LEVEL);
 
 /* Power Signal Input List */
 /* TODO: b/218904113: Convert to using Zephyr GPIOs */
@@ -72,6 +77,8 @@ static void baseboard_init(void)
 {
 	static struct ap_power_ev_callback cb;
 
+	LOG_DBG("%s", __func__);
+
 	/* Setup a suspend/resume callback */
 	ap_power_ev_init_callback(&cb, baseboard_suspend_change,
 				  AP_POWER_RESUME | AP_POWER_SUSPEND);
@@ -97,6 +104,8 @@ void board_pwrbtn_to_pch(int level)
 {
 	timestamp_t start;
 
+	LOG_DBG("%s", __func__);
+
 	/* Add delay for G3 exit if asserting PWRBTN_L and RSMRST_L is low. */
 	if (!level &&
 	    !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_rsmrst_l))) {
@@ -110,7 +119,7 @@ void board_pwrbtn_to_pch(int level)
 
 		if (!gpio_pin_get_dt(
 			    GPIO_DT_FROM_NODELABEL(gpio_ec_soc_rsmrst_l)))
-			ccprints("Error pwrbtn: RSMRST_L still low");
+			LOG_ERR("Error pwrbtn: RSMRST_L still low");
 
 		msleep(EDS_PWR_BTN_RSMRST_T1A_DELAY);
 	}
@@ -145,7 +154,7 @@ static void setup_mp2845(void)
 	if (i2c_update16(chg_chips[CHARGER_SOLO].i2c_port,
 			 MP2845A_I2C_ADDR_FLAGS, MP2854A_MFR_VOUT_CMPS_MAX_REG,
 			 MP2854A_MFR_LOW_PWR_SEL, MASK_CLR))
-		ccprints("Failed to send mp2845 workaround");
+		LOG_ERR("Failed to send mp2845 workaround");
 }
 DECLARE_DEFERRED(setup_mp2845);
 
@@ -226,6 +235,6 @@ void baseboard_set_en_pwr_s3(enum gpio_signal signal)
 
 void baseboard_soc_thermtrip(enum gpio_signal signal)
 {
-	ccprints("SoC thermtrip reported, shutting down");
+	LOG_WRN("SoC thermtrip reported, shutting down");
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_THERMAL);
 }

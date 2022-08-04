@@ -26,6 +26,8 @@
 #include "vboot.h"
 #include "vboot_hash.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_VBOOT);
+
 #define CPRINTS(format, args...) cprints(CC_VBOOT, "VB " format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT, "VB " format, ##args)
 

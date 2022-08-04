@@ -17,6 +17,8 @@
 #define RT1718S_FLAGS_SOURCE_ENABLED BIT(0)
 static atomic_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 

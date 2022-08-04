@@ -2,10 +2,22 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+module = SKYRIM
+module-str = Skyrim board-specific Code
+
 config BOARD_SKYRIM
 	bool "Google Skyrim Board"
 	help
 	  Build Google Skyrim reference board.  This board uses an AMD SoC
 	  and NPCX9 EC
+
+module = CHARGE
+module-str = charge
+source "subsys/logging/Kconfig.template.log_config"
+
+module = SWITCH
+module-str = switch
+source "subsys/logging/Kconfig.template.log_config"
+
 
 source "Kconfig.zephyr"

@@ -166,13 +166,6 @@ void gpio_set_level(enum gpio_signal signal, int value)
 	}
 }
 
-void gpio_set_level_verbose(enum console_channel channel,
-			    enum gpio_signal signal, int value)
-{
-	cprints(channel, "Set %s: %d", gpio_get_name(signal), value);
-	gpio_set_level(signal, value);
-}
-
 void gpio_or_ioex_set_level(int signal, int value)
 {
 	gpio_set_level(signal, value);

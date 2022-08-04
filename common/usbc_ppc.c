@@ -14,6 +14,8 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_USBPD);
+
 #ifndef TEST_BUILD
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
@@ -22,21 +24,21 @@
 #define CPRINTS(args...)
 #endif
 
-int ppc_prints(const char *string, int port)
+void ppc_prints(const char *string, int port)
 {
 #if defined(TEST_BUILD) || !defined(CONFIG_USBC_PPC_LOGGING)
-	return 0;
+	return;
 #else
-	return CPRINTS("ppc p%d %s", port, string);
+	CPRINTS("ppc p%d %s", port, string);
 #endif /* defined(TEST_BUILD) || !defined(CONFIG_USBC_PPC_LOGGING) */
 }
 
-int ppc_err_prints(const char *string, int port, int error)
+void ppc_err_prints(const char *string, int port, int error)
 {
 #if defined(TEST_BUILD) || !defined(CONFIG_USBC_PPC_LOGGING)
-	return 0;
+	return;
 #else
-	return CPRINTS("ppc p%d %s (%d)", port, string, error);
+	CPRINTS("ppc p%d %s (%d)", port, string, error);
 #endif /* defined(TEST_BUILD) || !defined(CONFIG_USBC_PPC_LOGGING) */
 }
 

@@ -23,6 +23,8 @@
 #include "wireless.h"
 #include "registers.h"
 
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_CHIPSET);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)

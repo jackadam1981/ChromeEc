@@ -27,6 +27,7 @@
 /* Console output macros */
 #ifdef CONFIG_MCHP_DEBUG_LPC
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
+ZEPHYR_LOG_MODULE_DECLARE_SHIM(CC_LPC);
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ##args)
 #else
 #define CPUTS(...)
