@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdccadf7_517ce74b",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c769c279_ff264710",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 47
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3911cc76_8d74295e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-02T21:04:14Z",
       "side": 1,
       "message": "typo?\n15W \u003d 15000",
+      "range": {
+        "startLine": 66,
+        "startChar": 53,
+        "endLine": 66,
+        "endChar": 58
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44037337_c208160f",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "It wasn\u0027t a typo, but just got pulled in because that\u0027s what is being used for skyrim which uses the same charger IC. Looking at what\u0027s being used for other projects, I think 15000 is too low for a big core device. Brya for example uses 40000 for this value. I put this value at 30000 for now, but also added the config that\u0027s used when a battery is present and set that to 15000",
+      "parentUuid": "3911cc76_8d74295e",
       "range": {
         "startLine": 66,
         "startChar": 53,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00eb9d56_b3efb73b",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4779e16_71dab7ad",
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e82f780b_0d9ba328",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-08-02T05:33:08Z",
       "side": 1,
       "message": "add braces (zephyr style), same below in pd_set_power_supply_ready()",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "628d4c52_ef9bcfa7",
+        "filename": "zephyr/projects/rex/src/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82f780b_0d9ba328",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e99575b_6d6b9b14",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "I only added support for C0 at this time. We do have C1, but that\u0027s on the daughter boards which aren\u0027t available for initial power on. I have removed C1 references, but that\u0027s only temporary, until C1 support is added.\n\nSo I think it\u0027s probably better to leave the flow the way it is, since we will need to add C1 support to these helper functions.",
+      "parentUuid": "4f210dac_530b15c0",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e03b7e6_894e49ba",
         "filename": "zephyr/projects/rex/src/usbc_config.c",
         "patchSetId": 1
@@ -123,6 +237,30 @@
       "writtenOn": "2022-08-02T05:33:08Z",
       "side": 1,
       "message": "add braces",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 38
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cfefce6_8a0631f9",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e03b7e6_894e49ba",
       "range": {
         "startLine": 106,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4576c1d9_5081b548",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53480bfd_789bb6c7",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15e21ada_8357404f",
@@ -173,6 +335,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9caeba72_a2451dd5",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15e21ada_8357404f",
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c48b488b_3141b493",
@@ -186,6 +366,24 @@
       "writtenOn": "2022-08-02T05:33:08Z",
       "side": 1,
       "message": "you could change the condition here and save one level of indentation, make everything a bit more compact\n\nif (nct38xx_get_boot_type(i) !\u003d NCT38XX_BOOT_DEAD_BATTERY) {\n  continue;\n}\n...",
+      "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d866af4_7919a821",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T01:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c48b488b_3141b493",
       "revId": "25f8412a101b879a6976591c3a46cc803a0a36f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
