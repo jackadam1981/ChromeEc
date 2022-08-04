@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d06be2_54c7626a",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-04T07:04:11Z",
+      "side": 1,
+      "message": "Yes, it enables CONFIG_BRINGUP, to auto start power up without using power button. We enabled it in Nivviks at initial phase and removed it later on. This is the CL:3626855 to remove it. If we have power button support working, this can be skipped. Just keep this option in mind.",
+      "parentUuid": "7b458e88_65cd331b",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b073e8b6_77c4a55a",
@@ -304,6 +328,30 @@
       "writtenOn": "2022-08-03T21:19:01Z",
       "side": 1,
       "message": "Please add CONFIG_X86_NON_DSX_PWRSEQ_HOST_CMD\u003dy",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e1a75e4_6687433f",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-04T07:04:11Z",
+      "side": 1,
+      "message": "I have a CL to add this config just recently. Nivviks created this config later than I uploaded MTL code.",
+      "parentUuid": "cf388aed_37322423",
       "range": {
         "startLine": 41,
         "startChar": 0,
