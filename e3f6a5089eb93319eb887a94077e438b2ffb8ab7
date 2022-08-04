@@ -153,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e056d6_edf2586f",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-04T00:07:02Z",
+      "side": 1,
+      "message": "this is not needed for RVP, may be needed for Rex to remove glitches on S3 line that could be reason for not using VW on Rex.",
+      "parentUuid": "67e0bd16_b144dc94",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf388aed_37322423",
