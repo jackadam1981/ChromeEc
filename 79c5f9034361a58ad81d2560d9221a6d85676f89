@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3499b714_05eeb3cc",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T12:13:24Z",
+      "side": 1,
+      "message": "I think this should be kept because the backlight driver will use it. Or do you define it in the other file?",
+      "parentUuid": "8436512e_9a32f1b7",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "79c5f9034361a58ad81d2560d9221a6d85676f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06a05921_8d342f17",
         "filename": "board/shotzo/board.h",
         "patchSetId": 34
