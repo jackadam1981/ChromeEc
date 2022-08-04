@@ -177,6 +177,24 @@
       "parentUuid": "b3890ffe_eb2db0b1",
       "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f2de7b_1bd7f14d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362541
+      },
+      "writtenOn": "2022-08-04T04:14:56Z",
+      "side": 1,
+      "message": "Created bug https://partnerissuetracker.corp.google.com/issues/241322365 to track enabling LTO on RVP baseboard. Hence resolving this comment.",
+      "parentUuid": "7eaccb05_075635c6",
+      "revId": "97d1711057c0de0f90b12585917127e4a47c9850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
