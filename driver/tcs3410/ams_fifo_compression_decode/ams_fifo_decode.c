@@ -26,11 +26,8 @@ static size_t previous_bit_index = 0;
  ***********************************************************************************/
 static uint32_t get_packetized_array_multichl(uint8_t* input_byte, uint16_t num_bytes, int packet_size)
 {
-	size_t bit_index = 0;
+	size_t bit_index = previous_bit_index;
 	uint8_t n_bits;
-
-	bit_index = previous_bit_index;
-
 	size_t byte_index = bit_index / 8;
 	uint8_t bit_in_byte_index = bit_index % 8;
 	uint32_t result = input_byte[byte_index] >> bit_in_byte_index;
