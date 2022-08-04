@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "485143cc_a9db7ad3",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T12:44:57Z",
+      "side": 1,
+      "message": "Sorry, it is my fault.\nI was in the process of rebase CLs. didn\u0027t find this bug.\nI verify all the code at the last CL and check it can bring up MB.",
+      "parentUuid": "3499b714_05eeb3cc",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "79c5f9034361a58ad81d2560d9221a6d85676f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a05921_8d342f17",
