@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90133a4e_1edb67ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T09:03:07Z",
+      "side": 1,
+      "message": "overridable?",
+      "range": {
+        "startLine": 13,
+        "startChar": 59,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "041c231c44ff5d57f24cba19e1d03b41ed7789a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b463f9_bcf81aad",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T09:03:07Z",
+      "side": 1,
+      "message": "Will the return 0 case happen? Could you please print something for this case?",
+      "revId": "041c231c44ff5d57f24cba19e1d03b41ed7789a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
