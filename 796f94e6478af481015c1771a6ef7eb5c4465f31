@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a480fa8_f9babbbc",
+        "filename": "board/shotzo/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T06:36:36Z",
+      "side": 1,
+      "message": "I think you can just remove the line that is unnecessary for this project. Please keep the original coding style. Please modify the code below too.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 7
+      },
+      "revId": "796f94e6478af481015c1771a6ef7eb5c4465f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
