@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4a3160_3f93dfe7",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T10:41:33Z",
+      "side": 1,
+      "message": "This should make the build warning because the number items in the array are not the same.\n\n```\nbaseboard/dedede/variant_ec_it8320.c:77:47: warning: type of \u0027i2c_ports\u0027 does not match original declaration [-Wlto-type-mismatch]\n   77 | __attribute__((weak)) const struct i2c_port_t i2c_ports[] \u003d {\n      |                                               ^\nboard/shotzo/board.c:223:25: note: array types have different bounds\n  223 | const struct i2c_port_t i2c_ports[] \u003d {\n      |                         ^\nboard/shotzo/board.c:223:25: note: \u0027i2c_ports\u0027 was previously declared here\n```\n\n\nI think you can add the `#ifdef BOARD_SHOTZO` to include the extra i2c config (ie. I2C_PORT_BACKLIGHT).",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 22
+      },
+      "revId": "0c2181fbfc4cdc11cba8ae52294c7a7781542928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
