@@ -230,33 +230,6 @@ void ams_device_get_version(void)
     return;
 }
 
-static char formatted_message[FORMAT_LOG_MSG_SIZE];
-static char log_message[LOG_MSG_SIZE];
-void ams_device_log(const char *filename, const char *function, int line, uint32_t level, const char *format, ...)
-{
-    const char *local_filename = filename;
-    int cnt;
-
-    memset(log_message, 0, LOG_MSG_SIZE);
-    memset(formatted_message, 0, FORMAT_LOG_MSG_SIZE);
-    if (device.log)
-    {
-        va_list argptr;
-
-        va_start(argptr, format);
-        cnt = vsnprintf(log_message, LOG_MSG_SIZE-1, (char *)format, argptr);
-        log_message[cnt] = '\0';
-        va_end(argptr);
-
-        cnt =snprintf(formatted_message, FORMAT_LOG_MSG_SIZE-1, "{%*.*s}:%*.*s():%*d --> %s", LOG_FILE_NAME_LEN, LOG_FILE_NAME_LEN,
-        local_filename, LOG_FUNC_NAME_LEN, LOG_FUNC_NAME_LEN, function, LOG_LINE_NUM_LEN, line, log_message);
-        formatted_message[cnt] = '\0';
-
-        device.log(level, formatted_message);
-    }
-    return;
-}
-
 /* bitmap of registers that are in use */
 
 static uint8_t reg_in_use[MAX_REGS / 8] =
