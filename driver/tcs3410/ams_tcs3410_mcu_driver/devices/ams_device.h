@@ -243,7 +243,6 @@ ams_errno_t ams_device_log_irq(bool state);
 ams_errno_t ams_device_pon(bool state);
 ams_errno_t ams_device_configure(ams_config_feature_t cfg_type, void *cfg);
 ams_errno_t ams_device_isUP(bool *pOK);
-void ams_device_log(const char *filename, const char *function, int line, uint32_t level, const char *format, ...);
 ams_errno_t ams_device_status(void *data);
 ams_errno_t ams_device_setup(void *data);
 void ams_device_get_version(void);
@@ -269,7 +268,7 @@ typedef enum
 #define LINE_NUM_LOG_LEN             (3)
 #define FORMAT_LOG_MSG_SIZE         (400)
 #define LOG_MSG_SIZE                (256)
-#define AMS_LOG_PRINTF(...) ams_device_log(__FILE__, __func__, __LINE__, __VA_ARGS__)
+#define AMS_LOG_PRINTF(level, format, args...) cprintf(CC_ACCEL, format, ##args)
 
 extern struct ams_device device;
 
