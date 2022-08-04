@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b458e88_65cd331b",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T00:22:01Z",
+      "side": 1,
+      "message": "I\u0027ve looked some at our codebase to see what effect this config has. It seems the primary use is to prevent the AP from powering on automatically.\n\nI believe this config option will enable CONFIG_BRINGUP. When I search for this config in ec/, I don\u0027t see it being used in ec/zephyr/subsys/ap_pwrseq/ . Maybe this config option would only be useful when using the cros-ec version of power sequencing?",
+      "parentUuid": "e4238051_f36212c6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b073e8b6_77c4a55a",
         "filename": "zephyr/projects/rex/prj.conf",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-03T21:19:01Z",
       "side": 1,
       "message": "Duplicate of line 25.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7e902a_855fc296",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T00:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b073e8b6_77c4a55a",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -171,6 +219,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44905c5_b5b2966c",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T00:22:01Z",
+      "side": 1,
+      "message": "So you think that this option should be set to \u0027y\u0027 for Rex currently?",
+      "parentUuid": "41e056d6_edf2586f",
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf388aed_37322423",
@@ -207,6 +273,30 @@
       "writtenOn": "2022-08-02T04:23:42Z",
       "side": 1,
       "message": "is this needed?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "e3f6a5089eb93319eb887a94077e438b2ffb8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02532459_6efb0c09",
+        "filename": "zephyr/projects/rex/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-04T00:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c39e46_407d5d94",
       "range": {
         "startLine": 6,
         "startChar": 0,
