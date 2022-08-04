@@ -22,6 +22,30 @@
       },
       "revId": "0645ad9b60d1bbb43941a73282dfe11846282ebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e510a85_7f251154",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-04T18:27:41Z",
+      "side": 1,
+      "message": "/*\n * TODO: b/241322365 - Watchdog error are observed if LTO is enabled\n * hence disabled it. Enable LTO once the fix is found.\n */",
+      "parentUuid": "0fbd082d_4d95e89d",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "0645ad9b60d1bbb43941a73282dfe11846282ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
