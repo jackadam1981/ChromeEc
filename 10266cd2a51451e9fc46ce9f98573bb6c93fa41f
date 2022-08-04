@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ff821449_05e96a74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-04T14:14:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca4669b9_481e9b4a",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "77d8437b_9253bd0a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -129,6 +147,42 @@
       "writtenOn": "2022-08-04T13:30:19Z",
       "side": 1,
       "message": "Not sure what this change is doing here (i2c2_0 is referenced below).",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1912fa02_52b09ca7",
+        "filename": "zephyr/projects/herobrine/i2c.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-04T14:14:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "47b82c60_f799f856",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6c24cd_12ff4afa",
+        "filename": "zephyr/projects/herobrine/i2c.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-04T14:14:31Z",
+      "side": 1,
+      "message": "Looks like a stray copy from me. Thanks for the catch.",
+      "parentUuid": "e7bd36f1_edcbca86",
       "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
