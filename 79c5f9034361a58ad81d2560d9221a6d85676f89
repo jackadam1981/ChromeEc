@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96d0f42a_f4fa63f0",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T12:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c37af308_8284d365",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "79c5f9034361a58ad81d2560d9221a6d85676f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35e910b8_4a512f0e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8436512e_9a32f1b7",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T12:02:17Z",
+      "side": 1,
+      "message": "The reason of removing it the same as GPIO_EC_I2C_BACKLIGHT_SCL.",
+      "parentUuid": "35e910b8_4a512f0e",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "79c5f9034361a58ad81d2560d9221a6d85676f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06a05921_8d342f17",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-04T11:31:15Z",
       "side": 1,
       "message": "This can be removed if you merge the setting to the sensor i2c.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 56
+      },
+      "revId": "79c5f9034361a58ad81d2560d9221a6d85676f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e742151a_423200cf",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T12:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06a05921_8d342f17",
       "range": {
         "startLine": 122,
         "startChar": 0,
