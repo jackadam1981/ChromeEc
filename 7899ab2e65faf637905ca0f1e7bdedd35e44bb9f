@@ -46,6 +46,30 @@
       },
       "revId": "7899ab2e65faf637905ca0f1e7bdedd35e44bb9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af02bf2_bfb770ec",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-04T10:52:45Z",
+      "side": 1,
+      "message": "I think you can just `#define PORT_TO_HPD(port) (GPIO_EC_AP_USB_C0_HPD)`",
+      "parentUuid": "c53bfa40_d6e64f35",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 59
+      },
+      "revId": "7899ab2e65faf637905ca0f1e7bdedd35e44bb9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
