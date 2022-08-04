@@ -33,16 +33,16 @@ static int tcs3410_rgb_init(struct motion_sensor_t *s)
 
 static int tcs3410_init(struct motion_sensor_t *s)
 {
-    ams_errno_t ret_val = ams_sensor_init(&device);
+	ams_errno_t ret_val = ams_sensor_init(&device);
 
-    if (ret_val == AMS_SUCCESS)
-    {
-        AMS_LOG_PRINTF(LOG_INFO, "Sensor init success.");
-	device.log_irq(true);
-        return EC_SUCCESS;
-    }
-    AMS_LOG_PRINTF(LOG_ERROR, "Sensor init failed.\n");
-    return EC_ERROR_NOT_HANDLED;
+	if (ret_val == AMS_SUCCESS)
+	{
+		AMS_LOG_PRINTF(LOG_INFO, "Sensor init success.");
+		device.log_irq(true);
+		return EC_SUCCESS;
+	}
+	AMS_LOG_PRINTF(LOG_ERROR, "Sensor init failed.\n");
+	return EC_ERROR_NOT_HANDLED;
 }
 
 
@@ -120,8 +120,12 @@ static int tcs3410_set_data_rate(const struct motion_sensor_t *s, int rate,
 
 static int tcs3410_get_data_rate(const struct motion_sensor_t *s)
 {
+	volatile ams_current_state_t *state = sensor_get_current_state();
 	ams_sensor_config_t cfg;
 	int period_ms;
+
+	if (!state->validated)
+		return 0;
 
 	device.setup(&cfg);
 	period_ms =  cfg.wait_time * TCS3410_TIME_NORM_INTERVAL_MS +

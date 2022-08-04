@@ -948,12 +948,6 @@ ams_errno_t ams_sensor_init(struct ams_device *device)
     device->version = VERSION;
     current_state.validated = false;
 
-    if (!validate_device_id())
-    {
-        AMS_LOG_PRINTF(LOG_ERROR, "Sensor failed to validate");
-        return(AMS_DEVICE_VALIDATE_ERROR);
-    }
-
     device->write     = sensor_write;
     device->read      = sensor_read;
     device->enable    = sensor_enable;
@@ -964,6 +958,12 @@ ams_errno_t ams_sensor_init(struct ams_device *device)
     device->status    = sensor_status;
     device->setup     = sensor_setup;
     device->irq       = sensor_irq;
+
+    if (!validate_device_id())
+    {
+        AMS_LOG_PRINTF(LOG_ERROR, "Sensor failed to validate");
+        return(AMS_DEVICE_VALIDATE_ERROR);
+    }
 
     i2c_buff = 0;
     /* disable all features - als and flicker */
