@@ -10,6 +10,7 @@
 #include "power.h"
 #include "switch.h"
 #include "throttle_ap.h"
+#include "driver/als_tcs3410_public.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 

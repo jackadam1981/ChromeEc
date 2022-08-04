@@ -18,6 +18,10 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_FIFO
+#define CONFIG_CMD_ACCEL_INFO
+
 /* Buttons are not supported */
 #undef CONFIG_VOLUME_BUTTONS
 #undef CONFIG_MKBP_INPUT_DEVICES
@@ -144,6 +148,14 @@
 #define CONFIG_ALS_TCS3410
 #define CONFIG_ALS_TCS3410_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+/*
+ * TCS3410 is a vendor driver, assume only one device in the system.
+ * i2c port must be defined.
+ */
+#define CONFIG_ALS_TCS3410_PORT I2C_PORT_SENSOR
+
+#define CONFIG_ALS
+#define ALS_COUNT 1
 
 #ifndef __ASSEMBLER__
 
@@ -178,6 +190,12 @@ enum pwm_channel {
 	PWM_CH_KBLIGHT, /* PWM3 */
 	PWM_CH_FAN1, /* PWM5 */
 	PWM_CH_COUNT
+};
+
+enum sensor_id {
+	CLEAR_ALS,
+	RGB_ALS,
+	SENSOR_COUNT,
 };
 
 #endif /* !__ASSEMBLER__ */
