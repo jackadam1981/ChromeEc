@@ -14,18 +14,18 @@
  *  16 bit input data.  However, the fft algorithm requires signed 16 bit data.
  *  If the unsigned data is greater than 32767 (0x7FFF), the "sign" bit will be
  *  set and cause undesirable results within the FFT algorithm.  Use this
- *  utility to normalize the data so that the input data is not greater than 
+ *  utility to normalize the data so that the input data is not greater than
  *  32767.
  *
  */
- 
+
 #include "ams_helper.h"
 
 int ams_normalize_fft_data(uint16_t *input, uint16_t *output, uint32_t size)
 {
     uint32_t idx;
     uint16_t max = 0;
-    
+
     if ((input == NULL) || (output == NULL))
     {
         return(-1);

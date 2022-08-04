@@ -18,8 +18,8 @@
 #include "ams_platform.h"
 
 /*
- * Convert up to 8 bytes into a long long 
- */ 
+ * Convert up to 8 bytes into a long long
+ */
 uint64_t convert_bytes_to_ll(uint8_t *source, uint16_t length)
 {
     uint16_t idx;
@@ -33,7 +33,7 @@ uint64_t convert_bytes_to_ll(uint8_t *source, uint16_t length)
 
     for (idx = 0; idx < length; idx++)
     {
-        result |= (uint64_t)((uint64_t)source[idx] << shifter); 
+        result |= (uint64_t)((uint64_t)source[idx] << shifter);
         shifter += 8;
     }
 

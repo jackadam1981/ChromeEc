@@ -11,7 +11,7 @@
 
 /* The typedef enum must match the order of the strings defined */
 /* in ams_errno.c --> static const char* const ams_errno_str[] */
-typedef enum 
+typedef enum
 {
     /* No error */
     AMS_SUCCESS    = 0,
@@ -29,7 +29,7 @@ typedef enum
     AMS_DEVICE_VALIDATE_ERROR,
 
     /* Null pointer */
-    AMS_DEVICE_NULL_PTR, 
+    AMS_DEVICE_NULL_PTR,
 
     /* current software not supported index of device */
     AMS_DEVICE_OUT_OF_BOUNDS,
@@ -44,7 +44,7 @@ typedef enum
     AMS_NO_END_MARKER,
 
     /* Unable to decode compressed flicker data */
-    AMS_COMPRESS_DECODE_FAILURE, 
+    AMS_COMPRESS_DECODE_FAILURE,
 
     /* Cannot calculate a flicker frequency */
     AMS_FLICKER_FAILURE,

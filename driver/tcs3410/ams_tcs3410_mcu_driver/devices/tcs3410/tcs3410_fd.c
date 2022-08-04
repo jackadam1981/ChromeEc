@@ -122,7 +122,7 @@ ams_errno_t process_fd_data(volatile ams_current_state_t *pcurr_state, uint8_t *
     /* With a single channel on a single step performing flicker, no need to normalize */
     /* data with gains */
     pcurr_state->fd.gain_mod = gain_reg_2_gain[pcurr_state->fd.gain_reg];
-    
+
     /* Decode the difference compressed flicker data */
     /* Assumes compressed difference mode with length set to 5 bits */
     if (fifo_data_decode((void *)pbuffer, (void *)input_fft, 1, len, fd_nr_samples, packet_size, FIFO_FORMAT_DIFFERENCE_COMPRESSED) != FIFO_DECODE_SUCCESS)
@@ -131,7 +131,7 @@ ams_errno_t process_fd_data(volatile ams_current_state_t *pcurr_state, uint8_t *
         return(AMS_COMPRESS_DECODE_FAILURE);
     }
 
-    /* Calculate the fft and determine peak bin */    
+    /* Calculate the fft and determine peak bin */
     memset(output_fft, 0, sizeof(output_fft));
     if (calculate_fft(input_fft, output_fft, fd_nr_samples))
     {
@@ -167,7 +167,7 @@ ams_errno_t process_fd_data(volatile ams_current_state_t *pcurr_state, uint8_t *
     {
         AMS_LOG_PRINTF_IRQ(LOG_ERROR, "FFT Failed");
         ret_val = AMS_FFT_FAILURE;
-    }   
+    }
 
     return(ret_val);
 }

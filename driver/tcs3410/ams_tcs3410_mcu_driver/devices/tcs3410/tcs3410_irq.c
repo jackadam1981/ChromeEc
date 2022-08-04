@@ -58,7 +58,7 @@ static void mint_irq(uint8_t *shadow_regs)
     {
         AMS_LOG_PRINTF_IRQ(LOG_ERROR, "Modulator_1 Analog Saturation Occurred");
     }
-    
+
     if (status2 & STATUS2_MOD2_ANA_SAT)
     {
         AMS_LOG_PRINTF_IRQ(LOG_ERROR, "Modulator_2 Analog Saturation Occurred");
@@ -103,7 +103,7 @@ static void sint_irq(uint8_t *shadow_regs)
     sensor_read(REG_STATUS5, &status5, 1);
     shadow_regs[REG_STATUS5] = status5;
 
-   
+
     if (status5 & STATUS5_SINT_VSYNC)
     {
         AMS_LOG_PRINTF_IRQ(LOG_INFO, "VSync Lost/Changed Interrupt Occurred");
@@ -122,7 +122,7 @@ static void sint_irq(uint8_t *shadow_regs)
         {
             sensor_read_fifo(shadow_regs, pcurr_state);
             sensor_process_fifo(shadow_regs, pcurr_state);
-        }   
+        }
     }
 
     /* Clear the SINT interrupts - Only 2 bits are writeable */
@@ -251,7 +251,7 @@ void sensor_process_irq(uint8_t *shadow_regs)
         /* not tcs3410 interrupt */
         return;
     }
-    
+
     /* Read all status registers */
 
     /******************************************************/
@@ -295,7 +295,7 @@ void sensor_process_irq(uint8_t *shadow_regs)
     /*                        SINT                        */
     /* if SINT (b0)is set, a system interrupt has         */
     /* occurred.  See Status5 for details of the possible */
-    /* events related to this interrupt.                  */ 
+    /* events related to this interrupt.                  */
     /******************************************************/
     if ((shadow_regs[REG_INTENAB] & INTENAB_SIEN_MASK) &&
         (status & STATUS_SINT))

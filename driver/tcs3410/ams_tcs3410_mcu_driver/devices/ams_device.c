@@ -28,7 +28,7 @@ static bool device_ok = false;
 ams_errno_t ams_device_init(void)
 {
     ams_errno_t ret_val = AMS_UNKNOWN_ERROR;
-    uint32_t pin = AMS_IRQ0_PIN; 
+    uint32_t pin = AMS_IRQ0_PIN;
 
     ams_platform_init(&platform);
     device.log = platform.ams_platform_log;
@@ -40,7 +40,7 @@ ams_errno_t ams_device_init(void)
 
     if (platform.ams_platform_irq_init)
     {
-        platform.ams_platform_irq_init(pin); 
+        platform.ams_platform_irq_init(pin);
     }
 
     if (platform.ams_platform_spi_init)
@@ -169,7 +169,7 @@ ams_errno_t ams_device_log_irq(bool state)
 ams_errno_t ams_device_configure(ams_config_feature_t cfg_type, void *cfg)
 {
     ams_errno_t ret = AMS_SUCCESS;
-    
+
     if (device.configure)
     {
         ret = device.configure(cfg_type, cfg);
@@ -259,7 +259,7 @@ void ams_device_log(const char *filename, const char *function, int line, uint32
 
 /* bitmap of registers that are in use */
 
-static uint8_t reg_in_use[MAX_REGS / 8] = 
+static uint8_t reg_in_use[MAX_REGS / 8] =
 {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,    /* 0x00 - 0x3f */
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,    /* 0x40 - 0x7f */

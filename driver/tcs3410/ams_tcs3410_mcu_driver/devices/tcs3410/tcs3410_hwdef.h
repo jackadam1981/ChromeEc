@@ -14,7 +14,7 @@
 /* unit milliseconds */
 #define MOD_CLOCK_STEP_MS (0.001388889)
 
-enum hw_regs  
+enum hw_regs
 {
     REG_P2RAM_OTP_8                       =  0x08,  /* UV_CALIB */
     REG_MOD_CHANNEL_CTRL                  =  0x40,
@@ -403,7 +403,7 @@ enum vsync_wait_sequences
     VSYNC_WAIT_SEQ_STEP_2           = (1 << 2),
     VSYNC_WAIT_SEQ_STEP_3           = (1 << 3),
     VSYNC_WAIT_ALL_STEPS            = (VSYNC_WAIT_SEQ_STEP_0 | VSYNC_WAIT_SEQ_STEP_1 | VSYNC_WAIT_SEQ_STEP_2 | VSYNC_WAIT_SEQ_STEP_3),
-    
+
 };
 
 /* meas_seqr_residual_1_and_wait - 0xD3 */
@@ -454,7 +454,7 @@ enum mod_gains
 };
 #define GAIN_MOD0_SHIFT                  (0)
 #define GAIN_MOD1_SHIFT                  (4)
-#define GAIN_MOD2_SHIFT                  (0) 
+#define GAIN_MOD2_SHIFT                  (0)
 
 
 /* meas_seqr_stepx_mod_phdx_smux_l/h - 0xDC - 0xE3 */
@@ -555,7 +555,7 @@ enum mod_gains
 
 /* ------------------------------------------------------------ */
 
-typedef enum 
+typedef enum
 {
     AGC_DISABLED            = 0,
     AGC_SAT_ENABLED         = 1,
