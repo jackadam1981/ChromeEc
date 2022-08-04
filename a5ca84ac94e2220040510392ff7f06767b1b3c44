@@ -16,6 +16,24 @@
       "message": "Can we override `PORT_TO_HPD`? and Remove this pin?",
       "revId": "a5ca84ac94e2220040510392ff7f06767b1b3c44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f364ab_e1c1ab2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T07:47:46Z",
+      "side": 1,
+      "message": "I use CONFIG_USB_PD_DP_HPD_GPIO_CUSTOM and remove this pin successfully.",
+      "parentUuid": "df4ea1bc_0fbd5e14",
+      "revId": "a5ca84ac94e2220040510392ff7f06767b1b3c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
