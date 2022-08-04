@@ -2,6 +2,7 @@
 # Copyright 2022 The ChromiumOS Authors.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+
 """ Upload twister results to ResultDB
 
     Usage:
@@ -156,6 +157,11 @@ def main():
         rdb_results = json_to_resultdb(args.results)
         if args.upload:
             upload_results(rdb_results)
+        else:
+            with open("rdb.json", "w") as outfile:
+                json.dump(
+                    {"testResults": rdb_results}, outfile, cls=BytesEncoder
+                )
     else:
         raise Exception("Missing test result file for conversion")
 
