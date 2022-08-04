@@ -22,6 +22,30 @@
       },
       "revId": "7899ab2e65faf637905ca0f1e7bdedd35e44bb9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53bfa40_d6e64f35",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-04T10:42:05Z",
+      "side": 1,
+      "message": "The original PORT_TO_HPD contains the GPIO_USB_C1_DP_HPD we want to remove.\nSo we define a new PORT_TO_HPD containing only GPIO_USB_C0_DP_HPD to replace it.",
+      "parentUuid": "c7da4db6_a6fa6c24",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 59
+      },
+      "revId": "7899ab2e65faf637905ca0f1e7bdedd35e44bb9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
