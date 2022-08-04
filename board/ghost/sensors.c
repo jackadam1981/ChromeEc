@@ -6,8 +6,11 @@
 #include "common.h"
 #include "adc_chip.h"
 #include "ec_commands.h"
+#include "gpio.h"
+#include "hooks.h"
 #include "temp_sensor.h"
 #include "temp_sensor/thermistor.h"
+#include "driver/als_tcs3410_public.h"
 
 /* ADC configuration */
 struct adc_t adc_channels[] = {
@@ -185,3 +188,57 @@ struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_4_WWAN] = THERMAL_WWAN,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+struct motion_sensor_t motion_sensors[] = {
+	[CLEAR_ALS] = {
+		.name = "Clear Light",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_TCS3410,
+		.type = MOTIONSENSE_TYPE_LIGHT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &tcs3410_drv,
+		.drv_data = NULL,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = TCS3410_I2C_ADDR_FLAGS,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
+		.min_frequency = TCS3410_LIGHT_MIN_FREQ,
+		.max_frequency = TCS3410_LIGHT_MAX_FREQ,
+		.config = {
+			/* Run ALS sensor in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 1000,
+			},
+		},
+	},
+
+	[RGB_ALS] = {
+		/*
+		 * RGB channels read by CLEAR_ALS and so the i2c port and
+		 * address do not need to be defined for RGB_ALS.
+		 */
+		.name = "RGB Light",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_TCS3410,
+		.type = MOTIONSENSE_TYPE_LIGHT_RGB,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &tcs3410_rgb_drv,
+		.drv_data = NULL,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
+	},
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+/* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
+const struct motion_sensor_t *motion_als_sensors[] = {
+	&motion_sensors[CLEAR_ALS],
+};
+BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
+
+static void sensor_init(void)
+{
+	/* Enable interrupt for the TCS3410 color light sensor */
+	gpio_enable_interrupt(GPIO_EC_ALS_RGB_INT_R_L);
+}
+DECLARE_HOOK(HOOK_INIT, sensor_init, HOOK_PRIO_DEFAULT);
