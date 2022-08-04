@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526dc362_fddda871",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T10:18:53Z",
+      "side": 1,
+      "message": "Delete extra blank line",
+      "revId": "6d30d9b10d09f6356f49baf33583d30cf155bde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5c1858_a27435d3",
+        "filename": "zephyr/projects/nissa/craask/src/form_factor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-04T10:18:53Z",
+      "side": 1,
+      "message": "Might not need this include any more",
+      "revId": "6d30d9b10d09f6356f49baf33583d30cf155bde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
