@@ -354,6 +354,7 @@ uint16_t tcpc_get_alert_status(void)
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 			    int charge_mv)
 {
+	charge_set_input_current_limit(charge_ma, charge_mv);
 }
 
 __override int extpower_is_present(void)
@@ -500,3 +501,11 @@ const struct temp_sensor_t temp_sensors[] = {
 			    .idx = ADC_TEMP_SENSOR_4 },
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+#ifndef CONFIG_BATTERY_PRESENT_GPIO
+enum battery_present battery_is_present(void)
+{
+	/* Shotzo has no battery, so always return no battery present. */
+	return BP_NO;
+}
+#endif
