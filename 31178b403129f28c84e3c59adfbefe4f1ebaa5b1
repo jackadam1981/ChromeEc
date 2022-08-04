@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d721f63_22648a47",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-04T22:40:28Z",
+      "side": 1,
+      "message": "It seems like we could store the time the power button was depressed based on the release time?  I also wonder if the release transition could continue straight into the `DPM_PD_BUTTON_RELEASED` case to reduce the latency between receiving the release and acting on the power button. Or I suppose that would imply the released state itself is unnecessary, and could instead process and then return to idle.",
+      "parentUuid": "7d69881c_347524b3",
+      "range": {
+        "startLine": 575,
+        "startChar": 8,
+        "endLine": 579,
+        "endChar": 13
+      },
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54db247c_e2311945",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
