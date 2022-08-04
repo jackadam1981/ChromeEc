@@ -903,8 +903,7 @@ static void radix4_butterfly(int16_t *data, uint16_t len)
 {   //Heavily optimized, Non-optimized (but cleaner) code is above
     //@TODO: Some of these comments are inconsistent with code
 
-    uint16_t modifier;
-    modifier = MODIFIER(len);
+    uint16_t modifier = MODIFIER(len);
     int16_t R0, R1, S0, S1, T0, T1, U0, U1;
     int16_t cos1, sin1, cos2, sin2, cos3, sin3, out1, out2;
     uint32_t n1, n2, ic, i0, i1, i2, i3, j, k;
