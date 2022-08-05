@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7202b1_2b1df6ce",
+        "filename": "board/mithrax/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-08-05T20:41:09Z",
+      "side": 0,
+      "message": "This is not needed. BL is set to 0 through powerd during S0ix.",
+      "revId": "712d9ae17713f7b0cb267ce36d83b91b51e9c7f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
