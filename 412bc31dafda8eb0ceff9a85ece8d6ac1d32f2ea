@@ -50,6 +50,42 @@
       "message": "20% is a lot. Historically, we\u0027ve only seen ~4% required for users of this part.",
       "revId": "412bc31dafda8eb0ceff9a85ece8d6ac1d32f2ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c184a05c_b9b8a8de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-08-05T03:42:07Z",
+      "side": 1,
+      "message": "Hi Aseda,\n\nAbandon reason from ECS:\n1.      Beadrix without this CL interactive charging fail rate is lower than Commercially available products.\n2.      The schedule will be delay by verification need re-run if this CL in.",
+      "parentUuid": "91850e32_f30db112",
+      "revId": "412bc31dafda8eb0ceff9a85ece8d6ac1d32f2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fcb641b_6f99ae8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483835
+      },
+      "writtenOn": "2022-08-05T03:42:07Z",
+      "side": 1,
+      "message": "I have forwarded the question to ECS Owen. Once ECS reply the result, the answer will be replied here. Therefore, this CL becomes `Work in Progress`\n\nAbandon reason from ECS:\n1.      Beadrix without this CL interactive charging fail rate is lower than Commercially available products.\n2.      The schedule will be delay by verification need re-run if this CL in.",
+      "parentUuid": "db31935b_b16604c8",
+      "revId": "412bc31dafda8eb0ceff9a85ece8d6ac1d32f2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
