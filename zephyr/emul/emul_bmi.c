@@ -13,6 +13,7 @@ LOG_MODULE_REGISTER(emul_bmi);
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
+#include <zephyr/sys/__assert.h>
 
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_bmi.h"
@@ -720,7 +721,7 @@ static void bmi_emul_restore_nvm(const struct emul *emul)
 
 	data = emul->data;
 
-	ASSERT(data->type_data->nvm_len <= BMI_EMUL_MAX_NVM_REGS);
+	__ASSERT_NO_MSG(data->type_data->nvm_len <= BMI_EMUL_MAX_NVM_REGS);
 
 	/* Restore registers values */
 	for (i = 0; i < data->type_data->nvm_len; i++) {
@@ -1079,7 +1080,6 @@ static int bmi_emul_init(const struct emul *emul, const struct device *parent)
 		},							\
 	};         \
 	static const struct i2c_common_emul_cfg bmi_emul_cfg_##n = { \
-		.i2c_label = DT_LABEL(DT_BUS(DT_DRV_INST(n))),       \
 		.dev_label = DT_INST_LABEL(n),                       \
 		.data = &bmi_emul_data_##n.common,                   \
 		.addr = DT_INST_REG_ADDR(n),                         \
