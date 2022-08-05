@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2546bf73_dbcbdb24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-05T19:57:22Z",
+      "side": 1,
+      "message": "There is some replication here that we could potentially avoid by just adding simulated press and release functions to the power button API and calling them on press/release alert from the USB PD partner. But, I don\u0027t think we should directly simulate both press and release events. And, I\u0027ve avoided that type of implementation because it would lead to bad behavior with some docks.\n\nThe particular dock I am testing with (HP Thunderbolt G4) will send only a press event on short button taps (violating the PD spec), but will send press then release events on a longer sustained press. If we entirely use the power button state machine and a dock just sends a press event, we would interpret this as a power button hold and shutdown the device.\n\nTo be a bit safer, this implementation will only act on a power button release after checking that the press-\u003erelease events are within a valid time frame. Basically, having this in the DPM allows us to filter out bad behavior from docks which the power button state machine can\u0027t handle.",
+      "parentUuid": "50c2e979_02556a44",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2e46804_8786c3b8",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-03T17:18:20Z",
       "side": 1,
       "message": "Delete",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deebf6f0_7d25e046",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-05T19:57:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e46804_8786c3b8",
       "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-03T17:18:20Z",
       "side": 1,
       "message": "These lines are getting pretty truncated. You might want to think about refactoring this to let these `IS_ENABLED` checks be a guard clause where you break early.",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aab50b8_639db25f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-05T19:57:22Z",
+      "side": 1,
+      "message": "I moved the IS_ENABLED checks to be a guard, but also moved the section this was guarding to the DPM_PD_BUTTON_PRESSED which adds another condition. So, the truncation is the same.",
+      "parentUuid": "2467c331_c345b28b",
       "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -101,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd566a39_5dfa82d7",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-05T19:57:22Z",
+      "side": 1,
+      "message": "Thanks for your feedback! I followed Diana\u0027s suggestion. Instead of a 3-state FSM with a `DPM_PD_BUTTON_RELEASED` state to process the button press and return to the idle state, this is now a 2-state FSM where the power button pressed is handled in the `DPM_PD_BUTTON_PRESSED` state before returning to idle. Instead of looking at the remaining time on a timer to determine short/long press, this will log the time when a button press is received and compare it to the time at release.",
+      "parentUuid": "0d721f63_22648a47",
+      "range": {
+        "startLine": 575,
+        "startChar": 8,
+        "endLine": 579,
+        "endChar": 13
+      },
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54db247c_e2311945",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -118,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "155ffadb_82dab76a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-05T19:57:22Z",
+      "side": 1,
+      "message": "This isn\u0027t really the minimum press time. Any press followed by a release under the long press time limit will be considered a press. This is the duration of a simulated press after DPM detects a short press. For example if I press a USB PD power button for 3 seconds, the DPM will then simulate a 500ms power button press. It\u0027s similar to running `powerbtn 500` from the ec console. This config can change how long the simulate power button press is. It only needs to be long enough to bring up the Shutdown/Sign Out/Lock UI.\n\nThe reason I put it here instead of adding it as a config is because it\u0027s not something that will impact how we treat different button presses like CONFIG_USB_PD_SHORT_PRESS_MAX_MS or CONFIG_USB_PD_LONG_PRESS_MAX_MS. If this type of constant should be defined somewhere else, let me know.",
+      "parentUuid": "54db247c_e2311945",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a79e047a_a942b357",
         "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c",
         "patchSetId": 2
@@ -129,6 +225,24 @@
       "writtenOn": "2022-08-03T17:18:20Z",
       "side": 1,
       "message": "How are you checking the power state in this test?",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d25c6f_53fee07c",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-05T19:57:22Z",
+      "side": 1,
+      "message": "There were no explicit power state checks in this test. Because we send PD alerts on power state changes, the test was checking if the partner has received an alert to look for power state changes. I went ahead and added power state checks to this test as well as the other USB PD power button tests.",
+      "parentUuid": "a79e047a_a942b357",
       "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
