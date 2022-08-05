@@ -22,6 +22,30 @@
       },
       "revId": "6d4640008d43df22af3fc8a35e06b6326e2f4b3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0dc5ed0_2322a6ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-05T19:13:52Z",
+      "side": 1,
+      "message": "Power signals should be initialize only in ap_pwrseq. Not need to initialize in shim too.",
+      "parentUuid": "4c7f6ba0_1548678c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "6d4640008d43df22af3fc8a35e06b6326e2f4b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
