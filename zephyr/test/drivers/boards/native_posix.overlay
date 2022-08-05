@@ -742,6 +742,8 @@
 };
 
 &i2c0 {
+	label = "I2C_0";
+
 	cbi_eeprom: eeprom@56 {
 		compatible = "atmel,at24";
 		reg = <0x56>;
