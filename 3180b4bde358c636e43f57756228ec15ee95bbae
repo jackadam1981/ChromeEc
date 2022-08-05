@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2b5e1c5_d0f83b38",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-05T00:51:36Z",
+      "side": 1,
+      "message": "The only arguments I see being passed as the context, which comes from host_command_host_sleep_event and only contains a counter and timeout value.\n\nThe only reason I see that this is required to be passed is if host_command_host_sleep_event gets invoked multiple times in parallel, and not sure\nif that will ever be the case.\nThis could be handled locally as a static singleton within the same file.\nThe counter is just copied from a static anyway, so that can be referenced directly. The timeout could also be a static.\n\nSometimes the original reasons for these contexts get lost, and it\u0027s only when we look at it in detail that we realise that the context is likely unnecessary as an argument, but can be better handled as a local singleton in a single module.\n\nAs I mentioned before, I don\u0027t want to hold this up in order to get a larger refactor done. But it would be good to get a clearer understanding of how these different modules/APIs interact so that they can be sensibly refactored.",
+      "parentUuid": "9d1fa534_52dd00ac",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1527d880_bf2c0c4d",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_command.c",
         "patchSetId": 10
