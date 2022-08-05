@@ -3460,6 +3460,9 @@ void pe_snk_select_capability_exit(int port)
  */
 static void pe_snk_transition_sink_entry(int port)
 {
+	void hack_sm5803_timer_arm(int port);
+	hack_sm5803_timer_arm(port);
+
 	print_current_state(port);
 
 	/* Initialize and run PSTransitionTimer */

@@ -5,6 +5,7 @@
 
 #include <zephyr/logging/log.h>
 #include <ap_power/ap_power.h>
+#include <shell/shell.h>
 
 #include "charge_state_v2.h"
 #include "chipset.h"
@@ -391,3 +392,105 @@ int pd_snk_is_vbus_provided(int port)
 
 	return chg_det;
 }
+
+static int hack_chgnum = -1;
+static enum {
+	HACK_INITIAL,
+	HACK_OFF,
+	HACK_ON,
+} hack_state = HACK_INITIAL;
+static int off_delay_usec = 1000;
+static int on_delay_usec = 1000;
+
+static void sm5803_sink_disable_timed(struct k_work *work)
+{
+	if (hack_state == HACK_INITIAL) {
+		sm5803_vbus_sink_enable(hack_chgnum, 0);
+		hack_state = HACK_OFF;
+	} else {
+		LOG_ERR("sink disable callback desync: %d", hack_state);
+	}
+}
+K_WORK_DELAYABLE_DEFINE(disable_work, sm5803_sink_disable_timed);
+
+static void sm5803_sink_enable_timed(struct k_work *work)
+{
+	if (hack_state == HACK_OFF) {
+		sm5803_vbus_sink_enable(hack_chgnum, 1);
+		hack_state = HACK_ON;
+	} else {
+		LOG_ERR("sink enable callback desync: %d", hack_state);
+	}
+}
+K_WORK_DELAYABLE_DEFINE(enable_work, sm5803_sink_enable_timed);
+
+void hack_sm5803_timer_arm(int port)
+{
+	/* Assuming type-C ports correspond exactly to chargers */
+	BUILD_ASSERT(CHARGER_PRIMARY == 0 && CHARGER_SECONDARY == 1);
+
+	if (port == hack_chgnum) {
+		LOG_INF("arming deathclock on port %d", port);
+		hack_state = HACK_INITIAL;
+		k_work_reschedule(&disable_work, K_USEC(off_delay_usec));
+		k_work_reschedule(&enable_work,
+				  K_USEC(off_delay_usec + on_delay_usec));
+	}
+}
+
+static void shell_deathclock(struct shell *const shell, size_t argc,
+			     char **argv)
+{
+	char *e = NULL;
+
+	if (argc == 1) {
+		if (hack_chgnum == -1) {
+			shell_print(shell, "deathclock disabled");
+		} else {
+			shell_print(shell, "deathclock enabled on port %d",
+				    hack_chgnum);
+			shell_print(shell,
+				    "off after %d us, on after another %d us",
+				    off_delay_usec, on_delay_usec);
+		}
+		return;
+	}
+
+	if (argc >= 2) {
+		int arg_chgnum = strtoi(argv[1], &e, 0);
+		if (*e) {
+			shell_error(shell, "Invalid numeric value for chgnum");
+			return;
+		}
+		if (arg_chgnum != CHARGER_PRIMARY &&
+		    arg_chgnum != CHARGER_SECONDARY) {
+			arg_chgnum = -1;
+		}
+		hack_chgnum = arg_chgnum;
+	}
+	if (argc >= 3) {
+		int arg_offtime = strtoi(argv[2], &e, 0);
+		if (*e || arg_offtime < 0) {
+			shell_error(shell,
+				    "Invalid numeric value for off_delay_usec");
+			return;
+		}
+		off_delay_usec = arg_offtime;
+	}
+	if (argc >= 4) {
+		int arg_ontime = strtoi(argv[3], &e, 0);
+		if (*e || arg_ontime < 0) {
+			shell_error(shell,
+				    "Invalid numeric value for off_delay_usec");
+			return;
+		}
+		on_delay_usec = arg_ontime;
+	}
+	if (argc > 4) {
+		shell_error(shell, "Too many arguments");
+	}
+}
+SHELL_CMD_REGISTER(
+	deathclock, NULL,
+	"time-delay SM5803 stress ([chgnum] [off_delay_usec] [on_delay_usec])",
+	shell_deathclock);
