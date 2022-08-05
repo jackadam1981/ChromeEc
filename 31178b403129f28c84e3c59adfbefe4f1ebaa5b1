@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f51ab8_5097f6ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-05T20:13:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2546bf73_dbcbdb24",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2e46804_8786c3b8",
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "I moved the IS_ENABLED checks to be a guard, but also moved the section this was guarding to the DPM_PD_BUTTON_PRESSED which adds another condition. So, the truncation is the same.",
       "parentUuid": "2467c331_c345b28b",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "014d346f_14dae2ab",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-05T20:13:18Z",
+      "side": 1,
+      "message": "Once Scott refactors the DPM to be a first-class state machine, we\u0027ll probably be able to ditch a layer of nesting that checks which state we\u0027re in or what message we received. For now, this is OK.",
+      "parentUuid": "9aab50b8_639db25f",
       "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -250,6 +286,24 @@
       "side": 1,
       "message": "This isn\u0027t really the minimum press time. Any press followed by a release under the long press time limit will be considered a press. This is the duration of a simulated press after DPM detects a short press. For example if I press a USB PD power button for 3 seconds, the DPM will then simulate a 500ms power button press. It\u0027s similar to running `powerbtn 500` from the ec console. This config can change how long the simulate power button press is. It only needs to be long enough to bring up the Shutdown/Sign Out/Lock UI.\n\nThe reason I put it here instead of adding it as a config is because it\u0027s not something that will impact how we treat different button presses like CONFIG_USB_PD_SHORT_PRESS_MAX_MS or CONFIG_USB_PD_LONG_PRESS_MAX_MS. If this type of constant should be defined somewhere else, let me know.",
       "parentUuid": "54db247c_e2311945",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7eb34e_7bf4a73b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-05T20:13:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "155ffadb_82dab76a",
       "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
