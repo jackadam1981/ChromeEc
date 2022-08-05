@@ -22,6 +22,30 @@
       },
       "revId": "3b3e7b94a51ffa2b956cb730939cce9f6209c732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a9bf92_ffc75572",
+        "filename": "DIR_METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-05T19:37:08Z",
+      "side": 1,
+      "message": "It\u0027s visible to partners that have a \"corp.partner.google.com\" login, but not visible to the public.",
+      "parentUuid": "ef4dc6ff_2177b5cd",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "3b3e7b94a51ffa2b956cb730939cce9f6209c732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
