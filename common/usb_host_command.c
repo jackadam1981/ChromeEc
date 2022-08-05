@@ -32,7 +32,7 @@ enum usbhc_state {
 	USBHC_STATE_SENDING,
 	/* Received bad data */
 	USBHC_STATE_RX_BAD,
-} state;
+} state = 1;
 
 struct consumer const hostcmd_consumer;
 struct producer const hostcmd_producer;
