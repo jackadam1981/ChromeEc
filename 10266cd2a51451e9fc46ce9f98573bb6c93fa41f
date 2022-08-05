@@ -203,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "734f6d51_0a00db76",
+        "filename": "zephyr/projects/corsola/i2c_krabby.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-05T16:12:09Z",
+      "side": 1,
+      "message": "The separate nodes allows the BC1.2 or PPC portions of the chip to be enabled separately.  The current rt1739 driver tightly couples the BC1.2 and PPC support, so your organization probably makes sense right now.\n\nWhen we move this upstream, the BC1.2 and PPC drivers should be split into separate files, and rely on the parent device to manage register access.",
+      "parentUuid": "82da9036_cadbd0f4",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47b82c60_f799f856",
         "filename": "zephyr/projects/herobrine/i2c.dts",
         "patchSetId": 1
