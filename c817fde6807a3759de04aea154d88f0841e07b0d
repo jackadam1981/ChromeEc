@@ -51,6 +51,24 @@
       "message": "here is another usb4 define - should it be removed too?",
       "revId": "c817fde6807a3759de04aea154d88f0841e07b0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b669d66_26067fa4",
+        "filename": "board/kinox/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-08-05T00:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4c32bf_114cf16a",
+      "revId": "c817fde6807a3759de04aea154d88f0841e07b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
