@@ -70,6 +70,23 @@
       },
       "revId": "3b3e7b94a51ffa2b956cb730939cce9f6209c732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0181493_bddeb3da",
+        "filename": "DIR_METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-05T19:59:31Z",
+      "side": 1,
+      "message": "please run `cros format` on these files",
+      "revId": "3b3e7b94a51ffa2b956cb730939cce9f6209c732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
