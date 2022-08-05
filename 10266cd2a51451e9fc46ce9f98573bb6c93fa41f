@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29be119d_761623c9",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-05T09:54:49Z",
+      "side": 1,
+      "message": "Great.",
+      "parentUuid": "b6cfb2f5_c428f982",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53bd3742_a7571ce6",
@@ -149,6 +167,30 @@
       "side": 1,
       "message": "As implemented, this will cause build warnings because the `@xx` address is duplicated.\n\nThe correct way to do this is to create a parent device that is shared by both the BC1.2 and PPC drivers:\n```\n    rt1739@70 {\n        compatible \u003d \"richtek,rt1739\";\n        reg \u003d \u003c0x70\u003e;\n        bc12_port0: bc12-port0 {\n            compatible \u003d \"richtek,rt1739-bc12\";\n            status \u003d \"okay\"; \n        };\n        ppc_port0: bc12-port0 {\n            compatible \u003d \"richtek,rt1739-bc12\";\n            status \u003d \"okay\"; \n        };\n    };\n```\n\nThe driver code that extract the I2C device address will need to reference the parent:\n```\n    .i2c_port \u003d I2C_PORT_BY_DEV(DT_PARENT(id)),\n    .i2c_addr_flags \u003d DT_REG_ADDR(DT_PARENT(id)),\n```\nBecause the `i2c_port` and `i2c_addr_flags` is unused by the BC1.2 driver, I think you can make this change in this CL.\n\nWhen this driver moves upstream, the PPC and BC1.2 drivers will live in separate files, and will each use the parent \"richtek,rt1739\" driver to access the chip registers.",
       "parentUuid": "ec570c29_fb59ce51",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82da9036_cadbd0f4",
+        "filename": "zephyr/projects/corsola/i2c_krabby.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-05T09:54:49Z",
+      "side": 1,
+      "message": "But I still don\u0027t get why we need separate nodes for ppc and bc12.\nI think we can just do:\n```\n    bc12_ppc_port0: rt1739@70 {\n        compatible \u003d \"richtek,rt1739\";\n        reg \u003d \u003c0x70\u003e;\n    };\n```\nand\n```\n\tport0@0 {\n\t\tcompatible \u003d \"named-usbc-port\";\n\t\treg \u003d \u003c0\u003e;\n\t\tbc12 \u003d \u003c\u0026bc12_ppc_port0\u003e;\n\t\tppc \u003d \u003c\u0026bc12_ppc_port0\u003e;\n\t};\n```\nthen in `ppc_rt1739.h` file\n```\n#define RT1739_PPC_COMPAT richtek_rt1739\n```\nand in `bc12_rt1739.h` file:\n```\n#define RT1739_BC12_COMPAT richtek_rt1739\n```",
+      "parentUuid": "1c1099ad_4c5af265",
       "range": {
         "startLine": 82,
         "startChar": 0,
