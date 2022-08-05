@@ -93,6 +93,30 @@
       },
       "revId": "36fdd8c0829cb36469b8441cd893e6c24c84c5db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4510469d_42061c9c",
+        "filename": "common/usb_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-08-05T01:54:39Z",
+      "side": 1,
+      "message": "So USBHC_STATE_DISABLED can also be removed. Or when usbhc_written is called, we could jump to USBHC_STATE_READY_TO_RX if we are in USBHC_STATE_DISABLED.",
+      "parentUuid": "5f83f2a8_dc27f655",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "36fdd8c0829cb36469b8441cd893e6c24c84c5db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
