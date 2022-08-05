@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7c823d_43bf93b2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-05T20:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e46804_8786c3b8",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2467c331_c345b28b",
@@ -179,6 +197,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38ee68da_7f16566d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-05T20:08:22Z",
+      "side": 1,
+      "message": "OK, I think I better understand what the CL is trying to do now. Here is an approach that I think would be more idiomatic in our codebase:\n1. Have a new named timer like `DPM_TIMER_PD_BUTTON_SHORT_PRESS`. It might make sense to rename `DPM_TIMER_PD_BUTTON_PRESS` to avoid ambiguity.\n2. When we get a press event, start the timer with timeout `CONFIG_USB_PD_SHORT_PRESS_MAX_MS * MSEC`.\n3. When we get a release event, check if the timer is expired. If it isn\u0027t, treat the press as a short press. If it is, treat it as a long press.\n4. When we get a release event, or when the maximum release timer expires, stop the short press timer.\n\nI don\u0027t think you need to directly deal with or store the current time.",
+      "parentUuid": "0d721f63_22648a47",
+      "range": {
+        "startLine": 575,
+        "startChar": 8,
+        "endLine": 579,
+        "endChar": 13
+      },
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54db247c_e2311945",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -242,6 +284,24 @@
       "writtenOn": "2022-08-05T19:57:22Z",
       "side": 1,
       "message": "There were no explicit power state checks in this test. Because we send PD alerts on power state changes, the test was checking if the partner has received an alert to look for power state changes. I went ahead and added power state checks to this test as well as the other USB PD power button tests.",
+      "parentUuid": "a79e047a_a942b357",
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9a636a_2dab0fa2",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-05T20:08:22Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "a79e047a_a942b357",
       "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

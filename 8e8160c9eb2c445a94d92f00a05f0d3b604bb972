@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c224e31_0ca6c590",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-05T20:08:22Z",
+      "side": 1,
+      "message": "Just a comment on the behavior: I think people are pretty used to holding the power button until the AP power cycles, as distinct from counting a number of seconds and then releasing without having seen a response. To support this usage with dock power buttons, we would have to treat a press as a long press based on a timer, before receiving the corresponding release.\n\nThe main downside to this would be that a dock glitch could power cycle the AP, so I can see why we might not want to do it.",
+      "revId": "8e8160c9eb2c445a94d92f00a05f0d3b604bb972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
