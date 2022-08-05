@@ -46,6 +46,30 @@
       },
       "revId": "a8e30d89e15b18ba37f9afd2229580c8a6cbf824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2dd23ee_d2f32475",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-08-05T22:03:21Z",
+      "side": 1,
+      "message": "This will also require a change to all the boards that are running cros-ec.\nhttps://source.chromium.org/search?q\u003dPWR_STATE_IDLE\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2Fboard%2F",
+      "parentUuid": "edd6748e_13cda950",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 3
+      },
+      "revId": "a8e30d89e15b18ba37f9afd2229580c8a6cbf824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
