@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b513840d_7894e936",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-08-05T01:29:19Z",
+      "side": 1,
+      "message": "do we want to explicitly verify GBB in ti50 case? we need to add it to DD then and make sure everybody agrees. for this CL: just trying to decide if these error codes make sense universally.",
+      "revId": "cab5d0f0b0335335b2965a6164ce4c4bdf42d722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
