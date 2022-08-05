@@ -22,6 +22,30 @@
       },
       "revId": "cb2c2a6daab3882909232fa2852435c1c108de25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd639ed_012a904f",
+        "filename": "zephyr/shim/include/charger/chg_bq25710.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-05T09:31:22Z",
+      "side": 1,
+      "message": "Makes sense.",
+      "parentUuid": "910eb0b5_13925b27",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 45
+      },
+      "revId": "cb2c2a6daab3882909232fa2852435c1c108de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
