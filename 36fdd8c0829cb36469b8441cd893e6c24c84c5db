@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39db2ae1_459bf5fb",
+        "filename": "common/usb_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-05T01:06:18Z",
+      "side": 1,
+      "message": "USBHC_STATE_READY_TO_RX",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "36fdd8c0829cb36469b8441cd893e6c24c84c5db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa105ac5_96bb2b60",
+        "filename": "common/usb_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-05T01:06:18Z",
+      "side": 1,
+      "message": "USBHC_STATE_READY_TO_RX.\n\nIs there anywhere we can set it at more right timing? For example, for this to be working at least usb-stream and a host command task needs to be ready.",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "36fdd8c0829cb36469b8441cd893e6c24c84c5db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
