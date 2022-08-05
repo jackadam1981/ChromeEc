@@ -257,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f691d25c_00d13a7e",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-05T22:05:20Z",
+      "side": 1,
+      "message": "Done, I\u0027ve added a second timer. If we receive a release before the long press timer times out, then the short press timer is checked to determine short vs long presses.",
+      "parentUuid": "38ee68da_7f16566d",
+      "range": {
+        "startLine": 575,
+        "startChar": 8,
+        "endLine": 579,
+        "endChar": 13
+      },
+      "revId": "31178b403129f28c84e3c59adfbefe4f1ebaa5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54db247c_e2311945",
         "filename": "include/usb_pd.h",
         "patchSetId": 2

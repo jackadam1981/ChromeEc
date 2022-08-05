@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "365b7dac_0cebb4eb",
+        "filename": "test/usb_pd_timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-05T22:05:20Z",
+      "side": 1,
+      "message": "This test enables timers in a hard-coded 0-5 range, then disables them based on the PE/PRL timer ranges. Adding the second DPM timer shifted up the PE timer range to start at 2 which prevented the timer at index 1 from being disable which caused the test to fail. To fix it, I\u0027ve added another line here to disable the DPM timer range which will disable all timers from 1-5 like this test is checking for.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 47
+      },
+      "revId": "78ef3bbe42bf55197aa645e68c261541f81d9164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
