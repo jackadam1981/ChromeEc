@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f25c86_8e388283",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2022-08-05T04:57:20Z",
+      "side": 1,
+      "message": "nit: add DTT (Dynamic Tuning Technology). This will help to get reference for DTT word in this file.",
+      "revId": "9da8facef906ae5b4d703fab5e2cd66c5b9632a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17994299_68f3c088",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2022-08-05T04:57:20Z",
+      "side": 1,
+      "message": "nit: move this to next time as per the multiline comments format.",
+      "revId": "9da8facef906ae5b4d703fab5e2cd66c5b9632a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6d2b5a_91c5bc11",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2022-08-05T04:57:20Z",
+      "side": 1,
+      "message": "nit: remove extra empty line.",
+      "revId": "9da8facef906ae5b4d703fab5e2cd66c5b9632a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c86876_96292cb8",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2022-08-05T04:57:20Z",
+      "side": 1,
+      "message": "nit: remove extra empty line.",
+      "revId": "9da8facef906ae5b4d703fab5e2cd66c5b9632a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
