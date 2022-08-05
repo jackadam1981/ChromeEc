@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d1fa534_52dd00ac",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-05T00:32:26Z",
+      "side": 1,
+      "message": "Andrew, few functions sleep_start_suspend(ctx) and sleep_complte_resume(ctx) requires data to be passed, but our current event based framework doesn\u0027t support passing additional data to the callback.\nOne way is to introduce additional function parameter(void *data)to be passed to ap_power_ev_send_callbacks(event, void *data) to address this but we will loss the functionality of passing multiple events in single function call or other way is to pass (struct ap_power_ev_data data) to ap_power_ev_send_callbacks in all calling places. whats your suggestion ?",
+      "parentUuid": "bfabcedc_0ee1c3c3",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1527d880_bf2c0c4d",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_command.c",
         "patchSetId": 10
