@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b8033e_60749f46",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_host_sleep.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-06T01:30:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66420a7e_e406b801",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c6d7160_68e5d581",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-04T01:03:57Z",
       "side": 1,
       "message": "Maybe this function should be in the host command file",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e56bfc3_ec3b08e4",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-06T01:30:13Z",
+      "side": 1,
+      "message": "This piece of code is also related to ap_power_sleep_notify_transition.. we can consider this during refactoring of ap_power_sleep_notify_transition related code.",
+      "parentUuid": "9c6d7160_68e5d581",
       "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -90,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4419b085_518f53a5",
+        "filename": "zephyr/subsys/ap_pwrseq/power_host_sleep.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-06T01:30:13Z",
+      "side": 1,
+      "message": "Updated the changes for handling error recovery using event based approach.\n\nhandling ap_power_sleep_notify_transition() in same s0ix error recovery events are not straight forward because ap_power_sleep_notify_transition(AP_POWER_SLEEP_RESUME) is handled in SYS_POWER_STATE_S0 instead of SYS_POWER_STATE_S0ixS0 because of below special handing.\n\n////////////////////////////////////\n /*\n                         * SLP_S0 may assert in system idle scenario without a\n                         * kernel freeze call. This may cause interrupt storm\n                         * since there is no freeze/unfreeze of threads/process\n                         * in the idle scenario. Ignore the SLP_S0 assertions in\n                         * idle scenario by checking the host sleep state.\n                         */\n                } else if (ap_power_sleep_get_notify() \u003d\u003d\n                                   AP_POWER_SLEEP_SUSPEND \u0026\u0026\n                           power_signals_on(IN_PCH_SLP_S0)) {\n                        return SYS_POWER_STATE_S0S0ix;\n                } else if (ap_power_sleep_get_notify() \u003d\u003d\n                           AP_POWER_SLEEP_RESUME) {\n                        ap_power_sleep_notify_transition(AP_POWER_SLEEP_RESUME);\n\n\n//////////////////////////////\n\nWe can consider refactoring ap_power_sleep_notify_transition related stuff as a separate task.",
+      "parentUuid": "d2b5e1c5_d0f83b38",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1527d880_bf2c0c4d",
         "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_command.c",
         "patchSetId": 10
@@ -101,6 +155,24 @@
       "writtenOn": "2022-08-04T01:03:57Z",
       "side": 1,
       "message": "I can\u0027t see where this is being used?",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d008e0_5853e1ba",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-06T01:30:13Z",
+      "side": 1,
+      "message": "Initially i thought of using this but its not required. deleting this.",
+      "parentUuid": "1527d880_bf2c0c4d",
       "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56cf5db8_e744c1fa",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-06T01:30:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d0326b8_1cb666eb",
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b4a1c5e_b9f0c578",
@@ -135,6 +225,30 @@
       "writtenOn": "2022-08-04T01:03:57Z",
       "side": 1,
       "message": "So these 2 calls can be combined, as:\n\n   ap_power_ev_send_callbacks(AP_POWER_S0IX_RESUME\n#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK\n                              | AP_POWER_RESUME_INIT\n#endif\n                              );",
+      "range": {
+        "startLine": 437,
+        "startChar": 2,
+        "endLine": 437,
+        "endChar": 28
+      },
+      "revId": "3180b4bde358c636e43f57756228ec15ee95bbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b605ed_9ca6fc10",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-06T01:30:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b4a1c5e_b9f0c578",
       "range": {
         "startLine": 437,
         "startChar": 2,
