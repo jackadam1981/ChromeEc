@@ -916,6 +916,12 @@ ams_errno_t sensor_config(ams_config_feature_t cfg_type, void *cfg)
     return(ret);
 }
 
+ams_errno_t sensor_irq(void)
+{
+	sensor_process_irq(sh);
+	return AMS_SUCCESS;
+}
+
 void sensor_clear_sai(void)
 {
     AMS_LOG_PRINTF_IRQ(LOG_INFO, "Clearing SAI_ACTIVE");
@@ -932,17 +938,6 @@ uint16_t sensor_get_als_nr_samples(void)
 uint16_t sensor_get_sample_time(void)
 {
     return(current_config.sample_time);
-}
-
-/*
- * Entry point for all interrupts - tcs3410_irq.c module handles
- * the processing of all interrupts.
- */
-void ams_sensor_irq_handler(__attribute__((unused)) uint32_t pin)
-{
-    sensor_process_irq(sh);
-
-    return;
 }
 
 ams_errno_t ams_sensor_init(struct ams_device *device)
@@ -968,6 +963,7 @@ ams_errno_t ams_sensor_init(struct ams_device *device)
     device->configure = sensor_config;
     device->status    = sensor_status;
     device->setup     = sensor_setup;
+    device->irq       = sensor_irq;
 
     i2c_buff = 0;
     /* disable all features - als and flicker */

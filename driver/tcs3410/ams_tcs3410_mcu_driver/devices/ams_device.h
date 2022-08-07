@@ -221,6 +221,7 @@ typedef ams_errno_t (*device_configure)(ams_config_feature_t cfg_type, void *cfg
 typedef void (*device_log)(int level, const char *message);
 typedef ams_errno_t (*device_status)(void *data);
 typedef ams_errno_t (*device_setup)(void *data);
+typedef ams_errno_t (*device_irq)(void);
 
 struct ams_device
 {
@@ -234,6 +235,7 @@ struct ams_device
     device_log         log;
     device_status      status;
     device_setup       setup;
+    device_irq         irq;
     char const        *version;
 };
 
