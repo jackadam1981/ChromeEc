@@ -113,7 +113,7 @@ ams_errno_t process_fd_data(volatile ams_current_state_t *pcurr_state, uint8_t *
     int         packet_size[] = {FD_PACKET_COMPRESSED_SZ};
     uint16_t    max_index = 0;
     int32_t     mean, std_dev;
-    double      flicker_freq = 0.0;
+    fp_t        flicker_freq = INT_TO_FP(0);
     uint16_t    fd_nr_samples = pcurr_state->fd.fd_nr_samples + 1; /* register value is base 0 */
 
     /* With a single channel on a single step performing flicker, no need to normalize */
@@ -144,19 +144,19 @@ ams_errno_t process_fd_data(volatile ams_current_state_t *pcurr_state, uint8_t *
 
         /* sample_freq/fd_nr_samples is the size of each bin */
         /* find the correct bin using max_index */
-        flicker_freq = (double)((double)(max_index * pcurr_state->fd.sample_freq) / (double)fd_nr_samples);
+        flicker_freq = fp_div(max_index * pcurr_state->fd.sample_freq, fd_nr_samples);
 
         pcurr_state->fd.freq = flicker_freq;
         /* See if peak is at least 6 standard deviations from mean */
         if (output_fft[max_index] > (mean + (std_dev * 6)))
         {
-            AMS_LOG_PRINTF_IRQ(LOG_INFO, "Success: Calculated Flicker Frequency is " NRF_LOG_FLOAT_MARKER " Hz. (count = %d, mean = %d, std dev = %d)",
-                      NRF_LOG_FLOAT(flicker_freq), output_fft[max_index], mean, std_dev);
+            AMS_LOG_PRINTF_IRQ(LOG_INFO, "Success: Calculated Flicker Frequency is %d mHz. (count = %d, mean = %d, std dev = %d)",
+                      FP_TO_INT(flicker_freq * 1000), output_fft[max_index], mean, std_dev);
             ret_val  = AMS_SUCCESS;
         }
         else
         {
-            AMS_LOG_PRINTF_IRQ(LOG_ERROR, "FAILURE: Flicker Frequency is " NRF_LOG_FLOAT_MARKER " Hz., not outside of 6 std devs.", NRF_LOG_FLOAT(flicker_freq));
+            AMS_LOG_PRINTF_IRQ(LOG_ERROR, "FAILURE: Flicker Frequency is %d mHz., not outside of 6 std devs.", FP_TO_INT(flicker_freq * 1000));
             ret_val = AMS_FLICKER_FAILURE;
         }
     }

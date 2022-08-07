@@ -172,10 +172,12 @@ static uint8_t shadow_regs[MAX_REGS]; /* shadows the HW */
 uint8_t * const sh = &shadow_regs[0];
 
 /* Indexed by the register value of gain - needs to be global */
-const double gain_reg_2_gain[] =
+const fp_t gain_reg_2_gain[] =
 {
-    0.5, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0, 256.0, 512.0, 1024.0,
-    2048.0, 4096.0
+    FLOAT_TO_FP(0.5), FLOAT_TO_FP(1.0), FLOAT_TO_FP(2.0), FLOAT_TO_FP(4.0),
+    FLOAT_TO_FP(8.0), FLOAT_TO_FP(16.0), FLOAT_TO_FP(32.0), FLOAT_TO_FP(64.0),
+    FLOAT_TO_FP(128.0), FLOAT_TO_FP(256.0), FLOAT_TO_FP(512.0), FLOAT_TO_FP(1024.0),
+    FLOAT_TO_FP(2048.0), FLOAT_TO_FP(4096.0)
 };
 
 /*

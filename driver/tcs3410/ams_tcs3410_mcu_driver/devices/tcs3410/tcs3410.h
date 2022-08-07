@@ -11,6 +11,7 @@
 
 #include "ams_device.h"
 #include "ams_errno.h"
+#include "math_util.h"
 
 
 /* pointer to shadow registers */
@@ -98,7 +99,7 @@ typedef enum
 #define DEFAULT_FIFO_THRESH_REG                  (499)
 
 
-extern const double gain_reg_2_gain[];
+extern const fp_t gain_reg_2_gain[];
 
 void sensor_write(uint8_t reg, uint8_t *sh, uint8_t val);
 void sensor_blk_write(uint8_t reg, uint8_t *buffer, uint8_t bytes);
