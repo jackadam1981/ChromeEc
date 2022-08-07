@@ -352,6 +352,14 @@
 /* Define to include the clear channel driver for the tcs3400 light sensor */
 #undef CONFIG_ALS_TCS3400
 
+/* Define to include the clear channel driver for the tcs3410 light sensor */
+#undef CONFIG_ALS_TCS3410
+/*
+ * I2C port the TCS3410 is connected to.
+ * The driver coming from the vendor assumes only one sensor present.
+ */
+#undef CONFIG_ALS_TCS3410_PORT
+
 /*
  * Define to use atime tables in anti-saturation algos in the tcs3400 driver.
  * Defining this for a board makes the anti-saturation algorithm much more
@@ -376,6 +384,7 @@
 #undef CONFIG_ACCEL_LIS2DW12_INT_EVENT
 #undef CONFIG_ALS_SI114X_INT_EVENT
 #undef CONFIG_ALS_TCS3400_INT_EVENT
+#undef CONFIG_ALS_TCS3410_INT_EVENT
 
 /*
  * Enable Si114x to operate in polling mode. This config is used in conjunction
