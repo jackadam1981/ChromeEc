@@ -10,12 +10,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-#include "nrf_log.h"
-#include "nrf_log_ctrl.h"
-#include "nrf_delay.h"
 #include "ams_errno.h"
 #include "ams_device.h"
-#include "ams_platform.h"
 
 /*
  * Convert up to 8 bytes into a long long

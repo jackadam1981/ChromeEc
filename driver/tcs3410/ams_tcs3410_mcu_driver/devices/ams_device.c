@@ -9,11 +9,8 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdarg.h>
-#include "nrf_log.h"
-#include "nrf_log_ctrl.h"
 #include "ams_errno.h"
 #include "ams_device.h"
-#include "ams_platform.h"
 #include "tcs3410_hwdef.h"
 #include "tcs3410.h"
 

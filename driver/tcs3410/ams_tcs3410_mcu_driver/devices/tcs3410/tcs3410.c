@@ -9,10 +9,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include <math.h>
-#include "nrf_log.h"
-#include "nrf_log_ctrl.h"
-#include "nrf_delay.h"
+#include <string.h>
 #include "ams_errno.h"
 #include "tcs3410_hwdef.h"
 #include "tcs3410.h"
@@ -22,7 +19,6 @@
 #include "tcs3410_als.h"
 #include "ams_i2c.h"
 #include "ams_device.h"
-#include "ams_platform.h"
 
 static char const * const VERSION = "1.1";
 bool irq_log_enable = true;

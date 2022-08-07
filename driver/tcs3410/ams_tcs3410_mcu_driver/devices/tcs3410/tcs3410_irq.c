@@ -10,9 +10,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-#include "nrf_log.h"
-#include "nrf_log_ctrl.h"
-#include "nrf_delay.h"
 #include "ams_errno.h"
 #include "tcs3410_hwdef.h"
 #include "tcs3410_irq.h"
@@ -22,7 +19,6 @@
 #include "tcs3410_fd.h"
 
 #include "ams_device.h"
-#include "ams_platform.h"
 
 static void mint_irq(uint8_t *shadow_regs)
 {

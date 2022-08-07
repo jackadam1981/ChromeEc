@@ -9,9 +9,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include <math.h>
-#include "nrf_log.h"
-#include "nrf_log_ctrl.h"
 #include "ams_errno.h"
 #include "tcs3410_hwdef.h"
 #include "tcs3410.h"
@@ -20,7 +19,6 @@
 #include "ams_device.h"
 #include "ams_fifo_decode.h"
 #include "ams_fft.h"
-#include "ams_platform.h"
 
 static int calculate_fft(uint16_t *in, uint16_t *out, uint16_t fd_nr_samples)
 {
