@@ -19,6 +19,7 @@
 #include "tcs3410_als.h"
 #include "ams_i2c.h"
 #include "ams_device.h"
+#include "timer.h"
 
 static char const * const VERSION = "1.1";
 bool irq_log_enable = true;
@@ -328,7 +329,6 @@ static void sensor_init_shadow_regs(void)
     for (idx = BASE_REGISTER; idx < MAX_REGS; idx += NUM_REGISTERS_READ)
     {
         sensor_read(idx, &shadow_regs[idx], NUM_REGISTERS_READ);
-        nrf_delay_ms(200);
     }
 
     return;
@@ -383,7 +383,7 @@ void sensor_soft_reset(void)
     /* But PON enables OSC ??? */
     sensor_write(REG_ENABLE, sh, DEVICE_PON);
     sensor_modify(REG_CONTROL, sh, CONTROL_SOFT_RESET_MASK, CONTROL_SOFT_RESET_MASK);
-    nrf_delay_ms(200);
+    msleep(200);
 
     return;
 }
