@@ -231,7 +231,7 @@ static uint8_t reg_in_use[MAX_REGS / 8] =
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,    /* 0xc0 - 0xff */
 };
 
-ssize_t ams_registers_get(char *buf, int bufsiz)
+size_t ams_registers_get(char *buf, int bufsiz)
 {
     uint8_t regval[16];
     int i, j, k, cnt;

@@ -249,7 +249,7 @@ ams_errno_t ams_device_isUP(bool *pOK);
 ams_errno_t ams_device_status(void *data);
 ams_errno_t ams_device_setup(void *data);
 void ams_device_get_version(void);
-ssize_t ams_registers_get(char *buf, int bufsiz);
+size_t ams_registers_get(char *buf, int bufsiz);
 
 typedef enum
 {
