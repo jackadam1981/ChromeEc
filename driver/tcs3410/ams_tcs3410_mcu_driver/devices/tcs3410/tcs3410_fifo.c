@@ -9,10 +9,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include <math.h>
-#include "nrf_log.h"
-#include "nrf_log_ctrl.h"
-#include "nrf_delay.h"
 #include "ams_errno.h"
 #include "tcs3410_hwdef.h"
 #include "tcs3410.h"
@@ -20,7 +18,6 @@
 #include "tcs3410_als.h"
 #include "tcs3410_fd.h"
 #include "ams_device.h"
-#include "ams_platform.h"
 
 static uint8_t fifo_data[MAX_FIFO_DATA_LEN];
 /*

@@ -11,7 +11,6 @@
 
 #include "ams_device.h"
 #include "ams_errno.h"
-#include "ams_platform.h"
 
 
 /* pointer to shadow registers */
