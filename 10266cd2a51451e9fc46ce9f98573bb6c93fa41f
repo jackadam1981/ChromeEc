@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1125ce3_737c1ef9",
+        "filename": "zephyr/dts/bindings/usbc/named-usbc-port.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-07T14:42:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b6cfb2f5_c428f982",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53bd3742_a7571ce6",
@@ -308,6 +326,24 @@
       "writtenOn": "2022-08-04T12:26:56Z",
       "side": 1,
       "message": "I think it might be useful to have an option to enable the alt PPC for a certain port, not for all ports only.",
+      "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26cdcf2f_c54a931d",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-07T14:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fb9fd20_975c7115",
       "revId": "10266cd2a51451e9fc46ce9f98573bb6c93fa41f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
