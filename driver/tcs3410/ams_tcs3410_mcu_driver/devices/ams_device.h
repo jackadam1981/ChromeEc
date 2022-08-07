@@ -9,8 +9,11 @@
 #ifndef __AMS_DEVICE_H__
 #define __AMS_DEVICE_H__
 
+#include <stddef.h>
+#include <stdint.h>
+#include "console.h"
 #include "ams_errno.h"
-#include <sys/types.h>
+#include "math_util.h"
 
 #define NUM_PDS              (3) /* actually number of ADC - each ADC has 2 PDs muxed */
 #define NUM_STATUS_BYTES     (3)
@@ -132,26 +135,26 @@ typedef enum
 typedef struct _ams_als_info_t
 {
     uint32_t mod_counts[NUM_MODULATORS];              /* raw counts from the device */
-    double   mod_normalized_counts[NUM_MODULATORS];   /* normalized to a specific gain */
+    fp_t   mod_normalized_counts[NUM_MODULATORS];   /* normalized to a specific gain */
     uint8_t  status[ALS_STATUS_END];                  /* status registers from the device */
     uint8_t  gains[NUM_MODULATORS];                   /* register value of the gains */
-    double   mod_gains[NUM_MODULATORS];               /* numeric equiv of gains - 128x, 256x, etc */
-    double   mod_normalized_gains[NUM_MODULATORS];    /* normalized to the clear channel in step 0 mod 0*/
-    double   matching_factors;                        /* compare clear channel from each step: 0 -> 0, 1 -> 0 , 2 -> 0 */
+    fp_t   mod_gains[NUM_MODULATORS];               /* numeric equiv of gains - 128x, 256x, etc */
+    fp_t   mod_normalized_gains[NUM_MODULATORS];    /* normalized to the clear channel in step 0 mod 0*/
+    fp_t   matching_factors;                        /* compare clear channel from each step: 0 -> 0, 1 -> 0 , 2 -> 0 */
     uint16_t als_fifo_data[ALS_FIFO_DATA_LENGTH];     /* store als fifo data */
-    double   lux;
-    double   cct;
+    fp_t   lux;
+    fp_t   cct;
 } ams_als_info_t;
 
 typedef struct _ams_fd_info_t
 {
     uint16_t          fd_nr_samples;
-    double            sample_freq; /* nyquist sampling frequency */
+    fp_t            sample_freq; /* nyquist sampling frequency */
     uint8_t           gain_reg;    /* actual register value - only 1 modulator for flicker */
     uint16_t          gain_mod;    /* actual gain.. 2x, 4x, 8x, 16x... */
     bool              end_marker;  /* 3 bytes 0f 0x00 */
     uint16_t          len;         /* length of the flicker data not including end or gain */
-    double            freq;        /* calculated frequency */
+    fp_t            freq;        /* calculated frequency */
 } ams_fd_info_t;
 
 typedef enum
