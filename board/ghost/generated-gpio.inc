@@ -19,12 +19,12 @@ GPIO_INT(USB_C0_PPC_INT_ODL,             PIN(6, 2), GPIO_INT_FALLING, ppc_interr
 GPIO_INT(USB_C0_RT_INT_ODL,              PIN(B, 1), GPIO_INT_FALLING, retimer_interrupt)
 GPIO_INT(USB_C1_PPC_INT_ODL,             PIN(7, 0), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_C1_RT_INT_ODL,              PIN(4, 1), GPIO_INT_FALLING, retimer_interrupt)
+GPIO_INT(EC_ALS_RGB_INT_R_L,             PIN(D, 4), GPIO_INT_FALLING, tcs3410_interrupt)
 
 /* USED GPIOs: */
 GPIO(CCD_MODE_ODL,                   PIN(E, 5), GPIO_INPUT)
 GPIO(CHARGER_INT_ODL,                PIN(7, 3), GPIO_INPUT)
 GPIO(CPU_C10_GATE_L,                 PIN(6, 7), GPIO_INPUT)
-GPIO(EC_ALS_RGB_INT_R_L,             PIN(D, 4), GPIO_INPUT)
 GPIO(EC_BATT_PRES_ODL,               PIN(A, 3), GPIO_INPUT)
 GPIO(EC_ENTERING_RW,                 PIN(0, 3), GPIO_OUT_LOW)
 GPIO(EC_EN_EDP_BL,                   PIN(8, 3), GPIO_OUT_HIGH)
