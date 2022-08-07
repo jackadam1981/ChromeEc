@@ -11,3 +11,4 @@ _tcs3410_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 
 include $(_tcs3410_cur_dir)ams_fft/build.mk
 include $(_tcs3410_cur_dir)ams_fifo_compression_decode/build.mk
+include $(_tcs3410_cur_dir)ams_tcs3410_mcu_driver/build.mk
