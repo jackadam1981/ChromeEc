@@ -239,7 +239,7 @@ struct ams_device
     char const        *version;
 };
 
-ams_errno_t ams_device_init(void);
+ams_errno_t ams_sensor_init(struct ams_device *device);
 void ams_device_write(uint8_t reg, uint8_t val);
 void ams_device_read( uint8_t reg, uint8_t *buffer, uint8_t bytes);
 ams_errno_t ams_device_enable(ams_feature_t feature, ams_feature_enable_t enable);
