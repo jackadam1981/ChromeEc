@@ -15,6 +15,5 @@ int ams_i2c_block_write(uint8_t addr, uint8_t reg, uint8_t *data, int size);
 int ams_i2c_write(uint8_t addr, uint8_t *sh, uint8_t reg, int data);
 int ams_i2c_write_direct(uint8_t addr, uint8_t reg, uint8_t data);
 int ams_i2c_modify(uint8_t addr, uint8_t *sh, uint8_t reg, uint8_t mask, uint8_t val);
-ams_errno_t ams_i2c_init(uint8_t scl, uint8_t sda);
 
 #endif /* __MASTER_I2C_H__ */

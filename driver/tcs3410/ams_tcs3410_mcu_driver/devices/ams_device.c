@@ -7,8 +7,6 @@
  */
 
 #include <stdio.h>
-#include <stdint.h>
-#include <stdarg.h>
 #include "ams_errno.h"
 #include "ams_device.h"
 #include "tcs3410_hwdef.h"
@@ -18,173 +16,47 @@
 ams_errno_t ams_sensor_init(struct ams_device *device);
 
 struct ams_device device = { 0 };
-struct ams_platform platform = { 0 };
 
-static bool device_ok = false;
-
-ams_errno_t ams_device_init(void)
 {
-    ams_errno_t ret_val = AMS_UNKNOWN_ERROR;
-    uint32_t pin = AMS_IRQ0_PIN;
 
-    ams_platform_init(&platform);
-    device.log = platform.ams_platform_log;
 
-    if (platform.ams_platform_i2c_init)
-    {
-        platform.ams_platform_i2c_init(AMS_SCL_PIN, AMS_SDA_PIN);
-    }
-
-    if (platform.ams_platform_irq_init)
-    {
-        platform.ams_platform_irq_init(pin);
-    }
-
-    if (platform.ams_platform_spi_init)
-    {
-        platform.ams_platform_spi_init();
-    }
-
-    if (platform.ams_platform_gpio_init)
-    {
-        platform.ams_platform_gpio_init();
-    }
-
-    if (platform.ams_platform_timer_init)
-    {
-        platform.ams_platform_timer_init();
-    }
-
-    ret_val = ams_sensor_init(&device);
     if (ret_val == AMS_SUCCESS)
     {
         AMS_LOG_PRINTF(LOG_INFO, "Sensor init success.");
-        device_ok = true;
     }
     else
     {
         AMS_LOG_PRINTF(LOG_ERROR, "Sensor init failed.\n");
     }
-    return(ret_val);
 }
 
-void ams_device_write(uint8_t reg, uint8_t val)
 {
-    if (device.write)
-    {
-        device.write(reg, sh, val);
-    }
-    else
-    {
-        AMS_LOG_PRINTF(LOG_INFO, "No [%s] callback defined for this sensor.", __func__);
-    }
-
-    return;
 }
 
-void ams_device_read(uint8_t reg, uint8_t *buffer, uint8_t bytes)
 {
-    if (device.read)
-    {
-        device.read(reg, buffer, bytes);
-    }
-    else
-    {
-        AMS_LOG_PRINTF(LOG_INFO, "No [%s] callback defined for this sensor.", __func__);
-    }
-
-    return;
 }
 
-ams_errno_t ams_device_enable(ams_feature_t feature, ams_feature_enable_t enable)
 {
-    ams_errno_t ret = AMS_SUCCESS;
-    if (device.enable)
-    {
-        ret = device.enable(feature, enable);
-    }
-    else
-    {
-        ret = AMS_CLI_FAILURE;
-        AMS_LOG_PRINTF(LOG_INFO, "No [%s] callback defined for this sensor.", __func__);
-    }
 
-    return(ret);;
 }
 
-ams_errno_t ams_device_sai(ams_sai_state_t state)
 {
-    ams_errno_t ret = AMS_SUCCESS;
 
-    if (device.sai)
-    {
-        ret = device.sai(state);
-    }
-    else
-    {
-        ret = AMS_CLI_FAILURE;
-        AMS_LOG_PRINTF(LOG_INFO, "No [%s] callback defined for this sensor.", __func__);
-    }
 
-    return(ret);
 }
 
-ams_errno_t ams_device_pon(bool state)
 {
-    ams_errno_t ret = AMS_SUCCESS;
-
-    if (device.pon)
-    {
-        ret = device.pon(state);
-    }
-    else
-    {
-        ret = AMS_CLI_FAILURE;
-        AMS_LOG_PRINTF(LOG_INFO, "No [%s] callback defined for this sensor.", __func__);
-    }
-
-    return(ret);
 }
 
-ams_errno_t ams_device_log_irq(bool state)
 {
-    ams_errno_t ret = AMS_SUCCESS;
-
-    if (device.log_irq)
-    {
-        ret = device.log_irq(state);
-    }
-    else
-    {
-        ret = AMS_CLI_FAILURE;
-        AMS_LOG_PRINTF(LOG_INFO, "No [%s] callback defined for this sensor.", __func__);
-    }
-
-    return(ret);
 }
 
-ams_errno_t ams_device_configure(ams_config_feature_t cfg_type, void *cfg)
 {
-    ams_errno_t ret = AMS_SUCCESS;
 
-    if (device.configure)
-    {
-        ret = device.configure(cfg_type, cfg);
-    }
-    else
-    {
-        ret = AMS_CLI_FAILURE;
-        AMS_LOG_PRINTF(LOG_INFO, "No [%s] callback defined for this sensor.", __func__);
-    }
-
-    return(ret);
 }
 
-ams_errno_t ams_device_isUP(bool *pOK)
 {
-    *pOK = device_ok;
 
-    return(AMS_SUCCESS);
 }
 
 ams_errno_t ams_device_status(void *stat)
@@ -204,25 +76,7 @@ ams_errno_t ams_device_status(void *stat)
     return(ret);
 }
 
-ams_errno_t ams_device_setup(void *cfg)
-{
-    ams_errno_t ret = AMS_UNKNOWN_ERROR;
-
-    if (device.setup)
-    {
-        ret = device.setup(cfg);
-    }
-    else
-    {
-        ret = AMS_CLI_FAILURE;
-        AMS_LOG_PRINTF(LOG_INFO, "No [%s] callback defined for this sensor.", __func__);
-    }
-
-    return(ret);
-}
-
 /* bitmap of registers that are in use */
-
 static uint8_t reg_in_use[MAX_REGS / 8] =
 {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,    /* 0x00 - 0x3f */

@@ -239,15 +239,12 @@ struct ams_device
     char const        *version;
 };
 
-ams_errno_t ams_device_init(void);
-void ams_device_write(uint8_t reg, uint8_t val);
-void ams_device_read( uint8_t reg, uint8_t *buffer, uint8_t bytes);
+ams_errno_t ams_sensor_init(struct ams_device *device);
 ams_errno_t ams_device_enable(ams_feature_t feature, ams_feature_enable_t enable);
 ams_errno_t ams_device_sai(ams_sai_state_t state);
 ams_errno_t ams_device_log_irq(bool state);
 ams_errno_t ams_device_pon(bool state);
 ams_errno_t ams_device_configure(ams_config_feature_t cfg_type, void *cfg);
-ams_errno_t ams_device_isUP(bool *pOK);
 ams_errno_t ams_device_status(void *data);
 ams_errno_t ams_device_setup(void *data);
 void ams_device_get_version(void);
