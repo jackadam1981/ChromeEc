@@ -41,6 +41,16 @@ def translate_expected(status):
     return flag
 
 
+def translate_duration(testcase):
+    """Translates ZTEST execution_time to ResultDB duration"""
+    duration = None
+
+    if "execution_time" in testcase:
+        duration = "%sms" % testcase["execution_time"]
+
+    return duration
+
+
 def testcase_summary(testcase):
     """Translates ZTEST testcase to ResultDB summaryHtml"""
     html = "<p>None</p>"
@@ -90,7 +100,7 @@ def testcase_to_result(testsuite, testcase):
             {"key": "category", "value": "ChromeOS/EC"},
             {"key": "platform", "value": testsuite["platform"]},
         ],
-        "duration": "%sms" % testcase["execution_time"],
+        "duration": translate_duration(testcase),
         "testMetadata": {"name": testcase["identifier"]},
     }
 
