@@ -286,8 +286,12 @@ enum fan_status fan_smart_control(int ch, int rpm_actual, int rpm_target)
 {
 	int duty, rpm_diff;
 
-	/* wait rpm is stable */
-	if (ABS(rpm_actual - rpm_pre[ch]) > RPM_MARGIN(rpm_actual)) {
+	/*
+	 * Wait if the fan speed is still rapidly changing in the operating
+	 * range
+	 */
+	if (ABS(rpm_actual - rpm_pre[ch]) > RPM_MARGIN(rpm_actual) &&
+	    rpm_actual >= fans[ch].rpm->rpm_min) {
 		rpm_pre[ch] = rpm_actual;
 		return FAN_STATUS_CHANGING;
 	}
