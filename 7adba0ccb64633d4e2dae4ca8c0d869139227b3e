@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8ebe7d5b_246ee55b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-08T20:16:04Z",
+      "side": 1,
+      "message": "Done. \nI\u0027m updating the build_firmware.py recipe to upload test results.  The `import requests` isn\u0027t available under recipe environment for `zephyr_to_resultdb.py`, but we can add this support via vpython listing the required python module here.",
+      "parentUuid": "0b01ce69_c33cc427",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "7adba0ccb64633d4e2dae4ca8c0d869139227b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "918170eb_6b10f814",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
