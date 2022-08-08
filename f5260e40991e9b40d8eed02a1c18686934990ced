@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59deb526_7d179bbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-08T21:57:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d87000ff_b240a6fa",
+      "revId": "f5260e40991e9b40d8eed02a1c18686934990ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "183c9159_614b3188",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c30da5e_1b866b57",
+        "filename": "common/host_command.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-08T21:57:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "183c9159_614b3188",
+      "revId": "f5260e40991e9b40d8eed02a1c18686934990ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dcea243_9028a62b",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-01T18:07:25Z",
       "side": 1,
       "message": "i think we have to move it to commown/power.c\nor common/system.c",
+      "revId": "f5260e40991e9b40d8eed02a1c18686934990ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce9410f0_da2a618d",
+        "filename": "common/host_command.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-08T21:57:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9dcea243_9028a62b",
       "revId": "f5260e40991e9b40d8eed02a1c18686934990ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
