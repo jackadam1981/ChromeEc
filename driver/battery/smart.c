@@ -463,7 +463,7 @@ void battery_get_params(struct batt_params *batt)
 	if (batt_new.flags & BATT_FLAG_RESPONSIVE)
 		batt_new.is_present = BP_YES;
 	else
-		batt_new.is_present = BP_NOT_SURE;
+		batt_new.is_present = BP_NO;
 #endif
 
 	/*
