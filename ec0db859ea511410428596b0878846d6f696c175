@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a4dba0_9534477d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-08T20:52:25Z",
+      "side": 1,
+      "message": "__gcov_reset will never show in the coverage files, because it clears the coverage data.",
+      "revId": "ec0db859ea511410428596b0878846d6f696c175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
