@@ -16,6 +16,29 @@
       "message": "Assuming @jrosenth doesn\u0027t have any other comments. LGTM.",
       "revId": "63df8d96113da0e896fd8f7be1756026f11babe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86055055_56e78316",
+        "filename": "util/zephyr_to_resultdb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-08T20:33:49Z",
+      "side": 1,
+      "message": "```\ntime \u003d testcase.get(\"executiontime\")\nif time:\n    duration \u003d f\"{time}ms\"\n```",
+      "range": {
+        "startLine": 50,
+        "startChar": 22,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "63df8d96113da0e896fd8f7be1756026f11babe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
