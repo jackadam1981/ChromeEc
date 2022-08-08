@@ -12,6 +12,9 @@
 #define VARIANT_DEDEDE_EC_IT8320
 #include "baseboard.h"
 
+/* BC 1.2 */
+#define CONFIG_BC12_DETECT_PI3USB9201
+
 /* Charger */
 #define CONFIG_CHARGER_SM5803 /* C0 and C1: Charger */
 #define PD_MAX_VOLTAGE_MV 15000
@@ -71,7 +74,6 @@
 #undef CONFIG_KEYBOARD_BOOT_KEYS
 #undef CONFIG_KEYBOARD_RUNTIME_KEYS
 #undef CONFIG_LID_SWITCH
-#undef CONFIG_USB_CHARGER
 #undef CONFIG_VOLUME_BUTTONS
 #undef GPIO_USB_C1_DP_HPD
 

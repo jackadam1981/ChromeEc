@@ -12,6 +12,7 @@
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "cros_board_info.h"
+#include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/sm5803.h"
 #include "driver/led/oz554.h"
 #include "driver/temp_sensor/thermistor.h"
@@ -31,6 +32,7 @@
 #include "tcpm/tcpci.h"
 #include "temp_sensor.h"
 #include "uart.h"
+#include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -46,12 +48,13 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_USB_A_5V,
 };
 
-/* C0 interrupt line triggered by charger */
+/* C0 interrupt line shared by BC 1.2 and charger */
 static void check_c0_line(void);
 DECLARE_DEFERRED(check_c0_line);
 
 static void notify_c0_chips(void)
 {
+	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
 	sm5803_interrupt(0);
 }
 
@@ -197,6 +200,15 @@ const struct adc_t adc_channels[] = {
 				.channel = CHIP_ADC_CH16 },
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* BC 1.2 chips */
+const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
+	{
+		.i2c_port = I2C_PORT_USB_C0,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+		.flags = PI3USB9201_ALWAYS_POWERED,
+	}
+};
 
 /* Charger chips */
 const struct charger_config_t
