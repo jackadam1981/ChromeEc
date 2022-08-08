@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0676d13_c00a9a58",
+        "filename": "board/shotzo/led.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-08T12:08:06Z",
+      "side": 1,
+      "message": "led_set_color_duty?",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 30
+      },
+      "revId": "1f8bbd691cef0df756869832ae5b458a49fffd5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86974dc_1eb4f053",
+        "filename": "board/shotzo/led.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-08T12:08:06Z",
+      "side": 1,
+      "message": "I think you can make this as a pointer.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 54
+      },
+      "revId": "1f8bbd691cef0df756869832ae5b458a49fffd5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf4ffd5_3c140fc0",
+        "filename": "board/shotzo/led.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-08T12:08:06Z",
+      "side": 1,
+      "message": "__override can be removed.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 10
+      },
+      "revId": "1f8bbd691cef0df756869832ae5b458a49fffd5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
