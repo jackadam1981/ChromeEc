@@ -1634,8 +1634,13 @@ static enum ec_error_list sm5803_set_input_current_limit(int chgnum,
 							 int input_current)
 {
 	int reg;
+	int val;
 
-	reg = SM5803_CURRENT_TO_REG(input_current) & SM5803_CHG_ILIM_RAW;
+	chg_read8(chgnum, SM5803_REG_CHG_ILIM, &val);
+	val=val|0x80;
+	chg_write8(chgnum, 0x25, val);
+
+	reg = 0xff & SM5803_CHG_ILIM_RAW;
 
 	return chg_write8(chgnum, SM5803_REG_CHG_ILIM, reg);
 }

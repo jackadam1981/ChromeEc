@@ -13,9 +13,9 @@
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
 
 static const struct battery_info info = {
-	.voltage_max = 8600, /* mV */
-	.voltage_normal = 8500,
-	.voltage_min = 8400,
+	.voltage_max = 12500, /* mV */
+	.voltage_normal = 12500,
+	.voltage_min = 12500,
 };
 
 const struct battery_info *battery_get_info(void)
