@@ -16,6 +16,176 @@
       "message": "Hi gwendal，\n\nThe conflict of this CL has been resolved. Could you help us to CQ+2?\n\nThanks~\nYuqing",
       "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c76084c_b7a2929e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "This cl needs to be splitted in 2 and more code can be removed.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05643f7_2d192eeb",
+        "filename": "driver/accelgyro_bmi323.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "It should be a different CL, this section enables BMI320 support.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4551e20f_26928e74",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "In driver/accelgyro_bmi3xx.h, GYR_DP_OFF_X should be prefixed by BMI3_,",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b808b238_7237a463",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "It should be a different CL, this section enables BMI320 support.\nInstead of duplicating code, we can do:\nmask \u003d (data-\u003echipid \u003d\u003d BMI320_CHIP_ID ? 0x1F00 : 0x3F00);\nand use |mask| when collecting the result.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba3c4d51_6df132c2",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "|reset_en| is not used anymore.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15291dda_8eac8758",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "It should be a different CL, this section enables BMI320 support.\nInstead of duplicating code, we can do:\nlimit \u003d (data-\u003echipid \u003d\u003d BMI320_CHIP_ID ? 4096 : 8192);\nand use |limit|, |limit -1| or |2*limit| when collecting the result.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a38ead3c_50f4c16c",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "This function is just gathering sample and averaging them, it does not use any specific hardware.\nWe should instead remove that code (as the factory code does the same thing) and return EC_RES_INVALID_COMMAND when calibration is attempted on the accelerometer.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72d1226_1d3ffcbb",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "This code will never get executed since we are not calling get_calib_result for the accelerometer.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "568fbbf4_a69b3a11",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "It should be a different CL, this section enables BMI320 support.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "235cdcd5_11d19f9b",
+        "filename": "include/driver/accelgyro_bmi_common_public.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-08-08T17:58:56Z",
+      "side": 1,
+      "message": "It should be a different CL, this section enables BMI320 support.",
+      "revId": "dce7208f65c0a32418628ac0d17cff76bad0402d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
