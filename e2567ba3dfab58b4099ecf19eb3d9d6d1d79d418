@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0cae334_dc21528c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-08T04:02:43Z",
+      "side": 1,
+      "message": "Make sure you run clang-format - Dawid should sign off on this.",
+      "revId": "e2567ba3dfab58b4099ecf19eb3d9d6d1d79d418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd9a2f2_c2203b7e",
+        "filename": "zephyr/projects/corsola/i2c_kingler.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-08T04:02:43Z",
+      "side": 1,
+      "message": "Trailing white space",
+      "revId": "e2567ba3dfab58b4099ecf19eb3d9d6d1d79d418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "517a9aea_8c3a58ca",
+        "filename": "zephyr/projects/trogdor/lazor/i2c.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-08T04:02:43Z",
+      "side": 1,
+      "message": "Trailing white space",
+      "revId": "e2567ba3dfab58b4099ecf19eb3d9d6d1d79d418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
