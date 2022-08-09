@@ -512,11 +512,21 @@ static void perform_mux_set(int port, int index, mux_state_t mux_mode,
 		enter_low_power_mode(port);
 }
 
+static int hsl_inversion(int port)
+{
+	return port == USBC_PORT_C1;
+}
+
 void usb_mux_set(int port, mux_state_t mux_mode, enum usb_switch usb_mode,
 		 int polarity)
 {
 	if (port >= board_get_usb_pd_port_count())
 		return;
+
+#if 1
+	if (hsl_inversion(port))
+		polarity ^= POLARITY_CC2;
+#endif
 
 	/* Block if we have no mux task, but otherwise queue it up and return */
 	if (IS_ENABLED(HAS_TASK_USB_MUX))
@@ -532,6 +542,11 @@ void usb_mux_set_single(int port, int index, mux_state_t mux_mode,
 {
 	if (port >= board_get_usb_pd_port_count())
 		return;
+
+#if 1
+	if (hsl_inversion(port))
+		polarity ^= POLARITY_CC2;
+#endif
 
 	/* Block if we have no mux task, but otherwise queue it up and return */
 	if (IS_ENABLED(HAS_TASK_USB_MUX))
