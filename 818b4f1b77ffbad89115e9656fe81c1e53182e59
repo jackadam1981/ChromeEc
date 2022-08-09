@@ -34,6 +34,24 @@
       "parentUuid": "15159f2f_d17cb25e",
       "revId": "818b4f1b77ffbad89115e9656fe81c1e53182e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d5ff40_a01470eb",
+        "filename": "board/shotzo/led.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-09T04:49:18Z",
+      "side": 1,
+      "message": "It is just a check to avoid the out of array access.",
+      "parentUuid": "61ca0c35_ce5e4ad3",
+      "revId": "818b4f1b77ffbad89115e9656fe81c1e53182e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
