@@ -70,6 +70,8 @@ LOG_MODULE_REGISTER(isl923x_emul, CONFIG_ISL923X_EMUL_LOG_LEVEL);
 #define R_SNS CONFIG_CHARGER_SENSE_RESISTOR
 #define REG_TO_CURRENT(REG) ((REG)*DEFAULT_R_SNS / R_SNS)
 
+#define BATTERY_NODE DT_NODELABEL(battery)
+
 struct isl923x_emul_data {
 	/** Common I2C data */
 	struct i2c_common_emul_data common;
@@ -127,9 +129,7 @@ const struct device *isl923x_emul_get_parent(const struct emul *emulator)
 
 struct i2c_emul *isl923x_emul_get_i2c_emul(const struct emul *emulator)
 {
-	struct isl923x_emul_data *data = emulator->data;
-
-	return &(data->common.emul);
+	return emulator->bus.i2c;
 }
 
 static void isl923x_emul_reset(struct isl923x_emul_data *data)
@@ -389,8 +389,9 @@ static int isl923x_emul_finish_write(const struct emul *emul, int reg,
 	case ISL923X_REG_CHG_CURRENT:
 		/* Write current to battery. */
 		if (data->battery_ord >= 0) {
+			/* We only have a single battery */
 			const struct emul *battery_emul =
-				sbat_emul_get_ptr(data->battery_ord);
+				EMUL_DT_GET(BATTERY_NODE);
 			if (battery_emul != NULL) {
 				bat = sbat_emul_get_bat_data(battery_emul);
 				if (bat != NULL) {
@@ -411,14 +412,9 @@ static int isl923x_emul_finish_write(const struct emul *emul, int reg,
 static int emul_isl923x_init(const struct emul *emul,
 			     const struct device *parent)
 {
-	const struct isl923x_emul_cfg *cfg = emul->cfg;
 	struct isl923x_emul_data *data = emul->data;
 
-	data->common.emul.api = &i2c_common_emul_api;
-	data->common.emul.addr = cfg->common.addr;
-	data->common.emul.target = emul;
 	data->common.i2c = parent;
-	data->common.cfg = &cfg->common;
 	i2c_common_emul_init(&data->common);
 
 	return 0;
