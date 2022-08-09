@@ -70,9 +70,6 @@
 			gpios = <&gpioi 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8 |
 					   GPIO_ACTIVE_LOW)>;
 		};
-		spi0_cs: spi0_cs {
-			gpios = <&gpiom 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-		};
 		gpio_x_ec_gpio2: x_ec_gpio2 {
 			gpios = <&gpiob 2 GPIO_INPUT>;
 		};
