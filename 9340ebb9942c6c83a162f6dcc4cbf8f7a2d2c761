@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f43e365_766aed42",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2022-08-09T17:12:36Z",
+      "side": 1,
+      "message": "Doesn\u0027t the current way we create the `ppc_chips` and `ppc_chips_alt` arrays allow us to do just:\n```\nmemcpy(\u0026ppc_chips[usb_port_num], \u0026ppc_chips_alt[usb_port_num], sizeof(struct ppc_config_t));\n```\n?",
+      "parentUuid": "6b204cf1_2bf860d7",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "9340ebb9942c6c83a162f6dcc4cbf8f7a2d2c761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c65361d_0477b688",
         "filename": "zephyr/shim/src/ppc.c",
         "patchSetId": 9
