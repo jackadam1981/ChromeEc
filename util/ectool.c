@@ -10522,11 +10522,18 @@ err:
 
 int cmd_wait_event(int argc, char *argv[])
 {
+	static const char *const mkbp_event_text[] = EC_MKBP_EVENT_TEXT;
+	static const char *const host_event_text[] = HOST_EVENT_TEXT;
+
 	int rv, i;
 	struct ec_response_get_next_event_v1 buffer;
 	long timeout = 5000;
 	long event_type;
 	char *e;
+
+	BUILD_ASSERT(ARRAY_SIZE(mkbp_event_text) == EC_MKBP_EVENT_COUNT);
+	BUILD_ASSERT(ARRAY_SIZE(host_event_text) == 33); /* events start at 1 */
+
 
 	if (!ec_pollevent) {
 		fprintf(stderr, "Polling for MKBP event not supported\n");
@@ -10535,6 +10542,15 @@ int cmd_wait_event(int argc, char *argv[])
 
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <type> [<timeout>]\n", argv[0]);
+		fprintf(stderr, "\n");
+		fprintf(stderr, "type: MKBP event number or name.\n");
+		for (int i = 0; i < ARRAY_SIZE(mkbp_event_text); i++) {
+			const char *name = mkbp_event_text[i];
+			if (name) {
+				fprintf(stderr, "      %s or %d\n", name, i);
+			}
+		}
+
 		return -1;
 	}
 
@@ -10559,6 +10575,19 @@ int cmd_wait_event(int argc, char *argv[])
 	for (i = 0; i < rv - 1; ++i)
 		printf("%02x ", buffer.data.key_matrix[i]);
 	printf("\n");
+
+	switch (event_type) {
+	case EC_MKBP_EVENT_HOST_EVENT:
+		printf("Host events:");
+		for (int evt = 1; evt <= 32; evt++) {
+			if (buffer.data.host_event & EC_HOST_EVENT_MASK(evt)) {
+				const char *name = host_event_text[evt];
+				printf(" %s", name ? name : "UNKNOWN");
+			}
+		}
+		printf("\n");
+		break;
+	}
 
 	return 0;
 }
