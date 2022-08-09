@@ -16,6 +16,24 @@
       "message": "I wonder if we can re-use backlight_lid.c, and add the related logic in function `update_backlight`? And, we can have the host_command `EC_CMD_SWITCH_ENABLE_BKLIGHT`, to on/off the backlight?",
       "revId": "2f8119b7a93f1b9e7ae30aa6d4d1d79d6086cf7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf5a509_3c47ad32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-09T04:02:38Z",
+      "side": 1,
+      "message": "Document the abandon reason here:\n\nWe will let ap control the backlight by itself in s0, so the host command is not needed.\n\nEC takes over the control only when AP is not awake (s3 or below).",
+      "parentUuid": "f36dcedd_e5974240",
+      "revId": "2f8119b7a93f1b9e7ae30aa6d4d1d79d6086cf7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
