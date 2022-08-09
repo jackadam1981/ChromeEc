@@ -43,6 +43,7 @@ register_corsola_project(
         here / "led_krabby.dts",
         here / "motionsense_krabby.dts",
         here / "usbc_krabby.dts",
+        here / "host_interface_ite.dts",
     ],
     extra_kconfig_files=[
         here / "prj_it81202_base.conf",
