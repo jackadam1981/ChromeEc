@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b204cf1_2bf860d7",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-09T14:44:54Z",
+      "side": 1,
+      "message": "This is required for ALT_PPC_CHIP_CPY so that if you have 2 usb ports with possible alt chips but only want one to use the alternate chip, the correct one is selected.\n\nAs far as I can tell node identifiers can\u0027t be stored so you have to do this traversal each time. I am open to other suggestions about how to cut down on the redundancy.",
+      "parentUuid": "b37c7c8e_92f88bcb",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "9340ebb9942c6c83a162f6dcc4cbf8f7a2d2c761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c65361d_0477b688",
         "filename": "zephyr/shim/src/ppc.c",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-09T09:04:25Z",
       "side": 1,
       "message": "It is copy-paste error from my change. Please use `config_fn` for `config` and `chip_fn` macros as it is done for the TCPC change CL:3797608.",
+      "range": {
+        "startLine": 22,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "9340ebb9942c6c83a162f6dcc4cbf8f7a2d2c761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a94330_016d44be",
+        "filename": "zephyr/shim/src/ppc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-09T14:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c65361d_0477b688",
       "range": {
         "startLine": 22,
         "startChar": 46,
