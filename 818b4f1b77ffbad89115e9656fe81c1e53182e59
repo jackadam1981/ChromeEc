@@ -16,6 +16,24 @@
       "message": "I think you need to check the length of the array and the pointer of led_blinking_array is not Null. You probably can add another variable to save the max array size.",
       "revId": "818b4f1b77ffbad89115e9656fe81c1e53182e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ca0c35_ce5e4ad3",
+        "filename": "board/shotzo/led.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-09T04:33:12Z",
+      "side": 1,
+      "message": "Can I ask why the length of the array need to be checked and the max array size should be defined?",
+      "parentUuid": "15159f2f_d17cb25e",
+      "revId": "818b4f1b77ffbad89115e9656fe81c1e53182e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
