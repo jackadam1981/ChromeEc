@@ -1349,6 +1349,14 @@ static enum ec_status i2c_command_passthru(struct host_cmd_handler_args *args)
 	/* Unlock port */
 	if (port_is_locked)
 		i2c_lock(params->port, 0);
+	/*
+	 * The IT81302 I2C driver can be be slow and with a large
+	 * firmware update the watchdog can trip.
+	 * Feed the watchdog each message to avoid this.
+	 */
+	if (IS_ENABLED(CONFIG_SOC_IT8XXX2)) {
+		watchdog_reload();
+	}
 
 	/*
 	 * Return success even if transfer failed so response is sent.  Host
