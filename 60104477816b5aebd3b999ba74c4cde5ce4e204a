@@ -22,6 +22,30 @@
       },
       "revId": "60104477816b5aebd3b999ba74c4cde5ce4e204a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "804d7215_04d88406",
+        "filename": "util/zephyr_to_resultdb.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-09T15:41:50Z",
+      "side": 1,
+      "message": "+1, that\u0027s a lot more readable",
+      "parentUuid": "a634defd_cae83b2f",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "60104477816b5aebd3b999ba74c4cde5ce4e204a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
