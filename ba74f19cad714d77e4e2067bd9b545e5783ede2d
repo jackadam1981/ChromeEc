@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939c5766_a8fbb952",
+        "filename": "zephyr/projects/rex/prj_rex.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-09T07:13:03Z",
+      "side": 1,
+      "message": "nit: can you configure your editor to keep the newline at end of file? I see lot of \"No newline at end of right file.\" notes here, that generates noise in the diffs.\n\nAlso this should give you a presubmit warning, are you skipping those?",
+      "revId": "ba74f19cad714d77e4e2067bd9b545e5783ede2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
