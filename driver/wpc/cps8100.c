@@ -28,6 +28,7 @@
  */
 #define CPS8100_I2C_ADDR_H 0x31
 #define CPS8100_I2C_ADDR_L 0x30
+#define CPS8200_I2C_ADDR 0x30
 
 /* High address registers (commands?) */
 #define CPS8100_REGH_PASSWORD 0xf500
@@ -37,6 +38,11 @@
 #define CPS8100_ACCESS_MODE_8 0x00
 #define CPS8100_ACCESS_MODE_16 0x01
 #define CPS8100_ACCESS_MODE_32 0x02
+#define CPS8100_CHIPID 0x8100
+#define CPS8200_CHIPID 0x8200
+
+#define CPS8200_I2C_ENABLE 0x0000000E
+#define CPS8200_PASSWORD 0x00001250
 
 /* Registers */
 #define CPS8100_REG_IC_INFO 0x20000000
@@ -45,6 +51,9 @@
 #define CPS8100_REG_ALERT_INFO 0x20000158
 #define CPS8100_REG_INT_ENABLE 0x20000160
 #define CPS8100_REG_INT_FLAG 0x20000164
+
+#define CPS8200_REG_I2C_ENABLE 0xFFFFFF00
+#define CPS8200_REG_I2C_UNLOCK 0x400140FC
 
 #define CPS8100_STATUS_PROFILE(r) (((r)&GENMASK(5, 4)) >> 4)
 #define CPS8100_STATUS_CHARGE(r) ((r)&BIT(6))
@@ -80,6 +89,8 @@ struct cps8100_msg {
 	/* Data. Can be used for read as well. */
 	uint8_t data[2];
 } __packed;
+
+static int cps8x00_id;
 
 /* This driver isn't compatible with big endian. */
 BUILD_ASSERT(__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__);
@@ -200,16 +211,52 @@ static int cps8100_i2c_write(int port, int addr, const uint8_t *buf, size_t len)
 	return rv;
 }
 
-static int cps8100_set_unlock(int port)
+static int cps8x00_set_unlock(int port)
 {
-	uint8_t buf[4];
+	uint8_t buf[8];
+	int rv;
 
-	buf[0] = 0xf5;
-	buf[1] = 0x00; /* Password register address */
-	buf[2] = 0xe5;
-	buf[3] = 0x19; /* Password */
+	if (cps8x00_id == CPS8100_CHIPID) {
+		buf[0] = 0xf5;
+		buf[1] = 0x00; /* Password register address */
+		buf[2] = 0xe5;
+		buf[3] = 0x19; /* Password */
 
-	return cps8100_i2c_write(port, CPS8100_I2C_ADDR_H, buf, 4);
+		rv = cps8100_i2c_write(port, CPS8100_I2C_ADDR_H, buf, 4);
+	} else {
+		/* addr */
+		buf[0] = (CPS8200_REG_I2C_UNLOCK >> 24) & 0xff;
+		buf[1] = (CPS8200_REG_I2C_UNLOCK >> 16) & 0xff;
+		buf[2] = (CPS8200_REG_I2C_UNLOCK >> 8) & 0xff;
+		buf[3] = (CPS8200_REG_I2C_UNLOCK >> 0) & 0xff;
+		/* data */
+		buf[4] = (CPS8200_PASSWORD >> 0) & 0xff;
+		buf[5] = (CPS8200_PASSWORD >> 8) & 0xff;
+		buf[6] = (CPS8200_PASSWORD >> 16) & 0xff;
+		buf[7] = (CPS8200_PASSWORD >> 24) & 0xff;
+
+		rv = cps8100_i2c_write(port, CPS8200_I2C_ADDR, buf, 8);
+	}
+
+	return rv;
+}
+
+static int cps8200_i2c_enable(int port)
+{
+	uint8_t buf[8];
+
+	/* addr */
+	buf[0] = (CPS8200_REG_I2C_ENABLE >> 24) & 0xff;
+	buf[1] = (CPS8200_REG_I2C_ENABLE >> 16) & 0xff;
+	buf[2] = (CPS8200_REG_I2C_ENABLE >> 8) & 0xff;
+	buf[3] = (CPS8200_REG_I2C_ENABLE >> 0) & 0xff;
+	/* data */
+	buf[4] = (CPS8200_I2C_ENABLE >> 0) & 0xff;
+	buf[5] = (CPS8200_I2C_ENABLE >> 8) & 0xff;
+	buf[6] = (CPS8200_I2C_ENABLE >> 16) & 0xff;
+	buf[7] = (CPS8200_I2C_ENABLE >> 24) & 0xff;
+
+	return cps8100_i2c_write(port, CPS8200_I2C_ADDR, buf, 8);
 }
 
 static int cps8100_set_write_mode(int port, uint8_t mode)
@@ -236,21 +283,52 @@ static int cps8100_set_high_address(int port, uint32_t addr)
 	return cps8100_i2c_write(port, CPS8100_I2C_ADDR_H, buf, 4);
 }
 
-static int cps8100_read32(int port, uint32_t reg, uint32_t *val)
+static int cps8x00_read32(int port, uint32_t reg, uint32_t *val)
 {
 	uint8_t buf[CPS8100_MESSAGE_BUFFER_SIZE];
 
-	if (cps8100_set_unlock(port) ||
-	    cps8100_set_write_mode(port, CPS8100_ACCESS_MODE_32) ||
-	    cps8100_set_high_address(port, reg))
-		return EC_ERROR_UNKNOWN;
+	if (cps8x00_id == CPS8100_CHIPID) {
+		if (cps8x00_set_unlock(port) ||
+		    cps8100_set_write_mode(port, CPS8100_ACCESS_MODE_32) ||
+		    cps8100_set_high_address(port, reg))
+			return EC_ERROR_UNKNOWN;
 
-	/* Set low 16 bits of register address and read a byte. */
-	buf[0] = (reg >> 8) & 0xff;
-	buf[1] = (reg >> 0) & 0xff;
+		/* Set low 16 bits of register address and read a byte. */
+		buf[0] = (reg >> 8) & 0xff;
+		buf[1] = (reg >> 0) & 0xff;
 
-	return i2c_xfer(port, CPS8100_I2C_ADDR_L, buf, 2, (void *)val,
-			sizeof(*val));
+		return i2c_xfer(port, CPS8100_I2C_ADDR_L, buf, 2, (void *)val,
+				sizeof(*val));
+	} else {
+		if (cps8200_i2c_enable(port) || cps8x00_set_unlock(port))
+			return EC_ERROR_UNKNOWN;
+
+		buf[0] = (reg >> 24) & 0xff;
+		buf[1] = (reg >> 16) & 0xff;
+		buf[2] = (reg >> 8) & 0xff;
+		buf[3] = (reg >> 0) & 0xff;
+
+		return i2c_xfer(port, CPS8200_I2C_ADDR, buf, 4, (void *)val,
+				sizeof(*val));
+	}
+}
+
+static int cps8x00_probe(int port)
+{
+	uint32_t u32;
+	int rv;
+
+	cps8x00_id = CPS8100_CHIPID;
+	rv = cps8x00_read32(port, CPS8100_REG_IC_INFO, &u32);
+	if (rv || (u32 & 0xffff) != CPS8100_CHIPID) {
+		cps8x00_id = CPS8200_CHIPID;
+		rv = cps8x00_read32(port, CPS8100_REG_IC_INFO, &u32);
+		if (rv || (u32 & 0xffff) != CPS8200_CHIPID) {
+			cps8x00_id = CPS8100_CHIPID;
+		}
+	}
+
+	return EC_SUCCESS;
 }
 
 static int cps8100_reset(struct pchg *ctx)
@@ -269,11 +347,11 @@ static int cps8100_init(struct pchg *ctx)
 	int port = ctx->cfg->i2c_port;
 	int rv;
 
-	rv = cps8100_read32(port, CPS8100_REG_IC_INFO, &u32);
+	rv = cps8x00_read32(port, CPS8100_REG_IC_INFO, &u32);
 	if (!rv)
 		CPRINTS("IC=0x%08x", u32);
 
-	rv = cps8100_read32(port, CPS8100_REG_FW_INFO, &u32);
+	rv = cps8x00_read32(port, CPS8100_REG_FW_INFO, &u32);
 	if (!rv)
 		CPRINTS("FW=0x%08x", u32);
 
@@ -289,7 +367,10 @@ static int cps8100_get_alert_info(struct pchg *ctx, uint32_t *reg)
 {
 	int rv;
 
-	rv = cps8100_read32(ctx->cfg->i2c_port, CPS8100_REG_ALERT_INFO, reg);
+	if (!cps8x00_id)
+		cps8x00_probe(ctx->cfg->i2c_port);
+
+	rv = cps8x00_read32(ctx->cfg->i2c_port, CPS8100_REG_ALERT_INFO, reg);
 	if (rv) {
 		CPRINTS("Failed to get alert info (%d)", rv);
 		return rv;
@@ -390,7 +471,7 @@ static void cps8100_dump(struct pchg *ctx)
 	uint32_t val;
 	int rv;
 
-	rv = cps8100_read32(ctx->cfg->i2c_port, CPS8100_REG_FUNC_EN, &val);
+	rv = cps8x00_read32(ctx->cfg->i2c_port, CPS8100_REG_FUNC_EN, &val);
 	if (rv == EC_SUCCESS)
 		cps8100_print_func_names("FEATURES: ", val);
 
