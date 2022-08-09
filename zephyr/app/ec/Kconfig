@@ -8,6 +8,8 @@ menuconfig CROS_EC
 	imply SHELL
 	imply SHELL_MINIMAL
 	imply STACK_SENTINEL
+	imply LOG
+	imply LOG_DEFAULT_MINIMAL
 	help
 	  Enable the common Chromium OS EC application. This prints a message,
 	  starts the EC tasks and sets up any drivers that are needed.
