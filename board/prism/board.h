@@ -8,13 +8,13 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-/* TODO: May remove CONFIG_SYSTEM_UNLOCKED prior to building MP FW. */
-#define CONFIG_SYSTEM_UNLOCKED
+/* Prism doesn't use WP GPIO, set WP enabled */
+#define CONFIG_WP_ALWAYS
 
 /* TODO: May define FLASH_PSTATE_LOCKED prior to building MP FW. */
 #undef CONFIG_FLASH_PSTATE_LOCKED
 
-/* USB ID. TODO: May need to find one for Prism. */
+/* USB ID for Prism */
 #define CONFIG_USB_PID 0x5022
 
 /* 48 MHz SYSCLK clock frequency */
@@ -99,6 +99,8 @@
 /* The UART console is on USART1 (PA9/PA10) */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
+#undef CONFIG_UART_TX_DMA
+#undef CONFIG_UART_RX_DMA
 
 /* Optional features */
 #define CONFIG_LOW_POWER_IDLE
@@ -120,7 +122,7 @@
 
 #define CONFIG_USB_SERIALNO
 /* Replaced at runtime (board_read_serial) by chip unique-id-based number. */
-#define DEFAULT_SERIALNO ""
+#define DEFAULT_SERIALNO "Uninitialized"
 
 /* USB interface indexes (use define rather than enum to expand them) */
 #undef CONFIG_HOSTCMD_EVENTS
@@ -168,6 +170,8 @@
 /* Sign and switch to RW partition on boot. */
 #define CONFIG_RWSIG
 #define CONFIG_RSA
+#undef CONFIG_RWSIG_JUMP_TIMEOUT
+#define CONFIG_RWSIG_JUMP_TIMEOUT (2000 * MSEC)
 #endif
 
 #define CONFIG_RSA_KEY_SIZE 3072
