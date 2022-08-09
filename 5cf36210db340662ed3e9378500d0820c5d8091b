@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a61adf6_bdbeb309",
+        "filename": "zephyr/emul/tcpc/emul_ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-09T06:46:56Z",
+      "side": 0,
+      "message": "Cool but... how does this pass CI right now? Are we not running twister tests?",
+      "range": {
+        "startLine": 598,
+        "startChar": 8,
+        "endLine": 598,
+        "endChar": 25
+      },
+      "revId": "5cf36210db340662ed3e9378500d0820c5d8091b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
