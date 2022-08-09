@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37c7c8e_92f88bcb",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-09T09:04:25Z",
+      "side": 1,
+      "message": "Isn\u0027t it redundant with `ALT_PPC_CHIP_CHK`? Can we do all needed checks in one place?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "9340ebb9942c6c83a162f6dcc4cbf8f7a2d2c761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c65361d_0477b688",
+        "filename": "zephyr/shim/src/ppc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-09T09:04:25Z",
+      "side": 1,
+      "message": "It is copy-paste error from my change. Please use `config_fn` for `config` and `chip_fn` macros as it is done for the TCPC change CL:3797608.",
+      "range": {
+        "startLine": 22,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "9340ebb9942c6c83a162f6dcc4cbf8f7a2d2c761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
