@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a634defd_cae83b2f",
+        "filename": "util/zephyr_to_resultdb.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-09T06:53:37Z",
+      "side": 1,
+      "message": "I usually find it more readable to have the code branch to cover the \"error\" case, and the \"expected one\" to skip all conditions, so I would rather write this as:\n\n```\ntime \u003d testcase.get(\"execution_time\")\nif not time:\n  return None\n  \nreturn f\"{time}ms\"\n```\n\n...saves from the automatic variable with default and mid-code override as well.\n\nDon\u0027t think it\u0027s part of the codingstyle though, more of a personal preference... up to you if you want to change style or not.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "60104477816b5aebd3b999ba74c4cde5ce4e204a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
