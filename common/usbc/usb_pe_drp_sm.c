@@ -1937,6 +1937,16 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 		return true;
 	}
 
+	/*
+	 * An edge case of DR Swap fail (port still UFP) and partner in PD 2.0.
+	 * This happens because PD 2.0 only allows DFP to initiate DR Swap.
+	 * Discovery should be marked as fail.
+	 */
+	if (pe[port].data_role == PD_ROLE_UFP &&
+	    prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV20) {
+		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
+	}
+
 	/* Apply Port Discovery VCONN Swap Policy */
 	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
 	    port_discovery_vconn_swap_policy(
