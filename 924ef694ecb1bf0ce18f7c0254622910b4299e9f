@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d494c6e3_041d034e",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-10T08:45:48Z",
+      "side": 1,
+      "message": "Sorry I think my comment was confusing, don\u0027t add an empty line at then end of the file, make sure that the editor is configured to close the file with a \\n on the last line.\n\nI\u0027m looking at the warning here that says \"No newline at end of left file.\", that is the reason why this shows a diff on line :106 and we should fix it with new commits.",
+      "revId": "924ef694ecb1bf0ce18f7c0254622910b4299e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
