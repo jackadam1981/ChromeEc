@@ -140,6 +140,30 @@
       },
       "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f00afea_01c52b40",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-10T10:00:52Z",
+      "side": 1,
+      "message": "I think the cps8100_init should be called before we can handle any event but i would defer to Daisuke to see if this is reasonable.\n\nFrom the code, it looks like the pchg_startup() will be called, right? Could we put the probe to the cps8100_reset() if the cps8100_init is not the first called function?",
+      "parentUuid": "ccb26020_beccbc5b",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 36
+      },
+      "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
