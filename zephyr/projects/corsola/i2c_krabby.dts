@@ -124,4 +124,8 @@ i2c_pwr_cbi: &i2c0 {
 		reg = <0x40>;
 		frs_en_gpio = <&gpio_ec_x_gpio1>;
 	};
+	it5205_mux_0: it5205-mux-0@48 {
+		compatible = "ite,it5205";
+		reg = <0x48>;
+	};
 };
