@@ -12,6 +12,8 @@
 #include "gpio.h"
 #include "task_id.h"
 
+#include <stdbool.h>
+
 enum power_state {
 	/* Steady states */
 	POWER_G3 = 0,	/*
@@ -311,5 +313,19 @@ __override_proto void board_power_5v_enable(int enable);
  * @param enable: 1 to turn on the rail, 0 to request the rail to be turned off.
  */
 void power_5v_enable(task_id_t tid, int enable);
+
+/**
+ * power_failure getter method.
+ *
+ * @return Whether a power failure has occurred.
+ */
+bool power_get_power_failure(void);
+
+/**
+ * power_failure setter method.
+ *
+ * @param failure True if a power failure has occurred.
+ */
+void power_set_power_failure(bool failure);
 
 #endif  /* __CROS_EC_POWER_H */
