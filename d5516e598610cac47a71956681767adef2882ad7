@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b612d98_59c78428",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-10T20:23:39Z",
+      "side": 1,
+      "message": "imojeys tend to be annoying in output. not all terminals support them, and they don\u0027t always show up right in e.g., LUCI logs.",
+      "range": {
+        "startLine": 153,
+        "startChar": 15,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "d5516e598610cac47a71956681767adef2882ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
