@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f6c1d4_40368337",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-10T14:37:48Z",
+      "side": 1,
+      "message": "Maybe we can just check if cps8x00_id \u003d\u003d 0 then do the probe. Otherwise, just skip it?",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 11
+      },
+      "revId": "54a058b24b4056a618f59d51ebcd620eb5b77166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e9dfa8_f0c2c95e",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-10T14:37:48Z",
+      "side": 1,
+      "message": "Is this from the spec?",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 12
+      },
+      "revId": "54a058b24b4056a618f59d51ebcd620eb5b77166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
