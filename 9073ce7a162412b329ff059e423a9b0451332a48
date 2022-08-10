@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf782eea_b879b796",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-10T09:00:38Z",
+      "side": 1,
+      "message": "Good point, I merged the function to cps8100_set_unlock and rename it to cps8x00_set_unlock",
+      "parentUuid": "cdd4ee74_28cf2831",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 228,
+        "endChar": 29
+      },
+      "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fad86328_a03a635a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f43a9a_32bdf037",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-10T09:00:38Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "fad86328_a03a635a",
+      "range": {
+        "startLine": 305,
+        "startChar": 11,
+        "endLine": 305,
+        "endChar": 25
+      },
+      "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4433c725_c52e4e7d",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-09T10:32:46Z",
       "side": 1,
       "message": "May i know why you put the cps8x00_probe() into the cps8100_get_alert_info() but  cps8100_init()?",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 36
+      },
+      "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb26020_beccbc5b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-10T09:00:38Z",
+      "side": 1,
+      "message": "Because cps8100_get_alert_info() is the first function called by peripheral_charger driver, so we need to probe in cps8100_get_alert_info()\n\nWhen CPS8x00 is powered on or reset, IRQ will be fired to the peripheral_charger driver, peripheral_charger driver calls get_event() and cps8100_get_alert_info() get called to get the alert info of CPS8x00, so peripheral_charger knows that cps8x00 CPS is just out of reset then cps8100_init() will be called \n\nCode flow is here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/peripheral_charger.c;l\u003d445",
+      "parentUuid": "4433c725_c52e4e7d",
       "range": {
         "startLine": 389,
         "startChar": 0,
