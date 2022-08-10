@@ -59,10 +59,8 @@ DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
 void board_tcpc_init(void)
 {
 	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_late()) {
-		/* TODO(crosbug.com/p/61098): How long do we need to wait? */
-		board_reset_pd_mcu();
-	}
+	/* TODO(crosbug.com/p/61098): How long do we need to wait? */
+	board_reset_pd_mcu();
 
 	/* Enable TCPC interrupts */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_tcpc));
