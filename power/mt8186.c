@@ -82,7 +82,7 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* indicate MT8186 is processing a chipset reset. */
 static bool is_resetting;
-/* indicate MT8186 is processing a AP shutdown. */
+/* indicate MT8186 is processing a AP forcing shutdown. */
 static bool is_shutdown;
 /*
  * indicate exiting off state, and don't respect the power signals until chipset
@@ -142,6 +142,7 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	report_ap_reset(reason);
 
 	is_shutdown = true;
+
 	/*
 	 * Force power off. This condition will reset once the state machine
 	 * transitions to G3.
@@ -248,14 +249,8 @@ static enum power_state power_get_signal_state(void)
 	 */
 	if (is_resetting)
 		return POWER_S0;
-	if (is_shutdown) {
-		/* We are in S5 and pressing the powerkey to shutdown PMIC. */
-		if (!gpio_get_level(GPIO_EC_PMIC_EN_ODL))
-			return POWER_S5;
-		/* Powerkey released, PMIC full off. */
-		else
-			return POWER_G3;
-	}
+	if (is_shutdown)
+		return POWER_G3;
 	if (power_get_signals() & IN_AP_RST)
 		return POWER_G3;
 	if (power_get_signals() & IN_SUSPEND_ASSERTED)
@@ -331,8 +326,6 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S5:
 		if (is_exiting_off)
 			return POWER_S5S3;
-		else if (next_state == POWER_S5)
-			return POWER_S5;
 		else if (next_state == POWER_G3)
 			return POWER_S5G3;
 		else
@@ -450,6 +443,16 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+
+		/*
+		 * This is a forcing shutdown by holding GPIO_EC_PMIC_EN_ODL.
+		 * Once the GPIO_EC_PMIC_EN_ODL released, the PMIC is fully off,
+		 * then we can safely transit to S5, and process shutdown
+		 * complete hooks.
+		 */
+		while (!gpio_get_level(GPIO_EC_PMIC_EN_ODL))
+			msleep(100);
+
 		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
 
 		return POWER_S5;
