@@ -8,6 +8,7 @@
 / {
 	chosen {
 		cros,rtc = &pcf85063a;
+		zephyr,ec-host-interface = &shi0;
 	};
 
 	ec-console {
