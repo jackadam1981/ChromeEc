@@ -1,0 +1,68 @@
+diff --git a/power/amd_x86.c b/power/amd_x86.c
+index c3698bde5d8..549e2210c59 100644
+--- a/power/amd_x86.c
++++ b/power/amd_x86.c
+@@ -202,6 +202,7 @@ static host_event_t backup_smi_mask;
+  */
+ static void lpc_s0ix_suspend_clear_masks(void)
+ {
++	ccprints("TEST: lpc_s0ix_suspend_clear_masks");
+ 	backup_sci_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SCI);
+ 	backup_smi_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SMI);
+ 
+@@ -222,6 +223,7 @@ static void lpc_s0ix_resume_restore_masks(void)
+ 	 * enter S0ix(SLP_S0# assertion) and hence SCI/SMI masks were never
+ 	 * backed up.
+ 	 */
++	ccprints("TEST: lpc_s0ix_resume_restore_masks");
+ 	if (!backup_sci_mask && !backup_smi_mask)
+ 		return;
+ 
+@@ -248,8 +250,8 @@ __override void power_chipset_handle_sleep_hang(
+ 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, sleep_wake_mask);
+ 	}
+ 
+-	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+-	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
++	CPRINTS("Warning: Detected sleep hang! NOT waking host up!");
++	// host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+ }
+ 
+ static void handle_chipset_suspend(void)
+diff --git a/power/host_sleep.c b/power/host_sleep.c
+index e352e677f23..4b016e18450 100644
+--- a/power/host_sleep.c
++++ b/power/host_sleep.c
+@@ -25,6 +25,14 @@ __overridable void power_chipset_handle_host_sleep_event(
+ 	/* Default weak implementation -- no action required. */
+ }
+ 
++
++static void assert_battery_status_event(void) {
++	ccprints("TEST: assert_battery_status_event");
++	host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
++}
++
++DECLARE_DEFERRED(assert_battery_status_event);
++
+ static enum ec_status
+ host_command_host_sleep_event(struct host_cmd_handler_args *args)
+ {
+@@ -33,6 +41,8 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
+ 	struct host_sleep_event_context ctx;
+ 	enum host_sleep_event state = p->sleep_event;
+ 
++	hook_call_deferred(&assert_battery_status_event_data, 50 * 1000); // 50 msec
++
+ 	host_sleep_state = state;
+ 	ctx.sleep_transitions = 0;
+ 	switch (state) {
+@@ -167,7 +177,7 @@ static void sleep_transition_timeout(void)
+ 
+ 	if (timeout_hang_type != SLEEP_HANG_NONE) {
+ 		power_chipset_handle_sleep_hang(timeout_hang_type);
+-		power_board_handle_sleep_hang(timeout_hang_type);
++		// power_board_handle_sleep_hang(timeout_hang_type);
+ 	}
+ }
+ 

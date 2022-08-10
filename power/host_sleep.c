@@ -18,6 +18,9 @@
 /* Track last reported sleep event */
 static enum host_sleep_event host_sleep_state;
 
+#define SCI_DELAY_MS_DEFAULT 50
+static int sci_delay_ms = SCI_DELAY_MS_DEFAULT;
+
 __overridable void
 power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 				      struct host_sleep_event_context *ctx)
@@ -41,7 +44,9 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 	struct host_sleep_event_context ctx;
 	enum host_sleep_event state = p->sleep_event;
 
-	hook_call_deferred(&assert_battery_status_event_data, 50 * 1000); // 50 msec
+	if (sci_delay_ms > 0)
+		hook_call_deferred(&assert_battery_status_event_data,
+				   sci_delay_ms * 1000);
 
 	host_sleep_state = state;
 	ctx.sleep_transitions = 0;
@@ -261,6 +266,46 @@ DECLARE_CONSOLE_COMMAND(sleeptimeout, command_sleep_fail_timeout,
 			" default\n"
 			" infinite - disables the timeout\n"
 			" <msec> - custom length in milliseconds\n"
+			" <none> - prints the current setting");
+
+static int command_scidelay(int argc, char **argv)
+{
+	if (argc < 2) {
+		/* no arguments - just print the current timeout */
+	} else if (!strcasecmp(argv[1], "default")) {
+		sci_delay_ms = SCI_DELAY_MS_DEFAULT;
+	} else if (!strcasecmp(argv[1], "disabled")) {
+		sci_delay_ms = -1;
+	} else {
+		char *e;
+		int val;
+
+		val = strtoi(argv[1], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		if (val <= 0 || val >= 2000) {
+			ccprintf("Error: timeout range is 1..%d [msec]\n",
+				 2000 - 1);
+			return EC_ERROR_PARAM1;
+		}
+
+		sci_delay_ms = val;
+	}
+
+	if (sci_delay_ms < 0)
+		ccprintf("SCI delay is disabled\n");
+	else
+		ccprintf("SCI delay is %d [msec]\n", sci_delay_ms);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(scidelay, command_scidelay,
+			"[default | disabled | <msec>]",
+			"Display or set the SCI delay.\n"
+			"Valid arguments are:\n"
+			" default\n"
+			" disabled\n"
+			" <msec> - delay in milliseconds\n"
 			" <none> - prints the current setting");
 
 #else /* !CONFIG_POWER_SLEEP_FAILURE_DETECTION */
