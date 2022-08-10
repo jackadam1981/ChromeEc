@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f967ee6_e6ec77a6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-08-10T21:11:55Z",
+      "side": 1,
+      "message": "Does this actually generate a PD_MCU or VIRTUAL_MUX EC host event?",
+      "range": {
+        "startLine": 1947,
+        "startChar": 2,
+        "endLine": 1947,
+        "endChar": 27
+      },
+      "revId": "5f5128833f0216c39f9f63be61bdab8073c8c6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
