@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4801dd_3d03056c",
+        "filename": "include/power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-10T23:33:03Z",
+      "side": 1,
+      "message": "does this duplicate the chipset shutdown reason?",
+      "range": {
+        "startLine": 447,
+        "startChar": 3,
+        "endLine": 447,
+        "endChar": 16
+      },
+      "revId": "40fea1be07f9e929fb45af88817cab542c833678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41772f80_6466c3d8",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-10T23:33:03Z",
+      "side": 1,
+      "message": "imo we could still use to remove this ifdef as it integrates an `else if` with logic outside the ifdef, which can be difficult to read, but feel free to handle in a follow-up CL.",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 24
+      },
+      "revId": "40fea1be07f9e929fb45af88817cab542c833678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
