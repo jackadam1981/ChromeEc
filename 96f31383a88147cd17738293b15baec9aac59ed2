@@ -22,6 +22,30 @@
       },
       "revId": "96f31383a88147cd17738293b15baec9aac59ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0386ad1a_4294b85a",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-10T05:38:23Z",
+      "side": 1,
+      "message": "This is not necessary but the board will misunderstand battery status without this patch.\nIt think there is a battery but it seems dead.\nTrying to wake up battery until time out and the \"chgstate\" will show battery_seems_dead instead of battery_was_removed.",
+      "parentUuid": "39d33d20_06cb3016",
+      "range": {
+        "startLine": 466,
+        "startChar": 2,
+        "endLine": 466,
+        "endChar": 30
+      },
+      "revId": "96f31383a88147cd17738293b15baec9aac59ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
