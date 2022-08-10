@@ -443,4 +443,18 @@ void power_fake_s0(void);
 void power_fake_disable(void);
 #endif /* defined(CONFIG_POWER_FAKE_CONTROL) */
 
+/**
+ * power_failure getter method.
+ *
+ * @return Whether a power failure has occurred.
+ */
+bool power_get_power_failure(void);
+
+/**
+ * power_failure setter method.
+ *
+ * @param failure True if a power failure has occurred.
+ */
+void power_set_power_failure(bool failure);
+
 #endif /* __CROS_EC_POWER_H */

@@ -78,6 +78,8 @@ static bool want_reboot_ap_at_g3; /* Want to reboot AP from G3? */
 /* Want to reboot AP from G3 with delay? */
 static uint64_t reboot_ap_at_g3_delay;
 
+static bool power_failure;
+
 static enum ec_status
 host_command_reboot_ap_on_g3(struct host_cmd_handler_args *args)
 {
@@ -1147,3 +1149,13 @@ static int command_power_fake(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(powerfake, command_power_fake, "S0|disable",
 			"Force power inputs for early board bringup");
 #endif /* defined(CONFIG_POWERSEQ_FAKE_CONTROL) */
+
+bool power_get_power_failure(void)
+{
+	return power_failure;
+}
+
+void power_set_power_failure(bool failure)
+{
+	power_failure = failure;
+}
