@@ -46,6 +46,30 @@
       },
       "revId": "d03b53ce7a98aaff900a3f37aadff03f63378600",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd4019bb_bb9fe7f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-10T23:52:16Z",
+      "side": 1,
+      "message": "Please cherry-pick to the branch afterward.",
+      "parentUuid": "877d1647_af63cb8b",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "d03b53ce7a98aaff900a3f37aadff03f63378600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
