@@ -61,19 +61,6 @@
 			label = "BBRAM";
 		};
 
-		shi: shi@f03a00 {
-			compatible = "ite,it8xxx2-cros-shi";
-			reg = <0x00f03a00 0x30>;
-			label = "SHI";
-			interrupts = <171 0>;
-			interrupt-parent = <&intc>;
-			pinctrl-0 = <&shi_mosi_gpm0_default
-				     &shi_miso_gpm1_default
-				     &shi_clk_gpm4_default
-				     &shi_cs_gpm5_default>;
-			pinctrl-names = "default";
-		};
-
 		fiu0: cros-flash@80000000 {
 			compatible = "ite,it8xxx2-cros-flash";
 			reg = <0x80000000 0x100000>;

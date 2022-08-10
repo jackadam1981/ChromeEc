@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#define DT_DRV_COMPAT nuvoton_npcx_cros_shi
+#define DT_DRV_COMPAT nuvoton_npcx_shi
 
 #include <zephyr/arch/arm/aarch32/cortex_m/cmsis.h>
 #include <assert.h>
@@ -31,7 +31,7 @@
 
 LOG_MODULE_REGISTER(cros_shi, LOG_LEVEL_DBG);
 
-#define SHI_NODE DT_NODELABEL(shi)
+#define SHI_NODE DT_NODELABEL(shi0)
 #define SHI_VER_CTRL_PH DT_PHANDLE_BY_IDX(SHI_NODE, ver_ctrl, 0)
 #define SHI_VER_CTRL_ALT_FILED(f) DT_PHA_BY_IDX(SHI_VER_CTRL_PH, alts, 0, f)
 
