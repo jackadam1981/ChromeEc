@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddfbbc52_e0b904cb",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-10T19:11:10Z",
+      "side": 1,
+      "message": "What if we made this a dictionary of new envvars, use it to update() twister_env, and then do the shell escaping down in line 142?\n\ne.g.\n\n```\nextra_env_vars \u003d {\n    \"TOOLCHAIN_ROOT\": str(ec_base / \"zephyr\"),\n    \"ZEPHYR_TOOLCHAIN_VARIANT\": \"llvm\",\n}\ntwister_env.update(extra_env_vars)\n\n#...\n\n    print(\"With environment overrides:\", \" \".join([f\"{name}\u003d{shlex.quote(val)}\" for name,val in extra_env_vars.items())\n```\n\nThis avoids needing to double-specify the envvar names.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "aabb0a6c56d344e7a7bfb5b43cfa61dfd184e223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
