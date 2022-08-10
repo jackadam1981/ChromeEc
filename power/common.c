@@ -78,6 +78,8 @@ static int pause_in_s5;
 
 static bool want_reboot_ap_at_g3;/* Want to reboot AP from G3? */
 
+static int power_failure;
+
 static enum ec_status
 host_command_reboot_ap_on_g3(struct host_cmd_handler_args *args)
 {
@@ -1056,3 +1058,13 @@ static void preserve_enable_5v_state(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, preserve_enable_5v_state, HOOK_PRIO_DEFAULT);
 #endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
+
+int power_get_power_failure(void)
+{
+	return power_failure;
+}
+
+void power_set_power_failure(int failure)
+{
+	power_failure = failure;
+}
