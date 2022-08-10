@@ -664,6 +664,33 @@ enum ec_status {
 } __packed;
 BUILD_ASSERT(sizeof(enum ec_status) == sizeof(uint16_t));
 
+/* clang-format off */
+#define EC_STATUS_TEXT                                                         \
+	{                                                                      \
+		[EC_RES_SUCCESS] = "SUCCESS",                                  \
+		[EC_RES_INVALID_COMMAND] = "INVALID_COMMAND",                  \
+		[EC_RES_ERROR] = "ERROR",                                      \
+		[EC_RES_INVALID_PARAM] = "INVALID_PARAM",                      \
+		[EC_RES_ACCESS_DENIED] = "ACCESS_DENIED",                      \
+		[EC_RES_INVALID_RESPONSE] = "INVALID_RESPONSE",                \
+		[EC_RES_INVALID_VERSION] = "INVALID_VERSION",                  \
+		[EC_RES_INVALID_CHECKSUM] = "INVALID_CHECKSUM",                \
+		[EC_RES_IN_PROGRESS] = "IN_PROGRESS",                          \
+		[EC_RES_UNAVAILABLE] = "UNAVAILABLE",                          \
+		[EC_RES_TIMEOUT] = "TIMEOUT",                                  \
+		[EC_RES_OVERFLOW] = "OVERFLOW",                                \
+		[EC_RES_INVALID_HEADER] = "INVALID_HEADER",                    \
+		[EC_RES_REQUEST_TRUNCATED] = "REQUEST_TRUNCATED",              \
+		[EC_RES_RESPONSE_TOO_BIG] = "RESPONSE_TOO_BIG",                \
+		[EC_RES_BUS_ERROR] = "BUS_ERROR",                              \
+		[EC_RES_BUSY] = "BUSY",                                        \
+		[EC_RES_INVALID_HEADER_VERSION] = "INVALID_HEADER_VERSION",    \
+		[EC_RES_INVALID_HEADER_CRC] = "INVALID_HEADER_CRC",            \
+		[EC_RES_INVALID_DATA_CRC] = "INVALID_DATA_CRC",                \
+		[EC_RES_DUP_UNAVAILABLE] = "DUP_UNAVAILABLE",                  \
+	}
+/* clang-format on */
+
 /*
  * Host event codes. ACPI query EC command uses code 0 to mean "no event
  * pending".  We explicitly specify each value in the enum listing so they won't
@@ -6303,6 +6330,15 @@ enum add_entropy_action {
 	ADD_ENTROPY_GET_RESULT = 2,
 };
 
+/* clang-format off */
+#define EC_ADD_ENTROPY_TEXT                                                    \
+	{                                                                      \
+		[ADD_ENTROPY_ASYNC] = "ASYNC",                                 \
+		[ADD_ENTROPY_RESET_ASYNC] = "RESET_ASYNC",                     \
+		[ADD_ENTROPY_GET_RESULT] = "GET_RESULT",                       \
+	}
+/* clang-format on */
+
 struct ec_params_rollback_add_entropy {
 	uint8_t action;
 } __ec_align1;
@@ -7331,6 +7367,23 @@ struct ec_params_fp_passthru {
 /* special value: don't change anything just read back current mode */
 #define FP_MODE_DONT_CHANGE BIT(31)
 
+/* clang-format off */
+#define FP_MODE_LOG2_TEXT                                                      \
+	{                                                                      \
+		[__builtin_ctz(DEEPSLEEP)] = "DEEPSLEEP"                       \
+		[__builtin_ctz(FINGER_DOWN)] = "FINGER_DOWN"                   \
+		[__builtin_ctz(FINGER_UP)] = "FINGER_UP"                       \
+		[__builtin_ctz(CAPTURE)] = "CAPTURE"                           \
+		[__builtin_ctz(ENROLL_SESSION)] = "ENROLL_SESSION"             \
+		[__builtin_ctz(ENROLL_IMAGE)] = "ENROLL_IMAGE"                 \
+		[__builtin_ctz(MATCH)] = "MATCH"                               \
+		[__builtin_ctz(RESET_SENSOR)] = "RESET_SENSOR"                 \
+		[__builtin_ctz(SENSOR_MAINTENANCE)] = "SENSOR_MAINTENANCE"     \
+		/* Don't forget about default storage values in this range. */ \
+		[__builtin_ctz(DONT_CHANGE)] = "DONT_CHANGE"                   \
+	}
+/* clang-format on */
+
 #define FP_VALID_MODES                                                       \
 	(FP_MODE_DEEPSLEEP | FP_MODE_FINGER_DOWN | FP_MODE_FINGER_UP |       \
 	 FP_MODE_CAPTURE | FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE |   \
@@ -7368,6 +7421,18 @@ enum fp_capture_type {
 /* Extracts the capture type from the sensor 'mode' word */
 #define FP_CAPTURE_TYPE(mode) \
 	(((mode)&FP_MODE_CAPTURE_TYPE_MASK) >> FP_MODE_CAPTURE_TYPE_SHIFT)
+
+/* clang-format off */
+#define FP_CAPTURE_TYPE_TEXT                                                   \
+	{                                                                      \
+		[FP_CAPTURE_VENDOR_FORMAT] = "VENDOR_FORMAT",                  \
+		[FP_CAPTURE_SIMPLE_IMAGE] = "SIMPLE_IMAGE",                    \
+		[FP_CAPTURE_PATTERN0] = "PATTERN0",                            \
+		[FP_CAPTURE_PATTERN1] = "PATTERN1",                            \
+		[FP_CAPTURE_QUALITY_TEST] = "QUALITY_TEST",                    \
+		[FP_CAPTURE_RESET_TEST] = "RESET_TEST",                        \
+	}
+/* clang-format on */
 
 struct ec_params_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
@@ -7503,6 +7568,14 @@ enum fp_context_action {
 	FP_CONTEXT_ASYNC = 0,
 	FP_CONTEXT_GET_RESULT = 1,
 };
+
+/* clang-format off */
+#define FP_CONTEXT_ACTION_TEXT                                                 \
+	{                                                                      \
+		[FP_CONTEXT_ASYNC] = "ASYNC",                                  \
+		[FP_CONTEXT_GET_RESULT] = "GET_RESULT",                        \
+	}
+/* clang-format on */
 
 /* Version 1 of the command is "asynchronous". */
 struct ec_params_fp_context_v1 {
