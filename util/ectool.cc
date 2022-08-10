@@ -11205,6 +11205,17 @@ int cmd_wait_event(int argc, char *argv[])
 		}
 		printf("\n");
 		break;
+	case EC_MKBP_EVENT_FINGERPRINT:
+		printf("Fingerprint events:");
+		for (int evt = 1; evt <= 32; evt++) {
+			if (buffer.data.host_event & EC_HOST_EVENT_MASK(evt)) {
+				const char *name = host_event_text[evt];
+
+				printf(" %s", name ? name : "UNKNOWN");
+			}
+		}
+		printf("\n");
+		break;
 	}
 
 	return 0;

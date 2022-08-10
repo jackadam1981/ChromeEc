@@ -4143,6 +4143,30 @@ struct ec_response_keyboard_factory_test {
 #define EC_MKBP_FP_ERR_MATCH_YES_UPDATED 3
 #define EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED 5
 
+enum fp_error_enroll {
+	FP_OK = 0,
+	FP_LOW_QUALITY = 1,
+	FP_IMMOBILE = 2,
+	FP_LOW_COVERAGE = 3,
+	FP_INTERNAL = 5,
+};
+
+struct fp_events {
+	uint8_t err : 4;
+	uint8_t enroll_progress : 8;
+	uint8_t match_idx : 4; /* last bit 15 */
+
+	int _reserved_for_future : 11;
+
+	bool enroll : 1; /* bit 27 */
+	bool match : 1;
+	bool finger_down : 1;
+	bool finger_up : 1;
+	bool image_ready : 1; /* bit 31 */
+} __attribute__((packed));
+
+BUILD_ASSERT(sizeof(struct fp_events) == 4);
+
 #define EC_CMD_MKBP_WAKE_MASK 0x0069
 enum ec_mkbp_event_mask_action {
 	/* Retrieve the value of a wake mask. */
@@ -6478,6 +6502,15 @@ enum add_entropy_action {
 	ADD_ENTROPY_GET_RESULT = 2,
 };
 
+/* clang-format off */
+#define EC_ADD_ENTROPY_TEXT                                                    \
+	{                                                                      \
+		[ADD_ENTROPY_ASYNC] = "ASYNC",                                 \
+		[ADD_ENTROPY_RESET_ASYNC] = "RESET_ASYNC",                     \
+		[ADD_ENTROPY_GET_RESULT] = "GET_RESULT",                       \
+	}
+/* clang-format on */
+
 struct ec_params_rollback_add_entropy {
 	uint8_t action;
 } __ec_align1;
@@ -7641,6 +7674,23 @@ struct ec_params_fp_passthru {
 /* special value: don't change anything just read back current mode */
 #define FP_MODE_DONT_CHANGE BIT(31)
 
+/* clang-format off */
+#define FP_MODE_LOG2_TEXT                                                      \
+	{                                                                      \
+		[__builtin_ctz(DEEPSLEEP)] = "DEEPSLEEP"                       \
+		[__builtin_ctz(FINGER_DOWN)] = "FINGER_DOWN"                   \
+		[__builtin_ctz(FINGER_UP)] = "FINGER_UP"                       \
+		[__builtin_ctz(CAPTURE)] = "CAPTURE"                           \
+		[__builtin_ctz(ENROLL_SESSION)] = "ENROLL_SESSION"             \
+		[__builtin_ctz(ENROLL_IMAGE)] = "ENROLL_IMAGE"                 \
+		[__builtin_ctz(MATCH)] = "MATCH"                               \
+		[__builtin_ctz(RESET_SENSOR)] = "RESET_SENSOR"                 \
+		[__builtin_ctz(SENSOR_MAINTENANCE)] = "SENSOR_MAINTENANCE"     \
+		/* Don't forget about default storage values in this range. */ \
+		[__builtin_ctz(DONT_CHANGE)] = "DONT_CHANGE"                   \
+	}
+/* clang-format on */
+
 #define FP_VALID_MODES                                                       \
 	(FP_MODE_DEEPSLEEP | FP_MODE_FINGER_DOWN | FP_MODE_FINGER_UP |       \
 	 FP_MODE_CAPTURE | FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE |   \
@@ -7678,6 +7728,18 @@ enum fp_capture_type {
 /* Extracts the capture type from the sensor 'mode' word */
 #define FP_CAPTURE_TYPE(mode) \
 	(((mode)&FP_MODE_CAPTURE_TYPE_MASK) >> FP_MODE_CAPTURE_TYPE_SHIFT)
+
+/* clang-format off */
+#define FP_CAPTURE_TYPE_TEXT                                                   \
+	{                                                                      \
+		[FP_CAPTURE_VENDOR_FORMAT] = "VENDOR_FORMAT",                  \
+		[FP_CAPTURE_SIMPLE_IMAGE] = "SIMPLE_IMAGE",                    \
+		[FP_CAPTURE_PATTERN0] = "PATTERN0",                            \
+		[FP_CAPTURE_PATTERN1] = "PATTERN1",                            \
+		[FP_CAPTURE_QUALITY_TEST] = "QUALITY_TEST",                    \
+		[FP_CAPTURE_RESET_TEST] = "RESET_TEST",                        \
+	}
+/* clang-format on */
 
 struct ec_params_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
@@ -7813,6 +7875,14 @@ enum fp_context_action {
 	FP_CONTEXT_ASYNC = 0,
 	FP_CONTEXT_GET_RESULT = 1,
 };
+
+/* clang-format off */
+#define FP_CONTEXT_ACTION_TEXT                                                 \
+	{                                                                      \
+		[FP_CONTEXT_ASYNC] = "ASYNC",                                  \
+		[FP_CONTEXT_GET_RESULT] = "GET_RESULT",                        \
+	}
+/* clang-format on */
 
 /* Version 1 of the command is "asynchronous". */
 struct ec_params_fp_context_v1 {
