@@ -51,6 +51,24 @@
       "message": "b/237593618 tried to address this symptom by making the AP wait between successive commands, so probably that delay needs to be increased if performance has regressed further. I think petting the watchdog on every passthrough command will tend to hide other problems.",
       "revId": "516c3d23662fd5739ccff6db976785039b22c66c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "166ad985_72d27a5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-10T00:19:20Z",
+      "side": 1,
+      "message": "I believe the issue is mostly when the AP polls for program completion, which is a small transfer that gets repeated frequently. I don\u0027t think I2C performance is a specific issue so much as context switches being very costly (and I2C causes frequent context switches).",
+      "parentUuid": "35baf9da_318f5d28",
+      "revId": "516c3d23662fd5739ccff6db976785039b22c66c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
