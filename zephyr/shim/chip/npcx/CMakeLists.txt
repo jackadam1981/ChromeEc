@@ -15,6 +15,7 @@ zephyr_library_sources(clock.c)
 zephyr_library_sources(gpio.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_KB_RAW_NPCX  keyboard_raw.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_SHI_NPCX     shi.c)
+zephyr_library_sources_ifdef(CONFIG_EC_HOST_CMD_PERIPH_SHI_NPCX       shi.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_EC           system.c)
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_EXTERNAL_STORAGE
