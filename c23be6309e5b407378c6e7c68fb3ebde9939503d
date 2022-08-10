@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8347da17_7c741135",
+        "filename": "board/prism/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T21:17:12Z",
+      "side": 1,
+      "message": "Is this relevant? If not, can you do it in a separate CL?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "c23be6309e5b407378c6e7c68fb3ebde9939503d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb4a8a4_b0727ec1",
+        "filename": "board/prism/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T21:17:12Z",
+      "side": 1,
+      "message": "Is this necessary? Can you explain why (in comment)? Would it not degrade the UX on resume or start-up?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 47
+      },
+      "revId": "c23be6309e5b407378c6e7c68fb3ebde9939503d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
