@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "937d6b1b_dd34e603",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-10T23:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "232b6ec7_8ad23529",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 3
+      },
+      "revId": "81b136e9d771da2e2e251d0fc892fcb9a5517e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7abf1c83_4f2f0cae",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-10T22:49:22Z",
       "side": 1,
       "message": "bool",
+      "range": {
+        "startLine": 458,
+        "startChar": 29,
+        "endLine": 458,
+        "endChar": 32
+      },
+      "revId": "81b136e9d771da2e2e251d0fc892fcb9a5517e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d647c3c_794f2f0a",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-10T23:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7abf1c83_4f2f0cae",
       "range": {
         "startLine": 458,
         "startChar": 29,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6bd86b1_58f2ce45",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-10T23:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188f69c4_4076938b",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "81b136e9d771da2e2e251d0fc892fcb9a5517e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55da3796_e5df7bca",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-10T22:49:22Z",
       "side": 1,
       "message": "bool",
+      "range": {
+        "startLine": 1153,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 3
+      },
+      "revId": "81b136e9d771da2e2e251d0fc892fcb9a5517e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f893a52a_4f8907a4",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-10T23:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55da3796_e5df7bca",
       "range": {
         "startLine": 1153,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f54160_2966e0ac",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-10T23:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d74e3551_2acdc332",
+      "range": {
+        "startLine": 1158,
+        "startChar": 29,
+        "endLine": 1158,
+        "endChar": 32
+      },
+      "revId": "81b136e9d771da2e2e251d0fc892fcb9a5517e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a87eee4_9e1daf96",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-08-10T22:49:22Z",
       "side": 1,
       "message": "any way to clean up the if/else-if logic here with the ifdef? can we put the `CONFIG_POWER_S0IX` in an `IS_ENABLED` so we don\u0027t need the ifdef?\n\nit took me a minute to figure out what was going on with the syntax.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 4
+      },
+      "revId": "81b136e9d771da2e2e251d0fc892fcb9a5517e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29beb55a_fe767dc2",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-10T23:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a87eee4_9e1daf96",
       "range": {
         "startLine": 346,
         "startChar": 0,
