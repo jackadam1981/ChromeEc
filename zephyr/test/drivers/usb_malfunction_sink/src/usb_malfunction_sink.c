@@ -15,7 +15,13 @@
 #include "tcpm/tcpci.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
+#include "test/drivers/stubs.h"
 #include "usb_pd.h"
+#include "usb_tc_sm.h"
+#include "timer.h"
+
+/* USB-C port used to connect port partner in this testsuite */
+#define TEST_PORT USBC_PORT_C0
 
 struct usb_malfunction_sink_fixture {
 	struct tcpci_partner_data sink;
@@ -192,6 +198,49 @@ ZTEST_F(usb_malfunction_sink, test_ignore_source_cap)
 		msg_cnt++;
 		expect_hard_reset = !expect_hard_reset;
 	}
+}
+
+/*
+ * Connect sink and check vconn. Send hard reset, check vconn in the middle of
+ * the power sequence triggered by hard reset. Disconnect partner.
+ */
+static void perform_connect_hard_reset_and_disconnect(
+	struct usb_malfunction_sink_fixture *fixture, int port, int try_count)
+{
+	connect_sink_to_port(&fixture->sink, fixture->tcpci_emul,
+			     fixture->charger_emul);
+	zassert_true(tc_is_vconn_src(port),
+		     "Vconn should be present after connection (try %d)",
+		     try_count);
+
+	/* Send hard reset to trigger power sequence on source side */
+	tcpci_partner_common_send_hard_reset(&fixture->sink);
+
+	/*
+	 * Wait for start of power sequence after hard reset and half
+	 * the time of source recovery (first step of power sequence when vconn
+	 * should be disabled)
+	 */
+	k_sleep(K_USEC(PD_T_PS_HARD_RESET + PD_T_SRC_RECOVER / 2));
+
+	zassert_false(tc_is_vconn_src(TEST_PORT),
+		      "Vconn should be disabled at power sequence (try %d)",
+		      try_count);
+
+	/* Disconnect partner at the middle of power sequence */
+	disconnect_sink_from_port(fixture->tcpci_emul);
+}
+
+ZTEST_F(usb_malfunction_sink, test_hard_reset_disconnect)
+{
+	perform_connect_hard_reset_and_disconnect(fixture, TEST_PORT, 1);
+	/*
+	 * Test if disconnection during the power sequence doesn't have impact
+	 * on next tries
+	 */
+	perform_connect_hard_reset_and_disconnect(fixture, TEST_PORT, 2);
+	perform_connect_hard_reset_and_disconnect(fixture, TEST_PORT, 3);
+	perform_connect_hard_reset_and_disconnect(fixture, TEST_PORT, 4);
 }
 
 ZTEST_F(usb_malfunction_sink, test_ignore_source_cap_and_pd_disable)
