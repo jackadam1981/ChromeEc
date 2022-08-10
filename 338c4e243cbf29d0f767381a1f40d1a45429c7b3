@@ -22,6 +22,30 @@
       },
       "revId": "338c4e243cbf29d0f767381a1f40d1a45429c7b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1018d22_e746ccf0",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-10T20:16:20Z",
+      "side": 1,
+      "message": "Changed in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3824957/comments/5c9ba779_5cc47d08",
+      "parentUuid": "3ea2e31d_e9497e75",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 33
+      },
+      "revId": "338c4e243cbf29d0f767381a1f40d1a45429c7b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
