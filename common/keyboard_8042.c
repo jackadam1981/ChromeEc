@@ -267,7 +267,12 @@ static void aux_enable_irq(int enable)
  * @param to_host	Data to send
  * @param chan		Channel to send data on
  */
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 static void i8042_send_to_host(int len, const uint8_t *bytes, uint8_t chan)
+#else
+static void i8042_send_to_host(int len, const uint8_t *bytes, uint8_t chan,
+			       int is_typematic)
+#endif
 {
 	int i;
 	struct data_byte data;
@@ -283,7 +288,15 @@ static void i8042_send_to_host(int len, const uint8_t *bytes, uint8_t chan)
 		for (i = 0; i < len; i++) {
 			data.chan = chan;
 			data.byte = bytes[i];
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 			queue_add_unit(&to_host, &data);
+#else
+			if (is_typematic && !typematic_len) {
+				CPRINTS("** race condition, ignore send to queue **");
+			} else {
+				queue_add_unit(&to_host, &data);
+			}
+#endif
 		}
 	}
 	mutex_unlock(&to_host_mutex);
@@ -453,7 +466,11 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 	if (ret == EC_SUCCESS) {
 		ASSERT(len > 0);
 		if (keystroke_enabled)
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 			i8042_send_to_host(len, scan_code, CHAN_KBD);
+#else
+			i8042_send_to_host(len, scan_code, CHAN_KBD, 0);
+#endif
 	}
 
 	if (is_pressed) {
@@ -875,7 +892,11 @@ static void i8042_handle_from_host(void)
 				ret_len = handle_keyboard_data(h.byte, output);
 		}
 
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 		i8042_send_to_host(ret_len, output, chan);
+#else
+		i8042_send_to_host(ret_len, output, chan, 0);
+#endif
 	}
 }
 
@@ -901,9 +922,15 @@ void keyboard_protocol_task(void *u)
 			} else if (timestamp_expired(typematic_deadline, &t)) {
 				/* Ready for next typematic keystroke */
 				if (keystroke_enabled)
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 					i8042_send_to_host(typematic_len,
 							   typematic_scan_code,
 							   CHAN_KBD);
+#else
+					i8042_send_to_host(typematic_len,
+							   typematic_scan_code,
+							   CHAN_KBD, 1);
+#endif
 				typematic_deadline.val =
 					t.val + typematic_inter_delay;
 				wait = typematic_inter_delay;
@@ -974,7 +1001,11 @@ static void send_aux_data_to_host_deferred(void)
 	while (!queue_is_empty(&aux_to_host_queue)) {
 		queue_remove_unit(&aux_to_host_queue, &data);
 		if (aux_chan_enabled && IS_ENABLED(CONFIG_8042_AUX))
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 			i8042_send_to_host(1, &data, CHAN_AUX);
+#else
+			i8042_send_to_host(1, &data, CHAN_AUX, 0);
+#endif
 		else
 			CPRINTS("AUX Callback ignored");
 	}
@@ -1032,7 +1063,11 @@ test_mockable void keyboard_update_button(enum keyboard_button_type button,
 	if (keystroke_enabled) {
 		CPRINTS5("KB UPDATE BTN");
 
+#ifndef CONFIG_KEYBOARD_SCAN_ADC
 		i8042_send_to_host(len, scan_code, CHAN_KBD);
+#else
+		i8042_send_to_host(len, scan_code, CHAN_KBD, 0);
+#endif
 		task_wake(TASK_ID_KEYPROTO);
 	}
 }
