@@ -301,13 +301,18 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away, go straight to S5 */
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+			power_set_power_failure(true);
 			return POWER_S3S5;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1) {
-			/* Power up to next state */
-			return POWER_S3S0;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S4) == 0) {
-			/* Power down to the next state */
-			return POWER_S3S4;
+		} else {
+			power_set_power_failure(false);
+			if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1) {
+				/* Power up to next state */
+				return POWER_S3S0;
+			} else if (chipset_get_sleep_signal(SYS_SLEEP_S4) ==
+				   0) {
+				/* Power down to the next state */
+				return POWER_S3S4;
+			}
 		}
 
 		break;
@@ -315,10 +320,13 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 	case POWER_S0:
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+			power_set_power_failure(true);
 			return POWER_S0S3;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 0) {
-			/* Power down to next state */
-			return POWER_S0S3;
+		} else {
+			power_set_power_failure(false);
+			if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 0) {
+				/* Power down to next state */
+				return POWER_S0S3;
 #ifdef CONFIG_POWER_S0IX
 			/*
 			 * SLP_S0 may assert in system idle scenario without a
@@ -327,13 +335,16 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			 * in the idle scenario. Ignore the SLP_S0 assertions in
 			 * idle scenario by checking the host sleep state.
 			 */
-		} else if (power_get_host_sleep_state() ==
-				   HOST_SLEEP_EVENT_S0IX_SUSPEND &&
-			   chipset_get_sleep_signal(SYS_SLEEP_S0IX) == 0) {
-			return POWER_S0S0ix;
-		} else {
+			} else if (power_get_host_sleep_state() ==
+					   HOST_SLEEP_EVENT_S0IX_SUSPEND &&
+				   chipset_get_sleep_signal(SYS_SLEEP_S0IX) ==
+					   0) {
+				return POWER_S0S0ix;
+			}
 			sleep_notify_transition(SLEEP_NOTIFY_RESUME,
 						HOOK_CHIPSET_RESUME);
+#else
+			}
 #endif
 		}
 
@@ -386,8 +397,10 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+			power_set_power_failure(true);
 			return POWER_S5G3;
 		}
+		power_set_power_failure(false);
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
@@ -405,8 +418,10 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away, go straight back to S5 */
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+			power_set_power_failure(true);
 			return POWER_S3S5;
 		}
+		power_set_power_failure(false);
 
 		/* Enable wireless */
 		wireless_set_state(WIRELESS_ON);
