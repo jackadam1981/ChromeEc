@@ -3,6 +3,12 @@
  * found in the LICENSE file.
  */
 
+/ {
+	chosen {
+		zephyr,ec-host-interface = &shi0;
+	};
+};
+
 /* host interface */
 &shi0 {
 	status = "okay";
