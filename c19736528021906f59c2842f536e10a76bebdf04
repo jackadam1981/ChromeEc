@@ -22,6 +22,30 @@
       },
       "revId": "c19736528021906f59c2842f536e10a76bebdf04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef91509_104c7034",
+        "filename": "zephyr/shim/include/usbc/ppc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-10T06:43:12Z",
+      "side": 1,
+      "message": "Sorry, thought I deleted this.",
+      "parentUuid": "c187016d_145d9f7f",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "c19736528021906f59c2842f536e10a76bebdf04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
