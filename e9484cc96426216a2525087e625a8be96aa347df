@@ -34,6 +34,184 @@
       "parentUuid": "52863bff_777691b5",
       "revId": "e9484cc96426216a2525087e625a8be96aa347df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c6e594_4dee6954",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T23:22:14Z",
+      "side": 1,
+      "message": "nit: How about type? Just one more letter will distinguish it from \u0027typical\u0027.",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ea76af_c0778065",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T23:22:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 77,
+        "startChar": 43,
+        "endLine": 77,
+        "endChar": 46
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53a7d4f_0d1108f0",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T23:22:14Z",
+      "side": 1,
+      "message": "static. \n\nHow about bj_type?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 3
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa96261_4acb5a78",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T23:22:14Z",
+      "side": 1,
+      "message": "type?",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 28
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a461e2_72c25d11",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T23:22:14Z",
+      "side": 1,
+      "message": "nit: I would use a temp variable (e.g. \u0027i\u0027 or \u0027type\u0027) and update bj_count at bottom of the function (which is consistent with the coding style of the repo and eliminates a concurrency concern).",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db6bf2f_e3bace17",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T23:22:14Z",
+      "side": 1,
+      "message": "It looks this assumes the higher adp_typ_mv is, the higher adaptor rating is even if the adc reads a large random value. ADC reading could be wrong or the adaptor could be wrongly e-marked. So, I think higher adp_typ_mv means just \u0027unknown\u0027 as much as other unknown cases, doesn\u0027t it?\n\n(In short, I think we should treat it just \u0027unknown\u0027).",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 53
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d04aca_ad9cd593",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T23:22:14Z",
+      "side": 1,
+      "message": "Can you print a message for type \u003d\u003d unknown?",
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c16d1283_4ddeb9a5",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-10T23:22:14Z",
+      "side": 1,
+      "message": "Theoretically, this check isn\u0027t neccesary because unknown adaptors will never be selected by the charger task (thus, board_enable_bj_port will never be called for such BJAs).",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 45
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
