@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a2b4c94_d55cb627",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-11T00:17:48Z",
+      "side": 1,
+      "message": "It\u0027s checked before calling cps8x00_probe() in line 342. Do you think it\u0027s better to move the check here?",
+      "parentUuid": "74f6c1d4_40368337",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 11
+      },
+      "revId": "54a058b24b4056a618f59d51ebcd620eb5b77166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26e9dfa8_f0c2c95e",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-10T14:37:48Z",
       "side": 1,
       "message": "Is this from the spec?",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 12
+      },
+      "revId": "54a058b24b4056a618f59d51ebcd620eb5b77166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c980f3ea_15e2a2b5",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-11T00:17:48Z",
+      "side": 1,
+      "message": "I don\u0027t find the information in the data sheet, this is from my experiment. It failed to read the register if the delay \u003c 20~30ms, so to be safe I put 40ms here",
+      "parentUuid": "26e9dfa8_f0c2c95e",
       "range": {
         "startLine": 341,
         "startChar": 1,
