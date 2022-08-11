@@ -14,6 +14,7 @@
 
 /* Battery */
 #define CONFIG_BATTERY_FUEL_GAUGE
+#define CONFIG_BATTERY_PRESENT_CUSTOM
 
 /* Charger */
 #define CONFIG_CHARGER_SM5803 /* C0 and C1: Charger */
@@ -61,6 +62,7 @@
 
 /* Unused Features */
 #undef CONFIG_BACKLIGHT_LID
+#undef CONFIG_BATTERY_PRESENT_GPIO
 #undef CONFIG_CMD_KEYBOARD
 #undef CONFIG_HIBERNATE
 #undef CONFIG_KEYBOARD_BOOT_KEYS

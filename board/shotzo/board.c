@@ -494,3 +494,9 @@ const struct temp_sensor_t temp_sensors[] = {
 			    .idx = ADC_TEMP_SENSOR_4 },
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+enum battery_present battery_is_present(void)
+{
+	/* Shotzo has no battery, so always return no battery present. */
+	return BP_NO;
+}
