@@ -1105,6 +1105,15 @@ function flash_stm32() {
 	local STM32MON
 	local STM32MON_OPT
 
+	# Workaround for an outstanding issue that prevents flashing dartmonkey with
+	# a servo_micro. The exact root cause is still unknown, but it's been observed
+	# that forcing the reset signal to OFF makes the operation succeed.
+	# For additional info see http://b/177331210
+	if [[ "${SERVO_TYPE}" =~ "servo_micro" && "${BOARD}" =~ "dartmonkey" ]] ; then
+		echo "Workaround for dartmonkey + servo_micro: force reset to OFF"
+ 		dut_control fpmcu_reset:off
+	fi
+
 	if ! servo_has_cold_reset; then
 		die "Cold reset must be available for STM32 programming"
 	fi
@@ -1127,6 +1136,7 @@ function flash_stm32() {
 
 	# Pulse EC reset.
 	ec_reset
+
 
 	if ! on_raiden && [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
 		servo_save_add "${EC_UART_PREFIX}_en"
