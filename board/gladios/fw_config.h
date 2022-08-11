@@ -9,15 +9,15 @@
 #include <stdint.h>
 
 /****************************************************************************
- * CBI FW_CONFIG layout for Brask board.
+ * CBI FW_CONFIG layout for Gladios board.
  *
- * Source of truth is the project/brask/brask/config.star configuration file.
+ * Source of truth is the project/brask/gladios/config.star configuration file.
  */
 enum ec_cfg_audio_type { DB_AUDIO_UNKNOWN = 0, DB_NAU88L25B_I2S = 1 };
 
-enum ec_cfg_bj_power { BJ_135W = 0, BJ_230W = 1 };
+enum ec_cfg_bj_power { BJ_65W = 0, BJ_90W = 1 };
 
-union brask_cbi_fw_config {
+union gladios_cbi_fw_config {
 	struct {
 		uint32_t audio : 3;
 		uint32_t bj_power : 2;
@@ -31,7 +31,7 @@ union brask_cbi_fw_config {
  *
  * @return the FW_CONFIG for the board.
  */
-union brask_cbi_fw_config get_fw_config(void);
+union gladios_cbi_fw_config get_fw_config(void);
 
 /**
  * Get the barrel-jack power from FW_CONFIG.
