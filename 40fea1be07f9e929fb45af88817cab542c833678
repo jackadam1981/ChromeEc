@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab41162_1f1dce44",
+        "filename": "include/power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-11T00:01:25Z",
+      "side": 1,
+      "message": "The goal here is to figure out if \"chipset_force_shutdown()\" was called with \"CHIPSET_SHUTDOWN_POWERFAIL\" as the reason argument.\n\nOne alternative I considered was storing the chipset shutdown reason and making a getter for it. But the way the chipset code is set up as a common interface, it would require adding the functionality to each chipset implementation and there are dozens of them. Let me know if this is preferable.",
+      "parentUuid": "0b4801dd_3d03056c",
+      "range": {
+        "startLine": 447,
+        "startChar": 3,
+        "endLine": 447,
+        "endChar": 16
+      },
+      "revId": "40fea1be07f9e929fb45af88817cab542c833678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41772f80_6466c3d8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-10T23:33:03Z",
       "side": 1,
       "message": "imo we could still use to remove this ifdef as it integrates an `else if` with logic outside the ifdef, which can be difficult to read, but feel free to handle in a follow-up CL.",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 24
+      },
+      "revId": "40fea1be07f9e929fb45af88817cab542c833678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d085a40_6451a74d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-11T00:01:25Z",
+      "side": 1,
+      "message": "This config is used extensively throughout this file. It would require a larger code cleanup than I wanted to put in this CL.",
+      "parentUuid": "41772f80_6466c3d8",
       "range": {
         "startLine": 331,
         "startChar": 0,
