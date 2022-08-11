@@ -16,6 +16,24 @@
       "message": "This definition should be added to zephyr/include/dt-bindings/usbc_mux.h too.",
       "revId": "a1f06cb62f86b779e223b73c109a777c68edc0c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753213c1_31de71b8",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-11T21:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80cf8df8_45368369",
+      "revId": "a1f06cb62f86b779e223b73c109a777c68edc0c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
