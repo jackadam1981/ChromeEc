@@ -34,6 +34,24 @@
       "parentUuid": "3c9ed571_4f5cae66",
       "revId": "e0377b1e971fd3fc733c7311727757c015b46f73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fecd5439_160ef416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-11T00:42:59Z",
+      "side": 1,
+      "message": "There have been some changes to the way that tests are run on Zephyr.\nTry updating your tree and retrying.",
+      "parentUuid": "3fa211d9_4c0385b0",
+      "revId": "e0377b1e971fd3fc733c7311727757c015b46f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
