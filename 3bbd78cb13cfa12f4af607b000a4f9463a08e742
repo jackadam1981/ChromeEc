@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bee2ab6_990ba18c",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-11T04:13:24Z",
+      "side": 1,
+      "message": "I am wondering if you need this config item.\nThe only place I see it used is shim/include/fpu.h, and\nperhaps the guard should be #if defined(CONFIG_FPU) || defined(CONFIG_SOFT_FLOAT)",
+      "revId": "3bbd78cb13cfa12f4af607b000a4f9463a08e742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3dab548_f409041d",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-11T04:13:24Z",
+      "side": 1,
+      "message": "uses",
+      "range": {
+        "startLine": 356,
+        "startChar": 24,
+        "endLine": 356,
+        "endChar": 27
+      },
+      "revId": "3bbd78cb13cfa12f4af607b000a4f9463a08e742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589a6b55_bc1499e9",
+        "filename": "zephyr/shim/include/fpu.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-11T04:13:24Z",
+      "side": 1,
+      "message": "Maybe #elif CONFIG_RISCV",
+      "revId": "3bbd78cb13cfa12f4af607b000a4f9463a08e742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eee04d2_cd9150a5",
+        "filename": "zephyr/shim/include/fpu.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-11T04:13:24Z",
+      "side": 1,
+      "message": "This seems wrong, that there is a #warning and then an #error.\n\nI think this file logic perhaps should be:\n\n#if defined(CONFIG_FPU) || defined(CONFIG_SOFT_FLOAT) /* and maybe !NEWLIB_LIBC) */\n\n#ifdef CONFIG_CPU_CORTEX_M\n...\n#elif CONFIG_RISCV\n\nThe #warning is here if SOFT_FLOAT enabled, and I think this means\nthat the extra functions are already handled, but not sure about what should happen with non SOFT_FLOAT. Why is there a warning here?\nMaybe separate this from the non-RISCV error:\n\n#ifndef CONFIG_PLATFORM_EC_SOFT_FLOAT\n#error \"RISCV HW FPU not supported\"\n#endif\n\n#else\n#error \"Unsupported core: please add an implementation\"\n#endif",
+      "revId": "3bbd78cb13cfa12f4af607b000a4f9463a08e742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
