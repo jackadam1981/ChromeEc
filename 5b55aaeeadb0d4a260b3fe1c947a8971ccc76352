@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9bf9350_a28eacf5",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-11T07:23:35Z",
+      "side": 1,
+      "message": "this should be redundant, it\u0027s selected automatically by DT_HAS_ATMEL_AT24_ENABLED (i.e. having a node with compatible\u003d\"atmel,at24\"). Feel free to drop it... or not, I\u0027ll do a cleanup of these on the whole code base in the next couple weeks wanyway. :-)",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "5b55aaeeadb0d4a260b3fe1c947a8971ccc76352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
