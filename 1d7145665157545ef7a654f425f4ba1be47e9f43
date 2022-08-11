@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7424cf81_1443ba8a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2755,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-11T17:49:09Z",
+      "side": 1,
+      "message": "I don\u0027t think we should merge this patch if we don\u0027t understand how it works.",
+      "parentUuid": "0cdeef15_a736e461",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "443eec09_560ffd4e",
         "filename": "common/usbc_intr_task.c",
         "patchSetId": 4
