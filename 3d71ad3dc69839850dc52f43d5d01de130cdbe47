@@ -160,6 +160,24 @@
       "parentUuid": "c8c7055a_7801eeb5",
       "revId": "3d71ad3dc69839850dc52f43d5d01de130cdbe47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd89d5a9_a75fcb73",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-08-11T09:03:06Z",
+      "side": 1,
+      "message": "We can increase this count and try again.",
+      "parentUuid": "0a7506f4_88be19ce",
+      "revId": "3d71ad3dc69839850dc52f43d5d01de130cdbe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
