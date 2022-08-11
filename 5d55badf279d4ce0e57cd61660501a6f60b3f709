@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685d2f1e_41f4ffd4",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-11T07:17:32Z",
+      "side": 1,
+      "message": "This is cool now that we are only enabling two \u003dy options, but if we want to do more tuning, work with deferred logging, dictionary etc it may make sense to add a dedicated Kconfig.logging with a bunch of default value overrides (similar to `Kconfig.defaults`), that would allow you to have more complex condition selections.\n\nHow about adding that now? May save refactoring these two there anyway down the road.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "5d55badf279d4ce0e57cd61660501a6f60b3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
