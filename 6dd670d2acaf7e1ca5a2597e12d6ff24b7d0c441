@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6946d66b_a423ab0d",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-08-11T14:57:37Z",
+      "side": 1,
+      "message": "According with b/240309969 #22 , \n\nyou can see when ec code run as send typematic scan code(keyboard_protocol_task()) and call to i8042_send_to_host() but inserted by release scan code (keyboard_state_changed()) and call i8042_send_to_host() again.\n---------------------------------------------------------------------------------\n\u003d\u003e keyboard_protocol_task()\nno.3 i8042_send_to_host queue: 31     \nno.3                                 \n\u003d\u003e keyboard_state_changed()\n[259.274393 KB (4,4)\u003d0 s]             \n22-08-02 21:51:13.126 no.1 i8042_send_to_host queue: 159\n\u003d\u003e keyboard_protocol_task()\ni8042_send_to_host queue: 31          \n-------------------------------------------------------------------------------\n\nAnd about b/240309969 #31 debug log,\nThe log add \"ccprintf(\"Start of i8042_send_to_host, len: %d\\n\", len);\" at the begin of i8042_send_to_host(), but you can see below log show \"len\" is 1, \n-------------------------------------------------------------------------------\n22-08-08 21:39:34.824  len: 1\n22-08-08 21:39:34.824 i8042_send_to_host queue: 31\n[220.273588 KB wait]\n-------------------------------------------------------------------------------\nBut the value of \"len\" is send by lines 909 typematic_len, \nif log \"len\" show 1, it means i8042_send_to_host()(lines 909) run first, then keyboard_state_changed() be called, run i8042_send_to_host()(lines 461), send release key scan code. And continue run lines 469, typematic_len set to 0. \nNow, back to the function i8042_send_to_host() called by lines 909, at this moment  there is no key pressed, but still send typematic scan code to queue.\nI think b/240309969 #37 log can explain it.\nSo add this if condition (is_typematic \u0026\u0026 !typematic_len) to ignore it.",
+      "parentUuid": "69e05eca_3ae2091b",
+      "revId": "6dd670d2acaf7e1ca5a2597e12d6ff24b7d0c441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382dbde0_10a69361",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-11T05:15:48Z",
       "side": 1,
       "message": "Here is the same condition checked, just a few instructions ahead.",
+      "revId": "6dd670d2acaf7e1ca5a2597e12d6ff24b7d0c441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bd34c9d_b56e4014",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-08-11T14:57:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "382dbde0_10a69361",
       "revId": "6dd670d2acaf7e1ca5a2597e12d6ff24b7d0c441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
