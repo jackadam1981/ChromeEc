@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b186256_bc1515d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-08-11T16:58:05Z",
+      "side": 1,
+      "message": "It\u0027s not immediately clear to me how these statements are related.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "f2f81c5447dc57e8a663337d1cf1efd8d5e59493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "039673e4_0158d17e",
@@ -103,6 +126,24 @@
       "side": 1,
       "message": "1. What have you been seeing for the mux state before the mux set completes?  What mux set is in progress when we hit this clause (set to none, to USB)?\nWhen plug in USB card, mux_state: 0 (USB_PD_MUX_NONE)\n\n2. Should the mux set be preserving the bit 5 which the below API changes?  (i.e. should all mux sets be performing a read/modify/write rather  than just a write)\nWe think it is not necessary to perform read/modify/write on all mux sets.  Only need to check which port has usb connection.\n\n3. Reading the bug, I see there\u0027s an i2c error mentioned.  Do you know the root cause of the i2c error?\nWe don\u0027t know the root cause of the retimer i2c error(UNKNOWN).\n\n4. Is the call to bb_retimer_set_usb3() in the correct location (called on power transitions), or is it also needed in general during mux sets (similar to a board_set API defined to be called every time a mux is set)?\nEven though we don\u0027t call the bb_retimer_set_usb3 function issue still occurs.\nWe found that it was caused by usb_mux_get(i).\nWe think it\u0027s time related, because just increase CPRINTS to get more information in usb_mux_get function, this problem doesn\u0027t happen.\nBut we don\u0027t know what the root cause is.",
       "parentUuid": "4d16be85_055e2670",
+      "revId": "f2f81c5447dc57e8a663337d1cf1efd8d5e59493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb4802d_748c935f",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-08-11T16:58:05Z",
+      "side": 1,
+      "message": "It seems to me that we should be checking the mux set before. Also, I don\u0027t see how `usb_mux_get` will actually modify the mux at all. Have you verified that\u0027s actually happening here?\n\nOverall, it kind of just sounds like a race condition exists somewhere.",
+      "parentUuid": "8d789596_8a099f99",
       "revId": "f2f81c5447dc57e8a663337d1cf1efd8d5e59493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
