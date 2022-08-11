@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a07fe996_8fd60686",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-11T22:03:37Z",
+      "side": 1,
+      "message": "(I don\u0027t have access to the bug. I assume this isn\u0027t for Chromeboxes as TEST\u003d refers to Atlas.)\n\nIsn\u0027t it a serious problem that power failure (slow or fast) occurs by removing a charger? The battery should be able to sustain the system (until it discharges to a critical low level).",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "40fea1be07f9e929fb45af88817cab542c833678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b4801dd_3d03056c",
         "filename": "include/power.h",
         "patchSetId": 3
