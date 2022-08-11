@@ -10,6 +10,7 @@
 #define __CROS_EC_USB_RETIMER_PS8818_H
 
 #define PS8818_I2C_ADDR_FLAGS 0x28
+#define PS8818_I2C_ADDR_FLAGS2 0x70
 
 /*
  * PAGE 0 Register Definitions
