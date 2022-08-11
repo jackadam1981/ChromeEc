@@ -8,6 +8,9 @@
 
 #include "accelgyro.h"
 #include "cros_board_info.h"
+#include "cros_cbi.h"
+#include "driver/accelgyro_bmi323.h"
+#include "driver/accelgyro_lsm6dso.h"
 #include "hooks.h"
 #include "motionsense_sensors.h"
 
@@ -22,6 +25,15 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 #define ALT_MAT SENSOR_ROT_STD_REF_NAME(DT_NODELABEL(base_rot_ver1))
 #define BASE_SENSOR SENSOR_ID(DT_NODELABEL(base_accel))
 #define BASE_GYRO SENSOR_ID(DT_NODELABEL(base_gyro))
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (cros_cbi_ssfc_check_match(
+		    CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1))))
+		bmi3xx_interrupt(signal);
+	else
+		lsm6dso_interrupt(signal);
+}
 
 static void form_factor_init(void)
 {
