@@ -70,6 +70,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 }
 
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return 0;
+}
+
 int board_idle_task(void *unused)
 {
 	while (1)

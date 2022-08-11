@@ -117,6 +117,8 @@ static const struct power_seq_op s3s5_power_seq[] = {
 static int forcing_shutdown;
 static int boot_from_cutoff;
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 void chipset_reset_request_interrupt(enum gpio_signal signal)
 {
 	chipset_reset(CHIPSET_RESET_AP_REQ);
@@ -144,6 +146,7 @@ void chipset_watchdog_interrupt(enum gpio_signal signal)
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	/*
@@ -152,6 +155,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 */
 	forcing_shutdown = 1;
 	task_wake(TASK_ID_CHIPSET);
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_force_shutdown_button(void)

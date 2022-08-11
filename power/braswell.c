@@ -53,9 +53,12 @@
 static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	/*
@@ -67,6 +70,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 #endif
 	gpio_set_level(GPIO_PCH_RSMRST_L, 0);
 	forcing_shutdown = 1;
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_reset(enum chipset_reset_reason reason)

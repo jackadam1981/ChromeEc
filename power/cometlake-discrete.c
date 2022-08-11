@@ -21,6 +21,8 @@
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	[PP5000_A_PGOOD] = {
@@ -210,11 +212,17 @@ static void shutdown_s5_rails(void)
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	shutdown_s0_rails();
 	/* S3->S5 is automatic based on SLP_S3 driving memory rails. */
 	shutdown_s5_rails();
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_handle_espi_reset_assert(void) {}

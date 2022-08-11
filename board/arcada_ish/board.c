@@ -191,6 +191,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	/* Required, but nothing to do */
 }
 
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return 0;
+}
+
 /* Needed for empty chipset task */
 int board_idle_task(void *unused)
 {

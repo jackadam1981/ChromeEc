@@ -32,6 +32,8 @@
 
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	[X86_SLP_S0_DEASSERTED] = {
@@ -88,6 +90,7 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	int timeout_ms = 50;
 
 	CPRINTS("%s() %d", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	/* Turn off RMSRST_L  to meet tPCH12 */
@@ -127,6 +130,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 
 	if (!timeout_ms)
 		CPRINTS("DSW_PWROK or RSMRST_ODL didn't go low!  Assuming G3.");
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_handle_espi_reset_assert(void)

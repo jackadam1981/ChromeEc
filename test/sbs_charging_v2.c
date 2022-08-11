@@ -24,6 +24,7 @@ static int is_shutdown;
 static int is_force_discharge;
 static int is_hibernated;
 static int override_voltage, override_current, override_usec;
+static enum chipset_shutdown_reason shutdown_reason;
 
 /* The simulation doesn't really hibernate, so we must reset this ourselves */
 extern timestamp_t shutdown_target_time;
@@ -43,8 +44,14 @@ int board_cut_off_battery(void)
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
+	shutdown_reason = reason;
 	is_shutdown = 1;
 	mock_chipset_state = CHIPSET_STATE_HARD_OFF;
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 int chipset_in_state(int state_mask)

@@ -80,6 +80,8 @@
 
 static int forcing_shutdown;
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 static void watchdog_interrupt_deferred(void)
 {
 	chipset_reset(CHIPSET_RESET_AP_WATCHDOG);
@@ -136,6 +138,7 @@ void chipset_watchdog_interrupt(enum gpio_signal signal)
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	/*
@@ -144,6 +147,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 */
 	forcing_shutdown = 1;
 	task_wake(TASK_ID_CHIPSET);
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_force_shutdown_button(void)

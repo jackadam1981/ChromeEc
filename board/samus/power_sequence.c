@@ -65,9 +65,12 @@
 static int throttle_cpu;      /* Throttle CPU? */
 static uint32_t pp5000_in_g3; /* Turn PP5000 on in G3? */
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	/*
@@ -76,6 +79,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 */
 	gpio_set_level(GPIO_PCH_DPWROK, 0);
 	gpio_set_level(GPIO_PCH_RSMRST_L, 0);
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 static void chipset_force_g3(void)
