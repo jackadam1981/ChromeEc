@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e05eca_3ae2091b",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-08-11T05:15:48Z",
+      "side": 1,
+      "message": "how is this condition logically possible? it is like entering both parts of the condition (lines 903 and 906) simultaneously.",
+      "revId": "6dd670d2acaf7e1ca5a2597e12d6ff24b7d0c441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382dbde0_10a69361",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-08-11T05:15:48Z",
+      "side": 1,
+      "message": "Here is the same condition checked, just a few instructions ahead.",
+      "revId": "6dd670d2acaf7e1ca5a2597e12d6ff24b7d0c441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
