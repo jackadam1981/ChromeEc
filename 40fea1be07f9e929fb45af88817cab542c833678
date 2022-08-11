@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3f40511_fdf8ae48",
+        "filename": "include/power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-11T20:39:52Z",
+      "side": 1,
+      "message": "I think a `chipset_get_shutdown_reason()` API would make more sense, as it would remove the possibility that we have inconsistent state between the shutdown reason and the power_failure flag.",
+      "parentUuid": "9ab41162_1f1dce44",
+      "range": {
+        "startLine": 447,
+        "startChar": 3,
+        "endLine": 447,
+        "endChar": 16
+      },
+      "revId": "40fea1be07f9e929fb45af88817cab542c833678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41772f80_6466c3d8",
         "filename": "power/intel_x86.c",
         "patchSetId": 3
