@@ -102,6 +102,8 @@ enum power_request_t {
 
 static enum power_request_t power_request;
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 /* Forward declaration */
 static void chipset_turn_off_power_rails(void);
 
@@ -266,11 +268,17 @@ static void chipset_turn_off_power_rails(void)
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 	chipset_turn_off_power_rails();
 
 	/* clean-up internal variable */
 	power_request = POWER_REQ_NONE;
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 /*****************************************************************************/

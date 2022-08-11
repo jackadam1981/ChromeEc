@@ -20,9 +20,12 @@
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 
 	/*
 	 * Force off. Sending a reset command to the PMIC will power off
@@ -36,6 +39,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 		forcing_shutdown = 1;
 		power_button_pch_press();
 	}
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_handle_espi_reset_assert(void)

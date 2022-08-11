@@ -21,6 +21,8 @@
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 #ifdef CONFIG_POWER_S0IX
@@ -61,6 +63,7 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s()", __func__);
+	shutdown_reason = reason;
 
 	/*
 	 * Force off. Sending a reset command to the PMIC will power off
@@ -74,6 +77,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 		forcing_shutdown = 1;
 		power_button_pch_press();
 	}
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 __attribute__((weak)) void chipset_set_pmic_slp_sus_l(int level)

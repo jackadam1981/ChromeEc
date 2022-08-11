@@ -38,6 +38,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 /* Power signal list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	[SC7X80_AP_RST_ASSERTED] = {
@@ -817,11 +819,17 @@ static inline void cancel_power_button_timer(void)
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	/* Issue a request to initiate a power-off sequence */
 	power_request = POWER_REQ_OFF;
 	task_wake(TASK_ID_CHIPSET);
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_power_on(void)

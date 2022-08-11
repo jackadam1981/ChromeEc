@@ -31,6 +31,8 @@
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 #ifdef CONFIG_POWERSEQ_FAKE_CONTROL
 /* Create fake power states through forcing the SoC SLP signal sequencing */
 void power_fake_s0(void)
@@ -51,12 +53,18 @@ void power_fake_disable(void)
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s()", __func__);
+	shutdown_reason = reason;
 
 	if (!chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
 		forcing_shutdown = 1;
 		power_button_pch_press();
 		report_ap_reset(reason);
 	}
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 static void chipset_force_g3(void)

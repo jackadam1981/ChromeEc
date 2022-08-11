@@ -10,6 +10,8 @@
 #include "ap_power/ap_power_interface.h"
 #include "chipset_state_check.h"
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 int chipset_in_state(int state_mask)
 {
 	return ap_power_in_state(state_mask);
@@ -27,7 +29,13 @@ void chipset_exit_hard_off(void)
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
+	shutdown_reason = reason;
 	ap_power_force_shutdown((enum ap_power_shutdown_reason)reason);
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_reset(enum chipset_shutdown_reason reason)

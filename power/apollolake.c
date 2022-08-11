@@ -21,6 +21,8 @@
  */
 static int force_shutdown;
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 #ifdef CONFIG_POWER_S0IX
@@ -92,6 +94,7 @@ static void internal_chipset_shutdown(void)
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s: %d", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	/*
@@ -101,6 +104,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 */
 	force_shutdown = 1;
 	task_wake(TASK_ID_CHIPSET);
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 enum power_state chipset_force_g3(void)

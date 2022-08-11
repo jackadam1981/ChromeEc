@@ -126,6 +126,15 @@ void chipset_pre_init_callback(void);
  */
 void init_reset_log(void);
 
+/**
+ * Check the reason given in the last call to chipset_force_shutdown().
+ *
+ * @return Reason argument that was passed to the last call to
+ * chipset_force_shutdown(). Zero if chipset_force_shutdown() has not been
+ * called.
+ */
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void);
+
 #else /* !CONFIG_AP_POWER_CONTROL */
 
 /* When no chipset is present, assume it is always off. */
@@ -179,6 +188,11 @@ static inline void chipset_watchdog_interrupt(enum gpio_signal signal)
 
 static inline void init_reset_log(void)
 {
+}
+
+static inline enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return 0;
 }
 
 #endif /* !CONFIG_AP_POWER_CONTROL */

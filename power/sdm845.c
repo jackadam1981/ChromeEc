@@ -103,6 +103,8 @@ static timestamp_t power_off_deadline;
 /* Force AP power on (used for recovery keypress) */
 static int auto_power_on;
 
+static enum chipset_shutdown_reason shutdown_reason;
+
 enum power_request_t {
 	POWER_REQ_NONE,
 	POWER_REQ_OFF,
@@ -681,11 +683,17 @@ static uint8_t check_for_power_off_event(void)
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
+	shutdown_reason = reason;
 	report_ap_reset(reason);
 
 	/* Issue a request to initiate a power-off sequence */
 	power_request = POWER_REQ_OFF;
 	task_wake(TASK_ID_CHIPSET);
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 void chipset_reset(enum chipset_shutdown_reason reason)

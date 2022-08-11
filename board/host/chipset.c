@@ -18,6 +18,7 @@
 static int chipset_state = CHIPSET_STATE_SOFT_OFF;
 static int power_on_req;
 static int power_off_req;
+static enum chipset_shutdown_reason shutdown_reason;
 
 test_mockable void chipset_reset(enum chipset_shutdown_reason reason)
 {
@@ -32,6 +33,12 @@ test_mockable void chipset_throttle_cpu(int throttle)
 test_mockable void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	/* Do nothing */
+	shutdown_reason = reason;
+}
+
+test_mockable enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return shutdown_reason;
 }
 
 test_mockable int chipset_in_state(int state_mask)
