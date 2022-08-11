@@ -11,6 +11,7 @@ register_raw_project(
         "adc.dts",
         "fan.dts",
         "gpio.dts",
+        "host_interface.dts",
         "i2c.dts",
         "interrupts.dts",
         "pwm.dts",
