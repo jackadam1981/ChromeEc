@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c645c648_82c8df8d",
+        "filename": "docs/zephyr/zephyr_troubleshooting.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-11T07:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df6a41e_6c22d1bd",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "e8dee82f6fc49035466725a645bd68b433db5e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "924e24d7_c656acf9",
         "filename": "docs/zephyr/zephyr_troubleshooting.md",
         "patchSetId": 10
@@ -94,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba36a85_0ed3687c",
+        "filename": "docs/zephyr/zephyr_troubleshooting.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-11T07:46:02Z",
+      "side": 1,
+      "message": "Done, well, not done, dropped the whole block.",
+      "parentUuid": "6c017010_9dfa2517",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "e8dee82f6fc49035466725a645bd68b433db5e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d6bc8f2_29f62b9a",
@@ -117,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8c9e07_4db1a071",
+        "filename": "docs/zephyr/zephyr_troubleshooting.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-11T07:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6bc8f2_29f62b9a",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "e8dee82f6fc49035466725a645bd68b433db5e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "030eb033_63286326",
@@ -130,6 +202,30 @@
       "writtenOn": "2022-08-10T16:04:36Z",
       "side": 1,
       "message": "PROJECT",
+      "range": {
+        "startLine": 129,
+        "startChar": 13,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "e8dee82f6fc49035466725a645bd68b433db5e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ea3212_7670657d",
+        "filename": "docs/zephyr/zephyr_troubleshooting.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-11T07:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "030eb033_63286326",
       "range": {
         "startLine": 129,
         "startChar": 13,
@@ -176,6 +272,54 @@
       "writtenOn": "2022-08-10T16:04:36Z",
       "side": 1,
       "message": "can we use `output/zephyr-ro.elf` instead?",
+      "range": {
+        "startLine": 156,
+        "startChar": 40,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "e8dee82f6fc49035466725a645bd68b433db5e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40647b5e_fda5f30d",
+        "filename": "docs/zephyr/zephyr_troubleshooting.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-11T07:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "255cc550_504780f1",
+      "range": {
+        "startLine": 156,
+        "startChar": 34,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "e8dee82f6fc49035466725a645bd68b433db5e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc062abc_ce2695bd",
+        "filename": "docs/zephyr/zephyr_troubleshooting.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-11T07:46:02Z",
+      "side": 1,
+      "message": "oh yeah, shorter path, good idea",
+      "parentUuid": "f42dc505_e05522ae",
       "range": {
         "startLine": 156,
         "startChar": 40,
