@@ -16,6 +16,24 @@
       "message": "need review on the overall feature, but ok from the code point of view.",
       "revId": "031f42d1b6d0b6355fa07ed6e098c3de38f5890f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c13f8c_50c78eda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-08-11T19:08:47Z",
+      "side": 1,
+      "message": "The review is pending. I think we can land this on TOT and wait until the review is finished to land it in prepvt.",
+      "parentUuid": "1b5ed783_af599182",
+      "revId": "031f42d1b6d0b6355fa07ed6e098c3de38f5890f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
