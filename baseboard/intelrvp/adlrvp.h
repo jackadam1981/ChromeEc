@@ -11,6 +11,10 @@
 /* Temperature sensor */
 #define CONFIG_TEMP_SENSOR
 
+/* Set default PD state as SRC */
+#undef PD_ROLE_DEFAULT
+#define PD_ROLE_DEFAULT(port) PD_ROLE_SOURCE
+
 #include "baseboard.h"
 
 /* RVP Board ids */
