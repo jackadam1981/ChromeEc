@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b40087c_86224b05",
+        "filename": "power/icelake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-11T23:36:49Z",
+      "side": 1,
+      "message": "Why don\u0027t you put it in power/common.c or common/chipset.c (and add chipset_set_shutdown_reason)?\n\nOr have you looked at report_ap_reset? reset_logs[next_reset_log - 1].reset_cause seems to store the reason already.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 1
+      },
+      "revId": "22dab342db6b3c74c0dd842727b6499b31865957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
