@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0b58d8_5b88623b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-11T03:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1959c8f5_58e1284b",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 11
+      },
+      "revId": "54a058b24b4056a618f59d51ebcd620eb5b77166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26e9dfa8_f0c2c95e",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Perhaps we can check with the vendor about this timing.",
       "parentUuid": "c980f3ea_15e2a2b5",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 12
+      },
+      "revId": "54a058b24b4056a618f59d51ebcd620eb5b77166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556b9fdc_b05bfcbc",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-11T03:35:12Z",
+      "side": 1,
+      "message": "Right, I am checking with the vendor. Can we merge it first? We can change the delay when the timing required is provided by vendor?",
+      "parentUuid": "a6e98d46_953f4397",
       "range": {
         "startLine": 341,
         "startChar": 1,
