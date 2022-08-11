@@ -43,11 +43,13 @@ def translate_expected(status):
 
 def translate_duration(testcase):
     """Translates ZTEST execution_time to ResultDB duration"""
-    time = testcase.get("execution_time")
-    if not time:
-        return None
+    duration = None
 
-    return f"{time}ms"
+    time = testcase.get("execution_time")
+    if time:
+        duration = f"{time}ms"
+
+    return duration
 
 
 def testcase_summary(testcase):
