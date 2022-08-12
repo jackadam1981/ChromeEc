@@ -16,6 +16,23 @@
       "message": "Hi Tim/Diana\nCould you plz have a look \u0026 +2 this?\nThanks",
       "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05de9fb7_0d7e0503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-12T11:12:41Z",
+      "side": 1,
+      "message": "Hi Daina/Tim/Dai\nAm not sure on why the merge is failing here.\nzmake testall seems passing to me.\nAm i missing something in zephyr perspective in this CL?\nPlease guide me here.\nThanks,",
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
