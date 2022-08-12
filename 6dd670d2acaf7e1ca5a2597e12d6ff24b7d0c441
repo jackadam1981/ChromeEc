@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40835ab9_d8594eb4",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-08-12T08:25:46Z",
+      "side": 1,
+      "message": "Reply to b/240309969 #42,\n it still can reproduce the issue.",
+      "parentUuid": "5b8c939d_d0e9bb41",
+      "range": {
+        "startLine": 469,
+        "startChar": 2,
+        "endLine": 469,
+        "endChar": 21
+      },
+      "revId": "6dd670d2acaf7e1ca5a2597e12d6ff24b7d0c441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382dbde0_10a69361",
