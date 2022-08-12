@@ -130,12 +130,8 @@
 			enum-name = "GPIO_EN_PP5000";
 		};
 		ec_bl_disable_l {
-			/* The PMIC controls backlight enable and this pin must
-			 * be HiZ for normal operation. But the backlight can
-			 * be enabled by setting this pin low and configuring it
-			 * as an output.
-			 */
-			gpios = <&gpiob 6 GPIO_INPUT>;
+			/* enabled backlight */
+			gpios = <&gpiob 6 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_ENABLE_BACKLIGHT";
 		};
 		lid_accel_int_l {
