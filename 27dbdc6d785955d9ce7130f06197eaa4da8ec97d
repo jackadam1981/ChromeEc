@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1734090_1ea5233b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-12T20:46:04Z",
+      "side": 1,
+      "message": "Some general issues and things that need to be improved with this:\n\n* It doesn\u0027t provide source references to `cryptoc`, since we invoke `cryptoc`\u0027s Makefile to output targets to our build directory\n* We don\u0027t capture utils, tests, or other compilations\n\n\nThese can definitely be added, but are not included in this implementation.",
+      "revId": "27dbdc6d785955d9ce7130f06197eaa4da8ec97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d92832c_a640c49d",
