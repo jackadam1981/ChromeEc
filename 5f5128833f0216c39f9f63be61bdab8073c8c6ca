@@ -70,6 +70,30 @@
       },
       "revId": "5f5128833f0216c39f9f63be61bdab8073c8c6ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4561a449_76f371b1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-08-12T18:06:27Z",
+      "side": 1,
+      "message": "It seems that I needed `pd_notify_event`.\nI will test this with more chargers then send out for review.\nThanks!",
+      "parentUuid": "a6ad565f_bd0f2c79",
+      "range": {
+        "startLine": 1947,
+        "startChar": 2,
+        "endLine": 1947,
+        "endChar": 27
+      },
+      "revId": "5f5128833f0216c39f9f63be61bdab8073c8c6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
