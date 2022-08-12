@@ -15,6 +15,7 @@
 			tcpc = <&tcpc_port0>;
 			chg = <&charger>;
 			usb-muxes = <&usb_c0_bb_retimer &virtual_mux_c0>;
+			ppc = <&ppc_port0>;
 		};
 		port0-muxes {
 			virtual_mux_c0: virtual-mux-c0 {
@@ -28,6 +29,7 @@
 			bc12 = <&bc12_port1>;
 			tcpc = <&tcpc_port1>;
 			usb-muxes = <&virtual_mux_c1 &tcpci_mux_c1>;
+			ppc = <&ppc_port1>;
 		};
 		port1-muxes {
 			tcpci_mux_c1: tcpci-mux-c1 {
@@ -45,6 +47,7 @@
 			bc12 = <&bc12_port2>;
 			tcpc = <&tcpc_port2>;
 			usb-muxes = <&usb_c2_bb_retimer &virtual_mux_c2>;
+			ppc = <&ppc_port2>;
 		};
 		port2-muxes {
 			virtual_mux_c2: virtual-mux-c2 {
