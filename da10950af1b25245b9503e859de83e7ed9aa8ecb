@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dde4269_f915f7d5",
+        "filename": "zephyr/projects/herobrine/gpio_evoker.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-12T17:43:53Z",
+      "side": 1,
+      "message": "Rephase it to \"Enable EC-controlled backlight; disable it initially\", that avoids misleading.\n\nThe initial LOW setting is to \"disable\" the backlight, which is opposite to the original comment.",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "da10950af1b25245b9503e859de83e7ed9aa8ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
