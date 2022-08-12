@@ -22,6 +22,30 @@
       },
       "revId": "27dbdc6d785955d9ce7130f06197eaa4da8ec97d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d5261ba_8236a020",
+        "filename": "Makefile.ide",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-12T16:27:29Z",
+      "side": 1,
+      "message": "Confirmed that #1 works in combination with the existing Python script.\n\nHere is how I changed it:\n\n```\n\"directory\": \"$(CROS_WORKON_SRCROOT)/src/platform/ec\"\n```",
+      "parentUuid": "6d92832c_a640c49d",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "27dbdc6d785955d9ce7130f06197eaa4da8ec97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
