@@ -121,6 +121,16 @@ static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 		break;
 	case TYPEC_CONTROL_COMMAND_CLEAR_EVENTS:
 		pd_clear_events(p->port, p->clear_events_mask);
+		/*
+		 * AP clears the previously sent HARD_RESET event, so AP cleared
+		 * the USB MUX status as well, but at the EC side, the mux is
+		 * re-configured after EC sending the HARD_RESET. In this case,
+		 * we should notify AP to update the current mux status.
+		 */
+		if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
+		    (p->clear_events_mask & PD_STATUS_EVENT_HARD_RESET) &&
+		    (usb_mux_get(p->port) != USB_PD_MUX_NONE))
+			host_set_single_event(EC_HOST_EVENT_USB_MUX);
 		break;
 	case TYPEC_CONTROL_COMMAND_ENTER_MODE:
 		return pd_request_enter_mode(p->port, p->mode_to_enter);
