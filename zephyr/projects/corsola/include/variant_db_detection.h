@@ -15,6 +15,9 @@ enum corsola_db_type {
 	CORSOLA_DB_COUNT,
 };
 
+/* a flag for indicating the tasks are inited. */
+extern bool tasks_inited;
+
 #ifdef CONFIG_VARIANT_CORSOLA_DB_DETECTION
 /*
  * Get the connected daughterboard type.

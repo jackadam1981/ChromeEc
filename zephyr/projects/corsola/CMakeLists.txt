@@ -48,7 +48,7 @@ elseif(DEFINED CONFIG_BOARD_STEELIX)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 				     "src/kingler/usb_pd_policy.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
-				     "src/kingler/usbc_config.c")
+				     "src/kingler/usbc_config_steelix.c")
 
 elseif(DEFINED CONFIG_BOARD_TENTACRUEL)
 	project(tentacruel)

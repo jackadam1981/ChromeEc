@@ -40,7 +40,7 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
 /* a flag for indicating the tasks are inited. */
-static bool tasks_inited;
+bool tasks_inited;
 
 /* Baseboard */
 static void baseboard_init(void)
@@ -50,19 +50,6 @@ static void baseboard_init(void)
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_PRE_DEFAULT);
-
-__override uint8_t board_get_usb_pd_port_count(void)
-{
-	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
-		if (tasks_inited) {
-			return CONFIG_USB_PD_PORT_MAX_COUNT;
-		} else {
-			return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
-		}
-	}
-
-	return CONFIG_USB_PD_PORT_MAX_COUNT;
-}
 
 /* USB-A */
 void usb_a0_interrupt(enum gpio_signal signal)

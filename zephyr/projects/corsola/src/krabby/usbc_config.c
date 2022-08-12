@@ -172,3 +172,16 @@ enum adc_channel board_get_vbus_adc(int port)
 	return ADC_VBUS_C0;
 }
 #endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
+		if (tasks_inited) {
+			return CONFIG_USB_PD_PORT_MAX_COUNT;
+		} else {
+			return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+		}
+	}
+
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
