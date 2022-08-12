@@ -21,6 +21,8 @@ struct pwm_t {
 extern const struct pwm_t pwm_channels[];
 void pwm_config(enum pwm_channel ch);
 
+void pwm_set_hb(enum pwm_channel ch, int enabled);
+
 /* Npcx PWM maximum duty cycle value */
 #define NPCX_PWM_MAX_RAW_DUTY (UINT16_MAX - 1)
 

@@ -961,11 +961,25 @@ enum PM_CHANNEL_T { PM_CHAN_1, PM_CHAN_2, PM_CHAN_3, PM_CHAN_4 };
 #define NPCX_DCR(n) REG16(NPCX_PWM_BASE_ADDR(n) + 0x006)
 #define NPCX_PWMCTLEX(n) REG8(NPCX_PWM_BASE_ADDR(n) + 0x00C)
 
+/* PWM Registers, Bank 1 */
+
+#define NPCX_CTR_RS(n)		REG16(NPCX_PWM_BASE_ADDR(n) + 0x002)
+#define NPCX_N_STEP_RS(n)	REG8 (NPCX_PWM_BASE_ADDR(n) + 0x005)
+#define NPCX_MAX_DC_RS(n)	REG16(NPCX_PWM_BASE_ADDR(n) + 0x006)
+#define NPCX_CTR_FL(n)		REG16(NPCX_PWM_BASE_ADDR(n) + 0x008)
+#define NPCX_MAX_DC_FL(n)	REG16(NPCX_PWM_BASE_ADDR(n) + 0x00A)
+#define NPCX_N_STEP_FL(n)	REG8 (NPCX_PWM_BASE_ADDR(n) + 0x00D)
+#define NPCX_EXT_ON(n)		REG8 (NPCX_PWM_BASE_ADDR(n) + 0x00E)
+#define NPCX_EXT_OFF(n)		REG8 (NPCX_PWM_BASE_ADDR(n) + 0x00F)
+#define NPCX_MIN_DC_RSFL(n)	REG16(NPCX_PWM_BASE_ADDR(n) + 0x010)
+
 /* PWM register fields */
 #define NPCX_PWMCTL_INVP 0
 #define NPCX_PWMCTL_CKSEL 1
 #define NPCX_PWMCTL_HB_DC_CTL_FIELD FIELD(2, 2)
+#define _NPCX_PWMCTL_HBNK_SEL 6
 #define NPCX_PWMCTL_PWR 7
+
 #define NPCX_PWMCTLEX_FCK_SEL_FIELD FIELD(4, 2)
 #define NPCX_PWMCTLEX_OD_OUT 7
 /******************************************************************************/

@@ -103,7 +103,7 @@ void pwm_enable(enum pwm_channel ch, int enabled)
 {
 	int mdl = pwm_channels[ch].channel;
 
-	/* Start or close PWM module */
+	/* Start or stop PWM module */
 	UPDATE_BIT(NPCX_PWMCTL(mdl), NPCX_PWMCTL_PWR, enabled);
 }
 
@@ -192,6 +192,62 @@ uint16_t pwm_get_raw_duty(enum pwm_channel ch)
 					 pwm_res[ch]);
 }
 
+void pwm_set_hb(enum pwm_channel ch, int enabled)
+{
+	int mdl = pwm_channels[ch].channel;
+
+	pwm_enable(ch, 0);
+
+	NPCX_PRSC(mdl) = 0;
+
+	/* switch to bank 0 */
+	CLEAR_BIT(NPCX_PWMCTL(mdl), _NPCX_PWMCTL_HBNK_SEL);
+
+	/* must be set in bank 0 */
+	SET_FIELD(NPCX_PWMCTL(mdl),
+		  NPCX_PWMCTL_HB_DC_CTL_FIELD,
+		  NPCX_PWM_HBM_25);
+
+	/* select low freq clock domain */
+	SET_BIT(NPCX_PWMCTL(mdl), NPCX_PWMCTL_CKSEL);
+
+	/*SET_FIELD(NPCX_PWMCTLEX(mdl),
+		  NPCX_PWMCTLEX_FCK_SEL_FIELD,
+		  NPCX_PWM_CLOCK_APB2_LFCLK);*/
+
+	/* switch to bank 1 */
+	SET_BIT(NPCX_PWMCTL(mdl), _NPCX_PWMCTL_HBNK_SEL);
+
+	/* cycle time for rise duty cycle */
+	NPCX_CTR_RS(mdl) = 530; // 1.5s
+
+	/* rise steps */
+	NPCX_N_STEP_RS(mdl) = 23;
+
+	/* max duty cycle rise phase */
+	NPCX_MAX_DC_RS(mdl) = 530; //0x0fff;
+
+	/* fall steps */
+	NPCX_CTR_FL(mdl) = 622; // 2.0 s 0x0fff;
+
+	/* max duty cycle fall phase */
+	NPCX_MAX_DC_FL(mdl) = 622; // 0x0fff;
+
+	/* fall steps */
+	NPCX_N_STEP_FL(mdl) = 27; // 100;
+
+	NPCX_EXT_ON(mdl) = 20; // 0.5s
+	NPCX_EXT_OFF(mdl) = 80; // 2.0 s
+
+	/* min duty cycle */
+	NPCX_MIN_DC_RSFL(mdl) = 0x0000;
+
+	/* switch back to bank 0 */
+	CLEAR_BIT(NPCX_PWMCTL(mdl), _NPCX_PWMCTL_HBNK_SEL);
+
+	pwm_enable(ch, 1);
+}
+
 /**
  * PWM configuration.
  *
@@ -204,7 +260,7 @@ void pwm_config(enum pwm_channel ch)
 	/* Disable PWM for module configuration */
 	pwm_enable(ch, 0);
 
-	/* Set PWM heartbeat mode is no heartbeat */
+	/* Set PWM heartbeat mode to no heartbeat */
 	SET_FIELD(NPCX_PWMCTL(mdl), NPCX_PWMCTL_HB_DC_CTL_FIELD,
 		  NPCX_PWM_HBM_NORMAL);
 

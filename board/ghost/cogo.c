@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "pwm.h"
+#include "pwm_chip.h"
 #include "task.h"
 #include "timer.h"
 
@@ -25,7 +26,7 @@
  * cosine_array.py --min 13 --max 255 --points 240 --gamma 1.5
  */
 
-static const uint8_t v_cosine_240[] = {
+__maybe_unused static const uint8_t v_cosine_240[] = {
 	[  0] = 255, [  1] = 254, [  2] = 254, [  3] = 254,
 	[  4] = 254, [  5] = 253, [  6] = 252, [  7] = 251,
 	[  8] = 251, [  9] = 250, [ 10] = 248, [ 11] = 247,
@@ -94,7 +95,7 @@ static const uint8_t v_cosine_240[] = {
  * cosine_array.py --min 0 --max 255 --points 240 --gamma 1.5 --phase 180
  */
 
-static const uint8_t v_ramp_up_120[] = {
+__maybe_unused static const uint8_t v_ramp_up_120[] = {
 	[  0] =   0, [  1] =   0, [  2] =   0, [  3] =   0,
 	[  4] =   0, [  5] =   0, [  6] =   0, [  7] =   0,
 	[  8] =   0, [  9] =   0, [ 10] =   0, [ 11] =   0,
@@ -127,6 +128,7 @@ static const uint8_t v_ramp_up_120[] = {
 	[116] = 253, [117] = 254, [118] = 254, [119] = 254,
 };
 
+#if 0
 void cogo_task(void *u)
 {
 	const uint8_t *anim_data;
@@ -177,3 +179,16 @@ void cogo_task(void *u)
 		step = (step + 1) % anim_points;
 	}
 }
+#else
+void cogo_task(void *u)
+{
+	pwm_set_duty(PWM_CH_COGO, 25);
+
+
+	// pwm_enable(PWM_CH_COGO, 1);
+	pwm_set_hb(PWM_CH_COGO, 1);
+
+
+	gpio_set_level(GPIO_GLOGO_EN, 1);
+}
+#endif
