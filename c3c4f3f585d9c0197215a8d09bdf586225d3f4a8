@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d106529_6a1c6e90",
+        "filename": "zephyr/projects/brya/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-12T09:51:45Z",
+      "side": 1,
+      "message": "It is not related to this change, but I would like to point out that the current implementation causes the warning about duplicate of the I2C address. I\u0027m not sure how we should handle this, since the `nuvoton,nct38xx-gpio` driver is already in Zephyr. I think the ultimate solution would be something like this:\n```\n\ttcpc_port0: nct38xx@70 {\n\t\tcompatible \u003d \"nuvoton,nct38xx\";\n\t\treg \u003d \u003c0x70\u003e;\n\t\t...\n\n        \tnct3808_0_P1: nct3808_0_P1 {\n\t\t\tcompatible \u003d \"nuvoton,nct38xx-gpio-port\";\n\t        \t...\n\t        \tioex_port1: gpio@0 {\n\t\t        \tcompatible \u003d \"nuvoton,nct38xx-gpio-port\";\n\t\t\t        reg \u003d \u003c0x0\u003e;\n\t\t\t        ...\n\t\t\t};\n\t\t};\n        \ttcpc: tcpc-port0 {\n\t\t\tcompatible \u003d \"nuvoton,nct38xx-tcpc\";\n\t        \t...\n\t\t};\n\n\t};\n```\nBut at the moment I don\u0027t know what to do.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "c3c4f3f585d9c0197215a8d09bdf586225d3f4a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
