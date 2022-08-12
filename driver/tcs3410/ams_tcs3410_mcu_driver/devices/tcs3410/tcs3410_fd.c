@@ -105,11 +105,12 @@ static int get_std_dev(uint16_t *buff, int mean, int size)
     return(get_sqrt(sum));
 }
 
+static uint16_t    input_fft[FFT_MAX_SAMPLE_SIZE];
+static uint16_t    output_fft[FFT_MAX_SAMPLE_SIZE];
+
 ams_errno_t process_fd_data(volatile ams_current_state_t *pcurr_state, uint8_t *pbuffer, uint32_t len)
 {
     ams_errno_t ret_val = AMS_SUCCESS;
-    uint16_t    input_fft[FFT_MAX_SAMPLE_SIZE];
-    uint16_t    output_fft[FFT_MAX_SAMPLE_SIZE];
     int         packet_size[] = {FD_PACKET_COMPRESSED_SZ};
     uint16_t    max_index = 0;
     int32_t     mean, std_dev;
