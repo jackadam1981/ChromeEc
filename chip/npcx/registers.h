@@ -61,7 +61,7 @@
 #define DEBUG_TMR 0
 #define DEBUG_WDG 0
 #define DEBUG_FAN 0
-#define DEBUG_PWM 0
+#define DEBUG_PWM 1
 #define DEBUG_SPI 0
 #define DEBUG_FLH 0
 #define DEBUG_PECI 0

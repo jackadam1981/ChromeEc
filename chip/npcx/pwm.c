@@ -148,7 +148,7 @@ void pwm_set_raw_duty(enum pwm_channel ch, uint16_t duty)
 	UPDATE_BIT(NPCX_PWMCTL(mdl), NPCX_PWMCTL_INVP,
 		   (pwm_channels[ch].flags & PWM_CONFIG_ACTIVE_LOW));
 
-	CPRINTS("initial freq=0x%x", pwm_channels[ch].freq);
+	CPRINTS("initial freq=%d", pwm_channels[ch].freq);
 	CPRINTS("duty_cycle_cnt=%d", duty);
 
 	/* duty ranges from 0 - 0xffff, so scale down to 0 - pwm_res[ch] */
