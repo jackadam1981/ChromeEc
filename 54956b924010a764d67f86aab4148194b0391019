@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6cdedd7_500dfbd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-12T22:16:01Z",
+      "side": 1,
+      "message": "Today I tried again and for some reason now I could not replicate the failure anymore.\n\nThat is, even after rolling back the patch under review, I was able to consistently flash the icetower. Until a few days ago, this operation was failing 100% of the times in my environment, so I am not sure what changed.",
+      "parentUuid": "7baf0b57_ae1957a2",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "54956b924010a764d67f86aab4148194b0391019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f52e31b0_e96c7cc1",
         "filename": "util/flash_ec",
         "patchSetId": 3
