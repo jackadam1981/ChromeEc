@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc221dd1_ef18f357",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-12T08:54:57Z",
+      "side": 1,
+      "message": "Do you mean declare cps8xxx_read32() as a function pointer and point it to cps8100_read32() or cps8200_read32() depends on probe result?",
+      "parentUuid": "3a1c91a6_7d523e5d",
+      "range": {
+        "startLine": 290,
+        "startChar": 5,
+        "endLine": 290,
+        "endChar": 33
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8a015d6_ba4944c7",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 4
@@ -83,6 +107,30 @@
       "writtenOn": "2022-08-12T01:37:08Z",
       "side": 1,
       "message": "Do you need to call this every time or you can skip it for back-to-back transfers?",
+      "range": {
+        "startLine": 303,
+        "startChar": 6,
+        "endLine": 303,
+        "endChar": 24
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8506e96d_7e0ffc92",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-12T08:54:57Z",
+      "side": 1,
+      "message": "It is needed according to my experiment, I am checking with vendor.",
+      "parentUuid": "a8a015d6_ba4944c7",
       "range": {
         "startLine": 303,
         "startChar": 6,
