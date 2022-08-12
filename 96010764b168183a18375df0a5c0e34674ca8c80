@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd33b7f_f9993fe6",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T01:37:08Z",
+      "side": 1,
+      "message": "uint16_t",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 10
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d6d176_5d71fba8",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T01:37:08Z",
+      "side": 1,
+      "message": "This should be in a const buf[8].",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 44
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1c91a6_7d523e5d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T01:37:08Z",
+      "side": 1,
+      "message": "I think it\u0027s more rational to use function pointers (and set them in cps8x00_probe).",
+      "range": {
+        "startLine": 290,
+        "startChar": 5,
+        "endLine": 290,
+        "endChar": 33
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a015d6_ba4944c7",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T01:37:08Z",
+      "side": 1,
+      "message": "Do you need to call this every time or you can skip it for back-to-back transfers?",
+      "range": {
+        "startLine": 303,
+        "startChar": 6,
+        "endLine": 303,
+        "endChar": 24
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd17f8d_9963d08b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T01:37:08Z",
+      "side": 1,
+      "message": "Why don\u0027t you probe it in cps8100_init? The chip is soldered on the board.",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 345,
+        "endChar": 35
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
