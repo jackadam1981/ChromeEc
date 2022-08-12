@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d92832c_a640c49d",
+        "filename": "Makefile.ide",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-12T16:16:22Z",
+      "side": 1,
+      "message": "When I started to test this, I noticed the path here was incomplete:\n\n```\ndirectory: /home/agrandi/chromiumos/ec\n```\n\nSo I updated the Makefile with:\n\n```\n\"$(EXTERNAL_TRUNK_PATH)/src/platform/ec\n```\n\nHowever, later I noticed that some of the `-I` path in the arguments were still including references to paths inside `/mnt/`, for example:\n\n```\n            \"-I/mnt/host/source/src/platform/ec/builtin\",\n            \"-I/mnt/host/source/src/third_party/cryptoc/include\",\n```\n\nI have then decided to try run the Python script from the CrOS IDE team to convert the paths:\n\n```\n(chroot)\ncd ~/chromiumos/chromite/ide_tooling/scripts \npython compdb_no_chroot.py ${EXTERNAL_TRUNK_PATH} \u003c ~/chromiumos/src/platform/ec/build/bloonchipper/RW/compile_commands.json \u003e ~/chromiumos/src/platform/ec/compile_commands.json\n```\n\nWhen I ran this, the `directory` path was updated incorrectly:\n\n```\n\"directory\": \"/home/agrandi/chromiumos/chroot/home/agrandi/chromiumos/src/platform/ec\",\n\n```\n\nI think there are two ways to solve this:\n\n  1.  We specify the `directory` path inside the `chroot` (e.g. `        \"directory\": \"/mnt/host/source/src/platform/ec\"`) and let the Python script take care of all the conversions.\n\n  2.  We transform the `-I` paths here so we never need to use the Python script. Note that the Python script also removes a couple of compiler flags that are only available inside the `chroot`: `\"-mno-sched-prolog\"` and `\"-fconserve-stack\"`. We need to replicate this as well.\n\nAny preference? Or other ideas?\n\nI\u0027ll try to prototype #1 since it\u0027s easier to implement and post the results here.",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "27dbdc6d785955d9ce7130f06197eaa4da8ec97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
