@@ -22,6 +22,30 @@
       },
       "revId": "22dab342db6b3c74c0dd842727b6499b31865957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93f298cd_46ac4426",
+        "filename": "power/icelake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-12T00:29:16Z",
+      "side": 1,
+      "message": "Thank you, this simplified the change significantly.",
+      "parentUuid": "7b40087c_86224b05",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 1
+      },
+      "revId": "22dab342db6b3c74c0dd842727b6499b31865957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
