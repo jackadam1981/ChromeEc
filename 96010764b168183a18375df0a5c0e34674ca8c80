@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebb96ce_040a5d30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T21:11:39Z",
+      "side": 1,
+      "message": "Waiting for CPS\u0027s responses on a few open questions.",
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dd33b7f_f9993fe6",
@@ -96,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4966bb05_85b3ff0c",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T21:11:39Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "fc221dd1_ef18f357",
+      "range": {
+        "startLine": 290,
+        "startChar": 5,
+        "endLine": 290,
+        "endChar": 33
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8a015d6_ba4944c7",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 4
@@ -178,6 +219,30 @@
       "side": 1,
       "message": "Zhuohao also suggested the same. We have a discussion here: \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3819444/1..4/driver/wpc/cps8100.c#b391\n\nThe thing is cps8100_init() is not the first function called by peripheral_charger driver, but we need it be probed at the beginning, so we probe here.",
       "parentUuid": "fbd17f8d_9963d08b",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 345,
+        "endChar": 35
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b7b7d4_8b668055",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T21:11:39Z",
+      "side": 1,
+      "message": "Thanks for clarification.",
+      "parentUuid": "2f437bae_136cc481",
       "range": {
         "startLine": 345,
         "startChar": 1,
