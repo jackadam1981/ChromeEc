@@ -16,6 +16,24 @@
       "message": "Hi Won,\n\nDo you think you could also test this CL with a USB PD 2.0 charger that is known to accept DR_Swap and support DiscoverIdentity? \n\nI have an old 2015 Google 60W charger, codenamed \"Zinger\" which behaves like that.\n\nWe should be able to discover its identity reliably as well.\n\nI can get this to you early next week at the office, if that\u0027s ok.",
       "revId": "1fdd98c161cf0233b4192da2423f2d513c595cd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cb899b_af0fd41a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-08-12T21:39:16Z",
+      "side": 1,
+      "message": "Hey Benson,\n\nSure, I will be working from home next week before travelling, but I can stop by the office on Tuesday morning to test with Zinger.",
+      "parentUuid": "b7805bd5_9033cc37",
+      "revId": "1fdd98c161cf0233b4192da2423f2d513c595cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
