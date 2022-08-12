@@ -24,9 +24,9 @@ static int calculate_fft(uint16_t *in, uint16_t *out, uint16_t fd_nr_samples)
 {
     int ret = 0;
 
-    if ( ams_rfft((int16_t *)in, fd_nr_samples))
+    if ( ams_rfft(in, fd_nr_samples))
     {
-        ams_get_magnitude((int16_t *)in, (uint16_t *)out, fd_nr_samples/2);
+        ams_get_magnitude(in, out, fd_nr_samples/2);
         ret =  (fd_nr_samples/2);
     }
     else
@@ -105,11 +105,16 @@ static int get_std_dev(uint16_t *buff, int mean, int size)
     return(get_sqrt(sum));
 }
 
+// FFT data are 16 bit samples, but in reverse_bit, we treat the data as 32 bits.
+// Be sure the data is aligned.
+static uint32_t    input_fft_aligned[FFT_MAX_SAMPLE_SIZE / 2];
+static uint32_t    output_fft_aligned[FFT_MAX_SAMPLE_SIZE / 2];
+#define input_fft ((uint16_t*) input_fft_aligned)
+#define output_fft ((uint16_t*) output_fft_aligned)
+
 ams_errno_t process_fd_data(volatile ams_current_state_t *pcurr_state, uint8_t *pbuffer, uint32_t len)
 {
     ams_errno_t ret_val = AMS_SUCCESS;
-    uint16_t    input_fft[FFT_MAX_SAMPLE_SIZE];
-    uint16_t    output_fft[FFT_MAX_SAMPLE_SIZE];
     int         packet_size[] = {FD_PACKET_COMPRESSED_SZ};
     uint16_t    max_index = 0;
     int32_t     mean, std_dev;
