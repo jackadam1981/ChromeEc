@@ -38,6 +38,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b8c939d_d0e9bb41",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T01:19:20Z",
+      "side": 1,
+      "message": "Instead of the proposed fix (patchset #2), what happens if you guard this call by to_host_mutex?",
+      "range": {
+        "startLine": 469,
+        "startChar": 2,
+        "endLine": 469,
+        "endChar": 21
+      },
+      "revId": "6dd670d2acaf7e1ca5a2597e12d6ff24b7d0c441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "382dbde0_10a69361",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 2
