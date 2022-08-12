@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5a935d_e552d841",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-08-12T01:52:48Z",
+      "side": 1,
+      "message": "Can we make coreboot-sdk to include library built with the flags -mabi\u003dilp32f -march\u003drv32iafc? (in opt/coreboot-sdk/lib/gcc/riscv64-elf/11.2.0/)\n\nIf coreboot-sdk can support this library, we would be able to enable the \u0027F\u0027 extension to use hardware floating point.",
+      "revId": "19e7ea54e9add9a546de2a299308064552d7d1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
