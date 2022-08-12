@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f69a6fd_b3b4482a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-12T22:32:00Z",
+      "side": 1,
+      "message": "I need to change the builder to add -p native_posix to the non-coverage build, because these tests also run in qemu, and we don\u0027t have that installed, so it needs to be excluded.",
+      "revId": "6b8ef94116d5f2ae173c980cacf43845e4b4fec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
