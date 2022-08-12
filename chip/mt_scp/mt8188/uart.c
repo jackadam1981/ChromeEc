@@ -6,6 +6,7 @@
 /* SCP UART module for MT8195 specific */
 
 #include "uart_regs.h"
+#include "link_defs.h"
 
 /*
  * UARTN == 0, SCP UART0
@@ -14,8 +15,12 @@
  */
 #define UARTN CONFIG_UART_CONSOLE
 
+__SECTION(dramnc_bss) static volatile int dramnc_counter[32];
+__SECTION(dramnc_data) static volatile int dramnc_data[] = {1,2,3};
+
 void uart_init_pinmux(void)
 {
+	(void) dramnc_counter[0];
 #if UARTN == 0
 	SCP_UART_CK_SEL |= UART0_CK_SEL_VAL(UART_CK_SEL_26M);
 	SCP_SET_CLK_CG |= CG_UART0_MCLK | CG_UART0_BCLK | CG_UART0_RST;
