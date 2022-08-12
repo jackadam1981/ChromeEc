@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c6c35f_fe5acc2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-12T02:14:46Z",
+      "side": 1,
+      "message": "So the unit test is actually failing. Try\n\ncd .../src/platform/ec\n./twister -T zephyr/test/ap_power\n\nAnd you will see the failure.",
+      "revId": "f6f47c234063b7186923db7300f54cb528ce0449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
