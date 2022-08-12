@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf7c2a2_a09693c1",
+        "filename": "common/chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T20:52:02Z",
+      "side": 1,
+      "message": "(As I pointed out,) this already stores what you need. So, you wouldn\u0027t even need last_shutdown_reason, I think. Have you tried?",
+      "range": {
+        "startLine": 90,
+        "startChar": 28,
+        "endLine": 90,
+        "endChar": 39
+      },
+      "revId": "c0ca4ac5652930780074efb75321c0a45afa5281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8aaf170_1bfea499",
+        "filename": "common/chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T20:52:02Z",
+      "side": 1,
+      "message": "This can be just reset_logs[next_reset_log - 1].reset_cause (with boundary check for \u0027next_reset_log -1\u0027).",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "c0ca4ac5652930780074efb75321c0a45afa5281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
