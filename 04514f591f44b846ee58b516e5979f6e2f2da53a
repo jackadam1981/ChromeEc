@@ -16,6 +16,24 @@
       "message": "Don\u0027t you want to return after this?",
       "revId": "04514f591f44b846ee58b516e5979f6e2f2da53a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0196b77_212a2a9b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-08-12T20:11:40Z",
+      "side": 1,
+      "message": "It seems that returning here affects cable discovery so `/sys/class/typec/portX-cable` is not created at all",
+      "parentUuid": "00354055_277301ee",
+      "revId": "04514f591f44b846ee58b516e5979f6e2f2da53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
