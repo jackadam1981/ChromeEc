@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b647c725_7c6b2308",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1942,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2022-08-12T20:39:10Z",
+      "side": 1,
+      "message": "Again, I believe the issue is that PD 2.0 allows only the DFP to initiate a DiscoverIdentity, and that the partner may reject a DR_Swap.",
+      "range": {
+        "startLine": 1942,
+        "startChar": 48,
+        "endLine": 1942,
+        "endChar": 68
+      },
+      "revId": "04514f591f44b846ee58b516e5979f6e2f2da53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00354055_277301ee",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
