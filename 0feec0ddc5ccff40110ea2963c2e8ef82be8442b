@@ -22,6 +22,30 @@
       },
       "revId": "0feec0ddc5ccff40110ea2963c2e8ef82be8442b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50880aff_8f040d14",
+        "filename": "board/moli/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-08-12T01:58:31Z",
+      "side": 1,
+      "message": "We consider that DPTF have policy to limit PLx to limit system wattage and our fan curve also increase one more step to prevent system over-heat.",
+      "parentUuid": "be40ffd2_381f0cbf",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "0feec0ddc5ccff40110ea2963c2e8ef82be8442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
