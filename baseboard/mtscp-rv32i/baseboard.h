@@ -102,9 +102,9 @@
 /* Shared memory address in AP physical address space. */
 #define CONFIG_DRAM_BASE_LOAD 0x50000000
 /* size of (2) */
-#define DRAM_NC_SIZE 0
+#define DRAM_NC_SIZE 0x8000 /* 32K */
 /* size of (3) */
-#define CONFIG_PANIC_DRAM_SIZE 0
+#define CONFIG_PANIC_DRAM_SIZE 0x1000 /* 4K */
 /* size of (4) */
 #define KERNEL_SIZE 0xF00000
 /* DRAM total size for (5) */
