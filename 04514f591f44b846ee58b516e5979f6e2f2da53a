@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c13214d_db83d039",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2022-08-12T20:31:45Z",
+      "side": 1,
+      "message": "I think this description needs to be fixed a little bit.\n\nIn PD 2.0, it\u0027s valid for the UFP to issue a DR_Swap because it prefers to be a DFP. There are chargers (in particular, a Google 60W charger from 2015) that are USB PD 2.0, and will Accept a DR_Swap issued by the Sink/UFP (Chromebook).\n\n\nThe real issue here is that in USB PD 2.0, only the DFP is allowed to issue DiscoverIdentity, and a partner\u0027s REJECT to a DR_Swap is allowed too.\n\nI would edit this description as follows:\n\n\"In USB PD 2.0, Discover Identity can only be initiated by the DFP. When a charger that uses USB PD 2.0 is hotplugged, USB-C port\u0027s attempt to swap from UFP to DFP may be rejected.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "04514f591f44b846ee58b516e5979f6e2f2da53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00354055_277301ee",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
