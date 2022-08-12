@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a443f18b_fc19fcd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-12T18:10:12Z",
+      "side": 1,
+      "message": "It\u0027s worth mentioning that this \"Atlas\" is not actually an atlas. is there a ChromeOS code name you can use for this device instead?",
+      "range": {
+        "startLine": 23,
+        "startChar": 41,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "14c311d917a31a58c9d9e833dcceea2e0e7db3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d24326_8261ecd0",
+        "filename": "include/chipset.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-12T18:10:12Z",
+      "side": 1,
+      "message": "`CHIPSET_RESET_UNKNOWN`",
+      "range": {
+        "startLine": 289,
+        "startChar": 8,
+        "endLine": 289,
+        "endChar": 9
+      },
+      "revId": "14c311d917a31a58c9d9e833dcceea2e0e7db3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
