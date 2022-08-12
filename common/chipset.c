@@ -61,6 +61,7 @@ static uint32_t ap_resets_since_ec_boot;
 /* keep reset_logs size a power of 2 */
 static struct ap_reset_log_entry reset_logs[4] __preserved_logs(reset_logs);
 static int reset_log_checksum __preserved_logs(reset_log_checksum);
+static enum chipset_shutdown_reason last_shutdown_reason;
 
 /* Calculate reset log checksum */
 static int calc_reset_log_checksum(void)
@@ -83,6 +84,7 @@ void report_ap_reset(enum chipset_shutdown_reason reason)
 {
 	timestamp_t now = get_time();
 	uint32_t now_ms = (uint32_t)(now.val / MSEC);
+	last_shutdown_reason = reason;
 
 	mutex_lock(&reset_log_mutex);
 	reset_logs[next_reset_log].reset_cause = reason;
@@ -116,6 +118,11 @@ get_ap_reset_stats(struct ap_reset_log_entry *reset_log_entries,
 	mutex_unlock(&reset_log_mutex);
 
 	return EC_SUCCESS;
+}
+
+enum chipset_shutdown_reason chipset_get_shutdown_reason(void)
+{
+	return last_shutdown_reason;
 }
 
 #endif /* !CONFIG_AP_RESET_LOG */
