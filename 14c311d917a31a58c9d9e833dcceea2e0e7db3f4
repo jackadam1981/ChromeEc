@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe97cba_fb07b1d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-12T18:32:26Z",
+      "side": 1,
+      "message": "The code name for the device is actually Atlas, although the Chrome OS board used in the device has a different name. See go/core-devices-zoo for details. I\u0027ve added both names here.",
+      "parentUuid": "a443f18b_fc19fcd2",
+      "range": {
+        "startLine": 23,
+        "startChar": 41,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "14c311d917a31a58c9d9e833dcceea2e0e7db3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99d24326_8261ecd0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-12T18:10:12Z",
       "side": 1,
       "message": "`CHIPSET_RESET_UNKNOWN`",
+      "range": {
+        "startLine": 289,
+        "startChar": 8,
+        "endLine": 289,
+        "endChar": 9
+      },
+      "revId": "14c311d917a31a58c9d9e833dcceea2e0e7db3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d55af0d_2b95798c",
+        "filename": "include/chipset.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-12T18:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d24326_8261ecd0",
       "range": {
         "startLine": 289,
         "startChar": 8,
