@@ -16,6 +16,24 @@
       "message": "Will this break existing tentacruel devices?\n\nOur ppc driver allows second source, maybe we can add rt1739 as an alternate chip.\n(see zephyr/projects/herobrine/usbc_herobrine.dts for example).\n\n...and forgot bc12 lol",
       "revId": "3812c0b1f74c7e49664d3fd13462dfa2b4d322e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c135e305_d1e9c71b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-08-12T03:00:19Z",
+      "side": 1,
+      "message": "Right, patchset 3 breaks existing tentacruel devices. In patchset 6, I updated the ppc driver to allow second source.\nI think the pin assign should be updated so that it is compatible with different board version.",
+      "parentUuid": "0e025f6d_05ab5e97",
+      "revId": "3812c0b1f74c7e49664d3fd13462dfa2b4d322e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
