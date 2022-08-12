@@ -93,6 +93,30 @@
       },
       "revId": "c0ca4ac5652930780074efb75321c0a45afa5281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be5f4f47_f8e1335f",
+        "filename": "common/chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-12T23:57:08Z",
+      "side": 1,
+      "message": "How about\n\n        enum chipset_shutdown_reason reason \u003d CHIPSET_RESET_UNKNOWN;\n\n        mutex_lock(\u0026reset_log_mutex);\n        if (ap_resets_since_ec_boot !\u003d 0) {\n                int i \u003d (next_reset_log \u003d\u003d 0) ?\n                        ARRAY_SIZE(reset_logs) - 1 : next_reset_log - 1;\n                reason \u003d reset_logs[i].reset_cause;\n        }\n        mutex_unlock(\u0026reset_log_mutex);\n        \n        return reason;\n\n?",
+      "parentUuid": "9368d244_338f5e23",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "c0ca4ac5652930780074efb75321c0a45afa5281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
