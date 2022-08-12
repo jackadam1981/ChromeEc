@@ -1500,6 +1500,16 @@ int tcpci_tcpm_init(int port)
 	/* Cache our device capabilities for future reference */
 	tcpc_read16(port, TCPC_REG_DEV_CAP_1, &dev_cap_1[port]);
 
+	{
+		int ret = i2c_write8(2, 0x5d, 0, 0xe);
+		if (ret) {
+			cprints(CC_I2C, "J2M: %s Failed to set debug port 2, %d\n",
+				__func__, ret);
+		} else
+			cprints(CC_I2C, "J2M: %s debug port 2 configured\n", __func__);
+	}
+
+
 	return EC_SUCCESS;
 }
 
