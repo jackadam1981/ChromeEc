@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3effdbee_dcb342de",
+        "filename": "common/chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-12T22:41:32Z",
+      "side": 1,
+      "message": "Yes, I tried it but the code was complicated. So I thought it was a better to simplify the code by adding the extra variable, even if it is redundant. Let me know your thoughts.",
+      "parentUuid": "fdf7c2a2_a09693c1",
+      "range": {
+        "startLine": 90,
+        "startChar": 28,
+        "endLine": 90,
+        "endChar": 39
+      },
+      "revId": "c0ca4ac5652930780074efb75321c0a45afa5281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8aaf170_1bfea499",
         "filename": "common/chipset.c",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-12T20:52:02Z",
       "side": 1,
       "message": "This can be just reset_logs[next_reset_log - 1].reset_cause (with boundary check for \u0027next_reset_log -1\u0027).",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "c0ca4ac5652930780074efb75321c0a45afa5281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9368d244_338f5e23",
+        "filename": "common/chipset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-12T22:41:32Z",
+      "side": 1,
+      "message": "The boundary checks and mutex make this actually somewhat complicated:\n\nenum chipset_shutdown_reason chipset_get_shutdown_reason(void)\n{\n        enum chipset_shutdown_reason reason \u003d CHIPSET_RESET_UNKNOWN;\n\n        mutex_lock(\u0026reset_log_mutex);\n        if (ap_resets_since_ec_boot \u003d\u003d 0) {\n                mutex_unlock(\u0026reset_log_mutex);\n                return reason;\n        }\n        if (next_reset_log \u003d\u003d 0) {\n                reason \u003d reset_logs[ARRAY_SIZE(reset_logs) - 1].reset_cause;\n                mutex_unlock(\u0026reset_log_mutex);\n                return reason;\n        }\n        reason \u003d reset_logs[next_reset_log - 1].reset_cause;\n        mutex_unlock(\u0026reset_log_mutex);\n        return reason;\n}",
+      "parentUuid": "d8aaf170_1bfea499",
       "range": {
         "startLine": 125,
         "startChar": 8,
