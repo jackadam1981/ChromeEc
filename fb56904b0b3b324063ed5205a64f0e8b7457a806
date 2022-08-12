@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762dcf6c_17adfa15",
+        "filename": "board/shotzo/battery.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-08-12T01:07:44Z",
+      "side": 1,
+      "message": "We can remove this as well with undef `CONFIG_BATTERY_CUT_OFF`",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "fb56904b0b3b324063ed5205a64f0e8b7457a806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
