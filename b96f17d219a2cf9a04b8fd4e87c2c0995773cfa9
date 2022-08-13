@@ -33,6 +33,52 @@
       "message": "Hi Daina/Tim/Dai\nAm not sure on why the merge is failing here.\nzmake testall seems passing to me.\nAm i missing something in zephyr perspective in this CL?\nPlease guide me here.\nThanks,",
       "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05664186_75c50a2d",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-13T01:02:25Z",
+      "side": 1,
+      "message": "Throtlling is already done in board/agah/charger_isl9241.c. Have you thought of interferneces here and update_power_source as a whole?",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea4e6214_bfee29a4",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-13T01:02:25Z",
+      "side": 1,
+      "message": "Instead of hooking these, have you considered HOOK_POWER_SUPPLY_CHANGE?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
