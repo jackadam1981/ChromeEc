@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bde0f8f_66b0fa4c",
+        "filename": "driver/tcs3410/ams_tcs3410_mcu_driver/devices/tcs3410/tcs3410_fd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-13T01:10:14Z",
+      "side": 1,
+      "message": "Can we use uint16_t and __aligned(4)?",
+      "range": {
+        "startLine": 110,
+        "startChar": 7,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "0195af4f865a13a5d8b580ca2d774677cebb9633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
