@@ -49,3 +49,32 @@ static void disable_base_imu_irq(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, disable_base_imu_irq, HOOK_PRIO_POST_DEFAULT);
+
+/*
+ * Magneton shares the firmware with Steelix, but it does not have DB.
+ * So we should use FW_CONFIG to distinguish it and drop the db config.
+ */
+static void drop_db_config(void)
+{
+	int ret;
+	uint32_t val;
+
+	ret = cros_cbi_get_fw_config(DB, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", DB);
+		return;
+	}
+	if (val == DB_NONE) {
+		/* disable unused interrupt */
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_usb_c1_tcpc));
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_x_ec_gpio2));
+		/* Set floating pins as input with PU to prevent leakage */
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_x_gpio1),
+				      GPIO_INPUT | GPIO_PULL_UP);
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_x_gpio3),
+				      GPIO_INPUT | GPIO_PULL_UP);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, drop_db_config, HOOK_PRIO_DEFAULT);

@@ -4,9 +4,11 @@
  */
 
 /* Kingler board-specific USB-C configuration */
+#include <zephyr/logging/log.h>
 
 #include "charger.h"
 #include "console.h"
+#include "cros_cbi.h"
 #include "driver/bc12/pi3usb9201_public.h"
 #include "driver/charger/isl923x_public.h"
 #include "driver/ppc/nx20p348x.h"
@@ -24,6 +26,8 @@
 
 #include "baseboard_usbc_config.h"
 #include "variant_db_detection.h"
+
+LOG_MODULE_REGISTER(usbc_config, LOG_LEVEL_ERR);
 
 /* TODO(b/220196310): Create GPIO driver for RT17181S TCPC */
 #ifdef __REQUIRE_ZEPHYR_GPIOS__
@@ -318,12 +322,30 @@ __override int board_nx20p348x_init(int port)
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
+	int ret;
+	uint32_t val;
+
 	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
 		if (tasks_inited) {
 			return CONFIG_USB_PD_PORT_MAX_COUNT;
 		} else {
 			return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 		}
+	}
+
+	/*
+	 * Magneton shares the firmware with Steelix,
+	 * but it does not have DB and the gpio_hdmi_prsnt_odl is pullup at MB
+	 * so corsola_get_db_type() will report it has typec DB.
+	 * We should use FW_CONFIG to distinguish this difference.
+	 */
+	ret = cros_cbi_get_fw_config(DB, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", DB);
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+	}
+	if (val == DB_NONE) {
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 	}
 
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
