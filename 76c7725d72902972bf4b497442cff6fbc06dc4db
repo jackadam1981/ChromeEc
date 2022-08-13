@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3f0054_69e5c001",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-08-13T07:16:14Z",
+      "side": 1,
+      "message": "now that you\u0027ve set both SOP` bits (and notification events), do you yet need to continue or should you return? The notify event should be enough to create a cable device in the kernel.",
+      "range": {
+        "startLine": 1951,
+        "startChar": 2,
+        "endLine": 1951,
+        "endChar": 61
+      },
+      "revId": "76c7725d72902972bf4b497442cff6fbc06dc4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
