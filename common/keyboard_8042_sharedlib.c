@@ -165,6 +165,7 @@ SHAREDLIB(const struct button_8042_t buttons_8042[] = {
 		  { SCANCODE_POWER, 0 },
 		  { SCANCODE_VOLUME_DOWN, 1 },
 		  { SCANCODE_VOLUME_UP, 1 },
+		  { SCANCODE_REFRESH, 1 }, /* For match defined in keyboard_button_type */
 		  { SCANCODE_1, 1 },
 		  { SCANCODE_2, 1 },
 		  { SCANCODE_3, 1 },
@@ -173,5 +174,7 @@ SHAREDLIB(const struct button_8042_t buttons_8042[] = {
 		  { SCANCODE_6, 1 },
 		  { SCANCODE_7, 1 },
 		  { SCANCODE_8, 1 },
+		  { SCANCODE_BRIGHTNESS_DOWN, 1 },
+		  { SCANCODE_BRIGHTNESS_UP, 1 },
 	  });
 BUILD_ASSERT(ARRAY_SIZE(buttons_8042) == KEYBOARD_BUTTON_COUNT);
