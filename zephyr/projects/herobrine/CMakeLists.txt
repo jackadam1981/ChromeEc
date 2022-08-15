@@ -17,6 +17,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_I2C
 
 if(DEFINED CONFIG_BOARD_EVOKER)
 	project(evoker)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
+	  "src/evoker/usbc_throttle.c")
 elseif(DEFINED CONFIG_BOARD_HEROBRINE)
 	project(herobrine)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
