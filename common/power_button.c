@@ -13,6 +13,7 @@
 #include "host_command.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "power.h"
 #include "power_button.h"
 #include "system.h"
 #include "task.h"
@@ -135,6 +136,8 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pb_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void pb_chipset_shutdown(void)
 {
+	if (power_is_force_shutdown())
+		return;
 	chip_save_reset_flags(chip_read_reset_flags() | EC_RESET_FLAG_AP_IDLE);
 	system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
 	CPRINTS("Saved AP_IDLE flag");

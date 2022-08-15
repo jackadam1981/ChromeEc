@@ -443,4 +443,6 @@ void power_fake_s0(void);
 void power_fake_disable(void);
 #endif /* defined(CONFIG_POWER_FAKE_CONTROL) */
 
+__override_proto bool power_is_force_shutdown(void);
+
 #endif /* __CROS_EC_POWER_H */

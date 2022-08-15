@@ -1147,3 +1147,8 @@ static int command_power_fake(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(powerfake, command_power_fake, "S0|disable",
 			"Force power inputs for early board bringup");
 #endif /* defined(CONFIG_POWERSEQ_FAKE_CONTROL) */
+
+__overridable bool power_is_force_shutdown(void)
+{
+	return false;
+}

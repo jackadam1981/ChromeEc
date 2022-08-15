@@ -94,6 +94,12 @@ const struct power_signal_info power_signal_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
+static bool is_force_shutdown;
+bool power_is_force_shutdown(void)
+{
+	return is_force_shutdown;
+}
+
 __overridable int intel_x86_get_pg_ec_dsw_pwrok(void)
 {
 	return gpio_get_level(GPIO_PG_EC_DSW_PWROK);
@@ -108,6 +114,7 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	int timeout_ms = 50;
 
+	is_force_shutdown = true;
 	CPRINTS("%s() %d", __func__, reason);
 	report_ap_reset(reason);
 
@@ -271,6 +278,10 @@ enum power_state power_handle_state(enum power_state state)
 		/* If SLP_SUS_L is asserted, we're no longer in S5. */
 		if (!power_has_signals(IN_PCH_SLP_SUS_DEASSERTED))
 			return POWER_S5G3;
+		break;
+
+	case POWER_S0:
+		is_force_shutdown = false;
 		break;
 
 	default:
