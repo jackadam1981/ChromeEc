@@ -16,6 +16,29 @@
       "message": "Commented on patchset 1, which looks closer to +2.",
       "revId": "a8a7717f1b81d72dea5858a107fc1cf05f6c679d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f615ebb_c558b1e0",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-08-15T18:36:29Z",
+      "side": 1,
+      "message": "nit: this message is very generic. It would help to indicate where the error happens, for example `i8042: typematic key race condition detected, not adding to host queue`",
+      "range": {
+        "startLine": 295,
+        "startChar": 13,
+        "endLine": 295,
+        "endChar": 55
+      },
+      "revId": "a8a7717f1b81d72dea5858a107fc1cf05f6c679d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
