@@ -2,8 +2,6 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-#include <stdbool.h>
-
 #include "adc.h"
 #include "assert.h"
 #include "button.h"
@@ -13,17 +11,21 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "cros_board_info.h"
+#include "driver/retimer/ps8811.h"
+#include "driver/tcpm/tcpci.h"
+#include "fw_config.h"
 #include "gpio.h"
 #include "gpio_signal.h"
-#include "power_button.h"
 #include "hooks.h"
 #include "power.h"
+#include "power_button.h"
+#include "scaler.h" /* //for scaler test //raymondchung: ??? */
 #include "switch.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
 #include "usbc_ppc.h"
-#include "driver/tcpm/tcpci.h"
-#include "fw_config.h"
+
+#include <stdbool.h>
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)
@@ -41,7 +43,43 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
 /******************************************************************************/
+/* USB-A retimer control */
 
+const struct usb_mux usba_ps8811[] = {
+	[USBA_PORT_A0] = {
+		.usb_port = USBA_PORT_A0,
+		.i2c_port = I2C_PORT_USB_A0_A1_MIX,
+		.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS0,
+	},
+	[USBA_PORT_A1] = {
+		.usb_port = USBA_PORT_A1,
+		.i2c_port = I2C_PORT_USB_A0_A1_MIX,
+		.i2c_addr_flags = PS8811_I2C_ADDR_FLAGS2,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(usba_ps8811) == USBA_PORT_COUNT);
+
+static int usba_retimer_init(int port)
+{
+	int rv;
+	int val;
+	const struct usb_mux *me = &usba_ps8811[port];
+
+	rv = ps8811_i2c_read(me, PS8811_REG_PAGE1, PS8811_REG1_USB_BEQ_LEVEL, &val);
+
+	return rv;
+}
+
+void board_chipset_startup(void)
+{
+	int i;
+
+	for (i = 0; i < USBA_PORT_COUNT; i++)
+		usba_retimer_init(i);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+
+/******************************************************************************/
 int board_set_active_charge_port(int port)
 {
 	CPRINTS("Requested charge port change to %d", port);
@@ -190,7 +228,8 @@ static void port_ocp_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&update_5v_usage_data, 0);
 }
-#include "gpio_list.h" /* Must come after other header files. */
+/* Must come after other header files and interrupt handler declarations */
+#include "gpio_list.h"
 
 /******************************************************************************/
 /*
@@ -253,8 +292,42 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_A1_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A3_OC_ODL);
+
+	gpio_enable_interrupt(GPIO_DISP_MODE);
+	gpio_enable_interrupt(GPIO_HDMI_5V_IN);
+	gpio_enable_interrupt(GPIO_HDMI0_CABLE_DET);
+	gpio_enable_interrupt(GPIO_OSD_INT);
+#if 0 //for scaler test //raymondchung: ???
+	scaler_test(); //for scaler test //raymondchung: ???
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0iX -> S0 and S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+	gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 1);
+	gpio_set_level(GPIO_EC_12VSC_EN, 1);
+	gpio_set_level(GPIO_EC_AMP_SD, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S0iX and S0 -> S3 transition */
+static void board_chipset_suspend(void)
+{
+	if (!gpio_get_level(GPIO_HDMI0_CABLE_DET))
+	{
+		gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 1);
+		gpio_set_level(GPIO_EC_12VSC_EN, 1);
+		gpio_set_level(GPIO_EC_AMP_SD, 1);
+	} else {
+		gpio_set_level(GPIO_EC_AMP_SD, 0);
+		gpio_set_level(GPIO_EC_12VSC_EN, 0);
+		gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend,
+	     HOOK_PRIO_DEFAULT);
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
