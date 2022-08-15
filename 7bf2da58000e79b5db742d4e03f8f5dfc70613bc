@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d971eaaa_0e3d8940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-08-15T08:16:07Z",
+      "side": 1,
+      "message": "Configure the mux too early when booting to S3-\u003eS0 and enable set_bb_retimer_usb3_state function.\nSo check if chipset is in S0 state.",
+      "revId": "7bf2da58000e79b5db742d4e03f8f5dfc70613bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
