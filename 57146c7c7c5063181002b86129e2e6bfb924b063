@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc8b1c09_e175322c",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-15T17:50:27Z",
+      "side": 1,
+      "message": "Do you need to check this every time? Proto task alraedy grabbed the mutex. Scan task can\u0027t change typematic_len. I think this check can be done outside the for loop.",
+      "range": {
+        "startLine": 287,
+        "startChar": 3,
+        "endLine": 287,
+        "endChar": 38
+      },
+      "revId": "57146c7c7c5063181002b86129e2e6bfb924b063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e0fc18_98bbf1ba",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-15T17:50:27Z",
+      "side": 1,
+      "message": "nit: I think we can enable the race check for both but if you want to keep non ADC keyboards unaffected, you can set it to 0 for !CONFIG_KEYBOARD_SCAN_ADC.",
+      "range": {
+        "startLine": 912,
+        "startChar": 20,
+        "endLine": 912,
+        "endChar": 21
+      },
+      "revId": "57146c7c7c5063181002b86129e2e6bfb924b063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
