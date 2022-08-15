@@ -963,6 +963,7 @@ static int anx7447_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
+static bool anx7447_bist_test_mode;
 enum ec_error_list anx7447_set_bist_test_mode(const int port, const bool enable)
 {
 	/*
@@ -977,6 +978,15 @@ enum ec_error_list anx7447_set_bist_test_mode(const int port, const bool enable)
 	 */
 	RETURN_ERROR(tcpc_write(port, ANX7447_REG_CC_DEBOUNCE_TIME,
 				enable ? 2 : 10));
+
+	anx7447_bist_test_mode = enable;
+
+	return EC_SUCCESS;
+}
+
+enum ec_error_list anx7447_get_bist_test_mode(const int port, bool *enable)
+{
+	*enable = anx7447_bist_test_mode;
 
 	return EC_SUCCESS;
 }
@@ -1024,6 +1034,7 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 	.set_frs_enable = &anx7447_set_frs_enable,
 #endif
 	.set_bist_test_mode = &anx7447_set_bist_test_mode,
+	.get_bist_test_mode = &anx7447_get_bist_test_mode,
 #ifdef CONFIG_CMD_TCPC_DUMP
 	.dump_registers = &anx7447_dump_registers,
 #endif
