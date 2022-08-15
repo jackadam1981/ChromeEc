@@ -22,6 +22,30 @@
       },
       "revId": "2289297e6dbb333c48ec07070e75fbb9880c5990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc4434a8_482935c2",
+        "filename": "zephyr/test/drivers/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-15T23:11:13Z",
+      "side": 1,
+      "message": "Restructured so the concrete example is given first followed by the general format.",
+      "parentUuid": "324bee4a_6bbeec7e",
+      "range": {
+        "startLine": 37,
+        "startChar": 51,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "2289297e6dbb333c48ec07070e75fbb9880c5990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
