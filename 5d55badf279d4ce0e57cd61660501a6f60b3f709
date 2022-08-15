@@ -46,6 +46,30 @@
       },
       "revId": "5d55badf279d4ce0e57cd61660501a6f60b3f709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6210e115_7e5a2cab",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-08-15T13:22:07Z",
+      "side": 1,
+      "message": "Should the logging default overrides be in Kconfig.logging or Kconfig.defaults? Seems the pattern now is to put it in Kconfig.defaults.",
+      "parentUuid": "65a0cc9f_e67ce269",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "5d55badf279d4ce0e57cd61660501a6f60b3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
