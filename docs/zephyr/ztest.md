@@ -174,26 +174,44 @@ uses.
 
 ## Build and run
 
-Use `zmake` to build and run the test:
+Use `platform/ec $ twister` to build and run the test:
+
+PASS:
 
 ```
-(cr) $ zmake -l DEBUG test test-base32
+(cr) $ ./twister --test zephyr/test/drivers/drivers.default
 ...
-UART_0 connected to pseudotty: /dev/pts/1
-*** Booting Zephyr OS build zephyr-v2.4.0-1-g63b2330a85cd  ***
-Running test suite test_base32_lib
-===================================================================
-START - test_crc5
- PASS - test_crc5
-===================================================================
-START - test_encode
- PASS - test_encode
-===================================================================
-START - test_decode
- PASS - test_decode
-===================================================================
-Test suite test_base32_lib succeeded
-===================================================================
-PROJECT EXECUTION SUCCESSFUL
-(cr) $
+INFO    - Total complete:    1/   1  100%  skipped:    0, failed:    0
+INFO    - 1 of 1 test configurations passed (100.00%), 0 failed, 0 skipped with 0 warnings in 39.71 seconds
+INFO    - In total 1 test cases were executed, 0 skipped on 1 out of total 488 platforms (0.20%)
+INFO    - 1 test configurations executed on platforms, 0 test configurations were only built.
+INFO    - Saving reports...
+INFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/twister.json
+INFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister.xml...
+INFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister_report.xml...
+INFO    - Run completed
+TEST EXECUTION SUCCESSFUL
 ```
+
+FAILURE:
+
+```
+(cr) $ ./twister --test zephyr/test/drivers/drivers.default
+...
+ERROR   - native_posix              zephyr/test/drivers/drivers.default                FAILED: Failed
+ERROR   - see: /mnt/host/source/src/platform/ec/twister-out/native_posix/zephyr/test/drivers/drivers.default/handler.log
+INFO    - Total complete:    1/   1  100%  skipped:    0, failed:    1
+INFO    - 0 of 1 test configurations passed (0.00%), 1 failed, 0 skipped with 0 warnings in 39.72 seconds
+INFO    - In total 1 test cases were executed, 0 skipped on 1 out of total 488 platforms (0.20%)
+INFO    - 1 test configurations executed on platforms, 0 test configurations were only built.
+INFO    - Saving reports...
+INFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/twister.json
+INFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister.xml...
+INFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister_report.xml...
+INFO    - Run completed
+TEST EXECUTION FAILED
+
+```
+
+The full test log from the above failing run would be in
+`ec/twister-out/native_posix/zephyr/test/drivers/drivers.default/handler.log`.
