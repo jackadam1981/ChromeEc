@@ -121,6 +121,7 @@ def main():
     # including -h/--help so that Twister's own help text gets displayed.
     parser = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
     parser.add_argument("-T", "--testsuite-root", action="append")
+    parser.add_argument("-p", "--platform", action="append")
     parser.add_argument("-v", "--verbose", action="count", default=0)
     intercepted_args, other_args = parser.parse_known_args()
 
@@ -137,6 +138,15 @@ def main():
         # Twister-compatible EC tests to run.
         twister_cli.extend(["-T", str(ec_base)])
         twister_cli.extend(["-T", str(zephyr_base / "tests/subsys/shell")])
+
+    if intercepted_args.platform:
+        # Pass user-provided -p args when present.
+        for arg in intercepted_args.platform:
+            twister_cli.extend(["-p", arg])
+    else:
+        # posix_native and unit_testing when nothing was requested by user.
+        twister_cli.extend(["-p", "native_posix"])
+        twister_cli.extend(["-p", "unit_testing"])
 
     # Append additional user-supplied args
     twister_cli.extend(other_args)
