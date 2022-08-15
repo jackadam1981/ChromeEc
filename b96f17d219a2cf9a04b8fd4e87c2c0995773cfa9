@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5de321aa_94977baa",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-15T20:06:31Z",
+      "side": 1,
+      "message": "Here, this throttling action happens, only for boards , where DTT feature is enabled by config. Also, the reason for throttling action is also mentioned here as THROTTLE_SRC_DTT. In agah board, the throttling action(board_throttle_ap_gpu) seems  very board specific and not related to this DTT. In case, if we plan to use this feature in future in agah board, how about we take care about it as next step in agah board specific file itself, if you think this will cause some issue to the throttle action in agah?",
+      "parentUuid": "05664186_75c50a2d",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea4e6214_bfee29a4",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 11
@@ -71,6 +95,30 @@
       "writtenOn": "2022-08-13T01:02:25Z",
       "side": 1,
       "message": "Instead of hooking these, have you considered HOOK_POWER_SUPPLY_CHANGE?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef7cb0a_5a0964b5",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-15T20:06:31Z",
+      "side": 1,
+      "message": "Yes, this is a good suggestion, instead of 3 separate hooks. I Will test once and  add this suggestion.",
+      "parentUuid": "ea4e6214_bfee29a4",
       "range": {
         "startLine": 139,
         "startChar": 0,
