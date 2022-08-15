@@ -234,6 +234,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad060657_062f44a4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2755,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-08-15T05:48:20Z",
+      "side": 1,
+      "message": "Based on the test result, set ALERT_STORM_MAX_COUNT as 1800, the BIST cts can pass.",
+      "parentUuid": "7424cf81_1443ba8a",
+      "revId": "1d7145665157545ef7a654f425f4ba1be47e9f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "443eec09_560ffd4e",
         "filename": "common/usbc_intr_task.c",
         "patchSetId": 4
