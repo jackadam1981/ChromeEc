@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43f2327_21986f73",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-15T05:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0c6e594_4dee6954",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08ea76af_c0778065",
@@ -72,6 +96,30 @@
       "writtenOn": "2022-08-10T23:22:14Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 77,
+        "startChar": 43,
+        "endLine": 77,
+        "endChar": 46
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "585aab5e_553eeacf",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-15T05:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ea76af_c0778065",
       "range": {
         "startLine": 77,
         "startChar": 43,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede37b05_fc9424ba",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-15T05:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e53a7d4f_0d1108f0",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 3
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fa96261_4acb5a78",
@@ -128,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7f32e7_20d4645c",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-15T05:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa96261_4acb5a78",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 28
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27a461e2_72c25d11",
@@ -141,6 +237,30 @@
       "writtenOn": "2022-08-10T23:22:14Z",
       "side": 1,
       "message": "nit: I would use a temp variable (e.g. \u0027i\u0027 or \u0027type\u0027) and update bj_count at bottom of the function (which is consistent with the coding style of the repo and eliminates a concurrency concern).",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "132cd2d0_cd2041db",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-15T05:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27a461e2_72c25d11",
       "range": {
         "startLine": 125,
         "startChar": 6,
@@ -176,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32feb963_0d1ca144",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-15T05:55:07Z",
+      "side": 1,
+      "message": "Let\u0027s set unknown first, I\u0027ll check adapter on factory production line,\nand will upload another CL if needed.",
+      "parentUuid": "9db6bf2f_e3bace17",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 53
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7d04aca_ad9cd593",
         "filename": "board/agah/charger_isl9241.c",
         "patchSetId": 8
@@ -187,6 +331,24 @@
       "writtenOn": "2022-08-10T23:22:14Z",
       "side": 1,
       "message": "Can you print a message for type \u003d\u003d unknown?",
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de1c594_aa7eb084",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-15T05:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7d04aca_ad9cd593",
       "revId": "e9484cc96426216a2525087e625a8be96aa347df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -204,6 +366,30 @@
       "writtenOn": "2022-08-10T23:22:14Z",
       "side": 1,
       "message": "Theoretically, this check isn\u0027t neccesary because unknown adaptors will never be selected by the charger task (thus, board_enable_bj_port will never be called for such BJAs).",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 45
+      },
+      "revId": "e9484cc96426216a2525087e625a8be96aa347df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b02d12_3ed0f796",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-15T05:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c16d1283_4ddeb9a5",
       "range": {
         "startLine": 150,
         "startChar": 2,
