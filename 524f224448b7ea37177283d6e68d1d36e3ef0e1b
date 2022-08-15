@@ -22,6 +22,30 @@
       },
       "revId": "524f224448b7ea37177283d6e68d1d36e3ef0e1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b25f7d8_b8941462",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-15T10:27:54Z",
+      "side": 1,
+      "message": "done, added a few test cases to zephyr.",
+      "parentUuid": "9f06fe1f_f9c63a18",
+      "range": {
+        "startLine": 301,
+        "startChar": 11,
+        "endLine": 301,
+        "endChar": 22
+      },
+      "revId": "524f224448b7ea37177283d6e68d1d36e3ef0e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
