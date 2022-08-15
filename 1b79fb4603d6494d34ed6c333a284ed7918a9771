@@ -147,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8fb306_b79bfeb4",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-15T22:42:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6eeacf77_1a88b6f9",
+      "revId": "1b79fb4603d6494d34ed6c333a284ed7918a9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "824a7cf0_3c668431",
@@ -242,6 +260,30 @@
       "writtenOn": "2022-08-08T22:54:33Z",
       "side": 1,
       "message": "how about CONFIG_SYSTEM_BOOT_TIME_LOGGING and add EC\u0027s boot time too?",
+      "range": {
+        "startLine": 5712,
+        "startChar": 7,
+        "endLine": 5712,
+        "endChar": 28
+      },
+      "revId": "1b79fb4603d6494d34ed6c333a284ed7918a9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88544ba_5bf2e8c6",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 5712,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-15T22:42:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6d9c4c72_4e839891",
       "range": {
         "startLine": 5712,
         "startChar": 7,
