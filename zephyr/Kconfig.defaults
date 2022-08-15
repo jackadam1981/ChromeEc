@@ -9,6 +9,10 @@
 config TIMESLICING
 	default n
 
+# FLASH_SHELL consumes ~4KB of RAM and ~1.8K of flash
+config FLASH_SHELL
+	default n
+
 config GPIO_EMUL
 	default y if ARCH_POSIX
 
