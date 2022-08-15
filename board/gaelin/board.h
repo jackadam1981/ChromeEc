@@ -93,6 +93,8 @@
 #define I2C_PORT_USB_C0_BC12 NPCX_I2C_PORT2_0
 #define I2C_PORT_USB_C1_BC12 NPCX_I2C_PORT3_0
 
+#define I2C_PORT_USB_A0_A1_MIX NPCX_I2C_PORT6_1
+
 #define I2C_PORT_EEPROM NPCX_I2C_PORT7_0
 #define I2C_PORT_MP2964 NPCX_I2C_PORT7_0
 
@@ -151,7 +153,6 @@ enum temp_sensor_id {
 };
 
 enum pwm_channel {
-	PWM_CH_LED_GREEN, /* PWM0 */
 	PWM_CH_FAN, /* PWM5 */
 	PWM_CH_LED_RED, /* PWM2 */
 	PWM_CH_COUNT
