@@ -42,7 +42,7 @@ enum led_color {
 
 static int set_color_power(enum led_color color, int duty)
 {
-	int green = 0;
+	//int green = 0; //raymondchung: ???
 	int red = 0;
 
 	if (duty < 0 || 100 < duty)
@@ -52,7 +52,7 @@ static int set_color_power(enum led_color color, int duty)
 	case LED_OFF:
 		break;
 	case LED_GREEN:
-		green = 1;
+		//green = 1; //raymondchung: ???
 		break;
 	case LED_RED:
 		red = 1;
@@ -65,11 +65,6 @@ static int set_color_power(enum led_color color, int duty)
 		pwm_set_duty(PWM_CH_LED_RED, duty);
 	else
 		pwm_set_duty(PWM_CH_LED_RED, 0);
-
-	if (green)
-		pwm_set_duty(PWM_CH_LED_GREEN, duty);
-	else
-		pwm_set_duty(PWM_CH_LED_GREEN, 0);
 
 	return EC_SUCCESS;
 }
