@@ -25,4 +25,6 @@ elseif(DEFINED CONFIG_BOARD_VILLAGER)
 	project(villager)
 elseif(DEFINED CONFIG_BOARD_EVOKER)
 	project(evoker)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
+	  "src/evoker/usb_c_throttle.c")
 endif()
