@@ -23,7 +23,8 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
-
+#include "usbc_ppc.h"
+#include "driver/tcpm/tcpci.h"
 #include "gpio_list.h" /* Must come after other header files. */
 
 /* Console output macros */
@@ -119,3 +120,45 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 	ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+
+/* Throttle Type-C port to 1.5A if both ports are sourcing. */
+
+/*
+ * run power_monitor every 2 ms.
+ */
+#define POWER_DELAY_MS 1000 /* 1000 ms for test*/
+
+static void power_monitor(void);
+DECLARE_DEFERRED(power_monitor);
+
+static void power_monitor(void)
+{
+	/*
+	* If all type-C port is sourcing power,
+	* check whether it should be throttled.
+	*/
+
+	CPRINTS("%s: ppc 0 :%d, ppc 1 :%d, AC:%d", __func__,
+			ppc_is_sourcing_vbus(0), ppc_is_sourcing_vbus(1),
+			gpio_get_level(GPIO_AC_PRESENT));
+
+	if (!gpio_get_level(GPIO_AC_PRESENT) &&
+		ppc_is_sourcing_vbus(0) &&
+		ppc_is_sourcing_vbus(1)) {
+
+		/* set port 0 current limit to 1.5A */
+		ppc_set_vbus_source_current_limit(0, TYPEC_RP_1A5);
+		tcpm_select_rp_value(0, TYPEC_RP_1A5);
+		pd_update_contract(0);
+
+		/* set port 1 current limit to 1.5A */
+		ppc_set_vbus_source_current_limit(1, TYPEC_RP_1A5);
+		tcpm_select_rp_value(1, TYPEC_RP_1A5);
+		pd_update_contract(1);
+
+		CPRINTS("%s: throttled all type-C port to 1.5A", __func__);
+	}
+	hook_call_deferred(&power_monitor_data, POWER_DELAY_MS * MSEC);
+}
+DECLARE_HOOK(HOOK_INIT, power_monitor, HOOK_PRIO_DEFAULT);
