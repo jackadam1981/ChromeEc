@@ -17,8 +17,8 @@
 #include "gpio_signal.h"
 #include "power_button.h"
 #include "hooks.h"
-#include "peripheral_charger.h"
 #include "power.h"
+#include "scaler.h" /* //for scaler test //raymondchung: ??? */
 #include "switch.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
@@ -40,29 +40,6 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_PP5000_USBA,
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
-
-extern struct pchg_drv cps8100_drv;
-struct pchg pchgs[] = {
-	[0] = {
-		.cfg = &(const struct pchg_config) {
-			.drv = &cps8100_drv,
-			.i2c_port = I2C_PORT_QI,
-			.irq_pin = GPIO_QI_INT_ODL,
-			.full_percent = 96,
-			.block_size = 128,
-		},
-		.events = QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, enum pchg_event),
-	},
-};
-const int pchg_count = ARRAY_SIZE(pchgs);
-
-__override void board_pchg_power_on(int port, bool on)
-{
-	if (port == 0)
-		gpio_set_level(GPIO_EC_QI_PWR, on);
-	else
-		CPRINTS("%s: Invalid port=%d", __func__, port);
-}
 
 /******************************************************************************/
 
@@ -114,7 +91,6 @@ int board_set_active_charge_port(int port)
 	switch (port) {
 	case CHARGE_PORT_TYPEC0:
 	case CHARGE_PORT_TYPEC1:
-	case CHARGE_PORT_TYPEC2:
 		gpio_set_level(GPIO_EN_PPVAR_BJ_ADP_L, 1);
 		break;
 	case CHARGE_PORT_BARRELJACK:
@@ -278,8 +254,27 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_A1_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A3_OC_ODL);
+#if 0 //for scaler test //raymondchung: ???
+	gpio_enable_interrupt(GPIO_OSD_INT);
+	scaler_test(); //for scaler test //raymondchung: ???
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0iX -> S0 transition */
+static void board_chipset_resume(void)
+{
+	gpio_set_level(GPIO_EC_AMP_SD, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S0iX transition */
+static void board_chipset_suspend(void)
+{
+	gpio_set_level(GPIO_EC_AMP_SD, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend,
+	     HOOK_PRIO_DEFAULT);
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
@@ -332,7 +327,6 @@ void board_overcurrent_event(int port, int is_overcurrented)
 #define THROT_TYPE_A_REAR BIT(1)
 #define THROT_TYPE_C0 BIT(2)
 #define THROT_TYPE_C1 BIT(3)
-#define THROT_TYPE_C2 BIT(4)
 #define THROT_PROCHOT BIT(5)
 
 /*
@@ -467,16 +461,6 @@ static void power_monitor(void)
 					gap += POWER_GAIN_TYPE_C;
 			}
 			/*
-			 * If the type-C port is sourcing power,
-			 * check whether it should be throttled.
-			 */
-			if (ppc_is_sourcing_vbus(2) && gap <= 0) {
-				new_state |= THROT_TYPE_C2;
-				headroom_5v_z1 += PWR_Z1_C_HIGH - PWR_Z1_C_LOW;
-				if (!(current_state & THROT_TYPE_C2))
-					gap += POWER_GAIN_TYPE_C;
-			}
-			/*
 			 * As a last resort, turn on PROCHOT to
 			 * throttle the CPU.
 			 */
@@ -565,15 +549,6 @@ static void power_monitor(void)
 		ppc_set_vbus_source_current_limit(1, rp);
 		tcpm_select_rp_value(1, rp);
 		pd_update_contract(1);
-	}
-	if (diff & THROT_TYPE_C2) {
-		enum tcpc_rp_value rp = (new_state & THROT_TYPE_C2) ?
-						TYPEC_RP_1A5 :
-						TYPEC_RP_3A0;
-
-		ppc_set_vbus_source_current_limit(2, rp);
-		tcpm_select_rp_value(2, rp);
-		pd_update_contract(2);
 	}
 	if (diff & THROT_TYPE_A_REAR) {
 		int typea_bc = (new_state & THROT_TYPE_A_REAR) ? 1 : 0;
