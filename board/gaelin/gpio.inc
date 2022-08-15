@@ -46,24 +46,18 @@ GPIO(ANALOG_PPVAR_PWR_IN_IMON_EC,    PIN(4, 2), GPIO_INPUT)
 
 /* Display */
 GPIO(EC_OVERRIDE_SCLR_EN,            PIN(D, 4), GPIO_OUT_HIGH)
-
-/* TODO(b/260063632): the gpio pin control is wip, setting to level high
-                      to enable the backlight by default */
-GPIO(EC_12VSC_EN,                    PIN(D, 2), GPIO_OUT_HIGH)
-
+GPIO(EC_12VSC_EN,                    PIN(D, 2), GPIO_OUT_LOW)
 GPIO(OSD_STS,                        PIN(4, 1), GPIO_INPUT)
-GPIO(DISP_MODE,                      PIN(A, 0), GPIO_INPUT)
+GPIO_INT(DISP_MODE,                  PIN(A, 0), GPIO_INT_BOTH | GPIO_PULL_UP, disp_mode_interrupt) //for scaler test //raymondchung: ???
 GPIO(PANEL_PWR_STS,                  PIN(9, 5), GPIO_INPUT)
 GPIO(EN_SCLR_RAILS,                  PIN(0, 4), GPIO_INPUT)
-GPIO(HDMI_5V_IN,                     PIN(9, 3), GPIO_INPUT)
-GPIO(HDMI0_CABLE_DET,                PIN(9, 6), GPIO_INPUT)
+GPIO_INT(HDMI_5V_IN,                 PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, hdmi0_cable_det_interrupt) //for scaler test //raymondchung: ???
+GPIO_INT(HDMI0_CABLE_DET,            PIN(9, 6), GPIO_INT_BOTH | GPIO_PULL_UP, hdmi0_cable_det_interrupt) //for scaler test //raymondchung: ???
 GPIO(WP_EC,                          PIN(C, 3), GPIO_INPUT)
-GPIO(OSD_INT,                        PIN(0, 5), GPIO_INPUT)
+GPIO_INT(OSD_INT,                    PIN(0, 5), GPIO_INT_BOTH | GPIO_PULL_UP, osd_int_interrupt) //for scaler test //raymondchung: ???
 
 /* Audio */
-/* TODO(b/260063632): the gpio pin control is wip, setting to level high
-                      to enable the speaker by default */
-GPIO(EC_AMP_SD,                      PIN(5, 6), GPIO_OUT_HIGH)
+GPIO(EC_AMP_SD,                      PIN(5, 6), GPIO_OUT_LOW)
 
 /* BarrelJack */
 GPIO(EN_PPVAR_BJ_ADP_L,              PIN(0, 7), GPIO_OUT_LOW)
@@ -123,7 +117,7 @@ GPIO(USB_A_OC_SOC_L,                 PIN(8, 0), GPIO_OUT_HIGH)
 
 /* LED */
 /* TODO(b/197471359): LED implementation */
-GPIO(LED_RED_L,                      PIN(C, 4), GPIO_OUT_LOW)
+GPIO(PWR_LED_L,                      PIN(C, 4), GPIO_OUT_LOW)
 
 /* USBC */
 GPIO(USB_C0_FRS_EN,                  PIN(9, 7), GPIO_OUT_LOW)
@@ -150,7 +144,7 @@ ALTERNATE(PIN_MASK(F, 0x0c), 0, MODULE_I2C, 0)               /* GPIOF3/I2C4_SCL1
 /* PWM alternate functions */
 ALTERNATE(PIN_MASK(7, 0x08), 0, MODULE_PWM, 0)               /* GPIO73/TA2 */
 ALTERNATE(PIN_MASK(B, 0x80), 0, MODULE_PWM, 0)               /* GPIOB7/PWM5 */
-ALTERNATE(PIN_MASK(C, 0x18), 0, MODULE_PWM, 0)               /* GPIOC4/PWM2, GPIOC3/PWM0 */
+ALTERNATE(PIN_MASK(C, 0x10), 0, MODULE_PWM, 0)               /* GPIOC4/PWM2 */
 
 /* ADC alternate functions */
 ALTERNATE(PIN_MASK(3, 0x10), 0, MODULE_ADC, 0)               /* GPIO34/PS2_DAT2/ADC6 */
