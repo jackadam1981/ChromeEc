@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 #
 # Brask board specific files build
-#
+##
 
 CHIP:=npcx
 CHIP_FAMILY:=npcx9
