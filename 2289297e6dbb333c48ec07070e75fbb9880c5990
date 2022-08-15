@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324bee4a_6bbeec7e",
+        "filename": "zephyr/test/drivers/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-15T22:17:16Z",
+      "side": 1,
+      "message": "do these braces need escaped? the shell may treat it as brace expansion",
+      "range": {
+        "startLine": 37,
+        "startChar": 51,
+        "endLine": 37,
+        "endChar": 52
+      },
+      "revId": "2289297e6dbb333c48ec07070e75fbb9880c5990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
