@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61555568_4619ba41",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-15T21:36:13Z",
+      "side": 0,
+      "message": "I would keep these args. If someone runs for example `zmake test -a -B dir --no-rebuild` they won\u0027t see the deprecation message, instead they will get an error about unknown options.",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 0
+      },
+      "revId": "e1d5970ad8ab0e80de6fc7f48b2c0bd7de4b882b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
