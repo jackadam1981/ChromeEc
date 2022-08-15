@@ -70,6 +70,30 @@
       },
       "revId": "5d55badf279d4ce0e57cd61660501a6f60b3f709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4105da57_8e038cd2",
+        "filename": "zephyr/app/ec/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-15T16:03:49Z",
+      "side": 1,
+      "message": "Either works, I say it\u0027s fine to use Kconfig.defaults for now, if we start having too many it\u0027s trivial to move them in their own file.",
+      "parentUuid": "6210e115_7e5a2cab",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "5d55badf279d4ce0e57cd61660501a6f60b3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
