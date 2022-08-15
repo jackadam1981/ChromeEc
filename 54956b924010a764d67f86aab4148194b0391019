@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c151a4bd_30ae4420",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-15T20:14:51Z",
+      "side": 1,
+      "message": "Hmmm, that\u0027s odd, but you might want to double check that your servo-micro is working by manually toggling reset and power lines.",
+      "parentUuid": "eead238e_11fd324c",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "54956b924010a764d67f86aab4148194b0391019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f52e31b0_e96c7cc1",
         "filename": "util/flash_ec",
         "patchSetId": 3
