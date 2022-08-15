@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85af818b_c0bc9dde",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-15T16:02:36Z",
+      "side": 1,
+      "message": "Kconfig should use tabs (not spaces) for indentation",
+      "revId": "34fc73f8b5933dd9979efe093b572e988f363235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76386a54_c053d19f",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-15T16:02:36Z",
+      "side": 1,
+      "message": "Can we use `imply` instead of `select` so this can still be disabled by `prj.conf` if desired?",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "34fc73f8b5933dd9979efe093b572e988f363235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
