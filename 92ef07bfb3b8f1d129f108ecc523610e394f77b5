@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf3085e_bb46470a",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-15T17:35:06Z",
+      "side": 1,
+      "message": "It takes me time to understand, maybe better to rephase it to:\n  If bit[0] is 0, ...\n  If bit[1] is 1, ...\n\nAnd move this comment close to the below code.",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 237,
+        "endChar": 8
+      },
+      "revId": "92ef07bfb3b8f1d129f108ecc523610e394f77b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72f2118_ff613a5b",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-15T17:35:06Z",
+      "side": 1,
+      "message": "This block and the following do similar things to disable the corresponding subsystems. Is there any existing disable API in the subsystem so this function can just call the API?",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 6
+      },
+      "revId": "92ef07bfb3b8f1d129f108ecc523610e394f77b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54166c7_ce4d648d",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-15T17:35:06Z",
+      "side": 1,
+      "message": "I don\u0027t understand. Interrupt disabled?",
+      "range": {
+        "startLine": 389,
+        "startChar": 48,
+        "endLine": 389,
+        "endChar": 65
+      },
+      "revId": "92ef07bfb3b8f1d129f108ecc523610e394f77b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef17749_153b519a",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-15T17:35:06Z",
+      "side": 1,
+      "message": "Add the `noreturn` attribute to the function?",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 10
+      },
+      "revId": "92ef07bfb3b8f1d129f108ecc523610e394f77b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

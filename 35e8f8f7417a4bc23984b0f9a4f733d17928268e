@@ -46,6 +46,52 @@
       },
       "revId": "35e8f8f7417a4bc23984b0f9a4f733d17928268e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325358d5_df98d4a4",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-15T17:35:06Z",
+      "side": 1,
+      "message": "Add tabs to this comment which describes the below statement.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 3
+      },
+      "revId": "35e8f8f7417a4bc23984b0f9a4f733d17928268e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd3dab49_dd53ba75",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-15T17:35:06Z",
+      "side": 1,
+      "message": "Make it static? This function is used locally.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 4
+      },
+      "revId": "35e8f8f7417a4bc23984b0f9a4f733d17928268e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
