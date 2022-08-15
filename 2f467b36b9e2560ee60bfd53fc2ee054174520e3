@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0963ab8d_296e59e1",
+        "filename": "zephyr/projects/nissa/joxer/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-08-15T01:54:43Z",
+      "side": 1,
+      "message": "As I know, Joxer used vivaldi keyboard and Nereid used non-vivaldi keyboard.\n\nShould we use `CONFIG_PLATFORM_EC_KEYBOARD_PWRBTN_ASSERTS_KSI3` for Joxer?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 47
+      },
+      "revId": "2f467b36b9e2560ee60bfd53fc2ee054174520e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
