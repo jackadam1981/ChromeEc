@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89490bd2_d758c5ec",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-15T21:26:11Z",
+      "side": 1,
+      "message": "nit: adc_read_channel can return -1 (for errors). You can bail out early.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "b12fcb973bf996f1b690a82d8eea6c93c1729e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1595b3d_68aff33e",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-15T21:26:11Z",
+      "side": 1,
+      "message": "Can you print adp_typ_mv? I think adp_typ_mv \u003e bj_adp_type[ADAPTER_150W].high_limit is redundant.",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 9
+      },
+      "revId": "b12fcb973bf996f1b690a82d8eea6c93c1729e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e9ffde_0d999dfe",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-15T21:26:11Z",
+      "side": 1,
+      "message": "A call for board_set_active_charge_port is actually initiated by charge_manager_update_charge. So, you have an unwanted cycle here (because board_update_bj_setting calls charge_manager_update_charge).\n\nHave you thought of calling this in bj_connect (e.g. line 306)? I think you can make board_update_bj_setting return bj_type (and remove line 138) and let line 310 call charge_manager_update_charge.",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 25
+      },
+      "revId": "b12fcb973bf996f1b690a82d8eea6c93c1729e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
