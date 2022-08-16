@@ -16,6 +16,23 @@
       "message": "Adding Diana, because I\u0027m not that familiar with the implications of event ordering.",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c36298_aed5ab07",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-16T20:29:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the virtual mux driver have sent the USB mux event when the mux changed?  Why should a hard reset clear affect the USB mux events, when it\u0027s not maintained in the PD_STATUS_* events?",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
