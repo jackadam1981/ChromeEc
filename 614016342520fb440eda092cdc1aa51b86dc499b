@@ -16,6 +16,24 @@
       "message": "I would have thought that this driver would have a per-port structure to contain stuff like this, but I don\u0027t see one. You should add one near the top of this file and put this in it. One way or another, this bool needs to be per-port.",
       "revId": "614016342520fb440eda092cdc1aa51b86dc499b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325f2626_f13b6f76",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-08-16T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a08fdbac_0ea03249",
+      "revId": "614016342520fb440eda092cdc1aa51b86dc499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
