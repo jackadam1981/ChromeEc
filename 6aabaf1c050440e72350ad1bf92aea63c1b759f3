@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd60eb0_88985653",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-16T16:02:36Z",
+      "side": 1,
+      "message": "The builder failed to checkout `platform/ec`. I\u0027m not sure what\u0027s up with that. I\u0027m assuming it was an infra failure. Rebasing and trying again.",
+      "revId": "6aabaf1c050440e72350ad1bf92aea63c1b759f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
