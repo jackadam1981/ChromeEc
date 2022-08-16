@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c026b068_8f930b33",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-08-16T18:23:05Z",
+      "side": 1,
+      "message": "makes sense, move down close to code which setting bit0 as 1 or 0\ndone",
+      "parentUuid": "aaf3085e_bb46470a",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 237,
+        "endChar": 8
+      },
+      "revId": "92ef07bfb3b8f1d129f108ecc523610e394f77b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a72f2118_ff613a5b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-15T17:35:06Z",
       "side": 1,
       "message": "This block and the following do similar things to disable the corresponding subsystems. Is there any existing disable API in the subsystem so this function can just call the API?",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 6
+      },
+      "revId": "92ef07bfb3b8f1d129f108ecc523610e394f77b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "489f9c1f_4b82833c",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-08-16T18:23:05Z",
+      "side": 1,
+      "message": "Agree, ideally should call API in each Zephyr main driver to perform individual function, but current main drivers don\u0027t develop all those APIs, they are trivial and minor, which may be added in the future development.",
+      "parentUuid": "a72f2118_ff613a5b",
       "range": {
         "startLine": 314,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e3a191_f238d3ed",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-08-16T18:23:05Z",
+      "side": 1,
+      "message": "Since this function will never return, and reset EC chip to reload code from flash chip eventually. so the wakeup source is only waking up CPU, but not need to process ISR.\nARM core has this feature, as Global interrupt is disaled, only request CPU wake up to process code but not need to jump to process ISR. \nThis can save code size and process but without breaking expectation.",
+      "parentUuid": "e54166c7_ce4d648d",
+      "range": {
+        "startLine": 389,
+        "startChar": 48,
+        "endLine": 389,
+        "endChar": 65
+      },
+      "revId": "92ef07bfb3b8f1d129f108ecc523610e394f77b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fef17749_153b519a",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-15T17:35:06Z",
       "side": 1,
       "message": "Add the `noreturn` attribute to the function?",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 10
+      },
+      "revId": "92ef07bfb3b8f1d129f108ecc523610e394f77b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9259431_fd5123a7",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-08-16T18:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fef17749_153b519a",
       "range": {
         "startLine": 401,
         "startChar": 0,
