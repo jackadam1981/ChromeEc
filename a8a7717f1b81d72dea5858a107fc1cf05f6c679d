@@ -63,6 +63,30 @@
       },
       "revId": "a8a7717f1b81d72dea5858a107fc1cf05f6c679d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a408fb28_fa0e58ca",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-16T16:25:27Z",
+      "side": 1,
+      "message": "This is in the critical path, though... How about calling klog_put or make i8042_send_to_host return ec_error_list (and let the proto task print it)?",
+      "parentUuid": "809c958a_5ded358d",
+      "range": {
+        "startLine": 295,
+        "startChar": 13,
+        "endLine": 295,
+        "endChar": 55
+      },
+      "revId": "a8a7717f1b81d72dea5858a107fc1cf05f6c679d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
