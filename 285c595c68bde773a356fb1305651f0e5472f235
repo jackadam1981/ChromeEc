@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd139ca_820bcb02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-08-16T19:17:38Z",
+      "side": 1,
+      "message": "We should think about this approach of using the npcx DT...another approach is to use purely a native_posix one, with its own fake pinctrl driver",
+      "revId": "285c595c68bde773a356fb1305651f0e5472f235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
