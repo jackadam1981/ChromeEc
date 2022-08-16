@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f269dab_f27134e0",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-08-16T07:28:47Z",
+      "side": 1,
+      "message": "Done\nmove if() to outside of for loop. And test result is pass.",
+      "parentUuid": "cc8b1c09_e175322c",
+      "range": {
+        "startLine": 287,
+        "startChar": 3,
+        "endLine": 287,
+        "endChar": 38
+      },
+      "revId": "57146c7c7c5063181002b86129e2e6bfb924b063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04e0fc18_98bbf1ba",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-15T17:50:27Z",
       "side": 1,
       "message": "nit: I think we can enable the race check for both but if you want to keep non ADC keyboards unaffected, you can set it to 0 for !CONFIG_KEYBOARD_SCAN_ADC.",
+      "range": {
+        "startLine": 912,
+        "startChar": 20,
+        "endLine": 912,
+        "endChar": 21
+      },
+      "revId": "57146c7c7c5063181002b86129e2e6bfb924b063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "785a2e4d_750c87f2",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-08-16T07:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e0fc18_98bbf1ba",
       "range": {
         "startLine": 912,
         "startChar": 20,
