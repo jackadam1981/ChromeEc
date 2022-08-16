@@ -22,6 +22,30 @@
       },
       "revId": "b4a65543cb5dd73ecf086fbf3e84f36419e313e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53edf84a_243ed06f",
+        "filename": "zephyr/test/drivers/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-16T22:03:17Z",
+      "side": 1,
+      "message": "Seems like adding the general format here might just be confusion then.\n\nSo this isn\u0027t supposed to be some variable or to be provided, it\u0027s really just a placeholder for some other test suffix based on which test binary is built and run here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/testcase.yaml;l\u003d3\n\nBut I\u0027ll also provide an additional example to emphasize this.",
+      "parentUuid": "1afa0b7a_999ab5c8",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "b4a65543cb5dd73ecf086fbf3e84f36419e313e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
