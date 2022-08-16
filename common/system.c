@@ -74,9 +74,9 @@ uint32_t sleep_mask;
 /* Set it to prevent going into idle mode */
 uint32_t idle_disabled;
 #endif
+static uint32_t ap_sku_id;
 
 #ifdef CONFIG_HOSTCMD_AP_SET_SKUID
-static uint32_t ap_sku_id;
 
 uint32_t system_get_sku_id(void)
 {
@@ -115,6 +115,16 @@ static void ap_sku_id_restore_state(void)
 }
 DECLARE_HOOK(HOOK_INIT, ap_sku_id_restore_state, HOOK_PRIO_DEFAULT);
 #endif
+__overridable uint32_t board_get_sku_id(void)
+{
+	return 0;
+}
+uint32_t system_get_sku_id(void)
+{
+	if (IS_ENABLED(CONFIG_HOSTCMD_AP_SET_SKUID))
+		return ap_sku_id;
+	return board_get_sku_id();
+}
 
 /**
  * Return the program memory address where the image `copy` begins or should
