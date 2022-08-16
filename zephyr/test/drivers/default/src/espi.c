@@ -8,6 +8,7 @@
 
 #include "ec_commands.h"
 #include "host_command.h"
+#include "strings.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
@@ -153,6 +154,39 @@ ZTEST_USER(espi, test_host_command_gpio_get_v1_get_count)
 	zassert_ok(args.result, NULL);
 	zassert_equal(args.response_size, sizeof(response.get_count), NULL);
 	zassert_equal(response.get_count.val, GPIO_COUNT, NULL);
+}
+
+ZTEST_USER(espi, test_host_command_gpio_get_v1_get_info)
+{
+	const enum gpio_signal signal = GPIO_SIGNAL(DT_NODELABEL(gpio_acok_od));
+	struct ec_params_gpio_get_v1 p = {
+		.subcmd = EC_GPIO_GET_INFO,
+		.get_info = {
+			.index = signal,
+		},
+	};
+	struct ec_response_gpio_get_v1 response;
+
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_GPIO_GET, 1, response, p);
+
+	/* Test true */
+	set_ac_enabled(true);
+
+	zassert_ok(host_command_process(&args), NULL);
+	zassert_ok(args.result, NULL);
+	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_ok(strcmp(response.get_info.name, AC_OK_OD_GPIO_NAME), NULL);
+	zassert_true(response.get_info.val, NULL);
+
+	/* Test false */
+	set_ac_enabled(false);
+
+	zassert_ok(host_command_process(&args), NULL);
+	zassert_ok(args.result, NULL);
+	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_ok(strcmp(response.get_info.name, AC_OK_OD_GPIO_NAME), NULL);
+	zassert_false(response.get_info.val, NULL);
 }
 
 ZTEST_SUITE(espi, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
