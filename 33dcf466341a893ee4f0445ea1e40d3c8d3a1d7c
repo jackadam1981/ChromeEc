@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "508fca2f_c48418cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-16T16:48:06Z",
+      "side": 1,
+      "message": "The only real request is to use a host command to get the VCONN state. The idea of this looks good.",
+      "revId": "33dcf466341a893ee4f0445ea1e40d3c8d3a1d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a3cdb1_4e17ef0e",
+        "filename": "zephyr/test/drivers/usb_malfunction_sink/src/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-16T16:48:06Z",
+      "side": 1,
+      "message": "Nit: If this function is accessing the fixture, then `port` should probably just be a member of `fixture`.",
+      "range": {
+        "startLine": 208,
+        "startChar": 51,
+        "endLine": 208,
+        "endChar": 55
+      },
+      "revId": "33dcf466341a893ee4f0445ea1e40d3c8d3a1d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1f4894_4799c7d1",
+        "filename": "zephyr/test/drivers/usb_malfunction_sink/src/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-16T16:48:06Z",
+      "side": 1,
+      "message": "Nit: You\u0027re passing in `try_count` just to print it in a log string for an assert, and that\u0027s the only thing that\u0027s different about calls to this function. This function seems fairly specific to this test. I\u0027d consider just putting the body of the function in a `for` loop in the test. You could also make the function return a status and do the `assert` on the value of that status and print the try number there. But it\u0027s OK if you\u0027d prefer to keep doing it this way.",
+      "range": {
+        "startLine": 208,
+        "startChar": 61,
+        "endLine": 208,
+        "endChar": 70
+      },
+      "revId": "33dcf466341a893ee4f0445ea1e40d3c8d3a1d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705ee3d6_7818eb2d",
+        "filename": "zephyr/test/drivers/usb_malfunction_sink/src/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-16T16:48:06Z",
+      "side": 1,
+      "message": "You should be able to get this information via `EC_CMD_TYPEC_STATUS`, which is preferable to exposing the usb_tc_sm.h API directly to a test.",
+      "revId": "33dcf466341a893ee4f0445ea1e40d3c8d3a1d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
