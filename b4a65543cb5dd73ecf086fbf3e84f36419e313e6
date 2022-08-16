@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1afa0b7a_999ab5c8",
+        "filename": "zephyr/test/drivers/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-16T17:14:30Z",
+      "side": 1,
+      "message": "Can we write as `${TEST_SUFFIX}`? it wasn\u0027t obvious to me this was something we need to provide.\n\nHow do we know what it is?",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "b4a65543cb5dd73ecf086fbf3e84f36419e313e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
