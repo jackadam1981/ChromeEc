@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a78197_9872fdee",
+        "filename": "zephyr/test/drivers/default/src/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-16T16:31:54Z",
+      "side": 1,
+      "message": "nit: use https://docs.zephyrproject.org/latest/kernel/services/threads/index.html?highlight\u003dk_msleep#c.k_msleep for zephyr specific version.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "3c7a8ea39a0c8132ed5f1ad820981f7546500736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
