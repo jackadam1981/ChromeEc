@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec3a270_a6ff2a9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-08-16T05:04:53Z",
+      "side": 1,
+      "message": "I dump log to tracker you can see the fan have rpm with duty 10. but for fan it is in non-controllable range.",
+      "parentUuid": "7e76fe08_a02fab2c",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "22a2087b11c001404eb44f1a9ed2c25702ec36ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8d15162_607f60f6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-13T00:37:40Z",
       "side": 1,
       "message": "This condition catches the case where the fan speed is rapidly increasing or decreasing.\n\nYou\u0027re adding a conditon. That means, you found a case where the fan speed keeps rapidly changing? If the speed is not changing, we fall through and adjust the duty. I can\u0027t imagine a situation where the speed is changing but not we\u0027re not catching up with a target.",
+      "range": {
+        "startLine": 290,
+        "startChar": 5,
+        "endLine": 290,
+        "endChar": 59
+      },
+      "revId": "22a2087b11c001404eb44f1a9ed2c25702ec36ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a225d8_46fff0e0",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-08-16T05:04:53Z",
+      "side": 1,
+      "message": "Yes, the fan speed keeps chagning but not in our target. This is a problem on most of fan the start-up need 20% ~ 25% duty.",
+      "parentUuid": "f8d15162_607f60f6",
       "range": {
         "startLine": 290,
         "startChar": 5,
