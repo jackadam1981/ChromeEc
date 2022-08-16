@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df85d646_fdc9a5a3",
+        "filename": "board/kinox/power_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-16T18:19:09Z",
+      "side": 1,
+      "message": "typo? I think this is better be \u0027over 95%%\u0027 (or \u0027larger than 95%%\u0027).",
+      "range": {
+        "startLine": 240,
+        "startChar": 33,
+        "endLine": 240,
+        "endChar": 34
+      },
+      "revId": "9ebe4732ac685dcbed1dd952cd99cabfb0c33a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb56186_c4998c23",
+        "filename": "board/kinox/power_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-16T18:19:09Z",
+      "side": 1,
+      "message": "ditto. \u0027lower than\u0027?",
+      "range": {
+        "startLine": 252,
+        "startChar": 33,
+        "endLine": 252,
+        "endChar": 34
+      },
+      "revId": "9ebe4732ac685dcbed1dd952cd99cabfb0c33a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
