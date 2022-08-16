@@ -68,6 +68,30 @@
       },
       "revId": "22a2087b11c001404eb44f1a9ed2c25702ec36ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7043e268_179f2493",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-08-16T04:53:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd8fd04d_18bb2082",
+      "range": {
+        "startLine": 291,
+        "startChar": 5,
+        "endLine": 291,
+        "endChar": 42
+      },
+      "revId": "22a2087b11c001404eb44f1a9ed2c25702ec36ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
