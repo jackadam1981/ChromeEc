@@ -606,8 +606,10 @@ extern struct jump_data mock_jump_data;
 #endif
 
 #undef CONFIG_FANS
+#undef CONFIG_CUSTOM_FAN_CONTROL
 #ifdef CONFIG_PLATFORM_EC_NUM_FANS
 #define CONFIG_FANS CONFIG_PLATFORM_EC_NUM_FANS
+#define CONFIG_CUSTOM_FAN_CONTROL
 #endif
 
 #ifdef CONFIG_PLATFORM_EC_I2C
