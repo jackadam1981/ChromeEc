@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41e9ae9c_53f9aed8",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/waitms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-08-17T22:38:53Z",
+      "side": 1,
+      "message": "We need to fake the time to avoid an actual delay. Perhaps that is already happening somewhere?",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "728d18cf222e1b95c3feb0f4cfc2f61a7304f86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "001d33c7_94494ddd",
         "filename": "zephyr/test/drivers/default/src/console_cmd/waitms.c",
         "patchSetId": 1
