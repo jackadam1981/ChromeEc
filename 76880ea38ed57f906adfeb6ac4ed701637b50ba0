@@ -22,6 +22,29 @@
       },
       "revId": "76880ea38ed57f906adfeb6ac4ed701637b50ba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c8f80ee_6a97892c",
+        "filename": "zephyr/test/flash/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-17T06:52:49Z",
+      "side": 1,
+      "message": "So I\u0027m assuming that this is the function that you\u0027re trying to test and the linker error is taking place. The function body that\u0027s being tested is under `src/platform/ec/chip/stm32/flash-stm32h7.c`.\n\nMost of the Kconfigs are mapped to `.c` files at https://source.chromium.org/chromium/chromiumos/platform/ec/+/main:zephyr/CMakeLists.txt;l\u003d169;drc\u003df8e488217389224873850ce1dbfbdfa2caba9c03 but as you can see, we currently don\u0027t have any such mapping for the above flash file.\n\nYou\u0027ll need to include that `.c` file and any other dependencies directly in your test\u0027s CMakeLists.txt. I suggest you keep this list to a minimum and mock any dependencies using FFF (please reach out if you need help with that).\n\nExample of including a `.c` file into your build:\nhttps://source.chromium.org/chromium/chromiumos/platform/ec/+/main:zephyr/test/math/CMakeLists.txt;l\u003d9;drc\u003df8e488217389224873850ce1dbfbdfa2caba9c03",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "76880ea38ed57f906adfeb6ac4ed701637b50ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
