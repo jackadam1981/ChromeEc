@@ -69,6 +69,24 @@
       "parentUuid": "74fa7fa8_4b3c8e85",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a350330_fe40c1ff",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-08-17T17:59:25Z",
+      "side": 1,
+      "message": "\u003e Adding Prashant for his opinion, but it seems like this should be fixed from a kernel level?\n\nI recall we had a related problem with one of these boards (may it was a different board, I\u0027m not sure), and we moved the mux configuration step to the beginning of the port update routine [1]\n\n\u003e 1. EC occured hard reset\n\u003e 2. EC configured mux\n\u003e 3. AP boots. AP received mux changed event and hard reset event.\n\nDo you have a chip reset hook for these boards? The EC can/should clear reset events when a reboot/boot occurs, since those are irrelevant because:\n- The EC has moved on and started the PD negotiation process again (in particular 2.) means that the reset from 1.) should be considered \"stale\")\n- Resets that occured during a prior boot cycle are not of much use to the AP.\n\nOrdinarily, i.e during normal use, the HARD_RESET would come in \"in sequence\" and be followed by the SOP{_PRIME}_DISC_DONE events so the AP has enough time to re-register everything.\n\n[1] https://lore.kernel.org/chrome-platform/20220208184721.1697194-4-pmalani@chromium.org/\n\nAlso, may I ask what is causing this hard reset in the first place?",
+      "parentUuid": "7ff2a444_b9b3410a",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
