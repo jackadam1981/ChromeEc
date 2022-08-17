@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ecc7975_385409ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-17T13:48:55Z",
+      "side": 1,
+      "message": "Added a mock pwm driver to meet the latest dt schema requirement.\n\nThere\u0027s some non-trivial changes, please review again.",
+      "revId": "395027de7143cf353cf12899a4118cb5a6c5490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
