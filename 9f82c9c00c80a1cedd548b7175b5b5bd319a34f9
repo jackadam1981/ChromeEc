@@ -34,6 +34,24 @@
       "parentUuid": "a1b8d0ff_cd6f79f7",
       "revId": "9f82c9c00c80a1cedd548b7175b5b5bd319a34f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a4b277_6dfc15dd",
+        "filename": "zephyr/.pylintrc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-17T21:58:15Z",
+      "side": 1,
+      "message": "Ahh okay. I just thought it was only for #FIXME comments.",
+      "parentUuid": "c99ec231_e482285e",
+      "revId": "9f82c9c00c80a1cedd548b7175b5b5bd319a34f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
