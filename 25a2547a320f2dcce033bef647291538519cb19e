@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5395aee_3e22243a",
+        "filename": "zephyr/test/drivers/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-17T19:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "061c9f5d_afa4322b",
+      "revId": "25a2547a320f2dcce033bef647291538519cb19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea21f03_9b6bcc92",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db29398d_33bf1105",
+        "filename": "zephyr/test/drivers/common/src/mock_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-17T19:04:55Z",
+      "side": 1,
+      "message": "Unfortunately the hook enum is covered with this preprocessor. http://cs/chromeos_public/src/platform/ec/include/hooks.h?l\u003d139",
+      "parentUuid": "dea21f03_9b6bcc92",
+      "revId": "25a2547a320f2dcce033bef647291538519cb19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b15bd208_cc7edba0",
         "filename": "zephyr/test/drivers/common/src/mock_power.c",
         "patchSetId": 1
@@ -65,6 +101,24 @@
       "writtenOn": "2022-08-17T17:07:22Z",
       "side": 1,
       "message": "drop blank line",
+      "revId": "25a2547a320f2dcce033bef647291538519cb19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c42553_e102f1eb",
+        "filename": "zephyr/test/drivers/common/src/mock_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-17T19:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b15bd208_cc7edba0",
       "revId": "25a2547a320f2dcce033bef647291538519cb19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
