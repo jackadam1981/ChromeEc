@@ -87,6 +87,30 @@
       },
       "revId": "a8a7717f1b81d72dea5858a107fc1cf05f6c679d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec48d4f9_54466af1",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2022-08-17T01:36:57Z",
+      "side": 1,
+      "message": "The log only print one time when release scan will insert on typematic scan code like below log. Because for loop\u0027s \u0027len\u0027 is 1 when send typematic scan code. And patch 7 move print log outside of for loop. It also print only one time when race happened.\n--------------------------------------------\nno.3 i8042_send_to_host queue: 31\nno.3 i8042_send_to_host queue: 31\nno.3 [519.005142 KB (4,4)\u003d0 s]\n22-08-09 15:35:11.177 no.1 i8042_send_to_host queue: 159\n22-08-09 15:35:11.179 [519.005930 ** race condition, ignore send to queue **\n22-08-09 15:35:11.186 ]\n[519.096853 KB wait]\n--------------------------------------------",
+      "parentUuid": "a408fb28_fa0e58ca",
+      "range": {
+        "startLine": 295,
+        "startChar": 13,
+        "endLine": 295,
+        "endChar": 55
+      },
+      "revId": "a8a7717f1b81d72dea5858a107fc1cf05f6c679d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
