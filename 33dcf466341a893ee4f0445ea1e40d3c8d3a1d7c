@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61c19516_358a5c2d",
+        "filename": "zephyr/test/drivers/usb_malfunction_sink/src/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-08-17T12:44:22Z",
+      "side": 1,
+      "message": "Changed test to use `for` loop",
+      "parentUuid": "6c1f4894_4799c7d1",
+      "range": {
+        "startLine": 208,
+        "startChar": 61,
+        "endLine": 208,
+        "endChar": 70
+      },
+      "revId": "33dcf466341a893ee4f0445ea1e40d3c8d3a1d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c201bdba_c77137a7",
+        "filename": "zephyr/test/drivers/usb_malfunction_sink/src/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-08-17T12:44:22Z",
+      "side": 1,
+      "message": "Added `port` as part of `fixture`.",
+      "parentUuid": "b1a3cdb1_4e17ef0e",
+      "range": {
+        "startLine": 208,
+        "startChar": 51,
+        "endLine": 208,
+        "endChar": 55
+      },
+      "revId": "33dcf466341a893ee4f0445ea1e40d3c8d3a1d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "705ee3d6_7818eb2d",
@@ -77,6 +125,24 @@
       "writtenOn": "2022-08-16T16:48:06Z",
       "side": 1,
       "message": "You should be able to get this information via `EC_CMD_TYPEC_STATUS`, which is preferable to exposing the usb_tc_sm.h API directly to a test.",
+      "revId": "33dcf466341a893ee4f0445ea1e40d3c8d3a1d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d6eef61_8b401305",
+        "filename": "zephyr/test/drivers/usb_malfunction_sink/src/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-08-17T12:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705ee3d6_7818eb2d",
       "revId": "33dcf466341a893ee4f0445ea1e40d3c8d3a1d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
