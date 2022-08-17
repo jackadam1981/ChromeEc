@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t the fixture be a local variable in the test, passed in via this arg?\n\nBut then system_reset() would still need a global...\n\nPerhaps add a comment to explain what it works this way?",
       "revId": "e5d7763c94eed4035dd3616b704fa55750e0bff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df026d8_7d37db5c",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-17T18:38:22Z",
+      "side": 1,
+      "message": "Yeah I initially had a setup function plumbing through the pointer but I needed the global anyway... global?!? Ouch that is missing a static, let me add it.",
+      "parentUuid": "d133535c_2dde361f",
+      "revId": "e5d7763c94eed4035dd3616b704fa55750e0bff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
