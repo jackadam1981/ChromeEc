@@ -16,6 +16,24 @@
       "message": "Use \u003czephyr/fff.h\u003e instead?\n\nThat should also get rid of the 0% coverage on this file.",
       "revId": "f849d11d1dbd5994a514ec76eb8e19001de62deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca68c3e_350a14eb",
+        "filename": "zephyr/test/kingler/src/fakes.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-17T21:21:58Z",
+      "side": 1,
+      "message": "How does that help? The faked functions will never be called either?",
+      "parentUuid": "93ecfc03_35dc9798",
+      "revId": "f849d11d1dbd5994a514ec76eb8e19001de62deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
