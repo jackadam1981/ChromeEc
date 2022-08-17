@@ -72,6 +72,7 @@
 		};
 		gpio_ec_prochot_odl: ec_prochot_odl {
 			gpios = <&gpioi 1 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_CPU_PROCHOT";
 		};
 		gpio_ec_soc_dsw_pwrok: ec_soc_dsw_pwrok {
 			gpios = <&gpiol 7 GPIO_OUTPUT>;
