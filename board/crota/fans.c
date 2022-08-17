@@ -12,6 +12,7 @@
 #include "fan.h"
 #include "hooks.h"
 #include "pwm.h"
+#include "timer.h"
 #include "thermal.h"
 #include "util.h"
 
@@ -75,6 +76,14 @@ struct fan_t fans[FAN_CH_COUNT] = {
 	},
 };
 
+static void fan_get_rpm(int fan)
+{
+	/* Record actual RPM every 2 minutes. */
+	ccprints("%d sec", get_time().le.lo / SECOND % 120);
+	if (!(get_time().le.lo / SECOND % 120))
+		ccprints("fan actual %d rpm", fan_get_rpm_actual(FAN_CH(fan)));
+}
+
 static void fan_set_percent(int fan, int pct, int soc_temp, int fan_triggered)
 {
 	int new_rpm;
@@ -99,6 +108,7 @@ static void fan_set_percent(int fan, int pct, int soc_temp, int fan_triggered)
 
 	new_rpm = fan_percent_to_rpm(fan, pct);
 	fan_set_rpm_target(FAN_CH(fan), new_rpm);
+	fan_get_rpm(fan);
 }
 
 void board_override_fan_control(int fan, int *tmp)
@@ -125,7 +135,13 @@ void board_override_fan_control(int fan, int *tmp)
 	int sensor_ambient;
 	int fan_triggered;
 
-	/* Decide sensor SOC temperature using which slope */
+	ccprints("-------");
+	ccprints("1:%d", tmp[TEMP_SENSOR_1_SOC] + 5);
+	ccprints("2:%d", tmp[TEMP_SENSOR_2_DDR] + 10);
+	ccprints("3:%d", tmp[TEMP_SENSOR_3_CHARGER] + 5);
+	ccprints("4:%d", tmp[TEMP_SENSOR_4_AMBIENT] + 5);
+
+	/* Decide sensor SOC temperature using which slope. */
 	if (tmp[TEMP_SENSOR_1_SOC] > SENSOR_SOC_FAN_MID) {
 		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_off =
 			C_TO_K(SENSOR_SOC_FAN_MID);
@@ -141,19 +157,19 @@ void board_override_fan_control(int fan, int *tmp)
 	sensor_soc = thermal_fan_percent(
 		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_off,
 		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_max,
-		C_TO_K(tmp[TEMP_SENSOR_1_SOC]));
+		C_TO_K(tmp[TEMP_SENSOR_1_SOC]) + 5);
 	sensor_ddr = thermal_fan_percent(
 		thermal_params[TEMP_SENSOR_2_DDR].temp_fan_off,
 		thermal_params[TEMP_SENSOR_2_DDR].temp_fan_max,
-		C_TO_K(tmp[TEMP_SENSOR_2_DDR]));
+		C_TO_K(tmp[TEMP_SENSOR_2_DDR]) + 10);
 	sensor_charger = thermal_fan_percent(
 		thermal_params[TEMP_SENSOR_3_CHARGER].temp_fan_off,
 		thermal_params[TEMP_SENSOR_3_CHARGER].temp_fan_max,
-		C_TO_K(tmp[TEMP_SENSOR_3_CHARGER]));
+		C_TO_K(tmp[TEMP_SENSOR_3_CHARGER]) + 5);
 	sensor_ambient = thermal_fan_percent(
 		thermal_params[TEMP_SENSOR_4_AMBIENT].temp_fan_off,
 		thermal_params[TEMP_SENSOR_4_AMBIENT].temp_fan_max,
-		C_TO_K(tmp[TEMP_SENSOR_4_AMBIENT]));
+		C_TO_K(tmp[TEMP_SENSOR_4_AMBIENT]) + 5);
 
 	/*
 	 * Decide which sensor was triggered
@@ -172,6 +188,10 @@ void board_override_fan_control(int fan, int *tmp)
 		fan_triggered = TEMP_SENSOR_4_AMBIENT;
 		pct = sensor_ambient;
 	}
+
+	/* When sensor DDR temperature greater then SOC, fan don't spin. */
+	if (tmp[TEMP_SENSOR_2_DDR] + 10 >= tmp[TEMP_SENSOR_1_SOC] + 5)
+		pct = 0;
 
 	/* Transfer percent to rpm */
 	fan_set_percent(fan, pct, tmp[TEMP_SENSOR_1_SOC], fan_triggered);
