@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5951d350_573e9282",
+        "filename": "zephyr/test/drivers/default/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-17T21:39:03Z",
+      "side": 1,
+      "message": "You might want `BUILD_HOST_COMMAND_PARAMS`.\n\nRelatedly, I don\u0027t think you need to check the contents of the placeholder response.",
+      "revId": "394ed35b2f8a331da34117ec5e41128c0396d342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8bbed0_455818dc",
+        "filename": "zephyr/test/drivers/default/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-17T21:39:03Z",
+      "side": 1,
+      "message": "You should set it to 1 before you do this. Otherwise, how do you know it wasn\u0027t already 0, and setting it to 0 is broken?",
+      "revId": "394ed35b2f8a331da34117ec5e41128c0396d342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
