@@ -51,6 +51,24 @@
       "parentUuid": "45c36298_aed5ab07",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff2a444_b9b3410a",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-17T15:46:39Z",
+      "side": 1,
+      "message": "Adding Prashant for his opinion, but it seems like this should be fixed from a kernel level?",
+      "parentUuid": "74fa7fa8_4b3c8e85",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
