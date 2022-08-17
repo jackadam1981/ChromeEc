@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001d33c7_94494ddd",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/waitms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-17T20:24:44Z",
+      "side": 1,
+      "message": "Maybe use `ztest_within()` (https://docs.zephyrproject.org/latest/develop/test/ztest.html#c.zassert_within) to allow some tolerance",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "728d18cf222e1b95c3feb0f4cfc2f61a7304f86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "104882bd_7772a6c7",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/waitms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-17T20:24:44Z",
+      "side": 1,
+      "message": "Could also try some bad input like negative, fractional, non-numbers, etc",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "728d18cf222e1b95c3feb0f4cfc2f61a7304f86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670fff50_8107159e",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/waitms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-17T20:24:44Z",
+      "side": 1,
+      "message": "Usually we try to avoid putting assertions in helper functions (or loops) since each failure would present with the same line number and obscure the source. But I think it would be okay this case if you added a message to the asserts reporting what the value of ms was. (e.g. `zassert_within(... , \"Expected a %u ms delay but lasted %u ms, ms, actual)`) or if each was a distinct test function",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "728d18cf222e1b95c3feb0f4cfc2f61a7304f86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
