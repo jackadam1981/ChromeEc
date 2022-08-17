@@ -34,6 +34,24 @@
       "parentUuid": "f79ca5e1_81ea146f",
       "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412f827d_217959e1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-17T17:00:09Z",
+      "side": 1,
+      "message": "The comments at this location and on line 1240 should accurately state what we\u0027re doing and why. This patchset does not disable storm tracking, but it does sound like it\u0027s deliberately avoiding I2C accesses.\n\nCan we accurately assume that the TCPC has not reset if `tcpc_get_bist_test_mode` returns true?",
+      "parentUuid": "adca9713_1e372a32",
+      "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
