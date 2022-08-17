@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a876c78_353555a2",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-08-17T20:35:00Z",
+      "side": 1,
+      "message": "why would ap_ro_device_reset() be called while the check is still in progress?",
+      "range": {
+        "startLine": 500,
+        "startChar": 37,
+        "endLine": 500,
+        "endChar": 70
+      },
+      "revId": "261b5e897015292a91243120cc4e7d5a64f857e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b5de89_ca03c2a3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-08-17T20:35:00Z",
+      "side": 1,
+      "message": "extra line added",
+      "revId": "261b5e897015292a91243120cc4e7d5a64f857e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
