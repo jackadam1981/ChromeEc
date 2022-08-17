@@ -21,15 +21,15 @@ ZTEST_USER(espi, test_host_command_get_protocol_info)
 	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_RESPONSE(
 		EC_CMD_GET_PROTOCOL_INFO, 0, response);
 
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
-	zassert_equal(args.response_size, sizeof(response), NULL);
-	zassert_equal(response.protocol_versions, BIT(3), NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
+	zassert_equal(args.response_size, sizeof(response));
+	zassert_equal(response.protocol_versions, BIT(3));
 	zassert_equal(response.max_request_packet_size, EC_LPC_HOST_PACKET_SIZE,
 		      NULL);
 	zassert_equal(response.max_response_packet_size,
 		      EC_LPC_HOST_PACKET_SIZE, NULL);
-	zassert_equal(response.flags, 0, NULL);
+	zassert_equal(response.flags, 0);
 }
 
 ZTEST_USER(espi, test_host_command_usb_pd_power_info)
@@ -41,9 +41,9 @@ ZTEST_USER(espi, test_host_command_usb_pd_power_info)
 		EC_CMD_USB_PD_POWER_INFO, 0, response, params);
 
 	args.params = &params;
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
-	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
+	zassert_equal(args.response_size, sizeof(response));
 }
 
 ZTEST_USER(espi, test_host_command_typec_status)
@@ -54,9 +54,9 @@ ZTEST_USER(espi, test_host_command_typec_status)
 	struct host_cmd_handler_args args =
 		BUILD_HOST_COMMAND(EC_CMD_TYPEC_STATUS, 0, response, params);
 
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
-	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
+	zassert_equal(args.response_size, sizeof(response));
 }
 
 ZTEST_USER(espi, test_host_command_usb_pd_get_amode)
@@ -70,12 +70,12 @@ ZTEST_USER(espi, test_host_command_usb_pd_get_amode)
 	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
 		EC_CMD_USB_PD_GET_AMODE, 0, response, params);
 
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
 	/* Note: with no SVIDs the response size is the size of the svid field.
 	 * See the usb alt mode test for verifying larger struct sizes
 	 */
-	zassert_equal(args.response_size, sizeof(response.svid), NULL);
+	zassert_equal(args.response_size, sizeof(response.svid));
 }
 
 ZTEST_USER(espi, test_host_command_gpio_get_v0)
@@ -92,18 +92,18 @@ ZTEST_USER(espi, test_host_command_gpio_get_v0)
 	/* Test true */
 	set_ac_enabled(true);
 
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
-	zassert_equal(args.response_size, sizeof(response), NULL);
-	zassert_true(response.val, NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
+	zassert_equal(args.response_size, sizeof(response));
+	zassert_true(response.val);
 
 	/* Test false */
 	set_ac_enabled(false);
 
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
-	zassert_equal(args.response_size, sizeof(response), NULL);
-	zassert_false(response.val, NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
+	zassert_equal(args.response_size, sizeof(response));
+	zassert_false(response.val);
 }
 
 ZTEST_USER(espi, test_host_command_gpio_get_v1_get_by_name)
@@ -123,20 +123,20 @@ ZTEST_USER(espi, test_host_command_gpio_get_v1_get_by_name)
 	/* Test true */
 	set_ac_enabled(true);
 
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
 	zassert_equal(args.response_size, sizeof(response.get_value_by_name),
 		      NULL);
-	zassert_true(response.get_info.val, NULL);
+	zassert_true(response.get_info.val);
 
 	/* Test false */
 	set_ac_enabled(false);
 
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
 	zassert_equal(args.response_size, sizeof(response.get_value_by_name),
 		      NULL);
-	zassert_false(response.get_info.val, NULL);
+	zassert_false(response.get_info.val);
 }
 
 ZTEST_SUITE(espi, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
