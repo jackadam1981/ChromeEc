@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8dc692_0ce5ad4e",
+        "filename": "zephyr/test/drivers/default/src/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-17T22:03:21Z",
+      "side": 1,
+      "message": "As with the other test, I don\u0027t think this comment really illuminates anything. If you think it\u0027s non-obvious how the test works, it would probably be more helpful to have a comment at the beginning like, \"Set the GPIO to 0 and then back to 1 via host command. Check that the underlying GPIO value changed.\"",
+      "revId": "70ad625d14d4e68607f1bb369442deea2f799dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
