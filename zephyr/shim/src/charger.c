@@ -62,18 +62,22 @@ bool ap_power_is_ok_to_power_up(void)
 
 static void hook_battery_soc_change(void)
 {
-	static bool charger_ok_to_power_up;
-	bool cur_charger_ok_to_power_up;
+	static bool charger_ok_to_power_up = true; /* power is ok */
+	bool cur_charger_ok_to_power_up = ap_power_is_ok_to_power_up();
 
-	cur_charger_ok_to_power_up = ap_power_is_ok_to_power_up();
+	/* power up inhibited */
+	if (!cur_charger_ok_to_power_up) {
+		charger_ok_to_power_up = false;
+		return;
+	}
+
+	/* power up AP if not already on  */
 	if (charger_ok_to_power_up != cur_charger_ok_to_power_up) {
-		LOG_INF("Battery is %s to boot AP!",
-			cur_charger_ok_to_power_up ? "READY" : "NOT READY");
+		LOG_INF("Battery is READY  to boot AP!");
 		charger_ok_to_power_up = cur_charger_ok_to_power_up;
-		if (cur_charger_ok_to_power_up) {
-			/* Charger is Ready, power up the AP */
-			chipset_exit_hard_off();
-		}
+
+		/* Charger is Ready, power up the AP */
+		chipset_exit_hard_off();
 	}
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, hook_battery_soc_change,
