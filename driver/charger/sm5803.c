@@ -415,10 +415,7 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 		}
 #endif
 
-		/* Disable sink mode, unless currently sourcing out */
-		if (!sm5803_is_sourcing_otg_power(chgnum, chgnum))
-			rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_SINK,
-						  MASK_CLR);
+		
 	}
 
 	return rv;
@@ -488,7 +485,7 @@ static void sm5803_init(int chgnum)
 			 * No charger connected, disable CHG_EN
 			 * (note other bits default to 0)
 			 */
-			rv = chg_write8(chgnum, SM5803_REG_FLOW1, 0);
+			rv = chg_write8(chgnum, SM5803_REG_FLOW1, 1);
 		} else if (!sm5803_is_sourcing_otg_power(chgnum, chgnum)) {
 			charger_vbus[chgnum] = 1;
 		}
@@ -1215,9 +1212,7 @@ void sm5803_handle_interrupt(int chgnum)
 		rv = meas_write8(CHARGER_PRIMARY, SM5803_REG_VBATSNSP_MAX_TH,
 				 0xFF);
 
-		/* Disable battery charge */
-		rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_DISABLED,
-					  MASK_CLR);
+		
 		if (is_platform_id_2s(platform_id)) {
 			/* 2S battery: set VBAT_SENSP TH 9V */
 			rv |= meas_write8(CHARGER_PRIMARY,
@@ -1385,7 +1380,6 @@ static enum ec_error_list sm5803_set_mode(int chgnum, int mode)
 	enum ec_error_list rv = EC_SUCCESS;
 
 	if (mode & CHARGE_FLAG_INHIBIT_CHARGE) {
-		rv = sm5803_flow1_update(chgnum, 0xFF, MASK_CLR);
 		rv |= sm5803_flow2_update(chgnum, SM5803_FLOW2_AUTO_ENABLED,
 					  MASK_CLR);
 	}
