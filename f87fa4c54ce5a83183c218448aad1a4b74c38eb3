@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe511883_f2d782c8",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-17T22:45:40Z",
+      "side": 1,
+      "message": "nit: generally asserts in loops are hard to debug if they go wrong. prefer different ZTEST for each case.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "f87fa4c54ce5a83183c218448aad1a4b74c38eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
