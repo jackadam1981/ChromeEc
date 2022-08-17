@@ -68,6 +68,30 @@
       },
       "revId": "b12fcb973bf996f1b690a82d8eea6c93c1729e9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be627182_b40ac36e",
+        "filename": "board/agah/charger_isl9241.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-08-17T07:06:22Z",
+      "side": 1,
+      "message": "I set adc read and for loop related code(basically everything in board_update_bj_setting() ) inside bj_connect(), which will cause EC panic when we plug-in BJA and reset EC.",
+      "parentUuid": "f9e9ffde_0d999dfe",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 25
+      },
+      "revId": "b12fcb973bf996f1b690a82d8eea6c93c1729e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
