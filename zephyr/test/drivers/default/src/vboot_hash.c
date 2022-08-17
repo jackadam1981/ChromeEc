@@ -22,9 +22,9 @@ ZTEST_USER(vboot_hash, test_hostcmd)
 	struct host_cmd_handler_args args =
 		BUILD_HOST_COMMAND(EC_CMD_VBOOT_HASH, 0, response, params);
 
-	zassert_ok(host_command_process(&args), NULL);
-	zassert_ok(args.result, NULL);
-	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_ok(host_command_process(&args));
+	zassert_ok(args.result);
+	zassert_equal(args.response_size, sizeof(response));
 	zassert_equal(response.status, EC_VBOOT_HASH_STATUS_BUSY,
 		      "response.status = %d", response.status);
 }
