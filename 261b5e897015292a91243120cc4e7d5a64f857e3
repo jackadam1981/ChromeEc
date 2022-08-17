@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53063389_a464e649",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-08-17T21:45:36Z",
+      "side": 1,
+      "message": "It shouldn\u0027t happen. If it does, it shouldn\u0027t clear the apro_result.\n\nap_ro_device_reset is called based on the TPM_RST_L state I don\u0027t know if it\u0027s guaranteed to stay asserted just because cr50 asserts EC_RST_L.",
+      "parentUuid": "6a876c78_353555a2",
+      "range": {
+        "startLine": 500,
+        "startChar": 37,
+        "endLine": 500,
+        "endChar": 70
+      },
+      "revId": "261b5e897015292a91243120cc4e7d5a64f857e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62b5de89_ca03c2a3",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 3
