@@ -34,6 +34,24 @@
       "parentUuid": "93ecfc03_35dc9798",
       "revId": "f849d11d1dbd5994a514ec76eb8e19001de62deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b470e2_5c9aac31",
+        "filename": "zephyr/test/kingler/src/fakes.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-17T21:32:27Z",
+      "side": 1,
+      "message": "🤦 yup, sorry, not sure what I was thinking. I was focused on the custom_fake and was thinking of Al\u0027s work for a mock power driver. sorry",
+      "parentUuid": "6ca68c3e_350a14eb",
+      "revId": "f849d11d1dbd5994a514ec76eb8e19001de62deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
