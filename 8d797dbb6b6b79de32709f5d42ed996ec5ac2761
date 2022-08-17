@@ -16,6 +16,24 @@
       "message": "To reiterate my bug comment, if we increase the max interrupt count, do we still need the contents of this CL to pass the BIST test?",
       "revId": "8d797dbb6b6b79de32709f5d42ed996ec5ac2761",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7f513e_50c23506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-08-17T02:52:28Z",
+      "side": 1,
+      "message": "No, if remove this patch, I2C will takes more time to read BIST data while receive Alert, thus PD controller will pending hardware fifo, then test will fail.",
+      "parentUuid": "2b469b3c_e39f549b",
+      "revId": "8d797dbb6b6b79de32709f5d42ed996ec5ac2761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
