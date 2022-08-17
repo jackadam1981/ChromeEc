@@ -33,6 +33,24 @@
       "message": "Shouldn\u0027t the virtual mux driver have sent the USB mux event when the mux changed?  Why should a hard reset clear affect the USB mux events, when it\u0027s not maintained in the PD_STATUS_* events?",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74fa7fa8_4b3c8e85",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-17T06:54:58Z",
+      "side": 1,
+      "message": "The comment might be not clear enough.\n\nThe problem is that when AP boots, EC would send a batch of Type-C events. The events occurred at EC side has a sequence, but AP doesn\u0027t have the knowledge of the sequence. [CL: https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/3475554/2]e.g.\n\n1. EC occured hard reset\n2. EC configured mux\n3. AP boots. AP received mux changed event and hard reset event.\n4. cros-ec-typec handle the mux event first\n5. cros-ec-typec handle the hard reset event, and hence reset USB mux config.\n\nAt EC side, the mux status doesn\u0027t change after the hard reset.",
+      "parentUuid": "45c36298_aed5ab07",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
