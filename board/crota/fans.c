@@ -19,6 +19,10 @@
 #define SENSOR_SOC_FAN_MID 45
 #define SENSOR_SOC_FAN_MAX 51
 
+int i = 1;
+int j = 1;
+int k = 1;
+
 /* MFT channels. These are logically separate from pwm_channels. */
 const struct mft_t mft_channels[] = {
 	[MFT_CH_0] = {
@@ -124,6 +128,28 @@ void board_override_fan_control(int fan, int *tmp)
 	int sensor_charger;
 	int sensor_ambient;
 	int fan_triggered;
+
+	if ( i == 36 )
+		j = 0;
+	if ( i == 1 )
+		j = 1;
+
+	if (j) {
+		i++;
+		k = 1;
+	}
+	else {
+		k++;
+		if (k > 30)
+			i--;
+	}
+
+	ccprints("---------------------");
+	ccprints("temps count: %d",i);
+	tmp[0] += i;
+	tmp[2] += i;
+	ccprints("Now SOC temps: %d",tmp[0]);
+	ccprints("Now charger temps: %d",tmp[2]);
 
 	/* Decide sensor SOC temperature using which slope */
 	if (tmp[TEMP_SENSOR_1_SOC] > SENSOR_SOC_FAN_MID) {
