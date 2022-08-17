@@ -64,7 +64,7 @@ static void connect_partner_to_port(struct usbc_alt_mode_fixture *fixture)
 
 static void disconnect_partner_from_port(struct usbc_alt_mode_fixture *fixture)
 {
-	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul), NULL);
+	zassume_ok(tcpci_emul_disconnect_partner(fixture->tcpci_emul));
 	isl923x_emul_set_adc_vbus(fixture->charger_emul, 0);
 	k_sleep(K_SECONDS(1));
 }
@@ -250,14 +250,14 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 	host_cmd_usb_pd_get_amode(TEST_PORT, 0, &response, &response_size);
 
 	/* Response should be populated with a DisplayPort VDO */
-	zassert_equal(response_size, sizeof(response), NULL);
-	zassert_equal(response.svid, USB_SID_DISPLAYPORT, NULL);
+	zassert_equal(response_size, sizeof(response));
+	zassert_equal(response.svid, USB_SID_DISPLAYPORT);
 	zassert_equal(response.vdo[0],
 		      fixture->partner.modes_vdm[response.opos], NULL);
 
 	/* DPM configures the partner on DP mode entry */
 	/* Verify port partner thinks its configured for DisplayPort */
-	zassert_true(fixture->partner.displayport_configured, NULL);
+	zassert_true(fixture->partner.displayport_configured);
 	/* Verify we also set up DP on our mux */
 	status = host_cmd_typec_status(TEST_PORT);
 	zassert_equal((status.mux_state & USB_PD_MUX_DP_ENABLED),
@@ -303,15 +303,15 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 
 	/* DPM configures the partner on DP mode entry */
 	/* Verify port partner thinks its configured for DisplayPort */
-	zassert_true(fixture->partner.displayport_configured, NULL);
+	zassert_true(fixture->partner.displayport_configured);
 
 	host_cmd_typec_control_exit_modes(TEST_PORT);
 	k_sleep(K_SECONDS(1));
-	zassert_false(fixture->partner.displayport_configured, NULL);
+	zassert_false(fixture->partner.displayport_configured);
 
 	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
 	k_sleep(K_SECONDS(1));
-	zassert_true(fixture->partner.displayport_configured, NULL);
+	zassert_true(fixture->partner.displayport_configured);
 
 	/* Verify that DisplayPort is the active alternate mode. */
 	struct ec_params_usb_pd_get_mode_response response;
@@ -320,8 +320,8 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 	host_cmd_usb_pd_get_amode(TEST_PORT, 0, &response, &response_size);
 
 	/* Response should be populated with a DisplayPort VDO */
-	zassert_equal(response_size, sizeof(response), NULL);
-	zassert_equal(response.svid, USB_SID_DISPLAYPORT, NULL);
+	zassert_equal(response_size, sizeof(response));
+	zassert_equal(response.svid, USB_SID_DISPLAYPORT);
 	zassert_equal(response.vdo[0],
 		      fixture->partner.modes_vdm[response.opos], NULL);
 }
@@ -380,7 +380,7 @@ ZTEST_F(usbc_alt_mode_dp_unsupported, verify_displayport_mode_nonentry)
 		k_sleep(K_SECONDS(1));
 	}
 
-	zassert_false(fixture->partner.displayport_configured, NULL);
+	zassert_false(fixture->partner.displayport_configured);
 	int dp_attempts = atomic_get(&fixture->partner.mode_enter_attempts);
 	zassert_equal(dp_attempts, 1, "Expected 1 DP attempt, got %d",
 		      dp_attempts);
