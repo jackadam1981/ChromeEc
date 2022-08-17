@@ -130,7 +130,7 @@ void connect_source_to_port(struct tcpci_partner_data *partner,
 			    const struct emul *charger_emul)
 {
 	set_ac_enabled(true);
-	zassume_ok(tcpci_partner_connect_to_tcpci(partner, tcpci_emul), NULL);
+	zassume_ok(tcpci_partner_connect_to_tcpci(partner, tcpci_emul));
 
 	isl923x_emul_set_adc_vbus(charger_emul,
 				  PDO_FIXED_GET_VOLT(src->pdo[pdo_index]));
@@ -142,7 +142,7 @@ void disconnect_source_from_port(const struct emul *tcpci_emul,
 				 const struct emul *charger_emul)
 {
 	set_ac_enabled(false);
-	zassume_ok(tcpci_emul_disconnect_partner(tcpci_emul), NULL);
+	zassume_ok(tcpci_emul_disconnect_partner(tcpci_emul));
 	isl923x_emul_set_adc_vbus(charger_emul, 0);
 	k_sleep(K_SECONDS(1));
 }
@@ -168,7 +168,7 @@ void connect_sink_to_port(struct tcpci_partner_data *partner,
 	tcpci_tcpc_alert(0);
 	k_sleep(K_SECONDS(1));
 
-	zassume_ok(tcpci_partner_connect_to_tcpci(partner, tcpci_emul), NULL);
+	zassume_ok(tcpci_partner_connect_to_tcpci(partner, tcpci_emul));
 
 	/* Wait for PD negotiation and current ramp.
 	 * TODO(b/213906889): Check message timing and contents.
@@ -178,7 +178,7 @@ void connect_sink_to_port(struct tcpci_partner_data *partner,
 
 void disconnect_sink_from_port(const struct emul *tcpci_emul)
 {
-	zassume_ok(tcpci_emul_disconnect_partner(tcpci_emul), NULL);
+	zassume_ok(tcpci_emul_disconnect_partner(tcpci_emul));
 	k_sleep(K_SECONDS(1));
 }
 
