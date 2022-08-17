@@ -21,7 +21,7 @@
  * motion_sensors array which are using the same lsm6dso driver.
  */
 #define CREATE_SENSOR_DATA_LSM6DSO(id, drvdata_name) \
-	static struct stprivate_data drvdata_name;
+	static struct lsm6dso_data drvdata_name;
 
 /*
  * Create driver data for each lsm6dso drvinfo instance in device tree.
