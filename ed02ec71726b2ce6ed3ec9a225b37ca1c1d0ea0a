@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f11c8d6_e044f47c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-08-17T03:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "126ac106_5a3ec292",
+      "range": {
+        "startLine": 12,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "ed02ec71726b2ce6ed3ec9a225b37ca1c1d0ea0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d5b5d37_1c5b9459",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-16T17:15:37Z",
       "side": 1,
       "message": "nit: How about \u0027Wait if the fan speed is still rapidly changing in the operating range\u0027?",
+      "range": {
+        "startLine": 289,
+        "startChar": 4,
+        "endLine": 289,
+        "endChar": 70
+      },
+      "revId": "ed02ec71726b2ce6ed3ec9a225b37ca1c1d0ea0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc81120_898b8b5b",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-08-17T03:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d5b5d37_1c5b9459",
       "range": {
         "startLine": 289,
         "startChar": 4,
