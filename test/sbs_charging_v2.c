@@ -204,6 +204,71 @@ static void ev_clear(int event)
 	host_clear_events(EC_HOST_EVENT_MASK(event));
 }
 
+int command_pwr_avg_inner(int argc, char **argv);
+
+/* This command doesn't take args, and should fail with them */
+static int test_command_pwr_avg_args(void) {
+	int rv;
+	int argc = 2;
+	char *argv[] = {
+		"program", /* Expected */
+		"1"        /* Invalid */
+	};
+
+	test_setup(0);
+
+	rv = command_pwr_avg_inner(argc, argv);
+	
+	TEST_EQ(rv, EC_ERROR_PARAM_COUNT, "%d");
+
+	return EC_SUCCESS;
+}
+
+static int test_command_pwr_avg_failure(void) {
+	int rv;
+	int argc = 1;
+	char *argv[] = { "program" };
+
+	test_setup(0); // TODO which should it be
+
+	sb_write(SB_VOLTAGE, -200);
+	wait_charging_state();
+
+	rv = command_pwr_avg_inner(argc, argv);
+
+	TEST_EQ(rv, EC_ERROR_UNKNOWN, "%d");
+	//TEST_ASSERT(resp.avg_mv);
+	//TEST_ASSERT(resp.avg_ma);
+	//TEST_ASSERT(resp.avg_mw == (resp.avg_mv * resp.avg_ma / 1000));
+	return EC_SUCCESS;
+}
+
+static int test_command_pwr_avg_normal(int on_ac) {
+	int rv;
+	int argc = 1;
+	char *argv[] = { "program" };
+
+	test_setup(on_ac);
+
+	ccprintf("pwr_avg (on_ac = %d)\n", on_ac);
+
+	rv = command_pwr_avg_inner(argc, argv);
+
+	TEST_EQ(rv, EC_SUCCESS, "%d");
+	//TEST_ASSERT(resp.avg_mv);
+	//TEST_ASSERT(resp.avg_ma);
+	//TEST_ASSERT(resp.avg_mw == (resp.avg_mv * resp.avg_ma / 1000));
+	return EC_SUCCESS;
+}
+
+static int test_command_pwr_avg_bat(void) {
+	return test_command_pwr_avg_normal(0);
+}
+
+static int test_command_pwr_avg_ac(void) {
+	return test_command_pwr_avg_normal(1);
+}
+
 static int test_charge_state(void)
 {
 	enum charge_state state;
@@ -950,6 +1015,10 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_cold_battery_with_ac);
 	RUN_TEST(test_cold_battery_no_ac);
 	RUN_TEST(test_external_funcs);
+	RUN_TEST(test_command_pwr_avg_ac);
+	RUN_TEST(test_command_pwr_avg_bat);
+	RUN_TEST(test_command_pwr_avg_failure);
+	RUN_TEST(test_command_pwr_avg_args);
 	RUN_TEST(test_hc_charge_state);
 	RUN_TEST(test_hc_current_limit);
 	RUN_TEST(test_low_battery_hostevents);

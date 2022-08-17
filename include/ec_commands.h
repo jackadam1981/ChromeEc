@@ -4665,7 +4665,6 @@ enum charge_state_command {
 	CHARGE_STATE_CMD_SET_PARAM,
 	CHARGE_STATE_NUM_CMDS,
 };
-
 /*
  * Known param numbers are defined here. Ranges are reserved for board-specific
  * params, which are handled by the particular implementations.

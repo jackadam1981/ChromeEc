@@ -2694,9 +2694,9 @@ DECLARE_HOST_COMMAND(EC_CMD_CHARGE_STATE, charge_command_charge_state,
 /*****************************************************************************/
 /* Console commands */
 
-#ifdef CONFIG_CMD_PWR_AVG
+//#ifdef CONFIG_CMD_PWR_AVG
 
-static int command_pwr_avg(int argc, char **argv)
+STATIC_IF_NOT(TEST_BUILD) int command_pwr_avg_inner(int argc, char **argv)
 {
 	int avg_mv;
 	int avg_ma;
@@ -2715,10 +2715,15 @@ static int command_pwr_avg(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
+static int command_pwr_avg(int argc, char **argv)
+{
+	return command_pwr_avg_inner(argc, argv);
+}
+
 DECLARE_CONSOLE_COMMAND(pwr_avg, command_pwr_avg, NULL,
 			"Get 1 min power average");
 
-#endif /* CONFIG_CMD_PWR_AVG */
+//#endif /* CONFIG_CMD_PWR_AVG */
 
 static int command_chgstate(int argc, char **argv)
 {
