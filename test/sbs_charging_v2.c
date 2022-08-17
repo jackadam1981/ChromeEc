@@ -515,6 +515,38 @@ static int test_external_funcs(void)
 	return EC_SUCCESS;
 }
 
+/* 
+NOTE TO SELF
+make print-hosts didn't work.
+had to run with TEST_SBS_CHARGING_V2=1 to get this 
+target to even show up in the list and as a makefile
+target. then ran with make run-sbs_charging_v2
+*/
+static int test_hc_power_avg(void) {
+	int rv;
+	struct ec_response_power_avg resp;
+
+	/* TODO battery or AC, which is correct? Or, both? */
+	test_setup(1);
+
+	// It takes no args, so can the request be a null pointer?
+	rv = test_send_host_command(EC_CMD_POWER_AVG, 0, NULL,
+				    0, &resp, sizeof(resp));
+
+	TEST_ASSERT(rv == EC_RES_SUCCESS);
+	TEST_ASSERT(resp.avg_mv);
+	TEST_ASSERT(resp.avg_ma);
+	TEST_ASSERT(resp.avg_mw == (resp.avg_mv * resp.avg_ma / 1000));
+
+	// TODO how do I test the EC_ERROR_PARAM_COUNT case?
+
+	// TODO set a negative voltage, then assert error
+	// possibly, charger_set_voltage()
+	
+	return EC_SUCCESS;
+}
+
+
 #define CHG_OPT1 0x2000
 #define CHG_OPT2 0x4000
 static int test_hc_charge_state(void)
@@ -950,6 +982,7 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_cold_battery_with_ac);
 	RUN_TEST(test_cold_battery_no_ac);
 	RUN_TEST(test_external_funcs);
+	RUN_TEST(test_hc_power_avg);
 	RUN_TEST(test_hc_charge_state);
 	RUN_TEST(test_hc_current_limit);
 	RUN_TEST(test_low_battery_hostevents);

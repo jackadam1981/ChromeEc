@@ -4649,6 +4649,23 @@ struct ec_params_hang_detect {
 	uint16_t warm_reboot_timeout_msec;
 } __ec_align4;
 
+
+/*****************************************************************************/
+/* Command to retrieve power average */
+
+/* 
+ * TODO(cawhitelaw) What should this magic value be? And how is it linked up
+ * to the actual command?
+ */
+#define EC_CMD_POWER_AVG 0x9345
+
+struct ec_response_power_avg {
+	int avg_mv;
+	int avg_ma;
+	int avg_mw;
+} __ec_align4;
+
+
 /*****************************************************************************/
 /* Commands for battery charging */
 
@@ -4665,7 +4682,6 @@ enum charge_state_command {
 	CHARGE_STATE_CMD_SET_PARAM,
 	CHARGE_STATE_NUM_CMDS,
 };
-
 /*
  * Known param numbers are defined here. Ranges are reserved for board-specific
  * params, which are handled by the particular implementations.
