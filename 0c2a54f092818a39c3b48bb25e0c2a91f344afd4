@@ -52,6 +52,24 @@
       "parentUuid": "adca9713_1e372a32",
       "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e76a901_0dcd8bc9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1520485
+      },
+      "writtenOn": "2022-08-18T02:31:25Z",
+      "side": 1,
+      "message": "TCPC not reset at this moment, these code just want to reduce I2C access.",
+      "parentUuid": "412f827d_217959e1",
+      "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
