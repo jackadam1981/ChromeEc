@@ -7,7 +7,11 @@
 #
 
 CHIP:=mt_scp
+ifeq ($(BOARD), geralt_scp_core1)
+CHIP_VARIANT:=mt8188_core1
+else
 CHIP_VARIANT:=mt8188
+endif
 CHIP_FAMILY:=RV55
 BASEBOARD:=mtscp-rv32i
 board-y+=dram_test.o

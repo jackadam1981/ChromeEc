@@ -38,7 +38,7 @@
 #define REMAP_ADDR_MSB_MASK ((~0) << REMAP_ADDR_SHIFT)
 #define MAP_INVALID 0xff
 
-#ifdef CHIP_VARIANT_MT8188
+#if defined(CHIP_VARIANT_MT8188) || defined(CHIP_VARIANT_MT8188_CORE1)
 static const uint8_t addr_map[16] = {
 	MAP_INVALID,	/* SRAM */
 	0x1,		/* ext_addr_0x1 */
@@ -86,7 +86,7 @@ static const uint8_t addr_map[16] = {
 
 void memmap_init(void)
 {
-#ifdef CHIP_VARIANT_MT8188
+#if defined(CHIP_VARIANT_MT8188) || defined(CHIP_VARIANT_MT8188_CORE1)
 	SCP_R_REMAP_0X4567 = (uint32_t)addr_map[0x4] |
 			     (uint32_t)addr_map[0x5] << 8 |
 			     (uint32_t)addr_map[0x6] << 16 |
