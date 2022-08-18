@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5813d14a_e381b6bc",
+        "filename": "power/qcom.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-18T22:26:51Z",
+      "side": 1,
+      "message": "This logic seems to be identical to what the `test_mockable_static` keyword does (see include/common.h:258)",
+      "range": {
+        "startLine": 1207,
+        "startChar": 0,
+        "endLine": 1211,
+        "endChar": 6
+      },
+      "revId": "39ef4131e45fbb62e2e53176479a6cf03fbeee4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca05fb1_602718ca",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/mock_power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-18T22:26:51Z",
+      "side": 1,
+      "message": "Have you thought about putting these with the other fake definitions/declarations in zephyr/test/drivers/common/src/test_mocks.c and zephyr/test/drivers/common/include/test/drivers/test_mocks.h ? I have mixed feelings. It\u0027s nice to keep them all together but having to wrap them in `#ifdef CONFIG_MOCK_POWER_SEQUENCE` might make that file too messy.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "39ef4131e45fbb62e2e53176479a6cf03fbeee4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795870e6_5b99be94",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/mock_power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-18T22:26:51Z",
+      "side": 1,
+      "message": "Maybe call these `\u003creal name\u003e_custom_fake()` to match the FFF terminology",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "39ef4131e45fbb62e2e53176479a6cf03fbeee4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
