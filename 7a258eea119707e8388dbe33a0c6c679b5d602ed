@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d3c787_795994a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-18T14:08:50Z",
+      "side": 1,
+      "message": "Taking over review of since I wrote an earlier GPIO test I made a mistake and missed there was a pre-existing bug on this.\n\nSeems like this specifically covers failure or \"unhappy\" paths. Since I covered the happy (non-failure) branches, let\u0027s focus this CL on those if that\u0027s okay. \n\nApologies again for missing the earlier bug.",
+      "revId": "7a258eea119707e8388dbe33a0c6c679b5d602ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47bbf032_e8f53b7a",
