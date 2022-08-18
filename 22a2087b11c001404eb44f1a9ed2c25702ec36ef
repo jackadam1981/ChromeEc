@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4475368_709fc4b0",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-08-18T04:42:05Z",
+      "side": 1,
+      "message": "Lock mode: The fan will detect abnormal rpm and did a restart.\n\nI dumped some logs on tracker with and without this patch and explain why this patch can fix the problem.\n\nbtw, CH@nuvoton has another suggestion on tracker. Both are OK for me.",
+      "parentUuid": "00c75191_c54a9789",
+      "range": {
+        "startLine": 290,
+        "startChar": 5,
+        "endLine": 290,
+        "endChar": 59
+      },
+      "revId": "22a2087b11c001404eb44f1a9ed2c25702ec36ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd8fd04d_18bb2082",
