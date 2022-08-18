@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85d2acf_62c26f8c",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/tcpci_test_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:19:47Z",
+      "side": 1,
+      "message": "There should be a line for `common_data` here. I\u0027m assuming that the other functions don\u0027t have it because people copy-pasted without checking.",
+      "revId": "a6be4a0335e556e7f1878fa43970b8d43d5761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f03327c_8e54258c",
+        "filename": "zephyr/test/drivers/default/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:19:47Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a comment here.",
+      "revId": "a6be4a0335e556e7f1878fa43970b8d43d5761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638c19b9_c581ee20",
+        "filename": "zephyr/test/drivers/default/src/tcpci_test_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:19:47Z",
+      "side": 1,
+      "message": "IMO, you don\u0027t need a comment here if you already have one in the header file.",
+      "revId": "a6be4a0335e556e7f1878fa43970b8d43d5761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471bed98_c3db77f1",
+        "filename": "zephyr/test/drivers/default/src/tcpci_test_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:19:47Z",
+      "side": 1,
+      "message": "Init is just part of the setup here, so you should use `zassume_equal`.",
+      "range": {
+        "startLine": 1024,
+        "startChar": 1,
+        "endLine": 1024,
+        "endChar": 14
+      },
+      "revId": "a6be4a0335e556e7f1878fa43970b8d43d5761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b24a06c_085873c6",
+        "filename": "zephyr/test/drivers/default/src/tcpci_test_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:19:47Z",
+      "side": 1,
+      "message": "I think you can just use `zassert_ok` here. (`EC_SUCCESS` \u003d\u003d 0 \u003d\u003d \"OK\")",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 14
+      },
+      "revId": "a6be4a0335e556e7f1878fa43970b8d43d5761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
