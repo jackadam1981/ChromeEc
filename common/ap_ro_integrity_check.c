@@ -187,6 +187,7 @@ struct gbb_descriptor {
 	struct ro_range fmap;
 	struct ro_range gbb;
 	struct ro_range gbb_flags;
+	vb2_gbb_flags_t injected_flags;
 } __packed;
 
 BUILD_ASSERT(sizeof(struct vb2_gbb_header) == EXPECTED_VB2_GBB_HEADER_SIZE);
@@ -421,36 +422,106 @@ static enum ap_ro_check_vc_errors ap_ro_check_unsupported(int add_flash_event)
 	return ARCVE_OK;
 }
 
+/* Returns 1 if a is in b */
+static int a_is_in_range_b(const struct ro_range a, const struct ro_range b)
+{
+	return a.flash_offset >= b.flash_offset &&
+	       a.flash_offset + a.range_size <= b.flash_offset + b.range_size;
+}
+
+/**
+ * Update ctx with the contents of full_range and the injected flags.
+ *
+ * Read the data before the flags and add it to ctx. Add the injected flags
+ * Invoke service function to sequentially calculate sha256 hash of the AP
+ * flash memory ranges, and compare the final hash with the expected value.
+ *
+ * Use the gbb_flags from gbbd. The AP hash was saved with the wrong GBB
+ * flags value in the hash. validate_gbb has already been called to validate
+ * the actual GBB contents. Use the gbbd->injected_flags when calculating the
+ * hash to see if it's possible to match the hash.
+ *
+ * @param ctx pointer to the sha256 context to update
+ * @param full_range range to include in hash calculation
+ * @param gbbd the descriptor with the gbb flag information.
+ */
+static void update_sha_with_gbb_range(struct sha256_ctx *ctx,
+				      const struct ro_range full_range,
+				      const struct gbb_descriptor *gbbd)
+{
+	struct ro_range range;
+
+	/* Use the factory flags to calculate the hash. */
+	CPRINTS("Using %x for GBB flags.", gbbd->injected_flags);
+	/* Add the data before the gbb flags */
+	range.flash_offset = full_range.flash_offset;
+	range.range_size = gbbd->gbb_flags.flash_offset -
+		full_range.flash_offset;
+	if (range.range_size > 0)
+		usb_spi_sha256_update(ctx, range.flash_offset,
+				      range.range_size, 1);
+
+	/* Update hash with the injected gbb flags */
+	SHA256_update(ctx, &gbbd->injected_flags,
+		sizeof(gbbd->injected_flags));
+
+	/* Add the data after the gbb flags */
+	range.flash_offset = gbbd->gbb_flags.flash_offset +
+		gbbd->gbb_flags.range_size;
+	range.range_size = full_range.flash_offset +
+		full_range.range_size - range.flash_offset;
+	if (range.range_size > 0)
+		usb_spi_sha256_update(ctx, range.flash_offset,
+				      range.range_size, 1);
+}
 /**
  * Validate hash of AP flash ranges.
  *
  * Invoke service function to sequentially calculate sha256 hash of the AP
  * flash memory ranges, and compare the final hash with the expected value.
  *
+ * Use the gbb_flags from gbbd. The AP hash was saved with the wrong GBB
+ * flags value in the hash. validate_gbb has already been called to validate
+ * the actual GBB contents. Use the gbbd->injected_flags when calculating the
+ * hash to see if it's possible to match the hash.
+ *
  * @param ranges array of ranges to include in hash calculation
  * @param count number of ranges in the array
  * @param expected_digest pointer to the expected sha256 digest value.
+ * @param gbbd pointer gbb_descriptor to adjust the hash for different gbb
+ *             flags.
  *
  * @return ROV_SUCCEEDED if succeeded, ROV_FAILED otherwise.
  */
 static
 enum ap_ro_check_result validate_ranges_sha(const struct ro_range *ranges,
 					    size_t count,
-					    const uint8_t *expected_digest)
+					    const uint8_t *expected_digest,
+					    struct gbb_descriptor *gbbd)
 {
 	int8_t digest[SHA256_DIGEST_SIZE];
 	size_t i;
 	struct sha256_ctx ctx;
 
 	usb_spi_sha256_start(&ctx);
-	for (i = 0; i < count; i++)
+	for (i = 0; i < count; i++) {
+		/*
+		 * If the GBB is validated and the flags are in range, use
+		 * the injected gbb flag value and the actual data from before
+		 * and after the gbb flags to calculate the hash.
+		 */
+		if (gbbd->validate_flags &&
+		    a_is_in_range_b(gbbd->gbb_flags, ranges[i])) {
+			update_sha_with_gbb_range(&ctx, ranges[i], gbbd);
+			continue;
+		}
 		usb_spi_sha256_update(&ctx, ranges[i].flash_offset,
 				      ranges[i].range_size, 1);
+	}
 
 	usb_spi_sha256_final(&ctx, digest, sizeof(digest));
 	if (DCRYPTO_equals(digest, expected_digest, sizeof(digest)) !=
 	    DCRYPTO_OK) {
-		CPRINTS("AP RO verification FAILED!");
 		CPRINTS("Calculated digest %ph",
 			HEX_BUF(digest, sizeof(digest)));
 		CPRINTS("Stored digest %ph",
@@ -459,6 +530,44 @@ enum ap_ro_check_result validate_ranges_sha(const struct ro_range *ranges,
 	}
 
 	return ROV_SUCCEEDED;
+}
+
+#define FACTORY_FLAG_COUNT 1
+/* TODO: add possible factory flags. 0 maintains current behavior. */
+const vb2_gbb_flags_t possible_factory_flags[] = { 0 };
+BUILD_ASSERT(ARRAY_SIZE(possible_factory_flags) == FACTORY_FLAG_COUNT);
+
+/**
+ * Validate hash of AP flash ranges with different GBB flags.
+ *
+ * Try to use different GBB values to see if any hashes match the saved hash.
+ * The GBB flags were already validated
+ *
+ * @param ranges array of ranges to include in hash calculation
+ * @param count number of ranges in the array
+ * @param expected_digest pointer to the expected sha256 digest value.
+ * @param gbbd pointer gbb_descriptor to adjust the hash for different gbb
+ *             flags.
+ *
+ * @return ROV_SUCCEEDED if succeeded, ROV_FAILED otherwise.
+ */
+static enum ap_ro_check_result validate_ranges_sha_with_factory_flags(
+	const struct ro_range *ranges, size_t count,
+	const uint8_t *expected_digest, struct gbb_descriptor *gbbd)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(possible_factory_flags); i++) {
+		gbbd->injected_flags = possible_factory_flags[i];
+		if (validate_ranges_sha(ranges,
+					count,
+					expected_digest,
+					gbbd) ==  ROV_SUCCEEDED) {
+			CPRINTS("matched gbb %x", gbbd->injected_flags);
+			return ROV_SUCCEEDED;
+		}
+	}
+	return ROV_FAILED;
 }
 
 /*****************************************************************************/
@@ -529,12 +638,6 @@ static int find_gbb(uint32_t offset, uint16_t nareas,
 	return -1;
 }
 
-/* Returns 1 if a is in b */
-static int a_is_in_range_b(const struct ro_range a, const struct ro_range b)
-{
-	return a.flash_offset >= b.flash_offset &&
-	       a.flash_offset + a.range_size <= b.flash_offset + b.range_size;
-}
 /*
  * Validate the GBB flags are set to 0.
  *
@@ -751,10 +854,19 @@ static uint8_t do_ap_ro_check(void)
 		rv = validate_gbb(p_chk->payload.ranges,
 				  p_chk->header.num_ranges,
 				  &gbbd);
-	if (rv == ROV_SUCCEEDED)
-		rv = validate_ranges_sha(p_chk->payload.ranges,
-					 p_chk->header.num_ranges,
-					 p_chk->payload.digest);
+	if (rv == ROV_SUCCEEDED) {
+		if (gbbd.validate_flags)
+			rv = validate_ranges_sha_with_factory_flags(
+				p_chk->payload.ranges,
+				p_chk->header.num_ranges,
+				p_chk->payload.digest,
+				&gbbd);
+		else
+			rv = validate_ranges_sha(p_chk->payload.ranges,
+						 p_chk->header.num_ranges,
+						 p_chk->payload.digest,
+						 &gbbd);
+	}
 
 	disable_ap_spi_hash_shortcut();
 
@@ -775,6 +887,7 @@ static uint8_t do_ap_ro_check(void)
 		 */
 		return EC_ERROR_CRC;
 	}
+	/* TODO: save gbbd */
 	apro_result = AP_RO_PASS;
 	ap_ro_add_flash_event(APROF_CHECK_SUCCEEDED);
 	CPRINTS("AP RO PASS!");
