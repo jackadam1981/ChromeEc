@@ -15,11 +15,11 @@
 const struct i2c_port_t i2c_ports[] = {
 	{
 		/* I2C0 */
-		.name = "sensor",
-		.port = I2C_PORT_SENSOR,
+		.name = "port80",
+		.port = I2C_PORT_PORT80,
 		.kbps = 400,
-		.scl = GPIO_EC_I2C_SENSOR_SCL,
-		.sda = GPIO_EC_I2C_SENSOR_SDA,
+		.scl = GPIO_EC_I2C_PORT80_SCL,
+		.sda = GPIO_EC_I2C_PORT80_SDA,
 	},
 	{
 		/* I2C1 */
