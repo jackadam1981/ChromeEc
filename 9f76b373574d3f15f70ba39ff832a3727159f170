@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd36393_417713db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-18T17:44:02Z",
+      "side": 1,
+      "message": "for",
+      "range": {
+        "startLine": 11,
+        "startChar": 44,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adde4754_b730f315",
+        "filename": "common/host_command.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-18T17:44:02Z",
+      "side": 1,
+      "message": "nit: move this to common/system.c",
+      "range": {
+        "startLine": 933,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 44
+      },
+      "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496766fe_0f666032",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 7730,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-18T17:44:02Z",
+      "side": 1,
+      "message": "add uint64_t ec_boot_time; and update this from main()",
+      "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
