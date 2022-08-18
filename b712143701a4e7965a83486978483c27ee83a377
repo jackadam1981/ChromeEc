@@ -22,6 +22,30 @@
       },
       "revId": "b712143701a4e7965a83486978483c27ee83a377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5097b15_97556a6d",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-08-18T04:40:25Z",
+      "side": 1,
+      "message": "Remove this line , it is redefine .\nthanks",
+      "parentUuid": "8d7d8967_e64398c4",
+      "range": {
+        "startLine": 566,
+        "startChar": 20,
+        "endLine": 566,
+        "endChar": 32
+      },
+      "revId": "b712143701a4e7965a83486978483c27ee83a377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
