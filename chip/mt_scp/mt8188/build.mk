@@ -5,6 +5,7 @@
 
 # Required chip modules
 chip-y+=$(CHIP_VARIANT)/clock.o
+chip-y+=mt8188/clock_$(CHIP_VARIANT).o
 chip-y+=$(CHIP_VARIANT)/intc_group.o
 chip-y+=$(CHIP_VARIANT)/uart.o
 chip-y+=$(CHIP_VARIANT)/video.o
