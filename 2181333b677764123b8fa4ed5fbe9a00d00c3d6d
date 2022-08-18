@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf051d55_0df03a76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-18T22:43:49Z",
+      "side": 1,
+      "message": "Hi Jeremy.\nFollowing up on https://b.corp.google.com/issues/242765979 , these tests are being skipped because one of the power-button zephyr tests shuts down the chipset, then ends the test before turning it back on. This leads to subsequent tests failing the chipset on check in the before function, so they are getting skipped. The fix here is just to turn on the chipset at the end of the power-button test which turns it off. \n\nHere are the coverage results for cros/main (on top) and the branch with my fix (on bottom): https://drive.google.com/file/d/13_RZq8PNdJv52-RaTR9akkE4ymKRr7T7/view?usp\u003dsharing\n\nLet me know if you have any questions.\nThanks,\nJameson",
+      "revId": "2181333b677764123b8fa4ed5fbe9a00d00c3d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
