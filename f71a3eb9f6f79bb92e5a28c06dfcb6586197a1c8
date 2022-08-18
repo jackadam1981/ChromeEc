@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a57bfc_7a3328d5",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-08-18T05:02:45Z",
+      "side": 0,
+      "message": "Dear Bob:\n      The pazquel devices have no motion sensors , the sensor count is 0\n      Please reference the CL:\n      https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3115931",
+      "parentUuid": "28bb07ab_22c7f719",
+      "revId": "f71a3eb9f6f79bb92e5a28c06dfcb6586197a1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fd073fb_513c1716",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-18T04:42:29Z",
       "side": 0,
       "message": "Same comment as above.",
+      "revId": "f71a3eb9f6f79bb92e5a28c06dfcb6586197a1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "742062bc_55ae0f04",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-08-18T05:02:45Z",
+      "side": 0,
+      "message": "Same comment as above.\nBMI160 and BMA253 are not used in pazquel devices.",
+      "parentUuid": "4fd073fb_513c1716",
       "revId": "f71a3eb9f6f79bb92e5a28c06dfcb6586197a1c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
