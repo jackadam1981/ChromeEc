@@ -19,6 +19,7 @@ target_sources(app PRIVATE
     src/cros_cbi.c
     src/espi.c
     src/gpio.c
+    src/gpio_commands.c
     src/host_cmd/host_event_commands.c
     src/host_cmd/motion_sense.c
     src/integration/usbc/usb.c
