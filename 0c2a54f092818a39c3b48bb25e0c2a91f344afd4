@@ -70,6 +70,24 @@
       "parentUuid": "412f827d_217959e1",
       "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf392da_7b574d70",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:38:17Z",
+      "side": 1,
+      "message": "What I mean is, I don\u0027t think we can guarantee that the TCPC has not reset, even during a BIST test. Unless we can guarantee that it hasn\u0027t reset, we shouldn\u0027t set the return value of `register_mask_reset` to indicate that the TCPC hasn\u0027t reset. If we don\u0027t care whether the TCPC has reset, then we can decide not to call `register_mask_reset` based on `bist_mode`. If we do care whether the TCPC has reset, then we should do these 2 register reads.\n\nIf we do these 2 reads in BIST mode, does that by itself break the test? If the test still passes with these 2 reads, I\u0027d rather just leave this part of the code as is.",
+      "parentUuid": "5e76a901_0dcd8bc9",
+      "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
