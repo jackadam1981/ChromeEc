@@ -128,6 +128,30 @@
       },
       "revId": "7a258eea119707e8388dbe33a0c6c679b5d602ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fefb736_a71c5f28",
+        "filename": "zephyr/test/drivers/default/src/gpio_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-18T15:16:51Z",
+      "side": 1,
+      "message": "My preference is still strcmp since I believe garbage is allowed to occur after the null character. Regardless, it doesn\u0027t matter for this CL anymore. Thank you for rebasing and contributing the tests!",
+      "parentUuid": "520ff66d_4e38e14a",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "7a258eea119707e8388dbe33a0c6c679b5d602ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
