@@ -202,6 +202,12 @@ static int __verify_no_char(void)
 /*****************************************************************************/
 /* Tests */
 
+void before_test(void)
+{
+	/* Make sure all tests start with the controller in the same state */
+	write_cmd_byte(I8042_XLATE | I8042_AUX_DIS | I8042_KBD_DIS);
+}
+
 static int test_8042_aux_loopback(void)
 {
 	/* Disable all IRQs */
