@@ -16,6 +16,24 @@
       "message": "As currently defined, this will return `EC_SUCCESS` with an undefined value for `enable` if `tcpc-\u003eget_bist_test_mode` is undefined. For the sake of simplicity, I\u0027d suggest setting `*enabled \u003d false` if the function is undefined. You may also want to update the prototype comment to reflect that.",
       "revId": "2c0baeeb29e095f55c6de58e33fdf136713f7306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2308ed2_16c3b982",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-18T06:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf766ee_8f73f4dd",
+      "revId": "2c0baeeb29e095f55c6de58e33fdf136713f7306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
