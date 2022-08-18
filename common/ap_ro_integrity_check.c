@@ -571,6 +571,10 @@ static enum vendor_cmd_rc vc_seed_ap_ro_check(enum vendor_cmd_cc code,
 		*response_size = 0;
 		return EC_SUCCESS;
 	}
+	if (input_size + sizeof(check_header) > AP_RO_DATA_SPACE_SIZE) {
+		*response = ARCVE_BAD_PAYLOAD_SIZE;
+		return VENDOR_RC_BOGUS_ARGS;
+	}
 
 	/* There should be at least one range and the hash. */
 	if (input_size < (SHA256_DIGEST_SIZE + sizeof(struct ro_range))) {
