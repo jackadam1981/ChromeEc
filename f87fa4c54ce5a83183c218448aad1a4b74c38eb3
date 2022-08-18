@@ -46,6 +46,30 @@
       },
       "revId": "f87fa4c54ce5a83183c218448aad1a4b74c38eb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f515ee_73c66bee",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-18T08:56:49Z",
+      "side": 1,
+      "message": "Yes I agree that parameterized tests like this need lot of care, before landing on this I went through the whole dance of copy pasting it, then doing the loop, then adding the index in the message, ultimately I added that printk on line 71 that shows what command is being run. Initially I had it on all zassert, then I thought I was going to have more than three checks and moved it, then I landed only on three. :-) I\u0027ll move it back on the zassert messages, easy enough.\n\nMay be worth thinking about a macro for parameterized tests or something... (what is this? Python!?) :-)",
+      "parentUuid": "02f368d0_e338094c",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "f87fa4c54ce5a83183c218448aad1a4b74c38eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
