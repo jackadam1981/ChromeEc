@@ -679,3 +679,4 @@ ls -l /tmp/artifact_bundles/
 ```
 [ChromeOS EC Firmware Test Requirements]: ./docs/chromeos-ec-firmware-test-requirements.md
 mt8195 c0
+scp2
