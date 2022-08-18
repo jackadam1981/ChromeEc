@@ -4,8 +4,8 @@
 # found in the LICENSE file.
 
 # Required chip modules
-chip-y+=$(CHIP_VARIANT)/clock.o
 chip-y+=mt8188/clock_$(CHIP_VARIANT).o
+chip-y+=mt8188/clock_s3_$(CHIP_VARIANT).o
 chip-y+=mt8188/intc_group.o
 chip-y+=mt8188/uart.o
 
