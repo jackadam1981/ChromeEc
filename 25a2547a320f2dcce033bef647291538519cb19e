@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46eaa5bb_bd656cab",
+        "filename": "zephyr/test/drivers/common/src/mock_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-18T22:03:56Z",
+      "side": 1,
+      "message": "I think its necessary just to prevent any accidental usage when the config is not enabled.",
+      "parentUuid": "d4c2ac8c_bceeee65",
+      "revId": "25a2547a320f2dcce033bef647291538519cb19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b15bd208_cc7edba0",
         "filename": "zephyr/test/drivers/common/src/mock_power.c",
         "patchSetId": 1
