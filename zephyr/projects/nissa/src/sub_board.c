@@ -126,7 +126,7 @@ static void lte_power_handler(struct ap_power_ev_callback *cb,
 		LOG_DBG("Enabling LTE sub-board power rails");
 		gpio_pin_set_dt(s5_rail, 1);
 		break;
-	case AP_POWER_SHUTDOWN:
+	case AP_POWER_HARD_OFF:
 		LOG_DBG("Disabling LTE sub-board power rails");
 		gpio_pin_set_dt(s5_rail, 0);
 		break;
