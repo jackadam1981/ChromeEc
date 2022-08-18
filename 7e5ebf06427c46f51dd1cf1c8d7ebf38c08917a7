@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0de768_964ba645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-18T06:36:14Z",
+      "side": 1,
+      "message": "Can we support a new type CORSOLA_DB_UNINIT, and repurpose CORSOLA_DB_NONE for no daughter board (CONFIG_VARIANT_CORSOLA_DB_DETECTION\u003dn)?",
+      "revId": "7e5ebf06427c46f51dd1cf1c8d7ebf38c08917a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
