@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5255f7d3_3af0b0be",
+        "filename": "zephyr/test/system_common/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:32:27Z",
+      "side": 1,
+      "message": "Nit: I\u0027m not sure how you want to organize these, but maybe the `PLATFORM_EC_` ones should be together?",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df652dba_8df1695e",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:32:27Z",
+      "side": 1,
+      "message": "This isn\u0027t using the function parameter. Is that what you wanted?",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "170f7530_ae401949",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:32:27Z",
+      "side": 1,
+      "message": "Nit: I find the structure of this test odd and a little hard to read. I think it would be more readable, albeit more verbose, for each scenario to be its own test. Maybe we need something like `TEST_P` in ztest. Since we don\u0027t have that now, this is a nit. See go/parameterized-testing#loops.",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575795c2_de103fc5",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-18T16:32:27Z",
+      "side": 1,
+      "message": "Nit: Unexpected?",
+      "range": {
+        "startLine": 155,
+        "startChar": 10,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
