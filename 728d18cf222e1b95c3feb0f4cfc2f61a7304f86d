@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ffce1dc_e5f6ea94",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/waitms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-08-18T07:44:02Z",
+      "side": 1,
+      "message": "The test time is decoupled from the real time. It is done by `zephyr repository: boards/posix/native_posix/timer_model.c`. So waiting in tests is not concern. Actually test time is over 30 minutes at the end of the last test, while real time is ~15 seconds.",
+      "parentUuid": "41e9ae9c_53f9aed8",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "728d18cf222e1b95c3feb0f4cfc2f61a7304f86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "001d33c7_94494ddd",
         "filename": "zephyr/test/drivers/default/src/console_cmd/waitms.c",
         "patchSetId": 1
