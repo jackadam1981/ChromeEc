@@ -22,6 +22,30 @@
       },
       "revId": "41c5330c5dfe91f45d180d055a172d666758afbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce8e8e7_74fb7b9b",
+        "filename": "board/crota/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-08-18T01:47:07Z",
+      "side": 1,
+      "message": "This customization make sure when battery is pre-charging, the LED will blinking.\nOtherwise it will wait 30 seconds then blinking.",
+      "parentUuid": "f6c392cf_6a185b33",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "41c5330c5dfe91f45d180d055a172d666758afbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
