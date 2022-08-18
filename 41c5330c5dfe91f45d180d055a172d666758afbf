@@ -46,6 +46,30 @@
       },
       "revId": "41c5330c5dfe91f45d180d055a172d666758afbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc92c243_d80b31c5",
+        "filename": "board/crota/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-08-18T16:57:35Z",
+      "side": 1,
+      "message": "Thanks for clarification, please add this information in a comment above this section.",
+      "parentUuid": "9ce8e8e7_74fb7b9b",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "41c5330c5dfe91f45d180d055a172d666758afbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
