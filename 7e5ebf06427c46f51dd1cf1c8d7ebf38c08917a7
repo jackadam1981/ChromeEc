@@ -16,6 +16,24 @@
       "message": "Can we support a new type CORSOLA_DB_UNINIT, and repurpose CORSOLA_DB_NONE for no daughter board (CONFIG_VARIANT_CORSOLA_DB_DETECTION\u003dn)?",
       "revId": "7e5ebf06427c46f51dd1cf1c8d7ebf38c08917a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904b84e6_aa36ffa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-08-18T07:53:10Z",
+      "side": 1,
+      "message": "Both Rusty and Magneton share the same firmware with Steelix but just Magneton does not have DB, is there a way to set `CONFIG_VARIANT_CORSOLA_DB_DETECTION\u003dn` for Magneton？",
+      "parentUuid": "dc0de768_964ba645",
+      "revId": "7e5ebf06427c46f51dd1cf1c8d7ebf38c08917a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
