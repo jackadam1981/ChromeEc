@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be0b6343_5553a77a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-18T22:42:55Z",
+      "side": 1,
+      "message": "no bit field needed here.",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432ab900_0bb49cc5",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
