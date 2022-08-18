@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "498503c2_bbf161a7",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1547927
+      },
+      "writtenOn": "2022-08-18T21:15:59Z",
+      "side": 1,
+      "message": "This needs update per communication from ECS on b/239599467, please double-check with your team on finalized sku_id assignment.  \n\nAnother suggestion is to use the range of sku_ids that is assigned to Pazquel360, instead of using individual values, then this function would be future-safe.",
+      "range": {
+        "startLine": 683,
+        "startChar": 4,
+        "endLine": 683,
+        "endChar": 50
+      },
+      "revId": "71150e12557b864c285320ddabb286c059d64627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
