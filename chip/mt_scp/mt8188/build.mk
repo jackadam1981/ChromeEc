@@ -12,3 +12,7 @@ chip-y+=mt8188/uart.o
 ifeq ($(CHIP_VARIANT), mt8188)
 chip-y+=$(CHIP_VARIANT)/video.o
 endif
+
+ifeq ($(CHIP_VARIANT), mt8188_core1)
+chip-y+=mt8188/ipi_ops.o
+endif
