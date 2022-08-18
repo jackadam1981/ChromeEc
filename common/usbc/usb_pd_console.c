@@ -193,6 +193,10 @@ static
 		pd_timer_dump(port);
 	}
 
+	if (!strcasecmp(argv[2], "disc")) {
+		pd_dpm_request(port, DPM_REQUEST_PORT_DISCOVERY);
+	}
+
 	return EC_SUCCESS;
 }
 #ifndef TEST_USB_PD_CONSOLE
@@ -214,6 +218,6 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"\n\t<port> dualrole [on|off|freeze|sink|source]"
 			"\n\t<port> swap [power|data|vconn]"
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
-			,
+			"\n\t<port> disc",
 			"USB PD");
 #endif
