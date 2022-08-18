@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc6392a_03d8dcbb",
+        "filename": "zephyr/projects/herobrine/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-08-18T02:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8a4c26c_9643306a",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "e9e5c80ad572f73aab59bc832e6d4fdbe2eb14b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d22fa4b1_9036d67c",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-18T00:48:57Z",
       "side": 1,
       "message": "Zoglin",
+      "revId": "e9e5c80ad572f73aab59bc832e6d4fdbe2eb14b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50947ab8_e69756c4",
+        "filename": "zephyr/projects/herobrine/prj_zoglin.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-08-18T02:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d22fa4b1_9036d67c",
       "revId": "e9e5c80ad572f73aab59bc832e6d4fdbe2eb14b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
