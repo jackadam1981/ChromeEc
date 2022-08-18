@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29f921a_796072d0",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-18T11:05:31Z",
+      "side": 1,
+      "message": "I wanted to test after a panic has occurred but I\u0027m not sure of a way to catch the crash.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "4acbc14a15c6b1374cd18f02aca8191f593d6939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
