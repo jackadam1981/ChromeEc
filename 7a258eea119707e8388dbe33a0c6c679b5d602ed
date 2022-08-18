@@ -56,6 +56,54 @@
       },
       "revId": "7a258eea119707e8388dbe33a0c6c679b5d602ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a115dce_1896d1a1",
+        "filename": "zephyr/test/drivers/default/src/gpio_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-18T14:13:42Z",
+      "side": 1,
+      "message": "+1\n\nPlease see my use of strcmp in https://crrev.com/c/3834925. But we probably want to focus this CL to failure or \"unhappy\" paths.",
+      "parentUuid": "47bbf032_e8f53b7a",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "7a258eea119707e8388dbe33a0c6c679b5d602ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77203ad4_49d34e49",
+        "filename": "zephyr/test/drivers/default/src/gpio_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-18T14:13:42Z",
+      "side": 1,
+      "message": "+1 We can use the \u003cstring.h\u003e",
+      "parentUuid": "47bbf032_e8f53b7a",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "7a258eea119707e8388dbe33a0c6c679b5d602ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
