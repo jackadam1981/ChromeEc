@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e90477_5f47b76a",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-18T04:50:27Z",
+      "side": 1,
+      "message": "This also needs to be `HARD_OFF` so it\u0027ll still be turned off.",
+      "range": {
+        "startLine": 255,
+        "startChar": 7,
+        "endLine": 255,
+        "endChar": 24
+      },
+      "revId": "dc2e8fcb1415387d02d735e8519e6cba2647cd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
