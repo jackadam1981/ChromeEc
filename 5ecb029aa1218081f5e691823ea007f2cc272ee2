@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babea716_3cf532d0",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-18T23:08:26Z",
+      "side": 1,
+      "message": "It would be better to check the DUT\u0027s DP state using `host_cmd_typec_status()` and checking the `resp-\u003emux_state`.  This makes the test more resilient to internal API changes.",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 0
+      },
+      "revId": "5ecb029aa1218081f5e691823ea007f2cc272ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96a197e_33c3039e",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-18T23:08:26Z",
+      "side": 1,
+      "message": "Same here, use the host command API to get the mux state.",
+      "range": {
+        "startLine": 290,
+        "startChar": 16,
+        "endLine": 290,
+        "endChar": 27
+      },
+      "revId": "5ecb029aa1218081f5e691823ea007f2cc272ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
