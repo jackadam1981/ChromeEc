@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "814750cd_ff630bee",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-18T23:05:26Z",
+      "side": 1,
+      "message": "Hi Caveh,\nI think we should leave the reserved bit field as part of the RMDO. I did not include the reserved field in the initial implementation of this, but then added it during the review. Basically, we know the partner will send us a 32-bit RMDO with bits 0-15 reserved. Defining the RMDO this way allows us to directly copy what we get from the partner to our internal state. If we remove the reserved field, we will also need to update how we assign the partner RMDO after receiving a Revision message.\n\npreviously talked about here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3607054/comment/017c6913_0d99f6b5/",
+      "parentUuid": "be0b6343_5553a77a",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432ab900_0bb49cc5",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
