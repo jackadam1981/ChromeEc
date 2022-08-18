@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432ab900_0bb49cc5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-18T15:11:58Z",
+      "side": 1,
+      "message": "Could we add a build assert to ensure the struct is always 32 bits when packed?",
+      "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
