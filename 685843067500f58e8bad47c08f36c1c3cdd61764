@@ -22,6 +22,30 @@
       },
       "revId": "685843067500f58e8bad47c08f36c1c3cdd61764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7d2bbb_5b5db16e",
+        "filename": "zephyr/test/drivers/usb_malfunction_sink/src/usb_malfunction_sink.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-08-18T09:14:50Z",
+      "side": 1,
+      "message": "I cannot use `USBC_PORT_C0` in `EMUL_GET_USBC_BINDING`. because there is required integer literal to work with DT macros. Because of that `TEST_PORT` is defined as `0`. By this assert, I want to state clearly, that `TEST_PORT` refer to `USBC_PORT_C0`, not some random arbitrary number. Do you think it is not necessary? If so, I will delete this line.",
+      "parentUuid": "5286bdf5_78a1947a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "685843067500f58e8bad47c08f36c1c3cdd61764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
