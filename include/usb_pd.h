@@ -584,14 +584,17 @@ struct partner_active_modes {
 /*
  * PD Rev 3.1 Revision Message Data Object (RMDO)
  * Only bits 16-31 have data. A uint_16t is used to hold RMDOs upper 16 bits.
+ *
+ * And we should ensure the struct is always 32 bits when packed.
  */
 struct rmdo {
-	int reserved : 16;
-	int minor_ver : 4;
-	int major_ver : 4;
-	int minor_rev : 4;
-	int major_rev : 4;
-};
+	uint16_t reserved : 16;
+	uint8_t minor_ver : 4;
+	uint8_t major_ver : 4;
+	uint8_t minor_rev : 4;
+	uint8_t major_rev : 4;
+} __packed;
+BUILD_ASSERT(sizeof(struct rmdo) == 4);
 
 /*
  * Message id starts from 0 to 7. If last_msg_id is initialized to 0,
