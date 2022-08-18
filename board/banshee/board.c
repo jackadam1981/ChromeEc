@@ -60,6 +60,7 @@ void set_bb_retimer_usb3_state(bool enable)
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
+	/* Enable USB3_Connection bit if we're in S0ix->S0 transition. */
 	if (chipset_in_state(CHIPSET_STATE_ON))
 		set_bb_retimer_usb3_state(true);
 }
