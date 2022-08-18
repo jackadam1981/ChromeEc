@@ -12,6 +12,8 @@
 
 #include "pwm_mock.h"
 
+#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
+
 #define CYCLES_PER_SEC 1000000
 
 struct pwm_mock_data {
@@ -67,3 +69,5 @@ static const struct pwm_driver_api pwm_mock_api = {
 			      CONFIG_KERNEL_INIT_PRIORITY_DEVICE,       \
 			      &pwm_mock_api);
 DT_INST_FOREACH_STATUS_OKAY(INIT_PWM_MOCK)
+
+#endif /* DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT) */
