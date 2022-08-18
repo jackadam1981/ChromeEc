@@ -586,11 +586,11 @@ struct partner_active_modes {
  * Only bits 16-31 have data. A uint_16t is used to hold RMDOs upper 16 bits.
  */
 struct rmdo {
-	int reserved : 16;
-	int minor_ver : 4;
-	int major_ver : 4;
-	int minor_rev : 4;
-	int major_rev : 4;
+	uint16_t reserved : 16;
+	uint8_t minor_ver : 4;
+	uint8_t major_ver : 4;
+	uint8_t minor_rev : 4;
+	uint8_t major_rev : 4;
 };
 
 /*
