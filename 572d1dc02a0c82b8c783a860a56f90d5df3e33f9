@@ -16,6 +16,24 @@
       "message": "Could we add a build assert to ensure the struct is always 32 bits when packed?",
       "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9278c82_ce774f1e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-18T16:15:55Z",
+      "side": 1,
+      "message": "We should also add the packed directive, otherwise I think the build assert will fail for some boards.\n\n\n    struct rmdo {\n\tuint16_t reserved : 16;\n\tuint8_t minor_ver : 4;\n\tuint8_t major_ver : 4;\n\tuint8_t minor_rev : 4;\n\tuint8_t major_rev : 4;\n    } __packed;\n    BUILD_ASSERT(sizeof(struct rmdo) \u003d\u003d 4);",
+      "parentUuid": "432ab900_0bb49cc5",
+      "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
