@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96328750_55af6bd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-18T03:57:49Z",
+      "side": 1,
+      "message": "LGTM but I\u0027d also like to see a comment about why this was in a separate binary.",
+      "revId": "395027de7143cf353cf12899a4118cb5a6c5490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7746a139_77b53fa8",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-08-17T15:56:29Z",
       "side": 1,
       "message": "I don\u0027t think we need a new test added here unless your test won\u0027t run together with the other tests. I think for normal situations we\u0027d prefer to add to drivers.default instead of adding new sub-tests.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 47
+      },
+      "revId": "395027de7143cf353cf12899a4118cb5a6c5490c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72a7ab8_37fda41e",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-18T03:57:49Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "7746a139_77b53fa8",
       "range": {
         "startLine": 23,
         "startChar": 1,
