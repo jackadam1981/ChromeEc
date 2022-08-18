@@ -189,6 +189,30 @@
       },
       "revId": "54a058b24b4056a618f59d51ebcd620eb5b77166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72c38fc_285833b2",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-18T14:38:42Z",
+      "side": 1,
+      "message": "Vendor confirmed that CPS8200 needs 40~50ms, CPS8100 needs 100~120ms. I add 120ms delay here",
+      "parentUuid": "556b9fdc_b05bfcbc",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 12
+      },
+      "revId": "54a058b24b4056a618f59d51ebcd620eb5b77166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

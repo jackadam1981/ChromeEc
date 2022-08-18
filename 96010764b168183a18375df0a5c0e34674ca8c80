@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4196ef7_f900e276",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-18T14:38:42Z",
+      "side": 1,
+      "message": "we don\u0027t need cps8x00_id",
+      "parentUuid": "0dd33b7f_f9993fe6",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 10
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67d6d176_5d71fba8",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-12T01:37:08Z",
       "side": 1,
       "message": "This should be in a const buf[8].",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 44
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1afa6d54_50828507",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-18T14:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d6d176_5d71fba8",
       "range": {
         "startLine": 249,
         "startChar": 0,
@@ -135,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03fbd02_b24ce741",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-18T14:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4966bb05_85b3ff0c",
+      "range": {
+        "startLine": 290,
+        "startChar": 5,
+        "endLine": 290,
+        "endChar": 33
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a015d6_ba4944c7",
@@ -172,6 +244,30 @@
       "side": 1,
       "message": "It is needed according to my experiment, I am checking with vendor.",
       "parentUuid": "a8a015d6_ba4944c7",
+      "range": {
+        "startLine": 303,
+        "startChar": 6,
+        "endLine": 303,
+        "endChar": 24
+      },
+      "revId": "96010764b168183a18375df0a5c0e34674ca8c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b9d7f8_e0dbc3f5",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-18T14:38:42Z",
+      "side": 1,
+      "message": "Checked with vendor, unlock and enable is needed for the first access for cps8200. And unlock and set mode is needed for the first access for cps8100. We don\u0027t need them every time.",
+      "parentUuid": "8506e96d_7e0ffc92",
       "range": {
         "startLine": 303,
         "startChar": 6,
