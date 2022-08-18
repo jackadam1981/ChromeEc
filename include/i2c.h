@@ -585,8 +585,7 @@ enum i2c_freq i2c_get_freq(int port);
 /* Find the matching port in i2c_ports[] table. */
 const struct i2c_port_t *get_i2c_port(const int port);
 
-#ifdef CONFIG_ZTEST
-int i2c_port_is_locked(int port);
-#endif
+__test_only int i2c_port_is_locked(int port);
+__test_only void i2c_passthru_protect_reset(void);
 
 #endif /* __CROS_EC_I2C_H */
