@@ -34,6 +34,40 @@
       "parentUuid": "b9696fa6_784980ae",
       "revId": "01926f18459f2b1fece6970dda2bfae1b70e925b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1358e3_5d5f3692",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-18T16:48:47Z",
+      "side": 1,
+      "message": "I\u0027d request we keep this one, but I\u0027m biased because I love my register dumps on failures",
+      "revId": "01926f18459f2b1fece6970dda2bfae1b70e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d5dad5_a5a7ea52",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-18T16:48:47Z",
+      "side": 1,
+      "message": "This removes all PD-related host commands, so the type-c daemon in the kernel will be unhappy and we\u0027ll be missing out on some feedback report information",
+      "revId": "01926f18459f2b1fece6970dda2bfae1b70e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
