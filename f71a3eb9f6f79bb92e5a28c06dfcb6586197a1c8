@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bb07ab_22c7f719",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-08-18T04:42:29Z",
+      "side": 0,
+      "message": "Are the BMI160 sensors used in the pazquel clamshell devices?  If so, I believe that we need to leave configuration for both.  Wai-Hong can verify.",
+      "revId": "f71a3eb9f6f79bb92e5a28c06dfcb6586197a1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd073fb_513c1716",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-08-18T04:42:29Z",
+      "side": 0,
+      "message": "Same comment as above.",
+      "revId": "f71a3eb9f6f79bb92e5a28c06dfcb6586197a1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
