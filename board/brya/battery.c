@@ -93,10 +93,39 @@ const struct board_batt_params board_battery_info[] = {
 			.discharging_max_c	= 75,
 		},
 	},
+	/*SMP-VEK4703 Battery Information */
+	[BATTERY_SMP_VEK4703] = {
+		.fuel_gauge = {
+			.manuf_name = "SMP-VEK4703",
+			.device_name = "BTY-M49",
+			.ship_mode = {
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.fet = {
+				.mfgacc_support = 1,
+				.reg_addr = 0x00,
+				.reg_mask = 0x2000,		/* XDSG */
+				.disconnect_val = 0x2000,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= TARGET_WITH_MARGIN(13050, 5),
+			.voltage_normal		= 11400, /* mV */
+			.voltage_min		= 9000, /* mV */
+			.precharge_current	= 256,	/* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 45,
+			.charging_min_c		= 0,
+			.charging_max_c		= 45,
+			.discharging_min_c	= -10,
+			.discharging_max_c	= 60,
+		},
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
-const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_POWER_TECH;
+const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SMP_VEK4703;
 
 enum battery_present battery_hw_present(void)
 {
