@@ -22,6 +22,47 @@
       },
       "revId": "f0f461f1ce9c01be96dad80a1f8cc4db607cb5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599bf1bc_2a1f58db",
+        "filename": "include/i8042_protocol.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-08-19T16:09:44Z",
+      "side": 1,
+      "message": "It\u0027s the convention we follow at coreboot to show these are values for the register. But apparently it violates the clang-format rules which make the CQ fail. I\u0027ll change it.",
+      "parentUuid": "b4313210_855a6a40",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 46
+      },
+      "revId": "f0f461f1ce9c01be96dad80a1f8cc4db607cb5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e7865f3_2a4f66f7",
+        "filename": "test/kb_8042.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-08-19T16:09:44Z",
+      "side": 1,
+      "message": "Ugh, looks like clang-format is strictly enforced:\n    \u003e ERROR:root:/mnt/host/source/src/platform/ec/test/kb_8042.c:61:30: warning: code should be clang-formatted [-Wclang-format-violations]\n\nI\u0027ll push a new version.",
+      "revId": "f0f461f1ce9c01be96dad80a1f8cc4db607cb5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
