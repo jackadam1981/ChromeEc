@@ -15,6 +15,8 @@ zephyr_library_sources_ifdef(CONFIG_BOARD_SKYRIM "power_signals.c")
 
 zephyr_library_sources_ifdef(CONFIG_BOARD_SKYRIM "usbc_config.c")
 
+zephyr_library_sources_ifdef(CONFIG_BOARD_SKYRIM "src/skyrim/form_factor.c")
+
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 	"usb_pd_policy.c")
 
