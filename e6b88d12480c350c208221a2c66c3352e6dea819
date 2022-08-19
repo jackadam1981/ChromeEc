@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4c6554_15ebab81",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "Sounds good.  I\u0027d been hesitant to use `USB_RETIMER_FW_UPDATE_DISCONNECT` since it\u0027s also what the test is testing, but we do want to properly clear out the state",
+      "parentUuid": "a49dcdb0_5b96e1e6",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f9fa8fc_17a461e4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-19T20:52:20Z",
       "side": 1,
       "message": "Follow the naming convention of the sub-command: `verify_query_port`",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0fe1913_7f02351b",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f9fa8fc_17a461e4",
       "range": {
         "startLine": 46,
         "startChar": 29,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e0750a_8b56a2a1",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c45e10_c0049bd8",
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3c67328_05a48418",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-08-19T20:52:20Z",
       "side": 1,
       "message": "verify_suspend_pd - update the other tests in the same fashion.",
+      "range": {
+        "startLine": 58,
+        "startChar": 29,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93deaee5_9596048c",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3c67328_05a48418",
       "range": {
         "startLine": 58,
         "startChar": 29,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01b383e_2b20214a",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ededd8_57d66613",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c00ea09b_e9e65fde",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-08-19T20:52:20Z",
       "side": 1,
       "message": "Use host_cmd_typec_status() to test USB_PD_MUX_USB_ENABLED has been set.",
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3f4bf0_3ce90d8a",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "Sure, we can double verify.  We just need to ensure we\u0027re applying the same filter as the ACPI return (i.e. leaving out polarity)",
+      "parentUuid": "c00ea09b_e9e65fde",
       "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d661138_ed0fb58e",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "SAFE, which is ever-so-slightly different than NONE for reasons only some muxes appreciate",
+      "parentUuid": "9712007d_c02065e0",
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8911c140_ebeb36c2",
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5493c759_ade0a81e",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8911c140_ebeb36c2",
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7398281_97f494d0",
@@ -174,6 +342,30 @@
       "writtenOn": "2022-08-19T20:52:20Z",
       "side": 1,
       "message": "I\u0027m not sure if the tests support this, but can you try verifying the port is still suspended at 5 seconds?  This ensures the FW update always waits at least 5 seconds before bringing the port back online.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 50
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a002683_57dd5cc1",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:35:59Z",
+      "side": 1,
+      "message": "It\u0027s tricky to measure the exact time we wait since the command is sent to the PD tasks asynchronously, and I\u0027m not sure there\u0027s a good way to gracefully stick a \"time in disabled\" timer into the code.\n\nThis method will gather more time than we want (time for task to pick up command + time waiting), but it\u0027s simple to implement.  See what you think",
+      "parentUuid": "f7398281_97f494d0",
       "range": {
         "startLine": 244,
         "startChar": 0,
