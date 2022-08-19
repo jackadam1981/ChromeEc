@@ -19,6 +19,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "write_protect.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SWITCH, outstr)
@@ -136,8 +137,12 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pb_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void pb_chipset_shutdown(void)
 {
-	/* Don't set AP_IDLE if shutting down due to power failure. */
-	if (chipset_get_shutdown_reason() == CHIPSET_SHUTDOWN_POWERFAIL)
+	/*
+	 * Don't set AP_IDLE if shutting down due to power failure or WP
+	 * deasserted.
+	 */
+	if ((chipset_get_shutdown_reason() == CHIPSET_SHUTDOWN_POWERFAIL) ||
+	    !write_protect_is_asserted())
 		return;
 
 	chip_save_reset_flags(chip_read_reset_flags() | EC_RESET_FLAG_AP_IDLE);
