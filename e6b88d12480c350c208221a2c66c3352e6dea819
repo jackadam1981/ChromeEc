@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49dcdb0_5b96e1e6",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "The usb_retimer_fw_update driver tracks it\u0027s own `port_state`, which isn\u0027t updated by `host_cmd_pd_control()`.  I think you\u0027ll want to trigger `USB_RETIMER_FW_UPDATE_DISCONNECT` in this path. This should automatically resume the port as well.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9fa8fc_17a461e4",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "Follow the naming convention of the sub-command: `verify_query_port`",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c45e10_c0049bd8",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "This should also check that the ACPI read didn\u0027t set one of the FW update errors, `USB_RETIMER_FW_UPDATE_ERR` and `USB_RETIMER_FW_UPDATE_INVALID_MUX`.\n\nYou should create a helper function for `acpi_read(EC_ACPI_MEM_USB_RETIMER_FW_UPDATE)` that includes checks for these errors and use throughout this file.",
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c67328_05a48418",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "verify_suspend_pd - update the other tests in the same fashion.",
+      "range": {
+        "startLine": 58,
+        "startChar": 29,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ededd8_57d66613",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "Create a helper routine for suspending the port.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00ea09b_e9e65fde",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "Use host_cmd_typec_status() to test USB_PD_MUX_USB_ENABLED has been set.",
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9712007d_c02065e0",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "Test that typec_status.mux_state \u003d\u003d USB_PD_MUX_NONE",
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8911c140_ebeb36c2",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "Test for USB_PD_MUX_TBT_COMPAT_ENABLED",
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7398281_97f494d0",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T20:52:20Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the tests support this, but can you try verifying the port is still suspended at 5 seconds?  This ensures the FW update always waits at least 5 seconds before bringing the port back online.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 50
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
