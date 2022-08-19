@@ -68,4 +68,11 @@ bool dps_is_enabled(void);
  */
 void dps_update_stabilized_time(int port);
 
+#ifdef TEST_BUILD
+/* symbols which are only exposed in test */
+void dps_enable(bool en);
+int dps_init(void);
+struct dps_config_t *dps_get_config(void);
+#endif
+
 #endif /* __CROS_EC_DPS__H */
