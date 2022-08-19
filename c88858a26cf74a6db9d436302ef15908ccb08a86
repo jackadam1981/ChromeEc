@@ -22,6 +22,30 @@
       },
       "revId": "c88858a26cf74a6db9d436302ef15908ccb08a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ee6a05_2b0c4007",
+        "filename": "include/i8042_protocol.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-08-19T14:58:34Z",
+      "side": 1,
+      "message": "It was intentional. It\u0027s the formatting we use at coreboot to indicate values used for a register.",
+      "parentUuid": "7a2b2de4_2e502f77",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "c88858a26cf74a6db9d436302ef15908ccb08a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
