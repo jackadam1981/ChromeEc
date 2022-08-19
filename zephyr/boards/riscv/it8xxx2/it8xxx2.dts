@@ -3,11 +3,7 @@
  * found in the LICENSE file.
  */
 
-/dts-v1/;
-
 #include <dt-bindings/gpio_defines.h>
-#include <cros/ite/it8xxx2.dtsi>
-#include <ite/it8xxx2.dtsi>
 
 / {
 	model = "Google IT8XXX2 Baseboard";
