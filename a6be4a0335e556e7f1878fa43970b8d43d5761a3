@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36449b30_6f736a4a",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/tcpci_test_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T21:10:18Z",
+      "side": 1,
+      "message": "`common_data` is a handle to the emulated I2C bus structure. For this function, you can add something like this.\n```\n@param common_data Pointer to emulated I2C bus\n```\n\nIt looks like the rest of these were added by Aaron. I will ask him to add comments.",
+      "parentUuid": "6510ddad_7fb1f660",
+      "revId": "a6be4a0335e556e7f1878fa43970b8d43d5761a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f03327c_8e54258c",
         "filename": "zephyr/test/drivers/default/src/tcpci.c",
         "patchSetId": 1
