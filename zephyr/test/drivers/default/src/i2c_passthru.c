@@ -6,6 +6,7 @@
 #include <zephyr/zephyr.h>
 #include <zephyr/ztest.h>
 
+#include "driver/ln9310.h"
 #include "ec_commands.h"
 #include "host_command.h"
 #include "test/drivers/test_state.h"
@@ -24,8 +25,7 @@ ZTEST_USER(i2c_passthru, test_read_without_write)
 
 	params->port = I2C_PORT_VIRTUAL_BATTERY;
 	params->num_msgs = 1;
-	params->msg[0].addr_flags = VIRTUAL_BATTERY_ADDR_FLAGS |
-				    EC_I2C_FLAG_READ;
+	params->msg[0].addr_flags = LN9310_I2C_ADDR_0_FLAGS | EC_I2C_FLAG_READ;
 	params->msg[0].len = 1;
 	args.params = &param_buf;
 	args.params_size = sizeof(param_buf);
