@@ -196,7 +196,9 @@ static int anx74xx_tcpc_drp_toggle(int port)
 static int anx74xx_enter_low_power_mode(int port)
 {
 	anx74xx_set_power_mode(port, ANX74XX_STANDBY_MODE);
-	return EC_SUCCESS;
+
+	/* Set I2C connection to idle */
+	return tcpci_enter_low_power_mode(port);
 }
 
 #endif
