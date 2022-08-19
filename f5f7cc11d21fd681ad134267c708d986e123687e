@@ -70,6 +70,30 @@
       },
       "revId": "f5f7cc11d21fd681ad134267c708d986e123687e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07cba2e3_11f9e75f",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 42
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-19T09:48:03Z",
+      "side": 1,
+      "message": "Remove it and check there is no battery seems dead status with `ec console\u003e chgstate`\nAnd the output of `ls /sys/class/power_supply` is\nCROS_DEDICATED_CHARGER CROS_USBPD_CHARGER0",
+      "parentUuid": "603fda62_585e470b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "f5f7cc11d21fd681ad134267c708d986e123687e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
