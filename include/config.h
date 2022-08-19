@@ -1999,6 +1999,9 @@
  */
 #undef CONFIG_FAN_UPDATE_PERIOD
 
+/* Enable fan slow response control mechanism */
+#undef CONFIG_FAN_BYPASS_SLOW_RESPONSE
+
 /*****************************************************************************/
 /* Flash configuration */
 
