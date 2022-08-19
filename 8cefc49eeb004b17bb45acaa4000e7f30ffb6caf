@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6afe4638_64511e61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T16:23:19Z",
+      "side": 1,
+      "message": "From the builder:\n```\n/tmp/ccsN6yVN.ltrans0.ltrans.o: in function `.L0 \u0027:\n/mnt/host/source/src/platform/ec/common/usbc/usb_pe_drp_sm.c:2027:(.text+0x40d4): relocation truncated to fit: R_RISCV_GPREL_I against `en_vw_setting\u0027\n  HOSTCC  util/lbplay\n  CC      RW/common/usb_pd_dual_role.o\n  VERSION ec_version.h\n  CC      RO/common/mkbp_fifo.o\n  CC      RO/common/queue.o\n  CC      RW/chip/npcx/sib.o\n  HOSTCC  util/stm32mon\n  CC      RO/common/math_util.o\ncollect2: error: ld returned 1 exit status\n  CC      RW/driver/temp_sensor/thermistor.o\nmake[2]: *** [Makefile.rules:578: build/drawcia_riscv/RW/ec.RW.elf] Error 1\n```\n\nI\u0027m not immediately familiar with this error message. Some discussion in https://stackoverflow.com/q/10486116. Maybe it means drawcia is out of space?\n\nMike: What happens when you run `make buildall` at this commit locally?",
+      "revId": "8cefc49eeb004b17bb45acaa4000e7f30ffb6caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
