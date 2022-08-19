@@ -16,6 +16,74 @@
       "message": "It begins!  I might ping you with thoughts about how to add the cable support and TBT EnterMode support in the emulator now that we have another full week to get it done nicely",
       "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad1b97d_3a69b387",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T21:45:08Z",
+      "side": 1,
+      "message": "We might want a named constant for this 0x01, particularly if we\u0027re going to start writing tests where the contents matter, e.g. for LRD cables.",
+      "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d59642_ccbd99d6",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T21:45:08Z",
+      "side": 1,
+      "message": "Nit: Shouldn\u0027t SVIDs be listed before modes?",
+      "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9722bb2_f6cc2c92",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T21:45:08Z",
+      "side": 1,
+      "message": "At this point there\u0027s no way to actually add cable responses, but a comment here noting that there are none might be clarifying.",
+      "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5da6eef_695fd22b",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T21:45:08Z",
+      "side": 1,
+      "message": "Nit: Could just declare this in this block.",
+      "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
