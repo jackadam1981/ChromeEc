@@ -215,6 +215,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8355bf07_478e4dcb",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-08-19T03:31:25Z",
+      "side": 1,
+      "message": "Abandon this patch since we have CL:3840993 instaed.",
+      "parentUuid": "a4469681_c6fa3a76",
+      "range": {
+        "startLine": 290,
+        "startChar": 5,
+        "endLine": 290,
+        "endChar": 59
+      },
+      "revId": "22a2087b11c001404eb44f1a9ed2c25702ec36ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd8fd04d_18bb2082",
