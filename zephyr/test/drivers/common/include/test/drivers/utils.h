@@ -53,6 +53,28 @@ void test_set_chipset_to_g3(void);
 #define zassume_unreachable(msg, ...) zassert_unreachable(msg, ##__VA_ARGS__)
 
 /**
+ * Run an ACPI read to the specified address.
+ *
+ * This function assumes a successful ACPI read process and will make a
+ * call to the zassume_* API. A failure here will abort the calling test.
+ *
+ * @param acpi_addr Address to query
+ * @return Byte read
+ */
+uint8_t acpi_read(uint8_t acpi_addr);
+
+/**
+ * Run an ACPI write to the specified address.
+ *
+ * This function assumes a successful ACPI write process and will make a
+ * call to the zassume_* API. A failure here will abort the calling test.
+ *
+ * @param acpi_addr Address to write
+ * @param write_byte Byte to write to address
+ */
+void acpi_write(uint8_t acpi_addr, uint8_t write_byte);
+
+/**
  * Run the host command to get the charge state for a given charger number.
  *
  * This function assumes a successful host command processing and will make a
@@ -80,7 +102,7 @@ static inline struct ec_response_charge_state host_cmd_charge_state(int chgnum)
  * Run the host command to get the USB PD power info for a given port.
  *
  * This function assumes a successful host command processing and will make a
- * call to the zassume_* API. A failure here will abort the calling test.
+ * call to the zassume_* API. A failure here will skip the calling test.
  *
  * @param port The USB port to get info from.
  * @return The result of the query.
@@ -101,7 +123,7 @@ static inline struct ec_response_usb_pd_power_info host_cmd_power_info(int port)
  * Run the host command to get the Type-C status information for a given port.
  *
  * This function assumes a successful host command processing and will make a
- * call to the zassume_* API. A failure here will abort the calling test.
+ * call to the zassume_* API. A failure here will skip the calling test.
  *
  * @param port The USB port to get info from.
  * @return The result of the query.
