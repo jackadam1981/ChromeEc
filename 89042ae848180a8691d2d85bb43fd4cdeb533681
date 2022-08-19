@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3919c93e_f87a0967",
+        "filename": "test/kb_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-19T16:45:26Z",
+      "side": 1,
+      "message": "nit: I\u0027m not a fan of mixing data with return codes. It seems that the `if` returns 0 for error and `data.data` for success. Can we instead pass `uint8_t *out` as an argument to this function and return the status.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 18
+      },
+      "revId": "89042ae848180a8691d2d85bb43fd4cdeb533681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
