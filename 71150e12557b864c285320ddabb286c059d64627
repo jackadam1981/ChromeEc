@@ -22,6 +22,30 @@
       },
       "revId": "71150e12557b864c285320ddabb286c059d64627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1430092_ac1e8741",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-08-19T01:38:48Z",
+      "side": 1,
+      "message": "Dear ChaoGui:\n     Use the range of sku_ids instead of using individual values, it is a good idea.\n     Thanks.",
+      "parentUuid": "498503c2_bbf161a7",
+      "range": {
+        "startLine": 683,
+        "startChar": 4,
+        "endLine": 683,
+        "endChar": 50
+      },
+      "revId": "71150e12557b864c285320ddabb286c059d64627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
