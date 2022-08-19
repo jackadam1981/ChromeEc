@@ -11,6 +11,7 @@
 #include "dps.h"
 #include "atomic.h"
 #include "battery.h"
+#include "common.h"
 #include "console.h"
 #include "charger.h"
 #include "charge_manager.h"
@@ -56,8 +57,13 @@ static int dynamic_mv;
 static int dps_port = CHARGE_PORT_NONE;
 static uint32_t flag;
 
+#ifndef TEST_BUILD
 #define CPRINTF(format, args...) cprintf(CC_USBPD, "DPS " format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, "DPS " format, ##args)
+#else
+#define CPRINTF(format, args...)
+#define CPRINTS(format, args...)
+#endif
 
 __overridable struct dps_config_t dps_config = {
 	.k_less_pwr = K_LESS_PWR,
@@ -68,6 +74,13 @@ __overridable struct dps_config_t dps_config = {
 	.t_check = T_NEXT_CHECK_TIME,
 	.is_more_efficient = NULL,
 };
+
+#ifdef TEST_BUILD
+struct dps_config_t *dps_get_config(void)
+{
+	return &dps_config;
+}
+#endif
 
 int dps_get_dynamic_voltage(void)
 {
@@ -84,14 +97,18 @@ bool dps_is_enabled(void)
 	return is_enabled;
 }
 
-static void dps_enable(bool en)
+test_export_static void dps_enable(bool en)
 {
 	bool prev_en = is_enabled;
 
 	is_enabled = en;
 
-	if (is_enabled && !prev_en)
+	if (is_enabled && !prev_en) {
+		/* TODO(yllin): support dps test with task */
+#ifndef TEST_BUILD
 		task_wake(TASK_ID_DPS);
+#endif
+	}
 
 	if (!is_enabled) {
 		/* issue a new PD request for a default voltage */
@@ -115,7 +132,7 @@ static void update_timeout(int us)
 /*
  * DPS reset.
  */
-static void dps_reset(void)
+void dps_reset(void)
 {
 	dynamic_mv = PD_MAX_VOLTAGE_MV;
 	dps_port = CHARGE_PORT_NONE;
@@ -124,13 +141,14 @@ static void dps_reset(void)
 /*
  * DPS initialization.
  */
-static void dps_init(void)
+test_export_static int dps_init(void)
 {
 	dps_reset();
 
 	if (dps_config.k_window > MAX_MOVING_AVG_WINDOW) {
 		dps_config.k_window = MAX_MOVING_AVG_WINDOW;
 		CPRINTS("ERR:WIN");
+		return EC_ERROR_INVALID_CONFIG;
 	}
 
 	if (dps_config.k_less_pwr > 100 || dps_config.k_more_pwr > 100 ||
@@ -138,7 +156,10 @@ static void dps_init(void)
 		dps_config.k_less_pwr = K_LESS_PWR;
 		dps_config.k_more_pwr = K_MORE_PWR;
 		CPRINTS("ERR:COEF");
+		return EC_ERROR_INVALID_CONFIG;
 	}
+
+	return EC_SUCCESS;
 }
 
 static bool is_near_limit(int val, int limit)
@@ -293,7 +314,7 @@ struct pdo_candidate {
  * @param struct pdo_candidate: The candidate PDO. (Return value)
  * @return true if a new power request, or false otherwise.
  */
-static bool has_new_power_request(struct pdo_candidate *cand)
+__maybe_unused static bool has_new_power_request(struct pdo_candidate *cand)
 {
 	int vbus, input_curr, input_pwr;
 	int input_pwr_avg = 0, input_curr_avg = 0;
@@ -452,7 +473,7 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 	return (cand->mv != req_mv);
 }
 
-static bool has_srccap(void)
+__maybe_unused static bool has_srccap(void)
 {
 	for (int i = 0; i < board_get_usb_pd_port_count(); ++i) {
 		if (pd_is_connected(i) &&
@@ -468,12 +489,18 @@ void dps_update_stabilized_time(int port)
 	update_timeout(dps_config.t_stable);
 }
 
+/* TODO(yllin): support dps test with task */
+#ifndef TEST_BUILD
 void dps_task(void *u)
 {
 	struct pdo_candidate last_cand = { CHARGE_PORT_NONE, 0, 0 };
 	int sample_count = 0;
 
-	dps_init();
+	if (dps_init()) {
+		CPRINTS("init failed");
+		return;
+	}
+
 	update_timeout(dps_config.t_check);
 
 	while (1) {
@@ -533,6 +560,7 @@ void dps_task(void *u)
 		update_timeout(dps_config.t_check);
 	}
 }
+#endif
 
 static int command_dps(int argc, char **argv)
 {
