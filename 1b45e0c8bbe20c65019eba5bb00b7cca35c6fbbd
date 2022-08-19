@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fc5f193_7d328fdd",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-19T18:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64ee423f_f933f54c",
+      "range": {
+        "startLine": 1361,
+        "startChar": 0,
+        "endLine": 1366,
+        "endChar": 6
+      },
+      "revId": "1b45e0c8bbe20c65019eba5bb00b7cca35c6fbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87d538f8_fa5d88b6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-19T18:08:05Z",
       "side": 1,
       "message": "Same here (the `i2c_port_is_locked` shouldn\u0027t have done it either). You can have it as:\n\n```\n__test_only void i2c_passthru_protect_reset(void);\n```",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 38
+      },
+      "revId": "1b45e0c8bbe20c65019eba5bb00b7cca35c6fbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d58a22_c47273ce",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-19T18:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87d538f8_fa5d88b6",
       "range": {
         "startLine": 590,
         "startChar": 0,
