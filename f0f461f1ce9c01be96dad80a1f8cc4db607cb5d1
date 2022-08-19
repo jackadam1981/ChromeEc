@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "96e5f456_54fcfede",
+        "filename": "include/i8042_protocol.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-19T16:12:05Z",
+      "side": 1,
+      "message": "I updated it in the gerrit UI. Should be merging soon",
+      "parentUuid": "599bf1bc_2a1f58db",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 46
+      },
+      "revId": "f0f461f1ce9c01be96dad80a1f8cc4db607cb5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3e7865f3_2a4f66f7",
         "filename": "test/kb_8042.c",
         "patchSetId": 3
