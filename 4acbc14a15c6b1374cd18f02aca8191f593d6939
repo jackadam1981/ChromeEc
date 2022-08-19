@@ -22,6 +22,30 @@
       },
       "revId": "4acbc14a15c6b1374cd18f02aca8191f593d6939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec5a7ff_730ea6ea",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-19T15:41:34Z",
+      "side": 1,
+      "message": "I\u0027ll send you info via email, thanks for this!",
+      "parentUuid": "b29f921a_796072d0",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "4acbc14a15c6b1374cd18f02aca8191f593d6939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
