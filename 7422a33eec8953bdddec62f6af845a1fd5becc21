@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0814a1a3_d53fcf5e",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T18:35:30Z",
+      "side": 1,
+      "message": "Skips, right?  It\u0027s using zassume",
+      "parentUuid": "b7ee8ede_31cc08fd",
+      "range": {
+        "startLine": 59,
+        "startChar": 45,
+        "endLine": 59,
+        "endChar": 55
+      },
+      "revId": "7422a33eec8953bdddec62f6af845a1fd5becc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3149199a_225832c3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-19T18:18:44Z",
       "side": 1,
       "message": "skips",
+      "range": {
+        "startLine": 70,
+        "startChar": 45,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "7422a33eec8953bdddec62f6af845a1fd5becc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e9947c_d854c27b",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T18:35:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3149199a_225832c3",
       "range": {
         "startLine": 70,
         "startChar": 45,
