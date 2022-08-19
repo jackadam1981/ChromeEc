@@ -22,6 +22,30 @@
       },
       "revId": "89042ae848180a8691d2d85bb43fd4cdeb533681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfe4b1c_62e8189b",
+        "filename": "test/kb_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-08-19T20:10:50Z",
+      "side": 1,
+      "message": "Yeah, I felt a bit dirty doing it ;)\nI pushed a parent CL that adds a proper return code to `read_cmd_byte`",
+      "parentUuid": "3919c93e_f87a0967",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 18
+      },
+      "revId": "89042ae848180a8691d2d85bb43fd4cdeb533681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
