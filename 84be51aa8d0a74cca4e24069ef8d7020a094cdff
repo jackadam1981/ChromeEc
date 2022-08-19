@@ -22,6 +22,30 @@
       },
       "revId": "84be51aa8d0a74cca4e24069ef8d7020a094cdff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a7ea75_e4a955ca",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-19T23:00:55Z",
+      "side": 1,
+      "message": "I changed it to `I2C_PORT_POWER`, though they point to the same bus.",
+      "parentUuid": "c02f9189_04d17ce5",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "84be51aa8d0a74cca4e24069ef8d7020a094cdff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
