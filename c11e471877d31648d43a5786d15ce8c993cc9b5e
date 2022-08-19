@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382cd667_739bf804",
+        "filename": "zephyr/projects/nissa/yaviks/generated.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-19T06:36:54Z",
+      "side": 1,
+      "message": "Since this file is no longer auto-generated, maybe remove this line, and perhaps also rename this file to gpio.dts",
+      "revId": "c11e471877d31648d43a5786d15ce8c993cc9b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ece25a2_a648bedc",
+        "filename": "zephyr/projects/nissa/yaviks/generated.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-19T06:36:54Z",
+      "side": 1,
+      "message": "This overrides can be moved to overlay.dts",
+      "revId": "c11e471877d31648d43a5786d15ce8c993cc9b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695c1042_a2c67123",
+        "filename": "zephyr/projects/nissa/yaviks/overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-19T06:36:54Z",
+      "side": 1,
+      "message": "2021 - \u003e 2022 (and anywhere else this is referenced)",
+      "revId": "c11e471877d31648d43a5786d15ce8c993cc9b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a051b149_1010158a",
+        "filename": "zephyr/projects/nissa/yaviks/overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-19T06:36:54Z",
+      "side": 1,
+      "message": "Since the generated.dts file is no longer auto-generated, these can be moved to that file.",
+      "revId": "c11e471877d31648d43a5786d15ce8c993cc9b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55591baf_04baf59b",
+        "filename": "zephyr/projects/nissa/yaviks/power_signals.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-19T06:36:54Z",
+      "side": 1,
+      "message": "corresponding",
+      "revId": "c11e471877d31648d43a5786d15ce8c993cc9b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cdc2d8_1a614754",
+        "filename": "zephyr/projects/nissa/yaviks/power_signals.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-19T06:36:54Z",
+      "side": 1,
+      "message": "These overides can be moved into generated.dts and directly added to the appropriate nodes",
+      "revId": "c11e471877d31648d43a5786d15ce8c993cc9b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
