@@ -22,6 +22,30 @@
       },
       "revId": "f5f7cc11d21fd681ad134267c708d986e123687e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc56860_5220ae40",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 42
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-19T09:20:21Z",
+      "side": 1,
+      "message": "Yes, please refer to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3823546/5",
+      "parentUuid": "aee82537_f2475e5e",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "f5f7cc11d21fd681ad134267c708d986e123687e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
