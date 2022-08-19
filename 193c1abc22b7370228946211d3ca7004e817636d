@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7841cf12_1db6fdd3",
+        "filename": "common/dps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-19T15:22:20Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to just enable that channel in the test instead?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "193c1abc22b7370228946211d3ca7004e817636d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6120970a_934a78de",
+        "filename": "common/dps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-19T15:22:20Z",
+      "side": 1,
+      "message": "I\u0027m not confident this is necessary, I believe that if you don\u0027t start tasks in your test, there won\u0027t be any and this will just set a wakeup event that you can check in the test.\n\nFor example test_bmi_interrupt_handler in zephyr/test/drivers/default/src/bmi160.c\n\nYou might need your own test_main() to prevent tasks from starting up like zephyr/test/drivers/common/src/main.c. That runs some tests, then calls ec_app_main() to start tasks, then runs some more tests.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "193c1abc22b7370228946211d3ca7004e817636d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
