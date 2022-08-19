@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb436084_05b4f085",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T21:37:33Z",
+      "side": 1,
+      "message": "I thought I already commented about this somewhere, but I can\u0027t find it now.\n\nThis function doesn\u0027t use its parameter. Is that intentional? I don\u0027t understand how this is supposed to be used.",
+      "revId": "4f7a7e81208dc3e7e506778cee84c26eeec258cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
