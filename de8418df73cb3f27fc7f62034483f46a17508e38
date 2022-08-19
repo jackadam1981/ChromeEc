@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "494b40fc_7e6168c8",
+        "filename": "zephyr/test/system_common/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T21:32:03Z",
+      "side": 1,
+      "message": "Should `CONFIG_PLATFORM_EC` also be moved?",
+      "parentUuid": "dbc7bf0e_e962f06a",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df652dba_8df1695e",
         "filename": "zephyr/test/system_common/src/reboot.c",
         "patchSetId": 2
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "No joke, it\u0027s a nightmare! clang-format is giving me a hard time here, how about this? One parameter per line, could even add the field name, like\n\n```\n                {\n                        cmd: EC_REBOOT_CANCEL,\n                        flags: 0,\n                        expect_return: EC_RES_SUCCESS,\n                        expect_reboot_at_shutdown: EC_REBOOT_CANCEL,\n                        expect_reset_called: 0,\n                        expect_reset_flags: 0,\n                        expect_hibernate_called: 0,\n                },\n```\n\nWhat do you think?\n\nWe could definitely use some parameterized helper!",
       "parentUuid": "170f7530_ae401949",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f324aa2d_ffe2b0dd",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-19T21:32:03Z",
+      "side": 1,
+      "message": "I see where you\u0027re going here, but honestly, I find this harder to read. Because the struct is just a bunch of ints, the only way I have to parse the values is to constantly refer back to the definition as I read each instance. Adding newlines makes the instances take up more vertical space, so now I have to scroll up and down while I read.\n\nI\u0027d prefer it if the struct members were initialized using `.member \u003d val` syntax, so I wouldn\u0027t have to refer to the definition to parse the instances. (I think this is what you suggested.) If you do that, I don\u0027t think it will make a huge difference whether each member goes on its own line, and I\u0027d probably be satisfied with whatever `clang-format` came up with.\n\nIt would also be nice if the members that should only be 0 or 1 were `bool`s.",
+      "parentUuid": "d7585108_f633f70d",
       "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
