@@ -212,6 +212,30 @@
       },
       "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14613af_8f414df8",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-19T18:00:54Z",
+      "side": 1,
+      "message": "Hi Derek, Zhuohao,\n\nAfter another thought, I think we should fix the pchg subsystem (i.e. peripheral_charger.c) first. It will make the code easy to understand, extend, and change.\n\nMore concretely, I think pchg_startup should do:\n\n    1. disable irq.\n    2. call reset().\n    3. call init().\n    4. enable irq.\n\nThe reset function is supposed to toggle just GPIO. The init function is supposed to unlock, set mode, probe, and set function pointers.\n\nAfter this refactoring, I believe you\u0027ll be able to apply your change more easily. I\u0027ll try to upload a patch next week. (You can go ahead fix pchg if you don\u0027t want to wait.)",
+      "parentUuid": "f5ce806c_1000cfab",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 36
+      },
+      "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

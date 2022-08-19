@@ -16,6 +16,75 @@
       "message": "add static?",
       "revId": "71609b89d37bb4ab320cd44495c00eddc8e38b9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c839b62_4cc359ec",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-19T18:00:54Z",
+      "side": 1,
+      "message": "Can you move this inside cps8100_set_unlock?",
+      "range": {
+        "startLine": 215,
+        "startChar": 14,
+        "endLine": 215,
+        "endChar": 32
+      },
+      "revId": "71609b89d37bb4ab320cd44495c00eddc8e38b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a1c81f_33b52115",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-19T18:00:54Z",
+      "side": 1,
+      "message": "Can you move this and write_mode to cps8100_init and call it from here and from init?",
+      "range": {
+        "startLine": 324,
+        "startChar": 5,
+        "endLine": 324,
+        "endChar": 23
+      },
+      "revId": "71609b89d37bb4ab320cd44495c00eddc8e38b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4385d9cc_3d454029",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-19T18:00:54Z",
+      "side": 1,
+      "message": "Can you define it as static and return immediately if it\u0027s already set?\n\n    static uint16_t id;\n    if (id)\n        return ec_success;",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 13
+      },
+      "revId": "71609b89d37bb4ab320cd44495c00eddc8e38b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
