@@ -16,6 +16,24 @@
       "message": "Sorry you also need \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3172255/2/include/tpm_vendor_cmds.h",
       "revId": "54b7baff72e761633a7f2927c05d071fade71a95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebeba93f_2b334171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518333
+      },
+      "writtenOn": "2022-08-19T15:06:52Z",
+      "side": 1,
+      "message": "This CL was landed in 14235.0.0. I think `factory-cherry-14455.B-cr50_stab` should already includes it, right?",
+      "parentUuid": "099be768_e2b890e7",
+      "revId": "54b7baff72e761633a7f2927c05d071fade71a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
