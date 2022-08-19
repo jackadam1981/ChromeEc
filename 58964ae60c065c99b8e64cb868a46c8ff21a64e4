@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de0c6cb3_feb89fed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-19T07:47:29Z",
+      "side": 1,
+      "message": "The output is the same as patch42.\nCROS_DEDICATED_CHARGER CROS_USBPD_CHARGER0",
+      "parentUuid": "1174780f_8e5e74f5",
+      "revId": "58964ae60c065c99b8e64cb868a46c8ff21a64e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1923c206_2b13b574",
         "filename": "board/shotzo/battery.c",
         "patchSetId": 41
