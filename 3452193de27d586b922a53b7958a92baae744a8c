@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9885474b_14c46f2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-19T22:38:04Z",
+      "side": 1,
+      "message": "#FIXIT\n+4/7 charge_state_v2.c\n+0/1 led_onoff_states.c\n-1/-19 zephyr/shim/src/led_driver/led.c\n",
+      "revId": "3452193de27d586b922a53b7958a92baae744a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
