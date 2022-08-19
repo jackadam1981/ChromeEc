@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1140126_6f3b3f96",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T16:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "babea716_3cf532d0",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 0
+      },
+      "revId": "5ecb029aa1218081f5e691823ea007f2cc272ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c96a197e_33c3039e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-18T23:08:26Z",
       "side": 1,
       "message": "Same here, use the host command API to get the mux state.",
+      "range": {
+        "startLine": 290,
+        "startChar": 16,
+        "endLine": 290,
+        "endChar": 27
+      },
+      "revId": "5ecb029aa1218081f5e691823ea007f2cc272ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e6aa4e_a3072c19",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T16:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c96a197e_33c3039e",
       "range": {
         "startLine": 290,
         "startChar": 16,
