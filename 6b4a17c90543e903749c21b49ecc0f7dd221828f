@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72ec336_8b379b44",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/mock_power.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-19T16:37:56Z",
+      "side": 1,
+      "message": "I think I would like to see this as a full test lib...\n\nCan we move this to zephyr/mock/power? You\u0027ll need to create a zephyr_library and link it depending on a Kconfig by putting a CMakeLists.txt in zephyr/mock which calls `add_subdirectory_ifdef(CONFIG_MOCK_POWER power)`.",
+      "revId": "6b4a17c90543e903749c21b49ecc0f7dd221828f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
