@@ -196,7 +196,9 @@ static int anx74xx_tcpc_drp_toggle(int port)
 static int anx74xx_enter_low_power_mode(int port)
 {
 	anx74xx_set_power_mode(port, ANX74XX_STANDBY_MODE);
-	return EC_SUCCESS;
+
+	/* Set I2C connection to idle mode in LPM */
+	return tcpci_enter_low_power_mode(port);
 }
 
 #endif
@@ -1189,6 +1191,7 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
 	.drp_toggle = &anx74xx_tcpc_drp_toggle,
 	.enter_low_power_mode = &anx74xx_enter_low_power_mode,
+	.wake_low_power_mode = &tcpci_wake_low_power_mode,
 #endif
 	.set_bist_test_mode = &tcpci_set_bist_test_mode,
 };
