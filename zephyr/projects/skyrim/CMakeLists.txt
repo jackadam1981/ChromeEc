@@ -9,6 +9,8 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 zephyr_library_sources("common.c")
 zephyr_library_sources("power_signals.c")
 
+zephyr_library_sources_ifdef(CONFIG_BOARD_SKYRIM "src/skyrim/form_factor.c")
+
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 	"usb_pd_policy.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON
