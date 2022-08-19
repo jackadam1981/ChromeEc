@@ -1119,6 +1119,9 @@ static int fusb302_tcpm_enter_low_power_mode(int port)
 	return i2c_write8(tcpc_config[port].i2c_info.port,
 			  tcpc_config[port].i2c_info.addr_flags,
 			  TCPC_REG_CONTROL2, reg);
+
+	/* Set I2C connection to idle */
+	return tcpci_enter_low_power_mode(port);
 }
 #endif
 
@@ -1194,5 +1197,6 @@ const struct tcpm_drv fusb302_tcpm_drv = {
 	.tcpc_alert = &fusb302_tcpc_alert,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode = &fusb302_tcpm_enter_low_power_mode,
+  	.wake_low_power_mode = &tcpci_wake_low_power_mode,
 #endif
 };
