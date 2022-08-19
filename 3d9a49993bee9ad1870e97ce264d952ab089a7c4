@@ -16,6 +16,23 @@
       "message": "I just checked and the branch already defines VENDOR_CC_AP_RO_VALIDATE, so we don\u0027t need this change.\n\nI also made extra/usb_updater/gsctool and verified gsctool -B start works. You should be fine without this.",
       "revId": "3d9a49993bee9ad1870e97ce264d952ab089a7c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2410e90_f8510e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2022-08-19T15:11:27Z",
+      "side": 1,
+      "message": "Thanks, will abandone this.",
+      "revId": "3d9a49993bee9ad1870e97ce264d952ab089a7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
