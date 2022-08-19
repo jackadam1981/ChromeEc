@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc7bf0e_e962f06a",
+        "filename": "zephyr/test/system_common/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-19T10:30:39Z",
+      "side": 1,
+      "message": "Yeah good idea, regrouped. Also dropped `CONFIG_PLATFORM_EC_CONSOLE_CMD_SYSINFO` added it in the previous patch but wasn\u0027t really needed.",
+      "parentUuid": "5255f7d3_3af0b0be",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df652dba_8df1695e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-18T16:32:27Z",
       "side": 1,
       "message": "This isn\u0027t using the function parameter. Is that what you wanted?",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df831eb_7ad8bfd2",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-19T10:30:39Z",
+      "side": 1,
+      "message": "Yeah, I need to keep that visible to the whole file anyway, I initially had a setup function to plumb it through but then that\u0027s all it was doing so I\u0027ve figured I may as well not use it at all and keep the object scoped pointer explicit.\n\nI\u0027ll add an ARG_UNUSED().",
+      "parentUuid": "df652dba_8df1695e",
       "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7585108_f633f70d",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-19T10:30:39Z",
+      "side": 1,
+      "message": "No joke, it\u0027s a nightmare! clang-format is giving me a hard time here, how about this? One parameter per line, could even add the field name, like\n\n```\n                {\n                        cmd: EC_REBOOT_CANCEL,\n                        flags: 0,\n                        expect_return: EC_RES_SUCCESS,\n                        expect_reboot_at_shutdown: EC_REBOOT_CANCEL,\n                        expect_reset_called: 0,\n                        expect_reset_flags: 0,\n                        expect_hibernate_called: 0,\n                },\n```\n\nWhat do you think?\n\nWe could definitely use some parameterized helper!",
+      "parentUuid": "170f7530_ae401949",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "575795c2_de103fc5",
         "filename": "zephyr/test/system_common/src/reboot.c",
         "patchSetId": 2
@@ -65,6 +119,30 @@
       "writtenOn": "2022-08-18T16:32:27Z",
       "side": 1,
       "message": "Nit: Unexpected?",
+      "range": {
+        "startLine": 155,
+        "startChar": 10,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f686bf0_ab5619bf",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-19T10:30:39Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "575795c2_de103fc5",
       "range": {
         "startLine": 155,
         "startChar": 10,
