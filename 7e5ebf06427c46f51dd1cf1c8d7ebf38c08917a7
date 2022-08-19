@@ -34,6 +34,24 @@
       "parentUuid": "dc0de768_964ba645",
       "revId": "7e5ebf06427c46f51dd1cf1c8d7ebf38c08917a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b276a4_d8c0f2dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-19T02:17:10Z",
+      "side": 1,
+      "message": "Got it. Then we can keep CONFIG_VARIANT_CORSOLA_DB_DETECTION\u003dy and detect for no sub board case, and try to co-exist in the same firmware.",
+      "parentUuid": "904b84e6_aa36ffa7",
+      "revId": "7e5ebf06427c46f51dd1cf1c8d7ebf38c08917a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
