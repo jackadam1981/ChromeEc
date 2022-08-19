@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08367e72_bde1e2c8",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-19T16:11:16Z",
+      "side": 1,
+      "message": "This seems to be modifying state, if this passes and the assert in line 70 fails, we might be in a bad state. I believe that this test suite needs an `after` function to make sure we put everything back to the expected states such that other test suites can rely on the i2c bus to be in \u0027normal\u0027 state.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 54
+      },
+      "revId": "e47d7ffe9234ab52432700dc4f17fc7288f1d2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
