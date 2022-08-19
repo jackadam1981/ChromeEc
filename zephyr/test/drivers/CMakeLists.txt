@@ -34,6 +34,9 @@ elseif("${ZMAKE_PROJECT_NAME}" STREQUAL "test-drivers-pwm_led_driver")
 elseif("${ZMAKE_PROJECT_NAME}" STREQUAL "test-drivers-usbc_alt_mode")
   set(CONFIG_LINK_TEST_SUITE_USBC_ALT_MODE TRUE)
   add_compile_definitions(CONFIG_LINK_TEST_SUITE_USBC_ALT_MODE=1)
+elseif("${ZMAKE_PROJECT_NAME}" STREQUAL "test-drivers-dps")
+  set(CONFIG_LINK_TEST_SUITE_USB_PD_DPS TRUE)
+  add_compile_definitions(CONFIG_LINK_TEST_SUITE_USB_PD_DPS=1)
 endif()
 
 # Add linked suites here
@@ -45,6 +48,7 @@ add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_LED_DRIVER led_driver)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_PWM_LED_DRIVER pwm_led_driver)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USB_MALFUNCTION_SINK usb_malfunction_sink)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USBC_ALT_MODE usbc_alt_mode)
+add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USB_PD_DPS dps)
 
 get_target_property(TEST_SOURCES_NEW app SOURCES)
 
