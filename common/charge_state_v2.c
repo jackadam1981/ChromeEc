@@ -2051,11 +2051,11 @@ void charger_task(void *u)
 		}
 
 		/* Adjust for time spent in this loop */
+		if (sleep_usec > CHARGE_MAX_SLEEP_USEC)
+			sleep_usec = CHARGE_MAX_SLEEP_USEC;
 		sleep_usec -= (int)(get_time().val - curr.ts.val);
 		if (sleep_usec < CHARGE_MIN_SLEEP_USEC)
 			sleep_usec = CHARGE_MIN_SLEEP_USEC;
-		else if (sleep_usec > CHARGE_MAX_SLEEP_USEC)
-			sleep_usec = CHARGE_MAX_SLEEP_USEC;
 
 		/*
 		 * If battery is critical, ensure that the sleep time is not
