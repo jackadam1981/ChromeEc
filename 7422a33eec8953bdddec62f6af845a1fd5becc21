@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e79194_62467a2d",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T19:49:03Z",
+      "side": 1,
+      "message": "The function includes a zassume and a zassert.  So it can get skipped or fail.",
+      "parentUuid": "0814a1a3_d53fcf5e",
+      "range": {
+        "startLine": 59,
+        "startChar": 45,
+        "endLine": 59,
+        "endChar": 55
+      },
+      "revId": "7422a33eec8953bdddec62f6af845a1fd5becc21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3149199a_225832c3",

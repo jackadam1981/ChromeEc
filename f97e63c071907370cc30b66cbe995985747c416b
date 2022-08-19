@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d49657e_2b3d2b37",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-19T19:49:03Z",
+      "side": 1,
+      "message": "Looks like you updated the wrong prototype.",
+      "range": {
+        "startLine": 105,
+        "startChar": 50,
+        "endLine": 105,
+        "endChar": 54
+      },
+      "revId": "f97e63c071907370cc30b66cbe995985747c416b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
