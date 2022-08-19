@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a695232_cb9f4a49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-19T21:48:20Z",
+      "side": 1,
+      "message": "#FIXIT\n44 mnt/host/source/src/third_party/zephyr/main/drivers/eeprom/eeprom_at2x.c\n4 mnt/host/source/src/third_party/zephyr/main/include/zephyr/drivers/eeprom.h\n50/5 common/cbi.c\n0/9 common/motion_lid.c\n0/3 common/motion_sense.c\n28/4 common/tablet_mode.c\n16/4 zephyr/projects/corsola/src/kingler/board_steelix.c\n3 zephyr/shim/src/motionsense_sensors.c\n5 zephyr/shim/src/cbi/cbi_eeprom.c\n",
+      "revId": "96af58d5d8e438628342bca6458d8cd2987df7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
