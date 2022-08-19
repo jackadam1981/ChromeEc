@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28eb0e96_d5afaa9b",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:55:36Z",
+      "side": 1,
+      "message": "It turns out there already is one, we were just hardcoding it in the board file I used for reference",
+      "parentUuid": "3ad1b97d_3a69b387",
+      "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8d59642_ccbd99d6",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-19T21:45:08Z",
       "side": 1,
       "message": "Nit: Shouldn\u0027t SVIDs be listed before modes?",
+      "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e4d73c_675ce96f",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:55:36Z",
+      "side": 1,
+      "message": "Sure.  I was just copy-pasting the DP mode test :P",
+      "parentUuid": "a8d59642_ccbd99d6",
       "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3562cade_90377cbc",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:55:36Z",
+      "side": 1,
+      "message": "Done.  I also realized I\u0027ll want to move the connection itself into test cases, so they can set up their cable before the connection starts",
+      "parentUuid": "d9722bb2_f6cc2c92",
+      "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5da6eef_695fd22b",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-08-19T21:45:08Z",
       "side": 1,
       "message": "Nit: Could just declare this in this block.",
+      "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd8b0ab_598eacd1",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-19T22:55:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5da6eef_695fd22b",
       "revId": "d4120099ef6e61e5fed52a7dff89e07431f681b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
