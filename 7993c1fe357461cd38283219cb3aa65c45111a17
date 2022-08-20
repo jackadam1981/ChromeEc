@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e78e22_7f862ccd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-20T19:23:47Z",
+      "side": 1,
+      "message": "how much was the power saving?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "7993c1fe357461cd38283219cb3aa65c45111a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4cbd583_c131b52c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-20T19:23:47Z",
+      "side": 1,
+      "message": "dont touch this file if not tested",
+      "revId": "7993c1fe357461cd38283219cb3aa65c45111a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
