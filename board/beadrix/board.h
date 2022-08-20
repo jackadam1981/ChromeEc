@@ -12,9 +12,6 @@
 #define VARIANT_DEDEDE_EC_IT8320
 #include "baseboard.h"
 
-/* System unlocked in early development */
-#define CONFIG_SYSTEM_UNLOCKED
-
 /* EC console commands */
 #define CONFIG_CMD_CHARGER_DUMP
 
@@ -67,6 +64,7 @@
 #define CONFIG_USB_PD_TCPM_RAA489000 /* C1: TCPC + Charger */
 #undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
 #define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (100 * MSEC)
+#define CONFIG_USB_PD_COMM_LOCKED
 
 /* USB Mux and Retimer */
 #define CONFIG_USB_MUX_RUNTIME_CONFIG
