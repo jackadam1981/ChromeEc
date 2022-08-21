@@ -63,6 +63,24 @@
       "message": "dont touch this file if not tested",
       "revId": "7993c1fe357461cd38283219cb3aa65c45111a17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cf8c0b_8d48cfcf",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1468813
+      },
+      "writtenOn": "2022-08-21T15:25:00Z",
+      "side": 1,
+      "message": "I don\u0027t think there might be any mis-operation happening with this change. This is just setting the i2c bus to idle in LPM. When the TCPM wants, it will bring the SDA to LOW when CLK is HIGH and resume the operation (I2C wake).\nYet, I leave the decision to the reviewers.",
+      "parentUuid": "a4cbd583_c131b52c",
+      "revId": "7993c1fe357461cd38283219cb3aa65c45111a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
