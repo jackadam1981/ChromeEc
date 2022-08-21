@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86ea6838_974708a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1468813
+      },
+      "writtenOn": "2022-08-21T15:21:34Z",
+      "side": 1,
+      "message": "I initially thought setting i2c to idle basically puts it into sleep.\nApparently, only the SDA and SCL lines of i2c goes HIGH so that there is no transfer of any kind happening. \nSetting i2c to idle basically stops any transmission and sets the bus to idle (i think its not related to power savings, maybe have to correct the patch description).",
+      "parentUuid": "e3e78e22_7f862ccd",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "7993c1fe357461cd38283219cb3aa65c45111a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4cbd583_c131b52c",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 7
