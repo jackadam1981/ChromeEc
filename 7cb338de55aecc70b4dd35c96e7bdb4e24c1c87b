@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "462b786b_965a8c56",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-22T21:39:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d5351d_ab4440b9",
+      "revId": "7cb338de55aecc70b4dd35c96e7bdb4e24c1c87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccef5b7d_2acf66d9",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Copy/paste error on my part.",
       "parentUuid": "ccef5b7d_2acf66d9",
+      "revId": "7cb338de55aecc70b4dd35c96e7bdb4e24c1c87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165444b6_c2e8382c",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-08-22T21:39:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10d89be1_d13e0e50",
       "revId": "7cb338de55aecc70b4dd35c96e7bdb4e24c1c87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
