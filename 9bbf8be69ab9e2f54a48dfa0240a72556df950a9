@@ -22,6 +22,30 @@
       },
       "revId": "9bbf8be69ab9e2f54a48dfa0240a72556df950a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d653c1_0a3159b5",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-22T16:50:42Z",
+      "side": 1,
+      "message": "I think it would be useful, but this case really should have just used an fff mock from the start, I dropped this code block in http://crrev.com/c/3846270, let\u0027s reopen the conversation if we find a similar case that cannot use an fff mock.",
+      "parentUuid": "7a1838d1_622750da",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 54
+      },
+      "revId": "9bbf8be69ab9e2f54a48dfa0240a72556df950a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
