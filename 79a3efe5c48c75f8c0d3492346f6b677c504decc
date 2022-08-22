@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e618865_bd7aad14",
+        "filename": "zephyr/mock/include/power_mock.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-22T16:07:24Z",
+      "side": 1,
+      "message": "Can we start a new(ish) trend to add more prefixes to the include paths?\n\nSuggest moving this to: `zephyr/mock/include/mock/power.h`\n\nThis way the include statements will look like:\n```\n#include \"mock/power.h\"\n```\n\nThis makes mocks more discoverable since developers with auto-complete can type `mock/` and see what options they have.",
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3c4217_a8dc7be2",
+        "filename": "zephyr/mock/power_mock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-22T16:07:24Z",
+      "side": 1,
+      "message": "Since this is a zephyr only module, we should use logging.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5749660_cf2e17d2",
+        "filename": "zephyr/mock/power_mock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-22T16:07:24Z",
+      "side": 1,
+      "message": "nit: coding style should use `{}` for all blocks",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 25
+      },
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c655ff1_0a89edb8",
+        "filename": "zephyr/mock/power_mock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-22T16:07:24Z",
+      "side": 1,
+      "message": "nit: coding style should use `{}` for all blocks",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d21559_e5438ea9",
+        "filename": "zephyr/mock/power_mock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-22T16:07:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t use printf, use logging subsystem instead",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 26
+      },
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
