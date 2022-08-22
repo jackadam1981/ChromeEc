@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6fcd1f7_ee7b7343",
+        "filename": "test/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-22T15:52:53Z",
+      "side": 1,
+      "message": "This needs to live in #if defined(__GNUC__) \u0026\u0026 __GNUC__ \u003e\u003d 7\nor the pragma will break when the clang compiler is used.",
+      "range": {
+        "startLine": 182,
+        "startChar": 33,
+        "endLine": 182,
+        "endChar": 51
+      },
+      "revId": "a2cc7b4a69eba602bbd21a8b7dc951fe5d4b6f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
