@@ -22,6 +22,30 @@
       },
       "revId": "a4b75f7a99afee2911e11a023ec085735ccb4488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab935309_9f6de646",
+        "filename": "zephyr/test/drivers/default/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-22T20:47:24Z",
+      "side": 1,
+      "message": "Right. Added the setup and teardown functions.",
+      "parentUuid": "3a4bd5ba_b9a18d8d",
+      "range": {
+        "startLine": 125,
+        "startChar": 46,
+        "endLine": 125,
+        "endChar": 68
+      },
+      "revId": "a4b75f7a99afee2911e11a023ec085735ccb4488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
