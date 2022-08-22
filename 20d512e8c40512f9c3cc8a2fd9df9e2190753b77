@@ -63,6 +63,30 @@
       },
       "revId": "20d512e8c40512f9c3cc8a2fd9df9e2190753b77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4042166c_fe54a665",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-22T16:21:39Z",
+      "side": 1,
+      "message": "Ack.  I need to pay closer attention to zassert vs zassume.",
+      "parentUuid": "3c5b8562_55d2c163",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 43
+      },
+      "revId": "20d512e8c40512f9c3cc8a2fd9df9e2190753b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
