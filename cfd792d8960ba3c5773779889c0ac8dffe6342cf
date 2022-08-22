@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a64361b1_3e8d8ee6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2055,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-22T22:17:24Z",
+      "side": 1,
+      "message": "We need more than this to strictly control the interval between FG accesses. So, I think we should keep the current code and just use more relaxed value for CHARGE_MAX_SLEEP_USEC (as done in crrev.com/c/3821848/). I assume it\u0027s ok to ping the FG every ~4 sec (instead 5 sec).",
+      "range": {
+        "startLine": 2054,
+        "startChar": 0,
+        "endLine": 2055,
+        "endChar": 38
+      },
+      "revId": "cfd792d8960ba3c5773779889c0ac8dffe6342cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
