@@ -62,6 +62,24 @@
       "message": "add uint64_t ec_boot_time; and update this from main()",
       "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c771ab20_905eb181",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 7730,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-22T23:35:13Z",
+      "side": 1,
+      "message": "It looks like there is max limit of response buffer... If I am adding another member in structure, ectool command on the ap side is failing with \"ioctl -1, errno 90 (Message too long), EC result 255 (\u003cunknown\u003e)\" after adding new member the structure size is 58 byte.. Do you what whats is the max limit that we can send to AP through host command ? or is there any way from EC side to increase response buffer ?",
+      "parentUuid": "496766fe_0f666032",
+      "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
