@@ -22,6 +22,30 @@
       },
       "revId": "17edb052e07cd7dd0a152a1b625516605b52a76f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc8fd6f_775d19c2",
+        "filename": "board/host/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1310243
+      },
+      "writtenOn": "2022-08-22T17:04:27Z",
+      "side": 1,
+      "message": "It only enables extra logging, no real functionality, so I think it should be fine. All of the existing tests passed with it turned on.",
+      "parentUuid": "dd936e66_58a17248",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 31
+      },
+      "revId": "17edb052e07cd7dd0a152a1b625516605b52a76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
