@@ -34,6 +34,24 @@
       "parentUuid": "f8d0be46_364d48ef",
       "revId": "6e1049f04410e285f27888960dfc12432744e9ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54230267_cbbdd073",
+        "filename": "zephyr/projects/skyrim/form_factor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-22T15:43:14Z",
+      "side": 1,
+      "message": "For now, give the file a skyrim-specific extension on the filename (similar to led_pins_skyrim.dts) and we can use the cleanup bug to get things separated out nicely.",
+      "parentUuid": "8326cd15_569a122e",
+      "revId": "6e1049f04410e285f27888960dfc12432744e9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
