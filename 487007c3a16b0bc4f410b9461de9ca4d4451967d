@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e0f360d_99cac1e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-22T20:39:56Z",
+      "side": 1,
+      "message": "which bug does this address?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "487007c3a16b0bc4f410b9461de9ca4d4451967d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e95b32e0_0cadacaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-22T20:39:56Z",
+      "side": 1,
+      "message": "please provide more background info on which problem is being\naddressed here and how this solves it. LPM tends to be\ntricky and we need to be sure this change is well understood.\n",
+      "revId": "487007c3a16b0bc4f410b9461de9ca4d4451967d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

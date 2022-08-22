@@ -81,6 +81,24 @@
       "parentUuid": "a4cbd583_c131b52c",
       "revId": "7993c1fe357461cd38283219cb3aa65c45111a17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35dac0d_f90ccc0f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-22T20:39:56Z",
+      "side": 1,
+      "message": "ya, look at the code path for reef. it\u0027ll try to write\nto the TCPC while it\u0027s held in reset and powered down.",
+      "parentUuid": "d7cf8c0b_8d48cfcf",
+      "revId": "7993c1fe357461cd38283219cb3aa65c45111a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
