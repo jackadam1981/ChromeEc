@@ -543,6 +543,7 @@ static void pchg_startup(void)
 {
 	struct pchg *ctx;
 	int p;
+	int active_pchg_count = 0;
 
 	CPRINTS("%s", __func__);
 	queue_init(&host_events);
@@ -551,12 +552,20 @@ static void pchg_startup(void)
 		ctx = &pchgs[p];
 		_clear_port(ctx);
 		ctx->mode = PCHG_MODE_NORMAL;
+		gpio_disable_interrupt(ctx->cfg->irq_pin);
 		board_pchg_power_on(p, 1);
 		ctx->cfg->drv->reset(ctx);
-		gpio_enable_interrupt(ctx->cfg->irq_pin);
+		if (!ctx->cfg->drv->init(ctx)) {
+			gpio_enable_interrupt(ctx->cfg->irq_pin);
+			active_pchg_count++;
+		} else {
+			CPRINTS("ERR: Failed to init P%d", p);
+			board_pchg_power_on(p, 0);
+		}
 	}
 
-	task_wake(TASK_ID_PCHG);
+	if (active_pchg_count)
+		task_wake(TASK_ID_PCHG);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pchg_startup, HOOK_PRIO_DEFAULT);
 
