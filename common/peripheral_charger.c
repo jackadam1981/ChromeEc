@@ -551,9 +551,13 @@ static void pchg_startup(void)
 		ctx = &pchgs[p];
 		_clear_port(ctx);
 		ctx->mode = PCHG_MODE_NORMAL;
+		gpio_disable_interrupt(ctx->cfg->irq_pin);
 		board_pchg_power_on(p, 1);
 		ctx->cfg->drv->reset(ctx);
-		gpio_enable_interrupt(ctx->cfg->irq_pin);
+		if (!ctx->cfg->drv->init(ctx))
+			gpio_enable_interrupt(ctx->cfg->irq_pin);
+		else
+			board_pchg_power_on(p, 0);
 	}
 
 	task_wake(TASK_ID_PCHG);
