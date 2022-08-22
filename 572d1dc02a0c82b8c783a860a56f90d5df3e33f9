@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c823b6a_8ea56815",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-22T21:33:06Z",
+      "side": 1,
+      "message": "Ok, I see how storing the data this way would not extend to other PD data objects based on field size. Would you prefer we store the RMDO as a uint32_t and use shifting/masking to get field values?",
+      "parentUuid": "06e2d144_0634058c",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432ab900_0bb49cc5",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
