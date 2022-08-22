@@ -374,6 +374,30 @@
       },
       "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0736378b_2cd4a90d",
+        "filename": "zephyr/test/drivers/usb_retimer_fw_update/src/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-22T16:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a002683_57dd5cc1",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 50
+      },
+      "revId": "e6b88d12480c350c208221a2c66c3352e6dea819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
