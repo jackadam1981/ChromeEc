@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4bd5ba_b9a18d8d",
+        "filename": "zephyr/test/drivers/default/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-22T20:14:21Z",
+      "side": 1,
+      "message": "I think this needs a setup and teardown function to force the speed to 100kHz, probably by calling i2c_set_freq() directly. If any part of test_i2c_set_speed_success fails, the speed won\u0027t get reverted. Also, if a previous test messes with the I2C speed and forgets to revert, the assert on line 33 will fail.",
+      "range": {
+        "startLine": 125,
+        "startChar": 46,
+        "endLine": 125,
+        "endChar": 68
+      },
+      "revId": "a4b75f7a99afee2911e11a023ec085735ccb4488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
