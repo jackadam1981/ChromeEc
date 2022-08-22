@@ -236,6 +236,30 @@
       },
       "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad2a8d90_e8fa4e08",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-22T09:33:54Z",
+      "side": 1,
+      "message": "Thanks Daisuke. Agree with you that we should refector pchg_startup(). I have uploaded a patch for review and applied my changes in cps8100.c accordingly.",
+      "parentUuid": "b14613af_8f414df8",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 36
+      },
+      "revId": "9073ce7a162412b329ff059e423a9b0451332a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
