@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ca5f3d_6a560e2d",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-22T16:58:41Z",
+      "side": 1,
+      "message": "Please update comments for struct pchg_drv in peripheral_charger.h.\n\n    reset: External reset (e.g. by GPIO). No comm or data access is\n           expected (e.g. no i2c).\n    init: Run setup needed only once per reset. (e.g. identify chip,\n          unlock i2c)",
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98985d23_0b5b26ff",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-22T16:58:41Z",
+      "side": 1,
+      "message": "Please print an error message. Also, I don\u0027t think we should wake up the task.",
+      "range": {
+        "startLine": 559,
+        "startChar": 2,
+        "endLine": 559,
+        "endChar": 6
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
