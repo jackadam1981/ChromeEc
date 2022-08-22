@@ -52,6 +52,24 @@
       "parentUuid": "7c2dea84_63d322c8",
       "revId": "b9f0782112919ef348eddbc2c42ab1fcd81810b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2940fe06_7b9a32bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-22T23:31:08Z",
+      "side": 1,
+      "message": "I imagine support for this function might always be optional for any given device, since it\u0027s likely there exist some devices where it\u0027s not possible to implement it.\n\nThis seems okay as a temporary workaround, but we should probably add TODOs to each of the configs to mark that it\u0027s intended as a workaround.",
+      "parentUuid": "b35af9ce_eb4f3d0f",
+      "revId": "b9f0782112919ef348eddbc2c42ab1fcd81810b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
