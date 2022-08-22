@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae10e76e_f0b78129",
+        "filename": "zephyr/test/system_common/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-22T10:45:55Z",
+      "side": 1,
+      "message": "Sure shy not.",
+      "parentUuid": "494b40fc_7e6168c8",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df652dba_8df1695e",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "I see where you\u0027re going here, but honestly, I find this harder to read. Because the struct is just a bunch of ints, the only way I have to parse the values is to constantly refer back to the definition as I read each instance. Adding newlines makes the instances take up more vertical space, so now I have to scroll up and down while I read.\n\nI\u0027d prefer it if the struct members were initialized using `.member \u003d val` syntax, so I wouldn\u0027t have to refer to the definition to parse the instances. (I think this is what you suggested.) If you do that, I don\u0027t think it will make a huge difference whether each member goes on its own line, and I\u0027d probably be satisfied with whatever `clang-format` came up with.\n\nIt would also be nice if the members that should only be 0 or 1 were `bool`s.",
       "parentUuid": "d7585108_f633f70d",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbeb33da_78380b15",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-22T10:45:55Z",
+      "side": 1,
+      "message": "[Woah just realized what I wrote in my comment... what was I thinking :-)]\n\nYeah let\u0027s use explicit initializers, decent compromise.\n\nAs for the other members, they are actually call counters, so I actually mean 0 or 1.",
+      "parentUuid": "f324aa2d_ffe2b0dd",
       "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
