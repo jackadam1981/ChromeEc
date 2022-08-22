@@ -14,6 +14,7 @@
 # fuzzers on architectures that don't support sanitizers yet (e.g. arm).
 ARCH?=amd64
 BOARD ?= elm
+ALLOW_CONFIG:=1
 
 # Directory where the board is configured (includes /$(BOARD) at the end)
 BDIR:=$(wildcard board/$(BOARD))
