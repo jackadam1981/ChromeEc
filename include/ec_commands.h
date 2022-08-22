@@ -1561,6 +1561,8 @@ enum ec_feature_code {
 	 * The EC supports entering and residing in S4.
 	 */
 	EC_FEATURE_S4_RESIDENCY = 44,
+	/* The MCU is System Companion Processor Core 1 */
+	EC_FEATURE_SCP_C1 = 45,
 	/*
 	 * The EC supports the AP directing mux sets for the board.
 	 */
