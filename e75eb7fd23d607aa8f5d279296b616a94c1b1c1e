@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1ee2ef_17b07cd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-22T14:33:37Z",
+      "side": 1,
+      "message": "So some of these may not have code or references to them in the EC codebase (e.g the SD card etc.), and presumably there are used in coreboot etc.\nIn this case, it may be clearer to just allocate the bits, but not create the enums (which are only there for use in the EC code).\n",
+      "revId": "e75eb7fd23d607aa8f5d279296b616a94c1b1c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
