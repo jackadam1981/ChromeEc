@@ -220,9 +220,11 @@ struct pchg {
  * Peripheral charger driver
  */
 struct pchg_drv {
-	/* Reset charger chip. */
+	/* Reset charger chip. External reset (e.g by GPIO). No */
+	/* communication or data access is expected (e.g. no I2C access). */
 	int (*reset)(struct pchg *ctx);
-	/* Initialize the charger. */
+	/* Initialize the charger. Run setup needed only once per reset. */
+	/* (e.g. identify chip, unlock I2C) */
 	int (*init)(struct pchg *ctx);
 	/* Enable/disable the charger. */
 	int (*enable)(struct pchg *ctx, bool enable);
