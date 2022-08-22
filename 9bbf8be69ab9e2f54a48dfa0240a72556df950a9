@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1838d1_622750da",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-22T16:43:30Z",
+      "side": 1,
+      "message": "I want to discuss this offline, it seems like a valid case wanting a reference to the fixture outside of the ztest APIs. Since only one test is running at a time, it would be possible to provide an API to get the current context:\n\n```\n#define ztest_get_current_fixture(SUITE_NAME) \\\n    ((struct SUITE_NAME##_fixture*)_ztest_get_current_fixture(#SUITE_NAME))\n    \n/**\n * Get the current suite\u0027s fixture. While ztest knows the currently running\n * suite\u0027s name, this will allow us to make sure that the caller is actually\n * getting the right pointer for casting. The implementation will ensure that\n * the currently running suite matches the caller\u0027s expectations so they can\n * case the \u0027void*\u0027 to the suite\u0027s fixture pointer.\n *\n * @param suite_name The name of the expected currently running suite\n * @return Pointer to the currently running suite\u0027s fixture or NULL if the suite\n *         name doesn\u0027t match the expected one.\n */\nvoid *_ztest_get_current_fixture(const char *suite_name);\n```\n\nWould this be helpful? It would allow you to place the fixture in the setup function as intended and still access it from other APIs.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 54
+      },
+      "revId": "9bbf8be69ab9e2f54a48dfa0240a72556df950a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
