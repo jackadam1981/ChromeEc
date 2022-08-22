@@ -37,6 +37,25 @@ static void console_cmd_hostevent_after(void *fixture)
 	host_events_restore(&f->ctx);
 }
 
+static int console_cmd_hostevent(const char *subcommand, host_event_t mask)
+{
+	int rv;
+	char cmd_buf[CONFIG_SHELL_CMD_BUFF_SIZE];
+
+#ifdef CONFIG_HOST_EVENT64
+	rv = snprintf(cmd_buf, CONFIG_SHELL_CMD_BUFF_SIZE,
+		      "hostevent %s 0x%016" PRIx64, subcommand, mask);
+#else
+	rv = snprintf(cmd_buf, CONFIG_SHELL_CMD_BUFF_SIZE,
+		      "hostevent %s 0x%08x" subcommand, mask);
+#endif
+
+	zassume_between_inclusive(rv, 0, CONFIG_SHELL_CMD_BUFF_SIZE,
+				  "hostevent console command too long");
+
+	return shell_execute_cmd(get_ec_shell(), cmd_buf);
+}
+
 /* hostevent with no arguments */
 ZTEST_USER(console_cmd_hostevent, test_hostevent)
 {
@@ -48,9 +67,10 @@ ZTEST_USER(console_cmd_hostevent, test_hostevent)
 ZTEST_USER(console_cmd_hostevent, test_hostevent_invalid)
 {
 	int rv;
+	host_event_t mask = 0;
 
 	/* Test invalid sub-command */
-	rv = shell_execute_cmd(get_ec_shell(), "hostevent invalid 0xFFFF");
+	rv = console_cmd_hostevent("invalid", mask);
 	zassert_equal(rv, EC_ERROR_PARAM1, "Expected %d, but got %d",
 		      EC_ERROR_PARAM1, rv);
 
