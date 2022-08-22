@@ -22,6 +22,30 @@
       },
       "revId": "08d3f86cb7583f7432ed631c1a1d0f959cde546f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88263ba0_8ed8a48c",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-22T17:41:12Z",
+      "side": 1,
+      "message": "Oh neat, it does, thanks!",
+      "parentUuid": "cf3dbe68_14777cea",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "08d3f86cb7583f7432ed631c1a1d0f959cde546f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
