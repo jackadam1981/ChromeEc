@@ -22,6 +22,30 @@
       },
       "revId": "a2cc7b4a69eba602bbd21a8b7dc951fe5d4b6f61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c831548_f020e204",
+        "filename": "test/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-22T18:44:34Z",
+      "side": 1,
+      "message": "It seems to compile with clang as-is (We\u0027ve been using clang to build the FPMCU firmware), but I\u0027ll make a separate CL to make a more generic macro that works with both clang and gcc.",
+      "parentUuid": "d6fcd1f7_ee7b7343",
+      "range": {
+        "startLine": 182,
+        "startChar": 33,
+        "endLine": 182,
+        "endChar": 51
+      },
+      "revId": "a2cc7b4a69eba602bbd21a8b7dc951fe5d4b6f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
