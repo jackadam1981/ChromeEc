@@ -677,3 +677,4 @@ cat /tmp/artifact_bundle_metadata
 cat /tmp/metrics_build
 ls -l /tmp/artifact_bundles/
 ```
+mt8195 c0
