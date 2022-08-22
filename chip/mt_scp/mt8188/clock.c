@@ -9,6 +9,7 @@
 #include <string.h>
 
 #include "clock.h"
+#include "clock_s3.h"
 #include "common.h"
 #include "console.h"
 #include "csr.h"
@@ -328,7 +329,7 @@ static void clock_calibrate_ulposc(struct opp_ulposc_cfg *opp)
 	}
 }
 
-static void clock_select_clock(enum scp_clock_source src)
+void clock_select_clock(enum scp_clock_source src)
 {
 	uint32_t sel;
 	uint32_t div;
