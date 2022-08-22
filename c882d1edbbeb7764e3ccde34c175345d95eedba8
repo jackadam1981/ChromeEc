@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "528e2881_621946f9",
+        "filename": "test/kb_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-22T20:10:51Z",
+      "side": 1,
+      "message": "You could also change this (and the other) functions to return a status int, and check it in the callers.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "c882d1edbbeb7764e3ccde34c175345d95eedba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
