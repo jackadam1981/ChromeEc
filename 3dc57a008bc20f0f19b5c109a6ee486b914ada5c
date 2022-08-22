@@ -16,6 +16,41 @@
       "message": "Can you double-check that the path changes in these sed commands are proper? I don\u0027t fully know what\u0027s going on here.",
       "revId": "3dc57a008bc20f0f19b5c109a6ee486b914ada5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83b391c_878fda6b",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-22T21:53:58Z",
+      "side": 1,
+      "message": "They look fine.",
+      "parentUuid": "2d58edb0_335bd0ec",
+      "revId": "3dc57a008bc20f0f19b5c109a6ee486b914ada5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835f90fd_dd71c401",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-22T21:53:58Z",
+      "side": 1,
+      "message": "Since you moved the paths around, let\u0027s not submit this until we see it working on the coverage branch on gitlab.",
+      "revId": "3dc57a008bc20f0f19b5c109a6ee486b914ada5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
