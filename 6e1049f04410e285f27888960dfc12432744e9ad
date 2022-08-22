@@ -16,6 +16,24 @@
       "message": "Since whiterun is spinning up, we should be careful to put any code that references the board version in board-specific files since it\u0027ll vary between boards.\n\nWe probably have cleanup to do here in the other files too... would you mind filing a bug for a scrub of skyrim-specific code?",
       "revId": "6e1049f04410e285f27888960dfc12432744e9ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8326cd15_569a122e",
+        "filename": "zephyr/projects/skyrim/form_factor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-08-22T02:31:01Z",
+      "side": 1,
+      "message": "Here is the issuetracker link :[243213383](https://partnerissuetracker.corp.google.com/issues/243213383)\nCould you give me some advice on how to change this file?",
+      "parentUuid": "f8d0be46_364d48ef",
+      "revId": "6e1049f04410e285f27888960dfc12432744e9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
