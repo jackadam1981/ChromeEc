@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2e65af_3a4ed4f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-22T06:58:42Z",
+      "side": 1,
+      "message": "This seems fragile because it\u0027s very easy to introduce a new IO expander and not know it needs to be configured this way.\n\nWhat if the code were instead taught that `ENOSYS` means the driver doesn\u0027t currently support getting configuration, so we don\u0027t need to try to construct a denylist of IO expanders?",
+      "revId": "b9f0782112919ef348eddbc2c42ab1fcd81810b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
