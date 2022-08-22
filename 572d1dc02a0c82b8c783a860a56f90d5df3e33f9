@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06e2d144_0634058c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-22T20:54:57Z",
+      "side": 1,
+      "message": "i\u0027m not convinced mixing data types here helps specify the data format\nclearly to the reader.\nideally they should all be uint32_t with the appropriate width bit\nfield. i think you\u0027re lucky here that the bit fields fit nicely into\nbytes. if that weren\u0027t the case, i think this style of declaration\nwould inadvertently lead to bit padding.",
+      "parentUuid": "814750cd_ff630bee",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432ab900_0bb49cc5",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
