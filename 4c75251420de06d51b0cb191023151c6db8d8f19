@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a499014_5b21c0c1",
+        "filename": "test/kb_8042.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-08-22T18:40:09Z",
+      "side": 1,
+      "message": "I think this is going to break in the CQ due to line length....",
+      "range": {
+        "startLine": 765,
+        "startChar": 3,
+        "endLine": 765,
+        "endChar": 73
+      },
+      "revId": "4c75251420de06d51b0cb191023151c6db8d8f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
