@@ -178,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d1d016_593e5bf4",
+        "filename": "zephyr/test/system_common/src/reboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-22T11:53:03Z",
+      "side": 1,
+      "message": "Cleaned the existing tests as well in http://crrev.com/c/3845346",
+      "parentUuid": "dbeb33da_78380b15",
+      "revId": "de8418df73cb3f27fc7f62034483f46a17508e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "575795c2_de103fc5",
