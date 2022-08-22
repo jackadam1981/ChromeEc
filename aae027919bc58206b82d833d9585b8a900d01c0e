@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f84e2249_5e471762",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 43
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-22T06:37:08Z",
+      "side": 1,
+      "message": "Please also add:\n#undef CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD\n#undef CONFIG_BATTERY_REVIVE_DISCONNECT",
+      "revId": "aae027919bc58206b82d833d9585b8a900d01c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
