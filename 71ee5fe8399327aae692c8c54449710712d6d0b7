@@ -16,6 +16,24 @@
       "message": "I think here we should check for `EC_ERROR_PARAM2`.",
       "revId": "71ee5fe8399327aae692c8c54449710712d6d0b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e91eb2_27054254",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-23T16:19:03Z",
+      "side": 1,
+      "message": "+1 if that exists.",
+      "parentUuid": "a9b0bc68_1195c9d2",
+      "revId": "71ee5fe8399327aae692c8c54449710712d6d0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
