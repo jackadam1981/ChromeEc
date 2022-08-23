@@ -52,6 +52,24 @@
       "parentUuid": "8326cd15_569a122e",
       "revId": "6e1049f04410e285f27888960dfc12432744e9ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d23b6b_5c77c112",
+        "filename": "zephyr/projects/skyrim/form_factor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-08-23T02:42:37Z",
+      "side": 1,
+      "message": "I refer to other projects and put the file into the src/skyrim folder for the skyrim project, and other files will be handled with the cleanup bug.",
+      "parentUuid": "54230267_cbbdd073",
+      "revId": "6e1049f04410e285f27888960dfc12432744e9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
