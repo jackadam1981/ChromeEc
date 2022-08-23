@@ -22,6 +22,23 @@
       },
       "revId": "ba98e6b6c417f7ec65248e7185b664e31429616b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99265436_79ab0a17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-23T20:56:41Z",
+      "side": 1,
+      "message": "Combination of TCPC chips used on ADLRVP is not that great.\nWith this revert, probably only P0 will work. Test DP, USB4, TBT on all ports, only pendrive is not sufficient. \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3088161/5/common/usbc/usb_tc_drp_acc_trysrc_sm.c#2308\n\nPls add a board specific callback to enter LPM and then publish this CL",
+      "revId": "ba98e6b6c417f7ec65248e7185b664e31429616b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
