@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "276f6585_b30b24be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1468813
+      },
+      "writtenOn": "2022-08-23T13:19:23Z",
+      "side": 1,
+      "message": "There is no bug even if this change is not present. Its just that TCPC driver code should maintain uniformity. Acc to spec, TCPC chips generally go to sleep by putting i2c to idle. So even if a TCPC chip has its own method to go to sleep and increase power savings, we shouldnot refrain from putting i2c to idle.",
+      "parentUuid": "6e0f360d_99cac1e6",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "487007c3a16b0bc4f410b9461de9ca4d4451967d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e95b32e0_0cadacaa",
