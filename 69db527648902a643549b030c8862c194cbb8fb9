@@ -16,6 +16,24 @@
       "message": "Does this change in dts file requires any change in csv file as well Scott similar to SEQ_EC_RSMRST_ODL",
       "revId": "69db527648902a643549b030c8862c194cbb8fb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92b0c478_0547b285",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-23T17:48:42Z",
+      "side": 1,
+      "message": "It should have a change in the input .csv file, but currently we don\u0027t have a mechanism to set the default level to be something other than what the netname suffix implies. In this case _odl is selecting GPIO_ODR_LOW. Until the tool is updated, we will need this manual edit.",
+      "parentUuid": "bb845211_5de568c2",
+      "revId": "69db527648902a643549b030c8862c194cbb8fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
