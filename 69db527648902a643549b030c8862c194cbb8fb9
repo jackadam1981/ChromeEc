@@ -34,6 +34,24 @@
       "parentUuid": "bb845211_5de568c2",
       "revId": "69db527648902a643549b030c8862c194cbb8fb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9215a8_d5434095",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-23T18:07:41Z",
+      "side": 1,
+      "message": "You could override this in one of the overlays, something like:\n\n\u0026gpio_usb_c0_tcpc_rst_odl: {\n  gpios \u003d \u003c\u0026gpio6 7 GPIO_ODR_HIGH\u003e;\n};\n\nIt\u0027s obfuscating the change a bit though cause then the original one just gets discarded, but at least you don\u0027t have a delta from the generated file... you gain something you lose something, up to you I\u0027d say.",
+      "parentUuid": "92b0c478_0547b285",
+      "revId": "69db527648902a643549b030c8862c194cbb8fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
