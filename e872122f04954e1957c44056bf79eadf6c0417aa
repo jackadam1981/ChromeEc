@@ -39,6 +39,29 @@
       },
       "revId": "e872122f04954e1957c44056bf79eadf6c0417aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f79f9d_c9540331",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-08-23T16:07:24Z",
+      "side": 1,
+      "message": "nit: wrong tab.",
+      "range": {
+        "startLine": 1384,
+        "startChar": 1,
+        "endLine": 1384,
+        "endChar": 3
+      },
+      "revId": "e872122f04954e1957c44056bf79eadf6c0417aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
