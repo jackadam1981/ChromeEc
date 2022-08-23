@@ -16,6 +16,24 @@
       "message": "Please also add:\n#undef CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD\n#undef CONFIG_BATTERY_REVIVE_DISCONNECT",
       "revId": "aae027919bc58206b82d833d9585b8a900d01c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30bfbe5_e07c00a8",
+        "filename": "board/shotzo/board.h",
+        "patchSetId": 43
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-23T02:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f84e2249_5e471762",
+      "revId": "aae027919bc58206b82d833d9585b8a900d01c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
