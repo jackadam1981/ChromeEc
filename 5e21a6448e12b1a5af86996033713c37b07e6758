@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d629b76_48d0ec6c",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-23T16:47:38Z",
+      "side": 1,
+      "message": "That is where I copy/pasted this from :D \n\nFixed",
+      "parentUuid": "a87ed958_dba6da84",
+      "range": {
+        "startLine": 135,
+        "startChar": 23,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "5e21a6448e12b1a5af86996033713c37b07e6758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8432ba43_129f1df7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-22T22:16:35Z",
       "side": 1,
       "message": "How does the AP mode entry determine if enter mode was successful or not?  Can you add a similar check?",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "5e21a6448e12b1a5af86996033713c37b07e6758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1833c81_1005a1ec",
+        "filename": "zephyr/test/drivers/usbc_tbt_mode/src/usbc_tbt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-23T16:47:38Z",
+      "side": 1,
+      "message": "When the requested mode fails, we have a: \n```\n                /*\n                 * TODO(b/168030639): Notify the AP that the enter mode request\n                 * failed.\n                 */\n```\n\nWhen it succeeds, the AP knows that it succeeded via the mux sets it receives by virtue of the virtual mux architecture.\n\nSo since the AP notifications aren\u0027t fleshed out, I opted to check the partner messages.  We can also add in a mux check, as that\u0027s the current AP-facing place which changes",
+      "parentUuid": "8432ba43_129f1df7",
       "range": {
         "startLine": 157,
         "startChar": 1,
