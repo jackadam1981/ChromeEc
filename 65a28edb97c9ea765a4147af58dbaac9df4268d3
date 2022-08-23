@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8088b4_88e7901e",
+        "filename": "common/system.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-08-23T19:29:16Z",
+      "side": 1,
+      "message": "nit: not needed, directly copy at line 1897",
+      "range": {
+        "startLine": 1882,
+        "startChar": 0,
+        "endLine": 1886,
+        "endChar": 0
+      },
+      "revId": "65a28edb97c9ea765a4147af58dbaac9df4268d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
