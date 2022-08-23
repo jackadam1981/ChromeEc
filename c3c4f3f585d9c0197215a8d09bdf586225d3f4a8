@@ -22,6 +22,30 @@
       },
       "revId": "c3c4f3f585d9c0197215a8d09bdf586225d3f4a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37971e15_73cfe739",
+        "filename": "zephyr/projects/brya/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-23T21:56:24Z",
+      "side": 1,
+      "message": "Yes - the multi-level device is the correct solution.  Ultimately all the I2C accesses should only be done by the parent \"nuvoton,nct38xx\" driver.\n\nEffectively, the existing upstream \"nuvoton,nct38xx-gpio\" driver can get renamed to \"nuvoton,nct38xx\", because it\u0027s handling the I2C transactions.  The interrupt pins should also be a property of this node, instead of having a separate \"gpio-alert\" driver.\n\nI don\u0027t see any need for a separate \"nuvoton,nct38xx-gpio\" driver, so the tree would look like:\n```\nnct38xx@70 {\n\tcompatible \u003d \"nuvoton,nct38xx\";\n\treg \u003d \u003c0x70\u003e;\n\tirq-gpios \u003d \u003c\u0026gpio...\u003e;\n\tioex_port1: gpio@0 {\n\t\tcompatible \u003d \"nuvoton,nct38xx-gpio-port\";\n\t\treg \u003d \u003c0x0\u003e;\n\t};\n\ttcpc_port0: tcpc-port0 {\n\t        compatible \u003d \"nuvoton,nct38xx-tcpc\";\n\t};\n};\n```\n\nThe `gpio-dev` property of \"nuvoton,nct38xx-tcpc\" becomes obsolete - since this is now just the parent device.",
+      "parentUuid": "7d106529_6a1c6e90",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "c3c4f3f585d9c0197215a8d09bdf586225d3f4a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
