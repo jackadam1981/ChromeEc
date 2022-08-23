@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ee367e_f1761317",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-23T16:45:11Z",
+      "side": 1,
+      "message": "Can you make it \u0027P%d\u0027? (because all CPRINTSs are prefixed with \u0027PCHG\u0027 automatically).",
+      "range": {
+        "startLine": 561,
+        "startChar": 32,
+        "endLine": 561,
+        "endChar": 38
+      },
+      "revId": "e362d6b0e6a7aa9027dba5c6b27c0116773ceb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42f9b0b_6109770b",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-23T16:45:11Z",
+      "side": 1,
+      "message": "nit: I think an orthodox pattern (at least in this repo) is \u0027active_pchg_count++\u0027 between line 559 and 560.",
+      "range": {
+        "startLine": 562,
+        "startChar": 3,
+        "endLine": 562,
+        "endChar": 20
+      },
+      "revId": "e362d6b0e6a7aa9027dba5c6b27c0116773ceb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f78d9a_1f367633",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-23T16:45:11Z",
+      "side": 1,
+      "message": "Please reformat the comments:\n\n    /*\n     *\n     */\n\nAlso, please add \u0027IRQ is enabled after init()\u0027.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 39
+      },
+      "revId": "e362d6b0e6a7aa9027dba5c6b27c0116773ceb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
