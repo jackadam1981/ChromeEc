@@ -8,6 +8,10 @@
 #ifndef __CROS_EC_FPSENSOR_DETECT_H
 #define __CROS_EC_FPSENSOR_DETECT_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 enum fp_sensor_type {
 	FP_SENSOR_TYPE_UNKNOWN = -1,
 	FP_SENSOR_TYPE_FPC,
@@ -32,5 +36,9 @@ const char *fp_sensor_spi_select_to_str(enum fp_sensor_spi_select type);
 enum fp_sensor_type get_fp_sensor_type(void);
 enum fp_transport_type get_fp_transport_type(void);
 enum fp_sensor_spi_select get_fp_sensor_spi_select(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_FPSENSOR_DETECT_H */
