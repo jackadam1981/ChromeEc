@@ -4,13 +4,23 @@
  */
 #include <stdbool.h>
 
+#include "fpsensor_crypto.h"
+#include "fpsensor_state.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "aes.h"
 #include "aes-gcm.h"
 #include "cryptoc/util.h"
-#include "fpsensor_crypto.h"
 #include "fpsensor_private.h"
-#include "fpsensor_state.h"
 #include "rollback.h"
+#include "sha256.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 #if !defined(CONFIG_AES) || !defined(CONFIG_AES_GCM) || \
 	!defined(CONFIG_ROLLBACK_SECRET_SIZE)
