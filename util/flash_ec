@@ -1379,6 +1379,10 @@ function flash_it83xx() {
 	fi
 
 	print_or_run "${ITEFLASH_ARGS[@]}" || die "${ERROR_MSG}"
+
+        if [[ "${SERVO_TYPE}" =~ "c2d2" ]]; then
+	  dut_control_or_die ec_flash_select:off
+        fi
 }
 
 function flash_ite_spi() {
