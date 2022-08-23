@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa0ff555_44be0306",
+        "filename": "zephyr/test/drivers/default/src/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-23T22:09:10Z",
+      "side": 1,
+      "message": "Move this to a before/after function so everything gets set back to original state afterwards and in case a test fails.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "fc018555f17ba467886a140f5895db145839ecbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
