@@ -2,16 +2,26 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+
+#include "fpsensor_crypto.h"
+#include "fpsensor_state.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "aes-gcm.h"
 #include "aes.h"
 #include "cryptoc/util.h"
-#include "fpsensor_crypto.h"
-#include "fpsensor_state.h"
 #include "fpsensor_utils.h"
 #include "rollback.h"
+#include "sha256.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 #include <stdbool.h>
-
 #if !defined(CONFIG_AES) || !defined(CONFIG_AES_GCM) || \
 	!defined(CONFIG_ROLLBACK_SECRET_SIZE)
 #error "fpsensor requires AES, AES_GCM and ROLLBACK_SECRET_SIZE"
