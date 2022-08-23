@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfde84db_66f91163",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-23T19:13:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5bd36393_417713db",
+      "range": {
+        "startLine": 11,
+        "startChar": 44,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adde4754_b730f315",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-18T17:44:02Z",
       "side": 1,
       "message": "nit: move this to common/system.c",
+      "range": {
+        "startLine": 933,
+        "startChar": 0,
+        "endLine": 954,
+        "endChar": 44
+      },
+      "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d67595_c0fd1b52",
+        "filename": "common/host_command.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-23T19:13:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "adde4754_b730f315",
       "range": {
         "startLine": 933,
         "startChar": 0,
@@ -78,6 +126,24 @@
       "side": 1,
       "message": "It looks like there is max limit of response buffer... If I am adding another member in structure, ectool command on the ap side is failing with \"ioctl -1, errno 90 (Message too long), EC result 255 (\u003cunknown\u003e)\" after adding new member the structure size is 58 byte.. Do you what whats is the max limit that we can send to AP through host command ? or is there any way from EC side to increase response buffer ?",
       "parentUuid": "496766fe_0f666032",
+      "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f065fde4_89c9488e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 7730,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-23T19:13:29Z",
+      "side": 1,
+      "message": "As discussed , we are not adding this new member because of buffer size is exceeding beyond the allowed buf size.",
+      "parentUuid": "c771ab20_905eb181",
       "revId": "9f76b373574d3f15f70ba39ff832a3727159f170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
