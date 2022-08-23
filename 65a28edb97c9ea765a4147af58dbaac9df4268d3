@@ -22,6 +22,30 @@
       },
       "revId": "65a28edb97c9ea765a4147af58dbaac9df4268d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1aa3120_e36cad02",
+        "filename": "common/system.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-08-23T23:32:21Z",
+      "side": 1,
+      "message": "Ack. Yes Now host_command_get_boot_time api is moving to same file... We don\u0027t need this. deleting.",
+      "parentUuid": "4a8088b4_88e7901e",
+      "range": {
+        "startLine": 1882,
+        "startChar": 0,
+        "endLine": 1886,
+        "endChar": 0
+      },
+      "revId": "65a28edb97c9ea765a4147af58dbaac9df4268d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
