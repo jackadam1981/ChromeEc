@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d14426d4_7407d748",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-23T02:38:25Z",
+      "side": 1,
+      "message": "no need for explicit shift/mask. if each member is a uint32_t,\nthe fields get packed by definition. i really don\u0027t know what happens\nwhen you mix types for fields that are intended to be contiguous.\n\nif you want to go overboard on field accessors, we could do something like\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3263231\nbut that\u0027s way beyond the scope of fixing a basic bug.",
+      "parentUuid": "6c823b6a_8ea56815",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432ab900_0bb49cc5",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
