@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb7044a_0ffffa34",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-08-23T20:41:13Z",
+      "side": 1,
+      "message": "Since this is signed, will this do the right thing if delta is negative (soc \u003c upper)?",
+      "revId": "00b36cb157083258567b3bf5c3ddb2d4ae9a5be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
