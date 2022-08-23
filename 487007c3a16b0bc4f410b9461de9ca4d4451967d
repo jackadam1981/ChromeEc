@@ -39,6 +39,24 @@
       "message": "please provide more background info on which problem is being\naddressed here and how this solves it. LPM tends to be\ntricky and we need to be sure this change is well understood.\n",
       "revId": "487007c3a16b0bc4f410b9461de9ca4d4451967d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4df28e_255ee34a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1468813
+      },
+      "writtenOn": "2022-08-23T13:15:00Z",
+      "side": 1,
+      "message": "Hi Caveh, sure! \nNormally, setting TCPC chips into LPM implies setting I2C connection to idle (keeping SDA and SCL to HIGH). \nFrom the TCPC spec,\n\n\u003e\u003eGo to Sleep\nCOMMAND.I2CIdle\nThe TCPC is not allowed to NAK I2C transfers\nregardless of the clock stretching setting chosen by the TCPM, unless the TCPM has put it to\nsleep using COMMAND.I2CIdle\nCOMMAND.I2Cidle is used to put the I2C interface into the idle state. When the TCPC\nreceives COMMAND.I2Cidle, the TCPC may generate a bit-level Not Acknowledge signal (a\nNAK where SDA remains HIGH during the ninth clock pulse) to its own slave address or any\nI2C commands.\nThe TCPM may send the COMMAND.WakeI2C as a throw away command to wake the I2C\ninterface. The COMMAND.WakeI2C requires no action by the TCPC other than to wake the\nI2C device interface in the TCPC. \u003c\u003c\n\nAlmost all the TCPC chips sleep by putting i2c to idle as they don\u0027t have their own specific way to sleep. ANX74XX and FUSB302 are two chips who have their own method to put them to sleep but the TCPM code is structured in such a way that they don\u0027t put the i2c connection to idle (which every other TCPC chip does).",
+      "parentUuid": "e95b32e0_0cadacaa",
+      "revId": "487007c3a16b0bc4f410b9461de9ca4d4451967d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
