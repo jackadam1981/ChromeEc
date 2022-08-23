@@ -1392,7 +1392,8 @@ static int battery_outside_charging_temperature(void)
 static void sustain_battery_soc(void)
 {
 	enum ec_charge_control_mode mode = get_chg_ctrl_mode();
-	int soc;
+	const int battery_sustainer_discharge_threshold = 1;
+	int soc, delta;
 	int rv;
 
 	/* If either AC or battery is not present, nothing to do. */
@@ -1401,20 +1402,26 @@ static void sustain_battery_soc(void)
 		return;
 
 	soc = charge_get_display_charge() / 10;
+	delta = soc - sustain_soc.upper;
 
 	/*
-	 * When lower < upper, the sustainer discharges using DISCHARGE. When
-	 * lower == upper, the sustainer discharges using IDLE. The following
-	 * switch statement handle both cases but in reality either DISCHARGE
-	 * or IDLE is used but not both.
+	 *                 lower  upper
+	 * ------------------+------+---------------
+	 *           NORMAL    IDLE    DISCHARGE
+	 *
+	 * When enabling sustainer, we select DISCHARGE if soc is sufficiently
+	 * higher than the upper (i.e. battery_sustainer_discharge_threshold).
+	 * Once the cycle starts, only NORMAL (for charge) and IDLE (for
+	 * discharge) will be used.
 	 */
 	switch (mode) {
 	case CHARGE_CONTROL_NORMAL:
 		/* Going up */
-		if (sustain_soc.upper < soc)
-			mode = sustain_soc.upper == sustain_soc.lower ?
-				       CHARGE_CONTROL_IDLE :
-				       CHARGE_CONTROL_DISCHARGE;
+		CPRINTS("soc = %d upper = %d", soc, sustain_soc.upper);
+		if (battery_sustainer_discharge_threshold <= delta)
+			mode = CHARGE_CONTROL_DISCHARGE;
+		else if (0 <= delta)
+			mode = CHARGE_CONTROL_IDLE;
 		break;
 	case CHARGE_CONTROL_IDLE:
 		/* Discharging naturally */
@@ -1423,8 +1430,8 @@ static void sustain_battery_soc(void)
 		break;
 	case CHARGE_CONTROL_DISCHARGE:
 		/* Discharging actively. */
-		if (soc < sustain_soc.lower)
-			mode = CHARGE_CONTROL_NORMAL;
+		if (delta < battery_sustainer_discharge_threshold)
+			mode = CHARGE_CONTROL_IDLE;
 		break;
 	default:
 		return;

@@ -820,7 +820,7 @@ static int test_battery_sustainer(void)
 	ccprintf("Test lower < SoC < upper.\n");
 	display_soc = 799;
 	wait_charging_state();
-	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_DISCHARGE);
+	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_IDLE);
 	ccprintf("Pass.\n");
 
 	ccprintf("Test SoC < lower < upper.\n");
@@ -903,7 +903,7 @@ static int test_battery_sustainer_discharge_idle(void)
 	/* (lower =) upper < SoC */
 	display_soc = 810;
 	wait_charging_state();
-	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_IDLE);
+	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_DISCHARGE);
 
 	/* Unplug AC. Sustainer gets deactivated. */
 	gpio_set_level(GPIO_AC_PRESENT, 0);
@@ -913,7 +913,7 @@ static int test_battery_sustainer_discharge_idle(void)
 	/* Replug AC. Sustainer gets re-activated. */
 	gpio_set_level(GPIO_AC_PRESENT, 1);
 	wait_charging_state();
-	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_IDLE);
+	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_DISCHARGE);
 
 	/* lower = SoC = upper */
 	display_soc = 800;
