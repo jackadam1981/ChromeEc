@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f15afb2a_206208d0",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-23T10:06:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ca5f3d_6a560e2d",
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8664b237_a71ec650",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24815fe1_584be853",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-23T10:06:07Z",
+      "side": 1,
+      "message": "I think init() should work without IRQ as it runs setup only. I don\u0027t think we need to handle IRQ differently in pre-init for CPS8x00. Do you have any concerns for other devices?",
+      "parentUuid": "8664b237_a71ec650",
+      "range": {
+        "startLine": 557,
+        "startChar": 22,
+        "endLine": 557,
+        "endChar": 26
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98985d23_0b5b26ff",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 1
@@ -54,6 +96,30 @@
       "writtenOn": "2022-08-22T16:58:41Z",
       "side": 1,
       "message": "Please print an error message. Also, I don\u0027t think we should wake up the task.",
+      "range": {
+        "startLine": 559,
+        "startChar": 2,
+        "endLine": 559,
+        "endChar": 6
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8555224_ecdb671b",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-23T10:06:07Z",
+      "side": 1,
+      "message": "yes, we don\u0027t need to wake up the task if there is no active port charger device.",
+      "parentUuid": "98985d23_0b5b26ff",
       "range": {
         "startLine": 559,
         "startChar": 2,
