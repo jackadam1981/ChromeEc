@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55900730_9e534893",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-08-23T17:41:43Z",
+      "side": 1,
+      "message": "Neat! I was thinking that any abort in this function would leave the controls in a wrong state, thought about something like this, did not know it existed.",
+      "parentUuid": "0c7852af_859bd368",
+      "range": {
+        "startLine": 1296,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 39
+      },
+      "revId": "e872122f04954e1957c44056bf79eadf6c0417aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58f79f9d_c9540331",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-23T16:07:24Z",
       "side": 1,
       "message": "nit: wrong tab.",
+      "range": {
+        "startLine": 1384,
+        "startChar": 1,
+        "endLine": 1384,
+        "endChar": 3
+      },
+      "revId": "e872122f04954e1957c44056bf79eadf6c0417aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d27a6f67_d356a081",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-08-23T17:41:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58f79f9d_c9540331",
       "range": {
         "startLine": 1384,
         "startChar": 1,
