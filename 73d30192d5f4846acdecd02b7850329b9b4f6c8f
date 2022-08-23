@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e2c2c1_98d4d034",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 93
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-23T19:47:03Z",
+      "side": 1,
+      "message": "Nit: is this indented correctly?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "73d30192d5f4846acdecd02b7850329b9b4f6c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ad0ac4_1d000f27",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 93
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-23T19:47:03Z",
+      "side": 1,
+      "message": "Out of curiosity, is there ever a case where `__cplusplus` is not defined?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "73d30192d5f4846acdecd02b7850329b9b4f6c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
