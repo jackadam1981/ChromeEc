@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "090adf49_5877b0e2",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-23T23:51:33Z",
+      "side": 1,
+      "message": "I see you renamed in https://crrev.com/c/3838934, but don\u0027t forget to do it here too.",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc05208_f2eca1ed",
+        "filename": "common/mock/fpsensor_crypto_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-23T23:51:33Z",
+      "side": 1,
+      "message": "Should this be `MESSAGE_FF_IDX`?",
+      "range": {
+        "startLine": 61,
+        "startChar": 38,
+        "endLine": 61,
+        "endChar": 54
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99012975_9a8e17dd",
+        "filename": "common/mock/fpsensor_crypto_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-23T23:51:33Z",
+      "side": 1,
+      "message": "Maybe add an `ASSERT` here since it\u0027s probably a bug if we don\u0027t specify one of the options above.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54925f04_b8f77731",
+        "filename": "test/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-23T23:51:33Z",
+      "side": 1,
+      "message": "This isn\u0027t strictly necessary, right? I think it\u0027s good to make the value deterministic for the test, but \"valid\" sounds little misleading.\n\nMaybe something like \"GIVEN that the user ID is set to a known value.\"?",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 37
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208cd4d9_535776ec",
+        "filename": "test/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-23T23:51:33Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 37
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
