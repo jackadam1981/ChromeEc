@@ -13,6 +13,10 @@
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef SPI_FP_DEVICE
 #define SPI_FP_DEVICE (&spi_devices[0])
 #endif
@@ -209,5 +213,9 @@ int fp_finger_enroll(uint8_t *image, int *completion);
  * @return EC_SUCCESS on success
  */
 int fp_maintenance(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __CROS_EC_FPSENSOR_H */
