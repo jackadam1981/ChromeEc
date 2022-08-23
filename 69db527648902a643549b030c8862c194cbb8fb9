@@ -52,6 +52,24 @@
       "parentUuid": "92b0c478_0547b285",
       "revId": "69db527648902a643549b030c8862c194cbb8fb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034adced_53b46be4",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-23T22:05:56Z",
+      "side": 1,
+      "message": "If I add those gpio node overlays, then they will need to be removed later anyway. I think prefer to keep the manual edit to generated.dts. Once the tool is updated, I will create a new version of generated.dts. I\u0027m assuming we\u0027ll find a few more issues with GPIO signal levels as we bring up other functions.",
+      "parentUuid": "de9215a8_d5434095",
+      "revId": "69db527648902a643549b030c8862c194cbb8fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
