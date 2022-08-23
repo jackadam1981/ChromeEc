@@ -38,10 +38,10 @@
  * ADC resolution, and faulty leads it into battery supply mode.
  * the final number would be expected between 100mA ~ 200mA.
  * In reality, we don't actually need that small charging current.
- * Tentacool's battery pack requests 256mA as the minimum current,
+ * Tentacool's battery pack requests 150mA as the minimum current,
  * so that can be a SW workaround.
  */
-#define CHARGE_I_MIN 256
+#define CHARGE_I_MIN 150
 #define CHARGE_I_STEP 10
 #define INPUT_I_MAX 3300
 #define INPUT_I_MIN 100
