@@ -57,6 +57,24 @@
       "parentUuid": "e95b32e0_0cadacaa",
       "revId": "487007c3a16b0bc4f410b9461de9ca4d4451967d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ddd8ee_77a22f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1468813
+      },
+      "writtenOn": "2022-08-23T13:16:44Z",
+      "side": 1,
+      "message": "So basically, ANX74XX and FUSB302 put themselves to sleep by their own specific method but don\u0027t put the I2C connection to idle/sleep which every other chip does.",
+      "parentUuid": "de4df28e_255ee34a",
+      "revId": "487007c3a16b0bc4f410b9461de9ca4d4451967d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
