@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99c88f0_d6fd6b83",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-23T01:31:31Z",
+      "side": 1,
+      "message": "why do you need `static` here? is this just to get rid of compiler\nwarnings?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 7
+      },
+      "revId": "5b35b19d119eb26e405f9555bba32142e0109304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fa437b_58220541",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-23T01:31:31Z",
+      "side": 1,
+      "message": "this is starting to get hard to follow.\ni think you can get rid of the switch statement in fan_set_percent()\nby passing the corresponding `rpm_table` instead of `fan_triggered`\nto choose the `rpm_table`. then, you won\u0027t need to pass\n`tmp[TEMP_SENSOR_1_SOC]` because you can use check that value\nin the `sensor_soc` case above.",
+      "range": {
+        "startLine": 198,
+        "startChar": 27,
+        "endLine": 198,
+        "endChar": 64
+      },
+      "revId": "5b35b19d119eb26e405f9555bba32142e0109304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
