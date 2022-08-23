@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb3c72d_0a90d1c1",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 93
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-23T23:28:56Z",
+      "side": 1,
+      "message": "I changed it to tabs since that\u0027s what we\u0027re using elsewhere in the file.",
+      "parentUuid": "a5e2c2c1_98d4d034",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "73d30192d5f4846acdecd02b7850329b9b4f6c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79ad0ac4_1d000f27",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-23T19:47:03Z",
       "side": 1,
       "message": "Out of curiosity, is there ever a case where `__cplusplus` is not defined?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "73d30192d5f4846acdecd02b7850329b9b4f6c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509a97f2_8659ae73",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 93
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-23T23:28:56Z",
+      "side": 1,
+      "message": "You\u0027re right, we don\u0027t need the `ifdef` guard here. I\u0027m just used to putting it there since I\u0027m usually adding it in header files that may be included from C code.",
+      "parentUuid": "79ad0ac4_1d000f27",
       "range": {
         "startLine": 8,
         "startChar": 0,
