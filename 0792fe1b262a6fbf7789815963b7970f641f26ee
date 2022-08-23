@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e78663_ea69a826",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-23T22:12:06Z",
+      "side": 1,
+      "message": "Minor readability nit: I\u0027d make this `int32_t expected \u003d 16909060` and use `(expected \u003e\u003e {24, 16, 8, 0}) \u0026 0xFF` in the asserts",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 14
+      },
+      "revId": "0792fe1b262a6fbf7789815963b7970f641f26ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
