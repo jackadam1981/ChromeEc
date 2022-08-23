@@ -22,6 +22,30 @@
       },
       "revId": "fc018555f17ba467886a140f5895db145839ecbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8640266_08b39d2d",
+        "filename": "zephyr/test/drivers/default/src/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-23T22:27:43Z",
+      "side": 1,
+      "message": "Hey good point, done.",
+      "parentUuid": "aa0ff555_44be0306",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "fc018555f17ba467886a140f5895db145839ecbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
