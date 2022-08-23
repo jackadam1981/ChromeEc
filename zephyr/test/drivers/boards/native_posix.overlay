@@ -658,7 +658,6 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		reg = <0x400 4>;
-		label = "I2C_1";
 
 		tcs_emul: tcs@39 {
 			compatible = "zephyr,tcs3400";
@@ -688,7 +687,6 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		reg = <0x500 4>;
-		label = "I2C_2";
 
 		pi3usb9201_emul: pi3usb9201@5f {
 			compatible = "zephyr,pi3usb9201-emul";
@@ -719,7 +717,6 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		reg = <0x600 4>;
-		label = "I2C_3";
 
 		syv682x_emul: syv682x@41 {
 			compatible = "zephyr,syv682x-emul";
