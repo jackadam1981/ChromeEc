@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d40a6605_a6e34288",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-24T15:56:23Z",
+      "side": 1,
+      "message": "Yes, thank you, I just noticed that while walking through the changes.",
+      "parentUuid": "090adf49_5877b0e2",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fc05208_f2eca1ed",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-23T23:51:33Z",
       "side": 1,
       "message": "Should this be `MESSAGE_FF_IDX`?",
+      "range": {
+        "startLine": 61,
+        "startChar": 38,
+        "endLine": 61,
+        "endChar": 54
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d213fdbf_5d0480ff",
+        "filename": "common/mock/fpsensor_crypto_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-24T15:56:23Z",
+      "side": 1,
+      "message": "Yes, it definitely should be. Thanks for catching that.",
+      "parentUuid": "3fc05208_f2eca1ed",
       "range": {
         "startLine": 61,
         "startChar": 38,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bfc9f93_aeb8d14d",
+        "filename": "common/mock/fpsensor_crypto_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-24T15:56:23Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "99012975_9a8e17dd",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54925f04_b8f77731",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "634c5248_4ac01a48",
+        "filename": "test/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-24T15:56:23Z",
+      "side": 1,
+      "message": "Technically speaking it\u0027s not required. At first I thought it made sense to explicitly set to zero because that seemed like the most likely case to hit this issue. In hindsight we should not assume that here. I changed it to explicitly set to the `fake_user_id` to keep it valid. Also updated the comment.",
+      "parentUuid": "54925f04_b8f77731",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 37
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "208cd4d9_535776ec",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-08-23T23:51:33Z",
       "side": 1,
       "message": "Same as above.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 37
+      },
+      "revId": "70d1f3e5dd9af80b64725c3eb70c9b9c4d9e8719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca777728_93d02e4f",
+        "filename": "test/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-24T15:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "208cd4d9_535776ec",
       "range": {
         "startLine": 464,
         "startChar": 0,
