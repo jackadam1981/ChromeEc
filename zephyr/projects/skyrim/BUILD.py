@@ -5,32 +5,58 @@
 """Define zmake projects for skyrim."""
 
 
-def register_variant(project_name):
-    """Register a variant of skyrim."""
+def register_skyrim_project(
+    project_name,
+    chip="npcx9m3f",
+    extra_dts_overlays=(),
+    extra_kconfig_files=(),
+):
+    """Register a variant of corsola."""
     register_npcx_project(
         project_name=project_name,
-        zephyr_board="npcx9m3f",
+        zephyr_board=chip,
         dts_overlays=[
             # Common to all projects.
             here / "adc.dts",
-            here / "battery.dts",
             here / "fan.dts",
             here / "gpio.dts",
             here / "i2c.dts",
             here / "interrupts.dts",
             here / "keyboard.dts",
-            here / "led_pins_skyrim.dts",
-            here / "led_policy_skyrim.dts",
             here / "motionsense.dts",
             here / "usbc.dts",
             # Project-specific DTS customizations.
-            here / f"{project_name}.dts",
+            *extra_dts_overlays,
         ],
-        kconfig_files=[
-            here / f"prj_{project_name}.conf",
-        ],
+        kconfig_files=[here / "prj.conf", *extra_kconfig_files],
     )
 
 
-register_variant(project_name="skyrim")
-register_variant(project_name="winterhold")
+register_skyrim_project(
+    project_name="skyrim",
+    chip="npcx9m3f",
+    extra_dts_overlays=[
+        here / "skyrim.dts",
+        here / "battery_skyrim.dts",
+        here / "led_pins_skyrim.dts",
+        here / "led_policy_skyrim.dts",
+    ],
+    extra_kconfig_files=[
+        here / "prj_skyrim.conf",
+    ],
+)
+
+
+register_skyrim_project(
+    project_name="winterhold",
+    chip="npcx9m3f",
+    extra_dts_overlays=[
+        here / "winterhold/winterhold.dts",
+        here / "winterhold/battery_winterhold.dts",
+        here / "winterhold/led_pins_winterhold.dts",
+        here / "winterhold/led_policy_winterhold.dts",
+    ],
+    extra_kconfig_files=[
+        here / "winterhold/prj_winterhold.conf",
+    ],
+)
