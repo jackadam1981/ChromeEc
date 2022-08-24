@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134baa4c_75f66599",
+        "filename": "zephyr/projects/skyrim/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T16:17:52Z",
+      "side": 1,
+      "message": "Since we\u0027re all on the same EC chip, we can follow the way herobrine organizes BUILD.py and just reference npcx9m3f once in register_npcx_project",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1119ee60_a2d34ce4",
+        "filename": "zephyr/projects/skyrim/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T16:17:52Z",
+      "side": 1,
+      "message": "I\u0027d like to keep it consistent between projects whether their per-project dts files live in zephyr/projects/skyrim or zephyr/projects/skyrim/\u003cboard_name\u003e/ \n\nIt looks like projects are doing both, so either way is fine as long as skyrim follows the same scheme",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d422aa40_7af22db9",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T16:17:52Z",
+      "side": 1,
+      "message": "Is the ifdef CONFIG_BOARD_WINTERHOLD already covered by the fact that the code is in this block?",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dd9abe9_81c66317",
+        "filename": "zephyr/projects/skyrim/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T16:17:52Z",
+      "side": 1,
+      "message": "We don\u0027t generally update the copyright headers on already existing files.  Did the upload scripts prompt you to do this?",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e3b950_60e8797c",
+        "filename": "zephyr/projects/skyrim/winterhold/led_pins_winterhold.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T16:17:52Z",
+      "side": 1,
+      "message": "No space in ChromiumOS and we no longer do \"all rights reserved\"",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
