@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aeb09bea_903ea57e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-24T16:59:42Z",
+      "side": 1,
+      "message": "Thank you Caveh, I tested your suggestion of not mixing data types and it works for me.\n\nScott,\nI think we should move the comment about checking struct size to before the assertion and update the original comment now that we are not using a uint16_t.\n\n    /* PD Rev 3.1 Revision Message Data Object (RMDO) */\n    struct rmdo {\n        uint32_t reserved : 16;\n        uint32_t minor_ver : 4;\n        uint32_t major_ver : 4;\n        uint32_t minor_rev : 4;\n        uint32_t major_rev : 4;\n    } __packed;\n    \n    /* Confirm RMDO is 32 bits. */\n    BUILD_ASSERT(sizeof(struct rmdo) \u003d\u003d 4);",
+      "parentUuid": "d14426d4_7407d748",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "572d1dc02a0c82b8c783a860a56f90d5df3e33f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "432ab900_0bb49cc5",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
