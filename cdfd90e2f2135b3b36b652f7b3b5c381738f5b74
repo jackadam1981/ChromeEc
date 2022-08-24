@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fbed0ef_e776b109",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2022-08-24T02:13:57Z",
+      "side": 1,
+      "message": "Suggested words instead:\nVendor has done the FT correlation and will revise the datasheet\u0027s CHARGE_I_MIN value from 50mA to 150mA as the final solution.",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "cdfd90e2f2135b3b36b652f7b3b5c381738f5b74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
