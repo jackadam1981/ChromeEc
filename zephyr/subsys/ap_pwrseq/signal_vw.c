@@ -4,7 +4,6 @@
  */
 
 #include <atomic.h>
-#include <zephyr/drivers/espi.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 #include "signal_vw.h"
@@ -124,4 +123,8 @@ void power_signal_vw_init(void)
 	}
 }
 
+int espi_vw_set_wire(enum espi_vwire_signal signal, uint8_t level)
+{
+	return espi_send_vwire(espi_dev, signal, level);
+}
 #endif /* HAS_VW_SIGNALS */
