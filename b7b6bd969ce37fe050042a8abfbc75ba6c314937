@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e45da8_57a33b14",
+        "filename": "zephyr/test/drivers/default/src/host_cmd/pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T15:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f64ebc_c7c32ec4",
+      "revId": "b7b6bd969ce37fe050042a8abfbc75ba6c314937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe3bfd02_0352f386",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-23T22:49:46Z",
       "side": 1,
       "message": "Replace 0 with TEST_PORT",
+      "revId": "b7b6bd969ce37fe050042a8abfbc75ba6c314937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "151306e5_dbd7d955",
+        "filename": "zephyr/test/drivers/default/src/host_cmd/pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T15:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe3bfd02_0352f386",
       "revId": "b7b6bd969ce37fe050042a8abfbc75ba6c314937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e4154a_1c82e061",
+        "filename": "zephyr/test/drivers/default/src/host_cmd/pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T15:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5947803_1d28f56e",
+      "revId": "b7b6bd969ce37fe050042a8abfbc75ba6c314937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff19f8c3_86201a42",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-08-23T22:49:46Z",
       "side": 1,
       "message": "Replace 0 with TEST_PORT",
+      "revId": "b7b6bd969ce37fe050042a8abfbc75ba6c314937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c01e518_40d6f077",
+        "filename": "zephyr/test/drivers/default/src/host_cmd/pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T15:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff19f8c3_86201a42",
       "revId": "b7b6bd969ce37fe050042a8abfbc75ba6c314937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
