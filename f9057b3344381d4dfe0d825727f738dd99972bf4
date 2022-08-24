@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec946e80_97112b9b",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1547927
+      },
+      "writtenOn": "2022-08-24T05:31:28Z",
+      "side": 1,
+      "message": "This line of change was not from the pick-base CL.  So keep here still as before, \"usb_mux_hpd_update(port, 0, 0);\".  Otherwise, compiler will complain.",
+      "range": {
+        "startLine": 321,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 37
+      },
+      "revId": "f9057b3344381d4dfe0d825727f738dd99972bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
