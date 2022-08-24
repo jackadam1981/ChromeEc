@@ -87,6 +87,24 @@
       "parentUuid": "7ff2a444_b9b3410a",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc48541_1d4cedf1",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T02:04:58Z",
+      "side": 1,
+      "message": "\u003e Also, may I ask what is causing this hard reset in the first place?\n\nWe had a discussion at b/224471170.\n\nTo make it short, we follow USB SPEC `10.3.1.1 DSPORT.Powered-off` which recommends to cycle VBUS when the USB HUB initialized when there are sink devices connected. We do this by sending a `HARDRESET` event. This USB XHCI hub is initialized at AP firmware, so the `HARDRESET` will be sent out at the stage. AP handles the event at starting up the kernel, so the kernel will see a batch of events including `HARDRESET`. However, AP has no knowledge of the event sequence, so it handles the `HARDRESET` event in the last place which clears the previously set USB MUX status.\n\n\nFor questions from Prashant:\n\n\u003e Do you have a chip reset hook for these boards? The EC can/should clear reset events when a reboot/boot occurs, since those are irrelevant because:\n\u003e The EC has moved on and started the PD negotiation process again (in particular 2.) means that the reset from 1.) should be considered \"stale\")\n\nFrom the point of view of the EC, the `HARDRESET` and `MUX` events are not happened at the different boots, there are no power status transitions when these events occurred.  So EC should propagate these events to the AP honestly, and also, the `HARDRESET` events might be occurred due to many reasons (e.g. the external device triggered hard reset), since EC has no knowledge of cros-ec-typec status, I think EC should not filter out the status.",
+      "parentUuid": "5a350330_fe40c1ff",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
