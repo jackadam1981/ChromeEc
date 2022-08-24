@@ -1870,7 +1870,6 @@ void charger_task(void *u)
 			 * CHARGE_PORT_NONE around init time and not cut off the
 			 * input FETs.
 			 */
-			msleep(500);
 			charge_manager_leave_safe_mode();
 		}
 #endif

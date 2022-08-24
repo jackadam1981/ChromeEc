@@ -1240,6 +1240,7 @@ void charge_manager_leave_safe_mode(void)
 	if (left_safe_mode)
 		return;
 
+	msleep(500);
 	CPRINTS("%s()", __func__);
 	cflush();
 	left_safe_mode = 1;
