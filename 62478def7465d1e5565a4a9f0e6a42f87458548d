@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51253d5_6462dc51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-24T18:19:15Z",
+      "side": 1,
+      "message": "LGTM just need to run clang-format and add missing `{}` on all the 1 line `if` statements",
+      "revId": "62478def7465d1e5565a4a9f0e6a42f87458548d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
