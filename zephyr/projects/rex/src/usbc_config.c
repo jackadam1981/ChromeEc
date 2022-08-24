@@ -40,6 +40,10 @@
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_COUNT };
 BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
 
+#define INTERRUPTS_PER_LOG 50
+static int tcpc_interrupt_count;
+static int tcpc_int_log_count;
+
 static void usbc_interrupt_init(void)
 {
 	/* Enable PPC interrupts. */
@@ -47,6 +51,8 @@ static void usbc_interrupt_init(void)
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_tcpc));
+	tcpc_interrupt_count = 0;
+	tcpc_int_log_count = 0;
 
 	/* Enable BC 1.2 interrupts */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_usb_c0_bc12));
@@ -72,12 +78,24 @@ void sbu_fault_interrupt(enum gpio_signal signal)
 	pd_handle_overcurrent(port);
 }
 
+static void verify_tcpc_ints(void)
+{
+	if (!tcpc_int_log_count || tcpc_interrupt_count /INTERRUPTS_PER_LOG >
+	    tcpc_int_log_count) {
+		tcpc_int_log_count++;
+		CPRINTSUSB("C0d: NCT3807 int count = %d", tcpc_interrupt_count);
+	}
+};
+DECLARE_DEFERRED(verify_tcpc_ints);
+
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	int port;
 
 	switch (signal) {
 	case GPIO_USB_C0_TCPC_INT_ODL:
+		tcpc_interrupt_count++;
+		hook_call_deferred(&verify_tcpc_ints_data, 0);
 		port = 0;
 		break;
 	default:
