@@ -263,13 +263,16 @@ enum sm5803_charger_modes {
 #define SM5803_ANA_EN1_CLS_DISABLE BIT(7)
 
 /*
- * Input current limit is CHG_ILIM_RAW *100 mA
+ * Input current limit is (CHG_ILIM_RAW+1) * current step
  */
 #define SM5803_REG_CHG_ILIM 0x24
 #define SM5803_CHG_ILIM_RAW GENMASK(4, 0)
 #define SM5803_CURRENT_STEP 100
 #define SM5803_REG_TO_CURRENT(r) ((r)*SM5803_CURRENT_STEP)
 #define SM5803_CURRENT_TO_REG(c) ((c) / SM5803_CURRENT_STEP)
+#define SM5803_REG_CHG_ILIM_EXTD 0x25
+#define SM5803_CHG_ILIM_EXTD BIT(7)
+#define SM5803_CURRENT_STEP_EXTD 156
 
 /*
  * DPM Voltage loop regulation contains the 8 bits with MSB register
@@ -401,8 +404,8 @@ enum sm5803_charger_modes {
 #define CHARGE_I_MIN 0
 #define CHARGE_I_STEP SM5803_CURRENT_STEP
 
-#define INPUT_I_MAX 3100
-#define INPUT_I_MIN 0
+#define INPUT_I_MAX 4992
+#define INPUT_I_MIN 100
 #define INPUT_I_STEP SM5803_CURRENT_STEP
 
 /* Expose cached Vbus presence */
