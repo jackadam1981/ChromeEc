@@ -31,10 +31,6 @@
 
 /*******************************************************************/
 /* USB-C Configuration Start */
-#define GPIO_USB_C0_TCPC_INT_NODE \
-	GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_int_odl)
-#define GPIO_USB_C0_TCPC_RST_NODE \
-	GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_rst_odl)
 
 /* USB-C ports */
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_COUNT };
@@ -129,8 +125,11 @@ uint16_t tcpc_get_alert_status(void)
 	 * Check which port has the ALERT line set and ignore if that TCPC has
 	 * its reset line active.
 	 */
-	if (!GPIO_USB_C0_TCPC_INT_NODE && GPIO_USB_C0_TCPC_RST_NODE) {
-		status |= PD_STATUS_TCPC_ALERT_0;
+	if (!gpio_pin_get_dt(
+		    GPIO_DT_FROM_NODELABEL(gpio_usb_c0_tcpc_int_odl))) {
+		if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(
+			    gpio_usb_c0_tcpc_rst_odl)) != 0)
+			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
 	return status;
