@@ -16,6 +16,24 @@
       "message": "Should there be a TODO somewhere to fix the test?",
       "revId": "07f530dbc2b5864f82c01437373500731ec0de47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "574ccc0a_ee2649bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-24T19:06:24Z",
+      "side": 1,
+      "message": "See: https://crrev.com/c/3852575/1/zephyr/dts/bindings/emul/cros%252Csn5s330-emul.yaml#7",
+      "parentUuid": "13b83beb_7c66cc04",
+      "revId": "07f530dbc2b5864f82c01437373500731ec0de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
