@@ -159,6 +159,24 @@
       "parentUuid": "ede52977_559fcf50",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d902806_3c281dee",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-08-24T18:02:12Z",
+      "side": 1,
+      "message": "\u003e To make it short, we follow USB SPEC `10.3.1.1 DSPORT.Powered-off` which recommends to cycle VBUS when the USB HUB initialized when there are sink devices connected. We do this by sending a `HARDRESET` event.\n\nIs this something which is specific to the platform you are working on? Why is this not incorporated in the overal EC PD logic? We should not introduce fixes in the generic kernel for behaviours which are introduced by device-specific firmware changes.\n\nAlso, a question which wasn\u0027t answered in the bug (https://b.corp.google.com/issues/224471170#comment12):\nIf you have to cycle VBUS, why aren\u0027t you doing just that, instead of sending out a hard reset? As Abe mentioned, Data Reset or EnterUSB would also suffice.",
+      "parentUuid": "efcc832f_bc42569f",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
