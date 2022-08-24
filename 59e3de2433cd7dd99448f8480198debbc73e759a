@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6029312_cecca8cf",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-24T18:13:50Z",
+      "side": 1,
+      "message": "Sorry, this wouldn\u0027t work because ctn730\u0027s init() relies on IRQ. I\u0027m not able to find the best behavior for reset() and init() now. I posted comment to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3819444/. So, let\u0027s move on without changing the subsystem.",
+      "parentUuid": "3db6540c_020533cc",
+      "range": {
+        "startLine": 557,
+        "startChar": 22,
+        "endLine": 557,
+        "endChar": 26
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98985d23_0b5b26ff",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 1
