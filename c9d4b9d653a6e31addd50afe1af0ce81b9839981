@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d820d728_3f4406d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-24T05:15:10Z",
+      "side": 1,
+      "message": "Thank you for this, it\u0027s looking really good. A few minor questions.",
+      "revId": "c9d4b9d653a6e31addd50afe1af0ce81b9839981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ccbdeb_54f88d65",
+        "filename": "zephyr/test/drivers/dps/src/dps.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-24T05:15:10Z",
+      "side": 1,
+      "message": "I think you need to also add `dps_enable(true);` here no?",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "c9d4b9d653a6e31addd50afe1af0ce81b9839981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
