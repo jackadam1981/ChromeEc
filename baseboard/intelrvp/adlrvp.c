@@ -546,12 +546,16 @@ __override void board_pre_task_i2c_peripheral_init(void)
  * which contradicts the default set S0 state of PD_DRP_TOGGLE_ON,
  * while ITE  based TCPC can support dual role auto toggle. The
  * default PD_DRP_TOGGLE_ON state in Active state doesnot allow TCPC
- * ports to enter Low power mode. To fix the issue, added board
- * specific code to disable the dual role toggle in S0.
+ * ports to enter Low power mode. To fix the issue, added board specific
+ * code to remove the default drop state - PD_DRP_TOGGLE_ON in S0. Also,
+ * eventhough 'dual role auto toggle' is not supported by FUSB, the ports
+ * supports both source and sink. Hence, setting the default drop state
+ * as PD_DRP_FORCE_SOURCE in S0, would be the ideal board based solution to
+ * support for both source and sink devices.
  * Note:For ITE based TCPC, low power mode entry does makes no
  * difference, as it is controlled by ITE TCPC clk in deep sleepmode.
  */
 __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 {
-	return PD_DRP_TOGGLE_OFF;
+	return PD_DRP_FORCE_SOURCE;
 }

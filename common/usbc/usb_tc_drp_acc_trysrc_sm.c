@@ -2290,14 +2290,21 @@ static void tc_unattached_snk_run(const int port)
 	 * The port shall transition to AttachWait.SNK when a Source
 	 * connection is detected, as indicated by the SNK.Rp state
 	 * on at least one of its CC pins.
-	 *
-	 * A DRP shall transition to Unattached.SRC within tDRPTransition
-	 * after the state of both CC pins is SNK.Open for
-	 * tDRP − dcSRC.DRP ∙ tDRP.
 	 */
 	if (cc_is_rp(cc1) || cc_is_rp(cc2)) {
 		/* Connection Detected */
 		set_state_tc(port, TC_ATTACH_WAIT_SNK);
+		return;
+	}
+
+	/*
+	 * A DRP shall transition to Unattached.SRC within tDRPTransition
+	 * after the state of both CC pins is SNK.Open for
+	 * tDRP − dcSRC.DRP ∙ tDRP, or if directed.
+	 */
+	if (pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP) &&
+	    cc_is_open(cc1, cc2) && drp_state[port] == PD_DRP_FORCE_SOURCE) {
+		set_state_tc(port, TC_UNATTACHED_SRC);
 		return;
 	}
 
