@@ -3441,9 +3441,17 @@ init_vif_component_pd_source_fields(struct vif_field_t *vif_fields,
 				[FR_Swap_Type_C_Current_Capability_As_Initial_Sink],
 			"0", "FR_Swap not supported");
 
-	if (IS_ENABLED(CONFIG_USB_PD_REV30) || IS_ENABLED(CONFIG_USB_PRL_SM))
+	if (IS_ENABLED(CONFIG_USB_PD_REV30) || IS_ENABLED(CONFIG_USB_PRL_SM)) {
+		bool bist_shared_cap = false;
+
+#ifdef CONFIG_USB_PD_3A_PORTS
+		if (CONFIG_USB_PD_3A_PORTS > 0)
+			bist_shared_cap = true;
+#endif /* CONFIG_USB_PD_3A_PORTS */
 		set_vif_field_b(&vif_fields[Master_Port],
-				vif_component_name[Master_Port], false);
+				vif_component_name[Master_Port],
+				bist_shared_cap);
+	}
 
 	if (type == DRP || type == SRC)
 		set_vif_field_itss(&vif_fields[Num_Src_PDOs],
