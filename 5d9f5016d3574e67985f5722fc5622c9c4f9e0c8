@@ -33,6 +33,24 @@
       "message": "Is this value correct? I don\u0027t really know what these values are, but on the surface using the same value for both _high and _halt seems odd.",
       "revId": "5d9f5016d3574e67985f5722fc5622c9c4f9e0c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81f36a6_56bdc81f",
+        "filename": "zephyr/projects/nissa/xivu/overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-24T01:55:01Z",
+      "side": 1,
+      "message": "`_high` causes us to assert `PROCHOT`, and `_halt` triggers thermal shutdown. Since these are the release values, this means that we won\u0027t release thermal shutdown until we would also release `PROCHOT` (so the system would come back online at full speed). This seems fine, and I see other boards do the same thing.",
+      "parentUuid": "295a0e31_e1b9407b",
+      "revId": "5d9f5016d3574e67985f5722fc5622c9c4f9e0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
