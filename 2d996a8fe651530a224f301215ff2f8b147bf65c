@@ -141,6 +141,24 @@
       "parentUuid": "2cc48541_1d4cedf1",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efcc832f_bc42569f",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-08-24T17:53:57Z",
+      "side": 1,
+      "message": "\u003e Prashant, is this expected?  Or should the AP always be getting its correct mux status from the EC?\n\nYes. Earlier the HARD_RESET was processed first, but there was other timing related bug (b/218226551) dur to which we had to move it to the begging of our port update function. Moving it around will cause us to regress on that other functionality (hotplug/unplug detect).\n\n\u003e From the point of view of the EC, the  HARDRESET  and  MUX  events are not happened at the different boots, there are no power status transitions when these events occurred.  So EC should propagate these events to the AP honestly, and also, the  HARDRESET  events might be occurred due to many reasons (e.g. the external device triggered hard reset), \n\nI don\u0027t agree with the assessment. Sure, there were no power status transitions that occured *when the event happened* but if a reboot occured subsequently, there is way for the AP to discern what happened first, the hard reset of the mux configuration.\n\nThe \"regular\" case is that all this happens during S0, so time ordering is implicitly maintained. If a AP reset happens, then the hard reset should be considered stale and cleared. The EC has gone ahead and configured the muxes after that anyway, so it is no longer valid to report it to the AP.\n\nIn any case, hard resets which occured when the AP was not active are not useful for the AP to act on.",
+      "parentUuid": "ede52977_559fcf50",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
