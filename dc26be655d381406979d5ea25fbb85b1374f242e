@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a50b278_8c5efedc",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "past_temp",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b759c8d_8e27bc8b",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "avg_temp",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855b63f8_446ee4b6",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "It seems you only use the last temp and the current temp, do you still need a buffer for all the temps (TEMP_BUFF_SIZE)?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42238e30_d545501a",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "Can you add description for this, and also note this should be in descending order.",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291e30de_30580964",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "please follow the variable naming guidance. use `uptime` instead. (also below)",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50363f6c_079a5b01",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "You could just use uint8_t instead, since it only reach at most 5.",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631fa538_87038efc",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "Do you still need to update the current even if it\u0027s not charging?",
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc3641d_d1845362",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "Can we have a macro for this constant (also below).",
+      "range": {
+        "startLine": 66,
+        "startChar": 15,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a761c59a_48d360d8",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "If `charger_profile_override` is called when current_level \u003d -1, this will cause an underflow.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d149816_036c9675",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "You will always set the charging current less then than the battery\u0027s request if battery request more than 3600. Could you only apply the charge limit when there\u0027s a thermal problem?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f1714f6_33e3cba0",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:30:57Z",
+      "side": 1,
+      "message": "Can you split the dts binding change to another CL?",
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
