@@ -215,7 +215,7 @@ int i2c_xfer_unlocked(const int port, const uint16_t addr_flags,
 	uint16_t no_pec_af = addr_flags & ~I2C_FLAG_PEC;
 
 	if (!i2c_port_is_locked(port)) {
-		CPUTS("Access I2C without lock!");
+		CPRINTS("Access I2C port %d without lock!", port);
 		return EC_ERROR_INVAL;
 	}
 
