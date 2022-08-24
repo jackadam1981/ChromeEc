@@ -155,7 +155,8 @@ void power_signal_gpio_init(void)
 		if (gpio_config[i].output) {
 			gpio_pin_configure_dt(&spec[i], out_flags);
 		} else {
-			gpio_pin_configure_dt(&spec[i], GPIO_INPUT);
+			gpio_pin_configure_dt(&spec[i],
+					      GPIO_INPUT | spec[i].dt_flags);
 			/* If interrupt, initialise it */
 			if (gpio_config[i].flags) {
 				gpio_init_callback(&int_cb[i],
