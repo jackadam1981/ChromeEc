@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72e7f155_d10baa76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-24T22:17:00Z",
+      "side": 1,
+      "message": "I reverted a previous patchset where I repeat the full reset sequence twice.\n\nThis was working consistently for me and I am curious to see if others can replicate the same results.",
+      "parentUuid": "c151a4bd_30ae4420",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "54956b924010a764d67f86aab4148194b0391019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f52e31b0_e96c7cc1",
         "filename": "util/flash_ec",
         "patchSetId": 3
@@ -109,6 +133,24 @@
       "writtenOn": "2022-08-11T22:56:36Z",
       "side": 1,
       "message": "Delete this line",
+      "revId": "54956b924010a764d67f86aab4148194b0391019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10540814_e53ac3be",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-24T22:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f52e31b0_e96c7cc1",
       "revId": "54956b924010a764d67f86aab4148194b0391019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
