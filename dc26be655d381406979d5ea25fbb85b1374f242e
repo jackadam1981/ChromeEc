@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c48baad_2bb05037",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T07:43:31Z",
+      "side": 1,
+      "message": "charger_thermistor_data_pair",
+      "range": {
+        "startLine": 742,
+        "startChar": 21,
+        "endLine": 742,
+        "endChar": 49
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a50b278_8c5efedc",
         "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
         "patchSetId": 3
