@@ -22,6 +22,30 @@
       },
       "revId": "d0325d27d04a46baee29538a146140a8177d08f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8febb477_83acf4bf",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-24T22:45:54Z",
+      "side": 1,
+      "message": "I think I had pulled this macro in from intelrvp originally. The version here is how I saw it implemented in our other zephyr projects such as skyrim, nissa, etc.\n\nI don\u0027t have a strong opinion about which method is better.",
+      "parentUuid": "cabe3262_43eadd33",
+      "range": {
+        "startLine": 129,
+        "startChar": 55,
+        "endLine": 130,
+        "endChar": 6
+      },
+      "revId": "d0325d27d04a46baee29538a146140a8177d08f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
