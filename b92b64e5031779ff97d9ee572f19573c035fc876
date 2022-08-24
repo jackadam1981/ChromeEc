@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1816dc41_382d8deb",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-24T18:08:53Z",
+      "side": 1,
+      "message": "Can you skip these if (cps8x00_read32 !\u003d NULL)? Then, it\u0027s ok to do probing in init(). We don\u0027t need to change the pchg subsystem (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3845339/). ctn730\u0027s init expects IRQ is enabled.",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 2
+      },
+      "revId": "b92b64e5031779ff97d9ee572f19573c035fc876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
