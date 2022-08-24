@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f235bcd_164da9cd",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-24T09:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64ee367e_f1761317",
+      "range": {
+        "startLine": 561,
+        "startChar": 32,
+        "endLine": 561,
+        "endChar": 38
+      },
+      "revId": "e362d6b0e6a7aa9027dba5c6b27c0116773ceb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a42f9b0b_6109770b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb19d187_4a140168",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-24T09:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a42f9b0b_6109770b",
+      "range": {
+        "startLine": 562,
+        "startChar": 3,
+        "endLine": 562,
+        "endChar": 20
+      },
+      "revId": "e362d6b0e6a7aa9027dba5c6b27c0116773ceb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70f78d9a_1f367633",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-23T16:45:11Z",
       "side": 1,
       "message": "Please reformat the comments:\n\n    /*\n     *\n     */\n\nAlso, please add \u0027IRQ is enabled after init()\u0027.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 39
+      },
+      "revId": "e362d6b0e6a7aa9027dba5c6b27c0116773ceb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c2f4a2_eddc5074",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-24T09:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f78d9a_1f367633",
       "range": {
         "startLine": 226,
         "startChar": 0,
