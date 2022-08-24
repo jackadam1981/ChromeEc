@@ -88,6 +88,24 @@
       "parentUuid": "5e76a901_0dcd8bc9",
       "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db370375_4c1784bc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-08-24T07:12:26Z",
+      "side": 1,
+      "message": "after reomve this setting, would cause the BIST test fail, you can check the issue fail item. thanks",
+      "parentUuid": "5bf392da_7b574d70",
+      "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
