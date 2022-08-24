@@ -11,6 +11,11 @@ zephyr_library_sources("src/common.c")
 zephyr_library_sources("src/sub_board.c")
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 
+if(NOT CONFIG_RISCV_ISA_EXT_M)
+	zephyr_code_relocate(${ZEPHYR_BASE}/soc/riscv/riscv-ite/it8xxx2/__arithmetic.S RAM_TEXT)
+	zephyr_code_relocate(${ZEPHYR_BASE}/arch/riscv/core/switch.S RAM_TEXT)
+endif()
+
 if(DEFINED CONFIG_BOARD_NIVVIKS)
 	project(nivviks)
 	zephyr_library_sources(
