@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62291a9e_f58920df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T16:08:59Z",
+      "side": 1,
+      "message": "Did you cherry-pick the corresponding CLs? Making sure you can build the image and  verify the behavior.",
+      "range": {
+        "startLine": 12,
+        "startChar": 177,
+        "endLine": 12,
+        "endChar": 204
+      },
+      "revId": "929f9a0a3dbb71c3b0f9f8c5c19ba65b85ce1175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5828d121_36171d1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T16:08:59Z",
+      "side": 1,
+      "message": "Wrap the line.",
+      "range": {
+        "startLine": 12,
+        "startChar": 72,
+        "endLine": 12,
+        "endChar": 77
+      },
+      "revId": "929f9a0a3dbb71c3b0f9f8c5c19ba65b85ce1175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
