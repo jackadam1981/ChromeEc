@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f705787d_5c4e8440",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-24T18:47:17Z",
+      "side": 1,
+      "message": "This assumes that WP_L will have its default value at the start of this test, but if the tests are shuffled, that might not be true. I suspect that if you do something like\n```\n# Enable test shuffling\nZTEST_SHUFFLE\u003dy\n# Run every suite 2 times\nZTEST_SHUFFLE_SUITE_REPEAT_COUNT\u003d2\n# Run every test 3 times per suite\nZTEST_SHUFFLE_TEST_REPEAT_COUNT\u003d3\n```\nin your prj.conf, you will find that this test fails at least once.\n\nI would suggest\n1. putting the WP-asserted and WP-deasserted tests into separate suites, and\n1. providing separate `_before` functions for each suite to set WP to the appropriate value explicitly.",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0523bff5_3fa2d105",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-24T18:47:17Z",
+      "side": 1,
+      "message": "This test should assume that the host command succeeds and has a correctly formatted response. To the extent that this test requires those things to be true, it should use `zassume` instead of `zassert`.\n\nThere should be another test in `zephyr/test/drivers/default/src/espi.c` that actually `zassert`s on the basic function of this host command. The other tests in that file are examples of how to write that kind of test.\n\nIt might also be convenient to put a helper function for calling this host command in `zephyr/test/drivers/common/src/utils.c`.\n\nThat extra stuff can go in another CL if you want.",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc44dff_287af203",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-24T18:47:17Z",
+      "side": 1,
+      "message": "It looks like each block in this test is basically independent. I would suggest splitting them up into separate tests that can pass or fail independently for easier debugging. To avoid redundantly defining the host command boilerplate, you can use a fixture (`ZTEST_USER_F`).",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d295b148_6451c887",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-24T18:47:17Z",
+      "side": 1,
+      "message": "Is this repeat intentional?",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f903d0_71ef49c8",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-24T18:47:17Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer it if these helpers were at the top of the file. It also looks like they are each only used once, so you could just omit them.",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d52edad3_add3a4ac",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-24T18:47:17Z",
+      "side": 1,
+      "message": "`zassert*` doesn\u0027t do anything here. The test has already either passed or failed at this point.\n\nIf you want to make sure these conditions are true before the test starts, you can do that with `zassume` in a `_before` function.",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
