@@ -66,3 +66,14 @@ menuconfig PLATFORM_EC_CONSOLE_DEBUG
 	  Write all zephyr_print() messages to printk() also. Not recommended
 	  outside of tests.
 
+
+config PLATFORM_EC_LOG_BACKEND_CONSOLE_BUFFER
+	bool "Logging backend for the console buffer"
+	depends on PLATFORM_EC_HOSTCMD_CONSOLE
+	select LOG_OUTPUT
+	help
+	  Enable the logging backend for the console buffer.
+
+	  This will copy messages sent to the zephyr logging subsystem
+	  to the EC console buffer. This allows the AP to access the
+	  log messages with the console host command.
