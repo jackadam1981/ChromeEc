@@ -22,6 +22,23 @@
       },
       "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d6e0002_9cd2e929",
+        "filename": "chip/mt_scp/mt818x/memmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2022-08-24T10:17:59Z",
+      "side": 1,
+      "message": "compare to cpu_invalidate_dcache_range(), interrupt_enable is after volatile(dsb). is this intended?",
+      "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
