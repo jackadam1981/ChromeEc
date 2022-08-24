@@ -105,6 +105,42 @@
       "parentUuid": "5a350330_fe40c1ff",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ede52977_559fcf50",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T15:18:42Z",
+      "side": 1,
+      "message": "So this is all happening during S0?  Is the EC sending `EC_HOST_EVENT_USB_MUX` during the recovery process",
+      "parentUuid": "2cc48541_1d4cedf1",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a90c81_10a59c0e",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-24T15:18:42Z",
+      "side": 1,
+      "message": "\u003e so it handles the  HARDRESET  event in the last place which clears the previously set USB MUX status.\n\nPrashant, is this expected?  Or should the AP always be getting its correct mux status from the EC?",
+      "parentUuid": "2cc48541_1d4cedf1",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
