@@ -46,6 +46,30 @@
       },
       "revId": "f9057b3344381d4dfe0d825727f738dd99972bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "182a676a_511abf23",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T16:03:51Z",
+      "side": 1,
+      "message": "I though you cherry-picked the CL and caused this merge conflict. Instead of cherry-pick, you can run the `clang-format` directly and create a new CL, which is safer.",
+      "parentUuid": "286ff31f_bb4cdb47",
+      "range": {
+        "startLine": 321,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 37
+      },
+      "revId": "f9057b3344381d4dfe0d825727f738dd99972bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
