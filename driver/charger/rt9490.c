@@ -312,11 +312,6 @@ static int rt9490_init_setting(int chgnum)
 	/* Disable AUTO_AICR / AUTO_MIVR */
 	RETURN_ERROR(rt9490_clr_bit(chgnum, RT9490_REG_ADD_CTRL0,
 				    RT9490_AUTO_AICR | RT9490_AUTO_MIVR));
-	/* Disable charge timer */
-	RETURN_ERROR(rt9490_clr_bit(chgnum, RT9490_REG_SAFETY_TMR_CTRL,
-				    RT9490_EN_TRICHG_TMR |
-					    RT9490_EN_PRECHG_TMR |
-					    RT9490_EN_FASTCHG_TMR));
 	RETURN_ERROR(rt9490_set_mivr(chgnum, default_init_setting.mivr));
 	RETURN_ERROR(rt9490_set_ieoc(chgnum, default_init_setting.eoc_current));
 	RETURN_ERROR(rt9490_set_iprec(chgnum, batt_info->precharge_current));
