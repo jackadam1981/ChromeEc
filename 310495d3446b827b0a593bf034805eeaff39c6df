@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "226e8a16_45af8cc4",
+        "filename": "zephyr/test/drivers/default/src/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-24T22:55:49Z",
+      "side": 1,
+      "message": "I moved that to a different test.",
+      "parentUuid": "34ceaa08_d7e90bba",
+      "revId": "310495d3446b827b0a593bf034805eeaff39c6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "618372c6_380ebb54",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-24T19:07:14Z",
       "side": 1,
       "message": "Can we have a bug for this TODO? Like /* TODO(b/#####) */",
+      "revId": "310495d3446b827b0a593bf034805eeaff39c6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "466677f8_21668a51",
+        "filename": "zephyr/test/drivers/default/src/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-24T22:55:49Z",
+      "side": 1,
+      "message": "I added the extra tests.",
+      "parentUuid": "618372c6_380ebb54",
       "revId": "310495d3446b827b0a593bf034805eeaff39c6df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
