@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98a891b_8d8bc934",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T21:52:49Z",
+      "side": 1,
+      "message": "Good technique to shuffle the tests. It is helpful. This suite is fine as the _after() function sets the WP_L back to default (asserted). I added a _before() which does the same thing to put WP_L to asserted.",
+      "parentUuid": "f705787d_5c4e8440",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0523bff5_3fa2d105",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-24T18:47:17Z",
       "side": 1,
       "message": "This test should assume that the host command succeeds and has a correctly formatted response. To the extent that this test requires those things to be true, it should use `zassume` instead of `zassert`.\n\nThere should be another test in `zephyr/test/drivers/default/src/espi.c` that actually `zassert`s on the basic function of this host command. The other tests in that file are examples of how to write that kind of test.\n\nIt might also be convenient to put a helper function for calling this host command in `zephyr/test/drivers/common/src/utils.c`.\n\nThat extra stuff can go in another CL if you want.",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc891762_b71a6a52",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T21:52:49Z",
+      "side": 1,
+      "message": "I agree. This response size checking is unnecessary and should not be verified in this test case. I removed these lines.",
+      "parentUuid": "0523bff5_3fa2d105",
       "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ce0ddfb_29f8d945",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T21:52:49Z",
+      "side": 1,
+      "message": "The steps are dependent, except the first one, which ensure the correctness of the original status (no protection).",
+      "parentUuid": "4dc44dff_287af203",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d295b148_6451c887",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-08-24T18:47:17Z",
       "side": 1,
       "message": "Is this repeat intentional?",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a79078_0710b555",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T21:52:49Z",
+      "side": 1,
+      "message": "No, accidentally duplicated it.",
+      "parentUuid": "d295b148_6451c887",
       "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac1e286_a761d586",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T21:52:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f903d0_71ef49c8",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d52edad3_add3a4ac",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-08-24T18:47:17Z",
       "side": 1,
       "message": "`zassert*` doesn\u0027t do anything here. The test has already either passed or failed at this point.\n\nIf you want to make sure these conditions are true before the test starts, you can do that with `zassume` in a `_before` function.",
+      "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa98bea5_c7e648f5",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T21:52:49Z",
+      "side": 1,
+      "message": "Removed the zassert(). Added the _before() function so it ensures the correct state.",
+      "parentUuid": "d52edad3_add3a4ac",
       "revId": "1fd0b484ee40c61701641d56059dfc64c57afade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
