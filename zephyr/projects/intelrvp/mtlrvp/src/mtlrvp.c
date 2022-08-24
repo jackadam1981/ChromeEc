@@ -23,6 +23,7 @@
 #include "isl9241.h"
 #include "keyboard_raw.h"
 #include "power/meteorlake.h"
+#include "signal_vw.h"
 #include "sn5s330.h"
 #include "system.h"
 #include "task.h"
@@ -129,12 +130,9 @@ static void board_connect_c0_sbu_deferred(void)
 }
 DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
 
-void board_overcurrent_event(int port, int is_overcurrented)
+__override void board_overcurrent_event(int port, int is_overcurrented)
 {
-	/*
-	 * TODO: Meteorlake PCH does not use Physical GPIO for over current
-	 * error, hence Send 'Over Current Virtual Wire' eSPI signal.
-	 */
+	espi_vw_set_wire(port + ESPI_VWIRE_SIGNAL_SLV_GPIO_0, !is_overcurrented);
 }
 
 void board_reset_pd_mcu(void)

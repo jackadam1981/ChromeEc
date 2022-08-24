@@ -6,6 +6,8 @@
 #ifndef __AP_PWRSEQ_SIGNAL_VW_H__
 #define __AP_PWRSEQ_SIGNAL_VW_H__
 
+#include <zephyr/drivers/espi.h>
+
 #define PWR_SIG_TAG_VW PWR_VW_
 
 /*
@@ -44,5 +46,7 @@ int power_signal_vw_get(enum pwr_sig_vw vw);
  * processing inputs and outputs.
  */
 void power_signal_vw_init(void);
+
+int espi_vw_set_wire(enum espi_vwire_signal signal, uint8_t level);
 
 #endif /* __AP_PWRSEQ_SIGNAL_VW_H__ */
