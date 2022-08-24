@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a9ab22_3ba72aee",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-08-24T14:09:20Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5f1358e3_5d5f3692",
+      "revId": "01926f18459f2b1fece6970dda2bfae1b70e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8d5dad5_a5a7ea52",
@@ -66,6 +84,24 @@
       "writtenOn": "2022-08-18T16:48:47Z",
       "side": 1,
       "message": "This removes all PD-related host commands, so the type-c daemon in the kernel will be unhappy and we\u0027ll be missing out on some feedback report information",
+      "revId": "01926f18459f2b1fece6970dda2bfae1b70e925b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d43f7c4_b9e163cf",
+        "filename": "zephyr/projects/skyrim/prj_skyrim.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-08-24T14:09:20Z",
+      "side": 1,
+      "message": "Good point. Removing this line.",
+      "parentUuid": "b8d5dad5_a5a7ea52",
       "revId": "01926f18459f2b1fece6970dda2bfae1b70e925b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
