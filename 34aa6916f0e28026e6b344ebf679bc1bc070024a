@@ -16,6 +16,52 @@
       "message": "+alvis: do I miss anything?",
       "revId": "34aa6916f0e28026e6b344ebf679bc1bc070024a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591e5bef_ffa77f25",
+        "filename": "zephyr/projects/corsola/src/krabby/charger_workaround.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2022-08-24T09:31:07Z",
+      "side": 1,
+      "message": "This is the solution instead of workaround, and fit/need for all board version.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "34aa6916f0e28026e6b344ebf679bc1bc070024a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebe192c_088caae2",
+        "filename": "zephyr/projects/corsola/src/krabby/charger_workaround.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2022-08-24T09:31:07Z",
+      "side": 1,
+      "message": "same comment as above.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 23
+      },
+      "revId": "34aa6916f0e28026e6b344ebf679bc1bc070024a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
