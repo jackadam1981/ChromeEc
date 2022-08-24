@@ -16,6 +16,24 @@
       "message": "Is this our \"random\" hash? If so, can we replace usage of the word random with arbitrary. I don\u0027t want the implicate some pseudo-random generation number is used anywhere here. It\u0027s clear the test should be deterministic.\n\nCould we also add a comment `/* arbitrary size */ just above the `.size \u003d 0x12345`",
       "revId": "14ec9d14772365cf59e63bbaa6bfbd305619befb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a9e529_0de6e223",
+        "filename": "zephyr/test/drivers/default/src/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T21:54:34Z",
+      "side": 1,
+      "message": "Agree. Changed the term to `arbitrary`.",
+      "parentUuid": "cebe160c_9db97db1",
+      "revId": "14ec9d14772365cf59e63bbaa6bfbd305619befb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
