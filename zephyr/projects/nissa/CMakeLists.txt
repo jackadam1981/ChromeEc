@@ -11,6 +11,8 @@ zephyr_library_sources("src/common.c")
 zephyr_library_sources("src/sub_board.c")
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 
+zephyr_code_relocate("${ZEPHYR_BASE}/drivers/i2c/i2c_ite_it8xxx2.c" RAM_TEXT)
+
 if(DEFINED CONFIG_BOARD_NIVVIKS)
 	project(nivviks)
 	zephyr_library_sources(
