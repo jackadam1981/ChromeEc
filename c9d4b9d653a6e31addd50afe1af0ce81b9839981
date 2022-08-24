@@ -39,6 +39,30 @@
       },
       "revId": "c9d4b9d653a6e31addd50afe1af0ce81b9839981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7fe5a3f_adad0b53",
+        "filename": "zephyr/test/drivers/dps/src/dps.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T05:32:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ccbdeb_54f88d65",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "c9d4b9d653a6e31addd50afe1af0ce81b9839981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

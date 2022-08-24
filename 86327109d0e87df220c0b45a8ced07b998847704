@@ -22,6 +22,30 @@
       },
       "revId": "86327109d0e87df220c0b45a8ced07b998847704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001b3933_34fe1ed9",
+        "filename": "common/dps.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-24T05:32:33Z",
+      "side": 0,
+      "message": "I made the dps_task() to exit when dps_init() fails, so modifying the dps_config contents are not necessary now.",
+      "parentUuid": "1df59c77_b9c294c0",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 46
+      },
+      "revId": "86327109d0e87df220c0b45a8ced07b998847704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
