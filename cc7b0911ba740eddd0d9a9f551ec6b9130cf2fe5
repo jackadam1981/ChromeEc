@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7563b042_1a9d633b",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-24T20:51:56Z",
+      "side": 1,
+      "message": "`static` isn\u0027t a good way to get around compiler warnings.\n\n`pct` is uninitialized in the case where it is not\ninitialized during one of these conditions in your code:\n\ntmp[TEMP_SENSOR_2_DDR] \u003c SENSOR_DDR_FAN_TURN_OFF\ntmp[TEMP_SENSOR_2_DDR) \u003e SENSOR_DDR_FAN_TURN_ON\n\nso, 37 and 38.\nit\u0027s still passed to fan_set_percent().\n\ndid you mean to do nothing for hysteresis in these cases?",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "cc7b0911ba740eddd0d9a9f551ec6b9130cf2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
