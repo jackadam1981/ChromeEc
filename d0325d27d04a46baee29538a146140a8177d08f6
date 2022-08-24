@@ -46,6 +46,30 @@
       },
       "revId": "d0325d27d04a46baee29538a146140a8177d08f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb63b5a6_127ca188",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-24T23:26:52Z",
+      "side": 1,
+      "message": "I would much rather have two `const struct gpio_dt_spec *` as function variables and then use those as arguments from `gpio_pin_get_dt`, and also \u0026\u0026, try to save some mid function newline, this is hard to read,",
+      "parentUuid": "8febb477_83acf4bf",
+      "range": {
+        "startLine": 129,
+        "startChar": 55,
+        "endLine": 130,
+        "endChar": 6
+      },
+      "revId": "d0325d27d04a46baee29538a146140a8177d08f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
