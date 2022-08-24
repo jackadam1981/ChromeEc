@@ -16,6 +16,24 @@
       "message": "In file included from /mnt/host/source/src/platform/ec/zephyr/projects/skyrim/src/skyrim/form_factor.c:6:\n/mnt/host/source/src/platform/ec/zephyr/projects/skyrim/src/skyrim/form_factor.c: In function \u0027form_factor_init\u0027:\n/mnt/host/source/src/platform/ec/build/zephyr/winterhold/modules/ec/zephyr/shim/include/motionsense_sensors.h:17:44: error: \u0027ROT_REF_DT_N_NODELABEL_lid_rot_ref1\u0027 undeclared (first use in this function); did you mean \u0027DT_N_NODELABEL_lid_rot_ref\u0027?",
       "revId": "8b4b312aebc07c7495cb4bbfa9f5a1d1f8611f3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ae2d8a_fa6c8b0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-08-24T07:29:15Z",
+      "side": 1,
+      "message": "This error is affected by the code of winterhold, will rebase after this [CL:3853770](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3853770) merge.",
+      "parentUuid": "33e3e95c_86dddd67",
+      "revId": "8b4b312aebc07c7495cb4bbfa9f5a1d1f8611f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
