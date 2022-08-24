@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd01056_ade0b1b8",
+        "filename": "zephyr/test/drivers/default/src/host_cmd/pd_control.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-24T19:13:11Z",
+      "side": 1,
+      "message": "nit: We should have a comment identifying .82 as the bad index. It required me to take a look at the other tests to confirm that 82 was meant to be a bad port. I think a comment or a macro would be a lot more clear.",
+      "revId": "ea67f2b73f26c37a86b0cdcf725478df7e9c944d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d91073_3d86cadb",
+        "filename": "zephyr/test/drivers/default/src/host_cmd/pd_control.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-24T19:13:11Z",
+      "side": 1,
+      "message": "I think this error message needs to get updated.",
+      "revId": "ea67f2b73f26c37a86b0cdcf725478df7e9c944d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d99a97_3a76477e",
+        "filename": "zephyr/test/drivers/default/src/host_cmd/pd_control.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-24T19:13:11Z",
+      "side": 1,
+      "message": "I think this error message needs to get updated.",
+      "revId": "ea67f2b73f26c37a86b0cdcf725478df7e9c944d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b627cf6a_9f4d5f6a",
+        "filename": "zephyr/test/drivers/default/src/host_cmd/pd_control.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-24T19:13:11Z",
+      "side": 1,
+      "message": "I think this error message needs to get updated, maybe? I\u0027d imagine it to be something closer to \"access was not denied\"",
+      "revId": "ea67f2b73f26c37a86b0cdcf725478df7e9c944d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
