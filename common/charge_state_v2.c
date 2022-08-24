@@ -1933,6 +1933,7 @@ wait_for_it:
 
 #ifdef CONFIG_CHARGE_MANAGER
 		if (curr.batt.state_of_charge >=
+<<<<<<< HEAD   (262cbd bobba: Change charge max sleep time to 4s)
 		    CONFIG_CHARGE_MANAGER_BAT_PCT_SAFE_MODE_EXIT &&
 		    !battery_seems_to_be_disconnected) {
 			/*
@@ -1950,6 +1951,10 @@ wait_for_it:
 			 * input FETs.
 			 */
 			msleep(500);
+=======
+			    CONFIG_CHARGE_MANAGER_BAT_PCT_SAFE_MODE_EXIT &&
+		    !battery_seems_disconnected) {
+>>>>>>> CHANGE (9ac046 common: Not sleep 500ms when already left safe mode)
 			charge_manager_leave_safe_mode();
 		}
 #endif
