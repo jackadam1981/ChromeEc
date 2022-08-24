@@ -16,6 +16,24 @@
       "message": "Looks like you need to run clang-format on flash.c on the preceding CL",
       "revId": "4738904def35d8d46969dd1d89356a850ea8a5fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b948ea56_b9ec628b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-08-24T21:54:22Z",
+      "side": 1,
+      "message": "Yes, fixed it.",
+      "parentUuid": "0bf93188_6d215299",
+      "revId": "4738904def35d8d46969dd1d89356a850ea8a5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
