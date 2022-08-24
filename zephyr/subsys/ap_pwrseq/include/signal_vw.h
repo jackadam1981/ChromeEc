@@ -6,6 +6,8 @@
 #ifndef __AP_PWRSEQ_SIGNAL_VW_H__
 #define __AP_PWRSEQ_SIGNAL_VW_H__
 
+#include <zephyr/drivers/espi.h>
+
 #define PWR_SIG_TAG_VW PWR_VW_
 
 /*
@@ -44,5 +46,16 @@ int power_signal_vw_get(enum pwr_sig_vw vw);
  * processing inputs and outputs.
  */
 void power_signal_vw_init(void);
+
+/**
+ * @brief Send eSPI Virtual Wire GPIO
+ *
+ * @param signal The Virtual Wire signal
+ * @param level Level of Virtual Wire signal to be set
+ *
+ * @retval 0 If successful.
+ * @retval -EIO General input / output error, failed to send over the bus.
+ */
+int espi_vw_set_wire(enum espi_vwire_signal signal, uint8_t level);
 
 #endif /* __AP_PWRSEQ_SIGNAL_VW_H__ */

@@ -124,4 +124,8 @@ void power_signal_vw_init(void)
 	}
 }
 
+int espi_vw_set_wire(enum espi_vwire_signal signal, uint8_t level)
+{
+	return espi_send_vwire(espi_dev, signal, level);
+}
 #endif /* HAS_VW_SIGNALS */
