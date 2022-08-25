@@ -16,6 +16,23 @@
       "message": "Hi Andrew, \nIt looks ap_pwrseq only initialize interrupt gpios with GPIO_INPUT? we have a case need to set flag like GPIO_PULL_UP, I created this patch to allow setting more flags. Let me know if I overlooked anything.",
       "revId": "c066284d9cf961656b80d4b2e3670b38cec8b743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3480af_5fa73076",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-25T00:31:16Z",
+      "side": 1,
+      "message": "This isn\u0027t required, the inline for gpio_pin_configure_dt will OR in the flags from the spec (see third_party/zephyr/main/include/zephyr/drivers/gpio.h:756).\n",
+      "revId": "c066284d9cf961656b80d4b2e3670b38cec8b743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
