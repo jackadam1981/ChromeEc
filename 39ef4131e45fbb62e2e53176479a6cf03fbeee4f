@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46a4b24_369c2191",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/mock_power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-25T17:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad772d5_63e56ae3",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "39ef4131e45fbb62e2e53176479a6cf03fbeee4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "795870e6_5b99be94",

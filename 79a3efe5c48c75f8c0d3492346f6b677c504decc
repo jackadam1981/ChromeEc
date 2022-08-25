@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a471d8d_616b5eab",
+        "filename": "zephyr/mock/include/power_mock.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-25T17:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e618865_bd7aad14",
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff3c4217_a8dc7be2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-22T16:07:24Z",
       "side": 1,
       "message": "Since this is a zephyr only module, we should use logging.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bced1519_f07be5f7",
+        "filename": "zephyr/mock/power_mock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-25T17:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff3c4217_a8dc7be2",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa1b9417_6b41cbb9",
+        "filename": "zephyr/mock/power_mock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-25T17:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5749660_cf2e17d2",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 25
+      },
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c655ff1_0a89edb8",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22e824d_e12002e2",
+        "filename": "zephyr/mock/power_mock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-25T17:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c655ff1_0a89edb8",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74d21559_e5438ea9",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-08-22T16:07:24Z",
       "side": 1,
       "message": "Shouldn\u0027t use printf, use logging subsystem instead",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 26
+      },
+      "revId": "79a3efe5c48c75f8c0d3492346f6b677c504decc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a26d697_f741109a",
+        "filename": "zephyr/mock/power_mock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-25T17:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d21559_e5438ea9",
       "range": {
         "startLine": 257,
         "startChar": 1,
