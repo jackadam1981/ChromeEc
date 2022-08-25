@@ -42,6 +42,9 @@
 /* a flag for indicating the tasks are inited. */
 static bool tasks_inited;
 
+/* a floag for which type-c port has cycled VBUS for XHCI initialization */
+static uint8_t reset_port_flag;
+
 /* Baseboard */
 static void baseboard_init(void)
 {
@@ -66,6 +69,44 @@ __override uint8_t board_get_usb_pd_port_count(void)
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
+/* forward declaration */
+void xhci_init_deferred(void);
+DECLARE_DEFERRED(xhci_init_deferred);
+
+/*
+ * notify AP the USB MUX status. AP may clear the usb mux status when hard reset
+ * is sent on booting. This is because the AP doesn't have the sequence
+ * knowledgea of the USB events. On system booting, there will be a bunch of
+ * USB events sent to the kernel, and the kernel might process the hard reset
+ * event in the last although the hard reset event is happened prior to the USB
+ * mux configuration. Hence the USB MUX status might be cleared on
+ * booting. xhci_init_deferred watch the hard reset event and re-notify
+ * the kernel of USB MUX status if needed.
+ */
+void xhci_init_deferred(void)
+{
+	int i;
+
+	if (!reset_port_flag)
+		return;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (!(reset_port_flag & BIT(i)))
+			continue;
+
+		if (!tc_is_attached_src(i) || usb_mux_get(i) == USB_PD_MUX_NONE)
+			reset_port_flag &= ~BIT(i);
+
+		if (!(pd_get_events(i) & PD_STATUS_EVENT_HARD_RESET)) {
+			host_set_single_event(EC_HOST_EVENT_USB_MUX);
+			reset_port_flag &= ~BIT(i);
+		}
+	}
+
+	if (reset_port_flag)
+		hook_call_deferred(&xhci_init_deferred_data, 200 * MSEC);
+}
+
 /* USB-A */
 void usb_a0_interrupt(enum gpio_signal signal)
 {
@@ -74,6 +115,7 @@ void usb_a0_interrupt(enum gpio_signal signal)
 					    USB_CHARGE_MODE_ENABLED :
 					    USB_CHARGE_MODE_DISABLED;
 
+	reset_port_flag = 0;
 	for (int i = 0; i < USB_PORT_COUNT; i++) {
 		usb_charge_set_mode(i, mode, USB_ALLOW_SUSPEND_CHARGE);
 	}
@@ -86,9 +128,13 @@ void usb_a0_interrupt(enum gpio_signal signal)
 		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 			if (tc_is_attached_src(i)) {
 				pd_dpm_request(i, DPM_REQUEST_HARD_RESET_SEND);
+				reset_port_flag |= BIT(i);
 			}
 		}
 	}
+
+	if (reset_port_flag)
+		hook_call_deferred(&xhci_init_deferred_data, 0);
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
