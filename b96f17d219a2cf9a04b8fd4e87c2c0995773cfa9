@@ -342,6 +342,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48271dd7_0f36798d",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-25T18:20:21Z",
+      "side": 1,
+      "message": "THis condition is what prevents the below activities. Unless we optimize the code in next phase, this condition check is required.",
+      "parentUuid": "fc9094d4_d7d54691",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05664186_75c50a2d",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 11
@@ -449,6 +473,30 @@
       "side": 1,
       "message": "IIUC, we\u0027ll come back here on every HOOK_BATTERY_SOC_CHANGE. Then, we\u0027ll throttle_ap and update *memmap_psrc repeatedly. Would it be a problem? Can we notify the AP once on entry to BATTERY_LEVEL_LOW and once on exit (AC-plug)?",
       "parentUuid": "c8855701_ef55f7da",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449de6a5_39bf05eb",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-25T18:20:21Z",
+      "side": 1,
+      "message": "Here the throttle_ap  \u0026 updation of memmep is only  based on the condition in line number-99. So, there is no issue of repeatetion.\nif ((current_port !\u003d prev_charge_port) ||\n\t    (prev_power_source !\u003d current_power_source) ||\n\t    (on_battery \u0026\u0026 batt_soc \u003c\u003d BATTERY_LEVEL_LOW)) {",
+      "parentUuid": "1519e877_7b692ecb",
       "range": {
         "startLine": 117,
         "startChar": 3,
