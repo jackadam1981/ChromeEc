@@ -52,6 +52,24 @@
       "parentUuid": "a976434b_618358b4",
       "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a571d2_80076bd9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-25T22:00:03Z",
+      "side": 1,
+      "message": "Initially, by default, in NDA, the port is UNATTACHED.SRC, when FORCE_SOURCE.\nIf the port can support both src and  sink, now, if a connect a TBT, ROLE swap to Sink happens and it gets enumerated. But then , on disconnect, it continoues to be attached.snk.\nLog:\n22-08-16 17:19:04.612 \u003e pd 0 state\n22-08-16 17:19:08.644 Port C0 CC1, Disable - Role: SRC-UFP TC State: LowPowerMode, Flags: 0x0010 PE State: , Flags: 0x8400000\n22-08-16 17:19:08.644 \u003e\n\nNow connect TBT to P0.\n\n22-08-16 17:21:17.364 \u003e [220.563787 C0: Exit Low Power Mode]\n22-08-16 17:21:17.409 [220.566477 C0: Unattached.SRC]\n22-08-16 17:21:17.409 [220.567104 C0: AttachWait.SRC]\n22-08-16 17:21:17.501 [220.668447 C0: Attached.SRC]\n22-08-16 17:21:17.575 [220.728762 C0: PE_SRC_Startup]\n22-08-16 17:21:17.576 [220.730124 C0: PE_SRC_Send_Capabilities]\n22-08-16 17:21:17.576 [220.737634 C0: PE_SRC_Negotiate_Capability]\n22-08-16 17:21:17.576 Requested 5000 mV 1500 mA (for 0/0 mA)\n22-08-16 17:21:17.583 [220.738163 C0: PE_SRC_Transition_Supply]\n22-08-16 17:21:17.605 [220.769512 C0: PE_SRC_Ready]\n22-08-16 17:21:17.713 [220.871362 C0: PE_PRS_SRC_SNK_Evaluate_Swap]\n22-08-16 17:21:17.713 [220.873958 C0: PE_PRS_SRC_SNK_Transition_To_Off]\n22-08-16 17:21:17.996 [221.151331 C0: PE_PRS_SRC_SNK_Assert_Rd]\n22-08-16 17:21:17.996 [221.155567 C0: Attached.SNK]\n22-08-16 17:21:17.996 [221.156153 C0: PE_PRS_SRC_SNK_Wait_Source_On]\n22-08-16 17:21:17.996 [221.164573 C0: PE_SNK_Startup]\n22-08-16 17:21:18.008 [221.165571 C0: PE_SNK_Discovery]\n22-08-16 17:21:18.008 [221.166437 C0: PE_SNK_Wait_for_Capabilities]\n22-08-16 17:21:18.074 [221.231412 C0: PE_SNK_Evaluate_Capability]\n22-08-16 17:21:18.074 [221.231968 C0: PE_SNK_Select_Capability]\n22-08-16 17:21:18.074 C0: Req [1] 5000mV 3000mA\n22-08-16 17:21:18.074 [221.241234 C0: PE_SNK_Transition_Sink]\n22-08-16 17:21:18.107 [221.275144 C0: PE_SNK_Ready]\n22-08-16 17:21:18.513 [221.683310 C0: PE_DR_Get_Sink_Cap]\n22-08-16 17:21:18.536 [221.693467 C0: PE_SNK_Ready]\n22-08-16 17:21:18.536 [221.694530 C0: PE_VCS_CBL_Send_Soft_Reset]\n22-08-16 17:21:18.536 [221.702710 C0: PE_SNK_Ready]\n22-08-16 17:21:18.536 Unhandled DPM Request 1040000 received\n22-08-16 17:21:18.540 [221.704097 C0: PE_VDM_Identity_Request_Cbl]\n22-08-16 17:21:18.557 [221.712457 C0: PE_SNK_Ready]\n22-08-16 17:21:18.557 [221.713500 C0: PE_INIT_PORT_VDM_Identity_Request]\n22-08-16 17:21:18.557 [221.722126 C0: PE_SNK_Ready]\n22-08-16 17:21:18.557 [221.723154 C0: PE_INIT_VDM_SVIDs_Request]\n22-08-16 17:21:18.570 [221.731312 C0: PE_SNK_Ready]\n22-08-16 17:21:18.570 [221.732373 C0: PE_INIT_VDM_Modes_Request]\n22-08-16 17:21:18.570 [221.740352 C0: PE_SNK_Ready]\n22-08-16 17:21:18.585 [221.741409 C0: PE_INIT_VDM_Modes_Request]\n22-08-16 17:21:18.585 [221.749797 C0: PE_SNK_Ready]\n22-08-16 17:21:18.585 [221.751145 C0: PE_INIT_VDM_SVIDs_Request]\n22-08-16 17:21:18.601 [221.759142 C0: PE_SNK_Ready]\n22-08-16 17:21:18.601 [221.760295 C0: PE_INIT_VDM_Modes_Request]\n22-08-16 17:21:18.601 [221.768254 C0: PE_SNK_Ready]\n22-08-16 17:21:18.601 [221.769399 C0: PE_INIT_VDM_Modes_Request]\n22-08-16 17:21:18.608 [221.777569 C0: PE_SNK_Ready]\n22-08-16 17:21:18.666 [221.833597 C0: TBT attempt to enter mode]\n22-08-16 17:21:18.716 [221.885737 C0: PE_VDM_Request_DPM]\n22-08-16 17:21:18.728 [221.894009 C0: TBT enter mode SOP]\n22-08-16 17:21:18.728 [221.894439 C0: PE_SNK_Ready]\n22-08-16 17:21:50.250\n22-08-16 17:21:50.251 \u003e\n\n22-08-16 17:22:18.392 \u003e pd 0 state\n22-08-16 17:22:21.481 Port C0 CC1, Enable - Role: SNK-DFP-VC TC State: Attached.SNK, Flags: 0x9011 PE State: PE_SNK_Ready, Flags: 0x0211\n\n\nNow disconnect TBT.\n\n288.203117 C0: Unattached.SNK]\n\n22-08-16 17:22:39.850 \u003e pd 0 state\n22-08-16 17:22:43.395 Port C0 CC1, Disable - Role: SNK-UFP TC State: Unattached.SNK, Flags: 0x0010 PE State: , Flags: 0x0001\n22-08-1\n\nNext , if we connect a pendrive, it doesnot get detected  at all as any device attached, if we dont have this change to exit from  unattached snk to unattached.src.\nFound this issue, when a board specific chnge to FORCE_SOURCE is made (Cl- 3855157)",
+      "parentUuid": "8791d347_faaf0dbd",
+      "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
