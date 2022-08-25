@@ -34,6 +34,24 @@
       "parentUuid": "26a694e6_ec3f5d5a",
       "revId": "5e2a7f3b3ec0573d8c01062ce47ce6ee03eada64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f3eda7_9f02c44b",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-25T21:31:12Z",
+      "side": 1,
+      "message": "I\u0027m able to reproduce the failure consistently, so I tried adding an additional `sleep 1` here, but there was no effect. I also tried increasing the `sleep 0.5` in `servo_fpmcu_hard_reset` to `sleep 1`, but that also had no effect.",
+      "parentUuid": "f730eb14_b9b70d99",
+      "revId": "5e2a7f3b3ec0573d8c01062ce47ce6ee03eada64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
