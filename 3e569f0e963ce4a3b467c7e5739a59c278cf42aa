@@ -22,6 +22,30 @@
       },
       "revId": "3e569f0e963ce4a3b467c7e5739a59c278cf42aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d132c27_e5c6feb0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-25T00:29:40Z",
+      "side": 1,
+      "message": "Not needed. `make try_build_boards` passes with or without __packed.",
+      "parentUuid": "8a1703d0_ccb08cb9",
+      "range": {
+        "startLine": 591,
+        "startChar": 2,
+        "endLine": 591,
+        "endChar": 10
+      },
+      "revId": "3e569f0e963ce4a3b467c7e5739a59c278cf42aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
