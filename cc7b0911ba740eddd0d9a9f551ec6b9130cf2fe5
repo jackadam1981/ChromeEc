@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b31d985_8d2b722f",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-08-25T12:09:31Z",
+      "side": 1,
+      "message": "Use unsigned long int instead of unsigned int.",
+      "parentUuid": "87aed398_875b9ecf",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "cc7b0911ba740eddd0d9a9f551ec6b9130cf2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7563b042_1a9d633b",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "wouldn\u0027t you get the same behavior by not calling fan_set_percent()\nfor the 37 and 38 case? does the fan need to be set to the same\nvalue it was already set on the previous iteration?\n\nonly difference is fan_get_rpm() also wouldn\u0027t be called.\ni suppose that could be done explicitly... and probably\ndoesn\u0027t need to be called from fan_set_percent().",
       "parentUuid": "06a1aea2_72dd3407",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "cc7b0911ba740eddd0d9a9f551ec6b9130cf2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c011d062_e66f7efc",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-08-25T12:09:31Z",
+      "side": 1,
+      "message": "If use `static pct` and not calling `fan_set_percent()` for case 37 and 38, \nwhen system from S0ix to S0, it will make fan run 100% speed.\nIf not use `static pct` and not calling `fan_set_percent()` for case 37 and 38, \nthe behavior is the same as above. (100% speed)\n\nBecause when system wakeup, will run `pwm_fan_start()` and `pwm_fan_control(1)`.\nIn `pwm_fan_control()`, `fan_set_rpm_target()` will set fan to `CONFIG_FAN_INIT_SPEED`.\nThe default `CONFIG_FAN_INIT_SPEED` is 100 in config.h.",
+      "parentUuid": "40c3ce2e_d76b5580",
       "range": {
         "startLine": 115,
         "startChar": 1,
