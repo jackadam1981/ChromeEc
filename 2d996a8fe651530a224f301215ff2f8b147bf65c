@@ -194,6 +194,24 @@
       "message": "\u003e So this is all happening during S0?  Is the EC sending  EC_HOST_EVENT_USB_MUX  during the recovery process\nYes this is happening at S0. The XHCI hub initialization has to be done in the firmware stage. EC_HOST_EVENT_USB_MUX is sent after the hard reset event sent.\n\n\n\u003e The \"regular\" case is that all this happens during S0, so time ordering is implicitly maintained. If a AP reset happens, then the hard reset should be considered stale and cleared. The EC has gone ahead and configured the muxes after that anyway, so it is no longer valid to report it to the AP. \n\nOne of the regular cases is plugging the DP hub in when system booting. A commonly seen connection type is that a HARDRESET may occurred before they successfully connected if the user didn\u0027t do it cleanly (e.g. the plug or the receptacle doesn\u0027t have a clean connection firstly). In this case, although they setup the connection after that, the kernel is unaware of the actual mux status configured by EC. This is not related to applying the notice of `10.3.1.1`\n\n\n\u003e Is this something which is specific to the platform you are working on? Why is this not incorporated in the overall EC PD logic? \n\u003e  We should not introduce fixes in the generic kernel for behaviours which are introduced by device-specific firmware changes.\n\n\nThis is not specific to our platform. Any SoC has a USB hub in the USB tree will need this process. This is noted in the spec of USB 3.1 `10.3.1.1` section\u0027s note: https://manuais.iessanclemente.net/images/b/bc/USB_3_1_r1.0.pdf\n\n```\nNote: a hub may provide power to all its downstream ports all of the time to support applications\nsuch as battery charging from a USB port. Such hubs must ensure that Enhanced SuperSpeed \nUniversal Serial Bus 3.1 Specification, Revision 1.0\n10-18\ndevices on its downstream-facing ports attempt Enhanced SuperSpeed connection once upstream\nVBUS is seen by the hub. The recommended method to achieve this is to cycle VBUS off for a\nduration or by actively discharging so that it is seen to be off by the downstream device.\n```\n\nWe need to apply this notice to make some USB storage functionable when plugged in on booting.\n\n\n\u003e Also, a question which wasn\u0027t answered in the bug (https://b.corp.google.com/issues/224471170#comment12):\n\u003e If you have to cycle VBUS, why aren\u0027t you doing just that, instead of sending out a hard reset? As Abe mentioned, Data Reset or EnterUSB would also suffice.\n\nData Reset and EnterUSB mode doesn\u0027t reset the VBUS. Data Reset only reset the Vconn, which is not fulfilling our need.",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f588c847_7cf0add9",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-25T05:10:41Z",
+      "side": 1,
+      "message": "If the board hook is preferable, this is the CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3855592/",
+      "parentUuid": "ab899a1a_a5793333",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
