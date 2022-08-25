@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0cee352_5c6f5d08",
+        "filename": "Makefile.ide",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-25T05:10:54Z",
+      "side": 1,
+      "message": "FYI.\n\nWe now filter out the gcc specific args that clang doesn\u0027t like.",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "8b7703f9a99eb3f690fbdc9f5c0bfe74dfd3cc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

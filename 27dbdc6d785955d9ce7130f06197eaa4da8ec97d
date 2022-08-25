@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7da2c74_348f04b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-25T05:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b784e2ae_fb9797e1",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "27dbdc6d785955d9ce7130f06197eaa4da8ec97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f1734090_1ea5233b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "Confirmed that #1 works in combination with the existing Python script.\n\nHere is how I changed it:\n\n```\n\"directory\": \"$(CROS_WORKON_SRCROOT)/src/platform/ec\"\n```",
       "parentUuid": "6d92832c_a640c49d",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "27dbdc6d785955d9ce7130f06197eaa4da8ec97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e4f3dd_3762ed19",
+        "filename": "Makefile.ide",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-25T05:10:54Z",
+      "side": 1,
+      "message": "Nice. I think I have solutions in place for all of these now.\n\n* I fixed the faulty \"directory\" entry to use EXTERNAL_TRUNK_PATH if available.\n* The two absolute -I include paths you mentioned are caused by the cryptoc config. CL crrev.com/c/3855590 and crrev.com/c/3855591 should fix them.\n* Those two compiler args `-mno-sched-prolog` and `-fconserve-stack` are gcc specific. Since I couldn\u0027t get the EC clang compilation mode to work, I simply added a filter to remove these args. \n\nLet me know how this work!",
+      "parentUuid": "1d5261ba_8236a020",
       "range": {
         "startLine": 52,
         "startChar": 26,
