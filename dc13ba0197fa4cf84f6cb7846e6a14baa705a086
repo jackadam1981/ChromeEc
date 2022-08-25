@@ -49,6 +49,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03007988_a63cf570",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-25T11:08:03Z",
+      "side": 1,
+      "message": "Thanks for the reminder.\n\nI will test scp image include those patch series in kukui, then correct the commit message.",
+      "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9041a28_12020408",
         "filename": "board/kukui_scp/board.h",
         "patchSetId": 1
@@ -83,6 +100,24 @@
       "writtenOn": "2022-08-24T10:17:59Z",
       "side": 1,
       "message": "compare to cpu_invalidate_dcache_range(), interrupt_enable is after volatile(dsb). is this intended?",
+      "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7562ba8_ee33928c",
+        "filename": "chip/mt_scp/mt818x/memmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-25T11:08:03Z",
+      "side": 1,
+      "message": "hmm.. Not intended.\n\ninterrupt_enable() should be after dsb function. the changes are not correct in cpu_invalidate_dcache_range()",
+      "parentUuid": "8d6e0002_9cd2e929",
       "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
