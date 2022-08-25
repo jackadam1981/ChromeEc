@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87aed398_875b9ecf",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-25T03:16:42Z",
+      "side": 1,
+      "message": "how reliable is this? this code runs on HOOK_SECOND.\ni wonder how likely it is for time to be a multiple\nof 120 seconds by the time you get here.",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "cc7b0911ba740eddd0d9a9f551ec6b9130cf2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7563b042_1a9d633b",
         "filename": "board/crota/fans.c",
         "patchSetId": 6
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "In uptrend case, when DDR temps \u003e 38, fan will spin.\nIn downtrend case, when DDR temps \u003c 37, fan will stop.\n\nSo we use the `static` to make sure the `pct` status with last second.\nAlso means when 37 or 38, the `pct` status decided by the last second is\nuptrend case or downtrend case.\nAnd means we use `static` for these cases.",
       "parentUuid": "7563b042_1a9d633b",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "cc7b0911ba740eddd0d9a9f551ec6b9130cf2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c3ce2e_d76b5580",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-25T03:16:42Z",
+      "side": 1,
+      "message": "wouldn\u0027t you get the same behavior by not calling fan_set_percent()\nfor the 37 and 38 case? does the fan need to be set to the same\nvalue it was already set on the previous iteration?\n\nonly difference is fan_get_rpm() also wouldn\u0027t be called.\ni suppose that could be done explicitly... and probably\ndoesn\u0027t need to be called from fan_set_percent().",
+      "parentUuid": "06a1aea2_72dd3407",
       "range": {
         "startLine": 115,
         "startChar": 1,
