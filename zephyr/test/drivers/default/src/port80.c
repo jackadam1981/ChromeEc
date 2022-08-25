@@ -106,6 +106,34 @@ ZTEST(port80, test_port80_offset)
 }
 
 /**
+ * @brief TestPurpose: Verify port 80 reset event
+ *
+ * @details
+ * Validate that the port 80 handling works for the reset event
+ *
+ * Expected Results
+ *  - The port 80 handling detects the reset event.
+ */
+ZTEST(port80, test_port80_special)
+{
+	struct ec_response_port80_last_boot response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND_SIMPLE(EC_CMD_PORT80_READ, 0);
+
+	port80_flush();
+	port_80_write(0xDEAD);
+	port_80_write(0xAA); /* must be < 0x100 */
+	port_80_write(PORT_80_EVENT_RESET);
+	/* Check the buffer using the host cmd version 0*/
+
+	args.response = &response;
+	args.response_max = sizeof(response);
+	zassert_ok(host_command_process(&args), NULL);
+	zassert_ok(args.result, NULL);
+	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_equal(response.code, 0xAA, NULL);
+}
+/**
  * @brief Test Suite: Verifies port 80 writes.
  */
 ZTEST_SUITE(port80, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
