@@ -26,4 +26,8 @@ struct usbc_ctvpd_fixture {
 	struct common_fixture common;
 };
 
+__override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
+{
+	return PD_DRP_FORCE_SOURCE;
+}
 #endif /* ZEPHYR_TEST_DRIVERS_USBC_ALT_MODE_TEST_USBC_ALT_MODE_H_ */
