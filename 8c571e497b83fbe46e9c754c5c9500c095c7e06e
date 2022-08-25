@@ -22,6 +22,30 @@
       },
       "revId": "8c571e497b83fbe46e9c754c5c9500c095c7e06e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36dd8118_0517d886",
+        "filename": "zephyr/test/drivers/default/src/virtual_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-25T19:56:21Z",
+      "side": 1,
+      "message": "This assert fails when enabling the mocked power sequence.  The other option is to add a `IS_ENABLED(MOCK_POWER_SEQ)` check around this.",
+      "parentUuid": "53c61968_329a8258",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 59
+      },
+      "revId": "8c571e497b83fbe46e9c754c5c9500c095c7e06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
