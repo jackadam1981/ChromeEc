@@ -51,10 +51,12 @@ int fpc_pal_wait_irq(fpc_device_t device, fpc_pal_irq_t irq_type)
 
 int32_t FpcMalloc(void **data, size_t size)
 {
-	return shared_mem_acquire(size, (char **)data);
+	void *m = malloc(size);
+	*data = m;
+	return EC_SUCCESS;
 }
 
 void FpcFree(void **data)
 {
-	shared_mem_release(*data);
+	free(*data);
 }
