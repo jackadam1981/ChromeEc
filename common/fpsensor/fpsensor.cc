@@ -6,6 +6,7 @@
 #include "compile_time_macros.h"
 #include <array>
 #include <optional>
+#include <vector>
 
 extern "C" {
 #include "atomic.h"
@@ -253,6 +254,19 @@ extern "C" void fp_task(void)
 		CPRINTS("foo has no value");
 	foo = 10;
 	CPRINTS("foo: %d", *foo);
+
+	uint8_t *heap = static_cast<uint8_t *>(malloc(10));
+	heap[0] = 1;
+	heap[1] = 2;
+	heap[2] = 3;
+	CPRINTS("heap[0]: %d", heap[0]);
+	heap[0] = 5;
+	CPRINTS("heap[0]: %d", heap[0]);
+
+	std::vector<int> v = { 1, 2, 3 };
+	CPRINTS("v[0]: %d", v[0]);
+	v[0] = 5;
+	CPRINTS("v[0]: %d", v[0]);
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(get_fp_sensor_type()));
