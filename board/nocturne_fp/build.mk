@@ -57,6 +57,7 @@ test-list-y=\
        scratchpad \
        sha256 \
        sha256_unrolled \
+       shmalloc \
        static_if \
        stdlib \
        std_vector \
