@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a51caa_294b66b5",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-25T23:45:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "455d9e9d_0efe8c90",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "5827f1351ef54d36d899ee1c8827173597de1cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ceda9d7_42efc2e2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-25T20:52:34Z",
       "side": 1,
       "message": "I think you should add a before function that turns write protection off before each test, and an after function to re-enable it. Individual tests can turn it on, as needed. These tests are liable to run out of order and we want to have everything set back to the default after the suite ends.",
+      "range": {
+        "startLine": 28,
+        "startChar": 72,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "5827f1351ef54d36d899ee1c8827173597de1cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e5fe7f6_f970f415",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-25T23:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ceda9d7_42efc2e2",
       "range": {
         "startLine": 28,
         "startChar": 72,
