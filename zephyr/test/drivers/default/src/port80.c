@@ -43,17 +43,13 @@ ZTEST(port80, test_port80_write)
 	struct ec_response_port80_read response;
 	struct ec_params_port80_read params;
 	struct host_cmd_handler_args args =
-		BUILD_HOST_COMMAND_SIMPLE(EC_CMD_PORT80_READ, 1);
+		BUILD_HOST_COMMAND(EC_CMD_PORT80_READ, 1, response, params);
 
 	port80_flush();
 	port_80_write(0x12);
 	port_80_write(0x34);
 	/* Check the buffer using the host cmd */
 
-	args.params = &params;
-	args.params_size = sizeof(params);
-	args.response = &response;
-	args.response_max = sizeof(response);
 	/* Get the buffer info */
 	params.subcmd = EC_PORT80_GET_INFO;
 	zassert_ok(host_command_process(&args), NULL);
@@ -85,14 +81,10 @@ ZTEST(port80, test_port80_offset)
 	struct ec_response_port80_read response;
 	struct ec_params_port80_read params;
 	struct host_cmd_handler_args args =
-		BUILD_HOST_COMMAND_SIMPLE(EC_CMD_PORT80_READ, 1);
+		BUILD_HOST_COMMAND(EC_CMD_PORT80_READ, 1, response, params);
 
 	port80_flush();
 
-	args.params = &params;
-	args.params_size = sizeof(params);
-	args.response = &response;
-	args.response_max = sizeof(response);
 	params.subcmd = EC_PORT80_READ_BUFFER;
 	params.read_buffer.offset = 0;
 	params.read_buffer.num_entries = 0;
@@ -105,6 +97,32 @@ ZTEST(port80, test_port80_offset)
 	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM, NULL);
 }
 
+/**
+ * @brief TestPurpose: Verify port 80 reset event
+ *
+ * @details
+ * Validate that the port 80 handling works for the reset event
+ *
+ * Expected Results
+ *  - The port 80 handling detects the reset event.
+ */
+ZTEST(port80, test_port80_special)
+{
+	struct ec_response_port80_last_boot response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND_RESPONSE(EC_CMD_PORT80_READ, 0, response);
+
+	port80_flush();
+	port_80_write(0xDEAD);
+	port_80_write(0xAA); /* must be < 0x100 */
+	port_80_write(PORT_80_EVENT_RESET);
+	/* Check the buffer using the host cmd version 0*/
+
+	zassert_ok(host_command_process(&args), NULL);
+	zassert_ok(args.result, NULL);
+	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_equal(response.code, 0xAA, NULL);
+}
 /**
  * @brief Test Suite: Verifies port 80 writes.
  */
