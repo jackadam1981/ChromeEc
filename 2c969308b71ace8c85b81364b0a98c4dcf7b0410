@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cbf710f_34e5a2d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-25T09:40:20Z",
+      "side": 1,
+      "message": "add",
+      "revId": "2c969308b71ace8c85b81364b0a98c4dcf7b0410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4991ccc3_838a24cb",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-25T09:40:20Z",
+      "side": 1,
+      "message": "add parenthesis to follow the zephyr style.",
+      "revId": "2c969308b71ace8c85b81364b0a98c4dcf7b0410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
