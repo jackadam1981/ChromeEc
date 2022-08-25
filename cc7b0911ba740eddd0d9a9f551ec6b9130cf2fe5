@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1080ee6f_c36d2fa5",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-25T19:36:24Z",
+      "side": 1,
+      "message": "i think you end up with the same problem.\n\n(time % 120) \u003d\u003d 0 is only true for 1 second, but this\nroutine is called once a second. that could potentially\nhappen a little early at 119.999 or a little late 121.000.\n\nif you assume all these hooks run as soon as the second changes\nand complete quickly, this is probably OK, but that\u0027s not a good\nassumption to make in general.\n\nit\u0027s better to keep track of the timestamp of the previous log\nmessage and print the new one when \u003e\u003d 120 seconds have passed.",
+      "parentUuid": "7b31d985_8d2b722f",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "cc7b0911ba740eddd0d9a9f551ec6b9130cf2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7563b042_1a9d633b",
         "filename": "board/crota/fans.c",
         "patchSetId": 6
