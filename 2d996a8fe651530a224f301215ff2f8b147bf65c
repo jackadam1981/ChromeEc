@@ -212,6 +212,24 @@
       "parentUuid": "ab899a1a_a5793333",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f781b6_fbd603a6",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-08-25T19:48:03Z",
+      "side": 1,
+      "message": "\u003e One of the regular cases is plugging the DP hub in when system booting. A commonly seen connection type is that a HARDRESET may occurred before they successfully connected if the user didn\u0027t do it cleanly (e.g. the plug or the receptacle doesn\u0027t have a clean connection firstly). \n\nThat is not relevant here. In that \"regular case\" the hard reset will be piped through to the kernel correctly. If this is due to the receptacle not being clean or not being inserted correctly, then configuring the mux before or later will not make a difference. The hard reset will correctly unregister the partner, and the only recourse for the user is to disconnect and reconnect.\n\nIf a hard reset occurs for reasons other than that, then the discovery process will run again, and it will generate mux events, which will lead to the muxes being configured correctly again.\n\n\u003eData Reset and EnterUSB mode doesn\u0027t reset the VBUS. Data Reset only reset the Vconn, which is not fulfilling our need.\n\nAbe/Diana, is this accurate? Are there other ways to cycle VBUS? I find it *very* odd that Hard reset is the only avenue available here. I don\u0027t think that is the intended use case of hard reset and if so, we shouldn\u0027t be overloading its intention.\n\n\u003e This is not specific to our platform. Any SoC has a USB hub in the USB tree will need this process.\n\nBut not all SoCs have this (very few do, actually), so enforcing it on all those other devices is an unnecessary and avoidable overhead. If this a board specific quirk, it should be handled in board specific code.",
+      "parentUuid": "f588c847_7cf0add9",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
