@@ -22,6 +22,30 @@
       },
       "revId": "cc7b0911ba740eddd0d9a9f551ec6b9130cf2fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a1aea2_72dd3407",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-08-25T02:05:09Z",
+      "side": 1,
+      "message": "In uptrend case, when DDR temps \u003e 38, fan will spin.\nIn downtrend case, when DDR temps \u003c 37, fan will stop.\n\nSo we use the `static` to make sure the `pct` status with last second.\nAlso means when 37 or 38, the `pct` status decided by the last second is\nuptrend case or downtrend case.\nAnd means we use `static` for these cases.",
+      "parentUuid": "7563b042_1a9d633b",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "cc7b0911ba740eddd0d9a9f551ec6b9130cf2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
