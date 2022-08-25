@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e44e5c0_f31fd7d2",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "I upload new CL(3853779) for RT9490 thermistor.",
+      "parentUuid": "0c48baad_2bb05037",
+      "range": {
+        "startLine": 742,
+        "startChar": 21,
+        "endLine": 742,
+        "endChar": 49
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a50b278_8c5efedc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-24T07:30:57Z",
       "side": 1,
       "message": "past_temp",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b721994_b73aebd1",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a50b278_8c5efedc",
       "range": {
         "startLine": 27,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2756bde_b215fd6b",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b759c8d_8e27bc8b",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "855b63f8_446ee4b6",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aa960b4_80776c49",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "Yes, I need it.\nBecause this buffer store 1 to 60 seconds temperature to calculate average temperature.",
+      "parentUuid": "855b63f8_446ee4b6",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42238e30_d545501a",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-08-24T07:30:57Z",
       "side": 1,
       "message": "Can you add description for this, and also note this should be in descending order.",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e1cd45_3b286a77",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42238e30_d545501a",
       "range": {
         "startLine": 49,
         "startChar": 16,
@@ -162,6 +282,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a42752_7cbeaba2",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "291e30de_30580964",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3e7445_dcdb34c6",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50363f6c_079a5b01",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "631fa538_87038efc",
@@ -179,6 +347,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb8fb04_90a95439",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "Line 59 add the condition about update current level.",
+      "parentUuid": "631fa538_87038efc",
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdc3641d_d1845362",
@@ -192,6 +378,30 @@
       "writtenOn": "2022-08-24T07:30:57Z",
       "side": 1,
       "message": "Can we have a macro for this constant (also below).",
+      "range": {
+        "startLine": 66,
+        "startChar": 15,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8645d90c_be173e61",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc3641d_d1845362",
       "range": {
         "startLine": 66,
         "startChar": 15,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25727c62_0101b1f6",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "When current_level become to -1, it will set current_level to 0.\nRefer to line 85.",
+      "parentUuid": "a761c59a_48d360d8",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d149816_036c9675",
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a0f805_7a2a5980",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "It will not limit charge current.\nCurrent_level is 0 when system is normal.",
+      "parentUuid": "6d149816_036c9675",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f1714f6_33e3cba0",
@@ -261,6 +519,24 @@
       "writtenOn": "2022-08-24T07:30:57Z",
       "side": 1,
       "message": "Can you split the dts binding change to another CL?",
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0800f715_90d7a6e5",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-25T04:05:48Z",
+      "side": 1,
+      "message": "OK, I upload new CL(3853779) for RT9490 thermistor.",
+      "parentUuid": "6f1714f6_33e3cba0",
       "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
