@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "439cf22f_1d849fc8",
+        "filename": "zephyr/projects/skyrim/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-08-25T01:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134baa4c_75f66599",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1119ee60_a2d34ce4",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-24T16:17:52Z",
       "side": 1,
       "message": "I\u0027d like to keep it consistent between projects whether their per-project dts files live in zephyr/projects/skyrim or zephyr/projects/skyrim/\u003cboard_name\u003e/ \n\nIt looks like projects are doing both, so either way is fine as long as skyrim follows the same scheme",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f03fb3_9d3ae139",
+        "filename": "zephyr/projects/skyrim/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-08-25T01:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1119ee60_a2d34ce4",
       "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f907313_411295e6",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-08-25T01:51:31Z",
+      "side": 1,
+      "message": "hmm..., just like you said, maybe use if(DEFINED) is enough?\nand remove ifdef CONFIG_BOARD_WINTERHOLD and CONFIG_BOARD_SKYRIM, and add cros_ec_library_include_directories(include) in top line(reference herobrine)",
+      "parentUuid": "d422aa40_7af22db9",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dd9abe9_81c66317",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43368d0e_80550ae0",
+        "filename": "zephyr/projects/skyrim/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-08-25T01:51:31Z",
+      "side": 1,
+      "message": "nope, upload scripts remind me to revise winterhold new files, so I thought Skyrim maybe should change too, should I change back?",
+      "parentUuid": "9dd9abe9_81c66317",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91e3b950_60e8797c",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-08-24T16:17:52Z",
       "side": 1,
       "message": "No space in ChromiumOS and we no longer do \"all rights reserved\"",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5cdf99_e3f27f19",
+        "filename": "zephyr/projects/skyrim/winterhold/led_pins_winterhold.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2022-08-25T01:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91e3b950_60e8797c",
       "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
