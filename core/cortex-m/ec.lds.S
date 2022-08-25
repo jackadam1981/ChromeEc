@@ -493,6 +493,14 @@ SECTIONS
 	ASSERT(SIZEOF(.got) == 0, "GOT section found, but not supported.\
  Make sure that all code is compiled without -fPIC.")
 
+	.ARM.exidx :
+	{
+
+		__exidx_start = .;
+		KEEP(*(.ARM.exidx));
+		__exidx_end = .;
+	} > FLASH
+
 #ifdef CONFIG_CHIP_DATA_IN_INIT_ROM
 	/*
 	 * .data is ROM resident, last section in the EC image is the .rodata
@@ -503,7 +511,10 @@ SECTIONS
 	/*
 	 * .data is included in the EC image and copied to RAM by the loader.
 	 */
+#if 0
 	#define FLASH_USED_END	(LOADADDR(.data) + SIZEOF(.data))
+#endif
+	#define FLASH_USED_END	(LOADADDR(.ARM.exidx) + SIZEOF(.ARM.exidx))
 #endif
 
 	/*
@@ -738,5 +749,7 @@ SECTIONS
 #if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH_CROS))
 	/DISCARD/ : { *(.google) }
 #endif
+#if 0
 	/DISCARD/ : { *(.ARM.*) }
+#endif
 }
