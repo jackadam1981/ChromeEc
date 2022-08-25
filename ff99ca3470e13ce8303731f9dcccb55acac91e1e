@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b25b40_e84cdd2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2022-08-25T00:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9bd31af_14b3e92b",
+      "revId": "ff99ca3470e13ce8303731f9dcccb55acac91e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "551ff296_24d2a3a4",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-24T23:00:27Z",
       "side": 1,
       "message": "do you want to put a (Googlers only) disclaimer on this link ?",
+      "revId": "ff99ca3470e13ce8303731f9dcccb55acac91e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "453a519f_eedf4d7f",
+        "filename": "docs/ite-ec-reflashing.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2022-08-25T00:07:56Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s worth the text for a doc\u0027s self-link.  But if you prefer it, I don\u0027t mind adding it.",
+      "parentUuid": "551ff296_24d2a3a4",
       "revId": "ff99ca3470e13ce8303731f9dcccb55acac91e1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
