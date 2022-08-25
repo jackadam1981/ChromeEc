@@ -33,6 +33,24 @@
       "message": "add parenthesis to follow the zephyr style.",
       "revId": "2c969308b71ace8c85b81364b0a98c4dcf7b0410",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5dee1b_4e9710af",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-08-25T09:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4991ccc3_838a24cb",
+      "revId": "2c969308b71ace8c85b81364b0a98c4dcf7b0410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
