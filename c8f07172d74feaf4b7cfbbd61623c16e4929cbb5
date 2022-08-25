@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b992c0ad_761e17c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-25T19:39:25Z",
+      "side": 1,
+      "message": "LABEL is now a deprecated ",
+      "revId": "c8f07172d74feaf4b7cfbbd61623c16e4929cbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a245ed2c_a1372174",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-25T19:39:25Z",
+      "side": 1,
+      "message": "This property is deprecated by Zephyr. See https://github.com/zephyrproject-rtos/zephyr/pull/48873\n\nIf it\u0027s explicitly added to the associated compatible yaml it can still be used. But using it as an inherited property from `base.yaml` is deprecated.",
+      "revId": "c8f07172d74feaf4b7cfbbd61623c16e4929cbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
