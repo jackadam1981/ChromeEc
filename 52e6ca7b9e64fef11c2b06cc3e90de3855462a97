@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526c0af1_a15d9efa",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-25T09:53:37Z",
+      "side": 1,
+      "message": "If you make charger_thermistor_data[] overridable, then you don\u0027t need this to be overridable.",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 13
+      },
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "182ba39f_30194244",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-25T09:53:37Z",
+      "side": 1,
+      "message": "You could replace this with `BUILD_ASSERT( ARRAY_SIZE(charger_thermistor_data) \u003e\u003d 2)` if we will only override charger_thermistor_data.",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 30
+      },
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a73fdf_7f336afb",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-25T09:53:37Z",
+      "side": 1,
+      "message": "This can be replaced by\n```\nconst int charger_thermistor_data_size \u003d ARRAY_SIZE(ARRAY_SIZE(charger_thermistor_data));\n```",
+      "range": {
+        "startLine": 768,
+        "startChar": 20,
+        "endLine": 768,
+        "endChar": 35
+      },
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1db764_9fa6395e",
+        "filename": "zephyr/projects/corsola/adc_tentacruel.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-25T09:53:37Z",
+      "side": 1,
+      "message": "Can you separate board change to another CL?",
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
