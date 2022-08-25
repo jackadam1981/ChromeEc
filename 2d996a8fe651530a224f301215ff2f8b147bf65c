@@ -230,6 +230,24 @@
       "parentUuid": "f588c847_7cf0add9",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e489c7_73cd361d",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-25T21:17:32Z",
+      "side": 1,
+      "message": "\u003e Abe/Diana, is this accurate? Are there other ways to cycle VBUS? I find it *very* odd that Hard reset is the only avenue available here. I don\u0027t think that is the intended use case of hard reset and if so, we shouldn\u0027t be overloading its intention.\n\nPD spec options that cycle Vbus are limited to power role swap, Hard Reset, or Error Recovery (essentially going through a full disconnection).  I haven\u0027t worked on a board that needed to implement Vbus cycling before, so I can\u0027t speak to exactly which approach is usually best.  Mostly I\u0027d like to ensure our interfacing makes sense to support this case.  If it\u0027s not generally true that all virtual mux boards need to generate this event, then I\u0027d like to see it narrowed down.",
+      "parentUuid": "50f781b6_fbd603a6",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
