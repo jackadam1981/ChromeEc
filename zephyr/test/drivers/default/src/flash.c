@@ -188,6 +188,27 @@ ZTEST_USER(flash, test_hostcmd_flash_write_and_erase)
 		      "readback data not expected: 0x%x", in_buf[0]);
 }
 
+ZTEST_USER(flash, test_hostcmd_flash_info)
+{
+	struct ec_response_flash_info response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND_RESPONSE(EC_CMD_FLASH_INFO, 2, response);
+
+	/* Get the flash info. */
+	zassert_ok(host_command_process(&args), NULL);
+	zassert_equal(response.flash_size, CONFIG_FLASH_SIZE_BYTES,
+		      "response.flash_size = %d", response.flash_size);
+	zassert_equal(response.write_block_size, CONFIG_FLASH_WRITE_SIZE,
+		      "response.write_block_size = %d",
+		      response.write_block_size);
+	zassert_equal(response.erase_block_size, CONFIG_FLASH_ERASE_SIZE,
+		      "response.erase_block_size = %d",
+		      response.erase_block_size);
+	zassert_equal(response.protect_block_size, CONFIG_FLASH_BANK_SIZE,
+		      "response.protect_block_size = %d",
+		      response.protect_block_size);
+}
+
 static void flash_reset(void)
 {
 	/* Set the GPIO WP_L to default */
