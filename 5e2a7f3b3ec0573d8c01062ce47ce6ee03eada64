@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a694e6_ec3f5d5a",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-25T15:57:41Z",
+      "side": 1,
+      "message": "Just curious. Did you happen to try a sleep right here, between enabling boot0 and calling reset?",
+      "revId": "5e2a7f3b3ec0573d8c01062ce47ce6ee03eada64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
