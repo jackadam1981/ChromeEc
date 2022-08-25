@@ -16,6 +16,24 @@
       "message": "Should this line be in this CL?",
       "revId": "6d7fc18126d13e302959ced0b32656230fef6a59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d15f75_68472902",
+        "filename": "zephyr/test/drivers/host_cmd/src/battery_cut_off.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-25T13:38:55Z",
+      "side": 1,
+      "message": "Thanks for catching",
+      "parentUuid": "48ca955e_76718477",
+      "revId": "6d7fc18126d13e302959ced0b32656230fef6a59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
