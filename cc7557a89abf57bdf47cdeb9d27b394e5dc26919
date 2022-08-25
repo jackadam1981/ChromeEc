@@ -33,6 +33,24 @@
       "message": "Hey Miguel,\n\nDawid and I have been been moving all of the pcc, bc12, tcpc chips out of the the USB nodes and into the i2c nodes. Do you want me to include changes for Brya in my ppc CL?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3810131",
       "revId": "cc7557a89abf57bdf47cdeb9d27b394e5dc26919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83685107_7000b6c4",
+        "filename": "zephyr/projects/brya/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-25T22:23:39Z",
+      "side": 1,
+      "message": "That CL has merged.  Miguel - you need to add the PPC driver directly to the I2C bus, and then set the \"ppc\" property to the phandle of the PPC driver.",
+      "parentUuid": "321e2764_171f8d68",
+      "revId": "cc7557a89abf57bdf47cdeb9d27b394e5dc26919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
