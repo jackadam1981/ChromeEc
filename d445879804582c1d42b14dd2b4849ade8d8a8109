@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc23e6ae_41faccaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-25T21:38:53Z",
+      "side": 1,
+      "message": "I made a small change to isolate the double-reset to the FPMCU-specific reset function. It does have one side effect that it does a double-reset every time `ec_reset` is called, which is not strictly necessary.",
+      "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
