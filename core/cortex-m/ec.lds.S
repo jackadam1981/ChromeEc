@@ -347,6 +347,9 @@ SECTIONS
 		. = ALIGN(64);
 		KEEP(*(.google))
 #endif
+		/* Empty exception index table. */
+		__exidx_start = 0;
+		__exidx_end = 0;
 
 		. = ALIGN(4);
 	} > EC_IMAGE_VMA_MEM_REGION AT > EC_IMAGE_LMA_MEM_REGION
