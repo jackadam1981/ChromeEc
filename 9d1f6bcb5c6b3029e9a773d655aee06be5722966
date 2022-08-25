@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d301e860_bcf4e48a",
+        "filename": "zephyr/projects/skyrim/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-25T15:52:26Z",
+      "side": 1,
+      "message": "Usually we don\u0027t change copyright headers on files once they\u0027re made, but in the case it\u0027s a moving of a file into a new file so I\u0027m not totally sure what policy applies.  We\u0027ll call it okay for now",
+      "parentUuid": "43368d0e_80550ae0",
+      "revId": "9d1f6bcb5c6b3029e9a773d655aee06be5722966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91e3b950_60e8797c",
