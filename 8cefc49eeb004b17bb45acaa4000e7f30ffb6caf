@@ -52,6 +52,24 @@
       "parentUuid": "69d3004d_ea553dc9",
       "revId": "8cefc49eeb004b17bb45acaa4000e7f30ffb6caf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed80b422_736add90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-08-25T01:46:25Z",
+      "side": 1,
+      "message": "yeah, After `repo sync`, make buildall still successfully.  \n```\nbuildall completed successfully!\nSmallest free spaces in RO flash (bytes):\ngarg      :    528\nvolteer   :    544\nkodama    :    680\nSmallest free spaces in RW flash (bytes):\ngarg      :    508\nvolteer   :    700\nwormdingler:    740\nTightest boards\u0027 RW RAM images, bytes free:\nwhiskers  :    204\nminimuffin:    284\nzinger    :    284\n```",
+      "parentUuid": "684e9724_0373daa1",
+      "revId": "8cefc49eeb004b17bb45acaa4000e7f30ffb6caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
