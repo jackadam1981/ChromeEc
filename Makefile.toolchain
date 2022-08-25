@@ -197,6 +197,8 @@ CFLAGS+= -ffat-lto-objects
 CFLAGS+= -fconserve-stack
 endif
 CXXFLAGS=$(CXXFLAGS_WARN)
+CFLAGS+=-fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
+CXXFLAGS+=-fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
 CXXFLAGS+=-DPROTOBUF_INLINE_NOT_IN_HEADERS=0
 ifeq ($(USE_BUILTIN_STDLIB), 1)
 CPPFLAGS+=-DUSE_BUILTIN_STDLIB
