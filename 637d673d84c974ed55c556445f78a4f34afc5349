@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1a9f64_626104e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-08-25T20:18:34Z",
+      "side": 1,
+      "message": "For this I get:\n\n..\n    Assertion failed at CMAKE_SOURCE_DIR/src/main.c:57: ec_app_tests_test_vboot_main: (Reached unreachable code)\n...\nTEST EXECUTION FAILED\n",
+      "revId": "637d673d84c974ed55c556445f78a4f34afc5349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
