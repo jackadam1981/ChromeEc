@@ -16,6 +16,24 @@
       "message": "Do we need to wait for the timer expiration in this case?  If we\u0027re in Unattaches.SNK but the role changed to force source, that seems like it should be sufficient to force us over.  Actually should we have forced the state change when the drp_state changed to FORCE_SOURCE?",
       "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a976434b_618358b4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-25T20:36:05Z",
+      "side": 1,
+      "message": "As spec also had mentioned about Timer expiration \u0026 sink open case, i thought, it would be safer to explicity add them as well in the condition check. Also, noticed the comment in next stanza line 2312 -  /*\n*Some TCPC needs time to get the CC\n * status valid. Before that, CC open is reported by default. Wait\n * to make sure the CC is really open --*/\n\t \n\nIn Our regular scenarios, when default drp state is  PD_DRP_TOGGLE_ON, is only where UNATTACHED.SNK is supposed to be changed to UNATTACHED.SRC within the time limit.",
+      "parentUuid": "6352d170_d19852ab",
+      "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
