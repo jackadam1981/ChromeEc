@@ -16,6 +16,24 @@
       "message": "Just curious. Did you happen to try a sleep right here, between enabling boot0 and calling reset?",
       "revId": "5e2a7f3b3ec0573d8c01062ce47ce6ee03eada64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f730eb14_b9b70d99",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-25T17:27:00Z",
+      "side": 1,
+      "message": "Good question! I definitely tried to increase the duration of the sleep inside `ec_reset` without success. Maybe I also tried to add a sleep after the reset, but can\u0027t remember for sure.\n\nIs `ec_enable_boot0 \"bitbang\"` sampled when the device comes out of reset?\n\nI would be happy to do the test, but I know my device is not the best indicator of whether a workaround works or not. Last time I tried, I was able to flash always, even without any workaround.",
+      "parentUuid": "26a694e6_ec3f5d5a",
+      "revId": "5e2a7f3b3ec0573d8c01062ce47ce6ee03eada64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
