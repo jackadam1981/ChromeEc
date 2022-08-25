@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a1703d0_ccb08cb9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-25T00:07:29Z",
+      "side": 1,
+      "message": "is packed still needed?\nat this point, this is really just a change from\nsigned int to unsigned int.",
+      "range": {
+        "startLine": 591,
+        "startChar": 2,
+        "endLine": 591,
+        "endChar": 10
+      },
+      "revId": "3e569f0e963ce4a3b467c7e5739a59c278cf42aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
