@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include <stdnoreturn.h>
 
+#include "common.h"
 #include "software_panic.h"
 
 #ifdef __cplusplus
@@ -197,9 +198,9 @@ void panic_data_ccprint(const struct panic_data *pdata);
  * @param linenum	Line number where assertion happened
  */
 #ifdef CONFIG_DEBUG_ASSERT_BRIEF
-noreturn void panic_assert_fail(const char *fname, int linenum);
+test_mockable_noreturn void panic_assert_fail(const char *fname, int linenum);
 #else
-noreturn void panic_assert_fail(const char *msg, const char *func,
+test_mockable_noreturn void panic_assert_fail(const char *msg, const char *func,
 				const char *fname, int linenum);
 #endif
 
@@ -228,7 +229,7 @@ noreturn
  * Store a panic log and halt the system for a software-related reason, such as
  * stack overflow or assertion failure.
  */
-noreturn void software_panic(uint32_t reason, uint32_t info);
+test_mockable_noreturn void software_panic(uint32_t reason, uint32_t info);
 
 /**
  * Log a panic in the panic log, but don't halt the system. Normally
