@@ -266,6 +266,7 @@ class AllTests:
             TestConfig(test_name="rtc"),
             TestConfig(test_name="sha256"),
             TestConfig(test_name="sha256_unrolled"),
+            TestConfig(test_name="shmalloc"),
             TestConfig(test_name="static_if"),
             TestConfig(test_name="stdlib"),
             TestConfig(
