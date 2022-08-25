@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "080fe2b4_b1ce9eb3",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-25T21:24:12Z",
+      "side": 1,
+      "message": "BTW, since update_power_source is called on HOOK_AC_CHANGE, you don\u0027t get what you expect from this API because the charge manager wouldn\u0027t have updated the charge supplier table. So, you\u0027ll be receiving the same (previous) port when a new AC is plugged (HOOK_AC_CHANGE). Have you tried?",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 57
+      },
+      "revId": "48d86403e734839b751d10641af75dae4c2f65df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

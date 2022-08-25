@@ -319,6 +319,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "405e359f_cefa0553",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-25T21:24:12Z",
+      "side": 1,
+      "message": "Can you point me to the last patch of your chain? I would like to see what dtt_power_status would eventually look like.\n\nI still believe it\u0027s better to separate generic part and DTT part now. PCMIIW, after all, you\u0027re trying to make the EC throttle AP and update memmap when there is power source or battery soc change. That\u0027s pretty generic and we\u0027ll be using such code even for non-DTT projects.\n\nOtherwise, you would be duplicating lots of code (not to mention unit test) \nand we would be reviewing lots of duplicated code.",
+      "parentUuid": "6594d661_3a566ef8",
+      "range": {
+        "startLine": 95,
+        "startChar": 44,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc9094d4_d7d54691",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 11
@@ -354,6 +378,30 @@
       "side": 1,
       "message": "THis condition is what prevents the below activities. Unless we optimize the code in next phase, this condition check is required.",
       "parentUuid": "fc9094d4_d7d54691",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc410af9_462d995e",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-25T21:24:12Z",
+      "side": 1,
+      "message": "I meant:\n\n    if (current_port \u003d\u003d prev_charge_port \u0026\u0026\n        prev_power_source \u003d\u003d current_power_source \u0026\u0026\n        (!on_battery || BATTERY_LEVEL_LOW \u003c batt_soc))\n            return;",
+      "parentUuid": "48271dd7_0f36798d",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -497,6 +545,30 @@
       "side": 1,
       "message": "Here the throttle_ap  \u0026 updation of memmep is only  based on the condition in line number-99. So, there is no issue of repeatetion.\nif ((current_port !\u003d prev_charge_port) ||\n\t    (prev_power_source !\u003d current_power_source) ||\n\t    (on_battery \u0026\u0026 batt_soc \u003c\u003d BATTERY_LEVEL_LOW)) {",
       "parentUuid": "1519e877_7b692ecb",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d69610_05d7b8fd",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-25T21:24:12Z",
+      "side": 1,
+      "message": "When the system is running on the battery, the condition at line 99 will keep holding. More specifically, the following check will be true:\n\n    (on_battery \u0026\u0026 batt_soc \u003c\u003d BATTERY_LEVEL_LOW)\n\n(Note other two conditions don\u0027t matter because they\u0027re OR\u0027ed.) Since update_power_source will be called on every HOOK_BATTERY_SOC_CHANGE, we\u0027ll repeat throttle_ap, memmap_psrc, pd_send_host_event, unthorttle, throttle_ap, ...\n\nAre you saying it\u0027s ok to repeat?",
+      "parentUuid": "449de6a5_39bf05eb",
       "range": {
         "startLine": 117,
         "startChar": 3,
