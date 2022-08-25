@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72a33a61_c91b1c77",
+        "filename": "zephyr/test/drivers/common/src/mock_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-08-25T20:22:06Z",
+      "side": 1,
+      "message": "That seems odd to me. I think we should avoid hiding particular enums.",
+      "parentUuid": "46eaa5bb_bd656cab",
+      "revId": "25a2547a320f2dcce033bef647291538519cb19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b15bd208_cc7edba0",
         "filename": "zephyr/test/drivers/common/src/mock_power.c",
         "patchSetId": 1
