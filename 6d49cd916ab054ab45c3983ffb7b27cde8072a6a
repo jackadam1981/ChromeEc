@@ -33,6 +33,24 @@
       "message": "is it OK to do this on all SKUs?\nin the bug, the discussion was about a specific SKU.",
       "revId": "6d49cd916ab054ab45c3983ffb7b27cde8072a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4240223_bffef4ce",
+        "filename": "board/osiris/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1546732
+      },
+      "writtenOn": "2022-08-25T10:17:36Z",
+      "side": 1,
+      "message": "Hi, Caveh, \nthis is PM Richard from Quanta, and I have checked with Google TAM Paris and he mentioned QHD SKU needs to implement this and FHD is up to ODM. Then I have discussed with my team that it would be more quicker to phase in for both of QHD \u0026 FHD due to time constraint. Wonder if you could approve this if you don\u0027t have concer for both of the SKUs? Thanks.",
+      "parentUuid": "d86766e8_72e5c306",
+      "revId": "6d49cd916ab054ab45c3983ffb7b27cde8072a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
