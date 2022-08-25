@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6352d170_d19852ab",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-25T20:01:39Z",
+      "side": 1,
+      "message": "Do we need to wait for the timer expiration in this case?  If we\u0027re in Unattaches.SNK but the role changed to force source, that seems like it should be sufficient to force us over.  Actually should we have forced the state change when the drp_state changed to FORCE_SOURCE?",
+      "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
