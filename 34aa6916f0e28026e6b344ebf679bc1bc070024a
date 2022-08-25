@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7a65d1a_f04c1588",
+        "filename": "zephyr/projects/corsola/src/krabby/charger_workaround.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-25T04:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591e5bef_ffa77f25",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "34aa6916f0e28026e6b344ebf679bc1bc070024a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ebe192c_088caae2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-24T09:31:07Z",
       "side": 1,
       "message": "same comment as above.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 23
+      },
+      "revId": "34aa6916f0e28026e6b344ebf679bc1bc070024a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3454543b_f6c02e2d",
+        "filename": "zephyr/projects/corsola/src/krabby/charger_workaround.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-25T04:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ebe192c_088caae2",
       "range": {
         "startLine": 108,
         "startChar": 1,
