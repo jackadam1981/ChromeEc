@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5acc4f6f_69e20d18",
+        "filename": "include/dps.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-25T05:37:36Z",
+      "side": 1,
+      "message": "This is still needed, or the if will cause a build fail on platforms with DPS enabled.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 17
+      },
+      "revId": "18005cdbf5f876b75ad90759576feebc9e27678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
