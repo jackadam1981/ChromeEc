@@ -133,6 +133,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c27401fd_76a3f965",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-08-25T01:59:57Z",
+      "side": 1,
+      "message": "I looked at ctn730\u0027s init(), I couldn\u0027t understand why it relies on IRQ, it simply send command to ctn730 via I2C, do I miss anything? \n\nAnother thought is we can enable/disable IRQ in device driver instead of PCHG driver, so device driver can decides when the IRQ should be enabled/disabled.",
+      "parentUuid": "d6029312_cecca8cf",
+      "range": {
+        "startLine": 557,
+        "startChar": 22,
+        "endLine": 557,
+        "endChar": 26
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98985d23_0b5b26ff",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 1
