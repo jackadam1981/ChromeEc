@@ -34,6 +34,24 @@
       "parentUuid": "6352d170_d19852ab",
       "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8791d347_faaf0dbd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-25T21:32:52Z",
+      "side": 1,
+      "message": "What caused us to transition into Unattached.SNK while we were in FORCE_SOURCE? Do you have a log snippet of the TC state transitions you\u0027re seeing?",
+      "parentUuid": "a976434b_618358b4",
+      "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
