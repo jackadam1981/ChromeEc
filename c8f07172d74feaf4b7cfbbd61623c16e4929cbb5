@@ -33,6 +33,24 @@
       "message": "This property is deprecated by Zephyr. See https://github.com/zephyrproject-rtos/zephyr/pull/48873\n\nIf it\u0027s explicitly added to the associated compatible yaml it can still be used. But using it as an inherited property from `base.yaml` is deprecated.",
       "revId": "c8f07172d74feaf4b7cfbbd61623c16e4929cbb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847c10d2_2d898f70",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-08-25T21:19:57Z",
+      "side": 1,
+      "message": "this is for command in driver/i2c/i2c_shell.c: \"SHELL_CMD_REGISTER(i2c, \u0026sub_i2c_cmds, \"I2C commands\", NULL);\", what\u0027s the alternative way to pass device to this command?\nhttps://github.com/zephyrproject-rtos/zephyr/blob/7c81ee9d1833c09179985c16d7321e907de4964f/drivers/i2c/i2c_shell.c#L287",
+      "parentUuid": "a245ed2c_a1372174",
+      "revId": "c8f07172d74feaf4b7cfbbd61623c16e4929cbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
