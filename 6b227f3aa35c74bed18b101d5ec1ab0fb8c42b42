@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beee9621_351c3e36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-08-26T18:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfce471f_7a638ed2",
+      "revId": "6b227f3aa35c74bed18b101d5ec1ab0fb8c42b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecd7ff07_a36bb21c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-19T00:25:43Z",
       "side": 1,
       "message": "we use SHA256_DIGEST_SIZE in all comparisons below. shall those also be `sizeof(check_header)` in case we change the header in the future?",
+      "range": {
+        "startLine": 574,
+        "startChar": 18,
+        "endLine": 574,
+        "endChar": 38
+      },
+      "revId": "6b227f3aa35c74bed18b101d5ec1ab0fb8c42b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db259fe_ec9f2f12",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-08-26T18:20:05Z",
+      "side": 1,
+      "message": "changed to compile-time check.",
+      "parentUuid": "ecd7ff07_a36bb21c",
       "range": {
         "startLine": 574,
         "startChar": 18,
