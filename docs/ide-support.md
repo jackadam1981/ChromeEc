@@ -69,6 +69,10 @@ ChromeOS source files.
 Support for `platform/ec` is not available out of the box (yet), but can be
 manually enabled following these steps.
 
+### Prerequisites
+
+Install CrOS IDE following the [quickstart guide]
+
 <!-- mdformat off(b/139308852) -->
 *** note
 NOTE: CrOS IDE uses the VSCode extension `clangd` for code completion and
@@ -77,37 +81,22 @@ navigation. The installation of CrOS IDE disables the built-in
 ***
 <!-- mdformat on -->
 
-### Prerequisites
-
-1.  Install CrOS IDE following the [quickstart guide]
-1.  Install `bear`, a utility to generate the compilation database
-
-    ```
-    (chroot) $ sudo emerge bear
-    ```
-
-[quickstart guide]: https://chromium.googlesource.com/chromiumos/chromite/+/main/ide_tooling/docs/quickstart.md
-
 ### Configure EC Board
 
-1.  Build the image and create new compile_commands.json using `bear`
+1.  Create a `compile_commands.json` for the current build configuration:
 
     ```
     (chroot) $ cd ~/chromiumos/src/platform/ec
     export BOARD=bloonchipper
-    make clean BOARD=${BOARD}
-    bear make -j BOARD=${BOARD}
-    mv compile_commands.json compile_commands_inside_chroot.json
+    make BOARD=${BOARD} ide-compile-cmds
     ```
 
-1.  Generate the new compile_commands.json (use the absolute path outside chroot
-    as first argument)
+1.  Copy the new `compile_commands.json` in the root of the EC repository:
 
     ```bash
-    (chroot) $ cd ~/chromiumos/chromite/ide_tooling/scripts
-    python compdb_no_chroot.py ${EXTERNAL_TRUNK_PATH} \
-      < ~/chromiumos/src/platform/ec/compile_commands_inside_chroot.json \
-      > ~/chromiumos/src/platform/ec/compile_commands.json
+    mv build/${BOARD}/RW/compile_commands.json .
     ```
-    The command will overwrite the file `compile_commands.json`, if it already
-    exists.
+
+Note: a single `compile_commands.json` can only cover one specific build
+configuration.  When this changes (e.g. build targets a different board), repeat
+steps 1 and 2 to generate a new file.
