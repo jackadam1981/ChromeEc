@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de8cdfa_3728893d",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-26T19:12:02Z",
+      "side": 1,
+      "message": "If you think this might be useful it other tests, then it would be good to move this to utils.c.",
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46e3cdb_bf813903",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-26T19:12:02Z",
+      "side": 1,
+      "message": "I think you\u0027re missing a word.",
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e061992_02d87962",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-26T19:12:02Z",
+      "side": 1,
+      "message": "Nit: Personally, I\u0027d loosen checks like this even further and just do a `zassert_not_equal(..., EC_SUCCESS)`.",
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a137f0_b1b8d62d",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-26T19:12:02Z",
+      "side": 1,
+      "message": "Nit: \"_before\" is idiomatic.",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 41
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
