@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3cacb7_41d5481f",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T08:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd3d6520_b6dd6b48",
+      "revId": "3bde94eca5fff5014ca2c210f93d82fcaded0b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e4926d1_71d347cd",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-25T09:39:18Z",
       "side": 1,
       "message": "This should be `avg_temp \u003d temp_sum / buff_ptr;` if the sample count is less than TEMP_BUFF_SIZE",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "3bde94eca5fff5014ca2c210f93d82fcaded0b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7823fa_70ef4217",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T08:58:44Z",
+      "side": 1,
+      "message": "This is calculate one minute average temp, so it should divide by 60.",
+      "parentUuid": "8e4926d1_71d347cd",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f815b4a1_523fa1f9",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T08:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6851f314_11f31990",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "3bde94eca5fff5014ca2c210f93d82fcaded0b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90cb9c5f_db251d27",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-08-25T09:39:18Z",
       "side": 1,
       "message": "This is not needed if you have guarded the `current_level !\u003d 0` at line 77.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "3bde94eca5fff5014ca2c210f93d82fcaded0b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c324cd90_94a22029",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T08:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90cb9c5f_db251d27",
       "range": {
         "startLine": 89,
         "startChar": 0,

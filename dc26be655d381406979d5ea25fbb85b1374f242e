@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48eb58eb_1ca37c12",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T08:58:44Z",
+      "side": 1,
+      "message": "Our thermal team request to calculate one minute average temp. This way was verified pass by thermal team.",
+      "parentUuid": "34685b83_fa90785c",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42238e30_d545501a",
@@ -497,6 +521,30 @@
       "side": 1,
       "message": "I understand `current_level` will be reset to 0 eventually, but they will be used from the different places.\n\n`charger_profile_override` is called in the `charger_task`, and `current_update` is called in the `hook_task`.  Those function calls could be interleaved, and preempted. So, there\u0027s a chance that the current_level is -1 and will be touched by charger_task hence caused underflow.\n\nIt\u0027s fixed now by line:77\u0027s guard, and you could drop \n\n```\n\tif (current_level \u003c 0)\n\t\tcurrent_level \u003d 0;\n```.",
       "parentUuid": "25727c62_0101b1f6",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "dc26be655d381406979d5ea25fbb85b1374f242e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1539ae2_7acfa338",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T08:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2eac827_a6cd82c9",
       "range": {
         "startLine": 78,
         "startChar": 0,
