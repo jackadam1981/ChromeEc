@@ -659,11 +659,12 @@ int bmi_get_offset(const struct motion_sensor_t *s,
 }
 
 #ifdef CONFIG_BODY_DETECTION
-int bmi_get_rms_noise(const struct motion_sensor_t *s)
+int bmi_get_rms_noise(const struct motion_sensor_t *accel,
+		      int rms_noise_100hz_mg)
 {
-	int ret;
-	fp_t noise_100hz, rate, sqrt_rate_ratio;
+	fp_t rate, sqrt_rate_ratio;
 
+<<<<<<< HEAD   (7c92cc Pazquel360: Modify motion sensor matrix)
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
 		/* change unit of ODR to Hz to prevent INT_TO_FP() overflow */
@@ -683,6 +684,18 @@ int bmi_get_rms_noise(const struct motion_sensor_t *s)
 		return 0;
 	}
 	return ret;
+=======
+	/* change unit of ODR to Hz to prevent INT_TO_FP() overflow */
+	rate = INT_TO_FP(bmi_get_data_rate(accel) / 1000);
+	/*
+	 * Since the noise is proportional to sqrt(ODR) in BMI, and we
+	 * have rms noise in 100 Hz, we multiply it with the sqrt(ratio
+	 * of ODR to 100Hz) to get current noise.
+	 */
+	sqrt_rate_ratio = fp_sqrtf(fp_div(rate, INT_TO_FP(BMI_ACCEL_100HZ)));
+	return FP_TO_INT(
+		fp_mul(INT_TO_FP(rms_noise_100hz_mg), sqrt_rate_ratio));
+>>>>>>> CHANGE (c23f9e driver: bmi: Enable On/Off body detection on all BMI IMU)
 }
 #endif
 
