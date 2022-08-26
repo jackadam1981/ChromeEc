@@ -33,6 +33,23 @@
       "message": "Hi Leo,\n\nCould you check the error here ?\n```\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/driver/accelgyro_bmi3xx.c:545:2: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:}\nERROR:root: ^\nbuild_api: Unhandled exception:\nTraceback (most recent call last):\n``\nSeems that you\u0027ll need clang-format it to get through format check.",
       "revId": "205c6850f99c24112f5d41751b522cde380540b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a0e095_b4a03521",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2022-08-26T13:15:27Z",
+      "side": 1,
+      "message": "Hi Leo,\nclang-format was not happy with this blank line, this would cause the build failure.",
+      "revId": "205c6850f99c24112f5d41751b522cde380540b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
