@@ -22,6 +22,30 @@
       },
       "revId": "7e36a6c6c5c45a0db812ae033b86e0e738d8308d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54527e22_db94ae5b",
+        "filename": "zephyr/projects/corsola/i2c_krabby.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-26T06:11:52Z",
+      "side": 1,
+      "message": "Ohh, thanks for your vigilance. I feel like I checked it 100 times but there was still a mistake.",
+      "parentUuid": "85ba1a7b_41629070",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "7e36a6c6c5c45a0db812ae033b86e0e738d8308d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
