@@ -88,6 +88,24 @@
       "parentUuid": "c7a571d2_80076bd9",
       "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ccfefa_cee5962f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-26T14:11:32Z",
+      "side": 1,
+      "message": "The scenario where specific board\u0027s(RVP\u0027s) drop state as FORCE_SOURCE is because the specific RVP uses TCPC chip combination of ITE \u0026 FUSB based , where one chip supports  auto dual role and other doesn\u0027t , which prevents ports to enter low power mode when exiting from unttached sink or src. If we force drop state to stop toggling, the default role state becomes unattched sink, which will make bus powered devices to go undetected. This is where, we forced the drop state to src. But as the port supports both sink and source , based on the device connected, irrespective of drop state as src,  it will swap the roles in attached case of a self powered device like tbt(the example log which i shared above). \nIn very general scenarios, where if specific port doesn\u0027t support sink, setting drp state as FORCE_SRC would ensure that role swap to snk doesn\u0027t happen. I think, your point that role swap doesnt happens becomes valid here . i think , the scenario i have faced  is different from it , as port is expected to support both snk \u0026 source , eventhough drop state is forced to be src.",
+      "parentUuid": "c10a1723_e5a0e8ce",
+      "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
