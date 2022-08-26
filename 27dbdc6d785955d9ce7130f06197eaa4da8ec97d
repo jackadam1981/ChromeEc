@@ -134,6 +134,30 @@
       },
       "revId": "27dbdc6d785955d9ce7130f06197eaa4da8ec97d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "288ba614_d1fdf950",
+        "filename": "Makefile.ide",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-26T18:55:23Z",
+      "side": 1,
+      "message": "This is awesome! I cherry-picked this on top of main and used it to generate a new `compile_commands.json`.\n\nFrom my experiments, everything worked out of the box without further changes to the json file. I also monitored the output of `clangd` and didn\u0027t see any error.",
+      "parentUuid": "a4e4f3dd_3762ed19",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "27dbdc6d785955d9ce7130f06197eaa4da8ec97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
