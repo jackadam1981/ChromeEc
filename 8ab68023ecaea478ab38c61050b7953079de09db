@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba2be74_9dfea482",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T07:55:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e0af0d8_049248ba",
+      "range": {
+        "startLine": 15,
+        "startChar": 33,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "8ab68023ecaea478ab38c61050b7953079de09db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa3f2caa_8bbc7392",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-24T13:19:47Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "8ab68023ecaea478ab38c61050b7953079de09db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c254e3_c3113c83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T07:55:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa3f2caa_8bbc7392",
       "range": {
         "startLine": 18,
         "startChar": 3,
@@ -83,6 +131,54 @@
       "writtenOn": "2022-08-24T13:19:47Z",
       "side": 1,
       "message": "same here, irrelevant test",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "8ab68023ecaea478ab38c61050b7953079de09db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8984a76b_8145cf34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T07:55:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a68bbd1_5b03dbbc",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "8ab68023ecaea478ab38c61050b7953079de09db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbdf059_bbdb9bb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T07:55:52Z",
+      "side": 1,
+      "message": "Those patches are the same with current 8186 scp blob.\n\nBut I think we need to test kukui scp.",
+      "parentUuid": "123b9e03_20feedbb",
       "range": {
         "startLine": 21,
         "startChar": 5,
