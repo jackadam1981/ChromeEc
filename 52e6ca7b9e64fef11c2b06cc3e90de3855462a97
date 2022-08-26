@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0487f414_64266ef8",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T02:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "526c0af1_a15d9efa",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 13
+      },
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "182ba39f_30194244",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-25T09:53:37Z",
       "side": 1,
       "message": "You could replace this with `BUILD_ASSERT( ARRAY_SIZE(charger_thermistor_data) \u003e\u003d 2)` if we will only override charger_thermistor_data.",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 30
+      },
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6117939d_d83b5b19",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T02:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "182ba39f_30194244",
       "range": {
         "startLine": 760,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dfb9ffd_a203fb46",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T02:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a73fdf_7f336afb",
+      "range": {
+        "startLine": 768,
+        "startChar": 20,
+        "endLine": 768,
+        "endChar": 35
+      },
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f1db764_9fa6395e",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-08-25T09:53:37Z",
       "side": 1,
       "message": "Can you separate board change to another CL?",
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dae4908_595b9767",
+        "filename": "zephyr/projects/corsola/adc_tentacruel.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-26T02:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f1db764_9fa6395e",
       "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
