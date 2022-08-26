@@ -33,6 +33,24 @@
       "message": "From my observation, flashing works always when I do the second reset here (after configuring UART).",
       "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc4667c_fffefd86",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-26T15:20:35Z",
+      "side": 1,
+      "message": "Patryk, can you CR+2 this CL? Since I uploaded a newer version and Andrea is the original owner, someone else has to provide \"Code-Owners\" approval.",
+      "parentUuid": "4ae8f080_9428fec5",
+      "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
