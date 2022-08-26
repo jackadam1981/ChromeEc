@@ -87,11 +87,11 @@ extern "C" {
 
 #define TEST_ASSERT_ARRAY_EQ(s, d, n)                                        \
 	do {                                                                 \
-		int __i;                                                     \
+		typeof(n) __i;                                               \
 		for (__i = 0; __i < n; ++__i)                                \
 			if ((s)[__i] != (d)[__i]) {                          \
 				ccprintf("%s:%d: ASSERT_ARRAY_EQ failed at " \
-					 "index=%d: %d != %d\n",             \
+					 "index=%ld: %d != %u\n",            \
 					 __FILE__, __LINE__, __i,            \
 					 (int)(s)[__i], (int)(d)[__i]);      \
 				task_dump_trace();                           \
