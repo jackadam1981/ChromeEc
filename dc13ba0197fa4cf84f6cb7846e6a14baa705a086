@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9db70f9_0407cac8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T07:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22985a8e_be119cbb",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3edf1cc_45f0c176",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T07:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1b01b62_c5292a66",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03007988_a63cf570",
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a500db_66556d48",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T07:57:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c673ebda_d2eaffa8",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 38
+      },
+      "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d6e0002_9cd2e929",
@@ -142,6 +214,24 @@
       "side": 1,
       "message": "hmm.. Not intended.\n\ninterrupt_enable() should be after dsb function. the changes are not correct in cpu_invalidate_dcache_range()",
       "parentUuid": "8d6e0002_9cd2e929",
+      "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "529d3e9b_f06eafdf",
+        "filename": "chip/mt_scp/mt818x/memmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T07:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7562ba8_ee33928c",
       "revId": "dc13ba0197fa4cf84f6cb7846e6a14baa705a086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
