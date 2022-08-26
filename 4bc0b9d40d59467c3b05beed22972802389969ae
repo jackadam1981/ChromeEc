@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b124faa1_0a23c456",
+        "filename": "zephyr/test/drivers/default/src/power_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-26T19:41:12Z",
+      "side": 1,
+      "message": "Can you verify something from the output also?  Use shell_backend_dummy_get_output() to get the console output.",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 0
+      },
+      "revId": "4bc0b9d40d59467c3b05beed22972802389969ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
