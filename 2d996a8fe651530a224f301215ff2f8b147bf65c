@@ -248,6 +248,24 @@
       "parentUuid": "50f781b6_fbd603a6",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "834dbbe1_b0bf1f05",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-26T17:15:47Z",
+      "side": 1,
+      "message": "\u003e \u003e Also, a question which wasn\u0027t answered in the bug (https://b.corp.google.com/issues/224471170#comment12):\n\u003e \u003e If you have to cycle VBUS, why aren\u0027t you doing just that, instead of sending out a hard reset? As Abe mentioned, Data Reset or EnterUSB would also suffice.\n\u003e Data Reset and EnterUSB mode doesn\u0027t reset the VBUS. Data Reset only reset the Vconn, which is not fulfilling our need.\n\nIt\u0027s been a little while since I made this comment, so I might be forgetting some context. In retrospect, it looks like I misunderstood some stuff in the original comment.\n\nThe hub apparently cycles VBUS on its Type-A DFPs force enumeration of its downstream USB devices upon connection to the host, in compliance with the USB 3.2 spec. This particular hub does this by issuing a Hard Reset on its UFP, forcing the host to cycle VBUS for the entire network.\n\nMy point was that a UFP Hard Reset is massive overkill in this situation. The hub could just directly cycle VBUS on the affected Type-A ports, which the host would perceive as a hotplug event. I think it could also issue a Data Reset on its UFP to prompt the host to reestablish a USB connection, although it seems like that\u0027s not what the 3.2 spec recommends. In retrospect, it wouldn\u0027t make sense for the hub to issue Enter USB on its UFP. The host would be the one that does that, if the connection supports USB4.",
+      "parentUuid": "c7e489c7_73cd361d",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
