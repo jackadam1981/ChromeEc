@@ -43,6 +43,7 @@ static int test_port;
 static enum pd_dpm_request request;
 static int max_volt;
 static int comm_enable;
+static int pd_suspended;
 static int dev_info;
 static int vdm_cmd;
 static int vdm_count;
@@ -178,6 +179,12 @@ void pd_comm_enable(int port, int enable)
 {
 	test_port = port;
 	comm_enable = enable;
+}
+
+void pd_set_suspend(int port, int enable)
+{
+	test_port = port;
+	pd_suspended = enable;
 }
 
 void tc_print_dev_info(int port)
