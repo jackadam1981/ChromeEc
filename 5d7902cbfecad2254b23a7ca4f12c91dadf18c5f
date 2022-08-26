@@ -106,6 +106,24 @@
       "parentUuid": "c10a1723_e5a0e8ce",
       "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabfcdc2_32dfefdc",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-26T14:30:07Z",
+      "side": 1,
+      "message": "Actually , your suggestion to chnge state to unattached.src directly, while exiting from attched.SNK also makes sense, which can let us jump to unattched.src 1 step earlier. But i dint see any such reference in pd spec , but noticed the reference of  a condition jump to unattached.src from unattached.sink\u0027s reference in session 4.5.2.2.3.2 ( exiting from unattached.sink). So , i was thinking ,unttached.snk is the right place to chnge to unattched src . Also am wondering, if we place the condition to switch to unattched.src directly from attched.sink, wouldn\u0027t it be violating from spec? Anywz, let me know your thoughts.",
+      "parentUuid": "66ccfefa_cee5962f",
+      "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
