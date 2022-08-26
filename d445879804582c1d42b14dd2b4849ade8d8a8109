@@ -51,6 +51,24 @@
       "parentUuid": "4ae8f080_9428fec5",
       "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7deea0_01e520c2",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-26T16:12:52Z",
+      "side": 1,
+      "message": "\u003e Patryk, can you CR+2 this CL?\n\nOkay but does it fix the problem? From my observation a second reboot should happen after configuring UART. Are you sure that with this patch flashing is working correctly? I see in previous comments that there was a problem with that.",
+      "parentUuid": "8fc4667c_fffefd86",
+      "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
