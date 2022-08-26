@@ -105,6 +105,24 @@
       "parentUuid": "8885a434_70ffb96f",
       "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3039508a_84462ac6",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-26T18:37:51Z",
+      "side": 1,
+      "message": "To be honest, I still don\u0027t know exactly what the original problem is.\n\nIs the latest patchset from Tom working okay as well in your environment?",
+      "parentUuid": "8885a434_70ffb96f",
+      "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
