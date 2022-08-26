@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75047d7d_f8783308",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-26T19:16:03Z",
+      "side": 1,
+      "message": "\"Failed to see nothing\"?",
+      "range": {
+        "startLine": 58,
+        "startChar": 37,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "706df291_582b2477",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-26T19:16:03Z",
+      "side": 1,
+      "message": "Should this also be part of the \"after\" action?  I\u0027m not sure what happens to the state of emulator if one of the zassert tests fail before this point.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e061992_02d87962",
         "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
         "patchSetId": 1
@@ -48,6 +94,52 @@
       "writtenOn": "2022-08-26T19:12:02Z",
       "side": 1,
       "message": "Nit: Personally, I\u0027d loosen checks like this even further and just do a `zassert_not_equal(..., EC_SUCCESS)`.",
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ec25f9_47734f09",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-26T19:16:03Z",
+      "side": 1,
+      "message": "Don\u0027t use emul_get_binding() requires the label property.\n\nUse `EMUL_DT_GET(DT_NODELABEL(tcpci_emul))` instead.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 55
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ca8c2f_d5274a9e",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-26T19:16:03Z",
+      "side": 1,
+      "message": "`EMUL_DT_GET(DT_NODELABEL(isl923x_emul))`",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 56
+      },
       "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
