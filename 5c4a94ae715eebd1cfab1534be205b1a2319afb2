@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2e2cbb_fd23b9a7",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/hcdebug.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-26T19:27:28Z",
+      "side": 1,
+      "message": "Nit: Personally, I\u0027d do `zassert_not_equal(..., EC_SUCCESS, ...)`. Hypothetically, if somebody changed the error codes, I don\u0027t think we care a ton.",
+      "revId": "5c4a94ae715eebd1cfab1534be205b1a2319afb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
