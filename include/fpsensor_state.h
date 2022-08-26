@@ -11,11 +11,17 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "atomic.h"
 #include "common.h"
 #include "ec_commands.h"
 #include "link_defs.h"
 #include "timer.h"
+#ifdef __cplusplus
+}
+#endif
 
 #include "driver/fingerprint/fpsensor.h"
 
@@ -81,7 +87,11 @@ struct positive_match_secret_state {
 extern struct positive_match_secret_state positive_match_secret_state;
 
 /* Simulation for unit tests. */
-void fp_task_simulate(void);
+#ifdef __cplusplus
+extern "C"
+#endif
+	void
+	fp_task_simulate(void);
 
 /*
  * Clear one fingerprint template.
