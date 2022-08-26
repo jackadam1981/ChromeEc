@@ -30,7 +30,12 @@ noreturn void panic_assert_fail(const char *fname, int linenum);
 
 #else /* !CONFIG_DEBUG_ASSERT_BRIEF */
 
-noreturn void panic_assert_fail(const char *msg, const char *func,
+#ifdef __cplusplus
+[[noreturn]]
+#else
+noreturn
+#endif
+void panic_assert_fail(const char *msg, const char *func,
 				const char *fname, int linenum);
 #define ASSERT(cond)                                                 \
 	do {                                                         \
