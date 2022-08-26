@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "067da78b_ef7be65e",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T19:49:19Z",
+      "side": 1,
+      "message": "I\u0027d prefer we deprecate this command long-run, so I\u0027m limiting it to just this file",
+      "parentUuid": "8de8cdfa_3728893d",
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c46e3cdb_bf813903",
@@ -58,6 +76,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f52148a_f51c7b77",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75047d7d_f8783308",
+      "range": {
+        "startLine": 58,
+        "startChar": 37,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fc6548c_555bb786",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c46e3cdb_bf813903",
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "706df291_582b2477",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-08-26T19:16:03Z",
       "side": 1,
       "message": "Should this also be part of the \"after\" action?  I\u0027m not sure what happens to the state of emulator if one of the zassert tests fail before this point.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dfa623d_0577936c",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T19:49:19Z",
+      "side": 1,
+      "message": "Oh, interesting. I\u0027d assumed that the \"after\" functions were just to ensure all tests cleaned up when they all shared a similar \"before\".  I\u0027ll add an \"after\" for this",
+      "parentUuid": "706df291_582b2477",
       "range": {
         "startLine": 96,
         "startChar": 1,
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1818ec2_1b0aa08b",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T19:49:19Z",
+      "side": 1,
+      "message": "Since it\u0027s an API that goes to the AP, I think this is a reasonable level of test since the AP could be expecting a specific return value",
+      "parentUuid": "4e061992_02d87962",
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ec25f9_47734f09",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-08-26T19:16:03Z",
       "side": 1,
       "message": "Don\u0027t use emul_get_binding() requires the label property.\n\nUse `EMUL_DT_GET(DT_NODELABEL(tcpci_emul))` instead.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 55
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3640ad2b_d2a49af8",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ec25f9_47734f09",
       "range": {
         "startLine": 122,
         "startChar": 0,
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee6610af_fe630858",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7ca8c2f_d5274a9e",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 56
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9a137f0_b1b8d62d",
@@ -157,6 +307,30 @@
       "writtenOn": "2022-08-26T19:12:02Z",
       "side": 1,
       "message": "Nit: \"_before\" is idiomatic.",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 41
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e29528_4525ad04",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T19:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9a137f0_b1b8d62d",
       "range": {
         "startLine": 132,
         "startChar": 12,
