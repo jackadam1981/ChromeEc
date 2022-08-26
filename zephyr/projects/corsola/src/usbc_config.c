@@ -8,7 +8,6 @@
 #include <zephyr/drivers/gpio.h>
 #include <ap_power/ap_power.h>
 
-#include "adc.h"
 #include "baseboard_usbc_config.h"
 #include "button.h"
 #include "charger.h"
