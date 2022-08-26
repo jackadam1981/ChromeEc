@@ -707,6 +707,24 @@ tcpci_partner_common_vdm_handler(struct tcpci_partner_data *data,
 			}
 			tcpci_partner_send_data_msg(data, PD_DATA_VENDOR_DEF,
 						    &response_vdm_header, 1, 0);
+		} else {
+			uint32_t response_vdm_header;
+
+			/*
+			 * Assume we should ACK whatever SVID this is if we had
+			 * an enter
+			 */
+			if (data->mode_enter_attempts) {
+				response_vdm_header = VDO(
+					PD_VDO_VID(vdm_header), true,
+					VDO_CMDT(CMDT_RSP_ACK) | CMD_EXIT_MODE);
+			} else {
+				response_vdm_header = VDO(
+					PD_VDO_VID(vdm_header), true,
+					VDO_CMDT(CMDT_RSP_NAK) | CMD_EXIT_MODE);
+			}
+			tcpci_partner_send_data_msg(data, PD_DATA_VENDOR_DEF,
+						    &response_vdm_header, 1, 0);
 		}
 		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 	case CMD_DP_STATUS:
