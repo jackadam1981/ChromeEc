@@ -70,6 +70,30 @@
       },
       "revId": "96f31383a88147cd17738293b15baec9aac59ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "526765df_3052a818",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1536982
+      },
+      "writtenOn": "2022-08-26T02:24:08Z",
+      "side": 1,
+      "message": "Battery has been removed.",
+      "parentUuid": "c654953c_cc08e71e",
+      "range": {
+        "startLine": 466,
+        "startChar": 2,
+        "endLine": 466,
+        "endChar": 30
+      },
+      "revId": "96f31383a88147cd17738293b15baec9aac59ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
