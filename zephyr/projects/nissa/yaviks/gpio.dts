@@ -138,9 +138,6 @@
 			gpios = <&gpioe 2 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
-		gpio_hdmi_sel: hdmi_sel {
-			gpios = <&gpioc 6 GPIO_OUTPUT>;
-		};
 		gpio_imvp91_vrrdy_od: imvp91_vrrdy_od {
 			gpios = <&gpioj 4 GPIO_INPUT>;
 			no-auto-init;
