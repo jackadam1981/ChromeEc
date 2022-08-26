@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f92bb4cb_676d09ee",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-26T07:01:00Z",
+      "side": 1,
+      "message": "Ah.. I meant address Yilun\u0027s comment and then merge this CL.",
+      "parentUuid": "a1c116b2_e75016e1",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 749,
+        "endChar": 13
+      },
+      "revId": "52e6ca7b9e64fef11c2b06cc3e90de3855462a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "182ba39f_30194244",
         "filename": "driver/charger/rt9490.c",
         "patchSetId": 2
