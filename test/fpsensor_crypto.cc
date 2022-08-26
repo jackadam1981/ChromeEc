@@ -5,11 +5,15 @@
 
 #include <stdbool.h>
 
+#include "compile_time_macros.h"
+
+#include "fpsensor_crypto.h"
+#include "fpsensor_state.h"
+
+extern "C" {
 #include "builtin/assert.h"
 #include "common.h"
 #include "ec_commands.h"
-#include "fpsensor_crypto.h"
-#include "fpsensor_state.h"
 #include "mock/fpsensor_crypto_mock.h"
 #include "mock/fpsensor_state_mock.h"
 #include "mock/rollback_mock.h"
@@ -18,6 +22,8 @@
 #include "util.h"
 
 extern int get_ikm(uint8_t *ikm);
+}
+
 
 static const uint8_t fake_positive_match_salt[] = {
 	0x04, 0x1f, 0x5a, 0xac, 0x5f, 0x79, 0x10, 0xaf,
@@ -585,7 +591,9 @@ test_static int test_enable_positive_match_secret(void)
 	struct positive_match_secret_state dumb_state = {
 		.template_matched = FP_NO_SUCH_TEMPLATE,
 		.readable = false,
-		.deadline.val = 0,
+		.deadline {
+			.val = 0,
+		}
 	};
 
 	TEST_ASSERT(test_enable_positive_match_secret_once(&dumb_state) ==
@@ -606,7 +614,9 @@ test_static int test_disable_positive_match_secret(void)
 	struct positive_match_secret_state dumb_state = {
 		.template_matched = FP_NO_SUCH_TEMPLATE,
 		.readable = false,
-		.deadline.val = 0,
+		.deadline {
+			.val = 0,
+		}
 	};
 
 	TEST_ASSERT(test_enable_positive_match_secret_once(&dumb_state) ==
