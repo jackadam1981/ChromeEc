@@ -68,6 +68,24 @@
       "parentUuid": "a245ed2c_a1372174",
       "revId": "c8f07172d74feaf4b7cfbbd61623c16e4929cbb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "504f5b83_33eb9df9",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_npcx/mtlrvp_npcx.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-26T19:59:21Z",
+      "side": 1,
+      "message": "Use of labels for shell commands is still permitted.  We don\u0027t yet have another mechanism to provide a friendly name for the I2C buses and GPIOs.",
+      "parentUuid": "847c10d2_2d898f70",
+      "revId": "c8f07172d74feaf4b7cfbbd61623c16e4929cbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
