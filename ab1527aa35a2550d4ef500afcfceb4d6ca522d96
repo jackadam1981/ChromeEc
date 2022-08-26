@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83c19ad_c3081fd6",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-26T20:48:57Z",
+      "side": 1,
+      "message": "this makes assumptions about how often this function is called.\nit\u0027s better check the actual time. you could use one of the\nhelper functions like timestamp_expired().",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "ab1527aa35a2550d4ef500afcfceb4d6ca522d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
