@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "9c9d7cd705051453a81e0ae4a02b012ff8e80129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a77a3b_a2f6506d",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1533827
+      },
+      "writtenOn": "2022-08-26T23:57:15Z",
+      "side": 1,
+      "message": "This is currently a failing test. \n\nCurrently `powerbtn` calls `power_button_simulate_press(ms)`, which checks that `ms` is a positive value. But the console command that wraps this ought to indicate to the user that their argument is non-nonsensical.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 68
+      },
+      "revId": "9c9d7cd705051453a81e0ae4a02b012ff8e80129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
