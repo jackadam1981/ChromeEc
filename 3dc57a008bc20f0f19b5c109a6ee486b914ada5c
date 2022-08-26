@@ -51,6 +51,24 @@
       "message": "Since you moved the paths around, let\u0027s not submit this until we see it working on the coverage branch on gitlab.",
       "revId": "3dc57a008bc20f0f19b5c109a6ee486b914ada5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b009236_d6452cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-08-26T21:13:36Z",
+      "side": 1,
+      "message": "Validated in pipeline https://gitlab.com/zephyr-ec/ec/-/pipelines/624148780",
+      "parentUuid": "835f90fd_dd71c401",
+      "revId": "3dc57a008bc20f0f19b5c109a6ee486b914ada5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
