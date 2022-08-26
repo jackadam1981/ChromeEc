@@ -70,6 +70,24 @@
       "parentUuid": "8791d347_faaf0dbd",
       "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10a1723_e5a0e8ce",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-26T13:51:18Z",
+      "side": 1,
+      "message": "Thank you for the clarification! \n\nThese are my thoughts: \n- If we\u0027re in force source, we probably shouldn\u0027t be allowing the swap to sink.  If you know of any reason you want to support swapping to sink for your use-case, then\n- When exiting from Attached.SNK, we should check FORCE_SOURCE and know that we need to be Unattached.SRC",
+      "parentUuid": "c7a571d2_80076bd9",
+      "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
