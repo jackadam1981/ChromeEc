@@ -16,6 +16,23 @@
       "message": "I made a small change to isolate the double-reset to the FPMCU-specific reset function. It does have one side effect that it does a double-reset every time `ec_reset` is called, which is not strictly necessary.",
       "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae8f080_9428fec5",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-26T06:27:21Z",
+      "side": 1,
+      "message": "From my observation, flashing works always when I do the second reset here (after configuring UART).",
+      "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
