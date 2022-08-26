@@ -87,6 +87,24 @@
       "parentUuid": "1a7deea0_01e520c2",
       "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f61a3b0_ccc6eb8f",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-26T18:36:54Z",
+      "side": 1,
+      "message": "Oh, I see. I misunderstood your comment.\n\nPatchset 6 works 100% of the time for me. Are you saying it does not work for you?",
+      "parentUuid": "8885a434_70ffb96f",
+      "revId": "d445879804582c1d42b14dd2b4849ade8d8a8109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
