@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b118305b_7fd7312e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-08-26T10:52:19Z",
+      "side": 1,
+      "message": "Intention of this line is to give clue on what code change is made and not about issue. May be reframe to something like-\nusbc: Set PD_DISC_FAIL and send notify event on DR Swap fail \n\nDetails of issue and it\u0027s resolution you may add in below paragraph.",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "9ac4a8db4425efea16d5c2f2ecebedc2abbdb146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
