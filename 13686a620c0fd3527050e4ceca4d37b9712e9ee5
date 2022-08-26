@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7c5323_0ae7d2b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 79
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-26T20:37:37Z",
+      "side": 1,
+      "message": "I don\u0027t think this variable can ever become negative, but out of curiosity does the compiler flags any issue with [this assignment](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/common/fpsensor/fpsensor.c;l\u003d381;drc\u003d738de2b575de93f71f3a95f9294b9006f4f7b008)?\n\nThe variable in the template is still declared as `uint16_t`.",
+      "revId": "13686a620c0fd3527050e4ceca4d37b9712e9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
