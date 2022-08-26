@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddad4a69_fef7b153",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-26T19:54:42Z",
+      "side": 1,
+      "message": "Abe - can you comment on this?  Is the \"after\" routine the correct approach for this kind of cleanup?",
+      "parentUuid": "7dfa623d_0577936c",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "3c2683e0e114cc6e2ef741e12ae72cf8cdf4283c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e061992_02d87962",
         "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_control.c",
         "patchSetId": 1
