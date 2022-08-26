@@ -155,6 +155,24 @@ ZTEST_USER(console_cmd_usb_pd, test_enable)
 		      rv);
 }
 
+ZTEST_USER(console_cmd_usb_pd, test_suspend)
+{
+	int rv;
+
+	rv = shell_execute_cmd(get_ec_shell(), "pd 0 suspend");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+}
+
+ZTEST_USER(console_cmd_usb_pd, test_resume)
+{
+	int rv;
+
+	rv = shell_execute_cmd(get_ec_shell(), "pd 0 resume");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+}
+
 ZTEST_USER(console_cmd_usb_pd, test_hard)
 {
 	int rv;
