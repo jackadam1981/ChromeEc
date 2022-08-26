@@ -70,6 +70,41 @@
       "parentUuid": "684e9724_0373daa1",
       "revId": "8cefc49eeb004b17bb45acaa4000e7f30ffb6caf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796120d5_07f36ce4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-26T17:27:24Z",
+      "side": 1,
+      "message": "Alright, upload a new patchset having done the `repo sync`, and let\u0027s see what CQ does this time.",
+      "parentUuid": "ed80b422_736add90",
+      "revId": "8cefc49eeb004b17bb45acaa4000e7f30ffb6caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e06a26_f3d372c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-26T17:27:24Z",
+      "side": 1,
+      "message": "Just an FYI: Note the Code-Coverage\u003d-1 label currently on this CL. That means that there aren\u0027t tests covering the code changed in this CL. Right now, you can submit without tests, but at some point soon, we\u0027ll be changing things so that you need to have tests.",
+      "revId": "8cefc49eeb004b17bb45acaa4000e7f30ffb6caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
