@@ -25,6 +25,43 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) <= 1,
 BUILD_ASSERT(DT_INST_PROP_LEN(0, leds) <= 2,
 	     "Unsupported number of LEDs defined");
 
+#define PWM_LED_CONFIGURED(idx, led_ch)                                     \
+	DT_PROP_HAS_IDX(DT_PHANDLE_BY_IDX(DT_DRV_INST(0), leds, idx), pwms, \
+			led_ch)
+#define PWM_LED_PERIOD(idx, led_ch)                                         \
+	DT_PWMS_PERIOD_BY_IDX(DT_PHANDLE_BY_IDX(DT_DRV_INST(0), leds, idx), \
+			      led_ch)
+
+#if (DT_INST_PROP_LEN(0, leds) >= 1)
+#if PWM_LED_CONFIGURED(0, 0)
+#if PWM_LED_CONFIGURED(0, 1)
+BUILD_ASSERT(PWM_LED_PERIOD(0, 0) == PWM_LED_PERIOD(0, 1),
+	     "PWM LED period mismatch between PWM_LED_0_0 and PWM_LED_0_1");
+#if PWM_LED_CONFIGURED(0, 2)
+BUILD_ASSERT(PWM_LED_PERIOD(0, 1) == PWM_LED_PERIOD(0, 2),
+	     "PWM LED period mismatch between PWM_LED_0_1 and PWM_LED_0_2")
+#endif
+#endif
+#endif
+#endif
+
+#if (DT_INST_PROP_LEN(0, leds) == 2)
+#if PWM_LED_CONFIGURED(0, 0)
+#if PWM_LED_CONFIGURED(1, 0)
+BUILD_ASSERT(PWM_LED_PERIOD(0, 0) == PWM_LED_PERIOD(1, 0),
+	     "PWM LED period mismatch between PWM_LED_0_0 and PWM_LED_1_0");
+#if PWM_LED_CONFIGURED(1, 1)
+BUILD_ASSERT(PWM_LED_PERIOD(0, 0) == PWM_LED_PERIOD(1, 1),
+	     "PWM LED period mismatch between PWM_LED_0_0 and PWM_LED_1_1");
+#if PWM_LED_CONFIGURED(1, 2)
+BUILD_ASSERT(PWM_LED_PERIOD(0, 0) == PWM_LED_PERIOD(1, 2),
+	     "PWM LED period mismatch between PWM_LED_0_0 and PWM_LED_1_2")
+#endif
+#endif
+#endif
+#endif
+#endif
+
 #define PWM_LED_NAME(node_id) DT_STRING_UPPER_TOKEN(node_id, ec_led_name)
 #define PWM_LED_NAME_WITH_COMMA(node_id) PWM_LED_NAME(node_id),
 
@@ -165,6 +202,14 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 }
 
 #if DT_INST_NODE_HAS_PROP(0, sidesel)
+
+#define DOUBLE_VALUE(val) (val * 2)
+
+#if PWM_LED_CONFIGURED(0, 0)
+BUILD_ASSERT(DOUBLE_VALUE(PWM_LED_PERIOD(0, 0)) ==
+		     DT_PWMS_PERIOD(DT_INST_PROP(0, sidesel)),
+	     "Sidesel PWM period not properly set");
+#endif
 
 static const struct pwm_dt_spec _pwm_dt_spec_sidesel =
 	PWM_DT_SPEC_GET_BY_IDX(DT_INST_PROP(0, sidesel), 0);
