@@ -450,6 +450,29 @@ ZTEST(power_common, test_power_board_system_is_idle)
 }
 
 /**
+ * Test power console command
+ */
+ZTEST(power_common, power_console_cmd)
+{
+	test_set_chipset_to_g3();
+	zassert_equal(EC_SUCCESS, shell_execute_cmd(get_ec_shell(), "power"),
+		      NULL);
+
+	test_set_chipset_to_s0();
+	zassert_equal(EC_SUCCESS, shell_execute_cmd(get_ec_shell(), "power"),
+		      NULL);
+
+	zassert_equal(EC_ERROR_PARAM1,
+		      shell_execute_cmd(get_ec_shell(), "power x"), NULL);
+
+	zassert_equal(EC_SUCCESS, shell_execute_cmd(get_ec_shell(), "power on"),
+		      NULL);
+
+	zassert_equal(EC_SUCCESS,
+		      shell_execute_cmd(get_ec_shell(), "power off"), NULL);
+}
+
+/**
  * Common setup for hibernation delay tests. Smart discharge zone is setup,
  * battery is set in safe zone (which trigger hibernation), power state is
  * set to G3 and AC is disabled. system_hibernate mock is reset.
