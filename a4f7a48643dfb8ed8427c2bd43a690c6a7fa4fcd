@@ -16,6 +16,24 @@
       "message": "/usr/lib64/python3.6/site-packages/isort/files.py:30: UserWarning: Likely recursive symlink detected to /mnt/host/source/src/platform/ec/third_party/unacl-curve25519/core/cortex-m0/curve25519\n  warn(f\"Likely recursive symlink detected to {resolved_path}\")\nSkipped 5 files\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt818x/clock_mt8186.c:103:69: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        unsigned int clk_dbg_cfg, clk_misc_cfg_0, clk26cali_0, clk26cali_1, result \u003d 0;\nERROR:root:                                                                           ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt818x/clock_mt8186.c:282:62: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        SCP_CLK_ON_CTRL \u003d (SCP_CLK_ON_CTRL \u0026 ~HIGH_FINAL_VAL_MASK) |\nERROR:root:                                                                    ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt818x/clock_mt8186.c:284:25: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        SCP_FAST_WAKE_CNT_END \u003d (SCP_FAST_WAKE_CNT_END \u0026 ~FAST_WAKE_CNT_END_MASK) |\nERROR:root:                               ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt818x/clock_mt8186.c:284:77: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        SCP_FAST_WAKE_CNT_END \u003d (SCP_FAST_WAKE_CNT_END \u0026 ~FAST_WAKE_CNT_END_MASK) |\nERROR:root:                                                                                   ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt818x/clock_mt8186.c:288:62: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        SCP_WAKE_CKSW \u003d (SCP_WAKE_CKSW \u0026 ~WAKE_CKSW_SEL_SLOW_MASK) |\nERROR:root:                                                                    ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt818x/clock_mt8186.c:292:40: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        SCP_CLK_SLOW_SEL \u003d (SCP_CLK_SLOW_SEL \u0026 (CKSW_SEL_SLOW_MASK | CKSW_SEL_SLOW_DIV_MASK)) |\nERROR:root:                                              ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt818x/clock_mt8186.c:292:89: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        SCP_CLK_SLOW_SEL \u003d (SCP_CLK_SLOW_SEL \u0026 (CKSW_SEL_SLOW_MASK | CKSW_SEL_SLOW_DIV_MASK)) |\nERROR:root:                                                                                               ^\nERROR:root:/mnt/host/source/src/platform/ec/chip/mt_scp/mt818x/config_chip.h:13:58: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#define HOOK_TICK_INTERVAL (HOOK_TICK_INTERVAL_MS * MSEC)\nERROR:root:                                                         ^\nbuild_api: Unhandled exception:\nTraceback (most recent call last):\n  File \"/mnt/host/source/chromite/third_party/google/protobuf/json_format.py\", line 429, in Parse\n    js \u003d json.loads(text, object_pairs_hook\u003d_DuplicateChecker)\n  File \"/usr/lib64/python3.6/json/__init__.py\", line 367, in loads\n    return cls(**kw).decode(s)\n  File \"/usr/lib64/python3.6/json/decoder.py\", line 339, in decode\n    obj, end \u003d self.raw_decode(s, idx\u003d_w(s, 0).end())\n  File \"/usr/lib64/python3.6/json/decoder.py\", line 357, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
       "revId": "a4f7a48643dfb8ed8427c2bd43a690c6a7fa4fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d381653_68d18b1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-08-26T09:46:20Z",
+      "side": 1,
+      "message": "/mnt/host/source/src/repohooks/clang-format.py --fix --commit sha",
+      "parentUuid": "a15faded_fcb97ef7",
+      "revId": "a4f7a48643dfb8ed8427c2bd43a690c6a7fa4fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
