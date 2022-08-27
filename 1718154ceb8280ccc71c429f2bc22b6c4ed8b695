@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdfcbf3_db5bdef2",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-27T00:22:36Z",
+      "side": 1,
+      "message": "Because this one went through several iterations while I was trying to get the cable bugs worked out.  I can change it back",
+      "parentUuid": "f3d3a366_9493f78b",
+      "revId": "1718154ceb8280ccc71c429f2bc22b6c4ed8b695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dff64fdd_eb3d7c1d",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-26T22:10:10Z",
       "side": 1,
       "message": "SOP\u0027\u0027 isn\u0027t handled yet, so this function should return an error if sop_type !\u003d SOP_PRIME",
+      "range": {
+        "startLine": 438,
+        "startChar": 4,
+        "endLine": 438,
+        "endChar": 29
+      },
+      "revId": "1718154ceb8280ccc71c429f2bc22b6c4ed8b695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac04812e_e832d27e",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-27T00:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dff64fdd_eb3d7c1d",
       "range": {
         "startLine": 438,
         "startChar": 4,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54076259_6f9fd510",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-27T00:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ee323e_c4fe4b98",
+      "revId": "1718154ceb8280ccc71c429f2bc22b6c4ed8b695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3ad2307_7db5ef43",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3896038f_899ab823",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-27T00:22:36Z",
+      "side": 1,
+      "message": "D\u0027oh",
+      "parentUuid": "a3ad2307_7db5ef43",
+      "revId": "1718154ceb8280ccc71c429f2bc22b6c4ed8b695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64d66895_55e72b99",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-08-26T22:24:56Z",
       "side": 1,
       "message": "In `tcpci_partner_transmit_op`, it looks like this function will only be called for SOP messages. Should this code be in `tcpci_partner_common_cable_handler`?",
+      "revId": "1718154ceb8280ccc71c429f2bc22b6c4ed8b695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28804c09_c866ea5e",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-27T00:22:36Z",
+      "side": 1,
+      "message": "Excellent observation.  I\u0027m seeing how my coding got sloppier as the fix it deadline approached...",
+      "parentUuid": "64d66895_55e72b99",
       "revId": "1718154ceb8280ccc71c429f2bc22b6c4ed8b695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c47594_886f2d37",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-27T00:22:36Z",
+      "side": 1,
+      "message": "Oooo, that\u0027s fascinating.  I could have sworn we used to have an upload hook that scolded me for braces on one-line if\u0027s...",
+      "parentUuid": "6ff53b50_b68613b6",
+      "range": {
+        "startLine": 1366,
+        "startChar": 0,
+        "endLine": 1366,
+        "endChar": 27
+      },
+      "revId": "1718154ceb8280ccc71c429f2bc22b6c4ed8b695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48ff7e59_64755120",
@@ -128,6 +248,30 @@
       "writtenOn": "2022-08-26T22:10:10Z",
       "side": 1,
       "message": "What are the implications for the emulator here? Only that the cable_data should be valid before calling `connect_sink_to_port()`?",
+      "range": {
+        "startLine": 182,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 67
+      },
+      "revId": "1718154ceb8280ccc71c429f2bc22b6c4ed8b695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eac253c_30f5483d",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-27T00:22:36Z",
+      "side": 1,
+      "message": "Clarified",
+      "parentUuid": "48ff7e59_64755120",
       "range": {
         "startLine": 182,
         "startChar": 4,
