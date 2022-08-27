@@ -16,6 +16,24 @@
       "message": "Nit, because this is at least as good as my janky DP version: We should probably just have one check mechanism here. Since the TCPM only ever enters one mode at a time, I think we could just have an SVID-typed active mode field in `data`. That would allow the partner to appropriately NAK if the TCPM had previously entered and exited. DP would still need its own configured field, because it\u0027s weird, but we wouldn\u0027t need to check that here. (My existing code would in appropriately NAK an Exit Mode having entered but not configured.)",
       "revId": "1d0ff3a25b495f39191d68d31dca175aaf73435f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc1af215_e8d8f3b4",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-27T00:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e499c86c_be75d1e6",
+      "revId": "1d0ff3a25b495f39191d68d31dca175aaf73435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
