@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1d90a1_eab0e904",
+        "filename": "zephyr/projects/nissa/yaviks/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-27T02:43:02Z",
+      "side": 1,
+      "message": "I presume these are set \u0027n\u0027 to override the prj.conf in the common directory.\nI think this is OK for the moment, but it would be best if that prj.conf only contained the real common config settings, so at some point we may need to move things around a bit.",
+      "revId": "cb944c7f5102ab2978e0470d1502f9487c84a945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
