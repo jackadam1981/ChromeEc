@@ -70,6 +70,30 @@
       },
       "revId": "d0325d27d04a46baee29538a146140a8177d08f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14de2548_3c86bd1f",
+        "filename": "zephyr/projects/rex/src/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-27T21:53:14Z",
+      "side": 1,
+      "message": "I have changed this function to use gpio_dt_spec pointers to improve readability.",
+      "parentUuid": "cb63b5a6_127ca188",
+      "range": {
+        "startLine": 129,
+        "startChar": 55,
+        "endLine": 130,
+        "endChar": 6
+      },
+      "revId": "d0325d27d04a46baee29538a146140a8177d08f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
