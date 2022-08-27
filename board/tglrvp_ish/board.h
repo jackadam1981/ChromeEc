@@ -32,7 +32,7 @@
 #define CONFIG_I2C_CONTROLLER
 
 #ifdef BOARD_ADLRVP_ISH
-#define CONFIG_ACCELGYRO_BMI260 /* For BMI260 */
+#define CONFIG_ACCELGYRO_BMI160 /* For BMI160 */
 #define CONFIG_ACCELGYRO_BMI_COMM_I2C
 #undef CONFIG_ACCELGYRO_BMI_COMM_SPI
 #else
@@ -100,7 +100,7 @@
 #include "registers.h"
 
 /* Motion sensors */
-enum sensor_id { BASE_ACCEL, SENSOR_COUNT };
+enum sensor_id { BASE_ACCEL, BASE_GYRO, SENSOR_COUNT };
 
 #endif /* !__ASSEMBLER__ */
 
