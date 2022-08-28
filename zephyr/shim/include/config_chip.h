@@ -1,4 +1,4 @@
-/* Copyright 2020 The ChromiumOS Authors
+/* Copyright 2020 The ChromiumOS Authors.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -2012,6 +2012,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_ACCELGYRO_LSM6DSO
 #ifdef CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSO
 #define CONFIG_ACCELGYRO_LSM6DSO
+#endif
+
+#undef CONFIG_ACCELGYRO_LSM6DSM
+#ifdef CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSM
+#define CONFIG_ACCELGYRO_LSM6DSM
 #endif
 
 #endif /* CONFIG_PLATFORM_EC_MOTIONSENSE */
