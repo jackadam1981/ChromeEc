@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfe6c56_69bc11ad",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-29T09:45:12Z",
+      "side": 1,
+      "message": "Neat, any chance you could use another DT_FOREACH_PROP_ELEM here instead of manually going through the three indexes?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "30e7d4e90730df31d418319bb204743511b399f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b9edc4_f2edcf40",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-29T09:45:12Z",
+      "side": 1,
+      "message": "should probably be called something like PWM_LEDS_CHECK_ONE? INIT usually implies that the macro is initializing something.",
+      "range": {
+        "startLine": 45,
+        "startChar": 43,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "30e7d4e90730df31d418319bb204743511b399f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a04144_60917db1",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-29T09:45:12Z",
+      "side": 1,
+      "message": "I think this could use `DT_INST_FOREACH_PROP_ELEM()`",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "30e7d4e90730df31d418319bb204743511b399f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
