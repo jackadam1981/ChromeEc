@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df119494_be37b95e",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-29T22:22:31Z",
+      "side": 1,
+      "message": "Wrapping in parens will result in a subshell being created, which has some overhead. I don\u0027t _think_ it will be significant enough to worry about but figured it was worth calling attention to.",
+      "range": {
+        "startLine": 1050,
+        "startChar": 18,
+        "endLine": 1050,
+        "endChar": 19
+      },
+      "revId": "b55e3e55126144ed0e56c58cd790cddd8dc4470d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
