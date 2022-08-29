@@ -33,6 +33,24 @@
       "message": "another question:\nis it possible to reuse the existing thermistor_linear_interpolate function?",
       "revId": "b1cde1f1ed8dce9a02960f7394c641af6b65af55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ca1aaa_e57238a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-29T08:58:23Z",
+      "side": 1,
+      "message": "In thermistor_linear function, data_pair structure is different with thermistor_linear_interpolate function .",
+      "parentUuid": "d5ee0359_546880f6",
+      "revId": "b1cde1f1ed8dce9a02960f7394c641af6b65af55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
