@@ -34,6 +34,24 @@
       "parentUuid": "121c08c4_891a118b",
       "revId": "51a2d2e86ebb0e31a98b57307da09caa74a376b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6362234_78dd40fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-29T16:10:17Z",
+      "side": 1,
+      "message": "I think the split into multiple CLs is worth the trouble.  A bisect will just fail to compile when the bisect selects a CL in the middle of the stack.\n\nThe smaller CLs makes this feasible to review.  I\u0027ll get a review done on this today.",
+      "parentUuid": "d0928ade_a3a89b9b",
+      "revId": "51a2d2e86ebb0e31a98b57307da09caa74a376b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
