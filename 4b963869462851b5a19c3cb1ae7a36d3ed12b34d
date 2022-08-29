@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b489bb0c_e7623c62",
+        "filename": "zephyr/shim/src/log_backend_console_buffer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-29T19:15:56Z",
+      "side": 1,
+      "message": "I\u0027m confused by this comment.  I thought LOG_MODE_DEFERRED and LOG_MODE_IMMEDIATE are mutually exclusive?\nIf this implementation only supports immediate mode, can you add a guard for LOG_MODE_IMMEDIATE?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "4b963869462851b5a19c3cb1ae7a36d3ed12b34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
