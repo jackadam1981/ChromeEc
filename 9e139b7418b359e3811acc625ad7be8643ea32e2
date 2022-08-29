@@ -46,6 +46,30 @@
       },
       "revId": "9e139b7418b359e3811acc625ad7be8643ea32e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0f6e00_214fc87f",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/hostevent.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-29T21:08:48Z",
+      "side": 1,
+      "message": "That sounds good to me.",
+      "parentUuid": "f9dc534f_c12cdb2b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "9e139b7418b359e3811acc625ad7be8643ea32e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
