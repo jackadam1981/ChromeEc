@@ -141,6 +141,24 @@
       "parentUuid": "243da22e_9e345dc4",
       "revId": "b1cde1f1ed8dce9a02960f7394c641af6b65af55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389fda13_3ed7f5d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-08-29T09:41:29Z",
+      "side": 1,
+      "message": "Those data size are read from I2C charger command, so I have no ideal to define  scaling factor.",
+      "parentUuid": "9658f3a1_c733256c",
+      "revId": "b1cde1f1ed8dce9a02960f7394c641af6b65af55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
