@@ -16,6 +16,52 @@
       "message": "PTAL",
       "revId": "8a372f4ab49f4d0892dcf1db7e606777f7e50989",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853d4a14_4dddefee",
+        "filename": "common/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-29T23:13:59Z",
+      "side": 1,
+      "message": "If duration \u003c\u003d 0, we currently skip msleep(duration). That means there is no task switch for the 1st power_button_change_deferred call. So, basically you would only \u0027release\u0027 PB. That\u0027s odd.\n\nSo, this should first check duration and return if duration \u003c 0 (or it should take \u0027unsigned duration\u0027 instead).",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 32
+      },
+      "revId": "8a372f4ab49f4d0892dcf1db7e606777f7e50989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02329cd8_632a0a67",
+        "filename": "common/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-29T23:13:59Z",
+      "side": 1,
+      "message": "nit: slightly more efficient if this is in the if-statement above.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 25
+      },
+      "revId": "8a372f4ab49f4d0892dcf1db7e606777f7e50989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
