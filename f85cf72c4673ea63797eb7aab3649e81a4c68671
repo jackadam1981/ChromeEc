@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da606c3e_038d97db",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-29T17:26:02Z",
+      "side": 1,
+      "message": "nit: is it worth grouping these two APIs together into another call for both the console and host command to use?  Just to ensure they implement the same process",
+      "revId": "f85cf72c4673ea63797eb7aab3649e81a4c68671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bc41866_83b2c73b",
         "filename": "test/usb_pd_console.c",
         "patchSetId": 1
