@@ -589,3 +589,47 @@ static void power_monitor(void)
 	}
 	hook_call_deferred(&power_monitor_data, delay);
 }
+
+#if 0
+uint8_t osd_int_signal = 0; /* //for scaler test //raymondchung: ??? */
+void osd_int_interrupt(enum gpio_signal signal) /* //for scaler test //raymondchung: ??? */
+{
+	/* bit1: high */
+	/* bit0: low  */
+	osd_int_signal = 1 << signal;
+}
+#endif
+
+int button_is_pseudo_detected(enum gpio_signal gpio) /* //for scaler test //raymondchung: ??? */
+{
+	return (gpio == GPIO_VOLUME_DOWN_L) || (gpio == GPIO_VOLUME_UP_L) ||
+		(gpio == GPIO_BRIGHTNESS_DOWN_L) || (gpio == GPIO_BRIGHTNESS_UP_L);
+}
+
+int pseudo_to_physical_value(enum gpio_signal gpio) /* //for scaler test //raymondchung: ??? */
+{
+#if 0
+	int val = 0;
+	uint8_t scaler_action_key = 0;
+
+	if (!!osd_int_signal && i2c_read16(I2C_PORT_SCALER, I2C_ADDR_SCALER_FLAGS,
+		SCALER_NAV_KEY_REG, &val) == EC_SUCCESS)
+	{
+		if (val == SCALER_VOL_UP)
+			scaler_action_key = BUTTON_VOLUME_UP;
+		if (val == SCALER_VOL_DOWN)
+			scaler_action_key = BUTTON_VOLUME_DOWN;
+		if (val == SCALER_BRIGHTNESS_UP)
+			scaler_action_key = BUTTON_BRIGHTNESS_UP;
+		if (val == SCALER_BRIGHTNESS_DOWN)
+			scaler_action_key = BUTTON_BRIGHTNESS_DOWN;
+	}
+
+	if (!!osd_int_signal == 0)
+		scaler_action_key = 0;
+	osd_int_signal = 0;
+
+	return !!scaler_action_key;
+#endif
+	return 0;
+}
