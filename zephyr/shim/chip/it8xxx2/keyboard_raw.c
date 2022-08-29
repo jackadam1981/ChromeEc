@@ -9,19 +9,20 @@
 #include "keyboard_raw.h"
 
 #include <zephyr/device.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/gpio/gpio_kscan_it8xxx2.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
 #include <soc.h>
 
 /**
- * Return true if the current value of the given input GPIO port is zero
+ * Return true if the current value of the given gpioksi/gpioksoh/gpioksol
+ * port is zero
  */
 int keyboard_raw_is_input_low(int port, int id)
 {
-	/*
-	 * TODO: implement for factory testing KSI and KSO pin as GPIO
-	 *       function.
-	 */
-	return 0;
+	const struct device *io_dev = it8xxx2_get_gpio_kscan_dev(port);
+
+	return gpio_pin_get_raw(io_dev, id) == 0;
 }
