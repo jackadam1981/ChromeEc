@@ -22,6 +22,30 @@
       },
       "revId": "4df1af878f06c7167a81da077613adc0b9606a7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86416ff_e248c8ff",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-08-29T18:58:20Z",
+      "side": 1,
+      "message": "Hi Keith - We are in the process of cherry-picking needed patches to a firmware branch.  In general, we shouldn\u0027t be modifying files as they are cherry-picking across.  It makes to cherry-picks that follow much harder.  Are you saying that the original version in teh main branch has some issues that need to be cleaned up?  If so, those should be handled separately from the cherry-picks for clarity.",
+      "parentUuid": "ce3374bd_838496dc",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "4df1af878f06c7167a81da077613adc0b9606a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
