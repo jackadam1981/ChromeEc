@@ -85,6 +85,11 @@ if (DEFINED CONFIG_RISCV)
   zephyr_cc_option(-fsanitize-undefined-trap-on-error)
 endif()
 
+if (DEFINED CONFIG_ZEPHYR_PIGWEED_MODULE)
+  get_filename_component(PW_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party/pigweed" ABSOLUTE)
+  add_subdirectory(${PW_ROOT} pigweed)
+endif()
+
 # The EC application is split into two libraries:
 #   app: contains all the legacy code
 #   ec_shim: contains all the code under platform/ec/shim
