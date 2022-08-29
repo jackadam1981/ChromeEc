@@ -183,5 +183,9 @@ UNUSED(PIN(9, 7))       /* GPIO97 */
 UNUSED(PIN(8, 6))       /* GPIO86/TXD/CR_SOUT2 */
 UNUSED(PIN(1, 3))       /* KSO06/GPO13/GP_SEL# */
 UNUSED(PIN(1, 2))       /* KSO07/GPO12/JEN# */
-UNUSED(PIN(0, 6))       /* KSO11/GPIO06/P80_CLK */
-UNUSED(PIN(0, 4))       /* KSO13/GPIO04 */
+/*UNUSED(PIN(0, 6))*/       /* KSO11/GPIO06/P80_CLK */
+/*UNUSED(PIN(0, 4))*/       /* KSO13/GPIO04 */
+
+
+GPIO_INT(BRIGHTNESS_UP_L,	 PIN(0, 6), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt) /* //for scaler test //raymondchung: ??? */
+GPIO_INT(BRIGHTNESS_DOWN_L,	 PIN(0, 4), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt) /* //for scaler test //raymondchung: ??? */
