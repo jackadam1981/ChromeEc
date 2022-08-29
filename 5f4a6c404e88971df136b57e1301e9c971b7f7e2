@@ -16,6 +16,47 @@
       "message": "So these f/w config fields may not all be relevant to the EC, and these fields perhaps should be defined in the Boxter config instead.\nI\u0027ve copied Sam to confirm this.\n",
       "revId": "5f4a6c404e88971df136b57e1301e9c971b7f7e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "576f9fb8_92304191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-08-29T01:55:00Z",
+      "side": 1,
+      "message": "It looks like definitions have landed already on the Boxster side. Anything unused by the EC can be dropped from this of course, but otherwise this should be fine.",
+      "parentUuid": "68219c8f_6069e998",
+      "revId": "5f4a6c404e88971df136b57e1301e9c971b7f7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec679a0_230c87d0",
+        "filename": "zephyr/projects/nissa/pujjo/cbi.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-08-29T01:55:00Z",
+      "side": 1,
+      "message": "This looks to be 16 on the Boxster side.",
+      "range": {
+        "startLine": 136,
+        "startChar": 14,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "5f4a6c404e88971df136b57e1301e9c971b7f7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
