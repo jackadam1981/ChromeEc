@@ -11,6 +11,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/gpio.h>
 
+#include "charge_state.h"
 #include "cros_cbi.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -49,3 +50,25 @@ static void disable_base_imu_irq(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, disable_base_imu_irq, HOOK_PRIO_POST_DEFAULT);
+
+/* Limit battery charging current to 4000 */
+int charger_profile_override(struct charge_state_data *curr)
+{
+	if (curr->requested_current > 4000) {
+		curr->requested_current = 4000;
+	}
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
