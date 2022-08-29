@@ -22,6 +22,30 @@
       },
       "revId": "f642129d1237e877713236da567c87741f5cbc72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0399486d_125b271a",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-29T23:18:01Z",
+      "side": 1,
+      "message": "This was added by Craig in https://crrev.com/c/3826375\n\nMaybe the `main` branch does not include this commit?",
+      "parentUuid": "efd93c65_bceb7d9c",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "f642129d1237e877713236da567c87741f5cbc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
