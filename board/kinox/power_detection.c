@@ -68,15 +68,6 @@ struct adpater_id_params tio2_power[] = {
 		.obp85 = 960,
 	},
 	{
-		.min_voltage = 531,
-		.max_voltage = 607,
-		.charge_voltage = 20000,
-		.charge_current = 6000,
-		.watt = 120,
-		.obp95 = 1990,
-		.obp85 = 1780,
-	},
-	{
 		.min_voltage = 384,
 		.max_voltage = 480,
 		.charge_voltage = 20000,
@@ -84,6 +75,15 @@ struct adpater_id_params tio2_power[] = {
 		.watt = 150,
 		.obp95 = 2490,
 		.obp85 = 2220,
+	},
+	{
+		.min_voltage = 531,
+		.max_voltage = 607,
+		.charge_voltage = 20000,
+		.charge_current = 6000,
+		.watt = 120,
+		.obp95 = 1990,
+		.obp85 = 1780,
 	},
 	{
 		.min_voltage = 1062,
@@ -357,7 +357,7 @@ void adp_id_deferred(void)
 	} else {
 		CPRINTS("ADP_ID mismatch anything!");
 		/* Set the default 65w adaptor max ADC value */
-		adp_finial_adc_value = 0x69;
+		adp_finial_adc_value = 288;
 		adp_type = TINY;
 	}
 
