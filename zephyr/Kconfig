@@ -16,6 +16,15 @@ config HAS_TEST_TASKS
 	  "shimmed_test_tasks.h" will be included and is expected to set
 	  CROS_EC_TASK_LIST.
 
+config MOCK_ASSERT
+	bool "Replaces uses of ASSERT with a mock function"
+	depends on ASSERT
+	help
+	  This converts the simple ASSERT macro (which normally maps to the
+	  __ASSERT_NO_MSG macro) with an FFF mock. The default behavior of the
+	  mock is to still call __ASSERT_NO_MSG, so in order to replace that in
+	  a test function, simply set `ASSERT_fake.custom_fake = NULL;`.
+
 endif # ZTEST
 
 menuconfig PLATFORM_EC
