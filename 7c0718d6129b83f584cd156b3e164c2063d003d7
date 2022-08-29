@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ab9a10_45a23238",
+        "filename": "test/fpsensor_crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-29T20:59:47Z",
+      "side": 1,
+      "message": "nit: Can you start the test name with `test_` (`test_get_ikm_failure_seed_not_set`)?\n\nThe unit tests in the EC code use this naming pattern. It helps distinguish between the test functions themselves and any helper code.",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 44
+      },
+      "revId": "7c0718d6129b83f584cd156b3e164c2063d003d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
