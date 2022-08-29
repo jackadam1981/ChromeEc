@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04174449_c4185c57",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-29T19:48:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b76b261_83cb0382",
+      "range": {
+        "startLine": 20,
+        "startChar": 74,
+        "endLine": 20,
+        "endChar": 78
+      },
+      "revId": "e0875487981cca5fd26811b236aa46d144369ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdda431b_8c925e06",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d50ce38a_409f242e",
+        "filename": "include/panic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-29T19:48:39Z",
+      "side": 1,
+      "message": "I added one as much as possible in common.h, but the problem is that this header is also compiled for the ectool which doesn\u0027t include common.h. There\u0027s a similar issue in other files and they end up having to do something similar by checking \n```\n#ifndef THIRD_PARTY\n#include \"common.h\"\n#endif\n```\n\nIt\u0027s just that in this case, I would also need to add the `#else` here which would include all these lines anyway so it seemed like it made more sense to just define it locally for this file.",
+      "parentUuid": "bdda431b_8c925e06",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "e0875487981cca5fd26811b236aa46d144369ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "897931a9_20d898ac",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-08-25T20:21:01Z",
       "side": 1,
       "message": "Do we want to split strings? It makes grepping harder",
+      "revId": "e0875487981cca5fd26811b236aa46d144369ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de11164e_9892524b",
+        "filename": "zephyr/test/drivers/default/src/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-29T19:48:39Z",
+      "side": 1,
+      "message": "I had the same thought too, but was thinking that since the assert also prints the line number, then it didn\u0027t matter and this way clang-format was happy. Please let me know if you\u0027d like me to change it.",
+      "parentUuid": "897931a9_20d898ac",
       "revId": "e0875487981cca5fd26811b236aa46d144369ba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
