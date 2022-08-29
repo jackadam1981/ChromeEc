@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c93805_c602a98b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-08-29T16:11:54Z",
+      "side": 1,
+      "message": "Is v4.4 the only kernel that uses spidev32765 on nocturne?",
+      "range": {
+        "startLine": 577,
+        "startChar": 21,
+        "endLine": 577,
+        "endChar": 30
+      },
+      "revId": "8cf5dd7819d99b25c059fdf65f50f07e52b58a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
