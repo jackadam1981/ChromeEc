@@ -16,6 +16,23 @@
       "message": "In retrospect, this was covered on the reducing EC image size table.  I neglected to check that before approving the config changes",
       "revId": "f705c3511bedc82c3f6da00b63ce66c6cd4da2a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef450602_d9d6a062",
+        "filename": "zephyr/projects/skyrim/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-29T19:17:43Z",
+      "side": 1,
+      "message": "KEYBOARD and PD appear to be called out as well on the reducint_ec_image_size.md table, so we probably also want them back",
+      "revId": "f705c3511bedc82c3f6da00b63ce66c6cd4da2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
