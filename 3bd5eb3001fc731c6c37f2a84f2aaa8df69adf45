@@ -93,6 +93,30 @@
       },
       "revId": "3bd5eb3001fc731c6c37f2a84f2aaa8df69adf45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8611768b_35ccae2e",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-08-29T19:45:40Z",
+      "side": 1,
+      "message": "I noticed this same phenomenon on one of the other cherry-picks.",
+      "parentUuid": "4ce674d5_22399568",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "3bd5eb3001fc731c6c37f2a84f2aaa8df69adf45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
