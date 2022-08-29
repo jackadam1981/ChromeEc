@@ -46,6 +46,30 @@
       },
       "revId": "4df1af878f06c7167a81da077613adc0b9606a7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd5d178_32396828",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-29T19:19:10Z",
+      "side": 1,
+      "message": "I didn\u0027t notice this was for a firmware branch.  Sorry for the confusion.  I see the EC ToT has the correct check: https://crsrc.org/o/src/platform/ec/driver/accelgyro_bmi_common.c;drc\u003dd3be0c14579fa8b172c4485c8cf8968ee71dfb23;l\u003d25",
+      "parentUuid": "f86416ff_e248c8ff",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "4df1af878f06c7167a81da077613adc0b9606a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
