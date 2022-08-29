@@ -230,6 +230,9 @@ static int command_powerbtn(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 	}
 
+	if (ms < 0)
+		return EC_ERROR_PARAM1;
+
 	power_button_simulate_press(ms);
 	return EC_SUCCESS;
 }
