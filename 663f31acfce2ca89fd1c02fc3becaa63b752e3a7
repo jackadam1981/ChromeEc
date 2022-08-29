@@ -22,6 +22,29 @@
       },
       "revId": "663f31acfce2ca89fd1c02fc3becaa63b752e3a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0a5cf5_0276ada0",
+        "filename": "test/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-29T21:11:21Z",
+      "side": 1,
+      "message": "The response code is checked but for this case we should also check that `ikm` has been properly set.",
+      "range": {
+        "startLine": 132,
+        "startChar": 13,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "663f31acfce2ca89fd1c02fc3becaa63b752e3a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
