@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67c33137_c4561546",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-29T13:13:00Z",
+      "side": 1,
+      "message": "Yeah you need to expand the node before and drop the index, this is how I would do it:\n\n```\n#define PWM_LED_0_0_PERIOD \\\n        DT_PWMS_PERIOD_BY_IDX(DT_INST_PHANDLE_BY_IDX(0, leds, 0), 0)\n\n#define PWM_LED_PERIOD_CHECK_ONE(node_id, prop, idx, ...) \\\n                BUILD_ASSERT(PWM_LED_0_0_PERIOD \u003d\u003d DT_PWMS_PERIOD_BY_IDX(node_id, idx), \\\n                      \"PWM LED period mismatch\");\n\n#define PWM_LEDS_CHECK_ONE(node_id, prop, idx)    \\\n        DT_FOREACH_PROP_ELEM_VARGS( \\\n                DT_PHANDLE_BY_IDX(node_id, prop, idx), pwms, PWM_LED_PERIOD_CHECK_ONE)\n\nDT_INST_FOREACH_PROP_ELEM(0, leds, PWM_LEDS_CHECK_ONE)\n```\n\nThough it only seems to work with the `_VARGS` variant for some reason, asked in the chat about it.",
+      "parentUuid": "4bb5edfb_74e12adb",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "30e7d4e90730df31d418319bb204743511b399f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59b9edc4_f2edcf40",
         "filename": "zephyr/shim/src/pwm_led.c",
         "patchSetId": 2
@@ -155,6 +179,30 @@
       "writtenOn": "2022-08-29T11:55:33Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "7953b184_204c5e67",
+      "range": {
+        "startLine": 45,
+        "startChar": 43,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "30e7d4e90730df31d418319bb204743511b399f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a58738_d9ae7dc1",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-29T13:13:00Z",
+      "side": 1,
+      "message": "Sure.",
       "parentUuid": "7953b184_204c5e67",
       "range": {
         "startLine": 45,
