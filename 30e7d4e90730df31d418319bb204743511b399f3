@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56dcb35_409fdd12",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-08-29T14:32:58Z",
+      "side": 1,
+      "message": "Thank you Fabio, Done",
+      "parentUuid": "67c33137_c4561546",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "30e7d4e90730df31d418319bb204743511b399f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59b9edc4_f2edcf40",
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "Sure.",
       "parentUuid": "7953b184_204c5e67",
+      "range": {
+        "startLine": 45,
+        "startChar": 43,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "30e7d4e90730df31d418319bb204743511b399f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5227dbae_db03ae53",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-08-29T14:32:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40a58738_d9ae7dc1",
       "range": {
         "startLine": 45,
         "startChar": 43,
