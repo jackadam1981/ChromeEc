@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11491e8_5264dfe6",
+        "filename": "test/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-29T21:15:49Z",
+      "side": 1,
+      "message": "Is this the right comment? I think you\u0027re just resetting the mock so that reading the rollback secret will succeed the next time someone calls it (i.e., it\u0027s just cleanup and doesn\u0027t need the `GIVEN` part.)",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 44
+      },
+      "revId": "cd05204e66cd7f3eb02d10eda0fc20faf4d70d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
