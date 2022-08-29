@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b9ecfb_4f5c9933",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-29T05:24:47Z",
+      "side": 1,
+      "message": "`TCPC_REG_ROLE_CTRL_SET(TYPEC_NO_DRP, TYPEC_RP_USB, TYPEC_CC_RP, TYPEC_CC_RP)`",
+      "range": {
+        "startLine": 508,
+        "startChar": 4,
+        "endLine": 508,
+        "endChar": 38
+      },
+      "revId": "253a74e3163744eb1154ddcff77140e708a82a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
