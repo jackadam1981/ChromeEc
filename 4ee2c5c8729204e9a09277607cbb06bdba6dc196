@@ -33,6 +33,24 @@
       "message": "This is getting pretty hard to read at this level of indentation, and I think the indenting doesn\u0027t match our style guide anyway. But see my other comment.",
       "revId": "4ee2c5c8729204e9a09277607cbb06bdba6dc196",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f166b6e_734ce87f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4576,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-08-29T10:35:42Z",
+      "side": 1,
+      "message": "I did run upload and checkpatch script before uploading the changes. The condition is split over lines to align with 80 character limitation.",
+      "parentUuid": "381a0f61_034a8729",
+      "revId": "4ee2c5c8729204e9a09277607cbb06bdba6dc196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
