@@ -11,11 +11,19 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/gpio.h>
 
+#include "common.h"
+#include "accelgyro.h"
 #include "cros_cbi.h"
+#include "driver/accelgyro_lsm6dsm.h"
+#include "driver/accelgyro_bmi3xx.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motion_sense.h"
+#include "motionsense_sensors.h"
 #include "tablet_mode.h"
+
+#define BASE_ACCEL SENSOR_ID(DT_NODELABEL(alt_base_accel))
+#define BASE_GYRO SENSOR_ID(DT_NODELABEL(alt_base_gyro))
 
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 
@@ -49,3 +57,33 @@ static void disable_base_imu_irq(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, disable_base_imu_irq, HOOK_PRIO_POST_DEFAULT);
+
+static bool base_use_alt_sensor;
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (base_use_alt_sensor) {
+		lsm6dsm_interrupt(signal);
+	} else {
+		bmi3xx_interrupt(signal);
+	}
+}
+
+static struct lsm6dsm_data lsm6dsm_data = LSM6DSM_DATA;
+
+static void alt_sensor_init(void)
+{
+	base_use_alt_sensor = cros_cbi_ssfc_check_match(
+		CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)));
+
+	motion_sensors_check_ssfc();
+
+	if (base_use_alt_sensor) {
+		/* LSM6DSM-specific driver data */
+		motion_sensors[BASE_ACCEL].drv_data =
+			LSM6DSM_ST_DATA(lsm6dsm_data, MOTIONSENSE_TYPE_ACCEL);
+		motion_sensors[BASE_GYRO].drv_data =
+			LSM6DSM_ST_DATA(lsm6dsm_data, MOTIONSENSE_TYPE_GYRO);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
