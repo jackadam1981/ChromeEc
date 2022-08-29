@@ -34,6 +34,24 @@
       "parentUuid": "eaea3e92_89606ee1",
       "revId": "3f4f5eed97ee6160b676fc396af63b2503c9c734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abcf6a9_d8e8524a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-08-29T10:39:39Z",
+      "side": 0,
+      "message": "After setting the VDM_SETUP_DONE flag, both hotplug and s0ix passed",
+      "parentUuid": "ee24b7ee_a7deae50",
+      "revId": "3f4f5eed97ee6160b676fc396af63b2503c9c734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
