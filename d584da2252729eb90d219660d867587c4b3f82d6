@@ -16,6 +16,24 @@
       "message": "Seems to be intended one extra tab",
       "revId": "d584da2252729eb90d219660d867587c4b3f82d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2125e203_54a47a88",
+        "filename": "zephyr/projects/nissa/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1548949
+      },
+      "writtenOn": "2022-08-29T06:36:47Z",
+      "side": 1,
+      "message": "Seems like every zephyr/nissa has zephyr_library_sources.",
+      "parentUuid": "09bbf132_ec0ffcf2",
+      "revId": "d584da2252729eb90d219660d867587c4b3f82d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
