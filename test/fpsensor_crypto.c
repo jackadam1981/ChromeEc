@@ -131,6 +131,22 @@ test_static int test_get_ikm_failure_cannot_get_rollback_secret(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_get_ikm_success(void)
+{
+	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES];
+
+	/* GIVEN that the TPM seed has been set. */
+	TEST_ASSERT(fp_tpm_seed_is_set());
+
+	/* GIVEN that reading the rollback secret will succeed. */
+	mock_ctrl_rollback.get_secret_fail = false;
+
+	/* THEN get_ikm will succeed. */
+	TEST_ASSERT(get_ikm(ikm) == EC_SUCCESS);
+
+	return EC_SUCCESS;
+}
+
 static int test_hkdf_expand_raw(const uint8_t *prk, size_t prk_size,
 				const uint8_t *info, size_t info_size,
 				const uint8_t *expected_okm, size_t okm_size)
@@ -645,6 +661,7 @@ void run_test(int argc, char **argv)
 
 	/* The following test requires TPM seed to be already set. */
 	RUN_TEST(test_get_ikm_failure_cannot_get_rollback_secret);
+	RUN_TEST(test_get_ikm_success);
 	RUN_TEST(test_derive_encryption_key);
 	RUN_TEST(test_derive_encryption_key_failure_rollback_fail);
 	RUN_TEST(test_derive_new_pos_match_secret);
