@@ -128,6 +128,12 @@ test_static int test_get_ikm_failure_cannot_get_rollback_secret(void)
 	 */
 	mock_ctrl_rollback.get_secret_fail = false;
 
+	/* GIVEN that the TPM seed has been set. */
+	TEST_ASSERT(fp_tpm_seed_is_set());
+
+	/* THEN get_ikm will succeed. */
+	TEST_ASSERT(get_ikm(ikm) == EC_SUCCESS);
+
 	return EC_SUCCESS;
 }
 
