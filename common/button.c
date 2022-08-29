@@ -440,6 +440,10 @@ static int console_command_button(int argc, char **argv)
 			button = button_present(KEYBOARD_BUTTON_VOLUME_DOWN);
 		else if (!strcasecmp(argv[argv_idx], "rec"))
 			button = button_present(KEYBOARD_BUTTON_RECOVERY);
+		else if (!strcasecmp(argv[argv_idx], "bup"))
+			button = button_present(KEYBOARD_BUTTON_VOLUME_UP);
+		else if (!strcasecmp(argv[argv_idx], "bdown"))
+			button = button_present(KEYBOARD_BUTTON_VOLUME_DOWN);
 		else {
 			/* If last parameter check if it is an integer. */
 			if (argv_idx == argc - 1) {
@@ -867,6 +871,23 @@ struct button_config buttons[BUTTON_COUNT] = {
 	}
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON_2) */
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+#ifdef CONFIG_BRIGHTNESS_BUTTONS
+	[BUTTON_BRIGHTNESS_UP] = {
+		.name = "Brightness Up",
+		.type = KEYBOARD_BUTTON_BRIGHTNESS_UP,
+		.gpio = GPIO_BRIGHTNESS_UP_L,
+		.debounce_us = BUTTON_DEBOUNCE_US,
+		.flags = 0,
+	},
+
+	[BUTTON_BRIGHTNESS_DOWN] = {
+		.name = "Brightness Down",
+		.type = KEYBOARD_BUTTON_BRIGHTNESS_DOWN,
+		.gpio = GPIO_BRIGHTNESS_DOWN_L,
+		.debounce_us = BUTTON_DEBOUNCE_US,
+		.flags = 0,
+	},
+#endif /* CONFIG_BRIGHTNESS_BUTTONS */
 };
 
 #ifdef CONFIG_BUTTON_TRIGGERED_RECOVERY
