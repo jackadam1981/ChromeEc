@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c039928_4edb45ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-29T07:35:08Z",
+      "side": 1,
+      "message": "from buildbot log:\n\n/mnt/host/source/src/platform/ec/build/zephyr/tentacruel/modules/ec/driver/charger/rt9490.c: In function \u0027thermistor_linear\u0027:\n/mnt/host/source/src/platform/ec/build/zephyr/tentacruel/modules/ec/driver/charger/rt9490.c:761:51: error: expression in static assertion is not constant\n  761 |         BUILD_ASSERT(charger_thermistor_data_size \u003e\u003d 2);\n      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/toolchain/gcc.h:77:51: note: in definition of macro \u0027BUILD_ASSERT\u0027\n   77 | #define BUILD_ASSERT(EXPR, MSG...) _Static_assert(EXPR, \"\" MSG)",
+      "revId": "b1cde1f1ed8dce9a02960f7394c641af6b65af55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
