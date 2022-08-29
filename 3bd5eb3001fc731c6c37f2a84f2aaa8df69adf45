@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d454c119_3ed690ed",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-29T19:21:28Z",
+      "side": 1,
+      "message": "Disregard - I didn\u0027t notice this was for a firmware branch.",
+      "parentUuid": "6bc7735a_d2cb4470",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "3bd5eb3001fc731c6c37f2a84f2aaa8df69adf45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f91dda89_f7e8a52a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-29T18:30:42Z",
       "side": 1,
       "message": "This change is unrelated to this CL.  Was this a rebase error?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "3bd5eb3001fc731c6c37f2a84f2aaa8df69adf45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce674d5_22399568",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-08-29T19:21:28Z",
+      "side": 1,
+      "message": "As a cherry-pick, this still looks incorrect.  The original CL only added 5 lines of code to this file.",
+      "parentUuid": "f91dda89_f7e8a52a",
       "range": {
         "startLine": 113,
         "startChar": 0,
