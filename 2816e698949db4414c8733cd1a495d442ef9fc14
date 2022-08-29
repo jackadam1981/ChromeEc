@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bffb212_97d0b9a0",
+        "filename": "board/mithrax/keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-08-29T20:58:44Z",
+      "side": 1,
+      "message": "We don\u0027t need to set the value here. Just declaration should be enough.",
+      "revId": "2816e698949db4414c8733cd1a495d442ef9fc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
