@@ -21,6 +21,7 @@ endif()
 zephyr_library_sources_ifdef(no_libgcc                  libgcc_${ARCH}.S)
 
 zephyr_library_sources_ifdef(CONFIG_ADC                     adc.c)
+zephyr_library_sources_ifdef(CONFIG_MOCK_ASSERT         mock_assert.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY
                                                             battery.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_RT9490
