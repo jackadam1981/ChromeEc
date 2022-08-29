@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ec840e_b4744920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-29T20:07:35Z",
+      "side": 1,
+      "message": "Please check all of the fet_disconnect_val and fet_cfet_off_val fields.  Based on the table provided in the bug, it appears all of them are the opposite polarity (the value should indicate the value if FETs are off)",
+      "revId": "1dd23f994d852aa912723bf9561d3e0bfea5b3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ecd430_bf409d0e",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,cos3rr09.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-29T20:07:35Z",
+      "side": 1,
+      "message": "Description doesn\u0027t match compatible",
+      "revId": "1dd23f994d852aa912723bf9561d3e0bfea5b3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3243822f_fc19a3e2",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,cos3rr09.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-29T20:07:35Z",
+      "side": 1,
+      "message": "Based on the table provided in the bug, this and the cfet fields should be \"0\" for the \"off\" indicator",
+      "revId": "1dd23f994d852aa912723bf9561d3e0bfea5b3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
