@@ -1,4 +1,4 @@
-# Copyright 2021 The ChromiumOS Authors
+# Copyright 2021 The ChromiumOS Authors.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -80,12 +80,12 @@ register_corsola_project(
         here / "host_interface_npcx.dts",
         here / "i2c_kingler.dts",
         here / "interrupts_kingler.dts",
+        here / "interrupts_steelix.dts",
         here / "cbi_steelix.dts",
         here / "gpio_steelix.dts",
         here / "npcx_keyboard.dts",
         here / "keyboard_steelix.dts",
         here / "led_steelix.dts",
-        here / "motionsense_kingler.dts",
         here / "motionsense_steelix.dts",
         here / "usba_steelix.dts",
         here / "usbc_kingler.dts",
