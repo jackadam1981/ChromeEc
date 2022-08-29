@@ -69,6 +69,42 @@
       "parentUuid": "9c039928_4edb45ea",
       "revId": "b1cde1f1ed8dce9a02960f7394c641af6b65af55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9658f3a1_c733256c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-29T09:13:43Z",
+      "side": 1,
+      "message": "if the only difference is the data size, I recommend to define a reasonable scaling factor such that the voltage can fit into uint8 range.",
+      "parentUuid": "c0ca1aaa_e57238a4",
+      "revId": "b1cde1f1ed8dce9a02960f7394c641af6b65af55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a007101e_3c3714ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-29T09:13:43Z",
+      "side": 1,
+      "message": "maybe just follow the original implementation?\n`ASSERT(info-\u003enum_pairs \u003e\u003d 2);`",
+      "parentUuid": "2d263586_43070efd",
+      "revId": "b1cde1f1ed8dce9a02960f7394c641af6b65af55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
