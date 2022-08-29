@@ -31,7 +31,6 @@
 int hkdf_expand(uint8_t *out_key, size_t out_key_size, const uint8_t *prk,
 		size_t prk_size, const uint8_t *info, size_t info_size);
 
-int get_ikm(uint8_t *ikm);
 /**
  * Derive hardware encryption key from rollback secret and |salt|.
  *
