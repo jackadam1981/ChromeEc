@@ -1926,7 +1926,7 @@ static void tch_construct_chunked_message_entry(const int port)
 				 tx_emsg[port].len);
 
 	/* Copy the message chunk into chk_buf */
-	memset(data, 0, 28);
+	memset(data, 0, PD_MAX_EXTENDED_MSG_CHUNK_LEN);
 	memcpy(data, tx_emsg[port].buf + pdmsg[port].send_offset, num);
 	pdmsg[port].send_offset += num;
 
