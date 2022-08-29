@@ -853,6 +853,12 @@
 #undef CONFIG_VOLUME_BUTTONS
 
 /*
+ * The board has brightness up and brightness down buttons.  Note, these are *buttons*
+ * and not keys in the keyboard matrix.
+ */
+#undef CONFIG_BRIGHTNESS_BUTTONS
+
+/*
  * The board has buttons that are connected to ADC pins which pressed and
  * released values are determined by the analog voltage
  */
