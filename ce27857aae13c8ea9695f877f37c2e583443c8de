@@ -22,6 +22,30 @@
       },
       "revId": "ce27857aae13c8ea9695f877f37c2e583443c8de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7fa0d3a_ce8df972",
+        "filename": "common/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-08-30T02:20:16Z",
+      "side": 1,
+      "message": "It has cherry pick from another CL : crrev/c/3864604",
+      "parentUuid": "1a36dd38_b2124feb",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 26
+      },
+      "revId": "ce27857aae13c8ea9695f877f37c2e583443c8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
