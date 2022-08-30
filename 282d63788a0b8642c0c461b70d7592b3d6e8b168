@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca5d573_17f5dc9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-30T14:52:56Z",
+      "side": 1,
+      "message": "I walked through the process and it worked for me",
+      "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e2a60d_701edf49",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-30T14:52:56Z",
+      "side": 1,
+      "message": "Not really related to this CL but is there a reason that we cannot incorporate this step into the makefile target? In general it is considered bad practice to have a build target generated outside of the build directory but I think it makes sense in this context. Alternatively, it might make sense to point vscode at the build directory if possible as this would allow multiple `compile_commands.json` to coexist and be selected by vscode.",
+      "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
