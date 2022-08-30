@@ -34,6 +34,24 @@
       "parentUuid": "0b7c5323_0ae7d2b3",
       "revId": "13686a620c0fd3527050e4ceca4d37b9712e9ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5359e2_f23233d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 79
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-30T14:59:30Z",
+      "side": 1,
+      "message": "It\u0027s weird that we have the same signal represented as a `uint16_t`, `int8_t`, and `uint32_t`. Are we sure there aren\u0027t any unexpected interactions here? We can\u0027t (or at least probably shouldn\u0027t) change the API as far as what we receive from the AP but maybe we should sanitize this downstream?",
+      "parentUuid": "3a033350_0b8fdd67",
+      "revId": "13686a620c0fd3527050e4ceca4d37b9712e9ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

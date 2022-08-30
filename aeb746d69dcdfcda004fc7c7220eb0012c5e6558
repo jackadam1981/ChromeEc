@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f779fdc1_1af77462",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 80
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-30T14:59:30Z",
+      "side": 1,
+      "message": "Was there a reason not to just use an explicit cast (i.e. `if (fgr \u003d\u003d (uint32_t)template_newly_enrolled)`)?",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "aeb746d69dcdfcda004fc7c7220eb0012c5e6558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
