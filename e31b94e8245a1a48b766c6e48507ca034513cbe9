@@ -16,6 +16,40 @@
       "message": "Could you also use the local build firmware and verify the function?",
       "revId": "e31b94e8245a1a48b766c6e48507ca034513cbe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c743eba7_94e8dbbb",
+        "filename": "zephyr/projects/nissa/pujjo/cbi.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-30T06:54:14Z",
+      "side": 1,
+      "message": "Chromium OS -\u003e ChromiumOS\n\nDrop \"All rights reserved.\"",
+      "revId": "e31b94e8245a1a48b766c6e48507ca034513cbe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "135b931b_26656271",
+        "filename": "zephyr/projects/nissa/pujjo/cbi.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-30T06:54:14Z",
+      "side": 1,
+      "message": "You only need to add the extra fields that are being defined. pujjo/cbi.dts will be added to the base cbi.dts\nSee nivviks/cbi.dts for an example.",
+      "revId": "e31b94e8245a1a48b766c6e48507ca034513cbe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
