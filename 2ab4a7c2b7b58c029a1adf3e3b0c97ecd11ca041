@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e7263ed_67894086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-08-30T10:20:36Z",
+      "side": 1,
+      "message": "I think what you mean here is \"push-pull\" (i.e. the pin is driven in both high and low state by a totem pole output configuration, opposite of \"open-drain\" when it can only be driven down to ground or left high impedance and rely on an external pullup).",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "2ab4a7c2b7b58c029a1adf3e3b0c97ecd11ca041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
