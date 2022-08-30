@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "436e641c_6ab82728",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550962
+      },
+      "writtenOn": "2022-08-30T08:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c1acce_8d32b4a0",
+      "revId": "205c6850f99c24112f5d41751b522cde380540b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f17f1be_fddbaa21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550962
+      },
+      "writtenOn": "2022-08-30T08:43:12Z",
+      "side": 1,
+      "message": "Hi, when I tried to\n(Outside) use clang-format cmd, it failed:\nclang-format accelgyro_bmi3xx.c \nProblem while looking for clang-format in Chromium source tree:\nCould not find checkout in any parent of the current path.\nSet CHROMIUM_BUILDTOOLS_PATH to use outside of a chromium checkout\n\nIf I tried to use \"repo upload .\" cmd directly, it will be blocked at \"[RUNNING 16/42 PRESUBMIT.cfg] _check_clang_format\".\n\nI\u0027m not sure whether it is related with network.\n\n\n(cr) if inside with \"repo upload .\", still failed:\n\n[COMMIT 1/1 441a788677e6] driver/bmi323: Update calibration code\n[FAILED] chromiumos/platform/ec: _check_clang_format       \n    clang-format.py errors/warnings\n    \n    18:15:25.639: DEBUG: run: /mnt/host/source/src/chromium/depot_tools/download_from_google_storage.py -b chromium-clang-format -s /mnt/host/source/src/chromium/src/buildtools/linux64/clang-format.sha1\n    Failed to fetch file gs://chromium-clang-format/dd736afb28430c9782750fc0fd5f0ed497399263 for /mnt/host/source/src/chromium/src/buildtools/linux64/clang-format. [Err: curl: (60) SSL certificate problem: self signed certificate in certificate chain\n    More details here: https://curl.se/docs/sslcerts.html\n\n\n\nSo could you please guide me how to use clang-format, or help clang-format the codes for me?",
+      "parentUuid": "deaa6f05_0d66746c",
+      "revId": "205c6850f99c24112f5d41751b522cde380540b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4a0e095_b4a03521",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-26T13:15:27Z",
       "side": 1,
       "message": "Hi Leo,\nclang-format was not happy with this blank line, this would cause the build failure.",
+      "revId": "205c6850f99c24112f5d41751b522cde380540b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a4513d_ea6a7321",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1550962
+      },
+      "writtenOn": "2022-08-30T08:43:12Z",
+      "side": 1,
+      "message": "Thanks! I removed this blank line.",
+      "parentUuid": "c4a0e095_b4a03521",
       "revId": "205c6850f99c24112f5d41751b522cde380540b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

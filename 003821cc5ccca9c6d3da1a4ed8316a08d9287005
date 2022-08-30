@@ -16,6 +16,24 @@
       "message": "I assume we are not waiting for the offset to be set up properly since we assume it will be done while the AP/EC is further configuring the IMU.",
       "revId": "003821cc5ccca9c6d3da1a4ed8316a08d9287005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e080c12_48f4d947",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1550962
+      },
+      "writtenOn": "2022-08-30T08:43:12Z",
+      "side": 0,
+      "message": "Yes, you\u0027re right. We simplified the sequence for setting the offset to IMU temporarily.",
+      "parentUuid": "1a8af4c5_f73b71b3",
+      "revId": "003821cc5ccca9c6d3da1a4ed8316a08d9287005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

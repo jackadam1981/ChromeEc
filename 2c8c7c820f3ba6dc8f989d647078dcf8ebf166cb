@@ -46,6 +46,30 @@
       },
       "revId": "2c8c7c820f3ba6dc8f989d647078dcf8ebf166cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56c213c3_edd58c8b",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1550962
+      },
+      "writtenOn": "2022-08-30T08:43:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c34cd7a9_1da68f6c",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "2c8c7c820f3ba6dc8f989d647078dcf8ebf166cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
