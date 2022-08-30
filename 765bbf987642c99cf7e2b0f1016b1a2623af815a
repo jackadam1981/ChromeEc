@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a036ca_71e7282e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2022-08-30T18:06:27Z",
+      "side": 1,
+      "message": "Hi Aseda,\nfollowing up on the HpdWake issues we talked about earlier this year. After the initial CL which seemed to help with EC wake event logging re-landed, the HpdWake test continued to fail on Brya (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3615033).\n\nGoing back to this, it looks like there is a bug with how we register the EC_MKBP_EVENT_DP_ALT_MODE_ENTERED source. We declare it in a TCPMv1 only file. Then, when a TCPMv2 EC tries to send this message to the kernel, it fails with a \"HC 0x0067 err 2\" error because mkbp_get_next_event in mkbp_event.c cannot find the source. \n\nCan you take a look at this fix? It just moves the source declaration to a TCPMv1/TCPMv2 common file.",
+      "revId": "765bbf987642c99cf7e2b0f1016b1a2623af815a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
