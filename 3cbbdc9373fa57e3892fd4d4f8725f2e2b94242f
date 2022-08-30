@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9631e5_c1b7fc93",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-30T02:03:02Z",
+      "side": 1,
+      "message": "This is not correct for the first 60 seconds.  If you don\u0027t care the temperature for the first 60 seconds, could you add a comment for it so we know that this is not a bug.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "3cbbdc9373fa57e3892fd4d4f8725f2e2b94242f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
