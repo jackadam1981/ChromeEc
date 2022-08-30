@@ -4,6 +4,7 @@
  */
 
 #include <cros/thermistor/thermistor.dtsi>
+#include <cros/thermistor/rt9490.dtsi>
 
 / {
 	named-adc-channels {
@@ -55,6 +56,7 @@
 		charger {
 			compatible = "cros-ec,temp-sensor-rt9490",
 				     "cros-ec,temp-sensor";
+			thermistor = <&thermistor_rt9490>;
 			enum-name = "TEMP_SENSOR_CHARGER";
 			port = <&i2c_charger>;
 		};
@@ -62,5 +64,9 @@
 };
 
 &thermistor_3V3_30K9_47K_NCP15WB {
+	status = "okay";
+};
+
+&thermistor_rt9490 {
 	status = "okay";
 };
