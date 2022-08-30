@@ -16,6 +16,86 @@
       "message": "Experimenting with pigweed in Zephyr EC OS.",
       "revId": "f2f36897451c1eed72c54296d6ae3e8a4740c07b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "789c4eac_5bb4306d",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-30T20:21:57Z",
+      "side": 1,
+      "message": "Don\u0027t assume where this is checked out. For the ebuild case, this won\u0027t be built from the source tree.\n\nInstead, I think the Zephyr cmake system should make a variable like `ZEPHYR_PIGWEED_MODULE_DIR`. (https://docs.zephyrproject.org/latest/develop/modules.html#module-name)",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 101
+      },
+      "revId": "f2f36897451c1eed72c54296d6ae3e8a4740c07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0aaeb83_5ca34284",
+        "filename": "zephyr/Kconfig.pigweed",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-30T20:21:57Z",
+      "side": 1,
+      "message": "This should automatically be sourced if the module is registered with the build system.  Add it to `zephyr/zmake/zmake/modules.py`.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 53
+      },
+      "revId": "f2f36897451c1eed72c54296d6ae3e8a4740c07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ec076c_ad49b529",
+        "filename": "zephyr/Kconfig.pigweed",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-30T20:21:57Z",
+      "side": 1,
+      "message": "This is already defined by `Kconfig.zephyr`. Drop this line and move to `Kconfig.defaults`?",
+      "revId": "f2f36897451c1eed72c54296d6ae3e8a4740c07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa46cd8c_e6d193db",
+        "filename": "zephyr/Kconfig.pigweed",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-08-30T20:21:57Z",
+      "side": 1,
+      "message": "These all seem appropriate for `Kconfig.defaults`",
+      "revId": "f2f36897451c1eed72c54296d6ae3e8a4740c07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
