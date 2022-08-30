@@ -16,6 +16,24 @@
       "message": "Hi Daisuke, could you help confirm this build fail?",
       "revId": "253cfc7b96a55f56b1eb2f69332601aac73c85d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c00596_cf68c658",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-30T17:13:08Z",
+      "side": 1,
+      "message": "It passed locally for me.",
+      "parentUuid": "810f5d43_400496dd",
+      "revId": "253cfc7b96a55f56b1eb2f69332601aac73c85d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
