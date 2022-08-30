@@ -33,6 +33,24 @@
       "message": "Maybe I\u0027m missing something, but it looks like this variable is set and never used?..",
       "revId": "f85cf72c4673ea63797eb7aab3649e81a4c68671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161f1741_7d42cdb2",
+        "filename": "test/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-08-30T07:30:14Z",
+      "side": 1,
+      "message": "i\u0027ll update the unit test to use it...\nstay tuned: repo upload doesn\u0027t like how we construct\n\"char *argv[] \u003d ...\" as a local variable... it really\nwants \"static const...\" which i tend to agree with.\nthat\u0027s a massive tree-wide substitution effort.",
+      "parentUuid": "4bc41866_83b2c73b",
+      "revId": "f85cf72c4673ea63797eb7aab3649e81a4c68671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
