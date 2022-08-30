@@ -16,6 +16,52 @@
       "message": "I\u0027m not involved with the Corsola project, so likely can\u0027t be a good reviewer.",
       "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67bfa331_bdfcd49c",
+        "filename": "zephyr/projects/corsola/battery_magikarp.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-30T04:43:32Z",
+      "side": 1,
+      "message": "new files should not have \"all right reserved\"",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29c74f9_05f692a2",
+        "filename": "zephyr/projects/corsola/gpio_magikarp.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-30T04:43:32Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
