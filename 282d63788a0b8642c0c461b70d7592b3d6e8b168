@@ -51,6 +51,24 @@
       "parentUuid": "d7e2a60d_701edf49",
       "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef6a710_322ac717",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-30T19:35:27Z",
+      "side": 1,
+      "message": "Or maybe safer\n\n```bash\ncp -f build/$BOARD/RW/compile_commands.json .\n```",
+      "parentUuid": "0c10ebbc_382425d2",
+      "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
