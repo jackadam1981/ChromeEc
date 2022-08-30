@@ -51,6 +51,23 @@
       "message": "Looks like the repo is broken for firmware-zephyr-cq.",
       "revId": "253cfc7b96a55f56b1eb2f69332601aac73c85d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ecf59d4_9c74e4d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-30T20:47:33Z",
+      "side": 1,
+      "message": "Suite virtual_battery is broken because of this CL:\n \n    Assertion failed at CMAKE_SOURCE_DIR/default/src/virtual_battery.c:146: virtual_battery_test_read_regs: (expected not equal to word)\n50 !\u003d 75\n FAIL - test_read_regs in 0.000 seconds\n \nasemjonovs@, do you have any idea?",
+      "revId": "253cfc7b96a55f56b1eb2f69332601aac73c85d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
