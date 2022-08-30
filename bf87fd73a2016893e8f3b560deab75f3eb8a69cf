@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e75c33d_c81c586e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-08-30T23:57:45Z",
+      "side": 1,
+      "message": "Coverage impact for [build](https://cr-buildbucket.appspot.com/build/8804397330577463265):\n* 52605/101325 -\u003e 52605/101245 (+0/-80)\n* driver: 1619/3784 -\u003e 1619/3704 (+0/-80)\n* driver/accelgyro_bmi3xx.c: 0/488 -\u003e 0/408 (+0/-80)\n\nCommits:\n* [driver/bmi323: Update calibration code](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3807165) (Leo Huang \u003cleo.huang@bosch.corp-partner.google.com\u003e)",
+      "revId": "bf87fd73a2016893e8f3b560deab75f3eb8a69cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
