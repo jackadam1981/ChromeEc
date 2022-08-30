@@ -22,6 +22,30 @@
       },
       "revId": "4b963869462851b5a19c3cb1ae7a36d3ed12b34d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795322c2_694b1845",
+        "filename": "zephyr/shim/src/log_backend_console_buffer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-08-30T15:54:12Z",
+      "side": 1,
+      "message": "They are mutually exclusive. In LOG_MODE_IMMEDIATE, one byte is sent at a time no matter the size of char_out_buf. In LOG_MODE_DEFERRED, the data will be buffered up to the size of char_out_buf. So this will work fine in either mode, it would just be more efficient in LOG_MODE_DEFERRED if the buffer was bigger.\n\nI\u0027ll move the size to CONFIG that depends on the mode, i.e. it will be 1 byte in IMMEDIATE mode and ~128 bytes in LOG_MODE_DEFERRED.",
+      "parentUuid": "b489bb0c_e7623c62",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "4b963869462851b5a19c3cb1ae7a36d3ed12b34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
