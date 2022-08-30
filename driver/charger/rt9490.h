@@ -6,6 +6,8 @@
  */
 #include <stdbool.h>
 
+#include "temp_sensor.h"
+
 #ifndef __CROS_EC_RT9490_H
 #define __CROS_EC_RT9490_H
 
@@ -253,7 +255,8 @@ int rt9490_enable_pwm_1mhz(int chgnum, bool en);
 
 #endif /* __CROS_EC_RT9490_H */
 
-int rt9490_get_thermistor_val(int idx, int *temp_ptr);
+int rt9490_get_thermistor_val(const struct temp_sensor_t *sensor,
+			      int *temp_ptr);
 
 struct charger_thermistor_data_pair {
 	uint16_t mv; /* Scaled voltage level at ADC (in mV) */
