@@ -669,7 +669,8 @@ static void sm5803_init(int chgnum)
 			rv |= chg_write8(chgnum, 0x5C, 0x7A);
 		}
 
-		rv |= chg_write8(chgnum, 0x73, 0x22);
+		rv |= chg_write8(chgnum, 0x73, 0x24);
+		rv |= chg_write8(chgnum, 0x75, 0x08);
 		rv |= chg_write8(chgnum, 0x50, 0x88);
 		rv |= chg_read8(chgnum, 0x34, &reg);
 		reg |= BIT(7);
@@ -700,6 +701,13 @@ static void sm5803_init(int chgnum)
 	rv |= chg_read8(chgnum, SM5803_REG_PHOT1, &reg);
 	reg |= SM5803_PHOT1_COMPARATOR_EN;
 	reg &= ~SM5803_PHOT1_IBUS_PHOT_COMP_EN;
+	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
+
+	rv |= chg_read8(chgnum, SM5803_REG_PHOT1, &reg);
+	reg |= SM5803_PHOT1_DURATION;
+	reg |= SM5803_PHOT1_PHOT_DURATION_1;
+	reg |= SM5803_PHOT1_PHOT_DURATION_2;
+	reg |= SM5803_PHOT1_PHOT_DURATION_3;
 	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
 
 	/* Set DPM Voltage to 4200 mv, see b:172173517 */
