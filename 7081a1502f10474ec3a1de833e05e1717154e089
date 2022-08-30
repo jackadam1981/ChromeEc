@@ -52,6 +52,24 @@
       "parentUuid": "8bf4dad5_66ef760d",
       "revId": "7081a1502f10474ec3a1de833e05e1717154e089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c21ebd_382e5898",
+        "filename": "zephyr/dts/bindings/battery/smp,c31n2005.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-30T06:15:17Z",
+      "side": 1,
+      "message": "I see.\nI think we need to fix the device bindings for the batteries so that the fields are correctly described, and remove the ambiguity. I\u0027m happy to do this so this confusion does not happen in the future.",
+      "parentUuid": "109f0c9a_d1eacf09",
+      "revId": "7081a1502f10474ec3a1de833e05e1717154e089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
