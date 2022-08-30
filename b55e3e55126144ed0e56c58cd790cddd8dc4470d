@@ -22,6 +22,30 @@
       },
       "revId": "b55e3e55126144ed0e56c58cd790cddd8dc4470d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d36d3c49_6910e995",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-08-30T18:22:08Z",
+      "side": 1,
+      "message": "In this case, I think I\u0027m creating an array (not `$(command)`), which is later expanded as `\"${FLASHROM_CMDLINE[@]}\"`. I don\u0027t think it\u0027s creating a subshell, but let me know if I\u0027m missing something.",
+      "parentUuid": "df119494_be37b95e",
+      "range": {
+        "startLine": 1050,
+        "startChar": 18,
+        "endLine": 1050,
+        "endChar": 19
+      },
+      "revId": "b55e3e55126144ed0e56c58cd790cddd8dc4470d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
