@@ -854,7 +854,7 @@ function claim_pty() {
 
 	# reverse order to SIGSTOP parents before children
 	for pid in $(echo "${pids}" | tac -s " "); do
-		if ps -o cmd= "${pid}" | grep -qE "(servod|/sbin/init)"; then
+		if pgrep -f "(servod|/sbin/init)" > /dev/null; then
 			info "Skip stopping servod or init: process ${pid}."
 		else
 			info "Sending SIGSTOP to process ${pid}!"
