@@ -33,6 +33,24 @@
       "message": "Not really related to this CL but is there a reason that we cannot incorporate this step into the makefile target? In general it is considered bad practice to have a build target generated outside of the build directory but I think it makes sense in this context. Alternatively, it might make sense to point vscode at the build directory if possible as this would allow multiple `compile_commands.json` to coexist and be selected by vscode.",
       "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c10ebbc_382425d2",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-30T19:31:15Z",
+      "side": 1,
+      "message": "\u003e Not really related to this CL but is there a reason that we cannot incorporate this step into the makefile target? In general it is considered bad practice to have a build target generated outside of the build directory but I think it makes sense in this context.\n\nI did considered adding this, but there are a couple of reasons why opted to avoid this:\n\n1. I assumed the default use case would be to [generate all configs](https://crsrc.org/o/src/platform/ec/Makefile.ide;l\u003d24) and simply select the board you are developing from, similar to the other vscode configuration.\n2. Even invoking this generation step for a single board creates two options (RO and RW) that needs to be selected from.\n3. I didn\u0027t want to forcefully overwrite a working compile_commands.json\n\n\u003e Alternatively, it might make sense to point vscode at the build directory if possible as this would allow multiple  compile_commands.json  to coexist and be selected by vscode.\n\nAgreed, this seems better. Although, the frequent deleting and overwriting of the build directory might create issues for clangd.\n\n\n---\n\n\nHere is what I thought the default use case might look like:\n\n```bash\n# Generate all BOARD configs.\nmake all-ide-compile-cmds -j\n# Select your BOARD and RO/RW.\nln -sf build/$BOARD/RW/compile_commands.json\n```",
+      "parentUuid": "d7e2a60d_701edf49",
+      "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
