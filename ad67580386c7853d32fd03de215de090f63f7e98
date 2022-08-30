@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e40e668_fb808c9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-30T07:20:54Z",
+      "side": 1,
+      "message": "Please ensure running the preupload hook to correct the most style issues.",
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67bfa331_bdfcd49c",
@@ -36,6 +53,29 @@
         "startChar": 42,
         "endLine": 1,
         "endChar": 63
+      },
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f019944_e03e1031",
+        "filename": "zephyr/projects/corsola/battery_magikarp.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-08-30T07:20:54Z",
+      "side": 1,
+      "message": "ChromiumOS",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 33
       },
       "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
