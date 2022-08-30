@@ -42,11 +42,6 @@ enum cbi_ssfc_value_id {
 #define CBI_FW_CONFIG_ENUM(node) DT_STRING_TOKEN(node, enum_name)
 
 /*
- * Create an enum entry without a value (an enum with a following comma).
- */
-#define CBI_FW_CONFIG_ENUM_WITH_COMMA(node) CBI_FW_CONFIG_ENUM(node),
-
-/*
  * Create a single enum entry with assignment to the node's value,
  * along with a following comma.
  */
@@ -57,15 +52,15 @@ enum cbi_ssfc_value_id {
  * Generate a list of enum entries without a value.
  */
 #define CBI_FW_CONFIG_CHILD_ENUM_LIST(node) \
-	DT_FOREACH_CHILD_STATUS_OKAY(node, CBI_FW_CONFIG_ENUM_WITH_COMMA)
+	DT_FOREACH_CHILD_STATUS_OKAY_SEP(node, CBI_FW_CONFIG_ENUM, (, ))
 
 /*
  * Enum list of all fields.
  */
 enum cbi_fw_config_field_id {
 	DT_FOREACH_STATUS_OKAY(CBI_FW_CONFIG_COMPAT,
-			       CBI_FW_CONFIG_CHILD_ENUM_LIST)
-		CBI_FW_CONFIG_FIELDS_COUNT
+			       CBI_FW_CONFIG_CHILD_ENUM_LIST),
+	CBI_FW_CONFIG_FIELDS_COUNT
 };
 
 /*
