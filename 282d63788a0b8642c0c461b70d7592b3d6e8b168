@@ -69,6 +69,24 @@
       "parentUuid": "0c10ebbc_382425d2",
       "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6842ffd_1a16db28",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-08-30T21:08:58Z",
+      "side": 1,
+      "message": "+1 for Craig explation.\n\nCraig, is the safer suggestion with `cp` meant to be a safer alternative to `ln` in your previous comment? Or to the `mv` in the document?\n\nI can add also instructions to generate all the targets to the document.",
+      "parentUuid": "2ef6a710_322ac717",
+      "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
