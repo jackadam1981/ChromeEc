@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f468b27e_30c46d76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2022-08-30T15:02:30Z",
+      "side": 1,
+      "message": "Thank you ShouChieh, \n\nPlease inform Xivu team to check and confirm the data according to their real FW_CONFIG and SSFC define. Thanks!",
+      "revId": "41a1f91a07f765cc7976e2e1f2525abcf8ce4a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1ff45a_f43cc7c4",
+        "filename": "zephyr/projects/nissa/xivu/cbi.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2022-08-30T15:02:30Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to specify this?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "41a1f91a07f765cc7976e2e1f2525abcf8ce4a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
