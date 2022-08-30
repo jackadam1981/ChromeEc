@@ -51,6 +51,24 @@
       "parentUuid": "4bc41866_83b2c73b",
       "revId": "f85cf72c4673ea63797eb7aab3649e81a4c68671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f389fe1_8322005c",
+        "filename": "test/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-30T15:39:48Z",
+      "side": 1,
+      "message": "Would it be easier to edit the zephyr unit test to provide coverage for this command?",
+      "parentUuid": "161f1741_7d42cdb2",
+      "revId": "f85cf72c4673ea63797eb7aab3649e81a4c68671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
