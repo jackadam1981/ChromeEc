@@ -22,6 +22,30 @@
       },
       "revId": "2ab4a7c2b7b58c029a1adf3e3b0c97ecd11ca041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ced9d82_6a7f0483",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-08-30T18:10:36Z",
+      "side": 1,
+      "message": "TTL and push-pull mean the same thing when compared to open drain.",
+      "parentUuid": "9e7263ed_67894086",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "2ab4a7c2b7b58c029a1adf3e3b0c97ecd11ca041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
