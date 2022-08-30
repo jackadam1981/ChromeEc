@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2216db_498b98db",
+        "filename": "zephyr/test/drivers/common/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-30T22:26:29Z",
+      "side": 1,
+      "message": "Let\u0027s not do this here. We may see inadvertent power transitions back to G3 due to critical battery level causing other tests to fail. We can add this to a ZTEST suite before function for virtual_battery tests.",
+      "revId": "aee43d92cce75e98d6f69b0eed4b739b3a885857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
