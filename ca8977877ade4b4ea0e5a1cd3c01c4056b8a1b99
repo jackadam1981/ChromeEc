@@ -16,6 +16,23 @@
       "message": "No shutdown request after removing DISABLE_LID_SHUTDOWN GBB flag.",
       "revId": "ca8977877ade4b4ea0e5a1cd3c01c4056b8a1b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddd4bf3b_61e86397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-08-30T11:42:24Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1478788\u003e:\n\u003e * zephyr/projects/rex/prj.conf\n\u003e \n\nThanks Fabio",
+      "revId": "ca8977877ade4b4ea0e5a1cd3c01c4056b8a1b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
