@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac02fd60_d8dc2801",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/usb_pd_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-30T16:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a0231c_cd180178",
+      "revId": "d0b7632c6e83bc8e54c0f52adef1aa64a2501017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b3dc2aa_163365f0",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-30T15:45:39Z",
       "side": 1,
       "message": "Nit: `zassert_ok`",
+      "revId": "d0b7632c6e83bc8e54c0f52adef1aa64a2501017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b119c53_8fb35965",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/usb_pd_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-08-30T16:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b3dc2aa_163365f0",
       "revId": "d0b7632c6e83bc8e54c0f52adef1aa64a2501017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
