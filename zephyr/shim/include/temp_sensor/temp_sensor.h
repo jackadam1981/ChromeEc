@@ -12,7 +12,6 @@
 #ifdef CONFIG_PLATFORM_EC_TEMP_SENSOR
 
 #define ZSHIM_TEMP_SENSOR_ID(node_id) DT_STRING_UPPER_TOKEN(node_id, enum_name)
-#define TEMP_SENSOR_ID_WITH_COMMA(node_id) ZSHIM_TEMP_SENSOR_ID(node_id),
 
 #define HAS_POWER_GOOD_PIN(node_id) DT_NODE_HAS_PROP(node_id, power_good_pin) ||
 #define ANY_INST_HAS_POWER_GOOD_PIN \
@@ -20,27 +19,23 @@
 
 enum temp_sensor_id {
 #if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
-	DT_FOREACH_CHILD(DT_PATH(named_temp_sensors), TEMP_SENSOR_ID_WITH_COMMA)
+	DT_FOREACH_CHILD_SEP(DT_PATH(named_temp_sensors), ZSHIM_TEMP_SENSOR_ID,
+			     (, )),
 #endif /* named_temp_sensors */
-		TEMP_SENSOR_COUNT
+	TEMP_SENSOR_COUNT
 };
-
-#undef TEMP_SENSOR_ID_WITH_COMMA
 
 /* PCT2075 access array */
 #define ZSHIM_PCT2075_SENSOR_ID(node_id) \
 	DT_STRING_UPPER_TOKEN(node_id, pct2075_name)
-#define PCT2075_SENSOR_ID_WITH_COMMA(node_id) ZSHIM_PCT2075_SENSOR_ID(node_id),
 
 enum pct2075_sensor {
 #if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_pct2075)
-	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_pct2075,
-			       PCT2075_SENSOR_ID_WITH_COMMA)
+	DT_FOREACH_STATUS_OKAY_SEP(cros_ec_temp_sensor_pct2075,
+				   ZSHIM_PCT2075_SENSOR_ID, (, ))
 #endif
 		PCT2075_COUNT,
 };
-
-#undef PCT2075_SENSOR_ID_WITH_COMMA
 
 /* TMP112 access array */
 #define ZSHIM_TMP112_SENSOR_ID(node_id) \
