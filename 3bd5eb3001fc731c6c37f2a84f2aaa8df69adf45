@@ -117,6 +117,30 @@
       },
       "revId": "3bd5eb3001fc731c6c37f2a84f2aaa8df69adf45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995c2b7e_5378c95d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-08-30T00:49:09Z",
+      "side": 1,
+      "message": "Dear Bob:\nThis is picked by cherry, I don\u0027t quite understand what you mean, could you tell us what we need to do?",
+      "parentUuid": "8611768b_35ccae2e",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "3bd5eb3001fc731c6c37f2a84f2aaa8df69adf45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
