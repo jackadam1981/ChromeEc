@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f61d0c9_22f0936c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-08-30T09:06:44Z",
+      "side": 1,
+      "message": "Have copied all our comments from here to crossbug - b:244269664",
+      "parentUuid": "3813f09a_58d4cf72",
+      "revId": "5d7902cbfecad2254b23a7ca4f12c91dadf18c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6352d170_d19852ab",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
