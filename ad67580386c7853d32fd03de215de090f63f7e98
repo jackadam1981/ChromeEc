@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1837b340_68578d1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-08-30T13:27:07Z",
+      "side": 1,
+      "message": "I ran this one:\n~/trunk/src/repohooks/pre-upload.py\nand get the below message:\n\"[PASSED] repohooks passed\"\nIs it the right one to ran?",
+      "parentUuid": "3e40e668_fb808c9e",
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec72bfbe_72fe1046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-08-30T13:27:07Z",
+      "side": 1,
+      "message": "fix at patch 3",
+      "parentUuid": "7a2d7cd3_ed9a2198",
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67bfa331_bdfcd49c",
@@ -81,6 +117,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9f1352_a7536946",
+        "filename": "zephyr/projects/corsola/battery_magikarp.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-08-30T13:27:07Z",
+      "side": 1,
+      "message": "fix at patch 3",
+      "parentUuid": "1f019944_e03e1031",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 33
+      },
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba9525e_6b1bf45a",
+        "filename": "zephyr/projects/corsola/battery_magikarp.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-08-30T13:27:07Z",
+      "side": 1,
+      "message": "fix at patch 3",
+      "parentUuid": "67bfa331_bdfcd49c",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29c74f9_05f692a2",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-08-30T04:43:32Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 62
+      },
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a471a4b2_0bd638c8",
+        "filename": "zephyr/projects/corsola/gpio_magikarp.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-08-30T13:27:07Z",
+      "side": 1,
+      "message": "fix at patch 3",
+      "parentUuid": "e29c74f9_05f692a2",
       "range": {
         "startLine": 1,
         "startChar": 42,
@@ -121,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f51f3a3_540eb17c",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config_magikarp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-08-30T13:27:07Z",
+      "side": 1,
+      "message": "magikarp use ps8743 not tusb1064 (krabby).",
+      "parentUuid": "19fb3aac_d204ae68",
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5455bb6_01dce87a",
@@ -134,6 +260,24 @@
       "writtenOn": "2022-08-30T07:24:28Z",
       "side": 1,
       "message": "Does the usb-c stack differ from the krabby? If not, could you re-use the usbc_krabby.dt?",
+      "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1918ba75_c6fe9753",
+        "filename": "zephyr/projects/corsola/usbc_magikarp.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-08-30T13:27:07Z",
+      "side": 1,
+      "message": "magikarp use ps8743 not tusb1064 (krabby).",
+      "parentUuid": "c5455bb6_01dce87a",
       "revId": "ad67580386c7853d32fd03de215de090f63f7e98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
