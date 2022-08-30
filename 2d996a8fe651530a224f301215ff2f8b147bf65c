@@ -266,6 +266,24 @@
       "parentUuid": "c7e489c7_73cd361d",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85d8fff_1558c706",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-08-30T18:17:39Z",
+      "side": 1,
+      "message": "Which of the virtual mux platform(s) has this change been tested on?  Is it considered generally safe to enable for all virtual mux boards?",
+      "parentUuid": "834dbbe1_b0bf1f05",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
