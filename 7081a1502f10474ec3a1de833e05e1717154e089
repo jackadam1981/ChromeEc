@@ -34,6 +34,24 @@
       "parentUuid": "8bf4dad5_66ef760d",
       "revId": "7081a1502f10474ec3a1de833e05e1717154e089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "109f0c9a_d1eacf09",
+        "filename": "zephyr/dts/bindings/battery/smp,c31n2005.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1548949
+      },
+      "writtenOn": "2022-08-30T06:09:40Z",
+      "side": 1,
+      "message": "Because https://partnerissuetracker.corp.google.com/issues/244129838#comment4 and must be set like this.",
+      "parentUuid": "8bf4dad5_66ef760d",
+      "revId": "7081a1502f10474ec3a1de833e05e1717154e089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
