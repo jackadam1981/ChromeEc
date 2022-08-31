@@ -6231,6 +6231,7 @@ static void pe_vdm_response_entry(int port)
 	uint32_t *tx_payload;
 	uint8_t vdo_cmd;
 	svdm_rsp_func func = NULL;
+	uint16_t svid;
 
 	print_current_state(port);
 
@@ -6242,6 +6243,7 @@ static void pe_vdm_response_entry(int port)
 
 	/* Extract VDM command from the VDM header */
 	vdo_cmd = PD_VDO_CMD(rx_payload[0]);
+	svid = PD_VDO_VID(rx_payload[0]);
 	/* This must be a command request to proceed further */
 	if (PD_VDO_CMDT(rx_payload[0]) != CMDT_INIT) {
 		CPRINTF("ERR:CMDT:%d:%d\n", PD_VDO_CMDT(rx_payload[0]),
@@ -6332,6 +6334,12 @@ static void pe_vdm_response_entry(int port)
 		 * correct response type in the VDM header.
 		 */
 		vdo_len = func(port, tx_payload);
+
+		if (prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV30) {
+			if ((svid != USB_SID_DISPLAYPORT) || (svid != USB_VID_INTEL))
+				vdo_len = 0;
+		}
+
 		if (vdo_len > 0) {
 			tx_payload[0] |= VDO_CMDT(CMDT_RSP_ACK);
 			/*
