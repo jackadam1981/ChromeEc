@@ -160,6 +160,24 @@
       "parentUuid": "24bf4489_e918dd11",
       "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82249017_880f804c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-08-31T17:58:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c866847_8535d528",
+      "revId": "0c2a54f092818a39c3b48bb25e0c2a91f344afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
