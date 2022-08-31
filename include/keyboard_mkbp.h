@@ -18,4 +18,9 @@
  */
 int mkbp_keyboard_add(const uint8_t *buffp);
 
+#ifdef TEST_BUILD
+#include "ec_commands.h"
+void get_keyscan_config(struct ec_mkbp_config *dst);
+#endif
+
 #endif /* __CROS_EC_KEYBOARD_MKBP_H */
