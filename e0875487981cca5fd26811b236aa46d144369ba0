@@ -128,6 +128,24 @@
       "parentUuid": "897931a9_20d898ac",
       "revId": "e0875487981cca5fd26811b236aa46d144369ba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0323a0_bd26eead",
+        "filename": "zephyr/test/drivers/default/src/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-08-31T16:21:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de11164e_9892524b",
+      "revId": "e0875487981cca5fd26811b236aa46d144369ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
