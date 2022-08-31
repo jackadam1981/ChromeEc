@@ -39,6 +39,30 @@
       },
       "revId": "ecd0a2de0cda51fd97d6305f4de487c69f8f5c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25dd7629_8cb3b1f7",
+        "filename": "zephyr/projects/herobrine/i2c_evoker.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-08-31T07:35:41Z",
+      "side": 1,
+      "message": "I think so. CL:3858649 removes duplication across all variants. I used the dts include file for that. I didn\u0027t want to do it in one CL to discuss the ideas separately.",
+      "parentUuid": "fafb7826_82cca98d",
+      "range": {
+        "startLine": 6,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "ecd0a2de0cda51fd97d6305f4de487c69f8f5c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
