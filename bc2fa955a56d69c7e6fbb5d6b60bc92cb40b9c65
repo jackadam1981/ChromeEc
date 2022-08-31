@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec81c196_fcc6dc7c",
+        "filename": "zephyr/projects/herobrine/i2c.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-08-31T05:30:45Z",
+      "side": 0,
+      "message": "Shouldn\u0027t we put syc ppc here as (like we are putting below ppc_port0_alt)\t\n        ppc_port0_syv: syv682x@41 {\n\t\tcompatible \u003d \"silergy,syv682x\";\n\t\tstatus \u003d \"okay\";\n\t\treg \u003d \u003c0x41\u003e;\n\t\tfrs_en_gpio \u003d \u003c\u0026gpio_usb_c0_frs_en\u003e;\n\t};\n\nsimilarly for port1, ppc_port1_syv, and then assign that in usbc_{hoglin,villager}.dts file as (assuming that frs enable gpio will be defined, which is currently true)\n\tusbc {\n\t...\n\t\t\tppc \u003d \u003c\u0026ppc_port0_syv\u003e;",
+      "revId": "bc2fa955a56d69c7e6fbb5d6b60bc92cb40b9c65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

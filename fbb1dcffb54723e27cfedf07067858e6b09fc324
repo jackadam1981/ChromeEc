@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9708c8c2_b7715373",
+        "filename": "zephyr/projects/herobrine/i2c_hoglin.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-08-31T05:30:45Z",
+      "side": 1,
+      "message": "The gpio should be changed to C1 FRS gpio, gpio_usb_c1_frs_en, for second port.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "fbb1dcffb54723e27cfedf07067858e6b09fc324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274ac068_abb1aa36",
+        "filename": "zephyr/projects/herobrine/i2c_villager.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1511957
+      },
+      "writtenOn": "2022-08-31T05:30:45Z",
+      "side": 1,
+      "message": "The gpio should be changed to C1 FRS gpio, gpio_usb_c1_frs_en, for second port.",
+      "revId": "fbb1dcffb54723e27cfedf07067858e6b09fc324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
