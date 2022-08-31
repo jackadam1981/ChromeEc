@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de6ecf1_c2ba3f95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-31T16:01:27Z",
+      "side": 1,
+      "message": "LGTM but you\u0027ll need to add tests for this. You can see examples under zephyr/test/drivers/default/src/bmi160.c and .../bmi260.c.\n\nPlease feel free to reach out to the testing team if you need help:\n- email to zephyr-test-eng@google.com\n- as a YAQS question at http://yaqs/eng/t/zephyr-rtos-test",
+      "revId": "ec6bd240b9707885e0a056034227ac6750fb6b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
