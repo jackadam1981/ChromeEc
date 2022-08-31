@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60706b2_d74fb47b",
+        "filename": "zephyr/projects/nissa/craask/src/form_factor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-31T02:10:04Z",
+      "side": 1,
+      "message": "This may be a relative expensive call, maybe cache the result in a static bool (done in form_factor_init(), and use the bool instead e.g\n\nstatic bool use_alt_sensor;\n\nvoid motion_interrupt(enum gpio_signal signal)\n{\n   if (use_alt_sensor)\n      bmi3xx_interrupt(signal);\n   else\n      lsm6dso_interrupt(signal);\n}\n\n.. form_factor_init(void)\n{\n   use_alt_sensor \u003d cros_cbi_ssfc_check_match(\n       CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)));\n ...\n\n\nAn alternative is to remove the entry in gpio-interrupts and instead use the Zephyr gpio interrupt API to select the interrupt handler so that no checks are needed in the ISR at all.",
+      "revId": "7a2b6b9a4a7fe20448f12ba4136fceeefed394ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
