@@ -237,11 +237,10 @@ ZTEST_F(usbc_alt_mode, verify_discovery)
 
 ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 {
-	/* TODO(b/237553647): Test EC-driven mode entry (requires a separate
-	 * config).
-	 */
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
-	k_sleep(K_SECONDS(1));
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+		k_sleep(K_SECONDS(1));
+	}
 
 	/* Verify host command when VDOs are present. */
 	struct ec_response_typec_status status;
@@ -293,9 +292,12 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 		      USB_PD_MUX_HPD_IRQ, "Failed to set HPD IRQin mux");
 }
 
+/* Note: EC driven mode reentry is not supported and thus not tested. */
 ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 {
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	}
 	k_sleep(K_SECONDS(1));
 
 	/* DPM configures the partner on DP mode entry */
@@ -332,8 +334,10 @@ ZTEST_SUITE(usbc_alt_mode, drivers_predicate_post_main, usbc_alt_mode_setup,
  */
 ZTEST_F(usbc_alt_mode_dp_unsupported, verify_discovery)
 {
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
-	k_sleep(K_SECONDS(1));
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+		k_sleep(K_SECONDS(1));
+	}
 
 	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
 	struct ec_response_typec_discovery *discovery =
@@ -370,8 +374,10 @@ ZTEST_F(usbc_alt_mode_dp_unsupported, verify_discovery)
  */
 ZTEST_F(usbc_alt_mode_dp_unsupported, verify_displayport_mode_nonentry)
 {
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
-	k_sleep(K_SECONDS(1));
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+		k_sleep(K_SECONDS(1));
+	}
 
 	zassert_false(fixture->partner.displayport_configured, NULL);
 	int dp_attempts = atomic_get(&fixture->partner.mode_enter_attempts);
