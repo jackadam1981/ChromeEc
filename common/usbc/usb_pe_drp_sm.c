@@ -6333,6 +6333,7 @@ static void pe_vdm_response_entry(int port)
 		 * correct response type in the VDM header.
 		 */
 		vdo_len = func(port, tx_payload);
+
 		if (vdo_len > 0) {
 			tx_payload[0] |= VDO_CMDT(CMDT_RSP_ACK);
 			/*
