@@ -6535,9 +6535,13 @@
  * Apply fuzzer and test config overrides last, since fuzzers and tests need to
  * override some of the config flags in non-standard ways to mock only parts of
  * the system.
+ *
+ * Note: these configs are not applicable to Zephyr builds
  */
+#ifndef CONFIG_ZEPHYR
 #include "fuzz_config.h"
 #include "test_config.h"
+#endif
 
 /*
  * Validity checks to make sure some of the configs above make sense.
