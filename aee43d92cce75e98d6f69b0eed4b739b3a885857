@@ -34,6 +34,24 @@
       "parentUuid": "2e2216db_498b98db",
       "revId": "aee43d92cce75e98d6f69b0eed4b739b3a885857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7a77a6_f71debab",
+        "filename": "zephyr/test/drivers/common/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-08-31T17:13:49Z",
+      "side": 1,
+      "message": "Do we need to have 75% as the default? If so, we can use `cap` property in the smart battery DTS node. Also we can get rid of setting battery level here if we implement after functions for all tests that are touching battery level or other battery parameters (e.g. capacity).",
+      "parentUuid": "8b7c6db0_b92d1532",
+      "revId": "aee43d92cce75e98d6f69b0eed4b739b3a885857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
