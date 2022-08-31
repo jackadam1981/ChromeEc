@@ -34,6 +34,24 @@
       "parentUuid": "22ad2ffa_c1ce377e",
       "revId": "9319fdaa34df43e3729df230bcbd345afddf9b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515c7266_c71ce914",
+        "filename": "zephyr/projects/corsola/src/krabby/charger_workaround.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-08-31T09:02:25Z",
+      "side": 0,
+      "message": "No, but this file is required only if you are still using an engineering sample.\n\nOn krabby/tentacruel, the board id to chip version mapping is:\n- board id 0 -\u003e ES1\n- board id 1,2 -\u003e ES2\n- board id 3 -\u003e ES3\n\nif you need some of these workaround, please adjust the `if (system_get_board_version() ...)` lines to fit your board id.",
+      "parentUuid": "03a598d6_de0a4d94",
+      "revId": "9319fdaa34df43e3729df230bcbd345afddf9b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
