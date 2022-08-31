@@ -43,7 +43,7 @@ CREATE_SENSOR_DATA(cros_ec_drvdata_lsm6dsm, CREATE_SENSOR_DATA_LSM6DSM)
  * for each lsm6dsm accel instance(compatible = "cros-ec,lsm6dsm-accel")
  * in device tree.
  */
-CREATE_MOTION_SENSOR(cros_ec_lsm6dsm_accel, MOTIONSENSE_CHIP_LSM6DSm, \
+CREATE_MOTION_SENSOR(cros_ec_lsm6dsm_accel, MOTIONSENSE_CHIP_LSM6DSM, \
 		MOTIONSENSE_TYPE_ACCEL,	lsm6dsm_drv, \
 		LSM6DSM_ODR_MIN_VAL, LSM6DSM_ODR_MAX_VAL)
 

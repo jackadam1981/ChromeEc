@@ -45,6 +45,7 @@ endif()
 if(DEFINED CONFIG_BOARD_PUJJO)
 	project(pujjo)
 	zephyr_library_sources(
+			"pujjo/src/form_factor.c"
 			"pujjo/src/led.c"
 			"pujjo/src/keyboard.c"
 			"pujjo/src/hdmi.c"
