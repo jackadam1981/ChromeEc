@@ -353,6 +353,9 @@ uint16_t tcpc_get_alert_status(void)
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 			    int charge_mv)
 {
+	if (port == CHARGER_SOLO) {
+		charger_set_input_current_limit(CHARGER_SOLO, max_ma);
+	}
 }
 
 __override int extpower_is_present(void)
@@ -494,3 +497,21 @@ const struct temp_sensor_t temp_sensors[] = {
 			    .idx = ADC_TEMP_SENSOR_4 },
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+/*
+ * The board_get_charger_voltage_min() will be called by the sm5803.c
+ * to get the min VSYS/VBAT.
+ */
+int board_get_charger_voltage_min(void)
+{
+	return 8400; /* mV */
+}
+
+/*
+ * The board_get_charger_voltage_max() will be called by the sm5803.c
+ * to get the max VSYS/VBAT.
+ */
+int board_get_charger_voltage_max(void)
+{
+	return 8600; /* mV */
+}
