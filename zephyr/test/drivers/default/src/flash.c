@@ -18,6 +18,10 @@
 
 #define WP_L_GPIO_PATH DT_PATH(named_gpios, wp_l)
 
+#ifndef CONFIG_FLASH_ERASED_VALUE32
+#define CONFIG_FLASH_ERASED_VALUE32 (-1U)
+#endif
+
 static int gpio_wp_l_set(int value)
 {
 	const struct device *wp_l_gpio_dev =
@@ -350,6 +354,72 @@ ZTEST_USER(flash, test_console_cmd_flashwp__bool_true)
 ZTEST_USER(flash, test_console_cmd_flashwp__bad_param)
 {
 	zassert_ok(!shell_execute_cmd(get_ec_shell(), "flashwp xyz"), NULL);
+}
+
+ZTEST_USER(flash, test_crec_flash_is_erased__happy)
+{
+	/* Create a simulated region of erased flash. Offset and size are
+	 * arbitrary.
+	 */
+
+	uint8_t out_buf[sizeof(struct ec_params_flash_write) + TEST_BUF_SIZE];
+
+	struct ec_params_flash_write *write_params =
+		(struct ec_params_flash_write *)out_buf;
+	struct host_cmd_handler_args write_args =
+		BUILD_HOST_COMMAND_SIMPLE(EC_CMD_FLASH_WRITE, 0);
+
+	write_params->offset = 0x10000;
+	write_params->size = TEST_BUF_SIZE;
+	write_args.params = write_params;
+	write_args.params_size = sizeof(*write_params) + TEST_BUF_SIZE;
+
+	/* Fill buffer following the write params with
+	 * CONFIG_FLASH_ERASED_VALUE32
+	 */
+	for (size_t i = 0; i < (TEST_BUF_SIZE / sizeof(uint32_t)); i++) {
+		write_params->data.words32[i] = CONFIG_FLASH_ERASED_VALUE32;
+	}
+	zassert_ok(host_command_process(&write_args), NULL);
+
+	zassert_true(crec_flash_is_erased(write_params->offset,
+					  write_params->size),
+		     NULL);
+}
+
+ZTEST_USER(flash, test_crec_flash_is_erased__not_erased)
+{
+	/* Create a simulated region of non-erased flash. Offset and size are
+	 * arbitrary.
+	 */
+
+	uint8_t out_buf[sizeof(struct ec_params_flash_write) + TEST_BUF_SIZE];
+
+	struct ec_params_flash_write *write_params =
+		(struct ec_params_flash_write *)out_buf;
+	struct host_cmd_handler_args write_args =
+		BUILD_HOST_COMMAND_SIMPLE(EC_CMD_FLASH_WRITE, 0);
+
+	write_params->offset = 0x10000;
+	write_params->size = TEST_BUF_SIZE;
+	write_args.params = write_params;
+	write_args.params_size = sizeof(*write_params) + TEST_BUF_SIZE;
+
+	/* Fill buffer following the write params with
+	 * CONFIG_FLASH_ERASED_VALUE32
+	 */
+	for (size_t i = 0; i < (TEST_BUF_SIZE / sizeof(uint32_t)); i++) {
+		write_params->data.words32[i] = CONFIG_FLASH_ERASED_VALUE32;
+	}
+
+	/* Mess up an arbitrary byte */
+	write_params->data.bytes[64] = 0xEC;
+
+	zassert_ok(host_command_process(&write_args), NULL);
+
+	zassert_false(crec_flash_is_erased(write_params->offset,
+					   write_params->size),
+		      NULL);
 }
 
 static void flash_reset(void)
