@@ -52,6 +52,24 @@
       "parentUuid": "8b7c6db0_b92d1532",
       "revId": "aee43d92cce75e98d6f69b0eed4b739b3a885857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25006859_8219ecc6",
+        "filename": "zephyr/test/drivers/common/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-31T17:27:52Z",
+      "side": 1,
+      "message": "\u003e . Also we can get rid of setting battery level here\n\nYes, I agree but it breaks somes existing tests (b/244366201). So, I think we should proceed with this fix to eliminate the battery level jump and unblock CL:3853307. It\u0027ll create the minimum friction. We can work on b/244366201 after that with care.",
+      "parentUuid": "0b7a77a6_f71debab",
+      "revId": "aee43d92cce75e98d6f69b0eed4b739b3a885857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
