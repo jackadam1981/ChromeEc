@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72ac2fa0_758ef9ab",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-31T16:35:26Z",
+      "side": 1,
+      "message": "I need to double check if the sequence can be changed.",
+      "parentUuid": "345dd28f_1d2c357f",
+      "revId": "f5afd519756c97009abec9d08b5551aead4e7fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88247117_99de72d4",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
