@@ -39,6 +39,30 @@
       },
       "revId": "8ca6289335b134cc41e893d09b1d002c91a59621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938fc149_715012aa",
+        "filename": "zephyr/dts/bindings/vendor-prefixes.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2022-08-31T16:52:48Z",
+      "side": 1,
+      "message": "Yes, this is causing a build failure.  Please do not submit to CQ until this is addressed.  From build logs: `AssertionError: atl Battery vendor`",
+      "parentUuid": "343a8c66_416b1eae",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "8ca6289335b134cc41e893d09b1d002c91a59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
