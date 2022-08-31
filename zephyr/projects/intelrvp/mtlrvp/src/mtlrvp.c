@@ -41,6 +41,10 @@
 #define I2C_ADDR_SN5S330_P0 0x40
 #define I2C_ADDR_SN5S330_P1 0x41
 
+#define MTLP_DDR5_RVP_SKU_BOARD_ID 0x01
+#define MTLP_LP5_RVP_SKU_BOARD_ID 0x02
+#define MTL_RVP_BOARD_ID(id) ((id) & 0x3F)
+
 /* IOEX ports */
 enum ioex_port {
 	IOEX_KBD = 0,
@@ -61,6 +65,7 @@ enum usbc_port {
 	USBC_PORT_COUNT
 };
 BUILD_ASSERT(USBC_PORT_COUNT == CONFIG_USB_PD_PORT_MAX_COUNT);
+
 
 /* USB-C PPC configuration */
 struct ppc_config_t ppc_chips[] = {
@@ -214,7 +219,7 @@ __override int board_get_version(void)
 
 	/*
 	 * IOExpander that has Board ID information is on DSW-VAL rail on
-	 * ADL RVP. On cold boot cycles, DSW-VAL rail is taking time to settle.
+	 * MTL RVP. On cold boot cycles, DSW-VAL rail is taking time to settle.
 	 * This loop retries to ensure rail is settled and read is successful
 	 */
 	for (i = 0; i < RVP_VERSION_READ_RETRY_CNT; i++) {
@@ -277,6 +282,43 @@ static void board_int_init(void)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_ccd_mode));
 }
 
+static void configure_retimer_usbmux(void)
+{
+	switch (MTL_RVP_BOARD_ID(board_get_version())) {
+	case MTLP_LP5_RVP_SKU_BOARD_ID:
+		/* No retimer on Port 0 */
+		usb_muxes[USBC_PORT_C0].driver = NULL;
+#if defined(HAS_TASK_PD_C2)
+		usb_muxes[USBC_PORT_C1].driver = &virtual_usb_mux_driver;
+		usb_muxes[USBC_PORT_C1].hpd_update = &virtual_hpd_update;
+#endif
+#if defined(HAS_TASK_PD_C2)
+		usb_muxes[USBC_PORT_C2].i2c_addr_flags = 0x56;
+#endif
+#if defined(HAS_TASK_PD_C3)
+		usb_muxes[USBC_PORT_C3].i2c_addr_flags = 0x57;
+#endif
+		break;
+		/* Add additional board SKUs */
+	default:
+		break;	}
+}
+
+__override bool board_is_tbt_usb4_port(int port)
+{
+	bool tbt_usb4 = true;
+	switch (MTL_RVP_BOARD_ID(board_get_version())) {
+	case MTLP_LP5_RVP_SKU_BOARD_ID:
+		/* No retimer on port 0; and port 1 is not available */
+		if ((port == USBC_PORT_C0) || (port == USBC_PORT_C1))
+			tbt_usb4 = false;
+		break;
+	default:
+		break;
+	}
+	return tbt_usb4;
+}
+
 static int board_pre_task_peripheral_init(const struct device *unused)
 {
 	ARG_UNUSED(unused);
@@ -292,6 +334,9 @@ static int board_pre_task_peripheral_init(const struct device *unused)
 
 	/* Make sure SBU are routed to CCD or AUX based on CCD status at init */
 	board_connect_c0_sbu_deferred();
+
+	/* Configure board specific retimer & mux */
+	configure_retimer_usbmux();
 
 	return 0;
 }
