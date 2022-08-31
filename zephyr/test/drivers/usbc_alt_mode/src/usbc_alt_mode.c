@@ -237,10 +237,9 @@ ZTEST_F(usbc_alt_mode, verify_discovery)
 
 ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 {
-	/* TODO(b/237553647): Test EC-driven mode entry (requires a separate
-	 * config).
-	 */
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	}
 	k_sleep(K_SECONDS(1));
 
 	/* Verify host command when VDOs are present. */
@@ -295,7 +294,9 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_entry)
 
 ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 {
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	}
 	k_sleep(K_SECONDS(1));
 
 	/* DPM configures the partner on DP mode entry */
@@ -306,7 +307,15 @@ ZTEST_F(usbc_alt_mode, verify_displayport_mode_reentry)
 	k_sleep(K_SECONDS(1));
 	zassert_false(fixture->partner.displayport_configured, NULL);
 
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	} else {
+		struct usbc_alt_mode_fixture *test_fixture = fixture;
+
+		tcpci_partner_common_send_hard_reset(&test_fixture->partner);
+		k_sleep(K_SECONDS(5));
+	}
+
 	k_sleep(K_SECONDS(1));
 	zassert_true(fixture->partner.displayport_configured, NULL);
 
@@ -332,7 +341,9 @@ ZTEST_SUITE(usbc_alt_mode, drivers_predicate_post_main, usbc_alt_mode_setup,
  */
 ZTEST_F(usbc_alt_mode_dp_unsupported, verify_discovery)
 {
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	}
 	k_sleep(K_SECONDS(1));
 
 	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
@@ -370,7 +381,9 @@ ZTEST_F(usbc_alt_mode_dp_unsupported, verify_discovery)
  */
 ZTEST_F(usbc_alt_mode_dp_unsupported, verify_displayport_mode_nonentry)
 {
-	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	}
 	k_sleep(K_SECONDS(1));
 
 	zassert_false(fixture->partner.displayport_configured, NULL);
