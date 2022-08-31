@@ -53,11 +53,13 @@ $(out)/RO/compile_commands.json: private objs := $(ro-objs:.o=.json)
 $(out)/RO/compile_commands.json: $(ro-objs:.o=.compile_cmd.json)
 	$(call quiet,combine_compile_cmd_json,COMBINE)
 
+# printf '        "%s",\n' arm-none-eabi-gcc -c -std=gnu11 $(C_WARN) $(ide_cflags)      \
+# 	-o $(@D)/$(@F:.compile_cmd.json=.o)                     >>$@  ;\
+
 cmd_c_to_compile_cmd_json =                                                    \
 	printf '{\n'                                                     >$@  ;\
 	printf '    "arguments": [\n'                                   >>$@  ;\
-	printf '        "%s",\n' cc -c -std=gnu11 $(C_WARN) $(ide_cflags)      \
-		-o $(@D)/$(@F:.compile_cmd.json=.o)                     >>$@  ;\
+	printf '        "%s",\n' $(patsubst %.compile_cmd.json,%.o,$(call cmd_c_to_o))    >>$@  ;\
 	printf '        "$<"\n'                                         >>$@  ;\
 	printf '    ],\n'                                               >>$@  ;\
 	printf '    "directory": "$(ide_ec_path)",\n'                   >>$@  ;\
