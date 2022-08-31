@@ -218,4 +218,18 @@ void ap_power_force_shutdown(enum ap_power_shutdown_reason reason);
  */
 void ap_power_init_reset_log(void);
 
+/**
+ * @brief Inform if it is OK to power up the AP.
+ *
+ * This will check if battery charge level is critically low.
+ *
+ * @return 'true' if AP is OK to power up, otherwise returns 'false'.
+ */
+bool ap_power_is_ok_to_power_up(void);
+
+/**
+ * @brief sets power_up_inhibted flag.
+ * @param true/false.
+ */
+void set_power_up_inhibited(bool val);
 #endif /* __AP_POWER_AP_POWER_INTERFACE_H__ */

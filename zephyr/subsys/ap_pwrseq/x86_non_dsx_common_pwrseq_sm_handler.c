@@ -227,6 +227,36 @@ void rsmrst_pass_thru_handler(void)
 	}
 }
 
+static int wait_power_up_ok(void)
+{
+#define CHARGER_INITIALIZED_TRIES 40
+#define CHARGER_INITIALIZED_DELAY_MS 100
+	int tries = 0;
+	/*
+	 * Allow charger to be initialized for up to defined tries,
+	 * while moving from G3 -> S5 or in case we're trying to boot
+	 * the AP with no battery.
+	 */
+	while ((tries < CHARGER_INITIALIZED_TRIES) &&
+	       !ap_power_is_ok_to_power_up()) {
+		msleep(CHARGER_INITIALIZED_DELAY_MS);
+		tries++;
+	}
+	/*
+	 * Return to G3 if battery level is too low. Set
+	 * power_up_inhibited in order to check the eligibility to boot
+	 * AP up after battery SOC changes.
+	 */
+	if (tries == CHARGER_INITIALIZED_TRIES) {
+		LOG_INF("power-up inhibited");
+		set_power_up_inhibited(true);
+		return -ETIMEDOUT;
+	}
+	set_power_up_inhibited(false);
+
+	return 0;
+}
+
 /* Common power sequencing */
 static int common_pwr_sm_run(int state)
 {
@@ -249,6 +279,12 @@ static int common_pwr_sm_run(int state)
 		break;
 
 	case SYS_POWER_STATE_G3S5:
+		if (wait_power_up_ok()) {
+			LOG_INF("Power up inhibited!");
+			ap_power_force_shutdown(
+				AP_POWER_SHUTDOWN_BATTERY_INHIBIT);
+			return SYS_POWER_STATE_G3;
+		}
 		if ((power_get_signals() & PWRSEQ_G3S5_UP_SIGNAL) ==
 		    PWRSEQ_G3S5_UP_VALUE)
 			return SYS_POWER_STATE_S5;
