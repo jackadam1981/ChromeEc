@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca87175_9cb93d93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456082
+      },
+      "writtenOn": "2022-08-31T16:17:43Z",
+      "side": 1,
+      "message": "File \"/mnt/host/source/src/third_party/zephyr/main/scripts/dts/python-devicetree/src/devicetree/edtlib.py\", line 2189, in load_vendor_prefixes_txt\n-- In: /mnt/host/source/src/platform/ec/build/zephyr/winterhold/build-rw/zephyr, command: /usr/bin/python3.6;/mnt/host/source/src/third_party/zephyr/main/scripts/dts/gen_defines.py;--dts;/mnt/host/source/src/platform/ec/build/zephyr/winterhold/build-rw/zephyr/zephyr.dts.pre;--dtc-flags;\u0027\u0027;--bindings-dirs;/mnt/host/source/src/platform/ec/zephyr/dts/bindings;/mnt/host/source/src/third_party/zephyr/main/dts/bindings;--header-out;/mnt/host/source/src/platform/ec/build/zephyr/winterhold/build-rw/zephyr/include/generated/devicetree_generated.h.new;--dts-out;/mnt/host/source/src/platform/ec/build/zephyr/winterhold/build-rw/zephyr/zephyr.dts.new;--edt-pickle-out;/mnt/host/source/src/platform/ec/build/zephyr/winterhold/build-rw/zephyr/edt.pickle;--vendor-prefixes;/mnt/host/source/src/platform/ec/zephyr/dts/bindings/vendor-prefixes.txt;--vendor-prefixes;/mnt/host/source/src/third_party/zephyr/main/dts/bindings/vendor-prefixes.txt\n    assert len(vnd_vendor) \u003d\u003d 2, line\n-- Configuring incomplete, errors occurred!\nAssertionError: atl Battery vendor",
+      "revId": "8ca6289335b134cc41e893d09b1d002c91a59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "343a8c66_416b1eae",
