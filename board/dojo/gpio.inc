@@ -118,6 +118,9 @@ ALTERNATE(PIN_MASK(I, 0b11001001), 0, MODULE_ADC, 0) /* ADC 0,3,6,7 */
 /* SPI */
 ALTERNATE(PIN_MASK(M, 0x33), 0, MODULE_SPI, 0) /* SPI */
 
+/* KEYBOARD */
+GPIO(EC_KSO_02_INV, PIN(KSO_L, 2), GPIO_OUT_HIGH) /* KSO2 inverted */
+
 /* Unimplemented Pins  */
 GPIO(PG_PP5000_S5_OD,        PIN(D, 2), GPIO_INPUT)
 /* *_ODL pin has external pullup so don't pull it down. */
