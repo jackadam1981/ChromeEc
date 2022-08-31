@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa261d01_4b49ba51",
+        "filename": "zephyr/test/drivers/host_cmd/src/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-31T14:49:03Z",
+      "side": 1,
+      "message": "These numbers are hard coded in the common/pd_log.c and are hard coded as a contract between the EC and AP. I went back and forth on defining these in kconfig but choose not to. I guess I could define them as static const so they\u0027re documented.",
+      "parentUuid": "9331795e_2758e1eb",
+      "revId": "ad2eaae7d08c9b2143a179c591a093dc5dfcc128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a5cc74e_1d81971b",
         "filename": "zephyr/test/drivers/host_cmd/src/pd_log.c",
         "patchSetId": 2
