@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df97781d_4658a276",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-08-31T23:51:01Z",
+      "side": 1,
+      "message": "Rather than duplicating the entire value cached by `tcpci_get_chip_info`, can we only cache the values that this function reads (PID, DID and version)?\n\nI envision something like\n\n```\nstatic struct {\n    uint16_t vid;\n    ...\n} cached_info[PORT_COUNT]\n\ntcpci_get_chip_info(port, live, chip_info);\nif (!cached_info[port].vid \u0026\u0026 !live)\n    fill_cache();\n\nchip_info-\u003evendor_id \u003d cached_info[port].vid;\n```",
+      "revId": "838ca0d9f8797035f26b4e68ad12bedf895831d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
