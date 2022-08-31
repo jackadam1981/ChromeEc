@@ -12,13 +12,7 @@
 #include "mag_cal.h"
 #include "mag_bmm150.h"
 #include "mag_lis2mdl.h"
-
-/*
- * 7-bit address is 110101xb. Where 'x' is determined
- * by the voltage on the ADDR pin
- */
-#define LSM6DSM_ADDR0_FLAGS 0x6a
-#define LSM6DSM_ADDR1_FLAGS 0x6b
+#include "driver/accelgyro_lsm6dsm_public.h"
 
 /* COMMON DEFINE FOR ACCEL-GYRO SENSORS */
 #define LSM6DSM_EN_BIT 0x01
@@ -195,11 +189,6 @@ struct fstatus {
 	uint16_t len;
 	uint16_t pattern;
 };
-
-/* Absolute maximum rate for acc and gyro sensors */
-#define LSM6DSM_ODR_MIN_VAL 13000
-#define LSM6DSM_ODR_MAX_VAL \
-	MOTION_MAX_SENSOR_FREQUENCY(416000, LSM6DSM_ODR_MIN_VAL)
 
 /* ODR reg value from selected data rate in mHz */
 #define LSM6DSM_ODR_TO_REG(_odr) (__fls(_odr / LSM6DSM_ODR_MIN_VAL) + 1)
