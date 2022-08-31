@@ -455,4 +455,11 @@ extern const struct charger_drv sm5803_drv;
 /* Expose interrupt handler for processing in PD_INT task when needed */
 void sm5803_handle_interrupt(int chgnum);
 
+#ifndef CONFIG_BATTERY
+/* Let the board layer to customize the min VSYS/VBAT if there is no battery */
+extern int board_get_charger_voltage_min(void);
+/* Let the board layer to customize the max VSYS/VBAT if there is no battery */
+extern int board_get_charger_voltage_max(void);
+#endif
+
 #endif
