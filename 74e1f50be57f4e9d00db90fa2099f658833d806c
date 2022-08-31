@@ -16,6 +16,24 @@
       "message": "Is there a better way to create the variant specific dts files that has less duplication of the i2c info?",
       "revId": "74e1f50be57f4e9d00db90fa2099f658833d806c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b671e92_a85fb09c",
+        "filename": "zephyr/projects/herobrine/i2c_villager.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-08-31T03:29:43Z",
+      "side": 1,
+      "message": "You can have a common base file with all the common information in it,\nand only have the extra variant specific config in the variant file.\ne.g have i2c.dts that contains all the common config, then have i2c_villager.dts that has the villager specific config in it.\nThen you include both i2c.dts and i2c_villager.dts in your list of files (in this case, leave i2c.dts in the main macro, and just add i2c_villager.dts into the villager specific list.",
+      "parentUuid": "07f6fe06_89a1c0db",
+      "revId": "74e1f50be57f4e9d00db90fa2099f658833d806c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
