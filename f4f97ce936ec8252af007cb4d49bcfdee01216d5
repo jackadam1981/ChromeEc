@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcc2cc5e_65dff45b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-08-31T20:59:50Z",
+      "side": 1,
+      "message": "I understand that, but if you\u0027re fixing a bug, I think it makes sense to add a test for that bug in particular in the same CL, especially if coverage is assessed on a per-CL basis.",
+      "parentUuid": "4c9e998a_b9527317",
+      "revId": "f4f97ce936ec8252af007cb4d49bcfdee01216d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a66644ea_ebd7d999",
         "filename": "common/power_button.c",
         "patchSetId": 3
