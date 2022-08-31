@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82632d98_959ca349",
+        "filename": "zephyr/test/drivers/host_cmd/src/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-31T15:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa261d01_4b49ba51",
+      "revId": "ad2eaae7d08c9b2143a179c591a093dc5dfcc128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a5cc74e_1d81971b",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-08-31T14:25:13Z",
       "side": 1,
       "message": "magic number",
+      "revId": "ad2eaae7d08c9b2143a179c591a093dc5dfcc128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e3ddbb9_ebb463c6",
+        "filename": "zephyr/test/drivers/host_cmd/src/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-08-31T15:52:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5cc74e_1d81971b",
       "revId": "ad2eaae7d08c9b2143a179c591a093dc5dfcc128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
