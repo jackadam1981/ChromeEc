@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63f9339e_8139d0c5",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-08-31T16:34:51Z",
+      "side": 1,
+      "message": "If we can accept to add some battery api in the board/shotzo/, for example, fake_battery.c, I think we can remove all the #ifdef CONFIG_BATTERY from this driver.\n\nIf we use IS_ENABLED(), there will be some link errors to the battery api like battery_get_info().",
+      "parentUuid": "88247117_99de72d4",
+      "revId": "f5afd519756c97009abec9d08b5551aead4e7fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de12e3c0_5b640810",
         "filename": "driver/charger/sm5803.h",
         "patchSetId": 1
