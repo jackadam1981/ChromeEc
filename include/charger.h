@@ -395,4 +395,9 @@ enum ec_error_list charger_enable_bypass_mode(int chgnum, int enable);
  */
 void print_charger_debug(int chgnum);
 
+/* Let the board layer to customize the min VSYS/VBAT if there is no battery */
+int board_get_charger_voltage_min(void);
+/* Let the board layer to customize the max VSYS/VBAT if there is no battery */
+int board_get_charger_voltage_max(void);
+
 #endif /* __CROS_EC_CHARGER_H */
