@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66644ea_ebd7d999",
+        "filename": "common/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-08-31T19:05:38Z",
+      "side": 1,
+      "message": "If duration \u003d\u003d 0, we would still skip msleep (and only \u0027release\u0027 would be executed). So, I think we still need to do something...\n\nEither 1. we reject (no-op) a call with duration \u003d\u003d 0, or 2. make the first call immediate (calling power_button_change_deferred without hook_call_deferred) or 3. check ms \u003c\u003d 0 in command_powerbtn.\n\n#2 is ideal if it works. #1 is not ideal because failure is silent. #3 isn\u0027t ideal because power_button_simulate_press itself isn\u0027t fixed.",
+      "range": {
+        "startLine": 210,
+        "startChar": 14,
+        "endLine": 210,
+        "endChar": 15
+      },
+      "revId": "f4f97ce936ec8252af007cb4d49bcfdee01216d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
