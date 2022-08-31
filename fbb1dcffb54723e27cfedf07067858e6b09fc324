@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b678d1_def0f3db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2022-08-31T06:04:09Z",
+      "side": 1,
+      "message": "This patch duplicates work done in CL:3858648. In my opinion it would be good to merge the change \u0027i2c dts file per board variant\u0027 first and then fix the PPC node properties.",
+      "revId": "fbb1dcffb54723e27cfedf07067858e6b09fc324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9708c8c2_b7715373",
