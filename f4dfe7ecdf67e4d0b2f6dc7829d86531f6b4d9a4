@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99601aa0_ecbb1950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-31T22:55:41Z",
+      "side": 1,
+      "message": "Overall, I think the names of the IRQ handler, IRQ number macro, and the enum are pretty bad, but this CL is not at fault.",
+      "parentUuid": "02149cbb_a888a0e7",
+      "revId": "f4dfe7ecdf67e4d0b2f6dc7829d86531f6b4d9a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a20947bd_12a67812",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-23T03:16:51Z",
       "side": 1,
       "message": "Just walking through the logic for this \"out loud\".\n- This block is wrapped in `#ifdef CHIP_FAMILY_STM32F0` from [line 334]( https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/69/3656369/7/chip/stm32/dma.c#334), so it only applies to stm32f0\n- For stm32f0, `STM32_DMAC_COUNT` is defined as [7 on line 719 of registers-stm32f0.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/chip/stm32/registers-stm32f0.h;l\u003d719) or [5 on line 722 of registers-stm32f0.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/chip/stm32/registers-stm32f0.h;l\u003d722). \n- The value depends upon this condition from [line 708 of registers-stm32f0.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/chip/stm32/registers-stm32f0.h;l\u003d708): \n`#if !defined(CHIP_VARIANT_STM32F03X) \u0026\u0026 !defined(CHIP_VARIANT_STM32F05X)`\n- The names of DMAC channels are set to [one more than their actual values](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/chip/stm32/registers-stm32f0.h;l\u003d680) (i.e. `STM32_MAC_CH4` has a value of 4), and `STM32_DMAC_COUNT` is intended to represent the number of channels, not the highest channel number.\n- For the 7 channel DMA: This function should execute on channels `STM32_DMAC4`, `STM32_DMAC5`, `STM32_DMAC6`, and `STM32_DMAC7` (with integer values of 3, 4, 5, and 6). The loop starts at `STM32_DMAC4` (3) and should end after `STM32_DMAC7` (6). This all seems correct.\n- For the 5 channel DMA, this function should execute on channels `STM32_DMAC4`, `STM32_DMAC5` (with integer values of 3 and 4). The loop starts at `STM32_DMAC4` (3) and should end `STM32_DMAC5` (4). This all seems correct.",
+      "revId": "f4dfe7ecdf67e4d0b2f6dc7829d86531f6b4d9a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338fc938_81c797d8",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-31T22:55:41Z",
+      "side": 1,
+      "message": "Yep, that\u0027s how I see it, but I have not confirmed all the chip variant differences an conditions.",
+      "parentUuid": "a20947bd_12a67812",
       "revId": "f4dfe7ecdf67e4d0b2f6dc7829d86531f6b4d9a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
