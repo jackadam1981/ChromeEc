@@ -679,15 +679,28 @@ static int ps8xxx_lpm_recovery_delay(int port)
 static int ps8xxx_get_chip_info(int port, int live,
 				struct ec_response_pd_chip_info_v1 *chip_info)
 {
+	static struct ec_response_pd_chip_info_v1
+		cached_info[CONFIG_USB_PD_PORT_MAX_COUNT];
+	struct ec_response_pd_chip_info_v1 *i;
 	int val;
 	int reg;
-	int rv = tcpci_get_chip_info(port, live, chip_info);
+	int rv;
 
+	if (port >= board_get_usb_pd_port_count())
+		return EC_ERROR_INVAL;
+
+	i = &cached_info[port];
+
+	/* If already cached && live data is not asked, return cached value */
+	if (i->vendor_id && !live) {
+		if (chip_info)
+			memcpy(chip_info, i, sizeof(*i));
+		return EC_SUCCESS;
+	}
+
+	rv = tcpci_get_chip_info(port, live, i);
 	if (rv != EC_SUCCESS)
 		return rv;
-
-	if (chip_info == NULL)
-		return EC_SUCCESS;
 
 	if (!live) {
 		uint16_t pid;
@@ -696,40 +709,37 @@ static int ps8xxx_get_chip_info(int port, int live,
 		if (pid == 0)
 			return EC_ERROR_UNKNOWN;
 		product_id[port] = pid;
-		chip_info->vendor_id = PS8XXX_VENDOR_ID;
-		chip_info->product_id = product_id[port];
+		i->vendor_id = PS8XXX_VENDOR_ID;
+		i->product_id = product_id[port];
 	}
 
 #ifdef CONFIG_USB_PD_TCPM_PS8745_FORCE_ID
 	/* device ID 3 is PS8815 and might be misreported */
-	if (chip_info->product_id == PS8815_PRODUCT_ID ||
-	    chip_info->device_id == 0x0003) {
-		uint16_t pid = chip_info->product_id;
-		uint16_t did = chip_info->device_id;
+	if (i->product_id == PS8815_PRODUCT_ID || i->device_id == 0x0003) {
+		uint16_t pid = i->product_id;
+		uint16_t did = i->device_id;
 
 		rv = ps8745_make_device_id(port, &pid, &did);
-		chip_info->product_id = pid;
-		chip_info->device_id = did;
+		i->product_id = pid;
+		i->device_id = did;
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
 #endif
 #ifdef CONFIG_USB_PD_TCPM_PS8805_FORCE_DID
-	if (chip_info->product_id == PS8805_PRODUCT_ID &&
-	    chip_info->device_id == 0x0001) {
+	if (i->product_id == PS8805_PRODUCT_ID && i->device_id == 0x0001) {
 		rv = ps8805_make_device_id(port, &val);
 		if (rv != EC_SUCCESS)
 			return rv;
-		chip_info->device_id = val;
+		i->device_id = val;
 	}
 #endif
 #ifdef CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
-	if (chip_info->product_id == PS8815_PRODUCT_ID &&
-	    chip_info->device_id == 0x0001) {
+	if (i->product_id == PS8815_PRODUCT_ID && i->device_id == 0x0001) {
 		rv = ps8815_make_device_id(port, &val);
 		if (rv != EC_SUCCESS)
 			return rv;
-		chip_info->device_id = val;
+		i->device_id = val;
 	}
 #endif
 	reg = get_reg_by_product(port, REG_FW_VER);
@@ -737,13 +747,12 @@ static int ps8xxx_get_chip_info(int port, int live,
 	if (rv != EC_SUCCESS)
 		return rv;
 
-	chip_info->fw_version_number = val;
+	i->fw_version_number = val;
 
 	/* Treat unexpected values as error (FW not initiated from reset) */
-	if (live &&
-	    (chip_info->vendor_id != PS8XXX_VENDOR_ID ||
-	     chip_info->product_id != board_get_ps8xxx_product_id(port) ||
-	     chip_info->fw_version_number == 0))
+	if (live && (i->vendor_id != PS8XXX_VENDOR_ID ||
+		     i->product_id != board_get_ps8xxx_product_id(port) ||
+		     i->fw_version_number == 0))
 		return EC_ERROR_UNKNOWN;
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751) && \
@@ -752,8 +761,12 @@ static int ps8xxx_get_chip_info(int port, int live,
 	 * Min firmware version of PS8751 to ensure that it can detect Vbus
 	 * properly. See b/109769787#comment7
 	 */
-	chip_info->min_req_fw_version_number = 0x39;
+	i->min_req_fw_version_number = 0x39;
 #endif
+
+	/* Copy the cached value to return if chip_info is not NULL */
+	if (chip_info)
+		memcpy(chip_info, i, sizeof(*i));
 
 	return rv;
 }
