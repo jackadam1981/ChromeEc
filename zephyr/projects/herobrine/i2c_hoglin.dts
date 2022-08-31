@@ -1,0 +1,32 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+&i2c1_0 {
+	label = "I2C_USB_C0_PD";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	pinctrl-0 = <&i2c1_0_sda_scl_gp87_90>;
+	pinctrl-names = "default";
+	ppc_port0: syv682x@41 {
+		compatible = "silergy,syv682x";
+		status = "okay";
+		reg = <0x41>;
+		frs_en_gpio = <&gpio_usb_c0_frs_en>;
+	};
+};
+
+&i2c2_0 {
+	label = "I2C_USB_C1_PD";
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	pinctrl-0 = <&i2c2_0_sda_scl_gp91_92>;
+	pinctrl-names = "default";
+	ppc_port1: syv682x@41 {
+		compatible = "silergy,syv682x";
+		status = "okay";
+		reg = <0x41>;
+		frs_en_gpio = <&gpio_usb_c0_frs_en>;
+	};
+};
