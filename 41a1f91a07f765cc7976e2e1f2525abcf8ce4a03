@@ -39,6 +39,30 @@
       },
       "revId": "41a1f91a07f765cc7976e2e1f2525abcf8ce4a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6493045f_cc863c35",
+        "filename": "zephyr/projects/nissa/xivu/cbi.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2022-08-31T04:15:25Z",
+      "side": 1,
+      "message": "We\u0027ll need this remove the fan node as it\u0027s defined in common cbi.dts https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/projects/nissa/cbi.dts#40. \nRemoving this to release bit 2 as currently we don\u0027t need.",
+      "parentUuid": "fc1ff45a_f43cc7c4",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "41a1f91a07f765cc7976e2e1f2525abcf8ce4a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
