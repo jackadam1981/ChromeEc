@@ -54,10 +54,14 @@ DECLARE_HOOK(HOOK_INIT, usbc_interrupt_init, HOOK_PRIO_POST_I2C);
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
-	/*
-	 * TODO: Meteorlake PCH does not use Physical GPIO for over current
-	 * error, hence Send 'Over Current Virtual Wire' eSPI signal.
-	 */
+	switch (port) {
+	case USBC_PORT_C0:
+		espi_vw_set_wire(ESPI_VWIRE_SIGNAL_SLV_GPIO_0,
+				 !is_overcurrented);
+		break;
+	default:
+		break;
+	}
 }
 
 void sbu_fault_interrupt(enum gpio_signal signal)
