@@ -25,9 +25,13 @@
 #include "task.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
+#include <zephyr/drivers/espi.h>
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
+
+/* eSPI device */
+#define espi_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_espi))
 
 /*******************************************************************/
 /* USB-C Configuration Start */
@@ -52,12 +56,10 @@ static void usbc_interrupt_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, usbc_interrupt_init, HOOK_PRIO_POST_I2C);
 
-void board_overcurrent_event(int port, int is_overcurrented)
+__override void board_overcurrent_event(int port, int is_overcurrented)
 {
-	/*
-	 * TODO: Meteorlake PCH does not use Physical GPIO for over current
-	 * error, hence Send 'Over Current Virtual Wire' eSPI signal.
-	 */
+	espi_send_vwire(espi_dev, port + ESPI_VWIRE_SIGNAL_SLV_GPIO_0,
+			!is_overcurrented);
 }
 
 void sbu_fault_interrupt(enum gpio_signal signal)
