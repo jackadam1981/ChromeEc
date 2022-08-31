@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19eef53f_2070c83c",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-08-31T21:50:11Z",
+      "side": 1,
+      "message": "@alevkoy, This seems like the right approach to me here, but want to check with you.",
+      "revId": "5d44c0e90274dc33c5f63c7f600b5944b1685f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
