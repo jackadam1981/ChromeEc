@@ -21,6 +21,7 @@
 #include "i2c.h"
 #include "ioexpander.h"
 #include "ppc/syv682x_public.h"
+#include "signal_vw.h"
 #include "system.h"
 #include "task.h"
 #include "usb_mux.h"
@@ -54,10 +55,8 @@ DECLARE_HOOK(HOOK_INIT, usbc_interrupt_init, HOOK_PRIO_POST_I2C);
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
-	/*
-	 * TODO: Meteorlake PCH does not use Physical GPIO for over current
-	 * error, hence Send 'Over Current Virtual Wire' eSPI signal.
-	 */
+	espi_vw_set_wire(port + ESPI_VWIRE_SIGNAL_SLV_GPIO_0,
+			 !is_overcurrented);
 }
 
 void sbu_fault_interrupt(enum gpio_signal signal)
