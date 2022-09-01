@@ -186,6 +186,14 @@
 			gpios = <&gpio1 1 GPIO_OUTPUT_HIGH>;
 			enum-name = "GPIO_EC_INT_L";
 		};
+		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
+			gpios = <&gpio1 2 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
+			gpios = <&gpio1 3 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_UP_L";
+		};
 	};
 
 	gpio1: gpio@101 {
@@ -198,7 +206,7 @@
 		low-level;
 		gpio-controller;
 		#gpio-cells = <2>;
-		ngpios = <2>;
+		ngpios = <4>;
 	};
 
 	gpio-interrupts {
