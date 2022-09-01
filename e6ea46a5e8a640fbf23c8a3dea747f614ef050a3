@@ -16,6 +16,24 @@
       "message": "I think my interpretation of the spec is correct here, but confirmation that we don\u0027t need to support SVDM for this kind of DFP-only product would be appreciated.",
       "revId": "e6ea46a5e8a640fbf23c8a3dea747f614ef050a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db04c09f_e96876e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-01T15:39:30Z",
+      "side": 1,
+      "message": "This is a weird one to interpret from the spec, so cc-ing Benson.\n\nIf you look at the \"Applicability of Structured VDM Commands\", the phrasing of the note matches this kind of odd phrasing from 6.4.4.3.1 Discover Identity: \"A PD-Capable product that has multiple DFPs.\"  I\u0027m not completely certain what that means off the top of my head.\n\nHowever, 6.4.4.3.1.5 DFP VDO says \"The DFP VDO Shall be returned by Ports capable of operating as a DFP; including those implemented by Hosts, Hubs\nand Power Bricks.\" which definitely seems to apply to us.\n\nBased on how the VIF editor always tries to push this field to true, I\u0027d guess the second statement is the one it\u0027s enforcing.  We\u0027re a DFP host and therefore need a DFP VDO reply. \n\nBenson, do you understand the \"multiple DFPs\" phrasing?  Does this mean multiple ports or something else?",
+      "parentUuid": "4a89bc02_a28bb07d",
+      "revId": "e6ea46a5e8a640fbf23c8a3dea747f614ef050a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
