@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1992bc8d_67917f79",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-01T01:54:33Z",
+      "side": 1,
+      "message": "This check will prevent this callback to start ap in reboot scenario and reported issue b:240638348 will be fixed by this.\n\nThis function is suppose to start AP only if power up inhibited due to low battery scenario, when power_up_inhibted is set to true by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3868137/1/zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c#230",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "e41764d26f7843244bda084395bddf18853adb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f11e9cf_449171f6",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-01T01:54:33Z",
+      "side": 1,
+      "message": "This wait loop is required to solve the issue: b:242627237.\n\nwhile moving from G3-\u003eS5, if we immediately check ap_power_is_ok_to_power_up(), this will return false as charger is not stabilize yet... This loop is giving time to get charger stabilize while moving from G3 -\u003e S5 and also handle is if we try to boot AP with no battery conncted.\n\nIf this function will exhaust all tries (CHARGER_INITIALIZED_TRIES) then set power_up_inhibted flags to true, so that the hook callback at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3868137/1/zephyr/shim/src/charger.c#66 can start the ap once battery is charged and reached to enough power to boot ap.",
+      "revId": "e41764d26f7843244bda084395bddf18853adb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
