@@ -16,6 +16,24 @@
       "message": "I see many (majority?) CLs without Code-Coverage label. Won\u0027t this effectively block submission?",
       "revId": "4ce70ae9fb8ef64644c5fa80eff2599764ff512c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ea8458_11d62bcc",
+        "filename": "project.config",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1367998
+      },
+      "writtenOn": "2022-09-01T23:25:49Z",
+      "side": 1,
+      "message": "The `-label:Code-Coverage\u003dMIN` part is true for most/all CLs. since it\u0027s an `OR` not an `AND`. e.g. on this example https://crrev.com/c/3863941\n\n```\ngob-curl -X POST -H \u0027Content-Type: application/json; charset\u003dUTF-8\u0027 -d \u0027{\"name\": \"Code-Coverage\", \"submittability_expression\": \"label:Code-Coverage\u003dMAX,user\u003dnon_uploader OR -label:Code-Coverage\u003dMIN\"}\u0027 https://chromium-review.googlesource.com/a/changes/chromiumos%2Fplatform%2Fec~main~I57de9f35b85b8f3c7119df36aefb2abf25d2625f/check.submit_requirement\n)]}\u0027\n{\"name\":\"Code-Coverage\",\"status\":\"SATISFIED\",\"is_legacy\":false,\"submittability_expression_result\":{\"expression\":\"label:Code-Coverage\\u003dMAX,user\\u003dnon_uploader OR -label:Code-Coverage\\u003dMIN\",\"fulfilled\":true,\"status\":\"PASS\",\"passing_atoms\":[],\"failing_atoms\":[\"label:Code-Coverage\\u003dMAX,user\\u003dnon_uploader\",\"label:Code-Coverage\\u003dMIN\"]}}\n```",
+      "parentUuid": "b285452b_1bff4954",
+      "revId": "4ce70ae9fb8ef64644c5fa80eff2599764ff512c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
