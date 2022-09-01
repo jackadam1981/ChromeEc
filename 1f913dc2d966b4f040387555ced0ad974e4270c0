@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27414bcb_b3302d83",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-01T18:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b2768f5_fa5d21a9",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 0
+      },
+      "revId": "1f913dc2d966b4f040387555ced0ad974e4270c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c93529e_fd767673",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "694951d7_2e65480b",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-01T18:01:47Z",
+      "side": 1,
+      "message": "Per chat discussion, removing this test as we do not have a functioning way to set ALL_AT_BOOT",
+      "parentUuid": "4c93529e_fd767673",
+      "range": {
+        "startLine": 323,
+        "startChar": 15,
+        "endLine": 323,
+        "endChar": 16
+      },
+      "revId": "1f913dc2d966b4f040387555ced0ad974e4270c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a881389d_85dca79b",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-31T16:09:59Z",
       "side": 1,
       "message": "Similar here, set the flag to true originally, execute \"flashwp false\", and check the flag become false.",
+      "range": {
+        "startLine": 333,
+        "startChar": 9,
+        "endLine": 333,
+        "endChar": 14
+      },
+      "revId": "1f913dc2d966b4f040387555ced0ad974e4270c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db82fd4_9d50fbd2",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-01T18:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a881389d_85dca79b",
       "range": {
         "startLine": 333,
         "startChar": 9,
