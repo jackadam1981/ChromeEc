@@ -34,6 +34,24 @@
       "parentUuid": "d3c3c90e_af9473b4",
       "revId": "5ba965e7f7229a8f6d6a8058b577f688bb54def0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b37c83_fbbcc0e6",
+        "filename": "zephyr/projects/nissa/pujjo/cbi.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-01T03:51:36Z",
+      "side": 1,
+      "message": "You could add a comment that the common fields are defined in projects/nissa/cbi.dts",
+      "parentUuid": "451d6cf6_1b7e53c0",
+      "revId": "5ba965e7f7229a8f6d6a8058b577f688bb54def0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
