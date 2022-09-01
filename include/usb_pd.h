@@ -203,8 +203,10 @@ enum pd_rx_errors {
  */
 #ifndef CONFIG_USB_PD_TCPMV2
 #define PD_T_SENDER_RESPONSE (30 * MSEC) /* between 24ms and 30ms */
+#define PD_T_SENDER_RESPONSE_v3_1 (32 * MSEC) /* between 26ms and 32ms */
 #else
 #define PD_T_SENDER_RESPONSE (24 * MSEC) /* between 24ms and 30ms */
+#define PD_T_SENDER_RESPONSE_v3_1 (26 * MSEC) /* between 26ms and 32ms */
 #endif
 #define PD_T_PS_TRANSITION (500 * MSEC) /* between 450ms and 550ms */
 #define PD_T_PS_SOURCE_ON (480 * MSEC) /* between 390ms and 480ms */

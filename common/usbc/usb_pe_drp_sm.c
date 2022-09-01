@@ -2176,6 +2176,12 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			 */
 			pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
 					PD_T_SENDER_RESPONSE - offset);
+
+			pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
+					(prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV30) ?
+					(PD_T_SENDER_RESPONSE_v3_1 - offset) :
+					(PD_T_SENDER_RESPONSE - offset));
+
 			return PE_MSG_SEND_COMPLETED;
 		}
 		return PE_MSG_SEND_PENDING;
