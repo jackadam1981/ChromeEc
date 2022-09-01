@@ -34,6 +34,24 @@
       "parentUuid": "7c1f05f4_d215e9a8",
       "revId": "db639ccd51ebeae4680e79730b8e4a692ee50fe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0e388b_024993ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-01T09:41:36Z",
+      "side": 1,
+      "message": "`repo upload` says this on my chroot. Looks like clang-format conplains about the consecutive whitespaces.\n\nAnyway, let\u0027s try CQ+2 again\n\n```\n[FAILED] chromiumos/platform/ec: _check_clang_format\n    clang-format.py errors/warnings\n\n    The following files have formatting errors:\n        board/dojo/board.c\n    You can run `/mnt/host/source/src/repohooks/clang-format.py --fix --commit f732cd1ccdf12b89e94c4a31790f677be8b97b06` to fix this\n```",
+      "parentUuid": "28bb641c_b798ea27",
+      "revId": "db639ccd51ebeae4680e79730b8e4a692ee50fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
