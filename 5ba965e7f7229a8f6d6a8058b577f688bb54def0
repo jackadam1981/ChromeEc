@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c3c90e_af9473b4",
+        "filename": "zephyr/projects/nissa/pujjo/cbi.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-01T02:15:03Z",
+      "side": 1,
+      "message": "These fields are already defined in the bas cbi.dts, so they do not need to be redefined.",
+      "revId": "5ba965e7f7229a8f6d6a8058b577f688bb54def0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
