@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de0b2af_2a6a7c9a",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-09-01T20:20:20Z",
+      "side": 1,
+      "message": "I suggest making this more clear that it\u0027s showing the CFET *disabled* status.",
+      "range": {
+        "startLine": 253,
+        "startChar": 18,
+        "endLine": 253,
+        "endChar": 23
+      },
+      "revId": "a57e1ae3adc248977c8b7b2c6fe42bc24478ce06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
