@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c06ff86a_06bcb23e",
+        "filename": "zephyr/projects/herobrine/usbc_hoglin.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-09-01T01:23:08Z",
+      "side": 1,
+      "message": "Working on a fix here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3864593",
+      "parentUuid": "28c91128_d3fb0fce",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "0a72494c194eacbf2dba51d6d09bfa4997ce11b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "210e6c03_5849858d",
         "filename": "zephyr/projects/herobrine/usbc_villager.dts",
         "patchSetId": 14
