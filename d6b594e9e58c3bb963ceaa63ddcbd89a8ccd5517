@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c852bc2_3fdc9203",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-01T19:14:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20973536_ccb9129e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "d6b594e9e58c3bb963ceaa63ddcbd89a8ccd5517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "392c545e_5aff0773",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-01T18:22:09Z",
       "side": 1,
       "message": "Is it possible to replace the `ifdef` with `__test_only`?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "d6b594e9e58c3bb963ceaa63ddcbd89a8ccd5517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c586a8e_426d857c",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-01T19:14:58Z",
+      "side": 1,
+      "message": "This function is used in within normal EC code. I\u0027m just exposing it to use it in testing as well.",
+      "parentUuid": "392c545e_5aff0773",
       "range": {
         "startLine": 23,
         "startChar": 5,
