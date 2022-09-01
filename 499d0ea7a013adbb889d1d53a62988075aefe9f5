@@ -16,6 +16,29 @@
       "message": "k",
       "revId": "499d0ea7a013adbb889d1d53a62988075aefe9f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19866e8d_98cd6554",
+        "filename": "zephyr/shim/src/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-01T17:53:40Z",
+      "side": 1,
+      "message": "This can be const I believe.  `CHG_ENABLE_ALTERNATE` performs a memcpy with this array as the source location.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "499d0ea7a013adbb889d1d53a62988075aefe9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
