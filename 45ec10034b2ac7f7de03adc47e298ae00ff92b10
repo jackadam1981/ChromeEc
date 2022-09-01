@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2196770_4f4d1eed",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-01T08:53:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to descript the help.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 25
+      },
+      "revId": "45ec10034b2ac7f7de03adc47e298ae00ff92b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01cd36c0_243a477b",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-01T08:53:27Z",
+      "side": 1,
+      "message": "It can not use SENSOR_ID(DT_NODELABEL(CONFIG_PLATFORM_EC_BODY_DETECTION_SENSOR)) to macro the sensor location.\n\nIs there any recommentation?",
+      "range": {
+        "startLine": 1895,
+        "startChar": 60,
+        "endLine": 1895,
+        "endChar": 70
+      },
+      "revId": "45ec10034b2ac7f7de03adc47e298ae00ff92b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
