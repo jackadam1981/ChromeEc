@@ -52,6 +52,24 @@
       "parentUuid": "28bb641c_b798ea27",
       "revId": "db639ccd51ebeae4680e79730b8e4a692ee50fe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdad6cde_1d5b5c3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-09-01T11:26:41Z",
+      "side": 1,
+      "message": "Not sure if it is related to the chroot environment. My chroot was just synced today and `repo upload` got pass on my chroot:\n\n```\n[COMMIT 1/1 f732cd1ccdf1] dojo: Add keyboard factory test\n[PASSED] repohooks passed in 0:00:03.349366\nUpload project src/platform/ec/ to remote branch refs/heads/main:\n  branch dojo_keyboard_factory_test ( 1 commit, Thu Sep 1 16:15:52 2022 +0800):\n         f732cd1c dojo: Add keyboard factory test\n```\n\nAlso, I have just tried `/mnt/host/source/src/repohooks/clang-format.py --fix --commit f732cd1ccdf12b89e94c4a31790f677be8b97b06` on my chroot and there\u0027s no any change on this commit after running the script.",
+      "parentUuid": "1d0e388b_024993ac",
+      "revId": "db639ccd51ebeae4680e79730b8e4a692ee50fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
