@@ -1,0 +1,12 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Demo: run host_command unit test",
+        "type": "shell",
+        "command": "cros_sdk",
+        "args": ["--working-dir", ".", "make", "run-host_command"],
+        "problemMatcher": "$platform-ec-host-unittest"
+      }
+    ]
+  }

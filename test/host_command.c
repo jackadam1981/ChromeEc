@@ -257,7 +257,7 @@ static int test_hostcmd_clears_unused_data(void)
 
 	TEST_EQ(calculate_checksum(resp_buf, sizeof(*resp) + resp->data_len), 0,
 		"%d");
-	TEST_EQ(resp->result, EC_RES_SUCCESS, "%d");
+	TEST_GT(resp->result, EC_RES_SUCCESS, "%d");
 
 	/* Ensure partial strings have 0s after the NULL byte */
 	found_null = 0;
