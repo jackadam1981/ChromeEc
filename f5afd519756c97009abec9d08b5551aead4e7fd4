@@ -113,6 +113,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd995ea9_1e432c9a",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-09-01T00:54:59Z",
+      "side": 1,
+      "message": "Sorry, my bad. The IS_ENABLED() should be working. Let me try it.",
+      "parentUuid": "63f9339e_8139d0c5",
+      "revId": "f5afd519756c97009abec9d08b5551aead4e7fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de12e3c0_5b640810",
         "filename": "driver/charger/sm5803.h",
         "patchSetId": 1
