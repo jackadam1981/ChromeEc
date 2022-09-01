@@ -181,6 +181,14 @@
 			#led-pin-cells = <1>;
 			gpios = <&gpio0 33 (GPIO_INPUT | GPIO_OUTPUT_LOW)>;
 		};
+		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
+			gpios = <&gpio0 34 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
+			gpios = <&gpio0 35 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_VOLUME_UP_L";
+		};
 	};
 
 	gpio-interrupts {
@@ -870,7 +878,7 @@
 };
 
 &gpio0 {
-	ngpios = <34>;
+	ngpios = <36>;
 };
 
 &i2c0 {
