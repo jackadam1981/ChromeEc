@@ -156,7 +156,7 @@ void update_dynamic_battery_info(void)
 
 	if (curr->batt.is_present == BP_YES &&
 	    !(curr->batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-	    curr->batt.state_of_charge <= BATTERY_LEVEL_CRITICAL)
+	    curr->batt.state_of_charge <= CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE)
 		tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
 
 	tmp |= curr->batt_is_charging ? EC_BATT_FLAG_CHARGING :
