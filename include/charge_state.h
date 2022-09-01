@@ -136,6 +136,29 @@ static inline int charge_want_shutdown(void)
 #endif
 
 /**
+ * Return true if battery level is below threshold.
+ */
+enum battery_threshold {
+	/* check the drop across low threshold */
+	LOW_EDGE = 0,
+	/* check if below low threshold */
+	LOW_ALWAYS,
+	/* check the drop across shutdown threshold */
+	SHUTDOWN_EDGE,
+	/* check if below shutdown threshold */
+	SHUTDOWN_ALWAYS
+};
+#if defined(CONFIG_CHARGER) && defined(CONFIG_BATTERY)
+int battery_is_below_threshold(void *batt_data, enum battery_threshold type);
+#else
+static inline int battery_is_below_threshold(void *batt_data,
+					     enum battery_threshold type)
+{
+	return 0;
+}
+#endif
+
+/**
  * Return non-zero if the battery level is too low to allow power on, even if
  * a charger is attached.
  *
