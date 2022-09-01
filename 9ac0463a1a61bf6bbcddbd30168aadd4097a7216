@@ -34,6 +34,24 @@
       "parentUuid": "b6a7e356_30e411ed",
       "revId": "9ac0463a1a61bf6bbcddbd30168aadd4097a7216",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "214869b7_62b3f523",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-01T01:57:55Z",
+      "side": 1,
+      "message": "This CL is ok because Aseda gave +2. Can you reupload https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3868142 so that I can give +2?",
+      "parentUuid": "09b2f6ed_ed6ee122",
+      "revId": "9ac0463a1a61bf6bbcddbd30168aadd4097a7216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
