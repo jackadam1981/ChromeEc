@@ -532,9 +532,18 @@ enum ap_ro_check_result validate_ranges_sha(const struct ro_range *ranges,
 	return ROV_SUCCEEDED;
 }
 
-#define FACTORY_FLAG_COUNT 1
-/* TODO: add possible factory flags. 0 maintains current behavior. */
-const vb2_gbb_flags_t possible_factory_flags[] = { 0 };
+#define FACTORY_FLAG_COUNT 8
+const vb2_gbb_flags_t possible_factory_flags[] = {
+	0,
+	/* Factory flags from b/230071229 */
+	0x39,
+	0x239,
+	0x1039,
+	0x50b9,
+	0x40b9,
+	0x52b9,
+	0x42b9
+};
 BUILD_ASSERT(ARRAY_SIZE(possible_factory_flags) == FACTORY_FLAG_COUNT);
 
 /**
