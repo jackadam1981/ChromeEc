@@ -16,6 +16,24 @@
       "message": "please run the pre-upload hook, and check if there\u0027s any errors\n\n```\nINFO:root:Validating all code is formatted with clang-format.\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/board/dojo/board.c:61:13: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        { -1, -1 },        { GPIO_KSO_H, 4 }, { GPIO_KSO_H, 0 },\nERROR:root:                   ^\nERROR:root:/mnt/host/source/src/platform/ec/board/dojo/board.c:63:13: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        { -1, -1 },        { -1, -1 },        { GPIO_KSO_L, 5 },\nERROR:root:                   ^\nERROR:root:/mnt/host/source/src/platform/ec/board/dojo/board.c:63:32: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        { -1, -1 },        { -1, -1 },        { GPIO_KSO_L, 5 },\nERROR:root:                                      ^\nERROR:root:/mnt/host/source/src/platform/ec/board/dojo/board.c:64:32: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        { GPIO_KSO_L, 6 }, { -1, -1 },        { GPIO_KSO_L, 3 },\nERROR:root:                                      ^\nERROR:root:/mnt/host/source/src/platform/ec/board/dojo/board.c:69:32: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        { GPIO_KSI, 1 },   { -1, -1 },        { GPIO_KSO_H, 5 },\nERROR:root:                                      ^\nERROR:root:/mnt/host/source/src/platform/ec/board/dojo/board.c:70:13: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        { -1, -1 },        { GPIO_KSO_H, 6 }, { -1, -1 },\n```",
       "revId": "db639ccd51ebeae4680e79730b8e4a692ee50fe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28bb641c_b798ea27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-09-01T08:20:19Z",
+      "side": 1,
+      "message": "I have just updated my chroot by `repo sync` and I can pass the pre-upload hook.",
+      "parentUuid": "7c1f05f4_d215e9a8",
+      "revId": "db639ccd51ebeae4680e79730b8e4a692ee50fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
