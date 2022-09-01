@@ -183,4 +183,9 @@ struct keyboard_type {
 extern struct keyboard_type key_typ;
 #endif
 
+#ifdef TEST_BUILD
+__test_only int *keyboard_scan_get_print_state_changes(void);
+int keyboard_scan_is_enabled(void);
+#endif /* TEST_BUILD */
+
 #endif /* __CROS_EC_KEYBOARD_SCAN_H */
