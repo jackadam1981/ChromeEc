@@ -61,7 +61,7 @@
     <vif:VCONN_Swap_To_On_Supported value="true" />
     <vif:VCONN_Swap_To_Off_Supported value="true" />
     <vif:Responds_To_Discov_SOP_UFP value="false" />
-    <vif:Responds_To_Discov_SOP_DFP value="true" />
+    <vif:Responds_To_Discov_SOP_DFP value="false" />
     <vif:Attempts_Discov_SOP value="true" />
     <vif:Power_Interruption_Available value="0">No Interruption Possible</vif:Power_Interruption_Available>
     <vif:Data_Reset_Supported value="false" />
@@ -227,7 +227,7 @@
     <vif:VCONN_Swap_To_On_Supported value="true" />
     <vif:VCONN_Swap_To_Off_Supported value="true" />
     <vif:Responds_To_Discov_SOP_UFP value="false" />
-    <vif:Responds_To_Discov_SOP_DFP value="true" />
+    <vif:Responds_To_Discov_SOP_DFP value="false" />
     <vif:Attempts_Discov_SOP value="true" />
     <vif:Power_Interruption_Available value="0">No Interruption Possible</vif:Power_Interruption_Available>
     <vif:Data_Reset_Supported value="false" />
