@@ -38,6 +38,14 @@ static const struct {
 	[BJ_230W] = { /* 1 - 230W */
 			.voltage = 19500,
 			.current = 11800
+	},
+	[BJ_65W] = { /* 2 - 65W */
+			.voltage = 19000,
+			.current = 3420
+	},
+	[BJ_150W] = { /* 3 - 150W */
+			.voltage = 20000,
+			.current = 7500
 	}
 };
 
