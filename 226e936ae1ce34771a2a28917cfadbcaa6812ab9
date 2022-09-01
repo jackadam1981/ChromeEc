@@ -51,6 +51,24 @@
       "parentUuid": "5057dbf1_cb5ff1d9",
       "revId": "226e936ae1ce34771a2a28917cfadbcaa6812ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92fe4b43_0415b3bb",
+        "filename": "board/shotzo/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-09-01T05:40:34Z",
+      "side": 1,
+      "message": "I added a new patch https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3865186/1 to add some handling for functions to avoid the link error. Please help to review if it is okay.",
+      "parentUuid": "b83295ff_4705c359",
+      "revId": "226e936ae1ce34771a2a28917cfadbcaa6812ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
