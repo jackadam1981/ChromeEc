@@ -229,6 +229,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cb912a4_b4dc18be",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-09-01T03:19:12Z",
+      "side": 1,
+      "message": "How about that?\n\n\t\tgpio_enable_interrupt(ctx-\u003ecfg-\u003eirq_pin);\n\t\tboard_pchg_power_on(p, 1);\n\t\tctx-\u003ecfg-\u003edrv-\u003ereset(ctx);\n\t\tif (!ctx-\u003ecfg-\u003edrv-\u003einit(ctx)) {\n\t\t\tactive_pchg_count++;\n\t\t} else {\n\t\t\tCPRINTS(\"ERR: Failed to init P%d\", p);\n\t\t\tgpio_enable_interrupt(ctx-\u003ecfg-\u003eirq_pin);\n\t\t\tboard_pchg_power_on(p, 0);\n\t\t}\n\t\t\nEnable IRQ then init. Disable IRQ if failed to init.",
+      "parentUuid": "b98b543c_ce716923",
+      "range": {
+        "startLine": 557,
+        "startChar": 22,
+        "endLine": 557,
+        "endChar": 26
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98985d23_0b5b26ff",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 1
