@@ -1283,8 +1283,8 @@ static void notify_host_of_low_battery_charge(void)
 	    prev_charge > BATTERY_LEVEL_LOW)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_LOW);
 
-	if (curr.batt.state_of_charge <= BATTERY_LEVEL_CRITICAL &&
-	    prev_charge > BATTERY_LEVEL_CRITICAL)
+	if (curr.batt.state_of_charge <= CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE &&
+	    prev_charge > CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
 #endif
 }
