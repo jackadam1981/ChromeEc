@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c91128_d3fb0fce",
+        "filename": "zephyr/projects/herobrine/usbc_hoglin.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-09-01T01:17:25Z",
+      "side": 1,
+      "message": "This breaks the Hoglin devices in the lab, check b/244162988.\n\nThe shared `i2c.dts` across multiple herobrine-family projects defines the `ppc_port0` like:\n\n\tppc_port0: sn5s330@40 {\n\t\tcompatible \u003d \"ti,sn5s330\";\n\t\tstatus \u003d \"okay\";\n\t\treg \u003d \u003c0x40\u003e;\n\t};\n\nIt uses a different PPC component \"ti,sn5s330\" instead of the \"silergy,syv682x\" Hoglin uses. I think you need to overwrite the i2c nodes to reflect the component change.\n\nSame problem happens on the below port1 bus.",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "0a72494c194eacbf2dba51d6d09bfa4997ce11b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210e6c03_5849858d",
+        "filename": "zephyr/projects/herobrine/usbc_villager.dts",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-09-01T01:17:25Z",
+      "side": 1,
+      "message": "Villager has the same problem. It doesn\u0027t use the TI part defined in the shared `i2c.dts`.",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "0a72494c194eacbf2dba51d6d09bfa4997ce11b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
