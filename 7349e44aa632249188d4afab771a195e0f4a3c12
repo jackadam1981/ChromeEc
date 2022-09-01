@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3557ab74_f3ad32f0",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-01T21:31:28Z",
+      "side": 1,
+      "message": "Maybe replace with ${MODULES_DIR} and bump up the definition from below for consistency.",
+      "range": {
+        "startLine": 59,
+        "startChar": 54,
+        "endLine": 59,
+        "endChar": 79
+      },
+      "revId": "7349e44aa632249188d4afab771a195e0f4a3c12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "153da273_17a79e00",
