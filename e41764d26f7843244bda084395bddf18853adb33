@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a22bb52f_04572202",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-01T02:38:51Z",
+      "side": 1,
+      "message": "This duplicates much of the logic for `INIT_ON` in the power button task: https://source.chromium.org/chromium/chromiumos/platform/ec/+/main:common/power_button_x86.c;l\u003d324;drc\u003dc7eb5a5cce1aaf6a07231085e63a36c3431ee920\n\nWhy is the power button handling of this not sufficient?",
+      "revId": "e41764d26f7843244bda084395bddf18853adb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1992bc8d_67917f79",
         "filename": "zephyr/shim/src/charger.c",
         "patchSetId": 1
