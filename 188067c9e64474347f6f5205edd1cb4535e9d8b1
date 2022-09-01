@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce87843_873701a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-01T18:06:38Z",
+      "side": 1,
+      "message": "Hi Ivan,\n\nThis makes sense to me. I believe we should deprecate BATTERY_LEVEL_CRITICAL entirely from the repo. Can you please try?",
+      "revId": "188067c9e64474347f6f5205edd1cb4535e9d8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
