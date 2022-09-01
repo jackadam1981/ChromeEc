@@ -34,6 +34,24 @@
       "parentUuid": "b285452b_1bff4954",
       "revId": "4ce70ae9fb8ef64644c5fa80eff2599764ff512c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e97fa5_a31a6c55",
+        "filename": "project.config",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1393469
+      },
+      "writtenOn": "2022-09-01T23:40:34Z",
+      "side": 1,
+      "message": "I was concerned about Code-Coverage\u003dMIN, but I\u0027ve realized Code-Coverage is -1..+1 so that won\u0027t block submission. OR totally makes sense.",
+      "parentUuid": "03ea8458_11d62bcc",
+      "revId": "4ce70ae9fb8ef64644c5fa80eff2599764ff512c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
