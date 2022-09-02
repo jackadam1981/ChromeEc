@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fbc5069_f5955d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-02T23:42:34Z",
+      "side": 1,
+      "message": "Tries with low battery (\u003c 2%) scenario at boot without this change, AP is not powering on and system remains in hibernate state. coming out of hibernate state and moving to S0 as we connect AC adapter.\n\nThese changes are irrelevant and not required.  abandoning this CL.",
+      "parentUuid": "eb3af268_8a56aa0d",
+      "revId": "e41764d26f7843244bda084395bddf18853adb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1992bc8d_67917f79",
