@@ -22,6 +22,30 @@
       },
       "revId": "fc3bc8ef455e74be115ffebb618cefe23d10ecc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80faa6b0_098a7f8f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-02T00:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "096bff84_a01e032c",
+      "range": {
+        "startLine": 207,
+        "startChar": 44,
+        "endLine": 207,
+        "endChar": 65
+      },
+      "revId": "fc3bc8ef455e74be115ffebb618cefe23d10ecc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
