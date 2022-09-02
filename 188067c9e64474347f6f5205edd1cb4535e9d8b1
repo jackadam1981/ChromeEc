@@ -16,6 +16,24 @@
       "message": "Hi Ivan,\n\nThis makes sense to me. I believe we should deprecate BATTERY_LEVEL_CRITICAL entirely from the repo. Can you please try?",
       "revId": "188067c9e64474347f6f5205edd1cb4535e9d8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bade62_911eb6a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-09-02T06:02:50Z",
+      "side": 1,
+      "message": "BATTERY_LEVEL_CRITICAL is still used in boards to configure led behavior. To avoid changing the behavior on partner boards I would suggest to just deprecate it in common battery logic.",
+      "parentUuid": "8ce87843_873701a1",
+      "revId": "188067c9e64474347f6f5205edd1cb4535e9d8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
