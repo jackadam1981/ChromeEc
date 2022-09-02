@@ -70,6 +70,24 @@
       "parentUuid": "77b37c83_fbbcc0e6",
       "revId": "5ba965e7f7229a8f6d6a8058b577f688bb54def0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebabee40_4022ed84",
+        "filename": "zephyr/projects/nissa/pujjo/cbi.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2022-09-02T03:09:28Z",
+      "side": 1,
+      "message": "Jimmy you still didn\u0027t comment the fields occupied by base cbi.dts. Our intention is that anyone can see this file and know all fw-config fields for pujjo.\nAnyways, we can merge this as it\u0027s not technically impacted.",
+      "parentUuid": "b3c9e4d5_2f7148a7",
+      "revId": "5ba965e7f7229a8f6d6a8058b577f688bb54def0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
