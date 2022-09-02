@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb3af268_8a56aa0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-02T01:21:44Z",
+      "side": 1,
+      "message": "In addition: if the existing code doesn\u0027t work completely, I think we need to determine why and fix it instead of adding new code that does the same thing differently.",
+      "parentUuid": "a7e09485_5b232f57",
+      "revId": "e41764d26f7843244bda084395bddf18853adb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1992bc8d_67917f79",
         "filename": "zephyr/shim/src/charger.c",
         "patchSetId": 1
