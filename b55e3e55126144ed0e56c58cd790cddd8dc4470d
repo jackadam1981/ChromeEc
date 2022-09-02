@@ -46,6 +46,30 @@
       },
       "revId": "b55e3e55126144ed0e56c58cd790cddd8dc4470d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc9521a_8b3609f4",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-09-02T16:25:47Z",
+      "side": 1,
+      "message": "Bash scripts are so confusing, but I agree this looks like an array declaration.\n\nThe second part of [this answer](https://unix.stackexchange.com/a/371726) explains why this does not create a subshell:\n\n\u003e Parentheses create a subshell when they\u0027re at a location where a command is expected. In `var\u003d(...)`, what is expected immediately after the equal sign is not a command, but a value for assignment. In this context, the parentheses indicate that the value is an array.",
+      "parentUuid": "d36d3c49_6910e995",
+      "range": {
+        "startLine": 1050,
+        "startChar": 18,
+        "endLine": 1050,
+        "endChar": 19
+      },
+      "revId": "b55e3e55126144ed0e56c58cd790cddd8dc4470d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
