@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ddb2b5_09dff99b",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-09-02T00:39:43Z",
+      "side": 1,
+      "message": "More like\n```\ncommon-$(CONFIG_CHARGER)+\u003dcharger.o\ncommon-$(CONFIG_BATTERY)+\u003dcharge_state_v2.o\n```",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "73037589eb9b7734bcb40deb94b5c58f0f37a33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8033ab77_5192a494",
+        "filename": "include/charge_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-09-02T00:39:43Z",
+      "side": 1,
+      "message": "change these to be just `#ifdef CONFIG_BATTERY`",
+      "revId": "73037589eb9b7734bcb40deb94b5c58f0f37a33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
