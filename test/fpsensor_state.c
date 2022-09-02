@@ -186,6 +186,37 @@ test_static int test_fp_set_maintenance_mode(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_fp_command_read_match_secret_fail_invalid_param(void)
+{
+	/* Create invalid param with fgr < 0 */
+	struct ec_params_fp_read_match_secret test_match_secret_1 = {
+		.fgr = -1,
+	};
+	/* Create invalid param with fgr = FP_MAX_FINGER_COUNT */
+	struct ec_params_fp_read_match_secret test_match_secret_2 = {
+		.fgr = FP_MAX_FINGER_COUNT,
+	};
+
+	/*
+	 * FP_COMMAND_READ_MATCH_SECRET should have if the finger number is <
+	 * 0
+	 */
+	TEST_ASSERT(test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0,
+					   &test_match_secret_1,
+					   sizeof(test_match_secret_1), NULL,
+					   0) == EC_RES_INVALID_PARAM);
+
+	/*
+	 * FP_COMMAND_READ_MATCH_SECRET should have if the finger number is
+	 * >= FP_MAX_FINGER_COUNT
+	 */
+	TEST_ASSERT(test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0,
+					   &test_match_secret_2,
+					   sizeof(test_match_secret_2), NULL,
+					   0) == EC_RES_INVALID_PARAM);
+
+	return EC_SUCCESS;
+}
 void run_test(int argc, char **argv)
 {
 	RUN_TEST(test_fp_enc_status_valid_flags);
@@ -194,5 +225,6 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_set_fp_tpm_seed_again);
 	RUN_TEST(test_fp_set_sensor_mode);
 	RUN_TEST(test_fp_set_maintenance_mode);
+	RUN_TEST(test_fp_command_read_match_secret_fail_invalid_param);
 	test_print_result();
 }
