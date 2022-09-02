@@ -277,6 +277,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6b082cf_c8a680f0",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-02T02:33:29Z",
+      "side": 1,
+      "message": "When ctx730\u0027s reset() is called with IRQ enabled, the driver will receive a reset message from the chip. Then, pchg task calls init() from pchg_state_reset(). But in your proposal, there is also init().",
+      "parentUuid": "0ea37186_942e50dc",
+      "range": {
+        "startLine": 557,
+        "startChar": 22,
+        "endLine": 557,
+        "endChar": 26
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98985d23_0b5b26ff",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 1
