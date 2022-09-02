@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c77f9a_44568e42",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-02T22:36:47Z",
+      "side": 1,
+      "message": "Only 32 gpios allowed per emul gpio controller.",
+      "range": {
+        "startLine": 877,
+        "startChar": 11,
+        "endLine": 877,
+        "endChar": 13
+      },
+      "revId": "2fc5f822b2a53b818cd988d2f50ecbacf48991a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
