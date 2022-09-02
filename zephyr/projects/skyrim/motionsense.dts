@@ -14,6 +14,9 @@
 		 * its own <>_INT_EVENT.
 		 */
 		bmi3xx-int = &base_accel;
+
+		/* Use base accelerometer for on-body sensor */
+		on-body-sensor = &base_accel;
 	};
 
 	/*
