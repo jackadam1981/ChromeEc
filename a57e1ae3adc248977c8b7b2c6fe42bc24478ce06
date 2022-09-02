@@ -40,6 +40,30 @@
       },
       "revId": "a57e1ae3adc248977c8b7b2c6fe42bc24478ce06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931e2496_9f196c87",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-02T02:12:17Z",
+      "side": 1,
+      "message": "I\u0027ve reversed the value for enableness. So 1 means C-FET enabled, 0 for disabled, and -1 for battery query failure.",
+      "parentUuid": "3de0b2af_2a6a7c9a",
+      "range": {
+        "startLine": 253,
+        "startChar": 18,
+        "endLine": 253,
+        "endChar": 23
+      },
+      "revId": "a57e1ae3adc248977c8b7b2c6fe42bc24478ce06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
