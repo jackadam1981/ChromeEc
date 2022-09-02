@@ -11,6 +11,29 @@ image: jbettis/ubuntu-07sep22
 workflow:
   rules:
     - if: ($CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "coverage")
+<<<<<<< HEAD   (135498 dps: limit the minimum operating power when AC only)
+=======
+
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+#
+# If you want to also cache the installed packages, you have to install
+# them in a virtualenv and cache it as well.
+cache:
+  key: ${CI_COMMIT_SHA}
+  policy: pull
+  paths:
+    - .cache/pip
+    - venv/
+    - modules/
+    - zephyr/
+
+>>>>>>> CHANGE (15612b gitlab: Only run CI in main and coverage branches)
 
 # The directory structure is:
 #
