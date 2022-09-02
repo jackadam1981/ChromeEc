@@ -14,6 +14,8 @@
 #include "driver/retimer/anx7483_public.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/raa489000.h"
+#include "driver/tcpm/ps8xxx_public.h"
+
 
 #include "nissa_common.h"
 
@@ -31,16 +33,19 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_VBUS_MONITOR,
 	},
-	{ /* sub-board */
+	{
+		/*
+		 * Sub-board: optional PS8745 TCPC+redriver. Behaves the same
+		 * as PS8815.
+		 */
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C1_TCPC,
-			.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
+			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
 		},
-		.drv = &raa489000_tcpm_drv,
-		/* RAA489000 implements TCPCI 2.0 */
-		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
-			TCPC_FLAGS_VBUS_MONITOR,
+		.drv = &ps8xxx_tcpm_drv,
+		/* PS8745 implements TCPCI 2.0 */
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 	},
 };
 
