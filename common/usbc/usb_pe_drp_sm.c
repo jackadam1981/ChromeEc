@@ -1474,6 +1474,17 @@ static void pe_handle_detach(void)
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, pe_handle_detach, HOOK_PRIO_DEFAULT);
 
+static void pe_handle_startup(void)
+{
+	int i;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		/* Do not notify the AP of irrelevant past Hard Resets. */
+		pd_clear_events(i, PD_STATUS_EVENT_HARD_RESET);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pe_handle_startup, HOOK_PRIO_DEFAULT);
+
 #ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
 static void pe_update_waiting_batt_flag(void)
 {
