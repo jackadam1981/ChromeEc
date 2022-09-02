@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include <zephyr/ztest_assert.h>
 #include <zephyr/ztest_test_new.h>
-#include <zephyr/shell/shell_dummy.h> /* nocheck */
+#include <zephyr/shell/shell_dummy.h>
 #include <zephyr/drivers/uart/serial_test.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 
@@ -43,11 +43,10 @@ ZTEST(vboot_efs2, test_vboot_main_system_is_in_rw)
 	/* Set system_is_in_rw */
 	system_set_shrspi_image_copy(EC_IMAGE_RW);
 
-	shell_backend_dummy_clear_output(shell_zephyr); /* nocheck */
+	shell_backend_dummy_clear_output(shell_zephyr);
 	vboot_main();
 
-	outbuffer = shell_backend_dummy_get_output(shell_zephyr, /* nocheck */
-						   &buffer_size);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
 	zassert_equal(show_power_shortage_called, 1, NULL);
 
 	zassert_true(strstr(outbuffer, "VB Already in RW") != NULL,
@@ -70,11 +69,10 @@ ZTEST(vboot_efs2, test_vboot_main_system_is_manual_recovery)
 
 	system_enter_manual_recovery();
 
-	shell_backend_dummy_clear_output(shell_zephyr); /* nocheck */
+	shell_backend_dummy_clear_output(shell_zephyr);
 	vboot_main();
 
-	outbuffer = shell_backend_dummy_get_output(shell_zephyr, /* nocheck */
-						   &buffer_size);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
 	zassert_equal(show_power_shortage_called, 0, NULL);
 	zassert_true(strstr(outbuffer, "VB In recovery mode") != NULL,
 		     "Expected msg not in %s", outbuffer);
@@ -96,11 +94,10 @@ ZTEST(vboot_efs2, test_vboot_main_stay_in_ro)
 
 	system_set_reset_flags(EC_RESET_FLAG_STAY_IN_RO);
 
-	shell_backend_dummy_clear_output(shell_zephyr); /* nocheck */
+	shell_backend_dummy_clear_output(shell_zephyr);
 	vboot_main();
 
-	outbuffer = shell_backend_dummy_get_output(shell_zephyr, /* nocheck */
-						   &buffer_size);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
 	zassert_equal(show_power_shortage_called, 0, NULL);
 
 	/* Verify some things we don't expect also. */
@@ -120,11 +117,10 @@ ZTEST(vboot_efs2, test_vboot_main_jump_timeout)
 	const char *outbuffer;
 	size_t buffer_size;
 
-	shell_backend_dummy_clear_output(shell_zephyr); /* nocheck */
+	shell_backend_dummy_clear_output(shell_zephyr);
 	vboot_main();
 
-	outbuffer = shell_backend_dummy_get_output(shell_zephyr, /* nocheck */
-						   &buffer_size);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
 	zassert_equal(show_critical_error_called, 1, NULL);
 
 	zassert_true(strstr(outbuffer, "VB Ping Cr50") != NULL,
@@ -186,11 +182,10 @@ ZTEST(vboot_efs2, test_vboot_main_jump_bad_payload)
 
 	serial_vnd_set_callback(uart_shell_dev, reply_cr50_payload, &resp);
 
-	shell_backend_dummy_clear_output(shell_zephyr); /* nocheck */
+	shell_backend_dummy_clear_output(shell_zephyr);
 	vboot_main();
 
-	outbuffer = shell_backend_dummy_get_output(shell_zephyr, /* nocheck */
-						   &buffer_size);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
 
 	zassert_true(strstr(outbuffer, "VB Ping Cr50") != NULL,
 		     "Expected msg not in %s", outbuffer);
@@ -212,11 +207,10 @@ ZTEST(vboot_efs2, test_vboot_main_jump_other_error)
 
 	serial_vnd_set_callback(uart_shell_dev, reply_cr50_payload, &resp);
 
-	shell_backend_dummy_clear_output(shell_zephyr); /* nocheck */
+	shell_backend_dummy_clear_output(shell_zephyr);
 	vboot_main();
 
-	outbuffer = shell_backend_dummy_get_output(shell_zephyr, /* nocheck */
-						   &buffer_size);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
 
 	zassert_true(strstr(outbuffer, "VB Ping Cr50") != NULL,
 		     "Expected msg not in %s", outbuffer);
@@ -239,11 +233,10 @@ ZTEST(vboot_efs2, test_vboot_main_jump_success)
 
 	serial_vnd_set_callback(uart_shell_dev, reply_cr50_payload, &resp);
 
-	shell_backend_dummy_clear_output(shell_zephyr); /* nocheck */
+	shell_backend_dummy_clear_output(shell_zephyr);
 	vboot_main();
 
-	outbuffer = shell_backend_dummy_get_output(shell_zephyr, /* nocheck */
-						   &buffer_size);
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
 
 	zassert_true(strstr(outbuffer, "VB Ping Cr50") != NULL,
 		     "Expected msg not in %s", outbuffer);
