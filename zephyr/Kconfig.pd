@@ -86,6 +86,13 @@ config PLATFORM_EC_USB_PD_INITIAL_DEBUG_LEVEL
 	  through to 3 will increase the level of debug logging.
 	  If this config is not set, the default level will be set to 1.
 
+config PLATFORM_EC_USB_PD_XID
+  int "USB XID"
+  default 0
+  help
+    Sets the device XID reported for USB-C Authentication. Devices that have not
+    been submitted for certification and assigned XIDs by USB-IF should use 0.
+
 config PLATFORM_EC_USB_PD_5V_EN_CUSTOM
 	bool "Custom method of detecting VBUS"
 	help
@@ -208,6 +215,20 @@ config PLATFORM_EC_USB_PD_USB32_DRD
 
 	  This is advertised to port partners so they can potentially take advantage
 	  of the additional features available.
+
+config PLATFORM_EC_DEFAULT_SVDM_DFP_ONLY
+  bool "Implement SVDM Discover Identity as USB3.2 DFP-only"
+  # USB4 and TBT modes require better support than the default implementation
+  depends on !PLATFORM_EC_USB_PD_USB4 && !PLATFORM_EC_USB_PD_TBT_COMPAT_MODE
+  # DRDs are not DFP-only
+  depends on !PLATFORM_EC_USB_PD_USB32_DRD
+  default y
+  help
+    Enable a default response to SVDM Discover Identity requests appropriate for
+    devices that support operation as DFP only. The Identity response indicates
+    Type-C receptacle connector type and USB 3.2 support for ports, operating as
+    a USB-PD host. Devices with different capabilities should implement a custom
+    svdm_rsp configuration.
 
 config PLATFORM_EC_USB_PD_DP_HPD_GPIO
 	bool "Hotplug Detect (HPD) is controlled by an EC GPIO"
