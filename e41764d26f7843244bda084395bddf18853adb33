@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7e09485_5b232f57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-02T00:18:51Z",
+      "side": 1,
+      "message": "These changes were added by Bernardo to handle the low battery scenarios at boot...  Without this change Power button handling looks sufficient but may requires button press to move AP to ON state.... I haven\u0027t tried low battery scenarios at boot, waiting for my battery to discharge below 2% to try this scenario.\n\nEC command \"battfake 2\", triggers AP to off state because of critical battery, connecting back charger moves AP to ON state. connecting charger is one of the wake source from G3, Will check the Low battery scenario at boot, if its working.. then looks like we don\u0027t need these changes.",
+      "parentUuid": "a22bb52f_04572202",
+      "revId": "e41764d26f7843244bda084395bddf18853adb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1992bc8d_67917f79",
         "filename": "zephyr/shim/src/charger.c",
         "patchSetId": 1
