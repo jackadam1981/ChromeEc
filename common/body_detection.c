@@ -37,6 +37,10 @@ static struct body_detect_motion_data {
 	uint64_t n2_variance; /* n^2 * var(history) */
 } data[2]; /* motion data for X-axis and Y-axis */
 
+__overridable void board_body_state_change(void)
+{
+}
+
 /*
  * This function will update new variance and new sum according to incoming
  * value, previous value, previous sum and previous variance.
@@ -113,6 +117,7 @@ void body_detect_change_state(enum body_detect_states state, bool spoof)
 		/* reset time counting of stationary */
 		stationary_timeframe = 0;
 	}
+	board_body_state_change();
 	/* state changing log */
 	CPRINTS("body_detect changed state to: %s body",
 		motion_state ? "on" : "off");
