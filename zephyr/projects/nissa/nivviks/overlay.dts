@@ -233,11 +233,14 @@
 			 * Some sub-boards may disable all usb muxes in chain
 			 * except virtual_mux_1
 			 */
-			usb-muxes = <&virtual_mux_1 &anx7483_mux_1>;
+			usb-muxes = <&virtual_mux_1 &tcpci_mux_1>;
 		};
 		port1-muxes {
 			virtual_mux_1: virtual-mux-1 {
 				compatible = "cros-ec,usbc-mux-virtual";
+			};
+			tcpci_mux_1: tcpci-mux-1 {
+				compatible = "parade,usbc-mux-ps8xxx";
 			};
 		};
 	};
@@ -321,15 +324,10 @@
 	label = "I2C_USB_C0_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 
-	bc12_port0: pi3usb9201@5f {
-		compatible = "pericom,pi3usb9201";
+	bc12_port0: rt1718s-bc12@41 {
+		compatible = "richtek,rt1718s-bc12";
 		status = "okay";
-		reg = <0x5f>;
-		/*
-		 * BC1.2 interrupt is shared with TCPC, so
-		 * IRQ is not specified here and handled by
-		 * usb_c0_interrupt.
-		 */
+		reg = <0x41>;
 	};
 
 	chg_port0: isl923x@9 {
@@ -355,10 +353,6 @@
 		reg = <0x9>;
 	};
 
-	anx7483_mux_1: anx7483-mux-1@3e {
-		compatible = "analogix,anx7483";
-		reg = <0x3e>;
-	};
 };
 
 &i2c7_0 {
