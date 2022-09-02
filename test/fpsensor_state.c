@@ -235,6 +235,51 @@ test_static int test_fp_command_read_match_secret_fail_timeout(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_fp_command_read_match_secret_access_denied(void)
+{
+	/* Create valid param with 0 <= fgr < 5 */
+	uint16_t matched_fgr = 1;
+	uint16_t unmatched_fgr = 2;
+	struct ec_params_fp_read_match_secret test_match_secret_1 = {
+		.fgr = matched_fgr,
+	};
+	/* Create positive secret match state with valid deadline value,
+	 * readable state, and wrong template matched
+	 */
+	struct positive_match_secret_state test_state_1 = {
+		.deadline.val = 5000000,
+		.readable = true,
+		.template_matched = unmatched_fgr,
+	};
+	/*
+	 * Create positive secret match state with valid deadline value ,
+	 * unreadable state, and correct matched template
+	 */
+	struct positive_match_secret_state test_state_2 = {
+		.deadline.val = 5000000,
+		.readable = false,
+		.template_matched = matched_fgr,
+	};
+
+	/* Test for the wrong matched finger state */
+	positive_match_secret_state = test_state_1;
+
+	TEST_ASSERT(test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0,
+					   &test_match_secret_1,
+					   sizeof(test_match_secret_1), NULL,
+					   0) == EC_RES_ACCESS_DENIED);
+
+	/* Test for the unreadable state */
+	positive_match_secret_state = test_state_2;
+
+	TEST_ASSERT(test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0,
+					   &test_match_secret_1,
+					   sizeof(test_match_secret_1), NULL,
+					   0) == EC_RES_ACCESS_DENIED);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_enc_status_valid_flags);
@@ -245,5 +290,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_set_maintenance_mode);
 	RUN_TEST(test_fp_command_read_match_secret_fail_invalid_param);
 	RUN_TEST(test_fp_command_read_match_secret_fail_timeout);
+	RUN_TEST(test_fp_command_read_match_secret_access_denied);
 	test_print_result();
 }
