@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3083d7_9fb7c602",
+        "filename": "zephyr/shim/include/usbc/bb_retimer_usb_mux.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-02T20:54:23Z",
+      "side": 1,
+      "message": "Update this comment to explain why this check is needed.  The `USB_MUX_ENABLE_ALTERNATIVE()` only updates the global \"struct usb_mux_chain usb_muxes[]\" but does not currently update the \"struct bb_usb_control bb_controls[]\" array.\n\nPlease open a bug to update the `bb_controls[]` array based on using USB_MUX_ENABLE_ALTERNATIVE().  This bug can stay unassigned for now.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "3e8015d5e5bae09d1101b508e88995b08ad26234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
