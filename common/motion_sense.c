@@ -448,6 +448,10 @@ static void motion_sense_switch_sensor_rate(void)
 	if (IS_ENABLED(CONFIG_BODY_DETECTION)) {
 		static bool was_enabled;
 
+#ifdef CONFIG_BODY_DETECTION_ALWAYS_ENABLE_IN_SO
+		CPRINTS("force enable");
+		was_enabled = 1;
+#endif
 		switch (sensor_active) {
 		case SENSOR_ACTIVE_S3:
 			was_enabled = body_detect_get_enable();
