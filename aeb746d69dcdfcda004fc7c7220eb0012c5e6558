@@ -22,6 +22,30 @@
       },
       "revId": "aeb746d69dcdfcda004fc7c7220eb0012c5e6558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c9c1aa_09bf627c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 80
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-02T22:20:24Z",
+      "side": 1,
+      "message": "I think casting just hides the underlying issue. For example, if `fgr` was `UINT32_MAX` and `template_newly_enrolled` was `-1`, the comparison would be true, which is probably not what we want since `template_newly_enrolled` being set to `-1` is supposed to be `FP_NO_SUCH_TEMPLATE`.\n\nWe can\u0027t actually hit this case since we have an earlier check where we return if `fgr \u003e\u003d FP_MAX_FINGER_COUNT`, but like you mentioned in the other comment, it\u0027s weird that we have all these different types for the same thing.\n\nHow about I cast it in this CL (so that we can land the [C++ changes](https://crrev.com/c/3551682)) and then rework the types in a followup commit?",
+      "parentUuid": "f779fdc1_1af77462",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "aeb746d69dcdfcda004fc7c7220eb0012c5e6558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
