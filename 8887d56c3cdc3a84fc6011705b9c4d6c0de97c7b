@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0234d4f_83f5e46f",
+        "filename": "zephyr/test/drivers/common/src/stubs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-02T20:44:56Z",
+      "side": 1,
+      "message": "I opened b:244772257 to move this configuration into the devicetree.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 52
+      },
+      "revId": "8887d56c3cdc3a84fc6011705b9c4d6c0de97c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba66fe8a_a9730d60",
+        "filename": "zephyr/test/drivers/common/src/stubs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-02T20:44:56Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 10
+      },
+      "revId": "8887d56c3cdc3a84fc6011705b9c4d6c0de97c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
