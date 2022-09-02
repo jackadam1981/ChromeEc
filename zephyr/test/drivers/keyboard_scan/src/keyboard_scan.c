@@ -6,6 +6,7 @@
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
+#include <zephyr/fff.h>
 #include <emul/emul_kb_raw.h>
 
 #include "console.h"
@@ -158,6 +159,73 @@ ZTEST(keyboard_scan, console_command_ksstate__invalid)
 	zassert_ok(!shell_execute_cmd(get_ec_shell(), "ksstate xyz"), NULL);
 }
 
+ZTEST(keyboard_scan, console_command_kbpress__noargs)
+{
+	/* With no args, print list of simulated keys */
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "kbpress"), NULL);
+}
+
+ZTEST(keyboard_scan, console_command_kbpress__invalid)
+{
+	/* Row or column number out of range, or wrong type */
+	zassert_ok(!shell_execute_cmd(get_ec_shell(), "kbpress -1 0"), NULL);
+	zassert_ok(!shell_execute_cmd(get_ec_shell(), "kbpress foo 0"), NULL);
+	zassert_ok(!shell_execute_cmd(
+			   get_ec_shell(),
+			   "kbpress " STRINGIFY(KEYBOARD_COLS_MAX) " 0"),
+		   NULL);
+
+	zassert_ok(!shell_execute_cmd(get_ec_shell(), "kbpress 0 -1"), NULL);
+	zassert_ok(!shell_execute_cmd(get_ec_shell(), "kbpress 0 foo"), NULL);
+	zassert_ok(
+		!shell_execute_cmd(get_ec_shell(),
+				   "kbpress 0 " STRINGIFY(KEYBOARD_COLS_MAX)),
+		NULL);
+}
+
+/* Mock the key_state_changed callback that the key scan task invokes whenever
+ * a key event occurs. This will capture a history of key presses.
+ */
+FAKE_VOID_FUNC(key_state_changed, int, int, uint8_t);
+
+ZTEST(keyboard_scan, console_command_kbpress__press_and_release)
+{
+	/* Pres and release a key */
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "kbpress 1 2"), NULL);
+
+	/* Hold a key down */
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "kbpress 3 4 1"), NULL);
+
+	/* Release the key */
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "kbpress 3 4 0"), NULL);
+
+	/* Pause a bit to allow the key scan task to process. */
+	k_sleep(K_MSEC(200));
+
+	/* Expect four key events */
+	zassert_equal(4, key_state_changed_fake.call_count, NULL);
+
+	/* Press col=1,row=2 (state==1) */
+	zassert_equal(1, key_state_changed_fake.arg1_history[0], NULL);
+	zassert_equal(2, key_state_changed_fake.arg0_history[0], NULL);
+	zassert_true(key_state_changed_fake.arg2_history[0], NULL);
+
+	/* Release col=1,row=2 (state==0) */
+	zassert_equal(1, key_state_changed_fake.arg1_history[1], NULL);
+	zassert_equal(2, key_state_changed_fake.arg0_history[1], NULL);
+	zassert_false(key_state_changed_fake.arg2_history[1], NULL);
+
+	/* Press col=3,row=4 (state==1) */
+	zassert_equal(3, key_state_changed_fake.arg1_history[2], NULL);
+	zassert_equal(4, key_state_changed_fake.arg0_history[2], NULL);
+	zassert_true(key_state_changed_fake.arg2_history[2], NULL);
+
+	/* Release col=3,row=4 (state==0) */
+	zassert_equal(3, key_state_changed_fake.arg1_history[3], NULL);
+	zassert_equal(4, key_state_changed_fake.arg0_history[3], NULL);
+	zassert_false(key_state_changed_fake.arg2_history[3], NULL);
+}
+
 static void reset_keyboard(void *data)
 {
 	ARG_UNUSED(data);
@@ -169,6 +237,9 @@ static void reset_keyboard(void *data)
 
 	/* Turn off key state change printing */
 	*keyboard_scan_get_print_state_changes() = 0;
+
+	/* Reset the key state callback mock */
+	RESET_FAKE(key_state_changed);
 }
 
 ZTEST_SUITE(keyboard_scan, drivers_predicate_post_main, NULL, reset_keyboard,
