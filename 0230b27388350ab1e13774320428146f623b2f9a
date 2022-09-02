@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f87158_a0dda156",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-02T16:17:00Z",
+      "side": 1,
+      "message": "nit: sort includes.",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174d2b95_f92561be",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-02T16:17:00Z",
+      "side": 1,
+      "message": "I\u0027m probably mistaken but it seems like we\u0027re just echoing back as the cr50, right?",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebdbeeb2_cdbb7b1d",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-02T16:17:00Z",
+      "side": 1,
+      "message": "Looks like we\u0027re using user_data here and should get rid of the `ARG_UNUSED(user_data)`",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c7e450_236c14cf",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-02T16:17:00Z",
+      "side": 1,
+      "message": "Can we have a comment referring to the CONFIG?",
+      "range": {
+        "startLine": 174,
+        "startChar": 49,
+        "endLine": 174,
+        "endChar": 53
+      },
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae1724f_0e8aa1b8",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-02T16:17:00Z",
+      "side": 1,
+      "message": "Why was this needed for this test? Was it always needed prior but the tests didn\u0027t show that?",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

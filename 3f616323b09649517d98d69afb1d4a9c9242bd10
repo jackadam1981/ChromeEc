@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c588a7f8_846b19e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-02T16:17:00Z",
+      "side": 1,
+      "message": "Also reviewed PR.",
+      "revId": "3f616323b09649517d98d69afb1d4a9c9242bd10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe592121_496042bb",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-02T16:17:00Z",
+      "side": 1,
+      "message": "instead of _other_error, maybe __err_crc?",
+      "revId": "3f616323b09649517d98d69afb1d4a9c9242bd10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
