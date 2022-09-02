@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b53d15_48b01ce1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-09-02T16:11:29Z",
+      "side": 1,
+      "message": "(should use imperative)\n\nSomething like:\n\nTo prevent that, clear IDR in the test \u0027after\u0027 function\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/main/contributing.md#Commit-messages",
+      "revId": "0a5fa5199e6d4cf8b7165cdfb183e4a217a37d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
