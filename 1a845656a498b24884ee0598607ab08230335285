@@ -46,6 +46,30 @@
       },
       "revId": "1a845656a498b24884ee0598607ab08230335285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0354e664_7339cbb7",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-02T21:40:51Z",
+      "side": 0,
+      "message": "That\u0027s unfortunate, thank you for the fix, but checking against empty does not make it impossible to use DEBUG\u003d1, it makes it possible to use other values, people might have been accustomed to. I suggest to change it in the Cr50 branch and here.",
+      "parentUuid": "e733a747_3e222ee7",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "1a845656a498b24884ee0598607ab08230335285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
