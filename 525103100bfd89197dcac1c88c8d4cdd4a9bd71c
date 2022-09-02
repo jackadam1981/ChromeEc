@@ -16,6 +16,23 @@
       "message": "PTALA",
       "revId": "525103100bfd89197dcac1c88c8d4cdd4a9bd71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba10bb70_939a95fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-09-02T22:27:36Z",
+      "side": 1,
+      "message": "Super nano nit, and you don\u0027t have to act on this at all. I probably would have set the subject to the power button and then described that you added tests in the message. It really doesn\u0027t matter either way, but just thought I\u0027d share how I thought of it.\n\ne.g.\n\n```\npower_button: Ensure positive duration\n\nThis commit fixes a bug with the `powerbtn` console command which\nallowed negative durations. [..snip..]\n\nThis commit also adds a new test suite that tests the power button command API.\n[...]\n```",
+      "revId": "525103100bfd89197dcac1c88c8d4cdd4a9bd71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
