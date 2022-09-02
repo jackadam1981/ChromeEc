@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8663f67b_04e0adac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-09-02T02:44:28Z",
+      "side": 1,
+      "message": "Hi, this is a soc-specific console command, \"gpiodbg\", that is used to prevent leakage current by turning off the pads\u0027 input buffer. If it helps power consumption investigation, I\u0027d like to land it on cros ec repo, please give your comments freely.",
+      "revId": "2e2c691bcb943c1177aa6ab5ad641df8f991619c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
