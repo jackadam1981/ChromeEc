@@ -46,6 +46,30 @@
       },
       "revId": "b92b64e5031779ff97d9ee572f19573c035fc876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2454df_2abe7764",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-02T21:12:37Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. Replied to crrev.com/c/3845339. On the frist call, get_chip_info is supposed to probe the chip and set the functon pointers.",
+      "parentUuid": "01e2003e_9073a69f",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 2
+      },
+      "revId": "b92b64e5031779ff97d9ee572f19573c035fc876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
