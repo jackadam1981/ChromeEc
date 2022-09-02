@@ -52,6 +52,24 @@
       "parentUuid": "03a598d6_de0a4d94",
       "revId": "9319fdaa34df43e3729df230bcbd345afddf9b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca8b37a_cee037c9",
+        "filename": "zephyr/projects/corsola/src/krabby/charger_workaround.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-09-02T05:16:50Z",
+      "side": 0,
+      "message": "Confirmed we use ES3, and no need those workaround.",
+      "parentUuid": "515c7266_c71ce914",
+      "revId": "9319fdaa34df43e3729df230bcbd345afddf9b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
