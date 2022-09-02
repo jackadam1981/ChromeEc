@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7406cc9f_c09aa05e",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-02T20:17:39Z",
+      "side": 1,
+      "message": "I think this can be const.\n\nAlso, I think you can use the alternative-chain here instead of allocating a second virtual mux for port 1.",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 7
+      },
+      "revId": "fb168b114240abbb6c1a5be52133598ee2227e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
