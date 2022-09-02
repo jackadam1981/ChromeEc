@@ -52,6 +52,24 @@
       "parentUuid": "db04c09f_e96876e3",
       "revId": "e6ea46a5e8a640fbf23c8a3dea747f614ef050a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3181451_891d2527",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-02T16:23:39Z",
+      "side": 1,
+      "message": "My guess is that the fields were broken out to accommodate the timeframe when they were certifying both PD 2.0 and PD 3.0 devices.  PD 2.0 only allowed DFP\u0027s to send DiscoverIdentity REQ, but PD 3.0 lets either SOP partner send them. So your reply to DiscoverIdentity could vary based on your own data role in that time. \n\nI\u0027m guessing we\u0027ll want to reply to DiscoverIdentity as both a DFP and UFP in the long term, but I\u0027ll defer to Benson\u0027s memory for what constitutes a \"multiple DFPs\" product",
+      "parentUuid": "90994354_a34aaf40",
+      "revId": "e6ea46a5e8a640fbf23c8a3dea747f614ef050a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
