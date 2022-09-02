@@ -22,6 +22,30 @@
       },
       "revId": "3c6f4b589ff90f7e48fb0d9f10c3a87b5e23cf0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b670f24a_abf45e23",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 96
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-02T20:21:30Z",
+      "side": 1,
+      "message": "Unfortunately this one can\u0027t be since `fp_enc_buffer` has type `uint8_t*`:\n\n```\nstatic_cast from \u0027uint8_t *\u0027 (aka \u0027unsigned char *\u0027) to \u0027struct ec_fp_template_encryption_metadata *\u0027 is not allowed\n```\n\n(The ones using `static_cast` are from type `void*`.)",
+      "parentUuid": "007c3e37_a4e467f8",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 56
+      },
+      "revId": "3c6f4b589ff90f7e48fb0d9f10c3a87b5e23cf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
