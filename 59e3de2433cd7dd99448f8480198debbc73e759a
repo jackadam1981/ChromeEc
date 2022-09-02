@@ -301,6 +301,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "275cbf25_58920b11",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-09-02T02:50:40Z",
+      "side": 1,
+      "message": "Ah OK. Then let\u0027s move on without changing the pchg subsystem. Thanks.",
+      "parentUuid": "d6b082cf_c8a680f0",
+      "range": {
+        "startLine": 557,
+        "startChar": 22,
+        "endLine": 557,
+        "endChar": 26
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98985d23_0b5b26ff",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 1
