@@ -325,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e88544fd_346f27d8",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-02T21:09:07Z",
+      "side": 1,
+      "message": "How about adding get_chip_info?\n\n\tif (!ctx-\u003ecfg-\u003edrv-\u003eget_chip_info(ctx))\n\t\tgpio_enable_interrupt();\n\telse\n\t\tboard_pchg_power_on(p, 0);\n\n(As written before,) get_chip_info needs to work without IRQ but I don\u0027t think it\u0027s a hard requirement. cps8100.c should cache it (since get_chip_info could be called anytime later just like TCPCs).",
+      "parentUuid": "275cbf25_58920b11",
+      "range": {
+        "startLine": 557,
+        "startChar": 22,
+        "endLine": 557,
+        "endChar": 26
+      },
+      "revId": "59e3de2433cd7dd99448f8480198debbc73e759a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98985d23_0b5b26ff",
         "filename": "common/peripheral_charger.c",
         "patchSetId": 1
