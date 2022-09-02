@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b4407f0_7289a78c",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-09-02T00:40:41Z",
+      "side": 1,
+      "message": "Essentially, this function shouldn\u0027t get called if `CONFIG_OCPC` isn\u0027t enabled. I would see if we can guard the entire function with `CONFIG_BATTERY`.",
+      "parentUuid": "b6bb15eb_54a8155a",
+      "revId": "f5afd519756c97009abec9d08b5551aead4e7fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88247117_99de72d4",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
