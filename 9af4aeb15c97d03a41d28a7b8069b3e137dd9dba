@@ -16,6 +16,23 @@
       "message": "\u003e Patch Set 5: Code-Coverage+1 Code-Review+1\n\nDon\u0027t vote Code-Coverage+1 unless you have a good reason why this CL shouldn\u0027t have tests.",
       "revId": "9af4aeb15c97d03a41d28a7b8069b3e137dd9dba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed1f7b16_fbef3545",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547927
+      },
+      "writtenOn": "2022-09-02T22:00:49Z",
+      "side": 1,
+      "message": "Per verification test reported at https://b.corp.google.com/issues/243492849#comment19, we merge this CL as part of ongoing work.",
+      "revId": "9af4aeb15c97d03a41d28a7b8069b3e137dd9dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
