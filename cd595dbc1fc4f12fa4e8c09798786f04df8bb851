@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf69e7c_31be6b7d",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-02T17:29:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a70e5945_cdc018ce",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "cd595dbc1fc4f12fa4e8c09798786f04df8bb851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd1fc28f_be45441d",
