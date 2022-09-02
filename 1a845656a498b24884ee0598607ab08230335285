@@ -22,6 +22,30 @@
       },
       "revId": "1a845656a498b24884ee0598607ab08230335285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e733a747_3e222ee7",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-02T21:37:55Z",
+      "side": 0,
+      "message": "I prefer consistency 😊\n\nAnd since this one had the bug, I changed it here. Mary already approved+landed this version on cr50_stab.",
+      "parentUuid": "66812042_8872071f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "1a845656a498b24884ee0598607ab08230335285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

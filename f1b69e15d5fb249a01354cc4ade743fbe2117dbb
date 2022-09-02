@@ -16,6 +16,24 @@
       "message": "I just noticed this is in the EC tree, not Cr50 - I am not sure who\u0027s using it from the EC tree anyways, maybe it could be dropped in this branch.",
       "revId": "f1b69e15d5fb249a01354cc4ade743fbe2117dbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0faf2a06_6198f45a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-02T21:37:55Z",
+      "side": 1,
+      "message": "ec-devutils...ebuild seems to be building this still. (And \"this\"\u003d\u003d\"usb_updater2\" on the main branch.)",
+      "parentUuid": "7a6c99bc_702b52d9",
+      "revId": "f1b69e15d5fb249a01354cc4ade743fbe2117dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
