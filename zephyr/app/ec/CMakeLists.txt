@@ -9,3 +9,4 @@ if(NOT DEFINED CONFIG_ZTEST)
 endif()
 
 add_subdirectory(chip)
+add_subdirectory(usbc)
