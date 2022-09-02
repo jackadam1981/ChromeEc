@@ -36,6 +36,7 @@ endif()
 if(DEFINED CONFIG_BOARD_WINTERHOLD)
 	project(winterhold)
 	zephyr_library_sources(
-    		"winterhold/src/usbc_config.c"
-    )
+			"winterhold/src/usbc_config.c"
+			"winterhold/src/body_detection.c"
+	)
 endif()
