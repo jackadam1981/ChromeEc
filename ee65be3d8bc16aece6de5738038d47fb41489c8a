@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68dcfdc7_5fc9e22e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-09-02T01:45:47Z",
+      "side": 1,
+      "message": "\u003e \"preferrable\" is a possible misspelling of \"preferable\".\n\nPlease fix.",
+      "parentUuid": "1113f3ac_b32249fc",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "ee65be3d8bc16aece6de5738038d47fb41489c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e7f149_6d45a0f4",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-09-02T01:45:47Z",
+      "side": 1,
+      "message": "This probably needs to be fixed (or removed?)",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "ee65be3d8bc16aece6de5738038d47fb41489c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
