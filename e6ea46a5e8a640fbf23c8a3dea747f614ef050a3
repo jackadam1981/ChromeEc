@@ -34,6 +34,24 @@
       "parentUuid": "4a89bc02_a28bb07d",
       "revId": "e6ea46a5e8a640fbf23c8a3dea747f614ef050a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90994354_a34aaf40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-02T00:21:00Z",
+      "side": 1,
+      "message": "FWIW, the VIF description documentation seems to contain contradictory statements about Discover Identity support:\n\n\u003e Responds_To_Discov_SOP_UFP\n\u003e If this field is set to NO and Responds_To_Discov_SOP_DFP is set to YES, then the Qualifying Product should respond to a Discover Identity command with a NAK.\n\u003e \n\u003e Responds_To_Discov_SOP_DFP\n\u003e If this field is set to YES, then the Qualifying Product should respond to a Discover Identity command with an ACK.",
+      "parentUuid": "db04c09f_e96876e3",
+      "revId": "e6ea46a5e8a640fbf23c8a3dea747f614ef050a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
