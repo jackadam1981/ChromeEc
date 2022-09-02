@@ -36,6 +36,8 @@
 #include "task.h"
 #include "util.h"
 
+#include <zephyr/ztest.h>
+
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 
 /* Power signal list. Must match order of enum power_signal. */

@@ -3998,6 +3998,9 @@ static void pd_chipset_startup(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		/* Do not notify the AP of irrelevant past Hard Resets. */
+		pd_clear_events(i, PD_STATUS_EVENT_HARD_RESET);
+
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
 		pd_set_dual_role_and_event(i, pd_get_drp_state_in_suspend(),
 					   PD_EVENT_UPDATE_DUAL_ROLE |
