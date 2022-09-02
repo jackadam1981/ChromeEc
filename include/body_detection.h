@@ -15,6 +15,9 @@ enum body_detect_states { BODY_DETECTION_OFF_BODY, BODY_DETECTION_ON_BODY };
 enum body_detect_states body_detect_get_state(void);
 void body_detect_change_state(enum body_detect_states state, bool spoof);
 
+/* board action for body state change */
+__override_proto void board_body_state_change(void);
+
 /* Reset the data. This should be called when ODR is changed*/
 void body_detect_reset(void);
 
