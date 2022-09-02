@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea07eff_978403ca",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-02T17:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a59a7c47_83ee9259",
+      "revId": "0090ca440927076d0620645cbf920fd51c391d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77df845_9d2a296b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-02T17:08:22Z",
       "side": 1,
       "message": "I think we should start at least semi-testing the console command responses.\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/vboot_efs2/src/main.c;l\u003d50 as an example.",
+      "revId": "0090ca440927076d0620645cbf920fd51c391d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ac7214_21744584",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-02T17:35:00Z",
+      "side": 1,
+      "message": "There\u0027s no console output for success conditions with the `button` command. The error output seems to come from the shell module.",
+      "parentUuid": "d77df845_9d2a296b",
       "revId": "0090ca440927076d0620645cbf920fd51c391d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
