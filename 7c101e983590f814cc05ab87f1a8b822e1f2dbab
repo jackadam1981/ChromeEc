@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a875d2a_b211693c",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-02T18:10:14Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 10
+      },
+      "revId": "7c101e983590f814cc05ab87f1a8b822e1f2dbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99af3a7f_c9f5422f",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-02T18:10:14Z",
+      "side": 1,
+      "message": "Nit - newline before.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 9
+      },
+      "revId": "7c101e983590f814cc05ab87f1a8b822e1f2dbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e722dd5e_e3aa59c4",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-02T18:10:14Z",
+      "side": 1,
+      "message": "Newline between braces.",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 183,
+        "endChar": 7
+      },
+      "revId": "7c101e983590f814cc05ab87f1a8b822e1f2dbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
