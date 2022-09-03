@@ -20,6 +20,9 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
+#define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
+#define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
+
 int pd_check_vconn_swap(int port)
 {
 	/* Allow VCONN swaps if the AP is on. */
@@ -74,4 +77,21 @@ int board_vbus_source_enabled(int port)
 int board_is_sourcing_vbus(int port)
 {
 	return board_vbus_source_enabled(port);
+}
+
+__override int board_pd_set_frs_enable(int port, int enable)
+{
+	const struct gpio_dt_spec *c0_frs_en;
+
+	CPRINTSUSB("ppc[%d]: pd_set_frs_enable = %d", port, enable);
+
+	c0_frs_en = GPIO_DT_FROM_NODELABEL(ioex_usb_c0_frs_en);
+	/*
+	 * Both PPCs require the FRS GPIO to be set as soon as FRS capability
+	 * is established.
+	 */
+	if (port == 0)
+		gpio_pin_set_dt(c0_frs_en, enable);
+
+	return EC_SUCCESS;
 }
