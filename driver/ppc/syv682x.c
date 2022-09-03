@@ -206,6 +206,8 @@ static int syv682x_vbus_source_enable(int port, int enable)
 			gpio_or_ioex_set_level(ppc_chips[port].frs_en, 0);
 	}
 
+	CPRINTS("ppc[%d]: source path enable = %c", port, enable ? 'y' : 'n');
+
 	rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
 	if (rv)
 		return rv;
