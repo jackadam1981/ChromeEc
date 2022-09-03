@@ -155,6 +155,9 @@ __overridable int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		msleep(1);
 		gpio_set_level(control->usb_ls_en_gpio, 0);
 	}
+	ccprintf("hb: enable = %d, en = %d, rst = %d\n", enable,
+		 gpio_get_level(control->usb_ls_en_gpio),
+		 gpio_get_level(control->retimer_rst_gpio));
 	return EC_SUCCESS;
 }
 
