@@ -16,6 +16,24 @@
       "message": "This looks like a good start to get shotzo building\n\nI\u0027m assuming that as the project progresses we\u0027ll need to tune more functions and register settings for no-battery, but that\u0027ll probably happen as you get runtime on the first boards. ",
       "revId": "15ec145e06de80540b86224be51b2b31484116b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f5ace35_b09f7441",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-09-03T07:13:06Z",
+      "side": 1,
+      "message": "ok, we will double check register settings",
+      "parentUuid": "01f9bffc_a369abeb",
+      "revId": "15ec145e06de80540b86224be51b2b31484116b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
