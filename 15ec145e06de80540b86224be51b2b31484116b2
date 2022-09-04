@@ -34,6 +34,23 @@
       "parentUuid": "01f9bffc_a369abeb",
       "revId": "15ec145e06de80540b86224be51b2b31484116b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6733d6_3f28f537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-09-04T04:32:12Z",
+      "side": 1,
+      "message": "The error is unrelated to this patch:\n\n```\nboard/rainier/board.c:433:5: error: redefinition of \u0027charge_prevent_power_on\u0027\n  433 | int charge_prevent_power_on(int power_button_pressed)\n      |     ^~~~~~~~~~~~~~~~~~~~~~~\nIn file included from board/rainier/board.c:11:\ninclude/charge_state.h:148:19: note: previous definition of \u0027charge_prevent_power_on\u0027 with type \u0027int(int)\u0027\n  148 | static inline int charge_prevent_power_on(int power_button_pressed)\n      |                   ^~~~~~~~~~~~~~~~~~~~~~~\nmake[2]: *** [Makefile.rules:611: build/rainier/RW/board/rainier/board.o] Error 1\nmake[1]: *** [Makefile.rules:288: proj-rainier] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n```",
+      "revId": "15ec145e06de80540b86224be51b2b31484116b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
