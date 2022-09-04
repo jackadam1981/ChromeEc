@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b84eac5a_ea4f3fd2",
+        "filename": "include/charge_state.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-09-04T13:02:53Z",
+      "side": 1,
+      "message": "I need to add the defined(TEST_BUILD) because the test/nvidia-gpu.c will need this api when building the code.",
+      "range": {
+        "startLine": 97,
+        "startChar": 31,
+        "endLine": 97,
+        "endChar": 50
+      },
+      "revId": "88bf1d7e736308c5a560284c6f7da16ef0dc5cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

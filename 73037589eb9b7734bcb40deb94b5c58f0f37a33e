@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6752ae8a_b7d5a163",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-09-04T13:02:53Z",
+      "side": 1,
+      "message": "I need to add the guard below in order to make the BOARD\u003dit8xxx2_evb to pass the build because it include CONFIG_BATTERY but doesn\u0027t include CONFIG_CHARGER\n```\nifneq ($(CONFIG_CHARGER),)\n```",
+      "parentUuid": "66ba3d30_3ee695fc",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "73037589eb9b7734bcb40deb94b5c58f0f37a33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8033ab77_5192a494",
         "filename": "include/charge_state.h",
         "patchSetId": 2
