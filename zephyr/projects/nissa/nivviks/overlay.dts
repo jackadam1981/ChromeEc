@@ -19,13 +19,11 @@
 	};
 
 	batteries {
-		default_battery: lgc {
-			compatible = "lgc,ap18c8k", "battery-smart";
-		};
-		lgc_ap19b8m {
-			compatible = "lgc,ap19b8m", "battery-smart";
+		default_battery: smp {
+			compatible = "smp,l20m3pg0", "battery-smart";
 		};
 	};
+
 
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
@@ -102,16 +100,12 @@
 		 * and the only 2 types of sub-boards used on nivviks both have
 		 * type-C ports on them.
 		 */
-		gpio_sb_3: sb-3 {
-			gpios = <&gpiof 4 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+		gpio_sb_3: sb_3 {
+			gpios = <&gpiof 5 GPIO_OPEN_DRAIN>;
 			no-auto-init;
 		};
-		gpio_sb_4: sb-4 {
-			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-			no-auto-init;
-		};
-		gpio_fan_enable: fan-enable {
-			gpios = <&gpio6 3 GPIO_OUTPUT>;
+		gpio_sb_4: sb_4 {
+			gpios = <&gpiof 4 GPIO_INPUT>;
 			no-auto-init;
 		};
 		ec-i2c-sensor-scl {
@@ -220,42 +214,6 @@
 				compatible = "cros-ec,usbc-mux-virtual";
 			};
 		};
-		/*
-		 * TODO(b:211693800): port1 may not be present on some
-		 * sub-boards.
-		 */
-		port1@1 {
-			compatible = "named-usbc-port";
-			reg = <1>;
-			bc12 = <&bc12_port1>;
-			chg = <&chg_port1>;
-			/*
-			 * Some sub-boards may disable all usb muxes in chain
-			 * except virtual_mux_1
-			 */
-			usb-muxes = <&virtual_mux_1 &tcpci_mux_1>;
-		};
-		port1-muxes {
-			virtual_mux_1: virtual-mux-1 {
-				compatible = "cros-ec,usbc-mux-virtual";
-			};
-			tcpci_mux_1: tcpci-mux-1 {
-				compatible = "parade,usbc-mux-ps8xxx";
-			};
-		};
-	};
-
-	fans {
-		compatible = "cros-ec,fans";
-
-		fan_0 {
-			pwms = <&pwm5 5 PWM_KHZ(1) PWM_POLARITY_NORMAL>;
-			rpm_min = <2200>;
-			rpm_start = <2200>;
-			rpm_max = <4200>;
-			tach = <&tach2>;
-			enable_gpio = <&gpio_fan_enable>;
-		};
 	};
 
 	 /*
@@ -324,10 +282,15 @@
 	label = "I2C_USB_C0_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 
-	bc12_port0: rt1718s-bc12@41 {
-		compatible = "richtek,rt1718s-bc12";
+	bc12_port0: pi3usb9201@5f {
+		compatible = "pericom,pi3usb9201";
 		status = "okay";
-		reg = <0x41>;
+		reg = <0x5f>;
+		/*
+		 * BC1.2 interrupt is shared with TCPC, so
+		 * IRQ is not specified here and handled by
+		 * usb_c0_interrupt.
+		 */
 	};
 
 	chg_port0: isl923x@9 {
@@ -335,24 +298,6 @@
 		status = "okay";
 		reg = <0x9>;
 	};
-};
-
-&i2c5_1 {
-	label = "I2C_SUB_C1_TCPC";
-	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
-
-	bc12_port1: pi3usb9201@5f {
-		compatible = "pericom,pi3usb9201";
-		status = "okay";
-		reg = <0x5f>;
-	};
-
-	chg_port1: isl923x@9 {
-		compatible = "intersil,isl923x";
-		status = "okay";
-		reg = <0x9>;
-	};
-
 };
 
 &i2c7_0 {
