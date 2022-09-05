@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30e8a39_6ccc6bfe",
+        "filename": "zephyr/shim/chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-05T10:46:17Z",
+      "side": 1,
+      "message": "I think `strtoi` is non standard function from common/util.c. Can you use `strtol`?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "023cc8d7a0185b89e9a097e2db242affa6e8693b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
