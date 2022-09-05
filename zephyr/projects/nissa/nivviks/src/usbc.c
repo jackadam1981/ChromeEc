@@ -11,7 +11,7 @@
 #include "usb_mux.h"
 #include "system.h"
 #include "driver/charger/isl923x_public.h"
-#include "driver/retimer/anx7483_public.h"
+#include "driver/charger/sm5803.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/tcpm/ps8xxx_public.h"
@@ -32,20 +32,6 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		/* RAA489000 implements TCPCI 2.0 */
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_VBUS_MONITOR,
-	},
-	{
-		/*
-		 * Sub-board: optional PS8745 TCPC+redriver. Behaves the same
-		 * as PS8815.
-		 */
-		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
-			.port = I2C_PORT_USB_C1_TCPC,
-			.addr_flags = PS8XXX_I2C_ADDR1_FLAGS,
-		},
-		.drv = &ps8xxx_tcpm_drv,
-		/* PS8745 implements TCPCI 2.0 */
-		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 	},
 };
 
@@ -144,18 +130,6 @@ uint16_t tcpc_get_alert_status(void)
 		}
 	}
 
-	if (board_get_usb_pd_port_count() == 2 &&
-	    !gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl))) {
-		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
-			/* TCPCI spec Rev 1.0 says to ignore bits 14:12. */
-			if (!(tcpc_config[1].flags & TCPC_FLAGS_TCPCI_REV2_0))
-				regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
-
-			if (regval)
-				status |= PD_STATUS_TCPC_ALERT_1;
-		}
-	}
-
 	return status;
 }
 
@@ -228,8 +202,7 @@ void board_reset_pd_mcu(void)
 
 static void poll_c0_int(void);
 DECLARE_DEFERRED(poll_c0_int);
-static void poll_c1_int(void);
-DECLARE_DEFERRED(poll_c1_int);
+
 
 static void usbc_interrupt_trigger(int port)
 {
@@ -252,12 +225,6 @@ static void poll_c0_int(void)
 		      &poll_c0_int_data);
 }
 
-static void poll_c1_int(void)
-{
-	poll_usb_gpio(1, GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl),
-		      &poll_c1_int_data);
-}
-
 void usb_interrupt(enum gpio_signal signal)
 {
 	int port;
@@ -266,9 +233,6 @@ void usb_interrupt(enum gpio_signal signal)
 	if (signal == GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_int_odl))) {
 		port = 0;
 		ud = &poll_c0_int_data;
-	} else {
-		port = 1;
-		ud = &poll_c1_int_data;
 	}
 	/*
 	 * We've just been called from a falling edge, so there's definitely

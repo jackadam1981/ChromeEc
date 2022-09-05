@@ -17,8 +17,8 @@ if(DEFINED CONFIG_BOARD_NIVVIKS)
 			"nivviks/src/led.c"
 			"nivviks/src/form_factor.c"
 			"nivviks/src/keyboard.c"
+			"nivviks/src/hdmi.c"
 	)
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "nivviks/src/fan.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "nivviks/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "nivviks/src/charger.c")
 endif()
