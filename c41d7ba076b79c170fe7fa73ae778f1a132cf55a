@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e194522_9f7a13b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-05T03:12:26Z",
+      "side": 1,
+      "message": "We\u0027ve enabled coverage checking for all EC code commits.\nUntil we can get some test coverage across the zephry/project/nissa code, you\ncan add\n\nLOW_COVERAGE_REASON\u003dNissa hardware platform specific code\n\nto the commit message, and this will opt out the coverage check.\nOf course, a better approach is to add appropriate unit tests, but at this stage we have none for Nissa platform specific code, so until we address that, opting out may be the best course of action.\n",
+      "revId": "c41d7ba076b79c170fe7fa73ae778f1a132cf55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
