@@ -16,6 +16,29 @@
       "message": "zmake build magikarp --clobber",
       "revId": "0bf5a6a9ab2a9b5c6d4eb5c354647753c30df2c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfaaf7ad_7463754d",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2022-09-05T08:08:16Z",
+      "side": 1,
+      "message": "Please rebase and test/build it again.\nSeems we don\u0027t need cbi_eeprom.dts anymore. It\u0027s removed in CL:3858648.",
+      "range": {
+        "startLine": 133,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 32
+      },
+      "revId": "0bf5a6a9ab2a9b5c6d4eb5c354647753c30df2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
