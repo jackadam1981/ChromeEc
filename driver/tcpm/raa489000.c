@@ -336,6 +336,16 @@ int raa489000_debug_detach(int port)
 	return rv;
 }
 
+__maybe_unused static int raa489_set_frs_enable(int port, int enable)
+{
+	if (!tcpm_tcpc_has_frs_control(port))
+		return EC_SUCCESS;
+
+	return tcpc_update8(port, TCPC_REG_POWER_CTRL,
+			    TCPC_REG_POWER_CTRL_FRS_ENABLE,
+			    enable ? MASK_SET : MASK_CLR);
+}
+
 /* RAA489000 is a TCPCI compatible port controller */
 const struct tcpm_drv raa489000_tcpm_drv = {
 	.init = &raa489000_init,
@@ -374,5 +384,8 @@ const struct tcpm_drv raa489000_tcpm_drv = {
 	.debug_detach = &raa489000_debug_detach,
 #ifdef CONFIG_CMD_TCPC_DUMP
 	.dump_registers = &raa489000_dump_registers,
+#endif
+#ifdef CONFIG_USB_PD_FRS
+	.set_frs_enable = &raa489_set_frs_enable,
 #endif
 };
