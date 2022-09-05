@@ -3,6 +3,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9560721e_5c4fbc43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-05T11:23:01Z",
+      "side": 1,
+      "message": "\u003e \"temprature\" is a possible misspelling of \"temperature\".\n\nPlease fix.",
+      "parentUuid": "55ba008f_69075537",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "9bdf90c7f8c42dbf6ed68f27ebca6f51ecda2f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c35dd40b_f8bf551e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -14,6 +38,29 @@
       "writtenOn": "2022-09-05T11:11:06Z",
       "side": 1,
       "message": "Is it possible to test the working of sensors added, on Rex. if yes did we also check the working of temp sensors",
+      "revId": "9bdf90c7f8c42dbf6ed68f27ebca6f51ecda2f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "805ad0f2_bdb44a4b",
+        "filename": "zephyr/projects/rex/temp_sensors.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-05T11:23:01Z",
+      "side": 1,
+      "message": "I think this one is wrong, gpio34 goes to `USB_C1_TCPC_INT_ODL`, generated.dts has channel 8 instead, should be `adc0_chan8_gpf1`.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
       "revId": "9bdf90c7f8c42dbf6ed68f27ebca6f51ecda2f9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
