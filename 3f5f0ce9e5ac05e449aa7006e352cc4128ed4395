@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f516f0f_e9e8e007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-05T11:24:13Z",
+      "side": 1,
+      "message": "Can you run a build before and after and annotate the extra flash/ram used? Just for future reference, these are the first thing to go when we\u0027ll go short on resources. :-(",
+      "revId": "3f5f0ce9e5ac05e449aa7006e352cc4128ed4395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
