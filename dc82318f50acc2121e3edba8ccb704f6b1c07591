@@ -22,6 +22,30 @@
       },
       "revId": "dc82318f50acc2121e3edba8ccb704f6b1c07591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d039d0d9_ed6577bd",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-05T11:28:25Z",
+      "side": 1,
+      "message": "(by trace I mean an oscilloscope capture of the reset signal and power rail)",
+      "parentUuid": "7d8a6abf_2d29fde2",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "dc82318f50acc2121e3edba8ccb704f6b1c07591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
