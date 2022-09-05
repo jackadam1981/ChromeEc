@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8a6abf_2d29fde2",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-05T11:27:38Z",
+      "side": 1,
+      "message": "Is there a trace of the delay between reset being lifted and power being stable? Would be ideal to have an idea of how much margin do we have on top of that delay and add that to the tracking bug and maybe add a note here.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "dc82318f50acc2121e3edba8ccb704f6b1c07591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
