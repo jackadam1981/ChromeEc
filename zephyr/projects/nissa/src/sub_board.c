@@ -64,9 +64,7 @@ static void hdmi_hpd_interrupt(const struct device *device,
 			       gpio_port_pins_t pins)
 {
 	int state = gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_hpd_odl));
-
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_soc_hdmi_hpd), state);
-	LOG_DBG("HDMI HPD changed state to %d", state);
 }
 
 void nissa_configure_hdmi_rails(void)
@@ -196,7 +194,6 @@ static void nereid_subboard_config(void)
 			GPIO_DT_FROM_ALIAS(gpio_hpd_odl);
 		static struct gpio_callback hdmi_hpd_cb;
 		int rv, irq_key;
-
 		nissa_configure_hdmi_power_gpios();
 
 #if CONFIG_SOC_IT8XXX2 && DT_NODE_EXISTS(I2C4_NODE)
@@ -214,7 +211,6 @@ static void nereid_subboard_config(void)
 			AP_POWER_PRE_INIT | AP_POWER_HARD_OFF |
 				AP_POWER_STARTUP | AP_POWER_SHUTDOWN);
 		ap_power_ev_add_callback(&power_cb);
-
 		/*
 		 * Configure HPD input from sub-board; it's inverted by a buffer
 		 * on the sub-board.
