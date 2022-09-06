@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "44449769_81f6acd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-06T21:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8639da77_428933b6",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "973423ce147be7051f686c1591dde6ad835dc1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1bcf9b72_5b70d67d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2662cf4c_78846cc2",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-06T21:18:32Z",
+      "side": 1,
+      "message": "good point, modified as suggested.",
+      "parentUuid": "c58c9ce2_9aa67abd",
+      "range": {
+        "startLine": 1987,
+        "startChar": 0,
+        "endLine": 1987,
+        "endChar": 21
+      },
+      "revId": "973423ce147be7051f686c1591dde6ad835dc1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36bc4a95_828f7c31",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-06T20:06:24Z",
       "side": 1,
       "message": "nit: feels like this might belong under the block in L1994+? doesn\u0027t really matter right now, but it might if there\u0027s some refactoring, or additional error/return paths added in the future",
+      "range": {
+        "startLine": 1988,
+        "startChar": 2,
+        "endLine": 1988,
+        "endChar": 9
+      },
+      "revId": "973423ce147be7051f686c1591dde6ad835dc1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555e9dc3_577e2671",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1988,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-06T21:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36bc4a95_828f7c31",
       "range": {
         "startLine": 1988,
         "startChar": 2,
