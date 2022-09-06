@@ -1983,18 +1983,20 @@ static uint32_t common_process_password(struct transfer_descriptor *td,
 	printf("Enter password:");
 	len = getline(&password, &len, stdin);
 	printf("Re-enter password:");
-	getline(&password_copy, &copy_len, stdin);
+	copy_len = getline(&password_copy, &copy_len, stdin);
 
 	/* Restore command line echo. */
 	tcsetattr(STDIN_FILENO, TCSANOW, &oldattr);
 
 	/* Empty password will still have the newline. */
-	if ((len <= 1) || !password_copy) {
+	if ((len <= 1) || !password_copy || (copy_len != len)) {
+		fprintf(stderr, "Error reading password\n");
 		if (password)
 			free(password);
 		if (password_copy)
 			free(password_copy);
-		fprintf(stderr, "Error reading password\n");
+		if (copy_len != len)
+			fprintf(stderr, "Password length mismatch\n");
 		exit(update_error);
 	}
 
