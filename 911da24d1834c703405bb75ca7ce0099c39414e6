@@ -22,6 +22,30 @@
       },
       "revId": "911da24d1834c703405bb75ca7ce0099c39414e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a82d9aa_dcc372ac",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-06T23:42:44Z",
+      "side": 1,
+      "message": "Hmm, goood point, I did not check the return value of getline(). It\u0027s a bit messy with return value and the input size paramter having different sign.\n\nLet me try again.",
+      "parentUuid": "5ae38add_3c91208d",
+      "range": {
+        "startLine": 1998,
+        "startChar": 0,
+        "endLine": 1998,
+        "endChar": 22
+      },
+      "revId": "911da24d1834c703405bb75ca7ce0099c39414e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
