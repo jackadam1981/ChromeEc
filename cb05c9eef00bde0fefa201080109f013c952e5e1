@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8d15bb_7a915ab6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1747,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-06T16:53:23Z",
+      "side": 1,
+      "message": "While this fixes the build, doesn\u0027t it mean that we\u0027ll be missing the pointers here in C++? I think that the fix is to make the minimum size 1 no? so it should look like:\n\n```\nunion {\n  uint32_t words32[1];\n  uint8_t bytes[4];\n} data;\n```\n\nThen when callers want to initialize they would need to create a buffer and specify how much \"more\" data they want:\n\n```\nuint8_t buffer[sizeof(struct ec_params_flash_write) + extra_storage];\n```",
+      "revId": "cb05c9eef00bde0fefa201080109f013c952e5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
