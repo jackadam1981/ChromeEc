@@ -22,6 +22,30 @@
       },
       "revId": "acca5aee2675687bb531afd7500304418ced2fab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ae1ef6_e5db631c",
+        "filename": "zephyr/subsys/ap_pwrseq/signal_vw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-06T02:04:53Z",
+      "side": 1,
+      "message": "I used hopefully suitably named \u0027notify\u0027",
+      "parentUuid": "2231fbcb_ffc92848",
+      "range": {
+        "startLine": 64,
+        "startChar": 45,
+        "endLine": 64,
+        "endChar": 48
+      },
+      "revId": "acca5aee2675687bb531afd7500304418ced2fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
