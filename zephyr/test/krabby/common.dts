@@ -1,0 +1,32 @@
+/* Copyright 2022 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <it8xxx2_emul.dts>
+
+/ {
+	pinctrl: pinctrl {
+		compatible = "ite,it8xxx2-pinctrl";
+		status = "disabled";
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_charger: charger {
+			i2c-port = <&i2c_ctrl0>;
+			enum-names = "I2C_PORT_CHARGER";
+		};
+	};
+};
+
+&i2c_ctrl0 {
+	status="okay";
+
+	charger: rt9490@53 {
+		compatible = "zephyr,rt9490-emul";
+		status = "okay";
+		reg = <0x53>;
+	};
+};
