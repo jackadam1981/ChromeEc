@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8639da77_428933b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-06T20:06:24Z",
+      "side": 1,
+      "message": "nit: spelling",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "973423ce147be7051f686c1591dde6ad835dc1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bcf9b72_5b70d67d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-06T20:06:24Z",
+      "side": 1,
+      "message": "thanks for handling this! and sorry for not doing the appropriate testing\n\nbackground: the original Makefile bug I was fixing was uncovered by a newer toolchain, used on an experimental build setup. So I ended up testing there, and didn\u0027t realize that the existing official builds were going to reveal *this* problem",
+      "revId": "973423ce147be7051f686c1591dde6ad835dc1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58c9ce2_9aa67abd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-06T20:06:24Z",
+      "side": 1,
+      "message": "nit: this check is somewhat misleading, if one or both getline()s returned an error\n\nmaybe that doesn\u0027t matter, as we\u0027ll get a roughly correct error message either way",
+      "range": {
+        "startLine": 1987,
+        "startChar": 0,
+        "endLine": 1987,
+        "endChar": 21
+      },
+      "revId": "973423ce147be7051f686c1591dde6ad835dc1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36bc4a95_828f7c31",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1988,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-06T20:06:24Z",
+      "side": 1,
+      "message": "nit: feels like this might belong under the block in L1994+? doesn\u0027t really matter right now, but it might if there\u0027s some refactoring, or additional error/return paths added in the future",
+      "range": {
+        "startLine": 1988,
+        "startChar": 2,
+        "endLine": 1988,
+        "endChar": 9
+      },
+      "revId": "973423ce147be7051f686c1591dde6ad835dc1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
