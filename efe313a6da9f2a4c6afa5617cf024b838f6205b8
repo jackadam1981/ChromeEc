@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a91de0f_5a14fd37",
+        "filename": "zephyr/projects/nissa/include/nissa_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T08:07:39Z",
+      "side": 1,
+      "message": "It is not needed. Removed",
+      "parentUuid": "0a7b4730_9486d165",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 68
+      },
+      "revId": "efe313a6da9f2a4c6afa5617cf024b838f6205b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3c9908d_950ad763",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-02T20:39:29Z",
       "side": 1,
       "message": "Can this use `altnerate-chain` instead?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 27
+      },
+      "revId": "efe313a6da9f2a4c6afa5617cf024b838f6205b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e6bbe0_cc418775",
+        "filename": "zephyr/projects/nissa/src/sub_board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T08:07:39Z",
+      "side": 1,
+      "message": "Changed this in the following CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3875325",
+      "parentUuid": "b3c9908d_950ad763",
       "range": {
         "startLine": 183,
         "startChar": 0,
