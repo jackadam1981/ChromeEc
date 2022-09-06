@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2ccfac_f7716ea9",
+        "filename": "board/beadrix/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T08:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a875d2a_b211693c",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 10
+      },
+      "revId": "7c101e983590f814cc05ab87f1a8b822e1f2dbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99af3a7f_c9f5422f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef3e26f_ec82b59e",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T08:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99af3a7f_c9f5422f",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 9
+      },
+      "revId": "7c101e983590f814cc05ab87f1a8b822e1f2dbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e722dd5e_e3aa59c4",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-02T18:10:14Z",
       "side": 1,
       "message": "Newline between braces.",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 183,
+        "endChar": 7
+      },
+      "revId": "7c101e983590f814cc05ab87f1a8b822e1f2dbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03914bc_7fec77f0",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T08:01:43Z",
+      "side": 1,
+      "message": "This is how `clang-format` format this file. I managed to change this by adding `,` after first brace.",
+      "parentUuid": "e722dd5e_e3aa59c4",
       "range": {
         "startLine": 183,
         "startChar": 6,
