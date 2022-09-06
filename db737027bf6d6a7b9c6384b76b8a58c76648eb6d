@@ -22,6 +22,30 @@
       },
       "revId": "db737027bf6d6a7b9c6384b76b8a58c76648eb6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "953dca57_b3b3c53f",
+        "filename": "board/kuldax/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1524442
+      },
+      "writtenOn": "2022-09-06T02:13:12Z",
+      "side": 1,
+      "message": "Here is CL for kuldax/config.star.\nhttps://chrome-internal-review.googlesource.com/c/chromeos/project/brask/kuldax/+/4961346",
+      "parentUuid": "1bf3779e_01691dea",
+      "range": {
+        "startLine": 18,
+        "startChar": 49,
+        "endLine": 18,
+        "endChar": 73
+      },
+      "revId": "db737027bf6d6a7b9c6384b76b8a58c76648eb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
