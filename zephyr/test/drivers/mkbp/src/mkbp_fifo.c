@@ -81,5 +81,23 @@ ZTEST_F(mkbp_fifo, test_fifo_add_keyboard_key_matrix_event)
 	zassert_equal(out[KEY_MATRIX_EVENT_DATA_SIZE], 0, NULL);
 }
 
+ZTEST_F(mkbp_fifo, test_fifo_depth_update)
+{
+	uint8_t new_depth = 0;
+
+	mkbp_fifo_depth_update(new_depth);
+	fill_array_with_incrementing_numbers(fixture->input_event_data,
+					     MAX_EVENT_DATA_SIZE);
+	zassert_equal(EC_ERROR_OVERFLOW,
+		      mkbp_fifo_add(EC_MKBP_EVENT_KEY_MATRIX,
+				    fixture->input_event_data),
+		      NULL);
+
+	mkbp_fifo_depth_update(FIFO_DEPTH);
+	zassert_ok(mkbp_fifo_add(EC_MKBP_EVENT_KEY_MATRIX,
+				 fixture->input_event_data),
+		   NULL);
+}
+
 ZTEST_SUITE(mkbp_fifo, drivers_predicate_post_main, mkbp_fifo_setup,
 	    mkbp_fifo_before, mkbp_fifo_after, NULL);
