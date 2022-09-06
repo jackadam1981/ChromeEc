@@ -16,6 +16,24 @@
       "message": "While this fixes the build, doesn\u0027t it mean that we\u0027ll be missing the pointers here in C++? I think that the fix is to make the minimum size 1 no? so it should look like:\n\n```\nunion {\n  uint32_t words32[1];\n  uint8_t bytes[4];\n} data;\n```\n\nThen when callers want to initialize they would need to create a buffer and specify how much \"more\" data they want:\n\n```\nuint8_t buffer[sizeof(struct ec_params_flash_write) + extra_storage];\n```",
       "revId": "cb05c9eef00bde0fefa201080109f013c952e5e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799e0985_e77854b3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1747,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-06T22:59:18Z",
+      "side": 1,
+      "message": "\u003e doesn\u0027t it mean that we\u0027ll be missing the pointers here in C++?\n\nCorrect.\n\n\u003e I think that the fix is to make the minimum size 1 \n\nYeah, I know this is the workaround that you added in the other struct. It still feels really awkward to me, so I thought we could effectively ignore it for now with this since we don\u0027t use the pointer in any C++ code.\n\nI did find a proposal for flexible array members for C++, but looks like it\u0027s not happening anytime soon (C++29):\n\n* https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1039r0.html\n* https://github.com/ThePhD/future_cxx/issues/9",
+      "parentUuid": "cf8d15bb_7a915ab6",
+      "revId": "cb05c9eef00bde0fefa201080109f013c952e5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
