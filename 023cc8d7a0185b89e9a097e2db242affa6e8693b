@@ -22,6 +22,30 @@
       },
       "revId": "023cc8d7a0185b89e9a097e2db242affa6e8693b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1bd74c_922e8aa0",
+        "filename": "zephyr/shim/chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-09-06T01:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c30e8a39_6ccc6bfe",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "023cc8d7a0185b89e9a097e2db242affa6e8693b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
