@@ -16,6 +16,23 @@
       "message": "Do usages in the test/sbs_charving_v2.c and board code need updated? ",
       "revId": "be508d733d64c90d204553952bf838421515f730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d502a8_b91b44a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-06T22:12:58Z",
+      "side": 1,
+      "message": "Hi Ivan, \n\nThis change for notify_host_of_low_battery_charge is different from what\u0027s suggested in b:244253629/comment#21. Was it not clear or you have other thoughts?",
+      "revId": "be508d733d64c90d204553952bf838421515f730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
