@@ -39,6 +39,30 @@
       },
       "revId": "0bf5a6a9ab2a9b5c6d4eb5c354647753c30df2c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4d51a9_3fc0c9a9",
+        "filename": "zephyr/projects/corsola/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2022-09-06T12:28:49Z",
+      "side": 1,
+      "message": "p5 rebase and p6 remove cbi_eeprom.dts from BUILD.py",
+      "parentUuid": "bfaaf7ad_7463754d",
+      "range": {
+        "startLine": 133,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 32
+      },
+      "revId": "0bf5a6a9ab2a9b5c6d4eb5c354647753c30df2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
