@@ -22,6 +22,30 @@
       },
       "revId": "2fc5f822b2a53b818cd988d2f50ecbacf48991a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "037b3c14_6a102492",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-06T14:54:42Z",
+      "side": 1,
+      "message": "Al beat me to it!",
+      "parentUuid": "08c77f9a_44568e42",
+      "range": {
+        "startLine": 877,
+        "startChar": 11,
+        "endLine": 877,
+        "endChar": 13
+      },
+      "revId": "2fc5f822b2a53b818cd988d2f50ecbacf48991a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
