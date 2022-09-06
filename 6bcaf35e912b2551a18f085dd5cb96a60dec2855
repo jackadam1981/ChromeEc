@@ -46,6 +46,30 @@
       },
       "revId": "6bcaf35e912b2551a18f085dd5cb96a60dec2855",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98a18b1_fbeedfbf",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-06T20:41:15Z",
+      "side": 1,
+      "message": "For reference, here is the original error I was seeing:\n\n```\n(cr) ((c6dbaabd45...)) hesling@funtop ~/chromiumos/src/platform/ec $ cros lint util/compare_build.sh \n\nIn util/compare_build.sh line 74:\n  local -n arr\u003d\"${1}\"\n           ^-^ SC2034: arr appears unused. Verify use (or export if used externally).\n           ^-^ SC2178: Variable was used as an array but is now assigned a string.\n\nFor more information:\n  https://www.shellcheck.net/wiki/SC2034 -- arr appears unused. Verify use (o...\n  https://www.shellcheck.net/wiki/SC2178 -- Variable was used as an array but...\n13:40:24: ERROR: Found lint errors in 1 files in 0.375s.\n```",
+      "parentUuid": "b05db464_e7e4b039",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "6bcaf35e912b2551a18f085dd5cb96a60dec2855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
