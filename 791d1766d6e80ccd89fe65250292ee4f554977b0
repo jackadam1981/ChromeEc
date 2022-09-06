@@ -22,6 +22,30 @@
       },
       "revId": "791d1766d6e80ccd89fe65250292ee4f554977b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c568871_a22c9e22",
+        "filename": "zephyr/emul/emul_rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-06T17:44:36Z",
+      "side": 1,
+      "message": "Done.\nLooks like clang-format can\u0027t handle the trailing comma in struct member initialization.",
+      "parentUuid": "8009816c_0b81193e",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "791d1766d6e80ccd89fe65250292ee4f554977b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
