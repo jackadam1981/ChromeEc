@@ -105,6 +105,24 @@
       "parentUuid": "ec419079_c71620c1",
       "revId": "5d44c0e90274dc33c5f63c7f600b5944b1685f49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba30962_edec253b",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-06T20:29:20Z",
+      "side": 1,
+      "message": "That\u0027s fair. I\u0027ll add that in and merge.",
+      "parentUuid": "1fb05233_78ec5fa6",
+      "revId": "5d44c0e90274dc33c5f63c7f600b5944b1685f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
