@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a585ad5e_58bc4b70",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T13:55:40Z",
+      "side": 1,
+      "message": "I found the way to create `bb_controls[]` without implementing `USB_MUX_PORT()`. Macro would go for each chain looking for BB retimers. The `bb_controls_chain_x.retimer_rst_gpio` would be defined as `BB_RETIMER_RESET_GPIO(first_bb_id_in_chain_x) | BB_RETIMER_RESET_GPIO(second_bb_id_in_cahin_x) | 0`. This will evaluate to correct GPIO signal if all BB retimers in `chain_x` has the same configuration. Creating `BUILD_ASSERT` to check GPIO signal for BB retimers on the same mux is also possible to implement.\n\nThese BB macros should be simpler than `USB_MUX_PORT`.\n\nI am going to remove `usb_port`. Majority of drivers doesn\u0027t even use this property.",
+      "parentUuid": "b52d6a57_5a36b1c4",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 54
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "757899d1_31cff9ff",
         "filename": "zephyr/shim/include/usbc/usb_muxes.h",
         "patchSetId": 5
