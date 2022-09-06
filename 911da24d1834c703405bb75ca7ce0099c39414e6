@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae38add_3c91208d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-06T22:40:15Z",
+      "side": 1,
+      "message": "My previous comment was about negative returns, and I would have suggested something like this:\n\n  if (len \u003e\u003d 0 \u0026\u0026 copy_len \u003e\u003d 0 \u0026\u0026 copy_len !\u003d len)\n  \nBut I see that these are unsigned (size_t).\n\nI guess the real problem I\u0027m pointing out is that you aren\u0027t handling negative return values from getline() (ssize_t \u003d signed) at all. Based on the man page, those errors should be very rare or even impossible (ENOMEM? I don\u0027t think we actually see that; the kernel tends to OOM kill things instead...).\n\nMaybe you can just continue to ignore negative results.",
+      "range": {
+        "startLine": 1998,
+        "startChar": 0,
+        "endLine": 1998,
+        "endChar": 22
+      },
+      "revId": "911da24d1834c703405bb75ca7ce0099c39414e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
