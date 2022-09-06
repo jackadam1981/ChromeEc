@@ -22,6 +22,30 @@
       },
       "revId": "6bcaf35e912b2551a18f085dd5cb96a60dec2855",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05db464_e7e4b039",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-06T20:35:14Z",
+      "side": 1,
+      "message": "Right, I do recall that one of these didn\u0027t have an error associated with it. I added the additional error suppression to account for shellcheck implementation changes, since the way it was reporting the error made it seem like using the nameref was breaking the parser state machine.\n\nFor example, the behavior seemed to change when I modified the local variable in an unrelated function...",
+      "parentUuid": "8227d368_06ec64ed",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "6bcaf35e912b2551a18f085dd5cb96a60dec2855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
