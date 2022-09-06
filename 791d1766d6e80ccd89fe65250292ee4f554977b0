@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8009816c_0b81193e",
+        "filename": "zephyr/emul/emul_rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-06T16:46:30Z",
+      "side": 1,
+      "message": "Please run clang-format on this file. The alignment of the \\ chars is off, and if clang-format doesn\u0027t fix it, try manually aligning them with tabs and see if clang-format breaks it again.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "791d1766d6e80ccd89fe65250292ee4f554977b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
