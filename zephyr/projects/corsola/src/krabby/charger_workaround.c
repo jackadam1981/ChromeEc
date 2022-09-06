@@ -17,7 +17,7 @@
  * Newer project should have all of these fixed.
  */
 BUILD_ASSERT(IS_ENABLED(CONFIG_BOARD_KRABBY) ||
-	     IS_ENABLED(CONFIG_BOARD_TENTACRUEL));
+	     IS_ENABLED(CONFIG_BOARD_TENTACRUEL) || IS_ENABLED(CONFIG_TEST));
 
 static void enter_hidden_mode(void)
 {
@@ -90,7 +90,7 @@ static void disable_safety_timer(void)
 			   RT9490_EN_FASTCHG_TMR);
 }
 
-static void board_rt9490_workaround(void)
+test_export_static void board_rt9490_workaround(void)
 {
 	ibus_adc_workaround();
 	i2c_speed_workaround();
