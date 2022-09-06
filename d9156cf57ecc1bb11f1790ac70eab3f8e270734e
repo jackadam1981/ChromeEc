@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ab42dd_21424f8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-06T21:44:23Z",
+      "side": 1,
+      "message": "I notice data reset is not configured in few more boards(boldar/volteer/terrador/primus/ anahera/kano/copano/felwinter) which has CONFIG_USB_PD_USB4  as enabled. \nHow about enabling it by default in config.h itself based on CONFIG_USB_PD_USB4  \u0026 remove direct configuration from  brya \u0026 brask based boardfiles?\n\n#ifdef CONFIG_USB_PD_USB4\n#define CONFIG_USB_PD_DATA_RESET_MSG\n#endif",
+      "parentUuid": "46c1b2bd_7893dcf6",
+      "revId": "d9156cf57ecc1bb11f1790ac70eab3f8e270734e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9da8f8c_5891fd0a",
