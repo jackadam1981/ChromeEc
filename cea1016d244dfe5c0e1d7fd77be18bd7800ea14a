@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "361d045d_735d4afd",
+        "filename": "zephyr/dts/bindings/usbc/cros-ec,usb-mux-chain.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7c917a8_0d6bbb89",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9f077d7_d20e6d16",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-02T17:29:38Z",
       "side": 1,
       "message": "Nit - use the same parameter order as other macros: `chain_id, idx`.",
+      "range": {
+        "startLine": 126,
+        "startChar": 28,
+        "endLine": 126,
+        "endChar": 41
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71826da4_2e33f96f",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f077d7_d20e6d16",
       "range": {
         "startLine": 126,
         "startChar": 28,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd215095_40766967",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe4ccae_0479e6e5",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 0
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afaf1308_afa57a3f",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-02T17:29:38Z",
       "side": 1,
       "message": "Nit `USB_MUX_FOREACH_MUX_DT_VARGS`",
+      "range": {
+        "startLine": 273,
+        "startChar": 8,
+        "endLine": 273,
+        "endChar": 33
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceda12cf_b0aeea51",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afaf1308_afa57a3f",
       "range": {
         "startLine": 273,
         "startChar": 8,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b52d6a57_5a36b1c4",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T07:59:34Z",
+      "side": 1,
+      "message": "I was thinking about removing `usb_port` completely and passing it as argument to `usb_mux_driver` functions (e.g. `tcpm_drv` and `ppc_drv` has `port` argument in all functions). Probably code size would be reduced without having `usb_port` in each mux structure. The problem is with creating `bb_controls[]` (and other drivers that use `drv_controls[]` pattern and will be shimed), because it still needs `USB_MUX_PORT()` macro.",
+      "parentUuid": "543a5e93_19ae0fc5",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 54
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "757899d1_31cff9ff",
         "filename": "zephyr/shim/include/usbc/usb_muxes.h",
         "patchSetId": 5
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-02T17:29:38Z",
       "side": 1,
       "message": "Nit - I think it is more readable to refer to `first` mux as the `root` mux.\n\n```\nUSB_MUX_SKIP_ROOT\nUSB_MUX_FOREACH_NO_FIRST_MUX\nUSB_MUX_DEFINE_ROOT_MUX\n```",
+      "range": {
+        "startLine": 347,
+        "startChar": 48,
+        "endLine": 347,
+        "endChar": 53
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "510678ec_cfe0977c",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757899d1_31cff9ff",
       "range": {
         "startLine": 347,
         "startChar": 48,
@@ -152,6 +296,30 @@
       "writtenOn": "2022-09-02T17:29:38Z",
       "side": 1,
       "message": "In a follow up CL, move the BB retimer setup to it\u0027s own shim file. Then you can use the Cmake file to guard this code.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc608a42_02992579",
+        "filename": "zephyr/shim/src/usb_muxes.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-06T07:59:34Z",
+      "side": 1,
+      "message": "Moved this to separate file in CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3875323",
+      "parentUuid": "0e942dbe_5dcf39e2",
       "range": {
         "startLine": 91,
         "startChar": 0,
