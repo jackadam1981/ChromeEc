@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ec9ab8_45d1f8de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-09-06T23:39:32Z",
+      "side": 1,
+      "message": "From looking at the keyboard the Volume_UP (T11) is NOT marked as F11 on the keyboard. I\u0027m not sure if that is critical, but maybe we should leave F8, F8 and F10 only?",
+      "revId": "c6166dc457e6e26618032addb3091dafcbdbf2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
