@@ -16,6 +16,24 @@
       "message": "why was the original ",
       "revId": "6779a45d1a5049ca911b7ba07af2ad44d55d1944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0a46e6_2d4e04d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-06T19:53:19Z",
+      "side": 1,
+      "message": "Did you mean: why was the original reverted?\n\nI don\u0027t know for sure, but I\u0027d presume it\u0027s because it was the same concept (and essentially the same change) at the same time as the breaking change, and maybe sheriffs/oncalls didn\u0027t get a precise lock on which was really causing failure.\n\nBut that\u0027s just a guess, on both the question and answer :)",
+      "parentUuid": "b215e4c0_f1a6d0af",
+      "revId": "6779a45d1a5049ca911b7ba07af2ad44d55d1944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
