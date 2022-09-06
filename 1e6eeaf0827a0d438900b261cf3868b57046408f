@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3326c33b_669b5f2a",
+        "filename": "zephyr/shim/src/usb_muxes.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-06T14:26:08Z",
+      "side": 1,
+      "message": "Please add a comment here that explains that `bb_control[]` isn\u0027t updated by `USB_MUX_ENABLE_ALTERNATIVE()` so that all BB retimers need to use the same GPIO pins.  This limitation isn\u0027t obvious from the code.",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "1e6eeaf0827a0d438900b261cf3868b57046408f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
