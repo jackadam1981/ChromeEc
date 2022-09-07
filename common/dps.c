@@ -405,6 +405,11 @@ __maybe_unused static bool has_new_power_request(struct pdo_candidate *cand)
 				continue;
 
 			mw = MIN(ma, PD_MAX_CURRENT_MA) * mv / 1000;
+
+			if (batt->is_present != BP_YES &&
+			    mw <= PD_OPERATING_POWER_MW)
+				continue;
+
 			efficient = is_more_efficient(mv, cand->mv, batt_mv,
 						      batt_pwr, input_pwr_avg);
 
