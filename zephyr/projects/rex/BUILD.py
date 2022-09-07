@@ -37,6 +37,7 @@ register_variant(
         here / "usbc.dts",
         here / "keyboard.dts",
         here / "led.dts",
+        here / "motionsense.dts",
     ],
     extra_kconfig_files=[here / "prj_rex.conf"],
 )
