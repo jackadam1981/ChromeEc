@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93ea5d65_6bc79070",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T23:17:07Z",
+      "side": 1,
+      "message": "The master GPIO spreadsheet indicates this signal needs an internal pull-up. Having the internal pull-up prevent taking interrupts in a case where interrupts were enabled on this line but the sensor wasn\u0027t configured. But, that\u0027s not a case we would expect as we always initialize the sensors prior to enabling the interrupts.\n\nI don\u0027t think we should edit generated.dta for this change. My take is we should leave this as is for now. The CL that adds fan support has a TODO added to this file to reflect that the EE team is going to review the master GPIO spreadsheet and make sure the values are correct.\n\nUntil that point, I think we make manual edits to this file for cases where functionality will be broken (eg output is configured as open drain, but needs to be push-pull for control the signal level, or a build error because of a missing enum)",
+      "parentUuid": "187e74b4_004ff5cd",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc31ef8c_a6676d9d",
         "filename": "zephyr/projects/rex/generated.dts",
         "patchSetId": 1
@@ -132,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f964cf6b_49388612",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T23:17:07Z",
+      "side": 1,
+      "message": "My comment for gpio_ec_als_rgb_int_r_l applies here as well.",
+      "parentUuid": "233dd145_56faa552",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d42602cf_7c67f77f",
         "filename": "zephyr/projects/rex/motionsense.dts",
         "patchSetId": 1
@@ -143,6 +191,30 @@
       "writtenOn": "2022-09-07T14:36:42Z",
       "side": 1,
       "message": "Scott can you validate that this is correct on the actual board?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd6cbc4_b8e7bddd",
+        "filename": "zephyr/projects/rex/motionsense.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T23:17:07Z",
+      "side": 1,
+      "message": "Li verified that the motion sensor is active and sending values to the kernel. We tested x, y, and z axis shifts and those looked correct. In addition, I checked with our EE team and the base 6 axis sensor is mounted in the same orientation as brya and so we should have the same rotation matrix for this sensor as brya.",
+      "parentUuid": "d42602cf_7c67f77f",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -196,6 +268,47 @@
         "endLine": 17,
         "endChar": 0
       },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5238a176_6abed212",
+        "filename": "zephyr/projects/rex/prj_rex.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T23:17:07Z",
+      "side": 1,
+      "message": "For now we could put this in prj.conf as we haven\u0027t really split out platform vs variants.",
+      "parentUuid": "de868430_407a3bbc",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "624b151c_da2af864",
+        "filename": "zephyr/projects/rex/rex0_gpio.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T23:17:07Z",
+      "side": 1,
+      "message": "Did you run the arbitrage tool to update the gpio.csv file? In the end, we should correct the GPIO main spreadsheet, then run the arbitrage tool to update this file.",
       "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
