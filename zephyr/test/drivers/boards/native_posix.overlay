@@ -387,58 +387,71 @@
 		};
 	};
 
+	temp_charger: charger {
+		compatible = "cros-ec,temp-sensor-thermistor";
+		thermistor = <&thermistor_3V3_13K7_47K_4050B>;
+		adc = <&adc_charger>;
+	};
+	temp_pp3300_regulator: pp3300-regulator {
+		compatible = "cros-ec,temp-sensor-thermistor";
+		thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+		adc = <&adc_pp3300_regulator>;
+	};
+	temp_ddr_soc: ddr-soc {
+		compatible = "cros-ec,temp-sensor-thermistor";
+		thermistor = <&thermistor_3V3_51K1_47K_4050B>;
+		adc = <&adc_ddr_soc>;
+	};
+	temp_fan: fan {
+		compatible = "cros-ec,temp-sensor-thermistor";
+		thermistor = <&thermistor_3V0_22K6_47K_4050B>;
+		adc = <&adc_fan>;
+	};
+
 	named-temp-sensors {
 		charger {
-			thermistor = <&thermistor_3V3_13K7_47K_4050B>;
+			compatible = "cros-ec,temp-sensor";
 			status = "okay";
-			compatible = "cros-ec,temp-sensor-thermistor",
-				     "cros-ec,temp-sensor";
 			enum-name = "TEMP_SENSOR_CHARGER";
 			temp_fan_off = <40>;
 			temp_fan_max = <55>;
 			temp_host_high = <75>;
 			temp_host_halt = <80>;
 			temp_host_release_high = <65>;
-			adc = <&adc_charger>;
+			sensor = <&temp_charger>;
 		};
 		pp3300-regulator {
-			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
 			status = "okay";
-			compatible = "cros-ec,temp-sensor-thermistor",
-				     "cros-ec,temp-sensor";
+			compatible = "cros-ec,temp-sensor";
 			enum-name = "TEMP_SENSOR_PP3300_REGULATOR";
 			temp_fan_off = <40>;
 			temp_fan_max = <55>;
 			temp_host_high = <75>;
 			temp_host_halt = <80>;
 			temp_host_release_high = <65>;
-			adc = <&adc_pp3300_regulator>;
+			sensor = <&temp_pp3300_regulator>;
 		};
 		ddr-soc {
-			thermistor = <&thermistor_3V3_51K1_47K_4050B>;
+			compatible = "cros-ec,temp-sensor";
 			status = "okay";
-			compatible = "cros-ec,temp-sensor-thermistor",
-				     "cros-ec,temp-sensor";
 			enum-name = "TEMP_SENSOR_DDR_SOC";
 			temp_fan_off = <35>;
 			temp_fan_max = <50>;
 			temp_host_high = <70>;
 			temp_host_halt = <80>;
 			temp_host_release_high = <65>;
-			adc = <&adc_ddr_soc>;
+			sensor = <&temp_ddr_soc>;
 		};
 		fan {
-			thermistor = <&thermistor_3V0_22K6_47K_4050B>;
+			compatible = "cros-ec,temp-sensor";
 			status = "okay";
-			compatible = "cros-ec,temp-sensor-thermistor",
-				     "cros-ec,temp-sensor";
 			enum-name = "TEMP_SENSOR_FAN";
 			temp_fan_off = <35>;
 			temp_fan_max = <50>;
 			temp_host_high = <70>;
 			temp_host_halt = <80>;
 			temp_host_release_high = <65>;
-			adc = <&adc_fan>;
+			sensor = <&temp_fan>;
 		};
 	};
 
