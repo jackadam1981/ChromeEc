@@ -84,33 +84,32 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_fault_interrupt_disable,
 	     HOOK_PRIO_DEFAULT);
 
 /*
- * .init is not necessary here because it has nothing
- * to do. Primary mux will handle mux state so .get is
- * not needed as well. usb_mux.c can handle the situation
- * properly.
+ * USB C0 (general) and C1 (just ANX DB) use IOEX pins to
+ * indicate flipped polarity to a protection switch.
  */
-static int ioex_set_flip(const struct usb_mux *, mux_state_t, bool *);
-struct usb_mux_driver ioex_sbu_mux_driver = {
-	.set = ioex_set_flip,
-};
+static int ioex_set_flip(int port, mux_state_t mux_state)
+{
+	if (port == USBC_PORT_C0) {
+		if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+			ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
+		else
+			ioex_set_level(IOEX_USB_C0_SBU_FLIP, 0);
+	} else {
+		if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+			ioex_set_level(IOEX_USB_C1_SBU_FLIP, 1);
+		else
+			ioex_set_level(IOEX_USB_C1_SBU_FLIP, 0);
+	}
 
-/*
- * Since NX3DV221GM is not a i2c device, .i2c_port and
- * .i2c_addr_flags are not required here.
- */
-struct usb_mux usbc0_sbu_mux = {
-	.usb_port = USBC_PORT_C0,
-	.driver = &ioex_sbu_mux_driver,
-};
-
-struct usb_mux usbc1_sbu_mux = {
-	.usb_port = USBC_PORT_C1,
-	.driver = &ioex_sbu_mux_driver,
-};
+	return EC_SUCCESS;
+}
 
 int baseboard_anx7483_c0_mux_set(const struct usb_mux *me,
 				 mux_state_t mux_state)
 {
+	/* Set the SBU polarity mux */
+	RETURN_ERROR(ioex_set_flip(me->usb_port, mux_state));
+
 	return anx7483_set_default_tuning(me, mux_state);
 }
 
@@ -118,6 +117,9 @@ int baseboard_anx7483_c1_mux_set(const struct usb_mux *me,
 				 mux_state_t mux_state)
 {
 	bool flipped = mux_state & USB_PD_MUX_POLARITY_INVERTED;
+
+	/* Set the SBU polarity mux */
+	RETURN_ERROR(ioex_set_flip(me->usb_port, mux_state));
 
 	/* Remove flipped from the state for easier compraisons */
 	mux_state = mux_state & ~USB_PD_MUX_POLARITY_INVERTED;
@@ -171,7 +173,6 @@ struct usb_mux usbc0_anx7483 = {
 	.i2c_addr_flags = ANX7483_I2C_ADDR0_FLAGS,
 	.driver = &anx7483_usb_retimer_driver,
 	.board_set = &baseboard_anx7483_c0_mux_set,
-	.next_mux = &usbc0_sbu_mux,
 };
 
 __overridable int board_c1_ps8818_mux_set(const struct usb_mux *me,
@@ -203,7 +204,6 @@ struct usb_mux usbc1_anx7483 = {
 	.i2c_addr_flags = ANX7483_I2C_ADDR0_FLAGS,
 	.driver = &anx7483_usb_retimer_driver,
 	.board_set = &baseboard_anx7483_c1_mux_set,
-	.next_mux = &usbc1_sbu_mux,
 };
 
 struct usb_mux usb_muxes[] = {
@@ -223,31 +223,6 @@ struct usb_mux usb_muxes[] = {
 	}
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
-
-/*
- * USB C0 (general) and C1 (just ANX DB) use IOEX pins to
- * indicate flipped polarity to a protection switch.
- */
-static int ioex_set_flip(const struct usb_mux *me, mux_state_t mux_state,
-			 bool *ack_required)
-{
-	/* This driver does not use host command ACKs */
-	*ack_required = false;
-
-	if (me->usb_port == USBC_PORT_C0) {
-		if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
-			ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
-		else
-			ioex_set_level(IOEX_USB_C0_SBU_FLIP, 0);
-	} else {
-		if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
-			ioex_set_level(IOEX_USB_C1_SBU_FLIP, 1);
-		else
-			ioex_set_level(IOEX_USB_C1_SBU_FLIP, 0);
-	}
-
-	return EC_SUCCESS;
-}
 
 static void setup_mux(void)
 {
