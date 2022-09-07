@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac13b752_d0e471f9",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-07T03:50:21Z",
+      "side": 1,
+      "message": "This whole block needs to go away, I believe Tristan was going to remove it. This will never run (it\u0027s zmake specific) so feel free to ignore",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "1d4a5e1105239151788ed71d105a669bc0cb3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c359cbde_5ef4bd32",
+        "filename": "zephyr/test/drivers/mkbp/src/mkbp_fifo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-07T03:50:21Z",
+      "side": 1,
+      "message": "Can you explain this? I haven\u0027t seen us use this in other places",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 26
+      },
+      "revId": "1d4a5e1105239151788ed71d105a669bc0cb3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92e225f_3ebed26b",
+        "filename": "zephyr/test/drivers/mkbp/src/mkbp_fifo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-07T03:50:21Z",
+      "side": 1,
+      "message": "nit: double include",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "1d4a5e1105239151788ed71d105a669bc0cb3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eef7239_76a9893e",
+        "filename": "zephyr/test/drivers/mkbp/src/mkbp_fifo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-07T03:50:21Z",
+      "side": 1,
+      "message": "nit: style guide, should declare the loop variable in the for loop",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "1d4a5e1105239151788ed71d105a669bc0cb3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
