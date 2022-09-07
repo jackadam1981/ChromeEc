@@ -16,6 +16,24 @@
       "message": "Seems like a weird race between the test and AP boot? Seems okay, in any case.",
       "revId": "d8965f46307052eeba134178b8d42e8b9cf8247f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cbaa891_196f9603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-07T04:50:11Z",
+      "side": 1,
+      "message": "Yes, and I\u0027m not sure why other platforms haven\u0027t seen this.\nMy guess is twofold: This particular test is fairly new, and nivviks is still slow to boot. In any case, the logic needs fixing.",
+      "parentUuid": "d372319c_59a1ab10",
+      "revId": "d8965f46307052eeba134178b8d42e8b9cf8247f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
