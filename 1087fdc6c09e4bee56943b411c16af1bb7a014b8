@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417dffa3_374868d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-07T04:05:49Z",
+      "side": 1,
+      "message": "LGTM but I would prefer to have the first element pre-allocated in the struct. Feel free to merge.",
+      "revId": "1087fdc6c09e4bee56943b411c16af1bb7a014b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

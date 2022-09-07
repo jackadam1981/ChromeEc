@@ -34,6 +34,24 @@
       "parentUuid": "cf8d15bb_7a915ab6",
       "revId": "cb05c9eef00bde0fefa201080109f013c952e5e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9830351b_01462edf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1747,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-07T04:05:49Z",
+      "side": 1,
+      "message": "I\u0027m fine with this solution as a temporary fix, but looking around online the common solution is to always allocate the first entry as a part of the struct. An internal example can be seen at go/bounds#index-out-of-bound-without-buffer-overflow",
+      "parentUuid": "799e0985_e77854b3",
+      "revId": "cb05c9eef00bde0fefa201080109f013c952e5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
