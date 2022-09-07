@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f617b4b_c6be346d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-07T06:50:44Z",
+      "side": 1,
+      "message": "Hi Abe! Seems like  data reset Config doesn\u0027t get enabled, if enabled in config.h based on condition, because board file where CONFIG_USB_PD_USB4 is enabled gets compiled after common config file is  done and hence don\u0027t see the config - CONFIG_USB_PD_USB4  and hence  CONFIG_USB_PD_DATA_RESET_MSG  is not getting enabled. So we have to go with this way of enabling specifically in board file itself, as of now.",
+      "parentUuid": "64ab42dd_21424f8b",
+      "revId": "d9156cf57ecc1bb11f1790ac70eab3f8e270734e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9da8f8c_5891fd0a",
