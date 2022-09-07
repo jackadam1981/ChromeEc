@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ff34dc_760d0269",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-07T14:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac13b752_d0e471f9",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "1d4a5e1105239151788ed71d105a669bc0cb3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c359cbde_5ef4bd32",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-07T03:50:21Z",
       "side": 1,
       "message": "Can you explain this? I haven\u0027t seen us use this in other places",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 26
+      },
+      "revId": "1d4a5e1105239151788ed71d105a669bc0cb3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f247ae61_d77d5eb4",
+        "filename": "zephyr/test/drivers/mkbp/src/mkbp_fifo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-07T14:23:33Z",
+      "side": 1,
+      "message": "Whoops. Surprised that made it through upload checks.\n\nThis is just for debugging and was mistakenly left in. Thanks for catching!",
+      "parentUuid": "c359cbde_5ef4bd32",
       "range": {
         "startLine": 3,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6703f12f_30385326",
+        "filename": "zephyr/test/drivers/mkbp/src/mkbp_fifo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-07T14:23:33Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "d92e225f_3ebed26b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "1d4a5e1105239151788ed71d105a669bc0cb3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eef7239_76a9893e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-07T03:50:21Z",
       "side": 1,
       "message": "nit: style guide, should declare the loop variable in the for loop",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "1d4a5e1105239151788ed71d105a669bc0cb3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2463d819_40180b28",
+        "filename": "zephyr/test/drivers/mkbp/src/mkbp_fifo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-07T14:23:33Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "9eef7239_76a9893e",
       "range": {
         "startLine": 54,
         "startChar": 1,
