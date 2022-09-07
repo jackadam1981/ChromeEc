@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5e1a2b_6cc16649",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T00:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9560721e_5c4fbc43",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "9bdf90c7f8c42dbf6ed68f27ebca6f51ecda2f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c35dd40b_f8bf551e",
@@ -55,6 +79,30 @@
       "writtenOn": "2022-09-05T11:23:01Z",
       "side": 1,
       "message": "I think this one is wrong, gpio34 goes to `USB_C1_TCPC_INT_ODL`, generated.dts has channel 8 instead, should be `adc0_chan8_gpf1`.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 23
+      },
+      "revId": "9bdf90c7f8c42dbf6ed68f27ebca6f51ecda2f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac344b2_2d792c97",
+        "filename": "zephyr/projects/rex/temp_sensors.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T00:27:41Z",
+      "side": 1,
+      "message": "Yes, this is wrong, but actually I should not have pulled the pinctrl part in here as that was already in rex.dts and that version is correct.\n\nAnd, this section (being wrong) was making the C1_TCPC_INT_L signal not work properly.",
+      "parentUuid": "805ad0f2_bdb44a4b",
       "range": {
         "startLine": 68,
         "startChar": 0,
