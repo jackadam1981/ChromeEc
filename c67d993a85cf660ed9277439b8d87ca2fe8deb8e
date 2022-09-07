@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eafa4f3f_a4f7bb21",
+        "filename": "zephyr/projects/skyrim/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-07T23:44:32Z",
+      "side": 1,
+      "message": "Moving this code tripped the code coverage -1 😞.  But probably good to get a skyrim board test implemented.\n\nCan this get moved to a shared file?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "c67d993a85cf660ed9277439b8d87ca2fe8deb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
