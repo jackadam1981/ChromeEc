@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ffbe2f_6a6d09b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-07T14:36:42Z",
+      "side": 1,
+      "message": "Add a description of the change (the \"why\" and more details), worth mentioning the source of the changes in the csv file etc...",
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b7921c_872cc4ef",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-07T14:36:42Z",
+      "side": 1,
+      "message": "This is not related to the base sensor. If you are doing a separate patch for the lid sensors I guess that\u0027s where it should go.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc31ef8c_a6676d9d",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-07T14:36:42Z",
+      "side": 1,
+      "message": "Why this? The line does not seem to have an external pullup.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42602cf_7c67f77f",
+        "filename": "zephyr/projects/rex/motionsense.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-07T14:36:42Z",
+      "side": 1,
+      "message": "Scott can you validate that this is correct on the actual board?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf0c3351_86b2e319",
+        "filename": "zephyr/projects/rex/prj_rex.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-07T14:36:42Z",
+      "side": 1,
+      "message": "Why here and not in prj.conf?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
