@@ -4,6 +4,7 @@
  */
 
 #include "adc.h"
+#include "charger/chg_rt9490.h"
 #include "driver/charger/rt9490.h"
 #include "temp_sensor.h"
 #include "temp_sensor/pct2075.h"
@@ -65,7 +66,7 @@ static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 		FILL_POWER_GOOD(node_id) })
 
 #define TEMP_THERMISTOR(node_id)                                           \
-	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                                \
+	[TEMP_SENSOR_ID(node_id)] = {                                      \
 		.name = DT_NODE_FULL_NAME(node_id),                        \
 		.idx = ZSHIM_ADC_ID(DT_PHANDLE(node_id, adc)),             \
 		.type = TEMP_SENSOR_TYPE_BOARD,                            \
@@ -74,17 +75,17 @@ static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 
 DT_FOREACH_STATUS_OKAY(cros_ec_thermistor, DEFINE_THERMISTOR_DATA)
 
-#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_pct2075)
+#if DT_HAS_COMPAT_STATUS_OKAY(PCT2075_COMPAT)
 static int pct2075_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 {
 	return pct2075_get_val_k(sensor->idx, temp_ptr);
 }
-#endif /* cros_ec_temp_sensor_pct2075 */
+#endif /* PCT2075_COMPAT */
 
-#define DEFINE_PCT2075_DATA(node_id)                                        \
-	[ZSHIM_PCT2075_SENSOR_ID(node_id)] = {                              \
-		.i2c_port = I2C_PORT(DT_PHANDLE(node_id, port)),            \
-		.i2c_addr_flags = DT_STRING_TOKEN(node_id, i2c_addr_flags), \
+#define DEFINE_PCT2075_DATA(node_id)                    \
+	[PCT2075_SENSOR_ID(node_id)] = {                \
+		.i2c_port = I2C_PORT_BY_DEV(node_id),   \
+		.i2c_addr_flags = DT_REG_ADDR(node_id), \
 	},
 
 #define GET_ZEPHYR_TEMP_SENSOR_PCT2075(node_id)                   \
@@ -93,29 +94,29 @@ static int pct2075_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 				       FILL_POWER_GOOD(node_id) })
 
 #define TEMP_PCT2075(node_id)                                           \
-	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                             \
+	[TEMP_SENSOR_ID(node_id)] = {                                   \
 		.name = DT_NODE_FULL_NAME(node_id),                     \
-		.idx = ZSHIM_PCT2075_SENSOR_ID(node_id),                \
+		.idx = PCT2075_SENSOR_ID(node_id),                      \
 		.type = TEMP_SENSOR_TYPE_BOARD,                         \
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_PCT2075(node_id), \
 	},
 
 const struct pct2075_sensor_t pct2075_sensors[PCT2075_COUNT] = {
-	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_pct2075, DEFINE_PCT2075_DATA)
+	DT_FOREACH_STATUS_OKAY(PCT2075_COMPAT, DEFINE_PCT2075_DATA)
 };
 
-#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_sb_tsi)
+#if DT_HAS_COMPAT_STATUS_OKAY(SB_TSI_COMPAT)
 static int sb_tsi_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 {
 	return sb_tsi_get_val(sensor->idx, temp_ptr);
 }
 
 /* There can be only one SB TSI sensor with current driver */
-#if DT_NUM_INST_STATUS_OKAY(cros_ec_temp_sensor_sb_tsi) > 1
+#if DT_NUM_INST_STATUS_OKAY(SB_TSI_COMPAT) > 1
 #error "Unsupported number of SB TSI sensors"
 #endif
 
-#endif /* cros_ec_temp_sensor_sb_tsi */
+#endif /* SB_TSI_COMPAT */
 
 #define GET_ZEPHYR_TEMP_SENSOR_SB_TSI(node_id)                   \
 	(&(struct zephyr_temp_sensor){ .read = &sb_tsi_get_temp, \
@@ -123,24 +124,24 @@ static int sb_tsi_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 				       FILL_POWER_GOOD(node_id) })
 
 #define TEMP_SB_TSI(node_id)                                           \
-	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                            \
+	[TEMP_SENSOR_ID(node_id)] = {                                  \
 		.name = DT_NODE_FULL_NAME(node_id),                    \
 		.idx = 0,                                              \
 		.type = TEMP_SENSOR_TYPE_CPU,                          \
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_SB_TSI(node_id), \
 	},
 
-#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_tmp112)
+#if DT_HAS_COMPAT_STATUS_OKAY(TMP112_COMPAT)
 static int tmp112_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 {
 	return tmp112_get_val_k(sensor->idx, temp_ptr);
 }
-#endif /* cros_ec_temp_sensor_tmp112 */
+#endif /* TMP112_COMPAT */
 
-#define DEFINE_TMP112_DATA(node_id)                                         \
-	[ZSHIM_TMP112_SENSOR_ID(node_id)] = {                               \
-		.i2c_port = I2C_PORT(DT_PHANDLE(node_id, port)),            \
-		.i2c_addr_flags = DT_STRING_TOKEN(node_id, i2c_addr_flags), \
+#define DEFINE_TMP112_DATA(node_id)                     \
+	[TMP112_SENSOR_ID(node_id)] = {                 \
+		.i2c_port = I2C_PORT_BY_DEV(node_id),   \
+		.i2c_addr_flags = DT_REG_ADDR(node_id), \
 	},
 
 #define GET_ZEPHYR_TEMP_SENSOR_TMP112(node_id)                   \
@@ -149,21 +150,24 @@ static int tmp112_get_temp(const struct temp_sensor_t *sensor, int *temp_ptr)
 				       FILL_POWER_GOOD(node_id) })
 
 #define TEMP_TMP112(node_id)                                           \
-	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                            \
+	[TEMP_SENSOR_ID(node_id)] = {                                  \
 		.name = DT_NODE_FULL_NAME(node_id),                    \
-		.idx = ZSHIM_TMP112_SENSOR_ID(node_id),                \
+		.idx = TMP112_SENSOR_ID(node_id),                      \
 		.type = TEMP_SENSOR_TYPE_BOARD,                        \
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_TMP112(node_id), \
 	},
 
 const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
-	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_tmp112, DEFINE_TMP112_DATA)
+	DT_FOREACH_STATUS_OKAY(TMP112_COMPAT, DEFINE_TMP112_DATA)
 };
 
 /* There can be only one thermistor on RT9490 with current driver */
-#if DT_NUM_INST_STATUS_OKAY(cros_ec_temp_sensor_rt9490) > 1
+#define ADD_ONE(node_id) 1 +
+#if DT_FOREACH_STATUS_OKAY_VARGS(RT9490_CHG_COMPAT, TEMP_RT9490_FN, \
+				 ADD_ONE) 0 > 1
 #error "Unsupported number of thermistor on RT9490"
 #endif
+#undef ADD_ONE
 
 #define GET_ZEPHYR_TEMP_SENSOR_RT9490(node_id)                                \
 	(&(struct zephyr_temp_sensor){                                        \
@@ -172,25 +176,23 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 			GET_THERMISTOR_INFO(DT_PHANDLE(node_id, thermistor)), \
 	})
 
-#define TEMP_RT9490(node_id)                                           \
-	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                            \
-		.name = DT_NODE_FULL_NAME(node_id),                    \
-		.idx = 0,                                              \
-		.type = TEMP_SENSOR_TYPE_BOARD,                        \
-		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_RT9490(node_id), \
-	},
+#define TEMP_RT9490(node_id) \
+	COND_CODE_1(DT_NODE_HAS_PROP(node_id, thermistor), (                   \
+		[TEMP_SENSOR_ID(node_id)] = {                                  \
+			.name = DT_NODE_FULL_NAME(node_id),                    \
+			.idx = 0,                                              \
+			.type = TEMP_SENSOR_TYPE_BOARD,                        \
+			.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_RT9490(node_id), \
+		}, ), ())
 
 const struct temp_sensor_t temp_sensors[] = {
-	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_thermistor, TEMP_THERMISTOR)
-		DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_pct2075,
-				       TEMP_PCT2075)
-			DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_sb_tsi,
-					       TEMP_SB_TSI)
-				DT_FOREACH_STATUS_OKAY(
-					cros_ec_temp_sensor_tmp112, TEMP_TMP112)
+	DT_FOREACH_STATUS_OKAY(THERMISTOR_COMPAT, TEMP_THERMISTOR)
+		DT_FOREACH_STATUS_OKAY(PCT2075_COMPAT, TEMP_PCT2075)
+			DT_FOREACH_STATUS_OKAY(SB_TSI_COMPAT, TEMP_SB_TSI)
+				DT_FOREACH_STATUS_OKAY(TMP112_COMPAT,
+						       TEMP_TMP112)
 					DT_FOREACH_STATUS_OKAY(
-						cros_ec_temp_sensor_rt9490,
-						TEMP_RT9490)
+						RT9490_CHG_COMPAT, TEMP_RT9490)
 };
 
 int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)

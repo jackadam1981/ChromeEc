@@ -48,14 +48,24 @@ ZTEST_USER(temp_sensor, test_temp_sensor_adc_error)
 	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_PG_EC_DSW_PWROK_PORT, 0),
 		   NULL);
 
+	zassert_equal(
+		EC_ERROR_NOT_POWERED,
+		temp_sensor_read(TEMP_SENSOR_ID(DT_NODELABEL(temp_charger)),
+				 &temp),
+		NULL);
+	zassert_equal(
+		EC_ERROR_NOT_POWERED,
+		temp_sensor_read(TEMP_SENSOR_ID(DT_NODELABEL(temp_ddr_soc)),
+				 &temp),
+		NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      temp_sensor_read(TEMP_SENSOR_CHARGER, &temp), NULL);
+		      temp_sensor_read(TEMP_SENSOR_ID(DT_NODELABEL(temp_fan)),
+				       &temp),
+		      NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      temp_sensor_read(TEMP_SENSOR_DDR_SOC, &temp), NULL);
-	zassert_equal(EC_ERROR_NOT_POWERED,
-		      temp_sensor_read(TEMP_SENSOR_FAN, &temp), NULL);
-	zassert_equal(EC_ERROR_NOT_POWERED,
-		      temp_sensor_read(TEMP_SENSOR_PP3300_REGULATOR, &temp),
+		      temp_sensor_read(TEMP_SENSOR_ID(DT_NODELABEL(
+					       temp_pp3300_regulator)),
+				       &temp),
 		      NULL);
 
 	/* power ADC */
