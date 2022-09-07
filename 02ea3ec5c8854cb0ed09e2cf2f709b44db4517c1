@@ -33,6 +33,24 @@
       "message": "Can I add LOW_COVERAGE_REASON in the commit message?",
       "revId": "02ea3ec5c8854cb0ed09e2cf2f709b44db4517c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c7103b_fc738af6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-09-07T11:41:15Z",
+      "side": 1,
+      "message": "I\u0027m unsure who could be help to add the test for the brya code coverage. +Boris/Caveh, could we skip this by adding the LOW_COVERAGE_REASON?",
+      "parentUuid": "0d938b1c_c1c90e97",
+      "revId": "02ea3ec5c8854cb0ed09e2cf2f709b44db4517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
