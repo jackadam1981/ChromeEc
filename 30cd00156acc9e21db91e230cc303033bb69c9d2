@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b894f6_d7674c8f",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/hostevent.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-07T03:44:43Z",
+      "side": 1,
+      "message": "missing \u0027,\u0027",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "30cd00156acc9e21db91e230cc303033bb69c9d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf282e5_c0750ac9",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/hostevent.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-07T03:44:43Z",
+      "side": 1,
+      "message": "nit: probably more readable to do something like:\n\n```\n#ifdef CONFIG_HOST_EVENT64\n#define HOST_EVENT_PRINT_FORMAT \"016\" PRIx64\n#else\n#define HOST_EVENT_PRINT_FORMAT \"08\" PRIx32\n#endif\n\n...\n\nrv \u003d snprintf(cmd_buf, CONFIG_SHELL_CMD_BUFF_SIZE,\n              \"host_event %s 0x%\" HOST_EVENT_PRINT_FORMAT, subcommand, mask);\n```\n\nBut I\u0027m happy to approve as is (it\u0027s more of a personal preference)",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "30cd00156acc9e21db91e230cc303033bb69c9d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
