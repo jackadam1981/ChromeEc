@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253697b8_6b126f72",
+        "filename": "zephyr/projects/skyrim/winterhold.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-07T23:40:07Z",
+      "side": 1,
+      "message": "In a follow up CL, please organize the I2C devices as follows:\nskyrim_i2c.dts /* Includes i2c_common.dtsi */\nwinterhold_i2c.dts /* Includes i2c_common.dtsi */\ni2c_common.dtsi\n\nSee CL:3858649 for an example.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 0
+      },
+      "revId": "b8ba9ad2cc55c17a44f972b6f1ce4b4c4dd36f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
