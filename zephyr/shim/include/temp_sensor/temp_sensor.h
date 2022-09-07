@@ -8,48 +8,66 @@
 
 #include <zephyr/devicetree.h>
 #include "include/temp_sensor.h"
+#include "charger/chg_rt9490.h"
 
 #ifdef CONFIG_PLATFORM_EC_TEMP_SENSOR
 
-#define ZSHIM_TEMP_SENSOR_ID(node_id) DT_STRING_UPPER_TOKEN(node_id, enum_name)
+#define PCT2075_COMPAT nxp_pct2075
+#define TMP112_COMPAT cros_ec_temp_sensor_tmp112
+#define SB_TSI_COMPAT amd_sb_tsi
+#define THERMISTOR_COMPAT cros_ec_temp_sensor_thermistor
+#define TEMP_SENSORS_COMPAT cros_ec_temp_sensors
+
+#define NAMED_TEMP_ID DT_INST(0, TEMP_SENSORS_COMPAT)
+
+#define TEMP_RT9490_FN(node_id, fn) \
+	COND_CODE_1(DT_NODE_HAS_PROP(node_id, thermistor), (fn(node_id)), ())
+
+#define FOREACH_TEMP_SENSOR(fn)                                             \
+	DT_FOREACH_STATUS_OKAY(PCT2075_COMPAT, fn)                          \
+	DT_FOREACH_STATUS_OKAY(TMP112_COMPAT, fn)                           \
+	DT_FOREACH_STATUS_OKAY_VARGS(RT9490_CHG_COMPAT, TEMP_RT9490_FN, fn) \
+	DT_FOREACH_STATUS_OKAY(SB_TSI_COMPAT, fn)                           \
+	DT_FOREACH_STATUS_OKAY(THERMISTOR_COMPAT, fn)
 
 #define HAS_POWER_GOOD_PIN(node_id) DT_NODE_HAS_PROP(node_id, power_good_pin) ||
+
 #define ANY_INST_HAS_POWER_GOOD_PIN \
-	(DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor, HAS_POWER_GOOD_PIN) 0)
+	(DT_FOREACH_CHILD(NAMED_TEMP_ID, HAS_POWER_GOOD_PIN) 0)
+
+#define TEMP_SENSOR_ID(node_id) DT_CAT(TEMP_SENSOR_, node_id)
+#define TEMP_SENSOR_ID_BY_DEV(node_id) DT_CAT(TEMP_SENSOR_DEV, node_id)
 
 enum temp_sensor_id {
-#if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
-	DT_FOREACH_CHILD_SEP(DT_PATH(named_temp_sensors), ZSHIM_TEMP_SENSOR_ID,
-			     (, )),
-#endif /* named_temp_sensors */
+	DT_FOREACH_CHILD_SEP(NAMED_TEMP_ID, TEMP_SENSOR_ID, (, )),
 	TEMP_SENSOR_COUNT
 };
 
+#define TEMP_SENSOR_ID_DEV(named_id)                          \
+	TEMP_SENSOR_ID_BY_DEV(DT_PHANDLE(named_id, sensor)) = \
+		TEMP_SENSOR_ID(named_id)
+
+enum temp_sensor_dev_id {
+	DT_FOREACH_CHILD_SEP(NAMED_TEMP_ID, TEMP_SENSOR_ID_DEV, (, ))
+};
+
 /* PCT2075 access array */
-#define ZSHIM_PCT2075_SENSOR_ID(node_id) \
-	DT_STRING_UPPER_TOKEN(node_id, pct2075_name)
-#define PCT2075_SENSOR_ID_WITH_COMMA(node_id) ZSHIM_PCT2075_SENSOR_ID(node_id),
+#define PCT2075_SENSOR_ID(node_id) DT_CAT(PCT2075_, node_id)
+#define PCT2075_SENSOR_ID_WITH_COMMA(node_id) PCT2075_SENSOR_ID(node_id),
 
 enum pct2075_sensor {
-#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_pct2075)
-	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_pct2075,
-			       PCT2075_SENSOR_ID_WITH_COMMA)
-#endif
+	DT_FOREACH_STATUS_OKAY(PCT2075_COMPAT, PCT2075_SENSOR_ID_WITH_COMMA)
 		PCT2075_COUNT,
 };
 
 #undef PCT2075_SENSOR_ID_WITH_COMMA
 
 /* TMP112 access array */
-#define ZSHIM_TMP112_SENSOR_ID(node_id) \
-	DT_STRING_UPPER_TOKEN(node_id, tmp112_name)
-#define TMP112_SENSOR_ID_WITH_COMMA(node_id) ZSHIM_TMP112_SENSOR_ID(node_id),
+#define TMP112_SENSOR_ID(node_id) DT_CAT(TMP112_, node_id)
+#define TMP112_SENSOR_ID_WITH_COMMA(node_id) TMP112_SENSOR_ID(node_id),
 
 enum tmp112_sensor {
-#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensor_tmp112)
-	DT_FOREACH_STATUS_OKAY(cros_ec_temp_sensor_tmp112,
-			       TMP112_SENSOR_ID_WITH_COMMA)
-#endif
+	DT_FOREACH_STATUS_OKAY(TMP112_COMPAT, TMP112_SENSOR_ID_WITH_COMMA)
 		TMP112_COUNT,
 };
 
@@ -58,11 +76,11 @@ enum tmp112_sensor {
 struct zephyr_temp_sensor {
 	/* Read sensor value in K into temp_ptr; return non-zero if error. */
 	int (*read)(const struct temp_sensor_t *sensor, int *temp_ptr);
-	struct thermistor_info *thermistor;
+	const struct thermistor_info *thermistor;
 #if ANY_INST_HAS_POWER_GOOD_PIN
 	const struct device *power_good_dev;
 	gpio_pin_t power_good_pin;
-#endif
+#endif /* ANY_INST_HAS_POWER_GOOD_PIN */
 };
 
 #endif /* CONFIG_PLATFORM_EC_TEMP_SENSOR */
