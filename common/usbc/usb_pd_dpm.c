@@ -31,7 +31,7 @@
 #include "usb_pd_timer.h"
 #include "usb_pe_sm.h"
 #include "usb_tbt_alt_mode.h"
-
+#include "typec_control.h"
 #ifdef CONFIG_ZEPHYR
 #include "temp_sensor/temp_sensor.h"
 #endif
@@ -877,7 +877,9 @@ void dpm_evaluate_request_rdo(int port, uint32_t rdo)
 		return;
 
 	op_ma = (rdo >> 10) & 0x3FF;
-	if ((BIT(port) & sink_max_pdo_requested) && (op_ma <= 150)) {
+
+	/* Follow the request current to control the output current */
+	if (op_ma <= 150) {
 		/*
 		 * sink_max_pdo_requested will be set when we get 5V/3A sink
 		 * capability from port partner. If port partner only request
@@ -886,6 +888,21 @@ void dpm_evaluate_request_rdo(int port, uint32_t rdo)
 		atomic_clear_bits(&sink_max_pdo_requested, BIT(port));
 
 		balance_source_ports();
+	} else {
+		/*
+		 * If port patner request 1.5A before, the pdo_ma will be 1.5A.
+		 * And if we receive request 3A in following command, it will
+		 * return error in pd_check_requested_voltage.
+		 * So we need to set max_current_claimed.
+		 */
+		max_current_claimed |= BIT(port);
+		
+		/*
+		 * Also we need to avoid to call typec_select_src_current_limit_rp
+		 * in balance_source_ports because it will send source capability
+		 * again and cause TDA.2.3.1.1 failed.
+		 */
+		typec_set_source_current_limit(port, TYPEC_RP_3A0);
 	}
 }
 
