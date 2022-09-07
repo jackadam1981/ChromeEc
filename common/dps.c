@@ -16,6 +16,7 @@
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "math_util.h"
 #include "task.h"
 #include "timer.h"
@@ -35,8 +36,10 @@
 #define DPS_FLAG_WAITING BIT(2)
 #define DPS_FLAG_SAMPLED BIT(3)
 #define DPS_FLAG_NEED_MORE_PWR BIT(4)
+#define DPS_FLAG_NO_BATTERY BIT(5)
 
-#define DPS_FLAG_STOP_EVENTS (DPS_FLAG_DISABLED | DPS_FLAG_NO_SRCCAP)
+#define DPS_FLAG_STOP_EVENTS \
+	(DPS_FLAG_DISABLED | DPS_FLAG_NO_SRCCAP | DPS_FLAG_NO_BATTERY)
 #define DPS_FLAG_ALL GENMASK(31, 0)
 
 #define MAX_MOVING_AVG_WINDOW 5
@@ -480,6 +483,7 @@ void dps_task(void *u)
 	struct pdo_candidate last_cand = { CHARGE_PORT_NONE, 0, 0 };
 	int sample_count = 0;
 	int rv;
+	const struct batt_params *batt = charger_current_battery_params();
 
 	rv = dps_init();
 	if (rv) {
@@ -518,6 +522,11 @@ void dps_task(void *u)
 			continue;
 		}
 
+		if (batt->is_present != BP_YES) {
+			flag |= DPS_FLAG_NO_BATTERY;
+			continue;
+		}
+
 		if (!has_new_power_request(&curr_cand)) {
 			sample_count = 0;
 			flag &= ~DPS_FLAG_SAMPLED;
@@ -546,6 +555,17 @@ void dps_task(void *u)
 		update_timeout(dps_config.t_check);
 	}
 }
+
+void check_battery_present(void)
+{
+	const struct batt_params *batt = charger_current_battery_params();
+
+	if (batt->is_present == BP_YES && (flag & DPS_FLAG_NO_BATTERY)) {
+		flag &= ~DPS_FLAG_NO_BATTERY;
+		task_wake(TASK_ID_DPS);
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, check_battery_present, HOOK_PRIO_DEFAULT);
 
 static int command_dps(int argc, const char **argv)
 {
