@@ -53,13 +53,6 @@ int dps_get_dynamic_voltage(void);
 int dps_get_charge_port(void);
 
 /*
- * Check if DPS is enabled.
- *
- * @return true if enabled, false otherwise.
- */
-bool dps_is_enabled(void);
-
-/*
  * Update DPS stablized timeout
  *
  * This is called at the exit of PE_SNK_TRANSITION_SINK
@@ -76,6 +69,13 @@ __test_only bool dps_is_fake_enabled(void);
 __test_only int dps_get_fake_mv(void);
 __test_only int dps_get_fake_ma(void);
 __test_only int *dps_get_debug_level(void);
+__test_only int dps_get_flag(void);
+/*
+ * Check if DPS is enabled.
+ *
+ * @return true if enabled, false otherwise.
+ */
+__test_only bool dps_is_enabled(void);
 #endif
 
 #endif /* __CROS_EC_DPS__H */

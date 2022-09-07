@@ -7,6 +7,8 @@
 #include <zephyr/ztest.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 
+#include "battery.h"
+#include "dps.h"
 #include "ec_commands.h"
 #include "ec_tasks.h"
 #include "driver/tcpm/ps8xxx_public.h"
@@ -16,6 +18,7 @@
 #include "emul/tcpc/emul_tcpci_partner_snk.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "host_command.h"
+#include "task.h"
 #include "test/drivers/stubs.h"
 #include "tcpm/tcpci.h"
 #include "test/usb_pe.h"
@@ -35,6 +38,9 @@
 
 #define DEFAULT_SINK_SENT_TO_SOURCE_CAP_COUNT 1
 #define DEFAULT_SOURCE_SENT_TO_SINK_CAP_COUNT 1
+
+#define GPIO_BATT_PRES_ODL_PATH DT_PATH(named_gpios, ec_batt_pres_odl)
+#define GPIO_BATT_PRES_ODL_PORT DT_GPIO_PIN(GPIO_BATT_PRES_ODL_PATH, gpios)
 
 struct emul_state {
 	/* TODO(b/217737667): Remove driver specific code. */
@@ -264,6 +270,16 @@ static void integration_usb_attach_snk_then_src_after(void *state)
 	struct integration_usb_attach_snk_then_src_fixture *fixture = state;
 
 	attach_src_snk_common_after(&fixture->my_emulator_state);
+}
+
+static void control_battery_present(bool present)
+{
+	const struct device *dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_BATT_PRES_ODL_PATH, gpios));
+
+	/* 0 means battery present */
+	zassume_ok(gpio_emul_input_set(dev, GPIO_BATT_PRES_ODL_PORT, !present),
+		   NULL);
 }
 
 ZTEST_F(integration_usb_attach_src_then_snk, verify_snk_port_pd_info)
@@ -524,6 +540,30 @@ ZTEST_F(integration_usb_attach_snk_then_src, verify_src_port_typec_status)
 	zassert_equal(response.power_role, PD_ROLE_SOURCE,
 		      "Sink attached, but TCPM power role is %d",
 		      response.power_role);
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk, verify_dps_battery_absent)
+{
+	control_battery_present(false);
+	zassert_false(battery_is_present(), "dps battery is present");
+	task_wake(TASK_ID_DPS);
+	/* wait dps_config.t_check*/
+	k_sleep(K_MSEC(5000));
+	zassert_true(dps_get_flag() & BIT(5), "DPS_FLAG_NO_BATTERY is set");
+	control_battery_present(true);
+	zassert_true(battery_is_present(), "dps battery is not present");
+}
+
+ZTEST_F(integration_usb_attach_src_then_snk, verify_dps_enable)
+{
+	dps_enable(false);
+	zassert_false(dps_is_enabled(), NULL);
+	task_wake(TASK_ID_DPS);
+	/* wait dps_config.t_check*/
+	k_sleep(K_MSEC(5000));
+	zassert_true(dps_get_flag() & BIT(0), "DPS_FLAG_DISABLED is set");
+	dps_enable(true);
+	zassert_true(dps_is_enabled(), NULL);
 }
 
 ZTEST_SUITE(integration_usb_attach_src_then_snk, drivers_predicate_post_main,
