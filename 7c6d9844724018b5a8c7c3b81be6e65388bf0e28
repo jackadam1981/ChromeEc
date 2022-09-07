@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ab562e_c03a603a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-07T16:02:17Z",
+      "side": 1,
+      "message": "max_current_claimed shouldn\u0027t be changed outside the context of its mutex in the `balance_source_ports()` call\n\nWhat is it that we want policy to be here?  Requirements for TBT testing were that we de-allocate 3.0A to ports which don\u0027t request that current.  However, that\u0027s exactly the scenario the tester is running when it immediately requests less current than we\u0027re offering. \n\nCould we instead introduce a console command to force BIST shared test mode for PD 2.0 tests to use?  It\u0027s the chosen test mechanism for PD 3.0 tests, so it would align the test behavior closer to the new test specs",
+      "revId": "7c6d9844724018b5a8c7c3b81be6e65388bf0e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
