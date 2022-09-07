@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c0d21b_b14719ee",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-09-07T09:39:24Z",
+      "side": 1,
+      "message": "Look Likes we already have similar config with [this](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3878624/1/zephyr/shim/include/config_chip.h#b693).",
+      "range": {
+        "startLine": 659,
+        "startChar": 0,
+        "endLine": 662,
+        "endChar": 6
+      },
+      "revId": "a52c43686871ca231b089c530aeb8416b37e79c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
