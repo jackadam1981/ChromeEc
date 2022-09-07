@@ -7,16 +7,22 @@
 #include <zephyr/sys/slist.h>
 #include <zephyr/ztest.h>
 
+#include "battery.h"
 #include "battery_smart.h"
+#include "dps.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "system.h"
+#include "task.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 #include "usb_pd.h"
 
 #define BATTERY_NODE DT_NODELABEL(battery)
+
+#define GPIO_BATT_PRES_ODL_PATH DT_PATH(named_gpios, ec_batt_pres_odl)
+#define GPIO_BATT_PRES_ODL_PORT DT_GPIO_PIN(GPIO_BATT_PRES_ODL_PATH, gpios)
 
 struct usb_attach_5v_3a_pd_source_fixture {
 	struct tcpci_partner_data source_5v_3a;
@@ -56,6 +62,16 @@ static void usb_attach_5v_3a_pd_source_after(void *data)
 	struct usb_attach_5v_3a_pd_source_fixture *fixture = data;
 
 	disconnect_source_from_port(fixture->tcpci_emul, fixture->charger_emul);
+}
+
+static void control_battery_present(bool present)
+{
+	const struct device *dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_BATT_PRES_ODL_PATH, gpios));
+
+	/* 0 means battery present */
+	zassume_ok(gpio_emul_input_set(dev, GPIO_BATT_PRES_ODL_PORT, !present),
+		   NULL);
 }
 
 ZTEST_SUITE(usb_attach_5v_3a_pd_source, drivers_predicate_post_main,
@@ -168,9 +184,9 @@ ZTEST_F(usb_attach_5v_3a_pd_source, test_disconnect_typec_status)
 	disconnect_source_from_port(fixture->tcpci_emul, fixture->charger_emul);
 	typec_status = host_cmd_typec_status(0);
 
-	zassert_false(typec_status.pd_enabled, NULL);
-	zassert_false(typec_status.dev_connected, NULL);
-	zassert_false(typec_status.sop_connected, NULL);
+	zassert_false(typec_status.pd_enabled);
+	zassert_false(typec_status.dev_connected);
+	zassert_false(typec_status.sop_connected);
 	zassert_equal(typec_status.source_cap_count, 0,
 		      "Expected 0 source caps, but got %d",
 		      typec_status.source_cap_count);
@@ -281,4 +297,30 @@ ZTEST_F(usb_attach_5v_3a_pd_source, test_uvdm_ignored)
 
 	zassert_false(tcpm_response,
 		      "Sent unstructured VDM to TCPM; TCPM did not ignore");
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source, test_dps_battery_absent)
+{
+	control_battery_present(false);
+	zassert_false(battery_is_present(), "dps battery is present");
+	task_wake(TASK_ID_DPS);
+	/* wait dps_config.t_check*/
+	k_sleep(K_MSEC(5000));
+	zassert_true(dps_get_flag() & DPS_FLAG_NO_BATTERY,
+		     "DPS_FLAG_NO_BATTERY is set");
+	control_battery_present(true);
+	zassert_true(battery_is_present(), "dps battery is not present");
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source, test_dps_enable)
+{
+	dps_enable(false);
+	zassert_false(dps_is_enabled(), NULL);
+	task_wake(TASK_ID_DPS);
+	/* wait dps_config.t_check*/
+	k_sleep(K_MSEC(5000));
+	zassert_true(dps_get_flag() & DPS_FLAG_DISABLED,
+		     "DPS_FLAG_DISABLED is set");
+	dps_enable(true);
+	zassert_true(dps_is_enabled(), NULL);
 }
