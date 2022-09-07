@@ -33,6 +33,42 @@
       "message": "Hi Ivan, \n\nThis change for notify_host_of_low_battery_charge is different from what\u0027s suggested in b:244253629/comment#21. Was it not clear or you have other thoughts?",
       "revId": "be508d733d64c90d204553952bf838421515f730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ddc24f7_9ef6067c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-09-07T02:27:24Z",
+      "side": 1,
+      "message": "Assume it refers to those used in led.c in boards to configure led behavior. To avoid changing the behavior on partner boards without discussion, I would suggest just to deprecate it in common battery logic. test/sbs_charging_v2.c is applied or do I miss anything ?",
+      "parentUuid": "d466bdcd_b7ceb5da",
+      "revId": "be508d733d64c90d204553952bf838421515f730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f35a82_06d7a6ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-09-07T02:27:24Z",
+      "side": 1,
+      "message": "It\u0027s clear, thanks. I am just thinking if the implementation is equivalent by translate the mapping from raw battery charge level to display charge level, do we need it or maybe I miss something ?",
+      "parentUuid": "e9d502a8_b91b44a3",
+      "revId": "be508d733d64c90d204553952bf838421515f730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
