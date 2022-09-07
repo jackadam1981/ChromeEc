@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d372319c_59a1ab10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-07T04:46:21Z",
+      "side": 1,
+      "message": "Seems like a weird race between the test and AP boot? Seems okay, in any case.",
+      "revId": "d8965f46307052eeba134178b8d42e8b9cf8247f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
