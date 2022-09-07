@@ -16,6 +16,23 @@
       "message": "In lieu of b/224607108, I forced a CQ build of my own [1]. It should show up in Checks, although it won\u0027t actually block the CL. I\u0027ll wait for it before submission though.\n\nI\u0027ve also built (via emerge, instead of local non-portage build flows) the previously-failing package this time.\n\n[1] go/buildbucket-cli\nbb add -cl https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3877390 chromeos/cq/zork-cq\nhttp://ci.chromium.org/b/8803724469489054449",
       "revId": "5948fe683b9d1dad8b2eb62429b4f1097c6c8dc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b821f30_97e03276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-09-07T16:13:58Z",
+      "side": 1,
+      "message": "zork-cq passed",
+      "revId": "5948fe683b9d1dad8b2eb62429b4f1097c6c8dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
