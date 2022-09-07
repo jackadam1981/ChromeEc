@@ -10,6 +10,13 @@
 
 #include "common.h"
 
+#define DPS_FLAG_DISABLED BIT(0)
+#define DPS_FLAG_NO_SRCCAP BIT(1)
+#define DPS_FLAG_WAITING BIT(2)
+#define DPS_FLAG_SAMPLED BIT(3)
+#define DPS_FLAG_NEED_MORE_PWR BIT(4)
+#define DPS_FLAG_NO_BATTERY BIT(5)
+
 /* Dynamic PDO Selection config. */
 struct dps_config_t {
 	/* (0, 100) coeff for transition to a lower power PDO*/
@@ -53,13 +60,6 @@ int dps_get_dynamic_voltage(void);
 int dps_get_charge_port(void);
 
 /*
- * Check if DPS is enabled.
- *
- * @return true if enabled, false otherwise.
- */
-bool dps_is_enabled(void);
-
-/*
  * Update DPS stablized timeout
  *
  * This is called at the exit of PE_SNK_TRANSITION_SINK
@@ -67,6 +67,13 @@ bool dps_is_enabled(void);
  * @param port: the port for timer reset.
  */
 void dps_update_stabilized_time(int port);
+
+/*
+ * Check if DPS is enabled.
+ *
+ * @return true if enabled, false otherwise.
+ */
+bool dps_is_enabled(void);
 
 #ifdef TEST_BUILD
 __test_only void dps_enable(bool en);
@@ -76,6 +83,8 @@ __test_only bool dps_is_fake_enabled(void);
 __test_only int dps_get_fake_mv(void);
 __test_only int dps_get_fake_ma(void);
 __test_only int *dps_get_debug_level(void);
+__test_only int dps_get_flag(void);
+
 #endif
 
 #endif /* __CROS_EC_DPS__H */

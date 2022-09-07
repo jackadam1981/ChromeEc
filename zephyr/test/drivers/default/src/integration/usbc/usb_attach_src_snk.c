@@ -7,6 +7,7 @@
 #include <zephyr/ztest.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 
+#include "dps.h"
 #include "ec_commands.h"
 #include "ec_tasks.h"
 #include "driver/tcpm/ps8xxx_public.h"
