@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a77ce8_b08152b5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-09-07T02:47:17Z",
+      "side": 1,
+      "message": "This change (a revert back to the original) broke the build.  You must have submitted an old revision over the top.",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 9
+      },
+      "revId": "5619862cb71384381830f1fc08be985d1a730b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
