@@ -69,6 +69,54 @@
       },
       "revId": "dc82318f50acc2121e3edba8ccb704f6b1c07591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b45189c_da69f35f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T01:16:34Z",
+      "side": 1,
+      "message": "So the retimer is enabled, then taken out of reset, and there is some delay required for the retimer\u0027s i2c block to be configured and ready to respond to i2c bus transactions.\n\nCurrently, there is not enough delay from the time that the retimer is taken out of reset and the 1st i2c read is done in the _init() routine. The i2c_read() function for the driver \n\nThis could be solved in 3 ways:\n\n1. Increase number of retry attempts per read request. This constant is currently set at 5. Experimentally, I observed that changing this to 8 makes the first read work. Note each retry attempt has 10 msec delay.\n\n2. Increase the delay after taking the retimer out of reset, which is what this CL is doing.\n\n3. Add a retry loop around the 1st retimer read\n\n\trv \u003d bb_retimer_power_enable(me, true);\n\tif (rv !\u003d EC_SUCCESS)\n\t\treturn rv;\n\n\trv \u003d bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, \u0026data);\n\t\nI don\u0027t think scope traces will give us any insight here as it\u0027s a delay from coming out of reset until the i2c block in the retimer is ready.",
+      "parentUuid": "d039d0d9_ed6577bd",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "dc82318f50acc2121e3edba8ccb704f6b1c07591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd5f7c3_b4c7885f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-07T01:16:34Z",
+      "side": 1,
+      "message": "The delay that needs to be extended is from de-asserting reset and HB I2C block being ready. The issue is that when this function returns to the caller, an i2c read is done right away. That I2C read always fails and there is no contingency for that read to fail. The way the driver is structured, I think the retimer is marked as in a bad state.\n\nWe can either increase the delay, or we can attempt the read some N times before signalling the error. I observed that the 2nd read is always successful.",
+      "parentUuid": "d039d0d9_ed6577bd",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "dc82318f50acc2121e3edba8ccb704f6b1c07591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
