@@ -284,6 +284,24 @@
       "parentUuid": "834dbbe1_b0bf1f05",
       "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e7b848_170ea6dd",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-07T03:18:42Z",
+      "side": 1,
+      "message": "I only tested this CL on kingler/krabby. Haven\u0027t tested on other platforms yet. I\u0027ll leave this CL as is, and merge board hook change instead: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3855592/2.",
+      "parentUuid": "a85d8fff_1558c706",
+      "revId": "2d996a8fe651530a224f301215ff2f8b147bf65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
