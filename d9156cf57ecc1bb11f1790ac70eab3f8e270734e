@@ -75,6 +75,30 @@
       },
       "revId": "d9156cf57ecc1bb11f1790ac70eab3f8e270734e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c193624_9467b693",
+        "filename": "board/redrix/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-07T14:36:08Z",
+      "side": 1,
+      "message": "Eventually, I intend to do something like that. For now, Data Reset is a fairly new, fairly large feature, and I don\u0027t want to enable it for every USB4 board at once. I\u0027ve enabled it on some USB4 boards for further testing.",
+      "parentUuid": "b9da8f8c_5891fd0a",
+      "range": {
+        "startLine": 169,
+        "startChar": 8,
+        "endLine": 169,
+        "endChar": 36
+      },
+      "revId": "d9156cf57ecc1bb11f1790ac70eab3f8e270734e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
