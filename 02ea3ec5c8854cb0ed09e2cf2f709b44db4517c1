@@ -51,6 +51,24 @@
       "parentUuid": "0d938b1c_c1c90e97",
       "revId": "02ea3ec5c8854cb0ed09e2cf2f709b44db4517c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7d1335_38f240a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-07T14:15:36Z",
+      "side": 1,
+      "message": "The ideal fix would be to write a test that sends Discover Identity and Discover SVIDs from the partner with the wrong SVID and verifies that the TCPM ignores or NAKs as appropriate to the PD revision. It shouldn\u0027t be that complicated, but I\u0027m not sure we have a good way to pull baseboard code into a test build yet. I would approve something like `LOW_COVERAGE_REASON\u003dImpractical to test baseboard code`.",
+      "parentUuid": "d7c7103b_fc738af6",
+      "revId": "02ea3ec5c8854cb0ed09e2cf2f709b44db4517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
