@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "205bb7b6_83a5cbb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2022-09-07T06:26:27Z",
+      "side": 1,
+      "message": "LOW_COVERAGE_REASON\u003dtest code CL:3873241 WIP\n\nPlease add this line to skip Code-Coverage check.\nTing is still working on test code coverage.",
+      "revId": "92ff64616a45060b93a99adc00c870cf56d4efd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c22a119c_01a49a92",
