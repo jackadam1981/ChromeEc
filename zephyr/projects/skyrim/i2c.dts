@@ -255,6 +255,18 @@
 	clock-frequency = <I2C_BITRATE_FAST>;
 	pinctrl-0 = <&i2c6_1_sda_scl_gpe3_e4>;
 	pinctrl-names = "default";
+
+	soc_pct2075: soc-pct2075@4048 {
+		compatible = "nxp,pct2075";
+		power-good-pin = <&gpio_pg_pwr_s5>;
+		reg = <0x4048>;
+	};
+
+	amb_pct2075: amb-pct2075@404f {
+		compatible = "nxp,pct2075";
+		power-good-pin = <&gpio_pg_pwr_s5>;
+		reg = <0x404f>;
+	};
 };
 
 &i2c_ctrl6 {
@@ -267,6 +279,12 @@
 	clock-frequency = <I2C_BITRATE_FAST>;
 	pinctrl-0 = <&i2c7_0_sda_scl_gpb2_b3>;
 	pinctrl-names = "default";
+
+	temp_cpu: cpu@4c {
+		compatible = "amd,sb-tsi";
+		power-good-pin = <&gpio_s0_pgood>;
+		reg = <0x4c>;
+	};
 };
 
 &i2c_ctrl7 {

@@ -33,12 +33,11 @@ properties:
       - TEMP_SENSOR_3_CHARGER
       - TEMP_SENSOR_4_WWAN
 
-    power-good-pin:
+    sensor:
       type: phandle
+      required: true
       description:
-        If this sensor will be unpowered some of the time, provide an input GPIO
-        which can be referenced to detect whether the sensor is powered before
-        reading.
+        A pointer to a coresponding temperature sensor node.
 
     temp_fan_off:
       type: int
