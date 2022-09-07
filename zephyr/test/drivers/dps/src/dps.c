@@ -3,13 +3,18 @@
  * found in the LICENSE file.
  */
 
+#include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/ztest.h>
 
+#include "battery.h"
 #include "builtin/stdio.h"
 #include "console.h"
 #include "dps.h"
 #include "test/drivers/test_state.h"
 #include "timer.h"
+
+#define GPIO_BATT_PRES_ODL_PATH DT_PATH(named_gpios, ec_batt_pres_odl)
+#define GPIO_BATT_PRES_ODL_PORT DT_GPIO_PIN(GPIO_BATT_PRES_ODL_PATH, gpios)
 
 struct dps_fixture {
 	struct dps_config_t saved_config;
@@ -38,6 +43,16 @@ static void dps_config_after(void *data)
 	*dps_get_config() = f->saved_config;
 	*dps_get_debug_level() = f->saved_debug_level;
 	dps_enable(true);
+}
+
+static void dps_cmd_test_set_battery_present(bool present)
+{
+	const struct device *dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_BATT_PRES_ODL_PATH, gpios));
+
+	/* 0 means battery present */
+	zassume_ok(gpio_emul_input_set(dev, GPIO_BATT_PRES_ODL_PORT, !present),
+		   NULL);
 }
 
 ZTEST_F(dps, test_enable)
@@ -256,6 +271,14 @@ ZTEST(dps, console_cmd__invalid)
 {
 	/* Non-existent subcommand should fail */
 	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps foobar xyz"), NULL);
+}
+
+ZTEST(dps, test_battery_present)
+{
+	dps_cmd_test_set_battery_present(false);
+	zassert_false(battery_is_present(), "dps battery is present");
+	dps_cmd_test_set_battery_present(true);
+	zassert_true(battery_is_present(), "dps battery is not present");
 }
 
 ZTEST_SUITE(dps, drivers_predicate_pre_main, dps_config_setup,
