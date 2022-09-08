@@ -12,6 +12,7 @@
 #include "host_command.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
@@ -199,3 +200,14 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_TYPEC_STATUS, hc_typec_status, EC_VER_MASK(0));
+
+static enum ec_status hc_usb_pd_bist_share_mode_control(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_usb_pd_bist_share_mode_control *p = args->params;
+
+	pd_set_bist_share_mode(p->enable);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_BIST_SHARE_MODE_CONTROL,
+		     hc_usb_pd_bist_share_mode_control,
+		     EC_VER_MASK(0));
