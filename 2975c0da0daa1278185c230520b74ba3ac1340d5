@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4b8a1e_54ffb070",
+        "filename": "zephyr/test/krabby/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-08T18:23:48Z",
+      "side": 1,
+      "message": "krabby",
+      "range": {
+        "startLine": 3,
+        "startChar": 34,
+        "endLine": 3,
+        "endChar": 41
+      },
+      "revId": "2975c0da0daa1278185c230520b74ba3ac1340d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7e835e_2fef7515",
+        "filename": "zephyr/test/krabby/pinctrl.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-08T18:23:48Z",
+      "side": 1,
+      "message": "I had problems with pinctrls also. Eventually we\u0027re going to hit something this doesn\u0027t work for and need a real pinctrl emulator, but I\u0027m glad you could punt this to the future also.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "2975c0da0daa1278185c230520b74ba3ac1340d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
