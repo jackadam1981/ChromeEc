@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8b558c_8280c5fe",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-09-08T16:36:05Z",
+      "side": 1,
+      "message": "It does make me wonder if this code should be in a static function and used by all these tests?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 44
+      },
+      "revId": "0201b4b1e0d3b189641973d4c0254480db81a36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f670ed7_26dd9829",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-09-08T16:36:05Z",
+      "side": 1,
+      "message": "Why not strstr like above?",
+      "revId": "0201b4b1e0d3b189641973d4c0254480db81a36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506d1fdb_0760bfb0",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-09-08T16:36:05Z",
+      "side": 1,
+      "message": "!strcmp ?",
+      "revId": "0201b4b1e0d3b189641973d4c0254480db81a36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
