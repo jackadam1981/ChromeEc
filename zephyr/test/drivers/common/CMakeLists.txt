@@ -1,6 +1,7 @@
 # Common sources
 target_sources(app PRIVATE
   src/main.c
+  src/system_fake.c
   src/test_mocks.c
   src/test_rules.c
   src/utils.c
