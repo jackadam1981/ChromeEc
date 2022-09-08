@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73bab3d_cc2c384b",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-08T16:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710d1197_0a19b0ac",
+      "revId": "c4f79950459fb88e920435c798239d9b836c9f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2802e2bf_9e3f7023",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-08T14:42:53Z",
       "side": 1,
       "message": "Why are we capturing the buffer but not using it?",
+      "revId": "c4f79950459fb88e920435c798239d9b836c9f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "338f5ac4_4b1eb848",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-08T16:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2802e2bf_9e3f7023",
       "revId": "c4f79950459fb88e920435c798239d9b836c9f19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db6d3e4_0485b7d2",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-08T16:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9ffc3f0_821853c1",
+      "revId": "c4f79950459fb88e920435c798239d9b836c9f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "211c62b4_3f55bca8",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6188d19_94bd10a2",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-08T16:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "211c62b4_3f55bca8",
+      "revId": "c4f79950459fb88e920435c798239d9b836c9f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2f48dbb_c9ff4709",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-09-08T14:42:53Z",
       "side": 1,
       "message": "Why are we capturing the buffer but not using it?",
+      "revId": "c4f79950459fb88e920435c798239d9b836c9f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38427302_929555e0",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-08T16:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2f48dbb_c9ff4709",
       "revId": "c4f79950459fb88e920435c798239d9b836c9f19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
