@@ -14,6 +14,7 @@
 #include "common.h"
 #include "config.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "rt9490.h"
@@ -317,7 +318,10 @@ static int rt9490_init_setting(int chgnum)
 	RETURN_ERROR(rt9490_set_mivr(chgnum, default_init_setting.mivr));
 	RETURN_ERROR(rt9490_set_ieoc(chgnum, default_init_setting.eoc_current));
 	RETURN_ERROR(rt9490_set_iprec(chgnum, batt_info->precharge_current));
-	RETURN_ERROR(rt9490_enable_adc(chgnum, true));
+	if (IS_ENABLED(CONFIG_EXTPOWER))
+		RETURN_ERROR(rt9490_enable_adc(chgnum, extpower_is_present()));
+	else
+		RETURN_ERROR(rt9490_enable_adc(chgnum, true));
 	RETURN_ERROR(rt9490_enable_jeita(chgnum, false));
 	RETURN_ERROR(rt9490_field_update8(
 		chgnum, RT9490_REG_CHG_CTRL1, RT9490_VAC_OVP_MASK,
@@ -755,3 +759,11 @@ int rt9490_get_thermistor_val(const struct temp_sensor_t *sensor, int *temp_ptr)
 	*temp_ptr = C_TO_K(*temp_ptr);
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_EXTPOWER
+static void rt9490_hook_ac_change(void)
+{
+	rt9490_enable_adc(CHARGER_SOLO, extpower_is_present());
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, rt9490_hook_ac_change, HOOK_PRIO_DEFAULT);
+#endif
