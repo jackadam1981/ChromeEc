@@ -20,3 +20,9 @@ uint32_t pd_ufp_get_enter_mode(int port)
 {
 	return ufp_enter_mode[port];
 }
+
+/* Save port partner's exit mode message */
+void pd_ufp_set_exit_mode(int port, uint32_t *payload)
+{
+	ufp_enter_mode[port] = payload[1];
+}

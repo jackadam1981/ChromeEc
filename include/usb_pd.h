@@ -1853,6 +1853,15 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpci_msg_type type, uint16_t svid,
 void pd_ufp_set_enter_mode(int port, uint32_t *payload);
 
 /**
+ * Save the Exit mode command data received from the port partner for setting
+ * the retimer
+ *
+ * @param port     USB-C port number
+ * @param payload  payload data.
+ */
+void pd_ufp_set_exit_mode(int port, uint32_t *payload);
+
+/**
  * Return Enter mode command data received from the port partner
  *
  * @param port     USB-C port number
