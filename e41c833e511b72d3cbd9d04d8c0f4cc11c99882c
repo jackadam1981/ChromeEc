@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7daba76_8fd755f8",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-08T22:39:29Z",
+      "side": 1,
+      "message": "nit: can you split these two conditions into two tests, per http://go/tott/520 (thanks @Tom!)",
+      "revId": "e41c833e511b72d3cbd9d04d8c0f4cc11c99882c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
