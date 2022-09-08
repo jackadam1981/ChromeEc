@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8442ee_e501ca79",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/sleepmask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-08T19:01:31Z",
+      "side": 1,
+      "message": "Do we need an `after` function for this suite to make sure we go back to the right state if this fails?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 51
+      },
+      "revId": "548847812fc9acfacc9b706917f66a181bbd8523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
