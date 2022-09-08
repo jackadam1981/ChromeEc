@@ -191,3 +191,28 @@ ZTEST_F(usb_pd_bist_shared, verify_bist_shared_exit_no_action)
 	f5v_cap = fixture->snk_ext_500ma.last_5v_source_cap;
 	zassert_equal(f5v_cap, 0, "Received unexpected source cap");
 }
+
+ZTEST_F(usb_pd_bist_shared, verify_control_bist_shared_mode)
+{
+	uint32_t f5v_cap;
+
+	host_cmd_typec_control_bist_share_mode(USBC_PORT_C0, 1);
+	zassume_ok(tcpci_partner_send_control_msg(&fixture->sink_5v_500ma,
+						  PD_CTRL_GET_SOURCE_CAP, 0),
+		   "Failed to send get src cap");
+	/* wait tSenderResponse (26 ms) */
+	k_sleep(K_MSEC(26));
+	/*
+	 * Verify we were offered the 3A source cap because of
+	 * bist share mode be enabled.
+	 */
+	f5v_cap = fixture->snk_ext_500ma.last_5v_source_cap;
+	/* Capability should be 5V fixed, 3 A */
+	zassert_equal((f5v_cap & PDO_TYPE_MASK), PDO_TYPE_FIXED,
+		      "PDO type wrong");
+	zassert_equal(PDO_FIXED_VOLTAGE(f5v_cap), 5000, "PDO voltage wrong");
+	zassert_equal(PDO_FIXED_CURRENT(f5v_cap), 3000,
+		      "PDO initial current wrong");
+
+	host_cmd_typec_control_bist_share_mode(USBC_PORT_C0, 0);
+}
