@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24c00845_9d94f9a7",
+        "filename": "zephyr/shim/include/usbc/usb_muxes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-08T16:45:30Z",
+      "side": 1,
+      "message": "Please look at this version of Cls where I removed `usb_port`.",
+      "parentUuid": "a585ad5e_58bc4b70",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 54
+      },
+      "revId": "cea1016d244dfe5c0e1d7fd77be18bd7800ea14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "757899d1_31cff9ff",
         "filename": "zephyr/shim/include/usbc/usb_muxes.h",
         "patchSetId": 5
