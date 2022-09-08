@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f407a77_21a5d787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-08T21:52:37Z",
+      "side": 1,
+      "message": "Note: I removed the test showing http://b/245338219 because of the delta coverage requirement and instead put that test in the bug itself.",
+      "revId": "4c734aff825b76330950c1e8c26dab748d7eb324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
