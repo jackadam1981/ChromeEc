@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d2e99c_706d20f8",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-08T20:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03a5246f_d9adbb9a",
+      "revId": "49857f4010556336e9433c81795227f5702f799a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b0b3487_b58f889f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-06T15:41:31Z",
       "side": 1,
       "message": "same here",
+      "revId": "49857f4010556336e9433c81795227f5702f799a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de25e061_75bf7883",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-08T20:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0b3487_b58f889f",
       "revId": "49857f4010556336e9433c81795227f5702f799a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "777e760c_72cfacb8",
+        "filename": "zephyr/test/drivers/default/src/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-08T20:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3bf3d6_0d2cc5cd",
+      "revId": "49857f4010556336e9433c81795227f5702f799a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08253423_7a325f13",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-09-06T15:41:31Z",
       "side": 1,
       "message": "I wonder if it would be nicer to have a\n\nbool keyboard_scan_get_print_state_changes() \nand \nkeyboard_scan_set_print_state_changes(bool)\n\n(or maybe int if we still don\u0027t use bool)\n\nWDYT?",
+      "revId": "49857f4010556336e9433c81795227f5702f799a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf4511b_1ec5472f",
+        "filename": "zephyr/test/drivers/default/src/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-08T20:53:59Z",
+      "side": 1,
+      "message": "I got the idea from another CL and it seemed like a clever way to do both with one function but I changed it to a getter/setter pair if you prefer that.",
+      "parentUuid": "08253423_7a325f13",
       "revId": "49857f4010556336e9433c81795227f5702f799a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
