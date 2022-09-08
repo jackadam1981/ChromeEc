@@ -17,6 +17,7 @@
 #include "gpio.h"
 #include "timer.h"
 #include "usbc_ppc.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd.h"
@@ -96,14 +97,14 @@ static const union tbt_mode_resp_device vdo_tbt_modes[1] = { {
 } };
 
 static const uint32_t vdo_idh = VDO_IDH(1, /* Data caps as USB host     */
-					0, /* Not a USB device   */
+					1, /* is a USB device   */
 					IDH_PTYPE_PERIPH, 1, /* Supports alt
 								modes */
 					USB_VID_GOOGLE);
 
 static const uint32_t vdo_idh_rev30 =
 	VDO_IDH_REV30(1, /* Data caps as USB host     */
-		      0, /* Not a USB device   */
+		      1, /* is a USB device   */
 		      IDH_PTYPE_PERIPH, 1, /* Supports alt modes */
 		      IDH_PTYPE_DFP_HOST, USB_TYPEC_RECEPTACLE, USB_VID_GOOGLE);
 
@@ -234,12 +235,38 @@ static int svdm_tbt_compat_response_enter_mode(int port, uint32_t *payload)
 	return 0;
 }
 
+static int svdm_tbt_compat_response_exit_mode(int port, uint32_t *payload)
+{
+	mux_state_t mux_state = 0;
+
+	if ((PD_VDO_VID(payload[0]) != USB_VID_INTEL) ||
+	    (PD_VDO_OPOS(payload[0]) != OPOS_TBT))
+		return 0; /* NAK */
+
+	mux_state = usb_mux_get(port);
+
+	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+		pd_ufp_set_exit_mode(port, payload);
+		usb_mux_set_safe_mode_exit(port);
+
+		CPRINTS("UFP Exit TBT mode");
+		return 1; /* ACK */
+	}
+	CPRINTS("UFP failed to exit TBT mode(mux=0x%x)", mux_state);
+	return 0; /* NAK */
+}
+
+__override bool usb_ufp_check_usb3_enable(int port)
+{
+	return true;
+}
+
 const struct svdm_response svdm_rsp = {
 	.identity = &svdm_tbt_compat_response_identity,
 	.svids = &svdm_tbt_compat_response_svids,
 	.modes = &svdm_tbt_compat_response_modes,
 	.enter_mode = &svdm_tbt_compat_response_enter_mode,
 	.amode = NULL,
-	.exit_mode = NULL,
+	.exit_mode = &svdm_tbt_compat_response_exit_mode,
 };
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
