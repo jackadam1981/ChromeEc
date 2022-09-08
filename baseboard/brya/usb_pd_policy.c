@@ -17,6 +17,7 @@
 #include "gpio.h"
 #include "timer.h"
 #include "usbc_ppc.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd.h"
@@ -96,14 +97,14 @@ static const union tbt_mode_resp_device vdo_tbt_modes[1] = { {
 } };
 
 static const uint32_t vdo_idh = VDO_IDH(1, /* Data caps as USB host     */
-					0, /* Not a USB device   */
+					1, /* is a USB device   */
 					IDH_PTYPE_PERIPH, 1, /* Supports alt
 								modes */
 					USB_VID_GOOGLE);
 
 static const uint32_t vdo_idh_rev30 =
 	VDO_IDH_REV30(1, /* Data caps as USB host     */
-		      0, /* Not a USB device   */
+		      1, /* is a USB device   */
 		      IDH_PTYPE_PERIPH, 1, /* Supports alt modes */
 		      IDH_PTYPE_DFP_HOST, USB_TYPEC_RECEPTACLE, USB_VID_GOOGLE);
 
@@ -234,12 +235,63 @@ static int svdm_tbt_compat_response_enter_mode(int port, uint32_t *payload)
 	return 0;
 }
 
+static int svdm_tbt_compat_response_exit_mode(int port, uint32_t *payload)
+{
+	int amode_idx;
+
+	struct partner_active_modes *active =
+		pd_get_partner_active_modes(port, TCPCI_MSG_SOP);
+
+	/* Do not exit mode while policy disallows it */
+	if (!tbt_ufp_ack_allowed[port])
+		return 0; /* NAK */
+
+	if ((PD_VDO_VID(payload[0]) != USB_VID_INTEL) ||
+	    (PD_VDO_OPOS(payload[0]) != OPOS_TBT))
+		return 0; /* NAK */
+
+	/*
+	 * In USB Power Delivery Specification Revision 3.1,
+	 * Version 1.5, 6.4.4.3.5.
+	 * The Responder Shall only return a NAK acknowledgment to a request
+	 * not containing an Active Mode.
+	 */
+	for (amode_idx = 0; amode_idx < PD_AMODE_COUNT; amode_idx++) {
+		if (active->amodes[amode_idx].fx->svid ==
+		    PD_VDO_VID(payload[0])) {
+			/* clear enter mode message */
+			pd_ufp_set_enter_mode(port, 0);
+			/* The Exit Mode Command is used by an Initiator (DFP)
+			 * to command a Responder (UFP or Cable Plug) to exit
+			 * its Active Mode and return to normal USB operation.
+			 */
+			set_usb_mux_with_current_data_role(port);
+			CPRINTS("UFP Exit TBT mode");
+			return 1; /* ACK */
+		}
+	}
+	CPRINTS("UFP failed to exit TBT mode");
+	return 0; /* NAK */
+}
+
+/*
+ * In USB Power Delivery Specification Revision 3.1,
+ * Version 1.5, 6.4.4.3.4.
+ * Before entering a Mode that requires the reconfiguring of any pins,
+ * the Responder Shall ensure that those pins being reconfigured
+ * are placed into either USB operation or the USB Safe State.
+ */
+__override bool usb_ufp_check_usb3_enable(int port)
+{
+	return true;
+}
+
 const struct svdm_response svdm_rsp = {
 	.identity = &svdm_tbt_compat_response_identity,
 	.svids = &svdm_tbt_compat_response_svids,
 	.modes = &svdm_tbt_compat_response_modes,
 	.enter_mode = &svdm_tbt_compat_response_enter_mode,
 	.amode = NULL,
-	.exit_mode = NULL,
+	.exit_mode = &svdm_tbt_compat_response_exit_mode,
 };
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
