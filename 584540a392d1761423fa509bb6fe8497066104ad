@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e644a5c4_e936a956",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-08T19:57:24Z",
+      "side": 1,
+      "message": "Complete aside: You can just also use --clobber with twister.",
+      "revId": "584540a392d1761423fa509bb6fe8497066104ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5ee146_e8e66c07",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/system_fake.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-08T19:57:24Z",
+      "side": 1,
+      "message": "Add:\n\n```\n/**\n * @brief Set the current image copy.\n */\nvoid system_set_shrspi_image_copy(enum ec_image new_image_copy);\n```",
+      "revId": "584540a392d1761423fa509bb6fe8497066104ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
