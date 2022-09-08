@@ -406,3 +406,8 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 
 	return TBT_SS_TBT_GEN3;
 }
+
+__override bool usb_ufp_check_usb3_enable(int port)
+{
+	return true;
+}
