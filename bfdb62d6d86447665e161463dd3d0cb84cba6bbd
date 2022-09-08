@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c88cfd_e84e718f",
+        "filename": "zephyr/test/drivers/default/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-08T15:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "226bafee_fb535fcd",
+      "revId": "bfdb62d6d86447665e161463dd3d0cb84cba6bbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e13a8a80_2b1c5791",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-07T23:28:45Z",
       "side": 1,
       "message": "nit: here and below, zassert_true isn\u0027t getting a bool. Prefer  `!\u003d 0`",
+      "revId": "bfdb62d6d86447665e161463dd3d0cb84cba6bbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d995145d_79501d10",
+        "filename": "zephyr/test/drivers/default/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-08T15:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e13a8a80_2b1c5791",
       "revId": "bfdb62d6d86447665e161463dd3d0cb84cba6bbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
