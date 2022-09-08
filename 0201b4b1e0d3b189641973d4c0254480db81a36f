@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e96febb_7ae331e6",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-08T17:35:25Z",
+      "side": 1,
+      "message": "Good call. Created a generic one in utils.c",
+      "parentUuid": "5b8b558c_8280c5fe",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 44
+      },
+      "revId": "0201b4b1e0d3b189641973d4c0254480db81a36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f670ed7_26dd9829",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9a2ab67_23f524fa",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-08T17:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f670ed7_26dd9829",
+      "revId": "0201b4b1e0d3b189641973d4c0254480db81a36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "506d1fdb_0760bfb0",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-09-08T16:36:05Z",
       "side": 1,
       "message": "!strcmp ?",
+      "revId": "0201b4b1e0d3b189641973d4c0254480db81a36f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de85a52_506e2eae",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-08T17:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506d1fdb_0760bfb0",
       "revId": "0201b4b1e0d3b189641973d4c0254480db81a36f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
