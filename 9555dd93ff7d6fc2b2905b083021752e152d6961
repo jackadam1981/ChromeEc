@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c50b4bf8_b710925e",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-08T20:59:29Z",
+      "side": 1,
+      "message": "Oh, I missed that as I just did a big sed. I\u0027ll do a revert and then just remove the zephyr.h in a couple extra CLs, thanks for the catch, Al!",
+      "parentUuid": "7116aaec_c8ebffe6",
+      "revId": "9555dd93ff7d6fc2b2905b083021752e152d6961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca913123_8e027712",
         "filename": "zephyr/shim/chip/it8xxx2/clock.c",
         "patchSetId": 1
