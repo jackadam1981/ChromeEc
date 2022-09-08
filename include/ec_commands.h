@@ -5787,6 +5787,15 @@ struct ec_params_usb_pd_dps_control {
 	uint8_t enable;
 } __ec_align1;
 
+/*
+ * This command enable/disable dynamic PDO selection.
+ */
+#define EC_CMD_USB_PD_BIST_SHARE_MODE_CONTROL 0x0107
+
+struct ec_params_usb_pd_bist_share_mode_control {
+	uint8_t enable;
+} __ec_align1;
+
 /* Write USB-PD device FW */
 #define EC_CMD_USB_PD_FW_UPDATE 0x0110
 

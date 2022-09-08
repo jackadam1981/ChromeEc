@@ -6579,6 +6579,36 @@ int cmd_usb_pd(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_usb_pd_set_bist_share_mode(int argc, char *argv[])
+{
+	struct ec_params_usb_pd_bist_share_mode_control p;
+	int rv;
+
+	/*
+	 * Set up requested flags.  If no flags were specified, p.mask will
+	 * be 0 and nothing will change.
+	 */
+	if (argc < 1) {
+		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "enable")) {
+		p.enable = 1;
+	} else if (!strcasecmp(argv[1], "disable")) {
+		p.enable = 0;
+	} else {
+		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_USB_PD_BIST_SHARE_MODE_CONTROL, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	return 0;
+}
+
 int cmd_usb_pd_dps(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_dps_control p;
