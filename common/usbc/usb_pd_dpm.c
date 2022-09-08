@@ -1159,3 +1159,22 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 	memcpy(msg, &sdb, *len);
 	return EC_SUCCESS;
 }
+
+void pd_set_bist_share_mode(uint8_t enable)
+{
+	/*
+	 * This command is not allowed if systme is locked.
+	 */
+	if (CONFIG_USB_PD_3A_PORTS == 0 || system_is_locked())
+		return;
+
+	if (enable)
+		bist_shared_mode_enabled = true;
+	else
+		bist_shared_mode_enabled = false;
+}
+
+uint8_t pd_get_bist_share_mode(void)
+{
+	return bist_shared_mode_enabled;
+}
