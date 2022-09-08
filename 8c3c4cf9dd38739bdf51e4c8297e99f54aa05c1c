@@ -22,6 +22,30 @@
       },
       "revId": "8c3c4cf9dd38739bdf51e4c8297e99f54aa05c1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8560567_de6ad326",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-08T22:31:22Z",
+      "side": 1,
+      "message": "If I recall correctly, `ps -o cmd\u003d \"${pid}\"` should return the command for the matching pid and `grep -qE \"(servod|/sbin/init)` return non-zero if any returned lines match either servod or init. I haven\u0027t used `pgrep` much but I\u0027m not sure if there is a way to do this with a single command. `pgrep -v \"(servod|/sbin/init)\"` will return all pids that do not match either of those but I couldn\u0027t find a way to filter that for a given pid (except grepping for the pid, which doesn\u0027t help).\n\nMaybe the previous method was the best way?",
+      "parentUuid": "fc0a3da9_17117666",
+      "range": {
+        "startLine": 857,
+        "startChar": 5,
+        "endLine": 857,
+        "endChar": 35
+      },
+      "revId": "8c3c4cf9dd38739bdf51e4c8297e99f54aa05c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
