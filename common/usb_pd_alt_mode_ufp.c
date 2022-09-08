@@ -8,6 +8,7 @@
 #include "usb_tbt_alt_mode.h"
 
 static uint32_t ufp_enter_mode[CONFIG_USB_PD_PORT_MAX_COUNT];
+static uint32_t ufp_exit_mode[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Save port partner's enter mode message */
 void pd_ufp_set_enter_mode(int port, uint32_t *payload)
@@ -19,4 +20,10 @@ void pd_ufp_set_enter_mode(int port, uint32_t *payload)
 uint32_t pd_ufp_get_enter_mode(int port)
 {
 	return ufp_enter_mode[port];
+}
+
+/* Save port partner's exit mode message */
+void pd_ufp_set_exit_mode(int port, uint32_t *payload)
+{
+	ufp_exit_mode[port] = payload[1];
 }
