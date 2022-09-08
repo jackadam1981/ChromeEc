@@ -217,11 +217,16 @@ static int svdm_tbt_compat_response_enter_mode(int port, uint32_t *payload)
 	return 0;
 }
 
+static int svdm_tbt_compat_response_exit_mode(int port, uint32_t *payload)
+{
+	return 2; /* ACK */
+}
+
 const struct svdm_response svdm_rsp = {
 	.identity = &svdm_tbt_compat_response_identity,
 	.svids = &svdm_tbt_compat_response_svids,
 	.modes = &svdm_tbt_compat_response_modes,
 	.enter_mode = &svdm_tbt_compat_response_enter_mode,
 	.amode = NULL,
-	.exit_mode = NULL,
+	.exit_mode = &svdm_tbt_compat_response_exit_mode,
 };
