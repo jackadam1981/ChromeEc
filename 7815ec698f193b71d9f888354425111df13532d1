@@ -108,6 +108,30 @@
       },
       "revId": "7815ec698f193b71d9f888354425111df13532d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca2b7b6_4823e657",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2317,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-09T23:45:11Z",
+      "side": 1,
+      "message": "Can we hardcode cr50 to use uint64_t for ccd_caps_current and ccd_caps_default instead of basing it on the CAP_COUNT?\n\nAnd add a build assert if the cap count goes too high?\n\nAlso add a comment not to change the ccd_info_response in cr50 without changing ti50.",
+      "parentUuid": "5b2b4fa1_1d676d78",
+      "range": {
+        "startLine": 2315,
+        "startChar": 0,
+        "endLine": 2317,
+        "endChar": 60
+      },
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
