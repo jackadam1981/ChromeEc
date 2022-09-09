@@ -92,7 +92,8 @@ int tmp112_get_val_mk(int idx, int *temp_mk_ptr)
 	return EC_SUCCESS;
 }
 
-static void tmp112_poll(void)
+STATIC_IF_NOT(CONFIG_ZEPHYR)
+void tmp112_poll(void)
 {
 	int s;
 	int temp_reg = 0;
@@ -102,7 +103,9 @@ static void tmp112_poll(void)
 			temp_mk_local[s] = tmp112_reg_to_mk(temp_reg);
 	}
 }
+#ifndef CONFIG_ZEPHYR
 DECLARE_HOOK(HOOK_SECOND, tmp112_poll, HOOK_PRIO_TEMP_SENSOR);
+#endif /* CONFIG_ZEPHYR */
 
 void tmp112_init(void)
 {

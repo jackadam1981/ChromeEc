@@ -144,6 +144,8 @@ struct zephyr_temp_sensor {
 	/* Read sensor value in K into temp_ptr; return non-zero if error. */
 	int (*read)(const struct temp_sensor_t *sensor, int *temp_ptr);
 	const struct thermistor_info *thermistor;
+	const struct device *domain;
+	void (*poll)(void);
 #if ANY_INST_HAS_POWER_GOOD_PIN
 	const struct device *power_good_dev;
 	gpio_pin_t power_good_pin;
