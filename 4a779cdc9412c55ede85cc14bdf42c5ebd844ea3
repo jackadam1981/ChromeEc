@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5cf599_87aea229",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-09T16:49:18Z",
+      "side": 1,
+      "message": "nit: This block really only tests the `memcpy` so I don\u0027t think it\u0027s required, although it doesn\u0027t harm anything either. If keeping it we should use `TEST_ASSERT_ARRAY_EQ` rather than iterating through all members manually.",
+      "range": {
+        "startLine": 322,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 2
+      },
+      "revId": "4a779cdc9412c55ede85cc14bdf42c5ebd844ea3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
