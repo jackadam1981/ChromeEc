@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab30b16e_85998b21",
+        "filename": "zephyr/test/vboot_efs2/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-09T17:17:31Z",
+      "side": 1,
+      "message": "nit: Meh, should technically be it\u0027s own tiny CL, but I don\u0027t care.",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e8c8a1_035266f6",
+        "filename": "zephyr/test/vboot_efs2/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-09T17:17:31Z",
+      "side": 1,
+      "message": "Same nit as above.",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6f87158_a0dda156",
         "filename": "zephyr/test/vboot_efs2/src/main.c",
         "patchSetId": 5
