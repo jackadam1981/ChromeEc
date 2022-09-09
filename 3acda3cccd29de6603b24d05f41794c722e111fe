@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fe1fc8_021bd5a2",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-09T16:40:58Z",
+      "side": 1,
+      "message": "I started commenting that it might be nice to abstract out test data like this into another file (shared across tests) but I don\u0027t think it should hold up this CL so I put it in http://b/245941905 instead.",
+      "range": {
+        "startLine": 347,
+        "startChar": 4,
+        "endLine": 347,
+        "endChar": 69
+      },
+      "revId": "3acda3cccd29de6603b24d05f41794c722e111fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb547821_3bd81920",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-09T16:40:58Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure that you need to run these `TEST_ASSERT` here because you\u0027re really just testing the `memcpy`. It won\u0027t hurt anything though so maybe it\u0027s better to be safe just in case. \n\nalso nit: If we\u0027re going to keep the check then we should simplify it by using `TEST_ASSERT_ARRAY_EQ` instead:\n `TEST_ASSERT_ARRAY_EQ(fp_positive_match_salt, default_fake_fp_positive_match_salt, ARRAY_SIZE(default_fake_fp_positive_match_salt));`\n\nYou may need to include `compile_time_macros.h` if you see an error about `ARRAY_SIZE` not being defined.",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 30
+      },
+      "revId": "3acda3cccd29de6603b24d05f41794c722e111fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070796a3_de9adee2",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-09T16:40:58Z",
+      "side": 1,
+      "message": "Where is `user_id` defined? I would expect it to be in the scope of this function.",
+      "range": {
+        "startLine": 376,
+        "startChar": 8,
+        "endLine": 376,
+        "endChar": 15
+      },
+      "revId": "3acda3cccd29de6603b24d05f41794c722e111fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
