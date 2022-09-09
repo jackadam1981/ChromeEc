@@ -7,4 +7,4 @@ description: >
 
 compatible: "cros-ec,temp-sensor-tmp112"
 
-include: i2c-device.yaml
+include: [base.yaml, pm.yaml]
