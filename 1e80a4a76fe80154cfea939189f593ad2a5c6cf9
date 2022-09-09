@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d519f9_caa7ccef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-09-09T00:02:05Z",
+      "side": 1,
+      "message": "We see side effect with this delay, some setup has problem to enter USB4 mode, it only enter USB. Before we measure how long is needed on Rex, we shouldn\u0027t change this delay after reset. We can increase the read retry as temporary solution.  ",
+      "revId": "1e80a4a76fe80154cfea939189f593ad2a5c6cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
