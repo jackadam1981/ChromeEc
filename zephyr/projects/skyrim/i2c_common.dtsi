@@ -264,11 +264,13 @@
 	soc_pct2075: soc-pct2075@48 {
 		compatible = "nxp,pct2075";
 		reg = <0x48>;
+		power-domain = <&s5_domain>;
 	};
 
 	amb_pct2075: amb-pct2075@4f {
 		compatible = "nxp,pct2075";
 		reg = <0x4f>;
+		power-domain = <&s5_domain>;
 	};
 };
 

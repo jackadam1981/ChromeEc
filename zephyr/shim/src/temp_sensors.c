@@ -5,13 +5,18 @@
 
 #include "adc.h"
 #include "charger/chg_rt9490.h"
+#include "chipset.h"
 #include "driver/charger/rt9490.h"
+#include "hooks.h"
 #include "temp_sensor.h"
 #include "temp_sensor/pct2075.h"
 #include "temp_sensor/sb_tsi.h"
 #include "temp_sensor/temp_sensor.h"
 #include "temp_sensor/thermistor.h"
 #include "temp_sensor/tmp112.h"
+#include "power.h"
+#include <zephyr/pm/device.h>
+#include <zephyr/pm/device_runtime.h>
 
 #if DT_HAS_COMPAT_STATUS_OKAY(TEMP_SENSORS_COMPAT)
 
@@ -38,6 +43,11 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(TEMP_SENSORS_COMPAT) == 1,
 		DT_NODE_HAS_PROP(node_id, power_good_pin), \
 		(POWER_GOOD_ENTRY(node_id)),               \
 		(POWER_GOOD_ENTRY_NULL(node_id))) }
+
+#define POWER_DOMAIN(sensor_id)                                           \
+	COND_CODE_1(DT_NODE_HAS_PROP(sensor_id, power_domain),            \
+		    (DEVICE_DT_GET(DT_PHANDLE(sensor_id, power_domain))), \
+		    (NULL))
 
 #if ANY_INST_HAS_POWER_GOOD_PIN
 #define FILL_POWER_GOOD(node_id)                                       \
@@ -79,6 +89,8 @@ static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 		.read = &thermistor_get_temp,                  \
 		.thermistor = GET_THERMISTOR_INFO(             \
 			DT_PHANDLE(sensor_id, thermistor)),    \
+		.domain = POWER_DOMAIN(sensor_id),             \
+		.update_temperature = NULL,                    \
 		FILL_POWER_GOOD(named_id) })
 
 #define TEMP_THERMISTOR(named_id, sensor_id)                                 \
@@ -110,17 +122,21 @@ __maybe_unused static int pct2075_get_temp(const struct temp_sensor_t *sensor,
 			(DT_REG_ADDR(node_id) | I2C_FLAG_BIG_ENDIAN), \
 	},
 
-#define GET_ZEPHYR_TEMP_SENSOR_PCT2075(named_id)                        \
-	(&(const struct zephyr_temp_sensor){ .read = &pct2075_get_temp, \
-					     .thermistor = NULL,        \
-					     FILL_POWER_GOOD(named_id) })
+#define GET_ZEPHYR_TEMP_SENSOR_PCT2075(named_id, sensor_id)       \
+	(&(const struct zephyr_temp_sensor){                      \
+		.read = &pct2075_get_temp,                        \
+		.thermistor = NULL,                               \
+		.domain = POWER_DOMAIN(sensor_id),                \
+		.update_temperature = pct2075_update_temperature, \
+		FILL_POWER_GOOD(named_id) })
 
-#define TEMP_PCT2075(named_id, sensor_id)                                \
-	[TEMP_SENSOR_ID(named_id)] = {                                   \
-		.name = DT_NODE_FULL_NAME(sensor_id),                    \
-		.idx = PCT2075_SENSOR_ID(sensor_id),                     \
-		.type = TEMP_SENSOR_TYPE_BOARD,                          \
-		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_PCT2075(named_id), \
+#define TEMP_PCT2075(named_id, sensor_id)                                    \
+	[TEMP_SENSOR_ID(named_id)] = {                                       \
+		.name = DT_NODE_FULL_NAME(sensor_id),                        \
+		.idx = PCT2075_SENSOR_ID(sensor_id),                         \
+		.type = TEMP_SENSOR_TYPE_BOARD,                              \
+		.zephyr_info =                                               \
+			GET_ZEPHYR_TEMP_SENSOR_PCT2075(named_id, sensor_id), \
 	}
 
 const struct pct2075_sensor_t pct2075_sensors[PCT2075_COUNT] = {
@@ -144,17 +160,21 @@ __maybe_unused static int sb_tsi_get_temp(const struct temp_sensor_t *sensor,
 
 #endif /* SB_TSI_COMPAT */
 
-#define GET_ZEPHYR_TEMP_SENSOR_SB_TSI(named_id)                        \
-	(&(const struct zephyr_temp_sensor){ .read = &sb_tsi_get_temp, \
-					     .thermistor = NULL,       \
+#define GET_ZEPHYR_TEMP_SENSOR_SB_TSI(named_id, sensor_id)                    \
+	(&(const struct zephyr_temp_sensor){ .read = &sb_tsi_get_temp,        \
+					     .thermistor = NULL,              \
+					     .domain =                        \
+						     POWER_DOMAIN(sensor_id), \
+					     .update_temperature = NULL,      \
 					     FILL_POWER_GOOD(named_id) })
 
-#define TEMP_SB_TSI(named_id, sensor_id)                                \
-	[TEMP_SENSOR_ID(named_id)] = {                                  \
-		.name = DT_NODE_FULL_NAME(sensor_id),                   \
-		.idx = 0,                                               \
-		.type = TEMP_SENSOR_TYPE_CPU,                           \
-		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_SB_TSI(named_id), \
+#define TEMP_SB_TSI(named_id, sensor_id)                                    \
+	[TEMP_SENSOR_ID(named_id)] = {                                      \
+		.name = DT_NODE_FULL_NAME(sensor_id),                       \
+		.idx = 0,                                                   \
+		.type = TEMP_SENSOR_TYPE_CPU,                               \
+		.zephyr_info =                                              \
+			GET_ZEPHYR_TEMP_SENSOR_SB_TSI(named_id, sensor_id), \
 	}
 
 #if DT_HAS_COMPAT_STATUS_OKAY(TMP112_COMPAT)
@@ -174,17 +194,21 @@ __maybe_unused static int tmp112_get_temp(const struct temp_sensor_t *sensor,
 		.i2c_addr_flags = DT_REG_ADDR(node_id), \
 	},
 
-#define GET_ZEPHYR_TEMP_SENSOR_TMP112(named_id)                        \
-	(&(const struct zephyr_temp_sensor){ .read = &tmp112_get_temp, \
-					     .thermistor = NULL,       \
-					     FILL_POWER_GOOD(named_id) })
+#define GET_ZEPHYR_TEMP_SENSOR_TMP112(named_id, sensor_id)       \
+	(&(const struct zephyr_temp_sensor){                     \
+		.read = &tmp112_get_temp,                        \
+		.thermistor = NULL,                              \
+		.domain = POWER_DOMAIN(sensor_id),               \
+		.update_temperature = tmp112_update_temperature, \
+		FILL_POWER_GOOD(named_id) })
 
-#define TEMP_TMP112(named_id, sensor_id)                                \
-	[TEMP_SENSOR_ID(named_id)] = {                                  \
-		.name = DT_NODE_FULL_NAME(sensor_id),                   \
-		.idx = TMP112_SENSOR_ID(sensor_id),                     \
-		.type = TEMP_SENSOR_TYPE_BOARD,                         \
-		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_TMP112(named_id), \
+#define TEMP_TMP112(named_id, sensor_id)                                    \
+	[TEMP_SENSOR_ID(named_id)] = {                                      \
+		.name = DT_NODE_FULL_NAME(sensor_id),                       \
+		.idx = TMP112_SENSOR_ID(sensor_id),                         \
+		.type = TEMP_SENSOR_TYPE_BOARD,                             \
+		.zephyr_info =                                              \
+			GET_ZEPHYR_TEMP_SENSOR_TMP112(named_id, sensor_id), \
 	}
 
 const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
@@ -204,6 +228,8 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 		.read = &rt9490_get_thermistor_val,         \
 		.thermistor = GET_THERMISTOR_INFO(          \
 			DT_PHANDLE(sensor_id, thermistor)), \
+		.domain = POWER_DOMAIN(sensor_id),          \
+		.update_temperature = NULL,                 \
 		FILL_POWER_GOOD(named_id) })
 
 #define TEMP_RT9490(named_id, sensor_id) \
@@ -235,6 +261,29 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 const struct temp_sensor_t temp_sensors[] = { DT_FOREACH_CHILD_SEP(
 	TEMP_SENSORS_NODEID, TEMP_SENSOR_ENTRY, (, )) };
 
+static bool temp_sensor_check_domain(const struct temp_sensor_t *sensor)
+{
+	if (sensor->zephyr_info->domain) {
+		enum pm_device_state state = PM_DEVICE_STATE_OFF;
+
+		pm_device_state_get(sensor->zephyr_info->domain, &state);
+		return state == PM_DEVICE_STATE_ACTIVE;
+	}
+
+	return true;
+}
+static bool temp_sensor_check_power(const struct temp_sensor_t *sensor)
+{
+#if ANY_INST_HAS_POWER_GOOD_PIN
+	if (sensor->zephyr_info->power_good_dev) {
+		if (!gpio_pin_get(sensor->zephyr_info->power_good_dev,
+				  sensor->zephyr_info->power_good_pin))
+			return false;
+	}
+#endif
+	return temp_sensor_check_domain(sensor);
+}
+
 int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 {
 	const struct temp_sensor_t *sensor;
@@ -243,15 +292,26 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 		return EC_ERROR_INVAL;
 	sensor = temp_sensors + id;
 
-#if ANY_INST_HAS_POWER_GOOD_PIN
-	if (sensor->zephyr_info->power_good_dev) {
-		if (!gpio_pin_get(sensor->zephyr_info->power_good_dev,
-				  sensor->zephyr_info->power_good_pin))
-			return EC_ERROR_NOT_POWERED;
-	}
-#endif
+	if (!temp_sensor_check_power(sensor))
+		return EC_ERROR_NOT_POWERED;
 
 	return sensor->zephyr_info->read(sensor, temp_ptr);
 }
+
+void temp_sensors_update(void)
+{
+	for (int i = 0; i < TEMP_SENSOR_COUNT; i++) {
+		const struct temp_sensor_t *sensor = temp_sensors + i;
+
+		if (!sensor->zephyr_info->update_temperature)
+			continue;
+
+		if (!temp_sensor_check_power(sensor))
+			continue;
+
+		sensor->zephyr_info->update_temperature(sensor->idx);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, temp_sensors_update, HOOK_PRIO_TEMP_SENSOR);
 
 #endif /* DT_HAS_COMPAT_STATUS_OKAY(TEMP_SENSORS_COMPAT) */
