@@ -718,6 +718,15 @@ void chipset_task(void *u)
 
 		/* Handle state changes */
 		if (new_state != state) {
+#ifdef CONFIG_ZEPHYR
+			/* Update power domain */
+			if (state == POWER_G3) {
+				pm_device_runtime_get(DEVICE_DT_GET(S5_DOMAIN));
+			} else if (new_state == POWER_G3) {
+				pm_device_runtime_put(DEVICE_DT_GET(S5_DOMAIN));
+			}
+#endif /* CONFIG_ZEPHYR */
+
 			power_set_state(new_state);
 			power_set_active_wake_mask();
 
