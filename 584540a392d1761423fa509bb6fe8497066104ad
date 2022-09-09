@@ -33,6 +33,24 @@
       "message": "Add:\n\n```\n/**\n * @brief Set the current image copy.\n */\nvoid system_set_shrspi_image_copy(enum ec_image new_image_copy);\n```",
       "revId": "584540a392d1761423fa509bb6fe8497066104ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef60baa_00697131",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/system_fake.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-09-09T19:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d5ee146_e8e66c07",
+      "revId": "584540a392d1761423fa509bb6fe8497066104ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
