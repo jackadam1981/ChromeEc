@@ -16,6 +16,24 @@
       "message": "Could you do a pass through your other CL? I didn\u0027t go through all the files that changed.  Like in below has duplicate instances.\nhttps://crrev.com/c/3885035/2/zephyr/shim/src/rtc.c",
       "revId": "7f10b365e06b544a95100d76d757315175cb409d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800e7401_62e15bd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-09T17:12:14Z",
+      "side": 1,
+      "message": "Sure! Apologies, as soon as I saw you\u0027d done a few of them further down the files list I just assumed you got all of them.\n\nHere they all are:\n\n```\nzephyr/app/ec/ec_app_main.c              \nzephyr/shim/chip/it8xxx2/clock.c         \nzephyr/shim/chip/mchp/clock.c            \nzephyr/shim/chip/npcx/clock.c            \nzephyr/shim/include/zephyr_hooks_shim.h  \nzephyr/shim/src/console_buffer.c         \nzephyr/shim/src/espi.c                   \nzephyr/shim/src/hooks.c                  \nzephyr/shim/src/hwtimer.c                \nzephyr/shim/src/rtc.c                    \nzephyr/test/drivers/default/src/usb_mux.c\n```\n\nTo doubly confirm I invoked:\n\n `cat files-to-change.text | xargs -n 1 -I {} bash -c \u0027cat {} | grep \u0027kernel\\.h\u0027 | wc -l; echo {}` to find files and their counts.\n\nWhere files-to-change.text were all the files changed by the prior CL to unblock downstreaming.",
+      "parentUuid": "a3d9be83_287fa664",
+      "revId": "7f10b365e06b544a95100d76d757315175cb409d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
