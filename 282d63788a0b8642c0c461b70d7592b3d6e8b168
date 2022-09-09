@@ -123,6 +123,24 @@
       "parentUuid": "e3236c6c_5e64264d",
       "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99df857_08ba0039",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-09-09T21:07:27Z",
+      "side": 1,
+      "message": "This should be implemented now. Let me know if you have additional comments.\n\nFYI, hopefully CrOS IDE will take care of all these steps under the hood and people will be able to use code completion without ever running these commands manually.\n\nIt\u0027s still good to document the commands for future reference.",
+      "parentUuid": "f43443ed_400e4e44",
+      "revId": "282d63788a0b8642c0c461b70d7592b3d6e8b168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
