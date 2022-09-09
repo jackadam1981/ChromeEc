@@ -33,6 +33,24 @@
       "message": "Please split the refactor of usb_port into a separate CL that is a parent to this CL.  That change should be mergeable independent of the rest of the changes.",
       "revId": "806ddedb8c1f8735c49c96056660932ec70821fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "941f1609_f243f561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-09T16:12:47Z",
+      "side": 1,
+      "message": "It will be easier for me to restore this patchset to the state where it had CR+2 (Patchset V9) and do usb_port refactor on top of that. Are you okay with doing it in that order?\n\nIn regards to usb_port refactor, it touches all boards, so it will generate another 30+ CLs. Is that okay too?",
+      "parentUuid": "bc007407_81812ce9",
+      "revId": "806ddedb8c1f8735c49c96056660932ec70821fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
