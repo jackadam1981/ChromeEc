@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c428e9cb_e0b96f85",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-09T23:54:38Z",
+      "side": 1,
+      "message": "I don\u0027t think we should: gsctool still needs to support the current layout in perpetuity. If we need to change Cr50 layout, then it would be a time to add the header and set the version to the next high number.",
+      "parentUuid": "cfdb2c94_e3a8606b",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 0
+      },
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f7665b7_9e5a832c",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-09T23:39:34Z",
       "side": 1,
       "message": "The ti50 response and cr50 response aren\u0027t guaranteed to have the same number of caps. I think we need a ti50_info_response and cr50_info_response.",
+      "range": {
+        "startLine": 2221,
+        "startChar": 8,
+        "endLine": 2221,
+        "endChar": 25
+      },
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7f6384_c3ea16fd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2221,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-09T23:54:38Z",
+      "side": 1,
+      "message": "I left this to the time when the response structure sizes would change. This would involve adding more elements to the array of options, and then the new structure could be defined, etc.\n\nThe bottom line is that we can\u0027t change the ccd info layout without changing gsctool.",
+      "parentUuid": "9f7665b7_9e5a832c",
       "range": {
         "startLine": 2221,
         "startChar": 8,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36dbdb27_81930822",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-09T23:54:38Z",
+      "side": 1,
+      "message": "sure, will add.",
+      "parentUuid": "e4858456_474bb57a",
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f3b688b_c44452ca",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2022-09-09T23:39:34Z",
       "side": 1,
       "message": "This seems fragile. It\u0027ll break if we ever change the capability output.\n\nMaybe it\u0027s the version_to_ccd mapping. Can we have separate tables for ti50 and cr50?\n\nI think that they already have a ti50 ccd info version 0. I doubt they started from 1. Was ti50 version 0 the same as cr50?",
+      "range": {
+        "startLine": 2269,
+        "startChar": 11,
+        "endLine": 2269,
+        "endChar": 45
+      },
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d00b0c1_e37b6cc7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2269,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-09T23:54:38Z",
+      "side": 1,
+      "message": "Ti50 CCD info structure doesn\u0027t really matter, as it has not been supported so far by gsctool, and earlier Ti50 versions would not include the header, so gsctool won\u0027t be able to tell.\n\nBut I agree that this check needs to be more rigid, I\u0027ll define version 0 size explicitly.",
+      "parentUuid": "9f3b688b_c44452ca",
       "range": {
         "startLine": 2269,
         "startChar": 11,
@@ -123,6 +213,30 @@
       "writtenOn": "2022-09-09T23:45:11Z",
       "side": 1,
       "message": "Can we hardcode cr50 to use uint64_t for ccd_caps_current and ccd_caps_default instead of basing it on the CAP_COUNT?\n\nAnd add a build assert if the cap count goes too high?\n\nAlso add a comment not to change the ccd_info_response in cr50 without changing ti50.",
+      "parentUuid": "5b2b4fa1_1d676d78",
+      "range": {
+        "startLine": 2315,
+        "startChar": 0,
+        "endLine": 2317,
+        "endChar": 60
+      },
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe37bff0_d014ce85",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2317,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-09T23:54:38Z",
+      "side": 1,
+      "message": "what needs to change here? i is iterating through 0..caps_count and caps count is already included in the array element?",
       "parentUuid": "5b2b4fa1_1d676d78",
       "range": {
         "startLine": 2315,
