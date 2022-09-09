@@ -26,6 +26,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include <zephyr/pm/device_runtime.h>
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
@@ -36,6 +38,8 @@
  * transition, just jump to the next state.
  */
 #define DEFAULT_TIMEOUT SECOND
+
+#define S5_DOMAIN DT_NODELABEL(s5_domain)
 
 /* Timeout for dropping back from S5 to G3 in seconds */
 #ifdef CONFIG_CMD_S5_TIMEOUT
@@ -718,6 +722,15 @@ void chipset_task(void *u)
 
 		/* Handle state changes */
 		if (new_state != state) {
+#ifdef CONFIG_ZEPHYR
+			/* Update power domain */
+			if (state == POWER_G3) {
+				pm_device_runtime_get(DEVICE_DT_GET(S5_DOMAIN));
+			} else if (new_state == POWER_G3) {
+				pm_device_runtime_put(DEVICE_DT_GET(S5_DOMAIN));
+			}
+#endif /* CONFIG_ZEPHYR */
+
 			power_set_state(new_state);
 			power_set_active_wake_mask();
 
