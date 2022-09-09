@@ -34,6 +34,69 @@
       "parentUuid": "17abd61c_53160d10",
       "revId": "1e7984a625949ae2f03e90979bce5f7950431fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb86fd0_f15def8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-09-09T20:09:32Z",
+      "side": 1,
+      "message": "Logically, makes sense, I would just change `cros_prefix` to `remote`.",
+      "revId": "1e7984a625949ae2f03e90979bce5f7950431fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ebfbe54_e6bf9a54",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-09-09T20:09:32Z",
+      "side": 1,
+      "message": "nit: change to `remote`",
+      "range": {
+        "startLine": 192,
+        "startChar": 11,
+        "endLine": 192,
+        "endChar": 22
+      },
+      "revId": "1e7984a625949ae2f03e90979bce5f7950431fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eebf34f_1b8f6b8a",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-09-09T20:09:32Z",
+      "side": 1,
+      "message": "`remote`",
+      "range": {
+        "startLine": 194,
+        "startChar": 29,
+        "endLine": 194,
+        "endChar": 49
+      },
+      "revId": "1e7984a625949ae2f03e90979bce5f7950431fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
