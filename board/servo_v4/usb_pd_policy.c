@@ -38,6 +38,7 @@
 #define VBUS_UNCHANGED(curr, pend, new) (curr == new && pend == new)
 
 /* Macros to config the PD role */
+<<<<<<< HEAD   (d771c1 c2d2: increase the usart1_to_usb size)
 #define CONFIG_SET_CLEAR(c, set, clear) ((c | (set)) & ~(clear))
 #define CONFIG_SRC(c) CONFIG_SET_CLEAR(c, \
 				CC_DISABLE_DTS | CC_ALLOW_SRC, \
@@ -64,6 +65,12 @@
 #define CONFIG_DRPDTS(c) CONFIG_SET_CLEAR(c, \
 				CC_ALLOW_SRC | CC_ENABLE_DRP, \
 				CC_DISABLE_DTS | CC_SNK_WITH_PD)
+#define CONFIG_DTSOFF(c) CONF_SET_CLEAR(c, \
+				CC_DISABLE_DTS, \
+				0)
+#define CONFIG_DTSON(c) CONF_SET_CLEAR(c, \
+				0,
+				CC_DISABLE_DTS)
 
 /* Macros to apply Rd/Rp to CC lines */
 #define DUT_ACTIVE_CC_SET(r, flags) \
@@ -1132,6 +1139,10 @@ static int command_cc(int argc, char **argv)
 			cc_config_new = CONFIG_PDSNKDTS(cc_config_new);
 		else if (!strcasecmp(argv[1], "drpdts"))
 			cc_config_new = CONFIG_DRPDTS(cc_config_new);
+		else if (!strcasecmp(argv[1], "dtsoff"))
+			cc_config_new = CONFIG_DTSOFF(cc_config_new);
+		else if (!strcasecmp(argv[1], "dtson"))
+			cc_config_new = CONFIG_DTSON(cc_config_new);
 		else
 			return EC_ERROR_PARAM2;
 	}
@@ -1150,7 +1161,7 @@ static int command_cc(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(cc, command_cc,
 			"[off|on|src|snk|pdsnk|drp|srcdts|snkdts|pdsnkdts|"
-			"drpdts] [cc1|cc2]",
+			"drpdts|dtsoff|dtson] [cc1|cc2]",
 			"Servo_v4 DTS and CHG mode");
 
 static void fake_disconnect_end(void)
