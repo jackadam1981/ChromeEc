@@ -340,8 +340,37 @@ int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state,
 		       bool *ack_required);
 int tcpci_tcpm_mux_get(const struct usb_mux *me, mux_state_t *mux_state);
 int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *me);
+
+/**
+ * Retrieve the (possibly-cached) chip info for a TCPC.
+ *
+ * Chip info is cached internally, so this will run quickly if cached data is
+ * available and is allowed to be returned.
+ *
+ * @param port USB port ID to get info for.
+ * @param live If nonzero, ignore any cached data and force read from the chip.
+ * @param chip_info Output chip info.
+ * @return EC_SUCCESS or an error.
+ */
 int tcpci_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 *chip_info);
+
+/**
+ * Get the chip info for the given port, providing access to the cached data.
+ *
+ * This works like tcpci_get_chip_info, but grants the caller access to the
+ * cached value, allowing the caller to modify the cache. In most cases
+ * tcpci_get_chip_info should be used instead.
+ *
+ * @param info On success, points to the cached chip info.
+ * @param read_cached Output, set to false if any communication was done with
+ *                    the chip; true if a cached value was already present.
+ *                    This is always false if live is true.
+ */
+int tcpci_get_chip_info_cached(int port, int live,
+			       struct ec_response_pd_chip_info_v1 **info,
+			       bool *read_cached);
+
 int tcpci_get_vbus_voltage(int port, int *vbus);
 bool tcpci_tcpm_get_snk_ctrl(int port);
 int tcpci_tcpm_set_snk_ctrl(int port, int enable);
