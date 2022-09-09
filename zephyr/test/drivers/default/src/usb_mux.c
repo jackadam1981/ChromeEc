@@ -24,10 +24,14 @@
 #include "tcpm/tcpci.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
+#include "usbc/usb_muxes.h"
 
 #include "usb_mux.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
+
+#define VIRTUAL_MUX_C1_NODE DT_NODELABEL(virtual_mux_1)
+#define VIRTUAL_MUX_C1_STRUCT USB_MUX_STRUCT_NAME(VIRTUAL_MUX_C1_NODE)
 
 /** Copy of original usb_muxes[USB_PORT_C1] */
 struct usb_mux_chain usb_mux_c1;
@@ -675,14 +679,14 @@ ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 	mux_state_t exp_mode, mode, virt_mode;
 
 	/* Get current state of virtual usb mux and set mock */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, USBC_PORT_C1,
+	VIRTUAL_MUX_C1_STRUCT.driver->get(&VIRTUAL_MUX_C1_STRUCT, USBC_PORT_C1,
 					  &virt_mode);
 
 	/* Test no hpd level and no irq */
 	exp_mode = virt_mode;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if virtual usb mux mode is updated correctly */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, USBC_PORT_C1,
+	VIRTUAL_MUX_C1_STRUCT.driver->get(&VIRTUAL_MUX_C1_STRUCT, USBC_PORT_C1,
 					  &mode);
 	zassert_equal(exp_mode, mode, "virtual mux mode is 0x%x (!= 0x%x)",
 		      mode, exp_mode);
@@ -695,7 +699,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 	exp_mode = virt_mode | USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if virtual usb mux mode is updated correctly */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, USBC_PORT_C1,
+	VIRTUAL_MUX_C1_STRUCT.driver->get(&VIRTUAL_MUX_C1_STRUCT, USBC_PORT_C1,
 					  &mode);
 	zassert_equal(exp_mode, mode, "virtual mux mode is 0x%x (!= 0x%x)",
 		      mode, exp_mode);
@@ -708,7 +712,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 	exp_mode = virt_mode | USB_PD_MUX_HPD_IRQ;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if virtual usb mux mode is updated correctly */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, USBC_PORT_C1,
+	VIRTUAL_MUX_C1_STRUCT.driver->get(&VIRTUAL_MUX_C1_STRUCT, USBC_PORT_C1,
 					  &mode);
 	zassert_equal(exp_mode, mode, "virtual mux mode is 0x%x (!= 0x%x)",
 		      mode, exp_mode);
@@ -721,7 +725,7 @@ ZTEST(usb_uninit_mux, test_usb_mux_hpd_update)
 	exp_mode = virt_mode | USB_PD_MUX_HPD_LVL;
 	usb_mux_hpd_update(USBC_PORT_C1, exp_mode);
 	/* Check if virtual usb mux mode is updated correctly */
-	usbc1_virtual_usb_mux.driver->get(&usbc1_virtual_usb_mux, USBC_PORT_C1,
+	VIRTUAL_MUX_C1_STRUCT.driver->get(&VIRTUAL_MUX_C1_STRUCT, USBC_PORT_C1,
 					  &mode);
 	zassert_equal(exp_mode, mode, "virtual mux mode is 0x%x (!= 0x%x)",
 		      mode, exp_mode);

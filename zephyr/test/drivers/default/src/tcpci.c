@@ -16,11 +16,14 @@
 #include "i2c.h"
 #include "test/drivers/stubs.h"
 #include "test/drivers/tcpci_test_common.h"
+#include "usbc/usb_muxes.h"
 
 #include "tcpm/tcpci.h"
 #include "test/drivers/test_state.h"
 
 #define TCPCI_EMUL_NODE DT_NODELABEL(tcpci_emul)
+#define TCPCI_MUX_NODE DT_NODELABEL(tcpci_mux_0)
+#define TCPCI_MUX_STRUCT USB_MUX_STRUCT_NAME(TCPCI_MUX_NODE)
 
 /** Test TCPCI init and vbus level */
 ZTEST(tcpci, test_generic_tcpci_init)
@@ -288,13 +291,17 @@ ZTEST(tcpci, test_generic_tcpci_debug_accessory)
 /* Setup TCPCI usb mux to behave as it is used only for usb mux */
 static void set_usb_mux_not_tcpc(void)
 {
-	usbc0_mux0.flags = USB_MUX_FLAG_NOT_TCPC;
+	TCPCI_MUX_STRUCT.flags = USB_MUX_FLAG_NOT_TCPC;
+	TCPCI_MUX_STRUCT.i2c_port = I2C_PORT_USB_C0;
+	TCPCI_MUX_STRUCT.i2c_addr_flags = DT_REG_ADDR(TCPCI_EMUL_NODE);
 }
 
 /* Setup TCPCI usb mux to behave as it is used for usb mux and TCPC */
 static void set_usb_mux_tcpc(void)
 {
-	usbc0_mux0.flags = 0;
+	TCPCI_MUX_STRUCT.flags = 0;
+	TCPCI_MUX_STRUCT.i2c_port = 0;
+	TCPCI_MUX_STRUCT.i2c_addr_flags = 0;
 }
 
 /** Test TCPCI mux init */

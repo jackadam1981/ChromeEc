@@ -60,6 +60,10 @@
 			reg = <0>;
 			chg = <&isl923x_emul>;
 			tcpc = <&tcpci_emul>;
+			usb-mux-chain-0 {
+				compatible = "cros-ec,usb-mux-chain";
+				usb-muxes = <&tcpci_mux_0>;
+			};
 		};
 	};
 	i2c2: i2c@500 {
@@ -76,6 +80,9 @@
 			reg = <0x82>;
 			label = "TCPCI_EMUL";
 			alert_gpio = <&usb_c0_tcpc_int_odl>;
+			tcpci_mux_0: tcpci-mux-0 {
+				compatible = "cros-ec,usbc-mux-tcpci";
+			};
 		};
 	};
 	adc0: adc {

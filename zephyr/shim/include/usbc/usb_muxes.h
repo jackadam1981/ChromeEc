@@ -19,12 +19,21 @@
 #include "usbc/utils.h"
 #include "usbc/virtual_usb_mux.h"
 
+#ifdef CONFIG_ZTEST
+/** @brief Extend USB_MUX_DRIVERS by test only drivers (e.g. emulators) */
+#define USB_MUX_TEST_DRIVERS \
+	(BB_RETIMER_EMUL_USB_MUX_COMPAT, USB_MUX_CONFIG_BB_RETIMER),
+#else
+#define USB_MUX_TEST_DRIVERS
+#endif /* CONFIG_ZTEST */
+
 /**
  * @brief List of USB mux drivers compatibles and their configurations. Each
  *        element of list has to have (compatible, config) format.
  */
 #define USB_MUX_DRIVERS                                                 \
-	(ANX7447_USB_MUX_COMPAT, USB_MUX_CONFIG_ANX7447),               \
+	USB_MUX_TEST_DRIVERS /* Test only drivers */                    \
+		(ANX7447_USB_MUX_COMPAT, USB_MUX_CONFIG_ANX7447),       \
 		(ANX7483_USB_MUX_COMPAT, USB_MUX_CONFIG_ANX7483),       \
 		(BB_RETIMER_USB_MUX_COMPAT, USB_MUX_CONFIG_BB_RETIMER), \
 		(IT5205_USB_MUX_COMPAT, USB_MUX_CONFIG_IT5205),         \
