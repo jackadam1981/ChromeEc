@@ -23,12 +23,12 @@
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
-#define GPIO_USB_C1_LS_EN_PATH DT_PATH(named_gpios, usb_c1_ls_en)
+#define BB_RETIMER_NODE DT_NODELABEL(usb_c1_bb_retimer_emul)
+#define GPIO_USB_C1_LS_EN_PATH DT_PHANDLE(BB_RETIMER_NODE, ls_en_pin)
 #define GPIO_USB_C1_LS_EN_PORT DT_GPIO_PIN(GPIO_USB_C1_LS_EN_PATH, gpios)
-#define GPIO_USB_C1_RT_RST_ODL_PATH DT_PATH(named_gpios, usb_c1_rt_rst_odl)
+#define GPIO_USB_C1_RT_RST_ODL_PATH DT_PHANDLE(BB_RETIMER_NODE, reset_pin)
 #define GPIO_USB_C1_RT_RST_ODL_PORT \
 	DT_GPIO_PIN(GPIO_USB_C1_RT_RST_ODL_PATH, gpios)
-#define BB_RETIMER_NODE DT_NODELABEL(usb_c1_bb_retimer_emul)
 
 /** Test is retimer fw update capable function. */
 ZTEST_USER(bb_retimer, test_bb_is_fw_update_capable)

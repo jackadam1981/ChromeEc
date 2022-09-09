@@ -9,6 +9,7 @@
 #include "driver/retimer/bb_retimer_public.h"
 
 #define BB_RETIMER_USB_MUX_COMPAT intel_jhl8040r
+#define BB_RETIMER_EMUL_USB_MUX_COMPAT cros_bb_retimer_emul
 
 #define USB_MUX_CONFIG_BB_RETIMER(mux_id)                      \
 	{                                                      \
@@ -94,7 +95,7 @@
 
 /**
  * @brief Call USB_MUX_ONLY_COMPAT to perform @p op only if @p idx mux on
- *        @p chain_id is BB retimer
+ *        @p chain_id is BB retimer (including BB retimer emulator)
  *
  * @param chain_id Chain DTS node ID
  * @param unused2 This argument is expected by DT_FOREACH_PROP_ELEM_VARGS
@@ -104,7 +105,9 @@
  */
 #define USB_MUX_ONLY_BB(chain_id, unused2, idx, op, ...)                      \
 	USB_MUX_ONLY_COMPAT(chain_id, USB_MUX_GET_CHAIN_N(chain_id, idx), op, \
-			    BB_RETIMER_USB_MUX_COMPAT, __VA_ARGS__)
+			    BB_RETIMER_USB_MUX_COMPAT, __VA_ARGS__)           \
+	USB_MUX_ONLY_COMPAT(chain_id, USB_MUX_GET_CHAIN_N(chain_id, idx), op, \
+			    BB_RETIMER_EMUL_USB_MUX_COMPAT, __VA_ARGS__)
 
 /**
  * @brief Call @p op for every BB retimer mux in @p chain_id

@@ -6,7 +6,7 @@ description: Zephyr BB retimer Emulator
 
 compatible: "cros,bb-retimer-emul"
 
-include: base.yaml
+include: ["intel,jhl8040r.yaml"]
 
 properties:
     vendor:
