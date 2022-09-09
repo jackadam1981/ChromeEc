@@ -14,6 +14,7 @@
 #include "util.h"
 
 #ifdef CONFIG_ZEPHYR
+#include <zephyr/pm/device.h>
 #include "temp_sensor/temp_sensor.h"
 #endif
 
@@ -80,10 +81,15 @@ static void pct2075_poll(void)
 {
 	int s;
 	int temp_reg = 0;
+	enum pm_device_state state = PM_DEVICE_STATE_OFF;
 
-	for (s = 0; s < PCT2075_COUNT; s++) {
-		if (get_reg_temp(s, &temp_reg) == EC_SUCCESS)
-			temp_mk_local[s] = pct2075_reg_to_mk(temp_reg);
+	/* Power domain should be handled by the sensor driver in Zephyr */
+	pm_device_state_get(DEVICE_DT_GET(DT_NODELABEL(s5_domain)), &state);
+	if (state == PM_DEVICE_STATE_ACTIVE) {
+		for (s = 0; s < PCT2075_COUNT; s++) {
+			if (get_reg_temp(s, &temp_reg) == EC_SUCCESS)
+				temp_mk_local[s] = pct2075_reg_to_mk(temp_reg);
+		}
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, pct2075_poll, HOOK_PRIO_TEMP_SENSOR);

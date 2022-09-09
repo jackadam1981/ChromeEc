@@ -26,6 +26,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include <zephyr/pm/device_runtime.h>
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
@@ -718,6 +720,15 @@ void chipset_task(void *u)
 
 		/* Handle state changes */
 		if (new_state != state) {
+			/* Update power domain */
+			if (state == POWER_G3) {
+				pm_device_runtime_get(
+					DEVICE_DT_GET(DT_NODELABEL(s5_domain)));
+			} else if (new_state == POWER_G3) {
+				pm_device_runtime_put(
+					DEVICE_DT_GET(DT_NODELABEL(s5_domain)));
+			}
+
 			power_set_state(new_state);
 			power_set_active_wake_mask();
 
