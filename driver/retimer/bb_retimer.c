@@ -146,10 +146,10 @@ __overridable int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		msleep(1);
 		gpio_set_level(control->retimer_rst_gpio, 1);
 		/*
-		 * Allow 50 ms time for the retimer to power up lc_domain
+		 * Allow 1 ms time for the retimer to power up lc_domain
 		 * which powers I2C controller within retimer
 		 */
-		msleep(50);
+		msleep(1);
 	} else {
 		gpio_set_level(control->retimer_rst_gpio, 0);
 		msleep(1);
@@ -597,8 +597,16 @@ static int retimer_init(const struct usb_mux *me)
 		return rv;
 
 	rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
+	/*
+	 * After reset, i2c controller may not be ready, if this fails,
+	 * retry one more time.
+	 * TODO: revisit the delay time after retimer reset.
+	 */
+	if (rv != EC_SUCCESS)
+		rv = bb_retimer_read(me, BB_RETIMER_REG_VENDOR_ID, &data);
 	if (rv != EC_SUCCESS)
 		return rv;
+	CPRINTS("C%d: retimer power enable success", me->usb_port);
 #ifdef CONFIG_USBC_RETIMER_INTEL_HB
 	if (data != BB_RETIMER_DEVICE_ID)
 		return EC_ERROR_INVAL;
