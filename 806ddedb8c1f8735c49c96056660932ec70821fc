@@ -16,6 +16,23 @@
       "message": "In this version of the CL, I removed `usb_port` field from `struct usb_mux`. This field was redundant as the port number is defined by chain. API of `struct usb_mux_driver` now has additional argument `int port` (similar to e.g. `struct ppc_drv`, `struct tcpm_drv`).",
       "revId": "806ddedb8c1f8735c49c96056660932ec70821fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc007407_81812ce9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-09T15:28:09Z",
+      "side": 1,
+      "message": "Please split the refactor of usb_port into a separate CL that is a parent to this CL.  That change should be mergeable independent of the rest of the changes.",
+      "revId": "806ddedb8c1f8735c49c96056660932ec70821fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
