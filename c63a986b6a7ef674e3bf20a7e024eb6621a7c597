@@ -419,6 +419,24 @@
       "parentUuid": "624b151c_da2af864",
       "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b34e71d3_69724877",
+        "filename": "zephyr/projects/rex/rex0_gpio.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-09T00:52:11Z",
+      "side": 1,
+      "message": "I think it\u0027s best to not edit the .csv file. I think the .csv file should be updated only after we run the arbitrage tool.",
+      "parentUuid": "65b8261b_12d612d5",
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
