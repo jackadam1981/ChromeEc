@@ -33,6 +33,24 @@
       "message": "instead of _other_error, maybe __err_crc?",
       "revId": "3f616323b09649517d98d69afb1d4a9c9242bd10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7f0e21_64cbc6ed",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-09T17:11:43Z",
+      "side": 1,
+      "message": "Whatever. The cases in verify_and_jump are bad payload, success, and everything else.",
+      "parentUuid": "fe592121_496042bb",
+      "revId": "3f616323b09649517d98d69afb1d4a9c9242bd10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b903cba2_3bbba9bf",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-09T17:11:43Z",
+      "side": 1,
+      "message": "I thought clang-format would do that, but we have SortIncludes: false set.",
+      "parentUuid": "c6f87158_a0dda156",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "174d2b95_f92561be",
@@ -52,6 +70,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca923060_b61ceec6",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-09T17:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebdbeeb2_cdbb7b1d",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4352e4cd_ed06d217",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-09T17:11:43Z",
+      "side": 1,
+      "message": "Not \"echoing\" but replying with a cr50 response. I added comments.",
+      "parentUuid": "174d2b95_f92561be",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8c7e450_236c14cf",
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "947b94d1_46859e79",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-09T17:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c7e450_236c14cf",
+      "range": {
+        "startLine": 174,
+        "startChar": 49,
+        "endLine": 174,
+        "endChar": 53
+      },
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ae1724f_0e8aa1b8",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-09-02T16:17:00Z",
       "side": 1,
       "message": "Why was this needed for this test? Was it always needed prior but the tests didn\u0027t show that?",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f6f65e_a5183c68",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-09T17:11:43Z",
+      "side": 1,
+      "message": "Needed to initialize the jump data in system.c. The other tests all failed before they got to that point, so they didn\u0027t segfault.",
+      "parentUuid": "6ae1724f_0e8aa1b8",
       "revId": "0230b27388350ab1e13774320428146f623b2f9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
