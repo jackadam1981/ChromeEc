@@ -151,6 +151,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5f800ad_2fc5f8f2",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-09-09T11:40:17Z",
+      "side": 1,
+      "message": "`\n\t\t * list of GPIO interrupts that have to\n\t\t * be enabled at initial stage\n\t\t */\n\t\tsensor-irqs \u003d \u003c\u0026int_imu \u0026int_als_rgb \u0026int_accel\u003e;`\n\t\t\nThis interrupts seem to be enabled before motion sense task starts, by above config, is the pull up required even then Scott",
+      "parentUuid": "5536cbde_bac75fd3",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc31ef8c_a6676d9d",
         "filename": "zephyr/projects/rex/generated.dts",
         "patchSetId": 1
@@ -435,6 +459,24 @@
       "side": 1,
       "message": "I think it\u0027s best to not edit the .csv file. I think the .csv file should be updated only after we run the arbitrage tool.",
       "parentUuid": "65b8261b_12d612d5",
+      "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4135882b_afb2e345",
+        "filename": "zephyr/projects/rex/rex0_gpio.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-09-09T11:40:17Z",
+      "side": 1,
+      "message": "Oh ok, will keep that in mind",
+      "parentUuid": "b34e71d3_69724877",
       "revId": "c63a986b6a7ef674e3bf20a7e024eb6621a7c597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
