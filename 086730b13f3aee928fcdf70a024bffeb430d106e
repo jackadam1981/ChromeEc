@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07dad56e_5bed27a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-09-09T20:39:51Z",
+      "side": 1,
+      "message": "Submit hook had failed with this error:\n\n```\n[FAILED] chromiumos/platform/ec: migrated_files\n    Hook script \"util/migrated_files.sh ${PRESUBMIT_FILES}\" failed with code 1:\n      WARNING: common/test_util.c is not used in Zephyr EC. Do not edit this unless you also find the zephyr copy and fix the same code there.\n```\n\nI looked at [zephyr/shim/src/test_util.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/test_util.c) and didn\u0027t find a corresponding function.\n\nLeaving this comment unresolved to confirm this change won\u0027t affect Zephyr.",
+      "revId": "086730b13f3aee928fcdf70a024bffeb430d106e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
