@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5639ea_0b98584a",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-09T16:09:51Z",
+      "side": 1,
+      "message": "See my other comment - make this \"child-binding\".",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7694bffa_be049aa3",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-09T16:09:51Z",
+      "side": 1,
+      "message": "Why is the power-good-pin moved from the common sensor?  Is the thinking that it belongs with the hardware driver?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd89ed5_10872357",
+        "filename": "zephyr/projects/corsola/adc_magikarp.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-09T16:09:51Z",
+      "side": 1,
+      "message": "It looks like all children of named-temp-sensors now only use \"cros-ec,temp-sensor\".  I think you should move the compatible property up one level, leaving the sensor and other properties as children properties.\n\n```\ntemp-sensors {\n    compatible \u003d \"cros-ec,temp-sensor\";\n    ambient {\n        enum-name \u003d \"TEMP_SENSOR_AMB\";\n        sensor \u003d \u003c\u0026temp_ambient\u003e;\n    };\n    cpu {\n        enum-name \u003d \"TEMP_SENSOR_CPU\";\n        sensor \u003d \u003c\u0026temp_cpu\u003e;\n    }\n};        \n```\n\nThis will allow the temp sensor shim to key off of the compatible name like a typical Zephyr driver instead of using the \"named_temp_sensors\" node name.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd57fd6_2b11aa54",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-09T16:09:51Z",
+      "side": 1,
+      "message": "I think by using child-binding, you can go back to using DT_FOREACH_CHILD.",
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ce5ed4_7dcde36d",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-09T16:09:51Z",
+      "side": 1,
+      "message": "Is this used?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
