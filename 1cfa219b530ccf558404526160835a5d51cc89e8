@@ -34,6 +34,24 @@
       "parentUuid": "8e7b510f_0f9e038a",
       "revId": "1cfa219b530ccf558404526160835a5d51cc89e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37071347_d2650ceb",
+        "filename": "zephyr/projects/nissa/xivu/led_policy.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-10T14:55:51Z",
+      "side": 1,
+      "message": "No, in fact the names are simply #defines for the numbers anyway, and if you use the numbers, you do not need the dt-bindings/battery.h file.",
+      "parentUuid": "7bfe8a46_d8f643a4",
+      "revId": "1cfa219b530ccf558404526160835a5d51cc89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
