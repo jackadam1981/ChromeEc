@@ -33,6 +33,23 @@
       "message": "Thanks for the quick CR+2.  Just FYI I didn\u0027t get to verifying on servo_v4p1 today, I\u0027ll V+1 and CQ+1 together when that\u0027s done.",
       "revId": "df36f3c82a1a979d5a27ce7d4c7a1d2605735fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c24fd3e_0599b6a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2022-09-10T18:33:17Z",
+      "side": 1,
+      "message": "why is the bug field in the commit message is empty? Without bug how do we understand what is the purpose of this?",
+      "revId": "df36f3c82a1a979d5a27ce7d4c7a1d2605735fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
