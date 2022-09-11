@@ -70,6 +70,24 @@
       "parentUuid": "37071347_d2650ceb",
       "revId": "1cfa219b530ccf558404526160835a5d51cc89e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d83ecd_f65c119a",
+        "filename": "zephyr/projects/nissa/xivu/led_policy.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-11T05:27:44Z",
+      "side": 1,
+      "message": "Err I personally think it is much more readable with just the numbers - there is no question what the values are (it\u0027s weird to use some kind of arithmetic to adjust the numbers), and you then do not need the comments to say what the exact numbers are.\n\nIs there a problem with doing it this way?",
+      "parentUuid": "a1f33a93_6ce22cd7",
+      "revId": "1cfa219b530ccf558404526160835a5d51cc89e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
