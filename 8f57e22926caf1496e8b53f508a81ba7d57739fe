@@ -16,6 +16,24 @@
       "message": "is this observed on RVP too?\nit is worth checking the turn on time of Load switch used on Rex",
       "revId": "8f57e22926caf1496e8b53f508a81ba7d57739fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa67a771_c2a73a6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-09-11T23:52:32Z",
+      "side": 1,
+      "message": "Yes, we should do this. This CL will avoid side effects for now. We will figure out how long and why this is so different form RVP.",
+      "parentUuid": "30d459e9_e2cc3b36",
+      "revId": "8f57e22926caf1496e8b53f508a81ba7d57739fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
