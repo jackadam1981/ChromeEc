@@ -50,6 +50,24 @@
       "message": "why is the bug field in the commit message is empty? Without bug how do we understand what is the purpose of this?",
       "revId": "df36f3c82a1a979d5a27ce7d4c7a1d2605735fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5def18d_b5cafecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2022-09-11T17:31:04Z",
+      "side": 1,
+      "message": "A CL description should generally stand on its own.  If there\u0027s a series of CLs for a complex change, a bug is useful to track.  This is just a simple, standalone CL though.  Creating a bug for myself to tag one CL to would be busywork / overhead.",
+      "parentUuid": "6c24fd3e_0599b6a0",
+      "revId": "df36f3c82a1a979d5a27ce7d4c7a1d2605735fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
