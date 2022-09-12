@@ -179,6 +179,21 @@ void ppc_interrupt(enum gpio_signal signal)
 	}
 }
 
+static void board_connect_c0_sbu_deferred(void)
+{
+	/*
+	* If CCD_MODE_ODL asserts, it means there's a debug accessory connected
+	* and we should enable the SBU FETs.
+	*/
+	ppc_set_sbu(0, 1);
+}
+DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
+
+void board_connect_c0_sbu(enum gpio_signal s)
+{
+	hook_call_deferred(&board_connect_c0_sbu_deferred_data, 0);
+}
+
 void bc12_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {

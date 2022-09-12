@@ -72,6 +72,11 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "lis2dw12_interrupt";
 		};
+		int_ccd_mode: ccd_mode {
+			irq-pin = <&gpio_ccd_mode_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "board_connect_c0_sbu";
+		};
 	};
 };
 
