@@ -16,6 +16,24 @@
       "message": "So if you want to extend the power signal API for VW signals to allow outputs,\nthen I would suggest:\n - use power_signal_set as the API call for setting.\n - Add a case for PWR_SIG_SRC_VW in power_signal_set()\n - Add power_signal_vw_set to signal_vw.c\n - Use the DTS entry for the VW to map the power signal enum to the VW name\n \nThen the VW output can be used just like any other power signal output.\n \nThe assumption here is that the API client is the power sequence module.\nIf the client for this API is unrelated to the power sequence module, I would suggest just using the standard Zephyr ESPI API, and not using the power signal layer at all.\n",
       "revId": "09fc91438b8820fc04ee32799f80f66a25fe0495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce07853c_a46c1ca4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-12T20:19:32Z",
+      "side": 1,
+      "message": "Thank you Andrew for the feedback.\nTo avoid mixing the TCSS signals with power sequencing, I planned to use espi_dev from cros_ec_espi\n#define espi_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_espi))\nas in CL:3863940\nI will abandon this CL.",
+      "parentUuid": "f4e75ecb_2dc478fe",
+      "revId": "09fc91438b8820fc04ee32799f80f66a25fe0495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
