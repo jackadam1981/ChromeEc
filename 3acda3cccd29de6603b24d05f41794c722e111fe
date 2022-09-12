@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7146658_8ae7d0b5",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-12T17:09:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "44fe1fc8_021bd5a2",
+      "range": {
+        "startLine": 347,
+        "startChar": 4,
+        "endLine": 347,
+        "endChar": 69
+      },
+      "revId": "3acda3cccd29de6603b24d05f41794c722e111fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb547821_3bd81920",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d474e30_c9971e20",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-12T17:09:09Z",
+      "side": 1,
+      "message": "I removed it. I tried  TEST_ASSERT_ARRAY_EQ(fp_positive_match_salt, default_fake_fp_positive_match_salt, ARRAY_SIZE(default_fake_fp_positive_match_salt));\n```\ntest/fpsensor_state.c: In function ‘test_fp_command_read_match_secret_derive_succeed’:\ninclude/test_util.h:96:7: error: cast from pointer to integer of different size [-Werror\u003dpointer-to-int-cast]\n   96 |       (int)(s)[__i], (int)(d)[__i]);      \\\n      |       ^\ninclude/console.h:196:65: note: in definition of macro ‘ccprintf’\n  196 | #define ccprintf(format, args...) cprintf(CC_COMMAND, format, ##args)\n      |                                                                 ^~~~\ntest/fpsensor_state.c:363:2: note: in expansion of macro ‘TEST_ASSERT_ARRAY_EQ’\n  363 |  TEST_ASSERT_ARRAY_EQ(fp_positive_match_salt, default_fake_fp_positive_match_salt, ARRAY_SIZE(default_fake_fp_positive_match_salt));\n      |  ^~~~~~~~~~~~~~~~~~~~\ninclude/test_util.h:96:22: error: cast from pointer to integer of different size [-Werror\u003dpointer-to-int-cast]\n   96 |       (int)(s)[__i], (int)(d)[__i]);      \\\n      |                      ^\ninclude/console.h:196:65: note: in definition of macro ‘ccprintf’\n  196 | #define ccprintf(format, args...) cprintf(CC_COMMAND, format, ##args)\n      |                                                                 ^~~~\ntest/fpsensor_state.c:363:2: note: in expansion of macro ‘TEST_ASSERT_ARRAY_EQ’\n  363 |  TEST_ASSERT_ARRAY_EQ(fp_positive_match_salt, default_fake_fp_positive_match_salt, ARRAY_SIZE(default_fake_fp_positive_match_salt));\n      |  ^~~~~~~~~~~~~~~~~~~~\ncc1: all warnings being treated as errors\nmake[1]: *** [Makefile.rules:609: build/host/fpsensor_state/RO/test/fpsensor_state.o] Error 1\nmake: *** [Makefile.rules:346: host-fpsensor_state] Error 2\n```\n\nI was not able to compare 2D arrays using TEST_ASSERT_ARRAY_EQ",
+      "parentUuid": "cb547821_3bd81920",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 30
+      },
+      "revId": "3acda3cccd29de6603b24d05f41794c722e111fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "070796a3_de9adee2",
         "filename": "test/fpsensor_state.c",
         "patchSetId": 8
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-09T16:40:58Z",
       "side": 1,
       "message": "Where is `user_id` defined? I would expect it to be in the scope of this function.",
+      "range": {
+        "startLine": 376,
+        "startChar": 8,
+        "endLine": 376,
+        "endChar": 15
+      },
+      "revId": "3acda3cccd29de6603b24d05f41794c722e111fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b53d47_4233814e",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-12T17:09:09Z",
+      "side": 1,
+      "message": "user_id is defined in fpsensor_state.h\n/* Current user ID */\nextern uint32_t user_id[FP_CONTEXT_USERID_WORDS];",
+      "parentUuid": "070796a3_de9adee2",
       "range": {
         "startLine": 376,
         "startChar": 8,
