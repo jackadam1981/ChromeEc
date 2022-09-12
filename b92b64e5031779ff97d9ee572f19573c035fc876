@@ -70,6 +70,30 @@
       },
       "revId": "b92b64e5031779ff97d9ee572f19573c035fc876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9020a949_aa570116",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-09-12T10:57:36Z",
+      "side": 1,
+      "message": "Added get_chip_info(). please help to review.",
+      "parentUuid": "bc2454df_2abe7764",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 2
+      },
+      "revId": "b92b64e5031779ff97d9ee572f19573c035fc876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
