@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70e8026b_aabaf0e7",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-12T19:44:08Z",
+      "side": 1,
+      "message": "I think this is the pattern that was used in a lot of other existing so I assumed it was an effort to keep consistency. I suspect the reason the pattern started was because many of the functions accept a `uint8_t*` (such as [hkdf_extract](http://go/crrv/b5c0f7c078c94caa75e0303d797b0ec3e589455f/common/fpsensor/fpsensor_crypto.c#55), so it avoided an explicit cast.  I\u0027m not a huge fan of that pattern either because it prevents the compiler from identifying certain errors and prevents many IDEs from giving useful information about the values. \n\nI wouldn\u0027t be opposed to cleaning it up in a follow up CL.",
+      "parentUuid": "fd6476d2_08d307dd",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 51
+      },
+      "revId": "b5c0f7c078c94caa75e0303d797b0ec3e589455f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d15942f0_3bab1c4b",
         "filename": "common/mock/fpsensor_state_mock.c",
         "patchSetId": 10
