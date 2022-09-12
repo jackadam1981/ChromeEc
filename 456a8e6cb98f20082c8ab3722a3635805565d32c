@@ -22,6 +22,30 @@
       },
       "revId": "456a8e6cb98f20082c8ab3722a3635805565d32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d27741_5953c4a4",
+        "filename": "zephyr/cmake/linker/ld/gcc/linker_flags.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-12T19:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a7abcc2_54e8a21d",
+      "range": {
+        "startLine": 1,
+        "startChar": 29,
+        "endLine": 1,
+        "endChar": 32
+      },
+      "revId": "456a8e6cb98f20082c8ab3722a3635805565d32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
