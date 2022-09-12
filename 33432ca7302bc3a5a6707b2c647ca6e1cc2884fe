@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "826a303e_fb7cc909",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-12T23:51:31Z",
+      "side": 1,
+      "message": "Got it, yeah, that should probably be plumbed thru twister instead.\n\nAnother alternative is to just generate the header from twister and add the `-include` to `EXTRA_CFLAGS`. Up to you.\n\nI think it\u0027s better than having people comment out an option in the cmake, which leaves them with a dirty git state.",
+      "parentUuid": "668fc0de_69749906",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "33432ca7302bc3a5a6707b2c647ca6e1cc2884fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "938e1e1d_3692dc06",
         "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
         "patchSetId": 1
