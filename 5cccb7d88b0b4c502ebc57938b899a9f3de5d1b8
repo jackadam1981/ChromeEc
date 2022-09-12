@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "525e9cbe_e4e02d11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-12T20:59:45Z",
+      "side": 1,
+      "message": "I pulled up the octopus FW branch to compare code, and the changes look equivalent to reverting back to the state that branch is in for the most part (obviously, we changed the discovery storage APIs, so those are different but wouldn\u0027t be of concern) ",
+      "revId": "5cccb7d88b0b4c502ebc57938b899a9f3de5d1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
