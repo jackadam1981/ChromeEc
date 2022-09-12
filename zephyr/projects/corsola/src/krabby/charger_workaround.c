@@ -90,11 +90,22 @@ static void disable_safety_timer(void)
 			   RT9490_EN_FASTCHG_TMR);
 }
 
+static void disable_otp(void)
+{
+	if (system_get_board_version() >= 3) {
+		return;
+	}
+	i2c_update8(chg_chips[CHARGER_SOLO].i2c_port,
+		    chg_chips[CHARGER_SOLO].i2c_addr_flags,
+		    RT9490_REG_SYS_CTRL, RT9490_OT_EN, MASK_CLR);
+}
+
 static void board_rt9490_workaround(void)
 {
 	ibus_adc_workaround();
 	i2c_speed_workaround();
 	eoc_deglitch_workaround();
 	disable_safety_timer();
+	disable_opt();
 }
 DECLARE_HOOK(HOOK_INIT, board_rt9490_workaround, HOOK_PRIO_DEFAULT);
