@@ -22,6 +22,30 @@
       },
       "revId": "1e6eeaf0827a0d438900b261cf3868b57046408f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18ae529_5bd8691d",
+        "filename": "zephyr/shim/src/usb_muxes.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-12T07:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3326c33b_669b5f2a",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "1e6eeaf0827a0d438900b261cf3868b57046408f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
