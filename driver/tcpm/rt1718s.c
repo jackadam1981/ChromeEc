@@ -37,27 +37,35 @@ static atomic_t frs_flag[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* i2c_write function which won't wake TCPC from low power mode. */
 static int rt1718s_write(int port, int reg, int val, int len)
 {
+	tcpc_config[port].i2c_info.port = 2;
+	tcpc_config[port].i2c_info.addr_flags = 0x41;
 	if (reg > 0xFF) {
 		return i2c_write_offset16(tcpc_config[port].i2c_info.port,
 					  tcpc_config[port].i2c_info.addr_flags,
 					  reg, val, len);
 	} else if (len == 1) {
-		return tcpc_write(port, reg, val);
+		return i2c_write8(tcpc_config[port].i2c_info.port, 
+			tcpc_config[port].i2c_info.addr_flags, reg, val);
 	} else {
-		return tcpc_write16(port, reg, val);
+		return i2c_write16(tcpc_config[port].i2c_info.port, 
+			tcpc_config[port].i2c_info.addr_flags, reg, val);
 	}
 }
 
 static int rt1718s_read(int port, int reg, int *val, int len)
 {
+	tcpc_config[port].i2c_info.port = 2;
+	tcpc_config[port].i2c_info.addr_flags = 0x41;
 	if (reg > 0xFF) {
 		return i2c_read_offset16(tcpc_config[port].i2c_info.port,
 					 tcpc_config[port].i2c_info.addr_flags,
 					 reg, val, len);
 	} else if (len == 1) {
-		return tcpc_read(port, reg, val);
+		return i2c_read8(tcpc_config[port].i2c_info.port, 
+			tcpc_config[port].i2c_info.addr_flags, reg, val);
 	} else {
-		return tcpc_read16(port, reg, val);
+		return i2c_read16(tcpc_config[port].i2c_info.port, 
+			tcpc_config[port].i2c_info.addr_flags, reg, val);
 	}
 }
 

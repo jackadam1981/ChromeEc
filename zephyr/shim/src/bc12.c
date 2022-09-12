@@ -18,9 +18,7 @@
 	DT_HAS_COMPAT_STATUS_OKAY(PI3USB9201_COMPAT)
 
 /* Check RT1718S dependency. BC12 node must be dependent on TCPC node. */
-#if DT_HAS_COMPAT_STATUS_OKAY(RT1718S_BC12_COMPAT)
-BUILD_ASSERT(DT_HAS_COMPAT_STATUS_OKAY(RT1718S_TCPC_COMPAT));
-#endif
+
 
 #define BC12_CHIP_ENTRY(usbc_id, bc12_id, chip_fn) \
 	[USBC_PORT_NEW(usbc_id)] = chip_fn(bc12_id)
