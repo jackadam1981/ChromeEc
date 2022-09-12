@@ -247,7 +247,7 @@ static int rt1739_init(int port)
 	RETURN_ERROR(write_reg(port, RT1739_REG_SW_RESET, RT1739_SW_RESET));
 	usleep(1 * MSEC);
 	RETURN_ERROR(write_reg(port, RT1739_REG_SYS_CTRL,
-			       RT1739_OT_EN | RT1739_SHUTDOWN_OFF));
+			       RT1739_SHUTDOWN_OFF));
 
 	RETURN_ERROR(rt1739_workaround(port));
 	RETURN_ERROR(rt1739_set_frs_enable(port, false));
