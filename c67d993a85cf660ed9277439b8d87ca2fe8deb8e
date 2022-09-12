@@ -46,6 +46,30 @@
       },
       "revId": "c67d993a85cf660ed9277439b8d87ca2fe8deb8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f65c1e47_251e1f57",
+        "filename": "zephyr/projects/skyrim/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-12T16:59:00Z",
+      "side": 1,
+      "message": "This code shouldn\u0027t be using `ioex_set_level()` directly.  It should use `gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(usb_c0_sbu_flip)`.\n\nThis will allow the skyrim tests to use the generic GPIO emulator at the moment.  The test really just needs to verify the external GPIO is driven to the correct state.\n\nI would suggest making the change to use `gpio_pin_set_dt()`, and then creating the board tests.",
+      "parentUuid": "e5163e09_45448cc7",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "c67d993a85cf660ed9277439b8d87ca2fe8deb8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
