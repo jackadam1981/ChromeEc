@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "835485a2_3c04b1f5",
+        "filename": "zephyr/shim/src/log_backend_console_buffer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-12T15:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66cd66c5_d33b6e9c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "a7693e632dc2de9975fa6e3e2c92a434ea3bd9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ef00669_1af890ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-07T23:25:47Z",
       "side": 1,
       "message": "This function fails if it is unable to acquire a mutex.  I recommend modifying this function to return the number of characters written to the host console buffer.\n\nAlso, I see our `zephyr_print()` checks if `k_is_in_isr()`.  You probably want a similar check here.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "a7693e632dc2de9975fa6e3e2c92a434ea3bd9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c66d96_91a78ae8",
+        "filename": "zephyr/shim/src/log_backend_console_buffer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-12T15:17:35Z",
+      "side": 1,
+      "message": "Modified console_buf_notify_chars to return # of bytes consumed by console buffer. See chained CL.",
+      "parentUuid": "5ef00669_1af890ea",
       "range": {
         "startLine": 20,
         "startChar": 1,
