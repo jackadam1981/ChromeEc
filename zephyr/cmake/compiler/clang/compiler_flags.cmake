@@ -10,6 +10,12 @@ set_compiler_property(PROPERTY hosted)
 # Disable position independent code.
 add_compile_options(-fno-PIC)
 
+# Uncomment to enable full debugging symbols in EC code
+#add_compile_options(
+#  -g
+#  --include=/mnt/host/source/src/platform/ec/util/enable_debug.h
+#  )
+
 check_set_compiler_property(APPEND PROPERTY warning_extended -Wunused-variable
 	-Werror=unused-variable -Werror=missing-braces
 	-Werror=sometimes-uninitialized -Werror=unused-function
