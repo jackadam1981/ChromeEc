@@ -38,26 +38,30 @@ static atomic_t frs_flag[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int rt1718s_write(int port, int reg, int val, int len)
 {
 	if (reg > 0xFF) {
-		return i2c_write_offset16(tcpc_config[port].i2c_info.port,
-					  tcpc_config[port].i2c_info.addr_flags,
+		return i2c_write_offset16(2,
+					  0x41,
 					  reg, val, len);
 	} else if (len == 1) {
-		return tcpc_write(port, reg, val);
+		return i2c_write8(2, 
+			0x41, reg, val);
 	} else {
-		return tcpc_write16(port, reg, val);
+		return i2c_write16(2, 
+			0x41, reg, val);
 	}
 }
 
 static int rt1718s_read(int port, int reg, int *val, int len)
 {
 	if (reg > 0xFF) {
-		return i2c_read_offset16(tcpc_config[port].i2c_info.port,
-					 tcpc_config[port].i2c_info.addr_flags,
+		return i2c_read_offset16(2,
+					 0x41,
 					 reg, val, len);
 	} else if (len == 1) {
-		return tcpc_read(port, reg, val);
+		return i2c_read8(2, 
+			0x41, reg, val);
 	} else {
-		return tcpc_read16(port, reg, val);
+		return i2c_read16(2, 
+			0x41, reg, val);
 	}
 }
 
@@ -392,8 +396,9 @@ static void rt1718s_bc12_usb_charger_task_event(const int port, uint32_t evt)
 	bool is_non_pd_sink = !pd_capable(port) &&
 			      !usb_charger_port_is_sourcing_vbus(port) &&
 			      pd_check_vbus_level(port, VBUS_PRESENT);
-
+	ccprints("[SC] is_non_pd_sink=%d", is_non_pd_sink);
 	if (evt & USB_CHG_EVENT_VBUS) {
+		ccprints("[SC] USB_CHG_EVENT_VBUS");
 		if (is_non_pd_sink)
 			rt1718s_enable_bc12_sink(port, true);
 		else
@@ -403,6 +408,7 @@ static void rt1718s_bc12_usb_charger_task_event(const int port, uint32_t evt)
 
 	/* detection done, update charge_manager and stop detection */
 	if (evt & USB_CHG_EVENT_BC12) {
+		ccprints("[SC] USB_CHG_EVENT_BC12");
 		int type;
 
 		if (is_non_pd_sink)
