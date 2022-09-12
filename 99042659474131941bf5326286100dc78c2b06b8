@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c40d1e2_1d377db7",
+        "filename": "docs/zephyr/zephyr_ppc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-12T16:37:34Z",
+      "side": 1,
+      "message": "Update to indicate the PPC device is added to the corresponding I2C bus node and the \"named-usbc-port\" contains a phandle to the PPC device,",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "99042659474131941bf5326286100dc78c2b06b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
