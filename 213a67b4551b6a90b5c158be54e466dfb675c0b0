@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736d5e65_586475ed",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-12T21:43:54Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 559,
+        "startChar": 6,
+        "endLine": 559,
+        "endChar": 7
+      },
+      "revId": "213a67b4551b6a90b5c158be54e466dfb675c0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3592e1f_63c9f22c",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-12T21:43:54Z",
+      "side": 1,
+      "message": "You need to initialize rv (to EC_SUCCESS) within the loop (otherwise the 2nd port would use the previous value in rv).",
+      "range": {
+        "startLine": 561,
+        "startChar": 6,
+        "endLine": 561,
+        "endChar": 8
+      },
+      "revId": "213a67b4551b6a90b5c158be54e466dfb675c0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b751e9_4c10a3e1",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-12T21:43:54Z",
+      "side": 1,
+      "message": "nit: can you please say: \u0027It needs to work without IRQ\u0027?",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 66
+      },
+      "revId": "213a67b4551b6a90b5c158be54e466dfb675c0b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
