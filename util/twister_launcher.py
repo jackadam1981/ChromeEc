@@ -1,6 +1,6 @@
 #!/usr/bin/env vpython3
 
-# Copyright 2022 The ChromiumOS Authors.
+# Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -133,6 +133,26 @@ def find_modules(mod_dir: Path) -> list:
     return modules
 
 
+def upload_results(platform_ec):
+    """Uploads Zephyr Test results to ResultDB"""
+    json_path = platform_ec / "twister-out" / "twister.json"
+    cmd = [
+        "rdb",
+        "stream",
+        "-new",
+        "-realm",
+        "chromium:public",
+        "--",
+        str(platform_ec / "util/zephyr_to_resultdb.py"),
+        "--result=" + str(json_path),
+        "--upload=True",
+    ]
+
+    ret = subprocess.run(cmd, check=True).returncode
+
+    return ret
+
+
 def main():
     """Run Twister using defaults for the EC project."""
 
@@ -149,6 +169,8 @@ def main():
     # Prepare environment variables for export to Twister. Inherit the parent
     # process's environment, but set some default values if not already set.
     twister_env = dict(os.environ)
+    print(twister_env)
+    return
     is_in_chroot = os.environ.get("CROS_WORKON_SRCROOT") is not None
     extra_env_vars = {
         "TOOLCHAIN_ROOT": os.environ.get(
@@ -191,6 +213,9 @@ def main():
     parser.add_argument("-v", "--verbose", action="count", default=0)
     parser.add_argument(
         "--gcov-tool", default=str(ec_base / "util" / "llvm-gcov.sh")
+    )
+    parser.add_argument(
+        "-u", "--upload-results", action="store_true", default=False
     )
     intercepted_args, other_args = parser.parse_known_args()
 
@@ -245,6 +270,8 @@ def main():
 
     if result.returncode == 0:
         print("TEST EXECUTION SUCCESSFUL")
+        if intercepted_args.upload_results:
+            upload_results(ec_base)
     else:
         print("TEST EXECUTION FAILED")
 
