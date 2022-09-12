@@ -33,6 +33,24 @@
       "message": "I have executed `zmake build --all` twice. Only project `nereid` and `joxer` get build errors. It seems not relevant since they\u0027re ite\u0027s projects. Might I know what \"Step(\u0027build firmware.call build API script\u0027) (retcode: 1)\" means? ",
       "revId": "171d93129dd40a265bf32e913d672cedc533d58f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36371136_9b2b4d95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-12T17:45:49Z",
+      "side": 1,
+      "message": "The errors are with the formatting:\n\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/shim/chip/npcx/gpio.c:78:30: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:#define NAMED_GPIO_INFO(node)                                           \n\nPlease run `clang-format -i zephyr/shim/chip/npcx/gpio.c`.  The pre-submit check should also check this.  Please ensure you use `repo upload` when submitting your change.",
+      "parentUuid": "ecab9e84_ded53eb5",
+      "revId": "171d93129dd40a265bf32e913d672cedc533d58f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
