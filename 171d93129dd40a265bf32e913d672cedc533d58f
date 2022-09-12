@@ -16,6 +16,23 @@
       "message": "Since `gpios` is not a required property in `named-gpios` DT nodes, it is necessary to check whether this property exist. Or we might get build failures in few projects such as kingler. And `unused-gpios` is a required property in `unused-gpios` DT nodes. we needn\u0027t check for it.",
       "revId": "171d93129dd40a265bf32e913d672cedc533d58f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecab9e84_ded53eb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-09-12T10:49:56Z",
+      "side": 1,
+      "message": "I have executed `zmake build --all` twice. Only project `nereid` and `joxer` get build errors. It seems not relevant since they\u0027re ite\u0027s projects. Might I know what \"Step(\u0027build firmware.call build API script\u0027) (retcode: 1)\" means? ",
+      "revId": "171d93129dd40a265bf32e913d672cedc533d58f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
