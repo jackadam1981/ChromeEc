@@ -16,6 +16,24 @@
       "message": "After download in my firmware branch repo, success with build command \"emerge-trogdor chromeos-ec\"",
       "revId": "8359d24388c02012c959db4fd3057a3e96832bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed5f0c34_8db5aef4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-09-12T21:13:26Z",
+      "side": 1,
+      "message": "Let us know when you can try on a trodgor with sensors by setting verify to +1.",
+      "parentUuid": "177604c8_89514d68",
+      "revId": "8359d24388c02012c959db4fd3057a3e96832bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
