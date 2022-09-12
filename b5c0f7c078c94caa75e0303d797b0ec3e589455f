@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c4f5c38_c5efaf12",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-12T20:29:43Z",
+      "side": 1,
+      "message": "\u003e Re `FP_MAX_FINGER_COUNT is not defined in this file`\n\nI see. It doesn\u0027t look like any of the includes inside `fpsensor_state_mock.h` supplies `FP_MAX_FINGER_COUNT` either, which means that we are leaving it up to the source includer to set `FP_MAX_FINGER_COUNT` before our file is include. We want to avoid these inexplicit dependencies and always [\"include what you use\"](https://google.github.io/styleguide/cppguide.html#Include_What_You_Use). Maybe we need to refactor that macro out.\n\n---\n\n\u003e I think this is the pattern that was used in a lot of other existing so I assumed it was an effort to keep consistency. I suspect the reason the pattern started was because many of the functions accept a  uint8_t*  (such as  hkdf_extract , so it avoided an explicit cast.  I\u0027m not a huge fan of that pattern either because it prevents the compiler from identifying certain errors and prevents many IDEs from giving useful information about the values.\n\u003e \n\u003e I wouldn\u0027t be opposed to cleaning it up in a follow up CL.\n\nI tend to agree, I think we want to clean this up. In its current state, we are exploiting the lack of serious type checking during linking. The definition of the array in the header is incompatible with the definition in the source file, and thus, they can\u0027t be combined in the same source file. If you try to include `fpsensor_state_mock.h` from `fpsensor_state_mock.c` (while fixing missing macros) you get:\n\n```\ncommon/mock/fpsensor_state_mock.c:37:15: error: conflicting types for ‘default_fake_fp_positive_match_salt’\n   37 | const uint8_t default_fake_fp_positive_match_salt[] \u003d {\n      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nIn file included from common/mock/fpsensor_state_mock.c:24:\ninclude/mock/fpsensor_state_mock.h:15:2: note: previous declaration of ‘default_fake_fp_positive_match_salt’ was here\n   15 |  default_fake_fp_positive_match_salt[FP_MAX_FINGER_COUNT]\n      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\ncommon/mock/fpsensor_state_mock.c:48:15: error: conflicting types for ‘trivial_fp_positive_match_salt’\n   48 | const uint8_t trivial_fp_positive_match_salt[] \u003d {\n      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nIn file included from common/mock/fpsensor_state_mock.c:24:\ninclude/mock/fpsensor_state_mock.h:18:2: note: previous declaration of ‘trivial_fp_positive_match_salt’ was here\n   18 |  trivial_fp_positive_match_salt[FP_MAX_FINGER_COUNT]\n      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nmake[1]: *** [Makefile.rules:609: build/host/fpsensor_state/RO/common/mock/fpsensor_state_mock.o] Error 1\nmake[1]: *** Waiting for unfinished jobs....\n```\n\n\n\nI think it is fine to later refer to a 1D static array as `(uint8_t *)`, since those are compatible.",
+      "parentUuid": "70e8026b_aabaf0e7",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 51
+      },
+      "revId": "b5c0f7c078c94caa75e0303d797b0ec3e589455f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d15942f0_3bab1c4b",
         "filename": "common/mock/fpsensor_state_mock.c",
         "patchSetId": 10
