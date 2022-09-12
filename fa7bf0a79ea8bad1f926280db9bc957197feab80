@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdb00aa_cd5e7f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-12T20:18:11Z",
+      "side": 1,
+      "message": "Adding Eric, since he was the original dps.c code author.  I\u0027m not totally certain if this is the correct location within the DPS logic to put the condition for battery not present, so I\u0027d appreciate any insights he has.  \n\nIt almost seems like, if the purpose of the DPS task is to analyze the battery\u0027s voltage versus the PD offered voltages, that some logic higher-up in the task should realize it doesn\u0027t have a battery physically present. ",
+      "revId": "fa7bf0a79ea8bad1f926280db9bc957197feab80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
