@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2844946f_ec732705",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-12T19:30:09Z",
+      "side": 1,
+      "message": "Removing it works for me. Also, for anyone seeing this in the distant future, casting to `(const uint8_t*)` below resolved this error for other tests. The underlying cause was that `TEST_ASSERT_ARRAY_EQ` is a macro and explicitly casts `source[i]` to an `int`. Since `source` is a `uint8_t**` this results in casting a `uint8_t*` to an `int`. By explicitly casting the source data to an array of `uint8_t` gives the proper result.",
+      "parentUuid": "5d474e30_c9971e20",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 30
+      },
+      "revId": "3acda3cccd29de6603b24d05f41794c722e111fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "070796a3_de9adee2",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "user_id is defined in fpsensor_state.h\n/* Current user ID */\nextern uint32_t user_id[FP_CONTEXT_USERID_WORDS];",
       "parentUuid": "070796a3_de9adee2",
+      "range": {
+        "startLine": 376,
+        "startChar": 8,
+        "endLine": 376,
+        "endChar": 15
+      },
+      "revId": "3acda3cccd29de6603b24d05f41794c722e111fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c83dd62_def0ad1b",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-12T19:30:09Z",
+      "side": 1,
+      "message": "I was thinking this was a test-specific version of `user_id`. Sorry for the confusion.",
+      "parentUuid": "a3b53d47_4233814e",
       "range": {
         "startLine": 376,
         "startChar": 8,
