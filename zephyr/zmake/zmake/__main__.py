@@ -271,6 +271,12 @@ def add_common_configure_args(sub_parser: argparse.ArgumentParser):
         help="Enable bringup debugging features",
     )
     sub_parser.add_argument(
+        "--debug-symbols",
+        action="store_true",
+        dest="debug_symbols",
+        help="Add debugging symbols and disable pre-linktime optimizations",
+    )
+    sub_parser.add_argument(
         "--clobber",
         action="store_true",
         dest="clobber",

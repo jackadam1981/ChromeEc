@@ -241,6 +241,7 @@ class Zmake:
         build_after_configure=False,
         clobber=False,
         bringup=False,
+        debug_symbols=False,
         coverage=False,
         allow_warnings=False,
         all_projects=False,
@@ -275,6 +276,7 @@ class Zmake:
                     build_after_configure=build_after_configure,
                     clobber=clobber,
                     bringup=bringup,
+                    debug_symbols=debug_symbols,
                     coverage=coverage,
                     allow_warnings=allow_warnings,
                     extra_cflags=extra_cflags,
@@ -310,6 +312,7 @@ class Zmake:
         toolchain=None,
         clobber=False,
         bringup=False,
+        debug_symbols=False,
         coverage=False,
         allow_warnings=False,
         all_projects=False,
@@ -327,6 +330,7 @@ class Zmake:
             toolchain=toolchain,
             clobber=clobber,
             bringup=bringup,
+            debug_symbols=debug_symbols,
             coverage=coverage,
             allow_warnings=allow_warnings,
             all_projects=all_projects,
@@ -373,6 +377,7 @@ class Zmake:
         build_after_configure=False,
         clobber=False,
         bringup=False,
+        debug_symbols=False,
         coverage=False,
         allow_warnings=False,
         extra_cflags=None,
@@ -448,6 +453,10 @@ class Zmake:
             if coverage:
                 base_config |= zmake.build_config.BuildConfig(
                     kconfig_defs={"CONFIG_COVERAGE": "y"}
+                )
+            if debug_symbols:
+                base_config |= zmake.build_config.BuildConfig(
+                    kconfig_defs={"CONFIG_PLATFORM_EC_DEBUG_SYMBOLS": "y"}
                 )
             if allow_warnings:
                 base_config |= zmake.build_config.BuildConfig(
