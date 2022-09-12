@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cce9108_67b89762",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2022-09-12T09:52:39Z",
+      "side": 1,
+      "message": "Since `gpios` is not a required property in `named-gpios` DT nodes, it is necessary to check whether this property exist. Or we might get build failures in few projects such as kingler. And `unused-gpios` is a required property in `unused-gpios` DT nodes. we needn\u0027t check for it.",
+      "revId": "171d93129dd40a265bf32e913d672cedc533d58f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
