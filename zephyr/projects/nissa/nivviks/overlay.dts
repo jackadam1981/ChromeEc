@@ -282,15 +282,10 @@
 	label = "I2C_USB_C0_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 
-	bc12_port0: pi3usb9201@5f {
-		compatible = "pericom,pi3usb9201";
+	bc12_port0: rt1718s-bc12@41 {
+		compatible = "richtek,rt1718s-bc12";
 		status = "okay";
-		reg = <0x5f>;
-		/*
-		 * BC1.2 interrupt is shared with TCPC, so
-		 * IRQ is not specified here and handled by
-		 * usb_c0_interrupt.
-		 */
+		reg = <0x41>;
 	};
 
 	chg_port0: isl923x@9 {
