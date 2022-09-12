@@ -246,6 +246,30 @@
       },
       "revId": "7815ec698f193b71d9f888354425111df13532d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1cf63f_cb950e73",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2317,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-12T16:09:57Z",
+      "side": 1,
+      "message": "I guess this comment doesn\u0027t really belong here. It should be on line 2268. If we have more than 32 caps in cr50, then ccd_caps_current and ccd_caps_defaults will change sizes, so ccd_info_response won\u0027t match Ti50. If ccd_info_response changes in cr50, reading ccd_info in 2268 won\u0027t work correctly. \n\nI just suggest we add a build assert, so we don\u0027t accidentally add or remove capabilities so ccd_info stops matching ti50.\n\nAlso maybe remove CCD_CAPS_WORDS and just define these as uint64_t so it\u0027s easy to tell that the response struct matches ti50.\n\nI don\u0027t think there\u0027s any future where we end up adding 12 caps to cr50, so it\u0027s very unlikely for us to hit this. We should just add something to catch if we do.\n\n```\n/* Structure to communicate information about CCD state. */\n#define CCD_CAPS_WORDS ((CCD_CAP_COUNT * 2 + 31)/32)\nstruct ccd_info_response {\n\tuint32_t ccd_caps_current[CCD_CAPS_WORDS];\n\tuint32_t ccd_caps_defaults[CCD_CAPS_WORDS];\n```",
+      "parentUuid": "fe37bff0_d014ce85",
+      "range": {
+        "startLine": 2315,
+        "startChar": 0,
+        "endLine": 2317,
+        "endChar": 60
+      },
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
