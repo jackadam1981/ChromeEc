@@ -1,6 +1,6 @@
 #!/usr/bin/env vpython3
 
-# Copyright 2022 The ChromiumOS Authors.
+# Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -64,6 +64,7 @@ parameters that may be used, please consult the Twister documentation.
 
 import argparse
 import os
+import re
 import shlex
 import subprocess
 import sys
@@ -133,6 +134,32 @@ def find_modules(mod_dir: Path) -> list:
     return modules
 
 
+def upload_results(ec_base):
+    """Uploads Zephyr Test results to ResultDB"""
+    json_path = ec_base / "twister-out" / "twister.json"
+    cmd = [
+        "rdb",
+        "stream",
+        "-new",
+        "-realm",
+        "chromium:public",
+        "--",
+        str(ec_base / "util/zephyr_to_resultdb.py"),
+        "--result=" + str(json_path),
+        "--upload=True",
+    ]
+
+    ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
+
+    # Extract URL to test report from captured output
+    rdb_url = re.search(
+        r"(?P<url>https?://[^\s]+)", ret.stderr.split("\n")[0]
+    ).group("url")
+    print("\nTEST RESULTS: " + rdb_url + "\n")
+
+    return ret.returncode
+
+
 def main():
     """Run Twister using defaults for the EC project."""
 
@@ -192,6 +219,12 @@ def main():
     parser.add_argument(
         "--gcov-tool", default=str(ec_base / "util" / "llvm-gcov.sh")
     )
+    parser.add_argument("--upload-cros-rdb", action="store_true")
+    parser.add_argument(
+        "--no-upload-cros-rdb", dest="upload_cros_rdb", action="store_false"
+    )
+    parser.set_defaults(upload_cros_rdb=True)
+
     intercepted_args, other_args = parser.parse_known_args()
 
     for _ in range(intercepted_args.verbose):
@@ -247,6 +280,9 @@ def main():
         print("TEST EXECUTION SUCCESSFUL")
     else:
         print("TEST EXECUTION FAILED")
+
+    if intercepted_args.upload_cros_rdb:
+        upload_results(ec_base)
 
     sys.exit(result.returncode)
 
