@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55da8d34_a00e0820",
+        "filename": "util/enable_debug.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-12T23:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa0038b7_0160fbf6",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 44
+      },
+      "revId": "33432ca7302bc3a5a6707b2c647ca6e1cc2884fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17098000_281b30a1",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "668fc0de_69749906",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-12T23:30:23Z",
+      "side": 1,
+      "message": "Hmm I can get the config enabled in kconfig-ro.conf but don\u0027t see it being used to actually include the header into the build. Uploading with what I have, maybe you can point me to what I\u0027m doing wrong.\n\nAlso quick question: Is there much of a point to adding this to zmake? We use twister to run/build all tests now. I suppose folks could flash it on a device, but wouldn\u0027t the image be too large with essentially zero optimization?",
+      "parentUuid": "17098000_281b30a1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "33432ca7302bc3a5a6707b2c647ca6e1cc2884fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "938e1e1d_3692dc06",
         "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-12T21:54:16Z",
       "side": 1,
       "message": "Don\u0027t assume this is where the `ec` checkout is. Use `${ZEPHYR_EC_MODULE_DIR}` instead.",
+      "range": {
+        "startLine": 16,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 46
+      },
+      "revId": "33432ca7302bc3a5a6707b2c647ca6e1cc2884fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9053bf_91329f43",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-12T23:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "938e1e1d_3692dc06",
       "range": {
         "startLine": 16,
         "startChar": 13,
