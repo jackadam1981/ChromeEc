@@ -182,3 +182,10 @@ $3 = 0x100ba480 "tach@400e1000"
 ```
 
 If the symbol has been optimized, try rebuilding with `CONFIG_LTO=n`.
+
+## Debug Native Posix Builds with No Optimization
+
+Enabling `CONFIG_PLATFORM_EC_DEBUG_SYMBOLS` defined in [Kconfig.debug_symbols]
+disables all clang compile-time optimizations to facillitating easier debugging.
+
+[Kconfig.debug_symbols]: ../../zephyr/Kconfig.debug_symbols
