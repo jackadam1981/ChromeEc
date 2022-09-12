@@ -22,6 +22,30 @@
       },
       "revId": "fb168b114240abbb6c1a5be52133598ee2227e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8674fee3_ab4eb7f9",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-12T07:55:11Z",
+      "side": 1,
+      "message": "Yes, it can be const.\n\nI added separate CL for alternative-chain, because alternative-chain support is introduced later in this CLs chain. CL using alternative-chain on corsola https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3875324",
+      "parentUuid": "7406cc9f_c09aa05e",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 7
+      },
+      "revId": "fb168b114240abbb6c1a5be52133598ee2227e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
