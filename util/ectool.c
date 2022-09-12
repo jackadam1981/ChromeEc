@@ -11110,6 +11110,9 @@ int main(int argc, char *argv[])
 		goto out;
 	}
 
+	fprintf(stderr, "ec_max_outsize=%d ec_max_insize=%d bytes\n",
+		ec_max_outsize, ec_max_insize);
+
 	/* Handle commands */
 	for (cmd = commands; cmd->name; cmd++) {
 		if (!strcasecmp(argv[optind], cmd->name)) {

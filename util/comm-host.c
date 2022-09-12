@@ -75,8 +75,10 @@ int ec_command(int command, int version, const void *outdata, int outsize,
 	       void *indata, int insize)
 {
 	/* Offset command code to support sub-devices */
-	return ec_command_proto(command_offset + command, version, outdata,
-				outsize, indata, insize);
+	int rv = ec_command_proto(command_offset + command, version, outdata,
+				  outsize, indata, insize);
+	fprintf(stderr, "%s 0x%04x returned %d\n", __func__, command, rv);
+	return rv;
 }
 
 int comm_init_alt(int interfaces, const char *device_name, int i2c_bus)

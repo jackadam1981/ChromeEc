@@ -10,6 +10,7 @@
 #include "queue_policies.h"
 #include "host_command.h"
 #include "printf.h"
+#include "registers.h"
 #include "system.h"
 #include "usb_api.h"
 #include "usb_hw.h"
@@ -18,6 +19,8 @@
 
 #define CPUTS(outstr) cputs(CC_USB, outstr)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, "USBHC: " format, ##args)
+
+#define DEBUG
 
 enum usbhc_state {
 	/* Initial State - Ready to receive next request */
@@ -77,6 +80,10 @@ static void usbhc_read(struct producer const *producer, size_t count)
 
 	if (IS_ENABLED(DEBUG))
 		CPRINTS("Tx complete (%u bytes)", out_index);
+
+	if (out_index % USB_MAX_PACKET_SIZE == 0)
+		STM32_TOGGLE_EP(USB_EP_HOSTCMD, EP_TX_MASK, EP_TX_VALID, 0);
+
 	out_index = 0;
 	state = USBHC_STATE_READY_TO_RX;
 }
