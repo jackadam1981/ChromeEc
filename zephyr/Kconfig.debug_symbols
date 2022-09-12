@@ -1,0 +1,9 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config PLATFORM_EC_DEBUG_SYMBOLS
+	bool "Include"
+	default n
+	help
+	  Compile EC with debugging symbols and no pre-linktime optimization.

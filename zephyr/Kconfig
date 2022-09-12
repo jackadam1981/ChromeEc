@@ -1,4 +1,4 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -47,6 +47,7 @@ rsource "Kconfig.cbi"
 rsource "Kconfig.console"
 rsource "Kconfig.console_cmd_mem"
 rsource "Kconfig.debug_assert"
+rsource "Kconfig.debug_symbols"
 rsource "Kconfig.defaults"
 rsource "Kconfig.espi"
 rsource "Kconfig.flash"
