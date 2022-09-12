@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926a44df_86f86334",
+        "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-12T16:40:08Z",
+      "side": 1,
+      "message": "The overview section could use text explaining the \"mux-chains\".  A board may have multiple mux/retimers on each port.  A diagram would be helpful here, especially one that uses a virtual mux.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "d9166da3febfdee8f603032013f6a0f118f042f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a64391_ba3bcd21",
+        "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-12T16:40:08Z",
+      "side": 1,
+      "message": "Update this section and the example to illustrate how the mux devices are added to the I2C bus and \"named-usbc-port\" just uses an array of phandles.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "d9166da3febfdee8f603032013f6a0f118f042f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f36de73_cff4fac1",
+        "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-12T16:40:08Z",
+      "side": 1,
+      "message": "Update for the latest devicetree organization.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "d9166da3febfdee8f603032013f6a0f118f042f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
