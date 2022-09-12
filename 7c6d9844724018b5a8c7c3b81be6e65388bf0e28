@@ -52,6 +52,24 @@
       "parentUuid": "d7e2a0b6_9c7633b1",
       "revId": "7c6d9844724018b5a8c7c3b81be6e65388bf0e28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440e385c_b9fcb494",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-12T03:26:14Z",
+      "side": 1,
+      "message": "In this test, \n\nThe Tester gets the UUT into PD Mode (PROC-PD-MODE), initially requesting PDO#1 at 100mA.\n\nand \n\nRepeat the next 4 steps at no load, 25% full load, 50% full load, 75% full load, 100% full load, 75% full load, 50% full load, 25% full load and no load (9 separate Requests per PDO).",
+      "parentUuid": "c3201440_00f25336",
+      "revId": "7c6d9844724018b5a8c7c3b81be6e65388bf0e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
