@@ -70,6 +70,24 @@
       "parentUuid": "c3201440_00f25336",
       "revId": "7c6d9844724018b5a8c7c3b81be6e65388bf0e28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd32880a_881c6708",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-12T19:58:44Z",
+      "side": 1,
+      "message": "\u003e If I set it before execute the test, DUT will get hard reset when tester request 0A.\n\nCould you attach logs to this bug to debug the issue further? I wouldn\u0027t expect BIST mode to be required to only set it after the sink cap is received.  My impression from reading the specification is that BIST shared test mode should be persistent across the device boot, and so it should be okay for it to be set before plug-in.",
+      "parentUuid": "440e385c_b9fcb494",
+      "revId": "7c6d9844724018b5a8c7c3b81be6e65388bf0e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
