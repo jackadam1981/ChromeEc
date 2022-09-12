@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05d7c2a_2ddeb761",
+        "filename": "zephyr/test/vboot_efs2/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-12T17:30:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab30b16e_85998b21",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9e8c8a1_035266f6",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-09T17:17:31Z",
       "side": 1,
       "message": "Same nit as above.",
+      "revId": "0230b27388350ab1e13774320428146f623b2f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a753fa_f68e5c0a",
+        "filename": "zephyr/test/vboot_efs2/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-12T17:30:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a9e8c8a1_035266f6",
       "revId": "0230b27388350ab1e13774320428146f623b2f9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
