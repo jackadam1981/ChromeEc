@@ -200,11 +200,15 @@ static enum ec_status system_rtc_get_value(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_VALUE, system_rtc_get_value,
 		     EC_VER_MASK(0));
 
+__overridable void board_system_rtc_set_value(uint32_t seconds) {
+}
+
 static enum ec_status system_rtc_set_value(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rtc *p = args->params;
 
 	system_set_rtc(p->time);
+	board_system_rtc_set_value(p->time);
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_VALUE, system_rtc_set_value,

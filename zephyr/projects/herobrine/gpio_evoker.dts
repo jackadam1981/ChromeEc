@@ -101,7 +101,7 @@
 			gpios = <&gpio6 3 GPIO_INPUT>;
 			enum-name = "GPIO_CCD_MODE_ODL";
 		};
-		ec_batt_pres_odl {
+		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
 			gpios = <&gpioe 5 GPIO_INPUT>;
 			enum-name = "GPIO_BATT_PRES_ODL";
 		};

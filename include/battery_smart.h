@@ -56,10 +56,10 @@
 #define SB_DEVICE_NAME 0x21
 #define SB_DEVICE_CHEMISTRY 0x22
 #define SB_MANUFACTURER_DATA 0x23
-#define SB_OPTIONAL_MFG_FUNC1 0x3C
-#define SB_OPTIONAL_MFG_FUNC2 0x3D
-#define SB_OPTIONAL_MFG_FUNC3 0x3E
-#define SB_OPTIONAL_MFG_FUNC4 0x3F
+#define SB_OPTIONAL_MFG_FUNC4 0x3C
+#define SB_OPTIONAL_MFG_FUNC3 0x3D
+#define SB_OPTIONAL_MFG_FUNC2 0x3E
+#define SB_OPTIONAL_MFG_FUNC1 0x3F
 /* Extension of smart battery spec, may not be supported on all platforms */
 #define SB_PACK_STATUS 0x43
 #define SB_ALT_MANUFACTURER_ACCESS 0x44
