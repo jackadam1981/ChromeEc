@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ef6a49_d7aa924f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-13T14:51:31Z",
+      "side": 1,
+      "message": "Did you find in testing that this change was required?",
+      "revId": "3b0a4ab2b6bb5fa696a230e963d7891ee892963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a456fc1_66940d89",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-13T14:51:31Z",
+      "side": 1,
+      "message": "Gesture",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 15
+      },
+      "revId": "3b0a4ab2b6bb5fa696a230e963d7891ee892963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
