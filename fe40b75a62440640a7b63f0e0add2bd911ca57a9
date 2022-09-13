@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8718ea2d_24b0e956",
+        "filename": "zephyr/projects/skyrim/i2c.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:14:45Z",
+      "side": 1,
+      "message": "Use the shim driver to add the I2C_FLAG_BIG_ENDIAN for this device.  Then the `reg` property here can be just the 8-bit peripheral address.",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 32
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc02d011_93f0eebd",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:14:45Z",
+      "side": 1,
+      "message": "Now that the compatible strings are not nested under named-temp-sensors, one could add more temperature sensors to the devicetree than children defined under \u0027named-temp-sensor\u0027.\n\n```\n\u0026i2c0 {\n    tmp112_cpu: tmp112@40 {};\n    tmp112_ddr: tmp112@42 {};\n};\nnamed-temp-sensors {\n    cpu_temp: cpu-temp { sensor \u003d \u003c\u0026tmp112_cpu\u003e; };\n};\n```\n\nFor the above setting devicetree, TEMP_SENSOR_COUNT will be 2, but TEMP_SENSOR_COUNT of 1 is expected.  This will also cause a mismatch in the array sizes of `temp_sensors[]` and `thermal_params[]`.  The thermal code assumes these arrays are the same size.\n\nBy switching to DT_FOREACH_CHILD, TEMP_SENSOR_COUNT will always match the number of children under the `cros-ec,temp-sensors` node.\n\nThe tricky part is to assigning the `temp_sensors[].zephyr_temp_sensor` pointer correctly based on the `sensor` property phandle.  I think this is doable by using FOREACH_STATUS_OKAY  on each sensor type to declare the `zephyr_temp_sensor`.\n\nThe other thing to look at which node label should be used with `TEMP_SENSOR_ID()`.  From the example above, your current code uses `TEMP_SENSOR_ID(DT_NODELABEL(tmp112_cpu))`, but I think it makes sense to use the child nodelabel instead: `TEMP_SENSOR_ID(DT_NODELABEL(cpu_temp))`.  What do you think?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 65
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6703ca61_3edfc520",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:14:45Z",
+      "side": 1,
+      "message": "Replace with `DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensors)`.  Eliminate use of the DT_PATH throughout.",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49103490_6ede8536",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:14:45Z",
+      "side": 1,
+      "message": "All these anonymous structs can use `const`.",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72dd3b8d_a551c98d",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:14:45Z",
+      "side": 1,
+      "message": "OR in `I2C_FLAG_BIG_ENDIAN` so the 0x4000 bit can be removed from the devicetree.",
+      "range": {
+        "startLine": 90,
+        "startChar": 20,
+        "endLine": 90,
+        "endChar": 40
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd73769c_f7974a98",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:14:45Z",
+      "side": 1,
+      "message": "You can now use the compatible property here instead.\n```\n#define DT_DRV_COMPAT cros_ec_temp_sensors\nDT_FOREACH_CHILD_SEP(DT_DRV_INST(0), ...)\n```",
+      "range": {
+        "startLine": 205,
+        "startChar": 22,
+        "endLine": 205,
+        "endChar": 50
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb46be52_fa47a8e9",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:14:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c49267c9_b141770e",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cd89ed5_10872357",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "I will do that.",
       "parentUuid": "8cd89ed5_10872357",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e536eb_e099b264",
+        "filename": "zephyr/projects/corsola/adc_magikarp.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:14:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4816d9d8_7e6507e5",
       "range": {
         "startLine": 53,
         "startChar": 0,
