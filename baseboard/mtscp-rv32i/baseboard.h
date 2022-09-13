@@ -15,11 +15,19 @@
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 #define CONFIG_UART_CONSOLE 0
 
+#define MTK_SECURE_SCP
+
 /* IPI configs */
 #define CONFIG_IPC_SHARED_OBJ_BUF_SIZE 288
+
+#ifndef MTK_SECURE_SCP
 #define CONFIG_IPC_SHARED_OBJ_ADDR \
 	(SCP_FW_END -              \
 	 (CONFIG_IPC_SHARED_OBJ_BUF_SIZE + 2 * 4 /* int32_t */) * 2)
+#define IPC_BUFFER_BASE CONFIG_IPC_SHARED_OBJ_ADDR
+#define IPC_BUFFER_BASE_LOAD (CONFIG_PROGRAM_MEMORY_BASE_LOAD + CONFIG_IPC_SHARED_OBJ_ADDR)
+#endif
+
 #define CONFIG_IPI
 #define CONFIG_RPMSG_NAME_SERVICE
 
@@ -48,6 +56,7 @@
 /*
  * (1) DRAM cacheable region
  * (2) DRAM non-cacheable region
+ * (2.1) secure SCP IPI region
  * (3) Panic data region
  * (4) Kernel DMA allocable region
  * (5) DRAM end address
@@ -59,8 +68,12 @@
  *    | DRAM .bss, .data
  * ---+-------------------- (2) DRAM_NC_BASE (DRAM_NC_SIZE)
  * NC | .dramnc
- *    +-------------------- (3) CONFIG_PANIC_DRAM_BASE (CONFIG_PANIC_DRAM_SIZE)
- *    | Panic Data
+ *    +-------------------- (3) SCP_SHM_BASE (SCP_SHM_SIZE, 64K-aligned)
+ *    | SHM padding
+ *    +  + ---------------- (3.1) CONFIG_PANIC_DRAM_BASE (CONFIG_PANIC_DRAM_SIZE, 4K-aligned)
+ *    |  | Panic Data
+ *    +  + ---------------- (3.2) CONFIG_IPC_SHARED_OBJ_ADDR (CONFIG_IPC_SHARED_OBJ_BUF_SIZE, 1K-aligned )
+ *    |  | secure SCP IPI
  *    +-------------------- (4) KERNEL_BASE (KERNEL_SIZE)
  *    | Kernel DMA allocable
  *    | for MDP, etc.
@@ -74,21 +87,31 @@
  * (4) 0x10500000 0xF00000
  * (5) 0x11400000
  * MT8195
- * (1) 0x10000000 0x4FF000
- * (2) 0x104FF000 0
- * (3) 0x104FF000 0x1000
+ * (1) 0x10000000 0x4F0000
+ * (2) 0x104F0000 0
+ * (3) 0x104F0000 0x10000
+ * (3.1) 0x104F0000 0x1000
+ * (3.2) 0x104F1000 0x250
  * (4) 0x10500000 0xF00000
  * (5) 0x11400000
  */
 
 /* size of (1) */
-#define CONFIG_DRAM_SIZE (DRAM_TOTAL_SIZE - CONFIG_PANIC_DRAM_SIZE - DRAM_NC_SIZE - KERNEL_SIZE)
+#define CONFIG_DRAM_SIZE (DRAM_TOTAL_SIZE - SCP_SHM_SIZE - DRAM_NC_SIZE - KERNEL_SIZE)
 /* base of (2) */
 #define DRAM_NC_BASE (CONFIG_DRAM_BASE + CONFIG_DRAM_SIZE)
 /* base of (3) */
-#define CONFIG_PANIC_DRAM_BASE (DRAM_NC_BASE + DRAM_NC_SIZE)
+#define SCP_SHM_BASE (DRAM_NC_BASE + DRAM_NC_SIZE)
+/* base of (3.1) */
+#define CONFIG_PANIC_DRAM_BASE (SCP_SHM_BASE)
+/* base of (3.2) */
+#ifdef MTK_SECURE_SCP
+#define CONFIG_IPC_SHARED_OBJ_ADDR (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_DRAM_SIZE)
+#define IPC_BUFFER_BASE CONFIG_IPC_SHARED_OBJ_ADDR
+#define IPC_BUFFER_BASE_LOAD (CONFIG_DRAM_BASE_LOAD + (CONFIG_IPC_SHARED_OBJ_ADDR - CONFIG_DRAM_BASE))
+#endif
 /* base of (4) */
-#define KERNEL_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_DRAM_SIZE)
+#define KERNEL_BASE (SCP_SHM_BASE + SCP_SHM_SIZE)
 
 #if defined(CHIP_VARIANT_MT8192)
 /* base of (1) */
@@ -98,6 +121,8 @@
 /* size of (2) */
 #define DRAM_NC_SIZE 0
 /* size of (3) */
+#define SCP_SHM_SIZE 0x10000 /* 64K */
+/* size of (3.1) */
 #define CONFIG_PANIC_DRAM_SIZE 0
 /* size of (4) */
 #define KERNEL_SIZE 0xF00000
@@ -109,6 +134,7 @@
 #define CONFIG_DRAM_BASE 0x10000000
 #define CONFIG_DRAM_BASE_LOAD 0x50000000
 #define DRAM_NC_SIZE 0
+#define SCP_SHM_SIZE 0x10000 /* 64K */
 #define CONFIG_PANIC_DRAM_SIZE 0x00001000 /* 4K */
 #define KERNEL_SIZE 0xF00000
 #define DRAM_TOTAL_SIZE 0x01400000 /* 20 MB */

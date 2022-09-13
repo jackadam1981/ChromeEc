@@ -148,7 +148,11 @@ static void ipi_enable_deferred(void)
 	hostcmd_init();
 #endif
 
+#ifdef MTK_SECURE_SCP
+	task_enable_irq(SCP_IRQ_MBOX0);
+#else
 	task_enable_irq(SCP_IRQ_GIPC_IN0);
+#endif
 }
 DECLARE_DEFERRED(ipi_enable_deferred);
 

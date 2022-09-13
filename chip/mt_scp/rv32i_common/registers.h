@@ -200,6 +200,13 @@
 #define SCP_R_REMAP_0X89AB REG32(SCP_REG_BASE + 0xA5068)
 #define SCP_R_REMAP_0XCDEF REG32(SCP_REG_BASE + 0xA506C)
 
+/* MBOX */
+#define SCP_MBOX_BASE(n) (SCP_REG_BASE + 0xFB100 + (0x1000 * n))
+#define SCP_MBOX_IN_SET(n) REG32(SCP_MBOX_BASE(n) + 0x0)
+#define SCP_MBOX_OUT_SET(n) REG32(SCP_MBOX_BASE(n) + 0x4)
+#define SCP_MBOX_IN_CLR(n) REG32(SCP_MBOX_BASE(n) + 0x8)
+#define SCP_MBOX_OUT_CLR(n) REG32(SCP_MBOX_BASE(n) + 0xC)
+
 /* external address: AP */
 #define AP_REG_BASE 0x60000000 /* 0x10000000 remap to 0x6 */
 /* AP GPIO */

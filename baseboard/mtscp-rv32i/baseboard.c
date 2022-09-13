@@ -13,10 +13,16 @@
 #define SCP_SRAM_END (CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1)))
 
 struct mpu_entry mpu_entries[NR_MPU_ENTRIES] = {
+#ifdef MTK_SECURE_SCP
+	/* SRAM (for most code, data) */
+	{ 0, SCP_FW_END, MPU_ATTR_C | MPU_ATTR_W | MPU_ATTR_R },
+#else
 	/* SRAM (for most code, data) */
 	{ 0, SCP_SRAM_END, MPU_ATTR_C | MPU_ATTR_W | MPU_ATTR_R },
 	/* SRAM (for IPI shared buffer) */
 	{ SCP_SRAM_END, SCP_FW_END, MPU_ATTR_W | MPU_ATTR_R },
+#endif
+
 /* For AP domain */
 #ifdef CHIP_VARIANT_MT8195
 	{ 0x60000000, 0x70000000, MPU_ATTR_W | MPU_ATTR_R | MPU_ATTR_P },
