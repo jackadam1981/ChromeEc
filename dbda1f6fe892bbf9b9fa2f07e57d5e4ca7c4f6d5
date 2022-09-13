@@ -34,6 +34,24 @@
       "parentUuid": "856712d7_9f7408a7",
       "revId": "dbda1f6fe892bbf9b9fa2f07e57d5e4ca7c4f6d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b04dfa_85ca4596",
+        "filename": "zephyr/projects/nissa/xivu/src/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-13T02:32:34Z",
+      "side": 1,
+      "message": "Maybe the previous code has an issue here.\nIn any case, the existing code may work fine with a lack of initial\nupdate with no external power present, but that\u0027s likely just accidental rather than an explicit contract.\nI\u0027m OK with leaving it the way it is, and I may raise a separate bug to fix the different instances.",
+      "parentUuid": "b96a7853_a86e5d9b",
+      "revId": "dbda1f6fe892bbf9b9fa2f07e57d5e4ca7c4f6d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
