@@ -16,9 +16,11 @@
 #include "thermal.h"
 #include "util.h"
 
-#define SENSOR_SOC_FAN_OFF 30
+#define SENSOR_SOC_FAN_OFF_SLOP1 30
+#define SENSOR_SOC_FAN_MAX_SLOP1 52
 #define SENSOR_SOC_FAN_MID 47
-#define SENSOR_SOC_FAN_MAX 53
+#define SENSOR_SOC_FAN_OFF_SLOP2 16
+#define SENSOR_SOC_FAN_MAX_SLOP2 57
 #define SENSOR_DDR_FAN_TURN_OFF 37
 #define SENSOR_DDR_FAN_TURN_ON 38
 #define RECORD_TIME (2 * MINUTE)
@@ -41,16 +43,10 @@ static const struct fan_conf fan_conf_0 = {
 };
 
 static const struct fan_rpm rpm_table[FAN_RPM_TABLE_COUNT] = {
-	[RPM_TABLE_CPU0] = {
+	[RPM_TABLE_CPU] = {
 		.rpm_min = 2200,
 		.rpm_start = 2200,
-		.rpm_max = 3700,
-	},
-
-	[RPM_TABLE_CPU1] = {
-		.rpm_min = 3700,
-		.rpm_start = 3700,
-		.rpm_max = 4000,
+		.rpm_max = 4200,
 	},
 
 	[RPM_TABLE_DDR] = {
@@ -75,7 +71,7 @@ static const struct fan_rpm rpm_table[FAN_RPM_TABLE_COUNT] = {
 struct fan_t fans[FAN_CH_COUNT] = {
 	[FAN_CH_0] = {
 		.conf = &fan_conf_0,
-		.rpm = &rpm_table[RPM_TABLE_CPU0],
+		.rpm = &rpm_table[RPM_TABLE_CPU],
 	},
 };
 
@@ -123,16 +119,16 @@ void board_override_fan_control(int fan, int *tmp)
 	int sensor_ambient;
 
 	/* Decide sensor SOC temperature using which slope. */
-	if (tmp[TEMP_SENSOR_1_SOC] > SENSOR_SOC_FAN_MID) {
+	if (tmp[TEMP_SENSOR_1_SOC] <= SENSOR_SOC_FAN_MID) {
 		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_off =
-			C_TO_K(SENSOR_SOC_FAN_MID);
+			C_TO_K(SENSOR_SOC_FAN_OFF_SLOP1);
 		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_max =
-			C_TO_K(SENSOR_SOC_FAN_MAX);
+			C_TO_K(SENSOR_SOC_FAN_MAX_SLOP1);
 	} else {
 		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_off =
-			C_TO_K(SENSOR_SOC_FAN_OFF);
+			C_TO_K(SENSOR_SOC_FAN_OFF_SLOP2);
 		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_max =
-			C_TO_K(SENSOR_SOC_FAN_MID);
+			C_TO_K(SENSOR_SOC_FAN_MAX_SLOP2);
 	}
 
 	sensor_soc = thermal_fan_percent(
@@ -167,10 +163,7 @@ void board_override_fan_control(int fan, int *tmp)
 			fans[fan].rpm = &rpm_table[RPM_TABLE_CHARGER];
 			pct = sensor_charger;
 		} else if (sensor_soc) {
-			if (tmp[TEMP_SENSOR_1_SOC] > SENSOR_SOC_FAN_MID)
-				fans[fan].rpm = &rpm_table[RPM_TABLE_CPU1];
-			else
-				fans[fan].rpm = &rpm_table[RPM_TABLE_CPU0];
+			fans[fan].rpm = &rpm_table[RPM_TABLE_CPU];
 			pct = sensor_soc;
 		} else if (sensor_ddr) {
 			fans[fan].rpm = &rpm_table[RPM_TABLE_DDR];
