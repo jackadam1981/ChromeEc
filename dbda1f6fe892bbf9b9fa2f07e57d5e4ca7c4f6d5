@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "856712d7_9f7408a7",
+        "filename": "zephyr/projects/nissa/xivu/src/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-13T00:17:11Z",
+      "side": 1,
+      "message": "The only possible issue I see here is the initial time this function is called.\nIf last_extpower_present is 0 at init, and extpower_is_present() returns 0,\nthen extpower_handle_update() won\u0027t be initially called, whereas later\nif it goes -\u003e 1 -\u003e 0 then it will be called.\nSo perhaps initialise last_extpower_present to -1, and use !\u003d instead of ^ for the comparison.\nThis will ensure that extpower_handle_update() will always be called for whatever\ninitial state it is in.\n\nWhether this is required or not is a little tricky, because maybe the code\ngenerally assumes that at the start extpower is not present, and only an initial\ntransition to present is required, and subsequent transitions either way.\nI think it is good to be definitive in the initial case, regardless.",
+      "revId": "dbda1f6fe892bbf9b9fa2f07e57d5e4ca7c4f6d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
