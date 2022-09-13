@@ -137,7 +137,7 @@
 	};
 
 	named-temp-sensors {
-		memory {
+		cpu {
 			compatible = "cros-ec,temp-sensor-thermistor",
 				     "cros-ec,temp-sensor";
 			thermistor = <&thermistor_3V3_51K1_47K_4050B>;
@@ -150,7 +150,7 @@
 			adc = <&adc_temp_sensor_1>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 		};
-		charger {
+		5v_regulator {
 			compatible = "cros-ec,temp-sensor-thermistor",
 				     "cros-ec,temp-sensor";
 			thermistor = <&thermistor_3V3_51K1_47K_4050B>;
@@ -163,7 +163,7 @@
 			adc = <&adc_temp_sensor_2>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 		};
-		ambient {
+		charger {
 			compatible = "cros-ec,temp-sensor-thermistor",
 				     "cros-ec,temp-sensor";
 			thermistor = <&thermistor_3V3_51K1_47K_4050B>;
