@@ -30,7 +30,11 @@
 		smp_coslight_gh02047xl {
 			compatible = "smp,coslight_gh02047xl", "battery-smart";
 		};
-		smp_highpower_gh02047xl {
+		/*
+		 * TODO: Move 'default_battery_3s' label to the
+		 * default 3S battery.
+		 */
+		default_battery_3s:smp_highpower_gh02047xl {
 			compatible = "smp,highpower_gh02047xl", "battery-smart";
 		};
 	};
