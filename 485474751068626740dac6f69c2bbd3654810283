@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e6a380_695b7972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-13T03:43:19Z",
+      "side": 1,
+      "message": "This is just a trial version. \nIn order to test rollback_get_secret, I created a mock for get_latest_rollback. I can successfully reproduce the 3 scenarios that rollback_get_secret sees as the output of get_latest_rollback: (1) negative return value, (2) Trivial secret, and (3) real secret value. Since rollback_get_secret is by itself a mockable function with default value, I am not sure how to disable this in order to test it. Please advise.",
+      "revId": "485474751068626740dac6f69c2bbd3654810283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
