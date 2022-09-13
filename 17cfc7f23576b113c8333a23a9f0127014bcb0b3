@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8ea88a_0a0acf8c",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-13T22:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0000532a_52e6f3f6",
+      "range": {
+        "startLine": 189,
+        "startChar": 6,
+        "endLine": 189,
+        "endChar": 16
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76c5c8cc_a54913ff",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-02T20:28:49Z",
       "side": 1,
       "message": "Retimer",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084add31_907f6cc4",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-13T22:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e0fd83_8865edbe",
       "range": {
         "startLine": 35,
         "startChar": 5,
@@ -169,6 +217,30 @@
       "writtenOn": "2022-08-02T20:28:49Z",
       "side": 1,
       "message": "This section seems to be a duplicate of the Zephyr EC PD Configuration.\n\nIf USB-C always requires PD, then the overall devicetree example should be here.  Otherwise only show this example in the PD section.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "595e8db0_5826f62a",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-13T22:10:32Z",
+      "side": 1,
+      "message": "I removed the example",
+      "parentUuid": "0d7afa23_de76aa30",
       "range": {
         "startLine": 49,
         "startChar": 0,
