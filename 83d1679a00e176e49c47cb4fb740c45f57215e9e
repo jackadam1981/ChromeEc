@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "43fdceca_c452aa65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-13T21:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5962d564_bfc05381",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "83d1679a00e176e49c47cb4fb740c45f57215e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5572518c_a0111977",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,24 @@
       "writtenOn": "2022-09-13T21:38:42Z",
       "side": 1,
       "message": "I know this is not yet marked \u0027verrified\u0027, but this thing caught my eye:\n\nthe magic is not for TI50, it is for the header coming from any GSC. The \u0027version\u0027 field is more of an indicator of which chip it is coming from, but consceivably the same chips might report different versions or different chips report the same version.\n\nFor this reason CCD info report is probably not a good place to identify the chip.",
+      "revId": "83d1679a00e176e49c47cb4fb740c45f57215e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f5d310_928c3a73",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-13T21:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b53c713_d51076f5",
       "revId": "83d1679a00e176e49c47cb4fb740c45f57215e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
