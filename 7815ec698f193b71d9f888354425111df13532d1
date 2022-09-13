@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa501e7_b8724682",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2221,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-13T15:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eace1460_789df442",
+      "range": {
+        "startLine": 2221,
+        "startChar": 8,
+        "endLine": 2221,
+        "endChar": 25
+      },
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4858456_474bb57a",
@@ -376,6 +400,30 @@
       "side": 1,
       "message": "In line 112 added assert verifying that arrays of capabiilties in different layouts have the same size.",
       "parentUuid": "bb1cf63f_cb950e73",
+      "range": {
+        "startLine": 2315,
+        "startChar": 0,
+        "endLine": 2317,
+        "endChar": 60
+      },
+      "revId": "7815ec698f193b71d9f888354425111df13532d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0ea523_1f3be1a0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2317,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-13T15:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce42d21c_bc5160d0",
       "range": {
         "startLine": 2315,
         "startChar": 0,
