@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbec1c69_6976979d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-13T22:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cf49666_9005f1b8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc3e4d9_cc13e33e",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-13T22:15:04Z",
       "side": 1,
       "message": "I think copyright modification shouldn\u0027t be in this CL",
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6f54ab_3e77fd88",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-13T22:56:33Z",
+      "side": 1,
+      "message": "I was not able to upload to the repo without this change. It was complaining at it.",
+      "parentUuid": "dbc3e4d9_cc13e33e",
       "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +113,42 @@
       "writtenOn": "2022-09-13T22:15:04Z",
       "side": 1,
       "message": "This should appear in the `fpsensor_state_mock.h` file also, since it is used there, too.",
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cf048b_d4a3d093",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-13T22:56:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "254eaa65_94e373d1",
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17d5bf9a_d17c113b",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-13T22:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8125cfc_b2b6ca27",
       "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
