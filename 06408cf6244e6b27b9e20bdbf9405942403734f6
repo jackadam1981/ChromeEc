@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13af3d8_fdd098ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:21:04Z",
+      "side": 1,
+      "message": "Format of this line is \"BUG\u003db:\u003cbug-number\u003e\".  Gerrit auto-generates the buganizer link.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "06408cf6244e6b27b9e20bdbf9405942403734f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f80408bf_0bac75cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:21:04Z",
+      "side": 1,
+      "message": "Can you test this on a real brya device?",
+      "revId": "06408cf6244e6b27b9e20bdbf9405942403734f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b3457c_5bed41d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:21:04Z",
+      "side": 1,
+      "message": "\"none\" is the convention to use unless this change is targeting a specific firmware branch or release.",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "06408cf6244e6b27b9e20bdbf9405942403734f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd8572da_262e7a57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T20:21:04Z",
+      "side": 1,
+      "message": "Looks like maybe you didn\u0027t run the pre-submit checks?",
+      "revId": "06408cf6244e6b27b9e20bdbf9405942403734f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
