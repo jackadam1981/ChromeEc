@@ -34,6 +34,23 @@
       "parentUuid": "942a1f06_e49d042b",
       "revId": "cb72a8e0a2ed7d896c965af9f7a173f9728a87d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99bf972c_5d622d81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-13T19:00:52Z",
+      "side": 1,
+      "message": "Ah, looks like this is happening across the whole codebase. I\u0027ll refrain from comments )\n\nI see  whitespace changes in \n\nboard/cr50/closed_source_set1.c\nboard/cr50/tpm2/ecies.c\nboard/cr50/tpm2/trng.c\nchip/g/flash_config.h\nchip/g/usb_spi.c\ncommon/backlight_lid.c\ncommon/gesture.c\ncommon/i2c_wedge.c\ncommon/led_policy_std.c\ncommon/motion_lid.c\ncommon/power_button.c\ncommon/spi_commands.c\ndriver/sync.c\ndriver/sync.h\nfuzz/host_command_fuzz.c\ninclude/battery_bq27621_g1.h\ninclude/battery_smart.h\ninclude/charge_state_v1.h\ninclude/display_7seg.h\ninclude/motion_lid.h\ninclude/usb_bb.h\ninclude/usb_pe_sm.h\ninclude/usb_prl_sm.h\ninclude/usb_tc_sm.h\ninclude/vec4.h\nsetup.py\ntest/rsa.c\ntest/tpm_test/testlib/common.h\nutil/ecst.c\n\n\nI guess it\u0027s ok, but ideally this should have been just the header line change.",
+      "revId": "cb72a8e0a2ed7d896c965af9f7a173f9728a87d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
