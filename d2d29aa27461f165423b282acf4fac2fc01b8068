@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f983a8_d278c5b3",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-13T13:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d5639ea_0b98584a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7694bffa_be049aa3",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "First of all, it was literally written in the bug description:\n` but anything related to the hardware configuration, the I2C device address and the power-good-gpio pin should be moved to separate node.\n`\nDespite the bug, I was thinking that everything related to hardware should be placed in the node that defines the hardware e.g. chip on the I2C bus.\n\nBut now I\u0027m thinking, that only properties that are handled by the sensor driver should be placed in the new nodes. IMO power-good-pin shouldn\u0027t be handled by the drivers so I think `power-good-gpio` should stay in the `named-temp-sensors` node and be handled by the shim code. I will change that.",
       "parentUuid": "7694bffa_be049aa3",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c49267c9_b141770e",
+        "filename": "zephyr/dts/bindings/temp/cros-ec,temp-sensor.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-13T13:30:49Z",
+      "side": 1,
+      "message": "I moved it back to `named-temp-sensors`.",
+      "parentUuid": "008b408f_2059b33e",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -135,6 +183,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fffe900_d0c17ea0",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-13T13:30:49Z",
+      "side": 1,
+      "message": "`enum temp_sensor_id` is created based on the sensor nodes, not `named-temp-sensors` so `FOREACH_TEMP_SENSOR` doesn\u0027t fit here.",
+      "parentUuid": "5dd57fd6_2b11aa54",
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2ce5ed4_7dcde36d",
@@ -148,6 +214,30 @@
       "writtenOn": "2022-09-09T16:09:51Z",
       "side": 1,
       "message": "Is this used?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "d2d29aa27461f165423b282acf4fac2fc01b8068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64aaa10_34afc2f5",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-13T13:30:49Z",
+      "side": 1,
+      "message": "It has been used only in the shim layer and tests, so I\u0027ve removed that and adjusted the code.",
+      "parentUuid": "e2ce5ed4_7dcde36d",
       "range": {
         "startLine": 46,
         "startChar": 0,
