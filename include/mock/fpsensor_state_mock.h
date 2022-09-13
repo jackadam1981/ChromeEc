@@ -1,4 +1,4 @@
-/* Copyright 2020 The ChromiumOS Authors
+/* Copyright 2020 The ChromiumOS Authors.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -8,6 +8,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include "driver/fingerprint/fpsensor.h"
 #include "ec_commands.h"
 
 extern const uint8_t default_fake_tpm_seed[FP_CONTEXT_TPM_BYTES];
