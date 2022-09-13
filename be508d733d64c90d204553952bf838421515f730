@@ -69,6 +69,24 @@
       "parentUuid": "e9d502a8_b91b44a3",
       "revId": "be508d733d64c90d204553952bf838421515f730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49fb6f40_d5539a15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-13T17:47:12Z",
+      "side": 1,
+      "message": "It would be better if we do \u0027curr.batt.state_of_charge \u003c\u003d CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE\u0027 in a function:\n\n    bool battery_is_below_shutdown_threshold(int percent)\n    {\n        percent \u003c\u003d CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE);\n    }\n\nThat\u0027ll keep CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE in once place and prevent inconsistency from happening in terms of low-battery judgement. Also, it\u0027s easy to update the logic (e.g. to \u0027display_charge \u003c\u003d 0\u0027). \n\n\u003e the implementation is equivalent by translate the mapping from raw battery charge level to display charge level,\n\nIt\u0027s equivalent. However, ideally, we should use CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE only to calculate display_charge and the rest of the host related code should compare display_charge with 0.",
+      "parentUuid": "e2f35a82_06d7a6ec",
+      "revId": "be508d733d64c90d204553952bf838421515f730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
