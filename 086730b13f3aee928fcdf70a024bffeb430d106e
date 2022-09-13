@@ -105,6 +105,23 @@
       "parentUuid": "97d47fdc_3708ec6a",
       "revId": "086730b13f3aee928fcdf70a024bffeb430d106e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361b5303_422662fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-13T21:43:39Z",
+      "side": 1,
+      "message": "I see that it\u0027s complaining because of low coverage. I\u0027m not sure how easy it\u0027s going to be to test this. It looks like you can [disable the warning](http://go/zoss-low-coverage-alerting-setup-dogfood) by adding `LOW_COVERAGE_REASON\u003dreason`.",
+      "revId": "086730b13f3aee928fcdf70a024bffeb430d106e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
