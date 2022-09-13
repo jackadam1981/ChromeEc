@@ -217,11 +217,11 @@ static void sha_update(union sha_ctx *ctx, const void *data, size_t len);
 static void sha_final_into_block_digest(union sha_ctx *ctx, void *block_digest,
 					size_t size);
 
+#define MAX_BUF_SIZE	(SIGNED_TRANSFER_SIZE + sizeof(struct upgrade_pkt))
 /*
- * This by far exceeds the largest vendor command response size we ever
- * expect.
+ * Ensure this exceeds the largest vendor command response size we ever expect.
  */
-#define MAX_BUF_SIZE	500
+BUILD_ASSERT(MAX_BUF_SIZE > 500);
 
 /*
  * Max. length of the board ID string representation.
