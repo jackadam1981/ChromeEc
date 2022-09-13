@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf49666_9005f1b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-13T22:15:04Z",
+      "side": 1,
+      "message": "Can you test with and without `private` directory? The reason being that fpsensor.h file changes its behavior based on having private libs and I believe we have seen issues arise in the public/non-private builds.\n\nIf you are using the normal internal chromiumos checkout, you can do the following to test without privat libs:\n\n```\ncd src/platform/ec\nmv private ignore-private\n# Run tests in the public / non-private way\nmv ignore-private private\n```",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc3e4d9_cc13e33e",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-13T22:15:04Z",
+      "side": 1,
+      "message": "I think copyright modification shouldn\u0027t be in this CL",
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8125cfc_b2b6ca27",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-13T22:15:04Z",
+      "side": 1,
+      "message": "Can you move this with the other includes?",
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "254eaa65_94e373d1",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-13T22:15:04Z",
+      "side": 1,
+      "message": "This should appear in the `fpsensor_state_mock.h` file also, since it is used there, too.",
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
