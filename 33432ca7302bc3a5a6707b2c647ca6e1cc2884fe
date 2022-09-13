@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6da88b50_22114e13",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-13T15:05:11Z",
+      "side": 1,
+      "message": "So I tried:\n`\u0027./twister --clobber -i -s zephyr/test/drivers/drivers.default -b -x EXTRA_CFLAGS\u003d-DCONFIG_PLATFORM_EC_DEBUG_SYMBOLS\u0027`\n\nI\u0027ve confirmed this does add the `-DCONFIG_PLATFORM_EC_DEBUG_SYMBOLS` but it still doesn\u0027t work. I think this is because the CMake stuff gets evaluated *before* the `-DCONFIG_PLATFORM_EC_DEBUG_SYMBOLS` is added. Hence the new ifdef CMake flags code won\u0027t evaluate to adding the flags when we need it to.\n\nI think just the enabling/disabling of the option in the prj.conf is how we should do this for now. It does leave with a dirty git, but only a single line.\n\nThere should be a feature for this in twister though, I can make that bug if you think it\u0027s valuable enough.",
+      "parentUuid": "826a303e_fb7cc909",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "33432ca7302bc3a5a6707b2c647ca6e1cc2884fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "938e1e1d_3692dc06",
         "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
         "patchSetId": 1
