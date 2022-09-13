@@ -2305,6 +2305,7 @@ static void print_ccd_info(void *response, size_t response_size)
 	}
 
 	/* Now report CCD state on the console. */
+	printf("Format: %d\n", ccd_info_version);
 	printf("State: %s\n", ccd_info.ccd_state > ARRAY_SIZE(state_names) ?
 	       "Error" : state_names[ccd_info.ccd_state]);
 	printf("Password: %s\n", (ccd_info.ccd_indicator_bitmap &
