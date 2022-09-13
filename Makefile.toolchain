@@ -30,7 +30,7 @@ endif
 USE_BUILTIN_STDLIB:=1
 
 # Extract cc-name
-cc-name:=$(shell $(CC) -v 2>&1 | grep -q "clang version" && echo clang || echo gcc)
+cc-name:=$(shell x86_64-pc-linux-gnu-$(CC) -v 2>&1 | grep -q "clang version" && echo clang || echo gcc)
 
 # Assume we want to use same compiler for both C and C++
 ifeq ($(cc-name),gcc)
