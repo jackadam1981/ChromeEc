@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dbf8c17_3a7a6f09",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-13T20:34:58Z",
+      "side": 1,
+      "message": "I think you could have a zassume that we have at least TEST_PORT number of USB-C ports, if the aim is to ensure you have a valid USB-C port to operate on",
+      "parentUuid": "4758b737_81baa8f9",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61603def_04df0653",
         "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
         "patchSetId": 5
@@ -88,6 +106,47 @@
       "writtenOn": "2022-09-13T16:39:23Z",
       "side": 1,
       "message": "I\u0027m a little dubious about calling `pd_notify_event` and `hook_notify`, which are internal to the running EC, instead of provoking these things to happen by externally stimulating the EC by sending a Hard Reset to the emulated TCPC or setting the values of the sleep signals. But we already have tests that call `hook_notify`, so I guess it\u0027s fine.",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f423a6_399527c3",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-13T20:34:58Z",
+      "side": 1,
+      "message": "We do have pretty nice partner emulators at this point which you can \"plug in\" to simulate things.  It even has a `tcpci_partner_common_send_hard_reset()` already",
+      "parentUuid": "de44c503_bd777a69",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2376c1b3_2cf002bb",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-13T20:34:58Z",
+      "side": 1,
+      "message": "I think it\u0027s preferred to use a host command to get state, rather than internal APIs.  There\u0027s a utility helper for the TYPEC_STATUS command you could use: `host_cmd_typec_status()`",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 27
+      },
       "revId": "77e522c6717f21695be623bc7039a45e19365d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
