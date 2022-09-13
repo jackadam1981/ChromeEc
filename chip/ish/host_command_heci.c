@@ -1,4 +1,4 @@
-/* Copyright 2019 The ChromiumOS Authors
+/* Copyright 2019 The ChromiumOS Authors.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -119,7 +119,9 @@ static void cros_ec_ishtp_subsys_new_msg_received(const heci_handle_t handle,
 	heci_packet.response_size = 0;
 
 	heci_packet.driver_result = EC_RES_SUCCESS;
+#ifdef HAS_TASK_HOSTCMD
 	host_packet_receive(&heci_packet);
+#endif
 }
 
 /*
