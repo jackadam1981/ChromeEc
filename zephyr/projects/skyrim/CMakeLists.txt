@@ -38,5 +38,6 @@ if(DEFINED CONFIG_BOARD_WINTERHOLD)
 	project(winterhold)
 	zephyr_library_sources(
     		"src/winterhold/usbc_config.c"
+			"src/winterhold/kb_backlight.c"
     )
 endif()
