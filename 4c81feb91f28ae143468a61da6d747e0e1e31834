@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fae5876c_b9e33d40",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-13T20:17:06Z",
+      "side": 1,
+      "message": "How about:\n\n    if (chip_id \u003d\u003d CPS8100) {\n        /* already probed but unlock again in case it\u0027s turned off.\n        msleep(120);\n        return cps8100_unlock();\n    } else if {chip_id \u003d\u003d CPS8200) {\n        msleep(50);\n        return cps8200_unlock();\n    }\n    \n    /* not probed yet. need to unlock blindly first. */\n    msleep(120);\n    if (!cps8100_unlock())\n        rv \u003d cps8100_read32();\n    else if (!cps8200_unlock())\n        rv \u003d cps8200_read32();\n    \n    if (rv) {\n        CPRINTS(\"Failed\");\n        return rv;\n    }\n    \n    CPRINTS(\"IC\u003d0x%08x\", u32);\n    ... (continue to line 402) ...\n\nI think this code has a reasonable balance between complexity and boot speed (when supporting 8100 and 8200 with a single binary). I still don\u0027t like HOOK task sleeps 120 msec on every boot but adding another static variable (i.e. unlocked) adds more complexity... (especially for clearing it).\n\nWe can make PCHG task call pchg_startup. That\u0027ll allow pchg drivers to sleep without slowing down the system. That\u0027s a little too big a change.",
+      "parentUuid": "657502db_f52296da",
+      "range": {
+        "startLine": 372,
+        "startChar": 11,
+        "endLine": 372,
+        "endChar": 32
+      },
+      "revId": "4c81feb91f28ae143468a61da6d747e0e1e31834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3724738d_cc2805ad",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 9
