@@ -16,6 +16,23 @@
       "message": "d",
       "revId": "bff08d253ddfc9437ef1dc3f18e4286c760e6b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a13b4d3d_1743d075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-13T14:12:07Z",
+      "side": 1,
+      "message": "This looks good.  It seems like it\u0027ll create an equivalent result other Chromebooks would have had from usb_get_battery_soc() with no battery or charger defined. ",
+      "revId": "bff08d253ddfc9437ef1dc3f18e4286c760e6b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
