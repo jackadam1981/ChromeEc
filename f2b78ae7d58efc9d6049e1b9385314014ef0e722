@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd45ee2_6ed33e06",
+        "filename": "zephyr/test/drivers/keyboard_scan/src/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-13T23:23:54Z",
+      "side": 1,
+      "message": "assume",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "f2b78ae7d58efc9d6049e1b9385314014ef0e722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6937562f_10fdc69e",
+        "filename": "zephyr/test/drivers/keyboard_scan/src/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-13T23:23:54Z",
+      "side": 1,
+      "message": "This assert is meaningless, now that the tests finished, right?",
+      "revId": "f2b78ae7d58efc9d6049e1b9385314014ef0e722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c22fd7_fb09e61c",
+        "filename": "zephyr/test/drivers/keyboard_scan/src/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-13T23:23:54Z",
+      "side": 1,
+      "message": "The new test leaves the interrupt line asserted. Will this cause it to be deasserted before the next test?",
+      "revId": "f2b78ae7d58efc9d6049e1b9385314014ef0e722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
