@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b02106_20b41783",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T17:46:20Z",
+      "side": 1,
+      "message": "See the comment from config_chip.h.  This Kconfig option isn\u0027t needed if you create an alias node to set the on-body sensor type.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "9da1dcb1b62de67422d8d15eb46b941e295ab1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

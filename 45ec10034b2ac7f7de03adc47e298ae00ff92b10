@@ -141,6 +141,30 @@
       },
       "revId": "45ec10034b2ac7f7de03adc47e298ae00ff92b10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de8b7c6_9de244bc",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-13T17:46:20Z",
+      "side": 1,
+      "message": "The preferred way would be to create an alias node in the devicetree to define the sensor ID for the on-body detection.\n\n```\n/* From motionsense.dts */\naliases {\n    /* Use base accelerometer for on-body sensor */\n    on-body-sensor \u003d \u0026base_accel;\n};\n\naliases {\n    /* Use lid accelerometer for on-body sensor */\n    on-body-sensor \u003d \u0026lid_accel;\n};\n```\n\nThen you define the CONFIG_BODY_DETECTION_SENSOR macro:\n```\n#define CONFIG_BODY_DETECTION_SENSOR SENSOR_ID(DT_ALIAS(on_body_sensor))\n```\n\nAnd you can also delete `CONFIG_PLATFORM_EC_BODY_DETECTION_SENSOR` from the Kconfig definition.",
+      "parentUuid": "112524d4_b0a96a7b",
+      "range": {
+        "startLine": 1895,
+        "startChar": 60,
+        "endLine": 1895,
+        "endChar": 70
+      },
+      "revId": "45ec10034b2ac7f7de03adc47e298ae00ff92b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
