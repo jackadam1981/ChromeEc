@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f247b8_6feb33cd",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-13T16:39:23Z",
+      "side": 1,
+      "message": "interactions",
+      "range": {
+        "startLine": 5,
+        "startChar": 17,
+        "endLine": 5,
+        "endChar": 29
+      },
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4758b737_81baa8f9",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-13T16:39:23Z",
+      "side": 1,
+      "message": "You don\u0027t need to do this. It\u0027s obviously 0. Hypothetically, it might be interesting to test at build time that the port has the desired properties in the device tree, but I\u0027m not sure the specifics even matter for this test.",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61603def_04df0653",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-13T16:39:23Z",
+      "side": 1,
+      "message": "Depending on when this test runs, that might not be true. I\u0027d suggest just setting it to S0 in `_before` and not doing anything with it in `_after`.",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53854b05_de42d431",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-13T16:39:23Z",
+      "side": 1,
+      "message": "It might be a good idea to clear PD events in `_after` or `_teardown`.",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de44c503_bd777a69",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-13T16:39:23Z",
+      "side": 1,
+      "message": "I\u0027m a little dubious about calling `pd_notify_event` and `hook_notify`, which are internal to the running EC, instead of provoking these things to happen by externally stimulating the EC by sending a Hard Reset to the emulated TCPC or setting the values of the sleep signals. But we already have tests that call `hook_notify`, so I guess it\u0027s fine.",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
