@@ -255,7 +255,9 @@ BUILD_ASSERT((CR50_CCD_CAP_COUNT/32) == (TI50_CCD_CAP_COUNT/32));
  * this is a later version packet.
  */
 #define CCD_INFO_MAGIC 0x49444343  /* This is 'CCDI' in little endian. */
-#define CCD_VERSION             1  /* Ti50 CCD INFO layout. */
+#define TI50_CCD_CAP_STATE_NEVER 0      /* Ti50 uses 0 for the Never state */
+/* Ti50 uses the Never state. Cr50 uses UnlessLocked */
+#define FULL_CAP_STATE_NAMES { "Never", "Always", "UnlessLocked", "IfOpened" }
 
 struct ccd_info_response_header {
 	uint32_t ccd_magic;
@@ -2238,7 +2240,7 @@ static void print_ccd_info(void *response, size_t response_size)
 	size_t i;
 	const struct ccd_capability_info cr50_cap_info[] = CAP_INFO_DATA;
 	const char *state_names[] = CCD_STATE_NAMES;
-	const char *cap_state_names[] = CCD_CAP_STATE_NAMES;
+	const char *cap_state_names[] = FULL_CAP_STATE_NAMES;
 	uint32_t caps_bitmap = 0;
 	uint32_t ccd_info_version;
 
@@ -2329,6 +2331,9 @@ static void print_ccd_info(void *response, size_t response_size)
 		cap_default = (ccd_info.ccd_caps_defaults[index] >> shift)
 							 & CCD_CAP_BITMASK;
 
+		printf("  ");
+		print_aligned(gsc_capability_info[i].name, name_column_width);
+
 		if (ccd_info.ccd_force_disabled) {
 			is_enabled = 0;
 		} else {
@@ -2340,15 +2345,20 @@ static void print_ccd_info(void *response, size_t response_size)
 				is_enabled = (ccd_info.ccd_state !=
 					      CCD_STATE_LOCKED);
 				break;
-			default:
+			case CCD_CAP_STATE_IF_OPENED:
 				is_enabled = (ccd_info.ccd_state ==
 					      CCD_STATE_OPENED);
 				break;
+			case TI50_CCD_CAP_STATE_NEVER:
+				is_enabled = 0;
+				break;
+			default:
+				printf(": invalid value %d\n",
+					cap_current);
+				exit(update_error);
 			}
 		}
 
-		printf("  ");
-		print_aligned(gsc_capability_info[i].name, name_column_width);
 		printf("%c %s",
 		       is_enabled ? 'Y' : '-',
 		       cap_state_names[cap_current]);
