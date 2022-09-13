@@ -34,6 +34,24 @@
       "parentUuid": "b8fa24a8_02a372d0",
       "revId": "8fca3f011b2333aab9add12d0c60ad2202e3249f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae3de54_17106f6d",
+        "filename": "zephyr/projects/nissa/yaviks/overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-13T06:31:05Z",
+      "side": 1,
+      "message": "It would be good to add a TEMP_SENSOR_PP5000_REGULATOR enum-name to the dts bindings so that the name is meaningful.",
+      "parentUuid": "3e5b2823_23b24278",
+      "revId": "8fca3f011b2333aab9add12d0c60ad2202e3249f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
