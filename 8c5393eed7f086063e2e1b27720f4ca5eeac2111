@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9feecc4c_ec536531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-09-13T02:37:34Z",
+      "side": 1,
+      "message": "Also, it seems like nothing actually uses the data field. It was added as a convenience in CL:3865658, but even that CL doesn\u0027t use it. So maybe the right solution is to just remove the data field?",
+      "revId": "8c5393eed7f086063e2e1b27720f4ca5eeac2111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
