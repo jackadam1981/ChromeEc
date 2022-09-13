@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "657502db_f52296da",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-09-13T15:56:23Z",
+      "side": 1,
+      "message": "We can skip probing but we can\u0027t skip the i2c enable and unlock. Think about system shutdown and boot, pchg_shutdown() will be called when system shutdown,  pchg_startup() will be called when system boot, the chip is powered off and on so we need to enable i2c and unlock. In this case, the chip_id is set, if we skip i2c enable and unlock, we won\u0027t be unable to access i2c registers. \n\nSo I add the check at line 397 to skip the probing but keep i2c enable and unlock, thought?",
+      "parentUuid": "3b550f9e_14e7f631",
+      "range": {
+        "startLine": 372,
+        "startChar": 11,
+        "endLine": 372,
+        "endChar": 32
+      },
+      "revId": "4c81feb91f28ae143468a61da6d747e0e1e31834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3724738d_cc2805ad",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-12T22:04:24Z",
       "side": 1,
       "message": "nit: Please use\n\n    /*\n     *\n     */\n\nstyle.",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 58
+      },
+      "revId": "4c81feb91f28ae143468a61da6d747e0e1e31834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08673581_b953e869",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-09-13T15:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3724738d_cc2805ad",
       "range": {
         "startLine": 378,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-12T22:04:24Z",
       "side": 1,
       "message": "Do you think we should set chip_id to CPS_CHIPID_UNKNOWN or something (so that we won\u0027t need to probe a bad chip again)?",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 8
+      },
+      "revId": "4c81feb91f28ae143468a61da6d747e0e1e31834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2572bd_c6d55274",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-09-13T15:56:23Z",
+      "side": 1,
+      "message": "If we set chip_id to CPS_CHIPID_UNKNOWN and skip the probing when chip_id is CPS_CHIPID_UNKNOWN, the chip won\u0027t be probed until EC reset. If we leave the chip id uninitialized, we will have chance to probe it in the next boot. thought?",
+      "parentUuid": "4a6393b1_f233911a",
       "range": {
         "startLine": 400,
         "startChar": 4,
@@ -106,6 +178,30 @@
       "writtenOn": "2022-09-12T22:04:24Z",
       "side": 1,
       "message": "Also, we probably want to print an error when this read fails. Ditto for IC\u003d.\n\nnit: These can be one line.",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 9
+      },
+      "revId": "4c81feb91f28ae143468a61da6d747e0e1e31834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80545501_7d4a02e1",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-09-13T15:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f846abc_00ae38db",
       "range": {
         "startLine": 406,
         "startChar": 0,
