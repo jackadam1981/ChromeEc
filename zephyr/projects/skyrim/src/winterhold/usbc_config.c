@@ -269,21 +269,7 @@ static int ioex_set_flip(const struct usb_mux *me, mux_state_t mux_state,
 
 static void setup_mux(void)
 {
-	uint32_t val;
-
-	if (cros_cbi_get_fw_config(FW_IO_DB, &val) != 0)
-		CPRINTSUSB("Error finding FW_DB_IO in CBI FW_CONFIG");
-	/* Val will have our dts default on error, so continue setup */
-
-	if (val == FW_IO_DB_PS8811_PS8818) {
-		CPRINTSUSB("C1: Setting PS8818 mux");
-		usb_muxes[USBC_PORT_C1].next = &usbc1_ps8818;
-	} else if (val == FW_IO_DB_NONE_ANX7483) {
-		CPRINTSUSB("C1: Setting ANX7483 mux");
-		usb_muxes[USBC_PORT_C1].next = &usbc1_anx7483;
-	} else {
-		CPRINTSUSB("Unexpected DB_IO board: %d", val);
-	}
+	usb_muxes[USBC_PORT_C1].next_mux = &usbc1_anx7483;
 }
 DECLARE_HOOK(HOOK_INIT, setup_mux, HOOK_PRIO_INIT_I2C);
 
