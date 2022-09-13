@@ -12,15 +12,24 @@
 #include "fan.h"
 #include "hooks.h"
 #include "pwm.h"
+#include "tablet_mode.h"
 #include "timer.h"
 #include "thermal.h"
 #include "util.h"
 
-#define SENSOR_SOC_FAN_OFF 30
-#define SENSOR_SOC_FAN_MID 47
-#define SENSOR_SOC_FAN_MAX 53
-#define SENSOR_DDR_FAN_TURN_OFF 37
-#define SENSOR_DDR_FAN_TURN_ON 38
+#define SENSOR_SOC_FAN_OFF_SLOP1 24
+#define SENSOR_SOC_FAN_MAX_SLOP1 51
+#define SENSOR_SOC_FAN_OFF_SLOP2 29
+#define SENSOR_SOC_FAN_MAX_SLOP2 48
+#define SENSOR_SOC_FAN_OFF_SLOP1_TABLET 25
+#define SENSOR_SOC_FAN_MAX_SLOP1_TABLET 52
+#define SENSOR_SOC_FAN_OFF_SLOP2_TABLET 30
+#define SENSOR_SOC_FAN_MAX_SLOP2_TABLET 49
+#define SENSOR_SOC_FAN_SLOP_THRESHOLD 45
+#define SENSOR_DDR_FAN_TURN_OFF 38
+#define SENSOR_DDR_FAN_TURN_ON 44
+#define SENSOR_DDR_FAN_TURN_OFF_TABLET 38
+#define SENSOR_DDR_FAN_TURN_ON_TABLET 44
 #define RECORD_TIME (2 * MINUTE)
 
 /* MFT channels. These are logically separate from pwm_channels. */
@@ -41,15 +50,15 @@ static const struct fan_conf fan_conf_0 = {
 };
 
 static const struct fan_rpm rpm_table[FAN_RPM_TABLE_COUNT] = {
-	[RPM_TABLE_CPU0] = {
-		.rpm_min = 2200,
-		.rpm_start = 2200,
-		.rpm_max = 3700,
+	[RPM_TABLE_CPU] = {
+		.rpm_min = 0,
+		.rpm_start = 0,
+		.rpm_max = 4000,
 	},
 
-	[RPM_TABLE_CPU1] = {
-		.rpm_min = 3700,
-		.rpm_start = 3700,
+	[RPM_TABLE_CPU_TABLET] = {
+		.rpm_min = 0,
+		.rpm_start = 0,
 		.rpm_max = 4000,
 	},
 
@@ -75,7 +84,29 @@ static const struct fan_rpm rpm_table[FAN_RPM_TABLE_COUNT] = {
 struct fan_t fans[FAN_CH_COUNT] = {
 	[FAN_CH_0] = {
 		.conf = &fan_conf_0,
-		.rpm = &rpm_table[RPM_TABLE_CPU0],
+		.rpm = &rpm_table[RPM_TABLE_CPU],
+	},
+};
+
+struct thermal_policy_config thermal_cfg[THERMAL_CFG_TABLE_COUNT] = {
+	[LAPTOP_MODE] = {
+		.fan_off_slop1 = SENSOR_SOC_FAN_OFF_SLOP1,
+		.fan_max_slop1 = SENSOR_SOC_FAN_MAX_SLOP1,
+		.fan_off_slop2 = SENSOR_SOC_FAN_OFF_SLOP2,
+		.fan_max_slop2 = SENSOR_SOC_FAN_MAX_SLOP2,
+		.ddr_fan_turn_off = SENSOR_DDR_FAN_TURN_OFF,
+		.ddr_fan_turn_on = SENSOR_DDR_FAN_TURN_ON,
+		.rpm_table_cpu = RPM_TABLE_CPU,
+	},
+
+	[TABLET_MODE] = {
+		.fan_off_slop1 = SENSOR_SOC_FAN_OFF_SLOP1_TABLET,
+		.fan_max_slop1 = SENSOR_SOC_FAN_MAX_SLOP1_TABLET,
+		.fan_off_slop2 = SENSOR_SOC_FAN_OFF_SLOP2_TABLET,
+		.fan_max_slop2 = SENSOR_SOC_FAN_MAX_SLOP2_TABLET,
+		.ddr_fan_turn_off = SENSOR_DDR_FAN_TURN_OFF_TABLET,
+		.ddr_fan_turn_on = SENSOR_DDR_FAN_TURN_ON_TABLET,
+		.rpm_table_cpu = RPM_TABLE_CPU_TABLET,
 	},
 };
 
@@ -116,24 +147,31 @@ void board_override_fan_control(int fan, int *tmp)
 	 * Sensor SOC has two slopes for fan speed.
 	 * Sensor DDR also become a fan on/off switch.
 	 */
+	struct thermal_policy_config *t;
 	static int pct;
 	int sensor_soc;
 	int sensor_ddr;
 	int sensor_charger;
 	int sensor_ambient;
+	int fan_off;
+	int fan_max;
+
+	/* Decide is tablet mode or laptop mode. */
+	if (tablet_get_mode())
+		t = &thermal_cfg[TABLET_MODE];
+	else
+		t = &thermal_cfg[LAPTOP_MODE];
 
 	/* Decide sensor SOC temperature using which slope. */
-	if (tmp[TEMP_SENSOR_1_SOC] > SENSOR_SOC_FAN_MID) {
-		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_off =
-			C_TO_K(SENSOR_SOC_FAN_MID);
-		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_max =
-			C_TO_K(SENSOR_SOC_FAN_MAX);
+	if (tmp[TEMP_SENSOR_1_SOC] <= SENSOR_SOC_FAN_SLOP_THRESHOLD) {
+		fan_off = t->fan_off_slop1;
+		fan_max = t->fan_max_slop1;
 	} else {
-		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_off =
-			C_TO_K(SENSOR_SOC_FAN_OFF);
-		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_max =
-			C_TO_K(SENSOR_SOC_FAN_MID);
+		fan_off = t->fan_off_slop2;
+		fan_max = t->fan_max_slop2;
 	}
+	thermal_params[TEMP_SENSOR_1_SOC].temp_fan_off = C_TO_K(fan_off);
+	thermal_params[TEMP_SENSOR_1_SOC].temp_fan_max = C_TO_K(fan_max);
 
 	sensor_soc = thermal_fan_percent(
 		thermal_params[TEMP_SENSOR_1_SOC].temp_fan_off,
@@ -153,12 +191,23 @@ void board_override_fan_control(int fan, int *tmp)
 		C_TO_K(tmp[TEMP_SENSOR_4_AMBIENT]));
 
 	/*
-	 * Sensor DDR turn on when temperature > 38,
-	 * turn off when temperature < 37
+	 * In Balance mode:
+	 * Sensor DDR turn on when temperature > 44,
+	 * turn off when temperature < 38
+	 *
+	 * In Tablet mode:
+	 * Sensor DDR turn on when temperature > 44,
+	 * turn off when temperature < 38
+	 *
+	 * When temperature from high dropping to 38 ~ 44,
+	 * if pct is not 0, keep sensor trigger and choose table.
 	 */
-	if ((tmp[TEMP_SENSOR_2_DDR]) < SENSOR_DDR_FAN_TURN_OFF) {
+	if ((tmp[TEMP_SENSOR_2_DDR]) < t->ddr_fan_turn_off) {
 		pct = 0;
-	} else if ((tmp[TEMP_SENSOR_2_DDR]) > SENSOR_DDR_FAN_TURN_ON) {
+	} else if (((tmp[TEMP_SENSOR_2_DDR]) > t->ddr_fan_turn_on) ||
+		   (((tmp[TEMP_SENSOR_2_DDR]) >= t->ddr_fan_turn_off) &&
+		    ((tmp[TEMP_SENSOR_2_DDR]) <= t->ddr_fan_turn_on) &&
+		    pct != 0)) {
 		/*
 		 * Decide which sensor was triggered and choose table.
 		 * Priority: charger > soc > ddr > ambient
@@ -167,10 +216,7 @@ void board_override_fan_control(int fan, int *tmp)
 			fans[fan].rpm = &rpm_table[RPM_TABLE_CHARGER];
 			pct = sensor_charger;
 		} else if (sensor_soc) {
-			if (tmp[TEMP_SENSOR_1_SOC] > SENSOR_SOC_FAN_MID)
-				fans[fan].rpm = &rpm_table[RPM_TABLE_CPU1];
-			else
-				fans[fan].rpm = &rpm_table[RPM_TABLE_CPU0];
+			fans[fan].rpm = &rpm_table[t->rpm_table_cpu];
 			pct = sensor_soc;
 		} else if (sensor_ddr) {
 			fans[fan].rpm = &rpm_table[RPM_TABLE_DDR];
