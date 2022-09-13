@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca729f0f_0953c290",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-13T22:57:09Z",
+      "side": 1,
+      "message": "I faced the same issue with the header file and I had to add a dot to the first line.",
+      "parentUuid": "2c6f54ab_3e77fd88",
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8125cfc_b2b6ca27",
         "filename": "common/mock/fpsensor_state_mock.c",
         "patchSetId": 2
