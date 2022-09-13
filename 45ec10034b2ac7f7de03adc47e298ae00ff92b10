@@ -117,6 +117,30 @@
       },
       "revId": "45ec10034b2ac7f7de03adc47e298ae00ff92b10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "112524d4_b0a96a7b",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-13T14:48:19Z",
+      "side": 1,
+      "message": "Adding Keith, expert at all things Kconfig.\n\nIn most situations like this where we\u0027re trying to point to a specific sensor, we use some kind of devicetree phandle. But I\u0027m uncertain how that would work together with this (perhaps more of these Kconfig items would instead be in a devicetree node?)",
+      "parentUuid": "ee03d54a_b79fa01e",
+      "range": {
+        "startLine": 1895,
+        "startChar": 60,
+        "endLine": 1895,
+        "endChar": 70
+      },
+      "revId": "45ec10034b2ac7f7de03adc47e298ae00ff92b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
