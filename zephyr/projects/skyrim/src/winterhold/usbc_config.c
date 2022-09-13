@@ -19,8 +19,6 @@
 #include "driver/charger/isl9241.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/retimer/anx7483_public.h"
-#include "driver/retimer/ps8811.h"
-#include "driver/retimer/ps8818.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/usb_mux/amd_fp6.h"
 #include "gpio/gpio_int.h"
@@ -182,32 +180,6 @@ struct usb_mux_chain usbc0_anx7483 = {
 	.next = &usbc0_sbu_mux,
 };
 
-__overridable int board_c1_ps8818_mux_set(const struct usb_mux *me,
-					  mux_state_t mux_state)
-{
-	CPRINTSUSB("C1: PS8818 mux using default tuning");
-
-	/* Once a DP connection is established, we need to set IN_HPD */
-	if (mux_state & USB_PD_MUX_DP_ENABLED)
-		ioex_set_level(IOEX_USB_C1_HPD_IN_DB, 1);
-	else
-		ioex_set_level(IOEX_USB_C1_HPD_IN_DB, 0);
-
-	return 0;
-}
-
-struct usb_mux_chain usbc1_ps8818 = {
-	.mux =
-		&(const struct usb_mux){
-			.usb_port = USBC_PORT_C1,
-			.i2c_port = I2C_PORT_TCPC1,
-			.flags = USB_MUX_FLAG_RESETS_IN_G3,
-			.i2c_addr_flags = PS8818_I2C_ADDR_FLAGS,
-			.driver = &ps8818_usb_retimer_driver,
-			.board_set = &board_c1_ps8818_mux_set,
-		},
-};
-
 struct usb_mux_chain usbc1_anx7483 = {
 	.mux =
 		&(const struct usb_mux){
@@ -269,21 +241,7 @@ static int ioex_set_flip(const struct usb_mux *me, mux_state_t mux_state,
 
 static void setup_mux(void)
 {
-	uint32_t val;
-
-	if (cros_cbi_get_fw_config(FW_IO_DB, &val) != 0)
-		CPRINTSUSB("Error finding FW_DB_IO in CBI FW_CONFIG");
-	/* Val will have our dts default on error, so continue setup */
-
-	if (val == FW_IO_DB_PS8811_PS8818) {
-		CPRINTSUSB("C1: Setting PS8818 mux");
-		usb_muxes[USBC_PORT_C1].next = &usbc1_ps8818;
-	} else if (val == FW_IO_DB_NONE_ANX7483) {
-		CPRINTSUSB("C1: Setting ANX7483 mux");
-		usb_muxes[USBC_PORT_C1].next = &usbc1_anx7483;
-	} else {
-		CPRINTSUSB("Unexpected DB_IO board: %d", val);
-	}
+	usb_muxes[USBC_PORT_C1].next = &usbc1_anx7483;
 }
 DECLARE_HOOK(HOOK_INIT, setup_mux, HOOK_PRIO_INIT_I2C);
 
