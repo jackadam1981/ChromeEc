@@ -16,8 +16,11 @@
 #include "mock/timer_mock.h"
 #include "test_util.h"
 #include "util.h"
+#include "rollback_private.h"
+#include "rollback.h"
 
 extern int get_ikm(uint8_t *ikm);
+extern int get_latest_rollback(struct rollback_data *data);
 
 static const uint8_t fake_positive_match_salt[] = {
 	0x04, 0x1f, 0x5a, 0xac, 0x5f, 0x79, 0x10, 0xaf,
@@ -751,6 +754,37 @@ test_static int test_command_read_match_secret_unreadable(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_trial(void)
+{
+	uint8_t secret[32] = { 0 };
+	struct rollback_data test_data;
+
+	mock_ctrl_rollback.get_secret_fail = true;
+	mock_ctrl_latest_rollback.output_type = GET_LATEST_ROLLBACK_REAL;
+
+	TEST_ASSERT(get_latest_rollback(&test_data) == 0);
+
+	ccprints("The value of cookie is : %d", test_data.cookie);
+	ccprints("The value of id is : %d", test_data.id);
+	ccprints("The value of version is : %d",
+		 test_data.rollback_min_version);
+
+	for (int i = 0; i < 32; ++i) {
+		ccprints("The value of test_data.secret[%d] is: 0x%02x.", i,
+			 test_data.secret[i]);
+	}
+
+	TEST_ASSERT(rollback_get_secret(secret) == EC_ERROR_UNKNOWN);
+	ccprints("The value is: %d", rollback_get_secret(secret));
+
+	for (int i = 0; i < 32; ++i) {
+		ccprints("The value of secret[%d] is: 0x%02x.", i, secret[i]);
+	}
+	ccprints("The value of EC_ERROR_UNKNOWN is: %d", EC_ERROR_UNKNOWN);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_hkdf_expand);
@@ -780,5 +814,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_command_read_match_secret_wrong_finger);
 	RUN_TEST(test_command_read_match_secret_timeout);
 	RUN_TEST(test_command_read_match_secret_unreadable);
+	RUN_TEST(test_trial);
 	test_print_result();
 }
