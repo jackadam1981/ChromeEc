@@ -16,6 +16,24 @@
       "message": "I think you will have to change the enum-names for these values as well.",
       "revId": "8fca3f011b2333aab9add12d0c60ad2202e3249f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5b2823_23b24278",
+        "filename": "zephyr/projects/nissa/yaviks/overlay.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-09-13T06:26:39Z",
+      "side": 1,
+      "message": "Done. There\u0027s no enum-name for 5v_regulator, so I use TEMP_SENSOR_2.",
+      "parentUuid": "b8fa24a8_02a372d0",
+      "revId": "8fca3f011b2333aab9add12d0c60ad2202e3249f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
