@@ -260,8 +260,8 @@ enum pwm_channel {
 enum fan_channel { FAN_CH_0 = 0, FAN_CH_COUNT };
 
 enum fan_rpm_table {
-	RPM_TABLE_CPU0,
-	RPM_TABLE_CPU1,
+	RPM_TABLE_CPU,
+	RPM_TABLE_CPU_TABLET,
 	RPM_TABLE_DDR,
 	RPM_TABLE_CHARGER,
 	RPM_TABLE_AMBIENT,
