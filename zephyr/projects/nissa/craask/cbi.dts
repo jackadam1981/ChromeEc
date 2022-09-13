@@ -5,6 +5,29 @@
 
 / {
 	/* Craask-specific ssfc fields. */
+	nissa-fw-config {
+		/*
+		 * FW_CONFIG field to describe Lid sensor orientation.
+		 */
+		lid-inversion {
+			enum-name = "FW_LID_INVERSION";
+			start = <8>;
+			size = <1>;
+
+			regular {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_LID_REGULAR";
+				value = <0>;
+				default;
+			};
+			craaskbowl {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_LID_CRAASKBOWL";
+				value = <1>;
+			};
+		};
+	};
+	/* Craask-specific ssfc fields. */
 	cbi-ssfc {
 		compatible = "named-cbi-ssfc";
 		/*
