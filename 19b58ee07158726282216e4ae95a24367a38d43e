@@ -16,6 +16,24 @@
       "message": "This CL has no new line added: +24 -24. Should not change the code coverage.",
       "revId": "19b58ee07158726282216e4ae95a24367a38d43e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33642b14_969deb93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-09-13T13:49:44Z",
+      "side": 1,
+      "message": "Looks like these 24 change lines need 80% coverage.",
+      "parentUuid": "6f0a28bd_b0d8cc85",
+      "revId": "19b58ee07158726282216e4ae95a24367a38d43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
