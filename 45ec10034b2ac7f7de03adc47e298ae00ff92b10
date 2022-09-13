@@ -93,6 +93,30 @@
       },
       "revId": "45ec10034b2ac7f7de03adc47e298ae00ff92b10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee03d54a_b79fa01e",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-09-13T01:36:25Z",
+      "side": 1,
+      "message": "Hi Diana@Google,\n\nWould you please give us some suggestion about the macro the sensor location?",
+      "parentUuid": "01cd36c0_243a477b",
+      "range": {
+        "startLine": 1895,
+        "startChar": 60,
+        "endLine": 1895,
+        "endChar": 70
+      },
+      "revId": "45ec10034b2ac7f7de03adc47e298ae00ff92b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
