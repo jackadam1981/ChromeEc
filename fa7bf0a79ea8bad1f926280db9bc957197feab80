@@ -97,6 +97,24 @@
       "message": "Could you move the check here to centralize the DPS disablement:\n\n```\nconst struct batt_params *batt \u003d         \n         charger_current_battery_params();\n\n\n...\n\n\nif (batt-\u003eis_present !\u003d BP_YES) {    \n       atomic_or(\u0026flag, DPS_FLAG_NO_BATTERY); \n       continue;                    \n}                                    \n                                     \n\n```\n\n\nAlso, you might have to add the macros:\n\n```\n#define DPS_FLAG_NO_BATTERY BIT(5)                                    \n                                                                      \n#define DPS_FLAG_STOP_EVENTS \\                                        \n        (DPS_FLAG_DISABLED | DPS_FLAG_NO_SRCCAP | DPS_FLAG_NO_BATTERY)\n\n```\n\n\nand add a hook to re-enable the DPS when the battery present again:\n\n```\n void check_battery_present(void)                                         \n {                                                                        \n        const struct batt_params *batt \u003d charger_current_battery_params()\n                                                                          \n        if (batt-\u003eis_present \u003d\u003d BP_YES \u0026\u0026 (flag \u0026 DPS_FLAG_NO_BATTERY)) {\n               atomic_clear_bit(\u0026flag, DPS_FLAG_NO_BATTERY);            \n               task_wake(TASK_ID_DPS);                                  \n        }                                                                \n }                                                                        \n DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, check_battery_present);            \n\n\n\n```",
       "revId": "fa7bf0a79ea8bad1f926280db9bc957197feab80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c218a611_ff89349a",
+        "filename": "common/dps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-09-13T07:35:41Z",
+      "side": 1,
+      "message": "Did you mean to disable DPS when the battery is not present? My initial thought on this CL is to skip the PDO of 5V/3A.",
+      "parentUuid": "b14b319c_a689ea7d",
+      "revId": "fa7bf0a79ea8bad1f926280db9bc957197feab80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
