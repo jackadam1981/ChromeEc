@@ -7,7 +7,11 @@
 static struct intc_irq_group
 irqs[SCP_INTC_IRQ_COUNT] = {
 	/* 0 */
+#ifdef SCP_MBOX
+	[SCP_IRQ_GIPC_IN0] = { INTC_GRP_0 },
+#else
 	[SCP_IRQ_GIPC_IN0] = { INTC_GRP_7 },
+#endif
 	[SCP_IRQ_GIPC_IN1] = { INTC_GRP_0 },
 	[SCP_IRQ_GIPC_IN2] = { INTC_GRP_0 },
 	[SCP_IRQ_GIPC_IN3] = { INTC_GRP_0 },
@@ -82,7 +86,11 @@ irqs[SCP_INTC_IRQ_COUNT] = {
 	[SCP_IRQ_VENC] = { INTC_GRP_8 },
 	[SCP_IRQ_APU_ENGINE] = { INTC_GRP_0 },
 	/* 60 */
+#ifdef SCP_MBOX
+	[SCP_IRQ_MBOX0] = { INTC_GRP_7 },
+#else
 	[SCP_IRQ_MBOX0] = { INTC_GRP_0 },
+#endif
 	[SCP_IRQ_MBOX1] = { INTC_GRP_0 },
 	[SCP_IRQ_MBOX2] = { INTC_GRP_0 },
 	[SCP_IRQ_MBOX3] = { INTC_GRP_0 },
