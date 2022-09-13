@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0834f67_2947157f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2022-09-13T11:41:07Z",
+      "side": 1,
+      "message": "Hi Kyle, please split this one to two CLs. First one is for adding new charger API and other common codes not related Yaviks; second is for Yaviks specific changes which can be the example for other boards to do implementation if they need.",
+      "revId": "31c06b44abd05be7e356c0c4e8dcd0233b3c0c10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
