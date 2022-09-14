@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c53de6fa_83167f2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-14T01:43:59Z",
+      "side": 1,
+      "message": "i\u0027m not following this scenario.\nis this one of those IO card with a USB type-A port that would\nnot have a TCPC but still goes through the burnside bridge\nto get to the AP?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "666f5ac6db1e1205aad97306c1da2fc998399b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fcdfc5f_16d187fe",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -42,6 +65,29 @@
         "startChar": 2,
         "endLine": 74,
         "endChar": 57
+      },
+      "revId": "666f5ac6db1e1205aad97306c1da2fc998399b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b21f895_6984d4d6",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-14T01:43:59Z",
+      "side": 1,
+      "message": "this can also be a local variable inside the loop",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 22
       },
       "revId": "666f5ac6db1e1205aad97306c1da2fc998399b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
