@@ -21,7 +21,9 @@ struct rt9490_data {
 };
 
 static const uint8_t default_values[RT9490_REG_MAX + 1] = {
+	[RT9490_REG_CHG_CTRL0] = 0xA2,
 	[RT9490_REG_SAFETY_TMR_CTRL] = 0x3D,
+	[RT9490_REG_DEVICE_INFO] = 0x60,
 	[RT9490_REG_ADD_CTRL0] = 0x76,
 };
 
