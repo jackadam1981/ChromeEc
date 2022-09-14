@@ -34,6 +34,24 @@
       "parentUuid": "6f0a28bd_b0d8cc85",
       "revId": "19b58ee07158726282216e4ae95a24367a38d43e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde216ab_90e35ef0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-14T15:06:31Z",
+      "side": 1,
+      "message": "I\u0027ll add tests in a separate CL. I\u0027ve explained the reason for this in the commit message with LOW_COVERAGE_REASON",
+      "parentUuid": "33642b14_969deb93",
+      "revId": "19b58ee07158726282216e4ae95a24367a38d43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
