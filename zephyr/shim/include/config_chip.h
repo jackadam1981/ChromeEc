@@ -470,7 +470,6 @@
  * wherever the jump data ended up.
  */
 #include "sysjump.h"
-extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_RAM_BASE 0x0
 #define CONFIG_DATA_RAM_SIZE \
 	(((uintptr_t)&mock_jump_data) + sizeof(mock_jump_data))
@@ -479,6 +478,13 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #endif
 
 #define CONFIG_RAM_SIZE CONFIG_DATA_RAM_SIZE
+
+#undef CONFIG_PRESERVED_END_OF_RAM_SIZE
+#ifdef CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE
+#define CONFIG_PRESERVED_END_OF_RAM_SIZE \
+	CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE
+extern char mock_jump_data[CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE];
+#endif
 
 #define CONFIG_RO_MEM_OFF CONFIG_CROS_EC_RO_MEM_OFF
 #define CONFIG_RO_MEM_SIZE CONFIG_CROS_EC_RO_MEM_SIZE
