@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e8ff67_21ad5251",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-14T07:44:30Z",
+      "side": 1,
+      "message": "Should it be `True` by default? I think that this script should test at least if user is logged in `rdb`. Otherwise, `upload_result` ends with traceback from `CalledProcessError`.",
+      "revId": "1c1552b51cef232cc304aec963eb32200fc8678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
