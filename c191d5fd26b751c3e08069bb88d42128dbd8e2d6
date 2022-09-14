@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6345291_9e9cb08d",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-14T20:23:09Z",
+      "side": 1,
+      "message": "On success\n```\nINFO    - Run completed\nTEST EXECUTION SUCCESSFUL\n\nrdb auth-info: Logged in as asemjonovs@google.com.\n\nTEST RESULTS: https://luci-milo.appspot.com/ui/inv/u-asemjonovs-2022-09-14-20-12-00-78387c07f59fa8ce\n```\n\nOn failure\n```\nINFO    - Run completed\nTEST EXECUTION SUCCESSFUL\n\nrdb auth-info: Not logged in.\n\nUnable to upload test results, please run \u0027rdb auth-login\u0027\n```",
+      "parentUuid": "f658775f_8744454e",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 47
+      },
+      "revId": "c191d5fd26b751c3e08069bb88d42128dbd8e2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f7ebf48_3685253d",
         "filename": "util/twister_launcher.py",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-14T20:05:36Z",
       "side": 1,
       "message": "Can we get rid of this and just use `--no-upload-cros-rdb`?",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 65
+      },
+      "revId": "c191d5fd26b751c3e08069bb88d42128dbd8e2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "593f9635_5c1f3b3c",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-14T20:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7ebf48_3685253d",
       "range": {
         "startLine": 241,
         "startChar": 4,
