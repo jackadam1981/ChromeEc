@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "723dc87d_2fd9d952",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-14T16:56:47Z",
+      "side": 1,
+      "message": "LGTM. The only thing I can think you might want to change is if you wanted to distinguish between tests that need to wait for HOOK_INIT and ones that don\u0027t, in which case you would need to restructure to have another run of the suites based on the hooks completing.",
+      "revId": "f27964d754756b1d3893530d86c639e5e670271e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
