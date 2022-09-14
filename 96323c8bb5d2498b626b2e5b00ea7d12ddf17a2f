@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff6dcc5_14aad99a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-14T19:25:57Z",
+      "side": 1,
+      "message": "the CQ depend is ultimately needed.\nremoving it won\u0027t cause a build failure,\nbut the FW config definitions still need\nto land to avoid confusion later.",
+      "revId": "96323c8bb5d2498b626b2e5b00ea7d12ddf17a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
