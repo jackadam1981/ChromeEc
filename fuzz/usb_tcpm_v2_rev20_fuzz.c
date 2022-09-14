@@ -16,18 +16,12 @@ const struct svdm_response svdm_rsp = {
 };
 
 /* USB mux configuration */
-const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.mux =
-			&(const struct usb_mux){
-				.driver = &mock_usb_mux_driver,
-			},
+		.driver = &mock_usb_mux_driver,
 	},
 	{
-		.mux =
-			&(const struct usb_mux){
-				.driver = &mock_usb_mux_driver,
-			},
+		.driver = &mock_usb_mux_driver,
 	}
 };
 
