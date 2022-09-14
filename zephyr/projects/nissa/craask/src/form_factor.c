@@ -22,9 +22,20 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
  * Mainboard orientation support.
  */
 
+#define LIS_ALT_MAT SENSOR_ROT_STD_REF_NAME(DT_NODELABEL(lid_rot_bma422))
+#define BMA_ALT_MAT SENSOR_ROT_STD_REF_NAME(DT_NODELABEL(lid_rot_ref))
 #define ALT_MAT SENSOR_ROT_STD_REF_NAME(DT_NODELABEL(base_rot_ver1))
+#define LID_SENSOR SENSOR_ID(DT_NODELABEL(lid_accel))
 #define BASE_SENSOR SENSOR_ID(DT_NODELABEL(base_accel))
 #define BASE_GYRO SENSOR_ID(DT_NODELABEL(base_gyro))
+#define ALT_LID_S SENSOR_ID(DT_NODELABEL(alt_lid_accel))
+
+/*
+ * sku_id use bit16-19 to indicate project name
+ * Craask: 4, Craaskbowl: 6, Craaskvin: 5
+ */
+#define SKU_NAME_MASK 0xF0000
+#define SKU_XY_ROT_180 0x60000
 
 static bool use_alt_sensor;
 
@@ -49,6 +60,22 @@ static void form_factor_init(void)
 		LOG_INF("Switching to ver1 base");
 		motion_sensors[BASE_SENSOR].rot_standard_ref = &ALT_MAT;
 		motion_sensors[BASE_GYRO].rot_standard_ref = &ALT_MAT;
+	}
+
+	/*
+	 * If the firmware config indicates
+	 * an craaskbowl form factor, use the alternative
+	 * rotation matrix.
+	 */
+	ret = cbi_get_sku_id(&val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI SKU_ID");
+		return;
+	}
+	if ((val & SKU_NAME_MASK) == SKU_XY_ROT_180) {
+		LOG_INF("Lid sensor placement rotate 180 on xy plane");
+		motion_sensors[LID_SENSOR].rot_standard_ref = &LIS_ALT_MAT;
+		motion_sensors_alt[ALT_LID_S].rot_standard_ref = &BMA_ALT_MAT;
 	}
 
 	/* check which base sensor is used for motion_interrupt */
