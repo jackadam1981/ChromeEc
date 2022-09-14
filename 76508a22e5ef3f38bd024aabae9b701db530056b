@@ -33,6 +33,24 @@
       "message": "Is this applicable for all devices with the ISL9241 charger?",
       "revId": "76508a22e5ef3f38bd024aabae9b701db530056b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2d65ba_a5ed724a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1253719
+      },
+      "writtenOn": "2022-09-14T00:42:25Z",
+      "side": 1,
+      "message": "Hi, Boris\nThank you for your attention. This CL is not for all ISL9241 only for Osiris because the power circuitry design varies by projects and OEM would need to test project by project to check if EE noise is larger than their criteria. And unfortunately, Osiris is asked to improve after OEM\u0027s judgement. FYI~",
+      "parentUuid": "aad0edc1_7f711b99",
+      "revId": "76508a22e5ef3f38bd024aabae9b701db530056b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
