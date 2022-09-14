@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c26bb66d_1161953e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-14T15:50:29Z",
+      "side": 1,
+      "message": "OK to fix as is but please address removing the chroot check entirely if we can later.",
+      "revId": "662238152993e49a793b7a8da7f14e829b9454fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100b47be_acc560c2",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-14T15:50:29Z",
+      "side": 1,
+      "message": "This is a bit of smell. Why are we to assume you want GCC instead of LLVM outside of the chroot.\n\nCallers using an unsupported environment should be required to pass their own ZEPHYR_TOOLCHAIN_VARIANT that specifies what they want.",
+      "range": {
+        "startLine": 159,
+        "startChar": 40,
+        "endLine": 159,
+        "endChar": 74
+      },
+      "revId": "662238152993e49a793b7a8da7f14e829b9454fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
