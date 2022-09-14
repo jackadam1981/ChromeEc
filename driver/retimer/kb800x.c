@@ -479,7 +479,6 @@ static int console_command_kb800x_xfer(int argc, const char **argv)
 	char rw, *e;
 	int rv, port, reg, val;
 	uint8_t data;
-	const struct usb_mux_chain *mux_chain;
 	const struct usb_mux *mux;
 
 	if (argc < 4)
@@ -490,17 +489,15 @@ static int console_command_kb800x_xfer(int argc, const char **argv)
 	if (*e || !board_is_usb_pd_port_present(port))
 		return EC_ERROR_PARAM1;
 
-	mux_chain = &usb_muxes[port];
-	while (mux_chain) {
-		if (mux_chain->mux->driver == &kb800x_usb_mux_driver)
+	mux = &usb_muxes[port];
+	while (mux) {
+		if (mux->driver == &kb800x_usb_mux_driver)
 			break;
-		mux_chain = mux_chain->next;
+		mux = mux->next_mux;
 	}
 
-	if (!mux_chain)
+	if (!mux)
 		return EC_ERROR_PARAM1;
-
-	mux = mux_chain->mux;
 
 	/* Validate r/w selection */
 	rw = argv[2][0];
