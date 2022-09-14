@@ -16,6 +16,24 @@
       "message": "Does the recovery mode key combo still work on a proto1 with these changes?",
       "revId": "b17efd7107008194e69d2dd61392c4411d54b310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a7ee42_54452ee8",
+        "filename": "zephyr/projects/skyrim/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-14T21:32:38Z",
+      "side": 1,
+      "message": "Yes, I tested on proto 1 as well and proto 1 has the same refresh key location.  I can\u0027t explain why the proto 2\u0027s seem to get this issue more, or why the issue seems sticky on some units.  But they have the same refresh key locations and it\u0027s likely that followers will as well.",
+      "parentUuid": "832f374d_eb0ecfc7",
+      "revId": "b17efd7107008194e69d2dd61392c4411d54b310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
