@@ -16,6 +16,24 @@
       "message": "Having looked at this a bit more - I am amazed this bug has been in the code for so long unnoticed. I guess it helps that the buffer in tpm_send_pkt()  is static, but it is still odd that this kind of overlow did not manifest itself in any way.\n\nThe real problem with the code is that the same variable is used for both the size of receive and transmit buffers, but we never expect to receive more than 64 bytes.\n\nSam, can you please define a different variable for MAX_TX_BUF_SIZE (and maybe rename the exiting one into MAX_RX_BUF_SIZE) and use MAX_TX_BUF_SIZE in tpm_send_pkt() and MAX_RX_BUF_SIZE in send_vendor_command().",
       "revId": "af27e262b7a74f1ebf1e2d61310198fcb01278d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea7f7719_adef9b01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-09-14T03:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2adfd15b_1b08f9b6",
+      "revId": "af27e262b7a74f1ebf1e2d61310198fcb01278d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
