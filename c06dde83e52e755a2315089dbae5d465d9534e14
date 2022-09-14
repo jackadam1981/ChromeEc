@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0d9b90_a2a415df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-14T20:36:21Z",
+      "side": 1,
+      "message": "For Now, BBRAM related changes are only done for npcx related EC. for other ECs the logging time will be lost after sysjump.\n",
+      "revId": "c06dde83e52e755a2315089dbae5d465d9534e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
