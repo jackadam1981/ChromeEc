@@ -13,3 +13,5 @@ src/system_board_version_default.c)
 
 target_sources_ifndef(CONFIG_HOST_CMD_AP_SET_SKUID app PRIVATE
 src/system_not_board_ap_set_sku_id.c)
+
+target_sources(app PRIVATE src/system_jump_tags.c)

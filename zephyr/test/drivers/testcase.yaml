@@ -122,6 +122,14 @@ tests:
     extra_configs:
       - CONFIG_LINK_TEST_SUITE_SYSTEM=y
       - CONFIG_POWER_SEQUENCE_MOCK=y
+  drivers.system_jump_tags:
+    tags:
+      common
+      system
+    extra_configs:
+      - CONFIG_LINK_TEST_SUITE_SYSTEM=y
+      - CONFIG_POWER_SEQUENCE_MOCK=y
+      - CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE=1024
   drivers.system_board_version_cbi:
     tags:
       common
