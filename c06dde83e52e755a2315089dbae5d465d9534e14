@@ -16,6 +16,23 @@
       "message": "For Now, BBRAM related changes are only done for npcx related EC. for other ECs the logging time will be lost after sysjump.\n",
       "revId": "c06dde83e52e755a2315089dbae5d465d9534e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba3026d4_4be97488",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-14T21:04:13Z",
+      "side": 1,
+      "message": "do these only if CONFIG_SYSTEM_BOOT_TIME_LOGGING enabled.\nalso check if we are not exceeding BBRAM size",
+      "revId": "c06dde83e52e755a2315089dbae5d465d9534e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
