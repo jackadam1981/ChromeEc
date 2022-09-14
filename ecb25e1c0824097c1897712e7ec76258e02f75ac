@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aaf9ff4_a7302a06",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-09-14T16:03:06Z",
+      "side": 1,
+      "message": "changed to GPIO024.\nDone",
+      "parentUuid": "de3cd841_2c3b37b2",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e6df837_575038df",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-13T18:29:48Z",
       "side": 1,
       "message": "use USBC_TCPC_PPC_ALRT_P0 MECC pin 11\nlooks correct",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 18
+      },
+      "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986cee30_5457d6a7",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-09-14T16:03:06Z",
+      "side": 1,
+      "message": "Thanks confirmation.",
+      "parentUuid": "0e6df837_575038df",
       "range": {
         "startLine": 67,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb12c4ae_b0e7ef5b",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-09-14T16:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85994fce_5d749c6d",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23253582_06377525",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-13T18:29:48Z",
       "side": 1,
       "message": "use USBC_TCPC_PPC_ALRT_P3 MECC pin 72\nLooks correct",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "759a4a3d_06c165a1",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-09-14T16:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23253582_06377525",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68a91bf3_f84cf937",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/mtlrvp_mchp.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-09-14T16:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714e6b56_469e89b3",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 17
+      },
+      "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e93afe6_ceb14fd7",
@@ -146,6 +266,24 @@
       "writtenOn": "2022-09-13T18:29:48Z",
       "side": 1,
       "message": "instead of new file, directly include in build\nzephyr/projects/intelrvp/adlrvp/adlrvp_npcx/temp_sensor.dts",
+      "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43446fe0_66928706",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/temp_sensor.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-09-14T16:03:06Z",
+      "side": 1,
+      "message": "changed to adlrvp/.. and deleted it in mchp",
+      "parentUuid": "8e93afe6_ceb14fd7",
       "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
