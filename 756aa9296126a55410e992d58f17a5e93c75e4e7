@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "264e1a63_4ba419d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-09-14T15:45:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67cd4d2b_22d6e1ed",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "756aa9296126a55410e992d58f17a5e93c75e4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc969f7b_7c48b079",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-13T23:11:08Z",
       "side": 1,
       "message": "nit: UNUSED() is probably more readable.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "756aa9296126a55410e992d58f17a5e93c75e4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a825a25e_49c62e04",
+        "filename": "board/hyperdebug/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-09-14T15:45:31Z",
+      "side": 1,
+      "message": "The thing is, I do want to retain a record of the connection between connector pin CN7_2 and the MCU GPIO port PB8, just in case we later decide to use this pin for GPIO instaed of I2C, (or somehow allows runtime selection.)\n\nIs there any way of declaring \"aliases\", that is two symbolic names for the same signal?",
+      "parentUuid": "cc969f7b_7c48b079",
       "range": {
         "startLine": 17,
         "startChar": 2,
