@@ -32,7 +32,6 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usb_tc_sm.h"
-#include "usbc/usb_muxes.h"
 #include "usbc_ppc.h"
 
 #include "variant_db_detection.h"
@@ -256,6 +255,11 @@ static void baseboard_x_ec_gpio2_init(void)
 	static struct ppc_drv virtual_ppc_drv = { 0 };
 	static struct tcpm_drv virtual_tcpc_drv = { 0 };
 	static struct bc12_drv virtual_bc12_drv = { 0 };
+	static const struct usb_mux virtual_usb_mux = {
+		.usb_port = USBC_PORT_C1,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+	};
 
 	/* no sub board */
 	if (corsola_get_db_type() == CORSOLA_DB_NONE) {
@@ -287,7 +291,8 @@ static void baseboard_x_ec_gpio2_init(void)
 	bc12_ports[USBC_PORT_C1] =
 		(const struct bc12_config){ .drv = &virtual_bc12_drv };
 	/* Use virtual mux to notify AP the mainlink direction. */
-	USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_1_hdmi_db);
+	usb_muxes[USBC_PORT_C1].mux = &virtual_usb_mux;
+	usb_muxes[USBC_PORT_C1].next = NULL;
 
 	/*
 	 * If a HDMI DB is attached, C1 port tasks will be exiting in that
