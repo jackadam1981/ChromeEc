@@ -16,6 +16,24 @@
       "message": "Hi Andrew,\n\nMay I ask do we care about Zoss? this is new to me and I\u0027d like to get your comment for future CL review. Thanks!",
       "revId": "6315e187bdb783569447799018b5cbcdd800e2fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19cc2c62_0765a605",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-14T14:36:04Z",
+      "side": 1,
+      "message": "There is a roadmap for the EC Zephyr based software that includes a much stronger\ntest framework. To this end, coverage measurement has been added, and Zoss\nis the bot that does this. Recently we turned on coverage as a submit barrier,\nwhich can be overridden using the +1 on the coverage button.\nThere\u0027s been a lot of effort to get the test coverage increased, and we\u0027ve\nmanaged to do this in most of the common code, but some projects\n(like Nissa) have no coverage at all for the project specific code i.e no tests\nexercise any of the code under the project/nissa directory.\nClearly this is not desirable, but it is only very recently that any of the\nprojects have any coverage - herobrine was the main one that has started to\nget coverage for project specific code.\nWe (the Nissa EC \u0026 f/w team) need to add tests to cover the Nissa specific code,\nat least for nivviks \u0026 nereid, and these can be used as the base for the\nother projects. Up to now, it hasn\u0027t been a priority, so we\u0027ve had this gap, and every line of project specific code will have 0% coverage and Zoss complains, and\nwe need to manually +1 the coverage.\n\nSo that\u0027s all background and context.\n\nMy approach here is to basically override the coverage block for all Nissa project specific code until we get some initial tests done.\nI don\u0027t think it is reasonable to expect the partners to create these tests\nfrom scratch, but eventually I expect they should extend tests when new code is added.",
+      "parentUuid": "4a2dcc30_b93d0aec",
+      "revId": "6315e187bdb783569447799018b5cbcdd800e2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
