@@ -778,3 +778,16 @@ enum ec_error_list charger_enable_linear_charge(int chgnum, bool enable)
 
 	return EC_ERROR_UNIMPLEMENTED;
 }
+
+enum ec_error_list charger_get_battery_cells(int chgnum, int *cells)
+{
+	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
+		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
+		return EC_ERROR_INVAL;
+	}
+
+	if (chg_chips[chgnum].drv->get_battery_cells)
+		return chg_chips[chgnum].drv->get_battery_cells(chgnum, cells);
+
+	return EC_ERROR_UNIMPLEMENTED;
+}
