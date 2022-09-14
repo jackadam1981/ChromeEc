@@ -16,6 +16,23 @@
       "message": "Hi, Sirs\n\nSince Acer is asking ODM to lower the EE noise, therefore, we upload this CL which is the same as solution in b/245042158. Wonder if you could take a look on this? Thanks. ",
       "revId": "76508a22e5ef3f38bd024aabae9b701db530056b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad0edc1_7f711b99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-09-14T00:13:51Z",
+      "side": 1,
+      "message": "Is this applicable for all devices with the ISL9241 charger?",
+      "revId": "76508a22e5ef3f38bd024aabae9b701db530056b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
