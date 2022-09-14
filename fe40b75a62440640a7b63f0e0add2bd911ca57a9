@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94701931_33b8e971",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-14T15:29:06Z",
+      "side": 1,
+      "message": "TBH I don\u0027t have a strong opinion on that. I don\u0027t like to base on our name-? nodes, since it isn\u0027t what really should be placed in dts. On the other hand, it is created only for our CrosEC purposes because of the `temp_sensors` array. I think mismatch between the thermal_params and temp_sensors is a real danger, so I will follow your suggestion.",
+      "parentUuid": "dc02d011_93f0eebd",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 65
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6703ca61_3edfc520",
         "filename": "zephyr/shim/src/temp_sensors.c",
         "patchSetId": 6
