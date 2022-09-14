@@ -93,6 +93,30 @@
       },
       "revId": "756aa9296126a55410e992d58f17a5e93c75e4e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c86836e_10ad9e7b",
+        "filename": "board/hyperdebug/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-14T19:25:24Z",
+      "side": 1,
+      "message": "Sgtm. I don\u0027t think gpio.inc allows masquerading or aliasing. We usually assign aliases in board.h but they\u0027re only GPIO-\u003eGPIO not GPIO-\u003eALTERNATE.",
+      "parentUuid": "a825a25e_49c62e04",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "756aa9296126a55410e992d58f17a5e93c75e4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
