@@ -55,7 +55,7 @@ static void disable_base_imu_irq(void)
 }
 DECLARE_HOOK(HOOK_INIT, disable_base_imu_irq, HOOK_PRIO_POST_DEFAULT);
 
-static bool base_use_alt_sensor;
+test_export_static bool base_use_alt_sensor;
 
 void motion_interrupt(enum gpio_signal signal)
 {

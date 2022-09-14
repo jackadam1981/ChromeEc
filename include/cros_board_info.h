@@ -204,6 +204,8 @@ int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
  */
 int cbi_set_fw_config(uint32_t fw_config);
 
+int cbi_set_ssfc(uint32_t ssfc);
+
 /**
  * Initialize CBI cache
  */
