@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f658775f_8744454e",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-14T20:05:36Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to print anything here, do you have a sample output? I would assume this is a lot of noise people don\u0027t want to see. I would expect (with nothing else):\n\non success\nTEST RESULTS: \u003curl\u003e\n\none failure\nUnable to upload test results please run \u0027rdb auth-login\u0027",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 47
+      },
+      "revId": "c191d5fd26b751c3e08069bb88d42128dbd8e2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7ebf48_3685253d",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-14T20:05:36Z",
+      "side": 1,
+      "message": "Can we get rid of this and just use `--no-upload-cros-rdb`?",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 65
+      },
+      "revId": "c191d5fd26b751c3e08069bb88d42128dbd8e2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
