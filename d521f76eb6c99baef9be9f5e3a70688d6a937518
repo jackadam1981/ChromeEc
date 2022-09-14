@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756475c6_74817338",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-09-14T01:34:42Z",
+      "side": 1,
+      "message": "I was brief to protect the guilty, but ok. The problem is the request size when sending updates over a TPM interface.",
+      "parentUuid": "026e0110_93f8e777",
+      "revId": "d521f76eb6c99baef9be9f5e3a70688d6a937518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5d7d4dc_19a54b45",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-13T15:38:37Z",
       "side": 1,
       "message": "this test does not prove much, gsctools always succeeds for me even before this patch.",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "d521f76eb6c99baef9be9f5e3a70688d6a937518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26373c6b_24e58a76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-09-14T01:34:42Z",
+      "side": 1,
+      "message": "b/246212506 contains the logs of the failure.",
+      "parentUuid": "e5d7d4dc_19a54b45",
       "range": {
         "startLine": 10,
         "startChar": 4,
