@@ -39,6 +39,30 @@
       },
       "revId": "662238152993e49a793b7a8da7f14e829b9454fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b182e75_56577e66",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-14T15:52:13Z",
+      "side": 1,
+      "message": "zmake solves this a little more elegantly by probing for available toolchains, and selecting the first available one that\u0027s supported by the project. not saying you have to do the same design here, but it is an alternative.",
+      "parentUuid": "100b47be_acc560c2",
+      "range": {
+        "startLine": 159,
+        "startChar": 40,
+        "endLine": 159,
+        "endChar": 74
+      },
+      "revId": "662238152993e49a793b7a8da7f14e829b9454fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
