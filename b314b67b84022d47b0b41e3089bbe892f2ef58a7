@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "513e4c80_f38ffcd2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-14T16:04:53Z",
+      "side": 1,
+      "message": "I did a quick test:\n\n`[]` syntax:\n\n`clang++`: supported\n`g++`: supported\n`clang`: unsupported\n`gcc`: unsupported\n\n`[0]` syntax:\n\n`clang++`: supported\n`g++`: supported\n`clang`: supported\n`gcc`: supported\n\nSo it looks like we should instead do one of two things: either make `FLEXIBLE_ARRAY_MEMBER_SIZE` a C++ thing (instead of being clang specific), or remove `FLEXIBLE_ARRAY_MEMBER_SIZE` entirely, and use `[0]` universally. I would have preference towards the latter, since I don\u0027t see any advantage to `[]` specific to the C++ case here when clang and gcc\u0027s C++ compilers support `[0]` as well.",
+      "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
