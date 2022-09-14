@@ -203,6 +203,7 @@
 		};
 		gpio_sys_slp_s0ix_3v3_l: sys_slp_s0ix_3v3_l {
 			gpios = <&gpiod 5 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_SLP_S0_L"; /* 1.8V */
 		};
 		gpio_tablet_mode_l: tablet_mode_l {
 			gpios = <&gpio9 5 GPIO_INPUT_PULL_UP>;

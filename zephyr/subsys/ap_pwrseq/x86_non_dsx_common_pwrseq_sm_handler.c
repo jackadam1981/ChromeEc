@@ -535,6 +535,7 @@ static void pwr_seq_set_initial_state(void)
 	pwr_sm_set_state(state);
 }
 
+extern void powerindebug_func(void);
 static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
 	enum power_states_ndsx curr_state, new_state;
@@ -589,6 +590,10 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 			 */
 			k_sem_take(&pwrseq_sem, K_FOREVER);
 		}
+
+		cflush();
+		powerindebug_func();
+		cflush();
 	}
 }
 

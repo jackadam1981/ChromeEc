@@ -14,6 +14,7 @@
 #include "signal_gpio.h"
 #include "signal_vw.h"
 #include "signal_adc.h"
+#include "console.h"
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
