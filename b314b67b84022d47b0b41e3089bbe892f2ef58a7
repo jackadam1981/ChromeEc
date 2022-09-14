@@ -16,6 +16,24 @@
       "message": "I did a quick test:\n\n`[]` syntax:\n\n`clang++`: supported\n`g++`: supported\n`clang`: unsupported\n`gcc`: unsupported\n\n`[0]` syntax:\n\n`clang++`: supported\n`g++`: supported\n`clang`: supported\n`gcc`: supported\n\nSo it looks like we should instead do one of two things: either make `FLEXIBLE_ARRAY_MEMBER_SIZE` a C++ thing (instead of being clang specific), or remove `FLEXIBLE_ARRAY_MEMBER_SIZE` entirely, and use `[0]` universally. I would have preference towards the latter, since I don\u0027t see any advantage to `[]` specific to the C++ case here when clang and gcc\u0027s C++ compilers support `[0]` as well.",
       "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a78b44_9e616271",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-14T17:37:11Z",
+      "side": 1,
+      "message": "the problem is when you use `[0]` as the only struct member you get a zero size struct in C but 1 in C++ so they\u0027re not compatible if you have a .c and a .cc file including the same header. Internal to Google we solve this by always specifying `[1]` and just allocating \"at least one\".",
+      "parentUuid": "513e4c80_f38ffcd2",
+      "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
