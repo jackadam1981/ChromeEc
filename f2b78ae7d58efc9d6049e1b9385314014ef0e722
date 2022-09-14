@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "253588c0_daf5e146",
+        "filename": "zephyr/test/drivers/keyboard_scan/src/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-14T21:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd45ee2_6ed33e06",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "f2b78ae7d58efc9d6049e1b9385314014ef0e722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6937562f_10fdc69e",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd16b66b_6d4ffad3",
+        "filename": "zephyr/test/drivers/keyboard_scan/src/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-14T21:27:08Z",
+      "side": 1,
+      "message": "I suppose it\u0027s NBD if the callback can\u0027t be removed.",
+      "parentUuid": "6937562f_10fdc69e",
+      "revId": "f2b78ae7d58efc9d6049e1b9385314014ef0e722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14c22fd7_fb09e61c",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-09-13T23:23:54Z",
       "side": 1,
       "message": "The new test leaves the interrupt line asserted. Will this cause it to be deasserted before the next test?",
+      "revId": "f2b78ae7d58efc9d6049e1b9385314014ef0e722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca938437_16767160",
+        "filename": "zephyr/test/drivers/keyboard_scan/src/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-14T21:27:08Z",
+      "side": 1,
+      "message": "Good catch -I will update this function to de-assert the GPIO as well.",
+      "parentUuid": "14c22fd7_fb09e61c",
       "revId": "f2b78ae7d58efc9d6049e1b9385314014ef0e722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
