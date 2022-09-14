@@ -6907,4 +6907,9 @@
 #define HAS_GPU_DRIVER
 #endif
 
+/* Default to 1024 for end of ram data (panic and jump data) */
+#ifndef CONFIG_END_OF_RAM_DATA_SIZE
+#define CONFIG_END_OF_RAM_DATA_SIZE 1024
+#endif
+
 #endif /* __CROS_EC_CONFIG_H */
