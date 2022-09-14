@@ -148,7 +148,7 @@ static void ipi_enable_deferred(void)
 	hostcmd_init();
 #endif
 
-#ifdef SCP_MBOX
+#ifdef MTK_SECURE_SCP
 	task_enable_irq(SCP_IRQ_MBOX0);
 #else
 	task_enable_irq(SCP_IRQ_GIPC_IN0);
