@@ -66,6 +66,7 @@ struct board_batt_params {
 /* Forward declare board specific data used by common code */
 extern const struct board_batt_params board_battery_info[];
 extern const enum battery_type DEFAULT_BATTERY_TYPE;
+extern const enum battery_type DEFAULT_BATTERY_TYPE_3S;
 
 #ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
 /**
