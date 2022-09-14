@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb12f5c1_3ceb5973",
+        "filename": "common/mock/fpsensor_state_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-14T15:52:46Z",
+      "side": 1,
+      "message": "I think this might be an error with the upload check script.\n\nLooking at crrev.com/c/3891203 and the bigger bug crbug.com/1098010, I believe that dot should not be there.\n\nIf these copyright errors are the only error you see during `repo upload` you can add the `--no-verify` argument to bypass the upload checks.",
+      "parentUuid": "ca729f0f_0953c290",
+      "revId": "01eaa139aebd124d73f990afcb219ac5a46d6b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8125cfc_b2b6ca27",
         "filename": "common/mock/fpsensor_state_mock.c",
         "patchSetId": 2

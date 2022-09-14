@@ -16,6 +16,23 @@
       "message": "responded to all comments",
       "revId": "15784a9d902548997e5488e1639a14df92d5de79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1f2bd5_b773c814",
+        "filename": "include/mock/fpsensor_state_mock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-14T15:52:46Z",
+      "side": 1,
+      "message": "Ideally there should be a blank space between the stdint.h include and this line.\n\nCheckout https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes for more info about where this come from.",
+      "revId": "15784a9d902548997e5488e1639a14df92d5de79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
