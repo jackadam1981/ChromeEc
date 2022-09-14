@@ -7,6 +7,7 @@
 #include <zephyr/logging/log.h>
 
 #include "accelgyro.h"
+#include "button.h"
 #include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "driver/accelgyro_bmi323.h"
@@ -40,6 +41,22 @@ static void form_factor_init(void)
 {
 	int ret;
 	uint32_t val;
+	enum nissa_sub_board_type sb = nissa_get_sb_type();
+
+	/*
+	 * If the sub board type is LTE, the volume up/down button
+	 * are exchanged.
+	 * non-LTE:
+	 *   volup -> gpio93, voldn -> gpioa2
+	 * LTE:
+	 *   volup -> gpioa2, voldn -> gpio93
+	 */
+	if (sb == NISSA_SB_C_LTE) {
+		LOG_INF("Volume up/down btn exchanged on LTE sku");
+		buttons[BUTTON_VOLUME_UP].gpio = GPIO_VOLUME_DOWN_L;
+		buttons[BUTTON_VOLUME_DOWN].gpio = GPIO_VOLUME_UP_L;
+	}
+
 	/*
 	 * If the board version is 1
 	 * use ver1 rotation matrix.
