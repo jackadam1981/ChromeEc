@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2dd7898_ab46a46b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-14T18:09:41Z",
+      "side": 1,
+      "message": "Hi Ivan,\n\nThis is a nice start. I think _EDGE and _ALWAYS are not intuitive. Also, since this functoin already refers to prev_charge, I think it makes sense to let the function also get state_of_charge by itself (instead of passing as a parameter). How about:\n\n    int battery_is_below_threshold(enum batt_threshold_type type,\n                                   bool transitioned)\n    {\n        int threshold;\n                \n        switch (type) {\n        case BATT_THRESHOLD_TYPE_LOW:\n            threshold \u003d BATTERY_LEVEL_LOW;\n            break;\n        case BATT_THRESHOLD_TYPE_SHUTDOWN:\n            threshold \u003d CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;            \n            break;\n        default:\n            return 0;\n        }\n        \n        return curr.batt.state_of_charge \u003c\u003d threshold \u0026\u0026\n               (!transitioned || prev_charge \u003e threshold);\n    }\n\nIn the future, we can further extend it to cover BATT_THRESHOLD_TYPE_CRITICAL. Also, the function also should check \u0027curr.batt.flags \u0026 BATT_FLAG_BAD_STATE_OF_CHARGE\u0027. Then, we can avoid caller\u0027s mistakes (of not checking it).\n\nIf this is getting too much for you, please reupload PS2. I\u0027m ok with that. Thanks, anyway.",
+      "range": {
+        "startLine": 1269,
+        "startChar": 0,
+        "endLine": 1295,
+        "endChar": 0
+      },
+      "revId": "f17072133fcc1f254b91a0276f871ae09b13832a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
