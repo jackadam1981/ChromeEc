@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bd2670c3_cc10faa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-09-14T07:21:15Z",
+      "side": 1,
+      "message": "i assume the CQ will cover this since there are specific CQ configs for this repo",
+      "parentUuid": "5053de75_0b48785a",
+      "revId": "8128bf3ca39edb908a608b4cfb3cf93266dd554c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "157816ec_df7f0575",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -66,6 +84,42 @@
       "writtenOn": "2022-09-13T23:10:07Z",
       "side": 1,
       "message": "I will note that, if your goal is to update the information actually displayed by devices in the field (mostly our own labs) when they enumerate, you will need to cherry pick this change to several firmware branches and communicate with the branch maintainers (mostly the test team) about the process for updating these boards.",
+      "revId": "8128bf3ca39edb908a608b4cfb3cf93266dd554c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e82c13_e364af80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-09-14T07:21:15Z",
+      "side": 1,
+      "message": "right, any change runs the risk of breaking other people when they rely on things they shouldn\u0027t",
+      "parentUuid": "e603b5e2_cd9fc01f",
+      "revId": "8128bf3ca39edb908a608b4cfb3cf93266dd554c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d199a95d_1e3bd938",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-09-14T07:21:15Z",
+      "side": 1,
+      "message": "right, i figured letting it slowly creep out via ToT \u0026 new devices is fine.  it\u0027s not critical enough to require cherry picks back to all the relevant branches.",
+      "parentUuid": "4d2c46c6_cc12a808",
       "revId": "8128bf3ca39edb908a608b4cfb3cf93266dd554c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
