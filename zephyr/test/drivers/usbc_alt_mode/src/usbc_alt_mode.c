@@ -347,6 +347,68 @@ ZTEST_F(usbc_alt_mode, verify_discovery_via_pd_host_cmd)
 	zassert_equal(response.pid, PARTNER_PRODUCT_ID);
 }
 
+ZTEST_F(usbc_alt_mode, verify_mode_entry_via_pd_host_cmd)
+{
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY)) {
+		ztest_test_skip();
+	}
+
+	/* Do discovery */
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_response_typec_discovery *discovery =
+		(struct ec_response_typec_discovery *)response_buffer;
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
+				 sizeof(response_buffer));
+
+	/* The host command does not count the VDM header in identity_count. */
+	zassume_equal(discovery->identity_count,
+		      fixture->partner.identity_vdos - 1,
+		      "Expected %d identity VDOs, got %d",
+		      fixture->partner.identity_vdos - 1,
+		      discovery->identity_count);
+	zassume_mem_equal(
+		discovery->discovery_vdo, fixture->partner.identity_vdm + 1,
+		discovery->identity_count * sizeof(*discovery->discovery_vdo),
+		"Discovered SOP identity ACK did not match");
+	zassume_equal(discovery->svid_count, 1, "Expected 1 SVID, got %d",
+		      discovery->svid_count);
+	zassume_equal(discovery->svids[0].svid, USB_SID_DISPLAYPORT,
+		      "Expected SVID 0x%0000x, got 0x%0000x",
+		      USB_SID_DISPLAYPORT, discovery->svids[0].svid);
+	zassume_equal(discovery->svids[0].mode_count, 1,
+		      "Expected 1 DP mode, got %d",
+		      discovery->svids[0].mode_count);
+	zassume_equal(discovery->svids[0].mode_vdo[0],
+		      fixture->partner.modes_vdm[1],
+		      "DP mode VDOs did not match");
+
+	/* Verify entering mode */
+	struct ec_params_usb_pd_set_mode_request set_mode_params = {
+		.cmd = PD_ENTER_MODE,
+		.port = TEST_PORT,
+		.opos = 1, /* Second VDO (after Discovery Responses) */
+		.svid = USB_SID_DISPLAYPORT,
+	};
+
+	struct host_cmd_handler_args set_mode_args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_USB_PD_SET_AMODE, 0, set_mode_params);
+
+	zassert_ok(host_command_process(&set_mode_args));
+
+	/* Verify that DisplayPort is the active alternate mode. */
+	struct ec_params_usb_pd_get_mode_response get_mode_response;
+	int response_size;
+
+	host_cmd_usb_pd_get_amode(TEST_PORT, 0, &get_mode_response,
+				  &response_size);
+
+	/* Response should be populated with a DisplayPort VDO */
+	zassert_equal(response_size, sizeof(get_mode_response), NULL);
+	zassert_equal(get_mode_response.svid, USB_SID_DISPLAYPORT, NULL);
+	zassert_equal(get_mode_response.vdo[0],
+		      fixture->partner.modes_vdm[get_mode_response.opos], NULL);
+}
+
 ZTEST_SUITE(usbc_alt_mode, drivers_predicate_post_main, usbc_alt_mode_setup,
 	    usbc_alt_mode_before, usbc_alt_mode_after, NULL);
 
