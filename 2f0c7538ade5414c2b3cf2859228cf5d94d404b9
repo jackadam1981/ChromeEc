@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a856b8a_994b8a2d",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-14T20:35:45Z",
+      "side": 1,
+      "message": "Please add a doc comment.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 16
+      },
+      "revId": "2f0c7538ade5414c2b3cf2859228cf5d94d404b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf6aeb5_79dd29fb",
+        "filename": "zephyr/test/kingler/src/alt_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-14T20:35:45Z",
+      "side": 1,
+      "message": "Can this magic number (and the one below) be made into constants?",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "2f0c7538ade5414c2b3cf2859228cf5d94d404b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1149af24_13a1de09",
+        "filename": "zephyr/test/kingler/src/alt_sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-14T20:35:45Z",
+      "side": 1,
+      "message": "Since you are inspecting the side effect of the correct interrupt getting called, so you really need to look at this bool? I think I would just remove this assert, and make the bool static again. The correct interrupt getting called is the behavior you want to check, the bool is just an implementation detail.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 48
+      },
+      "revId": "2f0c7538ade5414c2b3cf2859228cf5d94d404b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
