@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef07649_1e4074a6",
+        "filename": "zephyr/projects/nissa/craask/cbi.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-09-14T04:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f84513c7_05e1758b",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "961d4cf704868e40d656d9828fc42c2d7e55b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0a5ba2c_8e16d716",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa6f0c3_3c0532f6",
+        "filename": "zephyr/projects/nissa/craask/cbi.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-09-14T04:23:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f0a5ba2c_8e16d716",
+      "revId": "961d4cf704868e40d656d9828fc42c2d7e55b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b03ffea_38c2c5dd",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-09-13T12:45:00Z",
       "side": 1,
       "message": "Drop \"All rights reserved\"",
+      "revId": "961d4cf704868e40d656d9828fc42c2d7e55b993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d0d924_1867fdac",
+        "filename": "zephyr/projects/nissa/craask/src/form_factor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-09-14T04:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b03ffea_38c2c5dd",
       "revId": "961d4cf704868e40d656d9828fc42c2d7e55b993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
