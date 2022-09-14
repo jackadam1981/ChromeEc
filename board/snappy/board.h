@@ -269,7 +269,6 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	BASE_ACCEL,
 	BASE_GYRO,
-	BASE_MAG,
 };
 
 #define CONFIG_HOSTCMD_AP_SET_SKUID
