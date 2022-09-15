@@ -29,6 +29,7 @@ int rollback_get_minimum_version(void);
  * initialized)
  */
 int rollback_get_secret(uint8_t *secret);
+#define FIRAS 2
 
 /**
  * Update rollback protection block to the version passed as parameter.
@@ -48,6 +49,11 @@ int rollback_update_version(int32_t next_min_version);
  * @return EC_SUCCESS on success, EC_ERROR_* on error.
  */
 int rollback_add_entropy(const uint8_t *data, unsigned int len);
+
+int MyFunction2(int x);
+
+int MyFunction3(int x);
+#define FIRAS2 30
 
 /**
  * Lock rollback protection block, reboot if necessary.

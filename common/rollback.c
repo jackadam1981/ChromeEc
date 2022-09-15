@@ -25,6 +25,17 @@
 #include "trng.h"
 #include "util.h"
 
+int MyFunction3(int x)
+{
+	return 3 * x;
+}
+
+int MyFunction2(int x)
+{
+	return 2 + x;
+}
+
+
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
@@ -115,7 +126,8 @@ int read_rollback(int region, struct rollback_data *data)
  * Return most recent region index on success (>= 0, or 0 if no rollback
  * region is valid), negative value on error.
  */
-static int get_latest_rollback(struct rollback_data *data)
+
+test_mockable_static int get_latest_rollback(struct rollback_data *data)
 {
 	int ret = -1;
 	int region;
