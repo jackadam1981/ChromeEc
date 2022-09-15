@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b776a844_8b63e481",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-15T02:39:52Z",
+      "side": 1,
+      "message": "i wonder if we should also call tcpm_init() on each port\nafter nct38xx_reset_notify().\n\nwe call tcpm_init() every time we take the chip out of LPM,\nso it seems like the minimum level of initialization\nappropriate for a chip reset request.\n\npd_wait_exit_low_power -\u003e reset_device_and_notify -\u003e tcpm_init\n-\u003e nct38xx_tcpm_init\n\nand that call path still checks NCT38XX_BOOT_UNKNOWN set up by\nnct38xx_reset_notify().",
+      "revId": "a2cf835cdbabdb7a1d22e994f6300e7dd1c46430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
