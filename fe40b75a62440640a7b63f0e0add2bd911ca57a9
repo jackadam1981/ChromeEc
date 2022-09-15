@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7d4df4_fb0acb04",
+        "filename": "zephyr/projects/skyrim/i2c.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-15T16:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8718ea2d_24b0e956",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 32
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc02d011_93f0eebd",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc91f2f3_7ba74d21",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-15T16:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94701931_33b8e971",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 65
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6703ca61_3edfc520",
@@ -84,6 +132,30 @@
       "writtenOn": "2022-09-13T20:14:45Z",
       "side": 1,
       "message": "Replace with `DT_HAS_COMPAT_STATUS_OKAY(cros_ec_temp_sensors)`.  Eliminate use of the DT_PATH throughout.",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6a6217_11750f90",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-15T16:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6703ca61_3edfc520",
       "range": {
         "startLine": 16,
         "startChar": 4,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04ab0491_68d9202d",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-15T16:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49103490_6ede8536",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72dd3b8d_a551c98d",
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce20efb_d8c6a6c1",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-15T16:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72dd3b8d_a551c98d",
+      "range": {
+        "startLine": 90,
+        "startChar": 20,
+        "endLine": 90,
+        "endChar": 40
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd73769c_f7974a98",
@@ -153,6 +273,30 @@
       "writtenOn": "2022-09-13T20:14:45Z",
       "side": 1,
       "message": "You can now use the compatible property here instead.\n```\n#define DT_DRV_COMPAT cros_ec_temp_sensors\nDT_FOREACH_CHILD_SEP(DT_DRV_INST(0), ...)\n```",
+      "range": {
+        "startLine": 205,
+        "startChar": 22,
+        "endLine": 205,
+        "endChar": 50
+      },
+      "revId": "fe40b75a62440640a7b63f0e0add2bd911ca57a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619fa3d3_50e9fc51",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-15T16:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd73769c_f7974a98",
       "range": {
         "startLine": 205,
         "startChar": 22,
