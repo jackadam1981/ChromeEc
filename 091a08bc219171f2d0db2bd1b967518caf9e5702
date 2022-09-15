@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9012ad_9b60cc21",
+        "filename": "zephyr/projects/skyrim/src/winterhold/kb_backlight.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-15T16:28:19Z",
+      "side": 1,
+      "message": "nit: Should this be FW_KB_BL to specify the field that couldn\u0027t be retrieved?",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 23
+      },
+      "revId": "091a08bc219171f2d0db2bd1b967518caf9e5702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
