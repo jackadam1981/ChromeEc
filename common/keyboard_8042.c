@@ -87,6 +87,7 @@ static mutex_t to_host_mutex;
 enum {
 	CHAN_KBD = 0,
 	CHAN_AUX,
+	CHAN_CMD,
 };
 struct data_byte {
 	uint8_t chan;
@@ -94,6 +95,7 @@ struct data_byte {
 };
 
 static struct queue const to_host = QUEUE_NULL(16, struct data_byte);
+static struct queue const to_host_cmd = QUEUE_NULL(16, struct data_byte);
 
 /* Queue command/data from the host */
 enum {
@@ -281,15 +283,26 @@ static void i8042_send_to_host(int len, const uint8_t *bytes, uint8_t chan,
 		for (i = 0; i < len; i++)
 			kblog_put('r', bytes[i]);
 	} else {
-		for (i = 0; i < len; i++)
-			kblog_put(chan == CHAN_AUX ? 'a' : 's', bytes[i]);
+		for (i = 0; i < len; i++) {
+			char type;
+			if (chan == CHAN_AUX)
+				type = 'a';
+			else if (chan == CHAN_CMD)
+				type = 'c';
+			else
+				type = 's';
+			kblog_put(type, bytes[i]);
+		}
 
 		if (queue_space(&to_host) >= len) {
 			kblog_put('t', to_host.state->tail);
 			for (i = 0; i < len; i++) {
 				data.chan = chan;
 				data.byte = bytes[i];
-				queue_add_unit(&to_host, &data);
+				if (chan == CHAN_CMD)
+					queue_add_unit(&to_host_cmd, &data);
+				else
+					queue_add_unit(&to_host, &data);
 			}
 		}
 	}
@@ -417,6 +430,7 @@ void keyboard_clear_buffer(void)
 	mutex_lock(&to_host_mutex);
 	kblog_put('x', queue_count(&to_host));
 	queue_init(&to_host);
+	queue_init(&to_host_cmd);
 	mutex_unlock(&to_host_mutex);
 	lpc_keyboard_clear_buffer();
 }
@@ -868,20 +882,23 @@ static void i8042_handle_from_host(void)
 	struct host_byte h;
 	int ret_len;
 	uint8_t output[MAX_SCAN_CODE_LEN];
-	uint8_t chan = CHAN_KBD;
+	uint8_t chan;
 
 	while (queue_remove_unit(&from_host, &h)) {
 		if (h.type == HOST_COMMAND) {
 			ret_len = handle_keyboard_command(h.byte, output);
+			chan = CHAN_KBD;
 		} else {
 			CPRINTS5("KB recv data: 0x%02x", h.byte);
 			kblog_put('d', h.byte);
 
 			if (IS_ENABLED(CONFIG_8042_AUX) &&
-			    handle_mouse_data(h.byte, output, &ret_len))
+			    handle_mouse_data(h.byte, output, &ret_len)) {
 				chan = CHAN_AUX;
-			else
+			} else {
 				ret_len = handle_keyboard_data(h.byte, output);
+				chan = CHAN_CMD;
+			}
 		}
 
 		i8042_send_to_host(ret_len, output, chan, 0);
@@ -925,7 +942,8 @@ void keyboard_protocol_task(void *u)
 			i8042_handle_from_host();
 
 			/* Check if we have data to send to host */
-			if (queue_is_empty(&to_host))
+			if (queue_is_empty(&to_host) &&
+					queue_is_empty(&to_host_cmd))
 				break;
 
 			/* Handle data waiting for host */
@@ -953,8 +971,13 @@ void keyboard_protocol_task(void *u)
 			}
 
 			/* Get a char from buffer. */
-			kblog_put('k', to_host.state->head);
-			queue_remove_unit(&to_host, &entry);
+			if (queue_count(&to_host_cmd)) {
+				kblog_put('p', to_host_cmd.state->head);
+				queue_remove_unit(&to_host_cmd, &entry);
+			} else {
+				kblog_put('k', to_host.state->head);
+				queue_remove_unit(&to_host, &entry);
+			}
 
 			/* Write to host. */
 			if (entry.chan == CHAN_AUX &&
@@ -963,7 +986,10 @@ void keyboard_protocol_task(void *u)
 				lpc_aux_put_char(entry.byte,
 						 i8042_aux_irq_enabled);
 			} else {
-				kblog_put('K', entry.byte);
+				if (entry.chan == CHAN_CMD)
+					kblog_put('C', entry.byte);
+				else
+					kblog_put('K', entry.byte);
 				lpc_keyboard_put_char(
 					entry.byte, i8042_keyboard_irq_enabled);
 			}
