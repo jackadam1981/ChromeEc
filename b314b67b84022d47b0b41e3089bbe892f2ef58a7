@@ -34,6 +34,24 @@
       "parentUuid": "513e4c80_f38ffcd2",
       "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3fae6f3_e90eb08d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-15T16:32:58Z",
+      "side": 1,
+      "message": "Regardless, g++ appears to support `[]` so this doesn\u0027t make sense as is.",
+      "parentUuid": "67a78b44_9e616271",
+      "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
