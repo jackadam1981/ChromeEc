@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd36570_fb399876",
+        "filename": "common/body_detection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-15T16:28:55Z",
+      "side": 1,
+      "message": "Can this get implemented with a callback routine instead of an overridable function?\n\nAlso, should this routine take a parameter?  How does the board code know what the new body detection state is?\n\n```\ntypedef void (*body_detection_cb_t)(enum body_detect_states state);\nvoid body_detection_register_callback(body_detection_cb_t callback)\n{\n    body_state_changeapplication_body_detection_callback \u003d callback;\n}\n```",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
