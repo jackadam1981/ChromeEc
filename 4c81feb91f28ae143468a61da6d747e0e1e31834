@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "722bd6e3_a2de8f43",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-15T23:56:08Z",
+      "side": 1,
+      "message": "Today, CrOS EC jumps to RW very early before the AP is powered (thanks to EFS). Thus, RW can catch CHIPSET_START. So, we\u0027re not using the call.\n\nWe can use HOOK_CHIPSET_STARTUP to wake up pchg_task:\n\n    static void pchg_chipset_startup(void)\n    {\n        task_wake(TASK_ID_PCHG);\n    }\n    DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pchg_chipset_startup, HOOK_PRIO_DEFAULT);\n\nand in pchg_task we can sleep immediately:\n\n    if (!chipset_in_state(CHIPSET_STATE_ON))\n        task_wait_event(-1);\n\n    pchg_startup();\n    \n    while (true) {\n        ....\n    }\n\nSomething like that. Then, it\u0027s ok for get_chip_info to sleep 120 msec because other tasks can use that 120 msec.",
+      "parentUuid": "ff3f77ca_a7f41eb0",
+      "range": {
+        "startLine": 372,
+        "startChar": 11,
+        "endLine": 372,
+        "endChar": 32
+      },
+      "revId": "4c81feb91f28ae143468a61da6d747e0e1e31834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3724738d_cc2805ad",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 9
