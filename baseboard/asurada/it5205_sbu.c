@@ -34,8 +34,8 @@ static void reset_csbu(void)
 	hook_call_deferred(&reset_retry_delay_data, 500 * MSEC);
 
 	/* re-enable sbu interrupt */
-	it5205h_enable_csbu_switch(&usb_muxes[0], false);
-	it5205h_enable_csbu_switch(&usb_muxes[0], true);
+	it5205h_enable_csbu_switch(&usb_muxes[0].mux, false);
+	it5205h_enable_csbu_switch(&usb_muxes[0].mux, true);
 }
 DECLARE_DEFERRED(reset_csbu);
 

@@ -649,7 +649,7 @@ static int console_command_bb_retimer(int argc, const char **argv)
 		return EC_ERROR_PARAM1;
 
 	mux_chain = &usb_muxes[port];
-	while (mux_chain) {
+	while (mux_chain && mux_chain->mux) {
 		mux = mux_chain->mux;
 		if (mux->driver == &bb_usb_retimer)
 			break;

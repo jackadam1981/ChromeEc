@@ -212,7 +212,7 @@ static void ps8743_suspend(void)
 	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
 		const struct usb_mux *mux = usb_muxes[i].mux;
 
-		if (mux->driver != &ps8743_usb_mux_driver)
+		if (!mux || mux->driver != &ps8743_usb_mux_driver)
 			continue;
 
 		saved_usb_conn_status[i] = ps8743_get_usb_conn_status(mux);
@@ -231,7 +231,7 @@ static void ps8743_resume(void)
 	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
 		const struct usb_mux *mux = usb_muxes[i].mux;
 
-		if (mux->driver != &ps8743_usb_mux_driver)
+		if (!mux || mux->driver != &ps8743_usb_mux_driver)
 			continue;
 
 		if (saved_usb_conn_status[i] != NO_DEVICE) {

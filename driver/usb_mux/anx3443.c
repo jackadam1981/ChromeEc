@@ -196,7 +196,7 @@ static void anx3443_suspend(void)
 	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		const struct usb_mux *mux = usb_muxes[i].mux;
 
-		if (mux->driver != &anx3443_usb_mux_driver)
+		if (!mux || mux->driver != &anx3443_usb_mux_driver)
 			continue;
 
 		if (anx3443_port_is_usb2_only(mux))
@@ -211,7 +211,8 @@ static void anx3443_resume(void)
 		int port = usb_muxes[i].mux->usb_port;
 		bool ack_required;
 
-		if (usb_muxes[i].mux->driver != &anx3443_usb_mux_driver)
+		if (!usb_muxes[i].mux ||
+		    usb_muxes[i].mux->driver != &anx3443_usb_mux_driver)
 			continue;
 
 		anx3443_set_mux(usb_muxes[i].mux,
