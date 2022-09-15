@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff3f77ca_a7f41eb0",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-09-15T15:32:06Z",
+      "side": 1,
+      "message": "thanks, understand the concern on boot speed. \n\nI found actually PCHG task call pchg_startup, do we need to HOOK pchg_startup to HOOK_CHIPSET_STARTUP? \n```\nvoid pchg_task(void *u)\n{\n        struct pchg *ctx;\n        int p;\n\n        if (chipset_in_state(CHIPSET_STATE_ON))\n                /* We are here after power-on (because of late sysjump). */\n                pchg_startup();\n...\n```",
+      "parentUuid": "fae5876c_b9e33d40",
+      "range": {
+        "startLine": 372,
+        "startChar": 11,
+        "endLine": 372,
+        "endChar": 32
+      },
+      "revId": "4c81feb91f28ae143468a61da6d747e0e1e31834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3724738d_cc2805ad",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 9
