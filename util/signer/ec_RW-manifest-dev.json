@@ -5,6 +5,10 @@
         "FW_DEFINED_DATA_BLK0": 2,  // kevin EVT 1
         "FW_DEFINED_DATA_EXTRA_BLK6": 0  // escape hatch
 },
+  "board_id": 1413829460,  // that's 0x54455354, a.k.a. 'TEST' in ASCII
+  "board_id_mask": 0, // 0
+  "board_id_flags": 1048575, // 0xfffff
+
 // Rollback state.
 "info": {
                                    "3": -1,   "4": -1,   "5": -1,   "6": -1,
@@ -38,7 +42,7 @@
   "p4cl": 177,  // P4 sync cl for XML we link against. 177 == 0xb1.
 
   "timestamp": 0,
-  "epoch": 0,  // FWR diversification contributor, 32 bits.
+  "epoch": 1,  // FWR diversification contributor, 32 bits.
   "major": 6,  // FW2_HIK_CHAIN counter.
   "minor": 120,  // Mostly harmless version field.
   "applysec": -1,  // Mask to and with fuse BROM_APPLYSEC.
