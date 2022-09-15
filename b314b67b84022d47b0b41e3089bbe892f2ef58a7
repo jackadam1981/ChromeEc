@@ -70,6 +70,24 @@
       "parentUuid": "b3fae6f3_e90eb08d",
       "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23baff85_2fbff14d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-15T19:57:37Z",
+      "side": 1,
+      "message": "\u003e g++ appears to support  []  so this doesn\u0027t make sense as is\n\nDid you test a a struct that *only* has a flexible array member?\n\nFor example, this fails when compiled with:\n\n```\ng++ -Wall -Werror -std\u003dc++17 -o flexible_array_member flexible_array_member.cc\n```\n\n```\n#include \u003cstdio.h\u003e\n\nint main(int argc, char** argv) {\n  struct Good {\n    int a[];  // Flexible array member\n  };\n  int buffer[10];\n  Good* good \u003d reinterpret_cast\u003cGood*\u003e(buffer);\n  for (int i \u003d 0; i \u003c 10; ++i) printf(\"%d\", good-\u003ea[i]);\n  return 0;\n}\n```\n\n```\nflexible_array_member.cc: In function ‘int main(int, char**)’:\nflexible_array_member.cc:9:9: error: flexible array member ‘main(int, char**)::Good::a’ in an otherwise empty ‘struct main(int, char**)::Good’\n    9 |     int a[];  // Flexible array member\n      |         ^\n```",
+      "parentUuid": "7cc51024_9ac599af",
+      "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
