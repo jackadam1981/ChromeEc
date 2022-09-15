@@ -16,6 +16,24 @@
       "message": "Unless there is board-specific action taken here in later CLs, this could probably be integrated into the common code, possibly guarded by a CONFIG as appropriate",
       "revId": "dc4d47b891f0a363cf727cdd18b57e1ffc77ef2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f1d79f_8c07e7f6",
+        "filename": "zephyr/projects/skyrim/src/winterhold/body_detection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-15T08:27:19Z",
+      "side": 1,
+      "message": "I added the CONFIG in CL:3868880, and defined the CONFIG in this change",
+      "parentUuid": "ef90761e_e7c95649",
+      "revId": "dc4d47b891f0a363cf727cdd18b57e1ffc77ef2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
