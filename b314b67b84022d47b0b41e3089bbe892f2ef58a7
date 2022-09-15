@@ -52,6 +52,24 @@
       "parentUuid": "67a78b44_9e616271",
       "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc51024_9ac599af",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-15T18:10:14Z",
+      "side": 1,
+      "message": "sorry, I must have misunderstood. I thought you said you prefer we keep using `[0]`. If that\u0027s the case, my comment was that this breaks some structs since they had different sizes in C vs C++. If I misunderstood, please disregard this comment.",
+      "parentUuid": "b3fae6f3_e90eb08d",
+      "revId": "b314b67b84022d47b0b41e3089bbe892f2ef58a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
