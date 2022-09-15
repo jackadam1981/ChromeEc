@@ -16,6 +16,23 @@
       "message": "I am not entirely sure where the best place is to clear these stale hard reset\nevent flags.\nFeel free to suggest somewhere else if this is not correct.\n",
       "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a433ee_00da0449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-15T15:30:24Z",
+      "side": 1,
+      "message": "Adding Eric since he has been working with the hard reset notifications recently.\n\nPrashant, what\u0027s the most precise description for what the AP needs of this hard reset flag? I\u0027d like to make sure our usage of it matches the exact need, and then we heavily comment the code to indicate why it is we do what we do in case of future bugs.  And possibly some unit tests to then enforce the flag set/clear",
+      "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
