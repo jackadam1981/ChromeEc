@@ -678,3 +678,4 @@ cat /tmp/metrics_build
 ls -l /tmp/artifact_bundles/
 ```
 mt8195 c0
+mt8195 optee
