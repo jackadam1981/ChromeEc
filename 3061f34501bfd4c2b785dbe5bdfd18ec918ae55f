@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ec2513_83eab599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-09-15T02:25:25Z",
+      "side": 1,
+      "message": "Dear Kenny\nI check those keycode again and update feedback. I also use evtest to check all keyboard function again. Thanks.",
+      "parentUuid": "ce22b05e_689fe8a7",
+      "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22a9e3f0_4b066440",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-14T14:51:43Z",
       "side": 1,
       "message": "{0x001f, 0x0076, 0x0017, 0x000e, 0x001c, 0x003a, 0x000d, 0x0016} ?",
+      "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9c53990_be993185",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-09-15T02:25:25Z",
+      "side": 1,
+      "message": "The matrix location of 0x001f is T15, 0x0017 is T14. Keyboard printing doesn\u0027t contain it. Standard keyboard matrix value is also write to 0x0000. Should I add it?",
+      "parentUuid": "22a9e3f0_4b066440",
       "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ce28e2_d645d8c1",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-09-15T02:25:25Z",
+      "side": 1,
+      "message": "(KSI4,KSO2) is T1.  I follow the standard keyboard to write 0x0005.",
+      "parentUuid": "15ac666e_c069cccc",
+      "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22f8c885_569eb491",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-09-14T14:51:43Z",
       "side": 1,
       "message": "{0x0078, 0x0009, 0x0083, 0x000b, 0x0003, 0x0041, 0x001e, 0x001d} ?",
+      "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "724e34f0_99cb8060",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-09-15T02:25:25Z",
+      "side": 1,
+      "message": "(KSI0,KSO4) is T11. I follow the standard keyboard to write 0xe01f.",
+      "parentUuid": "22f8c885_569eb491",
       "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d4153c_fa22a53d",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-09-15T02:25:25Z",
+      "side": 1,
+      "message": "(KSI1,KSO7) is LShift.  I follow the standard keyboard to write 0x0012.\n0x0052 is (KSI1,KSO8) for \".",
+      "parentUuid": "5d23f7b6_7fdee16a",
+      "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3011640b_1cde415b",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-09-14T14:51:43Z",
       "side": 1,
       "message": "{0x0073, 0x0066, 0xe071, 0x005d, 0x005a, 0xe04a, 0x0070, 0x0021} ?",
+      "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b0c5b3_30c1dcef",
+        "filename": "board/delbin/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2022-09-15T02:25:25Z",
+      "side": 1,
+      "message": "(KSI1,KSO13), (KSI2,KSO13), (KSI3,KSO13), (KSI4,KSO13), is same as standard keyboard.  I follow the standard keyboard to write 0x007c, 0x007b, 0x0074, 0x0071.",
+      "parentUuid": "3011640b_1cde415b",
       "revId": "3061f34501bfd4c2b785dbe5bdfd18ec918ae55f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
