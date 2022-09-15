@@ -286,8 +286,8 @@ DECLARE_CONSOLE_COMMAND(anx_ocm, command_anx_ocm, "port [erase]",
 static int anx7447_init(int port)
 {
 	int rv, reg, i;
-	const struct usb_mux_chain *me = &usb_muxes[port];
 	bool unused;
+	const struct usb_mux_chain *mux_chain = usb_mux_get_mux_chain(port);
 
 	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
@@ -384,15 +384,17 @@ static int anx7447_init(int port)
 	 * Run mux_set() here for considering CCD(Case-Closed Debugging) case
 	 * If this TCPC is not also the MUX then don't initialize to NONE
 	 */
-	while ((me != NULL) && (me->mux->driver != &anx7447_usb_mux_driver))
-		me = me->next;
+	while ((mux_chain != NULL) &&
+	       (mux_chain->mux->driver != &anx7447_usb_mux_driver))
+		mux_chain = mux_chain->next;
 
 	/*
 	 * Note that bypassing the usb_mux API is okay for internal driver calls
 	 * since the task calling init already holds this port's mux lock.
 	 */
-	if (me != NULL && !(me->mux->flags & USB_MUX_FLAG_NOT_TCPC))
-		rv = anx7447_mux_set(me->mux, USB_PD_MUX_NONE, &unused);
+	if (mux_chain != NULL &&
+	    !(mux_chain->mux->flags & USB_MUX_FLAG_NOT_TCPC))
+		rv = anx7447_mux_set(mux_chain->mux, USB_PD_MUX_NONE, &unused);
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
 	return rv;

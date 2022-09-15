@@ -272,8 +272,8 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 	 * MUXes.  So when we change one, we traverse the whole list
 	 * to make sure they are all updated appropriately.
 	 */
-	for (mux_chain = &usb_muxes[port];
-	     rv == EC_SUCCESS && mux_chain != NULL && mux_chain->mux != NULL;
+	for (mux_chain = usb_mux_get_mux_chain(port);
+	     rv == EC_SUCCESS && mux_chain != NULL;
 	     mux_chain = mux_chain->next, chip++) {
 		mux_state_t lcl_state;
 		const struct usb_mux *mux_ptr = mux_chain->mux;
@@ -604,6 +604,17 @@ mux_state_t usb_mux_get(int port)
 	return rv ? USB_PD_MUX_NONE : mux_state;
 }
 
+USB_MUX_MAYBE_CONST struct usb_mux_chain *usb_mux_get_mux_chain(int port)
+{
+	if (port >= board_get_usb_pd_port_count())
+		return NULL;
+
+	if (!usb_muxes[port].mux)
+		return NULL;
+
+	return &usb_muxes[port];
+}
+
 void usb_mux_flip(int port)
 {
 	mux_state_t mux_state;
@@ -666,8 +677,8 @@ int usb_mux_retimer_fw_update_port_info(void)
 	const struct usb_mux_chain *mux_chain;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		mux_chain = &usb_muxes[i];
-		while (mux_chain && mux_chain->mux) {
+		mux_chain = usb_mux_get_mux_chain(i);
+		while (mux_chain) {
 			mux_ptr = mux_chain->mux;
 			if (mux_ptr->driver &&
 			    mux_ptr->driver->is_retimer_fw_update_capable &&

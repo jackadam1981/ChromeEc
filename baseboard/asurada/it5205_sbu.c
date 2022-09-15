@@ -28,14 +28,19 @@ DECLARE_DEFERRED(reset_retry_delay);
 
 static void reset_csbu(void)
 {
+	const struct usb_mux_chain *mux_chain;
 	/* double the retry time up to 1 minute */
 	ovp_retry_delay_us = MIN(ovp_retry_delay_us * 2, MINUTE);
 	/* and reset it if interrupt not triggered in a short period */
 	hook_call_deferred(&reset_retry_delay_data, 500 * MSEC);
 
 	/* re-enable sbu interrupt */
-	it5205h_enable_csbu_switch(&usb_muxes[0], false);
-	it5205h_enable_csbu_switch(&usb_muxes[0], true);
+	mux_chain = usb_mux_get_mux_chain(0);
+	if (!mux_chain) {
+		return;
+	}
+	it5205h_enable_csbu_switch(mux_chain->mux, false);
+	it5205h_enable_csbu_switch(mux_chain->mux, true);
 }
 DECLARE_DEFERRED(reset_csbu);
 

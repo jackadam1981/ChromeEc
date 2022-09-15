@@ -210,8 +210,14 @@ static enum usb_conn_status ps8743_get_usb_conn_status(const struct usb_mux *me)
 static void ps8743_suspend(void)
 {
 	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
-		const struct usb_mux *mux = usb_muxes[i].mux;
+		const struct usb_mux_chain *mux_chain =
+			usb_mux_get_mux_chain(i);
+		const struct usb_mux *mux;
 
+		if (!mux_chain)
+			continue;
+
+		mux = mux_chain->mux;
 		if (mux->driver != &ps8743_usb_mux_driver)
 			continue;
 
@@ -229,8 +235,14 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, ps8743_suspend, HOOK_PRIO_DEFAULT);
 static void ps8743_resume(void)
 {
 	for (int i = 0; i < board_get_usb_pd_port_count(); i++) {
-		const struct usb_mux *mux = usb_muxes[i].mux;
+		const struct usb_mux_chain *mux_chain =
+			usb_mux_get_mux_chain(i);
+		const struct usb_mux *mux;
 
+		if (!mux_chain)
+			continue;
+
+		mux = mux_chain->mux;
 		if (mux->driver != &ps8743_usb_mux_driver)
 			continue;
 
