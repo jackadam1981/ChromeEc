@@ -6,8 +6,8 @@
         "FW_DEFINED_DATA_EXTRA_BLK6": 0  // escape hatch
 },
   "board_id": 1413829460,  // that's 0x54455354, a.k.a. 'TEST' in ASCII
-  "board_id_mask": 0, // 0
-  "board_id_flags": 1048575, // 0xfffff
+  "board_id_mask": -1, // 0xffffffff
+  "board_id_flags": 0, // 0
 
 // Rollback state.
 "info": {
