@@ -68,7 +68,13 @@
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
-#define CONFIG_CHARGER_INPUT_CURRENT 512
+/*
+ * Setting this to 125 mA is needed to make transitional power consumption
+ * conform to the USB-PD spec (2.5W). If brown-out caused by an imbalanced
+ * battery (b/111214767) is concerned, consider enabling
+ * CONFIG_BATTERY_MEASURE_IMBALANCE before setting it to higher value.
+ */
+#define CONFIG_CHARGER_INPUT_CURRENT 125
 
 #define CONFIG_CMD_CHARGER_DUMP
 
