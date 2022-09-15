@@ -201,6 +201,10 @@
 			gpios = <&gpio1 4 GPIO_INPUT_PULL_UP>;
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
+		gpio_en_pp5000_usba_r: en_pp5000_usba_r {
+			gpios = <&gpio1 5 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_EN_PP5000_USBA_R";
+		};
 	};
 
 	gpio1: gpio@101 {
@@ -213,7 +217,7 @@
 		low-level;
 		gpio-controller;
 		#gpio-cells = <2>;
-		ngpios = <5>;
+		ngpios = <6>;
 	};
 
 	gpio-interrupts {
