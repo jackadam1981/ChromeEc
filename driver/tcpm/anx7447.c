@@ -629,9 +629,8 @@ static int anx7447_mux_init(const struct usb_mux *me)
 	int i;
 	bool unused;
 	const uint16_t tcpc_i2c_addr =
-		I2C_STRIP_FLAGS(tcpc_config[me->usb_port].i2c_info.addr_flags);
-	const uint16_t mux_i2c_addr =
-		I2C_STRIP_FLAGS(usb_muxes[port].mux->i2c_addr_flags);
+		I2C_STRIP_FLAGS(tcpc_config[port].i2c_info.addr_flags);
+	const uint16_t mux_i2c_addr = I2C_STRIP_FLAGS(me->i2c_addr_flags);
 
 	/*
 	 * find corresponding anx7447 SPI address according to
@@ -650,7 +649,7 @@ static int anx7447_mux_init(const struct usb_mux *me)
 	}
 	if (!I2C_STRIP_FLAGS(anx[port].i2c_addr_flags)) {
 		ccprintf("TCPC I2C addr 0x%x is invalid for ANX7447\n",
-			 I2C_STRIP_FLAGS(usb_muxes[port].mux->i2c_addr_flags));
+			 I2C_STRIP_FLAGS(me->i2c_addr_flags));
 		return EC_ERROR_UNKNOWN;
 	}
 
