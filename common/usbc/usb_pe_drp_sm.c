@@ -1,4 +1,4 @@
-/* Copyright 2019 The ChromiumOS Authors
+/* Copyright 2019 The ChromiumOS Authors.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -7749,9 +7749,22 @@ static void pe_ddr_perform_data_reset_run(int port)
 	 * No messages are expected, so any received would be a protocol error.
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
-		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
-	}
+		const uint32_t hdr = rx_emsg[port].header;
+
+		if (PD_HEADER_GET_SOP(hdr) == TCPCI_MSG_SOP &&
+		    PD_HEADER_CNT(hdr) == 0 && !PD_HEADER_EXT(hdr) &&
+		    PD_HEADER_TYPE(hdr) == PD_CTRL_PS_RDY &&
+		    IS_ENABLED(CONFIG_USBC_VCONN) &&
+		    !pd_timer_is_expired(port, PE_TIMER_TIMEOUT) &&
+		    !tc_is_vconn_src(port)) {
+			pd_timer_disable(port, PE_TIMER_TIMEOUT);
+			pd_timer_enable(port, PE_TIMER_VCONN_REAPPLIED,
+					PD_T_VCONN_REAPPLIED);
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+		} else {
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+			set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+		}
 }
 
 static void pe_ddr_perform_data_reset_exit(int port)
