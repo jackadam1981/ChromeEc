@@ -22,6 +22,30 @@
       },
       "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf11a29_e1cfd1e0",
+        "filename": "common/body_detection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-15T17:23:48Z",
+      "side": 1,
+      "message": "And looking at the following CL, do we expect the board callback to ever be doing something specific to the board hardware?  (ex. running i2c commands to specific chips on the board, such as the SOC)\n\nIf the board callback doesn\u0027t actually have anything board-specific to do, then we could put the event notification behind a new CONFIG, ex. CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE or similar based on what needs to happen",
+      "parentUuid": "dfd36570_fb399876",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
