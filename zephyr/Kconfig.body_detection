@@ -58,6 +58,13 @@ config PLATFORM_EC_BODY_DETECTION_STATIONARY_DURATION
 	help
 	  The unit is seconds
 
+config PLATFORM_EC_BODY_DETECTION_CUSTOM_ACTION
+	bool "Enable customization function"
+	default n
+	help
+	  Enable the customiztion function when body status
+	  is changed
+
 endif # PLATFORM_EC_BODY_DETECTION
 
 endmenu # body detection

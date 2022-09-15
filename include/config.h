@@ -221,6 +221,9 @@
 /* The threshold duration to change to off_body */
 #undef CONFIG_BODY_DETECTION_STATIONARY_DURATION
 
+/* Enable customization function when body status change */
+#undef CONFIG_BODY_DETECTION_CUSTOM_ACTION
+
 /*
  * Use the old standard reference frame for accelerometers. The old
  * reference frame is:
