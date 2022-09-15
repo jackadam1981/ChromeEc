@@ -22,6 +22,30 @@
       },
       "revId": "e1ea804944daf57da1f2e6a077bc1ee41f281a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "500d6a17_140cf3eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-09-15T04:59:02Z",
+      "side": 1,
+      "message": "Both \u0027make buildall\u0027 and \u0027zmake build -a\u0027 went successfully.",
+      "parentUuid": "0c5cf622_9880696e",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "e1ea804944daf57da1f2e6a077bc1ee41f281a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
