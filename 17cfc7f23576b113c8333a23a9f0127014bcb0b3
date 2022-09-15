@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49dd11d_420d3595",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76c5c8cc_a54913ff",
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04e0fd83_8865edbe",
@@ -137,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ac0493d_1796c28e",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:26Z",
+      "side": 1,
+      "message": "It\u0027s possible to have Type-C without power delivery but it wouldn\u0027t be very useful for chromebooks. So for most practical application, I\u0027d say that Type-C and PD is the minimal set of sub-components needed.",
+      "parentUuid": "381cc30c_e2d48208",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 77
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04a8110b_830a58c5",
         "filename": "docs/zephyr/zephyr_usbc.md",
         "patchSetId": 57
@@ -148,6 +190,30 @@
       "writtenOn": "2022-08-02T20:28:49Z",
       "side": 1,
       "message": "Use the document title text here instead [Zephyr EC PD Configuration].  Although, I prefer \"Zephyr EC Power Delivery Configuration\".",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa723d2_a9f8c3f0",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a8110b_830a58c5",
       "range": {
         "startLine": 43,
         "startChar": 5,
@@ -181,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c490f5b8_e93819b0",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8903919_e577c021",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67534019_7883263c",
@@ -194,6 +284,30 @@
       "writtenOn": "2022-08-02T20:28:49Z",
       "side": 1,
       "message": "Combine the retimer and SS mux sections, because there is so much overlap.",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a53dcca5_1a30e0ff",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67534019_7883263c",
       "range": {
         "startLine": 47,
         "startChar": 5,
@@ -264,6 +378,30 @@
       "writtenOn": "2022-08-02T20:28:49Z",
       "side": 1,
       "message": "Note - bc12 devices have moved onto the I2C bus.  And all the other USB-C chips will be moving to the I2C bus soon.  The \"named-usbc-port\" will only contain phandle references to the devices.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "17cfc7f23576b113c8333a23a9f0127014bcb0b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a32ede_47dce98c",
+        "filename": "docs/zephyr/zephyr_usbc.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:26Z",
+      "side": 1,
+      "message": "I removed the example",
+      "parentUuid": "f0972926_de15f81f",
       "range": {
         "startLine": 59,
         "startChar": 0,
