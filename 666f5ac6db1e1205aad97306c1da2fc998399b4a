@@ -73,6 +73,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f49a253d_a6c59af6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-15T00:07:15Z",
+      "side": 1,
+      "message": "i filed b/246855524 to add this functionality to usb_mux.\nwe already have a hook for CHIPSET_RESET there and it would\nmake sense to similarly add hooks for CHIPSET_{SUSPEND,RESUME}.\n",
+      "revId": "666f5ac6db1e1205aad97306c1da2fc998399b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "962d0ee6_16db9e42",
         "filename": "board/redrix/board.c",
         "patchSetId": 4
@@ -112,6 +129,52 @@
         "startChar": 1,
         "endLine": 78,
         "endChar": 22
+      },
+      "revId": "666f5ac6db1e1205aad97306c1da2fc998399b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c51d06_985bfde7",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-15T00:07:15Z",
+      "side": 1,
+      "message": "prashant raised a question about whether a USB3 device will be\ndetected on resume when it is connected while suspended.\nhave we confirmed that this scenario works as intended?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "666f5ac6db1e1205aad97306c1da2fc998399b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef66e2b2_b7fb6cdd",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-15T00:07:15Z",
+      "side": 1,
+      "message": "i originally had a concern that we may be disconnecting a USB3\nthumb drive by simply closing the lid. however, after reading\nthe existing code, it looks like we do track the fact that\nUSB3 is in use, so this code would not trigger.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 26
       },
       "revId": "666f5ac6db1e1205aad97306c1da2fc998399b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
