@@ -22,6 +22,30 @@
       },
       "revId": "ec4a8d9980a78d515e9dc2d44344f0103f113519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f96c983d_3dad94a0",
+        "filename": "include/system.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-15T17:48:43Z",
+      "side": 1,
+      "message": "That\u0027s what was causing the issue, it seems that this is a function used by several boards (not just tests). It just was never added to the header. I tried making it static, but other .c files include this header and were complaining about undefined static function being declared.",
+      "parentUuid": "f94b8156_6b344e24",
+      "range": {
+        "startLine": 665,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 4
+      },
+      "revId": "ec4a8d9980a78d515e9dc2d44344f0103f113519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
