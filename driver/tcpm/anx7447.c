@@ -384,14 +384,16 @@ static int anx7447_init(int port)
 	 * Run mux_set() here for considering CCD(Case-Closed Debugging) case
 	 * If this TCPC is not also the MUX then don't initialize to NONE
 	 */
-	while ((me != NULL) && (me->mux->driver != &anx7447_usb_mux_driver))
+	while ((me != NULL) && (me->mux != NULL) &&
+	       (me->mux->driver != &anx7447_usb_mux_driver))
 		me = me->next;
 
 	/*
 	 * Note that bypassing the usb_mux API is okay for internal driver calls
 	 * since the task calling init already holds this port's mux lock.
 	 */
-	if (me != NULL && !(me->mux->flags & USB_MUX_FLAG_NOT_TCPC))
+	if (me != NULL && me->mux != NULL &&
+	    !(me->mux->flags & USB_MUX_FLAG_NOT_TCPC))
 		rv = anx7447_mux_set(me->mux, USB_PD_MUX_NONE, &unused);
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 

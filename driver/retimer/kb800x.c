@@ -491,7 +491,7 @@ static int console_command_kb800x_xfer(int argc, const char **argv)
 		return EC_ERROR_PARAM1;
 
 	mux_chain = &usb_muxes[port];
-	while (mux_chain) {
+	while (mux_chain && mux_chain->mux) {
 		if (mux_chain->mux->driver == &kb800x_usb_mux_driver)
 			break;
 		mux_chain = mux_chain->next;

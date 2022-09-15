@@ -49,6 +49,10 @@ void set_bb_retimer_usb3_state(bool enable)
 	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		const struct usb_mux *mux = usb_muxes[i].mux;
 
+		if (!mux) {
+			continue;
+		}
+
 		mux_state = usb_mux_get(i);
 
 		if ((mux_state & USB_PD_MUX_USB_ENABLED)) {
