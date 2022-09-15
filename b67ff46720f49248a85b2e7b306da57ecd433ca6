@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5e8488_9a837b72",
+        "filename": "zephyr/test/drivers/keyboard_scan/src/keyboard_backlight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-09-15T12:09:07Z",
+      "side": 1,
+      "message": "Is this sleep needed after `kblight_get_current_enabled()` is introduced?",
+      "revId": "b67ff46720f49248a85b2e7b306da57ecd433ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
