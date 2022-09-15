@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7d84749_3913414c",
+        "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:00Z",
+      "side": 1,
+      "message": "I added a link to cros-ec,usb-mux-chain for a description. What do you think?",
+      "parentUuid": "926a44df_86f86334",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "d9166da3febfdee8f603032013f6a0f118f042f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97a64391_ba3bcd21",
         "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
         "patchSetId": 57
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-12T16:40:08Z",
       "side": 1,
       "message": "Update this section and the example to illustrate how the mux devices are added to the I2C bus and \"named-usbc-port\" just uses an array of phandles.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "d9166da3febfdee8f603032013f6a0f118f042f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4e6eda_69e499c9",
+        "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a64391_ba3bcd21",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-12T16:40:08Z",
       "side": 1,
       "message": "Update for the latest devicetree organization.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "d9166da3febfdee8f603032013f6a0f118f042f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a30a65a_4e8872ec",
+        "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
+        "patchSetId": 57
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-15T15:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f36de73_cff4fac1",
       "range": {
         "startLine": 38,
         "startChar": 0,
