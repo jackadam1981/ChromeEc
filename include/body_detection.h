@@ -6,6 +6,7 @@
 #ifndef __CROS_EC_BODY_DETECTION_H
 #define __CROS_EC_BODY_DETECTION_H
 
+#include "common.h"
 #include <stdint.h>
 #include <stdbool.h>
 
