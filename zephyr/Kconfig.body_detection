@@ -1,0 +1,63 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menu "body detection"
+
+config PLATFORM_EC_BODY_DETECTION
+	bool "Sensor support body detection"
+	help
+	  Enable the body detection function.
+
+	  The Power Reduction Algorithm is based on the Motion Detector
+	  output of In Motion (on body) state or Stationary (off body) state.
+	  The input of the Motion Detector is the X and Y axis signal
+	  from an accelerometer.
+
+if PLATFORM_EC_BODY_DETECTION
+
+config PLATFORM_EC_BODY_DETECTION_MAX_WINDOW_SIZE
+	int "Maximal windows size"
+	default 250
+	help
+	  max sensor odr (Hz)
+
+config PLATFORM_EC_BODY_DETECTION_VAR_THRESHOLD
+	int "The threshold of acceleration variance"
+	default 550
+	help
+	  The unit is (mm/s^2)^2
+
+config PLATFORM_EC_BODY_DETECTION_CONFIDENCE_DELTA
+	int "The threshold of acceleration variance"
+	default 525
+	help
+	  The unit is (mm/s^2)^2
+
+config PLATFORM_EC_BODY_DETECTION_VAR_NOISE_FACTOR
+	int "How much noise affect threshold of variance"
+	default 120
+	help
+	  Maximum sensor odr (Hz)
+
+config PLATFORM_EC_BODY_DETECTION_ON_BODY_CON
+	int "The confidence limit of on_body"
+	default 50
+	help
+	  The unit is percentage
+
+config PLATFORM_EC_BODY_DETECTION_OFF_BODY_CON
+	int "The confidence limit of off body"
+	default 10
+	help
+	  The unit is percentage
+
+config PLATFORM_EC_BODY_DETECTION_STATIONARY_DURATION
+	int "The threshold duration to change to off_body"
+	default 15
+	help
+	  The unit is seconds
+
+endif # PLATFORM_EC_BODY_DETECTION
+
+endmenu # body detection
