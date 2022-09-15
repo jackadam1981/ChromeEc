@@ -1,4 +1,4 @@
-/* Copyright 2019 The ChromiumOS Authors
+/* Copyright 2019 The ChromiumOS Authors.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -7518,8 +7518,8 @@ static void pe_ddr_send_data_reset_run(int port)
 			pd_timer_enable(port, PE_TIMER_DATA_RESET_FAIL,
 					PD_T_DATA_RESET_FAIL);
 			set_state_pe(port, tc_is_vconn_src(port) ?
-						   PE_DDR_PERFORM_DATA_RESET :
-						   PE_DDR_WAIT_FOR_VCONN_OFF);
+						   PE_DDR_WAIT_FOR_VCONN_OFF :
+						   PE_DDR_PERFORM_DATA_RESET);
 			return;
 		} else if (PD_HEADER_GET_SOP(hdr) == TCPCI_MSG_SOP &&
 			   PD_HEADER_CNT(hdr) == 0 && !PD_HEADER_EXT(hdr) &&
