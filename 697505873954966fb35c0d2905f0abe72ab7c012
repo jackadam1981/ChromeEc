@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253c6a96_9c1c90e8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-15T20:44:08Z",
+      "side": 1,
+      "message": "This was already changed at ToT. You\u0027ll need to rebase to pick up the change.",
+      "revId": "697505873954966fb35c0d2905f0abe72ab7c012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db90b412_abd0374b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7754,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-15T20:44:08Z",
+      "side": 1,
+      "message": "The scenario where the partner sends PS_RDY_ should be handled by `pe_ddr_wait_for_vconn_off_run`, but I suspect that the issue here is a legitimate protocol error on the part of the partner, and the TCPM should enter Error Recovery here. See bug for further details.",
+      "revId": "697505873954966fb35c0d2905f0abe72ab7c012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
