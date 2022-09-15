@@ -490,7 +490,7 @@ static int console_command_kb800x_xfer(int argc, const char **argv)
 	if (*e || !board_is_usb_pd_port_present(port))
 		return EC_ERROR_PARAM1;
 
-	mux_chain = &usb_muxes[port];
+	mux_chain = usb_mux_get_mux_chain(port);
 	while (mux_chain) {
 		if (mux_chain->mux->driver == &kb800x_usb_mux_driver)
 			break;

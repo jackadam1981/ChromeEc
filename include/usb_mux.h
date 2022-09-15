@@ -183,10 +183,11 @@ extern const struct usb_mux_driver virtual_usb_mux_driver;
 
 /* USB muxes present in system, ordered by PD port #, defined at board-level */
 #ifdef CONFIG_USB_MUX_RUNTIME_CONFIG
-extern struct usb_mux_chain usb_muxes[];
+#define USB_MUX_MAYBE_CONST
 #else
-extern const struct usb_mux_chain usb_muxes[];
+#define USB_MUX_MAYBE_CONST const
 #endif
+extern USB_MUX_MAYBE_CONST struct usb_mux_chain usb_muxes[];
 
 /* Supported hpd_update functions */
 void virtual_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
@@ -263,6 +264,16 @@ void usb_mux_set_single(int port, int index, mux_state_t mux_mode,
  * @return current MUX state (USB_PD_MUX_*).
  */
 mux_state_t usb_mux_get(int port);
+
+/**
+ * Get the root of the USB mux chain on type-C port. Callers can iterate
+ * through all muxes using the ->next member.  If this routine returns NULL,
+ * there are no muxes configured on the type-C port.
+ *
+ * @param port port number.
+ * @return Root of the mux chain, or NULL if there are no muxes on the port
+ */
+USB_MUX_MAYBE_CONST struct usb_mux_chain *usb_mux_get_mux_chain(int port);
 
 /**
  * Flip the superspeed muxes on type-C port.

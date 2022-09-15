@@ -49,7 +49,13 @@ void board_usb_mux_init(void)
 {
 	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
 		/* Disable DCI function. This is not needed for ARM. */
-		ps8743_field_update(usb_muxes[1].mux, PS8743_REG_DCI_CONFIG_2,
+		const struct usb_mux_chain *mux_chain =
+			usb_mux_get_mux_chain(1);
+
+		if (!mux_chain) {
+			return;
+		}
+		ps8743_field_update(mux_chain->mux, PS8743_REG_DCI_CONFIG_2,
 				    PS8743_AUTO_DCI_MODE_MASK,
 				    PS8743_AUTO_DCI_MODE_FORCE_USB);
 	}
