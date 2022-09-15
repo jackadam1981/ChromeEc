@@ -22,6 +22,30 @@
       },
       "revId": "9da1dcb1b62de67422d8d15eb46b941e295ab1cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0cfeee_c8dc9790",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-15T08:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45b02106_20b41783",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "9da1dcb1b62de67422d8d15eb46b941e295ab1cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
