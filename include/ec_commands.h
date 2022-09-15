@@ -416,6 +416,7 @@ extern "C" {
 /*
  * Report device orientation
  *  Bits       Definition
+ *  4          Body dectection mode change
  *  3:1        Device DPTF Profile Number (DDPN)
  *               0   = Reserved for backward compatibility (indicates no valid
  *                     profile number. Host should fall back to using TBMD).
@@ -428,6 +429,8 @@ extern "C" {
 #define EC_ACPI_MEM_TBMD_MASK 0x1
 #define EC_ACPI_MEM_DDPN_SHIFT 1
 #define EC_ACPI_MEM_DDPN_MASK 0x7
+#define EC_ACPI_MEM_BDMC_SHIFT 5
+#define EC_ACPI_MEM_BDMC_MASK 0x01
 
 /*
  * Report device features. Uses the same format as the host command, except:
