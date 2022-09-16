@@ -3,12 +3,12 @@
  * found in the LICENSE file.
  */
 
-#include <stddef.h>
-#include <string.h>
-
 #include "common.h"
 #include "ec_commands.h"
 #include "test_util.h"
+
+#include <stddef.h>
+#include <string.h>
 
 #ifndef TEST_BUILD
 #error "Mocks should only be in the test build."

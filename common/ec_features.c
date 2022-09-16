@@ -5,11 +5,11 @@
 
 /* Present Chrome EC device features to the outside world */
 
+#include "board_config.h"
 #include "common.h"
 #include "config.h"
 #include "console.h"
 #include "ec_commands.h"
-#include "board_config.h"
 
 uint32_t get_feature_flags0(void)
 {

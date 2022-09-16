@@ -5,16 +5,14 @@
  * Dynamic PDO Selection.
  */
 
-#include <stdint.h>
-
-#include "dps.h"
 #include "atomic.h"
 #include "battery.h"
-#include "common.h"
-#include "console.h"
-#include "charger.h"
 #include "charge_manager.h"
 #include "charge_state.h"
+#include "charger.h"
+#include "common.h"
+#include "console.h"
+#include "dps.h"
 #include "ec_commands.h"
 #include "math_util.h"
 #include "task.h"
@@ -22,6 +20,8 @@
 #include "usb_common.h"
 #include "usb_pd.h"
 #include "util.h"
+
+#include <stdint.h>
 
 #define K_MORE_PWR 96
 #define K_LESS_PWR 93
