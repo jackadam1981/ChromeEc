@@ -616,12 +616,6 @@ void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 }
 
-void anx7447_tcpc_clear_hpd_status(int port)
-{
-	anx7447_hpd_output_en(port);
-	anx7447_set_hpd_level(port, 0);
-}
-
 #ifdef CONFIG_USB_PD_TCPM_MUX
 static int anx7447_mux_init(const struct usb_mux *me)
 {

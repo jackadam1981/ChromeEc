@@ -164,10 +164,6 @@ int anx7447_set_power_supply_ready(int port);
 int anx7447_power_supply_reset(int port);
 int anx7447_board_charging_enable(int port, int enable);
 
-void anx7447_hpd_mode_en(int port);
-void anx7447_hpd_output_en(int port);
-
-void anx7447_tcpc_clear_hpd_status(int port);
 void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
 				    mux_state_t mux_state, bool *ack_required);
 
