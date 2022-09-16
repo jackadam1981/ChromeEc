@@ -16,14 +16,24 @@
 #include "gpio_signal.h"
 #include "gpio/gpio.h"
 
+#include "zephyr_console_shim.h"
+
 LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
 #if CONFIG_X86_NON_DSX_PWRSEQ_MTL
 #define X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS 50
 
+bool intel_debug;
+
 void board_ap_power_force_shutdown(void)
 {
 	int timeout_ms = X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS;
+
+	/* this prevents force shutdown if intel debug is enabled*/
+	if (intel_debug) {
+		LOG_WRN("intel_debug is enabled, preventing force shutdown");
+		return;
+	}
 
 	/* Turn off PCH_RMSRST to meet tPCH12 */
 	power_signal_set(PWR_EC_PCH_RSMRST, 0);
@@ -58,4 +68,23 @@ bool board_ap_power_check_power_rails_enabled(void)
 {
 	return power_signal_get(PWR_EN_PP3300_A);
 }
+
+static int command_intel_debug(int argc, const char **argv)
+{
+	if (argc > 1) {
+		if (!strcmp(argv[1], "enable")) {
+			intel_debug = true;
+		} else if (!strcmp(argv[1], "disable")) {
+			intel_debug = false;
+		} else {
+			return -1;
+		}
+	}
+	LOG_INF("intel_debug = %s", (intel_debug ? "enable" : "disable"));
+
+	return 0;
+}
+
+DECLARE_CONSOLE_COMMAND(intel_debug, command_intel_debug, "[enable|disable]",
+			"Prevents force shutdown if intel debug is enabled");
 #endif /* CONFIG_X86_NON_DSX_PWRSEQ_MTL */
