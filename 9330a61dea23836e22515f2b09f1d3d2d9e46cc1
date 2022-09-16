@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e47cefa_f8d98d1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-16T15:10:58Z",
+      "side": 1,
+      "message": "Looks good!  A couple of test nits, but they\u0027re pretty minor",
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f887825_48356189",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-16T15:10:58Z",
+      "side": 1,
+      "message": "nit: I see a lot of the test code doing this, but it\u0027s non-compliant to have a fixed 5V PDO at index 1.  It looks like this same PDO is set up at index 0 in the init the line before this",
+      "range": {
+        "startLine": 34,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d0f8c04_69da743a",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-16T15:10:58Z",
+      "side": 1,
+      "message": "nit: Tests of things that you\u0027re not trying to test in this module (i.e. the emulated power sequencing) should usually be \"zassume\" (if it fails, the test is marked as skipped).  And then \"zassert\" is for things like the event checks, which should fail the test",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f4bf5f_83f2036a",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-16T15:10:58Z",
+      "side": 1,
+      "message": "nit: I think the test should generate the hook for you if you actually power up with test_set_chipset_to_s0(), but I\u0027m not completely certain on that so keep the hook if it\u0027s not an option.",
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
