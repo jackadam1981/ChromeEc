@@ -94,6 +94,30 @@
       },
       "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2547075_bbec956f",
+        "filename": "common/body_detection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-16T14:50:29Z",
+      "side": 1,
+      "message": "Overridable functions are hard to discover when creating new boards. The callback routine is preferred because the registration function becomes part of the public API for the body detect module.\n\n```\n/* body_detection.h */\nenum body_detect_states body_detect_get_state(void);\nvoid body_detect_change_state(enum body_detect_states state, bool spoof);\n/* ... */\nvoid body_detect_register_callback(body_detection_cb_t callback);\n/* ... */\n\n```",
+      "parentUuid": "96f6c2b9_141c7afd",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
