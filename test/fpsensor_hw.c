@@ -3,10 +3,10 @@
  * found in the LICENSE file.
  */
 
-#include "common.h"
-#include "test_util.h"
-#include "fpc_private.h"
 #include "board.h"
+#include "common.h"
+#include "fpc_private.h"
+#include "test_util.h"
 
 #ifdef SECTION_IS_RW
 #include "fpc/fpc_sensor.h"

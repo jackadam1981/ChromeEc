@@ -14,11 +14,11 @@
  * OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
 
-#include "aes.h"
 #include "aes-gcm.h"
+#include "aes.h"
 #include "builtin/assert.h"
-#include "console.h"
 #include "common.h"
+#include "console.h"
 #include "test_util.h"
 #include "timer.h"
 #include "util.h"

@@ -3,14 +3,14 @@
  * found in the LICENSE file.
  */
 
-#include <stdarg.h>
-#include <stdbool.h>
-#include <stddef.h>
-
 #include "common.h"
 #include "printf.h"
 #include "test_util.h"
 #include "util.h"
+
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
 
 #ifdef USE_BUILTIN_STDLIB
 /*

@@ -7,9 +7,9 @@
 
 #include "common.h"
 #include "console.h"
-#include "system.h"
 #include "printf.h"
 #include "shared_mem.h"
+#include "system.h"
 #include "test_util.h"
 #include "timer.h"
 #include "util.h"

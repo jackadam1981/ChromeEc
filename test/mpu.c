@@ -3,12 +3,13 @@
  * found in the LICENSE file.
  */
 
-#include <stdbool.h>
 #include "mpu.h"
 #include "mpu_private.h"
 #include "string.h"
 #include "system.h"
 #include "test_util.h"
+
+#include <stdbool.h>
 
 struct mpu_info {
 	bool has_mpu;
