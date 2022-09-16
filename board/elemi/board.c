@@ -4,10 +4,10 @@
  */
 
 /* Elemi board-specific configuration */
-#include "button.h"
-#include "common.h"
 #include "accelgyro.h"
+#include "button.h"
 #include "cbi_ec_fw_config.h"
+#include "common.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
@@ -20,6 +20,7 @@
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
+#include "gpio_list.h" /* Must come after other header files. */
 #include "hooks.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
@@ -39,8 +40,6 @@
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 #include "util.h"
-
-#include "gpio_list.h" /* Must come after other header files. */
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 

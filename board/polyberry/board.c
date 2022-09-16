@@ -15,10 +15,10 @@
 #include "task.h"
 #include "update_fw.h"
 #include "usb_descriptor.h"
-#include "util.h"
 #include "usb_dwc_console.h"
 #include "usb_dwc_update.h"
 #include "usb_hw.h"
+#include "util.h"
 
 /******************************************************************************
  * Define the strings used in our USB descriptors.

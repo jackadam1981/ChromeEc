@@ -9,15 +9,14 @@
 #include "common.h"
 #include "console.h"
 #include "ec_version.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "i2c.h"
-#include "usb_descriptor.h"
 #include "registers.h"
 #include "timer.h"
+#include "usb_descriptor.h"
 #include "usb_pd.h"
 #include "util.h"
-
-#include "gpio_list.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)

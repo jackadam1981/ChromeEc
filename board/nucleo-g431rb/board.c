@@ -7,9 +7,8 @@
 
 #include "common.h"
 #include "gpio.h"
-#include "hooks.h"
-
 #include "gpio_list.h" /* Must come after other header files. */
+#include "hooks.h"
 
 static void board_init(void)
 {

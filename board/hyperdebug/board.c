@@ -8,6 +8,7 @@
 #include "console.h"
 #include "ec_version.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "i2c.h"
 #include "queue_policies.h"
 #include "registers.h"
@@ -15,10 +16,9 @@
 #include "task.h"
 #include "timer.h"
 #include "usart-stm32l5.h"
+#include "usb-stream.h"
 #include "usb_hw.h"
 #include "usb_spi.h"
-#include "usb-stream.h"
-#include "gpio_list.h"
 
 void board_config_pre_init(void)
 {

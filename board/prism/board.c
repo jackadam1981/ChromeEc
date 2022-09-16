@@ -3,13 +3,12 @@
  * found in the LICENSE file.
  */
 
-#include <stdbool.h>
-
 #include "clock.h"
 #include "common.h"
 #include "ec_commands.h"
 #include "ec_version.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "i2c.h"
@@ -23,13 +22,13 @@
 #include "timer.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
-#include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
+#include "usart_tx_dma.h"
 #include "usb_api.h"
 #include "usb_descriptor.h"
 #include "util.h"
 
-#include "gpio_list.h"
+#include <stdbool.h>
 
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"

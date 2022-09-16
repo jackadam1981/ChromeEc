@@ -14,6 +14,7 @@
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -27,11 +28,9 @@
 #include "switch.h"
 #include "temp_sensor.h"
 #include "temp_sensor_chip.h"
-#include "timer.h"
 #include "thermal.h"
+#include "timer.h"
 #include "util.h"
-
-#include "gpio_list.h"
 
 /******************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */

@@ -6,6 +6,7 @@
 /* Intel ADLRVP-NPCX board-specific configuration */
 #include "button.h"
 #include "fusb302.h"
+#include "gpio_list.h" /* Must come after other header files. */
 #include "i2c_bitbang.h"
 #include "lid_switch.h"
 #include "pca9675.h"
@@ -15,8 +16,6 @@
 #include "tablet_mode.h"
 #include "uart.h"
 #include "usb_pd_tcpm.h"
-
-#include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
 /* I2C ports */

@@ -7,11 +7,11 @@
 
 #include "adc.h"
 #include "button.h"
-#include "charger.h"
 #include "cbi_ec_fw_config.h"
-#include "driver/accelgyro_bmi_common.h"
+#include "charger.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "driver/retimer/pi3dpx1207.h"
 #include "driver/retimer/pi3hdx1204.h"
 #include "driver/retimer/ps8811.h"
@@ -21,6 +21,7 @@
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -30,12 +31,10 @@
 #include "switch.h"
 #include "system.h"
 #include "task.h"
-#include "temp_sensor/thermistor.h"
 #include "temp_sensor.h"
+#include "temp_sensor/thermistor.h"
 #include "usb_charge.h"
 #include "usb_mux.h"
-
-#include "gpio_list.h"
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)

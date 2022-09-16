@@ -23,14 +23,14 @@
 #include "timer.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
-#include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
+#include "usart_tx_dma.h"
+#include "usb-stream.h"
 #include "usb_gpio.h"
 #include "usb_i2c.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "usb_spi.h"
-#include "usb-stream.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)

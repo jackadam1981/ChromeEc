@@ -8,6 +8,7 @@
 #include "button.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "extpower.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
@@ -17,8 +18,6 @@
 #include "pwm_chip.h"
 #include "switch.h"
 #include "thermal.h"
-
-#include "gpio_list.h"
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,

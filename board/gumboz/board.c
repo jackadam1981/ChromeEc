@@ -5,8 +5,8 @@
 
 #include "battery_smart.h"
 #include "button.h"
-#include "cros_board_info.h"
 #include "charge_state.h"
+#include "cros_board_info.h"
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/bc12/pi3usb9201.h"

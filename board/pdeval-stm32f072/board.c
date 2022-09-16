@@ -4,8 +4,8 @@
  */
 /* STM32F072-discovery board based USB PD evaluation configuration */
 
-#include "common.h"
 #include "anx7447.h"
+#include "common.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"

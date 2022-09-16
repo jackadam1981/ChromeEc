@@ -23,12 +23,11 @@
 #include "uart.h"
 #include "usb_descriptor.h"
 #include "usb_pd.h"
-#include "usbc_ppc.h"
-#include "usb_descriptor.h"
 #include "usb_pd_dp_ufp.h"
 #include "usb_pe_sm.h"
 #include "usb_prl_sm.h"
 #include "usb_tc_sm.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)

@@ -8,6 +8,7 @@
 #include "console.h"
 #include "ec_version.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "i2c_ite_flash_support.h"
@@ -19,15 +20,13 @@
 #include "timer.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
-#include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
+#include "usart_tx_dma.h"
+#include "usb-stream.h"
 #include "usb_hw.h"
 #include "usb_i2c.h"
 #include "usb_spi.h"
-#include "usb-stream.h"
 #include "util.h"
-
-#include "gpio_list.h"
 
 void board_config_pre_init(void)
 {

@@ -11,26 +11,24 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "cros_board_info.h"
-#include "gpio.h"
-#include "gpio_signal.h"
-#include "hooks.h"
 #include "driver/als_tcs3400.h"
 #include "driver/charger/isl9241.h"
 #include "driver/retimer/bb_retimer.h"
 #include "fw_config.h"
+#include "gpio.h"
+#include "gpio_list.h" /* Must come after other header files. */
+#include "gpio_signal.h"
 #include "hooks.h"
 #include "keyboard_customization.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
-#include "power_button.h"
 #include "power.h"
+#include "power_button.h"
 #include "registers.h"
 #include "switch.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
 #include "watchdog.h"
-
-#include "gpio_list.h" /* Must come after other header files. */
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)

@@ -12,16 +12,17 @@
 #include "button.h"
 #include "common.h"
 #include "cros_board_info.h"
-#include "driver/accelgyro_bmi_common.h"
+#include "driver/accel_bma422.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/accelgyro_bmi323.h"
-#include "driver/accel_bma422.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "driver/temp_sensor/tmp112.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "gpio_list.h" /* Must come after other header files. */
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -34,8 +35,6 @@
 #include "temp_sensor/tmp112.h"
 #include "thermal.h"
 #include "usb_mux.h"
-
-#include "gpio_list.h" /* Must come after other header files. */
 
 /* Motion sensor mutex */
 static struct mutex g_lid_mutex;

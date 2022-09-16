@@ -16,10 +16,10 @@
 #include "mcdp28x0.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 #include "usb_bb.h"
 #include "usb_descriptor.h"
 #include "usb_pd.h"
-#include "timer.h"
 #include "util.h"
 
 static volatile uint64_t hpd_prev_ts;

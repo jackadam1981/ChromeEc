@@ -6,17 +6,16 @@
 /* Volteer ISH board-specific configuration */
 
 #include "console.h"
-#include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_bma2x2.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "gpio.h"
+#include "gpio_list.h" /* has to be included last */
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "task.h"
-
-#include "gpio_list.h" /* has to be included last */
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {

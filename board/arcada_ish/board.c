@@ -10,6 +10,7 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/mag_lis2mdl.h"
 #include "gpio.h"
+#include "gpio_list.h" /* has to be included last */
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
@@ -18,8 +19,6 @@
 #include "power.h"
 #include "tablet_mode.h"
 #include "task.h"
-
-#include "gpio_list.h" /* has to be included last */
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {

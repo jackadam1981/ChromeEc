@@ -8,6 +8,7 @@
 #include "button.h"
 #include "driver/led/lm3630a.h"
 #include "extpower.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
@@ -16,8 +17,6 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "switch.h"
-
-#include "gpio_list.h"
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,

@@ -6,12 +6,13 @@
 /* Aleena board-specific configuration */
 
 #include "button.h"
-#include "driver/accelgyro_bmi_common.h"
 #include "console.h"
-#include "driver/accelgyro_icm_common.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_icm426xx.h"
+#include "driver/accelgyro_icm_common.h"
 #include "driver/led/lm3630a.h"
 #include "extpower.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
@@ -22,8 +23,6 @@
 #include "switch.h"
 #include "tablet_mode.h"
 #include "task.h"
-
-#include "gpio_list.h"
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,

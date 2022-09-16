@@ -11,17 +11,16 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "i2c.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
-#include "system.h"
 #include "switch.h"
+#include "system.h"
 #include "tablet_mode.h"
 #include "task.h"
-
-#include "gpio_list.h"
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,

@@ -8,12 +8,12 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
-#include "fan_chip.h"
 #include "fan.h"
+#include "fan_chip.h"
 #include "hooks.h"
 #include "pwm.h"
-#include "timer.h"
 #include "thermal.h"
+#include "timer.h"
 #include "util.h"
 
 #define SENSOR_SOC_FAN_OFF 30

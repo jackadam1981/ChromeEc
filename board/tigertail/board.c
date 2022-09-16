@@ -10,6 +10,7 @@
 #include "console.h"
 #include "ec_version.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "ina2xx.h"
@@ -19,13 +20,11 @@
 #include "timer.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
-#include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
-#include "usb_i2c.h"
+#include "usart_tx_dma.h"
 #include "usb-stream.h"
+#include "usb_i2c.h"
 #include "util.h"
-
-#include "gpio_list.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 

@@ -17,11 +17,11 @@
 #include "task.h"
 #include "timer.h"
 #include "usart-stm32f0.h"
-#include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
-#include "usb_gpio.h"
+#include "usart_tx_dma.h"
 #include "usb-stream.h"
 #include "usb_common.h"
+#include "usb_gpio.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)

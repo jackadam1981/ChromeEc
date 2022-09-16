@@ -13,8 +13,6 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "motion_sense.h"
-
-#include "gpio.h"
 #include "registers.h"
 #include "task.h"
 #include "util.h"

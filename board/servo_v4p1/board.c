@@ -10,7 +10,6 @@
 #include "common.h"
 #include "console.h"
 #include "dacs.h"
-#include <driver/gl3590.h>
 #include "driver/ioexpander/tca64xxa.h"
 #include "ec_version.h"
 #include "fusb302b.h"
@@ -30,15 +29,17 @@
 #include "tusb1064.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
-#include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
+#include "usart_tx_dma.h"
+#include "usb-stream.h"
 #include "usb_gpio.h"
 #include "usb_i2c.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_spi.h"
-#include "usb-stream.h"
 #include "util.h"
+
+#include <driver/gl3590.h>
 
 #ifdef SECTION_IS_RO
 #define CROS_EC_SECTION "RO"

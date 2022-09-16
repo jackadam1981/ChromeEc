@@ -29,8 +29,8 @@
 #include "tablet_mode.h"
 #include "task.h"
 #include "usb_charge.h"
-#include "usb_pd_tcpm.h"
 #include "usb_mux.h"
+#include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)

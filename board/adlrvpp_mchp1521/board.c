@@ -9,6 +9,7 @@
 #include "fan.h"
 #include "fusb302.h"
 #include "gpio.h"
+#include "gpio_list.h" /* Must come after other header files. */
 #include "i2c.h"
 #include "i2c_bitbang.h"
 #include "keyboard_scan.h"
@@ -26,8 +27,6 @@
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
-
-#include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
 /* I2C ports */

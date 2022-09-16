@@ -6,9 +6,9 @@
 #include "common.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "registers.h"
 #include "task.h"
-#include "i2c.h"
 #include "timer.h"
 
 void button_event(enum gpio_signal signal)

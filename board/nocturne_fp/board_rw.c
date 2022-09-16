@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "board_rw.h"
 #include "common.h"
 #include "console.h"
 #include "fpsensor_detect.h"
@@ -13,7 +14,6 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
-#include "board_rw.h"
 
 #ifndef SECTION_IS_RW
 #error "This file should only be built for RW."

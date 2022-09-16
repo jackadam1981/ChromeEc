@@ -5,29 +5,28 @@
 
 #include "battery.h"
 #include "button.h"
+#include "charge_manager.h"
 #include "charge_ramp.h"
+#include "charge_state_v2.h"
 #include "charger.h"
 #include "common.h"
-#include "charge_manager.h"
-#include "charge_state_v2.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "fw_config.h"
 #include "gpio.h"
+#include "gpio_list.h" /* Must come after other header files. */
 #include "gpio_signal.h"
 #include "hooks.h"
 #include "keyboard_8042_sharedlib.h"
 #include "lid_switch.h"
-#include "power_button.h"
 #include "power.h"
+#include "power_button.h"
 #include "pwm.h"
 #include "registers.h"
 #include "switch.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
 #include "util.h"
-
-#include "gpio_list.h" /* Must come after other header files. */
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ##args)

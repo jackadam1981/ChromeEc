@@ -6,19 +6,18 @@
 /* Intel ADL-P-RVP-MCHP1727 board-specific configuration */
 #include "button.h"
 #include "fusb302.h"
+#include "gpio_list.h" /* Must come after other header files. */
 #include "i2c_bitbang.h"
 #include "lid_switch.h"
 #include "pca9675.h"
 #include "power.h"
 #include "power_button.h"
+#include "spi.h"
+#include "spi_chip.h"
 #include "switch.h"
 #include "tablet_mode.h"
 #include "uart.h"
 #include "usb_pd_tcpm.h"
-#include "spi.h"
-#include "spi_chip.h"
-
-#include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
 /* I2C ports */

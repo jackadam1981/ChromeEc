@@ -6,8 +6,8 @@
 #include "common.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "registers.h"
 #include "i2c.h"
+#include "registers.h"
 
 #ifdef CTS_MODULE
 /*
