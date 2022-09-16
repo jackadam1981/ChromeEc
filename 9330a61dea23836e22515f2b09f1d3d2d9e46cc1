@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c84e6e5_809a3d73",
+        "filename": "power/qcom.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T16:56:12Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caabb222_9e27db32",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T16:56:12Z",
+      "side": 1,
+      "message": "Nit: \"Initialize\" and period at end.",
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f887825_48356189",
         "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
         "patchSetId": 7
@@ -31,6 +65,30 @@
       "writtenOn": "2022-09-16T15:10:58Z",
       "side": 1,
       "message": "nit: I see a lot of the test code doing this, but it\u0027s non-compliant to have a fixed 5V PDO at index 1.  It looks like this same PDO is set up at index 0 in the init the line before this",
+      "range": {
+        "startLine": 34,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eab7638_1e5e1beb",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T16:56:12Z",
+      "side": 1,
+      "message": "As an addendum, the appropriate way to change the 5V PDO (assuming you don\u0027t want to emulate a non-compliant partner) would be to replace the existing default PDO at index 0. I think we actually do that in some places.",
+      "parentUuid": "5f887825_48356189",
       "range": {
         "startLine": 34,
         "startChar": 22,
@@ -66,6 +124,70 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc0a826f_93a05694",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T16:56:12Z",
+      "side": 1,
+      "message": "Non-nit: `test_set_chipset_to_g3` already waits for the transition to happen and checks that it happened more specifically than this. You can remove these 2 lines.",
+      "parentUuid": "0d0f8c04_69da743a",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6909b21e_374591d1",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T16:56:12Z",
+      "side": 1,
+      "message": "Nit: Start sentences with capital letters. End with periods. Same below.",
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be295a53_416b9f27",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T16:56:12Z",
+      "side": 1,
+      "message": "Nit: semicolon",
+      "range": {
+        "startLine": 84,
+        "startChar": 21,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6f4bf5f_83f2036a",
         "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
         "patchSetId": 7
@@ -77,6 +199,24 @@
       "writtenOn": "2022-09-16T15:10:58Z",
       "side": 1,
       "message": "nit: I think the test should generate the hook for you if you actually power up with test_set_chipset_to_s0(), but I\u0027m not completely certain on that so keep the hook if it\u0027s not an option.",
+      "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042488c5_e6cf305f",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T16:56:12Z",
+      "side": 1,
+      "message": "I\u0027m dealing with a related issue separately, and I\u0027m not sure yet what the best approach is. There is a mock power sequence module that can be enabled with `CONFIG_POWER_SEQUENCE_MOCK`. `test_set_chipset_to_s0` might be better here but might not be sufficient.",
+      "parentUuid": "d6f4bf5f_83f2036a",
       "revId": "9330a61dea23836e22515f2b09f1d3d2d9e46cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
