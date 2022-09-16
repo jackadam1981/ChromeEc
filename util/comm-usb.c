@@ -65,10 +65,11 @@ static int do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
 	/* Send data out */
 	if (outbuf && outlen) {
 		actual = 0;
-		r = libusb_bulk_transfer(uep->devh, uep->ep_num, outbuf, outlen,
-					 &actual, 2000);
+		r = libusb_bulk_transfer(uep->devh, uep->ep_num,
+					 (uint8_t *)outbuf, outlen, &actual,
+					 2000);
 		if (r != 0) {
-			USB_ERROR("libusb_bulk_transfer", r);
+			USB_ERROR("libusb_bulk_transfer", (libusb_error)(r));
 			return r;
 		}
 		if (actual != outlen) {
@@ -87,9 +88,10 @@ static int do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
 		 * actual is a multiple of ep->wMaxPacketSize.
 		 */
 		r = libusb_bulk_transfer(uep->devh, uep->ep_num | USB_DIR_IN,
-					 inbuf, inlen, &actual, 5000);
+					 (uint8_t *)inbuf, inlen, &actual,
+					 5000);
 		if (r != 0) {
-			USB_ERROR("libusb_bulk_transfer", r);
+			USB_ERROR("libusb_bulk_transfer", (libusb_error)r);
 			return r;
 		}
 		if ((actual != inlen) && !allow_less) {
@@ -118,7 +120,7 @@ static int find_interface_with_endpoint(struct usb_endpoint *uep)
 	dev = libusb_get_device(uep->devh);
 	r = libusb_get_active_config_descriptor(dev, &conf);
 	if (r < 0) {
-		USB_ERROR("Failed to get_active_config", r);
+		USB_ERROR("Failed to get_active_config", (libusb_error)r);
 		return -1;
 	}
 
@@ -220,13 +222,13 @@ static int find_endpoint(uint16_t vid, uint16_t pid, char *serialno,
 
 	r = libusb_init(NULL);
 	if (r < 0) {
-		USB_ERROR("libusb_init", r);
+		USB_ERROR("libusb_init", (libusb_error)r);
 		return -1;
 	}
 
 	r = libusb_get_device_list(NULL, &devs);
 	if (r < 0) {
-		USB_ERROR("No device is found.\n", r);
+		USB_ERROR("No device is found.\n", (libusb_error)r);
 		return -1;
 	}
 
@@ -265,7 +267,7 @@ static int find_endpoint(uint16_t vid, uint16_t pid, char *serialno,
 	libusb_set_auto_detach_kernel_driver(uep->devh, 1);
 	r = libusb_claim_interface(uep->devh, iface_num);
 	if (r < 0) {
-		USB_ERROR("libusb_claim_interface", r);
+		USB_ERROR("libusb_claim_interface", (libusb_error)r);
 		return -1;
 	}
 	uep->iface_num = iface_num;
@@ -297,9 +299,9 @@ static int ec_command_usb(int command, int version, const void *outdata,
 	assert(insize == 0 || indata != NULL);
 
 	req_len = sizeof(*req) + outsize;
-	req = malloc(req_len);
+	req = (ec_host_request *)malloc(req_len);
 	res_len = sizeof(*res) + insize;
-	res = malloc(res_len);
+	res = (ec_host_response *)malloc(res_len);
 	if (req == NULL || res == NULL)
 		goto out;
 
