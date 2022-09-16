@@ -6,9 +6,9 @@
 #ifndef __CROS_EC_DPS__H
 #define __CROS_EC_DPS__H
 
-#include <stdbool.h>
-
 #include "common.h"
+
+#include <stdbool.h>
 
 /* Dynamic PDO Selection config. */
 struct dps_config_t {

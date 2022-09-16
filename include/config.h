@@ -5746,8 +5746,8 @@
 #error Include config.h instead of board.h!
 #endif
 
-#include "config_chip.h"
 #include "board.h"
+#include "config_chip.h"
 
 /*
  * Define CONFIG_HOST_ESPI_VW_POWER_SIGNAL if any power signals from the host
