@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93eb77c3_feab60a5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-16T23:10:51Z",
+      "side": 1,
+      "message": "add { }, looks like zephyr coding guidelines needs it",
+      "revId": "341b00004820bedb3272c79f611f94cfc9eb5914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ef4eb1_4f1e1518",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-16T23:10:51Z",
+      "side": 1,
+      "message": "EC_ERROR_PARAM1",
+      "range": {
+        "startLine": 666,
+        "startChar": 9,
+        "endLine": 666,
+        "endChar": 13
+      },
+      "revId": "341b00004820bedb3272c79f611f94cfc9eb5914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d0a732_c59ba3bc",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-16T23:10:51Z",
+      "side": 1,
+      "message": "enabled , disabled",
+      "range": {
+        "startLine": 669,
+        "startChar": 40,
+        "endLine": 669,
+        "endChar": 57
+      },
+      "revId": "341b00004820bedb3272c79f611f94cfc9eb5914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0deb5c_54ead64e",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-16T23:10:51Z",
+      "side": 1,
+      "message": "EC_SUCCESS",
+      "revId": "341b00004820bedb3272c79f611f94cfc9eb5914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88a778e_2260fbfc",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-16T23:10:51Z",
+      "side": 1,
+      "message": "| as it\u0027s optional?",
+      "range": {
+        "startLine": 674,
+        "startChar": 58,
+        "endLine": 674,
+        "endChar": 59
+      },
+      "revId": "341b00004820bedb3272c79f611f94cfc9eb5914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
