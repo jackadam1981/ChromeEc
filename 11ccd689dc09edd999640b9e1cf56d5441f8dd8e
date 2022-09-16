@@ -86,6 +86,24 @@
       "parentUuid": "9c596879_3ca26454",
       "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3680a339_6fdc16f9",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config_tentacruel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-16T14:18:08Z",
+      "side": 1,
+      "message": "Since newer devices won\u0027t use rt1739, I think you can put everything except `board_has_syv_ppc` back to the common usb_config.c, and let every board customize the `board_has_syv_ppc` function",
+      "parentUuid": "466beae1_3408dba4",
+      "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
