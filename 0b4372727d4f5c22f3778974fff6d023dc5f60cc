@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb43f6db_ffb27e52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-09-16T03:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef493fcd_7089114a",
+      "revId": "0b4372727d4f5c22f3778974fff6d023dc5f60cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35a45a77_475b77e3",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-16T01:42:34Z",
       "side": 1,
       "message": "The old copyright was correct.",
+      "range": {
+        "startLine": 1,
+        "startChar": 43,
+        "endLine": 1,
+        "endChar": 46
+      },
+      "revId": "0b4372727d4f5c22f3778974fff6d023dc5f60cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6e0a94_d9c4b73d",
+        "filename": "zephyr/projects/nissa/pujjo/motionsense.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-09-16T03:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35a45a77_475b77e3",
       "range": {
         "startLine": 1,
         "startChar": 43,
