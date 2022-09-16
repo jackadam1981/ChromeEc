@@ -11,16 +11,16 @@
 #include "console.h"
 #include "cpu.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "registers.h"
 #include "shared_mem.h"
+#include "spi.h"
 #include "system.h"
-#include "hooks.h"
 #include "task.h"
 #include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
-#include "spi.h"
 
 /* Indices for hibernate data registers (RAM backed by VBAT) */
 enum hibdata_index {

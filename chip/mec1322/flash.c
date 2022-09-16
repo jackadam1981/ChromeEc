@@ -6,13 +6,13 @@
 #include "common.h"
 #include "console.h"
 #include "flash.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "shared_mem.h"
 #include "spi.h"
 #include "spi_flash.h"
 #include "system.h"
 #include "util.h"
-#include "hooks.h"
 
 #define PAGE_SIZE 256
 

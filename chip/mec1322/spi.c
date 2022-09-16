@@ -9,12 +9,12 @@
 #include "console.h"
 #include "dma.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "registers.h"
 #include "spi.h"
+#include "task.h"
 #include "timer.h"
 #include "util.h"
-#include "hooks.h"
-#include "task.h"
 
 #define CPUTS(outstr) cputs(CC_SPI, outstr)
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ##args)

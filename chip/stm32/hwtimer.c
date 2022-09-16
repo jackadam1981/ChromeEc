@@ -6,8 +6,8 @@
 /* Hardware timers driver */
 
 #include "builtin/assert.h"
-#include "clock.h"
 #include "clock-f.h"
+#include "clock.h"
 #include "common.h"
 #include "hooks.h"
 #include "hwtimer.h"

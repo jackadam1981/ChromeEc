@@ -6,6 +6,7 @@
 /* LPC module for MEC1322 */
 
 #include "acpi.h"
+#include "chipset.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -18,7 +19,6 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
-#include "chipset.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LPC, outstr)

@@ -6,24 +6,23 @@
  *
  */
 
-#include <stdint.h>
-
+#include "clock.h"
 #include "config.h"
+#include "cpu.h"
 #include "cros_version.h"
+#include "dma.h"
+#include "ec_lfw.h"
 #include "gpio.h"
+#include "gpio_list.h"
+#include "hwtimer.h"
+#include "registers.h"
 #include "spi.h"
 #include "spi_flash.h"
-#include "util.h"
-#include "timer.h"
-#include "dma.h"
-#include "registers.h"
-#include "cpu.h"
-#include "clock.h"
 #include "system.h"
-#include "hwtimer.h"
-#include "gpio_list.h"
+#include "timer.h"
+#include "util.h"
 
-#include "ec_lfw.h"
+#include <stdint.h>
 
 __attribute__((section(".intvector")))
 const struct int_vector_t hdr_int_vect = {

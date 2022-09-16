@@ -5,16 +5,16 @@
 
 /* MAX32660 Watchdog Module */
 
+#include "board.h"
 #include "clock.h"
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "registers.h"
 #include "task.h"
 #include "util.h"
 #include "watchdog.h"
-#include "console.h"
-#include "registers.h"
-#include "board.h"
 #include "wdt_regs.h"
 
 #define CPUTS(outstr) cputs(CC_COMMAND, outstr)
