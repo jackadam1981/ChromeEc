@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9533c612_346a746d",
+        "filename": "docs/zephyr/zephyr_temperature_sensor.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-16T22:18:45Z",
+      "side": 1,
+      "message": "\"defined by the `cros-ec,temp-sensors` node\"",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "3fe837c1bc5e7707a35161e935dc4c3ca42d1d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8a3a4a_ebbaefbc",
+        "filename": "zephyr/dts/bindings/charger/richtek,rt9490.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-16T22:18:45Z",
+      "side": 1,
+      "message": "Is this property used anywhere?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "3fe837c1bc5e7707a35161e935dc4c3ca42d1d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c67fad_96f82236",
+        "filename": "zephyr/projects/skyrim/i2c.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-16T22:18:45Z",
+      "side": 1,
+      "message": "0x48",
+      "range": {
+        "startLine": 261,
+        "startChar": 9,
+        "endLine": 261,
+        "endChar": 15
+      },
+      "revId": "3fe837c1bc5e7707a35161e935dc4c3ca42d1d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56747aa7_b2591300",
+        "filename": "zephyr/projects/skyrim/i2c.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-16T22:18:45Z",
+      "side": 1,
+      "message": "0x4f",
+      "range": {
+        "startLine": 266,
+        "startChar": 9,
+        "endLine": 266,
+        "endChar": 15
+      },
+      "revId": "3fe837c1bc5e7707a35161e935dc4c3ca42d1d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f687ba6_92f6b8f6",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-16T22:18:45Z",
+      "side": 1,
+      "message": "`TEMP_SENSORS_NODEID` or `CROS_EC_TEMP_SENSORS_NODEID` is clearer.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "3fe837c1bc5e7707a35161e935dc4c3ca42d1d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e5a07b_8f34b803",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-16T22:18:45Z",
+      "side": 1,
+      "message": "Please document the macros that are expected to be used by other code.  This should also clearly indicate which node-id is expected here - the node ID of the hardware device, and not the node ID of the child under \"cros-ec,temp-sensors\".",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "3fe837c1bc5e7707a35161e935dc4c3ca42d1d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a4a072_6a769c2a",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-16T22:18:45Z",
+      "side": 1,
+      "message": "What\u0027s this enum used for?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "3fe837c1bc5e7707a35161e935dc4c3ca42d1d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
