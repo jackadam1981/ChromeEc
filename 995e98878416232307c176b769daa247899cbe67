@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c81adc_f7639265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-16T15:17:46Z",
+      "side": 1,
+      "message": "Looks good, one test cleanup suggestion",
+      "revId": "995e98878416232307c176b769daa247899cbe67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a377de12_9c00217d",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/usb_pd_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-16T15:17:46Z",
+      "side": 1,
+      "message": "Add pd_set_suspend() here as well to ensure we don\u0027t leave the port suspended for other tests",
+      "revId": "995e98878416232307c176b769daa247899cbe67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
