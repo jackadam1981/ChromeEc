@@ -3,11 +3,11 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/sys/util.h>
-
 #include "console.h"
 #include "power.h"
 #include "power/power.h"
+
+#include <zephyr/sys/util.h>
 
 #if (SYSTEM_DT_POWER_SIGNAL_CONFIG)
 

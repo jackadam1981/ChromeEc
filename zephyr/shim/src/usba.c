@@ -5,8 +5,9 @@
 
 #define DT_DRV_COMPAT cros_ec_usba_port_enable_pins
 
-#include <zephyr/devicetree.h>
 #include "hooks.h"
+
+#include <zephyr/devicetree.h>
 
 #if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
 

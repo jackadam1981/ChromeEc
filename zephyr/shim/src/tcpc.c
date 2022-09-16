@@ -3,10 +3,8 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/devicetree.h>
-#include <zephyr/sys/util.h>
-#include "usb_pd_tcpm.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "usbc/tcpc_anx7447.h"
 #include "usbc/tcpc_ccgxxf.h"
 #include "usbc/tcpc_fusb302.h"
@@ -18,6 +16,9 @@
 #include "usbc/tcpc_rt1718s.h"
 #include "usbc/tcpci.h"
 #include "usbc/utils.h"
+
+#include <zephyr/devicetree.h>
+#include <zephyr/sys/util.h>
 
 #define HAS_TCPC_PROP(usbc_id) \
 	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, tcpc), (|| 1), ())

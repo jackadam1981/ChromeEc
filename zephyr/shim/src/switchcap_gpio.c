@@ -3,9 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include "common.h"
+
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
-#include "common.h"
 
 /* TODO(b/218600962): Consolidate switchcap code. */
 

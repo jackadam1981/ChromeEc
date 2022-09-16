@@ -5,15 +5,16 @@
 
 #define DT_DRV_COMPAT pericom_pi3usb9201
 
-#include <zephyr/devicetree.h>
 #include "bc12/pi3usb9201_public.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "i2c/i2c.h"
 #include "task.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
 #include "usbc/utils.h"
-#include "i2c/i2c.h"
+
+#include <zephyr/devicetree.h>
 
 #if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
 
