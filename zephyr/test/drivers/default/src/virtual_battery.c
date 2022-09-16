@@ -3,15 +3,15 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/kernel.h>
-#include <zephyr/ztest.h>
-
 #include "battery.h"
 #include "battery_smart.h"
 #include "ec_commands.h"
 #include "emul/emul_smart_battery.h"
 #include "host_command.h"
 #include "test/drivers/test_state.h"
+
+#include <zephyr/kernel.h>
+#include <zephyr/ztest.h>
 
 /* The param buffer has at most 2 msg's (write + read) and 1 byte write len. */
 static uint8_t param_buf[sizeof(struct ec_params_i2c_passthru) +

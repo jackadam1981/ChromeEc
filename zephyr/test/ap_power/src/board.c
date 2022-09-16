@@ -6,8 +6,8 @@
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 
-#include <ap_power_override_functions.h>
 #include <ap_power/ap_power_interface.h>
+#include <ap_power_override_functions.h>
 #include <power_signals.h>
 
 static bool signal_PWR_ALL_SYS_PWRGD;

@@ -3,8 +3,9 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/fff.h>
 #include "gpio_signal.h"
+
+#include <zephyr/fff.h>
 
 DEFINE_FFF_GLOBALS;
 FAKE_VOID_FUNC(power_button_interrupt, enum gpio_signal);

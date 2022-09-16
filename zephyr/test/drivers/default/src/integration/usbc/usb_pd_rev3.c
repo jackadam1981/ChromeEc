@@ -3,8 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/ztest.h>
-
 #include "battery.h"
 #include "battery_smart.h"
 #include "chipset.h"
@@ -18,6 +16,8 @@
 #include "usb_common.h"
 #include "usb_pd.h"
 #include "util.h"
+
+#include <zephyr/ztest.h>
 
 struct usb_attach_5v_3a_pd_source_rev3_fixture {
 	struct tcpci_partner_data source_5v_3a;

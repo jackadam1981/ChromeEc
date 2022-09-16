@@ -3,9 +3,9 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/ztest.h>
-
 #include "test/drivers/test_mocks.h"
+
+#include <zephyr/ztest.h>
 
 DEFINE_FFF_GLOBALS;
 
