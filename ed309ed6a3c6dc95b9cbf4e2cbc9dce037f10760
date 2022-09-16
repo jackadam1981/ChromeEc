@@ -52,6 +52,24 @@
       "parentUuid": "ace2d6bc_8be2fe5b",
       "revId": "ed309ed6a3c6dc95b9cbf4e2cbc9dce037f10760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5607efd0_277cd3ea",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-16T17:44:23Z",
+      "side": 1,
+      "message": "\u003e  I just did that in the two usages of the variable\n\nThis wouldn\u0027t work because `BUILD_CC` would expand to `-gcc` or `-clang` if `CBUILD` is not set (it should be just `gcc` or `clang`).\n\n\u003e On that note, do you want to add the variable(s) you use to the help string?\n\nYes, done.",
+      "parentUuid": "eb6feeb1_e2842b80",
+      "revId": "ed309ed6a3c6dc95b9cbf4e2cbc9dce037f10760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
