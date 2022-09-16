@@ -70,6 +70,30 @@
       },
       "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96f6c2b9_141c7afd",
+        "filename": "common/body_detection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-16T07:02:37Z",
+      "side": 1,
+      "message": "Hi Diana,\n\nI think this is a board-specific function for winterhold.\nThe discussion in https://partnerissuetracker.corp.google.com/issues/232946420#comment62\n\nDo you mean if there is a board-sprcific function, we may not to add a new CONFIG?",
+      "parentUuid": "8aa56324_37303f5c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
