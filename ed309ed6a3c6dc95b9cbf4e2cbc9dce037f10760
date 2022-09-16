@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b70f40_0a0456b4",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T16:41:42Z",
+      "side": 1,
+      "message": "Would anything bad happen if we just used `CBUILD`? That seems a little easier to follow.\n```\nifeq ($(CBUILD),)\nCBUILD\u003dx86_64-pc-linux-gnu\nendif\n...\ncc-name:\u003d$(... $(CBUILD)-$(CC) ...)\n...\nBUILD_CC\u003d$(CBUILD)-$(cc-name)\n```\nI think you\u0027d still want to retain the comment explaining the Portage variables.",
+      "revId": "ed309ed6a3c6dc95b9cbf4e2cbc9dce037f10760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
