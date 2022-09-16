@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7f59e6_2be76fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-09-16T10:01:57Z",
+      "side": 1,
+      "message": "Got it. I will modify it.\nThanks.",
+      "parentUuid": "896a8955_60a1943e",
+      "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c596879_3ca26454",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-16T04:01:04Z",
       "side": 1,
       "message": "Is this different from the original usb_config.c? (or what do you plan to change?)\n\nIf no, please use the original file instead.",
+      "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "466beae1_3408dba4",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config_tentacruel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-09-16T10:01:57Z",
+      "side": 1,
+      "message": "Dear Ting\n\nYes. It is different with the original usb_config.c. We will modify for bc12/ppc init.\nThanks",
+      "parentUuid": "9c596879_3ca26454",
       "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
