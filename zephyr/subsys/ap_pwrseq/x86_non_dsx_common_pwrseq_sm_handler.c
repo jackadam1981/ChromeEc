@@ -7,6 +7,7 @@
 #include <zephyr/init.h>
 
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
+#include "zephyr_console_shim.h"
 
 static K_KERNEL_STACK_DEFINE(pwrseq_thread_stack, CONFIG_AP_PWRSEQ_STACK_SIZE);
 static struct k_thread pwrseq_thread_data;
@@ -29,6 +30,8 @@ enum {
 static ATOMIC_DEFINE(flags, FLAGS_MAX);
 /* Delay in ms when starting from G3 */
 static uint32_t start_from_g3_delay_ms;
+
+static bool ap_debug;
 
 LOG_MODULE_REGISTER(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
@@ -144,7 +147,11 @@ void request_start_from_g3(void)
 
 void ap_power_force_shutdown(enum ap_power_shutdown_reason reason)
 {
-	board_ap_power_force_shutdown();
+	/* This prevents force shutdown if ap_debug is enabled */
+	if (ap_debug)
+		LOG_WRN("ap_debug is enabled, preventing force shutdown");
+	else
+		board_ap_power_force_shutdown();
 }
 
 static void s5_inactive_timer_handler(struct k_timer *timer)
@@ -642,3 +649,27 @@ static int pwrseq_init(const struct device *dev)
  * the signals depend upon, such as GPIO, ADC etc.
  */
 SYS_INIT(pwrseq_init, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+
+/*
+ * Intel debugger puts SOC in boot halt mode for step debugging,
+ * during this time EC may lose Sx lines, Adding this console
+ * command to avoid force shutdown.
+ */
+static int disable_force_shutdown(int argc, const char **argv)
+{
+	if (argc > 1) {
+		if (!strcmp(argv[1], "enable")) {
+			ap_debug = true;
+		} else if (!strcmp(argv[1], "disable")) {
+			ap_debug = false;
+		} else {
+			return -1;
+		}
+	}
+	LOG_INF("ap_debug = %s", (ap_debug ? "enable" : "disable"));
+
+	return 0;
+}
+
+DECLARE_CONSOLE_COMMAND(ap_debug, disable_force_shutdown, "[enable|disable]",
+			"Prevents force shutdown if enabled");
