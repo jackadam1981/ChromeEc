@@ -16,6 +16,24 @@
       "message": "add it in power_seq code\n\nmake names generic: disable_force_shutdown(), names generic \n\nadd reason why it is needed\nIntel debugger puts SOC in boot halt mode for step debugging ** during thi s time EC may lose Sx lines, to avoid force shutdown * * adding this code",
       "revId": "95e65014e34f3f1d94e63196e5eccf9012eb8a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49b0335_9136e58d",
+        "filename": "zephyr/projects/rex/src/board_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-16T22:10:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb9fb1d8_6e08193f",
+      "revId": "95e65014e34f3f1d94e63196e5eccf9012eb8a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
