@@ -14,8 +14,8 @@
  * fingerprint sensor.
  */
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 typedef bool (*fpc_wfi_check_t)(void);
 
