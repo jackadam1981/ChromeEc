@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f7e050_855a66f6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-09-16T00:26:16Z",
+      "side": 1,
+      "message": "Assign a default value but removed if it\u0027s confusion.",
+      "parentUuid": "0b87cb77_19b3875a",
+      "range": {
+        "startLine": 1271,
+        "startChar": 17,
+        "endLine": 1271,
+        "endChar": 40
+      },
+      "revId": "d56bd871d3d6b24a00f47335995c528ba87fa3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b484b56_3805f3b3",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-09-15T23:27:59Z",
       "side": 1,
       "message": "Please add \u0027Return false otherwise or if SoC can\u0027t be determined\u0027. Also please add \u0027if \u003ctransitioned\u003e is true, it checks SoC was previously above threshold or not\u0027.",
+      "revId": "d56bd871d3d6b24a00f47335995c528ba87fa3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d70de1_090127c6",
+        "filename": "include/charge_state.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2022-09-16T00:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b484b56_3805f3b3",
       "revId": "d56bd871d3d6b24a00f47335995c528ba87fa3bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
