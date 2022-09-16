@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f616ef_b3e69e60",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-16T22:18:07Z",
+      "side": 1,
+      "message": "\"intel_debug\" - name is used to easily identify the command is for intel debugger. If want to go with some generic name we can use \"prevent_force_shutdown\" or any other suggestions...",
+      "range": {
+        "startLine": 674,
+        "startChar": 24,
+        "endLine": 674,
+        "endChar": 35
+      },
+      "revId": "8cb40183303d6d5e3c8dfae73c861daddbf7c557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
