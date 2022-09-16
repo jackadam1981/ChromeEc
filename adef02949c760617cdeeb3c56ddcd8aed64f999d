@@ -118,6 +118,30 @@
       },
       "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c8cd195_b317be0e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-16T15:58:23Z",
+      "side": 1,
+      "message": "\u003e I think this is a board-specific function for winterhold.\n\nI know it\u0027s a new feature for winterhold, but we\u0027re trying to reduce the amount of board code to the minimum code required to support a board\u0027s hardware.  So for example, if the code needs to set retimers for that particular PCB, or needs to set a specific GPIO, then it needs to be in board code.  \n\nBut if it represents a new feature interacting with common elements (ex. ACPI, sending host events), then it can be in the common code guarded by a CONFIG. This means that other boards will be able to use it in the future if desired, and it\u0027s easier to put through unit testing. \n\nDoes this make sense?",
+      "parentUuid": "f2547075_bbec956f",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
