@@ -84,6 +84,15 @@ config X86_NON_DSX_PWRSEQ_CONSOLE
 	  This option enables Non Deep Sleep Well power sequencing shell
 	  console commands to debug.
 
+config X86_NON_DSX_PWRSEQ_CONSOLE_DIS_FRC_SHTDWN
+	bool "Console commands to disable force shutdown"
+	depends on X86_NON_DSX_PWRSEQ
+	default y
+	help
+	  Intel debugger puts SOC in boot halt mode for step debugging,
+	  during this time EC may lose Sx lines, This option enables console
+	  command to prevent force shutdown.
+
 config X86_NON_DSX_PWRSEQ_HOST_CMD
 	bool "Host commands for x86 Non Deep Sx power sequencing"
 	depends on X86_NON_DSX_PWRSEQ
