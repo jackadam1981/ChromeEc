@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ae3046_b35a451c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-09-16T14:52:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1755766_64e7ea40",
+      "revId": "05bb59ecad56407dfdd78e659880777e6951c89c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecdec314_d7d9ecf5",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-16T13:22:01Z",
       "side": 1,
       "message": "nit: fix typo to \"always\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "05bb59ecad56407dfdd78e659880777e6951c89c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3884a41_d6b724d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-09-16T14:52:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ecdec314_d7d9ecf5",
       "range": {
         "startLine": 12,
         "startChar": 0,
