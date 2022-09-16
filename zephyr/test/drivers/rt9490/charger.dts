@@ -1,14 +1,15 @@
 / {
 	usbc {
-		/delete-node/ port0@0;
-
 		port0@0 {
 			compatible = "named-usbc-port";
-			status = "okay";
 			reg = <0>;
 			chg = <&rt9490>;
 			bc12 = <&rt9490_bc12>;
 			tcpc = <&tcpci_emul>;
+		};
+
+		port1@1 {
+			bc12 = <&rt9490_bc12>;
 		};
 	};
 
