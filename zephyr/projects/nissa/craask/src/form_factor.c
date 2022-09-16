@@ -3,9 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include <zephyr/devicetree.h>
-#include <zephyr/logging/log.h>
-
 #include "accelgyro.h"
 #include "cros_board_info.h"
 #include "cros_cbi.h"
@@ -13,8 +10,10 @@
 #include "driver/accelgyro_lsm6dso.h"
 #include "hooks.h"
 #include "motionsense_sensors.h"
-
 #include "nissa_common.h"
+
+#include <zephyr/devicetree.h>
+#include <zephyr/logging/log.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 

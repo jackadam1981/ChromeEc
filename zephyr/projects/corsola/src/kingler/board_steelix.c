@@ -8,14 +8,14 @@
  * Steelix is convertible but Rusty is clamshell
  * so some functions should be disabled for clamshell.
  */
-#include <zephyr/logging/log.h>
-#include <zephyr/drivers/gpio.h>
-
 #include "cros_cbi.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motion_sense.h"
 #include "tablet_mode.h"
+
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 

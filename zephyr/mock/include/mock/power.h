@@ -6,8 +6,9 @@
 #ifndef ZEPHYR_TEST_MOCK_POWER_H
 #define ZEPHYR_TEST_MOCK_POWER_H
 
-#include <zephyr/fff.h>
 #include "power.h"
+
+#include <zephyr/fff.h>
 
 /* Mocks for ec/power/common.c and board specific implementations */
 DECLARE_FAKE_VALUE_FUNC(enum power_state, power_handle_state, enum power_state);

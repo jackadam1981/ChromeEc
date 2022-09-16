@@ -5,16 +5,14 @@
 
 /* Skyrim family-specific USB-C configuration */
 
-#include <zephyr/drivers/gpio.h>
-
-#include "cros_board_info.h"
-#include "cros_cbi.h"
 #include "battery_fuel_gauge.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
-#include "charge_state_v2.h"
 #include "charge_state.h"
+#include "charge_state_v2.h"
 #include "charger.h"
+#include "cros_board_info.h"
+#include "cros_cbi.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl9241.h"
 #include "driver/ppc/aoz1380_public.h"
@@ -31,6 +29,8 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
+
+#include <zephyr/drivers/gpio.h>
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)

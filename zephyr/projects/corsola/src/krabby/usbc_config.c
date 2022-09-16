@@ -20,7 +20,6 @@
 #include "ppc/syv682x_public.h"
 #include "usb_mux/it5205_public.h"
 #include "usbc_ppc.h"
-
 #include "variant_db_detection.h"
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)

@@ -5,6 +5,7 @@
 
 /* Kingler board-specific USB-C configuration */
 
+#include "baseboard_usbc_config.h"
 #include "charger.h"
 #include "console.h"
 #include "driver/bc12/pi3usb9201_public.h"
@@ -21,8 +22,6 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
-
-#include "baseboard_usbc_config.h"
 #include "variant_db_detection.h"
 
 /* TODO(b/220196310): Create GPIO driver for RT17181S TCPC */

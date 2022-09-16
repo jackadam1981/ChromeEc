@@ -4,8 +4,9 @@
  */
 
 #include "atomic.h"
-#include "console.h"
+#include "baseboard_usbc_config.h"
 #include "chipset.h"
+#include "console.h"
 #include "hooks.h"
 #include "timer.h"
 #include "typec_control.h"
@@ -13,8 +14,6 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
-
-#include "baseboard_usbc_config.h"
 
 #if CONFIG_USB_PD_3A_PORTS != 1
 #error Corsola reference must have at least one 3.0 A port
