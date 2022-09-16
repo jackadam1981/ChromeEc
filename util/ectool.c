@@ -3,29 +3,15 @@
  * found in the LICENSE file.
  */
 
-#include <assert.h>
-#include <ctype.h>
-#include <errno.h>
-#include <getopt.h>
-#include <inttypes.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#include <signal.h>
-#include <stdbool.h>
-
 #include "battery.h"
+#include "chipset.h"
 #include "comm-host.h"
 #include "comm-usb.h"
-#include "chipset.h"
 #include "compile_time_macros.h"
 #include "crc.h"
 #include "cros_ec_dev.h"
-#include "ec_panicinfo.h"
 #include "ec_flash.h"
+#include "ec_panicinfo.h"
 #include "ec_version.h"
 #include "ectool.h"
 #include "i2c.h"
@@ -34,6 +20,21 @@
 #include "misc_util.h"
 #include "panic.h"
 #include "usb_pd.h"
+
+#include <assert.h>
+#include <ctype.h>
+#include <errno.h>
+#include <inttypes.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include <getopt.h>
+#include <unistd.h>
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000

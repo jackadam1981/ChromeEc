@@ -3,15 +3,15 @@
  * found in the LICENSE file.
  */
 
+#include "comm-host.h"
+#include "misc_util.h"
+#include "timer.h"
+
 #include <errno.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "comm-host.h"
-#include "misc_util.h"
-#include "timer.h"
 
 static const uint32_t ERASE_ASYNC_TIMEOUT = 10 * SECOND;
 static const uint32_t ERASE_ASYNC_WAIT = 500 * MSEC;
