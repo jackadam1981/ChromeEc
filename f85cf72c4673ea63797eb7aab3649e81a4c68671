@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdbedda8_4691d0ce",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-16T07:01:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da606c3e_038d97db",
+      "revId": "f85cf72c4673ea63797eb7aab3649e81a4c68671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bc41866_83b2c73b",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Would it be easier to edit the zephyr unit test to provide coverage for this command?",
       "parentUuid": "161f1741_7d42cdb2",
+      "revId": "f85cf72c4673ea63797eb7aab3649e81a4c68671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1405a646_a3a6fc8f",
+        "filename": "test/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-16T07:01:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f389fe1_8322005c",
       "revId": "f85cf72c4673ea63797eb7aab3649e81a4c68671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
