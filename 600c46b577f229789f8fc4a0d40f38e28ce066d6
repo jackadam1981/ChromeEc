@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e841ea0_b2f94b78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-16T14:44:51Z",
+      "side": 1,
+      "message": "What\u0027s the motivation for creating a new binary?  \nWe\u0027ve generally been adding console commands in `ec/zephyr/test/drivers/default/src/console_cmd/` \nand host commands in `ec/zephyr/test/drivers/host_cmd/`",
+      "revId": "600c46b577f229789f8fc4a0d40f38e28ce066d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
