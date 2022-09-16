@@ -16,6 +16,23 @@
       "message": "LGTM. Adding lschyi@ as a reviewer because I found that lschyi@ has a similar WIP CL:3778913.",
       "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "896a8955_60a1943e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-09-16T01:36:52Z",
+      "side": 1,
+      "message": "Hi, this patch breaks existing Krabby model, please check this [comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3778913/comments/0e025f6d_05ab5e97) and the partial approach from reading CBI to configure each functions, and use second source to make the existing Krabby compatible as well, thank you.",
+      "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
