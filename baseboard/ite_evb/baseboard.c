@@ -9,6 +9,7 @@
 #include "console.h"
 #include "fan.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "intc.h"
@@ -25,7 +26,6 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
-#include "gpio_list.h"
 
 #if defined(CONFIG_FANS) || defined(CONFIG_PWM)
 const struct fan_conf fan_conf_0 = {
