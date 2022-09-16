@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9039daa7_b9b61757",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-16T05:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45f247b8_6feb33cd",
+      "range": {
+        "startLine": 5,
+        "startChar": 17,
+        "endLine": 5,
+        "endChar": 29
+      },
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4758b737_81baa8f9",
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "821862d9_c1b4200f",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-16T05:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbf8c17_3a7a6f09",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61603def_04df0653",
@@ -76,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f6da257_e2d1e2e9",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-16T05:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61603def_04df0653",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53854b05_de42d431",
@@ -89,6 +149,24 @@
       "writtenOn": "2022-09-13T16:39:23Z",
       "side": 1,
       "message": "It might be a good idea to clear PD events in `_after` or `_teardown`.",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925c022e_4df53a58",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-16T05:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53854b05_de42d431",
       "revId": "77e522c6717f21695be623bc7039a45e19365d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "369b1d64_e20aa6e9",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-16T05:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41f423a6_399527c3",
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2376c1b3_2cf002bb",
@@ -141,6 +237,30 @@
       "writtenOn": "2022-09-13T20:34:58Z",
       "side": 1,
       "message": "I think it\u0027s preferred to use a host command to get state, rather than internal APIs.  There\u0027s a utility helper for the TYPEC_STATUS command you could use: `host_cmd_typec_status()`",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "77e522c6717f21695be623bc7039a45e19365d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792ae659_dd772dab",
+        "filename": "zephyr/test/drivers/default/src/cros_ec_typec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-16T05:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2376c1b3_2cf002bb",
       "range": {
         "startLine": 41,
         "startChar": 14,
