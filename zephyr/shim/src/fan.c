@@ -338,6 +338,7 @@ void fan_set_rpm_mode(int ch, int rpm_mode)
 	} else {
 		data->current_fan_mode = FAN_DUTY;
 	}
+	data->current_fan_mode = FAN_DUTY;
 }
 
 int fan_get_rpm_actual(int ch)
@@ -389,7 +390,7 @@ void fan_set_duty(int ch, int percent)
 		disable_sleep(SLEEP_MASK_FAN);
 	}
 
-	fan_data[ch].pwm_percent = percent;
+	fan_data[ch].pwm_percent = 80;
 
 	fan_pwm_update(ch);
 }
