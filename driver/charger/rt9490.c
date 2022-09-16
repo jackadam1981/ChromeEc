@@ -655,6 +655,12 @@ static void rt9490_usb_charger_task_init(const int port)
 	rt9490_enable_chgdet_flow(CHARGER_SOLO, false);
 }
 
+test_mockable_static bool rt9490_is_non_pd_sink(int port)
+{
+	return !pd_capable(port) && !usb_charger_port_is_sourcing_vbus(port) &&
+	       pd_check_vbus_level(port, VBUS_PRESENT);
+}
+
 static void rt9490_usb_charger_task_event(const int port, uint32_t evt)
 {
 	/*
@@ -666,9 +672,7 @@ static void rt9490_usb_charger_task_event(const int port, uint32_t evt)
 	 * pd_capable() is false during initial PD negotiation). But it's okay
 	 * to always trigger bc1.2 detection for other cases.
 	 */
-	bool is_non_pd_sink = !pd_capable(port) &&
-			      !usb_charger_port_is_sourcing_vbus(port) &&
-			      pd_check_vbus_level(port, VBUS_PRESENT);
+	bool is_non_pd_sink = rt9490_is_non_pd_sink(port);
 
 	/* vbus change, start bc12 detection */
 	if (evt & USB_CHG_EVENT_VBUS) {
