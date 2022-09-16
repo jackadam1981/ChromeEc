@@ -10,6 +10,7 @@ LOG_MODULE_REGISTER(emul_kb_raw);
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
+
 #include <drivers/cros_kb_raw.h>
 #include <keyboard_raw.h>
 

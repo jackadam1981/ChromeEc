@@ -5,13 +5,12 @@
 
 #define DT_DRV_COMPAT cros_clock_control_emul
 
-#include <zephyr/device.h>
-#include <zephyr/drivers/clock_control.h>
-#include <zephyr/kernel.h>
-
 #include "common.h"
 #include "emul/emul_clock_control.h"
 
+#include <zephyr/device.h>
+#include <zephyr/drivers/clock_control.h>
+#include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(clock_control_emul, CONFIG_CLOCK_CONTROL_EMUL_LOG_LEVEL);
 

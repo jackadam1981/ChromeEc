@@ -9,19 +9,18 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(emul_bmi);
 
+#include "driver/accelgyro_bmi160.h"
+#include "driver/accelgyro_bmi260.h"
+#include "driver/accelgyro_bmi_common.h"
+#include "emul/emul_bmi.h"
+#include "emul/emul_common_i2c.h"
+#include "emul/emul_stub_device.h"
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/sys/__assert.h>
-
-#include "emul/emul_common_i2c.h"
-#include "emul/emul_bmi.h"
-#include "emul/emul_stub_device.h"
-
-#include "driver/accelgyro_bmi160.h"
-#include "driver/accelgyro_bmi260.h"
-#include "driver/accelgyro_bmi_common.h"
 
 /** Run-time data used by the emulator */
 struct bmi_emul_data {

@@ -9,16 +9,15 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(emul_bma255);
 
+#include "driver/accel_bma2x2.h"
+#include "emul/emul_bma255.h"
+#include "emul/emul_common_i2c.h"
+#include "emul/emul_stub_device.h"
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
-
-#include "emul/emul_common_i2c.h"
-#include "emul/emul_bma255.h"
-
-#include "driver/accel_bma2x2.h"
-#include "emul/emul_stub_device.h"
 
 /** Run-time data used by the emulator */
 struct bma_emul_data {

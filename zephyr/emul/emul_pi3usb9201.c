@@ -5,15 +5,14 @@
 
 #define DT_DRV_COMPAT zephyr_pi3usb9201_emul
 
+#include "emul/emul_common_i2c.h"
+#include "emul/emul_pi3usb9201.h"
+#include "emul/emul_stub_device.h"
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
-
-#include "emul/emul_pi3usb9201.h"
-#include "emul/emul_stub_device.h"
-#include "emul/emul_common_i2c.h"
-
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(emul_pi3usb9201, LOG_LEVEL_DBG);
 
