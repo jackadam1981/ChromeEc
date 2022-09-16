@@ -33,6 +33,23 @@
       "message": "Hi, this patch breaks existing Krabby model, please check this [comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3778913/comments/0e025f6d_05ab5e97) and the partial approach from reading CBI to configure each functions, and use second source to make the existing Krabby compatible as well, thank you.",
       "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c596879_3ca26454",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config_tentacruel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-16T04:01:04Z",
+      "side": 1,
+      "message": "Is this different from the original usb_config.c? (or what do you plan to change?)\n\nIf no, please use the original file instead.",
+      "revId": "11ccd689dc09edd999640b9e1cf56d5441f8dd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
