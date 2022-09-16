@@ -34,6 +34,24 @@
       "parentUuid": "01b70f40_0a0456b4",
       "revId": "ed309ed6a3c6dc95b9cbf4e2cbc9dce037f10760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb6feeb1_e2842b80",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-16T17:23:03Z",
+      "side": 1,
+      "message": "Downgraded to nit:\n\nWRT the added `-`, in my snippet, I just did that in the two usages of the variable. I figured it would be confusing at best to change the format of `CBUILD` from what it is expected to be in the environment, and adding the `-` doesn\u0027t seem burdensome, given the low number of usages here.\n\nStylistically, I think the semantics of \"set and use `CBUILD` if it\u0027s not already set\" are clearer and terser, but I\u0027m not very bothered. Before too long, we\u0027ll ditch this build system for Zephyr\u0027s anyway. I\u0027m OK with trying to maintain the conventions of this file.\n\nOn that note, do you want to add the variable(s) you use to the help string?",
+      "parentUuid": "ace2d6bc_8be2fe5b",
+      "revId": "ed309ed6a3c6dc95b9cbf4e2cbc9dce037f10760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
