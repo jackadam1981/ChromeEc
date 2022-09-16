@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3130d7_48245a90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-16T22:36:20Z",
+      "side": 1,
+      "message": "disable force shutdown",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "8cb40183303d6d5e3c8dfae73c861daddbf7c557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "25f616ef_b3e69e60",
@@ -14,6 +37,30 @@
       "writtenOn": "2022-09-16T22:18:07Z",
       "side": 1,
       "message": "\"intel_debug\" - name is used to easily identify the command is for intel debugger. If want to go with some generic name we can use \"prevent_force_shutdown\" or any other suggestions...",
+      "range": {
+        "startLine": 674,
+        "startChar": 24,
+        "endLine": 674,
+        "endChar": 35
+      },
+      "revId": "8cb40183303d6d5e3c8dfae73c861daddbf7c557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b205cc2b_66d80488",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-16T22:36:20Z",
+      "side": 1,
+      "message": "how about: ap_debug everywhere ?",
+      "parentUuid": "25f616ef_b3e69e60",
       "range": {
         "startLine": 674,
         "startChar": 24,
