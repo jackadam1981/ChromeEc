@@ -46,6 +46,30 @@
       },
       "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa56324_37303f5c",
+        "filename": "common/body_detection.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-16T06:49:46Z",
+      "side": 1,
+      "message": "Hi Keith,\n\nWhat is the difference between callback routine and overridable function?\n\nCould we use the overridable function and add the parameters for body detection states? Like:\n__overridable void board_body_state_change(enum body_detect_states state);",
+      "parentUuid": "ecf11a29_e1cfd1e0",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "adef02949c760617cdeeb3c56ddcd8aed64f999d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
