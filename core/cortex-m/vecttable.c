@@ -8,6 +8,7 @@
 #ifndef ___INIT
 #define ___INIT
 #include "config.h"
+
 #include <task.h>
 #endif
 

@@ -3,10 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include "stack_trace.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "stack_trace.h"
 
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
 		       int linenum)
