@@ -21,6 +21,7 @@ test-list-host=$(TEST_LIST_HOST)
 else
 test-list-host = accel_cal
 test-list-host += aes
+test-list-host += always_memset
 test-list-host += base32
 test-list-host += battery_get_params_smart
 test-list-host += bklight_lid
@@ -159,6 +160,7 @@ cov-test-list-host = $(filter-out $(cov-dont-test), $(test-list-host))
 
 accel_cal-y=accel_cal.o
 aes-y=aes.o
+always_memset-y=always_memset.o
 base32-y=base32.o
 battery_get_params_smart-y=battery_get_params_smart.o
 bklight_lid-y=bklight_lid.o
