@@ -1,4 +1,4 @@
-/* Copyright 2020 The ChromiumOS Authors
+/* Copyright 2020 The ChromiumOS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -1845,6 +1845,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_USB_PD_USB4
 #ifdef CONFIG_PLATFORM_EC_USB_PD_USB4
 #define CONFIG_USB_PD_USB4
+#endif
+
+#undef CONFIG_USB_PD_DATA_RESET_MSG
+#ifdef CONFIG_PLATFORM_EC_USB_PD_DATA_RESET_MSG
+#define CONFIG_USB_PD_DATA_RESET_MSG
 #endif
 
 #undef CONFIG_USB_PD_FRS
