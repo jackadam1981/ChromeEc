@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c34e744_e5df308a",
+        "filename": "zephyr/projects/nissa/joxer/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-18T23:36:55Z",
+      "side": 1,
+      "message": "Add a `SOC_SERIES_RISCV32_IT8XXX2` default for this in Kconfig.stacks instead, since it\u0027s relevant to all users of this EC.",
+      "revId": "7269e2f0e40e50deb0dcfe1c2591d45127e0ab1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
