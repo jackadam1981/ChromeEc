@@ -118,6 +118,30 @@
       },
       "revId": "26856267e2b74110208aa8e9344700109e90b38a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e594a2c5_d739a617",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-19T17:52:14Z",
+      "side": 1,
+      "message": "It looks like we are using [`1.0.22`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/dev-libs/libusb/libusb-1.0.22.ebuild;drc\u003de3e6f5544f1767266c6438c045367d7fa80ce7e6), but the latest version is [`1.0.26`](https://github.com/libusb/libusb/releases).\n\nLooks like this was fixed in [this commit](https://github.com/libusb/libusb/commit/5d0d0a58ed3ea813200b83d69e28a3ea24e86f01), which was released in `1.0.24`.",
+      "parentUuid": "0bd91300_ce8b76f2",
+      "range": {
+        "startLine": 225,
+        "startChar": 28,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "26856267e2b74110208aa8e9344700109e90b38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
