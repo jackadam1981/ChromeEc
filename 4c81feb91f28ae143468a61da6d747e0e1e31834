@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44e691d1_bac3061d",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-19T16:49:22Z",
+      "side": 1,
+      "message": "Hi Derek, it sounds good to me. Can you please a little further simplify the code (as suggested)? By introducing 8100_unlock and cps8200_unlock, I think the code becomes easier to read.",
+      "parentUuid": "79af2645_4029657f",
+      "range": {
+        "startLine": 372,
+        "startChar": 11,
+        "endLine": 372,
+        "endChar": 32
+      },
+      "revId": "4c81feb91f28ae143468a61da6d747e0e1e31834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3724738d_cc2805ad",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 9
