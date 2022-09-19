@@ -6,15 +6,20 @@
 #include "compile_time_macros.h"
 
 /* Boringssl headers need to be included before extern "C" section. */
+#include "openssl/bn.h"
+#include "openssl/ec.h"
 #include "openssl/mem.h"
+#include "openssl/obj_mac.h"
 
 extern "C" {
 #include "atomic.h"
 #include "common.h"
 #include "ec_commands.h"
 #include "host_command.h"
+#include "sha256.h"
 #include "system.h"
 #include "task.h"
+#include "trng.h"
 #include "util.h"
 }
 
@@ -22,6 +27,7 @@ extern "C" {
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
+#include "scoped_fast_cpu.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
@@ -323,3 +329,7 @@ fp_command_read_match_secret(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET, fp_command_read_match_secret,
 		     EC_VER_MASK(0));
+
+BUILD_ASSERT(FP_PK_LEN == SHA256_DIGEST_SIZE);
+BUILD_ASSERT(FP_PK_EC_PUBLIC_KEY_LEN == 32);
+BUILD_ASSERT(FP_PK_EC_PRIVATE_KEY_LEN == 32);
