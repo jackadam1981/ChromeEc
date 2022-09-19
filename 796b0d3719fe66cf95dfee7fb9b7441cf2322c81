@@ -16,6 +16,23 @@
       "message": "just for test",
       "revId": "796b0d3719fe66cf95dfee7fb9b7441cf2322c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b72b4d_26d9012e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-09-19T17:04:43Z",
+      "side": 1,
+      "message": "If you don\u0027t plan on submitting this, you need to rebase the ones above on the Relation chain, or they won\u0027t go through the CQ.",
+      "revId": "796b0d3719fe66cf95dfee7fb9b7441cf2322c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
