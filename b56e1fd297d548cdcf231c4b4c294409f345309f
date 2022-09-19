@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f4aec1_f3e5f646",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-19T22:24:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "347b71fe_82f729c9",
+      "range": {
+        "startLine": 87,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "b56e1fd297d548cdcf231c4b4c294409f345309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc107c72_c460e21b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-19T21:47:07Z",
       "side": 1,
       "message": "disable force shutdown",
+      "range": {
+        "startLine": 88,
+        "startChar": 35,
+        "endLine": 88,
+        "endChar": 47
+      },
+      "revId": "b56e1fd297d548cdcf231c4b4c294409f345309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d775fcd7_98fff799",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-19T22:24:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc107c72_c460e21b",
       "range": {
         "startLine": 88,
         "startChar": 35,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08033f87_ee40b675",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-19T22:24:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aef44886_6478522a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "b56e1fd297d548cdcf231c4b4c294409f345309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dcd2092_6a84b3b8",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-09-19T21:47:07Z",
       "side": 1,
       "message": "guard this too",
+      "revId": "b56e1fd297d548cdcf231c4b4c294409f345309f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3311c98_5b7618e3",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-19T22:24:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2dcd2092_6a84b3b8",
       "revId": "b56e1fd297d548cdcf231c4b4c294409f345309f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
