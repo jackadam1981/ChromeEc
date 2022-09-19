@@ -16,6 +16,24 @@
       "message": "Is this sleep needed after `kblight_get_current_enabled()` is introduced?",
       "revId": "b67ff46720f49248a85b2e7b306da57ecd433ca6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee3efdb6_a55f2d0c",
+        "filename": "zephyr/test/drivers/keyboard_scan/src/keyboard_backlight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-19T23:30:37Z",
+      "side": 1,
+      "message": "Nope, good catch!",
+      "parentUuid": "1b5e8488_9a837b72",
+      "revId": "b67ff46720f49248a85b2e7b306da57ecd433ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
