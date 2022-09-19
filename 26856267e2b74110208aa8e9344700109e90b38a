@@ -94,6 +94,30 @@
       },
       "revId": "26856267e2b74110208aa8e9344700109e90b38a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd91300_ce8b76f2",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-19T17:46:46Z",
+      "side": 1,
+      "message": "Oh, I see what you are asking. It does look like [`libusb_strerror` takes `int`](https://libusb.sourceforge.io/api-1.0/group__libusb__misc.html#ga554ec46d5fbaa29e26a85036a3621e53), but looking at `/usr/lib/libusb.h` in the chroot, I see\n\n```\nconst char * LIBUSB_CALL libusb_strerror(enum libusb_error errcode);\n```\n\nMaybe we\u0027re using an old version of libusb?",
+      "parentUuid": "b505dedc_2edbb503",
+      "range": {
+        "startLine": 225,
+        "startChar": 28,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "26856267e2b74110208aa8e9344700109e90b38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
