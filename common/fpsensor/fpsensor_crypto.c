@@ -7,6 +7,7 @@
 #include "aes.h"
 #include "aes-gcm.h"
 #include "cryptoc/util.h"
+#include "curve25519.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_private.h"
 #include "fpsensor_state.h"
