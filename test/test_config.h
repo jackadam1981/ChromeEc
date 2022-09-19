@@ -109,7 +109,8 @@
 
 #if defined(TEST_FPSENSOR) || defined(TEST_FPSENSOR_STATE) ||                  \
 	defined(TEST_FPSENSOR_CRYPTO) || defined(TEST_FPSENSOR_AUTH_CRYPTO) || \
-	defined(TEST_FPSENSOR_AUTH_CRYPTO_MOCK)
+	defined(TEST_FPSENSOR_AUTH_CRYPTO_MOCK) ||                             \
+	defined(TEST_FPSENSOR_AUTH_COMMANDS)
 #define CONFIG_BORINGSSL_CRYPTO
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
 #define CONFIG_SHA256
