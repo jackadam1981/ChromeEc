@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43beefeb_dae54223",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-19T15:23:13Z",
+      "side": 1,
+      "message": "Should we define r as libusb_error, instead?",
+      "range": {
+        "startLine": 225,
+        "startChar": 28,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "26856267e2b74110208aa8e9344700109e90b38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
