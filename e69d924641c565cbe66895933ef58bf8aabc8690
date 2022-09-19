@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "949f6191_218df400",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-09-19T17:02:12Z",
+      "side": 1,
+      "message": "LGTM.  One Nit question on the .conf file.",
+      "revId": "e69d924641c565cbe66895933ef58bf8aabc8690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55bb4627_adf3f6c7",
+        "filename": "zephyr/projects/herobrine/prj_evoker.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-09-19T17:02:12Z",
+      "side": 1,
+      "message": "Is this line required?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "e69d924641c565cbe66895933ef58bf8aabc8690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
