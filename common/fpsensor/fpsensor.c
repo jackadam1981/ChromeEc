@@ -235,6 +235,8 @@ void fp_task(void)
 {
 	int timeout_us = -1;
 
+	CPRINTS("test");
+
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(get_fp_sensor_type()));
 
