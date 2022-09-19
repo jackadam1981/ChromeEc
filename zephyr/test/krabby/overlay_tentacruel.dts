@@ -1,0 +1,31 @@
+/ {
+	usbc {
+		port0@0 {
+			ppc = <&bc12_ppc_port0>;
+			ppc_alt = <&ppc_port0>;
+		};
+	};
+};
+
+&i2c_ctrl0 {
+	ppc_port0: syv682x@44 {
+		compatible = "silergy,syv682x", "cros,i2c-mock";
+		status = "okay";
+		reg = <0x44>;
+	};
+
+	bc12_ppc_port0: rt1739@70 {
+		compatible = "richtek,rt1739", "cros,i2c-mock";
+		status = "okay";
+		reg = <0x70>;
+	};
+};
+
+&ppc0_emul {
+	frs_en_gpio = <&usb_c0_frs_en>;
+	alert_gpio = <&usb_c0_ppc_int_odl>;
+};
+
+#include <../projects/corsola/interrupts_tentacruel.dts>
+#include <../projects/corsola/gpio_tentacruel.dts>
+#include <../projects/corsola/cbi_tentacruel.dts>

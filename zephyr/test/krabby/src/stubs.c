@@ -5,6 +5,7 @@
 
 #include "charge_ramp.h"
 #include "charge_state.h"
+#include "usb_charge.h"
 
 int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 {
@@ -22,5 +23,11 @@ int pd_check_vconn_swap(int port)
 }
 
 void pd_set_vbus_discharge(int port, int enable)
+{
+}
+
+__attribute__((weak)) struct bc12_config bc12_ports[0];
+
+__attribute__((weak)) void usb_charger_vbus_change(int port, int vbus_level)
 {
 }
