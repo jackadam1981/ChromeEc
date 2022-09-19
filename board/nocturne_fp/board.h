@@ -204,6 +204,7 @@
 
 #define CONFIG_AES
 #define CONFIG_AES_GCM
+#define CONFIG_CURVE25519
 
 #define CONFIG_RNG
 
