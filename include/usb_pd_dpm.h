@@ -42,6 +42,8 @@ void dpm_set_mode_exit_request(int port);
  */
 void dpm_data_reset_complete(int port);
 
+void dpm_set_ready(int port);
+void dpm_notify_msg_done(int port);
 /*
  * Informs the DPM that a VDM ACK was received.
  *
