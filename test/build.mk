@@ -46,6 +46,7 @@ test-list-host += flash
 test-list-host += float
 test-list-host += fp
 test-list-host += fpsensor
+test-list-host += fpsensor_auth_commands
 test-list-host += fpsensor_crypto
 test-list-host += fpsensor_state
 test-list-host += gettimeofday
@@ -153,6 +154,9 @@ cov-dont-test = is_enabled_error
 cov-dont-test += static_if_error
 # fpsensor: genhtml looks for build/host/fpsensor/cryptoc/util.c
 cov-dont-test += fpsensor
+# fpsensor_auth_commands: genhtml looks for
+# build/host/fpsensor_auth_commands/cryptoc/util.c
+cov-dont-test += fpsensor_auth_commands
 # fpsensor_crypto: genhtml looks for build/host/fpsensor_crypto/cryptoc/util.c
 cov-dont-test += fpsensor_crypto
 # fpsensor_state: genhtml looks for build/host/fpsensor_state/cryptoc/util.c
@@ -202,6 +206,7 @@ flash-y=flash.o
 flash_physical-y=flash_physical.o
 flash_write_protect-y=flash_write_protect.o
 fpsensor-y=fpsensor.o
+fpsensor_auth_commands-y=fpsensor_auth_commands.o
 fpsensor_crypto-y=fpsensor_crypto.o
 fpsensor_hw-y=fpsensor_hw.o
 fpsensor_state-y=fpsensor_state.o

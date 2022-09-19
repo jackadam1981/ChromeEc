@@ -7740,6 +7740,45 @@ struct ec_response_fp_read_match_secret {
 	uint8_t positive_match_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
 } __ec_align4;
 
+/* Constants for pairing key establishment */
+#define FP_PAIRING_KEY_ENC_METADATA_VERSION 1
+#define FP_PAIRING_KEY_LEN 32
+#define FP_PAIRING_KEY_NONCE_BYTES 12
+#define FP_PAIRING_KEY_ENCRYPTION_SALT_BYTES 16
+#define FP_PAIRING_KEY_TAG_BYTES 16
+#define FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN 32
+#define FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN 32
+
+struct ec_fp_pairing_key_encryption_metadata {
+	/*
+	 * Version of the structure format
+	 * (FP_PAIRING_KEY_ENC_METADATA_VERSION).
+	 */
+	uint16_t struct_version;
+	/* Reserved bytes, set to 0. */
+	uint16_t reserved;
+	/*
+	 * The salt is *only* ever used for key derivation. The nonce is unique,
+	 * a different one is used for every message.
+	 */
+	uint8_t nonce[FP_PAIRING_KEY_NONCE_BYTES];
+	uint8_t encryption_salt[FP_PAIRING_KEY_ENCRYPTION_SALT_BYTES];
+	uint8_t tag[FP_PAIRING_KEY_TAG_BYTES];
+};
+
+#define EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN 0x0410
+
+struct ec_response_fp_establish_pairing_key_keygen {
+	struct {
+		uint8_t x[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN];
+		uint8_t y[FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN];
+	} pubkey;
+	struct {
+		struct ec_fp_pairing_key_encryption_metadata info;
+		uint8_t data[FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN];
+	} encrypted_private_key;
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
