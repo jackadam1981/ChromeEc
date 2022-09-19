@@ -16,6 +16,24 @@
       "message": "What\u0027s the motivation for creating a new binary?  \nWe\u0027ve generally been adding console commands in `ec/zephyr/test/drivers/default/src/console_cmd/` \nand host commands in `ec/zephyr/test/drivers/host_cmd/`",
       "revId": "600c46b577f229789f8fc4a0d40f38e28ce066d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212797ed_bd0f7798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-19T21:21:39Z",
+      "side": 1,
+      "message": "Tests for this file require some device tree and Kconfig tweaks to add USB-A ports (see the preceding CL https://crrev.com/c/3899166)",
+      "parentUuid": "0e841ea0_b2f94b78",
+      "revId": "600c46b577f229789f8fc4a0d40f38e28ce066d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
