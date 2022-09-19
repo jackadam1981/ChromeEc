@@ -142,6 +142,30 @@
       },
       "revId": "26856267e2b74110208aa8e9344700109e90b38a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27300423_c41ab03c",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-19T18:25:37Z",
+      "side": 1,
+      "message": "I [filed a bug](http://b/247573723) to track upgrading `libusb` and added TODOs.",
+      "parentUuid": "e594a2c5_d739a617",
+      "range": {
+        "startLine": 225,
+        "startChar": 28,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "26856267e2b74110208aa8e9344700109e90b38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
