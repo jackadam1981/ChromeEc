@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae97071d_718cce27",
+        "filename": "test/always_memset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-19T22:15:28Z",
+      "side": 1,
+      "message": "Oh, nice catch.\n\nIt just adds the `unused` attribute to the definition. That makes the compiler suppress \"unused\" warnings when a static function is declared and then not used. This makes it easier to debug tests, since you sometimes need to comment out the only usage of a static function.",
+      "parentUuid": "4f498004_689147bf",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "bcd3b06bae7c451f849f220fe0aa41da50764204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f34433da_79842fe6",
         "filename": "test/always_memset.c",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-19T22:00:14Z",
       "side": 1,
       "message": "Does this mean the EC `memset` already behave like `always_memset`?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "bcd3b06bae7c451f849f220fe0aa41da50764204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04835bd5_da49f359",
+        "filename": "test/always_memset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-19T22:15:28Z",
+      "side": 1,
+      "message": "Yes, in the sense that it isn\u0027t being optimized out. That being said, I think it is still important to have a dedicated function for secure memsetting, in case something with the std `memset` changes.",
+      "parentUuid": "f34433da_79842fe6",
       "range": {
         "startLine": 44,
         "startChar": 0,
