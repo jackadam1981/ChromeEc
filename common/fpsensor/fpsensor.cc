@@ -29,7 +29,8 @@ extern "C" {
 #include "fpsensor_detect.h"
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
-#include "scoped_fast_cpu.h"
+
+#include "scoped_fast_cpu.hpp"
 
 #if !defined(CONFIG_RNG)
 #error "fpsensor requires RNG"
