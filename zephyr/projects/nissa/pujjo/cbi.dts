@@ -13,7 +13,6 @@
 			enum-name = "FW_KB_BL";
 			start = <3>;
 			size = <1>;
-
 			no-kb-bl {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_KB_BL_NOT_PRESENT";
@@ -25,7 +24,6 @@
 				value = <1>;
 			};
 		};
-
 		/*
 		 * FW_CONFIG field for KB PWB present or not.
 		 */
@@ -33,7 +31,6 @@
 			enum-name = "FW_KB_PWB";
 			start = <4>;
 			size = <1>;
-
 			no-kb-pwb {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_KB_PWB_NOT_PRESENT";
@@ -45,7 +42,6 @@
 				value = <1>;
 			};
 		};
-
 		/*
 		 * FW_CONFIG field for tablet present or not.
 		 */
@@ -53,7 +49,6 @@
 			enum-name = "FW_TABLET";
 			start = <5>;
 			size = <1>;
-
 			no-tablet {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_TABLET_NOT_PRESENT";
@@ -65,21 +60,6 @@
 				value = <1>;
 			};
 		};
-
-		/*
-		 * FW_CONFIG field for LTE board present or not.
-		 *
-		 *	start = <6>;
-		 *	size = <1>;
-		 */
-
-		/*
-		 * FW_CONFIG field for SD card present or not.
-		 *
-		 *	start = <7>;
-		 *	size = <1>;
-		 */
-
 		/*
 		 * FW_CONFIG field for pen present or not.
 		 */
@@ -87,7 +67,6 @@
 			enum-name = "FW_PEN";
 			start = <8>;
 			size = <1>;
-
 			no-pen {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_PEN_NOT_PRESENT";
@@ -99,14 +78,6 @@
 				value = <1>;
 			};
 		};
-
-		/*
-		 * FW_CONFIG field for WF camera present or not.
-		 *
-		 *	start = <9>;
-		 *	size = <1>;
-		 */
-
 		/*
 		 * FW_CONFIG field for multiple thermal table.
 		 */
@@ -114,33 +85,51 @@
 			enum-name = "THERM_TABLE";
 			start = <10>;
 			size = <2>;
-
 			therm-table-1 {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "THERM_TABLE_1";
 				value = <1>;
 			};
 		};
-
+	};
+	/* Craask-specific ssfc fields. */
+	cbi-ssfc {
+		compatible = "named-cbi-ssfc";
 		/*
-		 * FW_CONFIG field for multiple audio module.
-		 *
-		 *	start = <12>;
-		 *	size = <3>;
+		 * SSFC field to identify LID motion sensor.
 		 */
-
+		lid-sensor {
+			enum-name = "LID_SENSOR";
+			size = <2>;
+			lid_sensor_0: lis2dw12 {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+				value = <0>;
+				default;
+			};
+			lid_sensor_1: bma422 {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+			};
+		};
 		/*
-		 * FW_CONFIG field for EXT_VR.
-		 *
-		 *	start = <15>;
-		 *	size = <1>;
+		 * SSFC field to identify BASE motion sensor.
 		 */
-
-		/*
-		 * FW_CONFIG field for multiple wi-fi SAR.
-		 *
-		 *	start = <16>;
-		 *	size = <2>;
-		 */
+		base-sensor {
+			enum-name = "BASE_SENSOR";
+			size = <2>;
+			base_sensor_0: lsm6dso {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+				value = <0>;
+				default;
+			};
+			base_sensor_1: bmi323 {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+			};
+		};
 	};
 };
