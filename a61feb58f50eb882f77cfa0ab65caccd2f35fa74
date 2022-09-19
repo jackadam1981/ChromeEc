@@ -45,6 +45,30 @@
       },
       "revId": "a61feb58f50eb882f77cfa0ab65caccd2f35fa74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e11ba58_01e0214d",
+        "filename": "core/host/toolchain.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-19T16:38:32Z",
+      "side": 1,
+      "message": "For arm in gitlab, we use `CROSS_COMPILE_arm\u003d/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-` but that doesn\u0027t work here.   I also tried overriding CROSS_COMPILE_HOST_DEFAULT on the command line, but that didn\u0027t work either. I don\u0027t expect that renaming CROSS_COMPILE_HOST_DEFAULT to BUILDCC_PREFIX will make it work any better.",
+      "parentUuid": "01800b61_6df753c1",
+      "range": {
+        "startLine": 5,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "a61feb58f50eb882f77cfa0ab65caccd2f35fa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
