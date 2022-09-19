@@ -1,0 +1,27 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config TEST_KRABBY
+	bool "Run the tests intended for krabby"
+	help
+	  Include krabby generic source code into the test binary.
+
+config TEST_TENTACRUEL
+	bool "Run the tests intended for tentacruel"
+	help
+	  Include tentacruel specific source code
+	  (zephyr/project/corsola/src/krabby/*_tentacruel.c) into the test
+	  binary.
+
+if TEST_TENTACRUEL
+
+config TENTACRUEL_BOARD_VERSION
+	int "Set tentacruel board version"
+	help
+	  Set the board version used in tentacruel test.
+	  Use negative number to emulate cbi read failure.
+
+endif # TEST_TENTACRUEL
+
+source "Kconfig.zephyr"

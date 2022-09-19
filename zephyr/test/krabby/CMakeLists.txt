@@ -12,9 +12,18 @@ zephyr_include_directories(
 	./include
 	"${PLATFORM_EC}/zephyr/projects/corsola/include")
 
-target_sources(app PRIVATE
+target_sources(app PRIVATE src/stubs.c)
+
+target_sources_ifdef(CONFIG_TEST_KRABBY
+	app PRIVATE
 	src/charger_workaround.c
-	src/stubs.c
 	src/usbc_config.c
 	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/charger_workaround.c
 	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/usbc_config.c)
+
+target_sources_ifdef(CONFIG_TEST_TENTACRUEL
+	app PRIVATE
+	src/ppc_tentacruel.c
+	src/interrupt_handlers.c
+	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/usbc_config.c
+	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/ppc_tentacruel.c)
