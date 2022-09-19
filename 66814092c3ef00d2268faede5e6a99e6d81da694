@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3577fa_18216410",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-19T18:40:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4645319a_2c95e92f",
+      "revId": "66814092c3ef00d2268faede5e6a99e6d81da694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc41f709_fa90a82b",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "541ce146_0d604d3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-19T18:40:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc41f709_fa90a82b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "66814092c3ef00d2268faede5e6a99e6d81da694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96d0defb_36d9f2da",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-08-23T20:19:56Z",
       "side": 1,
       "message": "how about keeping it in intelrvp and let board file override it during PO?",
+      "revId": "66814092c3ef00d2268faede5e6a99e6d81da694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7678af1_86079a3a",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-19T18:40:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96d0defb_36d9f2da",
       "revId": "66814092c3ef00d2268faede5e6a99e6d81da694",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
