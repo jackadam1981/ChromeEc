@@ -250,6 +250,49 @@ test_static enum ec_error_list test_set_fp_tpm_seed(void)
 	return check_seed_set_result(rv, FP_ENC_STATUS_SEED_SET, &resp);
 }
 
+test_static enum ec_error_list
+test_fp_command_establish_pairing_key_without_seed(void)
+{
+	enum ec_status rv;
+	struct ec_response_fp_encryption_status resp = { 0 };
+	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
+
+	/* Seed shouldn't have been set. */
+	rv = test_send_host_command(EC_CMD_FP_ENC_STATUS, 0, NULL, 0, &resp,
+				    sizeof(resp));
+
+	TEST_EQ(check_seed_set_result(rv, 0, &resp), EC_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
+				    NULL, 0, &keygen_response,
+				    sizeof(keygen_response));
+
+	TEST_NE(rv, EC_RES_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_command_establish_pairing_key_keygen(void)
+{
+	enum ec_status rv;
+	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
+				    NULL, 0, &keygen_response,
+				    sizeof(keygen_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	bssl::UniquePtr<EC_KEY> pubkey =
+		create_ec_key_from_pubkey(keygen_response.pubkey);
+
+	TEST_NE(pubkey.get(), nullptr, "%p");
+	TEST_EQ(EC_KEY_check_key(pubkey.get()), 1, "%d");
+
+	return EC_SUCCESS;
+}
+
 } // namespace
 
 extern "C" void run_test(int argc, const char **argv)
@@ -258,8 +301,10 @@ extern "C" void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_auth_command_create_ec_key_from_pubkey_fail);
 	RUN_TEST(test_fp_auth_command_fill_pubkey);
 	RUN_TEST(test_fp_auth_command_generate_ecdh_shared_secret);
+	RUN_TEST(test_fp_command_establish_pairing_key_without_seed);
 	RUN_TEST(test_set_fp_tpm_seed);
 	RUN_TEST(test_fp_auth_command_encrypt_decrypt_data);
 	RUN_TEST(test_fp_auth_command_encrypt_decrypt_key);
+	RUN_TEST(test_fp_command_establish_pairing_key_keygen);
 	test_print_result();
 }
