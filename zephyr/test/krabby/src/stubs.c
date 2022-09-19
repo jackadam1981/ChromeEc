@@ -5,11 +5,7 @@
 
 #include "charge_ramp.h"
 #include "charge_state.h"
-
-int board_set_active_charge_port(int port)
-{
-	return 0;
-}
+#include "usb_charge.h"
 
 int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 {
@@ -21,9 +17,22 @@ void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 {
 }
 
-const struct batt_params *charger_current_battery_params(void)
+int pd_check_vconn_swap(int port)
 {
-	static const struct batt_params params = {};
+	return 0;
+}
 
-	return &params;
+void pd_power_supply_reset(int port)
+{
+}
+
+int pd_set_power_supply_ready(int port)
+{
+	return 1;
+}
+
+__attribute__((weak)) struct bc12_config bc12_ports[0];
+
+__attribute__((weak)) void usb_charger_vbus_change(int port, int vbus_level)
+{
 }

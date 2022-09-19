@@ -174,4 +174,11 @@
 		#size-cells = <0>;
 		reg = <0xf01c40 0x1000>;
 	};
+
+	adc0: adc {
+		compatible = "zephyr,adc-emul";
+		nchannels = <6>;
+		ref-internal-mv = <3300>;
+		#io-channel-cells = <1>;
+	};
 };

@@ -5,5 +5,19 @@
 common:
   platform_allow: native_posix
 tests:
-  krabby.default:
+  krabby.krabby:
     extra_args: DTC_OVERLAY_FILE="common.dts;../projects/corsola/interrupts_krabby.dts;../projects/corsola/gpio_krabby.dts;pinctrl.dts"
+    extra_configs:
+      - CONFIG_TEST_KRABBY=y
+  krabby.tentacruel_v0:
+    extra_args: DTC_OVERLAY_FILE="common.dts;overlay_tentacruel.dts;pinctrl.dts"
+    extra_configs:
+      - CONFIG_TEST_TENTACRUEL=y
+      - CONFIG_TENTACRUEL_BOARD_VERSION=0
+      - CONFIG_PLATFORM_EC_USBC_PPC_RT1739=y
+  krabby.tentacruel_v3:
+    extra_args: DTC_OVERLAY_FILE="common.dts;overlay_tentacruel.dts;pinctrl.dts"
+    extra_configs:
+      - CONFIG_TEST_TENTACRUEL=y
+      - CONFIG_TENTACRUEL_BOARD_VERSION=3
+      - CONFIG_PLATFORM_EC_USBC_PPC_RT1739=y
