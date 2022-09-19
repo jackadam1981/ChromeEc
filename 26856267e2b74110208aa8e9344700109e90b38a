@@ -46,6 +46,30 @@
       },
       "revId": "26856267e2b74110208aa8e9344700109e90b38a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65894b3f_546c2fe5",
+        "filename": "util/comm-usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-19T17:30:07Z",
+      "side": 1,
+      "message": "Ack.\n\nUSB_ERROR(m, r) feeds r to libusb_strerror(r), which takes r as int. Do you know why we need this cast to libusb_error in first place?",
+      "parentUuid": "f855f0cc_c1c38e54",
+      "range": {
+        "startLine": 225,
+        "startChar": 28,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "26856267e2b74110208aa8e9344700109e90b38a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
