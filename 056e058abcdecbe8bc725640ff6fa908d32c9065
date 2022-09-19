@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44459d21_f40c5571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-19T19:48:52Z",
+      "side": 1,
+      "message": "I don\u0027t have a problem with this, but I\u0027m also not very familiar with the Zephyr power sequencing code.",
+      "revId": "056e058abcdecbe8bc725640ff6fa908d32c9065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef294971_ea1b7e3f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-19T19:48:52Z",
+      "side": 1,
+      "message": "The pre-upload script should have made you not add this. (We updated the copyright statements.) You need to rebase.",
+      "revId": "056e058abcdecbe8bc725640ff6fa908d32c9065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0991042_2a9db3d1",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-19T19:48:52Z",
+      "side": 1,
+      "message": "This console command should probably be guarded by a Kconfig, and that config should probably be disabled by default.",
+      "revId": "056e058abcdecbe8bc725640ff6fa908d32c9065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
