@@ -1,4 +1,4 @@
-/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -17,18 +17,20 @@
 #include "usb_pd.h"
 #include "usb_pd_pdo.h"
 
-#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
-#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 /* Used to fake VBUS presence since no GPIO is available to read VBUS */
 static int vbus_present;
 
-
 #if defined(CONFIG_USB_PD_TCPM_MUX) && defined(CONFIG_USB_PD_TCPM_ANX7447)
-const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux_chain usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.usb_port = 0,
-		.driver    = &anx7447_usb_mux_driver,
+		.mux =
+			&(const struct usb_mux){
+				.usb_port = 0,
+				.driver = &anx7447_usb_mux_driver,
+			},
 	},
 };
 #endif
@@ -81,8 +83,8 @@ void pd_power_supply_reset(int port)
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
-	CPRINTS("USBPD current limit port %d max %d mA %d mV",
-		port, max_ma, supply_voltage);
+	CPRINTS("USBPD current limit port %d max %d mA %d mV", port, max_ma,
+		supply_voltage);
 	/* do some LED coding of the power we can sink */
 	if (max_ma) {
 		if (supply_voltage > 6500)
@@ -98,8 +100,8 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 __override void typec_set_input_current_limit(int port, uint32_t max_ma,
 					      uint32_t supply_voltage)
 {
-	CPRINTS("TYPEC current limit port %d max %d mA %d mV",
-		port, max_ma, supply_voltage);
+	CPRINTS("TYPEC current limit port %d max %d mA %d mV", port, max_ma,
+		supply_voltage);
 	gpio_set_level(GPIO_LED_R, !!max_ma);
 }
 
@@ -109,24 +111,21 @@ void button_event(enum gpio_signal signal)
 	CPRINTS("VBUS %d", vbus_present);
 }
 
-static int command_vbus_toggle(int argc, char **argv)
+static int command_vbus_toggle(int argc, const char **argv)
 {
 	vbus_present = !vbus_present;
 	CPRINTS("VBUS %d", vbus_present);
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(vbus, command_vbus_toggle,
-			"",
-			"Toggle VBUS detected");
+DECLARE_CONSOLE_COMMAND(vbus, command_vbus_toggle, "", "Toggle VBUS detected");
 
 int pd_snk_is_vbus_provided(int port)
 {
 	return vbus_present;
 }
 
-__override int pd_check_data_swap(int port,
-				  enum pd_data_role data_role)
+__override int pd_check_data_swap(int port, enum pd_data_role data_role)
 {
 	/* Always allow data swap */
 	return 1;
@@ -144,22 +143,18 @@ int pd_check_vconn_swap(int port)
 }
 #endif
 
-__override void pd_check_pr_role(int port,
-				 enum pd_power_role pr_role,
+__override void pd_check_pr_role(int port, enum pd_power_role pr_role,
 				 int flags)
 {
 }
 
-__override void pd_check_dr_role(int port,
-				 enum pd_data_role dr_role,
-				 int flags)
+__override void pd_check_dr_role(int port, enum pd_data_role dr_role, int flags)
 {
 }
 /* ----------------- Vendor Defined Messages ------------------ */
 const uint32_t vdo_idh = VDO_IDH(1, /* data caps as USB host */
 				 0, /* data caps as USB device */
-				 IDH_PTYPE_PERIPH,
-				 0, /* supports alt modes */
+				 IDH_PTYPE_PERIPH, 0, /* supports alt modes */
 				 0x0000);
 
 const uint32_t vdo_product = VDO_PRODUCT(0x0000, 0x0000);
@@ -195,7 +190,7 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
 	bool unused;
 #if defined(CONFIG_USB_PD_TCPM_MUX) && defined(CONFIG_USB_PD_TCPM_ANX7447)
-	const struct usb_mux *mux = &usb_muxes[port];
+	const struct usb_mux *mux = usb_muxes[port].mux;
 #endif
 
 #ifdef CONFIG_USB_PD_TCPM_ANX7447
@@ -233,18 +228,18 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 	 * board_set_usb_mux(port, USB_PD_MUX_DP_ENABLED,
 	 * polarity_rm_dts(pd_get_polarity(port)));
 	 */
-	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
-			 CMD_DP_CONFIG | VDO_OPOS(opos));
+	payload[0] =
+		VDO(USB_SID_DISPLAYPORT, 1, CMD_DP_CONFIG | VDO_OPOS(opos));
 	payload[1] = VDO_DP_CFG(pin_mode, /* pin mode */
-				1,             /* DPv1.3 signaling */
-				2);            /* UFP connected */
+				1, /* DPv1.3 signaling */
+				2); /* UFP connected */
 	return 2;
 }
 
 __override void svdm_dp_post_config(int port)
 {
 	bool unused;
-	const struct usb_mux *mux = &usb_muxes[port];
+	const struct usb_mux *mux = usb_muxes[port].mux;
 
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
@@ -252,9 +247,9 @@ __override void svdm_dp_post_config(int port)
 
 	/* Note: Usage is deprecated, use usb_mux_hpd_update instead */
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_ANX7447))
-		anx7447_tcpc_update_hpd_status(mux, USB_PD_MUX_HPD_LVL |
-					       USB_PD_MUX_HPD_IRQ_DEASSERTED,
-					       &unused);
+		anx7447_tcpc_update_hpd_status(
+			mux, USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ_DEASSERTED,
+			&unused);
 }
 
 __override int svdm_dp_attention(int port, uint32_t *payload)
@@ -262,13 +257,12 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 #ifdef CONFIG_USB_PD_TCPM_ANX7447
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
-	const struct usb_mux *mux = &usb_muxes[port];
+	const struct usb_mux *mux = usb_muxes[port].mux;
 	bool unused;
 
-	mux_state_t mux_state = (lvl ? USB_PD_MUX_HPD_LVL :
-				 USB_PD_MUX_HPD_LVL_DEASSERTED) |
-				(irq ? USB_PD_MUX_HPD_IRQ :
-				 USB_PD_MUX_HPD_IRQ_DEASSERTED);
+	mux_state_t mux_state =
+		(lvl ? USB_PD_MUX_HPD_LVL : USB_PD_MUX_HPD_LVL_DEASSERTED) |
+		(irq ? USB_PD_MUX_HPD_IRQ : USB_PD_MUX_HPD_IRQ_DEASSERTED);
 
 	/* Note: Usage is deprecated, use usb_mux_hpd_update instead */
 	CPRINTS("Attention: 0x%x", payload[1]);

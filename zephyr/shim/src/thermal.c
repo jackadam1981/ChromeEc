@@ -1,4 +1,4 @@
-/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+/* Copyright 2021 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -7,7 +7,7 @@
 #include "temp_sensor/temp_sensor.h"
 #include "ec_commands.h"
 
-#define THERMAL_CONFIG(node_id)					\
+#define THERMAL_CONFIG(node_id) \
 	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {				\
 		.temp_host = {						\
 			[EC_TEMP_THRESH_WARN] =			\
