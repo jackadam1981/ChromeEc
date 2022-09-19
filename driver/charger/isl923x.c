@@ -554,6 +554,7 @@ int isl923x_set_comparator_inversion(int chgnum, int invert)
 	rv = i2c_read16(chg_chips[chgnum].i2c_port,
 			chg_chips[chgnum].i2c_addr_flags, ISL923X_REG_CONTROL2,
 			&regval);
+	CPRINTS("%s: rv: 0x%02x", __func__, regval);
 	if (invert)
 		regval |= ISL923X_C2_INVERT_CMOUT;
 	else
@@ -568,6 +569,10 @@ int isl923x_set_comparator_inversion(int chgnum, int invert)
 		CPRINTS("%s (%d) set_comparator_inversion failed (rv: %d)",
 			CHARGER_NAME, chgnum, rv);
 
+	rv = i2c_read16(chg_chips[chgnum].i2c_port,
+			chg_chips[chgnum].i2c_addr_flags, ISL923X_REG_CONTROL2,
+			&regval);
+	CPRINTS("%s: rv: 0x%02x", __func__, regval);
 	return rv;
 }
 
@@ -789,6 +794,14 @@ static void isl923x_init(int chgnum)
 		}
 	}
 #endif /* CONFIG_OCPC */
+
+#define CONFIG_COMP_INVERSION
+
+#ifdef CONFIG_COMP_INVERSION
+	/* enable comparator inversion */
+	isl923x_set_comparator_inversion(chgnum, 1);
+	CPRINTS("%s: isl923x_set_comparator_inversion", __func__);
+#endif /* CONFIG_COMP_INVERSION */
 
 	return;
 init_fail:
