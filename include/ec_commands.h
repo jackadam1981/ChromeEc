@@ -7790,6 +7790,13 @@ struct ec_fp_encrypted_private_key {
 	uint8_t data[FP_EC_PRIVATE_KEY_LEN];
 } __ec_align4;
 
+#define EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN 0x0410
+
+struct ec_response_fp_establish_pairing_key_keygen {
+	struct ec_fp_ec_public_key pubkey;
+	struct ec_fp_encrypted_private_key encrypted_private_key;
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
