@@ -17,4 +17,36 @@ tests:
       - CONFIG_PLATFORM_EC_TEMP_SENSOR=y
       - CONFIG_PLATFORM_EC_THERMISTOR=y
       - CONFIG_PLATFORM_EC_CHARGER_PROFILE_OVERRIDE=y
+      - CONFIG_PLATFORM_EC_BC12_SINGLE_DRIVER=n
+      - CONFIG_PLATFORM_EC_USBC_PPC_RT1739=y
       - CONFIG_ADC_EMUL=y
+  krabby.tentacruel_v0:
+    extra_args: DTC_OVERLAY_FILE="common.dts;adc_temp.dts;../projects/corsola/interrupts_tentacruel.dts;../projects/corsola/gpio_tentacruel.dts;../projects/corsola/thermistor_tentacruel.dts;pinctrl.dts"
+    extra_configs:
+      - CONFIG_TEST_TENTACRUEL=y
+      - CONFIG_PLATFORM_EC_TEMP_SENSOR=y
+      - CONFIG_PLATFORM_EC_THERMISTOR=y
+      - CONFIG_PLATFORM_EC_CHARGER_PROFILE_OVERRIDE=y
+      - CONFIG_PLATFORM_EC_BC12_SINGLE_DRIVER=n
+      - CONFIG_PLATFORM_EC_USBC_PPC_RT1739=y
+      - CONFIG_TENTACRUEL_BOARD_VERSION=0
+  krabby.tentacruel_v3:
+    extra_args: DTC_OVERLAY_FILE="common.dts;adc_temp.dts;../projects/corsola/interrupts_tentacruel.dts;../projects/corsola/gpio_tentacruel.dts;../projects/corsola/thermistor_tentacruel.dts;pinctrl.dts"
+    extra_configs:
+      - CONFIG_TEST_TENTACRUEL=y
+      - CONFIG_PLATFORM_EC_TEMP_SENSOR=y
+      - CONFIG_PLATFORM_EC_THERMISTOR=y
+      - CONFIG_PLATFORM_EC_CHARGER_PROFILE_OVERRIDE=y
+      - CONFIG_PLATFORM_EC_BC12_SINGLE_DRIVER=n
+      - CONFIG_PLATFORM_EC_USBC_PPC_RT1739=y
+      - CONFIG_TENTACRUEL_BOARD_VERSION=3
+  krabby.tentacruel_no_cbi:
+    extra_args: DTC_OVERLAY_FILE="common.dts;adc_temp.dts;../projects/corsola/interrupts_tentacruel.dts;../projects/corsola/gpio_tentacruel.dts;../projects/corsola/thermistor_tentacruel.dts;pinctrl.dts"
+    extra_configs:
+      - CONFIG_TEST_TENTACRUEL=y
+      - CONFIG_PLATFORM_EC_TEMP_SENSOR=y
+      - CONFIG_PLATFORM_EC_THERMISTOR=y
+      - CONFIG_PLATFORM_EC_CHARGER_PROFILE_OVERRIDE=y
+      - CONFIG_PLATFORM_EC_BC12_SINGLE_DRIVER=n
+      - CONFIG_PLATFORM_EC_USBC_PPC_RT1739=y
+      - CONFIG_TENTACRUEL_BOARD_VERSION=-1

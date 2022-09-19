@@ -24,4 +24,15 @@ config TEST_TENTACRUEL
 
 endchoice
 
+if TEST_TENTACRUEL
+
+config TENTACRUEL_BOARD_VERSION
+	int "Set tentacruel board version"
+	default 0
+	help
+	  Set the board version used in tentacruel test.
+	  Use negative number to emulate cbi read failure.
+
+endif # TEST_TENTACRUEL
+
 source "Kconfig.zephyr"

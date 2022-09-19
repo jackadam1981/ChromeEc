@@ -24,5 +24,7 @@ target_sources_ifdef(CONFIG_TEST_KRABBY
 
 target_sources_ifdef(CONFIG_TEST_TENTACRUEL
 	app PRIVATE
-	src/temp_tentacruel.c
-	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/temp_tentacruel.c)
+	src/ppc_tentacruel.c
+	src/interrupt_handlers.c
+	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/temp_tentacruel.c
+	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/ppc_tentacruel.c)
