@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863e0c4f_f5e591dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-19T02:17:17Z",
+      "side": 1,
+      "message": "There\u0027s still a number of items in the config_allowed.txt that are removed that are not related to this change.\nMy suggestion is to revert this file back to the original, and then only remove\nCONFIG_ACCELGYRO_LSM6DSM from the file.",
+      "revId": "b118014b201a5872fca890ac34051be977ef193e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
