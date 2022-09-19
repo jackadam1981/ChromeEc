@@ -180,6 +180,8 @@ uint32_t power_get_signals(void)
 
 int power_has_signals(uint32_t want)
 {
+	return 1;
+/*
 	if ((in_signals & want) == want)
 		return 1;
 
@@ -187,6 +189,7 @@ int power_has_signals(uint32_t want)
 		in_signals & want);
 
 	return 0;
+*/
 }
 
 int power_wait_signals(uint32_t want)

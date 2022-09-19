@@ -403,7 +403,9 @@ static int is_system_powered(void)
 static int is_pmic_pwron(void)
 {
 	/* Use POWER_GOOD to indicate PMIC/AP is on/off */
-	return gpio_get_level(GPIO_POWER_GOOD);
+	//return gpio_get_level(GPIO_POWER_GOOD);
+	//CPRINTS(" @@@ %s: ignore GPIO_POWER_GOOD is 0", __func__);
+	return 1;
 }
 
 /**
@@ -505,7 +507,8 @@ static int set_pmic_pwron(int enable)
 
 	if (!gpio_get_level(GPIO_PMIC_RESIN_L)) {
 		CPRINTS("PMIC_RESIN_L not pulled up by PMIC; cancel pwron");
-		return EC_ERROR_UNKNOWN;
+		CPRINTS(" @@@ %s: ignore PMIC_RESIN_L not pulled", __func__);
+		//return EC_ERROR_UNKNOWN;
 	}
 
 	/*
@@ -560,7 +563,8 @@ enum power_state power_chipset_init(void)
 		init_power_state = POWER_G3;
 	} else {
 		/* In the SYSJUMP case, we check if the AP is on */
-		if (power_get_signals() & IN_POWER_GOOD) {
+		//if (power_get_signals() & IN_POWER_GOOD) {
+		if (1) {
 			CPRINTS("SOC ON");
 			init_power_state = POWER_S0;
 
@@ -933,7 +937,8 @@ DECLARE_CONSOLE_COMMAND(fakesuspend, command_fake_suspend, "on/off/reset",
 static inline int chipset_get_sleep_signal(void)
 {
 	if (fake_suspend == -1)
-		return (power_get_signals() & IN_SUSPEND) == IN_SUSPEND;
+		return 1;
+		//return (power_get_signals() & IN_SUSPEND) == IN_SUSPEND;
 	else
 		return fake_suspend;
 }
@@ -1074,7 +1079,7 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 		 * In S0, it will wait for a host event and then trigger the
 		 * RESUME hook.
 		 */
-		if (!chipset_get_sleep_signal())
+		//if (!chipset_get_sleep_signal())
 			return POWER_S3S0;
 		break;
 
@@ -1104,7 +1109,7 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S0:
 		check_for_warm_reset_event();
-
+/*
 		shutdown_from_on = check_for_power_off_event();
 		if (shutdown_from_on) {
 			return POWER_S0S3;
@@ -1113,6 +1118,7 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 			   chipset_get_sleep_signal()) {
 			return POWER_S0S3;
 		}
+*/
 		/* When receive the host event, trigger the RESUME hook. */
 		sleep_notify_transition(SLEEP_NOTIFY_RESUME,
 					HOOK_CHIPSET_RESUME);
