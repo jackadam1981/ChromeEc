@@ -5,11 +5,7 @@
 
 #include "charge_ramp.h"
 #include "charge_state.h"
-
-int board_set_active_charge_port(int port)
-{
-	return 0;
-}
+#include "gpio.h"
 
 int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 {
@@ -26,4 +22,8 @@ const struct batt_params *charger_current_battery_params(void)
 	static const struct batt_params params = {};
 
 	return &params;
+}
+
+void fake_interrupt(enum gpio_signal signal)
+{
 }

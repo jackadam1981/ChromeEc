@@ -17,6 +17,7 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
+#ifdef CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 {
 	const static struct cc_para_t
@@ -37,6 +38,7 @@ const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 
 	return &cc_parameter[port];
 }
+#endif
 
 uint16_t tcpc_get_alert_status(void)
 {

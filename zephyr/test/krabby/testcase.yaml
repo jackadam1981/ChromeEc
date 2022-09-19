@@ -6,4 +6,4 @@ common:
   platform_allow: native_posix
 tests:
   krabby.default:
-    extra_args: DTC_OVERLAY_FILE="common.dts;../projects/corsola/interrupts_krabby.dts;../projects/corsola/gpio_krabby.dts;pinctrl.dts"
+    extra_args: DTC_OVERLAY_FILE="common.dts;interrupts_krabby.dts;../projects/corsola/gpio_krabby.dts;pinctrl.dts"
