@@ -16,6 +16,24 @@
       "message": "I\u0027m confused, what\u0027s this file?",
       "revId": "6ef6b6e7a4ba09e3f31610594f218a3a417159e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6af63724_4d9f1ae3",
+        "filename": "common/crc.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-19T16:57:11Z",
+      "side": 1,
+      "message": "`ectool` compiles the [`common/crc.c` file](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/util/build.mk#35). If we change `ectool` to compile with the C++ compiler, there isn\u0027t an easy way in the Makefiles to compile individual files with the C compiler (it assumes all the files use the same compiler). This is a workaround.",
+      "parentUuid": "bca4b485_b6d17a29",
+      "revId": "6ef6b6e7a4ba09e3f31610594f218a3a417159e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
