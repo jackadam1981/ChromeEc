@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8501376d_8bca48cb",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-19T22:44:56Z",
+      "side": 1,
+      "message": "IS_ENABLED() not working?\n\nif (IS_ENBALED() \u0026\u0026 ap_debug) {\n\tLOG_WRN(\"**\");\n\treturn;\n}\n        \nboard_ap_power_force_shutdown();",
+      "range": {
+        "startLine": 150,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 55
+      },
+      "revId": "16a7b18bccd0fb8c140b471225cf39bbb7c362d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
