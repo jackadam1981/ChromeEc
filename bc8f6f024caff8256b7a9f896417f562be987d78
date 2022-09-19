@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26f7c35_7b5980bb",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-19T23:15:04Z",
+      "side": 1,
+      "message": "Is it possible that anomaly-detector could attempt to communicate with the fpmcu at any point during this script?",
+      "revId": "bc8f6f024caff8256b7a9f896417f562be987d78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
