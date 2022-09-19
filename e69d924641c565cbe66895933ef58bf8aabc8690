@@ -39,6 +39,30 @@
       },
       "revId": "e69d924641c565cbe66895933ef58bf8aabc8690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44137564_d5cb170b",
+        "filename": "zephyr/projects/herobrine/prj_evoker.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-19T17:16:07Z",
+      "side": 1,
+      "message": "Yes. It overrides the the default value of CONFIG_PLATFORM_EC_ACCEL_BMA255\u003dy defined in prj.conf",
+      "parentUuid": "55bb4627_adf3f6c7",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "e69d924641c565cbe66895933ef58bf8aabc8690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
