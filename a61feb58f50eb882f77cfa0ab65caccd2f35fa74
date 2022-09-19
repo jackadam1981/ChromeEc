@@ -93,6 +93,30 @@
       },
       "revId": "a61feb58f50eb882f77cfa0ab65caccd2f35fa74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ca93b7_38b0441b",
+        "filename": "core/host/toolchain.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-19T16:46:06Z",
+      "side": 1,
+      "message": "Another option would be to set `CROSS_COMPILE_host\u003d`, which would probably match the way it\u0027s done for `arm` better.\n\nI think any empty variable won\u0027t work with the existing definition for [`set-option`](https://chromium.googlesource.com/chromiumos/platform/ec/+/c696435b768ccff0be01e916b799be030fefd0fd/Makefile.toolchain#231). You\u0027d probably need to modify it to check that the variable is `undefined` like [this](https://chromium.googlesource.com/chromiumos/platform/ec/+/c696435b768ccff0be01e916b799be030fefd0fd/Makefile.toolchain#55).",
+      "parentUuid": "13555687_58ed7e4c",
+      "range": {
+        "startLine": 5,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "a61feb58f50eb882f77cfa0ab65caccd2f35fa74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
