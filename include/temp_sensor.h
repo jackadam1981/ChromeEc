@@ -1,4 +1,4 @@
-/* Copyright 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -72,4 +72,4 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr);
  */
 int print_temps(void);
 
-#endif  /* __CROS_EC_TEMP_SENSOR_H */
+#endif /* __CROS_EC_TEMP_SENSOR_H */

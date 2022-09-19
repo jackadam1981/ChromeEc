@@ -1,4 +1,4 @@
-/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+/* Copyright 2020 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -87,7 +87,7 @@
  */
 
 /* Size of event queue. Use it to initialize struct pchg.events. */
-#define PCHG_EVENT_QUEUE_SIZE	8
+#define PCHG_EVENT_QUEUE_SIZE 8
 
 enum pchg_event {
 	/* No event */
@@ -143,7 +143,7 @@ enum pchg_error {
 	PCHG_ERROR_OTHER,
 };
 
-#define PCHG_ERROR_MASK(e)	BIT(e)
+#define PCHG_ERROR_MASK(e) BIT(e)
 
 enum pchg_mode {
 	PCHG_MODE_NORMAL = 0,
@@ -189,7 +189,7 @@ struct pchg_update {
  */
 struct pchg {
 	/* Static configuration */
-	const struct pchg_config * const cfg;
+	const struct pchg_config *const cfg;
 	/* Current state of the port */
 	enum pchg_state state;
 	/* Event queue */
@@ -246,7 +246,7 @@ extern struct pchg pchgs[];
 extern const int pchg_count;
 
 /* Utility macro converting port config to port number. */
-#define PCHG_CTX_TO_PORT(ctx)	((ctx) - &pchgs[0])
+#define PCHG_CTX_TO_PORT(ctx) ((ctx) - &pchgs[0])
 
 /**
  * Interrupt handler for a peripheral charger.
