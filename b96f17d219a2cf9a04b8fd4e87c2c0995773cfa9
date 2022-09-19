@@ -223,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "985d8d77_09dbccae",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc848c62_bc4703bc",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bfc24f6_c402f4c0",
@@ -260,6 +284,30 @@
       "side": 1,
       "message": "If we change func- is_latest_power_source_with_battery() to get_power_source()  by returning POWER_SOURCE_ instead of updating current_power_source (which is static ),updating prev_power_source  in line 78 , wont be taken care. \nAgain, suppose,we rename the func() to get_power_source()  and updates current powersource  \u0026 returns this current powersource, then updating current_power_source variable becomes again repeated here, which is redundant.\nAs condition check from battery_level_low already comes 1st, crictical level is not needed.",
       "parentUuid": "6bfc24f6_c402f4c0",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 57
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d36a55_6df9dd85",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0225046e_4bb432dc",
       "range": {
         "startLine": 92,
         "startChar": 1,
@@ -343,6 +391,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "370735b7_c15fc23d",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "The last file change for reference -\u003e \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3660003/10/power/dtt_power_status.c",
+      "parentUuid": "405e359f_cefa0553",
+      "range": {
+        "startLine": 95,
+        "startChar": 44,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc9094d4_d7d54691",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 11
@@ -402,6 +474,30 @@
       "side": 1,
       "message": "I meant:\n\n    if (current_port \u003d\u003d prev_charge_port \u0026\u0026\n        prev_power_source \u003d\u003d current_power_source \u0026\u0026\n        (!on_battery || BATTERY_LEVEL_LOW \u003c batt_soc))\n            return;",
       "parentUuid": "48271dd7_0f36798d",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab985ec_10a97ff5",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc410af9_462d995e",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -581,6 +677,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "820672cc_603b41c3",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "Agree to your point that this  shouldn\u0027t be repeated, unnecessarily. Taken care in patch-13",
+      "parentUuid": "b3d69610_05d7b8fd",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "238a06d0_6ceca52a",
         "filename": "power/dtt_power_status.c",
         "patchSetId": 11
@@ -592,6 +712,30 @@
       "writtenOn": "2022-08-16T22:41:49Z",
       "side": 1,
       "message": "This throttling is automonously done by the EC. Shouldn\u0027t its source be generic? There is no DTT-ness in it.",
+      "range": {
+        "startLine": 118,
+        "startChar": 8,
+        "endLine": 118,
+        "endChar": 24
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281cd858_c462d8a6",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "Other sources for CPU throttling requests are  below, which doesn\u0027t seem to match the reasoning for our throttling requirement here.\n        THROTTLE_SRC_THERMAL \u003d 0,\n        THROTTLE_SRC_BAT_DISCHG_CURRENT,\n        THROTTLE_SRC_BAT_VOLTAGE,\n        THROTTLE_SRC_AC,\n Infact , in prev initial patch i had used THROTTLE_SRC_BAT_DISCHG_CURRENT(which also is not matching the reason),and then  i got review comment to change it to  this new reason , which sounds more right here. so i had added, new reason - THROTTLE_SRC_DTT.",
+      "parentUuid": "238a06d0_6ceca52a",
       "range": {
         "startLine": 118,
         "startChar": 8,
@@ -649,6 +793,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2b8068_d5244fac",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "065b41bd_036f487d",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 52
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85048235_b41712ce",
@@ -686,6 +854,30 @@
       "side": 1,
       "message": "In line 130, it is about updating port0/1/2/3 , wherever typec charger is connected. While line 123 is about when no port is acting as charging port(in only battery condition). so both are different.",
       "parentUuid": "85048235_b41712ce",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05c2707_6aa16305",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "752efe22_adbac339",
       "range": {
         "startLine": 123,
         "startChar": 3,
@@ -828,6 +1020,30 @@
       "side": 1,
       "message": "For typec charger disconnect, i see, this hook is really quick to process, say 1-2 sec while HOOK_POWER_SUPPLY_CHANGE hook from charge_manager_refresh() is taking around some 58-60 sec. The prochot event from ec side is mainly sent for low battery \u0026 charger disconnect events and they must be processed really quickly. So usage of disconnect hook seems relevant here.\nFor charger connect event,we dont send prochot event but just sci event and memmap updation only, so timing for this scenario might not matter much from EC perspective. But, am not sure, if there is any impact at kernel level for overall performance. I feel, it is better to investigate  this timing impact as well, after the entire feature in place and to consider in next optimization stage.",
       "parentUuid": "51dc96c5_baa7bd21",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "b96f17d219a2cf9a04b8fd4e87c2c0995773cfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f6df43_37d80cb0",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "ON further testing noticed that though PD_connect \u0026 PD_disconnect gets called quicker, the charge port is not getting updated by them. This was not getting noticed, because, HOOK_BATTERY_SOC_CHANGE , which further proceeded after PD_connect was getting the right  port and hence , the time delay to update was not noticed.\nReplacing HOOK_USB_PD_DISCONNECT \u0026 HOOK_USB_PD_CONNECT , with HOOK_POWER_SUPPLY_CHANGE is more accurate as it gets called immediately after port update. \nHOOK_AC_CHANGE seems to be called 1st than HOOK_POWER_SUPPLY_CHANGE, in the case of AC disconnect, where prochot must be initiated.",
+      "parentUuid": "51f8dd2b_e6676aa2",
       "range": {
         "startLine": 139,
         "startChar": 0,

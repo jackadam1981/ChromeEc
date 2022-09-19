@@ -22,6 +22,30 @@
       },
       "revId": "48d86403e734839b751d10641af75dae4c2f65df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b19c235_ae16c3bf",
+        "filename": "power/dtt_power_status.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2022-09-19T21:00:39Z",
+      "side": 1,
+      "message": "Thanks for noting this point.\nOn testing, port was getting updated fine because of HOOK_BATTERY_SOC_CHANGE, but missed this.\nHOOK_POWER_SUPPLY_CHANGE is the right hook for port updation correctly.\nBut HOOK_AC_CHANGE is relevant for quick AC removal , as it gets called faster than \nHOOK_POWER_SUPPLY_CHANGE.",
+      "parentUuid": "080fe2b4_b1ce9eb3",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 57
+      },
+      "revId": "48d86403e734839b751d10641af75dae4c2f65df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
