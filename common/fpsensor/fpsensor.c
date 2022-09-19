@@ -8,6 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "cryptoc/util.h"
+#include "curve25519.h"
 #include "ec_commands.h"
 #include "fpsensor.h"
 #include "fpsensor_crypto.h"
@@ -671,6 +672,111 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_TEMPLATE, fp_command_template, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_establish_pk_keygen(struct host_cmd_handler_args *args)
+{
+	uint8_t key[SBP_ENC_KEY_LEN];
+	struct ec_response_fp_establish_pk_keygen *r = args->response;
+	int ret;
+
+	X25519_keypair(r->pubkey, r->enc_privkey);
+
+	r->enc_privkey_info.struct_version = FP_PK_ENC_METADATA_VERSION;
+	trng_init();
+	trng_rand_bytes(r->enc_privkey_info.nonce, FP_PK_NONCE_BYTES);
+	trng_rand_bytes(r->enc_privkey_info.encryption_salt,
+			FP_PK_ENCRYPTION_SALT_BYTES);
+	trng_exit();
+
+	ret = derive_encryption_key(key, r->enc_privkey_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_keygen: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	/* Encrypt the secret blob in-place. */
+	ret = aes_gcm_encrypt(key, SBP_ENC_KEY_LEN, r->enc_privkey,
+			      r->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN,
+			      r->enc_privkey_info.nonce,
+			      FP_PK_ENCRYPTION_SALT_BYTES,
+			      r->enc_privkey_info.tag, FP_PK_TAG_BYTES);
+	always_memset(key, 0, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_keygen: Failed to encrypt template");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PK_KEYGEN,
+		     fp_command_establish_pk_keygen, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_establish_pk_wrap(struct host_cmd_handler_args *args)
+{
+	uint8_t key[SBP_ENC_KEY_LEN], privkey[FP_PK_EC_PRIVATE_KEY_LEN];
+	const struct ec_params_fp_establish_pk_wrap *params = args->params;
+	struct ec_response_fp_establish_pk_wrap *r = args->response;
+	int ret;
+
+	ret = derive_encryption_key(key,
+				    params->enc_privkey_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	memcpy(privkey, params->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN);
+
+	/* Decrypt the secret blob in-place. */
+	ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, privkey, privkey,
+			      FP_PK_EC_PRIVATE_KEY_LEN,
+			      params->enc_privkey_info.nonce,
+			      FP_PK_ENCRYPTION_SALT_BYTES,
+			      params->enc_privkey_info.tag, FP_PK_TAG_BYTES);
+	always_memset(key, 0, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to decipher template");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	ret = X25519(r->enc_pk, privkey, params->peers_pubkey);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to call Diffie-Hellman function");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	r->enc_pk_info.struct_version = FP_PK_ENC_METADATA_VERSION;
+	trng_init();
+	trng_rand_bytes(r->enc_pk_info.nonce, FP_PK_NONCE_BYTES);
+	trng_rand_bytes(r->enc_pk_info.encryption_salt,
+			FP_PK_ENCRYPTION_SALT_BYTES);
+	trng_exit();
+
+	ret = derive_encryption_key(key, r->enc_pk_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	/* Encrypt the secret blob in-place. */
+	ret = aes_gcm_encrypt(key, SBP_ENC_KEY_LEN, r->enc_pk, r->enc_pk,
+			      FP_PK_LEN, r->enc_pk_info.nonce,
+			      FP_PK_ENCRYPTION_SALT_BYTES, r->enc_pk_info.tag,
+			      FP_PK_TAG_BYTES);
+	always_memset(key, 0, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to encrypt template");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PK_WRAP, fp_command_establish_pk_wrap,
+		     EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_FPSENSOR_DEBUG
 /* --- Debug console commands --- */
