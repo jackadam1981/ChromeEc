@@ -5,6 +5,7 @@
 
 #include "atomic.h"
 #include "common.h"
+#include "cryptoc/p256.h"
 #include "cryptoc/util.h"
 #include "ec_commands.h"
 #include "fpsensor.h"
@@ -12,8 +13,10 @@
 #include "fpsensor_private.h"
 #include "fpsensor_state.h"
 #include "host_command.h"
+#include "sha256.h"
 #include "system.h"
 #include "task.h"
+#include "trng.h"
 #include "util.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
@@ -39,6 +42,8 @@ struct positive_match_secret_state
 						.val = 0,
 					} };
 
+/* Shared SHA256 context. */
+static struct sha256_ctx ctx;
 /* Index of the last enrolled but not retrieved template. */
 int8_t template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 /* Number of used templates */
@@ -311,4 +316,131 @@ fp_command_read_match_secret(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET, fp_command_read_match_secret,
+		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_establish_pk_keygen(struct host_cmd_handler_args *args)
+{
+	uint8_t key[SBP_ENC_KEY_LEN];
+	struct ec_response_fp_establish_pk_keygen *r = args->response;
+	p256_int privkey, x, y;
+	int ret;
+
+	r->enc_privkey_info.struct_version = FP_PK_ENC_METADATA_VERSION;
+	trng_init();
+	trng_rand_bytes(r->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN);
+	trng_rand_bytes(r->enc_privkey_info.nonce, FP_PK_NONCE_BYTES);
+	trng_rand_bytes(r->enc_privkey_info.encryption_salt,
+			FP_PK_ENCRYPTION_SALT_BYTES);
+	trng_exit();
+
+	p256_from_bin(r->enc_privkey, &privkey);
+	p256_base_point_mul(&privkey, &x, &y);
+	p256_to_bin(&x, r->pubkey_x);
+	p256_to_bin(&y, r->pubkey_y);
+
+	/* Clear the private key. */
+	always_memset(&privkey, 0, sizeof(privkey));
+
+	ret = derive_encryption_key(key, r->enc_privkey_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_keygen: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	/* Encrypt the secret blob in-place. */
+	ret = aes_gcm_encrypt(key, SBP_ENC_KEY_LEN, r->enc_privkey,
+			      r->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN,
+			      r->enc_privkey_info.nonce, FP_PK_NONCE_BYTES,
+			      r->enc_privkey_info.tag, FP_PK_TAG_BYTES);
+	always_memset(key, 0, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_keygen: Failed to encrypt template");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PK_KEYGEN,
+		     fp_command_establish_pk_keygen, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_establish_pk_wrap(struct host_cmd_handler_args *args)
+{
+	uint8_t *pk;
+	uint8_t key[SBP_ENC_KEY_LEN], privkey[FP_PK_EC_PRIVATE_KEY_LEN];
+	const struct ec_params_fp_establish_pk_wrap *params = args->params;
+	struct ec_response_fp_establish_pk_wrap *r = args->response;
+	int ret;
+	p256_int n, x, y;
+
+	ret = derive_encryption_key(key,
+				    params->enc_privkey_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	memcpy(privkey, params->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN);
+
+	/* Decrypt the secret blob in-place. */
+	ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, privkey, privkey,
+			      FP_PK_EC_PRIVATE_KEY_LEN,
+			      params->enc_privkey_info.nonce, FP_PK_NONCE_BYTES,
+			      params->enc_privkey_info.tag, FP_PK_TAG_BYTES);
+	always_memset(key, 0, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to decipher template");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	p256_from_bin(privkey, &n);
+	p256_from_bin(params->peers_pubkey_x, &x);
+	p256_from_bin(params->peers_pubkey_y, &y);
+	p256_point_mul(&n, &x, &y, &x, &y);
+	p256_to_bin(&x, r->enc_pk);
+
+	/* Clear the private key and pk material. */
+	always_memset(privkey, 0, sizeof(privkey));
+	always_memset(&n, 0, sizeof(n));
+	always_memset(&x, 0, sizeof(x));
+	always_memset(&y, 0, sizeof(y));
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, r->enc_pk, FP_PK_LEN);
+	pk = SHA256_final(&ctx);
+	memcpy(r->enc_pk, pk, FP_PK_LEN);
+
+	/* Clear the context that contain pk. */
+	always_memset(&ctx, 0, sizeof(ctx));
+
+	r->enc_pk_info.struct_version = FP_PK_ENC_METADATA_VERSION;
+	trng_init();
+	trng_rand_bytes(r->enc_pk_info.nonce, FP_PK_NONCE_BYTES);
+	trng_rand_bytes(r->enc_pk_info.encryption_salt,
+			FP_PK_ENCRYPTION_SALT_BYTES);
+	trng_exit();
+
+	ret = derive_encryption_key(key, r->enc_pk_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	/* Encrypt the secret blob in-place. */
+	ret = aes_gcm_encrypt(key, SBP_ENC_KEY_LEN, r->enc_pk, r->enc_pk,
+			      FP_PK_LEN, r->enc_pk_info.nonce,
+			      FP_PK_NONCE_BYTES, r->enc_pk_info.tag,
+			      FP_PK_TAG_BYTES);
+	always_memset(key, 0, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_wrap: Failed to encrypt template");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PK_WRAP, fp_command_establish_pk_wrap,
 		     EC_VER_MASK(0));
