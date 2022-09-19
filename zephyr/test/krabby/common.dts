@@ -32,11 +32,41 @@
 			chg = <&charger>;
 			tcpc = <&tcpci_emul>;
 		};
+
+		port1@1 {
+			compatible = "named-usbc-port";
+			status = "okay";
+			reg = <1>;
+			tcpc = <&tcpci_emul>;
+		};
 	};
 
 	batteries {
 		default_battery: lgc_ac17a8m {
 			compatible = "lgc,ac17a8m", "battery-smart";
+		};
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_vbus_c0 {
+			enum-name = "ADC_VBUS_C0";
+			io-channels = <&adc0 0>;
+			mul = <10>;
+		};
+		adc_board_id0 {
+			enum-name = "ADC_BOARD_ID_0";
+			io-channels = <&adc0 1>;
+		};
+		adc_board_id1 {
+			enum-name = "ADC_BOARD_ID_1";
+			io-channels = <&adc0 2>;
+		};
+		adc_vbus_c1 {
+			enum-name = "ADC_VBUS_C1";
+			io-channels = <&adc0 7>;
+			mul = <10>;
 		};
 	};
 };
@@ -67,4 +97,8 @@
 		status = "okay";
 		reg = <0x82>;
 	};
+};
+
+&adc0 {
+	status = "okay";
 };
