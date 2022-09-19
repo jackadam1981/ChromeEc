@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74d988a_bcff88e1",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-19T00:47:45Z",
+      "side": 0,
+      "message": "I think the issue is the changes to this file.\nMaybe just remove the specific items related to this change i.e:\nCONFIG_ACCELGYRO_LSM6DSM",
+      "revId": "447b7da4a27bd54c3bc36819ac60018e4c18f829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
