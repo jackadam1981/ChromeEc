@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3363f816_f7bd1ea2",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config_tentacruel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-19T10:20:12Z",
+      "side": 1,
+      "message": "found a bug here: you have to check if signal \u003d\u003d usb_c0_ppc_int_odl before sending the interrupt to rt1739",
+      "revId": "fda53d729d44280315089d6ccccc00e3a27e073d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
