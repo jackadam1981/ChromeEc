@@ -6,9 +6,13 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 project(krabby)
 
-zephyr_include_directories("${PLATFORM_EC}/zephyr/projects/corsola/include")
+zephyr_include_directories(
+	include
+	"${PLATFORM_EC}/zephyr/projects/corsola/include")
 
 target_sources(app PRIVATE
 	src/charger_workaround.c
 	src/stubs.c
-	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/charger_workaround.c)
+	src/usbc_config.c
+	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/charger_workaround.c
+	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/usbc_config.c)
