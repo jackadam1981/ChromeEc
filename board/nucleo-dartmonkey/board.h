@@ -17,6 +17,8 @@
 /* Baseboard features */
 #include "base-board.h"
 
+#define CONFIG_CURVE25519
+
 #undef CONFIG_SYSTEM_UNLOCKED
 
 /*
