@@ -16,6 +16,24 @@
       "message": "I don\u0027t think we need this as it apples to platforms without TCPMv2 enabled?",
       "revId": "4814ee78df7d5f553bcdb5991d920ece0b16ee58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f42748_48396371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-09-20T02:58:34Z",
+      "side": 1,
+      "message": "We are running with TCPMv2,so we don\u0027t need this define.",
+      "parentUuid": "c5e6a99e_6ea80171",
+      "revId": "4814ee78df7d5f553bcdb5991d920ece0b16ee58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
