@@ -23,6 +23,9 @@ config LINK_TEST_SUITE_LED_DRIVER
 config LINK_TEST_SUITE_MKBP
 	bool "Link and test the mkbp tests"
 
+config LINK_TEST_SUITE_TIMER
+	bool "Link and test the timer tests"
+
 config LINK_TEST_SUITE_USB_MALFUNCTION_SINK
 	bool "Link and test the usb_malfunction_sink tests"
 
