@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e546f605_d01e5b59",
+        "filename": "zephyr/projects/skyrim/morthal.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T14:25:14Z",
+      "side": 1,
+      "message": "Set the USB_MUX_FLAG_RESETS_IN_G3 flag.",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad86623e_3258a986",
+        "filename": "zephyr/projects/skyrim/morthal.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T14:25:14Z",
+      "side": 1,
+      "message": "parade,ps8818",
+      "range": {
+        "startLine": 156,
+        "startChar": 16,
+        "endLine": 156,
+        "endChar": 32
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34f8cb8_0a2db47c",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T14:25:14Z",
+      "side": 1,
+      "message": "This node should also set the USB_MUX_FLAG_RESETS_IN_G3 flag.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07627db3_7e54fba6",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T14:25:14Z",
+      "side": 1,
+      "message": "parade,ps8818",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 32
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b5a479_347d3dd4",
+        "filename": "zephyr/projects/skyrim/winterhold.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T14:25:14Z",
+      "side": 1,
+      "message": "Are there pending ODM changes that require a board specific mux setup?  Currently these look to be the same as skyrim.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d208341a_b9689e7e",
+        "filename": "zephyr/projects/skyrim/winterhold.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T14:25:14Z",
+      "side": 1,
+      "message": "Set USB_MUX_FLAG_RESETS_IN_G3",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 13
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd63d860_d460b4c5",
+        "filename": "zephyr/projects/skyrim/winterhold.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T14:25:14Z",
+      "side": 1,
+      "message": "parade,ps8818",
+      "range": {
+        "startLine": 150,
+        "startChar": 16,
+        "endLine": 150,
+        "endChar": 32
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
