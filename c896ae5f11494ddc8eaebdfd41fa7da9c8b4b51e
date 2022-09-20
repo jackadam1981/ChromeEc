@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5566690_104588f1",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2022-09-20T20:04:03Z",
+      "side": 1,
+      "message": "Worth checking whether CHOST is actually visible in this Makefile.\nIn [this makefile](https://source.corp.google.com/chromeos_public/src/third_party/kernel/next/tools/testing/selftests/wireguard/qemu/Makefile), they define it explicitly.",
+      "revId": "c896ae5f11494ddc8eaebdfd41fa7da9c8b4b51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
