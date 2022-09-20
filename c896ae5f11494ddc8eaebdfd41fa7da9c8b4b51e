@@ -52,6 +52,24 @@
       "parentUuid": "f130ecba_86d33d89",
       "revId": "c896ae5f11494ddc8eaebdfd41fa7da9c8b4b51e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db0547a_cec32514",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2022-09-20T20:33:29Z",
+      "side": 1,
+      "message": "it should go into the else branch, which also has an `if`, that will either leave `HOST_CROSS_COMPILE` empty or put `x86_64-pc-linux-gnu-` in it",
+      "parentUuid": "26b1f238_df040149",
+      "revId": "c896ae5f11494ddc8eaebdfd41fa7da9c8b4b51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
