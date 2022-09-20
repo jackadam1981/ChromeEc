@@ -14,7 +14,11 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
-#ifndef TEST_BUILD
+#if !defined(TEST_BUILD) || defined(CONFIG_ZEPHYR)
+/* The legacy EC tests break if we define this macro, however Zephyr tests work
+ * just fine. We limit the CPRINTF/S invocations to all builds that are not
+ * legacy test builds.
+ */
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 #else
@@ -24,7 +28,8 @@
 
 int ppc_prints(const char *string, int port)
 {
-#if defined(TEST_BUILD) || !defined(CONFIG_USBC_PPC_LOGGING)
+#if (defined(TEST_BUILD) && !defined(CONFIG_ZEPHYR)) || \
+	!defined(CONFIG_USBC_PPC_LOGGING)
 	return 0;
 #else
 	return CPRINTS("ppc p%d %s", port, string);
@@ -33,7 +38,8 @@ int ppc_prints(const char *string, int port)
 
 int ppc_err_prints(const char *string, int port, int error)
 {
-#if defined(TEST_BUILD) || !defined(CONFIG_USBC_PPC_LOGGING)
+#if (defined(TEST_BUILD) && !defined(CONFIG_ZEPHYR)) || \
+	!defined(CONFIG_USBC_PPC_LOGGING)
 	return 0;
 #else
 	return CPRINTS("ppc p%d %s (%d)", port, string, error);
