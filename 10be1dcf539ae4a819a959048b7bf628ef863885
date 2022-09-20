@@ -50,6 +50,23 @@
       "message": "I see Eric has a CL for a similar problem.\nI don\u0027t mind whichever we go ahead with, but it would be good to get this fixed.\n",
       "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6acd845_4ad15c59",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-20T06:17:10Z",
+      "side": 1,
+      "message": "I wonder if we should handle the PD-incapable devices as well, e.g. USB sticks. The same situation applies to the USB sticks if the HardReset happened when booting, but it\u0027s PD-incapable. In general, I think this patch is better one if it can address the PD incapable USB peripherals.",
+      "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
