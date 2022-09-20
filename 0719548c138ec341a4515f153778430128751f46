@@ -22,6 +22,30 @@
       },
       "revId": "0719548c138ec341a4515f153778430128751f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdf0ff4_153f354f",
+        "filename": "zephyr/shim/include/usbc/ps8818_usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T15:16:36Z",
+      "side": 1,
+      "message": "Yes indeed.  How is it my local build can pass with this?  Is it something about the macrobatics that masks the build issues? \n\nIf I replace skyrim\u0027s current usbc_config.c mux array with `ps8818_usb_mux_driver`, then I get a nice quick build failure for the undeclared function.",
+      "parentUuid": "e706c531_9096ff91",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "0719548c138ec341a4515f153778430128751f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
