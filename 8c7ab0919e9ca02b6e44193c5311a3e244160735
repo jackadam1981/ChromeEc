@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "661a13ce_668bfc56",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-20T06:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d15b7ba8_fef892c0",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "8c7ab0919e9ca02b6e44193c5311a3e244160735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fe905f9_dcbafa03",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-19T17:21:12Z",
       "side": 1,
       "message": "\"temp_charger\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 35,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "8c7ab0919e9ca02b6e44193c5311a3e244160735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1450fc3d_2789141a",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-20T06:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fe905f9_dcbafa03",
       "range": {
         "startLine": 61,
         "startChar": 35,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5740d2_06f4efdc",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-20T06:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe0f23eb_90003b9c",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "8c7ab0919e9ca02b6e44193c5311a3e244160735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8166a7e9_9469f2f6",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-19T17:21:12Z",
       "side": 1,
       "message": "I think you can add this directly to the `enum temp_sensor_id` declaration, and TEMP_SENSOR_COUNT will still be correct.\n\n```\nenum temp_sensor_id {\n\tDT_FOREACH_CHILD_SEP(TEMP_SENSORS_NODEID, TEMP_SENSOR_ID, (, )),\n\tDT_FOREACH_CHILD_SEP(TEMP_SENSORS_NODEID, TEMP_SENSOR_ID_DEV, (, )),\n\tTEMP_SENSOR_COUNT\n};\n```",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "8c7ab0919e9ca02b6e44193c5311a3e244160735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd7c676_f399d724",
+        "filename": "zephyr/shim/include/temp_sensor/temp_sensor.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-20T06:43:11Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "8166a7e9_9469f2f6",
       "range": {
         "startLine": 110,
         "startChar": 1,
