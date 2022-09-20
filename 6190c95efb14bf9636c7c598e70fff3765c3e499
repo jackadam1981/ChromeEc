@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1acc92d_67d1f0a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-09-20T03:25:16Z",
+      "side": 1,
+      "message": "The params are not use for redrix if CONFIG_CUSTOM_FAN_CONTROL(CL:3141333). To avoid misunderstanding for ectool temps all. I think left -1% fan speed is expected.",
+      "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
