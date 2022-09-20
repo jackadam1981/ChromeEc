@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b844a3b_cf6fec1c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-20T09:02:14Z",
+      "side": 1,
+      "message": "(sorry for the delay) I agree with Diana, can you post the error you\u0027re seeing with Zephyr?",
+      "parentUuid": "2848f861_d0d78dea",
+      "revId": "3b0a4ab2b6bb5fa696a230e963d7891ee892963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a456fc1_66940d89",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 2
