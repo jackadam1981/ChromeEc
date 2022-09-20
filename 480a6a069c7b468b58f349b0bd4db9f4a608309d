@@ -22,6 +22,30 @@
       },
       "revId": "480a6a069c7b468b58f349b0bd4db9f4a608309d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1490c855_879a303a",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-20T06:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "480a5639_176a2971",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 25
+      },
+      "revId": "480a6a069c7b468b58f349b0bd4db9f4a608309d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
