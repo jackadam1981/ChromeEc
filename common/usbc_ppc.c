@@ -14,7 +14,7 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
-#ifndef TEST_BUILD
+#if !defined(TEST_BUILD) || defined(CONFIG_ZTEST)
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 #else
