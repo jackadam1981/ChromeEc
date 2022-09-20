@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c05f1b_80eb08aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 61
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T15:53:06Z",
+      "side": 1,
+      "message": "Now that all the type-c drivers have been moved out of the \"named-usbc-port\" node, I think the TCPC, MUX, and PPC sub-sections may not be needed.  But please cleanup the few remaining comments and we can look to make a second pass at this documentation.",
+      "revId": "e9abeb04e6e1928647b178d897a4b80fd1dee902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
