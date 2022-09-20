@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3bd417_2c8e3f42",
+        "filename": "docs/zephyr/zephyr_tcpc.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-20T20:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de65177b_64cc88e3",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "85ea03f01f4d28005430828e4bd7a80e937141af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87d958aa_3bd2dfb0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-20T15:54:31Z",
       "side": 1,
       "message": "[`DTS Bindings TCPC\u0027]",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "85ea03f01f4d28005430828e4bd7a80e937141af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7530df6a_e5ea30f2",
+        "filename": "docs/zephyr/zephyr_tcpc.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-09-20T20:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87d958aa_3bd2dfb0",
       "range": {
         "startLine": 64,
         "startChar": 0,
