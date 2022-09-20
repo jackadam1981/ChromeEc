@@ -79,6 +79,30 @@
       },
       "revId": "33bba1a298150832db760fbedd6c6b089f6e0142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe1b5cb_8a739e53",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-20T17:14:38Z",
+      "side": 1,
+      "message": "Nothing right now, but the next patch will start using it again. I wanted to keep it, so it\u0027s easy to see nothing changed.",
+      "parentUuid": "f580aa72_26319bb4",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "33bba1a298150832db760fbedd6c6b089f6e0142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
