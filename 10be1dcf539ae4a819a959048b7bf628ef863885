@@ -33,6 +33,23 @@
       "message": "Adding Eric since he has been working with the hard reset notifications recently.\n\nPrashant, what\u0027s the most precise description for what the AP needs of this hard reset flag? I\u0027d like to make sure our usage of it matches the exact need, and then we heavily comment the code to indicate why it is we do what we do in case of future bugs.  And possibly some unit tests to then enforce the flag set/clear",
       "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b8496f3_a66b7e5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-20T01:17:07Z",
+      "side": 1,
+      "message": "I see Eric has a CL for a similar problem.\nI don\u0027t mind whichever we go ahead with, but it would be good to get this fixed.\n",
+      "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
