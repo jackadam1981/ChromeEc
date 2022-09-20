@@ -52,6 +52,24 @@
       "parentUuid": "1b386aa3_e7301277",
       "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d2d0f5d_71dce49f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-20T01:27:54Z",
+      "side": 1,
+      "message": "by default ap_debug is disabled. User will enable/disable it only when they plug in the debugger. As AP debug is independent of EC, it is difficult to synchronize and predict the states.\nEX: Lets say if we step through way before PMC (eSPI IP) starts, then EC not even receive SX signals until eSPI IP gets initialized.",
+      "parentUuid": "aeec2856_6f36e248",
+      "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
