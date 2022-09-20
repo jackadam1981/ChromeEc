@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7123a0_2d27df3a",
+        "filename": "common/dps.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-20T09:00:05Z",
+      "side": 1,
+      "message": "This might cause a race condition to the `flag`. It was written in `dps_task` only, but now it\u0027s also written in the hook, so you\u0027ll have to make the `uint32_t flag` to be `atomic_t flag`.",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 31
+      },
+      "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffabe71_bccc813f",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-20T09:00:05Z",
+      "side": 1,
+      "message": "Is the DPS task stack size in shortage?",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
