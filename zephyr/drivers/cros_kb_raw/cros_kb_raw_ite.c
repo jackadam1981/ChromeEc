@@ -10,10 +10,12 @@
 #include <zephyr/drivers/clock_control.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/interrupt_controller/wuc_ite_it8xxx2.h>
+#include <zephyr/drivers/pinctrl/pinctrl_kscan_it8xxx2.h>
 #include <zephyr/dt-bindings/interrupt-controller/it8xxx2-wuc.h>
 #include <zephyr/kernel.h>
 #include <soc.h>
 #include <soc_dt.h>
+#include <pinctrl_kscan_soc.h>
 #include <soc/ite_it8xxx2/reg_def_cros.h>
 
 #include "ec_tasks.h"
@@ -41,6 +43,8 @@ struct cros_kb_raw_ite_config {
 	int irq;
 	/* KSI[7:0] wake-up input source configuration list */
 	const struct cros_kb_raw_wuc_map_cfg *wuc_map_list;
+	/* KSI[7:0]/KSO[15:0] keyboard scan alternate configuration */
+	const struct pinctrl_kscan_dev_config *pcfg_kscan;
 };
 
 struct cros_kb_raw_ite_data {
@@ -155,19 +159,23 @@ static int cros_kb_raw_ite_init(const struct device *dev)
 	const struct cros_kb_raw_ite_config *config = dev->config;
 	struct cros_kb_raw_ite_data *data = dev->data;
 	struct kscan_it8xxx2_regs *const inst = config->base;
+	int status;
 
 	/* Ensure top-level interrupt is disabled */
 	cros_kb_raw_ite_enable_interrupt(dev, 0);
 
 	/*
-	 * bit2, Setting 1 enables the internal pull-up of the KSO[15:0] pins.
-	 * To pull up KSO[17:16], set the GPCR registers of their
-	 * corresponding GPIO ports.
-	 * bit0, Setting 1 enables the open-drain mode of the KSO[17:0] pins.
+	 * Enables the internal pull-up and kbs mode of the KSI[7:0] pins,
+	 * enables the internal pull-up and kbs mode of the KSO[15:0] pins,
+	 * enables the open-drain mode of the KSO[17:0] pins.
 	 */
-	inst->KBS_KSOCTRL = (IT8XXX2_KBS_KSOPU | IT8XXX2_KBS_KSOOD);
-	/* bit2, 1 enables the internal pull-up of the KSI[7:0] pins. */
-	inst->KBS_KSICTRL = IT8XXX2_KBS_KSIPU;
+	status = pinctrl_kscan_configure_pins(config->pcfg_kscan->pins,
+					      config->pcfg_kscan->pin_cnt);
+	if (status < 0) {
+		LOG_ERR("Failed to configure KSI[7:0] and KSO[15:0] pins");
+		return status;
+	}
+
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED
 	/* KSO[2] output high, others output low. */
 	inst->KBS_KSOL = BIT(2);
@@ -235,10 +243,14 @@ static const struct cros_kb_raw_wuc_map_cfg
 	cros_kb_raw_wuc_0[IT8XXX2_DT_INST_WUCCTRL_LEN(0)] =
 		IT8XXX2_DT_WUC_ITEMS_LIST(0);
 
+PINCTRL_KSCAN_DT_INST_DEFINE(0);
+
 static const struct cros_kb_raw_ite_config cros_kb_raw_cfg = {
 	.base = (struct kscan_it8xxx2_regs *)DT_INST_REG_ADDR(0),
 	.irq = DT_INST_IRQN(0),
 	.wuc_map_list = cros_kb_raw_wuc_0,
+	.pcfg_kscan = PINCTRL_KSCAN_DT_INST_DEV_CONFIG_GET(0),
+
 };
 
 static struct cros_kb_raw_ite_data cros_kb_raw_data;
