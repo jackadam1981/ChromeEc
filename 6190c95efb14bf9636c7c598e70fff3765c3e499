@@ -33,6 +33,24 @@
       "message": "To confirm regarding CONFIG_CUSTOM_FAN_CONTROL option in Gimble and redrix",
       "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960059d9_4840b167",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-09-20T10:54:25Z",
+      "side": 1,
+      "message": "Many Thanks Devin.  i see the same change in the gimble board file even. Any reason why this is not added for brya? even brya should have this change?",
+      "parentUuid": "a1acc92d_67d1f0a7",
+      "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
