@@ -22,6 +22,30 @@
       },
       "revId": "4ab9478ab54fcdafb50fb6740f10639aa773ef7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea8a797_ed75c886",
+        "filename": "zephyr/emul/emul_smart_battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-20T23:43:05Z",
+      "side": 1,
+      "message": "Started on the CL, will get it done tomorrow and assign you as reviewer. Thanks for the suggestion!",
+      "parentUuid": "a13a076e_9b792452",
+      "range": {
+        "startLine": 852,
+        "startChar": 18,
+        "endLine": 853,
+        "endChar": 34
+      },
+      "revId": "4ab9478ab54fcdafb50fb6740f10639aa773ef7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
