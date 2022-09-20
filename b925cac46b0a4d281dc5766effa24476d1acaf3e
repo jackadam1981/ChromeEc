@@ -34,6 +34,24 @@
       "parentUuid": "c9e82cb1_611a8b48",
       "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeec2856_6f36e248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-20T01:18:57Z",
+      "side": 1,
+      "message": "Then I don\u0027t think we want to completely block apshutdown in that configuration; debug mode should probably then make the power state machine ignore the affected signals from the AP, and resync when debug mode is disabled. Otherwise the power state machine will probably end up in an unpredictable state, and we\u0027d be blocking some uses of apshutdown that are still meaningful even in debug mode.",
+      "parentUuid": "1b386aa3_e7301277",
+      "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
