@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4390b4_63d4a93e",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-20T15:54:49Z",
+      "side": 1,
+      "message": "Since this is a more involved refactor, I uploaded a follow-up CL and assigned you as the reviewer",
+      "parentUuid": "d6f98da5_16e1213a",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 2
+      },
+      "revId": "c09fd10ce86b87760e123e2754edc6d187c5acb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "393b3e9f_f0637513",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bf192fa_c27a7660",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-20T15:54:49Z",
+      "side": 1,
+      "message": "I had considered that anything with zassume heavily implies there\u0027s a pre-existing test for it. I\u0027ll comment it tho to make that clear.",
+      "parentUuid": "393b3e9f_f0637513",
+      "range": {
+        "startLine": 399,
+        "startChar": 1,
+        "endLine": 402,
+        "endChar": 66
+      },
+      "revId": "c09fd10ce86b87760e123e2754edc6d187c5acb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92f6b477_c0ce27a8",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-20T09:08:40Z",
       "side": 1,
       "message": "nit: here and above, we no longer need `NULL`, you can just leave this out.",
+      "range": {
+        "startLine": 421,
+        "startChar": 5,
+        "endLine": 421,
+        "endChar": 9
+      },
+      "revId": "c09fd10ce86b87760e123e2754edc6d187c5acb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74644940_4c1c6578",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-20T15:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92f6b477_c0ce27a8",
       "range": {
         "startLine": 421,
         "startChar": 5,
