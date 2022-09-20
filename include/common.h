@@ -22,6 +22,11 @@
 #endif /* CONFIG_ZTEST */
 #endif /* CONFIG_ZEPHYR */
 
+#if defined(TEST_BUILD) && !defined(CONFIG_ZEPHYR)
+/* Some legacy EC functionality when only TEST_BUILD is enabled */
+#define LEGACY_TEST_BUILD
+#endif
+
 /*
  * Define a new macro (FIXED_SECTION) to abstract away the linker details
  * between platform/ec builds and Zephyr. Each build has a slightly different
