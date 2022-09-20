@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf6ca2e6_b6a50217",
+        "filename": "zephyr/projects/skyrim/morthal.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T18:58:36Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e546f605_d01e5b59",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad86623e_3258a986",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-20T14:25:14Z",
       "side": 1,
       "message": "parade,ps8818",
+      "range": {
+        "startLine": 156,
+        "startChar": 16,
+        "endLine": 156,
+        "endChar": 32
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee885b97_ea18ce7c",
+        "filename": "zephyr/projects/skyrim/morthal.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T18:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad86623e_3258a986",
       "range": {
         "startLine": 156,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d6fb0d_f05e264c",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T18:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e34f8cb8_0a2db47c",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07627db3_7e54fba6",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-20T14:25:14Z",
       "side": 1,
       "message": "parade,ps8818",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 32
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "064c0760_9915c632",
+        "filename": "zephyr/projects/skyrim/skyrim.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T18:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07627db3_7e54fba6",
       "range": {
         "startLine": 174,
         "startChar": 16,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "323496d5_4a0c1767",
+        "filename": "zephyr/projects/skyrim/winterhold.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T18:58:36Z",
+      "side": 1,
+      "message": "Yes, they\u0027ll be changing whenever this goes in: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3891566\n\nI had been waiting for it to merge before breaking out the DTS changes, but it\u0027s been a while and I\u0027d really like to reduce the amount of repeated C code we have.",
+      "parentUuid": "33b5a479_347d3dd4",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d208341a_b9689e7e",
         "filename": "zephyr/projects/skyrim/winterhold.dts",
         "patchSetId": 3
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-20T14:25:14Z",
       "side": 1,
       "message": "Set USB_MUX_FLAG_RESETS_IN_G3",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 13
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2160ee53_581336f0",
+        "filename": "zephyr/projects/skyrim/winterhold.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T18:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d208341a_b9689e7e",
       "range": {
         "startLine": 149,
         "startChar": 1,
@@ -152,6 +296,30 @@
       "writtenOn": "2022-09-20T14:25:14Z",
       "side": 1,
       "message": "parade,ps8818",
+      "range": {
+        "startLine": 150,
+        "startChar": 16,
+        "endLine": 150,
+        "endChar": 32
+      },
+      "revId": "f9cfab541bd62dd4f4cfc5ac925faf9baf816e3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd9d0ff_c44f9dfa",
+        "filename": "zephyr/projects/skyrim/winterhold.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T18:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd63d860_d460b4c5",
       "range": {
         "startLine": 150,
         "startChar": 16,
