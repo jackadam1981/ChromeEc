@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e706c531_9096ff91",
+        "filename": "zephyr/shim/include/usbc/ps8818_usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T14:15:18Z",
+      "side": 1,
+      "message": "Should this be `ps8818_usb_retimer_driver`?",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "0719548c138ec341a4515f153778430128751f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
