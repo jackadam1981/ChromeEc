@@ -33,6 +33,24 @@
       "message": "Add pd_set_suspend() here as well to ensure we don\u0027t leave the port suspended for other tests",
       "revId": "995e98878416232307c176b769daa247899cbe67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8773aac8_268d1f19",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/usb_pd_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-20T05:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a377de12_9c00217d",
+      "revId": "995e98878416232307c176b769daa247899cbe67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
