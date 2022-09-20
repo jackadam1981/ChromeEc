@@ -70,6 +70,30 @@
       },
       "revId": "0719548c138ec341a4515f153778430128751f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daeffacc_b48d68b2",
+        "filename": "zephyr/shim/include/usbc/ps8818_usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-20T15:38:44Z",
+      "side": 1,
+      "message": "Oh boy, errors upon errors...",
+      "parentUuid": "db210986_61967b5d",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "0719548c138ec341a4515f153778430128751f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
