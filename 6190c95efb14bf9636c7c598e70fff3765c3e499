@@ -51,6 +51,24 @@
       "parentUuid": "a1acc92d_67d1f0a7",
       "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71942953_8fcd32cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-09-20T18:23:16Z",
+      "side": 1,
+      "message": "@Devin, I did configure CONFIG_CUSTOM_FAN_CONTROL in the board/gimble/board.h to check if I can see the fan%, but still I dont see any of those values. I also tried reverting the (CL:3141333). Still there was no impact. Is there something I\u0027m missing here to get the fan%?",
+      "parentUuid": "960059d9_4840b167",
+      "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
