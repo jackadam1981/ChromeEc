@@ -1,4 +1,5 @@
 target_sources(app PRIVATE
+    src/anx7447.c
     src/battery.c
     src/bb_retimer.c
     src/bc12.c
