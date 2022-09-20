@@ -16,6 +16,24 @@
       "message": "check USB, DP, TBT, USB4 works",
       "revId": "551ea39d8632423faa2f2cb2f62c1403bc378caa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e7a73a_8a6bd5a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-20T00:02:13Z",
+      "side": 1,
+      "message": "Our SI team is planning to test this and they need ap mode enabled by default in EC image.. can we merge this?",
+      "parentUuid": "a8de0f04_6cb6436c",
+      "revId": "551ea39d8632423faa2f2cb2f62c1403bc378caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
