@@ -16,6 +16,155 @@
       "message": "This is a testing script",
       "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844cbb6f_39962727",
+        "filename": "genvif/generate_vif.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-20T16:27:58Z",
+      "side": 1,
+      "message": "chromiumos copyright required, please don\u0027t bypass pre-upload checks",
+      "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ef9dc0_ac2ebc16",
+        "filename": "genvif/generate_vif.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-20T16:27:58Z",
+      "side": 1,
+      "message": "This library should be installed in the chroot instead of using `sys.path.insert`",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 39
+      },
+      "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2d7a2c_10fe6639",
+        "filename": "genvif/generate_vif.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-20T16:27:58Z",
+      "side": 1,
+      "message": "two spaces required before top-level function definitions\n\nRun `cros format` on the file to fix this automatically.",
+      "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c527c74f_55853177",
+        "filename": "genvif/generate_vif.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-20T16:27:58Z",
+      "side": 1,
+      "message": "prefer f-strings to concatenation\n\n`cros lint` should warn you about this",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 47
+      },
+      "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ae3328_10775048",
+        "filename": "genvif/generate_vif.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-20T16:27:58Z",
+      "side": 1,
+      "message": "this is non-standard. Just raise the exception when you need it.\n\nAlso, use a more specific exception type than a bare `Exception` (https://docs.python.org/3/library/exceptions.html).",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4882a32c_10aa95ff",
+        "filename": "genvif/vif.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-20T16:27:58Z",
+      "side": 1,
+      "message": "why is this indented?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1855d378_532aba10",
+        "filename": "genvif/zephyr.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-20T16:27:58Z",
+      "side": 1,
+      "message": "line \u003e80",
+      "range": {
+        "startLine": 702,
+        "startChar": 65,
+        "endLine": 702,
+        "endChar": 640
+      },
+      "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
