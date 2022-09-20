@@ -50,6 +50,10 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 		.i2c_port = I2C_PORT_USB_C1,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_1_FLAGS,
 	},
+	[USBC_PORT_C2] = {
+		.i2c_port = I2C_PORT_USB_C2,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_1_FLAGS,
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
@@ -191,6 +195,9 @@ struct usb_mux_chain usb_muxes[] = {
 		},
 		.next = &usbc1_virtual_usb_mux_chain,
 	},
+	[USBC_PORT_C2] = {
+		/* USB-C port 2 does not test the mux functionality yet */
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 
@@ -203,6 +210,9 @@ struct bb_usb_control bb_controls[] = {
 		.retimer_rst_gpio =
 			 GPIO_SIGNAL(DT_NODELABEL(usb_c1_rt_rst_odl)),
 	},
+	[USBC_PORT_C2] = {
+		/* USB-C port 2 doesn't have a retimer */
+	}
 };
 BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
 
@@ -232,6 +242,11 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = SYV682X_ADDR1_FLAGS,
 		.frs_en = GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c1_frs_en)),
 		.drv = &syv682x_drv,
+	},
+	[USBC_PORT_C2] = {
+		.i2c_port = I2C_PORT_USB_C2,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+		.drv = &sn5s330_drv,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
