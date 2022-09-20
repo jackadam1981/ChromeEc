@@ -91,8 +91,8 @@ all: hex
 ifeq ($(CONFIG_DCRYPTO_BOARD),y)
 # chip/g/build.mk also adds chip/g/dcrypto for CONFIG_DCRYPTO
 # so, only add it if we build RW with CONFIG_DCRYPTO_BOARD
-CPPFLAGS_RW += -I$(realpath $(BDIR)/dcrypto)
-dirs-y += $(BDIR)/dcrypto
+CPPFLAGS_RW += -I$(realpath $(BDIR)/../../common/dcrypto)
+dirs-y += $(BDIR)/../../common/dcrypto
 endif
 
 # The simulator components have their own subdirectory
@@ -116,51 +116,51 @@ board-y += recovery_button.o
 board-y += user_pres.o
 
 fips-y=
-fips-y += dcrypto/fips.o
-fips-y += dcrypto/fips_rand.o
-fips-$(CONFIG_U2F) += dcrypto/u2f.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/aes.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/app_cipher.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/app_key.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/bn.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/dcrypto_bn.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/dcrypto_p256.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/compare.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/dcrypto_runtime.o
+fips-y += ../../common/dcrypto/fips.o
+fips-y += ../../common/dcrypto/fips_rand.o
+fips-$(CONFIG_U2F) += ../../common/dcrypto/u2f.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/aes.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/app_cipher.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/app_key.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/bn.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/dcrypto_bn.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/dcrypto_p256.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/compare.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/dcrypto_runtime.o
 ifneq ($(CRYPTO_TEST),)
 ifneq ($(CMAC_TEST),)
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/aes_cmac.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/aes_cmac.o
 endif
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/gcm.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/hkdf.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/gcm.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/hkdf.o
 endif
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/hash_api.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/hmac_sw.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/hmac_drbg.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/key_ladder.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/p256.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/p256_ec.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/rsa.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha_hw.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha1.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha256.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/hash_api.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/hmac_sw.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/hmac_drbg.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/key_ladder.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/p256.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/p256_ec.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/rsa.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/sha_hw.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/sha1.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/sha256.o
 ifeq ($(CONFIG_UPTO_SHA512),y)
 ifeq ($(CONFIG_DCRYPTO_SHA512),y)
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/dcrypto_sha512.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/dcrypto_sha512.o
 # we may still want to have software implementation
 ifneq ($(CONFIG_SHA512_HW_EQ_SW),y)
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha512.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/sha512.o
 endif
 else
 # only software version
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha512.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/sha512.o
 endif
 endif
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/x509.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/trng.o
-fips-${CONFIG_FIPS_UTIL} += dcrypto/util.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/x509.o
+fips-${CONFIG_DCRYPTO_BOARD} += ../../common/dcrypto/trng.o
+fips-${CONFIG_FIPS_UTIL} += ../../common/dcrypto/util.o
 
-custom-board-ro_objs-${CONFIG_FIPS_UTIL} = $(BDIR)/dcrypto/util.o
+custom-board-ro_objs-${CONFIG_FIPS_UTIL} = $(BDIR)/../../common/dcrypto/util.o
 
 # FIPS console and TPM2 commands are outside FIPS module
 board-y += fips_cmd.o
@@ -196,13 +196,13 @@ RW_BD_OUT=$(out)/RW/$(BDIR)
 
 # Build fips code separately
 ifneq ($(fips-y),)
-FIPS_MODULE=dcrypto/fips_module.o
-FIPS_LD_SCRIPT=$(BDIR)/dcrypto/fips_module.ld
+FIPS_MODULE=../../common/dcrypto/fips_module.o
+FIPS_LD_SCRIPT=$(BDIR)/../../common/dcrypto/fips_module.ld
 RW_FIPS_OBJS=$(patsubst %.o, $(RW_BD_OUT)/%.o, $(fips-y))
 $(RW_FIPS_OBJS): CFLAGS += -frandom-seed=0 -fno-fat-lto-objects -Wswitch\
 			   -Wsign-compare -Wuninitialized
 
-$(RW_FIPS_OBJS): | $(out)/ec_version.h $(out)/env_config.h
+#$(RW_FIPS_OBJS): | $(out)/ec_version.h $(out)/env_config.h
 rw_board_deps := $(addsuffix .d, $(RW_FIPS_OBJS))
 
 # Note, since FIPS object files are compiled with lto, actual compilation
