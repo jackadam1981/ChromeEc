@@ -5,6 +5,7 @@
  * Battery pack vendor provided charging profile
  */
 
+#include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "cbi.h"
 #include "charge_ramp.h"
@@ -140,6 +141,11 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 	/* can not discharge on AC without battery */
 	if (curr->batt.is_present != BP_YES)
 		return 0;
+
+	/* should not discharge when battery disconnect */
+	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED) {
+		return 0;
+	}
 
 	/* Do not discharge on AC if the battery is still waking up */
 	if ((curr->batt.flags & BATT_FLAG_BAD_STATUS) ||
