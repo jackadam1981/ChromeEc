@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08443b9d_89952e6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-20T16:26:29Z",
+      "side": 1,
+      "message": "The test should include vaidating V1 support.",
+      "revId": "33bba1a298150832db760fbedd6c6b089f6e0142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fda101f_76a4d116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-20T16:26:29Z",
+      "side": 1,
+      "message": "sorry, I did not right away hit `reply` on the comments!",
+      "revId": "33bba1a298150832db760fbedd6c6b089f6e0142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b81a4594_ee3709f3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-20T16:26:29Z",
+      "side": 1,
+      "message": "the comment is not needed any more.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 29
+      },
+      "revId": "33bba1a298150832db760fbedd6c6b089f6e0142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f580aa72_26319bb4",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-20T16:26:29Z",
+      "side": 1,
+      "message": "what code is still using fmap?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "33bba1a298150832db760fbedd6c6b089f6e0142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
