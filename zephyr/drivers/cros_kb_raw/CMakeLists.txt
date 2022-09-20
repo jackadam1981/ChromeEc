@@ -5,3 +5,5 @@
 zephyr_library_sources_ifdef(CONFIG_CROS_KB_RAW_NPCX	cros_kb_raw_npcx.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_KB_RAW_ITE	cros_kb_raw_ite.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_KB_RAW_XEC	cros_kb_raw_xec.c)
+
+zephyr_library_sources_ifdef(CONFIG_PINCTRL_KSCAN_ITE_IT8XXX2 pinctrl_kscan_ite_it8xxx2.c)
