@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b53ec6e1_b7466832",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-20T07:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "658357d2_8cb4d1db",
+      "range": {
+        "startLine": 658,
+        "startChar": 26,
+        "endLine": 658,
+        "endChar": 47
+      },
+      "revId": "8aaaf78475bdbfcd8210b4849a975f148f2f88ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "636781ae_5607d57d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-19T16:25:51Z",
       "side": 1,
       "message": "Can you add a bug to this todo?",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "8aaaf78475bdbfcd8210b4849a975f148f2f88ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc901d43_c30f1828",
+        "filename": "zephyr/test/drivers/rt9490/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-20T07:49:36Z",
+      "side": 1,
+      "message": "Done, need a bc1.2 device on port 1.",
+      "parentUuid": "636781ae_5607d57d",
       "range": {
         "startLine": 21,
         "startChar": 3,
