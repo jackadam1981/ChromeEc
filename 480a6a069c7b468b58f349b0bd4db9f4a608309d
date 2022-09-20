@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "480a5639_176a2971",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-20T03:33:10Z",
+      "side": 1,
+      "message": "I think we could cap the input here. WDYT?",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 25
+      },
+      "revId": "480a6a069c7b468b58f349b0bd4db9f4a608309d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
