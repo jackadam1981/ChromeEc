@@ -46,6 +46,30 @@
       },
       "revId": "0719548c138ec341a4515f153778430128751f46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db210986_61967b5d",
+        "filename": "zephyr/shim/include/usbc/ps8818_usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-20T15:37:14Z",
+      "side": 1,
+      "message": "On your CL:3905888 that moves the muxes to devicetree, you have an error using the wrong compatible. \n\n```\n\tps8818_port1: ps8818@28 {\n\t\tcompatible \u003d \"analogix,anx7483\";\n\t\treg \u003d \u003c0x28\u003e;\n\t\tboard-set \u003d \"board_c1_ps8818_mux_set\";\n\t};\n```\n\nSo none of your boards were compiling in the ps8818 mux driver.",
+      "parentUuid": "bbdf0ff4_153f354f",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "0719548c138ec341a4515f153778430128751f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
