@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f98da5_16e1213a",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-20T09:08:40Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be skipping tests based on static assertions. I know they\u0027re doing it upstream but it\u0027s bad practice. Instead, the test shouldn\u0027t be compiled in if the requirements aren\u0027t met. Prefer to conditionally include it using `zephyr_target_sources_ifdef` if possible.",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 2
+      },
+      "revId": "c09fd10ce86b87760e123e2754edc6d187c5acb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "393b3e9f_f0637513",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-20T09:08:40Z",
+      "side": 1,
+      "message": "Do we have a test for this? Would be good to include it in the comment above or the error message.",
+      "range": {
+        "startLine": 399,
+        "startChar": 1,
+        "endLine": 402,
+        "endChar": 66
+      },
+      "revId": "c09fd10ce86b87760e123e2754edc6d187c5acb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f6b477_c0ce27a8",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-20T09:08:40Z",
+      "side": 1,
+      "message": "nit: here and above, we no longer need `NULL`, you can just leave this out.",
+      "range": {
+        "startLine": 421,
+        "startChar": 5,
+        "endLine": 421,
+        "endChar": 9
+      },
+      "revId": "c09fd10ce86b87760e123e2754edc6d187c5acb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
