@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2045c316_50e7aaec",
+        "filename": "zephyr/projects/nissa/craask/src/form_factor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-21T03:27:34Z",
+      "side": 1,
+      "message": "I think you can use GPIO_DISCONNECTED here.",
+      "range": {
+        "startLine": 118,
+        "startChar": 10,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "672fa226aeec73f444ee849bf9457a7ee0052512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
