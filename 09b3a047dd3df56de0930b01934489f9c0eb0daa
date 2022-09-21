@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f220e2_ba4cf2d1",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-21T15:51:22Z",
+      "side": 1,
+      "message": "Doesn\u0027t this always evaluate to `TRUE`?\nhttp://cs/chromeos_public/src/platform/ec/include/common.h?l\u003d21\n\nMaybe `CONFIG_BOARD_NATIVE_POSIX` might be better?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "09b3a047dd3df56de0930b01934489f9c0eb0daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
