@@ -22,6 +22,30 @@
       },
       "revId": "09b3a047dd3df56de0930b01934489f9c0eb0daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c50f22b_3d6607af",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-21T20:38:37Z",
+      "side": 1,
+      "message": "It wouldn\u0027t evaluate to true when running just the legacy tests. Such as the test mentioned in https://crrev.com/c/2299417\n\nHowever, it doesn\u0027t seem like any of these guards need to exist to begin with as the ampton board works fine. Going to get one of the reviews/authors of the original CL to check this for me in addition to your review.",
+      "parentUuid": "c3f220e2_ba4cf2d1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "09b3a047dd3df56de0930b01934489f9c0eb0daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
