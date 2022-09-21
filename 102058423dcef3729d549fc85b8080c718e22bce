@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6049cb5_e1daa98c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537632
+      },
+      "writtenOn": "2022-09-21T05:17:23Z",
+      "side": 1,
+      "message": "Should we change 0 is disable? Since previous shipped and SMTed device are not include this filed, and value is 0.",
+      "revId": "102058423dcef3729d549fc85b8080c718e22bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
