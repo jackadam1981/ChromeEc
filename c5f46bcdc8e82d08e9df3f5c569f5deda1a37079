@@ -1,0 +1,400 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ddbe4b6_21f24dce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "mostly nits and questions to clarify.",
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0759008c_1d16e48c",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "what\u0027s the point of defining this through typedef?\n\nIf anything, makes the code harder to read, as it is not clear what the size is, please use uint32_t instead.\n\nI know it is defined as uint32_t in vboot reference, but not sure we need to follow this.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 33
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2267f2_9b24acc6",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "why is this called `EXPECTED`? This is the actual GBB header size, right?",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 36
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a00423_39327835",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "can this be `bool`?",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 8
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7a25cb_0ed1f502",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "what is range_gbb_flags? does this even have to be in this structure given that for the fixed gbb version this code works with gbb flags are a uint32_ t and are located at a known offset inside gbb?\n\nPlease add a comment describing the meaning of the fields.",
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85232cc3_c3e19007",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "maybe add assert to validate that `flags` offset is what\u0027s expected.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 76
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c0075d_2aa7e58f",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "we\u0027re looking for a single gbb area, right?",
+      "range": {
+        "startLine": 501,
+        "startChar": 12,
+        "endLine": 501,
+        "endChar": 17
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e027c7_29189aec",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "this needs updating",
+      "range": {
+        "startLine": 507,
+        "startChar": 3,
+        "endLine": 507,
+        "endChar": 55
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847191c7_eb59b713",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "should return a `bool`",
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb612427_746875ef",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "can you please parens to make this clearer and not expect the reader to remember operator precedence.",
+      "range": {
+        "startLine": 540,
+        "startChar": 8,
+        "endLine": 541,
+        "endChar": 70
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89bf3df_b9e1872d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "the function does more than this.\n\nMabye \u0027validate FMAP and GBB coverage and GBB correctness\u0027 or somthing along these lines",
+      "range": {
+        "startLine": 544,
+        "startChar": 3,
+        "endLine": 544,
+        "endChar": 39
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46d7abfb_f68c989a",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "please describe the input parameters, in particular tje expectations of the gdb contents",
+      "range": {
+        "startLine": 547,
+        "startChar": 2,
+        "endLine": 548,
+        "endChar": 15
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3efe2c1d_5a044845",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "this should be `size_t` if compared to `count`",
+      "range": {
+        "startLine": 557,
+        "startChar": 1,
+        "endLine": 557,
+        "endChar": 4
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f44b1ff_93c60de1",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "could `continue` after this statement",
+      "range": {
+        "startLine": 565,
+        "startChar": 3,
+        "endLine": 565,
+        "endChar": 24
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1816394_40220262",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "isn\u0027t comment in line 136 warning about including `$GBB` in the code as is?",
+      "range": {
+        "startLine": 613,
+        "startChar": 27,
+        "endLine": 613,
+        "endChar": 44
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b752580_baa8428a",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "this function is not looking for gbb descriptor, it is setting it up, please rename to reflect this.",
+      "range": {
+        "startLine": 637,
+        "startChar": 30,
+        "endLine": 637,
+        "endChar": 50
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a697b89_9ec57bdc",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "so, what\u0027s happening here - we found an FMAP, but there is no GBB and we start looking for another FMAP?\n\nAlso, there might have been a bogus FMAP placed elswhere in the image. Maybe the way to go is to make sure that the found FMAP is included in the protected ranges, and not consider it if it is not?\n\nAnd then if there is no GBB section in that FMAP fail instead of continuing.",
+      "range": {
+        "startLine": 672,
+        "startChar": 3,
+        "endLine": 672,
+        "endChar": 12
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9ae022_8bc2a7b4",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T22:31:30Z",
+      "side": 1,
+      "message": "so, as of this patch we\u0027d fail if GBB flags are not zero. sg.",
+      "range": {
+        "startLine": 752,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 0
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
