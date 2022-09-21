@@ -1,4 +1,4 @@
-/* Copyright 2020 The ChromiumOS Authors
+/* Copyright 2020 The ChromiumOS Authors.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -403,6 +403,7 @@ static void dpm_attempt_mode_entry(int port)
 			 * failed.
 			 */
 			CPRINTS("C%d: No supported alt mode discovered", port);
+			return;
 		}
 		/*
 		 * If the AP did not request mode entry, it may do so in the
