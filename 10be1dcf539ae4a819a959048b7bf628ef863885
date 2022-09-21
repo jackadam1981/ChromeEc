@@ -103,6 +103,24 @@
       "parentUuid": "5d352a27_0ce68c6f",
       "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398bbf42_18c5a743",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-21T05:50:44Z",
+      "side": 1,
+      "message": "This seems an appropriate place to me, but I\u0027ll leave Diana to comment.",
+      "parentUuid": "307d7019_ec0e3eb8",
+      "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
