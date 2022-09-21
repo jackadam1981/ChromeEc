@@ -1,0 +1,12 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+common:
+  platform_allow: native_posix
+tests:
+  craask.alt_sensor:
+    extra_args: DTC_OVERLAY_FILE="./common.dts;../projects/nissa/craask/cbi.dts;../projects/nissa/craask/generated.dts;../projects/nissa/craask/overlay.dts"
+    extra_configs:
+      - CONFIG_TEST_CRAASK=y
+      - CONFIG_TEST_ALT_SENSOR_PROBE=y
