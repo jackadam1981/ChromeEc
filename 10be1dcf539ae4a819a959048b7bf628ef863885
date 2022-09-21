@@ -67,6 +67,24 @@
       "message": "I wonder if we should handle the PD-incapable devices as well, e.g. USB sticks. The same situation applies to the USB sticks if the HardReset happened when booting, but it\u0027s PD-incapable. In general, I think this patch is better one if it can address the PD incapable USB peripherals.",
       "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d352a27_0ce68c6f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-21T01:28:46Z",
+      "side": 1,
+      "message": "So the only place I see PD_STATUS_EVENT_HARD_RESET is in prl_hr_reset_layer_entry()\nI am not familiar enough with the code to know if this is called for PD-incapable devices.\nWhere would be the best place to clear this flag for non-PD devices?",
+      "parentUuid": "a6acd845_4ad15c59",
+      "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
