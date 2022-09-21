@@ -16,6 +16,29 @@
       "message": "Need to wrap the macros in a single macro so I can do easy checking of each instance of smart battery. Right now we only have one, but could have more instances in the future, especially in an upstream test environment.",
       "revId": "7eaba0719e1fdc41aa457fc1afef9a72afa5455c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cabd81_fcf3084e",
+        "filename": "zephyr/emul/emul_smart_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-21T21:48:01Z",
+      "side": 1,
+      "message": "Nit - \"SMART_BATTERY\" and \"SBAT\" seem redundant in this name.  Can you drop \"SBAT\"?",
+      "range": {
+        "startLine": 799,
+        "startChar": 8,
+        "endLine": 799,
+        "endChar": 53
+      },
+      "revId": "7eaba0719e1fdc41aa457fc1afef9a72afa5455c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
