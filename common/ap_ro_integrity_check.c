@@ -46,7 +46,7 @@
  * to the number of ranges, so it's easier to debug and to make people consider
  * why they would need more than 32 ranges.
  */
-#define APRO_MAX_NUM_RANGES 32
+#define AP_RO_MAX_NUM_RANGES 32
 /* Values used for validity check of the flash_range structure fields. */
 #define MAX_SUPPORTED_FLASH_SIZE (32 * 1024 * 1024)
 #define MAX_SUPPORTED_RANGE_SIZE (4 * 1024 * 1024)
@@ -68,7 +68,7 @@ struct ro_range {
 
 /* Maximum number of RO ranges this implementation supports. */
 struct ro_ranges {
-	struct ro_range ranges[APRO_MAX_NUM_RANGES];
+	struct ro_range ranges[AP_RO_MAX_NUM_RANGES];
 };
 
 /*
@@ -94,14 +94,6 @@ struct ap_ro_check_header {
 	uint32_t checksum;
 };
 
-/*
- * Saved AP RO data includes the ap ro check header, the sha digest of the
- * firmware and the RO ranges. Make sure the header, digest, and maximum number
- * of ranges fit in the AP RO space.
- */
-BUILD_ASSERT(AP_RO_DATA_SPACE_SIZE >=
-	sizeof(struct ap_ro_check_header) + SHA256_DIGEST_SIZE +
-	APRO_MAX_NUM_RANGES * sizeof(struct ro_range));
 /* Format of the AP RO check information saved in the H1 flash page. */
 struct ap_ro_check {
 	struct ap_ro_check_header header;
@@ -220,13 +212,33 @@ enum ap_ro_check_result {
 	ROV_SUCCEEDED	    /* Verification succeeded. */
 };
 
-/* Page offset for H1 flash operations. */
+/*
+ * Saved AP RO data includes the ap ro check header, the sha digest of the
+ * firmware and the RO ranges.
+ */
+#define AP_RO_CHECK_DATA_MAX_SIZE	\
+	(sizeof(struct ap_ro_check_header) + SHA256_DIGEST_SIZE + \
+	 AP_RO_MAX_NUM_RANGES * sizeof(struct ro_range))
+
+/* The V1 AP RO hash payload is stored at the start of the AP RO space page. */
+#define AP_RO_CHECK_DATA_OFFSET		0
+
+#define AP_RO_CHECK_DATA_ADDR		\
+		(AP_RO_DATA_SPACE_ADDR + AP_RO_CHECK_DATA_OFFSET)
+
+/* Page offsets for H1 flash operations. */
 static const uint32_t h1_flash_offset_ =
 	AP_RO_DATA_SPACE_ADDR - CONFIG_PROGRAM_MEMORY_BASE;
+static const uint32_t h1_apro_check_data_flash_offset_ =
+	h1_flash_offset_ + AP_RO_CHECK_DATA_OFFSET;
 
 /* Fixed pointer at the H1 flash page storing the AP RO check information. */
 static const struct ap_ro_check *p_chk =
-	(const struct ap_ro_check *)AP_RO_DATA_SPACE_ADDR;
+	(const struct ap_ro_check *)AP_RO_CHECK_DATA_ADDR;
+
+/* Verify the data fits in the AP RO data space */
+BUILD_ASSERT(AP_RO_CHECK_DATA_OFFSET + AP_RO_CHECK_DATA_MAX_SIZE <=
+	AP_RO_DATA_SPACE_SIZE);
 
 /*
  * Track if the AP RO hash was validated this boot. Must be cleared every AP
@@ -327,7 +339,7 @@ static enum vendor_cmd_rc vc_seed_ap_ro_check(enum vendor_cmd_cc code,
 	vc_num_of_ranges =
 		(input_size - SHA256_DIGEST_SIZE) / sizeof(struct ro_range);
 
-	if (vc_num_of_ranges > APRO_MAX_NUM_RANGES) {
+	if (vc_num_of_ranges > AP_RO_MAX_NUM_RANGES) {
 		*response = ARCVE_TOO_MANY_RANGES;
 		return VENDOR_RC_BOGUS_ARGS;
 	}
@@ -358,11 +370,11 @@ static enum vendor_cmd_rc vc_seed_ap_ro_check(enum vendor_cmd_cc code,
 	app_compute_hash(buf, input_size, &check_header.checksum,
 			 sizeof(check_header.checksum));
 
-	flash_open_ro_window(h1_flash_offset_, prog_size);
-	rv = flash_physical_write(h1_flash_offset_, sizeof(check_header),
-				  (char *)&check_header);
+	flash_open_ro_window(h1_apro_check_data_flash_offset_, prog_size);
+	rv = flash_physical_write(h1_apro_check_data_flash_offset_,
+				  sizeof(check_header), (char *)&check_header);
 	if (rv == EC_SUCCESS)
-		rv = flash_physical_write(h1_flash_offset_ +
+		rv = flash_physical_write(h1_apro_check_data_flash_offset_ +
 						  sizeof(check_header),
 					  input_size, buf);
 	flash_close_ro_window();
