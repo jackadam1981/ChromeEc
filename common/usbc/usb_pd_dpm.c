@@ -403,6 +403,7 @@ static void dpm_attempt_mode_entry(int port)
 			 * failed.
 			 */
 			CPRINTS("C%d: No supported alt mode discovered", port);
+			return;
 		}
 		/*
 		 * If the AP did not request mode entry, it may do so in the
