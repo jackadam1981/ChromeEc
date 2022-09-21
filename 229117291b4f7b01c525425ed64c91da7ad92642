@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91eafc9_44c63a1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-21T23:07:09Z",
+      "side": 1,
+      "message": "It would be interesting to set verification ranges to some sensible values and see how long it takes to validate in case the gbb flags are the last value in the added list.",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "229117291b4f7b01c525425ed64c91da7ad92642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
