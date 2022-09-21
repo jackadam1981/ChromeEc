@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30dd6d02_b57e4b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-21T09:42:14Z",
+      "side": 1,
+      "message": "Could you also move this under `util/`? I think there\u0027s value in developing this in the EC repository and make it work here before sending it for upstreaming.",
+      "revId": "9b8df179f4922fd15c59d00e115fd0326e917433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "844cbb6f_39962727",
