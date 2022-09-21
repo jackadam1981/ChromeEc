@@ -1,0 +1,29 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config TEST_CRAASK
+	bool "Run the tests intended for Craask"
+	help
+	  Include form_factor.c into the binary to test the Craask specific
+	  code.
+
+config TEST_FORM_FACTOR_CLAMSHELL
+	bool "Run the tests intended for clamshells"
+        help
+	  Include clamshell tests into the binary.
+	  Test for non-convertible sku. (ex: Craaskvin)
+
+config TEST_FORM_FACTOR_CONVERTIBLE
+	bool "Run the tests intended for convertibles"
+	help
+	  Include convertible tests into the binary.
+	  Test for covertible sku. (ex: Craask, Craaskbowl)
+
+config TEST_ALT_SENSOR_PROBE
+	bool "Run the tests intended for alt sensor probe"
+	help
+	  Include alt_sensor.c into the binary to test the alt sensor probe via
+	  SSFC.
+
+source "Kconfig.zephyr"
