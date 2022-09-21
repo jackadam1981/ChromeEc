@@ -116,10 +116,12 @@ static void ap_sku_id_restore_state(void)
 DECLARE_HOOK(HOOK_INIT, ap_sku_id_restore_state, HOOK_PRIO_DEFAULT);
 #endif
 
+/* LCOV_EXCL_START */
 __overridable uint32_t board_get_sku_id(void)
 {
 	return 0;
 }
+/* LCOV_EXCL_STOP */
 
 uint32_t system_get_sku_id(void)
 {
