@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "403beee1_c78cb2d8",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-21T19:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c520827_03da72e4",
+      "range": {
+        "startLine": 708,
+        "startChar": 20,
+        "endLine": 708,
+        "endChar": 27
+      },
+      "revId": "83d18e3197138a583480b9a4bec8570e4bd8febf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56c70d32_b836ba94",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-09-21T18:49:19Z",
       "side": 1,
       "message": "using \u0027true\u0027 here would make it more clear.",
+      "revId": "83d18e3197138a583480b9a4bec8570e4bd8febf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62fbfc2c_9cb8285d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-21T19:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56c70d32_b836ba94",
       "revId": "83d18e3197138a583480b9a4bec8570e4bd8febf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
