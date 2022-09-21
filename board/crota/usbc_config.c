@@ -34,6 +34,7 @@
 #include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
@@ -405,4 +406,14 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 		return TBT_SS_RES_0;
 
 	return TBT_SS_TBT_GEN3;
+}
+
+__override int typec_get_default_current_limit_rp(int port)
+{
+	int rp = CONFIG_USB_PD_PULLUP;
+
+	if (pd_get_bist_share_mode())
+		rp = TYPEC_RP_3A0;
+
+	return rp;
 }
