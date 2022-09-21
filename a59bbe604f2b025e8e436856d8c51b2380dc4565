@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b1c246_42608408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-09-21T22:02:45Z",
+      "side": 1,
+      "message": "By the way, why are we changing gpio direction to input? On Zork, coreboot leaves direction set to output, so it\u0027s not some kind of power saving.",
+      "parentUuid": "c88372f0_cbd40994",
+      "revId": "a59bbe604f2b025e8e436856d8c51b2380dc4565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78eaa500_8087fa5d",
@@ -79,6 +97,30 @@
       "side": 1,
       "message": "Sorry didn\u0027t read close enough. Checking fpmcu is still responsive after `FpFlashFpMcuHello` might be sufficient, but I worried about additional flake and interference. I figured directly testing what we are looking for might be better.\n\nI was hoping that we could use fptool.py to do the GPIO control and testing.",
       "parentUuid": "4e5a5bc2_709a7c7a",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 50
+      },
+      "revId": "a59bbe604f2b025e8e436856d8c51b2380dc4565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d6a2044_a6798581",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-09-21T22:02:45Z",
+      "side": 1,
+      "message": "\u003e I guess that won\u0027t work on Zork devices since the UART driver stops working until we reboot...\n\nExactly.\n\nWe could modify `flash_fp_mcu` to do a power cycle only (add a flag), without changing BOOT0 line. We are not changing the driver, so it would work. I don\u0027t think it\u0027s possible without changes in `flash_fp_mcu`.",
+      "parentUuid": "cba72681_195eae3b",
       "range": {
         "startLine": 462,
         "startChar": 0,
