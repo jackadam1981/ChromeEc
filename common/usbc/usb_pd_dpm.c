@@ -303,8 +303,10 @@ static void dpm_attempt_mode_entry(int port)
 	 * of the modes can get out of sync, causing the attempt to
 	 * enter the mode to fail prematurely.
 	 */
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF) ||
+	    (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON))){
 		return;
+	}
 #endif
 	/*
 	 * If discovery has not occurred for modes, do not attempt to switch
@@ -319,9 +321,9 @@ static void dpm_attempt_mode_entry(int port)
 	     tbt_entry_is_done(port)) ||
 	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
 		dpm_set_mode_entry_done(port);
+CPRINTS("!!!! dpm_set_mode_entry_done:");
 		return;
 	}
-
 	/*
 	 * If muxes are still settling, then wait on our next VDM.  We must
 	 * ensure we correctly sequence actions such as USB safe state with TBT
