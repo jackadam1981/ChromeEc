@@ -54,11 +54,14 @@
 /* Version of the AP RO check information saved in the H1 flash page. */
 #define AP_RO_HASH_LAYOUT_VERSION_0 0
 #define AP_RO_HASH_LAYOUT_VERSION_1 1
+#define AP_RO_GBBD_LAYOUT_VERSION_2 2 /* Used to store the gbb descriptor */
 
 /* Verification scheme V1. */
 #define AP_RO_HASH_TYPE_FACTORY 0
 /* Verification scheme V2. */
 #define AP_RO_HASH_TYPE_GSCVD	1
+/* Use the factory gbb flags to generate the V1 hash */
+#define AP_RO_HASH_TYPE_GBBD	2
 
 /* A flash range included in hash calculations. */
 struct ro_range {
@@ -88,20 +91,6 @@ struct ap_ro_check_header {
 	uint8_t type;
 	uint16_t num_ranges;
 	uint32_t checksum;
-};
-
-/*
- * Saved AP RO data includes the ap ro check header, the sha digest of the
- * firmware and the RO ranges. Make sure the header, digest, and maximum number
- * of ranges fit in the AP RO space.
- */
-BUILD_ASSERT(AP_RO_DATA_SPACE_SIZE >=
-	sizeof(struct ap_ro_check_header) + SHA256_DIGEST_SIZE +
-	AP_RO_MAX_NUM_RANGES * sizeof(struct ro_range));
-/* Format of the AP RO check information saved in the H1 flash page. */
-struct ap_ro_check {
-	struct ap_ro_check_header header;
-	struct ap_ro_check_payload payload;
 };
 
 /*****************************************************************************/
@@ -200,6 +189,9 @@ struct gbb_descriptor {
 
 	/* Flags used to generate the hash */
 	uint32_t injected_flags;
+
+	/* Pad the struct, so a gbb descriptor struct can be written to flash */
+	uint8_t  pad[3];
 } __packed;
 
 BUILD_ASSERT(sizeof(struct vb2_gbb_header) == VB2_GBB_HEADER_SIZE);
@@ -208,6 +200,25 @@ BUILD_ASSERT(offsetof(struct vb2_gbb_header, flags) ==
 
 /*****************************************************************************/
 /* V1 Factory Support (AP_RO_HASH_TYPE_FACTORY) */
+
+/* Format of the AP RO check information saved in the H1 flash page. */
+struct ap_ro_check {
+	/* AP_RO_HASH_TYPE_FACTORY data */
+	struct ap_ro_check_header header;
+	/* Used by the V1 scheme. */
+	struct ap_ro_check_payload payload;
+
+	/* Optional GBB flag data. */
+	struct ap_ro_check_header gbbd_header;
+	/* Used to save the injected gbb flags. */
+	struct gbb_descriptor gbbd;
+};
+/*
+ * Make sure all saved AP RO data can fit in the AP RO space. This includes
+ * two ap ro check headers, the sha digest of the firmware, the maximum number
+ * of AP RO ranges, and a gbb descriptor.
+ */
+BUILD_ASSERT(sizeof(struct ap_ro_check) <= AP_RO_DATA_SPACE_SIZE);
 
 /* One of the AP RO verification outcomes, internal representation. */
 enum ap_ro_check_result {
@@ -219,6 +230,24 @@ enum ap_ro_check_result {
 /* Page offset for H1 flash operations. */
 static const uint32_t h1_flash_offset_ =
 	AP_RO_DATA_SPACE_ADDR - CONFIG_PROGRAM_MEMORY_BASE;
+static const uint32_t h1_apro_gbbd_data_flash_offset_ =
+	h1_flash_offset_ + offsetof(struct ap_ro_check, gbbd_header);
+
+/*
+ * Enforce flash_write checks at build to ensure the chip can write the AP RO
+ * data to flash. Check all structs.
+ */
+/* Verify the chip supports writing the struct sizes. */
+BUILD_ASSERT(sizeof(struct ap_ro_check_payload) % CONFIG_FLASH_WRITE_SIZE == 0);
+BUILD_ASSERT(sizeof(struct ap_ro_check_header) % CONFIG_FLASH_WRITE_SIZE == 0);
+BUILD_ASSERT(sizeof(struct gbb_descriptor) % CONFIG_FLASH_WRITE_SIZE == 0);
+BUILD_ASSERT(sizeof(struct ap_ro_check) % CONFIG_FLASH_WRITE_SIZE == 0);
+/* Verify the chip will be able to write to the header offsets. */
+BUILD_ASSERT((AP_RO_DATA_SPACE_ADDR - CONFIG_PROGRAM_MEMORY_BASE) %
+	     CONFIG_FLASH_WRITE_SIZE == 0);
+BUILD_ASSERT((AP_RO_DATA_SPACE_ADDR - CONFIG_PROGRAM_MEMORY_BASE +
+	     offsetof(struct ap_ro_check, gbbd_header)) %
+	     CONFIG_FLASH_WRITE_SIZE == 0);
 
 /* Fixed pointer at the H1 flash page storing the AP RO check information. */
 static const struct ap_ro_check *p_chk =
@@ -650,6 +679,62 @@ static int read_ap_spi(void *buf, uint32_t offset, size_t size, int code_line)
 	return 0;
 }
 
+static int verify_ap_ro_gbb_space(void)
+{
+	uint32_t checksum;
+
+	if ((p_chk->gbbd_header.type != AP_RO_HASH_TYPE_GBBD) ||
+	    (p_chk->gbbd_header.version != AP_RO_GBBD_LAYOUT_VERSION_2))
+		return EC_ERROR_CRC;
+	/* The GBB descriptor is only valid for FACTORY hashes. */
+	if (p_chk->header.type != AP_RO_HASH_TYPE_FACTORY)
+		return EC_ERROR_CRC;
+
+	/* The V1 header saved too many ranges. The stored GBBD is invalid */
+	if (p_chk->header.num_ranges > AP_RO_MAX_NUM_RANGES) {
+		CPRINTS("%s: V1 stored too many ranges", __func__);
+		return EC_ERROR_CRC;
+	}
+	if (p_chk->gbbd_header.num_ranges != p_chk->header.num_ranges) {
+		CPRINTS("%s: gbbd doesn't match v1 header", __func__);
+		return EC_ERROR_CRC;
+	}
+
+	app_compute_hash(&p_chk->gbbd, sizeof(struct gbb_descriptor),
+			 &checksum, sizeof(checksum));
+
+	if (memcmp(&checksum, &p_chk->gbbd_header.checksum, sizeof(checksum))) {
+		CPRINTS("%s: AP RO GBB Checksum corrupted", __func__);
+		return EC_ERROR_CRC;
+	}
+
+	return EC_SUCCESS;
+}
+
+static int get_saved_factory_flags(struct gbb_descriptor *actual_gbbd)
+{
+	if (verify_ap_ro_gbb_space() != EC_SUCCESS)
+		return EC_ERROR_CRC;
+
+	if (!p_chk->gbbd.validate_flags) {
+		CPRINTS("%s: saved gbbd doesn't support validating flags",
+			__func__);
+		return EC_ERROR_CRC;
+	}
+	/*
+	 * If the saved gbbd doesn't match the actual gbbd, use the actual
+	 * gbbd.
+	 */
+	if (memcmp(&p_chk->gbbd, actual_gbbd, sizeof(actual_gbbd) -
+		   sizeof(actual_gbbd->injected_flags))) {
+		CPRINTS("%s: actual gbbd doesn't match saved", __func__);
+		return EC_ERROR_CRC;
+	}
+	actual_gbbd->injected_flags = p_chk->gbbd.injected_flags;
+	CPRINTS("%s: loaded 0x%x", __func__, actual_gbbd->injected_flags);
+	return EC_SUCCESS;
+}
+
 /**
  * Find the GBB using the FMAP table in AP flash.
  *
@@ -856,6 +941,7 @@ static enum ap_ro_check_result init_gbbd(struct gbb_descriptor *gbbd)
 		gbbd->gbb_flags.range_size = VB2_GBB_HEADER_FLAG_SIZE;
 		gbbd->validate_flags = range_is_in_hash(gbbd->gbb_flags) ==
 			EC_SUCCESS;
+		gbbd->injected_flags = 0;
 
 		return ROV_SUCCEEDED;
 	}
@@ -909,11 +995,11 @@ int ec_rst_override(void)
 	return !apro_fail_status_cleared && apro_result == AP_RO_FAIL;
 }
 
-
 static uint8_t do_ap_ro_check(void)
 {
 	enum ap_ro_check_result rv;
 	struct gbb_descriptor gbbd;
+	bool save_flags = false;
 
 	apro_result = AP_RO_IN_PROGRESS;
 	apro_fail_status_cleared = 0;
@@ -932,19 +1018,42 @@ static uint8_t do_ap_ro_check(void)
 	if (rv == ROV_SUCCEEDED)
 		rv = validate_gbbd(&gbbd);
 	if (rv == ROV_SUCCEEDED) {
-		if (gbbd.validate_flags)
+		if (gbbd.validate_flags &&
+		     get_saved_factory_flags(&gbbd) != EC_SUCCESS) {
 			rv = validate_ranges_sha_with_factory_flags(
 				p_chk->payload.ranges,
 				p_chk->header.num_ranges,
 				p_chk->payload.digest,
 				&gbbd);
-		else
+			/*
+			 * Had to go through the factory flags. Attempt to save
+			 * the flags if there verification passed.
+			 */
+			save_flags = rv == ROV_SUCCEEDED;
+		} else {
 			rv = validate_ranges_sha(p_chk->payload.ranges,
 						 p_chk->header.num_ranges,
 						 p_chk->payload.digest,
 						 &gbbd);
+		}
 	}
 
+	/* Attempt to save the flags before releasing the EC from reset. */
+	if (save_flags) {
+		if (write_ap_ro_check_data(AP_RO_GBBD_LAYOUT_VERSION_2,
+					   AP_RO_HASH_TYPE_GBBD,
+					   p_chk->header.num_ranges,
+					   h1_apro_gbbd_data_flash_offset_,
+					   (uint32_t *)(&p_chk->gbbd_header),
+					   &gbbd,
+					   sizeof(gbbd)) == ARCVE_OK) {
+			CPRINTS("%s: saved gbbd", __func__);
+			ap_ro_add_flash_event(APROF_SAVED_GBBD);
+		} else {
+			CPRINTS("%s: save gbbd failed", __func__);
+			ap_ro_add_flash_event(APROF_FAILED_TO_SAVE_GBBD);
+		}
+	}
 	disable_ap_spi_hash_shortcut();
 
 	/* Failure reason has already been reported. */
@@ -964,7 +1073,7 @@ static uint8_t do_ap_ro_check(void)
 		 */
 		return EC_ERROR_CRC;
 	}
-	/* TODO(b/236844541): save gbbd */
+
 	apro_result = AP_RO_PASS;
 	ap_ro_add_flash_event(APROF_CHECK_SUCCEEDED);
 	CPRINTS("AP RO PASS!");
@@ -1064,8 +1173,14 @@ static int ap_ro_info_cmd(int argc, char **argv)
 		ap_ro_erase_hash();
 	}
 #endif
-	rv = ap_ro_check_unsupported(false);
 	ccprintf("result    : %d\n", apro_result);
+	rv = verify_ap_ro_gbb_space();
+	ccprintf("gbb       : ");
+	if (rv == EC_SUCCESS)
+		ccprintf("saved (0x%x)\n", p_chk->gbbd.injected_flags);
+	else
+		ccprintf("invalid (%u)\n", rv);
+	rv = ap_ro_check_unsupported(false);
 	ccprintf("supported : %s\n", rv ? "no" : "yes");
 	if (rv == ARCVE_FLASH_READ_FAILED)
 		return EC_ERROR_CRC; /* No verification possible. */
