@@ -16,6 +16,24 @@
       "message": "nit: Can this 1000 bytes value be calculated from DTS and used in `reply_cr50_payload()` too? I had to look for the comment in `reply_cr50_payload()` to find out why 1000 bytes is enough.",
       "revId": "0306af22c6bd5a5cfdff294a8831c3ef94f1c746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e16560_0df71e90",
+        "filename": "zephyr/test/vboot_efs2/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-21T15:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efbd2160_c1c7e362",
+      "revId": "0306af22c6bd5a5cfdff294a8831c3ef94f1c746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
