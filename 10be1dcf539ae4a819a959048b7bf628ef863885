@@ -85,6 +85,24 @@
       "parentUuid": "a6acd845_4ad15c59",
       "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "307d7019_ec0e3eb8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-21T01:36:30Z",
+      "side": 1,
+      "message": "Is pe_src_disabled_entry() an appropriate place to clear this flag? This seems to be where the state machine ends up with non-PD devices.",
+      "parentUuid": "5d352a27_0ce68c6f",
+      "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
