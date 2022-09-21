@@ -16,6 +16,24 @@
       "message": "Should we change 0 is disable? Since previous shipped and SMTed device are not include this filed, and value is 0.",
       "revId": "102058423dcef3729d549fc85b8080c718e22bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8414ec3_efe02523",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-09-21T06:33:16Z",
+      "side": 1,
+      "message": "To avoid the previous shipped and SMTed device from disable motionsense function after update the latest firmware. I think we should set 0 as convertible (enable) because motionsense enabled won\u0027t effect the clamshell sku for there\u0027s no g-sensor can provide raw data for EC and EC can\u0027t init the sensor. The clamshell DUT should not enter tablet mode while the motionsense function is enable.",
+      "parentUuid": "d6049cb5_e1daa98c",
+      "revId": "102058423dcef3729d549fc85b8080c718e22bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
