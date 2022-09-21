@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78eaa500_8087fa5d",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-21T20:36:44Z",
+      "side": 1,
+      "message": "Can you think of a way to catch this bug with a Tast test?\n\nWould it be sufficient to check that the FPMCU still responds to commands at the end of the [`FpFlashFpMcuHello`](https://tastboard.corp.google.com/test/firmware.FpFlashFpMcuHello) test? I guess that won\u0027t work on Zork devices since the UART driver stops working until we reboot...",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 50
+      },
+      "revId": "a59bbe604f2b025e8e436856d8c51b2380dc4565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
