@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dc001fa_75609f5f",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-21T09:39:51Z",
+      "side": 1,
+      "message": "\"consume more memory\" -\u003e \"consume more memory and computing resource\"",
+      "parentUuid": "eebdbaf2_c190468a",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0537133_759523be",
         "filename": "zephyr/Kconfig.body_detection",
         "patchSetId": 4
@@ -112,6 +136,99 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5e945f3_70aa3d39",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-21T09:39:51Z",
+      "side": 1,
+      "message": "description of PLATFORM_EC_BODY_DETECTION_VAR_THRESHOLD:\n\"The threshold of acceleration variance for confidence calculation\"\n\ndescription of PLATFORM_EC_BODY_DETECTION_CONFIDENCE_DELTA:\n\"The delta of acceleration variance for confidence calculation\"\n\nBoth Help:\nThe unit is (mm/s^2)^2\n\nThe motion confidence is calculated if the variance is within variance_threshold +/- confidence_delta. Otherwise. if variance is too high/low, confidence will be 100%/0%.",
+      "parentUuid": "b0537133_759523be",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bcd0dbf_f8985e42",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-21T09:39:51Z",
+      "side": 1,
+      "message": "The unit is percentage\n\nThis is used for mitigate the effect of the noise from the sensor. If set to 100%, the average noise is cancelled out. This is set to 120% by default because the noise migh get larger than average sometimes.",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1b36cd_51a87839",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-21T09:39:51Z",
+      "side": 1,
+      "message": "The unit is percentage\n\nHigher the value, more difficult to enter the on-body from off-body",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44270064_ede4761d",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-21T09:39:51Z",
+      "side": 1,
+      "message": "The unit is percentage\n\nLower the value, more difficult to enter the off-body from on-body. Should be set less than the PLATFORM_EC_BODY_DETECTION_ON_BODY_CON",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "669096f8_d69a7d8a",
         "filename": "zephyr/Kconfig.body_detection",
         "patchSetId": 4
@@ -123,6 +240,53 @@
       "writtenOn": "2022-09-15T16:16:39Z",
       "side": 1,
       "message": "Ching-kang - can you suggest improvements for the prompt and help text for these items?",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e9b49b_0ff669a1",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-21T09:39:51Z",
+      "side": 1,
+      "message": "The unit is seconds\n\nHow long should we stay in on-body state before entering to off-body state when the motion confidence \u003c PLATFORM_EC_BODY_DETECTION_OFF_BODY_CON",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1042f13_62132314",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-09-21T09:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "669096f8_d69a7d8a",
       "range": {
         "startLine": 37,
         "startChar": 7,
