@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035aad46_149f73b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-22T20:03:22Z",
+      "side": 1,
+      "message": "I\u0027m updating the release branch only because we needed several changes to the Makefiles from `main` in order to be compatible with [these ebuild changes](https://crrev.com/c/3894586).",
+      "revId": "c453fd704268ef72de871b0c5ac7a989de662334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
