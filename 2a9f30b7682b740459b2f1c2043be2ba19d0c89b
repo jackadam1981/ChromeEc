@@ -22,6 +22,23 @@
       },
       "revId": "2a9f30b7682b740459b2f1c2043be2ba19d0c89b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "559393dc_32a379c3",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-22T21:36:33Z",
+      "side": 1,
+      "message": "I think the preferable solution here would be to align this chipset check with the one being performed in the DP helper.  \n\nWhile this solution works for this issue, it would result in a lot of console spam and wasted processing time for partners with no supported alternate modes (ex. Dell or Apple chargers which only report their vendor modes)",
+      "revId": "2a9f30b7682b740459b2f1c2043be2ba19d0c89b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
