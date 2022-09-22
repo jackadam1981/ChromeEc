@@ -18,6 +18,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c1cbab_4711d50f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-22T05:31:17Z",
+      "side": 1,
+      "message": "We have an open issue for this task.",
+      "parentUuid": "b13a7830_e17ecf65",
+      "revId": "9d77c2181e12b0e12cfb44885119f80b83d77d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce355262_c6bf97ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-22T05:31:17Z",
+      "side": 1,
+      "message": "We have an issue opened to address this. The tool that we are using to create the input file does not allow (currently) a method to specify the default signal level outside of the netname suffix.\n\nSo we are waiting for that tool to be updated to allow this value to be specified as well. \n\nTODO(b:/244441996): There are some errors in the main Rex EC GPIO spreadsheet\n * which is used as input to create this device tree file. Until that issue is\n * resolved, there are some edits required to this file to support EC\n * functionality.",
+      "parentUuid": "b13a7830_e17ecf65",
+      "revId": "9d77c2181e12b0e12cfb44885119f80b83d77d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad5fcfd0_f24621de",
