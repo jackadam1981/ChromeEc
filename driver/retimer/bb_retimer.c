@@ -43,6 +43,10 @@
  * accessed from multiple tasks.
  */
 static mutex_t bb_retimer_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
+/*
+ * Requested BB mux state.
+ */
+static mux_state_t bb_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /**
  * Utility functions
@@ -389,6 +393,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	*ack_required = false;
 
 	mutex_lock(&bb_retimer_lock[port]);
+	bb_mux_state[port] = mux_state;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -480,6 +485,39 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	return rv;
 }
 
+static int bb_set_idle_mode(const struct usb_mux *me, bool idle)
+{
+	bool usb3_enable;
+	int rv;
+	uint32_t reg_val;
+	int port = me->usb_port;
+
+	mutex_lock(&bb_retimer_lock[port]);
+
+	if (!(bb_mux_state[port] & USB_PD_MUX_USB_ENABLED)) {
+		mutex_unlock(&bb_retimer_lock[port]);
+		return EC_SUCCESS;
+	}
+
+	rv = bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE, &reg_val);
+	if (rv != EC_SUCCESS) {
+		mutex_unlock(&bb_retimer_lock[port]);
+		return rv;
+	}
+
+	usb3_enable = !idle;
+
+	/* Bit 5: BB_RETIMER_USB_3_CONNECTION */
+	WRITE_BIT(reg_val, 5, usb3_enable);
+	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, reg_val);
+
+	mutex_unlock(&bb_retimer_lock[port]);
+
+	ccprintf("%s: C%d: idle %d\n", __func__, port, idle);
+
+	return rv;
+}
+
 void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
 			   bool *ack_required)
 {
@@ -490,6 +528,7 @@ void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
 	*ack_required = false;
 
 	mutex_lock(&bb_retimer_lock[port]);
+	bb_mux_state[port] = mux_state;
 
 	if (bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE,
 			    &retimer_con_reg) != EC_SUCCESS) {
@@ -536,26 +575,7 @@ void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
 
 void bb_retimer_set_usb3(const struct usb_mux *me, bool enable)
 {
-	int rv;
-	uint32_t reg_val = 0;
-	int port = me->usb_port;
-
-	mutex_lock(&bb_retimer_lock[port]);
-
-	rv = bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE, &reg_val);
-	if (rv != EC_SUCCESS) {
-		mutex_unlock(&bb_retimer_lock[port]);
-		return;
-	}
-	/* Bit 5: USB_3_CONNECTION */
-	WRITE_BIT(reg_val, 5, enable);
-	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, reg_val);
-	if (rv != EC_SUCCESS) {
-		mutex_unlock(&bb_retimer_lock[port]);
-		return;
-	}
-
-	mutex_unlock(&bb_retimer_lock[port]);
+	bb_set_idle_mode(me, !enable);
 }
 
 #ifdef CONFIG_ZEPHYR
@@ -584,6 +604,9 @@ static int retimer_init(const struct usb_mux *me)
 {
 	int rv;
 	uint32_t data;
+	const int port = me->usb_port;
+
+	bb_mux_state[port] = USB_PD_MUX_NONE;
 
 	/* Burnside Bridge is powered by main AP rail */
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
@@ -627,6 +650,7 @@ static int retimer_init(const struct usb_mux *me)
 const struct usb_mux_driver bb_usb_retimer = {
 	.init = retimer_init,
 	.set = retimer_set_state,
+	.set_idle_mode = bb_set_idle_mode,
 	.enter_low_power_mode = retimer_low_power_mode,
 	.is_retimer_fw_update_capable = is_retimer_fw_update_capable,
 };
