@@ -16,6 +16,24 @@
       "message": "Looks like it gets coverage but not sure this is actually a useful test (unless we expect to be passing bad arguments to these function and depend on `EC_ERROR_INVAL` as the return code in that case)?",
       "revId": "5f3ca0aaf3a82c9416f67a63cae44e90a7a6621b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f12bc8_7892bb9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-22T16:36:44Z",
+      "side": 1,
+      "message": "Sigh, agreed.",
+      "parentUuid": "950d4897_fd1e1580",
+      "revId": "5f3ca0aaf3a82c9416f67a63cae44e90a7a6621b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
