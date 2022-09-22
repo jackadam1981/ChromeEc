@@ -16,6 +16,29 @@
       "message": "since this is generated file. do we need to fix the source and regenerate this file?",
       "revId": "9d77c2181e12b0e12cfb44885119f80b83d77d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5fcfd0_f24621de",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-22T02:36:38Z",
+      "side": 1,
+      "message": "seems like input if PLATFORM_EC_ASSERT_CCD_MODE_ON_DTS_CONNECT is not enabled",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "9d77c2181e12b0e12cfb44885119f80b83d77d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
