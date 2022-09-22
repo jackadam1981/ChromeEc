@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf5bebf_09cacc16",
+        "filename": "board/kukui_scp/ec.tasklist",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-22T10:14:04Z",
+      "side": 1,
+      "message": "The MT8183 stack size is 640. Why does MT8186 require 4096?",
+      "range": {
+        "startLine": 21,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "531788c7_dcff9590",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-22T10:14:04Z",
+      "side": 1,
+      "message": "this structure is not defined for MT8183",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab993fe1_e4a632d2",
+        "filename": "chip/mt_scp/mt818x/ipi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-22T10:14:04Z",
+      "side": 1,
+      "message": "Please move the platform definitions to video.c and use the following.\n```\nscp_run.dec_capability \u003d video_get_dec_capability();\nscp_run.enc_capability \u003d video_get_enc_capability();\n```",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd468b51_239fd6c0",
+        "filename": "chip/mt_scp/mt818x/video.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-22T10:14:04Z",
+      "side": 1,
+      "message": "I think using the filenames like video_cap.h/c would be more precise to describe the functions here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
