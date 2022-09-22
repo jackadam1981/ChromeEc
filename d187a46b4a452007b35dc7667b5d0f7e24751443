@@ -117,6 +117,30 @@
       },
       "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c546a8fd_ebe9cec7",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-22T23:30:27Z",
+      "side": 1,
+      "message": "Agree; bad performance and watchdog resets are a known issue on IT8xxx2 (b/240485526) so I don\u0027t think stack size is the issue here (unless it occurs reliably and increasing stack size causes it to stop?).",
+      "parentUuid": "c99bce67_9e087b3e",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
