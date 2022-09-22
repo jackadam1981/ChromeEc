@@ -492,6 +492,14 @@ static int bb_set_idle_mode(const struct usb_mux *me, bool idle)
 	uint32_t reg_val;
 	int port = me->usb_port;
 
+	if (port == 2) {
+		ccprintf("%s: C%d: idle %d (chipset S0ixS0 %d S3S0 %d ON %d )\n", __func__,
+			 port, idle,
+			 chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY),
+			 chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_SUSPEND),
+			 chipset_in_state(CHIPSET_STATE_ON));
+	}
+
 	mutex_lock(&bb_retimer_lock[port]);
 
 	if (!(bb_mux_state[port] & USB_PD_MUX_USB_ENABLED)) {
@@ -513,7 +521,8 @@ static int bb_set_idle_mode(const struct usb_mux *me, bool idle)
 
 	mutex_unlock(&bb_retimer_lock[port]);
 
-	ccprintf("%s: C%d: idle %d\n", __func__, port, idle);
+//	ccprintf("%s: C%d: idle %d (chipset ON %d)\n", __func__,
+//		 port, idle, chipset_in_state(CHIPSET_STATE_ON));
 
 	return rv;
 }
