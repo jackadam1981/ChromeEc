@@ -157,6 +157,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "719a1255_70640b97",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-22T04:50:10Z",
+      "side": 1,
+      "message": "banshee added `if (chipset_in_state(CHIPSET_STATE_ON))` here.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3787361\n\ni still haven\u0027t figured out why - when would this be false?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "666f5ac6db1e1205aad97306c1da2fc998399b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef66e2b2_b7fb6cdd",
