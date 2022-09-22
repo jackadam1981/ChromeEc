@@ -99,6 +99,30 @@
       },
       "revId": "9d77c2181e12b0e12cfb44885119f80b83d77d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7a42b1_469412cb",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-09-22T05:42:42Z",
+      "side": 1,
+      "message": "Based on this assumption, let\u0027s use ODR_HIGH. Also we tried using INPUT, the reboot case fails.",
+      "parentUuid": "a8c932e9_88f9e94b",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "9d77c2181e12b0e12cfb44885119f80b83d77d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
