@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9651c6_56975cfd",
+        "filename": "common/dps.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-09-22T03:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7123a0_2d27df3a",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 31
+      },
+      "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cffabe71_bccc813f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-20T09:00:05Z",
       "side": 1,
       "message": "Is the DPS task stack size in shortage?",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31bceeef_6dd94405",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-09-22T03:30:40Z",
+      "side": 1,
+      "message": "Yes, it is possible to have EC watchdog if the original DPS task size is used.",
+      "parentUuid": "cffabe71_bccc813f",
       "range": {
         "startLine": 50,
         "startChar": 9,
