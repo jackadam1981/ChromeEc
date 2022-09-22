@@ -39,6 +39,30 @@
       },
       "revId": "9d77c2181e12b0e12cfb44885119f80b83d77d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c932e9_88f9e94b",
+        "filename": "zephyr/projects/rex/generated.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-09-22T04:48:48Z",
+      "side": 1,
+      "message": "This would only be enabled if we want the EC to control this signal. Currently, all of our designs assume the GSC will control this signal.",
+      "parentUuid": "ad5fcfd0_f24621de",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "9d77c2181e12b0e12cfb44885119f80b83d77d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
