@@ -157,6 +157,24 @@
       "parentUuid": "0352e93a_7a22f43e",
       "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a099c790_51a86d5e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-22T00:04:36Z",
+      "side": 1,
+      "message": "\u003e \u003e Prashant, what specific timing does the AP need out of the hard reset flag? I know at one point, we\u0027d discussed always presenting it to possibly use for tracking which partner connections encounter errors, but it seems like its sole purpose right now is deeply tied to the mux programming requirements.\n\u003e \n\u003e Yeah, we want to report to userspace (at some point) that a hard reset has occured, but we haven\u0027t quite figured out what shape that takes (is it a metric? it is a notification?); it\u0027s something we should determine soon though.\n\n\n\u003e The issue with the timing is that when the kernel driver inits, it has no way of knowing what time the reset occured (it could have occured before the current enumeration completed, it could have occured *after* that); we can\u0027t assume it is stale since it could be a legitimate hard reset (which needs mux changes on the AP side); so we handle it as if it\u0027s still \"valid\" (i.e it just occured, which is how things would work post-boot).\n\nYes, these are the same questions I have\n\n\u003e \u003e The hard reset can be triggered if the EC cannot distinguish\n\u003e between a reset and a power-on reboot (such as occurs with the IT81302),\n\u003e \n\u003e A few questions:\n\u003e - Is it possible to limit this to boards that use this chip then?\n\nHmm yes - we could use a Kconfig item that indicates this behaviour.\nThis won\u0027t fix the underlying problem, just perhaps make it happen less often.\n\n\u003e - Is it an accurate statement that this is primarily being observed with servo v4p1 ?\n\nIt\u0027s been observed with a hub as well, but since we are still in the proto phase, we are obviously mostly using servos for testing. I don\u0027t know whether it is more commonly happening with v4p1 as opposed to v4.\n\n\u003e - FWIU this CL would always clear the flag whenever we go through PE_SNK_Ready or PE_SRC_Ready ? If so, even legitimate (i.e occuring after boot) Hard resets would get cleared out by the EC (since I imagine it would go to PE_{SNK,SRC}_Ready after the hard reset, right? I don\u0027t think that\u0027s what we want.\n\nYes, agree that this is just a workaround. Happy to hear alternative suggestions.\n \n\u003e Is the hard reset being triggered/sent out by the EC at a particular point in the code? I think we can safely ignore partner HARD_RESET events that are a direct response to hard resets that we (the DUT) initiate.\n\nThe linked bug has a lot of logs and observations.\nFeel free to add your thoughts and suggestions there.",
+      "parentUuid": "5f9870e5_e0e54ed5",
+      "revId": "10be1dcf539ae4a819a959048b7bf628ef863885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
