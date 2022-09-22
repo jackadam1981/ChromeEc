@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ff06de_92277118",
+        "filename": "common/dps.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-22T03:43:14Z",
+      "side": 1,
+      "message": "atomic_clear(\u0026flag);",
+      "range": {
+        "startLine": 505,
+        "startChar": 3,
+        "endLine": 505,
+        "endChar": 7
+      },
+      "revId": "e792fcadd8e1b76704d50da48a88271469579903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a22c3a_53652c48",
+        "filename": "common/dps.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-22T03:43:14Z",
+      "side": 1,
+      "message": "atomic_or(\u0026flag, DPS_FLAG_WAITING);\n\nand you also have to replace the flag usages below with atomic_* functions.",
+      "revId": "e792fcadd8e1b76704d50da48a88271469579903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -93,6 +93,30 @@
       },
       "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99bce67_9e087b3e",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-22T03:43:14Z",
+      "side": 1,
+      "message": "I would expect a stack overflow rather than a watchdog if the stack size is insufficient...",
+      "parentUuid": "31bceeef_6dd94405",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
