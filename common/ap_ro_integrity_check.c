@@ -262,6 +262,46 @@ static int ap_ro_erase_hash(void)
 	return rv;
 }
 
+static enum ap_ro_check_vc_errors write_ap_ro_check_data(uint8_t version,
+							 uint8_t type,
+							 uint16_t num_ranges,
+							 uint32_t data_offset,
+							 uint32_t *p_data,
+							 void *buf,
+							 size_t input_size)
+{
+	uint32_t i;
+	struct ap_ro_check_header check_header;
+	int rv;
+	size_t prog_size = sizeof(struct ap_ro_check_header) + input_size;
+
+	/* Verify the ap ro data will fit in the ap ro data flash */
+	if (data_offset < h1_flash_offset_ ||
+	    data_offset + prog_size > h1_flash_offset_ + AP_RO_DATA_SPACE_SIZE)
+		return ARCVE_BAD_PAYLOAD_SIZE;
+
+	for (i = 0; i < (prog_size / sizeof(uint32_t)); i++)
+		if (p_data[i] != ~0)
+			return ARCVE_ALREADY_PROGRAMMED;
+
+	check_header.version = version;
+	check_header.type = type;
+	check_header.num_ranges = num_ranges;
+	app_compute_hash(buf, input_size, &check_header.checksum,
+			 sizeof(check_header.checksum));
+
+	flash_open_ro_window(data_offset, prog_size);
+	rv = flash_physical_write(data_offset, sizeof(check_header),
+		(char *)&check_header);
+	if (rv == EC_SUCCESS)
+		rv = flash_physical_write(data_offset + sizeof(check_header),
+			input_size, buf);
+	flash_close_ro_window();
+	if (rv != EC_SUCCESS)
+		return ARCVE_FLASH_WRITE_FAILED;
+	return ARCVE_OK;
+}
+
 /*
  * Leaving this function available for testing, will not be necessary in prod
  * signed images.
@@ -270,12 +310,10 @@ static enum vendor_cmd_rc vc_seed_ap_ro_check(enum vendor_cmd_cc code,
 					      void *buf, size_t input_size,
 					      size_t *response_size)
 {
-	struct ap_ro_check_header check_header;
 	const struct ap_ro_check_payload *vc_payload = buf;
 	uint32_t vc_num_of_ranges;
 	uint32_t i;
 	uint8_t *response = buf;
-	size_t prog_size;
 	int rv;
 
 	*response_size = 1; /* Just in case there is an error. */
@@ -345,30 +383,15 @@ static enum vendor_cmd_rc vc_seed_ap_ro_check(enum vendor_cmd_cc code,
 		}
 	}
 
-	prog_size = sizeof(struct ap_ro_check_header) + input_size;
-	for (i = 0; i < (prog_size / sizeof(uint32_t)); i++)
-		if (((uint32_t *)p_chk)[i] != ~0) {
-			*response = ARCVE_ALREADY_PROGRAMMED;
-			return VENDOR_RC_NOT_ALLOWED;
-		}
-
-	check_header.version = AP_RO_HASH_LAYOUT_VERSION_1;
-	check_header.type = AP_RO_HASH_TYPE_FACTORY;
-	check_header.num_ranges = vc_num_of_ranges;
-	app_compute_hash(buf, input_size, &check_header.checksum,
-			 sizeof(check_header.checksum));
-
-	flash_open_ro_window(h1_flash_offset_, prog_size);
-	rv = flash_physical_write(h1_flash_offset_, sizeof(check_header),
-				  (char *)&check_header);
-	if (rv == EC_SUCCESS)
-		rv = flash_physical_write(h1_flash_offset_ +
-						  sizeof(check_header),
-					  input_size, buf);
-	flash_close_ro_window();
-
-	if (rv != EC_SUCCESS) {
-		*response = ARCVE_FLASH_WRITE_FAILED;
+	rv = write_ap_ro_check_data(AP_RO_HASH_LAYOUT_VERSION_1,
+				    AP_RO_HASH_TYPE_FACTORY,
+				    vc_num_of_ranges,
+				    h1_flash_offset_,
+				    (uint32_t *)p_chk,
+				    buf,
+				    input_size);
+	if (rv != ARCVE_OK) {
+		*response = rv;
 		return VENDOR_RC_WRITE_FLASH_FAIL;
 	}
 
