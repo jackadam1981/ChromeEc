@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "712938a3_f2c86f55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-22T19:42:03Z",
+      "side": 1,
+      "message": "responded to all comments",
+      "revId": "8c80fc26c246255efa6634395f6712d668d8aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08112360_586c5b1a",
@@ -43,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94e3aef4_acd34112",
+        "filename": "test/rollback_secret.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-22T19:42:03Z",
+      "side": 1,
+      "message": "ok, Thanks for the comment. I know how to do this. I will do it as a follow up CL",
+      "parentUuid": "08112360_586c5b1a",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "8c80fc26c246255efa6634395f6712d668d8aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f22843b7_b51e0914",
         "filename": "test/rollback_secret.c",
         "patchSetId": 11
@@ -54,6 +95,30 @@
       "writtenOn": "2022-09-22T19:05:57Z",
       "side": 1,
       "message": "nit: I think `real_secret` could be removed and just use `fake_latest_rollback_real`",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 26
+      },
+      "revId": "8c80fc26c246255efa6634395f6712d668d8aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd44e7fc_9b66a3af",
+        "filename": "test/rollback_secret.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2022-09-22T19:42:03Z",
+      "side": 1,
+      "message": "ok, Thanks for the comment. I know how to do this. I will do it as a follow up CL",
+      "parentUuid": "f22843b7_b51e0914",
       "range": {
         "startLine": 55,
         "startChar": 15,
