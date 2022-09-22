@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a874ec3_a52cb295",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-22T09:36:33Z",
+      "side": 1,
+      "message": "Your test code seems not testing any anx7447 specific features. Is it possible to use the generic tcpci emul instead?",
+      "range": {
+        "startLine": 811,
+        "startChar": 22,
+        "endLine": 811,
+        "endChar": 29
+      },
+      "revId": "fbbf8629277f5d9ef2108b8190b88606bebd16b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
