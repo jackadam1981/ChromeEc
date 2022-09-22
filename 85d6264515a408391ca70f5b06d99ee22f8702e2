@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db36df50_19f97f21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-09-22T13:21:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure I agree, if it was always meant to be overridden then we wouldn\u0027t have a default implementation. It\u0027s valid to test the default behavior of something (unless we only added it here for testing). I\u0027m sure there\u0027s a test that links common/system.c that can add a test for this very simply (maybe one of the legacy tests?)",
+      "revId": "85d6264515a408391ca70f5b06d99ee22f8702e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
