@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e462ae11_f9de8bab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-22T11:14:26Z",
+      "side": 1,
+      "message": "this also fixes trivial errors which should be done at the first CLs of adding MT8186 codec support. I think we should squash this to previous ones.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "15663f010d5234d7594029fa4b84c3992f44bcb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
