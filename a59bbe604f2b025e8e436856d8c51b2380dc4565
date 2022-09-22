@@ -153,6 +153,30 @@
       },
       "revId": "a59bbe604f2b025e8e436856d8c51b2380dc4565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213455eb_b21f126e",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-09-22T08:43:45Z",
+      "side": 1,
+      "message": "Another good option is that we can create a test which will check the state of the nRST line after running `flash_fp_mcu --hello` (or extend the existing one) but we need to somehow provide information about GPIO numbers (and maintain it) or hide it under some script. I think that fptool.py could help us with that.",
+      "parentUuid": "5383aab9_246ffd66",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 50
+      },
+      "revId": "a59bbe604f2b025e8e436856d8c51b2380dc4565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
