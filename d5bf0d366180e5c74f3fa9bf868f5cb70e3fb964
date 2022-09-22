@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc03ac5d_8372abd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-22T19:15:22Z",
+      "side": 1,
+      "message": "\u003e \"facillitate\" is a possible misspelling of \"facilitate\".\n\nPlease fix.",
+      "parentUuid": "b152f61e_2c8ed7b0",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "d5bf0d366180e5c74f3fa9bf868f5cb70e3fb964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d10af89_bf6ca00f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-22T19:15:22Z",
+      "side": 1,
+      "message": "I\u0027d run the whole driver suite, but CQ will do it for you if you haven\u0027t already",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "d5bf0d366180e5c74f3fa9bf868f5cb70e3fb964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7239cbf_1d641f49",
+        "filename": "zephyr/test/drivers/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-22T19:15:22Z",
+      "side": 1,
+      "message": "Nit - keep these in alphabetical order here, in testcase.yaml, and CMakeLists.txt",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "d5bf0d366180e5c74f3fa9bf868f5cb70e3fb964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
