@@ -31,6 +31,7 @@ void fp_clear_context(void)
 	templ_valid = 0;
 	templ_dirty = 0;
 	template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
+	fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
 	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(user_id, sizeof(user_id));
 	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());
@@ -151,9 +152,18 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
+	if (fp_encryption_status & FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) {
+		/* Clear the context to prevent leaking the data from previous
+		 * nonce context.
+		 */
+		fp_clear_context();
+	}
+
 	RAND_bytes(auth_nonce.data(), auth_nonce.size());
 
 	std::copy(auth_nonce.begin(), auth_nonce.end(), r->nonce);
+
+	fp_encryption_status |= FP_CONTEXT_AUTH_NONCE_SET;
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -166,6 +176,11 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 {
 	const auto *p =
 		static_cast<const ec_params_fp_nonce_context *>(args->params);
+
+	if (!(fp_encryption_status & FP_CONTEXT_AUTH_NONCE_SET)) {
+		CPRINTS("No existing auth nonce");
+		return EC_RES_ACCESS_DENIED;
+	}
 
 	ScopedFastCpu fast_cpu;
 
@@ -199,6 +214,8 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 	std::copy(raw_user_id.begin(), raw_user_id.end(),
 		  reinterpret_cast<uint8_t *>(user_id));
 
+	fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
+	fp_encryption_status |= FP_CONTEXT_STATUS_NONCE_CONTEXT_SET;
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
