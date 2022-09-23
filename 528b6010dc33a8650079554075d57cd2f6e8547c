@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df3a484_96968633",
+        "filename": "docs/zephyr/zephyr_tcpc.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-23T19:38:20Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_USB_PD_TCPM is not a valid config.\n\nThis section should be:\n\"See the file [Kconfig.tcpm] for all Kconfig options related to [TCPC]. You must enable the specific Kconfig option matching the TCPC chips used on your design.\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "528b6010dc33a8650079554075d57cd2f6e8547c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
