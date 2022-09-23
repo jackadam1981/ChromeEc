@@ -22,6 +22,30 @@
       },
       "revId": "5bf703c6bcc1f2d61cb136d3bff40cc4c6762347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d2c9f12_9c6a61f6",
+        "filename": "common/rgb_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2022-09-23T16:55:28Z",
+      "side": 1,
+      "message": "Setting gcc to 0 doesn\u0027t fix it as host sends set brightness command (HC 0x0023) before we reinitialize.\n\n22-09-23 16:52:37.134 [1.784536 HC 0x0023]\n22-09-23 16:52:37.137 [1.784765 RGBKBD: Re-initializing]\n22-09-23 16:52:37.142 [1.787992 RGBKBD: Initialized GRID0]\n22-09-23 16:52:37.145 [1.791229 RGBKBD: Initialized GRID1]",
+      "parentUuid": "a71b0052_9a2afa54",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "5bf703c6bcc1f2d61cb136d3bff40cc4c6762347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
