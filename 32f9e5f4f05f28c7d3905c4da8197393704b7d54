@@ -145,6 +145,24 @@
       "parentUuid": "6be4cada_1ddd8e83",
       "revId": "32f9e5f4f05f28c7d3905c4da8197393704b7d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e0c735_d2db6246",
+        "filename": "zephyr/test/drivers/i2c_controller/src/basic_i2c_device_emul.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-23T21:41:16Z",
+      "side": 1,
+      "message": "Ahh, gross.",
+      "parentUuid": "24d5f215_bb598782",
+      "revId": "32f9e5f4f05f28c7d3905c4da8197393704b7d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
