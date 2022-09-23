@@ -56,6 +56,8 @@ uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
 uint8_t pairing_key[FP_PK_LEN];
 /* The auth nonce for CK. */
 uint8_t auth_nonce[FP_CK_AUTH_NONCE_LEN];
+/* Status of the FP context. */
+uint32_t fp_context_status;
 /* Status of the FP encryption engine. */
 static uint32_t fp_encryption_status;
 
@@ -89,6 +91,7 @@ static void _fp_clear_context(void)
 
 	templ_valid = 0;
 	templ_dirty = 0;
+	fp_context_status = 0;
 	always_memset(fp_buffer, 0, sizeof(fp_buffer));
 	always_memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
 	always_memset(user_id, 0, sizeof(user_id));
@@ -316,6 +319,7 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 	/* Set the user_id. */
 	memcpy(user_id, raw_user_id, FP_CONTEXT_USERID_LEN);
 
+	fp_context_status |= FP_CONTEXT_STATUS_NONCE_CONTEXT;
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,

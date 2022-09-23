@@ -68,6 +68,8 @@ extern uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
 extern uint8_t pairing_key[FP_PK_LEN];
 /* The auth nonce for CK. */
 extern uint8_t auth_nonce[FP_CK_AUTH_NONCE_LEN];
+/* Status of the FP context. */
+extern uint32_t fp_context_status;
 
 extern atomic_t fp_events;
 
