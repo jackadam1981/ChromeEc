@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "aes.h"
+#include "aes-ctr.h"
 #include "atomic.h"
 #include "common.h"
 #include "cryptoc/p256.h"
@@ -497,4 +499,57 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
+		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_nonce_context(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_nonce_context *p = args->params;
+	uint8_t context_key[FP_CONTEXT_KEY_LEN];
+	uint8_t raw_user_id[FP_CONTEXT_USERID_LEN];
+	uint8_t iv[FP_CONTEXT_USERID_IV_LEN];
+	uint8_t *ck;
+	int res;
+	AES_KEY aes_key;
+	uint8_t ecount_buf[16];
+	unsigned int block_num;
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, auth_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&ctx, p->gsc_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&ctx, pairing_key, FP_PK_LEN);
+	ck = SHA256_final(&ctx);
+
+	memcpy(context_key, ck, FP_CONTEXT_KEY_LEN);
+
+	res = AES_set_encrypt_key(context_key, 256, &aes_key);
+	if (res) {
+		CPRINTS("Failed to set encryption key: %d", res);
+		return EC_RES_UNAVAILABLE;
+	}
+
+	memcpy(iv, p->enc_user_id_iv, FP_CONTEXT_USERID_IV_LEN);
+
+	/* The AES CTR is using the same function for encryption & decryption.
+	 */
+	res = CRYPTO_ctr128_encrypt(p->enc_user_id, raw_user_id,
+				    FP_CONTEXT_USERID_LEN, &aes_key, iv,
+				    ecount_buf, &block_num,
+				    (block128_f)AES_encrypt);
+	if (!res) {
+		CPRINTS("Failed to decrypt: %d", res);
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (p->clear_context) {
+		/* Clear the previous context. */
+		fp_reset_and_clear_context();
+	}
+
+	/* Set the user_id. */
+	memcpy(user_id, raw_user_id, FP_CONTEXT_USERID_LEN);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
