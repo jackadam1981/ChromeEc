@@ -62,8 +62,8 @@ uint32_t templ_dirty;
 uint32_t user_id[FP_CONTEXT_USERID_WORDS];
 /* Part of the IKM used to derive encryption keys received from the TPM. */
 uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
-/* Status of the FP encryption engine. */
-static uint32_t fp_encryption_status;
+/* Status of the FP encryption engine & context. */
+uint32_t fp_encryption_status;
 
 atomic_t fp_events;
 
@@ -93,6 +93,7 @@ static void _fp_clear_context(void)
 {
 	templ_valid = 0;
 	templ_dirty = 0;
+	fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
 	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
 	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(user_id, sizeof(user_id));
@@ -250,7 +251,14 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 		if (sensor_mode & FP_MODE_RESET_SENSOR)
 			return EC_RES_BUSY;
 
+		if (fp_encryption_status &
+		    FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) {
+			/* Clear the context to prevent downgrade attack. */
+			_fp_clear_context();
+		}
+
 		memcpy(user_id, p->userid, sizeof(user_id));
+
 		return EC_RES_SUCCESS;
 	}
 
