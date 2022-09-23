@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63461a5c_2f12e746",
+        "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
+        "patchSetId": 60
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-23T19:41:47Z",
+      "side": 1,
+      "message": "This should be `CONFIG_PLATFORM_EC_USBC_SS_MUX`.",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "cfa8036d0be2da148d2087c26d28e20ab5577118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c57b07f_33a7c4da",
+        "filename": "docs/zephyr/zephyr_usbc_ss_mux_and_retimer.md",
+        "patchSetId": 60
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-23T19:41:47Z",
+      "side": 1,
+      "message": "Change this to:\n\"You must also enable the Kconfig option for the specific muxex and retimers used in your design.  These Kconfig options are found in the [Kconfig.usb_mux] and [Kconfig.retimer], respectively.\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "cfa8036d0be2da148d2087c26d28e20ab5577118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
