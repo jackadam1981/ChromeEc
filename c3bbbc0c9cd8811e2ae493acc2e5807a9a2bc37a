@@ -16,6 +16,144 @@
       "message": "Confirmed CQ ran this new test.\n\n`always_memset passed! (0.018 seconds)`",
       "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964d4375_248b97c8",
+        "filename": "test/always_memset.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T17:53:53Z",
+      "side": 1,
+      "message": "should be `sizeof(buf)`?",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 36,
+        "endChar": 49
+      },
+      "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d96fd8c_68ab003d",
+        "filename": "test/always_memset.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T17:53:53Z",
+      "side": 1,
+      "message": "Using `-O3`, right? Might be worth mentioning since the",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca43cff4_5382c485",
+        "filename": "test/always_memset.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T17:53:53Z",
+      "side": 1,
+      "message": "Could you make this more robust (not having to rely on accidentally using too much stack in the caller) if immediately after calling calling `exercise_memset`, you did a `memcpy` to a local buffer and do the comparisons on that?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7444555e_ae252097",
+        "filename": "test/always_memset.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T17:53:53Z",
+      "side": 1,
+      "message": "Does adding `__maybe_unused` to `space` work?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07223321_b4cd91fe",
+        "filename": "test/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T17:53:53Z",
+      "side": 1,
+      "message": "Could you also add it to the list of [tests for the FPMCU boards](https://chromium.googlesource.com/chromiumos/platform/ec/+/71b2ef709dcb14260f5fdaa3ab4ced005a29fb46/board/hatch_fp/build.mk#28) too?\n\nAnd the [`run_device_tests.py` script](https://chromium.googlesource.com/chromiumos/platform/ec/+/71b2ef709dcb14260f5fdaa3ab4ced005a29fb46/test/run_device_tests.py#195)?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3cda20d_c4f6fc20",
+        "filename": "test/test_config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T17:53:53Z",
+      "side": 1,
+      "message": "It looks like the [host board sets `CONFIG_LIBCRYPTOC`](https://chromium.googlesource.com/chromiumos/platform/ec/+/71b2ef709dcb14260f5fdaa3ab4ced005a29fb46/board/host/board.h#28). This is for compiling the tests for on-device boards that don\u0027t set it?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

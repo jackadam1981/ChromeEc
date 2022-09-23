@@ -93,6 +93,30 @@
       },
       "revId": "bcd3b06bae7c451f849f220fe0aa41da50764204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0397441_f55c3991",
+        "filename": "test/always_memset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T17:53:53Z",
+      "side": 1,
+      "message": "FYI, It looks like [`memset_explicit`](https://open-std.org/jtc1/sc22/wg14/www/docs/n2897.htm) might finally be [coming to C23](https://thephd.dev/c23-is-coming-here-is-what-is-on-the-menu).\n\nIn `libbrillo`, I added [`secure_clear`](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2021/p1315r7.html), which was the previously proposed name for `memset_explicit`.",
+      "parentUuid": "04835bd5_da49f359",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "bcd3b06bae7c451f849f220fe0aa41da50764204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
