@@ -1,12 +1,12 @@
 /* ====================================================================
- * Copyright (c) 2002-2006 The OpenSSL Project.  All rights reserved.
+ * Copyright (c) 2008 The OpenSSL Project.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -46,88 +46,28 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  * ==================================================================== */
 
-#ifndef __CROS_EC_AES_H
-#define __CROS_EC_AES_H
+#ifndef __CROS_EC_AES_CTR_H
+#define __CROS_EC_AES_CTR_H
 
-#include <stdint.h>
+#include "aes.h"
+#include "common.h"
+#include "util.h"
 
-#define AES_ENCRYPT 1
-#define AES_DECRYPT 0
+// CTR.
 
-/* AES_MAXNR is the maximum number of AES rounds. */
-#define AES_MAXNR 14
-
-#define AES_BLOCK_SIZE 16
-
-/* block128_f is the type of a 128-bit, block cipher. */
+// block128_f is the type of a 128-bit, block cipher.
 typedef void (*block128_f)(const uint8_t in[16], uint8_t out[16],
 			   const void *key);
 
-/*
- * aes_key_st should be an opaque type, but EVP requires that the size be
- * known.
- */
-struct aes_key_st {
-  uint32_t rd_key[4 * (AES_MAXNR + 1)];
-  unsigned rounds;
-};
-typedef struct aes_key_st AES_KEY;
+// CRYPTO_ctr128_encrypt encrypts (or decrypts, it's the same in CTR mode)
+// |len| bytes from |in| to |out| using |block| in counter mode. There's no
+// requirement that |len| be a multiple of any value and any partial blocks are
+// stored in |ecount_buf| and |*num|, which must be zeroed before the initial
+// call. The counter is a 128-bit, big-endian value in |ivec| and is
+// incremented by this function. It returns one on success and zero otherwise.
+int CRYPTO_ctr128_encrypt(const uint8_t *in, uint8_t *out, size_t len,
+			  const AES_KEY *key, uint8_t ivec[16],
+			  uint8_t ecount_buf[16], unsigned *num,
+			  block128_f block);
 
-/*
- * These functions are provided by either common/aes.c, or assembly code,
- * and should not be called directly.
- */
-void aes_nohw_encrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key);
-void aes_nohw_decrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key);
-int aes_nohw_set_encrypt_key(const uint8_t *key, unsigned bits,
-                             AES_KEY *aeskey);
-int aes_nohw_set_decrypt_key(const uint8_t *key, unsigned bits,
-                             AES_KEY *aeskey);
-
-/**
- * AES_set_encrypt_key configures |aeskey| to encrypt with the |bits|-bit key,
- * |key|.
- *
- * WARNING: unlike other OpenSSL functions, this returns zero on success and a
- * negative number on error.
- */
-static inline int AES_set_encrypt_key(const uint8_t *key, unsigned int bits,
-				      AES_KEY *aeskey)
-{
-	return aes_nohw_set_encrypt_key(key, bits, aeskey);
-}
-
-/**
- * AES_set_decrypt_key configures |aeskey| to decrypt with the |bits|-bit key,
- * |key|.
- *
- * WARNING: unlike other OpenSSL functions, this returns zero on success and a
- * negative number on error.
- */
-static inline int AES_set_decrypt_key(const uint8_t *key, unsigned int bits,
-				      AES_KEY *aeskey)
-{
-	return aes_nohw_set_decrypt_key(key, bits, aeskey);
-}
-
-/**
- * AES_encrypt encrypts a single block from |in| to |out| with |key|. The |in|
- * and |out| pointers may overlap.
- */
-static inline void AES_encrypt(const uint8_t *in, uint8_t *out,
-			       const AES_KEY *key)
-{
-	aes_nohw_encrypt(in, out, key);
-}
-
-/**
- * AES_decrypt decrypts a single block from |in| to |out| with |key|. The |in|
- * and |out| pointers may overlap.
- */
-static inline void AES_decrypt(const uint8_t *in, uint8_t *out,
-			const AES_KEY *key)
-{
-	aes_nohw_decrypt(in, out, key);
-}
-
-#endif  /* __CROS_EC_AES_H */
+#endif // __CROS_EC_AES_CTR_H
