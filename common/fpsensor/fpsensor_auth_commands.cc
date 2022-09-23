@@ -159,3 +159,47 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
 		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_nonce_context(struct host_cmd_handler_args *args)
+{
+	const auto *p =
+		static_cast<const ec_params_fp_nonce_context *>(args->params);
+
+	ScopedFastCpu fast_cpu;
+
+	std::array<uint8_t, SHA256_DIGEST_SIZE> ck;
+	enum ec_error_list ret =
+		generate_ck(auth_nonce.data(), auth_nonce.size(), p->gsc_nonce,
+			    sizeof(p->gsc_nonce), pairing_key.data(),
+			    pairing_key.size(), ck.data(), ck.size());
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("nonce_context: Failed to generate ck");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	static_assert(sizeof(user_id) == sizeof(p->enc_user_id));
+	std::array<uint8_t, sizeof(user_id)> raw_user_id;
+	std::copy(std::begin(p->enc_user_id), std::end(p->enc_user_id),
+		  raw_user_id.data());
+
+	ret = decrypt_data_with_ck_in_place(ck.data(), ck.size(),
+					    p->enc_user_id_iv,
+					    sizeof(p->enc_user_id_iv),
+					    raw_user_id.data(),
+					    raw_user_id.size());
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("nonce_context: Failed to decrypt data with ck");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	/* Set the user_id. */
+	std::copy(raw_user_id.begin(), raw_user_id.end(),
+		  reinterpret_cast<uint8_t *>(user_id));
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
+		     EC_VER_MASK(0));
