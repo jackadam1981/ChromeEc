@@ -249,6 +249,8 @@ static enum ec_error_list fill_ecdh_share_secret(const EC_KEY &private_key,
 BUILD_ASSERT(FP_CONTEXT_KEY_LEN == FP_CONTEXT_USERID_LEN);
 BUILD_ASSERT(FP_CONTEXT_USERID_IV_LEN == AES_BLOCK_SIZE);
 
+BUILD_ASSERT(FP_POSITIVE_MATCH_SECRET_BYTES == SHA256_DIGEST_SIZE);
+
 /* The GSC paring key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 /* The auth nonce for CK. */
@@ -464,3 +466,105 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_read_match_secret_with_pubkey *>(
+			args->params);
+	auto *response =
+		static_cast<ec_response_fp_read_match_secret_with_pubkey *>(
+			args->response);
+	int8_t fgr = params->fgr;
+
+	ScopedFastCpu fast_cpu;
+
+	uint8_t privkey[FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN];
+
+	trng_init();
+	trng_rand_bytes(privkey, FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN);
+	trng_rand_bytes(response->iv, FP_EC_PUBLIC_KEY_IV_LEN);
+	trng_exit();
+
+	bssl::UniquePtr<EC_KEY> ecdh_key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (ecdh_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_KEY_generate_key(ecdh_key.get()) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	/* POINT_CONVERSION_UNCOMPRESSED indicates that the point is encoded as
+	 * z||x||y, where z is the octet 0x04. */
+	uint8_t *pubkey_ptr = nullptr;
+	if (EC_KEY_key2buf(ecdh_key.get(), POINT_CONVERSION_UNCOMPRESSED,
+			   &pubkey_ptr, nullptr) !=
+	    FP_PAIRING_KEY_EC_PUBLIC_KEY_POINT_LEN * 2 + 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+	bssl::UniquePtr<uint8_t> pubkey_data(pubkey_ptr);
+	memcpy(&response->pubkey, pubkey_data.get() + 1,
+	       FP_PAIRING_KEY_EC_PUBLIC_KEY_POINT_LEN * 2);
+
+	const EC_GROUP *group = EC_KEY_get0_group(ecdh_key.get());
+
+	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group));
+
+	if (public_point == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	/* POINT_CONVERSION_UNCOMPRESSED format point. */
+	uint8_t public_point_buf[FP_EC_PUBLIC_KEY_LEN * 2 + 1];
+	public_point_buf[0] = POINT_CONVERSION_UNCOMPRESSED;
+	memcpy(public_point_buf + 1, &params->pubkey, FP_EC_PUBLIC_KEY_LEN * 2);
+
+	if (EC_POINT_oct2point(group, public_point.get(), public_point_buf,
+			       sizeof(public_point_buf), nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	uint8_t enc_key[SHA256_DIGEST_SIZE];
+	if (ECDH_compute_key_fips(enc_key, SHA256_DIGEST_SIZE,
+				  public_point.get(), ecdh_key.get()) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	AES_KEY aes_key;
+	int res = AES_set_encrypt_key(enc_key, 256, &aes_key);
+
+	if (res) {
+		CPRINTS("Failed to set encryption key: %d", res);
+		return EC_RES_UNAVAILABLE;
+	}
+
+	uint8_t aes_iv[FP_CONTEXT_USERID_IV_LEN];
+
+	memcpy(aes_iv, response->iv, FP_EC_PUBLIC_KEY_IV_LEN);
+
+	enum ec_status status = fp_read_match_secret(fgr, response->enc_secret);
+	if (status != EC_RES_SUCCESS) {
+		return status;
+	}
+
+	unsigned int block_num = 0;
+	uint8_t ecount_buf[AES_BLOCK_SIZE];
+
+	/* The AES CTR used the same function for encryption & decryption. */
+	AES_ctr128_encrypt(response->enc_secret, response->enc_secret,
+			   FP_CONTEXT_USERID_LEN, &aes_key, aes_iv, ecount_buf,
+			   &block_num);
+
+	/* Clear the key material. */
+	OPENSSL_cleanse(&aes_key, sizeof(aes_key));
+
+	args->response_size = sizeof(*response);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
+		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
