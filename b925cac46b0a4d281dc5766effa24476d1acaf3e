@@ -70,6 +70,58 @@
       "parentUuid": "aeec2856_6f36e248",
       "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "147d75b1_cd35c81e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-23T03:18:22Z",
+      "side": 1,
+      "message": "If it\u0027s really just a debug feature then it\u0027s probably okay despite the limitations. I think the naming and documentation should be clearer about that though (see other comment).",
+      "parentUuid": "3d2d0f5d_71dce49f",
+      "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39bb0f98_73fe8835",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-23T03:18:22Z",
+      "side": 1,
+      "message": "I\u0027d prefer to give this a name more like \"DEBUG_MODE\" (and change the next line similarly) since this is really about supporting debug mode (which might include more features in the future) and not inhibiting shutdown per se.",
+      "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9113ec3_44064d74",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-23T03:18:22Z",
+      "side": 1,
+      "message": "Guard this with the kconfig option, since it\u0027s not needed if that is disabled and you can drop the `__maybe_unused` then.\n\nNaming it `in_debug_mode` might be more descriptive, too.",
+      "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
