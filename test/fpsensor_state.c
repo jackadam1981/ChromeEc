@@ -587,6 +587,79 @@ test_static int test_fp_command_nonce_context_clear(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_fp_command_nonce_context_limit(void)
+{
+	int rv;
+	struct ec_params_fp_context_v1 ctx_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+	};
+	struct ec_response_fp_generate_nonce nonce_response;
+	struct ec_params_fp_nonce_context nonce_params = {
+		.clear_context = 1,
+	};
+	rv = test_send_host_command(EC_CMD_FP_CONTEXT, 1, &ctx_params,
+				    sizeof(ctx_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_CONTEXT, 1, &ctx_params,
+				    sizeof(ctx_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
+				    sizeof(nonce_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_command_establish_pk_without_seed);
@@ -609,5 +682,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_generate_nonce);
 	RUN_TEST(test_fp_command_nonce_context);
 	RUN_TEST(test_fp_command_nonce_context_clear);
+	RUN_TEST(test_fp_command_nonce_context_limit);
 	test_print_result();
 }
