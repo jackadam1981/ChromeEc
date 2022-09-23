@@ -16,6 +16,23 @@
       "message": "Hi Eric,\ncould you help to review the CL, thanks.",
       "revId": "f8e15ff281288dc5befbc1eb3f9a57f3949834a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a386b4_8f8d760f",
+        "filename": "zephyr/projects/corsola/motionsense_steelix.dts",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-09-23T02:58:47Z",
+      "side": 1,
+      "message": "The bma4xx, and bmi3xx parts are shared between kingler and steelix.\nTo reduce the code duplication, could we use the DTS overwrite rules to only modify the different parts only?\n\n\nreference: https://docs.zephyrproject.org/3.1.0/build/dts/howtos.html#use-devicetree-overlays",
+      "revId": "f8e15ff281288dc5befbc1eb3f9a57f3949834a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
