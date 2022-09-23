@@ -534,6 +534,19 @@ test_static int test_fp_command_load_pk_fail(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_fp_command_generate_nonce(void)
+{
+	int rv;
+	struct ec_response_fp_generate_nonce nonce_response;
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_command_establish_pk_without_seed);
@@ -553,5 +566,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_establish_and_load_pk);
 	RUN_TEST(test_fp_command_establish_pk_fail);
 	RUN_TEST(test_fp_command_load_pk_fail);
+	RUN_TEST(test_fp_command_generate_nonce);
 	test_print_result();
 }
