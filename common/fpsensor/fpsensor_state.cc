@@ -302,15 +302,10 @@ void fp_disable_positive_match_secret(struct positive_match_secret_state *state)
 	state->deadline.val = 0;
 }
 
-static enum ec_status
-fp_command_read_match_secret(struct host_cmd_handler_args *args)
+static enum ec_status fp_read_match_secret(
+	int8_t fgr,
+	uint8_t positive_match_secret[FP_POSITIVE_MATCH_SECRET_BYTES])
 {
-	const struct ec_params_fp_read_match_secret *params =
-		static_cast<const ec_params_fp_read_match_secret *>(
-			args->params);
-	struct ec_response_fp_read_match_secret *response =
-		static_cast<ec_response_fp_read_match_secret *>(args->response);
-	int8_t fgr = params->fgr;
 	timestamp_t now = get_time();
 	struct positive_match_secret_state state_copy =
 		positive_match_secret_state;
@@ -333,7 +328,7 @@ fp_command_read_match_secret(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	if (derive_positive_match_secret(response->positive_match_secret,
+	if (derive_positive_match_secret(positive_match_secret,
 					 fp_positive_match_salt[fgr]) !=
 	    EC_SUCCESS) {
 		CPRINTS("Failed to derive positive match secret for finger %d",
@@ -342,6 +337,27 @@ fp_command_read_match_secret(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 	}
 	CPRINTS("Derived positive match secret for finger %d", fgr);
+
+	return EC_RES_SUCCESS;
+}
+
+static enum ec_status
+fp_command_read_match_secret(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_read_match_secret *params =
+		static_cast<const ec_params_fp_read_match_secret *>(
+			args->params);
+	struct ec_response_fp_read_match_secret *response =
+		static_cast<ec_response_fp_read_match_secret *>(args->response);
+	int8_t fgr = params->fgr;
+
+	ec_status ret =
+		fp_read_match_secret(fgr, response->positive_match_secret);
+
+	if (ret != EC_RES_SUCCESS) {
+		return ret;
+	}
+
 	args->response_size = sizeof(*response);
 
 	return EC_RES_SUCCESS;
@@ -536,16 +552,14 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 	struct ec_response_fp_generate_nonce *r =
 		static_cast<ec_response_fp_generate_nonce *>(args->response);
 
-<<<<<<< HEAD
 	ScopedFastCpu fast_cpu;
-=======
+
 	if (fp_context_status & FP_CONTEXT_STATUS_NONCE_CONTEXT) {
 		/* Clear the context to prevent leaking the data from previous
 		 * nonce context.
 		 */
 		_fp_clear_context();
 	}
->>>>>>> b60075dd4d (fpsensor: Add limits to nonce context)
 
 	trng_init();
 	trng_rand_bytes(auth_nonce, FP_CK_AUTH_NONCE_LEN);
@@ -621,3 +635,91 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
+
+BUILD_ASSERT(FP_POSITIVE_MATCH_SECRET_BYTES == SHA256_DIGEST_SIZE);
+
+static enum ec_status
+fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_read_match_secret_with_pubkey *params =
+		static_cast<const ec_params_fp_read_match_secret_with_pubkey *>(
+			args->params);
+	struct ec_response_fp_read_match_secret_with_pubkey *response =
+		static_cast<ec_response_fp_read_match_secret_with_pubkey *>(
+			args->response);
+	int8_t fgr = params->fgr;
+
+	ScopedFastCpu fast_cpu;
+
+	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
+
+	trng_init();
+	trng_rand_bytes(privkey, FP_PK_EC_PRIVATE_KEY_LEN);
+	trng_rand_bytes(response->iv, FP_EC_PUBLIC_KEY_IV_LEN);
+	trng_exit();
+
+	p256_int p256_n, p256_x, p256_y;
+
+	p256_from_bin(privkey, &p256_n);
+
+	p256_base_point_mul(&p256_n, &p256_x, &p256_y);
+
+	p256_to_bin(&p256_x, response->pubkey_x);
+	p256_to_bin(&p256_y, response->pubkey_y);
+
+	p256_from_bin(params->pubkey_x, &p256_x);
+	p256_from_bin(params->pubkey_y, &p256_y);
+	p256_point_mul(&p256_n, &p256_x, &p256_y, &p256_x, &p256_y);
+
+	uint8_t share_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
+
+	p256_to_bin(&p256_x, share_secret);
+
+	/* Clear the private key and share_secret material. */
+	always_memset(privkey, 0, sizeof(privkey));
+	always_memset(&p256_n, 0, sizeof(p256_n));
+	always_memset(&p256_x, 0, sizeof(p256_x));
+	always_memset(&p256_y, 0, sizeof(p256_y));
+
+	/* Sha256 the share_secret. */
+	struct sha256_ctx ctx;
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, share_secret, FP_POSITIVE_MATCH_SECRET_BYTES);
+
+	uint8_t *tmp = SHA256_final(&ctx);
+	AES_KEY aes_key;
+	int res = AES_set_encrypt_key(tmp, 256, &aes_key);
+
+	if (res) {
+		CPRINTS("Failed to set encryption key: %d", res);
+		return EC_RES_UNAVAILABLE;
+	}
+
+	uint8_t aes_iv[FP_CONTEXT_USERID_IV_LEN];
+
+	memcpy(aes_iv, response->iv, FP_EC_PUBLIC_KEY_IV_LEN);
+
+	enum ec_status status = fp_read_match_secret(fgr, share_secret);
+	if (status != EC_RES_SUCCESS) {
+		return status;
+	}
+
+	unsigned int block_num = 0;
+	uint8_t ecount_buf[AES_BLOCK_SIZE];
+
+	/* The AES CTR used the same function for encryption & decryption. */
+	AES_ctr128_encrypt(share_secret, response->enc_secret,
+			   FP_CONTEXT_USERID_LEN, &aes_key, aes_iv, ecount_buf,
+			   &block_num);
+
+	/* Clear the key material. */
+	always_memset(&aes_key, 0, sizeof(aes_key));
+	always_memset(&ctx, 0, sizeof(ctx));
+
+	args->response_size = sizeof(*response);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
+		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
