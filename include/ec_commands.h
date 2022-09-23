@@ -7623,6 +7623,14 @@ struct ec_response_fp_establish_pk_wrap {
 	uint8_t enc_pk[FP_PK_LEN];
 } __ec_align4;
 
+#define EC_CMD_FP_LOAD_PK 0x0412
+
+/* This struct should be the same as ec_response_fp_establish_pk_wrap. */
+struct ec_params_fp_load_pk {
+	struct ec_fp_pk_encryption_metadata enc_pk_info;
+	uint8_t enc_pk[FP_PK_LEN];
+} __ec_align4;
+
 /* The positive match secret has the length of the SHA256 digest. */
 #define FP_POSITIVE_MATCH_SECRET_BYTES 32
 struct ec_response_fp_read_match_secret {
