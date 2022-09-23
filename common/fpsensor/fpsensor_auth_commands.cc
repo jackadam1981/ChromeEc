@@ -28,6 +28,26 @@ extern "C" {
 #include "fpsensor_utils.h"
 #include "scoped_fast_cpu.h"
 
+/* The GSC paring key. */
+static uint8_t pairing_key[FP_PK_LEN];
+
+/**
+ * @warning |fp_buffer| contains data used by the matching algorithm that must
+ * be released by calling fp_sensor_deinit() first. Call
+ * fp_reset_and_clear_context instead of calling this directly.
+ */
+static void _fp_clear_context(void)
+{
+	templ_valid = 0;
+	templ_dirty = 0;
+	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
+	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
+	OPENSSL_cleanse(user_id, sizeof(user_id));
+	fp_disable_positive_match_secret(&positive_match_secret_state);
+	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
+		fp_clear_finger_context(idx);
+}
+
 static enum ec_status
 fp_command_establish_pk_keygen(struct host_cmd_handler_args *args)
 {
@@ -252,3 +272,38 @@ fp_command_establish_pk_wrap(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PK_WRAP, fp_command_establish_pk_wrap,
 		     EC_VER_MASK(0));
+
+static enum ec_status fp_command_load_pk(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_load_pk *>(args->params);
+
+	ScopedFastCpu fast_cpu;
+
+	/* Clear the context to prevent leaking the existing template. */
+	_fp_clear_context();
+
+	uint8_t key[SBP_ENC_KEY_LEN];
+	int ret =
+		derive_encryption_key(key, params->enc_pk_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_load: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	memcpy(pairing_key, params->enc_pk, FP_PK_LEN);
+
+	/* Decrypt the secret blob in-place. */
+	ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, pairing_key, pairing_key,
+			      FP_PK_EC_PRIVATE_KEY_LEN,
+			      params->enc_pk_info.nonce, FP_PK_NONCE_BYTES,
+			      params->enc_pk_info.tag, FP_PK_TAG_BYTES);
+	OPENSSL_cleanse(key, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_load: Failed to decipher pk");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PK, fp_command_load_pk, EC_VER_MASK(0));
