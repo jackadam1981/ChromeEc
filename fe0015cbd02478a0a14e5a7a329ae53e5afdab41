@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05d91a8_7811c6d7",
+        "filename": "board/crota/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2022-09-23T18:37:42Z",
+      "side": 1,
+      "message": "We should not make decisions based on sku_id (at most board_version in some situations).\n\nFor this particular case fw_config is more appropriate.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "fe0015cbd02478a0a14e5a7a329ae53e5afdab41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
