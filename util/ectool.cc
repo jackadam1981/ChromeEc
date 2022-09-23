@@ -3240,6 +3240,7 @@ int read_mapped_temperature(int id)
 	return rv;
 }
 
+#ifdef CONFIG_THROTTLE_AP
 static int get_thermal_fan_percent(int temp, int sensor_id)
 {
 	struct ec_params_thermal_get_threshold_v1 p;
@@ -3259,6 +3260,7 @@ static int get_thermal_fan_percent(int temp, int sensor_id)
 	return 100 * (temp - r.temp_fan_off) /
 	       (r.temp_fan_max - r.temp_fan_off);
 }
+#endif
 
 static int cmd_temperature_print(int id, int mtemp)
 {
@@ -3272,8 +3274,11 @@ static int cmd_temperature_print(int id, int mtemp)
 			sizeof(r));
 	if (rc < 0)
 		return rc;
-	printf("%-20s  %d K (= %d C) %11d%%\n", r.sensor_name, temp,
-	       K_TO_C(temp), get_thermal_fan_percent(temp, id));
+	printf("%-20s  %d K (= %d C)", r.sensor_name, temp,
+	       K_TO_C(temp));
+#ifdef CONFIG_THROTTLE_AP
+	printf(" %11d%%", get_thermal_fan_percent(temp, id));
+#endif
 
 	return 0;
 }
@@ -3310,6 +3315,7 @@ int cmd_temperature(int argc, char *argv[])
 				break;
 			default:
 				cmd_temperature_print(id, mtemp);
+				printf("\n");
 			}
 		}
 		return 0;
