@@ -38,6 +38,8 @@ test_mockable_static void smi_sensor_failure_warning(void)
 
 int thermal_fan_percent(int low, int high, int cur)
 {
+	if (low == high)
+		return -1;
 	if (cur < low)
 		return 0;
 	if (cur > high)
