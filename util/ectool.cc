@@ -3272,8 +3272,11 @@ static int cmd_temperature_print(int id, int mtemp)
 			sizeof(r));
 	if (rc < 0)
 		return rc;
-	printf("%-20s  %d K (= %d C) %11d%%\n", r.sensor_name, temp,
-	       K_TO_C(temp), get_thermal_fan_percent(temp, id));
+	printf("%-20s  %d K (= %d C)", r.sensor_name, temp,
+	       K_TO_C(temp));
+
+	if(IS_ENABLED(CONFIG_THROTTLE_AP))
+		printf(" %11d%%", get_thermal_fan_percent(temp, id));
 
 	return 0;
 }
@@ -3310,6 +3313,7 @@ int cmd_temperature(int argc, char *argv[])
 				break;
 			default:
 				cmd_temperature_print(id, mtemp);
+				printf("\n");
 			}
 		}
 		return 0;
