@@ -64,6 +64,8 @@ uint32_t user_id[FP_CONTEXT_USERID_WORDS];
 uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
 /* The GSC paring key. */
 uint8_t pairing_key[FP_PK_LEN];
+/* The auth nonce for CK. */
+uint8_t auth_nonce[FP_CK_AUTH_NONCE_LEN];
 /* Status of the FP encryption engine. */
 static uint32_t fp_encryption_status;
 
@@ -98,6 +100,7 @@ static void _fp_clear_context(void)
 	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
 	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(user_id, sizeof(user_id));
+	OPENSSL_cleanse(auth_nonce, sizeof(auth_nonce));
 	fp_disable_positive_match_secret(&positive_match_secret_state);
 	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
