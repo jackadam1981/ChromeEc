@@ -23,14 +23,21 @@ extern "C" {
 }
 
 #include "fpsensor.h"
+#include "fpsensor_auth_commands.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
 #include "scoped_fast_cpu.h"
 
+#include <algorithm>
+#include <array>
+
 BUILD_ASSERT(FP_PK_LEN == SHA256_DIGEST_SIZE);
 BUILD_ASSERT(FP_PK_EC_PUBLIC_KEY_LEN == 32);
 BUILD_ASSERT(FP_PK_EC_PRIVATE_KEY_LEN == 32);
+
+/* The GSC paring key. */
+static std::array<uint8_t, FP_PK_LEN> pairing_key;
 
 /**
  * @warning |fp_buffer| contains data used by the matching algorithm that must
@@ -273,3 +280,39 @@ fp_command_establish_pk_wrap(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PK_WRAP, fp_command_establish_pk_wrap,
 		     EC_VER_MASK(0));
+
+static enum ec_status fp_command_load_pk(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_load_pk *>(args->params);
+
+	ScopedFastCpu fast_cpu;
+
+	/* Clear the context to prevent leaking the existing template. */
+	fp_clear_context();
+
+	uint8_t key[SBP_ENC_KEY_LEN];
+	int ret =
+		derive_encryption_key(key, params->enc_pk_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_load: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	std::copy(params->enc_pk, params->enc_pk + FP_PK_LEN,
+		  pairing_key.begin());
+
+	/* Decrypt the secret blob in-place. */
+	ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, pairing_key.data(),
+			      pairing_key.data(), FP_PK_EC_PRIVATE_KEY_LEN,
+			      params->enc_pk_info.nonce, FP_PK_NONCE_BYTES,
+			      params->enc_pk_info.tag, FP_PK_TAG_BYTES);
+	OPENSSL_cleanse(key, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_load: Failed to decipher pk");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PK, fp_command_load_pk, EC_VER_MASK(0));

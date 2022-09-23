@@ -19,6 +19,7 @@ extern "C" {
 }
 
 #include "fpsensor.h"
+#include "fpsensor_auth_commands.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
