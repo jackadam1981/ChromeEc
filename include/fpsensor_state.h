@@ -64,6 +64,8 @@ extern uint32_t templ_dirty;
 extern uint32_t user_id[FP_CONTEXT_USERID_WORDS];
 /* Part of the IKM used to derive encryption keys received from the TPM. */
 extern uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
+/* The GSC paring key. */
+extern uint8_t pairing_key[FP_PK_LEN];
 
 extern atomic_t fp_events;
 
