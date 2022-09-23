@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58eddc5_5e494ffb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-23T15:27:54Z",
+      "side": 1,
+      "message": "It looks like there\u0027s already a zephyr/test/drivers/dps test you could add to for this change.  I\u0027m not certain how to emulate the battery being gone, but the zephyr test chat or YAQS is usually very helpful with little questions such as that.",
+      "revId": "c24eb8c0912b68a3cf0db4cfc443252e9fef4658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
