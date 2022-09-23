@@ -7810,6 +7810,13 @@ struct ec_params_fp_load_pairing_key {
 	} encrypted_pairing_key;
 } __ec_align4;
 
+#define FP_CK_AUTH_NONCE_LEN 32
+
+#define EC_CMD_FP_GENERATE_NONCE 0x0413
+struct ec_response_fp_generate_nonce {
+	uint8_t nonce[FP_CK_AUTH_NONCE_LEN];
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
