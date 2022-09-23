@@ -82,6 +82,135 @@ ZTEST_F(i2c_controller, write32_fail)
 	zassert_equal(EC_ERROR_INVAL, ret, "Got %d", ret);
 }
 
+ZTEST_F(i2c_controller, field_update16)
+{
+	/* Write a 16-bit value with mask */
+
+	uint16_t mask = 0xFFFF;
+	uint16_t set_value = 0x1234;
+	uint16_t actual;
+
+	zassert_ok(i2c_field_update16(fixture->port, fixture->addr, 0, mask,
+				      set_value));
+
+	/* Get the first two bytes of the register space as a uint16_t */
+	actual = *((uint16_t *)&fixture->emul_data->regs[0]);
+
+	zassert_equal(set_value, actual, "got %04x, expected %04x", actual,
+		      set_value);
+}
+
+ZTEST_F(i2c_controller, read_offset16__one_byte)
+{
+	/* Read 1 byte from a 16-bit register offset, which will cause us to
+	 * access the extended register space of our i2c device
+	 */
+	uint32_t data = 0;
+	uint16_t reg = 0xFF01;
+	uint8_t expected = 0xAB;
+
+	fixture->emul_data->extended_regs[reg & 0xFF] = expected;
+
+	zassert_ok(
+		i2c_read_offset16(fixture->port, fixture->addr, reg, &data, 1));
+
+	zassert_equal(expected, data, "got %02x, expected %02x", data,
+		      expected);
+}
+
+ZTEST_F(i2c_controller, read_offset16__two_bytes)
+{
+	/* Read 2 bytes from a 16-bit register offset, which will cause us to
+	 * access the extended register space of our i2c device
+	 */
+	uint32_t data = 0;
+	uint16_t reg = 0xFF01;
+	uint16_t expected = 0xABCD;
+
+	*((uint16_t *)&fixture->emul_data->extended_regs[reg & 0xFF]) =
+		expected;
+
+	zassert_ok(
+		i2c_read_offset16(fixture->port, fixture->addr, reg, &data, 2));
+
+	zassert_equal(expected, data, "got %04x, expected %04x", data,
+		      expected);
+}
+
+ZTEST_F(i2c_controller, write_offset16__one_byte)
+{
+	/* Write 1 byte to a 16-bit register offset, which will cause us to
+	 * access the extended register space of our i2c device
+	 */
+	int expected = 0xAB;
+	uint16_t reg = 0xFF01;
+	uint8_t actual;
+
+	zassert_ok(i2c_write_offset16(fixture->port, fixture->addr, reg,
+				      expected, 1));
+
+	actual = fixture->emul_data->extended_regs[reg & 0xFF];
+
+	zassert_equal(expected, actual, "got %02x, expected %02x", actual,
+		      expected);
+}
+
+ZTEST_F(i2c_controller, write_offset16__two_bytes)
+{
+	/* Write 2 bytes to a 16-bit register offset, which will cause us to
+	 * access the extended register space of our i2c device
+	 */
+	int expected = 0xABCD;
+	uint16_t reg = 0xFF01;
+	uint16_t actual;
+
+	zassert_ok(i2c_write_offset16(fixture->port, fixture->addr, reg,
+				      expected, 2));
+
+	actual = *((uint16_t *)&fixture->emul_data->extended_regs[reg & 0xFF]);
+
+	zassert_equal(expected, actual, "got %04x, expected %04x", actual,
+		      expected);
+}
+
+ZTEST_F(i2c_controller, read_offset16_block)
+{
+	/* Read 4 bytes from a 16-bit register offset, which will cause us to
+	 * access the extended register space of our i2c device
+	 */
+	uint32_t data;
+	uint16_t reg = 0xFF01;
+	uint32_t expected = 0xAABBCCDD;
+
+	*((uint32_t *)&fixture->emul_data->extended_regs[reg & 0xFF]) =
+		expected;
+
+	zassert_ok(i2c_read_offset16_block(fixture->port, fixture->addr, reg,
+					   (uint8_t *)&data, sizeof(data)));
+
+	zassert_equal(expected, data, "got %08x, expected %08x", data,
+		      expected);
+}
+
+ZTEST_F(i2c_controller, write_offset16_block)
+{
+	/* Write 4 bytes to a 16-bit register offset, which will cause us to
+	 * access the extended register space of our i2c device
+	 */
+	uint32_t expected = 0xAABBCCDD;
+	uint16_t reg = 0xFF01;
+	uint32_t actual;
+
+	zassert_ok(i2c_write_offset16_block(fixture->port, fixture->addr, reg,
+					    (uint8_t *)&expected,
+					    sizeof(expected)));
+
+	actual = *((uint32_t *)&fixture->emul_data->extended_regs[reg & 0xFF]);
+
+	zassert_equal(expected, actual, "got %08x, expected %08x", actual,
+		      expected);
+}
+
 static void *setup(void)
 {
 	static struct i2c_controller_fixture fixture;
