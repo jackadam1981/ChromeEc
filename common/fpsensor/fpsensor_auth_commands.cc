@@ -11,6 +11,7 @@
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
 #include "openssl/mem.h"
+#include "openssl/rand.h"
 #include "scoped_fast_cpu.h"
 
 #include <algorithm>
@@ -19,6 +20,9 @@
 
 /* The GSC pairing key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+
+/* The auth nonce for GSC session key. */
+std::array<uint8_t, FP_CK_AUTH_NONCE_LEN> auth_nonce;
 
 static enum ec_status
 fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
@@ -117,6 +121,9 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 	for (uint32_t partial : user_id)
 		if (partial != 0)
 			return EC_RES_ACCESS_DENIED;
+	for (uint8_t partial : auth_nonce)
+		if (partial != 0)
+			return EC_RES_ACCESS_DENIED;
 	if (templ_valid != 0)
 		return EC_RES_ACCESS_DENIED;
 	if (templ_dirty != 0)
@@ -137,4 +144,21 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PAIRING_KEY, fp_command_load_pairing_key,
+		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_generate_nonce(struct host_cmd_handler_args *args)
+{
+	auto *r = static_cast<ec_response_fp_generate_nonce *>(args->response);
+
+	ScopedFastCpu fast_cpu;
+
+	RAND_bytes(auth_nonce.data(), auth_nonce.size());
+
+	std::copy(auth_nonce.begin(), auth_nonce.end(), r->nonce);
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
 		     EC_VER_MASK(0));
