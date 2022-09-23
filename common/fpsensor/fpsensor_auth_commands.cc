@@ -29,9 +29,15 @@ extern "C" {
 #include "fpsensor_utils.h"
 #include "scoped_fast_cpu.h"
 
+#include <algorithm>
+#include <array>
+
 BUILD_ASSERT(FP_PAIRING_KEY_LEN == SHA256_DIGEST_SIZE);
 BUILD_ASSERT(FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN == 32);
 BUILD_ASSERT(FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN == 32);
+
+/* The GSC paring key. */
+static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
 /**
  * @warning |fp_buffer| contains data used by the matching algorithm that must
@@ -292,3 +298,45 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP,
 		     fp_command_establish_pairing_key_wrap, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_load_pairing_key(struct host_cmd_handler_args *args)
+{
+	const auto *params = static_cast<const ec_params_fp_load_pairing_key *>(
+		args->params);
+
+	ScopedFastCpu fast_cpu;
+
+	/* Clear the context to prevent leaking the existing template. */
+	fp_clear_context();
+
+	uint8_t key[SBP_ENC_KEY_LEN];
+	int ret = derive_encryption_key(
+		key, params->encrypted_pairing_key.info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pairing_key: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	std::copy(params->encrypted_pairing_key.data,
+		  params->encrypted_pairing_key.data + FP_PAIRING_KEY_LEN,
+		  pairing_key.begin());
+
+	/* Decrypt the secret blob in-place. */
+	ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, pairing_key.data(),
+			      pairing_key.data(),
+			      FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN,
+			      params->encrypted_pairing_key.info.nonce,
+			      FP_PAIRING_KEY_NONCE_BYTES,
+			      params->encrypted_pairing_key.info.tag,
+			      FP_PAIRING_KEY_TAG_BYTES);
+	OPENSSL_cleanse(key, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("load_pairing_key: Failed to decipher pairing key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PAIRING_KEY, fp_command_load_pairing_key,
+		     EC_VER_MASK(0));
