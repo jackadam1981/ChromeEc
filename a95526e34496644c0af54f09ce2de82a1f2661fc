@@ -40,6 +40,30 @@
       },
       "revId": "a95526e34496644c0af54f09ce2de82a1f2661fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ecebd9_24367e39",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-09-23T07:14:15Z",
+      "side": 1,
+      "message": "It isn\u0027t 😞 here is a fix CL:3913398. Thanks for your vigilance.",
+      "parentUuid": "46235a16_6d98e2c1",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 4
+      },
+      "revId": "a95526e34496644c0af54f09ce2de82a1f2661fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
