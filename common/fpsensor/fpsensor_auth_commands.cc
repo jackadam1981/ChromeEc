@@ -30,6 +30,8 @@ extern "C" {
 
 /* The GSC paring key. */
 static uint8_t pairing_key[FP_PK_LEN];
+/* The auth nonce for CK. */
+uint8_t auth_nonce[FP_CK_AUTH_NONCE_LEN];
 
 /**
  * @warning |fp_buffer| contains data used by the matching algorithm that must
@@ -43,6 +45,7 @@ static void _fp_clear_context(void)
 	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
 	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(user_id, sizeof(user_id));
+	OPENSSL_cleanse(auth_nonce, sizeof(auth_nonce));
 	fp_disable_positive_match_secret(&positive_match_secret_state);
 	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
@@ -307,3 +310,22 @@ static enum ec_status fp_command_load_pk(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PK, fp_command_load_pk, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_generate_nonce(struct host_cmd_handler_args *args)
+{
+	auto *r = static_cast<ec_response_fp_generate_nonce *>(args->response);
+
+	ScopedFastCpu fast_cpu;
+
+	trng_init();
+	trng_rand_bytes(auth_nonce, FP_CK_AUTH_NONCE_LEN);
+	trng_exit();
+
+	memcpy(r->nonce, auth_nonce, FP_CK_AUTH_NONCE_LEN);
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
+		     EC_VER_MASK(0));
