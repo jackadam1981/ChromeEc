@@ -6,6 +6,7 @@
 #include "compile_time_macros.h"
 
 /* Boringssl headers need to be included before extern "C" section. */
+#include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/mem.h"
@@ -28,6 +29,10 @@ extern "C" {
 #include "fpsensor_state.h"
 #include "fpsensor_utils.h"
 #include "scoped_fast_cpu.h"
+
+/* These must be included after the "openssl/aes.h" */
+#include "crypto/fipsmodule/aes/internal.h"
+#include "crypto/fipsmodule/modes/internal.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
