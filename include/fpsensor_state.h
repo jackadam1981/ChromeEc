@@ -134,6 +134,10 @@ enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output);
 int fp_enable_positive_match_secret(uint16_t fgr,
 				    struct positive_match_secret_state *state);
 
+enum ec_status fp_read_match_secret(
+	int8_t fgr,
+	uint8_t positive_match_secret[FP_POSITIVE_MATCH_SECRET_BYTES]);
+
 /**
  * Disallow positive match secret for any finger to be read.
  *
