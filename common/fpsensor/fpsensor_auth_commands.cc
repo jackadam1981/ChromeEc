@@ -37,6 +37,12 @@ extern "C" {
 #include <algorithm>
 #include <array>
 
+/* The GSC paring key. */
+static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+
+/* The auth nonce for CK. */
+static std::array<uint8_t, FP_CK_AUTH_NONCE_LEN> auth_nonce;
+
 /**
  * Clear all fingerprint templates associated with the current user id.
  */
@@ -46,13 +52,11 @@ void fp_clear_context(void)
 	templ_dirty = 0;
 	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(user_id, sizeof(user_id));
+	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());
 	fp_disable_positive_match_secret(&positive_match_secret_state);
 	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
 }
-
-/* The GSC paring key. */
-std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
 enum ec_error_list fill_pubkey(const EC_KEY &key,
 			       struct ec_fp_ec_public_key &pubkey)
@@ -337,4 +341,23 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PAIRING_KEY, fp_command_load_pairing_key,
+		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_generate_nonce(struct host_cmd_handler_args *args)
+{
+	auto *r = static_cast<ec_response_fp_generate_nonce *>(args->response);
+
+	ScopedFastCpu fast_cpu;
+
+	trng_init();
+	trng_rand_bytes(auth_nonce.data(), auth_nonce.size());
+	trng_exit();
+
+	std::copy(auth_nonce.begin(), auth_nonce.end(), r->nonce);
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
 		     EC_VER_MASK(0));
