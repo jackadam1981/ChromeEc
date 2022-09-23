@@ -292,12 +292,10 @@ void fp_disable_positive_match_secret(struct positive_match_secret_state *state)
 	state->deadline.val = 0;
 }
 
-static enum ec_status
-fp_command_read_match_secret(struct host_cmd_handler_args *args)
+static enum ec_status fp_read_match_secret(
+	int8_t fgr,
+	uint8_t positive_match_secret[FP_POSITIVE_MATCH_SECRET_BYTES])
 {
-	const struct ec_params_fp_read_match_secret *params = args->params;
-	struct ec_response_fp_read_match_secret *response = args->response;
-	int8_t fgr = params->fgr;
 	timestamp_t now = get_time();
 	struct positive_match_secret_state state_copy =
 		positive_match_secret_state;
@@ -320,7 +318,7 @@ fp_command_read_match_secret(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	if (derive_positive_match_secret(response->positive_match_secret,
+	if (derive_positive_match_secret(positive_match_secret,
 					 fp_positive_match_salt[fgr]) !=
 	    EC_SUCCESS) {
 		CPRINTS("Failed to derive positive match secret for finger %d",
@@ -329,6 +327,23 @@ fp_command_read_match_secret(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 	}
 	CPRINTS("Derived positive match secret for finger %d", fgr);
+
+	return EC_RES_SUCCESS;
+}
+
+static enum ec_status
+fp_command_read_match_secret(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_read_match_secret *params = args->params;
+	struct ec_response_fp_read_match_secret *response = args->response;
+	int8_t fgr = params->fgr;
+	int ret;
+
+	ret = fp_read_match_secret(fgr, response->positive_match_secret);
+	if (ret != EC_RES_SUCCESS) {
+		return ret;
+	}
+
 	args->response_size = sizeof(*response);
 
 	return EC_RES_SUCCESS;
@@ -577,3 +592,60 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_read_match_secret_with_pubkey *params =
+		args->params;
+	struct ec_response_fp_read_match_secret_with_pubkey *response =
+		args->response;
+	int8_t fgr = params->fgr;
+	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
+	uint8_t share_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
+	uint8_t *tmp;
+	int ret, idx;
+
+	trng_init();
+	trng_rand_bytes(privkey, FP_PK_EC_PRIVATE_KEY_LEN);
+	trng_exit();
+
+	p256_from_bin(privkey, &p256_n);
+
+	p256_base_point_mul(&p256_n, &p256_x, &p256_y);
+
+	p256_to_bin(&p256_x, response->pubkey_x);
+	p256_to_bin(&p256_y, response->pubkey_y);
+
+	p256_from_bin(params->pubkey_x, &p256_x);
+	p256_from_bin(params->pubkey_y, &p256_y);
+	p256_point_mul(&p256_n, &p256_x, &p256_y, &p256_x, &p256_y);
+	p256_to_bin(&p256_x, share_secret);
+
+	/* Clear the private key and share_secret material. */
+	always_memset(privkey, 0, sizeof(privkey));
+	always_memset(&p256_n, 0, sizeof(p256_n));
+	always_memset(&p256_x, 0, sizeof(p256_x));
+	always_memset(&p256_y, 0, sizeof(p256_y));
+
+	/* Sha256 the share_secret. */
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, share_secret, FP_POSITIVE_MATCH_SECRET_BYTES);
+	tmp = SHA256_final(&ctx);
+	memcpy(share_secret, tmp, FP_POSITIVE_MATCH_SECRET_BYTES);
+
+	ret = fp_read_match_secret(fgr, response->enc_secret);
+	if (ret != EC_RES_SUCCESS) {
+		return ret;
+	}
+
+	/* Xor the match_secret with the share_secret. */
+	for (idx = 0; idx < FP_POSITIVE_MATCH_SECRET_BYTES; idx++)
+		response->enc_secret[idx] ^= share_secret[idx];
+
+	args->response_size = sizeof(*response);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
+		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
