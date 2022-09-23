@@ -7799,6 +7799,17 @@ struct ec_response_fp_establish_pairing_key_wrap {
 	} encrypted_pairing_key;
 } __ec_align4;
 
+#define EC_CMD_FP_LOAD_PAIRING_KEY 0x0412
+
+/* This struct should be the same as ec_response_fp_establish_pairing_key_wrap.
+ */
+struct ec_params_fp_load_pairing_key {
+	struct {
+		struct ec_fp_pairing_key_encryption_metadata info;
+		uint8_t data[FP_PAIRING_KEY_LEN];
+	} encrypted_pairing_key;
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
