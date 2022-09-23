@@ -46,87 +46,28 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  * ==================================================================== */
 
-#include "aes-ctr.h"
+#ifndef __CROS_EC_AES_CTR_H
+#define __CROS_EC_AES_CTR_H
+
+#include "aes.h"
 #include "common.h"
 #include "util.h"
 
-#define OPENSSL_memcpy memcpy
+// CTR.
 
-static inline size_t load_word_le(const void *in) {
-  size_t v;
-  OPENSSL_memcpy(&v, in, sizeof(v));
-  return v;
-}
+// block128_f is the type of a 128-bit, block cipher.
+typedef void (*block128_f)(const uint8_t in[16], uint8_t out[16],
+			   const void *key);
 
-static inline void store_word_le(void *out, size_t v) {
-  OPENSSL_memcpy(out, &v, sizeof(v));
-}
-
-// NOTE: the IV/counter CTR mode is big-endian.  The code itself
-// is endian-neutral.
-
-// increment counter (128-bit int) by 1
-static void ctr128_inc(uint8_t *counter) {
-  uint32_t n = 16, c = 1;
-
-  do {
-    --n;
-    c += counter[n];
-    counter[n] = (uint8_t)c;
-    c >>= 8;
-  } while (n);
-}
-
-// The input encrypted as though 128bit counter mode is being used.  The extra
-// state information to record how much of the 128bit block we have used is
-// contained in *num, and the encrypted counter is kept in ecount_buf.  Both
-// *num and ecount_buf must be initialised with zeros before the first call to
-// CRYPTO_ctr128_encrypt().
-//
-// This algorithm assumes that the counter is in the x lower bits of the IV
-// (ivec), and that the application has full control over overflow and the rest
-// of the IV.  This implementation takes NO responsibility for checking that
-// the counter doesn't overflow into the rest of the IV when incremented.
+// CRYPTO_ctr128_encrypt encrypts (or decrypts, it's the same in CTR mode)
+// |len| bytes from |in| to |out| using |block| in counter mode. There's no
+// requirement that |len| be a multiple of any value and any partial blocks are
+// stored in |ecount_buf| and |*num|, which must be zeroed before the initial
+// call. The counter is a 128-bit, big-endian value in |ivec| and is
+// incremented by this function. It returns one on success and zero otherwise.
 int CRYPTO_ctr128_encrypt(const uint8_t *in, uint8_t *out, size_t len,
-                           const AES_KEY *key, uint8_t ivec[16],
-                           uint8_t ecount_buf[16], unsigned int *num,
-                           block128_f block) {
-  unsigned int n;
+			  const AES_KEY *key, uint8_t ivec[16],
+			  uint8_t ecount_buf[16], unsigned *num,
+			  block128_f block);
 
-  if (!(key && ecount_buf && num))
-    return 0;
-  if (!(len == 0 || (in && out)))
-    return 0;
-  if (!(*num < 16))
-    return 0;
-
-  n = *num;
-
-  while (n && len) {
-    *(out++) = *(in++) ^ ecount_buf[n];
-    --len;
-    n = (n + 1) % 16;
-  }
-  while (len >= 16) {
-    (*block)(ivec, ecount_buf, key);
-    ctr128_inc(ivec);
-    for (n = 0; n < 16; n += sizeof(size_t)) {
-      store_word_le(out + n, load_word_le(in + n) ^
-                                 load_word_le(ecount_buf + n));
-    }
-    len -= 16;
-    out += 16;
-    in += 16;
-    n = 0;
-  }
-  if (len) {
-    (*block)(ivec, ecount_buf, key);
-    ctr128_inc(ivec);
-    while (len--) {
-      out[n] = in[n] ^ ecount_buf[n];
-      ++n;
-    }
-  }
-  *num = n;
-  return 1;
-}
+#endif // __CROS_EC_AES_CTR_H
