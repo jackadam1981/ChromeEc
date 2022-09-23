@@ -22,6 +22,30 @@
       },
       "revId": "0e5e48c238bbc5c735ebc845673620327da6f774",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf0f1e2_3e5c15d1",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-23T16:18:51Z",
+      "side": 1,
+      "message": "Actually \u0027-1\u0027 doesn\u0027t necessarily mean custom fan because get_thermal_fan_percent returns -1 for any errors from ec_command.\n\nSo, we may need to set a proper return value for custom fans (in thermal_command_get_threshold) so that we can print \u0027custom\u0027 instead of \u0027-1\u0027.",
+      "parentUuid": "e196e77e_da29aedc",
+      "range": {
+        "startLine": 319,
+        "startChar": 8,
+        "endLine": 319,
+        "endChar": 59
+      },
+      "revId": "0e5e48c238bbc5c735ebc845673620327da6f774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
