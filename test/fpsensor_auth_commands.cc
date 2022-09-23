@@ -82,12 +82,13 @@ test_static int test_set_fp_tpm_seed(void)
 	return check_seed_set_result(rv, FP_ENC_STATUS_SEED_SET, &resp);
 }
 
-test_static int test_fp_command_establish_pairing_key(void)
+test_static int test_fp_command_establish_and_load_pairing_key(void)
 {
 	int rv;
 	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
 	struct ec_params_fp_establish_pairing_key_wrap wrap_params;
 	struct ec_response_fp_establish_pairing_key_wrap wrap_response;
+	struct ec_params_fp_load_pairing_key load_params;
 
 	uint8_t privkey[FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN];
 
@@ -167,6 +168,19 @@ test_static int test_fp_command_establish_pairing_key(void)
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
 				    &wrap_params, sizeof(wrap_params),
 				    &wrap_response, sizeof(wrap_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	memcpy(&load_params.encrypted_pairing_key.info,
+	       &wrap_response.encrypted_pairing_key.info,
+	       sizeof(wrap_response.encrypted_pairing_key.info));
+
+	memcpy(load_params.encrypted_pairing_key.data,
+	       wrap_response.encrypted_pairing_key.data,
+	       sizeof(wrap_response.encrypted_pairing_key.data));
+
+	rv = test_send_host_command(EC_CMD_FP_LOAD_PAIRING_KEY, 0, &load_params,
+				    sizeof(load_params), NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
@@ -264,11 +278,117 @@ test_static int test_fp_command_establish_pairing_key_fail(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_fp_command_load_pairing_key_fail(void)
+{
+	int rv;
+	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
+	struct ec_params_fp_establish_pairing_key_wrap wrap_params;
+	struct ec_response_fp_establish_pairing_key_wrap wrap_response;
+	struct ec_params_fp_load_pairing_key load_params;
+
+	uint8_t privkey[FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN];
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
+				    NULL, 0, &keygen_response,
+				    sizeof(keygen_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	memcpy(&wrap_params.encrypted_private_key.info,
+	       &keygen_response.encrypted_private_key.info,
+	       sizeof(keygen_response.encrypted_private_key.info));
+
+	memcpy(wrap_params.encrypted_private_key.data,
+	       keygen_response.encrypted_private_key.data,
+	       sizeof(keygen_response.encrypted_private_key.data));
+
+	trng_init();
+	trng_rand_bytes(privkey, FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN);
+	trng_exit();
+
+	bssl::UniquePtr<EC_GROUP> group(
+		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+
+	if (group.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<BIGNUM> n(
+		BN_bin2bn(privkey, FP_PAIRING_KEY_EC_PRIVATE_KEY_LEN, nullptr));
+
+	if (n.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
+
+	if (public_point.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), n.get(), nullptr,
+			 nullptr, nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<BIGNUM> x_bn(BN_new());
+
+	if (x_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<BIGNUM> y_bn(BN_new());
+
+	if (y_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(x_bn.get(), wrap_params.peers_pubkey.x,
+			 FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) !=
+	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(y_bn.get(), wrap_params.peers_pubkey.y,
+			 FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) !=
+	    FP_PAIRING_KEY_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
+				    &wrap_params, sizeof(wrap_params),
+				    &wrap_response, sizeof(wrap_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* No encryption info. */
+	memset(&load_params.encrypted_pairing_key.info, 0,
+	       sizeof(load_params.encrypted_pairing_key.info));
+
+	memcpy(load_params.encrypted_pairing_key.data,
+	       wrap_response.encrypted_pairing_key.data,
+	       sizeof(wrap_response.encrypted_pairing_key.data));
+
+	rv = test_send_host_command(EC_CMD_FP_LOAD_PAIRING_KEY, 0, &load_params,
+				    sizeof(load_params), NULL, 0);
+
+	TEST_NE(rv, EC_RES_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
 extern "C" void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_command_establish_pairing_key_without_seed);
 	RUN_TEST(test_set_fp_tpm_seed);
-	RUN_TEST(test_fp_command_establish_pairing_key);
 	RUN_TEST(test_fp_command_establish_pairing_key_fail);
+	RUN_TEST(test_fp_command_establish_and_load_pairing_key);
+	RUN_TEST(test_fp_command_load_pairing_key_fail);
 	test_print_result();
 }
