@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e7d8c53_9154e9b4",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-23T20:13:26Z",
+      "side": 1,
+      "message": "nit: newline after `/*` required\n\nhttps://www.kernel.org/doc/html/v5.19/process/coding-style.html#commenting",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "44bbca277850ed88e54dec6e542bfb2591c28ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89e751e_de9aad69",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-23T20:13:26Z",
+      "side": 1,
+      "message": "if these get `#defined` to zero, then you don\u0027t need the ifdefs below too?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "44bbca277850ed88e54dec6e542bfb2591c28ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf12d8f5_f1b76c3f",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 11
