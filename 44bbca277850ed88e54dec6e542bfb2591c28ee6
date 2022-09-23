@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35ac36d_0f6800df",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-23T21:26:33Z",
+      "side": 1,
+      "message": "Huh, surprised that didn\u0027t get caught. Done.",
+      "parentUuid": "1e7d8c53_9154e9b4",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "44bbca277850ed88e54dec6e542bfb2591c28ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b89e751e_de9aad69",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68d9c14_488d1c79",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-23T21:26:33Z",
+      "side": 1,
+      "message": "There are other CPRINTF/S calls further down see https://crrev.com/c/3908160/11..12/common/usbc_ppc.c#62",
+      "parentUuid": "b89e751e_de9aad69",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "44bbca277850ed88e54dec6e542bfb2591c28ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf12d8f5_f1b76c3f",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-09-23T20:04:19Z",
       "side": 1,
       "message": "NIT: Could we create a `LEGACY_TEST_BUILD` macro?",
+      "revId": "44bbca277850ed88e54dec6e542bfb2591c28ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "724d9e1f_a36ed0b2",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-23T21:26:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "cf12d8f5_f1b76c3f",
       "revId": "44bbca277850ed88e54dec6e542bfb2591c28ee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
