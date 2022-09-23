@@ -59,6 +59,10 @@
 
 #define AES_BLOCK_SIZE 16
 
+/* block128_f is the type of a 128-bit, block cipher. */
+typedef void (*block128_f)(const uint8_t in[16], uint8_t out[16],
+			   const void *key);
+
 /*
  * aes_key_st should be an opaque type, but EVP requires that the size be
  * known.

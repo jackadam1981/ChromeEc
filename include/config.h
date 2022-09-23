@@ -322,6 +322,9 @@
 /* Support AES symmetric-key algorithm */
 #undef CONFIG_AES
 
+/* Support AES-CTR */
+#undef CONFIG_AES_CTR
+
 /* Support AES-GCM */
 #undef CONFIG_AES_GCM
 
