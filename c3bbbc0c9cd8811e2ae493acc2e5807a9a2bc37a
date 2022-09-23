@@ -135,6 +135,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44a31170_4cc17acf",
+        "filename": "test/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-23T17:54:58Z",
+      "side": 1,
+      "message": "Oh, looks like next CL does that: https://crrev.com/c/3905885",
+      "parentUuid": "07223321_b4cd91fe",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3cda20d_c4f6fc20",
         "filename": "test/test_config.h",
         "patchSetId": 9
