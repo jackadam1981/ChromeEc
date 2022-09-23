@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e196e77e_da29aedc",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-23T16:08:30Z",
+      "side": 1,
+      "message": "The original text looks more readable to me. How about \u0027Print temperature and fan speed. Fan speed will be -1 for custom controlled fan.\u0027?",
+      "range": {
+        "startLine": 319,
+        "startChar": 8,
+        "endLine": 319,
+        "endChar": 59
+      },
+      "revId": "0e5e48c238bbc5c735ebc845673620327da6f774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
