@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b16f199_7c886c48",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-23T17:00:48Z",
+      "side": 1,
+      "message": "You can use \u0027if (IS_ENABLED(CONFIG_THROTTLE_AP))\u0027. Then, get_thermal_fan_percent doesn\u0027t need to be guarded by #ifdef at line 3243.",
+      "range": {
+        "startLine": 3279,
+        "startChar": 7,
+        "endLine": 3279,
+        "endChar": 25
+      },
+      "revId": "abe522f19376b338ab74d7d41a5e753665c56fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
