@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc857bf_d18842d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-23T17:29:34Z",
+      "side": 1,
+      "message": "cc: Sam for visibility.",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6f91c5_5871472d",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-23T17:29:34Z",
+      "side": 1,
+      "message": "What about making this a \"choice\" config?  This would provide flexibility for additional default SVDM types.  It also makes it explicit that the custom choice is enabled, and this provides a place to document the requirements for the user when using the custom option.\n\nI also think moving this into a separate file, Kconfig.svdm_rsp would be good, since the PLATFORM_EC namespace doesn\u0027t need to be used for these zephyr only symbols.\n\n\n```\nchoice SVDM_RSP_CHOICE\n    default SVDM_RSP_DFP_ONLY if !PLATFORM_EC_USB_PD_USB4 \n \u0026\u0026 !PLATFORM_EC_USB_PD_TBT_COMPAT_MODE \u0026\u0026 !PLATFORM_EC_USB_PD_USB32_DRD\n    default SVDM_RSP_CUSTOM\n    ...\n\nconfig SVDM_RSP_DFP_ONLY\n    ...\n    \nconfig SVDM_RSP_CUSTOM\n    ...\n    \nendchoice\n```",
+      "range": {
+        "startLine": 219,
+        "startChar": 7,
+        "endLine": 219,
+        "endChar": 40
+      },
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51262122_6958f2e6",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-23T17:29:34Z",
+      "side": 1,
+      "message": "Follow the indentation pattern from the rest of the file.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 0
+      },
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af2241b2_263688ff",
@@ -14,6 +77,24 @@
       "writtenOn": "2022-09-23T03:40:32Z",
       "side": 1,
       "message": "I think this go into common/usbc with the rest of the USB-C PD code.",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693393a2_48681131",
+        "filename": "zephyr/app/ec/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-23T17:29:34Z",
+      "side": 1,
+      "message": "There\u0027s not a clear best location for this code at the moment.  Ultimately, once the USB-C stack is upstream, this will live under zephyr/subsys/usb_c.\n\nI think for now I favor adding this to the common/usbc directory to keep all USB-C files together.  The svdm file should note that it is only supported for Zephyr boards.",
+      "parentUuid": "af2241b2_263688ff",
       "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +129,24 @@
       "writtenOn": "2022-09-23T03:40:32Z",
       "side": 1,
       "message": "I think CONFIG_PLATFORM_EC_... items are of limited scope, and aimed at identifying shimmed code (see zephyr/Kconfig)\nThere should be a corresponding CONFIG_USB_PD_XID that gets set in zephyr/shim/include/config_chip.h\nThis follows the consistent pattern and likely makes upstreaming easier.\nI think the plan was to avoid any reference to CONFIG_PLATFORM_EC.. defines in the legacy code, but I think some have snuck through.\n\nKeith may have some better context here.",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98dc3a63_13197e8c",
+        "filename": "zephyr/app/ec/usbc/svdm_rsp_dfp_only.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-23T17:29:34Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC is meant to create a distinct namespace from the legacy CONFIG_ options defined in platform/ec/include/config.h.\n\nThis CL creates new Kconfig options, and I agree that the support doesn\u0027t need to be added to the legacy cros-ec boards.\n\nI think dropping `PLATFORM_EC` from this name is appropriate for consistency with the other CONFIG_ options.",
+      "parentUuid": "85a22ac6_f3f9f46e",
       "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
