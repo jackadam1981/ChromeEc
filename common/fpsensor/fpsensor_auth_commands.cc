@@ -14,6 +14,8 @@
 
 #include <assert.h>
 
+#include <utility>
+
 extern "C" {
 #include "common.h"
 #include "ec_commands.h"
@@ -32,6 +34,8 @@ extern "C" {
 #include "fpsensor_utils.h"
 #include "scoped_fast_cpu.h"
 
+#include <algorithm>
+#include <array>
 #include <iterator>
 #include <type_traits>
 
@@ -236,6 +240,9 @@ static enum ec_error_list fill_ecdh_share_secret(const EC_KEY &private_key,
 	return EC_SUCCESS;
 }
 
+/* The GSC paring key. */
+static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+
 } // namespace
 
 /**
@@ -335,3 +342,27 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP,
 		     fp_command_establish_pairing_key_wrap, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_load_pairing_key(struct host_cmd_handler_args *args)
+{
+	const auto *params = static_cast<const ec_params_fp_load_pairing_key *>(
+		args->params);
+
+	ScopedFastCpu fast_cpu;
+
+	/* Clear the context to prevent leaking the existing template. */
+	fp_clear_context();
+
+	enum ec_error_list ret =
+		decrypt_data(params->encrypted_pairing_key, pairing_key);
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("load_pairing_key: Failed to decrypt pairing key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PAIRING_KEY, fp_command_load_pairing_key,
+		     EC_VER_MASK(0));
