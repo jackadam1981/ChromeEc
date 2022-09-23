@@ -54,6 +54,8 @@ uint32_t templ_dirty;
 uint32_t user_id[FP_CONTEXT_USERID_WORDS];
 /* Part of the IKM used to derive encryption keys received from the TPM. */
 uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
+/* The GSC paring key. */
+uint8_t pairing_key[FP_PK_LEN];
 /* Status of the FP encryption engine. */
 static uint32_t fp_encryption_status;
 
@@ -444,3 +446,35 @@ fp_command_establish_pk_wrap(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PK_WRAP, fp_command_establish_pk_wrap,
 		     EC_VER_MASK(0));
+
+static enum ec_status fp_command_load_pk(struct host_cmd_handler_args *args)
+{
+	uint8_t key[SBP_ENC_KEY_LEN];
+	const struct ec_params_fp_load_pk *params = args->params;
+	int ret;
+
+	/* Clear the context to prevent leaking the existing template. */
+	fp_reset_and_clear_context();
+
+	ret = derive_encryption_key(key, params->enc_pk_info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_load: Failed to derive key");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	memcpy(pairing_key, params->enc_pk, FP_PK_LEN);
+
+	/* Decrypt the secret blob in-place. */
+	ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, pairing_key, pairing_key,
+			      FP_PK_EC_PRIVATE_KEY_LEN,
+			      params->enc_pk_info.nonce, FP_PK_NONCE_BYTES,
+			      params->enc_pk_info.tag, FP_PK_TAG_BYTES);
+	always_memset(key, 0, sizeof(key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("pk_load: Failed to decipher pk");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PK, fp_command_load_pk, EC_VER_MASK(0));
