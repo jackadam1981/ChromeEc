@@ -7649,6 +7649,13 @@ struct ec_response_fp_generate_nonce {
 
 BUILD_ASSERT(FP_CONTEXT_KEY_LEN == FP_CONTEXT_USERID_LEN);
 
+/* FP using nonce context or not */
+#define FP_CONTEXT_STATUS_NONCE_CONTEXT BIT(0)
+/* FP match had been processed or not */
+#define FP_CONTEXT_STATUS_MATCH_PROCESSED BIT(1)
+/* FP auth_nonce had been set or not*/
+#define FP_CONTEXT_AUTH_NONCE_SET BIT(2)
+
 #define EC_CMD_FP_NONCE_CONTEXT 0x0414
 struct ec_params_fp_nonce_context {
 	uint8_t gsc_nonce[FP_CK_AUTH_NONCE_LEN];
