@@ -13,6 +13,7 @@ extern "C" {
 #include "cryptoc/util.h"
 #include "ec_commands.h"
 #include "host_command.h"
+#include "openssl/aes.h"
 #include "sha256.h"
 #include "system.h"
 #include "task.h"
@@ -23,6 +24,10 @@ extern "C" {
 #include "fpsensor.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
+
+/* These must be included after the "openssl/aes.h" */
+#include "crypto/fipsmodule/aes/internal.h"
+#include "crypto/fipsmodule/modes/internal.h"
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
 uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
@@ -525,4 +530,57 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
+		     EC_VER_MASK(0));
+
+BUILD_ASSERT(FP_CONTEXT_KEY_LEN == FP_CONTEXT_USERID_LEN);
+
+static enum ec_status
+fp_command_nonce_context(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_nonce_context *p =
+		static_cast<const ec_params_fp_nonce_context *>(args->params);
+
+	struct sha256_ctx ctx;
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, auth_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&ctx, p->gsc_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&ctx, pairing_key, FP_PK_LEN);
+	uint8_t *ck = SHA256_final(&ctx);
+
+	AES_KEY aes_key;
+	int res = AES_set_encrypt_key(ck, 256, &aes_key);
+
+	if (res) {
+		CPRINTS("Failed to set encryption key: %d", res);
+		return EC_RES_UNAVAILABLE;
+	}
+
+	uint8_t aes_iv[FP_CONTEXT_USERID_IV_LEN];
+
+	memcpy(aes_iv, p->enc_user_id_iv, FP_CONTEXT_USERID_IV_LEN);
+
+	unsigned int block_num = 0;
+	uint8_t raw_user_id[FP_CONTEXT_USERID_LEN];
+	uint8_t ecount_buf[16];
+	/* The AES CTR used the same function for encryption & decryption. */
+	CRYPTO_ctr128_encrypt(p->enc_user_id, raw_user_id,
+			      FP_CONTEXT_USERID_LEN, &aes_key, aes_iv,
+			      ecount_buf, &block_num, (block128_f)AES_encrypt);
+
+	/* Clear the key material. */
+	always_memset(&aes_key, 0, sizeof(aes_key));
+	always_memset(&ctx, 0, sizeof(ctx));
+
+	if (p->clear_context) {
+		/* Clear the previous context. */
+		_fp_clear_context();
+	}
+
+	/* Set the user_id. */
+	memcpy(user_id, raw_user_id, FP_CONTEXT_USERID_LEN);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
