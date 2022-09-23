@@ -377,6 +377,10 @@ test_static int test_fp_command_read_match_secret_derive_succeed(void)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f7c27d3810 (fpsensor: Add limits to nonce context)
 extern "C" void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_enc_status_valid_flags);
