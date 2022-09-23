@@ -660,6 +660,48 @@ test_static int test_fp_command_nonce_context_limit(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_fp_command_read_match_secret_with_pubkey_succeed(void)
+{
+	struct ec_response_fp_read_match_secret_with_pubkey response = {};
+	/* Create valid param with 0 <= fgr < 5 */
+	uint16_t matched_fgr = 1;
+	struct ec_params_fp_read_match_secret_with_pubkey test_match_secret_1 = {
+		.fgr = matched_fgr,
+	};
+
+	/* Create positive secret match state with valid deadline value,
+	 * readable state, and correct template matched
+	 */
+	struct positive_match_secret_state test_state_1 = {
+		.deadline.val = 5000000,
+		.readable = true,
+		.template_matched = matched_fgr,
+	};
+	positive_match_secret_state = test_state_1;
+	/* Set fp_positive_match_salt to the trivial value */
+	memcpy(fp_positive_match_salt, default_fake_fp_positive_match_salt,
+	       sizeof(default_fake_fp_positive_match_salt));
+
+	TEST_ASSERT_ARRAY_EQ(
+		(uint8_t const *)fp_positive_match_salt,
+		(uint8_t const *)default_fake_fp_positive_match_salt,
+		sizeof(default_fake_fp_positive_match_salt));
+
+	/* Initialize an empty user_id to compare positive_match_secret */
+	memset(user_id, 0, sizeof(user_id));
+
+	TEST_ASSERT(fp_tpm_seed_is_set());
+	/* Test with the correct matched finger state and the default fake
+	 * fp_positive_match_salt
+	 */
+	TEST_ASSERT(test_send_host_command(
+			    EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY, 0,
+			    &test_match_secret_1, sizeof(test_match_secret_1),
+			    &response, sizeof(response)) == EC_SUCCESS);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_command_establish_pk_without_seed);
@@ -683,5 +725,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_nonce_context);
 	RUN_TEST(test_fp_command_nonce_context_clear);
 	RUN_TEST(test_fp_command_nonce_context_limit);
+	RUN_TEST(test_fp_command_read_match_secret_with_pubkey_succeed);
 	test_print_result();
 }
