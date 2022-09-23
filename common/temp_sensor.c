@@ -147,7 +147,8 @@ static int command_temps(int argc, const char **argv)
 	return print_temps();
 }
 DECLARE_CONSOLE_COMMAND(temps, command_temps, NULL,
-			"Print temp sensors and fan speed");
+			"Print temp sensors and fan speed (auto fan control). For custom\n"
+			"fan control, fan speed value will be -1 (not applicable)\n");
 #endif
 
 /*****************************************************************************/
