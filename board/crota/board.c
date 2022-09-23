@@ -5,6 +5,7 @@
 
 #include "battery.h"
 #include "button.h"
+#include "cros_board_info.h"
 #include "charge_ramp.h"
 #include "charger.h"
 #include "common.h"
@@ -55,3 +56,20 @@ static void board_chipset_suspend(void)
 	gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static bool board_is_convertible(void)
+{
+	uint32_t val;
+	if (cbi_get_sku_id(&val) == EC_SUCCESS)
+		if (val >= 0x100000)
+			return 1;
+	return 0;
+}
+
+int board_sensor_at_360(void)
+{
+	if (board_is_convertible())
+		return !gpio_get_level(GPIO_TABLET_MODE_L);
+
+	return 0;
+}
