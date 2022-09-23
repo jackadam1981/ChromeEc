@@ -7631,6 +7631,13 @@ struct ec_params_fp_load_pk {
 	uint8_t enc_pk[FP_PK_LEN];
 } __ec_align4;
 
+#define FP_CK_AUTH_NONCE_LEN 32
+
+#define EC_CMD_FP_GENERATE_NONCE 0x0413
+struct ec_response_fp_generate_nonce {
+	uint8_t nonce[FP_CK_AUTH_NONCE_LEN];
+} __ec_align4;
+
 /* The positive match secret has the length of the SHA256 digest. */
 #define FP_POSITIVE_MATCH_SECRET_BYTES 32
 struct ec_response_fp_read_match_secret {
