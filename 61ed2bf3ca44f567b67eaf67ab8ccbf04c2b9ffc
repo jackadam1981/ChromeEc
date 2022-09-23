@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af2241b2_263688ff",
+        "filename": "zephyr/app/ec/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-23T03:40:32Z",
+      "side": 1,
+      "message": "I think this go into common/usbc with the rest of the USB-C PD code.",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57bfa18_cef63200",
+        "filename": "zephyr/app/ec/usbc/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-23T03:40:32Z",
+      "side": 1,
+      "message": "Perhaps in zephyr/CMakeLists.txt",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a22ac6_f3f9f46e",
+        "filename": "zephyr/app/ec/usbc/svdm_rsp_dfp_only.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-23T03:40:32Z",
+      "side": 1,
+      "message": "I think CONFIG_PLATFORM_EC_... items are of limited scope, and aimed at identifying shimmed code (see zephyr/Kconfig)\nThere should be a corresponding CONFIG_USB_PD_XID that gets set in zephyr/shim/include/config_chip.h\nThis follows the consistent pattern and likely makes upstreaming easier.\nI think the plan was to avoid any reference to CONFIG_PLATFORM_EC.. defines in the legacy code, but I think some have snuck through.\n\nKeith may have some better context here.",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
