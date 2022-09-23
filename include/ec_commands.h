@@ -7842,6 +7842,21 @@ struct ec_params_fp_nonce_context {
 	uint8_t enc_user_id_iv[FP_CONTEXT_USERID_IV_LEN];
 } __ec_align4;
 
+#define EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY 0x0415
+
+#define FP_EC_PUBLIC_KEY_IV_LEN 16
+
+struct ec_params_fp_read_match_secret_with_pubkey {
+	uint16_t fgr;
+	struct ec_fp_ec_public_key pubkey;
+} __ec_align4;
+
+struct ec_response_fp_read_match_secret_with_pubkey {
+	struct ec_fp_ec_public_key pubkey;
+	uint8_t iv[FP_EC_PUBLIC_KEY_IV_LEN];
+	uint8_t enc_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
