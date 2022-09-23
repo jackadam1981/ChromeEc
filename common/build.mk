@@ -36,6 +36,7 @@ common-$(CONFIG_TEMP_SENSOR_PCT2075)+=math_util.o
 ifneq ($(CORE),cortex-m)
 common-$(CONFIG_AES)+=aes.o
 endif
+common-$(CONFIG_AES_CTR)+=aes-ctr.o
 common-$(CONFIG_AES_GCM)+=aes-gcm.o
 common-$(CONFIG_CMD_ADC)+=adc.o
 common-$(HAS_TASK_ALS)+=als.o
