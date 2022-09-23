@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c6ba93d_3220aeed",
+        "filename": "common/acpi.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-23T16:48:23Z",
+      "side": 1,
+      "message": "is it possible to add a semicolon after usages? This should help some people\u0027s editors with indentation rules.",
+      "range": {
+        "startLine": 137,
+        "startChar": 69,
+        "endLine": 137,
+        "endChar": 70
+      },
+      "revId": "768d8547e66b17fe23c69ebaded4d6e323df950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1dded95_a5c661e5",
         "filename": "include/compiler.h",
         "patchSetId": 29
