@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9916d9_d73e0c9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-23T20:12:53Z",
+      "side": 1,
+      "message": "LGTM, waiting on you to finish those TODOs.",
+      "revId": "32f9e5f4f05f28c7d3905c4da8197393704b7d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f20bb4a4_6e05860d",
@@ -43,6 +60,23 @@
         "endLine": 33,
         "endChar": 60
       },
+      "revId": "32f9e5f4f05f28c7d3905c4da8197393704b7d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be4cada_1ddd8e83",
+        "filename": "zephyr/test/drivers/i2c_controller/src/basic_i2c_device_emul.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-23T20:12:53Z",
+      "side": 1,
+      "message": "I think we have an established pattern of setting these values at compile-time in the instantiation macro, I think we ought to keep with that.\n\nLike:\n```\n\t\t.common \u003d {                                                    \\\n\t\t\t.start_write \u003d ln9310_emul_start_write,                \\\n\t\t\t.write_byte \u003d ln9310_emul_write_byte,                  \\\n\t\t\t.finish_write \u003d ln9310_emul_finish_write,              \\\n\t\t\t.start_read \u003d ln9310_emul_start_read,                  \\\n\t\t\t.read_byte \u003d ln9310_emul_read_byte,                    \\\n\t\t\t.finish_read \u003d ln9310_emul_finish_read,                \\\n\t\t\t.access_reg \u003d ln9310_emul_access_reg,                  \\\n\t\t},                                                             \\\n```",
       "revId": "32f9e5f4f05f28c7d3905c4da8197393704b7d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
