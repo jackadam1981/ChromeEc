@@ -141,6 +141,30 @@
       },
       "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8270a49_fe4329d5",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-09-23T02:29:16Z",
+      "side": 1,
+      "message": "Sorry, the cause of watchdog resets should be \"unexpected large FIFO\". There was DPS task stack size shortage but the reason is too many print logs that I put in the while loop, the DPS task stack size shortage did not appear after removing the print logs.",
+      "parentUuid": "c546a8fd_ebe9cec7",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "d187a46b4a452007b35dc7667b5d0f7e24751443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
