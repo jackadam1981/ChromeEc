@@ -147,7 +147,7 @@ static int command_temps(int argc, const char **argv)
 	return print_temps();
 }
 DECLARE_CONSOLE_COMMAND(temps, command_temps, NULL,
-			"Print temp sensors and fan speed");
+			"Print temp sensors and temp ratio.");
 #endif
 
 /*****************************************************************************/
