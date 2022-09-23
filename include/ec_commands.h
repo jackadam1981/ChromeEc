@@ -7798,6 +7798,14 @@ struct ec_response_fp_establish_pk_wrap {
 	uint8_t enc_pk[FP_PK_LEN];
 } __ec_align4;
 
+#define EC_CMD_FP_LOAD_PK 0x0412
+
+/* This struct should be the same as ec_response_fp_establish_pk_wrap. */
+struct ec_params_fp_load_pk {
+	struct ec_fp_pk_encryption_metadata enc_pk_info;
+	uint8_t enc_pk[FP_PK_LEN];
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
