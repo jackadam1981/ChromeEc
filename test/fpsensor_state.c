@@ -8,9 +8,15 @@
 #include "ec_commands.h"
 #include "fpsensor_state.h"
 #include "mock/fpsensor_state_mock.h"
+#include "openssl/aes.h"
+#include "sha256.h"
 #include "test_util.h"
 #include "trng.h"
 #include "util.h"
+
+/* These must be included after the "openssl/aes.h" */
+#include "crypto/fipsmodule/aes/internal.h"
+#include "crypto/fipsmodule/modes/internal.h"
 
 #include <stdbool.h>
 
@@ -675,6 +681,98 @@ test_static int test_fp_command_nonce_context_limit(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_fp_command_read_match_secret_with_pubkey_succeed(void)
+{
+	struct ec_response_fp_read_match_secret_with_pubkey response = {};
+	/* Create valid param with 0 <= fgr < 5 */
+	uint16_t matched_fgr = 1;
+	struct ec_params_fp_read_match_secret_with_pubkey params = {
+		.fgr = matched_fgr,
+	};
+
+	/* Expected positive_match_secret same as  in test/fpsensor_crypto.c*/
+	static const uint8_t
+		expected_positive_match_secret_for_empty_user_id[] = {
+			0x8d, 0xc4, 0x5b, 0xdf, 0x55, 0x1e, 0xa8, 0x72,
+			0xd6, 0xdd, 0xa1, 0x4c, 0xb8, 0xa1, 0x76, 0x2b,
+			0xde, 0x38, 0xd5, 0x03, 0xce, 0xe4, 0x74, 0x51,
+			0x63, 0x6c, 0x6a, 0x26, 0xa9, 0xb7, 0xfa, 0x68,
+		};
+
+	/* Create positive secret match state with valid deadline value,
+	 * readable state, and correct template matched
+	 */
+	struct positive_match_secret_state test_state_1 = {
+		.deadline.val = 5000000,
+		.readable = true,
+		.template_matched = matched_fgr,
+	};
+
+	p256_int p256_n, p256_x, p256_y;
+	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
+	uint8_t share_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
+	struct sha256_ctx ctx;
+	AES_KEY aes_key;
+	uint8_t aes_iv[FP_CONTEXT_USERID_IV_LEN];
+	uint8_t ecount_buf[16];
+	unsigned int block_num = 0;
+
+	trng_init();
+	trng_rand_bytes(privkey, FP_PK_EC_PRIVATE_KEY_LEN);
+	trng_exit();
+
+	p256_from_bin(privkey, &p256_n);
+	p256_base_point_mul(&p256_n, &p256_x, &p256_y);
+
+	p256_to_bin(&p256_x, params.pubkey_x);
+	p256_to_bin(&p256_y, params.pubkey_y);
+
+	positive_match_secret_state = test_state_1;
+	/* Set fp_positive_match_salt to the trivial value */
+	memcpy(fp_positive_match_salt, default_fake_fp_positive_match_salt,
+	       sizeof(default_fake_fp_positive_match_salt));
+
+	TEST_ASSERT_ARRAY_EQ(
+		(uint8_t const *)fp_positive_match_salt,
+		(uint8_t const *)default_fake_fp_positive_match_salt,
+		sizeof(default_fake_fp_positive_match_salt));
+
+	/* Initialize an empty user_id to compare positive_match_secret */
+	memset(user_id, 0, sizeof(user_id));
+
+	TEST_ASSERT(fp_tpm_seed_is_set());
+	/* Test with the correct matched finger state and the default fake
+	 * fp_positive_match_salt
+	 */
+	TEST_ASSERT(
+		test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
+				       0, &params, sizeof(params), &response,
+				       sizeof(response)) == EC_SUCCESS);
+
+	p256_from_bin(response.pubkey_x, &p256_x);
+	p256_from_bin(response.pubkey_y, &p256_y);
+	p256_point_mul(&p256_n, &p256_x, &p256_y, &p256_x, &p256_y);
+	p256_to_bin(&p256_x, share_secret);
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, share_secret, FP_POSITIVE_MATCH_SECRET_BYTES);
+
+	TEST_EQ(AES_set_encrypt_key(SHA256_final(&ctx), 256, &aes_key), 0,
+		"%d");
+
+	memcpy(aes_iv, response.iv, FP_EC_PUBLIC_KEY_IV_LEN);
+
+	CRYPTO_ctr128_encrypt(response.enc_secret, response.enc_secret,
+			      FP_CONTEXT_USERID_LEN, &aes_key, aes_iv,
+			      ecount_buf, &block_num, (block128_f)AES_encrypt);
+	TEST_ASSERT_ARRAY_EQ(
+		response.enc_secret,
+		expected_positive_match_secret_for_empty_user_id,
+		sizeof(expected_positive_match_secret_for_empty_user_id));
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_command_establish_pk_without_seed);
@@ -698,5 +796,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_nonce_context);
 	RUN_TEST(test_fp_command_nonce_context_clear);
 	RUN_TEST(test_fp_command_nonce_context_limit);
+	RUN_TEST(test_fp_command_read_match_secret_with_pubkey_succeed);
 	test_print_result();
 }
