@@ -316,7 +316,8 @@ const char help_str[] =
 	"  switches\n"
 	"      Prints current EC switch positions\n"
 	"  temps <sensorid>\n"
-	"      Print temperature and fan speed\n"
+	"      Print temperature and fan speed. Fan speed will be \n"
+	"      \'custom\' for custom controlled fan.\n"
 	"  tempsinfo <sensorid>\n"
 	"      Print temperature sensor info.\n"
 	"  thermalget <platform-specific args>\n"
@@ -3305,15 +3306,20 @@ static int cmd_temperature_print(int id, int mtemp)
 	struct ec_params_temp_sensor_get_info p;
 	int rc;
 	int temp = mtemp + EC_TEMP_SENSOR_OFFSET;
+	const char custom[] = "custom";
 
 	p.id = id;
 	rc = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &p, sizeof(p), &r,
 			sizeof(r));
 	if (rc < 0)
 		return rc;
-	printf("%-20s  %d K (= %d C) %11d%%\n", r.sensor_name, temp,
-	       K_TO_C(temp), get_thermal_fan_percent(temp, id));
+	printf("%-20s  %d K (= %d C)", r.sensor_name, temp, K_TO_C(temp));
 
+	if(IS_ENABLED(CONFIG_FAN_RPM_CUSTOM) ||
+	   IS_ENABLED(CONFIG_CUSTOM_FAN_CONTROL))
+		printf(" %15s", custom);
+	else
+		printf(" %11d%%", get_thermal_fan_percent(temp, id));
 	return 0;
 }
 
@@ -3349,6 +3355,7 @@ int cmd_temperature(int argc, char *argv[])
 				break;
 			default:
 				cmd_temperature_print(id, mtemp);
+				printf("\n");
 			}
 		}
 		return 0;
