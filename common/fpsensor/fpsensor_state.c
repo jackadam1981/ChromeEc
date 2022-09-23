@@ -503,3 +503,39 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
 		     EC_VER_MASK(0));
+
+BUILD_ASSERT(FP_CONTEXT_KEY_LEN == FP_CONTEXT_USERID_LEN);
+
+static enum ec_status
+fp_command_nonce_context(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_nonce_context *p = args->params;
+	uint8_t raw_user_id[FP_CONTEXT_USERID_LEN];
+	uint8_t *ck;
+	int idx;
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, auth_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&ctx, p->gsc_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&ctx, pairing_key, FP_PK_LEN);
+	ck = SHA256_final(&ctx);
+
+	memcpy(raw_user_id, ck, FP_CONTEXT_KEY_LEN);
+
+	/* Xor the user_id with the share_secret. */
+	for (idx = 0; idx < FP_CONTEXT_USERID_LEN; ++idx) {
+		raw_user_id[idx] ^= p->enc_user_id[idx];
+	}
+
+	if (p->clear_context) {
+		/* Clear the previous context. */
+		fp_reset_and_clear_context();
+	}
+
+	/* Set the user_id. */
+	memcpy(user_id, raw_user_id, FP_CONTEXT_USERID_LEN);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
+		     EC_VER_MASK(0));
