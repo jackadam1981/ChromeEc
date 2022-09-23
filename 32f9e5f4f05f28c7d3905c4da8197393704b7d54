@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f20bb4a4_6e05860d",
+        "filename": "zephyr/test/drivers/i2c_controller/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-23T19:42:27Z",
+      "side": 1,
+      "message": "TODO add explanation",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "32f9e5f4f05f28c7d3905c4da8197393704b7d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63323da_d0673bbb",
+        "filename": "zephyr/test/drivers/i2c_controller/include/basic_i2c_device_emul.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-23T19:42:27Z",
+      "side": 1,
+      "message": "TODO remove this as it ended up not getting used.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "32f9e5f4f05f28c7d3905c4da8197393704b7d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
