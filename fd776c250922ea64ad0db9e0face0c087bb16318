@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb0764b_f82957fd",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-23T22:02:09Z",
+      "side": 1,
+      "message": "any thoughts on making this more table driven and\nreducing the amount of nested conditionals?",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 31
+      },
+      "revId": "fd776c250922ea64ad0db9e0face0c087bb16318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b5e219_14b26f59",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-23T22:02:09Z",
+      "side": 1,
+      "message": "can you move the assignment to thermal_params[TEMP_SENSOR_1_SOC].temp_fan*\nout of the conditional and use the conditional only to\ncompute fan_{off,max}_slope?",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "fd776c250922ea64ad0db9e0face0c087bb16318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
