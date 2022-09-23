@@ -7,6 +7,7 @@
 
 /* Boringssl headers need to be included before extern "C" section. */
 #include "crypto/elliptic_curve_key.h"
+#include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/ecdh.h"
@@ -352,4 +353,56 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
+		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_nonce_context(struct host_cmd_handler_args *args)
+{
+	const auto *p =
+		static_cast<const ec_params_fp_nonce_context *>(args->params);
+
+	ScopedFastCpu fast_cpu;
+
+	struct sha256_ctx ctx;
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, auth_nonce.data(), auth_nonce.size());
+	SHA256_update(&ctx, p->gsc_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&ctx, pairing_key.data(), pairing_key.size());
+	uint8_t *ck = SHA256_final(&ctx);
+
+	AES_KEY aes_key;
+	int res = AES_set_encrypt_key(ck, 256, &aes_key);
+	if (res) {
+		CPRINTS("Failed to set encryption key: %d", res);
+		return EC_RES_UNAVAILABLE;
+	}
+
+	uint8_t aes_iv[sizeof(p->enc_user_id_iv)];
+	static_assert(sizeof(p->enc_user_id_iv) == AES_BLOCK_SIZE);
+	memcpy(aes_iv, p->enc_user_id_iv, sizeof(aes_iv));
+
+	/* The AES CTR used the same function for encryption & decryption. */
+	unsigned int block_num = 0;
+	uint8_t ecount_buf[AES_BLOCK_SIZE];
+	uint8_t raw_user_id[sizeof(user_id)];
+	static_assert(sizeof(p->enc_user_id) == sizeof(user_id));
+	AES_ctr128_encrypt(p->enc_user_id, raw_user_id, sizeof(raw_user_id),
+			   &aes_key, aes_iv, ecount_buf, &block_num);
+
+	/* Clear the key material. */
+	OPENSSL_cleanse(&aes_key, sizeof(aes_key));
+	OPENSSL_cleanse(&ctx, sizeof(ctx));
+
+	if (p->clear_context) {
+		/* Clear the previous context. */
+		fp_clear_context();
+	}
+
+	/* Set the user_id. */
+	memcpy(user_id, raw_user_id, FP_CONTEXT_USERID_LEN);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
