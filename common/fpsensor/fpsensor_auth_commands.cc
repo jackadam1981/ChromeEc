@@ -406,3 +406,162 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
+
+BUILD_ASSERT(FP_POSITIVE_MATCH_SECRET_BYTES == SHA256_DIGEST_SIZE);
+
+static enum ec_status
+fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_read_match_secret_with_pubkey *>(
+			args->params);
+	auto *response =
+		static_cast<ec_response_fp_read_match_secret_with_pubkey *>(
+			args->response);
+	int8_t fgr = params->fgr;
+
+	ScopedFastCpu fast_cpu;
+
+	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
+
+	trng_init();
+	trng_rand_bytes(privkey, FP_PK_EC_PRIVATE_KEY_LEN);
+	trng_rand_bytes(response->iv, FP_EC_PUBLIC_KEY_IV_LEN);
+	trng_exit();
+
+	bssl::UniquePtr<EC_GROUP> group(
+		EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1));
+	if (group.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<BIGNUM> private_key(
+		BN_bin2bn(privkey, FP_PK_EC_PRIVATE_KEY_LEN, nullptr));
+
+	if (private_key.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<EC_POINT> public_point(EC_POINT_new(group.get()));
+
+	if (public_point.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), private_key.get(),
+			 nullptr, nullptr, nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<BIGNUM> x_bn(BN_new());
+
+	if (x_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<BIGNUM> y_bn(BN_new());
+
+	if (y_bn.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(group.get(), public_point.get(),
+						x_bn.get(), y_bn.get(),
+						nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(x_bn.get(), response->pubkey_x,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (BN_bn2binpad(y_bn.get(), response->pubkey_y,
+			 FP_PK_EC_PUBLIC_KEY_LEN) != FP_PK_EC_PUBLIC_KEY_LEN) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<BIGNUM> public_key_x(
+		BN_bin2bn(params->pubkey_x, FP_PK_EC_PRIVATE_KEY_LEN, nullptr));
+
+	if (public_key_x.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<BIGNUM> public_key_y(
+		BN_bin2bn(params->pubkey_y, FP_PK_EC_PRIVATE_KEY_LEN, nullptr));
+
+	if (public_key_y.get() == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_set_affine_coordinates_GFp(
+		    group.get(), public_point.get(), public_key_x.get(),
+		    public_key_y.get(), nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_mul(group.get(), public_point.get(), nullptr,
+			 public_point.get(), private_key.get(), nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	if (EC_POINT_get_affine_coordinates_GFp(
+		    group.get(), public_point.get(), public_key_x.get(),
+		    public_key_y.get(), nullptr) != 1) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	uint8_t share_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
+
+	if (BN_bn2binpad(public_key_x.get(), share_secret,
+			 FP_POSITIVE_MATCH_SECRET_BYTES) !=
+	    FP_POSITIVE_MATCH_SECRET_BYTES) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	/* Clear the private key. */
+	OPENSSL_cleanse(privkey, sizeof(privkey));
+
+	/* Sha256 the share_secret. */
+	struct sha256_ctx ctx;
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, share_secret, FP_POSITIVE_MATCH_SECRET_BYTES);
+
+	uint8_t *tmp = SHA256_final(&ctx);
+	AES_KEY aes_key;
+	int res = AES_set_encrypt_key(tmp, 256, &aes_key);
+
+	if (res) {
+		CPRINTS("Failed to set encryption key: %d", res);
+		return EC_RES_UNAVAILABLE;
+	}
+
+	uint8_t aes_iv[FP_CONTEXT_USERID_IV_LEN];
+
+	memcpy(aes_iv, response->iv, FP_EC_PUBLIC_KEY_IV_LEN);
+
+	enum ec_status status = fp_read_match_secret(fgr, share_secret);
+	if (status != EC_RES_SUCCESS) {
+		return status;
+	}
+
+	unsigned int block_num = 0;
+	uint8_t ecount_buf[AES_BLOCK_SIZE];
+
+	/* The AES CTR used the same function for encryption & decryption. */
+	AES_ctr128_encrypt(share_secret, response->enc_secret,
+			   FP_CONTEXT_USERID_LEN, &aes_key, aes_iv, ecount_buf,
+			   &block_num);
+
+	/* Clear the key material. */
+	OPENSSL_cleanse(&aes_key, sizeof(aes_key));
+	OPENSSL_cleanse(&ctx, sizeof(ctx));
+
+	args->response_size = sizeof(*response);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
+		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
