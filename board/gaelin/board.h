@@ -141,6 +141,8 @@
  * to check the sensor value and adjust the fan speed.
  */
 #define CONFIG_FANS FAN_CH_COUNT
+#define RPM_DEVIATION 1 /* //for fan test //raymondchung: ??? */
+#define CONFIG_CUSTOM_FAN_CONTROL /* //for fan test //raymondchung: ??? */
 
 /* Include math_util for bitmask_uint64 used in pd_timers */
 #define CONFIG_MATH_UTIL
