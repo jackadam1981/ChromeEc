@@ -230,3 +230,87 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_read_match_secret_with_pubkey *>(
+			args->params);
+	auto *response =
+		static_cast<ec_response_fp_read_match_secret_with_pubkey *>(
+			args->response);
+	int8_t fgr = params->fgr;
+
+	ScopedFastCpu fast_cpu;
+
+	bssl::UniquePtr<EC_KEY> private_key = generate_elliptic_curve_key();
+	if (private_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	enum ec_error_list ret = fill_pubkey(*private_key, response->pubkey);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("read_match_secret: Failed to fill response pubkey");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	bssl::UniquePtr<EC_KEY> public_key =
+		create_ec_key_from_pubkey(params->pubkey);
+	if (public_key == nullptr) {
+		return EC_RES_UNAVAILABLE;
+	}
+
+	uint8_t enc_key[SHA256_DIGEST_SIZE];
+
+	ret = generate_ecdh_shared_secret(*private_key, *public_key, enc_key,
+					  sizeof(enc_key));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("read_match_secret: Failed to compute ECDH share secret");
+		return EC_RES_UNAVAILABLE;
+	}
+
+	AES_KEY aes_key;
+	int res = AES_set_encrypt_key(enc_key, 256, &aes_key);
+	if (res) {
+		CPRINTS("read_match_secret: Failed to set encryption key: %d",
+			res);
+		return EC_RES_UNAVAILABLE;
+	}
+
+	static_assert(sizeof(response->iv) == AES_BLOCK_SIZE);
+
+	RAND_bytes(response->iv, sizeof(response->iv));
+
+	/* The IV would be changed after the AES_ctr128_encrypt, we need a copy
+	 * for that. */
+	uint8_t aes_iv[sizeof(response->iv)];
+
+	memcpy(aes_iv, response->iv, sizeof(aes_iv));
+
+	static_assert(sizeof(response->enc_secret) ==
+		      FP_POSITIVE_MATCH_SECRET_BYTES);
+
+	enum ec_status status = fp_read_match_secret(fgr, response->enc_secret);
+	if (status != EC_RES_SUCCESS) {
+		return status;
+	}
+
+	unsigned int block_num = 0;
+	uint8_t ecount_buf[AES_BLOCK_SIZE];
+
+	/* The AES CTR used the same function for encryption & decryption. */
+	AES_ctr128_encrypt(response->enc_secret, response->enc_secret,
+			   sizeof(response->enc_secret), &aes_key, aes_iv,
+			   ecount_buf, &block_num);
+
+	/* Clear the key materials. */
+	OPENSSL_cleanse(&enc_key, sizeof(enc_key));
+	OPENSSL_cleanse(&aes_key, sizeof(aes_key));
+
+	args->response_size = sizeof(*response);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
+		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
