@@ -87,13 +87,14 @@ test_static int test_host_command_protocol_info_spi(void)
 		FP_TRANSPORT_TYPE_SPI, &expected_info[FP_TRANSPORT_TYPE_SPI]);
 }
 
-test_static int test_host_command_establish_pk(void)
+test_static int test_host_command_establish_and_load_pk(void)
 {
 	int rv;
 	struct ec_params_fp_seed seed_params;
 	struct ec_response_fp_establish_pk_keygen keygen_response;
 	struct ec_params_fp_establish_pk_wrap wrap_params;
 	struct ec_response_fp_establish_pk_wrap wrap_response;
+	struct ec_params_fp_load_pk load_params;
 
 	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
 	p256_int n, x, y;
@@ -133,12 +134,23 @@ test_static int test_host_command_establish_pk(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
+	memcpy(&load_params.enc_pk_info, &wrap_response.enc_pk_info,
+	       sizeof(wrap_response.enc_pk_info));
+
+	memcpy(load_params.enc_pk, wrap_response.enc_pk,
+	       sizeof(wrap_response.enc_pk));
+
+	rv = test_send_host_command(EC_CMD_FP_LOAD_PK, 0, &load_params,
+				    sizeof(load_params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
 	return EC_SUCCESS;
 }
 
 void run_test(int argc, const char **argv)
 {
-	RUN_TEST(test_host_command_establish_pk);
+	RUN_TEST(test_host_command_establish_and_load_pk);
 
 	if (IS_ENABLED(HAS_TASK_FPSENSOR)) {
 		/* TODO(b/171924356): The "emulator" build only builds RO and
