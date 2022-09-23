@@ -49,12 +49,9 @@
 #ifndef __CROS_EC_AES_GCM_H
 #define __CROS_EC_AES_GCM_H
 
+#include "aes.h"
 #include "common.h"
 #include "util.h"
-
-// block128_f is the type of a 128-bit, block cipher.
-typedef void (*block128_f)(const uint8_t in[16], uint8_t out[16],
-                           const void *key);
 
 // GCM definitions
 typedef struct { uint64_t hi,lo; } u128;
