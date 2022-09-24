@@ -112,9 +112,13 @@ int print_temps(void)
 
 		switch (rv) {
 		case EC_SUCCESS:
+			const char custom[] = " custom";
 			ccprintf("%d K (= %d C)", t, K_TO_C(t));
 #ifdef CONFIG_THROTTLE_AP
-			if (thermal_params[i].temp_fan_off &&
+			if(IS_ENABLED(CONFIG_FAN_RPM_CUSTOM) ||
+			   IS_ENABLED(CONFIG_CUSTOM_FAN_CONTROL))
+				ccprintf(" %15s", custom);
+			else if (thermal_params[i].temp_fan_off &&
 			    thermal_params[i].temp_fan_max)
 				ccprintf("  %11d%%",
 					 thermal_fan_percent(
@@ -147,7 +151,8 @@ static int command_temps(int argc, const char **argv)
 	return print_temps();
 }
 DECLARE_CONSOLE_COMMAND(temps, command_temps, NULL,
-			"Print temp sensors and fan speed");
+			"Print temperature and fan speed. Fan speed will be\n"
+			" \'custom\' for custom controlled fan.");
 #endif
 
 /*****************************************************************************/
