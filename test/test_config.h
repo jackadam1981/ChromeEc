@@ -32,6 +32,7 @@
 
 #if defined(TEST_AES) || defined(TEST_CRYPTO_BENCHMARK)
 #define CONFIG_AES
+#define CONFIG_AES_CTR
 #define CONFIG_AES_GCM
 #endif
 
@@ -111,6 +112,7 @@
 #if defined(TEST_FPSENSOR) || defined(TEST_FPSENSOR_STATE) || \
 	defined(TEST_FPSENSOR_CRYPTO)
 #define CONFIG_AES
+#define CONFIG_AES_CTR
 #define CONFIG_AES_GCM
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
 #define CONFIG_SHA256
