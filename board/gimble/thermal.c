@@ -39,11 +39,32 @@ struct fan_step {
  */
 static const struct fan_step fan_table[] = {
 	{
-		/* level 0 */
-		.on = { 43, -1, -1 },
+		/* level 0.1 */
+		.on = { 35, -1, -1 },
 		.off = { 0, -1, -1 },
 		.rpm = { 0 },
 		.rpm_tablet = { 0 },
+	},
+	{
+		/* level 0.2 */
+		.on = { 38, -1, -1 },
+		.off = { 35, -1, -1 },
+		.rpm = { 3100 },
+		.rpm_tablet = { 3100 },
+	},
+	{
+		/* level 0.3 */
+		.on = { 41, -1, -1 },
+		.off = { 37, -1, -1 },
+		.rpm = { 3200 },
+		.rpm_tablet = { 3200 },
+	},
+	{
+		/* level 0.4 */
+		.on = { 44, -1, -1 },
+		.off = { 40, -1, -1 },
+		.rpm = { 3300 },
+		.rpm_tablet = { 3300 },
 	},
 	{
 		/* level 1 */
