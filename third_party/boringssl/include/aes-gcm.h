@@ -49,12 +49,9 @@
 #ifndef __CROS_EC_AES_GCM_H
 #define __CROS_EC_AES_GCM_H
 
+#include "aes.h"
 #include "common.h"
 #include "util.h"
-
-// block128_f is the type of a 128-bit, block cipher.
-typedef void (*block128_f)(const uint8_t in[16], uint8_t out[16],
-                           const void *key);
 
 // GCM definitions
 typedef struct { uint64_t hi,lo; } u128;
@@ -69,43 +66,50 @@ typedef void (*gmult_func)(uint64_t Xi[2], const u128 Htable[16]);
 typedef void (*ghash_func)(uint64_t Xi[2], const u128 Htable[16],
                            const uint8_t *inp, size_t len);
 
-// This differs from upstream's |gcm128_context| in that it does not have the
-// |key| pointer, in order to make it |memcpy|-friendly. Rather the key is
-// passed into each call that needs it.
-struct gcm128_context {
-  // Following 6 names follow names in GCM specification
-  union {
-    uint64_t u[2];
-    uint32_t d[4];
-    uint8_t c[16];
-    size_t t[16 / sizeof(size_t)];
-  } Yi, EKi, EK0, len, Xi;
+typedef struct gcm128_key_st {
+	// Note the MOVBE-based, x86-64, GHASH assembly requires |H| and
+	// |Htable| to be the first two elements of this struct. Additionally,
+	// some assembly routines require a 16-byte-aligned |Htable| when
+	// hashing data, but not initialization. |GCM128_KEY| is not itself
+	// aligned to simplify embedding in |EVP_AEAD_CTX|, but |Htable|'s
+	// offset must be a multiple of 16.
+	u128 H;
+	u128 Htable[16];
+	gmult_func gmult;
+	ghash_func ghash;
 
-  // Note that the order of |Xi|, |H| and |Htable| is fixed by the MOVBE-based,
-  // x86-64, GHASH assembly.
-  u128 H;
-  u128 Htable[16];
-  gmult_func gmult;
-  ghash_func ghash;
+	block128_f block;
 
-  unsigned int mres, ares;
-  block128_f block;
-};
+	// use_aesni_gcm_crypt is true if this context should use the assembly
+	// functions |aesni_gcm_encrypt| and |aesni_gcm_decrypt| to process
+	// data.
+	unsigned use_aesni_gcm_crypt : 1;
+} GCM128_KEY;
 
+// GCM128_CONTEXT contains state for a single GCM operation. The structure
+// should be zero-initialized before use.
+typedef struct {
+	// The following 5 names follow names in GCM specification
+	union {
+		uint64_t u[2];
+		uint32_t d[4];
+		uint8_t c[16];
+		size_t t[16 / sizeof(size_t)];
+	} Yi, EKi, EK0, len, Xi;
 
-// GCM.
-//
-// This API differs from the upstream API slightly. The |GCM128_CONTEXT| does
-// not have a |key| pointer that points to the key as upstream's version does.
-// Instead, every function takes a |key| parameter. This way |GCM128_CONTEXT|
-// can be safely copied.
+	// Note that the order of |Xi| and |gcm_key| is fixed by the
+	// MOVBE-based, x86-64, GHASH assembly. Additionally, some assembly
+	// routines require |gcm_key| to be 16-byte aligned. |GCM128_KEY| is not
+	// itself aligned to simplify embedding in |EVP_AEAD_CTX|.
+	_Alignas(16) GCM128_KEY gcm_key;
 
-typedef struct gcm128_context GCM128_CONTEXT;
+	unsigned mres, ares;
+} GCM128_CONTEXT;
 
 // CRYPTO_gcm128_init initialises |ctx| to use |block| (typically AES) with
 // the given key. |block_is_hwaes| is one if |block| is |aes_hw_encrypt|.
-void CRYPTO_gcm128_init(GCM128_CONTEXT *ctx, const void *key,
-                                       block128_f block, int block_is_hwaes);
+void CRYPTO_gcm128_init_key(GCM128_KEY *gcm_key, const void *key,
+			    block128_f block, int block_is_hwaes);
 
 // CRYPTO_gcm128_setiv sets the IV (nonce) for |ctx|. The |key| must be the
 // same key that was passed to |CRYPTO_gcm128_init|.
