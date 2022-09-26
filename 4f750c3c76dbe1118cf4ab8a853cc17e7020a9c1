@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d784ac0_952c2e46",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a77e8c50_4079eac4",
+      "range": {
+        "startLine": 8,
+        "startChar": 7,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "900ab38c_fd484a18",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-15T16:16:39Z",
       "side": 1,
       "message": "\"Maximum sensor data rate\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de916da_ece5f2aa",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "900ab38c_fd484a18",
       "range": {
         "startLine": 20,
         "startChar": 6,
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91ce4ea_80fdb09a",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dc001fa_75609f5f",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0537133_759523be",
@@ -158,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "528cf826_145f77c3",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5e945f3_70aa3d39",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bcd0dbf_f8985e42",
@@ -171,6 +267,30 @@
       "writtenOn": "2022-09-21T09:39:51Z",
       "side": 1,
       "message": "The unit is percentage\n\nThis is used for mitigate the effect of the noise from the sensor. If set to 100%, the average noise is cancelled out. This is set to 120% by default because the noise migh get larger than average sometimes.",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d2f7ad_6b03c8ef",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bcd0dbf_f8985e42",
       "range": {
         "startLine": 41,
         "startChar": 3,
@@ -204,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5659ab_7549e319",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e1b36cd_51a87839",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44270064_ede4761d",
@@ -217,6 +361,30 @@
       "writtenOn": "2022-09-21T09:39:51Z",
       "side": 1,
       "message": "The unit is percentage\n\nLower the value, more difficult to enter the off-body from on-body. Should be set less than the PLATFORM_EC_BODY_DETECTION_ON_BODY_CON",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "290c3f9a_fef4acfa",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44270064_ede4761d",
       "range": {
         "startLine": 53,
         "startChar": 3,
@@ -290,6 +458,30 @@
       "range": {
         "startLine": 37,
         "startChar": 7,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "4f750c3c76dbe1118cf4ab8a853cc17e7020a9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff36d97_9c7afba3",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e9b49b_0ff669a1",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
         "endLine": 59,
         "endChar": 22
       },
