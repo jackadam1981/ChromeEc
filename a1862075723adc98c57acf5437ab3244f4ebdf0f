@@ -3,6 +3,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a8d5b25_8955e033",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-26T01:27:53Z",
+      "side": 1,
+      "message": "I think just returning the error code rather than logging is better.\nIt avoids more log spam, and the calling function can decide what level of logging is required.",
+      "revId": "a1862075723adc98c57acf5437ab3244f4ebdf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a450c2c7_7ce012f9",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2048,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-26T01:27:53Z",
+      "side": 1,
+      "message": "See above about logging. On the whole, my approach is to leave any logging\nto the calling functions (if error codes are returned).",
+      "revId": "a1862075723adc98c57acf5437ab3244f4ebdf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8937d06_4dd012cd",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2058,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-26T01:27:53Z",
+      "side": 1,
+      "message": "Same here about logging.",
+      "revId": "a1862075723adc98c57acf5437ab3244f4ebdf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65450ff_d9f1b527",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-26T01:27:53Z",
+      "side": 1,
+      "message": "This is only set in zephyr builds when default_battery_3s is assigned in DTS.\nI think it is maybe OK (but not preferable) to declare it here, though perhaps\na better place is to declare it in zephyr/shim/include/battery_enum.h instead.\nThat makes it clearly zephyr only, and only declared if it is going to be set and used.",
+      "revId": "a1862075723adc98c57acf5437ab3244f4ebdf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc623d51_135bd8a8",
         "filename": "zephyr/shim/src/battery.c",
         "patchSetId": 4
@@ -14,6 +82,30 @@
       "writtenOn": "2022-09-26T00:57:38Z",
       "side": 1,
       "message": "I would suggest to split this to the other patch.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "a1862075723adc98c57acf5437ab3244f4ebdf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d395d6_e6a2bc10",
+        "filename": "zephyr/shim/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-26T01:27:53Z",
+      "side": 1,
+      "message": "I think this is OK here, since it is common code (and is the place\nwhere this const is set - leaving it declared and not set is bit awkward maybe).",
+      "parentUuid": "cc623d51_135bd8a8",
       "range": {
         "startLine": 67,
         "startChar": 0,
