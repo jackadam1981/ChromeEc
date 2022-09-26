@@ -8,3 +8,16 @@
 #include <cros/nuvoton/npcx9.dtsi>
 #include <nuvoton/npcx9m7f.dtsi>
 #include "npcx9.dtsi"
+
+/ {
+	binman {
+		wp-ro {
+			offset = <0x0>;
+			size = <0x50000>;
+		};
+		ec-rw {
+			offset = <0x50000>;
+			size = <0x50000>;
+		};
+	};
+};
