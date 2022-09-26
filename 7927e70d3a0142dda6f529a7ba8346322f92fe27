@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720b9ba2_272c55ac",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T15:14:44Z",
+      "side": 1,
+      "message": "Are we a USB device?  From what I\u0027ve heard, there\u0027s some limited device support required for some kind of factory or TBT cert testing involving the DUT being a UFP.  But otherwise, we don\u0027t generally have support as a USB device.",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65dcd78a_cc9a043f",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T15:14:44Z",
+      "side": 1,
+      "message": "Wouldn\u0027t we expect the muxes to be in TBT mode before mode exit? \n\nI assume we want to NAK if we hadn\u0027t actually been in TBT mode before the ExitMode came, and ACK if we were in TBT mode.  Though obviously if the compliance tests say otherwise, we can also ACK when we weren\u0027t previously in the mode.",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde8e885_3c17c41c",
+        "filename": "common/usb_pd_alt_mode_ufp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T15:14:44Z",
+      "side": 1,
+      "message": "What does this need to be stored for?  Do we need to reference it later?\n\nShould ExitMode be clearing out the EnterMode message that was saved?",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
