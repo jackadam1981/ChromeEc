@@ -16,6 +16,24 @@
       "message": "You can add this tag to the commit message to get past the code coverage checking for now: \nLOW_COVERAGE_REASON\u003dno unit tests for skyrim yet, b/247151116\n\nI plan to make skyrim unit tests which you should be able to model winterhold tests after, but they\u0027re not in place yet.",
       "revId": "c38144ab3989bbbd2f0cd28efa9add8792257b4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f8d72c_6489045f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T00:43:40Z",
+      "side": 1,
+      "message": "I added the LOW_COVERAGE_REASON in the commit message, but the error message show \"CV cannot start a Run becasue this CL is missing |Code-Coverage|",
+      "parentUuid": "306ee5e0_eb1d21ad",
+      "revId": "c38144ab3989bbbd2f0cd28efa9add8792257b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
