@@ -83,8 +83,13 @@
 
 /* Enabled features */
 
+<<<<<<< HEAD
+#define CONFIG_BORINGSSL_CRYPTO
+=======
 #define CONFIG_AES
+#define CONFIG_AES_CTR
 #define CONFIG_AES_GCM
+>>>>>>> b11a99a96a (fpsensor: Enable AES CTR config)
 #define CONFIG_DMA_CROS
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_FPU

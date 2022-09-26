@@ -30,11 +30,6 @@
 #define CONFIG_LIBCRYPTOC
 #endif
 
-#if defined(TEST_AES) || defined(TEST_CRYPTO_BENCHMARK)
-#define CONFIG_AES
-#define CONFIG_AES_GCM
-#endif
-
 #ifdef TEST_BASE32
 #define CONFIG_BASE32
 #endif
@@ -110,8 +105,13 @@
 
 #if defined(TEST_FPSENSOR) || defined(TEST_FPSENSOR_STATE) || \
 	defined(TEST_FPSENSOR_CRYPTO)
+<<<<<<< HEAD
 #define CONFIG_AES
+#define CONFIG_AES_CTR
 #define CONFIG_AES_GCM
+	=======
+#define CONFIG_BORINGSSL_CRYPTO
+	>>>>>>> d7250236df (Use the boringssl under third_party)
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
 #define CONFIG_SHA256
 #endif
@@ -200,11 +200,11 @@
 #if defined(CONFIG_ONLINE_CALIB) || defined(TEST_BODY_DETECTION) ||        \
 	defined(TEST_MOTION_ANGLE) || defined(TEST_MOTION_ANGLE_TABLET) || \
 	defined(TEST_MOTION_LID) || defined(TEST_MOTION_SENSE_FIFO)
-enum sensor_id {
-	BASE,
-	LID,
-	SENSOR_COUNT,
-};
+	enum sensor_id {
+		BASE,
+		LID,
+		SENSOR_COUNT,
+	};
 
 #if defined(TEST_MOTION_ANGLE) || defined(TEST_MOTION_ANGLE_TABLET) || \
 	defined(TEST_MOTION_LID)
