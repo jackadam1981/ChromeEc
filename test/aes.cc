@@ -19,14 +19,19 @@
 #include "test_util.h"
 
 extern "C" {
-#include "aes.h"
-#include "aes-gcm.h"
 #include "builtin/assert.h"
 #include "console.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
 }
+
+#include "openssl/aes.h"
+
+/* These must be included after the "openssl/aes.h" */
+#include "crypto/fipsmodule/aes/internal.h"
+#include "crypto/fipsmodule/modes/internal.h"
+
 
 /* Temporary buffer, to avoid using too much stack space. */
 static uint8_t tmp[512];
@@ -44,8 +49,8 @@ static int test_aes_gcm_encrypt(uint8_t *result, const uint8_t *key,
 	static GCM128_CONTEXT ctx;
 
 	TEST_ASSERT(AES_set_encrypt_key(key, 8 * key_size, &aes_key) == 0);
-
-	CRYPTO_gcm128_init(&ctx, &aes_key, (block128_f)AES_encrypt, 0);
+	memset(&ctx, 0, sizeof(ctx));
+	CRYPTO_gcm128_init_key(&ctx.gcm_key, &aes_key, (block128_f)AES_encrypt, 0);
 	CRYPTO_gcm128_setiv(&ctx, &aes_key, nonce, nonce_size);
 	TEST_ASSERT(CRYPTO_gcm128_encrypt(&ctx, &aes_key, plaintext, result,
 					  plaintext_size));
@@ -68,8 +73,8 @@ static int test_aes_gcm_decrypt(uint8_t *result, const uint8_t *key,
 	static GCM128_CONTEXT ctx;
 
 	TEST_ASSERT(AES_set_encrypt_key(key, 8 * key_size, &aes_key) == 0);
-
-	CRYPTO_gcm128_init(&ctx, &aes_key, (block128_f)AES_encrypt, 0);
+	memset(&ctx, 0, sizeof(ctx));
+	CRYPTO_gcm128_init_key(&ctx.gcm_key, &aes_key, (block128_f)AES_encrypt, 0);
 	CRYPTO_gcm128_setiv(&ctx, &aes_key, nonce, nonce_size);
 	TEST_ASSERT(CRYPTO_gcm128_decrypt(&ctx, &aes_key, ciphertext, result,
 					  plaintext_size));
@@ -449,7 +454,8 @@ static void test_aes_gcm_speed(void)
 
 	benchmark.run("AES-GCM encrypt", [&]() {
 		AES_set_encrypt_key(key, 8 * key_size, &aes_key);
-		CRYPTO_gcm128_init(&ctx, &aes_key, (block128_f)AES_encrypt, 0);
+		memset(&ctx, 0, sizeof(ctx));
+		CRYPTO_gcm128_init_key(&ctx.gcm_key, &aes_key, (block128_f)AES_encrypt, 0);
 		CRYPTO_gcm128_setiv(&ctx, &aes_key, nonce, nonce_size);
 		CRYPTO_gcm128_encrypt(&ctx, &aes_key, plaintext, encrypted_data,
 				      plaintext_size);
@@ -458,7 +464,8 @@ static void test_aes_gcm_speed(void)
 
 	benchmark.run("AES-GCM decrypt", [&]() {
 		AES_set_encrypt_key(key, 8 * key_size, &aes_key);
-		CRYPTO_gcm128_init(&ctx, &aes_key, (block128_f)AES_encrypt, 0);
+		memset(&ctx, 0, sizeof(ctx));
+		CRYPTO_gcm128_init_key(&ctx.gcm_key, &aes_key, (block128_f)AES_encrypt, 0);
 		CRYPTO_gcm128_setiv(&ctx, &aes_key, nonce, nonce_size);
 		auto decrypt_res =
 			CRYPTO_gcm128_decrypt(&ctx, &aes_key, encrypted_data,
