@@ -16,6 +16,24 @@
       "message": "Does this affect shell commands? We sometimes use commands like `i2c read_byte I2C_SUB_C1_TCPC` when debugging, and it looks like that bus label is being removed. What\u0027s the alternative?",
       "revId": "ba79a7a5ade3a58696aafc468162e257101587ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed290dca_b9290ad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2022-09-26T05:49:31Z",
+      "side": 1,
+      "message": "The alternative is the name of the node. e.g. i2c read_byte i2c@f03500",
+      "parentUuid": "3d617a31_ddea7c43",
+      "revId": "ba79a7a5ade3a58696aafc468162e257101587ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
