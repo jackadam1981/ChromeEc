@@ -16,6 +16,63 @@
       "message": "(is this meant for review? marked as draft...)",
       "revId": "02a5cc9ed817066a0828861db9bf2c51a624923c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e555ad5e_e03e963a",
+        "filename": "common/panic_output.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-26T14:27:30Z",
+      "side": 1,
+      "message": "Not sure I understand this (though I\u0027m unfamiliar with this code as a starting point, but anyway):\n- what is \u0027data_begin - move_size\u0027? Maybe add an intermediate variable\n- the code here assigns \u0027jump_tag_total \u003d 0\u0027 and then does \u0027move_size -\u003d jump_tag_total\u0027, so this line always does \u0027-\u003d 0\u0027?\n- should this change go on its own CL? May deserve a small CL comment :-)",
+      "revId": "02a5cc9ed817066a0828861db9bf2c51a624923c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9b3121_0853032d",
+        "filename": "zephyr/linker/end-of-ram.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-26T14:27:30Z",
+      "side": 1,
+      "message": "will would?",
+      "range": {
+        "startLine": 7,
+        "startChar": 71,
+        "endLine": 7,
+        "endChar": 81
+      },
+      "revId": "02a5cc9ed817066a0828861db9bf2c51a624923c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea691614_62a773cf",
+        "filename": "zephyr/linker/end-of-ram.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-09-26T14:27:30Z",
+      "side": 1,
+      "message": "nit: drop the blank line",
+      "revId": "02a5cc9ed817066a0828861db9bf2c51a624923c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
