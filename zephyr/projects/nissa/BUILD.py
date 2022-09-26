@@ -64,6 +64,9 @@ craask = register_nissa_project(
     chip="npcx9m3f",
     extra_dts_overlays=[
         "generated.dts",
+        "adc.dts",
+        "i2c.dts",
+        "interrupts.dts",
         "cbi.dts",
         "overlay.dts",
         "motionsense.dts",
