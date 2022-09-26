@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3096ae43_03162017",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T17:06:54Z",
+      "side": 1,
+      "message": "I would suspect this could be more elegantly done as a clause within the SENSOR_ACTIVE_S0 case to ignore was_enabled and just set \"true\" whenever we\u0027re in S0.  And I think you should be able to use IS_ENABLED() for the config check",
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "095b3397_68894830",
         "filename": "common/motion_sense.c",
         "patchSetId": 11
@@ -123,6 +140,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a63e3900_7008ba4f",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T17:06:54Z",
+      "side": 1,
+      "message": "Nit: \"Always enable\"",
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bee1e403_4686d4c0",
         "filename": "zephyr/Kconfig.body_detection",
         "patchSetId": 11
@@ -157,6 +191,23 @@
       "writtenOn": "2022-09-26T17:05:50Z",
       "side": 1,
       "message": "nit: Remove extra newline.",
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e5f0f0_56092c35",
+        "filename": "zephyr/projects/skyrim/motionsense.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T17:06:54Z",
+      "side": 1,
+      "message": "This alias should be able to go into winterhold.dts\n\nAlso, please split out the common code changes into a separate CL from the board feature enable",
       "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
