@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da95c83c_3ecd3289",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "ref1",
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2534bbba_a33301b9",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "See \"ref1\" above and update this to `if (IS_ENABLED(CONFIG_BODY_DCONFIG_BODY_DETECTION_ALWAYS_ENABLE_IN_SOETECTION))`.",
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095b3397_68894830",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "Is this logging necessary?   If so, it should be more descriptive and say what it\u0027s enabling.",
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56161d5b_7d3fef42",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "typo: `S0` (zero, not O).",
+      "range": {
+        "startLine": 91,
+        "startChar": 52,
+        "endLine": 91,
+        "endChar": 53
+      },
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b14862_a8d841c9",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "nit: Always",
+      "range": {
+        "startLine": 92,
+        "startChar": 7,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0aefc41_dd606e3a",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "typo: activate",
+      "range": {
+        "startLine": 95,
+        "startChar": 10,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee1e403_4686d4c0",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "What does this portion mean (what host command is this referring to)?",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 23
+      },
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8645059a_521a26ec",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "nit: Remove extra newline.",
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d04b06b_9152bddf",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1901,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:05:50Z",
+      "side": 1,
+      "message": "Same as above: `S0`",
+      "range": {
+        "startLine": 1901,
+        "startChar": 46,
+        "endLine": 1901,
+        "endChar": 48
+      },
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
