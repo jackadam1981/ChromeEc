@@ -16,6 +16,24 @@
       "message": "Should we change the content of this file?\nIt\u0027s different from the upstream version now.\nhttps://boringssl.googlesource.com/boringssl/+/refs/heads/master/LICENSE",
       "revId": "71b2ef709dcb14260f5fdaa3ab4ced005a29fb46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25cb83c1_f10ae3be",
+        "filename": "third_party/boringssl/LICENSE",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-09-26T05:46:56Z",
+      "side": 1,
+      "message": "that project should get updated, but i\u0027m only updating CrOS projects",
+      "parentUuid": "59e03048_530b1309",
+      "revId": "71b2ef709dcb14260f5fdaa3ab4ced005a29fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
