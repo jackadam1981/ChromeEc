@@ -6,11 +6,54 @@
 #include <cros/thermistor/thermistor.dtsi>
 
 / {
-	aliases {
-		gpio-cbi-wp = &gpio_ec_cbi_wp;
-		gpio-wp = &gpio_ec_wp_odl;
-		int-wp = &int_wp_l;
-		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
+	named-adc-channels {
+		compatible = "named-adc-channels";
+
+		adc_ec_vsense_pp1050_proc: ec_vsense_pp1050_proc {
+			enum-name = "ADC_PP1050_PROC";
+			io-channels = <&adc0 4>;
+		};
+		adc_ec_vsense_pp3300_s5: ec_vsense_pp3300_s5 {
+			enum-name = "ADC_PP3300_S5";
+			io-channels = <&adc0 6>;
+		};
+		adc_temp_sensor_1: temp_sensor_1 {
+			enum-name = "ADC_TEMP_SENSOR_1";
+			io-channels = <&adc0 0>;
+		};
+		adc_temp_sensor_2: temp_sensor_2 {
+			enum-name = "ADC_TEMP_SENSOR_2";
+			io-channels = <&adc0 1>;
+		};
+		adc_temp_sensor_3: temp_sensor_3 {
+			enum-name = "ADC_TEMP_SENSOR_3";
+			io-channels = <&adc0 10>;
+		};
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_ec_i2c_eeprom: ec_i2c_eeprom {
+			i2c-port = <&i2c0_0>;
+			enum-names = "I2C_PORT_EEPROM";
+		};
+		i2c_ec_i2c_sensor: ec_i2c_sensor {
+			i2c-port = <&i2c1_0>;
+			enum-names = "I2C_PORT_SENSOR";
+		};
+		i2c_ec_i2c_usb_c0: ec_i2c_usb_c0 {
+			i2c-port = <&i2c3_0>;
+			enum-names = "I2C_PORT_USB_C0_TCPC";
+		};
+		i2c_ec_i2c_sub_usb_c1: ec_i2c_sub_usb_c1 {
+			i2c-port = <&i2c5_1>;
+			enum-names = "I2C_PORT_USB_C1_TCPC";
+		};
+		i2c_ec_i2c_batt: ec_i2c_batt {
+			i2c-port = <&i2c7_0>;
+			enum-names = "I2C_PORT_BATTERY";
+		};
 	};
 
 	ec-console {
@@ -28,122 +71,6 @@
 		cosmx-2 {
 			compatible = "cosmx,ap20cbl-2", "battery-smart";
 		};
-	};
-
-	hibernate-wake-pins {
-		compatible = "cros-ec,hibernate-wake-pins";
-		wakeup-irqs = <
-			&int_power_button
-			&int_lid_open
-		>;
-	};
-
-	gpio-interrupts {
-		compatible = "cros-ec,gpio-interrupts";
-
-		int_power_button: power_button {
-			irq-pin = <&gpio_gsc_ec_pwr_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "power_button_interrupt";
-		};
-		int_wp_l: wp_l {
-			irq-pin = <&gpio_ec_wp_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "switch_interrupt";
-		};
-		int_lid_open: lid_open {
-			irq-pin = <&gpio_lid_open>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "lid_interrupt";
-		};
-		int_tablet_mode: tablet_mode {
-			irq-pin = <&gpio_tablet_mode_l>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "gmr_tablet_switch_isr";
-		};
-		int_imu: ec_imu {
-			irq-pin = <&gpio_imu_int_l>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "motion_interrupt";
-		};
-		int_vol_down: vol_down {
-			irq-pin = <&gpio_voldn_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "button_interrupt";
-		};
-		int_vol_up: vol_up {
-			irq-pin = <&gpio_volup_btn_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "button_interrupt";
-		};
-		int_usb_c0: usb_c0 {
-			irq-pin = <&gpio_usb_c0_int_odl>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "usb_interrupt";
-		};
-		int_usb_c1: usb_c1 {
-			irq-pin = <&gpio_sb_1>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "usb_interrupt";
-		};
-	};
-
-	named-gpios {
-		gpio_sb_1: sb-1 {
-			gpios = <&gpio0 2 GPIO_PULL_UP>;
-			no-auto-init;
-		};
-
-		gpio_sb_2: sb-2 {
-			gpios = <&gpiod 4 GPIO_OUTPUT>;
-			no-auto-init;
-		};
-
-		/*
-		 * Set I2C pins for type C sub-board to be low voltage (I2C5_1).
-		 * We do this for all boards, since the pins are 3.3V tolerant,
-		 * and the only 2 types of sub-boards used on nivviks both have
-		 * type-C ports on them.
-		 */
-		gpio_sb_3: sb-3 {
-			gpios = <&gpiof 4 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
-			no-auto-init;
-		};
-		gpio_sb_4: sb-4 {
-			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-			no-auto-init;
-		};
-		ec-i2c-sensor-scl {
-			gpios = <&gpio9 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-		};
-		ec-i2c-sensor-sda {
-			gpios = <&gpio8 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-		};
-	};
-
-	/*
-	 * Aliases used for sub-board GPIOs.
-	 */
-	aliases {
-		/*
-		 * Input GPIO when used with type-C port 1
-		 * Output when used with HDMI sub-board
-		 */
-		gpio-usb-c1-int-odl = &gpio_sb_1;
-		gpio-en-rails-odl = &gpio_sb_1;
-		/*
-		 * Sub-board with type A USB, enable.
-		 */
-		gpio-en-usb-a1-vbus = &gpio_sb_2;
-		/*
-		 * HPD pins for HDMI sub-board.
-		 */
-		gpio-hdmi-en-odl = &gpio_sb_3;
-		gpio-hpd-odl = &gpio_sb_4;
-		/*
-		 * Enable S5 rails for LTE sub-board
-		 */
-		gpio-en-sub-s5-rails = &gpio_sb_2;
 	};
 
 	temp_memory: memory {
@@ -275,10 +202,38 @@
 	div = <(651975 / 2)>;
 };
 
+&adc0 {
+	status = "okay";
+	pinctrl-0 = <&adc0_chan0_gp45
+		     &adc0_chan1_gp44
+		     &adc0_chan4_gp41
+		     &adc0_chan6_gp34
+		     &adc0_chan10_gpe0>;
+	pinctrl-names = "default";
+};
+
+&pwm6 {
+	status = "okay";
+	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
+	pinctrl-0 = <&pwm6_gpc0>;
+	pinctrl-names = "default";
+};
+
+/* host interface */
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
+	pinctrl-names = "default";
+};
+
+
 /* Set bus speeds for I2C */
 &i2c0_0 {
 	label = "I2C_EEPROM";
 	clock-frequency = <I2C_BITRATE_FAST>;
+	status = "okay";
+	pinctrl-0 = <&i2c0_0_sda_scl_gpb4_b5>;
+	pinctrl-names = "default";
 
 	cbi_eeprom: eeprom@50 {
 		compatible = "atmel,at24";
@@ -293,11 +248,17 @@
 &i2c1_0 {
 	label = "I2C_SENSOR";
 	clock-frequency = <I2C_BITRATE_FAST>;
+	status = "okay";
+	pinctrl-0 = <&i2c1_0_sda_scl_gp87_90>;
+	pinctrl-names = "default";
 };
 
 &i2c3_0 {
 	label = "I2C_USB_C0_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	status = "okay";
+	pinctrl-0 = <&i2c3_0_sda_scl_gpd0_d1>;
+	pinctrl-names = "default";
 
 	bc12_port0: pi3usb9201@5f {
 		compatible = "pericom,pi3usb9201";
@@ -320,6 +281,9 @@
 &i2c5_1 {
 	label = "I2C_SUB_C1_TCPC";
 	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	status = "okay";
+	pinctrl-0 = <&i2c5_1_sda_scl_gpf4_f5>;
+	pinctrl-names = "default";
 
 	bc12_port1: pi3usb9201@5f {
 		compatible = "pericom,pi3usb9201";
@@ -343,18 +307,27 @@
 &i2c7_0 {
 	label = "I2C_BATTERY";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
-};
-
-&pwm6 {
 	status = "okay";
-	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
-	pinctrl-0 = <&pwm6_gpc0>;
+	pinctrl-0 = <&i2c7_0_sda_scl_gpb2_b3>;
 	pinctrl-names = "default";
 };
 
-/* host interface */
-&espi0 {
+&i2c_ctrl0 {
 	status = "okay";
-	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
-	pinctrl-names = "default";
+};
+
+&i2c_ctrl1 {
+	status = "okay";
+};
+
+&i2c_ctrl3 {
+	status = "okay";
+};
+
+&i2c_ctrl5 {
+	status = "okay";
+};
+
+&i2c_ctrl7 {
+	status = "okay";
 };
