@@ -37,6 +37,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b408b271_22782126",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T16:46:17Z",
+      "side": 1,
+      "message": "Based on the format of other `Kconfig` files, it looks like this should be a `menuconfig`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4797650e_7f8a0e45",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T16:46:17Z",
+      "side": 1,
+      "message": "What does \"window size\" refer to here? The description is about data rates.",
+      "range": {
+        "startLine": 19,
+        "startChar": 34,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311636ca_43c58a85",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T16:46:17Z",
+      "side": 1,
+      "message": "typo: affects the",
+      "range": {
+        "startLine": 47,
+        "startChar": 21,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84996a0d_c3889b80",
         "filename": "zephyr/Kconfig.body_detection",
         "patchSetId": 6
