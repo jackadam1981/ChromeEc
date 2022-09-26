@@ -165,7 +165,6 @@ cov-test-list-host = $(filter-out $(cov-dont-test), $(test-list-host))
 
 abort-y=abort.o
 accel_cal-y=accel_cal.o
-aes-y=aes.o
 # The purpose of the always_memset test is to ensure the functionality of
 # always_memset during high levels of optimization.
 %/test/always_memset.o: CFLAGS += -O3
