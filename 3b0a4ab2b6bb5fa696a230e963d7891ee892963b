@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a67d8ea_d15648bc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-26T03:09:52Z",
+      "side": 1,
+      "message": "The failed messages:\n\nFAILED: CMakeFiles/app.dir/mnt/host/source/src/platform/ec/build/zephyr/winterhold/modules/ec/common/motion_sense.c.obj \n/mnt/host/source/src/platform/ec/build/zephyr/winterhold/modules/ec/common/motion_sense.c: In function \u0027host_cmd_motion_sense\u0027:\n/mnt/host/source/src/platform/ec/build/zephyr/winterhold/modules/ec/common/motion_sense.c:1425:41: error: taking address of packed member of \u0027struct ec_params_motion_sense\u0027 may result in an unaligned pointer value [-Werror\u003daddress-of-packed-member]\n 1425 |                                         \u0026in-\u003eset_activity);\n      |                                         ^~~~~~~~~~~~~~~~~\ncc1: all warnings being treated as errors",
+      "parentUuid": "6b844a3b_cf6fec1c",
+      "revId": "3b0a4ab2b6bb5fa696a230e963d7891ee892963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a456fc1_66940d89",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 2
