@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df37fa6a_38c1cf03",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-26T07:52:33Z",
+      "side": 1,
+      "message": "Precedence doesn\u0027t imply correctness.\nThis is new code, and so we should follow the better way.\nI imagine once code like this gets upstreamed to Zephyr, it will be eventually fixed.\nGiven that the calling code already logs the error, this is just duplication and causes unnecesary log spam.",
+      "parentUuid": "aa294c7c_2673c2bb",
+      "revId": "a1862075723adc98c57acf5437ab3244f4ebdf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a450c2c7_7ce012f9",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 4
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "It\u0027s declared here so that both ECOS and Zephyr models can use this feature. For models that still used ECOS, the default value of DEFAULT_BATTERY_TYPE_3S can be defined in model specific code (battery.c).",
       "parentUuid": "c65450ff_d9f1b527",
+      "revId": "a1862075723adc98c57acf5437ab3244f4ebdf0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5e9ee9_698f73b1",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-09-26T07:52:33Z",
+      "side": 1,
+      "message": "I guess the concern I have is that we have a declaration with no definition.\nI don\u0027t know how common that is, or whether that is something that is commonly\ndone in the codebase.\nIt\u0027s generally not good practice, and is a little confusing.\nStrictly speaking, putting it under a CONFIG_ guard would be clearer.\nFWIW, I don\u0027t expect any new models to use the legacy ECOS, unless one of the brya\nfollowers is going to do this.\nMy preference would be to put this in the Zephyr shim code unless there is a\nreal need for it in the legacy code.",
+      "parentUuid": "b2cb063b_0efdaffe",
       "revId": "a1862075723adc98c57acf5437ab3244f4ebdf0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
