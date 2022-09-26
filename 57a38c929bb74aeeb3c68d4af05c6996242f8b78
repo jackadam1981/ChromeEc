@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcfbefc_90ec94d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T16:00:45Z",
+      "side": 1,
+      "message": "A couple of small changes are still needed, but otherwise this is looking good",
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe2bdff_cd754471",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T16:00:45Z",
+      "side": 1,
+      "message": "2022, and we changed the format of our copyright headers to be: `Copyright 2022 The ChromiumOS Authors`\n\nDid the upload hooks not catch this?  I wonder if they haven\u0027t been set up correctly to look at Kconfig files",
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84996a0d_c3889b80",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T16:00:45Z",
+      "side": 1,
+      "message": "nit: This",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 7
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b947b79d_31e1d4b6",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-26T16:00:45Z",
+      "side": 1,
+      "message": "canceled",
+      "range": {
+        "startLine": 53,
+        "startChar": 40,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
