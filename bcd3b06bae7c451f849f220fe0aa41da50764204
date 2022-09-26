@@ -189,6 +189,30 @@
       },
       "revId": "bcd3b06bae7c451f849f220fe0aa41da50764204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "136615dc_f74de0d7",
+        "filename": "test/always_memset.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-26T18:40:59Z",
+      "side": 1,
+      "message": "`memset_s` should work; the main issue has been [its availability](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2897.htm):\n\n\u003e C11 (and C++17 as it was based on it) added memset_s (K.3.7.4.1) to give a standard solution to this problem [4][23]. However, it is an optional extension (Annex K) and, at the time of writing, several major compiler vendors do not define __STDC_LIB_EXT1__ (GCC [24], Clang [25], MSVC [26], icc [27]). Therefore, in practical terms, there is no widely-available, portable solution yet for C nor C++. A 2015 paper on this topic, WG14’s N1967 “Field Experience With Annex K — Bounds Checking Interfaces” [28], concludes that “Annex K should be removed from the C standard”. On the other hand, a 2019 paper, WG14’s N2336 “Bounds-checking Interfaces: Field Experience and Future Directions” [29], examines the arguments both for and against the bounds-checked interfaces, evaluates possible solutions for actual problems with Annex K, and propounds the repair and retention of Annex K for C2x.",
+      "parentUuid": "add7b273_ce10228f",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "bcd3b06bae7c451f849f220fe0aa41da50764204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
