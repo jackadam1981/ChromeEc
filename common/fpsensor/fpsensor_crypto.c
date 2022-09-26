@@ -5,6 +5,7 @@
 #include <stdbool.h>
 
 #include "aes.h"
+#include "aes-ctr.h"
 #include "aes-gcm.h"
 #include "cryptoc/util.h"
 #include "fpsensor_crypto.h"
@@ -12,10 +13,11 @@
 #include "fpsensor_state.h"
 #include "rollback.h"
 
-#if !defined(CONFIG_AES) || !defined(CONFIG_AES_GCM) || \
-	!defined(CONFIG_ROLLBACK_SECRET_SIZE)
-#error "fpsensor requires AES, AES_GCM and ROLLBACK_SECRET_SIZE"
+#if !defined(CONFIG_AES) || !defined(CONFIG_AES_CTR) || \
+	!defined(CONFIG_AES_GCM) || !defined(CONFIG_ROLLBACK_SECRET_SIZE)
+#error "fpsensor requires AES, AES_CTR, AES_GCM and ROLLBACK_SECRET_SIZE"
 #endif
+
 
 test_export_static int get_ikm(uint8_t *ikm)
 {
