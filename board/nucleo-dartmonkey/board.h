@@ -31,6 +31,9 @@
 /* Fingerprint needs to store a secrect in the anti-rollback block */
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
 
+/* Fingerprint needs the boringssl crypto lib */
+#define CONFIG_BORINGSSL_CRYPTO
+
 /* SPI configuration for the fingerprint sensor */
 #define CONFIG_SPI_CONTROLLER
 #define CONFIG_SPI_FP_PORT 2 /* SPI4: third master config */
