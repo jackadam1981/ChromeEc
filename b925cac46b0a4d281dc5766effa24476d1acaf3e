@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08310d3_f44f084e",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-26T21:33:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39bb0f98_73fe8835",
+      "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9113ec3_44064d74",
@@ -120,6 +138,24 @@
       "writtenOn": "2022-09-23T03:18:22Z",
       "side": 1,
       "message": "Guard this with the kconfig option, since it\u0027s not needed if that is disabled and you can drop the `__maybe_unused` then.\n\nNaming it `in_debug_mode` might be more descriptive, too.",
+      "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba9f37d6_ed7e22d7",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-09-26T21:33:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9113ec3_44064d74",
       "revId": "b925cac46b0a4d281dc5766effa24476d1acaf3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
