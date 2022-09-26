@@ -222,7 +222,7 @@
 			gpios = <&gpioe 2 GPIO_INPUT>;
 			enum-name = "GPIO_VOLUME_DOWN_L";
 		};
-		ccd_mode_odl {
+		gpio_ccd_mode_odl: ccd_mode_odl {
 			gpios = <&gpioe 5 GPIO_INPUT>;
 			enum-name = "GPIO_CCD_MODE_ODL";
 		};

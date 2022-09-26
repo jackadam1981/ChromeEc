@@ -228,3 +228,31 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 	/* ack */
 	return 1;
 }
+
+static void ccd_interrupt_deferred(void)
+{
+	int ccd_en =
+		!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ccd_mode_odl));
+
+	/*
+	 * If CCD_MODE_ODL asserts, it means there's a debug accessory connected
+	 * and we should enable the SBU FETs.
+	 */
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU)) {
+		ppc_set_sbu(CONFIG_CCD_USBC_PORT_NUMBER, ccd_en);
+	}
+
+	if (ccd_en) {
+		/* Mux DP AUX away when CCD enabled to prevent the AUX channel
+		 * interferes the SBU pins.
+		 */
+		CPRINTS("CCD Enabled, mux DP_AUX_PATH_SEL to 1");
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(dp_aux_path_sel), 1);
+	}
+}
+DECLARE_DEFERRED(ccd_interrupt_deferred);
+
+void ccd_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&ccd_interrupt_deferred_data, 0);
+}
