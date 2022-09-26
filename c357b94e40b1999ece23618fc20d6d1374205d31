@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c3a572_03642f9f",
+        "filename": "board/crota/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-26T19:11:44Z",
+      "side": 1,
+      "message": "you should be able to be a bit more space efficient here.\nis uint8_t sufficient?",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 4
+      },
+      "revId": "c357b94e40b1999ece23618fc20d6d1374205d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
