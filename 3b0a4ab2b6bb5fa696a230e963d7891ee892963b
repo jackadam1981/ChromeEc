@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "828797fb_adf107b9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T17:46:05Z",
+      "side": 1,
+      "message": "Since no one is hitting this already and there aren\u0027t any gaps in the structure, marking this packed should be fine.\n\nThis should probably be moved into a separate CL though, so it can be landed and reverted more easily if there is an issue.\n\nThe other thing I\u0027d do is increase `parameters` to `[4]` so it ends with a 32b-aligned address since it\u0027s inside of a packed structure.",
+      "parentUuid": "3a67d8ea_d15648bc",
+      "revId": "3b0a4ab2b6bb5fa696a230e963d7891ee892963b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a456fc1_66940d89",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 2
