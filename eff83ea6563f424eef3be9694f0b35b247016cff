@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f915b59a_b8f7631a",
+        "filename": "zephyr/subsys/ap_pwrseq/Kconfig",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-26T23:14:19Z",
+      "side": 1,
+      "message": "This seems to have gone too far the other way now 😅; it looks like it might be a system-wide setting. How about `AP_PWRSEQ_DEBUG_MODE_COMMAND`?",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "eff83ea6563f424eef3be9694f0b35b247016cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
