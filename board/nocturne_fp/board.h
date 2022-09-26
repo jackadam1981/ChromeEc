@@ -203,6 +203,7 @@
 #endif
 
 #define CONFIG_AES
+#define CONFIG_AES_CTR
 #define CONFIG_AES_GCM
 
 #define CONFIG_RNG
