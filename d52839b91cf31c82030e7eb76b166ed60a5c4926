@@ -16,6 +16,40 @@
       "message": "The configs look good to me.  Tim, do you want to review the new ACPI field?",
       "revId": "d52839b91cf31c82030e7eb76b166ed60a5c4926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01b8898_75deca68",
+        "filename": "include/body_detection.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T16:55:00Z",
+      "side": 1,
+      "message": "Why is this necessary? Can it be moved into the source file that actually need it, so we don\u0027t propagate the include to everything that includes this header file?",
+      "revId": "d52839b91cf31c82030e7eb76b166ed60a5c4926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17bb6586_e46e0cb4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-26T16:55:00Z",
+      "side": 1,
+      "message": "Please add a `EC_ACPI_MEM_BDMC_MASK` to indicate the field is only 1 bit, similar to `EC_ACPI_MEM_TBMD_MASK`.",
+      "revId": "d52839b91cf31c82030e7eb76b166ed60a5c4926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
