@@ -233,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "957a7c15_52bb4a66",
+        "filename": "test/always_memset.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-26T22:50:07Z",
+      "side": 1,
+      "message": "Also notable. When we remove `space`, the compiler merges exercise_memset functionality into the caller function. When it does this, it looks like other optimizations are coming into effect, that may simply combines the inner buf with the caller\u0027s buf. This might need to be re-designed if we remove space.",
+      "parentUuid": "ad56d97c_2ba56d97",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "c3bbbc0c9cd8811e2ae493acc2e5807a9a2bc37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7444555e_ae252097",
         "filename": "test/always_memset.c",
         "patchSetId": 9
