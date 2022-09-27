@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c355c2_f9d0815c",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-27T01:19:13Z",
+      "side": 1,
+      "message": "static const ...\nunless you plan to access this table from other files?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "7c09a5a78804cd613e7f6fcc01f69ccb063dcf1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
