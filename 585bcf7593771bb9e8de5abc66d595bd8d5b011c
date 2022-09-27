@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d1fda7_e3cde261",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-09-27T19:00:38Z",
+      "side": 1,
+      "message": "This is just in there for debugging right now. I\u0027ll remove it before we land the change.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "585bcf7593771bb9e8de5abc66d595bd8d5b011c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
