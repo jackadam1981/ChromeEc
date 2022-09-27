@@ -16,6 +16,29 @@
       "message": "Hey Keith, this my attempt at splitting off some non-Zephyr code in to a new source file like we discussed in chat that other week. Let me know what you think.",
       "revId": "758a2f568f771365ae435fc4a9ceba7049f9496b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29262d5f_1deb65ed",
+        "filename": "common/i2c_controller_cros_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-27T18:48:03Z",
+      "side": 1,
+      "message": "Name this file \"i2c_controller_commands.c\" - it better reflects the contents of this file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "758a2f568f771365ae435fc4a9ceba7049f9496b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
