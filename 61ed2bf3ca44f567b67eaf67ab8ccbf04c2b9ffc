@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "158eedb0_46eab4fc",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-27T04:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac6f91c5_5871472d",
+      "range": {
+        "startLine": 219,
+        "startChar": 7,
+        "endLine": 219,
+        "endChar": 40
+      },
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51262122_6958f2e6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-23T17:29:34Z",
       "side": 1,
       "message": "Follow the indentation pattern from the rest of the file.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 0
+      },
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59064b41_682e38d0",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-27T04:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51262122_6958f2e6",
       "range": {
         "startLine": 220,
         "startChar": 0,
@@ -99,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "426e81b7_d0c48694",
+        "filename": "zephyr/app/ec/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-27T04:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "693393a2_48681131",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e57bfa18_cef63200",
@@ -112,6 +178,24 @@
       "writtenOn": "2022-09-23T03:40:32Z",
       "side": 1,
       "message": "Perhaps in zephyr/CMakeLists.txt",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd0505c5_c29f0b9f",
+        "filename": "zephyr/app/ec/usbc/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-27T04:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e57bfa18_cef63200",
       "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -147,6 +231,24 @@
       "side": 1,
       "message": "CONFIG_PLATFORM_EC is meant to create a distinct namespace from the legacy CONFIG_ options defined in platform/ec/include/config.h.\n\nThis CL creates new Kconfig options, and I agree that the support doesn\u0027t need to be added to the legacy cros-ec boards.\n\nI think dropping `PLATFORM_EC` from this name is appropriate for consistency with the other CONFIG_ options.",
       "parentUuid": "85a22ac6_f3f9f46e",
+      "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920bc68c_e07dff28",
+        "filename": "zephyr/app/ec/usbc/svdm_rsp_dfp_only.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-27T04:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98dc3a63_13197e8c",
       "revId": "61ed2bf3ca44f567b67eaf67ab8ccbf04c2b9ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
