@@ -34,6 +34,24 @@
       "parentUuid": "2fa9e01e_1ade07ec",
       "revId": "b81c4bbcf9786e718c8510c928b8334f93f1dc8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e253407_73691224",
+        "filename": "zephyr/test/system_common/src/system_is_locked.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-27T20:38:12Z",
+      "side": 1,
+      "message": "Gotcha. Yeah, we can just add a TODO here.",
+      "parentUuid": "9c81a80b_eb6f424d",
+      "revId": "b81c4bbcf9786e718c8510c928b8334f93f1dc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
