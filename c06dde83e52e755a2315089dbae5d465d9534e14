@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e923eae_0af44d89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-27T23:26:47Z",
+      "side": 1,
+      "message": "do we really need the complexity of BBRAM?\n\nif we\u0027re booting in recovery mode, there\u0027s no sysjump to worry about,\nso BBRAM is not needed.\nif EFS2 is enabled (and it should be on all modern platforms),\nthe sysjump happens very early, and there won\u0027t be any timestamps\nto carry across the sysjump. the exception to this is when there\nis an EC-RW update and we don\u0027t early-sysjump until the EC-RW\nhash has been verified... but that\u0027s not a typical boot scenario.",
+      "parentUuid": "cb0d9b90_a2a415df",
+      "revId": "c06dde83e52e755a2315089dbae5d465d9534e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba3026d4_4be97488",
         "filename": "chip/npcx/system.c",
         "patchSetId": 16
