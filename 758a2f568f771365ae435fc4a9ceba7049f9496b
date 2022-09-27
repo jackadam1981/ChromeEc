@@ -39,6 +39,30 @@
       },
       "revId": "758a2f568f771365ae435fc4a9ceba7049f9496b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc91f424_aaa34c9a",
+        "filename": "common/i2c_controller_cros_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-09-27T18:51:03Z",
+      "side": 1,
+      "message": "I can do so. What would you call the file for the code moved out in the subsequent CL?",
+      "parentUuid": "29262d5f_1deb65ed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "758a2f568f771365ae435fc4a9ceba7049f9496b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
