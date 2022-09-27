@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa9e01e_1ade07ec",
+        "filename": "zephyr/test/system_common/src/system_is_locked.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-27T16:08:50Z",
+      "side": 1,
+      "message": "Can we use CHECK_CONSOLE_CMD here?http://cs/chromeos_public/src/platform/ec/zephyr/test/drivers/common/include/test/drivers/utils.h?l\u003d618",
+      "revId": "b81c4bbcf9786e718c8510c928b8334f93f1dc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
