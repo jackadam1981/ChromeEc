@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef7204a9_3fae40b9",
+        "filename": "common/panic_output.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-27T14:07:48Z",
+      "side": 1,
+      "message": "* data_begin is the beginning of panic data, which is also the end of jump data. Added a comment for more clarification.\n\n* There was a bug in my code that you correctly identified. The lines were inverted. jump_tag_total size should be subtracted before being zero\u0027d.\n\n* If this is still confusing, I\u0027m happy to move to a separate CL.",
+      "parentUuid": "e555ad5e_e03e963a",
+      "revId": "02a5cc9ed817066a0828861db9bf2c51a624923c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b9b3121_0853032d",
         "filename": "zephyr/linker/end-of-ram.ld",
         "patchSetId": 3
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-26T14:27:30Z",
       "side": 1,
       "message": "will would?",
+      "range": {
+        "startLine": 7,
+        "startChar": 71,
+        "endLine": 7,
+        "endChar": 81
+      },
+      "revId": "02a5cc9ed817066a0828861db9bf2c51a624923c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1ececb_9d7cf21f",
+        "filename": "zephyr/linker/end-of-ram.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-27T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b9b3121_0853032d",
       "range": {
         "startLine": 7,
         "startChar": 71,
@@ -71,6 +113,24 @@
       "writtenOn": "2022-09-26T14:27:30Z",
       "side": 1,
       "message": "nit: drop the blank line",
+      "revId": "02a5cc9ed817066a0828861db9bf2c51a624923c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2094814_e92491a2",
+        "filename": "zephyr/linker/end-of-ram.ld",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-09-27T14:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea691614_62a773cf",
       "revId": "02a5cc9ed817066a0828861db9bf2c51a624923c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
