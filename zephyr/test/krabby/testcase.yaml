@@ -7,3 +7,7 @@ common:
 tests:
   krabby.default:
     extra_args: DTC_OVERLAY_FILE="common.dts;../projects/corsola/interrupts_krabby.dts;../projects/corsola/gpio_krabby.dts;pinctrl.dts"
+  krabby.tentacruel:
+    extra_args: DTC_OVERLAY_FILE="common.dts;../projects/corsola/interrupts_tentacruel.dts;../projects/corsola/gpio_tentacruel.dts;pinctrl.dts"
+    extra_configs:
+      - CONFIG_TEST_TENTACRUEL=y
