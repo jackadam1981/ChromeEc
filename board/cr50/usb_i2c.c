@@ -69,6 +69,11 @@ static void ina_connect(void)
 	 * lines are connected.
 	 */
 	i2cc_init();
+
+	/* Set port0 clock stretching timeout to 40ms. */
+	GWRITE_FIELD_I(I2C, 0, CTRL_CS, TIMEOUTVAL, 0x9c40);
+	CPRINTS("Set i2cc cs timeout %x",
+		GREAD_FIELD_I(I2C, 0, CTRL_CS, TIMEOUTVAL));
 	usb_i2c_enabled = true;
 }
 
