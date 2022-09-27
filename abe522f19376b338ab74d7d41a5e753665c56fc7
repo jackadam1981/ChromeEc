@@ -46,6 +46,30 @@
       },
       "revId": "abe522f19376b338ab74d7d41a5e753665c56fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c19519_f90eb06e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-27T20:06:27Z",
+      "side": 1,
+      "message": "Sorry my bad. ectool doesn\u0027t work with most CONFIG_ macros for the same reason I wrote in your other CL. ectool is built for hosts. CONFIG_THROTTLE_AP is set/unset by each board.",
+      "parentUuid": "0e8dd565_d267397e",
+      "range": {
+        "startLine": 3279,
+        "startChar": 7,
+        "endLine": 3279,
+        "endChar": 25
+      },
+      "revId": "abe522f19376b338ab74d7d41a5e753665c56fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
