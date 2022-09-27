@@ -3,7 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include "adc.h"
 #include "usbc_ppc.h"
 #include "charge_ramp.h"
 #include "charge_state.h"
@@ -66,5 +65,3 @@ int charge_manager_get_active_charge_port(void)
 struct ppc_config_t ppc_chips[] = {};
 
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
-
-const struct adc_t adc_channels[] = {};
