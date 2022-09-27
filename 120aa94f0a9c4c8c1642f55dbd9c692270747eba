@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3877c38_f24650cf",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1502683
+      },
+      "writtenOn": "2022-09-27T12:49:27Z",
+      "side": 1,
+      "message": "Yep, I also noticed that it is too chaotic to read board/kukui_scp/vdec.c.\n\nMingia will make this right.",
+      "parentUuid": "7aeb918c_a6bebae9",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46ab33bf_4f691a7a",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 16
