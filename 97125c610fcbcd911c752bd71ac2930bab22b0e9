@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adbe0197_ccae990a",
+        "filename": "zephyr/Kconfig.svdm_rsp",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-27T23:47:28Z",
+      "side": 1,
+      "message": "Linux documentation says that a choice option defaults to the first available option, unless overridden by a default on the choice. I opted to depend on that here because we want to prevent this from being enabled at all if a system uses any of those incompatible options, so the conditions would need to be duplicated above and that seems worse.\n\nIt turns out that (provided the DFP_ONLY choice marks those dependencies) all of these are equivalent:\n\n    # Duplicate conditions for DFP_ONLY\n    default SVDM_RSP_DFP_ONLY if !PLATFORM_EC_USB_PD_USB4 \u0026\u0026 !PLATFORM_EC_USB_PD_TBT_COMPAT_MODE \u0026\u0026 !PLATFORM_EC_USB_PD_USB32_DRD\n    default SVDM_RSP_CUSTOM\n\n    # First default cannot be used since it has unsatisfied dependencies, second is taken\n    default SVDM_RSP_DFP_ONLY\n    default SVDM_RSP_CUSTOM\n\n    # Defaults to first available choice\n    \u003cblank\u003e\n\nSince this could be confusing, I\u0027ve added a comment explaining how it arrives at this default.",
+      "parentUuid": "a9cbb7bf_99766c59",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "97125c610fcbcd911c752bd71ac2930bab22b0e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44740869_673c5c3e",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-09-27T04:54:45Z",
       "side": 1,
       "message": "Empty line added.",
+      "revId": "97125c610fcbcd911c752bd71ac2930bab22b0e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0822f0cc_0aa6d69f",
+        "filename": "zephyr/app/ec/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-09-27T23:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44740869_673c5c3e",
       "revId": "97125c610fcbcd911c752bd71ac2930bab22b0e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
