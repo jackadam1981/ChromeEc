@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9cbb7bf_99766c59",
+        "filename": "zephyr/Kconfig.svdm_rsp",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-27T18:11:15Z",
+      "side": 1,
+      "message": "Non-blocking comment.\n\nI\u0027m not able to find clear documentation how the \"default\" property for choices and \"depends\" interact or which takes precedence.\n\nI think using the \"default\" property is more common, and I think better illustrates how the choice symbol is used.\n\n```\nchoice SVDM_RSP_CHOICE\n    default SVDM_RSP_DFP_ONLY if !PLATFORM_EC_USB_PD_USB4 \u0026\u0026 !PLATFORM_EC_USB_PD_TBT_COMPAT_MODE \u0026\u0026 !PLATFORM_EC_USB_PD_USB32_DRD\n    default SVDM_RSP_CUSTOM\nendchoice\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "97125c610fcbcd911c752bd71ac2930bab22b0e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44740869_673c5c3e",
         "filename": "zephyr/app/ec/CMakeLists.txt",
         "patchSetId": 7
