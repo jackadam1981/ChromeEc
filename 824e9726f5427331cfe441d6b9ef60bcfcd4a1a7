@@ -34,6 +34,41 @@
       "parentUuid": "bfbe0f0f_38ccc3b1",
       "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c3a5d7f_e831ed7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-27T20:25:10Z",
+      "side": 1,
+      "message": "host command/ectool or not, i think we should always implement\nan EC console command that more or less matches the ectool subcommand.\n\ni\u0027m sure this doesn\u0027t always make sense, but in general ectool should\nnot be more powerful than the EC console.",
+      "parentUuid": "d5166c7d_c19d7348",
+      "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149020d9_69daeeb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-27T20:25:10Z",
+      "side": 1,
+      "message": "at what build phase would this command be used?\n\nif it is only needed pre-PVT, we could add a check to only\nallow the command when the device is not \"locked\". that would\naddress diana\u0027s comment about making it difficult for customers\nto activate this untested power level on MP devices.\n\nif devices are sent to the testing lab at PVT+, they would\nalready be locked, so prohibiting this command on locked\ndevices would not make sense.",
+      "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
