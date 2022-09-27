@@ -23,6 +23,7 @@ struct ocpc_data {
 	/* ADC values */
 	int primary_vbus_mv; /* VBUS measured by the primary charger IC */
 	int primary_ibus_ma; /* IBUS measrued by the primary charger IC */
+	int primary_actual_ibus_ma;
 	int secondary_vbus_mv; /* VBUS measured by the secondary charger IC */
 	int secondary_ibus_ma; /* IBUS measure by the secondary charger IC */
 	int vsys_aux_mv; /* VSYS output measured by aux charger IC */
