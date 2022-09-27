@@ -14,3 +14,8 @@ target_sources(app PRIVATE
 	src/charger_workaround.c
 	src/stubs.c
 	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/charger_workaround.c)
+target_sources_ifdef(CONFIG_TEST_TENTACRUEL
+	app PRIVATE
+	src/temp_tentacruel.c
+	src/stubs.c
+	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/temp_tentacruel.c)
