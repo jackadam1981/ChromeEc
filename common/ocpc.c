@@ -30,6 +30,9 @@
 #define KD 1
 #define KD_DIV 10
 
+/* Fast loop iteration limit */
+#define FAST_LOOP_ITER_LIMIT (5)
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
@@ -247,9 +250,28 @@ enum ec_error_list ocpc_calc_resistances(struct ocpc_data *ocpc,
 	return EC_SUCCESS;
 }
 
-int ocpc_config_secondary_charger(int *desired_input_current,
-				  struct ocpc_data *ocpc, int voltage_mv,
-				  int current_ma)
+static bool check_charger_icl(int chgnum, struct ocpc_data *ocpc,
+			      int desired_charger_input_current)
+{
+	bool icl_reached = false;
+
+	if (charger_is_icl_reached(chgnum, &icl_reached) != EC_SUCCESS) {
+		/*
+		 * If the charger doesn't support telling us, assume that the
+		 * input current limit is reached if we're consuming more than
+		 * 95% of the limit.
+		 */
+		if (ocpc->secondary_ibus_ma >=
+		    (desired_charger_input_current * 95 / 100))
+			icl_reached = true;
+	}
+	return icl_reached;
+}
+
+int ocpc_config_secondary_charger(int *desired_charger_input_current,
+				  struct ocpc_data *ocpc,
+				  int desired_batt_voltage_mv,
+				  int desired_batt_current_ma)
 {
 	int rv = EC_SUCCESS;
 	struct batt_params batt;
@@ -262,6 +284,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	int min_vsys_target;
 	int error = 0;
 	int derivative = 0;
+	int fast_loop_iter_cnt = 0;
 	static enum phase ph;
 	static int prev_limited;
 	int chgnum;
@@ -285,8 +308,8 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 
 	batt_info = battery_get_info();
 
-	if (current_ma == 0) {
-		vsys_target = voltage_mv;
+	if (desired_batt_current_ma == 0) {
+		vsys_target = desired_batt_voltage_mv;
 		goto set_vsys;
 	}
 
@@ -317,8 +340,8 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	if (!timestamp_expired(delay, NULL))
 		return EC_ERROR_BUSY;
 
-	result = charger_set_vsys_compensation(chgnum, ocpc, current_ma,
-					       voltage_mv);
+	result = charger_set_vsys_compensation(
+		chgnum, ocpc, desired_batt_current_ma, desired_batt_voltage_mv);
 	switch (result) {
 	case EC_SUCCESS:
 		/* No further action required, so we're done here. */
@@ -376,8 +399,9 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	if (batt.desired_voltage) {
 		if (((batt.voltage < batt_info->voltage_min) ||
 		     ((batt.voltage < batt_info->voltage_normal) &&
-		      (current_ma >= 0) &&
-		      (current_ma <= batt_info->precharge_current))) &&
+		      (desired_batt_current_ma >= 0) &&
+		      (desired_batt_current_ma <=
+		       batt_info->precharge_current))) &&
 		    (ph != PHASE_PRECHARGE)) {
 			/*
 			 * If the charger IC doesn't support the linear charge
@@ -389,11 +413,12 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 			} else if (result == EC_SUCCESS) {
 				CPRINTS("OCPC: Enabling linear precharge");
 				ph = PHASE_PRECHARGE;
-				i_ma = current_ma;
+				i_ma = desired_batt_current_ma;
 			}
 		} else if (batt.voltage < batt.desired_voltage) {
 			if ((ph == PHASE_PRECHARGE) &&
-			    (current_ma > batt_info->precharge_current)) {
+			    (desired_batt_current_ma >
+			     batt_info->precharge_current)) {
 				/*
 				 * Precharge phase is complete.  Now set the
 				 * target VSYS to the battery voltage to prevent
@@ -422,7 +447,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 
 			if ((ph != PHASE_PRECHARGE) && (ph < PHASE_CV_TRIP))
 				ph = PHASE_CC;
-			i_ma = current_ma;
+			i_ma = desired_batt_current_ma;
 		} else {
 			/*
 			 * Once the battery voltage reaches the desired voltage,
@@ -482,16 +507,48 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 
 	/* Obtain the drive from our PID controller. */
 	if ((ocpc->last_vsys != OCPC_UNINIT) && (ph > PHASE_PRECHARGE)) {
-		drive = (k_p * error / k_p_div) +
-			(k_i * ocpc->integral / k_i_div) +
-			(k_d * derivative / k_d_div);
-		/*
-		 * Let's limit upward transitions to 10mV.  It's okay to reduce
-		 * VSYS rather quickly, but we'll be conservative on
-		 * increasing VSYS.
-		 */
-		if (drive > 10)
-			drive = 10;
+		/* Check if the error is large before running the fast loop */
+		if (error > 1000) {
+			/* Fast loop designed to help the responsiveness of the
+			 * charger chip by iterating over a linear ramp quickly.
+			 */
+			while (fast_loop_iter_cnt < FAST_LOOP_ITER_LIMIT) {
+				fast_loop_iter_cnt++;
+				/* Check if the input current level for charger
+				 * chip is reached
+				 */
+				icl_reached = check_charger_icl(
+					chgnum, ocpc,
+					*desired_charger_input_current);
+
+				/* Get latest charger stats */
+				ocpc_get_adcs(ocpc);
+				/* Make sure we aren't hitting icl or ocl limits
+				 */
+				if (ocpc->primary_actual_ibus_ma < i_ma &&
+				    !icl_reached) {
+					vsys_target = ocpc->last_vsys + 20;
+					charger_set_voltage(CHARGER_SECONDARY,
+							    vsys_target);
+					ocpc->last_vsys = vsys_target;
+				} else {
+					fast_loop_iter_cnt =
+						FAST_LOOP_ITER_LIMIT;
+				}
+				msleep(25);
+			}
+		} else {
+			drive = (k_p * error / k_p_div) +
+				(k_i * ocpc->integral / k_i_div) +
+				(k_d * derivative / k_d_div);
+			/*
+			 * Let's limit upward transitions to 10mV.  It's okay to
+			 * reduce VSYS rather quickly, but we'll be conservative
+			 * on increasing VSYS.
+			 */
+			if (drive > 10)
+				drive = 10;
+		}
 		CPRINTS_DBG("drive = %d", drive);
 	}
 
@@ -537,18 +594,10 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 
 	/* If we're input current limited, we cannot increase VSYS any more. */
 	CPRINTS_DBG("OCPC: Inst. Input Current: %dmA (Limit: %dmA)",
-		    ocpc->secondary_ibus_ma, *desired_input_current);
+		    ocpc->secondary_ibus_ma, *desired_charger_input_current);
 
-	if (charger_is_icl_reached(chgnum, &icl_reached) != EC_SUCCESS) {
-		/*
-		 * If the charger doesn't support telling us, assume that the
-		 * input current limit is reached if we're consuming more than
-		 * 95% of the limit.
-		 */
-		if (ocpc->secondary_ibus_ma >=
-		    (*desired_input_current * 95 / 100))
-			icl_reached = true;
-	}
+	icl_reached =
+		check_charger_icl(chgnum, ocpc, *desired_charger_input_current);
 
 	if (icl_reached && (vsys_target > ocpc->last_vsys) &&
 	    (ocpc->last_vsys != OCPC_UNINIT)) {
@@ -601,6 +650,10 @@ void ocpc_get_adcs(struct ocpc_data *ocpc)
 	val = 0;
 	if (!charger_get_input_current(CHARGER_PRIMARY, &val))
 		ocpc->primary_ibus_ma = val;
+
+	val = 0;
+	if (!charger_get_actual_current(CHARGER_PRIMARY, &val))
+		ocpc->primary_actual_ibus_ma = val;
 
 	val = 0;
 	if (!charger_get_actual_voltage(CHARGER_PRIMARY, &val))
