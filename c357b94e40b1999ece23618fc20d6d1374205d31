@@ -22,6 +22,30 @@
       },
       "revId": "c357b94e40b1999ece23618fc20d6d1374205d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e1157e_f278fd1c",
+        "filename": "board/crota/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1518153
+      },
+      "writtenOn": "2022-09-27T01:03:45Z",
+      "side": 1,
+      "message": "Yes, uint8_t is sufficient.",
+      "parentUuid": "d1c3a572_03642f9f",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 4
+      },
+      "revId": "c357b94e40b1999ece23618fc20d6d1374205d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
