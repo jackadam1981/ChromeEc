@@ -8,7 +8,15 @@
 
 #include "ec_commands.h"
 #include "host_command.h"
+#include "test/drivers/stubs.h"
 #include "test/drivers/test_state.h"
+#include "test/drivers/utils.h"
+#include "test_usb_pd_host_cmd.h"
+#include "usb_pd.h"
+#include "test_usb_pd_host_cmd.h"
+
+DEFINE_FAKE_VOID_FUNC(pd_send_vdm, int, uint32_t, int, const uint32_t *, int);
+DEFINE_FAKE_VALUE_FUNC(int, charge_manager_get_active_charge_port);
 
 ZTEST_USER(usb_pd_host_cmd, test_hc_pd_host_event_status)
 {
@@ -44,5 +52,15 @@ ZTEST_USER(usb_pd_host_cmd, test_host_command_hc_pd_ports)
 	zassert_equal(response.num_ports, CONFIG_USB_PD_PORT_MAX_COUNT);
 }
 
-ZTEST_SUITE(usb_pd_host_cmd, drivers_predicate_post_main, NULL, NULL, NULL,
-	    NULL);
+static void usb_pd_host_cmd_before_after(void *test_data)
+{
+	ARG_UNUSED(test_data);
+
+	test_set_battery_present(true);
+
+	RESET_FAKE(pd_send_vdm);
+	RESET_FAKE(charge_manager_get_active_charge_port);
+}
+
+ZTEST_SUITE(usb_pd_host_cmd, drivers_predicate_post_main, NULL,
+	    usb_pd_host_cmd_before_after, usb_pd_host_cmd_before_after, NULL);

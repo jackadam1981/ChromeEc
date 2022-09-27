@@ -31,6 +31,20 @@
 #define GPIO_BATT_PRES_ODL_PATH DT_PATH(named_gpios, ec_batt_pres_odl)
 #define GPIO_BATT_PRES_ODL_PORT DT_GPIO_PIN(GPIO_BATT_PRES_ODL_PATH, gpios)
 
+void test_set_battery_present(bool present)
+{
+	const struct device *dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_BATT_PRES_ODL_PATH, gpios));
+
+	/* 0 means battery present */
+	zassume_ok(gpio_emul_input_set(dev, GPIO_BATT_PRES_ODL_PORT, !present),
+		   NULL);
+
+	/* We need to wait for the charge task to re-read battery parameters */
+	WAIT_FOR(!charge_want_shutdown(), CHARGE_MAX_SLEEP_USEC + 1,
+		 k_sleep(K_SECONDS(1)));
+}
+
 void test_set_battery_level(int percentage)
 {
 	struct sbat_emul_bat_data *bat;

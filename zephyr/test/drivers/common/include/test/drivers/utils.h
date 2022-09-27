@@ -45,6 +45,9 @@
 				     port, chip)
 
 /** @brief Set emulated battery level. Call all necessary hooks. */
+void test_set_battery_present(bool present);
+
+/** @brief Set emulated battery level. Call all necessary hooks. */
 void test_set_battery_level(int percentage);
 
 /** @brief Set chipset to S0 state. Call all necessary hooks. */
