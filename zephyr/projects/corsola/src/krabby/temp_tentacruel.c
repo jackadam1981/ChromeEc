@@ -19,6 +19,7 @@
 #define TEMP_BUFF_SIZE 60
 #define KEEP_TIME 5
 
+BUILD_ASSERT(IS_ENABLED(CONFIG_BOARD_TENTACRUEL) || IS_ENABLED(CONFIG_TEST));
 /* calculate current average temperature */
 static int average_tempature(void)
 {
@@ -29,7 +30,12 @@ static int average_tempature(void)
 	static int avg_temp;
 	int cur_temp, t;
 
+#ifdef CONFIG_TEST_TENTACRUEL
+	temp_sensor_read(TEMP_SENSOR_ID(DT_NODELABEL(fake_temp_charger)), &t);
+#endif
+#ifdef CONFIG_BOARD_TENTACRUEL
 	temp_sensor_read(TEMP_SENSOR_ID(DT_NODELABEL(temp_charger)), &t);
+#endif
 	cur_temp = K_TO_C(t);
 	past_temp = temp_history_buffer[buff_ptr];
 	temp_history_buffer[buff_ptr] = cur_temp;
@@ -65,12 +71,14 @@ static void current_update(void)
 	static uint8_t dntime;
 
 	temp = average_tempature();
+#ifdef CONFIG_BOARD_TENTACRUEL
 	if (charge_get_state() == PWR_STATE_DISCHARGE) {
 		current_level = 0;
 		uptime = 0;
 		dntime = 0;
 		return;
 	}
+#endif
 	if (temp >= TEMP_THRESHOLD) {
 		dntime = 0;
 		if (uptime < KEEP_TIME) {
