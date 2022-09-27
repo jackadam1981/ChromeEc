@@ -16,6 +16,24 @@
       "message": "Could we introduce this as an EC console command rather than a host command?  I\u0027d like to make it fairly difficult for a customer to activate this mode since the spec requires that it persist until a bist exit or the system shutdown, and it\u0027s an untested power level for boards to operate at in the field. \n\nWould an EC console command work for your compliance testing flow?",
       "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5166c7d_c19d7348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-27T17:08:13Z",
+      "side": 1,
+      "message": "Since we always assign PD compliance test/ TBT certification to third party lab. They cannot access EC console. That will be more easier for them to use ectool to enable bist share mode.",
+      "parentUuid": "bfbe0f0f_38ccc3b1",
+      "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
