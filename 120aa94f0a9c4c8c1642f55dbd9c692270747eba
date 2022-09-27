@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a7eac5_f619daa9",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-27T12:24:08Z",
+      "side": 1,
+      "message": "Do you have any reason to use `ifndef`? I think the purpose of this CL is to add MT8186 support. Using `#ifdef HAVE_PRIVATE_MT8186` is clear to reflect the change.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610668e8_d7b46918",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-27T12:24:08Z",
+      "side": 1,
+      "message": "Consider using `HAVE_PRIVATE_MT8186`",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b2ea682_fa2cbbd6",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-27T12:24:08Z",
+      "side": 1,
+      "message": "Consider using `HAVE_PRIVATE_MT8186`",
+      "range": {
+        "startLine": 87,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f08657_ba0da3a1",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-27T12:24:08Z",
+      "side": 1,
+      "message": "This is confusing. Could you use `continues;`, instead of putting a leading `else` keyword inside a preprocessor block?",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 23
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aeb918c_a6bebae9",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-27T12:24:08Z",
+      "side": 1,
+      "message": "This will be better to use the following structure:\n```\n#if defined(8183)\nxxx\n#elif defined(MT8186)\nxxx\n#else\n#error\n#endif\n```",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ab33bf_4f691a7a",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-27T12:24:08Z",
+      "side": 1,
+      "message": "Consider using `HAVE_PRIVATE_MT8186`",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a5bd288_83bfae7c",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-27T12:24:08Z",
+      "side": 1,
+      "message": "Align the flow of the previous handler by using `continue;`",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
