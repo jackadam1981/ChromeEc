@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbe0f0f_38ccc3b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-27T16:30:45Z",
+      "side": 1,
+      "message": "Could we introduce this as an EC console command rather than a host command?  I\u0027d like to make it fairly difficult for a customer to activate this mode since the spec requires that it persist until a bist exit or the system shutdown, and it\u0027s an untested power level for boards to operate at in the field. \n\nWould an EC console command work for your compliance testing flow?",
+      "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
