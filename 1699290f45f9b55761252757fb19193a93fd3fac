@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf6ccf3_f91d5866",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-09-27T23:32:19Z",
+      "side": 1,
+      "message": "This command fails on my side:\n\n```\nERROR: invalid arguments: \"./build/bloonchipper/always_memset/always_memset.bin\"\n```\n\nI don\u0027t usually run `flash_ec` on its own so I am not sure if any argument is missing.\n\nThe two other tests below are passing:\n\n```\nDEBUG:root:b\u0027[2.498536 Sensor init (attempt 1): 0x0]\\r\\n\u0027\nDEBUG:root:b\u0027[2.502142 Algorithm init: 0x0]\\r\\n\u0027\nDEBUG:root:b\u0027[2.502196 Sensor create: 0x0]\\r\\n\u0027\nDEBUG:root:b\u0027\\r\\n\u0027\nDEBUG:root:b\u0027\u003e runtest \\r\\n\u0027\nDEBUG:root:b\u0027Running test_basic_functionality...\\r\\n\u0027\nDEBUG:root:b\u0027OK\\r\\n\u0027\nDEBUG:root:b\u0027Running test_optimization_working...\\r\\n\u0027\nDEBUG:root:b\u0027OK\\r\\n\u0027\nDEBUG:root:b\u0027Running test_always_memset...\\r\\n\u0027\nDEBUG:root:b\u0027OK\\r\\n\u0027\nDEBUG:root:b\u0027Pass!\\r\\n\u0027\nDEBUG:root:[b\u0027\u003e [3.263560 MKBP not cleared within threshold, toggling.]\\r\\n\u0027, b\u0027[4.263656 MKBP not cleared within threshold, toggling.]\\r\\n\u0027]\nTest \"always_memset\": PASSED\n```\n\n```\nDEBUG:root:b\u0027[1.258903 FPC1025 id 0x021b]\\r\\n\u0027\nDEBUG:root:b\u0027\\r\\n\u0027\nDEBUG:root:b\u0027\u003e runtest \\r\\n\u0027\nDEBUG:root:b\u0027Running test_basic_functionality...\\r\\n\u0027\nDEBUG:root:b\u0027OK\\r\\n\u0027\nDEBUG:root:b\u0027Running test_optimization_working...\\r\\n\u0027\nDEBUG:root:b\u0027OK\\r\\n\u0027\nDEBUG:root:b\u0027Running test_always_memset...\\r\\n\u0027\nDEBUG:root:b\u0027OK\\r\\n\u0027\nDEBUG:root:b\u0027Pass!\\r\\n\u0027\nDEBUG:root:[b\u0027\u003e [2.117792 MKBP not cleared within threshold, toggling.]\\r\\n\u0027]\nTest \"always_memset\": PASSED\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "1699290f45f9b55761252757fb19193a93fd3fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
