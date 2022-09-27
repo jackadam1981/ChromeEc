@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897857f6_85439ae6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-27T20:16:50Z",
+      "side": 1,
+      "message": "It seems that all callers except board_override_fan_control check fan_off !\u003d0 \u0026\u0026 fan_max !\u003d 0.\n\nI still think the change (returning -1) is good. Have you checked all the existing callers will behave more-or-less expectedly with this change?\n\nWith this change, fan_off \u003d\u003d fan_max !\u003d 0 is going to get -1. We need to update thermal.h. Are you going to use fan_off \u003d\u003d fan_max to indicate a special case? Isn\u0027t it a little hacky? Can you share your thoughts?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "d5e102a28e9e853af7ed13d52c8b433e7204ac51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
