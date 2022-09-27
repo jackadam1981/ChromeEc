@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39c02abd_22813558",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-27T00:55:49Z",
+      "side": 1,
+      "message": "The history was EC set 1 to VDO[bit26], but we set Modal_Operation_Supported_SOP\u003d0 in VIF.\n\nAnd according to VIF(Vendor Info File Specification: version 3.20), This field shall be set to the value of Type_C_Is_Alt_Mode_Adapter.\n\nIn VIF spec, If Type_C_Can_Act_As_Device is not set to YES, then this field shall be set to NO.\n\nAfter Type_C_Can_Act_As_Device be set to 1, the Data_Capable_as_USB_Device_SOP will auto-set to 1.\n\nIf Data_Capable_as_USB_Device_SOP is 1, the tester will check if EC return VDO[bit30]\u003d1 which match to VIF.",
+      "parentUuid": "720b9ba2_272c55ac",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65dcd78a_cc9a043f",
         "filename": "baseboard/brya/usb_pd_policy.c",
         "patchSetId": 15
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e575a54_fd5896b3",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-27T00:55:49Z",
+      "side": 1,
+      "message": "My original thought was follow SPEC said that we should in USB operation or the USB Safe State. But I think check mux to be in TBT mode before exit will make more sense because we will enter TBT mode before exit it.\n\nShould we just check `USB_PD_MUX_TBT_COMPAT_ENABLED` or also check `USB_PD_MUX_USB_ENABLED` and `USB_PD_MUX_SAFE_MODE`?",
+      "parentUuid": "65dcd78a_cc9a043f",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde8e885_3c17c41c",
         "filename": "common/usb_pd_alt_mode_ufp.c",
         "patchSetId": 15
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-26T15:14:44Z",
       "side": 1,
       "message": "What does this need to be stored for?  Do we need to reference it later?\n\nShould ExitMode be clearing out the EnterMode message that was saved?",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8c66797_a31c5742",
+        "filename": "common/usb_pd_alt_mode_ufp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-27T00:55:49Z",
+      "side": 1,
+      "message": "I just follow pd_ufp_set_enter_mode to store the payload.\n\nI\u0027m not pretty sure how we handle exit mode for bb_retimer.c. It may need to clear the EnterMode message and configure some bb_retimer\u0027s registers. But it may need Intel\u0027s help.",
+      "parentUuid": "bde8e885_3c17c41c",
       "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
