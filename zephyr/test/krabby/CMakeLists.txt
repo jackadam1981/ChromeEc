@@ -16,3 +16,8 @@ target_sources(app PRIVATE
 	src/usb_mux_init.c
 	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/charger_workaround.c
 	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/usbc_config.c)
+target_sources_ifdef(CONFIG_TEST_TENTACRUEL
+	app PRIVATE
+	src/stubs.c
+	src/temp_tentacruel.c
+	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/temp_tentacruel.c)
