@@ -46,6 +46,30 @@
       },
       "revId": "88e850d0cdfcb37c5f84cb03634f0640ff9887ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "571b1de6_eddf6b71",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-27T15:37:51Z",
+      "side": 1,
+      "message": "oops, wish gerrit\u0027s UI made that more obvious",
+      "parentUuid": "8c5a8f4d_1b1a28e2",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "88e850d0cdfcb37c5f84cb03634f0640ff9887ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
