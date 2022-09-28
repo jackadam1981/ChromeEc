@@ -194,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd13bc16_21c5336e",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-28T22:08:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ab37ea9_7fcd8a6c",
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85232cc3_c3e19007",
@@ -618,6 +636,30 @@
       "side": 1,
       "message": "What am I supposed to do?",
       "parentUuid": "a1816394_40220262",
+      "range": {
+        "startLine": 613,
+        "startChar": 27,
+        "endLine": 613,
+        "endChar": 44
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e2c80e_06338f21",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-28T22:08:22Z",
+      "side": 1,
+      "message": "ah, in fact the comment applies to AP firmware, it is harmless to keep it in Cr50.",
+      "parentUuid": "634cce20_58d69b75",
       "range": {
         "startLine": 613,
         "startChar": 27,
