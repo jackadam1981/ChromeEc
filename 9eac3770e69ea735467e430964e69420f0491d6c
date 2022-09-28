@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2d6a3b_735efef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-28T20:24:09Z",
+      "side": 1,
+      "message": "The zephyr USB-C test infrastructure is actually pretty good at this point if you want to throw together a test for this.  I suspect you\u0027ll need to change the test CONFIGs for it, so something in zephyr/test/drivers would probably work.  There are examples in there of tcpci_partner_send_data_msg() you can take a look at in the integration tests to have a partner query the VDM responses.",
+      "revId": "9eac3770e69ea735467e430964e69420f0491d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
