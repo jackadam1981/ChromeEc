@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aed5f24f_b6e38a01",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-28T08:36:35Z",
+      "side": 1,
+      "message": "Please do so. thx",
+      "parentUuid": "982ec2d9_f97eb55d",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 23
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7aeb918c_a6bebae9",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 16
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "Hi Wei-Shun,\n\nOnly need to separate 8183 and others. For 8183\u0027s architecture is different with other platforms. 8186 and future platform\u0027s architecture is the same, won\u0027t change anymore.",
       "parentUuid": "c3877c38_f24650cf",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe1d5a60_74107aad",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-28T08:36:35Z",
+      "side": 1,
+      "message": "I see. If MT8183 is the special case, I think this is fine.\n\nCould you please add some comments at the beginning to clarify why we only need to separate MT8183?",
+      "parentUuid": "d1eb22f5_e69b9573",
       "range": {
         "startLine": 113,
         "startChar": 8,
@@ -344,6 +392,30 @@
       "side": 1,
       "message": "Yes, we can add continue.",
       "parentUuid": "6a5bd288_83bfae7c",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "605e0cdb_6bd1a997",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-28T08:36:35Z",
+      "side": 1,
+      "message": "Please do so. thx",
+      "parentUuid": "2fdb4456_a285a0b3",
       "range": {
         "startLine": 161,
         "startChar": 2,
