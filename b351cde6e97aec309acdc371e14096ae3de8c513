@@ -16,6 +16,24 @@
       "message": "Please follow kingler\u0027s implementation to organize the source files.\n(ref: https://chromium.googlesource.com/chromiumos/platform/ec/+/b351cde6/zephyr/test/kingler/CMakeLists.txt)\n\nsomething like this, and add the corresponding configs to testcase.yaml and Kconfig\n```\ntarget_sources_ifdef(CONFIG_TEST_KRABBY\n        app PRIVATE\n        src/charger_workaround.c\n        src/stubs.c\n        ${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/charger_workaround.c)\n\ntarget_sources_ifdef(CONFIG_TEST_TENTACRUEL\n        app PRIVATE\n        src/temp_tentacruel.c\n        src/stubs.c)\n```",
       "revId": "b351cde6e97aec309acdc371e14096ae3de8c513",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3445015_6ea14fa6",
+        "filename": "zephyr/test/krabby/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-09-28T05:58:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ee180319_15fa7bd6",
+      "revId": "b351cde6e97aec309acdc371e14096ae3de8c513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
