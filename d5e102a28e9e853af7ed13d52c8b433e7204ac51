@@ -22,6 +22,30 @@
       },
       "revId": "d5e102a28e9e853af7ed13d52c8b433e7204ac51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d901d788_4e95d78b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-09-28T19:02:55Z",
+      "side": 1,
+      "message": "\"It seems that all callers except board_override_fan_control check fan_off !\u003d0 \u0026\u0026 fan_max !\u003d 0.\"\n\u003e  board_override_fan_control in crota/fan.c doesn\u0027t check fan_off and fan_max for zero. In case of crota, returning -1 will set fan.rpm to 0 (as per the code flow). Rest all callers are fine (excluding ectool)\n\n\"I still think the change (returning -1) is good. Have you checked all the existing callers will behave more-or-less expectedly with this change?\"\n\u003e Atleast analyzing the callers of the func returning -1, I dont see any impact. Verified on couple of boards (gimble/redrix/scholas/MTL)\n\n\"With this change, fan_off \u003d\u003d fan_max !\u003d 0 is going to get -1. We need to update thermal.h. Are you going to use fan_off \u003d\u003d fan_max to indicate a special case? Isn\u0027t it a little hacky? Can you share your thoughts?\"\n\u003e If we skip returning -1, then percentage calculation may go wrong when fan_off and fan_max are equal. This scenario can occur when\n1. (fan_off \u003d\u003d fan_max) \u003d 0 (CUSTOM_CONFIG is enabled). However this case can be handled by doing the zero check (already existing in current code) before calling thermal_fan_percent. \n2. (fan_off \u003d\u003d fan_max) !\u003d 0. I\u0027m not sure how frequent this might occur. Ideally both can\u0027t be same when non-zero. Atleast I can\u0027t think of a real usecase when fan_off and fan_max are equal and non-zero. Yes, I do agree with you that this shall not be the way how a negative case is handled.",
+      "parentUuid": "897857f6_85439ae6",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "d5e102a28e9e853af7ed13d52c8b433e7204ac51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
