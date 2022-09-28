@@ -22,6 +22,30 @@
       },
       "revId": "fbbf8629277f5d9ef2108b8190b88606bebd16b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a74d5e80_f9f6562b",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-09-28T01:38:22Z",
+      "side": 1,
+      "message": "As per offline discussion, the behavior we are testing is related to TCPC subsystem, and to make the TCPC subsystem to use the anx7447 driver, we need to use the specific emulator instead of generic tcpci emulator.",
+      "parentUuid": "4a874ec3_a52cb295",
+      "range": {
+        "startLine": 811,
+        "startChar": 22,
+        "endLine": 811,
+        "endChar": 29
+      },
+      "revId": "fbbf8629277f5d9ef2108b8190b88606bebd16b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
