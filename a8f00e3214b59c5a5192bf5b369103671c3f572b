@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46e9bea2_1dfbaa05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-28T18:23:13Z",
+      "side": 1,
+      "message": "Rajesh: See https://source.chromium.org/chromium/chromiumos/platform/ec/+/main:zephyr/test/drivers/default/src/console_cmd/usb_pd_console.c for examples of how to test this console command. Off the top of my head, you\u0027d want tests that make sure it validates its parameters and tests that make sure the behavior of `ap_force_shutdown` changes when the debug mode is enabled.",
+      "revId": "a8f00e3214b59c5a5192bf5b369103671c3f572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
