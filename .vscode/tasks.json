@@ -1,0 +1,125 @@
+{
+        // See https://go.microsoft.com/fwlink/?LinkId=733558
+        // for the documentation about the tasks.json format
+        "version": "2.0.0",
+        "tasks": [
+                {
+                        "label": "Run servod for current EC board",
+                        "type": "shell",
+                        "command": "cros_sdk",
+                        "args": [
+                                "sudo",
+                                "servod",
+                                "-b",
+                                "${config:cros-ide.platformEC.board}"
+                        ],
+                        "isBackground": true,
+                        "problemMatcher": {
+                                "pattern": {
+                                        "regexp": ""
+                                },
+                                "background": {
+                                        "activeOnStart": false,
+                                        "beginsPattern": "^\\S+ \\S+ - servod - INFO - Listening on localhost port 9999",
+                                        "endsPattern": "KeyboardInterrupt"
+                                }
+                        }
+                },
+                {
+                        "label": "Build current EC board",
+                        "type": "shell",
+                        "command": "cros_sdk",
+                        "args": [
+                                "--working-dir",
+                                "${workspaceFolder}",
+                                "make",
+                                "BOARD=${config:cros-ide.platformEC.board}",
+                                "-j"
+                        ],
+                        "problemMatcher": "$gcc",
+                        "group": {
+                                "kind": "build",
+                                "isDefault": true
+                        }
+                },
+                {
+                        "label": "Flash current EC board with servo micro",
+                        "type": "shell",
+                        "command": "cros_sdk",
+                        "args": [
+                                "--no-ns-pid",
+                                "--working-dir",
+                                "${workspaceFolder}",
+                                "./util/flash_ec",
+                                "--board=${config:cros-ide.platformEC.board}",
+                                "--image=./build/${config:cros-ide.platformEC.board}/ec.bin"
+                        ],
+                        "problemMatcher": [],
+                        "dependsOn": [
+                                "Build current EC board"
+                        ]
+                },
+                {
+                        "label": "Run unit test on device with servo micro",
+                        "type": "shell",
+                        "command": "cros_sdk",
+                        "args": [
+                                "--no-ns-pid",
+                                "--working-dir",
+                                "${workspaceFolder}",
+                                "./test/run_device_tests.py",
+                                "--flasher=servo_micro",
+                                "--board",
+                                "${config:cros-ide.platformEC.board}",
+                                "--test",
+                                "aes"
+                        ],
+                        "problemMatcher": [
+                                "$platform-ec-host-unittest"
+                        ]
+                },
+                {
+                        "label": "Create clangd file for current EC board",
+                        "type": "shell",
+                        "command": "cros_sdk",
+                        "args": [
+                                "--working-dir",
+                                "${workspaceFolder}",
+                                "make",
+                                "BOARD=${config:cros-ide.platformEC.board}",
+                                "ide-compile-cmds"
+                        ],
+                        "problemMatcher": []
+                },
+                {
+                        "label": "Copy clangd file for current EC board",
+                        "type": "shell",
+                        "command": "cros_sdk",
+                        "args": [
+                                "--working-dir",
+                                "${workspaceFolder}",
+                                "cp",
+                                "build/${config:cros-ide.platformEC.board}/${config:cros-ide.platformEC.mode}/compile_commands.json",
+                                "."
+                        ],
+                        "problemMatcher": [],
+                        "dependsOn": [
+                                "Create clangd file for current EC board"
+                        ]
+                },
+                {
+                        "label": "Restart clangd server",
+                        "command": "${command:clangd.restart}",
+                        "problemMatcher": []
+                },
+                {
+                        "label": "Enable auto completion for current EC board",
+                        "problemMatcher": [],
+                        "dependsOrder": "sequence",
+                        "dependsOn": [
+                                "Copy clangd file for current EC board",
+                                "Restart clangd server"
+                        ]
+                },
+        ]
+}
