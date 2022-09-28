@@ -70,6 +70,30 @@
       },
       "revId": "abe522f19376b338ab74d7d41a5e753665c56fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547331e5_95889dbd",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-09-28T18:22:40Z",
+      "side": 1,
+      "message": "we can add flag as part of struct ec_thermal_config in EC_CMD_THERMAL_GET_THRESHOLD to indicate if CONFIG_THROTTLE_AP was enabled ?",
+      "parentUuid": "24c19519_f90eb06e",
+      "range": {
+        "startLine": 3279,
+        "startChar": 7,
+        "endLine": 3279,
+        "endChar": 25
+      },
+      "revId": "abe522f19376b338ab74d7d41a5e753665c56fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
