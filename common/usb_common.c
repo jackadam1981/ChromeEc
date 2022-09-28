@@ -1048,7 +1048,7 @@ int pd_send_alert_msg(int port, uint32_t ado)
 #endif
 }
 
-#if defined(HAS_TASK_HOSTCMD) && !defined(TEST_BUILD)
+#if defined(HAS_TASK_HOSTCMD) && !defined(TEST_LEGACY_BUILD)
 void pd_send_host_event(int mask)
 {
 	/* mask must be set */
@@ -1078,3 +1078,25 @@ __overridable void pd_notify_dp_alt_mode_entry(int port)
 		mkbp_send_event(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED);
 	}
 }
+
+#if !defined(CONFIG_USB_PD_TCPM_STUB) && !defined(TEST_LEGACY_BUILD)
+/*
+ * PD host event status for host command
+ * Note: this variable must be aligned on 4-byte boundary because we pass the
+ * address to atomic_ functions which use assembly to access them.
+ */
+
+static enum ec_status
+hc_pd_host_event_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_host_event_status *r = args->response;
+
+	/* Read and clear the host event status to return to AP */
+	r->status = atomic_clear(&pd_host_event_status);
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, hc_pd_host_event_status,
+		     EC_VER_MASK(0));
+#endif /* ! CONFIG_USB_PD_TCPM_STUB && ! TEST_BUILD */
