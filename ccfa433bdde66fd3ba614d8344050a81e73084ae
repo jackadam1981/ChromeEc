@@ -22,6 +22,30 @@
       },
       "revId": "ccfa433bdde66fd3ba614d8344050a81e73084ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a315792_48843a49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2022-09-28T10:32:43Z",
+      "side": 1,
+      "message": "If no this cl, system cannot enter recovery mode when ac only. I verified this cl by my osiris unit.",
+      "parentUuid": "5014b7f9_74639523",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "ccfa433bdde66fd3ba614d8344050a81e73084ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
