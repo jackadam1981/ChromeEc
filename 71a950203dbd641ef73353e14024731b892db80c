@@ -46,6 +46,30 @@
       },
       "revId": "71a950203dbd641ef73353e14024731b892db80c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e95c536_7fa46ad2",
+        "filename": "common/usb_common.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-28T20:51:17Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/249574372",
+      "parentUuid": "1593be13_7d0560c6",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 65
+      },
+      "revId": "71a950203dbd641ef73353e14024731b892db80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
