@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1e8be5e_711f0083",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-28T22:59:23Z",
+      "side": 1,
+      "message": "Would you mind adding a good comment block about this function?  I was never totally certain in the reviews for the usb3 API how/why this is the right choice for power savings.  And I suppose I\u0027ve always wondered why it\u0027s a better choice than entering low power mode and restoring your state on resume",
+      "revId": "df39fa2e1d1f9f6b9cc534ace09e6b64609b9179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b61ba515_04c88c39",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-28T22:59:23Z",
+      "side": 1,
+      "message": "So the cached state is to ensure we restore USB on resume, correct?  Any worries we\u0027ll cache a state we didn\u0027t successfully set on the retimer?",
+      "revId": "df39fa2e1d1f9f6b9cc534ace09e6b64609b9179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bacb4fb_a1ecca09",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
