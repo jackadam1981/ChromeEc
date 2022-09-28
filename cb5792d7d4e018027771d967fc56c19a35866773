@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67074c55_bcdf3dd0",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-28T20:29:52Z",
+      "side": 1,
+      "message": "How does this even work? This variable is only used here in this function, and it is always cleared. Nothing ever sets it.\n\nYes, it is broken by crrev/c/3245624. I would revert that cl (or move this code to usb_common.c), and then instead of making pd_host_event_status test_mockable, use pd_send_host_event() to set the value, and then make 2 EC_CMD_PD_HOST_EVENT_STATUS commands to verify that it reads and clears properly.",
+      "range": {
+        "startLine": 566,
+        "startChar": 13,
+        "endLine": 566,
+        "endChar": 49
+      },
+      "revId": "cb5792d7d4e018027771d967fc56c19a35866773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
