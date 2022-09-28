@@ -22,6 +22,30 @@
       },
       "revId": "df39fa2e1d1f9f6b9cc534ace09e6b64609b9179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c57e669_a7a2ad8e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-28T22:53:39Z",
+      "side": 1,
+      "message": "ya sort of - that constant is the bit mask, not bit position.\nthe original author chose to use this macro to modify the\nbit field. i\u0027m inclined to leave this as-is because i\u0027m\nmoving a block of existing code.",
+      "parentUuid": "9bacb4fb_a1ecca09",
+      "range": {
+        "startLine": 511,
+        "startChar": 20,
+        "endLine": 511,
+        "endChar": 21
+      },
+      "revId": "df39fa2e1d1f9f6b9cc534ace09e6b64609b9179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
