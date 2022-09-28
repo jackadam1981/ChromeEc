@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c902532_a7b686e9",
+        "filename": "common/usb_common.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-28T20:29:22Z",
+      "side": 1,
+      "message": "I know this is a year old cl, but you copied a static variable. It is only written to in this file, and the copy in usb_pd_host_cmd is only read and cleared.  The EC_CMD_PD_HOST_EVENT_STATUS doesn\u0027t work at all after this cl.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 65
+      },
+      "revId": "71a950203dbd641ef73353e14024731b892db80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
