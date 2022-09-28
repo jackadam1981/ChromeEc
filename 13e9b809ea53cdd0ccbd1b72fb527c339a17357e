@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95d2f2d_6caa9f59",
+        "filename": "zephyr/projects/nissa/yaviks/src/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-09-28T01:21:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df66ca34_f8c9f2ad",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "13e9b809ea53cdd0ccbd1b72fb527c339a17357e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a16c6481_0c9c6133",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-28T00:26:36Z",
       "side": 1,
       "message": "Same here. Or do you see any case that would go to this path?",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "13e9b809ea53cdd0ccbd1b72fb527c339a17357e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb769f0_6b474f54",
+        "filename": "zephyr/projects/nissa/yaviks/src/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-09-28T01:21:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a16c6481_0c9c6133",
       "range": {
         "startLine": 70,
         "startChar": 2,
