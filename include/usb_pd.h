@@ -2745,6 +2745,13 @@ int pd_rx_started(int port);
 void pd_set_suspend(int port, int suspend);
 
 /**
+ * Suspend the PD task.
+ * @param port USB-C port number
+ * @param suspend pass 0 to resume, anything else to suspend
+ */
+void pd_set_bistsharemode(int enable);
+
+/**
  * Request Error Recovery
  *
  * Note that Error Recovery will happen on the next cycle of the port's PD task

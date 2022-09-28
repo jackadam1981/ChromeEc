@@ -1113,6 +1113,10 @@ void pd_set_suspend(int port, int suspend)
 	}
 }
 
+void pd_set_bistsharemode(int enable)
+{
+}
+
 void pd_set_error_recovery(int port)
 {
 	TC_SET_FLAG(port, TC_FLAGS_REQUEST_ERROR_RECOVERY);
