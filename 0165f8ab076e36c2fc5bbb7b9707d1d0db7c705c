@@ -46,6 +46,40 @@
       },
       "revId": "0165f8ab076e36c2fc5bbb7b9707d1d0db7c705c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4cb962_1235af13",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-28T22:47:10Z",
+      "side": 1,
+      "message": "How should this interact with the existing low power states?  Can/should muxes support both low power and an idle mode? Should we be assuming one is a superset of the other (ex. are all low power modes expected to already cover the requirements for chipset idle)?",
+      "revId": "0165f8ab076e36c2fc5bbb7b9707d1d0db7c705c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead81793_c7befed3",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-28T22:47:10Z",
+      "side": 1,
+      "message": "Probably specify the expected mux state interactions, similar to how low power mode specifies it happens on disconnect.  \n\nIs this expected to run even when the mux has been in an active mode?  If so, does leaving this mode restore the mux to its previous state or does the common code need to handle that?",
+      "revId": "0165f8ab076e36c2fc5bbb7b9707d1d0db7c705c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
