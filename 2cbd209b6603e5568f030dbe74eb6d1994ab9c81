@@ -22,6 +22,30 @@
       },
       "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c0999c_98a42503",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3280,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-09-28T18:13:55Z",
+      "side": 1,
+      "message": "\"This doesn\u0027t work since ectool is compiled for hosts (not for boards).\"\n\u003e Agree. I had tested by building ectool through make build command which builds ectool specific to board. So it was working as expected at my end.\n\n\"You need to change the EC side so that it returns a proper error.\"\n\u003e If CUSTOM_CONFIG is enabled then we can send error code as part of EC_CMD_THERMAL_GET_THRESHOLD.\nBy adding another element to \u0027struct ec_thermal_config\u0027. Any particular error code than -1?\n\n\"Can we update EC_CMD_THERMAL_GET_THRESHOLD so that ectool can get thresholds even for custom fan control boards?\"\n\u003e Not sure if we can achieve this (as per my understanding). Based on the chipset state the custom fan rpm is controlled. I was facing issue with fan percentage for gimble and redrix. Atleast for Gimble I see that the custom fan config is done only wrt TEMP_SENSOR_1_DDR_SOC. For redrix its dynamic though.",
+      "parentUuid": "b7378f50_31b82338",
+      "range": {
+        "startLine": 3278,
+        "startChar": 0,
+        "endLine": 3280,
+        "endChar": 42
+      },
+      "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
