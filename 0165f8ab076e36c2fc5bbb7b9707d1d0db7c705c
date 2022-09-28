@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06ac0be_13017ae2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-28T15:20:49Z",
+      "side": 1,
+      "message": "Is this level of control needed?  Under what scenario would a board not want to put the mux into idle mode, when the driver and chip supports it?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "0165f8ab076e36c2fc5bbb7b9707d1d0db7c705c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
