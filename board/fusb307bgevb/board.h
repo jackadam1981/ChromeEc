@@ -52,6 +52,8 @@
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_TCPM_FUSB307
 
+#undef CONFIG_USB_PD_HOST_CMD
+
 /* delay to turn on/off vconn */
 /* Define operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
