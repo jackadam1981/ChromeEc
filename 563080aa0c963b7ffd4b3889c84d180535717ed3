@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "702aa644_7c1b9314",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-28T22:44:39Z",
+      "side": 1,
+      "message": "I think that pd_send_host_event should just be moved back to usb_pd_host_cmd.c, and the stub in include/usb_pd.h should be conditioned on CONFIG_USB_PD_HOST_CMD instead.\nThere is no reason to have pd_send_host_event() exist unless EC_CMD_PD_HOST_EVENT_STATUS also exists.\n\nActually that would #if defined(CONFIG_USB_PD_HOST_CMD) \u0026\u0026 !defined(CONFIG_USB_PD_TCPM_STUB) \u0026\u0026 !defined(TEST_BUILD) and probably just #if defined(CONFIG_USB_PD_HOST_CMD) \u0026\u0026 !defined(CONFIG_USB_PD_TCPM_STUB) as tests can just not define CONFIG_USB_PD_HOST_CMD if they didn\u0027t want it.",
+      "revId": "563080aa0c963b7ffd4b3889c84d180535717ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
