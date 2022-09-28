@@ -22,6 +22,30 @@
       },
       "revId": "cb5792d7d4e018027771d967fc56c19a35866773",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf34435_00251d8c",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-28T22:04:09Z",
+      "side": 1,
+      "message": "Oof, facepalmed at this test. I should\u0027ve immediately caught this.",
+      "parentUuid": "67074c55_bcdf3dd0",
+      "range": {
+        "startLine": 566,
+        "startChar": 13,
+        "endLine": 566,
+        "endChar": 49
+      },
+      "revId": "cb5792d7d4e018027771d967fc56c19a35866773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
