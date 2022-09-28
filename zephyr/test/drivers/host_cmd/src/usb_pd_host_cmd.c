@@ -214,6 +214,22 @@ ZTEST_USER(usb_pd_host_cmd,
 	zassert_equal(pd_send_vdm_fake.call_count, 0);
 }
 
+/* Mock host event status to test clearing of state by hostcmd */
+atomic_t pd_host_event_status __aligned(4);
+
+ZTEST_USER(usb_pd_host_cmd, test_hc_pd_host_event_status)
+{
+	struct ec_response_host_event_status response;
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_RESPONSE(
+		EC_CMD_PD_HOST_EVENT_STATUS, 0, response);
+
+	atomic_set_bit(&pd_host_event_status, 1);
+
+	zassert_ok(host_command_process(&args), NULL);
+	zassert_equal(args.response_size, sizeof(response), NULL);
+	zassert_equal(atomic_get(&pd_host_event_status), 0);
+}
+
 ZTEST_USER(usb_pd_host_cmd, test_host_command_hc_pd_ports)
 {
 	struct ec_response_usb_pd_ports response;
