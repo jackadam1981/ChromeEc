@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba4731d_ebf42d19",
+        "filename": "zephyr/test/krabby/src/temp_tentacruel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-28T06:22:20Z",
+      "side": 1,
+      "message": "you have to call the real current_update() function here (otherwise the code coverage won\u0027t count).\n\nPlease refer to zephyr/test/drivers/default/src/temp_sensor.c about how to create a fake adc temp sensor.",
+      "revId": "af1a9d76847c23162a272eda3eacc5b4b3e93c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6265f9d7_8e2d6149",
+        "filename": "zephyr/test/krabby/src/temp_tentacruel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-09-28T06:22:20Z",
+      "side": 1,
+      "message": "Not sure how k_sleep is implemented in test. Does this really sleeps for 10 seconds?\n\nIf yes, use `for (int i\u003d0; i \u003c 10; i++) hook_notify(HOOK_SECOND)` instead",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 8
+      },
+      "revId": "af1a9d76847c23162a272eda3eacc5b4b3e93c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
