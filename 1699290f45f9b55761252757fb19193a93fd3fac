@@ -22,6 +22,30 @@
       },
       "revId": "1699290f45f9b55761252757fb19193a93fd3fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc36192_06b89bb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-28T00:11:25Z",
+      "side": 1,
+      "message": "Oops. I forgot the `--image` arg.\n\nI validated the updated flash_ec test line on dragonclaw.\n\n```\n\u003e runtest                                                                                                                                                                                                          \nRunning test_basic_functionality...                                                                                                                                                                                \nOK                                                                                                                                                                                                                 \nRunning test_optimization_working...                                                                                                                                                                               \nOK                                                                                                                                                                                                                 \nRunning test_always_memset...                                                                                                                                                                                      \nOK                                                                                                                                                                                                                 \nPass!                                                                                                                                                                                                              \n                                                                                                                                                                           \n\u003e taskinfo                                                                                                                                                                                                         \nTask Ready Name         Events      Time (s)  StkUsed                                                                                                                                                              \n   0 R \u003c\u003c idle \u003e\u003e       00000000    0.000000  144/256                                                                                                                                                              \n   1   HOOKS            00000000    0.000000  328/1024                                                                                                                                                             \n   2   FPSENSOR         00000000    0.000000  864/4096                                                                                                                                                             \n   3   HOSTCMD          00000000    0.000000  340/4096                                                                                                                                                             \n   4 R CONSOLE          00000000    0.000000  444/4096 \n```\n\n---\n\nGiven your testing using `run_device_tests.py` and my testing with flash_ec. I deem this patch Verified.",
+      "parentUuid": "fcf6ccf3_f91d5866",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "1699290f45f9b55761252757fb19193a93fd3fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
