@@ -69,6 +69,42 @@
       "message": "at what build phase would this command be used?\n\nif it is only needed pre-PVT, we could add a check to only\nallow the command when the device is not \"locked\". that would\naddress diana\u0027s comment about making it difficult for customers\nto activate this untested power level on MP devices.\n\nif devices are sent to the testing lab at PVT+, they would\nalready be locked, so prohibiting this command on locked\ndevices would not make sense.",
       "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33e2731_1c77030d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-28T02:06:35Z",
+      "side": 1,
+      "message": "This test will be happened on pre-PVT, so I think it\u0027s nice to guard this command with \"locked\".\n\nI added `if (!IS_ENABLED(CONFIG_SYSTEM_UNLOCKED)) {` in ectool.cc.",
+      "parentUuid": "149020d9_69daeeb1",
+      "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa0de9a_a9271fe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-28T02:06:35Z",
+      "side": 1,
+      "message": "Add CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3924556/2 for enable it in EC console.",
+      "parentUuid": "8c3a5d7f_e831ed7d",
+      "revId": "824e9726f5427331cfe441d6b9ef60bcfcd4a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
