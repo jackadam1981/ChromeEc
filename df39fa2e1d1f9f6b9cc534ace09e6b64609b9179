@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bacb4fb_a1ecca09",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-09-28T19:45:40Z",
+      "side": 1,
+      "message": "isn\u0027t that defined as `BB_RETIMER_USB_3_CONNECTION` ?",
+      "range": {
+        "startLine": 511,
+        "startChar": 20,
+        "endLine": 511,
+        "endChar": 21
+      },
+      "revId": "df39fa2e1d1f9f6b9cc534ace09e6b64609b9179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
