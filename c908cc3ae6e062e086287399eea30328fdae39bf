@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac35f89_36c3c061",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-28T23:35:21Z",
+      "side": 1,
+      "message": "Can you explain why are the two variables needed? We know that AP RO data is at the base of the page.\n\nTo show that this page now needs to include more data it is better to create an encompassing structure wich would include the substructures. Or maybe I am missing the reason for this patch?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 0
+      },
+      "revId": "c908cc3ae6e062e086287399eea30328fdae39bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
