@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e7a6201_901b09f0",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-09-28T03:15:28Z",
+      "side": 1,
+      "message": "Just need to separate 8183 and others, no need to separate 8186 anymore.",
+      "parentUuid": "e5a7eac5_f619daa9",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "610668e8_d7b46918",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 16
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-27T12:24:08Z",
       "side": 1,
       "message": "Consider using `HAVE_PRIVATE_MT8186`",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa170582_65bcbbb9",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-09-28T03:15:28Z",
+      "side": 1,
+      "message": "Just need to separate 8183 and others, no need to separate 8186 anymore.",
+      "parentUuid": "610668e8_d7b46918",
       "range": {
         "startLine": 73,
         "startChar": 7,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3c932c0_005acacb",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-09-28T03:15:28Z",
+      "side": 1,
+      "message": "Only 8183 won\u0027t use below code, not only 8186, all future platforms will use below driver.",
+      "parentUuid": "4b2ea682_fa2cbbd6",
+      "range": {
+        "startLine": 87,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06f08657_ba0da3a1",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 16
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-27T12:24:08Z",
       "side": 1,
       "message": "This is confusing. Could you use `continues;`, instead of putting a leading `else` keyword inside a preprocessor block?",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 23
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982ec2d9_f97eb55d",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-09-28T03:15:28Z",
+      "side": 1,
+      "message": "we can use continue to simplify the flow.",
+      "parentUuid": "06f08657_ba0da3a1",
       "range": {
         "startLine": 111,
         "startChar": 2,
@@ -142,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1eb22f5_e69b9573",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-09-28T03:15:28Z",
+      "side": 1,
+      "message": "Hi Wei-Shun,\n\nOnly need to separate 8183 and others. For 8183\u0027s architecture is different with other platforms. 8186 and future platform\u0027s architecture is the same, won\u0027t change anymore.",
+      "parentUuid": "c3877c38_f24650cf",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46ab33bf_4f691a7a",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 16
@@ -165,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "178a0e95_511a0bbf",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-09-28T03:15:28Z",
+      "side": 1,
+      "message": "Only 8183 won\u0027t use below code, not only 8186, all future platforms will use below driver.",
+      "parentUuid": "46ab33bf_4f691a7a",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a5bd288_83bfae7c",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 16
@@ -176,6 +320,30 @@
       "writtenOn": "2022-09-27T12:24:08Z",
       "side": 1,
       "message": "Align the flow of the previous handler by using `continue;`",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fdb4456_a285a0b3",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-09-28T03:15:28Z",
+      "side": 1,
+      "message": "Yes, we can add continue.",
+      "parentUuid": "6a5bd288_83bfae7c",
       "range": {
         "startLine": 161,
         "startChar": 2,

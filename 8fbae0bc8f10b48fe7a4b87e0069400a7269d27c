@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ac72cee_2820e179",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2022-09-28T03:15:28Z",
+      "side": 1,
+      "message": "Defined in MT8183.\nline: 53",
+      "parentUuid": "531788c7_dcff9590",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab993fe1_e4a632d2",
         "filename": "chip/mt_scp/mt818x/ipi.c",
         "patchSetId": 13
