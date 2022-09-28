@@ -22,6 +22,30 @@
       },
       "revId": "0165f8ab076e36c2fc5bbb7b9707d1d0db7c705c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf195828_4d6174c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-28T19:08:40Z",
+      "side": 1,
+      "message": "i believe this feature should be opt-in because it is new and not validated on each board that would be affected. the flag\nis used to opt-in.\nsee https://b.corp.google.com/issues/245753005#comment13",
+      "parentUuid": "d06ac0be_13017ae2",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "0165f8ab076e36c2fc5bbb7b9707d1d0db7c705c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
