@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e59b4a0_8d078a45",
+        "filename": "zephyr/dts/bindings/battery/cdt,c340152.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T15:34:32Z",
+      "side": 1,
+      "message": "The spreadsheet doesn\u0027t mention, what do 0 and 1 mean for these bits? Generally you want the disconnect value to correspond to FETs off",
+      "revId": "31a0ba062eb3190cd9214cf7e3d183d17f27a3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a21b680_1f648210",
+        "filename": "zephyr/projects/skyrim/prj_frostflow.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T15:34:32Z",
+      "side": 1,
+      "message": "This is a good addition.  Would you mind adding it to the skyrim base prj.conf?  I suspect all the projects will need it",
+      "revId": "31a0ba062eb3190cd9214cf7e3d183d17f27a3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
