@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b74dba5_846a3d19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-29T19:20:11Z",
+      "side": 1,
+      "message": "if possible, it would be nice to keep all modification out of third_party, otherwise, it makes it much more difficult to uprev this code.",
+      "revId": "3aad75cbc4b6f05bf9cbe5cac835124c749dc263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa754ed1_afc26452",
+        "filename": "third_party/boringssl/include/aes-ctr.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-29T19:20:11Z",
+      "side": 1,
+      "message": "This should go into the parent CL?\n\nOr is this 1st party code?",
+      "revId": "3aad75cbc4b6f05bf9cbe5cac835124c749dc263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
