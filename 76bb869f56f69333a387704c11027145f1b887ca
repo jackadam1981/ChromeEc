@@ -68,6 +68,24 @@
       "message": "If it\u0027s Zephyr, can a zephyr module be used for this 3rd party code? This is how we integrate cmsis and hal_stm32 third party modules.",
       "revId": "76bb869f56f69333a387704c11027145f1b887ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837b0cec_2d9b8482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-09-29T21:03:02Z",
+      "side": 1,
+      "message": "Something like this would work.\n\nhttps://bit.googleplex.com/#/yich/6365572713414656\n```\nmkdir build\ncd build\ncmake -DANDROID\u003d1 -DUNIX\u003d1 -DCMAKE_TOOLCHAIN_FILE\u003d../../utils/cros-ec-toolchain.cmake -GNinja ../\nninja crypto\nnm crypto/libcrypto.a |grep CRYPTO_ctr128_encrypt\n```",
+      "parentUuid": "1558db4c_5e124c20",
+      "revId": "76bb869f56f69333a387704c11027145f1b887ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
