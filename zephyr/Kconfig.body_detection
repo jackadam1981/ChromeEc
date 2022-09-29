@@ -86,4 +86,11 @@ config PLATFORM_EC_BODY_DETECTION_NOTIFY_MODE_CHANGE
 	  Notify the host via SCI events EC_HOST_EVENT_MODE_CHANGE when body
 	  status is changed.
 
+config PLATFORM_EC_BODY_DETECTION_ALWAYS_ENABLE_IN_S0
+	bool "Always enable body detection function in S0"
+	default n
+	help
+	  Always enable the body detection function in S0
+	  w/o the host command
+
 endif # PLATFORM_EC_BODY_DETECTION
