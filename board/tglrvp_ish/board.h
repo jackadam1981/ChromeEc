@@ -9,12 +9,6 @@
 #define __CROS_EC_BOARD_H
 
 /*
- * Allow dangerous commands.
- * TODO: Don't use this on production systems.
- */
-#define CONFIG_SYSTEM_UNLOCKED
-
-/*
  * By default, enable all console messages except HC, ACPI and event
  * The sensor stack is generating a lot of activity.
  */
@@ -25,6 +19,7 @@
 #undef CONFIG_DEBUG_ASSERT
 #define CONFIG_CLOCK_CRYSTAL
 #define CONFIG_ISH_UART_0
+
 /* EC */
 #define CONFIG_FLASH_SIZE_BYTES 0x80000
 #define CONFIG_FPU
@@ -45,6 +40,20 @@
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_TIMERINFO
+
+/*
+ * ADL_ISH_LITE only provides power management,
+ * other functionalities will be excluded.
+ */
+#ifdef BOARD_ADL_ISH_LITE
+#undef CONFIG_ACCELGYRO_LSM6DSM
+#undef CONFIG_ACCEL_FORCE_MODE_MASK
+#undef I2C_PORT_SENSOR
+#undef CONFIG_CMD_I2C_XFER
+#undef CONFIG_CMD_ACCELS
+#undef CONFIG_CMD_ACCEL_INFO
+#undef CONFIG_CMD_TIMERINFO
+#endif /* BOARD_ADL_ISH_LITE */
 
 /* Undefined features */
 #undef CONFIG_CMD_HASH
