@@ -119,13 +119,6 @@ enum console_channel {
 #define CC_ALL 0xffffffffU
 
 /**
- * Enable a console channel by name
- *
- * @param name		Console channel name
- */
-void console_channel_enable(const char *name);
-
-/**
  * Disable a console channel by name
  *
  * @param name		Console channel name
