@@ -34,6 +34,24 @@
       "parentUuid": "e64e8877_af8cf672",
       "revId": "04446684ceac77e61b9017bb442c57b6db5b9b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3121fb_df3ca89a",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-29T19:22:59Z",
+      "side": 1,
+      "message": "`PLATFORM_EC_HOSTCMD_I2C_CONTROL` is required for ps8815 firmware update.\nif a platform does not use a ps8xxx TCPC, there probably is no other\ndependency that would call for enabling this. \n\n`PLATFORM_EC_CONSOLE_CMD_I2C_SPEED` is optional.\nit is mainly used to test different I2C speeds and was helpful\nin debugging the ps8xxx firmware updater.",
+      "parentUuid": "a9b7623c_6cc219e3",
+      "revId": "04446684ceac77e61b9017bb442c57b6db5b9b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
