@@ -16,6 +16,23 @@
       "message": "Due to rt9490 has conflict with the tcpci emulator settings (the settings of `prj.conf` in it tries to access tcpc register `0xb4`, `0xcd`, `0xaa`, and `0x9d`, which fails the TCPC initialization), so place this test into its own directory.",
       "revId": "7a61fb8e22a3b448b1229d0ab7ef1ad0360080f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354a77b4_c8cfce3a",
+        "filename": "zephyr/test/drivers/default/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-09-29T08:21:03Z",
+      "side": 1,
+      "message": "Clean this up in Patchset 4 so that the `Driver.default` test suite can build",
+      "revId": "7a61fb8e22a3b448b1229d0ab7ef1ad0360080f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
