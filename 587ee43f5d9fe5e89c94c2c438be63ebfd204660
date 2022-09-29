@@ -16,6 +16,24 @@
       "message": "Diana: It looks like we have exactly one instance of this being overridden: honeybuns. How should BIST shared mode interact with honeybuns? Are all the ports part of a shared capacity group? Or just the DFPs?\n\nScott: Either way, this CL should probably update `baseboard/honeybuns/usb_pd_policy.c` as well, so that isn\u0027t hanging around to burn us at some point in the future.",
       "revId": "587ee43f5d9fe5e89c94c2c438be63ebfd204660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b463b8c_982098ac",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-29T01:23:41Z",
+      "side": 1,
+      "message": "Create a CL for honeybuns. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3925079/1",
+      "parentUuid": "d128418c_78edaf89",
+      "revId": "587ee43f5d9fe5e89c94c2c438be63ebfd204660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
