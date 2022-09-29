@@ -12,8 +12,9 @@
 #include "console.h"
 #include "uart.h"
 #include "ec_commands.h"
+#include "stdio.h"
 
-ZTEST_USER(console, printf_overflow)
+ZTEST_USER(console, test_printf_overflow)
 {
 	char buffer[10];
 
@@ -29,7 +30,7 @@ ZTEST_USER(console, printf_overflow)
  * test/console_edit.c. Please keep them in sync to verify that
  * uart_console_read_buffer works identically in legacy EC and zephyr.
  */
-ZTEST_USER(console, buf_notify_null)
+ZTEST_USER(console, test_buf_notify_null)
 {
 	char buffer[100];
 	uint16_t write_count;
@@ -57,7 +58,7 @@ static const char *large_string =
 	"This is a very long string, it will cause a buffer flush at "
 	"some point while printing to the shell. Long long text. Blah "
 	"blah. Long long text. Blah blah. Long long text. Blah blah.";
-ZTEST_USER(console, shell_fprintf_full)
+ZTEST_USER(console, test_shell_fprintf_full)
 {
 	const struct shell *shell_zephyr = get_ec_shell();
 	const char *outbuffer;
@@ -76,13 +77,104 @@ ZTEST_USER(console, shell_fprintf_full)
 		     "Invalid console output %s", outbuffer);
 }
 
-ZTEST_USER(console, cprint_too_big)
+ZTEST_USER(console, test_cprint_too_big)
 {
 	zassert_true(strlen(large_string) >= CONFIG_SHELL_PRINTF_BUFF_SIZE,
 		     "buffer is too short, fix test.");
 
 	zassert_equal(cprintf(CC_COMMAND, "%s", large_string),
 		      -EC_ERROR_OVERFLOW, NULL);
+}
+
+ZTEST_USER(console, test_cmd_chan_invalid_mask)
+{
+	zassert_equal(EC_ERROR_PARAM1,
+		      shell_execute_cmd(get_ec_shell(), "chan foobar"));
+}
+
+ZTEST_USER(console, test_cmd_chan_set)
+{
+	const struct shell *shell_zephyr = get_ec_shell();
+	const char *outbuffer;
+	size_t buffer_size;
+	char cmd[100];
+
+	zassert_true(crec_snprintf(cmd, sizeof(cmd), "chan %d",
+				   CC_MASK(CC_ACCEL)) > 0);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), cmd));
+	shell_backend_dummy_clear_output(shell_zephyr);
+	zassert_ok(cprintf(CC_COMMAND, "YES1yes"));
+	zassert_ok(cprintf(CC_ACCEL, "YES2yes"));
+	zassert_ok(cprintf(CC_CHARGER, "NOno"));
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
+
+	zassert_true(strstr(outbuffer, "YES1yes") != NULL,
+		     "Invalid console output %s", outbuffer);
+	zassert_true(strstr(outbuffer, "YES2yes") != NULL,
+		     "Invalid console output %s", outbuffer);
+	zassert_false(strstr(outbuffer, "NOno") != NULL,
+		      "Invalid console output %s", outbuffer);
+}
+
+ZTEST_USER(console, test_cmd_chan_show)
+{
+	const struct shell *shell_zephyr = get_ec_shell();
+	const char *outbuffer;
+	size_t buffer_size;
+	char cmd[100];
+
+	zassert_true(crec_snprintf(cmd, sizeof(cmd), "chan %d",
+				   CC_MASK(CC_ACCEL)) > 0);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), cmd));
+	shell_backend_dummy_clear_output(shell_zephyr);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "chan"));
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
+
+	zassert_true(
+		strstr(outbuffer,
+		       "\r\n # Mask     E Channel\r\n 0 00000001 * command\r\n"
+		       " 1 00000002 * accel\r\n 2 00000004   charger\r\n") !=
+			NULL,
+		"Invalid console output %s", outbuffer);
+}
+
+ZTEST_USER(console, test_cmd_chan_save_restore)
+{
+	const struct shell *shell_zephyr = get_ec_shell();
+	const char *outbuffer;
+	size_t buffer_size;
+	char cmd[100];
+
+	zassert_true(crec_snprintf(cmd, sizeof(cmd), "chan %d",
+				   CC_MASK(CC_ACCEL)) > 0);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), cmd));
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "chan save"));
+	zassert_true(crec_snprintf(cmd, sizeof(cmd), "chan %d",
+				   CC_MASK(CC_ACCEL) | CC_MASK(CC_CHARGER)) >
+		     0);
+	zassert_ok(shell_execute_cmd(get_ec_shell(), cmd));
+	shell_backend_dummy_clear_output(shell_zephyr);
+	zassert_ok(cprintf(CC_COMMAND, "YES1yes"));
+	zassert_ok(cprintf(CC_ACCEL, "YES2yes"));
+	zassert_ok(cprintf(CC_CHARGER, "YES3yes"));
+	zassert_ok(shell_execute_cmd(get_ec_shell(), "chan restore"));
+	zassert_ok(cprintf(CC_COMMAND, "YES4yes"));
+	zassert_ok(cprintf(CC_ACCEL, "YES5yes"));
+	zassert_ok(cprintf(CC_CHARGER, "NOno"));
+	outbuffer = shell_backend_dummy_get_output(shell_zephyr, &buffer_size);
+
+	zassert_true(strstr(outbuffer, "YES1yes") != NULL,
+		     "Invalid console output %s", outbuffer);
+	zassert_true(strstr(outbuffer, "YES2yes") != NULL,
+		     "Invalid console output %s", outbuffer);
+	zassert_true(strstr(outbuffer, "YES3yes") != NULL,
+		     "Invalid console output %s", outbuffer);
+	zassert_true(strstr(outbuffer, "YES4yes") != NULL,
+		     "Invalid console output %s", outbuffer);
+	zassert_true(strstr(outbuffer, "YES5yes") != NULL,
+		     "Invalid console output %s", outbuffer);
+	zassert_false(strstr(outbuffer, "NOno") != NULL,
+		      "Invalid console output %s", outbuffer);
 }
 
 ZTEST_SUITE(console, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
