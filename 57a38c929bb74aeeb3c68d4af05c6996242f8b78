@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9719046d_a5faa0af",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-29T08:24:15Z",
+      "side": 1,
+      "message": "No, the pre-upload.py does not catch this.",
+      "parentUuid": "afe2bdff_cd754471",
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b408b271_22782126",
         "filename": "zephyr/Kconfig.body_detection",
         "patchSetId": 6
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-26T16:46:17Z",
       "side": 1,
       "message": "Based on the format of other `Kconfig` files, it looks like this should be a `menuconfig`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcbcfbd_b72a4e94",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-29T08:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b408b271_22782126",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e776cf9d_f9b12bc1",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-29T08:24:15Z",
+      "side": 1,
+      "message": "In the CrOS EC config.h, the commemt of the CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE is \"The max number of sampling data for 1 second\"\n\nAnd the description in the Kconfig was referred the Keith\u0027s suggestion",
+      "parentUuid": "4797650e_7f8a0e45",
+      "range": {
+        "startLine": 19,
+        "startChar": 34,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "311636ca_43c58a85",
         "filename": "zephyr/Kconfig.body_detection",
         "patchSetId": 6
@@ -94,6 +160,30 @@
       "writtenOn": "2022-09-26T16:46:17Z",
       "side": 1,
       "message": "typo: affects the",
+      "range": {
+        "startLine": 47,
+        "startChar": 21,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "529cd951_539471fd",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-29T08:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "311636ca_43c58a85",
       "range": {
         "startLine": 47,
         "startChar": 21,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d6a826_970e690e",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-29T08:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84996a0d_c3889b80",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 7
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b947b79d_31e1d4b6",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-09-26T16:00:45Z",
       "side": 1,
       "message": "canceled",
+      "range": {
+        "startLine": 53,
+        "startChar": 40,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea11e205_d2af2818",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-29T08:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b947b79d_31e1d4b6",
       "range": {
         "startLine": 53,
         "startChar": 40,
