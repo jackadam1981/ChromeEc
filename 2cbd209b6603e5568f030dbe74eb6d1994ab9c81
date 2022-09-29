@@ -70,6 +70,30 @@
       },
       "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd830e9_8bc72a5a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3280,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-09-29T19:16:32Z",
+      "side": 1,
+      "message": "Many Thanks Dai on this info. Yes I did try emerge build which sets it to host. How about introducing a flag as part of thermal_config structure \"uint8_t custom_config\"?\n\n```\nstruct ec_thermal_config {\n        uint32_t temp_host[EC_TEMP_THRESH_COUNT]; /* levels of hotness */\n        uint32_t temp_host_release[EC_TEMP_THRESH_COUNT]; /* release levels */\n        uint32_t temp_fan_off; /* no active cooling needed */\n        uint32_t temp_fan_max; /* max active cooling needed */\n        uint8_t custom_config;\n} __ec_align4;\n```",
+      "parentUuid": "15b7a0c1_8cd32181",
+      "range": {
+        "startLine": 3278,
+        "startChar": 0,
+        "endLine": 3280,
+        "endChar": 42
+      },
+      "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
