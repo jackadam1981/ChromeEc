@@ -22,6 +22,7 @@ if(DEFINED CONFIG_BOARD_MORTHAL)
 	zephyr_library_sources(
 		"src/morthal/ppc_config.c"
 		"src/morthal/usb_mux_config.c"
+		"src/morthal/sensor.c"
 )
 endif()
 
@@ -34,6 +35,7 @@ if(DEFINED CONFIG_BOARD_SKYRIM)
 			"src/skyrim/form_factor.c"
 			"src/skyrim/alt_charger.c"
 			"src/skyrim/keyboard.c"
+			"src/skyrim/sensor.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "src/skyrim/fan.c")
 endif()
@@ -45,6 +47,7 @@ if(DEFINED CONFIG_BOARD_WINTERHOLD)
 		"src/winterhold/ppc_config.c"
 		"src/winterhold/kb_backlight.c"
 		"src/winterhold/keyboard.c"
+		"src/winterhold/sensor.c"
     )
 endif()
 
@@ -55,6 +58,7 @@ if(DEFINED CONFIG_BOARD_FROSTFLOW)
 	zephyr_library_sources(
 			"src/frostflow/usb_mux_config.c"
 			"src/frostflow/ppc_config.c"
+			"src/frostflow/sensor.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 		"src/frostflow/keyboard.c"
