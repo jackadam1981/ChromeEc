@@ -52,6 +52,24 @@
       "parentUuid": "eac5ff13_e618b7f0",
       "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04697072_8e6408ec",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T17:18:08Z",
+      "side": 1,
+      "message": "And to be clear, the specific error here is that the CL\u0027s code is uncovered.  So after a CQ+1 or CQ+2 run, you\u0027ll notice color coding on the line numbers.  These let you know which lines were run during a unit test (blue \u003d run, orange \u003d not run).\n\nYou can make a coverage build for yourself with the instructions in platform/ec/docs/code_coverage.md\n\nIt\u0027s pretty neat.  It\u0027ll generate an html file you can use to look around the codebase at how much tests have exercised the code in different files.\n\nFor board code, we\u0027re still figuring out how to properly test those files.  So CLs just on a board\u0027s .c file can use LOW_COVERAGE_REASON to explain why the change is untested, or you can have a reviewer mark Code coverage +1 on a change like that.  At this point, the common code has good examples to follow so it\u0027s not difficult to create tests for it.",
+      "parentUuid": "09e7dc83_cdcc1055",
+      "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
