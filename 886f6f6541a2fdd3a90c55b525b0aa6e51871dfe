@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5d9497_94986ace",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-29T09:00:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4d5c48_08f5d597",
+      "revId": "886f6f6541a2fdd3a90c55b525b0aa6e51871dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce492739_a6b15539",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-28T18:15:18Z",
       "side": 1,
       "message": "Should this be controlled by `tbt_ufp_ack_allowed`? (I think I could also ask this about the discovery responses. In the default case, we shouldn\u0027t advertise modes that we\u0027re going to refuse to enter.)",
+      "revId": "886f6f6541a2fdd3a90c55b525b0aa6e51871dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff9d7d3_e6ef9d65",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-29T09:00:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce492739_a6b15539",
       "revId": "886f6f6541a2fdd3a90c55b525b0aa6e51871dfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

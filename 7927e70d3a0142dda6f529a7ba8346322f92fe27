@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85387923_540b7d13",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-29T09:00:04Z",
+      "side": 1,
+      "message": "We want Modal_Operation_Supported_SOP \u003d 1, so we need to set Type_C_Is_Alt_Mode_Adapter \u003d 1. But Type_C_Is_Alt_Mode_Adapter is gray-out and cannot be modified. And in VIF spec, `Type_C_Is_Alt_Mode_Adapter (Y/N)` section, it said \n```\nIf Type_C_Can_Act_As_Device is not set to YES, then this field shall be set to NO.\n```\nSo I set Type_C_Can_Act_As_Device \u003d 1, the Type_C_Is_Alt_Mode_Adapter can be modified and Modal_Operation_Supported_SOP will be 1 automatically.",
+      "parentUuid": "66eb08c4_feb6d7fa",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65dcd78a_cc9a043f",
         "filename": "baseboard/brya/usb_pd_policy.c",
         "patchSetId": 15
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "From PD rev 1.3, v 1.4, ss 6.4.4.3.5 Exit Mode Command (I know v 1.5 was published):\n\u003e The Responder Shall ... only return a NAK acknowledgement to a request not containing an Active Mode (i.e., Invalid object position).\n\nI take that to mean that the TCPM should NAK an Exit Mode if we haven\u0027t previously entered a mode. (The language seems to allow for an ACK, but it would be a no-op.) The canonical way to check active modes in our codebase is `pd_get_partner_active_modes`. If the returned structure doesn\u0027t contain the SVID from the _Exit Mode_`, the TCPM should NAK.",
       "parentUuid": "2e575a54_fd5896b3",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b328949e_2d79043c",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-29T09:00:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e139cff_1b396822",
       "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +192,24 @@
       "side": 1,
       "message": "The generic Exit Mode process should handle the BB retimer through the mux setting process. The mux settings during the process should be the same regardless of the active mode that is being exited. So I don\u0027t think we need to store this.",
       "parentUuid": "d8c66797_a31c5742",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20489a16_6aee4328",
+        "filename": "common/usb_pd_alt_mode_ufp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-29T09:00:04Z",
+      "side": 1,
+      "message": "Change to ues `pd_ufp_set_enter_mode(port, 0);` to clear enter message.",
+      "parentUuid": "95580006_a9ebf11a",
       "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
