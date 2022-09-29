@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4b8663_026c4d7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-29T18:55:48Z",
+      "side": 1,
+      "message": "It seems like a shame to duplicate this file for every variant when the only difference is one variant adding a single line (`on-body-sensor \u003d \u0026base_accel;`).\n\nIs there a better way of adding this specific sensor without the duplication?   There is a `motionsense-rotation-ref` in `winterhold.dts`, can it be added alongside that (assuming `.dts` files can work that way)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "542cd9eef198e29095be27c668b5a555144b9700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fc47fcc3_1dbdd766",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-09-29T09:04:46Z",
       "side": 1,
       "message": "rebase",
+      "revId": "542cd9eef198e29095be27c668b5a555144b9700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc7f3ff_2c4bb419",
+        "filename": "zephyr/projects/skyrim/motionsense_frostflow.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-29T18:55:48Z",
+      "side": 1,
+      "message": "nit: Remove extra newline from these `motionsense_*.dts` files.",
       "revId": "542cd9eef198e29095be27c668b5a555144b9700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
