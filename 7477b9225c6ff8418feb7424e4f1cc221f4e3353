@@ -40,6 +40,30 @@
       },
       "revId": "7477b9225c6ff8418feb7424e4f1cc221f4e3353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b575c90b_03cb4905",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-29T20:18:18Z",
+      "side": 1,
+      "message": "This has already been merged. Can you file a bug or create a CL with the suggestion?",
+      "parentUuid": "e8300249_f8181268",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 0
+      },
+      "revId": "7477b9225c6ff8418feb7424e4f1cc221f4e3353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
