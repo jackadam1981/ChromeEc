@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b5229af_ad640561",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-09-29T16:11:33Z",
+      "side": 1,
+      "message": "Is not this signal GPIO0221 as per schematics from PYrite+ MEC1723/MEC1727 Modular EC Card , Rev1, dated Feb 17th? \nSo port\u003d 145/32\u003d4 \u0026  bank \u003d145%32\u003d 17 ?\nOr is this pin reassigned to GPIO011 ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de3cd841_2c3b37b2",
         "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
         "patchSetId": 6
@@ -154,6 +177,29 @@
         "startChar": 0,
         "endLine": 74,
         "endChar": 18
+      },
+      "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecfa21b4_33c12333",
+        "filename": "zephyr/projects/intelrvp/mtlrvp/mtlrvpp_mchp/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-09-29T16:11:33Z",
+      "side": 1,
+      "message": "Isn\u0027t this signal GPIO114 or got changed in revised?\nport \u003d76/32\u003d2 \u0026 bank \u003d76%32\u003d12 ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 16
       },
       "revId": "ecb25e1c0824097c1897712e7ec76258e02f75ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
