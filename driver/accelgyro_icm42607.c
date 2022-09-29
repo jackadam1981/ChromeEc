@@ -475,11 +475,12 @@ static int icm42607_enable_sensor(const struct motion_sensor_t *s, int enable)
 
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
-		mask = ICM42607_ACCEL_MODE_MASK;
+		mask = ICM42607_ACCEL_MODE_MASK | ICM42607_ACCEL_LP_CLK_SEL;
 		if (enable) {
 			delay = ICM42607_ACCEL_START_TIME;
 			stop_delay = ICM42607_ACCEL_STOP_TIME;
-			val = ICM42607_ACCEL_MODE(ICM42607_MODE_LOW_POWER);
+			val = ICM42607_ACCEL_MODE(ICM42607_MODE_LOW_POWER) |
+			      ICM42607_ACCEL_LP_CLK_SEL;
 		} else {
 			delay = ICM42607_ACCEL_STOP_TIME;
 			val = ICM42607_ACCEL_MODE(ICM42607_MODE_OFF);
@@ -967,160 +968,40 @@ static int icm42607_read_temp(const struct motion_sensor_t *s, int *temp_ptr)
 	return EC_SUCCESS;
 }
 
-static int icm42607_init_config(const struct motion_sensor_t *s)
+static int icm42607_init_config(const struct motion_sensor_t *s,
+				const int who_am_i)
 {
-	int mask, val, ret;
+	int mask, val, ret, i;
 
-	ret = icm_switch_on_mclk(s);
+	ret = icm_write8(s, ICM42607_REG_SIGNAL_PATH_RESET,
+			 ICM42607_SOFT_RESET_DEV_CONFIG);
 	if (ret)
 		return ret;
 
-	/* Set otp_copy_mode register field */
-	ret = icm_field_update_mclk_reg(s, ICM42607_MREG_OTP_CONFIG,
-					ICM42607_OTP_COPY_MODE_MASK,
-					ICM42607_OTP_COPY_TRIM);
-	if (ret)
-		return ret;
+	/* Check reset is done, 1ms max */
+	for (i = 0; i < 5; ++i) {
+		usleep(200);
+		ret = icm_read8(s, ICM42607_REG_INT_STATUS, &val);
+		if (ret)
+			return ret;
+		if (val == ICM42607_RESET_DONE_INT)
+			break;
+	}
+	if (val != ICM42607_RESET_DONE_INT) {
+		return EC_ERROR_HW_INTERNAL;
+	}
 
-	/* Set otp_power_down register field to 0 */
-	ret = icm_field_update_mclk_reg(s, ICM42607_MREG_OTP_CTRL7,
-					ICM42607_OTP_PWR_DOWN, 0);
-	if (ret)
-		return ret;
-
-	/* Wait for 300us for the OTP to fully power up */
-	usleep(300);
-
-	/* Set otp_reload register field */
-	ret = icm_field_update_mclk_reg(s, ICM42607_MREG_OTP_CTRL7,
-					ICM42607_OTP_RELOAD,
-					ICM42607_OTP_RELOAD);
-	if (ret)
-		return ret;
-
-	/* Wait for 280 us for the OTP to load */
-	usleep(280);
-
-	/* Write POR value for all registers not loaded with OTP */
-	ret = icm_write8(s, ICM42607_REG_GYRO_CONFIG0, 0x06);
-	if (ret)
-		return ret;
-
-	ret = icm_write8(s, ICM42607_REG_ACCEL_CONFIG0, 0x06);
-	if (ret)
-		return ret;
-
-	ret = icm_write8(s, ICM42607_REG_APEX_CONFIG0, 0x08);
-	if (ret)
-		return ret;
-
-	ret = icm_write8(s, ICM42607_REG_APEX_CONFIG1, 0x02);
-	if (ret)
-		return ret;
-
-	ret = icm_write8(s, ICM42607_REG_FIFO_CONFIG1, 0x01);
-	if (ret)
-		return ret;
-
-	ret = icm_write8(s, ICM42607_REG_FIFO_CONFIG2, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write8(s, ICM42607_REG_FIFO_CONFIG3, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_FIFO_CONFIG5, 0x20);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_INT_SOURCE7, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_INT_SOURCE8, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_INT_SOURCE9, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_INT_SOURCE10, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_APEX_CONFIG2, 0xA2);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_APEX_CONFIG3, 0x85);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_APEX_CONFIG4, 0x51);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_APEX_CONFIG5, 0x80);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_APEX_CONFIG9, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_APEX_CONFIG10, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_APEX_CONFIG11, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER0, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER1, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER2, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER3, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER4, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER5, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER6, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER7, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_OFFSET_USER8, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_write_mclk_reg(s, ICM42607_MREG_APEX_CONFIG12, 0x00);
-	if (ret)
-		return ret;
-
-	ret = icm_switch_off_mclk(s);
-	if (ret)
-		return ret;
+#ifdef CONFIG_ACCELGYRO_ICM_COMM_SPI
+	/* Device operation in shared spi bus configuration */
+	if (who_am_i == ICM42607_CHIP_ICM42607P) {
+		mask = 0x03;
+		val = 0x03;
+		ret = icm_field_update8(s, ICM42607_REG_INTF_CONFIG0, mask,
+					val);
+		if (ret)
+			return ret;
+	}
+#endif
 
 	/* disable i3c support */
 	mask = ICM42607_I3C_SDR_EN | ICM42607_I3C_DDR_EN;
@@ -1150,31 +1031,27 @@ static int icm42607_init_config(const struct motion_sensor_t *s)
 static int icm42607_init(struct motion_sensor_t *s)
 {
 	struct accelgyro_saved_data_t *saved_data = ICM_GET_SAVED_DATA(s);
-	int val;
+	int who_am_i;
 	int ret, i;
 
 	mutex_lock(s->mutex);
 
 	/* detect chip using whoami */
-	ret = icm_read8(s, ICM42607_REG_WHO_AM_I, &val);
+	ret = icm_read8(s, ICM42607_REG_WHO_AM_I, &who_am_i);
 	if (ret)
 		goto out_unlock;
 
-	if (val != ICM42607_CHIP_ICM42607P) {
-		CPRINTS("Unknown WHO_AM_I: 0x%02x", val);
+	if (who_am_i != ICM42607_CHIP_ICM42607P &&
+	    who_am_i != ICM42607_CHIP_ICM42608P) {
+		CPRINTS("Unknown WHO_AM_I: 0x%02x", who_am_i);
 		ret = EC_ERROR_ACCESS_DENIED;
 		goto out_unlock;
 	}
 
 	/* first time init done only for 1st sensor (accel) */
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
-		/* clear status register */
-		ret = icm_read8(s, ICM42607_REG_INT_STATUS, &val);
-		if (ret)
-			goto out_unlock;
-
 		/* configure sensor */
-		ret = icm42607_init_config(s);
+		ret = icm42607_init_config(s, who_am_i);
 		if (ret)
 			goto out_unlock;
 
