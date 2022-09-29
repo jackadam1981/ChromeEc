@@ -50,13 +50,6 @@ static int console_channel_name_to_index(const char *name)
 	return -1;
 }
 
-void console_channel_enable(const char *name)
-{
-	int index = console_channel_name_to_index(name);
-
-	if (index >= 0 && index != CC_COMMAND)
-		channel_mask |= CC_MASK(index);
-}
 void console_channel_disable(const char *name)
 {
 	int index = console_channel_name_to_index(name);
