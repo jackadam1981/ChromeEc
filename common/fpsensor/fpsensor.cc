@@ -7,6 +7,8 @@
 #include <optional>
 #include <vector>
 
+#include "example.h"
+
 /* Boringssl headers need to be included before extern "C" section. */
 #include "openssl/mem.h"
 
@@ -265,6 +267,8 @@ extern "C" void fp_task(void)
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(fpsensor_detect_get_type()));
+
+	CPRINTS("EXAMPLE: %d", example_func(5));
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	/* Reset and initialize the sensor IC */
