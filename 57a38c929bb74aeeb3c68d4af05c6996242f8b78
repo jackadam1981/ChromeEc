@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2c1bf9_61c4ed0d",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-29T19:49:39Z",
+      "side": 1,
+      "message": "Ack.\n\nI guess we can blame the original one for not being named better.",
+      "parentUuid": "a3676116_2046e317",
+      "range": {
+        "startLine": 19,
+        "startChar": 34,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "57a38c929bb74aeeb3c68d4af05c6996242f8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "311636ca_43c58a85",
