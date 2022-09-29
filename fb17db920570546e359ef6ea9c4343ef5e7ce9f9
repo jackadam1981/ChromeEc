@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2829bfc5_d7e6da9b",
+        "filename": "common/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-29T17:27:17Z",
+      "side": 1,
+      "message": "Do we ever hit this condition? A jump tag is supposed to be stored only if  it won\u0027t exceed JUMP_DATA_MIN_ADDRESS. Or are you trying to deal with the change between RO and RW?",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 51
+      },
+      "revId": "fb17db920570546e359ef6ea9c4343ef5e7ce9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c48a8e_f3310329",
+        "filename": "common/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-29T17:27:17Z",
+      "side": 1,
+      "message": "Clear all tags or keep as many as allowed?",
+      "range": {
+        "startLine": 269,
+        "startChar": 36,
+        "endLine": 269,
+        "endChar": 41
+      },
+      "revId": "fb17db920570546e359ef6ea9c4343ef5e7ce9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eda3d8ce_7082cdee",
         "filename": "common/system.c",
         "patchSetId": 4
@@ -20,6 +66,29 @@
         "startChar": 53,
         "endLine": 70,
         "endChar": 60
+      },
+      "revId": "fb17db920570546e359ef6ea9c4343ef5e7ce9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3dd249_11244646",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6911,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-29T17:27:17Z",
+      "side": 1,
+      "message": "nit: It would be nice if the name indicates \u0027persistency\u0027 in some way. I think the primary characteristics of this region is it won\u0027t be cleared or initialized after sysjump (\u003d persistent).",
+      "range": {
+        "startLine": 6911,
+        "startChar": 8,
+        "endLine": 6911,
+        "endChar": 35
       },
       "revId": "fb17db920570546e359ef6ea9c4343ef5e7ce9f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
