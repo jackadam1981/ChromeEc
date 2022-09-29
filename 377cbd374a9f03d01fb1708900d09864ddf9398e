@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7365888_096d508c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T14:46:43Z",
+      "side": 1,
+      "message": "If you need examples of unit testing for these CLs, we have zephyr/test/drivers/default/src/integration/usbc/usb_pd_bist_shared.c for the shared mode in general and we have zephyr/test/drivers/host_cmd/src/ with examples of host command testing. \n\nYou could probably put the host command into the general BIST test",
+      "revId": "377cbd374a9f03d01fb1708900d09864ddf9398e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9228d7c_c70a1d2a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T14:46:43Z",
+      "side": 1,
+      "message": "Elsewhere, we gate turning this variable to true on CONFIG_USB_PD_3A_PORTS !\u003d 0 (i.e. board disabled the DPM\u0027s shared power logic).  Should we also use that to gate enablement here?",
+      "revId": "377cbd374a9f03d01fb1708900d09864ddf9398e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21c2c589_40cf373f",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T14:46:43Z",
+      "side": 1,
+      "message": "nit: this could be a sub-command of the general TYPEC_CONTROL command",
+      "revId": "377cbd374a9f03d01fb1708900d09864ddf9398e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
