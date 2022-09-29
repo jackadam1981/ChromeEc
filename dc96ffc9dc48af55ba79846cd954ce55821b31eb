@@ -22,6 +22,30 @@
       },
       "revId": "dc96ffc9dc48af55ba79846cd954ce55821b31eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2052955e_864cc9a2",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2022-09-29T21:25:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "aad8df49_dca5bd80",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "dc96ffc9dc48af55ba79846cd954ce55821b31eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
