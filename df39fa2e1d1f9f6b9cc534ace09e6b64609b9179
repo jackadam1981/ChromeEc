@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e033fbd4_d03a2a18",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-29T03:11:01Z",
+      "side": 1,
+      "message": "i can see what you mean. there\u0027s a lot of dicussion\nbetween intel \u0026 compal...\nhttps://b.corp.google.com/issues/233975818#comment129\nsummarizes the situation without getting into\n\"can\u0027t we just shut down the BB\".",
+      "parentUuid": "c1e8be5e_711f0083",
+      "revId": "df39fa2e1d1f9f6b9cc534ace09e6b64609b9179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b61ba515_04c88c39",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
