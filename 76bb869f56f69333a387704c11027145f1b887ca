@@ -86,6 +86,24 @@
       "parentUuid": "1558db4c_5e124c20",
       "revId": "76bb869f56f69333a387704c11027145f1b887ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d3dabf_8835fbc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-29T23:05:42Z",
+      "side": 1,
+      "message": "Ok, great. If you compile and link `bloonchipper` this way and include the CLs in this stack that call `CRYPTO_ctr128_encrypt`, does it compile? If it does, what does it show for \"bytes in flash\" for RO and RW?\n\nExample:\n\n```\n  *** 77280 bytes in flash and 241760 bytes in RAM still available on bloonchipper RO ****\n  CHECK_ALLOWED build/bloonchipper/.config\n  *** 470656 bytes in flash and 180800 bytes in RAM still available on bloonchipper RW ****\n```",
+      "parentUuid": "837b0cec_2d9b8482",
+      "revId": "76bb869f56f69333a387704c11027145f1b887ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
