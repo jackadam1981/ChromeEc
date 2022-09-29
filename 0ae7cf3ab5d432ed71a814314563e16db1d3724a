@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6a610e_8cbbead4",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-29T22:40:19Z",
+      "side": 1,
+      "message": "You\u0027re right, this type picked was rather arbitrary. But there\u0027s no reason for it to be uint64_t so I\u0027ll change it.",
+      "parentUuid": "87d85ebb_908372f0",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "0ae7cf3ab5d432ed71a814314563e16db1d3724a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "563a26d6_2959b73d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-29T16:57:44Z",
       "side": 1,
       "message": "Should this test be guarded with the same checks that are in hc_remote_flash()?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 79
+      },
+      "revId": "0ae7cf3ab5d432ed71a814314563e16db1d3724a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f8a047_a4788786",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-29T22:40:19Z",
+      "side": 1,
+      "message": "Right, there are a lot of tests that need to be separated out based on configs that I was going to burn-down in December. But no reason I should add to the work.",
+      "parentUuid": "563a26d6_2959b73d",
       "range": {
         "startLine": 156,
         "startChar": 0,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4566240_3b58ac72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-29T22:40:19Z",
+      "side": 1,
+      "message": "When necessary, we\u0027ve been separating tests based on CONFIG. However, when doing so, we try to approach this by having the test be its own source file that gets conditionally included based on `target_sources_ifdef(CONFIGS...)`\n\nWhat\u0027s generally changed from the original CL:\n\n* Now using uint32 instead of uint65\n* Split the FW update tests off as their own src file\n* Only include them based on CONFIGS\n* Add a utility function for setting battery present (this could be its own small CL).",
+      "revId": "45d76c50d926915f20d96968773488e4f9bd2552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
