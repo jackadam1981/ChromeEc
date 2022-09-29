@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e8e5d3_279fe811",
+        "filename": "zephyr/projects/skyrim/led_pins_frostflow.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T15:48:47Z",
+      "side": 0,
+      "message": "There\u0027s already a frostflow CL up here which will cover this: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3928563",
+      "revId": "9d15d2f9d85634c8b4ad023352b4615ef53caa85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
