@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1845b883_bcf3d0e5",
+        "filename": "zephyr/projects/skyrim/motionsense_winterhold.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T19:56:11Z",
+      "side": 1,
+      "message": "Can this be its own CL?  I think the compile may fail if this isn\u0027t present for config_chip.h to reference during build time",
+      "parentUuid": "9d6a1315_c4d96699",
+      "revId": "06d78d76721b276e233a535bbfc9c3982fff5f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09830645_238a1151",
         "filename": "zephyr/projects/skyrim/motionsense_winterhold.dts",
         "patchSetId": 2
