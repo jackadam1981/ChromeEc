@@ -94,6 +94,30 @@
       },
       "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf48a6b0_8809fa26",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-29T20:04:45Z",
+      "side": 1,
+      "message": "Or you can add a callback in thermal_command_get_threshold:\n\n    if (board_get_fan_custom(p-\u003esensor_num))\n        return EC_RES_UNAVAILABLE;\n\nThen, get_thermal_fan_percent can return rv (instead of -1):\n\n    if (rv \u003c\u003d 0)\n        return -1;\n\nand cmd_temperature_print should check:\n\n    if (rv \u003d\u003d -EECRESULT - EC_RES_UNAVAILABLE)\n        printf(\"n/a\");\n\nI think it should work but please try.\n\n--- \u003e8 ---\n\nWhat would be a much better solution is to add a new command, which returns an actual fan speed in % or in RPM. For custom fans, board_get_fan_speed(int fan) should return RPM or %. Then, we get rid of EC_CMD_THERMAL_GET_THRESHOLD from get_thermal_fan_percent, which is currently duplicating the computation done by the EC (\u003d\u003d thermal_fan_percent).",
+      "parentUuid": "5dd830e9_8bc72a5a",
+      "range": {
+        "startLine": 3278,
+        "startChar": 0,
+        "endLine": 3280,
+        "endChar": 42
+      },
+      "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
