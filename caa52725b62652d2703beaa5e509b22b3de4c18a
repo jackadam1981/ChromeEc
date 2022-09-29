@@ -34,6 +34,24 @@
       "parentUuid": "cc8e6095_f79da847",
       "revId": "caa52725b62652d2703beaa5e509b22b3de4c18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e3a988_1c984c79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-29T23:50:40Z",
+      "side": 1,
+      "message": "Yes, running `shellcheck` as described should work (it should be automatically run when you do `repo upload --verify`). If it\u0027s not complaining it\u0027s fine.",
+      "parentUuid": "75d6aaf6_12de1535",
+      "revId": "caa52725b62652d2703beaa5e509b22b3de4c18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
