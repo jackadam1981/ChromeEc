@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557b6acb_4ad0b3c4",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T15:55:49Z",
+      "side": 1,
+      "message": "nit: this could also include the details from config.h about what a board is required to implement in order to use this CONFIG",
+      "revId": "69afc881d05cbbed42087b24087d3e0a37b4fd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa81df2d_dc2e5e95",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T15:55:49Z",
+      "side": 1,
+      "message": "Looks like KEYBOARD ended up in here twice",
+      "range": {
+        "startLine": 707,
+        "startChar": 8,
+        "endLine": 707,
+        "endChar": 46
+      },
+      "revId": "69afc881d05cbbed42087b24087d3e0a37b4fd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
