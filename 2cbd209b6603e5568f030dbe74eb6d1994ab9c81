@@ -46,6 +46,30 @@
       },
       "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b7a0c1_8cd32181",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-29T16:45:45Z",
+      "side": 1,
+      "message": "If you use CONFIG_ in ectool, you may need to update ectool when a new EC FW is installed. We want to avoid this dependency. In general, we want to make ectool as compatible as possible with ec.bin and vice versa. That\u0027s why there is no CONFIG_ in ectool.c.\n\n\u003e make build command which builds ectool specific to board\n\nHave you tried build_packages or emerge-\u003cboard\u003e? ectool is built by emerge-\u003cboard\u003e, which sets BOARD\u003dhost. For example, make is run as:\n\n    make utils-host CC\u003dx86_64-cros-linux-gnu-clang",
+      "parentUuid": "b7c0999c_98a42503",
+      "range": {
+        "startLine": 3278,
+        "startChar": 0,
+        "endLine": 3280,
+        "endChar": 42
+      },
+      "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
