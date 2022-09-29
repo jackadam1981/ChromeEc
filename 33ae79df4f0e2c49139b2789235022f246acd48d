@@ -16,6 +16,24 @@
       "message": "This should be testable using `pd_set_dual_role()` in a unit test to set FORCE_SOURCE.\n\nIf you haven\u0027t seen the zephyr unit tests yet, we have a few type-c ones you can follow.  There are some in zephyr/test/drivers (usually the ones that require their own build parameters for some reason, for example if they need a unique CONFIG) and another set in zephyr/test/drivers/default/src/integration/usbc/",
       "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac5ff13_e618b7f0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2022-09-29T14:15:13Z",
+      "side": 1,
+      "message": "Thank you Diana. What about tests under ec/tests/ folder? Infact, i tried build by make -j tests to see the error. But did not see any. Need to add unit tests only with respect to zephyr? How do we build to test it? Is there any link to refer ?",
+      "parentUuid": "0f832daa_9dbca410",
+      "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
