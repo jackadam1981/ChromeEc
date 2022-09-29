@@ -22,6 +22,30 @@
       },
       "revId": "e343cef5e465d3b93bb7fe1ff90f5f3816ecfe6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999e837e_1929eabb",
+        "filename": "test/always_memset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-09-29T05:35:42Z",
+      "side": 1,
+      "message": "Wow, I have no clue how I convinced myself that the `CC\u003dclang make run-always_memset V\u003d1` TEST line I mentioned was compiling with clang. But, yes, this initialization works with clang and the updated TEST\u003d hack.",
+      "parentUuid": "576d984b_a5b9fcb7",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "e343cef5e465d3b93bb7fe1ff90f5f3816ecfe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
