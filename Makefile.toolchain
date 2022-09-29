@@ -266,6 +266,8 @@ else
 LDFLAGS+=-nostdlib -lc_nano -lc++
 LDFLAGS+=-lnosys
 endif
+CFLAGS+=-I$(HOME)/chromiumos/src/platform/ec/example
+LDFLAGS+=-L$(HOME)/chromiumos/src/platform/ec/example/build -lexample
 LDFLAGS+=-L$(HOME)/chromiumos/src/third_party/tmp/lib -lgtest
 MEMSIZE_FLAGS=
 ifeq ($(cc-name),gcc)
