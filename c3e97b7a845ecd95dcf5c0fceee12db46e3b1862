@@ -16,6 +16,40 @@
       "message": "Change the shift from 4 to 5",
       "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51916fa_af9a6a4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T17:52:55Z",
+      "side": 1,
+      "message": "It might be a good idea to run your CLs through CQ+1 at this point if you have permission to do so.  That\u0027ll run the code coverage checking on the changes, and if unit tests are needed it gives you an idea of what parts of the code are already exercised near your test. \n\nIf you don\u0027t have permission for CQ+1, we have instructions here for how to generate a coverage report: platform/ec/docs/code_coverage.md\n\nThe general expectation has been that 80% of new code lines added should be tested, with exceptions for areas where there aren\u0027t existing tests to follow (ex. board C-files, driver files that currently have 0% coverage)",
+      "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83502b33_d1f3c9f2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T17:52:55Z",
+      "side": 1,
+      "message": "Comment block/SHIFT mismatch",
+      "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
