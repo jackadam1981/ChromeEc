@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7d2dea2_34450dd0",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-29T23:17:14Z",
+      "side": 1,
+      "message": "Diana: I see everything Scott just pointed out, but it doesn\u0027t make sense to me that you _must_ be a USB device to be an alt mode adapter. Is that true?\n\nI have a vague memory of having this conversation before, and it was something like, you need to support a Billboard device just so you can tell the other side that you can\u0027t do anything else.\n\nScott: I\u0027ll note that supporting TBT as a UFP is an off-by-default testing feature here, so I\u0027m fairly OK with just giving the tester what it wants. However, unless something changed in the past year or so, our AP software is not actually going to act like a USB device as UFP.",
+      "parentUuid": "85387923_540b7d13",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65dcd78a_cc9a043f",
         "filename": "baseboard/brya/usb_pd_policy.c",
         "patchSetId": 15
