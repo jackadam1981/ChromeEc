@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7d69c21_979b7ff3",
+        "filename": "zephyr/projects/skyrim/motionsense_winterhold.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-09-29T20:27:41Z",
+      "side": 1,
+      "message": "I was thinking it could be split into it\u0027s own CL before the `CONFIG` CL, so it\u0027s here in the `.dts` but not used until the `CONFIG` CL lands after it. Then, if there\u0027s issues, whoever is debugging it just needs to enable the `CONFIG` values locally.",
+      "parentUuid": "1845b883_bcf3d0e5",
+      "revId": "06d78d76721b276e233a535bbfc9c3982fff5f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09830645_238a1151",
         "filename": "zephyr/projects/skyrim/motionsense_winterhold.dts",
         "patchSetId": 2
