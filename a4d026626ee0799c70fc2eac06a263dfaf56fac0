@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5b00db_3bbbbc00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T14:40:21Z",
+      "side": 1,
+      "message": "BIST shouldn\u0027t be necessary for honeybuns because it turns off any shared power distribution logic with `#define CONFIG_USB_PD_3A_PORTS 0`.  So its power allocation is just static.",
+      "revId": "a4d026626ee0799c70fc2eac06a263dfaf56fac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
