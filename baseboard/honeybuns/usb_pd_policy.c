@@ -18,6 +18,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_dp_ufp.h"
+#include "usb_pd_dpm.h"
 #include "usb_tc_sm.h"
 #include "usbc_ppc.h"
 
@@ -350,7 +351,7 @@ __override int typec_get_default_current_limit_rp(int port)
 {
 	int rp = TYPEC_RP_USB;
 
-	if (port == USB_PD_PORT_HOST)
+	if (port == USB_PD_PORT_HOST || pd_get_bist_share_mode())
 		rp = TYPEC_RP_3A0;
 	else if (port == USB_PD_PORT_DP)
 		rp = TYPEC_RP_1A5;
