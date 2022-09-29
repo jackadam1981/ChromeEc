@@ -10,7 +10,9 @@
 /** A stub main to call the real ec app main function. LCOV_EXCL_START */
 void main(void)
 {
-	ec_app_main();
+	//ec_app_main();
+
+	k_sleep(K_FOREVER);
 
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
 		host_command_main();

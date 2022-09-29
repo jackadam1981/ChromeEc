@@ -8,4 +8,6 @@ if(NOT DEFINED CONFIG_ZTEST)
     zephyr_library_sources(main_shim.c)
 endif()
 
+zephyr_library_sources_ifdef(CONFIG_SOC_IT8XXX2 itebench.c itebench.S)
+
 add_subdirectory(chip)
