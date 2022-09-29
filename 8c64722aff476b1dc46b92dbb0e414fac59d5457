@@ -16,6 +16,24 @@
       "message": "Nit: We haven\u0027t done a good job of maintaining this through refactors, but conventionally, the include guard macro would reflect the entire path to this file relative to the base of the project. Something like `ZEPHYR_TEST_DRIVERS_COMMON_INCLUDE_TEST_DRIVERS_TEST_MOCKS_H_`. I think it\u0027s a bit silly that we have `zephyr/test/drivers/common/include/test/drivers/`, so do what seems best to you.",
       "revId": "8c64722aff476b1dc46b92dbb0e414fac59d5457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5e4e41_a6b87aca",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/test_mocks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-29T23:10:43Z",
+      "side": 1,
+      "message": "Ignoring for now as I intend on completely removing this file in December anyway after a good bit of refactoring of our fakes.",
+      "parentUuid": "478a9630_b8644ccc",
+      "revId": "8c64722aff476b1dc46b92dbb0e414fac59d5457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
