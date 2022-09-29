@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ce35a0_28abe0ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-29T08:32:38Z",
+      "side": 1,
+      "message": "I split the Kconfig, ec_commands and board enable function to different CLs\nWill abandon this one\n\nFor gesture host detection Kconfig:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3928570/1\n\nFor ec_commands:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3928571/1\n\nFor board enable:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3928572/1",
+      "revId": "b24e297558a68dfa410d2dcedafbfb1995417b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4118bbd_15c875da",
