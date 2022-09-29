@@ -16,6 +16,24 @@
       "message": "add PLATFORM_EC_HOSTCMD_I2C_CONTROL\n(sorry, i had a typo in the bug comment)",
       "revId": "04446684ceac77e61b9017bb442c57b6db5b9b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b7623c_6cc219e3",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-09-29T12:28:23Z",
+      "side": 1,
+      "message": "\u003e add PLATFORM_EC_HOSTCMD_I2C_CONTROL\n\u003e (sorry, i had a typo in the bug comment)\n\nI assume we anyway need to enable `CONFIG_PLATFORM_EC_CONSOLE_CMD_I2C_SPEED` kconfig to able to control the i2c speed using EC console. I could see the Nissa (other Zephyr project) device has this kconfig enabled.\n\nAdditionally, `PLATFORM_EC_HOSTCMD_I2C_CONTROL` seems only enabled for `herobrine` device and Nissa is not even enabled this kconfig. What do you suggest in this case? @caveh@chromium.org/@scott?\n\ngrep -rsn \"PLATFORM_EC_HOSTCMD_I2C_CONTROL\" .\n./zephyr/shim/include/config_chip.h:235:#ifdef CONFIG_PLATFORM_EC_HOSTCMD_I2C_CONTROL\n./zephyr/projects/herobrine/prj.conf:21:CONFIG_PLATFORM_EC_HOSTCMD_I2C_CONTROL\u003dy\n./zephyr/Kconfig.i2c:56:config PLATFORM_EC_HOSTCMD_I2C_CONTROL\n./zephyr/Kconfig.tcpm:126:  imply PLATFORM_EC_HOSTCMD_I2C_CONTROL",
+      "parentUuid": "e64e8877_af8cf672",
+      "revId": "04446684ceac77e61b9017bb442c57b6db5b9b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
