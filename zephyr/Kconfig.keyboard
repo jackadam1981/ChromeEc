@@ -82,6 +82,12 @@ config PLATFORM_EC_KEYBOARD_VIVALDI
 	  - A response to EC_CMD_GET_KEYBD_CONFIG command.
 	  - Boards can specify their custom layout for top keys.
 
+config PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+	bool "Support keyboard customization"
+	help
+		Enable support for customization keyboard, some boards need to custom matrix
+		because those board keyboard layout doesn't follow a common matrix.
+
 choice PLATFORM_EC_KEYBOARD_PWRBTN_MODE
 	prompt "Select the impact of pressing the power button"
 	help
