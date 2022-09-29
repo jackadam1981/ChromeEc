@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75378fe0_5b563053",
+        "filename": "chip/mt_scp/mt818x/ipi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-29T09:25:51Z",
+      "side": 1,
+      "message": "Would you mind using the version that Allen proposed? That simplifies the logic of handling the codec capabilities.",
+      "parentUuid": "917c3e64_94a30eba",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd468b51_239fd6c0",
         "filename": "chip/mt_scp/mt818x/video.c",
         "patchSetId": 13
@@ -299,6 +323,30 @@
       "side": 1,
       "message": "thanks for you suggestion.\nIt\u0027s really better to change the filename like video_cap.h/c, but many files will be changed in the public/private folder.",
       "parentUuid": "cd468b51_239fd6c0",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf24c66d_676ddb6b",
+        "filename": "chip/mt_scp/mt818x/video.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526113
+      },
+      "writtenOn": "2022-09-29T09:25:51Z",
+      "side": 1,
+      "message": "I see.",
+      "parentUuid": "b627b7f4_5ae16824",
       "range": {
         "startLine": 7,
         "startChar": 10,
