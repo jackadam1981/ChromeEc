@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f69491c8_80349d9b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-09-29T01:59:43Z",
+      "side": 1,
+      "message": "right, we don\u0027t want to do anything unless we know USB3\npath is expected to be on. \ni think i got all the paths that update the BB.",
+      "parentUuid": "b61ba515_04c88c39",
+      "revId": "df39fa2e1d1f9f6b9cc534ace09e6b64609b9179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bacb4fb_a1ecca09",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
