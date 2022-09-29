@@ -93,6 +93,30 @@
       },
       "revId": "0ae7cf3ab5d432ed71a814314563e16db1d3724a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b48611_daf483fe",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-29T23:07:28Z",
+      "side": 1,
+      "message": "So I did the work to optionally include a source file containing these tests based on CONFIGs and only then found out that these CONFIGs are always enabled for zephyr builds. So, there isn\u0027t really anything to CONFIG against right now.",
+      "parentUuid": "53f8a047_a4788786",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 79
+      },
+      "revId": "0ae7cf3ab5d432ed71a814314563e16db1d3724a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
