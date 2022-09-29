@@ -33,6 +33,24 @@
       "message": "I\u0027m a bit concerned about the long-term maintainability of copying bits from OpenSSL. I know that\u0027s historically how things have been done in EC, but crypto code is something we need to be very careful with. We aren\u0027t monitoring boringssl for vulnerabilities and updating these files and we\u0027re not running any of the boringssl tests.\n\nNow that we have full C++ armv7m toolchain for EC (see http://b/234181908 and https://crrev.com/c/3893045), we should be able to build boringssl (or subsets) directly from source, [similar to Android](https://boringssl.googlesource.com/boringssl/+/HEAD/BUILDING.md#building-for-android). Although the library may be quite large, LTO should optimize out the parts that we don\u0027t use.\n\nCan you try locally building `boringssl` with the `armv7m-cros-eabi-clang` toolchain (using `CMake` like how the instructions tell you to [build on Android](https://boringssl.googlesource.com/boringssl/+/HEAD/BUILDING.md#building-for-android)? (We\u0027ll need to create our own [`toolchain.cmake`](https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html) file, which I can help with.)",
       "revId": "76bb869f56f69333a387704c11027145f1b887ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1558db4c_5e124c20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-29T19:05:57Z",
+      "side": 1,
+      "message": "Here is an example of building a library with cmake and linking it in EC:\n\n* https://crrev.com/c/3929249\n* https://crrev.com/c/3929250\n\nYou can just cherry-pick those CLs (you don\u0027t need the whole stack).",
+      "parentUuid": "28f6d821_12b79f16",
+      "revId": "76bb869f56f69333a387704c11027145f1b887ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
