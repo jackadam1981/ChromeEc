@@ -8,6 +8,8 @@
 #include <optional>
 #include <vector>
 
+#include "example.h"
+
 extern "C" {
 #include "atomic.h"
 #include "clock.h"
@@ -270,6 +272,8 @@ extern "C" void fp_task(void)
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(get_fp_sensor_type()));
+
+	CPRINTS("EXAMPLE: %d", example_func(5));
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	/* Reset and initialize the sensor IC */
