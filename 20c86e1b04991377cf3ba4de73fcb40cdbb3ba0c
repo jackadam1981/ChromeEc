@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccc2e2d_41df618d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-09-29T08:29:14Z",
+      "side": 1,
+      "message": "I split the common function and board enable to different CL.\nWill abandon this one\n\nFor common configuration:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3928568/1\n\nFor board enable:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3928572/1",
+      "revId": "20c86e1b04991377cf3ba4de73fcb40cdbb3ba0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da95c83c_3ecd3289",
