@@ -34,6 +34,24 @@
       "parentUuid": "0f832daa_9dbca410",
       "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e7dc83_cdcc1055",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-29T16:08:46Z",
+      "side": 1,
+      "message": "Short answer: `platform/ec $ ./twister -T zephyr/test`.\n\nYou can see more details about running twister at https://docs.zephyrproject.org/3.1.0/develop/test/twister.html. `platform/ec` has a symlink to the tool, but the configuration stuff is basically the same. You definitely don\u0027t need to read that whole document. `-T` says to run all the tests in a directory. `-s` says to run a particular test build with syntax described by `--help`. `twister` takes few seconds to do anything when you start it. It\u0027s not dead. 😊\n\nThe existing tests are under `platform/ec/zephyr/test`.",
+      "parentUuid": "eac5ff13_e618b7f0",
+      "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
