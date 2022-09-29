@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87c7cb99_b82e965c",
+        "filename": "board/kukui_scp/ec.tasklist",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "Because MT8186 use lat arch (more complicated than MT8183), and use more stack size.",
+      "parentUuid": "bbf5bebf_09cacc16",
+      "range": {
+        "startLine": 21,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "531788c7_dcff9590",
@@ -119,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ac90ed_80925a37",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "already defined in line 53",
+      "parentUuid": "531788c7_dcff9590",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab993fe1_e4a632d2",
@@ -166,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "917c3e64_94a30eba",
+        "filename": "chip/mt_scp/mt818x/ipi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "Because mt8186 platform use new arch, and using video.c/h file to define capability. But mt8183 platform donot define such definitions.\nThus, we use define to separate mt8186 and mt8183",
+      "parentUuid": "ab993fe1_e4a632d2",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd468b51_239fd6c0",
@@ -202,6 +274,30 @@
       "writtenOn": "2022-09-27T11:42:58Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "cd468b51_239fd6c0",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b627b7f4_5ae16824",
+        "filename": "chip/mt_scp/mt818x/video.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "thanks for you suggestion.\nIt\u0027s really better to change the filename like video_cap.h/c, but many files will be changed in the public/private folder.",
       "parentUuid": "cd468b51_239fd6c0",
       "range": {
         "startLine": 7,

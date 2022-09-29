@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f58770e_5212c012",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7a6201_901b09f0",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "610668e8_d7b46918",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3db560c4_75f6a4b6",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa170582_65bcbbb9",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b2ea682_fa2cbbd6",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Only 8183 won\u0027t use below code, not only 8186, all future platforms will use below driver.",
       "parentUuid": "4b2ea682_fa2cbbd6",
+      "range": {
+        "startLine": 87,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8943d165_c673e364",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3c932c0_005acacb",
       "range": {
         "startLine": 87,
         "startChar": 7,
@@ -203,6 +275,30 @@
       "side": 1,
       "message": "Please do so. thx",
       "parentUuid": "982ec2d9_f97eb55d",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 23
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0829333_3ef73a88",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aed5f24f_b6e38a01",
       "range": {
         "startLine": 111,
         "startChar": 2,
@@ -308,6 +404,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4db055_ca1484c3",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "OKOK already add some comments",
+      "parentUuid": "fe1d5a60_74107aad",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46ab33bf_4f691a7a",
@@ -345,6 +465,30 @@
       "side": 1,
       "message": "Only 8183 won\u0027t use below code, not only 8186, all future platforms will use below driver.",
       "parentUuid": "46ab33bf_4f691a7a",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 27
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a692332d_b987ec27",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "178a0e95_511a0bbf",
       "range": {
         "startLine": 125,
         "startChar": 8,
@@ -416,6 +560,30 @@
       "side": 1,
       "message": "Please do so. thx",
       "parentUuid": "2fdb4456_a285a0b3",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "120aa94f0a9c4c8c1642f55dbd9c692270747eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9214d079_b8bf00af",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-29T08:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605e0cdb_6bd1a997",
       "range": {
         "startLine": 161,
         "startChar": 2,
