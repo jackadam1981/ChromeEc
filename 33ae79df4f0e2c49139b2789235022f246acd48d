@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f832daa_9dbca410",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T13:59:07Z",
+      "side": 1,
+      "message": "This should be testable using `pd_set_dual_role()` in a unit test to set FORCE_SOURCE.\n\nIf you haven\u0027t seen the zephyr unit tests yet, we have a few type-c ones you can follow.  There are some in zephyr/test/drivers (usually the ones that require their own build parameters for some reason, for example if they need a unique CONFIG) and another set in zephyr/test/drivers/default/src/integration/usbc/",
+      "revId": "33ae79df4f0e2c49139b2789235022f246acd48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
