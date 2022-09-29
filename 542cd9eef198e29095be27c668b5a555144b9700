@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "47183404_33b8df90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-29T19:53:12Z",
+      "side": 1,
+      "message": "There are ways to delete nodes that might be applicable depending on what the long-term plan is.  Based on b/236668095, I\u0027m assuming that some accels will change later on. \n\nAdding Keith for input since he\u0027s been working on standardizing our zephyr board variants",
+      "parentUuid": "8b4b8663_026c4d7a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "542cd9eef198e29095be27c668b5a555144b9700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fc47fcc3_1dbdd766",
