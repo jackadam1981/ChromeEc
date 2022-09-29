@@ -46,6 +46,30 @@
       },
       "revId": "e343cef5e465d3b93bb7fe1ff90f5f3816ecfe6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1d6320_faeb4921",
+        "filename": "test/always_memset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-29T17:46:28Z",
+      "side": 1,
+      "message": "Hmm, I think `CC\u003dclang` *should* have worked, so that\u0027s probably a bug (I wasn\u0027t reading the commit message closely.)",
+      "parentUuid": "999e837e_1929eabb",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "e343cef5e465d3b93bb7fe1ff90f5f3816ecfe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
