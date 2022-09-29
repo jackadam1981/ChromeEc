@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77b6ddb_773ead01",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-29T03:00:39Z",
+      "side": 1,
+      "message": "can all of these configs be undef for ISH_LITE?\n\nmay be we can create baseboard/intel_ish and avoid this conflict?",
+      "revId": "3ce2b85a6c8f323a3acd4633194504ee98a22654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7dffb7_61b0af0d",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-09-29T03:00:39Z",
+      "side": 1,
+      "message": "nit:\ncan these be added in elsif for items in line 48?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "3ce2b85a6c8f323a3acd4633194504ee98a22654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
