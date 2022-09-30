@@ -13,9 +13,8 @@
 
 #include <stdbool.h>
 
-#if !defined(CONFIG_AES) || !defined(CONFIG_AES_CTR) || \
-	!defined(CONFIG_AES_GCM) || !defined(CONFIG_ROLLBACK_SECRET_SIZE)
-#error "fpsensor requires AES, AES_CTR, AES_GCM and ROLLBACK_SECRET_SIZE"
+#if !defined(CONFIG_BORINGSSL_CRYPTO) || !defined(CONFIG_ROLLBACK_SECRET_SIZE)
+#error "fpsensor requires CONFIG_BORINGSSL_CRYPTO and ROLLBACK_SECRET_SIZE"
 #endif
 
 test_export_static int get_ikm(uint8_t *ikm)
@@ -243,7 +242,9 @@ int aes_gcm_encrypt(const uint8_t *key, int key_size, const uint8_t *plaintext,
 		CPRINTS("Failed to set encryption key: %d", res);
 		return EC_ERROR_UNKNOWN;
 	}
-	CRYPTO_gcm128_init(&ctx, &aes_key, (block128_f)AES_encrypt, 0);
+	memset(&ctx, 0, sizeof(ctx));
+	CRYPTO_gcm128_init_key(&ctx.gcm_key, &aes_key, (block128_f)AES_encrypt,
+			       0);
 	CRYPTO_gcm128_setiv(&ctx, &aes_key, nonce, nonce_size);
 	/* CRYPTO functions return 1 on success, 0 on error. */
 	res = CRYPTO_gcm128_encrypt(&ctx, &aes_key, plaintext, ciphertext,
@@ -275,7 +276,9 @@ int aes_gcm_decrypt(const uint8_t *key, int key_size, uint8_t *plaintext,
 		CPRINTS("Failed to set decryption key: %d", res);
 		return EC_ERROR_UNKNOWN;
 	}
-	CRYPTO_gcm128_init(&ctx, &aes_key, (block128_f)AES_encrypt, 0);
+	memset(&ctx, 0, sizeof(ctx));
+	CRYPTO_gcm128_init_key(&ctx.gcm_key, &aes_key, (block128_f)AES_encrypt,
+			       0);
 	CRYPTO_gcm128_setiv(&ctx, &aes_key, nonce, nonce_size);
 	/* CRYPTO functions return 1 on success, 0 on error. */
 	res = CRYPTO_gcm128_decrypt(&ctx, &aes_key, ciphertext, plaintext,
