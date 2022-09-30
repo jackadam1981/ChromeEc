@@ -75,6 +75,14 @@ test_mockable_noreturn void panic_assert_fail(const char *msg, const char *func,
 #define assert(x...) ASSERT(x)
 #endif
 
+#ifndef static_assert
+#define static_assert(...)
+#endif
+
+#ifndef abort
+#define abort() ASSERT(0)
+#endif
+
 #ifdef __cplusplus
 }
 #endif
