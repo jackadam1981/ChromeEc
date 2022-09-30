@@ -1,0 +1,31 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+set(CMAKE_BUILD_TYPE Release)
+
+set(CMAKE_SYSTEM_NAME Linux)
+
+set(ANDROID TRUE)
+
+set(CMAKE_C_COMPILER   "${CROSS_COMPILE}${CC_NAME}")
+set(CMAKE_CXX_COMPILER "${CROSS_COMPILE}${CXX_NAME}")
+set(CMAKE_LINKER       "${CROSS_COMPILE}ld.lld")
+set(CMAKE_AR           "${CROSS_COMPILE}ar")
+set(CMAKE_NM           "${CROSS_COMPILE}nm")
+set(CMAKE_OBJCOPY      "${CROSS_COMPILE}objcopy")
+set(CMAKE_OBJDUMP      "${CROSS_COMPILE}objdump")
+set(CMAKE_RANLIB       "${CROSS_COMPILE}ranlib")
+set(CMAKE_READELF      "${CROSS_COMPILE}readelf")
+
+add_compile_options(-D__TRUSTY__)
+
+add_compile_options(-flto)
+add_link_options(-flto)
+
+set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)

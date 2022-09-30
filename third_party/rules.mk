@@ -23,7 +23,39 @@ cmd_libcryptoc = $(MAKE) -C $(CRYPTOC_DIR) \
 cmd_libcryptoc_clean = $(cmd_libcryptoc) -q && echo clean
 
 CPPFLAGS += -I$(CRYPTOC_DIR)/include
-CRYPTOC_LDFLAGS := -L$(out)/cryptoc -lcryptoc
+CRYPTOC_LDFLAGS := -L$(out)/cryptoc -lcryptoc $(out)/third_party/boringssl/crypto/libcrypto.a
+
+ifeq ($(CROSS_COMPILE), armv7m-cros-eabi-)
+	CMAKE_SYSTEM_PROCESSOR ?= armv7
+	CMAKE_SYSROOT ?= /usr/armv7m-cros-eabi/
+	
+else ifeq ($(CROSS_COMPILE), x86_64-pc-linux-gnu-)
+	CMAKE_SYSTEM_PROCESSOR ?= x86_64
+	CMAKE_SYSROOT ?= /
+else
+	$(error "Unknown compiler.")
+endif
+
+$(out)/third_party/boringssl/crypto/libcrypto.a:
+	echo $(CROSS_COMPILE)
+	echo $(CMAKE_SYSTEM_PROCESSOR)
+
+	mkdir -p $(out)/third_party/boringssl/
+	cmake \
+		-DCC_NAME=$(cc-name) \
+		-DCXX_NAME=$(cxx-name) \
+		-DCROSS_COMPILE=$(CROSS_COMPILE) \
+		-DCMAKE_SYSTEM_PROCESSOR=$(CMAKE_SYSTEM_PROCESSOR) \
+		-DCMAKE_SYSROOT=$(CMAKE_SYSROOT) \
+		-DCMAKE_TOOLCHAIN_FILE=$(shell pwd)/third_party/boringssl/cros-ec-toolchain.cmake \
+		-B $(out)/third_party/boringssl/ \
+		-S ../../third_party/boringssl \
+		-GNinja
+	ninja -C $(out)/third_party/boringssl/ crypto
+
+
+# set(CMAKE_SYSTEM_PROCESSOR "armv7")
+# set(CROSS_COMPILE "armv7m-cros-eabi-")
 
 # Conditionally force the rebuilding of libcryptoc.a only if it would be
 # changed.
@@ -43,15 +75,19 @@ $(out)/cryptoc/libcryptoc.a:
 # Link RO and RW against cryptoc.
 $(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: $(out)/cryptoc/libcryptoc.a
+$(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: $(out)/third_party/boringssl/crypto/libcrypto.a
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/third_party/boringssl/crypto/libcrypto.a
 # Host test executables (including fuzz tests).
 $(out)/$(PROJECT).exe: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a
+$(out)/$(PROJECT).exe: $(out)/third_party/boringssl/crypto/libcrypto.a
 # On-device tests.
 test-targets=$(foreach test,$(test-list-y),\
 	$(out)/RW/$(test).RW.elf $(out)/RO/$(test).RO.elf)
 $(test-targets): LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(test-targets): $(out)/cryptoc/libcryptoc.a
+$(test-targets): $(out)/third_party/boringssl/crypto/libcrypto.a
 
 endif # CONFIG_LIBCRYPTOC
