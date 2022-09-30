@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "564ace3e_aa6887d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-09-30T15:24:32Z",
+      "side": 1,
+      "message": "Looks like /delete-node/ isn\u0027t working with the motionsense shim driver at the moment.  So for now, duplicating the files is the best path.",
+      "parentUuid": "47183404_33b8df90",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "542cd9eef198e29095be27c668b5a555144b9700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fc47fcc3_1dbdd766",
