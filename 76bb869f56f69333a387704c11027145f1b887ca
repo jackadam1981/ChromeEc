@@ -122,6 +122,24 @@
       "parentUuid": "93d3dabf_8835fbc1",
       "revId": "76bb869f56f69333a387704c11027145f1b887ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46df0270_355411cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-30T15:18:44Z",
+      "side": 1,
+      "message": "Sounds like [LTO](https://llvm.org/docs/LinkTimeOptimization.html) is not working. I think you need to add `-flto` to the compilation and link flags for `boringssl`.\n \nSomething like this in the `toolchain.cmake` file:\n\n```\nset(CMAKE_C_FLAGS \"${CMAKE_C_FLAGS} -flto\")\nset(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} -flto\")\nset(CMAKE_EXE_LINKER_FLAGS \"${CMAKE_EXE_LINKER_FLAGS} -flto\")\n```\n\nor [this might do it automatically](https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html#prop_tgt:INTERPROCEDURAL_OPTIMIZATION):\n\n```\nset(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)\n```\n\nor this:\n\n```\nadd_compile_options(-flto)\nadd_link_options(-flto)\n```",
+      "parentUuid": "b42bb3df_f2fd95a9",
+      "revId": "76bb869f56f69333a387704c11027145f1b887ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
