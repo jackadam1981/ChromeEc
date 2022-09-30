@@ -2058,8 +2058,8 @@ int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 	return 0;
 }
 
-void pd_dev_get_rw_hash(int port, uint16_t *dev_id, uint8_t *rw_hash,
-			uint32_t *current_image)
+test_mockable void pd_dev_get_rw_hash(int port, uint16_t *dev_id,
+				      uint8_t *rw_hash, uint32_t *current_image)
 {
 	*dev_id = pe[port].dev_id;
 	*current_image = pe[port].current_image;
