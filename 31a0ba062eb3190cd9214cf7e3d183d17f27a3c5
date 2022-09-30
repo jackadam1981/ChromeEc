@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f61eaea_23c74b78",
+        "filename": "zephyr/dts/bindings/battery/cdt,c340152.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1548949
+      },
+      "writtenOn": "2022-09-30T01:58:15Z",
+      "side": 1,
+      "message": "According to battery_EC_setting_format_63W.xlsx(b/246838234#comment2)that Charging/Discharging FETs Status for ASUS Data about read the data from reg - SBS_PackStatus_ACCESS (0x99): \nBit-3: XDSG\nBit-2: XCHG",
+      "parentUuid": "fd706651_665d1956",
+      "revId": "31a0ba062eb3190cd9214cf7e3d183d17f27a3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a21b680_1f648210",
