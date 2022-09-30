@@ -215,6 +215,7 @@ void panic_data_ccprint(const struct panic_data *pdata);
 #ifdef CONFIG_DEBUG_ASSERT_BRIEF
 test_mockable_noreturn void panic_assert_fail(const char *fname, int linenum);
 #else
+
 test_mockable_noreturn void panic_assert_fail(const char *msg, const char *func,
 					      const char *fname, int linenum);
 #endif
