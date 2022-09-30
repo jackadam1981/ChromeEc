@@ -38,6 +38,9 @@ size_t strcspn(const char *s, const char *reject);
  */
 char *strstr(const char *s1, const char *s2);
 
+int strcmp(const char *str1, const char *str2);
+const char *strchr(const char *str, int ch);
+
 #ifdef __cplusplus
 }
 #endif

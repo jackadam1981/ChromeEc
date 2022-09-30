@@ -71,6 +71,12 @@ typedef int64_t int_fast64_t;
 #define INT32_MIN (-2147483648)
 #endif
 
+#ifndef UINT8_C
+#define UINT8_C(c) c##U
+#endif
+#ifndef UINT32_C
+#define UINT32_C(c) c##UL
+#endif
 #ifndef UINT64_C
 #define UINT64_C(c) c##ULL
 #endif

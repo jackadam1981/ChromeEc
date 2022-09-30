@@ -8,4 +8,10 @@
 
 int atoi(const char *nptr);
 
+void qsort(void *ptr, size_t count, size_t size,
+	   int (*comp)(const void *, const void *));
+
+void *bsearch(const void *key, const void *base, size_t num, size_t size,
+	      int (*compar)(const void *, const void *));
+
 #endif /* __CROS_EC_STDLIB_H__ */

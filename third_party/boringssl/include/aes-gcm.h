@@ -101,8 +101,8 @@ typedef struct gcm128_context GCM128_CONTEXT;
 
 // CRYPTO_gcm128_init initialises |ctx| to use |block| (typically AES) with
 // the given key. |block_is_hwaes| is one if |block| is |aes_hw_encrypt|.
-void CRYPTO_gcm128_init(GCM128_CONTEXT *ctx, const void *key,
-                                       block128_f block, int block_is_hwaes);
+void CRYPTO_gcm128_init_key(GCM128_CONTEXT *ctx, const void *key,
+			    block128_f block, int block_is_hwaes);
 
 // CRYPTO_gcm128_setiv sets the IV (nonce) for |ctx|. The |key| must be the
 // same key that was passed to |CRYPTO_gcm128_init|.

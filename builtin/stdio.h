@@ -58,4 +58,9 @@ snprintf(char *str, size_t size, const char *format, ...);
 __warn_unused_result __stdlib_compat int
 vsnprintf(char *str, size_t size, const char *format, va_list args);
 
+typedef void FILE;
+int fprintf(FILE *stream, const char *format, ...);
+int fflush(FILE *stream);
+extern FILE *stderr;
+
 #endif /* __CROS_EC_STDIO_H__ */
