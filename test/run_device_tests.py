@@ -204,6 +204,10 @@ class AllTests:
             TestConfig(test_name="cortexm_fpu"),
             TestConfig(test_name="crc"),
             TestConfig(
+                test_name="exception",
+                finish_regexes=[PANIC_EXIT_CALLED_REGEX],
+            ),
+            TestConfig(
                 test_name="flash_physical",
                 image_to_use=ImageType.RO,
                 toggle_power=True,
