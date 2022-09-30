@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f6e2d8_9153eea1",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-30T17:09:21Z",
+      "side": 1,
+      "message": "It makes general sense to me that if you support entering an alternate mode as a UFP, you should also be a USB device.  We\u0027re in a very non-standard position with what we are capable of.  I sometimes wonder if more of this should only be advertised at runtime when unlocked with a host command to avoid exposing this state on compliance and customer systems.\n\nIt\u0027s alright to code this to be consistent for compliance.  Hopefully other port partners in the ecosystem don\u0027t take this bit too seriously.",
+      "parentUuid": "c7d2dea2_34450dd0",
+      "revId": "7927e70d3a0142dda6f529a7ba8346322f92fe27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65dcd78a_cc9a043f",
