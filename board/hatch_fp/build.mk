@@ -32,6 +32,7 @@ test-list-y=\
        cortexm_fpu \
        crc \
        debug \
+       exception \
        flash_physical \
        flash_write_protect \
        fpsensor \
