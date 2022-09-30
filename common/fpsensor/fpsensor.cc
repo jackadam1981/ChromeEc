@@ -1078,3 +1078,19 @@ DECLARE_CONSOLE_COMMAND(fpmaintenance, command_fpmaintenance, NULL,
 			"Run fingerprint sensor maintenance");
 
 #endif /* CONFIG_CMD_FPSENSOR_DEBUG */
+
+extern "C" {
+
+void CRYPTO_sysrand(uint8_t *out, size_t requested) {
+	trng_init();
+	trng_rand_bytes(out, requested);
+	trng_exit();
+}
+
+void CRYPTO_sysrand_for_seed(uint8_t *out, size_t requested) {
+  CRYPTO_sysrand(out, requested);
+}
+
+void *BIO_new_fp(void *stream, int close_flag){return nullptr;}
+
+}
