@@ -16,6 +16,24 @@
       "message": "This is more than 80 columns. Are you uploading with `repo upload`?",
       "revId": "c17a44625eda24c7b7042f534e36ec9c635c3359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddfbbed0_1bc04773",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-09-30T10:50:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b8d60a4_2c11a5aa",
+      "revId": "c17a44625eda24c7b7042f534e36ec9c635c3359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
