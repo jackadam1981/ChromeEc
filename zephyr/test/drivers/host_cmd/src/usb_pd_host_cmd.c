@@ -20,6 +20,7 @@
 #define GPIO_BATT_PRES_ODL_PORT DT_GPIO_PIN(GPIO_BATT_PRES_ODL_PATH, gpios)
 
 FAKE_VOID_FUNC(pd_send_vdm, int, uint32_t, int, const uint32_t *, int);
+FAKE_VOID_FUNC(pd_dev_get_rw_hash, int, uint16_t *, uint8_t *, uint32_t *);
 FAKE_VALUE_FUNC(int, charge_manager_get_active_charge_port);
 
 static void usb_pd_host_cmd_test_set_battery_present(bool present)
@@ -307,6 +308,46 @@ ZTEST_USER(usb_pd_host_cmd, test_hc_remote_hash_entry__update_entry)
 			  &update_entry, sizeof(update_entry));
 }
 
+static void test_hc_remote_pd_dev_info_pd_dev_get_rw_hash(
+	int port, uint16_t *dev_id, uint8_t *rw_hash, uint32_t *current_image)
+{
+	ARG_UNUSED(port);
+	/* Set the 0th and last bits of ranges allowed by types */
+	*rw_hash = 0x81;
+	*dev_id = 0x8001;
+	*current_image = 0x80000001;
+}
+
+ZTEST_USER(usb_pd_host_cmd, test_hc_remote_pd_dev_info)
+{
+	uint8_t params = TEST_PORT;
+	struct ec_params_usb_pd_rw_hash_entry response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO, 0, response, params);
+
+	pd_dev_get_rw_hash_fake.custom_fake =
+		test_hc_remote_pd_dev_info_pd_dev_get_rw_hash;
+
+	zassert_ok(host_command_process(&args));
+	zassert_equal(args.response_size, sizeof(response));
+	/* See values set by custom fake handler */
+	zassert_equal(pd_dev_get_rw_hash_fake.call_count, 1);
+	zassert_equal(*response.dev_rw_hash, 0x81);
+	zassert_equal(response.dev_id, 0x8001);
+	zassert_equal(response.current_image, 0x80000001);
+}
+
+ZTEST_USER(usb_pd_host_cmd, test_hc_remote_pd_dev_info__bad_args)
+{
+	uint8_t params = -1;
+	struct ec_params_usb_pd_rw_hash_entry response;
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO, 0, response, params);
+
+	zassert_equal(host_command_process(&args), EC_RES_INVALID_PARAM);
+	zassert_equal(pd_dev_get_rw_hash_fake.call_count, 0);
+}
+
 ZTEST_USER(usb_pd_host_cmd, test_host_command_hc_pd_ports)
 {
 	struct ec_response_usb_pd_ports response;
@@ -325,6 +366,7 @@ static void usb_pd_host_cmd_before_after(void *test_data)
 
 	usb_pd_host_cmd_test_set_battery_present(true);
 
+	RESET_FAKE(pd_dev_get_rw_hash);
 	RESET_FAKE(pd_send_vdm);
 	RESET_FAKE(charge_manager_get_active_charge_port);
 }
