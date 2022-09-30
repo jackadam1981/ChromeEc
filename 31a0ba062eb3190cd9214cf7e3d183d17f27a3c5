@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd706651_665d1956",
+        "filename": "zephyr/dts/bindings/battery/cdt,c340152.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-09-30T01:33:44Z",
+      "side": 1,
+      "message": "Add comment for FET.\nWe reference https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/mithrax/battery.c#90 to config it.",
+      "parentUuid": "1e59b4a0_8d078a45",
+      "revId": "31a0ba062eb3190cd9214cf7e3d183d17f27a3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a21b680_1f648210",
         "filename": "zephyr/projects/skyrim/prj_frostflow.conf",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-29T15:34:32Z",
       "side": 1,
       "message": "This is a good addition.  Would you mind adding it to the skyrim base prj.conf?  I suspect all the projects will need it",
+      "revId": "31a0ba062eb3190cd9214cf7e3d183d17f27a3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b7cb09_9ab3db4c",
+        "filename": "zephyr/projects/skyrim/prj_frostflow.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2022-09-30T01:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a21b680_1f648210",
       "revId": "31a0ba062eb3190cd9214cf7e3d183d17f27a3c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
