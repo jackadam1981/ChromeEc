@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb1019a_12b0ed79",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-30T17:52:41Z",
+      "side": 1,
+      "message": "Does this one need to clear the HPD bits and then |\u003d the mux state in?  I believe this parameter is usually just the HPD IRQ and LVL",
+      "revId": "6097f0722243e405192c94af230f9bd60718fe63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
