@@ -789,7 +789,8 @@ static void isl923x_init(int chgnum)
 		}
 	}
 #endif /* CONFIG_OCPC */
-
+	isl923x_set_comparator_inversion(chgnum, 1);
+	CPRINTS("%s: isl923x_set_comparator_inversion", __func__);
 	return;
 init_fail:
 	CPRINTS("%s init failed!", CHARGER_NAME);
@@ -1205,13 +1206,13 @@ static void dump_reg_range(int chgnum, int low, int high)
 	int rv;
 
 	for (reg = low; reg <= high; reg++) {
-		CPRINTF("[%Xh] = ", reg);
+		cprintf(CC_CHARGER, "[%Xh] = ", reg);
 		rv = i2c_read16(chg_chips[chgnum].i2c_port,
 				chg_chips[chgnum].i2c_addr_flags, reg, &regval);
 		if (!rv)
-			CPRINTF("0x%04x\n", regval);
+			cprintf(CC_CHARGER, "0x%04x,", regval);
 		else
-			CPRINTF("ERR (%d)\n", rv);
+			cprintf(CC_CHARGER, "ERR (%d),", rv);
 		cflush();
 	}
 }
@@ -1219,14 +1220,7 @@ static void dump_reg_range(int chgnum, int low, int high)
 static void command_isl923x_dump(int chgnum)
 {
 	dump_reg_range(chgnum, 0x14, 0x15);
-	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C))
-		dump_reg_range(chgnum, 0x37, 0x37);
-	dump_reg_range(chgnum, 0x38, 0x3F);
-	dump_reg_range(chgnum, 0x47, 0x4A);
-	if (IS_ENABLED(CHARGER_ISL9238X) ||
-	    IS_ENABLED(CONFIG_CHARGER_RAA489000))
-		dump_reg_range(chgnum, 0x4B, 0x4E);
-	dump_reg_range(chgnum, 0xFE, 0xFF);
+	dump_reg_range(chgnum, 0x37, 0x3F);
 }
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 

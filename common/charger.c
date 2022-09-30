@@ -275,6 +275,19 @@ static void charger_chips_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, charger_chips_init, HOOK_PRIO_POST_I2C);
 
+static void charger_dump_hook(void)
+{
+	static int cnt = 0;
+	int chgnum = 0;
+
+	if (cnt++ < 5)
+		return;
+	cnt = 0;
+	chg_chips[chgnum].drv->dump_registers(chgnum);
+	cputs(CC_CHARGER, "\n");
+}
+DECLARE_HOOK(HOOK_SECOND, charger_dump_hook, HOOK_PRIO_POST_I2C);
+
 enum ec_error_list charger_post_init(void)
 {
 	int chgnum = 0;
