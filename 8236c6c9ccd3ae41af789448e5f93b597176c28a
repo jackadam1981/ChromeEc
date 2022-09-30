@@ -22,6 +22,30 @@
       },
       "revId": "8236c6c9ccd3ae41af789448e5f93b597176c28a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e275b0ea_fe3773e5",
+        "filename": "zephyr/test/drivers/anx7447/tcpc_policy.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-09-30T01:12:06Z",
+      "side": 1,
+      "message": "Thanks for catching this, fixed.",
+      "parentUuid": "b853822e_297dac33",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "8236c6c9ccd3ae41af789448e5f93b597176c28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
