@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22350fd8_62506afb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-30T14:32:18Z",
+      "side": 1,
+      "message": "Not really, I\u0027m trying to get that one missing line of coverage in `include/usb_mux.h` and didn\u0027t see any existing bug for this.  I created b:249829957 to track the failure I observed in creating this test.",
+      "parentUuid": "c49f7d70_71c2b147",
+      "revId": "5285f66f86a4418970715b2f75e12c7298436163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b1d0cbb_bee84e16",
         "filename": "zephyr/test/drivers/default/src/tcpci.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2022-09-29T22:54:58Z",
       "side": 1,
       "message": "Should these be `const`?",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 26
+      },
+      "revId": "5285f66f86a4418970715b2f75e12c7298436163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52340d9_d4fc0a93",
+        "filename": "zephyr/test/drivers/default/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-30T14:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1d0cbb_bee84e16",
       "range": {
         "startLine": 512,
         "startChar": 0,
@@ -54,6 +96,24 @@
       "writtenOn": "2022-09-29T22:54:58Z",
       "side": 1,
       "message": "Can you comment how the flags are supposed to affect the read, so it\u0027s obvious later (and so I don\u0027t have to look it up now)?",
+      "revId": "5285f66f86a4418970715b2f75e12c7298436163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2916548_db9e4293",
+        "filename": "zephyr/test/drivers/default/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-09-30T14:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6eea66d_01da12d4",
       "revId": "5285f66f86a4418970715b2f75e12c7298436163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
