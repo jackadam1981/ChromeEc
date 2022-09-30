@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7c2ea1_4eb07d36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-30T19:42:40Z",
+      "side": 1,
+      "message": "Can you add a test? Something like https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3930851/4/zephyr/test/drivers/default/src/console.c",
+      "revId": "e1d84b476674bd5f770d7d55250469d365de116d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1079296d_01412d60",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-09-30T19:42:40Z",
+      "side": 1,
+      "message": "Having `chan name` toggle the logging for name seems fragile. How about `chan name 1` to enable and `chan name 0` to disable.",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 11
+      },
+      "revId": "e1d84b476674bd5f770d7d55250469d365de116d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
