@@ -1480,7 +1480,6 @@ int cmd_button(int argc, char *argv[])
 
 int cmd_flash_info(int argc, char *argv[])
 {
-#if 0
 	struct ec_response_flash_info_1 r;
 	int cmdver = 1;
 	int rsize = sizeof(r);
@@ -1506,54 +1505,6 @@ int cmd_flash_info(int argc, char *argv[])
 		/* Fields added in ver.1 available */
 		printf("WriteIdealSize %d\nFlags 0x%x\n", r.write_ideal_size,
 		       r.flags);
-	}
-
-	return 0;
-#endif
-
-#if 0
-	int cmdver = 1;
-	if (!ec_cmd_version_supported(EC_CMD_FLASH_INFO, cmdver)) {
-		/* Fall back to version 0 command */
-		cmdver = 0;
-	}
-
-	printf("Command version: %d\n", cmdver);
-
-	ec::FlashInfoCommand_v1 cmd;
-	if (!cmd.Run(get_fd())) {
-		printf("error\n");
-		return -1;
-	}
-
-	printf("FlashSize %d\nWriteSize %d\nEraseSize %d\nProtectSize %d\n",
-	       cmd.GetFlashSize(), cmd.GetWriteBlockSize(), cmd.GetEraseBlockSize(),
-	       cmd.GetProtectBlockSize());
-	if (cmdver >= 1) {
-		/* Fields added in ver.1 available */
-		printf("WriteIdealSize %d\nFlags 0x%x\n",
-		       cmd.GetIdealWriteSize(), 0);
-	}
-#endif
-	ec::FlashInfoCommand_v2 cmd;
-	if (!cmd.Run(get_fd())) {
-		printf("error\n");
-		return -1;
-	}
-	std::cout << "FlashSize: " << cmd.GetFlashSize() << std::endl;
-	std::cout << "WriteSize: " << cmd.GetIdealWriteSize() << std::endl;
-	std::cout << "Num banks: " << cmd.GetTotalNumBanks() << std::endl;
-	for (int i = 0; i < cmd.GetTotalNumBanks(); ++i) {
-		auto bank = cmd.GetBankDescription(i);
-		std::cout << "Bank: " << std::endl;
-		std::cout << "  count: " << bank->count << std::endl;
-		std::cout << "  size_exp: " << +bank->size_exp << std::endl;
-		std::cout << "  write_size_exp: " << +bank->write_size_exp
-			  << std::endl;
-		std::cout << "  erase_size_exp: " << +bank->erase_size_exp
-			  << std::endl;
-		std::cout << "  protect_size_exp: " << +bank->protect_size_exp
-			  << std::endl;
 	}
 
 	return 0;
