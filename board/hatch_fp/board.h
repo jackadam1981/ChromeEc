@@ -222,9 +222,7 @@
  * Other
  *-------------------------------------------------------------------------*/
 
-#define CONFIG_AES
-#define CONFIG_AES_CTR
-#define CONFIG_AES_GCM
+#define CONFIG_BORINGSSL_CRYPTO
 #define CONFIG_DMA
 #define CONFIG_FPU
 #define CONFIG_FPU_WARNINGS
