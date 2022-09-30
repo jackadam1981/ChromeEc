@@ -16,6 +16,24 @@
       "message": "Was failing `make -j BOARD\u003dfusb307bgev`. I could\u0027ve just as easily added more undefs to make it work, but only enabling CONFIG_USB_PD_HOST_CMD if there were any host commands to begin with made more sense to me.",
       "revId": "11f19ae15a610801061dcaf12123704ba99d47ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c368f27d_5c5dcd0a",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4478,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-30T17:11:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd0212da_b87d3a44",
+      "revId": "11f19ae15a610801061dcaf12123704ba99d47ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
