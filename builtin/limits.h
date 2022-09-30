@@ -9,5 +9,7 @@
 #define CHAR_BIT 8
 
 #define ULONG_MAX 0xffffffffu
+#define INT_MAX 0x7fffffff
+#define UINT_MAX 0xffffffffu
 
 #endif /* __CROS_EC_LIMITS_H_ */

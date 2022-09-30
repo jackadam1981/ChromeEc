@@ -143,7 +143,7 @@ CFLAGS_WARN = $(COMMON_WARN) $(C_WARN)
 CXXFLAGS_WARN = $(COMMON_WARN)
 CFLAGS_DEBUG= -g
 CFLAGS_DEBUG+=$(CFLAGS_DEBUG_CHIP)
-CFLAGS_INCLUDE=$(foreach i,$(filter-out builtin, $(includes)),-I$(i) ) -I.
+CFLAGS_INCLUDE=$(foreach i,$(filter-out builtin, $(includes)),-I$(shell realpath $(i)) ) -I$(shell pwd)
 CFLAGS_TEST=$(if $(TEST_BUILD),-DTEST_BUILD=$(EMPTY) \
                                -DTEST_LEGACY_BUILD=$(EMPTY) \
                                -DTEST_TASKFILE=$(PROJECT).tasklist,) \
