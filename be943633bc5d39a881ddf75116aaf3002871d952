@@ -16,6 +16,24 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "be943633bc5d39a881ddf75116aaf3002871d952",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "804738d6_c63c4754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-09-30T17:10:57Z",
+      "side": 1,
+      "message": "I\u0027m waiting on resolution from https://crrev.com/c/3918010. If we can use boringssl directly (rather than a snippet), it may change this CL as well.",
+      "parentUuid": "567b8079_47a386a8",
+      "revId": "be943633bc5d39a881ddf75116aaf3002871d952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
