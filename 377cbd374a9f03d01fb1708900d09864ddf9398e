@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b786366_7e17f701",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-30T15:43:41Z",
+      "side": 1,
+      "message": "We now want automated tests for as much of our new EC code as is practical. This should be pretty straightforward to write a unit test for.",
+      "parentUuid": "28c3c5ab_4658392d",
+      "revId": "377cbd374a9f03d01fb1708900d09864ddf9398e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9228d7c_c70a1d2a",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 12

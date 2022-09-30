@@ -16,6 +16,24 @@
       "message": "In the pre upload check, this will failed at\n```\n[FAILED] chromiumos/platform/ec: kerneldoc_check\n    kernel-doc errors/warnings:\n    include/ec_commands.h:1768: warning: Function parameter or member \u0027data\u0027 not described in \u0027ec_params_flash_write\u0027\n    include/ec_commands.h:1768: warning: Function parameter or member \u0027data.words32\u0027 not described in \u0027ec_params_flash_write\u0027\n    include/ec_commands.h:1768: warning: Function parameter or member \u0027data.bytes\u0027 not described in \u0027ec_params_flash_write\u0027\n```\nwhich is cause by this CL:3865658.",
       "revId": "35d1917a809f73072afb46aa35df0d7b83089b8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e50e9a9_64898d7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-09-30T15:43:41Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll tell Tristan.",
+      "parentUuid": "21d0176e_083ef7c7",
+      "revId": "35d1917a809f73072afb46aa35df0d7b83089b8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
