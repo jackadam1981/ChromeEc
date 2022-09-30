@@ -22,6 +22,30 @@
       },
       "revId": "a182fe92e9d05f2ccf7a533a1e6db8ce86ee5922",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e018b69e_a7d47250",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-09-30T15:49:07Z",
+      "side": 1,
+      "message": "Nevermind, I found b/249829901 after submitting. \n\nIt may be worth at least adding a note saying \"schematics will be available soon\" or something similar.",
+      "parentUuid": "fe41f1c5_68d050ab",
+      "range": {
+        "startLine": 591,
+        "startChar": 1,
+        "endLine": 591,
+        "endChar": 22
+      },
+      "revId": "a182fe92e9d05f2ccf7a533a1e6db8ce86ee5922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
