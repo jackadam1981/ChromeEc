@@ -193,6 +193,9 @@ int board_set_active_charge_port(int port)
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 			    int charge_mv)
 {
+#if defined(CONFIG_BOARD_FROSTFLOW)
+	charge_ma = (charge_ma * 90) / 100;
+#endif
 	charge_set_input_current_limit(
 		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
 }
