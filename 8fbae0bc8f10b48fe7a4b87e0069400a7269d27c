@@ -262,6 +262,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7937508b_ede5026e",
+        "filename": "chip/mt_scp/mt818x/ipi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1526152
+      },
+      "writtenOn": "2022-09-30T05:58:01Z",
+      "side": 1,
+      "message": "Because mt8183\u0027s architecture is different with other platforms.\nThe video_get_dec_capability function is not used in mt8183.\nIf we want to be consistent with 8186(call video_get_dec_capability function)\nThere are many files that may be changed, include private code.",
+      "parentUuid": "75378fe0_5b563053",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "8fbae0bc8f10b48fe7a4b87e0069400a7269d27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd468b51_239fd6c0",
