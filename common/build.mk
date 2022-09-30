@@ -31,11 +31,6 @@ common-$(CONFIG_ACCEL_KXCJ9)+=math_util.o
 common-$(CONFIG_ACCEL_KX022)+=math_util.o
 common-$(CONFIG_TEMP_SENSOR_TMP112)+=math_util.o
 common-$(CONFIG_TEMP_SENSOR_PCT2075)+=math_util.o
-ifneq ($(CORE),cortex-m)
-common-$(CONFIG_AES)+=aes.o
-endif
-common-$(CONFIG_AES_CTR)+=aes-ctr.o
-common-$(CONFIG_AES_GCM)+=aes-gcm.o
 common-$(CONFIG_CMD_ADC)+=adc.o
 common-$(HAS_TASK_ALS)+=als.o
 common-$(CONFIG_AP_HANG_DETECT)+=ap_hang_detect.o
@@ -79,9 +74,9 @@ common-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic_output.o
 common-$(CONFIG_COMMON_RUNTIME)+=hooks.o main.o system.o peripheral.o
 common-$(CONFIG_COMMON_TIMER)+=timer.o
 common-$(CONFIG_CRC8)+= crc8.o
-common-$(CONFIG_CURVE25519)+=curve25519.o
+#common-$(CONFIG_CURVE25519)+=curve25519.o
 ifneq ($(CORE),cortex-m0)
-common-$(CONFIG_CURVE25519)+=curve25519-generic.o
+#common-$(CONFIG_CURVE25519)+=curve25519-generic.o
 endif
 common-$(CONFIG_DEDICATED_RECOVERY_BUTTON)+=button.o
 common-$(CONFIG_DEVICE_EVENT)+=device_event.o
