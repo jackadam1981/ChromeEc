@@ -23,7 +23,7 @@ cmd_libcryptoc = $(MAKE) -C $(CRYPTOC_DIR) \
 cmd_libcryptoc_clean = $(cmd_libcryptoc) -q && echo clean
 
 CPPFLAGS += -I$(CRYPTOC_DIR)/include
-CRYPTOC_LDFLAGS := -L$(out)/cryptoc -lcryptoc
+CRYPTOC_LDFLAGS := -L$(out)/cryptoc -lcryptoc third_party/boringssl/libcrypto.a
 
 # Conditionally force the rebuilding of libcryptoc.a only if it would be
 # changed.
@@ -43,8 +43,10 @@ $(out)/cryptoc/libcryptoc.a:
 # Link RO and RW against cryptoc.
 $(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: $(out)/cryptoc/libcryptoc.a
+$(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: third_party/boringssl/libcrypto.a
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: third_party/boringssl/libcrypto.a
 # Host test executables (including fuzz tests).
 $(out)/$(PROJECT).exe: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a
