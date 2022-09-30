@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd6111b_404d7f09",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-30T17:49:47Z",
+      "side": 1,
+      "message": "Can this function and the resume one check if the mux is already in low power mode and avoid making this call if it is?  \n\nThat would mean we have an assumed hierarchy of normal mode \u003e idle mode \u003e low power mode.  Which I believe holds true for the BB retimer since it has one block off in idle and it\u0027s entirely off in LPM, and seems conceptually consistent for any other chips which may decide to use this API later",
+      "revId": "bbb8ea8aa50e0fdd17a4c14841cff63d39b5eb76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
