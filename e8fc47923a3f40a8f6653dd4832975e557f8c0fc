@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94776d1e_1be77dea",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-09-30T16:33:17Z",
+      "side": 1,
+      "message": "Inconsequential: I think a smaller diff could\u0027ve been made if we just used a common  struct shared by the two suites. But this fine as far as I\u0027m concerned.",
+      "revId": "e8fc47923a3f40a8f6653dd4832975e557f8c0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
