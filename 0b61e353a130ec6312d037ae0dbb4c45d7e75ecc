@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cec2f42_a4fe2b22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-09-30T19:00:59Z",
+      "side": 1,
+      "message": "Hi Jeremy, can we keep console_channel_enable? I submitted https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3930855.\n\nIt\u0027s currently very cumbersome to use the \u0027chan\u0027 command because it only accepts masks in hex representation. With the patch, the chan command can take channel names.",
+      "revId": "0b61e353a130ec6312d037ae0dbb4c45d7e75ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
