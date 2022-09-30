@@ -10,4 +10,7 @@
 
 #include <timer.h>
 
+typedef int time_t;
+struct tm {};
+
 #endif /* __CROS_EC_TIME_H__ */
