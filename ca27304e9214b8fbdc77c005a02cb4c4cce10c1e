@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a558258_630ea9b9",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-30T17:28:28Z",
+      "side": 1,
+      "message": "Did we lose the `system_is_locked()` check in the transition to this host command?",
+      "revId": "ca27304e9214b8fbdc77c005a02cb4c4cce10c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8747bcef_933ad598",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_bist_shared.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-09-30T17:28:28Z",
+      "side": 1,
+      "message": "Would you mind adding a call to pd_set_bist_share_mode(0) here? Otherwise, we may leave it on for future test cases that run after ours",
+      "revId": "ca27304e9214b8fbdc77c005a02cb4c4cce10c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
