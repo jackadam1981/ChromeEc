@@ -16,6 +16,24 @@
       "message": "I\u0027m a little torn about these. They create extra branches to cover, and the only point of them is to allow the PE to do something else this cycle instead of waiting and coming back around, which probably isn\u0027t even that useful.",
       "revId": "bfee4377ec7d7a32ab8f063341e9f2227a8a4468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "322c0214_3b23c742",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2794,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-03T17:12:03Z",
+      "side": 1,
+      "message": "You mean the \"else break\"? \n\nIt is nice to be able to do something else this cycle, but I think we should be okay returning as well.  I\u0027d guess that the odds of us ending up here should be pretty small since the DFP is the only one who can send unstructured VDMs and we are supposed to be in an active mode for them to get sent in the first place.",
+      "parentUuid": "0cb60205_fa05736e",
+      "revId": "bfee4377ec7d7a32ab8f063341e9f2227a8a4468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
