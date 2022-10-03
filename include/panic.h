@@ -23,7 +23,7 @@
  */
 #ifndef test_mockable_noreturn
 #if defined(TEST_BUILD) || defined(CONFIG_ZTEST)
-#define test_mockable_noreturn __attribute__((weak))
+#define test_mockable_noreturn __attribute__((weak)) noreturn
 #else
 #define test_mockable_noreturn noreturn
 #endif
