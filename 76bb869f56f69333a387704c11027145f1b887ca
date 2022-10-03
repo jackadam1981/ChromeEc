@@ -176,6 +176,24 @@
       "parentUuid": "c871eb37_d5fea90c",
       "revId": "76bb869f56f69333a387704c11027145f1b887ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b530d6e0_1316d01a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-03T17:16:40Z",
+      "side": 1,
+      "message": "It looks like the `boringssl` docs have some recommendations on [how to structure the `boringssl` code](https://boringssl.googlesource.com/boringssl/+/HEAD/INCORPORATING.md).",
+      "parentUuid": "9aa55a61_7db9aac4",
+      "revId": "76bb869f56f69333a387704c11027145f1b887ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
