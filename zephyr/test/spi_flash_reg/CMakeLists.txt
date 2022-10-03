@@ -8,16 +8,20 @@ set(PLATFORM_EC "${CMAKE_CURRENT_LIST_DIR}/../../..")
 get_filename_component(PLATFORM_EC "${PLATFORM_EC}" REALPATH)
 
 project(spi_flash_reg)
-set(SOURCES src/main.c ${PLATFORM_EC}/common/spi_flash_reg.c)
+set(SOURCES
+    src/main.c
+    ${PLATFORM_EC}/common/spi/flash_reg/src/spi_flash_reg.c
+)
 find_package(Zephyr COMPONENTS unittest REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 configure_file(
-    ${PLATFORM_EC}/include/spi_flash_reg.h
+    ${PLATFORM_EC}/common/spi/flash_reg/public/spi_flash_reg.h
     ${CMAKE_BINARY_DIR}/include/spi_flash_reg.h COPYONLY
 )
 target_include_directories(testbinary
   PRIVATE
-    ${CMAKE_BINARY_DIR}/include include/
+    include/
+    ${CMAKE_BINARY_DIR}/include
 )
 
 # W25Q64 has 0x400000 bytes as the first section, setting
