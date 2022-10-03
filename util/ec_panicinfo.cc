@@ -117,6 +117,7 @@ static int parse_panic_info_nds32(const struct panic_data *pdata)
 	return 0;
 }
 
+#ifndef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
 static int parse_panic_info_rv32i(const struct panic_data *pdata)
 {
 	uint32_t *regs, mcause, mepc;
@@ -145,6 +146,7 @@ static int parse_panic_info_rv32i(const struct panic_data *pdata)
 
 	return 0;
 }
+#endif /* CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA */
 
 int parse_panic_info(const char *data, size_t size)
 {
@@ -205,8 +207,10 @@ int parse_panic_info(const char *data, size_t size)
 		return parse_panic_info_cm(&pdata);
 	case PANIC_ARCH_NDS32_N8:
 		return parse_panic_info_nds32(&pdata);
+#ifndef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
 	case PANIC_ARCH_RISCV_RV32I:
 		return parse_panic_info_rv32i(&pdata);
+#endif /* CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA */
 	default:
 		fprintf(stderr, "ERROR: Unknown architecture (%d).\n",
 			pdata.arch);
