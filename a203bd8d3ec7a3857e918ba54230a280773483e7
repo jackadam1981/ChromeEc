@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44d5fab_3dd44fe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-03T15:29:55Z",
+      "side": 1,
+      "message": "It looks like the build requires an update to the file tracking the CONFIG options to be migrated: \n```\nmake[2]: *** [Makefile.rules:283: notice] Error 1\nmake[1]: *** [Makefile.rules:288: proj-dojo] Error 2\nThe following options are now in Kconfig:\n\nCONFIG_KEYBOARD_CUSTOMIZATION\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\n```",
+      "revId": "a203bd8d3ec7a3857e918ba54230a280773483e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
