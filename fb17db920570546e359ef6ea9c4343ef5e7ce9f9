@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fd341f_493d5946",
+        "filename": "common/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-03T21:12:02Z",
+      "side": 1,
+      "message": "Ack.\n\nIf jump tags are corrupted (due to the cause of a crash), it may not be even worth keeping it. It would make safe mode cleaner if we wipe them unconditionally or we skip jump tag restoration in safe mode. An advantage of the former is we can use the space to report more (useful) data.",
+      "parentUuid": "2b7c5477_b0f86fee",
+      "range": {
+        "startLine": 269,
+        "startChar": 36,
+        "endLine": 269,
+        "endChar": 41
+      },
+      "revId": "fb17db920570546e359ef6ea9c4343ef5e7ce9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eda3d8ce_7082cdee",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "CONFIG_PRESERVED_END_OF_RAM_SIZE?",
       "parentUuid": "9c3dd249_11244646",
+      "range": {
+        "startLine": 6911,
+        "startChar": 8,
+        "endLine": 6911,
+        "endChar": 35
+      },
+      "revId": "fb17db920570546e359ef6ea9c4343ef5e7ce9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33cf812f_c1672af5",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6911,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-03T21:12:02Z",
+      "side": 1,
+      "message": "Sgtm.",
+      "parentUuid": "3dc42259_d81dbff6",
       "range": {
         "startLine": 6911,
         "startChar": 8,
