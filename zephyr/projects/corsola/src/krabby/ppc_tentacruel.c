@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "usbc/ppc.h"
 #include "variant_db_detection.h"
+#include "driver/usb_mux/ps8743.h"
 
 #include <zephyr/logging/log.h>
 
@@ -52,6 +53,11 @@ void bc12_interrupt(enum gpio_signal signal)
 	usb_charger_task_set_event(0, USB_CHG_EVENT_BC12);
 }
 
+static void ps8743_eq_c1_setting(void)
+{
+	i2c_write8(4, PS8743_I2C_ADDR0_FLAG, PS8743_REG_USB_EQ_RX, 0x90);
+}
+
 static void board_usbc_init(void)
 {
 	if (board_has_syv_ppc()) {
@@ -66,6 +72,7 @@ static void board_usbc_init(void)
 		gpio_enable_dt_interrupt(
 			GPIO_INT_FROM_NODELABEL(int_usb_c0_ppc));
 	}
+	ps8743_eq_c1_setting();
 }
 DECLARE_HOOK(HOOK_INIT, board_usbc_init, HOOK_PRIO_POST_DEFAULT);
 
