@@ -21,7 +21,9 @@
  * in the ectool and the build breaks.
  */
 #ifndef test_mockable_noreturn
-#if defined(TEST_BUILD) || defined(CONFIG_ZTEST)
+#if defined(TEST_BUILD)
+#define test_mockable_noreturn noreturn __attribute__((weak))
+#elif defined(CONFIG_ZTEST)
 #define test_mockable_noreturn __attribute__((weak))
 #else
 #define test_mockable_noreturn noreturn
