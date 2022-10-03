@@ -16,6 +16,24 @@
       "message": "Do these CLs also put the hash storage on the chopping block?  I don\u0027t think it buys us a ton of space, but it\u0027s something",
       "revId": "29a6304005af07ab10a62b563977dde9409f32ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b677789_cb14991f",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-03T20:57:37Z",
+      "side": 1,
+      "message": "I _think_ so. I suppose it would be only fair to give Aaron the first crack at removing the remaining code that references this storage.",
+      "parentUuid": "2b289262_f5e706bf",
+      "revId": "29a6304005af07ab10a62b563977dde9409f32ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
