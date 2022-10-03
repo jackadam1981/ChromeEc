@@ -4,3 +4,6 @@ tests:
   system_shim.default:
     tags:
       system
+    extra_configs:
+      - CONFIG_PM=y
+      - CONFIG_CROS_SYSTEM_NATIVE_POSIX=y
