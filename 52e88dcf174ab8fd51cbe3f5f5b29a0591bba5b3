@@ -16,6 +16,24 @@
       "message": "not sure what really failed here. we have another merge to double check\nif this is a real failure:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3931174\n\nif it passes dry run, we\u0027ll just submit the newer one.",
       "revId": "52e88dcf174ab8fd51cbe3f5f5b29a0591bba5b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e52ea58_8d30524e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-10-03T04:03:17Z",
+      "side": 1,
+      "message": "The other merge also failed.",
+      "parentUuid": "36ac4762_77dadc98",
+      "revId": "52e88dcf174ab8fd51cbe3f5f5b29a0591bba5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
