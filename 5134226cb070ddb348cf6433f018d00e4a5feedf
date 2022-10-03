@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8b99cb_d9abd79e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-03T16:01:01Z",
+      "side": 1,
+      "message": "Why is there a hole?   Why isn\u0027t bit `4` being used?",
+      "revId": "5134226cb070ddb348cf6433f018d00e4a5feedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "054faf4b_21ae875e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-03T16:01:01Z",
+      "side": 1,
+      "message": "This name should match the coreboot name: `STTB`\n\nhttps://review.coreboot.org/c/coreboot/+/68077",
+      "range": {
+        "startLine": 432,
+        "startChar": 20,
+        "endLine": 432,
+        "endChar": 24
+      },
+      "revId": "5134226cb070ddb348cf6433f018d00e4a5feedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486226ac_0c25558e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-03T16:01:01Z",
+      "side": 1,
+      "message": "As Diana mentioned, there is still a mismatch between the code and the comment.",
+      "range": {
+        "startLine": 432,
+        "startChar": 31,
+        "endLine": 432,
+        "endChar": 32
+      },
+      "revId": "5134226cb070ddb348cf6433f018d00e4a5feedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
