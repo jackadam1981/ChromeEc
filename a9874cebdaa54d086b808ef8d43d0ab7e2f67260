@@ -70,6 +70,30 @@
       },
       "revId": "a9874cebdaa54d086b808ef8d43d0ab7e2f67260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29b73fd_5c0fca90",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-03T16:54:05Z",
+      "side": 0,
+      "message": "Would it make sense to explicitly state 0.2 is deprecated and everyone must use 0.3?",
+      "parentUuid": "6dbace1c_11a4b135",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "a9874cebdaa54d086b808ef8d43d0ab7e2f67260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
