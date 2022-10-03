@@ -91,6 +91,7 @@ DATA_ACCESS_VIOLATION_20000000_REGEX = re.compile(
 DATA_ACCESS_VIOLATION_24000000_REGEX = re.compile(
     r"Data access violation, mfar = 24000000\r\n"
 )
+PANIC_EXIT_CALLED_REGEX = re.compile(r"\*\* PANIC: _exit called\r\n")
 
 BLOONCHIPPER = "bloonchipper"
 DARTMONKEY = "dartmonkey"
@@ -193,6 +194,10 @@ class AllTests:
     def get_public_tests(board_config: BoardConfig) -> List[TestConfig]:
         """Return public test configs for the specified board."""
         tests = [
+            TestConfig(
+                test_name="abort",
+                finish_regexes=[PANIC_EXIT_CALLED_REGEX],
+            ),
             TestConfig(test_name="aes"),
             TestConfig(test_name="always_memset"),
             TestConfig(test_name="cec"),
