@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c044441_1e2b5529",
+        "filename": "Makefile.ide",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-03T20:38:23Z",
+      "side": 1,
+      "message": "variables",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "f3c3207b7828ffab12a975c486251ca0d3b9d616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6c96be_fea7caaa",
+        "filename": "Makefile.ide",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-03T20:38:23Z",
+      "side": 1,
+      "message": "Nit: I started to ask if this could be a sequence of makefile function calls, because I think that might be easier to read. Something like this.\n```\ncmd_json_list \u003d $(subst $(space),$(space)$(comma),$(sort $(1)))\n```\nI think `sort` would implicitly transform any newlines to spaces.\n\nBut this is also the kind of thing that could be tedious to get right.\n\nHow would you feel about passing `-E` to `sed` to use extended regexes and get rid of some of those backslashes? That might do a bit to make this easier to read.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "f3c3207b7828ffab12a975c486251ca0d3b9d616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
