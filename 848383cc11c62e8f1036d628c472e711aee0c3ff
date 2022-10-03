@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af30c9e0_ee2084e9",
+        "filename": "zephyr/test/spi_flash_reg/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-03T20:34:25Z",
+      "side": 1,
+      "message": "Use `target_sources(app PRIVATE` instead?  According the cmake docs, using the `target_sources` command is the \"usual way to manipulate SOURCES\".\n\nhttps://cmake.org/cmake/help/latest/prop_tgt/SOURCES.html?highlight\u003dsources",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90dcf96e_4497dd04",
+        "filename": "zephyr/test/spi_flash_reg/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-03T20:34:25Z",
+      "side": 1,
+      "message": "What is the default value for CONFIG_SPI_FLASH_* (SPI flash type)?\n\nFor testing other SPI flash types, I think you can define additional test cases here by creating separate conf files for each. The bluetooth tests seem to be a model for this:\n\nhttps://source.corp.google.com/h/chromium/chromiumos/codesearch/+/release-R104-14909.B:src/third_party/zephyr/main/tests/bluetooth/init/testcase.yaml\n\nThis might affect the zasserts() in the C file. I do find the file under test hard to follow.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
