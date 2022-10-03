@@ -158,6 +158,24 @@
       "parentUuid": "46df0270_355411cc",
       "revId": "76bb869f56f69333a387704c11027145f1b887ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa55a61_7db9aac4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-03T16:09:31Z",
+      "side": 1,
+      "message": "We\u0027ve been having this same discussion for [another dependency](http://b/247130077). Also see http://b/249127879. Ideally I would like to have it built with portage, since that\u0027s the standard ChromeOS way to share dependencies, but as described [here](http://b/249127879) that currently doesn\u0027t work.\n\nWe could add the source to the ChromeOS repo manifest under `third_party/boringssl` (similar to [`cryptoc`](https://crsrc.org/o/src/third_party/cryptoc/)) and use the EC Makefile to build it (call `cmake` commands from the `Makefile`).",
+      "parentUuid": "c871eb37_d5fea90c",
+      "revId": "76bb869f56f69333a387704c11027145f1b887ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
