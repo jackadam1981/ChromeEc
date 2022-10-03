@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271d17bf_c9b4ff71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-03T22:03:41Z",
+      "side": 1,
+      "message": "Hello Reviewers,\nThese changes are intended to show how to configure power signal emulator and how to add AP power sequence test suite.\nGiven that power signals are tightly coupled to platform, I moved its definition into corresponding platform file and resolve them using terscase file.",
+      "revId": "9ffd9af1a4546ecb2024d71b51d9766e96401a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
