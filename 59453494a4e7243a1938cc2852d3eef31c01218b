@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82655afd_c339e0ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-10-03T01:09:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5f5a8d_56fb9858",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "59453494a4e7243a1938cc2852d3eef31c01218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b45ad676_9a7edb78",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -101,6 +125,30 @@
       "side": 1,
       "message": "Agreed, it would be better to handle this in the switch directly",
       "parentUuid": "fd517a30_915b82bd",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 19
+      },
+      "revId": "59453494a4e7243a1938cc2852d3eef31c01218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914901ee_0ad060f2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-10-03T01:09:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20eb6689_e0654dc2",
       "range": {
         "startLine": 452,
         "startChar": 0,
