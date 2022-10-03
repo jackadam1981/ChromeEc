@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b289262_f5e706bf",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-03T17:31:17Z",
+      "side": 1,
+      "message": "Do these CLs also put the hash storage on the chopping block?  I don\u0027t think it buys us a ton of space, but it\u0027s something",
+      "revId": "29a6304005af07ab10a62b563977dde9409f32ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
