@@ -1,0 +1,1 @@
+add_subdirectory_ifdef(CONFIG_PLATFORM_EC_SPI_FLASH_REGS flash_reg)
