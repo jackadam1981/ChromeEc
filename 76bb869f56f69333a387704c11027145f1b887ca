@@ -140,6 +140,24 @@
       "parentUuid": "b42bb3df_f2fd95a9",
       "revId": "76bb869f56f69333a387704c11027145f1b887ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c871eb37_d5fea90c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-10-03T04:29:41Z",
+      "side": 1,
+      "message": "Yeah, the size looks correct after enable the LTO.\n```\n  *** 77344 bytes in flash and 241760 bytes in RAM still available on bloonchipper RO ****\n  *** 441648 bytes in flash and 179232 bytes in RAM still available on bloonchipper RW ****\n```\n\nSo the next problem would be, how do we import the boringssl into the chromiumos source tree.\nOr should we use portage to build it?",
+      "parentUuid": "46df0270_355411cc",
+      "revId": "76bb869f56f69333a387704c11027145f1b887ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
