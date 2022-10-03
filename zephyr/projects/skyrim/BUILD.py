@@ -20,9 +20,9 @@ def register_skyrim_project(
             here / "fan.dts",
             here / "gpio.dts",
             here / "interrupts.dts",
-            here / "keyboard.dts",
             here / "motionsense.dts",
             here / "usbc.dts",
+            here / "keyboard.dts",
             # Project-specific DTS customizations.
             *extra_dts_overlays,
         ],
