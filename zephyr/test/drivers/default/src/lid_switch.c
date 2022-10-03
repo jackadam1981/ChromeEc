@@ -114,6 +114,16 @@ ZTEST(lid_switch, test_lid_close)
 	zassert_equal(lid_is_open(), 0, NULL);
 }
 
+ZTEST(lid_switch, test_enable_lid_detect)
+{
+	enable_lid_detect(false);
+	k_sleep(K_MSEC(100));
+	zassert_ok(emul_lid_open(), NULL);
+
+	enable_lid_detect(true);
+	k_sleep(K_MSEC(100));
+}
+
 ZTEST(lid_switch, test_cmd_lidopen)
 {
 	/* Start closed. */
