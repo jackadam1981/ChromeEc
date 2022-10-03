@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54cdac03_5dfde6aa",
+        "filename": "zephyr/test/drivers/default/src/espi_vwire.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-03T20:09:59Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of commented out code. Do you expect this test will work soon? Or is this a long term thing?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "bb4942801b6faa80fd58c02c8c375a77f01c7f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
