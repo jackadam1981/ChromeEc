@@ -190,6 +190,30 @@
       },
       "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c4cc2b_ceb70647",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-04T20:47:24Z",
+      "side": 1,
+      "message": "I think it\u0027s ok to set fan_max and fan_off for custom controls because custom controls still have notion of max and off temps.\n\n\u003e --- expected fan speed --\n\nHow about:\n\n    temperature --- ratio (fan_max and fan_off) --\n    316 K (43 C)     24% (of 35 C and 60 C)\n\nto be true to the reality?",
+      "parentUuid": "ddaf92cb_2ab008e7",
+      "range": {
+        "startLine": 3278,
+        "startChar": 0,
+        "endLine": 3280,
+        "endChar": 42
+      },
+      "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
