@@ -61,3 +61,30 @@ config CROS_FLASH_XEC_INIT_PRIORITY
 	  CONFIG_SPI_NOR_INIT_PRIORITY.
 
 endif # CROS_FLASH_XEC
+
+config CROS_FLASH_STM32
+	bool "ST STM32 flash driver for the Zephyr shim"
+	depends on SOC_FAMILY_STM32
+	default y
+	select PLATFORM_EC_FLASH_CROS
+	help
+	  This option enables the flash driver for the STM32 chips.
+
+if CROS_FLASH_STM32
+
+config CROS_FLASH_STM32_READOUT_PROTECTION
+	bool "STM32 flash readout protection"
+	depends on CROS_FLASH_STM32
+	default n
+	help
+	  This option enables code to manipulate readout protection settings.
+
+config CROS_FLASH_STM32_INIT_PRIORITY
+	int "ST STM32 flash driver priority for the Zephyr shim"
+	default 55
+	help
+	  This sets the priority of the STM32 flash driver for zephyr shim.
+	  This driver depends on the STM32 flash driver in zephyr.
+	  Its priority must be lower than CONFIG_FLASH_INIT_PRIORITY.
+
+endif # CROS_FLASH_STM32
