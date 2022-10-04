@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "226025de_d162fff0",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-04T10:46:08Z",
+      "side": 1,
+      "message": "Rename the fake_temp_charger to temp_charger in dts, and remove this block.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "bf5bacbe8c390eb27e28097dd697e12acb9bcd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfea8050_edf8c8d6",
+        "filename": "zephyr/projects/corsola/src/krabby/temp_tentacruel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-04T10:46:08Z",
+      "side": 1,
+      "message": "use CONFIG_TEST",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "bf5bacbe8c390eb27e28097dd697e12acb9bcd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb55762_888aee42",
+        "filename": "zephyr/test/krabby/src/temp_tentacruel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-04T10:46:08Z",
+      "side": 1,
+      "message": "same request as before, use the real one.",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 21
+      },
+      "revId": "bf5bacbe8c390eb27e28097dd697e12acb9bcd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
