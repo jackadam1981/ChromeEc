@@ -167,6 +167,127 @@ uint32_t crec_flash_physical_get_writable_flags(uint32_t cur_flags)
 	return ret;
 }
 
+#if IS_ENABLED(CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT)
+int crec_flash_bank_size(int bank)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, bank, &info);
+
+	if (rv)
+		return -1;
+
+	return info.size;
+}
+
+int crec_flash_bank_erase_size(int bank)
+{
+	return crec_flash_bank_size(bank);
+}
+
+int crec_flash_bank_index(int offset)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_offs(flash_ctrl_dev, offset, &info);
+
+	if (rv)
+		return -1;
+
+	return info.index;
+}
+
+int crec_flash_bank_count(int offset, int size)
+{
+	int begin, end;
+
+	if (size < 1)
+		return -1;
+
+	begin = crec_flash_bank_index(offset);
+	end = crec_flash_bank_index(offset + size - 1);
+
+	if (begin < 0 || end < 0)
+		return -1;
+
+	return end - begin + 1;
+}
+
+int crec_flash_bank_start_offset(int bank)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, bank, &info);
+
+	if (rv)
+		return -1;
+
+	return info.start_offset;
+}
+
+void crec_flash_print_region_info(void)
+{
+	const struct flash_pages_layout *layout;
+	const struct flash_parameters *params;
+	size_t layout_size;
+
+	params = flash_get_parameters(flash_ctrl_dev);
+	if (!params)
+		return;
+
+	flash_get_page_layout(flash_ctrl_dev, &layout, &layout_size);
+
+	cprintf(CC_COMMAND, "Regions:\n");
+	for (int i = 0; i < layout_size; i++) {
+		cprintf(CC_COMMAND, " %d region%s:\n", layout[i].pages_count,
+			(layout[i].pages_count == 1 ? "" : "s"));
+		cprintf(CC_COMMAND, "  Erase:   %4d B (to %d-bits)\n",
+			layout[i].pages_size, params->erase_value ? 1 : 0);
+		cprintf(CC_COMMAND, "  Size/Protect: %4d B\n",
+			layout[i].pages_size);
+	}
+}
+
+void crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
+				    int num_banks)
+{
+	const struct flash_pages_layout *layout;
+	size_t layout_size;
+	int banks_to_copy;
+
+	flash_get_page_layout(flash_ctrl_dev, &layout, &layout_size);
+
+	banks_to_copy = MIN(layout_size, num_banks);
+
+	for (int i = 0; i < banks_to_copy; i++) {
+		r->banks[i].count = layout[i].pages_count;
+		r->banks[i].size_exp = __fls(layout[i].pages_size);
+		r->banks[i].write_size_exp = __fls(CONFIG_FLASH_WRITE_SIZE);
+		r->banks[i].erase_size_exp = __fls(layout[i].pages_size);
+		r->banks[i].protect_size_exp = __fls(layout[i].pages_size);
+	}
+
+	r->num_banks_desc = banks_to_copy;
+}
+
+int crec_flash_bank_total_entries(void)
+{
+	const struct flash_pages_layout *layout;
+	size_t layout_size;
+
+	flash_get_page_layout(flash_ctrl_dev, &layout, &layout_size);
+	return layout_size;
+}
+
+int crec_flash_total_banks(void)
+{
+	return flash_get_page_count(flash_ctrl_dev);
+}
+#endif /* CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT */
+
 #if IS_ENABLED(CONFIG_SHELL)
 static int command_flashchip(const struct shell *shell, size_t argc,
 			     char **argv)
