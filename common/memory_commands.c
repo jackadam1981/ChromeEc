@@ -116,9 +116,9 @@ static int command_read_word(int argc, const char **argv)
 {
 	volatile uint32_t *address;
 	uint32_t value;
+	char *e;
 	unsigned access_size = 4;
 	unsigned argc_offs = 0;
-	char *e;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
