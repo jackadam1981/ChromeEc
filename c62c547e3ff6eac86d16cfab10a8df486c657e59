@@ -16,6 +16,57 @@
       "message": "Note that while the CMakeLists.txt here looks ugly, I left it verbose on purpose. The next step will be to generate an extensions.cmake similar to Zephyr with utilities to make this simpler. I\u0027ll be using https://cs.opensource.google/pigweed/pigweed/+/master:pw_log/CMakeLists.txt as a guide for create a module + tests using a single cmake function for each.",
       "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cbb9162_3de1ade7",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T22:35:19Z",
+      "side": 1,
+      "message": "I am unfamiliar with `add_library()` with only the `name` parameter. Could you point me to a resource? https://cmake.org/cmake/help/latest/command/add_library.html?highlight\u003dadd_library#add-library isn\u0027t very helpful as they don\u0027t define a clear usage with only name.",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e00063_2145348f",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T22:35:19Z",
+      "side": 1,
+      "message": "I need to come back to this to review after getting smarter on CMake or will need you to walk me through some of these Cmake functions.",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92220218_9fa62832",
+        "filename": "common/spi/flash_reg/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T22:35:19Z",
+      "side": 1,
+      "message": "I believe `spi_flash_reg.o` should be `spi_flash.o`.\n\nI think this will allow you to remove `common-$(CONFIG_SPI_FLASH)+\u003dspi_flash.o` from `common/build.mk`",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
