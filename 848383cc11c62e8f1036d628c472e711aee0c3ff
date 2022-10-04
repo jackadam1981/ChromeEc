@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34d57b07_9dc4b794",
+        "filename": "zephyr/test/spi_flash_reg/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T14:29:45Z",
+      "side": 1,
+      "message": "I think we should add a comment stating as such.\n\nOtherwise LGTM.",
+      "parentUuid": "dd60c62f_02b1a3df",
+      "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90dcf96e_4497dd04",
         "filename": "zephyr/test/spi_flash_reg/testcase.yaml",
         "patchSetId": 2
