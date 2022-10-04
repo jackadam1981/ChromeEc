@@ -80,6 +80,18 @@ void crec_flash_print_region_info(void);
  */
 int crec_flash_total_banks(void);
 
+/**
+ * Fill flash info response structure (version 2)
+ *
+ * The function is responsible for filling 'num_banks_desc', 'num_banks_total'
+ * and 'banks' fields with information about flash layout.
+ *
+ * @param pointer to flash info version 2 response structure
+ * @param size of 'banks' array inside response structure
+ */
+void crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
+				    int num_banks);
+
 /* Persistent protection state flash offset / size / bank */
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
 
