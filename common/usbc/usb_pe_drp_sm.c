@@ -2738,6 +2738,8 @@ static void pe_src_ready_entry(int port)
 
 	/* Clear DPM Current Request */
 	pe[port].dpm_curr_request = 0;
+	/* Inform DPM state machine that PE is in ready state */
+	dpm_set_pd_ready(port);
 
 	/*
 	 * Wait and add jitter if we are operating in PD2.0 mode and no messages
@@ -2927,8 +2929,8 @@ static void pe_src_ready_run(int port)
 		if (pe_attempt_port_discovery(port))
 			return;
 
-		/* No DPM requests; attempt mode entry/exit if needed */
-		dpm_run(port);
+		/* Inform DPM state machine that PE is set for messages */
+		dpm_set_pe_sync(port);
 	}
 }
 
@@ -3585,6 +3587,8 @@ static void pe_snk_ready_entry(int port)
 
 	/* Clear DPM Current Request */
 	pe[port].dpm_curr_request = 0;
+	/* Inform DPM state machine that PE is in ready state */
+	dpm_set_pd_ready(port);
 
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait,
@@ -3782,8 +3786,8 @@ static void pe_snk_ready_run(int port)
 		if (pe_attempt_port_discovery(port))
 			return;
 
-		/* No DPM requests; attempt mode entry/exit if needed */
-		dpm_run(port);
+		/* Inform DPM state machine that PE is set for messages */
+		dpm_set_pe_sync(port);
 	}
 }
 
