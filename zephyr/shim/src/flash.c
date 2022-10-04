@@ -166,6 +166,123 @@ uint32_t crec_flash_physical_get_writable_flags(uint32_t cur_flags)
 	return ret;
 }
 
+#if IS_ENABLED(CONFIG_PLATFORM_EC_FLASH_VARIABLE_SECTOR_SIZE)
+int crec_flash_bank_size(int bank)
+{
+	int rv;
+	struct flash_pages_info info;
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, bank, &info);
+
+	if (rv)
+		return -1;
+
+	return info.size;
+}
+
+int crec_flash_bank_erase_size(int bank)
+{
+	return crec_flash_bank_size(bank);
+}
+
+int crec_flash_bank_index(int offset)
+{
+	int rv;
+	struct flash_pages_info info;
+	rv = flash_get_page_info_by_offs(flash_ctrl_dev, offset, &info);
+
+	if (rv)
+		return -1;
+
+	return info.index;
+}
+
+int crec_flash_bank_count(int offset, int size)
+{
+	int begin = crec_flash_bank_index(offset);
+	int end = flash_get_page_count(flash_ctrl_dev);
+
+	if (begin < 0 || end < 0)
+		return -1;
+
+	return end - begin;
+}
+
+int crec_flash_bank_start_offset(int bank)
+{
+	int rv;
+	struct flash_pages_info info;
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, bank, &info);
+
+	if (rv)
+		return -1;
+
+	return info.start_offset;
+}
+
+void crec_flash_print_region_info(void)
+{
+        const struct flash_driver_api *api = flash_ctrl_dev->api;
+        const struct flash_pages_layout *layout;
+	const struct flash_parameters *params;
+        size_t layout_size;
+
+	params = api->get_parameters(flash_ctrl_dev);
+	if (!params)
+		return;
+
+	api->page_layout(flash_ctrl_dev, &layout, &layout_size);
+
+	cprintf(CC_COMMAND, "Regions:\n");
+	for (int i = 0; i < layout_size; i++) {
+		cprintf(CC_COMMAND, " %d region%s:\n",
+			layout[i].pages_count,
+			(layout[i].pages_count == 1 ? "" : "s"));
+		cprintf(CC_COMMAND, "  Erase:   %4d B (to %d-bits)\n",
+			layout[i].pages_size,
+			params->erase_value ? 1 : 0);
+		cprintf(CC_COMMAND, "  Size/Protect: %4d B\n",
+			layout[i].pages_size);
+	}
+}
+
+int crec_flash_bank_fill_data(uint8_t *buf, int buf_size)
+{
+        const struct flash_driver_api *api = flash_ctrl_dev->api;
+        const struct flash_pages_layout *layout;
+	struct ec_flash_bank * const banks = (struct ec_flash_bank *)buf;
+        size_t layout_size;
+	int banks_to_copy;
+
+	api->page_layout(flash_ctrl_dev, &layout, &layout_size);
+
+	banks_to_copy = MIN(layout_size,
+			    buf_size / sizeof(struct ec_flash_bank));
+
+	if (!banks)
+		return -1;
+
+	for (int i=0; i < banks_to_copy; i++) {
+		banks[i].count = layout[i].pages_count;
+		banks[i].size_exp = __fls(layout[i].pages_size);
+		banks[i].write_size_exp = __fls(CONFIG_FLASH_WRITE_SIZE);
+		banks[i].erase_size_exp = __fls(layout[i].pages_size);
+		banks[i].protect_size_exp = __fls(layout[i].pages_size);
+	}
+
+	return banks_to_copy * sizeof(struct ec_flash_bank);
+}
+
+int crec_flash_bank_total_entries(void)
+{
+        const struct flash_driver_api *api = flash_ctrl_dev->api;
+        const struct flash_pages_layout *layout;
+        size_t layout_size;
+
+	api->page_layout(flash_ctrl_dev, &layout, &layout_size);
+	return layout_size;
+}
+#endif /* CONFIG_FLASH_VARIABLE_SECTOR_SIZE */
+
 #if IS_ENABLED(CONFIG_SHELL)
 static int command_flashchip(const struct shell *shell, size_t argc,
 			     char **argv)

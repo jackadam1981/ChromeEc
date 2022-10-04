@@ -68,6 +68,7 @@ choice PLATFORM_EC_STORAGE_TYPE
        default PLATFORM_EC_EXTERNAL_STORAGE if SOC_FAMILY_NPCX
        default PLATFORM_EC_EXTERNAL_STORAGE if SOC_FAMILY_MEC
        default PLATFORM_EC_INTERNAL_STORAGE if SOC_FAMILY_RISCV_ITE
+       default PLATFORM_EC_INTERNAL_STORAGE if SOC_FAMILY_STM32
        help
          Sets the EC code storage type.
 
@@ -123,5 +124,14 @@ config PLATFORM_EC_FLASH_PSTATE
 	  closer to a SPI flash write protect register.  If this is not
 	  defined, write protect state is maintained solely by the physical
 	  flash driver.
+
+config PLATFORM_EC_FLASH_VARIABLE_SECTOR_SIZE
+	bool "Support for variable sector size"
+	default y if SOC_FAMILY_STM32
+	depends on FLASH_PAGE_LAYOUT
+	help
+	  When enabled, functions that provide information about sector index,
+	  offset and size will become available. These functions are necessary
+	  on STM32 chips in order to work properly.
 
 endif # PLATFORM_EC_FLASH_CROS

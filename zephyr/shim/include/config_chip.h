@@ -8,6 +8,7 @@
 
 #include <zephyr/devicetree.h>
 #include <autoconf.h>
+#include <soc.h>
 
 #define SENSOR_NODE DT_PATH(motionsense_sensor)
 #define SENSOR_INFO_NODE DT_PATH(motionsense_sensor_info)
@@ -553,6 +554,12 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_CMD_FLASH_WP
 #ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_FLASH_WP
 #define CONFIG_CMD_FLASH_WP
+#endif
+
+#undef CONFIG_FLASH_MULTIPLE_REGION
+#ifdef CONFIG_PLATFORM_EC_FLASH_VARIABLE_SECTOR_SIZE
+/* FLASH_SECTOR_TOTAL comes from stm32_hal */
+#define CONFIG_FLASH_MULTIPLE_REGION FLASH_SECTOR_TOTAL
 #endif
 
 #endif /* CONFIG_PLATFORM_EC_FLASH_CROS */

@@ -125,6 +125,8 @@ const uint32_t pstate_data __attribute__((section(".rodata.pstate"))) =
 #endif /* !CONFIG_FLASH_PSTATE_BANK */
 #endif /* CONFIG_FLASH_PSTATE */
 
+/* Shim layer provides implementation of these functions based on Zephyr API */
+#ifndef CONFIG_ZEPHYR
 #ifdef CONFIG_FLASH_MULTIPLE_REGION
 const struct ec_flash_bank *flash_bank_info(int bank)
 {
@@ -279,6 +281,7 @@ int crec_flash_bank_total_entries(void)
 	return 1;
 }
 #endif /* CONFIG_FLASH_MULTIPLE_REGION */
+#endif /* CONFIG_ZEPHYR */
 
 static int flash_range_ok(int offset, int size_req, int align)
 {
