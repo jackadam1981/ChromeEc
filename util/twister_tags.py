@@ -36,7 +36,7 @@ def main(args):
     """List and/or validate testcase.yaml tags."""
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", "--list-tags", action="store_true")
-    parser.add_argument("--validate-files", nargs="+", type=str)
+    parser.add_argument("--validate-files", nargs="?", type=str, default=None)
     args = parser.parse_args()
 
     list_tags = args.list_tags
