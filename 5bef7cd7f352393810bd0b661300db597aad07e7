@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c9d63d_f51d6c9a",
+        "filename": "board/hatch_fp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:45:05Z",
+      "side": 1,
+      "message": "Is there a `test/power_utilization.c` file that should have been checked in? Otherwise, I don\u0027t think this will be do anything.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5effe052_cdabb254",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:45:05Z",
+      "side": 1,
+      "message": "It\u0027s hard to tell what these represent without reading through the code where it\u0027s used. Can you create a simple class to represent it? One way would be to do something like (not sure about these names):\n\n```\n@dataclass\nclass PowerData:\n  expected_mw: int\n  range_mw: int\n\n@dataclass\nclass PowerConfig:\n  fp_sensor: PowerData\n  mcu: PowerData\n```",
+      "range": {
+        "startLine": 195,
+        "startChar": 39,
+        "endLine": 195,
+        "endChar": 61
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7069db47_05cf3843",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:45:05Z",
+      "side": 1,
+      "message": "Can we move these constants into the `DARTMONKEY_CONFIG` and `BLOONCHIPPER_CONFIG`?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 14
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05bf2dd2_63ac2361",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:45:05Z",
+      "side": 1,
+      "message": "Looks like the two `finish_regexes` are the same. Can you make them a constant like the other regexes?",
+      "range": {
+        "startLine": 388,
+        "startChar": 32,
+        "endLine": 388,
+        "endChar": 63
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08129a2a_03fed472",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:45:05Z",
+      "side": 1,
+      "message": "This is not actually doing a reboot (i.e., `reboot` command), but rather power cycling. Can we make the name reflect that? (`toggle_power` or `power_cycle`, etc.)",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 29
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f750c3_68221ea6",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:45:05Z",
+      "side": 1,
+      "message": "How about `use_production_image`/`test_production_image` or something along those lines?\n\nCan you",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 73
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8180a8d_c6aefada",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:45:05Z",
+      "side": 1,
+      "message": "Unrelated change? If so, can you split it into a separate CL: go/small-cls?",
+      "range": {
+        "startLine": 851,
+        "startChar": 12,
+        "endLine": 851,
+        "endChar": 31
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94d80db_cec9b89a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:45:05Z",
+      "side": 1,
+      "message": "Unrelated change? If so, can you split it into a separate CL: go/small-cls?",
+      "range": {
+        "startLine": 874,
+        "startChar": 8,
+        "endLine": 874,
+        "endChar": 28
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
