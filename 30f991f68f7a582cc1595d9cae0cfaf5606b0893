@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb769898_7c302989",
+        "filename": "zephyr/test/drivers/default/src/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-04T23:25:31Z",
+      "side": 1,
+      "message": "usb_mux_c1 is a local variable, so it does not affect other\ntests. we need `USB_MUX_FLAG_CAN_IDLE` enabled to test the\nBB idle mode code.\n\nthe idle mode test does alter `BB_RETIMER_REG_CONNECTION_STATE`\nbut all the other tests set this register before\nchecking it, so there does not appear to be a dependency\non an initial (default) value.",
+      "parentUuid": "6b8471f5_35b5cb98",
+      "revId": "30f991f68f7a582cc1595d9cae0cfaf5606b0893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7920d506_08e08bef",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62693e9f_dedc9251",
+        "filename": "zephyr/test/drivers/default/src/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-04T23:25:31Z",
+      "side": 1,
+      "message": "i can remove this. i originally added this because the emulated mux\nconnection status register is closer to reality by adding this.\nactual hardware status is 0x21.\nwithout this call, it\u0027s 0x400065.\nwith this call, it\u0027s 0x400021.\n\nthe only bit we really care about in this test is\nBB_RETIMER_DATA_CONNECTION_PRESENT (0x20) and that\ndoes behave as intended.",
+      "parentUuid": "7920d506_08e08bef",
+      "range": {
+        "startLine": 216,
+        "startChar": 48,
+        "endLine": 216,
+        "endChar": 56
+      },
+      "revId": "30f991f68f7a582cc1595d9cae0cfaf5606b0893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14710f5b_cd3c8cd7",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-10-04T16:47:45Z",
       "side": 1,
       "message": "This arg can be a cleanup function that will run after each test. This is a good place to reset any state that you changed as Diana suggested above.  As an example you can look at zephyr/test/vboot_efs2/src/main.c:vboot_efs2_cleanup",
+      "range": {
+        "startLine": 619,
+        "startChar": 73,
+        "endLine": 619,
+        "endChar": 77
+      },
+      "revId": "30f991f68f7a582cc1595d9cae0cfaf5606b0893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75cc627_4772d753",
+        "filename": "zephyr/test/drivers/default/src/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-04T23:25:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14710f5b_cd3c8cd7",
       "range": {
         "startLine": 619,
         "startChar": 73,
