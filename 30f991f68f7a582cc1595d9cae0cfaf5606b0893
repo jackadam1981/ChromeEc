@@ -39,6 +39,29 @@
       },
       "revId": "30f991f68f7a582cc1595d9cae0cfaf5606b0893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14710f5b_cd3c8cd7",
+        "filename": "zephyr/test/drivers/default/src/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-04T16:47:45Z",
+      "side": 1,
+      "message": "This arg can be a cleanup function that will run after each test. This is a good place to reset any state that you changed as Diana suggested above.  As an example you can look at zephyr/test/vboot_efs2/src/main.c:vboot_efs2_cleanup",
+      "range": {
+        "startLine": 619,
+        "startChar": 73,
+        "endLine": 619,
+        "endChar": 77
+      },
+      "revId": "30f991f68f7a582cc1595d9cae0cfaf5606b0893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
