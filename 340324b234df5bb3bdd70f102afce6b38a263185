@@ -33,6 +33,24 @@
       "message": "Was this necessary to compile?  I thought this was defined in the DPM in the previous CL",
       "revId": "340324b234df5bb3bdd70f102afce6b38a263185",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925a7e9a_712c5eec",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-04T02:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9b995fb_ed71806e",
+      "revId": "340324b234df5bb3bdd70f102afce6b38a263185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
