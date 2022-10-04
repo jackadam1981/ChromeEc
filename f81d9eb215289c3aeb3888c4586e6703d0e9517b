@@ -22,6 +22,30 @@
       },
       "revId": "f81d9eb215289c3aeb3888c4586e6703d0e9517b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ad5ce7_65f34083",
+        "filename": "core/host/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T23:21:10Z",
+      "side": 1,
+      "message": "Woops, I missed that. Thanks!",
+      "parentUuid": "36d42b02_3cff03fe",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "f81d9eb215289c3aeb3888c4586e6703d0e9517b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
