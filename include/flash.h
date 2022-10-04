@@ -54,6 +54,11 @@ void crec_flash_print_region_info(void);
 
 int crec_flash_total_banks(void);
 
+void crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
+				    int num_banks);
+
+int crec_flash_bank_total_entries(void);
+
 /* Number of physical flash banks */
 #define PHYSICAL_BANKS CONFIG_FLASH_MULTIPLE_REGION
 
