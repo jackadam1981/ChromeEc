@@ -46,6 +46,30 @@
       },
       "revId": "23bfaa2ce256a4a6955da04694e10c4eaea6b6c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4f9114_881635f5",
+        "filename": "zephyr/test/drivers/default/src/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-04T16:24:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "094fee2f_bc2b1173",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 22
+      },
+      "revId": "23bfaa2ce256a4a6955da04694e10c4eaea6b6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
