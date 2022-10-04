@@ -141,6 +141,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acffeb38_d503ce6b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:52:12Z",
+      "side": 1,
+      "message": "It would be a bit cleaner if there was a default `pre_test_callback` that just returned `True`, so you could unconditionally do:\n\n```\npre_cb_passed \u003d test.pre_test_callback(build_board)\n```",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 753,
+        "endChar": 28
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c714bf_652e3d5c",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:52:12Z",
+      "side": 1,
+      "message": "Same comment as above about default `post_test_callback`.",
+      "range": {
+        "startLine": 785,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 41
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70cd54f_47f527b2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-04T18:52:12Z",
+      "side": 1,
+      "message": "The logic for using the \"app image\" for the test seems like it\u0027s independent from the logic for testing power. If that\u0027s correct, can you split that into a separate CL: go/small-cls?",
+      "range": {
+        "startLine": 833,
+        "startChar": 0,
+        "endLine": 842,
+        "endChar": 47
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8180a8d_c6aefada",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
