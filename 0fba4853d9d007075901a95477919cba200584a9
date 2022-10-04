@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c21b52_3c6f9c75",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-04T16:23:29Z",
+      "side": 1,
+      "message": "We probably want to print something (after console is initialized).",
+      "range": {
+        "startLine": 947,
+        "startChar": 3,
+        "endLine": 947,
+        "endChar": 9
+      },
+      "revId": "0fba4853d9d007075901a95477919cba200584a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
