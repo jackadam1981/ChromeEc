@@ -16,6 +16,24 @@
       "message": "From the looks of the spec, we should just use `set_usb_mux_with_current_data_role()` here.  That might be safe or USB depending on configuration, but either is acceptable spec-wise and this should make us consistent with whatever state we were in before the EnterMode",
       "revId": "124951077af9212700dacbe896997c8d6acb91a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbcfd45_fa1cc0c8",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-04T02:50:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9afd874_7e4252db",
+      "revId": "124951077af9212700dacbe896997c8d6acb91a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
