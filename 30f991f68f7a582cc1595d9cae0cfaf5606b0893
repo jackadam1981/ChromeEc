@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b8471f5_35b5cb98",
+        "filename": "zephyr/test/drivers/default/src/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T15:59:17Z",
+      "side": 1,
+      "message": "I\u0027m uncertain whether these flags and such are expected to be cleaned up after the tests run, so adding a test reviewer here",
+      "revId": "30f991f68f7a582cc1595d9cae0cfaf5606b0893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7920d506_08e08bef",
+        "filename": "zephyr/test/drivers/default/src/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T15:59:17Z",
+      "side": 1,
+      "message": "This is.... weird.  I don\u0027t think I\u0027ve ever actually seen a PD 1.0 device in the wild.  I can see this is copied from another test, but this test setup seems both strange and unnecessary since this test isn\u0027t running any PD communication.",
+      "range": {
+        "startLine": 216,
+        "startChar": 48,
+        "endLine": 216,
+        "endChar": 56
+      },
+      "revId": "30f991f68f7a582cc1595d9cae0cfaf5606b0893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
