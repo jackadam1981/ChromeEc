@@ -93,6 +93,30 @@
       },
       "revId": "f3c3207b7828ffab12a975c486251ca0d3b9d616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bfe580_def1aa75",
+        "filename": "Makefile.ide",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-04T16:51:14Z",
+      "side": 1,
+      "message": "\u003e Making space \u003d \" \" means that subst sees two words, \" and \".\n\nAnnoyingly, you need to add an extra layer of substitution to get a literal space. I think you would have to do something similar to get a literal comma: https://stackoverflow.com/a/51874794. Depending on your perspective, this could push it over the line to not being worth it.\n\n\u003e Hmm, I would have thought that strip would have removed the trailing newline, too, but no such luck. Anyways, we don\u0027t want to sort the arg.\n\nI figured `sort` was the easiest way to get rid of the newlines if you didn\u0027t care about order. If you want to preserve order, you could do something like `$(filter %, $(1))` or `$(wordlist 0, $(words ($1)), $(1))`. Again, it\u0027s annoying that there isn\u0027t a more direct way to do this.\n\n\u003e That\u0027s works! But, it still doesn\u0027t remove my double escaped quotes.\n\nI\u0027ll take it! If you\u0027re satisfied with this, don\u0027t read any further\n\n---\n\nRight now, you\u0027re using `sed` to do\n1. word -\u003e \"word\"\n2. space -\u003e comma space\n3. newline -\u003e space\n\nwith the primary reason being that `make` can\u0027t deal well with newlines. I think if you reordered the process, you could do fewer transformations, and maybe some of them could be be in `make` instead of `sed`, which would reduce the amount of escaping you need to do.\n\n1. Any whitespace to single space:\n  * `sed`: `-E s/[:space:]+/ /g`\n  * `make`, maybe: `$(filter %, $(1))`\n2. Single space to `\", \"`\n  * `sed`: `-E s/ /\\\", \\\"/g`\n  * `make`: `$(subst $(space),\"$(comma)$(space)\", $(1))`\n\nI think the newlines might keep you from doing both steps in one pass (any whitespace to `\", \"`), but if you could get one `sed` command or a `make` one-liner, that would probably be easier to read.\n\nBTW, if you don\u0027t like the `/\\/\\/` forests in `sed`, you can use almost any character to separate the arguments, e.g. `sed -E s:foo:bar:g`.",
+      "parentUuid": "36b8980c_dbb86f50",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "f3c3207b7828ffab12a975c486251ca0d3b9d616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
