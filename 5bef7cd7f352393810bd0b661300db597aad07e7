@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ca9cd54_b3f8cd4c",
+        "filename": "board/hatch_fp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "It\u0027s a little bit weird, but the `power_utilization` here is required to that `test-targets` gets set up properly (http://cs/chromeos_public/src/platform/ec/Makefile.rules?l\u003d319), but because there is no `power_utilization-y\u003d` line in `build.mk` (http://cs/chromeos_public/src/platform/ec/test/build.mk) it doesn\u0027t look for a `power_utilization.o` file.",
+      "parentUuid": "a6c9d63d_f51d6c9a",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5effe052_cdabb254",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-04T18:45:05Z",
       "side": 1,
       "message": "It\u0027s hard to tell what these represent without reading through the code where it\u0027s used. Can you create a simple class to represent it? One way would be to do something like (not sure about these names):\n\n```\n@dataclass\nclass PowerData:\n  expected_mw: int\n  range_mw: int\n\n@dataclass\nclass PowerConfig:\n  fp_sensor: PowerData\n  mcu: PowerData\n```",
+      "range": {
+        "startLine": 195,
+        "startChar": 39,
+        "endLine": 195,
+        "endChar": 61
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791c9e16_347535a7",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a good idea",
+      "parentUuid": "5effe052_cdabb254",
       "range": {
         "startLine": 195,
         "startChar": 39,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4b1039a_34435bc3",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "Also a good idea, I\u0027ll do it asap",
+      "parentUuid": "7069db47_05cf3843",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 14
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05bf2dd2_63ac2361",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-04T18:45:05Z",
       "side": 1,
       "message": "Looks like the two `finish_regexes` are the same. Can you make them a constant like the other regexes?",
+      "range": {
+        "startLine": 388,
+        "startChar": 32,
+        "endLine": 388,
+        "endChar": 63
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa966ad0_3cff2eae",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "Yes, will do",
+      "parentUuid": "05bf2dd2_63ac2361",
       "range": {
         "startLine": 388,
         "startChar": 32,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a12798b8_473a6283",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "Good point, will do",
+      "parentUuid": "08129a2a_03fed472",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 29
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88f750c3_68221ea6",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-04T18:45:05Z",
       "side": 1,
       "message": "How about `use_production_image`/`test_production_image` or something along those lines?\n\nCan you",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 73
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc76db62_59c402bf",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "88f750c3_68221ea6",
       "range": {
         "startLine": 628,
         "startChar": 0,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e88933b2_becf8ad7",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "Oh, I like that idea! Thanks!",
+      "parentUuid": "acffeb38_d503ce6b",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 753,
+        "endChar": 28
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97c714bf_652e3d5c",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-04T18:52:12Z",
       "side": 1,
       "message": "Same comment as above about default `post_test_callback`.",
+      "range": {
+        "startLine": 785,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 41
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e6f1fd_dc56307d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "97c714bf_652e3d5c",
       "range": {
         "startLine": 785,
         "startChar": 0,
@@ -210,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b398adab_32fbd14f",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "I suppose so. I think the reason why I didn\u0027t split them is because there wasn\u0027t a way to test using the app image without adding a test. I\u0027ll see if there\u0027s a useful set.",
+      "parentUuid": "b70cd54f_47f527b2",
+      "range": {
+        "startLine": 833,
+        "startChar": 0,
+        "endLine": 842,
+        "endChar": 47
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8180a8d_c6aefada",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -233,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56fc6793_504a4fbc",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "e8180a8d_c6aefada",
+      "range": {
+        "startLine": 851,
+        "startChar": 12,
+        "endLine": 851,
+        "endChar": 31
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c94d80db_cec9b89a",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -244,6 +484,30 @@
       "writtenOn": "2022-10-04T18:45:05Z",
       "side": 1,
       "message": "Unrelated change? If so, can you split it into a separate CL: go/small-cls?",
+      "range": {
+        "startLine": 874,
+        "startChar": 8,
+        "endLine": 874,
+        "endChar": 28
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dbea186_1059ac25",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T20:14:15Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "c94d80db_cec9b89a",
       "range": {
         "startLine": 874,
         "startChar": 8,
