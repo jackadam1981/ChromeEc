@@ -75,6 +75,8 @@ get_property(APP_LTO_PROPERTY TARGET app PROPERTY INTERPROCEDURAL_OPTIMIZATION)
 set_property(TARGET ec_shim PROPERTY INTERPROCEDURAL_OPTIMIZATION ${APP_LTO_PROPERTY})
 set_property(TARGET ec_shim APPEND PROPERTY COMPILE_DEFINITIONS __REQUIRE_ZEPHYR_GPIOS__)
 
+add_library(cros_ec INTERFACE)
+
 # Switch from the "zephyr" library to the "app" library for all Chromium OS
 # sources.
 set(ZEPHYR_CURRENT_LIBRARY app)
@@ -84,11 +86,13 @@ set(ZEPHYR_CURRENT_LIBRARY app)
 function(cros_ec_library_include_directories)
   target_include_directories(app PUBLIC ${ARGN})
   target_include_directories(ec_shim PRIVATE ${ARGN})
+  target_include_directories(cros_ec INTERFACE ${ARGN})
 endfunction()
 function(cros_ec_library_include_directories_ifdef feature_toggle)
   if(${${feature_toggle}})
     target_include_directories(app PUBLIC ${ARGN})
     target_include_directories(ec_shim PRIVATE ${ARGN})
+    target_include_directories(cros_ec INTERFACE ${ARGN})
   endif()
 endfunction()
 
@@ -361,8 +365,6 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SWITCH
                                                 "${PLATFORM_EC}/common/switch.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SWITCHCAP_LN9310
                                                 "${PLATFORM_EC}/driver/ln9310.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SPI_FLASH_REGS
-                                                "${PLATFORM_EC}/common/spi_flash_reg.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_STM_MEMS_COMMON
                                                 "${PLATFORM_EC}/driver/stm_mems_common.c")
 
