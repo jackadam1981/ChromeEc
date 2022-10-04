@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e210ed_ff0ab1a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-04T03:11:55Z",
+      "side": 1,
+      "message": "Added a test, which required fixing some of the driver test boilerplate to work without the intel retimer driver so we can disable config options that conflict with this feature.",
+      "revId": "7caab3d27685765113049f33165894b222d28672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
