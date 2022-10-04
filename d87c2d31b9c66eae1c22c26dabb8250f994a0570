@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a878b4b0_9d20c6c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Since you\u0027re adding C-code, you\u0027ll want to add something like: LOW_COVERAGE_REASON\u003dSkyrim board tests not created yet: b/247151116\n\nTo avoid the coverage checker blocking submission.  I\u0027m hoping to get unit tests set up for skyrim in the next month or so, after which it\u0027ll be easier to model new board code tests after those.",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "46045513_fb4d1b9e",
@@ -14,6 +31,91 @@
       "writtenOn": "2022-10-04T08:29:35Z",
       "side": 1,
       "message": "LOW_COVERAGE_REASON\u003dSkyrim board tests not created yet: b/247151116",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9951132e_92fff907",
+        "filename": "zephyr/projects/skyrim/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:53:41Z",
+      "side": 1,
+      "message": "If we\u0027re changing this file for everyone, the model we\u0027re probably moving towards is creating a common dtsi file (ex. i2c_common.dtsi) for all the project dts files to #include",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe707a1_b93d0ed4",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Is this file necessary?  I see it referenced in common/keyboard_scan.c but only when CONFIG_KEYBOARD_MULTIPLE is set",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4ab028_79f84fab",
+        "filename": "zephyr/projects/skyrim/keyboard_frostflow.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Keith might have better insights here, but if you only need to override this field, you may be able to do so in frostflow.dts.",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8d6378_8df9df9e",
+        "filename": "zephyr/projects/skyrim/prj_winterhold.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:53:41Z",
+      "side": 1,
+      "message": "Should this change be in prj_frostflow.conf?  Also, I believe VIVALDI is defaulted to \"y\" for boards in Kconfig.keyboard",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d70782a7_95e90ae5",
+        "filename": "zephyr/projects/skyrim/src/frostflow/keyboard_customization.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:53:41Z",
+      "side": 1,
+      "message": "I\u0027m unsure if this interface is still relevant.  I see it in the chip/npcx code but I thought we didn\u0027t use that for zephyr.  Cc-ing Keith for confirmation",
       "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
