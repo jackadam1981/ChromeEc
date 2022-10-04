@@ -5,8 +5,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "stack_trace.h"
+
+struct host_panic_data {
+	uint32_t reason;
+	uint32_t info;
+	uint8_t exception;
+};
+
+static struct host_panic_data panic_data;
 
 void panic_assert_fail(const char *msg, const char *func, const char *fname,
 		       int linenum)
@@ -19,4 +28,21 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
 	fflush(stdout);
 
 	exit(1);
+}
+
+void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
+{
+	panic_data.reason = reason;
+	panic_data.info = info;
+	panic_data.exception = exception;
+}
+
+void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
+{
+	if (reason)
+		*reason = panic_data.reason;
+	if (info)
+		*info = panic_data.info;
+	if (exception)
+		*exception = panic_data.exception;
 }
