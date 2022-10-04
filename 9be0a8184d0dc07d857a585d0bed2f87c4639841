@@ -16,6 +16,24 @@
       "message": "Note that `make -j buildall` will fail on fingerprint firmware but `emerge-brya chromeo-ec` completed successfully.",
       "revId": "9be0a8184d0dc07d857a585d0bed2f87c4639841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2c75b0_bea0a490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-04T19:35:08Z",
+      "side": 1,
+      "message": "that\u0027s kind of unfortunate - do we have a bug open to see if we can\n\"fix\" this? someone\u0027s eventually going to stumble over this and\nwonder what\u0027s going on.",
+      "parentUuid": "2c8c3d7f_7ed6617c",
+      "revId": "9be0a8184d0dc07d857a585d0bed2f87c4639841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
