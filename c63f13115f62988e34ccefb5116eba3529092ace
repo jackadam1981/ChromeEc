@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5172c6b_2a2843af",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:19:14Z",
+      "side": 1,
+      "message": "It occurs to me that always setting the USB3 lines to be enabled on UFP connections will have implications for power consumption when we\u0027re the UFP and change our general mux settings for all partners where we\u0027re in that data role (probably mostly charger connections which don\u0027t DR swap, and also chromebook-chromebook connections)\n\nWas this change necessary for the compliance test to pass?  Caveh, do you have any concerns or reservations about enabling this for all bryas?",
+      "revId": "c63f13115f62988e34ccefb5116eba3529092ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
