@@ -218,6 +218,21 @@ int crec_flash_bank_start_offset(int bank)
 	return offset;
 }
 
+void crec_flash_print_region_info(void)
+{
+	int i;
+
+	ccprintf("Regions:\n");
+	for (i = 0; i < ARRAY_SIZE(flash_bank_array); i++) {
+		ccprintf(" %d region%s:\n", flash_bank_array[i].count,
+			 (flash_bank_array[i].count == 1 ? "" : "s"));
+		ccprintf("  Erase:   %4d B (to %d-bits)\n",
+			 1 << flash_bank_array[i].erase_size_exp,
+			 CONFIG_FLASH_ERASED_VALUE32 ? 1 : 0);
+		ccprintf("  Size/Protect: %4d B\n",
+			 1 << flash_bank_array[i].size_exp);
+	}
+}
 #endif /* CONFIG_FLASH_MULTIPLE_REGION */
 
 static int flash_range_ok(int offset, int size_req, int align)
@@ -986,16 +1001,7 @@ static int command_flash_info(int argc, const char **argv)
 	ccprintf("Write:   %4d B (ideal %d B)\n", CONFIG_FLASH_WRITE_SIZE,
 		 CONFIG_FLASH_WRITE_IDEAL_SIZE);
 #ifdef CONFIG_FLASH_MULTIPLE_REGION
-	ccprintf("Regions:\n");
-	for (i = 0; i < ARRAY_SIZE(flash_bank_array); i++) {
-		ccprintf(" %d region%s:\n", flash_bank_array[i].count,
-			 (flash_bank_array[i].count == 1 ? "" : "s"));
-		ccprintf("  Erase:   %4d B (to %d-bits)\n",
-			 1 << flash_bank_array[i].erase_size_exp,
-			 CONFIG_FLASH_ERASED_VALUE32 ? 1 : 0);
-		ccprintf("  Size/Protect: %4d B\n",
-			 1 << flash_bank_array[i].size_exp);
-	}
+	crec_flash_print_region_info();
 #else
 	ccprintf("Erase:   %4d B (to %d-bits)\n", CONFIG_FLASH_ERASE_SIZE,
 		 CONFIG_FLASH_ERASED_VALUE32 ? 1 : 0);
