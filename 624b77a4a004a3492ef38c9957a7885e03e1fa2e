@@ -16,6 +16,24 @@
       "message": "You should be able to just add this to a node within winterhold.dts, and keep all the bus definitions and enablement common.\n\nSince deleting a node isn\u0027t working, the other chargers could move into their respective dts files.",
       "revId": "624b77a4a004a3492ef38c9957a7885e03e1fa2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e459885_1a16986d",
+        "filename": "zephyr/projects/skyrim/i2c_winterhold.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-10-04T03:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ebdcf55_28338577",
+      "revId": "624b77a4a004a3492ef38c9957a7885e03e1fa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
