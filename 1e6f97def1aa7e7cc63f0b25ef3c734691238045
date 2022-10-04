@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c4cf1c_fe0a1e87",
+        "filename": "zephyr/test/drivers/host_cmd/src/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-04T22:10:08Z",
+      "side": 1,
+      "message": "Maybe add a TODO to test at least one host command via the epsi path or whatever the async host commands normally do?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "1e6f97def1aa7e7cc63f0b25ef3c734691238045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
