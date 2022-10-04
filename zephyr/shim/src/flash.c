@@ -167,6 +167,176 @@ uint32_t crec_flash_physical_get_writable_flags(uint32_t cur_flags)
 	return ret;
 }
 
+#if IS_ENABLED(CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT)
+int crec_flash_bank_size(int bank)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, bank, &info);
+
+	if (rv)
+		return -1;
+
+	return info.size;
+}
+
+int crec_flash_bank_erase_size(int bank)
+{
+	return crec_flash_bank_size(bank);
+}
+
+int crec_flash_bank_index(int offset)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_offs(flash_ctrl_dev, offset, &info);
+
+	if (rv)
+		return -1;
+
+	return info.index;
+}
+
+int crec_flash_bank_count(int offset, int size)
+{
+	int begin, end;
+
+	if (size < 1)
+		return -1;
+
+	begin = crec_flash_bank_index(offset);
+	end = crec_flash_bank_index(offset + size - 1);
+
+	if (begin < 0 || end < 0)
+		return -1;
+
+	return end - begin + 1;
+}
+
+int crec_flash_bank_start_offset(int bank)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, bank, &info);
+
+	if (rv)
+		return -1;
+
+	return info.start_offset;
+}
+
+/*
+ * Flash_get_region() is used to get information about region which contains
+ * 'start_idx' sector. Information about region is saved in a ec_flash_bank
+ * structure. Function returns true if there are more regions. False is returned
+ * if there was an error or returned region is the last one.
+ *
+ * Please note that 'start_idx' should point to first sector of the region
+ * otherwise number of sectors in region will be wrong.
+ */
+static bool flash_get_region(size_t start_idx, struct ec_flash_bank *region)
+{
+	struct flash_pages_info first, next;
+	size_t total_pages;
+	int rv;
+
+	total_pages = flash_get_page_count(flash_ctrl_dev);
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, start_idx, &first);
+	if (rv)
+		return false;
+
+	/* Region has sectors with the same size, save these information now. */
+	region->count = 1;
+	region->size_exp = __fls(first.size);
+	region->write_size_exp = __fls(CONFIG_FLASH_WRITE_SIZE);
+	region->erase_size_exp = __fls(first.size);
+	region->protect_size_exp = __fls(first.size);
+
+	for (size_t i = start_idx + 1; i < total_pages; i++) {
+		rv = flash_get_page_info_by_idx(flash_ctrl_dev, i, &next);
+		if (rv)
+			return false;
+
+		/*
+		 * If size of the next page is different than size of the first
+		 * page of this region then we know how many pages the region
+		 * has and this is not the last region.
+		 */
+		if (next.size != first.size)
+			return true;
+
+		region->count++;
+	}
+
+	return false;
+}
+
+/*
+ * Both crec_flash_print_region_into() and crec_flash_response_fill_banks()
+ * could be easily implemented if we had an access to flash layout structure
+ * that aggregates pages with the same size in one entry ('compressed' form).
+ *
+ * Zephyr internally keeps flash layout in structure of this type, but using the
+ * flash API it's only possible to get information about single pages. Extending
+ * flash API encounters resistance from developers.
+ */
+void crec_flash_print_region_info(void)
+{
+	const struct flash_parameters *params;
+	struct ec_flash_bank region;
+	bool cont;
+	size_t sector_idx = 0;
+
+	params = flash_get_parameters(flash_ctrl_dev);
+	if (!params)
+		return;
+
+	cprintf(CC_COMMAND, "Regions:\n");
+	do {
+		cont = flash_get_region(sector_idx, &region);
+		cprintf(CC_COMMAND, " %d region%s:\n", region.count,
+			(region.count == 1 ? "" : "s"));
+		cprintf(CC_COMMAND, "  Erase:   %4d B (to %d-bits)\n",
+			1 << region.erase_size_exp,
+			params->erase_value ? 1 : 0);
+		cprintf(CC_COMMAND, "  Size/Protect: %4d B\n",
+			1 << region.size_exp);
+
+		sector_idx += region.count;
+	} while (cont);
+}
+
+void crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
+				    int num_banks)
+{
+	struct ec_flash_bank region;
+	bool cont;
+	size_t sector_idx = 0;
+	int banks_idx = 0;
+
+	do {
+		cont = flash_get_region(sector_idx, &region);
+		if (banks_idx < num_banks)
+			memcpy(&r->banks[banks_idx], &region,
+			       sizeof(struct ec_flash_bank));
+
+		sector_idx += region.count;
+		banks_idx++;
+	} while (cont);
+
+	r->num_banks_desc = MIN(banks_idx, num_banks);
+	r->num_banks_total = banks_idx;
+}
+
+int crec_flash_total_banks(void)
+{
+	return flash_get_page_count(flash_ctrl_dev);
+}
+#endif /* CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT */
+
 #if IS_ENABLED(CONFIG_SHELL)
 static int command_flashchip(const struct shell *shell, size_t argc,
 			     char **argv)
