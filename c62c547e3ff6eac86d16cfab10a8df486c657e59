@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391709ae_24859b98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-04T18:08:05Z",
+      "side": 1,
+      "message": "Note that while the CMakeLists.txt here looks ugly, I left it verbose on purpose. The next step will be to generate an extensions.cmake similar to Zephyr with utilities to make this simpler. I\u0027ll be using https://cs.opensource.google/pigweed/pigweed/+/master:pw_log/CMakeLists.txt as a guide for create a module + tests using a single cmake function for each.",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
