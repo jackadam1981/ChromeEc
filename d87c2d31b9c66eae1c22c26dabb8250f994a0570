@@ -54,6 +54,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5534453_22f11cdd",
+        "filename": "zephyr/projects/skyrim/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T19:50:59Z",
+      "side": 1,
+      "message": "Yes, please name this file \"keyboard_common.dtsi\", and add `#include \"keyboard_common.dtsi\"` to morthal.dts (and the other boards) instead of adding the file to the \"extra_dts_overlays\".",
+      "parentUuid": "9951132e_92fff907",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b3d9bb_72b7d751",
+        "filename": "zephyr/projects/skyrim/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T19:50:59Z",
+      "side": 1,
+      "message": "See above. Name the file \"keyboard_frostflow.dtsi\" and include the file from frostflow.dts.",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbe707a1_b93d0ed4",
         "filename": "zephyr/projects/skyrim/CMakeLists.txt",
         "patchSetId": 5
@@ -65,6 +106,47 @@
       "writtenOn": "2022-10-04T16:53:41Z",
       "side": 1,
       "message": "Is this file necessary?  I see it referenced in common/keyboard_scan.c but only when CONFIG_KEYBOARD_MULTIPLE is set",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31485bca_e3164a59",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T19:50:59Z",
+      "side": 1,
+      "message": "Looks like include/keyboard_config.h also has `#include \"keyboard_customization.h\"`, so I think this is required.",
+      "parentUuid": "dbe707a1_b93d0ed4",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd715a5e_a999ded6",
+        "filename": "zephyr/projects/skyrim/keyboard_frostflow.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T19:50:59Z",
+      "side": 1,
+      "message": "Use `#include \"keyboard_common.dtsi\"` here to avoid duplicating the kblight and pwm1 nodes.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 2
+      },
       "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +170,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d3b3e79_9bd0e357",
+        "filename": "zephyr/projects/skyrim/keyboard_frostflow.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T19:50:59Z",
+      "side": 1,
+      "message": "Yes, once you add the include for keyboard_common.dts, you can just set the `pinctrl-0` property here.  No need to set the `status` and `pinctrl-names` properties.",
+      "parentUuid": "7a4ab028_79f84fab",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b8d6378_8df9df9e",
         "filename": "zephyr/projects/skyrim/prj_winterhold.conf",
         "patchSetId": 5
@@ -105,6 +205,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "106c82a9_37ed64bb",
+        "filename": "zephyr/projects/skyrim/prj_winterhold.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T19:50:59Z",
+      "side": 1,
+      "message": "Delete this space.",
+      "range": {
+        "startLine": 21,
+        "startChar": 35,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d70782a7_95e90ae5",
         "filename": "zephyr/projects/skyrim/src/frostflow/keyboard_customization.c",
         "patchSetId": 5
@@ -116,6 +239,24 @@
       "writtenOn": "2022-10-04T16:53:41Z",
       "side": 1,
       "message": "I\u0027m unsure if this interface is still relevant.  I see it in the chip/npcx code but I thought we didn\u0027t use that for zephyr.  Cc-ing Keith for confirmation",
+      "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aabd56f_b64ceffb",
+        "filename": "zephyr/projects/skyrim/src/frostflow/keyboard_customization.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T19:50:59Z",
+      "side": 1,
+      "message": "Correct - Zephyr does not support this custom keyboard interface. As noted in the CL:3928565, board_keyboard_drive_col() shouldn\u0027t be required.  The function `cros_kb_raw_set_col2()` can be modified to override which column pin is inverted.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/0fd9ef47/zephyr/include/drivers/cros_kb_raw.h#187\n\nFor the frostflow design, you want to make sure the `gpio-kbd-kso2` alias is assigned to the `gpio_ec_kso_02_inv` pin.",
+      "parentUuid": "d70782a7_95e90ae5",
       "revId": "d87c2d31b9c66eae1c22c26dabb8250f994a0570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
