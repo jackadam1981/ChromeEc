@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cdae904_07cf3842",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T19:26:09Z",
+      "side": 1,
+      "message": "Delete this step.  The Zephyr drivers do not provide support for this.  By default, the Zephyr keyboard drivers will automatically invert column 2.\n\nIf a different pin is connected to the refresh key, then the board can set the devicetree alias \"gpio-kbd-kso2\" to the correct pin.\n\nFor example:\n```\naliases {\n    gpio-kbd-kso2 \u003d gpio_ec_kso_02_inv; /* Normal case, use column 2 */\n    gpio-kbd-kso2 \u003d gpio_ec_kso_04_inv; /* Use column 4 for refresh key */\n    \n```",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "6f289744123543c5c9c5047b217c064d9a354918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
