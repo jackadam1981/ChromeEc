@@ -39,6 +39,48 @@
       "message": "`depends on ARCH_POSIX`",
       "revId": "2e91d64dc310bd2b18b3323a0016477d2b94d948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6a7b62_7c68808c",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T20:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b095df_6de50007",
+      "revId": "2e91d64dc310bd2b18b3323a0016477d2b94d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14055f6a_bf6ebef0",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T20:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a71bcad_2165eb1d",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "2e91d64dc310bd2b18b3323a0016477d2b94d948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
