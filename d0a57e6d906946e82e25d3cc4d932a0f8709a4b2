@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ae28a55_05fd3bdd",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/prj.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T23:09:54Z",
+      "side": 1,
+      "message": "Needs a newline.",
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b45cc82_4838a152",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T23:09:54Z",
+      "side": 1,
+      "message": "Not a blocking comment, but asserts in helper functions are discouraged because they obfuscate the test failure. This is a problem if a single test calls the helper multiple times.  For instance:\n```\nstatic void myhelper(...)\n    zassert(...);\n    \nZTEST(mysuite, mytest)\n{\n    /* Setup 1st test conditions */\n    myhelper();\n    /* Setup 2nd test conditions */\n    myhelper();\n```\n\nIn this example, the test assertion lists a line number within the `myhelper()` body and the log indicates that mytest failed.  But there isn\u0027t enough information captured to know if the first or send call to `myhelper()` caused the test to fail.\n\nThe preferred mechanism is for helper functions to return status to the calling test, and have the actual test make the assert.  Your helpers are only getting called once per test, so it\u0027s okay.",
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85c76d64_8b3ea8c4",
         "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
         "patchSetId": 11
