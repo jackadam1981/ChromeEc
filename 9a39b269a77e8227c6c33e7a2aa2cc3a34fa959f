@@ -16,6 +16,24 @@
       "message": "This seems very specific for a stub CL, where is this going? Ideally we wouldn\u0027t have test options unless we have to, imagine right now if you run the individual test with no options the test does nothing.",
       "revId": "9a39b269a77e8227c6c33e7a2aa2cc3a34fa959f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0183fa09_283606d9",
+        "filename": "zephyr/test/rex/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-10-04T05:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370481a2_922a09b7",
+      "revId": "9a39b269a77e8227c6c33e7a2aa2cc3a34fa959f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
