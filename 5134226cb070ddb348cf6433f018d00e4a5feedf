@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b122dd4_c1921d15",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-10-04T02:41:48Z",
+      "side": 1,
+      "message": "Hi Tim, according the b/232946420#comment85, for temperature share EC_MEMMAP_ not submit yet, I think we can use the bit4 for store the temperature state.",
+      "parentUuid": "9d8b99cb_d9abd79e",
+      "revId": "5134226cb070ddb348cf6433f018d00e4a5feedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "054faf4b_21ae875e",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
