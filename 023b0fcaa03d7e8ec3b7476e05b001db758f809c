@@ -16,6 +16,23 @@
       "message": "Seems fine to me, but looks like build failures.",
       "revId": "023b0fcaa03d7e8ec3b7476e05b001db758f809c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20afeb3_1d99d44c",
+        "filename": "Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-04T21:46:50Z",
+      "side": 1,
+      "message": "oops, left this one here, should be in the next CL",
+      "revId": "023b0fcaa03d7e8ec3b7476e05b001db758f809c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
