@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8c83547_d4deaa5f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:11:50Z",
+      "side": 1,
+      "message": "Thanks for the bug comment!  It appears to reference bit 5 for this bit, but the CL is now using bit 6?",
+      "parentUuid": "7f074db4_c7103d45",
+      "revId": "5134226cb070ddb348cf6433f018d00e4a5feedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "054faf4b_21ae875e",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
