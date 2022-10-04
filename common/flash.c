@@ -218,6 +218,46 @@ int crec_flash_bank_start_offset(int bank)
 	return offset;
 }
 
+void crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
+				    int num_banks)
+{
+	const struct ec_flash_bank *banks = flash_bank_array;
+	int banks_to_copy = MIN(ARRAY_SIZE(flash_bank_array), num_banks);
+
+	if (!r)
+		return;
+
+	memcpy(r->banks, banks, banks_to_copy * sizeof(struct ec_flash_bank));
+	r->num_banks_desc = banks_to_copy;
+}
+
+int crec_flash_bank_total_entries(void)
+{
+	return ARRAY_SIZE(flash_bank_array);
+}
+#else /* CONFIG_FLASH_MULTIPLE_REGION */
+#if CONFIG_FLASH_BANK_SIZE < CONFIG_FLASH_ERASE_SIZE
+#error "Flash: Bank size expected bigger or equal to erase size."
+#endif
+void crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
+				    int num_banks)
+{
+	if (!r || num_banks < 1)
+		return;
+
+	r->banks[0].count = CONFIG_FLASH_SIZE_BYTES / CONFIG_FLASH_BANK_SIZE;
+	r->banks[0].size_exp = __fls(CONFIG_FLASH_BANK_SIZE);
+	r->banks[0].write_size_exp = __fls(CONFIG_FLASH_WRITE_SIZE);
+	r->banks[0].erase_size_exp = __fls(CONFIG_FLASH_ERASE_SIZE);
+	r->banks[0].protect_size_exp = __fls(CONFIG_FLASH_BANK_SIZE);
+
+	r->num_banks_desc = 1;
+}
+
+int crec_flash_bank_total_entries(void)
+{
+	return 1;
+}
 #endif /* CONFIG_FLASH_MULTIPLE_REGION */
 
 int crec_flash_total_banks(void)
@@ -1253,32 +1293,14 @@ static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_info_2 *p_2 = args->params;
 	struct ec_response_flash_info_2 *r_2 = args->response;
-#ifdef CONFIG_FLASH_MULTIPLE_REGION
-	int banks_size = ARRAY_SIZE(flash_bank_array);
-	const struct ec_flash_bank *banks = flash_bank_array;
-#else
+#ifndef CONFIG_FLASH_MULTIPLE_REGION
 	struct ec_response_flash_info_1 *r_1 = args->response;
-#if CONFIG_FLASH_BANK_SIZE < CONFIG_FLASH_ERASE_SIZE
-#error "Flash: Bank size expected bigger or equal to erase size."
 #endif
-	struct ec_flash_bank single_bank = {
-		.count = CONFIG_FLASH_SIZE_BYTES / CONFIG_FLASH_BANK_SIZE,
-		.size_exp = __fls(CONFIG_FLASH_BANK_SIZE),
-		.write_size_exp = __fls(CONFIG_FLASH_WRITE_SIZE),
-		.erase_size_exp = __fls(CONFIG_FLASH_ERASE_SIZE),
-		.protect_size_exp = __fls(CONFIG_FLASH_BANK_SIZE),
-	};
-	int banks_size = 1;
-	const struct ec_flash_bank *banks = &single_bank;
-#endif
-	int banks_len;
-	int ideal_size;
-
 	/*
 	 * Compute the ideal amount of data for the host to send us,
 	 * based on the maximum response size and the ideal write size.
 	 */
-	ideal_size =
+	int ideal_size =
 		(args->response_max - sizeof(struct ec_params_flash_write)) &
 		~(CONFIG_FLASH_WRITE_IDEAL_SIZE - 1);
 	/*
@@ -1303,11 +1325,24 @@ static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 		r_2->flags |= EC_FLASH_INFO_SELECT_REQUIRED;
 #endif
 		r_2->write_ideal_size = ideal_size;
-		r_2->num_banks_total = banks_size;
-		r_2->num_banks_desc = MIN(banks_size, p_2->num_banks_desc);
-		banks_len = r_2->num_banks_desc * sizeof(struct ec_flash_bank);
-		memcpy(r_2->banks, banks, banks_len);
-		args->response_size += banks_len;
+		r_2->num_banks_total = crec_flash_bank_total_entries();
+		/*
+		 * Fill r_2->num_banks_desc and r_2->banks.
+		 * For those who wonder why we are passing the whole response
+		 * structure instead of pointer to r_2->banks: The response
+		 * structure is marked as '__ec_align4' but it's packed and
+		 * aligned only if CONFIG_HOSTCMD_ALIGNED is enabled. On most
+		 * systems the option is not enabled, so the response structure
+		 * is packed only. It means that the structure can be placed at
+		 * ANY address. Passing the response structure gives information
+		 * to the compiler how members should be accessed.
+		 * Taking r_2->banks address, passing it as uint8_t and casting
+		 * it is dangerous because the compiler will assume that the
+		 * address is aligned and you won't get any warning about it.
+		 */
+		crec_flash_response_fill_banks(r_2, p_2->num_banks_desc);
+		args->response_size +=
+			r_2->num_banks_desc * sizeof(struct ec_flash_bank);
 		return EC_RES_SUCCESS;
 	}
 #ifdef CONFIG_FLASH_MULTIPLE_REGION
