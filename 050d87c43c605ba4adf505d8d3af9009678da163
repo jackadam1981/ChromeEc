@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b2c75a_3ead746a",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T19:06:09Z",
+      "side": 1,
+      "message": "Why `uint8_t*` rather than `struct ec_flash_bank *` and `buf_size` rather than `max_banks`?",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 37
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf9f2ef_6e7f6951",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T19:06:09Z",
+      "side": 1,
+      "message": "nit: Can you add a ` /* CONFIG_FLASH_MULTIPLE_REGION */` comment to make it clear what the `#else` is for?",
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb4b540_a612ab35",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T19:06:09Z",
+      "side": 1,
+      "message": "Why uint8_t* rather than `struct ec_flash_bank *` and `buf_size` rather than `max_banks`?",
+      "range": {
+        "startLine": 259,
+        "startChar": 30,
+        "endLine": 259,
+        "endChar": 37
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b3afd3_e3f067c6",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T19:06:09Z",
+      "side": 1,
+      "message": "nit: `bytes_copied` reads to me like \"the number of bytes you want to write\" rather than \"the number of bytes in the config structure\". Maybe rename to `flash_bank_config_size` or something?",
+      "range": {
+        "startLine": 1319,
+        "startChar": 2,
+        "endLine": 1319,
+        "endChar": 14
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6952397c_41ab1cc1",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-04T19:06:09Z",
+      "side": 1,
+      "message": "Shouldn\u0027t `num_banks_desc` be set to `r_2-\u003enum_banks_total`? This seems to set it to the size of the config structure.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 4,
+        "endLine": 1323,
+        "endChar": 45
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
