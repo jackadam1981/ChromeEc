@@ -19,6 +19,8 @@
 
 #define RECORD_TIME (2 * MINUTE)
 
+static timestamp_t deadline;
+
 /* MFT channels. These are logically separate from pwm_channels. */
 const struct mft_t mft_channels[] = {
 	[MFT_CH_0] = {
@@ -100,10 +102,18 @@ static const struct thermal_policy_config
 	},
 };
 
+static void fan_deadline_correct(void)
+{
+	/*
+	 * Update deadline after resuming to avoid recording actual
+	 * RPM every 1 second. Deadline won't update in S0ix.
+	 */
+	deadline.val = get_time().val;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, fan_deadline_correct, HOOK_PRIO_DEFAULT);
+
 static void fan_get_rpm(int fan)
 {
-	static timestamp_t deadline;
-
 	/* Record actual RPM every 2 minutes. */
 	if (timestamp_expired(deadline, NULL)) {
 		ccprints("fan actual rpm: %d", fan_get_rpm_actual(FAN_CH(fan)));
