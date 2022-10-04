@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61c7fb7_e699434a",
+        "filename": "Makefile.ide",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-04T00:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c044441_1e2b5529",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "f3c3207b7828ffab12a975c486251ca0d3b9d616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd6c96be_fea7caaa",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-03T20:38:23Z",
       "side": 1,
       "message": "Nit: I started to ask if this could be a sequence of makefile function calls, because I think that might be easier to read. Something like this.\n```\ncmd_json_list \u003d $(subst $(space),$(space)$(comma),$(sort $(1)))\n```\nI think `sort` would implicitly transform any newlines to spaces.\n\nBut this is also the kind of thing that could be tedious to get right.\n\nHow would you feel about passing `-E` to `sed` to use extended regexes and get rid of some of those backslashes? That might do a bit to make this easier to read.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "f3c3207b7828ffab12a975c486251ca0d3b9d616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b8980c_dbb86f50",
+        "filename": "Makefile.ide",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-04T00:45:13Z",
+      "side": 1,
+      "message": "Agreed, it might be nicer, but I don\u0027t think I can get Make to do this transformation, since make\u0027s text functions work on words/tokens between the space separators. I did try again, tho.\n\nCheckout these examples:\n\n```shell\n$(info $(subst  ,S,test inside quotes))\n# is interpreted equally to\n$(info $(subst ,S,test inside quotes))\n# is interpreted equally to\n$(info $(subst ,S,\"test inside quotes\"))\n# is interpreted equally to\nspace \u003d  \n$(info $(subst $(space),S,test inside quotes))\n# all of which just put a single S at the end of the the line\n```\n\nMaking `space \u003d \" \"` means that `subst` sees two words, `\"` and `\"`.\n\nI am very willing to change this to something that is more pleasant.\n\n---\n\nHmm, I would have thought that `strip` would have removed the trailing newline, too, but no such luck. Anyways, we don\u0027t want to sort the arg.\n\n---\n\n\u003e How would you feel about passing -E to sed to use extended regexes and get rid of some of those backslashes? That might do a bit to make this easier to read.\n\nThat\u0027s works! But, it still doesn\u0027t remove my double escaped quotes.",
+      "parentUuid": "bd6c96be_fea7caaa",
       "range": {
         "startLine": 67,
         "startChar": 0,
