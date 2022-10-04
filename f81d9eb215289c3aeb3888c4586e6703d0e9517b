@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d42b02_3cff03fe",
+        "filename": "core/host/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-04T21:19:20Z",
+      "side": 1,
+      "message": "Why don\u0027t you use panic_get_data()? chip/host/system.c already has it.",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "f81d9eb215289c3aeb3888c4586e6703d0e9517b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
