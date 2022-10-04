@@ -70,6 +70,12 @@
 
 #define CONFIG_USBC_RETIMER_INTEL_BB
 
+/* banshee VID & PID */
+#undef CONFIG_USB_VID
+#undef CONFIG_USB_PID
+#define CONFIG_USB_VID 0x32AC
+#define CONFIG_USB_PID 0x000D
+
 /* I2C speed console command */
 #define CONFIG_CMD_I2C_SPEED
 
