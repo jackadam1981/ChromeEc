@@ -118,6 +118,30 @@
       },
       "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2308bfe_67043671",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3280,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-04T10:14:58Z",
+      "side": 1,
+      "message": "Hi @Dai,\n\nsince you had mentioned to update the fan based on fan index board_get_fan_speed(int fan),\nhad a bit doubt on that so just did a blame to find the first\nimplementation of this code. Below is the explanation on this,\n(CL:240517) (CL:66688)\n\n```\nFor fan cooling, each temp sensor will have two levels.\nTEMP_FAN_OFF\n* At or below this temperature, no active cooling is needed.\nTEMP_FAN_MAX\n* At or above this temperature, active cooling should be running at maximum.\nThe highest level of all temp sensors will be used to request the amount of\nactive cooling needed.\n\nWhen displaying the temps, if the sensor has valid entries to\ncontrol the target fan speed, show them. This lets us see which\nsensor is the main player in the cooling needed without doing a\nbunch of math.\n```\nSo, the value doesn\u0027t represent the actual fan percentage but the amount of \ncooling what the respective sensor would require. Do we need to replace this \nwith the actual fanduty?",
+      "parentUuid": "cf48a6b0_8809fa26",
+      "range": {
+        "startLine": 3278,
+        "startChar": 0,
+        "endLine": 3280,
+        "endChar": 42
+      },
+      "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
