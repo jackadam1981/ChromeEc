@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07056f8_fd290a90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T23:48:01Z",
+      "side": 1,
+      "message": "Turns out this change breaks the rtc tests, and adding some more K_SECOND(1) sleeps doesn\u0027t really help.",
+      "revId": "0f1a4055e0720738421b0e78151330ac71b22353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
