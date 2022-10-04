@@ -233,6 +233,51 @@ void crec_flash_print_region_info(void)
 			 1 << flash_bank_array[i].size_exp);
 	}
 }
+
+int crec_flash_bank_fill_data(uint8_t *buf, int buf_size)
+{
+	const struct ec_flash_bank *banks = flash_bank_array;
+	int banks_to_copy = MIN(ARRAY_SIZE(flash_bank_array),
+				buf_size / sizeof(struct ec_flash_bank));
+
+	if (!buf)
+		return -1;
+
+	memcpy(buf, banks, banks_to_copy * sizeof(struct ec_flash_bank));
+
+	return banks_to_copy * sizeof(struct ec_flash_bank);
+}
+
+int crec_flash_bank_total_entries(void)
+{
+	return ARRAY_SIZE(flash_bank_array);
+}
+#else
+#if CONFIG_FLASH_BANK_SIZE < CONFIG_FLASH_ERASE_SIZE
+#error "Flash: Bank size expected bigger or equal to erase size."
+#endif
+int crec_flash_bank_fill_data(uint8_t *buf, int buf_size)
+{
+	struct ec_flash_bank bank = {
+		.count = CONFIG_FLASH_SIZE_BYTES / CONFIG_FLASH_BANK_SIZE,
+		.size_exp = __fls(CONFIG_FLASH_BANK_SIZE),
+		.write_size_exp = __fls(CONFIG_FLASH_WRITE_SIZE),
+		.erase_size_exp = __fls(CONFIG_FLASH_ERASE_SIZE),
+		.protect_size_exp = __fls(CONFIG_FLASH_BANK_SIZE),
+	};
+
+	if (!buf || buf_size < sizeof(struct ec_flash_bank))
+		return -1;
+
+	memcpy(buf, &bank, sizeof(struct ec_flash_bank));
+
+	return sizeof(struct ec_flash_bank);
+}
+
+int crec_flash_bank_total_entries(void)
+{
+	return 1;
+}
 #endif /* CONFIG_FLASH_MULTIPLE_REGION */
 
 static int flash_range_ok(int offset, int size_req, int align)
@@ -1236,26 +1281,10 @@ static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_info_2 *p_2 = args->params;
 	struct ec_response_flash_info_2 *r_2 = args->response;
-#ifdef CONFIG_FLASH_MULTIPLE_REGION
-	int banks_size = ARRAY_SIZE(flash_bank_array);
-	const struct ec_flash_bank *banks = flash_bank_array;
-#else
+#ifndef CONFIG_FLASH_MULTIPLE_REGION
 	struct ec_response_flash_info_1 *r_1 = args->response;
-#if CONFIG_FLASH_BANK_SIZE < CONFIG_FLASH_ERASE_SIZE
-#error "Flash: Bank size expected bigger or equal to erase size."
 #endif
-	struct ec_flash_bank single_bank = {
-		.count = CONFIG_FLASH_SIZE_BYTES / CONFIG_FLASH_BANK_SIZE,
-		.size_exp = __fls(CONFIG_FLASH_BANK_SIZE),
-		.write_size_exp = __fls(CONFIG_FLASH_WRITE_SIZE),
-		.erase_size_exp = __fls(CONFIG_FLASH_ERASE_SIZE),
-		.protect_size_exp = __fls(CONFIG_FLASH_BANK_SIZE),
-	};
-	int banks_size = 1;
-	const struct ec_flash_bank *banks = &single_bank;
-#endif
-	int banks_len;
-	int ideal_size;
+	int bytes_copied, ideal_size;
 
 	/*
 	 * Compute the ideal amount of data for the host to send us,
@@ -1286,11 +1315,13 @@ static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 		r_2->flags |= EC_FLASH_INFO_SELECT_REQUIRED;
 #endif
 		r_2->write_ideal_size = ideal_size;
-		r_2->num_banks_total = banks_size;
-		r_2->num_banks_desc = MIN(banks_size, p_2->num_banks_desc);
-		banks_len = r_2->num_banks_desc * sizeof(struct ec_flash_bank);
-		memcpy(r_2->banks, banks, banks_len);
-		args->response_size += banks_len;
+		r_2->num_banks_total = crec_flash_bank_total_entries();
+		bytes_copied = crec_flash_bank_fill_data(
+			(uint8_t *)r_2->banks,
+			p_2->num_banks_desc * sizeof(struct ec_flash_bank));
+		r_2->num_banks_desc =
+			bytes_copied * sizeof(struct ec_flash_bank);
+		args->response_size += bytes_copied;
 		return EC_RES_SUCCESS;
 	}
 #ifdef CONFIG_FLASH_MULTIPLE_REGION
