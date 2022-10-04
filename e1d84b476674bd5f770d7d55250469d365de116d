@@ -56,6 +56,30 @@
       },
       "revId": "e1d84b476674bd5f770d7d55250469d365de116d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07112292_47a860a0",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-04T17:42:05Z",
+      "side": 1,
+      "message": "I kind of like toggling (with a proper message: \u0027chan xxx enabled/disable\u0027). It also allows the command to be repeatedly used (from the history). What do you think?",
+      "parentUuid": "1079296d_01412d60",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 11
+      },
+      "revId": "e1d84b476674bd5f770d7d55250469d365de116d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
