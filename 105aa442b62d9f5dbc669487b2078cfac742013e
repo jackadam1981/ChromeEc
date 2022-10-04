@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b75a27_e18dd237",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-04T22:45:05Z",
+      "side": 1,
+      "message": "Does this work before we call uart_init? We\u0027re still pretty early in main().\n\nWe may be able to add a flag in reserved0 of struct panic_data to indicate an out-of-space-clear. Then, we can print the error message after uart_init().",
+      "range": {
+        "startLine": 946,
+        "startChar": 3,
+        "endLine": 946,
+        "endChar": 11
+      },
+      "revId": "105aa442b62d9f5dbc669487b2078cfac742013e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
