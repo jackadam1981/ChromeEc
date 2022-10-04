@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a6e73b_8f993127",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T20:12:34Z",
+      "side": 1,
+      "message": "As a follow-on you could auto-generated these case statements with a macro.\n\nSomething like:\n```\n#define BBRAM_REGION_PROPERTIES(child_id, offset, size) \\\n    case UTIL_CAT(SYSTEM_BBRAM_IDX_, \\\n                  DT_STRING_UPPER_TOKEN(child_id, region)): \\\n        *offset \u003d DT_PROP(child_id, offset); \\\n        *size \u003d DT_PROP(child_id, size); \\\n        break;\n                  \nswitch (idx) {\n    DT_FOREACH_CHILD_VARGS(DT_PATH(named_bbram_regions), BBRAM_REGION_PROPERTIES, offset_out, size_out)\n    default:\n        return EC_ERROR_INVAL;\n}\n```\n\nThis would require adding an enum property to the named-bbram-regions called \"region\".  This improves the BBRAM region driver, as it no longer relies on the node names to identify the region.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "273707b8b5faea84e13c22046f74751ab012fa63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
