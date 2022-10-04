@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b35fda1_19cbcdd5",
+        "filename": "zephyr/projects/corsola/src/krabby/ppc_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-10-04T02:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9a585a_6d58f5cc",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "12794bf0ec5ec125c54885eb19a2b1fe6555fc57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0db6d46a_4e04bb4d",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-04T02:03:53Z",
       "side": 1,
       "message": "usb-mux dt node has a board-init attribute, use that instead",
+      "revId": "12794bf0ec5ec125c54885eb19a2b1fe6555fc57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5e63c0_686b2a69",
+        "filename": "zephyr/projects/corsola/src/krabby/ppc_tentacruel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-10-04T02:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0db6d46a_4e04bb4d",
       "revId": "12794bf0ec5ec125c54885eb19a2b1fe6555fc57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
