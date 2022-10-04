@@ -117,6 +117,30 @@
       },
       "revId": "f3c3207b7828ffab12a975c486251ca0d3b9d616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1920192_9528f0f4",
+        "filename": "Makefile.ide",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-04T17:18:08Z",
+      "side": 1,
+      "message": "Oh nice! I genuinely appreciate all the info.\n\nI\u0027m going to try to make this pure gnu make. The hope is that I can speed this up a bit by removing the shell launch.",
+      "parentUuid": "33bfe580_def1aa75",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "f3c3207b7828ffab12a975c486251ca0d3b9d616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
