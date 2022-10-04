@@ -84,6 +84,12 @@ void ec_app_main(void)
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_EEPROM_CBI_WP) && system_is_locked())
 		cbi_latch_eeprom_wp();
 
+
+	if (system_is_in_rw_safe_mode()) {
+		printk("Issuing AP reset because in RW Safe Mode\n");
+		chipset_reset(CHIPSET_RESET_INIT);
+	}
+
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
 	 * into account the time before timer_init(), but it'll at least catch

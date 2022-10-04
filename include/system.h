@@ -45,6 +45,13 @@ uint32_t chip_read_reset_flags(void);
 int system_is_in_rw(void);
 
 /**
+ * Checks if running in rw safe mode
+ *
+ * @return True if system is running in rw safe mode
+ */
+int system_is_in_rw_safe_mode(void);
+
+/**
  * Pre-initializes the module.  This occurs before clocks or tasks are
  * set up.
  */
@@ -271,6 +278,27 @@ int system_get_image_used(enum ec_image copy);
  * Jump to the specified image copy.
  */
 int system_run_image_copy(enum ec_image copy);
+
+/**
+ * Start jump to safe mode.
+ *
+ * This function should only be called from an exception handler.
+ * It will call cpu_return_from_exception(system_finalize_jump_to_safe_mode)
+ * and never return.
+ *
+ * @return Non-zero if error, will never returns on success.
+ */
+int system_start_jump_to_safe_mode(void);
+
+/**
+ * Finalize jump to safe mode.
+ *
+ * This function will call system_run_image_copy_with_flags and
+ * never return.
+ *
+ * @return Non-zero if error, will never returns on success.
+ */
+void system_finalize_jump_to_safe_mode(void);
 
 /**
  * Get the rollback version for an image

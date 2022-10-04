@@ -211,6 +211,13 @@ test_mockable __keep int main(void)
 		}
 	}
 
+#ifdef CONFIG_RW_SAFE_MODE
+	if (system_is_in_rw_safe_mode()) {
+		CPRINTS("Issuing AP reset because in RW Safe Mode");
+		chipset_reset(CHIPSET_RESET_INIT);
+	}
+#endif /* CONFIG_RW_SAFE_MODE */
+
 #ifdef HAS_TASK_KEYSCAN
 
 #ifdef CONFIG_KEYBOARD_SCAN_ADC

@@ -316,6 +316,8 @@ void system_print_banner(void)
 		CPUTS("[Reset cause: ");
 		system_print_reset_flags();
 		CPUTS("]\n");
+		if (system_is_in_rw_safe_mode())
+			CPUTS("[RW Safe Mode]\n");
 	}
 }
 
@@ -630,15 +632,27 @@ int system_is_in_rw(void)
 	return is_rw_image(system_get_image_copy());
 }
 
+int system_is_in_rw_safe_mode(void)
+{
+	if (IS_ENABLED(CONFIG_RW_SAFE_MODE))
+		return system_is_in_rw() &&
+		       !!(system_get_reset_flags() & EC_RESET_FLAG_SAFE_MODE);
+	return 0;
+}
+
 test_mockable_static int
 system_run_image_copy_with_flags(enum ec_image copy, uint32_t add_reset_flags)
 {
 	uintptr_t base;
 	uintptr_t init_addr;
 
-	/* If system is already running the requested image, done */
-	if (system_get_image_copy() == copy)
+	/* If system is already running the requested image, done.
+	 * Safe mode is special case that does jump to same image.
+	 */
+	if (system_get_image_copy() == copy &&
+	    !(add_reset_flags & EC_RESET_FLAG_SAFE_MODE)) {
 		return EC_SUCCESS;
+	}
 
 	if (system_is_locked()) {
 		/* System is locked, so disallow jumping between images unless
@@ -699,6 +713,34 @@ test_mockable int system_run_image_copy(enum ec_image copy)
 	/* No reset flags needed for most jumps */
 	return system_run_image_copy_with_flags(copy, 0);
 }
+
+#if defined(CONFIG_RW_SAFE_MODE)
+
+int system_start_jump_to_safe_mode(void)
+{
+	if (system_is_in_rw_safe_mode()) {
+		ccprintf("Already in rw safe mode\n");
+		return EC_ERROR_INVAL;
+	}
+
+	if (!system_is_in_rw()) {
+		ccprintf("Can only jump to safe mode from RW\n");
+		return EC_ERROR_INVAL;
+	}
+
+	/* TODO: check if in ISR / exception handler */
+
+	/* Will not return on success */
+	return cpu_return_from_exception(system_finalize_jump_to_safe_mode);
+}
+
+void system_finalize_jump_to_safe_mode(void)
+{
+	/* Will not return on success */
+	system_run_image_copy_with_flags(EC_IMAGE_RW, EC_RESET_FLAG_SAFE_MODE);
+}
+
+#endif /* CONFIG_RW_SAFE_MODE */
 
 enum ec_image system_get_active_copy(void)
 {

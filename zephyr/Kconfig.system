@@ -48,4 +48,12 @@ config PLATFORM_EC_FW_RESET_VECTOR
 	  needs to be provided is system_get_fw_reset_vector that
 	  will return the address of the reset vector.
 
+config PLATFORM_EC_RW_SAFE_MODE
+	bool "Enable RW Safe Mode"
+	default n
+	depends on CPU_CORTEX_M
+	help
+	  This enables RW Safe Mode for retrieving system state after
+	  a panic occurs. RW Safe Mode runs briefly after a panic
+
 endif # PLATFORM_EC

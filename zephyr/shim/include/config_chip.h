@@ -2660,4 +2660,9 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_CPS8100
 #endif
 
+#undef CONFIG_RW_SAFE_MODE
+#ifdef CONFIG_PLATFORM_EC_RW_SAFE_MODE
+#define CONFIG_RW_SAFE_MODE
+#endif
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */

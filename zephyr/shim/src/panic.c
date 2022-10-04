@@ -11,6 +11,7 @@
 
 #include "common.h"
 #include "panic.h"
+#include "system.h"
 
 /*
  * Arch-specific configuration
@@ -149,6 +150,12 @@ void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 	}
 
 	LOG_PANIC();
+
+	/* Jump to safe mode if in RW and not already in safe mode */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_RW_SAFE_MODE) &&
+	    system_is_in_rw() && !system_is_in_rw_safe_mode())
+		system_start_jump_to_safe_mode();
+
 	/*
 	 * Reboot immediately, don't wait for watchdog, otherwise
 	 * the watchdog will overwrite this panic.

@@ -6189,6 +6189,7 @@ struct ec_params_set_cbi {
 #define EC_RESET_FLAG_EFS BIT(20) /* Jumped to this image by EFS */
 #define EC_RESET_FLAG_AP_IDLE BIT(21) /* Leave alone AP */
 #define EC_RESET_FLAG_INITIAL_PWR BIT(22) /* EC had power, then was reset */
+#define EC_RESET_FLAG_SAFE_MODE BIT(23) /* EC had power, then was reset */
 
 /*
  * Reason codes used by the AP after a shutdown to figure out why it was reset
