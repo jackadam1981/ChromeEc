@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c76d64_8b3ea8c4",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:37:08Z",
+      "side": 1,
+      "message": "nit: is it reasonable to assume no other messages will come through, or is it unnecessarily brittle?  I know our stack in its current state won\u0027t send anything else in response to this past our initial discovery phase, but a real port partner could expect any number of additional messages in a 1 second timeframe",
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "463d55ce_30e0f660",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:37:08Z",
+      "side": 1,
+      "message": "nit: the SVDM version will vary by PD version",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 72
+      },
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a2ede2_560118ba",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-04T16:37:08Z",
+      "side": 1,
+      "message": "We\u0027re probably already in S0 since a lot of tests put us in S0, but the setup should do so exclusively in case we\u0027re swapping around test cases.  Otherwise, I\u0027m not sure a sink partner would be able to connect",
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
