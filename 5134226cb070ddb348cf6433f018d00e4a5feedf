@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0b23fc9_0610a7e2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-10-04T23:52:18Z",
+      "side": 1,
+      "message": "I modified the STTB shift from bit 6 to bit 5",
+      "parentUuid": "c8c83547_d4deaa5f",
+      "revId": "5134226cb070ddb348cf6433f018d00e4a5feedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "054faf4b_21ae875e",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
