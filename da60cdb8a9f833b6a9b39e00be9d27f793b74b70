@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d621d68e_38d1d09f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-04T22:40:15Z",
+      "side": 1,
+      "message": "Turns out we still needed that `#include \"usb_pd.h\"`.",
+      "revId": "da60cdb8a9f833b6a9b39e00be9d27f793b74b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
