@@ -22,6 +22,30 @@
       },
       "revId": "23bfaa2ce256a4a6955da04694e10c4eaea6b6c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094fee2f_bc2b1173",
+        "filename": "zephyr/test/drivers/default/src/lid_switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-04T15:49:58Z",
+      "side": 1,
+      "message": "I think this might have meant to be in the after function?",
+      "parentUuid": "5bf126e4_42d85015",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 22
+      },
+      "revId": "23bfaa2ce256a4a6955da04694e10c4eaea6b6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
