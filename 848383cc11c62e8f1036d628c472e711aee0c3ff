@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8871ab73_4c4c6461",
+        "filename": "zephyr/test/spi_flash_reg/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-04T04:39:29Z",
+      "side": 1,
+      "message": "In a unit test modules aren\u0027t loaded, note below the find_package passes the `unittest` as `COMPONENTS`.",
+      "parentUuid": "6186a0ba_e7002814",
+      "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af30c9e0_ee2084e9",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-03T20:34:25Z",
       "side": 1,
       "message": "Use `target_sources(app PRIVATE` instead?  According the cmake docs, using the `target_sources` command is the \"usual way to manipulate SOURCES\".\n\nhttps://cmake.org/cmake/help/latest/prop_tgt/SOURCES.html?highlight\u003dsources",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03427d4_97306ae1",
+        "filename": "zephyr/test/spi_flash_reg/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-04T04:39:29Z",
+      "side": 1,
+      "message": "I wish, this is a long standing issue I have with Zephyr unit testing, if you look at unittest.cmake, you need to define SOURCES before find_package. I hate this. Also the target is `testbinary` instead of `app` which makes the CMake very custom. I want to make all these changes but we\u0027re always so pressed for time that it was never a priority.",
+      "parentUuid": "af30c9e0_ee2084e9",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd60c62f_02b1a3df",
+        "filename": "zephyr/test/spi_flash_reg/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-04T04:39:29Z",
+      "side": 1,
+      "message": "It has the most variety in the ranges, so it allows me to test all the branches.",
+      "parentUuid": "4b87e5d9_b4a1b9b4",
+      "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90dcf96e_4497dd04",
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "972549ca_dfcb6770",
+        "filename": "zephyr/test/spi_flash_reg/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-04T04:39:29Z",
+      "side": 1,
+      "message": "Yes, I will/should add tests for the other configs, but I worried that the tests will bloat. The config I selected covers all the branches in the code (but not all the data). The roadmap is:\n\n1. Add these tests\n2. Migrate spi_flash_reg.c to a separate module (and move the tests with it)\n3. Add utilities to simplify creating the module/tests side by side.",
+      "parentUuid": "90dcf96e_4497dd04",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e882c48_05a06cf6",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-10-03T20:38:36Z",
       "side": 1,
       "message": "nit: Maybe we should add/define the \"spi\" tag.",
+      "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c01fafa_4051177a",
+        "filename": "zephyr/test/spi_flash_reg/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-04T04:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e882c48_05a06cf6",
       "revId": "848383cc11c62e8f1036d628c472e711aee0c3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
