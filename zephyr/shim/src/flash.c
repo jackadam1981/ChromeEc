@@ -167,6 +167,183 @@ uint32_t crec_flash_physical_get_writable_flags(uint32_t cur_flags)
 	return ret;
 }
 
+#if IS_ENABLED(CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT)
+int crec_flash_bank_size(int bank)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, bank, &info);
+
+	if (rv)
+		return -1;
+
+	return info.size;
+}
+
+int crec_flash_bank_erase_size(int bank)
+{
+	return crec_flash_bank_size(bank);
+}
+
+int crec_flash_bank_index(int offset)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_offs(flash_ctrl_dev, offset, &info);
+
+	if (rv)
+		return -1;
+
+	return info.index;
+}
+
+int crec_flash_bank_count(int offset, int size)
+{
+	int begin, end;
+
+	if (size < 1)
+		return -1;
+
+	begin = crec_flash_bank_index(offset);
+	end = crec_flash_bank_index(offset + size - 1);
+
+	if (begin < 0 || end < 0)
+		return -1;
+
+	return end - begin + 1;
+}
+
+int crec_flash_bank_start_offset(int bank)
+{
+	int rv;
+	struct flash_pages_info info;
+
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, bank, &info);
+
+	if (rv)
+		return -1;
+
+	return info.start_offset;
+}
+
+/*
+ * Both crec_flash_print_region_into() and crec_flash_response_fill_banks()
+ * could be easily implemented if we had an access to flash layout structure
+ * that aggregates pages with the same size in one entry ('compressed' form).
+ *
+ * Zephyr internally keeps flash layout in structure of this type, but using the
+ * flash API it's only possible to get information about single pages. Extending
+ * flash API encounters resistance from developers. That's why these functions
+ * are very complicated and inefficient.
+ */
+void crec_flash_print_region_info(void)
+{
+	const struct flash_parameters *params;
+	struct flash_pages_info first, next;
+	size_t pages = 0, total_pages;
+	int rv;
+
+	params = flash_get_parameters(flash_ctrl_dev);
+	if (!params)
+		return;
+
+	total_pages = flash_get_page_count(flash_ctrl_dev);
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, 0, &first);
+	if (rv)
+		return;
+
+	cprintf(CC_COMMAND, "Regions:\n");
+	for (size_t i = 1; i < total_pages; i++) {
+		rv = flash_get_page_info_by_idx(flash_ctrl_dev, i, &next);
+		if (rv)
+			break;
+
+		/*
+		 * If size of the next page is different than size of the first
+		 * page of this region or the next page is the last page then
+		 * we know how many pages the region has, so let's print it.
+		 */
+		if (next.size != first.size)
+			pages = next.index - first.index;
+		else if (next.index == total_pages - 1)
+			pages = next.index + 1 - first.index;
+
+		if (pages) {
+			cprintf(CC_COMMAND, " %d region%s:\n", pages,
+				(pages == 1 ? "" : "s"));
+			cprintf(CC_COMMAND, "  Erase:   %4d B (to %d-bits)\n",
+				first.size, params->erase_value ? 1 : 0);
+			cprintf(CC_COMMAND, "  Size/Protect: %4d B\n",
+				first.size);
+
+			first = next;
+			pages = 0;
+		}
+	}
+}
+
+void crec_flash_response_fill_banks(struct ec_response_flash_info_2 *r,
+				    int num_banks)
+{
+	struct flash_pages_info first, next;
+	size_t pages = 0, total_pages;
+	int banks_idx = 0;
+	int rv;
+
+	r->num_banks_desc = 0;
+	r->num_banks_total = 0;
+
+	total_pages = flash_get_page_count(flash_ctrl_dev);
+	rv = flash_get_page_info_by_idx(flash_ctrl_dev, 0, &first);
+	if (rv)
+		return;
+
+	for (size_t i = 1; i < total_pages; i++) {
+		rv = flash_get_page_info_by_idx(flash_ctrl_dev, i, &next);
+		if (rv)
+			break;
+
+		/*
+		 * If size of the next page is different than size of the first
+		 * page of this region or the next page is the last page then
+		 * we know how many pages the region has, so let's save it.
+		 */
+		if (next.size != first.size)
+			pages = next.index - first.index;
+		else if (next.index == total_pages - 1)
+			pages = next.index + 1 - first.index;
+
+		if (pages) {
+			if (banks_idx < num_banks) {
+				r->banks[banks_idx].count = pages;
+				r->banks[banks_idx].size_exp =
+					__fls(first.size);
+				r->banks[banks_idx].write_size_exp =
+					__fls(CONFIG_FLASH_WRITE_SIZE);
+				r->banks[banks_idx].erase_size_exp =
+					__fls(first.size);
+				r->banks[banks_idx].protect_size_exp =
+					__fls(first.size);
+			}
+			banks_idx++;
+
+			first = next;
+			pages = 0;
+		}
+	}
+
+	r->num_banks_desc = MIN(banks_idx, num_banks);
+	r->num_banks_total = banks_idx;
+}
+
+int crec_flash_total_banks(void)
+{
+	return flash_get_page_count(flash_ctrl_dev);
+}
+#endif /* CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT */
+
 #if IS_ENABLED(CONFIG_SHELL)
 static int command_flashchip(const struct shell *shell, size_t argc,
 			     char **argv)
