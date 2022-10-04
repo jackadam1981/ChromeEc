@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3787851_76802f6a",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T23:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7adbc65b_88843dbe",
+      "range": {
+        "startLine": 315,
+        "startChar": 12,
+        "endLine": 315,
+        "endChar": 19
+      },
+      "revId": "237135807b2f03ec9772caa04f7e87e8f579f02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26ca9a9a_dc8743dc",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ddbe42_b5492ca4",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T23:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ca9a9a_dc8743dc",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 16
+      },
+      "revId": "237135807b2f03ec9772caa04f7e87e8f579f02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bf2e48a_034b5fd0",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-04T20:21:33Z",
       "side": 1,
       "message": "Same here - use a 32-bit value.",
+      "range": {
+        "startLine": 318,
+        "startChar": 18,
+        "endLine": 318,
+        "endChar": 22
+      },
+      "revId": "237135807b2f03ec9772caa04f7e87e8f579f02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b213b2d0_bdb1cff4",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-04T23:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bf2e48a_034b5fd0",
       "range": {
         "startLine": 318,
         "startChar": 18,
