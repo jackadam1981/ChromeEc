@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba184342_70945288",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-04T00:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a558258_630ea9b9",
+      "revId": "ca27304e9214b8fbdc77c005a02cb4c4cce10c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8747bcef_933ad598",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-30T17:28:28Z",
       "side": 1,
       "message": "Would you mind adding a call to pd_set_bist_share_mode(0) here? Otherwise, we may leave it on for future test cases that run after ours",
+      "revId": "ca27304e9214b8fbdc77c005a02cb4c4cce10c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "366fea0f_1e3a7090",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_pd_bist_shared.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-04T00:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8747bcef_933ad598",
       "revId": "ca27304e9214b8fbdc77c005a02cb4c4cce10c1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
