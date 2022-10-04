@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adbc65b_88843dbe",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T20:21:33Z",
+      "side": 1,
+      "message": "You should also fake the rw_hash, since this is part of the command response.",
+      "range": {
+        "startLine": 315,
+        "startChar": 12,
+        "endLine": 315,
+        "endChar": 19
+      },
+      "revId": "237135807b2f03ec9772caa04f7e87e8f579f02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ca9a9a_dc8743dc",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T20:21:33Z",
+      "side": 1,
+      "message": "Nit - the dev_id is 16 bits.  Use a 16-bit value to ensure EC_CMD_USB_PD_DEV_INFO doesn\u0027t truncate the value.",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 16
+      },
+      "revId": "237135807b2f03ec9772caa04f7e87e8f579f02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf2e48a_034b5fd0",
+        "filename": "zephyr/test/drivers/host_cmd/src/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-04T20:21:33Z",
+      "side": 1,
+      "message": "Same here - use a 32-bit value.",
+      "range": {
+        "startLine": 318,
+        "startChar": 18,
+        "endLine": 318,
+        "endChar": 22
+      },
+      "revId": "237135807b2f03ec9772caa04f7e87e8f579f02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
