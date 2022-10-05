@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce816a6_d77a3a79",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-05T20:58:40Z",
+      "side": 1,
+      "message": "we should be able to express these to `IS_ENABLED(...)`\nor just have empty implementations when logging is not\nenabled.\n\ni do have a comment later about whether these timestamps\nare intel big-core specific or applicable to all types\nof cores we support.",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 38
+      },
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e44a7b0_5325cc3f",
+        "filename": "common/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-05T20:58:40Z",
+      "side": 1,
+      "message": "consider putting boot time logging in a separate file\nand building conditionally so we don\u0027t need these\nbig `#ifdef`s here.",
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae0bd7e_a1587a27",
+        "filename": "common/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-05T20:58:40Z",
+      "side": 1,
+      "message": "*boot_time",
+      "range": {
+        "startLine": 1895,
+        "startChar": 40,
+        "endLine": 1895,
+        "endChar": 64
+      },
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d709675_688b7e7c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 7737,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-05T20:58:40Z",
+      "side": 1,
+      "message": "i think we need to have a closer look at these events.\nare these very x86 specific, perhaps even big-core specific?\ndo we need some different set of events for different platforms?\n\ndo you know if intel little core vs. big core would use the same\ntimestamps for the purpose of analyzing boot timing?\n\nwe may need a more general/extensible struct ec_boot_time_data\nto accommodate other arches.",
+      "range": {
+        "startLine": 7737,
+        "startChar": 0,
+        "endLine": 7737,
+        "endChar": 20
+      },
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67d2c53_f0d15f13",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 7747,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-05T20:58:40Z",
+      "side": 1,
+      "message": "perhaps this should be a union of boot_time_data for\nvarious architectures with a type field if it turns\nout that we need different timestamps for different\narches.",
+      "range": {
+        "startLine": 7747,
+        "startChar": 7,
+        "endLine": 7747,
+        "endChar": 24
+      },
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
