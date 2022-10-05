@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4fe48e1_4ebfdf24",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-05T20:11:21Z",
+      "side": 1,
+      "message": "i was initially confused how this could possibly trigger every\nsecond or two.\n\ni\u0027m guessing that \"deadline\" falls behind when this function\nisn\u0027t called regularly during S0ix? then, it has to catch up\nin 2 minute increments?\n\nhow about setting\n\ndeadline.val \u003d get_time().val + RECORD_TIME\n\nhere? i suppose it will drift slightly beyond exactly 2 minutes\nbecause by the time you get here, some additional time has\nalready passed. i\u0027m assuming that small amount of drift is\nOK here.",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "f4da830a5a09476376c3188e78d4d9796f0957ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
