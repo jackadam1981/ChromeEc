@@ -165,7 +165,7 @@ void pd_task(void *u)
 	 * If port does not exist, return
 	 */
 	if (port >= board_get_usb_pd_port_count())
-		return;
+		return; /* LCOV_EXCL_LINE */
 
 #if CONFIG_USB_PD_STARTUP_DELAY_MS > 0
 	msleep(CONFIG_USB_PD_STARTUP_DELAY_MS);
