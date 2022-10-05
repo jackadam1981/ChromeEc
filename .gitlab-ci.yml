@@ -193,6 +193,16 @@ herobrine_coverage:
     PROJECT: "herobrine"
   <<: *coverage_template
 
+corsola_coverage:
+  variables:
+    PROJECT: "corsola"
+  <<: *coverage_template
+
+nissa_coverage:
+  variables:
+    PROJECT: "nissa"
+  <<: *coverage_template
+
 it8xxx2_evb:
   variables:
     PROJECT: "it8xxx2_evb"
