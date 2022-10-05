@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1810fca4_b1723500",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-05T15:24:20Z",
+      "side": 1,
+      "message": "That\u0027s interesting because in addition to packing `__ec_align4` will align to 4-byte boundaries and, since the contents prior to `struct ec_flash_bank` total to a 16-bytes we can be sure the `struct ec_flash_bank` will be 4-byte aligned (until/unless someone changes the structure!). If I recall correctly, when a structure is nested inside a packed structure the inner structure will not be packed as well so I\u0027m not sure why this would be an issue. Does it work if we make `struct ec_flash_bank` packed and aligned (`__ec_align4`)as well? I can\u0027t see any significant downside to that.\n\nCould the problem be that `banks` is a flexible array member? That will cause `sizeof(struct ec_response_flash_info_2)` to give a size assuming the size of `max_banks` is zero, and that can often result in weird padding that may or may not overlap with the space allocated for `max_banks`. It would be nice if we could specify the array size of banks to avoid flexible arrays members entirely but I\u0027m not sure if that\u0027s always feasible with this setup.",
+      "parentUuid": "66284177_e8c4de9e",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 37
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cf9f2ef_6e7f6951",
         "filename": "common/flash.c",
         "patchSetId": 1
@@ -135,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2148055_1d29b7ac",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-05T15:24:20Z",
+      "side": 1,
+      "message": "Yeah, that makes sense.",
+      "parentUuid": "55f5d5cb_0f28ffbd",
+      "range": {
+        "startLine": 1319,
+        "startChar": 2,
+        "endLine": 1319,
+        "endChar": 14
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6952397c_41ab1cc1",
@@ -172,6 +220,30 @@
       "side": 1,
       "message": "Actually this line is wrong. There should be division instead of multiplication\n```\nr_2-\u003enum_banks_desc \u003d bytes_copied / sizeof(struct ec_flash_bank)\n```\n\n\u003e Shouldn\u0027t num_banks_desc be set to r_2-\u003enum_banks_total\n\nNo. `r_2-\u003enum_banks_total` is the total number of regions (`flash_bank_array` size).\n`r_2-\u003enum_banks_desc` is the number of regions included in the response, because the response buffer might not have enough space to store all `flash_bank_array` entries.",
       "parentUuid": "6952397c_41ab1cc1",
+      "range": {
+        "startLine": 1323,
+        "startChar": 4,
+        "endLine": 1323,
+        "endChar": 45
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c756ce_3b7f4d8b",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-05T15:24:20Z",
+      "side": 1,
+      "message": "\u003e No. r_2-\u003enum_banks_total is the total number of regions (flash_bank_array size).\nr_2-\u003enum_banks_desc is the number of regions included in the response, because the response buffer might not have enough space to store all flash_bank_array entries.\n\nRight, that makes sense.\n\n\u003e Actually this line is wrong. There should be division instead of multiplication\n\nI may not have had the right issue but at least I picked a line with a bug! 😊",
+      "parentUuid": "c3ce5d7d_54a89f41",
       "range": {
         "startLine": 1323,
         "startChar": 4,
