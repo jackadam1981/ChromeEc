@@ -129,7 +129,7 @@ static bool pd_task_loop(int port)
 	 * if this code is running in a unit test.
 	 */
 	if (IS_ENABLED(TEST_BUILD) && (evt & TASK_EVENT_RESET_DONE))
-		return false;
+		return false; /* LCOV_EXCL_LINE */
 
 	/* handle events that affect the state machine as a whole */
 	if (IS_ENABLED(CONFIG_USB_TYPEC_SM))
@@ -165,7 +165,7 @@ void pd_task(void *u)
 	 * If port does not exist, return
 	 */
 	if (port >= board_get_usb_pd_port_count())
-		return;
+		return; /* LCOV_EXCL_LINE */
 
 #if CONFIG_USB_PD_STARTUP_DELAY_MS > 0
 	msleep(CONFIG_USB_PD_STARTUP_DELAY_MS);
