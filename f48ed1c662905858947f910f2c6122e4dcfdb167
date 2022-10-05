@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ee1fb3_0cd04dcd",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-10-05T20:49:10Z",
+      "side": 1,
+      "message": "Nice, wasn\u0027t aware of that.",
+      "parentUuid": "66c5817a_d7cc9150",
+      "revId": "f48ed1c662905858947f910f2c6122e4dcfdb167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd80509b_89342da7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-04T21:33:06Z",
       "side": 1,
       "message": "but: move to top of file",
+      "revId": "f48ed1c662905858947f910f2c6122e4dcfdb167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8602c171_b4f7e3a6",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-10-05T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd80509b_89342da7",
       "revId": "f48ed1c662905858947f910f2c6122e4dcfdb167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
