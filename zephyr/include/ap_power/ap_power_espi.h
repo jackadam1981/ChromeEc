@@ -11,7 +11,7 @@
 #ifndef __AP_POWER_AP_POWER_ESPI_H__
 #define __AP_POWER_AP_POWER_ESPI_H__
 
-#include <zephyr/drivers/espi.h>
+#include <zephyr/drivers/espi/espi.h>
 
 /**
  * @brief ESPI callback for power signal handling.
