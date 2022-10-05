@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa66a587_d91d4a81",
+        "filename": "common/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-05T21:40:10Z",
+      "side": 1,
+      "message": "Why is this file showing up as a copy of spi_flash_reg/testcase.yaml?  This should be a new file.",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fa8d32_688fef75",
+        "filename": "common/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-05T21:40:10Z",
+      "side": 1,
+      "message": "Same here - this should be a new file.  If you didn\u0027t do anything other than a filesystem copy, you should file a bug with the gerrit team.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cbb9162_3de1ade7",
         "filename": "common/spi/flash_reg/CMakeLists.txt",
         "patchSetId": 1
@@ -31,6 +71,24 @@
       "writtenOn": "2022-10-04T22:35:19Z",
       "side": 1,
       "message": "I am unfamiliar with `add_library()` with only the `name` parameter. Could you point me to a resource? https://cmake.org/cmake/help/latest/command/add_library.html?highlight\u003dadd_library#add-library isn\u0027t very helpful as they don\u0027t define a clear usage with only name.",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149af48c_2c71cb92",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-05T21:40:10Z",
+      "side": 1,
+      "message": "This is a \"normal library\" - which means either STATIC, SHARED, or MODULE.  STATIC is desired because we\u0027re not doing any dynamic linking.\n\nThe library type defaults to STATIC because Zephry as BUILD_SHAREd_LIBS disabled.",
+      "parentUuid": "8cbb9162_3de1ade7",
       "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +123,70 @@
       "writtenOn": "2022-10-04T22:35:19Z",
       "side": 1,
       "message": "I believe `spi_flash_reg.o` should be `spi_flash.o`.\n\nI think this will allow you to remove `common-$(CONFIG_SPI_FLASH)+\u003dspi_flash.o` from `common/build.mk`",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b6c5ed_f3a01781",
+        "filename": "common/spi/flash_reg/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-05T21:40:10Z",
+      "side": 1,
+      "message": "The intent here is to create a library/module that includes only the source file spi_flash_reg.c.  Moving spi_flash.c into the common/spi directory may happen later.",
+      "parentUuid": "92220218_9fa62832",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24164a5_bc25925d",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-05T21:40:10Z",
+      "side": 1,
+      "message": "Please add a comment explaining the purpose of the cros_ec library.  Also how about renaming to `cros_ec_interface`?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d21452bd_7bf797e5",
+        "filename": "zephyr/drivers/cros_flash/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-05T21:40:10Z",
+      "side": 1,
+      "message": "Convert CONFIG_PLATFORM_EC_SPI_FLASH_REG to a helper symbol and use that here instead.",
+      "range": {
+        "startLine": 10,
+        "startChar": 36,
+        "endLine": 10,
+        "endChar": 58
+      },
       "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

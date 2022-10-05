@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0c2001_68fe4f21",
+        "filename": "common/spi/flash_reg/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-05T21:40:10Z",
+      "side": 0,
+      "message": "Why is this tag deleted?",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "023b0fcaa03d7e8ec3b7476e05b001db758f809c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a609fc4b_7cf480dc",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-05T21:40:10Z",
+      "side": 0,
+      "message": "Convert this to a helper symbol, and then have CONFIG_CROS_FLASH_NPCX and CONFIG_CROS_FLASH_XEC `select PLATFORM_EC_SPI_FLASH_REGS`",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "023b0fcaa03d7e8ec3b7476e05b001db758f809c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
