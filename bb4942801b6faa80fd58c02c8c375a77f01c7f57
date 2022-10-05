@@ -22,6 +22,30 @@
       },
       "revId": "bb4942801b6faa80fd58c02c8c375a77f01c7f57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79052d14_5aba607f",
+        "filename": "zephyr/test/drivers/default/src/espi_vwire.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2022-10-05T15:42:32Z",
+      "side": 1,
+      "message": "I am also not a fan, but I tried to write tests for everything. Main problem is that we are emulating the qualcomm board, so the power signals are specified for it, not for intel\u0027s espi. I think that this CL may let enable these tests, but I haven\u0027t verified it yet, just took a short look at it: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3688195/8",
+      "parentUuid": "54cdac03_5dfde6aa",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "bb4942801b6faa80fd58c02c8c375a77f01c7f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
