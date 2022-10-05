@@ -22,6 +22,30 @@
       },
       "revId": "29c51646fb12685e8c2db5ffa0b327f4b624dfa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37da1536_dbf1efd1",
+        "filename": "zephyr/test/drivers/common/src/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-10-05T19:01:32Z",
+      "side": 1,
+      "message": "I think we could; the range is 0-360, but the host command struct definition uses int16_t",
+      "parentUuid": "2d15bab4_525c68bd",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 26
+      },
+      "revId": "29c51646fb12685e8c2db5ffa0b327f4b624dfa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
