@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69da23f4_385c951c",
+        "filename": "zephyr/test/rex/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-10-05T14:04:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "297ccf32_0b771fc8",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "7466712daab6803591be914ce42c4cbcefc0a273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93475854_6e5bd7c8",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-04T14:46:44Z",
       "side": 1,
       "message": "Can you leave this empty? (other tests do it check other testcase.yaml)",
+      "revId": "7466712daab6803591be914ce42c4cbcefc0a273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "579da655_294fe27c",
+        "filename": "zephyr/test/rex/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-10-05T14:04:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93475854_6e5bd7c8",
       "revId": "7466712daab6803591be914ce42c4cbcefc0a273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
