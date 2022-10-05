@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include <stdio.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/bbram.h>
 #include <drivers/cros_system.h>
@@ -145,15 +146,19 @@ test_mockable void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	chip_save_reset_flags(chip_read_reset_flags() |
 			      EC_RESET_FLAG_HIBERNATE);
 
+	printf("just before hibernate\n");
 	err = cros_system_hibernate(sys_dev, seconds, microseconds);
 	if (err < 0) {
 		LOG_ERR("hibernate failed %d", err);
 		return;
 	}
 
+	printf("just before while loop\n");
 	/* should never reach this point */
+	/* LCOV_EXCL_START */
 	while (1)
 		continue;
+	/* LCOV_EXCL_STOP */
 }
 
 #ifdef CONFIG_PM
@@ -231,8 +236,10 @@ test_mockable void system_reset(int flags)
 		LOG_ERR("soc reset failed");
 
 	/* should never return */
+	/* LCOV_EXCL_START */
 	while (1)
 		continue;
+	/* LCOV_EXCL_STOP */
 }
 
 static int check_reset_cause(void)
