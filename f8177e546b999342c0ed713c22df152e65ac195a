@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cef84ae_94df6445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-10-05T17:44:18Z",
+      "side": 1,
+      "message": "Update: CQ found errors when building for HOST and POSIX. Added carve outs for those targets since RAM_SIZE either isn\u0027t defined or is 0.",
+      "revId": "f8177e546b999342c0ed713c22df152e65ac195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
