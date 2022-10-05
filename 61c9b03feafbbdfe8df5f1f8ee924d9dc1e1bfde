@@ -16,6 +16,23 @@
       "message": "I\u0027m unsure why the test is showing one case as uncovered.  Aaron, any ideas?",
       "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02458240_eb0f161c",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-05T15:46:29Z",
+      "side": 1,
+      "message": "Probably failing assumption here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/common/src/utils.c;l\u003d133",
+      "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
