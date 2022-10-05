@@ -51,6 +51,24 @@
       "parentUuid": "02458240_eb0f161c",
       "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac27701c_5a37470d",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-05T23:57:18Z",
+      "side": 1,
+      "message": "Twister should definitely be reporting skipped here, if it isn\u0027t it\u0027s a bug in twister.\n\nRegardless, zassume skipping a test but silently not failing in a build is not right and quite dangerous. See https://crrev.com/c/3937223, feel free to +2 or rebase off of it.",
+      "parentUuid": "05d2a7fe_26a987a7",
+      "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
