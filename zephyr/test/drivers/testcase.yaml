@@ -10,6 +10,7 @@ tests:
       - CONFIG_PLATFORM_EC_BATTERY_CUT_OFF=y
       - CONFIG_PLATFORM_EC_LID_ANGLE_UPDATE=y
       - CONFIG_PLATFORM_EC_CBI_EEPROM=y
+      - CONFIG_PLATFORM_EC_EMULATED_SYSRQ=y
   drivers.default.mock_power:
     timeout: 240
     extra_args: CONF_FILE="prj.conf;default/prj.conf"
