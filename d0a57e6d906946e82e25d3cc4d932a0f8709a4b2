@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c59581_26e53233",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/prj.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-05T03:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ae28a55_05fd3bdd",
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b45cc82_4838a152",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb6ae929_7f3443e2",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-05T03:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b45cc82_4838a152",
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85c76d64_8b3ea8c4",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-04T16:37:08Z",
       "side": 1,
       "message": "nit: is it reasonable to assume no other messages will come through, or is it unnecessarily brittle?  I know our stack in its current state won\u0027t send anything else in response to this past our initial discovery phase, but a real port partner could expect any number of additional messages in a 1 second timeframe",
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a931edb_485b7fef",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-05T03:40:07Z",
+      "side": 1,
+      "message": "I suppose it doesn\u0027t matter if there are more messages, so I\u0027ve removed that assertion.",
+      "parentUuid": "85c76d64_8b3ea8c4",
       "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1abdd91_221017f3",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-05T03:40:07Z",
+      "side": 1,
+      "message": "This function is only used in one place, so I\u0027ll simply inline this. It was useful before I discovered that PD2 forbids responding as a DFP.",
+      "parentUuid": "463d55ce_30e0f660",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 72
+      },
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91a2ede2_560118ba",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-10-04T16:37:08Z",
       "side": 1,
       "message": "We\u0027re probably already in S0 since a lot of tests put us in S0, but the setup should do so exclusively in case we\u0027re swapping around test cases.  Otherwise, I\u0027m not sure a sink partner would be able to connect",
+      "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa0562b_1ae958f5",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-05T03:40:07Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter whether this is a sink or source, so I\u0027ve changed the partner to a source so we don\u0027t need to care about AP state.",
+      "parentUuid": "91a2ede2_560118ba",
       "revId": "d0a57e6d906946e82e25d3cc4d932a0f8709a4b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
