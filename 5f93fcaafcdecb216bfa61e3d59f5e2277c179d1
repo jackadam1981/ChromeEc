@@ -34,6 +34,24 @@
       "parentUuid": "f9572205_c448a8c2",
       "revId": "5f93fcaafcdecb216bfa61e3d59f5e2277c179d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7e0b04_de7d8519",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-05T09:18:50Z",
+      "side": 1,
+      "message": "hmm.. from the tcpm_drv document, NULL pointer is well-defined in the doc, but I think many drivers does not implement this correctly..\n\n\t * @param port Type-C port number\n\t * @param live Fetch live chip info or hard-coded + cached info\n\t * @param info Pointer to PD chip info; NULL to cache the info only",
+      "parentUuid": "1e0893d3_9eacc61b",
+      "revId": "5f93fcaafcdecb216bfa61e3d59f5e2277c179d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
