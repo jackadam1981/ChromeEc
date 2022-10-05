@@ -63,6 +63,8 @@ uint32_t fp_context_status;
 /* Status of the FP encryption engine. */
 static uint32_t fp_encryption_status;
 
+struct sha256_ctx sha_ctx;
+
 atomic_t fp_events;
 
 uint32_t sensor_mode;
@@ -251,7 +253,7 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 
 		if (fp_context_status & FP_CONTEXT_STATUS_NONCE_CONTEXT) {
 			/* Clear the context to prevent downgrade attack. */
-			fp_reset_and_clear_context();
+			_fp_clear_context();
 		}
 
 		memcpy(user_id, p->userid, sizeof(user_id));
@@ -397,7 +399,6 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_PK_KEYGEN,
 static enum ec_status
 fp_command_establish_pk_wrap(struct host_cmd_handler_args *args)
 {
-	struct sha256_ctx ctx;
 	uint8_t *pk;
 	uint8_t key[SBP_ENC_KEY_LEN], privkey[FP_PK_EC_PRIVATE_KEY_LEN];
 	const struct ec_params_fp_establish_pk_wrap *params = args->params;
@@ -437,13 +438,13 @@ fp_command_establish_pk_wrap(struct host_cmd_handler_args *args)
 	always_memset(&out_x, 0, sizeof(out_x));
 	always_memset(&out_y, 0, sizeof(out_y));
 
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, r->enc_pk, FP_PK_LEN);
-	pk = SHA256_final(&ctx);
+	SHA256_init(&sha_ctx);
+	SHA256_update(&sha_ctx, r->enc_pk, FP_PK_LEN);
+	pk = SHA256_final(&sha_ctx);
 	memcpy(r->enc_pk, pk, FP_PK_LEN);
 
 	/* Clear the context that contain pk. */
-	always_memset(&ctx, 0, sizeof(ctx));
+	always_memset(&sha_ctx, 0, sizeof(sha_ctx));
 
 	r->enc_pk_info.struct_version = FP_PK_ENC_METADATA_VERSION;
 	trng_init();
@@ -482,7 +483,7 @@ static enum ec_status fp_command_load_pk(struct host_cmd_handler_args *args)
 	int ret;
 
 	/* Clear the context to prevent leaking the existing template. */
-	fp_reset_and_clear_context();
+	_fp_clear_context();
 
 	ret = derive_encryption_key(key, params->enc_pk_info.encryption_salt);
 	if (ret != EC_SUCCESS) {
@@ -515,7 +516,7 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 	if (fp_context_status & FP_CONTEXT_STATUS_NONCE_CONTEXT) {
 		/* Clear the context to prevent leaking the data from previous
 		 * nonce context. */
-		fp_reset_and_clear_context();
+		_fp_clear_context();
 	}
 
 	trng_init();
@@ -535,7 +536,6 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
 static enum ec_status
 fp_command_nonce_context(struct host_cmd_handler_args *args)
 {
-	struct sha256_ctx ctx;
 	const struct ec_params_fp_nonce_context *p = args->params;
 	uint8_t context_key[FP_CONTEXT_KEY_LEN];
 	uint8_t raw_user_id[FP_CONTEXT_USERID_LEN];
@@ -551,11 +551,11 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE;
 	}
 
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, auth_nonce, FP_CK_AUTH_NONCE_LEN);
-	SHA256_update(&ctx, p->gsc_nonce, FP_CK_AUTH_NONCE_LEN);
-	SHA256_update(&ctx, pairing_key, FP_PK_LEN);
-	ck = SHA256_final(&ctx);
+	SHA256_init(&sha_ctx);
+	SHA256_update(&sha_ctx, auth_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&sha_ctx, p->gsc_nonce, FP_CK_AUTH_NONCE_LEN);
+	SHA256_update(&sha_ctx, pairing_key, FP_PK_LEN);
+	ck = SHA256_final(&sha_ctx);
 
 	memcpy(context_key, ck, FP_CONTEXT_KEY_LEN);
 
@@ -580,7 +580,7 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 
 	if (p->clear_context) {
 		/* Clear the previous context. */
-		fp_reset_and_clear_context();
+		_fp_clear_context();
 	}
 
 	/* Set the user_id. */
@@ -595,7 +595,6 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 static enum ec_status
 fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
 {
-	struct sha256_ctx ctx;
 	const struct ec_params_fp_read_match_secret_with_pubkey *params =
 		args->params;
 	struct ec_response_fp_read_match_secret_with_pubkey *response =
@@ -630,9 +629,9 @@ fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
 	always_memset(&out_y, 0, sizeof(out_y));
 
 	/* Sha256 the share_secret. */
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, share_secret, FP_POSITIVE_MATCH_SECRET_BYTES);
-	tmp = SHA256_final(&ctx);
+	SHA256_init(&sha_ctx);
+	SHA256_update(&sha_ctx, share_secret, FP_POSITIVE_MATCH_SECRET_BYTES);
+	tmp = SHA256_final(&sha_ctx);
 	memcpy(share_secret, tmp, FP_POSITIVE_MATCH_SECRET_BYTES);
 
 	ret = fp_read_match_secret(fgr, response->enc_secret);
