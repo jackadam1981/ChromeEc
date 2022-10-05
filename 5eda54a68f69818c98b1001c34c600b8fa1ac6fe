@@ -33,6 +33,24 @@
       "message": "This is a weird thing to have in the task. If we aren\u0027t covering this line with tests now, then we should probably just delete this check.",
       "revId": "5eda54a68f69818c98b1001c34c600b8fa1ac6fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84799ede_13e41b18",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-05T21:52:03Z",
+      "side": 1,
+      "message": "This is used in legacy tests, removing this breaks those tests. So I tried copy/pasting the code in the legacy tests and it times out.  I found out the hard way that `task_wait_event` does not work under zephyr. Converting it to a `ksleep` fixed the timeout.",
+      "parentUuid": "6b2ce070_90a998a3",
+      "revId": "5eda54a68f69818c98b1001c34c600b8fa1ac6fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
