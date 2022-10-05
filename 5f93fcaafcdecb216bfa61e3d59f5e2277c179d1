@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t we fix the caller side instead?",
       "revId": "5f93fcaafcdecb216bfa61e3d59f5e2277c179d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0893d3_9eacc61b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-10-05T08:32:55Z",
+      "side": 1,
+      "message": "The caller is [tcpci.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/tcpm/tcpci.c;l\u003d1527?q\u003dfile:tcpci.c\u0026ss\u003dchromiumos) while initializing the TCPC chip. I referenced the implementation in `driver/tcpm/ps8xxxx.c`, but not really know why. Maybe we can get some clue here?",
+      "parentUuid": "f9572205_c448a8c2",
+      "revId": "5f93fcaafcdecb216bfa61e3d59f5e2277c179d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
