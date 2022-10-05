@@ -16,6 +16,52 @@
       "message": "Update: CQ found errors when building for HOST and POSIX. Added carve outs for those targets since RAM_SIZE either isn\u0027t defined or is 0.",
       "revId": "f8177e546b999342c0ed713c22df152e65ac195a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c19ca9a_4bd06a4d",
+        "filename": "common/panic_output.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-05T19:21:39Z",
+      "side": 1,
+      "message": "I posted comment to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2379845.\n\nIMHO, I think we should have a dedicate function which does the move. It\u0027s only needed once on start-up.",
+      "range": {
+        "startLine": 202,
+        "startChar": 19,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "f8177e546b999342c0ed713c22df152e65ac195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2b95e2_9b50628c",
+        "filename": "common/panic_output.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-05T19:21:39Z",
+      "side": 1,
+      "message": "Same approach (as b/251190975)?",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 50
+      },
+      "revId": "f8177e546b999342c0ed713c22df152e65ac195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
