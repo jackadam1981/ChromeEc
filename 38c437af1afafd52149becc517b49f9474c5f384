@@ -22,6 +22,30 @@
       },
       "revId": "38c437af1afafd52149becc517b49f9474c5f384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9374fafe_54a4022d",
+        "filename": "Makefile.ide",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-05T20:17:56Z",
+      "side": 1,
+      "message": "Honestly, I\u0027m not sure if there really is a standard format, but I at least wanted to standardize within this file. Using `-` for variables and sticking to `_` for command variables.\n\nI was keeping this _ since it is a command variable.",
+      "parentUuid": "addf8687_664b2f88",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 13
+      },
+      "revId": "38c437af1afafd52149becc517b49f9474c5f384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
