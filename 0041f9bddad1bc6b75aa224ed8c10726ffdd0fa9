@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f217f91_2621b46b",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-05T01:19:55Z",
+      "side": 1,
+      "message": "This IO definition is from EC perspective, this makes it a bit confusing, I will change this to be observed from emulator perspective along with further details.",
+      "parentUuid": "0644ee2e_618d701f",
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68475d68_28124402",
         "filename": "zephyr/include/emul/emul_power_signals.h",
         "patchSetId": 9
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-04T02:43:22Z",
       "side": 1,
       "message": "`COMMA`",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7e4e94_3c982213",
+        "filename": "zephyr/include/emul/emul_power_signals.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-05T01:19:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68475d68_28124402",
       "range": {
         "startLine": 9,
         "startChar": 39,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bbbd04_55e9b5b4",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-05T01:19:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ce3064b4_15014b5f",
+      "range": {
+        "startLine": 88,
+        "startChar": 59,
+        "endLine": 88,
+        "endChar": 79
+      },
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99031320_a5cdac30",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-10-04T02:43:22Z",
       "side": 1,
       "message": "Use `zassert_ok` when checking that an API returned success, here and throughout.",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 13
+      },
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be279811_2e793005",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-05T01:19:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "99031320_a5cdac30",
       "range": {
         "startLine": 254,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf029b9_fedcb708",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-05T01:19:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "036f603a_945d883c",
+      "range": {
+        "startLine": 384,
+        "startChar": 2,
+        "endLine": 384,
+        "endChar": 17
+      },
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ca70b4d_c091f111",
@@ -127,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6097d89_3343ade5",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-05T01:19:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ca70b4d_c091f111",
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13706533_aa524ce2",
@@ -140,6 +272,30 @@
       "writtenOn": "2022-10-04T02:43:22Z",
       "side": 1,
       "message": "It seems more natural to pass in a devicetree node here, rather than an opaque name; leave it to the test to know about its devicetree configuration (probably containing a single signal emulator) rather than choosing one of many configurations (most of which may not be relevant).",
+      "range": {
+        "startLine": 462,
+        "startChar": 27,
+        "endLine": 462,
+        "endChar": 57
+      },
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ecedc1_03643743",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-05T01:19:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13706533_aa524ce2",
       "range": {
         "startLine": 462,
         "startChar": 27,
