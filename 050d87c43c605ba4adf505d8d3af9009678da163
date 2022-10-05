@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66284177_e8c4de9e",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-10-05T08:12:53Z",
+      "side": 1,
+      "message": "I\u0027m glad you asked 😄\n\nMy idea is to pass the response buffer to this function, but [the structure](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d1715-1727;drc\u003d83790c8b685bff4c9bed07a20f9eb9eb1e7b7255) which contains the buffer is defined is packed. This introduces a risk that a pointer is not aligned properly. I got a warning about this when I tried to compile zephyr.\n\nI agree that this function should take a pointer to ec_flash_bank structure. Maybe you will have a better idea how to do this.",
+      "parentUuid": "82b2c75a_3ead746a",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 37
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cf9f2ef_6e7f6951",
         "filename": "common/flash.c",
         "patchSetId": 1
@@ -89,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55f5d5cb_0f28ffbd",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-10-05T08:12:53Z",
+      "side": 1,
+      "message": "But actually `crec_flash_bank_fill_data()` returns the number of bytes copied to the buffer (in this case it\u0027s a response buffer).",
+      "parentUuid": "96b3afd3_e3f067c6",
+      "range": {
+        "startLine": 1319,
+        "startChar": 2,
+        "endLine": 1319,
+        "endChar": 14
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6952397c_41ab1cc1",
         "filename": "common/flash.c",
         "patchSetId": 1
@@ -100,6 +148,30 @@
       "writtenOn": "2022-10-04T19:06:09Z",
       "side": 1,
       "message": "Shouldn\u0027t `num_banks_desc` be set to `r_2-\u003enum_banks_total`? This seems to set it to the size of the config structure.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 4,
+        "endLine": 1323,
+        "endChar": 45
+      },
+      "revId": "050d87c43c605ba4adf505d8d3af9009678da163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ce5d7d_54a89f41",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-10-05T08:12:53Z",
+      "side": 1,
+      "message": "Actually this line is wrong. There should be division instead of multiplication\n```\nr_2-\u003enum_banks_desc \u003d bytes_copied / sizeof(struct ec_flash_bank)\n```\n\n\u003e Shouldn\u0027t num_banks_desc be set to r_2-\u003enum_banks_total\n\nNo. `r_2-\u003enum_banks_total` is the total number of regions (`flash_bank_array` size).\n`r_2-\u003enum_banks_desc` is the number of regions included in the response, because the response buffer might not have enough space to store all `flash_bank_array` entries.",
+      "parentUuid": "6952397c_41ab1cc1",
       "range": {
         "startLine": 1323,
         "startChar": 4,
