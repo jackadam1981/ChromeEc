@@ -16,6 +16,24 @@
       "message": "Nit: Why not just assign directly to `cmd_json_list` here?",
       "revId": "6f3829267f3900b61436b765ba8bb5ee017a8a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b812ce_3e72ab16",
+        "filename": "Makefile.ide",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-05T18:25:15Z",
+      "side": 1,
+      "message": "Just to make it explicit that we are performing two steps, but I can simplify in follow-up. I think some others are waiting to use this, so I\u0027m going to submit for now.",
+      "parentUuid": "7013f0e2_9c0d08ce",
+      "revId": "6f3829267f3900b61436b765ba8bb5ee017a8a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
