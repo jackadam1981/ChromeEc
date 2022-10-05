@@ -22,6 +22,30 @@
       },
       "revId": "273707b8b5faea84e13c22046f74751ab012fa63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f571157_37a0e8a9",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-10-05T07:29:42Z",
+      "side": 1,
+      "message": "Sounds good!",
+      "parentUuid": "f7a6e73b_8f993127",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "273707b8b5faea84e13c22046f74751ab012fa63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
