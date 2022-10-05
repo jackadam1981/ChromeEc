@@ -20,7 +20,7 @@
 #include <stdint.h>
 
 #include <zephyr/device.h>
-#include <zephyr/drivers/espi.h>
+#include <zephyr/drivers/espi/espi.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
