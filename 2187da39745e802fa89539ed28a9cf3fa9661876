@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abde0ac_71eb7c2c",
+        "filename": "common/panic_output.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-05T19:20:17Z",
+      "side": 1,
+      "message": "IMHO, we should do the move once early in boot (e.g. system_pre_init) in an explicit function (e.g. panic_data_move or panic_data_init). Then, we can handle corner cases (e.g. out of space) better (while it\u0027s currently not clear when the move happens). WDYT?",
+      "range": {
+        "startLine": 177,
+        "startChar": 20,
+        "endLine": 177,
+        "endChar": 67
+      },
+      "revId": "2187da39745e802fa89539ed28a9cf3fa9661876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
