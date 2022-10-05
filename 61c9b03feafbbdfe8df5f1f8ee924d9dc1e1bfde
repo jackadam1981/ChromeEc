@@ -33,6 +33,24 @@
       "message": "Probably failing assumption here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/common/src/utils.c;l\u003d133",
       "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d2a7fe_26a987a7",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-05T23:23:49Z",
+      "side": 1,
+      "message": "twister\u0027s behavior here is very strange, since it reports \"In total 3 test cases were executed, 0 skipped on 1 out of total 503 platforms\" but if I inspect the log it says `verify_identity` was skipped and the suite summary says one executed and one skipped: the only way to know the assumption failed is to inspect the complete test log?\n\nI can\u0027t even tell why this assumption is failing, since the same thing in the other test case works correctly.",
+      "parentUuid": "02458240_eb0f161c",
+      "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
