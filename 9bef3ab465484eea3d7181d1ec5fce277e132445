@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "496d929f_cffae4cf",
+        "filename": "zephyr/projects/skyrim/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1548949
+      },
+      "writtenOn": "2022-10-05T06:43:11Z",
+      "side": 1,
+      "message": "have removed.",
+      "parentUuid": "64a73f2a_80df6c81",
+      "revId": "9bef3ab465484eea3d7181d1ec5fce277e132445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b72e21b4_73099ded",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-30T15:00:39Z",
       "side": 1,
       "message": "nit: this may be removed as well",
+      "revId": "9bef3ab465484eea3d7181d1ec5fce277e132445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edad1d77_63a66958",
+        "filename": "zephyr/projects/skyrim/prj_frostflow.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1548949
+      },
+      "writtenOn": "2022-10-05T06:43:11Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b72e21b4_73099ded",
       "revId": "9bef3ab465484eea3d7181d1ec5fce277e132445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
