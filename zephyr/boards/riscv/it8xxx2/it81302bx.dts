@@ -5,4 +5,7 @@
 
 /dts-v1/;
 
+#include <cros/ite/it8xxx2.dtsi>
+#include <ite/it8xxx2-i2c.dtsi>
+#include <ite/it8xxx2-wuc.dtsi>
 #include "it8xxx2.dts"
