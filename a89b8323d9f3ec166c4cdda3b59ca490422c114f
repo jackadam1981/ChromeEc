@@ -16,6 +16,24 @@
       "message": "Also remove these aliases; the default implementation of `nissa_configure_hdmi_power_gpios` will still do things if these exist.",
       "revId": "a89b8323d9f3ec166c4cdda3b59ca490422c114f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73d02369_50e4cd27",
+        "filename": "zephyr/projects/nissa/yaviks/overlay.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-10-05T06:28:43Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "6835bd5b_6987ecf6",
+      "revId": "a89b8323d9f3ec166c4cdda3b59ca490422c114f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
