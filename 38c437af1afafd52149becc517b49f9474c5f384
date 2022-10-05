@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addf8687_664b2f88",
+        "filename": "Makefile.ide",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-05T20:09:44Z",
+      "side": 1,
+      "message": "I didn\u0027t know we had a standard variable format, but should this use dashes as well? Or is it like intermediate values use dashes and functions to be called use underscores?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 13
+      },
+      "revId": "38c437af1afafd52149becc517b49f9474c5f384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
