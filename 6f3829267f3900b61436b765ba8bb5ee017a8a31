@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7013f0e2_9c0d08ce",
+        "filename": "Makefile.ide",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-05T17:15:13Z",
+      "side": 1,
+      "message": "Nit: Why not just assign directly to `cmd_json_list` here?",
+      "revId": "6f3829267f3900b61436b765ba8bb5ee017a8a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
