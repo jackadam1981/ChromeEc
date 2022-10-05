@@ -214,10 +214,6 @@ static void vboot_hash_next_chunk(void)
 static int vboot_hash_start(uint32_t offset, uint32_t size,
 			    const uint8_t *nonce, int nonce_size, bool deferred)
 {
-	/* Fail if hash computation is already in progress */
-	if (in_progress)
-		return EC_ERROR_BUSY;
-
 	/*
 	 * Make sure request fits inside flash.  That is, you can't use this
 	 * command to peek at other memory.
@@ -226,6 +222,16 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 	    size > CONFIG_FLASH_SIZE_BYTES ||
 	    offset + size > CONFIG_FLASH_SIZE_BYTES || nonce_size < 0) {
 		return EC_ERROR_INVAL;
+	}
+
+	if (in_progress) {
+		if (deferred)
+			/* Fail if hash computation is already in progress */
+			return EC_ERROR_BUSY;
+
+		/* blocking mode: wait until previous operation complete */
+		while (in_progress)
+			usleep(1000);
 	}
 
 	clock_enable_module(MODULE_FAST_CPU, 1);
@@ -306,9 +312,18 @@ static void vboot_hash_init(void)
 	      EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY)))
 #endif
 	{
-		/* Start computing the hash of RW firmware */
-		vboot_hash_start(flash_get_rw_offset(system_get_active_copy()),
-				 get_rw_size(), NULL, 0, VBOOT_HASH_DEFERRED);
+		/*
+		 * At this point, it's likely that EFS2 vboot_main() already
+		 * requested the RW hash calculation once.
+		 *
+		 * Start computing the hash of RW firmware only if we haven't
+		 * done it before.
+		 */
+		if (!hash) {
+			vboot_hash_start(
+				flash_get_rw_offset(system_get_active_copy()),
+				get_rw_size(), NULL, 0, VBOOT_HASH_DEFERRED);
+		}
 	}
 }
 DECLARE_HOOK(HOOK_INIT, vboot_hash_init, HOOK_PRIO_INIT_VBOOT_HASH);
@@ -436,7 +451,7 @@ static void fill_response(struct ec_response_vboot_hash *r, int request_offset)
  *
  * @return EC_RES_SUCCESS if success, or other result code on error.
  */
-static int host_start_hash(const struct ec_params_vboot_hash *p)
+static int host_start_hash(const struct ec_params_vboot_hash *p, bool deferred)
 {
 	int offset = p->offset;
 	int size = p->size;
@@ -456,7 +471,8 @@ static int host_start_hash(const struct ec_params_vboot_hash *p)
 		size = get_rw_size();
 	offset = get_offset(offset);
 	rv = vboot_hash_start(offset, size, p->nonce_data, p->nonce_size,
-			      VBOOT_HASH_DEFERRED);
+			      deferred ? VBOOT_HASH_DEFERRED :
+					 VBOOT_HASH_BLOCKING);
 
 	if (rv == EC_SUCCESS)
 		return EC_RES_SUCCESS;
@@ -487,16 +503,11 @@ host_command_vboot_hash(struct host_cmd_handler_args *args)
 		vboot_hash_abort();
 		return EC_RES_SUCCESS;
 
-	case EC_VBOOT_HASH_START:
 	case EC_VBOOT_HASH_RECALC:
-		rv = host_start_hash(p);
+	case EC_VBOOT_HASH_START:
+		rv = host_start_hash(p, p->cmd == EC_VBOOT_HASH_START);
 		if (rv != EC_RES_SUCCESS)
 			return rv;
-
-		/* Wait for hash to finish if command is RECALC */
-		if (p->cmd == EC_VBOOT_HASH_RECALC)
-			while (in_progress)
-				usleep(1000);
 
 		fill_response(r, p->offset);
 		args->response_size = sizeof(*r);
