@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b32154b_6253089a",
+        "filename": "board/banshee/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-05T22:25:19Z",
+      "side": 0,
+      "message": "@johnwc_yeh@compal.corp-partner.google.com\ni never fully understood why this check is needed?\nis that for the initial boot up case?\n\nwe now check that USB_MUX_FLAG_IN_LPM is off in usb_mux.c\nbefore before potentially disabling USB3.",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 39
+      },
+      "revId": "9a667209265cfc7f1ec1e318607f59a3449644f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
