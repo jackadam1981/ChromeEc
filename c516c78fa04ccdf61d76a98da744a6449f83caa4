@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f188f98c_ab69c1c5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-05T03:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66736ec9_54bab4bf",
+      "range": {
+        "startLine": 1166,
+        "startChar": 35,
+        "endLine": 1166,
+        "endChar": 41
+      },
+      "revId": "c516c78fa04ccdf61d76a98da744a6449f83caa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "447f1ee1_310e7f8a",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-04T16:02:13Z",
       "side": 1,
       "message": "Should an error be returned so the user knows they failed to enable BIST mode when they run the host command or console command?",
+      "revId": "c516c78fa04ccdf61d76a98da744a6449f83caa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eff47cd_84fc4b02",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-05T03:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447f1ee1_310e7f8a",
       "revId": "c516c78fa04ccdf61d76a98da744a6449f83caa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
