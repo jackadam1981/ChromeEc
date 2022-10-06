@@ -7043,6 +7043,10 @@ struct ec_response_pchg_count {
  */
 #define EC_CMD_PCHG 0x0135
 
+enum pchg_flags {
+	PCHG_FLAGS_IRQ = 0,
+};
+
 struct ec_params_pchg {
 	uint8_t port;
 } __ec_align1;
@@ -7062,7 +7066,7 @@ struct ec_response_pchg_v2 {
 	uint32_t error; /* enum pchg_error */
 	uint8_t state; /* enum pchg_state state */
 	uint8_t battery_percentage;
-	uint8_t unused0;
+	uint8_t flags;				/* BIT() of enum pchg_flags */
 	uint8_t unused1;
 	/* Fields added in version 1 */
 	uint32_t fw_version;
@@ -7137,6 +7141,10 @@ enum ec_pchg_update_cmd {
 	EC_PCHG_UPDATE_CMD_WRITE,
 	/* Close update session. */
 	EC_PCHG_UPDATE_CMD_CLOSE,
+	/* Reset chip (without mode change). */
+	EC_PCHG_UPDATE_CMD_RESET,
+	/* Enable pass-through mode. */
+	EC_PCHG_UPDATE_CMD_ENABLE_PASSTHRU,
 	/* End of commands */
 	EC_PCHG_UPDATE_CMD_COUNT,
 };
