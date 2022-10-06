@@ -16,6 +16,23 @@
       "message": "This CL has dependency on PR51013:https://github.com/zephyrproject-rtos/zephyr/pull/51013",
       "revId": "b237791ed0635f5f88adfa9c4a751997b62f8522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd98b167_beb60761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-06T22:28:59Z",
+      "side": 1,
+      "message": "The build failure is due to formatting:\n\nERROR:root:/mnt/host/source/src/platform/ec/zephyr/shim/src/espi.c:737:66: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        espi_write_lpc_request(espi_dev, ECUSTOM_HOST_SUBS_INTERRUPT_EN,",
+      "revId": "b237791ed0635f5f88adfa9c4a751997b62f8522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
