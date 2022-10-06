@@ -110,6 +110,24 @@
       "parentUuid": "ac27701c_5a37470d",
       "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e23d34b_8427640b",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-06T23:00:41Z",
+      "side": 1,
+      "message": "You\u0027re right, forcing the chipset to to S0 makes it work reliably for whatever reason.",
+      "parentUuid": "3e55284e_adef77b1",
+      "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
