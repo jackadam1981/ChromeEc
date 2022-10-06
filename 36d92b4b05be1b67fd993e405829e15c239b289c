@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7006bf0e_9d6763f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-06T17:36:40Z",
+      "side": 1,
+      "message": "Nice optimization. Thanks,",
+      "revId": "36d92b4b05be1b67fd993e405829e15c239b289c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c951c11a_08bf60fb",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-06T17:36:40Z",
+      "side": 1,
+      "message": "We probably need to update EC_VBOOT_HASH_RECALC:\n\n    case EC_VBOOT_HASH_RECALC:\n    \tvboot_hash_abort();\n    \t/* Wait until in_progress clears? */\n    \t/* Fall through */\n    case EC_VBOOT_HASH_START:\n    \trv \u003d host_start_hash(p);\n\nOr we call vboot_hash_start with VBOOT_HASH_BLOCKING, instead, for RECALC. vboot_hash_all_chunks should have a wait-loop for in_progress clearance.",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 26
+      },
+      "revId": "36d92b4b05be1b67fd993e405829e15c239b289c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88643a6_662bc014",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-06T17:36:40Z",
+      "side": 1,
+      "message": "BTW, this looks like something we want to avoid. For a certain period of time, a host command task is completely blocked.\n\nWe might as well call vboot_hash_start with VBOOT_HASH_BLOCKING instead.",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 17
+      },
+      "revId": "36d92b4b05be1b67fd993e405829e15c239b289c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
