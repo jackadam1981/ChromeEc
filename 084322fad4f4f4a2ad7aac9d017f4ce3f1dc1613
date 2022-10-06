@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "efb04d3d_c9366e01",
+        "filename": "util/clangd_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-06T20:42:08Z",
+      "side": 1,
+      "message": "Oh I see! Makes sense.",
+      "parentUuid": "e6515dda_55fcea5b",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "084322fad4f4f4a2ad7aac9d017f4ce3f1dc1613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cf1af391_544e6af5",
         "filename": "util/clangd_config.py",
         "patchSetId": 3
