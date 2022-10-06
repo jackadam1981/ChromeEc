@@ -734,16 +734,14 @@ static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 			has_data_read = 1;
 	}
 	if (motion_sensor_in_forced_mode(sensor)) {
+		/* Prevent the data race of motion_sensor.collection_rate. */
+		mutex_lock(&g_sensor_mutex);
 		if (motion_sensor_time_to_read(ts, sensor)) {
-			/*
-			 * Since motion_sense_read can sleep, other task may be
-			 * scheduled. In particular if suspend is called by
-			 * HOOKS task, it may set colleciton_rate to 0 and we
-			 * would crash in increment_sensor_collection.
-			 */
 			increment_sensor_collection(sensor, ts);
+			mutex_unlock(&g_sensor_mutex);
 			ret = motion_sense_read(sensor);
 		} else {
+			mutex_unlock(&g_sensor_mutex);
 			ret = EC_ERROR_BUSY;
 		}
 
