@@ -164,7 +164,7 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		memory {
+		memory: memory {
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
 			temp_host_high = <85>;
@@ -173,7 +173,7 @@
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory>;
 		};
-		charger {
+		charger: charger {
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
 			temp_host_high = <85>;
@@ -182,7 +182,7 @@
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger>;
 		};
-		ambient {
+		ambient: ambient {
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
 			temp_host_high = <85>;
