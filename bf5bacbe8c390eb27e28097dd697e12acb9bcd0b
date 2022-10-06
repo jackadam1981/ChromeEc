@@ -140,6 +140,30 @@
       },
       "revId": "bf5bacbe8c390eb27e28097dd697e12acb9bcd0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9368a4d_70181510",
+        "filename": "zephyr/test/krabby/src/temp_tentacruel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-06T08:52:18Z",
+      "side": 1,
+      "message": "no you are not calling the real (zephyr/projects/corsola/src/krabby/temp_tentacruel.c) one",
+      "parentUuid": "e47d336a_8e219a65",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 21
+      },
+      "revId": "bf5bacbe8c390eb27e28097dd697e12acb9bcd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
