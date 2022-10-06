@@ -276,8 +276,10 @@ static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 	case WLC_HOST_CTRL_RESET:
 		if (len != WLC_HOST_CTRL_RESET_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
-		if (buf[0] != WLC_HOST_STATUS_OK)
-			ctx->event = PCHG_EVENT_OTHER_ERROR;
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			ctx->event = PCHG_EVENT_ERROR;
+			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_RESPONSE);
+		}
 		break;
 	case WLC_HOST_CTRL_DL_OPEN_SESSION:
 		if (len != WLC_HOST_CTRL_DL_OPEN_SESSION_RSP_SIZE)
@@ -318,24 +320,27 @@ static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 	case WLC_CHG_CTRL_ENABLE:
 		if (len != WLC_CHG_CTRL_ENABLE_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
-		if (buf[0] != WLC_HOST_STATUS_OK)
-			ctx->event = PCHG_EVENT_OTHER_ERROR;
-		else
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			ctx->event = PCHG_EVENT_ERROR;
+			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_RESPONSE);
+		} else
 			ctx->event = PCHG_EVENT_ENABLED;
 		break;
 	case WLC_CHG_CTRL_DISABLE:
 		if (len != WLC_CHG_CTRL_DISABLE_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
-		if (buf[0] != WLC_HOST_STATUS_OK)
-			ctx->event = PCHG_EVENT_OTHER_ERROR;
-		else
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			ctx->event = PCHG_EVENT_ERROR;
+			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_RESPONSE);
+		} else
 			ctx->event = PCHG_EVENT_DISABLED;
 		break;
 	case WLC_CHG_CTRL_CHARGING_INFO:
 		if (len != WLC_CHG_CTRL_CHARGING_INFO_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
 		if (buf[0] != WLC_HOST_STATUS_OK) {
-			ctx->event = PCHG_EVENT_OTHER_ERROR;
+			ctx->event = PCHG_EVENT_ERROR;
+			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_RESPONSE);
 		} else {
 			ctx->battery_percent = buf[1];
 			ctx->event = PCHG_EVENT_CHARGE_UPDATE;
@@ -441,6 +446,15 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 				return EC_ERROR_INVAL;
 			ctx->event = PCHG_EVENT_DEVICE_LOST;
 			break;
+<<<<<<< Updated upstream
+=======
+		case WLC_CHG_CTRL_DEVICE_STATE_DEVICE_FO_PRESENT:
+			if (len != WLC_CHG_CTRL_DEVICE_STATE_EVT_SIZE)
+				return EC_ERROR_INVAL;
+			ctx->event = PCHG_EVENT_ERROR;
+			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_FOREIGN_OBJECT);
+			break;
+>>>>>>> Stashed changes
 		default:
 			return EC_ERROR_INVAL;
 		}
