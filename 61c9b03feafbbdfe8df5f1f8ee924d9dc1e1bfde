@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eabb921_27ffe563",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-06T23:02:34Z",
+      "side": 1,
+      "message": "Ah, that explains the confusion behavior of unreported skips.",
+      "parentUuid": "082860e9_afeb9426",
+      "range": {
+        "startLine": 102,
+        "startChar": 28,
+        "endLine": 102,
+        "endChar": 43
+      },
+      "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02458240_eb0f161c",
