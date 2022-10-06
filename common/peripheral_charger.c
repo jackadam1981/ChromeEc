@@ -6,6 +6,7 @@
 #include "atomic.h"
 #include "chipset.h"
 #include "common.h"
+#include "ctn730.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
@@ -688,9 +689,9 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 	 *    charging)
 	 * 3. Errors are for reporting purpose only.
 	 */
-	mutex_lock(ctx->mtx);
+	mutex_lock(&ctx->mtx);
 	ctx->error = 0;
-	mutex_unlock(ctx->mtx);
+	mutex_unlock(&ctx->mtx);
 
 	return EC_RES_SUCCESS;
 }
@@ -789,6 +790,60 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_PCHG_UPDATE, hc_pchg_update, EC_VER_MASK(0));
+
+static enum ec_status pchg_bist_wlc(struct pchg *ctx,
+				    const struct ec_params_pchg_bist_wlc *p,
+				    struct ec_response_pchg_bist_wlc *r,
+				    uint16_t *rsize)
+{
+	enum ec_status rv = EC_RES_ERROR;
+
+	/* WLC-BIST is available only in INITIALIZED. */
+	if (ctx->state != PCHG_STATE_INITIALIZED)
+		return EC_RES_ACCESS_DENIED;
+
+	switch (p->test_id) {
+	case WLC_BIST_CMD_RF_SWITCH_ON:
+	case WLC_BIST_CMD_RF_SWITCH_OFF:
+		rv = ctx->cfg->drv->bist(ctx, p->test_id);
+		r->status = 0;
+		*rsize = 1;
+		break;
+	default:
+	}
+
+	return rv;
+}
+
+static enum ec_status hc_pchg_bist(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_pchg_bist *p = args->params;
+	struct ec_response_pchg_bist *r = args->response;
+	int port = p->port;
+	struct pchg *ctx;
+	uint16_t rsize = 0;
+	enum ec_status rv = EC_RES_ERROR;
+
+	if (port >= pchg_count)
+		return EC_RES_INVALID_PARAM;
+
+	ctx = &pchgs[port];
+
+	if (!ctx->cfg->drv->bist)
+		return EC_RES_UNAVAILABLE;
+
+	switch (ctx->cfg->interface) {
+	case PCHG_INTERFACE_WLC:
+		rv = pchg_bist_wlc(ctx, &p->wlc, &r->wlc, &rsize);
+		break;
+	default:
+	}
+
+	args->response_size = rsize;
+
+	return rv;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PCHG_BIST, hc_pchg_bist, EC_VER_MASK(0));
 
 static int cc_pchg(int argc, const char **argv)
 {

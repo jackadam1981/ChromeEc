@@ -7301,6 +7301,33 @@ struct ec_params_rgbkbd_set_color {
 	struct rgb_s color[];
 } __ec_align1;
 
+
+#define EC_CMD_PCHG_BIST 0x13C
+
+struct ec_params_pchg_bist_wlc {
+	uint8_t test_id;
+	/* Additional data if any which varies test_id to test_id. */
+	uint8_t data[];
+};
+
+struct ec_params_pchg_bist {
+	uint8_t port;
+	union {
+		struct ec_params_pchg_bist_wlc wlc;
+	};
+};
+
+struct ec_response_pchg_bist_wlc {
+	uint8_t status;
+	uint8_t data[];
+};
+
+struct ec_response_pchg_bist {
+	union {
+		struct ec_response_pchg_bist_wlc wlc;
+	};
+};
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 

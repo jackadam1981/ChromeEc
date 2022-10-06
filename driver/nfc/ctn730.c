@@ -341,6 +341,21 @@ static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 			ctx->event = PCHG_EVENT_CHARGE_UPDATE;
 		}
 		break;
+	case WLC_HOST_CTRL_BIST:
+		if (len < WLC_BIST_RSP_SIZE)
+			return EC_ERROR_UNKNOWN;
+		switch (ctx->bist_test_id) {
+		case WLC_BIST_CMD_RF_SWITCH_ON:
+		case WLC_BIST_CMD_RF_SWITCH_OFF:
+			switch (buf[0])
+			case WLC_HOST_STATUS_OK:
+				CPRINTS("BIST RF switch on/off success");
+				break;
+			default:
+				CPRINTS("BIST RF switch on/off failed (%d)",
+					buf[0]);
+			}
+		break;
 	default:
 		CPRINTS("Received unknown response (%d)", res->instruction);
 		break;
@@ -595,6 +610,40 @@ static int ctn730_update_close(struct pchg *ctx)
 	return EC_SUCCESS_IN_PROGRESS;
 }
 
+/*
+ * arg1(uint8_t): BIST test ID
+ * arg2, arg3, ... : Depend on test ID.
+ */
+static int ctn730_bist(struct pchg *ctx, ...)
+{
+	va_list args;
+	uint8_t buf[CTN730_MESSAGE_BUFFER_SIZE];
+	struct ctn730_msg *cmd = (void *)buf;
+	uint32_t id;
+	int rv;
+
+	va_start(args, ctx);
+
+	/* va_arg takes only int or larger. */
+	id = va_arg(args, uint32_t);
+	switch (id) {
+	case WLC_BIST_CMD_RF_SWITCH_ON:
+	case WLC_BIST_CMD_RF_SWITCH_OFF:
+		cmd->instruction = WLC_HOST_CTRL_BIST;
+		cmd->length = 1;
+		cmd->payload[0] = id;
+		break;
+	default:
+	}
+	va_end(args);
+
+	rv = _send_command(ctx, cmd);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS_IN_PROGRESS;
+}
+
 /**
  * Send command in blocking loop
  *
@@ -666,6 +715,7 @@ const struct pchg_drv ctn730_drv = {
 	.update_open = ctn730_update_open,
 	.update_write = ctn730_update_write,
 	.update_close = ctn730_update_close,
+	.bist = ctn730_bist,
 };
 
 static int cc_ctn730(int argc, const char **argv)
@@ -705,8 +755,9 @@ static int cc_ctn730(int argc, const char **argv)
 		cmd->payload[0] = id;
 
 		switch (id) {
-		case 0x01:
-			/* Switch on RF field. Tx driver conf not implemented */
+		case WLC_BIST_CMD_RF_SWITCH_ON:
+		case WLC_BIST_CMD_RF_SWITCH_OFF:
+			/* Tx driver configuration is not implemented. */
 			cmd->length = 1;
 			break;
 		case 0x04:

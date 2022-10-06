@@ -152,10 +152,19 @@ enum pchg_mode {
 	PCHG_MODE_COUNT,
 };
 
+enum pchg_interface {
+	PCHG_INTERFACE_WLC = 0,
+	PCHG_INTERFACE_QI,
+
+	/* Add no more entries below here. */
+	PCHG_INTERFACE_COUNT,
+};
 /**
  * Data struct describing the configuration of a peripheral charging port.
  */
 struct pchg_config {
+	/* Interface (WLC, QI, etc.) */
+	const enum pchg_interface interface;
 	/* Charger driver */
 	const struct pchg_drv *drv;
 	/* I2C port number */
@@ -214,6 +223,8 @@ struct pchg {
 	uint32_t fw_version;
 	/* Context related to FW update */
 	struct pchg_update update;
+	/* BIST test ID */
+	uint8_t bist_test_id;
 };
 
 /**
@@ -247,6 +258,8 @@ struct pchg_drv {
 	int (*update_write)(struct pchg *ctx);
 	/* close update session */
 	int (*update_close)(struct pchg *ctx);
+	/* Built-in Self-test (a.k.a. BIST) */
+	int (*bist)(struct pchg *ctx, ...);
 };
 
 /**
