@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3331eba8_068265de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-06T15:33:52Z",
+      "side": 1,
+      "message": "The PD messages themselves look good, in that they match what the compliance tester would like to see from us as a device that can be a TBT UFP.  Just deferring to Caveh on whether there are any broader concerns from always setting USB mode as a UFP",
+      "revId": "c63f13115f62988e34ccefb5116eba3529092ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5172c6b_2a2843af",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "If we cannot enable USB on UFP connection due to power consumption, could we close this issue as limiation?",
       "parentUuid": "d5172c6b_2a2843af",
+      "revId": "c63f13115f62988e34ccefb5116eba3529092ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e094b8_4440df1c",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-06T15:33:52Z",
+      "side": 1,
+      "message": "I\u0027d like to defer to @caveh@chromium.org as the brya platform owner. \n\nI would guess the extra power consumption for the retimer will mostly occur when we\u0027re in connections with chargers which don\u0027t DR swap, so that may be okay.  But Caveh has been actively working on the retimer power consumption and could have a different opinion.",
+      "parentUuid": "0f3ec641_fcc65884",
       "revId": "c63f13115f62988e34ccefb5116eba3529092ace",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
