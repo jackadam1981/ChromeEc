@@ -104,6 +104,23 @@
       "message": "Reopened this CL after discussion in CL:3915760",
       "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6d53b9_78a90aa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-06T14:19:47Z",
+      "side": 1,
+      "message": "From Devin (CL:3915760),\n```\nAccording to redrix\u0027s fan curve, we are not only refer to one participant. we have such as the operation (A AND C) OR B. so only 1 participant will not reflect the real fan speed.\nRedrix has 2 FANs. and they are not the same speed for fan curve.\n```\n\n@devin.lu@quantatw.com,\nMany Thanks. But what I understood from the basic implementation of temps command is that, the value \"fan_speed\" (which actually didn\u0027t represent the fan speed) was just a expected amount of cooling the respective sensor might require based on the sensor temperature.   \n\nFrom your comment, did you mean that the FAN_OFF and FAN_MAX value are more than one for every sensor in redrix?",
+      "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
