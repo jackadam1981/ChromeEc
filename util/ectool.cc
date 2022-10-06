@@ -62,6 +62,7 @@ ENABLE_CLANG_WARNING("-Wmacro-redefined")
 #include "panic.h"
 #include "usb_pd.h"
 
+#include <libec/add_entropy_command.h>
 #include <libec/versions_command.h>
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
@@ -592,40 +593,20 @@ int cmd_adc_read(int argc, char *argv[])
 
 int cmd_add_entropy(int argc, char *argv[])
 {
-	struct ec_params_rollback_add_entropy p;
-	int rv;
-	int tries = 100; /* Wait for 10 seconds at most */
-
+	bool reset = false;
 	if (argc >= 2 && !strcmp(argv[1], "reset"))
-		p.action = ADD_ENTROPY_RESET_ASYNC;
-	else
-		p.action = ADD_ENTROPY_ASYNC;
+		reset = true;
 
-	rv = ec_command(EC_CMD_ADD_ENTROPY, 0, &p, sizeof(p), NULL, 0);
-
-	if (rv != EC_RES_SUCCESS)
-		goto out;
-
-	while (tries--) {
-		usleep(100000);
-
-		p.action = ADD_ENTROPY_GET_RESULT;
-		rv = ec_command(EC_CMD_ADD_ENTROPY, 0, &p, sizeof(p), NULL, 0);
-
-		if (rv == EC_RES_SUCCESS) {
-			printf("Entropy added successfully\n");
-			return EC_RES_SUCCESS;
-		}
-
-		/* Abort if EC returns an error other than EC_RES_BUSY. */
-		if (rv <= -EECRESULT && rv != -EECRESULT - EC_RES_BUSY)
-			goto out;
+	ec::AddEntropyCommand add_entropy_command(reset);
+	if (!add_entropy_command.Run(get_fd())) {
+		fprintf(stderr, "Failed to run versions command\n");
+		return -1;
 	}
 
-	rv = -EECRESULT - EC_RES_TIMEOUT;
-out:
-	fprintf(stderr, "Failed to add entropy: %d\n", rv);
-	return rv;
+	if (add_entropy_command.Result() != EC_RES_SUCCESS)
+		return -EECRESULT - add_entropy_command.Result();
+
+	return add_entropy_command.Result();
 }
 
 int cmd_hello(int argc, char *argv[])
