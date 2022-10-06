@@ -372,14 +372,10 @@ const char *system_get_build_info(void);
  *
  * @param flags		Reset flags; see SYSTEM_RESET_* above.
  */
-#if (defined(TEST_FUZZ) || defined(CONFIG_ZTEST))
-test_mockable
-#else
 #if defined(__cplusplus) && !defined(__clang__)
 [[noreturn]]
 #else
 noreturn
-#endif
 #endif
 	void
 	system_reset(int flags);
