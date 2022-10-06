@@ -7043,8 +7043,14 @@ struct ec_response_pchg_count {
  */
 #define EC_CMD_PCHG 0x0135
 
-struct ec_params_pchg {
+struct ec_params_pchg_v3 {
 	uint8_t port;
+	/* Below are new in v3. */
+	uint8_t reserved1;
+	uint8_t reserved2;
+	uint8_t reserved3;
+	/* Errors acked by the host (thus to be cleared) */
+	uint32_t error;
 } __ec_align1;
 
 struct ec_response_pchg {
