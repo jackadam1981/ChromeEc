@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3846e50c_5b21a5df",
+        "filename": "util/clangd_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-06T00:05:21Z",
+      "side": 1,
+      "message": "It strips the first part (`./zephyr/projects/`) of each string/path, so that we just the board/project name.",
+      "parentUuid": "06ca0644_96d64dfb",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "084322fad4f4f4a2ad7aac9d017f4ce3f1dc1613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cf1af391_544e6af5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-05T23:35:49Z",
       "side": 1,
       "message": "I was about to say we can skip these if the user has explicitly set a board, but I like the idea of printing a meaningful error message instead of invoking `make` and fail later.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 48
+      },
+      "revId": "084322fad4f4f4a2ad7aac9d017f4ce3f1dc1613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3cdd253_b5a009a1",
+        "filename": "util/clangd_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-06T00:05:21Z",
+      "side": 1,
+      "message": "Right. It is nice having dedicated error messages.",
+      "parentUuid": "cf1af391_544e6af5",
       "range": {
         "startLine": 120,
         "startChar": 0,
