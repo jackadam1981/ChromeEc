@@ -22,6 +22,30 @@
       },
       "revId": "f4da830a5a09476376c3188e78d4d9796f0957ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a943a3e8_a879af5e",
+        "filename": "board/crota/fans.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-10-06T01:46:08Z",
+      "side": 1,
+      "message": "Yes, \"deadline\" falls behind when this function isn\u0027t called\nregularly during S0ix, so get the current time after resuming.\nSmall amount of drift is OK here.\nAlready modified it, thanks.",
+      "parentUuid": "f4fe48e1_4ebfdf24",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "f4da830a5a09476376c3188e78d4d9796f0957ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
