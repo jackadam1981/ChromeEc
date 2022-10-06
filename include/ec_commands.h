@@ -7049,8 +7049,30 @@ struct ec_response_pchg_count {
  */
 #define EC_CMD_PCHG 0x0135
 
+enum pchg_command {
+	PCHG_COMMAND_GET_STATUS = 0,
+	PCHG_COMMAND_PASSTHRU,
+};
+
+enum pchg_flags {
+	PCHG_FLAGS_IRQ = 0,
+};
+
+struct pchg_command_params_passthru {
+	uint8_t enable;
+} __ec_align1;
+
+/* v1, v2 */
 struct ec_params_pchg {
 	uint8_t port;
+};
+
+struct ec_params_pchg_v3 {
+	uint8_t port;
+	uint8_t cmd;			/* enum pchg_command */
+	union {
+		struct pchg_command_params_passthru passthru;
+	};
 } __ec_align1;
 
 struct ec_response_pchg {
@@ -7068,7 +7090,7 @@ struct ec_response_pchg_v2 {
 	uint32_t error; /* enum pchg_error */
 	uint8_t state; /* enum pchg_state state */
 	uint8_t battery_percentage;
-	uint8_t unused0;
+	uint8_t flags;				/* BIT() of enum pchg_flags */
 	uint8_t unused1;
 	/* Fields added in version 1 */
 	uint32_t fw_version;
@@ -7143,6 +7165,8 @@ enum ec_pchg_update_cmd {
 	EC_PCHG_UPDATE_CMD_WRITE,
 	/* Close update session. */
 	EC_PCHG_UPDATE_CMD_CLOSE,
+	/* Reset chip (without mode change). */
+	EC_PCHG_UPDATE_CMD_RESET,
 	/* End of commands */
 	EC_PCHG_UPDATE_CMD_COUNT,
 };
@@ -7300,6 +7324,7 @@ struct ec_params_rgbkbd_set_color {
 	/* RGB color data array of length up to MAX_KEY_COUNT. */
 	struct rgb_s color[];
 } __ec_align1;
+
 
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */

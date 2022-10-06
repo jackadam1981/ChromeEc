@@ -9607,8 +9607,11 @@ static void cmd_pchg_help(char *cmd)
 		"          Reset <port>.\n"
 		"\n"
 		"  Usage4: %s <port> update <version> <addr1> <file1> <addr2> <file2> ...\n"
-		"          Update firmware of <port>.\n",
-		cmd, cmd, cmd, cmd);
+		"          Update firmware of <port>.\n"
+		"\n"
+		"  Usage5: %s <port> passthru <on/off> ...\n"
+		"          Enable passthru mode for <port>.\n",
+		cmd, cmd, cmd, cmd, cmd);
 }
 
 static int cmd_pchg_info(const struct ec_response_pchg *res)
@@ -9803,7 +9806,7 @@ static int cmd_pchg(int argc, char *argv[])
 	const size_t max_input_files = 8;
 	int port, port_count;
 	struct ec_response_pchg_count rcnt;
-	struct ec_params_pchg p;
+	struct ec_params_pchg_v3 p;
 	struct ec_response_pchg r;
 	char *e;
 	int rv;
@@ -9829,7 +9832,8 @@ static int cmd_pchg(int argc, char *argv[])
 	}
 
 	p.port = port;
-	rv = ec_command(EC_CMD_PCHG, 1, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_command(EC_CMD_PCHG, 1, &p, sizeof(struct ec_params_pchg),
+			&r, sizeof(r));
 	if (rv < 0) {
 		fprintf(stderr, "\nError code: %d\n", rv);
 		return rv;
@@ -9913,6 +9917,26 @@ static int cmd_pchg(int argc, char *argv[])
 		}
 
 		return 0;
+	} else if (argc >= 4 && !strcmp(argv[2], "passthru")) {
+		/*
+		 * Usage 5
+		 */
+		int onoff;
+
+		if (!parse_bool(argv[3], &onoff)) {
+			fprintf(stderr, "\nInvalid arg: '%s'\n", argv[3]);
+			return -1;
+		}
+
+		p.cmd = PCHG_COMMAND_PASSTHRU;
+		p.passthru.enable = onoff ? 1 : 0;
+
+		rv = ec_command(EC_CMD_PCHG, 3, &p, sizeof(p), NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr, "\nFailed to %s passthru: %d\n",
+				onoff ? "enable" : "disable", rv);
+			return rv;
+		}
 	}
 
 	fprintf(stderr, "Invalid parameter\n\n");
