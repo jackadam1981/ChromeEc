@@ -50,6 +50,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b610b5d2_0444b1f1",
+        "filename": "board/hatch_fp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-06T20:59:05Z",
+      "side": 1,
+      "message": "If I understand correctly, without adding anything here the `make` command to build this test would return an error because `power_utilization` is not defined anywhere, right?",
+      "parentUuid": "1ca9cd54_b3f8cd4c",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74df83c_4c1d692d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-06T20:59:05Z",
+      "side": 1,
+      "message": "I don\u0027t know if this is possible, but I think if either `pp3300_dx_fp_mw` or `pp3300_dx_mcu_mw` remain `None` this function will return `False` without printing any error message.\n\nMaybe we can print a warning if after completing the `for` loop, one of the two variable is still `None` because it means we didn\u0027t see its value printed on the console.",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 16
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5effe052_cdabb254",
         "filename": "test/run_device_tests.py",
         "patchSetId": 2
@@ -320,6 +367,30 @@
       "side": 1,
       "message": "Oh, I like that idea! Thanks!",
       "parentUuid": "acffeb38_d503ce6b",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 753,
+        "endChar": 28
+      },
+      "revId": "5bef7cd7f352393810bd0b661300db597aad07e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34677bd5_2ef8bb0d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-06T20:59:05Z",
+      "side": 1,
+      "message": "+1 \n\nHopefully we can set the `default` value to a lambda that returns always `True`.",
+      "parentUuid": "e88933b2_becf8ad7",
       "range": {
         "startLine": 749,
         "startChar": 0,
