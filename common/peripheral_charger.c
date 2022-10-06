@@ -145,18 +145,19 @@ static enum pchg_state pchg_reset(struct pchg *ctx)
 	 */
 	_clear_port(ctx);
 
-	if (ctx->mode == PCHG_MODE_NORMAL) {
+	if (ctx->mode == PCHG_MODE_DOWNLOAD) {
+		state = PCHG_STATE_DOWNLOAD;
+		pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPEN);
+	} else {
 		rv = ctx->cfg->drv->init(ctx);
 		if (rv == EC_SUCCESS) {
 			state = PCHG_STATE_INITIALIZED;
-			pchg_queue_event(ctx, PCHG_EVENT_ENABLE);
+			if (ctx->mode == PCHG_MODE_NORMAL)
+				pchg_queue_event(ctx, PCHG_EVENT_ENABLE);
 		} else if (rv != EC_SUCCESS_IN_PROGRESS) {
 			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_HOST);
 			CPRINTS("ERR: Failed to reset to normal mode");
 		}
-	} else {
-		state = PCHG_STATE_DOWNLOAD;
-		pchg_queue_event(ctx, PCHG_EVENT_UPDATE_OPEN);
 	}
 
 	return state;
@@ -170,7 +171,8 @@ static void pchg_state_reset(struct pchg *ctx)
 		break;
 	case PCHG_EVENT_IN_NORMAL:
 		ctx->state = PCHG_STATE_INITIALIZED;
-		pchg_queue_event(ctx, PCHG_EVENT_ENABLE);
+		if (ctx->mode == PCHG_MODE_NORMAL)
+			pchg_queue_event(ctx, PCHG_EVENT_ENABLE);
 		break;
 	default:
 		break;
@@ -458,7 +460,11 @@ static int pchg_run(struct pchg *ctx)
 	CPRINTS("P%d Run in STATE_%s for EVENT_%s", port,
 		_text_state(ctx->state), _text_event(ctx->event));
 
-	if (ctx->event == PCHG_EVENT_IRQ) {
+	/*
+	 * IRQ event is further translated to an actual event unless we're
+	 * in passthru mode, where IRQ events will be passed to the host.
+	 */
+	if (ctx->event == PCHG_EVENT_IRQ && ctx->mode != PCHG_MODE_PASSTHRU) {
 		rv = ctx->cfg->drv->get_event(ctx);
 		if (rv) {
 			CPRINTS("ERR: Failed to get event (%d)", rv);
@@ -664,6 +670,8 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 
 	ctx = &pchgs[port];
 
+	mutex_lock(&ctx->mtx);
+
 	if (ctx->state == PCHG_STATE_CONNECTED &&
 	    ctx->battery_percent >= ctx->cfg->full_percent)
 		r->state = PCHG_STATE_FULL;
@@ -676,10 +684,6 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 	r->dropped_event_count = ctx->dropped_event_count;
 	r->dropped_host_event_count = ctx->dropped_host_event_count;
 
-	args->response_size = args->version == 1 ?
-				      sizeof(struct ec_response_pchg) :
-				      sizeof(*r);
-
 	/*
 	 * Clear error flags once they're reported to the host. This is ok as
 	 * long as:
@@ -688,9 +692,13 @@ static enum ec_status hc_pchg(struct host_cmd_handler_args *args)
 	 *    charging)
 	 * 3. Errors are for reporting purpose only.
 	 */
-	mutex_lock(ctx->mtx);
 	ctx->error = 0;
-	mutex_unlock(ctx->mtx);
+
+	mutex_unlock(&ctx->mtx);
+
+	args->response_size = args->version == 1 ?
+				      sizeof(struct ec_response_pchg) :
+				      sizeof(*r);
 
 	return EC_RES_SUCCESS;
 }
@@ -780,6 +788,23 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 		ctx->update.crc32 = p->crc32;
 		pchg_queue_event(ctx, PCHG_EVENT_UPDATE_CLOSE);
 		break;
+
+	case EC_PCHG_UPDATE_CMD_RESET:
+		HCPRINTS("Resetting");
+
+		gpio_disable_interrupt(ctx->cfg->irq_pin);
+		_clear_port(ctx);
+		ctx->cfg->drv->reset(ctx);
+		gpio_enable_interrupt(ctx->cfg->irq_pin);
+		break;
+
+	case EC_PCHG_UPDATE_CMD_ENABLE_PASSTHRU:
+		HCPRINTS("Enabling passthru mode");
+		mutex_lock(&ctx->mtx);
+		ctx->mode = PCHG_MODE_PASSTHRU;
+		mutex_unlock(&ctx->mtx);
+		break;
+
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
