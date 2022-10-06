@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cfea576_ca5d6d70",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-06T17:48:51Z",
+      "side": 1,
+      "message": "nit: How about\n\n    \u0027target fan speed (as a temperature ratio between fan_off and\n    fan_max values).\u0027\n\n? I agree it\u0027s a bit difficult to come up with concise description.",
+      "range": {
+        "startLine": 319,
+        "startChar": 30,
+        "endLine": 320,
+        "endChar": 47
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c974b1_3a5c7446",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 3313,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-06T17:48:51Z",
+      "side": 1,
+      "message": "Shall we print something for the else?\n\n    printf(\"  error(%d) (%dC and %dC)\",\n           rc, r.temp_fan_max), r.temp_fan_off, r.temp_fan_max);\n\nThen, debugging would be easier.",
+      "range": {
+        "startLine": 3313,
+        "startChar": 1,
+        "endLine": 3313,
+        "endChar": 3
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cbf9fa6_5b803fe2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-06T17:48:51Z",
+      "side": 1,
+      "message": "nit: sorry, I think it\u0027s ok not to have this \u0027of\u0027.",
+      "range": {
+        "startLine": 3314,
+        "startChar": 20,
+        "endLine": 3314,
+        "endChar": 22
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
