@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3baced4e_1ca22ae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-06T15:35:11Z",
+      "side": 1,
+      "message": "From the builder log:\n```\n/usr/x86_64-pc-linux-gnu/binutils-bin/2.36.1/ld.bfd.real: build/coverage/usb_typec_drp_acc_trysrc/RO/common/usbc/usb_tc_drp_acc_trysrc_sm.o: in function `typec_get_default_current_limit_rp\u0027:\n/mnt/host/source/src/platform/ec/common/usbc/usb_tc_drp_acc_trysrc_sm.c:1289: undefined reference to `pd_get_bist_share_mode\u0027\ncollect2: error: ld returned 1 exit status\nmake[1]: *** [Makefile.rules:603: build/coverage/usb_typec_drp_acc_trysrc/usb_typec_drp_acc_trysrc.exe] Error 1\nmake: *** [Makefile.rules:357: host-coverage-usb_typec_drp_acc_trysrc] Error 2\n```\n\nThis is failing a test that you can run locally with `make test-coverage` or maybe just `make host-coverage-usb_typec_drp_acc_trysrc`.\n\nI think the most direct way to fix this would be to add a stub definition for `pd_get_bist_share_mode` near https://source.chromium.org/chromium/chromiumos/platform/ec/+/main:test/usb_typec_drp_acc_trysrc.c;l\u003d44;drc\u003da93b70092f786d9671b3d8b39f033260736147e1",
+      "revId": "4d45561857fcd0a52a05bc1c1ad1be04327f7a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
