@@ -106,6 +106,7 @@ static void _fp_clear_context(void)
 	templ_valid = 0;
 	templ_dirty = 0;
 	fp_context_status = 0;
+	template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	always_memset(fp_buffer, 0, sizeof(fp_buffer));
 	always_memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
 	always_memset(user_id, 0, sizeof(user_id));
