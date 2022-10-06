@@ -139,6 +139,24 @@
       "message": "I think you can go ahead and submit this one unless you are waiting for something.",
       "revId": "086730b13f3aee928fcdf70a024bffeb430d106e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e7a434_31f1d4a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-06T20:41:07Z",
+      "side": 1,
+      "message": "Sounds good! Sorry, I got distracted by other CLs.\n\nI updated the commit message and we should be ready to submit.",
+      "parentUuid": "361b5303_422662fd",
+      "revId": "086730b13f3aee928fcdf70a024bffeb430d106e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
