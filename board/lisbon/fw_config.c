@@ -12,14 +12,14 @@
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
-static union brask_cbi_fw_config fw_config;
+static union lisbon_cbi_fw_config fw_config;
 BUILD_ASSERT(sizeof(fw_config) == sizeof(uint32_t));
 
 /*
- * FW_CONFIG defaults for brask if the CBI.FW_CONFIG data is not
+ * FW_CONFIG defaults for lisbon if the CBI.FW_CONFIG data is not
  * initialized.
  */
-static const union brask_cbi_fw_config fw_config_defaults = {
+static const union lisbon_cbi_fw_config fw_config_defaults = {
 	.audio = DB_NAU88L25B_I2S,
 	.bj_power = BJ_135W,
 };
@@ -42,7 +42,7 @@ static const struct {
 };
 
 /****************************************************************************
- * Brask FW_CONFIG access
+ * Lisbon FW_CONFIG access
  */
 void board_init_fw_config(void)
 {
