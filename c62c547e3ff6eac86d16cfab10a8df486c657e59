@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c92f8cd_0eb0e830",
+        "filename": "common/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-06T05:26:01Z",
+      "side": 1,
+      "message": "I guess Gerrit\u0027s diff looking at the comment + \"spi\" decided this was the same file (72% match)",
+      "parentUuid": "fa66a587_d91d4a81",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92fa8d32_688fef75",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-05T21:40:10Z",
       "side": 1,
       "message": "Same here - this should be a new file.  If you didn\u0027t do anything other than a filesystem copy, you should file a bug with the gerrit team.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4388f1cf_c5a9fa1b",
+        "filename": "common/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-06T05:26:01Z",
+      "side": 1,
+      "message": "Yup, same here. Diff shows 72% match, not sure why Gerrit thinks it\u0027s a `mv`",
+      "parentUuid": "92fa8d32_688fef75",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -95,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0672556_c73539e4",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-06T05:26:01Z",
+      "side": 1,
+      "message": "I\u0027m happy to turn this into `add_library(spi_flash_reg STATIC)` if you\u0027d like.",
+      "parentUuid": "149af48c_2c71cb92",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47e00063_2145348f",
         "filename": "common/spi/flash_reg/CMakeLists.txt",
         "patchSetId": 1
@@ -106,6 +166,24 @@
       "writtenOn": "2022-10-04T22:35:19Z",
       "side": 1,
       "message": "I need to come back to this to review after getting smarter on CMake or will need you to walk me through some of these Cmake functions.",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5da1e55_607be8b6",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-06T05:26:01Z",
+      "side": 1,
+      "message": "I\u0027ll be in the office tomorrow, feel free to swing by. Keep in mind that on the next CL all of this will be abstracted away.",
+      "parentUuid": "47e00063_2145348f",
       "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba50434e_86f114bd",
+        "filename": "common/spi/flash_reg/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-06T05:26:01Z",
+      "side": 1,
+      "message": "Yes, spi_flash will be moved later (but for now this is meant to be a case study with as small a diff as possible).",
+      "parentUuid": "e9b6c5ed_f3a01781",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b24164a5_bc25925d",
@@ -168,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa5297fc_30d1d00f",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-06T05:26:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b24164a5_bc25925d",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d21452bd_7bf797e5",
@@ -181,6 +301,30 @@
       "writtenOn": "2022-10-05T21:40:10Z",
       "side": 1,
       "message": "Convert CONFIG_PLATFORM_EC_SPI_FLASH_REG to a helper symbol and use that here instead.",
+      "range": {
+        "startLine": 10,
+        "startChar": 36,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77926451_bc292fca",
+        "filename": "zephyr/drivers/cros_flash/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-06T05:26:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean (lets chat tomorrow), my current thinking is:\n\n1. `CONFIG_PLATFORM_EC_SPI_FLASH_REG` exists in common/spi/flash_reg/Kconfig.module and will generate the `spi_flash_reg` library\n2. `CONFIG_CROS_FLASH_NPCX` enables building `cros_flash_npcx.c` but it also needs to link `spi_flash_reg` so here I\u0027m using `sources_ifdef` and `link_libraries_ifdef` keyed on the same config.\n\nNote that `CROS_FLASH_NPCX` includes a `select PLATFORM_EC_FLASH_CROS` so we\u0027re sure that the library exists.\n\nPigweed has some nice utilities where they include all the sources and dependencies in the same cmake function, for us it will look something like:\n\n```\ncros_module(module_name\n  SOURCES\n    cros_flash_npcx.c\n  PRIVATE_DEPS\n    spi_flash_reg\n)\n```",
+      "parentUuid": "d21452bd_7bf797e5",
       "range": {
         "startLine": 10,
         "startChar": 36,
