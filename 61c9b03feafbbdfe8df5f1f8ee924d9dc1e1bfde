@@ -92,6 +92,24 @@
       "parentUuid": "05d2a7fe_26a987a7",
       "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e55284e_adef77b1",
+        "filename": "zephyr/test/drivers/usbc_svdm_dfp_only/src/usbc_svdm_dfp_only.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-06T16:19:06Z",
+      "side": 1,
+      "message": "I found the most helpful output when figuring out what my tests were doing came from running the binary directly.  Ex. `./twister-out/native_posix/drivers.usbc_svdm_dfp_only/zephyr/zephyr.exe `\n\nIn this case, you see: \n```\nSTART - verify_identity\n[0.302900 Handle sleep: 0]\n[0.302900 power state 3 \u003d S3, in 0x0005]\n[0.302900 power state 7 \u003d S3-\u003eS0, in 0x0005]\n[0.302900 PD:S3-\u003eS0]\n[0.302900 power state 4 \u003d S0, in 0x0005]\n[0.328000 C1: Exit Low Power Mode]\n[0.328000 C1: TCPC init ready]\n[0.328000 C1: DRPAutoToggle]\n[0.328000 C0: Exit Low Power Mode]\n[0.328000 C0: TCPC init ready]\n[0.328000 C0: DRPAutoToggle]\n\n    Assumption failed at CMAKE_SOURCE_DIR/common/include/test/drivers/utils.h:540: set_ac_enabled: enabled not equal to extpower_is_present()\n```\n\nI don\u0027t totally know how the AC detection works in the emulator, but it looks like your test is running while we\u0027re still power sequencing, so I wonder if you\u0027d need something like `test_set_chipset_to_s0();` in your setup function to avoid running while we\u0027re booting up",
+      "parentUuid": "ac27701c_5a37470d",
+      "revId": "61c9b03feafbbdfe8df5f1f8ee924d9dc1e1bfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
