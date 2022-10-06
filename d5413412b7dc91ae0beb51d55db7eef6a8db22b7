@@ -16,6 +16,24 @@
       "message": "Add TODO(b/251471020) to both tests.",
       "revId": "d5413412b7dc91ae0beb51d55db7eef6a8db22b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "884219dc_5f65b176",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-06T21:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f427738_c04b78a6",
+      "revId": "d5413412b7dc91ae0beb51d55db7eef6a8db22b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
