@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6515dda_55fcea5b",
+        "filename": "util/clangd_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-06T00:10:45Z",
+      "side": 1,
+      "message": "I wanted to use [str.removeprefix](https://docs.python.org/3/library/stdtypes.html#str.removeprefix), but it turns out that the chroot python3 version isn\u0027t new enough.",
+      "parentUuid": "3846e50c_5b21a5df",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "084322fad4f4f4a2ad7aac9d017f4ce3f1dc1613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cf1af391_544e6af5",
