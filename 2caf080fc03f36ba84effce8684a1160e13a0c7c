@@ -16,6 +16,46 @@
       "message": "Hi Vijay, how are the changes made in patchset 2?",
       "revId": "2caf080fc03f36ba84effce8684a1160e13a0c7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3598281_eaed3ed9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-10-06T23:03:52Z",
+      "side": 1,
+      "message": "Hi Li, sorry forgot to check",
+      "revId": "2caf080fc03f36ba84effce8684a1160e13a0c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "278c5819_e36f70d8",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2022-10-06T23:03:52Z",
+      "side": 1,
+      "message": "how about ?\n\n#ifdef BOARD_TGLRVP_ISH\n#define CONFIG_ACCELGYRO_LSM6DSM /* For LSM6DS3 */\n#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(BASE_ACCEL)\n\n/* I2C ports */\n#define I2C_PORT_SENSOR ISH_I2C1\n\n/* EC Console Commands */\n#define CONFIG_CMD_ACCELS\n#define CONFIG_CMD_ACCEL_INFO\n#define CONFIG_CMD_TIMERINFO\n#define CONFIG_CMD_I2C_XFER\n\n#endif /* BOARD_TGLRVP_ISH */",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "2caf080fc03f36ba84effce8684a1160e13a0c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
