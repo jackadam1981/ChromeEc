@@ -16,6 +16,7 @@ void fp_clear_context(void)
 {
 	templ_valid = 0;
 	templ_dirty = 0;
+	template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
 	OPENSSL_cleanse(fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(user_id, sizeof(user_id));
 	fp_disable_positive_match_secret(&positive_match_secret_state);
