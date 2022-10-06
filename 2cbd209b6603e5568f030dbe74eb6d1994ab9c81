@@ -262,6 +262,30 @@
       },
       "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6f6dab_e1c7180d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3280,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-10-06T12:03:02Z",
+      "side": 1,
+      "message": "1. According to redrix\u0027s fan [curve](https://chromium.googlesource.com/chromiumos/platform/ec/+/c374893e0cef15cb3689026a719526e248ef03f3/board/redrix/thermal.c#169), we are not only refer to one participant. we have such as the operation (A AND C) OR B. so only 1 participant will not reflect the real fan speed.\n2. Redrix has 2 FANs. and they are not the same speed for fan curve.",
+      "parentUuid": "427a2388_e697f27c",
+      "range": {
+        "startLine": 3278,
+        "startChar": 0,
+        "endLine": 3280,
+        "endChar": 42
+      },
+      "revId": "2cbd209b6603e5568f030dbe74eb6d1994ab9c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
