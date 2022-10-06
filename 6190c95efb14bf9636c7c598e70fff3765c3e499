@@ -121,6 +121,24 @@
       "message": "From Devin (CL:3915760),\n```\nAccording to redrix\u0027s fan curve, we are not only refer to one participant. we have such as the operation (A AND C) OR B. so only 1 participant will not reflect the real fan speed.\nRedrix has 2 FANs. and they are not the same speed for fan curve.\n```\n\n@devin.lu@quantatw.com,\nMany Thanks. But what I understood from the basic implementation of temps command is that, the value \"fan_speed\" (which actually didn\u0027t represent the fan speed) was just a expected amount of cooling the respective sensor might require based on the sensor temperature.   \n\nFrom your comment, did you mean that the FAN_OFF and FAN_MAX value are more than one for every sensor in redrix?",
       "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b0bd92_a0ae3ed8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-06T14:48:19Z",
+      "side": 1,
+      "message": "From the link which you have shared - https://chromium.googlesource.com/chromiumos/platform/ec/+/c374893e0cef15cb3689026a719526e248ef03f3/board/redrix/thermal.c#86\n\nisn\u0027t these curve parameters different than the change which is part of this CL? As per my understanding, cureve params are those that decide the fan rpm directly. But as part of temps command we just calculate amount of cooling the sensor might require based on the sensor temperature. This is nothing to do with fan_duty or fan_rpm ? Please do help me with my understand.",
+      "parentUuid": "ef6d53b9_78a90aa8",
+      "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
