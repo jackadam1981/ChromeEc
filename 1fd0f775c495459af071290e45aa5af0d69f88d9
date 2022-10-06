@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd1d0f7b_ebc284c2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-06T17:58:39Z",
+      "side": 1,
+      "message": "\u0027fan speed\u0027 is applicable only if the fan is controlled linearly (in proportion to the temp ratio). For non-linear fan controls (e.g. custom), it\u0027s not fan speed at all. \n\nSo (as I mentioned) we can fix this only by adding a new command which returns actual fan speeds. A workaround is describing it correctly in this help text.\n\n    \u0027temperature ratio between fan_off and fan_max values,\n     which could be a fan speed if it\u0027s controlled linearly.\u0027",
+      "parentUuid": "4cfea576_ca5d6d70",
+      "range": {
+        "startLine": 319,
+        "startChar": 30,
+        "endLine": 320,
+        "endChar": 47
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0c974b1_3a5c7446",
         "filename": "util/ectool.cc",
         "patchSetId": 11
