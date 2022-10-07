@@ -127,6 +127,30 @@
       },
       "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f30d7a4_80e76d48",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T18:23:40Z",
+      "side": 1,
+      "message": "\u003e by macros did you mean to define the values as #define constants?\n\nYes. temp_fan_off/max are not used for fan control because gimble does custom fan control, right? Where did you get 35 and 60 from?",
+      "parentUuid": "83a0dfa4_2547e0e0",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
