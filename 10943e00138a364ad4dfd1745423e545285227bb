@@ -46,6 +46,30 @@
       },
       "revId": "10943e00138a364ad4dfd1745423e545285227bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e22be05e_1b8806be",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T23:35:14Z",
+      "side": 1,
+      "message": "I see a bigger problem then. We don\u0027t set CONFIG_ macros when building ectool. That is, ectool is agnostic about the board (but aware of ARCH\u003dx64/arm) because ectool is built with BOARD\u003dhost.\n\nAlso, enum panic_arch is defined in panic.h. Is it exported (like ec_commands.h)?",
+      "parentUuid": "548fe108_8217077f",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "10943e00138a364ad4dfd1745423e545285227bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
