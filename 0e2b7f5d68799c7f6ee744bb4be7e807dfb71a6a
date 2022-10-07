@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4298e61b_13d6f243",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547927
+      },
+      "writtenOn": "2022-10-07T16:38:38Z",
+      "side": 1,
+      "message": "Before hitting CQ+2, please either check \"Code-Coverage\" score is pass, or indicate in a short line for it can be bypassed.  To do so, add one line in commit message starting with \"LOW_COVERAGE_REASON\u003d\"",
+      "revId": "0e2b7f5d68799c7f6ee744bb4be7e807dfb71a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
