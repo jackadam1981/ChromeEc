@@ -1,0 +1,17 @@
+
+Utility to program 512-KB binary into MEC1727 Intel SPI flash
+bash 00_download.sh ../build/zephyr/mtlrvpp_mchp/output/ec.bin
+
+Note: required to enable servod board under another CHroot windows
+~/chromiumos/src/scripts $ sudo servod -b rex
+
+Limit:
+Only download first 256KB (RO code) into flash correctly, following error message is expected:
+*** Waiting for EC to program.  This will take about 22s. ***
+ tx file size  262144
+!!!ERROR: CRC Response Pattern Not Matched!!!
+Can't open  spi_fw.bin : Please check the file
+
+MEC1727 can load programmed RO into SRAM to execute code properly.
+MCHP is fixing this error per cros-bug:
+https://partnerissuetracker.corp.google.com/issues/243367968
