@@ -22,6 +22,30 @@
       },
       "revId": "10943e00138a364ad4dfd1745423e545285227bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "548fe108_8217077f",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-07T23:01:39Z",
+      "side": 1,
+      "message": "Unfortunately not because `PANIC_ARCH_RISCV_RV32I` is also guarded by that define:\n\n```\nutil/ec_panicinfo.cc:211:7: error: use of undeclared identifier \u0027PANIC_ARCH_RISCV_RV32I\u0027\n        case PANIC_ARCH_RISCV_RV32I:\n```",
+      "parentUuid": "7ea42f6c_dd92437b",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "10943e00138a364ad4dfd1745423e545285227bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
