@@ -10,6 +10,8 @@
 
 #include "ec_commands.h"
 #include "host_command.h"
+#include "lpc.h"
+#include "system.h"
 #include "test/drivers/test_state.h"
 
 ZTEST_USER(rtc_shim, test_hc_rtc_set_get_val)
@@ -32,6 +34,36 @@ ZTEST_USER(rtc_shim, test_hc_rtc_set_get_val)
 	zassert_ok(host_command_process(&set_args));
 	zassert_ok(host_command_process(&get_args));
 	zassert_equal(get_value.time, set_value.time);
+}
+
+ZTEST(rtc_shim, test_hc_rtc_set_alarm_can_fire_cb)
+{
+	struct ec_params_rtc set_value;
+	struct host_cmd_handler_args set_args =
+		BUILD_HOST_COMMAND_PARAMS(EC_CMD_RTC_SET_ALARM, 0, set_value);
+
+	/* Enable the RTC event to fire */
+	host_event_t lpc_event_mask;
+	host_event_t mask = EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC);
+
+	lpc_event_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SMI);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, lpc_event_mask | mask);
+
+	system_set_rtc(2);
+	system_set_rtc_alarm(-1, 0);
+
+	/* Clear events so we can check that RTC event happened */
+	host_clear_events(-1);
+	zassert_false(host_is_event_set(EC_HOST_EVENT_RTC));
+
+	/* Initially set arbitrary value of alarm in 2 seconds*/
+	set_value.time = 2;
+	zassert_ok(host_command_process(&set_args));
+	system_set_rtc(4);
+
+	/* Wait for irq to finish */
+	k_sleep(K_SECONDS(1));
+	zassert_true(host_is_event_set(EC_HOST_EVENT_RTC));
 }
 
 ZTEST_SUITE(rtc_shim, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
