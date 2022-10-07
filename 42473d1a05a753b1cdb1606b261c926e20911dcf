@@ -22,6 +22,30 @@
       },
       "revId": "42473d1a05a753b1cdb1606b261c926e20911dcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe4deb3_1c5524ec",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-10-07T21:49:54Z",
+      "side": 1,
+      "message": "IS_ENABLED()? IF_ENABLED is zephyr native macro. Since this file is not in zephyr/shim, can\u0027t use it directly.",
+      "parentUuid": "34870d1b_dd993489",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "42473d1a05a753b1cdb1606b261c926e20911dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
