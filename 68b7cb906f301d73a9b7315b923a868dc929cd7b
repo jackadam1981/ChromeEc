@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abc0f8e_069d6572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-10-07T14:58:36Z",
+      "side": 1,
+      "message": "Does this actually make skipped tests cause a failure? That seems strange to me.\n\nI don\u0027t fully understand the assume side of things, but it seems that if an \u0027assumption\u0027 fails, the test should fail, not be skipped.",
+      "revId": "68b7cb906f301d73a9b7315b923a868dc929cd7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca775c7b_095312d2",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-10-07T14:58:36Z",
+      "side": 1,
+      "message": "Args:\n    ec_base (Path): Base path of EC directory\n    \nReturns:\n   bool: True if any tests were skipped, False if not",
+      "revId": "68b7cb906f301d73a9b7315b923a868dc929cd7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
