@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8406c45_2ed95a31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T22:38:30Z",
+      "side": 1,
+      "message": "Probably this would be the last comment.",
+      "revId": "a354cab67a83ace50166c98400b5d9b5b89b7eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bdedba0_3cf850ee",
+        "filename": "util/ectool.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 3317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T22:38:30Z",
+      "side": 1,
+      "message": "There are 2 failure cases:\n\n1. If ec_command fails, we want to just print \u0027ERROR (rv\u003d%d)\u0027.\n2. If ec_command is good (rc \u003d\u003d 0) but fan_off \u003d\u003d fan_max, we want to print \u0027N/A (fan_off\u003dx and fan_max\u003dx).\n\nCase 2 is needed for boards which use custom control but don\u0027t have fan_off nor fan_max (or set them incorrectly).",
+      "range": {
+        "startLine": 3316,
+        "startChar": 0,
+        "endLine": 3317,
+        "endChar": 10
+      },
+      "revId": "a354cab67a83ace50166c98400b5d9b5b89b7eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
