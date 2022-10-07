@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3553c64e_79ebf562",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 3313,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T18:44:02Z",
+      "side": 1,
+      "message": "(In case we have miscommunication,) I\u0027m suggesting we add:\n\n    } else {\n        printf(\"  ERROR(%d) ...\", ....);\n    }\n\nI think if it says \u0027error\u0027, users won\u0027t be confused. If you still worry, it\u0027s ok not to print fan_off nor fan_max.",
+      "parentUuid": "3e43dc2d_48d818af",
+      "range": {
+        "startLine": 3313,
+        "startChar": 1,
+        "endLine": 3313,
+        "endChar": 3
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cbf9fa6_5b803fe2",
         "filename": "util/ectool.cc",
         "patchSetId": 11
