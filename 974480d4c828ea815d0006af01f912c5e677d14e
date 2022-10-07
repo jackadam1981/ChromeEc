@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72124663_60bc8d06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-07T15:38:07Z",
+      "side": 1,
+      "message": "Our mux sets should be getting queued through the mux task, and so I\u0027d expect each mux set to come through and be acknowledged by the AP in sequence.  The AP and retimer falling out of sync would be unexpected. \n\nIs there some sort of issue within the mux queue?  Are we moving on from a mux set without getting an ACK from the AP first?  Would you mind capturing a log with DEBUG_MUX_QUEUE_TIME set so we can diagnose why it is the queue isn\u0027t actually resulting in a queued sequence of mux sets for your case?",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "974480d4c828ea815d0006af01f912c5e677d14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
