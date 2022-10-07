@@ -22,6 +22,30 @@
       },
       "revId": "3a7c448405dbb46cc93516eb0ea3c0003cb5a1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d00c48db_52f81f07",
+        "filename": "include/test_util.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2022-10-07T13:41:35Z",
+      "side": 1,
+      "message": "Right, I haven\u0027t seen that it\u0027s the only macro using the fmt. I\u0027ve checked and only floats are used with this macro, so I defined the fmt as const for float, since other macros also have const format used.",
+      "parentUuid": "552b914d_c2885d44",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 66
+      },
+      "revId": "3a7c448405dbb46cc93516eb0ea3c0003cb5a1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
