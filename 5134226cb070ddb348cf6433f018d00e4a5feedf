@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7251eb0b_71fc19f2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-07T21:27:14Z",
+      "side": 1,
+      "message": "I\u0027m going to unresolve this for now, since the design is still being worked out in b/232946420.\n\nI still think we don\u0027t need to reserve bit 4 for anything, and we should just use bit 4 for now to avoid any lasting holes. We\u0027ll see how things work out.",
+      "parentUuid": "a66b6620_39f6932c",
+      "revId": "5134226cb070ddb348cf6433f018d00e4a5feedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "054faf4b_21ae875e",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
