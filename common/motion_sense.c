@@ -695,6 +695,7 @@ static int motion_sense_read(struct motion_sensor_t *sensor)
 static inline void increment_sensor_collection(struct motion_sensor_t *sensor,
 					       const timestamp_t *ts)
 {
+	int i;
 	sensor->next_collection += sensor->collection_rate;
 
 	while (time_after(ts->le.lo, sensor->next_collection)) {
@@ -706,9 +707,10 @@ static inline void increment_sensor_collection(struct motion_sensor_t *sensor,
 		 * requested data rate.
 		 */
 
-		CPRINTS("%s Missed data collection at %u - rate: %d",
-			sensor->name, sensor->next_collection,
-			sensor->collection_rate);
+		for (i = 0; i < 100; i++)
+			CPRINTS("%s Missed data collection at %u - rate: %d",
+				sensor->name, sensor->next_collection,
+				sensor->collection_rate);
 		sensor->next_collection += sensor->collection_rate;
 	}
 }
