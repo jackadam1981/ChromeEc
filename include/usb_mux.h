@@ -323,4 +323,23 @@ int usb_mux_retimer_fw_update_port_info(void);
  * @return True if all pending mux sets have completed
  */
 bool usb_mux_set_completed(int port);
+
+/**
+ * Get the disconnect latch flag so that the Kernel Mux driver doesn't
+ * miss the unnoticed disconnection status.
+ *
+ * @param port port number.
+ * @return status of disconnect latch flag
+ */
+bool usb_mux_get_disconnect_latch_flag(int port);
+
+/**
+ * Set the disconnect latch flag if the Type-C devices are disconnected and
+ * the information is not yet updated to Kernel Mux driver.
+ *
+ * @param port port number.
+ * @param enable whether to enable or disable the disconnect latch flag
+ */
+void usb_mux_set_disconnect_latch_flag(int port, bool enable);
+
 #endif
