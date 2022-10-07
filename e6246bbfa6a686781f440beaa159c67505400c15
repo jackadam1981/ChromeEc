@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b45afdc3_3d9bfc29",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T16:44:35Z",
+      "side": 1,
+      "message": "I think this is fine.  The alternative would be to create a hook, but I think it makes more sense to just manipulate the power domain state directly here.",
+      "parentUuid": "9e08aa2c_70a65e3c",
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e0d4d91_969b5602",
         "filename": "zephyr/shim/src/temp_sensors.c",
         "patchSetId": 4
