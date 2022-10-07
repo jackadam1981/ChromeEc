@@ -42,6 +42,9 @@ static atomic_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Device initialized at least once */
 #define USB_MUX_FLAG_INIT BIT(1)
 
+/* The following bit is used to configure virtual mux in disconnect mode */
+#define USB_MUX_FLAG_DISCONNECT_LATCH BIT(2)
+
 /* Coordinate mux accesses by-port among the tasks */
 static mutex_t mux_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -647,7 +650,34 @@ void usb_mux_flip(int port)
 	configure_mux(port, TYPEC_USB_MUX_SET_ALL_CHIPS, USB_MUX_SET_MODE,
 		      &mux_state);
 }
+/* Get USB MUX (virtual MUX) disconnect flag */
+bool usb_mux_get_disconnect_latch_flag(int port)
+{
+	bool rv = false;
 
+	if (port >= board_get_usb_pd_port_count())
+		return rv;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return rv;
+
+	return !!(flags[port] & USB_MUX_FLAG_DISCONNECT_LATCH);
+}
+
+/* Set USB MUX (virtual MUX) disconnect flag */
+void usb_mux_set_disconnect_latch_flag(int port, bool enable)
+{
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	if (!IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return;
+
+	if (enable)
+		atomic_or(&flags[port], USB_MUX_FLAG_DISCONNECT_LATCH);
+	else
+		atomic_clear_bits(&flags[port], USB_MUX_FLAG_DISCONNECT_LATCH);
+}
 static void perform_mux_hpd_update(int port, int index, mux_state_t hpd_state)
 {
 	/* Perform initialization if not initialized yet */
@@ -825,6 +855,18 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	if (try_usb_mux_get(port, &mux_state))
 		return EC_RES_ERROR;
 	r->flags = mux_state;
+	/*
+	 * Force disconnect mode if disconnect latch flag is set.
+	 * Send host event for configuring the latest mux state
+	 */
+	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
+	    usb_mux_get_disconnect_latch_flag(port)) {
+		r->flags = USB_PD_MUX_NONE;
+		usb_mux_set_disconnect_latch_flag(port, false);
+		args->response_size = sizeof(*r);
+		host_set_single_event(EC_HOST_EVENT_USB_MUX);
+		return EC_RES_SUCCESS;
+	}
 
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
