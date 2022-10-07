@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0bc28cb6_b8157b02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T18:05:12Z",
+      "side": 1,
+      "message": "Yes Caveh, My mistake as I forgot to reopen the bug since we had decided earlier just to update the description (since then it was closed). Over time we decided to go with the older changes for which the bug was raised. Reopened the bug now. Thanks!",
+      "parentUuid": "5006314d_126a69ad",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6f35f646_a3724ed2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
