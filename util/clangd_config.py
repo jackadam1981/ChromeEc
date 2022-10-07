@@ -65,7 +65,17 @@ def ec_build(ec_root: Path, board: str, image: str) -> Optional[Path]:
 def zephyr_build(ec_root: Path, board: str, image: str) -> Optional[Path]:
     """Build the correct compile_commands.json for Zephyr board/image"""
 
-    raise NotImplementedError("Zephyr is currently unsupported.")
+    target = Path(
+        f"./build/zephyr/{board}/build-{image.lower()}/compile_commands.json"
+    )
+    cmd = ["zmake", "configure", board]
+
+    print(" ".join(cmd))
+    status = subprocess.run(cmd, check=False, cwd=ec_root)
+
+    if status.returncode != 0:
+        return None
+    return target
 
 
 def copy(ec_root: Path, target: Path) -> None:
