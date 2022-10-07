@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7302c5_01b4b81e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3284,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T20:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f4bc023_13e38d87",
+      "range": {
+        "startLine": 3284,
+        "startChar": 15,
+        "endLine": 3284,
+        "endChar": 27
+      },
+      "revId": "46d794f8f3daab94202ef56d9590047a4098a236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1fcce6b_8b4a5ceb",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ecc9a7_10a2105a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3290,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T20:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1fcce6b_8b4a5ceb",
+      "range": {
+        "startLine": 3290,
+        "startChar": 34,
+        "endLine": 3290,
+        "endChar": 51
+      },
+      "revId": "46d794f8f3daab94202ef56d9590047a4098a236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ad3b974_a2b8e641",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-07T18:44:02Z",
       "side": 1,
       "message": "To avoid div-by-zero, you can add \u0027\u0026\u0026 fan_off !\u003d fan_max\u0027 though I believe a better way is to let get_expected_fan_ratio check and handle it.",
+      "range": {
+        "startLine": 3314,
+        "startChar": 48,
+        "endLine": 3314,
+        "endChar": 49
+      },
+      "revId": "46d794f8f3daab94202ef56d9590047a4098a236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3051823f_35b72633",
+        "filename": "util/ectool.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T20:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad3b974_a2b8e641",
       "range": {
         "startLine": 3314,
         "startChar": 48,

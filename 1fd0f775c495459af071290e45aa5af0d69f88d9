@@ -238,6 +238,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3bb7e1_c3092015",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 3313,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T20:04:16Z",
+      "side": 1,
+      "message": "I would like to keep fan_off and fan_max as it even justifies the invalid case when fan_off and fan_max are equal",
+      "parentUuid": "3553c64e_79ebf562",
+      "range": {
+        "startLine": 3313,
+        "startChar": 1,
+        "endLine": 3313,
+        "endChar": 3
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cbf9fa6_5b803fe2",
