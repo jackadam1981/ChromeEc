@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34870d1b_dd993489",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T19:19:21Z",
+      "side": 1,
+      "message": "You can use IF_ENABLED(HAS_TASK_HOSTCMD) instead.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "42473d1a05a753b1cdb1606b261c926e20911dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
