@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef5afd6_d2f50d7b",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-07T09:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c951c11a_08bf60fb",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 26
+      },
+      "revId": "36d92b4b05be1b67fd993e405829e15c239b289c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e88643a6_662bc014",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-06T17:36:40Z",
       "side": 1,
       "message": "BTW, this looks like something we want to avoid. For a certain period of time, a host command task is completely blocked.\n\nWe might as well call vboot_hash_start with VBOOT_HASH_BLOCKING instead.",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 17
+      },
+      "revId": "36d92b4b05be1b67fd993e405829e15c239b289c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9b4825_b69c38f7",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-07T09:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e88643a6_662bc014",
       "range": {
         "startLine": 507,
         "startChar": 0,
