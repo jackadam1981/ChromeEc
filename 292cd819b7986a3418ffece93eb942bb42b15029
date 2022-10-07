@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9102d7_6ef16411",
+        "filename": "zephyr/test/system_shim/test_system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T17:04:11Z",
+      "side": 1,
+      "message": "Nit - you can use BIT(31) here instead.",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "292cd819b7986a3418ffece93eb942bb42b15029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
