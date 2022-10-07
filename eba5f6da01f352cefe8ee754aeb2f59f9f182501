@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7003fba_9ba3f2e4",
+        "filename": "zephyr/test/drivers/shim_rtc/src/test_shim_rtc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T22:51:13Z",
+      "side": 1,
+      "message": "Why is this needed when you\u0027re setting the alarm through the host_command_process() call?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "eba5f6da01f352cefe8ee754aeb2f59f9f182501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05b70e8_8c5073d3",
+        "filename": "zephyr/test/drivers/shim_rtc/src/test_shim_rtc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T22:51:13Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of assigning integer values to unsigned types.\n\nThis should use CONFIG_HOST_EVENT64_REPORT_MASK or CONFIG_HOST_EVENT_REPORT_MASK to be consistent with the source.  Use CONFIG_HOST_EVENT64 to determine which macro applies.\n\nIt would have been cleaner if there was a single macro for the host event mask that was set to 32 or 64 bits based on the config option.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "eba5f6da01f352cefe8ee754aeb2f59f9f182501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
