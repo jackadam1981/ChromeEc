@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1620f562_6a5d8bd7",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T17:11:26Z",
+      "side": 1,
+      "message": "This is where we can loop for in_progress to be cleared (if deferred \u003d\u003d false).",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 23
+      },
+      "revId": "b849b302fed2b1687bde9250f7153ecaec6be948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc44d932_ffb6e5ce",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T17:11:26Z",
+      "side": 1,
+      "message": "This check can be moved up (above 217).",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 2
+      },
+      "revId": "b849b302fed2b1687bde9250f7153ecaec6be948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b117a66d_8de0900f",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T17:11:26Z",
+      "side": 1,
+      "message": "I think we should do this in vboot_hash_start:\n\n    if (in_progress) {\n        if (deferred)\n            return EC_ERROR_BUSY;\n        while (in_progress)\n            usleep(1000);\n    }\n\nThat would minimize the chance of a race condition.",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 16
+      },
+      "revId": "b849b302fed2b1687bde9250f7153ecaec6be948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
