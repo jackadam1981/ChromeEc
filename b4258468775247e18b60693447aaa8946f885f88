@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f75c95_8ac5bed2",
+        "filename": "util/check_clang_format.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-10-07T15:27:05Z",
+      "side": 1,
+      "message": "conversion to `str` here isn\u0027t necessary -- `subprocess.run` knows what to do when it gets a `Path` in the command",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "b4258468775247e18b60693447aaa8946f885f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
