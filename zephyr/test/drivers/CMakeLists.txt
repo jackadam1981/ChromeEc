@@ -44,6 +44,9 @@ elseif("${ZMAKE_PROJECT_NAME}" STREQUAL "test-drivers-usbc_svdm_dfp_only")
 elseif("${ZMAKE_PROJECT_NAME}" STREQUAL "test-drivers-usbc_tbt_mode")
   set(CONFIG_LINK_TEST_SUITE_USBC_TBT_MODE TRUE)
   add_compile_definitions(CONFIG_LINK_TEST_SUITE_USBC_TBT_MODE=1)
+elseif("${ZMAKE_PROJECT_NAME}" STREQUAL "test-drivers-usbc_vconn_swap")
+  set(CONFIG_LINK_TEST_SUITE_USBC_VCONN_SWAP TRUE)
+  add_compile_definitions(CONFIG_LINK_TEST_SUITE_USBC_VCONN_SWAP=1)
 endif()
 
 # Add linked suites here
@@ -66,6 +69,7 @@ add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USB_RETIMER_FW_UPDATE usb_retimer_
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USBC_ALT_MODE usbc_alt_mode)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USBC_SVDM_DFP_ONLY usbc_svdm_dfp_only)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USBC_TBT_MODE usbc_tbt_mode)
+add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USBC_VCONN_SWAP usbc_vconn_swap)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USBC_OCP usbc_ocp)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_USBC_PPC usbc_ppc)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_HOST_COMMANDS host_cmd)
