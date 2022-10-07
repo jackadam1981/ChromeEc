@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be91b91c_fbca9be7",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-10-07T00:59:15Z",
+      "side": 1,
+      "message": "Ack.\n\nWe use the same architecture for all platforms",
+      "parentUuid": "7ce816a6_d77a3a79",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 38
+      },
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e44a7b0_5325cc3f",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b2e3b91_403a05f9",
+        "filename": "common/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-10-07T00:59:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e44a7b0_5325cc3f",
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ae0bd7e_a1587a27",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-10-05T20:58:40Z",
       "side": 1,
       "message": "*boot_time",
+      "range": {
+        "startLine": 1895,
+        "startChar": 40,
+        "endLine": 1895,
+        "endChar": 64
+      },
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "769f5b66_66046f1b",
+        "filename": "common/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-10-07T00:59:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ae0bd7e_a1587a27",
       "range": {
         "startLine": 1895,
         "startChar": 40,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f880088d_5e9d5aac",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 7737,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-10-07T00:59:15Z",
+      "side": 1,
+      "message": "We are not using different architecture for small and big core anymore.. All platform uses same architecture, hence same events can be used to analyze boottime.",
+      "parentUuid": "0d709675_688b7e7c",
+      "range": {
+        "startLine": 7737,
+        "startChar": 0,
+        "endLine": 7737,
+        "endChar": 20
+      },
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a67d2c53_f0d15f13",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-10-05T20:58:40Z",
       "side": 1,
       "message": "perhaps this should be a union of boot_time_data for\nvarious architectures with a type field if it turns\nout that we need different timestamps for different\narches.",
+      "range": {
+        "startLine": 7747,
+        "startChar": 7,
+        "endLine": 7747,
+        "endChar": 24
+      },
+      "revId": "a1a3e9728bc176ad237d4516d1b77d74c08804eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a253e1_289839a6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 7747,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-10-07T00:59:15Z",
+      "side": 1,
+      "message": "we are using same architecture for all platform.. same timestamps can be used to analyze boottime.",
+      "parentUuid": "a67d2c53_f0d15f13",
       "range": {
         "startLine": 7747,
         "startChar": 7,
