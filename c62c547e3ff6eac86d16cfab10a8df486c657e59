@@ -153,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba9b434_0558e7c1",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-07T20:57:35Z",
+      "side": 1,
+      "message": "This is fine, I did a ctrl-f for \"default\" but it\u0027s definitely the default if I just slow down and read the docs fully. Thanks.",
+      "parentUuid": "d0672556_c73539e4",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47e00063_2145348f",
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "I\u0027ll be in the office tomorrow, feel free to swing by. Keep in mind that on the next CL all of this will be abstracted away.",
       "parentUuid": "47e00063_2145348f",
+      "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e2a44c_c37bf831",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-07T20:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5da1e55_607be8b6",
       "revId": "c62c547e3ff6eac86d16cfab10a8df486c657e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
