@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01235717_aa2493cc",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-07T16:56:19Z",
+      "side": 1,
+      "message": "I think so (though it doesn\u0027t say how much the fan is stressed to the limit).\n\nI think we should replace \u0027fan speed\u0027 with \u0027temp ratio\u0027 in the \u0027ectool temps\u0027 output. So, the PS11 looks good.\n\nHarsha, can you change the help text to:\n\n    \u0027temperature ratio between fan_off and fan_max values,\n     which could be a fan speed if it\u0027s controlled linearly.\u0027\n\n?",
+      "parentUuid": "85b243cf_ff6f6252",
+      "range": {
+        "startLine": 319,
+        "startChar": 30,
+        "endLine": 320,
+        "endChar": 47
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0c974b1_3a5c7446",
         "filename": "util/ectool.cc",
         "patchSetId": 11
