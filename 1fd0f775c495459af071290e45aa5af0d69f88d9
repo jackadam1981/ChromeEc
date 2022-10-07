@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85b243cf_ff6f6252",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2022-10-07T03:04:34Z",
+      "side": 1,
+      "message": "In factory, we are using `ectool pwmgetfanrpm \u003cid\u003e` to get \"fan speed\". Is this still the correct way?",
+      "parentUuid": "dd1d0f7b_ebc284c2",
+      "range": {
+        "startLine": 319,
+        "startChar": 30,
+        "endLine": 320,
+        "endChar": 47
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0c974b1_3a5c7446",
         "filename": "util/ectool.cc",
         "patchSetId": 11
