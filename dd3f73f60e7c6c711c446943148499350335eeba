@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abaa856f_69de3318",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T23:34:31Z",
+      "side": 1,
+      "message": "Preconditions",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "dd3f73f60e7c6c711c446943148499350335eeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e888913_eaf6e524",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T23:34:31Z",
+      "side": 1,
+      "message": "I don\u0027t quite follow this.  I would expect that power state to transition to POWER_S3S0 because suspend is no longer asserted.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 52
+      },
+      "revId": "dd3f73f60e7c6c711c446943148499350335eeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70772cb0_7fa54ca9",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T23:34:31Z",
+      "side": 1,
+      "message": "Preconditions",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "dd3f73f60e7c6c711c446943148499350335eeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750078be_fb8f3c58",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-07T23:34:31Z",
+      "side": 1,
+      "message": "Why is this check needed in the S0 case?  You\u0027ve already set gpio_ap_suspend to 0 at line 118, so this statement doesn\u0027t change the GPIO state.  You\u0027ve also disabled the interrupt.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 52
+      },
+      "revId": "dd3f73f60e7c6c711c446943148499350335eeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
