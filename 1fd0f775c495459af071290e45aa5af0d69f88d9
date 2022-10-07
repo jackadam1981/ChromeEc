@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "366bac59_1d551af5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T18:28:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60b8a798_d438b4ae",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cfea576_ca5d6d70",
@@ -119,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b56051_ac6834b2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T18:28:08Z",
+      "side": 1,
+      "message": "Hi Dai,\nUpdate description accordingly. Thankyou as the output seems to be much better with this description.",
+      "parentUuid": "01235717_aa2493cc",
+      "range": {
+        "startLine": 319,
+        "startChar": 30,
+        "endLine": 320,
+        "endChar": 47
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0c974b1_3a5c7446",
@@ -144,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e43dc2d_48d818af",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 3313,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T18:28:08Z",
+      "side": 1,
+      "message": "Agree, but wont it be confusing with the negative value in the output?",
+      "parentUuid": "d0c974b1_3a5c7446",
+      "range": {
+        "startLine": 3313,
+        "startChar": 1,
+        "endLine": 3313,
+        "endChar": 3
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cbf9fa6_5b803fe2",
         "filename": "util/ectool.cc",
         "patchSetId": 11
@@ -155,6 +227,30 @@
       "writtenOn": "2022-10-06T17:48:51Z",
       "side": 1,
       "message": "nit: sorry, I think it\u0027s ok not to have this \u0027of\u0027.",
+      "range": {
+        "startLine": 3314,
+        "startChar": 20,
+        "endLine": 3314,
+        "endChar": 22
+      },
+      "revId": "1fd0f775c495459af071290e45aa5af0d69f88d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e932f15_7234227f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-07T18:28:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cbf9fa6_5b803fe2",
       "range": {
         "startLine": 3314,
         "startChar": 20,
