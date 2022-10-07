@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fab741a_67314bc4",
+        "filename": "common/body_detection.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-07T20:22:49Z",
+      "side": 1,
+      "message": "How are you verifying that the new host event being sent (`EC_HOST_EVENT_MODE_CHANGE`) is being handled correctly?\n\nIs the data being accessed when handling `EC_HOST_EVENT_MODE_CHANGE` being processed anywhere else, and if so, what\u0027s triggering it?",
+      "parentUuid": "51e2b549_0ab6cacc",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e250fa18_031c48b0",
         "filename": "common/body_detection.c",
         "patchSetId": 8
