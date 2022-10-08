@@ -151,6 +151,30 @@
       },
       "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f91289b_9243011c",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-08T06:56:09Z",
+      "side": 1,
+      "message": "\u003eWhere did you get 35 and 60 from?\n\nSince I thought these values were missing in the the thermal participants (when I raised the cros_bug b:246929159), I was unaware that gimble works with only custom controlled fan config. So, added these values from brya. If these values are improper for gimble and no static values should be present then I can close this CL (as well CL:3899955).",
+      "parentUuid": "0f30d7a4_80e76d48",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
