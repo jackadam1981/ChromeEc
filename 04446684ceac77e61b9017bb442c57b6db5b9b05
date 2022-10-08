@@ -88,6 +88,24 @@
       "parentUuid": "93506d44_7c3652f1",
       "revId": "04446684ceac77e61b9017bb442c57b6db5b9b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa4f706_a8d3aef6",
+        "filename": "zephyr/projects/rex/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-10-08T14:28:12Z",
+      "side": 1,
+      "message": "\u003e looks like rex is also missing the \"dynamic-speed\" property:\n\u003e \n\u003e example:\n\u003e \n\u003e https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/projects/brya/i2c.dts#22\n\u003e \n\u003e some other zephyr based boards have this set as well.\n\u003e probably just an oversight when creating the initial rex config.\n\nThanks Caveh, we are all good now with entire patchset.",
+      "parentUuid": "644e4553_ce9f9b43",
+      "revId": "04446684ceac77e61b9017bb442c57b6db5b9b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
