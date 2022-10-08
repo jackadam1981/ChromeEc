@@ -39,6 +39,30 @@
       },
       "revId": "a354cab67a83ace50166c98400b5d9b5b89b7eaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a6a201_00e29a5a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 3317,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-08T06:38:26Z",
+      "side": 1,
+      "message": "@Dai, Thankyou.\nadded condition to handle the following 5 cases,\n\n```\n#1. CMD_SUCCESS, (fan_off !\u003d fan_max) !\u003d 0\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\nDDR and SOC           310 K (\u003d 37 C)           8% (308K and 333K)\nFan                   301 K (\u003d 28 C)           0% (308K and 333K)\nCharger               310 K (\u003d 37 C)           8% (308K and 333K)\n\n#2. CMD_SUCCESS, (fan_off \u003d\u003d fan_max) \u003d\u003d 0\n#3. CMD_SUCCESS, (fan_off \u003d\u003d fan_max) !\u003d 0\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\nDDR and SOC           306 K (\u003d 33 C)         N/A (fan_off\u003dx, fan_max\u003dx)\nFan                   300 K (\u003d 27 C)         N/A (fan_off\u003dx, fan_max\u003dx)\nCharger               305 K (\u003d 32 C)         N/A (fan_off\u003dx, fan_max\u003dx)\n\n#4. CMD_SUCCESS, (fan_off\u003d\u003d0 fan_max !\u003d 0)\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\nDDR and SOC           306 K (\u003d 33 C)          91% (0K and 333K)\nFan                   300 K (\u003d 27 C)          90% (0K and 333K)\nCharger               305 K (\u003d 32 C)          91% (0K and 333K)\n\n#5. CMD_FAILED (rc \u003c 0)\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\nDDR and SOC           306 K (\u003d 33 C)               error(rc\u003d-1)\nFan                   300 K (\u003d 27 C)               error(rc\u003d-1)\nCharger               305 K (\u003d 32 C)               error(rc\u003d-1)\n```",
+      "parentUuid": "2bdedba0_3cf850ee",
+      "range": {
+        "startLine": 3316,
+        "startChar": 0,
+        "endLine": 3317,
+        "endChar": 10
+      },
+      "revId": "a354cab67a83ace50166c98400b5d9b5b89b7eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
