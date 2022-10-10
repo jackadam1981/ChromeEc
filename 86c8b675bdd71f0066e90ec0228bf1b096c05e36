@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bce8c221_59293510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-10-10T23:01:47Z",
+      "side": 1,
+      "message": "やった！It\u0027s finally happening! 🎉",
+      "revId": "86c8b675bdd71f0066e90ec0228bf1b096c05e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13695c91_54c0c9d8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3363,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-10-10T23:01:47Z",
+      "side": 1,
+      "message": "If we\u0027re not actively modifying that port, nor charging from another port, why do we have to take that port into account?\n\nI don\u0027t think it could ever be higher than the active charge port, could it?",
+      "range": {
+        "startLine": 3363,
+        "startChar": 13,
+        "endLine": 3363,
+        "endChar": 53
+      },
+      "revId": "86c8b675bdd71f0066e90ec0228bf1b096c05e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
