@@ -1,0 +1,39 @@
+/* Copyright 2022 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	binman {
+		wp-ro {
+			ec-ro {
+				type = "blob";
+				filename = "zephyr_ro.bin";
+				/delete-node/ ro-fw;
+				/delete-node/ ro-frid;
+				/delete-node/ fmap;
+			};
+			ro-frid {
+				type = "text";
+				size = <0x20>;
+				text-label = "version";
+			};
+			fmap {
+			};
+/*
+			key-ro {
+				offset = <0x1fc00>;
+				size = <0x400>;
+			};
+*/
+		};
+		ec-rw {
+/*
+			sig-rw {
+				offset = <0xffc00>;
+				size = <0x400>;
+			};
+*/
+		};
+	};
+};
