@@ -2190,6 +2190,8 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 static void pe_sender_response_msg_exit(int port)
 {
 	pd_timer_disable(port, PE_TIMER_SENDER_RESPONSE);
+	/* Notify DPM that message send is complete */
+	dpm_notify_msg_done(port);
 }
 
 /**
@@ -2928,9 +2930,6 @@ static void pe_src_ready_run(int port)
 		 */
 		if (pe_attempt_port_discovery(port))
 			return;
-
-		/* Inform DPM state machine that PE is set for messages */
-		dpm_set_pe_sync(port);
 	}
 }
 
@@ -3785,9 +3784,6 @@ static void pe_snk_ready_run(int port)
 		 */
 		if (pe_attempt_port_discovery(port))
 			return;
-
-		/* Inform DPM state machine that PE is set for messages */
-		dpm_set_pe_sync(port);
 	}
 }
 
@@ -5549,6 +5545,9 @@ static void pe_vdm_send_request_exit(int port)
 
 	/* Invalidate TX type so it must be set before next call */
 	pe[port].tx_type = TCPCI_MSG_INVALID;
+
+	/* Notify DPM that VDM message send is complete */
+	dpm_notify_msg_done(port);
 
 	pd_timer_disable(port, PE_TIMER_VDM_RESPONSE);
 }
