@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61169518_bfc145d0",
+        "filename": "common/spi/flash_reg/Kconfig.module",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-10T03:35:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c8b60d2_5010ca04",
+      "revId": "879708be10ba6bc79e546c4e64687bf3678ea86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a16a4685_2b625b23",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-07T18:18:24Z",
       "side": 1,
       "message": "Should be CONFIG_PLATFORM_EC_SPI_FLASH_REGS, and then you only need it once in this file.",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 58
+      },
+      "revId": "879708be10ba6bc79e546c4e64687bf3678ea86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe736e71_06da892f",
+        "filename": "zephyr/drivers/cros_flash/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-10T03:35:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a16a4685_2b625b23",
       "range": {
         "startLine": 12,
         "startChar": 36,
