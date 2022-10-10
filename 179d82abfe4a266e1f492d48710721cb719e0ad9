@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30621946_efe7b807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-10T22:19:17Z",
+      "side": 1,
+      "message": "Thanks for the addition comments in the code.\nI believe the scenario is that the AP_SUSPEND interrupt is only enabled right after the host sends a EC_CMD_HOST_SLEEP_EVENT.  The code you\u0027re testing handles the case when the AP self resets after sending EC_CMD_HOST_SLEEP_EVENT, but before the AP successfully asserts AP_SUSPEND.",
+      "revId": "179d82abfe4a266e1f492d48710721cb719e0ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
