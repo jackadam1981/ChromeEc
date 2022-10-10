@@ -1,0 +1,50 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "soc.dts"
+#include "gpio.dts"
+
+/ {
+	binman {
+		wp-ro {
+//			pad-byte = <0xff>;
+/*
+			key-ro {
+				type = "blob";
+				filename = "pubkey.bin";
+				offset = <0x1fc00>;
+				size = <0x400>;
+			};
+*/
+		};
+		ec-rw {
+			rw-fw {
+				pad-byte = <0xff>;
+
+				zephyr-rw {
+					align-end = <4>;
+				};
+
+				/* FWID must be placed before signature
+				 * (in RW_FW section) to pass RW signature
+				 * verification.
+				 */
+				rw-fwid {
+					// TODO: Decide where we should put FWID. Do we need it really?
+					/delete-property/ offset;
+					//offset = <(0x9fc00 - 32)>;
+				};
+			};
+/*
+			sig-rw {
+				type = "blob";
+				filename = "sig.bin";
+				offset = <0x9fc00>;
+				size = <0x400>;
+			};
+*/
+		};
+	};
+};
