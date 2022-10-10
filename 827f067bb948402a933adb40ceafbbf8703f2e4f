@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2c140d_ea435866",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-10T17:50:59Z",
+      "side": 1,
+      "message": "I think this will make \u0027make BOARD\u003dredrix host-utils\u0027 print \u0027unknown target\u0027. Can we print \u0027Building host-utils for BOARD\u003d!host isn\u0027t supported.\u0027 or something like that?",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 20
+      },
+      "revId": "827f067bb948402a933adb40ceafbbf8703f2e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
