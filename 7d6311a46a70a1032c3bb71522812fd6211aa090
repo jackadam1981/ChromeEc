@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ed9c0d_c0f38727",
+        "filename": "common/chargen.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-10T23:44:24Z",
+      "side": 1,
+      "message": "The zephyr shell now has a `shell_set_bypass()` function.  It looks like it is designed for this kind of use case.\n\nThis might require a refactor of this loop to run in a different thread. But it would avoid, having to make the deep API call `shell-\u003eiface-\u003eapi-\u003eread()`, which doesn\u0027t really look like it\u0027s meant to be public.",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "7d6311a46a70a1032c3bb71522812fd6211aa090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
