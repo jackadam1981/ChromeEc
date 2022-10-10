@@ -94,6 +94,30 @@
       },
       "revId": "10943e00138a364ad4dfd1745423e545285227bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a029785_16df77d3",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-10T16:26:54Z",
+      "side": 1,
+      "message": "Where is ectool built for BOARD!\u003dhost? We need to check the necessity.",
+      "parentUuid": "8ad57021_49dcf172",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "10943e00138a364ad4dfd1745423e545285227bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
