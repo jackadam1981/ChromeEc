@@ -5749,7 +5749,11 @@
 #endif
 
 #include "config_chip.h"
+#ifdef CONFIG_ZEPHYR
+#include "zephyr_shim.h"
+#else
 #include "board.h"
+#endif
 
 /*
  * Define CONFIG_HOST_ESPI_VW_POWER_SIGNAL if any power signals from the host
