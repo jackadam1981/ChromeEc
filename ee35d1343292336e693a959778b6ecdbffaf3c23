@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb95a07_122aa378",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-10T20:40:53Z",
+      "side": 1,
+      "message": "Although, you do have to be careful that you aren\u0027t using the macro in a test where you are verifying the macro\u0027s usage. Since then a bug introduced in the macro would still pass the test.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 63
+      },
+      "revId": "ee35d1343292336e693a959778b6ecdbffaf3c23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
