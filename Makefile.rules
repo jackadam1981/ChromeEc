@@ -307,7 +307,12 @@ hex: $(hex-y)
 utils-art: $(build-art)
 
 .PHONY: utils-host
+ifeq ($(BOARD),host)
 utils-host: $(host-utils) $(host-utils-cxx)
+else
+utils-host:
+	$(error Building utils-host not supported when BOARD is not "host")
+endif
 
 .PHONY: utils-build
 utils-build: $(build-utils)
