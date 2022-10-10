@@ -29,6 +29,13 @@ void dpm_init(int port);
 void dpm_mode_exit_complete(int port);
 
 /*
+ * Informs the DPM that message was transmitted by the PE layer
+ *
+ * @param port USB-C port number
+ */
+void dpm_notify_msg_done(int port);
+
+/*
  * Informs the DPM that Exit Mode request is received
  *
  * @param port USB-C port number
@@ -43,11 +50,11 @@ void dpm_set_mode_exit_request(int port);
 void dpm_data_reset_complete(int port);
 
 /*
- * Informs the DPM that PE layer is ready for DPM layer to run.
+ * Informs the DPM that PE layer has completed sending a message.
  *
  * @param port USB-C port number
  */
-void dpm_set_pe_sync(int port);
+void dpm_notify_msg_done(int port);
 
 /*
  * Informs the DPM that PE layer is in ready state so that data role can be
