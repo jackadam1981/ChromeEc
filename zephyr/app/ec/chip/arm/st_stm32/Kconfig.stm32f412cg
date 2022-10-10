@@ -1,0 +1,45 @@
+# Copyright 2022 The ChromiumOS Authors.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+#
+# This file defines the correct defaults when using the STM32F412CG MCU.
+#
+
+if SOC_SERIES_STM32F4X
+
+#
+# STM32F412CX: 1 MiB Flash, 256 KiB RAM
+#
+
+# Code RAM base for STM32 series
+config CROS_EC_PROGRAM_MEMORY_BASE
+	default 0x8000000
+
+config CROS_EC_RAM_BASE
+	default 0x20000000
+
+config CROS_EC_DATA_RAM_SIZE
+	default 0x40000 if SOC_STM32F412CX
+	default 0x20000
+
+config CROS_EC_RAM_SIZE
+	default 0x40000 if SOC_STM32F412CX
+	default 0x20000
+
+config CROS_EC_RO_MEM_OFF
+	default 0x0
+
+config CROS_EC_RO_SIZE
+	default 0x40000
+
+config CROS_EC_RW_MEM_OFF
+	default 0x60000
+
+config CROS_EC_RW_SIZE
+	default 0xA0000
+
+config FLASH_LOAD_OFFSET
+	default CROS_EC_RW_MEM_OFF if CROS_EC_RW
+
+endif # SOC_SERIES_STM32F4X
