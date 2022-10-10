@@ -962,7 +962,7 @@ static void handle_chipset_reset(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
 
-__override void
+test_mockable __override void
 power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 				      struct host_sleep_event_context *ctx)
 {
