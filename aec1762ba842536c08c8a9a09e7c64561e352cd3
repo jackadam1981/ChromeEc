@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519cddb5_f3cccb35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-10T23:08:16Z",
+      "side": 1,
+      "message": "If `lcov -a` is a full join, then I guess this would be a left join, where the empty herobrine coverage file is the left side. But only change the filename if that sounds clearer to you.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "aec1762ba842536c08c8a9a09e7c64561e352cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e23e8e1_be76b023",
+        "filename": "util/lcov_stencil.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-10T23:08:16Z",
+      "side": 1,
+      "message": "Future readers might appreciate an link to a coverage file reference.",
+      "revId": "aec1762ba842536c08c8a9a09e7c64561e352cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef28bb6b_6e388b0e",
+        "filename": "util/lcov_stencil.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-10T23:08:16Z",
+      "side": 1,
+      "message": "I think this would be easier to follow if it were split up into separate functions to parse arguments, iterate the template file, and do the per-file steps for the other input files.",
+      "revId": "aec1762ba842536c08c8a9a09e7c64561e352cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
