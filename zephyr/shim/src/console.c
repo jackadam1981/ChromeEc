@@ -335,23 +335,33 @@ void uart_tx_flush(void)
 
 int uart_getc(void)
 {
-#if defined(CONFIG_UART_INTERRUPT_DRIVEN)
 	uint8_t c;
+	if (shell_stopped) {
+#if defined(CONFIG_UART_INTERRUPT_DRIVEN)
 
-	if (ring_buf_get(&rx_buffer, &c, 1)) {
+		if (ring_buf_get(&rx_buffer, &c, 1)) {
+			return c;
+		}
+		return -1;
+#else
+		int rv;
+
+		rv = uart_poll_in(uart_shell_dev, &c);
+		if (rv) {
+			return rv;
+		}
+		return c;
+#endif
+	} else {
+		size_t cnt = 0;
+
+		if (shell_zephyr->iface->api->read(shell_zephyr->iface, &c,
+						   sizeof(c), &cnt) ||
+		    !cnt) {
+			return -1;
+		}
 		return c;
 	}
-	return -1;
-#else
-	uint8_t c;
-	int rv;
-
-	rv = uart_poll_in(uart_shell_dev, &c);
-	if (rv) {
-		return rv;
-	}
-	return c;
-#endif
 }
 
 void uart_clear_input(void)

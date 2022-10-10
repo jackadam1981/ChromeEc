@@ -68,8 +68,6 @@ static int command_chargen(int argc, const char **argv)
 	}
 #endif
 
-	uart_shell_stop();
-
 	c = '0';
 	prev_watchdog_time = get_time();
 	while (uart_getc() != 'x' && usb_getc() != 'x') {
@@ -115,8 +113,6 @@ static int command_chargen(int argc, const char **argv)
 	}
 
 	putc_('\n');
-
-	uart_shell_start();
 
 	return EC_SUCCESS;
 }
