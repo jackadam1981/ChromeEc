@@ -118,6 +118,30 @@
       },
       "revId": "10943e00138a364ad4dfd1745423e545285227bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a21223c_406bb180",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-10T17:10:06Z",
+      "side": 1,
+      "message": "When you do `make buildall`, it will build the utils for each board. I\u0027m not sure if the resulting binaries are being used anywhere. For example, the [`ec-utils` ebuild`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/chromeos-base/ec-utils/ec-utils-9999.ebuild;l\u003d33-35;drc\u003d014828648575cc6b45002003c9ce8b58054e25ca) seems to set `BOARD\u003dhost`.\n\nI filed a bug for this issue: http://b/252817153.",
+      "parentUuid": "1a029785_16df77d3",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "10943e00138a364ad4dfd1745423e545285227bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
