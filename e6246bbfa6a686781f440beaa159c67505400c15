@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d44fda2c_fd97f26a",
+        "filename": "include/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-10-10T14:06:04Z",
+      "side": 1,
+      "message": "Can you explain why we need to change it? The domain is on when the power state is S5 or higher.",
+      "parentUuid": "816846a0_8e8743d5",
+      "range": {
+        "startLine": 93,
+        "startChar": 31,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e08aa2c_70a65e3c",
         "filename": "power/common.c",
         "patchSetId": 4
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a38ec9_f556f118",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-10-10T14:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b45afdc3_3d9bfc29",
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e0d4d91_969b5602",
@@ -72,6 +114,30 @@
       "writtenOn": "2022-10-07T16:42:24Z",
       "side": 1,
       "message": "In place of calling `pm_device_state_get()`, you could have this callback implement the following:\n```\nswitch (action):\n    case PM_DEVICE_ACTION_RESUME:\n        pm_device_children_action_run(dev, PM_DEVICE_ACTION_TURN_ON, NULL);\n    case PM_DEVICE_ACTION_SUSPEND:\n        pm_device_children_action_run(dev, PM_DEVICE_ACTION_TURN_OFF, NULL);\n    \n```\n\nMy understanding is that calling pm_device_runtime_get() triggers the power-domain callback with the RESUME action, and put() triggers the SUSPEND action.  The callback the tells all children to turn on or turn off.\n\nThe child nodes (temp sensors), could simply define a `bool domain_is_powered`.  The callback for each child will set or clear `domain_is_powered` based on the action PM_DEVICE_ACTION_TURN_ON/OFF.\n\nThis likely uses more flash space, but then the temperature sensor doesn\u0027t have to know the specific power domain name.\n\nThe \"power-domain-g3\" can then be implemented as a separate driver file to make things a little cleaner.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ec8ae8_4c57c21a",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-10-10T14:06:04Z",
+      "side": 1,
+      "message": "I don\u0027t think it is a good idea. To use the callbacks to sensors we need to create the `device` and `pm` structures with `PM_DEVICE_DT_DEFINE` and `DEVICE_DT_DEFINE` macros. Then we need to connect the created device with the entry in the `temp_sensors` array. It kind of looks like overkill. The callback mechanism should be good once we upstream the temperature sensors to Zephyr.\n\nRegarding flash uses, it is 1328B vs 656B the previous implementation.\n\nSome Zephyr sensor drivers use the `pm_device_state_get` anyway, e.g. https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/sensor/bme280/bme280.c#L182",
+      "parentUuid": "5e0d4d91_969b5602",
       "range": {
         "startLine": 332,
         "startChar": 0,
