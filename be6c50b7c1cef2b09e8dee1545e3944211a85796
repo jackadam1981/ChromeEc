@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95986a9_b0465d21",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-10T23:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a679015_87a60be0",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "be6c50b7c1cef2b09e8dee1545e3944211a85796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "185e600d_54037f4c",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42704b6_37fe82bc",
+        "filename": "zephyr/test/drivers/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-10T23:36:49Z",
+      "side": 1,
+      "message": "Same response.",
+      "parentUuid": "185e600d_54037f4c",
+      "revId": "be6c50b7c1cef2b09e8dee1545e3944211a85796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "896b710d_79f73d93",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-10-10T22:45:18Z",
       "side": 1,
       "message": "nit: we should probably try to keep these alphabetized.",
+      "revId": "be6c50b7c1cef2b09e8dee1545e3944211a85796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e4eca80_ee5b4f5b",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-10T23:36:49Z",
+      "side": 1,
+      "message": "This list is only partially alphabetized right now, and this location puts the new entry at the appropriate place in the longest contiguous sorted sequence. If you would like, I can sort the whole thing in a follow-up CL.",
+      "parentUuid": "896b710d_79f73d93",
       "revId": "be6c50b7c1cef2b09e8dee1545e3944211a85796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
