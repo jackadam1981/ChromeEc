@@ -56,7 +56,7 @@ void dpm_data_reset_complete(int port);
  *
  * @param port USB-C port number
  */
-void dpm_set_pe_sync(int port);
+void dpm_notify_msg_done(int port);
 
 /*
  * Informs the DPM that PE layer is in ready state so that data role can be
