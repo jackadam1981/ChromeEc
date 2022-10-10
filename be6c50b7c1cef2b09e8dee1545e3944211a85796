@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a679015_87a60be0",
+        "filename": "zephyr/test/drivers/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-10T22:45:18Z",
+      "side": 1,
+      "message": "We don\u0027t actually need to change this part of the cmake list here. In fact, I\u0027m just going to remove this entire section since we don\u0027t use it.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "be6c50b7c1cef2b09e8dee1545e3944211a85796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185e600d_54037f4c",
+        "filename": "zephyr/test/drivers/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-10T22:45:18Z",
+      "side": 1,
+      "message": "Same nit here about the alphabetizing.",
+      "revId": "be6c50b7c1cef2b09e8dee1545e3944211a85796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "896b710d_79f73d93",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-10T22:45:18Z",
+      "side": 1,
+      "message": "nit: we should probably try to keep these alphabetized.",
+      "revId": "be6c50b7c1cef2b09e8dee1545e3944211a85796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
