@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91adb64e_5be0efce",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-10T21:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abaa856f_69de3318",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "dd3f73f60e7c6c711c446943148499350335eeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e888913_eaf6e524",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-07T23:34:31Z",
       "side": 1,
       "message": "I don\u0027t quite follow this.  I would expect that power state to transition to POWER_S3S0 because suspend is no longer asserted.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 52
+      },
+      "revId": "dd3f73f60e7c6c711c446943148499350335eeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7c61b1_d54b7b6d",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-10T21:59:38Z",
+      "side": 1,
+      "message": "I added some comments to justify this.  I\u0027m inferring the correct behavior from reading the code, and I\u0027m not sure the code is actually right, but this is how it works.",
+      "parentUuid": "7e888913_eaf6e524",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51f556d_6508ae69",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-10T21:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70772cb0_7fa54ca9",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "dd3f73f60e7c6c711c446943148499350335eeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "750078be_fb8f3c58",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-07T23:34:31Z",
       "side": 1,
       "message": "Why is this check needed in the S0 case?  You\u0027ve already set gpio_ap_suspend to 0 at line 118, so this statement doesn\u0027t change the GPIO state.  You\u0027ve also disabled the interrupt.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 52
+      },
+      "revId": "dd3f73f60e7c6c711c446943148499350335eeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f221b32a_15db9404",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-10T21:59:38Z",
+      "side": 1,
+      "message": "This is copy-pasta, so it\u0027s removed.",
+      "parentUuid": "750078be_fb8f3c58",
       "range": {
         "startLine": 140,
         "startChar": 0,
