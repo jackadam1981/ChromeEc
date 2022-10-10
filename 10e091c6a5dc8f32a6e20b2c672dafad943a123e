@@ -175,6 +175,30 @@
       },
       "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be887915_a99d7af8",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-10T16:34:25Z",
+      "side": 1,
+      "message": "Even custom fan controls have upper and lower temperature limits, don\u0027t they? Those two temps can be used to show how close to the limit the system is heated even though they aren\u0027t directly used for choosing fan speeds.",
+      "parentUuid": "0f91289b_9243011c",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
