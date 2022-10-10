@@ -166,6 +166,30 @@
       },
       "revId": "10943e00138a364ad4dfd1745423e545285227bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "011f7e90_7de30170",
+        "filename": "util/ec_panicinfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-10T17:24:38Z",
+      "side": 1,
+      "message": "We can see if this works: https://crrev.com/c/3943248",
+      "parentUuid": "5a21223c_406bb180",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 46
+      },
+      "revId": "10943e00138a364ad4dfd1745423e545285227bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
