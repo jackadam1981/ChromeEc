@@ -22,6 +22,30 @@
       },
       "revId": "7d6311a46a70a1032c3bb71522812fd6211aa090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591c84a9_4b272fea",
+        "filename": "common/chargen.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-10T23:47:28Z",
+      "side": 1,
+      "message": "Sample zephyr usage: https://source.corp.google.com/chromeos_public/src/third_party/zephyr/main/samples/subsys/shell/shell_module/src/main.c;rcl\u003d3b5578e0ec12467650e34a323c74dc9dcab23aa8;l\u003d310",
+      "parentUuid": "c2ed9c0d_c0f38727",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "7d6311a46a70a1032c3bb71522812fd6211aa090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
