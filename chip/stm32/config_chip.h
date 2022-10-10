@@ -126,7 +126,9 @@
  * the test, and insufficient stack size causes console stack overflow after
  * running the on-device tests.
  */
+#ifndef CONSOLE_TASK_STACK_SIZE
 #define CONSOLE_TASK_STACK_SIZE 4096
+#endif
 
 /* Interval between HOOK_TICK notifications */
 #define HOOK_TICK_INTERVAL_MS 500
