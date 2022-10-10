@@ -186,6 +186,29 @@
       "parentUuid": "ef6d53b9_78a90aa8",
       "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1976940_956adcb7",
+        "filename": "board/redrix/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-10-10T17:39:16Z",
+      "side": 1,
+      "message": "Does 35 and 60 correspond to DPTF max and off values?",
+      "range": {
+        "startLine": 321,
+        "startChar": 25,
+        "endLine": 321,
+        "endChar": 27
+      },
+      "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
