@@ -83,7 +83,8 @@ static struct {
 enum usb_dpm_state {
 	/* Normal States */
 	DPM_IDLE,
-	DPM_READY,
+	DPM_DFP_READY,
+	DPM_UFP_READY,
 };
 
 /* Forward declare the full list of states. This is indexed by usb_pe_state */
@@ -93,7 +94,8 @@ static const struct usb_state dpm_states[];
 __maybe_unused static __const_data const char *const dpm_state_names[] = {
 	/* Normal States */
 	[DPM_IDLE] = "DPM Idle",
-	[DPM_READY] = "DPM Ready",
+	[DPM_DFP_READY] = "DPM DFP Ready",
+	[DPM_UFP_READY] = "DPM UFP Ready",
 };
 
 static enum sm_local_state local_state[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -345,19 +347,6 @@ static void dpm_attempt_mode_entry(int port)
 	bool enter_mode_requested =
 		IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) ? false : true;
 	enum dpm_msg_setup_status status = MSG_SETUP_UNSUPPORTED;
-
-	if (pd_get_data_role(port) != PD_ROLE_DFP) {
-		if (DPM_CHK_FLAG(port, DPM_FLAG_ENTER_DP | DPM_FLAG_ENTER_TBT |
-					       DPM_FLAG_ENTER_USB4))
-			DPM_CLR_FLAG(port, DPM_FLAG_ENTER_DP |
-						   DPM_FLAG_ENTER_TBT |
-						   DPM_FLAG_ENTER_USB4);
-		/*
-		 * TODO(b/168030639): Notify the AP that the enter mode request
-		 * failed.
-		 */
-		return;
-	}
 
 #ifdef CONFIG_AP_POWER_CONTROL
 	/*
@@ -1267,38 +1256,87 @@ static void dpm_idle_entry(const int port)
 
 static void dpm_idle_run(const int port)
 {
+	enum pd_data_role dr = pd_get_data_role(port);
+
 	if (DPM_CHK_FLAG(port, DPM_FLAG_PD_READY)) {
-		DPM_CLR_FLAG(port, DPM_FLAG_PD_READY);
-		set_state_dpm(port, DPM_READY);
+		if (dr == PD_ROLE_UFP) {
+			DPM_CLR_FLAG(port, DPM_FLAG_PD_READY);
+			set_state_dpm(port, DPM_UFP_READY);
+		} else if (dr == PD_ROLE_DFP) {
+			DPM_CLR_FLAG(port, DPM_FLAG_PD_READY);
+			set_state_dpm(port, DPM_DFP_READY);
+		}
 	}
 }
 
 /*
- * DPM_READY
+ * DPM_DFP_READY
  */
-static void dpm_ready_entry(const int port)
+static void dpm_dfp_ready_entry(const int port)
 {
 	print_current_state(port);
 }
 
-static void dpm_ready_run(const int port)
+static void dpm_dfp_ready_run(const int port)
 {
+	/* Check if data role has changed */
+	if (DPM_CHK_FLAG(port, DPM_FLAG_PD_READY) &&
+	    pd_get_data_role(port) != PD_ROLE_DFP) {
+		DPM_CLR_FLAG(port, DPM_FLAG_PD_READY);
+		set_state_dpm(port, DPM_IDLE);
+		return;
+	}
+
+	/* Don't attempt to send any messages until PE is idle */
+	if (!DPM_CHK_FLAG(port, DPM_FLAG_PE_SYNC))
+		return;
+	DPM_CLR_FLAG(port, DPM_FLAG_PE_SYNC);
+
+	/* Run power button state machine */
+	dpm_run_pd_button_sm(port);
+
+	/* Run DFP related DPM requests */
+	if (DPM_CHK_FLAG(port, DPM_FLAG_EXIT_REQUEST))
+		dpm_attempt_mode_exit(port);
+	else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE))
+		dpm_attempt_mode_entry(port);
+}
+
+/*
+ * DPM_UFP_READY
+ */
+static void dpm_ufp_ready_entry(const int port)
+{
+	print_current_state(port);
+}
+
+static void dpm_ufp_ready_run(const int port)
+{
+	/* Check if data role has changed */
+	if (DPM_CHK_FLAG(port, DPM_FLAG_PD_READY) &&
+	    pd_get_data_role(port) != PD_ROLE_UFP) {
+		set_state_dpm(port, DPM_IDLE);
+		DPM_CLR_FLAG(port, DPM_FLAG_PD_READY);
+		return;
+	}
+
 	if (DPM_CHK_FLAG(port, DPM_FLAG_PE_SYNC)) {
 		DPM_CLR_FLAG(port, DPM_FLAG_PE_SYNC);
-		if (pd_get_data_role(port) == PD_ROLE_DFP) {
-			/* Run DFP related DPM requests */
-			if (DPM_CHK_FLAG(port, DPM_FLAG_EXIT_REQUEST))
-				dpm_attempt_mode_exit(port);
-			else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE))
-				dpm_attempt_mode_entry(port);
 
-			/* Run USB PD Power button state machine */
-			dpm_run_pd_button_sm(port);
-		} else {
-			/* Run UFP related DPM requests */
-			if (DPM_CHK_FLAG(port, DPM_FLAG_SEND_ATTENTION))
-				dpm_send_attention_vdm(port);
+		if (DPM_CHK_FLAG(port, DPM_FLAG_ENTER_ANY)) {
+			DPM_CLR_FLAG(port, DPM_FLAG_ENTER_DP |
+						   DPM_FLAG_ENTER_TBT |
+						   DPM_FLAG_ENTER_USB4);
+			/*
+			 * TODO(b/168030639): Notify the AP that the
+			 * enter mode request failed.
+			 */
+			return;
 		}
+
+		/* Run UFP related DPM requests */
+		if (DPM_CHK_FLAG(port, DPM_FLAG_SEND_ATTENTION))
+			dpm_send_attention_vdm(port);
 	}
 }
 
@@ -1308,8 +1346,12 @@ static __const_data const struct usb_state dpm_states[] = {
 		.entry = dpm_idle_entry,
 		.run   = dpm_idle_run,
 	},
-	[DPM_READY] = {
-		.entry = dpm_ready_entry,
-		.run   = dpm_ready_run,
+	[DPM_DFP_READY] = {
+		.entry = dpm_dfp_ready_entry,
+		.run   = dpm_dfp_ready_run,
+	},
+	[DPM_UFP_READY] = {
+		.entry = dpm_ufp_ready_entry,
+		.run   = dpm_ufp_ready_run,
 	},
 };
