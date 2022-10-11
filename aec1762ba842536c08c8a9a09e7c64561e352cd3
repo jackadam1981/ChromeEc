@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9315e1d4_bf795293",
+        "filename": "util/lcov_stencil.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-11T16:33:31Z",
+      "side": 1,
+      "message": "I would also appreciate that. I discovered what the various tags were by reading the source code. I\u0027ll link to it.",
+      "parentUuid": "2e23e8e1_be76b023",
+      "revId": "aec1762ba842536c08c8a9a09e7c64561e352cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef28bb6b_6e388b0e",
@@ -54,6 +72,24 @@
       "writtenOn": "2022-10-10T23:08:16Z",
       "side": 1,
       "message": "I think this would be easier to follow if it were split up into separate functions to parse arguments, iterate the template file, and do the per-file steps for the other input files.",
+      "revId": "aec1762ba842536c08c8a9a09e7c64561e352cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4093a3f6_101d1812",
+        "filename": "util/lcov_stencil.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-11T16:33:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef28bb6b_6e388b0e",
       "revId": "aec1762ba842536c08c8a9a09e7c64561e352cd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
