@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a0857f_a8ca3527",
+        "filename": "power/qcom.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-11T22:12:49Z",
+      "side": 1,
+      "message": "I\u0027m curious for other test binaries which definition is linked? As with this change they both have the `weak` attribute and your fake is not defined.\nhttp://cs/chromeos_public/src/platform/ec/power/host_sleep.c?l\u003d22\n\n`qcom_power` test links this file in as well.\nhttp://cs/chromeos_public/src/platform/ec/zephyr/test/qcom_power/prj.conf?l\u003d32",
+      "revId": "f0166e5f4bc99b39cf63dd020fdb775787f4cc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
