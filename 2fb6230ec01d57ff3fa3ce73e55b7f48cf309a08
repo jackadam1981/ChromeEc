@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e848d78_79c5d810",
+        "filename": "zephyr/test/drivers/dps/src/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-11T15:50:53Z",
+      "side": 1,
+      "message": "Should the test also be validating that the DPS task stopped running when the battery wasn\u0027t present?",
+      "revId": "2fb6230ec01d57ff3fa3ce73e55b7f48cf309a08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
