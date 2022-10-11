@@ -233,6 +233,30 @@
       },
       "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a5f4cde_ce1dc447",
+        "filename": "board/redrix/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-10-11T16:59:30Z",
+      "side": 1,
+      "message": "Redrix has DPTF policy defined. Brya values cannot be used, because they don\u0027t match the off/max from those tables.",
+      "parentUuid": "fb8b1179_336c9d36",
+      "range": {
+        "startLine": 321,
+        "startChar": 25,
+        "endLine": 321,
+        "endChar": 27
+      },
+      "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
