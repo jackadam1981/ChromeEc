@@ -35,10 +35,10 @@ LOG_MODULE_REGISTER(shim_adc, LOG_LEVEL_ERR);
 		},                                                        \
 	},
 #ifdef CONFIG_ADC_CHANNELS_RUNTIME_CONFIG
-struct adc_t adc_channels[] = { DT_FOREACH_CHILD(DT_INST(0, named_adc_channels),
-						 ADC_CHANNEL_INIT) };
+__hot_data struct adc_t adc_channels[] = { DT_FOREACH_CHILD(
+	DT_INST(0, named_adc_channels), ADC_CHANNEL_INIT) };
 #else
-const struct adc_t adc_channels[] = { DT_FOREACH_CHILD(
+__hot_data_const struct adc_t adc_channels[] = { DT_FOREACH_CHILD(
 	DT_INST(0, named_adc_channels), ADC_CHANNEL_INIT) };
 #endif
 #endif /* named_adc_channels */

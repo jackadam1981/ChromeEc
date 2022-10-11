@@ -26,9 +26,10 @@
 		    (NCT38XX_CHECK(usbc_id, DT_PHANDLE(usbc_id, tcpc))), ())
 
 /* NCT38XX GPIO device pool for binding the TCPC port and NCT38XX GPIO device */
-static const struct device *nct38xx_gpio_devices[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	DT_FOREACH_STATUS_OKAY(named_usbc_port, NCT38XX_GPIO)
-};
+__hot_data_const static const struct device
+	*nct38xx_gpio_devices[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+		DT_FOREACH_STATUS_OKAY(named_usbc_port, NCT38XX_GPIO)
+	};
 
 const struct device *nct38xx_get_gpio_device_from_port(const int port)
 {

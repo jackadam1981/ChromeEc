@@ -22,7 +22,7 @@ BUILD_ASSERT(DT_INST_PROP_LEN(0, actual_key_mask) >= KEYBOARD_COLS_NO_KEYPAD);
  * Override the default keyscan_config if the board defines a
  * cros-kb-raw-keyscan node.
  */
-__override struct keyboard_scan_config keyscan_config = {
+__hot_data __override struct keyboard_scan_config keyscan_config = {
 	.output_settle_us = DT_INST_PROP(0, output_settle),
 	.debounce_down_us = DT_INST_PROP(0, debounce_down),
 	.debounce_up_us = DT_INST_PROP(0, debounce_up),

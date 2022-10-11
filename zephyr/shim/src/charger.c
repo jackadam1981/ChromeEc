@@ -37,8 +37,9 @@
 		    (CHG_CHIP_FIND(usbc_id, DT_PHANDLE(usbc_id, chg_alt))), \
 		    ())
 
-#define MAYBE_CONST \
-	COND_CODE_1(CONFIG_PLATFORM_EC_CHARGER_RUNTIME_CONFIG, (), (const))
+#define MAYBE_CONST                                                          \
+	COND_CODE_1(CONFIG_PLATFORM_EC_CHARGER_RUNTIME_CONFIG, (__hot_data), \
+		    (__hot_data_const))
 
 /* Charger chips */
 MAYBE_CONST struct charger_config_t chg_chips[] = { DT_FOREACH_STATUS_OKAY(

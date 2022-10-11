@@ -83,7 +83,7 @@ struct gpio_callback int_cb_data[GPIO_INT_COUNT];
  * Create an array of gpio_int_config containing the read-only configuration
  * for this interrupt.
  */
-static const struct gpio_int_config gpio_int_data[] = {
+__hot_data_const static const struct gpio_int_config gpio_int_data[] = {
 
 	DT_FOREACH_CHILD(DT_IRQ_NODE, INT_CONFIG_FROM_NODE)
 };

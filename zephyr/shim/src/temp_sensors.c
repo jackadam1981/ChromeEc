@@ -232,7 +232,7 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 #define TEMP_SENSOR_ENTRY(named_id) \
 	TEMP_SENSOR_FIND(named_id, DT_PHANDLE(named_id, sensor))
 
-const struct temp_sensor_t temp_sensors[] = { DT_FOREACH_CHILD_SEP(
+__hot_data_const struct temp_sensor_t temp_sensors[] = { DT_FOREACH_CHILD_SEP(
 	TEMP_SENSORS_NODEID, TEMP_SENSOR_ENTRY, (, )) };
 
 int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)

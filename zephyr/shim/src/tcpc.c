@@ -66,8 +66,9 @@
 	COND_CODE_1(DT_NODE_HAS_PROP(usbc_id, tcpc), \
 		    (TCPC_CHIP_FIND(usbc_id, DT_PHANDLE(usbc_id, tcpc))), ())
 
-#define MAYBE_CONST \
-	COND_CODE_1(CONFIG_PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG, (), (const))
+#define MAYBE_CONST                                                \
+	COND_CODE_1(CONFIG_PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG, \
+		    (__hot_data), (__hot_data_const))
 
 /* Type C Port Controllers */
 MAYBE_CONST struct tcpc_config_t tcpc_config[] = { DT_FOREACH_STATUS_OKAY(

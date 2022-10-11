@@ -45,7 +45,7 @@
 						  -273)),		\
 	}
 
-struct ec_thermal_config thermal_params[] = {
+__hot_data struct ec_thermal_config thermal_params[] = {
 #if DT_HAS_COMPAT_STATUS_OKAY(TEMP_SENSORS_COMPAT)
 	DT_FOREACH_CHILD_SEP(TEMP_SENSORS_NODEID, THERMAL_CONFIG, (, ))
 #endif /* DT_HAS_COMPAT_STATUS_OKAY(TEMP_SENSORS_COMPAT) */

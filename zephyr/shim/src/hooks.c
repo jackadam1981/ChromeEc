@@ -34,8 +34,9 @@ FOR_EACH(HOOK_LIST_EXTERNS, (), HOOK_TYPES_LIST)
 		.start = _zephyr_shim_hook_##type##_list_start, \
 		.end = _zephyr_shim_hook_##type##_list_end,     \
 	}
-static const struct zephyr_shim_hook_list hook_registry[] = { FOR_EACH(
-	HOOK_LIST_ENTRY, (, ), HOOK_TYPES_LIST) };
+__hot_data_const static const struct zephyr_shim_hook_list hook_registry[] = {
+	FOR_EACH(HOOK_LIST_ENTRY, (, ), HOOK_TYPES_LIST)
+};
 BUILD_ASSERT(ARRAY_SIZE(hook_registry) == HOOK_TYPE_COUNT,
 	     "All defined hook types must be represented in hook_registry");
 BUILD_ASSERT(NUM_VA_ARGS_LESS_1(HOOK_TYPES_LIST) + 1 == HOOK_TYPE_COUNT,

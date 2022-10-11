@@ -85,8 +85,9 @@
  * @brief USB muxes in chain should be constant only if configuration
  *        cannot change in runtime
  */
-#define MAYBE_CONST \
-	COND_CODE_1(CONFIG_PLATFORM_EC_USB_MUX_RUNTIME_CONFIG, (), (const))
+#define MAYBE_CONST                                                          \
+	COND_CODE_1(CONFIG_PLATFORM_EC_USB_MUX_RUNTIME_CONFIG, (), \
+		    (const))
 
 /**
  * @brief Declaration of USB mux structure
