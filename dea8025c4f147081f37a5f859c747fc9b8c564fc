@@ -46,6 +46,30 @@
       },
       "revId": "dea8025c4f147081f37a5f859c747fc9b8c564fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2fcd18_fe18841c",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-11T04:32:23Z",
+      "side": 1,
+      "message": "the wording in in ectool makes more sense 😊\njust keep the wording brief on the EC side.",
+      "parentUuid": "aca6797f_f8637afa",
+      "range": {
+        "startLine": 150,
+        "startChar": 40,
+        "endLine": 150,
+        "endChar": 45
+      },
+      "revId": "dea8025c4f147081f37a5f859c747fc9b8c564fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
