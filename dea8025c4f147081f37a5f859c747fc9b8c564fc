@@ -70,6 +70,30 @@
       },
       "revId": "dea8025c4f147081f37a5f859c747fc9b8c564fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e2f01c_1c07aa1f",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-11T17:00:30Z",
+      "side": 1,
+      "message": "+1. Let\u0027s stick to the ectool\u0027s wording, which is true to the reality.",
+      "parentUuid": "bb2fcd18_fe18841c",
+      "range": {
+        "startLine": 150,
+        "startChar": 40,
+        "endLine": 150,
+        "endChar": 45
+      },
+      "revId": "dea8025c4f147081f37a5f859c747fc9b8c564fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
