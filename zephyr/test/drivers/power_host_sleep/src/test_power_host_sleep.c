@@ -14,6 +14,8 @@
 #include "test/drivers/test_mocks.h"
 #include "test/drivers/test_state.h"
 
+#define ARBITRARY_SLEEP_TRANSITIONS 1
+
 FAKE_VOID_FUNC(power_chipset_handle_host_sleep_event, enum host_sleep_event,
 	       struct host_sleep_event_context *);
 
@@ -24,6 +26,18 @@ static struct host_sleep_event_context test_saved_context;
 static void _test_power_chipset_handle_host_sleep_event(
 	enum host_sleep_event state, struct host_sleep_event_context *ctx)
 {
+	switch (state) {
+	case HOST_SLEEP_EVENT_S0IX_RESUME:
+	case HOST_SLEEP_EVENT_S3_RESUME:
+		ctx->sleep_transitions = ARBITRARY_SLEEP_TRANSITIONS;
+		break;
+
+	case HOST_SLEEP_EVENT_S3_SUSPEND:
+	case HOST_SLEEP_EVENT_S0IX_SUSPEND:
+	case HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND:
+		break;
+	}
+
 	memcpy(&test_saved_context, ctx,
 	       sizeof(struct host_sleep_event_context));
 }
@@ -95,6 +109,32 @@ ZTEST_USER(power_host_sleep, test_non_existent_sleep_event_v1__s3_suspend)
 	 */
 	zassert_equal(test_saved_context.sleep_timeout_ms,
 		      p.suspend_params.sleep_timeout_ms);
+}
+
+ZTEST_USER(power_host_sleep, test_non_existent_sleep_event_v1__s3_resume)
+{
+	struct ec_params_host_sleep_event_v1 p = {
+		.sleep_event = HOST_SLEEP_EVENT_S3_RESUME,
+	};
+	struct ec_response_host_sleep_event_v1 r;
+
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT, 1, r, p);
+
+	power_chipset_handle_host_sleep_event_fake.custom_fake =
+		_test_power_chipset_handle_host_sleep_event;
+
+	zassert_ok(host_command_process(&args));
+	zassert_equal(args.response_size, sizeof(r));
+	zassert_equal(power_chipset_handle_host_sleep_event_fake.call_count, 1);
+	zassert_equal(power_chipset_handle_host_sleep_event_fake.arg0_val,
+		      p.sleep_event);
+
+	/*
+	 * Verify sleep context propagated from chip-specific handler.
+	 */
+	zassert_equal(r.resume_response.sleep_transitions,
+		      ARBITRARY_SLEEP_TRANSITIONS);
 }
 
 ZTEST_SUITE(power_host_sleep, drivers_predicate_post_main, NULL,
