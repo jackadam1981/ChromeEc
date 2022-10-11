@@ -199,6 +199,30 @@
       },
       "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c24ee446_cc427ec8",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-11T03:57:43Z",
+      "side": 1,
+      "message": "As per my understanding, in custom fan there is limits for\n1. rpm (min: 2200, max: 7200)\n2. fan_duty (ap_off: 33%, ap_on: 100%)\n\nBut the temperature limits incase of custom fan differs based on fan level. The default/initial value it starts is (temp_fan_off \u003d\u003d temp_fan_off) \u003d 0 as they dont have defined static value as part of thermal params. Please do correct me if I\u0027m wrong in my understanding.\n\n**Reference**\n[fan_rpm](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/gimble/fans.c#39)\n[fan_duty](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/gimble/fans.c#62)\n[fan_table](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/gimble/thermal.c#40)",
+      "parentUuid": "be887915_a99d7af8",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
