@@ -2665,4 +2665,9 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_CPS8100
 #endif
 
+#undef CONFIG_RELOCATE_HOT_DATA
+#ifdef CONFIG_PLATFORM_EC_RELOCATE_HOT_DATA
+#define CONFIG_RELOCATE_HOT_DATA
+#endif
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */

@@ -786,4 +786,20 @@ config PLATFORM_EC_MATH_UTIL
 	  Math utilities including bitmask manipulation, division rounding,
 	  trigonometric function, etc.
 
+config PLATFORM_EC_RELOCATE_HOT_DATA
+	bool "Move frequently-accessed data to RAM"
+	help
+	  One some ECs, access to read-only is much slower than access to the
+	  same data in RAM. This option causes EC data annotated with the
+	  __hot_data attribute to be placed in the read-write data section
+	  (.data) instead of the read-only section (.rodata) to improve the
+	  performance of accesses to that data.
+
+	  Enabling this option may hurt overall performance (especially on ECs
+	  that have fast ROM) because it prevents some compiler optimizations:
+	  __hot_data forces the compiler to treat affected symbols as externally
+	  visible so it cannot perform optimizations that change the data layout
+	  (which are usually permitted when using link-time optimization to do
+	  whole-program optimization).
+
 endif # PLATFORM_EC

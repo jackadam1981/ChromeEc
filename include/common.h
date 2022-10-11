@@ -282,6 +282,31 @@
 #define __const_data
 #endif
 
+/*
+ * Annotate data as frequently-accessed
+ *
+ * Adding __hot_data to a variable declaration will place it in a memory region
+ * with good performance characteristics. This is useful for ECs where read-only
+ * data accesses (usually directly from ROM) are slower than read-write accesses
+ * (from RAM) because it forces the data to be placed into RAM, thus avoiding
+ * the performance penalty of reading from ROM.
+ *
+ * __hot_data static const uint32_t MAGIC_CONSTANTS[] = {42, 42, 42, 42};
+ *
+ * Variables that are const must use __hot_data_const instead, otherwise mixing
+ * const and non-const values in a single section will cause section type
+ * conflicts at link-time.
+ */
+#ifdef CONFIG_RELOCATE_HOT_DATA
+/* The symbol needs to be marked used so LTO won't move this data around, for
+ * instance by noticing it's never written and moving it to .rodata */
+#define __hot_data __attribute__((used, section(".data.ec.hot.rw")))
+#define __hot_data_const __attribute__((used, section(".data.ec.hot.ro"))) const
+#else
+#define __hot_data
+#define __hot_data_const const
+#endif
+
 /* Canonical list of module IDs */
 #include "module_id.h"
 
