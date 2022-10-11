@@ -22,6 +22,30 @@
       },
       "revId": "22911d5fbe9a85445f574e86ef4c24405bbd2a40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41936d8_599ccca1",
+        "filename": "util/ectool.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-11T04:05:26Z",
+      "side": 1,
+      "message": "```\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\nDDR and SOC           305 K (\u003d 32 C)        N/A (fan_off\u003d0 K, fan_max\u003d0 K)\nFan                   300 K (\u003d 27 C)        N/A (fan_off\u003d0 K, fan_max\u003d0 K)\nCharger               305 K (\u003d 32 C)        N/A (fan_off\u003d0 K, fan_max\u003d0 K)\n\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\nDDR and SOC           305 K (\u003d 32 C)        N/A (fan_off\u003d308 K, fan_max\u003d308 K)\nFan                   300 K (\u003d 27 C)        N/A (fan_off\u003d308 K, fan_max\u003d308 K)\nCharger               305 K (\u003d 32 C)        N/A (fan_off\u003d308 K, fan_max\u003d308 K)\n\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\nDDR and SOC           305 K (\u003d 32 C)           0% (308 K and 333 K)\nFan                   300 K (\u003d 27 C)           0% (308 K and 333 K)\nCharger               305 K (\u003d 32 C)           0% (308 K and 333 K)\n```\nAdded space between %d and K. When fan_off and/or fan_max is zero, it looks as \u0027OK\u0027 even though it\u0027s \u00270k\u0027. Just to avoid the misinterpretation here.",
+      "parentUuid": "006a5cbd_09f92339",
+      "range": {
+        "startLine": 3319,
+        "startChar": 33,
+        "endLine": 3319,
+        "endChar": 34
+      },
+      "revId": "22911d5fbe9a85445f574e86ef4c24405bbd2a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
