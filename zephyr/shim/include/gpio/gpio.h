@@ -48,6 +48,11 @@ struct unused_pin_config {
  */
 int gpio_config_unused_pins(void) __attribute__((weak));
 
+/**
+ * @brief Set configuration by port and pin of gpio
+ */
+int gpio_configure_port_pin(int port, int id, int flags) __attribute__((weak));
+
 #if DT_NODE_EXISTS(DT_PATH(unused_pins))
 /**
  * @brief Get a node from path '/unused-pins' which has a prop 'unused-gpios'.
@@ -107,4 +112,5 @@ int gpio_config_unused_pins(void) __attribute__((weak));
 #else
 #define UNUSED_GPIO_CONFIG_LIST /* Nothing if no 'unused-pins' node */
 #endif /* unused_pins */
+
 #endif /* ZEPHYR_SHIM_INCLUDE_GPIO_GPIO_H_ */
