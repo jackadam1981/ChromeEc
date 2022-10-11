@@ -53,6 +53,10 @@
  * BOARD_*, CHIP_*, and CHIP_FAMILY_*.
  */
 
+#if defined(BOARD_HOST) && !defined(TEST_FUZZ) && !defined(TEST_BUILD)
+#error "config.h should not be included in host builds"
+#endif
+
 /* Add support for sensor FIFO */
 #undef CONFIG_ACCEL_FIFO
 
