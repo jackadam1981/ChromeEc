@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3432a55_17726130",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T20:10:04Z",
+      "side": 1,
+      "message": "There is also docs/zephyr/zephyr_testing.md.  You should move this content into zephyr_testing.md and just delete this file as the content is obsolete.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359109f2_4dfcd122",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T20:10:04Z",
+      "side": 1,
+      "message": "It would be helpful to have two sub-sections here, centered on how to start under these scenarios:\n* You created a new file, or modified a file that does not currently have tests.\n* You modified a file that has tests, but now has uncovered lines.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c4f2582_11b0b8fc",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T20:10:04Z",
+      "side": 1,
+      "message": "Do think it\u0027s worth creating an integration test template such as zephyr/test/minimal?\n\nThis would have the minimal configs enabled to create an EC.  Then this section can provide details about to modify the minimum configuration.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca01c5f_304820aa",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T20:10:04Z",
+      "side": 1,
+      "message": "log",
+      "range": {
+        "startLine": 94,
+        "startChar": 56,
+        "endLine": 94,
+        "endChar": 60
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892391e3_1c6fd63c",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T20:10:04Z",
+      "side": 1,
+      "message": "This section needs some specific examples to illustrate when zassume() should be used.  We probably should define some best practices around zassume() - such as commenting/documenting the actual test case that verifies the behavior checked by zassume().",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c7ea68_cf4e8770",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T20:10:04Z",
+      "side": 1,
+      "message": "Can you provide an example of running with GDB in this section? Since that is available in the chroot, we might as well provide a concrete example.",
+      "range": {
+        "startLine": 111,
+        "startChar": 69,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8077b8a2_a3247940",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T20:10:04Z",
+      "side": 1,
+      "message": "This doc could also use a reference to the Zephyr ztest code coverage. code_coverage.md#Zephyr_ztest_code_coverage",
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
