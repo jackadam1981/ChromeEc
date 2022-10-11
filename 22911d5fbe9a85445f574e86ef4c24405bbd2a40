@@ -46,6 +46,30 @@
       },
       "revId": "22911d5fbe9a85445f574e86ef4c24405bbd2a40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd264caa_2dc9fd58",
+        "filename": "util/ectool.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-11T16:57:45Z",
+      "side": 1,
+      "message": "\u003e it looks as \u0027OK\u0027 even though it\u0027s \u00270k\u0027. \n\nThat\u0027s a good catch. \n\nnit: I think \u0027fan_off\u003d\u0027 is redundant. It can be just %d K. (I know you followed my previous comment literally.)",
+      "parentUuid": "b41936d8_599ccca1",
+      "range": {
+        "startLine": 3319,
+        "startChar": 33,
+        "endLine": 3319,
+        "endChar": 34
+      },
+      "revId": "22911d5fbe9a85445f574e86ef4c24405bbd2a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

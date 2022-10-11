@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b391dce0_10eb5634",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-11T16:57:45Z",
+      "side": 1,
+      "message": "lgtm. just a few nits.",
+      "revId": "513415e45ad58e919d3f0f511b00b2f6563e201b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "027f5322_2f37343b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 3301,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-11T16:57:45Z",
+      "side": 1,
+      "message": "nit: This repo uses lower cases for variables (and upper cases for macros). Also, this doesn\u0027t seem very necessary especially because it\u0027s used only once. You can simply write \"%20s(rc\u003d%d)\", \"error\" at line 3326.",
+      "range": {
+        "startLine": 3301,
+        "startChar": 12,
+        "endLine": 3301,
+        "endChar": 19
+      },
+      "revId": "513415e45ad58e919d3f0f511b00b2f6563e201b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c242b3_d9737689",
+        "filename": "util/ectool.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 3317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-11T16:57:45Z",
+      "side": 1,
+      "message": "nit: A multi-line comment needs to be:\n\n    /*\n     * (comment)\n     */",
+      "range": {
+        "startLine": 3316,
+        "startChar": 0,
+        "endLine": 3317,
+        "endChar": 42
+      },
+      "revId": "513415e45ad58e919d3f0f511b00b2f6563e201b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
