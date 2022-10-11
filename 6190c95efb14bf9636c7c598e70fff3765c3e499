@@ -209,6 +209,30 @@
       },
       "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8b1179_336c9d36",
+        "filename": "board/redrix/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-11T03:50:10Z",
+      "side": 1,
+      "message": "Yes. Since there wasn\u0027t any defined values for redrix, I thought I would use from brya.",
+      "parentUuid": "f1976940_956adcb7",
+      "range": {
+        "startLine": 321,
+        "startChar": 25,
+        "endLine": 321,
+        "endChar": 27
+      },
+      "revId": "6190c95efb14bf9636c7c598e70fff3765c3e499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
