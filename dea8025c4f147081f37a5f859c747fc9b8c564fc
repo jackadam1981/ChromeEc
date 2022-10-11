@@ -94,6 +94,30 @@
       },
       "revId": "dea8025c4f147081f37a5f859c747fc9b8c564fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ad76a8_129fc7a9",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-11T17:32:22Z",
+      "side": 1,
+      "message": "Maybe \u0027temp ratio\u0027 instead of \u0027fan speed\u0027:\n\n    \"Print temp sensors and temp ratio\"",
+      "parentUuid": "95e2f01c_1c07aa1f",
+      "range": {
+        "startLine": 150,
+        "startChar": 40,
+        "endLine": 150,
+        "endChar": 45
+      },
+      "revId": "dea8025c4f147081f37a5f859c747fc9b8c564fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
