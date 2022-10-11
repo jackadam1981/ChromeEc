@@ -223,6 +223,30 @@
       },
       "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b48319a_af0365ff",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-11T17:22:20Z",
+      "side": 1,
+      "message": "Looking at fan_table[] in gimble/thermal.c, I presume\n\n    temp_fan_off \u003d C_TO_K(43),\n    temp_fan_max \u003d C_TO_K(52).\n\n(as written in the new ectool\u0027s help,) these numbers don\u0027t represent or yield fan speed at all since gimble uses a custom fan control, which isn\u0027t linear.\n\n--- \u003e8 ---\n\nIrrespective to this CL, now I think we can even further improve ectool\u0027s temps command so that it goes over 100%. For example, if the temp is 55C, we can print 120% as a ratio.",
+      "parentUuid": "c24ee446_cc427ec8",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "10e091c6a5dc8f32a6e20b2c672dafad943a123e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
