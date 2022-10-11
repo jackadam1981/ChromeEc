@@ -107,4 +107,6 @@ int gpio_config_unused_pins(void) __attribute__((weak));
 #else
 #define UNUSED_GPIO_CONFIG_LIST /* Nothing if no 'unused-pins' node */
 #endif /* unused_pins */
+
+const struct device *gpio_get_gpio_dev(int port) __attribute__((weak));
 #endif /* ZEPHYR_SHIM_INCLUDE_GPIO_GPIO_H_ */

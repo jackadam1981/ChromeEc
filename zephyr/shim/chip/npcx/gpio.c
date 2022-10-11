@@ -194,4 +194,9 @@ SHELL_CMD_ARG_REGISTER(gpiodbg, &sub_gpiodbg,
 		       "Commands for power consumption "
 		       "investigation",
 		       NULL, 2, 0);
+
+const struct device *gpio_get_gpio_dev(int port)
+{
+	return npcx_get_gpio_dev(port);
+}
 #endif /* CONFIG_PLATFORM_EC_CONSOLE_CMD_GPIODBG */
