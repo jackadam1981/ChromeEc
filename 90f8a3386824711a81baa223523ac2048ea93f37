@@ -16,6 +16,24 @@
       "message": "For each of the new commands, please add unit tests.\n\nIdeally, the tests should run both on the \"host\" and the FPMCU. As an example, see these tests:\n\n* [Tests that run on device](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/hatch_fp/build.mk;l\u003d28-58;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46)\n* [Other fingerprint-related tests](https://source.chromium.org/search?q\u003dfpsensor.*.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2Ftest%2F)",
       "revId": "90f8a3386824711a81baa223523ac2048ea93f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61fbaf7_713b2d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-10-11T06:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a5dd23_3197fdb7",
+      "revId": "90f8a3386824711a81baa223523ac2048ea93f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
