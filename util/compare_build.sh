@@ -193,7 +193,7 @@ MAKE_FLAGS=( )
 if (( FLAGS_jobs > 0 )); then
   MAKE_FLAGS+=( "-j" "${FLAGS_jobs}" )
 else
-  MAKE_FLAGS+=( "-j" )
+  MAKE_FLAGS+=( "-j$(nproc)" )
 fi
 
 declare -A BOARDS=( )
