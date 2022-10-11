@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df03d5b_cb99ec04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-11T15:53:45Z",
+      "side": 1,
+      "message": "Add `LOW_COVERAGE_REASON\u003dno unit test for skyrim board yet: b/247151116` and we can re-run the submission",
+      "revId": "0e2b7f5d68799c7f6ee744bb4be7e807dfb71a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4298e61b_13d6f243",
