@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a17a5e_44872950",
+        "filename": "include/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T23:35:37Z",
+      "side": 1,
+      "message": "Ok, that makes sense.  I was thinking about this feature in terms of the G3 domain.  For example if the G3 domain is \"on\", then stop temperature readings, and when G3 domain is \"off\" (because we\u0027re in S5 or above), resume temp readings.",
+      "parentUuid": "d44fda2c_fd97f26a",
+      "range": {
+        "startLine": 93,
+        "startChar": 31,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e08aa2c_70a65e3c",
@@ -138,6 +162,30 @@
       "side": 1,
       "message": "I don\u0027t think it is a good idea. To use the callbacks to sensors we need to create the `device` and `pm` structures with `PM_DEVICE_DT_DEFINE` and `DEVICE_DT_DEFINE` macros. Then we need to connect the created device with the entry in the `temp_sensors` array. It kind of looks like overkill. The callback mechanism should be good once we upstream the temperature sensors to Zephyr.\n\nRegarding flash uses, it is 1328B vs 656B the previous implementation.\n\nSome Zephyr sensor drivers use the `pm_device_state_get` anyway, e.g. https://github.com/zephyrproject-rtos/zephyr/blob/main/drivers/sensor/bme280/bme280.c#L182",
       "parentUuid": "5e0d4d91_969b5602",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7715813_b374f7b6",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T23:35:37Z",
+      "side": 1,
+      "message": "Patchset #6 better follows the upstream convention and `pm_device_state_get()` is only used by upstream drivers to fetch their own state.  However, I\u0027m okay with deferring the PM callbacks until we upstream the temperature sensor drivers.\n\nI do think you should create a separate file for the s5_domain driver.  That driver should comment that the PM callback support should be added once the temperature sensor drivers are upstream.",
+      "parentUuid": "30ec8ae8_4c57c21a",
       "range": {
         "startLine": 332,
         "startChar": 0,

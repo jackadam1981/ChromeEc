@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b136b7_04e65699",
+        "filename": "power/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-11T23:35:37Z",
+      "side": 1,
+      "message": "Update this comment to indicate what\u0027s happening with the S5_DOMAIN.  Because all the checks are against the POWER_G3 state, it looks odd to be changing the S5_DOMAIN.\n\nSomething like: If the old state is G3, then the new state is S5 or above so activate the S5_DOMAIN.  When the new state is G3, we\u0027ve exited S5 so deactivate the S5_DOMAIN.",
+      "range": {
+        "startLine": 722,
+        "startChar": 5,
+        "endLine": 722,
+        "endChar": 25
+      },
+      "revId": "87ae06cfb37ca9c655eea4e41a35e5ab925b0a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
