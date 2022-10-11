@@ -20,4 +20,9 @@ enum nissa_sub_board_type {
 
 enum nissa_sub_board_type nissa_get_sb_type(void);
 
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+#endif
+
 #endif /* __CROS_EC_NISSA_NISSA_COMMON_H__ */
