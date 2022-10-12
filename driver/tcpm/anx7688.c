@@ -198,7 +198,7 @@ static bool anx7688_tcpm_check_vbus_level(int port, enum vbus_level level)
 #endif
 
 /* ANX7688 is a TCPCI compatible port controller */
-const struct tcpm_drv anx7688_tcpm_drv = {
+__hot_data_const struct tcpm_drv anx7688_tcpm_drv = {
 	.init = &anx7688_init,
 	.release = &anx7688_release,
 	.get_cc = &tcpci_tcpm_get_cc,

@@ -1166,7 +1166,7 @@ static int anx74xx_tcpm_release(int port)
 	return EC_SUCCESS;
 }
 
-const struct tcpm_drv anx74xx_tcpm_drv = {
+__hot_data_const struct tcpm_drv anx74xx_tcpm_drv = {
 	.init = &anx74xx_tcpm_init,
 	.release = &anx74xx_tcpm_release,
 	.get_cc = &anx74xx_tcpm_get_cc,

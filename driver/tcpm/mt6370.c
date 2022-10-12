@@ -184,7 +184,7 @@ int mt6370_vconn_discharge(int port)
 }
 
 /* MT6370 is a TCPCI compatible port controller */
-const struct tcpm_drv mt6370_tcpm_drv = {
+__hot_data_const struct tcpm_drv mt6370_tcpm_drv = {
 	.init = &mt6370_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &mt6370_get_cc,

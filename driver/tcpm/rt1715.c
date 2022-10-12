@@ -223,7 +223,7 @@ static void rt1715_alert(int port)
 	tcpci_tcpc_alert(port);
 }
 
-const struct tcpm_drv rt1715_tcpm_drv = {
+__hot_data_const struct tcpm_drv rt1715_tcpm_drv = {
 	.init = &rt1715_tcpci_tcpm_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &rt1715_get_cc,

@@ -1838,7 +1838,7 @@ void tcpc_dump_std_registers(int port)
 }
 #endif
 
-const struct tcpm_drv tcpci_tcpm_drv = {
+__hot_data_const struct tcpm_drv tcpci_tcpm_drv = {
 	.init = &tcpci_tcpm_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &tcpci_tcpm_get_cc,

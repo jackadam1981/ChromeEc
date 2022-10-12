@@ -981,7 +981,7 @@ static void it8xxx2_tcpm_hook_disconnect(void)
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, it8xxx2_tcpm_hook_disconnect,
 	     HOOK_PRIO_DEFAULT);
 
-const struct tcpm_drv it8xxx2_tcpm_drv = {
+__hot_data_const struct tcpm_drv it8xxx2_tcpm_drv = {
 	.init = &it8xxx2_tcpm_init,
 	.release = &it8xxx2_tcpm_release,
 	.get_cc = &it8xxx2_tcpm_get_cc,

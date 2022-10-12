@@ -161,7 +161,7 @@ bool stm32gx_tcpm_check_vbus_level(int port, enum vbus_level level)
 	return 0;
 }
 
-const struct tcpm_drv stm32gx_tcpm_drv = {
+__hot_data_const struct tcpm_drv stm32gx_tcpm_drv = {
 	.init = &stm32gx_tcpm_init,
 	.release = &stm32gx_tcpm_release,
 	.get_cc = &stm32gx_tcpm_get_cc,

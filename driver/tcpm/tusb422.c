@@ -153,7 +153,7 @@ static void tusb422_tcpci_tcpc_alert(int port)
 	tcpci_tcpc_alert(port);
 }
 
-const struct tcpm_drv tusb422_tcpm_drv = {
+__hot_data_const struct tcpm_drv tusb422_tcpm_drv = {
 	.init = &tusb422_tcpci_tcpm_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &tcpci_tcpm_get_cc,

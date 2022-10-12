@@ -1028,7 +1028,7 @@ enum ec_error_list anx7447_get_bist_test_mode(const int port, bool *enable)
  * driver more closely follows the spec, this driver requires
  * overrides for set_cc and set_polarity.
  */
-const struct tcpm_drv anx7447_tcpm_drv = {
+__hot_data_const struct tcpm_drv anx7447_tcpm_drv = {
 	.init = &anx7447_init,
 	.release = &anx7447_release,
 	.get_cc = &tcpci_tcpm_get_cc,

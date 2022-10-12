@@ -80,7 +80,7 @@ int fusb307_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return rv;
 }
 
-const struct tcpm_drv fusb307_tcpm_drv = {
+__hot_data_const struct tcpm_drv fusb307_tcpm_drv = {
 	.init = &fusb307_tcpm_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &tcpci_tcpm_get_cc,

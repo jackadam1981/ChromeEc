@@ -351,7 +351,7 @@ __maybe_unused static int nct38xx_set_frs_enable(int port, int enable)
 			    enable ? MASK_SET : MASK_CLR);
 }
 
-const struct tcpm_drv nct38xx_tcpm_drv = {
+__hot_data_const struct tcpm_drv nct38xx_tcpm_drv = {
 	.init = &nct38xx_tcpm_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &tcpci_tcpm_get_cc,

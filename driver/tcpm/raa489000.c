@@ -337,7 +337,7 @@ int raa489000_debug_detach(int port)
 }
 
 /* RAA489000 is a TCPCI compatible port controller */
-const struct tcpm_drv raa489000_tcpm_drv = {
+__hot_data_const struct tcpm_drv raa489000_tcpm_drv = {
 	.init = &raa489000_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &tcpci_tcpm_get_cc,

@@ -1032,7 +1032,7 @@ static int ps8xxx_tcpm_set_vconn(int port, int enable)
 	return tcpci_tcpm_set_vconn(port, enable);
 }
 
-const struct tcpm_drv ps8xxx_tcpm_drv = {
+__hot_data_const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init = ps8xxx_tcpm_init,
 	.release = ps8xxx_tcpm_release,
 	.get_cc = ps8xxx_tcpm_get_cc,

@@ -81,7 +81,7 @@ int ccgxxf_reset(int port)
 	return tcpc_write16(port, CCGXXF_REG_FWU_COMMAND, CCGXXF_FWU_CMD_RESET);
 }
 
-const struct tcpm_drv ccgxxf_tcpm_drv = {
+__hot_data_const struct tcpm_drv ccgxxf_tcpm_drv = {
 	.init = &ccgxxf_tcpci_tcpm_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &ccgxxf_tcpci_tcpm_get_cc,

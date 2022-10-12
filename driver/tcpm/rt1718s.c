@@ -773,7 +773,7 @@ static int rt1718s_set_sbu(int port, bool enable)
 #endif
 
 /* RT1718S is a TCPCI compatible port controller */
-const struct tcpm_drv rt1718s_tcpm_drv = {
+__hot_data_const struct tcpm_drv rt1718s_tcpm_drv = {
 	.init = &rt1718s_init,
 	.release = &tcpci_tcpm_release,
 	.get_cc = &tcpci_tcpm_get_cc,

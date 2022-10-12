@@ -1173,7 +1173,7 @@ int tcpc_get_vbus_voltage(int port)
 	return (mdac + 1) * 420;
 }
 
-const struct tcpm_drv fusb302_tcpm_drv = {
+__hot_data_const struct tcpm_drv fusb302_tcpm_drv = {
 	.init = &fusb302_tcpm_init,
 	.release = &fusb302_tcpm_release,
 	.get_cc = &fusb302_tcpm_get_cc,
