@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff049ed_55fb6c95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-12T21:05:58Z",
+      "side": 1,
+      "message": "I think zassume is still a mistake in this code. These aren\u0027t preconditions that can\u0027t be set outside the test. assume is for things like \"I only run on linux\".  Not, \"The caller forgot to set things up correctly before calling this util function\"",
+      "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
