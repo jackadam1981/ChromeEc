@@ -194,6 +194,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4ecd43_a180e5a2",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-10-12T13:54:07Z",
+      "side": 1,
+      "message": "Agree, checking the state of the power domain by devices isn\u0027t the way how it should work. \n\nI took one more high-level look at the power domain feature and I\u0027m not sure if we should use it here. Changing a PM state of power domain means that we physically power on/off devices. That\u0027s why we should use `PM_DEVICE_ACTION_TURN_ON/PM_DEVICE_ACTION_TURN_OFF` PM actions, as you mentioned above. The domain PM callback action looks like:\n```\nswitch (action):\n    case PM_DEVICE_ACTION_RESUME:\n        /* Physically power-on power, e.g. set GPIO*/ \n\n        /* Notify devices they are now powered */\n        pm_device_children_action_run(dev,  PM_DEVICE_ACTION_TURN_ON, NULL);\n    case PM_DEVICE_ACTION_SUSPEND:\n       /* Notify devices power is going down */\n        pm_device_children_action_run(dev, PM_DEVICE_ACTION_TURN_OFF, NULL);\n\n        /* Physically power-on power, e.g. clear GPIO*/ \n\n...\n```\n\nThe first problem is that the temperature sensors are still powered when the chip enters G3 state. I think it would be better to change their PM states to `PM_DEVICE_STATE_SUSPENDED`.\n\nThe second issue is that EC doesn\u0027t control the actual state of the domain, we just know its state. `pm_device_children_action_run(dev, PM_DEVICE_ACTION_TURN_OFF, NULL);` should be called before power is down to prepare devices. \n\nHowever, I don\u0027t have a good alternate proposal how to handle the issue with I2C errors in G3.",
+      "parentUuid": "d7715813_b374f7b6",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
