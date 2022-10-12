@@ -30,6 +30,8 @@ void tcpci_partner_common_hard_reset_as_role(struct tcpci_partner_data *data,
 	data->power_role = power_role;
 	data->data_role = power_role == PD_ROLE_SOURCE ? PD_ROLE_DFP :
 							 PD_ROLE_UFP;
+	data->vconn_role = power_role == PD_ROLE_SOURCE ? PD_ROLE_VCONN_SRC :
+							  PD_ROLE_VCONN_OFF;
 	data->displayport_configured = false;
 	data->entered_svid = 0;
 	atomic_clear(&data->mode_enter_attempts);
