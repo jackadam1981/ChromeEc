@@ -34,6 +34,24 @@
       "parentUuid": "55a0857f_a8ca3527",
       "revId": "f0166e5f4bc99b39cf63dd020fdb775787f4cc3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84620a0a_544e8fb4",
+        "filename": "power/qcom.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-12T14:40:06Z",
+      "side": 1,
+      "message": "So to keep the weak symbols from conflicting, I decided to go the route of just *not* making the test chip-specific at all! So CONFIGed qcom.c out and the necessary fakes to at least get the test to link.\n\nFaking will be much easier once unit testing is fully supported downstream. Added a TODO for reorganizing the fakes once coverage is met.",
+      "parentUuid": "fc38771a_16c0d206",
+      "revId": "f0166e5f4bc99b39cf63dd020fdb775787f4cc3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
