@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebbe57a1_7a0145b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-12T17:37:56Z",
+      "side": 1,
+      "message": "Thanks for fixing these. \n\nI believe we should make \u0027make BOARD\u003dx\u0027 fail if there is an unaligned nested struct. Can we do that?",
+      "revId": "c11fb88c167d8fb99be719e4717e548972a6e458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
