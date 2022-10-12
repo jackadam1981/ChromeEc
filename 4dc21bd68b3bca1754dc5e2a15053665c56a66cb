@@ -69,6 +69,24 @@
       "parentUuid": "f23203cf_762bbdfc",
       "revId": "4dc21bd68b3bca1754dc5e2a15053665c56a66cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d07ae63_e56a0e2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-12T19:27:14Z",
+      "side": 1,
+      "message": "I believe there is almost certainly a way to do this without using the username. I have a similar path mappings script for gdb in my editor that is \n\n```\nset substitute-path /mnt/host/source  /usr/local/google/home/aaronmassey/chromiumos\n```\n\nWe can always use `$USER` too.",
+      "parentUuid": "e5083b56_a9510c4e",
+      "revId": "4dc21bd68b3bca1754dc5e2a15053665c56a66cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
