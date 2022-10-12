@@ -181,12 +181,24 @@ int cut_off_battery_sb_write(const struct ship_mode_info *ship_mode)
 {
 	int rv;
 
+	CPRINTS("cut_off: send reg: 0x%02x data: 0x%04x",ship_mode->reg_addr, ship_mode->reg_data[0]);
+
 	/* Ship mode command requires writing 2 data values */
 	rv = sb_write(ship_mode->reg_addr, ship_mode->reg_data[0]);
-	if (rv)
+	if (rv) {
+		CPRINTS("cut_off: fail! (%d)", rv);
 		return rv;
+	}
 
-	return sb_write(ship_mode->reg_addr, ship_mode->reg_data[1]);
+	CPRINTS("cut_off: send reg: 0x%02x data: 0x%04x",ship_mode->reg_addr, ship_mode->reg_data[1]);
+	rv = sb_write(ship_mode->reg_addr, ship_mode->reg_data[1]);
+	if (rv) {
+		CPRINTS("cut_off: fail! (%d)", rv);
+		return rv;
+	}
+	CPRINTS("cut_off: done");
+
+	return EC_SUCCESS;
 }
 
 int board_cut_off_battery(void)

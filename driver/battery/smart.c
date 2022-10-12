@@ -74,6 +74,7 @@ test_mockable int sb_write(int cmd, int param)
 #endif
 	if (battery_supports_pec())
 		addr_flags |= I2C_FLAG_PEC;
+	cprints(CC_CHARGER,"sb_write: 0x%02x 0x%04x", cmd, param);
 
 	return i2c_write16(I2C_PORT_BATTERY, addr_flags, cmd, param);
 }

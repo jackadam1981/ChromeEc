@@ -8,6 +8,9 @@
 		default_battery: pc_vp_bp153 {
 			compatible = "smp,pc-vp-bp153", "battery-smart";
 		};
+		pc-vp-bp144 {
+			compatible = "smp,pc-vp-bp144", "battery-smart";
+		};
 		ap16l5j {
 			compatible = "panasonic,ap16l5j", "battery-smart";
 		};
