@@ -43,6 +43,12 @@ struct ps8xxx_emul_data {
 	uint8_t gpio_ctrl;
 	/** HW revision used by PS8815 */
 	uint16_t hw_rev;
+	/**
+	 * Register ID to distinguish between the PS8815-A2 and PS8745-A2
+	 * 0: Indicates this is an 8815-A2 chip
+	 * 1: Indicates this is an 8745-A2 chip
+	 */
+	uint8_t reg_id;
 };
 
 /** Constant configuration of the emulator */
@@ -60,6 +66,15 @@ void ps8xxx_emul_set_chip_rev(const struct emul *emul, uint8_t chip_rev)
 	struct ps8xxx_emul_data *data = tcpc_data->chip_data;
 
 	data->chip_rev = chip_rev;
+}
+
+/** Check description in emul_ps8xxx.h */
+void ps8xxx_emul_set_reg_id(const struct emul *emul, enum ps8xxx_regid reg_id)
+{
+	struct tcpc_emul_data *tcpc_data = emul->data;
+	struct ps8xxx_emul_data *data = tcpc_data->chip_data;
+
+	data->reg_id = reg_id;
 }
 
 /** Check description in emul_ps8xxx.h */
@@ -345,6 +360,17 @@ static int ps8xxx_emul_read_byte_workhorse(const struct emul *emul, int reg,
 	if (data->prod_id != PS8815_PRODUCT_ID && i2c_dbg_reg & 0x1) {
 		LOG_ERR("Accessing hidden i2c address without enabling debug");
 		return -EIO;
+	}
+
+	if (data->prod_id == PS8815_PRODUCT_ID && port == PS8XXX_EMUL_PORT_0 &&
+	    reg == PS8815_P0_REG_ID) {
+		if (bytes > 1) {
+			LOG_ERR("Reading more than one byte from REG_ID reg");
+			return -EIO;
+		}
+
+		*val = data->reg_id;
+		return 0;
 	}
 
 	/* This is only 2 bytes register so handle it separately */
