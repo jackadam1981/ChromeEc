@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92b03b3e_d4668e56",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-12T00:06:45Z",
+      "side": 1,
+      "message": "Out of curiosity, would it be more useful to capture the value of `rc` instead of the the current task ID?\n\nNot sure if in practice we can add meaningful information in `rc`, though.",
+      "range": {
+        "startLine": 28,
+        "startChar": 31,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "8f5f9e12838780b09db06d6037062958ff0ea3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
