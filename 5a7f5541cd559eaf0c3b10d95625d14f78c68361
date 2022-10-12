@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06aea8b1_ea01578f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-12T21:22:12Z",
+      "side": 1,
+      "message": "went through the final version, a few more comments.",
+      "revId": "5a7f5541cd559eaf0c3b10d95625d14f78c68361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb28c834_bc3373b9",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-12T21:22:12Z",
+      "side": 1,
+      "message": "no need in this part of the comment.",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 39
+      },
+      "revId": "5a7f5541cd559eaf0c3b10d95625d14f78c68361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c04c28_1b826af3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-12T21:22:12Z",
+      "side": 1,
+      "message": "come to think of it - there is no need to read more than up to and including flags.\n\nCould be left for a follow up patch.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 18
+      },
+      "revId": "5a7f5541cd559eaf0c3b10d95625d14f78c68361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b560bc0_b4f79d39",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-12T21:22:12Z",
+      "side": 1,
+      "message": "it would be better if these lines were immediatedly after line 183",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 29
+      },
+      "revId": "5a7f5541cd559eaf0c3b10d95625d14f78c68361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beea6922_96e6675c",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-12T21:22:12Z",
+      "side": 1,
+      "message": "is this check needed here?\n\nThis function is invoked in  a loop in  init_gbbd() which in turn is invoked in  do_ap_ro_check(), which invokes ap_ro_check_unsupported(), which in turn invokes verify_ap_ro_check_space()",
+      "range": {
+        "startLine": 576,
+        "startChar": 5,
+        "endLine": 576,
+        "endChar": 29
+      },
+      "revId": "5a7f5541cd559eaf0c3b10d95625d14f78c68361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c266e8e0_3953b039",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-12T21:22:12Z",
+      "side": 1,
+      "message": "shoul\u0027t be considered here",
+      "range": {
+        "startLine": 712,
+        "startChar": 2,
+        "endLine": 717,
+        "endChar": 21
+      },
+      "revId": "5a7f5541cd559eaf0c3b10d95625d14f78c68361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
