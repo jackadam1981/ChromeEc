@@ -14,7 +14,9 @@
 #include "ioexpander.h"
 #include "power.h"
 #include "power/amd_x86.h"
+#include "throttle_ap.h"
 #include "timer.h"
+#include "driver/charger/isl9241_public.h"
 
 /* Power Signal Input List */
 /* TODO: b/218904113: Convert to using Zephyr GPIOs */
@@ -42,6 +44,13 @@ const struct power_signal_info power_signal_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
+static void handle_prochot(bool asserted);
+
+const struct prochot_cfg prochot_cfg = {
+	.gpio_prochot_in = GPIO_CPU_PROCHOT,
+	.callback = handle_prochot,
+};
+
 /* Chipset hooks */
 static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
 				     struct ap_power_ev_data data)
@@ -67,6 +76,23 @@ static void baseboard_suspend_change(struct ap_power_ev_callback *cb,
 	}
 }
 
+static void check_charger_prochot(void)
+{
+#ifdef CONFIG_CHARGER_ISL9241_PROCHOT_DUMP
+	isl9241_dump_prochot_status(CHARGER_SOLO);
+#endif
+}
+DECLARE_DEFERRED(check_charger_prochot);
+
+static void handle_prochot(bool asserted)
+{
+	if (asserted) {
+		ccprints("Charger prochot asserted externally");
+		hook_call_deferred(&check_charger_prochot_data, 0);
+	} else
+		ccprints("Charger prochot deasserted externally");
+}
+
 static void baseboard_init(void)
 {
 	static struct ap_power_ev_callback cb;
@@ -82,6 +108,8 @@ static void baseboard_init(void)
 
 	/* Enable thermtrip interrupt */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_soc_thermtrip));
+
+	throttle_ap_config_prochot(&prochot_cfg);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_POST_I2C);
 
