@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe9734b_3e863e46",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-12T20:40:57Z",
+      "side": 1,
+      "message": "This looks fishy. Should they all be the same value?",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 36
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca7e60a_5273dac0",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-12T20:40:57Z",
+      "side": 1,
+      "message": "Is this the correct behavior? In the case where `SI114X_NUM_LEDS` is `0`, should this function be a noop? (just return at the beginning?)",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 8
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279215e9_6adbc0f7",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-12T20:40:57Z",
+      "side": 1,
+      "message": "Is this the correct behavior?",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 8
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
