@@ -768,7 +768,7 @@ static int tcs3400_init(struct motion_sensor_t *s)
 	return sensor_init_done(s);
 }
 
-const struct accelgyro_drv tcs3400_drv = {
+__hot_data_const struct accelgyro_drv tcs3400_drv = {
 	.init = tcs3400_init,
 	.read = tcs3400_read,
 	.set_range = tcs3400_set_range,
@@ -784,7 +784,7 @@ const struct accelgyro_drv tcs3400_drv = {
 #endif
 };
 
-const struct accelgyro_drv tcs3400_rgb_drv = {
+__hot_data_const struct accelgyro_drv tcs3400_rgb_drv = {
 	.init = tcs3400_rgb_init,
 	.read = tcs3400_rgb_read,
 	.set_range = tcs3400_rgb_set_range,

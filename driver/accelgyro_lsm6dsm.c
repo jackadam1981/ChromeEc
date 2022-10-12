@@ -737,7 +737,7 @@ static int get_rms_noise(const struct motion_sensor_t *s)
 }
 #endif
 
-const struct accelgyro_drv lsm6dsm_drv = {
+__hot_data_const struct accelgyro_drv lsm6dsm_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,

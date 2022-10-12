@@ -282,7 +282,7 @@ static int opt3001_init(struct motion_sensor_t *s)
 	return EC_SUCCESS;
 }
 
-const struct accelgyro_drv opt3001_drv = {
+__hot_data_const struct accelgyro_drv opt3001_drv = {
 	.init = opt3001_init,
 	.read = opt3001_read_lux,
 	.set_range = opt3001_set_range,

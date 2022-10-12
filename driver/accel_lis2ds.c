@@ -363,7 +363,7 @@ err_unlock:
 	return ret;
 }
 
-const struct accelgyro_drv lis2ds_drv = {
+__hot_data_const struct accelgyro_drv lis2ds_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,

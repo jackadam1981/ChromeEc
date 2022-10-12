@@ -361,7 +361,7 @@ static int bmp280_get_data_rate(const struct motion_sensor_t *s)
 	return data->rate << BMP280_RATE_SHIFT;
 }
 
-const struct accelgyro_drv bmp280_drv = {
+__hot_data_const struct accelgyro_drv bmp280_drv = {
 	.init = bmp280_init,
 	.read = bmp280_read,
 	.set_range = bmp280_set_range,

@@ -1199,7 +1199,7 @@ out_unlock:
 	return ret;
 }
 
-const struct accelgyro_drv icm42607_drv = {
+__hot_data_const struct accelgyro_drv icm42607_drv = {
 	.init = icm42607_init,
 	.read = icm42607_read,
 	.read_temp = icm42607_read_temp,

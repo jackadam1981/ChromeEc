@@ -166,7 +166,7 @@ static int bh1730_init(struct motion_sensor_t *s)
 	return sensor_init_done(s);
 }
 
-const struct accelgyro_drv bh1730_drv = {
+__hot_data_const struct accelgyro_drv bh1730_drv = {
 	.init = bh1730_init,
 	.read = bh1730_read_lux,
 	.set_range = bh1730_set_range,

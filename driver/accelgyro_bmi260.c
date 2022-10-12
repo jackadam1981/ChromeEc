@@ -582,7 +582,7 @@ static int init(struct motion_sensor_t *s)
 	return sensor_init_done(s);
 }
 
-const struct accelgyro_drv bmi260_drv = {
+__hot_data_const struct accelgyro_drv bmi260_drv = {
 	.init = init,
 	.read = bmi_read,
 	.set_range = bmi_set_range,

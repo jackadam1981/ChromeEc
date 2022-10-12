@@ -515,7 +515,7 @@ err_unlock:
 	return ret;
 }
 
-const struct accelgyro_drv lis2dw12_drv = {
+__hot_data_const struct accelgyro_drv lis2dw12_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,

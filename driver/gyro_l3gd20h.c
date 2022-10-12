@@ -373,7 +373,7 @@ static int init(struct motion_sensor_t *s)
 	return sensor_init_done(s);
 }
 
-const struct accelgyro_drv l3gd20h_drv = {
+__hot_data_const struct accelgyro_drv l3gd20h_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,

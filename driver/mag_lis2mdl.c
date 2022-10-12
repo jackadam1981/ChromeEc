@@ -378,7 +378,7 @@ int lis2mdl_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 
 #endif /* CONFIG_MAG_LIS2MDL */
 
-const struct accelgyro_drv lis2mdl_drv = {
+__hot_data_const struct accelgyro_drv lis2mdl_drv = {
 #ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 	.init = lis2mdl_thru_lsm6dsm_init,
 	.read = lis2mdl_thru_lsm6dsm_read,

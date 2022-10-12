@@ -1041,7 +1041,7 @@ static int init(struct motion_sensor_t *s)
 }
 
 /* Accelerometer/Gyroscope base driver structure */
-const struct accelgyro_drv bmi3xx_drv = {
+__hot_data_const struct accelgyro_drv bmi3xx_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,

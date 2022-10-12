@@ -962,7 +962,7 @@ static int icm426xx_probe(const struct motion_sensor_t *s)
 	return EC_SUCCESS;
 }
 
-const struct accelgyro_drv icm426xx_drv = {
+__hot_data_const struct accelgyro_drv icm426xx_drv = {
 	.init = icm426xx_init,
 	.read = icm426xx_read,
 	.read_temp = icm426xx_read_temp,

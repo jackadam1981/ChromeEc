@@ -663,7 +663,7 @@ static int probe(const struct motion_sensor_t *s)
 	return EC_SUCCESS;
 }
 
-const struct accelgyro_drv kionix_accel_drv = {
+__hot_data_const struct accelgyro_drv kionix_accel_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,

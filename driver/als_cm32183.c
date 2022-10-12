@@ -131,7 +131,7 @@ static int cm32183_init(struct motion_sensor_t *s)
 	return sensor_init_done(s);
 }
 
-const struct accelgyro_drv cm32183_drv = {
+__hot_data_const struct accelgyro_drv cm32183_drv = {
 	.init = cm32183_init,
 	.read = cm32183_read,
 	.set_range = cm32183_set_range,
