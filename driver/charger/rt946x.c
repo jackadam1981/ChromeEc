@@ -1872,7 +1872,7 @@ int mt6370_reduce_db_bl_driving(void)
 }
 #endif /* CONFIG_CHARGER_MT6370 */
 
-const struct charger_drv rt946x_drv = {
+__hot_data_const struct charger_drv rt946x_drv = {
 	.init = &rt946x_init,
 	.post_init = &rt946x_post_init,
 	.get_info = &rt946x_get_info,

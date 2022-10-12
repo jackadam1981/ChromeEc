@@ -1000,7 +1000,7 @@ static void console_bq25710_dump_regs(int chgnum)
 }
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
-const struct charger_drv bq25710_drv = {
+__hot_data_const struct charger_drv bq25710_drv = {
 	.init = &bq25710_init,
 	.post_init = &bq25710_post_init,
 	.get_info = &bq25710_get_info,

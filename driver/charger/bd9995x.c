@@ -1719,7 +1719,7 @@ struct i2c_stress_test_dev bd9995x_i2c_stress_test_dev = {
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_CHARGER */
 
-const struct charger_drv bd9995x_drv = {
+__hot_data_const struct charger_drv bd9995x_drv = {
 	.post_init = &bd9995x_post_init,
 	.get_info = &bd9995x_get_info,
 	.get_status = &bd9995x_get_status,

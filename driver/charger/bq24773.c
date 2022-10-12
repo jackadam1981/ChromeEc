@@ -284,7 +284,7 @@ static enum ec_error_list bq2477x_discharge_on_ac(int chgnum, int enable)
 	return rv;
 }
 
-const struct charger_drv bq2477x_drv = {
+__hot_data_const struct charger_drv bq2477x_drv = {
 	.post_init = &bq2477x_post_init,
 	.get_info = &bq2477x_get_info,
 	.get_status = &bq2477x_get_status,

@@ -2067,7 +2067,7 @@ static enum ec_error_list sm5803_get_battery_cells(int chgnum, int *cells)
 	return EC_SUCCESS;
 }
 
-const struct charger_drv sm5803_drv = {
+__hot_data_const struct charger_drv sm5803_drv = {
 	.init = &sm5803_init,
 	.post_init = &sm5803_post_init,
 	.get_info = &sm5803_get_info,

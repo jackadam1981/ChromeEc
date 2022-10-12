@@ -998,7 +998,7 @@ static void command_isl9241_dump(int chgnum)
 }
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
-const struct charger_drv isl9241_drv = {
+__hot_data_const struct charger_drv isl9241_drv = {
 	.init = &isl9241_init,
 	.post_init = &isl9241_post_init,
 	.get_info = &isl9241_get_info,

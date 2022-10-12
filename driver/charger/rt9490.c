@@ -537,7 +537,7 @@ static void rt9490_dump_registers(int chgnum)
 }
 #endif
 
-const struct charger_drv rt9490_drv = {
+__hot_data_const struct charger_drv rt9490_drv = {
 	.init = &rt9490_init,
 	.get_info = &rt9490_get_info,
 	.get_status = &rt9490_get_status,

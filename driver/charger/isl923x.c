@@ -1433,7 +1433,7 @@ static enum ec_error_list raa489000_set_vsys_compensation(int chgnum,
 }
 #endif /* CONFIG_CHARGER_RAA489000 && CONFIG_OCPC */
 
-const struct charger_drv isl923x_drv = {
+__hot_data_const struct charger_drv isl923x_drv = {
 	.init = &isl923x_init,
 	.post_init = &isl923x_post_init,
 	.get_info = &isl923x_get_info,
