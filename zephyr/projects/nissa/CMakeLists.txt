@@ -11,6 +11,10 @@ zephyr_library_sources("src/common.c")
 zephyr_library_sources("src/sub_board.c")
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 
+if(DEFINED CONFIG_SOC_IT8XXX2)
+	#zephyr_code_relocate("${ZEPHYR_BASE}/drivers/serial/uart_ns16550.c" RAM_TEXT)
+endif()
+
 if(DEFINED CONFIG_BOARD_NIVVIKS)
 	project(nivviks)
 	zephyr_library_sources(
