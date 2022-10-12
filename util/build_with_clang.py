@@ -25,12 +25,12 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # Boards that use CHIP:=stm32 and *not* CHIP_FAMILY:=stm32f0
     # git grep  --name-only 'CHIP:=stm32' | xargs grep -L 'CHIP_FAMILY:=stm32f0' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "baklava",
-    # "bellis",
+    # "bellis", # overflows flash
     "discovery",
     "gingerbread",
     "hatch_fp",
     "hyperdebug",
-    # "munna",
+    # "munna", # overflows flash
     "nocturne_fp",
     "nucleo-f411re",
     "nucleo-g431rb",
@@ -42,16 +42,16 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "sweetberry",
     # Boards that use CHIP:=mchp
     # git grep --name-only 'CHIP:=mchp' | sed 's#board/\(.*\)/build.mk#"\1",#'
-    # "adlrvpp_mchp1521",
-    # "adlrvpp_mchp1727",
-    # "mchpevb1",
-    # "reef_mchp",
+    # "adlrvpp_mchp1521", # compilation errors
+    # "adlrvpp_mchp1727", # compilation errors
+    # "mchpevb1", # compilation errors
+    # "reef_mchp", # compilation errors
     # Boards that use CHIP:=max32660
     # git grep --name-only 'CHIP:=max32660' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "max32660-eval",
     # Boards that use CHIP:=npcx
     # git grep --name-only 'CHIP:=npcx' | sed 's#^board/\(.*\)/build.mk#"\1",#'
-    # "adlrvpp_npcx",
+    # "adlrvpp_npcx", # compilation errors
     "agah",
     "akemi",
     "aleena",
@@ -75,7 +75,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "copano",
     "coral",
     "corori",
-    # "corori2",
+    # "corori2", # overflows flash
     "cret",
     "crota",
     "dalboz",
@@ -96,8 +96,8 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "fleex",
     "foob",
     "gaelin",
-    # "garg",
-    # "gelarshie",
+    # "garg", # overflows flash
+    # "gelarshie", # overflows flash
     "genesis",
     "gimble",
     "grunt",
@@ -129,11 +129,11 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "moonbuggy",
     "morphius",
     "mrbland",
-    # "mushu",
+    # "mushu", # overflows flash
     "nami",
     "nautilus",
     "nightfury",
-    # "nocturne",
+    # "nocturne", # overflows flash
     "npcx7_evb",
     "npcx9_evb",
     "npcx_evb",
@@ -150,25 +150,25 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "quackingstick",
     "rammus",
     "redrix",
-    # "reef",
+    # "reef", # compilation errors
     "sasuke",
     "scout",
     "shuboz",
     "stryke",
     "taeko",
     "taniks",
-    # "terrador",
+    # "terrador", # overflows flash
     "treeya",
     "trembyle",
     "trogdor",
-    # "vell",
+    # "vell", # compilation errors
     "vilboz",
     "voema",
     "volet",
     "volmar",
-    # "volteer",
+    # "volteer", # overflows flash
     "voxel",
-    # "waddledoo",
+    # "waddledoo", # overflows flash
     "waddledoo2",
     "woomax",
     "wormdingler",
