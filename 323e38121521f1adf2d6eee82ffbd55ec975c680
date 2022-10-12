@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87171e32_a46b2b90",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-12T05:35:28Z",
+      "side": 1,
+      "message": "I believe Tristan created that one for fix-it specifically. Because it contained things specific to Googlers he never linked it from any other doc. I\u0027ve gone ahead and just removed it.",
+      "parentUuid": "e3432a55_17726130",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "359109f2_4dfcd122",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-11T20:10:04Z",
       "side": 1,
       "message": "It would be helpful to have two sub-sections here, centered on how to start under these scenarios:\n* You created a new file, or modified a file that does not currently have tests.\n* You modified a file that has tests, but now has uncovered lines.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48cfe5ea_da7870c4",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-12T05:35:28Z",
+      "side": 1,
+      "message": "I took at stab at this, please let me know. I don\u0027t know that it\u0027s as simple as add or create. I\u0027ve had cases where I modified code and it was easier to write a separate test entirely.",
+      "parentUuid": "359109f2_4dfcd122",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a0a9971_ff9072c9",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-12T05:35:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure, ideally the integration test would just model a board right? We can probably try to set something up, but it\u0027ll take a bit to figure out what that minimal set is.",
+      "parentUuid": "4c4f2582_11b0b8fc",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aca01c5f_304820aa",
         "filename": "docs/zephyr/ztest.md",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-11T20:10:04Z",
       "side": 1,
       "message": "log",
+      "range": {
+        "startLine": 94,
+        "startChar": 56,
+        "endLine": 94,
+        "endChar": 60
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b946cc61_a1c28f29",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-12T05:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca01c5f_304820aa",
       "range": {
         "startLine": 94,
         "startChar": 56,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72a04e6_fd9f0777",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-12T05:35:28Z",
+      "side": 1,
+      "message": "Agreed",
+      "parentUuid": "892391e3_1c6fd63c",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c7ea68_cf4e8770",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a36b007_a61e97f9",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-12T05:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c7ea68_cf4e8770",
+      "range": {
+        "startLine": 111,
+        "startChar": 69,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8077b8a2_a3247940",
@@ -152,6 +296,24 @@
       "writtenOn": "2022-10-11T20:10:04Z",
       "side": 1,
       "message": "This doc could also use a reference to the Zephyr ztest code coverage. code_coverage.md#Zephyr_ztest_code_coverage",
+      "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3edd18_b9b2ff1b",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-12T05:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8077b8a2_a3247940",
       "revId": "323e38121521f1adf2d6eee82ffbd55ec975c680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
