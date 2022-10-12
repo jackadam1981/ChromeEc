@@ -51,6 +51,24 @@
       "parentUuid": "28d0ce4f_2adc8d24",
       "revId": "4dc21bd68b3bca1754dc5e2a15053665c56a66cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5083b56_a9510c4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-12T19:24:09Z",
+      "side": 1,
+      "message": "AFAIK, no such parameters exist for cmake. However, I\u0027m still quite new to CMake.\n\nI\u0027ve handled this in the past by leveraging `clangd`\u0027s `--path-mappings` option.\n\nI talk a bit about it here:\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/main/chroot-clangd-guide.md#launching-your-editor-from-outside-chroot\n\nThis is usually used in context of a remote server, but works quite well for the chroot.\n\nIn the long-term, this will hopefully stop being needed once go/cros-firmware-sdk is done.",
+      "parentUuid": "f23203cf_762bbdfc",
+      "revId": "4dc21bd68b3bca1754dc5e2a15053665c56a66cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
