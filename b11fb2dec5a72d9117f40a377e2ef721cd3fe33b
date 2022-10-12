@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beab4332_690e17fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-12T16:35:21Z",
+      "side": 1,
+      "message": "Out of scope, but I see vaguely similar logic in `ide-config.sh` and various directions to set `-j` in docs. There isn\u0027t a great way to set the default parallelism in a makefile, and I\u0027m not sure we\u0027d want to. The closest thing would be setting `MAKEFLAGS` in the SDK environment, but that seems heavyhanded.\n\nTo the extent that we have shell scripts that invoke `make` and documentation that refers to it, it would be nice to set or suggest how to set `-j` in one place or in one way.",
+      "revId": "b11fb2dec5a72d9117f40a377e2ef721cd3fe33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd54038_606c450d",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-12T16:35:21Z",
+      "side": 1,
+      "message": "It looks like this is already the default for `FLAGS_jobs`. Does this branch ever get taken?\n\nNit: Consider `-j --load-average\u003d$(nproc)`. You might want to experiment with the load target.",
+      "revId": "b11fb2dec5a72d9117f40a377e2ef721cd3fe33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
