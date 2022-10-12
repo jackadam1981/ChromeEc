@@ -33,7 +33,7 @@ config PLATFORM_EC_DPTF
 
 config PLATFORM_EC_THERMISTOR
 	bool "Thermistor support"
-	depends on ADC
+	select ADC
 	help
 	  Enables support for thermistors (resistor whose resistance is
 	  strongly dependent on temperature) as temperature-sensor type.
@@ -79,8 +79,7 @@ endif # PLATFORM_EC_TEMP_SENSOR_FIRST_READ_DELAY
 
 config PLATFORM_EC_FAN
 	bool "Fan support"
-	default y
-	depends on DT_HAS_CROS_EC_FANS_ENABLED
+	default y if DT_HAS_CROS_EC_FANS_ENABLED
 	help
 	  Enables support for fans. Allows periodic thermal task to
 	  automatically set the fan speed (control temperature).
@@ -103,7 +102,6 @@ endif # PLATFORM_EC_FAN
 
 config PLATFORM_EC_FAN_BYPASS_SLOW_RESPONSE
 	bool "Enable fan slow response control mechanism"
-	default n
 	help
 	  A specific type of fan needs a longer time to output the TACH
 	  signal to EC after EC outputs the PWM signal to the fan.
