@@ -16,8 +16,6 @@ def register_skyrim_project(
         zephyr_board="npcx9m3f",
         dts_overlays=[
             # Common to all projects.
-            here / "adc.dts",
-            here / "fan.dts",
             here / "gpio.dts",
             here / "interrupts.dts",
             here / "keyboard.dts",
@@ -37,6 +35,8 @@ register_skyrim_project(
         here / "battery_morthal.dts",
         here / "led_pins_morthal.dts",
         here / "led_policy_morthal.dts",
+        here / "adc_morthal.dts",
+        here / "fan_morthal.dts",
     ],
     extra_kconfig_files=[
         here / "prj_morthal.conf",
@@ -51,6 +51,8 @@ register_skyrim_project(
         here / "battery_skyrim.dts",
         here / "led_pins_skyrim.dts",
         here / "led_policy_skyrim.dts",
+        here / "adc_skyrim.dts",
+        here / "fan_skyrim.dts",
     ],
     extra_kconfig_files=[
         here / "prj_skyrim.conf",
@@ -65,6 +67,8 @@ register_skyrim_project(
         here / "battery_winterhold.dts",
         here / "led_pins_winterhold.dts",
         here / "led_policy_winterhold.dts",
+        here / "adc_winterhold.dts",
+        here / "fan_winterhold.dts",
     ],
     extra_kconfig_files=[
         here / "prj_winterhold.conf",
@@ -79,6 +83,8 @@ register_skyrim_project(
         here / "battery_frostflow.dts",
         here / "led_pins_frostflow.dts",
         here / "led_policy_frostflow.dts",
+        here / "adc_frostflow.dts",
+        here / "fan_frostflow.dts",
     ],
     extra_kconfig_files=[
         here / "prj_frostflow.conf",
