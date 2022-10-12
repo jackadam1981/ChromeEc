@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c21c882_2a1b9849",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-12T18:32:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "137c89f8_4add1ce1",
+      "revId": "42fe8f71603f00477c1dbe4b85404d98aa1d6f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "143be21a_be0ea35b",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-12T18:21:44Z",
       "side": 1,
       "message": "This can be followed by (%d K and %d K) like ectool for fan_off and fan_max.",
+      "range": {
+        "startLine": 119,
+        "startChar": 14,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "42fe8f71603f00477c1dbe4b85404d98aa1d6f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db88db44_033998c8",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-12T18:32:30Z",
+      "side": 1,
+      "message": "unlike ectool, ec console command temps doesn\u0027t have the prints,\n```\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\n```\n\nis it still okay to print fan_off and fan_max values?",
+      "parentUuid": "143be21a_be0ea35b",
       "range": {
         "startLine": 119,
         "startChar": 14,
