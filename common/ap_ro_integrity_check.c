@@ -965,11 +965,31 @@ static void keep_ec_in_reset(void);
 
 DECLARE_DEFERRED(keep_ec_in_reset);
 
+static bool combo_can_release_ec_rst = true;
+
+static void finish_release_ec_rst_delay(void)
+{
+	combo_can_release_ec_rst = true;
+}
+DECLARE_DEFERRED(finish_release_ec_rst_delay);
+
 static void keep_ec_in_reset(void)
 {
 	disable_sleep(SLEEP_MASK_AP_RO_VERIFICATION);
 	assert_ec_rst();
 	hook_call_deferred(&keep_ec_in_reset_data, 100 * MSEC);
+}
+
+static void start_keeping_ec_in_reset(void)
+{
+	/*
+	 * After 60 seconds the user can release EC_RST_L with the recovery
+	 * key combo.
+	 */
+	combo_can_release_ec_rst = false;
+	hook_call_deferred(&finish_release_ec_rst_delay_data,
+			   60 * SECOND);
+	keep_ec_in_reset();
 }
 
 static void release_ec_reset_override(void)
@@ -986,6 +1006,10 @@ void ap_ro_clear_ec_rst_override(void)
 {
 	if (!ec_rst_override())
 		return;
+	if (!combo_can_release_ec_rst) {
+		CPRINTS("%s: too soon", __func__);
+		return;
+	}
 	apro_fail_status_cleared = 1;
 	release_ec_reset_override();
 	ap_ro_add_flash_event(APROF_FAIL_CLEARED);
@@ -1063,7 +1087,7 @@ static uint8_t do_ap_ro_check(void)
 		CPRINTS("AP RO FAILED!");
 		apro_result = AP_RO_FAIL;
 		ap_ro_add_flash_event(APROF_CHECK_FAILED);
-		keep_ec_in_reset();
+		start_keeping_ec_in_reset();
 		/*
 		 * Map failures into EC_ERROR_CRC, this will make sure
 		 * that in case this was invoked by the operator
