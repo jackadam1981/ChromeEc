@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5c969c_e0a5b6f4",
+        "filename": "util/ectool.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 3289,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-12T18:10:25Z",
+      "side": 1,
+      "message": "Yes, this should be improvised further. Agree, we should take it as another CL.",
+      "parentUuid": "75835e8a_79bfd9fb",
+      "range": {
+        "startLine": 3288,
+        "startChar": 1,
+        "endLine": 3289,
+        "endChar": 13
+      },
+      "revId": "513415e45ad58e919d3f0f511b00b2f6563e201b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "027f5322_2f37343b",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "084a697e_fd8bea69",
+        "filename": "util/ectool.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 3301,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-12T18:10:25Z",
+      "side": 1,
+      "message": "Verified.\n\n```\nlocalhost ~ # ectool temps all\n--sensor name -------- temperature -------- ratio (fan_off and fan_max) --\nDDR and SOC           305 K (\u003d 32 C)               error(rc\u003d-1)\nFan                   300 K (\u003d 27 C)               error(rc\u003d-1)\nCharger               305 K (\u003d 32 C)               error(rc\u003d-1)\n\n```",
+      "parentUuid": "027f5322_2f37343b",
+      "range": {
+        "startLine": 3301,
+        "startChar": 12,
+        "endLine": 3301,
+        "endChar": 19
+      },
+      "revId": "513415e45ad58e919d3f0f511b00b2f6563e201b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41c242b3_d9737689",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-11T16:57:45Z",
       "side": 1,
       "message": "nit: A multi-line comment needs to be:\n\n    /*\n     * (comment)\n     */",
+      "range": {
+        "startLine": 3316,
+        "startChar": 0,
+        "endLine": 3317,
+        "endChar": 42
+      },
+      "revId": "513415e45ad58e919d3f0f511b00b2f6563e201b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb71758_daf40a12",
+        "filename": "util/ectool.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 3317,
+      "author": {
+        "id": 1523269
+      },
+      "writtenOn": "2022-10-12T18:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41c242b3_d9737689",
       "range": {
         "startLine": 3316,
         "startChar": 0,
