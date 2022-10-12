@@ -158,6 +158,24 @@
       "parentUuid": "cc92a725_60f3eef8",
       "revId": "4dc21bd68b3bca1754dc5e2a15053665c56a66cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7ccac0_285bd655",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-12T23:30:14Z",
+      "side": 1,
+      "message": "Uploaded new version to replace the content of the file automatically. I am curious to hear your feedback.\n\nYou can test it with:\n\n```\n./util/clangd_config.py --os zephyr herobrine ro\n```",
+      "parentUuid": "3b2a3d34_3693c445",
+      "revId": "4dc21bd68b3bca1754dc5e2a15053665c56a66cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
