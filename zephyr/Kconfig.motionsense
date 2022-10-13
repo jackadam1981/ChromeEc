@@ -4,6 +4,10 @@
 
 menuconfig PLATFORM_EC_MOTIONSENSE
     bool "Motion Sense"
+    default y if DT_HAS_CROS_EC_MOTIONSENSE_SENSOR_INFO_ENABLED
+    default y if $(dt_nodelabel_enabled,lid_accel)
+    default y if $(dt_nodelabel_enabled,base_accel)
+    default y if $(dt_nodelabel_enabled,base_gyro)
     select HAS_TASK_MOTIONSENSE
     help
       Enable motion sense task. The task collects data from available sensors
