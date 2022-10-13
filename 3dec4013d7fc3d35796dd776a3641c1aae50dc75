@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29bc5c3d_f5b0941b",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-13T14:19:39Z",
+      "side": 1,
+      "message": "nit: Remove the , NULL). It\u0027s not needed anymore.",
+      "range": {
+        "startLine": 187,
+        "startChar": 39,
+        "endLine": 187,
+        "endChar": 45
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa004214_6470857c",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-13T14:19:39Z",
+      "side": 1,
+      "message": "Sorry just saw this, please rename `verify_*` to `test_*` there\u0027s a bug in `twister` that doesn\u0027t update the test report unless tests have a prefix with `test`.\n\nThe test still runs and works, but this way it\u0027ll be easier to see in a twister report JSON.",
+      "range": {
+        "startLine": 302,
+        "startChar": 36,
+        "endLine": 302,
+        "endChar": 42
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99527e23_553f9975",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-13T14:19:39Z",
+      "side": 1,
+      "message": "See above verify_ to test_",
+      "range": {
+        "startLine": 315,
+        "startChar": 36,
+        "endLine": 315,
+        "endChar": 42
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
