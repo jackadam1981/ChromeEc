@@ -117,6 +117,18 @@ static void shell_uninit_callback(const struct shell *shell, int res)
 	k_poll_signal_raise(&shell_uninit_signal, res);
 }
 
+void bypass_cb(const struct shell *shell, uint8_t *data, size_t len)
+{
+	if (!ring_buf_put(&rx_buffer, data, len)) {
+		printk("Failed to write to uart ring buf\n");
+	}
+}
+
+void uart_shell_rx_bypass(bool enable)
+{
+	shell_set_bypass(shell_zephyr, enable ? bypass_cb : NULL);
+}
+
 int uart_shell_stop(void)
 {
 	struct k_poll_event event = K_POLL_EVENT_INITIALIZER(

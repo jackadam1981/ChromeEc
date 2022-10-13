@@ -175,7 +175,7 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 		return EC_ERROR_PARAM2;
 	}
 
-	return rv;
+	return rv >= 0 ? EC_SUCCESS : rv;
 }
 
 /*
