@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8da3921_b003e5ef",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-10-13T08:38:45Z",
+      "side": 1,
+      "message": "Discussed in the meeting, shift bit form 5 to 4 for store mode change status.",
+      "parentUuid": "7251eb0b_71fc19f2",
+      "revId": "5134226cb070ddb348cf6433f018d00e4a5feedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "054faf4b_21ae875e",
