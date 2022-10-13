@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5c4af4_2a144b0e",
+        "filename": "zephyr/test/drivers/default/src/ps8xxx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-13T20:29:26Z",
+      "side": 1,
+      "message": "Should be PS8745_PRODUCT_ID.",
+      "range": {
+        "startLine": 781,
+        "startChar": 11,
+        "endLine": 781,
+        "endChar": 28
+      },
+      "revId": "29454c8db1f9837a5501153fa6fee27d082f7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
