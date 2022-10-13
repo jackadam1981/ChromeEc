@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "028a943d_740fb24b",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T17:58:02Z",
+      "side": 1,
+      "message": "Re-worded",
+      "parentUuid": "84b6ffd2_32df5631",
+      "range": {
+        "startLine": 38,
+        "startChar": 57,
+        "endLine": 40,
+        "endChar": 79
+      },
+      "revId": "ad1c0f1ee2c17c6ac3780bf37d4944ba768f1afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeb52483_cb466f8b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-12T22:10:17Z",
       "side": 1,
       "message": "Provide a public code search link here.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "ad1c0f1ee2c17c6ac3780bf37d4944ba768f1afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c08628_028a2613",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T17:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeb52483_cb466f8b",
       "range": {
         "startLine": 44,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f74adfdb_df7bd268",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T17:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b0205bf_089c726e",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "ad1c0f1ee2c17c6ac3780bf37d4944ba768f1afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88a883a7_5500faba",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-12T22:10:17Z",
       "side": 1,
       "message": "Can you add a section on unit tests?",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "ad1c0f1ee2c17c6ac3780bf37d4944ba768f1afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da78a119_529e5066",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T17:58:02Z",
+      "side": 1,
+      "message": "I wanted to finish the final step of the unit testing work (which is to make the helper methods in cmake). Before I document it.",
+      "parentUuid": "88a883a7_5500faba",
       "range": {
         "startLine": 57,
         "startChar": 3,
@@ -156,6 +252,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9af84fe4_c0e1f525",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T17:58:02Z",
+      "side": 1,
+      "message": "We don\u0027t yet, but `--coverage` requires you to specify at least 1 platform.",
+      "parentUuid": "1a38e6f2_fb2e34b4",
+      "range": {
+        "startLine": 105,
+        "startChar": 23,
+        "endLine": 105,
+        "endChar": 54
+      },
+      "revId": "ad1c0f1ee2c17c6ac3780bf37d4944ba768f1afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9148d0cf_e47e2a4e",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T17:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415128db_db850722",
+      "range": {
+        "startLine": 105,
+        "startChar": 66,
+        "endLine": 105,
+        "endChar": 70
+      },
+      "revId": "ad1c0f1ee2c17c6ac3780bf37d4944ba768f1afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea35232a_ea1218ec",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-10-12T22:10:17Z",
       "side": 1,
       "message": "Nit - trailing space.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "ad1c0f1ee2c17c6ac3780bf37d4944ba768f1afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8301f66_49e4a88c",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T17:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea35232a_ea1218ec",
       "range": {
         "startLine": 139,
         "startChar": 0,
