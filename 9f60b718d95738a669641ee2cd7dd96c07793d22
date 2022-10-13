@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f4e654_5a1c7c67",
+        "filename": "zephyr/test/drivers/ap_mux_control/src/ap_mux_control.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-13T18:31:41Z",
+      "side": 1,
+      "message": "+2, though I may have to +2 again if `host_cmd_get_features()` changes signature from the prior CL.",
+      "revId": "9f60b718d95738a669641ee2cd7dd96c07793d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
