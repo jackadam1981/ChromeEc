@@ -40,6 +40,7 @@ struct fan_rpm {
 	int rpm_min;
 	int rpm_start;
 	int rpm_max;
+	uint8_t rpm_deviation;
 };
 
 /* Characteristic of each physical fan */
