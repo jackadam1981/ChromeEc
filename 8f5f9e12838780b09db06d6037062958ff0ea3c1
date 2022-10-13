@@ -22,6 +22,30 @@
       },
       "revId": "8f5f9e12838780b09db06d6037062958ff0ea3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3984f4c4_22168f68",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-13T22:42:42Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a lot of value in `rc`. In our use case, I mostly expect this to be called from other `libc` functions such as `abort()` and not someone calling `exit(5)`. Generally, I [don\u0027t think exit codes are standardized on Linux](https://stackoverflow.com/q/1101957), so I\u0027m not sure the number would be that meaningful except for zero (success) vs non-zero (failure).\n\nIn the case of `abort()`, [newlib calls `_exit(1)`](https://sourceware.org/git/?p\u003dnewlib-cygwin.git;a\u003dblob;f\u003dnewlib/libc/stdlib/abort.c;h\u003d065dee5b6c710102420d91139434e5fd0897838a;hb\u003d0b6342c97f08765e9873b3c52d61657c2aa596e5#l59).",
+      "parentUuid": "92b03b3e_d4668e56",
+      "range": {
+        "startLine": 28,
+        "startChar": 31,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "8f5f9e12838780b09db06d6037062958ff0ea3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
