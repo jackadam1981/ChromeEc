@@ -34,6 +34,24 @@
       "parentUuid": "4ff049ed_55fb6c95",
       "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40707f32_6670f9be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T15:02:20Z",
+      "side": 1,
+      "message": "I\u0027m sorry, but I\u0027m not seeing the difference.\n\nMy perspective is:\n\"I need to run on Linux\" is not that different from \"I need to be in S0\". The only difference is that there\u0027s a utility to make that happen. if the code that changes the power state ends up with a bug, we shouldn\u0027t fail _EVERY_ test that used the utility just for \"needing to be in S0\"",
+      "parentUuid": "e1eb9f23_4321788c",
+      "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
