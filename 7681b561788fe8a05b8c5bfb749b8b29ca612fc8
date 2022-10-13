@@ -22,6 +22,30 @@
       },
       "revId": "7681b561788fe8a05b8c5bfb749b8b29ca612fc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928dbea7_cdd1a69e",
+        "filename": "zephyr/emul/tcpc/emul_ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-10-13T20:13:33Z",
+      "side": 1,
+      "message": "I made the change. Thanks",
+      "parentUuid": "e0138d2f_5db95049",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 0
+      },
+      "revId": "7681b561788fe8a05b8c5bfb749b8b29ca612fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
