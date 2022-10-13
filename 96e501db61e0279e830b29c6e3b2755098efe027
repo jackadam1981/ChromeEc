@@ -16,6 +16,24 @@
       "message": "nit: include order",
       "revId": "96e501db61e0279e830b29c6e3b2755098efe027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6178a11_20c3159d",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-13T18:55:15Z",
+      "side": 1,
+      "message": "Actually I\u0027m not sure where that came from. I\u0027m pretty sure it is not needed.",
+      "parentUuid": "66d6cbec_407e9e65",
+      "revId": "96e501db61e0279e830b29c6e3b2755098efe027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
