@@ -34,6 +34,24 @@
       "message": "Are we putting tests in with the regular code now? If so, I\u0027ll need to modify the coverage exclude pattern.",
       "revId": "297c648ebcf2e62b1da7e2ad13eee4bad83c9545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a8e728c_eaea1459",
+        "filename": "common/spi/flash_reg/src/spi_flash_reg_test.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T18:19:03Z",
+      "side": 1,
+      "message": "This is a case study for what it would look like to have a structure where all of our code is compiled into libraries where:\n\n1. Each library is a directory with public and private include headers\n2. Each library is responsible for testing itself (in the same directory to keep things confined)\n3. Each library will also provide it\u0027s own `fake` library for dependents to use in their own tests.\n\nOnce this is all done (probably another week or so) we\u0027ll present this as an option for how to refactor our code and find good targets for upstreaming based on library dependency graphs.",
+      "parentUuid": "ac325e94_1cbd5220",
+      "revId": "297c648ebcf2e62b1da7e2ad13eee4bad83c9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
