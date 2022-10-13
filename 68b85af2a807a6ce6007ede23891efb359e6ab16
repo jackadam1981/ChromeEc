@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c07225d_6b864592",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-13T16:39:32Z",
+      "side": 1,
+      "message": "In this case, you can just say the low coverage reason is that we don\u0027t have an NCT emulator yet",
+      "revId": "68b85af2a807a6ce6007ede23891efb359e6ab16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "342a037e_6e9d017f",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 2
