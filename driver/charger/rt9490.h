@@ -244,6 +244,9 @@ struct rt9490_init_setting {
 /* ADD CTRL1 */
 #define RT9490_PWM_1MHZ_EN BIT(4)
 
+/* ADD CTRL2 */
+#define RT9490_SPEC_TA_EN BIT(2)
+
 extern const struct charger_drv rt9490_drv;
 extern const struct bc12_drv rt9490_bc12_drv;
 
