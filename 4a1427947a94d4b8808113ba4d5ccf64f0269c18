@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74935c0_8037e414",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-13T18:29:38Z",
+      "side": 1,
+      "message": "Is there a particular reason this is `inline`? My understanding is `inline` just makes the code a little bit faster by directly adding the code where it\u0027s called versus allocating/deallocating a stack.",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "4a1427947a94d4b8808113ba4d5ccf64f0269c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7ec062_85c94f94",
+        "filename": "zephyr/test/drivers/common/include/test/drivers/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-13T18:29:38Z",
+      "side": 1,
+      "message": "This will return an address that gets popped off the stack. I guess `inline` may protect that to a single call depth, but I don\u0027t think it\u0027s safe.",
+      "revId": "4a1427947a94d4b8808113ba4d5ccf64f0269c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
