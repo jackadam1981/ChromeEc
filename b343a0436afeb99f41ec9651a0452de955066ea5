@@ -52,6 +52,24 @@
       "parentUuid": "e1eb9f23_4321788c",
       "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c75d4394_a1108e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-13T15:59:18Z",
+      "side": 1,
+      "message": "In that case, I think it falls on the person adding the zassume to prove that there is a test that will fail if the S0 code is broken first.\n\nWe don\u0027t have such a test for this util code, which has already been demonstrated by this code getting silently skipped.\n\nWe should never use zassume until after we\u0027ve already had an instance where 50 tests failed and we found the root cause test and demonstrated that before fixing the bug, we had 1 failure and 49 skips.",
+      "parentUuid": "40707f32_6670f9be",
+      "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
