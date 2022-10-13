@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb0b4cc_b2366d0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-13T19:31:15Z",
+      "side": 1,
+      "message": "Looking good, thanks for doing this. Please also update sitemap.md.",
+      "revId": "797d3853f390f34049452ce56d6232ef7781805d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d3f4482_a10d217f",
+        "filename": "docs/zephyr/ztest.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-13T19:31:15Z",
+      "side": 1,
+      "message": "We\u0027ve defined a library for this.  A test needs to just add the following the CMakeLists.txt file\n```\nadd_subdirectory(${PLATFORM_EC}/zephyr/test/test_utils test_utils)\n```\n\nCan you add that to the template above?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 68
+      },
+      "revId": "797d3853f390f34049452ce56d6232ef7781805d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
