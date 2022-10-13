@@ -45,6 +45,30 @@
       },
       "revId": "0ed0364ec8ad49d92c3c03b728280bd4d07c5f00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea49ae1_110cfe11",
+        "filename": "util/clangd_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-13T18:14:28Z",
+      "side": 1,
+      "message": "That\u0027s a great question! The main goal for this is to enable the execution with CrOS IDE (CL is under review here: https://crrev.com/c/3939618).\n\nIn that context, `clangd` is started by VSCode. I think there is an option to customize its argument but it wouldn\u0027t probably work out of the box.\n\nI think CrOS IDE is already converting paths for other projects (e.g. `biod` and `powerd`) automatically with a post-processing script.",
+      "parentUuid": "6f7f5d72_beff08ca",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "0ed0364ec8ad49d92c3c03b728280bd4d07c5f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

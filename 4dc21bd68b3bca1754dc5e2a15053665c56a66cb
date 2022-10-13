@@ -248,6 +248,24 @@
       "parentUuid": "f90631ce_5f860bc9",
       "revId": "4dc21bd68b3bca1754dc5e2a15053665c56a66cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90ab2df_33a2a34f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-13T18:14:28Z",
+      "side": 1,
+      "message": "\u003e Honestly, I don\u0027t recall if directory needs to be absolute or if this was just me playing it safe for EC compile commands. Let\u0027s roll with absolute for now and maybe experiment with changing it to relative later.\n\nOkay, so to summarize we leave everything absolute for now, right?",
+      "parentUuid": "e0e314d7_70739589",
+      "revId": "4dc21bd68b3bca1754dc5e2a15053665c56a66cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
