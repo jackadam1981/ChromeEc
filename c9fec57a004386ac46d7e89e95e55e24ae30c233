@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de9f0580_97f8cba5",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-10-13T07:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e7e3620_db1f0d3a",
+      "revId": "c9fec57a004386ac46d7e89e95e55e24ae30c233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "578b7c50_a59d3a11",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce1c241_e08f1fcb",
+        "filename": "zephyr/test/drivers/default/prj.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-10-13T07:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "578b7c50_a59d3a11",
+      "revId": "c9fec57a004386ac46d7e89e95e55e24ae30c233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1e86543_9524bcb6",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-10-12T19:02:18Z",
       "side": 1,
       "message": "Is there a specific reason why we\u0027re choosing this test suite instead https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c\n\n?",
+      "revId": "c9fec57a004386ac46d7e89e95e55e24ae30c233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3089aad_2a1c4679",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-10-13T07:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1e86543_9524bcb6",
       "revId": "c9fec57a004386ac46d7e89e95e55e24ae30c233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8332d52c_22edcc73",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-10-13T07:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d253f136_55a6965a",
+      "range": {
+        "startLine": 552,
+        "startChar": 31,
+        "endLine": 552,
+        "endChar": 37
+      },
+      "revId": "c9fec57a004386ac46d7e89e95e55e24ae30c233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe401e25_a5661e4a",
@@ -105,6 +183,30 @@
       "writtenOn": "2022-10-12T19:02:18Z",
       "side": 1,
       "message": "See flag comment above",
+      "range": {
+        "startLine": 564,
+        "startChar": 31,
+        "endLine": 564,
+        "endChar": 37
+      },
+      "revId": "c9fec57a004386ac46d7e89e95e55e24ae30c233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "483f6c1e_ca74950d",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_attach_src_snk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-10-13T07:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe401e25_a5661e4a",
       "range": {
         "startLine": 564,
         "startChar": 31,
