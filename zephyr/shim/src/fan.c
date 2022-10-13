@@ -43,6 +43,7 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 		.rpm_min = DT_PROP(node_id, rpm_min),                          \
 		.rpm_start = DT_PROP(node_id, rpm_start),                      \
 		.rpm_max = DT_PROP(node_id, rpm_max),                          \
+		.rpm_deviation = DT_PROP(node_id, rpm_deviation),              \
 	};
 
 #define FAN_INST(node_id)                \
@@ -61,13 +62,9 @@ DT_INST_FOREACH_CHILD(0, FAN_CONFIGS)
 
 const struct fan_t fans[FAN_CH_COUNT] = { DT_INST_FOREACH_CHILD(0, FAN_INST) };
 
-/* Rpm deviation (Unit:percent) */
-#ifndef RPM_DEVIATION
-#define RPM_DEVIATION 7
-#endif
-
 /* Margin of target rpm */
-#define RPM_MARGIN(rpm_target) (((rpm_target)*RPM_DEVIATION) / 100)
+#define RPM_MARGIN(ch, rpm_target) \
+	(((rpm_target)*fans[ch].rpm->rpm_deviation) / 100)
 
 /* Fan mode */
 enum fan_mode {
@@ -228,7 +225,7 @@ enum fan_status fan_smart_control(int ch)
 	int rpm_target = data->rpm_target;
 
 	/* wait rpm is stable */
-	if (ABS(rpm_actual - data->rpm_pre) > RPM_MARGIN(rpm_actual)) {
+	if (ABS(rpm_actual - data->rpm_pre) > RPM_MARGIN(ch, rpm_actual)) {
 		data->rpm_pre = rpm_actual;
 		return FAN_STATUS_CHANGING;
 	}
@@ -243,7 +240,7 @@ enum fan_status fan_smart_control(int ch)
 		return FAN_STATUS_STOPPED;
 	}
 
-	if (rpm_diff > RPM_MARGIN(rpm_target)) {
+	if (rpm_diff > RPM_MARGIN(ch, rpm_actual)) {
 		/* Increase PWM duty */
 		if (duty == 100) {
 			return FAN_STATUS_FRUSTRATED;
@@ -251,7 +248,7 @@ enum fan_status fan_smart_control(int ch)
 
 		fan_adjust_duty(ch, rpm_diff, duty);
 		return FAN_STATUS_CHANGING;
-	} else if (rpm_diff < -RPM_MARGIN(rpm_target)) {
+	} else if (rpm_diff < -RPM_MARGIN(ch, rpm_actual)) {
 		/* Decrease PWM duty */
 		if (duty == 1 && rpm_target != 0) {
 			return FAN_STATUS_FRUSTRATED;
