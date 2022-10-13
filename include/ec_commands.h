@@ -5542,6 +5542,48 @@ struct ec_params_reboot_ec {
  */
 #define EC_CMD_VERSION0 0x00DC
 
+/*
+ * Get RW Safe Mode meta data.
+ */
+#define EC_CMD_GET_RW_SAFE_MODE_INFO 0x00DD
+
+#define RW_SAFE_MODE_FLAG_IN_SAFE_MODE BIT(0)
+
+#define MAX_EC_DUMP_ENTRIES 50
+
+struct dump_entry {
+	uint16_t offset;
+	uint16_t size;
+};
+struct ec_response_rw_safe_mode_info {
+	uint32_t flags;
+	uint32_t dump_base_address;
+	uint16_t dump_entries_count;
+	struct dump_entry dump_entries[MAX_EC_DUMP_ENTRIES];
+} __ec_align4;
+
+/*
+ * Get RW Safe Mode memory.
+ */
+#define EC_CMD_READ_RW_SAFE_MODE_MEM 0x00DE
+
+struct ec_params_rw_safe_mode_mem {
+	uint16_t offset;
+	uint16_t size;
+} __ec_align4;
+
+#define MAX_READ_RW_SAFE_MODE_MEM_SIZE (256 - sizeof(struct ec_host_response))
+
+struct ec_response_rw_safe_mode_mem {
+	uint8_t mem[MAX_READ_RW_SAFE_MODE_MEM_SIZE];
+} __ec_align4;
+
+#define EC_CMD_FINISH_RW_SAFE_MODE 0x00DF
+
+struct ec_params_rw_safe_mode_status {
+	int status;
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * PD commands
