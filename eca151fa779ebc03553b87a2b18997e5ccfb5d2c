@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f47bd92_8d52b71c",
+        "filename": "include/compiler.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2022-10-13T19:39:17Z",
+      "side": 1,
+      "message": "Clang accepts GCC in the syntax to enable disable warnings so this could be simplified.\n\ne.g. this should work with both clang and gcc.\n\n#pragma GCC diagnostic push\n#pragma GCC diagnostic ignored \"-Wwarning-to-suppress\"\n#pragma GCC diagnostic pop",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "eca151fa779ebc03553b87a2b18997e5ccfb5d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
