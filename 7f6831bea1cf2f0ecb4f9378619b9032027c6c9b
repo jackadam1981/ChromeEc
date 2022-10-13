@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80c82f8_0eb980e3",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-10-13T14:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8b91585c_b440b818",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbbfd40e_9a902046",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-03T23:53:15Z",
       "side": 1,
       "message": "Nit: Weird line break.",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8fdac1d_d0f859af",
+        "filename": "common/usbc/usb_pd_servo_timer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-10-13T14:16:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbbfd40e_9a902046",
       "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d919ef8_7a221053",
+        "filename": "include/config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4439,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-10-13T14:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b30d1b_3a52da98",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e08df4f1_9f626cb3",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-02-03T23:53:15Z",
       "side": 1,
       "message": "Document",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9fc6179_b806e384",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-10-13T14:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08df4f1_9f626cb3",
       "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
