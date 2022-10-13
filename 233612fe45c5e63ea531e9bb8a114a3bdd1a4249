@@ -1,0 +1,271 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69890270_56834cb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "I\u0027m reacquainting myself with this CL, so I apologize if I\u0027m retreading old ground or not understanding things I used to understand. I still think this looks pretty good.\n\nOverall areas of concern:\n1. I think you may have accidentally deleted some PE code that we still need for non-Servo boards during a rebase. If I\u0027m right, please fix that before submitting.\n2. I\u0027m still re-grokking the timer module changes, but I retain my earlier suspicion that the interface used on Servo could be closer to the non-Servo interface if not identical. If that\u0027s true, I\u0027d really like to avoid creating a second timer interface for Servo.\n3. There are a number of places where this CL does a config check for Servo before calling a function. Broadly, I think the code would be easier to follow if these config checks were for features (that Servo disabled in its board.h), and they were inside the relevant functions, not at each call site. Depending on the feature, some instances of this might be harder to change than others, and I\u0027d be OK with you submitting the CL with call site Servo config checks and then refactoring in a followup CL to have function definition feature config checks.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7efb386d_4e36e999",
+        "filename": "board/servo_v4p1/usb_tc_snk_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Nit: I see that you\u0027ve converted to the interface of the Servo-specific timer module but with fewer timers befitting the stripped-down TC here. If you used another instance of the same Servo timer module here, you\u0027d waste memory by storing extra timers you didn\u0027t need, but you\u0027d save memory by avoiding redundant timer handling code. More importantly, you\u0027d avoid the future maintenance burden of the redundant code.\n\nWould this work, or would it require some kind of annoying refactor that I\u0027m not seeing?",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c3e4f5_e7999192",
+        "filename": "common/usb_common.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "This `#else` is the code that would be called on Servo, right? It looks like you\u0027re already overriding `dpm_get_source_pdo` in `board.c`. Could you just use the code on 223 and avoid the `CONFIG_USB_SERVO` check here?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 36
+      },
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f863854_9cc53b27",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Similar to DRPAutotoggle and debug accessory support, instead of having\n`#ifnef CONFIG_USB_SERVO` at every call site for the BIST functions, I think it would be more readable/modular to have `if (!IS_ENABLED(CONFIG_USB_PD_BIST)) return;` at the beginning of each BIST function in the `tcpm.h`.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a71db7c_f3104112",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Did you mean to also `#ifdef` out `partner_rmdo` in `struct policy_engine`? If not, this should be safe to leave in for Servo.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577c4f0a_0440ebc1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Nit: Equivalently, you could initialize `vpd_vdo \u003d PD_VDO_INVALID` above.\n\nIn the case where it\u0027s not a Servo, and the cable type is not VPD, this will change the value of `vpd_vdo` from 0 to `PD_VDO_INVALID`. Does that matter?",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "010894e0_588f02a6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Nit: Would anything bad happen if we moved all of the not-Servo settings into the `if (!IS_ENABLED(CONFIG_USB_SERVO))` block above? I think that would be easier to follow.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61dfca56_7f1ef56d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2379,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "AFAIK, this condition should always be true for the Servo. Do we need the config check?",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e306abf5_3c88252b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2723,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Nit: I\u0027ve usually been confused by the flow of this function when I look at it even without the Servo stuff. It might be good to have a little comment blurb explaining the modified operation and timer use on Servo.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a6b451_418cc860",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "It looks like `pe_in_frs_mode` should consistently return `false` due to `PE_FLAGS_FAST_ROLE_SWAP_PATH` not being set. Do we need this config check here?",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990f0db4_fc7b6fbf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "It seems like these clauses should already be disabled on Servo by the `IS_ENABLED` checks for configs that are `#undef`ed in board.h. Is this `#ifndef` necessary? Same question about `tc_unattached_snk_run`.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5777d91_42f8e779",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure I\u0027m 100% following the changes in this file, but it looks like you\u0027re keeping the task \"paused\" for Servo, and the primary effect of that is to go down the `return -1` path here. And I\u0027m guessing that you initialized `timeout` to `USBC_EVENT_TIMEOUT` to get rid of a compiler warning, and that doesn\u0027t actually change the return value in any real scenario.\n\nIf so, would it suffice here to do this?\n```\nif (IS_ENABLED(CONFIG_USB_SERVO) || paused[port]) {\n  timeout \u003d -1;\n} else { /* Same as before */\n```\n\nIf that compiles and links normally, I think it would be easier to follow here, and I think the task code would be easier to follow in general if \"paused\" didn\u0027t have special behavior for Servo.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5edc3872_70833eec",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Remind me, are we doing this because the stripped-down timer implementation won\u0027t send `TASK_EVENT_TIMER` to the PD task?",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a53b9d6_f18d978c",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Nit: Were these new line breaks intentional? A few more scattered throughout the CL.",
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7f0e0d_db1808b4",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "I think we talked about this in January, but I don\u0027t really get this interface change. It looks like these functions are made to take the place of `pd_timer_disable_range` on Servo due to the different Servo timer implementation. The delta in the PE straightforwardly does this.\n\nIn the PRL, this CL disables the `pd_timer_disable_range` call in the Servo case, but I don\u0027t see a corresponding call to `pr_timer_init`. In the TC, this CL adds a call to `tc_timer_init` in the Servo case, but I don\u0027t see a corresponding call to `pd_timer_disable_range`.\n\nCan you clarify?",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 29
+      },
+      "revId": "233612fe45c5e63ea531e9bb8a114a3bdd1a4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

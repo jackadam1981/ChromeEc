@@ -299,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59530da6_e0f7a025",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2657,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c928a7a_067aceec",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84db5409_a58aa9e5",
@@ -558,6 +576,24 @@
       "side": 1,
       "message": "Could you elaborate?",
       "parentUuid": "6caecc86_712314bf",
+      "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90dbe69_168f8dc5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Lol, it\u0027s been 9 months, but I\u0027ll try.\n\nFirst, what I think I meant: We have feature configs like `CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE` that you\u0027re turning off in the Servo board config. The DRP AutoToggle code here mostly doesn\u0027t have `CONFIG_SERVO` checks, and I think that makes it nicely generic. It would separate concerns here to have something like `CONFIG_USB_PD_SUPPORT_DEBUG_ACCESSORY` (name up to you), check for that here, and undefine it in `servo_v4p1/board.h`.\n\nLooking at this code again, I\u0027d go a bit further. Having these config checks every time we call into a `tcpm_debug_*` function makes the TC state machine a little harder to read. I would rather just call the functions unconditionally here and then in `tcpm.h` have something like this:\n```\nstatic inline int tcpm_debug_accessory(int port, bool enable)\n{\n  if (!IS_ENABLED(CONFIG_USB_PD_SUPPORT_DEBUG_ACCESSORY)\n    return EC_SUCCESS;\n  \n  ...\n```\nI think that would be more readable.",
+      "parentUuid": "954bb75f_59d71250",
       "revId": "d0a1468c3a0ba8f01e62be62d6acff5d65f05e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

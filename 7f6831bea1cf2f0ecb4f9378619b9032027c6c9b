@@ -90,6 +90,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34093293_09fa7d97",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:24:52Z",
+      "side": 1,
+      "message": "Did you mean to remove this?",
+      "revId": "7f6831bea1cf2f0ecb4f9378619b9032027c6c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46b30d1b_3a52da98",
         "filename": "include/config.h",
         "patchSetId": 15
