@@ -70,6 +70,24 @@
       "parentUuid": "40707f32_6670f9be",
       "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e1ba07_dd6cac4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-13T19:00:23Z",
+      "side": 1,
+      "message": "I understand where you\u0027re coming from on proving that there exists a failing test, I even added that in the documentation at https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3945693/3/docs/zephyr/ztest.md#167 where the comment tells you where to look. I don\u0027t think we should or can enforce this. Once testing team is sunset, everyone goes back to being their own area experts. I wouldn\u0027t expect someone writing a test for a component to know the inner workings of the power subsystem in this example. This might illustrate my thought process on this:\n\n1. Someone is writing some logic (lets call it component A) that only runs in S0.\n2. They add a test that:\n2.a. Puts the system in S0\n2.b. Calls zassume to make sure we\u0027re in S0\n2.c. Runs the test\n\nIf 2.a. fails, this person (that might have nothing to do with power state logic) shouldn\u0027t need to know how those tests are organized, or where to even look for them. Having the `pass`/`fail`/`skip` states exposes a new state where we could find places where we might have coverage but no actual tests (and considering how quickly we\u0027ve been adding tests, I would venture there are quite a few of these).\n\n```\n\u003e We should never use zassume until after we\u0027ve already had an instance where 50 tests failed and we found the root cause test and demonstrated that before fixing the bug, we had 1 failure and 49 skips.\n```\n\nI\u0027m not sure I follow, why? We know this _can_ happen. Why wait until we see it to act? Why not set things up to be more future proof?",
+      "parentUuid": "c75d4394_a1108e6f",
+      "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
