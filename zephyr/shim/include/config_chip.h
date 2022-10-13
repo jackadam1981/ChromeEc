@@ -617,6 +617,10 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_FAN_BYPASS_SLOW_RESPONSE
 #endif
 
+#ifdef CONFIG_PLATFORM_EC_FAN_RPM_DEVIATION
+#define RPM_DEVIATION CONFIG_PLATFORM_EC_FAN_RPM_DEVIATION
+#endif
+
 #ifdef CONFIG_PLATFORM_EC_I2C
 /* Also see shim/include/i2c/i2c.h which defines the ports enum */
 #define CONFIG_I2C_CONTROLLER
