@@ -99,6 +99,12 @@ config PLATFORM_EC_NUM_FANS
 	  Declare the number of fans supported on this board and avilable
 	  for control through fan APIs.
 
+config PLATFORM_EC_FAN_RPM_DEVIATION
+	int "Percentage of fan rpm deviation"
+	default 7
+	help
+	  Declare the number of fan rpm deviation.
+
 endif # PLATFORM_EC_FAN
 
 config PLATFORM_EC_FAN_BYPASS_SLOW_RESPONSE
