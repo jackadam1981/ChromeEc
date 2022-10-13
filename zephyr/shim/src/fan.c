@@ -63,7 +63,7 @@ const struct fan_t fans[FAN_CH_COUNT] = { DT_INST_FOREACH_CHILD(0, FAN_INST) };
 
 /* Rpm deviation (Unit:percent) */
 #ifndef RPM_DEVIATION
-#define RPM_DEVIATION 7
+#define RPM_DEVIATION DT_PROP(DT_PATH(fans, fan_0), rpm_deviation)
 #endif
 
 /* Margin of target rpm */
