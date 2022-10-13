@@ -297,9 +297,9 @@ __maybe_unused static const struct ec_thermal_config thermal_regulator =
 	THERMAL_REGULATOR;
 
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_1_SOC] = thermal_cpu,
-	[TEMP_SENSOR_2_CHARGER] = thermal_charger,
-	[TEMP_SENSOR_3_WWAN] = thermal_wwan,
-	[TEMP_SENSOR_4_DDR] = thermal_ddr,
-	[TEMP_SENSOR_5_REGULATOR] = thermal_regulator,
+	[TEMP_SENSOR_1_SOC] = THERMAL_CPU,
+	[TEMP_SENSOR_2_CHARGER] = THERMAL_CHARGER,
+	[TEMP_SENSOR_3_WWAN] = THERMAL_WWAN,
+	[TEMP_SENSOR_4_DDR] = THERMAL_DDR,
+	[TEMP_SENSOR_5_REGULATOR] = THERMAL_REGULATOR,
 };
