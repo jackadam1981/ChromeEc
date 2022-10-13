@@ -4,9 +4,9 @@
 
 menuconfig PLATFORM_EC_KEYBOARD
 	bool "Keyboard support"
+	default y if DT_HAS_CROS_KEYSCAN_ENABLED
+	default y if $(dt_chosen_enabled,"cros-ec,raw-kb")
 	select HAS_TASK_KEYSCAN
-	default n if ARCH_POSIX
-	default y
 	help
 	  Enable compilation of support for scanning a keyboard and providing
 	  the resulting input to the AP over the host interface. This consists
