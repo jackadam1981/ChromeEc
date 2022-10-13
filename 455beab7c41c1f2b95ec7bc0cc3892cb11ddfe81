@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0b20dc_31caf5fe",
+        "filename": "zephyr/projects/herobrine/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-10-13T19:16:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7ae154_bf230d8e",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "455beab7c41c1f2b95ec7bc0cc3892cb11ddfe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d21eedb0_660230e0",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dffe3289_be11a191",
+        "filename": "zephyr/projects/herobrine/gpio_zombie.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-10-13T19:16:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d21eedb0_660230e0",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "455beab7c41c1f2b95ec7bc0cc3892cb11ddfe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d804d535_feeb8a37",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-13T15:58:45Z",
       "side": 1,
       "message": "Update it",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "455beab7c41c1f2b95ec7bc0cc3892cb11ddfe81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c327fc5_9d01ebe2",
+        "filename": "zephyr/projects/herobrine/motionsense_zombie.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2022-10-13T19:16:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d804d535_feeb8a37",
       "range": {
         "startLine": 1,
         "startChar": 16,
