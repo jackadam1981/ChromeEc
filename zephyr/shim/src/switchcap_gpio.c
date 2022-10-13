@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include <zephyr/kernel.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
 #include "common.h"
