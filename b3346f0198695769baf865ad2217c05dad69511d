@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c18b2e2_9f551d5a",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-13T22:50:12Z",
+      "side": 1,
+      "message": "Hmm, but when I compile with `clang`, it\u0027s warning that `SLP_S3_SIGNAL_L` is of type `enum espi_vw_signal`. If you want to see the full error you can checkout this commit and build with:\n\n```\nrm -rf build \u0026\u0026 CC\u003dclang make BOARD\u003dadlrvpp_npcx -j\n```",
+      "parentUuid": "40b1bed6_9ade9d08",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 49
+      },
+      "revId": "b3346f0198695769baf865ad2217c05dad69511d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "257b7d7e_3c9c033e",
         "filename": "power/icelake.c",
         "patchSetId": 1
