@@ -16,6 +16,24 @@
       "message": "nit: Since `..._hard_reset_as_role` handle vconn, I think it is safe to remove it from common reset.",
       "revId": "d7646d0e0dae20c28a01d1396a118ea307a7e28e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a45db0ca_60ccfdec",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-13T23:43:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45cfc9d2_be22860a",
+      "revId": "d7646d0e0dae20c28a01d1396a118ea307a7e28e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
