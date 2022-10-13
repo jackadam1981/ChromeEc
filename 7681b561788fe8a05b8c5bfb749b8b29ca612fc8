@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0138d2f_5db95049",
+        "filename": "zephyr/emul/tcpc/emul_ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-13T19:48:26Z",
+      "side": 1,
+      "message": "reg_id is a single byte register.  This should handled by the `case PS8XXX_EMUL_PORT_0` case below.\n\nThis register is documented here: http://issuetracker.google.com/236761058#comment36",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 0
+      },
+      "revId": "7681b561788fe8a05b8c5bfb749b8b29ca612fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
