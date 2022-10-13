@@ -43,25 +43,22 @@
 		compatible = "cros-ec,temp-sensors";
 		charger-thermistor {
 			temp_host_high = <100>;
-			temp_host_halt = <105>;
-			temp_host_release_high = <80>;
+			temp_host_halt = <110>;
+			temp_host_release_high = <90>;
+			temp_host_release_halt = <100>;
 			sensor = <&temp_charger_thermistor>;
 		};
 
 		memory-thermistor {
-			temp_host_high = <100>;
-			temp_host_halt = <105>;
-			temp_host_release_high = <80>;
+			temp_host_high = <91>;
+			temp_host_halt = <96>;
+			temp_host_release_high = <81>;
+			temp_host_release_halt = <86>;
 			power-good-pin = <&gpio_pg_pwr_s5>;
 			sensor = <&temp_memory_thermistor>;
 		};
 
 		cpu {
-			temp_host_high = <100>;
-			temp_host_halt = <105>;
-			temp_host_release_high = <80>;
-			temp_fan_off = <60>;
-			temp_fan_max = <90>;
 			power-good-pin = <&gpio_s0_pgood>;
 			sensor = <&temp_cpu>;
 		};
