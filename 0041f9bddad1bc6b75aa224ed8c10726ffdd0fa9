@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13a41fc9_7cdc3cbb",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-13T22:56:54Z",
+      "side": 1,
+      "message": "This is better, but can you also clarify in which sense this refers to input and output? For example is it an input to the emulator or an input to the SUT?",
+      "parentUuid": "e7b2bbbd_875371e0",
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68475d68_28124402",
         "filename": "zephyr/include/emul/emul_power_signals.h",
         "patchSetId": 9
