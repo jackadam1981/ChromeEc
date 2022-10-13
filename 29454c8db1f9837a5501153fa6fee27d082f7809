@@ -22,6 +22,30 @@
       },
       "revId": "29454c8db1f9837a5501153fa6fee27d082f7809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e4a34d_6f9f8b47",
+        "filename": "zephyr/test/drivers/default/src/ps8xxx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-10-13T20:58:22Z",
+      "side": 1,
+      "message": "I think this should be PS8815_PRODUCT_ID.\n\n```\nstatic int ps8745_make_device_id(...)\n{\n...\n      if (*pid \u003d\u003d PS8815_PRODUCT_ID \u0026\u0026 (cached_reg_id[port] \u0026 BIT(1)) !\u003d 0) {\n                /* PS8815 with this bit set is actually PS8745 */\n                *pid \u003d PS8745_PRODUCT_ID;\n        }\n...\n}\n\nstatic int ps8xxx_get_chip_info(...)\n{\n...\n#ifdef CONFIG_USB_PD_TCPM_PS8745_FORCE_ID\n        /* device ID 3 is PS8815 and might be misreported */\n        if (chip_info-\u003eproduct_id \u003d\u003d PS8815_PRODUCT_ID ||\n            chip_info-\u003edevice_id \u003d\u003d 0x0003) {\n                uint16_t pid \u003d chip_info-\u003eproduct_id;\n                uint16_t did \u003d chip_info-\u003edevice_id;\n\n                /* This function changes the PID to PS8745 */\n                rv \u003d ps8745_make_device_id(port, \u0026pid, \u0026did, live);\n\n                chip_info-\u003eproduct_id \u003d pid;\n                chip_info-\u003edevice_id \u003d did;\n                if (rv !\u003d EC_SUCCESS)\n                        return rv;\n        }\n#endif\n...\n}\n```",
+      "parentUuid": "aa5c4af4_2a144b0e",
+      "range": {
+        "startLine": 781,
+        "startChar": 11,
+        "endLine": 781,
+        "endChar": 28
+      },
+      "revId": "29454c8db1f9837a5501153fa6fee27d082f7809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
