@@ -40,7 +40,7 @@ const struct power_signal_info power_signal_list[] = {
 		.name = "SLP_S0_DEASSERTED",
 	},
 	[X86_SLP_S3_DEASSERTED] = {
-		.gpio = SLP_S3_SIGNAL_L,
+		.gpio = (enum gpio_signal)SLP_S3_SIGNAL_L,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "SLP_S3_DEASSERTED",
 	},
@@ -186,8 +186,9 @@ static void dsw_pwrok_pass_thru(void)
 			 */
 			msleep(1);
 			CPRINTS("Release SLP_S3_L");
-			gpio_reset(SLP_S3_SIGNAL_L);
-			power_signal_enable_interrupt(SLP_S3_SIGNAL_L);
+			gpio_reset((enum gpio_signal)SLP_S3_SIGNAL_L);
+			power_signal_enable_interrupt(
+				(enum gpio_signal)SLP_S3_SIGNAL_L);
 		}
 
 		CPRINTS("Pass thru GPIO_DSW_PWROK: %d", dswpwrok_in);
@@ -263,8 +264,10 @@ enum power_state power_handle_state(enum power_state state)
 			 * Drive SLP_S3_L from the EC until DSW_PWROK is high.
 			 */
 			CPRINTS("Drive SLP_S3_L low during PP3300_A rampup");
-			power_signal_disable_interrupt(SLP_S3_SIGNAL_L);
-			gpio_set_flags(SLP_S3_SIGNAL_L, GPIO_ODR_LOW);
+			power_signal_disable_interrupt(
+				(enum gpio_signal)SLP_S3_SIGNAL_L);
+			gpio_set_flags((enum gpio_signal)SLP_S3_SIGNAL_L,
+				       GPIO_ODR_LOW);
 		}
 
 		/* Default behavior - turn on PP5000 rail first */
