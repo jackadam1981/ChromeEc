@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da847a10_79d9c529",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-13T18:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5027cab8_378f4768",
+      "revId": "768d8547e66b17fe23c69ebaded4d6e323df950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c6ba93d_3220aeed",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e953b9_e228e528",
+        "filename": "common/acpi.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-13T18:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c6ba93d_3220aeed",
+      "range": {
+        "startLine": 137,
+        "startChar": 69,
+        "endLine": 137,
+        "endChar": 70
+      },
+      "revId": "768d8547e66b17fe23c69ebaded4d6e323df950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1dded95_a5c661e5",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-23T16:47:22Z",
       "side": 1,
       "message": "Can we prefix with an underscrore so people know it\u0027s a private macro?",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "768d8547e66b17fe23c69ebaded4d6e323df950d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4bc9c04_f9b5765a",
+        "filename": "include/compiler.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-13T18:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1dded95_a5c661e5",
       "range": {
         "startLine": 45,
         "startChar": 8,
