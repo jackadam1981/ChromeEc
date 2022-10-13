@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d92a99_ae3cb353",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-13T12:11:31Z",
+      "side": 1,
+      "message": "use i2c_update8",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "c0cefc6d8593af4ebf5442891b2e1561e25b48f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
