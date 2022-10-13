@@ -75,7 +75,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "copano",
     "coral",
     "corori",
-    # "corori2", # overflows flash
+    "corori2",
     "cret",
     "crota",
     "dalboz",
