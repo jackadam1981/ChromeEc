@@ -4,6 +4,7 @@
  */
 
 #include "battery.h"
+#include "body_detection.h"
 #include "button.h"
 #include "charge_ramp.h"
 #include "charger.h"
@@ -63,3 +64,18 @@ int board_sensor_at_360(void)
 
 	return 0;
 }
+
+static void board_tablet_mode_change(void)
+{
+	if (!board_is_convertible())
+		return;
+	/*
+	 * Turn off body detection in tablet mode.
+	 */
+	if (tablet_get_mode()) {
+		body_detect_set_enable(false);
+	} else
+		body_detect_set_enable(true);
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, board_tablet_mode_change,
+	     HOOK_PRIO_DEFAULT);
