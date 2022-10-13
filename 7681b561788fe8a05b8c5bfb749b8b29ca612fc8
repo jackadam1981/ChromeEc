@@ -46,6 +46,30 @@
       },
       "revId": "7681b561788fe8a05b8c5bfb749b8b29ca612fc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d95337c_d37b6487",
+        "filename": "zephyr/emul/tcpc/emul_ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-13T20:29:14Z",
+      "side": 1,
+      "message": "What I mean is this logic should be part of the switch statement below:\n```\n\tswitch (port) {\n\tcase PS8XXX_EMUL_PORT_0:\n\t    if ((prod_id \u003d\u003d 8815 || 8745) \u0026\u0026 reg \u003d\u003d PS8815_P0_REG_ID)\n\t       ...\n```",
+      "parentUuid": "928dbea7_cdd1a69e",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 0
+      },
+      "revId": "7681b561788fe8a05b8c5bfb749b8b29ca612fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
