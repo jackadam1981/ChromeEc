@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0308a3a_2b282f61",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-13T14:27:45Z",
+      "side": 1,
+      "message": "Not *easier* just possible :) We\u0027re working on fixing that in upstream twister.",
+      "parentUuid": "fa004214_6470857c",
+      "range": {
+        "startLine": 302,
+        "startChar": 36,
+        "endLine": 302,
+        "endChar": 42
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99527e23_553f9975",
         "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
         "patchSetId": 14
