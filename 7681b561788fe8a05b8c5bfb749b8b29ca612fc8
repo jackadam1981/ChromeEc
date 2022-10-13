@@ -70,6 +70,30 @@
       },
       "revId": "7681b561788fe8a05b8c5bfb749b8b29ca612fc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ba9843_00705362",
+        "filename": "zephyr/emul/tcpc/emul_ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-10-13T20:46:39Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "5d95337c_d37b6487",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 0
+      },
+      "revId": "7681b561788fe8a05b8c5bfb749b8b29ca612fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
