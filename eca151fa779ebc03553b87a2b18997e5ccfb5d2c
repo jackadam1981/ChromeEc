@@ -22,6 +22,30 @@
       },
       "revId": "eca151fa779ebc03553b87a2b18997e5ccfb5d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c552be_b3aec9e9",
+        "filename": "include/compiler.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-13T19:56:12Z",
+      "side": 1,
+      "message": "Yes, that is used by the `ENABLE_COMPILER_WARNING` macro below that works for both clang and gcc. But I also wanted a way to disable warnings only for clang and only for gcc since there are some warnings that are clang-specific/gcc-specific, so the the `_DISABLE...` macro is shared with those.",
+      "parentUuid": "9f47bd92_8d52b71c",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "eca151fa779ebc03553b87a2b18997e5ccfb5d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
