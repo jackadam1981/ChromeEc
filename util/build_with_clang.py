@@ -105,12 +105,12 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "hatch",
     "helios",
     "herobrine",
-    # "homestar", # overflows flash
+    "homestar",
     "jinlon",
     "kano",
     "karma",
     "kindred",
-    # "kingoftown", # overflows flash
+    "kingoftown",
     "kinox",
     "kohaku",
     "kuldax",
@@ -121,14 +121,14 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "lindar",
     "madoo",
     "magolor",
-    # "marzipan", # overflows flash
+    "marzipan",
     "meep",
     "metaknight",
     "mithrax",
     "moli",
     "moonbuggy",
     "morphius",
-    # "mrbland", # overflows flash
+    "mrbland",
     # "mushu", # overflows flash
     "nami",
     "nautilus",
@@ -141,9 +141,9 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "nuwani",
     "osiris",
     "palkia",
-    # "pazquel", # overflows flash
+    "pazquel",
     "phaser",
-    # "pompom", # overflows flash
+    "pompom",
     "poppy",
     "primus",
     "puff",
@@ -160,7 +160,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # "terrador", # overflows flash
     "treeya",
     "trembyle",
-    # "trogdor", # overflows flash
+    "trogdor",
     # "vell", # compilation errors
     "vilboz",
     "voema",
@@ -171,7 +171,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # "waddledoo", # overflows flash
     "waddledoo2",
     "woomax",
-    # "wormdingler", # overflows flash
+    "wormdingler",
     "yorp",
 ]
 
