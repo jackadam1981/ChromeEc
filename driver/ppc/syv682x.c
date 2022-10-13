@@ -79,8 +79,16 @@ static void syv682x_interrupt_delayed(int port, int delay);
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
-	return i2c_read8(ppc_chips[port].i2c_port,
+	int ret =  i2c_read8(ppc_chips[port].i2c_port,
 			 ppc_chips[port].i2c_addr_flags, reg, regval);
+        return ret;
+
+}
+
+static inline void check_read_then_write_back_read_only_control_4(uint8_t port, uint8_t regval, char *identifier) {
+  if (regval & (SYV682X_CONTROL_4_VBAT_OVP | SYV682X_CONTROL_4_VCONN_OCP)) {
+    CPRINTS("lschyi: EC read read-only bit (reg value: %x) set and will write it back to control 4 on port %d (in %s)", regval, port, identifier);
+  }
 }
 
 #ifdef CONFIG_USBC_PPC_SYV682C
@@ -359,6 +367,7 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 		/* Disable VCONN */
 		regval &=
 			~(SYV682X_CONTROL_4_VCONN2 | SYV682X_CONTROL_4_VCONN1);
+              check_read_then_write_back_read_only_control_4(port, regval, "svy682x_handle_control_4_interrupt");
 		write_reg(port, SYV682X_CONTROL_4_REG, regval);
 
 		ppc_prints("VCONN OC!", port);
@@ -528,6 +537,7 @@ static int syv682x_set_vconn(int port, int enable)
 	rv = read_reg(port, SYV682X_CONTROL_4_REG, &regval);
 	if (rv)
 		return rv;
+        check_read_then_write_back_read_only_control_4(port, regval, "syv682x_set_vconn");
 	/*
 	 * The control4 register interrupt bits are clear on read, check
 	 * register value to see if there are interrupts to avoid race
@@ -633,6 +643,7 @@ static int syv682x_set_frs_enable(int port, int enable)
 	int regval;
 
 	read_reg(port, SYV682X_CONTROL_4_REG, &regval);
+        check_read_then_write_back_read_only_control_4(port, regval, "syv682x_set_frs_enable");
 	syv682x_handle_control_4_interrupt(port, regval);
 
 	if (enable) {
