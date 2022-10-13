@@ -16,6 +16,24 @@
       "message": "I think zassume is still a mistake in this code. These aren\u0027t preconditions that can\u0027t be set outside the test. assume is for things like \"I only run on linux\".  Not, \"The caller forgot to set things up correctly before calling this util function\"",
       "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1eb9f23_4321788c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-13T14:26:56Z",
+      "side": 1,
+      "message": "I don\u0027t consider a failing assume/assert here to be a \"The caller forgot to set things up correctly before calling this util function\". I see utils.c intended shared functionality that is explicitly tested elsewhere.\n\nHowever, this is not something I feel strongly about because a failure in the utility code is (or at least should be) *obviously* not the fault of the test invoking the utility code.",
+      "parentUuid": "4ff049ed_55fb6c95",
+      "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
