@@ -583,6 +583,13 @@ config PLATFORM_EC_SHA256_HW_ACCELERATE
 
 endchoice # PLATFORM_EC_SHA256_MODE
 
+config PLATFORM_EC_SHA256_UNROLLED
+	bool "Manually unrol sha256 transform"
+	depends on PLATFORM_EC_SHA25_SW
+	default n
+	help
+	  Enable loop unroll to improve the performance.
+
 config PLATFORM_EC_SWITCH
 	bool "Memory mapped switches"
 	depends on PLATFORM_EC_HOSTCMD
