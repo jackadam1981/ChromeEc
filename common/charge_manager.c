@@ -377,7 +377,7 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 		if (charger_get_vbus_voltage(port, &voltage_mv))
 			voltage_mv = 0;
 #elif defined(CONFIG_USB_PD_VBUS_MEASURE_TCPC)
-		voltage_mv = tcpc_get_vbus_voltage(port);
+		voltage_mv = tcpm_get_vbus_voltage(port);
 #elif defined(CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT)
 		voltage_mv = adc_read_channel(board_get_vbus_adc(port));
 #elif defined(CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT)
