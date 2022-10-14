@@ -220,6 +220,7 @@ static int ps8xxx_emul_tcpc_write_byte(const struct emul *emul, int reg,
 		if (prod_id != PS8815_PRODUCT_ID) {
 			break;
 		}
+		__fallthrough;
 	case PS8XXX_REG_I2C_DEBUGGING_ENABLE:
 	case PS8XXX_REG_MUX_IN_HPD_ASSERTION:
 	case PS8XXX_REG_BIST_CONT_MODE_BYTE0:
@@ -267,6 +268,7 @@ static int ps8xxx_emul_tcpc_finish_write(const struct emul *emul, int reg,
 		if (prod_id != PS8815_PRODUCT_ID) {
 			break;
 		}
+		__fallthrough;
 	case PS8XXX_REG_I2C_DEBUGGING_ENABLE:
 	case PS8XXX_REG_MUX_IN_HPD_ASSERTION:
 	case PS8XXX_REG_BIST_CONT_MODE_BYTE0:
@@ -379,11 +381,13 @@ static int ps8xxx_emul_read_byte_workhorse(const struct emul *emul, int reg,
 			*val = data->dci_cfg;
 			return 0;
 		}
+		__fallthrough;
 	case PS8XXX_EMUL_PORT_GPIO:
 		if (reg == PS8805_REG_GPIO_CONTROL) {
 			*val = data->gpio_ctrl;
 			return 0;
 		}
+		__fallthrough;
 	case PS8XXX_EMUL_PORT_INVAL:
 		LOG_ERR("Invalid I2C address");
 		return -EIO;
@@ -461,11 +465,13 @@ static int ps8xxx_emul_write_byte_workhorse(const struct emul *emul, int reg,
 			data->dci_cfg = val;
 			return 0;
 		}
+		__fallthrough;
 	case PS8XXX_EMUL_PORT_GPIO:
 		if (reg == PS8805_REG_GPIO_CONTROL) {
 			data->gpio_ctrl = val;
 			return 0;
 		}
+		__fallthrough;
 	case PS8XXX_EMUL_PORT_INVAL:
 		LOG_ERR("Invalid I2C address");
 		return -EIO;
