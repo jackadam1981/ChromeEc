@@ -714,6 +714,19 @@ static void isl923x_init(int chgnum)
 		if (raw_write16(chgnum, ISL923X_REG_CONTROL1, reg))
 			goto init_fail;
 	}
+	if (IS_ENABLED(CONFIG_CHARGER_RAA489000) &&
+	    IS_ENABLED(CONFIG_CHARGER_TRICKLE_256mA)) {
+		/*
+		 * Set trickle charge current to 256mA.
+		 * For RAA48900 set 0x3d bit <15:13> = 111.
+		 */
+		if (raw_read16(chgnum, ISL923X_REG_CONTROL2, &reg))
+			goto init_fail;
+		if (CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT == 256)
+		    reg |= ISL923X_C2_TRICKLE_512;
+		if (raw_write16(chgnum, ISL923X_REG_CONTROL2, reg))
+			goto init_fail;
+	}
 
 	/* Revert all changes done by isl9238c_hibernate(). */
 	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C) && isl9238c_resume(chgnum))
