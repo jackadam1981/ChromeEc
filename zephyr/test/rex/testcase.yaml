@@ -5,4 +5,6 @@
 common:
   platform_allow: native_posix
 tests:
-  rex.default: {}
+  rex.default:
+    extra_configs:
+    - CONFIG_TEST_USB_PD_POLICY=y
