@@ -1332,6 +1332,9 @@
 /* Enable trickle charging */
 #undef CONFIG_TRICKLE_CHARGING
 
+/* Set trickle charge current by integer value */
+#undef CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT
+
 /* Wireless chargers */
 #undef CONFIG_CPS8100
 
