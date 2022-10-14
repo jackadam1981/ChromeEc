@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "808e3b9e_e1eca20a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-10-14T07:16:38Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "8c07225d_6b864592",
+      "revId": "68b85af2a807a6ce6007ede23891efb359e6ab16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "342a037e_6e9d017f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-13T15:31:28Z",
       "side": 1,
       "message": "The preferred method would probably be to create a new tcpm_* API in tcpm.h.  You could use something like tcpm_set_src_ctrl() as an example.\n\nSo you\u0027d: \n-Create the tcpm_* API\n-Convert the TCPC Vbus read to use this API and convert the existing tcpc_get_vbus_voltage\n-Add a .get_vbus_voltage entry to the NCT driver to use this new function\n\nThis prevents us from creating multiple implementations of tcpc_get_vbus_voltage() which would be unusable if, for example, a board used two different TCPCs on two different ports.",
+      "revId": "68b85af2a807a6ce6007ede23891efb359e6ab16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "473073d9_cfd65e87",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-10-14T07:16:38Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "342a037e_6e9d017f",
       "revId": "68b85af2a807a6ce6007ede23891efb359e6ab16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
