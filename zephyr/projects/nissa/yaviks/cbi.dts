@@ -73,12 +73,12 @@
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_KB_BACKLIGHT_OFF";
 				value = <1>;
-				default;
 			};
 			with-keyboard-backlight {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_KB_BACKLIGHT_ON";
 				value = <0>;
+				default;
 			};
 		};
 
