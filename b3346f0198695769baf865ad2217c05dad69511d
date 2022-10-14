@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae4faa1_daf9f5d8",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T21:48:38Z",
+      "side": 1,
+      "message": "Fixed by using `#if defined(CONFIG_CHIPSET_SLP_S3_L_OVERRIDE)` instead.",
+      "parentUuid": "a7572508_ad3a801f",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 49
+      },
+      "revId": "b3346f0198695769baf865ad2217c05dad69511d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "257b7d7e_3c9c033e",
