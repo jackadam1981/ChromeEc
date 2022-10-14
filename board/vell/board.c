@@ -46,3 +46,10 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+
+static void board_init(void)
+{
+	if (get_board_id() > 3)
+		gpio_enable_interrupt(GPIO_SEQ_EC_ALL_SYS_PG_WAKE);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_CHIPSET);
