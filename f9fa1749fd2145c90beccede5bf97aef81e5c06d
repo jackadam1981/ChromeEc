@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad453fe8_ab57a963",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-14T16:31:23Z",
+      "side": 1,
+      "message": "I don\u0027t think you need CONFIG_TEST_USB_PD_POLICY, just change the static inline below to test_mockable_static_inline.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "f9fa1749fd2145c90beccede5bf97aef81e5c06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6514ecf_74ac5716",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-14T16:31:23Z",
+      "side": 1,
+      "message": "Likewise here, I don\u0027t think you need CONFIG_TEST_USB_PD_POLICY, just change the static inline below to test_mockable_static_inline.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 13
+      },
+      "revId": "f9fa1749fd2145c90beccede5bf97aef81e5c06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7875d79_4083d024",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-14T16:31:23Z",
+      "side": 1,
+      "message": "Just put the configs you need into the prj.conf file in your test.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "f9fa1749fd2145c90beccede5bf97aef81e5c06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
