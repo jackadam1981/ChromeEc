@@ -1332,6 +1332,9 @@
 /* Enable trickle charging */
 #undef CONFIG_TRICKLE_CHARGING
 
+/* Set trickle charge current to 256mA */
+#undef CONFIG_CHARGER_TRICKLE_256mA
+
 /* Wireless chargers */
 #undef CONFIG_CPS8100
 
