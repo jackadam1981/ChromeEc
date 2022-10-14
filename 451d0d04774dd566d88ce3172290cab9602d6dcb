@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71d4306_2dab5bb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-14T16:57:10Z",
+      "side": 1,
+      "message": "This is looking good.  You should verify this works on a board that uses CONFIG_UART_INTERRUPT_DRIVEN.",
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6518563c_304eaa51",
+        "filename": "common/chargen.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-14T16:57:10Z",
+      "side": 1,
+      "message": "Seems like this should be guarded with !USB.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56ba6f6_b6804c99",
+        "filename": "common/chargen.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-14T16:57:10Z",
+      "side": 1,
+      "message": "Document why you\u0027re disabling the console task and why this is only needed for !Zephyr.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22467464_0ad98574",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-14T16:57:10Z",
+      "side": 1,
+      "message": "You should also break the python changes out as a separate CL.  Make this a parent CL to the firmrware changes.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78e2b7b_e08ab3c9",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-14T16:57:10Z",
+      "side": 1,
+      "message": "If CONFIG_UART_INTERRUPT_DRIVEN, and shell bypass, I believe you should use `ring_buf_get(\u0026rx_buffer)`.  It looks like the shell_uart.c module upstream takes care of the UART polling when interrupts are disabled.",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 39
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1435b705_939f4d0c",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-14T16:57:10Z",
+      "side": 1,
+      "message": "Looks like the API upstream changed with this PR: https://github.com/zephyrproject-rtos/zephyr/pull/46812\n\nOriginally -EINVAL indicated that \"Work item is being processed or has completed its work\", but now the function returns 0 for this condition.\n\nSo you can also delete the special handling for -EINVAL.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
