@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd06e07_edeb8839",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:31:08Z",
+      "side": 1,
+      "message": "@chlin56@nuvoton.com Can you confirm that this is an intentional fallthrough? Or should we put a `break` here?",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32fd7e6d_06d37191",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:31:08Z",
+      "side": 1,
+      "message": "@alevkoy@chromium.org Can you verify that the two `__fallthrough`s in this file are intentional? Should they be `break` instead?",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b218d9_73b6bb02",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:31:08Z",
+      "side": 1,
+      "message": "Confirmed this is correct behavior in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3949622/comment/afe9734b_3e863e46/",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da7af8a_51b2b2d9",
+        "filename": "zephyr/emul/tcpc/emul_ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:31:08Z",
+      "side": 1,
+      "message": "@tmichalec@google.com @tm@semihalf.com Are the fallthroughs in this file intentional? Can you review whether it\u0027s correct to use `__fallthrough` or whether any should be a `break` instead?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e2c2ee_55830e6d",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:31:08Z",
+      "side": 1,
+      "message": "@tmichalec@google.com @tm@semihalf.com Is this fallthrough intentional? Can you review whether it\u0027s correct to use `__fallthrough` or whether any should be a `break` instead?",
+      "range": {
+        "startLine": 1347,
+        "startChar": 2,
+        "endLine": 1347,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
