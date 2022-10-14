@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877091fd_55bff8ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:50:25Z",
+      "side": 1,
+      "message": "The tasks for the tests should be defined in `test/testname.tasklist`. Is it possible to use that to override the size?\n\n(Maybe not since it looks like the tasks in that file don\u0027t include the console task; I haven\u0027t looked at how the tasks are a configured for tests in a while.)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "15ef682289da45646cd9b7ef152c132cbf6a2c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
