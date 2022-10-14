@@ -2,5 +2,22 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+config TEST_USB_PD_POLICY
+	bool "Run the tests intended for usb_pd_policy"
+	help
+	  Include usb_pd_policy.c into the binary and test
+	  their functions.
+
+config TEST_FAKE_PLATFORM_EC_USB_PD_DISCHARGE
+	bool "Mock PLATFORM_EC_USB_PD_DISCHARGE"
+	help
+	  This is used to mock/fake the config option
+	  PLATFORM_EC_USB_PD_DISCHARGE for testing
+
+config TEST_FAKE_PLATFORM_EC_USB_PD_HOST_CMD
+	bool "Mock PLATFORM_EC_USB_PD_HOST_CMD"
+	help
+	  This is used to mock/fake the option
+	  PLATFORM_EC_USB_PD_HOST_CMD for testing
 
 source "Kconfig.zephyr"
