@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f55d9ebc_c5d71797",
+        "filename": "util/ectool.cc",
+        "patchSetId": 64
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T20:44:30Z",
+      "side": 0,
+      "message": "The `ec::VersionsCommand` command currently [only uses version 1](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/versions_command.h;l\u003d17;drc\u003d3a446f27a00fba076a5a42d383ae6134c333ee57), which matches the current `ec_commands.h`. I\u0027m assuming that if you\u0027re building `ectool` from ToT, you\u0027d be targeting an EC that uses the current `ec_commands.h` (as opposed to an old branch).\n\nIt is possible to make it support both v0 and v1 commands using a pattern [like this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_context_command_factory.cc), but I haven\u0027t implemented that for `ec::VersionsCommand` yet.",
+      "parentUuid": "f124bbfb_1896cb17",
+      "range": {
+        "startLine": 1034,
+        "startChar": 6,
+        "endLine": 1034,
+        "endChar": 40
+      },
+      "revId": "d9dba6f2a8f1f09ce059295f4fb718fdceb51864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0afe3bf_9923baf5",
         "filename": "util/ectool.cc",
         "patchSetId": 64
