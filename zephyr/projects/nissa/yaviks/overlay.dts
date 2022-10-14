@@ -130,17 +130,17 @@
 		};
 	};
 
-	temp_cpu: cpu {
+	temp_cpu_thermistor: cpu-thermistor {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_51K1_47K_4050B>;
 		adc = <&adc_temp_sensor_1>;
 	};
-	temp_5v_regulator: 5v_regulator {
+	temp_5v_regulator_thermistor: 5v-regulator-thermistor {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_51K1_47K_4050B>;
 		adc = <&adc_temp_sensor_2>;
 	};
-	temp_charger: charger {
+	temp_charger_thermistor: charger-thermistor {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_51K1_47K_4050B>;
 		adc = <&adc_temp_sensor_3>;
@@ -148,32 +148,32 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		cpu {
+		temp_cpu: cpu-thermistor {
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
+			temp_host_high = <75>;
+			temp_host_halt = <85>;
+			temp_host_release_high = <65>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
-			sensor = <&temp_cpu>;
+			sensor = <&temp_cpu_thermistor>;
 		};
-		5v_regulator {
+		temp_5v_regulator: 5v-regulator-thermistor {
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
+			temp_host_high = <75>;
+			temp_host_halt = <85>;
+			temp_host_release_high = <65>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
-			sensor = <&temp_5v_regulator>;
+			sensor = <&temp_5v_regulator_thermistor>;
 		};
-		charger {
+		temp_charger: charger-thermistor {
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
+			temp_host_high = <80>;
+			temp_host_halt = <85>;
+			temp_host_release_high = <75>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
-			sensor = <&temp_charger>;
+			sensor = <&temp_charger_thermistor>;
 		};
 	};
 
@@ -244,6 +244,7 @@
 			rpm_min = <2500>;
 			rpm_start = <2500>;
 			rpm_max = <4100>;
+			rpm_deviation = <1>;
 			enable_gpio = <&gpio_fan_enable>;
 		};
 	};
