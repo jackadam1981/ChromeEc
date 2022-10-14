@@ -117,6 +117,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e19141_692e3d7c",
+        "filename": "zephyr/emul/tcpc/emul_ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f20c2ae2_18c24680",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3e2c2ee_55830e6d",
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "Yes, this fallthrough is intentional.",
       "parentUuid": "e3e2c2ee_55830e6d",
+      "range": {
+        "startLine": 1347,
+        "startChar": 2,
+        "endLine": 1347,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9df14f7_a1d8f1f7",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T20:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d75ca1_39e5285e",
       "range": {
         "startLine": 1347,
         "startChar": 2,
