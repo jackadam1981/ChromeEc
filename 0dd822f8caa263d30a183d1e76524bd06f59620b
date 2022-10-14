@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f20c2ae2_18c24680",
+        "filename": "zephyr/emul/tcpc/emul_ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-10-14T19:29:18Z",
+      "side": 1,
+      "message": "Yes, this fallthrough is intentional.",
+      "parentUuid": "9da7af8a_51b2b2d9",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3e2c2ee_55830e6d",
         "filename": "zephyr/emul/tcpc/emul_tcpci.c",
         "patchSetId": 1
@@ -106,6 +130,30 @@
       "writtenOn": "2022-10-14T18:31:08Z",
       "side": 1,
       "message": "@tmichalec@google.com @tm@semihalf.com Is this fallthrough intentional? Can you review whether it\u0027s correct to use `__fallthrough` or whether any should be a `break` instead?",
+      "range": {
+        "startLine": 1347,
+        "startChar": 2,
+        "endLine": 1347,
+        "endChar": 16
+      },
+      "revId": "0dd822f8caa263d30a183d1e76524bd06f59620b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d75ca1_39e5285e",
+        "filename": "zephyr/emul/tcpc/emul_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-10-14T19:29:18Z",
+      "side": 1,
+      "message": "Yes, this fallthrough is intentional.",
+      "parentUuid": "e3e2c2ee_55830e6d",
       "range": {
         "startLine": 1347,
         "startChar": 2,
