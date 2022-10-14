@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382a118c_cfb21bb5",
+        "filename": "util/ectool.cc",
+        "patchSetId": 64
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-14T19:01:39Z",
+      "side": 1,
+      "message": "Why do we not use LOG(ERROR)?",
+      "range": {
+        "startLine": 1010,
+        "startChar": 2,
+        "endLine": 1010,
+        "endChar": 9
+      },
+      "revId": "06108cced8f25f5b3d724489cebf6a7ccf4c0304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

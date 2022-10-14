@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f124bbfb_1896cb17",
+        "filename": "util/ectool.cc",
+        "patchSetId": 64
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-14T19:01:39Z",
+      "side": 0,
+      "message": "Didn\u0027t we lose granularity for this case?",
+      "range": {
+        "startLine": 1034,
+        "startChar": 6,
+        "endLine": 1034,
+        "endChar": 40
+      },
+      "revId": "d9dba6f2a8f1f09ce059295f4fb718fdceb51864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0afe3bf_9923baf5",
+        "filename": "util/ectool.cc",
+        "patchSetId": 64
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-14T19:01:39Z",
+      "side": 0,
+      "message": "Didn\u0027t we lose granularity for this?",
+      "range": {
+        "startLine": 1044,
+        "startChar": 7,
+        "endLine": 1044,
+        "endChar": 34
+      },
+      "revId": "d9dba6f2a8f1f09ce059295f4fb718fdceb51864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
