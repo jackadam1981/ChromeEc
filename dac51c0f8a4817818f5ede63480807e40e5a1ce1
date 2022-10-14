@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff9149a_093415a0",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:34:00Z",
+      "side": 1,
+      "message": "Fixed the bug in https://crrev.com/c/3957419",
+      "parentUuid": "517b0a5e_7f48c710",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 36
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aca7e60a_5273dac0",
@@ -143,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0198f842_518d3794",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f8740f_f5caa61b",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 8
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "279215e9_6adbc0f7",
@@ -180,6 +228,30 @@
       "side": 1,
       "message": "If the sensor is only used a light sensor, yet.",
       "parentUuid": "279215e9_6adbc0f7",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 8
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7008405e_f74cec1d",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T18:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b38971fd_c70a9186",
       "range": {
         "startLine": 422,
         "startChar": 0,
