@@ -99,7 +99,6 @@
 #define CONFIG_WP_STORAGE_SIZE CONFIG_EC_PROTECTED_STORAGE_SIZE
 
 /* The UART console is on USART1 (PA9/PA10) */
-#undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
 
 #undef CONFIG_UART_TX_BUF_SIZE
@@ -130,13 +129,9 @@
 /* USB interface indexes (use define rather than enum to expand them) */
 #undef CONFIG_HOSTCMD_EVENTS
 #define USB_IFACE_UPDATE 0
-#ifdef SECTION_IS_RW
 #define CONFIG_HOST_INTERFACE_USB
 #define USB_IFACE_HOSTCMD 1
 #define USB_IFACE_COUNT 2
-#else
-#define USB_IFACE_COUNT 1
-#endif
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL 0
@@ -161,13 +156,14 @@
 
 #undef CONFIG_LID_SWITCH
 
+#undef CONFIG_USB_CONSOLE
+#define CONFIG_USB_CONSOLE_READ
+
 #ifdef SECTION_IS_RW
 
 #define CONFIG_CURVE25519
 
 #define CONFIG_USB_PAIRING
-
-#define CONFIG_USB_CONSOLE_READ
 
 #else /* SECTION_IS_RO */
 /* Sign and switch to RW partition on boot. */
