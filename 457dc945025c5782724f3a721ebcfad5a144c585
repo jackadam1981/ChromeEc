@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "082831df_63504694",
+        "filename": "zephyr/test/drivers/power_host_sleep/src/test_power_host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-14T19:22:33Z",
+      "side": 1,
+      "message": "nit: can just use `k_msleep()`",
+      "revId": "457dc945025c5782724f3a721ebcfad5a144c585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
