@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc9bcc7_bb692463",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-10-14T01:38:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29bc5c3d_f5b0941b",
+      "range": {
+        "startLine": 187,
+        "startChar": 39,
+        "endLine": 187,
+        "endChar": 45
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa004214_6470857c",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "699465d6_e86f536c",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-10-14T01:38:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0308a3a_2b282f61",
+      "range": {
+        "startLine": 302,
+        "startChar": 36,
+        "endLine": 302,
+        "endChar": 42
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99527e23_553f9975",
@@ -84,6 +132,30 @@
       "writtenOn": "2022-10-13T14:19:39Z",
       "side": 1,
       "message": "See above verify_ to test_",
+      "range": {
+        "startLine": 315,
+        "startChar": 36,
+        "endLine": 315,
+        "endChar": 42
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1cf7676_647eaef7",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2022-10-14T01:38:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99527e23_553f9975",
       "range": {
         "startLine": 315,
         "startChar": 36,
