@@ -286,12 +286,17 @@ static inline int tcpm_set_snk_ctrl(int port, int enable)
 		return EC_ERROR_UNIMPLEMENTED;
 }
 
+#ifdef CONFIG_TEST_USB_PD_POLICY
+test_mockable bool tcpm_get_src_ctrl(int port);
+#else
 static inline bool tcpm_get_src_ctrl(int port)
 {
 	return tcpc_config[port].drv->get_src_ctrl ?
 		       tcpc_config[port].drv->get_src_ctrl(port) :
 		       false;
 }
+#endif
+
 static inline int tcpm_set_src_ctrl(int port, int enable)
 {
 	if (tcpc_config[port].drv->set_src_ctrl != NULL)

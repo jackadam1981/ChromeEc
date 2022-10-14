@@ -5,6 +5,9 @@
 
 /* USB Power delivery module */
 
+#ifdef CONFIG_TEST_USB_PD_POLICY
+#define CONFIG_USB_PD_DISCHARGE
+#endif
 #ifndef __CROS_EC_USB_PD_H
 #define __CROS_EC_USB_PD_H
 
@@ -2566,6 +2569,11 @@ void pd_control_port_enable(int port);
  *
  * @param mask host event mask.
  */
+
+#ifdef CONFIG_TEST_USB_PD_POLICY
+#define CONFIG_USB_PD_HOST_CMD
+#endif
+
 #if defined(CONFIG_USB_PD_HOST_CMD) && !defined(CONFIG_USB_PD_TCPM_STUB)
 void pd_send_host_event(int mask);
 #else
