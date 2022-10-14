@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416879da_9534d08c",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T21:14:31Z",
+      "side": 1,
+      "message": "Looks like [`power_signal_enable_interrupt` checks if it\u0027s espi virtual wire](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/power/common.c;l\u003d126-135;drc\u003dba5ae875ad7d8c6bfcde816fb1fff89da99275d0).",
+      "range": {
+        "startLine": 190,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 39
+      },
+      "revId": "1a8c00683d39c4507ae8555171eb3ea3610687de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c7cc94_422bd570",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T21:14:31Z",
+      "side": 1,
+      "message": "Looks like [`power_signal_disable_interrupt` checks if it\u0027s espi virtual wire](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/power/common.c;l\u003d115-124;drc\u003dba5ae875ad7d8c6bfcde816fb1fff89da99275d0).",
+      "range": {
+        "startLine": 267,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 39
+      },
+      "revId": "1a8c00683d39c4507ae8555171eb3ea3610687de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
