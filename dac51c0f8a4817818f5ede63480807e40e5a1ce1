@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8af0118b_c6e7956b",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-14T00:48:55Z",
+      "side": 1,
+      "message": "That\u0027s a bug introduced in 2020 by:\ncommit 88441f3602 (\"driver: si114x: Clean up register list\")\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2603076\n\nI believe the sensor as a proximity sensor has been broken since.",
+      "parentUuid": "afe9734b_3e863e46",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 36
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aca7e60a_5273dac0",
         "filename": "driver/als_si114x.c",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0f8740f_f5caa61b",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-14T00:48:55Z",
+      "side": 1,
+      "message": "We still want to enable the sensor channels. The LEDs illuminates the room to be able to measure distance. When set to 0, we use the sensor as a simple light sensor.",
+      "parentUuid": "aca7e60a_5273dac0",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 8
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "279215e9_6adbc0f7",
         "filename": "driver/als_si114x.c",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-12T20:40:57Z",
       "side": 1,
       "message": "Is this the correct behavior?",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 8
+      },
+      "revId": "dac51c0f8a4817818f5ede63480807e40e5a1ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b38971fd_c70a9186",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-14T00:48:55Z",
+      "side": 1,
+      "message": "If the sensor is only used a light sensor, yet.",
+      "parentUuid": "279215e9_6adbc0f7",
       "range": {
         "startLine": 422,
         "startChar": 0,
