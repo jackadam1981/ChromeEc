@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b09cf5_0bbc0357",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-14T21:45:46Z",
+      "side": 1,
+      "message": "I believe this is very useful warning. I wish c-lang was designed such that \u0027break\u0027 is the default for switch statement (and a case falls through only if it has \u0027fallthrough\u0027).",
+      "revId": "691f95b26eb597bca411078b0b32a38c6e19ab2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
