@@ -16,6 +16,24 @@
       "message": "We are not fixing the root of the problem: when the device is in tablet mode, we should stay in low power mode, even if the on body/off body sensor sends an event saying it reaches the off body state.",
       "revId": "f3d91bef57d35dc09f0d68ea0b7f186ceaae92c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc60f88_13a88d13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-14T00:21:13Z",
+      "side": 1,
+      "message": "Got it. I\u0027m just trying to make the change more specifically to the board layer.\n\nSo we should still need the change in power_manager, right?",
+      "parentUuid": "8d1bdd5e_be174289",
+      "revId": "f3d91bef57d35dc09f0d68ea0b7f186ceaae92c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
