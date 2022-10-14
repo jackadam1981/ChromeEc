@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "247c8f65_19c92ec6",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-14T00:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a41fc9_7cdc3cbb",
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68475d68_28124402",
@@ -204,6 +222,30 @@
       "side": 1,
       "message": "Need to update comment.",
       "parentUuid": "16bbbd04_55e9b5b4",
+      "range": {
+        "startLine": 88,
+        "startChar": 59,
+        "endLine": 88,
+        "endChar": 79
+      },
+      "revId": "0041f9bddad1bc6b75aa224ed8c10726ffdd0fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "078ce094_a7591fd7",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-14T00:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aef8c067_ec0514bd",
       "range": {
         "startLine": 88,
         "startChar": 59,
