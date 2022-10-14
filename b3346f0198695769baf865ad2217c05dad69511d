@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19cd67be_ff0b2491",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-14T20:55:49Z",
+      "side": 1,
+      "message": "It looks like it\u0027s coming from these configs, not `CONFIG_CHIPSET_SLP_S3_L_OVERRIDE\u003dy`:\n\n`build/adlrvpp_npcx/.config`\n```\nCONFIG_HOST_INTERFACE_ESPI_VW_SLP_S3\u003dy\nCONFIG_HOST_INTERFACE_ESPI_VW_SLP_S4\u003dy\nCONFIG_HOST_INTERFACE_ESPI_VW_SLP_S5\u003dy\n```\n\n[`include/power/intel_x86.h`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/power/intel_x86.h;l\u003d34-44;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46)\n```\n/* GPIO for power signal */\n#ifdef CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S3\n#define SLP_S3_SIGNAL_L VW_SLP_S3_L\n#else\n#define SLP_S3_SIGNAL_L GPIO_PCH_SLP_S3_L\n#endif\n#ifdef CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S4\n#define SLP_S4_SIGNAL_L VW_SLP_S4_L\n#else\n#define SLP_S4_SIGNAL_L GPIO_PCH_SLP_S4_L\n#endif\n/*\n * The SLP_S5 signal has not traditionally been connected to the EC. If virtual\n * wire support is enabled, then SLP_S5 will be available that way. Otherwise,\n * use SLP_S4\u0027s GPIO as a proxy for SLP_S5. This matches old behavior and\n * effectively prevents S4 residency.\n */\n#ifdef CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S5\n#define SLP_S5_SIGNAL_L VW_SLP_S5_L\n#else\n#define SLP_S5_SIGNAL_L SLP_S4_SIGNAL_L\n#endif\n```\n\nSo on `adlrvpp_npcx`, we get:\n\n```\n#define SLP_S3_SIGNAL_L VW_SLP_S3_L\n#define SLP_S4_SIGNAL_L VW_SLP_S4_L\n#define SLP_S5_SIGNAL_L VW_SLP_S5_L\n```\n\nand those look like they come from:\n\n[`include/espi.h`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/espi.h;l\u003d13-43;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46)\n```\n/* Signal through VW */\nenum espi_vw_signal {\n\t/* The first valid VW signal is 0x2000 */\n\tVW_SIGNAL_START \u003d IOEX_LIMIT + 1,\n\tVW_SLP_S3_L \u003d VW_SIGNAL_START, /* index 02h (In)  */\n\tVW_SLP_S4_L,\n\tVW_SLP_S5_L,\n\t...\n```",
+      "parentUuid": "7db1f0d6_5c5ca1ad",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 49
+      },
+      "revId": "b3346f0198695769baf865ad2217c05dad69511d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "257b7d7e_3c9c033e",
         "filename": "power/icelake.c",
         "patchSetId": 1
