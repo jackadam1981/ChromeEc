@@ -128,11 +128,15 @@ void init_reset_log(void);
 
 #else /* !CONFIG_AP_POWER_CONTROL */
 
+#ifndef CONFIG_TEST_USB_PD_POLICY
+
 /* When no chipset is present, assume it is always off. */
 static inline int chipset_in_state(int state_mask)
 {
 	return state_mask & CHIPSET_STATE_ANY_OFF;
 }
+
+#endif
 
 static inline int chipset_in_or_transitioning_to_state(int state_mask)
 {

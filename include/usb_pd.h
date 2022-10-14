@@ -16,6 +16,11 @@
 #include "usb_pd_tcpm.h"
 #include "usb_pd_vdo.h"
 
+#ifdef CONFIG_ZTEST
+#define CONFIG_USB_PD_DISCHARGE
+#define CONFIG_USB_PD_HOST_CMD
+#endif
+
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
 
