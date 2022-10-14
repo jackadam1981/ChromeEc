@@ -102,6 +102,9 @@
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
 
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 2048
+
 /* Optional features */
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LTO
