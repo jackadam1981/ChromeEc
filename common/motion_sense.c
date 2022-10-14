@@ -1007,6 +1007,7 @@ void motion_sense_task(void *u)
 
 			/* We missed our collection time so wake soon */
 			if (time_diff <= 0) {
+				CPRINTS("sensor %d overran collection time!", i);
 				wait_us = 0;
 				break;
 			}
