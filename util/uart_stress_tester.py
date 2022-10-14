@@ -54,6 +54,17 @@ CR50_LOAD_GEN_CMD = "while [[ -f %s ]]; do   %s; done &" % (
 # infinitely.
 
 
+def removeprefix(string: str, prefix: str) -> str:
+    """
+    At the time of this writing, chroot is using python 3.6,
+    and removeprefix was introduced in 3.9. Borrow from the future.
+    https://peps.python.org/pep-0616/
+    """
+    if string.startswith(prefix):
+        return string[len(prefix) :]
+    return string[:]
+
+
 class ChargenTestError(Exception):
     """Exception for Uart Stress Test Error"""
 
@@ -98,10 +109,18 @@ class UartSerial(object):
             ],
             "end_of_input": LF,
         },
-        # EC
+        # EC legacy
         {
-            "prompt": "> ",
-            "device_type": "EC",
+            "prompt": ">",
+            "device_type": "EC(legacy)",
+            "prepare_cmd": ["chan save", "chan 0"],  # Disable console message
+            "cleanup_cmd": ["", "chan restore"],
+            "end_of_input": CRLF,
+        },
+        # EC Zephyr
+        {
+            "prompt": "ec:~$",
+            "device_type": "EC(Zephyr)",
             "prepare_cmd": ["chan save", "chan 0"],  # Disable console message
             "cleanup_cmd": ["", "chan restore"],
             "end_of_input": CRLF,
@@ -318,10 +337,16 @@ class UartSerial(object):
             ch_cap = (
                 "z"  # any character value is ok for loop initial condition.
             )
+
             while self.num_ch_cap < total_num_ch:
                 captured = self.get_output()
 
                 if captured:
+                    if self.num_ch_cap == 0:
+                        # Strip prompt on first read (if it's there)
+                        captured = removeprefix(
+                            captured, self.dev_prof["prompt"] + " "
+                        )
                     # There is some output data. Reset the data starvation count.
                     data_starve_count = 0
                 else:
