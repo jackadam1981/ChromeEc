@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6569d45e_3395d658",
+        "filename": "include/pwm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-14T20:40:29Z",
+      "side": 1,
+      "message": "I have no idea why this wasn\u0027t caught in prior CLs building. But this is needed for the DIV_ROUND_NEAREST.",
+      "revId": "6a37b45ba5d5d312ea69fb2c8e457d2a3c949710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
