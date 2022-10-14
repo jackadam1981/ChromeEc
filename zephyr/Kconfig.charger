@@ -672,5 +672,12 @@ config PLATFORM_EC_DEDICATED_CHARGE_PORT
 	bool "Dedicated charging port"
 	help
 	  Enable if there is a dedicated charging port on the system.
+config PLATFORM_EC_CHARGER_TRICKLE_256mA
+	bool "Trickle charge current setting 256mA"
+	default n
+	help
+	  Select to set trickle charge current to 256mA.
+
+	  This should be enabled by charger drivers which need it.
 
 endif # PLATFORM_EC_CHARGER
