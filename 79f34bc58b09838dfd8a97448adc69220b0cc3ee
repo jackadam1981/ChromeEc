@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe342647_cef846ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-14T19:04:52Z",
+      "side": 1,
+      "message": "Just a general comment: This test mocks one library function and directly calls another library function in a running system. It would be a more natural candidate for the unit testing framework when that works. You might already have code to test `EC_CMD_HOST_SLEEP_EVENT`. If not, that would be a more natural way to exercise this feature in an integration test for a running system.",
+      "revId": "79f34bc58b09838dfd8a97448adc69220b0cc3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
