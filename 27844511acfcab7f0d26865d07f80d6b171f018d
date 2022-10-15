@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e060836_4845c86a",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-15T00:12:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c52d85_9f84f671",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd69f159_c003d61a",
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "\u003e We need to trigger a real panic so that the core push regs to the stack, switch context, etc.\n\nIn case of software panic, we jump to exception_panic (\"bl exception_panic\", see software_panic() in core/cortex-m/panic.c). Probably software panic is not handled properly - exception_panic needs exception frame on stack.",
       "parentUuid": "dd69f159_c003d61a",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56613a1a_6d11e60e",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-15T00:12:09Z",
+      "side": 1,
+      "message": "Divide by zero works on cortex-m, but division instruction isn\u0027t available on cortex-m0. Any other ideas?",
+      "parentUuid": "2f82c6d6_9b349c9b",
       "range": {
         "startLine": 60,
         "startChar": 11,
