@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca04362_63d86c14",
+        "filename": "test/panic.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-17T21:48:39Z",
+      "side": 1,
+      "message": "I originally wrote it in 2021 (date of this commit), so I think it should technically be 2021.",
+      "parentUuid": "dd8a475e_7f1f1f53",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "891715ff5b581539f547a9fd947f89d03c2ad91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64af718f_c70a41d7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-17T18:54:35Z",
       "side": 1,
       "message": "I\u0027m not following the comments. Can you please elaborate on why we need to handle two cores differently here? You already verified panic_data (in step2). Why do you still care about panicinfo?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "891715ff5b581539f547a9fd947f89d03c2ad91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "668ab9dd_7a98e2a0",
+        "filename": "test/panic.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-17T21:48:39Z",
+      "side": 1,
+      "message": "Oh, I forgot this was still in there. I think it was from when I was debugging (running `panicinfo` manually). It shouldn\u0027t be needed for the test.",
+      "parentUuid": "64af718f_c70a41d7",
       "range": {
         "startLine": 108,
         "startChar": 0,
