@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "957e0fa8_ed987ee7",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-17T21:27:21Z",
+      "side": 1,
+      "message": "Make an option that outright selects the trickle charge current (specific to this driver) instead:\n\n``` \nchoice\n    prompt \"RAA489000 trickle charge current\"\n    depends on CHARGER_RAA489000\n    default RAA489000_TRICKLE_CHARGE_CURRENT_128MA\n    help\n        Set the current limit when trickle-charging.\n\n    config RAA489000_TRICKLE_CHARGE_CURRENT_64MA\n        bool \"64 mA\"\n    config RAA489000_TRICKLE_CHARGE_CURRENT_96MA\n        bool \"96 mA\"\n    config RAA489000_TRICKLE_CHARGE_CURRENT_128MA\n        bool \"128 mA\"\n    config RAA489000_TRICKLE_CHARGE_CURRENT_160MA\n        bool \"160 mA\"\n    config RAA489000_TRICKLE_CHARGE_CURRENT_192MA\n        bool \"192 mA\"\n    # 224, 256 mA\nendchoice\n```",
+      "revId": "48b9e10552f3d559507dee49edc11783ce47ac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
