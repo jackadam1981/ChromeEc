@@ -52,6 +52,24 @@
       "parentUuid": "3f5dbc11_ec5f6c69",
       "revId": "2bfe70d014b19e9ad082715fee05ebc9d1be8c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0337308_b6d48f0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-17T20:53:06Z",
+      "side": 1,
+      "message": "That makes sense.  We\u0027ll make the VDM control a sub-set of the AP required mode entry for now.",
+      "parentUuid": "0c67b8dc_a4a06b08",
+      "revId": "2bfe70d014b19e9ad082715fee05ebc9d1be8c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
