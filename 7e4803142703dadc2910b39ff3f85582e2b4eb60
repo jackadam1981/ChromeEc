@@ -238,6 +238,30 @@
       },
       "revId": "7e4803142703dadc2910b39ff3f85582e2b4eb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41ed04f_1cbef57d",
+        "filename": "core/cortex-m0/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-17T23:05:55Z",
+      "side": 1,
+      "message": "It looks like the CLs in the last comment work, so I\u0027m going to abandon this in favor of those.",
+      "parentUuid": "e043bbc3_0ffd3459",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 8
+      },
+      "revId": "7e4803142703dadc2910b39ff3f85582e2b4eb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
