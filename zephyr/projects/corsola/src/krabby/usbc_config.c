@@ -5,7 +5,9 @@
 
 /* Krabby board-specific USB-C configuration */
 
+#ifdef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
 #include "adc.h"
+#endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
 #include "baseboard_usbc_config.h"
 #include "charge_manager.h"
 #include "console.h"
@@ -36,6 +38,7 @@ int tusb1064_mux_1_board_init(const struct usb_mux *me)
 			   MASK_SET);
 }
 
+#ifdef CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 {
 	const static struct cc_para_t
@@ -56,6 +59,7 @@ const struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)
 
 	return &cc_parameter[port];
 }
+#endif
 
 void board_reset_pd_mcu(void)
 {
@@ -65,6 +69,7 @@ void board_reset_pd_mcu(void)
 	 */
 }
 
+#ifndef CONFIG_TEST
 int board_set_active_charge_port(int port)
 {
 	int i;
@@ -121,6 +126,7 @@ int board_set_active_charge_port(int port)
 
 	return EC_SUCCESS;
 }
+#endif
 
 #ifdef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
 enum adc_channel board_get_vbus_adc(int port)
