@@ -16,6 +16,24 @@
       "message": "nit: add a note that contents of the variable will be lost on sysjump",
       "revId": "8e5c995a7c94808dc25e8bb32db72e8f14d14c41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4c58d3_f9753ca3",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-10-17T21:23:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0bbb32b9_eb652074",
+      "revId": "8e5c995a7c94808dc25e8bb32db72e8f14d14c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
