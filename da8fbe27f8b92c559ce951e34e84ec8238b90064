@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a24ff9_e8a0d9cd",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-17T04:43:35Z",
+      "side": 0,
+      "message": "It would be much better to have this value as a device tree property rather than a #define that gets optionally set.\nIt could have a default value in the bindings of cros-ec,fans",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "da8fbe27f8b92c559ce951e34e84ec8238b90064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
