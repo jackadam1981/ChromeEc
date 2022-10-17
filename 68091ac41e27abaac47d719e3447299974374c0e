@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c672f737_deb9114c",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-10-17T09:24:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eda2dfbd_0e7aa12f",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d91f438c_71cfa261",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-17T05:09:53Z",
       "side": 1,
       "message": "I think it would be better if these config were expressed in device tree instead of hard coded, though I concede it would be a bigger change (but would provide the correct level of generality).\nAnd the board_override_fan_control() could be automatically defined (likely named differently) in the common code if the device tree config had a fan step table in it.\nThis would also allow unit test coverage for this code.\nWhether the code goes into common/thermal.c or zephyr/shim/src/fan.c would need to be considered.\n\nIf you think this level of change is too much here, then I\u0027m happy to take a stab at putting something together.",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b56d14_f7c1f015",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-10-17T09:24:51Z",
+      "side": 1,
+      "message": "Thanks you Andrew,\nI\u0027ll study if we can merge fan steps into device tree. \nWe\u0027ll need EC firmware for early next week for next board version, so there\u0027s limit of time for me, I\u0027ll do the study when available.",
+      "parentUuid": "d91f438c_71cfa261",
       "revId": "68091ac41e27abaac47d719e3447299974374c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c94f122_80c060f1",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-10-17T09:24:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c012b51f_af225085",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7c1865f_62d7dfc1",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-17T05:09:53Z",
       "side": 1,
       "message": "Instead of rpm[0], it should be rpm[fan].\nIf you want to hard code this to 0, I would suggest having rpm as a scalar value, and don\u0027t pass fan as a parameter.",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "164b7042_3e49d9be",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-10-17T09:24:51Z",
+      "side": 1,
+      "message": "Thanks for point out, use rpm[fan].",
+      "parentUuid": "e7c1865f_62d7dfc1",
       "revId": "68091ac41e27abaac47d719e3447299974374c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
