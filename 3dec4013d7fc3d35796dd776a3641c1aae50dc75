@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "afe635bb_eb29d975",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-17T05:17:45Z",
+      "side": 1,
+      "message": "Should we change to set `PLATFORM_EC_PD_OPERATING_POWER_MW` to 27w(larger than default 15w)?",
+      "parentUuid": "f85f21fd_07041d2d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29bc5c3d_f5b0941b",
         "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
         "patchSetId": 14
