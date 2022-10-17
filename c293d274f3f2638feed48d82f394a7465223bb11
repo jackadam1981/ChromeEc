@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45412fa1_89dad45e",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-17T22:31:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db7858b9_8d204657",
+      "revId": "c293d274f3f2638feed48d82f394a7465223bb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df710aa7_34e92fb1",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-14T22:30:53Z",
       "side": 1,
       "message": "blank line after decl",
+      "revId": "c293d274f3f2638feed48d82f394a7465223bb11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbc3777_7e7ffda1",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-17T22:31:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df710aa7_34e92fb1",
       "revId": "c293d274f3f2638feed48d82f394a7465223bb11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
