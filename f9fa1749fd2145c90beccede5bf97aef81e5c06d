@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1deba563_a7528081",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-10-17T17:07:10Z",
+      "side": 1,
+      "message": "I tried adding it earlier, it felt bit complex, hence went with macro hack. I remember it can\u0027t be added directly, after adding dependents there were GPIO and macros not found errors",
+      "parentUuid": "67d65b7d_59b38de4",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "f9fa1749fd2145c90beccede5bf97aef81e5c06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6514ecf_74ac5716",
         "filename": "include/driver/tcpm/tcpm.h",
         "patchSetId": 1
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "CONFIG_PLATFORM_EC_USB_PD_DISCHARGE",
       "parentUuid": "70b0114d_bd047e5f",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "f9fa1749fd2145c90beccede5bf97aef81e5c06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb1d538_55ec010e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2022-10-17T17:07:10Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_DISCHARGE stayed disabled after configuring CONFIG_PLATFORM_EC_USB_PD_DISCHARGE\u003dy in prj.conf",
+      "parentUuid": "38fe0498_fb0dd612",
       "range": {
         "startLine": 8,
         "startChar": 0,
