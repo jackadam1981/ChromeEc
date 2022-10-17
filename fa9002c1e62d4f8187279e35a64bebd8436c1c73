@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e89fa2_f4a6fb09",
+        "filename": "zephyr/test/drivers/ap_vdm_control/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-17T20:53:31Z",
+      "side": 1,
+      "message": "I pretty much just copy/pasted from another project\u0027s file, so I can remove it for now",
+      "parentUuid": "de91ed33_cd2fb9f2",
+      "revId": "fa9002c1e62d4f8187279e35a64bebd8436c1c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9fec3b7_a5b1e886",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-13T23:38:21Z",
       "side": 1,
       "message": "`#include \"ec_commands.h\"`",
+      "revId": "fa9002c1e62d4f8187279e35a64bebd8436c1c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef34d4f_a0067f18",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-17T20:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9fec3b7_a5b1e886",
       "revId": "fa9002c1e62d4f8187279e35a64bebd8436c1c73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
