@@ -34,6 +34,23 @@
       "parentUuid": "8d1bdd5e_be174289",
       "revId": "f3d91bef57d35dc09f0d68ea0b7f186ceaae92c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2722f7e2_77185bbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-17T05:05:52Z",
+      "side": 1,
+      "message": "Hi Gwendal,\n\nSince the power_manager may impact other chromebook, could we use this CL as a workaround?\n\nThanks.",
+      "revId": "f3d91bef57d35dc09f0d68ea0b7f186ceaae92c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
