@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2475bb7_9cfe60fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-17T17:27:39Z",
+      "side": 1,
+      "message": "I think both changes make sense.\n\nThe DPS task can\u0027t run battery voltage comparisons when there\u0027s no battery, so it makes sense to have the task suspend in this case.\n\nBut boards should also tune their boot-up CONFIG values correctly to reflect what they need for boots.\n\nI think we use `PLATFORM_EC_PD_OPERATING_POWER_MW` only for some specific PDO and request checks.  For boot-up, you would want to change `PLATFORM_EC_CHARGER_MIN_POWER_MW_FOR_POWER_ON`",
+      "parentUuid": "afe635bb_eb29d975",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "3dec4013d7fc3d35796dd776a3641c1aae50dc75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29bc5c3d_f5b0941b",
         "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_source.c",
         "patchSetId": 14
