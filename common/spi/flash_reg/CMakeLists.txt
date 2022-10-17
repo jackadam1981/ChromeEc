@@ -10,6 +10,9 @@ if(BOARD STREQUAL unit_testing)
 else()
   zephyr_library_named(spi_flash_reg)
   target_link_libraries(spi_flash_reg PRIVATE cros_ec_interface)
+  if (DEFINED CONFIG_LTO)
+    set_property(TARGET spi_flash_reg PROPERTY INTERPROCEDURAL_OPTIMIZATION True)
+  endif()
 endif()
 
 # Add the sources
