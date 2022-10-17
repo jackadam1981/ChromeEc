@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "becb63cc_0de80de1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-17T19:28:48Z",
+      "side": 1,
+      "message": "We\u0027re finalizing our zephyr project layouts now, but our end goal is to have only one device tree file (e.g. *.dts file) per project, and have it perform any final changes or overrides to the devicetree.\n\nFor what you\u0027re trying to change in the following CL, I believe you should be able to override and change the devicetree properties on each temperature sensor and fan node.  For an example of what it looks like to change a node, you can reference usbc_port0, which we change properties of in skyrim.dts.\n\nWhen validating that your overrides worked correctly, you should be able to reference `build/zephyr/winterhold/build-ro/zephyr/zephyr.dts` to see what the final devicetree is with all node overrides taken into account.",
+      "revId": "058e78197428cba8e1b814ce4d1bb4a7c73f2089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
