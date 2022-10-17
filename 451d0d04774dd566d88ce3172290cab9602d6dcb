@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d26f3c_9c0883d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-17T15:44:07Z",
+      "side": 1,
+      "message": "As discussed in person- `CONFIG_UART_INTERRUPT_DRIVEN` is enabled by default on nuvoton boards and is required for the `chargen` feature to be enabled (perhaps that requirement isn\u0027t needed). But I tested that nereid builds w/ `CONFIG_UART_INTERRUPT_DRIVEN` disabled and `chargen` enabled.",
+      "parentUuid": "e71d4306_2dab5bb2",
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6518563c_304eaa51",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-14T16:57:10Z",
       "side": 1,
       "message": "Seems like this should be guarded with !USB.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77cdd169_085e97b6",
+        "filename": "common/chargen.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-17T15:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6518563c_304eaa51",
       "range": {
         "startLine": 45,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68d337a_897e485c",
+        "filename": "common/chargen.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-17T15:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e56ba6f6_b6804c99",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22467464_0ad98574",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-10-14T16:57:10Z",
       "side": 1,
       "message": "You should also break the python changes out as a separate CL.  Make this a parent CL to the firmrware changes.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "604d75c0_68e8d84d",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-17T15:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22467464_0ad98574",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48f987c_afabebcf",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-17T15:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78e2b7b_e08ab3c9",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 39
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1435b705_939f4d0c",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-10-14T16:57:10Z",
       "side": 1,
       "message": "Looks like the API upstream changed with this PR: https://github.com/zephyrproject-rtos/zephyr/pull/46812\n\nOriginally -EINVAL indicated that \"Work item is being processed or has completed its work\", but now the function returns 0 for this condition.\n\nSo you can also delete the special handling for -EINVAL.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "451d0d04774dd566d88ce3172290cab9602d6dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a96d3d_6652950d",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-17T15:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1435b705_939f4d0c",
       "range": {
         "startLine": 178,
         "startChar": 0,
