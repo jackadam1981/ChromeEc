@@ -1334,9 +1334,17 @@ enum usbpd_port {
 #define IT83XX_ESPI_VWCTRL0    REG8(IT83XX_ESPI_VW_BASE+0x90)
 #define ESPI_INTERRUPT_EVENT_PUT_PC (1 << 7)
 
+<<<<<<< HEAD   (ea13c7 :common: Not sleep 500ms when already left safe mode)
 #define IT83XX_ESPI_VWCTRL1    REG8(IT83XX_ESPI_VW_BASE+0x91)
 #define IT83XX_ESPI_VWCTRL2    REG8(IT83XX_ESPI_VW_BASE+0x92)
 #define IT83XX_ESPI_VWCTRL3    REG8(IT83XX_ESPI_VW_BASE+0x93)
+=======
+#define IT83XX_ESPI_VWCTRL1 REG8(IT83XX_ESPI_VW_BASE + 0x91)
+#define IT83XX_ESPI_VWCTRL2 REG8(IT83XX_ESPI_VW_BASE + 0x92)
+#define IT83XX_ESPI_VWCTRL3 REG8(IT83XX_ESPI_VW_BASE + 0x93)
+/* 1b: Refers to espi_reset# for pltrst */
+#define ESPI_PLTRST_ESPI_RESET BIT(4)
+>>>>>>> CHANGE (e82fb7 it83xx: espi: reset pltrst# virtual wire signal during espi )
 
 /* eSPI Queue 0 */
 #define IT83XX_ESPI_QUEUE_BASE  0x00F03300
