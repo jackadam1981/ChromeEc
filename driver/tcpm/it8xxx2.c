@@ -93,12 +93,36 @@ void it83xx_Rd_5_1K_only_for_hibernate(int port)
 	}
 }
 
+enum usb_tc_state {
+	/* Super States */
+	TC_CC_OPEN,
+	TC_CC_RD,
+	TC_CC_RP,
+	/* Normal States */
+	TC_DISABLED,
+	TC_ERROR_RECOVERY,
+	TC_UNATTACHED_SNK,
+	TC_ATTACH_WAIT_SNK,
+	TC_ATTACHED_SNK,
+	TC_UNATTACHED_SRC,
+	TC_ATTACH_WAIT_SRC,
+	TC_ATTACHED_SRC,
+	TC_TRY_SRC,
+	TC_TRY_WAIT_SNK,
+	TC_DRP_AUTO_TOGGLE,
+	TC_LOW_POWER_MODE,
+	TC_CT_UNATTACHED_SNK,
+	TC_CT_ATTACHED_SNK,
+
+	TC_STATE_COUNT,
+};
 static enum tcpc_cc_voltage_status it8xxx2_get_cc(enum usbpd_port port,
 						  enum usbpd_cc_pin cc_pin)
 {
 	enum usbpd_ufp_volt_status ufp_volt;
 	enum usbpd_dfp_volt_status dfp_volt;
 	enum tcpc_cc_voltage_status cc_state = TYPEC_CC_VOLT_OPEN;
+	extern int toggle_freq;
 
 	/*
 	 * Because the message header bit(8) field has different definition
@@ -113,6 +137,12 @@ static enum tcpc_cc_voltage_status it8xxx2_get_cc(enum usbpd_port port,
 			ufp_volt = USBPD_GET_SNK_COMPARE_CC1_VOLT(port);
 		else
 			ufp_volt = USBPD_GET_SNK_COMPARE_CC2_VOLT(port);
+
+		if (/*(toggle_freq >= 38) &&*/ (ufp_volt != USBPD_UFP_STATE_SNK_OPEN)) {
+			if (pd_get_task_state(port) == TC_UNATTACHED_SNK) {
+				ccprintf("toggle_freq %d, cc%d ufp_volt %d\n", toggle_freq, (cc_pin + 1), ufp_volt);
+			}
+		}
 
 		switch (ufp_volt) {
 		case USBPD_UFP_STATE_SNK_DEF:
@@ -137,6 +167,12 @@ static enum tcpc_cc_voltage_status it8xxx2_get_cc(enum usbpd_port port,
 			dfp_volt = USBPD_GET_SRC_COMPARE_CC1_VOLT(port);
 		else
 			dfp_volt = USBPD_GET_SRC_COMPARE_CC2_VOLT(port);
+
+		if (/*(toggle_freq >= 38) &&*/ (dfp_volt != USBPD_DFP_STATE_SRC_OPEN)) {
+			if (pd_get_task_state(port) == TC_UNATTACHED_SRC) {
+				ccprintf("toggle_freq %d, cc%d dfp_volt %d\n", toggle_freq, (cc_pin + 1), dfp_volt);
+			}
+		}
 
 		switch (dfp_volt) {
 		case USBPD_DFP_STATE_SRC_RA:
@@ -374,6 +410,9 @@ static void it8xxx2_set_power_role(enum usbpd_port port, int power_role)
 		IT83XX_USBPD_MHSR1(port) |= USBPD_REG_MASK_SOP_PORT_POWER_ROLE;
 		/* Bit1: CC1 and CC2 select Rp */
 		IT83XX_USBPD_CCCSR(port) |= USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT;
+		//if (pd_get_task_state(port) == TC_UNATTACHED_SRC) {
+		//	ccprintf("CCCSR 0x%x\n", IT83XX_USBPD_CCCSR(port));
+		//}
 	} else {
 		/*
 		 * Bit[0:6] BMC Rx threshold setting
@@ -391,6 +430,9 @@ static void it8xxx2_set_power_role(enum usbpd_port port, int power_role)
 		/* Bit1: CC1 and CC2 select Rd */
 		IT83XX_USBPD_CCCSR(port) &=
 			~USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT;
+		//if (pd_get_task_state(port) == TC_UNATTACHED_SNK) {
+		//	ccprintf("CCCSR 0x%x\n", IT83XX_USBPD_CCCSR(port));
+		//}
 	}
 }
 
@@ -962,6 +1004,7 @@ static void it8xxx2_tcpm_hook_disconnect(void)
 
 	/* Exit BIST test data mode */
 	USBPD_SW_RESET(port);
+	//it8xxx2_tcpm_init(port);
 
 	/*
 	 * Init rx status and disable PD PHY Tx and Rx module for better power
