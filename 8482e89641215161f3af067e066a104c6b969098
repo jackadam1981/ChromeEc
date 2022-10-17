@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fc7bcf6_39ae0cf0",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-17T21:32:07Z",
+      "side": 1,
+      "message": "`fan_0` shouldn\u0027t be special. There should either be a per-fan deviation option that gets initialized in `FAN_INST` or make this a kconfig option as well (applying to all fans).",
+      "range": {
+        "startLine": 66,
+        "startChar": 38,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "8482e89641215161f3af067e066a104c6b969098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
