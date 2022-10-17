@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c23a38_1f21eb38",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-17T18:24:18Z",
+      "side": 1,
+      "message": "Looks like you can fold the line into 80 columns like the line above.",
+      "range": {
+        "startLine": 237,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 67
+      },
+      "revId": "ece3d4d0a65eef7e6c1bb970e4ade2b02c9ac149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
