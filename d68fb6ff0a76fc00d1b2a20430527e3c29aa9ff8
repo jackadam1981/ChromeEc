@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904a5879_34092184",
+        "filename": "board/vell/sensors.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-17T15:23:50Z",
+      "side": 1,
+      "message": "Is this static and the other `struct ec_thermal_config` still needed?",
+      "range": {
+        "startLine": 296,
+        "startChar": 53,
+        "endLine": 296,
+        "endChar": 70
+      },
+      "revId": "d68fb6ff0a76fc00d1b2a20430527e3c29aa9ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
