@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda2dfbd_0e7aa12f",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-17T05:09:53Z",
+      "side": 1,
+      "message": "Instead of redefining the temp sensor id, use the generated IDs in shim/include/temp_sensor/temp_sensor.h",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91f438c_71cfa261",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-17T05:09:53Z",
+      "side": 1,
+      "message": "I think it would be better if these config were expressed in device tree instead of hard coded, though I concede it would be a bigger change (but would provide the correct level of generality).\nAnd the board_override_fan_control() could be automatically defined (likely named differently) in the common code if the device tree config had a fan step table in it.\nThis would also allow unit test coverage for this code.\nWhether the code goes into common/thermal.c or zephyr/shim/src/fan.c would need to be considered.\n\nIf you think this level of change is too much here, then I\u0027m happy to take a stab at putting something together.",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c012b51f_af225085",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-17T05:09:53Z",
+      "side": 1,
+      "message": "Should be using TEMP_SENSOR_COUNT from shim/include/temp_sensor/temp_sensor.h",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c1865f_62d7dfc1",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-17T05:09:53Z",
+      "side": 1,
+      "message": "Instead of rpm[0], it should be rpm[fan].\nIf you want to hard code this to 0, I would suggest having rpm as a scalar value, and don\u0027t pass fan as a parameter.",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
