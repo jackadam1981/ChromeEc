@@ -124,6 +124,24 @@
       "parentUuid": "3acfef1a_be2760b9",
       "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5638ac31_9ed82628",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-17T22:02:09Z",
+      "side": 1,
+      "message": "I could agree that util code should not have asserts, if the rule was that it should return an EC_SUCCESS or an error code, and the test decides how to react to that failure, but to use assume where there is no failing test is not making debugging easier, but harder. Even with twister failing with unexpected skipped tests, it is going to be harder to find the skipped test reason than a failure.",
+      "parentUuid": "61d4b754_a45ac68f",
+      "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
