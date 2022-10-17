@@ -23,6 +23,30 @@
       },
       "revId": "a642cfe6573ace5d5cc04253d5f271249e100228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44273acb_0e773943",
+        "filename": "zephyr/test/drivers/usbc_alt_mode/src/usbc_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-17T20:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b50f602_aa03295c",
+      "range": {
+        "startLine": 210,
+        "startChar": 53,
+        "endLine": 210,
+        "endChar": 62
+      },
+      "revId": "a642cfe6573ace5d5cc04253d5f271249e100228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
