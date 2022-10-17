@@ -22,6 +22,30 @@
       },
       "revId": "dab94de9649d88d13289051d9a403530e827c59b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751a848e_e5c1bffb",
+        "filename": "test/panic.c",
+        "patchSetId": 76
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-17T23:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "475e895c_6c6304cb",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "dab94de9649d88d13289051d9a403530e827c59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
