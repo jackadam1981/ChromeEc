@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67d65b7d_59b38de4",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-17T15:28:09Z",
+      "side": 1,
+      "message": "Hmm, this is complicated. Maybe define CONFIG_AP_POWER_CONTROL in your test\u0027s prj.conf instead?",
+      "parentUuid": "2691b080_ecbd57a2",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "f9fa1749fd2145c90beccede5bf97aef81e5c06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6514ecf_74ac5716",
         "filename": "include/driver/tcpm/tcpm.h",
         "patchSetId": 1
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "\"CONFIG_USB_PD_DISCHARGE\" seems to be a macro, but not config option, as I am unable to find any definition of it in kconfig. I tried defining it in prj.conf but it said undefined config",
       "parentUuid": "a7875d79_4083d024",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "f9fa1749fd2145c90beccede5bf97aef81e5c06d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fe0498_fb0dd612",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-17T15:28:09Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_USB_PD_DISCHARGE",
+      "parentUuid": "70b0114d_bd047e5f",
       "range": {
         "startLine": 8,
         "startChar": 0,
