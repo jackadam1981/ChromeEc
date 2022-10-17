@@ -2213,14 +2213,19 @@ static void tc_error_recovery_exit(const int port)
 /**
  * Unattached.SNK
  */
+int ii;
 static void tc_unattached_snk_entry(const int port)
 {
 	enum pd_data_role prev_data_role;
 
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC) {
 		tc_detached(port);
-		print_current_state(port);
+		//if (port != 0)
+			print_current_state(port);
 	}
+
+	//if (port == 0)
+	//	ccprintf("p0 unattached.snk\n");
 
 	/*
 	 * We are in an unattached state and considering to be a SNK
@@ -2241,7 +2246,8 @@ static void tc_unattached_snk_entry(const int port)
 	typec_select_pull(port, TYPEC_CC_RD);
 	typec_select_src_current_limit_rp(
 		port, typec_get_default_current_limit_rp(port));
-	typec_update_cc(port);
+	ii++;
+	typec_update_cc(port);//check
 
 	prev_data_role = tc[port].data_role;
 	tc[port].data_role = PD_ROLE_DISCONNECTED;
@@ -2290,7 +2296,7 @@ static void tc_unattached_snk_run(const int port)
 	}
 
 	/* Check for connection */
-	tcpm_get_cc(port, &cc1, &cc2);
+	tcpm_get_cc(port, &cc1, &cc2);//check
 
 	/*
 	 * The port shall transition to AttachWait.SNK when a Source
@@ -2356,6 +2362,8 @@ static void tc_unattached_snk_exit(const int port)
 static void tc_attach_wait_snk_entry(const int port)
 {
 	print_current_state(port);
+	if (port == 0)
+		ccprintf("p0 attachwait.snk\n");
 
 	tc[port].cc_state = PD_CC_UNSET;
 }
@@ -2390,7 +2398,7 @@ static void tc_attach_wait_snk_run(const int port)
 	 * Unattached.SNK.
 	 */
 	if (new_cc_state == PD_CC_NONE &&
-	    pd_timer_is_expired(port, TC_TIMER_PD_DEBOUNCE)) {
+	    pd_timer_is_expired(port, TC_TIMER_PD_DEBOUNCE)) { //we see rp time too short <15ms, we go back to toggle
 		/* We are detached */
 		if (drp_state[port] == PD_DRP_TOGGLE_OFF ||
 		    drp_state[port] == PD_DRP_FREEZE ||
@@ -2453,6 +2461,7 @@ static void tc_attach_wait_snk_exit(const int port)
 static void tc_attached_snk_entry(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
+	ii = 0;
 
 	print_current_state(port);
 
@@ -2776,8 +2785,12 @@ static void tc_unattached_src_entry(const int port)
 
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK) {
 		tc_detached(port);
-		print_current_state(port);
+		//if (port != 0)
+			print_current_state(port);
 	}
+
+	//if (port == 0)
+	//	ccprintf("p0 unattached.src\n");
 
 	/*
 	 * We are in an unattached state and considering to be a SRC
@@ -2798,7 +2811,8 @@ static void tc_unattached_src_entry(const int port)
 	typec_select_pull(port, TYPEC_CC_RP);
 	typec_select_src_current_limit_rp(
 		port, typec_get_default_current_limit_rp(port));
-	typec_update_cc(port);
+	ii++;
+	typec_update_cc(port);//check
 
 	prev_data_role = tc[port].data_role;
 	tc[port].data_role = PD_ROLE_DISCONNECTED;
@@ -2892,6 +2906,8 @@ static void tc_unattached_src_exit(const int port)
 static void tc_attach_wait_src_entry(const int port)
 {
 	print_current_state(port);
+	if (port == 0)
+		ccprintf("p0 attachwait.src\n");
 
 	tc[port].cc_state = PD_CC_UNSET;
 }
@@ -2971,6 +2987,7 @@ static void tc_attach_wait_src_exit(const int port)
 static void tc_attached_src_entry(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
+	ii = 0;
 
 	print_current_state(port);
 
@@ -3504,7 +3521,7 @@ static void tc_try_src_entry(const int port)
 		port, typec_get_default_current_limit_rp(port));
 
 	/* Apply Rp */
-	typec_update_cc(port);
+	typec_update_cc(port);//check
 }
 
 static void tc_try_src_run(const int port)
