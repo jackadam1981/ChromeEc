@@ -218,6 +218,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954f36e0_c4742556",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-17T19:37:26Z",
+      "side": 1,
+      "message": "I opened an issue on Github to get a conversation started with the power domain architects.\nhttps://github.com/zephyrproject-rtos/zephyr/issues/51349\n\nThe power domains generally seem to have the hooks needed to do what we want, but there could be problems once we use upstream temperature sensor drivers and those drivers use `pm_device_runtime_get/put()`.",
+      "parentUuid": "5d4ecd43_a180e5a2",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
