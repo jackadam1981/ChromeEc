@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99ff94e_c010b50b",
+        "filename": "include/driver/tcpm/tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-17T15:15:05Z",
+      "side": 1,
+      "message": "This would technically return as 2 mV in this case.  Perhaps it should return 0V for error?  Or return the error, and have the calling function print a warning and return 0 for the voltage?",
+      "revId": "ce42369a2f79a223d2a0572386e34f23d000a808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
