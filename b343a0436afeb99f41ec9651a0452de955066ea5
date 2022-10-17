@@ -88,6 +88,24 @@
       "parentUuid": "c75d4394_a1108e6f",
       "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acfef1a_be2760b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-17T18:45:35Z",
+      "side": 1,
+      "message": "\u003e We don\u0027t have such a test for this util code, which has already been demonstrated by this code getting silently skipped.\n\nI believe one of the points of zassume is to help us find failure that are found not through explicit test cases, to show required tests or areas of coverage that are covered but aren\u0027t actually tested well.\n\nJeremy raises a good point that since no other tests failed in this util code, we should keep them as `zassert`. I\u0027ll change the bug to require that we explicitly test these cases before these zassumes become zasserts.\n\nUpdating bug and abandoning CL.",
+      "parentUuid": "67e1ba07_dd6cac4a",
+      "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
