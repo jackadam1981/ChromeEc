@@ -1172,10 +1172,12 @@ test_mockable enum power_state power_handle_state(enum power_state state)
 	case POWER_S5G3:
 		return POWER_G3;
 
+	/* LCOV_EXCL_START */
 	default:
 		CPRINTS("Unexpected power state %d", state);
 		ASSERT(0);
 		break;
+		/* LCOV_EXCL_STOP */
 	}
 
 	return state;
