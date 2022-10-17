@@ -34,6 +34,24 @@
       "parentUuid": "e40e0c1f_ca93c1ee",
       "revId": "2bfe70d014b19e9ad082715fee05ebc9d1be8c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c67b8dc_a4a06b08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-17T16:22:20Z",
+      "side": 1,
+      "message": "For AP-driven mode entry now and for AP-composed VDMs, we\u0027ll need the EC to not try to enter modes by itself, and that\u0027s the main thing that `CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY` does. To preserve that behavior, we\u0027ll either need to use `CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY`, or we\u0027ll need to add a new config that we check for. That would make the code more tedious, so I\u0027d prefer to just reuse the existing config for that purpose.\n\nIn that case, either way, the EC behavior will just be to sit there and wait for host commands. I would think that the main thing that the new config would enable is advertising and implementing the new host command (sub-command).\n\nThe main way I can think of the two configs interacting would be if we wanted to add some kind of check to keep the AP from using both interfaces at the same time. But my instinct would be to leave that out. Presumably, a production AP will have logic for that.",
+      "parentUuid": "3f5dbc11_ec5f6c69",
+      "revId": "2bfe70d014b19e9ad082715fee05ebc9d1be8c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
