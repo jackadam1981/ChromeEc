@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5cc5a4e_13750edc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-17T23:59:00Z",
+      "side": 1,
+      "message": "Right, I was hoping that load-average/max-load would help and that we could just change all the defaults to that, but it sounds like that might not be the best on all systems?\n\nRight, ideally this wouldn\u0027t have a dependency on the chroot.\nAny other suggestions?",
+      "parentUuid": "beab4332_690e17fc",
+      "revId": "b11fb2dec5a72d9117f40a377e2ef721cd3fe33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd54038_606c450d",
         "filename": "util/compare_build.sh",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-12T16:35:21Z",
       "side": 1,
       "message": "It looks like this is already the default for `FLAGS_jobs`. Does this branch ever get taken?\n\nNit: Consider `-j --load-average\u003d$(nproc)`. You might want to experiment with the load target.",
+      "revId": "b11fb2dec5a72d9117f40a377e2ef721cd3fe33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa375b5_f12dcab3",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-10-17T23:59:00Z",
+      "side": 1,
+      "message": "My apologies, you are completely right. I already set this value.\n\nOhh, nice. I was having varying success with `--max-load`, but maybe `--load-average` is the way to go.",
+      "parentUuid": "dbd54038_606c450d",
       "revId": "b11fb2dec5a72d9117f40a377e2ef721cd3fe33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
