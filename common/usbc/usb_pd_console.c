@@ -34,8 +34,8 @@ static
 			if (*e)
 				return EC_ERROR_PARAM2;
 
-			if (level < DEBUG_DISABLE)
-				level = DEBUG_DISABLE;
+			if (level <= DEBUG_LEVEL_1 /*DEBUG_DISABLE*/)
+				level = DEBUG_LEVEL_1 /*DEBUG_DISABLE*/;
 			else if (level > DEBUG_LEVEL_MAX)
 				level = DEBUG_LEVEL_MAX;
 

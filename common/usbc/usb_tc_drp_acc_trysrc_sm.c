@@ -2219,8 +2219,12 @@ static void tc_unattached_snk_entry(const int port)
 
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC) {
 		tc_detached(port);
-		print_current_state(port);
+		//if (port != 0)
+			print_current_state(port);
 	}
+
+	//if (port == 0)
+	//	print_current_state(port);
 
 	/*
 	 * We are in an unattached state and considering to be a SNK
@@ -2241,7 +2245,7 @@ static void tc_unattached_snk_entry(const int port)
 	typec_select_pull(port, TYPEC_CC_RD);
 	typec_select_src_current_limit_rp(
 		port, typec_get_default_current_limit_rp(port));
-	typec_update_cc(port);
+	typec_update_cc(port);//check
 
 	prev_data_role = tc[port].data_role;
 	tc[port].data_role = PD_ROLE_DISCONNECTED;
@@ -2290,7 +2294,7 @@ static void tc_unattached_snk_run(const int port)
 	}
 
 	/* Check for connection */
-	tcpm_get_cc(port, &cc1, &cc2);
+	tcpm_get_cc(port, &cc1, &cc2);//check
 
 	/*
 	 * The port shall transition to AttachWait.SNK when a Source
@@ -2776,8 +2780,12 @@ static void tc_unattached_src_entry(const int port)
 
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK) {
 		tc_detached(port);
-		print_current_state(port);
+		//if (port != 0)
+			print_current_state(port);
 	}
+
+	//if (port == 0)
+	//	print_current_state(port);
 
 	/*
 	 * We are in an unattached state and considering to be a SRC
@@ -2798,7 +2806,7 @@ static void tc_unattached_src_entry(const int port)
 	typec_select_pull(port, TYPEC_CC_RP);
 	typec_select_src_current_limit_rp(
 		port, typec_get_default_current_limit_rp(port));
-	typec_update_cc(port);
+	typec_update_cc(port);//check
 
 	prev_data_role = tc[port].data_role;
 	tc[port].data_role = PD_ROLE_DISCONNECTED;
