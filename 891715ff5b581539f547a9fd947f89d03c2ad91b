@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8a475e_7f1f1f53",
+        "filename": "test/panic.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-17T18:54:35Z",
+      "side": 1,
+      "message": "nit: 2. I\u0027m not sure if you care.",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "891715ff5b581539f547a9fd947f89d03c2ad91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64af718f_c70a41d7",
+        "filename": "test/panic.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-17T18:54:35Z",
+      "side": 1,
+      "message": "I\u0027m not following the comments. Can you please elaborate on why we need to handle two cores differently here? You already verified panic_data (in step2). Why do you still care about panicinfo?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "891715ff5b581539f547a9fd947f89d03c2ad91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
