@@ -7,26 +7,18 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <stdlib.h>
 
-#include "shared_mem.h"
 #include "uart.h"
 
 void __unused *fpc_malloc(uint32_t size)
 {
-	char *data;
-	int rc;
-
-	rc = shared_mem_acquire(size, (char **)&data);
-
-	if (rc == 0)
-		return data;
-	else
-		return NULL;
+	return malloc(size);
 }
 
 void __unused fpc_free(void *data)
 {
-	shared_mem_release(data);
+	return free(data);
 }
 
 /* Not in release */
