@@ -551,6 +551,8 @@ config PLATFORM_EC_PWM_DISPLIGHT
 
 config PLATFORM_EC_RTC
 	bool "Real-time clock (RTC)"
+	default y if $(dt_chosen_enabled,"cros,rtc")
+	default y if DT_HAS_CROS_EC_RTC_EMUL_ENABLED
 	help
 	  Enable support for a real-time clock. Typically this is available
 	  on-chip in the EC. It provides a way to track the passage of time
