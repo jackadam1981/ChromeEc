@@ -116,5 +116,27 @@ ZTEST_USER(usb_pd_host_cmd, test_host_command_hc_pd_ports)
 	zassert_equal(response.num_ports, CONFIG_USB_PD_PORT_MAX_COUNT);
 }
 
+ZTEST_USER(usb_pd_host_cmd, test_typec_discovery_invalid_args)
+{
+	struct ec_params_typec_discovery params = {
+		.port = 100,
+		.partner_type = TYPEC_PARTNER_SOP,
+	};
+	struct ec_response_typec_discovery response;
+	/* A successful EC_CMD_TYPEC_DISCOVERY requires response to be larger
+	 * than ec_params_typec_discovery, but this one is expected to fail, so
+	 * the response size is irrelevant.
+	 */
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND(EC_CMD_TYPEC_DISCOVERY, 0, response, params);
+
+	zassert_not_equal(host_command_process(&args), EC_SUCCESS);
+
+	params.port = 0;
+	/* This is not a valid enum value but should be representable. */
+	params.partner_type = 5;
+	zassert_not_equal(host_command_process(&args), EC_SUCCESS);
+}
+
 ZTEST_SUITE(usb_pd_host_cmd, drivers_predicate_post_main, NULL, NULL, NULL,
 	    NULL);
