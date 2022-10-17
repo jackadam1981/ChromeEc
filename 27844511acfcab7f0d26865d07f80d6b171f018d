@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc519a8_9503e53a",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-17T16:21:27Z",
+      "side": 1,
+      "message": "Undefined instruction works.",
+      "parentUuid": "56613a1a_6d11e60e",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37a9cbbf_ba3cc629",
@@ -149,6 +173,30 @@
       "writtenOn": "2021-11-18T23:11:43Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "27844511acfcab7f0d26865d07f80d6b171f018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00615c32_f699375c",
+        "filename": "test/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-17T16:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a9cbbf_ba3cc629",
       "range": {
         "startLine": 84,
         "startChar": 12,
