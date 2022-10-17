@@ -39,6 +39,30 @@
       },
       "revId": "69f8a4a20cf02e551b5a259d8b71aa2b18a4a7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b932a8_ea883f61",
+        "filename": "board/prism/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-17T19:27:42Z",
+      "side": 1,
+      "message": "Yes, it\u0027s intended. Fixed the CL description.",
+      "parentUuid": "2703df8a_ef430f02",
+      "range": {
+        "startLine": 13,
+        "startChar": 50,
+        "endLine": 13,
+        "endChar": 54
+      },
+      "revId": "69f8a4a20cf02e551b5a259d8b71aa2b18a4a7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
