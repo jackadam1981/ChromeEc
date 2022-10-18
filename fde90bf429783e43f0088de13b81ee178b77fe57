@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852c7ec5_896dd6b6",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-18T22:57:29Z",
+      "side": 1,
+      "message": "This also needs to handle the other options. Possibly add another hidden option that gets the integer value corresponding to the selection, and make the driver program the register to match.\n\n```\nconfig RAA489000_TRICKLE_CHARGE_CURRENT\n    int\n    default 64 if RAA489000_TRICKLE_CHARGE_CURRENT_64MA\n    ...\n    default 256 if RAA489000_TRICKLE_CHARGE_CURRENT_256MA\n```\n\nThe legacy configuration system can use the same option name.",
+      "revId": "fde90bf429783e43f0088de13b81ee178b77fe57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
