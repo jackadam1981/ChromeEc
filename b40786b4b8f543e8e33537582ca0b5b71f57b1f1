@@ -22,6 +22,30 @@
       },
       "revId": "b40786b4b8f543e8e33537582ca0b5b71f57b1f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88ce0f1_97bf8b57",
+        "filename": "power/sc7180.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-10-18T21:19:31Z",
+      "side": 1,
+      "message": "Yes, the hardware signal is working and the debug command can be removed.",
+      "parentUuid": "8741ce0b_fbc8162a",
+      "range": {
+        "startLine": 739,
+        "startChar": 0,
+        "endLine": 741,
+        "endChar": 0
+      },
+      "revId": "b40786b4b8f543e8e33537582ca0b5b71f57b1f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
