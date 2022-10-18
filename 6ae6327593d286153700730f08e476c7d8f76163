@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "031e9b6e_05b26de8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-18T22:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972d71a1_558da388",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "6ae6327593d286153700730f08e476c7d8f76163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c717c60f_fea34835",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-18T21:44:07Z",
       "side": 1,
       "message": "Should we drop this code and save the space? If it is never executed we don\u0027t need it. Or if it could be, just call it with the invalid value?",
+      "revId": "6ae6327593d286153700730f08e476c7d8f76163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b124d81f_c1791bee",
+        "filename": "power/qcom.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-18T22:57:09Z",
+      "side": 1,
+      "message": "POWER_S4 isn\u0027t handled here. Adding a test for that causes the ASSERT() to be called, so it took some work to mock the assertion.",
+      "parentUuid": "c717c60f_fea34835",
       "revId": "6ae6327593d286153700730f08e476c7d8f76163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
