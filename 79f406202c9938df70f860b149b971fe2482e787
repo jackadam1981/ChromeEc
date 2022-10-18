@@ -16,6 +16,24 @@
       "message": "It looks like you\u0027re trying to make a change in the release branch. Note that all development is done in the `main` branch (in `~/chromiumos/src/platform/ec`) and periodically merged into the release branches per http://shortn/_pZLDY8iQnt.",
       "revId": "79f406202c9938df70f860b149b971fe2482e787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3077ef_576fe55f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2022-10-18T21:49:48Z",
+      "side": 1,
+      "message": "I was building in the release-firmware/fpmcu-* directories since some of the CL\u0027s in the bug referenced that path. Building from platform/ec works for test images, we can abandon this change if there is no need to build test images from the release directories.\n\nThanks,\n\nDavid",
+      "tag": "mailMessageId\u003d\u003cCADujmoEYWU9NcptuJ8osjzSo9c0XHhr047T0TTOXDjmX98KA-Q@mail.gmail.com\u003e",
+      "revId": "79f406202c9938df70f860b149b971fe2482e787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
