@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd3e3eb_406d2b25",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-18T20:34:01Z",
+      "side": 1,
+      "message": "I assume that one of these was supposed to be `STM32_RCC_D2CFGR_D2CPRE1_DIV1`?",
+      "range": {
+        "startLine": 178,
+        "startChar": 21,
+        "endLine": 178,
+        "endChar": 50
+      },
+      "revId": "47aab90cd0c2b2b55eb8a0e449e8deaa4eab4efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702b2ff8_3feed388",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-18T20:34:01Z",
+      "side": 1,
+      "message": "I assume that one of these was supposed to be STM32_RCC_D2CFGR_D2CPRE1_DIV1?",
+      "range": {
+        "startLine": 204,
+        "startChar": 21,
+        "endLine": 204,
+        "endChar": 50
+      },
+      "revId": "47aab90cd0c2b2b55eb8a0e449e8deaa4eab4efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
