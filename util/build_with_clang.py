@@ -181,6 +181,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "quackingstick",
     "rammus",
     "redrix",
+    "reef",
     "sasuke",
     "scout",
     "shuboz",
