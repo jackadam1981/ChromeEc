@@ -773,6 +773,50 @@ test_static int test_fp_command_read_match_secret_with_pubkey_succeed(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_fp_command_preload_template(void)
+{
+	int rv;
+	struct ec_params_fp_preload_template params = {
+		.offset = 0,
+		.size = 0,
+		.fgr = 65535,
+	};
+
+	rv = test_send_host_command(EC_CMD_FP_PRELOAD_TEMPLATE, 0, &params,
+				    sizeof(params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_OVERFLOW, "%d");
+
+	params.fgr = 0;
+
+	rv = test_send_host_command(EC_CMD_FP_PRELOAD_TEMPLATE, 0, &params,
+				    sizeof(params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	params.size |= FP_TEMPLATE_COMMIT;
+	rv = test_send_host_command(EC_CMD_FP_PRELOAD_TEMPLATE, 0, &params,
+				    sizeof(params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	params.size = 0;
+	params.offset = 65535;
+	rv = test_send_host_command(EC_CMD_FP_PRELOAD_TEMPLATE, 0, &params,
+				    sizeof(params), NULL, 0);
+
+	TEST_EQ(rv, EC_ERROR_INVAL, "%d");
+
+	params.size = 1024;
+	params.offset = 0;
+	rv = test_send_host_command(EC_CMD_FP_PRELOAD_TEMPLATE, 0, &params,
+				    sizeof(params), NULL, 0);
+
+	TEST_EQ(rv, EC_RES_INVALID_PARAM, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fp_command_establish_pk_without_seed);
@@ -797,5 +841,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_nonce_context_clear);
 	RUN_TEST(test_fp_command_nonce_context_limit);
 	RUN_TEST(test_fp_command_read_match_secret_with_pubkey_succeed);
+	RUN_TEST(test_fp_command_preload_template);
 	test_print_result();
 }
