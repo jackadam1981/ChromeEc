@@ -145,6 +145,9 @@ enum pchg_error {
 
 	/* All other errors */
 	PCHG_ERROR_OTHER,
+
+	/* Add no entries below here. */
+	PCHG_ERROR_COUNT,
 };
 
 #define PCHG_ERROR_MASK(e) BIT(e)
