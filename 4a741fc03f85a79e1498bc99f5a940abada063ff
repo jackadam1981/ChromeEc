@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d0dd80_14e2b0bd",
+        "filename": "zephyr/projects/skyrim/src/power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-18T15:15:55Z",
+      "side": 1,
+      "message": "Can you create a CONFIG in zephyr/projects/skyrim/Kconfig for this feature (something like CONFIG_USB_HUB_RESET)? You can default it to on, and allow frostflow to turn it off in prj_frostflow.conf",
+      "revId": "4a741fc03f85a79e1498bc99f5a940abada063ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
