@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972d71a1_558da388",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-10-18T21:44:07Z",
+      "side": 1,
+      "message": "Can you do the refactoring in one or two separate CLs before this one?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "6ae6327593d286153700730f08e476c7d8f76163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c717c60f_fea34835",
+        "filename": "power/qcom.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-10-18T21:44:07Z",
+      "side": 1,
+      "message": "Should we drop this code and save the space? If it is never executed we don\u0027t need it. Or if it could be, just call it with the invalid value?",
+      "revId": "6ae6327593d286153700730f08e476c7d8f76163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
