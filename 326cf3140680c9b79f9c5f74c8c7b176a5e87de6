@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcd5e6c_9a474124",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "not sure if you\u0027re planning to submit this script or if it\u0027s\njust for testing. anyway, some comments in case you plan to\nsubmit at some point.",
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6534dedb_abfb5442",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "i usually prefer to run scripts with \"set -u\".\nsome variables will need to be referenced with ${var:-} to\navoid \"unbound var\" errors, but it looks like you\u0027re\nalready doing so in most places.",
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7aed993_38ad29a3",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "add:\n\nlocal key",
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc6a9306_769282ef",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "the GPIO number should be a global const.",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906fe168_7e2ba304",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "do you need a sleep here as well for the device\nboot from reset?",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0efe7038_26599347",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "local color\nlocal keys\n\nyou can probably make the various \"keys\" globals\nlike keys_pink\u003d...\nlooks like the same data is reused for the reverse?",
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ccffeb_a5e12d6e",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "exit 1",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 6
+      },
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11bd8b50_b9fd9d55",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "this section should probably go into a \"main\" function.",
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd538acd_d9f8dff7",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "echo err... 1\u003e\u00262\nto use stderr",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 8
+      },
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfc4da9_0cf07128",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "exit 1",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 8
+      },
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7697210e_42a5bf4c",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "send to stderr",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 8
+      },
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8151752_82031c0a",
+        "filename": "util/rgbtool.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-18T01:01:53Z",
+      "side": 1,
+      "message": "exit 1",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 8
+      },
+      "revId": "326cf3140680c9b79f9c5f74c8c7b176a5e87de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
