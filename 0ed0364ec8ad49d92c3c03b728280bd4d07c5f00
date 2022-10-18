@@ -21,6 +21,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2df089b9_63c7e558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-18T22:35:22Z",
+      "side": 1,
+      "message": "Waiting for Verify +1 from @aaronmassey@google.com to confirm autocompletion is working on Zephyr files.",
+      "revId": "0ed0364ec8ad49d92c3c03b728280bd4d07c5f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52812338_f4d326a0",
         "filename": "util/clangd_config.py",
         "patchSetId": 2
