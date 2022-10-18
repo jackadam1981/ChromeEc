@@ -149,12 +149,14 @@
 			 * divider on ADC input.
 			 */
 			threshold-mv = <2448>;
+			high-prio;
 		};
 		cmp_pp3300_s5_low: pp3300_low {
 			compatible = "nuvoton,adc-cmp";
 			io-channels = <&adc0 6>;
 			comparison = "ADC_CMP_NPCX_LESS_OR_EQUAL";
 			threshold-mv = <2448>;
+			high-prio;
 		};
 		cmp_pp1p05_high: pp1p05_high {
 			compatible = "nuvoton,adc-cmp";
@@ -162,12 +164,14 @@
 			comparison = "ADC_CMP_NPCX_GREATER";
 			/* Setting at 90% of nominal voltage */
 			threshold-mv = <945>;
+			high-prio;
 		};
 		cmp_pp1p05_low: pp1p05_low {
 			compatible = "nuvoton,adc-cmp";
 			io-channels = <&adc0 4>;
 			comparison = "ADC_CMP_NPCX_LESS_OR_EQUAL";
 			threshold-mv = <945>;
+			high-prio;
 		};
 	};
 };
