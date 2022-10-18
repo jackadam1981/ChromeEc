@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf713d5_4a4da105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-18T21:01:14Z",
+      "side": 1,
+      "message": "It looks like you\u0027re trying to make a change in the release branch. Note that all development is done in the `main` branch (in `~/chromiumos/src/platform/ec`) and periodically merged into the release branches per http://shortn/_pZLDY8iQnt.",
+      "revId": "79f406202c9938df70f860b149b971fe2482e787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

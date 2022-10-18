@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22175277_d68a6623",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-18T21:01:14Z",
+      "side": 0,
+      "message": "This path should be correct. What directory are you building in? (You should be building in `~/chromiumos/src/platform/ec` inside the chroot.)",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "c453fd704268ef72de871b0c5ac7a989de662334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
