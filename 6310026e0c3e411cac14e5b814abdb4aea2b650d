@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "433a232d_68ef7bfb",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-18T21:24:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "835ea64f_31bc9bcc",
+      "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c0b9a3e_1d3d13d5",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-18T16:19:03Z",
       "side": 1,
       "message": "Do these need to be separate calls?",
+      "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f84de8e_619f256f",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-18T21:24:02Z",
+      "side": 1,
+      "message": "yes, unfortunately. since we set the clock directly I need the handler to run, use the +800ms timestamp, then it schedules another deferred call, and we need to sleep again.",
+      "parentUuid": "1c0b9a3e_1d3d13d5",
       "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a39cd7f_df4d40cb",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-18T21:24:02Z",
+      "side": 1,
+      "message": "I don\u0027t think so, I see it more of as an implementation detail. We really only care about the final state after pressing 4 times.",
+      "parentUuid": "27a82093_fb443c13",
+      "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f828d22_97245983",
@@ -65,6 +119,30 @@
       "writtenOn": "2022-10-18T16:19:03Z",
       "side": 1,
       "message": "I think this can just be a semicolon.",
+      "range": {
+        "startLine": 251,
+        "startChar": 31,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4efe6346_7fa612b4",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-18T21:24:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f828d22_97245983",
       "range": {
         "startLine": 251,
         "startChar": 31,
