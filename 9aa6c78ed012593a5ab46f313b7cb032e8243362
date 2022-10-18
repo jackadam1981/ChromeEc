@@ -46,6 +46,30 @@
       },
       "revId": "9aa6c78ed012593a5ab46f313b7cb032e8243362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e2189a_b795c19b",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2022-10-18T05:51:05Z",
+      "side": 1,
+      "message": "ES1 also has this problem, but this feature (EOC-force-CCM) is default disabled in ES1.",
+      "parentUuid": "776e0b5e_e611e614",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 0
+      },
+      "revId": "9aa6c78ed012593a5ab46f313b7cb032e8243362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
