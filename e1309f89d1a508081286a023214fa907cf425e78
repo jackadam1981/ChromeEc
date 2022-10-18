@@ -33,6 +33,24 @@
       "message": "This change may not be needed after. Looking at burnet tree, we are missing some patches.",
       "revId": "e1309f89d1a508081286a023214fa907cf425e78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8802f95_48468643",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-10-18T02:53:17Z",
+      "side": 1,
+      "message": "Gwendal, would you share what are the missing CLs?",
+      "parentUuid": "9a15e12a_d8e74e7c",
+      "revId": "e1309f89d1a508081286a023214fa907cf425e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
