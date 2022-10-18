@@ -16,6 +16,24 @@
       "message": "Can we try to do something that would force gcov to recognize these functions? Off the top of my head I can think of 2 things:\n\n1. Log something here inside `if (IS_ENABLED(TEST_BUILD))`\n2. Possibly a call to `__gcov_flush()` inside the function might do the trick. You could `#define __gcov_flush()` in common.h to stub it out for builds that don\u0027t have the coverage config enabled",
       "revId": "b9d430d1098c51ea07b31b2cb4f4f55baefa7c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5fe059_91a31db4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-18T05:09:25Z",
+      "side": 1,
+      "message": "Sorry, meant to mark this unresolved",
+      "parentUuid": "9ef05b57_7fbfbe01",
+      "revId": "b9d430d1098c51ea07b31b2cb4f4f55baefa7c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
