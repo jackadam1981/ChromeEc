@@ -46,6 +46,30 @@
       },
       "revId": "8482e89641215161f3af067e066a104c6b969098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f09e5e_4bf63c93",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-18T01:24:14Z",
+      "side": 1,
+      "message": "If the deviation is put into the per-fan config table, than this #define goes away, and the value can be used from the config table (per fan).",
+      "parentUuid": "8ba9c40c_86f86e0f",
+      "range": {
+        "startLine": 66,
+        "startChar": 38,
+        "endLine": 66,
+        "endChar": 49
+      },
+      "revId": "8482e89641215161f3af067e066a104c6b969098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
