@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8741ce0b_fbc8162a",
+        "filename": "power/sc7180.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-18T21:16:59Z",
+      "side": 1,
+      "message": "AP_SUSPEND is working right? So this can be removed?",
+      "range": {
+        "startLine": 739,
+        "startChar": 0,
+        "endLine": 741,
+        "endChar": 0
+      },
+      "revId": "b40786b4b8f543e8e33537582ca0b5b71f57b1f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
