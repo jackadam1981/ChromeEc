@@ -16,6 +16,24 @@
       "message": "According to b:184302085, the Zephyr toolchain+LTO+FPU breaks.   You should do a similar check as http://cs/chromeos_public/src/platform/ec/zephyr/CMakeLists.txt?rcl\u003d297c648ebcf2e62b1da7e2ad13eee4bad83c9545\u0026l\u003d46 until we verify if LTO is still a problem with the zephyr toolchain.",
       "revId": "48d64d3909378652224ad4169f92169c11c0fd6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b049b51_8266f8e5",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-18T04:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c65f626c_7997df98",
+      "revId": "48d64d3909378652224ad4169f92169c11c0fd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
