@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d4c095_5d37ef50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-18T16:33:58Z",
+      "side": 1,
+      "message": "Most of our scripts set the desired parallelism to the number of cores. That basically means, \"This is what my computer is doing right now.\" I would say that\u0027s probably a good default for Chrome OS developers. I can\u0027t speak to what other people might want. Users can typically specify the arguments directly, so I\u0027m not too worried about just specifying the value in the chroot for that reason. What would bug me is if this happened because of some invisible setting that users of the chroot would probably not discover/know how to override by themselves.\n\nIt doesn\u0027t seem like there\u0027s an obvious way to do this generally. It might be a good idea to make a little snippet shell script for setting `-j` that you could source from other scripts. But that doesn\u0027t need to happen in this CL.",
+      "parentUuid": "f5cc5a4e_13750edc",
+      "revId": "b11fb2dec5a72d9117f40a377e2ef721cd3fe33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd54038_606c450d",
