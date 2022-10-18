@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba9cd43_631eafa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-18T18:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e73ddf5_6c63a428",
+      "range": {
+        "startLine": 15,
+        "startChar": 68,
+        "endLine": 15,
+        "endChar": 73
+      },
+      "revId": "8440876c40dfeaf055733b71203965730aa2a80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e59f089_ee449e72",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-17T19:36:57Z",
       "side": 1,
       "message": "Make this a separate CL, in case we find this causes problems it will be easier to revert. Also add the link the upstream PR that made the API change to the commit message.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 34
+      },
+      "revId": "8440876c40dfeaf055733b71203965730aa2a80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50542bf1_838759f7",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-18T18:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e59f089_ee449e72",
       "range": {
         "startLine": 168,
         "startChar": 0,
