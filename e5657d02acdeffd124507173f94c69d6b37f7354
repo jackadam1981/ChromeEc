@@ -33,6 +33,24 @@
       "message": "hold this CL until SPI script in Zephyr main is merged.",
       "revId": "e5657d02acdeffd124507173f94c69d6b37f7354",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0df27f_ae63d20f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-10-18T21:04:24Z",
+      "side": 1,
+      "message": "rebase Zephyr main, and able to proceed this CL merging..",
+      "parentUuid": "1d91911a_0e50e4db",
+      "revId": "e5657d02acdeffd124507173f94c69d6b37f7354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
