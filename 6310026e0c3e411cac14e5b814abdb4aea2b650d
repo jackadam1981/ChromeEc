@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835ea64f_31bc9bcc",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-18T16:19:03Z",
+      "side": 1,
+      "message": "Nit: `k_sleep(K_SECONDS(30))`",
+      "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c0b9a3e_1d3d13d5",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-18T16:19:03Z",
+      "side": 1,
+      "message": "Do these need to be separate calls?",
+      "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a82093_fb443c13",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-18T16:19:03Z",
+      "side": 1,
+      "message": "Are the states between these button presses significant?",
+      "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f828d22_97245983",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-18T16:19:03Z",
+      "side": 1,
+      "message": "I think this can just be a semicolon.",
+      "range": {
+        "startLine": 251,
+        "startChar": 31,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "6310026e0c3e411cac14e5b814abdb4aea2b650d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
