@@ -37,6 +37,11 @@ BUILD_ASSERT(FP_PK_LEN == SHA256_DIGEST_SIZE);
 BUILD_ASSERT(FP_PK_EC_PUBLIC_KEY_LEN == 32);
 BUILD_ASSERT(FP_PK_EC_PRIVATE_KEY_LEN == 32);
 
+/* Store the intermediate encrypted data for transfer & reuse purpose.*/
+/* The data will be copied into fp_enc_buffer after commit. */
+static uint8_t fp_xfer_buffer[FP_MAX_FINGER_COUNT]
+			     [FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
+
 /* The GSC paring key. */
 static uint8_t pairing_key[FP_PK_LEN];
 /* The auth nonce for CK. */
@@ -570,3 +575,42 @@ fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
 		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_preload_template(struct host_cmd_handler_args *args)
+{
+	const auto *params = static_cast<const ec_params_fp_preload_template *>(
+		args->params);
+
+	ScopedFastCpu fast_cpu;
+
+	uint32_t size = params->size & ~FP_TEMPLATE_COMMIT;
+	int xfer_complete = params->size & FP_TEMPLATE_COMMIT;
+	uint32_t offset = params->offset;
+	uint16_t idx = params->fgr;
+
+	/* Can we store one more template ? */
+	if (idx >= FP_MAX_FINGER_COUNT)
+		return EC_RES_OVERFLOW;
+
+	if (args->params_size !=
+	    size + offsetof(struct ec_params_fp_preload_template, data))
+		return EC_RES_INVALID_PARAM;
+
+	int ret = validate_fp_buffer_offset(sizeof(fp_xfer_buffer[idx]), offset,
+					    size);
+
+	if (ret != EC_SUCCESS)
+		return EC_RES_INVALID_PARAM;
+
+	memcpy(&fp_xfer_buffer[idx][offset], params->data, size);
+
+	if (xfer_complete) {
+		memcpy(fp_enc_buffer, fp_xfer_buffer[idx],
+		       FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE);
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_PRELOAD_TEMPLATE, fp_command_preload_template,
+		     EC_VER_MASK(0));
