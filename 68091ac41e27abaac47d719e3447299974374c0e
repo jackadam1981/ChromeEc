@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a59968b_761e2655",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-10-18T07:57:57Z",
+      "side": 1,
+      "message": "There is a challenge if we move these code into device tree: each board might use different sensor for reference, also with different and/or logic for increase/decrease path which will defined by each ODM.",
+      "parentUuid": "08b56d14_f7c1f015",
+      "revId": "68091ac41e27abaac47d719e3447299974374c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c012b51f_af225085",
         "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
         "patchSetId": 8
