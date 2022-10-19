@@ -435,6 +435,14 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 	struct ec_fp_template_encryption_metadata *enc_info;
 	int ret;
 
+	struct meow {
+		~meow() noexcept
+		{
+			clock_enable_module(MODULE_FAST_CPU, 0);
+		}
+	} meow;
+	clock_enable_module(MODULE_FAST_CPU, 1);
+
 	if (size > args->response_max)
 		return EC_RES_INVALID_PARAM;
 
@@ -602,6 +610,14 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	uint8_t key[SBP_ENC_KEY_LEN];
 	struct ec_fp_template_encryption_metadata *enc_info;
 	int ret;
+
+	struct meow {
+		~meow() noexcept
+		{
+			clock_enable_module(MODULE_FAST_CPU, 0);
+		}
+	} meow;
+	clock_enable_module(MODULE_FAST_CPU, 1);
 
 	/* Can we store one more template ? */
 	if (idx >= FP_MAX_FINGER_COUNT)
