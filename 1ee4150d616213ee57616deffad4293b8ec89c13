@@ -69,6 +69,30 @@
       },
       "revId": "1ee4150d616213ee57616deffad4293b8ec89c13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba73d92_f6a657a3",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-19T18:23:59Z",
+      "side": 1,
+      "message": "And \u00276\u0027 should be probably \u00270\u0027. This field changes PWM type (e.g. PWM_IO_FUNC) but these ports are ADC.",
+      "parentUuid": "df31169f_e8639e69",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 43
+      },
+      "revId": "1ee4150d616213ee57616deffad4293b8ec89c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
