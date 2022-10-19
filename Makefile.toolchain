@@ -263,6 +263,7 @@ LDFLAGS=-g -no-pie -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
 ifeq ($(USE_BUILTIN_STDLIB), 1)
 LDFLAGS+=-nostdlib
 else
+LDFLAGS+=-nostdlib -lc_nano -lc++
 LDFLAGS+=-lnosys
 endif
 MEMSIZE_FLAGS=
