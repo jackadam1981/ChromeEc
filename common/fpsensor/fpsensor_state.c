@@ -4,6 +4,7 @@
  */
 
 #include "atomic.h"
+#include "clock.h"
 #include "common.h"
 #include "cryptoc/p256.h"
 #include "cryptoc/util.h"
@@ -88,6 +89,17 @@ void fp_clear_finger_context(int idx)
 	always_memset(fp_template[idx], 0, sizeof(fp_template[0]));
 	always_memset(fp_positive_match_salt[idx], 0,
 		      sizeof(fp_positive_match_salt[0]));
+}
+
+static void fast_cpu(void)
+{
+	clock_enable_module(MODULE_FAST_CPU, 1);
+}
+
+static void slow_cpu(unsigned int *unused)
+{
+	(void)unused;
+	clock_enable_module(MODULE_FAST_CPU, 0);
 }
 
 /**
@@ -364,6 +376,10 @@ fp_command_establish_pk_keygen(struct host_cmd_handler_args *args)
 {
 	struct ec_response_fp_establish_pk_keygen *r = args->response;
 
+	__attribute__((cleanup(slow_cpu))) unsigned int slow_cpu_cleanup
+		__attribute__((unused));
+	fast_cpu();
+
 	r->enc_privkey_info.struct_version = FP_PK_ENC_METADATA_VERSION;
 	trng_init();
 	trng_rand_bytes(r->enc_privkey, FP_PK_EC_PRIVATE_KEY_LEN);
@@ -411,6 +427,10 @@ fp_command_establish_pk_wrap(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_establish_pk_wrap *params = args->params;
 	struct ec_response_fp_establish_pk_wrap *r = args->response;
+
+	__attribute__((cleanup(slow_cpu))) unsigned int slow_cpu_cleanup
+		__attribute__((unused));
+	fast_cpu();
 
 	uint8_t key[SBP_ENC_KEY_LEN];
 	int ret = derive_encryption_key(
@@ -491,6 +511,10 @@ static enum ec_status fp_command_load_pk(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_load_pk *params = args->params;
 
+	__attribute__((cleanup(slow_cpu))) unsigned int slow_cpu_cleanup
+		__attribute__((unused));
+	fast_cpu();
+
 	/* Clear the context to prevent leaking the existing template. */
 	_fp_clear_context();
 
@@ -524,6 +548,10 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 {
 	struct ec_response_fp_generate_nonce *r = args->response;
 
+	__attribute__((cleanup(slow_cpu))) unsigned int slow_cpu_cleanup
+		__attribute__((unused));
+	fast_cpu();
+
 	if (fp_context_status & FP_CONTEXT_STATUS_NONCE_CONTEXT) {
 		/* Clear the context to prevent leaking the data from previous
 		 * nonce context.
@@ -551,6 +579,10 @@ static enum ec_status
 fp_command_nonce_context(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_nonce_context *p = args->params;
+
+	__attribute__((cleanup(slow_cpu))) unsigned int slow_cpu_cleanup
+		__attribute__((unused));
+	fast_cpu();
 
 	if (!(fp_context_status & FP_CONTEXT_AUTH_NONCE_SET)) {
 		CPRINTS("No existing auth nonce");
@@ -610,6 +642,10 @@ fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
 	struct ec_response_fp_read_match_secret_with_pubkey *response =
 		args->response;
 	int8_t fgr = params->fgr;
+
+	__attribute__((cleanup(slow_cpu))) unsigned int slow_cpu_cleanup
+		__attribute__((unused));
+	fast_cpu();
 
 	uint8_t privkey[FP_PK_EC_PRIVATE_KEY_LEN];
 	trng_init();
