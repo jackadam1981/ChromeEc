@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2698d2fc_30e9169c",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T20:07:11Z",
+      "side": 1,
+      "message": "Conceptually, it seems like we\u0027re polling the PE for a change here. It seems like it would be cleaner for the PE to signal to the DPM when it should leave the ready state. (This change might be more appropriate to make in the preceding CL.) You could have something like `dpm_set_pe_ready(port, false)` that you call in the ready state exit functions, and that could clear the flag or even directly set the state to idle.\n\nI think that would produce the same state flow as the current patchset but avoid redundantly checking the data role. It would also keep the DPM from running during a DRS or PRS.",
+      "revId": "08369e2584f685b89a4ca84a66f42130269c0923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
