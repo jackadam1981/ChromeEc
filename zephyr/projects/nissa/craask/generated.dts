@@ -179,7 +179,8 @@
 			enum-name = "GPIO_TABLET_MODE_L";
 		};
 		gpio_usb_a0_ilimit_sdp: usb_a0_ilimit_sdp {
-			gpios = <&gpio8 5 GPIO_OUTPUT>;
+			/* pin is output only */
+			gpios = <&gpio8 5 (GPIO_GET_OUTPUT | GPIO_OUTPUT)>;
 			enum-name = "GPIO_USB1_ILIM_SEL";
 		};
 		gpio_usb_c0_int_odl: usb_c0_int_odl {
