@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247c44dc_b9d76ac4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-19T03:59:23Z",
+      "side": 1,
+      "message": "typo: update",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "79b3a938aec5b104a5b98e6e5644f74c924692b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b4c5ff_80b71f79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-19T03:59:23Z",
+      "side": 1,
+      "message": "FYI I also have a WIP CL (CL:3902757) to test krabby/usbc_config.c. No need to worry about its coverage.",
+      "revId": "79b3a938aec5b104a5b98e6e5644f74c924692b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78854fa4_cc9953d6",
+        "filename": "zephyr/projects/corsola/src/krabby/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-19T03:59:23Z",
+      "side": 1,
+      "message": "Not tested but I think you can write \n```\n#ifdef CONFIG_USB_PD_TCPM_ITE_ON_CHIP\nconst struct cc_para_t *board_get_cc_tuning_parameter(enum usbpd_port port)\n{\n    ...\n}\n#endif\n```\ninstead of the #ifdef in line 24~27.",
+      "revId": "79b3a938aec5b104a5b98e6e5644f74c924692b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
