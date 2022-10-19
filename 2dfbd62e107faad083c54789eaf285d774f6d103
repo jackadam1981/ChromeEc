@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c61d07_71b5855b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-19T23:50:09Z",
+      "side": 1,
+      "message": "I observed on the bug that this appears to be an actual bug which disabling DPS prevents. I don\u0027t mind turning DPS off as a temporary workaround, but I\u0027ve filed a separate bug to actually fix it.",
+      "revId": "2dfbd62e107faad083c54789eaf285d774f6d103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
