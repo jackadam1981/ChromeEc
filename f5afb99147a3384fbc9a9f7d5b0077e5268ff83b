@@ -22,6 +22,30 @@
       },
       "revId": "f5afb99147a3384fbc9a9f7d5b0077e5268ff83b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f19f2a_1c19e096",
+        "filename": "driver/charger/rt9490.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1353577
+      },
+      "writtenOn": "2022-10-19T06:08:43Z",
+      "side": 1,
+      "message": "30~50mA lower than expected.",
+      "parentUuid": "8a9d13cb_86fa8365",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "f5afb99147a3384fbc9a9f7d5b0077e5268ff83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
