@@ -16,6 +16,70 @@
       "message": "The definition of the new GPIO flag is problematic since it is going to be private to the legacy EC, so not sure how to do it best.",
       "revId": "61eaa3039bce8a790b08820dcb3cc0619cc6a517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41a301e_a502a84b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-19T22:47:15Z",
+      "side": 1,
+      "message": "I\u0027m okay with this approach for now.  But long term, I think it may make sense to require the application to explicitly switch the direction of the GPIO at runtime.",
+      "parentUuid": "9a062ae9_90c41eef",
+      "revId": "61eaa3039bce8a790b08820dcb3cc0619cc6a517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89f449e_2bf34b9c",
+        "filename": "zephyr/include/dt-bindings/gpio_defines.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-19T22:47:15Z",
+      "side": 1,
+      "message": "How about `GPIO_OUTPUT_ONLY` or `GPIO_NO_INPUT`?  no_input matches what you called the test.\nI can be convinced to stick with `GPIO_GET_OUTPUT`.",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 23
+      },
+      "revId": "61eaa3039bce8a790b08820dcb3cc0619cc6a517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf33f34e_de123204",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-19T22:47:15Z",
+      "side": 1,
+      "message": "I assume you can\u0027t include the dt-bindings file due to redefinitions?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 34
+      },
+      "revId": "61eaa3039bce8a790b08820dcb3cc0619cc6a517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
