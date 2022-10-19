@@ -1,6 +1,6 @@
 #!/usr/bin/env vpython3
 
-# Copyright 2022 The ChromiumOS Authors.
+# Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -63,11 +63,15 @@ parameters that may be used, please consult the Twister documentation.
 # [VPYTHON:END]
 
 import argparse
+import json
 import os
+import re
 import shlex
 import subprocess
 import sys
+import time
 from pathlib import Path
+from shutil import which
 
 
 def find_checkout() -> Path:
@@ -133,6 +137,77 @@ def find_modules(mod_dir: Path) -> list:
     return modules
 
 
+def is_tool(name):
+    """Check if 'name' is on PATH and marked executable."""
+    return which(name) is not None
+
+
+def is_rdb_login():
+    """Checks if user is logged into rdb"""
+    cmd = ["rdb", "auth-info"]
+    ret = subprocess.run(cmd, capture_output=True, text=True, check=False)
+
+    if ret.returncode == 0:
+        print("\nrdb auth-info: " + ret.stdout.split("\n")[0])
+    else:
+        print("\nrdb auth-info: " + ret.stderr)
+
+    return ret.returncode == 0
+
+
+def upload_results(ec_base):
+    """Uploads Zephyr Test results to ResultDB"""
+    flag = False
+
+    if is_rdb_login():
+        json_path = ec_base / "twister-out" / "twister.json"
+        cmd = [
+            "rdb",
+            "stream",
+            "-new",
+            "-realm",
+            "chromium:public",
+            "--",
+            str(ec_base / "util/zephyr_to_resultdb.py"),
+            "--result=" + str(json_path),
+            "--upload=True",
+        ]
+
+        start_time = time.time()
+        ret = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        end_time = time.time()
+
+        # Extract URL to test report from captured output
+        rdb_url = re.search(
+            r"(?P<url>https?://[^\s]+)", ret.stderr.split("\n")[0]
+        ).group("url")
+        print(f"\nTEST RESULTS ({end_time - start_time:.3f}s): {rdb_url}\n")
+        flag = ret.returncode == 0
+    else:
+        print("Unable to upload test results, please run 'rdb auth-login'\n")
+
+    return flag
+
+
+def check_for_skipped_tests(ec_base):
+    """Checks Twister json test report for skipped tests"""
+    found_skipped = False
+    json_path = ec_base / "twister-out" / "twister.json"
+    with open(json_path) as file:
+        data = json.load(file)
+
+        for testsuite in data["testsuites"]:
+            for testcase in testsuite["testcases"]:
+                if testcase["status"] == "skipped":
+                    tc_name = testcase["identifier"]
+                    print(f"TEST SKIPPED: {tc_name}")
+                    found_skipped = True
+
+        file.close()
+
+    return found_skipped
+
+
 def main():
     """Run Twister using defaults for the EC project."""
 
@@ -149,7 +224,7 @@ def main():
     # Prepare environment variables for export to Twister. Inherit the parent
     # process's environment, but set some default values if not already set.
     twister_env = dict(os.environ)
-    is_in_chroot = os.environ.get("CROS_WORKON_SRCROOT") is not None
+    is_in_chroot = Path("/etc/cros_chroot_version").is_file()
     extra_env_vars = {
         "TOOLCHAIN_ROOT": os.environ.get(
             "TOOLCHAIN_ROOT",
@@ -192,6 +267,10 @@ def main():
     parser.add_argument(
         "--gcov-tool", default=str(ec_base / "util" / "llvm-gcov.sh")
     )
+    parser.add_argument(
+        "--no-upload-cros-rdb", dest="upload_cros_rdb", action="store_false"
+    )
+
     intercepted_args, other_args = parser.parse_known_args()
 
     for _ in range(intercepted_args.verbose):
@@ -243,10 +322,16 @@ def main():
     # Invoke Twister and wait for it to exit.
     result = subprocess.run(twister_cli, env=twister_env, check=False)
 
+    if check_for_skipped_tests(ec_base):
+        result.returncode = 1
+
     if result.returncode == 0:
         print("TEST EXECUTION SUCCESSFUL")
     else:
         print("TEST EXECUTION FAILED")
+
+    if is_tool("rdb") and intercepted_args.upload_cros_rdb:
+        upload_results(ec_base)
 
     sys.exit(result.returncode)
 

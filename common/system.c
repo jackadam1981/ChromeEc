@@ -369,7 +369,8 @@ int system_add_jump_tag(uint16_t tag, int version, int size, const void *data)
 	return EC_SUCCESS;
 }
 
-const uint8_t *system_get_jump_tag(uint16_t tag, int *version, int *size)
+test_mockable const uint8_t *system_get_jump_tag(uint16_t tag, int *version,
+						 int *size)
 {
 	const struct jump_tag *t;
 	int used = 0;
@@ -398,7 +399,7 @@ const uint8_t *system_get_jump_tag(uint16_t tag, int *version, int *size)
 	return NULL;
 }
 
-void system_disable_jump(void)
+test_mockable void system_disable_jump(void)
 {
 	disable_jump = 1;
 
@@ -557,7 +558,7 @@ __overridable void board_pulse_entering_rw(void)
  *
  * @param init_addr	Init address of target image
  */
-static void jump_to_image(uintptr_t init_addr)
+test_mockable_static void jump_to_image(uintptr_t init_addr)
 {
 	void (*resetvec)(void);
 
@@ -629,8 +630,8 @@ int system_is_in_rw(void)
 	return is_rw_image(system_get_image_copy());
 }
 
-static int system_run_image_copy_with_flags(enum ec_image copy,
-					    uint32_t add_reset_flags)
+test_mockable_static int
+system_run_image_copy_with_flags(enum ec_image copy, uint32_t add_reset_flags)
 {
 	uintptr_t base;
 	uintptr_t init_addr;
@@ -874,7 +875,6 @@ system_get_build_info(void)
 
 void system_common_pre_init(void)
 {
-#ifdef CONFIG_SOFTWARE_PANIC
 	/*
 	 * Log panic cause if watchdog caused reset and panic cause
 	 * was not already logged. This must happen before calculating
@@ -889,7 +889,6 @@ void system_common_pre_init(void)
 		if (reason != PANIC_SW_WATCHDOG)
 			panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
 	}
-#endif
 
 	jdata = get_jump_data();
 
@@ -1021,7 +1020,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 			chip_save_reset_flags(chip_read_reset_flags() &
 					      ~EC_RESET_FLAG_AP_IDLE);
 		}
-		/* Intentional fall-through */
+		__fallthrough;
 	case EC_REBOOT_HIBERNATE:
 		if (!IS_ENABLED(CONFIG_HIBERNATE))
 			return EC_ERROR_INVAL;
@@ -1740,7 +1739,7 @@ static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC, host_command_reboot, EC_VER_MASK(0));
 
-int system_can_boot_ap(void)
+test_mockable int system_can_boot_ap(void)
 {
 	int soc = -1;
 	int pow = -1;

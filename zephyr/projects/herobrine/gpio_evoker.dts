@@ -130,10 +130,12 @@
 			enum-name = "GPIO_EN_PP5000";
 		};
 		ec_bl_disable_l {
-			/* Enable EC-controlled backlight;
-			 * disable it initially.
+			/* The PMIC controls backlight enable and this pin must
+			 * be HiZ for normal operation. But the backlight can
+			 * be enabled by setting this pin low and configuring it
+			 * as an output.
 			 */
-			gpios = <&gpiob 6 GPIO_OUTPUT_LOW>;
+			gpios = <&gpiob 6 GPIO_INPUT>;
 			enum-name = "GPIO_ENABLE_BACKLIGHT";
 		};
 		lid_accel_int_l {
@@ -180,11 +182,11 @@
 			#led-pin-cells = <1>;
 			gpios = <&gpioc 0 GPIO_OUTPUT_LOW>;
 		};
-		gpio_ec_chg_led_y_c1: ec_chg_led_y_c1 {
+		gpio_ec_chg_led_w_c1: ec_chg_led_w_c1 {
 			#led-pin-cells = <1>;
 			gpios = <&gpioc 3 GPIO_OUTPUT_LOW>;
 		};
-		gpio_ec_chg_led_w_c1: ec_chg_led_w_c1 {
+		gpio_ec_chg_led_r_c0: ec_chg_led_r_c0 {
 			#led-pin-cells = <1>;
 			gpios = <&gpioc 4 GPIO_OUTPUT_LOW>;
 		};

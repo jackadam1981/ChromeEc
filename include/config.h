@@ -1670,12 +1670,6 @@
 #define CONFIG_COMMON_PANIC_OUTPUT
 
 /*
- * Store a panic log and halt the system for a software-related reasons, such as
- * stack overflow or assertion failure.
- */
-#undef CONFIG_SOFTWARE_PANIC
-
-/*
  * Certain platforms(e.g. eve, poppy) cannot retain panic info in data ram since
  * VCC is powered down on EC reset. On such platforms, panic data needs to be
  * saved/restored to persistent storage by using chip specific
@@ -2415,8 +2409,11 @@
 #undef CONFIG_HOST_COMMAND_STATUS
 
 /* clear bit(s) to mask reporting of an EC_HOST_EVENT_XXX event(s) */
+#ifdef CONFIG_HOST_EVENT64
+#define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffffffffffffULL
+#else
 #define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffff
-#define CONFIG_HOST_EVENT64_REPORT_MASK 0xffffffffffffffffULL
+#endif
 
 /* Config option to support 64-bit hostevents and wake-masks. */
 #define CONFIG_HOST_EVENT64
@@ -4474,7 +4471,9 @@
 #define CONFIG_USB_PD_CONSOLE_CMD
 
 /* Enables PD Host commands */
+#ifdef HAS_TASK_HOSTCMD
 #define CONFIG_USB_PD_HOST_CMD
+#endif
 
 /* Support for USB PD alternate mode */
 #undef CONFIG_USB_PD_ALT_MODE
@@ -4490,6 +4489,9 @@
  * direct the EC to enter a mode. This requires AP software support.
  */
 #undef CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
+
+/* Allow the AP to compose VDMs for us to send */
+#undef CONFIG_USB_PD_VDM_AP_CONTROL
 
 /* Supports DP as UFP-D and requires HPD to DP_ATTEN converter */
 #undef CONFIG_USB_PD_ALT_MODE_UFP_DP
@@ -5747,13 +5749,17 @@
 #endif
 
 #include "config_chip.h"
+#ifdef CONFIG_ZEPHYR
+#include "zephyr_shim.h"
+#else
 #include "board.h"
+#endif
 
 /*
  * Define CONFIG_HOST_ESPI_VW_POWER_SIGNAL if any power signals from the host
  * are configured as virtual wires.
  */
-#if defined(CONFIG_HOSTCMD_ESPI_VW_SLP_S3) ||            \
+#if defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S3) ||     \
 	defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S4) || \
 	defined(CONFIG_HOST_INTERFACE_ESPI_VW_SLP_S5)
 #define CONFIG_HOST_ESPI_VW_POWER_SIGNAL

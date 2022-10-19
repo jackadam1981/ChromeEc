@@ -88,6 +88,11 @@ static int init_vdm_attention_mutex(const struct device *dev)
 SYS_INIT(init_vdm_attention_mutex, POST_KERNEL, 50);
 #endif /* CONFIG_ZEPHYR */
 
+__overridable bool board_is_tbt_usb4_port(int port)
+{
+	return true;
+}
+
 enum ec_status pd_request_vdm_attention(int port, const uint32_t *data,
 					int vdo_count)
 {
@@ -238,6 +243,7 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 			intel_vdm_acked(port, type, vdo_count, vdm);
 			break;
 		}
+		__fallthrough;
 	default:
 		CPRINTS("C%d: Received unexpected VDM ACK for SVID %d", port,
 			svid);
@@ -256,6 +262,7 @@ void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 			intel_vdm_naked(port, type, vdm_cmd);
 			break;
 		}
+		__fallthrough;
 	default:
 		CPRINTS("C%d: Received unexpected VDM NAK for SVID %d", port,
 			svid);
@@ -298,7 +305,7 @@ static void dpm_attempt_mode_entry(int port)
 	 * of the modes can get out of sync, causing the attempt to
 	 * enter the mode to fail prematurely.
 	 */
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
+	if (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON))
 		return;
 #endif
 	/*
@@ -1153,4 +1160,25 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 
 	memcpy(msg, &sdb, *len);
 	return EC_SUCCESS;
+}
+
+enum ec_status pd_set_bist_share_mode(uint8_t enable)
+{
+	/*
+	 * This command is not allowed if system is locked.
+	 */
+	if (CONFIG_USB_PD_3A_PORTS == 0 || system_is_locked())
+		return EC_RES_ACCESS_DENIED;
+
+	if (enable)
+		bist_shared_mode_enabled = true;
+	else
+		bist_shared_mode_enabled = false;
+
+	return EC_RES_SUCCESS;
+}
+
+uint8_t pd_get_bist_share_mode(void)
+{
+	return bist_shared_mode_enabled;
 }

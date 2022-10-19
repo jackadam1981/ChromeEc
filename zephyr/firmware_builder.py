@@ -24,7 +24,7 @@ DEFAULT_BUNDLE_DIRECTORY = "/tmp/artifact_bundles"
 DEFAULT_BUNDLE_METADATA_FILE = "/tmp/artifact_bundle_metadata"
 
 # Boards that we want to track the coverage of our own files specifically.
-SPECIAL_BOARDS = ["herobrine"]
+SPECIAL_BOARDS = ["herobrine", "krabby", "nivviks", "skyrim", "kingler"]
 
 
 def log_cmd(cmd):
@@ -45,6 +45,7 @@ def run_twister(platform_ec, code_coverage=False, extra_args=None):
         "native_posix",
         "-p",
         "unit_testing",
+        "--no-upload-cros-rdb",
     ]
 
     if extra_args:
@@ -95,8 +96,6 @@ def build(opts):
                 parse_buildlog(build_log, metric, variant.upper())
     with open(opts.metrics, "w") as file:
         file.write(json_format.MessageToJson(metric_list))
-
-    run_twister(platform_ec, opts.code_coverage, ["--build-only"])
 
 
 UNITS = {
@@ -244,7 +243,7 @@ def test(opts):
     # Twister-based tests
     platform_ec = zephyr_dir.parent
     third_party = platform_ec.parent.parent / "third_party"
-    run_twister(platform_ec, opts.code_coverage, ["--test-only"])
+    run_twister(platform_ec, opts.code_coverage)
 
     if opts.code_coverage:
         build_dir = platform_ec / "build" / "zephyr"
@@ -327,33 +326,33 @@ def test(opts):
         ).stdout
         _extract_lcov_summary("EC_ZEPHYR_MERGED", metrics, output)
 
-        cmd = [
-            "/usr/bin/lcov",
-            "-o",
-            build_dir / "lcov_unfiltered.info",
-            "--rc",
-            "lcov_branch_coverage=1",
-            "-a",
-            build_dir / "zephyr_merged.info",
-            "-a",
-            platform_ec / "build/coverage/lcov.info",
-        ]
-        log_cmd(cmd)
-        subprocess.run(
-            cmd,
-            cwd=zephyr_dir,
-            check=True,
-            stdin=subprocess.DEVNULL,
-        )
-
         test_patterns = [
+            # Exclude tests
             platform_ec / "test/**",
-            platform_ec / "private/fingerprint/google-fpalg/mcutest/**",
+            platform_ec / "include/tests/**",
+            platform_ec / "private/test/**",
+            platform_ec / "private/fingerprint/*/mcutest/**",
             zephyr_dir / "test/**",
+            third_party / "zephyr/main/subsys/testsuite/**",
+            # Exclude mocks & emulators
+            platform_ec / "include/mock/**",
+            platform_ec / "common/mock/**",
+            platform_ec / "board/host/**",
+            platform_ec / "chip/host/**",
+            platform_ec / "core/host/**",
             zephyr_dir / "emul/**",
             zephyr_dir / "mock/**",
             third_party / "zephyr/main/subsys/emul/**",
-            third_party / "zephyr/main/subsys/testsuite/**",
+            # Exclude all files ending in _test.[ch] or _emul.[ch]
+            "**/*_test.c",
+            "**/*_test.h",
+            "**/*_emul.c",
+            "**/*_emul.h",
+            # Exclude some special cases that don't match the other patterns
+            platform_ec / "include/test_util.h",
+            platform_ec / "common/test_util.c",
+            zephyr_dir / "shim/src/test_util.c",
+            zephyr_dir / "shim/src/ztest_system.c",
         ]
 
         generated_and_system_patterns = [
@@ -370,7 +369,7 @@ def test(opts):
             "--rc",
             "lcov_branch_coverage=1",
             "-r",
-            build_dir / "lcov_unfiltered.info",
+            build_dir / "zephyr_merged.info",
         ] + generated_and_system_patterns
         log_cmd(cmd)
         output = subprocess.run(
@@ -441,16 +440,31 @@ def test(opts):
                 check=True,
                 stdin=subprocess.DEVNULL,
             )
+            # Filter to only code in the baseline board coverage
+            cmd = [
+                platform_ec / "util/lcov_stencil.py",
+                "-o",
+                build_dir / (board + "_stenciled.info"),
+                build_dir / board / "output/zephyr.info",
+                build_dir / (board + "_merged.info"),
+            ]
+            log_cmd(cmd)
+            subprocess.run(
+                cmd,
+                cwd=zephyr_dir,
+                check=True,
+                stdin=subprocess.DEVNULL,
+            )
             # Exclude file patterns we don't want
             cmd = (
                 [
                     "/usr/bin/lcov",
                     "-o",
-                    build_dir / (board + "_filtered.info"),
+                    build_dir / (board + "_final.info"),
                     "--rc",
                     "lcov_branch_coverage=1",
                     "-r",
-                    build_dir / (board + "_merged.info"),
+                    build_dir / (board + "_stenciled.info"),
                     # Exclude third_party code (specifically zephyr)
                     third_party / "**",
                     # These are questionable, but they are essentially untestable
@@ -471,26 +485,12 @@ def test(opts):
                 check=True,
                 stdin=subprocess.DEVNULL,
             )
-            # Then keep only files present in the board build
-            filenames = set()
-            with open(
-                build_dir / board / "output/zephyr.info", "r"
-            ) as board_cov:
-                for line in board_cov.readlines():
-                    if line.startswith("SF:"):
-                        filenames.add(line[3:-1])
-            cmd = [
-                "/usr/bin/lcov",
-                "-o",
-                build_dir / (board + "_final.info"),
-                "--rc",
-                "lcov_branch_coverage=1",
-                "-e",
-                build_dir / (board + "_filtered.info"),
-            ] + list(filenames)
-            log_cmd(cmd)
             output = subprocess.run(
-                cmd,
+                [
+                    "/usr/bin/lcov",
+                    "--summary",
+                    build_dir / (board + "_final.info"),
+                ],
                 cwd=zephyr_dir,
                 check=True,
                 stdout=subprocess.PIPE,

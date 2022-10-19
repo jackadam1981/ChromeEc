@@ -181,6 +181,7 @@ struct usb_mux_chain usb_muxes[] = {
 		.next = &usbc0_virtual_usb_mux_chain,
 	},
 	[USBC_PORT_C1] = {
+#ifdef CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB
 		.mux = &(const struct usb_mux){
 			.usb_port = USBC_PORT_C1,
 			.driver = &bb_usb_retimer,
@@ -190,10 +191,12 @@ struct usb_mux_chain usb_muxes[] = {
 						usb_c1_bb_retimer_emul)),
 		},
 		.next = &usbc1_virtual_usb_mux_chain,
+#endif
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 
+#ifdef CONFIG_PLATFORM_EC_USBC_RETIMER_INTEL_BB
 struct bb_usb_control bb_controls[] = {
 	[USBC_PORT_C0] = {
 		/* USB-C port 0 doesn't have a retimer */
@@ -205,6 +208,7 @@ struct bb_usb_control bb_controls[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
+#endif
 
 void pd_power_supply_reset(int port)
 {
@@ -212,30 +216,13 @@ void pd_power_supply_reset(int port)
 
 int pd_check_vconn_swap(int port)
 {
-	return 0;
+	return !chipset_in_state(CHIPSET_STATE_HARD_OFF);
 }
 
 int pd_set_power_supply_ready(int port)
 {
 	return EC_SUCCESS;
 }
-
-/* USBC PPC configuration */
-struct ppc_config_t ppc_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv,
-	},
-	[USBC_PORT_C1] = {
-		.i2c_port = I2C_PORT_USB_C1,
-		.i2c_addr_flags = SYV682X_ADDR1_FLAGS,
-		.frs_en = GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c1_frs_en)),
-		.drv = &syv682x_drv,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
-unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 DEFINE_FAKE_VOID_FUNC(system_hibernate, uint32_t, uint32_t);
 
