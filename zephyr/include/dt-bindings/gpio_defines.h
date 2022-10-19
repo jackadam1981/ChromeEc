@@ -149,4 +149,26 @@
 #define GPIO_INT_LEVEL_ACTIVE \
 	(GPIO_INT_ENABLE | GPIO_INT_LEVELS_LOGICAL | GPIO_INT_HIGH_1)
 
+/**
+ * EC legacy shim usage GPIO flags.
+ *
+ * These are only used for legacy GPIOs, and should not be referenced
+ * in any code that is using the Zephyr API.
+ * The allocation starts from the MSB so as to avoid collisions with
+ * Zephyr allocated flags, but there is no guarantee that eventually
+ * Zephyr will not allocate the same bits.
+ */
+
+/**
+ * Flags the GPIO as being output only, where reading the pin
+ * will return the current output setting, not the value from
+ * the pin itself (which is either unavailable or does not return
+ * a correct value due to voltage level issues).
+ * This may be used to indicate GPIOs that are output only (and
+ * will always return 0 as the pin value, regardless of what is written),
+ * or pins that are open drain and where the pull-up voltage is not
+ * enough to accurately read the state of the pin.
+ */
+#define GPIO_NO_INPUT (1U << 31)
+
 #endif /* DT_BINDINGS_GPIO_DEFINES_H_ */

@@ -149,6 +149,30 @@ ZTEST(gpio, test_legacy_gpio_get_set_level)
 }
 
 /**
+ * @brief TestPurpose: Verify legacy GPIO_NO_INPUT config
+ *
+ * @details
+ * Verify that a GPIO configured as GPIO_NO_INPUT reads the
+ * input value from the set output value (not the input pin).
+ *
+ * Expected Results
+ *  - Success
+ */
+ZTEST(gpio, test_legacy_gpio_no_input)
+{
+	enum gpio_signal signal = GPIO_SIGNAL(DT_NODELABEL(gpio_no_input));
+	const struct gpio_dt_spec *gp = GPIO_DT_FROM_NODELABEL(gpio_no_input);
+
+	gpio_set_level(signal, 0);
+	zassert_equal(0, gpio_get_level(signal), "Expected level==0");
+	gpio_set_level(signal, 1);
+	zassert_equal(1, gpio_get_level(signal), "Expected level==1");
+	/* Now set the input to 0 */
+	zassert_ok(gpio_emul_input_set(gp->port, gp->pin, 0));
+	zassert_equal(1, gpio_get_level(signal), "Expected level==1");
+}
+
+/**
  * @brief TestPurpose: Verify legacy GPIO enable/disable interrupt.
  *
  * @details
