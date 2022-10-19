@@ -19,6 +19,15 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #define ACC(FIT, X, Y, Z, EXPECTED) \
 	TEST_EQ(newton_fit_accumulate(FIT, X, Y, Z), EXPECTED, "%d")
 
+/* This function is defined in motion_sense.c but we don't want to link that
+ * whole module since it would turn this test into an integration test. Instead,
+ * we'll implement a stub here.
+ */
+int sensor_board_is_lid_angle_available(void)
+{
+	return 0;
+}
+
 static int test_newton_fit_reset(void)
 {
 	struct newton_fit fit = NEWTON_FIT(4, 15, 0.01f, 0.25f, 1.0e-8f, 100);

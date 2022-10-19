@@ -30,6 +30,15 @@ uint32_t mkbp_last_event_time;
 static struct ec_response_motion_sensor_data data[CONFIG_ACCEL_FIFO_SIZE];
 static uint16_t data_bytes_read;
 
+/* This function is defined in motion_sense.c but we don't want to link that
+ * whole module since it would turn this test into an integration test. Instead,
+ * we'll implement a stub here.
+ */
+int sensor_board_is_lid_angle_available(void)
+{
+	return 0;
+}
+
 static int test_insert_async_event(void)
 {
 	int read_count;

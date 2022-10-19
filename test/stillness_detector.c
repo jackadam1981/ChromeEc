@@ -17,6 +17,15 @@
 struct motion_sensor_t motion_sensors[] = {};
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+/* This function is defined in motion_sense.c but we don't want to link that
+ * whole module since it would turn this test into an integration test. Instead,
+ * we'll implement a stub here.
+ */
+int sensor_board_is_lid_angle_available(void)
+{
+	return 0;
+}
+
 static int test_build_still_det_struct(void)
 {
 	struct still_det det = STILL_DET(0.00025f, 800 * MSEC, 1200 * MSEC, 5);

@@ -27,6 +27,15 @@ struct accel_cal cal = {
 	.num_temp_windows = ARRAY_SIZE(algos),
 };
 
+/* This function is defined in motion_sense.c but we don't want to link that
+ * whole module since it would turn this test into an integration test. Instead,
+ * we'll implement a stub here.
+ */
+int sensor_board_is_lid_angle_available(void)
+{
+	return 0;
+}
+
 static bool accumulate(float x, float y, float z, float temperature)
 {
 	return accel_cal_accumulate(&cal, 0, x, y, z, temperature) ||
