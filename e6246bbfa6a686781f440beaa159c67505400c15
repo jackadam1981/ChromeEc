@@ -290,6 +290,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db3ead5_a5cb95cc",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-19T23:01:07Z",
+      "side": 1,
+      "message": "What do think of the suggestion on the gituhub issue?  That would require implementing driver stubs for each temperature sensor so that the `pm_device_children_action_run()` calls work correctly.  This is a good signal that we should switch to using upstream temperature sensors.   But that is a separate design effort (b:218337799)",
+      "parentUuid": "a62d779a_ef437a19",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
