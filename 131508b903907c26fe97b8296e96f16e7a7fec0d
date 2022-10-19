@@ -1,0 +1,266 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5b7878_1a355dca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "Some nits...",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e4cd9d_f8fba340",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "no need for apostrophe.",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "545b9b80_69a1b320",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "signal\u0027s",
+      "range": {
+        "startLine": 19,
+        "startChar": 57,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4ef946_412c88f8",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "To be consistent with the existing bindings, compatibles should be prepended with \"intel,\"",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a1af79_f3cd2bcf",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "Value that indicates `input-signal` must be ASSERTED",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef0abf4_10375a10",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "equal",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e5007b_33f82cc0",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "Initial value of `input-signal`",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8193248c_f42bff54",
+        "filename": "zephyr/dts/bindings/power/ap-pwr-signal-emul.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "Milliseconds (here and elsewhere)",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9d1936_e6c75dac",
+        "filename": "zephyr/include/emul/emul_power_signals.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "initializes",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a050b00f_6d5c059d",
+        "filename": "zephyr/include/emul/emul_power_signals.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be an enumeration, but pointer to a struct",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d77a38a_59844379",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "There have been some issues with zero-length arrays with some compilers i.e there is a gitlab CI using gcc that sometimes will have failures.\nSo I would suggest avoiding if possible the use of a zero length array like this.\nAn alternative is to separately define it as a normal struct array, and then have a pointer to it in this struct. It can be named using something derived from the node name (which is unique).\n\nThis may work OK, but in some situations it\u0027s a bit fragile.",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca4d2c6_8d2c9015",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "This should perhaps be a switch/case.",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9a7d1c_118bd1ff",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "corresponding",
+      "range": {
+        "startLine": 396,
+        "startChar": 20,
+        "endLine": 396,
+        "endChar": 33
+      },
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e53582_b02c314b",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T04:19:01Z",
+      "side": 1,
+      "message": "handlers\u0027",
+      "revId": "131508b903907c26fe97b8296e96f16e7a7fec0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
