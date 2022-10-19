@@ -10,9 +10,11 @@
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_lsm6dso.h"
+#include "fw_config.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "motion_sense.h"
+#include "tablet_mode.h"
 #include "temp_sensor.h"
 #include "thermal.h"
 #include "temp_sensor/thermistor.h"
@@ -142,7 +144,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.max_frequency = LSM6DSO_ODR_MAX_VAL,
 	},
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 struct motion_sensor_t bmi260_base_accel = {
 	.name = "Base Accel",
@@ -208,6 +210,16 @@ static void board_update_motion_sensor_config(void)
 		ccprints("BASE IMU is BMI260");
 	} else {
 		ccprints("BASE IMU is LSM6DSO");
+	}
+
+	if (!get_fw_config().form_factor) {
+		ccprints("Clamshell");
+		motion_sensor_count = 2;
+		tablet_set_mode(0, TABLET_TRIGGER_LID);
+		gmr_tablet_switch_disable();
+		gpio_set_flags(GPIO_TABLET_MODE_L, GPIO_INPUT | GPIO_PULL_UP);
+		gpio_set_flags(GPIO_EC_ACCEL_INT_R_L,
+			       GPIO_INPUT | GPIO_PULL_UP);
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_update_motion_sensor_config,

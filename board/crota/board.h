@@ -37,6 +37,8 @@
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+
 /* Lid accel */
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
@@ -231,7 +233,7 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-enum sensor_id { LID_ACCEL = 0, BASE_ACCEL, BASE_GYRO, SENSOR_COUNT };
+enum sensor_id { BASE_ACCEL = 0, BASE_GYRO, LID_ACCEL, SENSOR_COUNT };
 
 enum ioex_port { IOEX_C0_NCT38XX = 0, IOEX_C1_NCT38XX, IOEX_PORT_COUNT };
 
