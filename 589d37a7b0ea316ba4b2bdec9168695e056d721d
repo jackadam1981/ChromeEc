@@ -22,6 +22,30 @@
       },
       "revId": "589d37a7b0ea316ba4b2bdec9168695e056d721d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe20dc32_5a15b6c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2022-10-19T07:56:29Z",
+      "side": 1,
+      "message": "In FIFO mode, EC only needs to set how much data will be send or receive to i2c controller. The controller will process transaction automatically without CPU intervention. So clock stretching can be eliminated between bytes.\nWithout FIFO mode enabled, CPU have to process i2c transaction rountine after every byte was sent or received. EC will hold down clock until it is ready to send or receive next byte.",
+      "parentUuid": "6c34e9d4_4b3974cf",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "589d37a7b0ea316ba4b2bdec9168695e056d721d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
