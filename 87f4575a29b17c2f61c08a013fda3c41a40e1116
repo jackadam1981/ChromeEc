@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d49f375_48000fc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "Nit: Spelling",
+      "range": {
+        "startLine": 10,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadf7d20_d97fa189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "This looks pretty good. Minor comments.",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ae9697_c5ae4444",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "usb_dpm_state",
+      "range": {
+        "startLine": 89,
+        "startChar": 63,
+        "endLine": 89,
+        "endChar": 75
+      },
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c054f8a3_96327992",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "Although there is precedent for this in the existing state machines, in general, I don\u0027t think we should be writing tests that explicitly set or check the state of the state machines. The tests should be based on the traffic we generate. I\u0027d make these internal functions straightforwardly static and wait for there to be a compelling reason to change that.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcfb616a_7b1ae78d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "What would be the consequences of doing this unconditionally?",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f110e6_313c0628",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "This is somewhat outside the scope of this CL, but I think we have a reason for the overall order that these run in, and it would be nice to have a comment stating that. IIRC, the idea is that if we receive a message, we can at least start to react to it during this cycle, and if we decide to send one, we can get it on the wire during this cycle. Diana might be aware of some nuance I\u0027m missing.",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f6e00e_73ad998e",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "I don\u0027t totally understand the semantics of the PE sync flag. The PD ready flag puts the DPM in a state where it just checks the value of this flag waiting for something to happen. Then, if the flag is set, it checks the value of other flags that the PE will set. So it seems like the DPM ready state could just check those flags directly and not need this flag. But I see that you remove this flag and function in later CLs, so I\u0027m not too concerned.",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8361dd74_d76624df",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "Nit: This should be `dpm_set_pe_ready`. It\u0027s the PE that\u0027s just become \"ready.\" PD may have been running for some time.",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4491f426_d4d85e2b",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "Rather than create a new header file, I\u0027d just rename the existing `usb_pd_dpm.h` to `usb_pd_dpm_sm.h` to fit the naming scheme for first-class state machines.",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea81750_28918375",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "Device Policy Manager",
+      "range": {
+        "startLine": 6,
+        "startChar": 7,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0d9820_a6cc20fd",
+        "filename": "include/usb_pd_dpm_sm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T16:51:53Z",
+      "side": 1,
+      "message": "Do you need any of these includes in this file?\n\nNit: Blank line after include guard",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
