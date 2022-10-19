@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04543afc_b21b28a0",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T20:34:21Z",
+      "side": 1,
+      "message": "If only the DFP exits modes, then shouldn\u0027t this be `dpm_dfp_exit_mode_msg`?",
+      "revId": "a0fb7bcb2dce2a9f74c7d959bf1975cc1127a053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
