@@ -266,6 +266,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62d779a_ef437a19",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-10-19T06:46:43Z",
+      "side": 1,
+      "message": "I made a mistake\n```\nThe first problem is that the temperature sensors are still powered when the chip \nenters G3 state. I think it would be better to change their PM states to \nPM_DEVICE_STATE_SUSPENDED.\n```\nIt is not true. I somehow missed on the schematics that the temperature sensors are also powered from `PP3300_S5`, so the point above doesn\u0027t make sense.",
+      "parentUuid": "ea95c43f_63618225",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
