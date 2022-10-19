@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b84f28d_4bd29062",
+        "filename": "zephyr/test/krabby/src/temp_tentacruel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-10-19T06:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fdc68e7_3ac4449b",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "c991c04d989cb36ca14c2a3bd83b3d2fdddda1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94432fc3_8af16f19",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3888b499_48c28ffa",
+        "filename": "zephyr/test/krabby/src/temp_tentacruel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-10-19T06:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94432fc3_8af16f19",
+      "revId": "c991c04d989cb36ca14c2a3bd83b3d2fdddda1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5b5debe_14500047",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-10-19T04:40:36Z",
       "side": 1,
       "message": "same here (assert count \u003d\u003d -1)",
+      "revId": "c991c04d989cb36ca14c2a3bd83b3d2fdddda1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1324d2c5_ab999329",
+        "filename": "zephyr/test/krabby/src/temp_tentacruel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1545602
+      },
+      "writtenOn": "2022-10-19T06:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b5debe_14500047",
       "revId": "c991c04d989cb36ca14c2a3bd83b3d2fdddda1ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
