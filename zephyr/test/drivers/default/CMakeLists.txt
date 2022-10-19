@@ -23,6 +23,7 @@ target_sources(app PRIVATE
     src/console_cmd/button.c
     src/console_cmd/crash.c
     src/console_cmd/cutoff.c
+    src/console_cmd/ec_features.c
     src/console_cmd/gpio.c
     src/console_cmd/i2c_portmap.c
     src/console_cmd/md.c
@@ -35,11 +36,13 @@ target_sources(app PRIVATE
     src/console_cmd/power_button.c
     src/console_cmd/rtc.c
     src/console_cmd/rw.c
+    src/console_cmd/shared_mem.c
     src/console_cmd/sleepmask.c
     src/console_cmd/sleeptimeout.c
     src/console_cmd/sysinfo.c
     src/console_cmd/tcpci_dump.c
     src/console_cmd/usb_pd_console.c
+    src/console_cmd/vboot_hash.c
     src/console_cmd/version.c
     src/console_cmd/waitms.c
     src/cros_cbi.c
@@ -73,7 +76,6 @@ target_sources(app PRIVATE
     src/ps8xxx.c
     src/smart.c
     src/stm_mems_common.c
-    src/system.c
     src/tablet_mode.c
     src/tcpci.c
     src/tcpci_test_common.c
@@ -82,7 +84,7 @@ target_sources(app PRIVATE
     src/thermistor.c
     src/uart_hostcmd.c
     src/usb_mux.c
-    src/usb_pd_host_cmd.c
+    src/util.c
     src/vboot_hash.c
     src/virtual_battery.c
     src/vstore.c

@@ -5,7 +5,6 @@
 
 #include "battery.h"
 #include "battery_smart.h"
-#include "board.h"
 #include "builtin/assert.h"
 #include "charge_manager.h"
 #include "charge_state.h"
@@ -697,11 +696,11 @@ void prl_run(int port, int evt, int en)
 	case SM_PAUSED:
 		if (!en)
 			break;
-		/* fall through */
+		__fallthrough;
 	case SM_INIT:
 		prl_init(port);
 		local_state[port] = SM_RUN;
-		/* fall through */
+		__fallthrough;
 	case SM_RUN:
 		if (!en) {
 			/* Disable RX */

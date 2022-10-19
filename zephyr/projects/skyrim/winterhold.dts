@@ -3,19 +3,18 @@
  * found in the LICENSE file.
  */
 
+#include <dt-bindings/usbc_mux.h>
+
+#include "i2c_common.dtsi"
+
 / {
 	named-gpios {
 		/* Winterhold-specific GPIO customizations */
 	};
 
 	named-temp-sensors {
+		compatible = "cros-ec,temp-sensors";
 		soc-pct2075 {
-			compatible = "cros-ec,temp-sensor-pct2075",
-				     "cros-ec,temp-sensor";
-			enum-name = "TEMP_SENSOR_SOC";
-			pct2075-name = "PCT2075_SOC";
-			port = <&i2c_sensor>;
-			i2c-addr-flags = "PCT2075_I2C_ADDR_FLAGS0";
 			temp_host_high = <100>;
 			temp_host_halt = <105>;
 			temp_host_release_high = <80>;
@@ -23,15 +22,11 @@
 			temp_fan_off = <0>;
 			temp_fan_max = <70>;
 			power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&soc_pct2075>;
 		};
 		amb-pct2075 {
-			compatible = "cros-ec,temp-sensor-pct2075",
-				     "cros-ec,temp-sensor";
-			enum-name = "TEMP_SENSOR_AMB";
-			pct2075-name = "PCT2075_AMB";
-			port = <&i2c_sensor>;
-			i2c-addr-flags = "PCT2075_I2C_ADDR_FLAGS7";
 			power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&amb_pct2075>;
 		};
 	};
 
@@ -42,63 +37,23 @@
 	Winterhold-fw-config {
 		compatible = "cros-ec,cbi-fw-config";
 
-		form-factor {
-			enum-name = "FW_FORM_FACTOR";
-			start = <0>;
-			size = <1>;
-
-			ff-clamshell {
-				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_FF_CLAMSHELL";
-				value = <0>;
-			};
-			ff-convertible {
-				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_FF_CONVERTIBLE";
-				value = <1>;
-				default;
-			};
-		};
-		io-db {
-			enum-name = "FW_IO_DB";
-			start = <6>;
-			size = <2>;
-
-			io-db-ps8811-ps8818 {
-				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_IO_DB_PS8811_PS8818";
-				value = <0>;
-			};
-			io-db-none-anx7483 {
-				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_IO_DB_NONE_ANX7483";
-				value = <1>;
-				default;
-			};
-		};
-
 		/*
-		 * FW_CONFIG field to enable fan or not.
+		 * FW_CONFIG field to enable KB back light or not.
 		 */
-		fan {
-			enum-name = "FW_FAN";
-			start = <10>;
+		kb-bl {
+			enum-name = "FW_KB_BL";
+			start = <1>;
 			size = <1>;
 
-			no-fan {
+			no-kb-bl {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_FAN_NOT_PRESENT";
+				enum-name = "FW_KB_BL_NOT_PRESENT";
 				value = <0>;
 			};
-			fan-present {
+			kb-bl-present {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_FAN_PRESENT";
+				enum-name = "FW_KB_BL_PRESENT";
 				value = <1>;
-				/*
-				 * Set as default so that unprovisioned
-				 * configs will run the fan regardless.
-				 */
-				default;
 			};
 		};
 	};
@@ -121,6 +76,11 @@
 };
 
 &i2c0_0 {
+	anx7483_port0: anx7483@3e {
+		compatible = "analogix,anx7483";
+		reg = <0x3e>;
+		board-set = "board_anx7483_c0_mux_set";
+	};
 	ppc_port0: nx20p348x@71 {
 		compatible = "nxp,nx20p348x";
 		status = "okay";
@@ -129,6 +89,11 @@
 };
 
 &i2c1_0 {
+	anx7483_port1: anx7483@3e {
+		compatible = "analogix,anx7483";
+		reg = <0x3e>;
+		board-set = "board_anx7483_c1_mux_set";
+	};
 	ppc_port1: nx20p348x@71 {
 		compatible = "nxp,nx20p348x";
 		status = "okay";
@@ -136,10 +101,26 @@
 	};
 };
 
+&i2c4_1 {
+	charger: isl9238@9 {
+		compatible = "intersil,isl923x";
+		status = "okay";
+		reg = <0x9>;
+	};
+};
+
 &usbc_port0 {
 	ppc = <&ppc_port0>;
+	usb-mux-chain-0 {
+		compatible = "cros-ec,usb-mux-chain";
+		usb-muxes = <&amd_fp6_port0 &anx7483_port0>;
+	};
 };
 
 &usbc_port1 {
 	ppc = <&ppc_port1>;
+	usb-mux-chain-1-anx {
+		compatible = "cros-ec,usb-mux-chain";
+		usb-muxes = <&amd_fp6_port1 &anx7483_port1>;
+	};
 };

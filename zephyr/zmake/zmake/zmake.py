@@ -1,8 +1,9 @@
-# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Copyright 2020 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 """Module encapsulating Zmake wrapper object."""
+import atexit
 import difflib
 import functools
 import logging
@@ -11,9 +12,11 @@ import pathlib
 import re
 import shutil
 import subprocess
+import tempfile
 from typing import Dict, Optional, Set, Union
 
 import zmake.build_config
+import zmake.compare_builds
 import zmake.generate_readme
 import zmake.jobserver
 import zmake.modules
@@ -204,8 +207,6 @@ class Zmake:
         self,
         project_names,
         all_projects=False,
-        host_tests_only=False,
-        boards_only=False,
     ) -> Set[zmake.project.Project]:
         """Finds all projects for the specified command line flags.
 
@@ -216,12 +217,6 @@ class Zmake:
         )
         if all_projects:
             projects = set(found_projects.values())
-        elif host_tests_only:
-            projects = {p for p in found_projects.values() if p.config.is_test}
-        elif boards_only:
-            projects = {
-                p for p in found_projects.values() if not p.config.is_test
-            }
         else:
             projects = set()
             for project_name in project_names:
@@ -244,10 +239,8 @@ class Zmake:
         coverage=False,
         allow_warnings=False,
         all_projects=False,
-        host_tests_only=False,
         extra_cflags=None,
         delete_intermediates=False,
-        boards_only=False,
         static_version=False,
         save_temps=False,
     ):
@@ -259,8 +252,6 @@ class Zmake:
         projects = self._resolve_projects(
             project_names,
             all_projects=all_projects,
-            host_tests_only=host_tests_only,
-            boards_only=boards_only,
         )
         for project in projects:
             project_build_dir = (
@@ -313,10 +304,8 @@ class Zmake:
         coverage=False,
         allow_warnings=False,
         all_projects=False,
-        host_tests_only=False,
         extra_cflags=None,
         delete_intermediates=False,
-        boards_only=False,
         static_version=False,
         save_temps=False,
     ):
@@ -330,14 +319,89 @@ class Zmake:
             coverage=coverage,
             allow_warnings=allow_warnings,
             all_projects=all_projects,
-            host_tests_only=host_tests_only,
             extra_cflags=extra_cflags,
             build_after_configure=True,
             delete_intermediates=delete_intermediates,
-            boards_only=boards_only,
             static_version=static_version,
             save_temps=save_temps,
         )
+
+    def compare_builds(
+        self,
+        ref1,
+        ref2,
+        project_names,
+        toolchain=None,
+        all_projects=False,
+        extra_cflags=None,
+        keep_temps=False,
+    ):
+        """Compare EC builds at two commits."""
+        temp_dir = tempfile.mkdtemp(prefix="zcompare-")
+        if not keep_temps:
+            atexit.register(shutil.rmtree, temp_dir)
+        else:
+            self.logger.info("Temporary dir %s will be retained", temp_dir)
+
+        projects = self._resolve_projects(
+            project_names,
+            all_projects=all_projects,
+        )
+
+        self.logger.info("Compare zephyr builds")
+
+        cmp_builds = zmake.compare_builds.CompareBuilds(temp_dir, ref1, ref2)
+
+        for checkout in cmp_builds.checkouts:
+            self.logger.info(
+                "Checkout %s: full hash %s", checkout.ref, checkout.full_ref
+            )
+
+        cmp_builds.do_checkouts(self.zephyr_base, self.module_paths)
+
+        for checkout in cmp_builds.checkouts:
+            # Now that the sources have been checked out, transform the
+            # zephyr-base and module-paths to use the temporary directory
+            # created by BuildInfo.
+            for module_name in self.module_paths.keys():
+                new_path = checkout.modules_dir / module_name
+                transformed_module = {module_name: new_path}
+                self.module_paths.update(transformed_module)
+
+            self.zephyr_base = checkout.zephyr_dir
+
+            self.logger.info("Building projects at %s", checkout.ref)
+            result = self.configure(
+                project_names,
+                build_dir=None,
+                toolchain=toolchain,
+                clobber=False,
+                bringup=False,
+                coverage=False,
+                allow_warnings=False,
+                all_projects=all_projects,
+                extra_cflags=extra_cflags,
+                build_after_configure=True,
+                delete_intermediates=False,
+                static_version=True,
+                save_temps=False,
+            )
+
+            if result:
+                self.logger.error(
+                    "compare-builds failed to build all projects at %s",
+                    checkout.ref,
+                )
+                return result
+
+        self.failed_projects = cmp_builds.check_binaries(projects)
+
+        if len(self.failed_projects) == 0:
+            self.logger.info("Zephyr compare builds successful:")
+            for checkout in cmp_builds.checkouts:
+                self.logger.info("   %s: %s", checkout.ref, checkout.full_ref)
+
+        return len(self.failed_projects)
 
     def test(  # pylint: disable=unused-argument
         self,

@@ -3,7 +3,9 @@
 # found in the LICENSE file.
 
 target_sources(app PRIVATE
+    src/adc.c
     src/battery_cut_off.c
+    src/battery_display_soc.c
     src/get_panic_info.c
     src/get_pd_port_caps.c
     src/host_event_commands.c
@@ -14,4 +16,5 @@ target_sources(app PRIVATE
     src/pd_chip_info.c
     src/pd_log.c
     src/usb_pd_control.c
+    src/usb_pd_host_cmd.c
 )

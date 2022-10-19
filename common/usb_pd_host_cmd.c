@@ -241,7 +241,8 @@ static uint8_t get_pd_control_flags(int port)
 	union tbt_mode_resp_device device_resp;
 	uint8_t control_flags = 0;
 
-	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP) ||
+	    !IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
 		return 0;
 
 	cable_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPCI_MSG_SOP_PRIME);
@@ -364,8 +365,12 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		r_v2->control_flags = get_pd_control_flags(p->port);
 		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 			r_v2->dp_mode = get_dp_pin_mode(p->port);
-			r_v2->cable_speed = get_tbt_cable_speed(p->port);
-			r_v2->cable_gen = get_tbt_rounded_support(p->port);
+			if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
+				r_v2->cable_speed =
+					get_tbt_cable_speed(p->port);
+				r_v2->cable_gen =
+					get_tbt_rounded_support(p->port);
+			}
 		}
 
 		if (args->version == 1)
@@ -382,75 +387,6 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL, hc_usb_pd_control,
 		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 #endif /* CONFIG_COMMON_RUNTIME */
-
-#if defined(CONFIG_HOSTCMD_FLASHPD) && defined(CONFIG_USB_PD_TCPMV2)
-static enum ec_status hc_remote_flash(struct host_cmd_handler_args *args)
-{
-	const struct ec_params_usb_pd_fw_update *p = args->params;
-	int port = p->port;
-	int rv = EC_RES_SUCCESS;
-	const uint32_t *data = &(p->size) + 1;
-	int i, size;
-
-	if (port >= board_get_usb_pd_port_count())
-		return EC_RES_INVALID_PARAM;
-
-	if (p->size + sizeof(*p) > args->params_size)
-		return EC_RES_INVALID_PARAM;
-
-#if defined(CONFIG_CHARGE_MANAGER) && defined(CONFIG_BATTERY) && \
-	(defined(CONFIG_BATTERY_PRESENT_CUSTOM) ||               \
-	 defined(CONFIG_BATTERY_PRESENT_GPIO))
-	/*
-	 * Do not allow PD firmware update if no battery and this port
-	 * is sinking power, because we will lose power.
-	 */
-	if (battery_is_present() != BP_YES &&
-	    charge_manager_get_active_charge_port() == port)
-		return EC_RES_UNAVAILABLE;
-#endif
-
-	switch (p->cmd) {
-	case USB_PD_FW_REBOOT:
-		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_REBOOT, NULL, 0);
-		/*
-		 * Return immediately to free pending i2c bus.  Host needs to
-		 * manage this delay.
-		 */
-		return EC_RES_SUCCESS;
-
-	case USB_PD_FW_FLASH_ERASE:
-		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_FLASH_ERASE, NULL, 0);
-		/*
-		 * Return immediately.  Host needs to manage delays here which
-		 * can be as long as 1.2 seconds on 64KB RW flash.
-		 */
-		return EC_RES_SUCCESS;
-
-	case USB_PD_FW_ERASE_SIG:
-		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_ERASE_SIG, NULL, 0);
-		break;
-
-	case USB_PD_FW_FLASH_WRITE:
-		/* Data size must be a multiple of 4 */
-		if (!p->size || p->size % 4)
-			return EC_RES_INVALID_PARAM;
-
-		size = p->size / 4;
-		for (i = 0; i < size; i += VDO_MAX_SIZE - 1) {
-			pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_FLASH_WRITE,
-				    data + i, MIN(size - i, VDO_MAX_SIZE - 1));
-		}
-		return EC_RES_SUCCESS;
-
-	default:
-		return EC_RES_INVALID_PARAM;
-	}
-
-	return rv;
-}
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_FW_UPDATE, hc_remote_flash, EC_VER_MASK(0));
-#endif /* CONFIG_HOSTCMD_FLASHPD && CONFIG_USB_PD_TCPMV2 */
 
 __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
 {
@@ -544,13 +480,24 @@ static enum ec_status pd_control(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_PD_CONTROL, pd_control, EC_VER_MASK(0));
 #endif /* CONFIG_HOSTCMD_PD_CONTROL */
 
-#if !defined(CONFIG_USB_PD_TCPM_STUB) && !defined(TEST_BUILD)
+#if !defined(CONFIG_USB_PD_TCPM_STUB)
 /*
  * PD host event status for host command
  * Note: this variable must be aligned on 4-byte boundary because we pass the
  * address to atomic_ functions which use assembly to access them.
  */
 static atomic_t pd_host_event_status __aligned(4);
+
+void pd_send_host_event(int mask)
+{
+	/* mask must be set */
+	if (!mask)
+		return;
+
+	atomic_or(&pd_host_event_status, mask);
+	/* interrupt the AP */
+	host_set_single_event(EC_HOST_EVENT_PD_MCU);
+}
 
 static enum ec_status
 hc_pd_host_event_status(struct host_cmd_handler_args *args)
@@ -565,6 +512,6 @@ hc_pd_host_event_status(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, hc_pd_host_event_status,
 		     EC_VER_MASK(0));
-#endif /* ! CONFIG_USB_PD_TCPM_STUB && ! TEST_BUILD */
+#endif /* ! CONFIG_USB_PD_TCPM_STUB */
 
 #endif /* HAS_TASK_HOSTCMD */

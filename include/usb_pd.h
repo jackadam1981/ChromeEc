@@ -362,6 +362,7 @@ extern const struct svdm_amode_fx supported_modes[];
 extern const int supported_modes_cnt;
 
 /* 4 entry rw_hash table of type-C devices that AP has firmware updates for. */
+/* This is *NOT* a hash-table, it's a table (ring-buffer) of hashes */
 #ifdef CONFIG_COMMON_RUNTIME
 #define RW_HASH_ENTRIES 4
 extern struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
@@ -894,7 +895,6 @@ enum pd_states {
 	PD_STATE_BIST_RX, /* C36 */
 	PD_STATE_BIST_TX, /* C37 */
 	PD_STATE_DRP_AUTO_TOGGLE, /* C38 */
-	PD_STATE_ENTER_USB, /* C39 */
 	/* Number of states. Not an actual state. */
 	PD_STATE_COUNT,
 };
@@ -1931,68 +1931,6 @@ void dfp_consume_modes(int port, enum tcpci_msg_type type, int cnt,
 bool is_vpd_ct_supported(int port);
 
 /**
- * Returns CTVPD ground impedance
- *
- * @param port     USB-C port number
- * @return         Ground impedance through the VPD in 1 mOhm increments, else
- *                 0 if Charge Through isn't supported
- */
-uint8_t get_vpd_ct_gnd_impedance(int port);
-
-/**
- * Returns CTVPD VBUS impedance
- *
- * @param port     USB-C port number
- * @return         VBUS impedance through the VPD in 2 mOhm increments, else
- *                 0 if Charge Through isn't supported
- */
-uint8_t get_vpd_ct_vbus_impedance(int port);
-
-/**
- * Returns CTVPD Current support
- *
- * @param port     USB-C port number
- * @return         0 - 3A capable or
- *                 1 - 5A capable
- */
-uint8_t get_vpd_ct_current_support(int port);
-
-/**
- * Returns CTVPD Maximum VBUS Voltage
- *
- * @param port     USB-C port number
- * @return         0 - 20V
- *                 1 - 30V
- *                 2 - 40V
- *                 3 - 50V
- */
-uint8_t get_vpd_ct_max_vbus_voltage(int port);
-
-/**
- * Returns VPD VDO Version
- *
- * @param port     USB-C port number
- * @return         0 for Version 1.0
- */
-uint8_t get_vpd_ct_vdo_version(int port);
-
-/**
- * Returns VPD Firmware Version
- *
- * @param port     USB-C port number
- * @return         Firmware version assigned by the VID owner
- */
-uint8_t get_vpd_ct_firmware_verion(int port);
-
-/**
- * Returns HW Firmware Version
- *
- * @param port     USB-C port number
- * @return         HW version assigned by the VID owner
- */
-uint8_t get_vpd_ct_hw_version(int port);
-
-/**
  * Initialize alternate mode discovery info for DFP
  *
  * @param port     USB-C port number
@@ -2628,7 +2566,7 @@ void pd_control_port_enable(int port);
  *
  * @param mask host event mask.
  */
-#if defined(HAS_TASK_HOSTCMD) && !defined(TEST_BUILD)
+#if defined(CONFIG_USB_PD_HOST_CMD) && !defined(CONFIG_USB_PD_TCPM_STUB)
 void pd_send_host_event(int mask);
 #else
 static inline void pd_send_host_event(int mask)

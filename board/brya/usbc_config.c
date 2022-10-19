@@ -94,6 +94,7 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
 /******************************************************************************/
 
+#ifndef CONFIG_ZEPHYR
 /* USBC PPC configuration */
 struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {
@@ -119,7 +120,6 @@ BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
 
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
-#ifndef CONFIG_ZEPHYR
 /* USBC mux configuration - Alder Lake includes internal mux */
 static const struct usb_mux_chain usbc0_tcss_usb_mux = {
 	.mux =
@@ -156,6 +156,7 @@ const struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.mux = &(const struct usb_mux) {
 			.usb_port = USBC_PORT_C0,
+			.flags = USB_MUX_FLAG_CAN_IDLE,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C0_C2_MUX,
@@ -175,6 +176,7 @@ const struct usb_mux_chain usb_muxes[] = {
 	[USBC_PORT_C2] = {
 		.mux = &(const struct usb_mux) {
 			.usb_port = USBC_PORT_C2,
+			.flags = USB_MUX_FLAG_CAN_IDLE,
 			.driver = &bb_usb_retimer,
 			.hpd_update = bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C0_C2_MUX,

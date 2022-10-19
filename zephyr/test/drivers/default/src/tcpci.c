@@ -311,14 +311,14 @@ ZTEST(tcpci, test_generic_tcpci_mux_init)
 	/* Make sure that TCPC is not accessed */
 	i2c_common_emul_set_read_fail_reg(common_data,
 					  I2C_COMMON_EMUL_FAIL_ALL_REG);
-	zassert_equal(EC_SUCCESS, tcpci_tcpm_mux_init(tcpci_usb_mux), NULL);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_mux_init(tcpci_usb_mux));
 
 	/* Set as only usb mux without TCPC for rest of the test */
 	set_usb_mux_not_tcpc();
 
 	/* Test fail on power status read */
 	i2c_common_emul_set_read_fail_reg(common_data, TCPC_REG_POWER_STATUS);
-	zassert_equal(EC_ERROR_INVAL, tcpci_tcpm_mux_init(tcpci_usb_mux), NULL);
+	zassert_equal(EC_ERROR_INVAL, tcpci_tcpm_mux_init(tcpci_usb_mux));
 	i2c_common_emul_set_read_fail_reg(common_data,
 					  I2C_COMMON_EMUL_NO_FAIL_REG);
 
@@ -349,7 +349,7 @@ ZTEST(tcpci, test_generic_tcpci_mux_init)
 	tcpci_emul_set_reg(emul, TCPC_REG_ALERT_MASK, 0xffff);
 
 	/* Test success init */
-	zassert_equal(EC_SUCCESS, tcpci_tcpm_mux_init(tcpci_usb_mux), NULL);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_mux_init(tcpci_usb_mux));
 	check_tcpci_reg(emul, TCPC_REG_ALERT_MASK, 0);
 	check_tcpci_reg(emul, TCPC_REG_ALERT, 0);
 }
@@ -503,6 +503,46 @@ ZTEST(tcpci, test_generic_tcpci_hard_reset_reinit)
 		emul_tcpci_generic_get_i2c_common_data(emul);
 
 	test_tcpci_hard_reset_reinit(emul, common_data, USBC_PORT_C0);
+}
+
+void validate_mux_read_write16(const struct usb_mux *tcpci_usb_mux)
+{
+	const int reg = TCPC_REG_ALERT;
+	const int expected = 65261;
+	int restore = 0;
+	int temp = 0;
+
+	zassert_ok(mux_read16(tcpci_usb_mux, reg, &restore),
+		   "Failed to read mux");
+
+	if (IS_ENABLED(CONFIG_BUG_249829957)) {
+		zassert_ok(mux_write16(tcpci_usb_mux, reg, expected),
+			   "Failed to write mux");
+		zassert_ok(mux_read16(tcpci_usb_mux, reg, &temp),
+			   "Failed to read mux");
+		zassert_equal(expected, temp, "expected=0x%X, read=0x%X",
+			      expected, temp);
+	}
+
+	zassert_ok(mux_write16(tcpci_usb_mux, reg, restore),
+		   "Failed to write mux");
+}
+
+/** Test usb_mux read/write APIs */
+ZTEST(tcpci, test_usb_mux_read_write)
+{
+	struct usb_mux *tcpci_usb_mux = &usbc0_mux0;
+	const int flags_restore = tcpci_usb_mux->flags;
+
+	/* Configure mux read/writes for TCPC APIs */
+	tcpci_usb_mux->flags &= ~USB_MUX_FLAG_NOT_TCPC;
+	validate_mux_read_write16(tcpci_usb_mux);
+
+	/* Configure mux read/writes for I2C APIs */
+	tcpci_usb_mux->flags |= USB_MUX_FLAG_NOT_TCPC;
+	validate_mux_read_write16(tcpci_usb_mux);
+
+	tcpci_usb_mux->flags = flags_restore;
 }
 
 static void *tcpci_setup(void)
