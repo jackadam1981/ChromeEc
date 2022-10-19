@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e77925d4_96f5cfdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-19T18:11:29Z",
+      "side": 1,
+      "message": "Can you add b:35575418 for tracking this change? It\u0027s puzzling.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "1ee4150d616213ee57616deffad4293b8ec89c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04547cf5_fab9f2c8",
         "filename": "board/reef/gpio.inc",
         "patchSetId": 1
