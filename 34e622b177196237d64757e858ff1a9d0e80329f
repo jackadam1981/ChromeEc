@@ -16,6 +16,24 @@
       "message": "which method is faster to load the image?",
       "revId": "34e622b177196237d64757e858ff1a9d0e80329f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc03d8c_4e2648e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2022-10-19T14:25:03Z",
+      "side": 1,
+      "message": "For RO / RW code reloading, DMA is still used without impact timing. Others will evaluate and come back later.",
+      "parentUuid": "80eb1c03_4b3b8b34",
+      "revId": "34e622b177196237d64757e858ff1a9d0e80329f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
