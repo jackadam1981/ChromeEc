@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f79b22e_a035c742",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-19T17:23:30Z",
+      "side": 1,
+      "message": "I added the TODO at the top of the file. I\u0027m not sure about adding a descriptive name in a constant. I think that when this test moves to live next to the source, it\u0027ll make much more sense and will be owned by the same people that own common/button.c.",
+      "parentUuid": "09a3649c_18819733",
+      "range": {
+        "startLine": 273,
+        "startChar": 11,
+        "endLine": 273,
+        "endChar": 14
+      },
+      "revId": "4753a39d7a5be3dd953a97b181c8afa21b86232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a41a6bf2_71c24ce9",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-19T15:29:41Z",
       "side": 1,
       "message": "`test_activate_war` what is it good for? Absolutely nothing.\n\nI think `war_reset_exec` is supposed to be `warm_reset_exec`",
+      "revId": "4753a39d7a5be3dd953a97b181c8afa21b86232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa044d9_8822a9a5",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-19T17:23:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a41a6bf2_71c24ce9",
       "revId": "4753a39d7a5be3dd953a97b181c8afa21b86232d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
