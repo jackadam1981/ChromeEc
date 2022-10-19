@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9612f68a_56299391",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T20:31:42Z",
+      "side": 1,
+      "message": "Nit: \"Data Reset\" here and elsewhere",
+      "range": {
+        "startLine": 389,
+        "startChar": 39,
+        "endLine": 389,
+        "endChar": 50
+      },
+      "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172c1c6e_7d36be1c",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-19T20:31:42Z",
+      "side": 1,
+      "message": "Right now, the flow of this state depends a little precariously on `dpm_attempt_mode_exit` and `dpm_attempt_mode_entry` being called last. Then they can set a flag that the DPM will see on the next time around.\n\nI\u0027d like it if this used the common idiom from the other state machines where we call a helper function and then return if that function changed the state, e.g.\n```\nif (dpm_attempt_mode_exit(port))\n  return;\n\n...\n\nbool dpm_attempt_mode_exit(...) {\n  ...\n  if (IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG)) {\n    set_state_dpm(port, DPM_DATA_RESET);\n    return true;\n  }\n  ...\n```\nI think, as a side effect, you wouldn\u0027t need `DPM_FLAG_DATA_RESET_REQUESTED` at all.\n\nAlso, currently, the Data Reset state isn\u0027t guarded by the config, so you could either do that and save space or move the config check inside the state and make the code simpler.",
+      "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
