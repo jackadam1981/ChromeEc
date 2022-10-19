@@ -20,6 +20,14 @@
 LOG_MODULE_REGISTER(gpio_shim, LOG_LEVEL_ERR);
 
 /*
+ * This GPIO flag definition from include/dt-bindings/gpio_defines.h
+ * is redefined here since it is only used in the shim legacy
+ * configuration to flag GPIOs that are output only, or where retrieving
+ * the current value cannot be done by reading the pin raw value.
+ */
+#define GPIO_NO_INPUT (1U << 31)
+
+/*
  * Static information about each GPIO that is configured in the named_gpios
  * device tree node.
  */
@@ -96,11 +104,11 @@ int gpio_get_level(enum gpio_signal signal)
 		return 0;
 
 	/*
-	 * If an output GPIO, get the configured value of the output
-	 * rather than the raw value of the pin.
+	 * If the input of the GPIO is not readable, get the configured
+	 * value of the output rather than the raw value of the pin.
 	 */
 	if (IS_ENABLED(CONFIG_GPIO_GET_CONFIG) &&
-	    configs[signal].init_flags & GPIO_OUTPUT) {
+	    configs[signal].init_flags & GPIO_NO_INPUT) {
 		int rv;
 		gpio_flags_t flags;
 
