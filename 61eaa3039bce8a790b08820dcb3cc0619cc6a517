@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "636e0679_e1551170",
+        "filename": "zephyr/include/dt-bindings/gpio_defines.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T22:56:10Z",
+      "side": 1,
+      "message": "Ha ha naming is hard, I used both of those options at one stage.\nI think I prefer of all of them GPIO_NO_INPUT, which seems to capture the exact nature of the attribute.",
+      "parentUuid": "d89f449e_2bf34b9c",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 23
+      },
+      "revId": "61eaa3039bce8a790b08820dcb3cc0619cc6a517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf33f34e_de123204",
         "filename": "zephyr/shim/src/gpio.c",
         "patchSetId": 4
@@ -72,6 +96,30 @@
       "writtenOn": "2022-10-19T22:47:15Z",
       "side": 1,
       "message": "I assume you can\u0027t include the dt-bindings file due to redefinitions?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 34
+      },
+      "revId": "61eaa3039bce8a790b08820dcb3cc0619cc6a517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4d37ab_65152f5d",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T22:56:10Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct.",
+      "parentUuid": "cf33f34e_de123204",
       "range": {
         "startLine": 28,
         "startChar": 0,
