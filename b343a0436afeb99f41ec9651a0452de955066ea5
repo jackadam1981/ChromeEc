@@ -142,6 +142,24 @@
       "parentUuid": "61d4b754_a45ac68f",
       "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177a1aba_e733846c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-19T06:50:47Z",
+      "side": 1,
+      "message": "I think we need a visual model for this (I\u0027ll work on one). Under most conditions in the short term these are very identical. You start in a clean state, make a change, now _N_ tests either fail or skip. Generally this is your own fault because you\u0027re the one that made the change. So regardless you\u0027ll need to fix it before you\u0027re able to merge your change. I believe that the signaling here is key:\n\n* Lets say you make a change and now another test fails. The assumption is that this failed test is directly testing what you\u0027ve changed and is likely owned by you and/or your immediate team.\n* Alternatively, if you make a change, which causes a test to skip. The assumption is that this skipped test depends on what you\u0027ve changed. You might need to reach out to someone else to understand what that test is doing and how that dependency broke.\n\nIn either case, you\u0027ll probably end up needing to do the same work and will involve the same level of effort, you just get a slightly different signal.\n\nThe real difference will come next year. Keith is currently working on an emulation framework that will allow us to run our exact board builds in a test environment. This will be much slower than our current host tests and will likely be run on a nightly build with some tooling to auto-generate bugs. In this environment, I want the dependency graph to help minimize the number of bugs that the system files when an failure takes place. The flow will likely be:\n1. Any test that FAILED will create a bug to the nearest OWNER in the directory structure. These are assumed to be distinct; i.e. if two tests broke, the work can be parallelized to fix things.\n2. SKIPPED tests will provide a signal that there\u0027s a gap in the testing of the dependencies. These will file bugs for triage and not be used with a 1:1 skipped test to bug ratio. Instead, only one issue will be created for all the tests that skipped in a single directory (using the nearest parent `OWNERS` file). This should allow each sub-team to manage its own triage process.\n\nNote that the above also means that teams may choose to not use assume when not using utility code. For example, if they call a dependency\u0027s public function directly, they may choose to assert the result. Modules will ideally contains:\n1. public headers\n2. an implementation for projects\n3. an implementation for integration testing\n4. a mock implementation to be used in unit testing\n5. tests\n6. optional test utilities\n\nThis means that another test using this module, and calling into the integration testing implementation may choose to assert or assume on the result. Generally, I would suggest assume, but if the owner of the test is happy to handle bugs for each failed test, they\u0027re free to assert. For the same reason, test utilities and the integration testing implementation may optionally assume, but shouldn\u0027t assert internally.\n\nSorry for the long reply, lets discuss further offline.",
+      "parentUuid": "5638ac31_9ed82628",
+      "revId": "b343a0436afeb99f41ec9651a0452de955066ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
