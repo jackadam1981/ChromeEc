@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b044786d_b37ed761",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-19T23:48:18Z",
+      "side": 1,
+      "message": "Specific suggestion for how to handle the numeric value:\n\n```\nif (IS_ENABLED(CONFIG_CHARGER_RAA489000)) {\n    BUILD_ASSERT(CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT % 32 \u003d\u003d 0\n                 \u0026\u0026 CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT \u003e\u003d 64\n                 \u0026\u0026 CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT \u003c\u003d 256,\n                 \"RAA489000 trickle charge current value unsupported\");\n    \n    reg \u003d /* read REG_CONTROL2 */\n    /* Set trickle charge current bits.\n    reg \u0026\u003d ~GENMASK(13, 15);\n    reg |\u003d ((CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT - 64) / 32) \u003c\u003c 13;\n    /* write REG_CONTROL2 */\n}\n```",
+      "revId": "47902fd1e8afc365c7850b6b08ab96b9492a50ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f543c41b_c307eda7",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-19T23:48:18Z",
+      "side": 1,
+      "message": "Nit: replace leading spaces with tabs (throughout).",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 4
+      },
+      "revId": "47902fd1e8afc365c7850b6b08ab96b9492a50ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
