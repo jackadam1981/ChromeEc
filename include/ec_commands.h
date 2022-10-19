@@ -73,6 +73,20 @@
 extern "C" {
 #endif
 
+/**
+ * Constant for creation of flexible array members that work in both C and
+ * C++. Flexible array members were added in C99 and are not part of the C++
+ * standard. However, clang++ supports them for C++.
+ * When compiling with gcc, flexible array members are not allowed to appear
+ * in an otherwise empty struct, so we use the GCC zero-length array
+ * extension that works with both clang/gcc/g++.
+ */
+#if defined(__cplusplus) && defined(__clang__)
+#define FLEXIBLE_ARRAY_MEMBER_SIZE
+#else
+#define FLEXIBLE_ARRAY_MEMBER_SIZE 0
+#endif
+
 /*
  * Current version of this protocol
  *
@@ -1195,15 +1209,6 @@ struct ec_response_hello {
 /* Get version number */
 #define EC_CMD_GET_VERSION 0x0002
 
-#if !defined(CHROMIUM_EC) && !defined(__KERNEL__)
-/*
- * enum ec_current_image is deprecated and replaced by enum ec_image. This
- * macro exists for backwards compatibility of external projects until they
- * have been updated: b/149987779.
- */
-#define ec_current_image ec_image
-#endif
-
 enum ec_image {
 	EC_IMAGE_UNKNOWN = 0,
 	EC_IMAGE_RO,
@@ -1574,6 +1579,10 @@ enum ec_feature_code {
 	 * The EC supports the AP directing mux sets for the board.
 	 */
 	EC_FEATURE_TYPEC_AP_MUX_SET = 45,
+	/*
+	 * The EC supports the AP composing VDMs for us to send.
+	 */
+	EC_FEATURE_TYPEC_AP_VDM_SEND = 46,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
@@ -1745,14 +1754,14 @@ struct ec_params_flash_write {
 	uint32_t offset;
 	uint32_t size;
 	/* Followed by data to write. This union allows accessing an
-	 * underlying buffer as uint32s or uint8s for convenience. This does not
-	 * increase the size of the struct.
+	 * underlying buffer as uint32s or uint8s for convenience.
 	 */
 	union {
-		uint32_t words32[0];
-		uint8_t bytes[0];
+		uint32_t words32[FLEXIBLE_ARRAY_MEMBER_SIZE];
+		uint8_t bytes[FLEXIBLE_ARRAY_MEMBER_SIZE];
 	} data;
 } __ec_align4;
+BUILD_ASSERT(member_size(struct ec_params_flash_write, data) == 0);
 
 /* Erase flash */
 #define EC_CMD_FLASH_ERASE 0x0013
@@ -1970,18 +1979,12 @@ struct ec_params_rand_num {
 
 struct ec_response_rand_num {
 	/**
-	 * generated random numbers in the range of 1 to EC_MAX_INSIZE. The size
-	 * of this is set to 1 in order to support C++ compilation. The true
+	 * generated random numbers in the range of 1 to EC_MAX_INSIZE. The true
 	 * size of rand is determined by ec_params_rand_num's num_rand_bytes.
 	 */
-	uint8_t rand[1];
+	uint8_t rand[FLEXIBLE_ARRAY_MEMBER_SIZE];
 } __ec_align1;
-
-/* C++ requires all structs to be at least 1 byte long. Since struct
- * ec_response_rand_num will never be used with num_rand_bytes == 0 (from
- * ec_params_rand_num) it is set to always be at least 1.
- */
-BUILD_ASSERT(sizeof(struct ec_response_rand_num) == 1);
+BUILD_ASSERT(sizeof(struct ec_response_rand_num) == 0);
 
 /**
  * Get information about the key used to sign the RW firmware.
@@ -2047,7 +2050,7 @@ enum sysinfo_flags {
 
 struct ec_response_sysinfo {
 	uint32_t reset_flags; /**< EC_RESET_FLAG_* flags */
-	uint32_t current_image; /**< enum ec_current_image */
+	uint32_t current_image; /**< enum ec_image */
 	uint32_t flags; /**< enum sysinfo_flags */
 } __ec_align4;
 
@@ -3063,7 +3066,7 @@ struct ec_params_motion_sense {
 					/* spoof activity state */
 					uint8_t activity_state;
 				};
-			};
+			} __ec_todo_packed;
 		} spoof;
 
 		/* Used for MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE. */
@@ -3099,7 +3102,7 @@ struct ec_params_motion_sense {
 			uint8_t sensor_num;
 			uint8_t activity; /* enum motionsensor_activity */
 		} get_activity;
-	};
+	} __ec_todo_packed;
 } __ec_todo_packed;
 
 enum motion_sense_cmd_info_flags {
@@ -3399,7 +3402,7 @@ struct ec_params_port80_read {
 			uint32_t offset;
 			uint32_t num_entries;
 		} read_buffer;
-	};
+	} __ec_todo_packed;
 } __ec_todo_packed;
 
 struct ec_response_port80_read {
@@ -4733,7 +4736,7 @@ struct ec_params_charge_state {
 			uint32_t param; /* param to set */
 			uint32_t value; /* value to set */
 		} set_param;
-	};
+	} __ec_todo_packed;
 	uint8_t chgnum; /* Version 1 supports chgnum */
 } __ec_todo_packed;
 
@@ -6047,7 +6050,7 @@ struct ec_response_pd_chip_info {
 	union {
 		uint8_t fw_version_string[8];
 		uint64_t fw_version_number;
-	};
+	} __ec_align2;
 } __ec_align2;
 
 struct ec_response_pd_chip_info_v1 {
@@ -6057,11 +6060,11 @@ struct ec_response_pd_chip_info_v1 {
 	union {
 		uint8_t fw_version_string[8];
 		uint64_t fw_version_number;
-	};
+	} __ec_align2;
 	union {
 		uint8_t min_req_fw_version_string[8];
 		uint64_t min_req_fw_version_number;
-	};
+	} __ec_align2;
 } __ec_align2;
 
 /* Run RW signature verification and get status */
@@ -6761,6 +6764,7 @@ enum typec_control_command {
 	TYPEC_CONTROL_COMMAND_ENTER_MODE,
 	TYPEC_CONTROL_COMMAND_TBT_UFP_REPLY,
 	TYPEC_CONTROL_COMMAND_USB_MUX_SET,
+	TYPEC_CONTROL_COMMAND_BIST_SHARE_MODE,
 };
 
 /* Modes (USB or alternate) that a type-C port may enter. */
@@ -6805,6 +6809,8 @@ struct ec_params_typec_control {
 		uint8_t tbt_ufp_reply;
 		/* Used for USB_MUX_SET */
 		struct typec_usb_mux_set mux_params;
+		/* Used for BIST_SHARE_MODE */
+		uint8_t bist_share_mode;
 		uint8_t placeholder[128];
 	};
 } __ec_align1;

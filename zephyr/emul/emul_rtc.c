@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+/* This is not a chip emulator, it's a fake driver. */
+
 #define DT_DRV_COMPAT cros_ec_rtc_emul
 
 #include <zephyr/logging/log.h>
@@ -60,6 +62,10 @@ static int cros_rtc_emul_set_value(const struct device *dev, uint32_t value)
 	struct cros_rtc_emul_data *data = DRV_DATA(dev);
 
 	data->value = value;
+
+	if (data->value >= data->alarm_time && data->alarm_time) {
+		data->alarm_callback(dev);
+	}
 
 	return EC_SUCCESS;
 }

@@ -7,7 +7,6 @@
 #include "charger.h"
 #include "chipset.h"
 #include "config.h"
-#include "cros_board_info.h"
 #include "gpio_signal.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -129,23 +128,26 @@ void baseboard_set_soc_pwr_pgood(enum gpio_signal unused)
 			gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_s0_pgood)));
 }
 
-/* TODO: Remove when board versions are no longer supported */
+/* TODO(b/248284045): Remove when boards switch to new chip */
 #define MP2845A_I2C_ADDR_FLAGS 0x20
 #define MP2854A_MFR_VOUT_CMPS_MAX_REG 0x69
 #define MP2854A_MFR_LOW_PWR_SEL BIT(12)
 
+__overridable bool board_supports_pcore_ocp(void)
+{
+	return true;
+}
+
 static void setup_mp2845(void)
 {
-	int version;
-
-	/* TODO: Remove when board versions are no longer supported */
-	if ((cbi_get_board_version(&version) == EC_SUCCESS) && version > 3)
-		return;
-
 	if (i2c_update16(chg_chips[CHARGER_SOLO].i2c_port,
 			 MP2845A_I2C_ADDR_FLAGS, MP2854A_MFR_VOUT_CMPS_MAX_REG,
 			 MP2854A_MFR_LOW_PWR_SEL, MASK_CLR))
 		ccprints("Failed to send mp2845 workaround");
+
+	if (board_supports_pcore_ocp())
+		gpio_enable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_soc_pcore_ocp));
 }
 DECLARE_DEFERRED(setup_mp2845);
 
@@ -159,6 +161,9 @@ void baseboard_s0_pgood(enum gpio_signal signal)
 	/* Set up the MP2845, which is powered in S0 */
 	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_s0_pgood)))
 		hook_call_deferred(&setup_mp2845_data, 50 * MSEC);
+	else
+		gpio_disable_dt_interrupt(
+			GPIO_INT_FROM_NODELABEL(int_soc_pcore_ocp));
 }
 
 /* Note: signal parameter unused */
@@ -228,4 +233,10 @@ void baseboard_soc_thermtrip(enum gpio_signal signal)
 {
 	ccprints("SoC thermtrip reported, shutting down");
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_THERMAL);
+}
+
+void baseboard_soc_pcore_ocp(enum gpio_signal signal)
+{
+	ccprints("SoC Pcore OCP reported, shutting down");
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
 }
