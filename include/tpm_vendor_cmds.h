@@ -170,6 +170,10 @@ enum vendor_cmd_cc {
 	/* POP_LOG_ENTRY with a 64 bit previous timestamp in ms */
 	VENDOR_CC_POP_LOG_ENTRY_MS = 61,
 
+	/* Get/set AP RO configuration settings */
+	VENDOR_CC_GET_AP_RO_VERIFY_SETTING = 62,
+	VENDOR_CC_SET_AP_RO_VERIFY_SETTING = 63,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
