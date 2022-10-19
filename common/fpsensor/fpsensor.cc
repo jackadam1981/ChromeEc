@@ -469,6 +469,14 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 
 	if (!offset) {
+		struct meow {
+			~meow() noexcept
+			{
+				clock_enable_module(MODULE_FAST_CPU, 0);
+			}
+		} meow;
+		clock_enable_module(MODULE_FAST_CPU, 1);
+
 		/* Host has requested the first chunk, do the encryption. */
 		timestamp_t now = get_time();
 		/* Encrypted template is after the metadata. */
@@ -617,6 +625,14 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	memcpy(&fp_enc_buffer[offset], params->data, size);
 
 	if (xfer_complete) {
+		struct meow {
+			~meow() noexcept
+			{
+				clock_enable_module(MODULE_FAST_CPU, 0);
+			}
+		} meow;
+		clock_enable_module(MODULE_FAST_CPU, 1);
+
 		/* Encrypted template is after the metadata. */
 		uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
 		/* Positive match salt is after the template. */
