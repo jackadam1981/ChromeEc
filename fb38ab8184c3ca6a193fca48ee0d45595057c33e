@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2039cc37_1eff5661",
+        "filename": "zephyr/Kconfig.usba",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-19T15:13:58Z",
+      "side": 1,
+      "message": "Let\u0027s put this in our board-specific Kconfig since it\u0027s only used in our board and not in common code.\n\nSo you could create a CONFIG in zephyr/projects/skyrim/Kconfig and default it to true for the other variants to use automatically.  You can reference `BOARD_INPUT_CURRENT_SCALE_FACTOR` for an example of what it looks like, and then how to use it in the code.",
+      "revId": "fb38ab8184c3ca6a193fca48ee0d45595057c33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
