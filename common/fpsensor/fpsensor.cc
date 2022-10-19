@@ -85,6 +85,17 @@ static inline int is_raw_capture(uint32_t mode)
 		capture_type == FP_CAPTURE_QUALITY_TEST);
 }
 
+static void fast_cpu(void)
+{
+	clock_enable_module(MODULE_FAST_CPU, 1);
+}
+
+static void slow_cpu(unsigned int *unused)
+{
+	(void)unused;
+	clock_enable_module(MODULE_FAST_CPU, 0);
+}
+
 __maybe_unused static bool fp_match_success(int match_result)
 {
 	return match_result == EC_MKBP_FP_ERR_MATCH_YES ||
@@ -470,6 +481,10 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 
 	if (!offset) {
+		__attribute__((cleanup(slow_cpu))) unsigned int slow_cpu_cleanup
+			__attribute__((unused));
+		fast_cpu();
+
 		/* Host has requested the first chunk, do the encryption. */
 		timestamp_t now = get_time();
 		/* Encrypted template is after the metadata. */
@@ -618,6 +633,10 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	memcpy(&fp_enc_buffer[offset], params->data, size);
 
 	if (xfer_complete) {
+		__attribute__((cleanup(slow_cpu))) unsigned int slow_cpu_cleanup
+			__attribute__((unused));
+		fast_cpu();
+
 		/* Encrypted template is after the metadata. */
 		uint8_t *encrypted_template = fp_enc_buffer + sizeof(*enc_info);
 		/* Positive match salt is after the template. */
