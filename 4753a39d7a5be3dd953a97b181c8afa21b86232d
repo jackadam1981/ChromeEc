@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a3649c_18819733",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-19T15:29:41Z",
+      "side": 1,
+      "message": "Are these times arbitrary? Maybe explain them as descriptive variables?\n\nI\u0027d totally accept that \"Times were chosen arbitrary with enough delay for hooks to actually run\" since that\u0027s a definite issue. Especially if we add TODO referencing http://b/253284635 or similar.",
+      "range": {
+        "startLine": 273,
+        "startChar": 11,
+        "endLine": 273,
+        "endChar": 14
+      },
+      "revId": "4753a39d7a5be3dd953a97b181c8afa21b86232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41a6bf2_71c24ce9",
+        "filename": "zephyr/test/drivers/button/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-19T15:29:41Z",
+      "side": 1,
+      "message": "`test_activate_war` what is it good for? Absolutely nothing.\n\nI think `war_reset_exec` is supposed to be `warm_reset_exec`",
+      "revId": "4753a39d7a5be3dd953a97b181c8afa21b86232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
