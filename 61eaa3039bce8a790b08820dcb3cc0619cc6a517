@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a062ae9_90c41eef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-19T06:09:39Z",
+      "side": 1,
+      "message": "The definition of the new GPIO flag is problematic since it is going to be private to the legacy EC, so not sure how to do it best.",
+      "revId": "61eaa3039bce8a790b08820dcb3cc0619cc6a517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
