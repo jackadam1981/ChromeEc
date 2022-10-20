@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "311ea328_7bb30ffc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-20T19:26:26Z",
+      "side": 1,
+      "message": "Oh, just realized this is the exact change on https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3956206 (sorry it took me so long).",
+      "revId": "f2f411a6f73e7e5f17bcb0aec23198205a567aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95d5f481_a008c51a",
