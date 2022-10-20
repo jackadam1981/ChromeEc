@@ -16,6 +16,23 @@
       "message": "It may be better to assign a separate bug for this - the linked bug is only relevant for the Zephyr based skyrim project, and this change is only valid for the legacy OS.",
       "revId": "4e595e49daae288d6d16e24c6ce24e6c4e4a4e5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb0e752_26b01526",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:33:38Z",
+      "side": 1,
+      "message": "If (flags \u0026 GPIO_INPUT), shouldn\u0027t we read NPCX_PDIN (like before)?",
+      "revId": "4e595e49daae288d6d16e24c6ce24e6c4e4a4e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
