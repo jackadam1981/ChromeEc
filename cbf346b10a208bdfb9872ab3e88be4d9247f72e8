@@ -16,6 +16,24 @@
       "message": "I\u0027m fairly certain an empty suite will fail the coverage checker",
       "revId": "cbf346b10a208bdfb9872ab3e88be4d9247f72e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f7bec3_6c9c5be7",
+        "filename": "zephyr/test/drivers/usbc_console_pd/src/usbc_console_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-20T21:20:27Z",
+      "side": 1,
+      "message": "I combined this with the CL that contains the new test.",
+      "parentUuid": "a2bdb35d_fea23664",
+      "revId": "cbf346b10a208bdfb9872ab3e88be4d9247f72e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
