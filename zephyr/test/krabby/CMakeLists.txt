@@ -8,11 +8,11 @@ project(krabby)
 
 add_subdirectory(${PLATFORM_EC}/zephyr/test/test_utils test_utils)
 
-zephyr_include_directories("${PLATFORM_EC}/zephyr/projects/corsola/include")
+zephyr_include_directories("${PLATFORM_EC}/zephyr/program/corsola/include")
 
 target_sources(app PRIVATE
 	src/charger_workaround.c
 	src/stubs.c
 	src/usb_mux_init.c
-	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/charger_workaround.c
-	${PLATFORM_EC}/zephyr/projects/corsola/src/krabby/usbc_config.c)
+	${PLATFORM_EC}/zephyr/program/corsola/src/krabby/charger_workaround.c
+	${PLATFORM_EC}/zephyr/program/corsola/src/krabby/usbc_config.c)

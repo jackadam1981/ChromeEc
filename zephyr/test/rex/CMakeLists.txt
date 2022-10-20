@@ -6,6 +6,6 @@ cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 project(rex)
 
-zephyr_include_directories("${PLATFORM_EC}/zephyr/projects/rex/include")
+zephyr_include_directories("${PLATFORM_EC}/zephyr/program/rex/include")
 
 target_sources(app PRIVATE src/test.c)
