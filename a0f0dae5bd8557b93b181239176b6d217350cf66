@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cb531d_4d56d6d9",
+        "filename": "zephyr/test/drivers/host_cmd/src/host_request_expected_size.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-20T15:54:48Z",
+      "side": 1,
+      "message": "This seems overly elaborate. Any reason not to just use `UINT16_MAX`?",
+      "revId": "a0f0dae5bd8557b93b181239176b6d217350cf66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
