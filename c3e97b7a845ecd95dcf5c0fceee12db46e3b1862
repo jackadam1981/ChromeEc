@@ -203,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32ec13b7_fb520670",
+        "filename": "common/body_detection.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-10-20T08:22:19Z",
+      "side": 1,
+      "message": "Tim,\nA). After enable body detection function and we test it EVT board, when shake MB will trigger on body, and flat in desk trigger off body. \nB). EC_HOST_EVENT_MODE_CHANGE event is used for body detection function, since Whiterun not enable Tablet Mode function due to its clameshell only. \n\nEC log:\nec:$ [366.634800 even[366.636600 event clear 0x0000000010000000]\nec:$ [366.639600 ACPI query \u003d 29]\n t set 0x0000000010000000]\nec:$ [366.644300 HC 0x0067 err 9]\nec:$ [366.645100 body_detect changed state to: on body]\n\nec:$ [366.634800 even[366.636600 event clear 0x0000000010000000]\nec:$ [366.639600 ACPI query \u003d 29]\n t set 0x0000000010000000]\nec:$ [366.644300 HC 0x0067 err 9]\nec:$ [366.645100 body_detect changed state to: on body]",
+      "parentUuid": "8fab741a_67314bc4",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e250fa18_031c48b0",
         "filename": "common/body_detection.c",
         "patchSetId": 8
