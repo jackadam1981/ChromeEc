@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e8a6a3e_d546b4e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-20T22:36:44Z",
+      "side": 1,
+      "message": "can you check if this has any effect on the resulting image\nusing `util/compare_build.sh`. just check for one board\nlike brya or vell first. this change might change the resulting\nbinary, depending on how clever the optimizer is 😊",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "bc60d6d555cb661c5c45eddecfec12bd76a0e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
