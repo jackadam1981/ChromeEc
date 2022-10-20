@@ -62,6 +62,11 @@ int keyboard_raw_read_rows(void);
  */
 void keyboard_raw_enable_interrupt(int enable);
 
+/**
+ * Enable or disable keyboard alternative function.
+ */
+void keybaord_raw_config_alt(int enable);
+
 #ifdef HAS_TASK_KEYSCAN
 
 /**
@@ -80,7 +85,7 @@ static inline void keyboard_raw_gpio_interrupt(enum gpio_signal signal)
  *
  * @return non-zero if keyboard pins are shorted.
  */
-int keyboard_factory_test_scan(void);
+__override_proto int keyboard_factory_test_scan(void);
 
 /**
  * Return true if the current value of the given input GPIO port is zero

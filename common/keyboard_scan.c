@@ -1066,9 +1066,9 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_SIMULATE_KEY, mkbp_command_simulate_key,
 		     EC_VER_MASK(0));
 
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
-
+#ifndef CONFIG_PLATFORM_EC_KEYBOARD_FACTORY_TEST
 /* Run keyboard factory testing, scan out KSO/KSI if any shorted. */
-int keyboard_factory_test_scan(void)
+__overridable int keyboard_factory_test_scan(void)
 {
 	int i, j, flags;
 	uint16_t shorted = 0;
@@ -1125,6 +1125,7 @@ done:
 
 	return shorted;
 }
+#endif
 
 static enum ec_status keyboard_factory_test(struct host_cmd_handler_args *args)
 {
