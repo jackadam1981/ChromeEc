@@ -3,7 +3,26 @@ Project Configuration
 
 [TOC]
 
-## Setting up a new program ("reference board" or "baseboard")
+## Glossary
+
+- **program**: The name of a Chromebook reference design. The **program**
+  includes all Chromebooks based on a single AP SoC, such as Intel MeteroLake,
+  Qualcomm 7c G3, or AMD Mendocino. The **program** corresponds to a single
+  board overlay in the ChromeOS SDK.  The term *baseboard* is often used as a
+  synonum for **program**.
+
+- **project**: The name of a specific Chromebook model or variant.  All
+  Chromebook **programs** contain at least one **project** which serves as the
+  reference design(s) for the **program**. The reference **project** may or may
+  not use the same name as the **program**. For example, the reference
+  **project** for the skyrim **program** is also called skyrim. The corsola
+  **program** included two reference **projects**, kingler and krabby. For the
+  legacy ECOS builds, *board* was used as a synonym for **project**.
+
+This document highlights the terms **program** and **project** to reference the
+definitions above.
+
+## Setting up a new **program**
 
 Unlike the legacy EC codebase, Zephyr projects all live together in
 one big happy directory.  The intent of this design is to encourage
@@ -17,7 +36,7 @@ project directory instead of use separate directories, even if they
 are using a different unified build board.
 
 To set up a new EC program, create a new directory under
-[`zephyr/projects`](../../zephyr/projects) with the following files:
+[`zephyr/program`](../../zephyr/program) with the following files:
 
 - `BUILD.py` - specifies which builds can be made from this directory,
   and what the device-tree overlays and Kconfig files are for each
