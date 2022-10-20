@@ -33,6 +33,23 @@
       "message": "May I ask if anyone tested on this CL and can provide a Verified vote? Thanks!",
       "revId": "217451ede0c09ab9f8e7d77fc4042ce8d6e45df3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a958d09_f376c17b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-20T20:49:29Z",
+      "side": 1,
+      "message": "Try on boba:\n- Build the firmware (bobba_v2.0.855-a97c18429f)\n- Run 2 tests in parallel: requesting sensor data and suspend in a loop:\n * iioservice_simpleclient --device_id\u003d0 --frequency\u003d50 --samples\u003d100000000 --channels\u003d\"accel_x\" 2\u003e/dev/null \u0026\n * suspend_stress_test -c 1000\n- no ec crash/reboot observed.",
+      "revId": "217451ede0c09ab9f8e7d77fc4042ce8d6e45df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
