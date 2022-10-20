@@ -48,6 +48,7 @@
 /* The wait time is ~150 msec, allow for safety margin. */
 #define IN_PCH_SLP_SUS_WAIT_TIME_USEC (250 * MSEC)
 
+#ifndef CONFIG_POWER_SIGNAL_RUNTIME_CONFIG
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	[X86_SLP_S0_DEASSERTED] = {
@@ -93,6 +94,7 @@ const struct power_signal_info power_signal_list[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+#endif
 
 __overridable int intel_x86_get_pg_ec_dsw_pwrok(void)
 {
