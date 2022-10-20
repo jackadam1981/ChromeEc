@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8374999e_90e4d9b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-20T21:57:42Z",
+      "side": 1,
+      "message": "Those are the same as the write protect descriptor registers right? I might add that command to this CL...",
+      "parentUuid": "653dbc0d_91d0ace6",
+      "revId": "b99d493f1a43bc331b837b10bc51f16a7fb252ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0073fa9c_6790597d",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-20T15:21:30Z",
       "side": 1,
       "message": "why not use the `.field \u003d ` setting syntax to set all of these fields? You seem to use the field access below.\n\nI think it is something like:\n\n```\nstruct ap_ro_config_spi_mode_msg msg \u003d { \n .version \u003d 0x01,\n .command \u003d 0x02,\n .mode \u003d  ap_ro_spi_config_4byte,\n};\n\n```\n\nAlso can we make the command an enum?",
+      "range": {
+        "startLine": 2614,
+        "startChar": 42,
+        "endLine": 2614,
+        "endChar": 59
+      },
+      "revId": "b99d493f1a43bc331b837b10bc51f16a7fb252ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3513154e_8a606cb5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2614,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-20T21:57:42Z",
+      "side": 1,
+      "message": "No reason, fixed!",
+      "parentUuid": "0073fa9c_6790597d",
       "range": {
         "startLine": 2614,
         "startChar": 42,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5a0ed9_e4109b7d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-20T21:57:42Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7f62227f_c04fa431",
+      "range": {
+        "startLine": 2620,
+        "startChar": 7,
+        "endLine": 2620,
+        "endChar": 8
+      },
+      "revId": "b99d493f1a43bc331b837b10bc51f16a7fb252ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ea8ae1f_9c0a73e6",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d803296_b2ea5148",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2647,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-20T21:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ea8ae1f_9c0a73e6",
+      "revId": "b99d493f1a43bc331b837b10bc51f16a7fb252ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e538acd0_847f74a1",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-10-20T15:21:30Z",
       "side": 1,
       "message": "let\u0027s make this an enum",
+      "range": {
+        "startLine": 3517,
+        "startChar": 4,
+        "endLine": 3517,
+        "endChar": 29
+      },
+      "revId": "b99d493f1a43bc331b837b10bc51f16a7fb252ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27da0de4_8bb18af0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3517,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-20T21:57:42Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e538acd0_847f74a1",
       "range": {
         "startLine": 3517,
         "startChar": 4,
