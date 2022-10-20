@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "831be156_5a44d8a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-20T15:05:09Z",
+      "side": 1,
+      "message": "Can you reference b:236094811 and explain that the workaround in gpio_get_level is no longer needed?\n\nFor nivviks/nirwen, does there need to be a change to use gpio_pin_get_config()?",
+      "revId": "331906b875d586951d85266c6dff4d4f82e51ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e2e31ea8_87469bf0",
