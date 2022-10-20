@@ -537,8 +537,12 @@ static void perform_mux_set(int port, int index, mux_state_t mux_mode,
 void usb_mux_set(int port, mux_state_t mux_mode, enum usb_switch usb_mode,
 		 int polarity)
 {
+	if (port == 1)
+		CPRINTS("\033[31m%s(%d, 0x%x)\033[m", __func__, port, mux_mode);
 	if (port >= board_get_usb_pd_port_count())
 		return;
+	if (port == 1)
+		CPRINTS("\033[31m%s(%d, 0x%x)ENTER\033[m", __func__, port, mux_mode);
 
 	/* Block if we have no mux task, but otherwise queue it up and return */
 	if (IS_ENABLED(HAS_TASK_USB_MUX))
