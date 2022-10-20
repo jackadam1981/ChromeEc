@@ -23,6 +23,8 @@ CFLAGS_CPU+=-flto
 LDFLAGS_EXTRA+=-flto
 endif
 
+CFLAGS_CPU+=-Wno-atomic-alignment
+
 core-y=cpu.o debug.o init.o thumb_case.o mula.o
 # When using clang, we get these as builtins from compiler-rt.
 ifneq ($(cc-name),clang)
