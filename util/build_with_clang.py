@@ -48,6 +48,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "burnet",
     "c2d2",
     "cerise",
+	"chocodile_vpdmcu",
     "coffeecake",
     "damu",
     "dingdong",
