@@ -10,7 +10,7 @@ target_sources(app PRIVATE
     src/get_pd_port_caps.c
     src/host_event_commands.c
     src/host_event_commands_deprecated.c
-    src/host_request_expected_size.c
+    src/host_command_test_protocol.c
     src/keyboard_mkbp.c
     src/motion_sense.c
     src/pd_control.c
