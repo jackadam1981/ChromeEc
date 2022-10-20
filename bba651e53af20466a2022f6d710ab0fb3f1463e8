@@ -16,6 +16,24 @@
       "message": "I think this needs new PDO_AUG helpers, right?  We have a bizarre convention of VOLT shifting left to encode and VOLTAGE shifting right to decode",
       "revId": "bba651e53af20466a2022f6d710ab0fb3f1463e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba4729f_ddbe2a56",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-20T22:52:28Z",
+      "side": 1,
+      "message": "Ew. Indeed.",
+      "parentUuid": "6c33647f_6464dd1d",
+      "revId": "bba651e53af20466a2022f6d710ab0fb3f1463e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
