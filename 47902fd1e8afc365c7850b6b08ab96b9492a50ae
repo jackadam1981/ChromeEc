@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4e05eb6_13279c66",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-10-20T10:31:15Z",
+      "side": 1,
+      "message": "I removed BUILD_ASSERT part due to several error occur during code build.\n```\n/mnt/host/source/src/platform/ec/build/zephyr/pujjo/modules/ec/driver/charger/isl923x.c:732:58: error: expected expression before \u0027%\u0027 token\n  732 |     BUILD_ASSERT(CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT % 32 \u003d\u003d 0\n      |                                                          ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/toolchain/gcc.h:77:51: note: in definition of macro \u0027BUILD_ASSERT\u0027\n   77 | #define BUILD_ASSERT(EXPR, MSG...) _Static_assert(EXPR, \"\" MSG)\n      |                                                   ^~~~\n/mnt/host/source/src/platform/ec/build/zephyr/pujjo/modules/ec/driver/charger/isl923x.c:732:58: error: expression in static assertion is not an integer\n  732 |     BUILD_ASSERT(CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT % 32 \u003d\u003d 0\n      |                                                          ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/toolchain/gcc.h:77:51: note: in definition of macro \u0027BUILD_ASSERT\u0027\n   77 | #define BUILD_ASSERT(EXPR, MSG...) _Static_assert(EXPR, \"\" MSG)\n```",
+      "parentUuid": "b044786d_b37ed761",
+      "revId": "47902fd1e8afc365c7850b6b08ab96b9492a50ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f543c41b_c307eda7",
         "filename": "zephyr/Kconfig.charger",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-19T23:48:18Z",
       "side": 1,
       "message": "Nit: replace leading spaces with tabs (throughout).",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 4
+      },
+      "revId": "47902fd1e8afc365c7850b6b08ab96b9492a50ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2674f20_4967c488",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 5
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-10-20T10:31:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f543c41b_c307eda7",
       "range": {
         "startLine": 684,
         "startChar": 0,
