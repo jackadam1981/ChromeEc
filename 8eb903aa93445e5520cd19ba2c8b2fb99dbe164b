@@ -16,6 +16,24 @@
       "message": "Introduction of bug:\n\nhttps://crrev.com/c/1116200/3/common/host_command.c#509",
       "revId": "8eb903aa93445e5520cd19ba2c8b2fb99dbe164b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e73f06_5fc4cad1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-20T14:50:24Z",
+      "side": 1,
+      "message": "The one introduced for `host_command_read_memmap` was fixed in a later CL.",
+      "parentUuid": "d0c92bd2_519254e0",
+      "revId": "8eb903aa93445e5520cd19ba2c8b2fb99dbe164b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
