@@ -314,6 +314,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0735291_e8d90054",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-10-20T10:15:07Z",
+      "side": 1,
+      "message": "I\u0027m not keen on creating the stub temperature drivers with power management. It introduces more complexity and requires additional memory. I would rather start the upstream process of the temperature sensors. I can start with the PC2075 sensor. What do you think?\n\nUpstreaming `Temperature sensor driver polling` is a different story, right?",
+      "parentUuid": "9db3ead5_a5cb95cc",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
