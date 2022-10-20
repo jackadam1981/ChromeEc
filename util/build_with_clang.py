@@ -49,6 +49,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # git grep  --name-only 'CHIP:=stm32' | xargs grep -L 'CHIP_FAMILY:=stm32f0' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "bland",
     "c2d2",
+    "chocodile_vpdmcu",
     "coffeecake",
     "dingdong",
     "discovery-stm32f072",
@@ -286,8 +287,6 @@ RISCV_BOARDS = [
 ]
 
 BOARDS_THAT_FAIL_WITH_CLANG = [
-    # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
-    "chocodile_vpdmcu",  # compilation error: b/254710459
     # Boards that use CHIP:=npcx
     "garg",
     # Boards that don't fit in flash with clang
