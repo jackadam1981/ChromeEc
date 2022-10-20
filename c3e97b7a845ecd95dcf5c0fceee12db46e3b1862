@@ -249,6 +249,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12cdcf08_3164244a",
+        "filename": "common/body_detection.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-10-20T08:43:58Z",
+      "side": 1,
+      "message": "Typo ec log.\n\nec:$ [359.832100 even[359.834200 event clear 0x0000000010000000]\nec:$ [359.837000 ACPI query \u003d 29]\n t set 0x0000000010000000]\nec:$ [359.840800 HC 0x0067 err 9]\nec:$ [359.842300 body_detect changed state to: off body]\n\nec:$ [366.634800 even[366.636600 event clear 0x0000000010000000]\nec:$ [366.639600 ACPI query \u003d 29]\nt set 0x0000000010000000]\nec:$ [366.644300 HC 0x0067 err 9]\nec:$ [366.645100 body_detect changed state to: on body]",
+      "parentUuid": "587fb60b_2dbafd5d",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e250fa18_031c48b0",
