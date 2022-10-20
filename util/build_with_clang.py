@@ -49,6 +49,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "burnet",
     "c2d2",
     "cerise",
+	"chocodile_vpdmcu",
     "coffeecake",
     "damu",
     "dingdong",
@@ -304,8 +305,6 @@ RISCV_BOARDS = [
 ]
 
 BOARDS_THAT_FAIL_WITH_CLANG = [
-    # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
-    "chocodile_vpdmcu",  # compilation error: b/254710459
 ]
 
 # TODO(b/201311714): NDS32 is not supported by LLVM.
