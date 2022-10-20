@@ -48,6 +48,7 @@
 /* The wait time is ~150 msec, allow for safety margin. */
 #define IN_PCH_SLP_SUS_WAIT_TIME_USEC (250 * MSEC)
 
+#ifndef CONFIG_POWER_SIGNAL_RUNTIME_CONFIG
 /* Power signals list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	[X86_SLP_S0_DEASSERTED] = {
@@ -92,6 +93,51 @@ const struct power_signal_info power_signal_list[] = {
 		.name = "ALL_SYS_PWRGD",
 	},
 };
+#else
+struct power_signal_info power_signal_list[] = {
+	[X86_SLP_S0_DEASSERTED] = {
+		.gpio = GPIO_PCH_SLP_S0_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH |
+			POWER_SIGNAL_DISABLE_AT_BOOT,
+		.name = "SLP_S0_DEASSERTED",
+	},
+	[X86_SLP_S3_DEASSERTED] = {
+		.gpio = SLP_S3_SIGNAL_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S3_DEASSERTED",
+	},
+	[X86_SLP_S4_DEASSERTED] = {
+		.gpio = (enum gpio_signal)SLP_S4_SIGNAL_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S4_DEASSERTED",
+	},
+	[X86_SLP_S5_DEASSERTED] = {
+		.gpio = (enum gpio_signal)SLP_S5_SIGNAL_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_S5_DEASSERTED",
+	},
+	[X86_SLP_SUS_DEASSERTED] = {
+		.gpio = GPIO_SLP_SUS_L,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "SLP_SUS_DEASSERTED",
+	},
+	[X86_RSMRST_L_PGOOD] = {
+		.gpio = GPIO_PG_EC_RSMRST_ODL,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "RSMRST_L_PGOOD",
+	},
+	[X86_DSW_DPWROK] = {
+		.gpio = GPIO_PG_EC_DSW_PWROK,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "DSW_DPWROK",
+	},
+	[X86_ALL_SYS_PGOOD] = {
+		.gpio = GPIO_PG_EC_ALL_SYS_PWRGD,
+		.flags = POWER_SIGNAL_ACTIVE_HIGH,
+		.name = "ALL_SYS_PWRGD",
+	},
+};
+#endif /* CONFIG_POWER_SIGNAL_RUNTIME_CONFIG */
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 __overridable int intel_x86_get_pg_ec_dsw_pwrok(void)
