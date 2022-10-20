@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3461594d_f557b48c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2637,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-20T22:05:21Z",
+      "side": 1,
+      "message": "TODO: Remove trailing space",
+      "revId": "4486294b494f7faf63533579a0cb856d6cc3384b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bde2963_46f77884",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2654,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-20T22:05:21Z",
+      "side": 1,
+      "message": "TODO: `response_size !\u003d sizeof(msg)`",
+      "revId": "4486294b494f7faf63533579a0cb856d6cc3384b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
