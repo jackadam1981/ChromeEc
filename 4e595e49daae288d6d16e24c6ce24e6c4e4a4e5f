@@ -33,6 +33,24 @@
       "message": "If (flags \u0026 GPIO_INPUT), shouldn\u0027t we read NPCX_PDIN (like before)?",
       "revId": "4e595e49daae288d6d16e24c6ce24e6c4e4a4e5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8eb58bf_79240f91",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-10-20T22:42:40Z",
+      "side": 1,
+      "message": "No, it is the reverse version of `gpio_set_flags_by_mask()`. It reads back the flags which are written to the register. No value is written to the (read-only) input data register, NPCX_PDIN.\n\nThe other API `gpio_get_level()` returns the value of the input data register, NPCX_PDIN.",
+      "parentUuid": "8cb0e752_26b01526",
+      "revId": "4e595e49daae288d6d16e24c6ce24e6c4e4a4e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
