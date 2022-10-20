@@ -9,6 +9,11 @@
 #ifndef CONFIG_ZEPHYR
 #include "atomic.h"
 
+static atomic_val_t __atomic_load_4(const atomic_t *target, int memorder)
+{
+	return *target;
+}
+
 static inline atomic_val_t atomic_get(const atomic_t *target)
 {
 	return __atomic_load_n(target, __ATOMIC_SEQ_CST);
