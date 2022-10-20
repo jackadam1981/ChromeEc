@@ -8,6 +8,7 @@
 #include <zephyr/ztest.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 
+#include "console.h"
 #include "ec_commands.h"
 #include "ec_tasks.h"
 #include "emul/emul_isl923x.h"
@@ -20,6 +21,7 @@
 #include "tcpm/tcpci.h"
 #include "test/drivers/utils.h"
 #include "test/drivers/test_state.h"
+#include "usb_pd.h"
 
 #define TEST_PORT 0
 
@@ -118,6 +120,28 @@ static void usbc_console_pd_after(void *data)
 	struct usbc_console_pd_fixture *outer = data;
 
 	common_after(&outer->common);
+}
+
+ZTEST_USER_F(usbc_console_pd, pd_command)
+{
+	struct common_fixture *common = &fixture->common;
+	struct tcpci_src_emul_data *src_ext = &common->src_ext;
+	uint32_t *partner_pdo = src_ext->pdo;
+	int rv;
+
+	partner_pdo[0] =
+		PDO_FIXED(5000, 3000,
+			  PDO_FIXED_DUAL_ROLE | PDO_FIXED_UNCONSTRAINED |
+				  PDO_FIXED_COMM_CAP | PDO_FIXED_DATA_SWAP |
+				  PDO_FIXED_FRS_CURR_MASK);
+	partner_pdo[1] = PDO_BATT(1000, 5000, 15000);
+	partner_pdo[2] = PDO_VAR(3000, 5000, 15000);
+	partner_pdo[3] = PDO_AUG(1000, 5000, 3000);
+	connect_partner_to_port(common->tcpci_emul, common->charger_emul,
+				&common->partner, &common->src_ext);
+
+	rv = shell_execute_cmd(get_ec_shell(), "pd 0 srccaps");
+	zassert_ok(rv, "Expected %d, but got %d", EC_SUCCESS, rv);
 }
 
 ZTEST_SUITE(usbc_console_pd, drivers_predicate_post_main, usbc_console_pd_setup,
