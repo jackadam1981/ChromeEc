@@ -34,6 +34,24 @@
       "parentUuid": "9ef05b57_7fbfbe01",
       "revId": "b9d430d1098c51ea07b31b2cb4f4f55baefa7c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181d399c_40359a0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-20T15:55:18Z",
+      "side": 1,
+      "message": "I think I have a misunderstanding.\n\nGcov recognizes these functions. But there\u0027s nothing to assert on if we try testing them. So it makes sense to exclude them from coverage since they are essentially noops, not even returning anything to do an assertion against.",
+      "parentUuid": "1c5fe059_91a31db4",
+      "revId": "b9d430d1098c51ea07b31b2cb4f4f55baefa7c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
