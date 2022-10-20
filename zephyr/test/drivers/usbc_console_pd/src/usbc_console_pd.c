@@ -5,9 +5,11 @@
 
 #include <stdint.h>
 #include <zephyr/kernel.h>
+#include <zephyr/shell/shell_dummy.h>
 #include <zephyr/ztest.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 
+#include "console.h"
 #include "ec_commands.h"
 #include "ec_tasks.h"
 #include "emul/emul_isl923x.h"
@@ -20,6 +22,7 @@
 #include "tcpm/tcpci.h"
 #include "test/drivers/utils.h"
 #include "test/drivers/test_state.h"
+#include "usb_pd.h"
 
 #define TEST_PORT 0
 
@@ -118,6 +121,45 @@ static void usbc_console_pd_after(void *data)
 	struct usbc_console_pd_fixture *outer = data;
 
 	common_after(&outer->common);
+}
+
+ZTEST_USER_F(usbc_console_pd, pd_command)
+{
+	struct common_fixture *common = &fixture->common;
+	struct tcpci_src_emul_data *src_ext = &common->src_ext;
+	uint32_t *partner_pdo = src_ext->pdo;
+	int rv;
+	const char *cmd_output = NULL;
+	size_t output_size = 0;
+
+	/* Attach a partner with all of the Source Capability attributes that
+	 * "pd <port> srccaps" checks for.
+	 */
+	partner_pdo[0] =
+		PDO_FIXED(5000, 3000,
+			  PDO_FIXED_DUAL_ROLE | PDO_FIXED_UNCONSTRAINED |
+				  PDO_FIXED_COMM_CAP | PDO_FIXED_DATA_SWAP |
+				  PDO_FIXED_FRS_CURR_MASK);
+	partner_pdo[1] = PDO_BATT(1000, 5000, 15000);
+	partner_pdo[2] = PDO_VAR(3000, 5000, 15000);
+	partner_pdo[3] = PDO_AUG(1000, 5000, 3000);
+	connect_partner_to_port(common->tcpci_emul, common->charger_emul,
+				&common->partner, &common->src_ext);
+
+	shell_backend_dummy_clear_output(get_ec_shell());
+	rv = shell_execute_cmd(get_ec_shell(), "pd 0 srccaps");
+	cmd_output =
+		shell_backend_dummy_get_output(get_ec_shell(), &output_size);
+
+	zassert_ok(rv);
+	/* This output validation is intentionally fairly loose to keep it from
+	 * being overly sensitive to formatting.
+	 */
+	zassert_not_null(strstr(cmd_output, "Fixed"));
+	zassert_not_null(strstr(cmd_output, "Battery"));
+	zassert_not_null(strstr(cmd_output, "Variable"));
+	zassert_not_null(strstr(cmd_output, "Augmnt"));
+	zassert_not_null(strstr(cmd_output, "DRP UP USB DRD FRS"));
 }
 
 ZTEST_SUITE(usbc_console_pd, drivers_predicate_post_main, usbc_console_pd_setup,
