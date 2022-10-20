@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "597db3b7_41066156",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e241117a_52abf203",
+      "range": {
+        "startLine": 56,
+        "startChar": 13,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a14da40_2b723ca0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-20T07:51:43Z",
       "side": 1,
       "message": "use bool?",
+      "range": {
+        "startLine": 458,
+        "startChar": 7,
+        "endLine": 458,
+        "endChar": 10
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef2c8cf_ae53ce04",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "I\u0027ll keep int. It\u0027s feeding a return value for pchg_run, which returns int and it may be extended to return more values or error code.",
+      "parentUuid": "5a14da40_2b723ca0",
       "range": {
         "startLine": 458,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7404285e_9cd40fb1",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e8f510a_8be6b95e",
+      "range": {
+        "startLine": 464,
+        "startChar": 9,
+        "endLine": 464,
+        "endChar": 33
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68edaa0d_8a4a1eb9",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-20T07:51:43Z",
       "side": 1,
       "message": "see my note in ec_commands.h about weird versioning.",
+      "range": {
+        "startLine": 684,
+        "startChar": 25,
+        "endLine": 684,
+        "endChar": 27
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a7ecdd_7b5d03b1",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68edaa0d_8a4a1eb9",
       "range": {
         "startLine": 684,
         "startChar": 25,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daa92fb8_764c7a93",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7067,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "Added comments.\n\nI think it\u0027s ok to use params_v2 for v3 command as long as comments explicitly say so. Otherwise we would need params_v2 and params_v3 which are identical.",
+      "parentUuid": "871fbaac_6827cfdb",
+      "range": {
+        "startLine": 7067,
+        "startChar": 23,
+        "endLine": 7067,
+        "endChar": 26
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "793ee482_131b6f6f",
         "filename": "include/peripheral_charger.h",
         "patchSetId": 4
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-20T07:51:43Z",
       "side": 1,
       "message": "no , here since it\u0027s \"guaranteed\" to be the last element.",
+      "range": {
+        "startLine": 128,
+        "startChar": 17,
+        "endLine": 128,
+        "endChar": 18
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27ec14a5_613ea046",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "793ee482_131b6f6f",
       "range": {
         "startLine": 128,
         "startChar": 17,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e751c4_fe2bc1b6",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c8fae6_ded18dfc",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d578db5_74a4bdf3",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-20T07:51:43Z",
       "side": 1,
       "message": "no , here since it\u0027s \"guaranteed\" to be the last element.",
+      "range": {
+        "startLine": 156,
+        "startChar": 16,
+        "endLine": 156,
+        "endChar": 17
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48507afd_2730106f",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d578db5_74a4bdf3",
       "range": {
         "startLine": 156,
         "startChar": 16,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8f624d_6b2e1a39",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5370b5b_3523fded",
+      "range": {
+        "startLine": 163,
+        "startChar": 25,
+        "endLine": 163,
+        "endChar": 26
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f9a14f_c927632c",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-10-20T07:51:43Z",
       "side": 1,
       "message": "can these be `const` or do you plan to update these at runtime?",
+      "range": {
+        "startLine": 202,
+        "startChar": 28,
+        "endLine": 202,
+        "endChar": 42
+      },
+      "revId": "20d7d66d9cc14fd81f8b5850bf384822bf8b510c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92834f6d_3b22616b",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 1,
+      "message": "I\u0027m expecting them to be updatable.",
+      "parentUuid": "93f9a14f_c927632c",
       "range": {
         "startLine": 202,
         "startChar": 28,

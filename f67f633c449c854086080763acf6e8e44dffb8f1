@@ -22,6 +22,30 @@
       },
       "revId": "f67f633c449c854086080763acf6e8e44dffb8f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df6e62c_cfb3ec5d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7046,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-20T18:15:32Z",
+      "side": 0,
+      "message": "Fixed.",
+      "parentUuid": "97489936_02ea06af",
+      "range": {
+        "startLine": 7046,
+        "startChar": 7,
+        "endLine": 7046,
+        "endChar": 21
+      },
+      "revId": "f67f633c449c854086080763acf6e8e44dffb8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
