@@ -53,7 +53,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # "fennel",  # overflows flash
     "fluffy",
     "fusb307bgevb",
-    # "hammer",  # compilation error
+    "hammer"
     "hoho",
     # "jacuzzi",  # overflows flash
     # "kakadu",  # overflows flash
@@ -65,7 +65,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "nucleo-f072rb",
     "pdeval-stm32f072",
     "plankton",
-    # "prism",  # compilation error
+    "prism",
     "rainier",
     "scarlet",
     "servo_micro",
@@ -75,7 +75,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "tigertail",
     "twinkie",
     # "willow",  # overflows flash
-    # "zinger",  # compilation error
+    "zinger"
     # Boards that use CHIP:=mchp
     # git grep --name-only 'CHIP:=mchp' | sed 's#board/\(.*\)/build.mk#"\1",#'
     # "adlrvpp_mchp1521", # compilation errors
