@@ -16,6 +16,24 @@
       "message": "Huh.... this should be a fun issue: \n\n```\nchromeos-ec-0.0.2-r8700: make -j32 ALLOW_CONFIG\u003d1 clean \nchromeos-ec-0.0.2-r8700:  * pkg-config: ERROR: Do not call unprefixed tools directly.\nchromeos-ec-0.0.2-r8700:  * pkg-config: ERROR: For board tools, use `tc-export PKG_CONFIG` (or ${CHOST}-pkg-config).\nchromeos-ec-0.0.2-r8700:  * pkg-config: ERROR: For build-time-only tools, `tc-export BUILD_PKG_CONFIG` (or ${CBUILD}-pkg-config).\n```\n\nand also `chromeos-ec-0.0.2-r8700: cross-pkg-config: error: pkg-config is too old ... upgrade to at least v0.24`",
       "revId": "dbbef138c4c1cbc84d9c695a6682a2c1dac41393",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b224f4_b1d41b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-10-20T15:37:34Z",
+      "side": 1,
+      "message": "Yeah, I saw there was a new field added to the commit message. Trying again with that removed and seeing if that changes.",
+      "parentUuid": "70655004_7c831efb",
+      "revId": "dbbef138c4c1cbc84d9c695a6682a2c1dac41393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
