@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee99be7b_72cc6f4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-20T22:37:50Z",
+      "side": 1,
+      "message": "you can also verify with `util/compare_build.sh`\nthat there are no changes to any board ec images.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "a076c85ba3b251bb93e59321b385d6157cecfce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a578e29_63e000a3",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-20T22:37:50Z",
+      "side": 1,
+      "message": "how about:\n\n```\n#ifndef CONFIG_POWER_SIGNAL_RUNTIME_CONFIG\nconst\n#endif /* CONFIG_POWER_SIGNAL_RUNTIME_CONFIG */\nstruct power_signal_info power_signal_list[] \u003d {\n```\n\nso you don\u0027t have to replicate the whole table.",
+      "revId": "a076c85ba3b251bb93e59321b385d6157cecfce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
