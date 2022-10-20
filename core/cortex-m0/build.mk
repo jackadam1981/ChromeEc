@@ -31,6 +31,8 @@ CFLAGS_CPU+=-flto
 LDFLAGS_EXTRA+=-flto
 endif
 
+CFLAGS_CPU+=-Wno-atomic-alignment
+
 core-y=cpu.o debug.o init.o thumb_case.o mula.o
 ifeq ($(USE_LLVM_COMPILER_RT),0)
 core-y+=div.o lmul.o ldivmod.o uldivmod.o
