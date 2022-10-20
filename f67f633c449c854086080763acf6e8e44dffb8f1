@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97489936_02ea06af",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7046,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-20T07:51:43Z",
+      "side": 0,
+      "message": "can you confirm that `ec_params_pchg` is not used by any code\nlike on the kernel side or depthcharge, etc.?",
+      "range": {
+        "startLine": 7046,
+        "startChar": 7,
+        "endLine": 7046,
+        "endChar": 21
+      },
+      "revId": "f67f633c449c854086080763acf6e8e44dffb8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
