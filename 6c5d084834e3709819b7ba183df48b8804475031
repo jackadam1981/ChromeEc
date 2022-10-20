@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e20034a_83a883f1",
+        "filename": "board/crota/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-20T02:18:22Z",
+      "side": 1,
+      "message": "Can we use `!board_is_convertible()` for this one?",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 33
+      },
+      "revId": "6c5d084834e3709819b7ba183df48b8804475031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
