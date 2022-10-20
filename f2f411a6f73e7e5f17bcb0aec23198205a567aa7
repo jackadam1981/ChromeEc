@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d5f481_a008c51a",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-20T18:32:52Z",
+      "side": 1,
+      "message": "I had a chat with Aaron on this, we need to find a way to assert that this function is empty. There\u0027s value in saying \"check that the default implementation does nothing\". I\u0027m currently looking into this.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "f2f411a6f73e7e5f17bcb0aec23198205a567aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
