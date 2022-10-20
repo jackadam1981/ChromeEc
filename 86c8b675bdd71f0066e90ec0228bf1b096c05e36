@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a6d5e12_589df646",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3355,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-20T23:26:02Z",
+      "side": 1,
+      "message": "Rather, the minimum voltage since that requires the highest current.",
+      "parentUuid": "c6645a70_7b12b45a",
+      "revId": "86c8b675bdd71f0066e90ec0228bf1b096c05e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13695c91_54c0c9d8",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
