@@ -151,8 +151,7 @@
 		gpio_ec_soc_pwr_good: ec_soc_pwr_good {
 			gpios = <&gpiod 3 GPIO_OUTPUT_LOW>;
 		};
-		/* TODO: Add interrupt handler to shut down */
-		pcore_ocp_r_l {
+		gpio_pcore_ocp_r_l: pcore_ocp_r_l {
 			gpios = <&gpioa 5 GPIO_INPUT>;
 		};
 		gpio_usb_hub_fault_q_odl: usb_hub_fault_q_odl {
@@ -274,7 +273,7 @@
 		usb_c0_ppc_en_l {
 			gpios = <&ioex_c0_port1 0 GPIO_OUTPUT_LOW>;
 		};
-		usb_c0_ppc_ilim_3a_en {
+		ioex_usb_c0_ilim_3a_en: usb_c0_ppc_ilim_3a_en {
 			gpios = <&ioex_c0_port1 1 GPIO_OUTPUT_LOW>;
 			enum-name = "IOEX_USB_C0_PPC_ILIM_3A_EN";
 		};
@@ -287,7 +286,7 @@
 		ioex_usb_a0_fault_odl: usb_a0_fault_odl {
 			gpios = <&ioex_c0_port1 6 GPIO_INPUT>;
 		};
-		usb_c0_sbu_flip {
+		ioex_usb_c0_sbu_flip: usb_c0_sbu_flip {
 			gpios = <&ioex_c0_port1 7 GPIO_OUTPUT_LOW>;
 			enum-name = "IOEX_USB_C0_SBU_FLIP";
 		};
@@ -324,7 +323,7 @@
 		ioex_usb_a1_fault_db_odl: usb_a1_fault_db_odl {
 			gpios = <&ioex_c1_port1 6 GPIO_INPUT>;
 		};
-		usb_c1_sbu_flip {
+		ioex_usb_c1_sbu_flip: usb_c1_sbu_flip {
 			gpios = <&ioex_c1_port1 7 GPIO_OUTPUT_LOW>;
 			enum-name = "IOEX_USB_C1_SBU_FLIP";
 		};

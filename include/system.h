@@ -372,13 +372,14 @@ const char *system_get_build_info(void);
  *
  * @param flags		Reset flags; see SYSTEM_RESET_* above.
  */
-#if (defined(TEST_FUZZ) || defined(CONFIG_ZTEST))
-test_mockable
+#if !(defined(TEST_FUZZ) || defined(CONFIG_ZTEST))
+#if defined(__cplusplus) && !defined(__clang__)
+[[noreturn]]
 #else
 noreturn
 #endif
-	void
-	system_reset(int flags);
+#endif
+	void system_reset(int flags);
 
 /**
  * Set a scratchpad register to the specified value.
@@ -656,6 +657,13 @@ void delay_sleep_by(uint32_t us);
  */
 void disable_deep_sleep(void);
 void enable_deep_sleep(void);
+
+/**
+ * This function is made visible for tests only, it allows overriding the RTC.
+ *
+ * @param seconds
+ */
+void system_set_rtc(uint32_t seconds);
 
 /**
  * Use hibernate module to set up an RTC interrupt at a given

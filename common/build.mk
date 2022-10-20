@@ -103,6 +103,7 @@ common-$(CONFIG_HOSTCMD_RTC)+=rtc.o
 common-$(CONFIG_I2C_DEBUG)+=i2c_trace.o
 common-$(CONFIG_I2C_HID_TOUCHPAD)+=i2c_hid_touchpad.o
 common-$(CONFIG_I2C_CONTROLLER)+=i2c_controller.o
+common-$(CONFIG_I2C_CONTROLLER)+=i2c_controller_cros_ec.o
 common-$(CONFIG_I2C_PERIPHERAL)+=i2c_peripheral.o
 common-$(CONFIG_I2C_BITBANG)+=i2c_bitbang.o
 common-$(CONFIG_I2C_VIRTUAL_BATTERY)+=virtual_battery.o
@@ -157,8 +158,7 @@ endif
 common-$(CONFIG_SOFTWARE_CLZ)+=clz.o
 common-$(CONFIG_SOFTWARE_CTZ)+=ctz.o
 common-$(CONFIG_CMD_SPI_XFER)+=spi_commands.o
-common-$(CONFIG_SPI_FLASH)+=spi_flash.o spi_flash_reg.o
-common-$(CONFIG_SPI_FLASH_REGS)+=spi_flash_reg.o
+common-$(CONFIG_SPI_FLASH)+=spi_flash.o
 common-$(CONFIG_SPI_NOR)+=spi_nor.o
 common-$(CONFIG_SWITCH)+=switch.o
 common-$(CONFIG_SW_CRC)+=crc.o
@@ -322,6 +322,7 @@ endif
 
 include $(_common_dir)fpsensor/build.mk
 include $(_common_dir)usbc/build.mk
+include $(_common_dir)spi/build.mk
 
 include $(_common_dir)mock/build.mk
 common-y+=$(foreach m,$(mock-y),mock/$(m))

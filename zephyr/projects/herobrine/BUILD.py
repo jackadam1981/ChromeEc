@@ -40,7 +40,7 @@ register_variant(
         here / "i2c_evoker.dts",
         here / "led_pins_evoker.dts",
         here / "led_policy_evoker.dts",
-        here / "motionsense.dts",
+        here / "motionsense_evoker.dts",
         here / "switchcap.dts",
         here / "usbc_evoker.dts",
     ],
@@ -106,4 +106,19 @@ register_variant(
         here / "usbc_hoglin.dts",
     ],
     extra_kconfig_files=[here / "prj_zoglin.conf"],
+)
+
+register_variant(
+    project_name="zombie",
+    extra_dts_overlays=[
+        here / "battery_zombie.dts",
+        here / "gpio_zombie.dts",
+        here / "i2c_zombie.dts",
+        here / "led_pins_zombie.dts",
+        here / "led_policy_zombie.dts",
+        here / "motionsense_zombie.dts",
+        here / "switchcap.dts",
+        here / "usbc_zombie.dts",
+    ],
+    extra_kconfig_files=[here / "prj_zombie.conf"],
 )

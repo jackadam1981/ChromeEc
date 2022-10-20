@@ -19,7 +19,6 @@ def register_skyrim_project(
             here / "adc.dts",
             here / "fan.dts",
             here / "gpio.dts",
-            here / "i2c.dts",
             here / "interrupts.dts",
             here / "keyboard.dts",
             here / "motionsense.dts",
@@ -69,5 +68,19 @@ register_skyrim_project(
     ],
     extra_kconfig_files=[
         here / "prj_winterhold.conf",
+    ],
+)
+
+
+register_skyrim_project(
+    project_name="frostflow",
+    extra_dts_overlays=[
+        here / "frostflow.dts",
+        here / "battery_frostflow.dts",
+        here / "led_pins_frostflow.dts",
+        here / "led_policy_frostflow.dts",
+    ],
+    extra_kconfig_files=[
+        here / "prj_frostflow.conf",
     ],
 )

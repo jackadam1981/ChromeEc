@@ -486,6 +486,10 @@ int sbat_emul_get_block_data(const struct emul *emul, int cmd, uint8_t **blk,
 		*blk = bat->mf_data;
 		*len = bat->mf_data_len;
 		return 0;
+	case SB_MANUFACTURE_INFO:
+		*blk = bat->mf_info;
+		*len = bat->mf_info_len;
+		return 0;
 	default:
 		/* Unknown command or return value is not word */
 		return 1;
@@ -792,6 +796,14 @@ static int sbat_emul_init(const struct emul *emul, const struct device *parent)
 	return 0;
 }
 
+#define SMART_BATTERY_VALIDATE_STRING_PROPS_SIZE(n)                            \
+	BUILD_ASSERT(sizeof(DT_INST_PROP(n, dev_chem)) - 1 <= MAX_BLOCK_SIZE); \
+	BUILD_ASSERT(sizeof(DT_INST_PROP(n, mf_data)) - 1 <= MAX_BLOCK_SIZE);  \
+	BUILD_ASSERT(sizeof(DT_INST_PROP(n, mf_info)) - 1 <= MAX_BLOCK_SIZE);  \
+	BUILD_ASSERT(sizeof(DT_INST_PROP(n, mf_name)) - 1 <= MAX_BLOCK_SIZE);
+
+DT_INST_FOREACH_STATUS_OKAY(SMART_BATTERY_VALIDATE_STRING_PROPS_SIZE)
+
 #define SMART_BATTERY_EMUL(n)                                         \
 	static struct sbat_emul_data sbat_emul_data_##n = {		\
 		.bat = {						\
@@ -815,6 +827,7 @@ static int sbat_emul_init(const struct emul *emul, const struct device *parent)
 				(DT_INST_PROP(n, primary_battery) *	\
 				 MODE_PRIMARY_BATTERY_SUPPORT),		\
 			.design_mv = DT_INST_PROP(n, design_mv),	\
+			.default_design_mv = DT_INST_PROP(n, design_mv),\
 			.design_cap = DT_INST_PROP(n, design_cap),	\
 			.temp = DT_INST_PROP(n, temperature),		\
 			.volt = DT_INST_PROP(n, volt),			\
@@ -843,6 +856,9 @@ static int sbat_emul_init(const struct emul *emul, const struct device *parent)
 			.dev_chem = DT_INST_PROP(n, dev_chem),		\
 			.dev_chem_len = sizeof(				\
 					DT_INST_PROP(n, dev_chem)) - 1,	\
+			.mf_info = DT_INST_PROP(n, mf_info),		\
+			.mf_info_len = sizeof(				\
+					DT_INST_PROP(n, mf_info)) - 1,	\
 			.mf_date = 0,					\
 			.cap_alarm = 0,					\
 			.time_alarm = 0,				\
@@ -881,6 +897,7 @@ static void emul_smart_battery_reset_capacity(const struct emul *emul)
 	struct sbat_emul_data *bat_data = emul->data;
 	bat_data->bat.cap = bat_data->bat.default_cap;
 	bat_data->bat.full_cap = bat_data->bat.default_full_cap;
+	bat_data->bat.design_mv = bat_data->bat.default_design_mv;
 }
 
 #define SBAT_EMUL_RESET_RULE_AFTER(n) \

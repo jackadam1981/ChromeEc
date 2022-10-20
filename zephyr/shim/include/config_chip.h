@@ -478,6 +478,8 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #error "A zephyr,sram device must be chosen in the device tree"
 #endif
 
+#define CONFIG_RAM_SIZE CONFIG_DATA_RAM_SIZE
+
 #define CONFIG_RO_MEM_OFF CONFIG_CROS_EC_RO_MEM_OFF
 #define CONFIG_RO_MEM_SIZE CONFIG_CROS_EC_RO_MEM_SIZE
 #define CONFIG_RW_MEM_OFF CONFIG_CROS_EC_RW_MEM_OFF
@@ -521,8 +523,6 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_EC_PROTECTED_STORAGE_SIZE DT_PROP(_BINMAN_RO_PATH, size)
 #define CONFIG_EC_WRITABLE_STORAGE_OFF DT_PROP(_BINMAN_RW_PATH, offset)
 #define CONFIG_EC_WRITABLE_STORAGE_SIZE DT_PROP(_BINMAN_RW_PATH, size)
-
-#define CONFIG_RAM_SIZE CONFIG_DATA_RAM_SIZE
 
 #ifdef CONFIG_PLATFORM_EC_EXTERNAL_STORAGE
 #define CONFIG_EXTERNAL_STORAGE
@@ -700,6 +700,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_KEYBOARD_VIVALDI
 #ifdef CONFIG_PLATFORM_EC_KEYBOARD_VIVALDI
 #define CONFIG_KEYBOARD_VIVALDI
+#endif
+
+#undef CONFIG_KEYBOARD_CUSTOMIZATION
+#ifdef CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+#define CONFIG_KEYBOARD_CUSTOMIZATION
 #endif
 
 #undef CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2
@@ -1847,6 +1852,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_USB_PD_USB4
 #endif
 
+#undef CONFIG_USB_PD_DATA_RESET_MSG
+#ifdef CONFIG_PLATFORM_EC_USB_PD_DATA_RESET_MSG
+#define CONFIG_USB_PD_DATA_RESET_MSG
+#endif
+
 #undef CONFIG_USB_PD_FRS
 #ifdef CONFIG_PLATFORM_EC_USB_PD_FRS
 #define CONFIG_USB_PD_FRS
@@ -2014,6 +2024,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_ACCELGYRO_LSM6DSO
 #endif
 
+#undef CONFIG_ACCELGYRO_LSM6DSM
+#ifdef CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSM
+#define CONFIG_ACCELGYRO_LSM6DSM
+#endif
+
 #endif /* CONFIG_PLATFORM_EC_MOTIONSENSE */
 
 #undef CONFIG_MATH_UTIL
@@ -2050,11 +2065,6 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_COMMON_PANIC_OUTPUT
 #ifdef CONFIG_PLATFORM_EC_PANIC
 #define CONFIG_COMMON_PANIC_OUTPUT
-#endif
-
-#undef CONFIG_SOFTWARE_PANIC
-#ifdef CONFIG_PLATFORM_EC_SOFTWARE_PANIC
-#define CONFIG_SOFTWARE_PANIC
 #endif
 
 #undef CONFIG_DEBUG_ASSSERT_BRIEF
@@ -2622,6 +2632,16 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
 #endif
 
+#undef CONFIG_USB_PD_VDM_AP_CONTROL
+#ifdef CONFIG_PLATFORM_EC_USB_PD_VDM_AP_CONTROL
+#define CONFIG_USB_PD_VDM_AP_CONTROL
+#endif
+
+#undef CONFIG_USB_PD_CLEAR_HARD_RESET_STATUS
+#ifdef CONFIG_PLATFORM_EC_USB_PD_CLEAR_HARD_RESET_STATUS
+#define CONFIG_USB_PD_CLEAR_HARD_RESET_STATUS
+#endif
+
 #undef CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #ifdef CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
@@ -2638,6 +2658,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_PERIPHERAL_CHARGER
 #ifdef CONFIG_PLATFORM_EC_PERIPHERAL_CHARGER
 #define CONFIG_PERIPHERAL_CHARGER
+#endif
+
+#undef CONFIG_CPS8100
+#ifdef CONFIG_PLATFORM_EC_CPS8100
+#define CONFIG_CPS8100
 #endif
 
 #endif /* __CROS_EC_CONFIG_CHIP_H */

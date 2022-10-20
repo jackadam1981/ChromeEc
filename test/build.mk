@@ -21,6 +21,7 @@ test-list-host=$(TEST_LIST_HOST)
 else
 test-list-host = accel_cal
 test-list-host += aes
+test-list-host += always_memset
 test-list-host += base32
 test-list-host += battery_get_params_smart
 test-list-host += bklight_lid
@@ -83,6 +84,7 @@ test-list-host += power_button
 test-list-host += printf
 test-list-host += queue
 test-list-host += rgb_keyboard
+test-list-host += rollback_secret
 test-list-host += rsa
 test-list-host += rsa3
 test-list-host += rtc
@@ -157,8 +159,13 @@ cov-dont-test += rsa
 
 cov-test-list-host = $(filter-out $(cov-dont-test), $(test-list-host))
 
+abort-y=abort.o
 accel_cal-y=accel_cal.o
 aes-y=aes.o
+# The purpose of the always_memset test is to ensure the functionality of
+# always_memset during high levels of optimization.
+%/test/always_memset.o: CFLAGS += -O3
+always_memset-y=always_memset.o
 base32-y=base32.o
 battery_get_params_smart-y=battery_get_params_smart.o
 bklight_lid-y=bklight_lid.o
@@ -178,6 +185,7 @@ cortexm_fpu-y=cortexm_fpu.o
 crc-y=crc.o
 debug-y=debug.o
 entropy-y=entropy.o
+exception-y=exception.o
 extpwr_gpio-y=extpwr_gpio.o
 fan-y=fan.o
 flash-y=flash.o
@@ -215,6 +223,7 @@ kasa-y=kasa.o
 mpu-y=mpu.o
 mutex-y=mutex.o
 newton_fit-y=newton_fit.o
+panic-y=panic.o
 panic_data-y=panic_data.o
 pingpong-y=pingpong.o
 power_button-y=power_button.o
@@ -223,6 +232,7 @@ printf-y=printf.o
 queue-y=queue.o
 rollback-y=rollback.o
 rollback_entropy-y=rollback_entropy.o
+rollback_secret-y=rollback_secret.o
 rsa-y=rsa.o
 rsa3-y=rsa.o
 rtc-y=rtc.o
@@ -300,3 +310,7 @@ static_if_error-y=static_if_error.o.cmd
 run-genvif_test:
 	@echo "  TEST    genvif_test"
 	@test/genvif/genvif.sh
+
+# This test requires C++ exceptions to be enabled.
+$(out)/RW/test/exception.o: CXXFLAGS+=-fexceptions
+$(out)/RO/test/exception.o: CXXFLAGS+=-fexceptions
