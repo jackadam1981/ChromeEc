@@ -16,6 +16,24 @@
       "message": "Have you tested the wake-up capability on GPIO 97?",
       "revId": "5e7aa4f0a517bdac522a44696252db43e469710f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f7c5727_cf052907",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-10-20T00:14:45Z",
+      "side": 1,
+      "message": "Yes, it works.",
+      "parentUuid": "cb1cfaf4_5db74127",
+      "revId": "5e7aa4f0a517bdac522a44696252db43e469710f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
