@@ -48,6 +48,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "bland",
     "c2d2",
     "cerise",
+	"chocodile_vpdmcu",
     "coffeecake",
     "damu",
     "dingdong",
@@ -289,7 +290,6 @@ RISCV_BOARDS = [
 BOARDS_THAT_FAIL_WITH_CLANG = [
     # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
     "burnet",  # overflows flash
-    "chocodile_vpdmcu",  # compilation error: b/254710459
     "fennel",  # overflows flash
     "jacuzzi",  # overflows flash
     "juniper",  # overflows flash
