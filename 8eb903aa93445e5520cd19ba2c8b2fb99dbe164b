@@ -34,6 +34,23 @@
       "parentUuid": "d0c92bd2_519254e0",
       "revId": "8eb903aa93445e5520cd19ba2c8b2fb99dbe164b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d00bc7d6_bb2b92c9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-20T15:30:55Z",
+      "side": 1,
+      "message": "Leave the #define with a note that it\u0027s deprecated",
+      "revId": "8eb903aa93445e5520cd19ba2c8b2fb99dbe164b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
