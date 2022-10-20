@@ -16,6 +16,24 @@
       "message": "Hi Googler\nMay I know what cause merge failed?",
       "revId": "ede328dc39474a50effc76b52c83879e75d64e95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "535504b7_e2034453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-20T10:20:47Z",
+      "side": 1,
+      "message": "Error is:\n\nIn file included from board/host/fan.c:8:\ninclude/fan.h:43:2: error: unknown type name ‘uint8_t’\n   43 |  uint8_t rpm_deviation;\n      |  ^~~~~~~\nmake[1]: *** [Makefile.rules:617: build/coverage/fan/RO/board/host/fan.o] Error 1\nmake: *** [Makefile.rules:366: host-coverage-fan] Error 2",
+      "parentUuid": "77cb3bfb_5eb8d0aa",
+      "revId": "ede328dc39474a50effc76b52c83879e75d64e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
