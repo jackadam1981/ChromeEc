@@ -45,7 +45,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # "burnet",  # overflows flash
     "c2d2",
     # "cerise",  # overflows flash
-    # "chocodile_vpdmcu",  # compilation error: b/254710459
+    "chocodile_vpdmcu",
     "coffeecake",
     # "damu",  # overflows flash
     "dingdong",
