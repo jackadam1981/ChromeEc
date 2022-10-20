@@ -22,6 +22,30 @@
       },
       "revId": "f2f411a6f73e7e5f17bcb0aec23198205a567aa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e72bfa36_c8d7d994",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-20T19:22:28Z",
+      "side": 1,
+      "message": "OK, I looked and I can\u0027t find a good way to do this. Eventually this will be cleaned up anyway when we have proper APIs and implementation backends.",
+      "parentUuid": "95d5f481_a008c51a",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "f2f411a6f73e7e5f17bcb0aec23198205a567aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
