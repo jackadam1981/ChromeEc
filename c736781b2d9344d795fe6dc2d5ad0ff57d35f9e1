@@ -22,6 +22,30 @@
       },
       "revId": "c736781b2d9344d795fe6dc2d5ad0ff57d35f9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f25be204_99e44da9",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-21T16:40:03Z",
+      "side": 1,
+      "message": "Good idea! I added the new test case in https://crrev.com/c/3971020",
+      "parentUuid": "c4b8a491_52cf90a3",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "c736781b2d9344d795fe6dc2d5ad0ff57d35f9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
