@@ -10,6 +10,9 @@
 #include "board.h"
 
 #include <sstream>
+#include <ostream>
+#include <iostream>
+
 DISABLE_COMPILER_WARNING("-Wundef")
 #include <gtest/gtest.h>
 ENABLE_COMPILER_WARNING("-Wundef")
@@ -32,6 +35,8 @@ TEST(FpSensor, CheckHardwareID)
 		std::stringstream stream;
 		stream << "This is a stringstream" << std::endl;
 		ccprintf("%s", stream.str().c_str());
+
+		std::cout << "Running test" << std::endl;
 
 		EXPECT_EQ(fpc_get_hwid(&id), EC_SUCCESS);
 
