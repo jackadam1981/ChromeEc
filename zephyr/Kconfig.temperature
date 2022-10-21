@@ -54,6 +54,7 @@ config PLATFORM_EC_TEMP_SENSOR_SB_TSI
 
 config PLATFORM_EC_TEMP_SENSOR_TMP112
 	bool "TMP112 support"
+	default y if DT_HAS_CROS_EC_TEMP_SENSOR_TMP112_ENABLED
 	help
 	  Enables support for the CrosEC TMP112 driver, an i2c peripheral
 	  temperature sensor from TI.
