@@ -43,7 +43,8 @@ class LogWriter:
 
     # A local pipe use to signal the look that a new file descriptor was added and
     # should be included in the select statement.
-    _logging_interrupt_pipe = os.pipe()
+    _logging_interrupt_pipe = []
+
     # A condition variable used to synchronize logging operations.
     _logging_cv = threading.Condition()
     # A map of file descriptors to their LogWriter
@@ -55,6 +56,7 @@ class LogWriter:
     def reset(cls):
         """Reset this module to its starting state (useful for tests)"""
         LogWriter._logging_map.clear()
+        cls._logging_interrupt_pipe = os.pipe()
 
     def __init__(
         self,
@@ -295,6 +297,9 @@ class Executor:
         Args:
             func: A function which returns an int result code or throws an
              exception.
+
+        Returns:
+            A join function which will wait until this task is finished.
         """
         with self.lock:
             thread = threading.Thread(
@@ -302,6 +307,7 @@ class Executor:
             )
             thread.start()
             self.threads.append(thread)
+            return thread.join
 
     def wait(self):
         """Wait for a result to be available.
