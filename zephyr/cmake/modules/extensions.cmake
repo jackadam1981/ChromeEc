@@ -4,7 +4,32 @@
 
 include_guard(GLOBAL)
 
-# Sets the provided variable to the multi_value_keywords from pw_add_library.
+macro(handle_lto TARGET)
+  # When LTO is enabled, enable only for the "app" library, which compiles
+  # and links all Chromium OS sources.
+  # TODO: Enable LTO for all sources when Zephyr supports it.
+  #   See https://github.com/zephyrproject-rtos/zephyr/issues/2112
+  if ((NOT BOARD STREQUAL unit_testing) AND (DEFINED CONFIG_LTO))
+    # The Zephyr toolchain generates linker errors if both CONFIG_LTO and
+    # CONFIG_FPU are used. See b/184302085.
+    if(("${ZEPHYR_TOOLCHAIN_VARIANT}" STREQUAL "zephyr") AND (DEFINED CONFIG_FPU))
+      message(STATUS "Zephyr toolchain and CONFIG_FPU detected: disabling LTO")
+    else()
+      set_property(
+        TARGET
+          ${TARGET}
+        PROPERTY
+          INTERPROCEDURAL_OPTIMIZATION True
+      )
+    endif()
+  endif()
+endmacro()
+
+if(NOT BOARD STREQUAL unit_testing)
+  handle_lto(app)
+endif()
+
+# Sets the provided variable to the multi_value_keywords from ec_library.
 macro(_ec_add_library_multi_value_args variable)
   set("${variable}" SOURCES HEADERS
                     PUBLIC_DEPS PRIVATE_DEPS
@@ -12,6 +37,16 @@ macro(_ec_add_library_multi_value_args variable)
                     PUBLIC_DEFINES PRIVATE_DEFINES
                     PUBLIC_COMPILE_OPTIONS PRIVATE_COMPILE_OPTIONS
                     PUBLIC_LINK_OPTIONS PRIVATE_LINK_OPTIONS "${ARGN}")
+endmacro()
+
+macro(cros_ec_library_include_directories)
+  target_include_directories(cros_ec_interface INTERFACE ${ARGN})
+endmacro()
+
+macro(cros_ec_library_include_directories_ifdef feature_toggle)
+  if(${${feature_toggle}})
+    target_include_directories(cros_ec_interface INTERFACE ${ARGN})
+  endif()
 endmacro()
 
 # Wrapper around cmake_parse_arguments that fails with an error if any arguments
@@ -40,36 +75,23 @@ endmacro()
 #   HEADERS - header files for this library
 #   PUBLIC_INCLUDES - public target_include_directories arguments
 #   PRIVATE_INCLUDES - private target_include_directories arguments
+#   PUBLIC_DEPS - public target_link_libraries arguments
+#   PRIVATE_DEPS - private target_link_libraries arguments
 #
 function(ec_library NAME)
+  # Parse the args
   _ec_add_library_multi_value_args(multi_value_args)
   ec_parse_arguments_strict(ec_library 1 "" "" "${multi_value_args}")
+
+  # Create the library
   if(BOARD STREQUAL unit_testing)
     add_library(${NAME})
   else()
     zephyr_library_named(${NAME})
+    handle_lto(${NAME})
     target_link_libraries(${NAME} PRIVATE cros_ec_interface)
-    # When LTO is enabled, enable only for the "app" library, which compiles
-    # and links all Chromium OS sources.
-    # TODO: Enable LTO for all sources when Zephyr supports it.
-    # See https://github.com/zephyrproject-rtos/zephyr/issues/2112
-    if (DEFINED CONFIG_LTO)
-      # The Zephyr toolchain generates linker errors if both CONFIG_LTO and
-      # CONFIG_FPU are used. See b/184302085.
-      if(("${ZEPHYR_TOOLCHAIN_VARIANT}" STREQUAL "zephyr") AND
-          (DEFINED CONFIG_FPU))
-        message(STATUS
-            "Zephyr toolchain and CONFIG_FPU detected: disabling LTO")
-      else()
-        set_property(
-          TARGET
-            ${NAME}
-          PROPERTY
-            INTERPROCEDURAL_OPTIMIZATION True
-        )
-      endif()
-    endif()
   endif()
+
   if(NOT "${arg_SOURCES}" STREQUAL "")
     target_sources(${NAME} PRIVATE ${arg_SOURCES})
   endif()
@@ -82,6 +104,12 @@ function(ec_library NAME)
   if(NOT "${arg_PRIVATE_INCLUDES}" STREQUAL "")
     target_include_directories(${NAME} PRIVATE ${arg_PRIVATE_INCLUDES})
   endif()
+  if(NOT "${arg_PUBLIC_DEPS}" STREQUAL "")
+    target_link_libraries(${NAME} PUBLIC ${arg_PUBLIC_DEPS})
+  endif()
+  if(NOT "${arg_PRIVATE_DEPS}" STREQUAL "")
+    target_link_libraries(${NAME} PRIVATE ${arg_PRIVATE_DEPS})
+  endif()
 endfunction()
 
 function(ec_library_tests NAME)
@@ -90,6 +118,7 @@ function(ec_library_tests NAME)
   endif()
   project(${NAME}_test)
 
+  # Parse the args
   _ec_add_library_multi_value_args(multi_value_args)
   ec_parse_arguments_strict(ec_library_tests 1 "" "" "${multi_value_args}")
 

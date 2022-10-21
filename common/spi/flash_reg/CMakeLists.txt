@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.20.0)
 # https://github.com/zephyrproject-rtos/zephyr/pull/51049 merges)
 set(SOURCES src/spi_flash_reg_test.c)
 
-find_package(CrosEc REQUIRED HINTS "${PLATFORM_EC}/share")
+find_package(CrosEc REQUIRED HINTS "${PLATFORM_EC}")
 
 # Create the library
 ec_library(spi_flash_reg

@@ -36,21 +36,6 @@ if(DEFINED CONFIG_PLATFORM_EC)
   endif()
 
   include(fpu.cmake)
-
-  # When LTO is enabled, enable only for the "app" library, which compiles
-  # and links all Chromium OS sources.
-  # TODO: Enable LTO for all sources when Zephyr supports it.
-  # See https://github.com/zephyrproject-rtos/zephyr/issues/2112
-  if (DEFINED CONFIG_LTO)
-    # The Zephyr toolchain generates linker errors if both CONFIG_LTO and
-    # CONFIG_FPU are used. See b/184302085.
-    if(("${ZEPHYR_TOOLCHAIN_VARIANT}" STREQUAL "zephyr") AND
-     (DEFINED CONFIG_FPU))
-      message(STATUS "Zephyr toolchain and CONFIG_FPU detected: disabling LTO")
-    else()
-      set_property(TARGET app PROPERTY INTERPROCEDURAL_OPTIMIZATION True)
-    endif()
-  endif()
 endif()
 
 # Set extra compiler flags.
@@ -71,48 +56,15 @@ endif()
 # that is applied only to the Zephyr sources. This is used to verify that
 # all Zephyr sources are using the upstream Zephyr GPIO API and not the legacy
 # EC API.
-zephyr_library_named(ec_shim)
-get_property(APP_LTO_PROPERTY TARGET app PROPERTY INTERPROCEDURAL_OPTIMIZATION)
-set_property(TARGET ec_shim PROPERTY INTERPROCEDURAL_OPTIMIZATION ${APP_LTO_PROPERTY})
+ec_library(ec_shim)
 set_property(TARGET ec_shim APPEND PROPERTY COMPILE_DEFINITIONS __REQUIRE_ZEPHYR_GPIOS__)
-
-# Create an interface library for CrosEC (cros_ec_interface) that can be used
-# as a dependency for individual CrosEC libraries. To use:
-#  zephyr_library_named(my_lib)
-#  target_link_libraries(my_lib PRIVATE cros_ec_interface)
-add_library(cros_ec_interface INTERFACE)
 
 # Switch from the "zephyr" library to the "app" library for all Chromium OS
 # sources.
 set(ZEPHYR_CURRENT_LIBRARY app)
+target_link_libraries(app PRIVATE cros_ec_interface)
 
-# Custom function that ensures the include path is always updated for both
-# libraries.
-function(cros_ec_library_include_directories)
-  target_include_directories(app PUBLIC ${ARGN})
-  target_include_directories(ec_shim PRIVATE ${ARGN})
-  target_include_directories(cros_ec_interface INTERFACE ${ARGN})
-endfunction()
-function(cros_ec_library_include_directories_ifdef feature_toggle)
-  if(${${feature_toggle}})
-    target_include_directories(app PUBLIC ${ARGN})
-    target_include_directories(ec_shim PRIVATE ${ARGN})
-    target_include_directories(cros_ec_interface INTERFACE ${ARGN})
-  endif()
-endfunction()
-
-cros_ec_library_include_directories(include)
-
-if (DEFINED CONFIG_PLATFORM_EC)
-  cros_ec_library_include_directories(
-    "${PLATFORM_EC}/zephyr/shim/include"
-    "${PLATFORM_EC}/fuzz"
-    "${PLATFORM_EC}/test"
-    "${PLATFORM_EC}"
-    "${PLATFORM_EC}/include"
-    "${PLATFORM_EC}/include/driver"
-    "${PLATFORM_EC}/third_party")
-endif()
+cros_ec_library_include_directories_ifdef(CONFIG_PLATFORM_EC include)
 
 add_subdirectory("subsys")
 
@@ -128,27 +80,6 @@ add_custom_target(
   ${CMAKE_BINARY_DIR}/gcov.sh
   )
 configure_file(gcov.tmpl.sh ${CMAKE_BINARY_DIR}/gcov.sh)
-
-# CONFIG_PLATFORM_EC files that don't relate to something below should be
-# included here, sorted by filename. This is common functionality which is
-# supported by all boards and emulators (including unit tests) using the shim
-# layer.
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC
-                                                # TODO(b/237712836): Remove once
-                                                # Zephyr's libc has strcasecmp.
-                                                "${PLATFORM_EC}/builtin/stdlib.c"
-                                                "${PLATFORM_EC}/common/base32.c"
-                                                "${PLATFORM_EC}/common/console_output.c"
-                                                "${PLATFORM_EC}/common/ec_features.c"
-                                                "${PLATFORM_EC}/common/gpio_commands.c"
-                                                "${PLATFORM_EC}/common/peripheral.c"
-                                                "${PLATFORM_EC}/common/printf.c"
-                                                "${PLATFORM_EC}/common/queue.c"
-                                                "${PLATFORM_EC}/common/shared_mem.c"
-                                                "${PLATFORM_EC}/common/system.c"
-                                                "${PLATFORM_EC}/common/uart_printf.c"
-                                                "${PLATFORM_EC}/common/util.c"
-                                                "${PLATFORM_EC}/common/version.c")
 
 # Now include files that depend on or relate to other CONFIG options, sorted by
 # CONFIG

@@ -24,5 +24,28 @@ endif()
 
 include(zephyr/cmake/modules/extensions.cmake)
 
+# Create an interface library for CrosEC (cros_ec_interface) that can be used
+# as a dependency for individual CrosEC libraries. To use:
+#  zephyr_library_named(my_lib)
+#  target_link_libraries(my_lib PRIVATE cros_ec_interface)
+add_library(cros_ec_interface INTERFACE)
+target_include_directories_ifdef(CONFIG_PLATFORM_EC cros_ec_interface
+  INTERFACE
+    "${CMAKE_CURRENT_LIST_DIR}"
+    "${CMAKE_CURRENT_LIST_DIR}/fuzz"
+    "${CMAKE_CURRENT_LIST_DIR}/include"
+    "${CMAKE_CURRENT_LIST_DIR}/include/driver"
+    "${CMAKE_CURRENT_LIST_DIR}/test"
+    "${CMAKE_CURRENT_LIST_DIR}/third_party"
+    "${CMAKE_CURRENT_LIST_DIR}/zephyr/shim/include"
+)
+
 add_subdirectory(zephyr)
+
+# Switch from the "zephyr" library to the "app" library for all Chromium OS
+# sources.
+set(ZEPHYR_CURRENT_LIBRARY app)
+target_link_libraries(app PRIVATE cros_ec_interface)
+
+add_subdirectory(builtin)
 add_subdirectory(common)
