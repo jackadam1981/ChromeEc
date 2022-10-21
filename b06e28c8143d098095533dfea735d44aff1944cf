@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f9e3f69_9626c481",
+        "filename": "board/vell/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-10-21T03:13:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cc22757_1a309bcb",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "b06e28c8143d098095533dfea735d44aff1944cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48f00bc6_7919497a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-20T22:52:08Z",
       "side": 1,
       "message": "leave this unchanged so `GPIO_PG_EC_ALL_SYS_PWRGD` is the\nright signal for the current (new) board.",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "b06e28c8143d098095533dfea735d44aff1944cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d7a2f2_5ff38fdb",
+        "filename": "board/vell/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-10-21T03:13:27Z",
+      "side": 1,
+      "message": "If we define GPIO_PG_EC_ALL_SYS_PWRGD, look like it changed to constant. This patch is not work while I shorting the pin to ground.",
+      "parentUuid": "48f00bc6_7919497a",
       "range": {
         "startLine": 101,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d06a411_1266d536",
+        "filename": "board/vell/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-10-21T03:13:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d298c5d3_3804ad6e",
+      "range": {
+        "startLine": 17,
+        "startChar": 26,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "b06e28c8143d098095533dfea735d44aff1944cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd0b8a25_a1da5c96",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-20T22:52:08Z",
       "side": 1,
       "message": "`_OLD` may be OK, but i used something like `_ID_3`\nso it\u0027s a bit more obvious what old means... specially\nif a particular pin assignment changes multiple times.\n\nactually, i used `ID_3_` as a prefix for the signal name.\nyour choice.",
+      "range": {
+        "startLine": 75,
+        "startChar": 23,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "b06e28c8143d098095533dfea735d44aff1944cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6168d193_8739dd94",
+        "filename": "board/vell/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-10-21T03:13:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd0b8a25_a1da5c96",
       "range": {
         "startLine": 75,
         "startChar": 23,
