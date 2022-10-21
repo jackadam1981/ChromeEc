@@ -8,6 +8,9 @@
 #include "ec_gtest.h"
 #include "fpc_private.h"
 #include <sstream>
+#include <ostream>
+#include <iostream>
+
 
 #ifdef SECTION_IS_RW
 #include "fpc/fpc_sensor.h"
@@ -27,6 +30,8 @@ TEST(FpSensor, CheckHardwareID)
 		std::stringstream stream;
 		stream << "This is a stringstream" << std::endl;
 		ccprintf("%s", stream.str().c_str());
+
+		std::cout << "Running test" << std::endl;
 
 		EXPECT_EQ(fpc_get_hwid(&id), EC_SUCCESS);
 
