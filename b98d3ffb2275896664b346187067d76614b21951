@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e36a356_17af0384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-21T09:29:49Z",
+      "side": 1,
+      "message": "error message:\n```\nld.lld: error: undefined symbol: adc_channels\n\u003e\u003e\u003e referenced by adc.c:19 (/mnt/host/source/src/platform/ec/common/adc.c:19)\n\u003e\u003e\u003e               adc.c.obj:(find_adc_channel_by_name) in archive app/libapp.a\n\u003e\u003e\u003e referenced by adc.c:40 (/mnt/host/source/src/platform/ec/common/adc.c:40)\n\u003e\u003e\u003e               adc.c.obj:(print_one_adc) in archive app/libapp.a\n\u003e\u003e\u003e referenced by adc.c:69 (/mnt/host/source/src/platform/ec/zephyr/shim/src/adc.c:69)\n\u003e\u003e\u003e               adc.c.obj:(adc_read_channel) in archive modules/ec/zephyr/libec_shim.a\n\u003e\u003e\u003e referenced 4 more times\nclang-15: error: linker command failed with exit code 1 (use -v to see invocation)\nninja: build stopped: subcommand failed.\n```",
+      "revId": "b98d3ffb2275896664b346187067d76614b21951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
