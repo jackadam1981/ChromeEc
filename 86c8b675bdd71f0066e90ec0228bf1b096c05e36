@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "72e10dec_a2f909c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-21T20:25:26Z",
+      "side": 1,
+      "message": "Battery-less and low-battery boots both passed.",
+      "parentUuid": "1780068b_93ef41ed",
+      "revId": "86c8b675bdd71f0066e90ec0228bf1b096c05e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bce8c221_59293510",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -90,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80b877f1_28c25ab1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3355,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-21T20:25:26Z",
+      "side": 1,
+      "message": "The comment is updated. Ptal.",
+      "parentUuid": "9a6d5e12_589df646",
+      "revId": "86c8b675bdd71f0066e90ec0228bf1b096c05e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13695c91_54c0c9d8",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -101,6 +137,30 @@
       "writtenOn": "2022-10-10T23:01:47Z",
       "side": 1,
       "message": "If we\u0027re not actively modifying that port, nor charging from another port, why do we have to take that port into account?\n\nI don\u0027t think it could ever be higher than the active charge port, could it?",
+      "range": {
+        "startLine": 3363,
+        "startChar": 13,
+        "endLine": 3363,
+        "endChar": 53
+      },
+      "revId": "86c8b675bdd71f0066e90ec0228bf1b096c05e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d837fee4_1d9fee80",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3363,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-21T20:25:26Z",
+      "side": 1,
+      "message": "pe_snk_apply_psnkstdby is choosing the larger of the current input voltages and the new PDO voltage. During a transition, both voltages can be applied to the device. If the current source isn\u0027t PD, we don\u0027t need to care about drawing more than pSnkStdby. Thus, it\u0027s not considered (in the else clause).\n\nMaybe the comment is confusing. Updated the comment.",
+      "parentUuid": "13695c91_54c0c9d8",
       "range": {
         "startLine": 3363,
         "startChar": 13,
