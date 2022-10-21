@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "094460e8_2aedbd6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-21T20:35:35Z",
+      "side": 1,
+      "message": "I\u0027ll save this for a follow up CL if needed.",
+      "parentUuid": "8374999e_90e4d9b5",
+      "revId": "b99d493f1a43bc331b837b10bc51f16a7fb252ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0073fa9c_6790597d",
@@ -225,6 +243,30 @@
       "writtenOn": "2022-10-20T15:21:30Z",
       "side": 1,
       "message": "Let\u0027s document the layout of the input and output data expected here in this comment please.",
+      "range": {
+        "startLine": 173,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 40
+      },
+      "revId": "b99d493f1a43bc331b837b10bc51f16a7fb252ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2557c8b_ef943707",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-21T20:35:35Z",
+      "side": 1,
+      "message": "Tried to add a brief explanation here.",
+      "parentUuid": "3bb2c567_7ccf3311",
       "range": {
         "startLine": 173,
         "startChar": 8,
