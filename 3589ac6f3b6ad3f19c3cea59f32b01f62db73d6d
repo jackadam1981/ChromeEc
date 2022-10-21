@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5567bfa_61f15001",
+        "filename": "driver/nfc/ctn730.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-21T00:50:51Z",
+      "side": 1,
+      "message": "as much as i prefer vertical alignment, our clang formatter\nisn\u0027t set up that way.",
+      "range": {
+        "startLine": 71,
+        "startChar": 49,
+        "endLine": 71,
+        "endChar": 51
+      },
+      "revId": "3589ac6f3b6ad3f19c3cea59f32b01f62db73d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
