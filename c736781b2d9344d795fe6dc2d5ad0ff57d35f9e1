@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4b8a491_52cf90a3",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-21T15:44:22Z",
+      "side": 1,
+      "message": "It might also be good to add a test that creates a new vector after one has been destroyed, though that\u0027s tested somewhat implicitly between the two tests here since the vectors will be destroyed at the end of the test functions.\n\nSomething like:\n\n```\n{\n   {\n     std::vector\u003cint32_t\u003e vec1;\n     // push and check\n    } // vec1 will go out of scope and be destroyed here\n    \n    std::vector\u003cint32_t\u003e vec2;\n    // push and check\n}\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "c736781b2d9344d795fe6dc2d5ad0ff57d35f9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
