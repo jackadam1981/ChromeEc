@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6dcf7bc9_e9f89d09",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-21T21:23:11Z",
+      "side": 1,
+      "message": "That\u0027s right. Thanks,",
+      "parentUuid": "46173efe_04ee47c4",
+      "range": {
+        "startLine": 576,
+        "startChar": 22,
+        "endLine": 576,
+        "endChar": 33
+      },
+      "revId": "7a8a1de9f336f08ed13741d0a7ea14cd7d0ba68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "321189c9_e769de48",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
