@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ded47fcf_6d81b697",
+        "filename": "common/ec_features.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-21T20:54:43Z",
+      "side": 1,
+      "message": "Then, don\u0027t we need to disable other stuff in motion_lid.c as well? It\u0027s not mandated that a host process checks ec features before getting lid angles. Also, motion_sense_task calls motion_lid_calc wastefully.",
+      "parentUuid": "bef8fac1_f3dfac0b",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "ffb4c6631b3404d9f0c93c325c50f999a97c1fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af8ebf8b_0d6d9018",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
