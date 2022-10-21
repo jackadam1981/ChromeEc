@@ -22,6 +22,30 @@
       },
       "revId": "7906aec67818708dd3537c0a33690f02b3720d1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e24ebf4_7fdc6686",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-21T05:11:11Z",
+      "side": 1,
+      "message": "that would still require copy-pasting this section.\nalso the *_RUNTIME_CONFIG #defines are typically intended\nto remove the \"const\".",
+      "parentUuid": "1ffa5afd_2796b211",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "7906aec67818708dd3537c0a33690f02b3720d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
