@@ -60,11 +60,14 @@ typedef int (*cros_kb_raw_api_read_rows)(const struct device *dev);
 typedef int (*cros_kb_raw_api_enable_interrupt)(const struct device *dev,
 						int enable);
 
+typedef int (*cros_kb_raw_api_config_alt)(const struct device *dev, int enable);
+
 __subsystem struct cros_kb_raw_driver_api {
 	cros_kb_raw_api_init init;
 	cros_kb_raw_api_drive_column drive_colum;
 	cros_kb_raw_api_read_rows read_rows;
 	cros_kb_raw_api_enable_interrupt enable_interrupt;
+	cros_kb_raw_api_config_alt config_alt;
 };
 
 /**
@@ -171,6 +174,34 @@ static inline int z_impl_cros_kb_raw_enable_interrupt(const struct device *dev,
 	}
 
 	return api->enable_interrupt(dev, enable);
+}
+
+/**
+ * @brief Enable or disable keyboard alternative function.
+ *
+ * Enabling alternative function.
+ *
+ * @param dev Pointer to the device structure for the keyboard driver instance.
+ * @param enable If 1, enable keyboard function. Otherwise, disable it (as
+ * GPIO).
+ *
+ * @return 0 If successful.
+ * @retval -ENOTSUP Not supported api function.
+ */
+
+__syscall int cros_kb_raw_config_alt(const struct device *dev, int enable);
+
+static inline int z_impl_cros_kb_raw_config_alt(const struct device *dev,
+						int enable)
+{
+	const struct cros_kb_raw_driver_api *api =
+		(const struct cros_kb_raw_driver_api *)dev->api;
+
+	if (!api->config_alt) {
+		return -ENOTSUP;
+	}
+
+	return api->config_alt(dev, enable);
 }
 
 /**
