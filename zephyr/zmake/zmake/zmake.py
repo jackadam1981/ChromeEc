@@ -269,7 +269,6 @@ class Zmake:
                     coverage=coverage,
                     allow_warnings=allow_warnings,
                     extra_cflags=extra_cflags,
-                    multiproject=len(projects) > 1,
                     delete_intermediates=delete_intermediates,
                     static_version=static_version,
                     save_temps=save_temps,
@@ -440,7 +439,6 @@ class Zmake:
         coverage=False,
         allow_warnings=False,
         extra_cflags=None,
-        multiproject=False,
         delete_intermediates=False,
         static_version=False,
         save_temps=False,
@@ -631,7 +629,6 @@ class Zmake:
                     project=project,
                     coverage=coverage,
                     output_files_out=output_files,
-                    multiproject=multiproject,
                     static_version=static_version,
                 )
                 if result:
@@ -658,7 +655,6 @@ class Zmake:
         project: zmake.project.Project,
         output_files_out=None,
         coverage=False,
-        multiproject=False,
         static_version=False,
     ):
         """Build a pre-configured build directory."""
@@ -724,8 +720,6 @@ class Zmake:
                 if self.goma:
                     # Go nuts ninja, goma does the heavy lifting!
                     cmd.append("-j1024")
-                elif multiproject:
-                    cmd.append("-j1")
                 # Only tests will actually build with coverage enabled.
                 if coverage and not project.config.is_test:
                     cmd.append("all.libraries")

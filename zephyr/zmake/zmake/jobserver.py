@@ -53,6 +53,7 @@ class JobClient:
         # the bare minimum (PATH only).  This prevents us from building obscure
         # dependencies on the environment variables.
         kwargs.setdefault("env", {"PATH": "/bin:/usr/bin"})
+        kwargs.setdefault("close_fds", False)
         kwargs["env"].update(self.env())
 
         logger = logging.getLogger(self.__class__.__name__)
@@ -62,7 +63,9 @@ class JobClient:
             " " if kwargs["env"] else "",
             zmake.util.repr_command(argv),
         )
-        return subprocess.Popen(argv, **kwargs)
+        return subprocess.Popen(  # pylint:disable=consider-using-with
+            argv, **kwargs
+        )
 
 
 class GNUMakeJobClient(JobClient):
@@ -70,6 +73,8 @@ class GNUMakeJobClient(JobClient):
 
     def __init__(self, read_fd, write_fd):
         self._pipe = [read_fd, write_fd]
+        os.set_inheritable(read_fd, True)
+        os.set_inheritable(write_fd, True)
 
     @classmethod
     def from_environ(cls, env=None):
