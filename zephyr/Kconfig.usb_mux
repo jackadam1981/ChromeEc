@@ -44,6 +44,7 @@ config PLATFORM_EC_USB_MUX_AMD_FP6
 
 config PLATFORM_EC_USB_MUX_IT5205
 	bool "ITE IT5205 USB Type-C 3:2 Alternative mode passive mux"
+	default y if DT_HAS_ITE_IT5205_ENABLED
 	help
 	  This is a USB Type-C 3:2 Alternative mode mux, supporting USB 3.1
 	  Gen 2 10Gbps as well as DisplayPort (DP1.4) at 8Gbps. It provides a
