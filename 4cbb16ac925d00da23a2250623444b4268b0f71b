@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd337275_d46c27ac",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-21T00:40:01Z",
+      "side": 1,
+      "message": "Fix comment; this now takes an integer value of the desired current.",
+      "range": {
+        "startLine": 1335,
+        "startChar": 3,
+        "endLine": 1335,
+        "endChar": 38
+      },
+      "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c07d279_76979a20",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-21T00:40:01Z",
+      "side": 1,
+      "message": "I think this clears the value set by kconfig. You don\u0027t need this block at all, since the kconfig symbol is already the same as the one used by config.h.",
+      "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
