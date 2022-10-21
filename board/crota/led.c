@@ -20,6 +20,7 @@
 
 #define BAT_LED_ON_LVL 100
 #define BAT_LED_OFF_LVL 0
+#define STATE_DISCHARGE_S3_BAT_LOW STATE_DISCHARGE_S0_BAT_LOW
 
 __override const int led_charge_lvl_1 = 5;
 __override const int led_charge_lvl_2 = 96;
@@ -101,6 +102,13 @@ __override enum led_states board_led_get_state(enum led_states desired_state)
 	if (charge_get_state() == PWR_STATE_IDLE) {
 		if (charge_get_flags() & CHARGE_FLAG_EXTERNAL_POWER)
 			desired_state = STATE_BATTERY_ERROR;
+	}
+	/* When battery is low in S0ix state, Amber LED must turn on. */
+	if ((charge_get_state() == PWR_STATE_DISCHARGE) &&
+		(chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) &&
+		(DIV_ROUND_NEAREST(charge_get_display_charge(), 10)
+			   < CONFIG_LED_ONOFF_STATES_BAT_LOW)) {
+				desired_state = STATE_DISCHARGE_S3_BAT_LOW;
 	}
 	return desired_state;
 }
