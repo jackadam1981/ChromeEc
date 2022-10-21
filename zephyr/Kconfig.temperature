@@ -34,6 +34,7 @@ config PLATFORM_EC_DPTF
 
 config PLATFORM_EC_THERMISTOR
 	bool "Thermistor support"
+	default y if DT_HAS_CROS_EC_TEMP_SENSOR_THERMISTOR_ENABLED
 	select ADC
 	help
 	  Enables support for thermistors (resistor whose resistance is
