@@ -41,6 +41,7 @@ config PLATFORM_EC_THERMISTOR
 
 config PLATFORM_EC_TEMP_SENSOR_PCT2075
 	bool "PCT2075 support"
+	default y if DT_HAS_NXP_PCT2075_ENABLED
 	help
 	  Enables support for the CrosEC PCT2075 sensor, an i2c peripheral
 	  temperature sensor from NXP.
