@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34b7e77f_caa944b9",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-21T00:48:40Z",
+      "side": 1,
+      "message": "hmm... this ends up printing UNDEF for a repeat/duplicate error.",
+      "range": {
+        "startLine": 576,
+        "startChar": 22,
+        "endLine": 576,
+        "endChar": 33
+      },
+      "revId": "7a8a1de9f336f08ed13741d0a7ea14cd7d0ba68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "321189c9_e769de48",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 7124,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-21T00:48:40Z",
+      "side": 1,
+      "message": "i realize there is precedent for this, but i really don\u0027t\nthink ec_commands.h should include these sorts of array\ninitialization macros.\n\nthe EC should publish a source code file with stubs for each\nof the host commands here and that could include strings\nfor error codes.\n\nif we get really fancy, maybe we express these interfaces in\nan IDL and auto-gen the stubs.",
+      "revId": "7a8a1de9f336f08ed13741d0a7ea14cd7d0ba68e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
