@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecdbbda_4f5ad87a",
+        "filename": "common/ec_features.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-21T20:04:57Z",
+      "side": 1,
+      "message": "Do we have to enable CONFIG_LID_ANGLE for boards which don\u0027t do angle calculation because ec.bin is shared between multiple SKUs?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "ffb4c6631b3404d9f0c93c325c50f999a97c1fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8ebf8b_0d6d9018",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-21T20:04:57Z",
+      "side": 1,
+      "message": "nit: we have __overridable macro. If you\u0027re concerned about old branches, you can cherry-pick https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2138145 as well.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "ffb4c6631b3404d9f0c93c325c50f999a97c1fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce54a1f_de9c17f2",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-21T20:04:57Z",
+      "side": 1,
+      "message": "__override_proto int",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 3
+      },
+      "revId": "ffb4c6631b3404d9f0c93c325c50f999a97c1fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
