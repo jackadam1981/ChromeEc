@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa168f13_b02dd283",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-21T00:41:10Z",
+      "side": 1,
+      "message": "Allow configuring trickle charge current",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1b5b13_25a8a9ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-21T00:41:10Z",
+      "side": 1,
+      "message": "Delete.",
+      "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd337275_d46c27ac",
         "filename": "include/config.h",
         "patchSetId": 9
