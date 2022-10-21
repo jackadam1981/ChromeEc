@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef8fac1_f3dfac0b",
+        "filename": "common/ec_features.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-10-21T20:26:41Z",
+      "side": 1,
+      "message": "Yes, and we have a case where Clamshell device has base IMU present, which confused EC and resulted in random lid angle value.",
+      "parentUuid": "cecdbbda_4f5ad87a",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "ffb4c6631b3404d9f0c93c325c50f999a97c1fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af8ebf8b_0d6d9018",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76828b35_5ae70378",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-10-21T20:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8ebf8b_0d6d9018",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "ffb4c6631b3404d9f0c93c325c50f999a97c1fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ce54a1f_de9c17f2",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-21T20:04:57Z",
       "side": 1,
       "message": "__override_proto int",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 3
+      },
+      "revId": "ffb4c6631b3404d9f0c93c325c50f999a97c1fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e5b37d_a7a07aaf",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-10-21T20:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ce54a1f_de9c17f2",
       "range": {
         "startLine": 289,
         "startChar": 0,
