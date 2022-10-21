@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2db1e2_4bec91f6",
+        "filename": "test/std_vector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-21T01:38:08Z",
+      "side": 1,
+      "message": "nit: somewhat pedantic but it\u0027s probably worth making this `int32_t` to guarantee it is a 4-byte value (and thus 32kb of total storage)",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "3c13edb7879458b88f06c15c8a84a51801834eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
