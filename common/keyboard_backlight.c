@@ -145,6 +145,8 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_resume, HOOK_PRIO_DEFAULT);
 #ifdef CONFIG_LID_SWITCH
 static void kblight_lid_change(void)
 {
+	if (IS_ENABLED(CONFIG_RGB_KEYBOARD))
+		kblight_set(lid_is_open() && current_percent);
 	kblight_enable(lid_is_open() && current_percent);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, kblight_lid_change, HOOK_PRIO_DEFAULT);
