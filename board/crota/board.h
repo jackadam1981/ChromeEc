@@ -190,7 +190,6 @@
 #define CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 
 /* LED defines */
-#define CONFIG_LED_ONOFF_STATES
 #define CONFIG_LED_ONOFF_STATES_BAT_LOW 10
 
 /* Fan features */
