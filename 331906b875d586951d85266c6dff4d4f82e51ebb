@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "da9b639a_f59f8bed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-21T00:44:50Z",
+      "side": 1,
+      "message": "Done.\n\nFor nissa, the GPIOs in question are handled by the power signal API, which uses the gpio_pin_get_config() call.\ngpioget may still be inconsistent for these particular GPIOs, but we could configure the extended flags and have the cmd display those, if there are any issues raised.",
+      "parentUuid": "831be156_5a44d8a5",
+      "revId": "331906b875d586951d85266c6dff4d4f82e51ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e2e31ea8_87469bf0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
