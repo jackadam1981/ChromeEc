@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d958a7_32a18c98",
+        "filename": "include/config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-21T04:44:23Z",
+      "side": 1,
+      "message": "Default to 128, because the driver will fail to compile for any boards that don\u0027t otherwise set this (which is currently all of them).",
+      "revId": "9819dd882dc1f2b94a4f95b2a8b59b809966a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
