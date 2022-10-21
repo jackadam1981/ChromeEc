@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515a0880_4b3583fd",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-21T00:16:35Z",
+      "side": 1,
+      "message": "is this better categorized as a warning?",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 14
+      },
+      "revId": "be7e071ab77e557ae203adc1e8f6411dee95d618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001092cb_25aa08dc",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-21T00:16:35Z",
+      "side": 1,
+      "message": "in the (len \u003d\u003d 0) case, does it make sense to resend\nthe host event?\n\nif a previous notification got dropped for some reason,\nthis will help remind the AP there\u0027s work to do, but only\nwhen there are new events, not when there\u0027s stuff in the\nqueue lingering from a previous event. do we depend\non the \"reminder\" behavior in some cases?\n\ni feel like we need a bit more clarity about this edge case.",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 16
+      },
+      "revId": "be7e071ab77e557ae203adc1e8f6411dee95d618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41f1618c_3d4864e6",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-21T00:16:35Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 167,
+        "startChar": 25,
+        "endLine": 167,
+        "endChar": 26
+      },
+      "revId": "be7e071ab77e557ae203adc1e8f6411dee95d618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
