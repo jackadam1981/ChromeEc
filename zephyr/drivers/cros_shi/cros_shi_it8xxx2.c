@@ -288,8 +288,8 @@ static void shi_ite_int_handler(const void *arg)
 void spi_event(enum gpio_signal signal)
 {
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
-		/* Move to processing state */
-		spi_set_state(SPI_STATE_PROCESSING);
+		/* not valid data, ap will clock in next byte */
+		spi_set_state(0x33);
 		/* Disable idle task deep sleep bit of SPI in S0. */
 		/* TODO(b:185176098): disable_sleep(SLEEP_MASK_SPI); */
 	}
