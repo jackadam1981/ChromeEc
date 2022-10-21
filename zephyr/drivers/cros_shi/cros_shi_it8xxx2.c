@@ -72,6 +72,8 @@ enum shi_state_machine {
 	SPI_STATE_PROCESSING,
 	/* Received bad data */
 	SPI_STATE_RX_BAD,
+	/* invalid data */
+	SPI_STATE_TX_33h,
 
 	SPI_STATE_COUNT,
 };
@@ -83,6 +85,7 @@ static const int spi_response_state[] = {
 	[SPI_STATE_RECEIVING] = EC_SPI_RECEIVING,
 	[SPI_STATE_PROCESSING] = EC_SPI_PROCESSING,
 	[SPI_STATE_RX_BAD] = EC_SPI_RX_BAD_DATA,
+	[SPI_STATE_TX_33h] = 0x33,
 };
 BUILD_ASSERT(ARRAY_SIZE(spi_response_state) == SPI_STATE_COUNT);
 
@@ -119,36 +122,25 @@ static void spi_bad_received_data(int count)
 
 static void spi_response_host_data(uint8_t *out_msg_addr, int tx_size)
 {
-	/*
-	 * Protect sequence of filling response packet for host.
-	 * This will ensure CPU access FIFO is disabled at SPI end interrupt no
-	 * matter the interrupt is triggered before or after the sequence.
-	 */
-	unsigned int key = irq_lock();
+	/* Tx FIFO reset and count monitor reset */
+	IT83XX_SPI_TXFCR = IT83XX_SPI_TXFR | IT83XX_SPI_TXFCMR;
+	/* CPU Tx FIFO1 and FIFO2 access */
+	IT83XX_SPI_TXRXFAR = IT83XX_SPI_CPUTFA;
 
-	if (shi_state == SPI_STATE_PROCESSING) {
-		/* Tx FIFO reset and count monitor reset */
-		IT83XX_SPI_TXFCR = IT83XX_SPI_TXFR | IT83XX_SPI_TXFCMR;
-		/* CPU Tx FIFO1 and FIFO2 access */
-		IT83XX_SPI_TXRXFAR = IT83XX_SPI_CPUTFA;
-
-		for (int i = 0; i < tx_size; i += 4) {
-			/* Write response data from out_msg buffer to Tx FIFO */
-			IT83XX_SPI_CPUWTFDB0 = *(uint32_t *)(out_msg_addr + i);
-		}
-
-		/*
-		 * After writing data to Tx FIFO is finished, this bit will
-		 * be to indicate the SPI peripheral controller.
-		 */
-		IT83XX_SPI_TXFCR = IT83XX_SPI_TXFS;
-		/* End Tx FIFO access */
-		IT83XX_SPI_TXRXFAR = 0;
-		/* SPI peripheral read Tx FIFO */
-		IT83XX_SPI_FCR = IT83XX_SPI_SPISRTXF;
+	for (int i = 0; i < tx_size; i += 4) {
+		/* Write response data from out_msg buffer to Tx FIFO */
+		IT83XX_SPI_CPUWTFDB0 = *(uint32_t *)(out_msg_addr + i);
 	}
 
-	irq_unlock(key);
+	/*
+	 * After writing data to Tx FIFO is finished, this bit will
+	 * be to indicate the SPI peripheral controller.
+	 */
+	IT83XX_SPI_TXFCR = IT83XX_SPI_TXFS;
+	/* End Tx FIFO access */
+	IT83XX_SPI_TXRXFAR = 0;
+	/* SPI peripheral read Tx FIFO */
+	IT83XX_SPI_FCR = IT83XX_SPI_SPISRTXF;
 }
 
 /*
@@ -162,22 +154,36 @@ static void spi_send_response_packet(struct host_packet *pkt)
 {
 	int tx_size;
 
+	/*
+	 * Protect sequence of filling response packet for host.
+	 * This will ensure CPU access FIFO is disabled at SPI end interrupt no
+	 * matter the interrupt is triggered before or after the sequence.
+	 */
+	unsigned int key = irq_lock();
+
 	if (shi_state != SPI_STATE_PROCESSING) {
+		spi_set_state(SPI_STATE_RX_BAD);
 		CPRINTS("The request data is not processing.");
-		return;
+	} else {
+		/* debug only: response to AP with 0x55 */
+		volatile uint8_t _spiout __unused;
+		IT83XX_SPI_SPISRDR = 0x55;
+		_spiout = IT83XX_SPI_SPISRDR;
+
+		/* Append our past-end byte, which we reserved space for. */
+		for (int i = 0; i < EC_SPI_PAST_END_LENGTH; i++) {
+			((uint8_t *)pkt->response)[pkt->response_size + i] =
+				EC_SPI_PAST_END;
+		}
+
+		tx_size = pkt->response_size + EC_SPI_PREAMBLE_LENGTH +
+			  EC_SPI_PAST_END_LENGTH;
+
+		/* Transmit the reply */
+		spi_response_host_data(out_msg, tx_size);
 	}
 
-	/* Append our past-end byte, which we reserved space for. */
-	for (int i = 0; i < EC_SPI_PAST_END_LENGTH; i++) {
-		((uint8_t *)pkt->response)[pkt->response_size + i] =
-			EC_SPI_PAST_END;
-	}
-
-	tx_size = pkt->response_size + EC_SPI_PREAMBLE_LENGTH +
-		  EC_SPI_PAST_END_LENGTH;
-
-	/* Transmit the reply */
-	spi_response_host_data(out_msg, tx_size);
+	irq_unlock(key);
 }
 
 /* Store request data from Rx FIFO to in_msg buffer */
@@ -288,8 +294,8 @@ static void shi_ite_int_handler(const void *arg)
 void spi_event(enum gpio_signal signal)
 {
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
-		/* Move to processing state */
-		spi_set_state(SPI_STATE_PROCESSING);
+		/* not valid data, ap will clock in next byte */
+		spi_set_state(SPI_STATE_TX_33h);
 		/* Disable idle task deep sleep bit of SPI in S0. */
 		/* TODO(b:185176098): disable_sleep(SLEEP_MASK_SPI); */
 	}

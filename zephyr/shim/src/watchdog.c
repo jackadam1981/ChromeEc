@@ -11,6 +11,7 @@
 #include "config.h"
 #include "hooks.h"
 #include "watchdog.h"
+#include "task.h"
 
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
 
@@ -24,6 +25,8 @@ static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 {
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close!\n");
+	printk("mepc=0x%lx tskid=%d\n", csr_read(mepc), task_get_current());
+
 #ifdef TEST_BUILD
 	wdt_warning_triggered = true;
 #endif
