@@ -7,6 +7,7 @@
 #include "config.h"
 #include "ec_gtest.h"
 #include "fpc_private.h"
+#include <sstream>
 
 #ifdef SECTION_IS_RW
 #include "fpc/fpc_sensor.h"
@@ -23,6 +24,10 @@ TEST(FpSensor, CheckHardwareID)
 	uint16_t id = 0;
 
 	if (IS_ENABLED(SECTION_IS_RW)) {
+		std::stringstream stream;
+		stream << "This is a stringstream" << std::endl;
+		ccprintf("%s", stream.str().c_str());
+
 		EXPECT_EQ(fpc_get_hwid(&id), EC_SUCCESS);
 
 		/* The lower 4-bits of the sensor hardware id are a
