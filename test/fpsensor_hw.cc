@@ -9,6 +9,8 @@
 #include "board.h"
 
 #include <sstream>
+#include <ostream>
+#include <iostream>
 #include <gtest/gtest.h>
 
 #ifdef SECTION_IS_RW
@@ -29,6 +31,8 @@ TEST(FpSensor, CheckHardwareID)
 		std::stringstream stream;
 		stream << "This is a stringstream" << std::endl;
 		ccprintf("%s", stream.str().c_str());
+
+		std::cout << "Running test" << std::endl;
 
 		EXPECT_EQ(fpc_get_hwid(&id), EC_SUCCESS);
 
