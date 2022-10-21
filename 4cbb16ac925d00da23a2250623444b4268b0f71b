@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08bc9b3_29263941",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-10-21T02:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa168f13_b02dd283",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f1b5b13_25a8a9ad",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-21T00:41:10Z",
       "side": 1,
       "message": "Delete.",
+      "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16214bf_1ad2bd2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-10-21T02:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f1b5b13_25a8a9ad",
       "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0af092_64788a22",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-10-21T02:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74abe56_f54b2de6",
+      "range": {
+        "startLine": 1335,
+        "startChar": 3,
+        "endLine": 1335,
+        "endChar": 38
+      },
+      "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c07d279_76979a20",
@@ -101,6 +167,24 @@
       "writtenOn": "2022-10-21T00:40:01Z",
       "side": 1,
       "message": "I think this clears the value set by kconfig. You don\u0027t need this block at all, since the kconfig symbol is already the same as the one used by config.h.",
+      "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "367d60b5_23d1a19a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-10-21T02:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c07d279_76979a20",
       "revId": "4cbb16ac925d00da23a2250623444b4268b0f71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
