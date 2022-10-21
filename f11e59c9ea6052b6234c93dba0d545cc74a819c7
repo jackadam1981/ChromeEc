@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7533b7_a0baf92b",
+        "filename": "common/peripheral_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-21T00:59:09Z",
+      "side": 1,
+      "message": "may need to check for (mode \u003c 0) for completeness here.\ndepends on how much range checking is already being done\nby the caller given that this is an enum.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 9
+      },
+      "revId": "f11e59c9ea6052b6234c93dba0d545cc74a819c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
