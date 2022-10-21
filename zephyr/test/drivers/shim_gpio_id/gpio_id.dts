@@ -1,0 +1,27 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Added so to include board_get_sku_id/get_version functions from gpio_id.c */
+/*
+ * Since this compiles code that may override other code, keep it in separate
+ * build.
+ */
+/ {
+	sku {
+		compatible = "cros-ec,gpio-id";
+
+		bits  = <&gpio_sku_id0>;
+
+		system = "ternary";
+	};
+
+	board {
+		compatible = "cros-ec,gpio-id";
+
+		bits  = <&gpio_brd_id0>;
+
+		system = "ternary";
+	};
+};
