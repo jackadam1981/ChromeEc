@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b2be8e_4512e0c8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3355,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-23T22:41:46Z",
+      "side": 1,
+      "message": "Makes more sense to me now (possibly just because I\u0027m looking at it fresh).",
+      "parentUuid": "80b877f1_28c25ab1",
+      "revId": "86c8b675bdd71f0066e90ec0228bf1b096c05e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13695c91_54c0c9d8",
