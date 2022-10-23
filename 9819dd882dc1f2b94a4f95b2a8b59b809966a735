@@ -52,6 +52,24 @@
       "parentUuid": "15145376_9e47fbf0",
       "revId": "9819dd882dc1f2b94a4f95b2a8b59b809966a735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82096cc_f21c0e39",
+        "filename": "include/config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-23T22:47:45Z",
+      "side": 1,
+      "message": "Non-zephyr builds won\u0027t use the kconfig at all, so any EC-OS devices need to have an equivalent setting to what we set with the kconfig.",
+      "parentUuid": "4c05f69e_6f544838",
+      "revId": "9819dd882dc1f2b94a4f95b2a8b59b809966a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
