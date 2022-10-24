@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba1c116_64c5fc7b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3371,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-24T17:43:53Z",
+      "side": 1,
+      "message": "Reading through `charge_manager_force_ceil()`, it calls through to `board_set_charge_limit()`, and it appears that most boards will set their input current limit to `MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT)`, with many (but not all) boards setting `CONFIG_CHARGER_INPUT_CURRENT` to 512 mA.  \n\nAm I mis-reading this, or will this cause most boards to essentially use 500mA despite this logic to lower the current?",
+      "revId": "b3369fc19e119b94564b91f0990c59294bdf4c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
