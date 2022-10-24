@@ -16,6 +16,24 @@
       "message": "there are still plenty of style violations too, do you use \u0027repo upload\u0027 to upload the patches?",
       "revId": "2ef661815243adbacce010f23f03ab64e19450c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb5f535_0d25d602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-24T19:46:49Z",
+      "side": 1,
+      "message": "Hmm, no... I just push via git. I used `repo upload -n` to fix up the issues here though. So I _think_ it\u0027s now ok...",
+      "parentUuid": "8be91369_cf39e1db",
+      "revId": "2ef661815243adbacce010f23f03ab64e19450c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
