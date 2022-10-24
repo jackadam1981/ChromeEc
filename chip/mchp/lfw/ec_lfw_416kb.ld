@@ -77,13 +77,7 @@ SECTIONS
 
     . = ALIGN(4);
 
-    /* Padding */
-
-    .fill : {
-        FILL(0xFF);
-        . = ORIGIN(SRAM) + LENGTH(SRAM) - 1;
-        BYTE(0xFF);   /* emit at least a byte to make linker happy */
-    }
-
     __image_size = LOADADDR(.text) + SIZEOF(.text) - ORIGIN(VECTOR);
+
+    /DISCARD/ : { *(.ARM.*) }
 }
