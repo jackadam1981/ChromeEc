@@ -229,6 +229,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "volet",
     "volmar",
     # "volteer", # overflows flash
+    "volteer_npcx797fc",
     "voxel",
     "voxel_ecmodeentry",
     "voxel_npcx797fc",
