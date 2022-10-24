@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47fdac63_e7e6c7a2",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-24T19:31:44Z",
+      "side": 1,
+      "message": "Asserting on logs like just seems spooky to me. But I suppose we just do this in the console tests anyway.",
+      "revId": "7fa369845c4c1db6da11622b3e5bf9bb14fc8be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
