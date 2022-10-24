@@ -235,6 +235,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "voxel_npcx797fc",
     # "waddledoo", # overflows flash
     "waddledoo2",
+    "whiskers",
     "woomax",
     "wormdingler",
     "yorp",
