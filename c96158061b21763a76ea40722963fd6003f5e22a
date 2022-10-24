@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09374c3a_9cf6c514",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-24T17:29:17Z",
+      "side": 1,
+      "message": "I\u0027ve adjusted this CL + commit message to use \"SPI addressing mode\" for clarity.",
+      "parentUuid": "9c44acca_f609398a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "c96158061b21763a76ea40722963fd6003f5e22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01a15b14_98de4fb5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-21T21:11:04Z",
       "side": 1,
       "message": "`arv` is a common abbreviation of `ap_ro_verify`",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 2
+      },
+      "revId": "c96158061b21763a76ea40722963fd6003f5e22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a15fe4f9_9e90d16e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-24T17:29:17Z",
+      "side": 1,
+      "message": "Cool, I\u0027ve switch to using `arv` as a prefix.",
+      "parentUuid": "01a15b14_98de4fb5",
       "range": {
         "startLine": 330,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2134e1f5_ddbef9ee",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2624,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-24T17:29:17Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "05a77d99_7e34ca66",
+      "revId": "c96158061b21763a76ea40722963fd6003f5e22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f98fc73b_1de54c96",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-10-21T21:11:04Z",
       "side": 1,
       "message": "please add a comment to indicate that the default is set to 4 bytes.",
+      "range": {
+        "startLine": 2673,
+        "startChar": 3,
+        "endLine": 2673,
+        "endChar": 37
+      },
+      "revId": "c96158061b21763a76ea40722963fd6003f5e22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d35d02_f28e2a2c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2673,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-24T17:29:17Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "f98fc73b_1de54c96",
       "range": {
         "startLine": 2673,
         "startChar": 3,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5816cd_6e7b5a68",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3544,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-24T17:29:17Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "f5de2aa0_d8fd1708",
+      "range": {
+        "startLine": 3544,
+        "startChar": 18,
+        "endLine": 3544,
+        "endChar": 42
+      },
+      "revId": "c96158061b21763a76ea40722963fd6003f5e22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1fa6a3a_ca80e322",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-10-21T21:11:04Z",
       "side": 1,
       "message": "the check chould be for ` !\u003d ap_ro_verify_config_spi_mode_choice_none` as this is an enum and values could change.",
+      "range": {
+        "startLine": 3692,
+        "startChar": 6,
+        "endLine": 3692,
+        "endChar": 34
+      },
+      "revId": "c96158061b21763a76ea40722963fd6003f5e22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75456bd0_f9f3e4d8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3692,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-24T17:29:17Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "d1fa6a3a_ca80e322",
       "range": {
         "startLine": 3692,
         "startChar": 6,
