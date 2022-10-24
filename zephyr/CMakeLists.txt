@@ -125,27 +125,6 @@ add_custom_target(
   )
 configure_file(gcov.tmpl.sh ${CMAKE_BINARY_DIR}/gcov.sh)
 
-# CONFIG_PLATFORM_EC files that don't relate to something below should be
-# included here, sorted by filename. This is common functionality which is
-# supported by all boards and emulators (including unit tests) using the shim
-# layer.
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC
-                                                # TODO(b/237712836): Remove once
-                                                # Zephyr's libc has strcasecmp.
-                                                "${PLATFORM_EC}/builtin/stdlib.c"
-                                                "${PLATFORM_EC}/common/base32.c"
-                                                "${PLATFORM_EC}/common/console_output.c"
-                                                "${PLATFORM_EC}/common/ec_features.c"
-                                                "${PLATFORM_EC}/common/gpio_commands.c"
-                                                "${PLATFORM_EC}/common/peripheral.c"
-                                                "${PLATFORM_EC}/common/printf.c"
-                                                "${PLATFORM_EC}/common/queue.c"
-                                                "${PLATFORM_EC}/common/shared_mem.c"
-                                                "${PLATFORM_EC}/common/system.c"
-                                                "${PLATFORM_EC}/common/uart_printf.c"
-                                                "${PLATFORM_EC}/common/util.c"
-                                                "${PLATFORM_EC}/common/version.c")
-
 # Now include files that depend on or relate to other CONFIG options, sorted by
 # CONFIG
 zephyr_library_sources_ifdef(CONFIG_HAS_TASK_POWERBTN
