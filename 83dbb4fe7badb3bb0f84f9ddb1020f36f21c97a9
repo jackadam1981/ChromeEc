@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea665584_8c24fe26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-24T07:41:56Z",
+      "side": 1,
+      "message": "I am not sure we need these functions if we are selecting the GPIO pinctrl.\nI\u0027m adding Keith as reviewer to these CLs, since I am not very familiar with this area.",
+      "revId": "83dbb4fe7badb3bb0f84f9ddb1020f36f21c97a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
