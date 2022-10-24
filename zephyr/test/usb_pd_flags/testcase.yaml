@@ -2,3 +2,6 @@ common:
   platform_allow: native_posix
 tests:
   usb_pd_flags.default: {}
+  usb_pd_flags.runtime_flags:
+    extra_configs:
+      - CONFIG_PLATFORM_EC_USB_PD_RUNTIME_FLAGS=y
