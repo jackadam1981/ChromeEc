@@ -174,6 +174,7 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 		      (decimators[FIFO_DEV_GYRO] << LSM6DSM_FIFO_DEC_G_OFF) |
 			      (decimators[FIFO_DEV_ACCEL]
 			       << LSM6DSM_FIFO_DEC_XL_OFF));
+#ifdef CONFIG_LSM6DSM_SEC_I2C
 	if (IS_ENABLED(CONFIG_LSM6DSM_SEC_I2C)) {
 		ASSERT(ARRAY_SIZE(decimators) > FIFO_DEV_MAG);
 		st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
@@ -213,6 +214,7 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 				LSM6DSM_ODR_TO_REG(odrs[FIFO_DEV_ACCEL]));
 		}
 	}
+#endif
 	/*
 	 * After ODR and decimation values are set, continuous mode can be
 	 * enabled
