@@ -56,9 +56,7 @@ endif()
 # that is applied only to the Zephyr sources. This is used to verify that
 # all Zephyr sources are using the upstream Zephyr GPIO API and not the legacy
 # EC API.
-zephyr_library_named(ec_shim)
-get_property(APP_LTO_PROPERTY TARGET app PROPERTY INTERPROCEDURAL_OPTIMIZATION)
-set_property(TARGET ec_shim PROPERTY INTERPROCEDURAL_OPTIMIZATION ${APP_LTO_PROPERTY})
+ec_library(ec_shim)
 set_property(TARGET ec_shim APPEND PROPERTY COMPILE_DEFINITIONS __REQUIRE_ZEPHYR_GPIOS__)
 
 # Create an interface library for CrosEC (cros_ec_interface) that can be used
@@ -77,7 +75,6 @@ target_include_directories(cros_ec_interface
     "${PLATFORM_EC}/include/driver"
     "${PLATFORM_EC}/third_party"
 )
-target_link_libraries(ec_shim PUBLIC cros_ec_interface)
 target_link_libraries(app PUBLIC cros_ec_interface)
 
 # Switch from the "zephyr" library to the "app" library for all Chromium OS
