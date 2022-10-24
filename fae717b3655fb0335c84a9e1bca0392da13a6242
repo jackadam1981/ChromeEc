@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b9b8fd_ec1d5a7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-24T23:42:40Z",
+      "side": 1,
+      "message": "I don\u0027t know enough about this device or code to be too helpful here, but it seems OK.",
+      "revId": "fae717b3655fb0335c84a9e1bca0392da13a6242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c92974_36cc5751",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-24T23:42:40Z",
+      "side": 1,
+      "message": "Can we use \u0026\u0026 here?",
+      "revId": "fae717b3655fb0335c84a9e1bca0392da13a6242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
