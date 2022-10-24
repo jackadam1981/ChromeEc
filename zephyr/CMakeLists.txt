@@ -58,23 +58,6 @@ endif()
 # EC API.
 ec_library(ec_shim)
 set_property(TARGET ec_shim APPEND PROPERTY COMPILE_DEFINITIONS __REQUIRE_ZEPHYR_GPIOS__)
-
-# Create an interface library for CrosEC (cros_ec_interface) that can be used
-# as a dependency for individual CrosEC libraries. To use:
-#  zephyr_library_named(my_lib)
-#  target_link_libraries(my_lib PRIVATE cros_ec_interface)
-add_library(cros_ec_interface INTERFACE)
-target_include_directories(cros_ec_interface
-  INTERFACE
-    include
-    "${PLATFORM_EC}/zephyr/shim/include"
-    "${PLATFORM_EC}/fuzz"
-    "${PLATFORM_EC}/test"
-    "${PLATFORM_EC}"
-    "${PLATFORM_EC}/include"
-    "${PLATFORM_EC}/include/driver"
-    "${PLATFORM_EC}/third_party"
-)
 target_link_libraries(app PUBLIC cros_ec_interface)
 
 # Switch from the "zephyr" library to the "app" library for all Chromium OS
