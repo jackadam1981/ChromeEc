@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f950e622_b320d158",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-24T17:29:14Z",
+      "side": 1,
+      "message": "I think the header guard doesn\u0027t match the current path. Check the other files in the `include` directory.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd0b62a_9e168ed3",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-24T17:29:14Z",
+      "side": 1,
+      "message": "Now that you\u0027re using `std::function`, this comment probably isn\u0027t necessary.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 62
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d424a7_d0f4b4c2",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-24T17:29:14Z",
+      "side": 1,
+      "message": "Is there a reason this is a reference? (which is then returned?)",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f8ab2e_e087fe15",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-24T17:29:14Z",
+      "side": 1,
+      "message": "clang-tidy warning: https://clang.llvm.org/extra/clang-tidy/checks/modernize/redundant-void-arg.html",
+      "range": {
+        "startLine": 135,
+        "startChar": 19,
+        "endLine": 135,
+        "endChar": 23
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2b4b77_a3e1c90c",
+        "filename": "test/benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-24T17:29:14Z",
+      "side": 1,
+      "message": "Since it\u0027s not a pointer, it\u0027s more common to write it as:\n\n```\nBenchmark benchmark;\n```\n\nSame with the other tests in the file.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864b567f_fa7c38dd",
+        "filename": "test/benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-24T17:29:14Z",
+      "side": 1,
+      "message": "Fine in this context, but FYI of the pitfalls of default capture: https://google.github.io/styleguide/cppguide.html#Lambda_expressions",
+      "range": {
+        "startLine": 41,
+        "startChar": 46,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
