@@ -347,6 +347,31 @@ enum arv_config_spi_addr_mode_choice_e {
 };
 
 /*
+ * AP RO verification write protect descriptor configuration choices
+ */
+enum arv_config_wpds_choice_e {
+	arv_config_wpds_choice_none = 0,
+	arv_config_wpds_choice_get = 1,
+	arv_config_wpds_choice_set = 2,
+};
+
+/*
+ * AP RO verification write protect descriptor information
+ */
+struct __attribute__((__packed__)) arv_config_wpd {
+	uint8_t expected_value;
+	uint8_t mask;
+};
+
+/*
+ * AP RO verification write protect descriptors. This is a helper type to
+ * represent the three write protect descriptors.
+ */
+struct __attribute__((__packed__)) arv_config_wpds {
+	struct arv_config_wpd data[3];
+};
+
+/*
  * This by far exceeds the largest vendor command response size we ever
  * expect.
  */
@@ -407,6 +432,9 @@ static const struct option_container cmd_line_options[] = {
 	 "RW and RO headers, do not update"},
 	{{"apro_config_spi_mode", optional_argument, NULL, 'C'},
 	 "Get/set the ap ro verify spi mode either to `3byte` or `4byte`"},
+	{{"apro_config_write_protect_descriptors", optional_argument, NULL,
+	 'E'},
+	 "Get/set the ap ro verify write protect descriptors"},
 	{{"corrupt", no_argument, NULL, 'c'},
 	 "Corrupt the inactive rw"},
 	{{"dauntless", no_argument, NULL, 'D'},
@@ -2693,6 +2721,62 @@ static int process_arv_config_spi_addr_mode(struct transfer_descriptor *td,
 	return 0;
 }
 
+static int process_arv_config_wpds(struct transfer_descriptor *td,
+					enum arv_config_wpds_choice_e choice,
+					struct arv_config_wpds *wpds)
+{
+	struct __attribute__((__packed__)) arv_config_wpds_message {
+		uint8_t version;
+		uint8_t command;
+		struct arv_config_wpds wpds;
+	};
+	int rv = 0;
+
+	struct arv_config_wpds_message msg = {
+		.version = ARV_CONFIG_SETTING_CURRENT_VERSION,
+		.command = arv_config_setting_command_write_protect_descriptors,
+	};
+	size_t response_size = sizeof(msg);
+
+	if (choice == arv_config_wpds_choice_get) {
+		rv = send_vendor_command(td, VENDOR_CC_GET_AP_RO_VERIFY_SETTING,
+			&msg, sizeof(msg), &msg, &response_size);
+		if (rv != VENDOR_RC_SUCCESS) {
+			fprintf(stderr,
+				"Error %d getting ap ro write protect descriptors\n",
+				rv);
+			return update_error;
+		}
+
+		if (response_size != sizeof(msg)) {
+			fprintf(stderr,
+				"Error getting ap ro write protect descriptors response\n");
+			return update_error;
+		}
+
+		printf("1: %02x & %02x, 2: %02x & %02x, 3: %02x & %02x\n",
+			msg.wpds.data[0].expected_value,
+			msg.wpds.data[0].mask,
+			msg.wpds.data[1].expected_value,
+			msg.wpds.data[1].mask,
+			msg.wpds.data[2].expected_value,
+			msg.wpds.data[2].mask);
+	} else if (choice == arv_config_wpds_choice_set) {
+		msg.wpds = *wpds;
+
+		rv = send_vendor_command(td, VENDOR_CC_SET_AP_RO_VERIFY_SETTING,
+			&msg, sizeof(msg), &msg, &response_size);
+		if (rv != VENDOR_RC_SUCCESS) {
+			fprintf(stderr,
+				"Error %d setting ap ro write protect descriptors\n",
+				rv);
+			return update_error;
+		}
+	}
+
+	return 0;
+}
+
 static int process_get_boot_mode(struct transfer_descriptor *td)
 {
 	size_t response_size;
@@ -3464,6 +3548,9 @@ int main(int argc, char *argv[])
 	const char *tstamp_arg = NULL;
 	enum arv_config_spi_addr_mode_choice_e arv_config_spi_addr_mode =
 		arv_config_spi_addr_mode_choice_none;
+	enum arv_config_wpds_choice_e arv_config_wpds_choice =
+		arv_config_wpds_choice_none;
+	struct arv_config_wpds arv_config_wpds;
 
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
@@ -3569,6 +3656,37 @@ int main(int argc, char *argv[])
 		case 'e':
 			get_endorsement_seed = 1;
 			endorsement_seed_str = optarg;
+			break;
+		case 'E':
+			if (!optarg) {
+				arv_config_wpds_choice =
+					arv_config_wpds_choice_get;
+			} else if (optarg && strlen(optarg) == 12) {
+				/* Read in all values */
+				if (sscanf(optarg,
+					"%2hhx%2hhx%2hhx%2hhx%2hhx%2hhx",
+					&arv_config_wpds.data[0].expected_value,
+					&arv_config_wpds.data[0].mask,
+					&arv_config_wpds.data[1].expected_value,
+					&arv_config_wpds.data[1].mask,
+					&arv_config_wpds.data[2].expected_value,
+					&arv_config_wpds.data[2].mask
+					) == 6) {
+					/* Hex values read successfully */
+					arv_config_wpds_choice =
+						arv_config_wpds_choice_set;
+				} else {
+					fprintf(stderr,
+						"Invalid write protect descriptors hex string: \"%s\"\n",
+						optarg);
+					exit(update_error);
+				}
+			} else {
+				fprintf(stderr,
+					"Invalid the write protect descriptors hsx string length\n");
+				exit(update_error);
+			}
+
 			break;
 		case 'F':
 			factory_mode = 1;
@@ -3701,6 +3819,8 @@ int main(int argc, char *argv[])
 	if ((bid_action == bid_none) &&
 		(arv_config_spi_addr_mode ==
 			arv_config_spi_addr_mode_choice_none) &&
+		(arv_config_wpds_choice ==
+			arv_config_wpds_choice_none) &&
 	    !ccd_info &&
 	    !ccd_lock &&
 	    !ccd_open &&
@@ -3848,6 +3968,11 @@ int main(int argc, char *argv[])
 	if (arv_config_spi_addr_mode)
 		exit(process_arv_config_spi_addr_mode(&td,
 			arv_config_spi_addr_mode));
+
+	if (arv_config_wpds_choice)
+		exit(process_arv_config_wpds(&td,
+			arv_config_wpds_choice,
+			&arv_config_wpds));
 
 	if (data || show_fw_ver) {
 
