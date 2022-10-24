@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f5298a_5dbc13bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-24T18:15:03Z",
+      "side": 1,
+      "message": "Even the remaining `board_get_charger_chip_count` construct feels borderline unnecessary. I see a couple implementations that will return 0 for an invalid daughter board in FW_CONFIG, but there aren\u0027t actually any boards with 0 charger chips. The charger array should always have an element 0, and these functions oddly only access charger 0, so they should always work.",
+      "revId": "ea89203c74732ba9262e3bbafc4d3a3dbe271e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
