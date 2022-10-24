@@ -4,6 +4,32 @@
 
 include_guard(GLOBAL)
 
+function(handle_lto TARGET)
+  # When LTO is enabled, enable only for the "app" library, which compiles
+  # and links all Chromium OS sources.
+  # TODO: Enable LTO for all sources when Zephyr supports it.
+  #   See https://github.com/zephyrproject-rtos/zephyr/issues/2112
+  if ((BOARD STREQUAL unit_testing) OR (NOT DEFINED CONFIG_LTO))
+    return()
+  endif()
+
+  # The Zephyr toolchain generates linker errors if both CONFIG_LTO and
+  # CONFIG_FPU are used. See b/184302085.
+  if(("${ZEPHYR_TOOLCHAIN_VARIANT}" STREQUAL "zephyr") AND (DEFINED CONFIG_FPU))
+    message(STATUS "Zephyr toolchain and CONFIG_FPU detected: disabling LTO")
+    return()
+  endif()
+
+  set_property(
+    TARGET
+      ${TARGET}
+    PROPERTY
+      INTERPROCEDURAL_OPTIMIZATION True
+  )
+endfunction()
+
+handle_lto(app)
+
 # Sets the provided variable to the multi_value_keywords from ec_library.
 macro(_ec_add_library_multi_value_args variable)
   set("${variable}" SOURCES HEADERS
@@ -49,26 +75,7 @@ function(ec_library NAME)
   else()
     zephyr_library_named(${NAME})
     target_link_libraries(${NAME} PRIVATE cros_ec_interface)
-    # When LTO is enabled, enable only for the "app" library, which compiles
-    # and links all Chromium OS sources.
-    # TODO: Enable LTO for all sources when Zephyr supports it.
-    # See https://github.com/zephyrproject-rtos/zephyr/issues/2112
-    if (DEFINED CONFIG_LTO)
-      # The Zephyr toolchain generates linker errors if both CONFIG_LTO and
-      # CONFIG_FPU are used. See b/184302085.
-      if(("${ZEPHYR_TOOLCHAIN_VARIANT}" STREQUAL "zephyr") AND
-          (DEFINED CONFIG_FPU))
-        message(STATUS
-            "Zephyr toolchain and CONFIG_FPU detected: disabling LTO")
-      else()
-        set_property(
-          TARGET
-            ${NAME}
-          PROPERTY
-            INTERPROCEDURAL_OPTIMIZATION True
-        )
-      endif()
-    endif()
+    handle_lto(${NAME})
   endif()
   if(NOT "${arg_SOURCES}" STREQUAL "")
     target_sources(${NAME} PRIVATE ${arg_SOURCES})
