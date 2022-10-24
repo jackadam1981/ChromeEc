@@ -45,12 +45,20 @@ ZTEST(common_charger, test_chg_ramp_is_detected)
 	zassert_equal(isl923x_ramp_is_detected_fake.arg0_val, CHG_NUM);
 }
 
+ZTEST(common_charger, test_chg_ramp_get_current_limit)
+{
+	zassert_equal(chg_ramp_get_current_limit(),
+		      CONFIG_CHARGER_INPUT_CURRENT);
+}
+
 static void suite_common_charger_before_after(void *test_data)
 {
 	ARG_UNUSED(test_data);
 
 	RESET_FAKE(isl923x_ramp_is_stable);
 	RESET_FAKE(isl923x_ramp_is_detected);
+
+	isl923x_drv.init(CHG_NUM);
 }
 
 ZTEST_SUITE(common_charger, drivers_predicate_post_main, NULL,
