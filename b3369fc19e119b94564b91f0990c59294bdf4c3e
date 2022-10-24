@@ -16,6 +16,24 @@
       "message": "Reading through `charge_manager_force_ceil()`, it calls through to `board_set_charge_limit()`, and it appears that most boards will set their input current limit to `MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT)`, with many (but not all) boards setting `CONFIG_CHARGER_INPUT_CURRENT` to 512 mA.  \n\nAm I mis-reading this, or will this cause most boards to essentially use 500mA despite this logic to lower the current?",
       "revId": "b3369fc19e119b94564b91f0990c59294bdf4c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9b0318_745c3822",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3371,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-24T22:41:41Z",
+      "side": 1,
+      "message": "b/243189930 (https://crrev.com/c/3905355) discusses that some. I think `CONFIG_CHARGER_INPUT_CURRENT` is badly defined and boards that use it as a minimum current should be fixed: that should be the non-PD current limit only, as currently configured by charger drivers.\nBoards should not use it as a minimum charge current, though there might be a tricky interaction between pSnkStdby limits and low-battery situtations (which aren\u0027t currently handled well right now either, since we can have the same problem if we overcurrent the source and cause it to shut down).\n\nIn any case, that seems like something to address after this CL.",
+      "parentUuid": "2ba1c116_64c5fc7b",
+      "revId": "b3369fc19e119b94564b91f0990c59294bdf4c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
