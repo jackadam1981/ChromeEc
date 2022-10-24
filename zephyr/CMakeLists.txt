@@ -81,6 +81,19 @@ set_property(TARGET ec_shim APPEND PROPERTY COMPILE_DEFINITIONS __REQUIRE_ZEPHYR
 #  zephyr_library_named(my_lib)
 #  target_link_libraries(my_lib PRIVATE cros_ec_interface)
 add_library(cros_ec_interface INTERFACE)
+target_include_directories(cros_ec_interface
+  INTERFACE
+    include
+    "${PLATFORM_EC}/zephyr/shim/include"
+    "${PLATFORM_EC}/fuzz"
+    "${PLATFORM_EC}/test"
+    "${PLATFORM_EC}"
+    "${PLATFORM_EC}/include"
+    "${PLATFORM_EC}/include/driver"
+    "${PLATFORM_EC}/third_party"
+)
+target_link_libraries(ec_shim PUBLIC cros_ec_interface)
+target_link_libraries(app PUBLIC cros_ec_interface)
 
 # Switch from the "zephyr" library to the "app" library for all Chromium OS
 # sources.
@@ -89,30 +102,13 @@ set(ZEPHYR_CURRENT_LIBRARY app)
 # Custom function that ensures the include path is always updated for both
 # libraries.
 function(cros_ec_library_include_directories)
-  target_include_directories(app PUBLIC ${ARGN})
-  target_include_directories(ec_shim PRIVATE ${ARGN})
   target_include_directories(cros_ec_interface INTERFACE ${ARGN})
 endfunction()
 function(cros_ec_library_include_directories_ifdef feature_toggle)
   if(${${feature_toggle}})
-    target_include_directories(app PUBLIC ${ARGN})
-    target_include_directories(ec_shim PRIVATE ${ARGN})
     target_include_directories(cros_ec_interface INTERFACE ${ARGN})
   endif()
 endfunction()
-
-cros_ec_library_include_directories(include)
-
-if (DEFINED CONFIG_PLATFORM_EC)
-  cros_ec_library_include_directories(
-    "${PLATFORM_EC}/zephyr/shim/include"
-    "${PLATFORM_EC}/fuzz"
-    "${PLATFORM_EC}/test"
-    "${PLATFORM_EC}"
-    "${PLATFORM_EC}/include"
-    "${PLATFORM_EC}/include/driver"
-    "${PLATFORM_EC}/third_party")
-endif()
 
 add_subdirectory("subsys")
 
