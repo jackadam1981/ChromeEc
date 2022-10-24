@@ -22,6 +22,30 @@
       },
       "revId": "a3cb2bb710857f3679fb6b93a02d3d07f8d3bafb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea92de34_42ff6ee4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-10-24T01:13:52Z",
+      "side": 1,
+      "message": "I think I should remove this run. since the code content has been changed. the 2 build is not match. Just make sure to Redrix. It still boots. But for CL:3967915, It is matching.",
+      "parentUuid": "6a868d03_03d92964",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "a3cb2bb710857f3679fb6b93a02d3d07f8d3bafb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
