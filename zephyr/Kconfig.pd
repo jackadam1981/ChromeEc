@@ -86,6 +86,22 @@ config PLATFORM_EC_USB_PD_INITIAL_DEBUG_LEVEL
 	  through to 3 will increase the level of debug logging.
 	  If this config is not set, the default level will be set to 1.
 
+config PLATFORM_EC_USB_PD_FLAGS
+	bool "Whether to build USB PD flag support"
+	default true
+	help
+	  Builds support for checking flags indicating USB PD properties.
+
+if PLATFORM_EC_USB_PD_FLAGS
+
+config PLATFORM_EC_USB_PD_RUNTIME_FLAGS
+	bool "Whether to set PD flags at runtime"
+	default false
+	help
+	  Sets PD flag values at runtime instead of based on static config.
+
+endif # PLATFORM_EC_USB_PD_FLAGS
+
 config USB_PD_XID
 	int "USB XID"
 	default 0
