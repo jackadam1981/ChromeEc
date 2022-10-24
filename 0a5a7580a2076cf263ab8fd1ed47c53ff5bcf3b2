@@ -85,6 +85,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e4cc9196_51e1922a",
+        "filename": "zephyr/test/drivers/shim_gpio_id/gpio_id.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-10-24T21:27:11Z",
+      "side": 1,
+      "message": "Wrong link?",
+      "parentUuid": "c40ee43e_d9d39486",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "0a5a7580a2076cf263ab8fd1ed47c53ff5bcf3b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5c2cfbd8_6895e230",
         "filename": "zephyr/test/drivers/shim_gpio_id/src/test_shim_gpio_id.c",
         "patchSetId": 1
