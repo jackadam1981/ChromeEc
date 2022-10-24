@@ -16,6 +16,24 @@
       "message": "is it okay to run usb_mux_set in interrupt context?",
       "revId": "feb9455e839d36b8e684223ddb6acca4f23e72dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7422135_6fee8d19",
+        "filename": "zephyr/projects/corsola/src/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-10-24T07:42:37Z",
+      "side": 1,
+      "message": "It seems this might be an issue if the mux mutex was locked. Let\u0027s enable USB_MUX_TASK to prevent the dead locking.",
+      "parentUuid": "e2100bfc_8790878e",
+      "revId": "feb9455e839d36b8e684223ddb6acca4f23e72dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
