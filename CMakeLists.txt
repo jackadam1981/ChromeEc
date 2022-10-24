@@ -25,4 +25,7 @@ endif()
 include(zephyr/cmake/modules/extensions.cmake)
 
 add_subdirectory(zephyr)
+
+set(ZEPHYR_CURRENT_LIBRARY app)
+add_subdirectory(builtin)
 add_subdirectory(common)
