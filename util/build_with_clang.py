@@ -207,6 +207,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "voxel",
     # "waddledoo",
     "waddledoo2",
+    "whiskers",
     "woomax",
     "wormdingler",
     "yorp",
