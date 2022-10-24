@@ -674,6 +674,22 @@ config PLATFORM_EC_THROTTLE_AP
 	  a lower speed. This reduce the CPU's power output and eventually
 	  results in a lower temperature.
 
+config PLATFORM_EC_THROTTLE_AP_INTERRUPT_SINGLE
+	bool "CPU throttling and interrupt detection on a single pin"
+	depends on PLATFORM_EC_THROTTLE_AP
+	help
+	  Enable detection of throttling interrupts on the same pin used to
+	  trigger throttling. The GPIO should be configured as an output by
+	  default. `throttle_ap_config_prochot` will configure the GPIO as
+	  an interrupt. Chipset specific functions are responsible for
+	  handling any subsequent changes.
+
+config PLATFORM_EC_THROTTLE_AP_NO_FAN
+	bool "No automatic fan control for AP throttling"
+	depends on PLATFORM_EC_THROTTLE_AP
+	help
+	  Disable automatic fan control when an AP throttling interrupt occurs
+
 menuconfig PLATFORM_EC_TIMER
 	bool "Timer module"
 	default y
