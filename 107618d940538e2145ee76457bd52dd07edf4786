@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6698518_1dbef2f1",
+        "filename": "common/body_detection.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-24T23:25:43Z",
+      "side": 1,
+      "message": "This will cause all other boards to think the device has changed to tablet mode.\n\n`coreboot/src/ec/google/chromeec/acpi/ec.asl`\n```\n\t// TABLET mode switch Event\n\tMethod (_Q1D, 0, NotSerialized)\n\t{\n\t\tPrintf (\"EC: TABLET mode switch Event\")\n\t\tNotify (CREC, 0x2)\n#ifdef EC_ENABLE_MULTIPLE_DPTF_PROFILES\n\t\t\\_SB.DPTF.TPET()\n#endif\n#ifdef EC_ENABLE_TBMC_DEVICE\n\t\tNotify (TBMC, 0x80)\n#endif\n#if CONFIG(SOC_AMD_COMMON_BLOCK_ACPI_DPTC)\n\t\tIf (CondRefOf (\\_SB.DPTC)) {\n\t\t\t\\_SB.DPTC()\n\t\t}\n#endif\n\t}\n```\n\nBefore this lands, the AP handler on the coreboot side (`_Q1D()`) needs needs to be updated to only call the existing methods when tablet/clamshell mode has changed, and not when body detection is the cause of the host event.   Otherwise, existing devices will incorrectly think tablet mode has been activated whenever body detection has changed states.\n\nI\u0027m not sure what\u0027s involved with adding a new EC host event and coreboot handler, but maybe that\u0027s a better solution.\n\n@rrangel@chromium.org Thoughts here?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 6
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

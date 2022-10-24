@@ -275,6 +275,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "583a2609_c8400844",
+        "filename": "common/body_detection.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-24T23:25:43Z",
+      "side": 1,
+      "message": "Hi Elthan,\n\nLooking at `cros_ec_sensorhub_ring_fifo_enable` in `src/third_party/kernel/v5.15/drivers/platform/chrome/cros_ec_sensorhub_ring.c`, there is already a capability to generate an interrupt when `CONFIG_GESTURE_HOST_DETECTION` is enabled.   Will handling the EC host event and the interrupt cause any issues?\n\nI\u0027m not sure how to answer that, or if it\u0027s actually a concern.",
+      "parentUuid": "12cdcf08_3164244a",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e250fa18_031c48b0",
         "filename": "common/body_detection.c",
         "patchSetId": 8
