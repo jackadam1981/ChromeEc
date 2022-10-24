@@ -214,19 +214,19 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # git grep --name-only 'CHIP:=mt_scp' | xargs grep -L 'CHIP_VARIANT:=mt818' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "corsola_scp",
     "kukui_scp",
-]
 
-BOARDS_THAT_FAIL_WITH_CLANG = [
     # i386
     "adl_ish_lite",
-    "adlrvpm_ite",
-    "adlrvpp_ite",
     "arcada_ish",
     "drallion_ish",
     "tglrvp_ish",
     "volteer_ish",
+]
 
+BOARDS_THAT_FAIL_WITH_CLANG = [
     # nds32
+    "adlrvpm_ite",
+    "adlrvpp_ite",
     "ampton",
     "beadrix",
     "beetley",
