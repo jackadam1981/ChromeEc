@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc439dd3_b29e9f6b",
+        "filename": "zephyr/test/drivers/default/src/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-24T19:01:36Z",
+      "side": 1,
+      "message": "I didn\u0027t know there was a zassert_not_null. I\u0027ll have to use that.",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 17
+      },
+      "revId": "1c541ee5cb716bfd3de66a3861621eed50ee415f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
