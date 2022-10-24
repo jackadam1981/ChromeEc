@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2cd356_7650c8c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-24T19:55:45Z",
+      "side": 1,
+      "message": "please always use `repo upload` instead of `git push`. it runs local tests on top of style checks",
+      "revId": "876042a4df5e9c45b7c02360b132ca045893eec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
