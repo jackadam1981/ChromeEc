@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e0e3f3_1403313c",
+        "filename": "zephyr/subsys/emul/ap_pwrseq/emul_power_signals.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2022-10-24T19:45:22Z",
+      "side": 1,
+      "message": "This helps handling initialization errors gracefully.",
+      "range": {
+        "startLine": 519,
+        "startChar": 2,
+        "endLine": 519,
+        "endChar": 30
+      },
+      "revId": "50bcf5980fe8c576fdf22bedb8c33cbff63a2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
