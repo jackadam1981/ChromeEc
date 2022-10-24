@@ -22,6 +22,30 @@
       },
       "revId": "70474628bbf6af94a3dfe7920112d458f2c8d27a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7278dae6_72a45e63",
+        "filename": "zephyr/test/drivers/shim_gpio_id/gpio_id.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-24T15:56:26Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/gpio_id.c;l\u003d26\n\nOnly if this node exists does this code get compiled into the build.\n\nSimilarly at:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/shim/src/gpio_id.c;l\u003d49\n\nHowever, I\u0027ll clarify the comment.",
+      "parentUuid": "adf86ba8_1a6b2d3f",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 3
+      },
+      "revId": "70474628bbf6af94a3dfe7920112d458f2c8d27a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
