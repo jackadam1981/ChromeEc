@@ -34,6 +34,24 @@
       "parentUuid": "0c6f881f_fff0f217",
       "revId": "7528829dc5d437e2e91af28d4f8d409562f8284a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce7db5e_00c88637",
+        "filename": "zephyr/projects/nissa/pujjo/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-25T02:31:12Z",
+      "side": 1,
+      "message": "```\n/mnt/host/source/src/platform/ec/zephyr/projects/nissa/pujjo/prj.conf:27:\nwarning: \u0027256\u0027 is not a valid value for the bool symbol RAA489000_TRICKLE_CHARGE_CURRENT_256MA\n(defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig.charger:713).\nAssignment ignored.\n```\n\nI was thinking of setting the integer value (`TRICKLE_CHARGE_CURRENT\u003d256`) directly, but setting the choice instead as you had (`TRICKLE_CHARGE_CURRENT_256MA\u003dy`) seems like the better option since that way menuconfig will accurately reflect the actual configuration.",
+      "parentUuid": "f77ae99f_21d2c2e2",
+      "revId": "7528829dc5d437e2e91af28d4f8d409562f8284a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
