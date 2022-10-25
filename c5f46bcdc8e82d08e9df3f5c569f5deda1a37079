@@ -458,6 +458,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "076642c4_abb11ecc",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-25T21:06:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a89bf3df_b9e1872d",
+      "range": {
+        "startLine": 544,
+        "startChar": 3,
+        "endLine": 544,
+        "endChar": 39
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46d7abfb_f68c989a",
@@ -754,6 +778,30 @@
       "side": 1,
       "message": "Modified this to search for the fmap section. If it\u0027s in the hash, populate the gbb information. If it\u0027s not in the hash, continue searching for a FMAP in the range. \n\nIf a FMAP section isn\u0027t found in the AP RO ranges, return ROV_FAILED.",
       "parentUuid": "0a697b89_9ec57bdc",
+      "range": {
+        "startLine": 672,
+        "startChar": 3,
+        "endLine": 672,
+        "endChar": 12
+      },
+      "revId": "c5f46bcdc8e82d08e9df3f5c569f5deda1a37079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f564fed_ddb8a948",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-25T21:06:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20db5189_9e9255cf",
       "range": {
         "startLine": 672,
         "startChar": 3,
