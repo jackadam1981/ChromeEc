@@ -299,6 +299,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b6a4439_e49eb27e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-10-25T08:41:58Z",
+      "side": 1,
+      "message": "Hi Tim,\n\nSorry, due to I\u0027m not the sensor hub expert, need @gwendal@chromium.org for more comment.\nBut from my testing, I did not see the error when body detect trigger mode change event.\n\nHi Gwendal,\n\nCould you please give us some comments about EC issue event(EC_HOST_EVENT_MODE_CHANGE) to host, but `cros_ec_sensorhub_ring` receive a interrupt, will be cause an issues?",
+      "parentUuid": "583a2609_c8400844",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e250fa18_031c48b0",
         "filename": "common/body_detection.c",
         "patchSetId": 8
