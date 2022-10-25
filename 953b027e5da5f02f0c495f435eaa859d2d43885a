@@ -16,6 +16,24 @@
       "message": "I think I need a coverage override. I don\u0027t why it thinks I added executable lines which I absolutely didn\u0027t.",
       "revId": "953b027e5da5f02f0c495f435eaa859d2d43885a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8626715_d0f5cf48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-25T15:41:35Z",
+      "side": 1,
+      "message": "I think the trick is that you changed but didn\u0027t remove executable lines. So the lines you changed aren\u0027t covered.",
+      "parentUuid": "7215f1b1_eea14a74",
+      "revId": "953b027e5da5f02f0c495f435eaa859d2d43885a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
