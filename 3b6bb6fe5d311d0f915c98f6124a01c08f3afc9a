@@ -81,6 +81,24 @@
       "parentUuid": "172c1c6e_7d36be1c",
       "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c12b55_3052d0bb",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-25T20:53:06Z",
+      "side": 1,
+      "message": "You could convert those functions to return an enum and make a decision based on that return value of what state to enter in `dpm_dfp_ready_run`. But in that case, you already made a decision of what state to enter next in `dpm_attempt_mode_entry` to decide what enum to return. So I\u0027m saying just call `set_state` directly from `dpm_attempt_mode_entry` and return `true` to let `dpm_dfp_ready_run` know that you called `set_state`. Then, `dpm_dfp_ready_run` will have nothing to do but return.",
+      "parentUuid": "05f85eee_665242ea",
+      "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
