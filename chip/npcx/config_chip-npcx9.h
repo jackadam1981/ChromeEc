@@ -103,6 +103,21 @@
 /* Two blocks of data RAM - total size is 64KB */
 #define CONFIG_DATA_RAM_SIZE 0x00010000
 #define CONFIG_RAM_SIZE CONFIG_DATA_RAM_SIZE
+#elif defined(CHIP_VARIANT_NPCX99NS)
+/*
+ * 256KB program RAM, 1MB of Flash.
+ */
+#define NPCX_PROGRAM_MEMORY_SIZE (256 * 1024 - 0x1000)
+/* program memory base address for Code RAM (0x100C0000 - 256KB) */
+#define CONFIG_PROGRAM_MEMORY_BASE 0x10080000
+#define CONFIG_RAM_BASE 0x200C0000 /* memory address of data ram */
+/* Two blocks of data RAM - total size is 64KB */
+#define CONFIG_DATA_RAM_SIZE 0x00010000
+#define CONFIG_RAM_SIZE CONFIG_DATA_RAM_SIZE
+
+/* Override default NPCX_RAM_SIZE because we're excluding a block. */
+#undef NPCX_RAM_SIZE
+#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE + 0x1000)
 #else
 #error "Unsupported chip variant"
 #endif
@@ -110,6 +125,9 @@
 /* Internal spi-flash setting */
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q40 /* Internal spi flash type */
+#if defined(CHIP_VARIANT_NPCX99NS)
+#define CONFIG_FLASH_SIZE_BYTES 0x00100000 /* 1 MB internal spi flash */
+#else
 #define CONFIG_FLASH_SIZE_BYTES 0x00080000 /* 512 KB internal spi flash */
-
+#endif
 #endif /* __CROS_EC_CONFIG_CHIP_NPCX9_H */
