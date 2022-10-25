@@ -228,7 +228,8 @@
 		};
 		i2c_ec_i2c_sensor: ec_i2c_sensor {
 			i2c-port = <&i2c2>;
-			enum-names = "I2C_PORT_SENSOR";
+			enum-names = "I2C_PORT_SENSOR",
+			 "I2C_PORT_MP2964";
 		};
 		i2c_ec_i2c_sub_usb_c1: ec_i2c_sub_usb_c1 {
 			i2c-port = <&i2c4>;

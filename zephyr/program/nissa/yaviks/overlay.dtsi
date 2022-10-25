@@ -309,6 +309,14 @@
 		     &i2c2_data_gpf7_default>;
 	pinctrl-names = "default";
 	status = "okay";
+
+	pmic_mp2964: pmic_mp2964@20 {
+		compatible = "mps,mp2964";
+		reg = <0x20>;
+		label = "I2C_ADDR_MP2964_FLAGS";
+	};
+
+
 };
 
 &i2c4 {
