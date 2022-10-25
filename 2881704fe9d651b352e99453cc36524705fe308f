@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca948d14_24ef4cb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-25T00:55:42Z",
+      "side": 1,
+      "message": "It prints out the current AP RO verification spi addressing mode, either `3byte` or `4byte`, and those values can be set by passing them as a parameter. It shows that the packed messages are correct and the Ti50 handler is functioning properly (see [this CL](https://chrome-internal-review.googlesource.com/c/ti50/common/ti50/+/5042001))",
+      "parentUuid": "b0fee02c_6759ee8d",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "2881704fe9d651b352e99453cc36524705fe308f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1118cd94_475e7cbd",
