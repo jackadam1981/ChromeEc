@@ -13,6 +13,11 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+/* TODO(b/238281288): For debounce the power button when user want into to
+ * recovery mode.
+ */
+#define BUTTON_DEBOUNCE_US (100 * MSEC)
+
 /* Barrel Jack */
 #define DEDICATED_CHARGE_PORT 1
 
