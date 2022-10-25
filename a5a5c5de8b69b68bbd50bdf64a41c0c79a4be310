@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c401cc8_3b72eca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-25T15:47:09Z",
+      "side": 1,
+      "message": "Mike: From the CQ run:\n```\nusb_pd_int terminated unexpectedly! (0.969 seconds)\n\u003d\u003d\u003d\u003d\u003d\u003d Emulator output \u003d\u003d\u003d\u003d\u003d\u003d\nConsole input initialized\n\n\n--- Emulator initialized after reboot ---\n[Reset cause: power-on]\n[4294.967282 SW 0x04]\n[4294.967300 PD comm enabled]\n[4294.967301 TCPC p0 init ready]\nC0 st2\nConsole is enabled; type HELP for help.\n\u003e [4294.967309 event set 0x0000000000002000]\n[4294.967310 hostcmd init 0x0000000000002000]\n[4299.967287 Setting GPIO_BASE_CHG_VDD_EN to 1]\n[4299.967288 Setting GPIO_CHARGE_EN to 1]\n[4300.967293 Setting GPIO_CHARGE_EN to 1]\nRunning test_storm_not_triggered...\nPass: deferred_resume_called \u003d\u003d 0\nOK\nRunning test_storm_triggered...\ntest/usb_pd_int.c:65: ASSERTION failed: deferred_resume_called \u003d\u003d 1\n\t\tEVAL: 0 \u003d\u003d 1\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nmake: *** [Makefile.rules:359: run-usb_pd_int] Error 3\n```\n\nYou can run that locally with `make run-usb_pd_int`. My guess would be that you can fix it by just increasing the number of interrupts in this test: https://source.chromium.org/chromium/chromiumos/platform/ec/+/main:test/usb_pd_int.c;l\u003d61;drc\u003d2b5b18448f2feb2137af8dfac51475ecb711213e",
+      "revId": "a5a5c5de8b69b68bbd50bdf64a41c0c79a4be310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
