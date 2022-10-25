@@ -114,7 +114,13 @@ enum panic_arch {
 /* Already returned via host command */
 #define PANIC_DATA_FLAG_OLD_HOSTCMD    BIT(2)
 /* Already reported via host event */
+<<<<<<< HEAD   (5f6784 Trogdor: Correct the pin assignment)
 #define PANIC_DATA_FLAG_OLD_HOSTEVENT  BIT(3)
+=======
+#define PANIC_DATA_FLAG_OLD_HOSTEVENT BIT(3)
+/* The data was truncated to fit panic info host cmd */
+#define PANIC_DATA_FLAG_TRUNCATED BIT(4)
+>>>>>>> CHANGE (0a031b panic output: remove assert)
 
 /**
  * Write a string to the panic reporting device
