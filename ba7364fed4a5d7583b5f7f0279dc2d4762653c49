@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a95df98_61656ba9",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T20:53:08Z",
+      "side": 1,
+      "message": "nit:\n\nShould this be moved inside the ifdef?",
+      "revId": "ba7364fed4a5d7583b5f7f0279dc2d4762653c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40d8053_7f7e2cda",
+        "filename": "zephyr/test/jump_tags/src/jump_tags.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T20:53:08Z",
+      "side": 1,
+      "message": "So an issue with placing zasserts in helper functions is that we don\u0027t have stack trace to the assertion. So if one were to in the future write a test that calls this function twice, it\u0027d be impossible to know exactly where the test failure was.\n\nHere I\u0027d suggest either:\n\n1) returning a nonzero value in case of failure.\n2) (preferred) Adding an int line parameter that then gets used in the assertion failure message.\n\n2 Example:\n\ncaller:\n`do_fake_sysjump(__LINE__)`;\n\ncallee:\n```\nzassert_equal(system_get_image_copy(), target_image, \"Caller-Line:%u\", line);\n```\n\nThe right solution would be to have a proper stack-trace. This was investigated but not sure what came of it. But I\u0027ll ask the team about it again.",
+      "revId": "ba7364fed4a5d7583b5f7f0279dc2d4762653c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
