@@ -53,6 +53,8 @@ ZTEST(common_charger, test_chg_ramp_get_current_limit)
 		      CONFIG_CHARGER_INPUT_CURRENT);
 }
 
+/* Unsupported by ISL923x without RAA489000 */
+
 ZTEST(common_charger, test_charger_set_vsys_compensation__bad_arg)
 {
 	/* Not supported without RAA489000 */
@@ -86,6 +88,23 @@ ZTEST(common_charger, test_charger_is_icl_reached__unsupported)
 	bool unused;
 
 	zassert_equal(charger_is_icl_reached(CHG_NUM, &unused),
+		      EC_ERROR_UNIMPLEMENTED);
+}
+
+ZTEST(common_charger, test_charger_enable_linear_charge__bad_arg)
+{
+	/* Not supported without RAA489000 */
+	/* All arguments but 0th are unused. */
+	zassert_equal(charger_enable_linear_charge(
+			      board_get_charger_chip_count(), false),
+		      EC_ERROR_INVAL);
+}
+
+ZTEST(common_charger, test_charger_enable_linear_charge__unsupported)
+{
+	/* Not supported without RAA489000 */
+	/* All arguments but 0th are unused. */
+	zassert_equal(charger_enable_linear_charge(CHG_NUM, false),
 		      EC_ERROR_UNIMPLEMENTED);
 }
 
