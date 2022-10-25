@@ -125,6 +125,7 @@ int mp2964_tune(const struct mp2964_reg_val *rail_a, int count_a,
 	i2c_lock(I2C_PORT_MP2964, 1);
 
 	do {
+		ccprintf("tries:%d\n", tries);
 		int status;
 
 		delta = 0;
