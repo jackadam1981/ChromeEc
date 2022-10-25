@@ -229,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4a67330_41347722",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-25T20:59:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32cc1cff_b4947620",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34f6e00e_73ad998e",
@@ -266,6 +284,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1abd16b6_b8125c77",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-25T20:59:46Z",
+      "side": 1,
+      "message": "I think I can at least frame my question more lucidly now. I see what you\u0027re doing in the message-response-wait-state CL.\n\nIn that CL, it looks like the message wait response state is substantially the same as the idle state. Before the PE is ready, the DPM starts out in the idle state; once the PE has been ready the first time, the DPM toggles between the response-wait and ready states as the PE toggles between the active and ready states.\n\nThe `dpm_set_pe_sync` mechanism in this CL seems like a slightly less refined version of that.\n\nWhy not simply\n1. return to the DPM idle state when the PE exits the ready state (as it will do to send any message requiring a response) and,\n2. signal the DPM that the PE is ready when the PE gets to the point when it would have previously called `dpm_run`?",
+      "parentUuid": "1c6a2c10_726f3082",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8361dd74_d76624df",
         "filename": "include/usb_pd_dpm.h",
         "patchSetId": 2
@@ -295,6 +331,24 @@
       "side": 1,
       "message": "I agree with your point. At first, I was thinking of this flag as more \"pd contract is in place and so DPM is ready to do things\". But, then I realized that was not as useful of a distinction.",
       "parentUuid": "8361dd74_d76624df",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca8ccdf8_3b1a7950",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-25T20:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26093677_3c1b13a0",
       "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
