@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee01ba9e_f6eaefc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-25T16:44:02Z",
+      "side": 1,
+      "message": "I rebased this to decouple from http://go/cl-c/3956160 and retested on bloonchipper and host targets",
+      "revId": "67c60b562db4d114ef3f036ff22c630424a0e3bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
