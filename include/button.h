@@ -16,7 +16,9 @@
 #define BUTTON_FLAG_ACTIVE_HIGH BIT(0)
 #define BUTTON_FLAG_DISABLED BIT(1) /* Button disabled */
 
+#ifndef BUTTON_DEBOUNCE_US
 #define BUTTON_DEBOUNCE_US (30 * MSEC)
+#endif
 
 struct button_config {
 	const char *name;
