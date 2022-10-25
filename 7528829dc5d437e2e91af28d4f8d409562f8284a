@@ -52,6 +52,24 @@
       "parentUuid": "f77ae99f_21d2c2e2",
       "revId": "7528829dc5d437e2e91af28d4f8d409562f8284a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "427fbc7f_00ef3ea0",
+        "filename": "zephyr/projects/nissa/pujjo/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1534513
+      },
+      "writtenOn": "2022-10-25T04:28:48Z",
+      "side": 1,
+      "message": "Setting `CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT_256MA\u003dy` will have build error message that said `CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT` re-define in config.h\n`CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT 128`.\nIt seems we still need to block it in config.h.",
+      "parentUuid": "dce7db5e_00c88637",
+      "revId": "7528829dc5d437e2e91af28d4f8d409562f8284a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
