@@ -70,6 +70,30 @@
       },
       "revId": "15ef682289da45646cd9b7ef152c132cbf6a2c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b870401_8e8b8489",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-25T20:40:13Z",
+      "side": 1,
+      "message": "\u003e However, I think this would require updating all boards and tests (although many are symlinks) and I\u0027m worried that this might be error prone.\n\nWhen making large changes that should have no impact on the generated code, you can use the [`compare_build.sh`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/compare_build.sh) script to validate that the generated binary is exactly the same.\n\n\u003e `CONFIG_CONSOLE_TASK_STACK_SIZE`\n\nAdding a config sounds like a good way to do it. Assuming you want to override it in the tests, you can override the config for the tests in [`test/test_config.h`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/test_config.h).",
+      "parentUuid": "fe32317e_9e93956f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "15ef682289da45646cd9b7ef152c132cbf6a2c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
