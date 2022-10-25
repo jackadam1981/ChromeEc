@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "651db11d_ffb905cf",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-25T16:40:03Z",
+      "side": 1,
+      "message": "I see. This should be ok. I was worried that we were returning a reference, but we\u0027re returning `std::optional\u003cBenchmarkResult\u003e`, so a copy should be made.",
+      "parentUuid": "f479274f_851fcb2a",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1990db66_70352d34",
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "Yes, it is not very common to have a `#define` here. Would it be better to move this at the top?\n\nI liked that it was defined next to its usage, but I don\u0027t have a strong preference.",
       "parentUuid": "1990db66_70352d34",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0caa3427_6f20801f",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-25T16:40:03Z",
+      "side": 1,
+      "message": "We\u0027re already hardcoding the width (`16`, `15`, etc.) in the first `ccprintf` and `print_result`, so would it work to remove the define and change it to something like:\n\n```\nconstexpr const char kSeparator \u003d \"-------------------------------------\";\n\nccprintf(\"%16s | %15s | %13s ...\\n\", kSeparator, kSeparator, ...);\n```\n\n(When possible I try to avoid macros and looks like the [style guide agrees](https://google.github.io/styleguide/cppguide.html#Preprocessor_Macros).)",
+      "parentUuid": "ff1efa18_179047f5",
       "range": {
         "startLine": 132,
         "startChar": 1,
