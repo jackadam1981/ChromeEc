@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a93ae234_71f1e99b",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-25T15:08:44Z",
+      "side": 1,
+      "message": "nit: average time should probably be a float",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c242640e_2f82841c",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-25T15:08:44Z",
+      "side": 1,
+      "message": "typo: \"responsible for\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 36,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebd0b62a_9e168ed3",
         "filename": "include/benchmark.h",
         "patchSetId": 2
@@ -41,6 +87,29 @@
         "startLine": 63,
         "startChar": 1,
         "endLine": 63,
+        "endChar": 62
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2985fbe7_8deaafc9",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-25T15:08:44Z",
+      "side": 1,
+      "message": "nit: It might be helpful to have the function return either int or `enum ec_error_list` (i.e. `EC_SUCCESS`) so that the benchmark can bail out if the test fails for some reason, rather than potentially providing bad benchmark data.",
+      "range": {
+        "startLine": 68,
+        "startChar": 58,
+        "endLine": 68,
         "endChar": 62
       },
       "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
@@ -72,6 +141,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1990db66_70352d34",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-25T15:08:44Z",
+      "side": 1,
+      "message": "I get why you did it and I don\u0027t even think it\u0027s wrong but it always feels weird when there\u0027s a `#define` in the middle of a source file. I assume it\u0027s okay but wasn\u0027t sure if there was any rule against it.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98f8ab2e_e087fe15",
         "filename": "include/benchmark.h",
         "patchSetId": 2
@@ -88,6 +180,29 @@
         "startChar": 19,
         "endLine": 135,
         "endChar": 23
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27dfddba_05828929",
+        "filename": "test/benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-25T15:08:44Z",
+      "side": 1,
+      "message": "nit: we should see if we can remove these volatile statements as they will skew the results. I believe if the function were not static and returned some kind of status (i.e. end with `if (a \u003e 1.5) return EC_SUCCESS; else return EC_ERROR_UNKNOWN;` then the result would be significant and optimization may not occur.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 9
       },
       "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
