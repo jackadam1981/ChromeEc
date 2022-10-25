@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e794898_c68e3e1b",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f950e622_b320d158",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a93ae234_71f1e99b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-25T15:08:44Z",
       "side": 1,
       "message": "nit: average time should probably be a float",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffdb74d3_671af72b",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I changed this because printing a `float` would cast the value to `double`, which is not supported by the MCU.\n\nFor now, I\u0027d prefer to leave it as is, even if the number printed on the console is rounded.",
+      "parentUuid": "a93ae234_71f1e99b",
       "range": {
         "startLine": 45,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de160b61_91c5ee99",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c242640e_2f82841c",
+      "range": {
+        "startLine": 52,
+        "startChar": 36,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebd0b62a_9e168ed3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-24T17:29:14Z",
       "side": 1,
       "message": "Now that you\u0027re using `std::function`, this comment probably isn\u0027t necessary.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 62
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed2ec49_fbfcf02a",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd0b62a_9e168ed3",
       "range": {
         "startLine": 63,
         "startChar": 1,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5df52f13_7bec4900",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "The intention here was to:\n\n1. Keep the code as generic as possible, i.e. no need to return a specific type\n1. Avoid error checks inside the performance loop because branches (e.g. `if (error) return ERROR_CODE`) are often slow\n\nMy idea would be that the code under test is validated separately by unit tests, then wrapped around a `void()` function and invoked as fast as possible by the benchmark library.\n\nIn this context, would it still be useful to return errors from the function under benchmark?",
+      "parentUuid": "2985fbe7_8deaafc9",
+      "range": {
+        "startLine": 68,
+        "startChar": 58,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0d424a7_d0f4b4c2",
         "filename": "include/benchmark.h",
         "patchSetId": 2
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-24T17:29:14Z",
       "side": 1,
       "message": "Is there a reason this is a reference? (which is then returned?)",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f479274f_851fcb2a",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "I did this because I wanted to:\n\n1. Update the `results_` so I can print all the numbers from `print_results()`. \n  * If I omit the `\u0026`, I think I\u0027ll get a copy of the `BenchmarkResults` and won\u0027t update the content of `results_`.\n1. Return a copy of the numbers so that the test can `TEST_ASSERT()` their values.\n\nMaybe there is a better way to accomplish this?",
+      "parentUuid": "e0d424a7_d0f4b4c2",
       "range": {
         "startLine": 81,
         "startChar": 2,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff1efa18_179047f5",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "Yes, it is not very common to have a `#define` here. Would it be better to move this at the top?\n\nI liked that it was defined next to its usage, but I don\u0027t have a strong preference.",
+      "parentUuid": "1990db66_70352d34",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98f8ab2e_e087fe15",
         "filename": "include/benchmark.h",
         "patchSetId": 2
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-24T17:29:14Z",
       "side": 1,
       "message": "clang-tidy warning: https://clang.llvm.org/extra/clang-tidy/checks/modernize/redundant-void-arg.html",
+      "range": {
+        "startLine": 135,
+        "startChar": 19,
+        "endLine": 135,
+        "endChar": 23
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf061c31_cb2a98f7",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98f8ab2e_e087fe15",
       "range": {
         "startLine": 135,
         "startChar": 19,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16355ad7_d6be6fc5",
+        "filename": "test/benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27dfddba_05828929",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a2b4b77_a3e1c90c",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8504172_8c1625be",
+        "filename": "test/benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2b4b77_a3e1c90c",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "864b567f_fa7c38dd",
@@ -244,6 +484,30 @@
       "writtenOn": "2022-10-24T17:29:14Z",
       "side": 1,
       "message": "Fine in this context, but FYI of the pitfalls of default capture: https://google.github.io/styleguide/cppguide.html#Lambda_expressions",
+      "range": {
+        "startLine": 41,
+        "startChar": 46,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e219dc8_4f475cc8",
+        "filename": "test/benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-25T16:24:12Z",
+      "side": 1,
+      "message": "That\u0027s good to know! I replaced this with an explicit capture.",
+      "parentUuid": "864b567f_fa7c38dd",
       "range": {
         "startLine": 41,
         "startChar": 46,
