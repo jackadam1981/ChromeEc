@@ -34,6 +34,24 @@
       "parentUuid": "5f229619_2a3207bc",
       "revId": "85f02dc71f50378eab9da905e29568383789f75f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e118d0a9_ed2bdeeb",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-10-25T22:21:47Z",
+      "side": 1,
+      "message": "The panic information is treated as best effort, so in my understanding even returning part of it considered as \"success\", so I add the flag, but leave `return EC_RES_SUCCESS`",
+      "parentUuid": "e1f8f41d_6cc2ca88",
+      "revId": "85f02dc71f50378eab9da905e29568383789f75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
