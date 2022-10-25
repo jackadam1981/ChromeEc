@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4445f52_f628dcd4",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-10-25T18:12:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9612f68a_56299391",
+      "range": {
+        "startLine": 389,
+        "startChar": 39,
+        "endLine": 389,
+        "endChar": 50
+      },
+      "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "172c1c6e_7d36be1c",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-19T20:31:42Z",
       "side": 1,
       "message": "Right now, the flow of this state depends a little precariously on `dpm_attempt_mode_exit` and `dpm_attempt_mode_entry` being called last. Then they can set a flag that the DPM will see on the next time around.\n\nI\u0027d like it if this used the common idiom from the other state machines where we call a helper function and then return if that function changed the state, e.g.\n```\nif (dpm_attempt_mode_exit(port))\n  return;\n\n...\n\nbool dpm_attempt_mode_exit(...) {\n  ...\n  if (IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG)) {\n    set_state_dpm(port, DPM_DATA_RESET);\n    return true;\n  }\n  ...\n```\nI think, as a side effect, you wouldn\u0027t need `DPM_FLAG_DATA_RESET_REQUESTED` at all.\n\nAlso, currently, the Data Reset state isn\u0027t guarded by the config, so you could either do that and save space or move the config check inside the state and make the code simpler.",
+      "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f85eee_665242ea",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-10-25T18:12:20Z",
+      "side": 1,
+      "message": "The CL that adds a \u0027message wait response\u0027 state does convert both mode_entry and mode_exit functions into a boolean helper function that when it returns true will cause it to switch to the \u0027message wait response\u0027 state.\n\nData Reset can\u0027t use the same message wait response state because Data Resets can involve multiple PE states (e.g. VCONN swaps are required). So really the mode_entry/exit helper functions need to return 3 values.\n\n1. false -\u003e no action\n2. true -\u003e switch to Data Reset state\n3. true -\u003e switch to message wait state\n\nThe mode_entry/exit functions could be converted to return an enum instead of a bool so both true cases can be handled.",
+      "parentUuid": "172c1c6e_7d36be1c",
       "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
