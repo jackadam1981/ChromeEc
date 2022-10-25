@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b5ccf6_4a90589d",
+        "filename": "share/crosec-package/cmake/CrosEcConfig.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T15:07:35Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 2
+      },
+      "revId": "533bce5186c23fcce33b17ee41aad3eadecf9298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f7d2170_3c04b9cc",
+        "filename": "zephyr/cmake/modules/extensions.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T15:07:35Z",
+      "side": 1,
+      "message": "Add `# See https://pigweed.dev/pw_build/#cmake-functions` as a comment please. Without any prior pigweed background I\u0027d be lost.",
+      "range": {
+        "startLine": 7,
+        "startChar": 62,
+        "endLine": 7,
+        "endChar": 76
+      },
+      "revId": "533bce5186c23fcce33b17ee41aad3eadecf9298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "859bb478_72d3869b",
+        "filename": "zephyr/cmake/modules/extensions.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T15:07:35Z",
+      "side": 1,
+      "message": "Since `function` is a keyword, I\u0027d prefer we rename this variable to something else, like `func_arg` or something.",
+      "range": {
+        "startLine": 19,
+        "startChar": 32,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "533bce5186c23fcce33b17ee41aad3eadecf9298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03f4dad9_f503c589",
+        "filename": "zephyr/cmake/modules/extensions.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T15:07:35Z",
+      "side": 1,
+      "message": "Not sure from CMake docs where this gets defined. Can you point it to me?",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "533bce5186c23fcce33b17ee41aad3eadecf9298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce9b2a8_2640a2d0",
+        "filename": "zephyr/cmake/modules/extensions.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T15:07:35Z",
+      "side": 1,
+      "message": "Wait, so we don\u0027t compile LTO with Zephyr, only LTO on cros-ec code?",
+      "revId": "533bce5186c23fcce33b17ee41aad3eadecf9298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
