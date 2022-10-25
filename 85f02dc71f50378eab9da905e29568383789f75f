@@ -16,6 +16,24 @@
       "message": "You might as well additionally set a flag (e.g. PANIC_DATA_FLAG_TRUNCATED) in pdata-\u003eflags.",
       "revId": "85f02dc71f50378eab9da905e29568383789f75f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f8f41d_6cc2ca88",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-25T18:35:07Z",
+      "side": 1,
+      "message": "Or we return EC_RES_RESPONSE_TOO_BIG.",
+      "parentUuid": "5f229619_2a3207bc",
+      "revId": "85f02dc71f50378eab9da905e29568383789f75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
