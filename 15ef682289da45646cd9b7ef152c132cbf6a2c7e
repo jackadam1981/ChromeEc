@@ -46,6 +46,30 @@
       },
       "revId": "15ef682289da45646cd9b7ef152c132cbf6a2c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe32317e_9e93956f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-10-25T15:45:04Z",
+      "side": 1,
+      "message": "The console is defined in each separate `board/\u003cboardname\u003e/ec.tasklist` (for example [board/bloonchipper/ec.tasklist](http://cs/chromeos_public/src/platform/ec/board/hatch_fp/ec.tasklist;l\u003d9) and looks like this:\n```\n#define CONFIG_TASK_LIST \\\n\tTASK_ALWAYS_RO(RWSIG, rwsig_task, NULL, 1280) \\\n\tTASK_ALWAYS(HOOKS, hook_task, NULL, 1024) \\\n\tTASK_ALWAYS_RW(FPSENSOR, fp_task, NULL, 4096) \\\n\tTASK_ALWAYS(HOSTCMD, host_command_task, NULL, 4096) \\\n\tTASK_ALWAYS(CONSOLE, console_task, NULL, CONSOLE_TASK_STACK_SIZE)\n```\nand `CONSOLE_TASK_STACK_SIZE` is defined per chip, such as for [stm32](http://cs/chromeos_public/src/platform/ec/chip/stm32/config_chip.h?rcl\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46\u0026l\u003d129). \n\nI believe that it would be possible to change the `CONSOLE` task definition to \n`TASK_NOTEST(CONSOLE, console_task, NULL, CONSOLE_TASK_STACK_SIZE)` to get the default console task for standard builds and add a separate `TASK_TEST(CONSOLE, console_task, NULL, CONSOLE_TEST_TASK_STACK_SIZE)` to each `\u003ctestname\u003e.tasklist` file. However, I _think_ this would require updating all boards and tests (although many are symlinks) and I\u0027m worried that this might be error prone.\n\nLooking back now I agree that my method may not be the cleanest / most obvious solution. Maybe it\u0027s cleaner to create a config flag such as `CONFIG_CONSOLE_TASK_STACK_SIZE` or `CONFIG_USE_LARGE_CONSOLE_TASK_STACK` since is consistent with the infrastructure already in place and there is already [some precedent](http://cs/chromeos_public/src/platform/ec/zephyr/shim/include/shimmed_task_id.h?l\u003d65).",
+      "parentUuid": "d1a6c74e_5bcc5218",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "15ef682289da45646cd9b7ef152c132cbf6a2c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
