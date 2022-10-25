@@ -22,6 +22,30 @@
       },
       "revId": "5dbf8ddb25627ef89ec2876353ff1f2c65bb2c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982c048f_4e00bda1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-10-25T01:00:37Z",
+      "side": 1,
+      "message": "yes, and patch 16 change it.",
+      "parentUuid": "fbed1524_c6a2a6e3",
+      "range": {
+        "startLine": 1337,
+        "startChar": 44,
+        "endLine": 1337,
+        "endChar": 63
+      },
+      "revId": "5dbf8ddb25627ef89ec2876353ff1f2c65bb2c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
