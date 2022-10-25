@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0c357e_f3105893",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-10-25T12:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20fb086c_b32140a7",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "cc60db38192b26bd3963d996357e844f9797d926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faaeb98a_eef7472b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "681a5f92_b4b65458",
+        "filename": "board/moli/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-10-25T12:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faaeb98a_eef7472b",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 498,
+        "endChar": 31
+      },
+      "revId": "cc60db38192b26bd3963d996357e844f9797d926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6afdfb03_7073c947",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-23T20:57:08Z",
       "side": 1,
       "message": "What is the use-case for these GPIOs? Would they ever need to be driven low?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "cc60db38192b26bd3963d996357e844f9797d926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f5bac1_5c5c76cb",
+        "filename": "board/moli/gpio.inc",
+        "patchSetId": 16
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-10-25T12:23:50Z",
+      "side": 1,
+      "message": "These GPIOs have pull-up resistors to let power on by monitor function\nalways enable. The pull-up resistors are R2551, R2452, R2453.\nEC doesn\u0027t need to set these GPIOs.\nAlready modify them to input.",
+      "parentUuid": "6afdfb03_7073c947",
       "range": {
         "startLine": 126,
         "startChar": 0,
