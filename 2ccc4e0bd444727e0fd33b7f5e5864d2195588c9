@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0daea96_4df6736e",
+        "filename": "common/chargen.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-25T23:29:52Z",
+      "side": 1,
+      "message": "Is this legacy unit tests, or zephyr unit tests?\n\nIf there is a stub watchdog available, it seems like the test should have the watchdog period defined.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "2ccc4e0bd444727e0fd33b7f5e5864d2195588c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
