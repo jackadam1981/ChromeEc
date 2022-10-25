@@ -16,6 +16,24 @@
       "message": "If you just checked that it\u0027s not set, then why would you need to clear it?",
       "revId": "177725de9a74357096b63f668c5b5fc09a0ce4d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6013e9_0a86932b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-10-25T20:56:38Z",
+      "side": 1,
+      "message": "If it\u0027s not set, then it returns just prior. Only gets here if it\u0027s set. I could change this to:\n\nif (DPM_CHK_FLAG(port, DPM_FLAG_PE_SYNC)) {\n        DPM_CLR_FLAG(port, DPM_FLAG_PE_SYNC);\n        \n        ... rest of DFP_READY code\n\n}\n\nBut, in a subsequent CL, the PE_SYNC flag goes away, so then indentation would change back to how it is now.",
+      "parentUuid": "0e5d6ec2_5acba099",
+      "revId": "177725de9a74357096b63f668c5b5fc09a0ce4d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
