@@ -22,6 +22,30 @@
       },
       "revId": "f1b0f64f4d32194b2cd1c5942e372ad4ceeb4a28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4bf60b1_e4f3ecee",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T15:12:49Z",
+      "side": 1,
+      "message": "Not in this test-binary. But that\u0027s nonetheless a good point, it should reset to 1 and not 0. Good catch!",
+      "parentUuid": "69c48679_41411ca0",
+      "range": {
+        "startLine": 1026,
+        "startChar": 0,
+        "endLine": 1026,
+        "endChar": 61
+      },
+      "revId": "f1b0f64f4d32194b2cd1c5942e372ad4ceeb4a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
