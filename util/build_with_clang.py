@@ -121,6 +121,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "lindar",
     "madoo",
     "magolor",
+    "marasov",
     "marzipan",
     "meep",
     "metaknight",
