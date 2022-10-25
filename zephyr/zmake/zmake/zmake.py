@@ -539,7 +539,7 @@ class Zmake:
                     project.config.project_name
                 )
                 util.update_symlink(
-                    project.config.project_dir, build_dir / "project"
+                    project.config.project_dir, build_dir / "program"
                 )
 
                 wait_funcs = []

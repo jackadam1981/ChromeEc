@@ -78,6 +78,7 @@ if(DEFINED CONFIG_BOARD_YAVIKS)
 			"yaviks/src/led.c"
 			"yaviks/src/keyboard.c"
 			"yaviks/src/thermal.c"
+			"yaviks/src/mp2964_update.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "yaviks/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "yaviks/src/charger.c")
