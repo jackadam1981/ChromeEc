@@ -33,6 +33,24 @@
       "message": "Can we use \u0026\u0026 here?",
       "revId": "fae717b3655fb0335c84a9e1bca0392da13a6242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbed02d0_4f175f43",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-25T02:26:02Z",
+      "side": 1,
+      "message": "No, because that exposes DT_NODE_EXISTS to non-zephyr builds.",
+      "parentUuid": "c2c92974_36cc5751",
+      "revId": "fae717b3655fb0335c84a9e1bca0392da13a6242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
