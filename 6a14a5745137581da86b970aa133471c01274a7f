@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2bbb89_49348732",
+        "filename": "board/volteer/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-25T17:53:47Z",
+      "side": 1,
+      "message": "nit: Effectively the same but \u0027break\u0027 looks more symmetrical (to the C0 case above).",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 15
+      },
+      "revId": "6a14a5745137581da86b970aa133471c01274a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
