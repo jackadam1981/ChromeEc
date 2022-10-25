@@ -1210,17 +1210,17 @@ static int shutdown_on_critical_battery(void)
 		return 0;
 	}
 
-	if (!shutdown_target_time.val) {
-		/* Start count down timer */
-		CPRINTS("Start shutdown due to critical battery");
-		shutdown_target_time.val =
-			get_time().val + CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US;
-#ifdef CONFIG_HOSTCMD_EVENTS
-		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
-			host_set_single_event(EC_HOST_EVENT_BATTERY_SHUTDOWN);
-#endif
-		return 1;
-	}
+// 	if (!shutdown_target_time.val) {
+// 		/* Start count down timer */
+// 		CPRINTS("Start shutdown due to critical battery");
+// 		shutdown_target_time.val =
+// 			get_time().val + CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US;
+// #ifdef CONFIG_HOSTCMD_EVENTS
+// 		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
+// 			host_set_single_event(EC_HOST_EVENT_BATTERY_SHUTDOWN);
+// #endif
+// 		return 1;
+// 	}
 
 	if (!timestamp_expired(shutdown_target_time, 0))
 		return 1;
@@ -1228,20 +1228,20 @@ static int shutdown_on_critical_battery(void)
 	/* Timer has expired */
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
 		switch (board_critical_shutdown_check(&curr)) {
-		case CRITICAL_SHUTDOWN_HIBERNATE:
-			if (IS_ENABLED(CONFIG_HIBERNATE)) {
-				/*
-				 * If the chipset is on its way down but not
-				 * quite there yet, give it a little time to
-				 * get there.
-				 */
-				if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
-					sleep(1);
-				CPRINTS("Hibernate due to critical battery");
-				cflush();
-				system_hibernate(0, 0);
-			}
-			break;
+		// case CRITICAL_SHUTDOWN_HIBERNATE:
+		// 	if (IS_ENABLED(CONFIG_HIBERNATE)) {
+		// 		/*
+		// 		 * If the chipset is on its way down but not
+		// 		 * quite there yet, give it a little time to
+		// 		 * get there.
+		// 		 */
+		// 		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		// 			sleep(1);
+		// 		CPRINTS("Hibernate due to critical battery");
+		// 		cflush();
+		// 		system_hibernate(0, 0);
+		// 	}
+		// 	break;
 		case CRITICAL_SHUTDOWN_CUTOFF:
 			/*
 			 * Give the chipset just a sec to get to off if
@@ -1257,11 +1257,12 @@ static int shutdown_on_critical_battery(void)
 		default:
 			break;
 		}
-	} else {
-		/* Timeout waiting for AP to shut down, so kill it */
-		CPRINTS("charge force shutdown due to critical battery");
-		chipset_force_shutdown(CHIPSET_SHUTDOWN_BATTERY_CRIT);
-	}
+	} 
+	// else {
+	// 	/* Timeout waiting for AP to shut down, so kill it */
+	// 	CPRINTS("charge force shutdown due to critical battery");
+	// 	chipset_force_shutdown(CHIPSET_SHUTDOWN_BATTERY_CRIT);
+	// }
 
 	return 1;
 }
