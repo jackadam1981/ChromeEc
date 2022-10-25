@@ -695,7 +695,7 @@
  * - If system fails to shutdown for some reason and battery further discharges
  *   to 2%, EC will trigger shutdown.
  */
-#define CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE 4 /* shutdown if soc <= 4% */
+#define CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE -1 /* shutdown if soc <= -1% */
 
 /*
  * Powerd's full_factor. The value comes from:

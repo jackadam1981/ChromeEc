@@ -313,10 +313,11 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S0:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
-			return POWER_S0S3;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 0) {
+		// if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
+		// 	chipset_force_shutdown(CHIPSET_SHUTDOWN_POWERFAIL);
+		// 	return POWER_S0S3;
+		// } else 
+		if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 0) {
 			/* Power down to next state */
 			return POWER_S0S3;
 #ifdef CONFIG_POWER_S0IX
@@ -353,11 +354,11 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
-		if (intel_x86_wait_power_up_ok() != EC_SUCCESS) {
-			chipset_force_shutdown(
-				CHIPSET_SHUTDOWN_BATTERY_INHIBIT);
-			return POWER_G3;
-		}
+		// if (intel_x86_wait_power_up_ok() != EC_SUCCESS) {
+		// 	chipset_force_shutdown(
+		// 		CHIPSET_SHUTDOWN_BATTERY_INHIBIT);
+		// 	return POWER_G3;
+		// }
 #ifdef CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
 		/*
 		 * Callback to do pre-initialization within the context of
