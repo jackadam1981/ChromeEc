@@ -22,6 +22,30 @@
       },
       "revId": "107618d940538e2145ee76457bd52dd07edf4786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6435040e_d8e574ba",
+        "filename": "common/body_detection.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1547417
+      },
+      "writtenOn": "2022-10-25T02:08:42Z",
+      "side": 1,
+      "message": "Hi all,\n\nAfter check, coreboot didn\u0027t define EC_ENABLE_TBMC_DEVICE in \nsrc/mainboard/google/skyrim/variants/baseboard/include/baseboard/ec.h and\nsrc/mainboard/google/skyrim/variants/winterhold/include/variant/ec.h.\n\nBR,\nEric KY Cheng",
+      "parentUuid": "f6698518_1dbef2f1",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 6
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
