@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd4c2a2_cda0cb85",
+        "filename": "zephyr/cmake/modules/extensions.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-25T20:32:52Z",
+      "side": 1,
+      "message": "Oof...",
+      "parentUuid": "ce761772_4ab3125f",
+      "range": {
+        "startLine": 27,
+        "startChar": 28,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "533bce5186c23fcce33b17ee41aad3eadecf9298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fce9b2a8_2640a2d0",
