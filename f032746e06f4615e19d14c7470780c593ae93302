@@ -34,6 +34,24 @@
       "message": "Jeremy, can we get the common/mock code excluded from the code coverage calculation for the coverage flag?  \n\nHere, it seems to be impacting our \"covered\" lines but it\u0027s necessary to keep the old ECOS tests compiling and doesn\u0027t actually run on a real system.",
       "revId": "f032746e06f4615e19d14c7470780c593ae93302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91304a41_a30ce602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-26T16:36:37Z",
+      "side": 1,
+      "message": "We can exclude it, but we would lose coverage showing in gerrit and code search file coverage layer for those files.  It can be interesting to see if your tests and mock code are actually running as you expected.\n\nSo it\u0027s a trade off. If zoss had a feature to exclude files from the min coverage (Code-Coverage+1 label) then we could have the best of both worlds.",
+      "parentUuid": "95f819d6_c03b2f24",
+      "revId": "f032746e06f4615e19d14c7470780c593ae93302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
