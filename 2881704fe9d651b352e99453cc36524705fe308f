@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4f8fba6e_e9d58dbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-10-26T17:36:20Z",
+      "side": 1,
+      "message": "Gotcha, I\u0027ve added a set of command steps I used to test and made the intention of the test more clear.",
+      "parentUuid": "46010570_a7183d3f",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "2881704fe9d651b352e99453cc36524705fe308f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1118cd94_475e7cbd",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 13
