@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc482542_57cf682d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-26T23:13:19Z",
+      "side": 1,
+      "message": "Sorry for the confusion. This is the same test as before, but I moved it into `zephyr/test/drivers`, because I couldn\u0027t get the Kconfigs I wanted to take effect in `zephyr/test/usb_pd_flags` for unknown reasons.",
+      "revId": "af6fc575a2f7ca4eb347b19958f6102a9c9df46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
