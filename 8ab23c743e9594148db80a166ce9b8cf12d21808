@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae94feb8_0e9ad7bb",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-26T21:43:23Z",
+      "side": 1,
+      "message": "Any particular reason we don\u0027t want to enable the fan while PROCHOT is asserted?",
+      "revId": "8ab23c743e9594148db80a166ce9b8cf12d21808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16190b77_a24d409c",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-26T21:43:23Z",
+      "side": 1,
+      "message": "Seems like a copy/paste where the line \"configuration option\" was lost?",
+      "revId": "8ab23c743e9594148db80a166ce9b8cf12d21808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
