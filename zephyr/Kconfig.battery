@@ -217,6 +217,14 @@ config PLATFORM_EC_BATTERY_V2
 
 endchoice
 
+config PLATFORM_EC_TI_BATT_MFG_ACCESS
+	bool "TI Battery Manufacturer Access"
+	default n
+	help
+	  MAC commands are sent via AlternateManufacturerAccess() by the SMB
+	  block protocol. The result is returned on AlternateManufacturerAccess()
+	  via an SMB block read.
+
 if PLATFORM_EC_BATTERY_V2
 
 config PLATFORM_EC_BATTERY_COUNT
