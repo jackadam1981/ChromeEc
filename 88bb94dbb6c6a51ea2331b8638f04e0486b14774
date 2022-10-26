@@ -16,6 +16,24 @@
       "message": "Note, this doesn\u0027t actually depend on chromium:3943262. If you remove the Cq-Depend, then this can get merged on it\u0027s own.",
       "revId": "88bb94dbb6c6a51ea2331b8638f04e0486b14774",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "194a6493_7cb98c56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-26T21:30:11Z",
+      "side": 1,
+      "message": "Thanks for pointing out the dependency chain. It\u0027s actually the other way around. The FW changes aren\u0027t dependent on this test, but this test needs the FW changes to function correctly. Will update the cq-depend in chromium:3943262 to not be dependent on this.",
+      "parentUuid": "dc34d381_fef1bf4c",
+      "revId": "88bb94dbb6c6a51ea2331b8638f04e0486b14774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
