@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b3f217_bda6b9fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2022-10-26T07:45:03Z",
+      "side": 1,
+      "message": "(cr) (a4e6cfcaeb7a5de104560ade7509e52f6618e35f/bist) wu@mike ~/chromiumos/src/platform/ec $ sudo make run-usb_pd_int\n  BUILD   host-usb_pd_int\n  VERSION ec_version.h\n  CC      RO/common/version.o\n  CC      RO/test/usb_pd_int.o\n  EXE     usb_pd_int.exe\n  TEST    run-usb_pd_int\nNo flash storage found. Initializing to 0xff.\nNo RAM data found. Initializing to 0x00.\nStack trace of task 1 (HOOKS):\n#0  /lib64/libpthread.so.0(+0x1403d) [0x7f4552bda03d]\n    ??:0\n#1  /lib64/libpthread.so.0(pthread_cond_wait+0x217) [0x7f4552bd3ee7]\n    ??:0\n#2  build/host/usb_pd_int/usb_pd_int.exe(task_wait_event+0x56) [0x422326]\n    /mnt/host/source/src/platform/ec/core/host/task.c:229\n#3  build/host/usb_pd_int/usb_pd_int.exe(hook_task+0x172) [0x412a12]\n    /mnt/host/source/src/platform/ec/common/hooks.c:250\n#4  build/host/usb_pd_int/usb_pd_int.exe(_task_start_impl+0x56) [0x4223da]\n    /mnt/host/source/src/platform/ec/core/host/task.c:469 (discriminator 1)\n#5  /lib64/libpthread.so.0(+0x7d91) [0x7f4552bcdd91]\n    ??:0\n#6  /lib64/libc.so.6(clone+0x3f) [0x7f4552afe58f]\n    ??:0\nusb_pd_int passed! (0.020 seconds)",
+      "revId": "c4178b939cf646143c407106d827bf25dfacdf60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
