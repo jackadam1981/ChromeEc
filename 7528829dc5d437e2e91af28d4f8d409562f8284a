@@ -88,6 +88,24 @@
       "parentUuid": "427fbc7f_00ef3ea0",
       "revId": "7528829dc5d437e2e91af28d4f8d409562f8284a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ecf541_4ef267dd",
+        "filename": "zephyr/projects/nissa/pujjo/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-26T02:48:22Z",
+      "side": 1,
+      "message": "I see; the Kconfig values are already set when config.h is included, so we\u0027re attempting to redefine the value.\n\nProbably the best option is to rename the kconfig option to `CONFIG_PLATFORM_EC_RAA489000_TRICKLE_CHARGE_CURRENT` and add a block to `config_chip.h` that `#undef`s and redefines `CONFIG_RAA489000_TRICKLE_CHARGE_CURRENT` with the value from kconfig. That avoids the name clash and seems correct in that we\u0027ve implemented this feature in the legacy code and need to make it possible to configure in Zephyr.",
+      "parentUuid": "6e671960_1de858ca",
+      "revId": "7528829dc5d437e2e91af28d4f8d409562f8284a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
