@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b084cad_6f33c088",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-26T18:11:58Z",
+      "side": 1,
+      "message": "That is a good idea!\n\nAnd actually the CQ failed with a tests/test_zmake.py::TestFilters::test_filter_normal test failure.",
+      "parentUuid": "b41b8ec4_4230e825",
+      "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07f9f6d6_12eebea7",
         "filename": "zephyr/zmake/zmake/jobserver.py",
         "patchSetId": 2
