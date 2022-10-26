@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca369bbc_773ed380",
+        "filename": "zephyr/test/drivers/default/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-26T23:09:17Z",
+      "side": 1,
+      "message": "Is this the invalid type? It looks like it but I\u0027d prefer a comment or a variable named `invalid` or something so future code-skimmers can be sure.",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 56
+      },
+      "revId": "2fb3381891fe17858e46b574a5b870a6464669fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5438cd75_cbaed7cc",
+        "filename": "zephyr/test/drivers/default/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-26T23:09:17Z",
+      "side": 1,
+      "message": "This doesn\u0027t look like an error case? Grouped into the wrong CL?",
+      "revId": "2fb3381891fe17858e46b574a5b870a6464669fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
