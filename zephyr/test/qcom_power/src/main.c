@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "gpio.h"
 #include <zephyr/device.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/kernel.h>
@@ -16,7 +17,6 @@
 
 #include "gpio_signal.h"
 #include "power/qcom.h"
-#include "battery.h"
 #include "ec_app_main.h"
 #include "power.h"
 #include "console.h"
@@ -28,10 +28,27 @@
 #define AP_RST_L_NODE DT_PATH(named_gpios, ap_rst_l)
 #define POWER_GOOD_NODE DT_PATH(named_gpios, mb_power_good)
 #define AP_SUSPEND_NODE DT_PATH(named_gpios, ap_suspend)
-#define SWITCHCAP_PG_NODE DT_PATH(named_gpios, switchcap_pg_int_l)
+#define SWITCHCAP_PG_NODE DT_PATH(named_gpios, src_vph_pwr_pg)
 #define PMIC_RESIN_L_NODE DT_PATH(named_gpios, pmic_resin_l)
 #define EC_PWR_BTN_ODL_NODE DT_PATH(named_gpios, ec_pwr_btn_odl)
 #define LID_OPEN_EC_NODE DT_PATH(named_gpios, lid_open_ec)
+#define PMIC_KPD_PWR_ODL_NODE DT_PATH(named_gpios, pmic_kpd_pwr_odl)
+
+/* For simplicity, assume that all the gpios are on the same controller. */
+BUILD_ASSERT(DT_DEP_ORD(DT_GPIO_CTLR(AP_RST_L_NODE, gpios)) ==
+	     DT_DEP_ORD(DT_GPIO_CTLR(POWER_GOOD_NODE, gpios)));
+BUILD_ASSERT(DT_DEP_ORD(DT_GPIO_CTLR(AP_RST_L_NODE, gpios)) ==
+	     DT_DEP_ORD(DT_GPIO_CTLR(AP_SUSPEND_NODE, gpios)));
+BUILD_ASSERT(DT_DEP_ORD(DT_GPIO_CTLR(AP_RST_L_NODE, gpios)) ==
+	     DT_DEP_ORD(DT_GPIO_CTLR(SWITCHCAP_PG_NODE, gpios)));
+BUILD_ASSERT(DT_DEP_ORD(DT_GPIO_CTLR(AP_RST_L_NODE, gpios)) ==
+	     DT_DEP_ORD(DT_GPIO_CTLR(PMIC_RESIN_L_NODE, gpios)));
+BUILD_ASSERT(DT_DEP_ORD(DT_GPIO_CTLR(AP_RST_L_NODE, gpios)) ==
+	     DT_DEP_ORD(DT_GPIO_CTLR(EC_PWR_BTN_ODL_NODE, gpios)));
+BUILD_ASSERT(DT_DEP_ORD(DT_GPIO_CTLR(AP_RST_L_NODE, gpios)) ==
+	     DT_DEP_ORD(DT_GPIO_CTLR(LID_OPEN_EC_NODE, gpios)));
+BUILD_ASSERT(DT_DEP_ORD(DT_GPIO_CTLR(AP_RST_L_NODE, gpios)) ==
+	     DT_DEP_ORD(DT_GPIO_CTLR(PMIC_KPD_PWR_ODL_NODE, gpios)));
 
 static int chipset_reset_count;
 static bool set_power_good_on_reset;
@@ -45,10 +62,10 @@ DECLARE_HOOK(HOOK_CHIPSET_RESET, do_chipset_reset, HOOK_PRIO_DEFAULT);
 static void do_chipset_shutdown(void)
 {
 	if (set_power_good_on_reset) {
-		static const struct device *power_good_dev =
+		static const struct device *gpio_dev =
 			DEVICE_DT_GET(DT_GPIO_CTLR(POWER_GOOD_NODE, gpios));
 
-		gpio_emul_input_set(power_good_dev,
+		gpio_emul_input_set(gpio_dev,
 				    DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 1);
 	}
 }
@@ -58,6 +75,10 @@ DEFINE_FFF_GLOBALS;
 
 FAKE_VALUE_FUNC(int, system_can_boot_ap);
 FAKE_VALUE_FUNC(int, battery_wait_for_stable);
+int battery_is_present(void)
+{
+	return 1;
+}
 
 /* Tests the chipset_ap_rst_interrupt() handler when in S3.
  *
@@ -68,14 +89,12 @@ FAKE_VALUE_FUNC(int, battery_wait_for_stable);
  */
 static void do_chipset_ap_rst_interrupt_in_s3(int times)
 {
-	static const struct device *ap_rst_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(AP_RST_L_NODE, gpios));
-	static const struct device *ap_suspend_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(AP_SUSPEND_NODE, gpios));
 
 	/* Preconditions */
 	power_signal_enable_interrupt(GPIO_AP_SUSPEND);
-	zassert_ok(gpio_emul_input_set(ap_suspend_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(AP_SUSPEND_NODE, gpios), 1));
 	power_set_state(POWER_S3);
 	task_wake(TASK_ID_CHIPSET);
@@ -88,16 +107,16 @@ static void do_chipset_ap_rst_interrupt_in_s3(int times)
 	/* Pulse gpio_ap_rst_l `times` */
 	for (int i = 0; i < times; ++i) {
 		zassert_ok(gpio_emul_input_set(
-			ap_rst_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 0));
+			gpio_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 0));
 		zassert_ok(gpio_emul_input_set(
-			ap_rst_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 1));
+			gpio_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 1));
 	}
 
 	/* Wait for timeout AP_RST_TRANSITION_TIMEOUT. */
 	k_sleep(K_MSEC(500));
 
 	/* Verify that gpio_ap_suspend is ignored. */
-	zassert_ok(gpio_emul_input_set(ap_suspend_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(AP_SUSPEND_NODE, gpios), 0));
 	k_sleep(K_MSEC(10));
 	zassert_equal(power_get_state(), POWER_S3);
@@ -140,7 +159,7 @@ ZTEST(qcom_power, test_notify_chipset_reset_s3)
  */
 static void do_chipset_ap_rst_interrupt_in_s0(int times)
 {
-	static const struct device *ap_rst_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(AP_RST_L_NODE, gpios));
 
 	shell_backend_dummy_clear_output(get_ec_shell());
@@ -149,9 +168,9 @@ static void do_chipset_ap_rst_interrupt_in_s0(int times)
 	/* Pulse gpio_ap_rst_l `times` */
 	for (int i = 0; i < times; ++i) {
 		zassert_ok(gpio_emul_input_set(
-			ap_rst_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 0));
+			gpio_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 0));
 		zassert_ok(gpio_emul_input_set(
-			ap_rst_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 1));
+			gpio_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 1));
 	}
 
 	/* Wait for timeout AP_RST_TRANSITION_TIMEOUT. */
@@ -223,34 +242,57 @@ void warm_reset_callback(const struct device *gpio_dev,
 	}
 	if (gpio_emul_output_get(gpio_dev,
 				 DT_GPIO_PIN(PMIC_RESIN_L_NODE, gpios))) {
-		static const struct device *ap_rst_dev =
-			DEVICE_DT_GET(DT_GPIO_CTLR(AP_RST_L_NODE, gpios));
+		gpio_emul_input_set(gpio_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios),
+				    0);
+	}
+}
 
-		gpio_emul_input_set(ap_rst_dev,
-				    DT_GPIO_PIN(AP_RST_L_NODE, gpios), 0);
+static void set_power_good(struct k_work *work)
+{
+	static const struct device *gpio_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(POWER_GOOD_NODE, gpios));
+	gpio_emul_input_set(gpio_dev, DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 1);
+}
+K_WORK_DEFINE(set_power_good_work, set_power_good);
+
+/* PMIC_KPD_PWR_ODL is a signal to turn the power on. The signal that
+ * it worked is POWER_GOOD.
+ */
+void power_good_callback(const struct device *gpio_dev,
+			 struct gpio_callback *callback_struct,
+			 gpio_port_pins_t pins)
+{
+	if ((pins & BIT(DT_GPIO_PIN(PMIC_KPD_PWR_ODL_NODE, gpios))) == 0) {
+		return;
+	}
+	if (!gpio_emul_output_get(gpio_dev,
+				  DT_GPIO_PIN(PMIC_KPD_PWR_ODL_NODE, gpios))) {
+		/* Set power good in the work queue, instead of now. */
+		k_work_submit(&set_power_good_work);
 	}
 }
 
 /* Call chipset_reset, wait for PMIC_RESIN_L, pulse ap_rsl_l. */
 ZTEST(qcom_power, test_chipset_reset_success)
 {
-	static const struct device *ap_rst_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(AP_RST_L_NODE, gpios));
-	static const struct device *pmic_resin_l_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(PMIC_RESIN_L_NODE, gpios));
 	const char *buffer;
 	size_t buffer_size;
 
 	/* Setup callback. */
 	gpio_init_callback(&gpio_callback, warm_reset_callback,
 			   BIT(DT_GPIO_PIN(PMIC_RESIN_L_NODE, gpios)));
-	zassert_ok(gpio_add_callback(pmic_resin_l_dev, &gpio_callback));
+	zassert_ok(gpio_add_callback(gpio_dev, &gpio_callback));
+	zassert_ok(gpio_pin_interrupt_configure(
+		gpio_dev, DT_GPIO_PIN(PMIC_RESIN_L_NODE, gpios),
+		GPIO_INT_EDGE_BOTH));
 
 	/* Reset. The reason doesn't really matter. */
 	shell_backend_dummy_clear_output(get_ec_shell());
 	chipset_reset(CHIPSET_RESET_KB_WARM_REBOOT);
 	k_sleep(K_MSEC(100));
-	gpio_emul_input_set(ap_rst_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 1);
+	gpio_emul_input_set(gpio_dev, DT_GPIO_PIN(AP_RST_L_NODE, gpios), 1);
 	/* Long enough for a cold reset, although we don't expect one. */
 	k_sleep(K_MSEC(1000));
 
@@ -268,7 +310,7 @@ ZTEST(qcom_power, test_chipset_reset_success)
 /* Sent the host command, set the gpio, wait for transition to S3. */
 ZTEST(qcom_power, test_request_sleep)
 {
-	static const struct device *ap_suspend_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(AP_SUSPEND_NODE, gpios));
 	struct ec_params_host_sleep_event params = {
 		.sleep_event = HOST_SLEEP_EVENT_S3_SUSPEND,
@@ -277,7 +319,7 @@ ZTEST(qcom_power, test_request_sleep)
 		EC_CMD_HOST_SLEEP_EVENT, UINT8_C(0), params);
 
 	zassert_ok(host_command_process(&args));
-	zassert_ok(gpio_emul_input_set(ap_suspend_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(AP_SUSPEND_NODE, gpios), 1));
 	k_sleep(K_SECONDS(16));
 	zassert_equal(power_get_state(), POWER_S3);
@@ -314,52 +356,106 @@ ZTEST(qcom_power, test_chipset_force_shutdown)
 
 ZTEST(qcom_power, test_power_button)
 {
-	static const struct device *ec_pwr_btn_odl_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(EC_PWR_BTN_ODL_NODE, gpios));
 
+	/* Setup callback. */
+	gpio_init_callback(&gpio_callback, power_good_callback,
+			   BIT(DT_GPIO_PIN(PMIC_KPD_PWR_ODL_NODE, gpios)));
+	zassert_ok(gpio_add_callback(gpio_dev, &gpio_callback));
+
 	power_set_state(POWER_G3);
+	zassert_ok(gpio_emul_input_set(gpio_dev,
+				       DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 0));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(PMIC_RESIN_L_NODE, gpios), 1));
 	k_sleep(K_MSEC(10));
 	zassert_equal(power_get_state(), POWER_G3);
 
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       0));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 0));
 	k_sleep(K_MSEC(100));
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       1));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 1));
 	k_sleep(K_MSEC(500));
 	zassert_equal(power_get_state(), POWER_S0);
 }
 
 ZTEST(qcom_power, test_power_button_no_power_good)
 {
-	static const struct device *ec_pwr_btn_odl_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(EC_PWR_BTN_ODL_NODE, gpios));
-	static const struct device *power_good_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(POWER_GOOD_NODE, gpios));
 
-	zassert_ok(gpio_emul_input_set(power_good_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 0));
 	power_set_state(POWER_G3);
 	k_sleep(K_MSEC(10));
 	zassert_equal(power_get_state(), POWER_G3);
 
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       0));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 0));
 	k_sleep(K_MSEC(100));
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       1));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 1));
 	k_sleep(K_MSEC(1500));
 	zassert_equal(power_get_state(), POWER_S5, "power_state=%d",
 		      power_get_state());
 }
 
+ZTEST(qcom_power, test_power_button_no_switchcap_good)
+{
+	static const struct device *gpio_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(EC_PWR_BTN_ODL_NODE, gpios));
+
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(SWITCHCAP_PG_NODE, gpios), 0));
+	power_set_state(POWER_G3);
+	k_sleep(K_MSEC(10));
+	zassert_equal(power_get_state(), POWER_G3);
+
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 0));
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 1));
+	k_sleep(K_SECONDS(10));
+	zassert_equal(power_get_state(), POWER_S5, "power_state=%d",
+		      power_get_state());
+}
+
+ZTEST(qcom_power, test_power_button_no_pmic_resin_pullup)
+{
+	const char *buffer;
+	size_t buffer_size;
+	static const struct device *gpio_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(EC_PWR_BTN_ODL_NODE, gpios));
+
+	power_set_state(POWER_G3);
+	k_sleep(K_MSEC(10));
+	zassert_equal(power_get_state(), POWER_G3);
+
+	shell_backend_dummy_clear_output(get_ec_shell());
+	zassert_ok(gpio_emul_input_set(gpio_dev,
+				       DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 0));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(PMIC_RESIN_L_NODE, gpios), 0));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 0));
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 1));
+	k_sleep(K_SECONDS(10));
+	zassert_equal(power_get_state(), POWER_S5, "power_state=%d",
+		      power_get_state());
+
+	buffer = shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	zassert_not_null(strstr(buffer, "PMIC_RESIN_L not pulled up by PMIC"),
+			 "Invalid console output %s", buffer);
+}
+
 ZTEST(qcom_power, test_power_button_battery_low)
 {
-	static const struct device *ec_pwr_btn_odl_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(EC_PWR_BTN_ODL_NODE, gpios));
 
 	RESET_FAKE(system_can_boot_ap);
@@ -369,13 +465,11 @@ ZTEST(qcom_power, test_power_button_battery_low)
 	k_sleep(K_MSEC(10));
 	zassert_equal(power_get_state(), POWER_G3);
 
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       0));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 0));
 	k_sleep(K_MSEC(100));
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       1));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 1));
 	/* > CAN_BOOT_AP_CHECK_TIMEOUT + CAN_BOOT_AP_CHECK_WAIT */
 	k_sleep(K_MSEC(1800));
 	zassert_equal(power_get_state(), POWER_S5);
@@ -383,7 +477,7 @@ ZTEST(qcom_power, test_power_button_battery_low)
 
 ZTEST(qcom_power, test_host_sleep_event_resume)
 {
-	static const struct device *ap_suspend_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(AP_SUSPEND_NODE, gpios));
 	struct ec_params_host_sleep_event params = {
 		.sleep_event = HOST_SLEEP_EVENT_S3_RESUME,
@@ -393,7 +487,7 @@ ZTEST(qcom_power, test_host_sleep_event_resume)
 
 	/* Get into S3 first */
 	power_signal_enable_interrupt(GPIO_AP_SUSPEND);
-	zassert_ok(gpio_emul_input_set(ap_suspend_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(AP_SUSPEND_NODE, gpios), 1));
 	power_set_state(POWER_S3);
 	task_wake(TASK_ID_CHIPSET);
@@ -401,7 +495,7 @@ ZTEST(qcom_power, test_host_sleep_event_resume)
 	zassert_equal(power_get_state(), POWER_S3);
 
 	/* Exit suspend via gpio. */
-	zassert_ok(gpio_emul_input_set(ap_suspend_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(AP_SUSPEND_NODE, gpios), 0));
 	k_sleep(K_MSEC(100));
 	zassert_equal(power_get_state(), POWER_S0, "power_state=%d",
@@ -414,7 +508,7 @@ ZTEST(qcom_power, test_host_sleep_event_resume)
 		      power_get_state());
 
 	/* Check that AP_SUSPEND interrupts are disabled & we are in S0. */
-	zassert_ok(gpio_emul_input_set(ap_suspend_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(AP_SUSPEND_NODE, gpios), 1));
 	k_sleep(K_MSEC(100));
 	zassert_equal(power_get_state(), POWER_S0);
@@ -422,32 +516,28 @@ ZTEST(qcom_power, test_host_sleep_event_resume)
 
 ZTEST(qcom_power, test_power_button_off)
 {
-	static const struct device *ec_pwr_btn_odl_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(EC_PWR_BTN_ODL_NODE, gpios));
 
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       0));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 0));
 	k_sleep(K_SECONDS(9));
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       1));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 1));
 	k_sleep(K_MSEC(500));
 	zassert_equal(power_get_state(), POWER_S5);
 }
 
 ZTEST(qcom_power, test_power_button_off_cancel)
 {
-	static const struct device *ec_pwr_btn_odl_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(EC_PWR_BTN_ODL_NODE, gpios));
 
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       0));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 0));
 	k_sleep(K_SECONDS(4));
-	zassert_ok(gpio_emul_input_set(ec_pwr_btn_odl_dev,
-				       DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios),
-				       1));
+	zassert_ok(gpio_emul_input_set(
+		gpio_dev, DT_GPIO_PIN(EC_PWR_BTN_ODL_NODE, gpios), 1));
 	k_sleep(K_MSEC(500));
 	zassert_equal(power_get_state(), POWER_S0);
 }
@@ -456,11 +546,11 @@ ZTEST(qcom_power, test_no_power_good)
 {
 	const char *buffer;
 	size_t buffer_size;
-	static const struct device *power_good_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(POWER_GOOD_NODE, gpios));
 
 	shell_backend_dummy_clear_output(get_ec_shell());
-	zassert_ok(gpio_emul_input_set(power_good_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 0));
 	k_sleep(K_MSEC(500));
 	zassert_equal(power_get_state(), POWER_S5, "power_state=%d",
@@ -474,11 +564,11 @@ ZTEST(qcom_power, test_no_power_good_then_good)
 {
 	const char *buffer;
 	size_t buffer_size;
-	static const struct device *power_good_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(POWER_GOOD_NODE, gpios));
 
 	shell_backend_dummy_clear_output(get_ec_shell());
-	zassert_ok(gpio_emul_input_set(power_good_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 0));
 	set_power_good_on_reset = true;
 	k_sleep(K_MSEC(500));
@@ -493,18 +583,18 @@ ZTEST(qcom_power, test_no_power_good_then_good)
 
 ZTEST(qcom_power, test_lid_open_power_on)
 {
-	static const struct device *lid_open_ec_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(LID_OPEN_EC_NODE, gpios));
 
 	zassert_ok(gpio_emul_input_set(
-		lid_open_ec_dev, DT_GPIO_PIN(LID_OPEN_EC_NODE, gpios), 0));
+		gpio_dev, DT_GPIO_PIN(LID_OPEN_EC_NODE, gpios), 0));
 	power_set_state(POWER_G3);
 	k_sleep(K_MSEC(100));
 	zassert_equal(power_get_state(), POWER_G3);
 	zassert_false(lid_is_open());
 
 	zassert_ok(gpio_emul_input_set(
-		lid_open_ec_dev, DT_GPIO_PIN(LID_OPEN_EC_NODE, gpios), 1));
+		gpio_dev, DT_GPIO_PIN(LID_OPEN_EC_NODE, gpios), 1));
 	k_sleep(K_MSEC(500));
 	zassert_equal(power_get_state(), POWER_S0, "power_state=%d",
 		      power_get_state());
@@ -556,10 +646,10 @@ ZTEST(qcom_power, test_power_chipset_init_sysjump_power_good)
 
 ZTEST(qcom_power, test_power_chipset_init_sysjump_power_off)
 {
-	static const struct device *power_good_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(POWER_GOOD_NODE, gpios));
 
-	zassert_ok(gpio_emul_input_set(power_good_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 0));
 	system_set_reset_flags(EC_RESET_FLAG_SYSJUMP);
 	zassert_equal(power_chipset_init(), POWER_G3);
@@ -585,18 +675,8 @@ ZTEST(qcom_power, test_power_chipset_init_ap_off)
 
 void start_in_s0(void *fixture)
 {
-	static const struct device *ap_rst_dev =
+	static const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(AP_RST_L_NODE, gpios));
-	static const struct device *power_good_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(POWER_GOOD_NODE, gpios));
-	static const struct device *ap_suspend_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(AP_SUSPEND_NODE, gpios));
-	static const struct device *switchcap_pg_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(SWITCHCAP_PG_NODE, gpios));
-	static const struct device *pmic_resin_l_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(PMIC_RESIN_L_NODE, gpios));
-	static const struct device *lid_open_ec_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(LID_OPEN_EC_NODE, gpios));
 
 	RESET_FAKE(system_can_boot_ap);
 	system_can_boot_ap_fake.return_val = 1;
@@ -604,18 +684,18 @@ void start_in_s0(void *fixture)
 
 	power_signal_disable_interrupt(GPIO_AP_SUSPEND);
 	power_signal_enable_interrupt(GPIO_AP_RST_L);
-	zassert_ok(gpio_emul_input_set(power_good_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(POWER_GOOD_NODE, gpios), 1));
-	zassert_ok(gpio_emul_input_set(ap_suspend_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(AP_SUSPEND_NODE, gpios), 0));
-	zassert_ok(gpio_emul_input_set(ap_rst_dev,
+	zassert_ok(gpio_emul_input_set(gpio_dev,
 				       DT_GPIO_PIN(AP_RST_L_NODE, gpios), 1));
 	zassert_ok(gpio_emul_input_set(
-		switchcap_pg_dev, DT_GPIO_PIN(SWITCHCAP_PG_NODE, gpios), 1));
-	zassert_ok(gpio_pin_set(pmic_resin_l_dev,
-				DT_GPIO_PIN(PMIC_RESIN_L_NODE, gpios), 1));
+		gpio_dev, DT_GPIO_PIN(SWITCHCAP_PG_NODE, gpios), 1));
+	zassert_ok(gpio_pin_set(gpio_dev, DT_GPIO_PIN(PMIC_RESIN_L_NODE, gpios),
+				1));
 	zassert_ok(gpio_emul_input_set(
-		lid_open_ec_dev, DT_GPIO_PIN(LID_OPEN_EC_NODE, gpios), 1));
+		gpio_dev, DT_GPIO_PIN(LID_OPEN_EC_NODE, gpios), 1));
 	power_set_state(POWER_S0);
 	power_signal_interrupt(GPIO_AP_SUSPEND);
 	task_wake(TASK_ID_CHIPSET);
@@ -629,9 +709,9 @@ void start_in_s0(void *fixture)
 void qcom_cleanup(void *fixture)
 {
 	if (gpio_callback.handler != NULL) {
-		static const struct device *pmic_resin_l_dev =
+		static const struct device *gpio_dev =
 			DEVICE_DT_GET(DT_GPIO_CTLR(PMIC_RESIN_L_NODE, gpios));
-		gpio_remove_callback(pmic_resin_l_dev, &gpio_callback);
+		gpio_remove_callback(gpio_dev, &gpio_callback);
 		gpio_callback.handler = NULL;
 	}
 	host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_HANG_DETECT));
