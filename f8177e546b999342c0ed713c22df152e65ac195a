@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c99f990f_91d6554c",
+        "filename": "common/panic_output.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-10-26T15:52:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c19ca9a_4bd06a4d",
+      "range": {
+        "startLine": 202,
+        "startChar": 19,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "f8177e546b999342c0ed713c22df152e65ac195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f2b95e2_9b50628c",
