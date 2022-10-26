@@ -16,6 +16,69 @@
       "message": "Sorry for the churn, but this version actually works well whether called from make or run standalone. On my machine zmake build brya takes 16s and zmake build -a takes 64s, all while never running more builds than I have cpus.",
       "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41b8ec4_4230e825",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-10-26T16:51:25Z",
+      "side": 1,
+      "message": "Nice! Any chance you want to add tests for any of it? ;)",
+      "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f9f6d6_12eebea7",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-10-26T16:51:25Z",
+      "side": 1,
+      "message": "`[int(x) for x in match.groups()]`",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 49
+      },
+      "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339d8a7d_febd5a4b",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-10-26T16:51:25Z",
+      "side": 1,
+      "message": "`f\" -j{self.jobs}\"`",
+      "range": {
+        "startLine": 212,
+        "startChar": 20,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
