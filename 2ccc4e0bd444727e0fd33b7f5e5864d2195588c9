@@ -46,6 +46,30 @@
       },
       "revId": "2ccc4e0bd444727e0fd33b7f5e5864d2195588c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75e8071_a405c976",
+        "filename": "common/chargen.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-26T18:33:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "80d139c4_3743fff4",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "2ccc4e0bd444727e0fd33b7f5e5864d2195588c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
