@@ -126,8 +126,18 @@ int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
 	if (len < 3)
 		return EC_ERROR_INVAL;
 
+#ifdef CONFIG_BATT_MFG_ACCESS
+	uint8_t operation_status[3] = {
+		0x02,
+		cmd & 0xFF,
+		cmd >> 8,
+	};
+	/* Send manufacturer access command by the SMB block protocol*/
+	rv = sb_write_block(block, operation_status, sizeof(operation_status));
+#else
 	/* Send manufacturer access command */
 	rv = sb_write(SB_MANUFACTURER_ACCESS, cmd);
+#endif
 	if (rv)
 		return rv;
 

@@ -706,6 +706,11 @@
 #define CONFIG_BATT_HOST_FULL_FACTOR 97
 
 /*
+ * Send manufacturer access command by the SMB block protocol.
+ */
+#undef CONFIG_BATT_MFG_ACCESS
+
+/*
  * Smart battery pass-through host commands.
  */
 #undef CONFIG_SB_PASSTHROUGH
