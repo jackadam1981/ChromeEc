@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c23a76b_e895e2cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-10-26T10:03:32Z",
+      "side": 1,
+      "message": "One nit, otherwise looks good to me.",
+      "revId": "adb4610892f09704b54304521aeeaa5464e2f81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428bc65b_4359c1af",
+        "filename": "zephyr/test/drivers/default/src/bmi_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-10-26T10:03:32Z",
+      "side": 1,
+      "message": "nit: I would replace `4` with `BMI160_MAG_X_L_G`",
+      "revId": "adb4610892f09704b54304521aeeaa5464e2f81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
