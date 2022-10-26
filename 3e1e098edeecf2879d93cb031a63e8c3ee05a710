@@ -85,6 +85,30 @@
       },
       "revId": "3e1e098edeecf2879d93cb031a63e8c3ee05a710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e568b2_4154c950",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-26T17:30:00Z",
+      "side": 1,
+      "message": "I\u0027ll add the check here. I think the BUILD_ASSERTS in the next CL guarantee we\u0027ll only write chunks that are divisible by 4.",
+      "parentUuid": "a1faec79_ba62e396",
+      "range": {
+        "startLine": 297,
+        "startChar": 18,
+        "endLine": 297,
+        "endChar": 27
+      },
+      "revId": "3e1e098edeecf2879d93cb031a63e8c3ee05a710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
