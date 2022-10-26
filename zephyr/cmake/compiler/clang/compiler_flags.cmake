@@ -10,7 +10,7 @@ set_compiler_property(PROPERTY hosted)
 # Disable position independent code.
 add_compile_options(-fno-PIC)
 
-check_set_compiler_property(APPEND PROPERTY warning_extended -Wunused-variable
+check_set_compiler_property(APPEND PROPERTY warning_extended -Wunused-variable -O0 -g -Wl,-rdynamic
 	-Werror=unused-variable -Werror=missing-braces
 	-Werror=sometimes-uninitialized -Werror=unused-function
 	-Werror=array-bounds)
