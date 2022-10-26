@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf1c58e_e8de3909",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-10-26T22:20:30Z",
+      "side": 1,
+      "message": "On Skyrim prochot will only be triggered externally by the charger. In that case we don\u0027t want to make things worse by drawing more current for the fan. I\u0027ve added a comment in the CL that updates the Skyrim configs to clarify.",
+      "parentUuid": "ae94feb8_0e9ad7bb",
+      "revId": "8ab23c743e9594148db80a166ce9b8cf12d21808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16190b77_a24d409c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-26T21:43:23Z",
       "side": 1,
       "message": "Seems like a copy/paste where the line \"configuration option\" was lost?",
+      "revId": "8ab23c743e9594148db80a166ce9b8cf12d21808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2ca578_2d814f9b",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-10-26T22:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16190b77_a24d409c",
       "revId": "8ab23c743e9594148db80a166ce9b8cf12d21808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
