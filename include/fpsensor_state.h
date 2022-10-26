@@ -19,6 +19,14 @@
 
 #include "driver/fingerprint/fpsensor.h"
 
+
+#ifndef BOO
+#undef FP_SENSOR_IMAGE_SIZE
+#undef FP_MAX_FINGER_COUNT
+#define FP_SENSOR_IMAGE_SIZE 0
+#define FP_MAX_FINGER_COUNT 0
+#endif
+
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
 #define FP_FRAME_SECTION
