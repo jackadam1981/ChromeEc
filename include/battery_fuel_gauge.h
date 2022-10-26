@@ -37,6 +37,7 @@ struct sleep_mode_info {
 
 struct fet_info {
 	const int mfgacc_support;
+	const int mfgacc_smb_block;
 	const uint8_t reg_addr;
 	const uint16_t reg_mask;
 	const uint16_t disconnect_val;
