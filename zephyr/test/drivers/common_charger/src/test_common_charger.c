@@ -2,7 +2,10 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include <execinfo.h>
 
+#include "dptf.h"
+#include <stdlib.h>
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
@@ -57,6 +60,14 @@ ZTEST(common_charger, test_charger_get_min_bat_pct_for_power_on)
 {
 	zassert_equal(charger_get_min_bat_pct_for_power_on(),
 		      CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON);
+}
+
+ZTEST(common_charger, test_dptf_set_get_charging_current)
+{
+	dptf_set_charging_current_limit(INT_MIN);
+
+	/* Return -1 when set to invalid values */
+	zassert_equal(dptf_get_charging_current_limit(), -1);
 }
 
 ZTEST(common_charger, test_charger_set_vsys_compensation__bad_arg)
@@ -128,6 +139,18 @@ ZTEST(common_charger, test_charger_get_battery_cells__unsupported)
 
 	zassert_equal(charger_get_battery_cells(CHG_NUM, &unused),
 		      EC_ERROR_UNIMPLEMENTED);
+}
+
+ZTEST(common_charger, test_foo)
+{
+	void *callstack[128];
+	int i, frames = backtrace(callstack, 128);
+	char **strs = backtrace_symbols(callstack, frames);
+	for (i = 0; i < frames; ++i) {
+		printf("%s\n", strs[i]);
+	}
+	free(strs);
+	zassert_false(true);
 }
 
 static void suite_common_charger_before_after(void *test_data)

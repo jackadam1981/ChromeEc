@@ -5,3 +5,8 @@
 # Zephyr cmake system looks into ${TOOLCHAIN_ROOT}, but we just send
 # this out to the copy in ${ZEPHYR_BASE}.
 include("${ZEPHYR_BASE}/cmake/linker/ld/target.cmake")
+
+  zephyr_ld_options(
+    -Wl,-rdynamic
+#    -Wl,--export-dynamic
+)
