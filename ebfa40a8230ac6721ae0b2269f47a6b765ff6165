@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcb80dd0_b4977fc2",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-26T20:44:18Z",
+      "side": 1,
+      "message": "so maybe this is a good time to remove the packed and not worry about padding, letting the compiler do its thing, The only issue we would have to worry about is that the structure is saved in the flash at 4 byte alignment, which is guaranteed.\n\nPacking is important for data coming over the wire, which can end up unaligned in the received packet, here this is not an issue.",
+      "parentUuid": "99f37f62_a5f381b4",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 17
+      },
+      "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "638d15f2_5bfb9e87",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 10
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I think we need a gbbd specific ap_ro_check_header to validate the saved gbbd information and to have the possiblity of bumping the gbbd version or handling the information differently based on how it was saved later.\n\nAs far as the information included in the gbb descriptor. I\u0027m just worried we\u0027re going to overlook something. I think including the FMAP information helps us do some basic validity checks that the loaded state matches the actual ap ro information. verify_ap_ro_gbb_space just does a memcmp on the gbbd to validate it. Having the gbb and fmap information in addition doesn\u0027t add much overhead.",
       "parentUuid": "638d15f2_5bfb9e87",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 28
+      },
+      "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd80d02a_4af54d36",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-26T20:44:18Z",
+      "side": 1,
+      "message": "I think this is an unnecessary comlication of the code which verifies the signature. We sure are not planning to allow other incorrectly set fields in the verified space. It is good to be thorough when figuring out where the flags are and if they need to be tweaked when calculating the hash, but  the side calculating the hash can be much simpler.",
+      "parentUuid": "78325c06_4d85d6b7",
       "range": {
         "startLine": 207,
         "startChar": 0,
