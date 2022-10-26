@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93505222_c246d580",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-10-26T14:34:52Z",
+      "side": 1,
+      "message": "You should update the comment to explain how 1800 was determined.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "b4c7392e033bd356c0bcc499632c957bcbca9c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
