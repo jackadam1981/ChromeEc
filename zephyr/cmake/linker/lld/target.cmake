@@ -22,6 +22,8 @@ macro(toolchain_ld_base)
   zephyr_ld_options(
     ${TOOLCHAIN_LD_FLAGS}
     -no-pie
+#    -Wl,-rdynamic
+    -Wl,--export_dynamic
     -Wl,--gc-sections
     --build-id=none)
 endmacro()
