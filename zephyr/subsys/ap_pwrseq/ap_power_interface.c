@@ -58,6 +58,7 @@ bool ap_power_in_state(enum ap_power_state_mask state_mask)
 		break;
 #endif
 	}
+	return AP_POWER_STATE_ON;
 	/* Return non-zero if all needed bits are present */
 	return (state_mask & need_mask) == need_mask;
 }

@@ -32,7 +32,7 @@ static ATOMIC_DEFINE(flags, FLAGS_MAX);
 static uint32_t start_from_g3_delay_ms;
 
 #ifdef CONFIG_AP_PWRSEQ_DEBUG_MODE_COMMAND
-static bool in_debug_mode;
+static bool in_debug_mode = true;
 #endif
 
 LOG_MODULE_REGISTER(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
