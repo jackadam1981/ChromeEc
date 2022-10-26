@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f1be25_35cdcec2",
+        "filename": "zephyr/test/drivers/common_charger/src/test_common_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-26T18:48:53Z",
+      "side": 1,
+      "message": "Can you just use INT_MAX here instead? The various `board_xxx()` functions will eventually get deprecated as things move upstream.",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "98bb2508373f674c2dfbbb7431e91b902d245184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
