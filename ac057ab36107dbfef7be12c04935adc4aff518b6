@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4343c85e_47351785",
+        "filename": "zephyr/test/drivers/default/src/tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-10-26T15:34:39Z",
+      "side": 1,
+      "message": "should you set this to a non-zero value so that lines 127-8 don\u0027t trivially pass?",
+      "revId": "ac057ab36107dbfef7be12c04935adc4aff518b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c56cc7f_f2ca238c",
+        "filename": "zephyr/test/drivers/default/src/tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-10-26T15:34:39Z",
+      "side": 1,
+      "message": "doesn\u0027t\n\nalso, why doesn\u0027t it change? Can you add that to the comment?",
+      "range": {
+        "startLine": 131,
+        "startChar": 46,
+        "endLine": 131,
+        "endChar": 52
+      },
+      "revId": "ac057ab36107dbfef7be12c04935adc4aff518b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99bc9902_a7382d02",
+        "filename": "zephyr/test/drivers/default/src/tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-10-26T15:34:39Z",
+      "side": 1,
+      "message": "At this point, doesn\u0027t new_offset hold the same as offset? Do you need to set it up again?",
+      "revId": "ac057ab36107dbfef7be12c04935adc4aff518b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
