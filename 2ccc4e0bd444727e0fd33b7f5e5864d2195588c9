@@ -22,6 +22,30 @@
       },
       "revId": "2ccc4e0bd444727e0fd33b7f5e5864d2195588c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d139c4_3743fff4",
+        "filename": "common/chargen.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-26T16:13:05Z",
+      "side": 1,
+      "message": "Zephyr tests. I went down the route of enabling watchdog support for the tests that were failing to compile. But that broke the `ec_app` test b/c it requires a watchdog test to be written, and I wanted to draw the line in the sand somewhere.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/ec_app/src/main.c;l\u003d52",
+      "parentUuid": "d0daea96_4df6736e",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "2ccc4e0bd444727e0fd33b7f5e5864d2195588c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
