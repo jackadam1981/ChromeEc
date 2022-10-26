@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db071ba_cfed0035",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-26T18:08:28Z",
+      "side": 1,
+      "message": "come to think of it, if this structure was not packed there would be no need for padding, the complier would do it for us, and it would allow to generate smaller/faster code because all fields would be aligned.\n\nSomething to think about as a clean up/code size reduction measure.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 17
+      },
+      "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638d15f2_5bfb9e87",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-26T18:08:28Z",
+      "side": 1,
+      "message": "do we really care about this when verifying the AP RO. A much simpler information would be the range of gbb flags in the flash and the substitute value to use when calculating the hash, similar to \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/3958581/7/futility/cmd_gscvd.c#468\n\nThen there is just one function calculating the hash, with a bypass for gbb flags if necessary.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 28
+      },
+      "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
