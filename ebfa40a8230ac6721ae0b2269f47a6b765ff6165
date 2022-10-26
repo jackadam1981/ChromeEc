@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99f37f62_a5f381b4",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-26T18:23:49Z",
+      "side": 1,
+      "message": "We won\u0027t be able to change this later since we can\u0027t update the format of saved information. If we have pad[3] here and use __packed, we could add 3 more bytes of information into the same space. If we don\u0027t use __packed and remove pad[3], then any elements we add to the struct will take more space.\n\nShould I move validate_flags to the end of the struct before pad, since that\u0027s the thing that messes up the alignment?\n\nI doubt we\u0027ll ever modify this struct and there\u0027s a lot of space left in the AP RO flash space, so I\u0027m fine with either. We just need to decide now.",
+      "parentUuid": "1db071ba_cfed0035",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 17
+      },
+      "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "638d15f2_5bfb9e87",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 10
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-26T18:08:28Z",
       "side": 1,
       "message": "do we really care about this when verifying the AP RO. A much simpler information would be the range of gbb flags in the flash and the substitute value to use when calculating the hash, similar to \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/3958581/7/futility/cmd_gscvd.c#468\n\nThen there is just one function calculating the hash, with a bypass for gbb flags if necessary.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 28
+      },
+      "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78325c06_4d85d6b7",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-26T18:23:49Z",
+      "side": 1,
+      "message": "I think we need a gbbd specific ap_ro_check_header to validate the saved gbbd information and to have the possiblity of bumping the gbbd version or handling the information differently based on how it was saved later.\n\nAs far as the information included in the gbb descriptor. I\u0027m just worried we\u0027re going to overlook something. I think including the FMAP information helps us do some basic validity checks that the loaded state matches the actual ap ro information. verify_ap_ro_gbb_space just does a memcmp on the gbbd to validate it. Having the gbb and fmap information in addition doesn\u0027t add much overhead.",
+      "parentUuid": "638d15f2_5bfb9e87",
       "range": {
         "startLine": 207,
         "startChar": 0,
