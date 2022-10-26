@@ -120,7 +120,8 @@
 	"size or add support for CONFIG_FLASH_MULTIPLE_REGION."
 #endif
 
-#define CONFIG_FLASH_BANK_SIZE CONFIG_FLASH_ERASE_SIZE
+/* Use max flash erase size (64KB) as the protection bank size */
+#define CONFIG_FLASH_BANK_SIZE 0x20000
 #define CONFIG_FLASH_WRITE_SIZE 0x1 /* minimum write size */
 #define CONFIG_FLASH_WRITE_IDEAL_SIZE 256 /* one page size for write */
 
