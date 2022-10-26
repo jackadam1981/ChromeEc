@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b615a4c4_5bdcc04a",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-10-26T16:49:47Z",
+      "side": 1,
+      "message": "64KB is 0x10000",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "2c7ab7f7ce086e840916e90dbceb4ceb9a5d3b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60697838_9472649a",
+        "filename": "zephyr/shim/chip/npcx/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-10-26T16:49:47Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 15,
+        "startChar": 31,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "2c7ab7f7ce086e840916e90dbceb4ceb9a5d3b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
