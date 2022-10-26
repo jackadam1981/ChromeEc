@@ -385,6 +385,8 @@ ZTEST_USER(smart_battery, test_battery_mfacc)
 
 	/* Test fail on writing SB_MANUFACTURER_ACCESS register */
 	i2c_common_emul_set_write_fail_reg(common_data, SB_MANUFACTURER_ACCESS);
+	i2c_common_emul_set_write_fail_reg(common_data,
+					   SB_ALT_MANUFACTURER_ACCESS);
 	zassert_equal(EC_ERROR_INVAL,
 		      sb_read_mfgacc(cmd, SB_ALT_MANUFACTURER_ACCESS, recv_buf,
 				     len),

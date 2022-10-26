@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "battery_fuel_gauge.h"
 #include "console.h"
 #include "host_command.h"
 #include "i2c.h"
@@ -118,6 +119,12 @@ int sb_read_sized_block(int offset, uint8_t *data, int len)
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
 {
 	int rv;
+	uint8_t operation_status[3] = {
+		0x02,
+		cmd & 0xFF,
+		cmd >> 8,
+	};
+	int type = get_battery_type();
 
 	/*
 	 * First two bytes returned from read are command sent hence read
@@ -126,8 +133,14 @@ int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
 	if (len < 3)
 		return EC_ERROR_INVAL;
 
-	/* Send manufacturer access command */
-	rv = sb_write(SB_MANUFACTURER_ACCESS, cmd);
+	if (board_battery_info[type].fuel_gauge.fet.mfgacc_smb_block == 1)
+		/* Send manufacturer access command by the SMB block protocol */
+		rv = sb_write_block(block, operation_status,
+				    sizeof(operation_status));
+	else
+		/* Send manufacturer access command */
+		rv = sb_write(SB_MANUFACTURER_ACCESS, cmd);
+
 	if (rv)
 		return rv;
 

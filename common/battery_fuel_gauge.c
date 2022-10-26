@@ -85,7 +85,7 @@ void battery_set_fixed_battery_type(int type)
 #endif /* CONFIG_BATTERY_TYPE_NO_AUTO_DETECT */
 
 /* Get type of the battery connected on the board */
-static int get_battery_type(void)
+int get_battery_type(void)
 {
 	char manuf_name[32];
 	int i;

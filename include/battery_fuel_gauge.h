@@ -37,6 +37,7 @@ struct sleep_mode_info {
 
 struct fet_info {
 	const int mfgacc_support;
+	const int mfgacc_smb_block;
 	const uint8_t reg_addr;
 	const uint16_t reg_mask;
 	const uint16_t disconnect_val;
@@ -108,5 +109,8 @@ int battery_is_charge_fet_disabled(void);
  * @return	0 if successful, non-zero if error occurred
  */
 enum ec_error_list battery_sleep_fuel_gauge(void);
+
+/* Get type of the battery connected on the board */
+int get_battery_type(void);
 
 #endif /* __CROS_EC_BATTERY_FUEL_GAUGE_H */
