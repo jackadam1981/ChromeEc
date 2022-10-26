@@ -392,6 +392,16 @@ ZTEST_USER(smart_battery, test_battery_mfacc)
 	i2c_common_emul_set_write_fail_reg(common_data,
 					   I2C_COMMON_EMUL_NO_FAIL_REG);
 
+	/* Test fail on writing SB_MANUFACTURER_ACCESS register */
+	i2c_common_emul_set_write_fail_reg(common_data,
+					   SB_ALT_MANUFACTURER_ACCESS);
+	zassert_equal(EC_ERROR_INVAL,
+		      sb_read_mfgacc_block(cmd, SB_ALT_MANUFACTURER_ACCESS,
+					   recv_buf, len),
+		      NULL);
+	i2c_common_emul_set_write_fail_reg(common_data,
+					   I2C_COMMON_EMUL_NO_FAIL_REG);
+
 	/* Test fail on reading manufacturer data (custom handler is not set) */
 	zassert_equal(EC_ERROR_INVAL,
 		      sb_read_mfgacc(cmd, SB_ALT_MANUFACTURER_ACCESS, recv_buf,
