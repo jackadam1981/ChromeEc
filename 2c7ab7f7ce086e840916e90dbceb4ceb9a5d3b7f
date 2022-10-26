@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b2b2699_287c8791",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-10-26T16:55:24Z",
+      "side": 1,
+      "message": "Don\u0027t mention the erase size. You can say the smallest protection size is 1/8 of the flash, i.e. 64KB.",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "2c7ab7f7ce086e840916e90dbceb4ceb9a5d3b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b615a4c4_5bdcc04a",
         "filename": "chip/npcx/config_flash_layout.h",
         "patchSetId": 1
