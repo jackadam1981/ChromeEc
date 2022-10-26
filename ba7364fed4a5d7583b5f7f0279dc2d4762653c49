@@ -69,6 +69,24 @@
       "parentUuid": "c40d8053_7f7e2cda",
       "revId": "ba7364fed4a5d7583b5f7f0279dc2d4762653c49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f30e25_04d9f4f7",
+        "filename": "zephyr/test/jump_tags/src/jump_tags.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-26T22:56:29Z",
+      "side": 1,
+      "message": "Now there is http://b/255823256\n\nSo I think I can actually get this in by sometime next week or after so +1 from me because it won\u0027t be a problem soon.",
+      "parentUuid": "7e9b4a36_49364517",
+      "revId": "ba7364fed4a5d7583b5f7f0279dc2d4762653c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
