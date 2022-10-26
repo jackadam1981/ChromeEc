@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d4a4927_23fa7a82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-26T15:57:27Z",
+      "side": 1,
+      "message": "Sorry for the churn, but this version actually works well whether called from make or run standalone. On my machine zmake build brya takes 16s and zmake build -a takes 64s, all while never running more builds than I have cpus.",
+      "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
