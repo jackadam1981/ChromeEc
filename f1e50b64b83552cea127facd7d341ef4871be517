@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50807ab_528ebd42",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-26T15:33:57Z",
+      "side": 1,
+      "message": "Is this only static for testing? If so, do we have a mechanism for enabling something as non-static during testing?",
+      "revId": "f1e50b64b83552cea127facd7d341ef4871be517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
