@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576c0969_baeda9a0",
+        "filename": "zephyr/projects/corsola/prj_steelix.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2022-10-26T00:29:15Z",
+      "side": 1,
+      "message": "Could you check again if you\u0027ve disable all necessary config for locked image ?\n\n```\nCONFIG_BRINGUP : done\nCONFIG_SYSTEM_UNLOCKED : done\nCONFIG_USB_PD_DEBUG_LEVEL\nCONFIG_CMD_GPIO_EXTENDED\nCONFIG_CMD_POWERINDEBUG\nCONFIG_I2C_DEBUG\nCONFIG_BYPASS_CBI_EEPROM_WP_CHECK\n```\n\nThank you.",
+      "revId": "ed57a5c8e68c4d46983dbed459728506fecf74c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
