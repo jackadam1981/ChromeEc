@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c518e2_3a4395b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-26T23:24:05Z",
+      "side": 1,
+      "message": "`__fallthrough`?",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "8280b1c2c9ec7b8d2ac75718e4d3f355b5a311db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef96e9a0_405a1951",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-26T23:24:05Z",
+      "side": 1,
+      "message": "This looks somewhat similar to the bug described in http://b/253292373#comment4, but I guess it\u0027s not the same since it\u0027s not global scope.\n\nCan you file a bug against the toolchain (same component as above)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "8280b1c2c9ec7b8d2ac75718e4d3f355b5a311db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e426bc5_2fef2d39",
+        "filename": "include/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-26T23:24:05Z",
+      "side": 1,
+      "message": "Can we put this in a separate commit since it seems unrelated?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 6
+      },
+      "revId": "8280b1c2c9ec7b8d2ac75718e4d3f355b5a311db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
