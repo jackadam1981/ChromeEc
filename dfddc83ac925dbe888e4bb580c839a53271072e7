@@ -46,6 +46,30 @@
       },
       "revId": "dfddc83ac925dbe888e4bb580c839a53271072e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119a8258_ab6d2dca",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-26T18:32:47Z",
+      "side": 1,
+      "message": "in this case there is no need to check that it exceeds CONFIG_FLASH_BANK_SIZE - the two checks together seem pretty redundant to me.",
+      "parentUuid": "c77e6842_edc15d6c",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 40
+      },
+      "revId": "dfddc83ac925dbe888e4bb580c839a53271072e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
