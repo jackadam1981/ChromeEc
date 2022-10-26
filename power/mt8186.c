@@ -48,7 +48,7 @@
 #define IN_SUSPEND_ASSERTED POWER_SIGNAL_MASK(AP_IN_S3)
 #define IN_AP_RST POWER_SIGNAL_MASK(AP_IN_RST)
 
-/* Long power key press to force shutdown in S0. go/crosdebug */
+/* Long power key press to force shutdown in S0, add . go/crosdebug */
 #define FORCED_SHUTDOWN_DELAY (8 * SECOND)
 
 /* Long power key press to boot from S5/G3 state. */
@@ -139,6 +139,11 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s: 0x%x", __func__, reason);
 	report_ap_reset(reason);
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		CPRINTS("%s: chipset already off", __func__);
+		return;
+	}
 
 	is_shutdown = true;
 	/*
