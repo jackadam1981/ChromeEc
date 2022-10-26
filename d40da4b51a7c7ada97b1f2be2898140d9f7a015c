@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27788b90_e1511b18",
+        "filename": "zephyr/test/drivers/default/src/bmi_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-10-26T16:10:45Z",
+      "side": 1,
+      "message": "There should be `Expected -1,`. Sorry that I didn\u0027t catch it during first review.",
+      "revId": "d40da4b51a7c7ada97b1f2be2898140d9f7a015c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
