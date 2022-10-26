@@ -16,6 +16,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON
 	"src/led.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_AMD_STT
 	"src/stt.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY
+  "battery_present.c")
 
 if(DEFINED CONFIG_BOARD_MORTHAL)
 	project(morthal)
