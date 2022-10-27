@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "249335d5_88f33ad4",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-27T17:35:47Z",
+      "side": 1,
+      "message": "also, I did not think about it origingally: this structure would not fit into one USB chunk, so this is a bit misleading.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "dfddc83ac925dbe888e4bb580c839a53271072e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4506ec32_eefab93f",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-27T17:35:47Z",
+      "side": 1,
+      "message": "I think all we need to do is to add to this header the GBB flags offset and the sabstitute value.\n\nIf the saved offset is zero - no need for flags special processing, If it is not - the value at the offset needs to be replaced with the flags value saved in this structure.\n\nThen there is no need to change the format of ap_ro_check_payload{}",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 19
+      },
+      "revId": "dfddc83ac925dbe888e4bb580c839a53271072e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f63c2cb_0e313b40",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
