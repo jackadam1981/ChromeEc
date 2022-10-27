@@ -611,9 +611,13 @@ void ish_pm_init(void)
 
 	/* clear reset history register in CCU */
 	CCU_RST_HST = CCU_RST_HST;
+	if (IS_ENABLED(CONFIG_ISH_NEW_PM))
+		PMU_D3_STATUS_1 = 0xffffffff;
 
 	/* disable TCG and disable BCG */
-	CCU_TCG_EN = 0;
+	CCU_TCG_ENABLE = 0;
+	CCU_BCG_ENABLE = 0;
+	PMU_RF_ROM_PWR_CTRL = 0;
 	reset_bcg();
 
 	if (IS_ENABLED(CONFIG_ISH_PM_AONTASK))
@@ -626,6 +630,10 @@ void ish_pm_init(void)
 
 	/* unmask all wake up events */
 	PMU_MASK_EVENT = ~PMU_MASK_EVENT_BIT_ALL;
+	PMU_MASK_EVENT2 = PMU_MASK2_ALL_EVENTS;
+
+	SBEP_REG_CLK_GATE_ENABLE =
+		(SB_CLK_GATE_EN_LOCAL_CLK_GATE | SB_CLK_GATE_EN_TRUNK_CLK_GATE);
 
 	if (IS_ENABLED(CONFIG_ISH_NEW_PM)) {
 		PMU_ISH_FABRIC_CNT = (PMU_ISH_FABRIC_CNT & 0xffff0000) |
@@ -648,6 +656,8 @@ void ish_pm_init(void)
 		    (PMU_D3_STATUS & PMU_BME_BIT_SET))
 			PMU_D3_STATUS = PMU_D3_STATUS;
 
+		if (IS_ENABLED(CONFIG_ISH_NEW_PM))
+			pmu_unmask_d3_bme();
 		enable_d3bme_irqs();
 	}
 }
