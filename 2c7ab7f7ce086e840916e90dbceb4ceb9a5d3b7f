@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63b55f2_5f26da5b",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-10-27T07:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b2b2699_287c8791",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "2c7ab7f7ce086e840916e90dbceb4ceb9a5d3b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b615a4c4_5bdcc04a",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f30fa6b3_e74700e8",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-10-27T07:04:43Z",
+      "side": 1,
+      "message": "Oops, I forget to change it back to 64KB when playing with different back size.",
+      "parentUuid": "b615a4c4_5bdcc04a",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "2c7ab7f7ce086e840916e90dbceb4ceb9a5d3b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60697838_9472649a",
         "filename": "zephyr/shim/chip/npcx/include/flash_chip.h",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-26T16:49:47Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 15,
+        "startChar": 31,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "2c7ab7f7ce086e840916e90dbceb4ceb9a5d3b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2575c2_30d4ca36",
+        "filename": "zephyr/shim/chip/npcx/include/flash_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-10-27T07:04:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60697838_9472649a",
       "range": {
         "startLine": 15,
         "startChar": 31,
