@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75820eb_815d4f5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-27T16:04:52Z",
+      "side": 1,
+      "message": "Oops 😊",
+      "parentUuid": "06c518e2_3a4395b2",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "8280b1c2c9ec7b8d2ac75718e4d3f355b5a311db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef96e9a0_405a1951",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efd2111_88ae1eb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-27T16:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8969e867_c2dc40db",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "8280b1c2c9ec7b8d2ac75718e4d3f355b5a311db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e426bc5_2fef2d39",
@@ -84,6 +132,30 @@
       "writtenOn": "2022-10-26T23:24:05Z",
       "side": 1,
       "message": "Can we put this in a separate commit since it seems unrelated?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 6
+      },
+      "revId": "8280b1c2c9ec7b8d2ac75718e4d3f355b5a311db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83700011_556ef32d",
+        "filename": "include/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-27T16:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e426bc5_2fef2d39",
       "range": {
         "startLine": 202,
         "startChar": 0,
