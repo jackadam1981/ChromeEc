@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b2ae34_00220f64",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-27T21:00:18Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "555d7243_d785f445",
+      "range": {
+        "startLine": 262,
+        "startChar": 3,
+        "endLine": 262,
+        "endChar": 33
+      },
+      "revId": "3e1e098edeecf2879d93cb031a63e8c3ee05a710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e2b0842_a690ab1e",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-26T17:27:09Z",
       "side": 1,
       "message": "this is such a mix of C operators, please add parens to make it easier to follow.",
+      "range": {
+        "startLine": 292,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 70
+      },
+      "revId": "3e1e098edeecf2879d93cb031a63e8c3ee05a710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f4ac5f_6ef608e3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-27T21:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2b0842_a690ab1e",
       "range": {
         "startLine": 292,
         "startChar": 5,
@@ -101,6 +149,30 @@
       "side": 1,
       "message": "I\u0027ll add the check here. I think the BUILD_ASSERTS in the next CL guarantee we\u0027ll only write chunks that are divisible by 4.",
       "parentUuid": "a1faec79_ba62e396",
+      "range": {
+        "startLine": 297,
+        "startChar": 18,
+        "endLine": 297,
+        "endChar": 27
+      },
+      "revId": "3e1e098edeecf2879d93cb031a63e8c3ee05a710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ffad7c_93042030",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-27T21:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e568b2_4154c950",
       "range": {
         "startLine": 297,
         "startChar": 18,
