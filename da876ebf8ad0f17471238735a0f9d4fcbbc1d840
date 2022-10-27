@@ -22,6 +22,30 @@
       },
       "revId": "da876ebf8ad0f17471238735a0f9d4fcbbc1d840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f843c79d_2da05de6",
+        "filename": "board/moli/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1528037
+      },
+      "writtenOn": "2022-10-27T02:50:53Z",
+      "side": 1,
+      "message": "I use hook to call monitor_irq_deferred in monitor_interrupt and there is also two hooks in power_button_simulate_press. It seems can\u0027t call hook in hook. They can\u0027t work at the same time.",
+      "parentUuid": "5aba5a7a_aa5fa713",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 0
+      },
+      "revId": "da876ebf8ad0f17471238735a0f9d4fcbbc1d840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
