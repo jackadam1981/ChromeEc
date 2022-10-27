@@ -16,6 +16,24 @@
       "message": "I don\u0027t know how far you want to take this right now, but other command types have spec-defined maximum lengths as well.",
       "revId": "72f52ffff27620616271a2451397958023442c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563cf494_2314770c",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-27T20:21:16Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m unsure there.  I\u0027d like to keep the interface flexible for the most part so we have minimal EC updates when fields change.  But for the Attention, I imagine that will always be generated in the EC and therefore easy to change the length check if/when the message contents change.\n\nOne thing I\u0027ve been contemplating is how much to police what the AP wants to send.  Ex. should we verify we\u0027re okay to send SOP\u0027 before letting them queue it up?",
+      "parentUuid": "e965996a_ea41c498",
+      "revId": "72f52ffff27620616271a2451397958023442c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
