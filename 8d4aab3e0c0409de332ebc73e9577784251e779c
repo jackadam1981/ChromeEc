@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f529719_b1b69515",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 17
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-10-27T23:14:39Z",
+      "side": 1,
+      "message": "Can you please keep also pin# (e.g. GPIO44 for TEMP_SENSOR_AMB and GPIO45 for TEMP_SENSOR_CHARGER)?",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 42
+      },
+      "revId": "8d4aab3e0c0409de332ebc73e9577784251e779c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
