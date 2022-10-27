@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdbd4f63_0e760353",
+        "filename": "zephyr/projects/nissa/npcx_program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-27T23:27:01Z",
+      "side": 1,
+      "message": "This would make it extremely difficult to debug any USB-C issues; I think other things should be far ahead of this on the chopping block.\n\n`CONFIG_SHELL_MINIMAL\u003dy` seems like a good option, since that saves ~16k of flash on nivviks.",
+      "revId": "61c4467a5330346ba8cf7b5fe826e20dccecce78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
