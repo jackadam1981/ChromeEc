@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7c3d2b_6e295645",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-10-27T21:27:23Z",
+      "side": 1,
+      "message": "I get `/dev/pts/13: Got an unknown prompt text: x` when running this. It\u0027s the first iteration so `chargen` is not currently running.",
+      "revId": "b995e800e3a237b1b28197287e91e6e01a05cd92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
