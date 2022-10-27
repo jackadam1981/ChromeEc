@@ -342,6 +342,27 @@ static int rt9490_init_setting(int chgnum)
 	 */
 	RETURN_ERROR(rt9490_enable_pwm_1mhz(CHARGER_SOLO, true));
 
+	/* b/253568743#comment14 vsys workaround */
+	RETURN_ERROR(rt9490_enable_hidden_mode(chgnum, true));
+	rt9490_set_bit(chgnum, RT9490_REG_HD_ADD_CTRL2,
+		       RT9490_EN_FON_PP_BAT_TRACK);
+	RETURN_ERROR(rt9490_enable_hidden_mode(chgnum, false));
+
+	return EC_SUCCESS;
+}
+
+int rt9490_enable_hidden_mode(int chgnum, bool en)
+{
+	if (en) {
+		RETURN_ERROR(
+			rt9490_write8(chgnum, RT9490_REG_TM_PAS_CODE1, 0x69));
+		RETURN_ERROR(
+			rt9490_write8(chgnum, RT9490_REG_TM_PAS_CODE2, 0x96));
+	} else {
+		RETURN_ERROR(rt9490_write8(chgnum, RT9490_REG_TM_PAS_CODE1, 0));
+		RETURN_ERROR(rt9490_write8(chgnum, RT9490_REG_TM_PAS_CODE2, 0));
+	}
+
 	return EC_SUCCESS;
 }
 
