@@ -54,6 +54,9 @@ extern "C" {
 #define __auto_type auto
 #endif
 
+// ccprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", _a,
+// 		_b);
+
 #define TEST_OPERATOR(a, b, op, fmt)                                         \
 	do {                                                                 \
 		__auto_type _a = (a);                                        \
@@ -61,8 +64,6 @@ extern "C" {
 		if (!(_a op _b)) {                                           \
 			ccprintf("%s:%d: ASSERTION failed: %s " #op " %s\n", \
 				 __FILE__, __LINE__, #a, #b);                \
-			ccprintf("\t\tEVAL: " fmt " " #op " " fmt "\n", _a,  \
-				 _b);                                        \
 			task_dump_trace();                                   \
 			return EC_ERROR_UNKNOWN;                             \
 		} else {                                                     \
