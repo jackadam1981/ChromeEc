@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2752cee4_4f48b72e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-10-27T19:57:04Z",
+      "side": 1,
+      "message": "Hi Gwendal,\n\nI\u0027m not familiar with how the iioservice stuff works.   It looks like there are some READMEs out there I\u0027ll need to work through:\n\n1. https://chromium.googlesource.com/chromium/src/+/HEAD/mojo/README.md\n1. https://chromium.googlesource.com/chromium/src/+/HEAD/docs/mojo_and_services.md\n\nWe were taking this approach, since it lets us easily call into the DTPC ASL code with the corresponding Coreboot changes:\n\n67793: ec/google/chromec: Host event support of DTTS | https://review.coreboot.org/c/coreboot/+/67793\n\nCan you give a little more detail on what using iioservice/mojo would look like when trying to call back into the ASL code?",
+      "parentUuid": "aaffc2ca_3a373562",
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccab65ae_c2482541",
         "filename": "common/acpi.c",
         "patchSetId": 15
