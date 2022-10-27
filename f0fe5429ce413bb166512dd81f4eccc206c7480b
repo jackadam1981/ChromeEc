@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe1676d6_fbd862cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-27T21:42:14Z",
+      "side": 1,
+      "message": "I just checked out this CL as a branch and it seems to be working for me. Can you paste the full error? (maybe in http://shortn/_x3FEynPRLw if it\u0027s too large for gerrit).",
+      "parentUuid": "c30ba061_9da092bd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "f0fe5429ce413bb166512dd81f4eccc206c7480b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "576e9940_12b99b62",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
