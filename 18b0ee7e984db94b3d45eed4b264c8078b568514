@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28fa25dd_55bfbce3",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-27T16:22:27Z",
+      "side": 1,
+      "message": "Just curious: I see a lot of logs like this in this script. I might have imagined that some set of arguments to `subprocess.run` would produce logs like this for us. Is that not the case?",
+      "revId": "18b0ee7e984db94b3d45eed4b264c8078b568514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1adebb79_7b6c9c21",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-27T16:22:27Z",
+      "side": 1,
+      "message": "Nit: This layer of parens seems unnecessary.",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 5
+      },
+      "revId": "18b0ee7e984db94b3d45eed4b264c8078b568514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
