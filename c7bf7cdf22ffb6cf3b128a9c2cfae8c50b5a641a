@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e08aad_473aec4d",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-27T16:15:32Z",
+      "side": 1,
+      "message": "Nit: The max count prevents the ANX3447 from generating a watchdog by keeping the interrupt rate from going higher than that. We\u0027ve experimentally determined that it can go at least this high without causing watchdogs, in which case we don\u0027t even detect a storm. Increasing the max count doesn\u0027t prevent watchdogs.\n\nI would leave the text of this comment more or less as it previous was. Just change\n1. \"480\" -\u003e \"1800\"\n2. \"such as FW update over PD\" -\u003e \"such as BIST compliance tests\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 76
+      },
+      "revId": "c7bf7cdf22ffb6cf3b128a9c2cfae8c50b5a641a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
