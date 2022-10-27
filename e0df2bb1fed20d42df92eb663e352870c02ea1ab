@@ -16,6 +16,24 @@
       "message": "Abe, any idea how I\u0027m somehow not covering these lines?",
       "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60fa65ec_910d6f8a",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-27T19:56:15Z",
+      "side": 1,
+      "message": "Talked to Aaron and Yuval.  It sounds like it\u0027s probably an issue with optimizations messing with the code coverage lines.  We\u0027ll just override the -1 before commit...",
+      "parentUuid": "ac2cda10_009bdbba",
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
