@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "661425e4_0dbbec48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:46:00Z",
+      "side": 1,
+      "message": "Can you split the CL in 2: Roolback and icm42608 support?",
+      "revId": "64399a52104c0a0efb08f8904159a52aeabe2f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f958f6_b11e5de5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:46:00Z",
+      "side": 1,
+      "message": "Run \n`tast run \u003cDUT_IP\u003e hardware.SensorIioserviceHard` to make sure the sensors are working at speed.",
+      "revId": "64399a52104c0a0efb08f8904159a52aeabe2f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a249a3fa_ef385239",

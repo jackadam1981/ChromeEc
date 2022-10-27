@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853287a4_00ad88b5",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:46:00Z",
+      "side": 0,
+      "message": "How does it work for accelerommeter already in the field? How can we differentiate accelerometers that have a HW defect from those who don\u0027t?\nThat may be an issue when we upgrade the EC firmware. We may need to exclude this change for older chromebooks.",
+      "revId": "17e0734e88c26d63658952c8cad73ef847a7b277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
