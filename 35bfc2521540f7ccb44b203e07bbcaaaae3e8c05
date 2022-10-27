@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94045b84_6176f3e2",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-10-27T04:28:15Z",
+      "side": 1,
+      "message": "I guess this should be `uint8_t *data`?\n\n(`uint8_t (*data)[24]` makes the subscript expression `data[i]` in line 524 forwards 24 * i bytes)",
+      "range": {
+        "startLine": 516,
+        "startChar": 57,
+        "endLine": 516,
+        "endChar": 77
+      },
+      "revId": "35bfc2521540f7ccb44b203e07bbcaaaae3e8c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
