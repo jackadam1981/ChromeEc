@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaffc2ca_3a373562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T02:13:01Z",
+      "side": 1,
+      "message": "The sensor is managed by the motion sense task, there is not need to add another event. In the AP, we can use the iio subsystem and the cros-ec-activity sensor to get the event, or even better, register to iioservice via mojo and get the event.",
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccab65ae_c2482541",
