@@ -144,6 +144,13 @@
 		enable-pin = <&gpio_switchcap_on>;
 		power-good-pin = <&gpio_switchcap_pg>;
 	};
+
+	cros_power_button: cros_power_button {
+		compatible = "cros-ec,power-button";
+		button_type = <0>;
+		gpios = <&gpio0 25 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+		debounce_us = <30000>;
+	};
 };
 
 &gpio0 {
