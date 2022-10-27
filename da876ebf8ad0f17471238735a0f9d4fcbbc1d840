@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aba5a7a_aa5fa713",
+        "filename": "board/moli/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-10-27T02:18:19Z",
+      "side": 1,
+      "message": "Why do you need to add a highest priority task to handle this? Could you please explain why the hook function can\u0027t do the work?",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 0
+      },
+      "revId": "da876ebf8ad0f17471238735a0f9d4fcbbc1d840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
