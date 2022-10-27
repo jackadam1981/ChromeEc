@@ -146,12 +146,12 @@ test_mockable void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	/* Flush console before hibernating */
 	cflush();
 
-	if (board_hibernate)
-		board_hibernate();
-
 	/* Save 'wake-up from hibernate' reset flag */
 	chip_save_reset_flags(chip_read_reset_flags() |
 			      EC_RESET_FLAG_HIBERNATE);
+
+	if (board_hibernate)
+		board_hibernate();
 
 	err = cros_system_hibernate(sys_dev, seconds, microseconds);
 	if (err < 0) {
