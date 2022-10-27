@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb07209f_b3d1a380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-27T14:53:06Z",
+      "side": 1,
+      "message": "Looks good!  I suspect you should write some tests for this.  I believe we have a GPIO emulator, so you can probably get something in zephyr/test/drivers set up to deal with this.  Or you can make your own test binary under zephyr/test.  Your choice :)",
+      "revId": "67576ec2795f1834b3bdd36efa18eadcf922ede7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
