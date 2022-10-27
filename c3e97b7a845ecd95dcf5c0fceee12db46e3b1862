@@ -323,6 +323,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd32116f_3952ef8b",
+        "filename": "common/body_detection.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:39:03Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t know when does the AP get the body status without this CL.\n\nAt line 106, we add an entry in the sensor FIFO, that will trigger a host event (`EC_MKBP_EVENT_SENSOR_FIFO`), `cros_ec_sensorhub_ring` will read the FIFO.\n\n\u003e Will handling the EC host event and the interrupt cause any issues?\n\nNo, that\u0027s fine.",
+      "parentUuid": "9b6a4439_e49eb27e",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "c3e97b7a845ecd95dcf5c0fceee12db46e3b1862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e250fa18_031c48b0",
         "filename": "common/body_detection.c",
         "patchSetId": 8

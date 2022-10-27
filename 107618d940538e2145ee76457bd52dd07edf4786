@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01fcd0b1_5151b097",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:39:03Z",
+      "side": 1,
+      "message": "Mojo is not going to work with ASL code. So indeed another signal is needed.",
+      "parentUuid": "2752cee4_4f48b72e",
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccab65ae_c2482541",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-10-25T15:07:27Z",
       "side": 1,
       "message": "Can you write a test for this?\n\nhttps://source.chromium.org/chromium/chromiumos/platform/ec/+/main:zephyr/test/drivers/common/src/utils.c;l\u003d189",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75b1ae8_7cfa533f",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:39:03Z",
+      "side": 1,
+      "message": "body_detect_get_state() return 0 or 1, no need of mask.",
+      "parentUuid": "ccab65ae_c2482541",
       "range": {
         "startLine": 246,
         "startChar": 3,
@@ -221,6 +263,81 @@
         "endLine": 419,
         "endChar": 42
       },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464ce1d9_3a41d799",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:39:03Z",
+      "side": 1,
+      "message": "Off Body/On Body status: 0 \u003d Off Body.",
+      "parentUuid": "d3a3ee19_548e38ba",
+      "range": {
+        "startLine": 419,
+        "startChar": 15,
+        "endLine": 419,
+        "endChar": 42
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384daedf_8793a496",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:39:03Z",
+      "side": 1,
+      "message": "\"- on body/off body transition event\"",
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5de4add_aaa4ff2c",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:39:03Z",
+      "side": 1,
+      "message": "\"Notify host with a specific host event when body status is changed\"",
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5bb279_591f88ec",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 15
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-27T20:39:03Z",
+      "side": 1,
+      "message": "..., in addition to adding an event in the motion sensor FIFO queue.",
       "revId": "107618d940538e2145ee76457bd52dd07edf4786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
