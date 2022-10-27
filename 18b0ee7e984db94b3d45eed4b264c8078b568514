@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d6d93d_770a56c8",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-27T21:24:58Z",
+      "side": 1,
+      "message": "Not that I see https://python.readthedocs.io/en/stable/library/subprocess.html.",
+      "parentUuid": "28fa25dd_55bfbce3",
+      "revId": "18b0ee7e984db94b3d45eed4b264c8078b568514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1adebb79_7b6c9c21",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-27T16:22:27Z",
       "side": 1,
       "message": "Nit: This layer of parens seems unnecessary.",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 5
+      },
+      "revId": "18b0ee7e984db94b3d45eed4b264c8078b568514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5319633a_3e92ed37",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-27T21:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1adebb79_7b6c9c21",
       "range": {
         "startLine": 341,
         "startChar": 4,
