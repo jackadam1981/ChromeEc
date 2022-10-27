@@ -141,6 +141,29 @@
       },
       "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb153ba_53aec47e",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-27T18:38:34Z",
+      "side": 1,
+      "message": "Andrey, Vadim wants to move this check to line 1025. I want to keep it here. If it stays here, cr50 will always find the gbb and then verify the loaded gbbd flag location matches the existing one.\nIf we move it to 1025, then cr50 will just use the gbb flag location from AP RO flash and won\u0027t validate the location.",
+      "range": {
+        "startLine": 1029,
+        "startChar": 7,
+        "endLine": 1029,
+        "endChar": 51
+      },
+      "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
