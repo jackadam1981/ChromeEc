@@ -16,6 +16,24 @@
       "message": "Since we\u0027re adding a prototype in the test can we make this `test_mockable` instead of `test_mockable_static`? I think we also don\u0027t need the `mockable` since we\u0027re not mocking this function.",
       "revId": "28f4eab06397f20fc7d533fe6a52185fd9ad13d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb54a22_7630dc25",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-27T20:03:06Z",
+      "side": 1,
+      "message": "`test_mockable` will make it global in non-test builds. `test_mockable_static` will keep it `static` in normal builds, but add `weak` to the function in tests (we don\u0027t actually need the `weak` aspect of it, but it also doesn\u0027t hurt. I didn\u0027t want to add `test_static` as yet another short hand.",
+      "parentUuid": "c8963f34_a1153c9b",
+      "revId": "28f4eab06397f20fc7d533fe6a52185fd9ad13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
