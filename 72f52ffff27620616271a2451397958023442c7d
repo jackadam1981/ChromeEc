@@ -34,6 +34,24 @@
       "parentUuid": "e965996a_ea41c498",
       "revId": "72f52ffff27620616271a2451397958023442c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce50b2b2_17f13207",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-27T20:38:09Z",
+      "side": 1,
+      "message": "I don\u0027t know how much to police the contents in general. We could do more validation of PD requirements, but we obviously can\u0027t validate VDOs for alt modes we don\u0027t know about.\n\nAs far as being able to send SOP\u0027, this interface is already asynchronous, and we\u0027ll know soon enough whether we can send SOP\u0027. The EC DPM shouldn\u0027t be taking requests from the AP until it\u0027s done with basic stuff like cable discovery anyway (for now). If we get to the point where we can take requests, and there\u0027s one waiting, we should try it. If it fails because we can\u0027t send SOP\u0027, then we can notify the AP that that happened.",
+      "parentUuid": "563cf494_2314770c",
+      "revId": "72f52ffff27620616271a2451397958023442c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
