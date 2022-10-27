@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a572d0e7_041e250c",
+        "filename": "include/common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-27T16:20:17Z",
+      "side": 1,
+      "message": "Is this necessary? (I think attributes allow both with and without `__`)",
+      "range": {
+        "startLine": 203,
+        "startChar": 37,
+        "endLine": 203,
+        "endChar": 52
+      },
+      "revId": "04a06f210345b2d65ce51990d5865cdc243d3e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
