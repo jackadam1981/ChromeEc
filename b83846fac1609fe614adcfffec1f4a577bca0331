@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5867b2d_2c9135ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-27T21:19:10Z",
+      "side": 1,
+      "message": "While testing I found some dead code, and also a bug. Using select with a blocking file descriptor can cause a deadlock, and the test exposed it.",
+      "parentUuid": "0b084cad_6f33c088",
+      "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07f9f6d6_12eebea7",
@@ -76,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "957527cc_8f8c4eea",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-27T21:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07f9f6d6_12eebea7",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 49
+      },
+      "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "339d8a7d_febd5a4b",
@@ -89,6 +131,30 @@
       "writtenOn": "2022-10-26T16:51:25Z",
       "side": 1,
       "message": "`f\" -j{self.jobs}\"`",
+      "range": {
+        "startLine": 212,
+        "startChar": 20,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "b83846fac1609fe614adcfffec1f4a577bca0331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0886f076_95a41de0",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-27T21:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339d8a7d_febd5a4b",
       "range": {
         "startLine": 212,
         "startChar": 20,
