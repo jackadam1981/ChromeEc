@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8963f34_a1153c9b",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-27T19:56:59Z",
+      "side": 1,
+      "message": "Since we\u0027re adding a prototype in the test can we make this `test_mockable` instead of `test_mockable_static`? I think we also don\u0027t need the `mockable` since we\u0027re not mocking this function.",
+      "revId": "28f4eab06397f20fc7d533fe6a52185fd9ad13d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
