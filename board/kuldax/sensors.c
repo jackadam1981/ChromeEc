@@ -49,8 +49,8 @@ const struct adc_t adc_channels[] = {
 	[ADC_PPVAR_IMON] = {  /* 872.3 mV/A */
 		.name = "PPVAR_IMON",
 		.input_ch = NPCX_ADC_CH3,
-		.factor_mul = ADC_MAX_VOLT * 1433,
-		.factor_div = (ADC_READ_MAX + 1) * 1250,
+		.factor_mul = ADC_MAX_VOLT * 143,
+		.factor_div = (ADC_READ_MAX + 1) * 125,
 	},
 
 };
