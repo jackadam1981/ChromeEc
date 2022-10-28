@@ -9,7 +9,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/atomic.h>
 
-LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
+LOG_MODULE_REGISTER(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
 /* Private event used to wake up driver thread when unlocking state. */
 #define AP_PWRSEQ_EVENT_STATE_UNLOCK BIT(AP_PWRSEQ_EVENT_COUNT)
