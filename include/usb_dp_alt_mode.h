@@ -88,4 +88,53 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd);
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					    uint32_t *vdm);
 
+#ifdef USB_VID_USBC_MONITOR
+/*
+ * Initialize docking monitor mode state for the specified port.
+ *
+ * @param port USB-C port number
+ */
+__overridable void board_docking_monitor_mode_init(int port);
+
+/*
+ * Checks whether the mode entry sequence for docking monitor alternate mode
+ * is done for a port.
+ *
+ * @param port      USB-C port number
+ * @return          True if entry sequence for docking monitor mode is completed
+ *                  False otherwise
+ */
+__overridable bool board_docking_monitor_mode_check_entry_is_done(int port);
+
+/*
+ * Handles received docking monitor mode VDM ACKs.
+ *
+ * @param port      USB-C port number
+ * @param type      Transmit type (SOP, SOP') for received ACK
+ * @param vdo_count The number of VDOs in the ACK VDM
+ * @param vdm       VDM from ACK
+ */
+__overridable void board_docking_monitor_vdm_acked(int port,
+						   enum tcpci_msg_type type,
+						   int vdo_count,
+						   uint32_t *vdm);
+
+/*
+ * Construct the next docking monitor VDM that should be sent.
+ *
+ * @param[in] port	    USB-C port number
+ * @param[in,out] vdo_count The number of VDOs in vdm; must be at least
+ *			    VDO_MAX_SIZE.  On success, number of populated VDOs
+ * @param[out] vdm          The VDM payload to be sent; output; must point to at
+ *			    least VDO_MAX_SIZE elements
+ * @return		    enum dpm_msg_setup_status
+ */
+__overridable enum dpm_msg_setup_status
+board_docking_monitor_setup_next_vdm(int port, int *vdo_count, uint32_t *vdm);
+
+__overridable int board_customized_vdm_response(int port, uint32_t *payload);
+
+__overridable void board_docking_monitor_set_mode_done(int port);
+#endif
+
 #endif /* __CROS_EC_USB_DP_ALT_MODE_H */
