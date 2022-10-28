@@ -4,11 +4,23 @@
  */
 
 #include "host_command.h"
+#include "zephyr/drivers/gpio/gpio_emul.h"
 #include <zephyr/ztest.h>
 
 #include "cros_board_info.h"
 #include "test/drivers/test_mocks.h"
 #include "test/drivers/test_state.h"
+
+#define WP_L_GPIO_PATH DT_PATH(named_gpios, wp_l)
+
+static int gpio_wp_l_set(int value)
+{
+	const struct device *wp_l_gpio_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(WP_L_GPIO_PATH, gpios));
+
+	return gpio_emul_input_set(wp_l_gpio_dev,
+				   DT_GPIO_PIN(WP_L_GPIO_PATH, gpios), value);
+}
 
 ZTEST(common_cbi, test_cbi_set_string__null_str)
 {
@@ -50,6 +62,53 @@ ZTEST(common_cbi, test_cbi_set_string)
 	/* Validate that next address for write was set appropriately */
 	zassert_equal_ptr(addr_byte_after_store - expected_added_memory,
 			  &cbi_data.data);
+}
+
+ZTEST_USER(common_cbi, test_hc_cbi_set_get)
+{
+	const char data[] = "hello";
+
+	struct actual_set_params {
+		struct ec_params_set_cbi params;
+		uint8_t actual_data[50];
+	};
+	struct actual_set_params hc_set_params = {
+		.params = {
+		.tag = CBI_TAG_SKU_ID,
+		/* Force a reload */
+		.flag = CBI_SET_INIT,
+		.size = ARRAY_SIZE(data),
+		},
+	};
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_SET_CROS_BOARD_INFO, 0, hc_set_params);
+
+	cbi_create();
+
+	memcpy(hc_set_params.params.data, data, ARRAY_SIZE(data));
+
+	/* Turn off write-protect so we can actually write */
+	gpio_wp_l_set(1);
+
+	zassert_ok(host_command_process(&args));
+
+	/* Now verify our write by invoking a get host command */
+
+	struct ec_params_get_cbi hc_get_params = {
+		.flag = CBI_GET_RELOAD,
+		.tag = hc_set_params.params.tag,
+	};
+
+	struct test_ec_params_get_cbi_response {
+		uint8_t data[50];
+	};
+
+	struct test_ec_params_get_cbi_response hc_get_response;
+
+	struct host_cmd_handler_args args2 = BUILD_HOST_COMMAND(
+		EC_CMD_GET_CROS_BOARD_INFO, 0, hc_get_response, hc_get_params);
+
+	zassert_ok(host_command_process(&args2));
 }
 
 ZTEST_SUITE(common_cbi, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
