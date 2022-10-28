@@ -224,6 +224,34 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 	}
 }
 
+#ifdef USB_VID_USBC_MONITOR
+__overridable void board_docking_monitor_vdm_acked(int port,
+						   enum tcpci_msg_type type,
+						   int vdo_count, uint32_t *vdm)
+{
+}
+
+__overridable enum dpm_msg_setup_status
+board_docking_monitor_setup_next_vdm(int port, int *vdo_count, uint32_t *vdm)
+{
+	return MSG_SETUP_UNSUPPORTED;
+}
+
+__overridable int board_customized_vdm_response(int port, uint32_t *payload)
+{
+	return 0;
+}
+
+__overridable void board_docking_monitor_mode_init(int port)
+{
+}
+
+__overridable bool board_docking_monitor_mode_entry_is_done(int port)
+{
+	return 0;
+}
+#endif
+
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					    uint32_t *vdm)
 {
