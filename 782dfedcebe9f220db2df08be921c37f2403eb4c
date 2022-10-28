@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a281f6d8_331a3b6d",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-28T20:09:00Z",
+      "side": 1,
+      "message": "I think you should set EC_MEMMAP_SWITCHES to something and verify that the output of the command reflects that.",
+      "range": {
+        "startLine": 18,
+        "startChar": 20,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "782dfedcebe9f220db2df08be921c37f2403eb4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
