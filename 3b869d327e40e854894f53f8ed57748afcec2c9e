@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54486d82_87523278",
+        "filename": "zephyr/zmake/tests/test_jobserver.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-10-28T18:27:49Z",
+      "side": 1,
+      "message": "These could be replaced by a parameterized test `pytest.mark.parameterize`. No strong preference here so either way.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "3b869d327e40e854894f53f8ed57748afcec2c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51ccf4f3_8aa25c73",
         "filename": "zephyr/zmake/zmake/jobserver.py",
         "patchSetId": 4
