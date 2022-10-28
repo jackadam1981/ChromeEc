@@ -4,9 +4,12 @@
  */
 
 #include "common.h"
+#include "compiler.h"
 #include "config.h"
 #include "fpc_private.h"
 #include "test_util.h"
+
+#include <gtest/gtest.h>
 
 #ifdef SECTION_IS_RW
 #include "fpc/fpc_sensor.h"
@@ -18,22 +21,29 @@ static const uint32_t fp_sensor_hwid = UINT32_MAX;
 /* Hardware-dependent smoke test that makes a SPI transaction with the
  * fingerprint sensor.
  */
-test_static int test_fp_check_hwid(void)
+TEST(FpSensor, CheckHardwareID)
 {
 	uint16_t id = 0;
 
 	if (IS_ENABLED(SECTION_IS_RW)) {
-		TEST_EQ(fpc_get_hwid(&id), EC_SUCCESS, "%d");
+		EXPECT_EQ(fpc_get_hwid(&id), EC_SUCCESS);
+
 		/* The lower 4-bits of the sensor hardware id are a
 		 * manufacturing ID that is ok to vary.
 		 */
-		TEST_EQ(fp_sensor_hwid, id >> 4, "%d");
+		EXPECT_EQ(fp_sensor_hwid, id >> 4);
+
+		// Uncomment to test failure.
+		// EXPECT_TRUE(false);
 	};
-	return EC_SUCCESS;
 }
 
-extern "C" void run_test(int argc, const char **argv)
+extern "C" void run_test(int, const char **)
 {
-	RUN_TEST(test_fp_check_hwid);
-	test_print_result();
+	testing::InitGoogleTest();
+	int ret = RUN_ALL_TESTS();
+	if (ret == 0)
+		printf("Pass!\n");
+	else
+		printf("Fail!\n");
 }
