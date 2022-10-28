@@ -16,6 +16,24 @@
       "message": "Hi Diana, would you please help to check what the build fail reason?\n\nThank you.",
       "revId": "495ac6f4d50b5cb8f927e228f49419cfda99b9c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e6806e_f921e0db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T14:48:13Z",
+      "side": 1,
+      "message": "Looks like it hit an issue in the ECOS build: \n\ndriver/battery/smart.c: In function \u0027sb_read_mfgacc_block\u0027:\ndriver/battery/smart.c:159:9: error: ISO C90 forbids mixed declarations and code [-Werror\u003ddeclaration-after-statement]\n  159 |         uint8_t operation_status[3] \u003d {\n      |         ^~~~~~~\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:621: build/atlas/RW/driver/battery/smart.o] Error 1\nmake[1]: *** [Makefile.rules:288: proj-atlas] Error 2\n\nYou should be able to recreate this locally using \"make BOARD\u003datlas\".  And when you upload CLs, you can use the CQ+1 to run this test before submission, if running a full \"make buildall\" is too resource consuming on your development system.",
+      "parentUuid": "b6c4e713_11ee8ead",
+      "revId": "495ac6f4d50b5cb8f927e228f49419cfda99b9c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

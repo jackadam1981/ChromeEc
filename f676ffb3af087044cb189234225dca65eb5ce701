@@ -16,6 +16,24 @@
       "message": "It would be preferable to make this a device tree property, since it\u0027s tied to individual batteries and a board could use this for one battery but not another.\n\nIt would be something like the current manufacturer access flag indicator, and the shim will need to parse it out of the devicetree.",
       "revId": "f676ffb3af087044cb189234225dca65eb5ce701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099ea559_547bb454",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T14:48:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd47e39_a3e804e1",
+      "revId": "f676ffb3af087044cb189234225dca65eb5ce701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
