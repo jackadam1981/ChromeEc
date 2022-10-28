@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47b9070_57730004",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6777,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T16:59:43Z",
+      "side": 1,
+      "message": "Yeah, we do have a fair amount of bubbling in order to ensure we don\u0027t have separate defines of the same thing hanging around.\n\nWould that approach work for sharing ec_commands.h with the kernel and coreboot?",
+      "parentUuid": "2840b165_b88795df",
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e46a5503_58b5f1ae",
@@ -84,6 +102,30 @@
       "writtenOn": "2022-10-27T20:32:32Z",
       "side": 1,
       "message": "This should be `vdo_count`. There\u0027s only 1 VDM.",
+      "range": {
+        "startLine": 6783,
+        "startChar": 9,
+        "endLine": 6783,
+        "endChar": 26
+      },
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45135844_e8cd1c8c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6783,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T16:59:43Z",
+      "side": 1,
+      "message": "Yeah, this could be named better.  Technically, it includes the VDM header plus VDOs though.  See what you think of this for a name.",
+      "parentUuid": "e46a5503_58b5f1ae",
       "range": {
         "startLine": 6783,
         "startChar": 9,
@@ -117,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ea1361_76d6136f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 10270,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T16:59:43Z",
+      "side": 1,
+      "message": "I prefer ectool to just check \"does this fit\" and the EC to check the bounds within the uint8_t, whenever possible. That hopefully minimizes the ectool updates and increases its interop with other EC versions.  Or at least theoretically.",
+      "parentUuid": "d6d83017_1fe8869b",
+      "range": {
+        "startLine": 10270,
+        "startChar": 49,
+        "endLine": 10270,
+        "endChar": 58
+      },
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36f713de_936f06cd",
@@ -130,6 +196,24 @@
       "writtenOn": "2022-10-27T20:32:32Z",
       "side": 1,
       "message": "\"SOP type\"?",
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644d05fd_ddccd844",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 10272,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T16:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36f713de_936f06cd",
       "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +235,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc19dab_854a5f5c",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 10277,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T16:59:43Z",
+      "side": 1,
+      "message": "Yeah, I find the C++ change a little weird.  But it builds, so...",
+      "parentUuid": "4c9acbad_a7df2edc",
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ddac83d_062f7e36",
@@ -164,6 +266,30 @@
       "writtenOn": "2022-10-27T20:32:32Z",
       "side": 1,
       "message": "It\u0027s weird that this is a `long` and uses `strtol` when the underlying parameter fields are unsigned.",
+      "range": {
+        "startLine": 10278,
+        "startChar": 23,
+        "endLine": 10278,
+        "endChar": 29
+      },
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6628398e_98ecc103",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 10278,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T16:59:43Z",
+      "side": 1,
+      "message": "I\u0027ll use my newfound C++ powers of declaring variables wherever to fix this",
+      "parentUuid": "7ddac83d_062f7e36",
       "range": {
         "startLine": 10278,
         "startChar": 23,
