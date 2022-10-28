@@ -16,6 +16,24 @@
       "message": "Generally, it\u0027s preferred to create a node label to reference.  This reduces how many areas will need updated if, for example, the temperature sensor path changes. \n\nCreating a node label is fairly easy, you just do something like this on the original node definition: \n`temp_charger: charger-thermistor {`",
       "revId": "3e17f01b6e96e3ea4fdaf0cb824ccfa2ed598b30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88fbbc3b_1fdb1370",
+        "filename": "zephyr/projects/skyrim/winterhold.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-10-28T05:48:52Z",
+      "side": 1,
+      "message": "Since temp_cpu is already defined, I use temp_sensor_cpu instead.",
+      "parentUuid": "6953be14_9fee41dc",
+      "revId": "3e17f01b6e96e3ea4fdaf0cb824ccfa2ed598b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
