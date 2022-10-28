@@ -872,6 +872,9 @@
  */
 #undef CONFIG_SIMULATED_BUTTON
 
+/* Customize the button debounce time in us */
+#define CONFIG_BUTTON_DEBOUNCE (30 * MSEC)
+
 /*
  * Capsense chip has buttons, too.
  */
