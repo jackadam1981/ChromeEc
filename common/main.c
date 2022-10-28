@@ -16,6 +16,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "cros_board_info.h"
+#include "debug.h"
 #include "dma.h"
 #include "eeprom.h"
 #include "flash.h"
@@ -172,7 +173,8 @@ test_mockable __keep int main(void)
 	 * verified boot, because all *other* lengthy operations should be done
 	 * by tasks.)
 	 */
-	watchdog_init();
+	if (!debugger_is_connected())
+		watchdog_init();
 #endif
 
 	/*
