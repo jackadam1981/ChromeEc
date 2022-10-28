@@ -13,6 +13,12 @@
 #include "comm-host.h"
 #include "ectool.h"
 
+#define CROS_EC_COMMAND_INFO void
+#define CROS_EC_COMMAND(h, c, v, p, ps, r, rs) \
+	((h) == NULL ? ec_command((c), (v), (p), (ps), (r), (rs)) : -1)
+
+#include "ec_cmd_api.h"
+
 int cmd_i2c_protect(int argc, char *argv[])
 {
 	struct ec_params_i2c_passthru_protect p;
@@ -35,8 +41,7 @@ int cmd_i2c_protect(int argc, char *argv[])
 
 		p.subcmd = EC_CMD_I2C_PASSTHRU_PROTECT_STATUS;
 
-		rv = ec_command(EC_CMD_I2C_PASSTHRU_PROTECT, 0, &p, sizeof(p),
-				&r, sizeof(r));
+		rv = ec_cmd_i2c_passthru_protect(NULL, &p, &r);
 
 		if (rv < 0)
 			return rv;
@@ -329,7 +334,7 @@ static int i2c_get(int port)
 	p.port = port;
 	p.cmd = EC_I2C_CONTROL_GET_SPEED;
 
-	rv = ec_command(EC_CMD_I2C_CONTROL, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_i2c_control(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
@@ -361,7 +366,7 @@ static int i2c_set(int port, int new_speed_khz)
 	p.cmd = EC_I2C_CONTROL_SET_SPEED;
 	p.cmd_params.speed_khz = new_speed_khz;
 
-	rv = ec_command(EC_CMD_I2C_CONTROL, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_i2c_control(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
