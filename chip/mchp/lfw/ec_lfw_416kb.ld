@@ -86,4 +86,6 @@ SECTIONS
     } >SRAM
 
     __image_size = LOADADDR(.text) + SIZEOF(.text) - ORIGIN(VECTOR);
+
+    /DISCARD/ : { *(.ARM.*) }
 }
