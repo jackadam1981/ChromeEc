@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56fb5d0b_85ee3f15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-28T20:02:57Z",
+      "side": 1,
+      "message": "What is the goal here? Is this supposed to be an upstream-able driver?",
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c0956f6_ede2a877",
+        "filename": "zephyr/shim/src/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-28T20:02:57Z",
+      "side": 1,
+      "message": "Could probably be `if (!ENABLED(CONFIG_POWER_BUTTON_IGNORE_LID) \u0026\u0026 !lid_is_open()) return 0;`",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b53374_5beb70b9",
+        "filename": "zephyr/shim/src/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-28T20:02:57Z",
+      "side": 1,
+      "message": "This feels exclusive to power buttons on the keyboard. For power buttons on the side that are not on the keyboard, it really shouldn\u0027t be necessary.\n\nMaybe this should be a hook_notify instead, so that the dependency goes the other way from the keyboard driver into the power button driver.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 56
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b798abd8_48628f11",
+        "filename": "zephyr/shim/src/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-28T20:02:57Z",
+      "side": 1,
+      "message": "Is there a more zephyr-y way to do deferred calls? I am asking, because I don\u0027t actually know.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 16
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7c49a8_6a1d7a23",
+        "filename": "zephyr/test/qcom_power/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-28T20:02:57Z",
+      "side": 1,
+      "message": "Why not register the interrupt in the code?",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
