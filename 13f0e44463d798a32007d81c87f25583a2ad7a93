@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a96064d0_2b653409",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-28T00:39:19Z",
+      "side": 1,
+      "message": "I did debate about where the best place to put it.\nThe existing legacy code lives in power/common.c, and is quite tightly coupled to the power handling, so I saw there was some precedence here.\nIf you suggestions as to where to put it, I would welcome them.\nIt didnt\u0027t seem right to put it in the shim directory, but there are connections to legacy code (the charger hook), so perhaps the shim directory is the best place for it.",
+      "parentUuid": "861bd6b5_45023b3b",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d48b5404_07448832",
         "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-28T00:25:01Z",
       "side": 1,
       "message": "Should this also listen to `AP_POWER_INITIALIZED` so it does the right thing if the AP is off from the beginning?",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6286297_40b5b4e8",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-28T00:39:19Z",
+      "side": 1,
+      "message": "I guess that would be neater, though my expectation was that the AC_CHANGE hook would also be called at startup.",
+      "parentUuid": "d48b5404_07448832",
       "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
