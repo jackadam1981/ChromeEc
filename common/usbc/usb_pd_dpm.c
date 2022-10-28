@@ -524,8 +524,14 @@ static void dpm_send_req_vdm(int port)
 		/* Trigger PE to start a VDM command run */
 		pd_dpm_request(port, DPM_REQUEST_VDM);
 
-	/* Clear flag after message is sent to PE layer */
-	DPM_CLR_FLAG(port, DPM_FLAG_SEND_VDM_REQ);
+	/*
+	 * Clear flag after message is sent to PE layer if it was Attention,
+	 * which generates no reply.  Otherwise, clear flag after message is
+	 * ACK'd or NAK'd
+	 */
+	if (PD_VDO_SVDM(vdm_req[0]) &&
+	    (PD_VDO_CMD(vdm_req[0]) == CMD_ATTENTION))
+		DPM_CLR_FLAG(port, DPM_FLAG_SEND_VDM_REQ);
 }
 
 void dpm_handle_alert(int port, uint32_t ado)
