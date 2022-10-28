@@ -232,3 +232,22 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_TYPEC_STATUS, hc_typec_status, EC_VER_MASK(0));
+
+#ifdef CONFIG_USB_PD_VDM_AP_CONTROL
+static enum ec_status hc_typec_discovery(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_typec_vdm_response *p = args->params;
+	struct ec_response_typec_vdm_response *r = args->response;
+
+	if (p->port >= board_get_usb_pd_port_count())
+		return EC_RES_INVALID_PARAM;
+
+	if (args->response_max < sizeof(*r))
+		return EC_RES_RESPONSE_TOO_BIG;
+
+	args->response_size = sizeof(*r);
+
+}
+DECLARE_HOST_COMMAND(EC_CMD_TYPEC_VDM_RESPONSE, hc_typec_vdm_response,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_USB_PD_VDM_AP_CONTROL */

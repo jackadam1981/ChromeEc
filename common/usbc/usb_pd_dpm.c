@@ -56,6 +56,15 @@ static struct {
 	enum dpm_pd_button_state pd_button_state;
 } dpm[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Storage for VDM AP control-related memory */
+struct ap_vdm_messages {
+	uint32_t vdm_reply[VDO_MAX_SIZE];
+	int vdm_reply_cnt;
+};
+
+STATIC_IF(CONFIG_USB_PD_VDM_AP_CONTROL)
+	ap_vdm_messages[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 #define DPM_SET_FLAG(port, flag) atomic_or(&dpm[(port)].flags, (flag))
 #define DPM_CLR_FLAG(port, flag) atomic_clear_bits(&dpm[(port)].flags, (flag))
 #define DPM_CHK_FLAG(port, flag) (dpm[(port)].flags & (flag))
@@ -243,6 +252,18 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 
 	assert(vdo_count >= 1);
 
+	if (IS_ENABLED(CONFIG_USB_PD_PORT_MAX_COUNT) &&
+	    DPM_CHK_FLAG(port, DPM_FLAG_VDM_REQ)) {
+		DPM_CLR_FLAG(port, DPM_FLAG_VDM_REQ);
+
+		/* Don't alert the modules, only store and notify the AP */
+		ap_vdm_messages[port].vdm_reply_cnt = vdo_count;
+		memcpy(ap_vdm_messages[port].vdm_reply, vdm,
+		       vdo_count * sizeof(uint32_t));
+		pd_notify_event(port, PD_STATUS_EVENT_VDM_REQ_REPLY);
+		return;
+	}
+
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
 		dp_vdm_acked(port, type, vdo_count, vdm);
@@ -266,6 +287,22 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 void dpm_vdm_naked(int port, enum tcpci_msg_type type, uint16_t svid,
 		   uint8_t vdm_cmd, uint32_t vdm_header)
 {
+	if (IS_ENABLED(CONFIG_USB_PD_PORT_MAX_COUNT) &&
+	    DPM_CHK_FLAG(port, DPM_FLAG_VDM_REQ)) {
+		DPM_CLR_FLAG(port, DPM_FLAG_VDM_REQ);
+
+		/* Don't alert the modules, only store and notify the AP */
+		if (vdm_header != 0) {
+			ap_vdm_messages[port].vdm_reply_cnt = 1;
+			ap_vdm_messages[port].vdm_reply[0] = vdm_header;
+			pd_notify_event(port, PD_STATUS_EVENT_VDM_REQ_REPLY);
+		} else {
+			ap_vdm_messages[port].vdm_reply_cnt = 0;
+			pd_notify_event(port, PD_STATUS_EVENT_VDM_REQ_FAILED);
+		}
+		return;
+	}
+
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
 		dp_vdm_naked(port, type, vdm_cmd);
@@ -524,8 +561,14 @@ static void dpm_send_req_vdm(int port)
 		/* Trigger PE to start a VDM command run */
 		pd_dpm_request(port, DPM_REQUEST_VDM);
 
-	/* Clear flag after message is sent to PE layer */
-	DPM_CLR_FLAG(port, DPM_FLAG_SEND_VDM_REQ);
+	/*
+	 * Clear flag after message is sent to PE layer if it was Attention,
+	 * which generates no reply.  Otherwise, clear flag after message is
+	 * ACK'd or NAK'd
+	 */
+	if (PD_VDO_SVDM(dpm[port].vdm_req[0]) &&
+	    (PD_VDO_CMD(dpm[port].vdm_req[0]) == CMD_ATTENTION))
+		DPM_CLR_FLAG(port, DPM_FLAG_SEND_VDM_REQ);
 }
 
 void dpm_handle_alert(int port, uint32_t ado)
