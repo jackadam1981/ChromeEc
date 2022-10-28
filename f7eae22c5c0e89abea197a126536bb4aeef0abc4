@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83e06a1f_1a4f7cba",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T16:39:50Z",
+      "side": 1,
+      "message": "another thought: should this be set only if flags injection is needed?\n\nSo, if gbb flags are  included in one of the ranges, but are zero - no need  to invoke `update_sha_with_gbb_range()` in line 612",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 17
+      },
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5c97e14_9b501a71",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 11
@@ -95,6 +118,30 @@
       "side": 1,
       "message": "Cr50 needs to find the flags to inject before it can save the gbbd. That can only be done after verification passes once.",
       "parentUuid": "0fd53a84_1242ec65",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1074,
+        "endChar": 2
+      },
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af7563e_25965e53",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T16:39:50Z",
+      "side": 1,
+      "message": "yes, looking for flags to inject also shold be happening just once, before this code block.\n\nOnce GS_SAVED status is set no need to check it again.\n\nBasically,\n\n```\nif gbbd is not set:\n  init gbbd\n  determing flag value to inject\n  gbbd.glags |\u003d GS_SAVED\n  save gbbd\n```\n\nall the above code would run only once, before gbbd is saved in flash. Is something missing here?",
+      "parentUuid": "b1074f35_c7951489",
       "range": {
         "startLine": 1055,
         "startChar": 0,
