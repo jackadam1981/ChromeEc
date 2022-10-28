@@ -25,6 +25,7 @@ enum sleep_hang_type {
 	SLEEP_HANG_S0IX_RESUME
 };
 
+#ifndef CONFIG_AP_PWRSEQ_DRIVER
 void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 {
 	/*
@@ -45,6 +46,28 @@ void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 	ccprintf("Warning: Detected sleep hang! Waking host up!");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
 }
+#else
+void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
+{
+	/*
+	 * Wake up the AP so they don't just chill in a non-suspended state and
+	 * burn power. Overload a vaguely related event bit since event bits are
+	 * at a premium. If the system never entered S0ix, then manually set the
+	 * wake mask to pretend it did, so that the hang detect event wakes the
+	 * system.
+	 */
+	if (pwr_sm_get_state() == AP_POWER_STATE_S0) {
+		host_event_t sleep_wake_mask;
+
+		ap_power_get_lazy_wake_mask(AP_POWER_STATE_S0IX,
+					    &sleep_wake_mask);
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, sleep_wake_mask);
+	}
+
+	ccprintf("Warning: Detected sleep hang! Waking host up!");
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+#endif
 
 static void sleep_transition_timeout(struct k_work *work)
 {
