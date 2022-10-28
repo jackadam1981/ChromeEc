@@ -22,6 +22,30 @@
       },
       "revId": "a75ac479987d49a9640aaef02aedac6199ef13a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b497b8_bf857f8d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-10-28T08:34:57Z",
+      "side": 1,
+      "message": "I think you\u0027re right. I tried to build zephyr project, it failed.",
+      "parentUuid": "60adcb8f_d6650885",
+      "range": {
+        "startLine": 914,
+        "startChar": 1,
+        "endLine": 914,
+        "endChar": 7
+      },
+      "revId": "a75ac479987d49a9640aaef02aedac6199ef13a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
