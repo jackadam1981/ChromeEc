@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861bd6b5_45023b3b",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-28T00:25:01Z",
+      "side": 1,
+      "message": "I think this should live outside the power subsystem, since it couples to charging machinery that doesn\u0027t matter for general use of the subsystem (AP power doesn\u0027t inherently need to understand hibernate or external power presence).",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48b5404_07448832",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-28T00:25:01Z",
+      "side": 1,
+      "message": "Should this also listen to `AP_POWER_INITIALIZED` so it does the right thing if the AP is off from the beginning?",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
