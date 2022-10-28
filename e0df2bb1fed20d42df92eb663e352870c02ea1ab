@@ -339,6 +339,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7f5506c_410c6ba2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 10277,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-28T21:38:50Z",
+      "side": 1,
+      "message": "I mean, now this is a super nit, but why not simply `vdm_entry \u003d strtoul(...);`?",
+      "parentUuid": "72451420_c2f9fa5f",
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ddac83d_062f7e36",
         "filename": "util/ectool.cc",
         "patchSetId": 4
