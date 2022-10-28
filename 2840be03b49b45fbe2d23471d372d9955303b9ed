@@ -426,6 +426,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02b1612_13ba67d2",
+        "filename": "include/benchmark.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-10-28T16:38:31Z",
+      "side": 1,
+      "message": "Nice! I had to make a small adjustment, but this worked.",
+      "parentUuid": "8cddad37_2fa78877",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "2840be03b49b45fbe2d23471d372d9955303b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98f8ab2e_e087fe15",
