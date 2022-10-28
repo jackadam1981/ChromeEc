@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ec78a9_9ec0a512",
+        "filename": "common/ec_features.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-10-28T19:38:18Z",
+      "side": 1,
+      "message": "If the attribute `EC_FEATURE_REFINED_TABLET_MODE_HYSTERESIS` is missing, the kernel will not present `cros-ec-lid-angle`, so apps like chrome will calculate the lid angle manually and will not expect a tablet switch. \n\nInternally, motion_lid_calc() will never be called (one sensor is always missing for calculating the lid angle, so the lid angle will always be unreliable. lid_angle_update() is never called.\n\nIn addition, the attribute `kb_wake_angle` won\u0027t be shown either because only one accelerometer is presented.\n\nBeside the code space waste, there is not much runtime waste.",
+      "parentUuid": "ded47fcf_6d81b697",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "ffb4c6631b3404d9f0c93c325c50f999a97c1fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af8ebf8b_0d6d9018",
