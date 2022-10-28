@@ -115,7 +115,8 @@ C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
 C_WARN += -Werror-implicit-function-declaration
 COMMON_WARN = -Wall -Wundef \
 	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
-	-fno-common -fno-strict-aliasing -fno-strict-overflow -Wimplicit-fallthrough
+	-fno-common -fno-strict-aliasing -fno-strict-overflow -Wimplicit-fallthrough \
+	-Wno-undef
 # See https://www.chromium.org/chromium-os/build/c-exception-support
 COMMON_WARN+=-fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
 
@@ -257,6 +258,7 @@ LDFLAGS+=-nostdlib
 else
 LDFLAGS+=-lnosys
 endif
+LDFLAGS+=-L$(HOME)/chromiumos/src/third_party/tmp/lib -lgtest
 MEMSIZE_FLAGS=
 ifeq ($(cc-name),gcc)
 MEMSIZE_FLAGS+=-Wl,--print-memory-usage
