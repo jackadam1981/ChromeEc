@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c97e14_9b501a71",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T02:48:02Z",
+      "side": 1,
+      "message": "having thought abuot this, as a future enhancement:\n\n\nwe don\u0027t need to re-calcualte SHA of the regions which come before the region including GBB flags, we can remember those ranges\u0027 sha and restart the loop from the GBB flasgs containig range if there is no match.\n\nthen we can make sure that the range whcih includes GBB flags is the last one in the array - either by reshuffling ranges when request to sign the AP RO comes, or by refusing to sign if the flags range is not the last one. This second optimization won\u0027t help with existing devices of course.",
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7ff67b_44fdcfe6",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T02:48:02Z",
+      "side": 1,
+      "message": "it is safer to set the entire gbbd contents to zero in line 952, no need to keep track of fields which do not need to be initialized to another value.",
+      "range": {
+        "startLine": 958,
+        "startChar": 0,
+        "endLine": 960,
+        "endChar": 19
+      },
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9beb448_fcaec617",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T02:48:02Z",
+      "side": 1,
+      "message": "as discussed, validate_gbbd() should not be invoked on the verification path, only on gbb discovery path.\n\nOn validation path the only thing to check is that the actual GBB Flags are zero.\n\nMaybe this should be a flag passed to `validate_gbbd()` to indicate if the full check is required or just the flags need to be checked.",
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd53a84_1242ec65",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T02:48:02Z",
+      "side": 1,
+      "message": "does this block have to to be included on every ap ro verification run? I think this should happen only once after discovering that gbb flags need to be taken into account after init_gbbd() in line 1037",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1074,
+        "endChar": 2
+      },
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a027d9_9ea9820c",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T02:48:02Z",
+      "side": 1,
+      "message": "why is this check running after lines 1195..1206? If AP RO verification is unsupported what\u0027s the poiont to report GBB status?",
+      "range": {
+        "startLine": 1207,
+        "startChar": 1,
+        "endLine": 1207,
+        "endChar": 37
+      },
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
