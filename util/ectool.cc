@@ -38,6 +38,12 @@
 
 #include <libec/add_entropy_command.h>
 
+#define CROS_EC_COMMAND_INFO void
+#define CROS_EC_COMMAND(h, c, v, p, ps, r, rs) \
+	((h) == NULL ? ec_command((c), (v), (p), (ps), (r), (rs)) : -1)
+
+#include "ec_cmd_api.h"
+
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
 
@@ -560,7 +566,7 @@ int cmd_adc_read(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_ADC_READ, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_adc_read(NULL, &p, &r);
 	if (rv > 0) {
 		printf("%s: %d\n", argv[1], r.adc_value);
 		return 0;
@@ -600,7 +606,7 @@ int cmd_hello(int argc, char *argv[])
 
 	p.in_data = 0xa0b0c0d0;
 
-	rv = ec_command(EC_CMD_HELLO, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_hello(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
@@ -631,8 +637,7 @@ int cmd_hibdelay(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_command(EC_CMD_HIBERNATION_DELAY, 0, &p, sizeof(p), &r,
-			sizeof(r));
+	rv = ec_cmd_hibernation_delay(NULL, &p, &r);
 	if (rv < 0) {
 		fprintf(stderr, "err: rv=%d\n", rv);
 		return -1;
@@ -704,7 +709,7 @@ static int cmd_hostevent(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_HOST_EVENT, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_host_event(NULL, &p, &r);
 	if (rv == -EC_RES_ACCESS_DENIED - EECRESULT) {
 		fprintf(stderr, "%s isn't permitted for mask %d.\n",
 			p.action == EC_HOST_EVENT_SET ? "Set" : "Get",
@@ -729,8 +734,7 @@ static int get_latest_cmd_version(uint8_t cmd, int *version)
 	*version = 0;
 	/* Figure out the latest version of the given command the EC supports */
 	p.cmd = cmd;
-	rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 0, &p, sizeof(p), &r,
-			sizeof(r));
+	rv = ec_cmd_get_cmd_versions(NULL, &p, &r);
 	if (rv < 0) {
 		if (rv == -EC_RES_INVALID_PARAM)
 			printf("Command 0x%02x not supported by EC.\n",
@@ -890,8 +894,7 @@ int cmd_s5(int argc, char *argv[])
 		p.value = param;
 	}
 
-	rv = ec_command(EC_CMD_GSV_PAUSE_IN_S5, 0, &p, sizeof(p), &r,
-			sizeof(r));
+	rv = ec_cmd_gsv_pause_in_s5(NULL, &p, &r);
 	if (rv > 0)
 		printf("%s\n", r.value ? "on" : "off");
 
@@ -956,7 +959,7 @@ int cmd_inventory(int argc, char *argv[])
 	struct ec_response_get_features r;
 	int rv, i, j, idx;
 
-	rv = ec_command(EC_CMD_GET_FEATURES, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_get_features(NULL, &r);
 	if (rv < 0)
 		return rv;
 
@@ -984,8 +987,7 @@ static int get_cmdversions_v0(uint8_t cmd, uint32_t *version_mask)
 	int rv;
 
 	p.cmd = cmd;
-	rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 0, &p, sizeof(p), &r,
-			sizeof(r));
+	rv = ec_cmd_get_cmd_versions(NULL, &p, &r);
 	if (rv < 0) {
 		if (rv == -EC_RES_INVALID_PARAM)
 			printf("Command 0x%02x not supported by EC.\n", cmd);
@@ -1029,8 +1031,7 @@ int cmd_cmdversions(int argc, char *argv[])
 
 		/* Use GET_CMD_VERSIONS v1. */
 		p.cmd = cmd;
-		rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 1, &p, sizeof(p), &r,
-				sizeof(r));
+		rv = ec_cmd_get_cmd_versions_v1(NULL, &p, &r);
 		if (rv < 0) {
 			if (rv == -EC_RES_INVALID_PARAM)
 				printf("Command 0x%02x not supported by EC.\n",
@@ -1114,7 +1115,7 @@ int cmd_uptimeinfo(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_GET_UPTIME_INFO, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_get_uptime_info(NULL, &r);
 	if (rv < 0) {
 		fprintf(stderr, "ERROR: EC_CMD_GET_UPTIME_INFO failed; %d\n",
 			rv);
@@ -1170,8 +1171,7 @@ int cmd_version(int argc, char *argv[])
 	int rv;
 
 	if (ec_cmd_version_supported(EC_CMD_GET_VERSION, 1)) {
-		rv = ec_command(EC_CMD_GET_VERSION, 1, NULL, 0, &r,
-				sizeof(struct ec_response_get_version_v1));
+		rv = ec_cmd_get_version_v1(NULL, &r);
 	} else {
 		/* Fall-back to version 0 if version 1 is not supported */
 		rv = ec_command(EC_CMD_GET_VERSION, 0, NULL, 0, &r,
@@ -1230,7 +1230,7 @@ int cmd_reboot_ec(int argc, char *argv[])
 		 * That reboots the AP as well, so unlikely we'll be around
 		 * to see a return code from this...
 		 */
-		rv = ec_command(EC_CMD_REBOOT, 0, NULL, 0, NULL, 0);
+		rv = ec_cmd_reboot(NULL);
 		return (rv < 0 ? rv : 0);
 	}
 
@@ -1273,7 +1273,7 @@ int cmd_reboot_ec(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_command(EC_CMD_REBOOT_EC, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_reboot_ec(NULL, &p);
 	return (rv < 0 ? rv : 0);
 }
 
@@ -1402,7 +1402,7 @@ static int cmd_rgbkbd(int argc, char *argv[])
 		if (cmd_rgbkbd_parse_rgb_text(argv[2], &p.color))
 			return -1;
 
-		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
+		rv = ec_cmd_rgbkbd(NULL, &p, &r);
 	} else if (argc == 3 && !strcasecmp(argv[1], "demo")) {
 		/* Usage 3 */
 		val = strtol(argv[2], &e, 0);
@@ -1412,7 +1412,7 @@ static int cmd_rgbkbd(int argc, char *argv[])
 		}
 		p.subcmd = EC_RGBKBD_SUBCMD_DEMO;
 		p.demo = val;
-		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
+		rv = ec_cmd_rgbkbd(NULL, &p, &r);
 	} else if (argc == 4 && !strcasecmp(argv[1], "scale")) {
 		/* Usage 4 */
 		val = strtol(argv[2], &e, 0);
@@ -1426,13 +1426,13 @@ static int cmd_rgbkbd(int argc, char *argv[])
 			return -1;
 		}
 		p.subcmd = EC_RGBKBD_SUBCMD_SET_SCALE;
-		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
+		rv = ec_cmd_rgbkbd(NULL, &p, &r);
 	} else if (argc == 2 && !strcasecmp(argv[1], "getconfig")) {
 		/* Usage 5 */
 		const char *type;
 
 		p.subcmd = EC_RGBKBD_SUBCMD_GET_CONFIG;
-		rv = ec_command(EC_CMD_RGBKBD, 0, &p, sizeof(p), &r, sizeof(r));
+		rv = ec_cmd_rgbkbd(NULL, &p, &r);
 
 		if (rv < 0)
 			return rv;
@@ -1507,7 +1507,7 @@ int cmd_button(int argc, char *argv[])
 	if (!p.btn_mask)
 		return 0;
 
-	rv = ec_command(EC_CMD_BUTTON, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_button(NULL, &p);
 	if (rv < 0)
 		return rv;
 
@@ -1607,7 +1607,7 @@ int cmd_flash_spi_info(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_FLASH_SPI_INFO, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_flash_spi_info(NULL, &r);
 	if (rv < 0)
 		return rv;
 
@@ -1795,8 +1795,7 @@ int cmd_flash_protect(int argc, char *argv[])
 			p.mask |= EC_FLASH_PROTECT_RO_AT_BOOT;
 	}
 
-	rv = ec_command(EC_CMD_FLASH_PROTECT, EC_VER_FLASH_PROTECT, &p,
-			sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_flash_protect_v1(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 	if (rv < sizeof(r)) {
@@ -1871,8 +1870,7 @@ int cmd_rwsig_status(int argc, char *argv[])
 	int rv;
 	struct ec_response_rwsig_check_status resp;
 
-	rv = ec_command(EC_CMD_RWSIG_CHECK_STATUS, 0, NULL, 0, &resp,
-			sizeof(resp));
+	rv = ec_cmd_rwsig_check_status(NULL, &resp);
 	if (rv < 0)
 		return rv;
 
@@ -1892,7 +1890,7 @@ static int rwsig_action(const char *command)
 	else
 		return -1;
 
-	return ec_command(EC_CMD_RWSIG_ACTION, 0, &req, sizeof(req), NULL, 0);
+	return ec_cmd_rwsig_action(NULL, &req);
 }
 
 int cmd_rwsig_action_legacy(int argc, char *argv[])
@@ -1935,8 +1933,7 @@ static int rwsig_info(enum rwsig_info_fields fields)
 	struct ec_response_rwsig_info r;
 	bool print_prefix = false;
 
-	rv = ec_command(EC_CMD_RWSIG_INFO, EC_VER_RWSIG_INFO, NULL, 0, &r,
-			sizeof(r));
+	rv = ec_cmd_rwsig_info(NULL, &r);
 	if (rv < 0) {
 		fprintf(stderr, "rwsig info command failed\n");
 		return -1;
@@ -2064,7 +2061,7 @@ static int sysinfo(struct ec_response_sysinfo *info)
 {
 	int rv;
 
-	rv = ec_command(EC_CMD_SYSINFO, 0, NULL, 0, info, sizeof(*info));
+	rv = ec_cmd_sysinfo(NULL, info);
 	if (rv < 0) {
 		fprintf(stderr, "ERROR: EC_CMD_SYSINFO failed: %d\n", rv);
 		return rv;
@@ -2133,7 +2130,7 @@ int cmd_rollback_info(int argc, char *argv[])
 	struct ec_response_rollback_info r;
 	int rv;
 
-	rv = ec_command(EC_CMD_ROLLBACK_INFO, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_rollback_info(NULL, &r);
 	if (rv < 0) {
 		fprintf(stderr, "ERROR: EC_CMD_ROLLBACK_INFO failed: %d\n", rv);
 		return rv;
@@ -2149,7 +2146,7 @@ int cmd_rollback_info(int argc, char *argv[])
 
 int cmd_apreset(int argc, char *argv[])
 {
-	return ec_command(EC_CMD_AP_RESET, 0, NULL, 0, NULL, 0);
+	return ec_cmd_ap_reset(NULL);
 }
 
 #define FP_FRAME_INDEX_SIMPLE_IMAGE -1
@@ -2280,7 +2277,7 @@ int cmd_fp_mode(int argc, char *argv[])
 		mode |= capture_type << FP_MODE_CAPTURE_TYPE_SHIFT;
 
 	p.mode = mode;
-	rv = ec_command(EC_CMD_FP_MODE, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_fp_mode(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
@@ -2321,7 +2318,7 @@ int cmd_fp_seed(int argc, char *argv[])
 	p.struct_version = FP_TEMPLATE_FORMAT_VERSION;
 	memcpy(p.seed, seed, FP_CONTEXT_TPM_BYTES);
 
-	return ec_command(EC_CMD_FP_SEED, 0, &p, sizeof(p), NULL, 0);
+	return ec_cmd_fp_seed(NULL, &p);
 }
 
 int cmd_fp_stats(int argc, char *argv[])
@@ -2330,7 +2327,7 @@ int cmd_fp_stats(int argc, char *argv[])
 	int rv;
 	unsigned long long ts;
 
-	rv = ec_command(EC_CMD_FP_STATS, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_fp_stats(NULL, &r);
 	if (rv < 0)
 		return rv;
 
@@ -2640,7 +2637,7 @@ static int enter_gfu_mode(int port)
 		p->opos = opos;
 		p->cmd = PD_ENTER_MODE;
 
-		ec_command(EC_CMD_USB_PD_SET_AMODE, 0, p, sizeof(*p), NULL, 0);
+		ec_cmd_usb_pd_set_amode(NULL, p);
 		usleep(500000); /* sleep to allow time for set mode */
 		gfu_mode = in_gfu_mode(&opos, port);
 	}
@@ -2875,7 +2872,7 @@ int cmd_pd_set_amode(int argc, char *argv[])
 		fprintf(stderr, "Bad cmd\n");
 		return -1;
 	}
-	return ec_command(EC_CMD_USB_PD_SET_AMODE, 0, p, sizeof(*p), NULL, 0);
+	return ec_cmd_usb_pd_set_amode(NULL, p);
 }
 
 int cmd_pd_get_amode(int argc, char *argv[])
@@ -3091,7 +3088,7 @@ int cmd_stress_test(int argc, char *argv[])
 	if (reboot) {
 		printf("Issuing ec reboot. Expect a few early failed"
 		       " ioctl messages.\n");
-		ec_command(EC_CMD_REBOOT, 0, NULL, 0, NULL, 0);
+		ec_cmd_reboot(NULL);
 		sleep(2);
 	}
 
@@ -3107,8 +3104,7 @@ int cmd_stress_test(int argc, char *argv[])
 		struct ec_response_hello hello_r;
 
 		/* Request EC Version Strings */
-		rv = ec_command(EC_CMD_GET_VERSION, 0, NULL, 0, &ver_r,
-				sizeof(ver_r));
+		rv = ec_cmd_get_version(NULL, &ver_r);
 		if (rv < 0) {
 			failures++;
 			perror("ERROR: EC_CMD_GET_VERSION failed");
@@ -3144,9 +3140,7 @@ int cmd_stress_test(int argc, char *argv[])
 		usleep(rand_r(&rand_seed) % max_sleep_usec);
 
 		/* Request Flash Protect Status */
-		rv = ec_command(EC_CMD_FLASH_PROTECT, EC_VER_FLASH_PROTECT,
-				&flash_p, sizeof(flash_p), &flash_r,
-				sizeof(flash_r));
+		rv = ec_cmd_flash_protect_v1(NULL, &flash_p, &flash_r);
 		if (rv < 0) {
 			failures++;
 			perror("ERROR: EC_CMD_FLASH_PROTECT failed");
@@ -3156,8 +3150,7 @@ int cmd_stress_test(int argc, char *argv[])
 
 		/* Request Hello */
 		hello_p.in_data = 0xa0b0c0d0;
-		rv = ec_command(EC_CMD_HELLO, 0, &hello_p, sizeof(hello_p),
-				&hello_r, sizeof(hello_r));
+		rv = ec_cmd_hello(NULL, &hello_p, &hello_r);
 		if (rv < 0) {
 			failures++;
 			perror("ERROR: EC_CMD_HELLO failed");
@@ -3231,8 +3224,7 @@ static int cmd_temperature_print(int id, int mtemp)
 	int temp = mtemp + EC_TEMP_SENSOR_OFFSET;
 
 	temp_p.id = id;
-	rc = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &temp_p,
-			sizeof(temp_p), &temp_r, sizeof(temp_r));
+	rc = ec_cmd_temp_sensor_get_info(NULL, &temp_p, &temp_r);
 	if (rc < 0)
 		return rc;
 
@@ -3349,8 +3341,7 @@ int cmd_temp_sensor_info(int argc, char *argv[])
 			if (read_mapped_temperature(p.id) ==
 			    EC_TEMP_SENSOR_NOT_PRESENT)
 				continue;
-			rv = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &p,
-					sizeof(p), &r, sizeof(r));
+			rv = ec_cmd_temp_sensor_get_info(NULL, &p, &r);
 			if (rv < 0)
 				continue;
 			printf("%d: %d %s\n", p.id, r.sensor_type,
@@ -3365,8 +3356,7 @@ int cmd_temp_sensor_info(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &p, sizeof(p), &r,
-			sizeof(r));
+	rv = ec_cmd_temp_sensor_get_info(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
@@ -3401,8 +3391,7 @@ int cmd_thermal_get_threshold_v0(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_THERMAL_GET_THRESHOLD, 0, &p, sizeof(p), &r,
-			sizeof(r));
+	rv = ec_cmd_thermal_get_threshold(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
@@ -3443,8 +3432,7 @@ int cmd_thermal_set_threshold_v0(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_THERMAL_SET_THRESHOLD, 0, &p, sizeof(p), NULL,
-			0);
+	rv = ec_cmd_thermal_set_threshold(NULL, &p);
 	if (rv < 0)
 		return rv;
 
@@ -3470,15 +3458,13 @@ int cmd_thermal_get_threshold_v1(int argc, char *argv[])
 
 		/* ask for one */
 		p.sensor_num = i;
-		rv = ec_command(EC_CMD_THERMAL_GET_THRESHOLD, 1, &p, sizeof(p),
-				&r, sizeof(r));
+		rv = ec_cmd_thermal_get_threshold_v1(NULL, &p, &r);
 		if (rv <= 0) /* stop on first failure */
 			break;
 
 		/* ask for its name, too */
 		pi.id = i;
-		rv = ec_command(EC_CMD_TEMP_SENSOR_GET_INFO, 0, &pi, sizeof(pi),
-				&ri, sizeof(ri));
+		rv = ec_cmd_temp_sensor_get_info(NULL, &pi, &ri);
 
 		/* print what we know */
 		printf(" %2d      %3d   %3d    %3d    %3d     %3d     %s\n", i,
@@ -3515,8 +3501,7 @@ int cmd_thermal_set_threshold_v1(int argc, char *argv[])
 	}
 
 	p.sensor_num = n;
-	rv = ec_command(EC_CMD_THERMAL_GET_THRESHOLD, 1, &p, sizeof(p), &r,
-			sizeof(r));
+	rv = ec_cmd_thermal_get_threshold_v1(NULL, &p, &r);
 	if (rv <= 0)
 		return rv;
 
@@ -3547,8 +3532,7 @@ int cmd_thermal_set_threshold_v1(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_command(EC_CMD_THERMAL_SET_THRESHOLD, 1, &s, sizeof(s), NULL,
-			0);
+	rv = ec_cmd_thermal_set_threshold_v1(NULL, &s);
 
 	return rv;
 }
@@ -3584,7 +3568,7 @@ static int get_num_fans(void)
 	 * iff the EC supports the GET_FEATURES,
 	 * check whether it has fan support enabled.
 	 */
-	rv = ec_command(EC_CMD_GET_FEATURES, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_get_features(NULL, &r);
 	if (rv >= 0 && !(r.flags[0] & BIT(EC_FEATURE_PWM_FAN)))
 		return 0;
 
@@ -3609,8 +3593,7 @@ int cmd_thermal_auto_fan_ctrl(int argc, char *argv[])
 		/* If no argument is provided then enable auto fan ctrl */
 		/* for all fans by using version 0 of the host command */
 
-		rv = ec_command(EC_CMD_THERMAL_AUTO_FAN_CTRL, 0, NULL, 0, NULL,
-				0);
+		rv = ec_cmd_thermal_auto_fan_ctrl(NULL);
 		if (rv < 0)
 			return rv;
 
@@ -3777,8 +3760,7 @@ int cmd_pwm_get_keyboard_backlight(int argc, char *argv[])
 	struct ec_response_pwm_get_keyboard_backlight r;
 	int rv;
 
-	rv = ec_command(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT, 0, NULL, 0, &r,
-			sizeof(r));
+	rv = ec_cmd_pwm_get_keyboard_backlight(NULL, &r);
 	if (rv < 0)
 		return rv;
 
@@ -3806,8 +3788,7 @@ int cmd_pwm_set_keyboard_backlight(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_PWM_SET_KEYBOARD_BACKLIGHT, 0, &p, sizeof(p),
-			NULL, 0);
+	rv = ec_cmd_pwm_set_keyboard_backlight(NULL, &p);
 	if (rv < 0)
 		return rv;
 
@@ -3842,7 +3823,7 @@ int cmd_pwm_get_duty(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_command(EC_CMD_PWM_GET_DUTY, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_pwm_get_duty(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
@@ -3883,7 +3864,7 @@ int cmd_pwm_set_duty(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_PWM_SET_DUTY, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_pwm_set_duty(NULL, &p);
 	if (rv < 0)
 		return rv;
 
@@ -3911,8 +3892,7 @@ int cmd_fanduty(int argc, char *argv[])
 			return -1;
 		}
 
-		rv = ec_command(EC_CMD_PWM_SET_FAN_DUTY, 0, &p_v0, sizeof(p_v0),
-				NULL, 0);
+		rv = ec_cmd_pwm_set_fan_duty_v0(NULL, &p_v0);
 		if (rv < 0)
 			return rv;
 
@@ -6213,8 +6193,7 @@ int cmd_led(int argc, char *argv[])
 
 	if (!strcasecmp(argv[2], "query")) {
 		p.flags = EC_LED_FLAGS_QUERY;
-		rv = ec_command(EC_CMD_LED_CONTROL, 1, &p, sizeof(p), &r,
-				sizeof(r));
+		rv = ec_cmd_led_control_v1(NULL, &p, &r);
 		printf("Brightness range for LED %d:\n", p.led_id);
 		if (rv < 0) {
 			fprintf(stderr, "Error: Unsupported LED.\n");
@@ -6258,7 +6237,7 @@ int cmd_led(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_command(EC_CMD_LED_CONTROL, 1, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_led_control_v1(NULL, &p, &r);
 	return (rv < 0 ? rv : 0);
 }
 
@@ -6297,7 +6276,7 @@ int cmd_usb_charge_set_mode(int argc, char *argv[])
 	printf("Setting port %d to mode %d inhibit_charge %d...\n",
 	       p.usb_port_id, p.mode, p.inhibit_charge);
 
-	rv = ec_command(EC_CMD_USB_CHARGE_SET_MODE, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_usb_charge_set_mode(NULL, &p);
 	if (rv < 0)
 		return rv;
 
@@ -6322,7 +6301,7 @@ int cmd_usb_mux(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_USB_MUX, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_usb_mux(NULL, &p);
 	if (rv < 0)
 		return rv;
 
@@ -6585,7 +6564,7 @@ int cmd_usb_pd_dps(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_USB_PD_DPS_CONTROL, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_usb_pd_dps_control(NULL, &p);
 	if (rv < 0)
 		return rv;
 
@@ -6679,8 +6658,7 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 
 	for (i = 0; i < num_ports; i++) {
 		p.port = i;
-		rv = ec_command(EC_CMD_USB_PD_MUX_INFO, 0, &p, sizeof(p), &r,
-				sizeof(r));
+		rv = ec_cmd_usb_pd_mux_info(NULL, &p, &r);
 		if (rv < 0)
 			return rv;
 
@@ -6794,7 +6772,7 @@ int cmd_kbpress(int argc, char *argv[])
 	printf("%s row %d col %d.\n", p.pressed ? "Pressing" : "Releasing",
 	       p.row, p.col);
 
-	rv = ec_command(EC_CMD_MKBP_SIMULATE_KEY, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_mkbp_simulate_key(NULL, &p);
 	if (rv < 0)
 		return rv;
 	printf("Done.\n");
@@ -6806,8 +6784,7 @@ int cmd_keyboard_factory_test(int argc, char *argv[])
 	struct ec_response_keyboard_factory_test r;
 	int rv;
 
-	rv = ec_command(EC_CMD_KEYBOARD_FACTORY_TEST, 0, NULL, 0, &r,
-			sizeof(r));
+	rv = ec_cmd_keyboard_factory_test(NULL, &r);
 	if (rv < 0)
 		return rv;
 
@@ -6842,7 +6819,7 @@ int cmd_power_info(int argc, char *argv[])
 	struct ec_response_power_info_v1 r;
 	int rv;
 
-	rv = ec_command(EC_CMD_POWER_INFO, 1, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_power_info_v1(NULL, &r);
 	if (rv < 0)
 		return rv;
 
@@ -6943,7 +6920,7 @@ int cmd_pstore_info(int argc, char *argv[])
 	struct ec_response_pstore_info r;
 	int rv;
 
-	rv = ec_command(EC_CMD_PSTORE_INFO, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_pstore_info(NULL, &r);
 	if (rv < 0)
 		return rv;
 
@@ -7038,7 +7015,7 @@ int cmd_pstore_write(int argc, char *argv[])
 		p.offset = offset + i;
 		p.size = MIN(size - i, EC_PSTORE_SIZE_MAX);
 		memcpy(p.data, buf + i, p.size);
-		rv = ec_command(EC_CMD_PSTORE_WRITE, 0, &p, sizeof(p), NULL, 0);
+		rv = ec_cmd_pstore_write(NULL, &p);
 		if (rv < 0) {
 			fprintf(stderr, "Write error at offset %d\n", i);
 			free(buf);
@@ -7069,7 +7046,7 @@ int cmd_host_event_get_b(int argc, char *argv[])
 	struct ec_response_host_event_mask r;
 	int rv;
 
-	rv = ec_command(EC_CMD_HOST_EVENT_GET_B, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_cmd_host_event_get_b(NULL, &r);
 	if (rv < 0)
 		return rv;
 	if (rv < sizeof(r)) {
@@ -7413,7 +7390,7 @@ int cmd_locate_chip(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_LOCATE_CHIP, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_locate_chip(NULL, &p, &r);
 
 	if (rv == -EC_RES_INVALID_PARAM - EECRESULT) {
 		fprintf(stderr, "Bus type %d not supported.\n", p.type);
@@ -7500,7 +7477,7 @@ int cmd_basestate(int argc, char *argv[])
 		return -1;
 	}
 
-	return ec_command(EC_CMD_SET_BASE_STATE, 0, &p, sizeof(p), NULL, 0);
+	return ec_cmd_set_base_state(NULL, &p);
 }
 
 int cmd_ext_power_limit(int argc, char *argv[])
@@ -7971,7 +7948,7 @@ int cmd_gpio_set(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_GPIO_SET, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_gpio_set(NULL, &p);
 	if (rv < 0)
 		return rv;
 
@@ -8279,8 +8256,7 @@ int cmd_battery_vendor_param(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_command(EC_CMD_BATTERY_VENDOR_PARAM, 0, &p, sizeof(p), &r,
-			sizeof(r));
+	rv = ec_cmd_battery_vendor_param(NULL, &p, &r);
 
 	if (rv < 0)
 		return rv;
@@ -8547,7 +8523,7 @@ int cmd_chipinfo(int argc, char *argv[])
 
 	printf("Chip info:\n");
 
-	rv = ec_command(EC_CMD_GET_CHIP_INFO, 0, NULL, 0, &info, sizeof(info));
+	rv = ec_cmd_get_chip_info(NULL, &info);
 	if (rv < 0)
 		return rv;
 	printf("  vendor:    %s\n", info.vendor);
@@ -8565,8 +8541,7 @@ int cmd_proto_info(int argc, char *argv[])
 
 	printf("Protocol info:\n");
 
-	rv = ec_command(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0, &info,
-			sizeof(info));
+	rv = ec_cmd_get_protocol_info(NULL, &info);
 	if (rv < 0) {
 		fprintf(stderr, "Protocol info unavailable.  EC probably only "
 				"supports protocol version 2.\n");
@@ -8644,8 +8619,7 @@ int cmd_ec_hash(int argc, char *argv[])
 	if (argc < 2) {
 		/* Get hash status */
 		p.cmd = EC_VBOOT_HASH_GET;
-		rv = ec_command(EC_CMD_VBOOT_HASH, 0, &p, sizeof(p), &r,
-				sizeof(r));
+		rv = ec_cmd_vboot_hash(NULL, &p, &r);
 		if (rv < 0)
 			return rv;
 
@@ -8655,8 +8629,7 @@ int cmd_ec_hash(int argc, char *argv[])
 	if (argc == 2 && !strcasecmp(argv[1], "abort")) {
 		/* Abort hash calculation */
 		p.cmd = EC_VBOOT_HASH_ABORT;
-		rv = ec_command(EC_CMD_VBOOT_HASH, 0, &p, sizeof(p), &r,
-				sizeof(r));
+		rv = ec_cmd_vboot_hash(NULL, &p, &r);
 		return (rv < 0 ? rv : 0);
 	}
 
@@ -8715,7 +8688,7 @@ int cmd_ec_hash(int argc, char *argv[])
 	} else
 		p.nonce_size = 0;
 
-	rv = ec_command(EC_CMD_VBOOT_HASH, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_vboot_hash(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
@@ -8813,7 +8786,7 @@ int cmd_console(int argc, char *argv[])
 	int rv;
 
 	/* Snapshot the EC console */
-	rv = ec_command(EC_CMD_CONSOLE_SNAPSHOT, 0, NULL, 0, NULL, 0);
+	rv = ec_cmd_console_snapshot(NULL);
 	if (rv < 0)
 		return rv;
 
@@ -9375,7 +9348,7 @@ int cmd_tmp006raw(int argc, char *argv[])
 
 	p.index = idx;
 
-	rv = ec_command(EC_CMD_TMP006_GET_RAW, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_tmp006_get_raw(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
@@ -9393,14 +9366,12 @@ static int cmd_hang_detect(int argc, char *argv[])
 
 	if (argc == 2 && !strcasecmp(argv[1], "stop")) {
 		req.flags = EC_HANG_STOP_NOW;
-		return ec_command(EC_CMD_HANG_DETECT, 0, &req, sizeof(req),
-				  NULL, 0);
+		return ec_cmd_hang_detect(NULL, &req);
 	}
 
 	if (argc == 2 && !strcasecmp(argv[1], "start")) {
 		req.flags = EC_HANG_START_NOW;
-		return ec_command(EC_CMD_HANG_DETECT, 0, &req, sizeof(req),
-				  NULL, 0);
+		return ec_cmd_hang_detect(NULL, &req);
 	}
 
 	if (argc == 4) {
@@ -9428,8 +9399,7 @@ static int cmd_hang_detect(int argc, char *argv[])
 		       req.flags, req.host_event_timeout_msec,
 		       req.warm_reboot_timeout_msec);
 
-		return ec_command(EC_CMD_HANG_DETECT, 0, &req, sizeof(req),
-				  NULL, 0);
+		return ec_cmd_hang_detect(NULL, &req);
 	}
 
 	fprintf(stderr,
@@ -9455,8 +9425,7 @@ int cmd_port80_read(int argc, char *argv[])
 	if (!ec_cmd_version_supported(EC_CMD_PORT80_READ, cmdver)) {
 		/* fall back to last boot */
 		struct ec_response_port80_last_boot r;
-		rv = ec_command(EC_CMD_PORT80_LAST_BOOT, 0, NULL, 0, &r,
-				sizeof(r));
+		rv = ec_cmd_port80_last_boot(NULL, &r);
 		fprintf(stderr, "Last boot %2x\n", r.code);
 		printf("done.\n");
 		return 0;
@@ -9549,7 +9518,7 @@ int cmd_force_lid_open(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_FORCE_LID_OPEN, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_force_lid_open(NULL, &p);
 	if (rv < 0)
 		return rv;
 	printf("Success.\n");
@@ -9806,7 +9775,7 @@ static int cmd_pchg(int argc, char *argv[])
 	char *e;
 	int rv;
 
-	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, &rcnt, sizeof(rcnt));
+	rv = ec_cmd_pchg_count(NULL, &rcnt);
 	if (rv < 0) {
 		fprintf(stderr, "\nFailed to get port count: %d\n", rv);
 		return rv;
@@ -10079,7 +10048,7 @@ int cmd_pd_control(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_command(EC_CMD_PD_CONTROL, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_cmd_pd_control(NULL, &p);
 	return (rv < 0 ? rv : 0);
 }
 
@@ -10169,7 +10138,7 @@ int cmd_pd_write_log(int argc, char *argv[])
 		return -1;
 	}
 
-	return ec_command(EC_CMD_PD_WRITE_LOG_ENTRY, 0, &p, sizeof(p), NULL, 0);
+	return ec_cmd_pd_write_log_entry(NULL, &p);
 }
 
 int cmd_typec_control(int argc, char *argv[])
@@ -10649,7 +10618,7 @@ int cmd_tp_self_test(int argc, char *argv[])
 {
 	int rv;
 
-	rv = ec_command(EC_CMD_TP_SELF_TEST, 0, NULL, 0, NULL, 0);
+	rv = ec_cmd_tp_self_test(NULL);
 	if (rv < 0)
 		return rv;
 
@@ -10684,7 +10653,7 @@ int cmd_tp_frame_get(int argc, char *argv[])
 		goto err;
 	}
 
-	rv = ec_command(EC_CMD_TP_FRAME_SNAPSHOT, 0, NULL, 0, NULL, 0);
+	rv = ec_cmd_tp_frame_snapshot(NULL);
 	if (rv < 0) {
 		fprintf(stderr, "Failed to snapshot frame.\n");
 		goto err;
@@ -10935,7 +10904,7 @@ static int cmd_cec_set(int argc, char *argv[])
 	p.cmd = cmd;
 	p.val = val;
 
-	return ec_command(EC_CMD_CEC_SET, 0, &p, sizeof(p), NULL, 0);
+	return ec_cmd_cec_set(NULL, &p);
 }
 
 static int cmd_cec_get(int argc, char *argv[])
@@ -10957,7 +10926,7 @@ static int cmd_cec_get(int argc, char *argv[])
 	}
 	p.cmd = cmd;
 
-	rv = ec_command(EC_CMD_CEC_GET, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_cmd_cec_get(NULL, &p, &r);
 	if (rv < 0)
 		return rv;
 
