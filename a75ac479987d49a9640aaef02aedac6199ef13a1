@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60adcb8f_d6650885",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-10-28T08:27:28Z",
+      "side": 1,
+      "message": "i\u0027m not super familiar with the rules for constructing\nthis file, but don\u0027t you need the #undef, #ifdef here as well?",
+      "range": {
+        "startLine": 914,
+        "startChar": 1,
+        "endLine": 914,
+        "endChar": 7
+      },
+      "revId": "a75ac479987d49a9640aaef02aedac6199ef13a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
