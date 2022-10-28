@@ -254,6 +254,7 @@ LDFLAGS+=-nostdlib
 else
 LDFLAGS+=-lnosys
 endif
+LDFLAGS+=-L$(HOME)/chromiumos/src/third_party/tmp/lib -lgtest
 MEMSIZE_FLAGS=
 ifeq ($(cc-name),gcc)
 MEMSIZE_FLAGS+=-Wl,--print-memory-usage
