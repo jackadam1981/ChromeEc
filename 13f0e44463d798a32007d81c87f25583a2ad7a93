@@ -87,6 +87,24 @@
       "parentUuid": "d48b5404_07448832",
       "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5085e525_ee4feda1",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-28T00:48:59Z",
+      "side": 1,
+      "message": "I don\u0027t think we should rely on any particular ordering or hook behavior, since if AC_CHANGE fires before AP power is ready we\u0027ll still hit the `else` branch in that function.",
+      "parentUuid": "e6286297_40b5b4e8",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
