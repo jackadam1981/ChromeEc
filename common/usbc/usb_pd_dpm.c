@@ -335,6 +335,11 @@ void dpm_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 #else
 		__fallthrough;
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
+#ifdef USB_VID_ACER
+	case USB_VID_ACER:
+		board_docking_monitor_vdm_acked(port, type, vdo_count, vdm);
+		break;
+#endif
 	default:
 		CPRINTS("C%d: Received unexpected VDM ACK for SVID %d", port,
 			svid);
@@ -1094,6 +1099,11 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	bool enter_mode_requested =
 		IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) ? false : true;
 	enum dpm_msg_setup_status status = MSG_SETUP_UNSUPPORTED;
+#ifdef USB_VID_ACER
+	struct rmdo partner_rmdo;
+
+	partner_rmdo = pe_get_partner_rmdo(port);
+#endif
 
 #ifdef CONFIG_AP_POWER_CONTROL
 	/*
@@ -1102,8 +1112,17 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	 * phase or during enter/exit negotiations, and the state
 	 * of the modes can get out of sync, causing the attempt to
 	 * enter the mode to fail prematurely.
+	 *
+	 * Enter Acer mode when power off is required because DUT need to
+	 * power on by monitor.
 	 */
-	if (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON))
+	if (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON)
+#ifdef USB_VID_ACER
+	    && !(pd_is_mode_discovered_for_svid(port, TCPCI_MSG_SOP,
+						USB_VID_ACER) &&
+		 !dpm_mode_entry_requested(port, TYPEC_MODE_DP))
+#endif
+	)
 		return false;
 #endif
 	/*
@@ -1114,7 +1133,13 @@ static bool dpm_dfp_enter_mode_msg(int port)
 	    pd_get_modes_discovery(port, TCPCI_MSG_SOP) != PD_DISC_COMPLETE)
 		return false;
 
-	if (dp_entry_is_done(port) ||
+	if ((dp_entry_is_done(port)
+#ifdef USB_VID_ACER
+	     && (board_docking_monitor_mode_check_entry_is_done(port) ||
+		 !pd_is_mode_discovered_for_svid(port, TCPCI_MSG_SOP,
+						 USB_VID_ACER))
+#endif
+		     ) ||
 	    (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	     tbt_entry_is_done(port)) ||
 	    (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
@@ -1173,6 +1198,20 @@ static bool dpm_dfp_enter_mode_msg(int port)
 		enter_mode_requested = true;
 		vdo_count = ARRAY_SIZE(vdm);
 		status = dp_setup_next_vdm(port, &vdo_count, vdm);
+#ifdef USB_VID_ACER
+	} else if (!((partner_rmdo.major_rev == 3 &&
+		      partner_rmdo.minor_rev >= 1) ||
+		     partner_rmdo.major_rev > 3) &&
+		   pd_is_mode_discovered_for_svid(port, TCPCI_MSG_SOP,
+						  USB_VID_ACER)) {
+		/*
+		 * If the device support USB3.1 or greater,
+		 * do not enter docking monitor mode.
+		 */
+		vdo_count = ARRAY_SIZE(vdm);
+		status = board_docking_monitor_setup_next_vdm(port, &vdo_count,
+							      vdm);
+#endif
 	}
 
 	/* Not ready to send a VDM, check again next cycle */
@@ -1197,6 +1236,9 @@ static bool dpm_dfp_enter_mode_msg(int port)
 		 * future, but the DPM is done trying for now.
 		 */
 		dpm_set_mode_entry_done(port);
+#ifdef USB_VID_ACER
+		board_docking_monitor_set_mode_done(port);
+#endif
 		return false;
 	}
 
@@ -1365,7 +1407,11 @@ static void dpm_dfp_ready_run(const int port)
 	if (DPM_CHK_FLAG(port, DPM_FLAG_EXIT_REQUEST)) {
 		if (dpm_dfp_exit_mode_msg(port))
 			return;
-	} else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE)) {
+	} else if (!DPM_CHK_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE)
+#ifdef USB_VID_ACER
+		   || !board_docking_monitor_mode_check_entry_is_done(port)
+#endif
+	) {
 		if (dpm_dfp_enter_mode_msg(port))
 			return;
 	}
