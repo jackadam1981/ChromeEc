@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5aab43_8ba0ce0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-10-28T04:27:01Z",
+      "side": 1,
+      "message": "Could you please split the CL to two CLs? One is modifying the include/button.h (maybe introduce a new CONFIG_BUTTON_DEBOUNCE to configure the time and set it to the default value as 30ms). Another CL is modifying the board layer.",
+      "revId": "3740ca17898aa50e9d9b44fbaaa16a22f111ad74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
