@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a306698_9eba610a",
+        "filename": "util/chargen",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T17:51:50Z",
+      "side": 1,
+      "message": "why do quotes need to change to doubleqoutes?",
+      "revId": "dbca758f92e8ad1e0b02810cb8f8212bf83356a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961424cb_61833b89",
+        "filename": "util/chargen",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T17:51:50Z",
+      "side": 1,
+      "message": "looks like this is the only necessary change?",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "dbca758f92e8ad1e0b02810cb8f8212bf83356a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
