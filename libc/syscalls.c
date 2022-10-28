@@ -51,7 +51,6 @@ int _write(int fd, char *buf, int len)
 	return uart_put(buf, len);
 }
 
-#endif /* !BOARD_HOST */
 /**
  * Create a directory.
  *
@@ -70,6 +69,8 @@ int mkdir(const char *pathname, mode_t mode)
 	errno = ENOSYS;
 	return -1;
 }
+
+#endif /* !BOARD_HOST */
 
 /**
  * Get the time.
