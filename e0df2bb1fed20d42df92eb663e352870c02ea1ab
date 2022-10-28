@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87cdf54_a97676b0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6783,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T21:11:58Z",
+      "side": 1,
+      "message": "Ah, and I was hoping you wouldn\u0027t notice my ATM machine naming :) \n\nvdm_data and vdm_data_objects seem good.",
+      "parentUuid": "bafd250b_7a834dd6",
+      "range": {
+        "startLine": 6783,
+        "startChar": 9,
+        "endLine": 6783,
+        "endChar": 26
+      },
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6d83017_1fe8869b",
@@ -291,6 +315,24 @@
       "side": 1,
       "message": "Nit: `vdm_entry` could be declared inside the `for` body.",
       "parentUuid": "fbc19dab_854a5f5c",
+      "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72451420_c2f9fa5f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 10277,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-28T21:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad375bca_e12afacb",
       "revId": "e0df2bb1fed20d42df92eb663e352870c02ea1ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
