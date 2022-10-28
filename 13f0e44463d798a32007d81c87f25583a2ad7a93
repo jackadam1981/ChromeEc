@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09ac77bd_d2a83a99",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-10-28T05:19:38Z",
+      "side": 1,
+      "message": "I think the best option is to put this in the legacy tree and don\u0027t include it in EC-OS builds; also make its build conditional on CONFIG_HIBERNATE + AP_PWRSEQ.\nNot unlike what I ended up doing in https://crrev.com/c/3868882, we don\u0027t really have a place for pure-zephyr application code yet so we can toss it in the legacy directory but only build it for zephyr.",
+      "parentUuid": "d187ddcc_a59c705c",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d48b5404_07448832",
         "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
         "patchSetId": 4
