@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ff3fe9_9b4c26d3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T01:58:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "249335d5_88f33ad4",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "dfddc83ac925dbe888e4bb580c839a53271072e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4506ec32_eefab93f",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "We can\u0027t modify the ap_ro_check_header, because it\u0027s used in existing saved ap ro v1 data.",
       "parentUuid": "4506ec32_eefab93f",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 19
+      },
+      "revId": "dfddc83ac925dbe888e4bb580c839a53271072e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcee939b_21f405a9",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T01:58:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61d29596_667091a9",
       "range": {
         "startLine": 87,
         "startChar": 0,
