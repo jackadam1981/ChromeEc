@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47ddd411_cb09cb68",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-28T05:50:25Z",
+      "side": 1,
+      "message": "Hmmm.. a bit ugly, but perhaps the least worst of the options.\nI can\u0027t find any other place where the build ifdef contains 2 conditionals, and I wonder whether this is good style. Currently this is worked around by using a #ifdef in the file itself.",
+      "parentUuid": "09ac77bd_d2a83a99",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d48b5404_07448832",
         "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
         "patchSetId": 4
