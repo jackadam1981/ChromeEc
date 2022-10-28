@@ -105,6 +105,24 @@
       "parentUuid": "e6286297_40b5b4e8",
       "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9dfd078_f84f3f17",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-28T01:05:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5085e525_ee4feda1",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
