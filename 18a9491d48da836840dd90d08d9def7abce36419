@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10111106_36ff413e",
+        "filename": "include/benchmark.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-28T17:02:02Z",
+      "side": 1,
+      "message": "nit: Can you add a newline after `num_results_`?",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 43
+      },
+      "revId": "18a9491d48da836840dd90d08d9def7abce36419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8e4610_719d7621",
+        "filename": "include/benchmark.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-10-28T17:02:02Z",
+      "side": 1,
+      "message": "I think the `const` is unnecessary here (typo in my suggestion). [Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/biod/biod_metrics.cc;l\u003d19;drc\u003d39cb7548f98a9bac9f44e2b9099cca2c170e872e).",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "18a9491d48da836840dd90d08d9def7abce36419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
