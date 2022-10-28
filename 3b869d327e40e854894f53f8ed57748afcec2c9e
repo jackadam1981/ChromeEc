@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a7dab8_3fc8bc72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-10-28T18:26:18Z",
+      "side": 1,
+      "message": "Looks good. One minor nit and we\u0027re good to go.",
+      "revId": "3b869d327e40e854894f53f8ed57748afcec2c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ccf4f3_8aa25c73",
+        "filename": "zephyr/zmake/zmake/jobserver.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-10-28T18:26:18Z",
+      "side": 1,
+      "message": "Use `JobHandle(functools.partial(os.write, write_fd, byte))` here, as `write_fd` and `byte` will be evaluated at the scope of the `get_job` method when `return_token` is called, and we have a loop here that could affect the values.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 50
+      },
+      "revId": "3b869d327e40e854894f53f8ed57748afcec2c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
