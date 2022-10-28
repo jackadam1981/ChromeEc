@@ -8,6 +8,8 @@
 #include "fpc_private.h"
 #include "board.h"
 
+#include <gtest/gtest.h>
+
 #include <sstream>
 #include <ostream>
 #include <iostream>
@@ -22,28 +24,32 @@ static const uint32_t fp_sensor_hwid = UINT32_MAX;
 /* Hardware-dependent smoke test that makes a SPI transaction with the
  * fingerprint sensor.
  */
-test_static int test_fp_check_hwid(void)
+
+TEST(FpSensor, CheckHardwareID)
 {
 	uint16_t id = 0;
 
+	ccprintf("Test starting\n");
+
 	if (IS_ENABLED(SECTION_IS_RW)) {
-		std::stringstream stream;
-		stream << "This is a stringstream" << std::endl;
-		ccprintf("%s", stream.str().c_str());
+		ccprintf("Getting HWID\n");
+		EXPECT_EQ(fpc_get_hwid(&id), EC_SUCCESS);
 
-		std::cout << "Running test" << std::endl;
-
-		TEST_EQ(fpc_get_hwid(&id), EC_SUCCESS, "%d");
+		ccprintf("Checking HWID\n");
 		/* The lower 4-bits of the sensor hardware id are a
 		 * manufacturing ID that is ok to vary.
 		 */
-		TEST_EQ(fp_sensor_hwid, id >> 4, "%d");
+		EXPECT_EQ(fp_sensor_hwid, id >> 4);
+
+		ccprintf("Expect failure\n");
+		EXPECT_TRUE(false);
 	};
-	return EC_SUCCESS;
 }
 
 extern "C" void run_test(int argc, const char **argv)
 {
-	RUN_TEST(test_fp_check_hwid);
-	test_print_result();
+	ccprintf("Running run_test() from %s\n", __FILE__);
+	testing::InitGoogleTest(&argc, (char **)argv);
+	int ret = RUN_ALL_TESTS();
+	ccprintf("Return: %d\n", ret);
 }
