@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1074f35_c7951489",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-10-28T15:16:16Z",
+      "side": 1,
+      "message": "Cr50 needs to find the flags to inject before it can save the gbbd. That can only be done after verification passes once.",
+      "parentUuid": "0fd53a84_1242ec65",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1074,
+        "endChar": 2
+      },
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1a027d9_9ea9820c",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 11
