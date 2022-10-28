@@ -52,6 +52,24 @@
       "parentUuid": "7873908d_62d68192",
       "revId": "0d592b6b458c45faccd8caa3bf6480292e5e91ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe29c82_45f17c25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-10-28T02:22:47Z",
+      "side": 1,
+      "message": "With new patchset7 and https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3984437/1.\n\n`make buildall` and `./twister -p native_posix -p unit_testing` pass",
+      "parentUuid": "b15dfe19_17fd9e45",
+      "revId": "0d592b6b458c45faccd8caa3bf6480292e5e91ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
