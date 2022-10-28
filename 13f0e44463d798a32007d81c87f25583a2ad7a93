@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d187ddcc_a59c705c",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-28T00:48:50Z",
+      "side": 1,
+      "message": "The other consideration is that this particular piece of code is essentially a port of the legacy code specific to the new AP power sequence code, not so much\nthat it is actually part of it, but that the old code was entangled with the old power code. The new code can only be included when the new power sequence code is used, so there is some dependency here. In some ways I see subsys/ap_power the new version of power/, so perhaps any code replacing that old directory should live in the new directory.\n\nA more \u0027correct\u0027 solution would be to disentangle the hibernation code entirely from the legacy power/common.c, and then allow this to be included in both the old and new, but that seemed like quite a tricky exercise. Maybe that\u0027s a longer term solution.",
+      "parentUuid": "a96064d0_2b653409",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d48b5404_07448832",
         "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
         "patchSetId": 4
