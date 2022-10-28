@@ -16,6 +16,24 @@
       "message": "nit: So we\u0027re also testing this here now too?",
       "revId": "619d366ce5701bed71fe35b84bccf582273e4f4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdce8a31_1c8a5ffd",
+        "filename": "zephyr/test/drivers/console/src/shell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-10-28T18:47:44Z",
+      "side": 1,
+      "message": "Yeah, it honestly should have been in the first pass.",
+      "parentUuid": "edb618f9_98842077",
+      "revId": "619d366ce5701bed71fe35b84bccf582273e4f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
