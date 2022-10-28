@@ -11,6 +11,9 @@
  * https://sourceware.org/git/?p=newlib-cygwin.git;a=tree;f=libgloss/libnosys.
  */
 
+#include <errno.h>
+#include <sys/stat.h>
+
 #include "panic.h"
 #include "software_panic.h"
 #include "task.h"
@@ -42,4 +45,10 @@ void _exit(int rc)
 int _write(int fd, char *buf, int len)
 {
 	return uart_put(buf, len);
+}
+
+int mkdir(const char *pathname, mode_t mode)
+{
+	errno = ENOSYS;
+	return -1;
 }
