@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ea8d08_11691e7a",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-28T01:53:10Z",
+      "side": 1,
+      "message": "anther couple of parens wouldn\u0027t hurt in to be sure that `\u003e` happens before `||`",
+      "range": {
+        "startLine": 293,
+        "startChar": 4,
+        "endLine": 294,
+        "endChar": 46
+      },
+      "revId": "af406bc3b8436dd72e0561a6dd768e6564ee15d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
