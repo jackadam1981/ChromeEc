@@ -16,6 +16,24 @@
       "message": "Why does the patchset 3 delete the files?",
       "revId": "8167c5212f9651293cb8e8b08113de91e78dc12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60dd195e_d9e283b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-10-28T02:02:46Z",
+      "side": 1,
+      "message": "The patchset 3 was not uploaded by Nuvoton.\nI have no idea why Sodium summitted the change to my CL.\nAny way, I fixed it in the patchset 4.",
+      "parentUuid": "0d84f91d_e20c0821",
+      "revId": "8167c5212f9651293cb8e8b08113de91e78dc12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
