@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2638dc66_c96d1df7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-29T14:56:59Z",
+      "side": 1,
+      "message": "CQ is failing tests that are not part of this CL chain. Fixing those and then attempting to merge once more this week.",
+      "revId": "24c77cd8ffb8405db571017a07d2ef77e9ddcbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
