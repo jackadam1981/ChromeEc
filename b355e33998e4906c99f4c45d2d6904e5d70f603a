@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d6055e_778144a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-31T17:44:37Z",
+      "side": 1,
+      "message": "Can add: LOW_COVERAGE_REASON\u003dno emulator for the ANX7483 exists",
+      "revId": "b355e33998e4906c99f4c45d2d6904e5d70f603a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbdd3d7_bd17bf37",
+        "filename": "include/driver/retimer/anx7483_public.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-31T17:44:37Z",
+      "side": 1,
+      "message": "nit: should these have some indicator that they\u0027re negative?  Ex. NEG_1_5DB?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "b355e33998e4906c99f4c45d2d6904e5d70f603a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
