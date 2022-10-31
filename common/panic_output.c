@@ -335,7 +335,7 @@ ENABLE_GCC_WARNING("-Winfinite-recursion")
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_CRASH
-static int command_crash(int argc, const char **argv)
+test_export_static int command_crash(int argc, const char **argv)
 {
 	if (argc < 2)
 		return EC_ERROR_PARAM1;
@@ -361,13 +361,21 @@ static int command_crash(int argc, const char **argv)
 		cflush();
 		ccprintf("%08x", *(volatile int *)unaligned_ptr);
 	} else if (!strcasecmp(argv[1], "watchdog")) {
-		while (1)
-			;
+		while (1) {
+/* Yield on native posix to avoid locking up the simulated sys clock */
+#if CONFIG_ARCH_POSIX
+			k_cpu_idle();
+#endif
+		}
 	} else if (!strcasecmp(argv[1], "hang")) {
 		uint32_t lock_key = irq_lock();
 
-		while (1)
-			;
+		while (1) {
+/* Yield on native posix to avoid locking up the simulated sys clock */
+#ifdef CONFIG_ARCH_POSIX
+			k_cpu_idle();
+#endif
+		}
 
 		/* Unreachable, but included for consistency */
 		irq_unlock(lock_key);
