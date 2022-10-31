@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96aabc4c_150984b1",
+        "filename": "zephyr/projects/skyrim/interrupts.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-31T17:35:31Z",
+      "side": 1,
+      "message": "I believe this is a field you should be able to override in your board\u0027s .dts file, which should avoid having to create all the individual sensor.c files for boards",
+      "revId": "b113eeb3add18c678a93b0a60e754dd67a63a9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
