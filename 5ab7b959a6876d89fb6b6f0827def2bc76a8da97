@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6788f29c_fbaa0ac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-31T06:29:16Z",
+      "side": 1,
+      "message": "Also, check the device tree macros that are generated.\nI think that if you just reference the property name and it is an array, it will\nhave the list of the entries already defined e.g for temp_on, this is an int array, so if you have\n\n#define FAN_TABLE_ENTRY(nd) \\\n{\n  .on DT_PROP(nd, temp_on),\n  ....\n  \n\nThe DT_PROP entry will appear as \"{ 44, 47, 0 }\"\nThat way you don\u0027t need to specify each entry in the array.",
+      "revId": "5ab7b959a6876d89fb6b6f0827def2bc76a8da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4112f54a_119ab912",
