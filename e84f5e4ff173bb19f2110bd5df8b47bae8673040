@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9cdf46_142d0da5",
+        "filename": "zephyr/test/drivers/common_cbi/src/test_common_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-10-31T15:45:37Z",
+      "side": 1,
+      "message": "In case you weren\u0027t aware you can mash the declaration and definition together as long as you don\u0027t need a named type (anonymous struct)",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "e84f5e4ff173bb19f2110bd5df8b47bae8673040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d968afe_e222ba1d",
+        "filename": "zephyr/test/drivers/common_cbi/src/test_common_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-10-31T15:45:37Z",
+      "side": 1,
+      "message": "Do we need to verify the contents of this response?",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "e84f5e4ff173bb19f2110bd5df8b47bae8673040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
