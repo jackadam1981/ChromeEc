@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baca0a69_1e6bb6cf",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-31T20:17:30Z",
+      "side": 1,
+      "message": "Would it be possible to just define `CONFIG_BATTERY_PRESENT_CUSTOM` for this test? That would avoid adding more `test_mockable`s.",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07316ef_f5b06be8",
+        "filename": "power/qcom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-31T20:17:30Z",
+      "side": 1,
+      "message": "I don\u0027t know if you\u0027ll like this idea any better than using `LCOV_EXCL_LINE` here, but if `assert_post_action` in upstream (or maybe even `k_panic`) had `[[noreturn]]`, then maybe `gcov`/`llcov` would figure out by itself that lines that come after `ASSERT(0)` are uncoverable. (I see that there are also some attributes that tell LLVM not to instrument a function, but I don\u0027t see an obvious way to use them to do what you want here.)",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908e7f1f_97b86694",
+        "filename": "zephyr/test/qcom_power/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-31T20:17:30Z",
+      "side": 1,
+      "message": "Nit: To the extent that this is different from what you\u0027d see in real life, you might want a comment explaining why that is.",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d53abd_f07d9e06",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-31T20:17:30Z",
+      "side": 1,
+      "message": "Put this in the relative includes section.",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ccb752_9c1061c4",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-31T20:17:30Z",
+      "side": 1,
+      "message": "Nit: This would be easier to understand if you defined a macro for the value of this expression and used that macro in these asserts.",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 59
+      },
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00490931_a9a3ecbd",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-31T20:17:30Z",
+      "side": 1,
+      "message": "Consider `CHECK_CONSOLE_CMD` from utils.h.",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b61180b_b54ee577",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-10-31T20:17:30Z",
+      "side": 1,
+      "message": "Nit: Since this is ~600 lines after the asserts, it might be nice to have a, \"This is OK because,\" comment.",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
