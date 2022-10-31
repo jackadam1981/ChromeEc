@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "081bae42_13c2329f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-31T20:22:52Z",
+      "side": 1,
+      "message": "There are no tests for the keyboard factory scan.  Please indicate this in the commit message:\n\nLOC_COVERAGE_REASON: b:256670141 create unit test for keyboard factory test",
+      "revId": "2f7aaa6ed48817440aeecbd045454fad079e8abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab9c021_3a0b5118",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-10-31T20:22:52Z",
+      "side": 1,
+      "message": "This should use the ECOS namespace config: `CONFIG_KEYBOARD_FACTORY_TEST`.",
+      "range": {
+        "startLine": 1081,
+        "startChar": 16,
+        "endLine": 1081,
+        "endChar": 56
+      },
+      "revId": "2f7aaa6ed48817440aeecbd045454fad079e8abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
