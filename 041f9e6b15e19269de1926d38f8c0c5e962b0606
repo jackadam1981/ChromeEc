@@ -16,6 +16,24 @@
       "message": "Hi Diana, would you please help to remove the code-coverage -1 from Zoss?\n\nMany thanks.",
       "revId": "041f9e6b15e19269de1926d38f8c0c5e962b0606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba2f178_7d9397f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-10-31T17:14:10Z",
+      "side": 1,
+      "message": "Actually, this is an area of the code base which has good test infrastructure set up, so we could probably unit test this change.  The general goal of the code coverage tracking is to get us to a point where all new code has tests exercising for it. The board code has been lagging, but common code has pretty good coverage so far. \n\nTake a look at `zephyr/test/drivers/default/src/smart.c` to get an idea of the kind of testing we have for the smart battery module.  \n\nTests can be run with twister, for example `~/chromiumos/src/platform/ec$ ./twister -T ./zephyr/test/drivers` will run all the tests under the drivers.  When you have devicetree or Kconfig changes, you can create sub-test and these are generally found under `zephyr/test/drivers` (for example, usbc_alt_mode or led_driver tests).\n\nPlease feel free to add the zephyr test team alias to your reviews for feedback and help with test writing: zephyr-test-eng@google.com",
+      "parentUuid": "413e8b76_1055e1e8",
+      "revId": "041f9e6b15e19269de1926d38f8c0c5e962b0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
