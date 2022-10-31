@@ -181,6 +181,13 @@ enum fan_channel { FAN_CH_0 = 0, FAN_CH_COUNT };
 
 enum mft_channel { MFT_CH_0 = 0, MFT_CH_COUNT };
 
+enum ec_config_power_on_by_monitor {
+	POWER_ON_BY_MONITOR_ENABLE = 0,
+	POWER_ON_BY_MONITOR_DISABLE = 1
+};
+
+uint8_t ec_config_power_on_by_monitor(void);
+
 /*
  * firmware config fields
  */
@@ -190,6 +197,9 @@ enum mft_channel { MFT_CH_0 = 0, MFT_CH_COUNT };
 #define EC_CFG_BJ_POWER_L 0
 #define EC_CFG_BJ_POWER_H 1
 #define EC_CFG_BJ_POWER_MASK GENMASK(EC_CFG_BJ_POWER_H, EC_CFG_BJ_POWER_L)
+
+/* Power On by Monitor */
+#define EC_CFG_POWER_ON_BY_MONITOR 7
 
 extern void adp_connect_interrupt(enum gpio_signal signal);
 
