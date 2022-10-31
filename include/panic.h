@@ -311,6 +311,18 @@ struct panic_data *get_panic_data_write(void);
  */
 void chip_panic_data_backup(void);
 
+#ifdef TEST_BUILD
+/**
+ * @brief Allows direct access to the `crash` console command for unit testing
+ *        so that it can be run in a dedicated thread.
+ *
+ * @param argc Number of args in `argv`
+ * @param argv Command line arguments
+ * @return int
+ */
+int command_crash(int argc, const char **argv);
+#endif
+
 #ifdef __cplusplus
 }
 #endif
