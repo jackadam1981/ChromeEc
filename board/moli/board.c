@@ -432,3 +432,30 @@ static void power_monitor(void)
  * Start power monitoring after ADCs have been initialised.
  */
 DECLARE_HOOK(HOOK_INIT, power_monitor, HOOK_PRIO_INIT_ADC + 1);
+
+/******************************************************************************/
+/*
+ * System power on and wake up by monitor power button.
+ */
+uint8_t ec_config_power_on_hdmi(void)
+{
+	uint32_t fw_config;
+	uint8_t power_on;
+
+	cbi_get_fw_config(&fw_config);
+	power_on = (fw_config & EC_CFG_POWER_ON_HDMI_MASK) >> EC_CFG_POWER_ON_HDMI;
+
+	return power_on;
+};
+
+uint8_t ec_config_power_on_typec(void)
+{
+	uint32_t fw_config;
+	uint8_t power_on;
+
+	cbi_get_fw_config(&fw_config);
+	power_on = (fw_config & EC_CFG_POWER_ON_TYPEC_MASK) >> EC_CFG_POWER_ON_TYPEC;
+
+	return power_on;
+};
+
