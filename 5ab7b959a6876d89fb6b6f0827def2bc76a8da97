@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbd49571_b4739d76",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-31T06:20:02Z",
+      "side": 1,
+      "message": "Also, to make it a little more flexible (in terms of the count of the number of child nodes, you can use:\n\n#define ON_ENT(nd, entry) DT_PROP_BY_IDX(nd, temp_on, entry)\n#define OFF_ENT(nd, entry) DT_PROP_BY_IDX(nd, temp_off, entry)\n\n\n#define FAN_TABLE_ENTRY(nd) \\\n{ \\\n .on { ON_ENT(nd, 0), ON_ENT(nd, 1), ON_ENT(nd, 2)},\n .off { OFF_ENT(nd, 0), OFF_ENT(nd, 1), OFF_ENT(nd, 2)},\n .rpm { DT_PROP_BY_IDX(nd, rpm_target, 0) }, \\\n}\n\nstatic const fan_step fan_step_table[] \u003d\n{\n  DT_FOREACH_CHILD(DT_INST(0, cros_ec_fan_steps), FAN_TABLE_ENTRY),\n};\n\nI notice the gerrit is stripping off the backslashes from the end of the macro lines...",
+      "parentUuid": "4112f54a_119ab912",
+      "revId": "5ab7b959a6876d89fb6b6f0827def2bc76a8da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4e225ab_2a546afb",
         "filename": "zephyr/shim/src/fan_steps.c",
         "patchSetId": 1
