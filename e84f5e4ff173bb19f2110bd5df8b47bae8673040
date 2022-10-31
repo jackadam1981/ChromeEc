@@ -45,6 +45,30 @@
       },
       "revId": "e84f5e4ff173bb19f2110bd5df8b47bae8673040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2912018c_8363445f",
+        "filename": "zephyr/test/drivers/common_cbi/src/test_common_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-10-31T16:14:52Z",
+      "side": 1,
+      "message": "Whoops! Good catch, thanks!",
+      "parentUuid": "7d968afe_e222ba1d",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "e84f5e4ff173bb19f2110bd5df8b47bae8673040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
