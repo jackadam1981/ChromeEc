@@ -16,6 +16,57 @@
       "message": "Hi Andrew\nI need your advice,\nthis CL move fans steps into device tree.",
       "revId": "5ab7b959a6876d89fb6b6f0827def2bc76a8da97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd16fe59_6081c339",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-31T06:08:23Z",
+      "side": 1,
+      "message": "Yep, this looks much better.\nI get that different variants may want to use slightly different algorithms, but\nthe stepping seems to be logical and sensible, and I think this should cater for\nmost if not all requirements.",
+      "revId": "5ab7b959a6876d89fb6b6f0827def2bc76a8da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4112f54a_119ab912",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-31T06:08:23Z",
+      "side": 1,
+      "message": "So not sure why this table is non-const and initialised in a function.\nCan it be:\n\n#define ON_ENT(index, entry) DT_PROP_BY_IDX(LV(index), temp_on, entry)\n#define OFF_ENT(index, entry) DT_PROP_BY_IDX(LV(index), temp_off, entry)\n\n#define FAN_STEP_TABLE_ENTRY(ind) \\\n { \\\n    .on { ON_ENT(ind, 0), ON_ENT(ind, 1), ON_ENT(ind, 2) }, \\\n    .off { OFF_ENT(ind, 0), OFF_ENT(ind, 1), OFF_ENT(ind, 2) }, \\\n    .rpm { DT_PROP_BY_IDX(LV(0), rpm_target, 0) },\n },\n \n static const fan_step fan_step_table[] \u003d\n {\n    FAN_STEP_TABLE_ENTRY(0),\n    FAN_STEP_TABLE_ENTRY(1),\n    FAN_STEP_TABLE_ENTRY(2),\n    FAN_STEP_TABLE_ENTRY(3),\n    FAN_STEP_TABLE_ENTRY(4),\n    FAN_STEP_TABLE_ENTRY(5),\n    FAN_STEP_TABLE_ENTRY(6),\n };\n \n #undef ON_ENT\n #undef OFF_ENT\n #undef FAN_STEP_TABLE_ENTRY\n \n Instead of FAN_STEPS_COUNT, use ARRAY_SIZE(fan_step_table)",
+      "revId": "5ab7b959a6876d89fb6b6f0827def2bc76a8da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e225ab_2a546afb",
+        "filename": "zephyr/shim/src/fan_steps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-10-31T06:08:23Z",
+      "side": 1,
+      "message": "Likely don\u0027t need to register a new log module, since it\u0027s not used.",
+      "revId": "5ab7b959a6876d89fb6b6f0827def2bc76a8da97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
