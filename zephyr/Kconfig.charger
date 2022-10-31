@@ -122,6 +122,13 @@ config PLATFORM_EC_CHARGER_ISL9241
 	  control. It supports an input voltage range of 3.9-23.4V and output
 	  of 3.9-18.3V. It provides an I2C interface for configuration.
 
+config PLATFORM_EC_CHARGER_ISL9241_PROCHOT_DUMP
+	bool "Include the `isl9241_dump_prochot_status_unsafe` function"
+	depends on PLATFORM_EC_CHARGER_ISL9241
+	help
+	  Includes the `isl9241_dump_prochot_status_unsafe` function to dump
+	  information relating to prochot.
+
 if PLATFORM_EC_CHARGER_ISL9241
 
 config PLATFORM_EC_ISL9241_SWITCHING_FREQ

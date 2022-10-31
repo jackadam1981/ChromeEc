@@ -33,6 +33,14 @@ int isl9241_set_ac_prochot(int chgnum, int ma);
  */
 int isl9241_set_dc_prochot(int chgnum, int ma);
 
+/**
+ * Print prochot status to console. Unsafe because it does not lock
+ * CONTROL3.
+ *
+ * @param chgnum: Index into charger chips
+ */
+void isl9241_dump_prochot_status_unsafe(int chgnum);
+
 #define ISL9241_AC_PROCHOT_CURRENT_MIN 128 /* mA */
 #define ISL9241_AC_PROCHOT_CURRENT_MAX 6400 /* mA */
 #define ISL9241_DC_PROCHOT_CURRENT_MIN 256 /* mA */
