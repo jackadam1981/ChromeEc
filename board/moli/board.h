@@ -181,6 +181,18 @@ enum fan_channel { FAN_CH_0 = 0, FAN_CH_COUNT };
 
 enum mft_channel { MFT_CH_0 = 0, MFT_CH_COUNT };
 
+enum ec_cfg_power_on_hdmi {
+	POWER_ON_HDMI_ENABLE = 0,
+	POWER_ON_HDMI_DISABLE = 1
+};
+uint8_t ec_config_power_on_hdmi(void);
+
+enum ec_cfg_power_on_typec {
+	POWER_ON_TYPEC_ENABLE = 0,
+	POWER_ON_TYPEC_DISABLE = 1
+}; 
+uint8_t ec_config_power_on_typec(void);
+
 /*
  * firmware config fields
  */
@@ -190,6 +202,12 @@ enum mft_channel { MFT_CH_0 = 0, MFT_CH_COUNT };
 #define EC_CFG_BJ_POWER_L 0
 #define EC_CFG_BJ_POWER_H 1
 #define EC_CFG_BJ_POWER_MASK GENMASK(EC_CFG_BJ_POWER_H, EC_CFG_BJ_POWER_L)
+
+/* Power On by Monitor */
+#define EC_CFG_POWER_ON_HDMI 7
+#define EC_CFG_POWER_ON_TYPEC 8
+#define EC_CFG_POWER_ON_HDMI_MASK BIT(EC_CFG_POWER_ON_HDMI)
+#define EC_CFG_POWER_ON_TYPEC_MASK BIT(EC_CFG_POWER_ON_TYPEC)
 
 extern void adp_connect_interrupt(enum gpio_signal signal);
 
