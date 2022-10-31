@@ -16,6 +16,24 @@
       "message": "Do we want to trigger any debug dumping from the charger?  I\u0027m not sure we could in interrupt context, since we don\u0027t want to run i2c in interrupt context.  But we could consider dumping stuff later.\n\nI suppose the tricky part is that if it\u0027s a very brief pull on PROCHOT, we are likely to have missed the window where the charger will still be reporting why it happened.",
       "revId": "3322620a91a50b8088dfa79e42df4e98244e0486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e0fc51_b23ac3d7",
+        "filename": "zephyr/projects/skyrim/src/power_signals.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-10-31T20:59:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dfc150b_da6d1f30",
+      "revId": "3322620a91a50b8088dfa79e42df4e98244e0486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
