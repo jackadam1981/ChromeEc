@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9480191_a0657a79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-31T17:11:15Z",
+      "side": 1,
+      "message": "Yes, this is supposed to be a generic power button driver that interacts directly with Zephyr\u0027s GPIO APIs to be upstreamed.",
+      "parentUuid": "56fb5d0b_85ee3f15",
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c0956f6_ede2a877",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-28T20:02:57Z",
       "side": 1,
       "message": "Could probably be `if (!ENABLED(CONFIG_POWER_BUTTON_IGNORE_LID) \u0026\u0026 !lid_is_open()) return 0;`",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "218522b7_7942435e",
+        "filename": "zephyr/shim/src/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-31T17:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c0956f6_ede2a877",
       "range": {
         "startLine": 45,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4bbd57d_231ffb4d",
+        "filename": "zephyr/shim/src/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-31T17:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b53374_5beb70b9",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 56
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b798abd8_48628f11",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa69aed5_6b16d854",
+        "filename": "zephyr/shim/src/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-31T17:11:15Z",
+      "side": 1,
+      "message": "Yup, I found `k_work_schedule` as a zephyr-y way to defer calls.",
+      "parentUuid": "b798abd8_48628f11",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 16
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a7c49a8_6a1d7a23",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-10-28T20:02:57Z",
       "side": 1,
       "message": "Why not register the interrupt in the code?",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454176f5_04007dae",
+        "filename": "zephyr/test/qcom_power/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-10-31T17:11:15Z",
+      "side": 1,
+      "message": "I was trying to keep existing behavior of how gpio interrupt handlers are used. Allowing this to be configured via device tree.",
+      "parentUuid": "8a7c49a8_6a1d7a23",
       "range": {
         "startLine": 148,
         "startChar": 3,
