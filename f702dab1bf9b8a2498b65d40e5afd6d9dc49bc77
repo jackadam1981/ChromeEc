@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ca5336_01df5e6f",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-31T21:09:08Z",
+      "side": 1,
+      "message": "CONFIG_BATTERY_PRESENT_CUSTOM requires CONFIG_PLATFORM_EC_BATTERY, which requires about 20 other things.",
+      "parentUuid": "baca0a69_1e6bb6cf",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c07316ef_f5b06be8",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-31T20:17:30Z",
       "side": 1,
       "message": "I don\u0027t know if you\u0027ll like this idea any better than using `LCOV_EXCL_LINE` here, but if `assert_post_action` in upstream (or maybe even `k_panic`) had `[[noreturn]]`, then maybe `gcov`/`llcov` would figure out by itself that lines that come after `ASSERT(0)` are uncoverable. (I see that there are also some attributes that tell LLVM not to instrument a function, but I don\u0027t see an obvious way to use them to do what you want here.)",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22333cf6_eaa258fa",
+        "filename": "power/qcom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-31T21:09:08Z",
+      "side": 1,
+      "message": "panic_assert_fail is already marked noreturn. I suspect that herobrine is not defining CONFIG_DEBUG_ASSERT. A simpler way might just be to remove the break and let it fall through.",
+      "parentUuid": "c07316ef_f5b06be8",
       "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2c5006_a092561b",
+        "filename": "zephyr/test/qcom_power/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-31T21:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908e7f1f_97b86694",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44d53abd_f07d9e06",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-31T20:17:30Z",
       "side": 1,
       "message": "Put this in the relative includes section.",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967cb1eb_9b3a51fb",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-31T21:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d53abd_f07d9e06",
       "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c627b585_55d3f24c",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-31T21:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10ccb752_9c1061c4",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 59
+      },
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00490931_a9a3ecbd",
@@ -109,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7112a66d_a001f68c",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-31T21:09:08Z",
+      "side": 1,
+      "message": "This isn\u0027t a console cmd.",
+      "parentUuid": "00490931_a9a3ecbd",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b61180b_b54ee577",
@@ -122,6 +236,24 @@
       "writtenOn": "2022-10-31T20:17:30Z",
       "side": 1,
       "message": "Nit: Since this is ~600 lines after the asserts, it might be nice to have a, \"This is OK because,\" comment.",
+      "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2110963b_51965a0a",
+        "filename": "zephyr/test/qcom_power/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-10-31T21:09:08Z",
+      "side": 1,
+      "message": "Ok, I moved some things around, hopefully this should be clearer now.",
+      "parentUuid": "0b61180b_b54ee577",
       "revId": "f702dab1bf9b8a2498b65d40e5afd6d9dc49bc77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
