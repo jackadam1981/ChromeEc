@@ -140,3 +140,27 @@ register_corsola_project(
         here / "prj_magikarp.conf",
     ],
 )
+
+register_corsola_project(
+    project_name="voltorb",
+    chip="npcx9m3f",
+    extra_dts_overlays=[
+        here / "adc_kingler.dts",
+        here / "battery_voltorb.dts",
+        here / "host_interface_npcx.dts",
+        here / "i2c_kingler.dts",
+        here / "interrupts_kingler.dts",
+        here / "interrupts_voltorb.dts",
+        here / "cbi_steelix.dts",
+        here / "gpio_voltorb.dts",
+        here / "npcx_keyboard.dts",
+        here / "keyboard_steelix.dts",
+        here / "led_voltorb.dts",
+        here / "usbc_kingler.dts",
+        here / "default_gpio_pinctrl_kingler.dts",
+    ],
+    extra_kconfig_files=[
+        here / "prj_npcx993_base.conf",
+        here / "prj_voltorb.conf",
+    ],
+)
