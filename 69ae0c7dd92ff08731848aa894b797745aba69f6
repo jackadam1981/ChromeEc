@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cabf5924_20dfdf1b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-01T17:15:34Z",
+      "side": 1,
+      "message": "Comment that the return value indicates whether we changed state.",
+      "revId": "69ae0c7dd92ff08731848aa894b797745aba69f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffcc3fd_34d2a5cd",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-01T17:15:34Z",
+      "side": 1,
+      "message": "Did we change state here?",
+      "revId": "69ae0c7dd92ff08731848aa894b797745aba69f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81535466_814266e8",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-01T17:15:34Z",
+      "side": 1,
+      "message": "Comment",
+      "revId": "69ae0c7dd92ff08731848aa894b797745aba69f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55b4910_ad0b1323",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-01T17:15:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the PE do this for us by setting the flag when it exits the ready state to deal with the DPM request?",
+      "revId": "69ae0c7dd92ff08731848aa894b797745aba69f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
