@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e7c51e_e0eda1c3",
+        "filename": "board/kuldax/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-11-01T17:00:57Z",
+      "side": 1,
+      "message": "I believe there was a typo earlier on Brask and this should have been 250 originally which would become 25 after scaling it down.  The comment on line 49 could change then to /* 20/(20+8.66)*50/200 */.",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "f3e03e9f77ce38dd82657a4f0a0dac2db047284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
