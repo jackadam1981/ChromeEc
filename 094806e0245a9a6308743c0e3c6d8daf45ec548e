@@ -22,6 +22,30 @@
       },
       "revId": "094806e0245a9a6308743c0e3c6d8daf45ec548e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "965f6347_a7939629",
+        "filename": "zephyr/shim/src/cbi/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-01T21:41:26Z",
+      "side": 1,
+      "message": "Agreed. That\u0027s why I went with this direction.",
+      "parentUuid": "c991eaff_3665cb86",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "094806e0245a9a6308743c0e3c6d8daf45ec548e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
