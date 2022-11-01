@@ -22,6 +22,30 @@
       },
       "revId": "e10f0c2821d76bb8a1018d1c2f52860391b75f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a5b107_1311e335",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-01T21:52:37Z",
+      "side": 1,
+      "message": "Correct. We have to match the [signature in `libnosys`](https://sourceware.org/git/?p\u003dnewlib-cygwin.git;a\u003dblob;f\u003dlibgloss/libnosys/write.c;h\u003d33d727bbf975d442d586bf6654e7c8e689a07dcd;hb\u003dHEAD).",
+      "parentUuid": "cb70fbf9_50c5d32f",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "e10f0c2821d76bb8a1018d1c2f52860391b75f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
