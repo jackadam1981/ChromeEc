@@ -99,6 +99,24 @@
       "parentUuid": "05f85eee_665242ea",
       "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffe1962_e8456d7a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-01T16:32:42Z",
+      "side": 1,
+      "message": "I have made the change so that the state is changed in the helper functions, so when they return \u0027true\u0027, then the state handler will do an early return.",
+      "parentUuid": "d5c12b55_3052d0bb",
+      "revId": "3b6bb6fe5d311d0f915c98f6124a01c08f3afc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
