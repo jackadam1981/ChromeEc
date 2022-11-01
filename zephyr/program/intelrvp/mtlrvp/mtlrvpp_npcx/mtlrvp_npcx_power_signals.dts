@@ -93,6 +93,11 @@
 		gpios = <&gpio7 0 0>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
+
+	added-states-test {
+		compatible = "ap-pwrseq-sub-states";
+		chipset = "AP_POWER_STATE_S0IX";
+	};
 };
 
 /*
