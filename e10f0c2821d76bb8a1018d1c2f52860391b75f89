@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb70fbf9_50c5d32f",
+        "filename": "libc/syscalls.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-01T21:49:57Z",
+      "side": 1,
+      "message": "For this function I suspect we have to use a specific signature so we can\u0027t just declare a `buf` as `const char *`, right?",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "e10f0c2821d76bb8a1018d1c2f52860391b75f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
