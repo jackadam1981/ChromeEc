@@ -362,6 +362,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d034d8_c4c18838",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-01T18:29:02Z",
+      "side": 1,
+      "message": "Switching over to upstream temperature sensors is a good direction.  This may require a new shim to support any legacy code that interacts with temperature sensors.\n\nAs for the polling, and the issue with sensors powered down in G3, the Zephyr power domain seems like the closest match to what we want long term.  If all the temperature sensors are upstream, then the code size impact won\u0027t be as much.\n\nFor now, I\u0027m okay with this CL to address the I2C recovery issue while in G3.",
+      "parentUuid": "c5758766_cf0215aa",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
