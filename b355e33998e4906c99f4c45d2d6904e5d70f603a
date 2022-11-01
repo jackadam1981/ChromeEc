@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3741c0ae_4705488e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-11-01T02:11:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7d6055e_778144a4",
+      "revId": "b355e33998e4906c99f4c45d2d6904e5d70f603a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efbdd3d7_bd17bf37",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-31T17:44:37Z",
       "side": 1,
       "message": "nit: should these have some indicator that they\u0027re negative?  Ex. NEG_1_5DB?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "b355e33998e4906c99f4c45d2d6904e5d70f603a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f4427b_80e595a3",
+        "filename": "include/driver/retimer/anx7483_public.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-11-01T02:11:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efbdd3d7_bd17bf37",
       "range": {
         "startLine": 43,
         "startChar": 1,
