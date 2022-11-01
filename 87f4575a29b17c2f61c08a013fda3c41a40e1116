@@ -302,6 +302,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87205eb1_ad90ce9d",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-01T00:01:19Z",
+      "side": 1,
+      "message": "The PE_SYNC flag was only being introduced to replace the message_wait DPM states. But, with that state gone, I agree it makes sense to change where PE_READY is set as you suggested.\n\nThe one potential downside for this is that the calls for setting DPM_FLAG_PE_READY need to remain where they are, so it seems to tie the DPM more closely to the PE in terms of when it runs. But, nothing is being changed in terms of how frequently the DPM state machine will run compared to how often dpm_run() was being called from the PE previously.",
+      "parentUuid": "1abd16b6_b8125c77",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8361dd74_d76624df",
         "filename": "include/usb_pd_dpm.h",
         "patchSetId": 2
