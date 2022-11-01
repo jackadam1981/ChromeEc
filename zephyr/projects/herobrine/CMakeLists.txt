@@ -25,7 +25,7 @@ if(DEFINED CONFIG_BOARD_EVOKER)
 elseif(DEFINED CONFIG_BOARD_HEROBRINE)
 	project(herobrine)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
-	  "src/herobrine/alt_dev_replacement.c")
+	  "herobrine/src/alt_dev_replacement.c")
 elseif(DEFINED CONFIG_BOARD_HOGLIN)
 	project(hoglin)
 elseif(DEFINED CONFIG_BOARD_VILLAGER)
