@@ -51,6 +51,24 @@
       "message": "i\u0027m OK with this revert, but want to make sure the authors of the\npatch we\u0027re reverting here have had an opportunity to review this\nsince it\u0027ll affect their power consumption.",
       "revId": "109c92c0261963765dae048a1406ad13597e721c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a11fc1_fe0546ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-11-01T07:11:16Z",
+      "side": 1,
+      "message": "We will re-test PLT on Banshee with revert CL. And will check the impact of power consumption.",
+      "parentUuid": "19ffc05d_97008836",
+      "revId": "109c92c0261963765dae048a1406ad13597e721c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
