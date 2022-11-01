@@ -16,6 +16,24 @@
       "message": "Should this have one more check of power state? It\u0027s possible that the timer will expire but calling this handler races with power-on so we incorrectly hibernate while the system is transitioning up from S5.",
       "revId": "d44ce6497fb9e6a3c6652c4f17b081f37f8baeb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "226c6f25_39db9a11",
+        "filename": "power/hibernate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-01T02:49:20Z",
+      "side": 1,
+      "message": "Sure, if you think it is necessary - though there is always the possibility this can happen during the call to system_hibernate, so I don\u0027t think we can actually close this gap, just make it smaller.",
+      "parentUuid": "d3c82748_9f684d95",
+      "revId": "d44ce6497fb9e6a3c6652c4f17b081f37f8baeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
