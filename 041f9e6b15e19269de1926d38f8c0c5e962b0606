@@ -34,6 +34,24 @@
       "parentUuid": "413e8b76_1055e1e8",
       "revId": "041f9e6b15e19269de1926d38f8c0c5e962b0606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b234fbaf_5facb780",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-11-01T09:48:04Z",
+      "side": 1,
+      "message": "Tests run with twister,\n~/chromiumos/src/platform/ec $ ./twister -T ./zephyr/test/drivers\nZEPHYR_BASE unset, using \"/mnt/host/source/src/third_party/zephyr/main\"\nInstall tabulate python module with pip to use --device-testing option.\nRenaming output directory to /mnt/host/source/src/platform/ec/twister-out.2\nINFO    - Using Ninja..\nwarning: tag \u0027upstream/v2.7.99\u0027 is externally known as \u0027v2.7.99\u0027\nINFO    - Zephyr version: v2.7.99-14729-g6de7c7bdd430\nINFO    - Using \u0027llvm\u0027 toolchain.\nINFO    - Building initial testsuite list...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/testplan.json\nINFO    - JOBS: 6\nINFO    - Adding tasks to the queue...\nINFO    - Added initial list of jobs to queue\nINFO    - Total complete:   36/  36  100%  skipped:    0, failed:    0\nINFO    - 36 test scenarios (36 test instances) selected, 0 configurations skipped (0 by static filter, 0 at runtime).\nINFO    - 36 of 36 test configurations passed (100.00%), 0 failed, 0 skipped with 0 warnings in 767.38 seconds\nINFO    - In total 1939 test cases were executed, 0 skipped on 1 out of total 506 platforms (0.20%)\nINFO    - 36 test configurations executed on platforms, 0 test configurations were only built.\nINFO    - Saving reports...\nINFO    - Writing JSON report /mnt/host/source/src/platform/ec/twister-out/twister.json\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister.xml...\nINFO    - Writing xunit report /mnt/host/source/src/platform/ec/twister-out/twister_report.xml...\nINFO    - Run completed\nTEST EXECUTION SUCCESSFUL\n\nWe have a successful result, any suggestions for next steps?",
+      "parentUuid": "9ba2f178_7d9397f2",
+      "revId": "041f9e6b15e19269de1926d38f8c0c5e962b0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
