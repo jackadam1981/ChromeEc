@@ -199,6 +199,14 @@ config PLATFORM_EC_OCPC_DEF_RBATT_MOHMS
 	  This should be at a minimum the Rds(on) resistance of the BFET plus
 	  the series sense resistor.
 
+config PLATFORM_EC_OCPC_USE_CHARGER_INPUT_ERROR
+	bool "Use the charger chip  and battery input current error"
+	help
+	  Boards using OCPC should define this field if they are using only
+	  proportional control in the PID loop in OCPC. It allows the controller to
+	  use the minimum between the battery input current error and the charger
+	  chip input error.
+
 endif  # PLATFORM_EC_OCPC
 
 config PLATFORM_EC_CHARGER_DISCHARGE_ON_AC
