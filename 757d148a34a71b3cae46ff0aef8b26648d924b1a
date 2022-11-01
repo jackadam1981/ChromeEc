@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f34f18_0b9bf427",
+        "filename": "zephyr/projects/corsola/src/variant_db_detection.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-01T07:00:54Z",
+      "side": 1,
+      "message": "if (!hpd) { ... }\n\n(no need to read the gpio twice)",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 64
+      },
+      "revId": "757d148a34a71b3cae46ff0aef8b26648d924b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caebfd70_ce8bd149",
+        "filename": "zephyr/projects/corsola/src/variant_db_detection.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-01T07:00:54Z",
+      "side": 1,
+      "message": "I guess we should move this line before line 194, to avoid corner cases caused by the early return in line 198.",
+      "revId": "757d148a34a71b3cae46ff0aef8b26648d924b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
