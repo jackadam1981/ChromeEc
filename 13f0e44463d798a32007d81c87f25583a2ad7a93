@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a78a7acb_e7cf80d6",
+        "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-01T00:15:08Z",
+      "side": 1,
+      "message": "I think it\u0027s fine:\n\n```\nif (CONFIG_HIBERNATE AND CONFIG_AP_PWRSEQ)\n    zephyr_library_sources(...)\nendif ()\n```\n\nBetter to do that than to misleadingly build a file that does nothing.",
+      "parentUuid": "47ddd411_cb09cb68",
+      "revId": "13f0e44463d798a32007d81c87f25583a2ad7a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d48b5404_07448832",
         "filename": "zephyr/subsys/ap_pwrseq/hibernate.c",
         "patchSetId": 4
