@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d1aed0_491b6e43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-11-01T06:12:52Z",
+      "side": 1,
+      "message": "please also mention b/240896516 since that is where a lot\nof the detail is.",
+      "revId": "109c92c0261963765dae048a1406ad13597e721c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ffc05d_97008836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-11-01T06:12:52Z",
+      "side": 1,
+      "message": "i\u0027m OK with this revert, but want to make sure the authors of the\npatch we\u0027re reverting here have had an opportunity to review this\nsince it\u0027ll affect their power consumption.",
+      "revId": "109c92c0261963765dae048a1406ad13597e721c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
