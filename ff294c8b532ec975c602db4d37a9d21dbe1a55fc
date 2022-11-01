@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2451b4_efb95da3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-01T23:05:01Z",
+      "side": 1,
+      "message": "The move from `zephyr/projects/herobrine` to `zephyr/program/herobrine` will be a follow-up CL, right?",
+      "revId": "ff294c8b532ec975c602db4d37a9d21dbe1a55fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9688b278_b3831a2d",
+        "filename": "zephyr/projects/herobrine/evoker/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-01T23:05:01Z",
+      "side": 1,
+      "message": "Update the year for all the new files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ff294c8b532ec975c602db4d37a9d21dbe1a55fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1cc6858_4ebf623e",
+        "filename": "zephyr/projects/herobrine/evoker/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-01T23:05:01Z",
+      "side": 1,
+      "message": "Move it to the above program common DTS includes; the below `../switchcap.dtsi` too; and other .overlay files too.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "ff294c8b532ec975c602db4d37a9d21dbe1a55fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
