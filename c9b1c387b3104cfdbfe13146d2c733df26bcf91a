@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c090023a_aa95f536",
+        "filename": "test/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-01T21:42:44Z",
+      "side": 1,
+      "message": "Out of curiosity, I see the other files are unconditionally defining the test `libc_printf`, while here we add a file only if `USE_BUILTIN_STDLIB` has a particular value.\n\nThe assumption is that for all the boards where the test is defined, `USE_BUILTIN_STDLIB` will be 0, right?\n\nWill the test crash if no `.o` files are added to it?",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 5
+      },
+      "revId": "c9b1c387b3104cfdbfe13146d2c733df26bcf91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
