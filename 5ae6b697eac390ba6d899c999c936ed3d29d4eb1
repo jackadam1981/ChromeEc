@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef02c5ca_24341202",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-01T02:48:41Z",
+      "side": 1,
+      "message": "It\u0027s very confusing that this does nothing and is otherwise used to modify the limit, since I\u0027d expect a \"get_\" function to return some value.\n\nWould it make more sense to make the default value a config option that defaults to 10, so then there\u0027s only one place it can come from?",
+      "revId": "5ae6b697eac390ba6d899c999c936ed3d29d4eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85982593_b545a208",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-01T02:48:41Z",
+      "side": 1,
+      "message": "Can we automatically determine this by inspecting the active coefficients? Otherwise it seems like this should be a `PROPORTIONAL_CONTROL_ONLY` option that disables the I and D parts of the PID controller completely: it would be an error to turn this on in a true PID configuration.",
+      "range": {
+        "startLine": 205,
+        "startChar": 58,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "5ae6b697eac390ba6d899c999c936ed3d29d4eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
