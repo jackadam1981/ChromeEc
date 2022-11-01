@@ -70,6 +70,24 @@
       "parentUuid": "b234fbaf_5facb780",
       "revId": "041f9e6b15e19269de1926d38f8c0c5e962b0606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ca053c_d4326efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-01T14:14:14Z",
+      "side": 1,
+      "message": "Run `./twister -T zephyr/test/drivers --coverage` \nYou should get a coverage report under `twister-out/coverage/index.html`\nPlease add test cases for the new code being added.  As Diana mentioned you can reference `zephyr/test/drivers/default/src/smart.c` for creating new tests.  More details can also be found here https://docs.zephyrproject.org/latest/develop/test/ztest.html",
+      "parentUuid": "184e0b4d_9a53f0f1",
+      "revId": "041f9e6b15e19269de1926d38f8c0c5e962b0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
