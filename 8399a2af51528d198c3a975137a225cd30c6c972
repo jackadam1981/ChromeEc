@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda5a0ff_11d775aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-01T01:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80557135_1ff5ed7d",
+      "revId": "8399a2af51528d198c3a975137a225cd30c6c972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be219e42_0663c06d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-31T17:40:25Z",
       "side": 1,
       "message": "Is it anticipated that there will be any second-sourcing of the base sensor?  Or only the dependency on board version?",
+      "revId": "8399a2af51528d198c3a975137a225cd30c6c972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5502a7c_e1664d11",
+        "filename": "zephyr/projects/skyrim/src/winterhold/sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-01T01:30:00Z",
+      "side": 1,
+      "message": "Only the dependency on board version, no plan to add the second-sourcing of the base sensor",
+      "parentUuid": "be219e42_0663c06d",
       "revId": "8399a2af51528d198c3a975137a225cd30c6c972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
