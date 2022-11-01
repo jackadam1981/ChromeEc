@@ -318,6 +318,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e0f29f_6f9d52e1",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-01T20:45:19Z",
+      "side": 1,
+      "message": "I think the way it is now is OK and good enough to submit and keep working.\n\nSome musings on how it might be improved:\n1. In a later CL, you created another state for Data Reset that is just waiting for the PE to signal that Data Reset is complete. That state ignores the PE-ready flag but uses another flag to do essentially the same thing. For operations where it makes sense, you could do something similar. That\u0027s kind of what you were doing with the message wait state, but I like what you did with Data Reset better, because the transition is triggered by the DPM queuing up a long-running operation, not by the PE doing something the DPM might not even care about. I can imagine doing this for something like VCONN Swap that takes a few PE cycles to finish.\n2. You could move the source of truth for DPM requests inside the DPM and have the DPM states return early if any requests were set, based on the idea that the PE won\u0027t be ready to take any new requests until it has processed all the preceding requests and that the PE will eventually clear all the request flags.\n\nI\u0027m not sure that either of those things would fundamentally improve on the way it works now. Both of them depend on the PE to send a signal to the DPM when it\u0027s \"done\" with something, and the extra states strategy only makes sense if the extra state would be meaningful at the level of the DPM, like Data Reset is.",
+      "parentUuid": "87205eb1_ad90ce9d",
+      "revId": "87f4575a29b17c2f61c08a013fda3c41a40e1116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8361dd74_d76624df",
