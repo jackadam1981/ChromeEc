@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8cc0f13_34218f65",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-01T20:46:17Z",
+      "side": 1,
+      "message": "I see that, in a later CL, we change state at this point. For this CL, I think it should still be `return false` here.",
+      "parentUuid": "6ffcc3fd_34d2a5cd",
+      "revId": "69ae0c7dd92ff08731848aa894b797745aba69f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81535466_814266e8",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 5
