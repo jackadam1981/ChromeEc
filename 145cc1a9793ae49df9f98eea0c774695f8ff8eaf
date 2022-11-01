@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7981326_fdcb75ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-01T07:22:46Z",
+      "side": 1,
+      "message": "Not quite sure why we need to add the FW_CONFIG. If the required HW change has already been applied to all of the moli skus, I don\u0027t think adding the FW_CONFIG is reasonable.",
+      "revId": "145cc1a9793ae49df9f98eea0c774695f8ff8eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
