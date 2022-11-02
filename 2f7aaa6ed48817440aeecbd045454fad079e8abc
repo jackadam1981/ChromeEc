@@ -39,6 +39,30 @@
       },
       "revId": "2f7aaa6ed48817440aeecbd045454fad079e8abc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e54d2d_302c49b0",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-11-02T03:27:09Z",
+      "side": 1,
+      "message": "If I use `CONFIG_KEYBOARD_FACTORY_TEST` here, It might cause non-zephyr code build error. I got build error while running `make BOARD\u003ddewatt`. Both dewatt and craask can build pass and ectool kbfactorytest works fine on both with `CONFIG_PLATFORM_EC_KEYBOARD_FACTORY_TEST` here.",
+      "parentUuid": "8ab9c021_3a0b5118",
+      "range": {
+        "startLine": 1081,
+        "startChar": 16,
+        "endLine": 1081,
+        "endChar": 56
+      },
+      "revId": "2f7aaa6ed48817440aeecbd045454fad079e8abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
