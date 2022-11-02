@@ -59,6 +59,11 @@ DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_PRE_DEFAULT);
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
+	/* This function returns the PORT_COUNT+1 when HDMI db is connected.
+	 * This is a trick to ensure the usb_mux_set being set properley.
+	 * HDMI display functions using the USB virtual mux to * communicate
+	 * with the DP bridge.
+	 */
 	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
 		if (tasks_inited) {
 			return CONFIG_USB_PD_PORT_MAX_COUNT;
@@ -70,6 +75,15 @@ __override uint8_t board_get_usb_pd_port_count(void)
 	}
 
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+
+uint8_t board_get_adjusted_usb_pd_port_count(void)
+{
+	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+	} else {
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+	}
 }
 
 /* USB-A */
@@ -112,11 +126,10 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 	}
 }
 
-void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
-			    int charge_mv)
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+				       int max_ma, int charge_mv)
 {
-	charge_set_input_current_limit(
-		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
+	charge_set_input_current_limit(charge_ma, charge_mv);
 }
 
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
