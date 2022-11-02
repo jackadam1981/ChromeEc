@@ -8,10 +8,12 @@
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
 
+#ifndef CONFIG_AP_PWRSEQ_DRIVER
 /** Starts the AP power sequence thread */
 void ap_pwrseq_task_start(void);
 
 void ap_pwrseq_wake(void);
+#else
 
 #ifdef __cplusplus
 extern "C" {
@@ -177,4 +179,5 @@ int ap_pwrseq_register_state_exit_callback(
 #ifdef __cplusplus
 }
 #endif
+#endif /* CONFIG_AP_PWRSEQ_DRIVER */
 #endif /* _AP_PWRSEQ_H_ */
