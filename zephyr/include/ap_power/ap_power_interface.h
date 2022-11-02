@@ -9,7 +9,6 @@
  *
  * Defines the interface to the AP power sequence module,
  * which includes:
- *  - enums for the power state of the AP
  *  - enums for the power state mask of the AP
  *  - enums indicating the reason for shutdown
  *  - enums for providing control values
@@ -28,6 +27,7 @@
 
 #include <zephyr/sys/util.h>
 
+#ifndef CONFIG_AP_PWRSEQ_DRIVER
 /**
  * @brief System power states for Non Deep Sleep Well
  * EC is an always on device in a Non Deep Sx system except when EC
@@ -84,6 +84,7 @@ enum power_states_ndsx {
 	SYS_POWER_STATE_S0S0ix,
 #endif
 };
+#endif // CONFIG_AP_PWRSEQ_DRIVER
 
 /**
  * @brief Represents the state of the AP as a mask.
