@@ -66,16 +66,21 @@ void usba_oc_interrupt(enum gpio_signal signal)
 
 void ppc_interrupt(enum gpio_signal signal)
 {
+	cprintf(CC_USBPD, " @ @ @ ppc_interrupt (0x%x)\n", signal);
+
 	switch (signal) {
 	case GPIO_USB_C0_SWCTL_INT_ODL:
+		cprintf(CC_USBPD, " @ @ @ ppc_interrupt C0\n");
 		ppc_chips[0].drv->interrupt(0);
 		break;
 
 	case GPIO_USB_C1_SWCTL_INT_ODL:
+		cprintf(CC_USBPD, " @ @ @ ppc_interrupt C1\n");
 		ppc_chips[1].drv->interrupt(1);
 		break;
 
 	default:
+		cprintf(CC_USBPD, " @ @ @ ppc_interrupt default\n");
 		break;
 	}
 }

@@ -805,6 +805,9 @@ static void isl923x_init(int chgnum)
 	}
 #endif /* CONFIG_OCPC */
 
+	/* just for proto pcb issue */
+	isl923x_set_comparator_inversion(chgnum, 1);
+	CPRINTS("%s: isl923x_set_comparator_inversion", __func__);
 	return;
 init_fail:
 	CPRINTS("%s init failed!", CHARGER_NAME);
