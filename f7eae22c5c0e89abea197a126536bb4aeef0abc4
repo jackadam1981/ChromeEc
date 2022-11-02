@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0d0a810_3cb84bb7",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-02T18:54:50Z",
+      "side": 1,
+      "message": "this is what I mean \u0027if flags injection is needed\u0027. \n\nThere are three cases:\n```\n  - flags not in the hash\n     no need for flags special verification case\n\n  - flags in the hash, but the hash was calculated for flags of zero\n     no need for special verification case\n     \n   - flags in the hash, and were nonzero when hash was generated\n     - specilal verification case is needed\n```\n\ni.e. even if flags are in the hash it does not mean that special case needs to be invoked, right?",
+      "parentUuid": "afac9575_f6e70a89",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 17
+      },
+      "revId": "f7eae22c5c0e89abea197a126536bb4aeef0abc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5c97e14_9b501a71",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 11
