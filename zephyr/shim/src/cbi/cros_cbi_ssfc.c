@@ -73,13 +73,13 @@ BUILD_ASSERT(CBI_SSFC_FIELDS_SIZE <= 32, "CBI SSFS is bigger than 32 bits");
 /*
  * Define union bit fields based on the device tree entries. Example:
  * cbi-ssfc {
- *	compatible = "named-cbi-ssfc";
+ *	compatible = "cros-ec,cbi-ssfc";
  *
  *	base_sensor {
  *		enum-name = "BASE_SENSOR";
  *		size = <3>;
  *		bmi160 {
- *			compatible = "named-cbi-ssfc-value";
+ *			compatible = "cros-ec,cbi-ssfc-value";
  *			status = "okay";
  *			value = <1>;
  *		};
@@ -88,7 +88,7 @@ BUILD_ASSERT(CBI_SSFC_FIELDS_SIZE <= 32, "CBI SSFS is bigger than 32 bits");
  *		enum-name = "LID_SENSOR";
  *		size = <3>;
  *		bma255 {
- *			compatible = "named-cbi-ssfc-value";
+ *			compatible = "cros-ec,cbi-ssfc-value";
  *			status = "okay";
  *			value = <1>;
  *		};
@@ -97,7 +97,7 @@ BUILD_ASSERT(CBI_SSFC_FIELDS_SIZE <= 32, "CBI SSFS is bigger than 32 bits");
  *		enum-name = "LIGHTBAR";
  *		size = <2>;
  *		10_led {
- *			compatible = "named-cbi-ssfc-value";
+ *			compatible = "cros-ec,cbi-ssfc-value";
  *			status = "okay";
  *			value = <1>;
  *		};
