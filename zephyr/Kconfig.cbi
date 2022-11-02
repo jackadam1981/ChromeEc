@@ -35,13 +35,7 @@ if PLATFORM_EC_CBI
 
 choice
 	prompt "CBI storage type"
-
-config PLATFORM_EC_CBI_EEPROM
-	bool "CBI EEPROM support"
-	depends on EEPROM
-	help
-	  Enables full Chromium OS Board Info (CBI) support, with CBI data
-	  stored in an on-board EEPROM.
+	default PLATFORM_EC_CBI_EEPROM if $(dt_nodelabel_enabled,cbi_eeprom)
 
 config PLATFORM_EC_CBI_GPIO
 	bool "CBI GPIO support"
@@ -49,6 +43,13 @@ config PLATFORM_EC_CBI_GPIO
 	  Enables Chromium OS Board Info (CBI) from strapping pins. EC reads
 	  the BOARD ID and SKU ID from GPIOs and then substantiate in-memory
 	  CBI for AP to query.
+
+config PLATFORM_EC_CBI_EEPROM
+	bool "CBI EEPROM support"
+	depends on EEPROM
+	help
+	  Enables full Chromium OS Board Info (CBI) support, with CBI data
+	  stored in an on-board EEPROM.
 
 endchoice
 
