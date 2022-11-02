@@ -46,6 +46,30 @@
       },
       "revId": "f3e03e9f77ce38dd82657a4f0a0dac2db047284d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed58a33_e1a45498",
+        "filename": "board/kuldax/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-11-02T19:59:36Z",
+      "side": 1,
+      "message": "The 50/200 is 50 for the gain of the INA213 and 1/200 is the gain of the sense resistor (i.e. 0.005).\n\nFor example when drawing 1amp from the power source:\nV,rsense     \u003d 0.005 * 1\nV,ina_output \u003d 50 * 0.005 (or 50/200) \u003d 0.25v\nV,ec         \u003d (20/(20+8.66)) * 0.25  \u003d 0.17446v\n\nTo scale the result to 1amp then V,ec * 1/((20/(20+8.66))*50/200) or V,ec * 143/25",
+      "parentUuid": "1d2a6bbb_be4482d9",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "f3e03e9f77ce38dd82657a4f0a0dac2db047284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
