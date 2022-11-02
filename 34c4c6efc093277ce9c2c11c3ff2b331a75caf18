@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b365a234_b77d0173",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-02T15:24:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure this belongs as part of the `ec_library()` definition.  I think I prefer the library to manage it\u0027s own sources directly using `target_sources` in it\u0027s own CMakeLists.txt file.  This should should scale better for libraries with many sources, subdirectories, multiple Kconfig options, etc.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "34c4c6efc093277ce9c2c11c3ff2b331a75caf18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
