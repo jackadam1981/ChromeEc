@@ -7,16 +7,18 @@
 #include <ap_power/ap_power_interface.h>
 #include <power_host_sleep.h>
 
+#include "ap_power/ap_pwrseq.h"
+
 static enum power_state
-translate_ap_power_state(enum power_states_ndsx ap_power_state)
+translate_ap_power_state(enum ap_pwrseq_state ap_power_state)
 {
 	switch (ap_power_state) {
-	case SYS_POWER_STATE_S5:
+	case AP_POWER_STATE_S5:
 		return POWER_S5;
-	case SYS_POWER_STATE_S3:
+	case AP_POWER_STATE_S3:
 		return POWER_S3;
 #if CONFIG_AP_PWRSEQ_S0IX
-	case SYS_POWER_STATE_S0ix:
+	case AP_POWER_STATE_S0IX:
 		return POWER_S0ix;
 #endif
 	default:
@@ -24,7 +26,7 @@ translate_ap_power_state(enum power_states_ndsx ap_power_state)
 	}
 }
 
-int ap_power_get_lazy_wake_mask(enum power_states_ndsx state,
+int ap_power_get_lazy_wake_mask(enum ap_pwrseq_state state,
 				host_event_t *mask)
 {
 	enum power_state st;
