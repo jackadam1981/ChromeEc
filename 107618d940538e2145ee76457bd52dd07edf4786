@@ -101,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca5261a_baa1899f",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-02T09:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75b1ae8_7cfa533f",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6698518_1dbef2f1",
@@ -291,6 +315,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff59f21_5cd12523",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-02T09:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464ce1d9_3a41d799",
+      "range": {
+        "startLine": 419,
+        "startChar": 15,
+        "endLine": 419,
+        "endChar": 42
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "384daedf_8793a496",
@@ -304,6 +352,24 @@
       "writtenOn": "2022-10-27T20:39:03Z",
       "side": 1,
       "message": "\"- on body/off body transition event\"",
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16592ee_905fa6f5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-02T09:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "384daedf_8793a496",
       "revId": "107618d940538e2145ee76457bd52dd07edf4786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -325,6 +391,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "927a0e8d_73d766fb",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-02T09:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5de4add_aaa4ff2c",
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce5bb279_591f88ec",
@@ -338,6 +422,24 @@
       "writtenOn": "2022-10-27T20:39:03Z",
       "side": 1,
       "message": "..., in addition to adding an event in the motion sensor FIFO queue.",
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31265a97_28e80df3",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 15
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-02T09:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce5bb279_591f88ec",
       "revId": "107618d940538e2145ee76457bd52dd07edf4786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
