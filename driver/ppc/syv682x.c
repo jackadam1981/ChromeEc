@@ -252,6 +252,9 @@ static bool syv682x_interrupt_filter(int port, int regval, int regmask,
  */
 static void syv682x_handle_status_interrupt(int port, int regval)
 {
+
+	cprintf(CC_USBPD, " @ @ @ Port:%d handle interrupt (0x%x)\n",
+							port, regval);
 	/*
 	 * An FRS will automatically disable sinking immediately, and enable the
 	 * source path if VBUS is <5V. The FRS GPIO must remain asserted until
