@@ -96,6 +96,12 @@ void ec_app_main(void)
 		start_ec_tasks();
 	}
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ)) {
+#ifndef CONFIG_AP_PWRSEQ_DRIVER
 		ap_pwrseq_task_start();
+#else
+		const struct device * ap_pwrseq_dev =
+				ap_pwrseq_get_instance();
+		ap_pwrseq_task_start(ap_pwrseq_dev);
+#endif
 	}
 }
