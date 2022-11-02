@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eabeb715_cca629b1",
+        "filename": "common/acpi.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-11-02T19:02:40Z",
+      "side": 1,
+      "message": "This returns an enum instead of a bool.\n\n```\nif (body_detect_get_state() \u003d\u003d BODY_DETECTION_ON_BODY)\n    result |\u003d 1 \u003c\u003c EC_ACPI_MEM_STTB_SHIFT;\n```",
+      "range": {
+        "startLine": 241,
+        "startChar": 14,
+        "endLine": 241,
+        "endChar": 35
+      },
+      "revId": "13853cef71220e5a14d7e53bc13314e2ebe0aa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
