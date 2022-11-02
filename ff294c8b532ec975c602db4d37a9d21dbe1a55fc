@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ab4758e_3555e1d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-02T01:04:55Z",
+      "side": 1,
+      "message": "yes it\u0027s listed as a separate bug b/254097139. So I believe it will also be submitted as a separate CL.",
+      "parentUuid": "2a2451b4_efb95da3",
+      "revId": "ff294c8b532ec975c602db4d37a9d21dbe1a55fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9688b278_b3831a2d",
         "filename": "zephyr/projects/herobrine/evoker/project.overlay",
         "patchSetId": 2
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d1f0119_fcb0dd83",
+        "filename": "zephyr/projects/herobrine/evoker/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-02T01:04:55Z",
+      "side": 1,
+      "message": "Should I also update the year for old files that have been moved such as herobrine/battery.dtsi or leave it as is?",
+      "parentUuid": "9688b278_b3831a2d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ff294c8b532ec975c602db4d37a9d21dbe1a55fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1cc6858_4ebf623e",
         "filename": "zephyr/projects/herobrine/evoker/project.overlay",
         "patchSetId": 2
@@ -54,6 +96,30 @@
       "writtenOn": "2022-11-01T23:05:01Z",
       "side": 1,
       "message": "Move it to the above program common DTS includes; the below `../switchcap.dtsi` too; and other .overlay files too.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "ff294c8b532ec975c602db4d37a9d21dbe1a55fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581f3c54_ea3b3f0a",
+        "filename": "zephyr/projects/herobrine/evoker/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-02T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1cc6858_4ebf623e",
       "range": {
         "startLine": 14,
         "startChar": 0,
