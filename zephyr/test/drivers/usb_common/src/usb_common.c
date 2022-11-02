@@ -12,6 +12,7 @@
 #include "suite.h"
 #include "timer.h"
 #include "usb_common.h"
+#include "usbc_ocp.h"
 #include "usb_pd.h"
 
 #define TEST_PORT 0
@@ -294,4 +295,22 @@ ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_sink)
 	zassert_equal(drp_sink_time, fake_time.val);
 
 	get_time_mock = NULL;
+}
+
+ZTEST_USER(usb_common, test_usbc_ocp_add_event_invalid_port)
+{
+	zassert_equal(usbc_ocp_add_event(-1), EC_ERROR_INVAL);
+	zassert_equal(usbc_ocp_add_event(100), EC_ERROR_INVAL);
+}
+
+ZTEST_USER(usb_common, test_usbc_ocp_clear_event_counter_invalid_port)
+{
+	zassert_equal(usbc_ocp_clear_event_counter(-1), EC_ERROR_INVAL);
+	zassert_equal(usbc_ocp_clear_event_counter(100), EC_ERROR_INVAL);
+}
+
+ZTEST_USER(usb_common, test_usbc_ocp_is_port_latched_invalid_port)
+{
+	zassert_equal(usbc_ocp_is_port_latched_off(-1), 0);
+	zassert_equal(usbc_ocp_is_port_latched_off(100), 0);
 }
