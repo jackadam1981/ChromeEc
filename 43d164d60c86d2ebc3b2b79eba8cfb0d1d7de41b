@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceb1be32_d643d111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "There is document. Will check.",
+      "parentUuid": "b422592f_09cbc921",
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dc0a878_01731ad7",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 6
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-02T00:38:10Z",
       "side": 1,
       "message": "I assume this is unrelated to clearing reset history, so could you please move it down a line.\n\nAlso, does it need to be behind CONFIG_ISH_PM_D3, or if not could you explain why not?",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 31
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4995bb7a_fbdb0f75",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "Moved down.\n`PMU_D3_STATUS_1 \u003d 0xffffffff;` should apply to all using NEW_PM. It disables certain  functions which are not supported anymore. Not only for PM_D3.",
+      "parentUuid": "6dc0a878_01731ad7",
       "range": {
         "startLine": 614,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d37ef786_009399a1",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "sorry, this is a bit confusing. CCU_TCG_EN means going to enter TCG; while CCU_TCG_ENABLE allows enter TCG or not.\nCCU_BCG_EN means going to enter BCG; while and CCU_BCG_ENABLE allows or not.",
+      "parentUuid": "cb1d4afe_c38056cc",
+      "range": {
+        "startLine": 618,
+        "startChar": 1,
+        "endLine": 618,
+        "endChar": 15
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab2777e4_3b744d9c",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-11-02T00:38:10Z",
       "side": 1,
       "message": "Would  it make sense to move this into reset_bcg()?",
+      "range": {
+        "startLine": 619,
+        "startChar": 1,
+        "endLine": 619,
+        "endChar": 20
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8886708_186da847",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "This is cache/rom power gate, not belong to bcg.",
+      "parentUuid": "ab2777e4_3b744d9c",
       "range": {
         "startLine": 619,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e95762_d2378d15",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "Masking. Comment added.",
+      "parentUuid": "17493fac_eec08394",
+      "range": {
+        "startLine": 633,
+        "startChar": 1,
+        "endLine": 633,
+        "endChar": 39
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a22ddcde_cb9edcb3",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b13787_97d925ea",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a22ddcde_cb9edcb3",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6026b1a7_3b9350f6",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-11-02T00:38:10Z",
       "side": 1,
       "message": "nit: could you please use BIT(0) and BIT(1) to be consistent with the rest of the file.",
+      "range": {
+        "startLine": 134,
+        "startChar": 38,
+        "endLine": 134,
+        "endChar": 41
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d338cb_80acef17",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6026b1a7_3b9350f6",
       "range": {
         "startLine": 134,
         "startChar": 38,
@@ -181,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af07c12b_3b2ced78",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "We can. How about I add those four lines to caller directly without declare a function? I don\u0027t see anyone else call it.",
+      "parentUuid": "3f1530d7_3b488302",
+      "range": {
+        "startLine": 246,
+        "startChar": 8,
+        "endLine": 246,
+        "endChar": 27
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6f78fe4_de5d6b7e",
         "filename": "chip/ish/registers.h",
         "patchSetId": 6
@@ -192,6 +378,30 @@
       "writtenOn": "2022-11-02T00:38:10Z",
       "side": 1,
       "message": "Could you please document why these are all 0x2?",
+      "range": {
+        "startLine": 248,
+        "startChar": 25,
+        "endLine": 248,
+        "endChar": 28
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1831921b_864c7e8e",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-02T04:07:41Z",
+      "side": 1,
+      "message": "Here want to mask all function1, which is bit 1. Will add comment.",
+      "parentUuid": "a6f78fe4_de5d6b7e",
       "range": {
         "startLine": 248,
         "startChar": 25,
