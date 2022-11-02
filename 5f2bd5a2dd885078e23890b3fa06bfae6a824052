@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c3a00ca_30d52c50",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-02T19:13:44Z",
+      "side": 1,
+      "message": "As a follow on CL, can you move these functions into the cmake extensions?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 0
+      },
+      "revId": "5f2bd5a2dd885078e23890b3fa06bfae6a824052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
