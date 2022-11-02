@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f069c0c_2165f891",
+        "filename": "zephyr/projects/herobrine/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-02T18:31:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a68301c_9a272ec4",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "04d12fcad8aefde07eca1dce809df5e5f3cffd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b417c2e_7933c048",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c592343_6456fcc1",
+        "filename": "zephyr/projects/herobrine/herobrine/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-02T18:31:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b417c2e_7933c048",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "04d12fcad8aefde07eca1dce809df5e5f3cffd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "209736ef_261c6c28",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-02T15:12:26Z",
       "side": 1,
       "message": "Nit - don\u0027t change the date of existing files.  Moving a file doesn\u0027t qualify as a new file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "04d12fcad8aefde07eca1dce809df5e5f3cffd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b28de57_d1c7d661",
+        "filename": "zephyr/projects/herobrine/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-02T18:31:18Z",
+      "side": 1,
+      "message": "Ok I\u0027ve reverted back the years of the pre-existing files i\u0027ve changed. Note some of the files (such as this one) were already 2022 in the first place so no changes were made.",
+      "parentUuid": "209736ef_261c6c28",
       "range": {
         "startLine": 1,
         "startChar": 12,
