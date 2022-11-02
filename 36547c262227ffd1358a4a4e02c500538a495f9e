@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58c7ed0_8f8e552a",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "nit. 416KB program",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 15
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae3ab72_231ac1c4",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "This could be `#define NPCX_PROGRAM_MEMORY_SIZE (416 * 1024)`\nThe npcx firmware binary image in the flash should be composed of `firmware image header + firmware image`.\nIn npcx9m3f, the RO/RW flash size is 256KB (i.e. 512/2). The first 4KB is reserved for the `firmware image header`. This means the program memory size need to be (256KB - 4KB)\nIn npcx9m8s, the flash size is 1MB (512KB for RO and 512KB for RW).\nAs 416 KB is far from 512 KB, we don\u0027t have to reduce 4KB for the NPCX_PROGRAM_MEMORY_SIZE in npcx9m8s.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 54
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93a7d908_8f1cc66d",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "ditto.\nThis could be:\n`#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE + 0x1000`",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 80
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68a9d8d_ae7357ed",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "For 1 MB internal spi flash (npcx9m8s), It should be:\n`#define CONFIG_SPI_FLASH_W25Q80`\nFor 512 KB internal spi flash (other variants), it should be:\n`#define CONFIG_SPI_FLASH_W25Q40`",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 34
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c31fe2c_3abb02a5",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "For npcx9m8s, it should be:\n```\n#elif defined(CHIP_VARIANT_NPCX9M8S)\n#define CONFIG_EC_PROTECTED_STORAGE_OFF 0\n#define CONFIG_EC_PROTECTED_STORAGE_SIZE 0x80000\n#define CONFIG_EC_WRITABLE_STORAGE_OFF 0x80000\n#define CONFIG_EC_WRITABLE_STORAGE_SIZE 0x80000\n```",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 47
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb804c3_dcc5d432",
+        "filename": "util/ecst.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "ditto.\n`[NPCX9M8] \u003d { NPCX9M8X_RAM_ADDR, NPCX9M8X_RAM_SIZE },`",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4442630_fae381dd",
+        "filename": "util/ecst.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "ditto.\n`return NPCX9M8;`",
+      "range": {
+        "startLine": 118,
+        "startChar": 9,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165e5939_9960b59b",
+        "filename": "util/ecst.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "The suffix `S` should be removed for consistence.\nAlso, as we have NPCX9M7x variant. Could you add the following to the array?\n```\nNPCX9M7 \u003d 7,\nNPCX9M8 \u003d 8,\n```",
+      "range": {
+        "startLine": 169,
+        "startChar": 8,
+        "endLine": 169,
+        "endChar": 9
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25c7f42_786b8c7c",
+        "filename": "util/ecst.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2022-11-02T04:57:09Z",
+      "side": 1,
+      "message": "Please change the suffix form `S` to \u0027X\u0027 for the consistence. \n#define NPCX9M8X_RAM_ADDR 0x10058000\n#define NPCX9M8X_RAM_SIZE 0x80000",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 33
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
