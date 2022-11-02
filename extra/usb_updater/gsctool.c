@@ -149,14 +149,14 @@ BUILD_ASSERT((CR50_CCD_CAP_COUNT/32) == (TI50_CCD_CAP_COUNT/32));
  *
  * The encapsultation format is different between the /dev/tpm0 and USB cases:
  *
- *   4 bytes      4 bytes         4 bytes               variable size
+ *   4 bytes      4 bytes	 4 bytes	       variable size
  * +-----------+--------------+---------------+----------~~--------------+
- * + total size| block digest |  dest address |           data           |
+ * + total size| block digest |  dest address |	   data	   |
  * +-----------+--------------+---------------+----------~~--------------+
- *  \           \                                                       /
- *   \           \                                                     /
- *    \           +----- FW update PDU sent over /dev/tpm0 -----------+
- *     \                                                             /
+ *  \	   \						       /
+ *   \	   \						     /
+ *    \	   +----- FW update PDU sent over /dev/tpm0 -----------+
+ *     \							     /
  *      +--------- USB frame, requires total size field ------------+
  *
  * The update protocol data unints (PDUs) are passed over /dev/tpm0, the
@@ -215,7 +215,7 @@ BUILD_ASSERT((CR50_CCD_CAP_COUNT/32) == (TI50_CCD_CAP_COUNT/32));
  *
  * When channeling TPM vendor commands the USB frame looks as follows:
  *
- *   4 bytes      4 bytes         4 bytes       2 bytes      variable size
+ *   4 bytes      4 bytes	 4 bytes       2 bytes      variable size
  * +-----------+--------------+---------------+-----------+------~~~-------+
  * + total size| block digest |    EXT_CMD    | Vend. sub.|      data      |
  * +-----------+--------------+---------------+-----------+------~~~-------+
@@ -255,7 +255,7 @@ BUILD_ASSERT((CR50_CCD_CAP_COUNT/32) == (TI50_CCD_CAP_COUNT/32));
  * this is a later version packet.
  */
 #define CCD_INFO_MAGIC 0x49444343  /* This is 'CCDI' in little endian. */
-#define CCD_VERSION             1  /* Ti50 CCD INFO layout. */
+#define CCD_VERSION	     1  /* Ti50 CCD INFO layout. */
 
 struct ccd_info_response_header {
 	uint32_t ccd_magic;
@@ -915,7 +915,7 @@ static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 /**
  * Transfer an image section (typically RW or RO).
  *
- * td           - transfer descriptor to use to communicate with the target
+ * td	   - transfer descriptor to use to communicate with the target
  * data_ptr     - pointer at the section base in the image
  * section_addr - address of the section in the target memory space
  * data_len     - section size
@@ -1027,7 +1027,7 @@ enum upgrade_status {
 			  * RO is newer, but can't be transferred due to
 			  * target RW shortcomings.
 			  */
-	needed            /*
+	needed	    /*
 			   * This section needs to be transferred to the
 			   * target.
 			   */
@@ -1793,11 +1793,11 @@ static void sha_final_into_block_digest(union sha_ctx *ctx, void *block_digest,
  * parsed by other programs (e.g., debugd). The value part should be specified
  * in the printf-like way. For example:
  *
- *           print_machine_output("date", "%d/%d/%d", 2018, 1, 1),
+ *	   print_machine_output("date", "%d/%d/%d", 2018, 1, 1),
  *
  * which outputs this line in console:
  *
- *           date=2018/1/1
+ *	   date=2018/1/1
  *
  * The key part should not contain '=' or newline. The value part may contain
  * special characters like spaces, quotes, brackets, but not newlines. The
@@ -2568,12 +2568,14 @@ static int process_get_apro_boot_status(struct transfer_descriptor *td)
 		printf("not run\n");
 		break;
 	case AP_RO_PASS:
+	case AP_RO_V2_SUCCESS:
 		printf("pass\n");
 		break;
 	case AP_RO_PASS_UNVERIFIED_GBB:
 		printf("pass - unverified gbb!\n");
 		break;
 	case AP_RO_FAIL:
+	case AP_RO_V2_FAILED_VERIFICATION:
 		printf("FAIL\n");
 		break;
 	case AP_RO_UNSUPPORTED_TRIGGERED:
@@ -2588,7 +2590,44 @@ static int process_get_apro_boot_status(struct transfer_descriptor *td)
 	case AP_RO_IN_PROGRESS:
 		printf("in progress.");
 		break;
+	case AP_RO_V2_INCONSISTENT_GSCVD:
+		printf("inconsistent gscvd\n");
+		break;
+	case AP_RO_V2_INCONSISTENT_KEYBLOCK:
+		printf("inconsistent keyblock\n");
+		break;
+	case AP_RO_V2_INCONSISTENT_KEY:
+		printf("inconsistent key\n");
+		break;
+	case AP_RO_V2_SPI_READ:
+		printf("spi read failure\n");
+		break;
+	case AP_RO_V2_UNSUPPORTED_CRYPTO_ALGORITHM:
+		printf("unsupported crypto algo\n");
+		break;
+	case AP_RO_V2_VERSION_MISMATCH:
+		printf("header version mismatch\n");
+		break;
+	case AP_RO_V2_OUT_OF_MEMORY:
+		printf("out_of_memory\n");
+		break;
+	case AP_RO_V2_INTERNAL:
+		printf("internal\n");
+		break;
+	case AP_RO_V2_TOO_BIG:
+		printf("too many areas\n");
+		break;
+	case AP_RO_V2_MISSING_GSCVD:
+		printf("missing gscvd\n");
+		break;
+	case AP_RO_V2_BOARD_ID_MISMATCH:
+		printf("board id mismatch\n");
+		break;
+	case AP_RO_V2_SETTING_NOT_PROVISIONED:
+		printf("setting not provisioned\n");
+		break;
 	default:
+		printf("unknown\n");
 		fprintf(stderr, "unknown status\n");
 		return update_error;
 	}

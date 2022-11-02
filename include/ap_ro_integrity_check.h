@@ -9,6 +9,7 @@
 #include "flash_log.h"
 
 enum ap_ro_status {
+	/* All AP RO Verification V1 statuses are less than 0x20 */
 	AP_RO_NOT_RUN = 0,
 	AP_RO_PASS_UNVERIFIED_GBB = 1,
 	AP_RO_FAIL = 2,
@@ -17,6 +18,22 @@ enum ap_ro_status {
 	AP_RO_UNSUPPORTED_TRIGGERED = 5,
 	AP_RO_PASS = 6,
 	AP_RO_IN_PROGRESS = 7,
+	/* All AP RO Verification V2 status are 0x20 or greater */
+	AP_RO_V2_SUCCESS = 0X20,
+	AP_RO_V2_FAILED_VERIFICATION,
+	AP_RO_V2_INCONSISTENT_GSCVD,
+	AP_RO_V2_INCONSISTENT_KEYBLOCK,
+	AP_RO_V2_INCONSISTENT_KEY,
+	AP_RO_V2_SPI_READ,
+	AP_RO_V2_UNSUPPORTED_CRYPTO_ALGORITHM,
+	AP_RO_V2_VERSION_MISMATCH,
+	AP_RO_V2_OUT_OF_MEMORY,
+	AP_RO_V2_INTERNAL,
+	AP_RO_V2_TOO_BIG,
+	AP_RO_V2_MISSING_GSCVD,
+	AP_RO_V2_BOARD_ID_MISMATCH,
+	AP_RO_V2_SETTING_NOT_PROVISIONED,
+	AP_RO_V2_UNKNOWN,
 };
 /*
  * validate_ap_ro: based on information saved in an H1 RO flash page verify
