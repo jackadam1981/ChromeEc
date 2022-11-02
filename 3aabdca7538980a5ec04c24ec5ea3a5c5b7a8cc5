@@ -16,6 +16,24 @@
       "message": "Do we need something similar for Zephyr based builds as well?",
       "revId": "3aabdca7538980a5ec04c24ec5ea3a5c5b7a8cc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72831ce_00dd30e2",
+        "filename": "firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-02T20:30:48Z",
+      "side": 1,
+      "message": "The bug filed was specifically for the ec build, but I can make the same change in zephyr just to be sure.",
+      "parentUuid": "84bdbbd3_4306132b",
+      "revId": "3aabdca7538980a5ec04c24ec5ea3a5c5b7a8cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
