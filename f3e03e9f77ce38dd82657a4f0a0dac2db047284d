@@ -22,6 +22,30 @@
       },
       "revId": "f3e03e9f77ce38dd82657a4f0a0dac2db047284d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2a6bbb_be4482d9",
+        "filename": "board/kuldax/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-11-02T00:40:16Z",
+      "side": 1,
+      "message": "in this kuldax,\nINA213AIRSWR GAIN:50\nVout \u003d (Iout x Rshlunt) GAIN\n65w : 3.42A/19.5v \u003d 0.855v, 0.855*(20/(20+8.66)) \u003d 0.5966v\n150w: 7.5A/20v Vout \u003d 1.875v, 1.875*(20/(20+8.66)) \u003d 1.308v\n\ndo you mean (20/(20+8.66)) * 50 /200 , which 50/200 is mean what?",
+      "parentUuid": "e9e7c51e_e0eda1c3",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "f3e03e9f77ce38dd82657a4f0a0dac2db047284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
