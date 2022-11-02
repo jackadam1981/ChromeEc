@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f0cd0d_9d695308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-11-02T11:45:43Z",
+      "side": 1,
+      "message": "Please apply the patch:\n```\n--- a/util/build_with_clang.py\n+++ b/util/build_with_clang.py\n@@ -121,6 +121,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG \u003d [\n     \"lindar\",\n     \"madoo\",\n     \"magolor\",\n+    \"marasov\",\n     \"marzipan\",\n     \"meep\",\n     \"metaknight\",\n```",
+      "revId": "305ddf1d610e91a99f6e1fbac7d2b7df4d181e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
