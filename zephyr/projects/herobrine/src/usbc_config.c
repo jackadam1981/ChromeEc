@@ -66,19 +66,34 @@ void usba_oc_interrupt(enum gpio_signal signal)
 
 void ppc_interrupt(enum gpio_signal signal)
 {
+	CPRINTS(" @ @ @ ppc_interrupt (0x%x)", signal);
+
 	switch (signal) {
 	case GPIO_USB_C0_SWCTL_INT_ODL:
+		CPRINTS(" @ @ @ ppc_interrupt C0");
 		ppc_chips[0].drv->interrupt(0);
 		break;
 
 	case GPIO_USB_C1_SWCTL_INT_ODL:
+		CPRINTS(" @ @ @ ppc_interrupt C1");
 		ppc_chips[1].drv->interrupt(1);
 		break;
 
 	default:
+		CPRINTS(" @ @ @ ppc_interrupt default");
 		break;
 	}
 }
+
+static void ppc_int_monitor(void)
+{
+	CPRINTS(" @ @ @ usb_c0_swctl_int: %d",
+		gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_swctl_int_odl)));
+
+	CPRINTS(" @ @ @ usb_c1_swctl_int: %d",
+		gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_swctl_int_odl)));
+}
+DECLARE_HOOK(HOOK_SECOND, ppc_int_monitor, HOOK_PRIO_DEFAULT);
 
 int charger_profile_override(struct charge_state_data *curr)
 {
