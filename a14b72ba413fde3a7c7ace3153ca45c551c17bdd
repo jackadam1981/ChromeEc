@@ -67,6 +67,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5afdce0_9c2d3fd9",
+        "filename": "zephyr/shim/src/button_config.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-02T11:44:39Z",
+      "side": 1,
+      "message": "This should be a Kconfig entry and building this file should be conditional, can you send a followup?",
+      "revId": "a14b72ba413fde3a7c7ace3153ca45c551c17bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15dbf523_74cbf426",
         "filename": "zephyr/test/drivers/button_config/src/button_config.c",
         "patchSetId": 13
