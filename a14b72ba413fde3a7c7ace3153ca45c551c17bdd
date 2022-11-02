@@ -84,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "798d7055_e4dc66b7",
+        "filename": "zephyr/shim/src/button_config.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-02T14:59:27Z",
+      "side": 1,
+      "message": "Yup, I\u0027m working on this as well as Keith\u0027s comments as well.",
+      "parentUuid": "e5afdce0_9c2d3fd9",
+      "revId": "a14b72ba413fde3a7c7ace3153ca45c551c17bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15dbf523_74cbf426",
         "filename": "zephyr/test/drivers/button_config/src/button_config.c",
         "patchSetId": 13
