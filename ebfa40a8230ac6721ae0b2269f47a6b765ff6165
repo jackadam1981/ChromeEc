@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f056df04_10e2145d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-02T21:01:38Z",
+      "side": 1,
+      "message": "As discussed offline we can\u0027t modify the ap_ro_check_header",
+      "parentUuid": "bd80d02a_4af54d36",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 28
+      },
+      "revId": "ebfa40a8230ac6721ae0b2269f47a6b765ff6165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bb153ba_53aec47e",
