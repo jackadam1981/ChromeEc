@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3256e401_01bc7602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-02T23:10:32Z",
+      "side": 1,
+      "message": "a few more questions.\n\nAlso, why don\u0027t you push the underlying patches so that they are in the treee and do not have to be rebased if anything else changes?",
+      "revId": "3179efb392988778ccbcd09ebef4a565e11163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207dff82_5ea21b3d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-02T23:10:32Z",
+      "side": 1,
+      "message": "what happens if gbbd space was corrupted? I thought we decided that this would result in a failure?",
+      "range": {
+        "startLine": 1072,
+        "startChar": 5,
+        "endLine": 1072,
+        "endChar": 21
+      },
+      "revId": "3179efb392988778ccbcd09ebef4a565e11163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535efcea_b05a95e0",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-02T23:10:32Z",
+      "side": 1,
+      "message": "why do we need to validate_gbbd() right after it has been successfully created? Shouldn\u0027t creation fail if something went wrong?",
+      "range": {
+        "startLine": 1089,
+        "startChar": 8,
+        "endLine": 1089,
+        "endChar": 29
+      },
+      "revId": "3179efb392988778ccbcd09ebef4a565e11163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f8ce19_debb93bc",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-02T23:10:32Z",
+      "side": 1,
+      "message": "I think code would be smaller and easeir to understand if line 1076 invocation was not conditional and was happening afterthis block, at the expense of invoking validation twice the first time around.\n\nBut if you prefer it this way so be it.",
+      "range": {
+        "startLine": 1100,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 12
+      },
+      "revId": "3179efb392988778ccbcd09ebef4a565e11163c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
