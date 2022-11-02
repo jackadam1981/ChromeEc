@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07a20646_36449d9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-02T15:12:26Z",
+      "side": 1,
+      "message": "This is correct.  I will do a bulk git mv to rename the directory and manage the additional cleanup.",
+      "parentUuid": "7ab4758e_3555e1d8",
+      "revId": "ff294c8b532ec975c602db4d37a9d21dbe1a55fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9688b278_b3831a2d",
         "filename": "zephyr/projects/herobrine/evoker/project.overlay",
         "patchSetId": 2
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Should I also update the year for old files that have been moved such as herobrine/battery.dtsi or leave it as is?",
       "parentUuid": "9688b278_b3831a2d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ff294c8b532ec975c602db4d37a9d21dbe1a55fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec59a1f8_bc132b2c",
+        "filename": "zephyr/projects/herobrine/evoker/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-02T15:12:26Z",
+      "side": 1,
+      "message": "Don\u0027t change the copyright of existing files.  `git mv` maintains the history of the file, even when the file is moved to a new directory.",
+      "parentUuid": "8d1f0119_fcb0dd83",
       "range": {
         "startLine": 1,
         "startChar": 13,

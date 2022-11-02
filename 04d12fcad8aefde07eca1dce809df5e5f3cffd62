@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a68301c_9a272ec4",
+        "filename": "zephyr/projects/herobrine/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-02T15:12:26Z",
+      "side": 1,
+      "message": "I prefer that you use `add_subdirectory(herobrine)` here, and then create a CMakeLists.txt file under projects/herobrine/herobrine",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "04d12fcad8aefde07eca1dce809df5e5f3cffd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b417c2e_7933c048",
+        "filename": "zephyr/projects/herobrine/herobrine/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-02T15:12:26Z",
+      "side": 1,
+      "message": "We\u0027ve decided that the best practice is to add the devicetree overrides directly into the project.overlay.  As a follow up CL, can you look to move as many devicetree nodes into the program directory, and then use `/delete-node/` to disable nodes not needed by a specific project?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "04d12fcad8aefde07eca1dce809df5e5f3cffd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209736ef_261c6c28",
+        "filename": "zephyr/projects/herobrine/program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-02T15:12:26Z",
+      "side": 1,
+      "message": "Nit - don\u0027t change the date of existing files.  Moving a file doesn\u0027t qualify as a new file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "04d12fcad8aefde07eca1dce809df5e5f3cffd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
