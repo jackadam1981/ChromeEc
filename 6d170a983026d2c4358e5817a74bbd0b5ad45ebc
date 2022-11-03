@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c897fb74_9bf63a39",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-03T20:16:33Z",
+      "side": 1,
+      "message": "I don\u0027t see a corresponding config symbol in `include/config.h`. So should this just be `POWER_SIGNAL_LIST`?",
+      "revId": "6d170a983026d2c4358e5817a74bbd0b5ad45ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd40491_e5955bf8",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-03T20:16:33Z",
+      "side": 1,
+      "message": "devicetree\nrequires",
+      "revId": "6d170a983026d2c4358e5817a74bbd0b5ad45ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbac9da_ee9f7771",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-03T20:16:33Z",
+      "side": 1,
+      "message": "Out of scope, but doing this in the .c file would avoid exposing `POWER_SIGNALS_REQUIRED` from this header file, and that name is apparently only used for the purpose of this assert.",
+      "revId": "6d170a983026d2c4358e5817a74bbd0b5ad45ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
