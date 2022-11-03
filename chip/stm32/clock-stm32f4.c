@@ -5,6 +5,8 @@
 
 /* Clocks and power management settings */
 
+#include <strings.h>
+
 #include "builtin/assert.h"
 #include "chipset.h"
 #include "clock.h"
@@ -602,4 +604,21 @@ static int command_idle_stats(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats, "",
 			"Print last idle stats");
+
+static int command_clock(int argc, const char **argv)
+{
+	if (argc >= 2) {
+		if (!strcasecmp(argv[1], "hsi"))
+			clock_set_osc(OSC_HSI);
+		else if (!strcasecmp(argv[1], "pll"))
+			clock_set_osc(OSC_PLL);
+		else
+			return EC_ERROR_PARAM1;
+	}
+	ccprintf("Clock frequency is now %d Hz\n", clock_get_freq());
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(clock, command_clock, "hsi | pll",
+			"Set clock frequency");
+
 #endif /* CONFIG_LOW_POWER_IDLE */
