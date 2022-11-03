@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c25046_ec4941e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-03T16:27:57Z",
+      "side": 1,
+      "message": "Let me know if you want pointers for writing a zephyr unit test for the new command :) \n\nLooks like `zephyr/test/drivers/host_cmd/src` might be a good spot for it",
+      "revId": "a3f492941ddb0becf1196c60713980f2a25bf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
