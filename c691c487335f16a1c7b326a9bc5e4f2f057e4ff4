@@ -52,6 +52,24 @@
       "parentUuid": "be4609d6_af4d0289",
       "revId": "c691c487335f16a1c7b326a9bc5e4f2f057e4ff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a7961e_384fb726",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-11-03T06:15:53Z",
+      "side": 1,
+      "message": "Specially crrev.com/c/3996371 remove file \"include/driver/accelgyro_bmi_common.h\", it was not just cherry-pick from original CL.",
+      "parentUuid": "53072cfd_a78cf9ce",
+      "revId": "c691c487335f16a1c7b326a9bc5e4f2f057e4ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
