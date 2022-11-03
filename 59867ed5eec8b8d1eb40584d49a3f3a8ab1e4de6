@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21b949ac_731e09d9",
+        "filename": "zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-03T15:16:16Z",
+      "side": 1,
+      "message": "nit: these should probably be split off since they\u0027re separate invalid test cases.",
+      "revId": "59867ed5eec8b8d1eb40584d49a3f3a8ab1e4de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84b0e7cf_d27384e7",
         "filename": "zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c",
         "patchSetId": 4
