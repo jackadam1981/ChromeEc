@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6cc732_6e645499",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-03T03:31:09Z",
+      "side": 1,
+      "message": "Really nice work!",
+      "revId": "7c7aa8ed174f6c463faa930c503abb0c1e5c3790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba25972_0f3c722b",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-03T03:31:09Z",
+      "side": 1,
+      "message": "There\u0027s also a k_yeild(), I\u0027m not sure if that makes a difference, just wanted to mention it.",
+      "revId": "7c7aa8ed174f6c463faa930c503abb0c1e5c3790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22123ad6_d6944d77",
+        "filename": "zephyr/test/drivers/panic_output/src/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-03T03:31:09Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 1
+      },
+      "revId": "7c7aa8ed174f6c463faa930c503abb0c1e5c3790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
