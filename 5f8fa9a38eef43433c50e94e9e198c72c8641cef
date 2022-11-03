@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e2fd484_f076c00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-03T19:54:16Z",
+      "side": 1,
+      "message": "a couple of more comments/questions",
+      "revId": "5f8fa9a38eef43433c50e94e9e198c72c8641cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9fdb1b_f6fe7d50",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-03T19:54:16Z",
+      "side": 1,
+      "message": "should this be dropped?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 31
+      },
+      "revId": "5f8fa9a38eef43433c50e94e9e198c72c8641cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a098cfd4_25ed2923",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-03T19:54:16Z",
+      "side": 1,
+      "message": "but the only place whre we clear GS_INJECT_FLAGS bit is in line 677, so we\u0027re not going to hit line 685  in that case, right?",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 686,
+        "endChar": 21
+      },
+      "revId": "5f8fa9a38eef43433c50e94e9e198c72c8641cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3c5f9f_5e10f62b",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-03T19:54:16Z",
+      "side": 1,
+      "message": "so, what happens if the first num_ranges is 0xffff, but not the entire gbbd space is erased? I guess it will get further corrupted when it will be saved after initialization?\n\nWhy not to check the entire space.",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 768,
+        "endChar": 2
+      },
+      "revId": "5f8fa9a38eef43433c50e94e9e198c72c8641cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cca618cd_fc405b13",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-03T19:54:16Z",
+      "side": 1,
+      "message": "also just struck me - why do we need to copy it, could it not be used from the flash? Or can it still be changed to erase some flag bits? We shouldn\u0027t have to copy it to flash until it is all sorted out.\n\nIf no need to copy - let\u0027s leave it to future enhancement.",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 43
+      },
+      "revId": "5f8fa9a38eef43433c50e94e9e198c72c8641cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
