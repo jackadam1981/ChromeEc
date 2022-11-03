@@ -196,6 +196,7 @@ class AllTests:
             TestConfig(test_name="abort"),
             TestConfig(test_name="aes"),
             TestConfig(test_name="always_memset"),
+            TestConfig(test_name="benchmark"),
             TestConfig(test_name="cec"),
             TestConfig(test_name="cortexm_fpu"),
             TestConfig(test_name="crc"),
@@ -246,6 +247,7 @@ class AllTests:
                 finish_regexes=[board_config.mpu_regex],
             ),
             TestConfig(test_name="mutex"),
+            TestConfig(test_name="panic"),
             TestConfig(test_name="pingpong"),
             TestConfig(test_name="printf"),
             TestConfig(test_name="queue"),
@@ -267,6 +269,7 @@ class AllTests:
             TestConfig(test_name="sha256_unrolled"),
             TestConfig(test_name="static_if"),
             TestConfig(test_name="stdlib"),
+            TestConfig(test_name="std_vector"),
             TestConfig(
                 config_name="system_is_locked_wp_on",
                 test_name="system_is_locked",

@@ -206,13 +206,17 @@ enum sensor_id {
 	SENSOR_COUNT,
 };
 
+#if defined(TEST_MOTION_ANGLE) || defined(TEST_MOTION_ANGLE_TABLET) || \
+	defined(TEST_MOTION_LID)
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE
 #define CONFIG_LID_ANGLE_SENSOR_LID LID
 #define CONFIG_TABLET_MODE
+#endif /* LID ANGLE needed */
+
 #define CONFIG_MOTION_FILL_LPC_SENSE_DATA
 
-#endif
+#endif /* sensor_id needed */
 
 #if defined(TEST_MOTION_ANGLE)
 #define CONFIG_ACCEL_FORCE_MODE_MASK           \
@@ -670,6 +674,10 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_I2C_CONTROLLER
 #define CONFIG_I2C_BITBANG
 #define I2C_BITBANG_PORT_COUNT 1
+#endif
+
+#ifdef TEST_PANIC
+#undef CONFIG_PANIC_STRIP_GPR
 #endif
 
 #endif /* TEST_BUILD */

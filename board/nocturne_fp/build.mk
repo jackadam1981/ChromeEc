@@ -29,6 +29,7 @@ test-list-y=\
        abort \
        aes \
        always_memset \
+       benchmark \
        cec \
        compile_time_macros \
        cortexm_fpu \
@@ -41,6 +42,7 @@ test-list-y=\
        fpsensor_hw \
        mpu \
        mutex \
+       panic \
        panic_data \
        pingpong \
        printf \
@@ -54,6 +56,7 @@ test-list-y=\
        sha256_unrolled \
        static_if \
        stdlib \
+       std_vector \
        system_is_locked \
        timer_dos \
        utils \

@@ -1253,26 +1253,8 @@ struct ec_response_get_version_v1 {
 	char cros_fwid_rw[32]; /* Added in version 1 */
 } __ec_align4;
 
-/* Read test */
+/* Read test - DEPRECATED */
 #define EC_CMD_READ_TEST 0x0003
-
-/**
- * struct ec_params_read_test - Parameters for the read test command.
- * @offset: Starting value for read buffer.
- * @size: Size to read in bytes.
- */
-struct ec_params_read_test {
-	uint32_t offset;
-	uint32_t size;
-} __ec_align4;
-
-/**
- * struct ec_response_read_test - Response to the read test command.
- * @data: Data returned by the read test command.
- */
-struct ec_response_read_test {
-	uint32_t data[32];
-} __ec_align4;
 
 /*
  * Get build information
@@ -1579,6 +1561,10 @@ enum ec_feature_code {
 	 * The EC supports the AP directing mux sets for the board.
 	 */
 	EC_FEATURE_TYPEC_AP_MUX_SET = 45,
+	/*
+	 * The EC supports the AP composing VDMs for us to send.
+	 */
+	EC_FEATURE_TYPEC_AP_VDM_SEND = 46,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
@@ -2875,7 +2861,7 @@ struct ec_motion_sense_activity {
  */
 #define EC_MOTION_SENSE_NO_VALUE -1
 
-#define EC_MOTION_SENSE_INVALID_CALIB_TEMP 0x8000
+#define EC_MOTION_SENSE_INVALID_CALIB_TEMP INT16_MIN
 
 /* MOTIONSENSE_CMD_SENSOR_OFFSET subcommand flag */
 /* Set Calibration information */
@@ -6730,6 +6716,7 @@ struct ec_response_regulator_get_voltage {
 enum typec_partner_type {
 	TYPEC_PARTNER_SOP = 0,
 	TYPEC_PARTNER_SOP_PRIME = 1,
+	TYPEC_PARTNER_SOP_PRIME_PRIME = 2,
 };
 
 struct ec_params_typec_discovery {
@@ -6761,6 +6748,7 @@ enum typec_control_command {
 	TYPEC_CONTROL_COMMAND_TBT_UFP_REPLY,
 	TYPEC_CONTROL_COMMAND_USB_MUX_SET,
 	TYPEC_CONTROL_COMMAND_BIST_SHARE_MODE,
+	TYPEC_CONTROL_COMMAND_SEND_VDM_REQ,
 };
 
 /* Modes (USB or alternate) that a type-C port may enter. */
@@ -6786,6 +6774,17 @@ struct typec_usb_mux_set {
 	uint8_t mux_flags;
 } __ec_align1;
 
+#define VDO_MAX_SIZE 7
+
+struct typec_vdm_req {
+	/* VDM data, including VDM header */
+	uint32_t vdm_data[VDO_MAX_SIZE];
+	/* Number of 32-bit fields filled in */
+	uint8_t vdm_data_objects;
+	/* Partner to address - see enum typec_partner_type */
+	uint8_t partner_type;
+} __ec_align1;
+
 struct ec_params_typec_control {
 	uint8_t port;
 	uint8_t command; /* enum typec_control_command */
@@ -6807,6 +6806,8 @@ struct ec_params_typec_control {
 		struct typec_usb_mux_set mux_params;
 		/* Used for BIST_SHARE_MODE */
 		uint8_t bist_share_mode;
+		/* Used for VMD_REQ */
+		struct typec_vdm_req vdm_req_params;
 		uint8_t placeholder[128];
 	};
 } __ec_align1;
@@ -7043,10 +7044,22 @@ struct ec_response_pchg_count {
  */
 #define EC_CMD_PCHG 0x0135
 
+/* For v1 and v2 */
 struct ec_params_pchg {
 	uint8_t port;
 } __ec_align1;
 
+struct ec_params_pchg_v3 {
+	uint8_t port;
+	/* Below are new in v3. */
+	uint8_t reserved1;
+	uint8_t reserved2;
+	uint8_t reserved3;
+	/* Errors acked by the host (thus to be cleared) */
+	uint32_t error;
+} __ec_align1;
+
+/* For v1 */
 struct ec_response_pchg {
 	uint32_t error; /* enum pchg_error */
 	uint8_t state; /* enum pchg_state state */
@@ -7058,6 +7071,7 @@ struct ec_response_pchg {
 	uint32_t dropped_event_count;
 } __ec_align4;
 
+/* For v2 and v3 */
 struct ec_response_pchg_v2 {
 	uint32_t error; /* enum pchg_error */
 	uint8_t state; /* enum pchg_state state */
@@ -7137,6 +7151,10 @@ enum ec_pchg_update_cmd {
 	EC_PCHG_UPDATE_CMD_WRITE,
 	/* Close update session. */
 	EC_PCHG_UPDATE_CMD_CLOSE,
+	/* Reset chip (without mode change). */
+	EC_PCHG_UPDATE_CMD_RESET,
+	/* Enable pass-through mode. */
+	EC_PCHG_UPDATE_CMD_ENABLE_PASSTHRU,
 	/* End of commands */
 	EC_PCHG_UPDATE_CMD_COUNT,
 };

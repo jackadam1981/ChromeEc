@@ -3,6 +3,7 @@ target_sources(app PRIVATE
     src/bb_retimer.c
     src/bc12.c
     src/bma2x2.c
+    src/bmi_common.c
     src/bmi160.c
     src/bmi260.c
     src/charge_manager.c
@@ -13,6 +14,7 @@ target_sources(app PRIVATE
     src/console_cmd/charge_manager.c
     src/console_cmd/charge_state.c
     src/console_cmd/charger.c
+    src/console_cmd/chargen.c
     src/console_cmd/accelinit.c
     src/console_cmd/accelinfo.c
     src/console_cmd/accelspoof.c
@@ -39,6 +41,7 @@ target_sources(app PRIVATE
     src/console_cmd/shared_mem.c
     src/console_cmd/sleepmask.c
     src/console_cmd/sleeptimeout.c
+    src/console_cmd/switch.c
     src/console_cmd/sysinfo.c
     src/console_cmd/tcpci_dump.c
     src/console_cmd/usb_pd_console.c
