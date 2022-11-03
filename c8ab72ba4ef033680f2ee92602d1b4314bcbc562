@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "263c1917_662dd911",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-11-03T01:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24dbe5fc_9af902a0",
+      "range": {
+        "startLine": 1093,
+        "startChar": 0,
+        "endLine": 1093,
+        "endChar": 60
+      },
+      "revId": "c8ab72ba4ef033680f2ee92602d1b4314bcbc562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f8b0ee7_27561358",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-02T19:10:27Z",
       "side": 1,
       "message": "`if (IS_ENABLED(CONFIG_ZEPHYR))`",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 58
+      },
+      "revId": "c8ab72ba4ef033680f2ee92602d1b4314bcbc562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de2df37_77920863",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2022-11-03T01:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f8b0ee7_27561358",
       "range": {
         "startLine": 1128,
         "startChar": 0,
