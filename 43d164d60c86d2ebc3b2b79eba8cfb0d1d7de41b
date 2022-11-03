@@ -407,6 +407,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8303d153_992b49e4",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-03T07:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af07c12b_3b2ced78",
+      "range": {
+        "startLine": 246,
+        "startChar": 8,
+        "endLine": 246,
+        "endChar": 27
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6f78fe4_de5d6b7e",
@@ -444,6 +468,30 @@
       "side": 1,
       "message": "Here want to mask all function1, which is bit 1. Will add comment.",
       "parentUuid": "a6f78fe4_de5d6b7e",
+      "range": {
+        "startLine": 248,
+        "startChar": 25,
+        "endLine": 248,
+        "endChar": 28
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6accaff_3521db24",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-03T07:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1831921b_864c7e8e",
       "range": {
         "startLine": 248,
         "startChar": 25,
