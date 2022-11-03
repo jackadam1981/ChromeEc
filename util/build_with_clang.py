@@ -226,6 +226,7 @@ NDS32_BOARDS = [
     "beetley",
     "blipper",
     "boten",
+    "dibbi",
     "drawcia",
     "galtic",
     "gooey",
