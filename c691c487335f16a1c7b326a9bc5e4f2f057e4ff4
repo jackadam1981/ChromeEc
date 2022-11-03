@@ -34,6 +34,24 @@
       "parentUuid": "568451e4_6328ba60",
       "revId": "c691c487335f16a1c7b326a9bc5e4f2f057e4ff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53072cfd_a78cf9ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530347
+      },
+      "writtenOn": "2022-11-03T06:13:13Z",
+      "side": 1,
+      "message": "At least following CLs: (top elder)\n1. crrev/c/3791980 - util: remove unused includes\n-\u003e got lots of merge conflict here, might not important\n\n2. crrev/c/3807165 - driver/bmi323: Update calibration code\n-\u003e already CPed and merged into firmware branch (crrev.com/c/3996408)\n\n3. crrev/c/3860188 - driver: bmi: Enable On/Off body detection on all BMI IMU\n-\u003e already CPed with modification. (crrev.com/c/3996371), not sure this is fine?\n\n4. crrev/c/3928385 - bmi3xx: fix watchdog warning during fifo processing \n-\u003e already CPed and merged into firmware branch (this CL, crrev.com/c/3996409)",
+      "parentUuid": "be4609d6_af4d0289",
+      "revId": "c691c487335f16a1c7b326a9bc5e4f2f057e4ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
