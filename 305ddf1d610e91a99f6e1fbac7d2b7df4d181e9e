@@ -16,6 +16,24 @@
       "message": "Please apply the patch:\n```\n--- a/util/build_with_clang.py\n+++ b/util/build_with_clang.py\n@@ -121,6 +121,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG \u003d [\n     \"lindar\",\n     \"madoo\",\n     \"magolor\",\n+    \"marasov\",\n     \"marzipan\",\n     \"meep\",\n     \"metaknight\",\n```",
       "revId": "305ddf1d610e91a99f6e1fbac7d2b7df4d181e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c915b5e9_c6bf937e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349394
+      },
+      "writtenOn": "2022-11-03T01:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f0cd0d_9d695308",
+      "revId": "305ddf1d610e91a99f6e1fbac7d2b7df4d181e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
