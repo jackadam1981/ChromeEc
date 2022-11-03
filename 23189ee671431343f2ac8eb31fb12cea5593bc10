@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d363785f_1345ae07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-03T22:08:13Z",
+      "side": 1,
+      "message": "I didn\u0027t notice it before, and I agree I\u0027m not sure I\u0027ve ever seen it before either. And yes, this is from zephyr on a Skyrim device.\n\n\u003e Should we file a bug on it?\n\nI tried playing around with these CLs some more, and I haven\u0027t seen this line again. I\u0027ll keep my eye out for it though and open a bug if I see it again.\n\nIn the meantime, to avoid any distraction for this CL, I went ahead and recollected the EC console output for each `ectool` command without that line being output.",
+      "parentUuid": "9b66105d_a0521106",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "23189ee671431343f2ac8eb31fb12cea5593bc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93dce094_1f4f612e",
         "filename": "util/ectool.cc",
         "patchSetId": 2
