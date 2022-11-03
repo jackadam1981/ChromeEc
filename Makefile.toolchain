@@ -115,7 +115,7 @@ C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
 C_WARN += -Werror-implicit-function-declaration
 COMMON_WARN = -Wall -Wundef \
 	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
-	-fno-common -fno-strict-aliasing -fno-strict-overflow
+	-fno-common -fno-strict-aliasing -fno-strict-overflow -Wimplicit-fallthrough
 # See https://www.chromium.org/chromium-os/build/c-exception-support
 COMMON_WARN+=-fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
 
@@ -207,6 +207,9 @@ else
 # TODO(https://issuetracker.google.com/234507656#comment19): C++ include path
 # should not be necessary.
 CXXFLAGS+=-I/usr/armv7m-cros-eabi/usr/include/c++/v1
+# TODO(https://issuetracker.google.com/254916723): Remove when toolchain is
+# fixed.
+CPPFLAGS+=-D_GNU_SOURCE
 endif
 
 ifeq ($(LIBFTDI_NAME),)

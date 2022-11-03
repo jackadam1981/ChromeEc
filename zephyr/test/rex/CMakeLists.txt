@@ -1,4 +1,4 @@
-# Copyright 2022 The ChromiumOS Authors.
+# Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -8,4 +8,7 @@ project(rex)
 
 zephyr_include_directories("${PLATFORM_EC}/zephyr/projects/rex/include")
 
-target_sources(app PRIVATE src/test.c)
+add_subdirectory(${PLATFORM_EC}/zephyr/test/test_utils test_utils)
+
+target_sources_ifdef(CONFIG_TEST_USB_PD_POLICY app PRIVATE src/usb_pd_policy.c)
+target_sources_ifdef(CONFIG_TEST_USB_PD_POLICY app PRIVATE ${PLATFORM_EC}/zephyr/projects/rex/src/usb_pd_policy.c)

@@ -59,6 +59,11 @@ DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_PRE_DEFAULT);
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
+	/* This function returns the PORT_COUNT+1 when HDMI db is connected.
+	 * This is a trick to ensure the usb_mux_set being set properley.
+	 * HDMI display functions using the USB virtual mux to * communicate
+	 * with the DP bridge.
+	 */
 	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
 		if (tasks_inited) {
 			return CONFIG_USB_PD_PORT_MAX_COUNT;
@@ -70,6 +75,15 @@ __override uint8_t board_get_usb_pd_port_count(void)
 	}
 
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+
+uint8_t board_get_adjusted_usb_pd_port_count(void)
+{
+	if (corsola_get_db_type() == CORSOLA_DB_TYPEC) {
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+	} else {
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+	}
 }
 
 /* USB-A */
@@ -112,11 +126,15 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 	}
 }
 
-void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
-			    int charge_mv)
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+				       int max_ma, int charge_mv)
 {
-	charge_set_input_current_limit(
-		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
+	int icl = charge_ma * 97 / 100;
+	/*
+	 * b:257167723: Adapter output current exceeds the spec on heavy-load.
+	 * Preserve a margin in case of charger overdraw.
+	 */
+	charge_set_input_current_limit(icl, charge_mv);
 }
 
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
@@ -126,92 +144,6 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 	 * should already be set correctly in the PPC driver via the pd
 	 * state machine.
 	 */
-}
-
-/**
- * Handle PS185 HPD changing state.
- */
-int debounced_hpd;
-
-static void ps185_hdmi_hpd_deferred(void)
-{
-	const int new_hpd =
-		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
-
-	/* HPD status not changed, probably a glitch, just return. */
-	if (debounced_hpd == new_hpd) {
-		return;
-	}
-
-	debounced_hpd = new_hpd;
-
-	if (!corsola_is_dp_muxable(USBC_PORT_C1)) {
-		if (debounced_hpd) {
-			CPRINTS("C0 port is already muxed.");
-		}
-		return;
-	}
-
-	if (debounced_hpd) {
-		dp_status[USBC_PORT_C1] =
-			VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
-				      0, /* HPD level ... not applicable */
-				      0, /* exit DP? ... no */
-				      0, /* usb mode? ... no */
-				      0, /* multi-function ... no */
-				      1, /* DP enabled ... yes */
-				      0, /* power low?  ... no */
-				      (!!DP_FLAGS_DP_ON));
-		/* update C1 virtual mux */
-		usb_mux_set(USBC_PORT_C1, USB_PD_MUX_DP_ENABLED,
-			    USB_SWITCH_DISCONNECT,
-			    0 /* polarity, don't care */);
-
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(dp_aux_path_sel),
-				debounced_hpd);
-		CPRINTS("Set DP_AUX_PATH_SEL: %d", 1);
-	}
-	svdm_set_hpd_gpio(USBC_PORT_C1, debounced_hpd);
-	CPRINTS(debounced_hpd ? "HDMI plug" : "HDMI unplug");
-}
-DECLARE_DEFERRED(ps185_hdmi_hpd_deferred);
-
-static void ps185_hdmi_hpd_disconnect_deferred(void)
-{
-	const int new_hpd =
-		gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd));
-
-	if (debounced_hpd == new_hpd && !new_hpd) {
-		dp_status[USBC_PORT_C1] =
-			VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
-				      0, /* HPD level ... not applicable */
-				      0, /* exit DP? ... no */
-				      0, /* usb mode? ... no */
-				      0, /* multi-function ... no */
-				      0, /* DP enabled ... no */
-				      0, /* power low?  ... no */
-				      (!DP_FLAGS_DP_ON));
-		usb_mux_set(USBC_PORT_C1, USB_PD_MUX_NONE,
-			    USB_SWITCH_DISCONNECT,
-			    0 /* polarity, don't care */);
-	}
-}
-DECLARE_DEFERRED(ps185_hdmi_hpd_disconnect_deferred);
-
-#define PS185_HPD_DEBOUCE 250
-#define HPD_SINK_ABSENCE_DEBOUNCE (2 * MSEC)
-
-static void hdmi_hpd_interrupt(enum gpio_signal signal)
-{
-	hook_call_deferred(&ps185_hdmi_hpd_deferred_data, PS185_HPD_DEBOUCE);
-
-	if (!gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_ps185_ec_dp_hpd))) {
-		hook_call_deferred(&ps185_hdmi_hpd_disconnect_deferred_data,
-				   HPD_SINK_ABSENCE_DEBOUNCE);
-	} else {
-		hook_call_deferred(&ps185_hdmi_hpd_disconnect_deferred_data,
-				   -1);
-	}
 }
 
 /* HDMI/TYPE-C function shared subboard interrupt */
@@ -253,6 +185,13 @@ static void board_hdmi_handler(struct ap_power_ev_callback *cb,
 static void tasks_init_deferred(void)
 {
 	tasks_inited = true;
+	if (corsola_get_db_type() == CORSOLA_DB_HDMI) {
+		/* If the HDMI port is plugged on-boot, and the usb_mux won't
+		 * be configured before the task inited.  Re-invoke the
+		 * HPD configuration after task inited.
+		 */
+		ps185_hdmi_hpd_mux_set();
+	}
 }
 DECLARE_DEFERRED(tasks_init_deferred);
 

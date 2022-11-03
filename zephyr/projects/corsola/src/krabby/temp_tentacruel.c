@@ -15,10 +15,11 @@
 #include "util.h"
 
 #define NUM_CURRENT_LEVELS ARRAY_SIZE(current_table)
-#define TEMP_THRESHOLD 55
+#define TEMP_THRESHOLD 50
 #define TEMP_BUFF_SIZE 60
 #define KEEP_TIME 5
 
+BUILD_ASSERT(IS_ENABLED(CONFIG_BOARD_TENTACRUEL) || IS_ENABLED(CONFIG_TEST));
 /* calculate current average temperature */
 static int average_tempature(void)
 {
@@ -54,7 +55,7 @@ static uint16_t current_table[] = {
 	3600,
 	3000,
 	2400,
-	1800,
+	1600,
 };
 
 /* Called by hook task every hook second (1 sec) */
@@ -65,12 +66,14 @@ static void current_update(void)
 	static uint8_t dntime;
 
 	temp = average_tempature();
+#ifndef CONFIG_TEST
 	if (charge_get_state() == PWR_STATE_DISCHARGE) {
 		current_level = 0;
 		uptime = 0;
 		dntime = 0;
 		return;
 	}
+#endif
 	if (temp >= TEMP_THRESHOLD) {
 		dntime = 0;
 		if (uptime < KEEP_TIME) {

@@ -46,6 +46,8 @@ def run_twister(platform_ec, code_coverage=False, extra_args=None):
         "-p",
         "unit_testing",
         "--no-upload-cros-rdb",
+        "-x=CMAKE_C_COMPILER=/usr/bin/x86_64-pc-linux-gnu-gcc",
+        "-x=CMAKE_CXX_COMPILER=/usr/bin/x86_64-pc-linux-gnu-g++",
     ]
 
     if extra_args:
@@ -75,6 +77,11 @@ def build(opts):
         cwd=platform_ec,
         stdin=subprocess.DEVNULL,
     )
+
+    # Start with a clean build environment
+    cmd = ["make", "clobber"]
+    log_cmd(cmd)
+    subprocess.run(cmd, cwd=platform_ec, check=True, stdin=subprocess.DEVNULL)
 
     cmd = ["zmake", "-D", "build", "-a"]
     if opts.code_coverage:
@@ -326,25 +333,6 @@ def test(opts):
         ).stdout
         _extract_lcov_summary("EC_ZEPHYR_MERGED", metrics, output)
 
-        cmd = [
-            "/usr/bin/lcov",
-            "-o",
-            build_dir / "lcov_unfiltered.info",
-            "--rc",
-            "lcov_branch_coverage=1",
-            "-a",
-            build_dir / "zephyr_merged.info",
-            "-a",
-            platform_ec / "build/coverage/lcov.info",
-        ]
-        log_cmd(cmd)
-        subprocess.run(
-            cmd,
-            cwd=zephyr_dir,
-            check=True,
-            stdin=subprocess.DEVNULL,
-        )
-
         test_patterns = [
             # Exclude tests
             platform_ec / "test/**",
@@ -388,7 +376,7 @@ def test(opts):
             "--rc",
             "lcov_branch_coverage=1",
             "-r",
-            build_dir / "lcov_unfiltered.info",
+            build_dir / "zephyr_merged.info",
         ] + generated_and_system_patterns
         log_cmd(cmd)
         output = subprocess.run(

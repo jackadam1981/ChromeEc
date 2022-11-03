@@ -273,8 +273,6 @@ const char help_str[] =
 	"      Set 16 bit duty cycle of given PWM\n"
 	"  rand <num_bytes>\n"
 	"      generate <num_bytes> of random numbers\n"
-	"  readtest <patternoffset> <size>\n"
-	"      Reads a pattern from the EC via LPC\n"
 	"  reboot_ec <RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump|cold-ap-off>"
 	" [at-shutdown|switch-slot]\n"
 	"      Reboot EC to RO or RW\n"
@@ -958,6 +956,7 @@ static const char *const ec_feature_names[] = {
 		"AP ack for Type-C mux configuration",
 	[EC_FEATURE_S4_RESIDENCY] = "S4 residency",
 	[EC_FEATURE_TYPEC_AP_MUX_SET] = "AP directed mux sets",
+	[EC_FEATURE_TYPEC_AP_VDM_SEND] = "AP directed VDM Request messages",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -1226,70 +1225,6 @@ exit:
 	printf("Tool version:  %s %s %s\n", CROS_ECTOOL_VERSION, DATE, BUILDER);
 
 	return rv;
-}
-
-int cmd_read_test(int argc, char *argv[])
-{
-	struct ec_params_read_test p;
-	struct ec_response_read_test r;
-	int offset, size;
-	int errors = 0;
-	int rv;
-	int i;
-	char *e;
-	char *buf;
-	uint32_t *b;
-
-	if (argc < 3) {
-		fprintf(stderr, "Usage: %s <pattern_offset> <size>\n", argv[0]);
-		return -1;
-	}
-	offset = strtol(argv[1], &e, 0);
-	size = strtol(argv[2], &e, 0);
-	if ((e && *e) || size <= 0 || size > MAX_FLASH_SIZE) {
-		fprintf(stderr, "Bad size.\n");
-		return -1;
-	}
-	printf("Reading %d bytes with pattern offset 0x%x...\n", size, offset);
-
-	buf = (char *)malloc(size);
-	if (!buf) {
-		fprintf(stderr, "Unable to allocate buffer.\n");
-		return -1;
-	}
-
-	/* Read data in chunks */
-	for (i = 0; i < size; i += sizeof(r.data)) {
-		p.offset = offset + i / sizeof(uint32_t);
-		p.size = MIN(size - i, sizeof(r.data));
-		rv = ec_command(EC_CMD_READ_TEST, 0, &p, sizeof(p), &r,
-				sizeof(r));
-		if (rv < 0) {
-			fprintf(stderr, "Read error at offset %d\n", i);
-			free(buf);
-			return rv;
-		}
-		memcpy(buf + i, r.data, p.size);
-	}
-
-	/* Check data */
-	for (i = 0, b = (uint32_t *)buf; i < size / 4; i++, b++) {
-		if (*b != i + offset) {
-			printf("Mismatch at byte offset 0x%x: "
-			       "expected 0x%08x, got 0x%08x\n",
-			       (int)(i * sizeof(uint32_t)), i + offset, *b);
-			errors++;
-		}
-	}
-
-	free(buf);
-	if (errors) {
-		printf("Found %d errors\n", errors);
-		return -1;
-	}
-
-	printf("done.\n");
-	return 0;
 }
 
 int cmd_reboot_ec(int argc, char *argv[])
@@ -5967,7 +5902,7 @@ static int cmd_motionsense(int argc, char **argv)
 		       resp->perform_calib.offset[0],
 		       resp->perform_calib.offset[1],
 		       resp->perform_calib.offset[2]);
-		if ((uint16_t)resp->perform_calib.temp ==
+		if (resp->perform_calib.temp ==
 		    EC_MOTION_SENSE_INVALID_CALIB_TEMP)
 			printf("Temperature at calibration unknown\n");
 		else
@@ -6029,7 +5964,7 @@ static int cmd_motionsense(int argc, char **argv)
 		       resp->sensor_offset.offset[0],
 		       resp->sensor_offset.offset[1],
 		       resp->sensor_offset.offset[2]);
-		if ((uint16_t)resp->sensor_offset.temp ==
+		if (resp->sensor_offset.temp ==
 		    EC_MOTION_SENSE_INVALID_CALIB_TEMP)
 			printf("temperature at calibration unknown\n");
 		else
@@ -9616,12 +9551,15 @@ static void cmd_pchg_help(char *cmd)
 		"  Usage2: %s <port>\n"
 		"          Print the status of <port>.\n"
 		"\n"
-		"  Usage3: %s <port> reset\n"
-		"          Reset <port>.\n"
+		"  Usage3: %s <port> reset [mode]\n"
+		"          Reset <port> to [mode]. [mode]: 'normal'.\n"
 		"\n"
 		"  Usage4: %s <port> update <version> <addr1> <file1> <addr2> <file2> ...\n"
-		"          Update firmware of <port>.\n",
-		cmd, cmd, cmd, cmd);
+		"          Update firmware of <port>.\n"
+		"\n"
+		"  Usage5: %s <port> passthru <on/off> ...\n"
+		"          Enable passthru mode for <port>.\n",
+		cmd, cmd, cmd, cmd, cmd);
 }
 
 static int cmd_pchg_info(const struct ec_response_pchg *res)
@@ -9851,13 +9789,22 @@ static int cmd_pchg(int argc, char *argv[])
 	if (argc == 2) {
 		/* Usage.2 */
 		return cmd_pchg_info(&r);
-	} else if (argc == 3 && !strcmp(argv[2], "reset")) {
+	} else if (argc >= 3 && !strcmp(argv[2], "reset")) {
 		/* Usage.3 */
-		struct ec_params_pchg_update *u =
-			(struct ec_params_pchg_update *)(ec_outbuf);
+		struct ec_params_pchg_update u;
 
-		u->cmd = EC_PCHG_UPDATE_CMD_RESET_TO_NORMAL;
-		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, u, sizeof(*u), NULL, 0);
+		u.port = port;
+
+		if (argc == 3) {
+			u.cmd = EC_PCHG_UPDATE_CMD_RESET;
+		} else if (argc == 4 && !strcmp(argv[3], "normal")) {
+			u.cmd = EC_PCHG_UPDATE_CMD_RESET_TO_NORMAL;
+		} else {
+			fprintf(stderr, "\nInvalid mode: '%s'\n", argv[3]);
+			return -1;
+		}
+
+		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, &u, sizeof(u), NULL, 0);
 		if (rv < 0) {
 			fprintf(stderr, "\nFailed to reset port %d: %d\n", port,
 				rv);
@@ -9925,6 +9872,31 @@ static int cmd_pchg(int argc, char *argv[])
 			return -1;
 		}
 
+		return 0;
+	} else if (argc >= 4 && !strcmp(argv[2], "passthru")) {
+		/*
+		 * Usage 5
+		 */
+		struct ec_params_pchg_update u;
+		int onoff;
+
+		if (!parse_bool(argv[3], &onoff)) {
+			fprintf(stderr, "\nInvalid arg: '%s'\n", argv[3]);
+			return -1;
+		}
+
+		u.port = port;
+		u.cmd = EC_PCHG_UPDATE_CMD_ENABLE_PASSTHRU;
+
+		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, &u, sizeof(u), NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr, "\nFailed to enable pass-through: %d\n",
+				rv);
+			return rv;
+		}
+
+		printf("Pass-through is %s for port %d\n",
+		       onoff ? "enabled" : "disabled", port);
 		return 0;
 	}
 
@@ -10177,7 +10149,10 @@ int cmd_typec_control(int argc, char *argv[])
 			"        <mux_mode> is one of: dp, dock, usb, tbt,\n"
 			"                              usb4, none, safe\n"
 			"    5: Enable bist share mode\n"
-			"        args: <0: DISABLE, 1: ENABLE>\n",
+			"        args: <0: DISABLE, 1: ENABLE>\n"
+			"    6: Send VDM REQ\n"
+			"        args: <tx_type vdm_hdr [vdo...]>\n"
+			"        <tx_type> is 0 - SOP, 1 - SOP', 2 - SOP''\n",
 			argv[0]);
 		return -1;
 	}
@@ -10281,6 +10256,35 @@ int cmd_typec_control(int argc, char *argv[])
 		}
 		p.bist_share_mode = conversion_result;
 		break;
+	case TYPEC_CONTROL_COMMAND_SEND_VDM_REQ:
+		if (argc < 5) {
+			fprintf(stderr, "Missing VDM header and type\n");
+			return -1;
+		}
+		if (argc > 4 + VDO_MAX_SIZE) {
+			fprintf(stderr, "Too many VDOs\n");
+			return -1;
+		}
+
+		conversion_result = strtol(argv[3], &endptr, 0);
+		if ((endptr && *endptr) || conversion_result > UINT8_MAX ||
+		    conversion_result < 0) {
+			fprintf(stderr, "Bad SOP* type\n");
+			return -1;
+		}
+		p.vdm_req_params.partner_type = conversion_result;
+
+		int vdm_index;
+		for (vdm_index = 0; vdm_index < argc - 4; vdm_index++) {
+			uint32_t vdm_entry =
+				strtoul(argv[vdm_index + 4], &endptr, 0);
+			if (endptr && *endptr) {
+				fprintf(stderr, "Bad VDO\n");
+				return -1;
+			}
+			p.vdm_req_params.vdm_data[vdm_index] = vdm_entry;
+		}
+		p.vdm_req_params.vdm_data_objects = vdm_index;
 	}
 
 	rv = ec_command(EC_CMD_TYPEC_CONTROL, 0, &p, sizeof(p), ec_inbuf,
@@ -11002,7 +11006,6 @@ const struct command commands[] = {
 	{ "pwmsetkblight", cmd_pwm_set_keyboard_backlight },
 	{ "pwmsetduty", cmd_pwm_set_duty },
 	{ "rand", cmd_rand },
-	{ "readtest", cmd_read_test },
 	{ "reboot_ec", cmd_reboot_ec },
 	{ "rgbkbd", cmd_rgbkbd },
 	{ "rollbackinfo", cmd_rollback_info },
