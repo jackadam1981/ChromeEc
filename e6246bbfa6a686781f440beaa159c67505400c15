@@ -410,6 +410,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9c3d909_fab3ae6c",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-03T22:59:39Z",
+      "side": 1,
+      "message": "That makes sense to me.  We still want to migrate to upstream temperature sensors.  It may not be worth adding the power domain complexity, especially at the extra code space cost.",
+      "parentUuid": "a83638d1_c6c950a5",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
