@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t these calls be asserting something on the response?",
       "revId": "b993e8cc75c713bc90fd96c7154aaf962fa1bdf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa7fa72_8a4cedc8",
+        "filename": "zephyr/test/drivers/host_cmd/src/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-03T03:46:19Z",
+      "side": 1,
+      "message": "I didn\u0027t think that the values were particularly interesting since this test is just verifying that the command ran. I added the asserts on the response using the default values when nothing is plugged in.",
+      "parentUuid": "f1fc158f_d2804425",
+      "revId": "b993e8cc75c713bc90fd96c7154aaf962fa1bdf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
