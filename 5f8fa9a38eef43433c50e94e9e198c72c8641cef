@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff37bf97_6be994d4",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-03T20:38:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afa68335_d473a49d",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 686,
+        "endChar": 21
+      },
+      "revId": "5f8fa9a38eef43433c50e94e9e198c72c8641cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d3c5f9f_5e10f62b",
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "This is the same check ap_ro_check_unsupported uses to determine if the v1 payload space is unprogrammed. We also set the gbbd_header num_ranges to match the v1 header num_ranges value. If that check works for ap_ro_check_unsupported, it should be able to work here. \n\n0xffff ranges aren\u0027t supported. \n\nI can add a comment.",
       "parentUuid": "2d3c5f9f_5e10f62b",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 768,
+        "endChar": 2
+      },
+      "revId": "5f8fa9a38eef43433c50e94e9e198c72c8641cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a799c0c_4ffdf7f3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-03T20:38:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "44d37efa_7493e917",
       "range": {
         "startLine": 765,
         "startChar": 0,
