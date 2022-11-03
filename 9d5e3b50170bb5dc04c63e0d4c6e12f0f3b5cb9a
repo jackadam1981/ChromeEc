@@ -22,6 +22,30 @@
       },
       "revId": "9d5e3b50170bb5dc04c63e0d4c6e12f0f3b5cb9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e1394b_1be007ed",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-03T20:56:04Z",
+      "side": 1,
+      "message": "Is the new config CONFIG_CHARGE_STATE_DEBUG? You added it to config_chip.h, so it is now allowed to be used in legacy code.  util/config_allowed.txt is used for the config validation when the kconfiglib is not available, which should be never since I fixed the imports.",
+      "parentUuid": "2d9cee2e_d5b5930c",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "9d5e3b50170bb5dc04c63e0d4c6e12f0f3b5cb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
