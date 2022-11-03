@@ -1613,7 +1613,8 @@ static bool common_src_snk_dpm_requests(int port)
 		return true;
 	} else if (IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG) &&
 		   PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DATA_RESET)) {
-		if (prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30) {
+		if ((prl_get_rev(port, TCPCI_MSG_SOP) < PD_REV30) ||
+			(prl_get_rev(port, TCPCI_MSG_SOP_PRIME) < PD_REV30)) {
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DATA_RESET);
 			dpm_data_reset_complete(port);
 			return false;
