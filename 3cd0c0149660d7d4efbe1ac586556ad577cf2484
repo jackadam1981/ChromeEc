@@ -51,6 +51,24 @@
       "parentUuid": "f60c8d7a_a16d2338",
       "revId": "3cd0c0149660d7d4efbe1ac586556ad577cf2484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f215ca_b091d52d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-03T23:54:34Z",
+      "side": 1,
+      "message": "The macro warnings sometimes cannot be fixed; moving the semicolons just causes a different warning. The presubmit checks sometimes cannot handle the complexity of the macrobatics used for DTS processing.\nWhat I do is check that the only warnings are the macro warnings, and then use --no-verify to skip the warnings.",
+      "parentUuid": "e2c1b24b_20eb84ac",
+      "revId": "3cd0c0149660d7d4efbe1ac586556ad577cf2484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
