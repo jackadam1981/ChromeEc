@@ -14,6 +14,10 @@
 #include "gpio_signal.h"
 #include "task_id.h"
 
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/pm/device_runtime.h>
+#endif
+
 FORWARD_DECLARE_ENUM(power_state){
 	/* Steady states */
 	POWER_G3 = 0, /*
@@ -84,6 +88,10 @@ extern const struct power_signal_info power_signal_list[];
 
 /* Convert enum power_signal to a mask for signal functions */
 #define POWER_SIGNAL_MASK(signal) (1 << (signal))
+
+#ifdef CONFIG_ZEPHYR
+#define S5_DOMAIN DT_NODELABEL(s5_domain)
+#endif
 
 /**
  * Return current input signal state (one or more POWER_SIGNAL_MASK()s).

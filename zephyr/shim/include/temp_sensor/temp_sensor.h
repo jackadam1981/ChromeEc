@@ -145,6 +145,8 @@ struct zephyr_temp_sensor {
 	int (*read)(const struct temp_sensor_t *sensor, int *temp_ptr);
 	void (*update_temperature)(int idx);
 	const struct thermistor_info *thermistor;
+	/* TODO Add #ifdef CONFIG_POWER_DOMAIN */
+	const struct device *domain;
 #if ANY_INST_HAS_POWER_GOOD_PIN
 	const struct device *power_good_dev;
 	gpio_pin_t power_good_pin;
