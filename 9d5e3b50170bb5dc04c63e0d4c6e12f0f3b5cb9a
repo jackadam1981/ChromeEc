@@ -70,6 +70,30 @@
       },
       "revId": "9d5e3b50170bb5dc04c63e0d4c6e12f0f3b5cb9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541fcc9d_ea9e1d62",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-03T21:13:21Z",
+      "side": 1,
+      "message": "I tried the instructions `cp /tmp/new_config_allowed.txt util/config_allowed.txt` but the `new_config_allowed.txt` doesn\u0027t exist. I tried running `make buildall` but that also didn\u0027t seem to generate the file.",
+      "parentUuid": "3b5b7f91_b32f26c6",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "9d5e3b50170bb5dc04c63e0d4c6e12f0f3b5cb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
