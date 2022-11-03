@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93dce094_1f4f612e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7285,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-03T16:30:16Z",
+      "side": 1,
+      "message": "Any particular reason for the char compare preference over something like strcmp?",
+      "revId": "23189ee671431343f2ac8eb31fb12cea5593bc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
