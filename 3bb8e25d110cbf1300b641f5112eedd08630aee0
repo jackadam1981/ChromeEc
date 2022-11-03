@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3aa57cd_1f30c956",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-03T16:00:30Z",
+      "side": 1,
+      "message": "You need to include stdbool.h (to adhere to IWYU principle).",
+      "range": {
+        "startLine": 499,
+        "startChar": 58,
+        "endLine": 499,
+        "endChar": 62
+      },
+      "revId": "3bb8e25d110cbf1300b641f5112eedd08630aee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c290bf5b_8dc36a19",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-03T16:00:30Z",
+      "side": 1,
+      "message": "What do you think of returning error instead? We\u0027re trying to avoid use of ASSERT in general.",
+      "range": {
+        "startLine": 501,
+        "startChar": 1,
+        "endLine": 501,
+        "endChar": 7
+      },
+      "revId": "3bb8e25d110cbf1300b641f5112eedd08630aee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
