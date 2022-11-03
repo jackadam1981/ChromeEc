@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9918699b_32a62c86",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-03T22:07:40Z",
+      "side": 1,
+      "message": "update_ap_boot_time function is defined in file \"common/system_boottime.c\" which will be only part of build if CONFIG_SYSTEM_BOOT_TIME_LOGGING is enabled. moving this check inside function may cause undefined function and build failure.",
+      "parentUuid": "ff19e950_22e8b9c4",
+      "range": {
+        "startLine": 277,
+        "startChar": 5,
+        "endLine": 277,
+        "endChar": 47
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "239d0d84_fe55a98d",
         "filename": "common/system_boottime.c",
         "patchSetId": 21
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-27T00:26:14Z",
       "side": 1,
       "message": "nit: EC code doesn\u0027t require g_ prefix for global variables",
+      "range": {
+        "startLine": 13,
+        "startChar": 32,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c1e3d0_0e1ffc9e",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-03T22:07:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "239d0d84_fe55a98d",
       "range": {
         "startLine": 13,
         "startChar": 32,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa16caf8_29386af8",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-03T22:07:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b5e80e1_1895528f",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf068f18_252ebd99",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-27T00:26:14Z",
       "side": 1,
       "message": "Please add the \"default\" case OR check that `param \u003c\u003d RESET_CNT`",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 7
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62fecdd4_2531a381",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-03T22:07:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf068f18_252ebd99",
       "range": {
         "startLine": 20,
         "startChar": 1,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56823189_3717e7ec",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-03T22:07:40Z",
+      "side": 1,
+      "message": "we are passing destination buffer size in memcpy. It will take care of that.. do you want mean some additional check to be added here ?",
+      "parentUuid": "e3e5f625_e05c52aa",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6869d8c_5d439316",
         "filename": "include/ec_commands.h",
         "patchSetId": 21
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-27T00:26:14Z",
       "side": 1,
       "message": "The name is confusing: here it says EC, but all the functions are ap_boot_time_*.",
+      "range": {
+        "startLine": 7741,
+        "startChar": 7,
+        "endLine": 7741,
+        "endChar": 9
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d919806_5e937606",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 7741,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-03T22:07:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6869d8c_5d439316",
       "range": {
         "startLine": 7741,
         "startChar": 7,
@@ -152,6 +296,30 @@
       "writtenOn": "2022-10-27T00:26:14Z",
       "side": 1,
       "message": "Suggestion: There is duplication of names here and in the enum above. How about making an array of timestaps:\n```\nstruct ec_boot_time_data {\n  uint64_t timestamp[RESET_CNT]\n  uint16_t cnt;\n}\n```\n\nIn this case the timestamp function would be much simpler:\n```\nvoid update_ap_boot_time(enum boot_time_param param)\n{\n\tif (param \u003e RESET_CNT)\n\t\terror;\n\t\t\n\tif (param \u003c RESET_CNT)\n\t\tg_boot_time.timestamp[param] \u003d get_time().val;\n\n\tswitch (param) {\n\tcase PLTRST_LOW:\n\t\tg_boot_time.cnt++;\n\t\tbreak;\n\tcase RESET_CNT:\n\t\tg_boot_time.cnt \u003d 0;\n\t\tbreak;\n\t}\n\tccprintf(\"Boot Time: %d, %lld\\n\", param, g_boot_time.timestamp[param]);\n}\n```",
+      "range": {
+        "startLine": 7742,
+        "startChar": 0,
+        "endLine": 7755,
+        "endChar": 22
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab554b9_ad373178",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 7755,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-03T22:07:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3317a35_b1382fb4",
       "range": {
         "startLine": 7742,
         "startChar": 0,
