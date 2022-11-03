@@ -1,0 +1,29 @@
+# Copyright 2022 The Chromium OS Authors.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+include: base.yaml
+
+description: |
+  Button config.
+   - Name
+   - Type
+   - GPIO handle
+   - Debounce time (us)
+   - Flags
+
+compatible: "cros-ec,button"
+
+description: Button configuration
+properties:
+  button_type:
+    type: int
+    required: false
+    description: Keyboard button type
+  gpios:
+    type: phandle-array
+    required: true
+  debounce_us:
+    type: int
+    required: true
+    description: Debounce time in microseconds
