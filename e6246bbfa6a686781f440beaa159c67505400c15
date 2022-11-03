@@ -386,6 +386,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83638d1_c6c950a5",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-11-03T16:59:29Z",
+      "side": 1,
+      "message": "To be honest, I\u0027ve somehow missed that moving the periodic calls to the common hook in the shim layer, with the power check already fixes the `Recover Bus failed` in G3 issue thanks to the `gpio_pg_pwr_s5` power-good-pin. In the common shim hook, we check the power status, which isn\u0027t the case for the driver hooks. I think we should merge this CL (CL:3909669), and wait with power domains till the temperature sensors drivers are upstreamed. What do you think?",
+      "parentUuid": "f0d034d8_c4c18838",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
