@@ -16,6 +16,24 @@
       "message": "I have no idea why we have a gap here from 0x30 to 0x40, but it seems like you might as well take 0x31?  \n\nCC-ing Aseda in case he knows any historic reason for this.  I dug into some old code and it seems like this gap has been here since the file started in 2012",
       "revId": "b632e43b6cbaa187044e0a607132eabf07beb600",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26be9175_dd9a9379",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3309,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-03T23:21:44Z",
+      "side": 1,
+      "message": "Yeah, I wasn\u0027t sure about the gap either, which is why I preserved some of it with this initial version of the CL. I\u0027ve gone ahead and moved it up to 0x31; 10 years feels long enough for someone to have claimed it otherwise.",
+      "parentUuid": "61f1a2fc_cfc1b194",
+      "revId": "b632e43b6cbaa187044e0a607132eabf07beb600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
