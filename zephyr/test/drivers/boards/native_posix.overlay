@@ -987,25 +987,17 @@
 	   buffer-size = <200>;
 	};
 
-	button-cfg {
-		compatible = "cros-ec,button-cfg";
-
-		btn_power_button_cfg: power_button_cfg {
-			button_name = "POWER_BUTTON";
-			button_type = <0>;
-			spec = <&gpio_ec_pwr_btn_odl>;
-			gpio_int = <&int_power_button>;
-			debounce_us = <30000>;
-			flags = <0>;
-		};
-		btn_test_button_cfg: test_button_cfg {
-			button_name = "TEST_BUTTON";
-			button_type = <0>;
-			spec = <&gpio_test>;
-			gpio_int = <&int_gpio_test>;
-			debounce_us = <30000>;
-			flags = <0>;
-		};
+	cros_power_button: cros_power_button {
+		compatible = "cros-ec,power-button";
+		button_type = <0>;
+		gpios = <&gpio0 25 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+		debounce_us = <30000>;
+	};
+	test_button: test_button {
+		compatible = "generic,gpio-debounce";
+		button_type = <1>;
+		gpios = <&gpio0 27 (GPIO_ACTIVE_LOW)>;
+		debounce_us = <30000>;
 	};
 };
 
