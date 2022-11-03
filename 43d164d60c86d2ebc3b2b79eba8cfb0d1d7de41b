@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ff90e7a_69261db7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-11-03T05:09:24Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll wait for you to share it.",
+      "parentUuid": "ceb1be32_d643d111",
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dc0a878_01731ad7",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 6
@@ -355,6 +373,30 @@
       "side": 1,
       "message": "We can. How about I add those four lines to caller directly without declare a function? I don\u0027t see anyone else call it.",
       "parentUuid": "3f1530d7_3b488302",
+      "range": {
+        "startLine": 246,
+        "startChar": 8,
+        "endLine": 246,
+        "endChar": 27
+      },
+      "revId": "43d164d60c86d2ebc3b2b79eba8cfb0d1d7de41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a6eeea_fcfa4460",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-11-03T05:09:24Z",
+      "side": 1,
+      "message": "Sure, that\u0027s fine.",
+      "parentUuid": "af07c12b_3b2ced78",
       "range": {
         "startLine": 246,
         "startChar": 8,
