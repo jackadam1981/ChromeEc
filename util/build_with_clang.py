@@ -22,6 +22,93 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "nucleo-h743zi",
 ]
 
+<<<<<<< HEAD   (4df964 utils: remove ectool from dedede firmware branch)
+=======
+NDS32_BOARDS = [
+    "adlrvpm_ite",
+    "adlrvpp_ite",
+    "ampton",
+    "beadrix",
+    "beetley",
+    "blipper",
+    "boten",
+    "dibbi",
+    "drawcia",
+    "galtic",
+    "gooey",
+    "haboki",
+    "it83xx_evb",
+    "kracko",
+    "lantis",
+    "pirika",
+    "reef_it8320",
+    "sasukette",
+    "shotzo",
+    "storo",
+    "waddledee",
+    "wheelie",
+]
+
+RISCV_BOARDS = [
+    "asurada",
+    "asurada_scp",
+    "cherry",
+    "cherry_scp",
+    "cozmo",
+    "dojo",
+    "drawcia_riscv",
+    "goroh",
+    "hayato",
+    "icarus",
+    "it8xxx2_evb",
+    "it8xxx2_pdevb",
+    "pico",
+    "spherion",
+    "tomato",
+]
+
+BOARDS_THAT_FAIL_WITH_CLANG = [
+    # Boards that use CHIP:=stm32 and *not* CHIP_FAMILY:=stm32f0
+    "bellis",  # overflows flash
+    "munna",  # overflows flash
+    # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
+    "burnet",  # overflows flash
+    "cerise",  # overflows flash
+    "chocodile_vpdmcu",  # compilation error: b/254710459
+    "damu",  # overflows flash
+    "fennel",  # overflows flash
+    "jacuzzi",  # overflows flash
+    "juniper",  # overflows flash
+    "kakadu",  # overflows flash
+    "kappa",  # overflows flash
+    "katsu",  # overflows flash
+    "kodama",  # overflows flash
+    "krane",  # overflows flash
+    "kukui",  # overflows flash
+    "makomo",  # overflows flash
+    "oak",  # overflows flash
+    "servo_v4",  # overflows flash
+    "stern",  # overflows flash
+    "willow",  # overflows flash
+    # Boards that use CHIP:=mchp
+    # git grep --name-only 'CHIP:=mchp' | sed 's#board/\(.*\)/build.mk#"\1",#'
+    "adlrvpp_mchp1521",  # overflows flash
+    # Boards that use CHIP:=npcx
+    "garg",  # overflows flash
+    "gelarshie",  # overflows flash
+    "mushu",  # overflows flash
+    "nocturne",  # overflows flash
+    "terrador",  # overflows flash
+    "volteer",  # overflows flash
+    "waddledoo",  # overflows flash
+]
+
+# TODO(b/201311714): NDS32 is not supported by LLVM.
+BOARDS_THAT_FAIL_WITH_CLANG += NDS32_BOARDS
+# TODO(b/201310017): RISC-V is not supported in our LLVM toolchain.
+BOARDS_THAT_FAIL_WITH_CLANG += RISCV_BOARDS
+
+>>>>>>> CHANGE (402869 dibbi: Create initial EC image)
 
 def build(board_name: str) -> None:
     """Build with clang for specified board."""
