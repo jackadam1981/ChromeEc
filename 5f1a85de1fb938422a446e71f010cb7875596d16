@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7343339f_5be5d969",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-11-04T15:18:27Z",
+      "side": 1,
+      "message": "Is this only valid if tablet_mode_forced is set?\n\nWould the API be cleaner if we just had an enum?\n\nenum tablet_mode_override {\n    TABLET_MODE_DEFAULT,\n    TABLET_MODE_FORCE_TABLET,\n    TABLET_MODE_FORCE_CLAMSHELL,\n}",
+      "range": {
+        "startLine": 3314,
+        "startChar": 10,
+        "endLine": 3314,
+        "endChar": 21
+      },
+      "revId": "5f1a85de1fb938422a446e71f010cb7875596d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
