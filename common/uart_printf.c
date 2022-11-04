@@ -31,9 +31,10 @@ int uart_putc(int c)
 int uart_puts(const char *outstr)
 {
 	/* Put all characters in the output buffer */
-	while (*outstr) {
-		if (__tx_char(NULL, *outstr++) != 0)
+	for (; *outstr != '\0'; ++outstr) {
+		if (__tx_char(NULL, *outstr) != 0) {
 			break;
+		}
 	}
 
 	uart_tx_start();
@@ -44,30 +45,36 @@ int uart_puts(const char *outstr)
 
 int uart_put(const char *out, int len)
 {
+	int i;
+
 	/* Put all characters in the output buffer */
-	while (len--) {
-		if (__tx_char(NULL, *out++) != 0)
+	for (i = 0; i < len; ++i) {
+		if (__tx_char(NULL, out[i]) != 0) {
 			break;
+		}
 	}
 
 	uart_tx_start();
 
 	/* Successful if we consumed all output */
-	return len ? EC_ERROR_OVERFLOW : EC_SUCCESS;
+	return (i != len) ? EC_ERROR_OVERFLOW : EC_SUCCESS;
 }
 
 int uart_put_raw(const char *out, int len)
 {
+	int i;
+
 	/* Put all characters in the output buffer */
-	while (len--) {
-		if (uart_tx_char_raw(NULL, *out++) != 0)
+	for (i = 0; i < len; ++i) {
+		if (uart_tx_char_raw(NULL, out[i]) != 0) {
 			break;
+		}
 	}
 
 	uart_tx_start();
 
 	/* Successful if we consumed all output */
-	return len ? EC_ERROR_OVERFLOW : EC_SUCCESS;
+	return (i != len) ? EC_ERROR_OVERFLOW : EC_SUCCESS;
 }
 
 int uart_vprintf(const char *format, va_list args)
