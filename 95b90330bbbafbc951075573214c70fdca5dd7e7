@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5660c0f2_9f41f0d5",
+        "filename": "zephyr/projects/nissa/yaviks/fan.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-04T06:34:02Z",
+      "side": 1,
+      "message": "Are these rpm_ values used at all if the fan_steps node is present?\nIf not, they can be left out. Oh, I see that the fan_steps only kick in when the CPU is up.",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abfc979_0675b006",
+        "filename": "zephyr/projects/nissa/yaviks/fan.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-04T06:34:02Z",
+      "side": 1,
+      "message": "I am not sure why the rpm_target has 2 entries.\nMy understanding is that this array is indexed by the fan number, so in\nthis system there should only be one fan, so only one entry in the rpm_target array IIUC.",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7630950_ec52f406",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-04T06:34:02Z",
+      "side": 1,
+      "message": "FAN_CH_COUNT is 1, I presume, so you can just store the RPM the same way as the temps i.e as DT_PROP(nd, rpm_target)",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3612ca1_abddddb8",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-04T06:34:02Z",
+      "side": 1,
+      "message": "So there\u0027s a mixture of || and \u0026\u0026 here, so I\u0027m not sure about the logic.\nIn the comments please explain about the stepping in terms of whether\nany sensor triggers it, or all sensors.\n\nMy intuition is that it should step up whenever any sensor exceeeds the trigger,\nbut only step down when all sensors are below the release point.\nThe step down logic follows this, but the step up has both || and \u0026\u0026.",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "404899af_51d452ea",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-04T06:34:02Z",
+      "side": 1,
+      "message": "Can skip assigning the variable, and just return the value directly.",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f045f0b5_7d970204",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-04T06:34:02Z",
+      "side": 1,
+      "message": "Rather than using chipset_, use the ap_power_ API (zephyr/include/ap_power/ap_power_interface.h)",
+      "range": {
+        "startLine": 97,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b4dd46_fb9d3e0a",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-04T06:34:02Z",
+      "side": 1,
+      "message": "So I am not sure why we are only enabling the stepping when the CPU is on or suspended.\nIf the CPU is turned off, it seems that the fan will remain wherever it was last set to. This could lead to a situation where the fan never turns off.\nMy thought should be that the fan control should run regardless of the\nstate of the CPU, but I am not sure exactly what the requirement is here.",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
