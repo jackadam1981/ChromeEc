@@ -305,6 +305,21 @@ static int command_battery(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(battery, command_battery, "<repeat_count> <sleep_ms>",
 			"Print battery info");
 
+static void log_battery(void)
+{
+	const struct batt_params *batt = charger_current_battery_params();
+
+	int design_cap = 0, remaining_cap = 0;
+
+	battery_design_capacity(&design_cap);
+
+	battery_remaining_capacity(&remaining_cap);
+
+	ccprintf(",%d, %d, %d, %d, %d, %.1d\n", batt->voltage, batt->current,
+		batt->state_of_charge, design_cap, remaining_cap, (batt->temperature - 2731));
+}
+DECLARE_HOOK(HOOK_SECOND, log_battery, HOOK_PRIO_DEFAULT);
+
 #ifdef CONFIG_BATTERY_CUT_OFF
 int battery_is_cut_off(void)
 {
