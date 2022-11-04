@@ -52,6 +52,8 @@ int comm_init_alt(int interfaces, const char *device_name, int i2c_bus);
  */
 int comm_init_dev(const char *device_name);
 
+int get_fd();
+
 /**
  * Initialize input & output buffers
  *
