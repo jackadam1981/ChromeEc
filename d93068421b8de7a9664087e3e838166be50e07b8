@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426f4f74_545c9814",
+        "filename": "test/libc_printf.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-11-04T15:31:04Z",
+      "side": 1,
+      "message": "It might be worth checking the return value, which should be the number of characters printed or a negative value on error. Presumably if the downstream calls aren\u0027t working then the return value will likely be incorrect.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "d93068421b8de7a9664087e3e838166be50e07b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
