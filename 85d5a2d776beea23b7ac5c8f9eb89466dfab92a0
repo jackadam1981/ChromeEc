@@ -252,6 +252,30 @@
       },
       "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67086ad_b99281bd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3723,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-11-04T22:28:21Z",
+      "side": 1,
+      "message": "I want something like this to match the ccd command:\n\n```\n$ gsctool -E a0 0f\n$ gsctool -E a0 0f b0 b0\n$ gsctool -E a0 0f b0 b0 c0 c0\n```",
+      "parentUuid": "07c544bd_accb7e84",
+      "range": {
+        "startLine": 3721,
+        "startChar": 5,
+        "endLine": 3723,
+        "endChar": 26
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
