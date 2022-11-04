@@ -295,8 +295,8 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(78), \
 			[EC_TEMP_THRESH_HALT] = 0, \
 		}, \
-		.temp_fan_off = C_TO_K(25), \
-		.temp_fan_max = C_TO_K(89), \
+		.temp_fan_off = C_TO_K(35), \
+		.temp_fan_max = C_TO_K(55), \
 	}
 __maybe_unused static const struct ec_thermal_config thermal_a = THERMAL_A;
 
@@ -304,6 +304,34 @@ struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_CORE] = THERMAL_A,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+typedef struct fan_step_1_1 fan_step;
+
+/* Note: Do not make the fan on/off point equal to 0 or 100 */
+/* Given the range of temp_fan_off to temp_fan_max specified above,
+ * each degree C is 5 percent of the range.
+ * 40 C, a typical idle temperature, is 25% of the way from 35 C to 55 C.
+ * Try to use minimum fan at idle.
+ */
+static const fan_step fan_table0[] = {
+	{ .on = 0, .off = 2, .rpm = 0 },
+	{ .on = 28, .off = 3, .rpm = 2500 }, /* on at 41 C, off at 35 C */
+	{ .on = 43, .off = 27, .rpm = 2900 }, /* on at 44 C, off at 40 C */
+	{ .on = 53, .off = 37, .rpm = 3400 }, /* on at 46 C, off at 42 C */
+	{ .on = 63, .off = 47, .rpm = 3900 }, /* on at 48 C, off at 44 C */
+	{ .on = 73, .off = 57, .rpm = 4400 }, /* on at 50 C, off at 46 C */
+	{ .on = 83, .off = 67, .rpm = 4900 }, /* on at 52 C, off at 48 C */
+	{ .on = 98, .off = 77, .rpm = 5300 }, /* on at 55 C, off at 50 C */
+};
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
+
+static const fan_step *fan_table = fan_table0;
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	return fan_percent_to_rpm_path_dependent(fan_table, NUM_FAN_LEVELS, fan,
+						 pct, NULL);
+}
 
 /* Power sensors */
 const struct ina3221_t ina3221[] = {
