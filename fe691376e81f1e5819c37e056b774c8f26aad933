@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7100c4_48f7c6aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-04T07:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61c0fc0f_97869367",
+      "revId": "fe691376e81f1e5819c37e056b774c8f26aad933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e208ba3_3c83562d",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-04T06:10:26Z",
       "side": 1,
       "message": "Could you please explain how this works - will it not still enter D0i3 after 10s?\n\nAlso, why not just unselect CONFIG_ISH_PM_D0I3?",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "fe691376e81f1e5819c37e056b774c8f26aad933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9275e0_a59fd50a",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-04T07:19:19Z",
+      "side": 1,
+      "message": "Unselect CONFIG_ISH_PM_D0i3 sure can achieve the goal. This config will affect PM code. we want to avoid unexpected impact. If only increase D0i3 threshold, with current ISH waking up every 100ms, it will make ISH only stay in D0i2, won\u0027t change PM code. Also this 3 seconds align with windows D0i3 threshold. Compare the two ways, we think the latter way is safer. But we don\u0027t strongly favor one way over the other. If you would like to take the CONFIG_ISH_PM_D0i3 way, I can make this change too.",
+      "parentUuid": "5e208ba3_3c83562d",
       "range": {
         "startLine": 83,
         "startChar": 34,
