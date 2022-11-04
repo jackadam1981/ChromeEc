@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1edcdb4_925cac15",
+        "filename": "zephyr/dts/bindings/cbi/cros-ec,cbi-ssfc-value.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-04T15:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a177c2f_b8405480",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "8647cdb3b731ce522ba68420e7ced57bb79babda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02468347_92141e70",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-03T19:59:18Z",
       "side": 1,
       "message": "Nit: Extra line?",
+      "revId": "8647cdb3b731ce522ba68420e7ced57bb79babda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ec19c8_a2b1d1f3",
+        "filename": "zephyr/dts/bindings/cbi/cros-ec,cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-04T15:39:03Z",
+      "side": 1,
+      "message": "no, original file was missing the EoF newline (there should be a warning in gerrit \"No newline at end of left file.), we should have a presubmit check for these, some editor do this",
+      "parentUuid": "02468347_92141e70",
       "revId": "8647cdb3b731ce522ba68420e7ced57bb79babda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
