@@ -81,6 +81,30 @@
       },
       "revId": "fe691376e81f1e5819c37e056b774c8f26aad933",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f778af32_44171857",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-11-04T07:53:01Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I\u0027m happy with this if you think it\u0027s safer. I have a few more questions though.\n\nSo with ISH in D0i2, the ISH will still wake up every 100ms, but it won\u0027t do a DMA copy and wake the host up? Why does it only do the DMA copy in D0i3? And what is it copying if it has no sensor data?",
+      "parentUuid": "5f9275e0_a59fd50a",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "fe691376e81f1e5819c37e056b774c8f26aad933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
