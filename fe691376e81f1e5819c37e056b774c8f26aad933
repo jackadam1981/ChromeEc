@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c0fc0f_97869367",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-11-04T06:10:26Z",
+      "side": 1,
+      "message": "Could you please add an explanation of why this is necessary (D0i3 causing system wakes and power impact).",
+      "revId": "fe691376e81f1e5819c37e056b774c8f26aad933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e208ba3_3c83562d",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-11-04T06:10:26Z",
+      "side": 1,
+      "message": "Could you please explain how this works - will it not still enter D0i3 after 10s?\n\nAlso, why not just unselect CONFIG_ISH_PM_D0I3?",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "fe691376e81f1e5819c37e056b774c8f26aad933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
