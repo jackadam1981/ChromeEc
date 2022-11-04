@@ -33,6 +33,10 @@ USE_BUILTIN_STDLIB:=1
 # When set to 0, link with the C compiler.
 USE_CXX_COMPILER:=0
 
+# When set to 1, enable strict overflow.
+# When set to 0, disable strict overflow.
+ENABLE_STRICT_OVERFLOW:=0
+
 # Boards that compile with clang by default.
 # We can't use a config for this since the config generation uses the compiler.
 CLANG_BOARDS:= \
@@ -49,6 +53,7 @@ USE_BUILTIN_STDLIB:=0
 USE_CXX_COMPILER:=1
 # b/144957935: Generate exception on signed integer overflow.
 COMMON_WARN+=-ftrapv
+ENABLE_STRICT_OVERFLOW:=1
 endif
 
 ifeq ($(USE_CXX_COMPILER), 1)
@@ -117,9 +122,15 @@ C_WARN = -Wstrict-prototypes -Wno-pointer-sign
 C_WARN += -Werror-implicit-function-declaration
 COMMON_WARN += -Wall -Wundef \
 	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
-	-fno-common -fno-strict-aliasing -fno-strict-overflow -Wimplicit-fallthrough
+	-fno-common -fno-strict-aliasing -Wimplicit-fallthrough
 # See https://www.chromium.org/chromium-os/build/c-exception-support
 COMMON_WARN+=-fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
+
+ifeq ($(ENABLE_STRICT_OVERFLOW), 1)
+COMMON_WARN+=-Wstrict-overflow=3
+else
+COMMON_WARN+=-fno-strict-overflow
+endif
 
 ifndef ALLOW_WARNINGS
 COMMON_WARN+=-Werror
