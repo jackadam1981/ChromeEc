@@ -18,6 +18,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5a49bd_1156d340",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 1,
+      "message": "A lot of these were actually wrong, I\u0027ll add comments below",
+      "parentUuid": "f5093cdb_e7549753",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbd00db_4597251c",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 1,
+      "message": "This one was updated just to keep the same style as below",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffef7efe_41affb43",
@@ -31,6 +72,24 @@
       "writtenOn": "2022-11-04T18:07:38Z",
       "side": 1,
       "message": "Nit: I find this indentation odd.",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51bbd69c_4be25605",
+        "filename": "zephyr/test/uart_printf/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 1,
+      "message": "This is fairly common, allowing you to quickly parse what\u0027s going on when different arguments are given, for example, it\u0027s possible in CMake to do:\n\n```\ntarget_include_directories(mylib\n  PRIVATE\n    private_includes\n  PUBLIC\n    public_includes\n  INTERFACE\n    interface_includes\n)\n```",
+      "parentUuid": "ffef7efe_41affb43",
       "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +111,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64392d0e_df32fcd8",
+        "filename": "zephyr/test/uart_printf/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 1,
+      "message": "Since it\u0027s a unit test, `platform/ec/include` is not added",
+      "parentUuid": "cebe730b_c5489b9c",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f48e6b48_ccd3da4c",
@@ -65,6 +142,24 @@
       "writtenOn": "2022-11-04T18:07:38Z",
       "side": 1,
       "message": "I\u0027m assuming that something bad happens if you include the real common.h.",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8c6093_8bd63860",
+        "filename": "zephyr/test/uart_printf/include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 1,
+      "message": "Very very bad things 😊",
+      "parentUuid": "f48e6b48_ccd3da4c",
       "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a147613a_b2d71cb0",
+        "filename": "zephyr/test/uart_printf/src/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 1,
+      "message": "`cstring` is above, string.h gives `std::string` though you\u0027re right, I should have left off the `.h`, this file needs both `\u003ccstring\u003e` and `\u003cstring\u003e`",
+      "parentUuid": "9a87a5d5_1d21ff4e",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a9cd7a7_80837fec",
@@ -103,6 +216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdf080a_36d9825a",
+        "filename": "zephyr/test/uart_printf/src/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a9cd7a7_80837fec",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ad36c51_c4e6106e",
@@ -116,6 +247,24 @@
       "writtenOn": "2022-11-04T18:07:38Z",
       "side": 1,
       "message": "Is `arg1_history` just an array of characters? Could you compare to it more directly here? Like, construct a `string` or `string_view` from `arg1_history`, and then compare that to that with `test_string` with `zassert_equal`? Maybe make `test_string` a `string` and then pass its `c_str()` into `uart_put`?\n\nSimilar string handling questions below.",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cdd0df9_cfe6f690",
+        "filename": "zephyr/test/uart_printf/src/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 1,
+      "message": "`uart_tx_char_raw` takes an `int` argument not a `char` so I can\u0027t do a direct memory compare.",
+      "parentUuid": "0ad36c51_c4e6106e",
       "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

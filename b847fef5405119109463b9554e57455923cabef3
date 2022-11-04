@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d96b0645_4b9b0511",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 0,
+      "message": "Here, we were unconditionally subtracting 1 from `len` so the real success was when `len \u003d\u003d -1` the bottom line `return len ? EC_ERROR_OVERFLOW : EC_SUCCESS` was returning an error overflow on success. For example: out \u003d \"A\", len \u003d 1:\n\n1. `len` is 1 so enter the `while` loop and set `len` to `0`\n2. Try `__tx_char`, success, sent \u0027A\u0027\n3. Check `len`, can\u0027t run the loop again, but still run `--` on it, so `len \u003d\u003d -1` now",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 13
+      },
+      "revId": "b847fef5405119109463b9554e57455923cabef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebdde8f3_39d275b0",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:02:22Z",
+      "side": 0,
+      "message": "This one had the same error as `uart_put`",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "b847fef5405119109463b9554e57455923cabef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
