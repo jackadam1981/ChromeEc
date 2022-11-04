@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b01344a_8d20c4ce",
+        "filename": "zephyr/test/drivers/panic_output/src/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-04T22:16:11Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if that would call the command in the same thread, but it turns out it does so I switched to this.",
+      "parentUuid": "b915c33b_58a3f413",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "302829ac87d1212630d1634f4ad3ebcf290deddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c76d96ca_07b9947e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-03T22:45:36Z",
       "side": 1,
       "message": "Nit - since this doesn\u0027t verify that the watchdog tripped, add a comment that watchdog functionality is covered by other tests.",
+      "range": {
+        "startLine": 134,
+        "startChar": 20,
+        "endLine": 134,
+        "endChar": 46
+      },
+      "revId": "302829ac87d1212630d1634f4ad3ebcf290deddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead21261_5488500a",
+        "filename": "zephyr/test/drivers/panic_output/src/panic_output.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-04T22:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c76d96ca_07b9947e",
       "range": {
         "startLine": 134,
         "startChar": 20,
