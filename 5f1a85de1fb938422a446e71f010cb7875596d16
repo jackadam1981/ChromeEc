@@ -22,6 +22,30 @@
       },
       "revId": "5f1a85de1fb938422a446e71f010cb7875596d16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "108d9eb3_74c84de3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-04T17:11:34Z",
+      "side": 1,
+      "message": "Yup, looks good. Done.",
+      "parentUuid": "7343339f_5be5d969",
+      "range": {
+        "startLine": 3314,
+        "startChar": 10,
+        "endLine": 3314,
+        "endChar": 21
+      },
+      "revId": "5f1a85de1fb938422a446e71f010cb7875596d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
