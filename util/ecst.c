@@ -10,6 +10,7 @@
  */
 
 #include "compile_time_macros.h"
+#include "compiler.h"
 #include "ecst.h"
 
 /* Global Variables */
@@ -354,9 +355,13 @@ int main(int argc, char *argv[])
 					     (tmp_ind < tmp_arg_num) &&
 					     (arg_ind < MAX_ARGS);
 					     tmp_ind++) {
+						DISABLE_COMPILER_WARNING(
+							"-Wstringop-truncation");
 						strncpy(hdr_args[arg_ind++],
 							tmp_hdr_args[tmp_ind],
 							ARG_SIZE);
+						ENABLE_COMPILER_WARNING(
+							"-Wstringop-truncation");
 					}
 					arg_num = arg_ind;
 					arg_ind = cur_arg_index;
