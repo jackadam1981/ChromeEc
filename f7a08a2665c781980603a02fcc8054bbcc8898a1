@@ -16,6 +16,24 @@
       "message": "Nit: IMO, asserting on how the mock was used is overkill if you have a straightforward way to verify that `charger_get_actual_current` did the right thing in terms of its own API (return value).",
       "revId": "f7a08a2665c781980603a02fcc8054bbcc8898a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48388830_63865e65",
+        "filename": "zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-04T22:54:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean by this. I think testing that the intended charger number was passed down to the driver is prudent.",
+      "parentUuid": "d2f1a3ef_a4512c8a",
+      "revId": "f7a08a2665c781980603a02fcc8054bbcc8898a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
