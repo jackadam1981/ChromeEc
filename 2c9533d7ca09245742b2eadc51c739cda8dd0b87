@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0858ce_adc0b309",
+        "filename": "zephyr/projects/skyrim/src/power_signals.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-04T21:25:07Z",
+      "side": 1,
+      "message": "We could probably guard this on the CONFIG enabling the charger?  CONFIG_PLATFORM_EC_CHARGER_ISL9241\n\nBoards using different chargers could follow your example.",
+      "revId": "2c9533d7ca09245742b2eadc51c739cda8dd0b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
