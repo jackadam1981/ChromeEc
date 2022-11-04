@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43e10b0_837d61e6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-04T18:59:53Z",
+      "side": 1,
+      "message": "Added a comment",
+      "parentUuid": "5f90fd14_fc921633",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 372,
+        "endChar": 14
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27d9c995_e44c4fef",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-04T14:58:24Z",
       "side": 1,
       "message": "please add a comment saying which enum this is",
+      "range": {
+        "startLine": 2762,
+        "startChar": 2,
+        "endLine": 2762,
+        "endChar": 17
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32705a97_f1c20c52",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2762,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-04T18:59:53Z",
+      "side": 1,
+      "message": "Added a comment",
+      "parentUuid": "27d9c995_e44c4fef",
       "range": {
         "startLine": 2762,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbdc9caa_ab3c9338",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2807,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-04T18:59:53Z",
+      "side": 1,
+      "message": "Fixed!",
+      "parentUuid": "62678056_65b01d79",
+      "range": {
+        "startLine": 2806,
+        "startChar": 6,
+        "endLine": 2807,
+        "endChar": 39
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9294c53d_d0fa9849",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-11-04T14:58:24Z",
       "side": 1,
       "message": "How hard would it be to make this command line parsing be resilient to single digit hex values as well, e.g. `gsctool -E 0xf 0xf`?",
+      "range": {
+        "startLine": 3721,
+        "startChar": 5,
+        "endLine": 3723,
+        "endChar": 26
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b718584_08e52205",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3723,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-04T18:59:53Z",
+      "side": 1,
+      "message": "I think that would be a separate code path, so not straight forward... Currently, everything is hex strings so:\n\n```\n$ gsctool -E a00f\n$ gsctool -E a00fb0b0\n$ gsctool -E a00fb0b0c0c0\n```\n\nDo we want something like this instead?\n\n```\n$ gsctool -E 0xa0 0xf\n$ gsctool -E 0xa0 0xf 0xb0 0xb0\n$ gsctool -E 0xa0 0xf 0xb0 0xb0 0xc0 0xc0\n```",
+      "parentUuid": "9294c53d_d0fa9849",
       "range": {
         "startLine": 3721,
         "startChar": 5,
