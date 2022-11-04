@@ -22,6 +22,30 @@
       },
       "revId": "af0ddbf3b88daa86bfdafbb2785edd1becf1bdff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d204a7e0_8e7ba38e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-04T17:14:20Z",
+      "side": 1,
+      "message": "I think the change to use an enum to pass the tablet mode value in the host command cleaned up what you\u0027re looking for here, but let me know either way.",
+      "parentUuid": "49fc558e_743fd6cf",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 19
+      },
+      "revId": "af0ddbf3b88daa86bfdafbb2785edd1becf1bdff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
