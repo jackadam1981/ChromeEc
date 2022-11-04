@@ -22,6 +22,30 @@
       },
       "revId": "2c74d65064adc8beee6b62ce791ff5176622ef4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f8e34a_09c0320f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3318,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-04T21:35:00Z",
+      "side": 1,
+      "message": "Oops. Good catch.",
+      "parentUuid": "a41d17b7_71deb8d5",
+      "range": {
+        "startLine": 3318,
+        "startChar": 30,
+        "endLine": 3318,
+        "endChar": 55
+      },
+      "revId": "2c74d65064adc8beee6b62ce791ff5176622ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
