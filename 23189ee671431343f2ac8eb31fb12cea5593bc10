@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57713a5e_277fdeb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-04T17:25:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d363785f_1345ae07",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "23189ee671431343f2ac8eb31fb12cea5593bc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93dce094_1f4f612e",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "I agree this is a bit of a strange way to do this parameter checking. In my defense, this is just a copy of `command_settabletmode()`, which is the implementation of the `tabletmode` command on the EC side:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/ec/common/tablet_mode.c;rcl\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46;l\u003d177\n\nIt would certainly be nicer to have a way to share this code between the EC FW CLI and `ectool`, but I\u0027m not familiar enough with the codebase to know if that\u0027s even possible.\n\nOtherwise, I can open a tech debt bug to come back and clean this up a bit on both sides. There are probably CLI conventions that can/should be applied here.",
       "parentUuid": "93dce094_1f4f612e",
+      "revId": "23189ee671431343f2ac8eb31fb12cea5593bc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1972ed_93021c31",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7285,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-04T17:25:39Z",
+      "side": 1,
+      "message": "I\u0027ve opened b/257490479 to come back and clean up the parameter checking on both sides.",
+      "parentUuid": "85956c35_f5512559",
       "revId": "23189ee671431343f2ac8eb31fb12cea5593bc10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
