@@ -228,6 +228,30 @@
       },
       "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c544bd_accb7e84",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3723,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-04T21:15:41Z",
+      "side": 1,
+      "message": "I think it should be possible without too much work... working on a patch!",
+      "parentUuid": "960d2449_0417effe",
+      "range": {
+        "startLine": 3721,
+        "startChar": 5,
+        "endLine": 3723,
+        "endChar": 26
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
