@@ -1,13 +1,13 @@
-/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+<<<<<<< HEAD   (768ad5 fan: Refactor and test the most common custom fan_percent_to)
+=======
+/* Copyright 2019 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* Kalista baseboard configuration */
+/* Endeavour board configuration */
 
 #include "adc.h"
-#include "adc_chip.h"
-#include "baseboard.h"
 #include "battery.h"
 #include "bd99992gw.h"
 #include "board_config.h"
@@ -17,12 +17,8 @@
 #include "cros_board_info.h"
 #include "driver/pmic_tps650x30.h"
 #include "driver/temp_sensor/tmp432.h"
-#include "driver/tcpm/ps8xxx.h"
-#include "driver/tcpm/tcpci.h"
-#include "driver/tcpm/tcpm.h"
 #include "espi.h"
 #include "extpower.h"
-#include "espi.h"
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
@@ -30,7 +26,6 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "math_util.h"
-#include "oz554.h"
 #include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
@@ -43,64 +38,16 @@
 #include "temp_sensor.h"
 #include "timer.h"
 #include "uart.h"
-#include "usb_charge.h"
-#include "usb_mux.h"
-#include "usb_pd.h"
-#include "usb_pd_tcpm.h"
 #include "util.h"
 
-#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
 static uint8_t board_version;
 static uint32_t oem;
 static uint32_t sku;
 
-enum bj_adapter {
-	BJ_90W_19V,
-	BJ_135W_19V,
-};
-
-/*
- * Bit masks to map SKU ID to BJ adapter wattage. 1:135W 0:90W
- * KBL-R i7 8550U	4	135
- * KBL-R i5 8250U	5	135
- * KBL-R i3 8130U	6	135
- * KBL-U i7 7600	3	135
- * KBL-U i5 7500	2	135
- * KBL-U i3 7100	1	90
- * KBL-U Celeron 3965	7	90
- * KBL-U Celeron 3865	0	90
- */
-#define BJ_ADAPTER_135W_MASK (1 << 4 | 1 << 5 | 1 << 6 | 1 << 3 | 1 << 2)
-
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
-		return;
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
-}
-
-void vbus0_evt(enum gpio_signal signal)
-{
-	task_wake(TASK_ID_PD_C0);
-}
-
 #include "gpio_list.h"
-
-/* power signal list.  Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {
-	{GPIO_PCH_SLP_S0_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_S0_DEASSERTED"},
-	{VW_SLP_S3_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
-	{VW_SLP_S4_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
-	{GPIO_PCH_SLP_SUS_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_SUS_DEASSERTED"},
-	{GPIO_RSMRST_L_PGOOD,	POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_L_PGOOD"},
-	{GPIO_PMIC_DPWROK,	POWER_SIGNAL_ACTIVE_HIGH, "PMIC_DPWROK"},
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* Hibernate wake configuration */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -111,115 +58,65 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 /* ADC channels */
 const struct adc_t adc_channels[] = {
 	/* Vbus sensing (1/10 voltage divider). */
-	[ADC_VBUS] = {"VBUS", NPCX_ADC_CH2, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
+	[ADC_VBUS] = { "VBUS", NPCX_ADC_CH2, ADC_MAX_VOLT * 10,
+		       ADC_READ_MAX + 1, 0 },
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* TODO: Verify fan control and mft */
 const struct fan_conf fan_conf_0 = {
 	.flags = FAN_USE_RPM_MODE,
-	.ch = MFT_CH_0,	/* Use MFT id to control fan */
+	.ch = MFT_CH_0, /* Use MFT id to control fan */
 	.pgood_gpio = -1,
 	.enable_gpio = GPIO_FAN_PWR_EN,
 };
 
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 2180,
-	.rpm_start = 2180,
-	.rpm_max = 4900,
+	.rpm_min = 2500,
+	.rpm_start = 2500,
+	.rpm_max = 5400,
 };
 
-struct fan_t fans[] = {
+const struct fan_t fans[] = {
 	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 
 const struct mft_t mft_channels[] = {
-	[MFT_CH_0] = {NPCX_MFT_MODULE_2, TCKC_LFCLK, PWM_CH_FAN},
+	[MFT_CH_0] = { NPCX_MFT_MODULE_2, TCKC_LFCLK, PWM_CH_FAN },
 };
 BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
-const struct i2c_port_t i2c_ports[]  = {
-	{"tcpc", I2C_PORT_TCPC0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"eeprom", I2C_PORT_EEPROM, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"backlight", I2C_PORT_BACKLIGHT, 100, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"pmic", I2C_PORT_PMIC, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
-	{"thermal", I2C_PORT_THERMAL, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
+const struct i2c_port_t i2c_ports[] = {
+	{ .name = "pse",
+	  .port = I2C_PORT_PSE,
+	  .kbps = 400,
+	  .scl = GPIO_I2C0_0_SCL,
+	  .sda = GPIO_I2C0_0_SDA },
+	{ .name = "eeprom",
+	  .port = I2C_PORT_EEPROM,
+	  .kbps = 400,
+	  .scl = GPIO_I2C0_1_SCL,
+	  .sda = GPIO_I2C0_1_SDA },
+	{ .name = "pmic",
+	  .port = I2C_PORT_PMIC,
+	  .kbps = 400,
+	  .scl = GPIO_I2C2_SCL,
+	  .sda = GPIO_I2C2_SDA },
+	{ .name = "thermal",
+	  .port = I2C_PORT_THERMAL,
+	  .kbps = 400,
+	  .scl = GPIO_I2C3_SCL,
+	  .sda = GPIO_I2C3_SDA },
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-/* TCPC mux configuration */
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{I2C_PORT_TCPC0, I2C_ADDR_TCPC0, &ps8xxx_tcpm_drv,
-			TCPC_ALERT_ACTIVE_LOW},
-};
-
-static int ps8751_tune_mux(int port)
-{
-	/* 0x98 sets lower EQ of DP port (4.5db) */
-	mux_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
-	return EC_SUCCESS;
-}
-
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
-	{
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-		.board_init = &ps8751_tune_mux,
-	}
-};
-
 const int usb_port_enable[USB_PORT_COUNT] = {
-	GPIO_USB1_ENABLE,
-	GPIO_USB2_ENABLE,
-	GPIO_USB3_ENABLE,
-	GPIO_USB4_ENABLE,
+	GPIO_USB_C0_5V_EN,
+	GPIO_USB_FP0_5V_EN,
+	GPIO_USB_FP1_5V_EN,
+	GPIO_USB_FP3_5V_EN,
 };
-
-void board_reset_pd_mcu(void)
-{
-	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
-	msleep(1);
-	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 1);
-}
-
-void board_tcpc_init(void)
-{
-	int port, reg;
-
-	/* This needs to be executed only once per boot. It could be run by RO
-	 * if we boot in recovery mode. It could be run by RW if we boot in
-	 * normal or dev mode. Note EFS makes RO jump to RW before HOOK_INIT. */
-	board_reset_pd_mcu();
-
-	/*
-	 * Wake up PS8751. If PS8751 remains in low power mode after sysjump,
-	 * TCPM_INIT will fail due to not able to access PS8751.
-	 * Note PS8751 A3 will wake on any I2C access.
-	 */
-	i2c_read8(I2C_PORT_TCPC0, I2C_ADDR_TCPC0, 0xA0, &reg);
-
-	/* Enable TCPC interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
-
-	/*
-	 * Initialize HPD to low; after sysjump SOC needs to see
-	 * HPD pulse to enable video path
-	 */
-	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
-		const struct usb_mux *mux = &usb_muxes[port];
-		mux->hpd_update(port, 0, 0);
-	}
-}
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
-
-uint16_t tcpc_get_alert_status(void)
-{
-	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL) &&
-			gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
-		return PD_STATUS_TCPC_ALERT_0;
-	return 0;
-}
 
 /*
  * TMP431 has one local and one remote sensor.
@@ -229,10 +126,10 @@ uint16_t tcpc_get_alert_status(void)
  *     src/mainboard/google/${board}/acpi/dptf.asl
  */
 const struct temp_sensor_t temp_sensors[] = {
-	{"TMP431_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
-			TMP432_IDX_LOCAL, 4},
-	{"TMP431_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
-			TMP432_IDX_REMOTE1, 4},
+	{ "TMP431_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	  TMP432_IDX_LOCAL },
+	{ "TMP431_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	  TMP432_IDX_REMOTE1 },
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -245,26 +142,20 @@ struct ec_thermal_config thermal_params[] = {
 	 * {Twarn, Thigh, X    }, <off>
 	 * fan_off, fan_max
 	 */
-<<<<<<< HEAD   (768ad5 fan: Refactor and test the most common custom fan_percent_to)
-	{{0, C_TO_K(80), C_TO_K(81)}, {0, C_TO_K(78), 0},
-		C_TO_K(4), C_TO_K(76)},	/* TMP431_Internal */
-	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP431_Sensor_1 */
-=======
-	{ { 0, C_TO_K(80), C_TO_K(81) },
-	  { 0, C_TO_K(78), 0 },
-	  C_TO_K(30),
+	{ { 0, C_TO_K(81), C_TO_K(82) },
+	  { 0, C_TO_K(77), 0 },
+	  C_TO_K(35),
 	  C_TO_K(55) }, /* TMP431_Internal */
 	{ { 0, 0, 0 }, { 0, 0, 0 }, 0, 0 }, /* TMP431_Sensor_1 */
->>>>>>> CHANGE (ddbd5d {ambassador,endeavour,fizz,genesis,kalista,moonbuggy,scout}:)
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /* Initialize PMIC */
 #define I2C_PMIC_READ(reg, data) \
-		i2c_read8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1, (reg), (data))
+	i2c_read8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1_FLAGS, (reg), (data))
 
 #define I2C_PMIC_WRITE(reg, data) \
-		i2c_write8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1, (reg), (data))
+	i2c_write8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1_FLAGS, (reg), (data))
 
 static void board_pmic_init(void)
 {
@@ -395,15 +286,6 @@ static void board_pmic_init(void)
 	if (err)
 		goto pmic_error;
 
-	/*
-	 * V100ACNT Register Field Description. Default: 0x2A
-	 * [1:0] : 11b Forced PWM Operation.
-	 * [5:4] : 01b Output Voltage Select Vnom (1V)
-	 */
-	err = I2C_PMIC_WRITE(TPS650X30_REG_V100ACNT, 0x1B);
-	if (err)
-		goto pmic_error;
-
 	CPRINTS("PMIC init done");
 	pmic_initialized = 1;
 	return;
@@ -426,11 +308,6 @@ static void board_extpower(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 
-enum battery_present battery_is_present(void)
-{
-	return BP_NO;
-}
-
 int64_t get_time_dsw_pwrok(void)
 {
 	/* DSW_PWROK is turned on before EC was powered. */
@@ -438,33 +315,33 @@ int64_t get_time_dsw_pwrok(void)
 }
 
 const struct pwm_t pwm_channels[] = {
-	[PWM_CH_LED_RED]  = { 3, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED_BLUE] = { 5, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_FAN] = {4, PWM_CONFIG_OPEN_DRAIN, 25000},
+	[PWM_CH_LED_RED] = { 3, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED_WHITE] = { 5, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_FAN] = { 4, PWM_CONFIG_OPEN_DRAIN, 25000 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 typedef struct fan_step_1_1 fan_step;
+
 /* Note: Do not make the fan on/off point equal to 0 or 100 */
 /* Given the range of temp_fan_off to temp_fan_max specified above,
- * each degree C is 4 percent of the range.
+ * each degree C is 5 percent of the range.
  * 40 C, a typical idle temperature, is 25% of the way from 35 C to 55 C.
- * Try to use zero fan at idle; otherwise use minimum fan.
+ * Try to use minimum fan at idle.
  */
 static const fan_step fan_table0[] = {
 	{ .on = 0, .off = 2, .rpm = 0 },
-	{ .on = 28, .off = 3, .rpm = 2180 }, /* on at 37 C, off at 30 C */
-	{ .on = 44, .off = 24, .rpm = 2680 }, /* on at 41 C, off at 36 C */
-	{ .on = 52, .off = 40, .rpm = 3300 }, /* on at 43 C, off at 40 C */
-	{ .on = 60, .off = 48, .rpm = 3760 }, /* on at 45 C, off at 42 C */
-	{ .on = 68, .off = 56, .rpm = 4220 }, /* on at 47 C, off at 44 C */
-	{ .on = 76, .off = 64, .rpm = 4660 }, /* on at 49 C, off at 46 C */
-	{ .on = 98, .off = 72, .rpm = 4900 }, /* on at 55 C, off at 48 C */
+	{ .on = 28, .off = 3, .rpm = 2500 }, /* on at 41 C, off at 35 C */
+	{ .on = 43, .off = 27, .rpm = 2900 }, /* on at 44 C, off at 40 C */
+	{ .on = 53, .off = 37, .rpm = 3400 }, /* on at 46 C, off at 42 C */
+	{ .on = 63, .off = 47, .rpm = 3900 }, /* on at 48 C, off at 44 C */
+	{ .on = 73, .off = 57, .rpm = 4400 }, /* on at 50 C, off at 46 C */
+	{ .on = 83, .off = 67, .rpm = 4900 }, /* on at 52 C, off at 48 C */
+	{ .on = 98, .off = 77, .rpm = 5400 }, /* on at 55 C, off at 50 C */
 };
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
 
 static const fan_step *fan_table = fan_table0;
-
 
 static void cbi_init(void)
 {
@@ -483,20 +360,9 @@ static void cbi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
-static void setup_bj(void)
-{
-	enum bj_adapter bj = (BJ_ADAPTER_135W_MASK & (1 << sku)) ?
-			BJ_135W_19V : BJ_90W_19V;
-	gpio_set_level(GPIO_U22_90W, bj == BJ_90W_19V);
-}
-
 static void board_init(void)
 {
-	setup_bj();
-
 	board_extpower();
-
-	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -505,11 +371,4 @@ int fan_percent_to_rpm(int fan, int pct)
 	return fan_percent_to_rpm_path_dependent(fan_table, NUM_FAN_LEVELS, fan,
 						 pct, NULL);
 }
-
-void board_rtc_reset(void)
-{
-	CPRINTS("Asserting RTCRST# to PCH");
-	gpio_set_level(GPIO_PCH_RTCRST, 1);
-	udelay(100);
-	gpio_set_level(GPIO_PCH_RTCRST, 0);
-}
+>>>>>>> CHANGE (ddbd5d {ambassador,endeavour,fizz,genesis,kalista,moonbuggy,scout}:)
