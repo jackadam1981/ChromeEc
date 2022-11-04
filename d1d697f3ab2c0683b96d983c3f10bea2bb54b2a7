@@ -16,6 +16,24 @@
       "message": "Rather than creating a #define, it may be clearer to extract out the margin and use it directly (it\u0027s only used in 2 places):\n\n..fan_smart_control(int ch)\n{\n...\n   int deviation \u003d fans[ch].rpm-\u003erpm_deviation;\n   ...\n   if (ABS(rpm_actual - data-\u003erpm_pre) \u003e (rpm_actual*deviation/100)) {",
       "revId": "d1d697f3ab2c0683b96d983c3f10bea2bb54b2a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b7febe_340f943e",
+        "filename": "zephyr/shim/src/fan.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-04T04:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8140d1f5_fb0233bb",
+      "revId": "d1d697f3ab2c0683b96d983c3f10bea2bb54b2a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
