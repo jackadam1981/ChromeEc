@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223314ef_3d8175b8",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-04T01:43:00Z",
+      "side": 1,
+      "message": "This can be moved into the single block where it\u0027s used (line 470). At that point we can also remove this config option completely, since we\u0027re just inserting a branch.",
+      "revId": "0ef27908ed7853d921cf40b2dd8ba2aafe6d7c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593eb9ae_2e8972b4",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-04T01:43:00Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to do anything useful anymore? Can it be removed?",
+      "revId": "0ef27908ed7853d921cf40b2dd8ba2aafe6d7c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3133556_63417121",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-04T01:43:00Z",
+      "side": 1,
+      "message": "Make the default value 10 and require that something be set.\n\nThat\u0027ll probably also require adding this to the legacy config.h so OCPC still builds for non-zephyr boards.",
+      "range": {
+        "startLine": 214,
+        "startChar": 41,
+        "endLine": 214,
+        "endChar": 71
+      },
+      "revId": "0ef27908ed7853d921cf40b2dd8ba2aafe6d7c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
