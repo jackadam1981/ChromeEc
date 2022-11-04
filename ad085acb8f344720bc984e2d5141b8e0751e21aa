@@ -16,6 +16,24 @@
       "message": "Hardcoding `36` here seems a bit fragile. \nShould we check `returned value is non-negative and less than n, the string has been completely written.` instead?\n\nFrom https://cplusplus.com/reference/cstdio/snprintf/",
       "revId": "ad085acb8f344720bc984e2d5141b8e0751e21aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6945503f_c1c2398d",
+        "filename": "zephyr/test/drivers/default/src/console_cmd/ec_features.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-04T15:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4597f47_6c055fb9",
+      "revId": "ad085acb8f344720bc984e2d5141b8e0751e21aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
