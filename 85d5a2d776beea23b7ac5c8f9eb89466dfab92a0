@@ -16,6 +16,98 @@
       "message": "This patch has been updated to be compatible with https://chrome-internal-review.googlesource.com/c/ti50/common/ti50/+/5070608",
       "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f90fd14_fc921633",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-11-04T14:58:24Z",
+      "side": 1,
+      "message": "please add a comment to this line saying which enum it is",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 372,
+        "endChar": 14
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d9c995_e44c4fef",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2762,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-11-04T14:58:24Z",
+      "side": 1,
+      "message": "please add a comment saying which enum this is",
+      "range": {
+        "startLine": 2762,
+        "startChar": 2,
+        "endLine": 2762,
+        "endChar": 17
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62678056_65b01d79",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2807,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-11-04T14:58:24Z",
+      "side": 1,
+      "message": "let\u0027s also detect and print is SR2 (or SR3) is in the error state since that is important information to the user",
+      "range": {
+        "startLine": 2806,
+        "startChar": 6,
+        "endLine": 2807,
+        "endChar": 39
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9294c53d_d0fa9849",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3723,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-11-04T14:58:24Z",
+      "side": 1,
+      "message": "How hard would it be to make this command line parsing be resilient to single digit hex values as well, e.g. `gsctool -E 0xf 0xf`?",
+      "range": {
+        "startLine": 3721,
+        "startChar": 5,
+        "endLine": 3723,
+        "endChar": 26
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
