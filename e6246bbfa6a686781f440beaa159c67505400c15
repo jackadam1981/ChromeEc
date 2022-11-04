@@ -434,6 +434,30 @@
       },
       "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5cdb24_31d8f454",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2022-11-04T15:56:23Z",
+      "side": 1,
+      "message": "Agree. I need to ad an I2C temperature sensor emulator for this change.",
+      "parentUuid": "b9c3d909_fab3ae6c",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 20
+      },
+      "revId": "e6246bbfa6a686781f440beaa159c67505400c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
