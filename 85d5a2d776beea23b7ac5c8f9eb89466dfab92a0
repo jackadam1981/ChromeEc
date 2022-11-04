@@ -204,6 +204,30 @@
       },
       "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960d2449_0417effe",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3723,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-11-04T19:32:38Z",
+      "side": 1,
+      "message": "Oh yes I thought it was separate just like the ccd command. How hard is that?",
+      "parentUuid": "0b718584_08e52205",
+      "range": {
+        "startLine": 3721,
+        "startChar": 5,
+        "endLine": 3723,
+        "endChar": 26
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
