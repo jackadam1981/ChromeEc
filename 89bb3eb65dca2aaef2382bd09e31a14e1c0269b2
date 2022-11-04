@@ -22,6 +22,30 @@
       },
       "revId": "89bb3eb65dca2aaef2382bd09e31a14e1c0269b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd64fd8_146bec83",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-04T21:55:57Z",
+      "side": 1,
+      "message": "I think that would make sense so developers can easily run GCC builds if they happen to fail in the CQ. But that can be later CL since this one will land soon.",
+      "parentUuid": "8b1148dc_adb9cba6",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "89bb3eb65dca2aaef2382bd09e31a14e1c0269b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
