@@ -16,6 +16,24 @@
       "message": "You need to delete CONFIG_KEYBOARD_FACTORY_TEST from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/util/config_allowed.txt;l\u003d563\n\nThis will fix the build failure.",
       "revId": "dfd496a29f76aecd1af5aa7621ec63805128af91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a693d393_db0e361a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-04T15:40:38Z",
+      "side": 1,
+      "message": "Hi Sue - did you see this comment?",
+      "parentUuid": "fdd9d652_6f5ae197",
+      "revId": "dfd496a29f76aecd1af5aa7621ec63805128af91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
