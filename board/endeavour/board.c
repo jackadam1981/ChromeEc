@@ -330,11 +330,11 @@ static const struct fan_step fan_table0[] = {
 	{ .on = 0, .off = 2, .rpm = 0 },
 	{ .on = 11, .off = 2, .rpm = 2500 },
 	{ .on = 38, .off = 29, .rpm = 3200 },
-	{ .on = 65, .off = 36, .rpm = 3500 },
-	{ .on = 76, .off = 64, .rpm = 3900 },
-	{ .on = 84, .off = 75, .rpm = 4500 },
-	{ .on = 91, .off = 82, .rpm = 5100 },
-	{ .on = 98, .off = 89, .rpm = 5400 },
+	{ .on = 43, .off = 36, .rpm = 3500 },
+	{ .on = 49, .off = 41, .rpm = 3900 },
+	{ .on = 57, .off = 47, .rpm = 4500 },
+	{ .on = 65, .off = 55, .rpm = 5100 },
+	{ .on = 70, .off = 63, .rpm = 5400 },
 };
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
