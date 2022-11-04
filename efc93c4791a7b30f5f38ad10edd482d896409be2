@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f62626_b90e566f",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T16:06:55Z",
+      "side": 1,
+      "message": "If this is not directly configurable we should remove the prompt too",
+      "range": {
+        "startLine": 6,
+        "startChar": 6,
+        "endLine": 6,
+        "endChar": 53
+      },
+      "revId": "efc93c4791a7b30f5f38ad10edd482d896409be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
