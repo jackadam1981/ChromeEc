@@ -412,7 +412,7 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 			[EC_TEMP_THRESH_HALT] = 0, \
 		}, \
 		.temp_fan_off = C_TO_K(25), \
-		.temp_fan_max = C_TO_K(84), \
+		.temp_fan_max = C_TO_K(57), \
 	}
 __maybe_unused static const struct ec_thermal_config thermal_a = THERMAL_A;
 
