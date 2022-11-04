@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45a901c_79fe1ee6",
+        "filename": "zephyr/Kconfig.temperature",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-04T04:34:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d888d8_593791bc",
+      "revId": "7c1034097b250e6d5847e79939cddc8e2a8c9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53bd6755_23b82894",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-03T11:19:04Z",
       "side": 1,
       "message": "You will also have to remove CONFIG_CUSTOM_FAN_CONTROL from util/config_allowed.txt",
+      "revId": "7c1034097b250e6d5847e79939cddc8e2a8c9bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f3febe_895da386",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-04T04:34:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53bd6755_23b82894",
       "revId": "7c1034097b250e6d5847e79939cddc8e2a8c9bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
