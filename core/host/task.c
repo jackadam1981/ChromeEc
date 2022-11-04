@@ -315,6 +315,14 @@ void task_print_list(void)
 	}
 }
 
+static int command_exit(int argc, const char **argv)
+{
+	exit(EXIT_SUCCESS);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(exit, command_exit, NULL, "Close host");
+
 static int command_task_info(int argc, const char **argv)
 {
 	task_print_list();

@@ -77,14 +77,16 @@ def run_test(path, timeout=10):
             if proc.poll():
                 return TestResult.UNEXPECTED_TERMINATION, output_log
     finally:
-        # Check if the process has exited. If not, send it a SIGTERM, wait for
-        # it to exit, and if it times out, kill the process directly.
-        if not proc.poll():
-            try:
-                proc.terminate()
-                proc.wait(timeout)
-            except subprocess.TimeoutExpired:
-                proc.kill()
+        # Issue a command to close the emulator
+        proc.stdin.write("exit\n")
+        proc.stdin.flush()
+
+        # Wait for the process to exit and if it times out, kill the process directly.
+        try:
+            proc.wait(timeout)
+        except subprocess.TimeoutExpired:
+            print("didn't close, killing")
+            proc.kill()
 
 
 def parse_options(argv):
