@@ -16,6 +16,24 @@
       "message": "For this change, I wonder if I should commit only the CfM-only boards {ambassador,endeavour,genesis,moonbuggy} to mainline, and just CP the fizz setting to each CfM branch?",
       "revId": "3373318f6a3487843212dc7b5f3da8ce63942bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7538f960_47cac7ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-04T20:19:53Z",
+      "side": 1,
+      "message": "Also, karma (https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/board/karma/) doesn\u0027t seem to have any fan settings, but I can definitely hear a fan in my Buddy2 especially on initial power-on.",
+      "parentUuid": "09302477_4f64793e",
+      "revId": "3373318f6a3487843212dc7b5f3da8ce63942bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
