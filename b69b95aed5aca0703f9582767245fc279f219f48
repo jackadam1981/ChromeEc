@@ -303,6 +303,24 @@
       "parentUuid": "9cdd0df9_cfe6f690",
       "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa655a60_748a1d45",
+        "filename": "zephyr/test/uart_printf/src/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-04T20:35:09Z",
+      "side": 1,
+      "message": "You\u0027re right, that does look better",
+      "parentUuid": "c97fde24_456c0624",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
