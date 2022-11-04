@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5093cdb_e7549753",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T18:07:38Z",
+      "side": 1,
+      "message": "What prompted you to update this file?",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffef7efe_41affb43",
+        "filename": "zephyr/test/uart_printf/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T18:07:38Z",
+      "side": 1,
+      "message": "Nit: I find this indentation odd.",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cebe730b_c5489b9c",
+        "filename": "zephyr/test/uart_printf/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T18:07:38Z",
+      "side": 1,
+      "message": "Does this cause `./include/` to be searched before `platform/ec/include`? Or is `platform/ec/include` not even in the include search path?",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f48e6b48_ccd3da4c",
+        "filename": "zephyr/test/uart_printf/include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T18:07:38Z",
+      "side": 1,
+      "message": "I\u0027m assuming that something bad happens if you include the real common.h.",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a87a5d5_1d21ff4e",
+        "filename": "zephyr/test/uart_printf/src/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T18:07:38Z",
+      "side": 1,
+      "message": "This should be the same file as `\u003ccstring\u003e`.",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a9cd7a7_80837fec",
+        "filename": "zephyr/test/uart_printf/src/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T18:07:38Z",
+      "side": 1,
+      "message": "Nit: Instead of casting `ARRAY_SIZE()` to an `int`, make `i` a `size_t` or whatever `ARRAY_SIZE` produces.",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad36c51_c4e6106e",
+        "filename": "zephyr/test/uart_printf/src/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T18:07:38Z",
+      "side": 1,
+      "message": "Is `arg1_history` just an array of characters? Could you compare to it more directly here? Like, construct a `string` or `string_view` from `arg1_history`, and then compare that to that with `test_string` with `zassert_equal`? Maybe make `test_string` a `string` and then pass its `c_str()` into `uart_put`?\n\nSimilar string handling questions below.",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
