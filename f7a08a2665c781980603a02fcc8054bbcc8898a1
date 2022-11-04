@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f1a3ef_a4512c8a",
+        "filename": "zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T22:10:59Z",
+      "side": 1,
+      "message": "Nit: IMO, asserting on how the mock was used is overkill if you have a straightforward way to verify that `charger_get_actual_current` did the right thing in terms of its own API (return value).",
+      "revId": "f7a08a2665c781980603a02fcc8054bbcc8898a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
