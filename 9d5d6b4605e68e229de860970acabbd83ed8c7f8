@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ae84c7_52d05717",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T17:42:03Z",
+      "side": 1,
+      "message": "Instead of copy-pasting variations of this command from driver to driver, can we have one implementation that supports different clock types based on the chip? I see that other implementations and other `enum clock_osc` definitions are already partially parameterized (or there are enum values that are \"not implemented\").",
+      "revId": "9d5d6b4605e68e229de860970acabbd83ed8c7f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
