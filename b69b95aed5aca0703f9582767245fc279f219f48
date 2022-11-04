@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d35716a5_3590e5a5",
+        "filename": "common/uart_printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T20:22:15Z",
+      "side": 1,
+      "message": "At this point, it may not be worth it from your POV, but in general, I\u0027d prefer that bug fixes be in separate CLs from tests.",
+      "parentUuid": "fc5a49bd_1156d340",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8bbd00db_4597251c",
         "filename": "common/uart_printf.c",
         "patchSetId": 1
@@ -265,6 +283,24 @@
       "side": 1,
       "message": "`uart_tx_char_raw` takes an `int` argument not a `char` so I can\u0027t do a direct memory compare.",
       "parentUuid": "0ad36c51_c4e6106e",
+      "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c97fde24_456c0624",
+        "filename": "zephyr/test/uart_printf/src/main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-04T20:22:15Z",
+      "side": 1,
+      "message": "Nit: It seems like you could still do this and have generally higher-level/more idiomatic code.\n```\nstd::string test_string \u003d \"test string\";\n...\n// The +1 seems optional, unless you specifically want to cover a null byte in this test\nuart_put(test_string.c_str(), test_string.size() + 1);\n...\nzassert_equal(test_string, output_string);",
+      "parentUuid": "9cdd0df9_cfe6f690",
       "revId": "b69b95aed5aca0703f9582767245fc279f219f48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
