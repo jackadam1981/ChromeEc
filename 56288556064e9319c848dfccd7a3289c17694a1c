@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fca22ddd_811f4579",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-04T18:50:45Z",
+      "side": 1,
+      "message": "Yeah, this function actually needs a larger update than that to correctly handle the HW orientation changing while tablet mode is forced, so the device behaves correctly when `tabletmode reset` is issued later.\n\nI haven\u0027t had a chance to test this yet, but here\u0027s the CL I have in mind:\nhttps://crrev.com/c/4006302",
+      "parentUuid": "a2528e74_1cf77770",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 23
+      },
+      "revId": "56288556064e9319c848dfccd7a3289c17694a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c9ff2c7_25b4e8ba",
         "filename": "common/tablet_mode.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-04T17:45:09Z",
       "side": 1,
       "message": "Hrmm, do you plan on supporting TABLET_TRIGGER_BASE?",
+      "range": {
+        "startLine": 195,
+        "startChar": 16,
+        "endLine": 195,
+        "endChar": 34
+      },
+      "revId": "56288556064e9319c848dfccd7a3289c17694a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45564540_3be23747",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-04T18:50:45Z",
+      "side": 1,
+      "message": "No, this is just to match the `tabletmode` command on the EC. We can expand both commands for that if you want to open a bug for it.",
+      "parentUuid": "6c9ff2c7_25b4e8ba",
       "range": {
         "startLine": 195,
         "startChar": 16,
