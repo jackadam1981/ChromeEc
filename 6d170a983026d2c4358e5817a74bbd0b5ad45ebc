@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "396f168e_bf9473e9",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-04T15:35:19Z",
+      "side": 1,
+      "message": "That\u0027s an excellent question, does the PLATFORM_EC prefix implies that the option resolves back to a legacy symbol? Looking at others it does not seem the case so I think it\u0027s fine to leave it as is, but let me know if I there\u0027s a convention I\u0027m missing here.",
+      "parentUuid": "c897fb74_9bf63a39",
+      "revId": "6d170a983026d2c4358e5817a74bbd0b5ad45ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cd40491_e5955bf8",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad3ef2a_9442e2d2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-04T15:35:19Z",
+      "side": 1,
+      "message": "palmface",
+      "parentUuid": "7cd40491_e5955bf8",
+      "revId": "6d170a983026d2c4358e5817a74bbd0b5ad45ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fbac9da_ee9f7771",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-11-03T20:16:33Z",
       "side": 1,
       "message": "Out of scope, but doing this in the .c file would avoid exposing `POWER_SIGNALS_REQUIRED` from this header file, and that name is apparently only used for the purpose of this assert.",
+      "revId": "6d170a983026d2c4358e5817a74bbd0b5ad45ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c21dfabe_701b0aa4",
+        "filename": "zephyr/shim/include/power/power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-04T15:35:19Z",
+      "side": 1,
+      "message": "That\u0027s a great idea, I\u0027ll take the chance to move it since I shuffled other code around anyway. Thanks.",
+      "parentUuid": "8fbac9da_ee9f7771",
       "revId": "6d170a983026d2c4358e5817a74bbd0b5ad45ebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
