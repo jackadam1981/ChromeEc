@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7223bc67_e68cd3e7",
+        "filename": "zephyr/test/drivers/default/src/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-04T20:17:45Z",
+      "side": 1,
+      "message": "This is the only actual change in here. The test was validating the wrong value, since it was setting `0`, but checking `1`.\n\nI can split out the spelling fixes if you want.",
+      "revId": "94f3de3280d98f76366a13320da89199f132ed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
