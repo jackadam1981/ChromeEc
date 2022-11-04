@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b3b92aa9_bd8a42b0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-04T19:00:05Z",
+      "side": 1,
+      "message": "According to Vadim B, this is an abbreviation, but I haven\u0027t seen where it\u0027s used.",
+      "parentUuid": "c0fd5b1c_ea288f8b",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 334,
+        "endChar": 8
+      },
+      "revId": "050d34157c747a41010bd8855fc20350f01cd2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c9061d2e_fb4b84a9",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 14
@@ -77,6 +101,30 @@
       "writtenOn": "2022-10-28T23:19:55Z",
       "side": 1,
       "message": "Enumerate the current list of command values or provide the name of the enum?",
+      "range": {
+        "startLine": 184,
+        "startChar": 35,
+        "endLine": 184,
+        "endChar": 63
+      },
+      "revId": "050d34157c747a41010bd8855fc20350f01cd2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2b0d02_b170dd9f",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-04T19:00:05Z",
+      "side": 1,
+      "message": "I\u0027ve added the enum name to the comment.",
+      "parentUuid": "05bf9ded_a24af432",
       "range": {
         "startLine": 184,
         "startChar": 35,
