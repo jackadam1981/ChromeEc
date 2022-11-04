@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09a8093_9835dd2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-04T21:22:55Z",
+      "side": 1,
+      "message": "I like the thoroughness here :)",
+      "revId": "068b31163a7a5854c7aaa5f0ecc145d27e2e4cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73dc0547_dc2e4431",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-04T21:22:55Z",
+      "side": 1,
+      "message": "copy/paste message?",
+      "range": {
+        "startLine": 495,
+        "startChar": 15,
+        "endLine": 495,
+        "endChar": 35
+      },
+      "revId": "068b31163a7a5854c7aaa5f0ecc145d27e2e4cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8202c545_acd980fb",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-04T21:22:55Z",
+      "side": 1,
+      "message": "Does access to this register need to be mutexed at all?  Can multiple tasks be changing it at once?",
+      "revId": "068b31163a7a5854c7aaa5f0ecc145d27e2e4cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ce8221_284c9c89",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-04T21:22:55Z",
+      "side": 1,
+      "message": "Should the next command be running \u0026\u003d 0xff then?",
+      "range": {
+        "startLine": 519,
+        "startChar": 42,
+        "endLine": 519,
+        "endChar": 59
+      },
+      "revId": "068b31163a7a5854c7aaa5f0ecc145d27e2e4cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88581fa2_39eeeea4",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-04T21:22:55Z",
+      "side": 1,
+      "message": "Any particular reason to feature-guard this?  Trying to save flash space on some boards?",
+      "revId": "068b31163a7a5854c7aaa5f0ecc145d27e2e4cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
