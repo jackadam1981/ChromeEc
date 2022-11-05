@@ -4560,6 +4560,13 @@
 #undef CONFIG_USB_PD_DEBUG_LEVEL
 
 /*
+ * We will use DEBUG LABELS if we will be able to print (COMMON RUNTIME)
+ * and either CONFIG_USB_PD_DEBUG_LEVEL is not defined (no override) or
+ * we are overriding and the level is not DISABLED.
+ */
+#undef CONFIG_USB_PD_DEBUG_LABELS
+
+/*
  * Set to a nonzero value to delay PD task startup by the given
  * amount of time.
  */

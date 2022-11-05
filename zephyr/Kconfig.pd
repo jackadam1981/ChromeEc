@@ -76,6 +76,14 @@ config PLATFORM_EC_USB_PD_DEBUG_LEVEL
 	  The meaning of each level depends on the module in question, but
 	  the maximum available level is 3.
 
+config PLATFORM_EC_USB_PD_DEBUG_LABELS
+	bool "Debug labels to use"
+	depends on PLATFORM_EC_USB_PD_DEBUG_FIXED_LEVEL
+	help
+	  We should enable the PLATFORM_EC_USB_PD_DEBUG_LABELS if we set the
+	  PLATFORM_EC_USB_PD_DEBUG_LEVEL to 0, otherwise the FAFT_PD will fail
+	  because we can can not get PD state by command 'pd {port} state'.
+
 config PLATFORM_EC_USB_PD_INITIAL_DEBUG_LEVEL
 	int "Initial debug level to use"
 	default 1
