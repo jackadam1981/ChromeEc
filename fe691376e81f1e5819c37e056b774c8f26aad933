@@ -105,6 +105,30 @@
       },
       "revId": "fe691376e81f1e5819c37e056b774c8f26aad933",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10add569_aec9f0dd",
+        "filename": "board/tglrvp_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2022-11-05T01:44:20Z",
+      "side": 1,
+      "message": "When ISH in D0i2, ISH local SRAM still has power, no need to do DMA copy.\nIn D0i3, SRAM lose power, AON task is running. Need to copy the data from local SRAM to host IMR(the protected region);it includes main firmware RW data segment, bss, heap. After ISH wakes up, from IMR to ISH SRAM, copy the RW data, plus RO data/text(which is store in IMR all the time).",
+      "parentUuid": "f778af32_44171857",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "fe691376e81f1e5819c37e056b774c8f26aad933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
