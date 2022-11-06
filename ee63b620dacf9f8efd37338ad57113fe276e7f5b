@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8ed0f1_99a6c871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-11-06T00:19:01Z",
+      "side": 1,
+      "message": "CQ failed, but it looks unrelated to the change. The branch does not have all the patches to fully support LLVM/clang.",
+      "revId": "ee63b620dacf9f8efd37338ad57113fe276e7f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
