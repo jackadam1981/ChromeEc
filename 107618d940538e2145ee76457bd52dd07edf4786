@@ -175,6 +175,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a31a7082_cbf8a5af",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-07T16:09:36Z",
+      "side": 1,
+      "message": "Adding zephyr-test-eng@google.com to this review.  They can help you with questions.\n\nAlso adding Yuval specifically, who has a great deal of experience in both the test area and sensors.",
+      "parentUuid": "62109094_db8ea44b",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
