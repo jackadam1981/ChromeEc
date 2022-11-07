@@ -826,6 +826,7 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 	r->flags = mux_state;
 
+	ccprintf("====== madhu ===port :%d  mux_info 0x%x\n", port, mux_state);
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
 	    (r->flags & USB_PD_MUX_HPD_IRQ)) {
@@ -845,6 +846,7 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return EC_RES_INVALID_COMMAND;
 
+	ccprintf("====> Ack recieved\n");
 	if (ack_task[p->port] != TASK_ID_INVALID)
 		task_set_event(ack_task[p->port], PD_EVENT_AP_MUX_DONE);
 

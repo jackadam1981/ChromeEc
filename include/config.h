@@ -6543,11 +6543,11 @@
  * By default, enable a request for an ACK from AP, on setting the mux, if the
  * board supports Intel retimer.
  */
-#if (defined(CONFIG_USBC_RETIMER_INTEL_BB) ||  \
+/*#if (defined(CONFIG_USBC_RETIMER_INTEL_BB) ||  \
      defined(CONFIG_USBC_RETIMER_INTEL_HB)) && \
-	defined(CONFIG_USB_MUX_VIRTUAL)
+	defined(CONFIG_USB_MUX_VIRTUAL) */
 #define CONFIG_USB_MUX_AP_ACK_REQUEST
-#endif /* CONFIG_USBC_RETIMER_INTEL_BB || CONFIG_USBC_RETIMER_INTEL_HB */
+/*#endif*/ /* CONFIG_USBC_RETIMER_INTEL_BB || CONFIG_USBC_RETIMER_INTEL_HB */
 
 /*****************************************************************************/
 
