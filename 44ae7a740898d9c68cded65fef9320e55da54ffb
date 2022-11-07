@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03f969b_3bf458b4",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-07T16:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d76e3644_90ed2502",
+      "range": {
+        "startLine": 1107,
+        "startChar": 2,
+        "endLine": 1107,
+        "endChar": 29
+      },
+      "revId": "44ae7a740898d9c68cded65fef9320e55da54ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a10cdb0b_1594c83b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-03T21:42:34Z",
       "side": 1,
       "message": "why not return here, what\u0027s the point in trying to process GBB in this case?",
+      "range": {
+        "startLine": 1124,
+        "startChar": 2,
+        "endLine": 1124,
+        "endChar": 8
+      },
+      "revId": "44ae7a740898d9c68cded65fef9320e55da54ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28943a1_d2db3717",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-07T16:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10cdb0b_1594c83b",
       "range": {
         "startLine": 1124,
         "startChar": 2,
