@@ -22,6 +22,30 @@
       },
       "revId": "0aef1f6a9f3c9f6d2c95823460ab6e95dfb9460a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73dadb1a_59d1974c",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-07T18:54:33Z",
+      "side": 1,
+      "message": "See crrev/c/4010000",
+      "parentUuid": "60d676b0_cff033db",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 35
+      },
+      "revId": "0aef1f6a9f3c9f6d2c95823460ab6e95dfb9460a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
