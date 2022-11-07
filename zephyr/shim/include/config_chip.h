@@ -1029,6 +1029,16 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 
 #endif
 
+#undef CONFIG_CHARGE_STATE_DEBUG
+#ifdef CONFIG_PLATFORM_EC_CHARGE_STATE_DEBUG
+#define CONFIG_CHARGE_STATE_DEBUG
+#endif
+
+#undef CONFIG_CMD_PWR_AVG
+#ifdef CONFIG_PLATFORM_EC_CMD_PWR_AVG
+#define CONFIG_CMD_PWR_AVG
+#endif
+
 #undef CONFIG_CHARGESPLASH
 #ifdef CONFIG_PLATFORM_EC_CHARGESPLASH
 #define CONFIG_CHARGESPLASH
@@ -1328,6 +1338,11 @@ extern char mock_jump_data[sizeof(struct jump_data) + 256];
 #undef CONFIG_USB_PE_SM
 #ifdef CONFIG_PLATFORM_EC_USB_PE_SM
 #define CONFIG_USB_PE_SM
+#endif
+
+#undef CONFIG_USB_DPM_SM
+#ifdef CONFIG_PLATFORM_EC_USB_DPM_SM
+#define CONFIG_USB_DPM_SM
 #endif
 
 #undef CONFIG_USB_PD_DECODE_SOP
