@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9b27f5_d5908b86",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-07T15:12:05Z",
+      "side": 1,
+      "message": "We haven\u0027t been very good at standardizing these, but typically we use apro_ or ap_ro.",
+      "parentUuid": "0b9c487f_683bf0b5",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 334,
+        "endChar": 8
+      },
+      "revId": "050d34157c747a41010bd8855fc20350f01cd2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9061d2e_fb4b84a9",
