@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a89fe4b5_534c5933",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-07T00:48:41Z",
+      "side": 1,
+      "message": "We can see that no other board currently uses zero for both. dedede is the only other program that currently uses OCPC at all, and all dedede boards use either ki\u003d3/kd\u003d4 or ki\u003d1/kd\u003d0: https://source.chromium.org/search?q\u003docpc_get_pid_constants%20%22*ki%20%3D%22%20%22*kd%20%3D%22%20f:platform%2Fec\u0026start\u003d1",
+      "parentUuid": "8a950256_b78b6d7b",
+      "revId": "0ef27908ed7853d921cf40b2dd8ba2aafe6d7c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "593eb9ae_2e8972b4",
         "filename": "common/ocpc.c",
         "patchSetId": 3
