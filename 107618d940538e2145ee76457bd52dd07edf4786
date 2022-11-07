@@ -151,6 +151,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62109094_db8ea44b",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-07T12:05:16Z",
+      "side": 1,
+      "message": "We don\u0027t have any experience to implement and verify the test function.\n\nCould you help to provide the example code and the way to verify? \n\n\nShould we need to create the new file for test function or write the test function into ~/platform/ec/zephyr/test/drivers/common/src/utils.c",
+      "parentUuid": "199f795e_e0d91711",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
