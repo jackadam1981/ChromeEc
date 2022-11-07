@@ -51,6 +51,24 @@
       "message": "We should set this in program.conf if it\u0027s the same for both ITE and Nuvoton.",
       "revId": "936d8cc780c4ccbf67f1b579c5a3c2ab057dcf72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad8b56e_138d8f81",
+        "filename": "zephyr/program/nissa/npcx_program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-11-07T03:55:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "332a1067_39360039",
+      "revId": "936d8cc780c4ccbf67f1b579c5a3c2ab057dcf72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
