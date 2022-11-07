@@ -139,6 +139,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3082bc59_f766d8cd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-07T17:27:25Z",
+      "side": 1,
+      "message": "it is used in signer and key generation code in vboot_reference and signing trees.",
+      "parentUuid": "bf9b27f5_d5908b86",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 334,
+        "endChar": 8
+      },
+      "revId": "050d34157c747a41010bd8855fc20350f01cd2b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c9061d2e_fb4b84a9",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 14
