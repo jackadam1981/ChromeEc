@@ -157,6 +157,24 @@
       "parentUuid": "b55b4910_ad0b1323",
       "revId": "69ae0c7dd92ff08731848aa894b797745aba69f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e235b24b_4832ff6c",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-07T23:38:11Z",
+      "side": 1,
+      "message": "My (mild) preference is to keep the contract between the DPM and the PE as small as practical. Up to this CL, the PE is responsible for telling the DPM when it\u0027s ready to receive requests, and the DPM is responsible for requesting based on the current state. With this CL, the DPM shares responsibility for telling itself when to wait for the PE.\n\nIf we refactored the PE to summarily reject bad VDM requests from the ready state, ideally, the DPM wouldn\u0027t be affected. That\u0027s a contrived example, because a bad VDM request would be a programming error, and all that would happen in this CL is that the DPM would toggle from waiting to ready and back where it would otherwise just stay in a ready state. But, conceptually, we should be able to change the PE and have the DPM affected as little as possible.\n\nSo this is a relatively small separation-of-concerns nit, but the state change here seems redundant. A future reader might be surprised to learn that in the expected case, if you deleted this line of code, the behavior wouldn\u0027t change.",
+      "parentUuid": "7f4ffa0d_eaa5e4ae",
+      "revId": "69ae0c7dd92ff08731848aa894b797745aba69f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
