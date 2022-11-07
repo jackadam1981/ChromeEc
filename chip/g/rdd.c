@@ -228,7 +228,7 @@ static int command_rdd_keepalive(int argc, char **argv)
 	}
 
 	if (console_is_restricted() || !parse_bool(argv[1], &force_detected))
-		return EC_ERROR_PARAM1;
+		return EC_ERROR_ACCESS_DENIED;
 
 	if (force_detected) {
 		/* Force Rdd detect */
