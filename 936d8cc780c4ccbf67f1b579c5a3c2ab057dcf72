@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14356140_56fab069",
+        "filename": "common/ocpc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-07T02:52:31Z",
+      "side": 1,
+      "message": "I think it\u0027s clearer yet to put this in the `k_i \u003d\u003d 0 \u0026\u0026 k_d \u003d\u003d 0` block, since it\u0027s not used in this scope.",
+      "revId": "936d8cc780c4ccbf67f1b579c5a3c2ab057dcf72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332a1067_39360039",
+        "filename": "zephyr/program/nissa/npcx_program.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-07T02:52:31Z",
+      "side": 1,
+      "message": "We should set this in program.conf if it\u0027s the same for both ITE and Nuvoton.",
+      "revId": "936d8cc780c4ccbf67f1b579c5a3c2ab057dcf72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
