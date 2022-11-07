@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a950256_b78b6d7b",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-11-07T00:33:48Z",
+      "side": 1,
+      "message": "Agree to move the variable declaration, but I would still like to keep the config option, there could be existing boards that have proportional coefficients only, but have not been tested with using the 2 errors.",
+      "parentUuid": "223314ef_3d8175b8",
+      "revId": "0ef27908ed7853d921cf40b2dd8ba2aafe6d7c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "593eb9ae_2e8972b4",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "141a28e7_81c8d77a",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-11-07T00:33:48Z",
+      "side": 1,
+      "message": "Thought I removed this.",
+      "parentUuid": "593eb9ae_2e8972b4",
+      "revId": "0ef27908ed7853d921cf40b2dd8ba2aafe6d7c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3133556_63417121",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-11-04T01:43:00Z",
       "side": 1,
       "message": "Make the default value 10 and require that something be set.\n\nThat\u0027ll probably also require adding this to the legacy config.h so OCPC still builds for non-zephyr boards.",
+      "range": {
+        "startLine": 214,
+        "startChar": 41,
+        "endLine": 214,
+        "endChar": 71
+      },
+      "revId": "0ef27908ed7853d921cf40b2dd8ba2aafe6d7c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd79bd0_0b584aa4",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-11-07T00:33:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3133556_63417121",
       "range": {
         "startLine": 214,
         "startChar": 41,
