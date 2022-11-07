@@ -88,3 +88,20 @@ config PLATFORM_EC_LOG_BACKEND_CONSOLE_BUFFER_TMP_BUF_SIZE
 	  The logging subsystem will buffer up to this many bytes before calling
 	  the backend in deferred logging mode. Ideally this will be large
 	  enough to fit an entire log line.
+
+# Following options are turned off by MINIMAL_SHELL, but are important to us
+# for the EC application so we override Zephyr's default.
+config SHELL_HISTORY
+  default y
+
+config SHELL_TAB
+  default y
+
+config SHELL_TAB_AUTOCOMPLETION
+  default y if SHELL_TAB
+
+config SHELL_HELP
+  default y
+
+config KERNEL_SHELL
+  default y
