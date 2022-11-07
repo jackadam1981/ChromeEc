@@ -34,6 +34,24 @@
       "parentUuid": "d2f1a3ef_a4512c8a",
       "revId": "f7a08a2665c781980603a02fcc8054bbcc8898a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e965175_3589a546",
+        "filename": "zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-07T17:17:01Z",
+      "side": 1,
+      "message": "What I mean is that I\u0027d prefer to just do black-box testing here. Ideally, the test wouldn\u0027t care how `charger_get_actual_current` is implemented, e.g. how many times it calls `get_actual_current` or with what arguments. In principle, changing the implementation to loop over every charger and then return the current for the specified one shouldn\u0027t break a test for the charger charger common code, even though that would be a bad change to make. \n\nObviously, a test with this architecture can\u0027t be completely ignorant of the implementation, because it has to provide a fake driver API implementation. And I don\u0027t think it\u0027s worth reorganizing the test to avoid doing that. But I still think it would be nice to minimize the amount of stuff this test checks that isn\u0027t guaranteed by the charger API.\n\nStill just a nit.",
+      "parentUuid": "48388830_63865e65",
+      "revId": "f7a08a2665c781980603a02fcc8054bbcc8898a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
