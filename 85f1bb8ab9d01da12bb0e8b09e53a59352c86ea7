@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317fcc94_b202ba25",
+        "filename": "project.config",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003293
+      },
+      "writtenOn": "2022-11-07T19:22:54Z",
+      "side": 1,
+      "message": "I think this should be \"refs/for/refs/heads/cros/firmware-corsola-15194.B-main\".\n\nSee https://gerrit-review.googlesource.com/Documentation/access-control.html#category_push_merge in particular:\n\n```\nThe reference name connected to a Push Merge Commit entry must always be prefixed with refs/for/, ...\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 54
+      },
+      "revId": "85f1bb8ab9d01da12bb0e8b09e53a59352c86ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
