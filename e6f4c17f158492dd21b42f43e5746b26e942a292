@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f807c5d_dbe4cde5",
+        "filename": "test/ftrapv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-07T17:55:18Z",
+      "side": 1,
+      "message": "Nit: the [documentation](https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html) mentions addition, **subtraction**, and **multiplication**.\n\nI guess it\u0027s okay to only test one and assume all the others are enabled, right?",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "e6f4c17f158492dd21b42f43e5746b26e942a292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
