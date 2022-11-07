@@ -179,7 +179,7 @@ struct u2f_generate_req {
 	 * If generating versioned KH, derive an hmac from it and append to
 	 * the key handle. Otherwise unused.
 	 */
-	uint8_t authTimeSecretHash[U2F_AUTH_TIME_SECRET_SIZE];
+	uint8_t authTimeSecretHash[SHA256_DIGEST_SIZE];
 };
 
 struct u2f_generate_resp {
