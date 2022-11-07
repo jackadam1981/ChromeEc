@@ -22,6 +22,30 @@
       },
       "revId": "34c45c82f1ad940590b926029d45a14fb03f20e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02f509d_7c592f8e",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-07T23:12:00Z",
+      "side": 1,
+      "message": "You are right, I should have done that. Fixed in crrev/c/4010583",
+      "parentUuid": "b262388d_e45b561a",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 57
+      },
+      "revId": "34c45c82f1ad940590b926029d45a14fb03f20e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
