@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97293494_2490d3ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-07T19:18:45Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "aea9beec95fc1a8005d3dcc14075593aaa753747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d191663_af92ed85",
+        "filename": "docs/zephyr/project_config.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-07T19:18:45Z",
+      "side": 1,
+      "message": "Nit: missing / for the directory",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 15
+      },
+      "revId": "aea9beec95fc1a8005d3dcc14075593aaa753747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
