@@ -46,6 +46,30 @@
       },
       "revId": "85f1bb8ab9d01da12bb0e8b09e53a59352c86ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe61804_d8a675a8",
+        "filename": "project.config",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003293
+      },
+      "writtenOn": "2022-11-07T21:08:21Z",
+      "side": 1,
+      "message": "This is just a quirk of Gerrit permissions: setting \"Push merge commit\" on e.g. \"refs/for/refs/heads/main\" allows to push merge commits to \"refs/heads/main\" (if the caller also has \"Push\" permission on \"refs/heads/main\"). Setting \"Push merge commit\" directly on \"refs/heads/main\" does nothing.\n\nAs far as I can tell https://crbug.com/1152584#c2 did it wrong.\n\nBut e.g. https://chromium.googlesource.com/chromiumos/platform/ec/+/cf27998a2e3a84a801e6f8e8d3b7e5b5cbdb6453 did it correctly.",
+      "parentUuid": "12edf5e8_7ee4abeb",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 54
+      },
+      "revId": "85f1bb8ab9d01da12bb0e8b09e53a59352c86ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
