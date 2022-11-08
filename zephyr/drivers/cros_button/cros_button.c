@@ -31,8 +31,8 @@ __weak int stub_gpio_pin_get_raw(const struct device *d, gpio_pin_t p)
 #endif
 /* LCOV_EXCL_STOP */
 
-int cros_button_get_cfg(const struct device *dev,
-			struct gpio_debounce_config *cfg)
+int cros_gpio_debounce_get_cfg(const struct device *dev,
+			       struct gpio_debounce_config *cfg)
 {
 	if (dev->config) {
 		*cfg = *((struct gpio_debounce_config *)dev->config);
@@ -41,7 +41,8 @@ int cros_button_get_cfg(const struct device *dev,
 	return 0;
 }
 
-int cros_button_get_debounce_us(const struct device *dev, int *debounce_us)
+int cros_gpio_debounce_get_debounce_us(const struct device *dev,
+				       int *debounce_us)
 {
 	const struct gpio_debounce_config *cfg =
 		(struct gpio_debounce_config *)dev->config;
@@ -53,8 +54,8 @@ int cros_button_get_debounce_us(const struct device *dev, int *debounce_us)
 	return 0;
 }
 
-int cros_button_enable_interrupt(const struct device *dev,
-				 gpio_callback_handler_t button_cb)
+int cros_gpio_debounce_enable_interrupt(
+	const struct device *dev, gpio_callback_handler_t gpio_debounce_cb)
 {
 	int retval = -ENODEV;
 	const struct gpio_debounce_config *cfg =
@@ -64,7 +65,7 @@ int cros_button_enable_interrupt(const struct device *dev,
 
 	if (cfg) {
 		cb = &((struct gpio_debounce_data *)dev->data)->cb_data;
-		gpio_init_callback(cb, button_cb, BIT(cfg->spec.pin));
+		gpio_init_callback(cb, gpio_debounce_cb, BIT(cfg->spec.pin));
 		gpio_add_callback(cfg->spec.port, cb);
 		flags = (GPIO_INT_EDGE_BOTH | GPIO_INT_ENABLE) &
 			~GPIO_INT_DISABLE;
@@ -76,7 +77,7 @@ int cros_button_enable_interrupt(const struct device *dev,
 	return retval;
 }
 
-int cros_button_disable_interrupt(const struct device *dev)
+int cros_gpio_debounce_disable_interrupt(const struct device *dev)
 {
 	int retval = -ENODEV;
 	const struct gpio_debounce_config *cfg =
@@ -108,12 +109,12 @@ static int is_pressed(const struct device *dev,
 	return pressed;
 }
 
-int cros_button_is_pressed(const struct device *dev)
+int cros_gpio_debounce_is_pressed(const struct device *dev)
 {
 	return is_pressed(dev, gpio_pin_get);
 }
 
-int cros_button_is_pressed_raw(const struct device *dev)
+int cros_gpio_debounce_is_pressed_raw(const struct device *dev)
 {
 	return is_pressed(dev, gpio_pin_get_raw);
 }

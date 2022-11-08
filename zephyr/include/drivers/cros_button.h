@@ -45,11 +45,12 @@ __subsystem struct gpio_debounce_api {
  *
  * @return 0 If successful
  */
-__syscall int button_get_config(const struct device *dev,
-				struct gpio_debounce_config *cfg);
+__syscall int gpio_debounce_get_config(const struct device *dev,
+				       struct gpio_debounce_config *cfg);
 
-static inline int z_impl_button_get_config(const struct device *dev,
-					   struct gpio_debounce_config *cfg)
+static inline int
+z_impl_gpio_debounce_get_config(const struct device *dev,
+				struct gpio_debounce_config *cfg)
 {
 	const struct gpio_debounce_api *api =
 		(const struct gpio_debounce_api *)dev->api;
@@ -69,11 +70,11 @@ static inline int z_impl_button_get_config(const struct device *dev,
  *
  * @return 0 If successful
  */
-__syscall int button_get_debounce_us(const struct device *dev,
-				     int *debounce_us);
+__syscall int gpio_debounce_get_debounce_us(const struct device *dev,
+					    int *debounce_us);
 
-static inline int z_impl_button_get_debounce_us(const struct device *dev,
-						int *debounce_us)
+static inline int z_impl_gpio_debounce_get_debounce_us(const struct device *dev,
+						       int *debounce_us)
 {
 	struct gpio_debounce_api *api;
 
@@ -88,11 +89,12 @@ static inline int z_impl_button_get_debounce_us(const struct device *dev,
  *
  * @return 0 If successful
  */
-__syscall int button_enable_interrupt(const struct device *dev,
-				      gpio_callback_handler_t cb);
+__syscall int gpio_debounce_enable_interrupt(const struct device *dev,
+					     gpio_callback_handler_t cb);
 
-static inline int z_impl_button_enable_interrupt(const struct device *dev,
-						 gpio_callback_handler_t cb)
+static inline int
+z_impl_gpio_debounce_enable_interrupt(const struct device *dev,
+				      gpio_callback_handler_t cb)
 {
 	struct gpio_debounce_api *api;
 
@@ -107,9 +109,10 @@ static inline int z_impl_button_enable_interrupt(const struct device *dev,
  *
  * @return 0 If successful
  */
-__syscall int button_disable_interrupt(const struct device *dev);
+__syscall int gpio_debounce_disable_interrupt(const struct device *dev);
 
-static inline int z_impl_button_disable_interrupt(const struct device *dev)
+static inline int
+z_impl_gpio_debounce_disable_interrupt(const struct device *dev)
 {
 	struct gpio_debounce_api *api;
 
@@ -124,9 +127,9 @@ static inline int z_impl_button_disable_interrupt(const struct device *dev)
  *
  * @return int
  */
-__syscall int button_is_pressed(const struct device *dev);
+__syscall int gpio_debounce_is_pressed(const struct device *dev);
 
-static inline int z_impl_button_is_pressed(const struct device *dev)
+static inline int z_impl_gpio_debounce_is_pressed(const struct device *dev)
 {
 	struct gpio_debounce_api *api;
 
@@ -141,9 +144,9 @@ static inline int z_impl_button_is_pressed(const struct device *dev)
  *
  * @return int
  */
-__syscall int button_is_pressed_raw(const struct device *dev);
+__syscall int gpio_debounce_is_pressed_raw(const struct device *dev);
 
-static inline int z_impl_button_is_pressed_raw(const struct device *dev)
+static inline int z_impl_gpio_debounce_is_pressed_raw(const struct device *dev)
 {
 	struct gpio_debounce_api *api;
 
