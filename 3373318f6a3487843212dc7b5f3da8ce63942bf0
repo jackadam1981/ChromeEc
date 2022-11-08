@@ -51,6 +51,24 @@
       "message": "I\u0027m curious about how you picked these fan table values. What was the methodology?\n\nIs there any reason Scout is not included in this change?",
       "revId": "3373318f6a3487843212dc7b5f3da8ce63942bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7336669_8ad946dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-08T06:38:03Z",
+      "side": 1,
+      "message": "Thanks for looking! I forgot about Scout! I also could not find an appropriate config in the board/karma directory.\n\nI initially mis-interpreted the on/off numbers as degrees C.  But the tables for fizz and endeavour are used in a fan_percent_to_rpm function, suggesting that those are actually percent.\n\nThis CL is now \"work-in-progress\" as I try different firmware builds and attempt to elicit some fan behavior.",
+      "parentUuid": "459cbf05_33ce08c4",
+      "revId": "3373318f6a3487843212dc7b5f3da8ce63942bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
