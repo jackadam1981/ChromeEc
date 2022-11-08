@@ -116,6 +116,10 @@ enum nissa_sub_board_type nissa_get_sb_type(void)
 			FW_SUB_BOARD);
 		return sb;
 	}
+
+	if (IS_ENABLED(CONFIG_BOARD_YAVIKS))
+		val = FW_SUB_BOARD_1;
+
 	switch (val) {
 	default:
 		LOG_WRN("No sub-board defined");
