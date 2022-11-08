@@ -16,6 +16,24 @@
       "message": "Winterhold-specific C-code should go in zephyr/projects/skyrim/src/winterhold",
       "revId": "2661f47acf3fd6fabc9a8d1cfa14813ab4b4fa87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "936a1e85_8f6b5959",
+        "filename": "zephyr/projects/skyrim/battery_present.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-11-08T05:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d17923_a4ee22f1",
+      "revId": "2661f47acf3fd6fabc9a8d1cfa14813ab4b4fa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
