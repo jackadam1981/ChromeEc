@@ -10,11 +10,11 @@
 #include <zephyr/logging/log.h>
 #include <soc.h>
 #include <soc/ite_it8xxx2/reg_def_cros.h>
-
 #include "drivers/cros_system.h"
 #include "gpio/gpio_int.h"
 #include "system.h"
 #include "util.h"
+#include <zephyr/drivers/clock_control/it8xxx2_clock_control.h>
 
 LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
 

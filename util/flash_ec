@@ -56,8 +56,8 @@ BOARDS_IT83XX=(
 )
 
 BOARDS_IT83XX_SPI_PROGRAMMING=(
-	it8xxx2_evb
 	it8xxx2_pdevb
+	it8xxx2_evb
 )
 
 BOARDS_STM32=(
