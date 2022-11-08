@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43f451e_d818aad0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1a111ea_2b385feb",
+      "revId": "a433487a3e3be75265bdae3ad0ff5bbb2a0ac52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dadd918_f971de66",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-04T06:08:50Z",
       "side": 1,
       "message": "It would be good to have some more documentation on how the properties are arranged\ne.g what do the arrays represent. What is their index?\nThere\u0027s clearly a mapping between temp sensor and the arrays for the temp on/off, so this should be documented.\nIs there support for multiple fans i.e one of these nodes per-fan? Or\nis there an assumption there is only one of these structures and the rpm_target is the array representing the fans?",
+      "revId": "a433487a3e3be75265bdae3ad0ff5bbb2a0ac52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1778c3_4015d749",
+        "filename": "zephyr/dts/bindings/fan/cros-ec,fan-steps.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:45:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2dadd918_f971de66",
       "revId": "a433487a3e3be75265bdae3ad0ff5bbb2a0ac52d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
