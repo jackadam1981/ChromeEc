@@ -33,8 +33,8 @@ __subsystem struct gpio_debounce_api {
 	int (*enable_interrupt)(const struct device *dev,
 				gpio_callback_handler_t cb);
 	int (*disable_interrupt)(const struct device *dev);
-	int (*is_pressed)(const struct device *dev);
-	int (*is_pressed_raw)(const struct device *dev);
+	int (*get_pin)(const struct device *dev);
+	int (*get_pin_raw)(const struct device *dev);
 };
 
 /**
@@ -127,14 +127,14 @@ z_impl_gpio_debounce_disable_interrupt(const struct device *dev)
  *
  * @return int
  */
-__syscall int gpio_debounce_is_pressed(const struct device *dev);
+__syscall int gpio_debounce_get_pin(const struct device *dev);
 
-static inline int z_impl_gpio_debounce_is_pressed(const struct device *dev)
+static inline int z_impl_gpio_debounce_get_pin(const struct device *dev)
 {
 	struct gpio_debounce_api *api;
 
 	api = (struct gpio_debounce_api *)dev->api;
-	return api->is_pressed(dev);
+	return api->get_pin(dev);
 }
 
 /**
@@ -144,14 +144,14 @@ static inline int z_impl_gpio_debounce_is_pressed(const struct device *dev)
  *
  * @return int
  */
-__syscall int gpio_debounce_is_pressed_raw(const struct device *dev);
+__syscall int gpio_debounce_get_pin_raw(const struct device *dev);
 
-static inline int z_impl_gpio_debounce_is_pressed_raw(const struct device *dev)
+static inline int z_impl_gpio_debounce_get_pin_raw(const struct device *dev)
 {
 	struct gpio_debounce_api *api;
 
 	api = (struct gpio_debounce_api *)dev->api;
-	return api->is_pressed_raw(dev);
+	return api->get_pin_raw(dev);
 }
 
 #include <syscalls/cros_button.h>

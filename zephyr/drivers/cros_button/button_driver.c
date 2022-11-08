@@ -27,8 +27,8 @@ static const struct gpio_debounce_api gpio_debounce_driver_api = {
 	.get_debounce_us = cros_gpio_debounce_get_debounce_us,
 	.enable_interrupt = cros_gpio_debounce_enable_interrupt,
 	.disable_interrupt = cros_gpio_debounce_disable_interrupt,
-	.is_pressed = cros_gpio_debounce_is_pressed,
-	.is_pressed_raw = cros_gpio_debounce_is_pressed_raw,
+	.get_pin = cros_gpio_debounce_get_pin,
+	.get_pin_raw = cros_gpio_debounce_get_pin_raw,
 };
 
 #define BUTTON_CONFIG_INIT(i)                                               \

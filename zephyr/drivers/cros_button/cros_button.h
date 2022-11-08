@@ -20,7 +20,7 @@ int cros_gpio_debounce_enable_interrupt(
 	const struct device *dev, gpio_callback_handler_t gpio_debounce_cb);
 int cros_gpio_debounce_disable_interrupt(const struct device *dev);
 
-int cros_gpio_debounce_is_pressed(const struct device *dev);
-int cros_gpio_debounce_is_pressed_raw(const struct device *dev);
+int cros_gpio_debounce_get_pin(const struct device *dev);
+int cros_gpio_debounce_get_pin_raw(const struct device *dev);
 
 #endif /* __CROS_BUTTON_H */

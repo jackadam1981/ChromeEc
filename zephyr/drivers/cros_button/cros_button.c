@@ -91,8 +91,8 @@ int cros_gpio_debounce_disable_interrupt(const struct device *dev)
 	return retval;
 }
 
-static int is_pressed(const struct device *dev,
-		      int (*gpio_pin_get_fn)(const struct device *, gpio_pin_t))
+static int get_pin(const struct device *dev,
+		   int (*gpio_pin_get_fn)(const struct device *, gpio_pin_t))
 {
 	int pressed = 0;
 	const struct gpio_debounce_config *cfg =
@@ -109,12 +109,12 @@ static int is_pressed(const struct device *dev,
 	return pressed;
 }
 
-int cros_gpio_debounce_is_pressed(const struct device *dev)
+int cros_gpio_debounce_get_pin(const struct device *dev)
 {
-	return is_pressed(dev, gpio_pin_get);
+	return get_pin(dev, gpio_pin_get);
 }
 
-int cros_gpio_debounce_is_pressed_raw(const struct device *dev)
+int cros_gpio_debounce_get_pin_raw(const struct device *dev)
 {
-	return is_pressed(dev, gpio_pin_get_raw);
+	return get_pin(dev, gpio_pin_get_raw);
 }

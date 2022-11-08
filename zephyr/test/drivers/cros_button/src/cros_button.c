@@ -106,13 +106,13 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_pressed)
 	stub_gpio_pin_get_fake.custom_fake = stub_get_gpio_debounce_state;
 
 	stub_gpio_debounce_state = 1;
-	zassert_equal(1, cros_gpio_debounce_is_pressed(test_gpio_debounce_dev));
+	zassert_equal(1, cros_gpio_debounce_get_pin(test_gpio_debounce_dev));
 
 	stub_gpio_debounce_state = 0;
-	zassert_equal(0, cros_gpio_debounce_is_pressed(test_gpio_debounce_dev));
+	zassert_equal(0, cros_gpio_debounce_get_pin(test_gpio_debounce_dev));
 
 	stub_gpio_debounce_state = -1;
-	zassert_equal(0, cros_gpio_debounce_is_pressed(test_gpio_debounce_dev));
+	zassert_equal(0, cros_gpio_debounce_get_pin(test_gpio_debounce_dev));
 }
 
 /**
@@ -124,16 +124,16 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_pressed_raw)
 	stub_gpio_pin_get_raw_fake.custom_fake = stub_get_gpio_debounce_state;
 
 	stub_gpio_debounce_state = 1;
-	zassert_equal(
-		1, cros_gpio_debounce_is_pressed_raw(test_gpio_debounce_dev));
+	zassert_equal(1,
+		      cros_gpio_debounce_get_pin_raw(test_gpio_debounce_dev));
 
 	stub_gpio_debounce_state = 0;
-	zassert_equal(
-		0, cros_gpio_debounce_is_pressed_raw(test_gpio_debounce_dev));
+	zassert_equal(0,
+		      cros_gpio_debounce_get_pin_raw(test_gpio_debounce_dev));
 
 	stub_gpio_debounce_state = -1;
-	zassert_equal(
-		0, cros_gpio_debounce_is_pressed_raw(test_gpio_debounce_dev));
+	zassert_equal(0,
+		      cros_gpio_debounce_get_pin_raw(test_gpio_debounce_dev));
 }
 
 /**
