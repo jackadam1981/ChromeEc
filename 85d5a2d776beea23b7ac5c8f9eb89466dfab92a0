@@ -276,6 +276,30 @@
       },
       "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14e8465_d40eb1ad",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3723,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-08T00:38:48Z",
+      "side": 1,
+      "message": "All forms are now supported, for example:\n\n```\ngsctool -D -E \"0xff f 0x0 0xff 0xf0 f0\"\n```",
+      "parentUuid": "c67086ad_b99281bd",
+      "range": {
+        "startLine": 3721,
+        "startChar": 5,
+        "endLine": 3723,
+        "endChar": 26
+      },
+      "revId": "85d5a2d776beea23b7ac5c8f9eb89466dfab92a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
