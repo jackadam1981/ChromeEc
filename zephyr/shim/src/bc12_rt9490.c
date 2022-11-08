@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#define DT_DRV_COMPAT richtek_rt9490_bc12
+#define DT_DRV_COMPAT richtek_rt9490
 
 #include <zephyr/devicetree.h>
 #include "driver/charger/rt9490.h"
