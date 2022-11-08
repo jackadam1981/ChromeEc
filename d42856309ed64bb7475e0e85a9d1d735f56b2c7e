@@ -22,6 +22,30 @@
       },
       "revId": "d42856309ed64bb7475e0e85a9d1d735f56b2c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db85b476_2277fdda",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-08T18:31:54Z",
+      "side": 1,
+      "message": "I don\u0027t see a problem with letting people also set other toolchains such as zephyr or coreboot-sdk, so I\u0027d rather not add choices here.",
+      "parentUuid": "2af9fca3_cd2a1b32",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 67
+      },
+      "revId": "d42856309ed64bb7475e0e85a9d1d735f56b2c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
