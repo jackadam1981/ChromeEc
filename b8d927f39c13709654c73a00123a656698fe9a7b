@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0a5cbc_d930f321",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-08T15:32:11Z",
+      "side": 1,
+      "message": "Can we reuse the ccd_info arg? You get capabilities with gsctool -aI and set them with `gsctool -aI OverrideBatt:always`\n\nHow worried are we about running out of shortopts? Should we refactor the code, so we don\u0027t need to have one?",
+      "range": {
+        "startLine": 433,
+        "startChar": 46,
+        "endLine": 433,
+        "endChar": 49
+      },
+      "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f113a9_68ff4cca",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1791,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-08T15:32:11Z",
+      "side": 1,
+      "message": "The command should include ccd_version, so ti50 could decide to reject the command if gsctool is using the wrong ccd info layout.",
+      "range": {
+        "startLine": 1791,
+        "startChar": 0,
+        "endLine": 1791,
+        "endChar": 69
+      },
+      "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
