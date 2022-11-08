@@ -223,6 +223,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd6349ef_d3ff7de5",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-08T01:11:42Z",
+      "side": 1,
+      "message": "So I need to write a function to simulate the body detect change, then use the acpi_read() and zassert_equal(mask, events \u0026 mask) to check the acpi result contain the EC_ACPI_MEM_STTB_SHIFT, am I right?",
+      "parentUuid": "68511bf4_125315f5",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
