@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a4b270_42ce3fc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-08T02:15:38Z",
+      "side": 1,
+      "message": "Some minor nits.",
+      "revId": "cad1c2721cd41f4be4d4d6b953f427c21279b011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e51f7e_26652eac",
+        "filename": "zephyr/program/nissa/yaviks/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-08T02:15:38Z",
+      "side": 1,
+      "message": "So the order here is: CPU || (5V \u0026\u0026 Charger)\nThe \u0026\u0026 expression is only evaluated if the CPU check is false",
+      "revId": "cad1c2721cd41f4be4d4d6b953f427c21279b011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9037d678_8846dec2",
+        "filename": "zephyr/program/nissa/yaviks/src/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-08T02:15:38Z",
+      "side": 1,
+      "message": "Maybe place these in the order they are checked: CPU \u0026\u0026 5V \u0026\u0026 Charger\nThe order is important because if any are false, the rest are not checked.",
+      "revId": "cad1c2721cd41f4be4d4d6b953f427c21279b011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
