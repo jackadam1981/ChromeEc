@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd97e051_78787212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-08T17:34:42Z",
+      "side": 1,
+      "message": "\u003e Incremental coverage: 79%\nThe minimum coverage level is 80%.\n\nLOL. I think Diana has an existing test for `VDM_SEND_REQ` as a DFP. If you add the same test as a UFP, that should get you over the top.",
+      "revId": "78e70c9c9624ec87b620147c9b78e66969f0aa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
