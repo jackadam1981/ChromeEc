@@ -9,7 +9,7 @@
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
 
-struct cros_button_data {
+struct gpio_debounce_data {
 	struct gpio_callback cb_data;
 };
 

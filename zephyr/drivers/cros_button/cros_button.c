@@ -63,7 +63,7 @@ int cros_button_enable_interrupt(const struct device *dev,
 	gpio_flags_t flags;
 
 	if (cfg) {
-		cb = &((struct cros_button_data *)dev->data)->cb_data;
+		cb = &((struct gpio_debounce_data *)dev->data)->cb_data;
 		gpio_init_callback(cb, button_cb, BIT(cfg->spec.pin));
 		gpio_add_callback(cfg->spec.port, cb);
 		flags = (GPIO_INT_EDGE_BOTH | GPIO_INT_ENABLE) &

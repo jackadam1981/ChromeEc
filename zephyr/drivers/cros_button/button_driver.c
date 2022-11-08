@@ -34,7 +34,7 @@ static const struct cros_button_api button_driver_api = {
 #define BUTTON_CONFIG_INIT(i)                                                 \
 	static const struct cros_button_config button_config_##i =            \
 		BUTTON_CFG_DEF(i);                                            \
-	static struct cros_button_data button_data_##i;                       \
+	static struct gpio_debounce_data button_data_##i;                     \
 	DEVICE_DT_INST_DEFINE(i, &button_config_init, NULL, &button_data_##i, \
 			      &button_config_##i, POST_KERNEL,                \
 			      CONFIG_PLATFORM_EC_BUTTON_INIT_PRIORITY,        \
