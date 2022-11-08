@@ -119,7 +119,7 @@
 			gpios = <&gpiok 3 GPIO_OUTPUT>;
 		};
 		gpio_en_usb_a0_vbus: en_usb_a0_vbus {
-			gpios = <&gpiol 6 GPIO_OUTPUT>;
+			gpios = <&gpiof 0 GPIO_OUTPUT>;
 		};
 		gpio_en_usb_c0_cc1_vconn: en_usb_c0_cc1_vconn {
 			gpios = <&gpioh 4 GPIO_OUTPUT>;
@@ -168,7 +168,7 @@
 			no-auto-init;
 		};
 		gpio_sub_usb_a1_ilimit_sdp: sub_usb_a1_ilimit_sdp {
-			gpios = <&gpiof 1 GPIO_OUTPUT>;
+			gpios = <&gpiol 5 GPIO_OUTPUT>;
 			enum-name = "GPIO_USB2_ILIM_SEL";
 		};
 		gpio_sys_rst_odl: sys_rst_odl {
@@ -176,7 +176,7 @@
 			no-auto-init;
 		};
 		gpio_usb_a0_ilimit_sdp: usb_a0_ilimit_sdp {
-			gpios = <&gpiol 5 GPIO_OUTPUT>;
+			gpios = <&gpiof 1 GPIO_OUTPUT>;
 			enum-name = "GPIO_USB1_ILIM_SEL";
 		};
 		gpio_usb_c0_frs: usb_c0_frs {
