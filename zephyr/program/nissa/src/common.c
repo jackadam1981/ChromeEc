@@ -97,7 +97,7 @@ __override uint8_t board_get_charger_chip_count(void)
 /*
  * Retrieve sub-board type from FW_CONFIG.
  */
-enum nissa_sub_board_type nissa_get_sb_type(void)
+__overridable enum nissa_sub_board_type nissa_get_sb_type(void)
 {
 	static enum nissa_sub_board_type sb = NISSA_SB_UNKNOWN;
 	int ret;
