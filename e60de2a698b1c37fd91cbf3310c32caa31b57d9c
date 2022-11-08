@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14616dba_f5c61be9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1782,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-08T23:21:10Z",
+      "side": 1,
+      "message": "Move this check to 1761",
+      "range": {
+        "startLine": 1777,
+        "startChar": 0,
+        "endLine": 1782,
+        "endChar": 2
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f36333_40b58cc4",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-08T23:21:10Z",
+      "side": 1,
+      "message": "What happens if you try to run this with cr50?",
+      "range": {
+        "startLine": 3801,
+        "startChar": 4,
+        "endLine": 3801,
+        "endChar": 20
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
