@@ -33,7 +33,7 @@ static const struct gpio_debounce_api gpio_debounce_driver_api = {
 
 #define BUTTON_CONFIG_INIT(i)                                               \
 	static const struct gpio_debounce_config gpio_debounce_config_##i = \
-		BUTTON_CFG_DEF(i);                                          \
+		GPIO_DEBOUNCE_CFG_DEF(i);                                   \
 	static struct gpio_debounce_data gpio_debounce_data_##i;            \
 	DEVICE_DT_INST_DEFINE(i, &gpio_debounce_config_init, NULL,          \
 			      &gpio_debounce_data_##i,                      \

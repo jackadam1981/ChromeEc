@@ -19,7 +19,7 @@ struct gpio_debounce_config {
 	struct gpio_dt_spec spec;
 };
 
-#define BUTTON_CFG_DEF(i)                                        \
+#define GPIO_DEBOUNCE_CFG_DEF(i)                                 \
 	{                                                        \
 		.type = DT_INST_PROP_OR(i, button_type, 0),      \
 		.spec = GPIO_DT_SPEC_GET(DT_DRV_INST(i), gpios), \
