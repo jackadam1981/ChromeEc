@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af9fca3_cd2a1b32",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-08T00:07:58Z",
+      "side": 1,
+      "message": "This should also have `choices\u003d(\"llvm\", \"gcc\")` It could also have \"clang\" for parity with the --clang flag, but then the if statement on 348 needs updating too",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 67
+      },
+      "revId": "d42856309ed64bb7475e0e85a9d1d735f56b2c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

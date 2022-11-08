@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deaaa309_3a754694",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-08T00:07:58Z",
+      "side": 1,
+      "message": "nit - can we make these `elif` so they appear more mutually exclusive? And maybe an `else: raise NotImplementedError()` for safety",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 6
+      },
+      "revId": "56288983c79855ab0aaa1d4ce4abe57edd8308a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
