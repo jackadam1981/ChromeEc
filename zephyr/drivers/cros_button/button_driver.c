@@ -22,7 +22,7 @@ static int button_config_init(const struct device *dev)
 	return 0;
 }
 
-static const struct cros_button_api button_driver_api = {
+static const struct gpio_debounce_api button_driver_api = {
 	.get_config = cros_button_get_cfg,
 	.get_debounce_us = cros_button_get_debounce_us,
 	.enable_interrupt = cros_button_enable_interrupt,
