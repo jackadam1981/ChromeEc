@@ -9,7 +9,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-#include "drivers/gpio_debounce.h"
+#include "gpio_debounce_common.h"
 
 LOG_MODULE_REGISTER(button, LOG_LEVEL_ERR);
 
@@ -31,8 +31,8 @@ __weak int stub_gpio_pin_get_raw(const struct device *d, gpio_pin_t p)
 #endif
 /* LCOV_EXCL_STOP */
 
-int cros_gpio_debounce_get_cfg(const struct device *dev,
-			       struct gpio_debounce_config *cfg)
+int gpio_debounce_common_get_cfg(const struct device *dev,
+				 struct gpio_debounce_config *cfg)
 {
 	if (dev->config) {
 		*cfg = *((struct gpio_debounce_config *)dev->config);
@@ -41,8 +41,8 @@ int cros_gpio_debounce_get_cfg(const struct device *dev,
 	return 0;
 }
 
-int cros_gpio_debounce_get_debounce_us(const struct device *dev,
-				       int *debounce_us)
+int gpio_debounce_common_get_debounce_us(const struct device *dev,
+					 int *debounce_us)
 {
 	const struct gpio_debounce_config *cfg =
 		(struct gpio_debounce_config *)dev->config;
@@ -54,7 +54,7 @@ int cros_gpio_debounce_get_debounce_us(const struct device *dev,
 	return 0;
 }
 
-int cros_gpio_debounce_enable_interrupt(
+int gpio_debounce_common_enable_interrupt(
 	const struct device *dev, gpio_callback_handler_t gpio_debounce_cb)
 {
 	int retval = -ENODEV;
@@ -77,7 +77,7 @@ int cros_gpio_debounce_enable_interrupt(
 	return retval;
 }
 
-int cros_gpio_debounce_disable_interrupt(const struct device *dev)
+int gpio_debounce_common_disable_interrupt(const struct device *dev)
 {
 	int retval = -ENODEV;
 	const struct gpio_debounce_config *cfg =
@@ -109,12 +109,12 @@ static int get_pin(const struct device *dev,
 	return pressed;
 }
 
-int cros_gpio_debounce_get_pin(const struct device *dev)
+int gpio_debounce_common_get_pin(const struct device *dev)
 {
 	return get_pin(dev, gpio_pin_get);
 }
 
-int cros_gpio_debounce_get_pin_raw(const struct device *dev)
+int gpio_debounce_common_get_pin_raw(const struct device *dev)
 {
 	return get_pin(dev, gpio_pin_get_raw);
 }

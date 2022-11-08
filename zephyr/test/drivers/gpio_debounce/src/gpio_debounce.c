@@ -86,7 +86,7 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_config)
 {
 	struct gpio_debounce_config button;
 
-	cros_gpio_debounce_get_cfg(test_gpio_debounce_dev, &button);
+	gpio_debounce_common_get_cfg(test_gpio_debounce_dev, &button);
 
 	LOG_INF("button = {%s, %d, {%d, 0x%X}, %d}\n",
 		test_gpio_debounce_dev->name, button.type, button.spec.pin,
@@ -106,13 +106,13 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_pressed)
 	stub_gpio_pin_get_fake.custom_fake = stub_get_gpio_debounce_state;
 
 	stub_gpio_debounce_state = 1;
-	zassert_equal(1, cros_gpio_debounce_get_pin(test_gpio_debounce_dev));
+	zassert_equal(1, gpio_debounce_common_get_pin(test_gpio_debounce_dev));
 
 	stub_gpio_debounce_state = 0;
-	zassert_equal(0, cros_gpio_debounce_get_pin(test_gpio_debounce_dev));
+	zassert_equal(0, gpio_debounce_common_get_pin(test_gpio_debounce_dev));
 
 	stub_gpio_debounce_state = -1;
-	zassert_equal(0, cros_gpio_debounce_get_pin(test_gpio_debounce_dev));
+	zassert_equal(0, gpio_debounce_common_get_pin(test_gpio_debounce_dev));
 }
 
 /**
@@ -125,7 +125,7 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_pressed_raw)
 
 	stub_gpio_debounce_state = 1;
 	zassert_equal(1,
-		      cros_gpio_debounce_get_pin_raw(test_gpio_debounce_dev));
+		      gpio_debounce_common_get_pin_raw(test_gpio_debounce_dev));
 
 	stub_gpio_debounce_state = 0;
 	zassert_equal(0,
@@ -133,7 +133,7 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_pressed_raw)
 
 	stub_gpio_debounce_state = -1;
 	zassert_equal(0,
-		      cros_gpio_debounce_get_pin_raw(test_gpio_debounce_dev));
+		      gpio_debounce_common_get_pin_raw(test_gpio_debounce_dev));
 }
 
 /**
@@ -145,8 +145,8 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_debounce)
 	const uint32_t expected_time = 30000;
 	uint32_t debounce_time_us = 30000;
 
-	zassert_ok(cros_gpio_debounce_get_debounce_us(test_gpio_debounce_dev,
-						      &debounce_time_us),
+	zassert_ok(gpio_debounce_common_get_debounce_us(test_gpio_debounce_dev,
+							&debounce_time_us),
 		   NULL);
 	zassert_equal(expected_time, debounce_time_us, NULL);
 }
@@ -167,17 +167,18 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_interrupt)
 {
 	struct gpio_debounce_config cfg;
 
-	cros_gpio_debounce_get_cfg(test_gpio_debounce_dev, &cfg);
+	gpio_debounce_common_get_cfg(test_gpio_debounce_dev, &cfg);
 
 	gpio_debounce_interrupt_called = false;
 
-	zassert_ok(cros_gpio_debounce_disable_interrupt(test_gpio_debounce_dev),
-		   NULL);
+	zassert_ok(
+		gpio_debounce_common_disable_interrupt(test_gpio_debounce_dev),
+		NULL);
 	gpio_pin_set_raw(cfg.spec.port, cfg.spec.pin, 0);
 	gpio_pin_set_raw(cfg.spec.port, cfg.spec.pin, 1);
 	zassert_equal(gpio_debounce_interrupt_called, false);
 
-	zassert_ok(cros_gpio_debounce_enable_interrupt(
+	zassert_ok(gpio_debounce_common_enable_interrupt(
 			   test_gpio_debounce_dev,
 			   test_gpio_debounce_cb_handler),
 		   NULL);
