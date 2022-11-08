@@ -16,6 +16,29 @@
       "message": "might need another tweak to address the polling status propagation discussion, let me look into that.",
       "revId": "5cbd6441376da1e8f5f848a23d0ea46e38d691e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5eae353_65bb475c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-08T23:09:19Z",
+      "side": 1,
+      "message": "Use CCD_VERSION since that\u0027s the ccd info version, and it defines how gsctool is mapping strings to ccd indices.",
+      "range": {
+        "startLine": 1795,
+        "startChar": 19,
+        "endLine": 1795,
+        "endChar": 20
+      },
+      "revId": "5cbd6441376da1e8f5f848a23d0ea46e38d691e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
