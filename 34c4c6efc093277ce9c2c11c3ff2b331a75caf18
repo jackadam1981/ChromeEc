@@ -70,6 +70,30 @@
       },
       "revId": "34c4c6efc093277ce9c2c11c3ff2b331a75caf18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e4b699_a72e323e",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-08T08:52:48Z",
+      "side": 1,
+      "message": "I can probably make it that way, right now you would need to do:\n```\nec_library(spi_flash_reg\n  HEADERS\n    public/spi_flash_reg.h\n  PUBLIC_INCLUDES\n    public\n)\ntarget_add_sources(spi_flash_reg PRIVATE src/spi_flash_reg.c)\ntarget_add_sources_ifdef(CONFIG_SHELL spi_flash_reg\n    PRIVATE src/spi_flash_reg_shell.c)\n```\n\nBut what I had in mind was something like:\n```\nec_library(spi_flash_reg ...)\nec_library_ifdef(spi_flash_reg_shell\n  SOURCES\n    src/spi_flash_reg_shell.c\n  PRIVATE_DEPS\n    spi_flash_reg\n)\n```\n\nThis forces the spi_flash_reg library to be functional without the shell command, but the shell command to require the spi_flash_reg library.",
+      "parentUuid": "05a8244e_66e67509",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "34c4c6efc093277ce9c2c11c3ff2b331a75caf18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
