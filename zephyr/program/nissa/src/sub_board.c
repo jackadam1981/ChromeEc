@@ -164,7 +164,7 @@ static void nereid_subboard_config(void)
 		 * such a configuration.
 		 */
 		gpio_pin_configure_dt(GPIO_DT_FROM_ALIAS(gpio_en_usb_a1_vbus),
-				      GPIO_OUTPUT_LOW);
+				      GPIO_OUTPUT);
 	} else {
 		/* Turn off unused pins */
 		gpio_pin_configure_dt(
