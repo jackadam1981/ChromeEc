@@ -22,6 +22,30 @@
       },
       "revId": "e6f4c17f158492dd21b42f43e5746b26e942a292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a57fde_753a086d",
+        "filename": "test/ftrapv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-08T17:02:45Z",
+      "side": 1,
+      "message": "Good suggestion. I added tests for the various operations. Turns out there is a bug in clang for absolute value: http://b/258074414. I think it makes sense to go ahead and submit since having checks for most operations is better than none.",
+      "parentUuid": "9f807c5d_dbe4cde5",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "e6f4c17f158492dd21b42f43e5746b26e942a292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
