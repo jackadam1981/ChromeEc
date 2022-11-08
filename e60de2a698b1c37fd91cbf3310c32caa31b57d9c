@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "227d25bd_383daa02",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1782,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-08T23:41:32Z",
+      "side": 1,
+      "message": "why is it better to move this to 1761?\n\nEither capability name or capability value could be wrong. The code verifies that the name is fine first, then it starts dealing with capbility valuie checks.",
+      "parentUuid": "14616dba_f5c61be9",
+      "range": {
+        "startLine": 1777,
+        "startChar": 0,
+        "endLine": 1782,
+        "endChar": 2
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35f36333_40b58cc4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-08T23:21:10Z",
       "side": 1,
       "message": "What happens if you try to run this with cr50?",
+      "range": {
+        "startLine": 3801,
+        "startChar": 4,
+        "endLine": 3801,
+        "endChar": 20
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc32465_70404fd0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-08T23:41:32Z",
+      "side": 1,
+      "message": "It will not connect to Cr50 because the USB devices mismatch.",
+      "parentUuid": "35f36333_40b58cc4",
       "range": {
         "startLine": 3801,
         "startChar": 4,
