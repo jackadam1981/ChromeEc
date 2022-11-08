@@ -92,6 +92,30 @@
       },
       "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9743c9_7e4404d6",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-11-08T20:07:36Z",
+      "side": 1,
+      "message": "yes, that is what I am thinking. I wouldn\u0027t want to add a new command for every capability we want to set.\n\nAlso this and the issue with `Done` and `Closed` may both solved by passing in what the new desired ccd capability we want to change is.",
+      "parentUuid": "d8fbd7fd_f8a78bbc",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 33
+      },
+      "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
