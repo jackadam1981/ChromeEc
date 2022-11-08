@@ -98,7 +98,7 @@ static const struct ccd_capability_info ti50_cap_info[] = {
 	{"OpenFromUSB", CCD_CAP_STATE_IF_OPENED},
 	{"OverrideBatt", CCD_CAP_STATE_IF_OPENED},
 	/* The below capability is presently set to 'never' in ccd.rs. */
-	{"BootUnverifiedRo", CCD_CAP_STATE_IF_OPENED},
+	{"AllowUnverifiedRo", CCD_CAP_STATE_IF_OPENED},
 };
 
 #define CR50_CCD_CAP_COUNT CCD_CAP_COUNT
@@ -426,10 +426,12 @@ static const struct option_container cmd_line_options[] = {
 	 "VID:PID%USB device (default 18d1:5014 or 18d1:504a based on image)"},
 	{{"endorsement_seed", optional_argument, NULL, 'e'},
 	 "[state]%get/set the endorsement key seed"},
-	{{"fwver", no_argument, NULL, 'f'},
-	 "Report running Cr50 firmware versions"},
 	{{"factory", required_argument, NULL, 'F'},
 	 "[enable|disable]%Control factory mode"},
+	{{"fwver", no_argument, NULL, 'f'},
+	 "Report running Cr50 firmware versions"},
+	{{"capability_set", required_argument, NULL, 'G'},
+	 "capability:value%set capability, if allowed"},
 	{{"getbootmode", no_argument, NULL, 'g'},
 	 "Get the system boot mode"},
 	{{"help", no_argument, NULL, 'h'},
@@ -1684,6 +1686,148 @@ static void invalidate_inactive_rw(struct transfer_descriptor *td)
 
 	fprintf(stderr, "*%s: Error %#x\n", __func__, rv);
 	exit(update_error);
+}
+
+/*
+ * Try setting CCD capability.
+ *
+ * The 'parameter' string includes capability and desired new state separated
+ * by a ':', both parts could be abbreviated and checked for the match as case
+ * insensitive.
+ *
+ * The result of the attempt depends on the policies installed on
+ * Ti50. The result could be on of the following:
+ *
+ * - success (capability is successfully changed, or is already at the
+ *   requested level),
+ * - various errors if setting the capability is not allowed or something
+ *   goes wrong on Ti50
+ * - request for physical presence confirmation
+ */
+static enum exit_values process_set_capabililty(struct transfer_descriptor *td,
+						const char *parameter)
+{
+	const char *colon;
+	size_t len;
+	size_t cap_index;
+	size_t i;
+	uint8_t rc;
+	const char *error_text;
+	/*
+	 * two bytes are sent, capability and desired state, both expressed as
+	 * u8
+	 */
+	uint8_t command[2];
+	/*
+	 * Translation table of possible desired capabilities, Cr50 values
+	 * and duplicated in common/syscalls/src/ccd.rs::CcdCapState.
+	 */
+	struct {
+		const char *state_name;
+		enum ccd_capability_state desired_state;
+	} states[] = {
+		{"default", CCD_CAP_STATE_DEFAULT},
+		{"always", CCD_CAP_STATE_ALWAYS},
+		{"if_opened", CCD_CAP_STATE_IF_OPENED},
+	};
+
+	/*
+	 * Possible responses from Ti50 when trying to modify AlloUnverifiedRo
+	 * capability. The values come from
+	 * common/libs/tpm2/extension/src/lib.rs::TpmvReturnCode.
+	 */
+	enum set_allow_unverified_ro_responses {
+		AUR_SUCCESS = 0,
+		AUR_BOGUS_ARGS = 1,
+		AUR_INTERNAL_ERROR = 6,
+		AUR_NOT_ALLOWED = 7,
+		AUR_IN_PROGRESS = 9,
+	};
+
+	colon = strchr(parameter, ':');
+	if (!colon) {
+		fprintf(stderr, "Misformatted capability parameter: %s\n",
+			parameter);
+		exit(update_error);
+	}
+
+	/*
+	 * Find the capability index in the table, reject ambiguous
+	 * abbreviations.
+	 */
+	len = colon - parameter;
+	for (i = 0, cap_index = ARRAY_SIZE(ti50_cap_info);
+	     i < ARRAY_SIZE(ti50_cap_info); i++) {
+		if (!strncasecmp(ti50_cap_info[i].name, parameter, len)) {
+			if (cap_index != ARRAY_SIZE(ti50_cap_info)) {
+				fprintf(stderr, "Ambiguous capability name\n");
+				exit(update_error);
+			}
+			cap_index = i;
+		}
+	}
+	if (cap_index == ARRAY_SIZE(ti50_cap_info)) {
+		fprintf(stderr, "Unknown capability name\n");
+		exit(update_error);
+	}
+
+	/* Calculate length of the desired value. */
+	len = strlen(parameter) - len - 1;
+	if (len == 0) {
+		fprintf(stderr, "Missing capability value\n");
+		return update_error;
+	}
+
+	/* Find the value index in the table. */
+	for (i = 0; i < ARRAY_SIZE(states); i++) {
+		if (!strncasecmp(states[i].state_name, colon + 1, len))
+			break;
+	}
+	if (i == ARRAY_SIZE(states)) {
+		fprintf(stderr, "Unsupported capability value\n");
+		return update_error;
+	}
+
+	/* Prepare and send vendor command to request setting capability. */
+	command[0] = (uint8_t)cap_index;
+	command[1] = (uint8_t)states[i].desired_state;
+
+	i = 0;
+	len = 1;
+	send_vendor_command(td, VENDOR_CC_SET_CAPABILITY,
+			    command, sizeof(command), command, &len);
+
+	if (len != 1) {
+		fprintf(stderr, "Unexpected return message size %zd\n", len);
+		return update_error;
+	}
+
+	rc = command[0];
+	switch (rc) {
+	case AUR_IN_PROGRESS:
+		/*
+		 * Physical presence poll is required, note fall through to
+		 * the next case.
+		 */
+		poll_for_pp(td, VENDOR_CC_CCD,
+			    CCDV_PP_POLL_ALLOW_UNVERIFIED_RO);
+	case AUR_SUCCESS:
+		return noop; /* All is well, no need to do anything. */
+	case AUR_BOGUS_ARGS:
+		error_text =  "BogusArgs";
+		break;
+	case AUR_INTERNAL_ERROR:
+		error_text = "InternalError";
+		break;
+	case AUR_NOT_ALLOWED:
+		error_text =  "NotAllowed";
+		break;
+	default:
+		error_text = "Unknown";
+		break;
+	}
+	fprintf(stderr, "Got error %d(%s)\n", command[0], error_text);
+	return update_error;
 }
 
 static void process_erase_ap_ro_hash(struct transfer_descriptor *td)
@@ -3547,6 +3691,8 @@ int main(int argc, char *argv[])
 	uint8_t sn_inc_rma_arg = 0;
 	int erase_ap_ro_hash = 0;
 	int is_dauntless = 0;
+	int set_capability = 0;
+	const char *capability_parameter = "";
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -3642,6 +3788,11 @@ int main(int argc, char *argv[])
 		case 'F':
 			factory_mode = 1;
 			factory_mode_arg = optarg;
+			break;
+		case 'G':
+			set_capability = 1;
+			capability_parameter = optarg;
+			is_dauntless = 1; /* Supported on Dauntless only. */
 			break;
 		case 'h':
 			usage(errorcnt);
@@ -3784,6 +3935,7 @@ int main(int argc, char *argv[])
 	    !erase_ap_ro_hash &&
 	    !password &&
 	    !rma &&
+	    !set_capability &&
 	    !show_fw_ver &&
 	    !sn_bits &&
 	    !sn_inc_rma &&
@@ -3859,6 +4011,9 @@ int main(int argc, char *argv[])
 	if (ccd_unlock || ccd_open || ccd_lock || ccd_info)
 		process_ccd_state(&td, ccd_unlock, ccd_open,
 				  ccd_lock, ccd_info);
+
+	if (set_capability)
+		exit(process_set_capabililty(&td, capability_parameter));
 
 	if (password)
 		process_password(&td);
