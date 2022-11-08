@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f905e3e_8db1aa3d",
+        "filename": "zephyr/projects/nissa/yaviks/fan.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:44:41Z",
+      "side": 1,
+      "message": "The legacy fan control in EC code not use when CONFIG_PLATFORM_EC_CUSTOM_FAN_CONTROL is enabled, some legacy EC variant remove those setting, but from zephyr device tree binding rpm_min, rpm_start, rpm_max is required.",
+      "parentUuid": "5660c0f2_9f41f0d5",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9abfc979_0675b006",
         "filename": "zephyr/projects/nissa/yaviks/fan.dtsi",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-04T06:34:02Z",
       "side": 1,
       "message": "I am not sure why the rpm_target has 2 entries.\nMy understanding is that this array is indexed by the fan number, so in\nthis system there should only be one fan, so only one entry in the rpm_target array IIUC.",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac15c4ec_434382aa",
+        "filename": "zephyr/projects/nissa/yaviks/fan.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:44:41Z",
+      "side": 1,
+      "message": "mmm.. I tried this before, but somehow it\u0027s work now.",
+      "parentUuid": "9abfc979_0675b006",
       "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "541f9bb6_669586ef",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:44:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b7630950_ec52f406",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3612ca1_abddddb8",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c5d10f1_dc73ed7a",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:44:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f3612ca1_abddddb8",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "404899af_51d452ea",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-11-04T06:34:02Z",
       "side": 1,
       "message": "Can skip assigning the variable, and just return the value directly.",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f716fa25_c0210144",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:44:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "404899af_51d452ea",
       "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f87bbe3_5afe258e",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:44:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f045f0b5_7d970204",
+      "range": {
+        "startLine": 97,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7b4dd46_fb9d3e0a",
@@ -122,6 +236,24 @@
       "writtenOn": "2022-11-04T06:34:02Z",
       "side": 1,
       "message": "So I am not sure why we are only enabling the stepping when the CPU is on or suspended.\nIf the CPU is turned off, it seems that the fan will remain wherever it was last set to. This could lead to a situation where the fan never turns off.\nMy thought should be that the fan control should run regardless of the\nstate of the CPU, but I am not sure exactly what the requirement is here.",
+      "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1736438d_f796eeb2",
+        "filename": "zephyr/projects/nissa/yaviks/src/thermal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2022-11-08T01:44:41Z",
+      "side": 1,
+      "message": "common/fan.c line:578 pwm_fan_stop will turn off fan when DUT suspend or shutdown,\nso I think we only enable fan when system is on is reasonable.",
+      "parentUuid": "d7b4dd46_fb9d3e0a",
       "revId": "95b90330bbbafbc951075573214c70fdca5dd7e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
