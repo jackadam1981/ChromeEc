@@ -68,6 +68,30 @@
       },
       "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8fbd7fd_f8a78bbc",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-08T18:18:17Z",
+      "side": 1,
+      "message": "You mean for the future when we allow to set other caps to non-default values?",
+      "parentUuid": "401c2724_28ca2659",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 33
+      },
+      "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
