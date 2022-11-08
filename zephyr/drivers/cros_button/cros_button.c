@@ -32,10 +32,10 @@ __weak int stub_gpio_pin_get_raw(const struct device *d, gpio_pin_t p)
 /* LCOV_EXCL_STOP */
 
 int cros_button_get_cfg(const struct device *dev,
-			struct cros_button_config *cfg)
+			struct gpio_debounce_config *cfg)
 {
 	if (dev->config) {
-		*cfg = *((struct cros_button_config *)dev->config);
+		*cfg = *((struct gpio_debounce_config *)dev->config);
 	}
 
 	return 0;
@@ -43,8 +43,8 @@ int cros_button_get_cfg(const struct device *dev,
 
 int cros_button_get_debounce_us(const struct device *dev, int *debounce_us)
 {
-	const struct cros_button_config *cfg =
-		(struct cros_button_config *)dev->config;
+	const struct gpio_debounce_config *cfg =
+		(struct gpio_debounce_config *)dev->config;
 
 	if (cfg) {
 		*debounce_us = cfg->debounce_us;
@@ -57,8 +57,8 @@ int cros_button_enable_interrupt(const struct device *dev,
 				 gpio_callback_handler_t button_cb)
 {
 	int retval = -ENODEV;
-	const struct cros_button_config *cfg =
-		(struct cros_button_config *)dev->config;
+	const struct gpio_debounce_config *cfg =
+		(struct gpio_debounce_config *)dev->config;
 	struct gpio_callback *cb;
 	gpio_flags_t flags;
 
@@ -79,8 +79,8 @@ int cros_button_enable_interrupt(const struct device *dev,
 int cros_button_disable_interrupt(const struct device *dev)
 {
 	int retval = -ENODEV;
-	const struct cros_button_config *cfg =
-		(struct cros_button_config *)dev->config;
+	const struct gpio_debounce_config *cfg =
+		(struct gpio_debounce_config *)dev->config;
 
 	if (cfg) {
 		retval = gpio_pin_interrupt_configure(
@@ -94,8 +94,8 @@ static int is_pressed(const struct device *dev,
 		      int (*gpio_pin_get_fn)(const struct device *, gpio_pin_t))
 {
 	int pressed = 0;
-	const struct cros_button_config *cfg =
-		(struct cros_button_config *)dev->config;
+	const struct gpio_debounce_config *cfg =
+		(struct gpio_debounce_config *)dev->config;
 
 	if (cfg) {
 		pressed = gpio_pin_get_fn(cfg->spec.port, cfg->spec.pin);

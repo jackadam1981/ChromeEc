@@ -13,7 +13,7 @@ struct gpio_debounce_data {
 	struct gpio_callback cb_data;
 };
 
-struct cros_button_config {
+struct gpio_debounce_config {
 	uint32_t type;
 	uint32_t debounce_us;
 	struct gpio_dt_spec spec;
@@ -28,7 +28,7 @@ struct cros_button_config {
 
 __subsystem struct cros_button_api {
 	int (*get_config)(const struct device *dev,
-			  struct cros_button_config *cfg);
+			  struct gpio_debounce_config *cfg);
 	int (*get_debounce_us)(const struct device *dev, int *debounce_us);
 	int (*enable_interrupt)(const struct device *dev,
 				gpio_callback_handler_t cb);
@@ -46,10 +46,10 @@ __subsystem struct cros_button_api {
  * @return 0 If successful
  */
 __syscall int button_get_config(const struct device *dev,
-				struct cros_button_config *cfg);
+				struct gpio_debounce_config *cfg);
 
 static inline int z_impl_button_get_config(const struct device *dev,
-					   struct cros_button_config *cfg)
+					   struct gpio_debounce_config *cfg)
 {
 	const struct cros_button_api *api =
 		(const struct cros_button_api *)dev->api;

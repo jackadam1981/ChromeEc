@@ -12,7 +12,7 @@
 #include "drivers/cros_button.h"
 
 int cros_button_get_cfg(const struct device *dev,
-			struct cros_button_config *cfg);
+			struct gpio_debounce_config *cfg);
 int cros_button_get_debounce_us(const struct device *dev, int *debounce_us);
 
 int cros_button_enable_interrupt(const struct device *dev,

@@ -80,7 +80,7 @@ ZTEST_SUITE(cros_button, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
  */
 ZTEST(cros_button, test_button_config)
 {
-	struct cros_button_config button;
+	struct gpio_debounce_config button;
 
 	cros_button_get_cfg(test_button_dev, &button);
 
@@ -158,7 +158,7 @@ void test_button_cb_handler(const struct device *dev,
 
 ZTEST(cros_button, test_button_interrupt)
 {
-	struct cros_button_config cfg;
+	struct gpio_debounce_config cfg;
 
 	cros_button_get_cfg(test_button_dev, &cfg);
 
