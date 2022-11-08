@@ -16,6 +16,24 @@
       "message": "The \"relevant changes\" list is empty, so I\u0027m curious - why is this merge needed?",
       "revId": "87e8efc8cbb627cb78690f62135020fb4bf01a6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ddc989_9917f59a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-11-08T02:01:08Z",
+      "side": 1,
+      "message": "The change I need is:\nkuldax: modify ADC channel 3 configuration\n\nIt didn\u0027t show up because I used --baseboard\u003dbrya, maybe I should use --baseboard\u003dbrask?",
+      "parentUuid": "7661299d_7094a23e",
+      "revId": "87e8efc8cbb627cb78690f62135020fb4bf01a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
