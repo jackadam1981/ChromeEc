@@ -94,6 +94,30 @@
       },
       "revId": "34c4c6efc093277ce9c2c11c3ff2b331a75caf18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8661ccb0_b97b3c5f",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-08T16:26:24Z",
+      "side": 1,
+      "message": "I like option 1 above.  This leverages existing Cmake functions `target_add_sources()`, and make the library definition focus on the actual public interface.\n\nCreating a separate library for each Kconfig option that adds to a driver/subsystem seems like overkill.",
+      "parentUuid": "c6e4b699_a72e323e",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "34c4c6efc093277ce9c2c11c3ff2b331a75caf18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
