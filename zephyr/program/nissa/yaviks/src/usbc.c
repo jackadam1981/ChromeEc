@@ -367,3 +367,12 @@ int pd_snk_is_vbus_provided(int port)
 
 	return chg_det;
 }
+
+/*
+ * Yaviks only has 1 sub board, always return NISSA_SB_C_A.
+ */
+__override enum nissa_sub_board_type nissa_get_sb_type(void)
+{
+	LOG_INF("SB: USB type C, USB type A");
+	return NISSA_SB_C_A;
+}
