@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbacb4e7_c26145f4",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-08T21:22:39Z",
+      "side": 1,
+      "message": "good idea, as this makes better sence than using \u0027G\u0027 as a separate short option.\n\nBut in general there is no problem with shortage of short options - we can use any value for short options, including noneprintable characters. This would just mean that some command line options do not have a short form whcih can be used on the console, (and as sucn no `-\u003cchar\u003e` option), but the rest of the code will work fine.",
+      "parentUuid": "3a0a5cbc_d930f321",
+      "range": {
+        "startLine": 433,
+        "startChar": 46,
+        "endLine": 433,
+        "endChar": 49
+      },
+      "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49f113a9_68ff4cca",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-08T15:32:11Z",
       "side": 1,
       "message": "The command should include ccd_version, so ti50 could decide to reject the command if gsctool is using the wrong ccd info layout.",
+      "range": {
+        "startLine": 1791,
+        "startChar": 0,
+        "endLine": 1791,
+        "endChar": 69
+      },
+      "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11d5a1f_8c27f10a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1791,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-08T21:22:39Z",
+      "side": 1,
+      "message": "right, we want to be ablt support  more chips in the future, added a version field.",
+      "parentUuid": "49f113a9_68ff4cca",
       "range": {
         "startLine": 1791,
         "startChar": 0,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "yes, that is what I am thinking. I wouldn\u0027t want to add a new command for every capability we want to set.\n\nAlso this and the issue with `Done` and `Closed` may both solved by passing in what the new desired ccd capability we want to change is.",
       "parentUuid": "d8fbd7fd_f8a78bbc",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 33
+      },
+      "revId": "b8d927f39c13709654c73a00123a656698fe9a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e0ca1f_f94d711c",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-08T21:22:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a9743c9_7e4404d6",
       "range": {
         "startLine": 223,
         "startChar": 1,
