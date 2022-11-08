@@ -9,7 +9,7 @@
 #include <zephyr/logging/log.h>
 
 #include "cros_button.h"
-#include "drivers/cros_button.h"
+#include "drivers/gpio_debounce.h"
 #include "gpio/gpio.h"
 #include "gpio/gpio_int.h"
 

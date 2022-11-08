@@ -9,7 +9,7 @@
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
 
-#include "drivers/cros_button.h"
+#include "drivers/gpio_debounce.h"
 
 int cros_gpio_debounce_get_cfg(const struct device *dev,
 			       struct gpio_debounce_config *cfg);

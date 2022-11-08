@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
-#ifndef ZEPHYR_INCLUDE_DRIVERS_CROS_BUTTON_H
-#define ZEPHYR_INCLUDE_DRIVERS_CROS_BUTTON_H
+#ifndef ZEPHYR_INCLUDE_DRIVERS_GPIO_DEBOUNCE_H
+#define ZEPHYR_INCLUDE_DRIVERS_GPIO_DEBOUNCE_H
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
@@ -154,6 +154,6 @@ static inline int z_impl_gpio_debounce_get_pin_raw(const struct device *dev)
 	return api->get_pin_raw(dev);
 }
 
-#include <syscalls/cros_button.h>
+#include <syscalls/gpio_debounce.h>
 
-#endif /* ZEPHYR_INCLUDE_DRIVERS_CROS_BUTTON_H */
+#endif /* GPIO_DEBOUNCE */

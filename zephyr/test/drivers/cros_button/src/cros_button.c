@@ -13,7 +13,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
 
-#include "drivers/cros_button.h"
+#include "drivers/gpio_debounce.h"
 #include "common.h"
 #include "ec_tasks.h"
 #include "hooks.h"
