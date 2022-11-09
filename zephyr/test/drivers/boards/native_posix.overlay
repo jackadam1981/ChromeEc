@@ -60,6 +60,7 @@
 			chg = <&isl923x_emul>;
 			tcpc = <&tcpci_emul>;
 			ppc = <&sn5s330_emul>;
+			bc12 = <&pi3usb9201_emul>;
 		};
 
 		port1@1 {
@@ -67,6 +68,7 @@
 			reg = <1>;
 			tcpc = <&ps8xxx_emul>;
 			ppc = <&syv682x_emul>;
+			bc12 = <&bc12_port1_emul>;
 		};
 	};
 
@@ -783,7 +785,7 @@
 		reg = <0x500 4>;
 
 		pi3usb9201_emul: pi3usb9201@5f {
-			compatible = "zephyr,pi3usb9201-emul";
+			compatible = "pericom,pi3usb9201";
 			reg = <0x5f>;
 		};
 
@@ -831,6 +833,11 @@
 			p0-i2c-addr = <0x8>;
 			p1-i2c-addr = <0x9>;
 			gpio-i2c-addr = <0x1a>;
+		};
+
+		bc12_port1_emul: pi3usb9201@5f {
+			compatible = "pericom,pi3usb9201";
+			reg = <0x5f>;
 		};
 	};
 
