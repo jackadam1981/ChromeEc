@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2804c3_e15124f1",
+        "filename": "zephyr/program/skyrim/src/frostflow/usb_mux_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-09T16:03:42Z",
+      "side": 1,
+      "message": "I\u0027m not totally certain I understand the intent here.  Will boards only have this mux?  Or at some point in the future, will the FW_CONFIG indicate that some boards have this mux, and others do not?",
+      "revId": "6dc0ace667de96d5ea95ab0777268d49a1ea5d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
