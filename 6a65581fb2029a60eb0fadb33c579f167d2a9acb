@@ -16,6 +16,24 @@
       "message": "I tried a few options here adding to the compile options but I can\u0027t get this to work so far. I thought that `-ftrapping-math` looked pretty promising, though I\u0027m still getting `1 / 0 \u003d\u003e 0`",
       "revId": "6a65581fb2029a60eb0fadb33c579f167d2a9acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2c44b6_f2001d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-09T15:05:48Z",
+      "side": 1,
+      "message": "OK, after doing more extensive research last night I believe that this should be taken out of our code base. The best and most detailed source I found was this discussion on llvm-dev (https://groups.google.com/g/llvm-dev/c/1FOyTcEJ3FI). Basically there\u0027s zero guarantee that `1 / 0` will trap and it sounds like no compiler will ever want to support that because it is an optimization nightmare.",
+      "parentUuid": "d5d067f9_46e04558",
+      "revId": "6a65581fb2029a60eb0fadb33c579f167d2a9acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
