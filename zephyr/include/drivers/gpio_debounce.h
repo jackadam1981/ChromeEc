@@ -8,9 +8,16 @@
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/kernel.h>
 
 struct gpio_debounce_data {
+	const struct device *dev;
+	gpio_callback_handler_t callback;
 	struct gpio_callback cb_data;
+	struct k_work_delayable work;
+	uint32_t debounce_us;
+	int pin_state;
+	int is_stable;
 };
 
 struct gpio_debounce_config {

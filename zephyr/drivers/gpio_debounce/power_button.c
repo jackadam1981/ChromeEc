@@ -18,14 +18,13 @@
 
 #define DT_DRV_COMPAT cros_ec_power_button
 
-LOG_MODULE_REGISTER(power_button, LOG_LEVEL_ERR);
+LOG_MODULE_REGISTER(power_button, LOG_LEVEL_INF);
 
 const struct device *power_button_dev =
 	DEVICE_DT_GET(DT_NODELABEL(cros_power_button));
 
 static int debounced_power_pressed; /* Debounced power button state */
 static int simulate_power_pressed;
-static volatile int power_button_is_stable = 1;
 
 static int power_button_signal_asserted(const struct device *dev)
 {
@@ -34,7 +33,7 @@ static int power_button_signal_asserted(const struct device *dev)
 	gpio_debounce_get_config(dev, &cfg);
 
 	const int is_active_high =
-		((cfg.spec.dt_flags & GPIO_ACTIVE_HIGH) ? 1 : 0);
+		((cfg.spec.dt_flags & GPIO_ACTIVE_LOW) ? 0 : 1);
 
 	return gpio_debounce_get_pin_raw(dev) == is_active_high;
 }
@@ -67,9 +66,9 @@ int power_button_wait_for_release(int timeout_us)
 
 	gpio_debounce_get_debounce_us(power_button_dev, &debounce_us);
 
-	released = WAIT_FOR(
-		!(!power_button_is_stable || power_button_is_pressed()),
-		timeout_us, task_wait_event(MIN(timeout_us, debounce_us)));
+	LOG_INF("%s - wait for release", power_button_dev->name);
+	released = WAIT_FOR(!(power_button_is_pressed()), timeout_us,
+			    task_wait_event(MIN(timeout_us, debounce_us)));
 
 	if (released) {
 		LOG_INF("%s released in time", power_button_dev->name);
@@ -83,19 +82,11 @@ int power_button_wait_for_release(int timeout_us)
 /**
  * Handle debounced power button changing state.
  */
-static void power_button_change_deferred(struct k_work *work)
+static void power_button_changed(void)
 {
-	ARG_UNUSED(work);
 	const int new_pressed = raw_power_button_pressed(power_button_dev);
 
-	/* If power button hasn't changed state, nothing to do */
-	if (new_pressed == debounced_power_pressed) {
-		power_button_is_stable = 1;
-		return;
-	}
-
 	debounced_power_pressed = new_pressed;
-	power_button_is_stable = 1;
 
 	LOG_INF("%s %s", power_button_dev->name,
 		new_pressed ? "pressed" : "released");
@@ -108,33 +99,10 @@ static void power_button_change_deferred(struct k_work *work)
 		host_set_single_event(EC_HOST_EVENT_POWER_BUTTON);
 }
 
-static K_WORK_DELAYABLE_DEFINE(power_button_change_deferred_data,
-			       power_button_change_deferred);
-
-void power_button_change_call_deferred(uint32_t usec)
-{
-	int rv;
-
-	rv = k_work_schedule(&power_button_change_deferred_data, K_USEC(usec));
-	if (rv == 0) {
-		rv = k_work_reschedule(&power_button_change_deferred_data,
-				       K_USEC(usec));
-	}
-	__ASSERT(rv >= 0, "Set wake mask work queue error");
-}
-
 void power_button_interrupt(const struct device *dev,
 			    struct gpio_callback *cbdata, uint32_t pins)
 {
-	ARG_UNUSED(dev); /* GPIO device node type */
-	int debounce_us;
-
-	LOG_ERR("Power Button %s pressed", power_button_dev->name);
-	gpio_debounce_get_debounce_us(power_button_dev, &debounce_us);
-
-	/* Reset power button debounce time */
-	power_button_is_stable = 0;
-	power_button_change_call_deferred(debounce_us);
+	power_button_changed();
 }
 
 void power_button_simulate_press(unsigned int duration)
@@ -142,16 +110,14 @@ void power_button_simulate_press(unsigned int duration)
 	LOG_INF("Simulating %d ms %s press.\n", duration,
 		power_button_dev->name);
 	simulate_power_pressed = 1;
-	power_button_is_stable = 0;
-	power_button_change_call_deferred(0);
+	power_button_changed();
 
 	if (duration > 0)
 		k_sleep(K_MSEC(duration));
 
 	LOG_INF("Simulating %s release.\n", power_button_dev->name);
 	simulate_power_pressed = 0;
-	power_button_is_stable = 0;
-	power_button_change_call_deferred(0);
+	power_button_changed();
 }
 
 /**
@@ -159,6 +125,13 @@ void power_button_simulate_press(unsigned int duration)
  */
 static int power_button_init(const struct device *dev)
 {
+	struct gpio_debounce_data *data =
+		(struct gpio_debounce_data *)dev->data;
+
+	data->dev = dev;
+	data->pin_state = -1;
+	data->is_stable = 0;
+
 	if (raw_power_button_pressed(dev))
 		debounced_power_pressed = 1;
 

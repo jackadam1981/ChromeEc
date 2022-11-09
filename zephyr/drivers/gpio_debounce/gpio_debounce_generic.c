@@ -19,6 +19,13 @@ LOG_MODULE_REGISTER(gpio_debounce_generic, LOG_LEVEL_ERR);
 
 static int gpio_debounce_generic_init(const struct device *dev)
 {
+	struct gpio_debounce_data *data =
+		(struct gpio_debounce_data *)dev->data;
+
+	data->dev = dev;
+	data->pin_state = -1;
+	data->is_stable = 0;
+
 	return 0;
 }
 
