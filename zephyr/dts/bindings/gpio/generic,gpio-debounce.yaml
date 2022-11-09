@@ -5,16 +5,16 @@
 include: base.yaml
 
 description: |
-  Button config.
+  GPIO Debounce.
    - Name
    - Type
    - GPIO handle
    - Debounce time (us)
    - Flags
 
-compatible: "cros-ec,button"
+compatible: "generic,gpio-debounce"
 
-description: Button configuration
+description: GPIO Debounce configuration
 properties:
   button_type:
     type: int

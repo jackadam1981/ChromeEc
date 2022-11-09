@@ -970,7 +970,7 @@
 		debounce_us = <30000>;
 	};
 	test_button: test_button {
-		compatible = "cros-ec,button";
+		compatible = "generic,gpio-debounce";
 		button_type = <1>;
 		gpios = <&gpio0 27 (GPIO_ACTIVE_LOW)>;
 		debounce_us = <30000>;

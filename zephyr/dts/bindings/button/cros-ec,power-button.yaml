@@ -8,4 +8,4 @@ description: |
 
 compatible: "cros-ec,power-button"
 
-include: cros-ec,button.yaml
+include: generic,gpio-debounce.yaml

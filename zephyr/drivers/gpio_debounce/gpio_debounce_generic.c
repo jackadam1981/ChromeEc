@@ -15,7 +15,7 @@
 
 LOG_MODULE_REGISTER(gpio_debounce_generic, LOG_LEVEL_ERR);
 
-#define DT_DRV_COMPAT cros_ec_button
+#define DT_DRV_COMPAT generic_gpio_debounce
 
 static int gpio_debounce_generic_init(const struct device *dev)
 {

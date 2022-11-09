@@ -3,5 +3,5 @@
 # found in the LICENSE file.
 
 zephyr_library_sources(gpio_debounce_common.c)
-zephyr_library_sources_ifdef(CONFIG_DT_HAS_CROS_EC_BUTTON_ENABLED gpio_debounce_generic.c)
+zephyr_library_sources_ifdef(CONFIG_DT_HAS_GENERIC_GPIO_DEBOUNCE_ENABLED gpio_debounce_generic.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWER_BUTTON_V2 power_button.c)
