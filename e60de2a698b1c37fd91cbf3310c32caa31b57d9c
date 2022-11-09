@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "913f8926_1125b6da",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1782,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-09T16:46:21Z",
+      "side": 1,
+      "message": "If you supply \":always\" or \":\" as the parameter, it\u0027ll fail with \"Ambiguous capability name\" which is confusing. It should fail with \"Missing capability value.\"",
+      "parentUuid": "227d25bd_383daa02",
+      "range": {
+        "startLine": 1777,
+        "startChar": 0,
+        "endLine": 1782,
+        "endChar": 2
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d693c282_a18559da",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 7
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "It will not connect to Cr50 because the USB devices mismatch.",
       "parentUuid": "35f36333_40b58cc4",
+      "range": {
+        "startLine": 3801,
+        "startChar": 4,
+        "endLine": 3801,
+        "endChar": 20
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ecc28e_fa53334c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-09T16:46:21Z",
+      "side": 1,
+      "message": "Does the same thing happen from the AP?",
+      "parentUuid": "ddc32465_70404fd0",
       "range": {
         "startLine": 3801,
         "startChar": 4,
