@@ -57,6 +57,7 @@
 		port0@0 {
 			compatible = "named-usbc-port";
 			reg = <0>;
+			bc12 = <&pi3usb9201_emul0>;
 			chg = <&isl923x_emul>;
 			tcpc = <&tcpci_emul>;
 			ppc = <&sn5s330_emul>;
@@ -65,6 +66,7 @@
 		port1@1 {
 			compatible = "named-usbc-port";
 			reg = <1>;
+			bc12 = <&pi3usb9201_emul1>;
 			tcpc = <&ps8xxx_emul>;
 			ppc = <&syv682x_emul>;
 		};
@@ -241,6 +243,12 @@
 		gpio_ec_cbi_wp: ec_cbi_wp {
 			gpios = <&gpio1 9 GPIO_OUTPUT>;
 		};
+		gpio_usb_c0_bc12_int_l: usb_c0_bc12_int_l {
+			gpios = <&gpio1 9 GPIO_INPUT_PULL_UP>;
+		};
+		gpio_usb_c1_bc12_int_l: usb_c1_bc12_int_l {
+			gpios = <&gpio1 10 GPIO_INPUT_PULL_UP>;
+		};
 	};
 
 	gpio1: gpio@101 {
@@ -253,7 +261,7 @@
 		low-level;
 		gpio-controller;
 		#gpio-cells = <2>;
-		ngpios = <10>;
+		ngpios = <12>;
 	};
 
 	gpio-interrupts {
@@ -313,6 +321,16 @@
 			irq-pin = <&gpio_wp_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "switch_interrupt";
+		};
+		int_usb_c0_bc12: usb_c0_bc12 {
+			irq-pin = <&gpio_usb_c0_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb0_evt";
+		};
+		int_usb_c1_bc12: usb_c1_bc12 {
+			irq-pin = <&gpio_usb_c1_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb1_evt";
 		};
 	};
 
@@ -755,6 +773,13 @@
 		#size-cells = <0>;
 		reg = <0x400 4>;
 
+		pi3usb9201_emul1: pi3usb9201@5f {
+			compatible = "pericom,pi3usb9201";
+			status = "okay";
+			reg = <0x5d>;
+			irq = <&int_usb_c1_bc12>;
+		};
+
 		tcs_emul: tcs@39 {
 			compatible = "zephyr,tcs3400";
 			reg = <0x39>;
@@ -781,11 +806,6 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		reg = <0x500 4>;
-
-		pi3usb9201_emul: pi3usb9201@5f {
-			compatible = "zephyr,pi3usb9201-emul";
-			reg = <0x5f>;
-		};
 
 		sn5s330_emul: sn5s330@40 {
 			compatible = "cros,sn5s330-emul";
@@ -1022,6 +1042,14 @@
 };
 
 &i2c0 {
+
+	pi3usb9201_emul0: pi3usb9201@5f {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5f>;
+		irq = <&int_usb_c0_bc12>;
+	};
+
 	cbi_eeprom: eeprom@56 {
 		compatible = "atmel,at24";
 		reg = <0x56>;

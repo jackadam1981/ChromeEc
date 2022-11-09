@@ -15,8 +15,6 @@
 #include "usbc/utils.h"
 #include "i2c/i2c.h"
 
-#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
-
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) > 0,
 	     "No compatible BC1.2 instance found");
 
@@ -41,7 +39,8 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 
 static void bc12_enable_irqs(void){
 	DT_INST_FOREACH_STATUS_OKAY(BC12_GPIO_ENABLE_INTERRUPT)
-} DECLARE_HOOK(HOOK_INIT, bc12_enable_irqs, HOOK_PRIO_DEFAULT);
+}
+DECLARE_HOOK(HOOK_INIT, bc12_enable_irqs, HOOK_PRIO_DEFAULT);
 
 #if DT_INST_NODE_HAS_PROP(0, irq)
 void usb0_evt(enum gpio_signal signal)
@@ -56,5 +55,3 @@ void usb1_evt(enum gpio_signal signal)
 	usb_charger_task_set_event(1, USB_CHG_EVENT_BC12);
 }
 #endif
-
-#endif /* DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT) */

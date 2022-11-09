@@ -12,7 +12,7 @@
 /**
  * @brief Semaphore that signals when hooks have completed
  */
-static struct k_sem init_hooks_completed;
+K_SEM_DEFINE(init_hooks_completed, 0, 1);
 
 /**
  * @brief Hook callback function. Gets registered with the lowest priority so
@@ -37,8 +37,6 @@ bool drivers_predicate_post_main(const void *state)
 
 void test_main(void)
 {
-	k_sem_init(&init_hooks_completed, 0, 1);
-
 	struct test_state state = {
 		.ec_app_main_run = false,
 	};
@@ -54,7 +52,8 @@ void test_main(void)
  * with this mechanism, so proceed normally in this case.
  */
 #if !IS_ENABLED(CONFIG_POWER_SEQUENCE_MOCK)
-	zassert_ok(k_sem_take(&init_hooks_completed, K_SECONDS(10)),
+	zassert_ok(WAIT_FOR(k_sem_take(&init_hooks_completed, K_NO_WAIT),
+			    1000000, k_msleep(500)),
 		   "Timed out waiting for hooks to finish");
 #endif /* !IS_ENABLED(CONFIG_POWER_SEQUENCE_MOCK) */
 

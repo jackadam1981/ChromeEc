@@ -123,4 +123,7 @@ config LINK_TEST_SUITE_CONSOLE
 	bool "Link and test the console tests"
 	select UART_INTERRUPT_DRIVEN
 
+config LINK_TEST_SUITE_PI3USB9201
+	bool "Link and test the pi3usb9201 tests"
+
 source "Kconfig.zephyr"
