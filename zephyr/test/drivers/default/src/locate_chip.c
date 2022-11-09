@@ -31,7 +31,7 @@ ZTEST_USER(locate_chip, test_hc_locate_chip_tcpc)
 	zassert_equal(ret, EC_RES_SUCCESS, "Unexpected return value: %d", ret);
 	zassert_equal(r.bus_type, EC_BUS_TYPE_I2C, "Unexpected bus_type: %d",
 		      r.bus_type);
-	zassert_equal(r.i2c_info.port, 2, "Unexpected port: %d",
+	zassert_equal(r.i2c_info.port, 0, "Unexpected port: %d",
 		      r.i2c_info.port);
 	zassert_equal(r.i2c_info.addr_flags, 0x82, "Unexpected addr_flags: %d",
 		      r.i2c_info.addr_flags);
@@ -44,7 +44,7 @@ ZTEST_USER(locate_chip, test_hc_locate_chip_tcpc)
 	zassert_equal(ret, EC_RES_SUCCESS, "Unexpected return value: %d", ret);
 	zassert_equal(r.bus_type, EC_BUS_TYPE_I2C, "Unexpected bus_type: %d",
 		      r.bus_type);
-	zassert_equal(r.i2c_info.port, 3, "Unexpected port: %d",
+	zassert_equal(r.i2c_info.port, 1, "Unexpected port: %d",
 		      r.i2c_info.port);
 	zassert_equal(r.i2c_info.addr_flags, 0x0b, "Unexpected addr_flags: %d",
 		      r.i2c_info.addr_flags);
