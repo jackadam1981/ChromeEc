@@ -5,6 +5,8 @@
 
 #include "config.h"
 #include "hooks.h"
+#include "shimmed_task_id.h"
+#include "task.h"
 #include "watchdog.h"
 
 #include <zephyr/device.h>
@@ -22,8 +24,13 @@ extern bool wdt_warning_triggered;
 
 static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 {
+#ifdef CONFIG_RISCV
+	printk("WDT pre-warning MEPC:0x%08lx TASK_ID:%d\n", csr_read(mepc),
+	       task_get_current());
+#else
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close!\n");
+#endif
 #ifdef TEST_BUILD
 	wdt_warning_triggered = true;
 #endif
