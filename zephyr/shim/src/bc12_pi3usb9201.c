@@ -15,8 +15,6 @@
 #include "usbc/utils.h"
 #include "i2c/i2c.h"
 
-#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
-
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) > 0,
 	     "No compatible BC1.2 instance found");
 
@@ -38,6 +36,22 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) > 0,
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	DT_FOREACH_STATUS_OKAY(named_usbc_port, BC12_CHIP)
 };
+BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == 2);
+
+static void bc12_runtime_asserts(void)
+{
+	__ASSERT(pi3usb9201_bc12_chips[0].i2c_port == I2C_PORT_USB_C0,
+		 "Expected %d, but got %d", I2C_PORT_USB_C0,
+		 pi3usb9201_bc12_chips[0].i2c_port);
+	__ASSERT(pi3usb9201_bc12_chips[1].i2c_port == I2C_PORT_USB_C1,
+		 "Expected %d, but got %d", I2C_PORT_USB_C1,
+		 pi3usb9201_bc12_chips[1].i2c_port);
+	__ASSERT_NO_MSG(pi3usb9201_bc12_chips[0].i2c_addr_flags ==
+			PI3USB9201_I2C_ADDR_3_FLAGS);
+	__ASSERT_NO_MSG(pi3usb9201_bc12_chips[1].i2c_addr_flags ==
+			PI3USB9201_I2C_ADDR_1_FLAGS);
+}
+DECLARE_HOOK(HOOK_INIT, bc12_runtime_asserts, HOOK_PRIO_DEFAULT);
 
 static void bc12_enable_irqs(void){
 	DT_INST_FOREACH_STATUS_OKAY(BC12_GPIO_ENABLE_INTERRUPT)
@@ -56,5 +70,3 @@ void usb1_evt(enum gpio_signal signal)
 	usb_charger_task_set_event(1, USB_CHG_EVENT_BC12);
 }
 #endif
-
-#endif /* DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT) */
