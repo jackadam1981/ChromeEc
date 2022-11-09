@@ -1,11 +1,36 @@
-description: USBC BC1.2
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Pericom PI3USB9201, Dual-Role USB Charging-Type Detector
 
 compatible: "pericom,pi3usb9201"
 
-include: base.yaml
+include: [base.yaml, i2c-device.yaml]
 
 properties:
-  irq:
-    type: phandles
-    description: |
-        GPIO interrupt from BC1.2
+    intb-gpios:
+      type: phandle
+      required: false
+      description: |
+        GPIO input connected to the active low interrupt INTB pin on the PI39201.
+
+    enable-gpios:
+      type: phandle
+      required: false
+      description: |
+        GPIO output connected to the system enable ENB pin on the PI39201.
+
+    always-powered:
+      type: boolean
+      required: false
+      description: |
+        If true, this PI3USB9201 device is always powered.
+        FIXME - move to common bc1.2 handler?
+
+    client-mode-only:
+      type: boolean
+      required: false
+      description: |
+        If true, this PI3USB9201 device only supports client-mode operation. If
+        false, then both host-mode and client-mode operation is supported.
