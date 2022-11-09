@@ -9,6 +9,7 @@
  */
 
 #include <zephyr/device.h>
+#include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
@@ -25,52 +26,9 @@ LOG_MODULE_REGISTER(gpio_debounce_cfg_test, LOG_LEVEL_INF);
 const struct device *test_gpio_debounce_dev =
 	DEVICE_DT_GET(DT_NODELABEL(test_button));
 
-int stub_gpio_debounce_state;
-int stub_get_gpio_debounce_state(const struct device *d, gpio_pin_t p)
-{
-	ARG_UNUSED(d);
-	ARG_UNUSED(p);
-	return stub_gpio_debounce_state;
-}
-
-FAKE_VALUE_FUNC(int, stub_gpio_pin_get, const struct device *, gpio_pin_t);
-FAKE_VALUE_FUNC(int, stub_gpio_pin_get_raw, const struct device *, gpio_pin_t);
-
-#define BUTTON_CFG_LIST(FAKE)                \
-	{                                    \
-		FAKE(stub_gpio_pin_get);     \
-		FAKE(stub_gpio_pin_get_raw); \
-	}
-
-static void test_gpio_debounce_cfg_reset(void)
-{
-	BUTTON_CFG_LIST(RESET_FAKE);
-
-	FFF_RESET_HISTORY();
-
-	stub_gpio_debounce_state = 0;
-	stub_gpio_pin_get_fake.custom_fake = gpio_pin_get;
-	stub_gpio_pin_get_raw_fake.custom_fake = gpio_pin_get_raw;
-}
-
-static void cros_gpio_debounce__rule(const struct ztest_unit_test *test,
-				     void *data)
-{
-	ARG_UNUSED(test);
-	ARG_UNUSED(data);
-
-	test_gpio_debounce_cfg_reset();
-}
-
-ZTEST_RULE(cros_gpio_debounce_rule, cros_gpio_debounce__rule,
-	   cros_gpio_debounce__rule);
-
-/**
- * Make sure mocks are setup before HOOK(HOOK_PRIO_INIT_POWER_BUTTON) runs
- * otherwise unexpected calls to mocks above occur prevent default
- * gpio_pin_get behavior
- */
-DECLARE_HOOK(HOOK_INIT, test_gpio_debounce_cfg_reset, HOOK_PRIO_FIRST);
+#define GPIO_DEVICE \
+	DEVICE_DT_GET(DT_GPIO_CTLR(DT_PATH(named_gpios, test), gpios))
+#define TEST_PIN DT_GPIO_PIN(DT_PATH(named_gpios, test), gpios)
 
 /**
  * @brief Test Suite: Verifies gpio_debounce_config functionality.
@@ -103,15 +61,12 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_config)
  */
 ZTEST(cros_gpio_debounce, test_gpio_debounce_pressed)
 {
-	stub_gpio_pin_get_fake.custom_fake = stub_get_gpio_debounce_state;
+	static const struct device *gpio_dev = GPIO_DEVICE;
 
-	stub_gpio_debounce_state = 1;
+	zassert_ok(gpio_emul_input_set(gpio_dev, TEST_PIN, 1));
 	zassert_equal(1, gpio_debounce_common_get_pin(test_gpio_debounce_dev));
 
-	stub_gpio_debounce_state = 0;
-	zassert_equal(0, gpio_debounce_common_get_pin(test_gpio_debounce_dev));
-
-	stub_gpio_debounce_state = -1;
+	zassert_ok(gpio_emul_input_set(gpio_dev, TEST_PIN, 0));
 	zassert_equal(0, gpio_debounce_common_get_pin(test_gpio_debounce_dev));
 }
 
@@ -121,17 +76,13 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_pressed)
  */
 ZTEST(cros_gpio_debounce, test_gpio_debounce_pressed_raw)
 {
-	stub_gpio_pin_get_raw_fake.custom_fake = stub_get_gpio_debounce_state;
+	static const struct device *gpio_dev = GPIO_DEVICE;
 
-	stub_gpio_debounce_state = 1;
+	zassert_ok(gpio_emul_input_set(gpio_dev, TEST_PIN, 1));
 	zassert_equal(1,
 		      gpio_debounce_common_get_pin_raw(test_gpio_debounce_dev));
 
-	stub_gpio_debounce_state = 0;
-	zassert_equal(0,
-		      cros_gpio_debounce_get_pin_raw(test_gpio_debounce_dev));
-
-	stub_gpio_debounce_state = -1;
+	zassert_ok(gpio_emul_input_set(gpio_dev, TEST_PIN, 0));
 	zassert_equal(0,
 		      gpio_debounce_common_get_pin_raw(test_gpio_debounce_dev));
 }
@@ -166,6 +117,7 @@ void test_gpio_debounce_cb_handler(const struct device *dev,
 ZTEST(cros_gpio_debounce, test_gpio_debounce_interrupt)
 {
 	struct gpio_debounce_config cfg;
+	static const struct device *gpio_dev = GPIO_DEVICE;
 
 	gpio_debounce_common_get_cfg(test_gpio_debounce_dev, &cfg);
 
@@ -174,15 +126,19 @@ ZTEST(cros_gpio_debounce, test_gpio_debounce_interrupt)
 	zassert_ok(
 		gpio_debounce_common_disable_interrupt(test_gpio_debounce_dev),
 		NULL);
-	gpio_pin_set_raw(cfg.spec.port, cfg.spec.pin, 0);
-	gpio_pin_set_raw(cfg.spec.port, cfg.spec.pin, 1);
+	zassert_ok(gpio_emul_input_set(gpio_dev, TEST_PIN, 0));
+	k_sleep(K_MSEC(1000));
+	zassert_ok(gpio_emul_input_set(gpio_dev, TEST_PIN, 1));
+	k_sleep(K_MSEC(1000));
 	zassert_equal(gpio_debounce_interrupt_called, false);
 
 	zassert_ok(gpio_debounce_common_enable_interrupt(
 			   test_gpio_debounce_dev,
 			   test_gpio_debounce_cb_handler),
 		   NULL);
-	gpio_pin_set_raw(cfg.spec.port, cfg.spec.pin, 0);
-	gpio_pin_set_raw(cfg.spec.port, cfg.spec.pin, 1);
+	zassert_ok(gpio_emul_input_set(gpio_dev, TEST_PIN, 0));
+	k_sleep(K_MSEC(1000));
+	zassert_ok(gpio_emul_input_set(gpio_dev, TEST_PIN, 1));
+	k_sleep(K_MSEC(1000));
 	zassert_equal(gpio_debounce_interrupt_called, true);
 }

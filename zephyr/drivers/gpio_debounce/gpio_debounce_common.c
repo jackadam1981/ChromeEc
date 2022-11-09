@@ -13,24 +13,6 @@
 
 LOG_MODULE_REGISTER(button, LOG_LEVEL_ERR);
 
-/* LCOV_EXCL_START */
-#ifdef CONFIG_ZTEST
-__weak int stub_gpio_pin_get(const struct device *d, gpio_pin_t p)
-{
-	LOG_DBG("Calling %s\n", __func__);
-	return gpio_pin_get(d, p);
-}
-__weak int stub_gpio_pin_get_raw(const struct device *d, gpio_pin_t p)
-{
-	LOG_DBG("Calling %s\n", __func__);
-	return gpio_pin_get_raw(d, p);
-}
-
-#define gpio_pin_get stub_gpio_pin_get
-#define gpio_pin_get_raw stub_gpio_pin_get_raw
-#endif
-/* LCOV_EXCL_STOP */
-
 int gpio_debounce_common_get_cfg(const struct device *dev,
 				 struct gpio_debounce_config *cfg)
 {
