@@ -237,6 +237,12 @@
 		gpio_brd_id0: brd_id0 {
 			gpios = <&gpio1 8 GPIO_INPUT>;
 		};
+		gpio_usb_c0_bc12_int_l: usb_c0_bc12_int_l {
+			gpios = <&gpio1 9 GPIO_INPUT_PULL_UP>;
+		};
+		gpio_usb_c1_bc12_int_l: usb_c1_bc12_int_l {
+			gpios = <&gpio1 10 GPIO_INPUT_PULL_UP>;
+		};
 	};
 
 	gpio1: gpio@101 {
@@ -249,7 +255,7 @@
 		low-level;
 		gpio-controller;
 		#gpio-cells = <2>;
-		ngpios = <9>;
+		ngpios = <11>;
 	};
 
 	gpio-interrupts {
@@ -309,6 +315,16 @@
 			irq-pin = <&gpio_wp_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "switch_interrupt";
+		};
+		int_usb_c0_bc12: usb_c0_bc12 {
+			irq-pin = <&gpio_usb_c0_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb0_evt";
+		};
+		int_usb_c1_bc12: usb_c1_bc12 {
+			irq-pin = <&gpio_usb_c1_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb1_evt";
 		};
 	};
 
@@ -779,8 +795,10 @@
 		reg = <0x500 4>;
 
 		pi3usb9201_emul: pi3usb9201@5f {
-			compatible = "zephyr,pi3usb9201-emul";
+			compatible = "pericom,pi3usb9201";
+			status = "okay";
 			reg = <0x5f>;
+			irq = <&int_usb_c0_bc12>;
 		};
 
 		sn5s330_emul: sn5s330@40 {
@@ -804,6 +822,13 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		reg = <0x600 4>;
+
+		pi3usb9201_emul1: pi3usb9201@5f {
+			compatible = "pericom,pi3usb9201";
+			status = "okay";
+			reg = <0x5f>;
+			irq = <&int_usb_c1_bc12>;
+		};
 
 		syv682x_emul: syv682x@41 {
 			compatible = "zephyr,syv682x-emul";
