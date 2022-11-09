@@ -49,6 +49,7 @@ add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_LOCATE_CHIP_ALTS locate_chip)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_BUTTON button)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_BUTTON_CONFIG button_config)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_CONSOLE console)
+add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_PI3USB9201 bc12_pi3usb9201)
 
 get_target_property(TEST_SOURCES_NEW app SOURCES)
 

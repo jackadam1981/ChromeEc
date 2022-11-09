@@ -66,7 +66,7 @@ ZTEST_USER(i2c, test_i2c_set_speed_not_dynamic)
 {
 	struct ec_response_i2c_control response;
 	struct ec_params_i2c_control set_params = {
-		.port = I2C_PORT_POWER,
+		.port = I2C_PORT_USB_C2,
 		.cmd = EC_I2C_CONTROL_SET_SPEED,
 		.cmd_params.speed_khz = 400,
 	};
