@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e3bad8_a4fd3d8c",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-09T22:33:33Z",
+      "side": 1,
+      "message": "Remove the prompt text so this is a helper symbol only.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "91c89a28e946ca5a2d22beffcdcd02f4bfd7ee98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f4a8268_eebc6f03",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-09T22:33:33Z",
+      "side": 1,
+      "message": "Nice - this ensures that the devicetree is the source of truth for the hibernate type.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 94
+      },
+      "revId": "91c89a28e946ca5a2d22beffcdcd02f4bfd7ee98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
