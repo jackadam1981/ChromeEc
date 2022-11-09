@@ -57,6 +57,7 @@
 		port0@0 {
 			compatible = "named-usbc-port";
 			reg = <0>;
+			bc12 = <&pi3usb9201_emul0>;
 			chg = <&isl923x_emul>;
 			tcpc = <&tcpci_emul>;
 			ppc = <&sn5s330_emul>;
@@ -65,6 +66,7 @@
 		port1@1 {
 			compatible = "named-usbc-port";
 			reg = <1>;
+			bc12 = <&pi3usb9201_emul1>;
 			tcpc = <&ps8xxx_emul>;
 			ppc = <&syv682x_emul>;
 		};
@@ -241,6 +243,12 @@
 		gpio_ec_cbi_wp: ec_cbi_wp {
 			gpios = <&gpio1 9 GPIO_OUTPUT>;
 		};
+		gpio_usb_c0_bc12_int_l: usb_c0_bc12_int_l {
+			gpios = <&gpio1 10 GPIO_INPUT_PULL_UP>;
+		};
+		gpio_usb_c1_bc12_int_l: usb_c1_bc12_int_l {
+			gpios = <&gpio1 11 GPIO_INPUT_PULL_UP>;
+		};
 	};
 
 	gpio1: gpio@101 {
@@ -253,7 +261,7 @@
 		low-level;
 		gpio-controller;
 		#gpio-cells = <2>;
-		ngpios = <10>;
+		ngpios = <12>;
 	};
 
 	gpio-interrupts {
@@ -314,6 +322,16 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "switch_interrupt";
 		};
+		int_usb_c0_bc12: usb_c0_bc12 {
+			irq-pin = <&gpio_usb_c0_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb0_evt";
+		};
+		int_usb_c1_bc12: usb_c1_bc12 {
+			irq-pin = <&gpio_usb_c1_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb1_evt";
+		};
 	};
 
 	named-i2c-ports {
@@ -321,26 +339,28 @@
 
 		named_i2c0: i2c0 {
 			i2c-port = <&i2c0>;
+			dynamic-speed;
 			enum-names = "I2C_PORT_BATTERY",
 				"I2C_PORT_POWER",
 				"I2C_PORT_CHARGER",
 				"I2C_PORT_EEPROM",
 				"I2C_PORT_ACCEL",
-				"I2C_PORT_VIRTUAL_BATTERY";
+				"I2C_PORT_VIRTUAL_BATTERY",
+				"I2C_PORT_USB_C0";
 		};
 		named_i2c1: i2c1 {
 			i2c-port = <&i2c1>;
-			enum-names = "I2C_PORT_SENSOR";
+			dynamic-speed;
+			enum-names = "I2C_PORT_SENSOR", "I2C_PORT_USB_C1";
 		};
 		named_i2c2: i2c2 {
 			i2c-port = <&i2c2>;
-			dynamic-speed;
-			enum-names = "I2C_PORT_USB_C0";
+			enum-names = "I2C_PORT_USB_C2";
 		};
 		named_i2c3: i2c3 {
 			i2c-port = <&i2c3>;
 			dynamic-speed;
-			enum-names = "I2C_PORT_USB_C1";
+			enum-names = "I2C_PORT_USB_C3";
 		};
 	};
 
@@ -772,42 +792,15 @@
 			error-on-reserved-bit-write;
 			simulate-command-exec-time;
 		};
-	};
 
-	i2c2: i2c@500 {
-		status = "okay";
-		compatible = "zephyr,i2c-emul-controller";
-		clock-frequency = <I2C_BITRATE_STANDARD>;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		reg = <0x500 4>;
-
-		pi3usb9201_emul: pi3usb9201@5f {
-			compatible = "zephyr,pi3usb9201-emul";
-			reg = <0x5f>;
+		ps8xxx_emul: ps8xxx_emul@b {
+			compatible = "cros,ps8xxx-emul";
+			reg = <0xb>;
+			alert_gpio = <&usb_c1_tcpc_int_odl>;
+			p0-i2c-addr = <0x8>;
+			p1-i2c-addr = <0x9>;
+			gpio-i2c-addr = <0x1a>;
 		};
-
-		sn5s330_emul: sn5s330@40 {
-			compatible = "cros,sn5s330-emul";
-			reg = <0x40>;
-			int-pin = <&gpio_usb_c0_ppc_int>;
-		};
-
-		tcpci_emul: tcpci_emul@82 {
-			compatible = "cros,tcpci-generic-emul";
-			status = "okay";
-			reg = <0x82>;
-			alert_gpio = <&usb_c0_tcpc_int_odl>;
-		};
-	};
-
-	i2c3: i2c@600 {
-		status = "okay";
-		compatible = "zephyr,i2c-emul-controller";
-		clock-frequency = <I2C_BITRATE_STANDARD>;
-		#address-cells = <1>;
-		#size-cells = <0>;
-		reg = <0x600 4>;
 
 		syv682x_emul: syv682x@41 {
 			compatible = "zephyr,syv682x-emul";
@@ -823,14 +816,37 @@
 			error-on-ro-write;
 			error-on-reserved-bit-write;
 		};
+	};
 
-		ps8xxx_emul: ps8xxx_emul@b {
-			compatible = "cros,ps8xxx-emul";
-			reg = <0xb>;
-			alert_gpio = <&usb_c1_tcpc_int_odl>;
-			p0-i2c-addr = <0x8>;
-			p1-i2c-addr = <0x9>;
-			gpio-i2c-addr = <0x1a>;
+	i2c2: i2c@500 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x500 4>;
+
+		pi3usb9201_emul0: pi3usb9201@5f {
+			compatible = "pericom,pi3usb9201";
+			status = "okay";
+			reg = <0x5f>;
+			irq = <&int_usb_c0_bc12>;
+		};
+	};
+
+	i2c3: i2c@600 {
+		status = "okay";
+		compatible = "zephyr,i2c-emul-controller";
+		clock-frequency = <I2C_BITRATE_STANDARD>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x600 4>;
+
+		pi3usb9201_emul1: pi3usb9201@5f {
+			compatible = "pericom,pi3usb9201";
+			status = "okay";
+			reg = <0x5d>;
+			irq = <&int_usb_c1_bc12>;
 		};
 	};
 
@@ -1022,6 +1038,7 @@
 };
 
 &i2c0 {
+
 	cbi_eeprom: eeprom@56 {
 		compatible = "atmel,at24";
 		reg = <0x56>;
@@ -1029,6 +1046,19 @@
 		pagesize = <8>;
 		address-width = <8>;
 		timeout = <5>;
+	};
+
+	sn5s330_emul: sn5s330@40 {
+		compatible = "cros,sn5s330-emul";
+		reg = <0x40>;
+		int-pin = <&gpio_usb_c0_ppc_int>;
+	};
+
+	tcpci_emul: tcpci_emul@82 {
+		compatible = "cros,tcpci-generic-emul";
+		status = "okay";
+		reg = <0x82>;
+		alert_gpio = <&usb_c0_tcpc_int_odl>;
 	};
 
 	battery: sb@b {

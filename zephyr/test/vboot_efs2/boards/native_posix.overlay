@@ -31,6 +31,17 @@
 			gpios = <&gpio0 5 GPIO_INPUT>;
 			enum-name = "GPIO_BATT_PRES_ODL";
 		};
+		gpio_usb_c0_bc12_int_l: usb_c0_bc12_int_l {
+			gpios = <&gpio0 6 GPIO_INPUT_PULL_UP>;
+		};
+	};
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+		int_usb_c0_bc12: usb_c0_bc12 {
+			irq-pin = <&gpio_usb_c0_bc12_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "usb0_evt";
+		};
 	};
 	cros_flash: cros-flash {
 		compatible = "cros-ec,flash-emul";
@@ -59,6 +70,7 @@
 		port0@0 {
 			compatible = "named-usbc-port";
 			reg = <0>;
+			bc12 = <&pi3usb9201_emul>;
 			chg = <&isl923x_emul>;
 			tcpc = <&tcpci_emul>;
 		};
@@ -107,7 +119,7 @@
 };
 
 &gpio0 {
-	ngpios = <6>;
+	ngpios = <7>;
 };
 
 &i2c0 {
@@ -128,5 +140,12 @@
 		status = "okay";
 		reg = <0x9>;
 		battery = <&battery>;
+	};
+
+	pi3usb9201_emul: pi3usb9201@5f {
+		compatible = "pericom,pi3usb9201";
+		status = "okay";
+		reg = <0x5f>;
+		irq = <&int_usb_c0_bc12>;
 	};
 };
