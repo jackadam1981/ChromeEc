@@ -279,7 +279,6 @@ void usb_interrupt(enum gpio_signal signal)
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 				       int max_ma, int charge_mv)
 {
-	charge_ma = (charge_ma * 90) / 100;
 	charge_set_input_current_limit(
 		MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
 }
