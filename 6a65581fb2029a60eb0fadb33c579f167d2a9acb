@@ -52,6 +52,24 @@
       "parentUuid": "4c2c44b6_f2001d97",
       "revId": "6a65581fb2029a60eb0fadb33c579f167d2a9acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70c2d46_ebe0364f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-09T16:29:53Z",
+      "side": 1,
+      "message": "Sorry, what I meant is that we should remove the C logic of `/ 0`. +1 to assembly if we need a trap, but we can\u0027t rely on the compiler to add the trap, so I\u0027m sure what the value here is.",
+      "parentUuid": "a7b00cee_4eb29154",
+      "revId": "6a65581fb2029a60eb0fadb33c579f167d2a9acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
