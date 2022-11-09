@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23fc039_77fc3862",
+        "filename": "zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-09T04:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea19ec9_416d00dc",
+      "revId": "59867ed5eec8b8d1eb40584d49a3f3a8ab1e4de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84b0e7cf_d27384e7",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-11-03T15:13:18Z",
       "side": 1,
       "message": "According to a review Keith left me on a similar test, board_get_charger_chip_count() will be phased relatively soon, so we should use INT_MAX or similar here instead.",
+      "range": {
+        "startLine": 203,
+        "startChar": 28,
+        "endLine": 203,
+        "endChar": 58
+      },
+      "revId": "59867ed5eec8b8d1eb40584d49a3f3a8ab1e4de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc29d8e_bd148df2",
+        "filename": "zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-09T04:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84b0e7cf_d27384e7",
       "range": {
         "startLine": 203,
         "startChar": 28,
