@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d067f9_46e04558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-09T05:01:00Z",
+      "side": 1,
+      "message": "I tried a few options here adding to the compile options but I can\u0027t get this to work so far. I thought that `-ftrapping-math` looked pretty promising, though I\u0027m still getting `1 / 0 \u003d\u003e 0`",
+      "revId": "6a65581fb2029a60eb0fadb33c579f167d2a9acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
