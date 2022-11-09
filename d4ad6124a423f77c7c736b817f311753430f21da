@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcefa2fb_9ef766e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-09T16:43:00Z",
+      "side": 1,
+      "message": "Good cleanup. Thanks.",
+      "revId": "d4ad6124a423f77c7c736b817f311753430f21da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90b3eebe_df1955d2",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-11-09T00:41:09Z",
       "side": 1,
       "message": "Give it a node label?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "d4ad6124a423f77c7c736b817f311753430f21da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a0bfe9_8c575089",
+        "filename": "zephyr/program/herobrine/herobrine/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-09T16:43:00Z",
+      "side": 1,
+      "message": "Alternately, you can provide the same nesting found in the shared usbc.dtsi.\n\n```\n/ {\n  usbc {\n    port0@0 {\n      ppc_alt \u003d \u003c\u0026ppc_port0_alt\u003e;\n    };\n};\n```\n\nBut I think adding a node label to usbc.dtsi looks cleaner.",
+      "parentUuid": "90b3eebe_df1955d2",
       "range": {
         "startLine": 62,
         "startChar": 1,
