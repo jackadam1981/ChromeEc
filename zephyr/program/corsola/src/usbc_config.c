@@ -129,11 +129,6 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 				       int max_ma, int charge_mv)
 {
-	int icl = charge_ma * 97 / 100;
-	/*
-	 * b:257167723: Adapter output current exceeds the spec on heavy-load.
-	 * Preserve a margin in case of charger overdraw.
-	 */
 	charge_set_input_current_limit(icl, charge_mv);
 }
 
