@@ -31,14 +31,14 @@ static const struct gpio_debounce_api gpio_debounce_driver_api = {
 	.get_pin_raw = cros_gpio_debounce_get_pin_raw,
 };
 
-#define BUTTON_CONFIG_INIT(i)                                               \
-	static const struct gpio_debounce_config gpio_debounce_config_##i = \
-		GPIO_DEBOUNCE_CFG_DEF(i);                                   \
-	static struct gpio_debounce_data gpio_debounce_data_##i;            \
-	DEVICE_DT_INST_DEFINE(i, &gpio_debounce_config_init, NULL,          \
-			      &gpio_debounce_data_##i,                      \
-			      &gpio_debounce_config_##i, POST_KERNEL,       \
-			      CONFIG_PLATFORM_EC_BUTTON_INIT_PRIORITY,      \
+#define BUTTON_CONFIG_INIT(i)                                                 \
+	static const struct gpio_debounce_config gpio_debounce_config_##i =   \
+		GPIO_DEBOUNCE_CFG_DEF(i);                                     \
+	static struct gpio_debounce_data gpio_debounce_data_##i;              \
+	DEVICE_DT_INST_DEFINE(i, &gpio_debounce_config_init, NULL,            \
+			      &gpio_debounce_data_##i,                        \
+			      &gpio_debounce_config_##i, POST_KERNEL,         \
+			      CONFIG_PLATFORM_EC_GPIO_DEBOUNCE_INIT_PRIORITY, \
 			      &gpio_debounce_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(BUTTON_CONFIG_INIT)

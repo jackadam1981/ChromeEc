@@ -27,8 +27,8 @@ config PLATFORM_EC_PWM_INIT_PRIORITY
 	  value greater than the PWM driver's initialization priority which
 	  currently defaults to KERNEL_INIT_PRIORITY_DEVICE.
 
-config PLATFORM_EC_BUTTON_INIT_PRIORITY
-  int "Initialization priority of button module"
+config PLATFORM_EC_GPIO_DEBOUNCE_INIT_PRIORITY
+  int "Initialization priority of GPIO debounce module"
   default 53
   help
     The initialization priority of the button module. This should always happen
