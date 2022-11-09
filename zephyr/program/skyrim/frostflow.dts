@@ -97,14 +97,9 @@
 
 &usbc_port1 {
 	ppc = <&ppc_port1>;
-	usb-mux-chain-1-anx {
-		compatible = "cros-ec,usb-mux-chain";
-		usb-muxes = <&amd_fp6_port1 &anx7483_port1>;
-	};
-	usb_mux_chain_ps8818_port1: usb-mux-chain-1-ps {
+	usb-mux-chain-1-ps8818 {
 		compatible = "cros-ec,usb-mux-chain";
 		usb-muxes = <&amd_fp6_port1 &ps8818_port1>;
-		alternative-chain;
 	};
 };
 
