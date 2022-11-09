@@ -121,3 +121,9 @@ int board_c1_ps8818_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 
 	return 0;
 }
+static void setup_mux(void)
+{
+	CPRINTSUSB("C1: Setting PS8818 mux");
+	USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_ps8818_port1);
+}
+DECLARE_HOOK(HOOK_INIT, setup_mux, HOOK_PRIO_INIT_I2C);
