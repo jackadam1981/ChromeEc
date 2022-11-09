@@ -46,6 +46,98 @@
       },
       "revId": "9f24ed7a67834dd5119d7017a153467341c3d02c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b257d33d_f7e6bc60",
+        "filename": "board/dibbi/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-11-09T06:44:26Z",
+      "side": 1,
+      "message": "Was this a typo in the waddledee board?",
+      "range": {
+        "startLine": 56,
+        "startChar": 33,
+        "endLine": 56,
+        "endChar": 35
+      },
+      "revId": "9f24ed7a67834dd5119d7017a153467341c3d02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafadcd4_efdb8775",
+        "filename": "board/dibbi/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-11-09T06:44:26Z",
+      "side": 1,
+      "message": "Are these defined in the baseboard?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "9f24ed7a67834dd5119d7017a153467341c3d02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d1d8c3_da085a7a",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-11-09T06:44:26Z",
+      "side": 1,
+      "message": "Should remain 2022.",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "9f24ed7a67834dd5119d7017a153467341c3d02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84188e1d_1c9ab4ad",
+        "filename": "board/dibbi/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1549429
+      },
+      "writtenOn": "2022-11-09T06:44:26Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9f24ed7a67834dd5119d7017a153467341c3d02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
