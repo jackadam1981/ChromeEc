@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d693c282_a18559da",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-11-09T16:34:14Z",
+      "side": 1,
+      "message": "I was thinking we could pass down the `command` variable to this command, so we know at polling time what we are polling for. If we do that, then we also won\u0027t need the state variables in `ccd_config.rs`",
+      "range": {
+        "startLine": 1815,
+        "startChar": 2,
+        "endLine": 1815,
+        "endChar": 13
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35f36333_40b58cc4",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 7
