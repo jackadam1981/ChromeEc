@@ -37,6 +37,19 @@ config PLATFORM_EC_BC12_CLIENT_MODE_ONLY_PI3USB9201
 	  This is a helper symbol that indicates the PI3USB9201 will only
 	  advertise itself as a BC1.2 client, not a BC1.2 host.
 
+config USBC_BC12_PI3USB9201
+	bool "Enable Zephyr Pericom PI3USB9201"
+	help
+	  This is a Dual-Role USB Charging-Type Detector. It can operate in
+	  host or client mode. It supports Battery Charging Specification, rev
+	  1.2 (BC1.2) with Standard/Charging/Dedicated downstream port
+	  (SDP/CDP/DCP) advertisement when in host mode. In client mode it
+	  starts BC1.2 detection to detect the attached host type. It provides
+	  an I2C interface to report detection results.
+
+	  This enables the Zephyr compliant driver...
+
+
 config PLATFORM_EC_BC12_DETECT_PI3USB9201
 	bool "Enable support for Pericom PI3USB9201"
 	select PLATFORM_EC_BC12_DETECT_DATA_ROLE_TRIGGER
