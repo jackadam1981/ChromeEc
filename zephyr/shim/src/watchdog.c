@@ -11,6 +11,7 @@
 #include "config.h"
 #include "hooks.h"
 #include "watchdog.h"
+#include "shimmed_task_id.h"
 
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
 
@@ -20,10 +21,19 @@ LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
 extern bool wdt_warning_triggered;
 #endif /* TEST_BUILD */
 
+uint32_t int_ra_reg;
+extern task_id_t task_get_current(void);
+
 static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 {
+	uint32_t mepc_reg;
+
+	/* read Exception Program Counter register */
+	__asm__ volatile("csrr %0, mepc" : "=r"(mepc_reg)); //("csrr mepc_reg, mepc")
+
 	/* TODO(b/176523207): watchdog warning message */
-	printk("Watchdog deadline is close!\n");
+	printk("WDT pre-warning MEPC:0x%08x RA:0x%08x TASK_ID:%d\n",
+	       mepc_reg/*get_mepc()*/, int_ra_reg/*ira*/, task_get_current());
 #ifdef TEST_BUILD
 	wdt_warning_triggered = true;
 #endif
