@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70941e26_e3e98184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-10T16:19:53Z",
+      "side": 1,
+      "message": "I\u0027m not seeing the benefit of calling this cros_button only to then rename it in later CLs.\n\nIt doesn\u0027t look like you\u0027re retaining much of anything from the original implementation.  It could make sense to just revert your prior change, and then submit the gpio_debounce driver as a standalone CL.",
+      "revId": "fc055070beda5376a3363c365f47ca5233d3eef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
