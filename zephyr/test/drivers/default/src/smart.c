@@ -15,6 +15,7 @@
 #include "emul/emul_smart_battery.h"
 
 #include "battery.h"
+#include "battery_fuel_gauge.h"
 #include "battery_smart.h"
 #include "test/drivers/test_state.h"
 
@@ -432,6 +433,12 @@ ZTEST_USER(smart_battery, test_battery_mfacc)
 
 	/* Disable custom read function */
 	i2c_common_emul_set_read_func(common_data, NULL, NULL);
+}
+
+/** Test sleeping the fuel gauge on a battery that doesn't support this */
+ZTEST_USER(smart_battery, test_battery_sleep_fuel_gauge__unsupported)
+{
+	zassert_equal(EC_ERROR_UNIMPLEMENTED, battery_sleep_fuel_gauge());
 }
 
 /** Test battery fake charge level set and read */
