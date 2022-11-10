@@ -46,6 +46,30 @@
       },
       "revId": "5bcf860a842be7cafbb658a2728c18986ada7750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c3d674_9abb5eb5",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-10T01:23:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b54b6d3_49177b1e",
+      "range": {
+        "startLine": 277,
+        "startChar": 32,
+        "endLine": 277,
+        "endChar": 36
+      },
+      "revId": "5bcf860a842be7cafbb658a2728c18986ada7750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
