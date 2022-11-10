@@ -13,6 +13,7 @@
 #ifdef CONFIG_PLATFORM_EC_TEMP_SENSOR
 
 #define PCT2075_COMPAT nxp_pct2075
+#define PCT2075_EMUL_COMPAT zephyr_pct2075_emul
 #define TMP112_COMPAT cros_ec_temp_sensor_tmp112
 #define SB_TSI_COMPAT amd_sb_tsi
 #define THERMISTOR_COMPAT cros_ec_temp_sensor_thermistor
@@ -25,6 +26,7 @@
 
 #define FOREACH_TEMP_SENSOR(fn)                                             \
 	DT_FOREACH_STATUS_OKAY(PCT2075_COMPAT, fn)                          \
+	DT_FOREACH_STATUS_OKAY(PCT2075_EMUL_COMPAT, fn)                     \
 	DT_FOREACH_STATUS_OKAY(TMP112_COMPAT, fn)                           \
 	DT_FOREACH_STATUS_OKAY_VARGS(RT9490_CHG_COMPAT, TEMP_RT9490_FN, fn) \
 	DT_FOREACH_STATUS_OKAY(SB_TSI_COMPAT, fn)                           \
@@ -119,7 +121,9 @@ enum temp_sensor_id {
 
 enum pct2075_sensor {
 	DT_FOREACH_STATUS_OKAY(PCT2075_COMPAT, PCT2075_SENSOR_ID_WITH_COMMA)
-		PCT2075_COUNT,
+		DT_FOREACH_STATUS_OKAY(PCT2075_EMUL_COMPAT,
+				       PCT2075_SENSOR_ID_WITH_COMMA)
+			PCT2075_COUNT,
 };
 
 #undef PCT2075_SENSOR_ID_WITH_COMMA
