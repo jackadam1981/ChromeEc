@@ -16,6 +16,47 @@
       "message": "The code could be cleaned up a bit (e.g. remove temporary variables and console prints), but before I do that I\u0027d like to get your feedback on the performance that I am measuring.\n\nThis seems to be suspiciously fast. On dartmonkey, the TRNG and `std::rand()` take approx 27us to generate 100 random 32-bit integers.\n\nIf I increase the number of iterations, the TRNG is only marginally slower than `std::rand()`.\n\nDo these numbers sound reasonable?\n\n```\nDEBUG:root:b\u0027       Test Name |  Num Iterations |  Elapsed (us) |      Min (us) |      Max (us) |      Avg (us)\\r\\n\u0027\nDEBUG:root:b\u0027---------------- | --------------- | ------------- | ------------- | ------------- | -------------\\r\\n\u0027\nDEBUG:root:b\u0027            trng |             100 |            27 |             0 |             1 |             0\\r\\n\u0027\nDEBUG:root:b\u0027       std::rand |             100 |            27 |             0 |             1 |             0\\r\\n\u0027\n```",
       "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4aed57b_d52ea0c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-10T17:18:58Z",
+      "side": 1,
+      "message": "It looks like the [reference manual has an equation for how quickly the TRNG produces random numbers](https://www.st.com/resource/en/reference_manual/dm00314099-stm32h742-stm32h743-753-and-stm32h750-value-line-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf#page\u003d1264).\n\n[`Section 34.5 RNG Processing Time`](https://www.st.com/resource/en/reference_manual/dm00314099-stm32h742-stm32h743-753-and-stm32h750-value-line-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf#page\u003d1272).\n\nI\u0027m not sure offhand what we\u0027re setting as the frequency for the two clocks it lists; you\u0027ll have to check the EC source code.\n\nFor bloonchipper, it\u0027s a bit simpler:\n\n[`15.5 RNG Processing Time`](https://www.st.com/resource/en/reference_manual/dm00180369-stm32f412-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf#page\u003d407)\n\nbut you\u0027ll still need to check to see what we\u0027re setting the RNG clock to.",
+      "parentUuid": "ba171aea_f37d6e54",
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab36bdc_d259bfbd",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-10T17:18:58Z",
+      "side": 1,
+      "message": "Before you call `trng_rand()`, you need to make sure that you call `trng_init()` (and `trgn_exit()` at the end of the test): https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d486-490;drc\u003dab71261010629016885601b6f7553c5ba0c08560.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
