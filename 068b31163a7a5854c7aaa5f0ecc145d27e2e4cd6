@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0166cfa_27b1c6c8",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-10T18:51:12Z",
+      "side": 1,
+      "message": "I think this will be called from the zephyr workqueue task, right?  (which is good, I don\u0027t think we have the stack space or time in an interrupt to actually execute these things)\n\nWe can double check the other tasks that will also be touching this register.  I figure we want to avoid any issues like we saw in b/214341758 with driver race conditions",
+      "parentUuid": "3ea46de2_806d75bd",
+      "revId": "068b31163a7a5854c7aaa5f0ecc145d27e2e4cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1ce8221_284c9c89",
