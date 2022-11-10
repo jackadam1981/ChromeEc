@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9871543c_3efd9f62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-10T19:26:33Z",
+      "side": 1,
+      "message": "Yes, this sounds good.",
+      "parentUuid": "90b81f87_017c5869",
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ab36bdc_d259bfbd",
         "filename": "test/rng_benchmark.cc",
         "patchSetId": 1
@@ -91,6 +109,30 @@
       "side": 1,
       "message": "Yes, that\u0027s correct. My intention is to declare the anonymous function here (to capture `trng_out` by reference) but invoke `trng_rand()` only at line 38.\n\nI am calling `trng_init()` and `trng_exit()` right before. The benchmark and the content of `trng_out` *seems* to be random.\n\nLet me know if this works.",
       "parentUuid": "2ab36bdc_d259bfbd",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c73d39_d1d82925",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-10T19:26:33Z",
+      "side": 1,
+      "message": "Yes, that works.",
+      "parentUuid": "f5f2167b_efc3e9f0",
       "range": {
         "startLine": 34,
         "startChar": 0,
