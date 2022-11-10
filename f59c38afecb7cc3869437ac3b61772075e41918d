@@ -16,6 +16,24 @@
       "message": "Do we need these printk\u0027s?",
       "revId": "f59c38afecb7cc3869437ac3b61772075e41918d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae37ddbf_1fe249d8",
+        "filename": "zephyr/test/drivers/rt9490/src/bc12.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-10T21:05:29Z",
+      "side": 1,
+      "message": "Nope, forgot to scroll down 😊",
+      "parentUuid": "8c4bdde2_78489291",
+      "revId": "f59c38afecb7cc3869437ac3b61772075e41918d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
