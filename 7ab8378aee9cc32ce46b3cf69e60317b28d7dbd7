@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55be8c9b_94705bb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-10T20:26:54Z",
+      "side": 1,
+      "message": "Yes, 1 to 3 pairs of hex values. I\u0027ve updated the usage help for this command to explain the input format.",
+      "parentUuid": "f8214a2e_da5c2048",
+      "range": {
+        "startLine": 21,
+        "startChar": 21,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "350b95d9_e18995cd",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-10T19:21:05Z",
       "side": 1,
       "message": "You\u0027re missing the signed-off by line. \n\nUse repo upload to catch style issues like this.",
+      "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f3cbca3_dafa0ca8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-10T20:26:54Z",
+      "side": 1,
+      "message": "Will do. I\u0027ve added a signed-off by line.",
+      "parentUuid": "350b95d9_e18995cd",
       "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8332666f_d9633efd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2828,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-10T20:26:54Z",
+      "side": 1,
+      "message": "Unfortunately no since `from_hexascii` does not cover capital hex values.\n\nYeah, there\u0027s a bunch of hex argument parsing in this file that all do slightly different things based on the command requirements. We might want to clean this up in the future and standardize on one implementation.",
+      "parentUuid": "b21f81f1_9d2ffda1",
+      "range": {
+        "startLine": 2814,
+        "startChar": 0,
+        "endLine": 2828,
+        "endChar": 2
+      },
+      "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df0f9459_d95b6f3a",
@@ -112,6 +178,30 @@
       "writtenOn": "2022-11-10T19:21:05Z",
       "side": 1,
       "message": "Lines should be max 80 chars.",
+      "range": {
+        "startLine": 3853,
+        "startChar": 0,
+        "endLine": 3855,
+        "endChar": 2
+      },
+      "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f87696_6a0e111f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3855,
+      "author": {
+        "id": 1550137
+      },
+      "writtenOn": "2022-11-10T20:26:54Z",
+      "side": 1,
+      "message": "Interestingly, checkpatch is ok with this. I\u0027ve shortened this line anyways though.",
+      "parentUuid": "df0f9459_d95b6f3a",
       "range": {
         "startLine": 3853,
         "startChar": 0,
