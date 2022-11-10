@@ -1,0 +1,11 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+description: Zephyr PCT2075 Emulator
+
+compatible: "zephyr,pct2075-emul"
+
+include: base.yaml
+
+# The emulator doesn't support OS(Overtemp Shutdown) pin
