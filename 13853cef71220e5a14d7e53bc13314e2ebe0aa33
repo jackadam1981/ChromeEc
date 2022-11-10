@@ -63,6 +63,30 @@
       },
       "revId": "13853cef71220e5a14d7e53bc13314e2ebe0aa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8897cfc_48958cda",
+        "filename": "common/acpi.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-10T02:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b31d63a_1cd8049c",
+      "range": {
+        "startLine": 241,
+        "startChar": 14,
+        "endLine": 241,
+        "endChar": 35
+      },
+      "revId": "13853cef71220e5a14d7e53bc13314e2ebe0aa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
