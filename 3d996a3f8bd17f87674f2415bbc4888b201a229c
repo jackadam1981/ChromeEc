@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcc35155_ceee37ec",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-10T23:33:37Z",
+      "side": 1,
+      "message": "This is the current behavior. I\u0027m suggesting to explore a different possibility. For example an __overridable implementation that does nothing. Another option is to compile system_boottime.c unconditionally, but put most of the implementation under CONFIG_SYSTEM_BOOT_TIME_LOGGING define.",
+      "parentUuid": "9918699b_32a62c86",
+      "range": {
+        "startLine": 277,
+        "startChar": 5,
+        "endLine": 277,
+        "endChar": 47
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "239d0d84_fe55a98d",
         "filename": "common/system_boottime.c",
         "patchSetId": 21
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "we are passing destination buffer size in memcpy. It will take care of that.. do you want mean some additional check to be added here ?",
       "parentUuid": "e3e5f625_e05c52aa",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95686a88_aeec3f59",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-10T23:33:37Z",
+      "side": 1,
+      "message": "Please check that `args-\u003eresponse_max \u003e\u003d sizeof(*boot_time)` before memcpy",
+      "parentUuid": "56823189_3717e7ec",
       "range": {
         "startLine": 56,
         "startChar": 1,
