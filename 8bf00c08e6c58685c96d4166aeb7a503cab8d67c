@@ -16,6 +16,23 @@
       "message": "rebase",
       "revId": "8bf00c08e6c58685c96d4166aeb7a503cab8d67c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc08e79f_cdb3e428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-10T16:25:08Z",
+      "side": 1,
+      "message": "For these common CLs, I\u0027d suggest running them through CQ+1 to get a sense of how much test coverage they have.  New common code in files which already have partial coverage should have tests written to cover it. \n\nIf you hit any questions creating tests for your new feature, you can feel free to contact the test team with zephyr-test-eng@google.com",
+      "revId": "8bf00c08e6c58685c96d4166aeb7a503cab8d67c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
