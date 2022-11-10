@@ -33,6 +33,24 @@
       "message": "You can remove the fingerprint `OWNERS` in your branch. We only care about reviewing changes on `main`.",
       "revId": "f5665a6aed38ca24da53dc981dd4cddef5030f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1664fa5_0d80a97e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-10T19:03:07Z",
+      "side": 1,
+      "message": "Thanks, yes, we will do this (this is our first merge).\nI think I need a +2 from you as an ONWER.",
+      "parentUuid": "03edb208_1cdb3073",
+      "revId": "f5665a6aed38ca24da53dc981dd4cddef5030f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
