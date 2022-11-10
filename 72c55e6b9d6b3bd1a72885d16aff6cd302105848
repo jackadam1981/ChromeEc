@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "617047be_37cdab24",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-10T00:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48643817_39362e8c",
+      "range": {
+        "startLine": 529,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 0
+      },
+      "revId": "72c55e6b9d6b3bd1a72885d16aff6cd302105848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b111e388_6e96c64e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b56b2a5_9a5edb67",
+        "filename": "zephyr/shim/src/power_button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-10T00:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b111e388_6e96c64e",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 61
+      },
+      "revId": "72c55e6b9d6b3bd1a72885d16aff6cd302105848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f950bbf_0acd6df6",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-31T21:29:21Z",
       "side": 1,
       "message": "In the legacy EC, the power button is not modeled by the common button handler.  Specifically, the power button is not part of the `button_config buttons[]`.  However, this CL will add the power button to this array.\n\nThe power button needs it\u0027s own driver.  See my comments on the other CL - we need to move towards Zephyr\u0027s device model.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 42
+      },
+      "revId": "72c55e6b9d6b3bd1a72885d16aff6cd302105848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed8a844_8bb30020",
+        "filename": "zephyr/test/qcom_power/boards/native_posix.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-10T00:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f950bbf_0acd6df6",
       "range": {
         "startLine": 144,
         "startChar": 0,

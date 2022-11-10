@@ -240,6 +240,30 @@
       },
       "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caebf680_8adb7119",
+        "filename": "zephyr/test/qcom_power/boards/native_posix.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-10T00:14:03Z",
+      "side": 1,
+      "message": "Moved interrupt registration into gpio_debounce_common.c",
+      "parentUuid": "454176f5_04007dae",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "76deb3120a67a0093b72d7f99032ea157b61928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
