@@ -92,7 +92,8 @@ static int thermistor_get_temp(const struct temp_sensor_t *sensor,
 
 DT_FOREACH_STATUS_OKAY(cros_ec_thermistor, DEFINE_THERMISTOR_DATA)
 
-#if DT_HAS_COMPAT_STATUS_OKAY(PCT2075_COMPAT)
+#if DT_HAS_COMPAT_STATUS_OKAY(PCT2075_COMPAT) || \
+	DT_HAS_COMPAT_STATUS_OKAY(PCT2075_EMUL_COMPAT)
 /* The function maybe unused because a temperature sensor can be added to dts
  * without a reference in the cros_ec_temp_sensors node.
  */
@@ -101,7 +102,7 @@ __maybe_unused static int pct2075_get_temp(const struct temp_sensor_t *sensor,
 {
 	return pct2075_get_val_k(sensor->idx, temp_ptr);
 }
-#endif /* PCT2075_COMPAT */
+#endif /* PCT2075_COMPAT || PCT2075_EMUL_COMPAT */
 
 #define DEFINE_PCT2075_DATA(node_id)                                  \
 	[PCT2075_SENSOR_ID(node_id)] = {                              \
@@ -125,6 +126,7 @@ __maybe_unused static int pct2075_get_temp(const struct temp_sensor_t *sensor,
 
 const struct pct2075_sensor_t pct2075_sensors[PCT2075_COUNT] = {
 	DT_FOREACH_STATUS_OKAY(PCT2075_COMPAT, DEFINE_PCT2075_DATA)
+	DT_FOREACH_STATUS_OKAY(PCT2075_EMUL_COMPAT, DEFINE_PCT2075_DATA)
 };
 
 #if DT_HAS_COMPAT_STATUS_OKAY(SB_TSI_COMPAT)
@@ -225,6 +227,7 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 #define TEMP_SENSOR_FIND(named_id, sensor_id)                                 \
 	CHECK_COMPAT(THERMISTOR_COMPAT, named_id, sensor_id, TEMP_THERMISTOR) \
 	CHECK_COMPAT(PCT2075_COMPAT, named_id, sensor_id, TEMP_PCT2075)       \
+	CHECK_COMPAT(PCT2075_EMUL_COMPAT, named_id, sensor_id, TEMP_PCT2075)  \
 	CHECK_COMPAT(SB_TSI_COMPAT, named_id, sensor_id, TEMP_SB_TSI)         \
 	CHECK_COMPAT(TMP112_COMPAT, named_id, sensor_id, TEMP_TMP112)         \
 	CHECK_COMPAT(RT9490_CHG_COMPAT, named_id, sensor_id, TEMP_RT9490)
@@ -234,6 +237,8 @@ const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
 
 const struct temp_sensor_t temp_sensors[] = { DT_FOREACH_CHILD_SEP(
 	TEMP_SENSORS_NODEID, TEMP_SENSOR_ENTRY, (, )) };
+
+BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 {
