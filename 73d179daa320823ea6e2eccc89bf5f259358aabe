@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402e5ce9_d8291fc8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2845,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-11-10T21:56:59Z",
+      "side": 1,
+      "message": "Off by 1, this needs to allocate for the null terminator and `strlen` returns the length without it.\n\nAlso, `sizeof(char)` is guaranteed size 1, so `malloc(len + 1)` should be fine",
+      "range": {
+        "startLine": 2845,
+        "startChar": 14,
+        "endLine": 2845,
+        "endChar": 30
+      },
+      "revId": "73d179daa320823ea6e2eccc89bf5f259358aabe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
