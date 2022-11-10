@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e597e12_57317e1c",
+        "filename": "board/lisbon/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "Remove this one.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4c9384_a2abe439",
+        "filename": "board/lisbon/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "Remove this as well.",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 23
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0c834e_d504898b",
+        "filename": "board/lisbon/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "Some above.",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd5dc46_30e1d247",
+        "filename": "board/lisbon/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "Remove this. We don\u0027t support BBR.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 37
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ad0b92_3de3eb2a",
+        "filename": "board/lisbon/i2c.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "tcpc0",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d78ecd7d_fcb0893a",
+        "filename": "board/lisbon/i2c.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "ppc, bc1.2 c0",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea4f79d_d9622286",
+        "filename": "board/lisbon/i2c.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "retimer0",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060632aa_f285c029",
+        "filename": "board/lisbon/i2c.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "usba2_retimer, usba3_retimer",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7eab10_317a227a",
+        "filename": "board/lisbon/i2c.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "since we don\u0027t need to access imvp. I think we don\u0027t need it.",
+      "range": {
+        "startLine": 47,
+        "startChar": 18,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6d1ab2_6b90b626",
+        "filename": "board/lisbon/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "This may not for lisbon. Should we create it for lisbon? The reset timing needs to meet for rt1715.",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 20
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96400e9c_8b67c9f6",
+        "filename": "board/lisbon/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "I think we only have C0 port. right?",
+      "range": {
+        "startLine": 143,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 47
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da2ed75_d4d61e32",
+        "filename": "board/lisbon/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 144,
+        "startChar": 37,
+        "endLine": 144,
+        "endChar": 59
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f473dc_21f5f304",
+        "filename": "board/lisbon/usbc_config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-10T09:07:48Z",
+      "side": 1,
+      "message": "Lisbon",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
