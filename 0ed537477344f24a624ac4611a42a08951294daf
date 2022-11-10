@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c5b59f_29f72f4f",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-10T14:59:28Z",
+      "side": 1,
+      "message": "Add the copyright header.",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990f70cb_255f0597",
+        "filename": "zephyr/test/drivers/common/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-10T14:59:28Z",
+      "side": 1,
+      "message": "Break this out as a separate CL.\nWas there a race condition where `hook_completed_callback()` was called before `test_main()`?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
