@@ -12,6 +12,7 @@
 #include <array>
 #include <cstdint>
 #include <cstdlib>
+#include <random>
 
 extern "C" {
 #include "test_util.h"
@@ -67,6 +68,25 @@ test_static int test_rng()
 	};
 
 	result = benchmark.run("std::rand", rand);
+
+	TEST_ASSERT(result.has_value());
+	for (int i = 0; i < num_iterations - 1; ++i) {
+		TEST_NE(rand_out[i], rand_out[i + 1], "%d");
+		cflush();
+	}
+
+	// Test std::uniform_int_distribution
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution distrib(0, 255);
+
+	rand_out.fill(0);
+	auto uniform_int_distr = [&rand_out, &distrib, &gen]() {
+		static int i = 0;
+		rand_out[i++] = distrib(gen);
+	};
+
+	result = benchmark.run("std::uniform_int_dist", uniform_int_distr);
 
 	TEST_ASSERT(result.has_value());
 	for (int i = 0; i < num_iterations - 1; ++i) {
