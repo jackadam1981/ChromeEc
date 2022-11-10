@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbec83f8_14016e12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-10T16:41:03Z",
+      "side": 1,
+      "message": "It seems like it would be more accurate to call this something like, \"Refactor the drivers test devicetree.\" Can you split the actual new test into its own CL?",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94c5b59f_29f72f4f",
         "filename": "zephyr/test/drivers/bc12_pi3usb9201/CMakeLists.txt",
         "patchSetId": 6
@@ -14,6 +31,57 @@
       "writtenOn": "2022-11-10T14:59:28Z",
       "side": 1,
       "message": "Add the copyright header.",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6370a50c_9078f6b1",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-10T16:41:03Z",
+      "side": 1,
+      "message": "Where are these defined?",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69284936_1ef804df",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-10T16:41:03Z",
+      "side": 1,
+      "message": "1. As with the TCPC driver structures, I don\u0027t think `bc12_ports` is meant to be modified while the BC1.2 task is running.\n2. This test is called `pi3usb9201`, but this test appears to be mocking out the PI3USB9201 driver with a generic driver. Does this test actually exercise the real driver? Is there a way to verify that the BC1.2 library makes the appropriate driver call by checking the state of the PI3USB9201 driver or emulator after sending the event?",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ddd7b7_323c7b08",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-10T16:41:03Z",
+      "side": 1,
+      "message": "Similarly, is it possible to generate an interrupt from the BC1.2 chip emulator rather than calling this interrupt handler directly?",
       "revId": "0ed537477344f24a624ac4611a42a08951294daf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
