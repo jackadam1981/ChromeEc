@@ -93,6 +93,30 @@
       },
       "revId": "3bb8e25d110cbf1300b641f5112eedd08630aee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd91696c_6ddafe32",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-10T06:05:41Z",
+      "side": 1,
+      "message": "Marking this resolved based on your cr+2 vote",
+      "parentUuid": "2c838c40_2340e5ff",
+      "range": {
+        "startLine": 501,
+        "startChar": 1,
+        "endLine": 501,
+        "endChar": 7
+      },
+      "revId": "3bb8e25d110cbf1300b641f5112eedd08630aee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
