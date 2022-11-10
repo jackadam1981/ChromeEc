@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8214a2e_da5c2048",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-10T19:21:05Z",
+      "side": 1,
+      "message": "What are the valid inputs? Two hex values?",
+      "range": {
+        "startLine": 21,
+        "startChar": 21,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "350b95d9_e18995cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-10T19:21:05Z",
+      "side": 1,
+      "message": "You\u0027re missing the signed-off by line. \n\nUse repo upload to catch style issues like this.",
+      "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "26dedee8_5212f2fd",
@@ -32,6 +72,52 @@
       "side": 1,
       "message": "@vbendeb@chromium.org mind reviewing this CL since you\u0027re a code-owner? Thanks!",
       "parentUuid": "26dedee8_5212f2fd",
+      "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21f81f1_9d2ffda1",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2828,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-10T19:21:05Z",
+      "side": 1,
+      "message": "Can you use from_hexascii here?",
+      "range": {
+        "startLine": 2814,
+        "startChar": 0,
+        "endLine": 2828,
+        "endChar": 2
+      },
+      "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0f9459_d95b6f3a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3855,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-10T19:21:05Z",
+      "side": 1,
+      "message": "Lines should be max 80 chars.",
+      "range": {
+        "startLine": 3853,
+        "startChar": 0,
+        "endLine": 3855,
+        "endChar": 2
+      },
       "revId": "7ab8378aee9cc32ce46b3cf69e60317b28d7dbd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
