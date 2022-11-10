@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d145fd28_7be8014f",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-10T19:01:09Z",
+      "side": 1,
+      "message": "Reminder: remove these `ccprintf`.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "2349d388b1bef2b4bd56603ece9be0a1257f1172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90b81f87_017c5869",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-10T19:01:09Z",
+      "side": 1,
+      "message": "Thanks for the references! That\u0027s very useful. I should have checked the manual before asking 😊\n\nLet\u0027s look at Bloonchipper then, since it\u0027s easier to understand.\n\nIn [`trng_init()`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/chip/stm32/trng.c;l\u003d74-78;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46) I see these:\n\n\u003e The RNG clock is the same as the SDIO/USB OTG clock, already set at\n\u003e 48 MHz during clock initialisation. Nothing to do.\n\nThe manual says:\n\n\u003e The RNG can produce one 32-bit random numbers every 42 RNG clock cycles.\n\nIf we approximate 42 ~\u003d 48, then we should be able to generate 32-bit random numbers with a frequency of 1MHz. So for 100 number we expect approx 100us.\n\nThe results that I measured on bloonchipper match these expectations:\n\n```\nDEBUG:root:b\u0027       Test Name |  Num Iterations |  Elapsed (us) |      Min (us) |      Max (us) |      Avg (us)\\r\\n\u0027\nDEBUG:root:b\u0027---------------- | --------------- | ------------- | ------------- | ------------- | -------------\\r\\n\u0027\nDEBUG:root:b\u0027            trng |             100 |           128 |             1 |             4 |             1\\r\\n\u0027\nDEBUG:root:b\u0027     trng_on_off |             100 |           235 |             2 |             5 |             2\\r\\n\u0027\nDEBUG:root:b\u0027       std::rand |             100 |           127 |             1 |             2 |             1\\r\\n\u0027\n```\n\n100 numbers take 128us using the TRNG.\n\nIf I turn it on and off before generating each number (`trng_on_off`), the latency increases to 235us. In fact, according to the manual:\n\n\u003e After enabling or re-enabling the RNG using the RNGEN bit it takes 46 RNG clock cycles before random data are available.\n\nI think this should be good enough as starting point. If needed, we could make this even faster by splitting each generated number into 4 bytes.",
+      "parentUuid": "c4aed57b_d52ea0c0",
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ab36bdc_d259bfbd",
         "filename": "test/rng_benchmark.cc",
         "patchSetId": 1
@@ -49,6 +67,30 @@
       "writtenOn": "2022-11-10T17:18:58Z",
       "side": 1,
       "message": "Before you call `trng_rand()`, you need to make sure that you call `trng_init()` (and `trgn_exit()` at the end of the test): https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d486-490;drc\u003dab71261010629016885601b6f7553c5ba0c08560.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f2167b_efc3e9f0",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-10T19:01:09Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct. My intention is to declare the anonymous function here (to capture `trng_out` by reference) but invoke `trng_rand()` only at line 38.\n\nI am calling `trng_init()` and `trng_exit()` right before. The benchmark and the content of `trng_out` *seems* to be random.\n\nLet me know if this works.",
+      "parentUuid": "2ab36bdc_d259bfbd",
       "range": {
         "startLine": 34,
         "startChar": 0,
