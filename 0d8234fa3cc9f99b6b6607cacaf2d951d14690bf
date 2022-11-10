@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba171aea_f37d6e54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-10T05:06:02Z",
+      "side": 1,
+      "message": "The code could be cleaned up a bit (e.g. remove temporary variables and console prints), but before I do that I\u0027d like to get your feedback on the performance that I am measuring.\n\nThis seems to be suspiciously fast. On dartmonkey, the TRNG and `std::rand()` take approx 27us to generate 100 random 32-bit integers.\n\nIf I increase the number of iterations, the TRNG is only marginally slower than `std::rand()`.\n\nDo these numbers sound reasonable?\n\n```\nDEBUG:root:b\u0027       Test Name |  Num Iterations |  Elapsed (us) |      Min (us) |      Max (us) |      Avg (us)\\r\\n\u0027\nDEBUG:root:b\u0027---------------- | --------------- | ------------- | ------------- | ------------- | -------------\\r\\n\u0027\nDEBUG:root:b\u0027            trng |             100 |            27 |             0 |             1 |             0\\r\\n\u0027\nDEBUG:root:b\u0027       std::rand |             100 |            27 |             0 |             1 |             0\\r\\n\u0027\n```",
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
