@@ -77,8 +77,7 @@ analog signaling alone. Via digital communication in the PD protocol, much
 higher power states may be negotiated. However, higher power states also usually
 run at a higher voltage state as well. Any time the voltage level is changing,
 the power sink (the ChromeOS device) must lower its power consumption during the
-transient. The standby current level is governed by
-`CONFIG_CHARGER_INPUT_CURRENT`.
+transient.
 
 PD port partners are capable of both soft and hard resets. Hard resets will
 cause a dead-bus state for a brief interval before PD can renegotiate, from
@@ -341,13 +340,20 @@ Example configuration:
 
 Required.
 
-The lowest current limit programmed into the charger. This determines both the
-default level used on startup, and the value used during the voltage transients
-in PD negotiation.
+The default charger current limit used on startup. It should not be higher than
+512 mA unless the device ships with a discrete power supply. Raising this term
+above 512 mA is contrary to USB-PD. It may be lowered in order to improve
+compatibility with marginal BC1.2 chargers.
 
-It should not be higher than 512 mA unless the device ships with a discrete
-power supply. Raising this term above 512 mA is contrary to USB-PD. It may be
-lowered in order to improve compatibility with marginal BC1.2 chargers.
+### `CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT`
+
+Optional.
+
+If set, charger input current limits will never be set lower than this value.
+Historically most boards used the same value as `CONFIG_CHARGER_INPUT_CURRENT`,
+but doing so violates USB-PD standby power requirements. Setting it to a
+positive value may be useful if a board needs extra headroom (possibly at the
+cost of drawing excess standby power).
 
 ### `CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON`
 
