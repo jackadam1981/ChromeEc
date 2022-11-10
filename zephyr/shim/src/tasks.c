@@ -341,9 +341,31 @@ inline bool in_deferred_context(void)
 }
 
 #if IS_ENABLED(CONFIG_KERNEL_SHELL) && IS_ENABLED(CONFIG_THREAD_MONITOR)
+
+struct taskinfo_work {
+	struct k_work work;
+	const struct shell *shell;
+};
+
+static void print_kernel_threads(struct k_work *arg)
+{
+	struct taskinfo_work *work = (struct taskinfo_work*)arg;
+	shell_execute_cmd(work->shell, "kernel threads");
+}
+
 static int taskinfo(const struct shell *shell, size_t argc, char **argv)
 {
-	return shell_execute_cmd(shell, "kernel threads");
+	struct taskinfo_work work = {
+		.shell = shell,
+	};
+
+	/* If asserts are enabled, we can't just call 'shell_execute_cmd' from
+	 * inside another command, put this on the kernel work queue instead.
+	 */
+	k_work_init(&work.work, print_kernel_threads);
+	k_work_submit(&work.work);
+
+	return 0;
 }
 SHELL_CMD_REGISTER(taskinfo, NULL, "Threads statistics", taskinfo);
 #endif
