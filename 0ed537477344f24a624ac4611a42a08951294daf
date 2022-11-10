@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9594942a_9b20dd0d",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-10T15:51:18Z",
+      "side": 1,
+      "message": "Instead of moving these, I think the real fix is to eliminate the C structures for the USBC ports from stubs.c\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/common/src/stubs.c;l\u003d138",
+      "range": {
+        "startLine": 1051,
+        "startChar": 0,
+        "endLine": 1051,
+        "endChar": 27
+      },
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "990f70cb_255f0597",
         "filename": "zephyr/test/drivers/common/src/main.c",
         "patchSetId": 6
