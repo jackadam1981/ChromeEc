@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee56362_58f7710f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-10T23:43:54Z",
+      "side": 1,
+      "message": "Great! I\u0027ll mark this as done.",
+      "parentUuid": "9871543c_3efd9f62",
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ab36bdc_d259bfbd",
@@ -133,6 +151,30 @@
       "side": 1,
       "message": "Yes, that works.",
       "parentUuid": "f5f2167b_efc3e9f0",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "0d8234fa3cc9f99b6b6607cacaf2d951d14690bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc394ab_41996fe1",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-10T23:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c73d39_d1d82925",
       "range": {
         "startLine": 34,
         "startChar": 0,

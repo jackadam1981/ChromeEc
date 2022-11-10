@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abdb49a_5c38f39a",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-10T23:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d145fd28_7be8014f",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "2349d388b1bef2b4bd56603ece9be0a1257f1172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83dedc3e_743b71e7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-10T19:26:33Z",
       "side": 1,
       "message": "Do the [C++ random classes](https://en.cppreference.com/w/cpp/numeric/random) work?\n\nProbably would want [`std::uniform_int_distribution`](https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution). \n\nHowever, I\u0027m not sure if [`std::random_device`](https://en.cppreference.com/w/cpp/numeric/random/random_device) will work due to our [libcxx build settings](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/sys-libs/libcxx/libcxx-15.0_pre458507.ebuild;l\u003d180;drc\u003d1c653a53d03365215c4d44c60ea3821f57f6bd5f).",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "2349d388b1bef2b4bd56603ece9be0a1257f1172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7235921_c04dce6f",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-10T23:43:54Z",
+      "side": 1,
+      "message": "I was not familiar with this functions. If it\u0027s okay, could we test them in a separate CL? https://crrev.com/c/4020776\n\nFYI, when I tried to compile the code I got a build error. I am now updating my `chroot` to make sure I have the latest version of the tool chain.",
+      "parentUuid": "83dedc3e_743b71e7",
       "range": {
         "startLine": 72,
         "startChar": 26,
