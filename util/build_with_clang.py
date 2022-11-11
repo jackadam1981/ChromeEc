@@ -80,6 +80,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "rainier",
     "scarlet",
     "servo_micro",
+    "servo_v4",
     "servo_v4p1",
     "staff",
     "star",
@@ -292,7 +293,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "chocodile_vpdmcu",  # compilation error: b/254710459
     "kodama",  # overflows flash
     "oak",  # overflows flash
-    "servo_v4",  # overflows flash
     # Boards that use CHIP:=mchp
     # git grep --name-only 'CHIP:=mchp' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "adlrvpp_mchp1521",  # overflows flash
