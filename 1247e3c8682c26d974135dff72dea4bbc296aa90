@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a17c4c_058b1b3a",
+        "filename": "zephyr/test/drivers/default/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T18:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8d35b8_64929e91",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "1247e3c8682c26d974135dff72dea4bbc296aa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78d5b620_91cc6259",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-11T16:33:39Z",
       "side": 1,
       "message": "nit: static?",
+      "revId": "1247e3c8682c26d974135dff72dea4bbc296aa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d21e62_e54a1a5d",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T18:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d5b620_91cc6259",
       "revId": "1247e3c8682c26d974135dff72dea4bbc296aa90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfbfdf00_39142a26",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T18:08:39Z",
+      "side": 1,
+      "message": "Currently `CONFIG_USB_MUX_RUNTIME_CONFIG` only guards the `const` attribute  for the `usb_muxes[]` definition.  The `struct usb_mux_chain` always points to a constant `struct usb_mux` definition.",
+      "parentUuid": "03d36ac4_f01f227a",
+      "revId": "1247e3c8682c26d974135dff72dea4bbc296aa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7743a4ba_780330c6",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-11-11T17:51:15Z",
       "side": 1,
       "message": "I\u0027m not totally following the effect of this change, but if the mux chain can be properly specified in the devicetree now, is it possible to disable runtime mux configuration and and perform the same tests by specifying multiple mux configs with different devicetree overlays?",
+      "revId": "1247e3c8682c26d974135dff72dea4bbc296aa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77dd195_5ddd6f09",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T18:08:39Z",
+      "side": 1,
+      "message": "That\u0027s a possibility - I didn\u0027t dig into the proxy mux tests as part of this CL.  I\u0027ll look at that possibility in a follow-up CL.",
+      "parentUuid": "7743a4ba_780330c6",
       "revId": "1247e3c8682c26d974135dff72dea4bbc296aa90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
