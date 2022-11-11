@@ -178,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d338211_91f4ad8f",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T20:12:45Z",
+      "side": 1,
+      "message": "You would use the GPIO emulator to trigger the interrupt.  The BC1.2 chip emulator doesn\u0027t emulate any physical pins, just the internal register state.",
+      "parentUuid": "18d8edbb_422bdd48",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9594942a_9b20dd0d",
         "filename": "zephyr/test/drivers/boards/native_posix.overlay",
         "patchSetId": 6
