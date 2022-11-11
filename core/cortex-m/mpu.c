@@ -140,7 +140,10 @@ static int mpu_config_region_greedy(uint8_t region, uint32_t addr,
 		 * disabling if it is not completely contained in the requested
 		 * range.
 		 */
-		subregion_base = addr & ~((1 << natural_alignment) - 1);
+		subregion_base = addr;
+		if (natural_alignment != 32)
+			addr &= ~((1 << natural_alignment) - 1);
+
 		subregion_size = 1 << (natural_alignment - 3);
 		*consumed = 0;
 		for (sr_idx = 0; sr_idx < 8; sr_idx++) {
@@ -159,8 +162,10 @@ static int mpu_config_region_greedy(uint8_t region, uint32_t addr,
 		*consumed = 1 << natural_alignment;
 	}
 
-	return mpu_update_region(region, addr & ~((1 << natural_alignment) - 1),
-				 natural_alignment, attr, enable,
+	if (natural_alignment != 32)
+		addr &= ~((1 << natural_alignment) - 1);
+
+	return mpu_update_region(region, addr, natural_alignment, attr, enable,
 				 subregion_disable);
 }
 
