@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d917b2bf_ebe8ef8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-11T17:35:41Z",
+      "side": 1,
+      "message": "For future reference, here are the results measured on the 2 FPMCUs.\n\n**Dartmonkey**\n\n```\nDEBUG:root:b\u0027       Test Name |  Num Iterations |  Elapsed (us) |      Min (us) |      Max (us) |      Avg (us)\\r\\n\u0027\nDEBUG:root:b\u0027---------------- | --------------- | ------------- | ------------- | ------------- | -------------\\r\\n\u0027\nDEBUG:root:b\u0027            trng |             100 |            49 |             0 |             1 |             0\\r\\n\u0027\nDEBUG:root:b\u0027     trng_on_off |             100 |           277 |             2 |             3 |             2\\r\\n\u0027\nDEBUG:root:b\u0027       std::rand |             100 |             0 |             0 |             0 |             0\\r\\n\u0027\n```\n\n**Bloonchipper**\n\n```\nDEBUG:root:b\u0027       Test Name |  Num Iterations |  Elapsed (us) |      Min (us) |      Max (us) |      Avg (us)\\r\\n\u0027\nDEBUG:root:b\u0027---------------- | --------------- | ------------- | ------------- | ------------- | -------------\\r\\n\u0027\nDEBUG:root:b\u0027            trng |             100 |           128 |             1 |             4 |             1\\r\\n\u0027\nDEBUG:root:b\u0027     trng_on_off |             100 |           213 |             1 |             5 |             2\\r\\n\u0027\nDEBUG:root:b\u0027       std::rand |             100 |           127 |             1 |             2 |             1\\r\\n\u0027\n```",
+      "revId": "6f0ef299630951b99d3ad26cfbc89b6095dd897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50a25661_54311aec",
@@ -24,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aecc3053_48eb6af6",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-11T17:35:41Z",
+      "side": 1,
+      "message": "Good question! I added this because I wanted to measure the overhead of starting/stopping the TRNG.\n\nMore context: the code in Google3 does not (currently) initialize/destroy the RNG. So if we want to use the TRNG without refactoring the Google3 code, one solution would be to have turn it on and off at any call.\n\nIt\u0027s not optimal in terms of performance, but it would work out of the box.\n\nBased on the results measured so far, I am leaning more towards using `std::rand()` though.",
+      "parentUuid": "50a25661_54311aec",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "6f0ef299630951b99d3ad26cfbc89b6095dd897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd87370a_0b63dcf0",
@@ -37,6 +78,30 @@
       "writtenOn": "2022-11-11T06:27:21Z",
       "side": 1,
       "message": "nit: It might be better to have separate tests for `trng` and `rand`.",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "6f0ef299630951b99d3ad26cfbc89b6095dd897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3810e6bf_923de30d",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-11T17:35:41Z",
+      "side": 1,
+      "message": "Yes, I can refactor the code later. I wrote it this way because the benchmark results are printed at the bottom in the same table, which is easier to read.",
+      "parentUuid": "fd87370a_0b63dcf0",
       "range": {
         "startLine": 61,
         "startChar": 30,
