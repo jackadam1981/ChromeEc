@@ -22,6 +22,30 @@
       },
       "revId": "c50b748943583f013ef2cabbf7766a9b36345c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af84531_ad874b17",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T19:43:04Z",
+      "side": 1,
+      "message": "Tried it, no, elvis operators aren\u0027t supported in C.",
+      "parentUuid": "7776f43a_58a1b729",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "c50b748943583f013ef2cabbf7766a9b36345c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
