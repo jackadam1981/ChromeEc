@@ -55,6 +55,11 @@ xivu = register_nissa_project(
     chip="npcx9m3f",
 )
 
+xivur = register_nissa_project(
+    project_name="xivur",
+    chip="npcx9m3f",
+)
+
 joxer = register_nissa_project(
     project_name="joxer",
     chip="it81302bx",
