@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54c28b9_ee96dd23",
+        "filename": "zephyr/dts/bindings/battery/ganfeng,sg20.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-11-11T02:05:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "619d2155_4d0d877c",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "f4f171fbba219e361717b777a36b92a4e40cdd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c75565b3_8d1957aa",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8d3d2ef_db94343f",
+        "filename": "zephyr/dts/bindings/battery/ganfeng,sg20.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-11-11T02:05:49Z",
+      "side": 1,
+      "message": "thanks Wai-Hong reviewed . should is 0as pazquel",
+      "parentUuid": "c75565b3_8d1957aa",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "f4f171fbba219e361717b777a36b92a4e40cdd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68f93992_d20f300a",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-10T23:55:20Z",
       "side": 1,
       "message": "Same here. `board/pazquel/battery.c` set is to 50.",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "f4f171fbba219e361717b777a36b92a4e40cdd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed1e5c33_e65a3cd5",
+        "filename": "zephyr/dts/bindings/battery/ganfeng,sg20.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-11-11T02:05:49Z",
+      "side": 1,
+      "message": "thanks Wai-Hong reviewed . should is 50 as pazquel . for new  cl:4014808 have organized herobrine devicetrees, lead to produce merge conflict and fix this conflict is very difficulty. So discard this cl and submit new.",
+      "parentUuid": "68f93992_d20f300a",
       "range": {
         "startLine": 46,
         "startChar": 15,
