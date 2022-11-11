@@ -70,6 +70,24 @@
       "parentUuid": "a7b00cee_4eb29154",
       "revId": "6a65581fb2029a60eb0fadb33c579f167d2a9acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7656e556_72e04fe0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T23:04:35Z",
+      "side": 1,
+      "message": "Yes, I agree - move the explicit divide by zero into assembly to avoid the undefined behavior by the compiler.",
+      "parentUuid": "b70c2d46_ebe0364f",
+      "revId": "6a65581fb2029a60eb0fadb33c579f167d2a9acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
