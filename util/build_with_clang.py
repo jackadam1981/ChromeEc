@@ -56,6 +56,9 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "gelatin",
     "hammer",
     "hoho",
+    "kakadu",
+    "katsu",
+    "kukui",
     "magnemite",
     "masterball",
     "minimuffin",
@@ -281,12 +284,9 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "fennel",  # overflows flash
     "jacuzzi",  # overflows flash
     "juniper",  # overflows flash
-    "kakadu",  # overflows flash
     "kappa",  # overflows flash
-    "katsu",  # overflows flash
     "kodama",  # overflows flash
     "krane",  # overflows flash
-    "kukui",  # overflows flash
     "makomo",  # overflows flash
     "oak",  # overflows flash
     "servo_v4",  # overflows flash
