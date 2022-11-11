@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76ac1e3_1a32275c",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-11T00:40:24Z",
+      "side": 1,
+      "message": "You could fold `trng` in directly here since it\u0027s so simple (same below):\n\n```\n\tauto result \u003d benchmark.run(\"trng\", [\u0026trng_out]() {\n\t\tstatic int i \u003d 0;\n\t\ttrng_out[i++] \u003d trng_rand();\n\t});\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "b9f3f8c00d733bc753b430d9587c1d8739ef6313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63736646_a0945a6a",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-11T00:40:24Z",
+      "side": 1,
+      "message": "You could also use `trng_out.size()`.",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "b9f3f8c00d733bc753b430d9587c1d8739ef6313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
