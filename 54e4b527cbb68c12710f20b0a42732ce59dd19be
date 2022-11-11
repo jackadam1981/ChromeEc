@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7ea46a_add97af3",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-11T17:35:35Z",
+      "side": 1,
+      "message": "Perhaps this is out of scope for this CL, but should the emulator be updated to make use of this GPIO?",
+      "revId": "54e4b527cbb68c12710f20b0a42732ce59dd19be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
