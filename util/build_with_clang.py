@@ -149,6 +149,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "fleex",
     "foob",
     "gaelin",
+    "garg",
     "gelarshie",
     "genesis",
     "gimble",
@@ -297,7 +298,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     # git grep --name-only 'CHIP:=mchp' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "adlrvpp_mchp1521",  # overflows flash
     # Boards that use CHIP:=npcx
-    "garg",  # overflows flash
     "mushu",  # overflows flash
     "terrador",  # overflows flash
     "volteer",  # overflows flash
