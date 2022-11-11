@@ -11,7 +11,9 @@
 #include "gpio_signal.h"
 
 /* Common definition for the USB PD interrupt handlers. */
+#ifndef BOARD_MARASOV
 void bc12_interrupt(enum gpio_signal signal);
+#endif
 void ppc_interrupt(enum gpio_signal signal);
 void retimer_interrupt(enum gpio_signal signal);
 void tcpc_alert_event(enum gpio_signal signal);
