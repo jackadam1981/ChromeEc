@@ -16,6 +16,24 @@
       "message": "CQ is failed, please fix:\n\nERROR:root:All C source must be formatted with clang-format!\nERROR:root:/mnt/host/source/src/platform/ec/board/gaelin/usbc_config.h:13:17: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:enum usbc_port {\nERROR:root:                ^\nERROR:root:/mnt/host/source/src/platform/ec/board/gaelin/usbc_config.h:14:19: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        USBC_PORT_C0 \u003d 0,\nERROR:root:                         ^\nERROR:root:/mnt/host/source/src/platform/ec/board/gaelin/usbc_config.h:15:15: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        USBC_PORT_C1,\nERROR:root:                     ^\nERROR:root:/mnt/host/source/src/platform/ec/board/gaelin/usbc_config.h:16:17: warning: code should be clang-formatted [-Wclang-format-violations]\nERROR:root:        USBC_PORT_COUNT\nERROR:root:",
       "revId": "f7fceaed95c2c8fb6a425adbc630b4a18711740f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5527d79_4ea3fffc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-11T07:55:13Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4951b4fd_50ce76e5",
+      "revId": "f7fceaed95c2c8fb6a425adbc630b4a18711740f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
