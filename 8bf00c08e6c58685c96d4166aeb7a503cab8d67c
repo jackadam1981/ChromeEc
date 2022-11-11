@@ -33,6 +33,23 @@
       "message": "For these common CLs, I\u0027d suggest running them through CQ+1 to get a sense of how much test coverage they have.  New common code in files which already have partial coverage should have tests written to cover it. \n\nIf you hit any questions creating tests for your new feature, you can feel free to contact the test team with zephyr-test-eng@google.com",
       "revId": "8bf00c08e6c58685c96d4166aeb7a503cab8d67c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89ccb0e8_f5ce6750",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-11T16:31:44Z",
+      "side": 1,
+      "message": "The zephyr test team can provide guidance and reviews for writing unit tests on new features like this one: zephyr-test-eng@google.com\n\nFor features that require setting a Kconfig option, I usually create a new test under `zephyr/test/drivers/`.  That way, you can set up your new Kconfig and add a basic test to validate that it works (in this case, validate that we turn the body detection on after we cycle up to S0, and off after we emulate a power down)",
+      "revId": "8bf00c08e6c58685c96d4166aeb7a503cab8d67c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
