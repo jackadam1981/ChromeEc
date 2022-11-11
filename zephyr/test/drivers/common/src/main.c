@@ -12,7 +12,7 @@
 /**
  * @brief Semaphore that signals when hooks have completed
  */
-static struct k_sem init_hooks_completed;
+K_SEM_DEFINE(init_hooks_completed, 0, 1);
 
 /**
  * @brief Hook callback function. Gets registered with the lowest priority so
@@ -37,8 +37,6 @@ bool drivers_predicate_post_main(const void *state)
 
 void test_main(void)
 {
-	k_sem_init(&init_hooks_completed, 0, 1);
-
 	struct test_state state = {
 		.ec_app_main_run = false,
 	};
