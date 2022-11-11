@@ -151,6 +151,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "fleex",
     "foob",
     "gaelin",
+    "garg",
     "gelarshie",
     "genesis",
     "gimble",
@@ -294,7 +295,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "chocodile_vpdmcu",  # compilation error: b/254710459
     "kodama",  # overflows flash
     # Boards that use CHIP:=npcx
-    "garg",  # overflows flash
     "mushu",  # overflows flash
     "terrador",  # overflows flash
     "volteer",  # overflows flash
