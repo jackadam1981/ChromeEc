@@ -230,24 +230,6 @@ static void set_ac_prochot(void)
 DECLARE_HOOK(HOOK_INIT, set_ac_prochot, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_CHARGER_ISL9241 */
 
-void tcpc_alert_event(enum gpio_signal signal)
-{
-	int port;
-
-	switch (signal) {
-	case GPIO_USB_C0_TCPC_INT_ODL:
-		port = 0;
-		break;
-	case GPIO_USB_C1_TCPC_INT_ODL:
-		port = 1;
-		break;
-	default:
-		return;
-	}
-
-	schedule_deferred_pd_interrupt(port);
-}
-
 static void reset_nct38xx_port(int port)
 {
 	const struct gpio_dt_spec *reset_gpio_l;
