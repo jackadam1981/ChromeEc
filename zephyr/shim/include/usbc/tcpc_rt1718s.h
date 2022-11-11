@@ -10,12 +10,13 @@
 #define RT1718S_TCPC_COMPAT richtek_rt1718s_tcpc
 
 #define TCPC_CONFIG_RT1718S(id) \
-	{                                              \
-		.bus_type = EC_BUS_TYPE_I2C,           \
-		.i2c_info = {                          \
-			.port = I2C_PORT_BY_DEV(id),   \
-			.addr_flags = DT_REG_ADDR(id), \
-		},                                     \
-		.drv = &rt1718s_tcpm_drv,              \
-		.flags = DT_PROP(id, tcpc_flags),      \
+	{                                                             \
+		.bus_type = EC_BUS_TYPE_I2C,                          \
+		.i2c_info = {                                         \
+			.port = I2C_PORT_BY_DEV(id),                  \
+			.addr_flags = DT_REG_ADDR(id),                \
+		},                                                    \
+		.drv = &rt1718s_tcpm_drv,                             \
+		.flags = DT_PROP(id, tcpc_flags),                     \
+		.alert_signal = GPIO_SIGNAL(DT_PHANDLE(id, int_pin)), \
 	},
