@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50a25661_54311aec",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-11-11T06:27:21Z",
+      "side": 1,
+      "message": "Just out of curiosity, does this test add value long term or was it intended as temporary?",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "6f0ef299630951b99d3ad26cfbc89b6095dd897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd87370a_0b63dcf0",
+        "filename": "test/rng_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-11-11T06:27:21Z",
+      "side": 1,
+      "message": "nit: It might be better to have separate tests for `trng` and `rand`.",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "6f0ef299630951b99d3ad26cfbc89b6095dd897f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
