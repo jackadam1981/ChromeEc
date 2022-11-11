@@ -76,6 +76,7 @@ test-list-host += motion_angle_tablet
 test-list-host += motion_lid
 test-list-host += motion_sense_fifo
 test-list-host += mutex
+test-list-host += mpu
 test-list-host += newton_fit
 test-list-host += nvidia_gpu
 test-list-host += online_calibration
