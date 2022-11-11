@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "117a7f97_4e46f7f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T17:14:52Z",
+      "side": 1,
+      "message": "This should be adding CONFIG_CHARGER_**MIN**_INPUT_CURRENT_LIMIT",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8b4f95d_87a2afc6",
+        "filename": "baseboard/asurada/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T17:14:52Z",
+      "side": 1,
+      "message": "How about providing a default implementation for this?  This can be done as a follow-on CL.",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 312,
+        "endChar": 27
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed12d326_22b2de76",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T17:14:52Z",
+      "side": 1,
+      "message": "Are there actually any instances where CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT is set to a different value from CONFIG_CHARGER_INPUT_CURRENT?\n\nIf not, I think a boolean symbol would be clearer that simply applies the \nCONFIG_CHARGER_INPUT_CURRENT setting\n\n```\n    if (IS_ENABLED(CONFIG_CHARGER_INPUT_CURRENT_FLOOR))\n      ma \u003d MAX(ma, CONFIG_CHARGER_MIN_INPUT_LIMIT);\n```\n\nNaming is hard, suggestions for the boolean name:\nCONFIG_CHARGER_INPUT_CURRENT_FLOOR\nCONFIG_CHARGER_INPUT_CURRENT_CLAMPED",
+      "range": {
+        "startLine": 2339,
+        "startChar": 0,
+        "endLine": 2339,
+        "endChar": 45
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d895cd_b2125f65",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T17:14:52Z",
+      "side": 1,
+      "message": "This statement only applies if `CONFIG_CHARGER_INPUT_CURRENT` is larger than 512, correct?",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 55
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a6c818_327b0936",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T17:14:52Z",
+      "side": 1,
+      "message": "Do yo mean a value greater than 512 mA?",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 8
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659770da_128788a0",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T17:14:52Z",
+      "side": 1,
+      "message": "Your updated documentation indicates that this limit only applies to startup.  Please add that qualifier here.",
+      "range": {
+        "startLine": 1030,
+        "startChar": 11,
+        "endLine": 1030,
+        "endChar": 24
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83cead7_a68327b9",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T17:14:52Z",
+      "side": 1,
+      "message": "If you keep this at 2 integer types, I would suggest changing this name  to `CONFIG_CHARGER_INPUT_CURRENT_STARTUP` or `CONFIG_CHARGER_INPUT_CURRENT_DEFAULT`. The naming of these two configs is so close, and I struggle to understand the difference between these settings.\n\nAlso, because this setting is required, can you set the default to 512?",
+      "range": {
+        "startLine": 1037,
+        "startChar": 7,
+        "endLine": 1037,
+        "endChar": 35
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a7ff0e_4e467dcb",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T17:14:52Z",
+      "side": 1,
+      "message": "If staying with 2 integer types, how about `CONFIG_CHARGER_INPUT_CURRENT_FLOOR` or `CONFIG_CHARGER_INPUT_CURRENT_MIN`?\n\n\"MIN\" and \"LIMIT\" are redundant.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 7,
+        "endLine": 1053,
+        "endChar": 45
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
