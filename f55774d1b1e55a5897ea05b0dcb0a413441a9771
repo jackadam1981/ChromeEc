@@ -33,6 +33,24 @@
       "message": "Non-blocking comment: We probably should update the corresponding devicetrees to use the SoC specific symbol. \n\nFor NPCX\n```\nec-i2c-sensor-scl {\n\tgpios \u003d \u003c\u0026gpiob 5 (GPIO_INPUT | NPCX_GPIO_VOLTAGE_1P8)\u003e;\n};\n```\n\nFor ITE\n```\nec-i2c-sensor-scl {\n\tgpios \u003d \u003c\u0026gpiob 5 (GPIO_INPUT | IT8XXX2_GPIO_VOLTAGE_1P8)\u003e;\n};\n```\n\nBut I\u0027m not sure how the shim driver should deal with this.",
       "revId": "f55774d1b1e55a5897ea05b0dcb0a413441a9771",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "280ef92a_f24f2911",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-11T17:39:53Z",
+      "side": 1,
+      "message": "I did that originally but then ran the tests and realized that on platform test we use the original dts in a `native-posix` build. So I ended up redoing it by keeping the generic define. The other option would have been to define all possible chip flags on the emulated gpio driver but this feels a lot less intrusive. Guess we can always rewrite it if it does not work out.",
+      "parentUuid": "1b25fe01_87d1af34",
+      "revId": "f55774d1b1e55a5897ea05b0dcb0a413441a9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
