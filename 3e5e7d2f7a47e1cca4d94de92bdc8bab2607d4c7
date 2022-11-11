@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa703acb_7001f720",
+        "filename": "zephyr/dts/bindings/emul/zephyr,pct2075.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T20:52:31Z",
+      "side": 1,
+      "message": "The emulator should use the same compatible string as the regular driver.  This allows the tests to share devicetrees with the board.\nLook at CL:4023765 for an example.",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "3e5e7d2f7a47e1cca4d94de92bdc8bab2607d4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96fe9f8d_bb13385f",
+        "filename": "zephyr/emul/emul_pct2075.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-11T20:52:31Z",
+      "side": 1,
+      "message": "This function appears to be unused - the pct2075 driver only does I2C reads so this can be deleted for now.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "3e5e7d2f7a47e1cca4d94de92bdc8bab2607d4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
