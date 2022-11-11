@@ -225,6 +225,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "voema",
     "volet",
     "volmar",
+    "volteer",
     "volteer_npcx797fc",
     "voxel",
     "voxel_ecmodeentry",
@@ -300,7 +301,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     # git grep --name-only 'CHIP:=mchp' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "adlrvpp_mchp1521",  # overflows flash
     # Boards that use CHIP:=npcx
-    "volteer",  # overflows flash
 ]
 
 # TODO(b/201311714): NDS32 is not supported by LLVM.
