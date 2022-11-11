@@ -55,6 +55,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		.drv = &nct38xx_tcpm_drv,
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			TCPC_FLAGS_NO_DEBUG_ACC_CONTROL,
+		.alert_signal = GPIO_SIGNAL(I2C_PORT_USB_C0_C2_TCPC),
 	},
 	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -67,6 +68,7 @@ const struct tcpc_config_t tcpc_config[] = {
 			 TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V |
 			 TCPC_FLAGS_CONTROL_VCONN |
 			 TCPC_FLAGS_CONTROL_FRS,
+		.alert_signal = GPIO_SIGNAL(I2C_PORT_USB_C1_TCPC),
 	},
 	[USBC_PORT_C2] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -76,6 +78,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		},
 		.drv = &nct38xx_tcpm_drv,
 		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+		.alert_signal = GPIO_SIGNAL(I2C_PORT_USB_C0_C2_TCPC),
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
@@ -427,22 +430,6 @@ int ppc_get_alert_status(int port)
 	else if (port == USBC_PORT_C2)
 		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
 	return 0;
-}
-
-void tcpc_alert_event(enum gpio_signal signal)
-{
-	switch (signal) {
-	case GPIO_USB_C0_C2_TCPC_INT_ODL:
-		schedule_deferred_pd_interrupt(USBC_PORT_C0);
-		break;
-	case GPIO_USB_C1_TCPC_INT_ODL:
-		if (ec_cfg_usb_db_type() == DB_USB_ABSENT)
-			break;
-		schedule_deferred_pd_interrupt(USBC_PORT_C1);
-		break;
-	default:
-		break;
-	}
 }
 
 void bc12_interrupt(enum gpio_signal signal)

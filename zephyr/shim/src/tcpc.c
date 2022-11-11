@@ -73,4 +73,16 @@
 MAYBE_CONST struct tcpc_config_t tcpc_config[] = { DT_FOREACH_STATUS_OKAY(
 	named_usbc_port, TCPC_CHIP) };
 
+/* TCPC GPIO Interrupt Handlers */
+void tcpc_alert_event(enum gpio_signal signal)
+{
+	for (int i = 0; i < ARRAY_SIZE(tcpc_config); i++) {
+		if (signal == tcpc_config[i].alert_signal) {
+			schedule_deferred_pd_interrupt(
+				tcpc_config[i].i2c_info.port);
+			break;
+		}
+	}
+}
+
 #endif /* DT_HAS_COMPAT_STATUS_OKAY */
