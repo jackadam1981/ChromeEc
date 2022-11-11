@@ -271,6 +271,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d587cb8_9d6cfa95",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-11T18:51:22Z",
+      "side": 1,
+      "message": "I think body detection is tested through an ECOS test: `test/body_detection.c`\n\nSo there\u0027s one available, it\u0027s just not in our zephyr tests.  If it\u0027s easier to add to the ECOS test for this feature, then that could be a reasonable path to getting coverage here.\n\nThe file `docs/code_coverage.md` has instructions for both generating ECOS code coverage and zephyr coverage if you want a way to track your coverage locally while writing the test.",
+      "parentUuid": "b9385ecc_981cb8d3",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
