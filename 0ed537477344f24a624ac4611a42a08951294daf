@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c71a8c_09d55d25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T19:19:12Z",
+      "side": 1,
+      "message": "Obsolete",
+      "parentUuid": "bbec83f8_14016e12",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94c5b59f_29f72f4f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-10T14:59:28Z",
       "side": 1,
       "message": "Add the copyright header.",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64642be_7710e4df",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T19:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94c5b59f_29f72f4f",
       "revId": "0ed537477344f24a624ac4611a42a08951294daf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74abcc7_1c453346",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T19:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6370a50c_9078f6b1",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69284936_1ef804df",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7e7b7a_1dcc04a2",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T19:19:12Z",
+      "side": 1,
+      "message": "It\u0027s checking the shim layer",
+      "parentUuid": "69284936_1ef804df",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3ddd7b7_323c7b08",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-11-10T16:41:03Z",
       "side": 1,
       "message": "Similarly, is it possible to generate an interrupt from the BC1.2 chip emulator rather than calling this interrupt handler directly?",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d8edbb_422bdd48",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T19:19:12Z",
+      "side": 1,
+      "message": "I\u0027ll take a look",
+      "parentUuid": "e3ddd7b7_323c7b08",
       "revId": "0ed537477344f24a624ac4611a42a08951294daf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
