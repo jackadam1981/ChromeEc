@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8922b7a7_3c442d2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-11T16:34:48Z",
+      "side": 1,
+      "message": "Please limit the use of this LOW_COVERAGE_REASON to changes in the skyrim board code.\n\nThere are tests set up which can be exercised and added to in order to test common code changes",
+      "revId": "4902825302fe2c4af088be82e70a25757ce43f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
