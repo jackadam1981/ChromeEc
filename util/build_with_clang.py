@@ -212,6 +212,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "stryke",
     "taeko",
     "taniks",
+    "terrador",
     "treeya",
     "trembyle",
     "trogdor",
@@ -297,7 +298,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "bobba",  # overflows flash
     "coachz",  # overflows flash
     "corori2",  # overflows flash
-    "terrador",  # overflows flash
     "volteer",  # overflows flash
 ]
 
