@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7776f43a_58a1b729",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-11-11T19:29:51Z",
+      "side": 1,
+      "message": "Are we allowed\n\ndata ?: \u0026data-\u003eevent_mask",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "c50b748943583f013ef2cabbf7766a9b36345c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
