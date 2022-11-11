@@ -247,6 +247,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9385ecc_981cb8d3",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T16:39:57Z",
+      "side": 1,
+      "message": "Yes, I would assume that the on body detection is already tested no? If yes, it should be a simple matter of just checking that you also got the event. If not, then you should probably get more resources from the team and put together a test for it. One simple way is to run it on a device and capture the sensor data so you can replay it in a test. I\u0027m unfamiliar with the on-body-detection code so I\u0027m not sure how it was laid out and if it\u0027s easy to inject fake sensor data so that\u0027s a bit out of scope with what I can help you with. If you have any testing specific questions please ping me directly.",
+      "parentUuid": "fd6349ef_d3ff7de5",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
