@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8d35b8_64929e91",
+        "filename": "zephyr/test/drivers/default/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T16:33:39Z",
+      "side": 1,
+      "message": "nit: static?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "1247e3c8682c26d974135dff72dea4bbc296aa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d5b620_91cc6259",
+        "filename": "zephyr/test/drivers/default/src/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-11T16:33:39Z",
+      "side": 1,
+      "message": "nit: static?",
+      "revId": "1247e3c8682c26d974135dff72dea4bbc296aa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
