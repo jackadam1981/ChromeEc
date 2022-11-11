@@ -132,6 +132,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "fleex",
     "foob",
     "gaelin",
+    "gelarshie",
     "genesis",
     "gimble",
     "grunt",
@@ -296,7 +297,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "adlrvpp_mchp1521",  # overflows flash
     # Boards that use CHIP:=npcx
     "garg",  # overflows flash
-    "gelarshie",  # overflows flash
     "mushu",  # overflows flash
     "terrador",  # overflows flash
     "volteer",  # overflows flash
