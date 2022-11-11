@@ -404,11 +404,21 @@ int tcpci_partner_send_control_msg(struct tcpci_partner_data *data,
 
 	msg->type = type;
 
-	if (msg->type == PD_CTRL_DR_SWAP) {
-		/* Remember the control request initiated, so we can
-		 * handle the responses
+	switch (msg->type) {
+	case PD_CTRL_DR_SWAP:
+	case PD_CTRL_VCONN_SWAP:
+		/* For supported message types, remember the control request
+		 * initiated, so the partner can handle the responses.
+		 * (Eventually, all messages that can start an AMS should be
+		 * supported.)
 		 */
 		tcpci_partner_common_set_ams_ctrl_msg(data, msg->type);
+		break;
+	default:
+		/* For messages that do not start an AMS, there is nothing to
+		 * record.
+		 */
+		break;
 	}
 
 	return tcpci_partner_send_msg(data, msg, delay);
@@ -941,6 +951,26 @@ tcpci_partner_common_accept_dr_swap_handler(struct tcpci_partner_data *data)
 }
 
 static enum tcpci_partner_handler_res
+tcpci_partner_common_accept_vconn_swap_handler(struct tcpci_partner_data *data)
+{
+	if (data->vconn_role == PD_ROLE_VCONN_SRC) {
+		/* TODO: Wait for PS_RDY. */
+	} else {
+		/* VCONN Swap from off to VCONN Source means the partner sends
+		 * the first PS_RDY after turning on VCONN.
+		 */
+		tcpci_partner_common_set_vconn(data, PD_ROLE_VCONN_ON);
+		tcpci_partner_send_control_msg(data, PD_CTRL_PS_RDY, 15);
+		tcpci_partner_common_clear_ams_ctrl_msg(data);
+		/* Strictly speaking, the AMS isn't over until the partner
+		 * receives GoodCRC for the PS_RDY.
+		 */
+	}
+
+	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+}
+
+static enum tcpci_partner_handler_res
 tcpi_drp_emul_ps_rdy_handler(struct tcpci_partner_data *data)
 {
 	switch (data->cur_ams_ctrl_req) {
@@ -960,6 +990,8 @@ tcpi_partner_common_handle_accept(struct tcpci_partner_data *data)
 	switch (data->cur_ams_ctrl_req) {
 	case PD_CTRL_DR_SWAP:
 		return tcpci_partner_common_accept_dr_swap_handler(data);
+	case PD_CTRL_VCONN_SWAP:
+		return tcpci_partner_common_accept_vconn_swap_handler(data);
 
 	default:
 		LOG_ERR("Unhandled current_req=%u in ACCEPT",
