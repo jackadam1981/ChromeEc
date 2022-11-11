@@ -220,6 +220,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "stryke",
     "taeko",
     "taniks",
+    "terrador",
     "treeya",
     "trembyle",
     "trogdor",
@@ -297,7 +298,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
     "kodama",  # overflows flash
     # Boards that use CHIP:=npcx
-    "terrador",  # overflows flash
     "volteer",  # overflows flash
 ]
 
