@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32bbb24_6c059545",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2022-11-11T08:08:23Z",
+      "side": 1,
+      "message": "LTR for DMA copy is 2ms and default is 10ms. \nAfter restore from IMR to SRAM(after line 787, \"ret \u003d restore_main_fw()\"), LTR is still 2ms.  no need to change back to default value(10ms) ?",
+      "range": {
+        "startLine": 782,
+        "startChar": 41,
+        "endLine": 782,
+        "endChar": 57
+      },
+      "revId": "2fc09b297dbe8ad88955f1011e7e8c3c416357f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
