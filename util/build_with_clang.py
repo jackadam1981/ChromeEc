@@ -221,6 +221,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "voema",
     "volet",
     "volmar",
+    "volteer",
     "volteer_npcx797fc",
     "voxel",
     "voxel_ecmodeentry",
@@ -294,11 +295,9 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "kodama",  # overflows flash
     "makomo",  # overflows flash
     "oak",  # overflows flash
-    # Boards that use CHIP:=npcx
     "bobba",  # overflows flash
     "coachz",  # overflows flash
     "corori2",  # overflows flash
-    "volteer",  # overflows flash
 ]
 
 # TODO(b/201311714): NDS32 is not supported by LLVM.
