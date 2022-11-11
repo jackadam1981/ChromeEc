@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2478afcd_8e5763b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-11T15:55:40Z",
+      "side": 1,
+      "message": "Not exactly elegant but it\u0027s the best compromise I could come up with, tried to \"just\" convert all the platforms to their specific flag, but then I hit the test and realized that we share the dts with native posix for the test and had to revert it all and redo it redefining the flag.",
+      "revId": "f55774d1b1e55a5897ea05b0dcb0a413441a9771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
