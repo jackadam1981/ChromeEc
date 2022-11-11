@@ -302,7 +302,7 @@ struct ec_thermal_config thermal_params[] = {
 	{ { 0, C_TO_K(80), C_TO_K(81) },
 	  { 0, C_TO_K(78), 0 },
 	  C_TO_K(4),
-	  C_TO_K(76) }, /* TMP431_Internal */
+	  C_TO_K(56) }, /* TMP431_Internal */
 	{ { 0, 0, 0 }, { 0, 0, 0 }, 0, 0 }, /* TMP431_Sensor_1 */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
