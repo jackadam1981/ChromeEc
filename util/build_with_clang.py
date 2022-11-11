@@ -181,6 +181,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "moonbuggy",
     "morphius",
     "mrbland",
+    "mushu",
     "nami",
     "nautilus",
     "nightfury",
@@ -297,7 +298,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "corori2",  # overflows flash
     "gelarshie",  # overflows flash
     "lazor",  # overflows flash
-    "mushu",  # overflows flash
     "terrador",  # overflows flash
     "volteer",  # overflows flash
 ]
