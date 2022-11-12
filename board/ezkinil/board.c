@@ -389,27 +389,23 @@ const static struct ec_thermal_config thermal_cpu = {
 
 struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
 
-struct fan_step {
-	int on;
-	int off;
-	int rpm;
-};
+typedef struct fan_step_1_1 fan_step;
 
 /* Note: Do not make the fan on/off point equal to 0 or 100 */
-static const struct fan_step fan_table0[] = {
-	{.on =  0, .off =  2, .rpm = 0},
-	{.on = 15, .off =  2, .rpm = 2800},
-	{.on = 23, .off = 13, .rpm = 3200},
-	{.on = 30, .off = 21, .rpm = 3400},
-	{.on = 38, .off = 28, .rpm = 3700},
-	{.on = 45, .off = 36, .rpm = 4200},
-	{.on = 55, .off = 43, .rpm = 4500},
-	{.on = 66, .off = 53, .rpm = 5300},
+static const fan_step fan_table0[] = {
+	{ .on = 0, .off = 1, .rpm = 0 },
+	{ .on = 9, .off = 1, .rpm = 3200 },
+	{ .on = 21, .off = 7, .rpm = 3500 },
+	{ .on = 28, .off = 16, .rpm = 3900 },
+	{ .on = 37, .off = 26, .rpm = 4200 },
+	{ .on = 47, .off = 35, .rpm = 4600 },
+	{ .on = 56, .off = 44, .rpm = 5100 },
+	{ .on = 72, .off = 60, .rpm = 5500 },
 };
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
 
-static const struct fan_step *fan_table = fan_table0;
+static const fan_step *fan_table = fan_table0;
 
 static void setup_fans(void)
 {
@@ -421,42 +417,8 @@ DECLARE_HOOK(HOOK_INIT, setup_fans, HOOK_PRIO_DEFAULT);
 
 int fan_percent_to_rpm(int fan, int pct)
 {
-	static int current_level;
-	static int previous_pct;
-	int i;
-	/*
-	 * Compare the pct and previous pct, we have the three paths :
-	 *  1. decreasing path. (check the off point)
-	 *  2. increasing path. (check the on point)
-	 *  3. invariant path. (return the current RPM)
-	 */
-	if (pct < previous_pct) {
-		for (i = current_level; i >= 0; i--) {
-			if (pct <= fan_table[i].off)
-				current_level = i - 1;
-			else
-				break;
-		}
-	} else if (pct > previous_pct) {
-		for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
-			if (pct >= fan_table[i].on)
-				current_level = i;
-			else
-				break;
-		}
-	}
-
-	if (current_level < 0)
-		current_level = 0;
-
-	previous_pct = pct;
-
-	if (fan_table[current_level].rpm !=
-		fan_get_rpm_target(FAN_CH(fan)))
-		cprints(CC_THERMAL, "Setting fan RPM to %d",
-			fan_table[current_level].rpm);
-
-	return fan_table[current_level].rpm;
+	return fan_percent_to_rpm_path_dependent(fan_table, NUM_FAN_LEVELS, fan,
+						 pct, board_print_temps);
 }
 
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,
