@@ -105,9 +105,48 @@ static int test_fan(void)
 	return EC_SUCCESS;
 }
 
-void run_test(int argc, char **argv)
+static int test_fan_percent_to_rpm_path_dependent(void)
+{
+	typedef struct fan_step_1_1 fan_step;
+	const fan_step fan_table[] = {
+		{ .on = 0, .off = 2, .rpm = 0 },
+		{ .on = 11, .off = 2, .rpm = 2500 },
+		{ .on = 38, .off = 29, .rpm = 3200 },
+		{ .on = 65, .off = 36, .rpm = 3500 },
+		{ .on = 76, .off = 64, .rpm = 3900 },
+		{ .on = 84, .off = 75, .rpm = 4500 },
+		{ .on = 91, .off = 82, .rpm = 5100 },
+		{ .on = 98, .off = 89, .rpm = 5400 },
+	};
+	/* All fan tables must have the same number of levels */
+	const int num_fan_levels = ARRAY_SIZE(fan_table);
+
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 0, NULL) == 0);
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 20, NULL) == 2500);
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 10, NULL) == 2500);
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 40, NULL) == 3200);
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 30, NULL) == 3200);
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 20, NULL) == 2500);
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 60, NULL) == 3200);
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 70, NULL) == 3500);
+	TEST_ASSERT(fan_percent_to_rpm_path_dependent(fan_table, num_fan_levels,
+						      0, 60, NULL) == 3500);
+
+	return EC_SUCCESS;
+}
+
+void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fan);
+	RUN_TEST(test_fan_percent_to_rpm_path_dependent);
 
 	test_print_result();
 }
