@@ -86,6 +86,26 @@ void fan_set_percent_needed(int fan, int pct);
  * Return       Target RPM for fan
  */
 int fan_percent_to_rpm(int fan, int pct);
+#ifdef CONFIG_FAN_RPM_CUSTOM
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
+/**
+ * This function is the most popular custom translation of the percentage of
+ * cooling needed into a target RPM.
+ *
+ * @param fan_table        Pointer to array of fan_step structs
+ * @param num_fan_levels   Size of fan_table
+ * @param fan   Fan number (index into fans[])
+ * @param pct   Percentage of cooling effort needed (always in [0,100])
+ * Return       Target RPM for fan
+ */
+int fan_percent_to_rpm_path_dependent(const struct fan_step *fan_table,
+				      const int num_fan_levels, int fan,
+				      int pct, void (*on_change)(void));
+#endif
 
 /**
  * These functions require chip-specific implementations.
