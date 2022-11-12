@@ -86,13 +86,9 @@ struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
-struct fan_step {
-	int on;
-	int off;
-	int rpm;
-};
+typedef struct fan_step_1_1 fan_step;
 
-static const struct fan_step fan_table[] = {
+static const fan_step fan_table[] = {
 	{ .on = 0, .off = 1, .rpm = 0 },
 	{ .on = 6, .off = 2, .rpm = 3000 },
 	{ .on = 28, .off = 15, .rpm = 3300 },
@@ -106,39 +102,6 @@ static const struct fan_step fan_table[] = {
 
 int fan_percent_to_rpm(int fan, int pct)
 {
-	static int current_level;
-	static int previous_pct;
-	int i;
-
-	/*
-	 * Compare the pct and previous pct, we have the three paths :
-	 *  1. decreasing path. (check the off point)
-	 *  2. increasing path. (check the on point)
-	 *  3. invariant path. (return the current RPM)
-	 */
-	if (pct < previous_pct) {
-		for (i = current_level; i >= 0; i--) {
-			if (pct <= fan_table[i].off)
-				current_level = i - 1;
-			else
-				break;
-		}
-	} else if (pct > previous_pct) {
-		for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
-			if (pct >= fan_table[i].on)
-				current_level = i;
-			else
-				break;
-		}
-	}
-
-	if (current_level < 0)
-		current_level = 0;
-
-	previous_pct = pct;
-
-	if (fan_table[current_level].rpm != fan_get_rpm_target(FAN_CH(fan)))
-		CPRINTS("Setting fan RPM to %d", fan_table[current_level].rpm);
-
-	return fan_table[current_level].rpm;
+	return fan_percent_to_rpm_path_dependent(fan_table, NUM_FAN_LEVELS, fan,
+						 pct, NULL);
 }
