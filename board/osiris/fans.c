@@ -75,20 +75,16 @@ const struct fan_t fans[FAN_CH_COUNT] = {
 
 /* fan control */
 
-struct fan_step {
-	int on;
-	int off;
-	int rpm;
-};
+typedef struct fan_step_1_1 fan_step;
 
 struct fan_table_config {
 	/* number of control_table */
 	uint8_t step;
 	/* fan control table */
-	const struct fan_step *control_table;
+	const fan_step *control_table;
 };
 
-const struct fan_step fan_table0[] = {
+const fan_step fan_table0[] = {
 	{ .on = 25, .off = 0, .rpm = 0 },
 	{ .on = 37, .off = 34, .rpm = 2500 },
 	{ .on = 42, .off = 39, .rpm = 2800 },
@@ -102,7 +98,7 @@ const struct fan_step fan_table0[] = {
 };
 const int fan_table0_count = ARRAY_SIZE(fan_table0);
 
-const struct fan_step fan_table1[] = {
+const fan_step fan_table1[] = {
 	{ .on = 25, .off = 0, .rpm = 0 },
 	{ .on = 51, .off = 48, .rpm = 3200 },
 	{ .on = 55, .off = 52, .rpm = 3600 },
@@ -117,11 +113,11 @@ const int fan_table1_count = ARRAY_SIZE(fan_table1);
 static struct fan_table_config fan_tables[] = {
 	[FAN_CH_0] = {
 		.step = fan_table0_count,
-		.control_table = (const struct fan_step *) &fan_table0,
+		.control_table = (const fan_step *) &fan_table0,
 	},
 	[FAN_CH_1] = {
 		.step = fan_table1_count,
-		.control_table = (const struct fan_step *) &fan_table1,
+		.control_table = (const fan_step *) &fan_table1,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(fan_tables) == FAN_CH_COUNT);
