@@ -71,6 +71,55 @@ int fan_percent_to_rpm(int fan, int pct)
 
 	return rpm;
 }
+#else /* CONFIG_FAN_RPM_CUSTOM */
+/* This is the most custom implementation of fan_percent_to_rpm,
+ * which enables hysteresis, typically to avoid oscillations in
+ * temperature and fan speed.
+ */
+int fan_percent_to_rpm_path_dependent(const struct fan_step *fan_table,
+				      const int num_fan_levels, int fan,
+				      int pct, void (*on_change)(void))
+{
+	static int current_level;
+	static int previous_pct;
+	int i;
+	/*
+	 * Compare the pct and previous pct, we have the three paths :
+	 *  1. decreasing path. (check the off point)
+	 *  2. increasing path. (check the on point)
+	 *  3. invariant path. (return the current RPM)
+	 */
+	if (pct < previous_pct) {
+		for (i = current_level; i >= 0; i--) {
+			if (pct <= fan_table[i].off)
+				current_level = i - 1;
+			else
+				break;
+		}
+	} else if (pct > previous_pct) {
+		for (i = current_level + 1; i < num_fan_levels; i++) {
+			if (pct >= fan_table[i].on)
+				current_level = i;
+			else
+				break;
+		}
+	}
+
+	if (current_level < 0)
+		current_level = 0;
+
+	previous_pct = pct;
+
+	if (fan_table[current_level].rpm != fan_get_rpm_target(FAN_CH(fan))) {
+		cprints(CC_THERMAL, "Setting fan RPM to %d",
+			fan_table[current_level].rpm);
+		if (on_change) {
+			on_change();
+		}
+	}
+
+	return fan_table[current_level].rpm;
+}
 #endif /* CONFIG_FAN_RPM_CUSTOM */
 
 /* The thermal task will only call this function with pct in [0,100]. */
