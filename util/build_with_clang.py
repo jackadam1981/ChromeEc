@@ -66,6 +66,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "kakadu",
     "kappa",
     "katsu",
+    "kodama",
     "krane",
     "kukui",
     "magnemite",
@@ -287,11 +288,9 @@ RISCV_BOARDS = [
 ]
 
 BOARDS_THAT_FAIL_WITH_CLANG = [
-    # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
     "fennel",  # overflows flash
     "jacuzzi",  # overflows flash
     "juniper",  # overflows flash
-    "kodama",  # overflows flash
     "makomo",  # overflows flash
     "oak",  # overflows flash
     "bobba",  # overflows flash
