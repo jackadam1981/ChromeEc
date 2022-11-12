@@ -194,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "664d18a9_26a458d6",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-12T01:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d338211_91f4ad8f",
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9594942a_9b20dd0d",
@@ -217,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde0be0c_4f336284",
+        "filename": "zephyr/test/drivers/boards/native_posix.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-12T01:00:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9594942a_9b20dd0d",
+      "range": {
+        "startLine": 1051,
+        "startChar": 0,
+        "endLine": 1051,
+        "endChar": 27
+      },
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "990f70cb_255f0597",
@@ -230,6 +272,30 @@
       "writtenOn": "2022-11-10T14:59:28Z",
       "side": 1,
       "message": "Break this out as a separate CL.\nWas there a race condition where `hook_completed_callback()` was called before `test_main()`?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "0ed537477344f24a624ac4611a42a08951294daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a308ae91_aa58d372",
+        "filename": "zephyr/test/drivers/common/src/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-12T01:00:51Z",
+      "side": 1,
+      "message": "No longer needed, I forgot to remove it from my previous attempts of getting the driver shim to work.",
+      "parentUuid": "990f70cb_255f0597",
       "range": {
         "startLine": 15,
         "startChar": 0,
