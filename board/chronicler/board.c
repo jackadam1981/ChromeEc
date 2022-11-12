@@ -112,14 +112,10 @@ struct ec_thermal_config thermal_params[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
-struct fan_step {
-	int on;
-	int off;
-	int rpm;
-};
+typedef struct fan_step_1_1 fan_step;
 
 /* Fan control table */
-static const struct fan_step fan_table0[] = {
+static const fan_step fan_table0[] = {
 	{ .on = 30, .off = 0, .rpm = 3150 }, /* Fan level 0 */
 	{ .on = 47, .off = 43, .rpm = 3500 }, /* Fan level 1 */
 	{ .on = 50, .off = 47, .rpm = 3750 }, /* Fan level 2 */
@@ -131,61 +127,31 @@ static const struct fan_step fan_table0[] = {
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
 
-static const struct fan_step *fan_table = fan_table0;
+static const fan_step *fan_table = fan_table0;
 
 #define FAN_AVERAGE_TIME_SEC 5
 
 int fan_percent_to_rpm(int fan, int pct)
 {
-	static int current_level;
-	static int previous_level = NUM_FAN_LEVELS;
-	static int cnt, avg_pct, previous_pct;
-	int i;
+	static int fan_table_current_level_rpm =
+		fan_table0[NUM_FAN_LEVELS - 1].rpm;
+	static int cnt, avg_pct;
 
 	/* Average several times to smooth fan rotating speed. */
 	avg_pct += pct;
 
 	if (++cnt != FAN_AVERAGE_TIME_SEC)
-		return fan_table[previous_level].rpm;
+		return fan_table_current_level_rpm;
 
 	avg_pct = (int)avg_pct / FAN_AVERAGE_TIME_SEC;
 
-	/*
-	 * Compare the pct and previous pct, we have the three paths :
-	 *  1. decreasing path. (check the off point)
-	 *  2. increasing path. (check the on point)
-	 *  3. invariant path. (return the current RPM)
-	 */
-	if (avg_pct < previous_pct) {
-		for (i = current_level; i >= 0; i--) {
-			if (avg_pct <= fan_table[i].off)
-				current_level = i - 1;
-			else
-				break;
-		}
-	} else if (avg_pct > previous_pct) {
-		for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
-			if (avg_pct >= fan_table[i].on)
-				current_level = i;
-			else
-				break;
-		}
-	}
-
-	if (current_level < 0)
-		current_level = 0;
-
-	if (current_level != previous_level)
-		cprints(CC_THERMAL, "Setting fan RPM to %d",
-			fan_table[current_level].rpm);
-
-	previous_pct = avg_pct;
-	previous_level = current_level;
+	fan_table_current_level_rpm = fan_percent_to_rpm_path_dependent(
+		fan_table, NUM_FAN_LEVELS, fan, avg_pct, NULL);
 
 	cnt = 0;
 	avg_pct = 0;
 
-	return fan_table[current_level].rpm;
+	return fan_table_current_level_rpm;
 }
 
 /******************************************************************************/
