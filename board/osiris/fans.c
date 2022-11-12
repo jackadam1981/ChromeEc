@@ -75,12 +75,6 @@ const struct fan_t fans[FAN_CH_COUNT] = {
 
 /* fan control */
 
-struct fan_step {
-	int on;
-	int off;
-	int rpm;
-};
-
 struct fan_table_config {
 	/* number of control_table */
 	uint8_t step;
