@@ -62,6 +62,27 @@ void fan_set_percent_needed(int fan, int pct);
  * Return       Target RPM for fan
  */
 int fan_percent_to_rpm(int fan, int pct);
+/* Data structure to hold a tuple of parameters for one sensor and one fan. */
+struct fan_step_1_1 {
+	/* percent threshold when increasing */
+	int on;
+	/* percent threshold when decreasing */
+	int off;
+	int rpm;
+};
+/**
+ * This function is the most popular custom translation of the percentage of
+ * cooling needed into a target RPM.
+ *
+ * @param fan_table        Pointer to array of fan_step structs
+ * @param num_fan_levels   Size of fan_table
+ * @param fan   Fan number (index into fans[])
+ * @param pct   Percentage of cooling effort needed (always in [0,100])
+ * Return       Target RPM for fan
+ */
+int fan_percent_to_rpm_path_dependent(const struct fan_step_1_1 *fan_table,
+				      const int num_fan_levels, int fan,
+				      int pct, void (*on_change)(void));
 
 
 /**
