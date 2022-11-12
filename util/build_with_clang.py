@@ -68,6 +68,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "kakadu",
     "kappa",
     "katsu",
+    "kodama",
     "krane",
     "kukui",
     "magnemite",
@@ -296,7 +297,6 @@ RISCV_BOARDS = [
 
 BOARDS_THAT_FAIL_WITH_CLANG = [
     # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
-    "kodama",  # overflows flash
 ]
 
 # TODO(b/201311714): NDS32 is not supported by LLVM.
