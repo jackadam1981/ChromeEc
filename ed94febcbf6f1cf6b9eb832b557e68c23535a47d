@@ -128,6 +128,24 @@
       "parentUuid": "d8b8e3cb_da4415ca",
       "revId": "ed94febcbf6f1cf6b9eb832b557e68c23535a47d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a262e9_91dba373",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T22:44:21Z",
+      "side": 1,
+      "message": "The MPU test needs to be run on a DUT, which is why there isn\u0027t a run target for it. I recall manually flashing the binary for it onto a FPMCU board (dragonclaw) to run the test; it\u0027s not very friendly.",
+      "parentUuid": "9704ffce_9da35c09",
+      "revId": "ed94febcbf6f1cf6b9eb832b557e68c23535a47d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
