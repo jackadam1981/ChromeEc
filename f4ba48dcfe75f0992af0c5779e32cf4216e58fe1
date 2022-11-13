@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f96947bc_dd89544b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T23:14:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "117a7f97_4e46f7f7",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8b4f95d_87a2afc6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-11T17:14:52Z",
       "side": 1,
       "message": "How about providing a default implementation for this?  This can be done as a follow-on CL.",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 312,
+        "endChar": 27
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e26bcb18_5afd54b6",
+        "filename": "baseboard/asurada/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T23:14:43Z",
+      "side": 1,
+      "message": "Yes, that\u0027s coming down the pipe. :)",
+      "parentUuid": "f8b4f95d_87a2afc6",
       "range": {
         "startLine": 312,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c05a5e0_e0e09288",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T23:14:43Z",
+      "side": 1,
+      "message": "I think it should be possible to set them independently. In particular a few boards set `CONFIG_CHARGER_INPUT_CURRENT` to small values like 128 mA, but it seems like that was actually done in order to reduce what is now `CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT`.",
+      "parentUuid": "ed12d326_22b2de76",
+      "range": {
+        "startLine": 2339,
+        "startChar": 0,
+        "endLine": 2339,
+        "endChar": 45
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5d895cd_b2125f65",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "750c5d36_16b46f82",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T23:14:43Z",
+      "side": 1,
+      "message": "No, it applies if `CONFIG_CHARGER_INPUT_CURRENT` is more than 2.5W divided by the maximum supported input current as described in the preceding paragraph. pSnkStdby is 2.5W so 512 mA is too much if a voltage greater than 5V might be used.\n\nI\u0027ve clarified this to relate it to 5V.",
+      "parentUuid": "a5d895cd_b2125f65",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 55
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2a6c818_327b0936",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-11-11T17:14:52Z",
       "side": 1,
       "message": "Do yo mean a value greater than 512 mA?",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 8
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84be33dd_f3ad0525",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T23:14:43Z",
+      "side": 1,
+      "message": "As above, it depends on maximum supported voltage. Should be clearer now.",
+      "parentUuid": "f2a6c818_327b0936",
       "range": {
         "startLine": 355,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7950c47c_e77f4945",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T23:14:43Z",
+      "side": 1,
+      "message": "I think that\u0027s actually something that should be fixed; it seems like `CONFIG_CHARGER_INPUT_CURRENT` should be applied to any port that\u0027s not currently connected, with the expectation that it will get 5V applied when connected and further negotiation might adjust it up or down.",
+      "parentUuid": "659770da_128788a0",
+      "range": {
+        "startLine": 1030,
+        "startChar": 11,
+        "endLine": 1030,
+        "endChar": 24
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b83cead7_a68327b9",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fa69ae0_e2154372",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T23:14:43Z",
+      "side": 1,
+      "message": "I agree, and intend to rename this option as part of this CL chain. Will also evaluate defaulting it to 512.",
+      "parentUuid": "b83cead7_a68327b9",
+      "range": {
+        "startLine": 1037,
+        "startChar": 7,
+        "endLine": 1037,
+        "endChar": 35
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35a7ff0e_4e467dcb",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -175,6 +343,30 @@
       "writtenOn": "2022-11-11T17:14:52Z",
       "side": 1,
       "message": "If staying with 2 integer types, how about `CONFIG_CHARGER_INPUT_CURRENT_FLOOR` or `CONFIG_CHARGER_INPUT_CURRENT_MIN`?\n\n\"MIN\" and \"LIMIT\" are redundant.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 7,
+        "endLine": 1053,
+        "endChar": 45
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0cf5638_00790aec",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-13T23:14:43Z",
+      "side": 1,
+      "message": "I don\u0027t think they are redundant, and that accounts for one of the confusing aspects of the existing options: this sets the current limit enforced by the charger, and the option lets a board specify a minimum current limit. Just saying `MIN_INPUT_CURRENT` seems like it might somehow enforce that input current will never drop below the specified value (perhaps by terminating charge at low currents?) which is confusing.",
+      "parentUuid": "35a7ff0e_4e467dcb",
       "range": {
         "startLine": 1053,
         "startChar": 7,
