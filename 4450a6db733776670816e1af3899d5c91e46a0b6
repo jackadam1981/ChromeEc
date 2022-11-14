@@ -16,6 +16,24 @@
       "message": "This needs to be moved above `test_mpu_update_region_valid_region` since that one crashes intentionally.",
       "revId": "4450a6db733776670816e1af3899d5c91e46a0b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db58cd7b_a759a366",
+        "filename": "test/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-14T23:30:20Z",
+      "side": 1,
+      "message": "Now runs and passes:\n\n```\nRunning test_mpu_get_rw_regions...\nPass: rv \u003d\u003d 0\nOK\nRunning reset_mpu...\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nOK\nRunning test_align_down_to_bits...\nPass: align_down_to_bits(addr, 0) \u003d\u003d addr\nPass: align_down_to_bits(addr, 1) \u003d\u003d 0x87654320\n\n\u003d\u003d\u003d PROCESS EXCEPTION: 06 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 91000000 \u003d\u003d\u003d\nr0 :00000000 r1 :00000000 r2 :00000000 r3 :00000000\nr4 :00000000 r5 :00000000 r6 :00000000 r7 :00000000\nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000\nr12:00000000 sp :20012fa8 lr :0806dcd1 pc :0806c246\nUndefined instructions\ncfsr \u003d 10000, shcsr \u003d 70008, hfsr \u003d 0, dfsr \u003d 0\n```",
+      "parentUuid": "8ad24977_6a1fd2f9",
+      "revId": "4450a6db733776670816e1af3899d5c91e46a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
