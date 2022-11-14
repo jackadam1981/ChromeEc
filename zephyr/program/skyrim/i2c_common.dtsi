@@ -270,6 +270,11 @@
 		compatible = "nxp,pct2075";
 		reg = <0x4f>;
 	};
+
+	soc_tmp112: soc-tmp112@58 {
+		compatible = "ti,tmp112";
+		reg = <0x58>;
+	};
 };
 
 &i2c_ctrl6 {

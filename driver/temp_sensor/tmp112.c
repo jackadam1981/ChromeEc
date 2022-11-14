@@ -105,9 +105,10 @@ static void tmp112_poll(void)
 }
 DECLARE_HOOK(HOOK_SECOND, tmp112_poll, HOOK_PRIO_TEMP_SENSOR);
 #else
-static void tmp112_update_temperature(int idx)
+void tmp112_update_temperature(const struct temp_sensor_t *sensor);
 {
 	int temp_reg = 0;
+	int idx = sensor->idx;
 
 	if (idx >= TMP112_COUNT)
 		return;

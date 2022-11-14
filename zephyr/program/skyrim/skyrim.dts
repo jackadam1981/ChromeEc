@@ -28,6 +28,10 @@
 			power-good-pin = <&gpio_pg_pwr_s5>;
 			sensor = <&amb_pct2075>;
 		};
+		soc-tmp112 {
+			power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&soc_tmp112>;
+		};
 	};
 
 	/*

@@ -13,7 +13,7 @@
 #ifdef CONFIG_PLATFORM_EC_TEMP_SENSOR
 
 #define PCT2075_COMPAT nxp_pct2075
-#define TMP112_COMPAT cros_ec_temp_sensor_tmp112
+#define TMP112_COMPAT ti_tmp112
 #define SB_TSI_COMPAT amd_sb_tsi
 #define THERMISTOR_COMPAT cros_ec_temp_sensor_thermistor
 #define TEMP_SENSORS_COMPAT cros_ec_temp_sensors
@@ -143,8 +143,9 @@ enum tmp112_sensor {
 struct zephyr_temp_sensor {
 	/* Read sensor value in K into temp_ptr; return non-zero if error. */
 	int (*read)(const struct temp_sensor_t *sensor, int *temp_ptr);
-	void (*update_temperature)(int idx);
+	void (*update_temperature)(const struct temp_sensor_t *sensor);
 	const struct thermistor_info *thermistor;
+	const struct device *sensor;
 #if ANY_INST_HAS_POWER_GOOD_PIN
 	const struct device *power_good_dev;
 	gpio_pin_t power_good_pin;

@@ -89,9 +89,10 @@ static void pct2075_poll(void)
 }
 DECLARE_HOOK(HOOK_SECOND, pct2075_poll, HOOK_PRIO_TEMP_SENSOR);
 #else
-void pct2075_update_temperature(int idx)
+void pct2075_update_temperature(const struct temp_sensor_t *sensor)
 {
 	int temp_reg = 0;
+	int idx = sensor->idx;
 
 	if (idx >= PCT2075_COUNT)
 		return;

@@ -7,6 +7,7 @@
 #define __CROS_EC_TMP112_H
 
 #include "i2c.h"
+#include "temp_sensor.h"
 
 #define TMP112_I2C_ADDR_FLAGS0 (0x48 | I2C_FLAG_BIG_ENDIAN)
 #define TMP112_I2C_ADDR_FLAGS1 (0x49 | I2C_FLAG_BIG_ENDIAN)
@@ -64,7 +65,7 @@ int tmp112_get_val_mk(int idx, int *temp_mk_ptr);
 void tmp112_init(void);
 
 #ifdef CONFIG_ZEPHYR
-void tmp112_update_temperature(int idx);
+void tmp112_update_temperature(const struct temp_sensor_t *sensor);
 #endif /* CONFIG_ZEPHYR */
 
 #endif /* __CROS_EC_TMP112_H */

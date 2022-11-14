@@ -14,6 +14,8 @@
 #include "temp_sensor/thermistor.h"
 #include "temp_sensor/tmp112.h"
 
+#include <zephyr/drivers/sensor.h>
+
 #if DT_HAS_COMPAT_STATUS_OKAY(TEMP_SENSORS_COMPAT)
 
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(TEMP_SENSORS_COMPAT) == 1,
@@ -162,16 +164,27 @@ __maybe_unused static int sb_tsi_get_temp(const struct temp_sensor_t *sensor,
 		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_SB_TSI(named_id), \
 	}
 
-#if DT_HAS_COMPAT_STATUS_OKAY(TMP112_COMPAT)
-/* The function maybe unused because a temperature sensor can be added to dts
- * without a reference in the cros_ec_temp_sensors node.
- */
-__maybe_unused static int tmp112_get_temp(const struct temp_sensor_t *sensor,
-					  int *temp_ptr)
+__maybe_unused static int get_temp_drv(const struct temp_sensor_t *sensor,
+				       int *temp_ptr)
 {
-	return tmp112_get_val_k(sensor->idx, temp_ptr);
+	struct sensor_value val;
+	int ret;
+
+	ret = sensor_channel_get(sensor->zephyr_info->sensor,
+				 SENSOR_CHAN_AMBIENT_TEMP, &val);
+	if (ret) {
+		return ret;
+	}
+	/* Zephyr temp sensor drivers return measurement in degrees Celsius */
+	*temp_ptr = C_TO_K(val.val1);
+
+	return 0;
 }
-#endif /* TMP112_COMPAT */
+
+__maybe_unused static void update_temp_drv(const struct temp_sensor_t *sensor)
+{
+	sensor_sample_fetch(sensor->zephyr_info->sensor);
+}
 
 #define DEFINE_TMP112_DATA(node_id)                     \
 	[TMP112_SENSOR_ID(node_id)] = {                 \
@@ -179,19 +192,21 @@ __maybe_unused static int tmp112_get_temp(const struct temp_sensor_t *sensor,
 		.i2c_addr_flags = DT_REG_ADDR(node_id), \
 	},
 
-#define GET_ZEPHYR_TEMP_SENSOR_TMP112(named_id)                  \
-	(&(const struct zephyr_temp_sensor){                     \
-		.read = &tmp112_get_temp,                        \
-		.thermistor = NULL,                              \
-		.update_temperature = tmp112_update_temperature, \
+#define GET_ZEPHYR_TEMP_SENSOR_TMP112(named_id, sensor_id) \
+	(&(const struct zephyr_temp_sensor){               \
+		.read = &get_temp_drv,                     \
+		.thermistor = NULL,                        \
+		.update_temperature = &update_temp_drv,    \
+		.sensor = DEVICE_DT_GET(sensor_id),        \
 		FILL_POWER_GOOD(named_id) })
 
-#define TEMP_TMP112(named_id, sensor_id)                                \
-	[TEMP_SENSOR_ID(named_id)] = {                                  \
-		.name = DT_NODE_FULL_NAME(sensor_id),                   \
-		.idx = TMP112_SENSOR_ID(sensor_id),                     \
-		.type = TEMP_SENSOR_TYPE_BOARD,                         \
-		.zephyr_info = GET_ZEPHYR_TEMP_SENSOR_TMP112(named_id), \
+#define TEMP_TMP112(named_id, sensor_id)                                    \
+	[TEMP_SENSOR_ID(named_id)] = {                                      \
+		.name = DT_NODE_FULL_NAME(sensor_id),                       \
+		.idx = TMP112_SENSOR_ID(sensor_id),                         \
+		.type = TEMP_SENSOR_TYPE_BOARD,                             \
+		.zephyr_info =                                              \
+			GET_ZEPHYR_TEMP_SENSOR_TMP112(named_id, sensor_id), \
 	}
 
 const struct tmp112_sensor_t tmp112_sensors[TMP112_COUNT] = {
@@ -282,7 +297,7 @@ void temp_sensors_update(void)
 		if (!temp_sensor_check_power(sensor))
 			continue;
 
-		sensor->zephyr_info->update_temperature(sensor->idx);
+		sensor->zephyr_info->update_temperature(sensor);
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, temp_sensors_update, HOOK_PRIO_TEMP_SENSOR);
