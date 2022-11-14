@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc7ee6b_e40c036f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-11-14T07:47:42Z",
+      "side": 1,
+      "message": "It\u0027s better to separate this into two CLs. One is for scaler IC configurations e.q I2C port, I2C address, gpio configuration...etc. The other one is mode like scaler IC driver implementation including hook functions, enable, disable, init, irq handler...etc.",
+      "revId": "136883f20f19ebd4c156c479d3843b1c234a299a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
