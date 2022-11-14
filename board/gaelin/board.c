@@ -18,6 +18,7 @@
 #include "power_button.h"
 #include "hooks.h"
 #include "power.h"
+#include "scaler.h"
 #include "switch.h"
 #include "throttle_ap.h"
 #include "usbc_config.h"
@@ -253,8 +254,35 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_A1_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A3_OC_ODL);
+	gpio_enable_interrupt(GPIO_DISP_MODE);
+	gpio_enable_interrupt(GPIO_HDMI0_CABLE_DET);
+	gpio_enable_interrupt(GPIO_OSD_INT);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0iX -> S0 transition */
+static void board_chipset_resume(void)
+{
+	gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 1);
+	gpio_set_level(GPIO_EC_12VSC_EN, 1);
+	gpio_set_level(GPIO_EC_AMP_SD, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S0iX transition */
+static void board_chipset_suspend(void)
+{
+	if (!gpio_get_level(GPIO_HDMI0_CABLE_DET)) {
+		gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 1);
+		gpio_set_level(GPIO_EC_12VSC_EN, 1);
+		gpio_set_level(GPIO_EC_AMP_SD, 1);
+	} else {
+		gpio_set_level(GPIO_EC_AMP_SD, 0);
+		gpio_set_level(GPIO_EC_12VSC_EN, 0);
+		gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
