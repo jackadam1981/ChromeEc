@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb4b13c_f32e0402",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-14T16:39:36Z",
+      "side": 1,
+      "message": "Should this be `CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT`?  Or you need to guard this since `CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT` is optional.",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "6b4fcc36c044fa192c2754a88035e95e948bbdf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845bc968_f5eab8f5",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-14T16:39:36Z",
+      "side": 1,
+      "message": "Why was the help text deleted?",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1039,
+        "endChar": 45
+      },
+      "revId": "6b4fcc36c044fa192c2754a88035e95e948bbdf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
