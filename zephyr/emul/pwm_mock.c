@@ -5,12 +5,12 @@
 
 #define DT_DRV_COMPAT cros_pwm_mock
 
+#include "pwm_mock.h"
+
 #include <zephyr/device.h>
 #include <zephyr/devicetree.h>
-#include <zephyr/kernel.h>
 #include <zephyr/drivers/pwm.h>
-
-#include "pwm_mock.h"
+#include <zephyr/kernel.h>
 
 #define CYCLES_PER_SEC 1000000
 

@@ -9,13 +9,14 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(emul_flash);
 
+#include "flash.h"
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
-#include <ec_commands.h>
-#include <drivers/cros_flash.h>
 #include <zephyr/sys/__assert.h>
 
-#include "flash.h"
+#include <drivers/cros_flash.h>
+#include <ec_commands.h>
 
 struct flash_emul_data {
 	const struct device *flash_dev;
