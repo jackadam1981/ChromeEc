@@ -22,7 +22,8 @@
  * a device name has been specified in the board_battery_info table,
  * then both the manufacturer and device name must match.
  */
-static bool authenticate_battery_type(int index, char *manuf_name)
+test_export_static bool authenticate_battery_type(int index,
+						  const char *manuf_name)
 {
 	char device_name[32];
 
@@ -43,7 +44,6 @@ static bool authenticate_battery_type(int index, char *manuf_name)
 		/* Get the device name */
 		if (battery_device_name(device_name, sizeof(device_name)))
 			return false;
-
 		len = strlen(fuel_gauge->device_name);
 
 		/* device name mismatch */
@@ -84,12 +84,18 @@ void battery_set_fixed_battery_type(int type)
 }
 #endif /* CONFIG_BATTERY_TYPE_NO_AUTO_DETECT */
 
+__test_only int battery_fuel_gauge_type_override = -1;
+
 /* Get type of the battery connected on the board */
 static int get_battery_type(void)
 {
 	char manuf_name[32];
 	int i;
 	static enum battery_type battery_type = BATTERY_TYPE_COUNT;
+
+	if (IS_ENABLED(TEST_BUILD) && battery_fuel_gauge_type_override >= 0) {
+		return battery_fuel_gauge_type_override;
+	}
 
 	/*
 	 * If battery_type is not the default value, then can return here
