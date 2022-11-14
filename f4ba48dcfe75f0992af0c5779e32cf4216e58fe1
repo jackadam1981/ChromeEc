@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b6fd42_78e424ac",
+        "filename": "baseboard/asurada/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-14T05:07:47Z",
+      "side": 1,
+      "message": "See https://crrev.com/c/4022857/",
+      "parentUuid": "e26bcb18_5afd54b6",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 312,
+        "endChar": 27
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed12d326_22b2de76",
@@ -283,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fda0c8a_aec58368",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-14T05:07:47Z",
+      "side": 1,
+      "message": "I changed the charge manager to set this rather than 0 when not charging (which maintains the behavior the tests expect) and revised the docs to include it.",
+      "parentUuid": "7950c47c_e77f4945",
+      "range": {
+        "startLine": 1030,
+        "startChar": 11,
+        "endLine": 1030,
+        "endChar": 24
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b83cead7_a68327b9",
@@ -320,6 +368,30 @@
       "side": 1,
       "message": "I agree, and intend to rename this option as part of this CL chain. Will also evaluate defaulting it to 512.",
       "parentUuid": "b83cead7_a68327b9",
+      "range": {
+        "startLine": 1037,
+        "startChar": 7,
+        "endLine": 1037,
+        "endChar": 35
+      },
+      "revId": "f4ba48dcfe75f0992af0c5779e32cf4216e58fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1acb2ea3_b7571feb",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-14T05:07:47Z",
+      "side": 1,
+      "message": "Renamed in https://crrev.com/c/4025404/, default to follow.",
+      "parentUuid": "9fa69ae0_e2154372",
       "range": {
         "startLine": 1037,
         "startChar": 7,
