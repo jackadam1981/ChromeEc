@@ -22,6 +22,30 @@
       },
       "revId": "5744be4dea3ddce2350a42483a29c12e1a081ae8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a76aaf_a6ad1b7e",
+        "filename": "zephyr/test/drivers/bc12_pi3usb9201/src/main.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-14T17:37:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "288cac4c_dbffff79",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 41
+      },
+      "revId": "5744be4dea3ddce2350a42483a29c12e1a081ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
