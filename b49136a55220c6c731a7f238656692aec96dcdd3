@@ -22,6 +22,30 @@
       },
       "revId": "b49136a55220c6c731a7f238656692aec96dcdd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ed9065_6897a4af",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1535039
+      },
+      "writtenOn": "2022-11-14T06:11:44Z",
+      "side": 1,
+      "message": "Yes, but doing that next under b/257377326 so that I do all of the power changes in one hit.\nMany of these power references are dependent on each other, so I will likely need to do them all at once.",
+      "parentUuid": "c95413b9_b041821f",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "b49136a55220c6c731a7f238656692aec96dcdd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
