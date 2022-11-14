@@ -260,6 +260,30 @@
       },
       "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98eefed_603e54aa",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-14T20:47:47Z",
+      "side": 1,
+      "message": "I tried running it on Brya and decided to add an error message to remind the user that this does not work on Cr50, ptal",
+      "parentUuid": "f4889663_cbfdc6a6",
+      "range": {
+        "startLine": 3801,
+        "startChar": 4,
+        "endLine": 3801,
+        "endChar": 20
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
