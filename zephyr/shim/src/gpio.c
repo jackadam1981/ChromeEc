@@ -255,7 +255,10 @@ const struct gpio_dt_spec *gpio_get_dt_spec(enum gpio_signal signal)
 	return &configs[signal].spec;
 }
 
-static int init_gpios(const struct device *unused)
+/* Allow access to this function in tests so we can run it multiple times
+ * without having to create a new binary for each run.
+ */
+test_export_static int init_gpios(const struct device *unused)
 {
 	gpio_flags_t flags;
 	bool is_sys_jumped = system_jumped_to_this_image();
@@ -322,9 +325,10 @@ void gpio_reset(enum gpio_signal signal)
 void gpio_reset_port(const struct device *port)
 {
 	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
-		if (port == configs[i].spec.port)
+		if (port == configs[i].spec.port) {
 			gpio_pin_configure_dt(&configs[i].spec,
 					      configs[i].init_flags);
+		}
 	}
 }
 
@@ -339,12 +343,14 @@ void gpio_set_flags(enum gpio_signal signal, int flags)
 
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
-	int pin;
+	const gpio_flags_t zephyr_flags = convert_to_zephyr_flags(flags);
 
-	for (pin = 0; pin < 8; pin++)
-		if (mask & BIT(pin))
-			gpio_configure_port_pin(port, pin,
-						convert_to_zephyr_flags(flags));
+	while (mask != 0) {
+		int pin = __builtin_ctz(mask);
+
+		gpio_configure_port_pin(port, pin, zephyr_flags);
+		mask &= ~BIT(pin);
+	}
 }
 
 int signal_is_gpio(int signal)
