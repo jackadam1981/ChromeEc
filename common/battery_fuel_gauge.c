@@ -22,7 +22,8 @@
  * a device name has been specified in the board_battery_info table,
  * then both the manufacturer and device name must match.
  */
-static bool authenticate_battery_type(int index, char *manuf_name)
+test_export_static bool authenticate_battery_type(int index,
+						  const char *manuf_name)
 {
 	char device_name[32];
 
@@ -43,7 +44,6 @@ static bool authenticate_battery_type(int index, char *manuf_name)
 		/* Get the device name */
 		if (battery_device_name(device_name, sizeof(device_name)))
 			return false;
-
 		len = strlen(fuel_gauge->device_name);
 
 		/* device name mismatch */

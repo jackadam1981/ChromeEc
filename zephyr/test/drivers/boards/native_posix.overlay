@@ -385,6 +385,9 @@
 		default_battery: lgc_ac17a8m {
 			compatible = "lgc,ac17a8m", "battery-smart";
 		};
+		ap1615j {
+			compatible = "panasonic,ap16l5j", "battery-smart";
+		};
 	};
 
 	cbi-ssfc {
