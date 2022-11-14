@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8730e148_6bb5c1b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-14T17:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "675a17d9_c82236be",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "bca3081d8220ce22aa66726050246b9120aa66fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebd0e08f_2037549e",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d409fb_c84ea1a7",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-14T17:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd0e08f_2037549e",
+      "revId": "bca3081d8220ce22aa66726050246b9120aa66fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df821fd8_07d6a00c",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-11-14T16:35:45Z",
       "side": 1,
       "message": "I\u0027d like to add a comment here saying there exists an instruction for counting trailing zeroes for every architecture we support. Otherwise this may not be a performance improve for architectures without such an instruction.",
+      "revId": "bca3081d8220ce22aa66726050246b9120aa66fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "452ef2e4_2464c542",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-14T17:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df821fd8_07d6a00c",
       "revId": "bca3081d8220ce22aa66726050246b9120aa66fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
