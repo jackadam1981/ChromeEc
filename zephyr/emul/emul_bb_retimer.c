@@ -9,16 +9,15 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(emul_bb_retimer);
 
+#include "driver/retimer/bb_retimer.h"
+#include "emul/emul_bb_retimer.h"
+#include "emul/emul_common_i2c.h"
+#include "emul/emul_stub_device.h"
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
-
-#include "emul/emul_common_i2c.h"
-#include "emul/emul_bb_retimer.h"
-#include "emul/emul_stub_device.h"
-
-#include "driver/retimer/bb_retimer.h"
 
 /** Run-time data used by the emulator */
 struct bb_emul_data {

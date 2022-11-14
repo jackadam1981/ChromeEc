@@ -9,17 +9,16 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(emul_tcs);
 
+#include "driver/als_tcs3400.h"
+#include "emul/emul_common_i2c.h"
+#include "emul/emul_stub_device.h"
+#include "emul/emul_tcs3400.h"
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/ztest.h>
-
-#include "emul/emul_common_i2c.h"
-#include "emul/emul_tcs3400.h"
-#include "emul/emul_stub_device.h"
-
-#include "driver/als_tcs3400.h"
 
 /** Run-time data used by the emulator */
 struct tcs_emul_data {

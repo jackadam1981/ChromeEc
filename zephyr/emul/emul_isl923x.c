@@ -5,23 +5,23 @@
 
 #define DT_DRV_COMPAT cros_isl923x_emul
 
-#include <zephyr/device.h>
-#include <zephyr/drivers/i2c.h>
-#include <zephyr/drivers/i2c_emul.h>
-#include <zephyr/drivers/emul.h>
-#include <errno.h>
-#include <zephyr/sys/__assert.h>
-#include <zephyr/ztest.h>
-
 #include "driver/charger/isl923x.h"
 #include "driver/charger/isl923x_public.h"
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
-#include "i2c.h"
 #include "emul/emul_stub_device.h"
+#include "i2c.h"
 
+#include <errno.h>
+
+#include <zephyr/device.h>
+#include <zephyr/drivers/emul.h>
+#include <zephyr/drivers/i2c.h>
+#include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/sys/__assert.h>
+#include <zephyr/ztest.h>
 LOG_MODULE_REGISTER(isl923x_emul, CONFIG_ISL923X_EMUL_LOG_LEVEL);
 
 /** Mask used for the charge current register */
