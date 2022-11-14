@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40ea637_f2cdc5ae",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1782,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-14T00:16:55Z",
+      "side": 1,
+      "message": "good point, modified to check that the `:` is there, but not the first or the last character in the string.",
+      "parentUuid": "913f8926_1125b6da",
+      "range": {
+        "startLine": 1777,
+        "startChar": 0,
+        "endLine": 1782,
+        "endChar": 2
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d693c282_a18559da",
@@ -85,6 +109,30 @@
       "writtenOn": "2022-11-09T16:34:14Z",
       "side": 1,
       "message": "I was thinking we could pass down the `command` variable to this command, so we know at polling time what we are polling for. If we do that, then we also won\u0027t need the state variables in `ccd_config.rs`",
+      "range": {
+        "startLine": 1815,
+        "startChar": 2,
+        "endLine": 1815,
+        "endChar": 13
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf07c348_e5d9972b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-14T00:16:55Z",
+      "side": 1,
+      "message": "let\u0027s discuss this further on the Ti50 patch, I would like to avoid creating different polling packet structures for different polling types, and tranmitting the same information (the capability/value pair) over and over again does not seem to make sense either.",
+      "parentUuid": "d693c282_a18559da",
       "range": {
         "startLine": 1815,
         "startChar": 2,
@@ -156,6 +204,30 @@
       "side": 1,
       "message": "Does the same thing happen from the AP?",
       "parentUuid": "ddc32465_70404fd0",
+      "range": {
+        "startLine": 3801,
+        "startChar": 4,
+        "endLine": 3801,
+        "endChar": 20
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af11034e_3f70fb22",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-14T00:16:55Z",
+      "side": 1,
+      "message": "Do you have a suggestion on how to handle it?\n\nI think it is fine to have Cr50 report an error in this case. Or do you think should I move this back to a separate command line option? It still would be failing on Cr50.",
+      "parentUuid": "19ecc28e_fa53334c",
       "range": {
         "startLine": 3801,
         "startChar": 4,
