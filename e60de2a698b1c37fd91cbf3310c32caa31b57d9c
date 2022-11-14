@@ -284,6 +284,30 @@
       },
       "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f782092d_d0cf6b70",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-11-14T20:52:50Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "f98eefed_603e54aa",
+      "range": {
+        "startLine": 3801,
+        "startChar": 4,
+        "endLine": 3801,
+        "endChar": 20
+      },
+      "revId": "e60de2a698b1c37fd91cbf3310c32caa31b57d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
