@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d14cfa_28f5c987",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-14T21:04:12Z",
+      "side": 1,
+      "message": "Full disclosure, I did not look at every single one of these 😊",
+      "revId": "0eb1061e40b7e065390ed9d91a46b35ac5040443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1a3d74_7b709f5a",
+        "filename": "zephyr/test/kingler/src/ccd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-14T21:04:12Z",
+      "side": 1,
+      "message": "Maybe this is out of scope for you, but why is this a relative include?",
+      "revId": "0eb1061e40b7e065390ed9d91a46b35ac5040443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
