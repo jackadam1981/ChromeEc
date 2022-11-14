@@ -3,7 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include "system.h"
+
 #include <setjmp.h>
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/bbram.h>
 #include <zephyr/fff.h>
@@ -11,8 +14,6 @@
 #include <zephyr/shell/shell_dummy.h>
 #include <zephyr/ztest_assert.h>
 #include <zephyr/ztest_test_new.h>
-
-#include "system.h"
 
 LOG_MODULE_REGISTER(test);
 
