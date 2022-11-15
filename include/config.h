@@ -1734,6 +1734,12 @@
 #undef CONFIG_RO_PANIC_DATA_SIZE
 
 /*
+ * When defined, it enables RW Safe Mode. RW Safe Mode allows the AP to capture
+ * the EC state after a panic.
+ */
+#undef CONFIG_RW_SAFE_MODE
+
+/*
  * Provide the default GPIO abstraction layer.
  * You want this unless you are doing a really tiny firmware.
  */
