@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19bce3c_3d57fded",
+        "filename": "board/gaelin/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-15T11:53:16Z",
+      "side": 1,
+      "message": "The naming rule is weird in the schematics. It should add the prefix \"EC_I2C_\".",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "56d3176ac2fdf244ab38f4488c6b51443683def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
