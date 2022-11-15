@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8580f2_cb1f2c9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-15T18:59:58Z",
+      "side": 1,
+      "message": "Board build is successful, but host build is failing with the following error:\n\n```\nIn file included from test/aes.cc:24:\n./builtin/assert.h:33:1: error: ‘noreturn’ does not name a type\n   33 | noreturn void panic_assert_fail(const char *msg, const char *func,\n      | ^~~~~~~~\nIn file included from test/aes.cc:19:\ntest/aes.cc: In function ‘int test_aes_gcm_raw(const uint8_t*, int, const uint8_t*, const uint8_t*, int, const uint8_t*, int, const uint8_t*, int)’:\ntest/aes.cc:137:29: error: comparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Werror\u003dsign-compare]\n  137 |  TEST_ASSERT(plaintext_size \u003c\u003d sizeof(tmp));\n      |              ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~\ninclude/test_util.h:45:9: note: in definition of macro ‘TEST_ASSERT’\n   45 |   if (!(n)) {                                                 \\\n      |         ^\nIn file included from test/aes.cc:24:\ntest/aes.cc: In function ‘void test_aes_gcm_speed()’:\n./builtin/assert.h:38:4: error: ‘panic_assert_fail’ was not declared in this scope\n   38 |    panic_assert_fail(#cond, __func__, __FILE__, \\\n      |    ^~~~~~~~~~~~~~~~~\n./builtin/assert.h:73:22: note: in expansion of macro ‘ASSERT’\n   73 | #define assert(x...) ASSERT(x)\n      |                      ^~~~~~\ntest/aes.cc:448:2: note: in expansion of macro ‘assert’\n  448 |  assert(plaintext_size \u003c\u003d sizeof(tmp));\n      |  ^~~~~~\ncc1plus: all warnings being treated as errors\n```\n\nHave you seen this before?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "6d01bb0dcb30152fa867a0919ada60d86420b5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
