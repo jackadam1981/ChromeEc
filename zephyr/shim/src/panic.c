@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "panic.h"
+#include "rw_safe_mode.h"
 
 #include <zephyr/arch/cpu.h>
 #include <zephyr/fatal.h>
@@ -147,6 +148,17 @@ void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 	}
 
 	LOG_PANIC();
+
+	/* Start RW safe mode recovery if possible */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_RW_SAFE_MODE) &&
+	    reason != K_ERR_KERNEL_PANIC) {
+		if (start_rw_safe_mode() == EC_SUCCESS)
+			/* Returning from k_sys_fatal_error_handler will cause
+			 * the faulting thread to be aborted.
+			 */
+			return;
+	}
+
 	/*
 	 * Reboot immediately, don't wait for watchdog, otherwise
 	 * the watchdog will overwrite this panic.
