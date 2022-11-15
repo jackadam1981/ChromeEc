@@ -747,6 +747,25 @@ tcpci_partner_common_vdm_handler(struct tcpci_partner_data *data,
 }
 
 static enum tcpci_partner_handler_res
+tcpci_partner_enter_usb_handler(struct tcpci_partner_data *data,
+				const struct tcpci_emul_msg *message)
+{
+	/*
+	 * Validate received Enter_USB message against EUDO contents in
+	 * tcpci_partner_data.
+	 *
+	 * Currently, just using the raw_value as a means to control whether to
+	 * send an ACCEPT/REJECT message in repsonse.
+	 */
+	if (data->eudo.raw_value)
+		tcpci_partner_send_control_msg(data, PD_CTRL_REJECT, 0);
+	else
+		tcpci_partner_send_control_msg(data, PD_CTRL_ACCEPT, 0);
+
+	return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+}
+
+static enum tcpci_partner_handler_res
 tcpci_partner_common_cable_handler(struct tcpci_partner_data *data,
 				   const struct tcpci_emul_msg *message,
 				   enum tcpci_msg_type sop_type)
@@ -1032,6 +1051,8 @@ tcpci_partner_common_sop_msg_handler(struct tcpci_partner_data *data,
 		switch (PD_HEADER_TYPE(header)) {
 		case PD_DATA_VENDOR_DEF:
 			return tcpci_partner_common_vdm_handler(data, tx_msg);
+		case PD_DATA_ENTER_USB:
+			return tcpci_partner_enter_usb_handler(data, tx_msg);
 		default:
 			/* No other common handlers for data messages */
 			return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
@@ -1106,6 +1127,12 @@ tcpci_partner_common_sop_msg_handler(struct tcpci_partner_data *data,
 		/* Unexpected message - trigger soft reset */
 		tcpci_partner_common_send_soft_reset(data);
 
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+	case PD_CTRL_DATA_RESET:
+		/* Send Accept/Reject message */
+		tcpci_partner_send_control_msg(data, PD_CTRL_ACCEPT, 0);
+		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+	case PD_CTRL_DATA_RESET_COMPLETE:
 		return TCPCI_PARTNER_COMMON_MSG_HANDLED;
 	}
 
