@@ -16,6 +16,23 @@
       "message": "Hi Ricky,\n\nCould you help to check why it\u0027s kept failing on merging this change since I cannot access the link?\n\nThanks!",
       "revId": "5ec9e2438b1b3da646044511b1e9350e040fedef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00235e65_72de664a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-11-15T06:56:33Z",
+      "side": 1,
+      "message": "It seems that this CL keeps failing on merge. I have created another CL:4022082 for gladios init by coping the ToT brask.",
+      "revId": "5ec9e2438b1b3da646044511b1e9350e040fedef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
