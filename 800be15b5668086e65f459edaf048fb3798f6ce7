@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59fe4d26_b6c91612",
+        "filename": "board/marasov/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-11-15T10:16:47Z",
+      "side": 1,
+      "message": "Amber LED is turned on?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "800be15b5668086e65f459edaf048fb3798f6ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371dad60_78b4a056",
+        "filename": "board/marasov/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-11-15T10:16:47Z",
+      "side": 1,
+      "message": "White LED is turned on?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "800be15b5668086e65f459edaf048fb3798f6ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
