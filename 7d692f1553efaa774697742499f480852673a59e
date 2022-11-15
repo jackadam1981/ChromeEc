@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ba4c67_a9c6bc12",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-15T01:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc9de0cd_ab007dc5",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 65
+      },
+      "revId": "7d692f1553efaa774697742499f480852673a59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf2c7964_9e83dc24",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-14T23:19:56Z",
       "side": 1,
       "message": "You can call `schedule_deferred_pd_interrupt()` here so you don\u0027t need the local variable `port` and the below check.",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 10
+      },
+      "revId": "7d692f1553efaa774697742499f480852673a59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f764df7d_8cd23399",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-15T01:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2c7964_9e83dc24",
       "range": {
         "startLine": 83,
         "startChar": 3,
