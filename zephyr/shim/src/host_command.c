@@ -7,9 +7,14 @@
 
 #include "host_command.h"
 #include "task.h"
+#include "rw_safe_mode.h"
 
 struct host_command *zephyr_find_host_command(int command)
 {
+	if (system_is_in_rw_safe_mode()) {
+		if (!command_is_allowed_in_rw_safe_mode(command))
+			return NULL;
+	}
 	STRUCT_SECTION_FOREACH(host_command, cmd)
 	{
 		if (cmd->command == command)
