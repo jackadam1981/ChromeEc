@@ -22,6 +22,30 @@
       },
       "revId": "5dc673cfeef05205add3895f5b14201cd11e9577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ab587a_a8e2622c",
+        "filename": "zephyr/test/drivers/default/src/chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-15T23:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d310c9_81d36ffe",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "5dc673cfeef05205add3895f5b14201cd11e9577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
