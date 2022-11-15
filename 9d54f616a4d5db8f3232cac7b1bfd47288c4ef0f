@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bfbc960_06325e4b",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-15T06:32:52Z",
+      "side": 1,
+      "message": "Lets discuss offline if needed.",
+      "parentUuid": "a502b20f_d62d245a",
+      "revId": "9d54f616a4d5db8f3232cac7b1bfd47288c4ef0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a50f8daf_00377010",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-14T21:01:52Z",
       "side": 1,
       "message": "I think we ought to rename this test closer to something like `test_board_cutoff_actuates_driver`, I think that makes it much easier to justify validating mainly through FFF here.",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "9d54f616a4d5db8f3232cac7b1bfd47288c4ef0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8d556d_c64ac813",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-15T06:32:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a50f8daf_00377010",
       "range": {
         "startLine": 102,
         "startChar": 17,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b681ea1_cedfaf02",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-15T06:32:52Z",
+      "side": 1,
+      "message": "Done where the variable is declared.",
+      "parentUuid": "16a10b31_a9f61514",
+      "revId": "9d54f616a4d5db8f3232cac7b1bfd47288c4ef0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0aecad0_1edb1c0f",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-11-14T21:01:52Z",
       "side": 1,
       "message": "We should comment here to explicitly state that we can\u0027t use `board_is_cut_off()` because that relies on the battery_cutoff_state which is set by functions outside of `board_cut_off_battery()`. To which my feelings are: 😭",
+      "revId": "9d54f616a4d5db8f3232cac7b1bfd47288c4ef0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4ebe0e_d0202523",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-15T06:32:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0aecad0_1edb1c0f",
       "revId": "9d54f616a4d5db8f3232cac7b1bfd47288c4ef0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
