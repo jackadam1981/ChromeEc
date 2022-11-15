@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d30bc99_6dda0910",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-15T18:10:40Z",
+      "side": 1,
+      "message": "It looks like only the test export static belongs in this CL, could we move the refactoring to a different CL? If for whatever reason that CL needs to be reverted we\u0027ll get to keep the test CL and keep the coverage.",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ff6115_4464ca2e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-15T18:10:40Z",
+      "side": 1,
+      "message": "nit: unnecessary newline.",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc242da_85fcb8aa",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-15T18:10:40Z",
+      "side": 1,
+      "message": "I am on board with this because I don\u0027t see how this would ever occur based on the calling code and it removes just a tiny bit of code ;)",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f709c450_5fc4ac52",
+        "filename": "zephyr/shim/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-15T18:10:40Z",
+      "side": 1,
+      "message": "nice catch.",
+      "range": {
+        "startLine": 20,
+        "startChar": 54,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d1ffee_de70a475",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-15T18:10:40Z",
+      "side": 1,
+      "message": "These seem like 3 separate test cases to me.",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7bf6112_5a09d9a1",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-15T18:10:40Z",
+      "side": 1,
+      "message": "Seems like 4 test cases here.",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffd320b_86f734da",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-15T18:10:40Z",
+      "side": 1,
+      "message": "Also seems like 3 test cases here. Maybe I\u0027m thinking too granular in test cases?",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
