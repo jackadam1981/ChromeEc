@@ -506,6 +506,13 @@ static enum power_state power_common_state(void)
 		 */
 		want_g3_exit = 0;
 
+#ifdef CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
+		if (power_get_pause_in_s5()) {
+			task_wait_event(-1);
+			return POWER_S5;
+		}
+#endif
+
 		power_wait_signals(0);
 
 		/* Wait for inactivity timeout, if desired */
