@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd7dc57_6bb9d83a",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-15T02:01:32Z",
+      "side": 1,
+      "message": "Is it intended? You don\u0027t need to change the legacy EC board.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "a3e14deeea07fbce6b8e7f39c805abd9d296f213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
