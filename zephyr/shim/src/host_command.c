@@ -6,6 +6,7 @@
 #include <zephyr/kernel.h>
 
 #include "host_command.h"
+#include "rw_safe_mode.h"
 #include "task.h"
 
 struct host_command *zephyr_find_host_command(int command)
