@@ -85,7 +85,7 @@ __overridable struct keyboard_scan_config keyscan_config = {
 
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
 #ifndef CONFIG_KEYBOARD_MULTIPLE
-static const struct boot_key_entry boot_key_list[] = {
+const struct boot_key_entry boot_key_list[] = {
 	{ KEYBOARD_COL_ESC, KEYBOARD_ROW_ESC }, /* Esc */
 	{ KEYBOARD_COL_DOWN, KEYBOARD_ROW_DOWN }, /* Down-arrow */
 	{ KEYBOARD_COL_LEFT_SHIFT, KEYBOARD_ROW_LEFT_SHIFT }, /* Left-Shift */
@@ -838,6 +838,13 @@ uint32_t keyboard_scan_get_boot_keys(void)
 const uint8_t *keyboard_scan_get_state(void)
 {
 	return debounced_state;
+}
+
+bool keyboard_scan_is_key_pressed(uint8_t col, uint8_t row)
+{
+	if (col >= KEYBOARD_COLS_MAX || row >= KEYBOARD_ROWS)
+		return false;
+	return debounced_state[col] & BIT(row);
 }
 
 void keyboard_scan_init(void)
