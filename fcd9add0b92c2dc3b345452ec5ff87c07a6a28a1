@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdd7ece_0dd0a191",
+        "filename": "board/gaelin/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-15T06:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7be61556_6a5b796e",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "fcd9add0b92c2dc3b345452ec5ff87c07a6a28a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "832d0a7e_60a7ba05",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7adda3a5_dd5e3c65",
+        "filename": "board/gaelin/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-15T06:25:30Z",
+      "side": 1,
+      "message": "The scalar power rail is now controlled by EC_OVERRIDE_SCLR_EN.\nEN_SCLR_RAILS is reserved to enable scalar power rail. So this pin is set as an input pin.",
+      "parentUuid": "832d0a7e_60a7ba05",
+      "range": {
+        "startLine": 53,
+        "startChar": 48,
+        "endLine": 53,
+        "endChar": 58
+      },
+      "revId": "fcd9add0b92c2dc3b345452ec5ff87c07a6a28a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "061769b0_a5d9f8f1",
         "filename": "board/gaelin/i2c.c",
         "patchSetId": 5
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-15T03:52:17Z",
       "side": 1,
       "message": "How is the frequency determined? is it suggested by vendor?",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "fcd9add0b92c2dc3b345452ec5ff87c07a6a28a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bde9f6b_256a97a0",
+        "filename": "board/gaelin/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-15T06:25:30Z",
+      "side": 1,
+      "message": "This configuration refers to the SCL clock frequency in datasheet pp48.\nhttps://drive.google.com/drive/folders/1E9HZiAwkj3lYfexOFAUPjNWUlQNd5nYG",
+      "parentUuid": "061769b0_a5d9f8f1",
       "range": {
         "startLine": 49,
         "startChar": 10,
