@@ -11,6 +11,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "keyboard_config.h"
+#include "stdbool.h"
 
 struct keyboard_scan_config {
 	/* Delay between setting up output and waiting for it to settle */
@@ -93,6 +94,8 @@ static inline uint32_t keyboard_scan_get_boot_keys(void)
  */
 const uint8_t *keyboard_scan_get_state(void);
 
+bool keyboard_scan_is_key_pressed(uint8_t col, uint8_t row);
+
 enum kb_scan_disable_masks {
 	/* Reasons why keyboard scanning should be disabled */
 	KB_SCAN_DISABLE_LID_CLOSED = (1 << 0),
@@ -158,7 +161,9 @@ extern const int keyboard_factory_scan_pins[][2];
 extern const int keyboard_factory_scan_pins_used;
 #endif
 
-#ifdef CONFIG_KEYBOARD_MULTIPLE
+#ifndef CONFIG_KEYBOARD_MULTIPLE
+extern const struct boot_key_entry boot_key_list[];
+#else
 extern struct boot_key_entry boot_key_list[3];
 
 struct keyboard_type {

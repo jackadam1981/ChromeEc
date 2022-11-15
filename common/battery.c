@@ -16,7 +16,9 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "keyboard_scan.h"
 #include "math_util.h"
+#include "system.h"
 #include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
@@ -332,6 +334,16 @@ static void clear_pending_cutoff(void)
 	if (extpower_is_present()) {
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
 		hook_call_deferred(&pending_cutoff_deferred_data, -1);
+	} else if (system_get_image_copy() == EC_IMAGE_RO) {
+		/* Unplugged while in RO */
+		const struct boot_key_entry key = boot_key_list[1];
+
+		if (keyboard_scan_is_key_pressed(key.col, key.row)) {
+			CPRINTS("Cutting off battery in %d second(s)",
+				CONFIG_BATTERY_CUTOFF_DELAY_US / SECOND);
+			hook_call_deferred(&pending_cutoff_deferred_data,
+					   CONFIG_BATTERY_CUTOFF_DELAY_US);
+		}
 	}
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, clear_pending_cutoff, HOOK_PRIO_DEFAULT);
