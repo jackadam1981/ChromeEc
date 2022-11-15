@@ -45,6 +45,52 @@
       },
       "revId": "a3e14deeea07fbce6b8e7f39c805abd9d296f213",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "742931ba_a4f271ad",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-15T20:58:39Z",
+      "side": 1,
+      "message": "Please add a test for this code.  Yuval recently landed a test to verify a shared interrupt code that you can use as a model.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/ec/zephyr/test/drivers/bc12_pi3usb9201/src/main.c;l\u003d73",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "a3e14deeea07fbce6b8e7f39c805abd9d296f213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae307eb_b9e9cddc",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-15T20:58:39Z",
+      "side": 1,
+      "message": "The `tcpc_config[]` array is already ordered by the type-c port number.\n\nSo this should be `schedule_deferred_pd_interrupt(i)`.  `i2c_info.port` is the I2C bus number represented as an enumeration.",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "a3e14deeea07fbce6b8e7f39c805abd9d296f213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
