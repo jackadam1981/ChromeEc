@@ -1735,6 +1735,12 @@
 #undef CONFIG_RO_PANIC_DATA_SIZE
 
 /*
+ * When defined, it enables system safe mode. System safe mode allows the AP to
+ * capture the EC state after a panic.
+ */
+#undef CONFIG_SYSTEM_SAFE_MODE
+
+/*
  * Provide the default GPIO abstraction layer.
  * You want this unless you are doing a really tiny firmware.
  */
