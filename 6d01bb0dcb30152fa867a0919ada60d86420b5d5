@@ -46,6 +46,30 @@
       },
       "revId": "6d01bb0dcb30152fa867a0919ada60d86420b5d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66075c5b_cd9a9739",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-15T22:08:08Z",
+      "side": 1,
+      "message": "Thanks Tom! I was a bit confused by the error message and didn\u0027t see the sign-compare issue.\n\nI think I fixed it in the latest patchset, but the other issue with `noreturn` is still present:\n\n```\nIn file included from test/aes.cc:23:\n./builtin/assert.h:33:1: error: ‘noreturn’ does not name a type\n   33 | noreturn void panic_assert_fail(const char *msg, const char *func,\n      | ^~~~~~~~\ntest/aes.cc: In function ‘void test_aes_gcm_speed()’:\n./builtin/assert.h:38:4: error: ‘panic_assert_fail’ was not declared in this scope\n   38 |    panic_assert_fail(#cond, __func__, __FILE__, \\\n      |    ^~~~~~~~~~~~~~~~~\n./builtin/assert.h:73:22: note: in expansion of macro ‘ASSERT’\n   73 | #define assert(x...) ASSERT(x)\n      |                      ^~~~~~\ntest/aes.cc:448:2: note: in expansion of macro ‘assert’\n  448 |  assert(plaintext_size \u003c\u003d sizeof(tmp));\n      |  ^~~~~~\nmake[1]: *** [Makefile.rules:629: build/host/aes/RO/test/aes.o] Error 1\nmake: *** [Makefile.rules:356: host-aes] Error 2\n```",
+      "parentUuid": "060e2b6c_2d1de5a9",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "6d01bb0dcb30152fa867a0919ada60d86420b5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
