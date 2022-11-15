@@ -8,7 +8,9 @@
 
 #include "compile_time_macros.h"
 #include "emul/tcpc/emul_tcpci.h"
+#include "emul/tcpc/emul_tcpci_partner_snk.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
+#include "emul/tcpc/emul_tcpci_partner_vpd.h"
 #include "test/drivers/stubs.h"
 
 struct common_fixture {
@@ -16,6 +18,8 @@ struct common_fixture {
 	const struct emul *charger_emul;
 	struct tcpci_partner_data partner;
 	struct tcpci_src_emul_data src_ext;
+	struct tcpci_snk_emul_data snk_ext;
+	struct tcpci_vpd_emul_data vpd_ext;
 };
 
 struct usbc_ctvpd_fixture {

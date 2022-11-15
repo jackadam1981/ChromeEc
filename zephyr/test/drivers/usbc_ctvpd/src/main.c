@@ -13,6 +13,7 @@
 #include "emul/emul_isl923x.h"
 #include "emul/tcpc/emul_tcpci.h"
 #include "emul/tcpc/emul_tcpci_partner_common.h"
+#include "emul/tcpc/emul_tcpci_partner_snk.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "host_command.h"
 #include "test/drivers/stubs.h"
@@ -25,26 +26,42 @@
 #define TEST_PORT 0
 BUILD_ASSERT(TEST_PORT == USBC_PORT_C0);
 
+struct tcpci_cable_data charge_through_vpd = {
+	.identity_vdm[VDO_INDEX_HDR] =
+		VDO(USB_SID_PD, /* structured VDM */ true,
+		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_IDENT),
+	.identity_vdm[VDO_INDEX_IDH] = VDO_IDH(
+		/* USB host */ false, /* USB device */ false, IDH_PTYPE_VPD,
+		/* modal operation */ false, USB_VID_GOOGLE),
+	.identity_vdm[VDO_INDEX_CSTAT] = 0xabcdabcd,
+	.identity_vdm[VDO_INDEX_PRODUCT] = VDO_PRODUCT(0x1234, 0xabcd),
+	/* Hardware version 1, firmware version 2 */
+	.identity_vdm[VDO_INDEX_PTYPE_UFP1_VDO] =
+		VDO_VPD(1, 2, VPD_MAX_VBUS_20V, VPD_CT_CURRENT_3A,
+			VPD_VBUS_IMP(10), VPD_GND_IMP(10), VPD_CTS_SUPPORTED),
+	.identity_vdos = VDO_INDEX_PTYPE_UFP1_VDO + 1,
+};
+
+#if 0
 static void connect_partner_to_port(const struct emul *tcpc_emul,
 				    const struct emul *charger_emul,
-				    struct tcpci_partner_data *partner_emul,
-				    const struct tcpci_src_emul_data *src_ext)
+				    struct tcpci_partner_data *partner_emul)
 {
 	/*
 	 * TODO(b/221439302) Updating the TCPCI emulator registers, updating the
 	 *   vbus, as well as alerting should all be a part of the connect
 	 *   function.
 	 */
-	set_ac_enabled(true);
+	// set_ac_enabled(true);
 	zassert_ok(tcpci_partner_connect_to_tcpci(partner_emul, tcpc_emul),
 		   NULL);
 
-	isl923x_emul_set_adc_vbus(charger_emul,
-				  PDO_FIXED_GET_VOLT(src_ext->pdo[0]));
+	isl923x_emul_set_adc_vbus(charger_emul, 0);
 
 	/* Wait for PD negotiation and current ramp. */
 	k_sleep(K_SECONDS(10));
 }
+#endif
 
 static void disconnect_partner_from_port(const struct emul *tcpc_emul,
 					 const struct emul *charger_emul)
@@ -56,20 +73,23 @@ static void disconnect_partner_from_port(const struct emul *tcpc_emul,
 
 static void add_discovery_responses(struct tcpci_partner_data *partner)
 {
+	partner->cable = &charge_through_vpd;
+	struct tcpci_cable_data *cable = partner->cable;
+
 	/* Add Discover Identity response */
-	partner->identity_vdm[VDO_INDEX_HDR] =
+	cable->identity_vdm[VDO_INDEX_HDR] =
 		VDO(USB_SID_PD, /* structured VDM */ true,
 		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_IDENT);
-	partner->identity_vdm[VDO_INDEX_IDH] = VDO_IDH(
+	cable->identity_vdm[VDO_INDEX_IDH] = VDO_IDH(
 		/* USB host */ false, /* USB device */ false, IDH_PTYPE_VPD,
 		/* modal operation */ false, USB_VID_GOOGLE);
-	partner->identity_vdm[VDO_INDEX_CSTAT] = 0xabcdabcd;
-	partner->identity_vdm[VDO_INDEX_PRODUCT] = VDO_PRODUCT(0x1234, 0x5678);
+	cable->identity_vdm[VDO_INDEX_CSTAT] = 0xabcdabcd;
+	cable->identity_vdm[VDO_INDEX_PRODUCT] = VDO_PRODUCT(0x1234, 0x5678);
 	/* Hardware version 1, firmware version 2 */
-	partner->identity_vdm[VDO_INDEX_PTYPE_UFP1_VDO] =
+	cable->identity_vdm[VDO_INDEX_PTYPE_UFP1_VDO] =
 		VDO_VPD(1, 2, VPD_MAX_VBUS_20V, VPD_CT_CURRENT_3A,
 			VPD_VBUS_IMP(10), VPD_GND_IMP(10), VPD_CTS_SUPPORTED);
-	partner->identity_vdos = VDO_INDEX_PTYPE_UFP1_VDO + 1;
+	cable->identity_vdos = VDO_INDEX_PTYPE_UFP1_VDO + 1;
 }
 
 static void common_before(struct common_fixture *common)
@@ -80,8 +100,13 @@ static void common_before(struct common_fixture *common)
 	/* TODO(b/214401892): Check why need to give time TCPM to spin */
 	k_sleep(K_SECONDS(1));
 
+#if 0
 	connect_partner_to_port(common->tcpci_emul, common->charger_emul,
-				&common->partner, &common->src_ext);
+				&common->partner);
+#else
+	connect_sink_to_port(&common->partner, common->tcpci_emul,
+			     common->charger_emul);
+#endif
 }
 
 static void common_after(struct common_fixture *common)
@@ -95,10 +120,17 @@ static void *usbc_ctvpd_setup(void)
 	static struct usbc_ctvpd_fixture fixture;
 	struct common_fixture *common = &fixture.common;
 	struct tcpci_partner_data *partner = &common->partner;
-	struct tcpci_src_emul_data *src_ext = &common->src_ext;
+	// struct tcpci_src_emul_data *src_ext = &common->src_ext;
+	// struct tcpci_snk_emul_data *snk_ext = &common->snk_ext;
+	struct tcpci_vpd_emul_data *vpd_ext = &common->vpd_ext;
 
 	tcpci_partner_init(partner, PD_REV30);
-	partner->extensions = tcpci_src_emul_init(src_ext, partner, NULL);
+#if 0
+	partner->extensions = tcpci_vpd_emul_init(
+		vpd_ext, partner, tcpci_snk_emul_init(snk_ext, partner, NULL));
+#else
+	partner->extensions = tcpci_vpd_emul_init(vpd_ext, partner, NULL);
+#endif
 
 	/* Get references for the emulators */
 	common->tcpci_emul = EMUL_GET_USBC_BINDING(TEST_PORT, tcpc);
@@ -130,19 +162,20 @@ ZTEST_USER_F(usbc_ctvpd, verify_discovery)
 		(struct ec_response_typec_discovery *)response_buffer;
 	struct common_fixture *common = &fixture->common;
 
-	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
-				 sizeof(response_buffer));
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP_PRIME,
+				 response_buffer, sizeof(response_buffer));
 
 	/* The host command does not count the VDM header in identity_count. */
 	zassert_equal(discovery->identity_count,
-		      common->partner.identity_vdos - 1,
+		      common->partner.cable->identity_vdos - 1,
 		      "Expected %d identity VDOs, got %d",
-		      common->partner.identity_vdos - 1,
+		      common->partner.cable->identity_vdos - 1,
 		      discovery->identity_count);
-	zassert_mem_equal(
-		discovery->discovery_vdo, common->partner.identity_vdm + 1,
-		discovery->identity_count * sizeof(*discovery->discovery_vdo),
-		"Discovered SOP identity ACK did not match");
+	zassert_mem_equal(discovery->discovery_vdo,
+			  common->partner.cable->identity_vdm + 1,
+			  discovery->identity_count *
+				  sizeof(*discovery->discovery_vdo),
+			  "Discovered SOP identity ACK did not match");
 }
 
 ZTEST_USER_F(usbc_ctvpd, verify_no_vconn_swap)
