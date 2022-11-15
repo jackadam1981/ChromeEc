@@ -52,6 +52,24 @@
       "parentUuid": "405964c6_f72965a4",
       "revId": "136883f20f19ebd4c156c479d3843b1c234a299a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd0e1dd_7f7fe952",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-15T02:34:53Z",
+      "side": 1,
+      "message": "Ok, I\u0027m going to separate into 2 CLs. \n1. Gpio and I2C setting. \n2. Interrupts and Pin Control.",
+      "parentUuid": "884c53ed_37f08ae6",
+      "revId": "136883f20f19ebd4c156c479d3843b1c234a299a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
