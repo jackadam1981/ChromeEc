@@ -52,6 +52,24 @@
       "parentUuid": "db58cd7b_a759a366",
       "revId": "4450a6db733776670816e1af3899d5c91e46a0b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e579a43_99cbc380",
+        "filename": "test/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-15T01:56:04Z",
+      "side": 1,
+      "message": "Passes now:\n\n```\nRunning test_align_down_to_bits...\nPass: align_down_to_bits(addr, 0) \u003d\u003d addr\nPass: align_down_to_bits(addr, 1) \u003d\u003d 0x87654320\nPass: align_down_to_bits(addr, 30) \u003d\u003d 0x80000000\nPass: align_down_to_bits(addr, 31) \u003d\u003d 0x80000000\nPass: align_down_to_bits(addr, 32) \u003d\u003d addr\nPass: align_down_to_bits(addr, 33) \u003d\u003d addr\nOK\nRunning reset_mpu...\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nPass: mpu_config_region(i, 0, 32, 0, 0) \u003d\u003d EC_SUCCESS\nOK\nRunning test_mpu_update_region_valid_region...\nPass: mpu_update_region(0, (uint32_t)ram_base, size_bit, mpu_attr, 1, 0) \u003d\u003d EC_SUCCESS\n\n\u003d\u003d\u003d PROCESS EXCEPTION: 04 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 21000000 \u003d\u003d\u003d\nr0 :00000000 r1 :00000000 r2 :00000000 r3 :00000000\nr4 :00000000 r5 :00000000 r6 :00000000 r7 :00000000\nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000\nr12:00000000 sp :20012fa8 lr :0806de65 pc :0806de64\nData access violation, mfar \u003d 20000000\ncfsr \u003d 82, shcsr \u003d 70001, hfsr \u003d 0, dfsr \u003d 0\n```",
+      "parentUuid": "5319565f_36e9ccd8",
+      "revId": "4450a6db733776670816e1af3899d5c91e46a0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
