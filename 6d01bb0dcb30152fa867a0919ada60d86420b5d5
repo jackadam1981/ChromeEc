@@ -22,6 +22,30 @@
       },
       "revId": "6d01bb0dcb30152fa867a0919ada60d86420b5d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060e2b6c_2d1de5a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-15T19:59:55Z",
+      "side": 1,
+      "message": "I saw this error in the past:\n\n```\ncomparison of integer expressions of different signedness: ‘int’ and ‘long unsigned int’ [-Werror\u003dsign-compare]\n```\n\nThis doesn\u0027t fix it for the general case since it doesn\u0027t make the format string generic, but maybe will give you some ideas: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3860408/116/include/test_util.h",
+      "parentUuid": "0d8580f2_cb1f2c9a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "6d01bb0dcb30152fa867a0919ada60d86420b5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
