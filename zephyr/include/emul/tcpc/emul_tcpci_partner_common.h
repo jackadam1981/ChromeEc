@@ -184,6 +184,8 @@ struct tcpci_partner_data {
 		 */
 		bool have_response[PD_BATT_MAX];
 	} battery_capabilities;
+	/* Enter_USB data object */
+	union enter_usb_data_obj eudo;
 
 	/*
 	 * Cable which is "plugged in" to this port partner
