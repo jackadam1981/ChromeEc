@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c444884e_9ece1ce3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-11-15T10:17:52Z",
+      "side": 1,
+      "message": "Incorrect branch name.",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "800be15b5668086e65f459edaf048fb3798f6ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59fe4d26_b6c91612",
         "filename": "board/marasov/led.c",
         "patchSetId": 6
