@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d310c9_81d36ffe",
+        "filename": "zephyr/test/drivers/default/src/chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-15T20:39:22Z",
+      "side": 1,
+      "message": "Nit: You can just use `zassert_ok`.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "5dc673cfeef05205add3895f5b14201cd11e9577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
