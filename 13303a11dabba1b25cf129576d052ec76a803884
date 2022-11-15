@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41eb464_9630c678",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-15T18:27:47Z",
+      "side": 1,
+      "message": "This + removing the label in the tree above implicitly assumes no one will accidentally include another node of this compat in the devicetree, even one that\u0027s disabled.\n\nI think we should keep a label for this particular node. But I could very well be wrong, is there a design artifact/discussion you can point me to on comparing the usage of `DT_INST(0..)` versus `DT_NODELABEL()` for the using a single node use-case?",
+      "revId": "13303a11dabba1b25cf129576d052ec76a803884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
