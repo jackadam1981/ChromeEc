@@ -70,6 +70,30 @@
       },
       "revId": "6d01bb0dcb30152fa867a0919ada60d86420b5d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a986c3da_c0486ac2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-16T00:36:32Z",
+      "side": 1,
+      "message": "Oh, I think this is because `noreturn` is C-only (`[[noreturn]]` is C++ equivalent).\n\nhttps://en.cppreference.com/w/cpp/language/attributes/noreturn\nhttps://en.cppreference.com/w/c/language/_Noreturn\n\nNot sure if there\u0027s a cleaner way of doing it than this:\n\n```\n#ifdef __cplusplus\n[[noreturn]]\n#else\nnoreturn\n#endif\nvoid panic_assert_fail(const char *msg, const char *func,\n\t\t\t\tconst char *fname, int linenum);\n```\n\nI also recall there being some difference between `gcc` and `clang` on this. See [this code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/system.h;l\u003d376-380;drc\u003d4f6d8ca42115d3c39cbc6a476414df0be629f51e). It looks like the host tests are being built with `gcc` right now.",
+      "parentUuid": "66075c5b_cd9a9739",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "6d01bb0dcb30152fa867a0919ada60d86420b5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
