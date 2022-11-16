@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e83a7147_90679067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-16T09:17:50Z",
+      "side": 1,
+      "message": "Please split the FW_CONFIG related setting from the board.* just like we did in the brask: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/board/brask/fw_config.h",
+      "revId": "b1e739afd8ad53e5ed2c9019d2ec74c60b5caec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
