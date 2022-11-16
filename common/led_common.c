@@ -16,6 +16,7 @@
 
 static uint32_t led_auto_control_flags = ~0x00;
 
+#ifndef CONFIG_ZEPHYR
 __overridable int led_is_supported(enum ec_led_id led_id)
 {
 	int i;
@@ -30,6 +31,7 @@ __overridable int led_is_supported(enum ec_led_id led_id)
 
 	return ((1 << (int)led_id) & supported_leds);
 }
+#endif
 
 void led_auto_control(enum ec_led_id led_id, int enable)
 {
@@ -47,6 +49,10 @@ int led_auto_control_is_enabled(enum ec_led_id led_id)
 	return (led_auto_control_flags & LED_AUTO_CONTROL_FLAG(led_id)) != 0;
 }
 
+/* Empty functions cannot be verified in testing to not have had any
+ * side-effects, remove from coverage.
+ * LCOV_EXCL_START
+ */
 __attribute__((weak)) void board_led_auto_control(void)
 {
 	/*
@@ -56,6 +62,7 @@ __attribute__((weak)) void board_led_auto_control(void)
 	 * is changed.
 	 */
 }
+/* LCOV_EXCL_STOP */
 
 static enum ec_status led_command_control(struct host_cmd_handler_args *args)
 {
@@ -91,6 +98,7 @@ static enum ec_status led_command_control(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_LED_CONTROL, led_command_control, EC_VER_MASK(1));
 
+#ifndef CONFIG_ZEPHYR
 __attribute__((weak)) void led_control(enum ec_led_id led_id,
 				       enum ec_led_state state)
 {
@@ -99,3 +107,4 @@ __attribute__((weak)) void led_control(enum ec_led_id led_id,
 	 * LED. Boards can provide their own implementation.
 	 */
 }
+#endif
