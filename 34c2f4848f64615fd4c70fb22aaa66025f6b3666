@@ -16,6 +16,24 @@
       "message": "Changing this to 95% makes it very close to the common function in\nnissa/src/common.c\nWith this change, can this function be removed entirely and the common\none used instead?",
       "revId": "34c2f4848f64615fd4c70fb22aaa66025f6b3666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0192509d_41652e1a",
+        "filename": "zephyr/program/nissa/xivu/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-11-16T05:43:20Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "1c8127cb_06bc9e1b",
+      "revId": "34c2f4848f64615fd4c70fb22aaa66025f6b3666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
