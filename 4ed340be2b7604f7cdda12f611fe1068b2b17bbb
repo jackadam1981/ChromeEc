@@ -52,6 +52,24 @@
       "parentUuid": "2c72ad5e_8556b828",
       "revId": "4ed340be2b7604f7cdda12f611fe1068b2b17bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7737bc81_7b7508e8",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-11-16T23:29:29Z",
+      "side": 1,
+      "message": "Yep, that was where some earlier flakiness was coming from, should be avoided now with delay\u003d1 ensuring enough output has arrived.",
+      "parentUuid": "d920e046_9d7ba344",
+      "revId": "4ed340be2b7604f7cdda12f611fe1068b2b17bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
