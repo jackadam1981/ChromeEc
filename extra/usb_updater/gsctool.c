@@ -2101,8 +2101,6 @@ static int show_headers_versions(const void *image, bool show_machine_output)
 			/* RO. */
 			snprintf(ro_fw_ver[slot_idx], MAX_FW_VER_LENGTH,
 				 "%d.%d.%d", h->epoch_, h->major_, h->minor_);
-			/* No need to read board ID in an RO section. */
-			continue;
 		} else {
 			/* RW. */
 			snprintf(rw_fw_ver[slot_idx], MAX_FW_VER_LENGTH,
@@ -2122,6 +2120,7 @@ static int show_headers_versions(const void *image, bool show_machine_output)
 		dev_id1_[slot_idx] = h->dev_id1_;
 		/* Print the devid if any slot has a non-zero devid. */
 		print_devid |= h->dev_id0_ | h->dev_id1_;
+		printf("%d %d %d - %x %x",h->epoch_, h->major_, h->minor_, h->dev_id0_ , h->dev_id1_);
 
 		/*
 		 * If board ID is a 4-uppercase-letter string (as it ought to
@@ -2141,6 +2140,7 @@ static int show_headers_versions(const void *image, bool show_machine_output)
 			snprintf(bid_string[slot_idx], MAX_BOARD_ID_LENGTH,
 				 "%08x", cur_bid);
 		}
+		printf("\n");
 	}
 
 	if (show_machine_output) {
