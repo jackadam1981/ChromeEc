@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95106acd_50349767",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-16T22:58:55Z",
+      "side": 1,
+      "message": "The legacy usbc_config file has been copied over to the project directory and edits to the zephyr projects have been done in the copies.",
+      "parentUuid": "cfd7dc57_6bb9d83a",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "a3e14deeea07fbce6b8e7f39c805abd9d296f213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9804211f_e5828856",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-15T20:27:27Z",
       "side": 1,
       "message": "As a remainder, enabling the TCPC interrupts needs to be moved to the shim driver too. And registering the callback `tcpc_alert_event()` is also done in the shim TCPC driver; as a result, nodes like `int_usb_c0_pd` can be removed from the `interrupts.dtsi`. This will reduce the overhead of the shimmed interrupt driver, one less layer. OK to be a follow-up CL.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 66
+      },
+      "revId": "a3e14deeea07fbce6b8e7f39c805abd9d296f213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95582a2d_2faefab5",
+        "filename": "zephyr/program/herobrine/src/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-16T22:58:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9804211f_e5828856",
       "range": {
         "startLine": 127,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7ad930_f30a5d32",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-16T22:58:55Z",
+      "side": 1,
+      "message": "I noticed that there already existed tests for tcpc_alert_event using a stub. I\u0027ve removed the stub from stubs.c and modified the tests to use the tcpc_alert_event in tcpc.c. I hope that\u0027s appropriate. Please let me know if some other changes need to be made.",
+      "parentUuid": "742931ba_a4f271ad",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "a3e14deeea07fbce6b8e7f39c805abd9d296f213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ae307eb_b9e9cddc",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-15T20:58:39Z",
       "side": 1,
       "message": "The `tcpc_config[]` array is already ordered by the type-c port number.\n\nSo this should be `schedule_deferred_pd_interrupt(i)`.  `i2c_info.port` is the I2C bus number represented as an enumeration.",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "a3e14deeea07fbce6b8e7f39c805abd9d296f213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a899519_ff48da62",
+        "filename": "zephyr/shim/src/tcpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-16T22:58:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae307eb_b9e9cddc",
       "range": {
         "startLine": 82,
         "startChar": 4,
