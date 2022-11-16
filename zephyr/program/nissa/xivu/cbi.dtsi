@@ -71,6 +71,52 @@
 			};
 		};
 
+		lid-accel {
+			enum-name = "FW_LID_G";
+			start = <4>;
+			size = <2>;
+
+			None {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_LID_NONE";
+				value = <0>;
+			};
+			lid_sensor_0: lis2dw12 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_LID_LIS2DW12";
+				value = <1>;
+				default;
+			};
+			lid_sensor_1: bma422 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_LID_BMA422";
+				value = <2>;
+			};
+		};
+
+		base-gyro {
+			enum-name = "FW_BASE_GYRO";
+			start = <6>;
+			size = <2>;
+
+			None {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_BASE_NONE";
+				value = <0>;
+			};
+			base_sensor_0: ism6dso {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_BASE_ISM6DSO";
+				value = <1>;
+				default;
+			};
+			base_sensor_1: bmi323 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_BASE_BMI323";
+				value = <2>;
+			};
+		};
+
 /delete-node/ fan;
 	};
 
