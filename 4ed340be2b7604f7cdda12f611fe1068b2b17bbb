@@ -16,6 +16,24 @@
       "message": "Is `chargen` guaranteed to return \"0123\"?\nI think it is for this python script, but it makes it implicitly dependent on the arguments passed to it which is done on line 281.\n\nWhat issue were you seeing w/ the prompt detection?",
       "revId": "4ed340be2b7604f7cdda12f611fe1068b2b17bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c72ad5e_8556b828",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-11-16T21:32:42Z",
+      "side": 1,
+      "message": "Assuming the output starts 0123 seems ok to me.\nThe issue with the prompt detection is for AP UART, \"prompt\": \"localhost login:\" is needed to detect and log in, but then it changes to \"localhost ~ # \".\nLooking for 0123 seems more robust and doesn\u0027t depend on matching any prompt exactly.",
+      "parentUuid": "b488fb8f_08f07b0a",
+      "revId": "4ed340be2b7604f7cdda12f611fe1068b2b17bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
