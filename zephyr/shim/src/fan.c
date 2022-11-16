@@ -127,7 +127,7 @@ static void fan_pwm_update(int ch)
 
 	ret = pwm_set_dt(&cfg->pwm, cfg->pwm.period, pulse_ns);
 	if (ret) {
-		LOG_ERR("pwm_set() failed %s (%d)", pwm_dev->name, ret);
+		LOG_ERR("pwm_set_dt failed %s (%d)", pwm_dev->name, ret);
 	}
 }
 
