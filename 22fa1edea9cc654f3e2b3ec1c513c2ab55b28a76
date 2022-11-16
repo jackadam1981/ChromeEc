@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdf39d61_9f1a5d65",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-16T18:41:46Z",
+      "side": 0,
+      "message": "In the existing code, given the initialization of previous_level to NUM_FAN_LEVELS, I would expect a segmentation fault the very first time the function is called. In the refactoring, I change this behavior to index at (NUM_FAN_LEVELS - 1) on line 137.",
+      "range": {
+        "startLine": 149,
+        "startChar": 9,
+        "endLine": 149,
+        "endChar": 34
+      },
+      "revId": "22fa1edea9cc654f3e2b3ec1c513c2ab55b28a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
