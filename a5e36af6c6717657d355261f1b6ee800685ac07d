@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc45479_b3943ceb",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-16T21:23:50Z",
+      "side": 1,
+      "message": "I want to explain this range selection.\n\nThe kalista fan_table at lines 449-456 is:\n\n0 up to 30% (was 26 C, now 32 C)\nfan_min up to 49% (was 40 C, now 40 C), and \nfan_max above 75% (was 58 C, now 50 C)\n\nIn particular, because the fan_table sets fan_max from 75% of the range (while most other boards set it from 98%), in order to practically have fan_max from 50 C, I set this parameter to 60 C.  (If I were to set 50 C, as on all other boards, then fan_max would start closer to 42 C.)",
+      "range": {
+        "startLine": 270,
+        "startChar": 10,
+        "endLine": 270,
+        "endChar": 12
+      },
+      "revId": "a5e36af6c6717657d355261f1b6ee800685ac07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
