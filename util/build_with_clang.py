@@ -158,7 +158,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "lux",
     "madoo",
     "magolor",
-    "marasov",
     "marzipan",
     "meep",
     "metaknight",
