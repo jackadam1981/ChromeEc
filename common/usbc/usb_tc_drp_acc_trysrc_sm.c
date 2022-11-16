@@ -2509,6 +2509,12 @@ static void tc_attached_snk_entry(const int port)
 			 * flag.
 			 */
 			charge_manager_update_dualrole(port, CAP_DEDICATED);
+
+			/*
+			 * HACK: Delay PD for a bit to let the charger
+			 * start sinking.
+			 */
+			usleep(500 * 1000);
 		}
 
 		/* Apply Rd */
