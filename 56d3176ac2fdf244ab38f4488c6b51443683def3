@@ -22,6 +22,30 @@
       },
       "revId": "56d3176ac2fdf244ab38f4488c6b51443683def3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60b3bcf6_aead3c89",
+        "filename": "board/gaelin/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-16T03:29:41Z",
+      "side": 1,
+      "message": "I don\u0027t know why it is named like that. I set it according to the naming in the schematics.",
+      "parentUuid": "f19bce3c_3d57fded",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "56d3176ac2fdf244ab38f4488c6b51443683def3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
