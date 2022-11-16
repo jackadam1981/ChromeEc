@@ -313,6 +313,12 @@ ZTEST_USER(console_cmd_usb_pd, test_timer)
 		      rv);
 }
 
+ZTEST_USER(console_cmd_usb_pd, test_cc)
+{
+	/* With nothing connected, the CC state should be PD_CC_NONE. */
+	CHECK_CONSOLE_CMD("pd 0 cc", "C0 CC0", EC_SUCCESS);
+}
+
 static void set_device_vdo(int port, enum tcpci_msg_type type)
 {
 	union tbt_mode_resp_device device_resp;
