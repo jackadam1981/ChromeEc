@@ -34,6 +34,24 @@
       "parentUuid": "b488fb8f_08f07b0a",
       "revId": "4ed340be2b7604f7cdda12f611fe1068b2b17bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d920e046_9d7ba344",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1549582
+      },
+      "writtenOn": "2022-11-16T23:20:29Z",
+      "side": 1,
+      "message": "Ah, bummer. This LGTM.\nOne other assumption is that at least `len(prompt)+len(\"0123\")` bytes will have arrived when `self.get_output()` returns data the first time. It could arrive segmented.\nBut the existing code already assumes that.",
+      "parentUuid": "2c72ad5e_8556b828",
+      "revId": "4ed340be2b7604f7cdda12f611fe1068b2b17bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
