@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09cc04da_f51e922b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2022-11-16T18:11:48Z",
+      "side": 1,
+      "message": "This seems to be introducing a new way to cut off battery, Shouldn\u0027t we get this reviewed by the PM (i.e. Cyrus) and update public documentation?\n\nAlso how do we ensure that EC is RO, does the person need to go into recovery first? then press down arrow while removing AC power?",
+      "revId": "3450e942754471897fb68f9c1700428691c1a2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
