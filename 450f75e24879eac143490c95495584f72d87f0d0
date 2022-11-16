@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c5336c_cd9636c9",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-16T06:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d30bc99_6dda0910",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ff6115_4464ca2e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-15T18:10:40Z",
       "side": 1,
       "message": "nit: unnecessary newline.",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6467bc5f_e6fe9187",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-16T06:48:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6ff6115_4464ca2e",
       "revId": "450f75e24879eac143490c95495584f72d87f0d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +128,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d1abe2_de134281",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-16T06:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27d1ffee_de70a475",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7bf6112_5a09d9a1",
@@ -109,6 +163,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81bc403e_89101f0f",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-16T06:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7bf6112_5a09d9a1",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ffd320b_86f734da",
@@ -122,6 +194,24 @@
       "writtenOn": "2022-11-15T18:10:40Z",
       "side": 1,
       "message": "Also seems like 3 test cases here. Maybe I\u0027m thinking too granular in test cases?",
+      "revId": "450f75e24879eac143490c95495584f72d87f0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae777a26_890eb5d3",
+        "filename": "zephyr/test/drivers/default/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-16T06:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ffd320b_86f734da",
       "revId": "450f75e24879eac143490c95495584f72d87f0d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
