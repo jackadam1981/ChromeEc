@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+<<<<<<< HEAD   (3f2112 marasov: Initial EC image)
 #include "accelgyro.h"
 #include "adc.h"
 #include "driver/accel_lis2dw12.h"
@@ -248,6 +249,47 @@ static void baseboard_sensors_init(void)
 	gpio_enable_interrupt(GPIO_EC_IMU_INT_R_L);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_sensors_init, HOOK_PRIO_INIT_I2C + 1);
+=======
+#include "adc.h"
+#include "gpio.h"
+#include "hooks.h"
+#include "temp_sensor.h"
+#include "thermal.h"
+#include "temp_sensor/thermistor.h"
+
+/* ADC configuration */
+struct adc_t adc_channels[] = {
+	[ADC_TEMP_SENSOR_1_DDR_SOC] = {
+		.name = "TEMP_DDR_SOC",
+		.input_ch = NPCX_ADC_CH0,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_TEMP_SENSOR_2_AMBIENT] = {
+		.name = "TEMP_AMBIENT",
+		.input_ch = NPCX_ADC_CH1,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_TEMP_SENSOR_3_CHARGER] = {
+		.name = "TEMP_CHARGER",
+		.input_ch = NPCX_ADC_CH6,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_TEMP_SENSOR_4_WWAN] = {
+		.name = "TEMP_WWAN",
+		.input_ch = NPCX_ADC_CH7,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+>>>>>>> BRANCH (336ff8 marasov: Implement the EC LED code)
 
 /* Temperature sensor configuration */
 const struct temp_sensor_t temp_sensors[] = {
