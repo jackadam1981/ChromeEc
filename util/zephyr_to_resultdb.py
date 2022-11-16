@@ -61,9 +61,7 @@ def testcase_summary(testcase):
         or "reason" in testcase
         or translate_status(testcase["status"]) == "SKIP"
     ):
-        html = (
-            '<p><text-artifact artifact-id="artifact-content-in-request"></p>'
-        )
+        html = '<p><text-artifact artifact-id="test_log"></p>'
 
     return html
 
@@ -84,6 +82,16 @@ def testcase_artifact(testcase):
     return base64.b64encode(artifact.encode())
 
 
+def testsuite_artifact(testsuite):
+    """Translates ZTEST testcase to ResultDB artifact"""
+    artifact = "Unknown"
+
+    if "log" in testsuite and testsuite["log"]:
+        artifact = testsuite["log"]
+
+    return base64.b64encode(artifact.encode())
+
+
 def testcase_to_result(testsuite, testcase, base_tags, config_tags):
     """Translates ZTEST testcase to ResultDB format
     https://crsrc.org/i/go/src/go.chromium.org/luci/resultdb/sink/proto/v1/test_result.proto;l=31
@@ -94,9 +102,12 @@ def testcase_to_result(testsuite, testcase, base_tags, config_tags):
         "expected": translate_expected(testcase["status"]),
         "summaryHtml": testcase_summary(testcase),
         "artifacts": {
-            "artifact-content-in-request": {
+            "test_log": {
                 "contents": testcase_artifact(testcase),
-            }
+            },
+            "testsuite_log": {
+                "contents": testsuite_artifact(testsuite),
+            },
         },
         "tags": [
             {"key": "platform", "value": testsuite["platform"]},
