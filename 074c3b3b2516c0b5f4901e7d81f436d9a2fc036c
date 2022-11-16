@@ -518,6 +518,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c54c2aa_6a8fb82a",
+        "filename": "board/lisbon/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-16T08:36:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1585dfc_632915b7",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 20
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96400e9c_8b67c9f6",
@@ -555,6 +579,30 @@
       "side": 1,
       "message": "Yes, but should we set the net name the same as in the schematics?",
       "parentUuid": "96400e9c_8b67c9f6",
+      "range": {
+        "startLine": 143,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 47
+      },
+      "revId": "074c3b3b2516c0b5f4901e7d81f436d9a2fc036c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55cb84a_d0631d32",
+        "filename": "board/lisbon/usbc_config.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2022-11-16T08:36:16Z",
+      "side": 1,
+      "message": "Yes, It is better.",
+      "parentUuid": "fff69af2_8c7dc7c3",
       "range": {
         "startLine": 143,
         "startChar": 20,
