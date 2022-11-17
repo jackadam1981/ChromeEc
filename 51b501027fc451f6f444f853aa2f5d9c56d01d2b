@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca4b237d_7a2df03d",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447_emul.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:20:39Z",
+      "side": 1,
+      "message": "This is also why in the emulator tests the property is named `alert_gpio` but in the tcpc it\u0027s named `int-pin`",
+      "parentUuid": "2f043926_3d2202ed",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1affa1a_0ee45827",
