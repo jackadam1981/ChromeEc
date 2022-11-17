@@ -22,6 +22,30 @@
       },
       "revId": "c453fd704268ef72de871b0c5ac7a989de662334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a672a672_ca9fafc7",
+        "filename": "third_party/rules.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-11-17T20:29:22Z",
+      "side": 0,
+      "message": "David, were you able to resolve this issue? If so, can you close out this CL?",
+      "parentUuid": "22175277_d68a6623",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "c453fd704268ef72de871b0c5ac7a989de662334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
