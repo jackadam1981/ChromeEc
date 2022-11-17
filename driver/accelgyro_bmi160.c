@@ -54,7 +54,13 @@ bmi160_sec_access_ctrl(const int port, const uint16_t i2c_spi_addr_flags,
 		       const int enable)
 {
 	int mag_if_ctrl;
-	bmi_read8(port, i2c_spi_addr_flags, BMI160_MAG_IF_1, &mag_if_ctrl);
+	int ret;
+
+	ret = bmi_read8(port, i2c_spi_addr_flags, BMI160_MAG_IF_1,
+			&mag_if_ctrl);
+	if (ret != 0)
+		return ret;
+
 	if (enable) {
 		mag_if_ctrl |= BMI160_MAG_MANUAL_EN;
 		mag_if_ctrl &= ~BMI160_MAG_READ_BURST_MASK;
