@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b2febe1_28190d6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-17T06:33:49Z",
+      "side": 1,
+      "message": "Turns out this was used, when I saw the implementations in the shim layer I assumed we\u0027re only using the newer Zephyr styled implementations.",
+      "revId": "2f90dc4841e26f82f2b58a064b3e739ccba7cbd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
