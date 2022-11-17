@@ -64,6 +64,30 @@
       },
       "revId": "b4c0e88b9752a86b3261503c7ea8e8300a59d5e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed5dd14c_3ba7c16b",
+        "filename": "board/marasov/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-17T23:32:15Z",
+      "side": 1,
+      "message": "Please provide the relevant bug # or a waiver. Otherwise let\u0027s revert this to default. \n\nThat\u0027s the left over battery % before we force shut down. So we save enough for the Cr50 / RTC to run, and for next time to ensure proper PD charging.",
+      "parentUuid": "c48a9f05_9ef985d4",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "b4c0e88b9752a86b3261503c7ea8e8300a59d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
