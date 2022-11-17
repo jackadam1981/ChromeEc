@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b47f03c3_4e15f55c",
+        "filename": "board/marasov/generated-gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-11-17T01:13:37Z",
+      "side": 1,
+      "message": "Discuss with EE. We will update schematic and EC code. Thanks.",
+      "parentUuid": "96a05ebf_12d5fb4b",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "90bac4b566ad3f8b1237e8dd37aa35eb2a9543bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "448cef0c_83a40c29",
         "filename": "board/marasov/usbc_config.c",
         "patchSetId": 7
