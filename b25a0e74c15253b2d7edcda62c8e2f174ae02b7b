@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e9d0bf_8c23d651",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-17T16:52:43Z",
+      "side": 0,
+      "message": "It makes sense to me to use `depends on DT_HAS_*`, but it also seems like it\u0027s still expected for a config to only set one of these. Would it still make sense to define this as a `choice`?",
+      "revId": "b25a0e74c15253b2d7edcda62c8e2f174ae02b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
