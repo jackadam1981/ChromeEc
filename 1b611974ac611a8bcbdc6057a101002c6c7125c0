@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be798eb_0c8d1af6",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-11-17T04:13:56Z",
+      "side": 1,
+      "message": "!board_is_usb_pd_port_present((port)",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 593,
+        "endChar": 54
+      },
+      "revId": "1b611974ac611a8bcbdc6057a101002c6c7125c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
