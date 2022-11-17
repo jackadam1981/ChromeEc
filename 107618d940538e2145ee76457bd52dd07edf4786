@@ -319,6 +319,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac35dea0_5aa1cf71",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-11-17T14:28:43Z",
+      "side": 1,
+      "message": "Hi Yuval and Diana,\n\nAccording to Josh comment\u0027s, can we create a tracker to track this test function? To merge this CL by LOW_COVERAGE_REASON. Because we had test body detection function in Proto board and got positive.\n\nSince we have anther CL: for ambient temperature(b/232946420#comment135) need base on body detect state for submit.\n\nThanks.",
+      "parentUuid": "c1b7b42c_aa7370c6",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
