@@ -22,6 +22,30 @@
       },
       "revId": "ad86e2556b0169504e3022efabbd104afce28d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cfe8c65_318111e9",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-17T18:58:38Z",
+      "side": 1,
+      "message": "Done. It\u0027s only 273 items in there, so I don\u0027t think it\u0027ll have a material impact on search times.",
+      "parentUuid": "e42dc23f_5ce0acd7",
+      "range": {
+        "startLine": 325,
+        "startChar": 59,
+        "endLine": 325,
+        "endChar": 71
+      },
+      "revId": "ad86e2556b0169504e3022efabbd104afce28d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
