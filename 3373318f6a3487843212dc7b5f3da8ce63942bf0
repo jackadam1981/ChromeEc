@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24064043_7919f767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-17T17:36:35Z",
+      "side": 1,
+      "message": "To answer the question:\nThe fan table percentages map linearly into the `temp_fan_off` and `temp_fan_max` range.  Given that we idle around 39-42 C, typically the fan is running at minimum speed (but not zero) most of the time.  This CL preserves that behavior.\n\nThe sensor controlling the fan is not directly measuring the CPU temperature. In testing and logs, I have seen a temperature of 50 C at the sensor with a 70-90 C temperature at the CPU.  (It looks like Jeff Chase noticed the same thing in b/191187610.)  So I decided to set 50-55 C (at sensor) as the `temp_fan_max` temperature where the fan should reach maximum speed.\n\nThe fan tables are then set to ramp up the fan between `temp_fan_off` and `temp_fan_max`, avoiding 50 Hz and 60 Hz frequencies.  Where the speeds were already defined (on fizz and kalista boards in crrev.com/c/4024283/4?usp\u003drelated-change), I left them alone, and adjusted the on/off percentages (adding comments interpreting them as temperatures).  Since there were previously no fan tables on the {ambassador,genesis,moonbuggy,scout} boards, I roughly linearly-interpolated the range.",
+      "parentUuid": "6bcb4363_cedf1d65",
+      "revId": "3373318f6a3487843212dc7b5f3da8ce63942bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cad746c_2bc305ec",
