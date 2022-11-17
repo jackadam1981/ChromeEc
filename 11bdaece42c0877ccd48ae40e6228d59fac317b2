@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdf347b0_1375afcf",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-11-17T04:12:21Z",
+      "side": 1,
+      "message": "good example where a value check function would be better\nthan hard coding valid value ranges.",
+      "range": {
+        "startLine": 868,
+        "startChar": 5,
+        "endLine": 868,
+        "endChar": 63
+      },
+      "revId": "11bdaece42c0877ccd48ae40e6228d59fac317b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
