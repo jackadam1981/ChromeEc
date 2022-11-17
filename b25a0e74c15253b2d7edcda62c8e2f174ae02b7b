@@ -16,6 +16,24 @@
       "message": "It makes sense to me to use `depends on DT_HAS_*`, but it also seems like it\u0027s still expected for a config to only set one of these. Would it still make sense to define this as a `choice`?",
       "revId": "b25a0e74c15253b2d7edcda62c8e2f174ae02b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51679e7f_2d9dc182",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-17T17:05:24Z",
+      "side": 0,
+      "message": "Sorry wasn\u0027t clear of why I dropped this: the problem is that this style of automatic options does not work with *optional* choices, you can have a DT_HAS_ dependent defaults but if the choice is marked as optional then the choice symbol itself does not get selected and the whole thing does not work and requires explicit config again. I could not find a clean way to work around that but figured it should be alright to drop it since now that the two options depends on DT entries, one would have to be really explicit to select both.",
+      "parentUuid": "d2e9d0bf_8c23d651",
+      "revId": "b25a0e74c15253b2d7edcda62c8e2f174ae02b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
