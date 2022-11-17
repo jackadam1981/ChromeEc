@@ -130,7 +130,7 @@ static enum sensor_config motion_sense_get_ec_config(void)
 	default:
 		CPRINTS("get_ec_config: Invalid active state: %x",
 			sensor_active);
-		return SENSOR_CONFIG_MAX;
+		return SENSOR_CONFIG_EC_S5;
 	}
 }
 /* motion_sense_set_data_rate
