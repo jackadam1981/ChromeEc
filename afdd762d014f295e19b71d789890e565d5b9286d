@@ -34,6 +34,24 @@
       "message": "Uh, this caused few boards to fail in CI, out of flash space: b/258143176",
       "revId": "afdd762d014f295e19b71d789890e565d5b9286d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11eff3a_97187ec6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-17T14:49:56Z",
+      "side": 1,
+      "message": "Probably not a problem with this per se though, seems like clang build use more flash and this just happened to have pushed over the limit on some platform, following on the bug.",
+      "parentUuid": "eed8e7aa_56bf25d9",
+      "revId": "afdd762d014f295e19b71d789890e565d5b9286d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
