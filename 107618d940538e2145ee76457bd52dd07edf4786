@@ -343,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "249457f4_7f0ba719",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-17T17:36:15Z",
+      "side": 1,
+      "message": "\u003e I follow the docs/code_coverage.md to run the tests locally.\nThe report shows the coverage of the body_detection.c and acpi.c is 0%\n\nI believe the coverage should be larger than that on both files, so we can double check which coverage commands you were running.  Gerrit runs both the new zephyr tests and older ECOS tests. \n\n\u003e Does Gerrit only check the function coverage which modifies in this change?\n\nGerrit is looking for 80% coverage on lines you\u0027ve modified or added.  So you don\u0027t need to worry about covering the entire file, just lines you\u0027re working with.  \n\n\u003e Another question is, what is the failed message means when I trigger the presubmit (CQ+1)?\n\"Step(\u0027build firmware.call build API script\u0027) (retcode: 1)\"\n\nI see: \n```\nError:\tThe EC is in the process of migrating to Zephyr.\n\tZephyr uses Kconfig for configuration rather than ad-hoc #defines.\n\tAny new EC CONFIG options must ALSO be added to Zephyr so that new\n\tfunctionality is available in Zephyr also. The following new ad-hoc\n\tCONFIG options were detected:\n\nCONFIG_BODY_DETECTION_SENSOR\n\nPlease add these via Kconfig instead. Find a suitable Kconfig\nfile in zephyr/ and add a \u0027config\u0027 or \u0027menuconfig\u0027 option.\nAlso see details in http://issuetracker.google.com/181253613\n```\n\nSince we\u0027re using the devicetree for the sensor, I think you can keep this CONFIG in the allowed CONFIGs file.  You can test this on your own system before upload by building any ECOS board (ex. `make -j BOARD\u003ddewatt`)\n\n\u003e According to Josh comment\u0027s, can we create a tracker to track this test function? \n\nYes, you can create a bug to add test coverage and reference that new bug from the LOW_COVERAGE_REASON line",
+      "parentUuid": "ac35dea0_5aa1cf71",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
