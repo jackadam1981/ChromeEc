@@ -10,6 +10,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "tcpm/tcpci.h"
+#include "tcpm/tcpm.h"
 #include "test/drivers/stubs.h"
 #include "test/drivers/tcpci_test_common.h"
 #include "test/drivers/test_state.h"
@@ -544,6 +545,28 @@ ZTEST(tcpci, test_usb_mux_read_write)
 	validate_mux_read_write16(tcpci_usb_mux);
 
 	tcpci_usb_mux->flags = flags_restore;
+}
+
+FAKE_VALUE_FUNC(int, tcpm_set_vconn, int, int)
+ZTEST(tcpci, test_generic_tcpm_set_vconn)
+{
+	int res;
+	/*
+	const struct emul *emul = EMUL_DT_GET(TCPCI_EMUL_NODE);
+	struct i2c_common_emul_data *common_data =
+		emul_tcpci_generic_get_i2c_common_data(emul);
+	*/
+
+	tcpc_config[USBC_PORT_C0].flags = 0;
+
+	RESET_FAKE(tcpm_set_vconn);
+	tcpm_set_vconn_fake.return_val = -1;
+	tcpc_config[USBC_PORT_C0].drv->set_vconn = set_vconn_fake;
+	
+	res = tcpm_set_vconn(USBC_PORT_C0, true);
+
+	zassert_true(tcpm_set_vconn_fake.call_count > 0)
+	zassert_equal(-1, res);
 }
 
 static void *tcpci_setup(void)
