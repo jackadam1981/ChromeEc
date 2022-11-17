@@ -590,7 +590,7 @@ __override void ocpc_get_pid_constants(int *kp, int *kp_div, int *ki,
 
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 {
-	if (port < 0 || port > board_get_usb_pd_port_count())
+	if (port < 0 || port >= board_get_usb_pd_port_count())
 		return;
 
 	raa489000_set_output_current(port, rp);
