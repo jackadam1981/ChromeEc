@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06f0eb9_82fd57bd",
+        "filename": "util/zephyr_to_resultdb.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-17T15:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e34f029a_55effa94",
+      "range": {
+        "startLine": 115,
+        "startChar": 36,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "a9cfb3c5d942931c4aa9b34eeba89d615a42b9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6d59cf6_8f91f56a",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-11-17T00:17:23Z",
       "side": 1,
       "message": "nit: can you attach an example of the test result json to the CL description or even to the bug? I am curious about the format of your test results. Then I could help confirm which info is useful to pass to the Tags.",
+      "range": {
+        "startLine": 135,
+        "startChar": 25,
+        "endLine": 135,
+        "endChar": 29
+      },
+      "revId": "a9cfb3c5d942931c4aa9b34eeba89d615a42b9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5df4121_aff1b333",
+        "filename": "util/zephyr_to_resultdb.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-17T15:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d59cf6_8f91f56a",
       "range": {
         "startLine": 135,
         "startChar": 25,
