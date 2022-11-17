@@ -295,6 +295,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1b7b42c_aa7370c6",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-17T09:50:13Z",
+      "side": 1,
+      "message": "Hi Diana,\n\nI follow the docs/code_coverage.md to run the tests locally.\nThe report shows the coverage of the body_detection.c and acpi.c is 0%\n\nDoes Gerrit only check the function coverage which modifies in this change?\n\nIf not, does it means we need to implement the test function of acpi.c and body_detection.c and need to coverage over 75%\n\nAnother question is, what is the failed message means when I trigger the presubmit (CQ+1)?\n\"Step(\u0027build firmware.call build API script\u0027) (retcode: 1)\"",
+      "parentUuid": "7d587cb8_9d6cfa95",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
