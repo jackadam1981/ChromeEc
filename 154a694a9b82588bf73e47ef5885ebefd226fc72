@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "978539c0_c406ced1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-17T00:54:44Z",
+      "side": 1,
+      "message": "possible out-of-bound is here",
+      "range": {
+        "startLine": 157,
+        "startChar": 38,
+        "endLine": 157,
+        "endChar": 47
+      },
+      "revId": "154a694a9b82588bf73e47ef5885ebefd226fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
