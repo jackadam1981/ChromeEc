@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "222832cf_1ce915b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:12:53Z",
+      "side": 1,
+      "message": "I\u0027m in the process of requesting some hardware right now. I\u0027ll update this CL again once I have them and can run the tests.",
+      "parentUuid": "45ec4116_0f1934f7",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ae019b7_48641efd",
         "filename": "zephyr/program/brya/CMakeLists.txt",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-16T23:38:02Z",
       "side": 1,
       "message": "The brya platform will be deleted from Zephyr before too long.  You just need to guard the tcpc_alert_event() function with #ifndef CONFIG_ZEPHYR here:\nhttp://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/ec/board/brya/usbc_config.c?l\u003d432\n\nThat should fix Zephyr builds for the brya platform.",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "713f196f_7cd836c9",
+        "filename": "zephyr/program/brya/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ae019b7_48641efd",
       "range": {
         "startLine": 35,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "453cfa47_10809ac1",
+        "filename": "zephyr/program/brya/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c0f182b_77e08d15",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8640eb32_fe24bed3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-16T23:38:02Z",
       "side": 1,
       "message": "Don\u0027t copy this file to the Zephyr directory and use #ifndef CONFIG_ZEPHYR guards as needed to get things to compile.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 83
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4333639f_5954a6bd",
+        "filename": "zephyr/program/intelrvp/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8640eb32_fe24bed3",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec7b46b3_fe870d98",
+        "filename": "zephyr/program/intelrvp/src/chg_usb_pd_mecc_1_0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ff3165_039c3b0e",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "083fd71e_e10c02ec",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-11-16T23:38:02Z",
       "side": 1,
       "message": "This will set `.alert_signal` to zero, which is a valid GPIO enumeration setting.  Set this to GPIO_LIMIT if the alert_signal isn\u0027t specified.  You should also check this in your tcpc_alert_event().\n\nI don\u0027t see a change to the cros,anx7447-emul.yaml file. So the devicetree can\u0027t ever set the `alert-gpio` property.  You need to either add that property to the emulator, or hard code `.alert_signal \u003d GPIO_LIMIT` here.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f043926_3d2202ed",
+        "filename": "zephyr/shim/include/usbc/tcpc_anx7447_emul.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:12:53Z",
+      "side": 1,
+      "message": "`alert-gpio` is defined under emul/tcpci.yaml. it seems to be a common property shared between all nodes that have interrupts just for emulation purposes. It was already being used in the emulator so I just used it to initialize the tcpc_config as well.\n\nI have changed alert signal to default to GPIO_LIMIT when alert pin is not specified.",
+      "parentUuid": "083fd71e_e10c02ec",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7964ac8a_f47e7426",
+        "filename": "zephyr/shim/include/usbc/tcpc_generic_emul.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1affa1a_0ee45827",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17c01246_8d0ef100",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-11-16T23:38:02Z",
       "side": 1,
       "message": "Also fix this emulator.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "51b501027fc451f6f444f853aa2f5d9c56d01d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "844d1cf6_f07cd278",
+        "filename": "zephyr/shim/include/usbc/tcpc_ps8xxx_emul.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-17T01:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c01246_8d0ef100",
       "range": {
         "startLine": 20,
         "startChar": 0,
