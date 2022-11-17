@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49b0da66_03daf572",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-11-17T20:28:27Z",
+      "side": 1,
+      "message": "It appears that somehow all of the updates made on this CL ended up in a new CL (go/cl-c/4007183).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f58c7ed0_8f8e552a",
         "filename": "chip/npcx/config_chip-npcx9.h",
         "patchSetId": 1
@@ -37,6 +60,30 @@
       "writtenOn": "2022-11-02T04:57:09Z",
       "side": 1,
       "message": "This could be `#define NPCX_PROGRAM_MEMORY_SIZE (416 * 1024)`\nThe npcx firmware binary image in the flash should be composed of `firmware image header + firmware image`.\nIn npcx9m3f, the RO/RW flash size is 256KB (i.e. 512/2). The first 4KB is reserved for the `firmware image header`. This means the program memory size need to be (256KB - 4KB)\nIn npcx9m8s, the flash size is 1MB (512KB for RO and 512KB for RW).\nAs 416 KB is far from 512 KB, we don\u0027t have to reduce 4KB for the NPCX_PROGRAM_MEMORY_SIZE in npcx9m8s.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 54
+      },
+      "revId": "36547c262227ffd1358a4a4e02c500538a495f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4eed55_b073fcab",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-11-17T20:28:27Z",
+      "side": 1,
+      "message": "\u003e As 416 KB is far from 512 KB, we don\u0027t have to reduce 4KB for the NPCX_PROGRAM_MEMORY_SIZE in npcx9m8s\n\nThis might be a strange question but why are we reducing the program memory size from 512 KB to 416 KB?",
+      "parentUuid": "5ae3ab72_231ac1c4",
       "range": {
         "startLine": 110,
         "startChar": 0,
