@@ -12,6 +12,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "cros_board_info.h"
+#undef CONFIG_DMA
 #include "dma.h"
 #include "extpower.h"
 #include "flash.h"
