@@ -67,6 +67,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "62be914b_f5e37e70",
+        "filename": "board/marasov/ec.tasklist",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-11-17T00:52:15Z",
+      "side": 1,
+      "message": "Thanks. I remove it.",
+      "parentUuid": "37b99190_04eeb63f",
+      "revId": "90bac4b566ad3f8b1237e8dd37aa35eb2a9543bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "562f4928_05a6d296",
         "filename": "board/marasov/generated-gpio.inc",
         "patchSetId": 7
@@ -78,6 +96,30 @@
       "writtenOn": "2022-11-16T22:33:13Z",
       "side": 1,
       "message": "If C2 is gone - it will make sense to rename GPIOs, on a separate CL.",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "90bac4b566ad3f8b1237e8dd37aa35eb2a9543bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a05ebf_12d5fb4b",
+        "filename": "board/marasov/generated-gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-11-17T00:52:15Z",
+      "side": 1,
+      "message": "The GPIO name is mapping HW schematic.",
+      "parentUuid": "562f4928_05a6d296",
       "range": {
         "startLine": 17,
         "startChar": 16,
