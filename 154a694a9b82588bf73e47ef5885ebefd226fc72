@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4cd96505_e188acd6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-17T17:39:14Z",
+      "side": 1,
+      "message": "There is no meaning for \"the error\". `sensor_active` is only set to SENSOR_ACTIVE_S0/S3/S5 in the code, so the \"default\" case is not something that could happen, so it doesn\u0027t make sense to propagate this artificial error upwards..",
+      "parentUuid": "878ccad0_f4d9aa13",
+      "range": {
+        "startLine": 133,
+        "startChar": 9,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "154a694a9b82588bf73e47ef5885ebefd226fc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "978539c0_c406ced1",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
