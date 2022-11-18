@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b88ea6_d165bf18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-18T21:21:59Z",
+      "side": 1,
+      "message": "Thanks for the test!!!",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d02bd82_8a2beebe",
@@ -14,6 +31,58 @@
       "writtenOn": "2022-11-18T21:12:36Z",
       "side": 1,
       "message": "Do I need to unset this \"flags\" state in the \"after\"?\n\nOr maybe, do I need to add code in the before and after hooks to capture and restore the state of \"flags\" just like i do with the driver pointer?",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c61699_f4a648d8",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-18T21:21:59Z",
+      "side": 1,
+      "message": "The second one 😊",
+      "parentUuid": "3d02bd82_8a2beebe",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2bfa96_2492febe",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-18T21:21:59Z",
+      "side": 1,
+      "message": "Do we have anything we can verify/validate against besides invoking our fakes? If not, I think we ought to rename this test to `test_tcpm_set_vconn_actuates_driver__failing_drv_function` or similar since we\u0027re really just verifying that this function calls the driver struct\u0027s `set_vconn()` function.",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d809edd_2e2429d6",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-18T21:21:59Z",
+      "side": 1,
+      "message": "We can remove this line since this memory is already initialized as zero as according to: https://stackoverflow.com/q/3373108 in the setup function. I can\u0027t seem to easily find a link to the actual reference, but it\u0027s definitely a thing.",
       "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
