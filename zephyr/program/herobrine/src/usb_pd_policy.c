@@ -105,6 +105,23 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 __override void svdm_dp_post_config(int port)
 {
 	dp_flags[port] |= DP_FLAGS_DP_ON;
+
+	/*
+	 * Connect the SBU lines in PPC chip such that the AUX termination
+	 * can be passed through.
+	 */
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+		ppc_set_sbu(port, 1);
+
+	/*
+	 * Connect the USB SS/DP lines in TCPC chip.
+	 *
+	 * When mf_pref not true, still use the dock muxing
+	 * because of the board USB-C topology (limited to 2
+	 * lanes DP).
+	 */
+	usb_mux_set(port, USB_PD_MUX_DOCK, USB_SWITCH_CONNECT,
+		    polarity_rm_dts(pd_get_polarity(port)));
 }
 
 /**
@@ -165,31 +182,12 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 				port == 1);
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_dp_mux_oe_l), 0);
 
-		/* Connect the SBU lines in PPC chip. */
-		if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
-			ppc_set_sbu(port, 1);
 
-		/*
-		 * Connect the USB SS/DP lines in TCPC chip.
-		 *
-		 * When mf_pref not true, still use the dock muxing
-		 * because of the board USB-C topology (limited to 2
-		 * lanes DP).
-		 */
-		usb_mux_set(port, USB_PD_MUX_DOCK, USB_SWITCH_CONNECT,
-			    polarity_rm_dts(pd_get_polarity(port)));
 	} else {
 		/* Disconnect the DP port selection mux. */
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_dp_mux_oe_l), 1);
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_dp_mux_sel), 0);
 
-		/* Disconnect the SBU lines in PPC chip. */
-		if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
-			ppc_set_sbu(port, 0);
-
-		/* Disconnect the DP but keep the USB SS lines in TCPC chip. */
-		usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT,
-			    polarity_rm_dts(pd_get_polarity(port)));
 	}
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) && (irq || lvl))
