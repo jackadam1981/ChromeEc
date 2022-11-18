@@ -16,6 +16,23 @@
       "message": "I think the flash space issues were unrelated and fixed by a rebase. Trying again.",
       "revId": "8db9932dae8470c3692a61b93fb26f1a67de6fc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5904815_96562064",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-11-18T18:33:52Z",
+      "side": 1,
+      "message": "ld.lld: error: No room left in the flash",
+      "revId": "8db9932dae8470c3692a61b93fb26f1a67de6fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
