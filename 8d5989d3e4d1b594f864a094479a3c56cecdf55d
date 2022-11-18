@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d732c9_a67419ae",
+        "filename": "board/moli/board.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-18T03:28:50Z",
+      "side": 1,
+      "message": "Please move this to the fw_config.*. I think you need to have another CL for this change.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 11
+      },
+      "revId": "8d5989d3e4d1b594f864a094479a3c56cecdf55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
