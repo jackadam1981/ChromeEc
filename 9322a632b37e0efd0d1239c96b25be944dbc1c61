@@ -34,6 +34,24 @@
       "parentUuid": "7b356560_a04925b5",
       "revId": "9322a632b37e0efd0d1239c96b25be944dbc1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b98eeaa_d887ef13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-18T16:24:50Z",
+      "side": 1,
+      "message": "Yeah https://crrev.com/c/3896272 is what pushed these over the flash limit, did not look to me like it was an error with that change per se, unless I missed something it just happened to be the one that pushed the boards over the limit. At that point CQ was broken so excluding them seemed to make sense. I see that there\u0027s been few changes to make more of these work under clang but that\u0027s probably just moving the problem forward and these will break again as more features are added.",
+      "parentUuid": "7b356560_a04925b5",
+      "revId": "9322a632b37e0efd0d1239c96b25be944dbc1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
