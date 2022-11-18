@@ -16,6 +16,24 @@
       "message": "Hey, I ended up excluding those boards from the clang build since they were only going out of flash in the clang build (crrev.com/c/4034172). I don\u0027t think there was anything wrong with the change itself, it\u0027s just so happen that that was the change that pushed some board over the limit.",
       "revId": "380d840ef68a1655847b70f5368ea2a25bc5f6ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2f51e3_20ba0b51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-18T16:37:33Z",
+      "side": 1,
+      "message": "And it was not caught by CI at submit because the it raced with another change that fixed an issue with the clang build. See Tom\u0027s comment in crrev.com/c/4034172.",
+      "parentUuid": "db16983d_7bcbe799",
+      "revId": "380d840ef68a1655847b70f5368ea2a25bc5f6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
