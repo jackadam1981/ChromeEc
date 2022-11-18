@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d02bd82_8a2beebe",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1514887
+      },
+      "writtenOn": "2022-11-18T21:12:36Z",
+      "side": 1,
+      "message": "Do I need to unset this \"flags\" state in the \"after\"?\n\nOr maybe, do I need to add code in the before and after hooks to capture and restore the state of \"flags\" just like i do with the driver pointer?",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
