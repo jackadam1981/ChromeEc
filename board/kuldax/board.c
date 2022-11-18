@@ -5,6 +5,7 @@
 #include "adc.h"
 #include "builtin/assert.h"
 #include "button.h"
+#include "cec.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "common.h"
@@ -571,3 +572,8 @@ static void power_monitor(void)
 	}
 	hook_call_deferred(&power_monitor_data, delay);
 }
+
+__override const struct cec_config_t cec_config = {
+	.suspend = cec_default_policy,
+	.shutdown = cec_default_policy,
+};
