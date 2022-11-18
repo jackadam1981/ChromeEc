@@ -16,6 +16,24 @@
       "message": "It\u0027s fine for *len to be 0 here.  \n\nThis would be the case any time our last transmitted message was a control message (ex. if we\u0027d just asked the partner for their sink caps). For our uses, we just want to overwrite *len to reflect the size of our alert message and its previous value is irrelevant.",
       "revId": "08ab0252c91324926abb968c22ffbc8e24ff08e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69fc9d4e_97a22937",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4457,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-18T18:55:21Z",
+      "side": 1,
+      "message": "In that case the only solution I see here is to delete the entire \"true\" path of this condition and always execute the false one. Do you agree?",
+      "parentUuid": "220dea31_4df8b4c0",
+      "revId": "08ab0252c91324926abb968c22ffbc8e24ff08e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
