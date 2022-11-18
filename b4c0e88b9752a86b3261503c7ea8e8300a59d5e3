@@ -88,6 +88,30 @@
       },
       "revId": "b4c0e88b9752a86b3261503c7ea8e8300a59d5e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c89205fa_3d818d5f",
+        "filename": "board/marasov/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-11-18T00:56:30Z",
+      "side": 1,
+      "message": "OK, I upload CL:4037122 revert it to default. Thanks",
+      "parentUuid": "ed5dd14c_3ba7c16b",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "b4c0e88b9752a86b3261503c7ea8e8300a59d5e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
