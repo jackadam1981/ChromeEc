@@ -16,6 +16,24 @@
       "message": "What change triggered this? Can you try to fix it in the future rather than just ignore it?",
       "revId": "9322a632b37e0efd0d1239c96b25be944dbc1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397504dd_ed58213b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-18T16:22:05Z",
+      "side": 1,
+      "message": "I see the bug mentions a commit: http://b/258143176#comment10. This should have been caught by the CQ, but that probably ran without [this CL that fixed how the clang build is tested](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4026667).",
+      "parentUuid": "7b356560_a04925b5",
+      "revId": "9322a632b37e0efd0d1239c96b25be944dbc1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
