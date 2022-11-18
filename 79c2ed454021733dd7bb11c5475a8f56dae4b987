@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a7165eb_a79522e7",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1514887
+      },
+      "writtenOn": "2022-11-18T21:31:13Z",
+      "side": 1,
+      "message": "It\u0027s also supposed to return the value that was returned by drv.set_vconn in the event of a failure.\n\nSo maybe I should have these -1 literals captured as a variable set_vconn_error or something.\n\nDoes that change anything about how this ought to be named?",
+      "parentUuid": "6e2bfa96_2492febe",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d809edd_2e2429d6",
         "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
         "patchSetId": 5
@@ -83,6 +101,24 @@
       "writtenOn": "2022-11-18T21:21:59Z",
       "side": 1,
       "message": "We can remove this line since this memory is already initialized as zero as according to: https://stackoverflow.com/q/3373108 in the setup function. I can\u0027t seem to easily find a link to the actual reference, but it\u0027s definitely a thing.",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcddfdb7_54af55f0",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1514887
+      },
+      "writtenOn": "2022-11-18T21:31:13Z",
+      "side": 1,
+      "message": "At first, yes, but after each test that variable will linger in its mutated state.\n\nWhich means if someone were to add a test in here for another header function, they may be unpleasantly surprised by a leftover mutated state of the mock_driver.\n\nSo is it more correct to say that it belongs in the \"after\" hook?",
+      "parentUuid": "4d809edd_2e2429d6",
       "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
