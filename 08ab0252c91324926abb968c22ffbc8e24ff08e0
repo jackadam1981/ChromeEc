@@ -34,6 +34,24 @@
       "parentUuid": "220dea31_4df8b4c0",
       "revId": "08ab0252c91324926abb968c22ffbc8e24ff08e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f47eaf_df100def",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4457,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-18T20:49:49Z",
+      "side": 1,
+      "message": "Yes, the \"true\" condition is unnecessary here since we know these are statically allocated structures",
+      "parentUuid": "69fc9d4e_97a22937",
+      "revId": "08ab0252c91324926abb968c22ffbc8e24ff08e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
