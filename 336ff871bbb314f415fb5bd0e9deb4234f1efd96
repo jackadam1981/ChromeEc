@@ -22,6 +22,30 @@
       },
       "revId": "336ff871bbb314f415fb5bd0e9deb4234f1efd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce127557_cd440fe3",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-11-18T05:07:53Z",
+      "side": 0,
+      "message": "usb_charge.c is excluded from the build if CONFIG_PLATFORM_EC_USB_CHARGER is not set. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/CMakeLists.txt;l\u003d396-397",
+      "parentUuid": "09c28546_5cfa9ac3",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "336ff871bbb314f415fb5bd0e9deb4234f1efd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
