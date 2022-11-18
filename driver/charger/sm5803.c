@@ -35,6 +35,10 @@
 #endif
 #endif
 
+#ifdef CONFIG_USB_PD_DPS
+#warning "SM5803 is very inefficient in buck-boost mode and should not use DPS"
+#endif
+
 #ifdef CONFIG_CHARGER_SINGLE_CHIP
 #define CHARGER_PRIMARY CHARGER_SOLO
 #endif
