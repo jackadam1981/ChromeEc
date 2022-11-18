@@ -184,6 +184,15 @@ static void power_button_change_deferred(void)
 }
 DECLARE_DEFERRED(power_button_change_deferred);
 
+static void power_button_simulate_deferred(void)
+{
+	ccprintf("Simulating %s release.\n", power_button.name);
+	simulate_power_pressed = 0;
+	power_button_is_stable = 0;
+	power_button_change_deferred();
+}
+DECLARE_DEFERRED(power_button_simulate_deferred);
+
 void power_button_interrupt(enum gpio_signal signal)
 {
 	/*
@@ -205,15 +214,9 @@ void power_button_simulate_press(unsigned int duration)
 	ccprintf("Simulating %d ms %s press.\n", duration, power_button.name);
 	simulate_power_pressed = 1;
 	power_button_is_stable = 0;
-	hook_call_deferred(&power_button_change_deferred_data, 0);
-
-	if (duration > 0)
-		msleep(duration);
-
-	ccprintf("Simulating %s release.\n", power_button.name);
-	simulate_power_pressed = 0;
-	power_button_is_stable = 0;
-	hook_call_deferred(&power_button_change_deferred_data, 0);
+	power_button_change_deferred();
+	hook_call_deferred(&power_button_simulate_deferred_data,
+			   duration * MSEC);
 }
 
 /*****************************************************************************/
@@ -229,7 +232,6 @@ static int command_powerbtn(int argc, const char **argv)
 		if (*e || ms < 0)
 			return EC_ERROR_PARAM1;
 	}
-
 	power_button_simulate_press(ms);
 	return EC_SUCCESS;
 }
