@@ -14,9 +14,11 @@
 #include "panic.h"
 #include "software_panic.h"
 #include "task.h"
+#include "timer.h"
 #include "uart.h"
 
 #include <errno.h>
+#include <time.h>
 
 #include <sys/stat.h>
 
@@ -65,4 +67,29 @@ int mkdir(const char *pathname, mode_t mode)
 {
 	errno = ENOSYS;
 	return -1;
+}
+
+/**
+ * Get the time.
+ *
+ * This function is called from the libc gettimeofday() function.
+ *
+ * @param[out] tv time
+ * @param[in] tz ignored
+ * @return 0 on success
+ * @return -1 on error (errno is set to indicate error)
+ */
+int _gettimeofday(struct timeval *tv, void *tz)
+{
+	uint64_t now;
+
+	if (tv == NULL) {
+		errno = EFAULT;
+		return -1;
+	}
+
+	now = get_time().val;
+	tv->tv_sec = now / SECOND;
+	tv->tv_usec = now % SECOND;
+	return 0;
 }
