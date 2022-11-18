@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b45b71_e7c8303f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 70
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-18T17:28:36Z",
+      "side": 0,
+      "message": "I don\u0027t think it is used anywhere, but since there are definitely things that might parsing the output (sigh), I\u0027ll keep it.",
+      "parentUuid": "b8dd1736_12013143",
+      "revId": "e3d6ee6b3fedb73db68aab7803f6ad4752961dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbf9967a_6eb9059b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-11T01:17:22Z",
       "side": 0,
       "message": "Nit: same as above for the error message.",
+      "revId": "e3d6ee6b3fedb73db68aab7803f6ad4752961dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc4610ab_73c71f68",
+        "filename": "util/ectool.cc",
+        "patchSetId": 70
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-11-18T17:28:36Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "bbf9967a_6eb9059b",
       "revId": "e3d6ee6b3fedb73db68aab7803f6ad4752961dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
