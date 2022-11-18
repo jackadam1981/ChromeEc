@@ -121,6 +121,24 @@
       "parentUuid": "4d809edd_2e2429d6",
       "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8849ff4f_79c72bdd",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1514887
+      },
+      "writtenOn": "2022-11-18T21:33:06Z",
+      "side": 1,
+      "message": "Reference code: http://cs/chromeos_public/src/platform/ec/zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c\n\nLine 570",
+      "parentUuid": "bcddfdb7_54af55f0",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
