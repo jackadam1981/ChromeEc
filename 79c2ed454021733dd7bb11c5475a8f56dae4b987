@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e7b41b_9fcfa305",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-18T21:35:36Z",
+      "side": 1,
+      "message": "In that case I think this is fine then. That request becomes a \"nit\" so feel free to ignore.",
+      "parentUuid": "1a7165eb_a79522e7",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d809edd_2e2429d6",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "Reference code: http://cs/chromeos_public/src/platform/ec/zephyr/test/drivers/common_charger/src/test_common_charger_mocked.c\n\nLine 570",
       "parentUuid": "bcddfdb7_54af55f0",
+      "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "585abff3_8b4163c0",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-18T21:35:36Z",
+      "side": 1,
+      "message": "Nah, either way works. I\u0027m just working on 4 hours of sleep :P.\n\nThanks!",
+      "parentUuid": "8849ff4f_79c72bdd",
       "revId": "79c2ed454021733dd7bb11c5475a8f56dae4b987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
