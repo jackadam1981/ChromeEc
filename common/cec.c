@@ -5,6 +5,8 @@
 
 #include "cec.h"
 #include "console.h"
+#include "power_button.h"
+#include "printf.h"
 #include "task.h"
 
 #define CPRINTF(format, args...) cprintf(CC_CEC, format, ##args)
@@ -59,6 +61,37 @@ void cec_rx_queue_flush(struct cec_rx_queue *queue)
 	queue->read_offset = 0;
 	mutex_unlock(&rx_queue_readoffset_mutex);
 	queue->write_offset = 0;
+}
+
+#define CEC_MSG_IMAGE_VIEW_ON 0x04
+#define CEC_MSG_TEXT_VIEW_ON 0x0d
+
+int cec_process_offline_message(struct cec_rx_queue *queue, const uint8_t *msg,
+				uint8_t msg_len)
+{
+	uint8_t command;
+
+	char str_buf[hex_str_buf_size(msg_len)];
+
+	snprintf_hex_buffer(str_buf, sizeof(str_buf), HEX_BUF(msg, msg_len));
+	CPRINTS("MSG: %s", str_buf);
+
+	if (msg_len < 1)
+		return EC_ERROR_INVAL;
+
+	command = msg[1];
+
+	switch (command) {
+	case CEC_MSG_IMAGE_VIEW_ON:
+	case CEC_MSG_TEXT_VIEW_ON:
+		power_button_simulate_press(200);
+		break;
+	default:
+		/* Not handled locally. Send it to the host. */
+		return EC_ERROR_UNIMPLEMENTED;
+	}
+
+	return EC_SUCCESS;
 }
 
 int cec_rx_queue_push(struct cec_rx_queue *queue, const uint8_t *msg,
