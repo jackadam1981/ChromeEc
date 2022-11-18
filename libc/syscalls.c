@@ -21,6 +21,7 @@
 #include "timer.h"
 #include "uart.h"
 
+#ifndef BOARD_HOST
 /**
  * Reboot the system.
  *
@@ -54,6 +55,7 @@ int mkdir(const char *pathname, mode_t mode)
 	errno = ENOSYS;
 	return -1;
 }
+#endif /* !BOARD_HOST */
 
 /**
  * Get the time.
