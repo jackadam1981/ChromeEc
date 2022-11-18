@@ -18,7 +18,9 @@
  * The chip's header file must implement the SHA256 context structure and
  * specific functions for its hardware accelerator module.
  */
-#include "sha256_chip.h"
+#ifdef CONFIG_SOC_IT8XXX2_SHA256_HW_ACCELERATE
+#include "driver/sha256/sha256_it8xxx2.h"
+#endif
 #else
 /* SHA256 context */
 struct sha256_ctx {
