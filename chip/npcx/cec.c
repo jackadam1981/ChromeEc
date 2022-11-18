@@ -1020,18 +1020,26 @@ void cec_task(void *unused)
 	while (1) {
 		events = task_wait_event(-1);
 		if (events & TASK_EVENT_RECEIVED_DATA) {
-			rv = cec_rx_queue_push(&cec_rx_queue,
-					       cec_rx.transfer.buf,
-					       cec_rx.transfer.byte);
-			if (rv == EC_ERROR_OVERFLOW) {
-				/* Queue full, prefer the most recent msg */
-				cec_rx_queue_flush(&cec_rx_queue);
+			if (cec_process_offline_message(
+				    &cec_rx_queue, cec_rx.transfer.buf,
+				    cec_rx.transfer.byte) == EC_SUCCESS) {
+				CPRINTS("Message consumed");
+			} else {
 				rv = cec_rx_queue_push(&cec_rx_queue,
 						       cec_rx.transfer.buf,
 						       cec_rx.transfer.byte);
+				if (rv == EC_ERROR_OVERFLOW) {
+					/* Queue full, prefer most recent msg */
+					cec_rx_queue_flush(&cec_rx_queue);
+					rv = cec_rx_queue_push(
+						&cec_rx_queue,
+						cec_rx.transfer.buf,
+						cec_rx.transfer.byte);
+				}
+				if (rv == EC_SUCCESS)
+					mkbp_send_event(
+						EC_MKBP_EVENT_CEC_MESSAGE);
 			}
-			if (rv == EC_SUCCESS)
-				mkbp_send_event(EC_MKBP_EVENT_CEC_MESSAGE);
 		}
 		if (events & TASK_EVENT_OKAY) {
 			send_mkbp_event(EC_MKBP_CEC_SEND_OK);

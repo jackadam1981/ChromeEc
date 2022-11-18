@@ -40,6 +40,11 @@ struct cec_rx_queue {
 	uint8_t buf[CEC_RX_BUFFER_SIZE];
 };
 
+struct cec_header {
+	uint8_t initiator : 4;
+	uint8_t desitination : 4;
+} __packed;
+
 /**
  * Get the current bit of a CEC message transfer
  *
@@ -93,3 +98,6 @@ int cec_rx_queue_push(struct cec_rx_queue *queue, const uint8_t *msg,
  */
 int cec_rx_queue_pop(struct cec_rx_queue *queue, uint8_t *msg,
 		     uint8_t *msg_len);
+
+int cec_process_offline_message(struct cec_rx_queue *queue, const uint8_t *msg,
+				uint8_t msg_len);
