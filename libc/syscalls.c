@@ -22,6 +22,7 @@
 
 #include <sys/stat.h>
 
+#ifndef BOARD_HOST
 /**
  * Reboot the system.
  *
@@ -50,6 +51,7 @@ int _write(int fd, char *buf, int len)
 	return uart_put(buf, len);
 }
 
+#endif /* !BOARD_HOST */
 /**
  * Create a directory.
  *
