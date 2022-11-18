@@ -48,7 +48,11 @@ static int in_progress;
 #define VBOOT_HASH_DEFERRED true
 #define VBOOT_HASH_BLOCKING false
 
+#ifdef CONFIG_SOC_IT8XXX2_SHA256_HW_ACCELERATE
+static __attribute__((section(".__sha256_ram_block"))) struct sha256_ctx ctx;
+#else
 static struct sha256_ctx ctx;
+#endif
 
 int vboot_hash_in_progress(void)
 {
