@@ -266,11 +266,7 @@ include $(BASEDIR)/build.mk
 ifneq ($(BASEDIR),$(BDIR))
 include $(BDIR)/build.mk
 endif
-ifeq ($(USE_BUILTIN_STDLIB), 1)
-include builtin/build.mk
-else
 include libc/build.mk
-endif
 include chip/$(CHIP)/build.mk
 include core/build.mk
 include core/$(CORE)/build.mk
@@ -311,11 +307,7 @@ ifneq ($(PBDIR),)
 all-obj-$(1)+=$(call objs_from_dir_p,$(PBDIR),board-private,$(1))
 endif
 all-obj-$(1)+=$(call objs_from_dir_p,common,common,$(1))
-ifeq ($(USE_BUILTIN_STDLIB), 1)
-all-obj-$(1)+=$(call objs_from_dir_p,builtin,builtin,$(1))
-else
 all-obj-$(1)+=$(call objs_from_dir_p,libc,libc,$(1))
-endif
 all-obj-$(1)+=$(call objs_from_dir_p,driver,driver,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,power,power,$(1))
 ifdef CTS_MODULE
@@ -367,11 +359,7 @@ dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
 dirs+= private private-kandou $(PDIR) $(PBDIR)
 dirs+=$(shell find common -type d)
 dirs+=$(shell find driver -type d)
-ifeq ($(USE_BUILTIN_STDLIB), 1)
-dirs+=builtin
-else
 dirs+=libc
-endif
 common_dirs=util
 
 ifeq ($(custom-ro_objs-y),)
