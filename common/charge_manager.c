@@ -62,6 +62,7 @@ __overridable const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_PD] = 1,
 	[CHARGE_SUPPLIER_TYPEC] = 2,
 	[CHARGE_SUPPLIER_TYPEC_DTS] = 2,
+	[CHARGE_SUPPLIER_VBUS] = 4,
 #ifdef CHARGE_MANAGER_BC12
 	[CHARGE_SUPPLIER_PROPRIETARY] = 3,
 	[CHARGE_SUPPLIER_BC12_DCP] = 3,
@@ -69,9 +70,7 @@ __overridable const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_BC12_SDP] = 3,
 	[CHARGE_SUPPLIER_TYPEC_UNDER_1_5A] = 4,
 	[CHARGE_SUPPLIER_OTHER] = 4,
-	[CHARGE_SUPPLIER_VBUS] = 4,
 #endif
-
 };
 BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
 
