@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa8edc8_cbaf65d9",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-18T22:15:21Z",
+      "side": 1,
+      "message": "Just this section. Unfortunately the other lines do require the `default` because otherwise compilation will fail due to warnings.",
+      "parentUuid": "6de0061c_215d280b",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "d552747db33d85b41d3b552cc27bf9faeffefe26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fed1fc4e_fc239a7f",
