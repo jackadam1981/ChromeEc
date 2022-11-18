@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5799e00a_ec346e80",
+        "filename": "util/zephyr_to_resultdb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-18T18:49:24Z",
+      "side": 1,
+      "message": "it might be more accurate to parse `{suite_path}/zephyr/.config` instead. Zephyr doesn\u0027t make any guarantee that the format of the autoconf.h file will stay the same.",
+      "range": {
+        "startLine": 123,
+        "startChar": 39,
+        "endLine": 123,
+        "endChar": 68
+      },
+      "revId": "3ac2529c53aa65c3a577da29a4a42d1dc45b9e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
