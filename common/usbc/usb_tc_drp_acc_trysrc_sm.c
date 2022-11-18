@@ -1569,8 +1569,11 @@ void tc_state_init(int port)
 
 	/* If port is not available, there is nothing to initialize */
 	if (port >= board_get_usb_pd_port_count()) {
-		tc_enable_pd(port, 0);
-		TC_SET_FLAG(port, TC_FLAGS_REQUEST_SUSPEND);
+		/* Port could be disabled dynamically */
+		if (port < CONFIG_USB_PD_PORT_MAX_COUNT) {
+			tc_enable_pd(port, 0);
+			TC_SET_FLAG(port, TC_FLAGS_REQUEST_SUSPEND);
+		}
 		return;
 	}
 
