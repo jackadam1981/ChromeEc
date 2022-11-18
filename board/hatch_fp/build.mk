@@ -41,6 +41,7 @@ test-list-y=\
        fpsensor \
        fpsensor_hw \
        ftrapv \
+       gettimeofday \
        libc_printf \
        mpu \
        mutex \
