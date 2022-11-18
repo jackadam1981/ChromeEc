@@ -46,6 +46,30 @@
       },
       "revId": "336ff871bbb314f415fb5bd0e9deb4234f1efd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e65ec476_1561a6e5",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-18T05:15:20Z",
+      "side": 0,
+      "message": "My question is that if we remove the charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, ..) from the raa489000.c, then we don\u0027t need to move this, right?\n\nThe charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, ...) has been called by the usb_charger.c and the usb_charger_init() should be called in the HOOK_INIT.",
+      "parentUuid": "ce127557_cd440fe3",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "336ff871bbb314f415fb5bd0e9deb4234f1efd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
