@@ -259,6 +259,7 @@ std_vector-y=std_vector.o
 stm32f_rtc-y=stm32f_rtc.o
 stress-y=stress.o
 system-y=system.o
+system_clock-y=system_clock.o
 system_is_locked-y=system_is_locked.o
 thermal-y=thermal.o
 timer_calib-y=timer_calib.o
