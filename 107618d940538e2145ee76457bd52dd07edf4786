@@ -367,6 +367,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0f58e37_8d133cfd",
+        "filename": "common/acpi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-11-19T14:21:31Z",
+      "side": 1,
+      "message": "Create a bug b/259754018 to track the test coverage.",
+      "parentUuid": "249457f4_7f0ba719",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 9
+      },
+      "revId": "107618d940538e2145ee76457bd52dd07edf4786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6698518_1dbef2f1",
         "filename": "common/body_detection.c",
         "patchSetId": 15
