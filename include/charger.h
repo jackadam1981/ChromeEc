@@ -152,6 +152,12 @@ struct charger_drv {
 	 */
 	enum ec_error_list (*get_battery_cells)(int chgnum, int *cells);
 
+	/* Enable or disable PPS if supported */
+	enum ec_error_list (*enable_pps)(int chgnum, bool enable);
+
+	/* Check if PPS has been enabled */
+	enum ec_error_list (*is_pps_enabled)(int chgnum, bool *enabled);
+
 	/* Dumps charger registers */
 	void (*dump_registers)(int chgnum);
 
@@ -411,6 +417,29 @@ enum ec_error_list charger_enable_bypass_mode(int chgnum, bool enable);
  * @return EC_SUCCESS on success, an error otherwise.
  */
 enum ec_error_list charger_get_battery_cells(int chgnum, int *cells);
+
+/**
+ * Enable or disable Programable Power Supply (PPS)
+ *
+ * PPS allows performing stepwise changes in current and voltage. Some chargers
+ * require to enable this feature in addition to sending APDO request.
+ *
+ * @param chgnum: Active charge port.
+ * @param enable: Enables or disables PPS.
+ *
+ * @return EC_SUCCESS on success, an error otherwise.
+ */
+enum ec_error_list charger_enable_pps(int chgnum, bool enable);
+
+/**
+ * Checks charger has PPS is enabled
+ *
+ * @param chgnum: Active charge port.
+ * @param enable: Pointer of variable that will hold result.
+ *
+ * @return EC_SUCCESS on success, an error otherwise.
+ */
+enum ec_error_list charger_is_pps_enabled(int chgnum, bool *enabled);
 
 /*
  * Print all charger info for debugging purposes
