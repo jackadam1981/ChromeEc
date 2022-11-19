@@ -799,3 +799,27 @@ enum ec_error_list charger_get_battery_cells(int chgnum, int *cells)
 
 	return EC_ERROR_UNIMPLEMENTED;
 }
+
+enum ec_error_list charger_enable_pps(int chgnum, bool enable)
+{
+	if (chgnum != CHARGER_PRIMARY) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (!chg_chips[chgnum].drv->enable_pps)
+		return EC_ERROR_UNIMPLEMENTED;
+
+	return chg_chips[chgnum].drv->enable_pps(chgnum, enable);
+}
+
+enum ec_error_list charger_is_pps_enabled(int chgnum, bool *enabled)
+{
+	if (chgnum != CHARGER_PRIMARY) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (!chg_chips[chgnum].drv->is_pps_enabled)
+		return EC_ERROR_UNIMPLEMENTED;
+
+	return chg_chips[chgnum].drv->is_pps_enabled(chgnum, enabled);
+}
