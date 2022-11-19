@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578cee48_c384881a",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-19T18:02:44Z",
+      "side": 1,
+      "message": "Should be done in before, there\u0027s no guarantee for the state that the fake is initialized to.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "639135306aa44746e3d178a7a857760a3de4841f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
