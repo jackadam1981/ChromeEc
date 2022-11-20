@@ -7714,6 +7714,8 @@ static void pe_ddr_perform_data_reset_run(int port)
 			set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 		} else if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+			/* Set mux back to its default state for attach */
+			set_usb_mux_with_current_data_role(port);
 			pe_set_ready_state(port);
 		}
 		return;
