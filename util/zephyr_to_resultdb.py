@@ -114,6 +114,9 @@ def testcase_to_result(testsuite, testcase, base_tags, config_tags):
         "tags": [
             {"key": "platform", "value": testsuite["platform"]},
         ],
+        # "variant": [
+        #     {"key": "suite", "value": testsuite["name"]},
+        # ],
         "duration": translate_duration(testcase),
         "testMetadata": {"name": testcase["identifier"]},
     }
@@ -206,7 +209,9 @@ class BytesEncoder(json.JSONEncoder):
 def upload_results(results):
     """Upload results to ResultDB"""
     with open(os.environ["LUCI_CONTEXT"]) as file:
-        sink = json.load(file)["result_sink"]
+        luci_ctx = json.load(file)
+        print(f"LUCI_CONTEXT={luci_ctx}")
+        sink = luci_ctx["result_sink"]
 
     # Uploads all test results at once.
     res = requests.post(
