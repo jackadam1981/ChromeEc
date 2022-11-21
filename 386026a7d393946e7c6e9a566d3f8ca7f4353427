@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c10a8487_19a41722",
+        "filename": "zephyr/emul/emul_flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-21T19:01:04Z",
+      "side": 1,
+      "message": "Correct. I don\u0027t think there should be system includes that aren\u0027t either of those in our codebase. The only other source of includes I can think of would be if we depended on a third-party Zephyr module in our build. I don\u0027t know how the Zephyr build handles those include paths, but I could see them being on the system include path.",
+      "parentUuid": "6590d584_9f7cc8b3",
+      "revId": "386026a7d393946e7c6e9a566d3f8ca7f4353427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd6ead07_49392283",
