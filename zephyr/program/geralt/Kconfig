@@ -1,0 +1,28 @@
+# Copyright 2021 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config BOARD_GERALT
+	bool "Google Geralt Board"
+	help
+	  Build Google Tentacruel variant board. Geralt is the reference device
+	  that has MediaTek MT8188G SoC with ITE it81202-bx EC.
+
+config VARIANT_CORSOLA_DB_DETECTION
+	bool "Corsola Platform Runtime Daughter Board Detection"
+	depends on PLATFORM_EC_USB_PD_TCPC_RUNTIME_CONFIG
+	depends on PLATFORM_EC_USB_MUX_RUNTIME_CONFIG
+	help
+	  Daughter board detection for Type-C subboard or HDMI subboard. This
+          includes pin configuration and driver loading.
+	default y
+
+config VARIANT_CORSOLA_USBA
+	bool "Corsola Platform USB-A support"
+	help
+	  Support Corsola USB-A related functions. Enable this function if
+	  it has USB-A ports.
+        depends on PLATFORM_EC_USBC
+	default y
+
+source "Kconfig.zephyr"
