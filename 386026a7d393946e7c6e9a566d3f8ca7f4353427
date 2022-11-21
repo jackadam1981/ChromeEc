@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2dfe73_d8261f59",
+        "filename": "zephyr/emul/emul_bmi160.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-21T17:21:18Z",
+      "side": 1,
+      "message": "I feel like I have been told previously that these lines need to come before `#include \u003czephyr/logging/log.h\u003e`. Was that untrue?",
+      "revId": "386026a7d393946e7c6e9a566d3f8ca7f4353427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f448ccd_deb873c8",
+        "filename": "zephyr/emul/emul_flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-21T17:21:18Z",
+      "side": 1,
+      "message": "Why are these system includes? And why are they in their own group? Same question elsewhere.",
+      "revId": "386026a7d393946e7c6e9a566d3f8ca7f4353427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd6ead07_49392283",
+        "filename": "zephyr/emul/emul_rtc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-21T17:21:18Z",
+      "side": 1,
+      "message": "Why are these system includes?",
+      "revId": "386026a7d393946e7c6e9a566d3f8ca7f4353427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
