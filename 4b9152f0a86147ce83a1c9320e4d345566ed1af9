@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc05e00_4d3640c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-21T21:28:11Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages\n\nWe should have a body in the commit message. Probably ideally something like:\n\nThe blah blah code is uncovered.\n\nCovering by testing x y and z.",
+      "revId": "4b9152f0a86147ce83a1c9320e4d345566ed1af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37e8da75_7d9c867c",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-21T21:28:11Z",
+      "side": 1,
+      "message": "Is there a particular reason we\u0027re doing `call_count \u003e 0` instead of `zassert_equals(call_count, 1)`?",
+      "revId": "4b9152f0a86147ce83a1c9320e4d345566ed1af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
