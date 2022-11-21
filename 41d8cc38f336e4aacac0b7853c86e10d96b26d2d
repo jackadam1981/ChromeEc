@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9eeb356_2d3d3fe5",
+        "filename": "baseboard/brya/baseboard_usbc_config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-11-21T10:04:24Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_USB_CHARGER is more self-explanatory.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "41d8cc38f336e4aacac0b7853c86e10d96b26d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c953ad5_87192158",
+        "filename": "board/marasov/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-11-21T10:04:24Z",
+      "side": 1,
+      "message": "BC12 related pin definition should be removed.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 45
+      },
+      "revId": "41d8cc38f336e4aacac0b7853c86e10d96b26d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
