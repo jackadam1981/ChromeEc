@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addcde5f_50bdd965",
+        "filename": "board/moli/fw_config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-21T17:41:13Z",
+      "side": 1,
+      "message": "nit: usually \"1\" means enable and \"0\" means disable",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "30a80317cf48fbf189957545d88e899102e7b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8920eaa7_e9c9abe8",
+        "filename": "board/moli/fw_config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-21T17:41:13Z",
+      "side": 1,
+      "message": "function has the same name as enum on line 17",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "30a80317cf48fbf189957545d88e899102e7b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
