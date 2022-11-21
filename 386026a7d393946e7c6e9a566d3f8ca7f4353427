@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf83ac3_3074c0c2",
+        "filename": "zephyr/emul/emul_bmi160.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-21T18:52:36Z",
+      "side": 1,
+      "message": "That sounds like a good idea to me.",
+      "parentUuid": "0893389d_088f317e",
+      "revId": "386026a7d393946e7c6e9a566d3f8ca7f4353427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f448ccd_deb873c8",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I was going to blame the author of the file, but it was me. I must of copy-pasted it from somewhere.\n\nThe rules for zephyr header order are:\n\n1) \"\" includes\n2) Special \u003c\u003e includes: (assert|complex|ctype|errno|fenv|float|inttypes|limits|locale|math|setjmp|signal|stdarg|stdbool|stddef|stdint|stdio|stdlib|string|tgmath|time|wchar|wctype)\\.h\n3) \u003czephyr/*\u003e includes\n4) Everything else.",
       "parentUuid": "4f448ccd_deb873c8",
+      "revId": "386026a7d393946e7c6e9a566d3f8ca7f4353427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b54ab9c_96c6312e",
+        "filename": "zephyr/emul/emul_flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-21T18:52:36Z",
+      "side": 1,
+      "message": "I take \"special\" to mean headers from the C standard library. I can\u0027t think of any other headers that would be on the system include path besides `\u003czephyr/...\u003e` ones. What would be in \"everything else\"?",
+      "parentUuid": "8f2726fe_baeb0775",
       "revId": "386026a7d393946e7c6e9a566d3f8ca7f4353427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
