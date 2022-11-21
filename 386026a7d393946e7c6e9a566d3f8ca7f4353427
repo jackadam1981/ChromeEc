@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6590d584_9f7cc8b3",
+        "filename": "zephyr/emul/emul_flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-21T18:56:16Z",
+      "side": 1,
+      "message": "Everything else would be any other \u003c\u003e includes that are not zephyr or C stdlib.  It sounds like you don\u0027t think there should be any of those in our codebase.",
+      "parentUuid": "0b54ab9c_96c6312e",
+      "revId": "386026a7d393946e7c6e9a566d3f8ca7f4353427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd6ead07_49392283",
