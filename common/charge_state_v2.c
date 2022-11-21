@@ -1798,7 +1798,7 @@ void charger_task(void *u)
 		 * should probably do nothing for a bit, and if it doesn't get
 		 * better then flag it as an error.
 		 */
-		if (curr.chg.flags & CHG_FLAG_BAD_ANY)
+		if (curr.ac && curr.chg.flags & CHG_FLAG_BAD_ANY)
 			charge_problem(PR_CHG_FLAGS, curr.chg.flags);
 		if (curr.batt.flags & BATT_FLAG_BAD_ANY)
 			charge_problem(PR_BATT_FLAGS, curr.batt.flags);
