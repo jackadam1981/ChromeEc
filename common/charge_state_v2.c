@@ -173,6 +173,13 @@ void charge_problem(enum problem_type p, int v)
 	static timestamp_t last_prob_time[NUM_PROBLEM_TYPES];
 	timestamp_t t_now, t_diff;
 
+	/* skip reporting problem type PR_CHG_FLAGS if
+	 * there is no charger connected to the system.
+	 */
+	if ((p == PR_CHG_FLAGS) &&
+	    (charge_get_active_chg_chip() == CHARGE_PORT_NONE))
+		return;
+
 	if (last_prob_val[p] != v) {
 		t_now = get_time();
 		t_diff.val = t_now.val - last_prob_time[p].val;
