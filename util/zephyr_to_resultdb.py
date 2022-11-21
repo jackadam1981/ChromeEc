@@ -16,6 +16,7 @@ import json
 import os
 import pathlib
 import re
+import socket
 
 import requests  # pylint: disable=import-error
 
@@ -93,7 +94,9 @@ def testsuite_artifact(testsuite):
     return base64.b64encode(artifact.encode())
 
 
-def testcase_to_result(testsuite, testcase, base_tags, config_tags):
+def testcase_to_result(
+    testsuite, testcase, base_tags, config_tags, builder_name
+):
     """Translates ZTEST testcase to ResultDB format
     See TestResult type in
     https://crsrc.org/i/go/src/go.chromium.org/luci/resultdb/sink/proto/v1/test_result.proto
@@ -114,6 +117,10 @@ def testcase_to_result(testsuite, testcase, base_tags, config_tags):
         "tags": [
             {"key": "platform", "value": testsuite["platform"]},
         ],
+        "variant": {
+            #     "suite": testsuite["name"],
+            "builder_name": builder_name,
+        },
         "duration": translate_duration(testcase),
         "testMetadata": {"name": testcase["identifier"]},
     }
@@ -172,7 +179,7 @@ def create_base_tags(data):
     return base_tags
 
 
-def json_to_resultdb(result_file):
+def json_to_resultdb(result_file, builder_name):
     """Translates Twister json test report to ResultDB format"""
     with open(result_file) as file:
         data = json.load(file)
@@ -187,7 +194,11 @@ def json_to_resultdb(result_file):
                 if testcase["status"]:
                     results.append(
                         testcase_to_result(
-                            testsuite, testcase, base_tags, config_tags
+                            testsuite,
+                            testcase,
+                            base_tags,
+                            config_tags,
+                            builder_name,
                         )
                     )
 
@@ -232,11 +243,12 @@ def main():
     )
     parser.add_argument("--results")
     parser.add_argument("--upload", default=False)
+    parser.add_argument("--builder", default=socket.gethostname().split(".")[0])
     args = parser.parse_args()
 
     if args.results:
-        print("Converting:", args.results)
-        rdb_results = json_to_resultdb(args.results)
+        print(f"Builder: {args.builder}, Converting: {args.results}")
+        rdb_results = json_to_resultdb(args.results, args.builder)
         if args.upload:
             upload_results(rdb_results)
     else:
