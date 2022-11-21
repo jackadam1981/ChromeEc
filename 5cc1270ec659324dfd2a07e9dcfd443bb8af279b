@@ -16,6 +16,24 @@
       "message": "We have one new variant that just hopped into the CQ: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4038788\n\nSo this CL might hit a merge conflict if it submits first.",
       "revId": "5cc1270ec659324dfd2a07e9dcfd443bb8af279b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a237cb3_8cb7bf1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2022-11-21T22:04:50Z",
+      "side": 1,
+      "message": "The new crystaldrift project has also been sorted into its own directory.",
+      "parentUuid": "3e217255_f16dbdd3",
+      "revId": "5cc1270ec659324dfd2a07e9dcfd443bb8af279b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
