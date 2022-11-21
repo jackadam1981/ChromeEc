@@ -16,6 +16,24 @@
       "message": "I guess these lines should go to the previous CL?",
       "revId": "6ad3aee34f558ff239cc4a79703b4490fa0bf0d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06da45ff_d5d425a4",
+        "filename": "zephyr/program/herobrine/src/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-21T22:48:19Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "3b733e9b_e1e492c4",
+      "revId": "6ad3aee34f558ff239cc4a79703b4490fa0bf0d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
