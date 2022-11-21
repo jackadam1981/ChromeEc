@@ -3749,6 +3749,8 @@ __maybe_unused static void tc_ct_attached_snk_entry(int port)
 
 	/* The port shall reject a VCONN swap request. */
 	TC_SET_FLAG(port, TC_FLAGS_REJECT_VCONN_SWAP);
+
+	tc_set_data_role(port, PD_ROLE_UFP);
 }
 
 __maybe_unused static void tc_ct_attached_snk_run(int port)
