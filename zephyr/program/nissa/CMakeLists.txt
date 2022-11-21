@@ -58,6 +58,7 @@ if(DEFINED CONFIG_BOARD_XIVU)
 	project(xivu)
 	zephyr_library_sources(
 			"xivu/src/keyboard.c"
+			"xivu/src/sensor.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "xivu/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "xivu/src/charger.c")
