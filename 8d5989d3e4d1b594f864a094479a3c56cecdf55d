@@ -46,6 +46,30 @@
       },
       "revId": "8d5989d3e4d1b594f864a094479a3c56cecdf55d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "823004db_fd948275",
+        "filename": "board/moli/board.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-11-21T02:35:31Z",
+      "side": 1,
+      "message": "Moved all fw-config related change to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3993602.",
+      "parentUuid": "6bff2711_bad4d353",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 11
+      },
+      "revId": "8d5989d3e4d1b594f864a094479a3c56cecdf55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
