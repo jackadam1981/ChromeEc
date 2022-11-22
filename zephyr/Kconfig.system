@@ -47,6 +47,7 @@ config PLATFORM_EC_HIBERNATE_PSL
 config PLATFORM_EC_HIBERNATE_WAKE_PINS
 	bool "System hibernating with wake-source pins"
 	select PLATFORM_EC_HIBERNATE
+	depends on DT_HAS_CROS_EC_HIBERNATE_WAKE_PINS_ENABLED
 	help
 	  Use wake source pins for hibernating. It turns off VCC power
 	  rail for ultra-low power consumption and uses a low power

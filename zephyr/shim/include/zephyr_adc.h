@@ -35,8 +35,13 @@ extern const struct adc_t adc_channels[];
 extern struct adc_t adc_channels[];
 #endif /* CONFIG_ADC_CHANNELS_RUNTIME_CONFIG */
 #else
-/* Empty declaration to avoid warnings if adc.h is included */
+
+/* Empty declaration to avoid errors if adc.h is included */
+struct adc_t {
+};
+
 enum adc_channel { ADC_CH_COUNT };
+
 #endif /* CONFIG_ADC */
 
 #endif /* __CROS_EC_ZEPHYR_ADC_H */
