@@ -15,8 +15,8 @@
 
 	chosen {
 		zephyr,sram = &sram0;
-		zephyr,console = &uart1;
-		zephyr,shell-uart = &uart1;
+		zephyr,console = &uart2;
+		zephyr,shell-uart = &uart2;
 		zephyr,flash = &flash0;
 		zephyr,flash-controller = &flashctrl;
 	};
@@ -37,6 +37,19 @@
 	status = "okay";
 	pinctrl-0 = <&uart1_rx_gpb0_default
 		     &uart1_tx_gpb1_default>;
+	pinctrl-names = "default";
+};
+
+&uart2 {
+	status = "okay";
+	current-speed = <115200>;
+	clock-frequency = <1804800>;
+};
+
+&ite_uart2_wrapper {
+	status = "okay";
+	pinctrl-0 = <&uart2_rx_gpf0_default
+		     &uart2_tx_gpf1_default>;
 	pinctrl-names = "default";
 };
 

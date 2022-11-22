@@ -1,0 +1,10 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+cmake_minimum_required(VERSION 3.13.1)
+
+find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
+project(geralt_kb)
+
+zephyr_library_sources("src/fakes.c")
