@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95ac179_9a78aa74",
+        "filename": "board/moli/fw_config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-11-22T00:48:33Z",
+      "side": 1,
+      "message": "Our plan is enable this feature by default once the power on by monitor feature be merged. So make it as 0\u003denable will let devices enable this feature by AU without program CBI again.",
+      "parentUuid": "addcde5f_50bdd965",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "30a80317cf48fbf189957545d88e899102e7b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8920eaa7_e9c9abe8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-21T17:41:13Z",
       "side": 1,
       "message": "function has the same name as enum on line 17",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "30a80317cf48fbf189957545d88e899102e7b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a76f92c_934e88d3",
+        "filename": "board/moli/fw_config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-11-22T00:48:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8920eaa7_e9c9abe8",
       "range": {
         "startLine": 46,
         "startChar": 5,
