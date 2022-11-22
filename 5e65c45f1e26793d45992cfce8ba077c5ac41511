@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e2a329_71a5a6bc",
+        "filename": "include/driver/retimer/ps8818_public.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-11-22T05:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "983da5df_a889006a",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "5e65c45f1e26793d45992cfce8ba077c5ac41511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a974029f_0205fde2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-22T04:45:03Z",
       "side": 1,
       "message": "Please add PS8818_I2C_ADDR1_FLAGS, PS8818_I2C_ADDR2_FLAGS and PS8818_I2C_ADDR3_FLAGS for the 0x30, 0x58 and 0x70 respectively.",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "5e65c45f1e26793d45992cfce8ba077c5ac41511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba952421_fa79c2ee",
+        "filename": "include/driver/retimer/ps8818_public.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2022-11-22T05:18:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a974029f_0205fde2",
       "range": {
         "startLine": 13,
         "startChar": 8,
