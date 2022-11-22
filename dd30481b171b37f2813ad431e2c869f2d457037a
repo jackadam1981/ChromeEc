@@ -16,6 +16,24 @@
       "message": "This is done in sensor_init_done",
       "revId": "dd30481b171b37f2813ad431e2c869f2d457037a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a584ab82_390c3c52",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-11-22T18:40:32Z",
+      "side": 1,
+      "message": "config_interrupt depending on the sensor range is an issue, since it is only run once, but the range could change overtime.",
+      "parentUuid": "8f665381_051e9d39",
+      "revId": "dd30481b171b37f2813ad431e2c869f2d457037a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
