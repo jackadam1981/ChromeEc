@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0c5290_729800de",
+        "filename": "board/gaelin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-22T11:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4985fa4f_82bb61d7",
+      "range": {
+        "startLine": 259,
+        "startChar": 16,
+        "endLine": 259,
+        "endChar": 26
+      },
+      "revId": "bf30eb0207889ed2e43bd5aa0b3a1c4358e4d2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99433580_91d81b9d",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f006a4dc_5722e53f",
+        "filename": "board/gaelin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-22T11:23:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure if removing the scaler power control would too power consumption on the S0iX (or S3).",
+      "parentUuid": "99433580_91d81b9d",
+      "range": {
+        "startLine": 262,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 40
+      },
+      "revId": "bf30eb0207889ed2e43bd5aa0b3a1c4358e4d2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f80e8ea1_7a2d48d8",
         "filename": "board/gaelin/board.c",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-22T10:34:12Z",
       "side": 1,
       "message": "and S0 -\u003e S3",
+      "range": {
+        "startLine": 268,
+        "startChar": 16,
+        "endLine": 268,
+        "endChar": 26
+      },
+      "revId": "bf30eb0207889ed2e43bd5aa0b3a1c4358e4d2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "546287ab_e2e325eb",
+        "filename": "board/gaelin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-22T11:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80e8ea1_7a2d48d8",
       "range": {
         "startLine": 268,
         "startChar": 16,
