@@ -22,6 +22,30 @@
       },
       "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599123d8_7fec697a",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-22T16:49:39Z",
+      "side": 1,
+      "message": "Nope, that is the use case where automatic symbols cannot work. I noticed the two type of emulators, figured it was on a case by case basis, for example GPIO and PWM emulators I guess will keep having their own device binding, but the ones backing a specific device should reuse the real device binding. Is the plan to convert the ones we have here? If that\u0027s the case I should revert some of these.",
+      "parentUuid": "7e0b3e33_f425facb",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
