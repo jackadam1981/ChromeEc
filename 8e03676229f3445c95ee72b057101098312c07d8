@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a90d95_f7f31021",
+        "filename": "zephyr/shim/include/fpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-22T19:05:06Z",
+      "side": 1,
+      "message": "The copyright year is only set once on the file creation.  It isn\u0027t updated on file changes.\n\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/c++.md#file-headers",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "8e03676229f3445c95ee72b057101098312c07d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
