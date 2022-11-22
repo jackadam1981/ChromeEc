@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91523f81_2dd2d443",
+        "filename": "board/moli/fw_config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-22T19:05:47Z",
+      "side": 1,
+      "message": "Good point, let\u0027s follow config.star",
+      "parentUuid": "35772b62_aedac465",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "30a80317cf48fbf189957545d88e899102e7b1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8920eaa7_e9c9abe8",
