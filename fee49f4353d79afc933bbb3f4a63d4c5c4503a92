@@ -16,6 +16,24 @@
       "message": "I think this would be the right place to set USB mode.",
       "revId": "fee49f4353d79afc933bbb3f4a63d4c5c4503a92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5037a491_66a884ac",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7689,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T19:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4311ba93_02875025",
+      "revId": "fee49f4353d79afc933bbb3f4a63d4c5c4503a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
