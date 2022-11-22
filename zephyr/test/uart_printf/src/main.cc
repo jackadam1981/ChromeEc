@@ -48,11 +48,13 @@ ZTEST(uart_printf, test_uart_put_success)
 
 ZTEST(uart_printf, test_uart_put_fail_tx)
 {
+	printk("test_uart_put_fail_tx()\n");
 	const char test_string[] = "\n";
 
 	uart_tx_char_raw_fake.return_val = -1;
 
 	/* Try printing the newline */
+	printk("calling uart_put()\n");
 	zassert_equal(0, uart_put(test_string, 1));
 	zassert_equal(1, uart_tx_char_raw_fake.call_count);
 	zassert_equal('\r', uart_tx_char_raw_fake.arg1_val);
@@ -82,22 +84,19 @@ ZTEST(uart_printf, test_uart_put_raw_fail_tx)
 	zassert_equal('\n', uart_tx_char_raw_fake.arg1_val);
 }
 
-static int vfnprintf_custom_fake_expect_int_arg;
-static int vfnprintf_custom_fake(vfnprintf_addchar_t, void *, const char *,
-				 va_list alist)
-{
-	zassert_equal(vfnprintf_custom_fake_expect_int_arg, va_arg(alist, int));
-	return 0;
-}
 ZTEST(uart_printf, test_uart_printf)
 {
 	const char test_format[] = "d=%d";
 
-	vfnprintf_custom_fake_expect_int_arg = 5;
-	vfnprintf_fake.custom_fake = vfnprintf_custom_fake;
+	vfnprintf_fake.custom_fake = [](vfnprintf_addchar_t, void *,
+					const char *, va_list alist) {
+		printk("custom_fake\n");
+		zassert_equal(5, va_arg(alist, int));
+		return 0;
+	};
 
-	zassert_ok(
-		uart_printf(test_format, vfnprintf_custom_fake_expect_int_arg));
+	zassert_ok(uart_printf(test_format, 5));
 	zassert_equal(1, vfnprintf_fake.call_count);
 	zassert_equal(test_format, vfnprintf_fake.arg2_val);
+	vfnprintf_fake.custom_fake = NULL;
 }

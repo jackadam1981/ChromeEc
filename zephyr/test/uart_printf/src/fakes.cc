@@ -2,6 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "fff_function_signature.pch"
 
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
@@ -26,10 +27,21 @@ static void fake_reset_rule_before(const struct ztest_unit_test *test,
 	ARG_UNUSED(data);
 
 	/* printf.h */
-	RESET_FAKE(vfnprintf);
+	printk("resetting vfnprintf\n");
+//	RESET_FAKE(vfnprintf);
+	memset((void*)&vfnprintf_fake, 0,
+	       sizeof(vfnprintf_fake) - sizeof(vfnprintf_fake.custom_fake) -
+	       sizeof(vfnprintf_fake.custom_fake_seq));
+	printk("resetting custom_fake\n");
+	vfnprintf_fake.custom_fake = NULL;
+	printk("resetting custom_fake_seq\n");
+	vfnprintf_fake.custom_fake_seq = NULL;
+	vfnprintf_fake.arg_history_len = FFF_ARG_HISTORY_LEN;
 
 	/* uart.h */
+	printk("resetting uart_tx_char_raw\n");
 	RESET_FAKE(uart_tx_char_raw);
+	printk("resetting uart_tx_start\n");
 	RESET_FAKE(uart_tx_start);
 }
 

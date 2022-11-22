@@ -6,6 +6,7 @@
 #ifndef ZEPHYR_TEST_UART_PRINTF_INCLUDE_UART_H_
 #define ZEPHYR_TEST_UART_PRINTF_INCLUDE_UART_H_
 
+#include "fff_function_signature.pch"
 #include <zephyr/fff.h>
 
 #ifdef __cplusplus

@@ -1,0 +1,10 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <functional>
+
+/* Configure FFF to use std::function, which enables capturing lambdas */
+#define CUSTOM_FFF_FUNCTION_TEMPLATE(RETURN, FUNCNAME, ...) \
+    std::function<RETURN (__VA_ARGS__)> FUNCNAME
