@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "555c451b_b1cc1cbc",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-22T01:00:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dcc35155_ceee37ec",
+      "range": {
+        "startLine": 277,
+        "startChar": 5,
+        "endLine": 277,
+        "endChar": 47
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "239d0d84_fe55a98d",
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "Please check that `args-\u003eresponse_max \u003e\u003d sizeof(*boot_time)` before memcpy",
       "parentUuid": "56823189_3717e7ec",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "3d996a3f8bd17f87674f2415bbc4888b201a229c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad31182_55940519",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-22T01:00:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "95686a88_aeec3f59",
       "range": {
         "startLine": 56,
         "startChar": 1,
