@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1cd77e6_8ddcc5ed",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "I don\u0027t get this. Wouldn\u0027t it make more sense if the partner Accepted when the stored EUDO is non-zero? I don\u0027t see you setting the EUDO in the test, so I guess it will default to 0, and the partner will Accept.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c8e6dc_cd55cc58",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "Depending on what you want to do with this, you should probably set it to a default value during `_init` or whatever gets called during a Hard Reset. Try to make it behave like similar members of this structure, however that is.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf152a9_d32d31f9",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "Do you need to set a config here that enables USB4, or does that get enabled somewhere else?",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1324a2fd_3bbe476b",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "Jeremy has been updating the include order to match upstream, so he\u0027ll probably want you to use that: b:247100970.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f2aee3_aaef7506",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "Do you mean that our TCPM won\u0027t enter USB4 with a cable that doesn\u0027t support any alt modes? My bad. We should fix that.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af195be6_5d7bc534",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "AFAIK, this is already the default value of this PDO, and you don\u0027t need to set it here.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fbe0427_379537f7",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "Just FYI, as of recently, the error messages in `zassert_*` are optional. If you often find them tedious to type with obvious contents, you can omit them.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8879c5cd_16324849",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "Only do this if you need to do it to get extra coverage. We don\u0027t officially support USB4 with EC mode entry, and it wouldn\u0027t surprise me if it just goes away when we finish all of our DPM refactoring and upstreaming and AP VDM sending.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d740a4_eafe6da4",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "`TYPEC_MODE_USB4`?",
+      "range": {
+        "startLine": 203,
+        "startChar": 46,
+        "endLine": 203,
+        "endChar": 60
+      },
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8f56a7_e6ac0eec",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "Nit: Enter_USB",
+      "range": {
+        "startLine": 211,
+        "startChar": 37,
+        "endLine": 211,
+        "endChar": 46
+      },
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f6ee20_4b65d83d",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "Are you checking the log here?",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a547aca_35307785",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T20:20:40Z",
+      "side": 1,
+      "message": "In terms of test organization, it seems like it would make more sense for this to be in the discovery test.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
