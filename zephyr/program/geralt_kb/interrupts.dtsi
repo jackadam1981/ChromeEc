@@ -1,0 +1,22 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_base_accel: base_accel {
+			irq-pin = <&base_accel_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "lis2dw12_interrupt";
+		};
+
+		int_tchpad: tchpad {
+			irq-pin = <&tchpad_int_odl>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "touchpad_interrupt";
+		};
+	};
+};
