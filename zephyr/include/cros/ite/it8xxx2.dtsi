@@ -75,11 +75,11 @@
 	binman {
 		wp-ro {
 			offset = <0x0>;
-			size = <0x60000>;
+			size = <0x40000>;
 		};
 		ec-rw {
-			offset = <0x60000>;
-			size = <0x60000>;
+			offset = <0x40000>;
+			size = <0x40000>;
 			rw-fw {
 				rw-fwid {
 					/* Fix the lcoation of the FWID to the
@@ -88,11 +88,11 @@
 					 * stored in the RO section of flash
 					 * are always correct.
 					 */
-					offset = <(0x60000 - 32)>;
+					offset = <(0x40000 - 32)>;
 				};
 			};
 		};
 		pad-byte = <0xff>;
-		pad-after = <0x40000>;
+		pad-after = <0x00000>;
 	};
 };
