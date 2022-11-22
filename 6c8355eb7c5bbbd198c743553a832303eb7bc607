@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0b3e33_f425facb",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-22T16:43:16Z",
+      "side": 1,
+      "message": "For new emulators, we\u0027re using the same compatible string for the emulator as for the real driver.  In theory this will allow us to to share some devicetree portions between the board and the test.\n\nWill using `DT_HAS_\u003ccompat\u003e_ENABLED` work when the emulator and driver share the compatible?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
