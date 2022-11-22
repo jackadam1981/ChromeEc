@@ -49,7 +49,7 @@ static void base_suspend_hook(struct ap_power_ev_callback *cb,
 	}
 }
 
-static int ec_ec_comm_init(const struct device *unused)
+static int ec_ec_comm_init(void)
 {
 	static struct ap_power_ev_callback cb;
 
