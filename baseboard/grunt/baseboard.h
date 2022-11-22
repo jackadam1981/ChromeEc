@@ -190,7 +190,6 @@
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
-#include "math_util.h"
 #include "registers.h"
 
 enum adc_channel {
