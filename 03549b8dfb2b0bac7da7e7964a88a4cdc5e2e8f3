@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645db787_d77fa12e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-22T23:17:43Z",
+      "side": 1,
+      "message": "I wasn\u0027t able to reproduce the problem described in the bug, but by the same token turning this on doesn\u0027t seem to cause problems and it makes sense to me that we\u0027d need to involve the AP in mode changes because its TCSS needs to be part of the process.",
+      "revId": "03549b8dfb2b0bac7da7e7964a88a4cdc5e2e8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
