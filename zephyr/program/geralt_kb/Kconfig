@@ -1,0 +1,11 @@
+# Copyright 2022 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config BOARD_GERALT_KB
+	bool "Google Geralt_kb Board"
+	help
+	  Build Google Geralt_kb reference board. Geralt_kb has MediaTek MT8188G SoC
+	  with ITE it82202-ax EC.
+
+source "Kconfig.zephyr"
