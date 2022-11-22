@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d4027fc_e26d6e40",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-22T19:01:55Z",
+      "side": 1,
+      "message": "nit: inconsistent use of `boottime` (name of this file) and `boot_time`. Not really a big issue, but it would make sense to rename system_boottime.[c|h] to system_boot_time.[c|h] to make it more consistent.",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbd22b5_584f1e9e",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-22T19:01:55Z",
+      "side": 1,
+      "message": "This check should be the first thing in the function. I.e. before updating EC_CUR_TIME.",
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "609ce42d_c18d4cd2",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-22T19:01:55Z",
+      "side": 1,
+      "message": "EC_RES_RESPONSE_TOO_BIG",
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca473b35_83cfa07e",
+        "filename": "include/system_boottime.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-22T19:01:55Z",
+      "side": 1,
+      "message": "nit: this could also be BOOT_TIME",
+      "range": {
+        "startLine": 6,
+        "startChar": 25,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476833e3_554f7ddb",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 25
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-22T19:01:55Z",
+      "side": 1,
+      "message": "I believe this should be spaces, not tabs. Didn\u0027t clang_format complain on this?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
