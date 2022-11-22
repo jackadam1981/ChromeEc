@@ -256,6 +256,30 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+/* Called on AP S0iX -> S0 and S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+	gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 1);
+	gpio_set_level(GPIO_EC_12VSC_EN, 1);
+	gpio_set_level(GPIO_EC_AMP_SD, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S0iX and S0 -> S3 transition */
+static void board_chipset_suspend(void)
+{
+	if (!gpio_get_level(GPIO_HDMI0_CABLE_DET)) {
+		gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 1);
+		gpio_set_level(GPIO_EC_12VSC_EN, 1);
+		gpio_set_level(GPIO_EC_AMP_SD, 1);
+	} else {
+		gpio_set_level(GPIO_EC_AMP_SD, 0);
+		gpio_set_level(GPIO_EC_12VSC_EN, 0);
+		gpio_set_level(GPIO_EC_OVERRIDE_SCLR_EN, 0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* Check that port number is valid. */
