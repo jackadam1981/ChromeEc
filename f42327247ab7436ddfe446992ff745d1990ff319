@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "531b499c_dea0e390",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-11-22T20:52:33Z",
+      "side": 1,
+      "message": "is this the preferred method?\ni found `STATIC_IF_NOT(CONFIG_ZTEST)` used.\n\nwe have things like test_static in include/test_util.h.\ndo any of those still apply?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "f42327247ab7436ddfe446992ff745d1990ff319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4b9b4c_7193a6c4",
+        "filename": "zephyr/test/drivers/default/src/motion_sense/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-11-22T20:52:33Z",
+      "side": 1,
+      "message": "this can go in motion_sense.h?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "f42327247ab7436ddfe446992ff745d1990ff319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
