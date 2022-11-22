@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c07e9cf_25541a39",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "I was waiting to get your feedback on this approach. I had intended this to be used as a means to test for relevant parts of the Enter_USB data object contents. My thought was that the test setup could set the field(s) that needed to be checked against. If the field was left as 0, then it would be a don\u0027t care. Extending this idea, for now, I was just using it as a simply binary with 0 (default) meaning accept, and non-zero triggers a reject.\n\nBut, I since realized that the message checking could be done in the test source file via the PD message log and parsing the message contents from there. In that case, we\u0027d still want some bool here to control ACCEPT/REJECT from the partner port.",
+      "parentUuid": "a1cd77e6_8ddcc5ed",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6c8e6dc_cd55cc58",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 8
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-22T20:20:40Z",
       "side": 1,
       "message": "Depending on what you want to do with this, you should probably set it to a default value during `_init` or whatever gets called during a Hard Reset. Try to make it behave like similar members of this structure, however that is.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1687ba4_156955f1",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "Waiting on your feedback for the comment above to address this one.",
+      "parentUuid": "d6c8e6dc_cd55cc58",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d46d6e52_cfcff56b",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "the config for USB4 is enabled by default in drivers/prj.conf, but DATA_RESET is not. I didn\u0027t see the configs for either TBT/DP mode enabled specifically for those tests, so I checked to see where the configs are set for the test configuration.",
+      "parentUuid": "fdf152a9_d32d31f9",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1324a2fd_3bbe476b",
         "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
         "patchSetId": 8
@@ -65,6 +119,24 @@
       "writtenOn": "2022-11-22T20:20:40Z",
       "side": 1,
       "message": "Jeremy has been updating the include order to match upstream, so he\u0027ll probably want you to use that: b:247100970.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26840e2_42779891",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1324a2fd_3bbe476b",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf5cb8d5_1feabff2",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "No, what I mean is that USB4 entry doesn\u0027t use anything to from either Discover SVIDs/MODEs messages in terms of what communicates USB4 support. USB4 support is communicated only in Discover Identity VDOs.\n\nBut, we always attempt Discover SVID/Modes as a DFP and so if the port partner doesn\u0027t reply to those messages, then our end won\u0027t attempt USB4 entry because this check is required to pass prior to attempting USB4, TBT, or DP entry.\n\t/*\n\t * If discovery has not occurred for modes, do not attempt to switch\n\t * to alt mode.\n\t */\n\tif (pd_get_svids_discovery(port, TCPCI_MSG_SOP) !\u003d PD_DISC_COMPLETE ||\n\t    pd_get_modes_discovery(port, TCPCI_MSG_SOP) !\u003d PD_DISC_COMPLETE)\n\t\treturn;\n\t\t\n\nSo my comment is more to point out that the test is adding Discover SVID/MODE responses here so this check will pass, but the contents of what\u0027s in these messages are really a don\u0027t care from the perspective of USB4 entry",
+      "parentUuid": "50f2aee3_aaef7506",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af195be6_5d7bc534",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-11-22T20:20:40Z",
       "side": 1,
       "message": "AFAIK, this is already the default value of this PDO, and you don\u0027t need to set it here.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd38f6f_eb9753f0",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af195be6_5d7bc534",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8863a8dc_ff6b42c3",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "I will remove those TODOs. It makes sense that USB4 Entry requires AP_ENTRY.",
+      "parentUuid": "8879c5cd_16324849",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57d740a4_eafe6da4",
@@ -150,6 +276,30 @@
       "writtenOn": "2022-11-22T20:20:40Z",
       "side": 1,
       "message": "`TYPEC_MODE_USB4`?",
+      "range": {
+        "startLine": 203,
+        "startChar": 46,
+        "endLine": 203,
+        "endChar": 60
+      },
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "638326da_a2c29d9e",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57d740a4_eafe6da4",
       "range": {
         "startLine": 203,
         "startChar": 46,
@@ -185,6 +335,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3815267e_49ab74c0",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "I removed the calls to enable/disable the logs for this test (see the following comment), and so this typo was removed with that.",
+      "parentUuid": "ff8f56a7_e6ac0eec",
+      "range": {
+        "startLine": 211,
+        "startChar": 37,
+        "endLine": 211,
+        "endChar": 46
+      },
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7f6ee20_4b65d83d",
         "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
         "patchSetId": 8
@@ -202,6 +376,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "741430b3_972744bb",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "No, I was simply relying on the mux state to verify that USB4 entry was not successful. But, maybe this test should use the PD message log and verify that Enter_USB is not sent?\n\nI just removed the comment and log enable/disable calls. If you think the test is better with checking the message log, then I\u0027ll put those back in and scan the log messages as well.",
+      "parentUuid": "c7f6ee20_4b65d83d",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a547aca_35307785",
         "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
         "patchSetId": 8
@@ -213,6 +405,24 @@
       "writtenOn": "2022-11-22T20:20:40Z",
       "side": 1,
       "message": "In terms of test organization, it seems like it would make more sense for this to be in the discovery test.",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5903b950_8cf9e24c",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-22T22:14:13Z",
+      "side": 1,
+      "message": "I can see this both ways. Currently, this test is specific to a passive cable with USB4 support. So it\u0027s verifying that a passive cable with USB4 support is found prior to attempting to simulating the AP requesting to attempt USB4 entry. When the test cases get expanded to handle active cables with USB3.2 support, then there would need to be tests to make sure those cable checks work.",
+      "parentUuid": "7a547aca_35307785",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
