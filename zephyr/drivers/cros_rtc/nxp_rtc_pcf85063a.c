@@ -363,6 +363,24 @@ static int nxp_rtc_pcf85063a_init(const struct device *dev)
 		}
 	}
 
+	LOG_ERR(" REG_CONTROL_1 set CAP_SEL");
+
+	ret = pcf85063a_read_reg(dev, REG_CONTROL_1, &val);
+
+	if (ret < 0) {
+		LOG_ERR(" pcf85063a_read_reg Fail!");
+		return ret;
+	}
+
+	val |= CAP_SEL;
+
+	ret = pcf85063a_write_reg(dev, REG_CONTROL_1, val);
+
+	if (ret < 0) {
+		LOG_ERR(" pcf85063a_write_reg Fail!");
+		return ret;
+	}
+
 	/*
 	 * Read Seconds register and check if oscillator is stopped.
 	 * If so, clear the bit.

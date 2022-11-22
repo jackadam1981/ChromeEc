@@ -9,6 +9,7 @@
 #include "host_command.h"
 #include "system.h"
 #include "util.h"
+#include "rtc.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -203,8 +204,15 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_VALUE, system_rtc_get_value,
 static enum ec_status system_rtc_set_value(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rtc *p = args->params;
+	struct calendar_date time;
 
 	system_set_rtc(p->time);
+
+	time = sec_to_date(p->time);
+
+	LOG_ERR("%s: year: %d, month: %d, day: %d, ", __func__,
+				time.year, time.month, time.day);
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_VALUE, system_rtc_set_value,
