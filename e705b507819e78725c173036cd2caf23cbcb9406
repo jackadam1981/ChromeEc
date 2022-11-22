@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0adf7c1_a115459e",
+        "filename": "board/moli/board.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-22T04:03:24Z",
+      "side": 1,
+      "message": "Could you add a check `if (ec_cfg_power_on_monitor() \u003d\u003d POWER_ON_MONITOR_ENABLE)` for those pins?",
+      "revId": "e705b507819e78725c173036cd2caf23cbcb9406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
