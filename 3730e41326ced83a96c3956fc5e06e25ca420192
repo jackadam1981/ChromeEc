@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a8e595_5cbd2c90",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_vpd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-11-22T02:37:40Z",
+      "side": 1,
+      "message": "Is this line needed?",
+      "revId": "3730e41326ced83a96c3956fc5e06e25ca420192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2a514b_3b622e44",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_vpd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2022-11-22T02:37:40Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be more flexible when src and snk extensions were arguments for vpd init? Let\u0027s say that there are two different source extensions. First supports only basic functionalities and the second supports more features. There may be one case where you want to test VPD with basic source functionalities and another with extended source features. Using source extension argument you can have both version of VPD without changing this code.\n\nIf this approach is too complicated, then I am fine with current version too.",
+      "revId": "3730e41326ced83a96c3956fc5e06e25ca420192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
