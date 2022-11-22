@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806b1a06_13e49e09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-22T19:15:41Z",
+      "side": 1,
+      "message": "I\u0027m looking at this file and there are almost no checks for i2c read/write functions. So this CL doesn\u0027t really improve much.",
+      "revId": "64a18c8733db6b84bf3bec0dfa6858a2bb3a63bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
