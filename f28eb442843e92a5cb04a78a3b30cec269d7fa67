@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21db766_f7225d10",
+        "filename": "board/moli/board.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-22T01:36:30Z",
+      "side": 1,
+      "message": "The CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4037228 is in CQ now. Let\u0027s change to use power_button_simulate_press()",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 31
+      },
+      "revId": "f28eb442843e92a5cb04a78a3b30cec269d7fa67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
