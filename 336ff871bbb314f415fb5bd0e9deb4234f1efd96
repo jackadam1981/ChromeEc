@@ -70,6 +70,30 @@
       },
       "revId": "336ff871bbb314f415fb5bd0e9deb4234f1efd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41dbac4f_50590106",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2022-11-22T02:07:23Z",
+      "side": 0,
+      "message": "\u003e The charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, ...) has been called by the usb_charger.c and the usb_charger_init() should be called in the HOOK_INIT.\nusb_charger.c is not included in the build by setting CONFIG_PLATFORM_EC_USB_CHARGER to \u0027n\u0027. (see the link in my previous comment). So charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, ...) is not called.",
+      "parentUuid": "e65ec476_1561a6e5",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "336ff871bbb314f415fb5bd0e9deb4234f1efd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
