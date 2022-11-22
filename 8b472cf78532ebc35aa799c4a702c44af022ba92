@@ -46,6 +46,30 @@
       },
       "revId": "8b472cf78532ebc35aa799c4a702c44af022ba92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daef7ac0_97e3434f",
+        "filename": "board/gaelin/scaler.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-11-22T11:08:55Z",
+      "side": 1,
+      "message": "It\u0027s too early to add these interrupt handlers as we don\u0027t know what we need to implement.\n \nI create b:260063632 to track the EC code implementation for HDMI-IN feature. \nLet\u0027s go through the design doc and discuss what we need to implement first.",
+      "parentUuid": "cf785d16_cde25038",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "8b472cf78532ebc35aa799c4a702c44af022ba92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
