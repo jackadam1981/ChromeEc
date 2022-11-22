@@ -102,6 +102,8 @@ config PLATFORM_EC_LID_ANGLE_UPDATE
       peripheral devices should be enabled or disabled, like key scanning,
       trackpad interrupt.
 
+endif # PLATFORM_EC_LID_ANGLE
+
 config PLATFORM_EC_TABLET_MODE
     bool "Tablet Mode"
     help
@@ -127,7 +129,6 @@ config PLATFORM_EC_GMR_TABLET_MODE
       in common/tablet_mode.c.
 
 endif # PLATFORM_EC_TABLET_MODE
-endif # PLATFORM_EC_LID_ANGLE
 
 config PLATFORM_EC_CONSOLE_CMD_ACCELS
     bool "Console commands: accels, accelrate, accelinit, accelinfo, etc."
