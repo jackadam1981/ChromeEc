@@ -1,6 +1,57 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d7ba18_a78bf39a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T21:35:59Z",
+      "side": 1,
+      "message": "Thermals are somewhat outside my area of expertise. I don\u0027t have strong opinions on the actual temperature management changes here.",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6604745_8fea3676",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T21:35:59Z",
+      "side": 1,
+      "message": "This seems like an unnecessary indirection. Just change the references from the original `struct fan_step` to `struct fan_step_1_1`.",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a48137_725fd1f9",
+        "filename": "common/fan.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T21:35:59Z",
+      "side": 1,
+      "message": "This comment is redundant with the header file. You can remove it here.",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4098965c_74df4932",
@@ -20,6 +71,40 @@
         "endLine": 79,
         "endChar": 15
       },
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfcbd685_086f2eab",
+        "filename": "include/fan.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T21:35:59Z",
+      "side": 1,
+      "message": "It would be nice if these names were more expressive. I don\u0027t think I would know what this was if I just saw these members being assigned.",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6cf084_70b75c80",
+        "filename": "test/fan.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-22T21:35:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t `on` be greater than `off`?\n\nNit: IMO, putting `off` before `on` in the table definition (and struct definition) would make this table easier to read.",
       "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
