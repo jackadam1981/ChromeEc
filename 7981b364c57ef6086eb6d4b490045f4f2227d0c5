@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b99a92_8332cecd",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-23T19:22:33Z",
+      "side": 1,
+      "message": "\u003e charger flags indicate \u0027bad voltage\u0027 and \u0027bad\ninput current limit\u0027 if there is no charger connected\n\nHave you thought of fixing each implementation of get_voltage and get_input_current_limit instead? For example, charger_get_voltage should return EC_SUCCESS (with voltage\u003d0) if AC isn\u0027t connected.",
+      "range": {
+        "startLine": 1801,
+        "startChar": 6,
+        "endLine": 1801,
+        "endChar": 21
+      },
+      "revId": "7981b364c57ef6086eb6d4b490045f4f2227d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
