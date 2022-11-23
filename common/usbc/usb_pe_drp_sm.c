@@ -2319,7 +2319,10 @@ static void pe_src_startup_exit(int port)
  */
 static void pe_src_discovery_entry(int port)
 {
+	void prl_src_starting(void);
+
 	print_current_state(port);
+	prl_src_starting();
 
 	/*
 	 * Initialize and run the SourceCapabilityTimer in order
@@ -5008,8 +5011,10 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 	 * Transition to ErrorRecovery state when:
 	 *   1) The PSSourceOffTimer times out.
 	 */
-	if (pd_timer_is_expired(port, PE_TIMER_PS_SOURCE))
+	if (pd_timer_is_expired(port, PE_TIMER_PS_SOURCE)) {
+		cprints(CC_USBPD, "%s: PSSourceOffTimer expired", __func__);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+	}
 
 	/*
 	 * Transition to PE_PRS_SNK_SRC_Assert_Rp when:
@@ -5023,6 +5028,7 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
 
 		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_PS_RDY)) {
+			cprints(CC_USBPD, "%s: received PS_RDY, onward to ASSERT_RP", __func__);
 			/*
 			 * FRS: We are always ready to drive vSafe5v, so just
 			 * skip PE_FRS_SNK_SRC_Vbus_Applied and go direct to
@@ -5163,11 +5169,14 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	 * Check the state of the message sent
 	 */
 	msg_check = pe_sender_response_msg_run(port);
+	if (msg_check & PE_MSG_SEND_PENDING)
+		cprints(CC_USBPD, "send_swap tx still pending");
 
 	/*
 	 * Handle discarded message
 	 */
 	if (msg_check & PE_MSG_DISCARDED) {
+		cprints(CC_USBPD, "%s: Swap message discarded", __func__);
 		set_state_pe(port, pe_in_frs_mode(port) ?
 					   PE_WAIT_FOR_ERROR_RECOVERY :
 					   PE_SNK_READY);
@@ -5190,6 +5199,8 @@ static void pe_prs_snk_src_send_swap_run(int port)
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		cprints(CC_USBPD, "%s: received message type %d, %d %d",
+			__func__, type, ext, cnt);
 
 		if ((ext == 0) && (cnt == 0)) {
 			if (type == PD_CTRL_ACCEPT) {
@@ -5217,6 +5228,7 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	 *   1) The SenderResponseTimer times out.
 	 */
 	if (pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE)) {
+		cprints(CC_USBPD, "%s: SenderResponseTimer expired", __func__);
 		if (IS_ENABLED(CONFIG_USB_PD_REV30))
 			set_state_pe(port, pe_in_frs_mode(port) ?
 						   PE_WAIT_FOR_ERROR_RECOVERY :
@@ -5234,6 +5246,7 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) && pe_in_frs_mode(port) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		cprints(CC_USBPD, "%s: FR_Swap failed to send after retry", __func__);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 	}
 }

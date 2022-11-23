@@ -1241,9 +1241,11 @@ static void prl_tx_snk_pending_run(const int port)
 	 */
 	if (pe_in_frs_mode(port)) {
 		/* shortcut to save some i2c_xfer calls on the FRS path. */
+		cprints(CC_USBPD, "%s: skip TX_OK for FRS", __func__);
 		start_tx = true;
 	} else {
 		enum tcpc_cc_voltage_status cc1, cc2;
+		cprints(CC_USBPD, "%s: waiting for TX_OK", __func__);
 
 		tcpm_get_cc(port, &cc1, &cc2);
 		start_tx = (cc1 == TYPEC_CC_VOLT_RP_3_0 ||
@@ -1269,6 +1271,7 @@ static void prl_tx_snk_pending_run(const int port)
 		 * Rp = SinkTxOk
 		 */
 		else {
+			cprints(CC_USBPD, "%s: send message", __func__);
 			prl_tx_construct_message(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
@@ -2464,6 +2467,15 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT <= UINT8_MAX);
 static struct prl_event_log_entry
 	prl_event_log_buffer[CONFIG_USB_PD_PRL_EVENT_LOG_CAPACITY];
 static atomic_t prl_event_log_next;
+static bool prl_log_active = true;
+static bool prl_log_stop_on_reset = false;
+
+void prl_src_starting(void) {
+	if (prl_log_stop_on_reset) {
+		prl_log_active = false;
+		CPRINTS("PRL logging stopped due TC src startup\n");
+	}
+}
 
 static void prl_event_log_append(enum prl_event_log_state_kind kind, int port)
 {
@@ -2472,6 +2484,10 @@ static void prl_event_log_append(enum prl_event_log_state_kind kind, int port)
 		.port = port,
 		.kind = kind,
 	};
+
+	if (!prl_log_active) {
+		return;
+	}
 
 	switch (kind) {
 	case PRL_EVENT_LOG_STATE_TX:
@@ -2508,7 +2524,15 @@ static int command_prllog(int argc, const char **argv)
 			       sizeof(prl_event_log_buffer));
 		}
 		return EC_SUCCESS;
+	} else if (argc == 2 && strcmp("start", argv[1]) == 0) {
+		prl_log_stop_on_reset = false;
+		prl_log_active = true;
+	} else if (argc == 2 && strcmp("stop", argv[1]) == 0) {
+		prl_log_active = false;
+	} else if (argc == 2 && strcmp("stop-on-reset", argv[1]) == 0) {
+		prl_log_stop_on_reset = true;
 	} else if (argc != 1) {
+		CPRINTS("usage: prllog [clear|start|stop|stop-on-reset]\n");
 		return EC_ERROR_PARAM1;
 	}
 
