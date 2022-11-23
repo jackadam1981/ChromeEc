@@ -70,6 +70,30 @@
       },
       "revId": "e17ca2eb2d50f00c09e4f7ad974853876d32fb03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4082003_e947a1c2",
+        "filename": "board/gaelin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-23T06:23:36Z",
+      "side": 1,
+      "message": "Is it urgent to have this patch now? I think it would be better to know more detail about how you control this pin instead of merge the partial code.",
+      "parentUuid": "9dff8621_334e2e15",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 38
+      },
+      "revId": "e17ca2eb2d50f00c09e4f7ad974853876d32fb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
