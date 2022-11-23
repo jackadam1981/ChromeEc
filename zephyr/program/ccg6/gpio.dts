@@ -15,6 +15,20 @@
 			gpios = <&gpiod 5 GPIO_INPUT>;
 		};
 
+		/* Interrupts */
+		smc_lid: smc-lid {
+			gpios = <&gpio0 1 (GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+		smc_onoff_n: smc-onoff-n {
+			gpios = <&gpiod 2 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		bc_acok: bc-acok-ec {
+			gpios = <&gpio0 2 GPIO_INPUT>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
+
 		/* unimplemented GPIOs */
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
