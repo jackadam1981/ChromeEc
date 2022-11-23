@@ -94,6 +94,30 @@
       },
       "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4f280d_b18fc794",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T18:16:05Z",
+      "side": 1,
+      "message": "Yes - I like the approach for the pi3usb9201 device and emulator.",
+      "parentUuid": "e86dc2c4_4c2bb9c8",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
