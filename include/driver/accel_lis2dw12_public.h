@@ -8,8 +8,6 @@
 #ifndef __CROS_EC_DRIVER_ACCEL_LIS2DW12_PUBLIC_H
 #define __CROS_EC_DRIVER_ACCEL_LIS2DW12_PUBLIC_H
 
-#include "gpio_signal.h"
-
 extern const struct accelgyro_drv lis2dw12_drv;
 
 /* I2C ADDRESS DEFINITIONS
@@ -31,6 +29,7 @@ extern const struct accelgyro_drv lis2dw12_drv;
 #define LIS2DW12_ODR_MAX_VAL \
 	MOTION_MAX_SENSOR_FREQUENCY(1600000, LIS2DW12_ODR_MIN_VAL)
 
+enum gpio_signal;
 void lis2dw12_interrupt(enum gpio_signal signal);
 
 #endif /* __CROS_EC_DRIVER_ACCEL_LIS2DW12_PUBLIC_H */
