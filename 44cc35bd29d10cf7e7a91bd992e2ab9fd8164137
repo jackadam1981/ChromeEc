@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d937c9ff_11454bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T18:28:08Z",
+      "side": 1,
+      "message": "You may need to add CONFIG_WATCHDOG to the util/config_allowed.txt if the firmware-ec-cq fails.",
+      "revId": "44cc35bd29d10cf7e7a91bd992e2ab9fd8164137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
