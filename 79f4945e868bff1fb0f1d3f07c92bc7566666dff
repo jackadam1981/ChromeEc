@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac32aef_bb61d649",
+        "filename": "zephyr/test/drivers/default/src/motion_sense/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2022-11-23T22:11:11Z",
+      "side": 1,
+      "message": "i see this is already in test/motion_common.h.\nnot sure that file is intended to be included by various motion\ntests? there\u0027s also a similar extern declaration in\ntest/motion_lid.c. we should not have externs like this\nin test/*.c... probably anywhere.\n\nwe have:\n\n```\n/common/motion_sense.c:52:test_export_static enum chipset_state_mask sensor_active;\n```\n\nwould it make sense to remove the externs and just include\nmotion_common.h in test/*?",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "79f4945e868bff1fb0f1d3f07c92bc7566666dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
