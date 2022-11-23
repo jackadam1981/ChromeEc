@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81fc7e0f_78b08630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T14:54:22Z",
+      "side": 1,
+      "message": "Bernardo: For the time being, we don\u0027t have a great way to write tests for board code. If you have more changes like this coming, you can put `LOW_COVERAGE_REASON\u003dIt\u0027s hard to test board code.` in the commit message, and that will override the incremental coverage. I voted Coverage+1 for this CL, so it should be good to go.",
+      "revId": "bd7737d3543dad5197f9e6fef317c14e5426e069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
