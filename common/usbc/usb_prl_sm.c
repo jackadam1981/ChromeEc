@@ -1241,9 +1241,11 @@ static void prl_tx_snk_pending_run(const int port)
 	 */
 	if (pe_in_frs_mode(port)) {
 		/* shortcut to save some i2c_xfer calls on the FRS path. */
+		cprints(CC_USBPD, "%s: skip TX_OK for FRS", __func__);
 		start_tx = true;
 	} else {
 		enum tcpc_cc_voltage_status cc1, cc2;
+		cprints(CC_USBPD, "%s: waiting for TX_OK", __func__);
 
 		tcpm_get_cc(port, &cc1, &cc2);
 		start_tx = (cc1 == TYPEC_CC_VOLT_RP_3_0 ||
@@ -1269,6 +1271,7 @@ static void prl_tx_snk_pending_run(const int port)
 		 * Rp = SinkTxOk
 		 */
 		else {
+			cprints(CC_USBPD, "%s: send message", __func__);
 			prl_tx_construct_message(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
