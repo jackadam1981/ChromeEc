@@ -51,8 +51,8 @@ static mux_state_t bb_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 /**
  * Utility functions
  */
-static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
-			   uint32_t *data)
+int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
+		    uint32_t *data)
 {
 	int rv, retry = 0;
 	uint8_t buf[BB_RETIMER_READ_SIZE];
@@ -91,8 +91,8 @@ static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
 	return EC_SUCCESS;
 }
 
-static int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
-			    uint32_t data)
+int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
+		     uint32_t data)
 {
 	int rv, retry = 0;
 	uint8_t buf[BB_RETIMER_WRITE_SIZE];
