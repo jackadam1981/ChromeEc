@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13f4867_7dc007c5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T17:14:57Z",
+      "side": 1,
+      "message": "Any reason not to make this a part of `dpm`?",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c878da_773cbcd5",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T17:14:57Z",
+      "side": 1,
+      "message": "Should this data structure be synchronized?",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806ac62f_416070c4",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T17:14:57Z",
+      "side": 1,
+      "message": "Can you think of a reason that the EC would want to tell the AP about an unsolicited VDM response?",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a12cdd_12eb4e4a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 7352,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T17:14:57Z",
+      "side": 1,
+      "message": "Nit: Since this isn\u0027t a number of bytes, I wouldn\u0027t call it \"size.\" Maybe `vdm_response_num_objects`?",
+      "revId": "77ada49d3522001b73791e7133ffeeb494f27459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
