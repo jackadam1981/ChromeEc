@@ -46,6 +46,30 @@
       },
       "revId": "6fb0f4ed93308fb1a66b8030d7ac015afd07ad93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd164f3_4977f152",
+        "filename": "common/spi/flash_reg/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T17:51:43Z",
+      "side": 1,
+      "message": "You could try enabling Cmake tracing to see what is happening.\n\nhttps://crrev.com/c/4051688 is what I used to enable tracing.",
+      "parentUuid": "d7f5ab02_efde0cbd",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "6fb0f4ed93308fb1a66b8030d7ac015afd07ad93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
