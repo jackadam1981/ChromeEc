@@ -83,7 +83,7 @@ void ap_power_set_active_wake_mask(void)
 }
 
 #else /* CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI */
-static void ap_power_set_active_wake_mask(void)
+void ap_power_set_active_wake_mask(void)
 {
 }
 #endif /* CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI */

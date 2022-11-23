@@ -24,6 +24,13 @@ translate_ap_power_state(enum power_states_ndsx ap_power_state)
 	}
 }
 
+#ifndef CONFIG_HOSTCMD_X86
+int get_lazy_wake_mask(enum power_state state, host_event_t *mask)
+{
+	return 0;
+}
+#endif
+
 int ap_power_get_lazy_wake_mask(enum power_states_ndsx state,
 				host_event_t *mask)
 {

@@ -15,6 +15,57 @@
 			gpios = <&gpiod 5 GPIO_INPUT>;
 		};
 
+		/* Power sequencing */
+		all_sys_pwrgd: all-sys-pwrgd {
+			gpios = <&gpio7 0 GPIO_INPUT>;
+			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
+		};
+		en_pp3300_a: ec-ds3-r {
+			gpios = <&gpioc 4 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_EN_PP3300_A";
+		};
+		rsmrst_pwrgd: rsmrst-pwrgd {
+			gpios = <&gpio6 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			enum-name = "GPIO_PG_EC_RSMRST_ODL";
+		};
+		ec_pch_rsmrst_l: pm-rsmrst-r-n {
+			gpios = <&gpioa 4 GPIO_OUTPUT_LOW>; /* 1.8V */
+			enum-name = "GPIO_PCH_RSMRST_L";
+		};
+		pch_slp_s0_n: pch-slp-s0-n-ec {
+			gpios = <&gpioa 1 GPIO_INPUT>;
+			enum-name = "GPIO_PCH_SLP_S0_L"; /* 1.8V */
+		};
+		ec_pch_pwrok_od: pch-pwrok-ec-r {
+			gpios = <&gpiod 3 GPIO_ODR_LOW>;
+			enum-name = "GPIO_PCH_PWROK";
+		};
+		sys_pwrok_ec: sys-pwrok-ec {
+			gpios = <&gpiof 5 GPIO_ODR_LOW>;
+			enum-name = "GPIO_PCH_SYS_PWROK";
+		};
+		sys_rst_odl: sys-rst-odl-ec {
+			gpios = <&gpioc 5 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_SYS_RESET_L";
+		};
+		pch_slp_s3_n: pm-slp-s3-n-ec {
+			gpios = <&gpiob 0 GPIO_INPUT>; /* 1.8V */
+			enum-name = "GPIO_PCH_SLP_S3_L";
+		};
+		pch_slp_s4_n: pm-slp-s4-n-ec {
+			gpios = <&gpioa 5 GPIO_INPUT>; /* 1.8V */
+			enum-name = "GPIO_PCH_SLP_S4_L";
+		};
+		/* smb-pch-alrt */
+		pch_slp_s5_n: pm-slp-s5-n-ec {
+			gpios = <&gpioa 3 GPIO_INPUT>; /* 1.8V */
+			enum-name = "GPIO_PCH_SLP_S5_L";
+		};
+		pm-pwrbtn-n-ec {
+			gpios = <&gpiod 4 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
+
 		/* Interrupts */
 		smc_lid: smc-lid {
 			gpios = <&gpio0 1 (GPIO_INPUT | GPIO_PULL_UP)>;

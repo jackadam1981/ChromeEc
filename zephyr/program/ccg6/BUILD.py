@@ -11,5 +11,6 @@ register_npcx_project(
         here / "gpio.dts",
         here / "i2c.dts",
         here / "interrupts.dts",
+        here / "power_signals.dts",
     ],
 )
