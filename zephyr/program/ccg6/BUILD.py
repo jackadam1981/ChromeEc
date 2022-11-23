@@ -7,5 +7,8 @@
 register_npcx_project(
     project_name="ccg6",
     zephyr_board="npcx9m3f",
-    dts_overlays=[here / "gpio.dts"],
+    dts_overlays=[
+        here / "gpio.dts",
+        here / "i2c.dts",
+    ],
 )
