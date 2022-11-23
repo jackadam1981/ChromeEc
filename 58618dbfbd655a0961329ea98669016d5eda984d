@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6035bee0_d747fc22",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T17:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c727438_acfcbae9",
+      "range": {
+        "startLine": 213,
+        "startChar": 8,
+        "endLine": 215,
+        "endChar": 20
+      },
+      "revId": "58618dbfbd655a0961329ea98669016d5eda984d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c030d22c_0d37bb13",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-23T17:16:07Z",
       "side": 1,
       "message": "nit: prefer to declare the suite near the top by before/after for context",
+      "revId": "58618dbfbd655a0961329ea98669016d5eda984d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04547d3_3302b925",
+        "filename": "zephyr/test/drivers/usbc_ctvpd/src/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T17:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c030d22c_0d37bb13",
       "revId": "58618dbfbd655a0961329ea98669016d5eda984d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
