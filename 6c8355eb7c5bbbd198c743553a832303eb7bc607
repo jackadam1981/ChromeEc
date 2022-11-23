@@ -118,6 +118,30 @@
       },
       "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04a00be_4a6b57a4",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-23T18:43:32Z",
+      "side": 1,
+      "message": "Cool, let\u0027s go with it. I\u0027ll do a pass of the others separately.",
+      "parentUuid": "3e4f280d_b18fc794",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
