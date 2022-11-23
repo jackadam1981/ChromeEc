@@ -16,6 +16,7 @@
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "driver/retimer/bb_retimer.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/tcpci.h"
@@ -112,6 +113,30 @@ BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
 
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+int board_virtual_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+{
+	int rv;
+	uint32_t retimer_con_reg = 0;
+
+	rv = bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE,
+			     &retimer_con_reg);
+	if (rv != EC_SUCCESS) {
+		return rv;
+	}
+
+	if ((pd_get_identity_pid(me->usb_port) == USB_PID_HDMI_CARD &&
+	     pd_get_identity_vid(me->usb_port) == USB_VID_HDMI_CARD) &&
+	    mux_state & USB_PD_MUX_HPD_LVL)
+		retimer_con_reg |= BB_RETIMER_DP_CONNECTION;
+	else
+		retimer_con_reg &= ~BB_RETIMER_DP_CONNECTION;
+
+	/* Writing the register4 */
+	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+			      retimer_con_reg);
+	return rv;
+}
+
 /* USBC mux configuration - Alder Lake includes internal mux */
 static const struct usb_mux_chain usbc0_tcss_usb_mux = {
 	.mux =
@@ -119,6 +144,7 @@ static const struct usb_mux_chain usbc0_tcss_usb_mux = {
 			.usb_port = USBC_PORT_C0,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
+			.board_set = &board_virtual_mux_set,
 		},
 };
 static const struct usb_mux_chain usbc1_tcss_usb_mux = {
@@ -127,6 +153,7 @@ static const struct usb_mux_chain usbc1_tcss_usb_mux = {
 			.usb_port = USBC_PORT_C1,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
+			.board_set = &board_virtual_mux_set,
 		},
 };
 static const struct usb_mux_chain usbc2_tcss_usb_mux = {
@@ -135,6 +162,7 @@ static const struct usb_mux_chain usbc2_tcss_usb_mux = {
 			.usb_port = USBC_PORT_C2,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
+			.board_set = &board_virtual_mux_set,
 		},
 };
 static const struct usb_mux_chain usbc3_tcss_usb_mux = {
@@ -143,6 +171,7 @@ static const struct usb_mux_chain usbc3_tcss_usb_mux = {
 			.usb_port = USBC_PORT_C3,
 			.driver = &virtual_usb_mux_driver,
 			.hpd_update = &virtual_hpd_update,
+			.board_set = &board_virtual_mux_set,
 		},
 };
 
