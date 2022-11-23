@@ -70,6 +70,30 @@
       },
       "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86dc2c4_4c2bb9c8",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-23T15:25:38Z",
+      "side": 1,
+      "message": "For emulator driver that binds to the normal device binding? Yeah it\u0027s an option, then the normal driver AND the emulator would get turn on in testing and one of the two has to be disabled manually (if needed, for pi3usb9201 is not).\n\nDid it for testing for pi3usb9201 in http://crrev.com/c/4051187, is that what you meant?\n\nI think it\u0027s fine to use that pattern for emulator with a matching driver and the normal one for emulators with a dedicated compatible (gpio, pwm...). Unless we can come up with a good reason why we want to use those outside of testing.",
+      "parentUuid": "e2214198_3716b5cd",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "6c8355eb7c5bbbd198c743553a832303eb7bc607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
