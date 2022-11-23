@@ -51,8 +51,8 @@ static mux_state_t bb_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 /**
  * Utility functions
  */
-static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
-			   uint32_t *data)
+int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
+		    uint32_t *data)
 {
 	int rv, retry = 0;
 	uint8_t buf[BB_RETIMER_READ_SIZE];
@@ -91,8 +91,8 @@ static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
 	return EC_SUCCESS;
 }
 
-static int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
-			    uint32_t data)
+int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
+		     uint32_t data)
 {
 	int rv, retry = 0;
 	uint8_t buf[BB_RETIMER_WRITE_SIZE];
@@ -523,6 +523,28 @@ static int bb_set_idle_mode(const struct usb_mux *me, bool idle)
 	return rv;
 }
 
+int bb_retimer_set_dp_connection(const struct usb_mux *me, bool enable)
+{
+	int rv;
+	uint32_t reg_val = 0;
+	int port = me->usb_port;
+
+	mutex_lock(&bb_retimer_lock[port]);
+
+	rv = bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE, &reg_val);
+	if (rv != EC_SUCCESS) {
+		mutex_unlock(&bb_retimer_lock[port]);
+		return rv;
+	}
+	/* Bit 8: BB_RETIMER_DP_CONNECTION */
+	WRITE_BIT(reg_val, 8, enable);
+	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, reg_val);
+
+	mutex_unlock(&bb_retimer_lock[port]);
+
+	return rv;
+}
+
 void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
 			   bool *ack_required)
 {
@@ -566,6 +588,23 @@ void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
 	bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, retimer_con_reg);
 
 	mutex_unlock(&bb_retimer_lock[port]);
+}
+
+void bb_retimer_dp_update(const struct usb_mux *me, mux_state_t hpd_state,
+			  bool *ack_required)
+{
+	int port = me->usb_port;
+	uint16_t USB_VID = pd_get_identity_vid(port);
+	uint16_t USB_PID = pd_get_identity_pid(port);
+
+	bb_retimer_hpd_update(me, hpd_state, ack_required);
+
+	if (hpd_state & USB_PD_MUX_HPD_LVL)
+		bb_retimer_set_dp_connection(me, true);
+	else if (((USB_PID == USB_PID_FRAMEWORK_HDMI_CARD) ||
+		  (USB_PID == USB_PID_FRAMEWORK_DP_CARD)) &&
+		 (USB_VID == USB_VID_FRAMEWORK))
+		bb_retimer_set_dp_connection(me, false);
 }
 
 #ifdef CONFIG_ZEPHYR
