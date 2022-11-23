@@ -94,6 +94,30 @@
       },
       "revId": "e17ca2eb2d50f00c09e4f7ad974853876d32fb03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c90745_2e6da698",
+        "filename": "board/gaelin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-11-23T06:46:35Z",
+      "side": 1,
+      "message": "I think this is needed for power on validation to make sure panel can display ChromeOS UI after booting. We can remove suspend hook to keep backlight and speaker always on first",
+      "parentUuid": "a4082003_e947a1c2",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 38
+      },
+      "revId": "e17ca2eb2d50f00c09e4f7ad974853876d32fb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
