@@ -13,6 +13,7 @@
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "driver/retimer/bb_retimer.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/tcpci.h"
@@ -112,6 +113,68 @@ BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
 
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+/*
+ * Mutex for BB_RETIMER_REG_CONNECTION_STATE register, which can be
+ * accessed from multiple tasks.
+ */
+static mutex_t bb_retimer_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+void board_bb_retimer_hpd_update(const struct usb_mux *me,
+				 mux_state_t hpd_state, bool *ack_required)
+{
+	uint32_t retimer_con_reg = 0;
+	int port = me->usb_port;
+	uint16_t USB_VID = pd_get_identity_vid(port);
+	uint16_t USB_PID = pd_get_identity_pid(port);
+
+	bb_retimer_hpd_update(me, hpd_state, ack_required);
+
+	mutex_lock(&bb_retimer_lock[port]);
+
+	if (bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE,
+			    &retimer_con_reg) != EC_SUCCESS) {
+		mutex_unlock(&bb_retimer_lock[port]);
+		return;
+	}
+
+	if (hpd_state & USB_PD_MUX_HPD_LVL)
+		retimer_con_reg |= BB_RETIMER_DP_CONNECTION;
+	else if (((USB_PID == USB_PID_FRAMEWORK_HDMI_CARD) ||
+		  (USB_PID == USB_PID_FRAMEWORK_DP_CARD)) &&
+		 (USB_VID == USB_VID_FRAMEWORK))
+		retimer_con_reg &= ~BB_RETIMER_DP_CONNECTION;
+
+	/* Writing the register4 */
+	bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, retimer_con_reg);
+
+	mutex_unlock(&bb_retimer_lock[port]);
+}
+
+int board_virtual_mux_set(const struct usb_mux *me, mux_state_t mux_state)
+{
+	int rv;
+	uint32_t retimer_con_reg = 0;
+	int port = me->usb_port;
+
+	mutex_lock(&bb_retimer_lock[port]);
+
+	rv = bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE,
+			     &retimer_con_reg);
+	if (rv != EC_SUCCESS) {
+		mutex_unlock(&bb_retimer_lock[port]);
+		return rv;
+	}
+
+	retimer_con_reg &= ~BB_RETIMER_DP_CONNECTION;
+
+	/* Writing the register4 */
+	rv = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+			      retimer_con_reg);
+
+	mutex_unlock(&bb_retimer_lock[port]);
+	return rv;
+}
+
 /* USBC mux configuration - Alder Lake includes internal mux */
 static const struct usb_mux_chain usbc0_tcss_usb_mux = {
 	.mux =
@@ -159,9 +222,10 @@ const struct usb_mux_chain usb_muxes[] = {
 			 */
 			.flags = USB_MUX_FLAG_CAN_IDLE,
 			.driver = &bb_usb_retimer,
-			.hpd_update = bb_retimer_hpd_update,
+			.hpd_update = board_bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C0_C1_MUX,
 			.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
+			.board_set = &board_virtual_mux_set,
 		},
 		.next = &usbc0_tcss_usb_mux,
 	},
@@ -170,9 +234,10 @@ const struct usb_mux_chain usb_muxes[] = {
 			.usb_port = USBC_PORT_C1,
 			.flags = USB_MUX_FLAG_CAN_IDLE,
 			.driver = &bb_usb_retimer,
-			.hpd_update = bb_retimer_hpd_update,
+			.hpd_update = board_bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C0_C1_MUX,
 			.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
+			.board_set = &board_virtual_mux_set,
 		},
 		.next = &usbc1_tcss_usb_mux,
 	},
@@ -181,9 +246,10 @@ const struct usb_mux_chain usb_muxes[] = {
 			.usb_port = USBC_PORT_C2,
 			.flags = USB_MUX_FLAG_CAN_IDLE,
 			.driver = &bb_usb_retimer,
-			.hpd_update = bb_retimer_hpd_update,
+			.hpd_update = board_bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C2_C3_MUX,
 			.i2c_addr_flags = USBC_PORT_C2_BB_RETIMER_I2C_ADDR,
+			.board_set = &board_virtual_mux_set,
 		},
 		.next = &usbc2_tcss_usb_mux,
 	},
@@ -192,9 +258,10 @@ const struct usb_mux_chain usb_muxes[] = {
 			.usb_port = USBC_PORT_C3,
 			.flags = USB_MUX_FLAG_CAN_IDLE,
 			.driver = &bb_usb_retimer,
-			.hpd_update = bb_retimer_hpd_update,
+			.hpd_update = board_bb_retimer_hpd_update,
 			.i2c_port = I2C_PORT_USB_C2_C3_MUX,
 			.i2c_addr_flags = USBC_PORT_C3_BB_RETIMER_I2C_ADDR,
+			.board_set = &board_virtual_mux_set,
 		},
 		.next = &usbc3_tcss_usb_mux,
 	},
