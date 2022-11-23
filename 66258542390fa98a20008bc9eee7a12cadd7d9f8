@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4931c72f_b6d9df07",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T22:23:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3a3c77_5985056b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "66258542390fa98a20008bc9eee7a12cadd7d9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcfe303a_58607776",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16eb789f_2a0c622d",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T22:23:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcfe303a_58607776",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "66258542390fa98a20008bc9eee7a12cadd7d9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c06e0188_4d30fb4c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-23T22:04:42Z",
       "side": 1,
       "message": "-",
+      "range": {
+        "startLine": 285,
+        "startChar": 36,
+        "endLine": 285,
+        "endChar": 37
+      },
+      "revId": "66258542390fa98a20008bc9eee7a12cadd7d9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6cc58f_2dd4bd6b",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T22:23:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c06e0188_4d30fb4c",
       "range": {
         "startLine": 285,
         "startChar": 36,
