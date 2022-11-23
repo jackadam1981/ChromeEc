@@ -22,6 +22,30 @@
       },
       "revId": "4568d055c96278d6b95f1f33baabc7123039d211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feab2723_40896d54",
+        "filename": "firmware_builder.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-23T00:02:00Z",
+      "side": 1,
+      "message": "I\u0027ll leave that as an exercise for the person who added it to the ebuild. @mruthven@chromium.org crrev/c/967158",
+      "parentUuid": "f3eba8d8_1994f259",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 66
+      },
+      "revId": "4568d055c96278d6b95f1f33baabc7123039d211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
