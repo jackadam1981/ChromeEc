@@ -63,6 +63,30 @@
       },
       "revId": "702a4455fbb4d1c9d29de13ca8c2bde6b673fae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a5b0b5_85ccd836",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T22:22:05Z",
+      "side": 1,
+      "message": "In that case, please move to a separate CL so this can be reverted easier if required in the future.",
+      "parentUuid": "7326de5e_61409a7b",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 6
+      },
+      "revId": "702a4455fbb4d1c9d29de13ca8c2bde6b673fae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
