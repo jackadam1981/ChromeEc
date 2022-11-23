@@ -22,6 +22,30 @@
       },
       "revId": "b5d1956e19be424cb931ffd1e6b37601b6a2272d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9ddae7_1023b35c",
+        "filename": "zephyr/test/drivers/i2c_controller/src/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T18:17:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f54ef2c4_291d27d3",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "b5d1956e19be424cb931ffd1e6b37601b6a2272d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
