@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "442b5087_c45504e0",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T19:13:51Z",
+      "side": 1,
+      "message": "To be consistent with our approach so far, you could just add a `bool` to the partner state that says whether to Accept or Reject any Enter USB and set that field from the test setup. We\u0027ve done very little message validation on the partner side so far.\n\nIf you wanted to validate the EUDO in detail, you could do it from the message log in the test.\n\nIf you wanted to validate messages on the partner side, I\u0027d just store an EUDO in the partner state during test setup and then compare to it exactly. I wouldn\u0027t complicate it by trying to put wildcards in EUDO fields. If we want to do something complicated like that, we could encode it in test logic.\n\nOne thing you could potentially do is only validate the fields that should be obvious from the discovery info provided by the partner/cable. Looking through the PD description of _Enter_USB_, I think that all of the fields can either be derived from the discovery data or should currently be the same for all USB4 CrOS devices. That would avoid storing redundant or potentially inconsistent data in the partner.\n\nI think, for the purpose of this first set of tests, what I\u0027d most prefer would be to do zero validation on the partner side and just configure Accept/Reject. My second choice would be to validate the EUDO based on the discovery data that\u0027s already there.",
+      "parentUuid": "4c07e9cf_25541a39",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6c8e6dc_cd55cc58",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 8
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "the config for USB4 is enabled by default in drivers/prj.conf, but DATA_RESET is not. I didn\u0027t see the configs for either TBT/DP mode enabled specifically for those tests, so I checked to see where the configs are set for the test configuration.",
       "parentUuid": "fdf152a9_d32d31f9",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceceefc8_9ee6aca2",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T19:13:51Z",
+      "side": 1,
+      "message": "Ack. I\u0027m a little surprised that we enabled USB4 by default, since herobrine doesn\u0027t support it, but that\u0027s fine.",
+      "parentUuid": "d46d6e52_cfcff56b",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -357,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bdddefd_5f3e0f72",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T19:13:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3815267e_49ab74c0",
+      "range": {
+        "startLine": 211,
+        "startChar": 37,
+        "endLine": 211,
+        "endChar": 46
+      },
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7f6ee20_4b65d83d",
@@ -392,6 +452,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "600074f6_172ae544",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T19:13:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "741430b3_972744bb",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a547aca_35307785",
@@ -423,6 +501,24 @@
       "side": 1,
       "message": "I can see this both ways. Currently, this test is specific to a passive cable with USB4 support. So it\u0027s verifying that a passive cable with USB4 support is found prior to attempting to simulating the AP requesting to attempt USB4 entry. When the test cases get expanded to handle active cables with USB3.2 support, then there would need to be tests to make sure those cable checks work.",
       "parentUuid": "7a547aca_35307785",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37eb7453_8cd736d6",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T19:13:51Z",
+      "side": 1,
+      "message": "Well, yeah, but the test should be basically the same for each cable type, in that you expect the mux to end up in USB4 state. Seeing that the TCPM discovered the cable doesn\u0027t imply that the entry was correct, but seeing the final mode implies that the discovery was correct. The discovery check also shouldn\u0027t really need to be repeated for each cable type. The host command is just repeating what the cable said.\n\nIf you wanted to verify that the behavior is different with different cable types, you\u0027d want to either check the PD message log or maintain some state in the cable emulator to verify that the TCPM entered the right mode.\n\nBut this is a pretty low priority. I\u0027m fine with you submitting as is.",
+      "parentUuid": "5903b950_8cf9e24c",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
