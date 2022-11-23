@@ -65,6 +65,14 @@
 #define PWR_SIGNAL_ENUM(id) DT_STRING_UPPER_TOKEN(id, enum_name)
 
 #define PWR_SIGNAL_ENUM_COMMA(id) PWR_SIGNAL_ENUM(id),
+
+//#if CONFIG_TEST_BOARD_POWER
+//enum power_signal {
+//	PWR_EC_PCH_RSMRST,
+//	PWR_EN_PP3300_A,
+//	PWR_RSMRST,
+//};
+//#else
 /**
  * @brief Enum of all power signals.
  *
@@ -85,6 +93,7 @@ enum power_signal {
 						       PWR_SIGNAL_ENUM_COMMA)
 					POWER_SIGNAL_COUNT,
 };
+//#endif
 
 #undef PWR_SIGNAL_ENUM_COMMA
 
