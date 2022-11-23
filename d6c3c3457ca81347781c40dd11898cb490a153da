@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f5134d_8f2b45b5",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-23T18:00:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d4027fc_e26d6e40",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdbd22b5_584f1e9e",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "498b5d7c_dadfc5e2",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-23T18:00:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bdbd22b5_584f1e9e",
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "609ce42d_c18d4cd2",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-11-22T19:01:55Z",
       "side": 1,
       "message": "EC_RES_RESPONSE_TOO_BIG",
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c4a8b29_c8334c62",
+        "filename": "common/system_boottime.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-23T18:00:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "609ce42d_c18d4cd2",
       "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee7aeda_566ec001",
+        "filename": "include/system_boottime.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-23T18:00:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca473b35_83cfa07e",
+      "range": {
+        "startLine": 6,
+        "startChar": 25,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "476833e3_554f7ddb",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-11-22T19:01:55Z",
       "side": 1,
       "message": "I believe this should be spaces, not tabs. Didn\u0027t clang_format complain on this?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "d6c3c3457ca81347781c40dd11898cb490a153da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ba80ae_485d577b",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 25
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2022-11-23T18:00:08Z",
+      "side": 1,
+      "message": "ACK. Yes you are right.. clang_format didn\u0027t complain. Looks like clang_format is excluding .txt files",
+      "parentUuid": "476833e3_554f7ddb",
       "range": {
         "startLine": 149,
         "startChar": 0,
