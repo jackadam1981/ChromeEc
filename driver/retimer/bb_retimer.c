@@ -51,8 +51,8 @@ static mux_state_t bb_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 /**
  * Utility functions
  */
-static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
-			   uint32_t *data)
+int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
+		    uint32_t *data)
 {
 	int rv, retry = 0;
 	uint8_t buf[BB_RETIMER_READ_SIZE];
@@ -91,8 +91,8 @@ static int bb_retimer_read(const struct usb_mux *me, const uint8_t offset,
 	return EC_SUCCESS;
 }
 
-static int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
-			    uint32_t data)
+int bb_retimer_write(const struct usb_mux *me, const uint8_t offset,
+		     uint32_t data)
 {
 	int rv, retry = 0;
 	uint8_t buf[BB_RETIMER_WRITE_SIZE];
@@ -561,6 +561,37 @@ void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
 		retimer_con_reg |= BB_RETIMER_HPD_LVL;
 	else
 		retimer_con_reg &= ~BB_RETIMER_HPD_LVL;
+
+	/* Writing the register4 */
+	bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, retimer_con_reg);
+
+	mutex_unlock(&bb_retimer_lock[port]);
+}
+
+void bb_retimer_dp_update(const struct usb_mux *me, mux_state_t hpd_state,
+			  bool *ack_required)
+{
+	uint32_t retimer_con_reg = 0;
+	int port = me->usb_port;
+	uint16_t USB_VID = pd_get_identity_vid(port);
+	uint16_t USB_PID = pd_get_identity_pid(port);
+
+	bb_retimer_hpd_update(me, hpd_state, ack_required);
+
+	mutex_lock(&bb_retimer_lock[port]);
+
+	if (bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE,
+			    &retimer_con_reg) != EC_SUCCESS) {
+		mutex_unlock(&bb_retimer_lock[port]);
+		return;
+	}
+
+	if (hpd_state & USB_PD_MUX_HPD_LVL)
+		retimer_con_reg |= BB_RETIMER_DP_CONNECTION;
+	else if (((USB_PID == USB_PID_FRAMEWORK_HDMI_CARD) ||
+		  (USB_PID == USB_PID_FRAMEWORK_DP_CARD)) &&
+		 (USB_VID == USB_VID_FRAMEWORK))
+		retimer_con_reg &= ~BB_RETIMER_DP_CONNECTION;
 
 	/* Writing the register4 */
 	bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE, retimer_con_reg);
