@@ -22,6 +22,30 @@
       },
       "revId": "a7f8462a030b91384af53ffd5e40384b33d354dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f64d4e_111ea148",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-11-23T22:12:08Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ll update the commit message. Strictly speaking I don\u0027t think this commit is required, but normally the BLD symbol will be set to RO or RW depending on the build type, but no BLD flag gets set for host tests. This change allowed me to do some early testing of BLD tests but wasn\u0027t needed after that.",
+      "parentUuid": "d8fc85fd_0047c976",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "a7f8462a030b91384af53ffd5e40384b33d354dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
