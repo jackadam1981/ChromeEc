@@ -34,6 +34,24 @@
       "parentUuid": "9a0a649e_0bfa5ee9",
       "revId": "45b33e7a2e0299fa6c22c393d4b171e891879c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe99de5_14bfe2b6",
+        "filename": "board/moli/board.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2022-11-23T02:43:45Z",
+      "side": 1,
+      "message": "I mean, by perhaps reading the GPIO to set the state instead of assuming that they\u0027re all off.",
+      "parentUuid": "47a73ad1_fc1c4e66",
+      "revId": "45b33e7a2e0299fa6c22c393d4b171e891879c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
