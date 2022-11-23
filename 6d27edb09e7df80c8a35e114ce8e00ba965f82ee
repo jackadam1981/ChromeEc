@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5bd3305_a0c3375f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-23T04:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75edf7ce_e0786b50",
+      "revId": "6d27edb09e7df80c8a35e114ce8e00ba965f82ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6b6f492_346ff338",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-23T03:48:47Z",
       "side": 1,
       "message": "What\u0027s correct and how does it differ from what it did before?",
+      "range": {
+        "startLine": 14,
+        "startChar": 57,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "6d27edb09e7df80c8a35e114ce8e00ba965f82ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ed3e41_32bb2506",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-23T04:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6b6f492_346ff338",
       "range": {
         "startLine": 14,
         "startChar": 57,
