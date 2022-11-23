@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f16411e_ccb02e0f",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T18:39:33Z",
+      "side": 1,
+      "message": "Nit: This isn\u0027t just identity responses.",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d66156_60304e78",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T18:39:33Z",
+      "side": 1,
+      "message": "It seems like each test rifs on the discovery contents and relies on the previous test to have left them in a basically normal state. It would probably make more sense to do this in the `before` function.",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a138b1c0_748fdd19",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T18:39:33Z",
+      "side": 1,
+      "message": "When this feature is turned on, do you envision that the AP will be responsible for discovery?",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e469e86_6357bfe4",
+        "filename": "zephyr/test/drivers/ap_vdm_control/src/ap_vdm_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-23T18:39:33Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like that informative of an error message. In fact, I suspect that it might be confusing to the reader. I don\u0027t think it\u0027s necessarily worth coming up with a better one, but note that assert error messages are now optional.",
+      "revId": "532bda5bff2bd0e172d42d4cf3e1ce1c20b782a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
