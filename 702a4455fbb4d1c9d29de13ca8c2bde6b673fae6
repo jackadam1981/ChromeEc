@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7392ad10_f9424d58",
+        "filename": "common/panic_output.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-23T21:52:20Z",
+      "side": 0,
+      "message": "This was unreachable due to the checks on jdata_ptr-\u003eversion up above, so I removed it and set move_size to 0 by default.",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 2
+      },
+      "revId": "702a4455fbb4d1c9d29de13ca8c2bde6b673fae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
