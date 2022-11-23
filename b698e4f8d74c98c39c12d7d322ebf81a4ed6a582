@@ -16,6 +16,24 @@
       "message": "In this case the option works out well, but normally you\u0027d end up with two driver trying to claim the same __device_dts_ord_XX, then this would have to be manually set to `CONFIG_PLATFORM_EC_BC12_DETECT_PI3USB9201\u003dn`",
       "revId": "b698e4f8d74c98c39c12d7d322ebf81a4ed6a582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ca4e22_bae5a83b",
+        "filename": "zephyr/test/vboot_efs2/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T18:13:18Z",
+      "side": 0,
+      "message": "The emulator and drivers use different structs/namespaces. So I think this is safe.",
+      "parentUuid": "97955f0e_7aa22f1c",
+      "revId": "b698e4f8d74c98c39c12d7d322ebf81a4ed6a582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

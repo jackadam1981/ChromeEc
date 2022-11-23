@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3504abcc_772f637a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-23T18:13:18Z",
+      "side": 1,
+      "message": "For testing I2C devices, we will always have both the driver and the emulator.  I\u0027m not aware of any case where we would need just the I2C device emulator without also having the corresponding driver enabled.\n\nBus type emulators, such as `zephyr,i2c-emul-controller` replace a real SoC driver such as `nuvoton,npcx-i2c-port`. So we won\u0027t run into any problems there.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 64
+      },
+      "revId": "0cb76e35c070089ee5451270f240793f5588cdde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
