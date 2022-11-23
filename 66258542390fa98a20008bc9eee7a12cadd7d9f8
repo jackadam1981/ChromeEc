@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcfe303a_58607776",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-11-23T22:04:42Z",
+      "side": 1,
+      "message": "drop the extra brackets?\n\nIt is a shame that port !\u003d I2C_PORT_USB_C0",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "66258542390fa98a20008bc9eee7a12cadd7d9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c06e0188_4d30fb4c",
+        "filename": "zephyr/test/drivers/default/src/i2c_passthru.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-11-23T22:04:42Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 285,
+        "startChar": 36,
+        "endLine": 285,
+        "endChar": 37
+      },
+      "revId": "66258542390fa98a20008bc9eee7a12cadd7d9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
