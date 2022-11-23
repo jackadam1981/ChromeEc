@@ -16,6 +16,24 @@
       "message": "Should you also initialize the monitor on state in here as well?",
       "revId": "45b33e7a2e0299fa6c22c393d4b171e891879c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a73ad1_fc1c4e66",
+        "filename": "board/moli/board.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2022-11-23T00:52:11Z",
+      "side": 1,
+      "message": "did you mean something like `monitors[i].state \u003d MONITOR_OFF` in board_init?\n\nIn `static struct monitor_config monitors[MONITOR_COUNT]`, it have defined `.state \u003d MONITOR_OFF`, is this OK for the initialize the monitor on state?",
+      "parentUuid": "9a0a649e_0bfa5ee9",
+      "revId": "45b33e7a2e0299fa6c22c393d4b171e891879c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
