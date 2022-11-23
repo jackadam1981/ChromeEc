@@ -45,11 +45,15 @@ target_include_directories(spi_flash_reg PUBLIC public)
 if(BOARD STREQUAL unit_testing)
   project(flash_reg)
 
-  # Set the sources for the test (must be done before find_package)
-  set(SOURCES src/spi_flash_reg_test.c)
-
+  unset(CMAKE_C_COMPILER)
+  unset(CMAKE_C_COMPILER CACHE)
+  unset(CMAKE_CXX_COMPILER)
+  unset(CMAKE_CXX_COMPILER CACHE)
   # Create the unittest libraries and binary
   find_package(Zephyr COMPONENTS unittest REQUIRED HINTS $ENV{ZEPHYR_BASE})
+
+  # Set the sources for the test
+  target_sources(testbinary PRIVATE src/spi_flash_reg_test.c)
 
   # Link the library being tested
   target_link_libraries(testbinary PRIVATE spi_flash_reg)
