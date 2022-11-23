@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1c6479_85b867d4",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1514887
+      },
+      "writtenOn": "2022-11-23T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52aa5f8d_ea6fd792",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "fb650e7335f86c46ff894e49db59f721ff1faac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8c43f04_05ad3314",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95b6ca3_13207309",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1514887
+      },
+      "writtenOn": "2022-11-23T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c43f04_05ad3314",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 14
+      },
+      "revId": "fb650e7335f86c46ff894e49db59f721ff1faac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "166cea61_fb123269",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-23T17:18:19Z",
       "side": 1,
       "message": "nit: use zassert_ok",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 32
+      },
+      "revId": "fb650e7335f86c46ff894e49db59f721ff1faac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce748247_b9933d39",
+        "filename": "zephyr/test/drivers/default/src/tcpm_header.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1514887
+      },
+      "writtenOn": "2022-11-23T17:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "166cea61_fb123269",
       "range": {
         "startLine": 94,
         "startChar": 1,
