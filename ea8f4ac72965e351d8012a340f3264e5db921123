@@ -16,6 +16,24 @@
       "message": "We should probably think about reducing the length of our filenames :-)",
       "revId": "ea8f4ac72965e351d8012a340f3264e5db921123",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0a9d8c_cf27823b",
+        "filename": "zephyr/test/drivers/default/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2022-11-23T22:03:32Z",
+      "side": 1,
+      "message": "I could rename it after the file (panic_output) instead of the full function name.",
+      "parentUuid": "119df589_3ad0e5e0",
+      "revId": "ea8f4ac72965e351d8012a340f3264e5db921123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
