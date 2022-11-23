@@ -46,6 +46,30 @@
       },
       "revId": "e17ca2eb2d50f00c09e4f7ad974853876d32fb03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dff8621_334e2e15",
+        "filename": "board/gaelin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2022-11-23T06:09:55Z",
+      "side": 1,
+      "message": "We can consider PC mode in this CL first.For HDMIN-In, maybe we can handle backlight and speaker power on/off based on HDMI detection by scaler IC, we can discuss in b:260063632 and implement in the other CL",
+      "parentUuid": "934a9516_0df1fe67",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 38
+      },
+      "revId": "e17ca2eb2d50f00c09e4f7ad974853876d32fb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
