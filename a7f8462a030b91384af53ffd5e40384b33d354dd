@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8fc85fd_0047c976",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1534724
+      },
+      "writtenOn": "2022-11-23T18:51:58Z",
+      "side": 1,
+      "message": "I am not familiar with this file and the `BLD` flag that we are adding.\n\nI assume this affects only host builds, right? Is it required to fix a particular issue?\n\nMaybe we can these details to the commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "a7f8462a030b91384af53ffd5e40384b33d354dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
