@@ -16,6 +16,23 @@
       "message": "Can you split the non-Nissa (generic) parts of this CL into a separate CL?\nThe Nissa specific changes can stack on top of that one.",
       "revId": "f5733ea317686cc8390b9bc46ada9c2c79bc3ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f25bd09_b17378ee",
+        "filename": "zephyr/program/nissa/craask/overlay.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-24T22:28:22Z",
+      "side": 1,
+      "message": "I don\u0027t think it would ever make sense for a user to disable these flags with this chip, so perhaps these should be hard-coded in tcpc_raa489000.h? (Alternately: does any user of this TCPC *not* set exactly these flags?)\n\nThis just seems error-prone since it requires the user to understand exactly what the possible flags mean and which actually apply to this TCPC.",
+      "revId": "f5733ea317686cc8390b9bc46ada9c2c79bc3ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
