@@ -16,6 +16,24 @@
       "message": "The right place for this would be the SM5803 driver itself, so that it would not require a board specific override, but the driver may not have a convenient API to hook into here.\nIt may be good to put some kind of comment or warning into the Kconfig where this device is selected in the driver itself somewhere, for the next board that gets designed with this part.",
       "revId": "9d8a332366763b2d2c8fc07dc3583a5d21b07883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85cfeb5a_e74a2af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-24T05:16:38Z",
+      "side": 1,
+      "message": "Putting this override in the driver would preclude any other board customization for this function, so I didn\u0027t want to do it that way. At this point it seems unlikely that any other program will use this charger, either.\n\nAdding a note to Kconfig seems reasonable, though.",
+      "parentUuid": "cb537074_1813aa25",
+      "revId": "9d8a332366763b2d2c8fc07dc3583a5d21b07883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
