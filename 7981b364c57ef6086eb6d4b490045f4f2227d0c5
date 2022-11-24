@@ -22,6 +22,30 @@
       },
       "revId": "7981b364c57ef6086eb6d4b490045f4f2227d0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda611ad_e80ee1b7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-11-24T14:02:41Z",
+      "side": 1,
+      "message": "Thanks, i believe this case is already handled in charger_get_params()\n\n\u0027chgnum\u0027 will be set to -1(CHARGE_PORT_NONE) if there is no active charge chip.\n\ncharger_get_voltage(chgnum, ..) and charger_get_input_current_limit(chgnum, ..) returns EC_ERROR_INVAL when chgnum\u003d-1 i.e \u0027CHARGE_PORT_NONE\u0027 is passed to the API\u0027s.",
+      "parentUuid": "23b99a92_8332cecd",
+      "range": {
+        "startLine": 1801,
+        "startChar": 6,
+        "endLine": 1801,
+        "endChar": 21
+      },
+      "revId": "7981b364c57ef6086eb6d4b490045f4f2227d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
