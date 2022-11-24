@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a28efc_dcf627b0",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-24T02:44:48Z",
+      "side": 1,
+      "message": "Changed to board_set_charge_limit, since this should probably account for board customizations.",
+      "parentUuid": "3fb4b13c_f32e0402",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "6b4fcc36c044fa192c2754a88035e95e948bbdf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "845bc968_f5eab8f5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-14T16:39:36Z",
       "side": 1,
       "message": "Why was the help text deleted?",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1039,
+        "endChar": 45
+      },
+      "revId": "6b4fcc36c044fa192c2754a88035e95e948bbdf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f87ccc_6da629eb",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-24T02:44:48Z",
+      "side": 1,
+      "message": "Probably got lost in a rebase. Restored.",
+      "parentUuid": "845bc968_f5eab8f5",
       "range": {
         "startLine": 1039,
         "startChar": 0,
