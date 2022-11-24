@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8dc947_d1046406",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-11-24T12:23:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f19b61c1_413810d0",
+      "range": {
+        "startLine": 127,
+        "startChar": 43,
+        "endLine": 128,
+        "endChar": 60
+      },
+      "revId": "cac5815015c55c068d352186742639696f82832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19e4e80e_dc3116e3",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-11-23T22:47:07Z",
       "side": 1,
       "message": "probably `USB_PID_FRAMEWORK_HDMI_CARD`.",
+      "range": {
+        "startLine": 858,
+        "startChar": 8,
+        "endLine": 858,
+        "endChar": 25
+      },
+      "revId": "cac5815015c55c068d352186742639696f82832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c086e9_768bff50",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1433632
+      },
+      "writtenOn": "2022-11-24T12:23:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60677776_b461a7e9",
       "range": {
         "startLine": 858,
         "startChar": 8,
