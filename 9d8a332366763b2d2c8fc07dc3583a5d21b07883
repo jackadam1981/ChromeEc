@@ -34,6 +34,24 @@
       "parentUuid": "cb537074_1813aa25",
       "revId": "9d8a332366763b2d2c8fc07dc3583a5d21b07883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc1ad468_b1d893b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-24T05:21:38Z",
+      "side": 1,
+      "message": "Yes, I understood that putting this board function in the driver is inappropriate, but it would be nice if the driver had a an API call that supported this kind of customisation - that\u0027s the problem with overrideable board functions, they are an inflexible and ugly form of customisation. Oh well, needs must...",
+      "parentUuid": "85cfeb5a_e74a2af2",
+      "revId": "9d8a332366763b2d2c8fc07dc3583a5d21b07883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
