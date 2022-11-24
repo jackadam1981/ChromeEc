@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5579163d_1a2420d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-24T00:51:31Z",
+      "side": 1,
+      "message": "tested by:\n`./twister -s \u003cpath to\u003e/drivers.default`",
+      "revId": "79f4945e868bff1fb0f1d3f07c92bc7566666dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ac32aef_bb61d649",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-11-23T22:11:11Z",
       "side": 1,
       "message": "i see this is already in test/motion_common.h.\nnot sure that file is intended to be included by various motion\ntests? there\u0027s also a similar extern declaration in\ntest/motion_lid.c. we should not have externs like this\nin test/*.c... probably anywhere.\n\nwe have:\n\n```\n/common/motion_sense.c:52:test_export_static enum chipset_state_mask sensor_active;\n```\n\nwould it make sense to remove the externs and just include\nmotion_common.h in test/*?",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "79f4945e868bff1fb0f1d3f07c92bc7566666dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fb587f_239460eb",
+        "filename": "zephyr/test/drivers/default/src/motion_sense/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-24T00:51:31Z",
+      "side": 1,
+      "message": "\u003e included by various motion tests? \n\nAs far as I understand there are 2 independent sets of tests, the one in `test/*` and the `zephyr/test/*`. Those are built and run separately. I\u0027m adding to the second one, so using an include from `test/*` doesn\u0027t make much sense here.\n\n\u003e remove the externs and just include motion_common.h in test/*?\n\nMaybe, but out of scope of this CL. I didn\u0027t even run those tests.",
+      "parentUuid": "9ac32aef_bb61d649",
       "range": {
         "startLine": 11,
         "startChar": 31,
