@@ -16,6 +16,24 @@
       "message": "Can you run `util/check_clang_format.py --fix [FILE]` to fix the format?",
       "revId": "ce175738abdca21f7611de9b74242d83fbdbc378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0197bde0_481b5de6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2022-11-24T00:51:04Z",
+      "side": 1,
+      "message": "I run util/check_clang_format.py --fix. But return No chlang-format issues found!",
+      "parentUuid": "4dbff805_730e61d3",
+      "revId": "ce175738abdca21f7611de9b74242d83fbdbc378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
