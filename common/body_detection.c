@@ -11,6 +11,7 @@
 #include "math_util.h"
 #include "motion_sense_fifo.h"
 #include "timer.h"
+#include "hooks.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
@@ -117,6 +118,8 @@ void body_detect_change_state(enum body_detect_states state, bool spoof)
 #ifdef CONFIG_BODY_DETECTION_NOTIFY_MODE_CHANGE
 	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 #endif
+
+	hook_notify(HOOK_BODY_DETECT_CHANGE);
 
 	/* state changing log */
 	CPRINTS("body_detect changed state to: %s body",
