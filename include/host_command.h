@@ -310,6 +310,11 @@ __error("This function should only be called from Zephyr OS code")
 void host_throttle_cpu(int throttle);
 
 /**
+ * Signal host command task to notify host switch thermal table.
+ */
+void host_thermal_table_switch(void);
+
+/**
  * Signal host command task to send status to PD MCU.
  *
  * @new_chg_state PD MCU charge state

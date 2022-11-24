@@ -60,7 +60,11 @@ void throttle_ap(enum throttle_level level, enum throttle_type type,
 	switch (type) {
 	case THROTTLE_SOFT:
 #ifdef HAS_TASK_HOSTCMD
+#ifndef CONFIG_BODY_DETECTION_NOTIFY_THERMAL_TABLE_CHANGE
 		host_throttle_cpu(tmpval);
+#else
+		host_thermal_table_switch();
+#endif
 #endif
 		break;
 	case THROTTLE_HARD:
