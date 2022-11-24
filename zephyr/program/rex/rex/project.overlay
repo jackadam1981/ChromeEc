@@ -3,7 +3,19 @@
  * found in the LICENSE file.
  */
 
- #include <dt-bindings/usb_pd_tcpm.h>
+/* Rex program common DTSI includes */
+#include "../battery.dtsi"
+#include "../fan.dtsi"
+#include "../generated.dtsi"
+#include "../interrupts.dtsi"
+#include "../keyboard.dtsi"
+#include "../led.dtsi"
+#include "../motionsense.dtsi"
+#include "../power_signals.dtsi"
+#include "../temp_sensors.dtsi"
+#include "../usbc.dtsi"
+
+#include <dt-bindings/usb_pd_tcpm.h>
 
 / {
 	aliases {
