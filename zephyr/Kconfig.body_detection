@@ -94,4 +94,12 @@ config PLATFORM_EC_BODY_DETECTION_ALWAYS_ENABLE_IN_S0
 	  Always enable the body detection function in S0
 	  w/o the host command
 
+config PLATFORM_EC_BODY_DETECTION_NOTIFY_THERMAL_TABLE_SWITCH
+	bool "Notify host with a specific host event when throttle"
+	default n
+	help
+	  Notify the host via SCI events EC_HOST_EVENT_THERMAL_THRESHOLD when
+	  the thermal warn and the thermal warn release event occurs let host to
+	  switch thermal table.
+
 endif # PLATFORM_EC_BODY_DETECTION

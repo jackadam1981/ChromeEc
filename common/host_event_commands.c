@@ -439,6 +439,14 @@ test_mockable void host_throttle_cpu(int throttle)
 		host_set_single_event(EC_HOST_EVENT_THROTTLE_STOP);
 }
 
+/**
+ * Signal host command task to notify host switch thermal table.
+ */
+void host_thermal_table_switch(void)
+{
+	host_set_single_event(EC_HOST_EVENT_THERMAL_THRESHOLD);
+}
+
 /*
  * Events copy b is used by coreboot for logging the wake reason. For this to
  * work, events_copy_b needs to be cleared on every suspend.
