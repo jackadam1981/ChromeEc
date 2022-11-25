@@ -16,6 +16,109 @@
       "message": "Sung-Chi,\n\nFeel free to leave comments to this CL.",
       "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b65711_a6c97f58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-25T06:43:03Z",
+      "side": 1,
+      "message": "I\u0027ll keep reviewing this patch in the next comment. Some files have not been reviewed yet.",
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8c819b_83f21cb0",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-25T06:43:03Z",
+      "side": 1,
+      "message": "GPIO_OUTPUT_LOW",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07937951_5c426724",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-25T06:43:03Z",
+      "side": 1,
+      "message": "It\u0027s now dp_path_sel.",
+      "range": {
+        "startLine": 128,
+        "startChar": 19,
+        "endLine": 128,
+        "endChar": 34
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4fc7c71_36d5ad6f",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-25T06:43:03Z",
+      "side": 1,
+      "message": "ec_pp5000_z1_l",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 29
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef02e47_87b319e5",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-25T06:43:03Z",
+      "side": 1,
+      "message": "Some pins are missing:\n\nEN_PP4200_S5: B7\nPG_PP4200_S5_OD: C5",
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
