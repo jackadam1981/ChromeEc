@@ -22,6 +22,30 @@
       },
       "revId": "23d884f761d02f14a33cf76528e03c7cbc9fd8a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb112fe_a8592829",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1535039
+      },
+      "writtenOn": "2022-11-25T04:59:11Z",
+      "side": 1,
+      "message": "The issue is you need to supply a value for `check_acok` - When neither `CONFIG_CHARGER_RAA489000` or `CONFIG_CHARGER_SM5803` are defined, `check_acok` is undefined which gives a compile error, regardless of override.\nWhat the dibbi config is overriding is the original `extpower_is_present`.",
+      "parentUuid": "d71a3eba_b2ce9ed6",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 71
+      },
+      "revId": "23d884f761d02f14a33cf76528e03c7cbc9fd8a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
