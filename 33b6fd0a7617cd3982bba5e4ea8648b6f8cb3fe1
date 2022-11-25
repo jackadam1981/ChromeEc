@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a8f6e66_94adb07e",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-11-25T05:45:25Z",
+      "side": 1,
+      "message": "Can we somehow check here that context is indeed cleared?",
+      "revId": "33b6fd0a7617cd3982bba5e4ea8648b6f8cb3fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
