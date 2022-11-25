@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1509d466_fc7721ec",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-11-25T05:44:30Z",
+      "side": 1,
+      "message": "It\u0027s a bit unclear what is the long sequence of commands testing. Can you add some comments to identify individual groups of test scenarios?",
+      "revId": "7534a67bd3959e83391959aa7115572714e8c92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
