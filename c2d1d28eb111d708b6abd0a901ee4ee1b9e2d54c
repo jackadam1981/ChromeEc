@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940556bb_27fc450d",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-11-25T05:49:52Z",
+      "side": 1,
+      "message": "nit: I think this comment is inaccurate, we didn\u0027t test for the equality of the match secret.",
+      "revId": "c2d1d28eb111d708b6abd0a901ee4ee1b9e2d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452ef61f_814a7610",
+        "filename": "test/fpsensor_state.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-11-25T05:49:52Z",
+      "side": 1,
+      "message": "Is it complicated to test equality of the positive match secret by using actual crypto? I guess FP team would want this test case to be more useful.",
+      "revId": "c2d1d28eb111d708b6abd0a901ee4ee1b9e2d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
