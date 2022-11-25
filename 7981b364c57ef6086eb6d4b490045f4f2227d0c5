@@ -69,6 +69,30 @@
       },
       "revId": "7981b364c57ef6086eb6d4b490045f4f2227d0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318389fb_63df7af8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-11-25T05:47:17Z",
+      "side": 1,
+      "message": "Done\nI added the condition check inside charge_problem() to make relevant and provided comments",
+      "parentUuid": "50ca662a_d90c79b0",
+      "range": {
+        "startLine": 1801,
+        "startChar": 5,
+        "endLine": 1801,
+        "endChar": 13
+      },
+      "revId": "7981b364c57ef6086eb6d4b490045f4f2227d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
