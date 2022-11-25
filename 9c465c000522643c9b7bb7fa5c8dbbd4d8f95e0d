@@ -119,6 +119,52 @@
       "message": "Some pins are missing:\n\nEN_PP4200_S5: B7\nPG_PP4200_S5_OD: C5",
       "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b22a85_9a0f2286",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-25T08:10:35Z",
+      "side": 1,
+      "message": "E1 is currently CHARGE_EN but it will not be used.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0372cc3_4f23bf08",
+        "filename": "zephyr/program/geralt/i2c.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2022-11-25T08:10:35Z",
+      "side": 1,
+      "message": "This has to be configured as peripheral mode, but it seems the ITE\u0027s i2c driver hasn\u0027t been supported yet. Let\u0027s keep this as is for now. You could add a TODO for this task or just drop it.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
