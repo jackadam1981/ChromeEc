@@ -70,6 +70,29 @@
       },
       "revId": "23d884f761d02f14a33cf76528e03c7cbc9fd8a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "864f2e08_7f992ebf",
+        "filename": "board/dibbi/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-11-25T09:41:11Z",
+      "side": 1,
+      "message": "Not blocking, but do we need per-port VBUS enables?",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "23d884f761d02f14a33cf76528e03c7cbc9fd8a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
