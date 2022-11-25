@@ -16,6 +16,47 @@
       "message": "From the old review, all boards that use raa489000 use the TCPC_FLAGS_TCPCI_REV2_0 flag but only Nissa uses the TCPC_FLAGS_VBUS_MONITOR flag. The first seems like a chip defined flag and the second like a board defined flag. I could hard code the first, but then there is setting flags in 2 places which doesn\u0027t seem like a simplication.",
       "revId": "cc8e864d00a3f8df684c7090eb38227d9bbda835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b888bca2_f0077bbe",
+        "filename": "zephyr/program/nissa/craask/overlay.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-25T00:16:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e2eeea6_d32797bb",
+      "revId": "cc8e864d00a3f8df684c7090eb38227d9bbda835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655c3514_7f23b048",
+        "filename": "zephyr/program/nissa/yaviks/overlay.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-25T00:16:38Z",
+      "side": 1,
+      "message": "I\u0027d prefer to specifically identify these as PS8745 so it\u0027s easy to tell which chip we actually expect (for nereid and joxer as well).",
+      "range": {
+        "startLine": 343,
+        "startChar": 16,
+        "endLine": 343,
+        "endChar": 19
+      },
+      "revId": "cc8e864d00a3f8df684c7090eb38227d9bbda835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
