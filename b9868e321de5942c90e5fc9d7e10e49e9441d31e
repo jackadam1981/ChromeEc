@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b0fa5c_eacb5bdf",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2022-11-27T22:35:47Z",
+      "side": 1,
+      "message": "You can use `%p` here to work correctly on RV64 and accurate capture that this is basically a pointer.",
+      "range": {
+        "startLine": 27,
+        "startChar": 30,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "b9868e321de5942c90e5fc9d7e10e49e9441d31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
