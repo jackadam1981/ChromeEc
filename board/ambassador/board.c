@@ -380,6 +380,7 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
 /******************************************************************************/
 /* Thermal control; drive fan based on temperature sensors. */
+<<<<<<< HEAD   (2810bb fan: Rewrite and test the most common custom fan_percent_to_)
 const static struct ec_thermal_config thermal_a = {
 	.temp_host = {
 		[EC_TEMP_THRESH_WARN] = 0,
@@ -394,7 +395,31 @@ const static struct ec_thermal_config thermal_a = {
 	.temp_fan_off = C_TO_K(25),
 	.temp_fan_max = C_TO_K(84),
 };
+=======
+static const int temp_fan_off = C_TO_K(35);
+static const int temp_fan_max = C_TO_K(55);
+/*
+ * TODO(b/202062363): Remove when clang is fixed.
+ */
+#define THERMAL_A                \
+	{                        \
+		.temp_host = { \
+			[EC_TEMP_THRESH_WARN] = 0, \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(78), \
+			[EC_TEMP_THRESH_HALT] = C_TO_K(85), \
+		}, \
+		.temp_host_release = { \
+			[EC_TEMP_THRESH_WARN] = 0, \
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(70), \
+			[EC_TEMP_THRESH_HALT] = 0, \
+		}, \
+		.temp_fan_off = temp_fan_off, \
+		.temp_fan_max = temp_fan_max, \
+	}
+__maybe_unused static const struct ec_thermal_config thermal_a = THERMAL_A;
+>>>>>>> CHANGE (5e2e4a {ambassador,genesis,moonbuggy,scout}: Increase fan to reduce)
 
+<<<<<<< HEAD   (2810bb fan: Rewrite and test the most common custom fan_percent_to_)
 const static struct ec_thermal_config thermal_b = {
 	.temp_host = {
 		[EC_TEMP_THRESH_WARN] = 0,
@@ -407,11 +432,58 @@ const static struct ec_thermal_config thermal_b = {
 		[EC_TEMP_THRESH_HALT] = 0,
 	},
 };
+=======
+static const struct ec_thermal_config thermal_b = {
+		.temp_host = {
+			[EC_TEMP_THRESH_WARN] = 0,
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(78),
+			[EC_TEMP_THRESH_HALT] = C_TO_K(85),
+		},
+		.temp_host_release = {
+			[EC_TEMP_THRESH_WARN] = 0,
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
+			[EC_TEMP_THRESH_HALT] = 0,
+		},
+	};
+>>>>>>> CHANGE (5e2e4a {ambassador,genesis,moonbuggy,scout}: Increase fan to reduce)
 
 struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_CORE] = thermal_a,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+static const struct fan_step_1_1 fan_table0[] = {
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(35),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(41),
+	  .rpm = 2500 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(40),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(44),
+	  .rpm = 2900 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(42),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(46),
+	  .rpm = 3400 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(44),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(48),
+	  .rpm = 3900 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(46),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(50),
+	  .rpm = 4400 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(48),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(52),
+	  .rpm = 4900 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(50),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(55),
+	  .rpm = 5200 },
+};
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
+
+static const struct fan_step_1_1 *fan_table = fan_table0;
+
+int fan_percent_to_rpm(int fan, int temp_ratio)
+{
+	return temp_ratio_to_rpm_hysteresis(fan_table, NUM_FAN_LEVELS, fan,
+					    temp_ratio, NULL);
+}
 
 /* Power sensors */
 const struct ina3221_t ina3221[] = {
