@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "571d5fa0_3da2fc9c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-28T21:10:01Z",
+      "side": 1,
+      "message": "This space makes the proper alignment (verified with `clang-format.py`)",
+      "parentUuid": "92b3de85_4de9f6c1",
+      "revId": "e6c08daffd8e033340159cf862f5c9814b381fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf4a5aa0_81bb647a",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-28T20:29:49Z",
       "side": 1,
       "message": "unrelated whitespace change. Please don\u0027t add this into CLs.",
+      "revId": "e6c08daffd8e033340159cf862f5c9814b381fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4340001_0769e770",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-28T21:10:01Z",
+      "side": 1,
+      "message": "same here",
+      "parentUuid": "cf4a5aa0_81bb647a",
       "revId": "e6c08daffd8e033340159cf862f5c9814b381fb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
