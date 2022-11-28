@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef8915f_40a13390",
+        "filename": "zephyr/program/herobrine/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-28T18:41:19Z",
+      "side": 1,
+      "message": "Use `add_subdirectory(zombie)` like the `herobrine` above and add this rule to the `CMakeLists.txt` under `src/zombie/`.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "5dc7cdca2b2b831fc775dcdc1b1bb44d9f86cbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300840d8_e29000fe",
+        "filename": "zephyr/program/herobrine/src/zombie/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-28T18:41:19Z",
+      "side": 1,
+      "message": "Don\u0027t need that much of includes. Keep the minimal set.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "5dc7cdca2b2b831fc775dcdc1b1bb44d9f86cbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40b4a4d_e270d7c5",
+        "filename": "zephyr/program/herobrine/src/zombie/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-28T18:41:19Z",
+      "side": 1,
+      "message": "Can it be done by modifying the dts file, a project overlay?\n\nWe only use the C code if there some multiple SKUs: some clamshell and some convertible, as the dts file can\u0027t model this use by far. If all SKUs are clamshell, updating the dts file is preferred.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "5dc7cdca2b2b831fc775dcdc1b1bb44d9f86cbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
