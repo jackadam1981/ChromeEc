@@ -380,6 +380,19 @@ unlock_rate:
 	return ret;
 }
 
+#ifdef CONFIG_BODY_DETECTION
+static int get_rms_noise(const struct motion_sensor_t *s)
+{
+	/*
+	 * TODO: b/236668095, need to follow the specification.
+	 * But currently, if don't have this function, will cause
+	 * the system cannot power on.
+	 */
+
+	return 2000;
+}
+#endif
+
 static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 {
 	int ret, tmp;
@@ -527,4 +540,7 @@ const struct accelgyro_drv lis2dw12_drv = {
 #ifdef ACCEL_LIS2DW12_INT_ENABLE
 	.irq_handler = lis2dw12_irq_handler,
 #endif /* ACCEL_LIS2DW12_INT_ENABLE */
+#ifdef CONFIG_BODY_DETECTION
+	.get_rms_noise = get_rms_noise,
+#endif
 };
