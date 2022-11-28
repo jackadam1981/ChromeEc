@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8551a0f_cc764953",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-28T16:47:53Z",
+      "side": 1,
+      "message": "Please also run `zmake compare-builds -a` with this change.  This verifies that there isn\u0027t any change to output binary.  Update the commit message once you\u0027ve confirmed this.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "960bd1cfb9af0ab0f1a7a8abfd03fdc24e2daff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
