@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654deb0c_51eeb32c",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-28T16:27:43Z",
+      "side": 1,
+      "message": "This is a functional change and should be split into a separate CL.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "467887f56d5a42bb3f4c46e05defe58f140bc04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
