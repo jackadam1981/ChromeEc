@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2762da_60183a14",
+        "filename": "zephyr/program/corsola/npcx_keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2022-11-28T18:03:19Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the schematic. What functionality are these pins enabling? It\u0027s not clear from the commit message.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "96374187b7e3546e4ebfe1cfef482fd338291d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
