@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf4bb6e4_f33f3abe",
+        "filename": "common/fan.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-28T20:29:03Z",
+      "side": 1,
+      "message": "nit: How about temp_ratio_to_rpm_histeresis? (I understand what \u0027path\u0027 means in this context but I\u0027m not sure others do. \u0027path\u0027 is a somewhat loaded term).",
+      "range": {
+        "startLine": 75,
+        "startChar": 22,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90f73bb8_9f5f9d58",
         "filename": "include/fan.h",
         "patchSetId": 11
@@ -14,6 +37,30 @@
       "writtenOn": "2022-11-28T15:58:16Z",
       "side": 1,
       "message": "I think the wording here is slightly confusing. I\u0027d remove \"Formerly pct.\" I don\u0027t think that will be much help to readers going forward. As the comment is formatted now, it makes it seem like the 0 - 100 requirement is also \"formerly,\" but it seems like that is still what `temp_ratio` is expected to be.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 56
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a26c04_f38045af",
+        "filename": "include/fan.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-28T20:29:03Z",
+      "side": 1,
+      "message": "Why don\u0027t you use the same description as temp_ratio_to_rpm_path_dependent? Its top paragraph explains what \u0027temp ratio\u0027 means (followed by a simple description of temp_ratio).",
+      "parentUuid": "90f73bb8_9f5f9d58",
       "range": {
         "startLine": 87,
         "startChar": 0,
@@ -42,6 +89,29 @@
         "startChar": 0,
         "endLine": 101,
         "endChar": 42
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e6e321_95ae725c",
+        "filename": "include/fan.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-28T20:29:03Z",
+      "side": 1,
+      "message": "Talking to myself. I realized another reason our fan control code is confusing: \u0027temp\u0027 is often used as abbreviation of \u0027temporary\u0027. So, it reads \u0027temporary max fan speed\u0027 but it\u0027s actually temperature.",
+      "range": {
+        "startLine": 109,
+        "startChar": 21,
+        "endLine": 109,
+        "endChar": 33
       },
       "revId": "9642920781f9343ea75de309fe0576733222f4ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
