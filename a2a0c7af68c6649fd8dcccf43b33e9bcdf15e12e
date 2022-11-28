@@ -34,6 +34,24 @@
       "message": "Should this be set by default? Under what circumstances would this flag be required not to be set?",
       "revId": "a2a0c7af68c6649fd8dcccf43b33e9bcdf15e12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c436fccc_f4d45190",
+        "filename": "zephyr/program/skyrim/crystaldrift.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-28T16:00:29Z",
+      "side": 1,
+      "message": "The primary reason you wouldn\u0027t need it would be if you\u0027ve hooked up your mux to an always-on power rail.  Or if the mux comes up into a None type of default state (ours is strapped to USB default, which is higher power than None).\n\nSo the need for the flag is hardware-dependent.  We do have other hardware dependencies hard-coded into some of the retimer drivers (ex. drivers that assume the chip can\u0027t be on in G3), but I\u0027d guess in terms of best coding practice we probably shouldn\u0027t assume things such as that and should be using a power indicator DTS property instead.",
+      "parentUuid": "0139f5c9_fc698016",
+      "revId": "a2a0c7af68c6649fd8dcccf43b33e9bcdf15e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
