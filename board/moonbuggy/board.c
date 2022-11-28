@@ -281,6 +281,8 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
 /******************************************************************************/
 /* Thermal control; drive fan based on temperature sensors. */
+static const int temp_fan_off = C_TO_K(35);
+static const int temp_fan_max = C_TO_K(55);
 /*
  * TODO(b/202062363): Remove when clang is fixed.
  */
@@ -296,8 +298,8 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 			[EC_TEMP_THRESH_HIGH] = C_TO_K(78), \
 			[EC_TEMP_THRESH_HALT] = 0, \
 		}, \
-		.temp_fan_off = C_TO_K(25), \
-		.temp_fan_max = C_TO_K(89), \
+		.temp_fan_off = temp_fan_off, \
+		.temp_fan_max = temp_fan_max, \
 	}
 __maybe_unused static const struct ec_thermal_config thermal_a = THERMAL_A;
 
@@ -305,6 +307,45 @@ struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_CORE] = THERMAL_A,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+/* Given the range of temp_fan_off to temp_fan_max specified above,
+ * each degree C is 5 percent of the range.
+ * 40 C, a typical idle temperature, is 25% of the way from 35 C to 55 C.
+ * Try to use minimum fan at idle.
+ */
+static const struct fan_step_1_1 fan_table0[] = {
+	{ .decreasing_temp_threshold = C_TO_K(35),
+	  .increasing_temp_threshold = C_TO_K(41),
+	  .rpm = 2500 },
+	{ .decreasing_temp_threshold = C_TO_K(40),
+	  .increasing_temp_threshold = C_TO_K(44),
+	  .rpm = 2900 },
+	{ .decreasing_temp_threshold = C_TO_K(42),
+	  .increasing_temp_threshold = C_TO_K(46),
+	  .rpm = 3400 },
+	{ .decreasing_temp_threshold = C_TO_K(44),
+	  .increasing_temp_threshold = C_TO_K(48),
+	  .rpm = 3900 },
+	{ .decreasing_temp_threshold = C_TO_K(46),
+	  .increasing_temp_threshold = C_TO_K(50),
+	  .rpm = 4400 },
+	{ .decreasing_temp_threshold = C_TO_K(48),
+	  .increasing_temp_threshold = C_TO_K(52),
+	  .rpm = 4900 },
+	{ .decreasing_temp_threshold = C_TO_K(50),
+	  .increasing_temp_threshold = C_TO_K(55),
+	  .rpm = 5300 },
+};
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
+
+static const struct fan_step_1_1 *fan_table = fan_table0;
+
+int fan_percent_to_rpm(int fan, int temp_ratio)
+{
+	return temp_ratio_to_rpm_hysteresis(fan_table, NUM_FAN_LEVELS,
+					    temp_fan_off, temp_fan_max, fan,
+					    temp_ratio, NULL);
+}
 
 /* Power sensors */
 const struct ina3221_t ina3221[] = {
