@@ -21,10 +21,12 @@
  * Boards must provide this list of ADC channel definitions.  This must match
  * the enum adc_channel list provided by the board.
  */
+#ifdef CONFIG_ADC
 #ifndef CONFIG_ADC_CHANNELS_RUNTIME_CONFIG
 extern const struct adc_t adc_channels[];
 #else
 extern struct adc_t adc_channels[];
+#endif
 #endif
 
 /**

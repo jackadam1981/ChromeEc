@@ -15,6 +15,11 @@
 			gpios = <&gpiod 5 GPIO_INPUT>;
 		};
 
+		bat-det-ec {
+			gpios = <&gpio7 6 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+
 		/* Power sequencing */
 		all_sys_pwrgd: all-sys-pwrgd {
 			gpios = <&gpio7 0 GPIO_INPUT>;
@@ -78,6 +83,27 @@
 		bc_acok: bc-acok-ec {
 			gpios = <&gpio0 2 GPIO_INPUT>;
 			enum-name = "GPIO_AC_PRESENT";
+		};
+		usbc_tcpc_alrt_p2: usbc-tcpc-alrt-p2 {
+			gpios = <&gpio9 1 GPIO_INPUT>;
+		};
+		/* NOTE: Netname is USBC_TCPC_PPC_ALRT_P3 */
+		usbc_tcpc_alrt_p3: usbc-tcpc-alrt-p3 {
+			gpios = <&gpiof 3 GPIO_INPUT>;
+		};
+
+		/* I2C */
+		smb-bs-clk {
+			gpios = <&gpiob 3 GPIO_INPUT>;
+		};
+		smb-bs-data {
+			gpios = <&gpiob 2 GPIO_INPUT>;
+		};
+		usbc-tcpc-i2c-clk-aic2 {
+			gpios = <&gpio9 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		usbc-tcpc-i2c-data-aic2 {
+			gpios = <&gpio8 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 
 		/* unimplemented GPIOs */
