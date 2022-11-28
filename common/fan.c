@@ -57,21 +57,84 @@ void fan_set_count(int count)
  * the way down to zero because most fans won't turn that slowly, so
  * we'll map [1,100] => [FAN_MIN,FAN_MAX], and [0] => "off".
  */
-int fan_percent_to_rpm(int fan, int pct)
+int fan_percent_to_rpm(int fan_index, int temp_ratio)
 {
 	int rpm, max, min;
 
-	if (!pct) {
+	if (temp_ratio <= 0) {
 		rpm = 0;
 	} else {
-		min = fans[fan].rpm->rpm_min;
-		max = fans[fan].rpm->rpm_max;
-		rpm = ((pct - 1) * max + (100 - pct) * min) / 99;
+		min = fans[fan_index].rpm->rpm_min;
+		max = fans[fan_index].rpm->rpm_max;
+		rpm = ((temp_ratio - 1) * max + (100 - temp_ratio) * min) / 99;
 	}
 
 	return rpm;
 }
 #endif /* CONFIG_FAN_RPM_CUSTOM */
+
+int temp_ratio_to_rpm_hysteresis(const struct fan_step_1_1 *fan_table,
+				 int num_fan_levels, int temp_fan_off,
+				 int temp_fan_max, int fan_index,
+				 int temp_ratio, void (*on_change)(void))
+{
+	static int previous_temperature;
+	const int temperature =
+		temp_fan_off + (temp_fan_max - temp_fan_off) * temp_ratio / 100;
+	const int previous_rpm = fan_get_rpm_target(FAN_CH(fan_index));
+	int rpm;
+
+	if (temperature <= fan_table[0].decreasing_temp_threshold) {
+		rpm = 0;
+	} else if (previous_rpm == 0 &&
+		   temperature < fan_table[0].increasing_temp_threshold) {
+		rpm = 0;
+	} else {
+		/*
+		 * Comparing temperature and previous temperature, trichotomy:
+		 *  1. decreasing path. (check the decreasing threshold)
+		 *  2. increasing path. (check the increasing threshold)
+		 *  3. invariant path. (return the current RPM)
+		 */
+		int fan_table_index;
+
+		if (temperature < previous_temperature) {
+			fan_table_index = num_fan_levels - 1;
+			while (fan_table_index > 0 &&
+			       temperature <=
+				       fan_table[fan_table_index]
+					       .decreasing_temp_threshold) {
+				fan_table_index--;
+			}
+			rpm = fan_table[fan_table_index].rpm;
+		} else if (temperature > previous_temperature) {
+			fan_table_index = 0;
+			while (fan_table_index < num_fan_levels &&
+			       temperature >=
+				       fan_table[fan_table_index]
+					       .increasing_temp_threshold) {
+				fan_table_index++;
+			}
+			if (fan_table_index > 0) {
+				fan_table_index--;
+			}
+			rpm = fan_table[fan_table_index].rpm;
+		} else {
+			rpm = previous_rpm;
+		}
+	}
+
+	previous_temperature = temperature;
+
+	if (rpm != previous_rpm) {
+		cprints(CC_THERMAL, "Setting fan %d RPM to %d", fan_index, rpm);
+		if (on_change) {
+			on_change();
+		}
+	}
+
+	return rpm;
+}
 
 /* The thermal task will only call this function with pct in [0,100]. */
 test_mockable void fan_set_percent_needed(int fan, int pct)
