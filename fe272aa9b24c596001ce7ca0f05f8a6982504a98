@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "484963ca_691566bc",
+        "filename": "zephyr/cmake/compiler/gcc/compiler_flags.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-28T22:23:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d29877ab_0758bffe",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 57
+      },
+      "revId": "fe272aa9b24c596001ce7ca0f05f8a6982504a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64a6ab0d_d1f4f707",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-28T21:44:13Z",
       "side": 1,
       "message": "Here too",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 49
+      },
+      "revId": "fe272aa9b24c596001ce7ca0f05f8a6982504a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba8b5df_cc5b8840",
+        "filename": "zephyr/cmake/linker/ld/gcc/linker_flags.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-28T22:23:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64a6ab0d_d1f4f707",
       "range": {
         "startLine": 6,
         "startChar": 2,
