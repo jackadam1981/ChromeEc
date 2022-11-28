@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a42ce5b_c3fe006c",
+        "filename": "common/fan.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-28T22:16:10Z",
+      "side": 1,
+      "message": "The zephyr style guide says don\u0027t treat ints as booleans, use `if (temp_ratio \u003c\u003d 0)` to make it clear that temp_ratio is not a bool.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf4bb6e4_f33f3abe",
         "filename": "common/fan.c",
         "patchSetId": 11
