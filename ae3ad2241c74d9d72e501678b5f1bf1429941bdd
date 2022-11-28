@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a16865_11e937e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-28T04:09:21Z",
+      "side": 1,
+      "message": "This isn\u0027t right. If they do it upstream they need to stop. The binding string needs to be 1:1 with the actual drivers. We can sync offline on this if needed, but the short explanation is (using bma255 as an example):\n\nYou have a board DTS with an actual `bosch,bma255` (I\u0027m not sure why ours is named `zephyr,bma255`). This node will go on the i2c bus it belongs to. When you swap out the i2c bus with an emulated bus, you want the same `bosch,bma255` node to create both the driver and the emulator off the same node. If it didn\u0027t, you\u0027d need to have 2 nodes: `bosch,bma255` and `bosch,bma255-emul` on the same i2c bus. The issue is that the bus will not let you use the same `reg` for both nodes so it\u0027ll never work.",
+      "revId": "ae3ad2241c74d9d72e501678b5f1bf1429941bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
