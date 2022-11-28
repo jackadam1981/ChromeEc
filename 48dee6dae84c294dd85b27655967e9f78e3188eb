@@ -16,6 +16,23 @@
       "message": "+2 for now to get you building, and then you can work with Gwendal to fill in a correct value here",
       "revId": "48dee6dae84c294dd85b27655967e9f78e3188eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382cb329_17ae3c8f",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-11-28T21:44:19Z",
+      "side": 1,
+      "message": "Let\u0027s do it once for all.\nThe data sheet provide the noise density (ug/sqrt(Hz)), so like BMI sensors, we can calculate the over noise:\nLIS2DW12: 90ug/sqrt(Hz) when ODR is over 200Hz\n          When lower, we are in power mode 2, so the noise density is 240, and the RMS at +/-2g is 2.4mg from the data sheet. So we can use 2400mg.\n          \nLIS2DWL: 120uq/sqr(Hz) in all mode, since low power mode is not used.\n\nLet me upload a new change.",
+      "revId": "48dee6dae84c294dd85b27655967e9f78e3188eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
