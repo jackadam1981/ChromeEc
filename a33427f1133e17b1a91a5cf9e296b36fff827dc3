@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9034c1f7_7e26b869",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2022-11-28T22:09:48Z",
+      "side": 1,
+      "message": "Use `k_current_get()` instead.  `task_get_current()` returns the legacy EC task number, but this number isn\u0027t shown by the `kernel threads` command.\n\nYou can also call `k_thread_name_get()` with the handle returned by `k_current_get()` to display the thread name.\n\nThese two calls are not specific to RISC-V so should be added to the general case.",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "a33427f1133e17b1a91a5cf9e296b36fff827dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
