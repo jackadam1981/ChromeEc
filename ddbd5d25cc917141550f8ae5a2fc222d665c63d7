@@ -16,6 +16,24 @@
       "message": "What does this comment mean? One of the `.on`s below is 0.",
       "revId": "ddbd5d25cc917141550f8ae5a2fc222d665c63d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a054fb4c_349e2e3d",
+        "filename": "board/ambassador/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-28T05:04:55Z",
+      "side": 1,
+      "message": "I think the comment is obsolete, so I have deleted it. Walking through the function that uses the fan_table, 0 or 100 values would work.\n\nAs regarding the `.on \u003d 0` element: the same function ignores the `on/off` parameters in the first fan_step element in the fan_table array.",
+      "parentUuid": "a0680fa1_96ed8c17",
+      "revId": "ddbd5d25cc917141550f8ae5a2fc222d665c63d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
