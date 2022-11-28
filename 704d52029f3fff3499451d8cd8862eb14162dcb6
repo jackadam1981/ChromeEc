@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e9aaed_73bf8a48",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-28T18:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c62d3e_240e4456",
+      "range": {
+        "startLine": 221,
+        "startChar": 44,
+        "endLine": 221,
+        "endChar": 51
+      },
+      "revId": "704d52029f3fff3499451d8cd8862eb14162dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "994884bb_ecc9c779",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-23T19:13:51Z",
       "side": 1,
       "message": "Optional: You could just do this in the before function. Nothing bad will happen if tests enable logs and then don\u0027t check them.",
+      "revId": "704d52029f3fff3499451d8cd8862eb14162dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ccc523a_361b8542",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-28T18:15:23Z",
+      "side": 1,
+      "message": "This seems like a better approach. I added the enable in the before and am disabling logs in the after function as you suggested.",
+      "parentUuid": "994884bb_ecc9c779",
       "revId": "704d52029f3fff3499451d8cd8862eb14162dcb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7751246_141cc623",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-28T18:15:23Z",
+      "side": 1,
+      "message": "At this stage, I prefer to use the bool field to control the Accept/Reject explicitly. I do think for completeness, it will make sense to validate the Enter_USB message that is formed by the PE. I will add a TODO for now in the Enter_USB test suite.",
+      "parentUuid": "442b5087_c45504e0",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6c8e6dc_cd55cc58",
         "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
         "patchSetId": 8
@@ -519,6 +537,24 @@
       "side": 1,
       "message": "Well, yeah, but the test should be basically the same for each cable type, in that you expect the mux to end up in USB4 state. Seeing that the TCPM discovered the cable doesn\u0027t imply that the entry was correct, but seeing the final mode implies that the discovery was correct. The discovery check also shouldn\u0027t really need to be repeated for each cable type. The host command is just repeating what the cable said.\n\nIf you wanted to verify that the behavior is different with different cable types, you\u0027d want to either check the PD message log or maintain some state in the cable emulator to verify that the TCPM entered the right mode.\n\nBut this is a pretty low priority. I\u0027m fine with you submitting as is.",
       "parentUuid": "5903b950_8cf9e24c",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e52d30_f1e0fc3c",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2022-11-28T18:15:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "37eb7453_8cd736d6",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
