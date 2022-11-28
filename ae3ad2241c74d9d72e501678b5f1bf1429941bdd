@@ -16,6 +16,24 @@
       "message": "This isn\u0027t right. If they do it upstream they need to stop. The binding string needs to be 1:1 with the actual drivers. We can sync offline on this if needed, but the short explanation is (using bma255 as an example):\n\nYou have a board DTS with an actual `bosch,bma255` (I\u0027m not sure why ours is named `zephyr,bma255`). This node will go on the i2c bus it belongs to. When you swap out the i2c bus with an emulated bus, you want the same `bosch,bma255` node to create both the driver and the emulator off the same node. If it didn\u0027t, you\u0027d need to have 2 nodes: `bosch,bma255` and `bosch,bma255-emul` on the same i2c bus. The issue is that the bus will not let you use the same `reg` for both nodes so it\u0027ll never work.",
       "revId": "ae3ad2241c74d9d72e501678b5f1bf1429941bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ea71ca_11173214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2022-11-28T12:27:26Z",
+      "side": 1,
+      "message": "Hey, yeah I noticed the pattern, we seem to have two types of emulators drivers, the standalone ones (with their own node) and the ones that shadow an existing driver (reusing the existing node as you described). All the ones in the binding directory are standalone (they have to, otherwise they would not have a binding yaml in the first place, that\u0027s why we have a `zephyr,bma255` rather than the emulation driver binding straight to the existing `bosch,bma255`).\n\nI understand that there\u0027s work to migrate these to reuse the real  device node, which would result in deleting the `-emul` file entirely, but right now I think it makes sense to rename them so at least we have consistent naming, and then get rid of them entirely as the corresponding drivers gets migrated.\n\nUpstream is the same story, there\u0027s few standalone emulators with `emul` in the binding name, and a couple of ones reusing the normal device node (`bosch,bmi160` and `atmel,at24`) with no dedicated binding.",
+      "parentUuid": "10a16865_11e937e9",
+      "revId": "ae3ad2241c74d9d72e501678b5f1bf1429941bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
