@@ -116,6 +116,30 @@
       },
       "revId": "fe272aa9b24c596001ce7ca0f05f8a6982504a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff26bd7_4a5673bf",
+        "filename": "zephyr/cmake/linker/ld/linker_flags.cmake",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-28T22:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66a7619e_a7ae0ffb",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 91
+      },
+      "revId": "fe272aa9b24c596001ce7ca0f05f8a6982504a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
