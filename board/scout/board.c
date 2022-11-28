@@ -362,49 +362,75 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
 /******************************************************************************/
 /* Thermal control; drive fan based on temperature sensors. */
-/*
- * TODO(b/202062363): Remove when clang is fixed.
- */
-#define THERMAL_A                \
-	{                        \
-		.temp_host = { \
-			[EC_TEMP_THRESH_WARN] = 0, \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(85), \
-			[EC_TEMP_THRESH_HALT] = C_TO_K(90), \
-		}, \
-		.temp_host_release = { \
-			[EC_TEMP_THRESH_WARN] = 0, \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(78), \
-			[EC_TEMP_THRESH_HALT] = 0, \
-		}, \
-		.temp_fan_off = C_TO_K(25), \
-		.temp_fan_max = C_TO_K(89), \
-	}
-__maybe_unused static const struct ec_thermal_config thermal_a = THERMAL_A;
+static const int temp_fan_off = C_TO_K(35);
+static const int temp_fan_max = C_TO_K(55);
+static const struct ec_thermal_config thermal_a = {
+		.temp_host = {
+			[EC_TEMP_THRESH_WARN] = 0,
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(85),
+			[EC_TEMP_THRESH_HALT] = C_TO_K(90),
+		},
+		.temp_host_release = {
+			[EC_TEMP_THRESH_WARN] = 0,
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(78),
+			[EC_TEMP_THRESH_HALT] = 0,
+		},
+		.temp_fan_off = temp_fan_off,
+		.temp_fan_max = temp_fan_max,
+	};
 
-/*
- * TODO(b/202062363): Remove when clang is fixed.
- */
-#define THERMAL_B                \
-	{                        \
-		.temp_host = { \
-			[EC_TEMP_THRESH_WARN] = 0, \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(78), \
-			[EC_TEMP_THRESH_HALT] = C_TO_K(85), \
-		}, \
-		.temp_host_release = { \
-			[EC_TEMP_THRESH_WARN] = 0, \
-			[EC_TEMP_THRESH_HIGH] = C_TO_K(70), \
-			[EC_TEMP_THRESH_HALT] = 0, \
-		}, \
-	}
-__maybe_unused static const struct ec_thermal_config thermal_b = THERMAL_B;
+static const struct ec_thermal_config thermal_b = {
+		.temp_host = {
+			[EC_TEMP_THRESH_WARN] = 0,
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(78),
+			[EC_TEMP_THRESH_HALT] = C_TO_K(85),
+		},
+		.temp_host_release = {
+			[EC_TEMP_THRESH_WARN] = 0,
+			[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
+			[EC_TEMP_THRESH_HALT] = 0,
+		},
+	};
 
 struct ec_thermal_config thermal_params[] = {
-	[TEMP_SENSOR_CORE] = THERMAL_A,
-	[TEMP_SENSOR_WIFI] = THERMAL_A,
+	[TEMP_SENSOR_CORE] = thermal_a,
+	[TEMP_SENSOR_WIFI] = thermal_a,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+static const struct fan_step_1_1 fan_table0[] = {
+	{ .decreasing_temp_threshold = C_TO_K(35),
+	  .increasing_temp_threshold = C_TO_K(41),
+	  .rpm = 2400 },
+	{ .decreasing_temp_threshold = C_TO_K(40),
+	  .increasing_temp_threshold = C_TO_K(44),
+	  .rpm = 2900 },
+	{ .decreasing_temp_threshold = C_TO_K(42),
+	  .increasing_temp_threshold = C_TO_K(46),
+	  .rpm = 3400 },
+	{ .decreasing_temp_threshold = C_TO_K(44),
+	  .increasing_temp_threshold = C_TO_K(48),
+	  .rpm = 3900 },
+	{ .decreasing_temp_threshold = C_TO_K(46),
+	  .increasing_temp_threshold = C_TO_K(50),
+	  .rpm = 4400 },
+	{ .decreasing_temp_threshold = C_TO_K(48),
+	  .increasing_temp_threshold = C_TO_K(52),
+	  .rpm = 4900 },
+	{ .decreasing_temp_threshold = C_TO_K(50),
+	  .increasing_temp_threshold = C_TO_K(55),
+	  .rpm = 5300 },
+};
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
+
+static const struct fan_step_1_1 *fan_table = fan_table0;
+
+int fan_percent_to_rpm(int fan, int temp_ratio)
+{
+	return temp_ratio_to_rpm_hysteresis(fan_table, NUM_FAN_LEVELS,
+					    temp_fan_off, temp_fan_max, fan,
+					    temp_ratio, NULL);
+}
 
 /* Power sensors */
 const struct ina3221_t ina3221[] = {
