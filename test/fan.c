@@ -104,9 +104,129 @@ static int test_fan(void)
 	return EC_SUCCESS;
 }
 
+/* Provide a test driver with setup for tests. */
+int temp_to_rpm_hysteresis(int temperature_c)
+{
+	const struct fan_step_1_1 fan_table[] = {
+		{ .decreasing_temp_threshold = C_TO_K(35),
+		  .increasing_temp_threshold = C_TO_K(41),
+		  .rpm = 2500 },
+		{ .decreasing_temp_threshold = C_TO_K(37),
+		  .increasing_temp_threshold = C_TO_K(43),
+		  .rpm = 3200 },
+		{ .decreasing_temp_threshold = C_TO_K(42),
+		  .increasing_temp_threshold = C_TO_K(45),
+		  .rpm = 3500 },
+		{ .decreasing_temp_threshold = C_TO_K(44),
+		  .increasing_temp_threshold = C_TO_K(47),
+		  .rpm = 3900 },
+		{ .decreasing_temp_threshold = C_TO_K(46),
+		  .increasing_temp_threshold = C_TO_K(49),
+		  .rpm = 4500 },
+		{ .decreasing_temp_threshold = C_TO_K(48),
+		  .increasing_temp_threshold = C_TO_K(52),
+		  .rpm = 5100 },
+		{ .decreasing_temp_threshold = C_TO_K(51),
+		  .increasing_temp_threshold = C_TO_K(55),
+		  .rpm = 5400 },
+	};
+	const int num_fan_levels = ARRAY_SIZE(fan_table);
+	const int temp_fan_off = C_TO_K(35);
+	const int temp_fan_max = C_TO_K(55);
+	int temp_ratio = 100 * (C_TO_K(temperature_c) - temp_fan_off) /
+			 (temp_fan_max - temp_fan_off);
+	temp_ratio = temp_ratio < 0 ? 0 : (temp_ratio > 100 ? 100 : temp_ratio);
+	return temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels,
+					    temp_fan_off, temp_fan_max, 0,
+					    temp_ratio, NULL);
+}
+
+static int test_temp_ratio_to_rpm_hysteresis(void)
+{
+	/* initial turn-on behavior, ramp up */
+	fan_set_rpm_target(FAN_CH(0), 5400);
+	TEST_ASSERT(temp_to_rpm_hysteresis(30) == 0);
+	fan_set_rpm_target(FAN_CH(0), 0);
+	TEST_ASSERT(temp_to_rpm_hysteresis(30) == 0);
+	TEST_ASSERT(temp_to_rpm_hysteresis(35) == 0);
+	TEST_ASSERT(temp_to_rpm_hysteresis(36) == 0);
+	TEST_ASSERT(temp_to_rpm_hysteresis(37) == 0);
+	TEST_ASSERT(temp_to_rpm_hysteresis(38) == 0);
+	TEST_ASSERT(temp_to_rpm_hysteresis(41) == 2500);
+	fan_set_rpm_target(FAN_CH(0), 2500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(36) == 2500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(42) == 2500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(43) == 3200);
+	fan_set_rpm_target(FAN_CH(0), 3200);
+	TEST_ASSERT(temp_to_rpm_hysteresis(44) == 3200);
+	TEST_ASSERT(temp_to_rpm_hysteresis(45) == 3500);
+	fan_set_rpm_target(FAN_CH(0), 3500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(46) == 3500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(47) == 3900);
+	fan_set_rpm_target(FAN_CH(0), 3900);
+	TEST_ASSERT(temp_to_rpm_hysteresis(48) == 3900);
+	TEST_ASSERT(temp_to_rpm_hysteresis(49) == 4500);
+	fan_set_rpm_target(FAN_CH(0), 4500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(51) == 4500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(52) == 5100);
+	fan_set_rpm_target(FAN_CH(0), 5100);
+	TEST_ASSERT(temp_to_rpm_hysteresis(54) == 5100);
+	TEST_ASSERT(temp_to_rpm_hysteresis(55) == 5400);
+	fan_set_rpm_target(FAN_CH(0), 5400);
+	TEST_ASSERT(temp_to_rpm_hysteresis(60) == 5400);
+	/* cool-down */
+	TEST_ASSERT(temp_to_rpm_hysteresis(55) == 5400);
+	TEST_ASSERT(temp_to_rpm_hysteresis(52) == 5400);
+	TEST_ASSERT(temp_to_rpm_hysteresis(51) == 5100);
+	fan_set_rpm_target(FAN_CH(0), 5100);
+	TEST_ASSERT(temp_to_rpm_hysteresis(49) == 5100);
+	TEST_ASSERT(temp_to_rpm_hysteresis(48) == 4500);
+	fan_set_rpm_target(FAN_CH(0), 4500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(47) == 4500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(46) == 3900);
+	fan_set_rpm_target(FAN_CH(0), 3900);
+	TEST_ASSERT(temp_to_rpm_hysteresis(45) == 3900);
+	TEST_ASSERT(temp_to_rpm_hysteresis(44) == 3500);
+	fan_set_rpm_target(FAN_CH(0), 3500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(43) == 3500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(42) == 3200);
+	fan_set_rpm_target(FAN_CH(0), 3200);
+	TEST_ASSERT(temp_to_rpm_hysteresis(38) == 3200);
+	TEST_ASSERT(temp_to_rpm_hysteresis(37) == 2500);
+	fan_set_rpm_target(FAN_CH(0), 2500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(36) == 2500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(35) == 0);
+	fan_set_rpm_target(FAN_CH(0), 0);
+	/* warm up again */
+	TEST_ASSERT(temp_to_rpm_hysteresis(38) == 0);
+	/* jumping */
+	TEST_ASSERT(temp_to_rpm_hysteresis(46) == 3500);
+	fan_set_rpm_target(FAN_CH(0), 3500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(36) == 2500);
+	fan_set_rpm_target(FAN_CH(0), 2500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(35) == 0);
+	fan_set_rpm_target(FAN_CH(0), 0);
+	TEST_ASSERT(temp_to_rpm_hysteresis(37) == 0);
+	TEST_ASSERT(temp_to_rpm_hysteresis(46) == 3500);
+	fan_set_rpm_target(FAN_CH(0), 3500);
+	TEST_ASSERT(temp_to_rpm_hysteresis(54) == 5100);
+	fan_set_rpm_target(FAN_CH(0), 5100);
+	TEST_ASSERT(temp_to_rpm_hysteresis(55) == 5400);
+	fan_set_rpm_target(FAN_CH(0), 5400);
+	TEST_ASSERT(temp_to_rpm_hysteresis(60) == 5400);
+	TEST_ASSERT(temp_to_rpm_hysteresis(53) == 5400);
+	TEST_ASSERT(temp_to_rpm_hysteresis(46) == 3900);
+	fan_set_rpm_target(FAN_CH(0), 3900);
+	TEST_ASSERT(temp_to_rpm_hysteresis(30) == 0);
+	fan_set_rpm_target(FAN_CH(0), 0);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fan);
+	RUN_TEST(test_temp_ratio_to_rpm_hysteresis);
 
 	test_print_result();
 }
