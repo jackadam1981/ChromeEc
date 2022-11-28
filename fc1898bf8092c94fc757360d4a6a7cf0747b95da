@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31203549_ef8c65e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-28T17:55:03Z",
+      "side": 1,
+      "message": "Please update all the other core *.S files to support the older ECOS boards.  \n\nYou can see what an example of that looks like by referencing other newer hooks, ex: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2415171",
+      "revId": "fc1898bf8092c94fc757360d4a6a7cf0747b95da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
