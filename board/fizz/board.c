@@ -301,8 +301,8 @@ struct ec_thermal_config thermal_params[] = {
 	 */
 	{ { 0, C_TO_K(80), C_TO_K(81) },
 	  { 0, C_TO_K(78), 0 },
-	  C_TO_K(4),
-	  C_TO_K(76) }, /* TMP431_Internal */
+	  C_TO_K(25),
+	  C_TO_K(50) }, /* TMP431_Internal */
 	{ { 0, 0, 0 }, { 0, 0, 0 }, 0, 0 }, /* TMP431_Sensor_1 */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
@@ -599,54 +599,116 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-struct fan_step {
-	int on;
-	int off;
-	int rpm;
-};
+static const struct fan_step_1_1 *fan_table;
 
-static const struct fan_step *fan_table;
-
-/* Note: Do not make the fan on/off point equal to 0 or 100 */
-static const struct fan_step fan_table0[] = {
-	{ .on = 0, .off = 1, .rpm = 0 },
-	{ .on = 36, .off = 1, .rpm = 2800 },
-	{ .on = 58, .off = 58, .rpm = 3200 },
-	{ .on = 66, .off = 61, .rpm = 3400 },
-	{ .on = 75, .off = 69, .rpm = 4200 },
-	{ .on = 81, .off = 76, .rpm = 4800 },
-	{ .on = 88, .off = 83, .rpm = 5200 },
-	{ .on = 98, .off = 91, .rpm = 5600 },
+/* Given the range of temp_fan_off to temp_fan_max specified above,
+ * each degree C is 4 percent of the range.
+ * 40 C, a typical idle temperature, is 25% of the way from 35 C to 55 C.
+ * Try to use zero fan at idle; otherwise use minimum fan.
+ */
+static const struct fan_step_1_1 fan_table0[] = {
+	{ .decreasing_temp_ratio_threshold = 1,
+	  .increasing_temp_ratio_threshold = 0,
+	  .rpm = 0 },
+	{ .decreasing_temp_ratio_threshold = 1, /* on at 34 C, off at 25 C */
+	  .increasing_temp_ratio_threshold = 36,
+	  .rpm = 2800 },
+	{ .decreasing_temp_ratio_threshold = 58, /* on at 40 C, off at 39 C */
+	  .increasing_temp_ratio_threshold = 58,
+	  .rpm = 3200 },
+	{ .decreasing_temp_ratio_threshold = 61, /* on at 42 C, off at 40 C */
+	  .increasing_temp_ratio_threshold = 66,
+	  .rpm = 3400 },
+	{ .decreasing_temp_ratio_threshold = 69, /* on at 44 C, off at 42 C */
+	  .increasing_temp_ratio_threshold = 75,
+	  .rpm = 4200 },
+	{ .decreasing_temp_ratio_threshold = 76, /* on at 46 C, off at 44 C */
+	  .increasing_temp_ratio_threshold = 81,
+	  .rpm = 4800 },
+	{ .decreasing_temp_ratio_threshold = 83, /* on at 47 C, off at 45 C */
+	  .increasing_temp_ratio_threshold = 88,
+	  .rpm = 5200 },
+	{ .decreasing_temp_ratio_threshold = 91, /* on at 50 C, off at 47 C */
+	  .increasing_temp_ratio_threshold = 98,
+	  .rpm = 5600 },
 };
-static const struct fan_step fan_table1[] = {
-	{ .on = 0, .off = 1, .rpm = 0 },
-	{ .on = 36, .off = 1, .rpm = 2800 },
-	{ .on = 62, .off = 58, .rpm = 3200 },
-	{ .on = 68, .off = 63, .rpm = 3400 },
-	{ .on = 75, .off = 69, .rpm = 4200 },
-	{ .on = 81, .off = 76, .rpm = 4800 },
-	{ .on = 88, .off = 83, .rpm = 5200 },
-	{ .on = 98, .off = 91, .rpm = 5600 },
+static const struct fan_step_1_1 fan_table1[] = {
+	{ .decreasing_temp_ratio_threshold = 1,
+	  .increasing_temp_ratio_threshold = 0,
+	  .rpm = 0 },
+	{ .decreasing_temp_ratio_threshold = 1, /* on at 34 C, off at 25 C */
+	  .increasing_temp_ratio_threshold = 36,
+	  .rpm = 2800 },
+	{ .decreasing_temp_ratio_threshold = 58, /* on at 40 C, off at 39 C */
+	  .increasing_temp_ratio_threshold = 62,
+	  .rpm = 3200 },
+	{ .decreasing_temp_ratio_threshold = 63, /* on at 42 C, off at 40 C */
+	  .increasing_temp_ratio_threshold = 68,
+	  .rpm = 3400 },
+	{ .decreasing_temp_ratio_threshold = 69, /* on at 44 C, off at 42 C */
+	  .increasing_temp_ratio_threshold = 75,
+	  .rpm = 4200 },
+	{ .decreasing_temp_ratio_threshold = 76, /* on at 46 C, off at 44 C */
+	  .increasing_temp_ratio_threshold = 81,
+	  .rpm = 4800 },
+	{ .decreasing_temp_ratio_threshold = 83, /* on at 47 C, off at 45 C */
+	  .increasing_temp_ratio_threshold = 88,
+	  .rpm = 5200 },
+	{ .decreasing_temp_ratio_threshold = 91, /* on at 50 C, off at 47 C */
+	  .increasing_temp_ratio_threshold = 98,
+	  .rpm = 5600 },
 };
-static const struct fan_step fan_table2[] = {
-	{ .on = 0, .off = 1, .rpm = 0 },
-	{ .on = 36, .off = 1, .rpm = 2200 },
-	{ .on = 63, .off = 56, .rpm = 2900 },
-	{ .on = 69, .off = 65, .rpm = 3000 },
-	{ .on = 75, .off = 70, .rpm = 3300 },
-	{ .on = 80, .off = 76, .rpm = 3600 },
-	{ .on = 87, .off = 81, .rpm = 3900 },
-	{ .on = 98, .off = 91, .rpm = 5000 },
+static const struct fan_step_1_1 fan_table2[] = {
+	{ .decreasing_temp_ratio_threshold = 1,
+	  .increasing_temp_ratio_threshold = 0,
+	  .rpm = 0 },
+	{ .decreasing_temp_ratio_threshold = 1, /* on at 34 C, off at 25 C */
+	  .increasing_temp_ratio_threshold = 36,
+	  .rpm = 2200 },
+	{ .decreasing_temp_ratio_threshold = 56, /* on at 41 C, off at 39 C */
+	  .increasing_temp_ratio_threshold = 63,
+	  .rpm = 2900 },
+	{ .decreasing_temp_ratio_threshold = 65, /* on at 43 C, off at 41 C */
+	  .increasing_temp_ratio_threshold = 69,
+	  .rpm = 3000 },
+	{ .decreasing_temp_ratio_threshold = 70, /* on at 44 C, off at 42 C */
+	  .increasing_temp_ratio_threshold = 75,
+	  .rpm = 3300 },
+	{ .decreasing_temp_ratio_threshold = 76, /* on at 46 C, off at 44 C */
+	  .increasing_temp_ratio_threshold = 80,
+	  .rpm = 3600 },
+	{ .decreasing_temp_ratio_threshold = 81, /* on at 47 C, off at 45 C */
+	  .increasing_temp_ratio_threshold = 87,
+	  .rpm = 3900 },
+	{ .decreasing_temp_ratio_threshold = 91, /* on at 50 C, off at 47 C */
+	  .increasing_temp_ratio_threshold = 98,
+	  .rpm = 5000 },
 };
-static const struct fan_step fan_table3[] = {
-	{ .on = 0, .off = 1, .rpm = 0 },
-	{ .on = 36, .off = 22, .rpm = 2500 },
-	{ .on = 54, .off = 49, .rpm = 3200 },
-	{ .on = 61, .off = 56, .rpm = 3500 },
-	{ .on = 68, .off = 63, .rpm = 3900 },
-	{ .on = 75, .off = 69, .rpm = 4500 },
-	{ .on = 82, .off = 76, .rpm = 5100 },
-	{ .on = 92, .off = 85, .rpm = 5400 },
+static const struct fan_step_1_1 fan_table3[] = {
+	{ .decreasing_temp_ratio_threshold = 1,
+	  .increasing_temp_ratio_threshold = 0,
+	  .rpm = 0 },
+	{ .decreasing_temp_ratio_threshold = 22, /* on at 34 C, off at 30 C */
+	  .increasing_temp_ratio_threshold = 36,
+	  .rpm = 2500 },
+	{ .decreasing_temp_ratio_threshold = 49, /* on at 39 C, off at 37 C */
+	  .increasing_temp_ratio_threshold = 54,
+	  .rpm = 3200 },
+	{ .decreasing_temp_ratio_threshold = 56, /* on at 40 C, off at 39 C */
+	  .increasing_temp_ratio_threshold = 61,
+	  .rpm = 3500 },
+	{ .decreasing_temp_ratio_threshold = 63, /* on at 42 C, off at 40 C */
+	  .increasing_temp_ratio_threshold = 68,
+	  .rpm = 3900 },
+	{ .decreasing_temp_ratio_threshold = 69, /* on at 44 C, off at 42 C */
+	  .increasing_temp_ratio_threshold = 75,
+	  .rpm = 4500 },
+	{ .decreasing_temp_ratio_threshold = 76, /* on at 46 C, off at 44 C */
+	  .increasing_temp_ratio_threshold = 82,
+	  .rpm = 5100 },
+	{ .decreasing_temp_ratio_threshold = 85, /* on at 48 C, off at 46 C */
+	  .increasing_temp_ratio_threshold = 92,
+	  .rpm = 5400 },
 };
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
@@ -812,42 +874,8 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-int fan_percent_to_rpm(int fan, int pct)
+int fan_percent_to_rpm(int fan, int temp_ratio)
 {
-	static int current_level;
-	static int previous_pct;
-	int i;
-
-	/*
-	 * Compare the pct and previous pct, we have the three paths :
-	 *  1. decreasing path. (check the off point)
-	 *  2. increasing path. (check the on point)
-	 *  3. invariant path. (return the current RPM)
-	 */
-	if (pct < previous_pct) {
-		for (i = current_level; i >= 0; i--) {
-			if (pct <= fan_table[i].off)
-				current_level = i - 1;
-			else
-				break;
-		}
-	} else if (pct > previous_pct) {
-		for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
-			if (pct >= fan_table[i].on)
-				current_level = i;
-			else
-				break;
-		}
-	}
-
-	if (current_level < 0)
-		current_level = 0;
-
-	previous_pct = pct;
-
-	if (fan_table[current_level].rpm != fan_get_rpm_target(FAN_CH(fan)))
-		cprints(CC_THERMAL, "Setting fan RPM to %d",
-			fan_table[current_level].rpm);
-
-	return fan_table[current_level].rpm;
+	return temp_ratio_to_rpm_hysteresis(fan_table, NUM_FAN_LEVELS, fan,
+					    temp_ratio, NULL);
 }
