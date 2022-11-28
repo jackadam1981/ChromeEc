@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "188d7524_8f24b721",
+        "filename": "zephyr/program/geralt/geralt/led.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-11-28T03:25:09Z",
+      "side": 1,
+      "message": "Is it green?",
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d8c819b_83f21cb0",
         "filename": "zephyr/program/geralt/gpio.dtsi",
         "patchSetId": 7
