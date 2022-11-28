@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56dfdae_c7c0e30e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-28T18:36:18Z",
+      "side": 1,
+      "message": "I would say that some of the BAD flags should probably still be applicable (ex. retrieving the primary charger current going to the battery).  But we should ensure the voltage and input current behave more gracefully when there\u0027s no active AC present.\n\nWe could either mask off those flags when there\u0027s no AC, or change charger_get_params() to default to retrieving the primary charger chip index when no other chip is active.",
+      "revId": "813c25b1377cd5c7f9f08bed0bb0fe4a24610d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
