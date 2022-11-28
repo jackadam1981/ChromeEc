@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68187603_84e6ec39",
+        "filename": "zephyr/program/geralt/geralt/led.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-28T09:51:23Z",
+      "side": 1,
+      "message": "I don\u0027t know. I can fix this after we received the device (usually we don\u0027t care this on reference board. odm will tune this on follower devices based on their own design)",
+      "parentUuid": "188d7524_8f24b721",
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d8c819b_83f21cb0",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-11-25T06:43:03Z",
       "side": 1,
       "message": "GPIO_OUTPUT_LOW",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48545bd_729064f4",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-28T09:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d8c819b_83f21cb0",
       "range": {
         "startLine": 70,
         "startChar": 21,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "053996de_ba051cc4",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-28T09:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07937951_5c426724",
+      "range": {
+        "startLine": 128,
+        "startChar": 19,
+        "endLine": 128,
+        "endChar": 34
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4fc7c71_36d5ad6f",
@@ -111,6 +177,30 @@
       "writtenOn": "2022-11-25T06:43:03Z",
       "side": 1,
       "message": "ec_pp5000_z1_l",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 29
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefd98bd_f6616cab",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-28T09:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4fc7c71_36d5ad6f",
       "range": {
         "startLine": 146,
         "startChar": 2,
@@ -138,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbc2c28_a025fe1e",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-28T09:51:23Z",
+      "side": 1,
+      "message": "gpb7 added.\ngpc5 is in the unused-pins section.",
+      "parentUuid": "1ef02e47_87b319e5",
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98b22a85_9a0f2286",
@@ -161,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8463a2fe_81577225",
+        "filename": "zephyr/program/geralt/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-28T09:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b22a85_9a0f2286",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0372cc3_4f23bf08",
@@ -174,6 +306,30 @@
       "writtenOn": "2022-11-25T08:10:35Z",
       "side": 1,
       "message": "This has to be configured as peripheral mode, but it seems the ITE\u0027s i2c driver hasn\u0027t been supported yet. Let\u0027s keep this as is for now. You could add a TODO for this task or just drop it.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "9c465c000522643c9b7bb7fa5c8dbbd4d8f95e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4e406c_f13aceaf",
+        "filename": "zephyr/program/geralt/i2c.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2022-11-28T09:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0372cc3_4f23bf08",
       "range": {
         "startLine": 134,
         "startChar": 0,
