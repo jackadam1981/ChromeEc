@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56790a9_566cc3d4",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-28T21:16:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7751246_141cc623",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6c8e6dc_cd55cc58",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "Waiting on your feedback for the comment above to address this one.",
       "parentUuid": "d6c8e6dc_cd55cc58",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ce5227_2c1ddb92",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-28T21:16:02Z",
+      "side": 1,
+      "message": "I\u0027d set `enter_usb_accept` to something, probably `false`, in `tcpci_partner_init`.",
+      "parentUuid": "c1687ba4_156955f1",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -555,6 +591,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "37eb7453_8cd736d6",
+      "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ae4914_7d6d451d",
+        "filename": "zephyr/test/drivers/usbc_usb4_mode/src/usbc_usb4_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-28T21:16:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76e52d30_f1e0fc3c",
       "revId": "b9bb3284e073585d1ce07d994259c98f0d14da55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
