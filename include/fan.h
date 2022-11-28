@@ -83,11 +83,40 @@ void fan_set_percent_needed(int fan, int pct);
  * The default implementation should be sufficient for most needs, but
  * individual boards may provide a custom version if needed (see config.h).
  *
- * @param fan   Fan number (index into fans[])
- * @param pct   Percentage of cooling effort needed (always in [0,100])
- * Return       Target RPM for fan
+ * @param fan          Fan number (index into fans[])
+ * @param temp_ratio   Temperature in temp_fan_off to temp_fan_max range.
+ *                     Formerly pct (always in [0,100]).
+ * Return              Target RPM for fan
  */
-int fan_percent_to_rpm(int fan, int pct);
+int fan_percent_to_rpm(int fan, int temp_ratio);
+/* Data structure to hold a tuple of parameters for one sensor and one fan. */
+struct fan_step_1_1 {
+	/* lowest temp_ratio to apply this rpm when increasing.
+	 * Use this rpm when temp_ratio exceeds this threshold.
+	 * Called "on" in other implementations.
+	 */
+	int increasing_temp_ratio_threshold;
+	/* lowest temp_ratio to apply this rpm when decreasing.
+	 * Use this rpm until temp_ratio falls below this threshold.
+	 * Called "off" in other implementations.
+	 */
+	int decreasing_temp_ratio_threshold;
+	int rpm;
+};
+/**
+ * This function is the most popular custom translation of the temp ratio
+ * (temperature as a percentage of the ec_thermal_config.temp_fan_off to
+ * ec_thermal_config.temp_fan_max range) into a target fan RPM.
+ *
+ * @param fan_table        Pointer to ordered array of fan_step_1_1 structs
+ * @param num_fan_levels   Size of fan_table
+ * @param fan_index        Fan number (index into fans[])
+ * @param temp_ratio       Percentage of cooling effort needed (in [0,100])
+ * Return                  Target RPM for fan
+ */
+int temp_ratio_to_rpm_path_dependent(const struct fan_step_1_1 *fan_table,
+				     const int num_fan_levels, int fan_index,
+				     int temp_ratio, void (*on_change)(void));
 
 /**
  * These functions require chip-specific implementations.
