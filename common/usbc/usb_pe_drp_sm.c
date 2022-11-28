@@ -687,6 +687,32 @@ int pd_get_rev(int port, enum tcpci_msg_type type)
 	return prl_get_rev(port, type);
 }
 
+enum pd_discovery_state pd_get_modes_discovery(int port,
+					       enum tcpci_msg_type type)
+{
+	return PD_DISC_NEEDED;
+}
+enum pd_discovery_state pd_get_identity_discovery(int port,
+						  enum tcpci_msg_type type)
+{
+	return PD_DISC_NEEDED;
+}
+
+bool is_vpd_ct_supported(int port)
+{
+	return true;
+}
+
+void pd_set_identity_discovery(int port, enum tcpci_msg_type type,
+			       enum pd_discovery_state disc)
+{
+}
+
+enum pd_discovery_state pd_get_svids_discovery(int port,
+					       enum tcpci_msg_type type)
+{
+	return PD_DISC_NEEDED;
+}
 int pd_get_vdo_ver(int port, enum tcpci_msg_type type)
 {
 	enum pd_rev_type rev = prl_get_rev(port, type);
@@ -1810,6 +1836,7 @@ static void send_source_cap(int port)
  */
 static void pe_send_request_msg(int port)
 {
+#if 0
 	uint32_t vpd_vdo = 0;
 	uint32_t rdo;
 	uint32_t curr_limit;
@@ -1845,6 +1872,7 @@ static void pe_send_request_msg(int port)
 
 	memcpy(tx_emsg[port].buf, (uint8_t *)&rdo, tx_emsg[port].len);
 	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_REQUEST);
+#endif
 }
 
 static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
@@ -2943,6 +2971,7 @@ static void pe_src_ready_exit(int port)
  */
 static void pe_src_disabled_entry(int port)
 {
+#if 0
 	print_current_state(port);
 
 	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_VPD) &&
@@ -2961,6 +2990,7 @@ static void pe_src_disabled_entry(int port)
 	 * Unresponsive to USB Power Delivery messaging, but not to Hard Reset
 	 * Signaling. See pe_got_hard_reset
 	 */
+#endif
 }
 
 /**
@@ -5588,6 +5618,7 @@ static void pe_vdm_send_request_exit(int port)
  */
 static void pe_vdm_identity_request_cbl_entry(int port)
 {
+#if 0
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 
 	print_current_state(port);
@@ -5616,10 +5647,12 @@ static void pe_vdm_identity_request_cbl_entry(int port)
 	 * (header, ID header, Cert Stat, Product VDO).
 	 */
 	pe[port].vdm_ack_min_data_objects = 4;
+#endif
 }
 
 static void pe_vdm_identity_request_cbl_run(int port)
 {
+#if 0
 	/* Retrieve the message information */
 	uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
 	int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
@@ -5688,10 +5721,12 @@ static void pe_vdm_identity_request_cbl_run(int port)
 
 	/* Return to calling state (PE_{SRC,SNK}_Ready or PE_SRC_Discovery) */
 	set_state_pe(port, get_last_state_pe(port));
+#endif
 }
 
 static void pe_vdm_identity_request_cbl_exit(int port)
 {
+#if 0
 	/*
 	 * When cable GoodCRCs but does not reply, down-rev to PD 2.0 and try
 	 * again.
@@ -5757,6 +5792,7 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 					PD_STATUS_EVENT_SOP_DISC_DONE :
 					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
 	}
+#endif
 }
 
 /**
@@ -5789,6 +5825,7 @@ static void pe_init_port_vdm_identity_request_entry(int port)
 
 static void pe_init_port_vdm_identity_request_run(int port)
 {
+#if 0
 	switch (parse_vdm_response_common(port)) {
 	case VDM_RESULT_WAITING:
 		/* If common code didn't parse a message, continue waiting. */
@@ -5819,10 +5856,12 @@ static void pe_init_port_vdm_identity_request_run(int port)
 
 	/* Return to calling state (PE_{SRC,SNK}_Ready) */
 	set_state_pe(port, get_last_state_pe(port));
+#endif
 }
 
 static void pe_init_port_vdm_identity_request_exit(int port)
 {
+#if 0
 	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT);
 		/*
@@ -5845,6 +5884,7 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 					PD_STATUS_EVENT_SOP_DISC_DONE :
 					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
 	}
+#endif
 }
 
 /**
@@ -5854,6 +5894,7 @@ static void pe_init_port_vdm_identity_request_exit(int port)
  */
 static void pe_init_vdm_svids_request_entry(int port)
 {
+#if 0
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 
 	print_current_state(port);
@@ -5881,10 +5922,12 @@ static void pe_init_vdm_svids_request_entry(int port)
 	 * and at least 1 SVID VDO).
 	 */
 	pe[port].vdm_ack_min_data_objects = 2;
+#endif
 }
 
 static void pe_init_vdm_svids_request_run(int port)
 {
+#if 0
 	switch (parse_vdm_response_common(port)) {
 	case VDM_RESULT_WAITING:
 		/* If common code didn't parse a message, continue waiting. */
@@ -5914,10 +5957,12 @@ static void pe_init_vdm_svids_request_run(int port)
 
 	/* Return to calling state (PE_{SRC,SNK}_Ready) */
 	set_state_pe(port, get_last_state_pe(port));
+#endif
 }
 
 static void pe_init_vdm_svids_request_exit(int port)
 {
+#if 0
 	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT);
 		/*
@@ -5938,6 +5983,7 @@ static void pe_init_vdm_svids_request_exit(int port)
 				pe[port].tx_type == TCPCI_MSG_SOP ?
 					PD_STATUS_EVENT_SOP_DISC_DONE :
 					PD_STATUS_EVENT_SOP_PRIME_DISC_DONE);
+#endif
 }
 
 /**
@@ -5947,6 +5993,7 @@ static void pe_init_vdm_svids_request_exit(int port)
  */
 static void pe_init_vdm_modes_request_entry(int port)
 {
+#if 0
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 	const struct svid_mode_data *mode_data =
 		pd_get_next_mode(port, pe[port].tx_type);
@@ -5985,10 +6032,12 @@ static void pe_init_vdm_modes_request_entry(int port)
 	 * header and at least 1 mode VDO).
 	 */
 	pe[port].vdm_ack_min_data_objects = 2;
+#endif
 }
 
 static void pe_init_vdm_modes_request_run(int port)
 {
+#if 0
 	const struct svid_mode_data *mode_data;
 	uint16_t requested_svid;
 
@@ -6039,6 +6088,7 @@ static void pe_init_vdm_modes_request_run(int port)
 
 	/* Return to calling state (PE_{SRC,SNK}_Ready) */
 	set_state_pe(port, get_last_state_pe(port));
+#endif
 }
 
 static void pe_init_vdm_modes_request_exit(int port)

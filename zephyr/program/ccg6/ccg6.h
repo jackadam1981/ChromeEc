@@ -1,0 +1,23 @@
+/* Copyright 2022 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+#ifndef __CCG6_BOARD_H
+#define __CCG6_BOARD_H
+
+#include "compiler.h"
+#include "gpio_signal.h"
+#include "stdbool.h"
+
+/* RVP ID read retry count */
+#define RVP_VERSION_READ_RETRY_CNT 2
+
+#define DC_JACK_MAX_VOLTAGE_MV 19000
+
+FORWARD_DECLARE_ENUM(tcpc_rp_value);
+
+void board_charging_enable(int port, int enable);
+void board_vbus_enable(int port, int enable);
+void board_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp);
+void tcpc_alert_event(enum gpio_signal signal);
+#endif /* __CCG6_BOARD_H */

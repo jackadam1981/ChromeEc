@@ -47,11 +47,13 @@ static enum dp_states dp_state[CONFIG_USB_PD_PORT_MAX_COUNT];
  * Map of states to expected VDM commands in responses.
  * Default of 0 indicates no command expected.
  */
+#if 0
 static const uint8_t state_vdm_cmd[DP_STATE_COUNT] = {
 	[DP_START] = CMD_ENTER_MODE,	     [DP_ENTER_ACKED] = CMD_DP_STATUS,
 	[DP_PREPARE_CONFIG] = CMD_DP_CONFIG, [DP_PREPARE_EXIT] = CMD_EXIT_MODE,
 	[DP_ENTER_RETRY] = CMD_ENTER_MODE,
 };
+#endif
 
 /*
  * Track if we're retrying due to an Enter Mode NAK
@@ -84,7 +86,7 @@ bool dp_entry_is_done(int port)
 {
 	return dp_state[port] == DP_ACTIVE || dp_state[port] == DP_INACTIVE;
 }
-
+#if 0
 static void dp_entry_failed(int port)
 {
 	CPRINTS("C%d: DP alt mode protocol failed!", port);
@@ -130,10 +132,12 @@ static void dp_exit_to_usb_mode(int port)
 	 */
 	dp_state[port] = DP_INACTIVE;
 }
+#endif
 
 void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		  uint32_t *vdm)
 {
+#if 0
 	const struct svdm_amode_data *modep =
 		pd_get_amode_data(port, type, USB_SID_DISPLAYPORT);
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
@@ -187,10 +191,12 @@ void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		dp_entry_failed(port);
 		break;
 	}
+#endif
 }
 
 void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 {
+#if 0
 	if (!dp_response_valid(port, type, "NAK", vdm_cmd))
 		return;
 
@@ -223,11 +229,13 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 		dp_entry_failed(port);
 		break;
 	}
+#endif
 }
 
 enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 					    uint32_t *vdm)
 {
+#if 0
 	const struct svdm_amode_data *modep =
 		pd_get_amode_data(port, TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	int vdo_count_ret;
@@ -338,6 +346,6 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 		*vdo_count = vdo_count_ret;
 		return MSG_SETUP_SUCCESS;
 	}
-
+#endif
 	return MSG_SETUP_UNSUPPORTED;
 }
