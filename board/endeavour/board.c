@@ -119,14 +119,24 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  * Thermal limits for each temp sensor.  All temps are in degrees K.  Must be in
  * same order as enum temp_sensor_id.  To always ignore any temp, use 0.
  */
+static const int temp_fan_off = C_TO_K(35);
+static const int temp_fan_max = C_TO_K(55);
 struct ec_thermal_config thermal_params[] = {
 	/* {Twarn, Thigh, Thalt}, <on>
 	 * {Twarn, Thigh, X    }, <off>
 	 * fan_off, fan_max
 	 */
+<<<<<<< HEAD   (6ddc16 fan: Rewrite and test the most common custom fan_percent_to_)
 	{{0, C_TO_K(81), C_TO_K(82)}, {0, C_TO_K(77), 0},
 		C_TO_K(19), C_TO_K(74)},	/* TMP431_Internal */
 	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP431_Sensor_1 */
+=======
+	{ { 0, C_TO_K(81), C_TO_K(82) },
+	  { 0, C_TO_K(77), 0 },
+	  temp_fan_off,
+	  temp_fan_max }, /* TMP431_Internal */
+	{ { 0, 0, 0 }, { 0, 0, 0 }, 0, 0 }, /* TMP431_Sensor_1 */
+>>>>>>> CHANGE (b1f1b6 endeavour: Increase fan to reduce throttling.)
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
@@ -301,11 +311,30 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-struct fan_step {
-	int on;
-	int off;
-	int rpm;
+static const struct fan_step_1_1 fan_table0[] = {
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(35),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(41),
+	  .rpm = 2500 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(40),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(44),
+	  .rpm = 2900 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(42),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(46),
+	  .rpm = 3400 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(44),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(48),
+	  .rpm = 3900 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(46),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(50),
+	  .rpm = 4400 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(48),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(52),
+	  .rpm = 4900 },
+	{ .decreasing_temp_ratio_threshold = TEMP_TO_RATIO(50),
+	  .increasing_temp_ratio_threshold = TEMP_TO_RATIO(55),
+	  .rpm = 5400 },
 };
+<<<<<<< HEAD   (6ddc16 fan: Rewrite and test the most common custom fan_percent_to_)
 
 /* Note: Do not make the fan on/off point equal to 0 or 100 */
 static const struct fan_step fan_table0[] = {
@@ -319,9 +348,11 @@ static const struct fan_step fan_table0[] = {
 	{.on = 98, .off = 89, .rpm = 5400},
 };
 /* All fan tables must have the same number of levels */
+=======
+>>>>>>> CHANGE (b1f1b6 endeavour: Increase fan to reduce throttling.)
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
 
-static const struct fan_step *fan_table = fan_table0;
+static const struct fan_step_1_1 *fan_table = fan_table0;
 
 
 static void cbi_init(void)
@@ -347,8 +378,9 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-int fan_percent_to_rpm(int fan, int pct)
+int fan_percent_to_rpm(int fan, int temp_ratio)
 {
+<<<<<<< HEAD   (6ddc16 fan: Rewrite and test the most common custom fan_percent_to_)
 	static int current_level;
 	static int previous_pct;
 	int i;
@@ -386,4 +418,8 @@ int fan_percent_to_rpm(int fan, int pct)
 			fan_table[current_level].rpm);
 
 	return fan_table[current_level].rpm;
+=======
+	return temp_ratio_to_rpm_hysteresis(fan_table, NUM_FAN_LEVELS, fan,
+					    temp_ratio, NULL);
+>>>>>>> CHANGE (b1f1b6 endeavour: Increase fan to reduce throttling.)
 }
