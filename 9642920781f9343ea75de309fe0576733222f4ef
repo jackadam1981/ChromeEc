@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f73bb8_9f5f9d58",
+        "filename": "include/fan.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-28T15:58:16Z",
+      "side": 1,
+      "message": "I think the wording here is slightly confusing. I\u0027d remove \"Formerly pct.\" I don\u0027t think that will be much help to readers going forward. As the comment is formatted now, it makes it seem like the 0 - 100 requirement is also \"formerly,\" but it seems like that is still what `temp_ratio` is expected to be.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 56
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d631861c_13085367",
+        "filename": "include/fan.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-28T15:58:16Z",
+      "side": 1,
+      "message": "I\u0027d remove the references to \"off\" and \"on\" in other implementations. Going forward, this will be the standard implementation, and the other implementations will be the weird ones. As those get converted or deleted, this comment will become less valuable.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 42
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

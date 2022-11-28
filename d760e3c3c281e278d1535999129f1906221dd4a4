@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beffbcd2_76e9567d",
+        "filename": "common/fan.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-28T15:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61a48137_725fd1f9",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4098965c_74df4932",
@@ -109,6 +127,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1fbefa2_81e4308f",
+        "filename": "include/fan.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-28T15:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfcbd685_086f2eab",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b6cf084_70b75c80",
@@ -122,6 +158,24 @@
       "writtenOn": "2022-11-22T21:35:59Z",
       "side": 1,
       "message": "Shouldn\u0027t `on` be greater than `off`?\n\nNit: IMO, putting `off` before `on` in the table definition (and struct definition) would make this table easier to read.",
+      "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3319672_0309d091",
+        "filename": "test/fan.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2022-11-28T15:58:16Z",
+      "side": 1,
+      "message": "I think this is easier to read with the more expressive names.\n\nBut why is `decreasing_temp_ratio_threshold` greater than `increasing_temp_ratio_threshold` in this first entry?",
+      "parentUuid": "8b6cf084_70b75c80",
       "revId": "d760e3c3c281e278d1535999129f1906221dd4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
