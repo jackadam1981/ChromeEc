@@ -16,6 +16,24 @@
       "message": "I would say that some of the BAD flags should probably still be applicable (ex. retrieving the primary charger current going to the battery).  But we should ensure the voltage and input current behave more gracefully when there\u0027s no active AC present.\n\nWe could either mask off those flags when there\u0027s no AC, or change charger_get_params() to default to retrieving the primary charger chip index when no other chip is active.",
       "revId": "813c25b1377cd5c7f9f08bed0bb0fe4a24610d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d97a087_39b015b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-28T20:02:57Z",
+      "side": 1,
+      "message": "More or less agree with Diana. I think there is some fundamental reudantancy we should get rid of:\n\n1. make charger_get_* routines cache values and return values from cache (unless immediate values are requested).\n2. make code referencing chg.voltage/current/input_current/status/options call charger_get*. \n3. Get rid of charger_get_params from the charger_task loop.\n\n---\u003e8---\n\ncurr.chg is referenced only by charge_command_charge_state(for EC_CMD_CHARGE_STATE) and charger_profile_override. We can make these explicitly call charger_get_params or individual get_ routines.",
+      "parentUuid": "e56dfdae_c7c0e30e",
+      "revId": "813c25b1377cd5c7f9f08bed0bb0fe4a24610d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
