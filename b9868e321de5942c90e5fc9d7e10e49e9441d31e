@@ -22,6 +22,30 @@
       },
       "revId": "b9868e321de5942c90e5fc9d7e10e49e9441d31e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6eb716d_6b4c957d",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2022-11-28T02:59:12Z",
+      "side": 1,
+      "message": "OK, I also cast csr_read() macro to void *, because it returns unsigned long type.",
+      "parentUuid": "15b0fa5c_eacb5bdf",
+      "range": {
+        "startLine": 27,
+        "startChar": 30,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "b9868e321de5942c90e5fc9d7e10e49e9441d31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
