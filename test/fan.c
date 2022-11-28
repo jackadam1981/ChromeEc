@@ -104,9 +104,68 @@ static int test_fan(void)
 	return EC_SUCCESS;
 }
 
+static int test_temp_ratio_to_rpm_hysteresis(void)
+{
+	const struct fan_step_1_1 fan_table[] = {
+		{ .decreasing_temp_ratio_threshold = 2,
+		  .increasing_temp_ratio_threshold = 0,
+		  .rpm = 0 },
+		{ .decreasing_temp_ratio_threshold = 2,
+		  .increasing_temp_ratio_threshold = 11,
+		  .rpm = 2500 },
+		{ .decreasing_temp_ratio_threshold = 29,
+		  .increasing_temp_ratio_threshold = 38,
+		  .rpm = 3200 },
+		{ .decreasing_temp_ratio_threshold = 36,
+		  .increasing_temp_ratio_threshold = 65,
+		  .rpm = 3500 },
+		{ .decreasing_temp_ratio_threshold = 64,
+		  .increasing_temp_ratio_threshold = 76,
+		  .rpm = 3900 },
+		{ .decreasing_temp_ratio_threshold = 75,
+		  .increasing_temp_ratio_threshold = 84,
+		  .rpm = 4500 },
+		{ .decreasing_temp_ratio_threshold = 82,
+		  .increasing_temp_ratio_threshold = 91,
+		  .rpm = 5100 },
+		{ .decreasing_temp_ratio_threshold = 89,
+		  .increasing_temp_ratio_threshold = 98,
+		  .rpm = 5400 },
+	};
+	const int num_fan_levels = ARRAY_SIZE(fan_table);
+
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 0, NULL) == 0);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 20, NULL) == 2500);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 10, NULL) == 2500);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 40, NULL) == 3200);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 30, NULL) == 3200);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 20, NULL) == 2500);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 60, NULL) == 3200);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 70, NULL) == 3500);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 60, NULL) == 3500);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 100, NULL) == 5400);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 5, NULL) == 2500);
+	TEST_ASSERT(temp_ratio_to_rpm_hysteresis(fan_table, num_fan_levels, 0,
+						 0, NULL) == 0);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_fan);
+	RUN_TEST(test_temp_ratio_to_rpm_hysteresis);
 
 	test_print_result();
 }
