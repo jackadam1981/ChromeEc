@@ -39,6 +39,30 @@
       },
       "revId": "0bf1dba136e671054e3186fa22e3230d0ba12d41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e598ccb_e096165a",
+        "filename": "zephyr/shim/src/rw_safe_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-11-29T23:52:05Z",
+      "side": 1,
+      "message": "So there\u0027s a bug in panic_reboot that I was working around. Here\u0027s the fix: \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4065004\n\nDone.",
+      "parentUuid": "b06fff05_f6bc9425",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "0bf1dba136e671054e3186fa22e3230d0ba12d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
