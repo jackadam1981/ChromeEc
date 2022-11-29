@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "host_command.h"
 #include "panic.h"
 #include "rw_safe_mode.h"
 
@@ -148,6 +149,8 @@ void k_sys_fatal_error_handler(unsigned int reason, const z_arch_esf_t *esf)
 	}
 
 	LOG_PANIC();
+
+	host_set_single_event(EC_HOST_EVENT_PANIC);
 
 	/* Start RW safe mode recovery if possible */
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_RW_SAFE_MODE) &&
