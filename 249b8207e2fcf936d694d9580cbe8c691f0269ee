@@ -16,6 +16,23 @@
       "message": "this change can build and power on",
       "revId": "249b8207e2fcf936d694d9580cbe8c691f0269ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b1d934_0bd3a251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2022-11-29T06:21:02Z",
+      "side": 1,
+      "message": "Hi Gwendal,\n\nI check the EC code, there is a test function for get_rms_noise in test/motion_common.c, but the code coverage still check fail.\n\nCould you help to take a look?",
+      "revId": "249b8207e2fcf936d694d9580cbe8c691f0269ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
