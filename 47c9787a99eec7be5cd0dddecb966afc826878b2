@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99940f42_d68d2728",
+        "filename": "zephyr/program/herobrine/zombie/interrupts.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-29T18:00:44Z",
+      "side": 1,
+      "message": "As most of the definitions are the same, you don\u0027t need to redefine the whole things. Just include the `../interrupts.dtsi` and use `/delete-node/` to remove the unwanted nodes. Check `zephyr/program/herobrine/herobrine/project.overlay` as an example.",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "47c9787a99eec7be5cd0dddecb966afc826878b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
