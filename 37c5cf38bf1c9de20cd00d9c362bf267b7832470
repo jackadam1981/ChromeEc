@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d97e98f_17d61b1a",
+        "filename": "zephyr/Kconfig.charger",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-29T17:55:35Z",
+      "side": 1,
+      "message": "Does this description match the DC use-case?  It\u0027s not the adapter for DC, but the battery current, correct?",
+      "revId": "37c5cf38bf1c9de20cd00d9c362bf267b7832470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
