@@ -364,6 +364,8 @@ void __keep report_panic(void)
 	if (IS_ENABLED(CONFIG_ARMV7M_CACHE))
 		cpu_clean_invalidate_dcache();
 
+	host_set_single_event(EC_HOST_EVENT_PANIC);
+
 	/* Start safe mode if possible */
 	if (IS_ENABLED(CONFIG_SYSTEM_SAFE_MODE)) {
 		/* TODO: check for nested exceptions */
