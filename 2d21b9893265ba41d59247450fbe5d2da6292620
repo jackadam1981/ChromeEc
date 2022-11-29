@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7568bccf_d5e48f1e",
+        "filename": "board/agah/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-29T19:19:15Z",
+      "side": 1,
+      "message": "The zephyr header ordering rules are:\n1) \"\" includes\n2) \u003c\u003e system includes\n3) \u003czephyr/*\u003e includes\n4) Everything else, which should be nothing, but in practice it doesn\u0027t find all the system includes, and sometimes people use \u003c\u003e to include EC headers.\n\nMaybe those rules aren\u0027t the right rules, but they are the rules that the zephyr project uses.",
+      "parentUuid": "5340157e_153c09dc",
+      "revId": "2d21b9893265ba41d59247450fbe5d2da6292620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b118c0b_923277e2",
