@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "776f3799_9d5d85ce",
+        "filename": "zephyr/program/herobrine/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-11-29T02:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ef8915f_40a13390",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "5dc7cdca2b2b831fc775dcdc1b1bb44d9f86cbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "300840d8_e29000fe",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-28T18:41:19Z",
       "side": 1,
       "message": "Don\u0027t need that much of includes. Keep the minimal set.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "5dc7cdca2b2b831fc775dcdc1b1bb44d9f86cbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f67c58_998b7c6c",
+        "filename": "zephyr/program/herobrine/src/zombie/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-11-29T02:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "300840d8_e29000fe",
       "range": {
         "startLine": 6,
         "startChar": 0,
