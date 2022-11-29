@@ -22,6 +22,30 @@
       },
       "revId": "4cd986843a37ab2a65e937459f1e7867d76aa45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4443f3b_15cb4cd6",
+        "filename": "zephyr/test/drivers/host_cmd/src/pd_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-29T15:14:15Z",
+      "side": 1,
+      "message": "Unfortunately I copied this from above test line 124 which lacks explanation as well 😐",
+      "parentUuid": "80a2be81_377b0053",
+      "range": {
+        "startLine": 140,
+        "startChar": 61,
+        "endLine": 140,
+        "endChar": 63
+      },
+      "revId": "4cd986843a37ab2a65e937459f1e7867d76aa45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
