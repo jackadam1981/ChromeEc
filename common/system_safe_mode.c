@@ -121,9 +121,12 @@ bool command_is_allowed_in_safe_mode(int command)
 
 static void system_safe_mode_start(void)
 {
+<<<<<<< HEAD   (2c876a safe_mode: Remove schedule_system_safe_mode_timeout)
 	ccprintf("Post Panic SSM\n");
 	if (IS_ENABLED(CONFIG_SYSTEM_SAFE_MODE_PRINT_STACK))
 		print_panic_stack();
+=======
+>>>>>>> CHANGE (b3f612 system_safe_mode: Publish EC_HOST_EVENT_PANIC when safe mode)
 	if (IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
 		host_set_single_event(EC_HOST_EVENT_PANIC);
 }
@@ -152,6 +155,13 @@ int start_system_safe_mode(void)
 
 	hook_call_deferred(&handle_system_safe_mode_timeout_data,
 			   CONFIG_SYSTEM_SAFE_MODE_TIMEOUT_MSEC * MSEC);
+
+	/*
+	 * Schedule a deferred function to run immediately
+	 * after returning from fault handler. Defer operations that
+	 * must not run in an ISR to this function.
+	 */
+	hook_call_deferred(&system_safe_mode_start_data, 0);
 
 	in_safe_mode = true;
 
