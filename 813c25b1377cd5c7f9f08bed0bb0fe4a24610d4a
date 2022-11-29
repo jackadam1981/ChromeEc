@@ -34,6 +34,24 @@
       "parentUuid": "e56dfdae_c7c0e30e",
       "revId": "813c25b1377cd5c7f9f08bed0bb0fe4a24610d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b996591_de42a730",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2022-11-29T16:36:24Z",
+      "side": 1,
+      "message": "Thanks Diana, \n\nHi Daisuke,\n\nThank you for the comments, right now I am planning to integrate this change and consider approach mentioned later.\n\nThis change is needed for our craask systems as it improves the PnP Suspend state measurements.",
+      "parentUuid": "5d97a087_39b015b6",
+      "revId": "813c25b1377cd5c7f9f08bed0bb0fe4a24610d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
