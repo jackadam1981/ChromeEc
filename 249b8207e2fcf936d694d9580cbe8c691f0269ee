@@ -33,6 +33,24 @@
       "message": "Hi Gwendal,\n\nI check the EC code, there is a test function for get_rms_noise in test/motion_common.c, but the code coverage still check fail.\n\nCould you help to take a look?",
       "revId": "249b8207e2fcf936d694d9580cbe8c691f0269ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f364a9_18574b69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-29T15:15:10Z",
+      "side": 1,
+      "message": "It looks like this driver has an emulator under zephyr/emul, but the test using it might not be enabling CONFIG_BODY_DETECTION.  \n\nThe test is `zephyr/test/drivers/default/src/lis2dw12.c` and its Kconfig options are in `zephyr/test/drivers/default/prj.conf`.  You could add a test case confirming we get the expected values for get_rms_noise() in that test file.\n\nAdding zephyr test team if you have any test questions.",
+      "parentUuid": "f9b1d934_0bd3a251",
+      "revId": "249b8207e2fcf936d694d9580cbe8c691f0269ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
