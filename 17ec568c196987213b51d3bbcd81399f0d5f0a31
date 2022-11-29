@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c71a9e07_c62f075d",
+        "filename": "zephyr/program/skyrim/src/winterhold/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-11-29T18:38:01Z",
+      "side": 1,
+      "message": "nit: space `/* Set`",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 2
+      },
+      "revId": "17ec568c196987213b51d3bbcd81399f0d5f0a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47b1aec_917f38dd",
+        "filename": "zephyr/program/skyrim/src/winterhold/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-11-29T18:38:01Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 17,
+        "startChar": 46,
+        "endLine": 17,
+        "endChar": 48
+      },
+      "revId": "17ec568c196987213b51d3bbcd81399f0d5f0a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb857d8c_6c8c33bd",
+        "filename": "zephyr/program/skyrim/src/winterhold/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-11-29T18:38:01Z",
+      "side": 1,
+      "message": "Whoah.... Why do we have 2 events that do essentially the same thing!?\n\n```\nEC_HOST_EVENT_THERMAL_THRESHOLD \u003d 9,\nEC_HOST_EVENT_THERMAL \u003d 11,\n```\n\nThe EC seems to send `EC_HOST_EVENT_THERMAL` on `thermal errors`, but all the ACPI handler does it notify the thermal zone that the temperate has changed: https://review.coreboot.org/plugins/gitiles/coreboot/+/refs/heads/master/src/ec/google/chromeec/acpi/ec.asl#332. This is the event I would have expected to see here. `EC_HOST_EVENT_THERMAL_THRESHOLD` never notifies the ACPI _TZ :/\n\nIt looks like `THERMAL_THRESHOLD` is what we enable in the SCI event mask: https://review.coreboot.org/plugins/gitiles/coreboot/+/refs/heads/master/src/mainboard/google/skyrim/variants/baseboard/include/baseboard/ec.h#20\n\nWe never even enable `THERMAL` :/\n\nI guess we should modify the ACPI to notify the _TZ on `THERMAL_THRESHOLD`.\n\nI\u0027m tempted to have you add this code to https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/thermal.c#213 and guard it with a Kconfig, but maybe we do that later if it\u0027s needed?",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "17ec568c196987213b51d3bbcd81399f0d5f0a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
