@@ -116,6 +116,30 @@
       },
       "revId": "5dc7cdca2b2b831fc775dcdc1b1bb44d9f86cbc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6252b8b_6d00509e",
+        "filename": "zephyr/program/herobrine/src/zombie/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2022-11-29T09:01:58Z",
+      "side": 1,
+      "message": "thanks for the good suggest.\nSubmit anthor cl: 4063091  for dts file style. this cl will abandon.",
+      "parentUuid": "a40b4a4d_e270d7c5",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "5dc7cdca2b2b831fc775dcdc1b1bb44d9f86cbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
