@@ -26,6 +26,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7842cccd_f702fd45",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-11-29T21:15:23Z",
+      "side": 1,
+      "message": "If we never return from the fault handler, the WDT will trigger and reboot.\n\nIn this implementation, we return from fault handler to safe mode and the idle thread continues to pet the WDT. So the WDT continues to work normally and will catch a hang in rw safe mode. However, if the safe mode timeout fails for any reason the system will just stay in rw safe mode.  \n\nTo replace this timeout with WDT, we need to reinitialize the WDT with a longer timeout and stop the idle task. We\u0027d also need to override the panic reason, since we don\u0027t want the original panic reason to be overwritten as a watchdog timeout. \n\nSo I think either will work with some trade-offs.",
+      "parentUuid": "8cb61456_03625d46",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 38
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461bd947_81335834",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-11-29T21:15:23Z",
+      "side": 1,
+      "message": "After",
+      "parentUuid": "8cb61456_03625d46",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 38
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "526a4970_93407eac",
         "filename": "common/rw_safe_mode.c",
         "patchSetId": 7
@@ -49,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2b4688b_45fc01d1",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-11-29T21:15:23Z",
+      "side": 1,
+      "message": "ccprints is just aliased to `cprints(CC_COMMAND, format, ##args)` right?",
+      "parentUuid": "526a4970_93407eac",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdc53a2c_fb00315a",
         "filename": "common/rw_safe_mode.c",
         "patchSetId": 7
@@ -60,6 +132,30 @@
       "writtenOn": "2022-11-29T18:07:49Z",
       "side": 1,
       "message": "I thought we would jump from RW to RW to enter safe mode. Can you clarify?",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 50
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c364e07_3b855c49",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-11-29T21:15:23Z",
+      "side": 1,
+      "message": "My current thinking is it will be simpler and more scalable to just restart critical tasks as necessary. \n\nJumping to RW will cause a lot of memory to be overwritten. As we\u0027ve discussed, we can work around this by copying initialized memory to uninitialized memory before jumping, but this adds a lot of complexity.",
+      "parentUuid": "bdc53a2c_fb00315a",
       "range": {
         "startLine": 94,
         "startChar": 3,
