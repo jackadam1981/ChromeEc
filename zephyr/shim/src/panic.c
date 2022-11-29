@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "host_command.h"
 #include "panic.h"
 #include "system_safe_mode.h"
 
