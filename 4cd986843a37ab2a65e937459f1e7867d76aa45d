@@ -70,6 +70,30 @@
       },
       "revId": "4cd986843a37ab2a65e937459f1e7867d76aa45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9ee955_30e13f5a",
+        "filename": "zephyr/test/drivers/host_cmd/src/pd_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2022-11-29T18:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b71ab255_8c7cdd83",
+      "range": {
+        "startLine": 140,
+        "startChar": 61,
+        "endLine": 140,
+        "endChar": 63
+      },
+      "revId": "4cd986843a37ab2a65e937459f1e7867d76aa45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
