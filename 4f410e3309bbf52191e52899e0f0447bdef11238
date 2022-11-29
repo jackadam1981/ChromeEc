@@ -16,6 +16,24 @@
       "message": "We currently have a default `SKYRIM_AC_PROCHOT_CURRENT_MA` being used for this in the common skyrim source code, but I think this could be improved by removing that \"#define\" for the value and instead creating a Skyrim Kconfig option in zephyr/program/skyrim/Kconfig \n\nWe could do something similar for the DC PROCHOT and default it to the chip\u0027s default value. I suppose longer-term, we could set this up as a Kconfig on the charger chip level, but I\u0027ll leave it to you whether you\u0027d prefer to just alter skyrim source code, or create a larger charger driver change.",
       "revId": "4f410e3309bbf52191e52899e0f0447bdef11238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b129ccd2_f05f6e7b",
+        "filename": "zephyr/program/skyrim/src/winterhold/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2022-11-29T07:20:47Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "42572ccd_93a1b16f",
+      "revId": "4f410e3309bbf52191e52899e0f0447bdef11238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
