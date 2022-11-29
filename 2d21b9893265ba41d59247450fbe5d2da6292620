@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208afac1_a283b833",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-29T17:21:07Z",
+      "side": 1,
+      "message": "Note to reviewer:\n\nI added a comment before every #include \"gpio_list.h\" to make sure that clang_format didn\u0027t try to move it. I changed that even for cases that already had a comment to make them uniform.\n\nThe files in baseboard and board are just reformatted, the files in include have new #includes to fix build errors.",
+      "revId": "2d21b9893265ba41d59247450fbe5d2da6292620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
