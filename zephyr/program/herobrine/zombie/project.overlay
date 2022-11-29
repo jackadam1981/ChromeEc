@@ -7,7 +7,6 @@
 #include "../adc.dtsi"
 #include "../common.dtsi"
 #include "../i2c.dtsi"
-#include "../interrupts.dtsi"
 #include "../keyboard.dtsi"
 #include "../default_gpio_pinctrl.dtsi"
 #include "../switchcap.dtsi"
@@ -17,7 +16,8 @@
 #include "gpio.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
-#include "motionsense.dtsi"
+#include "interrupts.dtsi"
+
 
 /* zombie overrides follow... */
 /* battery overrides */
