@@ -7,17 +7,16 @@
 #include "../adc.dtsi"
 #include "../common.dtsi"
 #include "../i2c.dtsi"
-#include "../interrupts.dtsi"
 #include "../keyboard.dtsi"
 #include "../default_gpio_pinctrl.dtsi"
 #include "../switchcap.dtsi"
 #include "../usbc.dtsi"
+#include "../interrupts.dtsi"
 
 /* Zombie project DTS includes*/
 #include "gpio.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
-#include "motionsense.dtsi"
 
 /* zombie overrides follow... */
 /* battery overrides */
@@ -26,5 +25,13 @@
 		default_battery: sg20 {
 			compatible = "ganfeng,sg20", "battery-smart";
 		};
+	};
+};
+
+/* interrupts overrides */
+/ {
+	gpio-interrupts {
+		/delete-node/ accel_gyro;
+		/delete-node/ tablet_mode;
 	};
 };
