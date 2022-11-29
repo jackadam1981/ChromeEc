@@ -16,6 +16,24 @@
       "message": "Given that this config is always on for craask (since the fan config is\nalways present in the DTS), maybe move this file fan.c to the always included list.",
       "revId": "7deb4f1d2196ec3a749706f27ec1ce76c44d3719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "508f2429_f9053652",
+        "filename": "zephyr/program/nissa/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-11-29T06:07:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure always include list is which Set5.done.",
+      "parentUuid": "d6201ab9_ddab5289",
+      "revId": "7deb4f1d2196ec3a749706f27ec1ce76c44d3719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
