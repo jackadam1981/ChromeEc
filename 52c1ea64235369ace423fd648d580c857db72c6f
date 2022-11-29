@@ -16,6 +16,23 @@
       "message": "copying the side effect from the bug here:\n```It\u0027s only can output monitor when connect HDMI/DP cards\nIf TypeC card and connect a dongle with HDMI/DP port, cannot output the monitor.```",
       "revId": "52c1ea64235369ace423fd648d580c857db72c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b8f36e_6136ccce",
+        "filename": "board/banshee/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-29T14:57:33Z",
+      "side": 1,
+      "message": "Please keep any register references inside the driver code.  That way, read/modify/write accesses can be properly mutexed to avoid issues where multiple tasks may attempt to read/modify/write a register in parallel and overwrite each other\u0027s changes.",
+      "revId": "52c1ea64235369ace423fd648d580c857db72c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
