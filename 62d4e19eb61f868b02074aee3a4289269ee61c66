@@ -16,6 +16,24 @@
       "message": "This shouldn\u0027t be necessary, because this option in Kconfig.temperature is\nautomatically turned on when fans are defined in the device tree.",
       "revId": "62d4e19eb61f868b02074aee3a4289269ee61c66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c37a95aa_96205d07",
+        "filename": "zephyr/program/nissa/craask/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2022-11-29T02:55:48Z",
+      "side": 1,
+      "message": "update it, done.",
+      "parentUuid": "a0347c81_2aab48d8",
+      "revId": "62d4e19eb61f868b02074aee3a4289269ee61c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
