@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "162a178b_ee13503d",
+        "filename": "zephyr/cmake/compiler/clang/compiler_flags.cmake",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-29T06:06:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbb95386_27e9f34c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "e10c75edd1c17eb70f7faf9add22cb7f50e2eee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb6681db_21a246fb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-28T16:45:00Z",
       "side": 1,
       "message": "This comment needs updated.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "e10c75edd1c17eb70f7faf9add22cb7f50e2eee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a41c7c1_1a174960",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2022-11-29T06:06:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb6681db_21a246fb",
       "range": {
         "startLine": 10,
         "startChar": 0,
