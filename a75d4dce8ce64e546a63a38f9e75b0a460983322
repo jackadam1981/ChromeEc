@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb61456_03625d46",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-29T18:07:49Z",
+      "side": 1,
+      "message": "I wonder if we could use WDT, which I believe is more reliable.",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 38
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526a4970_93407eac",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-29T18:07:49Z",
+      "side": 1,
+      "message": "nit: you don\u0027t use cprints?",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc53a2c_fb00315a",
+        "filename": "common/rw_safe_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-29T18:07:49Z",
+      "side": 1,
+      "message": "I thought we would jump from RW to RW to enter safe mode. Can you clarify?",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 50
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0607905f_f189a3da",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-29T18:07:49Z",
+      "side": 1,
+      "message": "nit",
+      "range": {
+        "startLine": 374,
+        "startChar": 16,
+        "endLine": 374,
+        "endChar": 22
+      },
+      "revId": "a75d4dce8ce64e546a63a38f9e75b0a460983322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
