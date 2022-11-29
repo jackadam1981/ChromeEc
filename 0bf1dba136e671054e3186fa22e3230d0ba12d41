@@ -16,6 +16,29 @@
       "message": "Note: I decided to split the implementation for legacy cros ec to a separate follow on CL.",
       "revId": "0bf1dba136e671054e3186fa22e3230d0ba12d41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06fff05_f6bc9425",
+        "filename": "zephyr/shim/src/rw_safe_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2022-11-29T22:29:14Z",
+      "side": 1,
+      "message": "Calling `panic_reboot()` instead or adding a \"Rebooting...\" message here would be helpful",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "0bf1dba136e671054e3186fa22e3230d0ba12d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
