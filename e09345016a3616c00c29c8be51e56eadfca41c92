@@ -22,6 +22,30 @@
       },
       "revId": "e09345016a3616c00c29c8be51e56eadfca41c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199247bf_cae6ea3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-11-29T17:08:46Z",
+      "side": 1,
+      "message": "Yes, they break when compiled with C++. These headers are a bit of a mess.\n\nenum gpio_signal is declared in gpio_signal.h, which requires that some CONFIG_ macros are set. Normally that would be fixed by #include \"config.h\", but config.h includes board.h, which often declares interrupt handlers, and therefore includes gpio_signal.h.\n\nI haven\u0027t come up with a good general case solution, but this worked here. I found several other places where it did not, but I can try to remove the forward decl from this cl.",
+      "parentUuid": "7103f757_7778952b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "e09345016a3616c00c29c8be51e56eadfca41c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
