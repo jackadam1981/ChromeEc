@@ -85,7 +85,7 @@ config PLATFORM_EC_FW_RESET_VECTOR
 config PLATFORM_EC_RW_SAFE_MODE
 	bool "Enable RW Safe Mode"
 	default n
-	depends on CPU_CORTEX_M && !TASK_HOSTCMD_THREAD_MAIN
+	depends on (CPU_CORTEX_M || ARCH_POSIX) && !TASK_HOSTCMD_THREAD_MAIN
 	help
 	  This enables RW Safe Mode for retrieving system state after
 	  a panic occurs. RW Safe Mode only runs briefly after a panic.
