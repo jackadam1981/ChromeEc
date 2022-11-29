@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b368045_92437463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-29T15:29:44Z",
+      "side": 1,
+      "message": "Reasoning to not",
+      "revId": "33d190d0c34f893b65e549fab41e0aaa580c71ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80d96706_99e007a0",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-11-29T15:18:31Z",
       "side": 1,
       "message": "Can we link to a non-POSIX coverage bug?",
+      "range": {
+        "startLine": 178,
+        "startChar": 22,
+        "endLine": 178,
+        "endChar": 56
+      },
+      "revId": "33d190d0c34f893b65e549fab41e0aaa580c71ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "922bb540_2a7e73d7",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2022-11-29T15:29:44Z",
+      "side": 1,
+      "message": "Reasoning to not add a bug was discussed in chat:\n\nEssentially we don\u0027t want to risk making some stale bug for something that we very well may never do and won\u0027t offer a ton in terms of value.",
+      "parentUuid": "80d96706_99e007a0",
       "range": {
         "startLine": 178,
         "startChar": 22,
