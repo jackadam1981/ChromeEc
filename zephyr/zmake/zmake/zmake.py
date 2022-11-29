@@ -464,6 +464,7 @@ class Zmake:
                     cmake_defs={
                         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                         "DTS_ROOT": str(self.module_paths["ec"] / "zephyr"),
+                        "PLATFORM_EC": str(self.module_paths["ec"]),
                         "SYSCALL_INCLUDE_DIRS": str(
                             self.module_paths["ec"]
                             / "zephyr"

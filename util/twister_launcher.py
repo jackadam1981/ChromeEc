@@ -267,6 +267,7 @@ def main():
         "--ninja",
         "--disable-warnings-as-errors",
         f"-x=DTS_ROOT={str( ec_base / 'zephyr')}",
+        f"-x=PLATFORM_EC={str(ec_base)}",
         f"-x=SYSCALL_INCLUDE_DIRS={str(ec_base / 'zephyr' / 'include' / 'drivers')}",
         f"-x=ZEPHYR_BASE={zephyr_base}",
         f"-x=ZEPHYR_MODULES={';'.join([str(p) for p in zephyr_modules])}",

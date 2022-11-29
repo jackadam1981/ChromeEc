@@ -25,5 +25,7 @@ if(NOT EXISTS "${PLATFORM_EC}/zephyr/module.yml")
           ${PLATFORM_EC}/zephyr/module.yml")
 endif()
 
+include(zephyr/cmake/modules/extensions.cmake)
+
 add_subdirectory(zephyr)
 add_subdirectory(common)
