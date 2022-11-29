@@ -16,6 +16,24 @@
       "message": "This CL duplicates the logic here: https://review.coreboot.org/c/coreboot/+/68471\n\nThat means any tuning must occur in both repos, which we wanted to avoid with the original description here: b/232946420#comment98\n\n\u003e To make that work though, the EC will need to be updated to send EC_HOST_EVENT_THERMAL_THRESHOLD at the appropriate time. One idea that rrangle@ had was for the EC to send it whenever the sensor value changes by +/-1deg C. This way the EC doesn\u0027t need to know any of the 40/45/50/55deg C threshold values defined in the flow chart. Instead, that logic can all be in a single place: dptc.asl.\n\nInstead, to remove the duplication the earlier CL should be updated to implement that logic:\n4054309: common: body_detection: notify host to switch thermal table | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4054309",
       "revId": "2d725753e0c2b31b6221bfbf07f24bdf55f4bb73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c9268d_52018084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2022-11-29T14:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "561e385f_33265eb9",
+      "revId": "2d725753e0c2b31b6221bfbf07f24bdf55f4bb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
