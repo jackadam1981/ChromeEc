@@ -22,6 +22,30 @@
       },
       "revId": "9269c2d5189f03f3c655fd35771e8bca0bd58441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f0d35d_7f8b1ec5",
+        "filename": "board/gaelin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2022-11-29T05:57:42Z",
+      "side": 1,
+      "message": "It looks like the following method that might discover a hardware or software issue. Also it ensures the retimer is ready before attempting to write tuning values.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/guybrush/baseboard.c;l\u003d759",
+      "parentUuid": "208fec81_baf09bef",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "9269c2d5189f03f3c655fd35771e8bca0bd58441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
