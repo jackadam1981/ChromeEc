@@ -46,6 +46,30 @@
       },
       "revId": "9269c2d5189f03f3c655fd35771e8bca0bd58441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2798593e_16b1b9d6",
+        "filename": "board/gaelin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2022-11-29T06:12:44Z",
+      "side": 1,
+      "message": "If removing the retry, do you find any problem on the Gaelin board? If not, i would suggest to remove the retry.",
+      "parentUuid": "90f0d35d_7f8b1ec5",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "9269c2d5189f03f3c655fd35771e8bca0bd58441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
