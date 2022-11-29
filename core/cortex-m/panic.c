@@ -10,6 +10,7 @@
 #include "panic-internal.h"
 #include "panic.h"
 #include "printf.h"
+#include "rw_safe_mode.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -287,6 +288,16 @@ void panic_data_print(const struct panic_data *pdata)
 #endif
 }
 
+/* This is just a placeholder function for returning from exception.
+ * It's not expected to actually be executed.
+ */
+static void exception_return_placeholder(void)
+{
+	panic_printf("Unexpected return from exception\n");
+	panic_reboot();
+	__builtin_unreachable();
+}
+
 void __keep report_panic(void)
 {
 	/*
@@ -352,6 +363,24 @@ void __keep report_panic(void)
 	/* Make sure that all changes are saved into RAM */
 	if (IS_ENABLED(CONFIG_ARMV7M_CACHE))
 		cpu_clean_invalidate_dcache();
+
+	/* Start safe mode if possible */
+	if (IS_ENABLED(CONFIG_RW_SAFE_MODE)) {
+		/* TODO: check for nested exceptions */
+		if (start_rw_safe_mode() == EC_SUCCESS) {
+			/* Return from exception on process stack.
+			 * We should not actually land in
+			 * exception_return_placeholder function. Instead the
+			 * scheduler should interrupt and schedule
+			 * a different task since the current task has
+			 * been disabled.
+			 */
+			cpu_return_from_exception_psp(
+				exception_return_placeholder);
+
+			__builtin_unreachable();
+		}
+	}
 
 	panic_reboot();
 }
