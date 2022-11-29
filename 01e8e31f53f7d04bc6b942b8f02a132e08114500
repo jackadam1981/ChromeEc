@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a1395b_40893fd3",
+        "filename": "zephyr/program/skyrim/src/winterhold/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-29T17:57:45Z",
+      "side": 1,
+      "message": "I think both of these could safely be set from the skyrim shared code now that we have a handy CONFIG for them to vary for each board : )",
+      "revId": "01e8e31f53f7d04bc6b942b8f02a132e08114500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
