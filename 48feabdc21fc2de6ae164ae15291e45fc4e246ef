@@ -16,6 +16,24 @@
       "message": "I feel like I\u0027m missing something here. There are other functions that are defined in this file but not actually included in the driver structure. I guess people don\u0027t use the generic driver structure much outside a testing context, so maybe they just forgot to update the structure when they added the functions?",
       "revId": "48feabdc21fc2de6ae164ae15291e45fc4e246ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6331f10_9fb1e12d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-29T14:45:23Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a good guess.  The only C-code I see using tcpci_tcpm_drv outside the drivers is one ECOS test, one eval board, and oak.",
+      "parentUuid": "20d77979_36cdcf1c",
+      "revId": "48feabdc21fc2de6ae164ae15291e45fc4e246ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
