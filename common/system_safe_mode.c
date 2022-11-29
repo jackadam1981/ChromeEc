@@ -127,9 +127,12 @@ bool command_is_allowed_in_safe_mode(int command)
 
 static void system_safe_mode_start(void)
 {
+<<<<<<< HEAD   (c4e28e octopus: Increase watchdog timeout period to 2100ms)
 	ccprintf("*** Post Panic System Safe Mode ***\n");
 	if (IS_ENABLED(CONFIG_SYSTEM_SAFE_MODE_PRINT_STACK))
 		print_panic_stack();
+=======
+>>>>>>> CHANGE (b3f612 system_safe_mode: Publish EC_HOST_EVENT_PANIC when safe mode)
 	if (IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
 		host_set_single_event(EC_HOST_EVENT_PANIC);
 }
@@ -157,6 +160,13 @@ int start_system_safe_mode(void)
 	disable_non_safe_mode_critical_tasks();
 
 	schedule_system_safe_mode_timeout();
+
+	/*
+	 * Schedule a deferred function to run immediately
+	 * after returning from fault handler. Defer operations that
+	 * must not run in an ISR to this function.
+	 */
+	hook_call_deferred(&system_safe_mode_start_data, 0);
 
 	in_safe_mode = true;
 
