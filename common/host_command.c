@@ -14,6 +14,7 @@
 #include "link_defs.h"
 #include "lpc.h"
 #include "printf.h"
+#include "rw_safe_mode.h"
 #include "shared_mem.h"
 #include "system.h"
 #include "task.h"
@@ -373,6 +374,10 @@ host_packet_bad:
  */
 static const struct host_command *find_host_command(int command)
 {
+	if (IS_ENABLED(CONFIG_RW_SAFE_MODE) && system_is_in_rw_safe_mode()) {
+		if (!command_is_allowed_in_rw_safe_mode(command))
+			return NULL;
+	}
 	if (IS_ENABLED(CONFIG_ZEPHYR)) {
 		return zephyr_find_host_command(command);
 	} else if (IS_ENABLED(CONFIG_HOSTCMD_SECTION_SORTED)) {
