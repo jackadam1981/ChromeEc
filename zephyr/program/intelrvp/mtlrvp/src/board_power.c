@@ -23,7 +23,7 @@ static void ap_board_timer_handler(struct k_timer *timer);
 /* S5 inactive timer*/
 K_TIMER_DEFINE(ap_board_timer, ap_board_timer_handler, NULL);
 
-void board_ap_power_action_g3_entry(void *data)
+int board_ap_power_action_g3_entry(void *data)
 {
 	/* Turn off PCH_RMSRST to meet tPCH12 */
 	power_signal_set(PWR_EC_PCH_RSMRST, 0);
@@ -36,9 +36,10 @@ void board_ap_power_action_g3_entry(void *data)
 			K_MSEC(X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS),
 			K_NO_WAIT);
 	}
+	return 0;
 }
 
-static void board_ap_power_action_g3_run(void *data)
+static int board_ap_power_action_g3_run(void *data)
 {
 	if (IS_EVENT_SET(data, AP_PWRSEQ_EVENT_POWER_STARTUP)) {
 		/* Turn on the PP3300_PRIM rail. */
@@ -51,18 +52,20 @@ static void board_ap_power_action_g3_run(void *data)
 
 	if (power_signals_on(IN_PGOOD_ALL_CORE)) {
 		k_timer_stop(&ap_board_timer);
-		return;
+		return 0;
 	}
 
 	if  (IS_EVENT_SET(data, AP_PWRSEQ_EVENT_POWER_TIMEOUT)) {
 		power_signal_set(PWR_EN_PP3300_A, 0);
 	}
+	return 1;
 }
 
-static void board_ap_power_action_g3_exit(void *data)
+static int board_ap_power_action_g3_exit(void *data)
 {
 	k_timer_stop(&ap_board_timer);
 	ap_power_ev_send_callbacks(AP_POWER_PRE_INIT);
+	return 0;
 }
 
 AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3,
