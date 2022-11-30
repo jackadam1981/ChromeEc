@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df10ef8_f98e9f91",
+        "filename": "zephyr/program/herobrine/zombie/interrupts.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-30T17:50:59Z",
+      "side": 1,
+      "message": "Remove this file. No need.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "79c2c7bd4921539bad2fa6f958489ebf62fd3e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ec7a14_757fcabe",
+        "filename": "zephyr/program/herobrine/zombie/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-30T17:50:59Z",
+      "side": 1,
+      "message": "Move it back to the above, in alphabetical order.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "79c2c7bd4921539bad2fa6f958489ebf62fd3e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4e69ad_858e6795",
+        "filename": "zephyr/program/herobrine/zombie/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-11-30T17:50:59Z",
+      "side": 1,
+      "message": "interrupt without s.",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "79c2c7bd4921539bad2fa6f958489ebf62fd3e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
