@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+# Baseboard tests
 config TEST_BOARD_BASEBOARD
 	bool "Enable baseboard-specific tests"
 	default n
@@ -47,5 +48,22 @@ config TEST_BOARD_NAME
 	default "morthal" if TEST_BOARD_MORTHAL
 	default "skyrim" if TEST_BOARD_SKYRIM
 	default "frostflow" if TEST_BOARD_WINTERHOLD
+
+if TEST_BOARD_BASEBOARD
+
+config TEST_BOARD_USB_PD_POLICY
+	bool "Enable USB PD policy specific tests"
+	select TEST_ENABLE_USB_PD_HOST_CMD
+	default n
+
+endif # TEST_BOARD_BASEBOARD
+
+config TEST_ENABLE_USB_PD_HOST_CMD
+	bool "Fake config to enable this feature"
+	default n
+
+config USB_PD_DISCHARGE
+	bool "Fake config to enable this feature"
+	default n
 
 source "Kconfig.zephyr"
