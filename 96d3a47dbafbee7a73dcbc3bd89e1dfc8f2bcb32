@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f20e6e_4c9c6445",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-30T21:07:20Z",
+      "side": 1,
+      "message": "Maybe or system_safe_mode? FYI: The battery charger also has safe mode. So, it\u0027s already overloaded. Looking at rw_safe_mode.h, it doesn\u0027t look bad to rename functions and macros safe mode.",
+      "parentUuid": "fe4092b7_e89a2ebb",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "40b2a1fd_eaab271b",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Correct. See chained CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4063817 for legacy EC.",
       "parentUuid": "40b2a1fd_eaab271b",
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b2931c_17edea80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-30T21:07:20Z",
+      "side": 1,
+      "message": "Does it mean we\u0027re going to maintain two implementations? It\u0027s probably not a recommended practice. Is there an advantage with separating Zephyr\u0027s implementation that exceeds the disadvantages?",
+      "parentUuid": "67bafc84_70922004",
       "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +162,30 @@
       "side": 1,
       "message": "Good idea, I\u0027ll take a look. I\u0027m thinking \n\nPANIC_DATA_FLAG_SAFE_MODE_STARTED\n\nPANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS\nPANIC_DATA_FLAG_SAFE_MODE_FAIL_CRITICAL_TASK\nPANIC_DATA_FLAG_SAFE_MODE_FAIL_DOUBLE_FAULT",
       "parentUuid": "1c05ab5c_ab8865a8",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e4875c_47c492e4",
+        "filename": "zephyr/shim/src/rw_safe_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-30T21:07:20Z",
+      "side": 1,
+      "message": "Lgtm. PANIC_DATA_FLAG_SAFE_MODE_STARTED can be used to detect a back-to-back panic.",
+      "parentUuid": "c6b01eb5_8dc25e75",
       "range": {
         "startLine": 99,
         "startChar": 0,
