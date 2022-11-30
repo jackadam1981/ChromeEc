@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68fc864a_01170d41",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-30T17:07:32Z",
+      "side": 1,
+      "message": "nit: consider naming this more descriptively (ex. last_amb_temp)",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "336fb10300c44db77700b02cbce5737678a2675c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4648aa3_fb8e7ebb",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2022-11-30T17:07:32Z",
+      "side": 1,
+      "message": "We actually have a `HOOK_PRIO_TEMP_SENSOR_DONE` you can use here to ensure you\u0027re running right after the most recent temperature update.",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "336fb10300c44db77700b02cbce5737678a2675c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
