@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45cdaf3_199b4b32",
+        "filename": "zephyr/program/skyrim/winterhold/winterhold.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-30T18:48:58Z",
+      "side": 1,
+      "message": "Is it necessary to specify the values here when the following CL will override them anyway?\n\n\u003e 4066519: winterhold: Dynamic switch thermal table | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4066519\n\nCan they be removed so we don\u0027t need to make the values match in 2 places?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "27d956ab3369863664e84429e77c8fab0296d066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
