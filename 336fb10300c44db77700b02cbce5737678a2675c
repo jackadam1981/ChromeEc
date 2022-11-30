@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36a918f2_1445cabd",
+        "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-11-30T17:52:09Z",
+      "side": 1,
+      "message": "Should we log an error message that we failed to read the sensor data, or does `temp_sensor_read()` do that already?",
+      "revId": "336fb10300c44db77700b02cbce5737678a2675c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4648aa3_fb8e7ebb",
         "filename": "zephyr/program/skyrim/winterhold/src/thermal.c",
         "patchSetId": 6
