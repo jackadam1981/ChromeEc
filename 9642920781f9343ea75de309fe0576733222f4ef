@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5a4c40_b281c7df",
+        "filename": "common/fan.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-30T23:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a42ce5b_c3fe006c",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf4bb6e4_f33f3abe",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-28T20:29:03Z",
       "side": 1,
       "message": "nit: How about temp_ratio_to_rpm_histeresis? (I understand what \u0027path\u0027 means in this context but I\u0027m not sure others do. \u0027path\u0027 is a somewhat loaded term).",
+      "range": {
+        "startLine": 75,
+        "startChar": 22,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e2f3c9_78aa4b75",
+        "filename": "common/fan.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-30T23:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf4bb6e4_f33f3abe",
       "range": {
         "startLine": 75,
         "startChar": 22,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af0bad4_fe76456d",
+        "filename": "include/fan.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-30T23:15:45Z",
+      "side": 1,
+      "message": "Thank you! Agreed and done.",
+      "parentUuid": "a9a26c04_f38045af",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 56
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d631861c_13085367",
@@ -107,6 +179,30 @@
       "writtenOn": "2022-11-28T15:58:16Z",
       "side": 1,
       "message": "I\u0027d remove the references to \"off\" and \"on\" in other implementations. Going forward, this will be the standard implementation, and the other implementations will be the weird ones. As those get converted or deleted, this comment will become less valuable.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 42
+      },
+      "revId": "9642920781f9343ea75de309fe0576733222f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcefaed1_a7457dc4",
+        "filename": "include/fan.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1357282
+      },
+      "writtenOn": "2022-11-30T23:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d631861c_13085367",
       "range": {
         "startLine": 101,
         "startChar": 0,
