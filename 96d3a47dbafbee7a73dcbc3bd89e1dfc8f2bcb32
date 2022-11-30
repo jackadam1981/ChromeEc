@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4092b7_e89a2ebb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-11-30T19:43:57Z",
+      "side": 1,
+      "message": "yeah, rw is probably superfluous now. Only concern is confusion with USB safe mode. Maybe panic safe mode?",
+      "parentUuid": "c526d0b6_1d2f7c52",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "40b2a1fd_eaab271b",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67bafc84_70922004",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-11-30T19:43:57Z",
+      "side": 1,
+      "message": "Correct. See chained CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4063817 for legacy EC.",
+      "parentUuid": "40b2a1fd_eaab271b",
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c05ab5c_ab8865a8",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-11-30T18:23:46Z",
       "side": 1,
       "message": "Shall we add some flags in pdata-\u003eflags for these cases?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b01eb5_8dc25e75",
+        "filename": "zephyr/shim/src/rw_safe_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-11-30T19:43:57Z",
+      "side": 1,
+      "message": "Good idea, I\u0027ll take a look. I\u0027m thinking \n\nPANIC_DATA_FLAG_SAFE_MODE_STARTED\n\nPANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS\nPANIC_DATA_FLAG_SAFE_MODE_FAIL_CRITICAL_TASK\nPANIC_DATA_FLAG_SAFE_MODE_FAIL_DOUBLE_FAULT",
+      "parentUuid": "1c05ab5c_ab8865a8",
       "range": {
         "startLine": 99,
         "startChar": 0,
