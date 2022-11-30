@@ -15,6 +15,7 @@
 
 #include <ap_power/ap_power.h>
 
+#if 0
 #define I2C3_NODE DT_NODELABEL(i2c3)
 PINCTRL_DT_DEFINE(I2C3_NODE);
 
@@ -45,6 +46,7 @@ static void board_disable_i2c3(void)
 	board_i2c3_ctrl(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_HARD_OFF, board_disable_i2c3, HOOK_PRIO_LAST);
+#endif
 
 static void board_suspend_handler(struct ap_power_ev_callback *cb,
 				  struct ap_power_ev_data data)
