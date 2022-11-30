@@ -5,12 +5,30 @@
 
 /* Standard library utility functions for Chrome EC */
 
+#include "atomic.h"
 #include "common.h"
 #include "console.h"
+#include "hwtimer.h"
 #include "printf.h"
+#include "task.h"
 #include "util.h"
 
 #include <stdio.h>
+
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/kernel.h> /* For k_usleep() */
+#else
+extern __error("k_usleep() should only be called from Zephyr code") int32_t
+	k_usleep(int32_t);
+#endif /* CONFIG_ZEPHYR */
+
+#ifdef CONFIG_COMMON_RUNTIME
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
+#else
+#define CPRINTS(format, args...)
+#define CPRINTF(format, args...)
+#endif
 
 /*
  * The following macros are defined in stdlib.h in the C standard library, which
@@ -462,4 +480,72 @@ __stdlib_compat int strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return 0;
 }
+
+#ifndef CONFIG_HW_SPECIFIC_UDELAY
+static void udelay(unsigned us)
+{
+	unsigned t0 = __hw_clock_source_read();
+
+	/*
+	 * udelay() may be called with interrupts disabled, so we can't rely on
+	 * process_timers() updating the top 32 bits.  So handle wraparound
+	 * ourselves rather than calling get_time() and comparing with a
+	 * deadline.
+	 *
+	 * This may fail for delays close to 2^32 us (~4000 sec), because the
+	 * subtraction below can overflow.  That's acceptable, because the
+	 * watchdog timer would have tripped long before that anyway.
+	 */
+	while (__hw_clock_source_read() - t0 <= us)
+		;
+}
+#endif
+
+/*
+ * For us < (2^31 - task scheduling latency)(~ 2147 sec), this function will
+ * sleep for at least us, and no more than 2*us. As us approaches 2^32-1, the
+ * probability of delay longer than 2*us (and possibly infinite delay)
+ * increases.
+ */
+void usleep(unsigned us)
+{
+	uint32_t evt = 0;
+	uint32_t t0;
+
+	/* If a wait is 0, return immediately. */
+	if (!us)
+		return;
+
+	if (IS_ENABLED(CONFIG_ZEPHYR)) {
+		while (us)
+			us = k_usleep(us);
+		return;
+	}
+
+	t0 = __hw_clock_source_read();
+
+	/* If task scheduling has not started, just delay */
+	if (!task_start_called()) {
+		udelay(us);
+		return;
+	}
+
+	/* If in interrupt context or interrupts are disabled, use udelay() */
+	if (!is_interrupt_enabled() || in_interrupt_context()) {
+		CPRINTS("Sleeping not allowed");
+		udelay(us);
+		return;
+	}
+
+	do {
+		evt |= task_wait_event(us);
+	} while (!(evt & TASK_EVENT_TIMER) &&
+		 ((__hw_clock_source_read() - t0) < us));
+
+	/* Re-queue other events which happened in the meanwhile */
+	if (evt)
+		atomic_or(task_get_event_bitmap(task_get_current()),
+			  evt & ~TASK_EVENT_TIMER);
+}
+
 #endif /* !CONFIG_ZEPHYR */

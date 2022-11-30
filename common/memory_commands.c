@@ -10,6 +10,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <unistd.h>
+
 enum format {
 	FMT_WORD,
 	FMT_HALF,
