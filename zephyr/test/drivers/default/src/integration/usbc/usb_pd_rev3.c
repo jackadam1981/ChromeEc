@@ -13,6 +13,7 @@
 #include "test/drivers/stubs.h"
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
+#include "test/usb_pe.h"
 #include "usb_common.h"
 #include "usb_pd.h"
 #include "util.h"
@@ -212,6 +213,22 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, verify_alert_on_power_state_change)
 	/* Resume and check partner received Alert and Status messages */
 	hook_notify(HOOK_CHIPSET_RESUME);
 	k_sleep(K_SECONDS(2));
+	zassert_true(fixture->src_ext.alert_received);
+	zassert_true(fixture->src_ext.status_received);
+}
+
+ZTEST_F(usb_attach_5v_3a_pd_source_rev3,
+	verify_simultaneous_alert_status_resolution)
+{
+	zassert_false(fixture->src_ext.alert_received);
+	zassert_false(fixture->src_ext.status_received);
+
+	zassert_equal(pd_broadcast_alert_msg(ADO_OTP_EVENT), EC_SUCCESS);
+	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
+				       PD_CTRL_GET_STATUS, 0);
+
+	k_sleep(K_SECONDS(2));
+	zassert_equal(get_state_pe(USBC_PORT_C0), PE_SNK_READY);
 	zassert_true(fixture->src_ext.alert_received);
 	zassert_true(fixture->src_ext.status_received);
 }
