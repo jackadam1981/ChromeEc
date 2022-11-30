@@ -7,6 +7,9 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 project(ccg6)
 
 zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
+#cros_ec_library_include_directories(include)
+cros_ec_library_include_directories("${PLATFORM_EC}/driver/tcpm")
+
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "board_power.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "usb_pd_policy.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "board.c")

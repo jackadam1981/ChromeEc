@@ -110,11 +110,28 @@
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
+
+		ec_volume_up: volume-up {
+			gpios = <&gpio6 1 GPIO_INPUT>;
+			enum-name = "GPIO_VOLUME_UP_L";
+		};
+		ec_volume_down: vol-dn-ec-r {
+			gpios = <&gpio0 3 GPIO_INPUT>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		ioex_kbd_intr_n: ioex-kbd-intr-n {
+			gpios = <&gpio0 0 GPIO_INPUT>;
+			enum-name = "GPIO_KB_DISCRETE_INT";
+		};
+		gpio_ec_pch_wake_odl: pch-wake-n {
+			gpios = <&gpio7 4 GPIO_ODR_HIGH>;
+		};
 	};
 };
 
-&cros_kb_raw {
+/* host interface */
+&espi0 {
 	status = "okay";
-	pinctrl-0 = <>;
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
 	pinctrl-names = "default";
 };

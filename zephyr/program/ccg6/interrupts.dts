@@ -31,5 +31,20 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "tcpc_alert_event";
 		};
+		int_volume_up: volume_up {
+			irq-pin = <&ec_volume_up>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "button_interrupt";
+		};
+		int_volume_down: volume_down {
+			irq-pin = <&ec_volume_down>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "button_interrupt";
+		};
+		int_ioex_kbd_intr_n: ioex_kbd_intr_n {
+			irq-pin = <&ioex_kbd_intr_n>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "io_expander_it8801_interrupt";
+		};
 	};
 };
