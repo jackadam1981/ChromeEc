@@ -92,6 +92,30 @@
       },
       "revId": "17ec568c196987213b51d3bbcd81399f0d5f0a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df212289_485b2c67",
+        "filename": "zephyr/program/skyrim/src/winterhold/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2022-11-30T11:10:14Z",
+      "side": 1,
+      "message": "From ec point of view, this two events(EC_HOST_EVENT_THERMAL/EC_HOST_EVENT_THERMAL_THRESHOLD) has different action they don\u0027t affect each other\u0027s function. \n\nI\u0027m tempted to have you add this code to https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/thermal.c#213 and guard it with a Kconfig, but maybe we do that later if it\u0027s needed? --\u003e Ok, if it\u0027s needed I will update patch later.",
+      "parentUuid": "c00eb7b6_1f2366f4",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "17ec568c196987213b51d3bbcd81399f0d5f0a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
