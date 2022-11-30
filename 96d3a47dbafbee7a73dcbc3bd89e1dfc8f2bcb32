@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b2a1fd_eaab271b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-30T18:23:46Z",
+      "side": 1,
+      "message": "Does patchset 9 work only for zephyer? Are we interested in enabling safe mode in some released devices?",
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c05ab5c_ab8865a8",
+        "filename": "zephyr/shim/src/rw_safe_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-11-30T18:23:46Z",
+      "side": 1,
+      "message": "Shall we add some flags in pdata-\u003eflags for these cases?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "96d3a47dbafbee7a73dcbc3bd89e1dfc8f2bcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
