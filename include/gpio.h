@@ -92,6 +92,9 @@
 #elif DT_HAS_COMPAT_STATUS_OKAY(zephyr_gpio_emul)
 #define GPIO_VOLTAGE_1P8 NATIVE_POSIX_GPIO_VOLTAGE_1P8
 #define GPIO_SEL_1P8V GPIO_VOLTAGE_1P8
+#elif DT_HAS_COMPAT_STATUS_OKAY(microchip_xec_gpio_v2)
+#define GPIO_VOLTAGE_1P8 (1U << 11)
+#define GPIO_SEL_1P8V GPIO_VOLTAGE_1P8
 #endif
 /* GPIO_ALTERNATE          not supported by Zephyr */
 /* GPIO_LOCKED             not supported by Zephyr */
