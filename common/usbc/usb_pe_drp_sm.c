@@ -4474,6 +4474,12 @@ static void pe_send_alert_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 		pe_clear_ado(port);
 		pe_set_ready_state(port);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR) ||
+		   PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
+		pe_clear_ado(port);
+		pe_send_soft_reset(port, TCPCI_MSG_SOP);
 	}
 }
 
