@@ -16,6 +16,23 @@
       "message": "We\u0027re trying to deprecate the use of override/overridable functions.\nAt this stage it may be better to use something like:\n\nenum nissa_sub_board_type nissa_get_sb_type(void)\n{\n        static enum nissa_sub_board_type sb \u003d NISSA_SB_UNKNOWN;\n        int ret;\n        uint32_t val;\n\n        if (IS_ENABLED(CONFIG_BOARD_YAVIKS)) {\n               return NISSA_CB_C_A;\n        }\n...\n\nLonger term, we will need to allow for more variants that don\u0027t really\nfit the exact sub-board model, and so we may end up making that optional.\n\nThough the issue is also here that yavviks assumes the fw_config bits match the nissa common values, so strictly speaking yavviks should just have its own fw_config bits.",
       "revId": "f837b8336ef2d3bf72cbf3fd82bbbf55da09b447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a688b0_bd9e971f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2022-11-30T02:15:37Z",
+      "side": 1,
+      "message": "I have created a CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4059932 to add sub-board support to be optional.\nFor yaviks, you can set CONFIG_NISSA_SUB_BOARD\u003dn in the yaviks project.conf\nThis will disable sub-board support.",
+      "revId": "f837b8336ef2d3bf72cbf3fd82bbbf55da09b447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
